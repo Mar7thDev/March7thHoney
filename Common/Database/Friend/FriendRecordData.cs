@@ -38,35 +38,14 @@ public class FriendDevelopmentInfoPb
     public long Time { get; set; } = Extensions.GetUnixSec();
     public Dictionary<string, uint> Params { get; set; } = [];
 
-    public FriendDevelopmentInfo ToProto()
+    public OHNPAFLKHNA ToProto()
     {
-        var proto = new FriendDevelopmentInfo
+        var proto = new OHNPAFLKHNA
         {
             Time = Time,
-            DevelopmentType = DevelopmentType
-        };
-
-        // 4.2 proto names differ from legacy 3.x enum members; keep a generic mapping here.
-        proto.RogueDevelopmentInfo = new FriendRogueDevelopmentInfo
-        {
-            AreaId = Params.GetValueOrDefault("AreaId", 0u)
-        };
-        proto.ChallengeDevelopmentInfo = new FriendChallengeDevelopmentInfo
-        {
-            ChallengeId = Params.GetValueOrDefault("ChallengeId", 0u)
+            FKGPLPGKDHN = DevelopmentType
         };
         proto.AvatarId = Params.GetValueOrDefault("AvatarId", 0u);
-        proto.EquipmentTid = Params.GetValueOrDefault("EquipmentTid", 0u);
-        proto.RogueTournDevelopmentInfo = new FriendRogueTournDevelopmentInfo
-        {
-            AreaId = Params.GetValueOrDefault("AreaId", 0u),
-            FinishTournDifficulty = Params.GetValueOrDefault("FinishTournDifficulty", 0u)
-        };
-        proto.ChallengePeakDevelopmentInfo = new FriendChallengePeakDevelopmentInfo
-        {
-            PeakLevelId = Params.GetValueOrDefault("PeakLevelId", 0u)
-        };
-
         return proto;
     }
 }
@@ -78,41 +57,9 @@ public class ChallengeGroupStatisticsPb
     public Dictionary<uint, StoryGroupStatisticsPb>? StoryGroupStatistics { get; set; }
     public Dictionary<uint, BossGroupStatisticsPb>? BossGroupStatistics { get; set; }
 
-    public ChallengeGroupStatistics ToProto()
+    public object ToProto()
     {
-        var proto = new ChallengeGroupStatistics
-        {
-            GroupId = GroupId
-        };
-
-        if (MemoryGroupStatistics != null)
-        {
-            foreach (var memoryGroupStatistic in MemoryGroupStatistics.Values)
-                proto.GroupTotalStars += memoryGroupStatistic.Stars;
-
-            var maxFloor = MemoryGroupStatistics.Values.MaxBy(x => x.Level);
-            if (maxFloor != null) proto.MemoryGroup = maxFloor.ToProto();
-        }
-
-        if (StoryGroupStatistics != null)
-        {
-            foreach (var storyGroupStatistic in StoryGroupStatistics.Values)
-                proto.GroupTotalStars += storyGroupStatistic.Stars;
-
-            var maxFloor = StoryGroupStatistics.Values.MaxBy(x => x.Level);
-            if (maxFloor != null) proto.StoryGroup = maxFloor.ToProto();
-        }
-
-        if (BossGroupStatistics != null)
-        {
-            foreach (var bossGroupStatistic in BossGroupStatistics.Values)
-                proto.GroupTotalStars += bossGroupStatistic.Stars;
-
-            var maxFloor = BossGroupStatistics.Values.MaxBy(x => x.Level);
-            if (maxFloor != null) proto.BossGroup = maxFloor.ToProto();
-        }
-
-        return proto;
+        return new { GroupId };
     }
 }
 
@@ -124,25 +71,9 @@ public class MemoryGroupStatisticsPb
     public uint Stars { get; set; }
     public List<List<ChallengeAvatarInfoPb>> Lineups { get; set; } = [];
 
-    public MemoryGroupStatistics ToProto()
+    public object ToProto()
     {
-        return new MemoryGroupStatistics
-        {
-            RecordId = RecordId,
-            SttInfo = new MemoryStatisticsInfo
-            {
-                CurLevelStars = Stars,
-                Level = Level,
-                RoundCount = RoundCount,
-                LineupList =
-                {
-                    Lineups.Select(x => new ChallengeLineupList
-                    {
-                        AvatarList = { x.Select(avatar => avatar.ToProto()) }
-                    })
-                }
-            }
-        };
+        return new { RecordId, Level, RoundCount, Stars };
     }
 }
 
@@ -156,27 +87,9 @@ public class StoryGroupStatisticsPb
     public uint Stars { get; set; }
     public List<List<ChallengeAvatarInfoPb>> Lineups { get; set; } = [];
 
-    public StoryGroupStatistics ToProto()
+    public object ToProto()
     {
-        return new StoryGroupStatistics
-        {
-            RecordId = RecordId,
-            SttInfo = new StoryStatisticsInfo
-            {
-                CurLevelStars = Stars,
-                Level = Level,
-                LineupList =
-                {
-                    Lineups.Select(x => new ChallengeLineupList
-                    {
-                        AvatarList = { x.Select(avatar => avatar.ToProto()) }
-                    })
-                },
-                BuffOne = BuffOne,
-                BuffTwo = BuffTwo,
-                ScoreId = Score
-            }
-        };
+        return new { RecordId, Level, Score, BuffOne, BuffTwo, Stars };
     }
 }
 
@@ -190,27 +103,9 @@ public class BossGroupStatisticsPb
     public uint Stars { get; set; }
     public List<List<ChallengeAvatarInfoPb>> Lineups { get; set; } = [];
 
-    public BossGroupStatistics ToProto()
+    public object ToProto()
     {
-        return new BossGroupStatistics
-        {
-            RecordId = RecordId,
-            SttInfo = new BossStatisticsInfo
-            {
-                CurLevelStars = Stars,
-                Level = Level,
-                LineupList =
-                {
-                    Lineups.Select(x => new ChallengeLineupList
-                    {
-                        AvatarList = { x.Select(avatar => avatar.ToProto()) }
-                    })
-                },
-                BuffOne = BuffOne,
-                BuffTwo = BuffTwo,
-                ScoreId = Score
-            }
-        };
+        return new { RecordId, Level, Score, BuffOne, BuffTwo, Stars };
     }
 }
 

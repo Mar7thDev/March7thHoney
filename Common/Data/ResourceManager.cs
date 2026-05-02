@@ -36,31 +36,17 @@ public class ResourceManager
         });
         var t5 = Task.Run(LoadPerformanceInfo);
         var t6 = Task.Run(LoadDialogueInfo);
-        var t7 = Task.Run(LoadRogueChestMapInfo);
         var t8 = Task.Run(LoadAdventureModifier);
         var t9 = Task.Run(LoadLocalPlayer);
         GameData.ActivityConfig = LoadCustomFile<ActivityConfig>("Activity", "ActivityConfig") ?? new ActivityConfig();
         GameData.BannersConfig = LoadCustomFile<BannersConfig>("Banner", "Banners") ?? new BannersConfig();
         GameData.VideoKeysConfig =
             LoadCustomFile<VideoKeysConfig>("VideoKeys", "VideoKeysConfig") ?? new VideoKeysConfig();
-        GameData.RogueMapGenData = LoadCustomFile<Dictionary<int, List<int>>>("Rogue Map", "RogueMapGen") ?? [];
-        GameData.RogueMiracleGroupData =
-            LoadCustomFile<Dictionary<int, List<int>>>("Rogue Miracle Group", "RogueMiracleGroup") ?? [];
         GameData.SceneRainbowGroupPropertyData =
             LoadCustomFile<SceneRainbowGroupPropertyConfig>("Scene Rainbow Group Property",
                 "SceneRainbowGroupProperty") ?? new SceneRainbowGroupPropertyConfig();
-        GameData.RogueMiracleEffectData =
-            LoadCustomFile<RogueMiracleEffectConfig>("Rogue Miracle Effect", "RogueMiracleEffectGen") ??
-            new RogueMiracleEffectConfig();
 
-        LoadChessRogueRoomData();
-        LoadRogueTournRoomData();
-        LoadChessRogueDiceSurfaceEffectData();
-        LoadRogueMagicRoomData();
-        LoadRogueDialogueEventData();
-        LoadGridFightBasicRewardsData();
-
-        Task.WaitAll(t1, t2, t3, t4, t5, t6, t7, t8, t9);
+        Task.WaitAll(t1, t2, t3, t4, t5, t6, t8, t9);
 
         // copy modifiers
         foreach (var value in GameData.AdventureAbilityConfigListData.Values)
@@ -366,7 +352,9 @@ public class ResourceManager
     public static T? LoadCustomFile<T>(string filetype, string filename)
     {
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem", filetype));
-        FileInfo file = new(ConfigManager.Config.Path.ConfigPath + $"/{filename}.json");
+        var customPath = Path.Combine(ConfigManager.Config.Path.ConfigPath, "Custom", $"{filename}.json");
+        var legacyPath = Path.Combine(ConfigManager.Config.Path.ConfigPath, $"{filename}.json");
+        FileInfo file = new(File.Exists(customPath) ? customPath : legacyPath);
         T? customFile = default;
         if (!file.Exists)
         {

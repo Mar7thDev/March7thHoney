@@ -10,11 +10,13 @@ namespace March7thHoney.Program.Handbook;
 
 public static class HandbookGenerator
 {
+    private static string HandbookDir => Path.Combine(ConfigManager.Config.Path.ConfigPath, "Handbook");
+
     public static void GenerateAll()
     {
         var config = ConfigManager.Config;
         var directory = new DirectoryInfo(config.Path.ResourcePath + "/TextMap");
-        var handbook = new DirectoryInfo("GM Handbook");
+        var handbook = new DirectoryInfo(HandbookDir);
         if (!handbook.Exists)
             handbook.Create();
         if (!directory.Exists)
@@ -23,10 +25,11 @@ public static class HandbookGenerator
         foreach (var langFile in directory.GetFiles())
         {
             if (langFile.Extension != ".json") return;
+            if (langFile.Name.StartsWith("TextMapMain", StringComparison.OrdinalIgnoreCase)) continue;
             var lang = langFile.Name.Replace("TextMap", "").Replace(".json", "");
 
             // Check if handbook needs to regenerate
-            var handbookPath = $"GM Handbook/GM Handbook {lang}.txt";
+            var handbookPath = Path.Combine(HandbookDir, $"Handbook {lang}.txt");
             if (File.Exists(handbookPath))
             {
                 var handbookInfo = new FileInfo(handbookPath);
@@ -311,7 +314,7 @@ public static class HandbookGenerator
 
     public static void WriteToFile(string lang, string content)
     {
-        File.WriteAllText($"GM Handbook/GM Handbook {lang}.txt", content);
+        File.WriteAllText(Path.Combine(HandbookDir, $"Handbook {lang}.txt"), content);
     }
 
 #if DEBUG

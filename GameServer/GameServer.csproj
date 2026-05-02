@@ -30,85 +30,15 @@
 
   <!-- Temporary: disable modules that depend on missing 4.2 proto definitions. -->
   <ItemGroup>
-    <Compile Remove="Game\GridFight\**\*.cs" />
-    <Compile Remove="Game\ChessRogue\**\*.cs" />
-    <Compile Remove="Game\Rogue\**\*.cs" />
-    <Compile Remove="Game\RogueMagic\**\*.cs" />
-    <Compile Remove="Game\RogueTourn\**\*.cs" />
-    <Compile Remove="Game\MultiPlayer\MarbleGame\**\*.cs" />
-    <Compile Remove="Server\Packet\Recv\GridFight\**\*.cs" />
-    <Compile Remove="Server\Packet\Recv\ChessRogue\**\*.cs" />
-    <Compile Remove="Server\Packet\Recv\Rogue\**\*.cs" />
-    <Compile Remove="Server\Packet\Recv\RogueMagic\**\*.cs" />
-    <Compile Remove="Server\Packet\Recv\RogueTourn\**\*.cs" />
-    <Compile Remove="Server\Packet\Recv\Marble\**\*.cs" />
-    <Compile Remove="Server\Packet\Send\GridFight\**\*.cs" />
-    <Compile Remove="Server\Packet\Send\ChessRogue\**\*.cs" />
-    <Compile Remove="Server\Packet\Send\Rogue\**\*.cs" />
-    <Compile Remove="Server\Packet\Send\RogueMagic\**\*.cs" />
-    <Compile Remove="Server\Packet\Send\RogueTourn\**\*.cs" />
-    <Compile Remove="Server\Packet\Send\Marble\**\*.cs" />
-    <Compile Remove="Game\Lobby\**\*.cs" />
-    <Compile Remove="Game\MultiPlayer\**\*.cs" />
     <Compile Remove="Game\ChallengePeak\**\*.cs" />
-    <Compile Remove="Game\Battle\Custom\BattleGridFightOptions.cs" />
-    <Compile Remove="Server\Packet\Recv\Lobby\**\*.cs" />
-    <Compile Remove="Server\Packet\Send\Lobby\**\*.cs" />
-    <Compile Remove="Server\Packet\Recv\Multiplayer\**\*.cs" />
-    <Compile Remove="Server\Packet\Send\Multiplayer\**\*.cs" />
-    <Compile Remove="Server\Packet\Recv\RogueCommon\**\*.cs" />
-    <Compile Remove="Server\Packet\Send\RogueCommon\**\*.cs" />
-    <Compile Remove="Server\Packet\Send\RogueModifier\**\*.cs" />
-    <Compile Remove="Server\Packet\Recv\Fight\HandlerFightEnterCsReq.cs" />
-    <Compile Remove="Server\Packet\Send\Fight\PacketFightGeneralScNotify.cs" />
-    <Compile Remove="Server\Packet\Recv\MapRotation\HandlerRemoveRotaterCsReq.cs" />
-    <Compile Remove="Server\Packet\Send\MapRotation\PacketRemoveRotaterScRsp.cs" />
-    <Compile Remove="Server\Packet\Recv\SwitchHand\HandlerSwitchHandUpdateCsReq.cs" />
-    <Compile Remove="Server\Packet\Send\SwitchHand\PacketSwitchHandUpdateScRsp.cs" />
     <Compile Remove="Server\Packet\Send\ChallengePeak\**\*.cs" />
-    <Compile Remove="Server\Packet\Send\Player\PacketPlayerSqueezedScNotify.cs" />
     <Compile Remove="Server\Packet\Recv\ChallengePeak\**\*.cs" />
-    <Compile Remove="Server\Packet\Recv\RogueModifier\**\*.cs" />
-    <Compile Remove="Server\Packet\Send\Fight\PacketFightSessionStopScNotify.cs" />
     <Compile Remove="Game\Challenge\Instances\ChallengePeakInstance.cs" />
-    <Compile Remove="Server\Packet\Recv\Player\HandlerPlayerLogoutCsReq.cs" />
-    <Compile Remove="Server\Packet\Recv\EraFlipper\**\*.cs" />
-    <Compile Remove="Server\Packet\Send\EraFlipper\**\*.cs" />
-    <Compile Remove="Server\Packet\Recv\Fight\HandlerFightGeneralCsReq.cs" />
-    <Compile Remove="Server\Packet\Recv\Fight\HandlerFightHeartBeatCsReq.cs" />
-    <Compile Remove="Server\Packet\Send\Fight\PacketFightGeneralScRsp.cs" />
-    <Compile Remove="Server\Packet\Send\Fight\PacketFightHeartBeatScRsp.cs" />
-    <Compile Remove="Server\Packet\Send\Fight\PacketFightEnterScRsp.cs" />
-    <Compile Remove="Game\Scene\Component\EraFlipperSceneComponent.cs" />
-    <Compile Remove="Server\Packet\Recv\SwitchHand\**\*.cs" />
-    <Compile Remove="Server\Packet\Send\SwitchHand\**\*.cs" />
-    <Compile Remove="Server\Packet\Recv\MapRotation\HandlerDeployRotaterCsReq.cs" />
-    <Compile Remove="Server\Packet\Send\MapRotation\PacketDeployRotaterScRsp.cs" />
     <Compile Remove="Server\Packet\Recv\Gacha\HandlerSetGachaDecideItemCsReq.cs" />
     <Compile Remove="Server\Packet\Send\Gacha\PacketSetGachaDecideItemScRsp.cs" />
-    <Compile Remove="Server\Packet\Recv\Match\HandlerGetCrossInfoCsReq.cs" />
-    <Compile Remove="Server\Packet\Send\Match\PacketGetCrossInfoScRsp.cs" />
     <Compile Remove="Server\Packet\Recv\Item\HandlerLockEquipmentCsReq.cs" />
     <Compile Remove="Server\Packet\Send\Item\PacketLockEquipmentScRsp.cs" />
-    <Compile Remove="Server\Packet\Recv\Friend\HandlerGetFriendDevelopmentInfoCsReq.cs" />
-    <Compile Remove="Server\Packet\Send\Friend\PacketGetFriendDevelopmentInfoScRsp.cs" />
-    <Compile Remove="Server\Packet\Send\Music\PacketMusicRhythmUnlockSongNotify.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Server\Packet\Send\Chat\" />
-    <Folder Include="Server\Packet\Send\ContentPackage\" />
-    <Folder Include="Server\Packet\Send\JukeBox\" />
-    <Folder Include="Server\Packet\Send\MapRotation\" />
-    <Folder Include="Server\Packet\Send\Message\" />
-    <Folder Include="Server\Packet\Send\Phone\" />
-    <Folder Include="Server\Packet\Send\PlayerBoard\" />
-    <Folder Include="Server\Packet\Send\RollShop\" />
-    <Folder Include="Server\Packet\Send\StoryLine\" />
-    <Folder Include="Server\Packet\Send\PlayerSync\" />
-    <Folder Include="Server\Packet\Send\TalkEvent\" />
   </ItemGroup>
 
 </Project>
-
 

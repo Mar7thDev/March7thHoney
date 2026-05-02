@@ -81,18 +81,6 @@ public class PlayerData : BaseDatabaseDataHelper
         };
     }
 
-    public LobbyPlayerBasicInfo ToLobbyProto()
-    {
-        return new LobbyPlayerBasicInfo
-        {
-            Nickname = Name,
-            Level = (uint)Level,
-            LobbyHeadIconId = (uint)HeadIcon,
-            Platform = PlatformType.Pc,
-            Uid = (uint)Uid
-        };
-    }
-
     public PlayerSimpleInfo ToSimpleProto(FriendOnlineStatus status)
     {
         if (!GameData.ChatBubbleConfigData.ContainsKey(ChatBubble)) // to avoid npe
@@ -107,10 +95,10 @@ public class PlayerData : BaseDatabaseDataHelper
             OnlineStatus = status,
             HeadIcon = (uint)HeadIcon,
             Platform = PlatformType.Pc,
-            LogoutTime = LastActiveTime,
-            ChatBubble = (uint)ChatBubble,
+            LastActiveTime = LastActiveTime,
+            ChatBubbleId = (uint)ChatBubble,
             PersonalCard = (uint)PersonalCard,
-            HeadIconFrameInfo = HeadFrame.ToProto()
+            HeadFrameInfo = HeadFrame.ToProto()
         };
 
         var pos = 0;
@@ -122,7 +110,7 @@ public class PlayerData : BaseDatabaseDataHelper
             if (Uid == serverProfile.Uid)
             {
                 info.OnlineStatus = FriendOnlineStatus.Online;
-                info.AssistInfoList.AddRange(
+                info.AssistSimpleInfoList.AddRange(
                     serverProfile.AssistInfo.Select((x, index) =>
                         new AssistSimpleInfo
                         {
@@ -139,7 +127,7 @@ public class PlayerData : BaseDatabaseDataHelper
         foreach (var avatar in instance.AssistAvatars.Select(
                      assist => instance.FormalAvatars.Find(x => x.AvatarId == assist)))
             if (avatar != null)
-                info.AssistInfoList.Add(new AssistSimpleInfo
+                info.AssistSimpleInfoList.Add(new AssistSimpleInfo
                 {
                     AvatarId = (uint)avatar.AvatarId,
                     Level = (uint)avatar.Level,
@@ -159,14 +147,11 @@ public class PlayerData : BaseDatabaseDataHelper
             Signature = Signature,
             IsBanned = false,
             HeadIcon = (uint)HeadIcon,
-            PersonalCard = (uint)PersonalCard,
             Platform = PlatformType.Pc,
             Uid = (uint)Uid,
             WorldLevel = (uint)WorldLevel,
-            EMOBIJBDKEI = true, // ShowDisplayAvatar
             RecordInfo = new PlayerRecordInfo(),
-            PrivacySettings = PrivacySettings.ToProto(),
-            HeadFrame = HeadFrame.ToProto()
+            HeadFrameInfo = HeadFrame.ToProto()
         };
 
         var avatarInfo = DatabaseHelper.Instance!.GetInstance<AvatarData>(Uid);
@@ -192,14 +177,13 @@ public class PlayerData : BaseDatabaseDataHelper
 
         info.RecordInfo = new PlayerRecordInfo
         {
-            CollectAvatarCount = (uint)avatarInfo.FormalAvatars.Count,
-            CollectEquipmentCount = (uint)inventoryInfo.EquipmentItems.Select(x => x.ItemId).ToHashSet().Count,
-            CollectRelicCount = (uint)inventoryInfo.RelicItems.Count,
-            CollectAchievementCount = (uint)GameData.AchievementDataData.Values.Select(x => x.QuestID).ToHashSet()
+            MMFGIPPNEEF = (uint)avatarInfo.FormalAvatars.Count,
+            LCEEKBAJPHA = (uint)inventoryInfo.EquipmentItems.Select(x => x.ItemId).ToHashSet().Count,
+            KEBOJOIBOKE = (uint)inventoryInfo.RelicItems.Count,
+            LBKCIEBGMAJ = (uint)GameData.AchievementDataData.Values.Select(x => x.QuestID).ToHashSet()
                 .Count(x => questInfo.Quests.GetValueOrDefault(x)?.QuestStatus is QuestStatus.QuestFinish
                     or QuestStatus.QuestClose), // count finished achievements
-            CollectionInfo = new PlayerCollectionInfo(),
-            CollectDiscCount = (uint)GameData.BackGroundMusicData.Count
+            GPJGLLANPIF = (uint)GameData.BackGroundMusicData.Count
         };
 
         var pos = 0;
@@ -237,7 +221,7 @@ public class PlayerHeadFrameInfo
         return new HeadFrameInfo
         {
             HeadFrameExpireTime = HeadFrameExpireTime,
-            HeadFrameId = HeadFrameId
+            HeadFrameItemId = HeadFrameId
         };
     }
 }
@@ -250,28 +234,15 @@ public class PrivacySettingsPb
     public bool DisplayBattleRecord { get; set; } = true;
     public bool DisplayCollection { get; set; } = true;
 
-    public PrivacySettings ToProto()
-    {
-        return new PrivacySettings
-        {
-            DisplayChallengeLineup = DisplayChallengeLineup,
-            DisplayActiveState = DisplayActiveState,
-            DisplayRecentlyState = DisplayRecentlyState,
-            DisplayBattleRecord = DisplayBattleRecord,
-            DisplayCollection = DisplayCollection
-        };
-    }
-
     public PlayerSettingInfo ToSettingProto()
     {
         return new PlayerSettingInfo
         {
-            DisplayChallengeLineup = DisplayChallengeLineup,
-            DisplayActiveState = DisplayActiveState,
-            DisplayRecentlyState = DisplayRecentlyState,
-            DisplayBattleRecord = DisplayBattleRecord,
-            DisplayCollection = DisplayCollection,
-            ExtraSettingsInfo = new PlayerExtraSettingsInfo()
+            COIGOCJHBOP = DisplayChallengeLineup,
+            CHCNEDNCIDJ = DisplayActiveState,
+            LPEPIDNJDEM = DisplayRecentlyState,
+            BKDCFBDMNIJ = DisplayBattleRecord,
+            PFJMEECGJMM = DisplayCollection
         };
     }
 }
