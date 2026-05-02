@@ -166,7 +166,7 @@ public class ServerInfoTextEN
     public string LoadedItem => "Loaded {0}.";
     public string LoadedItems => "Loaded {0} {1}.";
     public string ServerRunning => "{0} server is listening on {1}";
-    public string ServerStarted => "Startup complete! Took {0}s, beating 99% of users. Type 'help' for command help."; // Localized the joke for English version
+    public string ServerStarted => "Startup complete! Took {0}s, Type 'help' for command help."; 
     public string MissionEnabled => "Mission system enabled. This feature is still under development and may not work as expected. If you encounter any bugs, please report them to the developers.";
     public string CacheLoadSkip => "Cache loading skipped.";
 

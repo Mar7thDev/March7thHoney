@@ -5,7 +5,7 @@ using March7thHoney.Util;
 
 namespace March7thHoney.Kcp;
 
-public class DanhengConnection
+public class March7thHoneyConnection
 {
     public const int HANDSHAKE_SIZE = 20;
     public static readonly ConcurrentBag<int> BannedPackets = [];
@@ -26,7 +26,7 @@ public class DanhengConnection
     public bool IsOnline = true;
     public StreamWriter? Writer;
 
-    public DanhengConnection(KcpConversation conversation, IPEndPoint remote)
+    public March7thHoneyConnection(KcpConversation conversation, IPEndPoint remote)
     {
         Conversation = conversation;
         RemoteEndPoint = remote;

@@ -47,12 +47,12 @@ public class MuipServerRoutes
 
 
     [HttpGet("/server/type")]
-    public IActionResult CastoriceHoneyVerify()
+    public IActionResult March7thHoneyVerify()
     {
         return new ContentResult
         {
             Content =
-                "{\"serverType\": \"CastoriceHoneyServer\"}",
+                "{\"serverType\": \"March7thHoneyServer\"}",
             ContentType = "application/json"
         };
     }

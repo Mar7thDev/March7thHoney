@@ -72,7 +72,8 @@
       "EnableGamePacketLog": true,
       "LogPacketToConsole": true,
       "DisableLogDetailPacket": false,
-      "SavePersonalDebugFile": false
+      "SavePersonalDebugFile": false,
+      "LogResourceCacheLoading": false
     },
     "ServerConfig": {
       "RunDispatch": true,
@@ -84,6 +85,6 @@
     "UseCache": true
   },
   "MuipServer": {
-    "AdminKey": "d9ec7c53-4ddf-4336-b5c8-7bba8c1ba071"
+    "AdminKey": "4d7dcb5a-2bbb-40e2-a426-ce205228f97a"
   }
 }

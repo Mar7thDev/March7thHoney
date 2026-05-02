@@ -2,7 +2,7 @@ using March7thHoney.Kcp;
 
 namespace March7thHoney.GameServer.Server;
 
-public class Listener : DanhengListener
+public class Listener : March7thHoneyListener
 {
     public static Connection? GetActiveConnection(int uid)
     {

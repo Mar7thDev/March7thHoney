@@ -2,6 +2,7 @@ using System.IO.Compression;
 using System.IO.MemoryMappedFiles;
 using System.Reflection;
 using System.Text;
+using System.Collections;
 using March7thHoney.Data.Config.Scene;
 using March7thHoney.Internationalization;
 using March7thHoney.Util;
@@ -100,7 +101,7 @@ public class ResourceCache
         }
     };
 
-    public static Logger Logger { get; } = new("ResourceCache");
+    public static Logger Logger { get; } = new("ResCache");
     public static string CachePath { get; } = ConfigManager.Config.Path.ConfigPath + "/Resource.cache";
     public static bool IsComplete { get; set; } = true; // Custom in errors to ignore some error
 
@@ -144,14 +145,20 @@ public class ResourceCache
             {
                 try
                 {
-                    Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem",
-                        $"{prop.DeclaringType?.Name}.{prop.Name}"));
-                    if (cacheData.GameDataValues.TryGetValue(prop.Name, out var valueBytes))
-                        prop.SetValue(null, JsonConvert.DeserializeObject(
-                                Encoding.UTF8.GetString(
-                                    CompressionHelper.Decompress(valueBytes)), prop.PropertyType, Serializer
-                            )
-                        );
+                    if (ConfigManager.Config.ServerOption.LogOption.LogResourceCacheLoading)
+                    {
+                        Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem",
+                            $"{prop.DeclaringType?.Name}.{prop.Name}"));
+                    }
+                    if (!cacheData.GameDataValues.TryGetValue(prop.Name, out var valueBytes)) return;
+
+                    var deserialized = JsonConvert.DeserializeObject(
+                        Encoding.UTF8.GetString(CompressionHelper.Decompress(valueBytes)),
+                        prop.PropertyType,
+                        Serializer
+                    );
+
+                    ApplyCachedValue(prop, deserialized);
                 }
                 catch (Exception e)
                 {
@@ -166,6 +173,38 @@ public class ResourceCache
             I18NManager.Translate("Word.Cache")));
 
         return true;
+    }
+
+    private static void ApplyCachedValue(PropertyInfo prop, object? deserialized)
+    {
+        if (prop.CanWrite)
+        {
+            prop.SetValue(null, deserialized);
+            return;
+        }
+
+        var current = prop.GetValue(null);
+        if (current == null || deserialized == null) return;
+
+        if (current is IDictionary currentDict && deserialized is IDictionary sourceDict)
+        {
+            currentDict.Clear();
+            foreach (DictionaryEntry entry in sourceDict)
+            {
+                currentDict[entry.Key] = entry.Value;
+            }
+
+            return;
+        }
+
+        if (current is IList currentList && deserialized is IList sourceList)
+        {
+            currentList.Clear();
+            foreach (var item in sourceList)
+            {
+                currentList.Add(item);
+            }
+        }
     }
 
     public static void ClearGameData()

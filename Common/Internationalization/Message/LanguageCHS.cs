@@ -166,7 +166,7 @@ public class ServerInfoTextCHS
     public string LoadedItem => "已加载 {0}。";
     public string LoadedItems => "已加载 {0} 个 {1}。";
     public string ServerRunning => "{0} 服务器正在监听 {1}";
-    public string ServerStarted => "启动完成！用时 {0}s，击败了99%的用户，输入 ‘help’ 来获取命令帮助"; // 玩梗，考虑英语版本将其本土化
+    public string ServerStarted => "启动完成！用时 {0}s，输入 ‘help’ 来获取命令帮助"; 
     public string MissionEnabled => "任务系统已启用，此功能仍在开发中，且可能不会按预期工作，如果遇见任何bug，请汇报给开发者。";
     public string CacheLoadSkip => "已跳过缓存加载。";
 
