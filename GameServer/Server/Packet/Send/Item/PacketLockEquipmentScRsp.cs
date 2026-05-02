@@ -7,7 +7,7 @@ public class PacketLockEquipmentScRsp : BasePacket
 {
     public PacketLockEquipmentScRsp(bool success) : base(CmdIds.LockEquipmentScRsp)
     {
-        LockRelicScRsp proto = new();
+        LockEquipmentScRsp proto = new();
 
         if (!success) proto.Retcode = (uint)Retcode.RetFail;
 
