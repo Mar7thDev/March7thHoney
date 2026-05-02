@@ -172,10 +172,10 @@ public class EntryPoint
         if (ConfigManager.Config.ServerOption.ServerConfig.RunGateway)
         {
             var handler =
-                new DanhengListener.ConnectionCreatedHandler((conversation, remote) =>
+                new March7thHoneyListener.ConnectionCreatedHandler((conversation, remote) =>
                     new Connection(conversation, remote));
-            DanhengListener.CreateConnection = handler;
-            DanhengListener.StartListener();
+            March7thHoneyListener.CreateConnection = handler;
+            March7thHoneyListener.StartListener();
         }
 
         GenerateLogMap();
@@ -271,14 +271,14 @@ public class EntryPoint
         MuipManager.OnExecuteCommand += CommandManager.HandleCommand;
         MuipManager.OnGetServerInformation += x =>
         {
-            foreach (var con in DanhengListener.Connections.Values)
+            foreach (var con in March7thHoneyListener.Connections.Values)
                 if ((con as Connection)?.Player != null)
                     x.Add((con as Connection)!.Player!.Uid, (con as Connection)!.Player!.Data);
         };
         MuipManager.OnGetPlayerStatus += (int uid, out PlayerStatusEnum status, out PlayerSubStatusEnum subStatus) =>
         {
             subStatus = PlayerSubStatusEnum.None;
-            foreach (var con in DanhengListener.Connections.Values)
+            foreach (var con in March7thHoneyListener.Connections.Values)
                 if ((con as Connection)!.Player != null && (con as Connection)!.Player!.Uid == uid)
                 {
                     if ((con as Connection)!.Player!.ChallengeManager?.ChallengeInstance is
@@ -425,7 +425,7 @@ public class EntryPoint
     private static void PerformCleanup()
     {
         PluginManager.UnloadPlugins();
-        DanhengListener.Connections.Values.ToList().ForEach(x => x.Stop());
+        March7thHoneyListener.Connections.Values.ToList().ForEach(x => x.Stop());
 
         DatabaseHelper.SaveThread?.Interrupt();
         DatabaseHelper.SaveDatabase();
@@ -439,7 +439,7 @@ public class EntryPoint
         {
             var name = opcode.Name;
             var value = (int)opcode.GetValue(null)!;
-            DanhengConnection.LogMap.TryAdd(value, name);
+            March7thHoneyConnection.LogMap.TryAdd(value, name);
         }
     }
 }

@@ -89,7 +89,7 @@ public class ServerOption
     public LogOption LogOption { get; set; } = new();
     public ServerConfig ServerConfig { get; set; } = new();
     public int FarmingDropRate { get; set; } = 1;
-    public bool UseCache { get; set; } = false; // didnt recommend
+    public bool UseCache { get; set; } = true; 
 
     public int ValidFarmingDropRate()
     {
@@ -123,6 +123,7 @@ public class LogOption
     public bool LogPacketToConsole { get; set; } = true;
     public bool DisableLogDetailPacket { get; set; } = false;
     public bool SavePersonalDebugFile { get; set; } = false;
+    public bool LogResourceCacheLoading { get; set; } = true;
 }
 
 public class ServerAnnounce

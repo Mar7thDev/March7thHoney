@@ -6,15 +6,15 @@ using March7thHoney.Util;
 
 namespace March7thHoney.Kcp;
 
-public class DanhengListener
+public class March7thHoneyListener
 {
-    public delegate DanhengConnection ConnectionCreatedHandler(KcpConversation conversation, IPEndPoint remote);
+    public delegate March7thHoneyConnection ConnectionCreatedHandler(KcpConversation conversation, IPEndPoint remote);
 
     private static UdpClient? UDPClient;
     private static IPEndPoint? ListenAddress;
     private static IKcpTransport<IKcpMultiplexConnection>? KCPTransport;
     private static readonly Logger Logger = new("GameServer");
-    public static readonly SortedList<long, DanhengConnection> Connections = [];
+    public static readonly SortedList<long, March7thHoneyConnection> Connections = [];
 
     private static readonly KcpConversationOptions ConvOpt = new()
     {
@@ -33,7 +33,7 @@ public class DanhengListener
     private static IKcpMultiplexConnection? Multiplex => KCPTransport?.Connection;
     private static uint PORT => ConfigManager.Config.GameServer.Port;
 
-    public static DanhengConnection? GetConnectionByEndPoint(IPEndPoint ep)
+    public static March7thHoneyConnection? GetConnectionByEndPoint(IPEndPoint ep)
     {
         return Connections.Values.FirstOrDefault(c => c.RemoteEndPoint.Equals(ep));
     }
@@ -49,13 +49,13 @@ public class DanhengListener
             ConfigManager.Config.GameServer.GetDisplayAddress()));
     }
 
-    private static void RegisterConnection(DanhengConnection con)
+    private static void RegisterConnection(March7thHoneyConnection con)
     {
         if (!con.ConversationId.HasValue) return;
         Connections[con.ConversationId.Value] = con;
     }
 
-    public static void UnregisterConnection(DanhengConnection con)
+    public static void UnregisterConnection(March7thHoneyConnection con)
     {
         if (!con.ConversationId.HasValue) return;
         var convId = con.ConversationId.Value;
@@ -128,7 +128,7 @@ public class DanhengListener
         await SendHandshakeResponse(con, enet);
     }
 
-    private static async Task SendHandshakeResponse(DanhengConnection user, int enet)
+    private static async Task SendHandshakeResponse(March7thHoneyConnection user, int enet)
     {
         if (user == null || UDPClient == null || !user.ConversationId.HasValue) return;
         var convId = user.ConversationId.Value;
@@ -142,7 +142,7 @@ public class DanhengListener
         await UDPClient.SendAsync(data, data.Length, user.RemoteEndPoint);
     }
 
-    public static async Task SendDisconnectPacket(DanhengConnection user, int code)
+    public static async Task SendDisconnectPacket(March7thHoneyConnection user, int code)
     {
         if (user == null || UDPClient == null || !user.ConversationId.HasValue) return;
         var convId = user.ConversationId.Value;

@@ -122,8 +122,8 @@ public abstract class KcpSocketTransport<T> : IKcpTransport, IDisposable where T
 
                 if (bytesReceived != 0 && bytesReceived <= _mtu)
                 {
-                    if (bytesReceived == DanhengConnection.HANDSHAKE_SIZE)
-                        await DanhengListener.HandleHandshake(result);
+                    if (bytesReceived == March7thHoneyConnection.HANDSHAKE_SIZE)
+                        await March7thHoneyListener.HandleHandshake(result);
                     else if (!error)
                         await connection.InputPakcetAsync(result, cancellationToken).ConfigureAwait(false);
                 }

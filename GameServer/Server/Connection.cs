@@ -14,7 +14,7 @@ using Google.Protobuf.Reflection;
 
 namespace March7thHoney.GameServer.Server;
 
-public class Connection(KcpConversation conversation, IPEndPoint remote) : DanhengConnection(conversation, remote)
+public class Connection(KcpConversation conversation, IPEndPoint remote) : March7thHoneyConnection(conversation, remote)
 {
     private static readonly Logger Logger = new("GameServer");
 
@@ -39,7 +39,7 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : Danhe
     public override void Stop()
     {
         Player?.OnLogoutAsync();
-        DanhengListener.UnregisterConnection(this);
+        March7thHoneyListener.UnregisterConnection(this);
         base.Stop();
     }
 
