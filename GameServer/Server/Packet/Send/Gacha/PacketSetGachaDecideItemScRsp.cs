@@ -11,7 +11,7 @@ public class PacketSetGachaDecideItemScRsp : BasePacket
         {
             LECPJJAMNPF = new OEIEJHBCOOM
             {
-                KIFIEAKAJCK = gachaId,
+                PAPOKACIPPJ = gachaId,
                 DGOMHDMJHEK = { order },
                 MBOEFLAHLEM = 1
             }

@@ -34,11 +34,6 @@
     <Compile Remove="Server\Packet\Send\ChallengePeak\**\*.cs" />
     <Compile Remove="Server\Packet\Recv\ChallengePeak\**\*.cs" />
     <Compile Remove="Game\Challenge\Instances\ChallengePeakInstance.cs" />
-    <Compile Remove="Server\Packet\Recv\Gacha\HandlerSetGachaDecideItemCsReq.cs" />
-    <Compile Remove="Server\Packet\Send\Gacha\PacketSetGachaDecideItemScRsp.cs" />
-    <Compile Remove="Server\Packet\Recv\Item\HandlerLockEquipmentCsReq.cs" />
-    <Compile Remove="Server\Packet\Send\Item\PacketLockEquipmentScRsp.cs" />
   </ItemGroup>
 
 </Project>
-
