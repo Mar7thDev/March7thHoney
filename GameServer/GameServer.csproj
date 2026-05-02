@@ -9,11 +9,11 @@
     <StartupObject></StartupObject>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <AssemblyName>March7thHoney.GameServer</AssemblyName>
-    <ApplicationIcon>CastoriceHoney.ico</ApplicationIcon>
+    <ApplicationIcon>March7thHoney.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-	  <Content Include="CastoriceHoney.ico" />
+	  <Content Include="March7thHoney.ico" />
   </ItemGroup>
 
   <ItemGroup>

@@ -8,6 +8,7 @@ public enum GridFightEquipFuncTypeEnum
     Leader = 3,
     CraftableThiefGlove = 5,
     RadiantThiefGlove = 6,
+    AddTraitLayer = 7,
     OriginEmblem = 10,
     ClassEmblem = 11
 }

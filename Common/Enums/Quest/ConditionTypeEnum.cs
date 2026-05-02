@@ -29,5 +29,6 @@ public enum ConditionTypeEnum
     ElfProgressDay = 25,
     HeroRoomOpen = 26,
     ActivityInTimeLimit = 27,
-    ActivityInSchedule = 28
+    ActivityInSchedule = 28,
+    OfferingLevel = 29
 }

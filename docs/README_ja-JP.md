@@ -34,8 +34,8 @@
 
 ### クイックスタート
 
-1. [Action](https://github.com/StopWuyu/CastoriceHoney/actions) で実行可能ファイルをダウンロードする
-2. ダウンロードが完了した` CastoriceHoney.zip `を開いて任意のフォルダに解凍します __*英文パスが望ましい*__
+1. [Action](https://github.com/StopWuyu/March7thHoney/actions) で実行可能ファイルをダウンロードする
+2. ダウンロードが完了した` March7thHoney.zip `を開いて任意のフォルダに解凍します __*英文パスが望ましい*__
 
 > (オプション) ソースコードのWebServerフォルダに` certificate.p 12 `をダウンロードすることで、HTTPSモードで起動して転送をより安全にすることができます: )
 
@@ -54,8 +54,8 @@ Danhengserver Dotnetを使用した構築
 ##### Windows
 
 ```shell
-git clone --recurse-submodules https://github.com/StopWuyu/CastoriceHoney.git
-cd CastoriceHoney
+git clone --recurse-submodules https://github.com/StopWuyu/March7thHoney.git
+cd March7thHoney
 .\dotnet build # コンパイル
 ```
 
@@ -74,8 +74,8 @@ sudo apt-get update && \
 
 - 環境をコンパイルして実行する
 ```shell
-git clone --recurse-submodules https://github.com/StopWuyu/CastoriceHoney.git
-cd CastoriceHoney
+git clone --recurse-submodules https://github.com/StopWuyu/March7thHoney.git
+cd March7thHoney
 .\dotnet build # コンパイル
 ./Gameserver
 ```

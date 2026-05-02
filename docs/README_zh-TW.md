@@ -34,8 +34,8 @@
 
 ### 快速啟動
 
-1. 在 [Action](https://github.com/StopWuyu/CastoriceHoney/actions) 下載可執行文件
-2. 打開下載完成的 `CastoriceHoney.zip` 解解壓至任意資料夹 __*最好是英文路徑*__
+1. 在 [Action](https://github.com/StopWuyu/March7thHoney/actions) 下載可執行文件
+2. 打開下載完成的 `March7thHoney.zip` 解解壓至任意資料夹 __*最好是英文路徑*__
 
 > (可選) 在原始碼的WebServer資料夾中下載 `certificate.p12` 使其以HTTPS模式啟動 讓你的傳輸更加安全: )
 
@@ -44,7 +44,7 @@
 
 ### 構建
 
-CastoriceHoney 使用 .NET Framework 構建
+March7thHoney 使用 .NET Framework 構建
 
 **前置：**
 
@@ -54,8 +54,8 @@ CastoriceHoney 使用 .NET Framework 構建
 ##### Windows
 
 ```shell
-git clone --recurse-submodules https://github.com/EggLinks/CastoriceHoney.git
-cd CastoriceHoney
+git clone --recurse-submodules https://github.com/EggLinks/March7thHoney.git
+cd March7thHoney
 .\dotnet build # 編譯
 ```
 ##### Linux （Ubuntu 20.04）
@@ -72,8 +72,8 @@ sudo apt-get update && \
 
 - 編譯並運行環境
 ```shell
-git clone --recurse-submodules https://github.com/EggLinks/CastoriceHoney.git
-cd CastoriceHoney
+git clone --recurse-submodules https://github.com/EggLinks/March7thHoney.git
+cd March7thHoney
 .\dotnet build # 編譯
 ./Gameserver
 ```
