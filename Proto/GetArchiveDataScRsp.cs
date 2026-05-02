@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GetArchiveDataScRsp.proto</summary>
   public static partial class GetArchiveDataScRspReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "Y29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJv",
             "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ArchiveDataReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ArchiveDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GetArchiveDataScRsp), global::CastoriceHoney.Server.Proto.GetArchiveDataScRsp.Parser, new[]{ "Retcode", "ArchiveData" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetArchiveDataScRsp), global::March7thHoney.Proto.GetArchiveDataScRsp.Parser, new[]{ "Retcode", "ArchiveData" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GetArchiveDataScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GetArchiveDataScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -99,10 +99,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "archive_data" field.</summary>
     public const int ArchiveDataFieldNumber = 12;
-    private global::CastoriceHoney.Server.Proto.ArchiveData archiveData_;
+    private global::March7thHoney.Proto.ArchiveData archiveData_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ArchiveData ArchiveData {
+    public global::March7thHoney.Proto.ArchiveData ArchiveData {
       get { return archiveData_; }
       set {
         archiveData_ = value;
@@ -212,7 +212,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.archiveData_ != null) {
         if (archiveData_ == null) {
-          ArchiveData = new global::CastoriceHoney.Server.Proto.ArchiveData();
+          ArchiveData = new global::March7thHoney.Proto.ArchiveData();
         }
         ArchiveData.MergeFrom(other.ArchiveData);
       }
@@ -241,7 +241,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 98: {
             if (archiveData_ == null) {
-              ArchiveData = new global::CastoriceHoney.Server.Proto.ArchiveData();
+              ArchiveData = new global::March7thHoney.Proto.ArchiveData();
             }
             input.ReadMessage(ArchiveData);
             break;
@@ -271,7 +271,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 98: {
             if (archiveData_ == null) {
-              ArchiveData = new global::CastoriceHoney.Server.Proto.ArchiveData();
+              ArchiveData = new global::March7thHoney.Proto.ArchiveData();
             }
             input.ReadMessage(ArchiveData);
             break;

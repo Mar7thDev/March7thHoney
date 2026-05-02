@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Kcp;
+namespace March7thHoney.Kcp;
 
 public enum SessionStateEnum
 {

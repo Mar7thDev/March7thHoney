@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 using SqlSugar;
 
-namespace CastoriceHoney.Server.Database.Friend;
+namespace March7thHoney.Database.Friend;
 
 [SugarTable("friend_record_data")]
 public class FriendRecordData : BaseDatabaseDataHelper

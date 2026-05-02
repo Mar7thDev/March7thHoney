@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Enums.Rogue;
+using March7thHoney.Enums.Rogue;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace CastoriceHoney.Server.Data.Config;
+namespace March7thHoney.Data.Config;
 
 /// <summary>
 ///     Orginal Name: RogueChestMapConfig

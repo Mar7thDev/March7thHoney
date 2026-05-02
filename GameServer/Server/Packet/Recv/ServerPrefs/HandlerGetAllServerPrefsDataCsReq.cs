@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.ServerPrefs;
-using CastoriceHoney.Server.Kcp;
+using March7thHoney.GameServer.Server.Packet.Send.ServerPrefs;
+using March7thHoney.Kcp;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.ServerPrefs;
+namespace March7thHoney.GameServer.Server.Packet.Recv.ServerPrefs;
 
 [Opcode(CmdIds.GetAllServerPrefsDataCsReq)]
 public class HandlerGetAllServerPrefsDataCsReq : Handler

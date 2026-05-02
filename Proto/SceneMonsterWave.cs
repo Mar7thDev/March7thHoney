@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from SceneMonsterWave.proto</summary>
   public static partial class SceneMonsterWaveReflection {
@@ -33,9 +33,9 @@ namespace CastoriceHoney.Server.Proto {
             "DiABKA1CMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5",
             "LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ItemListReflection.Descriptor, global::CastoriceHoney.Server.Proto.SceneMonsterReflection.Descriptor, global::CastoriceHoney.Server.Proto.SceneMonsterWaveParamReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemListReflection.Descriptor, global::March7thHoney.Proto.SceneMonsterReflection.Descriptor, global::March7thHoney.Proto.SceneMonsterWaveParamReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.SceneMonsterWave), global::CastoriceHoney.Server.Proto.SceneMonsterWave.Parser, new[]{ "BattleStageId", "MonsterList", "PIBLJLBCKJL", "MonsterParam", "BattleWaveId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneMonsterWave), global::March7thHoney.Proto.SceneMonsterWave.Parser, new[]{ "BattleStageId", "MonsterList", "PIBLJLBCKJL", "MonsterParam", "BattleWaveId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -57,7 +57,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.SceneMonsterWaveReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.SceneMonsterWaveReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -105,32 +105,32 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "monster_list" field.</summary>
     public const int MonsterListFieldNumber = 6;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.SceneMonster> _repeated_monsterList_codec
-        = pb::FieldCodec.ForMessage(50, global::CastoriceHoney.Server.Proto.SceneMonster.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.SceneMonster> monsterList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.SceneMonster>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.SceneMonster> _repeated_monsterList_codec
+        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.SceneMonster.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.SceneMonster> monsterList_ = new pbc::RepeatedField<global::March7thHoney.Proto.SceneMonster>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.SceneMonster> MonsterList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.SceneMonster> MonsterList {
       get { return monsterList_; }
     }
 
     /// <summary>Field number for the "PIBLJLBCKJL" field.</summary>
     public const int PIBLJLBCKJLFieldNumber = 9;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ItemList> _repeated_pIBLJLBCKJL_codec
-        = pb::FieldCodec.ForMessage(74, global::CastoriceHoney.Server.Proto.ItemList.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ItemList> pIBLJLBCKJL_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ItemList>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ItemList> _repeated_pIBLJLBCKJL_codec
+        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.ItemList.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ItemList> pIBLJLBCKJL_ = new pbc::RepeatedField<global::March7thHoney.Proto.ItemList>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ItemList> PIBLJLBCKJL {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ItemList> PIBLJLBCKJL {
       get { return pIBLJLBCKJL_; }
     }
 
     /// <summary>Field number for the "monster_param" field.</summary>
     public const int MonsterParamFieldNumber = 12;
-    private global::CastoriceHoney.Server.Proto.SceneMonsterWaveParam monsterParam_;
+    private global::March7thHoney.Proto.SceneMonsterWaveParam monsterParam_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.SceneMonsterWaveParam MonsterParam {
+    public global::March7thHoney.Proto.SceneMonsterWaveParam MonsterParam {
       get { return monsterParam_; }
       set {
         monsterParam_ = value;
@@ -277,7 +277,7 @@ namespace CastoriceHoney.Server.Proto {
       pIBLJLBCKJL_.Add(other.pIBLJLBCKJL_);
       if (other.monsterParam_ != null) {
         if (monsterParam_ == null) {
-          MonsterParam = new global::CastoriceHoney.Server.Proto.SceneMonsterWaveParam();
+          MonsterParam = new global::March7thHoney.Proto.SceneMonsterWaveParam();
         }
         MonsterParam.MergeFrom(other.MonsterParam);
       }
@@ -317,7 +317,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 98: {
             if (monsterParam_ == null) {
-              MonsterParam = new global::CastoriceHoney.Server.Proto.SceneMonsterWaveParam();
+              MonsterParam = new global::March7thHoney.Proto.SceneMonsterWaveParam();
             }
             input.ReadMessage(MonsterParam);
             break;
@@ -359,7 +359,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 98: {
             if (monsterParam_ == null) {
-              MonsterParam = new global::CastoriceHoney.Server.Proto.SceneMonsterWaveParam();
+              MonsterParam = new global::March7thHoney.Proto.SceneMonsterWaveParam();
             }
             input.ReadMessage(MonsterParam);
             break;

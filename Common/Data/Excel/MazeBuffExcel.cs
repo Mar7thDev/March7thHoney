@@ -1,6 +1,6 @@
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("MazeBuff.json,AvatarMazeBuff.json,AvatarMazeBuffLD.json", true)]
 public class MazeBuffExcel : ExcelResource

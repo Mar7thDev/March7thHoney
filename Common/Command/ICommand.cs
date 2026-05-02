@@ -1,3 +1,3 @@
-namespace CastoriceHoney.Server.Command;
+namespace March7thHoney.Command;
 
 public interface ICommand;

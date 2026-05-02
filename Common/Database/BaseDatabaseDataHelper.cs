@@ -1,6 +1,6 @@
 using SqlSugar;
 
-namespace CastoriceHoney.Server.Database;
+namespace March7thHoney.Database;
 
 public abstract class BaseDatabaseDataHelper
 {

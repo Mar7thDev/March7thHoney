@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from OMMELGEBNOG.proto</summary>
   public static partial class OMMELGEBNOGReflection {
@@ -55,9 +55,9 @@ namespace CastoriceHoney.Server.Proto {
             "QjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2",
             "ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.BBBJMJJOJDPReflection.Descriptor, global::CastoriceHoney.Server.Proto.BBIINELNDKHReflection.Descriptor, global::CastoriceHoney.Server.Proto.BCMKANNIKDPReflection.Descriptor, global::CastoriceHoney.Server.Proto.CAHPBBLMDCJReflection.Descriptor, global::CastoriceHoney.Server.Proto.CEOELEOKPOFReflection.Descriptor, global::CastoriceHoney.Server.Proto.CKHFNKJNMLOReflection.Descriptor, global::CastoriceHoney.Server.Proto.CNEMCBJHACKReflection.Descriptor, global::CastoriceHoney.Server.Proto.FEBMHKKEHDGReflection.Descriptor, global::CastoriceHoney.Server.Proto.FJJNFNALLGAReflection.Descriptor, global::CastoriceHoney.Server.Proto.FLOEMBHNEPPReflection.Descriptor, global::CastoriceHoney.Server.Proto.GNJBMILMKMBReflection.Descriptor, global::CastoriceHoney.Server.Proto.GODMJGAGNPAReflection.Descriptor, global::CastoriceHoney.Server.Proto.HLNCNCNJGDLReflection.Descriptor, global::CastoriceHoney.Server.Proto.IHBGAHNNEKIReflection.Descriptor, global::CastoriceHoney.Server.Proto.JFIAMODBOIJReflection.Descriptor, global::CastoriceHoney.Server.Proto.OMBGOODFIHBReflection.Descriptor, global::CastoriceHoney.Server.Proto.PLECMCJNPILReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.BBBJMJJOJDPReflection.Descriptor, global::March7thHoney.Proto.BBIINELNDKHReflection.Descriptor, global::March7thHoney.Proto.BCMKANNIKDPReflection.Descriptor, global::March7thHoney.Proto.CAHPBBLMDCJReflection.Descriptor, global::March7thHoney.Proto.CEOELEOKPOFReflection.Descriptor, global::March7thHoney.Proto.CKHFNKJNMLOReflection.Descriptor, global::March7thHoney.Proto.CNEMCBJHACKReflection.Descriptor, global::March7thHoney.Proto.FEBMHKKEHDGReflection.Descriptor, global::March7thHoney.Proto.FJJNFNALLGAReflection.Descriptor, global::March7thHoney.Proto.FLOEMBHNEPPReflection.Descriptor, global::March7thHoney.Proto.GNJBMILMKMBReflection.Descriptor, global::March7thHoney.Proto.GODMJGAGNPAReflection.Descriptor, global::March7thHoney.Proto.HLNCNCNJGDLReflection.Descriptor, global::March7thHoney.Proto.IHBGAHNNEKIReflection.Descriptor, global::March7thHoney.Proto.JFIAMODBOIJReflection.Descriptor, global::March7thHoney.Proto.OMBGOODFIHBReflection.Descriptor, global::March7thHoney.Proto.PLECMCJNPILReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.OMMELGEBNOG), global::CastoriceHoney.Server.Proto.OMMELGEBNOG.Parser, new[]{ "QueuePosition", "CHNHLKKKJHA", "MarbleGameBegin", "MarbleGameEnd", "MarbleGameRound", "MarbleGameTurn", "CakeRaceSectionBegin", "CakeRaceSectionEnd", "CakeRaceRoomSectionSettle", "DiceCombatBegin", "DiceCombatTurnEnd", "DiceCombatEnd", "DiceCombatV2Begin", "DiceCombatV2End", "DiceCombatV2TurnEnd", "DiceCombatV2TacticsPointChange", "DiceCombatV2TacticsCardChange", "DiceCombatV2DiceChangeRequest", "DiceCombatV2DiceChange" }, new[]{ "GBFCMPACOPJ" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.OMMELGEBNOG), global::March7thHoney.Proto.OMMELGEBNOG.Parser, new[]{ "QueuePosition", "CHNHLKKKJHA", "MarbleGameBegin", "MarbleGameEnd", "MarbleGameRound", "MarbleGameTurn", "CakeRaceSectionBegin", "CakeRaceSectionEnd", "CakeRaceRoomSectionSettle", "DiceCombatBegin", "DiceCombatTurnEnd", "DiceCombatEnd", "DiceCombatV2Begin", "DiceCombatV2End", "DiceCombatV2TurnEnd", "DiceCombatV2TacticsPointChange", "DiceCombatV2TacticsCardChange", "DiceCombatV2DiceChangeRequest", "DiceCombatV2DiceChange" }, new[]{ "GBFCMPACOPJ" }, null, null, null)
           }));
     }
     #endregion
@@ -79,7 +79,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.OMMELGEBNOGReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.OMMELGEBNOGReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -192,8 +192,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int MarbleGameBeginFieldNumber = 101;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.HLNCNCNJGDL MarbleGameBegin {
-      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.MarbleGameBegin ? (global::CastoriceHoney.Server.Proto.HLNCNCNJGDL) gBFCMPACOPJ_ : null; }
+    public global::March7thHoney.Proto.HLNCNCNJGDL MarbleGameBegin {
+      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.MarbleGameBegin ? (global::March7thHoney.Proto.HLNCNCNJGDL) gBFCMPACOPJ_ : null; }
       set {
         gBFCMPACOPJ_ = value;
         gBFCMPACOPJCase_ = value == null ? GBFCMPACOPJOneofCase.None : GBFCMPACOPJOneofCase.MarbleGameBegin;
@@ -204,8 +204,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int MarbleGameEndFieldNumber = 102;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GNJBMILMKMB MarbleGameEnd {
-      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.MarbleGameEnd ? (global::CastoriceHoney.Server.Proto.GNJBMILMKMB) gBFCMPACOPJ_ : null; }
+    public global::March7thHoney.Proto.GNJBMILMKMB MarbleGameEnd {
+      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.MarbleGameEnd ? (global::March7thHoney.Proto.GNJBMILMKMB) gBFCMPACOPJ_ : null; }
       set {
         gBFCMPACOPJ_ = value;
         gBFCMPACOPJCase_ = value == null ? GBFCMPACOPJOneofCase.None : GBFCMPACOPJOneofCase.MarbleGameEnd;
@@ -216,8 +216,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int MarbleGameRoundFieldNumber = 103;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.CNEMCBJHACK MarbleGameRound {
-      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.MarbleGameRound ? (global::CastoriceHoney.Server.Proto.CNEMCBJHACK) gBFCMPACOPJ_ : null; }
+    public global::March7thHoney.Proto.CNEMCBJHACK MarbleGameRound {
+      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.MarbleGameRound ? (global::March7thHoney.Proto.CNEMCBJHACK) gBFCMPACOPJ_ : null; }
       set {
         gBFCMPACOPJ_ = value;
         gBFCMPACOPJCase_ = value == null ? GBFCMPACOPJOneofCase.None : GBFCMPACOPJOneofCase.MarbleGameRound;
@@ -228,8 +228,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int MarbleGameTurnFieldNumber = 104;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.BBIINELNDKH MarbleGameTurn {
-      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.MarbleGameTurn ? (global::CastoriceHoney.Server.Proto.BBIINELNDKH) gBFCMPACOPJ_ : null; }
+    public global::March7thHoney.Proto.BBIINELNDKH MarbleGameTurn {
+      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.MarbleGameTurn ? (global::March7thHoney.Proto.BBIINELNDKH) gBFCMPACOPJ_ : null; }
       set {
         gBFCMPACOPJ_ = value;
         gBFCMPACOPJCase_ = value == null ? GBFCMPACOPJOneofCase.None : GBFCMPACOPJOneofCase.MarbleGameTurn;
@@ -240,8 +240,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int CakeRaceSectionBeginFieldNumber = 201;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.FJJNFNALLGA CakeRaceSectionBegin {
-      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.CakeRaceSectionBegin ? (global::CastoriceHoney.Server.Proto.FJJNFNALLGA) gBFCMPACOPJ_ : null; }
+    public global::March7thHoney.Proto.FJJNFNALLGA CakeRaceSectionBegin {
+      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.CakeRaceSectionBegin ? (global::March7thHoney.Proto.FJJNFNALLGA) gBFCMPACOPJ_ : null; }
       set {
         gBFCMPACOPJ_ = value;
         gBFCMPACOPJCase_ = value == null ? GBFCMPACOPJOneofCase.None : GBFCMPACOPJOneofCase.CakeRaceSectionBegin;
@@ -252,8 +252,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int CakeRaceSectionEndFieldNumber = 202;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.BBBJMJJOJDP CakeRaceSectionEnd {
-      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.CakeRaceSectionEnd ? (global::CastoriceHoney.Server.Proto.BBBJMJJOJDP) gBFCMPACOPJ_ : null; }
+    public global::March7thHoney.Proto.BBBJMJJOJDP CakeRaceSectionEnd {
+      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.CakeRaceSectionEnd ? (global::March7thHoney.Proto.BBBJMJJOJDP) gBFCMPACOPJ_ : null; }
       set {
         gBFCMPACOPJ_ = value;
         gBFCMPACOPJCase_ = value == null ? GBFCMPACOPJOneofCase.None : GBFCMPACOPJOneofCase.CakeRaceSectionEnd;
@@ -264,8 +264,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int CakeRaceRoomSectionSettleFieldNumber = 203;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.PLECMCJNPIL CakeRaceRoomSectionSettle {
-      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.CakeRaceRoomSectionSettle ? (global::CastoriceHoney.Server.Proto.PLECMCJNPIL) gBFCMPACOPJ_ : null; }
+    public global::March7thHoney.Proto.PLECMCJNPIL CakeRaceRoomSectionSettle {
+      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.CakeRaceRoomSectionSettle ? (global::March7thHoney.Proto.PLECMCJNPIL) gBFCMPACOPJ_ : null; }
       set {
         gBFCMPACOPJ_ = value;
         gBFCMPACOPJCase_ = value == null ? GBFCMPACOPJOneofCase.None : GBFCMPACOPJOneofCase.CakeRaceRoomSectionSettle;
@@ -276,8 +276,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int DiceCombatBeginFieldNumber = 251;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.CEOELEOKPOF DiceCombatBegin {
-      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatBegin ? (global::CastoriceHoney.Server.Proto.CEOELEOKPOF) gBFCMPACOPJ_ : null; }
+    public global::March7thHoney.Proto.CEOELEOKPOF DiceCombatBegin {
+      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatBegin ? (global::March7thHoney.Proto.CEOELEOKPOF) gBFCMPACOPJ_ : null; }
       set {
         gBFCMPACOPJ_ = value;
         gBFCMPACOPJCase_ = value == null ? GBFCMPACOPJOneofCase.None : GBFCMPACOPJOneofCase.DiceCombatBegin;
@@ -288,8 +288,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int DiceCombatTurnEndFieldNumber = 252;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.CKHFNKJNMLO DiceCombatTurnEnd {
-      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatTurnEnd ? (global::CastoriceHoney.Server.Proto.CKHFNKJNMLO) gBFCMPACOPJ_ : null; }
+    public global::March7thHoney.Proto.CKHFNKJNMLO DiceCombatTurnEnd {
+      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatTurnEnd ? (global::March7thHoney.Proto.CKHFNKJNMLO) gBFCMPACOPJ_ : null; }
       set {
         gBFCMPACOPJ_ = value;
         gBFCMPACOPJCase_ = value == null ? GBFCMPACOPJOneofCase.None : GBFCMPACOPJOneofCase.DiceCombatTurnEnd;
@@ -300,8 +300,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int DiceCombatEndFieldNumber = 253;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.CAHPBBLMDCJ DiceCombatEnd {
-      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatEnd ? (global::CastoriceHoney.Server.Proto.CAHPBBLMDCJ) gBFCMPACOPJ_ : null; }
+    public global::March7thHoney.Proto.CAHPBBLMDCJ DiceCombatEnd {
+      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatEnd ? (global::March7thHoney.Proto.CAHPBBLMDCJ) gBFCMPACOPJ_ : null; }
       set {
         gBFCMPACOPJ_ = value;
         gBFCMPACOPJCase_ = value == null ? GBFCMPACOPJOneofCase.None : GBFCMPACOPJOneofCase.DiceCombatEnd;
@@ -312,8 +312,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int DiceCombatV2BeginFieldNumber = 261;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.IHBGAHNNEKI DiceCombatV2Begin {
-      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatV2Begin ? (global::CastoriceHoney.Server.Proto.IHBGAHNNEKI) gBFCMPACOPJ_ : null; }
+    public global::March7thHoney.Proto.IHBGAHNNEKI DiceCombatV2Begin {
+      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatV2Begin ? (global::March7thHoney.Proto.IHBGAHNNEKI) gBFCMPACOPJ_ : null; }
       set {
         gBFCMPACOPJ_ = value;
         gBFCMPACOPJCase_ = value == null ? GBFCMPACOPJOneofCase.None : GBFCMPACOPJOneofCase.DiceCombatV2Begin;
@@ -324,8 +324,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int DiceCombatV2EndFieldNumber = 262;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.JFIAMODBOIJ DiceCombatV2End {
-      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatV2End ? (global::CastoriceHoney.Server.Proto.JFIAMODBOIJ) gBFCMPACOPJ_ : null; }
+    public global::March7thHoney.Proto.JFIAMODBOIJ DiceCombatV2End {
+      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatV2End ? (global::March7thHoney.Proto.JFIAMODBOIJ) gBFCMPACOPJ_ : null; }
       set {
         gBFCMPACOPJ_ = value;
         gBFCMPACOPJCase_ = value == null ? GBFCMPACOPJOneofCase.None : GBFCMPACOPJOneofCase.DiceCombatV2End;
@@ -336,8 +336,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int DiceCombatV2TurnEndFieldNumber = 263;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GODMJGAGNPA DiceCombatV2TurnEnd {
-      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatV2TurnEnd ? (global::CastoriceHoney.Server.Proto.GODMJGAGNPA) gBFCMPACOPJ_ : null; }
+    public global::March7thHoney.Proto.GODMJGAGNPA DiceCombatV2TurnEnd {
+      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatV2TurnEnd ? (global::March7thHoney.Proto.GODMJGAGNPA) gBFCMPACOPJ_ : null; }
       set {
         gBFCMPACOPJ_ = value;
         gBFCMPACOPJCase_ = value == null ? GBFCMPACOPJOneofCase.None : GBFCMPACOPJOneofCase.DiceCombatV2TurnEnd;
@@ -348,8 +348,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int DiceCombatV2TacticsPointChangeFieldNumber = 264;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.OMBGOODFIHB DiceCombatV2TacticsPointChange {
-      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatV2TacticsPointChange ? (global::CastoriceHoney.Server.Proto.OMBGOODFIHB) gBFCMPACOPJ_ : null; }
+    public global::March7thHoney.Proto.OMBGOODFIHB DiceCombatV2TacticsPointChange {
+      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatV2TacticsPointChange ? (global::March7thHoney.Proto.OMBGOODFIHB) gBFCMPACOPJ_ : null; }
       set {
         gBFCMPACOPJ_ = value;
         gBFCMPACOPJCase_ = value == null ? GBFCMPACOPJOneofCase.None : GBFCMPACOPJOneofCase.DiceCombatV2TacticsPointChange;
@@ -360,8 +360,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int DiceCombatV2TacticsCardChangeFieldNumber = 265;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.BCMKANNIKDP DiceCombatV2TacticsCardChange {
-      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatV2TacticsCardChange ? (global::CastoriceHoney.Server.Proto.BCMKANNIKDP) gBFCMPACOPJ_ : null; }
+    public global::March7thHoney.Proto.BCMKANNIKDP DiceCombatV2TacticsCardChange {
+      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatV2TacticsCardChange ? (global::March7thHoney.Proto.BCMKANNIKDP) gBFCMPACOPJ_ : null; }
       set {
         gBFCMPACOPJ_ = value;
         gBFCMPACOPJCase_ = value == null ? GBFCMPACOPJOneofCase.None : GBFCMPACOPJOneofCase.DiceCombatV2TacticsCardChange;
@@ -372,8 +372,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int DiceCombatV2DiceChangeRequestFieldNumber = 266;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.FLOEMBHNEPP DiceCombatV2DiceChangeRequest {
-      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatV2DiceChangeRequest ? (global::CastoriceHoney.Server.Proto.FLOEMBHNEPP) gBFCMPACOPJ_ : null; }
+    public global::March7thHoney.Proto.FLOEMBHNEPP DiceCombatV2DiceChangeRequest {
+      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatV2DiceChangeRequest ? (global::March7thHoney.Proto.FLOEMBHNEPP) gBFCMPACOPJ_ : null; }
       set {
         gBFCMPACOPJ_ = value;
         gBFCMPACOPJCase_ = value == null ? GBFCMPACOPJOneofCase.None : GBFCMPACOPJOneofCase.DiceCombatV2DiceChangeRequest;
@@ -384,8 +384,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int DiceCombatV2DiceChangeFieldNumber = 267;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.FEBMHKKEHDG DiceCombatV2DiceChange {
-      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatV2DiceChange ? (global::CastoriceHoney.Server.Proto.FEBMHKKEHDG) gBFCMPACOPJ_ : null; }
+    public global::March7thHoney.Proto.FEBMHKKEHDG DiceCombatV2DiceChange {
+      get { return gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatV2DiceChange ? (global::March7thHoney.Proto.FEBMHKKEHDG) gBFCMPACOPJ_ : null; }
       set {
         gBFCMPACOPJ_ = value;
         gBFCMPACOPJCase_ = value == null ? GBFCMPACOPJOneofCase.None : GBFCMPACOPJOneofCase.DiceCombatV2DiceChange;
@@ -758,103 +758,103 @@ namespace CastoriceHoney.Server.Proto {
       switch (other.GBFCMPACOPJCase) {
         case GBFCMPACOPJOneofCase.MarbleGameBegin:
           if (MarbleGameBegin == null) {
-            MarbleGameBegin = new global::CastoriceHoney.Server.Proto.HLNCNCNJGDL();
+            MarbleGameBegin = new global::March7thHoney.Proto.HLNCNCNJGDL();
           }
           MarbleGameBegin.MergeFrom(other.MarbleGameBegin);
           break;
         case GBFCMPACOPJOneofCase.MarbleGameEnd:
           if (MarbleGameEnd == null) {
-            MarbleGameEnd = new global::CastoriceHoney.Server.Proto.GNJBMILMKMB();
+            MarbleGameEnd = new global::March7thHoney.Proto.GNJBMILMKMB();
           }
           MarbleGameEnd.MergeFrom(other.MarbleGameEnd);
           break;
         case GBFCMPACOPJOneofCase.MarbleGameRound:
           if (MarbleGameRound == null) {
-            MarbleGameRound = new global::CastoriceHoney.Server.Proto.CNEMCBJHACK();
+            MarbleGameRound = new global::March7thHoney.Proto.CNEMCBJHACK();
           }
           MarbleGameRound.MergeFrom(other.MarbleGameRound);
           break;
         case GBFCMPACOPJOneofCase.MarbleGameTurn:
           if (MarbleGameTurn == null) {
-            MarbleGameTurn = new global::CastoriceHoney.Server.Proto.BBIINELNDKH();
+            MarbleGameTurn = new global::March7thHoney.Proto.BBIINELNDKH();
           }
           MarbleGameTurn.MergeFrom(other.MarbleGameTurn);
           break;
         case GBFCMPACOPJOneofCase.CakeRaceSectionBegin:
           if (CakeRaceSectionBegin == null) {
-            CakeRaceSectionBegin = new global::CastoriceHoney.Server.Proto.FJJNFNALLGA();
+            CakeRaceSectionBegin = new global::March7thHoney.Proto.FJJNFNALLGA();
           }
           CakeRaceSectionBegin.MergeFrom(other.CakeRaceSectionBegin);
           break;
         case GBFCMPACOPJOneofCase.CakeRaceSectionEnd:
           if (CakeRaceSectionEnd == null) {
-            CakeRaceSectionEnd = new global::CastoriceHoney.Server.Proto.BBBJMJJOJDP();
+            CakeRaceSectionEnd = new global::March7thHoney.Proto.BBBJMJJOJDP();
           }
           CakeRaceSectionEnd.MergeFrom(other.CakeRaceSectionEnd);
           break;
         case GBFCMPACOPJOneofCase.CakeRaceRoomSectionSettle:
           if (CakeRaceRoomSectionSettle == null) {
-            CakeRaceRoomSectionSettle = new global::CastoriceHoney.Server.Proto.PLECMCJNPIL();
+            CakeRaceRoomSectionSettle = new global::March7thHoney.Proto.PLECMCJNPIL();
           }
           CakeRaceRoomSectionSettle.MergeFrom(other.CakeRaceRoomSectionSettle);
           break;
         case GBFCMPACOPJOneofCase.DiceCombatBegin:
           if (DiceCombatBegin == null) {
-            DiceCombatBegin = new global::CastoriceHoney.Server.Proto.CEOELEOKPOF();
+            DiceCombatBegin = new global::March7thHoney.Proto.CEOELEOKPOF();
           }
           DiceCombatBegin.MergeFrom(other.DiceCombatBegin);
           break;
         case GBFCMPACOPJOneofCase.DiceCombatTurnEnd:
           if (DiceCombatTurnEnd == null) {
-            DiceCombatTurnEnd = new global::CastoriceHoney.Server.Proto.CKHFNKJNMLO();
+            DiceCombatTurnEnd = new global::March7thHoney.Proto.CKHFNKJNMLO();
           }
           DiceCombatTurnEnd.MergeFrom(other.DiceCombatTurnEnd);
           break;
         case GBFCMPACOPJOneofCase.DiceCombatEnd:
           if (DiceCombatEnd == null) {
-            DiceCombatEnd = new global::CastoriceHoney.Server.Proto.CAHPBBLMDCJ();
+            DiceCombatEnd = new global::March7thHoney.Proto.CAHPBBLMDCJ();
           }
           DiceCombatEnd.MergeFrom(other.DiceCombatEnd);
           break;
         case GBFCMPACOPJOneofCase.DiceCombatV2Begin:
           if (DiceCombatV2Begin == null) {
-            DiceCombatV2Begin = new global::CastoriceHoney.Server.Proto.IHBGAHNNEKI();
+            DiceCombatV2Begin = new global::March7thHoney.Proto.IHBGAHNNEKI();
           }
           DiceCombatV2Begin.MergeFrom(other.DiceCombatV2Begin);
           break;
         case GBFCMPACOPJOneofCase.DiceCombatV2End:
           if (DiceCombatV2End == null) {
-            DiceCombatV2End = new global::CastoriceHoney.Server.Proto.JFIAMODBOIJ();
+            DiceCombatV2End = new global::March7thHoney.Proto.JFIAMODBOIJ();
           }
           DiceCombatV2End.MergeFrom(other.DiceCombatV2End);
           break;
         case GBFCMPACOPJOneofCase.DiceCombatV2TurnEnd:
           if (DiceCombatV2TurnEnd == null) {
-            DiceCombatV2TurnEnd = new global::CastoriceHoney.Server.Proto.GODMJGAGNPA();
+            DiceCombatV2TurnEnd = new global::March7thHoney.Proto.GODMJGAGNPA();
           }
           DiceCombatV2TurnEnd.MergeFrom(other.DiceCombatV2TurnEnd);
           break;
         case GBFCMPACOPJOneofCase.DiceCombatV2TacticsPointChange:
           if (DiceCombatV2TacticsPointChange == null) {
-            DiceCombatV2TacticsPointChange = new global::CastoriceHoney.Server.Proto.OMBGOODFIHB();
+            DiceCombatV2TacticsPointChange = new global::March7thHoney.Proto.OMBGOODFIHB();
           }
           DiceCombatV2TacticsPointChange.MergeFrom(other.DiceCombatV2TacticsPointChange);
           break;
         case GBFCMPACOPJOneofCase.DiceCombatV2TacticsCardChange:
           if (DiceCombatV2TacticsCardChange == null) {
-            DiceCombatV2TacticsCardChange = new global::CastoriceHoney.Server.Proto.BCMKANNIKDP();
+            DiceCombatV2TacticsCardChange = new global::March7thHoney.Proto.BCMKANNIKDP();
           }
           DiceCombatV2TacticsCardChange.MergeFrom(other.DiceCombatV2TacticsCardChange);
           break;
         case GBFCMPACOPJOneofCase.DiceCombatV2DiceChangeRequest:
           if (DiceCombatV2DiceChangeRequest == null) {
-            DiceCombatV2DiceChangeRequest = new global::CastoriceHoney.Server.Proto.FLOEMBHNEPP();
+            DiceCombatV2DiceChangeRequest = new global::March7thHoney.Proto.FLOEMBHNEPP();
           }
           DiceCombatV2DiceChangeRequest.MergeFrom(other.DiceCombatV2DiceChangeRequest);
           break;
         case GBFCMPACOPJOneofCase.DiceCombatV2DiceChange:
           if (DiceCombatV2DiceChange == null) {
-            DiceCombatV2DiceChange = new global::CastoriceHoney.Server.Proto.FEBMHKKEHDG();
+            DiceCombatV2DiceChange = new global::March7thHoney.Proto.FEBMHKKEHDG();
           }
           DiceCombatV2DiceChange.MergeFrom(other.DiceCombatV2DiceChange);
           break;
@@ -888,7 +888,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 810: {
-            global::CastoriceHoney.Server.Proto.HLNCNCNJGDL subBuilder = new global::CastoriceHoney.Server.Proto.HLNCNCNJGDL();
+            global::March7thHoney.Proto.HLNCNCNJGDL subBuilder = new global::March7thHoney.Proto.HLNCNCNJGDL();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.MarbleGameBegin) {
               subBuilder.MergeFrom(MarbleGameBegin);
             }
@@ -897,7 +897,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 818: {
-            global::CastoriceHoney.Server.Proto.GNJBMILMKMB subBuilder = new global::CastoriceHoney.Server.Proto.GNJBMILMKMB();
+            global::March7thHoney.Proto.GNJBMILMKMB subBuilder = new global::March7thHoney.Proto.GNJBMILMKMB();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.MarbleGameEnd) {
               subBuilder.MergeFrom(MarbleGameEnd);
             }
@@ -906,7 +906,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 826: {
-            global::CastoriceHoney.Server.Proto.CNEMCBJHACK subBuilder = new global::CastoriceHoney.Server.Proto.CNEMCBJHACK();
+            global::March7thHoney.Proto.CNEMCBJHACK subBuilder = new global::March7thHoney.Proto.CNEMCBJHACK();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.MarbleGameRound) {
               subBuilder.MergeFrom(MarbleGameRound);
             }
@@ -915,7 +915,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 834: {
-            global::CastoriceHoney.Server.Proto.BBIINELNDKH subBuilder = new global::CastoriceHoney.Server.Proto.BBIINELNDKH();
+            global::March7thHoney.Proto.BBIINELNDKH subBuilder = new global::March7thHoney.Proto.BBIINELNDKH();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.MarbleGameTurn) {
               subBuilder.MergeFrom(MarbleGameTurn);
             }
@@ -924,7 +924,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 1610: {
-            global::CastoriceHoney.Server.Proto.FJJNFNALLGA subBuilder = new global::CastoriceHoney.Server.Proto.FJJNFNALLGA();
+            global::March7thHoney.Proto.FJJNFNALLGA subBuilder = new global::March7thHoney.Proto.FJJNFNALLGA();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.CakeRaceSectionBegin) {
               subBuilder.MergeFrom(CakeRaceSectionBegin);
             }
@@ -933,7 +933,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 1618: {
-            global::CastoriceHoney.Server.Proto.BBBJMJJOJDP subBuilder = new global::CastoriceHoney.Server.Proto.BBBJMJJOJDP();
+            global::March7thHoney.Proto.BBBJMJJOJDP subBuilder = new global::March7thHoney.Proto.BBBJMJJOJDP();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.CakeRaceSectionEnd) {
               subBuilder.MergeFrom(CakeRaceSectionEnd);
             }
@@ -942,7 +942,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 1626: {
-            global::CastoriceHoney.Server.Proto.PLECMCJNPIL subBuilder = new global::CastoriceHoney.Server.Proto.PLECMCJNPIL();
+            global::March7thHoney.Proto.PLECMCJNPIL subBuilder = new global::March7thHoney.Proto.PLECMCJNPIL();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.CakeRaceRoomSectionSettle) {
               subBuilder.MergeFrom(CakeRaceRoomSectionSettle);
             }
@@ -951,7 +951,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 2010: {
-            global::CastoriceHoney.Server.Proto.CEOELEOKPOF subBuilder = new global::CastoriceHoney.Server.Proto.CEOELEOKPOF();
+            global::March7thHoney.Proto.CEOELEOKPOF subBuilder = new global::March7thHoney.Proto.CEOELEOKPOF();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatBegin) {
               subBuilder.MergeFrom(DiceCombatBegin);
             }
@@ -960,7 +960,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 2018: {
-            global::CastoriceHoney.Server.Proto.CKHFNKJNMLO subBuilder = new global::CastoriceHoney.Server.Proto.CKHFNKJNMLO();
+            global::March7thHoney.Proto.CKHFNKJNMLO subBuilder = new global::March7thHoney.Proto.CKHFNKJNMLO();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatTurnEnd) {
               subBuilder.MergeFrom(DiceCombatTurnEnd);
             }
@@ -969,7 +969,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 2026: {
-            global::CastoriceHoney.Server.Proto.CAHPBBLMDCJ subBuilder = new global::CastoriceHoney.Server.Proto.CAHPBBLMDCJ();
+            global::March7thHoney.Proto.CAHPBBLMDCJ subBuilder = new global::March7thHoney.Proto.CAHPBBLMDCJ();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatEnd) {
               subBuilder.MergeFrom(DiceCombatEnd);
             }
@@ -978,7 +978,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 2090: {
-            global::CastoriceHoney.Server.Proto.IHBGAHNNEKI subBuilder = new global::CastoriceHoney.Server.Proto.IHBGAHNNEKI();
+            global::March7thHoney.Proto.IHBGAHNNEKI subBuilder = new global::March7thHoney.Proto.IHBGAHNNEKI();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatV2Begin) {
               subBuilder.MergeFrom(DiceCombatV2Begin);
             }
@@ -987,7 +987,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 2098: {
-            global::CastoriceHoney.Server.Proto.JFIAMODBOIJ subBuilder = new global::CastoriceHoney.Server.Proto.JFIAMODBOIJ();
+            global::March7thHoney.Proto.JFIAMODBOIJ subBuilder = new global::March7thHoney.Proto.JFIAMODBOIJ();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatV2End) {
               subBuilder.MergeFrom(DiceCombatV2End);
             }
@@ -996,7 +996,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 2106: {
-            global::CastoriceHoney.Server.Proto.GODMJGAGNPA subBuilder = new global::CastoriceHoney.Server.Proto.GODMJGAGNPA();
+            global::March7thHoney.Proto.GODMJGAGNPA subBuilder = new global::March7thHoney.Proto.GODMJGAGNPA();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatV2TurnEnd) {
               subBuilder.MergeFrom(DiceCombatV2TurnEnd);
             }
@@ -1005,7 +1005,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 2114: {
-            global::CastoriceHoney.Server.Proto.OMBGOODFIHB subBuilder = new global::CastoriceHoney.Server.Proto.OMBGOODFIHB();
+            global::March7thHoney.Proto.OMBGOODFIHB subBuilder = new global::March7thHoney.Proto.OMBGOODFIHB();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatV2TacticsPointChange) {
               subBuilder.MergeFrom(DiceCombatV2TacticsPointChange);
             }
@@ -1014,7 +1014,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 2122: {
-            global::CastoriceHoney.Server.Proto.BCMKANNIKDP subBuilder = new global::CastoriceHoney.Server.Proto.BCMKANNIKDP();
+            global::March7thHoney.Proto.BCMKANNIKDP subBuilder = new global::March7thHoney.Proto.BCMKANNIKDP();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatV2TacticsCardChange) {
               subBuilder.MergeFrom(DiceCombatV2TacticsCardChange);
             }
@@ -1023,7 +1023,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 2130: {
-            global::CastoriceHoney.Server.Proto.FLOEMBHNEPP subBuilder = new global::CastoriceHoney.Server.Proto.FLOEMBHNEPP();
+            global::March7thHoney.Proto.FLOEMBHNEPP subBuilder = new global::March7thHoney.Proto.FLOEMBHNEPP();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatV2DiceChangeRequest) {
               subBuilder.MergeFrom(DiceCombatV2DiceChangeRequest);
             }
@@ -1032,7 +1032,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 2138: {
-            global::CastoriceHoney.Server.Proto.FEBMHKKEHDG subBuilder = new global::CastoriceHoney.Server.Proto.FEBMHKKEHDG();
+            global::March7thHoney.Proto.FEBMHKKEHDG subBuilder = new global::March7thHoney.Proto.FEBMHKKEHDG();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatV2DiceChange) {
               subBuilder.MergeFrom(DiceCombatV2DiceChange);
             }
@@ -1068,7 +1068,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 810: {
-            global::CastoriceHoney.Server.Proto.HLNCNCNJGDL subBuilder = new global::CastoriceHoney.Server.Proto.HLNCNCNJGDL();
+            global::March7thHoney.Proto.HLNCNCNJGDL subBuilder = new global::March7thHoney.Proto.HLNCNCNJGDL();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.MarbleGameBegin) {
               subBuilder.MergeFrom(MarbleGameBegin);
             }
@@ -1077,7 +1077,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 818: {
-            global::CastoriceHoney.Server.Proto.GNJBMILMKMB subBuilder = new global::CastoriceHoney.Server.Proto.GNJBMILMKMB();
+            global::March7thHoney.Proto.GNJBMILMKMB subBuilder = new global::March7thHoney.Proto.GNJBMILMKMB();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.MarbleGameEnd) {
               subBuilder.MergeFrom(MarbleGameEnd);
             }
@@ -1086,7 +1086,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 826: {
-            global::CastoriceHoney.Server.Proto.CNEMCBJHACK subBuilder = new global::CastoriceHoney.Server.Proto.CNEMCBJHACK();
+            global::March7thHoney.Proto.CNEMCBJHACK subBuilder = new global::March7thHoney.Proto.CNEMCBJHACK();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.MarbleGameRound) {
               subBuilder.MergeFrom(MarbleGameRound);
             }
@@ -1095,7 +1095,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 834: {
-            global::CastoriceHoney.Server.Proto.BBIINELNDKH subBuilder = new global::CastoriceHoney.Server.Proto.BBIINELNDKH();
+            global::March7thHoney.Proto.BBIINELNDKH subBuilder = new global::March7thHoney.Proto.BBIINELNDKH();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.MarbleGameTurn) {
               subBuilder.MergeFrom(MarbleGameTurn);
             }
@@ -1104,7 +1104,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 1610: {
-            global::CastoriceHoney.Server.Proto.FJJNFNALLGA subBuilder = new global::CastoriceHoney.Server.Proto.FJJNFNALLGA();
+            global::March7thHoney.Proto.FJJNFNALLGA subBuilder = new global::March7thHoney.Proto.FJJNFNALLGA();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.CakeRaceSectionBegin) {
               subBuilder.MergeFrom(CakeRaceSectionBegin);
             }
@@ -1113,7 +1113,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 1618: {
-            global::CastoriceHoney.Server.Proto.BBBJMJJOJDP subBuilder = new global::CastoriceHoney.Server.Proto.BBBJMJJOJDP();
+            global::March7thHoney.Proto.BBBJMJJOJDP subBuilder = new global::March7thHoney.Proto.BBBJMJJOJDP();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.CakeRaceSectionEnd) {
               subBuilder.MergeFrom(CakeRaceSectionEnd);
             }
@@ -1122,7 +1122,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 1626: {
-            global::CastoriceHoney.Server.Proto.PLECMCJNPIL subBuilder = new global::CastoriceHoney.Server.Proto.PLECMCJNPIL();
+            global::March7thHoney.Proto.PLECMCJNPIL subBuilder = new global::March7thHoney.Proto.PLECMCJNPIL();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.CakeRaceRoomSectionSettle) {
               subBuilder.MergeFrom(CakeRaceRoomSectionSettle);
             }
@@ -1131,7 +1131,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 2010: {
-            global::CastoriceHoney.Server.Proto.CEOELEOKPOF subBuilder = new global::CastoriceHoney.Server.Proto.CEOELEOKPOF();
+            global::March7thHoney.Proto.CEOELEOKPOF subBuilder = new global::March7thHoney.Proto.CEOELEOKPOF();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatBegin) {
               subBuilder.MergeFrom(DiceCombatBegin);
             }
@@ -1140,7 +1140,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 2018: {
-            global::CastoriceHoney.Server.Proto.CKHFNKJNMLO subBuilder = new global::CastoriceHoney.Server.Proto.CKHFNKJNMLO();
+            global::March7thHoney.Proto.CKHFNKJNMLO subBuilder = new global::March7thHoney.Proto.CKHFNKJNMLO();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatTurnEnd) {
               subBuilder.MergeFrom(DiceCombatTurnEnd);
             }
@@ -1149,7 +1149,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 2026: {
-            global::CastoriceHoney.Server.Proto.CAHPBBLMDCJ subBuilder = new global::CastoriceHoney.Server.Proto.CAHPBBLMDCJ();
+            global::March7thHoney.Proto.CAHPBBLMDCJ subBuilder = new global::March7thHoney.Proto.CAHPBBLMDCJ();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatEnd) {
               subBuilder.MergeFrom(DiceCombatEnd);
             }
@@ -1158,7 +1158,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 2090: {
-            global::CastoriceHoney.Server.Proto.IHBGAHNNEKI subBuilder = new global::CastoriceHoney.Server.Proto.IHBGAHNNEKI();
+            global::March7thHoney.Proto.IHBGAHNNEKI subBuilder = new global::March7thHoney.Proto.IHBGAHNNEKI();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatV2Begin) {
               subBuilder.MergeFrom(DiceCombatV2Begin);
             }
@@ -1167,7 +1167,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 2098: {
-            global::CastoriceHoney.Server.Proto.JFIAMODBOIJ subBuilder = new global::CastoriceHoney.Server.Proto.JFIAMODBOIJ();
+            global::March7thHoney.Proto.JFIAMODBOIJ subBuilder = new global::March7thHoney.Proto.JFIAMODBOIJ();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatV2End) {
               subBuilder.MergeFrom(DiceCombatV2End);
             }
@@ -1176,7 +1176,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 2106: {
-            global::CastoriceHoney.Server.Proto.GODMJGAGNPA subBuilder = new global::CastoriceHoney.Server.Proto.GODMJGAGNPA();
+            global::March7thHoney.Proto.GODMJGAGNPA subBuilder = new global::March7thHoney.Proto.GODMJGAGNPA();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatV2TurnEnd) {
               subBuilder.MergeFrom(DiceCombatV2TurnEnd);
             }
@@ -1185,7 +1185,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 2114: {
-            global::CastoriceHoney.Server.Proto.OMBGOODFIHB subBuilder = new global::CastoriceHoney.Server.Proto.OMBGOODFIHB();
+            global::March7thHoney.Proto.OMBGOODFIHB subBuilder = new global::March7thHoney.Proto.OMBGOODFIHB();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatV2TacticsPointChange) {
               subBuilder.MergeFrom(DiceCombatV2TacticsPointChange);
             }
@@ -1194,7 +1194,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 2122: {
-            global::CastoriceHoney.Server.Proto.BCMKANNIKDP subBuilder = new global::CastoriceHoney.Server.Proto.BCMKANNIKDP();
+            global::March7thHoney.Proto.BCMKANNIKDP subBuilder = new global::March7thHoney.Proto.BCMKANNIKDP();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatV2TacticsCardChange) {
               subBuilder.MergeFrom(DiceCombatV2TacticsCardChange);
             }
@@ -1203,7 +1203,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 2130: {
-            global::CastoriceHoney.Server.Proto.FLOEMBHNEPP subBuilder = new global::CastoriceHoney.Server.Proto.FLOEMBHNEPP();
+            global::March7thHoney.Proto.FLOEMBHNEPP subBuilder = new global::March7thHoney.Proto.FLOEMBHNEPP();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatV2DiceChangeRequest) {
               subBuilder.MergeFrom(DiceCombatV2DiceChangeRequest);
             }
@@ -1212,7 +1212,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 2138: {
-            global::CastoriceHoney.Server.Proto.FEBMHKKEHDG subBuilder = new global::CastoriceHoney.Server.Proto.FEBMHKKEHDG();
+            global::March7thHoney.Proto.FEBMHKKEHDG subBuilder = new global::March7thHoney.Proto.FEBMHKKEHDG();
             if (gBFCMPACOPJCase_ == GBFCMPACOPJOneofCase.DiceCombatV2DiceChange) {
               subBuilder.MergeFrom(DiceCombatV2DiceChange);
             }

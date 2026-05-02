@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from SceneEntityMoveCsReq.proto</summary>
   public static partial class SceneEntityMoveCsReqReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "bXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlBy",
             "b3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.EntityMotionReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.EntityMotionReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.SceneEntityMoveCsReq), global::CastoriceHoney.Server.Proto.SceneEntityMoveCsReq.Parser, new[]{ "EntryId", "InteractId", "EntityMotionList", "BFBEHMAFJMC" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneEntityMoveCsReq), global::March7thHoney.Proto.SceneEntityMoveCsReq.Parser, new[]{ "EntryId", "InteractId", "EntityMotionList", "BFBEHMAFJMC" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.SceneEntityMoveCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.SceneEntityMoveCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -114,12 +114,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "entity_motion_list" field.</summary>
     public const int EntityMotionListFieldNumber = 10;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.EntityMotion> _repeated_entityMotionList_codec
-        = pb::FieldCodec.ForMessage(82, global::CastoriceHoney.Server.Proto.EntityMotion.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.EntityMotion> entityMotionList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.EntityMotion>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EntityMotion> _repeated_entityMotionList_codec
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.EntityMotion.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EntityMotion> entityMotionList_ = new pbc::RepeatedField<global::March7thHoney.Proto.EntityMotion>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.EntityMotion> EntityMotionList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.EntityMotion> EntityMotionList {
       get { return entityMotionList_; }
     }
 

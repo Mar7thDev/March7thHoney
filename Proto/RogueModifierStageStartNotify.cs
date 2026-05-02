@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from RogueModifierStageStartNotify.proto</summary>
   public static partial class RogueModifierStageStartNotifyReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "aWVyU291cmNlVHlwZUIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9y",
             "aWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.RogueModifierSourceTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.RogueModifierSourceTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.RogueModifierStageStartNotify), global::CastoriceHoney.Server.Proto.RogueModifierStageStartNotify.Parser, new[]{ "ALFHNEHOBJA" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RogueModifierStageStartNotify), global::March7thHoney.Proto.RogueModifierStageStartNotify.Parser, new[]{ "ALFHNEHOBJA" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.RogueModifierStageStartNotifyReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.RogueModifierStageStartNotifyReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -86,10 +86,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "ALFHNEHOBJA" field.</summary>
     public const int ALFHNEHOBJAFieldNumber = 12;
-    private global::CastoriceHoney.Server.Proto.RogueModifierSourceType aLFHNEHOBJA_ = global::CastoriceHoney.Server.Proto.RogueModifierSourceType.KiellbkoaloChodnmohlpn;
+    private global::March7thHoney.Proto.RogueModifierSourceType aLFHNEHOBJA_ = global::March7thHoney.Proto.RogueModifierSourceType.KiellbkoaloChodnmohlpn;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.RogueModifierSourceType ALFHNEHOBJA {
+    public global::March7thHoney.Proto.RogueModifierSourceType ALFHNEHOBJA {
       get { return aLFHNEHOBJA_; }
       set {
         aLFHNEHOBJA_ = value;
@@ -119,7 +119,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (ALFHNEHOBJA != global::CastoriceHoney.Server.Proto.RogueModifierSourceType.KiellbkoaloChodnmohlpn) hash ^= ALFHNEHOBJA.GetHashCode();
+      if (ALFHNEHOBJA != global::March7thHoney.Proto.RogueModifierSourceType.KiellbkoaloChodnmohlpn) hash ^= ALFHNEHOBJA.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -138,7 +138,7 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (ALFHNEHOBJA != global::CastoriceHoney.Server.Proto.RogueModifierSourceType.KiellbkoaloChodnmohlpn) {
+      if (ALFHNEHOBJA != global::March7thHoney.Proto.RogueModifierSourceType.KiellbkoaloChodnmohlpn) {
         output.WriteRawTag(96);
         output.WriteEnum((int) ALFHNEHOBJA);
       }
@@ -152,7 +152,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (ALFHNEHOBJA != global::CastoriceHoney.Server.Proto.RogueModifierSourceType.KiellbkoaloChodnmohlpn) {
+      if (ALFHNEHOBJA != global::March7thHoney.Proto.RogueModifierSourceType.KiellbkoaloChodnmohlpn) {
         output.WriteRawTag(96);
         output.WriteEnum((int) ALFHNEHOBJA);
       }
@@ -166,7 +166,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (ALFHNEHOBJA != global::CastoriceHoney.Server.Proto.RogueModifierSourceType.KiellbkoaloChodnmohlpn) {
+      if (ALFHNEHOBJA != global::March7thHoney.Proto.RogueModifierSourceType.KiellbkoaloChodnmohlpn) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ALFHNEHOBJA);
       }
       if (_unknownFields != null) {
@@ -181,7 +181,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.ALFHNEHOBJA != global::CastoriceHoney.Server.Proto.RogueModifierSourceType.KiellbkoaloChodnmohlpn) {
+      if (other.ALFHNEHOBJA != global::March7thHoney.Proto.RogueModifierSourceType.KiellbkoaloChodnmohlpn) {
         ALFHNEHOBJA = other.ALFHNEHOBJA;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -204,7 +204,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 96: {
-            ALFHNEHOBJA = (global::CastoriceHoney.Server.Proto.RogueModifierSourceType) input.ReadEnum();
+            ALFHNEHOBJA = (global::March7thHoney.Proto.RogueModifierSourceType) input.ReadEnum();
             break;
           }
         }
@@ -227,7 +227,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 96: {
-            ALFHNEHOBJA = (global::CastoriceHoney.Server.Proto.RogueModifierSourceType) input.ReadEnum();
+            ALFHNEHOBJA = (global::March7thHoney.Proto.RogueModifierSourceType) input.ReadEnum();
             break;
           }
         }

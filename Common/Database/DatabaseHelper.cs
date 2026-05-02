@@ -1,12 +1,12 @@
 using System.Collections.Concurrent;
 using System.Globalization;
-using CastoriceHoney.Server.Database.Account;
-using CastoriceHoney.Server.Database.Quests;
-using CastoriceHoney.Server.Internationalization;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Database.Account;
+using March7thHoney.Database.Quests;
+using March7thHoney.Internationalization;
+using March7thHoney.Util;
 using SqlSugar;
 
-namespace CastoriceHoney.Server.Database;
+namespace March7thHoney.Database;
 
 public class DatabaseHelper
 {

@@ -1,15 +1,15 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Database;
-using CastoriceHoney.Server.Database.Scene;
-using CastoriceHoney.Server.Enums.Mission;
-using CastoriceHoney.Server.Enums.Scene;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Lineup;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Raid;
-using CastoriceHoney.Server.Proto;
-using RaidData = CastoriceHoney.Server.Database.Scene.RaidData;
+using March7thHoney.Data;
+using March7thHoney.Database;
+using March7thHoney.Database.Scene;
+using March7thHoney.Enums.Mission;
+using March7thHoney.Enums.Scene;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Server.Packet.Send.Lineup;
+using March7thHoney.GameServer.Server.Packet.Send.Raid;
+using March7thHoney.Proto;
+using RaidData = March7thHoney.Database.Scene.RaidData;
 
-namespace CastoriceHoney.Server.GameServer.Game.Raid;
+namespace March7thHoney.GameServer.Game.Raid;
 
 public class RaidManager : BasePlayerManager
 {

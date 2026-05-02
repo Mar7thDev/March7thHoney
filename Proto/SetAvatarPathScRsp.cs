@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from SetAvatarPathScRsp.proto</summary>
   public static partial class SetAvatarPathScRspReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "ChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVy",
             "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.MultiPathAvatarTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.MultiPathAvatarTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.SetAvatarPathScRsp), global::CastoriceHoney.Server.Proto.SetAvatarPathScRsp.Parser, new[]{ "Retcode", "AvatarId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetAvatarPathScRsp), global::March7thHoney.Proto.SetAvatarPathScRsp.Parser, new[]{ "Retcode", "AvatarId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.SetAvatarPathScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.SetAvatarPathScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -99,10 +99,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "avatar_id" field.</summary>
     public const int AvatarIdFieldNumber = 12;
-    private global::CastoriceHoney.Server.Proto.MultiPathAvatarType avatarId_ = global::CastoriceHoney.Server.Proto.MultiPathAvatarType.None;
+    private global::March7thHoney.Proto.MultiPathAvatarType avatarId_ = global::March7thHoney.Proto.MultiPathAvatarType.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.MultiPathAvatarType AvatarId {
+    public global::March7thHoney.Proto.MultiPathAvatarType AvatarId {
       get { return avatarId_; }
       set {
         avatarId_ = value;
@@ -134,7 +134,7 @@ namespace CastoriceHoney.Server.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
-      if (AvatarId != global::CastoriceHoney.Server.Proto.MultiPathAvatarType.None) hash ^= AvatarId.GetHashCode();
+      if (AvatarId != global::March7thHoney.Proto.MultiPathAvatarType.None) hash ^= AvatarId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -157,7 +157,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(72);
         output.WriteUInt32(Retcode);
       }
-      if (AvatarId != global::CastoriceHoney.Server.Proto.MultiPathAvatarType.None) {
+      if (AvatarId != global::March7thHoney.Proto.MultiPathAvatarType.None) {
         output.WriteRawTag(96);
         output.WriteEnum((int) AvatarId);
       }
@@ -175,7 +175,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(72);
         output.WriteUInt32(Retcode);
       }
-      if (AvatarId != global::CastoriceHoney.Server.Proto.MultiPathAvatarType.None) {
+      if (AvatarId != global::March7thHoney.Proto.MultiPathAvatarType.None) {
         output.WriteRawTag(96);
         output.WriteEnum((int) AvatarId);
       }
@@ -192,7 +192,7 @@ namespace CastoriceHoney.Server.Proto {
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
-      if (AvatarId != global::CastoriceHoney.Server.Proto.MultiPathAvatarType.None) {
+      if (AvatarId != global::March7thHoney.Proto.MultiPathAvatarType.None) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) AvatarId);
       }
       if (_unknownFields != null) {
@@ -210,7 +210,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
-      if (other.AvatarId != global::CastoriceHoney.Server.Proto.MultiPathAvatarType.None) {
+      if (other.AvatarId != global::March7thHoney.Proto.MultiPathAvatarType.None) {
         AvatarId = other.AvatarId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -237,7 +237,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 96: {
-            AvatarId = (global::CastoriceHoney.Server.Proto.MultiPathAvatarType) input.ReadEnum();
+            AvatarId = (global::March7thHoney.Proto.MultiPathAvatarType) input.ReadEnum();
             break;
           }
         }
@@ -264,7 +264,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 96: {
-            AvatarId = (global::CastoriceHoney.Server.Proto.MultiPathAvatarType) input.ReadEnum();
+            AvatarId = (global::March7thHoney.Proto.MultiPathAvatarType) input.ReadEnum();
             break;
           }
         }

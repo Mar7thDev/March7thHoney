@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GridFightGameBasicInfo.proto</summary>
   public static partial class GridFightGameBasicInfoReflection {
@@ -46,9 +46,9 @@ namespace CastoriceHoney.Server.Proto {
             "dW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9i",
             "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GridFightLockInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightLockTypeReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightSyncCurrentTaskInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.RoleTrackEquipmentInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridFightLockInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightLockTypeReflection.Descriptor, global::March7thHoney.Proto.GridFightSyncCurrentTaskInfoReflection.Descriptor, global::March7thHoney.Proto.RoleTrackEquipmentInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GridFightGameBasicInfo), global::CastoriceHoney.Server.Proto.GridFightGameBasicInfo.Parser, new[]{ "GridFightLineupMaxHp", "LockType", "FLEJPPKLJIC", "Gold", "HAEOPKELNEO", "GridFightMaxAvatarCount", "GridFightCurLevelExp", "TrackTraitIdList", "GridFightBuyExpCost", "RoleTrackEquipmentList", "GridFightMaxInterestGold", "GridFightLineupHp", "ANBBPPHBCJH", "GridFightComboWinNum", "GridFightOffFieldMaxCount", "GameLockInfo", "GridFightTargetGuideCode", "GridFightSyncCurtaskInfo", "TutorialUnlockIdList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightGameBasicInfo), global::March7thHoney.Proto.GridFightGameBasicInfo.Parser, new[]{ "GridFightLineupMaxHp", "LockType", "FLEJPPKLJIC", "Gold", "HAEOPKELNEO", "GridFightMaxAvatarCount", "GridFightCurLevelExp", "TrackTraitIdList", "GridFightBuyExpCost", "RoleTrackEquipmentList", "GridFightMaxInterestGold", "GridFightLineupHp", "ANBBPPHBCJH", "GridFightComboWinNum", "GridFightOffFieldMaxCount", "GameLockInfo", "GridFightTargetGuideCode", "GridFightSyncCurtaskInfo", "TutorialUnlockIdList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -70,7 +70,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GridFightGameBasicInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GridFightGameBasicInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -132,10 +132,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "lock_type" field.</summary>
     public const int LockTypeFieldNumber = 2;
-    private global::CastoriceHoney.Server.Proto.GridFightLockType lockType_ = global::CastoriceHoney.Server.Proto.GridFightLockType.PjbmhhnlclbLnloohdeaeo;
+    private global::March7thHoney.Proto.GridFightLockType lockType_ = global::March7thHoney.Proto.GridFightLockType.PjbmhhnlclbLnloohdeaeo;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightLockType LockType {
+    public global::March7thHoney.Proto.GridFightLockType LockType {
       get { return lockType_; }
       set {
         lockType_ = value;
@@ -227,12 +227,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "role_track_equipment_list" field.</summary>
     public const int RoleTrackEquipmentListFieldNumber = 10;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.RoleTrackEquipmentInfo> _repeated_roleTrackEquipmentList_codec
-        = pb::FieldCodec.ForMessage(82, global::CastoriceHoney.Server.Proto.RoleTrackEquipmentInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.RoleTrackEquipmentInfo> roleTrackEquipmentList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.RoleTrackEquipmentInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.RoleTrackEquipmentInfo> _repeated_roleTrackEquipmentList_codec
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.RoleTrackEquipmentInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.RoleTrackEquipmentInfo> roleTrackEquipmentList_ = new pbc::RepeatedField<global::March7thHoney.Proto.RoleTrackEquipmentInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.RoleTrackEquipmentInfo> RoleTrackEquipmentList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.RoleTrackEquipmentInfo> RoleTrackEquipmentList {
       get { return roleTrackEquipmentList_; }
     }
 
@@ -298,10 +298,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "game_lock_info" field.</summary>
     public const int GameLockInfoFieldNumber = 292;
-    private global::CastoriceHoney.Server.Proto.GridFightLockInfo gameLockInfo_;
+    private global::March7thHoney.Proto.GridFightLockInfo gameLockInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightLockInfo GameLockInfo {
+    public global::March7thHoney.Proto.GridFightLockInfo GameLockInfo {
       get { return gameLockInfo_; }
       set {
         gameLockInfo_ = value;
@@ -322,10 +322,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "grid_fight_sync_curtask_info" field.</summary>
     public const int GridFightSyncCurtaskInfoFieldNumber = 542;
-    private global::CastoriceHoney.Server.Proto.GridFightSyncCurrentTaskInfo gridFightSyncCurtaskInfo_;
+    private global::March7thHoney.Proto.GridFightSyncCurrentTaskInfo gridFightSyncCurtaskInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightSyncCurrentTaskInfo GridFightSyncCurtaskInfo {
+    public global::March7thHoney.Proto.GridFightSyncCurrentTaskInfo GridFightSyncCurtaskInfo {
       get { return gridFightSyncCurtaskInfo_; }
       set {
         gridFightSyncCurtaskInfo_ = value;
@@ -385,7 +385,7 @@ namespace CastoriceHoney.Server.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (GridFightLineupMaxHp != 0) hash ^= GridFightLineupMaxHp.GetHashCode();
-      if (LockType != global::CastoriceHoney.Server.Proto.GridFightLockType.PjbmhhnlclbLnloohdeaeo) hash ^= LockType.GetHashCode();
+      if (LockType != global::March7thHoney.Proto.GridFightLockType.PjbmhhnlclbLnloohdeaeo) hash ^= LockType.GetHashCode();
       if (FLEJPPKLJIC != 0) hash ^= FLEJPPKLJIC.GetHashCode();
       if (Gold != 0) hash ^= Gold.GetHashCode();
       if (HAEOPKELNEO != 0) hash ^= HAEOPKELNEO.GetHashCode();
@@ -425,7 +425,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(8);
         output.WriteUInt32(GridFightLineupMaxHp);
       }
-      if (LockType != global::CastoriceHoney.Server.Proto.GridFightLockType.PjbmhhnlclbLnloohdeaeo) {
+      if (LockType != global::March7thHoney.Proto.GridFightLockType.PjbmhhnlclbLnloohdeaeo) {
         output.WriteRawTag(16);
         output.WriteEnum((int) LockType);
       }
@@ -502,7 +502,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(8);
         output.WriteUInt32(GridFightLineupMaxHp);
       }
-      if (LockType != global::CastoriceHoney.Server.Proto.GridFightLockType.PjbmhhnlclbLnloohdeaeo) {
+      if (LockType != global::March7thHoney.Proto.GridFightLockType.PjbmhhnlclbLnloohdeaeo) {
         output.WriteRawTag(16);
         output.WriteEnum((int) LockType);
       }
@@ -578,7 +578,7 @@ namespace CastoriceHoney.Server.Proto {
       if (GridFightLineupMaxHp != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GridFightLineupMaxHp);
       }
-      if (LockType != global::CastoriceHoney.Server.Proto.GridFightLockType.PjbmhhnlclbLnloohdeaeo) {
+      if (LockType != global::March7thHoney.Proto.GridFightLockType.PjbmhhnlclbLnloohdeaeo) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) LockType);
       }
       if (FLEJPPKLJIC != 0) {
@@ -641,7 +641,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other.GridFightLineupMaxHp != 0) {
         GridFightLineupMaxHp = other.GridFightLineupMaxHp;
       }
-      if (other.LockType != global::CastoriceHoney.Server.Proto.GridFightLockType.PjbmhhnlclbLnloohdeaeo) {
+      if (other.LockType != global::March7thHoney.Proto.GridFightLockType.PjbmhhnlclbLnloohdeaeo) {
         LockType = other.LockType;
       }
       if (other.FLEJPPKLJIC != 0) {
@@ -681,7 +681,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.gameLockInfo_ != null) {
         if (gameLockInfo_ == null) {
-          GameLockInfo = new global::CastoriceHoney.Server.Proto.GridFightLockInfo();
+          GameLockInfo = new global::March7thHoney.Proto.GridFightLockInfo();
         }
         GameLockInfo.MergeFrom(other.GameLockInfo);
       }
@@ -690,7 +690,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.gridFightSyncCurtaskInfo_ != null) {
         if (gridFightSyncCurtaskInfo_ == null) {
-          GridFightSyncCurtaskInfo = new global::CastoriceHoney.Server.Proto.GridFightSyncCurrentTaskInfo();
+          GridFightSyncCurtaskInfo = new global::March7thHoney.Proto.GridFightSyncCurrentTaskInfo();
         }
         GridFightSyncCurtaskInfo.MergeFrom(other.GridFightSyncCurtaskInfo);
       }
@@ -719,7 +719,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 16: {
-            LockType = (global::CastoriceHoney.Server.Proto.GridFightLockType) input.ReadEnum();
+            LockType = (global::March7thHoney.Proto.GridFightLockType) input.ReadEnum();
             break;
           }
           case 24: {
@@ -777,7 +777,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 2338: {
             if (gameLockInfo_ == null) {
-              GameLockInfo = new global::CastoriceHoney.Server.Proto.GridFightLockInfo();
+              GameLockInfo = new global::March7thHoney.Proto.GridFightLockInfo();
             }
             input.ReadMessage(GameLockInfo);
             break;
@@ -788,7 +788,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 4338: {
             if (gridFightSyncCurtaskInfo_ == null) {
-              GridFightSyncCurtaskInfo = new global::CastoriceHoney.Server.Proto.GridFightSyncCurrentTaskInfo();
+              GridFightSyncCurtaskInfo = new global::March7thHoney.Proto.GridFightSyncCurrentTaskInfo();
             }
             input.ReadMessage(GridFightSyncCurtaskInfo);
             break;
@@ -822,7 +822,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 16: {
-            LockType = (global::CastoriceHoney.Server.Proto.GridFightLockType) input.ReadEnum();
+            LockType = (global::March7thHoney.Proto.GridFightLockType) input.ReadEnum();
             break;
           }
           case 24: {
@@ -880,7 +880,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 2338: {
             if (gameLockInfo_ == null) {
-              GameLockInfo = new global::CastoriceHoney.Server.Proto.GridFightLockInfo();
+              GameLockInfo = new global::March7thHoney.Proto.GridFightLockInfo();
             }
             input.ReadMessage(GameLockInfo);
             break;
@@ -891,7 +891,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 4338: {
             if (gridFightSyncCurtaskInfo_ == null) {
-              GridFightSyncCurtaskInfo = new global::CastoriceHoney.Server.Proto.GridFightSyncCurrentTaskInfo();
+              GridFightSyncCurtaskInfo = new global::March7thHoney.Proto.GridFightSyncCurrentTaskInfo();
             }
             input.ReadMessage(GridFightSyncCurtaskInfo);
             break;

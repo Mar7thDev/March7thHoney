@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from HeliobusActivityDataScRsp.proto</summary>
   public static partial class HeliobusActivityDataScRspReflection {
@@ -37,9 +37,9 @@ namespace CastoriceHoney.Server.Proto {
             "cmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3Rv",
             "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.DLFOGJGCCGPReflection.Descriptor, global::CastoriceHoney.Server.Proto.FJCDAKICFKAReflection.Descriptor, global::CastoriceHoney.Server.Proto.HeliobusChallengeDataReflection.Descriptor, global::CastoriceHoney.Server.Proto.HeliobusChallengeLineupReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.DLFOGJGCCGPReflection.Descriptor, global::March7thHoney.Proto.FJCDAKICFKAReflection.Descriptor, global::March7thHoney.Proto.HeliobusChallengeDataReflection.Descriptor, global::March7thHoney.Proto.HeliobusChallengeLineupReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.HeliobusActivityDataScRsp), global::CastoriceHoney.Server.Proto.HeliobusActivityDataScRsp.Parser, new[]{ "CHGNKDNFNLF", "IMBOKGFIACA", "Level", "Retcode", "Phase", "DKOGNOKOPKG", "ChallengeList", "GCDLCPMFLMH", "SkillInfo", "LPMIHBLOIAK" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HeliobusActivityDataScRsp), global::March7thHoney.Proto.HeliobusActivityDataScRsp.Parser, new[]{ "CHGNKDNFNLF", "IMBOKGFIACA", "Level", "Retcode", "Phase", "DKOGNOKOPKG", "ChallengeList", "GCDLCPMFLMH", "SkillInfo", "LPMIHBLOIAK" }, null, null, null, null)
           }));
     }
     #endregion
@@ -61,7 +61,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.HeliobusActivityDataScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.HeliobusActivityDataScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -102,12 +102,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "CHGNKDNFNLF" field.</summary>
     public const int CHGNKDNFNLFFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.HeliobusChallengeLineup> _repeated_cHGNKDNFNLF_codec
-        = pb::FieldCodec.ForMessage(10, global::CastoriceHoney.Server.Proto.HeliobusChallengeLineup.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.HeliobusChallengeLineup> cHGNKDNFNLF_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.HeliobusChallengeLineup>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.HeliobusChallengeLineup> _repeated_cHGNKDNFNLF_codec
+        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.HeliobusChallengeLineup.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.HeliobusChallengeLineup> cHGNKDNFNLF_ = new pbc::RepeatedField<global::March7thHoney.Proto.HeliobusChallengeLineup>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.HeliobusChallengeLineup> CHGNKDNFNLF {
+    public pbc::RepeatedField<global::March7thHoney.Proto.HeliobusChallengeLineup> CHGNKDNFNLF {
       get { return cHGNKDNFNLF_; }
     }
 
@@ -173,12 +173,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "challenge_list" field.</summary>
     public const int ChallengeListFieldNumber = 10;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.HeliobusChallengeData> _repeated_challengeList_codec
-        = pb::FieldCodec.ForMessage(82, global::CastoriceHoney.Server.Proto.HeliobusChallengeData.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.HeliobusChallengeData> challengeList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.HeliobusChallengeData>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.HeliobusChallengeData> _repeated_challengeList_codec
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.HeliobusChallengeData.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.HeliobusChallengeData> challengeList_ = new pbc::RepeatedField<global::March7thHoney.Proto.HeliobusChallengeData>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.HeliobusChallengeData> ChallengeList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.HeliobusChallengeData> ChallengeList {
       get { return challengeList_; }
     }
 
@@ -196,10 +196,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "skill_info" field.</summary>
     public const int SkillInfoFieldNumber = 12;
-    private global::CastoriceHoney.Server.Proto.FJCDAKICFKA skillInfo_;
+    private global::March7thHoney.Proto.FJCDAKICFKA skillInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.FJCDAKICFKA SkillInfo {
+    public global::March7thHoney.Proto.FJCDAKICFKA SkillInfo {
       get { return skillInfo_; }
       set {
         skillInfo_ = value;
@@ -208,12 +208,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "LPMIHBLOIAK" field.</summary>
     public const int LPMIHBLOIAKFieldNumber = 15;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.DLFOGJGCCGP> _repeated_lPMIHBLOIAK_codec
-        = pb::FieldCodec.ForMessage(122, global::CastoriceHoney.Server.Proto.DLFOGJGCCGP.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.DLFOGJGCCGP> lPMIHBLOIAK_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.DLFOGJGCCGP>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.DLFOGJGCCGP> _repeated_lPMIHBLOIAK_codec
+        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.DLFOGJGCCGP.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.DLFOGJGCCGP> lPMIHBLOIAK_ = new pbc::RepeatedField<global::March7thHoney.Proto.DLFOGJGCCGP>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.DLFOGJGCCGP> LPMIHBLOIAK {
+    public pbc::RepeatedField<global::March7thHoney.Proto.DLFOGJGCCGP> LPMIHBLOIAK {
       get { return lPMIHBLOIAK_; }
     }
 
@@ -417,7 +417,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.skillInfo_ != null) {
         if (skillInfo_ == null) {
-          SkillInfo = new global::CastoriceHoney.Server.Proto.FJCDAKICFKA();
+          SkillInfo = new global::March7thHoney.Proto.FJCDAKICFKA();
         }
         SkillInfo.MergeFrom(other.SkillInfo);
       }
@@ -475,7 +475,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 98: {
             if (skillInfo_ == null) {
-              SkillInfo = new global::CastoriceHoney.Server.Proto.FJCDAKICFKA();
+              SkillInfo = new global::March7thHoney.Proto.FJCDAKICFKA();
             }
             input.ReadMessage(SkillInfo);
             break;
@@ -537,7 +537,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 98: {
             if (skillInfo_ == null) {
-              SkillInfo = new global::CastoriceHoney.Server.Proto.FJCDAKICFKA();
+              SkillInfo = new global::March7thHoney.Proto.FJCDAKICFKA();
             }
             input.ReadMessage(SkillInfo);
             break;

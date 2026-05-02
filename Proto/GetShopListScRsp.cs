@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GetShopListScRsp.proto</summary>
   public static partial class GetShopListScRspReflection {
@@ -29,9 +29,9 @@ namespace CastoriceHoney.Server.Proto {
             "KA0SGAoJc2hvcF9saXN0GA8gAygLMgUuU2hvcEIzChNlbXUubHVuYXJjb3Jl",
             "LnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ShopReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ShopReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GetShopListScRsp), global::CastoriceHoney.Server.Proto.GetShopListScRsp.Parser, new[]{ "Retcode", "ShopType", "ShopList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetShopListScRsp), global::March7thHoney.Proto.GetShopListScRsp.Parser, new[]{ "Retcode", "ShopType", "ShopList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -53,7 +53,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GetShopListScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GetShopListScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -111,12 +111,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "shop_list" field.</summary>
     public const int ShopListFieldNumber = 15;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.Shop> _repeated_shopList_codec
-        = pb::FieldCodec.ForMessage(122, global::CastoriceHoney.Server.Proto.Shop.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.Shop> shopList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.Shop>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.Shop> _repeated_shopList_codec
+        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.Shop.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.Shop> shopList_ = new pbc::RepeatedField<global::March7thHoney.Proto.Shop>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.Shop> ShopList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.Shop> ShopList {
       get { return shopList_; }
     }
 

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GachaItem.proto</summary>
   public static partial class GachaItemReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "dW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9i",
             "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ItemReflection.Descriptor, global::CastoriceHoney.Server.Proto.ItemListReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemReflection.Descriptor, global::March7thHoney.Proto.ItemListReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GachaItem), global::CastoriceHoney.Server.Proto.GachaItem.Parser, new[]{ "IsNew", "TokenItem", "TransferItemList", "GachaItem_" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GachaItem), global::March7thHoney.Proto.GachaItem.Parser, new[]{ "IsNew", "TokenItem", "TransferItemList", "GachaItem_" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GachaItemReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GachaItemReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -102,10 +102,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "token_item" field.</summary>
     public const int TokenItemFieldNumber = 7;
-    private global::CastoriceHoney.Server.Proto.ItemList tokenItem_;
+    private global::March7thHoney.Proto.ItemList tokenItem_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ItemList TokenItem {
+    public global::March7thHoney.Proto.ItemList TokenItem {
       get { return tokenItem_; }
       set {
         tokenItem_ = value;
@@ -114,10 +114,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "transfer_item_list" field.</summary>
     public const int TransferItemListFieldNumber = 12;
-    private global::CastoriceHoney.Server.Proto.ItemList transferItemList_;
+    private global::March7thHoney.Proto.ItemList transferItemList_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ItemList TransferItemList {
+    public global::March7thHoney.Proto.ItemList TransferItemList {
       get { return transferItemList_; }
       set {
         transferItemList_ = value;
@@ -126,10 +126,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "gacha_item" field.</summary>
     public const int GachaItem_FieldNumber = 13;
-    private global::CastoriceHoney.Server.Proto.Item gachaItem_;
+    private global::March7thHoney.Proto.Item gachaItem_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.Item GachaItem_ {
+    public global::March7thHoney.Proto.Item GachaItem_ {
       get { return gachaItem_; }
       set {
         gachaItem_ = value;
@@ -265,19 +265,19 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.tokenItem_ != null) {
         if (tokenItem_ == null) {
-          TokenItem = new global::CastoriceHoney.Server.Proto.ItemList();
+          TokenItem = new global::March7thHoney.Proto.ItemList();
         }
         TokenItem.MergeFrom(other.TokenItem);
       }
       if (other.transferItemList_ != null) {
         if (transferItemList_ == null) {
-          TransferItemList = new global::CastoriceHoney.Server.Proto.ItemList();
+          TransferItemList = new global::March7thHoney.Proto.ItemList();
         }
         TransferItemList.MergeFrom(other.TransferItemList);
       }
       if (other.gachaItem_ != null) {
         if (gachaItem_ == null) {
-          GachaItem_ = new global::CastoriceHoney.Server.Proto.Item();
+          GachaItem_ = new global::March7thHoney.Proto.Item();
         }
         GachaItem_.MergeFrom(other.GachaItem_);
       }
@@ -306,21 +306,21 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 58: {
             if (tokenItem_ == null) {
-              TokenItem = new global::CastoriceHoney.Server.Proto.ItemList();
+              TokenItem = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(TokenItem);
             break;
           }
           case 98: {
             if (transferItemList_ == null) {
-              TransferItemList = new global::CastoriceHoney.Server.Proto.ItemList();
+              TransferItemList = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(TransferItemList);
             break;
           }
           case 106: {
             if (gachaItem_ == null) {
-              GachaItem_ = new global::CastoriceHoney.Server.Proto.Item();
+              GachaItem_ = new global::March7thHoney.Proto.Item();
             }
             input.ReadMessage(GachaItem_);
             break;
@@ -350,21 +350,21 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 58: {
             if (tokenItem_ == null) {
-              TokenItem = new global::CastoriceHoney.Server.Proto.ItemList();
+              TokenItem = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(TokenItem);
             break;
           }
           case 98: {
             if (transferItemList_ == null) {
-              TransferItemList = new global::CastoriceHoney.Server.Proto.ItemList();
+              TransferItemList = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(TransferItemList);
             break;
           }
           case 106: {
             if (gachaItem_ == null) {
-              GachaItem_ = new global::CastoriceHoney.Server.Proto.Item();
+              GachaItem_ = new global::March7thHoney.Proto.Item();
             }
             input.ReadMessage(GachaItem_);
             break;

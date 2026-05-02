@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GridFightSyncResultData.proto</summary>
   public static partial class GridFightSyncResultDataReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "aWRGaWdodFVwZGF0ZVNyY1R5cGVCMwoTZW11Lmx1bmFyY29yZS5wcm90b6oC",
             "G0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GridFightSyncDataReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightUpdateSrcTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridFightSyncDataReflection.Descriptor, global::March7thHoney.Proto.GridFightUpdateSrcTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GridFightSyncResultData), global::CastoriceHoney.Server.Proto.GridFightSyncResultData.Parser, new[]{ "UpdateDynamicList", "SyncEffectParamList", "GridUpdateSrc" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightSyncResultData), global::March7thHoney.Proto.GridFightSyncResultData.Parser, new[]{ "UpdateDynamicList", "SyncEffectParamList", "GridUpdateSrc" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GridFightSyncResultDataReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GridFightSyncResultDataReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -90,12 +90,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "update_dynamic_list" field.</summary>
     public const int UpdateDynamicListFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.GridFightSyncData> _repeated_updateDynamicList_codec
-        = pb::FieldCodec.ForMessage(34, global::CastoriceHoney.Server.Proto.GridFightSyncData.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridFightSyncData> updateDynamicList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridFightSyncData>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GridFightSyncData> _repeated_updateDynamicList_codec
+        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.GridFightSyncData.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GridFightSyncData> updateDynamicList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GridFightSyncData>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridFightSyncData> UpdateDynamicList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.GridFightSyncData> UpdateDynamicList {
       get { return updateDynamicList_; }
     }
 
@@ -112,10 +112,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "grid_update_src" field.</summary>
     public const int GridUpdateSrcFieldNumber = 13;
-    private global::CastoriceHoney.Server.Proto.GridFightUpdateSrcType gridUpdateSrc_ = global::CastoriceHoney.Server.Proto.GridFightUpdateSrcType.LnpfefkjdhpHefepinlbdp;
+    private global::March7thHoney.Proto.GridFightUpdateSrcType gridUpdateSrc_ = global::March7thHoney.Proto.GridFightUpdateSrcType.LnpfefkjdhpHefepinlbdp;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightUpdateSrcType GridUpdateSrc {
+    public global::March7thHoney.Proto.GridFightUpdateSrcType GridUpdateSrc {
       get { return gridUpdateSrc_; }
       set {
         gridUpdateSrc_ = value;
@@ -149,7 +149,7 @@ namespace CastoriceHoney.Server.Proto {
       int hash = 1;
       hash ^= updateDynamicList_.GetHashCode();
       hash ^= syncEffectParamList_.GetHashCode();
-      if (GridUpdateSrc != global::CastoriceHoney.Server.Proto.GridFightUpdateSrcType.LnpfefkjdhpHefepinlbdp) hash ^= GridUpdateSrc.GetHashCode();
+      if (GridUpdateSrc != global::March7thHoney.Proto.GridFightUpdateSrcType.LnpfefkjdhpHefepinlbdp) hash ^= GridUpdateSrc.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -170,7 +170,7 @@ namespace CastoriceHoney.Server.Proto {
     #else
       updateDynamicList_.WriteTo(output, _repeated_updateDynamicList_codec);
       syncEffectParamList_.WriteTo(output, _repeated_syncEffectParamList_codec);
-      if (GridUpdateSrc != global::CastoriceHoney.Server.Proto.GridFightUpdateSrcType.LnpfefkjdhpHefepinlbdp) {
+      if (GridUpdateSrc != global::March7thHoney.Proto.GridFightUpdateSrcType.LnpfefkjdhpHefepinlbdp) {
         output.WriteRawTag(104);
         output.WriteEnum((int) GridUpdateSrc);
       }
@@ -186,7 +186,7 @@ namespace CastoriceHoney.Server.Proto {
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       updateDynamicList_.WriteTo(ref output, _repeated_updateDynamicList_codec);
       syncEffectParamList_.WriteTo(ref output, _repeated_syncEffectParamList_codec);
-      if (GridUpdateSrc != global::CastoriceHoney.Server.Proto.GridFightUpdateSrcType.LnpfefkjdhpHefepinlbdp) {
+      if (GridUpdateSrc != global::March7thHoney.Proto.GridFightUpdateSrcType.LnpfefkjdhpHefepinlbdp) {
         output.WriteRawTag(104);
         output.WriteEnum((int) GridUpdateSrc);
       }
@@ -202,7 +202,7 @@ namespace CastoriceHoney.Server.Proto {
       int size = 0;
       size += updateDynamicList_.CalculateSize(_repeated_updateDynamicList_codec);
       size += syncEffectParamList_.CalculateSize(_repeated_syncEffectParamList_codec);
-      if (GridUpdateSrc != global::CastoriceHoney.Server.Proto.GridFightUpdateSrcType.LnpfefkjdhpHefepinlbdp) {
+      if (GridUpdateSrc != global::March7thHoney.Proto.GridFightUpdateSrcType.LnpfefkjdhpHefepinlbdp) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) GridUpdateSrc);
       }
       if (_unknownFields != null) {
@@ -219,7 +219,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       updateDynamicList_.Add(other.updateDynamicList_);
       syncEffectParamList_.Add(other.syncEffectParamList_);
-      if (other.GridUpdateSrc != global::CastoriceHoney.Server.Proto.GridFightUpdateSrcType.LnpfefkjdhpHefepinlbdp) {
+      if (other.GridUpdateSrc != global::March7thHoney.Proto.GridFightUpdateSrcType.LnpfefkjdhpHefepinlbdp) {
         GridUpdateSrc = other.GridUpdateSrc;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -251,7 +251,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 104: {
-            GridUpdateSrc = (global::CastoriceHoney.Server.Proto.GridFightUpdateSrcType) input.ReadEnum();
+            GridUpdateSrc = (global::March7thHoney.Proto.GridFightUpdateSrcType) input.ReadEnum();
             break;
           }
         }
@@ -283,7 +283,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 104: {
-            GridUpdateSrc = (global::CastoriceHoney.Server.Proto.GridFightUpdateSrcType) input.ReadEnum();
+            GridUpdateSrc = (global::March7thHoney.Proto.GridFightUpdateSrcType) input.ReadEnum();
             break;
           }
         }

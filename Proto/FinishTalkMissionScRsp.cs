@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from FinishTalkMissionScRsp.proto</summary>
   public static partial class FinishTalkMissionScRspReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "dXN0b21WYWx1ZUIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNl",
             "SG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.MissionCustomValueReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.MissionCustomValueReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.FinishTalkMissionScRsp), global::CastoriceHoney.Server.Proto.FinishTalkMissionScRsp.Parser, new[]{ "SubMissionId", "Retcode", "TalkStr", "CustomValueList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FinishTalkMissionScRsp), global::March7thHoney.Proto.FinishTalkMissionScRsp.Parser, new[]{ "SubMissionId", "Retcode", "TalkStr", "CustomValueList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.FinishTalkMissionScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.FinishTalkMissionScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -126,12 +126,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "custom_value_list" field.</summary>
     public const int CustomValueListFieldNumber = 10;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.MissionCustomValue> _repeated_customValueList_codec
-        = pb::FieldCodec.ForMessage(82, global::CastoriceHoney.Server.Proto.MissionCustomValue.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MissionCustomValue> customValueList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MissionCustomValue>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MissionCustomValue> _repeated_customValueList_codec
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.MissionCustomValue.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MissionCustomValue> customValueList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MissionCustomValue>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MissionCustomValue> CustomValueList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.MissionCustomValue> CustomValueList {
       get { return customValueList_; }
     }
 

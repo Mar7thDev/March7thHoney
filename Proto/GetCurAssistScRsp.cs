@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GetCurAssistScRsp.proto</summary>
   public static partial class GetCurAssistScRspReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "bHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3Rv",
             "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.PlayerAssistInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.PlayerAssistInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GetCurAssistScRsp), global::CastoriceHoney.Server.Proto.GetCurAssistScRsp.Parser, new[]{ "ILPKPBOKMEN", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetCurAssistScRsp), global::March7thHoney.Proto.GetCurAssistScRsp.Parser, new[]{ "ILPKPBOKMEN", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GetCurAssistScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GetCurAssistScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -87,10 +87,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "ILPKPBOKMEN" field.</summary>
     public const int ILPKPBOKMENFieldNumber = 5;
-    private global::CastoriceHoney.Server.Proto.PlayerAssistInfo iLPKPBOKMEN_;
+    private global::March7thHoney.Proto.PlayerAssistInfo iLPKPBOKMEN_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.PlayerAssistInfo ILPKPBOKMEN {
+    public global::March7thHoney.Proto.PlayerAssistInfo ILPKPBOKMEN {
       get { return iLPKPBOKMEN_; }
       set {
         iLPKPBOKMEN_ = value;
@@ -209,7 +209,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.iLPKPBOKMEN_ != null) {
         if (iLPKPBOKMEN_ == null) {
-          ILPKPBOKMEN = new global::CastoriceHoney.Server.Proto.PlayerAssistInfo();
+          ILPKPBOKMEN = new global::March7thHoney.Proto.PlayerAssistInfo();
         }
         ILPKPBOKMEN.MergeFrom(other.ILPKPBOKMEN);
       }
@@ -237,7 +237,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 42: {
             if (iLPKPBOKMEN_ == null) {
-              ILPKPBOKMEN = new global::CastoriceHoney.Server.Proto.PlayerAssistInfo();
+              ILPKPBOKMEN = new global::March7thHoney.Proto.PlayerAssistInfo();
             }
             input.ReadMessage(ILPKPBOKMEN);
             break;
@@ -267,7 +267,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 42: {
             if (iLPKPBOKMEN_ == null) {
-              ILPKPBOKMEN = new global::CastoriceHoney.Server.Proto.PlayerAssistInfo();
+              ILPKPBOKMEN = new global::March7thHoney.Proto.PlayerAssistInfo();
             }
             input.ReadMessage(ILPKPBOKMEN);
             break;

@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.GameServer.Game.ChessRogue.Modifier;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.GameServer.Game.ChessRogue.Modifier;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Send.RogueModifier;
+namespace March7thHoney.GameServer.Server.Packet.Send.RogueModifier;
 
 public class PacketRogueModifierAddNotify : BasePacket
 {

@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.GameServer.Game.Scene.Component;
+namespace March7thHoney.GameServer.Game.Scene.Component;
 
 public abstract class BaseSceneComponent(SceneInstance scene)
 {

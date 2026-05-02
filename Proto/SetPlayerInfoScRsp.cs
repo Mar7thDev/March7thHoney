@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from SetPlayerInfoScRsp.proto</summary>
   public static partial class SetPlayerInfoScRspReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "ZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Q",
             "cm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.MultiPathAvatarTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.MultiPathAvatarTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.SetPlayerInfoScRsp), global::CastoriceHoney.Server.Proto.SetPlayerInfoScRsp.Parser, new[]{ "IsModify", "SetTime", "CurAvatarPath", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetPlayerInfoScRsp), global::March7thHoney.Proto.SetPlayerInfoScRsp.Parser, new[]{ "IsModify", "SetTime", "CurAvatarPath", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.SetPlayerInfoScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.SetPlayerInfoScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -114,10 +114,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "cur_avatar_path" field.</summary>
     public const int CurAvatarPathFieldNumber = 6;
-    private global::CastoriceHoney.Server.Proto.MultiPathAvatarType curAvatarPath_ = global::CastoriceHoney.Server.Proto.MultiPathAvatarType.None;
+    private global::March7thHoney.Proto.MultiPathAvatarType curAvatarPath_ = global::March7thHoney.Proto.MultiPathAvatarType.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.MultiPathAvatarType CurAvatarPath {
+    public global::March7thHoney.Proto.MultiPathAvatarType CurAvatarPath {
       get { return curAvatarPath_; }
       set {
         curAvatarPath_ = value;
@@ -164,7 +164,7 @@ namespace CastoriceHoney.Server.Proto {
       int hash = 1;
       if (IsModify != false) hash ^= IsModify.GetHashCode();
       if (SetTime != 0L) hash ^= SetTime.GetHashCode();
-      if (CurAvatarPath != global::CastoriceHoney.Server.Proto.MultiPathAvatarType.None) hash ^= CurAvatarPath.GetHashCode();
+      if (CurAvatarPath != global::March7thHoney.Proto.MultiPathAvatarType.None) hash ^= CurAvatarPath.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -192,7 +192,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(40);
         output.WriteInt64(SetTime);
       }
-      if (CurAvatarPath != global::CastoriceHoney.Server.Proto.MultiPathAvatarType.None) {
+      if (CurAvatarPath != global::March7thHoney.Proto.MultiPathAvatarType.None) {
         output.WriteRawTag(48);
         output.WriteEnum((int) CurAvatarPath);
       }
@@ -218,7 +218,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(40);
         output.WriteInt64(SetTime);
       }
-      if (CurAvatarPath != global::CastoriceHoney.Server.Proto.MultiPathAvatarType.None) {
+      if (CurAvatarPath != global::March7thHoney.Proto.MultiPathAvatarType.None) {
         output.WriteRawTag(48);
         output.WriteEnum((int) CurAvatarPath);
       }
@@ -242,7 +242,7 @@ namespace CastoriceHoney.Server.Proto {
       if (SetTime != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(SetTime);
       }
-      if (CurAvatarPath != global::CastoriceHoney.Server.Proto.MultiPathAvatarType.None) {
+      if (CurAvatarPath != global::March7thHoney.Proto.MultiPathAvatarType.None) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) CurAvatarPath);
       }
       if (Retcode != 0) {
@@ -266,7 +266,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other.SetTime != 0L) {
         SetTime = other.SetTime;
       }
-      if (other.CurAvatarPath != global::CastoriceHoney.Server.Proto.MultiPathAvatarType.None) {
+      if (other.CurAvatarPath != global::March7thHoney.Proto.MultiPathAvatarType.None) {
         CurAvatarPath = other.CurAvatarPath;
       }
       if (other.Retcode != 0) {
@@ -300,7 +300,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 48: {
-            CurAvatarPath = (global::CastoriceHoney.Server.Proto.MultiPathAvatarType) input.ReadEnum();
+            CurAvatarPath = (global::March7thHoney.Proto.MultiPathAvatarType) input.ReadEnum();
             break;
           }
           case 56: {
@@ -335,7 +335,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 48: {
-            CurAvatarPath = (global::CastoriceHoney.Server.Proto.MultiPathAvatarType) input.ReadEnum();
+            CurAvatarPath = (global::March7thHoney.Proto.MultiPathAvatarType) input.ReadEnum();
             break;
           }
           case 56: {

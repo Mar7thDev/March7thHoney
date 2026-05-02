@@ -1,6 +1,6 @@
 using System.Buffers.Binary;
 
-namespace CastoriceHoney.Server.Util.Security;
+namespace March7thHoney.Util.Security;
 
 public class Ec2b
 {

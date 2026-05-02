@@ -1,11 +1,11 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Enums.Scene;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Data;
+using March7thHoney.Enums.Scene;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 using Google.Protobuf;
 using SqlSugar;
 
-namespace CastoriceHoney.Server.Database.Scene;
+namespace March7thHoney.Database.Scene;
 
 [SugarTable("Scene")]
 public class SceneData : BaseDatabaseDataHelper

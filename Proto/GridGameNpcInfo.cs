@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GridGameNpcInfo.proto</summary>
   public static partial class GridGameNpcInfoReflection {
@@ -31,7 +31,7 @@ namespace CastoriceHoney.Server.Proto {
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GridGameNpcInfo), global::CastoriceHoney.Server.Proto.GridGameNpcInfo.Parser, new[]{ "UpdateEquipsComponent", "UniqueId", "Id", "Pos" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridGameNpcInfo), global::March7thHoney.Proto.GridGameNpcInfo.Parser, new[]{ "UpdateEquipsComponent", "UniqueId", "Id", "Pos" }, null, null, null, null)
           }));
     }
     #endregion
@@ -53,7 +53,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GridGameNpcInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GridGameNpcInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from UpdateServerPrefsDataCsReq.proto</summary>
   public static partial class UpdateServerPrefsDataCsReqReflection {
@@ -29,9 +29,9 @@ namespace CastoriceHoney.Server.Proto {
             "dmVyX3ByZWZzGA0gASgLMgwuU2VydmVyUHJlZnNCMwoTZW11Lmx1bmFyY29y",
             "ZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ServerPrefsReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ServerPrefsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.UpdateServerPrefsDataCsReq), global::CastoriceHoney.Server.Proto.UpdateServerPrefsDataCsReq.Parser, new[]{ "ServerPrefs" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UpdateServerPrefsDataCsReq), global::March7thHoney.Proto.UpdateServerPrefsDataCsReq.Parser, new[]{ "ServerPrefs" }, null, null, null, null)
           }));
     }
     #endregion
@@ -53,7 +53,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.UpdateServerPrefsDataCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.UpdateServerPrefsDataCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -85,10 +85,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "server_prefs" field.</summary>
     public const int ServerPrefsFieldNumber = 13;
-    private global::CastoriceHoney.Server.Proto.ServerPrefs serverPrefs_;
+    private global::March7thHoney.Proto.ServerPrefs serverPrefs_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ServerPrefs ServerPrefs {
+    public global::March7thHoney.Proto.ServerPrefs ServerPrefs {
       get { return serverPrefs_; }
       set {
         serverPrefs_ = value;
@@ -182,7 +182,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.serverPrefs_ != null) {
         if (serverPrefs_ == null) {
-          ServerPrefs = new global::CastoriceHoney.Server.Proto.ServerPrefs();
+          ServerPrefs = new global::March7thHoney.Proto.ServerPrefs();
         }
         ServerPrefs.MergeFrom(other.ServerPrefs);
       }
@@ -207,7 +207,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 106: {
             if (serverPrefs_ == null) {
-              ServerPrefs = new global::CastoriceHoney.Server.Proto.ServerPrefs();
+              ServerPrefs = new global::March7thHoney.Proto.ServerPrefs();
             }
             input.ReadMessage(ServerPrefs);
             break;
@@ -233,7 +233,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 106: {
             if (serverPrefs_ == null) {
-              ServerPrefs = new global::CastoriceHoney.Server.Proto.ServerPrefs();
+              ServerPrefs = new global::March7thHoney.Proto.ServerPrefs();
             }
             input.ReadMessage(ServerPrefs);
             break;

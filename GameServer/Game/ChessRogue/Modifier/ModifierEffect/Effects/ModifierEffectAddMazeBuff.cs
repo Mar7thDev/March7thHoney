@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Enums.Rogue;
-using CastoriceHoney.Server.GameServer.Game.Battle;
+using March7thHoney.Data;
+using March7thHoney.Enums.Rogue;
+using March7thHoney.GameServer.Game.Battle;
 
-namespace CastoriceHoney.Server.GameServer.Game.ChessRogue.Modifier.ModifierEffect.Effects;
+namespace March7thHoney.GameServer.Game.ChessRogue.Modifier.ModifierEffect.Effects;
 
 [ModifierEffect(ModifierEffectTypeEnum.AddMazeBuff)]
 public class ModifierEffectAddMazeBuff : ModifierEffectHandler

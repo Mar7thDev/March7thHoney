@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Message;
-using CastoriceHoney.Server.Kcp;
+using March7thHoney.GameServer.Server.Packet.Send.Message;
+using March7thHoney.Kcp;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Message;
+namespace March7thHoney.GameServer.Server.Packet.Recv.Message;
 
 [Opcode(CmdIds.GetNpcStatusCsReq)]
 public class HandlerGetNpcStatusCsReq : Handler

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from BOHKJAPOIKO.proto</summary>
   public static partial class BOHKJAPOIKOReflection {
@@ -29,9 +29,9 @@ namespace CastoriceHoney.Server.Proto {
             "ZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Q",
             "cm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GCDILNNEKNKReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GCDILNNEKNKReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.BOHKJAPOIKO), global::CastoriceHoney.Server.Proto.BOHKJAPOIKO.Parser, new[]{ "AreaList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BOHKJAPOIKO), global::March7thHoney.Proto.BOHKJAPOIKO.Parser, new[]{ "AreaList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -53,7 +53,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.BOHKJAPOIKOReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.BOHKJAPOIKOReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -85,12 +85,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "area_list" field.</summary>
     public const int AreaListFieldNumber = 7;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.GCDILNNEKNK> _repeated_areaList_codec
-        = pb::FieldCodec.ForMessage(58, global::CastoriceHoney.Server.Proto.GCDILNNEKNK.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GCDILNNEKNK> areaList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GCDILNNEKNK>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GCDILNNEKNK> _repeated_areaList_codec
+        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.GCDILNNEKNK.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GCDILNNEKNK> areaList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GCDILNNEKNK>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GCDILNNEKNK> AreaList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.GCDILNNEKNK> AreaList {
       get { return areaList_; }
     }
 

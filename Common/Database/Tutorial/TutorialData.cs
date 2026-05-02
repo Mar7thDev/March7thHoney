@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Proto;
 using SqlSugar;
 
-namespace CastoriceHoney.Server.Database.Tutorial;
+namespace March7thHoney.Database.Tutorial;
 
 [SugarTable("Tutorial")]
 public class TutorialData : BaseDatabaseDataHelper

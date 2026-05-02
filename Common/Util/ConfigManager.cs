@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Configuration;
-using CastoriceHoney.Server.Internationalization;
+using March7thHoney.Configuration;
+using March7thHoney.Internationalization;
 using Newtonsoft.Json;
 
-namespace CastoriceHoney.Server.Util;
+namespace March7thHoney.Util;
 
 public static class ConfigManager
 {

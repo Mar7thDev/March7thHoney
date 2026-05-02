@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Util;
+namespace March7thHoney.Util;
 
 /// <summary>
 ///     A list that can be used to randomly select an element with a certain weight from it.

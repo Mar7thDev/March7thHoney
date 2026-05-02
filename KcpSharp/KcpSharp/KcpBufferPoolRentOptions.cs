@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Kcp.KcpSharp;
+namespace March7thHoney.Kcp.KcpSharp;
 
 /// <summary>
 ///     The options to use when renting buffers from the pool.

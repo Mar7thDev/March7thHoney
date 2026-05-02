@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from HeliobusLineupUpdateScNotify.proto</summary>
   public static partial class HeliobusLineupUpdateScNotifyReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "TGluZXVwQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25l",
             "eS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.HeliobusChallengeLineupReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.HeliobusChallengeLineupReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.HeliobusLineupUpdateScNotify), global::CastoriceHoney.Server.Proto.HeliobusLineupUpdateScNotify.Parser, new[]{ "Lineup" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HeliobusLineupUpdateScNotify), global::March7thHoney.Proto.HeliobusLineupUpdateScNotify.Parser, new[]{ "Lineup" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.HeliobusLineupUpdateScNotifyReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.HeliobusLineupUpdateScNotifyReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -86,10 +86,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "lineup" field.</summary>
     public const int LineupFieldNumber = 1;
-    private global::CastoriceHoney.Server.Proto.HeliobusChallengeLineup lineup_;
+    private global::March7thHoney.Proto.HeliobusChallengeLineup lineup_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.HeliobusChallengeLineup Lineup {
+    public global::March7thHoney.Proto.HeliobusChallengeLineup Lineup {
       get { return lineup_; }
       set {
         lineup_ = value;
@@ -183,7 +183,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.lineup_ != null) {
         if (lineup_ == null) {
-          Lineup = new global::CastoriceHoney.Server.Proto.HeliobusChallengeLineup();
+          Lineup = new global::March7thHoney.Proto.HeliobusChallengeLineup();
         }
         Lineup.MergeFrom(other.Lineup);
       }
@@ -208,7 +208,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 10: {
             if (lineup_ == null) {
-              Lineup = new global::CastoriceHoney.Server.Proto.HeliobusChallengeLineup();
+              Lineup = new global::March7thHoney.Proto.HeliobusChallengeLineup();
             }
             input.ReadMessage(Lineup);
             break;
@@ -234,7 +234,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 10: {
             if (lineup_ == null) {
-              Lineup = new global::CastoriceHoney.Server.Proto.HeliobusChallengeLineup();
+              Lineup = new global::March7thHoney.Proto.HeliobusChallengeLineup();
             }
             input.ReadMessage(Lineup);
             break;

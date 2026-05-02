@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GetTutorialGuideScRsp.proto</summary>
   public static partial class GetTutorialGuideScRspReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "ZGVCMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNl",
             "cnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.TutorialGuideReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.TutorialGuideReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GetTutorialGuideScRsp), global::CastoriceHoney.Server.Proto.GetTutorialGuideScRsp.Parser, new[]{ "Retcode", "TutorialGuideList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetTutorialGuideScRsp), global::March7thHoney.Proto.GetTutorialGuideScRsp.Parser, new[]{ "Retcode", "TutorialGuideList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GetTutorialGuideScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GetTutorialGuideScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -99,12 +99,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "tutorial_guide_list" field.</summary>
     public const int TutorialGuideListFieldNumber = 10;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.TutorialGuide> _repeated_tutorialGuideList_codec
-        = pb::FieldCodec.ForMessage(82, global::CastoriceHoney.Server.Proto.TutorialGuide.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.TutorialGuide> tutorialGuideList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.TutorialGuide>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.TutorialGuide> _repeated_tutorialGuideList_codec
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.TutorialGuide.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.TutorialGuide> tutorialGuideList_ = new pbc::RepeatedField<global::March7thHoney.Proto.TutorialGuide>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.TutorialGuide> TutorialGuideList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.TutorialGuide> TutorialGuideList {
       get { return tutorialGuideList_; }
     }
 

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from ChangePropTimelineInfoCsReq.proto</summary>
   public static partial class ChangePropTimelineInfoCsReqReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "YXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZw",
             "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.PropTimelineInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.PropTimelineInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ChangePropTimelineInfoCsReq), global::CastoriceHoney.Server.Proto.ChangePropTimelineInfoCsReq.Parser, new[]{ "IsCloseMap", "PropEntityId", "Uuid", "TimelineInfo", "InteractId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChangePropTimelineInfoCsReq), global::March7thHoney.Proto.ChangePropTimelineInfoCsReq.Parser, new[]{ "IsCloseMap", "PropEntityId", "Uuid", "TimelineInfo", "InteractId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ChangePropTimelineInfoCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ChangePropTimelineInfoCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -128,10 +128,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "timeline_info" field.</summary>
     public const int TimelineInfoFieldNumber = 11;
-    private global::CastoriceHoney.Server.Proto.PropTimelineInfo timelineInfo_;
+    private global::March7thHoney.Proto.PropTimelineInfo timelineInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.PropTimelineInfo TimelineInfo {
+    public global::March7thHoney.Proto.PropTimelineInfo TimelineInfo {
       get { return timelineInfo_; }
       set {
         timelineInfo_ = value;
@@ -298,7 +298,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.timelineInfo_ != null) {
         if (timelineInfo_ == null) {
-          TimelineInfo = new global::CastoriceHoney.Server.Proto.PropTimelineInfo();
+          TimelineInfo = new global::March7thHoney.Proto.PropTimelineInfo();
         }
         TimelineInfo.MergeFrom(other.TimelineInfo);
       }
@@ -338,7 +338,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 90: {
             if (timelineInfo_ == null) {
-              TimelineInfo = new global::CastoriceHoney.Server.Proto.PropTimelineInfo();
+              TimelineInfo = new global::March7thHoney.Proto.PropTimelineInfo();
             }
             input.ReadMessage(TimelineInfo);
             break;
@@ -380,7 +380,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 90: {
             if (timelineInfo_ == null) {
-              TimelineInfo = new global::CastoriceHoney.Server.Proto.PropTimelineInfo();
+              TimelineInfo = new global::March7thHoney.Proto.PropTimelineInfo();
             }
             input.ReadMessage(TimelineInfo);
             break;

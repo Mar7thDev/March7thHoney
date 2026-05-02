@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from NpcExtraInfo.proto</summary>
   public static partial class NpcExtraInfoReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "SUhGQUpDTE9DQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VI",
             "b25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.EBFBPHIADMIReflection.Descriptor, global::CastoriceHoney.Server.Proto.NEAOBFJOMCFReflection.Descriptor, global::CastoriceHoney.Server.Proto.NpcRogueGameInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.EBFBPHIADMIReflection.Descriptor, global::March7thHoney.Proto.NEAOBFJOMCFReflection.Descriptor, global::March7thHoney.Proto.NpcRogueGameInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.NpcExtraInfo), global::CastoriceHoney.Server.Proto.NpcExtraInfo.Parser, new[]{ "JACDADCHNFL", "FPCOMNAOABD", "RogueGameInfo" }, new[]{ "BPIHFAJCLOC" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NpcExtraInfo), global::March7thHoney.Proto.NpcExtraInfo.Parser, new[]{ "JACDADCHNFL", "FPCOMNAOABD", "RogueGameInfo" }, new[]{ "BPIHFAJCLOC" }, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.NpcExtraInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.NpcExtraInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -101,8 +101,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int JACDADCHNFLFieldNumber = 3;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.EBFBPHIADMI JACDADCHNFL {
-      get { return bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.JACDADCHNFL ? (global::CastoriceHoney.Server.Proto.EBFBPHIADMI) bPIHFAJCLOC_ : null; }
+    public global::March7thHoney.Proto.EBFBPHIADMI JACDADCHNFL {
+      get { return bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.JACDADCHNFL ? (global::March7thHoney.Proto.EBFBPHIADMI) bPIHFAJCLOC_ : null; }
       set {
         bPIHFAJCLOC_ = value;
         bPIHFAJCLOCCase_ = value == null ? BPIHFAJCLOCOneofCase.None : BPIHFAJCLOCOneofCase.JACDADCHNFL;
@@ -113,8 +113,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int FPCOMNAOABDFieldNumber = 11;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.NEAOBFJOMCF FPCOMNAOABD {
-      get { return bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.FPCOMNAOABD ? (global::CastoriceHoney.Server.Proto.NEAOBFJOMCF) bPIHFAJCLOC_ : null; }
+    public global::March7thHoney.Proto.NEAOBFJOMCF FPCOMNAOABD {
+      get { return bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.FPCOMNAOABD ? (global::March7thHoney.Proto.NEAOBFJOMCF) bPIHFAJCLOC_ : null; }
       set {
         bPIHFAJCLOC_ = value;
         bPIHFAJCLOCCase_ = value == null ? BPIHFAJCLOCOneofCase.None : BPIHFAJCLOCOneofCase.FPCOMNAOABD;
@@ -125,8 +125,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int RogueGameInfoFieldNumber = 15;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.NpcRogueGameInfo RogueGameInfo {
-      get { return bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.RogueGameInfo ? (global::CastoriceHoney.Server.Proto.NpcRogueGameInfo) bPIHFAJCLOC_ : null; }
+    public global::March7thHoney.Proto.NpcRogueGameInfo RogueGameInfo {
+      get { return bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.RogueGameInfo ? (global::March7thHoney.Proto.NpcRogueGameInfo) bPIHFAJCLOC_ : null; }
       set {
         bPIHFAJCLOC_ = value;
         bPIHFAJCLOCCase_ = value == null ? BPIHFAJCLOCOneofCase.None : BPIHFAJCLOCOneofCase.RogueGameInfo;
@@ -271,19 +271,19 @@ namespace CastoriceHoney.Server.Proto {
       switch (other.BPIHFAJCLOCCase) {
         case BPIHFAJCLOCOneofCase.JACDADCHNFL:
           if (JACDADCHNFL == null) {
-            JACDADCHNFL = new global::CastoriceHoney.Server.Proto.EBFBPHIADMI();
+            JACDADCHNFL = new global::March7thHoney.Proto.EBFBPHIADMI();
           }
           JACDADCHNFL.MergeFrom(other.JACDADCHNFL);
           break;
         case BPIHFAJCLOCOneofCase.FPCOMNAOABD:
           if (FPCOMNAOABD == null) {
-            FPCOMNAOABD = new global::CastoriceHoney.Server.Proto.NEAOBFJOMCF();
+            FPCOMNAOABD = new global::March7thHoney.Proto.NEAOBFJOMCF();
           }
           FPCOMNAOABD.MergeFrom(other.FPCOMNAOABD);
           break;
         case BPIHFAJCLOCOneofCase.RogueGameInfo:
           if (RogueGameInfo == null) {
-            RogueGameInfo = new global::CastoriceHoney.Server.Proto.NpcRogueGameInfo();
+            RogueGameInfo = new global::March7thHoney.Proto.NpcRogueGameInfo();
           }
           RogueGameInfo.MergeFrom(other.RogueGameInfo);
           break;
@@ -309,7 +309,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 26: {
-            global::CastoriceHoney.Server.Proto.EBFBPHIADMI subBuilder = new global::CastoriceHoney.Server.Proto.EBFBPHIADMI();
+            global::March7thHoney.Proto.EBFBPHIADMI subBuilder = new global::March7thHoney.Proto.EBFBPHIADMI();
             if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.JACDADCHNFL) {
               subBuilder.MergeFrom(JACDADCHNFL);
             }
@@ -318,7 +318,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 90: {
-            global::CastoriceHoney.Server.Proto.NEAOBFJOMCF subBuilder = new global::CastoriceHoney.Server.Proto.NEAOBFJOMCF();
+            global::March7thHoney.Proto.NEAOBFJOMCF subBuilder = new global::March7thHoney.Proto.NEAOBFJOMCF();
             if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.FPCOMNAOABD) {
               subBuilder.MergeFrom(FPCOMNAOABD);
             }
@@ -327,7 +327,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 122: {
-            global::CastoriceHoney.Server.Proto.NpcRogueGameInfo subBuilder = new global::CastoriceHoney.Server.Proto.NpcRogueGameInfo();
+            global::March7thHoney.Proto.NpcRogueGameInfo subBuilder = new global::March7thHoney.Proto.NpcRogueGameInfo();
             if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.RogueGameInfo) {
               subBuilder.MergeFrom(RogueGameInfo);
             }
@@ -355,7 +355,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 26: {
-            global::CastoriceHoney.Server.Proto.EBFBPHIADMI subBuilder = new global::CastoriceHoney.Server.Proto.EBFBPHIADMI();
+            global::March7thHoney.Proto.EBFBPHIADMI subBuilder = new global::March7thHoney.Proto.EBFBPHIADMI();
             if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.JACDADCHNFL) {
               subBuilder.MergeFrom(JACDADCHNFL);
             }
@@ -364,7 +364,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 90: {
-            global::CastoriceHoney.Server.Proto.NEAOBFJOMCF subBuilder = new global::CastoriceHoney.Server.Proto.NEAOBFJOMCF();
+            global::March7thHoney.Proto.NEAOBFJOMCF subBuilder = new global::March7thHoney.Proto.NEAOBFJOMCF();
             if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.FPCOMNAOABD) {
               subBuilder.MergeFrom(FPCOMNAOABD);
             }
@@ -373,7 +373,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 122: {
-            global::CastoriceHoney.Server.Proto.NpcRogueGameInfo subBuilder = new global::CastoriceHoney.Server.Proto.NpcRogueGameInfo();
+            global::March7thHoney.Proto.NpcRogueGameInfo subBuilder = new global::March7thHoney.Proto.NpcRogueGameInfo();
             if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.RogueGameInfo) {
               subBuilder.MergeFrom(RogueGameInfo);
             }

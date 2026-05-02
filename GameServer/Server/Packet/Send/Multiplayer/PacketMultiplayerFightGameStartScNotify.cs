@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.GameServer.Game.MultiPlayer;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.GameServer.Game.MultiPlayer;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Send.Multiplayer;
+namespace March7thHoney.GameServer.Server.Packet.Send.Multiplayer;
 
 public class PacketMultiplayerFightGameStartScNotify : BasePacket
 {

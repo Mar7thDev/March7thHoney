@@ -1,6 +1,6 @@
 using Newtonsoft.Json.Linq;
 
-namespace CastoriceHoney.Server.Data.Config.AdventureAbility;
+namespace March7thHoney.Data.Config.AdventureAbility;
 
 public class AdventureModifierLookupTableConfig
 {

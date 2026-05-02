@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from Dispatch.proto</summary>
   public static partial class DispatchReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "b25JbmZvEhMKC0ZLQ0VITVBJQUdHGAUgASgJQjMKE2VtdS5sdW5hcmNvcmUu",
             "cHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.RegionInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.RegionInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.Dispatch), global::CastoriceHoney.Server.Proto.Dispatch.Parser, new[]{ "Retcode", "Msg", "TopSeverRegionName", "RegionList", "FKCEHMPIAGG" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.Dispatch), global::March7thHoney.Proto.Dispatch.Parser, new[]{ "Retcode", "Msg", "TopSeverRegionName", "RegionList", "FKCEHMPIAGG" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.DispatchReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.DispatchReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -126,12 +126,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "region_list" field.</summary>
     public const int RegionListFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.RegionInfo> _repeated_regionList_codec
-        = pb::FieldCodec.ForMessage(34, global::CastoriceHoney.Server.Proto.RegionInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.RegionInfo> regionList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.RegionInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.RegionInfo> _repeated_regionList_codec
+        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.RegionInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.RegionInfo> regionList_ = new pbc::RepeatedField<global::March7thHoney.Proto.RegionInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.RegionInfo> RegionList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.RegionInfo> RegionList {
       get { return regionList_; }
     }
 

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GridFightTutorialSyncInfo.proto</summary>
   public static partial class GridFightTutorialSyncInfoReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "T0NDR0VPRUNPQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VI",
             "b25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GridFightCurrentTaskReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridFightCurrentTaskReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GridFightTutorialSyncInfo), global::CastoriceHoney.Server.Proto.GridFightTutorialSyncInfo.Parser, new[]{ "CurrentTask", "StartGridFightTutorialId", "FinishGridFightTutorialId" }, new[]{ "KCOCCGEOECO" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightTutorialSyncInfo), global::March7thHoney.Proto.GridFightTutorialSyncInfo.Parser, new[]{ "CurrentTask", "StartGridFightTutorialId", "FinishGridFightTutorialId" }, new[]{ "KCOCCGEOECO" }, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GridFightTutorialSyncInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GridFightTutorialSyncInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -101,8 +101,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int CurrentTaskFieldNumber = 9;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightCurrentTask CurrentTask {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.CurrentTask ? (global::CastoriceHoney.Server.Proto.GridFightCurrentTask) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.GridFightCurrentTask CurrentTask {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.CurrentTask ? (global::March7thHoney.Proto.GridFightCurrentTask) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.CurrentTask;
@@ -299,7 +299,7 @@ namespace CastoriceHoney.Server.Proto {
       switch (other.KCOCCGEOECOCase) {
         case KCOCCGEOECOOneofCase.CurrentTask:
           if (CurrentTask == null) {
-            CurrentTask = new global::CastoriceHoney.Server.Proto.GridFightCurrentTask();
+            CurrentTask = new global::March7thHoney.Proto.GridFightCurrentTask();
           }
           CurrentTask.MergeFrom(other.CurrentTask);
           break;
@@ -331,7 +331,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 74: {
-            global::CastoriceHoney.Server.Proto.GridFightCurrentTask subBuilder = new global::CastoriceHoney.Server.Proto.GridFightCurrentTask();
+            global::March7thHoney.Proto.GridFightCurrentTask subBuilder = new global::March7thHoney.Proto.GridFightCurrentTask();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.CurrentTask) {
               subBuilder.MergeFrom(CurrentTask);
             }
@@ -367,7 +367,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 74: {
-            global::CastoriceHoney.Server.Proto.GridFightCurrentTask subBuilder = new global::CastoriceHoney.Server.Proto.GridFightCurrentTask();
+            global::March7thHoney.Proto.GridFightCurrentTask subBuilder = new global::March7thHoney.Proto.GridFightCurrentTask();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.CurrentTask) {
               subBuilder.MergeFrom(CurrentTask);
             }

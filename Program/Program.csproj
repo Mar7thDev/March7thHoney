@@ -5,8 +5,8 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <RootNamespace>CastoriceHoney.Server.Program</RootNamespace>
-    <AssemblyName>CastoriceHoney</AssemblyName>
+    <RootNamespace>March7thHoney.Program</RootNamespace>
+    <AssemblyName>March7thHoney</AssemblyName>
     <ApplicationIcon>CastoriceHoney.ico</ApplicationIcon>
   </PropertyGroup>
 

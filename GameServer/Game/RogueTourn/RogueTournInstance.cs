@@ -1,26 +1,26 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Data.Custom;
-using CastoriceHoney.Server.Data.Excel;
-using CastoriceHoney.Server.Enums.Rogue;
-using CastoriceHoney.Server.Enums.Scene;
-using CastoriceHoney.Server.Enums.TournRogue;
-using CastoriceHoney.Server.GameServer.Game.Battle;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.GameServer.Game.Rogue;
-using CastoriceHoney.Server.GameServer.Game.Rogue.Buff;
-using CastoriceHoney.Server.GameServer.Game.Rogue.Event;
-using CastoriceHoney.Server.GameServer.Game.RogueTourn.Formula;
-using CastoriceHoney.Server.GameServer.Game.RogueTourn.Scene;
-using CastoriceHoney.Server.GameServer.Game.RogueTourn.Titan;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.EraFlipper;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Lineup;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.RogueCommon;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.RogueTourn;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
-using FormulaTypeValue = CastoriceHoney.Server.Proto.FormulaTypeValue;
+using March7thHoney.Data;
+using March7thHoney.Data.Custom;
+using March7thHoney.Data.Excel;
+using March7thHoney.Enums.Rogue;
+using March7thHoney.Enums.Scene;
+using March7thHoney.Enums.TournRogue;
+using March7thHoney.GameServer.Game.Battle;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Game.Rogue;
+using March7thHoney.GameServer.Game.Rogue.Buff;
+using March7thHoney.GameServer.Game.Rogue.Event;
+using March7thHoney.GameServer.Game.RogueTourn.Formula;
+using March7thHoney.GameServer.Game.RogueTourn.Scene;
+using March7thHoney.GameServer.Game.RogueTourn.Titan;
+using March7thHoney.GameServer.Server.Packet.Send.EraFlipper;
+using March7thHoney.GameServer.Server.Packet.Send.Lineup;
+using March7thHoney.GameServer.Server.Packet.Send.RogueCommon;
+using March7thHoney.GameServer.Server.Packet.Send.RogueTourn;
+using March7thHoney.Proto;
+using March7thHoney.Util;
+using FormulaTypeValue = March7thHoney.Proto.FormulaTypeValue;
 
-namespace CastoriceHoney.Server.GameServer.Game.RogueTourn;
+namespace March7thHoney.GameServer.Game.RogueTourn;
 
 public class RogueTournInstance : BaseRogueInstance
 {

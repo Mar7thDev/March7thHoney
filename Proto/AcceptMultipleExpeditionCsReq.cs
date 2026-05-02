@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from AcceptMultipleExpeditionCsReq.proto</summary>
   public static partial class AcceptMultipleExpeditionCsReqReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "dS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJv",
             "dG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ExpeditionInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ExpeditionInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.AcceptMultipleExpeditionCsReq), global::CastoriceHoney.Server.Proto.AcceptMultipleExpeditionCsReq.Parser, new[]{ "Expedition" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AcceptMultipleExpeditionCsReq), global::March7thHoney.Proto.AcceptMultipleExpeditionCsReq.Parser, new[]{ "Expedition" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.AcceptMultipleExpeditionCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.AcceptMultipleExpeditionCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -86,12 +86,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "expedition" field.</summary>
     public const int ExpeditionFieldNumber = 13;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ExpeditionInfo> _repeated_expedition_codec
-        = pb::FieldCodec.ForMessage(106, global::CastoriceHoney.Server.Proto.ExpeditionInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ExpeditionInfo> expedition_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ExpeditionInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ExpeditionInfo> _repeated_expedition_codec
+        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.ExpeditionInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ExpeditionInfo> expedition_ = new pbc::RepeatedField<global::March7thHoney.Proto.ExpeditionInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ExpeditionInfo> Expedition {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ExpeditionInfo> Expedition {
       get { return expedition_; }
     }
 

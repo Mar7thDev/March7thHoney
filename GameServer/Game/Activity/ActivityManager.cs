@@ -1,11 +1,11 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Database;
-using CastoriceHoney.Server.Database.Activity;
-using CastoriceHoney.Server.GameServer.Game.Activity.Activities;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Data;
+using March7thHoney.Database;
+using March7thHoney.Database.Activity;
+using March7thHoney.GameServer.Game.Activity.Activities;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Game.Activity;
+namespace March7thHoney.GameServer.Game.Activity;
 
 public class ActivityManager : BasePlayerManager
 {

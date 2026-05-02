@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GetAllServerPrefsDataScRsp.proto</summary>
   public static partial class GetAllServerPrefsDataScRspReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "clByZWZzQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25l",
             "eS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ServerPrefsReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ServerPrefsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GetAllServerPrefsDataScRsp), global::CastoriceHoney.Server.Proto.GetAllServerPrefsDataScRsp.Parser, new[]{ "Retcode", "ServerPrefsList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetAllServerPrefsDataScRsp), global::March7thHoney.Proto.GetAllServerPrefsDataScRsp.Parser, new[]{ "Retcode", "ServerPrefsList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GetAllServerPrefsDataScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GetAllServerPrefsDataScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -99,12 +99,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "server_prefs_list" field.</summary>
     public const int ServerPrefsListFieldNumber = 10;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ServerPrefs> _repeated_serverPrefsList_codec
-        = pb::FieldCodec.ForMessage(82, global::CastoriceHoney.Server.Proto.ServerPrefs.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerPrefs> serverPrefsList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerPrefs>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ServerPrefs> _repeated_serverPrefsList_codec
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.ServerPrefs.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ServerPrefs> serverPrefsList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ServerPrefs>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerPrefs> ServerPrefsList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ServerPrefs> ServerPrefsList {
       get { return serverPrefsList_; }
     }
 

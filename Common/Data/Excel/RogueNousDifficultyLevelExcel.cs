@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueNousDifficultyLevel.json")]
 public class RogueNousDifficultyLevelExcel : ExcelResource

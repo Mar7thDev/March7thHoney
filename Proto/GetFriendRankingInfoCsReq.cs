@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GetFriendRankingInfoCsReq.proto</summary>
   public static partial class GetFriendRankingInfoCsReqReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "cmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3Rv",
             "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.FightGameModeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.FightGameModeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GetFriendRankingInfoCsReq), global::CastoriceHoney.Server.Proto.GetFriendRankingInfoCsReq.Parser, new[]{ "PLOBMBFPNFK" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetFriendRankingInfoCsReq), global::March7thHoney.Proto.GetFriendRankingInfoCsReq.Parser, new[]{ "PLOBMBFPNFK" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GetFriendRankingInfoCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GetFriendRankingInfoCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -86,10 +86,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "PLOBMBFPNFK" field.</summary>
     public const int PLOBMBFPNFKFieldNumber = 13;
-    private global::CastoriceHoney.Server.Proto.FightGameMode pLOBMBFPNFK_ = global::CastoriceHoney.Server.Proto.FightGameMode.EjimiogaoklPcpdhelpkem;
+    private global::March7thHoney.Proto.FightGameMode pLOBMBFPNFK_ = global::March7thHoney.Proto.FightGameMode.EjimiogaoklPcpdhelpkem;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.FightGameMode PLOBMBFPNFK {
+    public global::March7thHoney.Proto.FightGameMode PLOBMBFPNFK {
       get { return pLOBMBFPNFK_; }
       set {
         pLOBMBFPNFK_ = value;
@@ -119,7 +119,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (PLOBMBFPNFK != global::CastoriceHoney.Server.Proto.FightGameMode.EjimiogaoklPcpdhelpkem) hash ^= PLOBMBFPNFK.GetHashCode();
+      if (PLOBMBFPNFK != global::March7thHoney.Proto.FightGameMode.EjimiogaoklPcpdhelpkem) hash ^= PLOBMBFPNFK.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -138,7 +138,7 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (PLOBMBFPNFK != global::CastoriceHoney.Server.Proto.FightGameMode.EjimiogaoklPcpdhelpkem) {
+      if (PLOBMBFPNFK != global::March7thHoney.Proto.FightGameMode.EjimiogaoklPcpdhelpkem) {
         output.WriteRawTag(104);
         output.WriteEnum((int) PLOBMBFPNFK);
       }
@@ -152,7 +152,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (PLOBMBFPNFK != global::CastoriceHoney.Server.Proto.FightGameMode.EjimiogaoklPcpdhelpkem) {
+      if (PLOBMBFPNFK != global::March7thHoney.Proto.FightGameMode.EjimiogaoklPcpdhelpkem) {
         output.WriteRawTag(104);
         output.WriteEnum((int) PLOBMBFPNFK);
       }
@@ -166,7 +166,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (PLOBMBFPNFK != global::CastoriceHoney.Server.Proto.FightGameMode.EjimiogaoklPcpdhelpkem) {
+      if (PLOBMBFPNFK != global::March7thHoney.Proto.FightGameMode.EjimiogaoklPcpdhelpkem) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) PLOBMBFPNFK);
       }
       if (_unknownFields != null) {
@@ -181,7 +181,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.PLOBMBFPNFK != global::CastoriceHoney.Server.Proto.FightGameMode.EjimiogaoklPcpdhelpkem) {
+      if (other.PLOBMBFPNFK != global::March7thHoney.Proto.FightGameMode.EjimiogaoklPcpdhelpkem) {
         PLOBMBFPNFK = other.PLOBMBFPNFK;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -204,7 +204,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 104: {
-            PLOBMBFPNFK = (global::CastoriceHoney.Server.Proto.FightGameMode) input.ReadEnum();
+            PLOBMBFPNFK = (global::March7thHoney.Proto.FightGameMode) input.ReadEnum();
             break;
           }
         }
@@ -227,7 +227,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 104: {
-            PLOBMBFPNFK = (global::CastoriceHoney.Server.Proto.FightGameMode) input.ReadEnum();
+            PLOBMBFPNFK = (global::March7thHoney.Proto.FightGameMode) input.ReadEnum();
             break;
           }
         }

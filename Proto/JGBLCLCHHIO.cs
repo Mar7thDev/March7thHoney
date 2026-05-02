@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from JGBLCLCHHIO.proto</summary>
   public static partial class JGBLCLCHHIOReflection {
@@ -29,9 +29,9 @@ namespace CastoriceHoney.Server.Proto {
             "RGF0YUIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXku",
             "U2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ChatMessageDataReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChatMessageDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.JGBLCLCHHIO), global::CastoriceHoney.Server.Proto.JGBLCLCHHIO.Parser, new[]{ "StopDesc" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.JGBLCLCHHIO), global::March7thHoney.Proto.JGBLCLCHHIO.Parser, new[]{ "StopDesc" }, null, null, null, null)
           }));
     }
     #endregion
@@ -53,7 +53,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.JGBLCLCHHIOReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.JGBLCLCHHIOReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -85,10 +85,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "stop_desc" field.</summary>
     public const int StopDescFieldNumber = 1;
-    private global::CastoriceHoney.Server.Proto.ChatMessageData stopDesc_;
+    private global::March7thHoney.Proto.ChatMessageData stopDesc_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ChatMessageData StopDesc {
+    public global::March7thHoney.Proto.ChatMessageData StopDesc {
       get { return stopDesc_; }
       set {
         stopDesc_ = value;
@@ -182,7 +182,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.stopDesc_ != null) {
         if (stopDesc_ == null) {
-          StopDesc = new global::CastoriceHoney.Server.Proto.ChatMessageData();
+          StopDesc = new global::March7thHoney.Proto.ChatMessageData();
         }
         StopDesc.MergeFrom(other.StopDesc);
       }
@@ -207,7 +207,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 10: {
             if (stopDesc_ == null) {
-              StopDesc = new global::CastoriceHoney.Server.Proto.ChatMessageData();
+              StopDesc = new global::March7thHoney.Proto.ChatMessageData();
             }
             input.ReadMessage(StopDesc);
             break;
@@ -233,7 +233,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 10: {
             if (stopDesc_ == null) {
-              StopDesc = new global::CastoriceHoney.Server.Proto.ChatMessageData();
+              StopDesc = new global::March7thHoney.Proto.ChatMessageData();
             }
             input.ReadMessage(StopDesc);
             break;

@@ -1,22 +1,22 @@
 using System.Collections.Frozen;
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Database;
-using CastoriceHoney.Server.Database.Friend;
-using CastoriceHoney.Server.Database.Inventory;
-using CastoriceHoney.Server.Enums.Item;
-using CastoriceHoney.Server.Enums.Mission;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.GameServer.Game.Scene;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Avatar;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Lineup;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Player;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.PlayerSync;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Scene;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Data;
+using March7thHoney.Database;
+using March7thHoney.Database.Friend;
+using March7thHoney.Database.Inventory;
+using March7thHoney.Enums.Item;
+using March7thHoney.Enums.Mission;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Game.Scene;
+using March7thHoney.GameServer.Server.Packet.Send.Avatar;
+using March7thHoney.GameServer.Server.Packet.Send.Lineup;
+using March7thHoney.GameServer.Server.Packet.Send.Player;
+using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
+using March7thHoney.GameServer.Server.Packet.Send.Scene;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 using Google.Protobuf.Collections;
 
-namespace CastoriceHoney.Server.GameServer.Game.Inventory;
+namespace March7thHoney.GameServer.Game.Inventory;
 
 public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
 {

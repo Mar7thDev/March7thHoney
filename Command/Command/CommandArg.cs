@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.GameServer.Server;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Util;
+using March7thHoney.GameServer.Server;
+using March7thHoney.Kcp;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.Command.Command;
+namespace March7thHoney.Command.Command;
 
 public class CommandArg
 {

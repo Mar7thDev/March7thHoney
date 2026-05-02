@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Battle;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.GameServer.Server.Packet.Send.Battle;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Battle;
+namespace March7thHoney.GameServer.Server.Packet.Recv.Battle;
 
 [Opcode(CmdIds.GetFarmStageGachaInfoCsReq)]
 public class HandlerGetFarmStageGachaInfoCsReq : Handler

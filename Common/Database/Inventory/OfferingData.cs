@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Data.Excel;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Data;
+using March7thHoney.Data.Excel;
+using March7thHoney.Proto;
 using SqlSugar;
 
-namespace CastoriceHoney.Server.Database.Inventory;
+namespace March7thHoney.Database.Inventory;
 
 [SugarTable("offering_data")]
 public class OfferingData : BaseDatabaseDataHelper

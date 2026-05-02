@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.StoryLine;
-using CastoriceHoney.Server.Kcp;
+using March7thHoney.GameServer.Server.Packet.Send.StoryLine;
+using March7thHoney.Kcp;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.StoryLine;
+namespace March7thHoney.GameServer.Server.Packet.Recv.StoryLine;
 
 [Opcode(CmdIds.GetStoryLineInfoCsReq)]
 public class HandlerGetStoryLineInfoCsReq : Handler

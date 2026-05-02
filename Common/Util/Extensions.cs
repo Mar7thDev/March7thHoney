@@ -1,9 +1,9 @@
 using System.Buffers.Binary;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Proto.ServerSide;
+using March7thHoney.Proto;
+using March7thHoney.Proto.ServerSide;
 using Newtonsoft.Json;
 
-namespace CastoriceHoney.Server.Util;
+namespace March7thHoney.Util;
 
 public static class Extensions
 {

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from CocoonSweepScRsp.proto</summary>
   public static partial class CocoonSweepScRspReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "cmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3Rv",
             "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ItemListReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemListReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.CocoonSweepScRsp), global::CastoriceHoney.Server.Proto.CocoonSweepScRsp.Parser, new[]{ "CocoonId", "Retcode", "DropData", "MultipleDropData" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.CocoonSweepScRsp), global::March7thHoney.Proto.CocoonSweepScRsp.Parser, new[]{ "CocoonId", "Retcode", "DropData", "MultipleDropData" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.CocoonSweepScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.CocoonSweepScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -114,10 +114,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "drop_data" field.</summary>
     public const int DropDataFieldNumber = 5;
-    private global::CastoriceHoney.Server.Proto.ItemList dropData_;
+    private global::March7thHoney.Proto.ItemList dropData_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ItemList DropData {
+    public global::March7thHoney.Proto.ItemList DropData {
       get { return dropData_; }
       set {
         dropData_ = value;
@@ -126,10 +126,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "multiple_drop_data" field.</summary>
     public const int MultipleDropDataFieldNumber = 12;
-    private global::CastoriceHoney.Server.Proto.ItemList multipleDropData_;
+    private global::March7thHoney.Proto.ItemList multipleDropData_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ItemList MultipleDropData {
+    public global::March7thHoney.Proto.ItemList MultipleDropData {
       get { return multipleDropData_; }
       set {
         multipleDropData_ = value;
@@ -268,13 +268,13 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.dropData_ != null) {
         if (dropData_ == null) {
-          DropData = new global::CastoriceHoney.Server.Proto.ItemList();
+          DropData = new global::March7thHoney.Proto.ItemList();
         }
         DropData.MergeFrom(other.DropData);
       }
       if (other.multipleDropData_ != null) {
         if (multipleDropData_ == null) {
-          MultipleDropData = new global::CastoriceHoney.Server.Proto.ItemList();
+          MultipleDropData = new global::March7thHoney.Proto.ItemList();
         }
         MultipleDropData.MergeFrom(other.MultipleDropData);
       }
@@ -307,14 +307,14 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 42: {
             if (dropData_ == null) {
-              DropData = new global::CastoriceHoney.Server.Proto.ItemList();
+              DropData = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(DropData);
             break;
           }
           case 98: {
             if (multipleDropData_ == null) {
-              MultipleDropData = new global::CastoriceHoney.Server.Proto.ItemList();
+              MultipleDropData = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(MultipleDropData);
             break;
@@ -348,14 +348,14 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 42: {
             if (dropData_ == null) {
-              DropData = new global::CastoriceHoney.Server.Proto.ItemList();
+              DropData = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(DropData);
             break;
           }
           case 98: {
             if (multipleDropData_ == null) {
-              MultipleDropData = new global::CastoriceHoney.Server.Proto.ItemList();
+              MultipleDropData = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(MultipleDropData);
             break;

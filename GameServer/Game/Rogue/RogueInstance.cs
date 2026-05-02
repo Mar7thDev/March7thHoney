@@ -1,17 +1,17 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Data.Custom;
-using CastoriceHoney.Server.Data.Excel;
-using CastoriceHoney.Server.Enums.Rogue;
-using CastoriceHoney.Server.GameServer.Game.Battle;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.GameServer.Game.Rogue.Buff;
-using CastoriceHoney.Server.GameServer.Game.Rogue.Event;
-using CastoriceHoney.Server.GameServer.Game.Rogue.Scene;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Rogue;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Data;
+using March7thHoney.Data.Custom;
+using March7thHoney.Data.Excel;
+using March7thHoney.Enums.Rogue;
+using March7thHoney.GameServer.Game.Battle;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Game.Rogue.Buff;
+using March7thHoney.GameServer.Game.Rogue.Event;
+using March7thHoney.GameServer.Game.Rogue.Scene;
+using March7thHoney.GameServer.Server.Packet.Send.Rogue;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.GameServer.Game.Rogue;
+namespace March7thHoney.GameServer.Game.Rogue;
 
 public class RogueInstance : BaseRogueInstance
 {

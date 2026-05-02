@@ -1,6 +1,6 @@
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Game.GridFight.Sync;
+namespace March7thHoney.GameServer.Game.GridFight.Sync;
 
 public class GridFightFinishPendingActionSyncData(GridFightSrc src, uint queuePosition, uint groupId = 0, params uint[] param) : BaseGridFightSyncData(src, groupId, param)
 {

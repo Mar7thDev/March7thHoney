@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.PlayerSync;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Player;
+namespace March7thHoney.GameServer.Server.Packet.Recv.Player;
 
 [Opcode(CmdIds.SetNicknameCsReq)]
 public class HandlerSetNicknameCsReq : Handler

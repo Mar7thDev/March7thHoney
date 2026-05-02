@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from MonopolyActionResult.proto</summary>
   public static partial class MonopolyActionResultReflection {
@@ -33,9 +33,9 @@ namespace CastoriceHoney.Server.Proto {
             "DUIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2Vy",
             "dmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.JDMPAAEGMCDReflection.Descriptor, global::CastoriceHoney.Server.Proto.NGAEFPNBDADReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.JDMPAAEGMCDReflection.Descriptor, global::March7thHoney.Proto.NGAEFPNBDADReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.MonopolyActionResult), global::CastoriceHoney.Server.Proto.MonopolyActionResult.Parser, new[]{ "Detail", "SourceType", "ClickCellId", "TriggerCellId", "EffectType", "TriggerMapId", "ClickMapId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MonopolyActionResult), global::March7thHoney.Proto.MonopolyActionResult.Parser, new[]{ "Detail", "SourceType", "ClickCellId", "TriggerCellId", "EffectType", "TriggerMapId", "ClickMapId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -57,7 +57,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.MonopolyActionResultReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.MonopolyActionResultReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -95,10 +95,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "detail" field.</summary>
     public const int DetailFieldNumber = 2;
-    private global::CastoriceHoney.Server.Proto.JDMPAAEGMCD detail_;
+    private global::March7thHoney.Proto.JDMPAAEGMCD detail_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.JDMPAAEGMCD Detail {
+    public global::March7thHoney.Proto.JDMPAAEGMCD Detail {
       get { return detail_; }
       set {
         detail_ = value;
@@ -107,10 +107,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "source_type" field.</summary>
     public const int SourceTypeFieldNumber = 3;
-    private global::CastoriceHoney.Server.Proto.NGAEFPNBDAD sourceType_ = global::CastoriceHoney.Server.Proto.NGAEFPNBDAD.Pcpdhelpkem;
+    private global::March7thHoney.Proto.NGAEFPNBDAD sourceType_ = global::March7thHoney.Proto.NGAEFPNBDAD.Pcpdhelpkem;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.NGAEFPNBDAD SourceType {
+    public global::March7thHoney.Proto.NGAEFPNBDAD SourceType {
       get { return sourceType_; }
       set {
         sourceType_ = value;
@@ -207,7 +207,7 @@ namespace CastoriceHoney.Server.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (detail_ != null) hash ^= Detail.GetHashCode();
-      if (SourceType != global::CastoriceHoney.Server.Proto.NGAEFPNBDAD.Pcpdhelpkem) hash ^= SourceType.GetHashCode();
+      if (SourceType != global::March7thHoney.Proto.NGAEFPNBDAD.Pcpdhelpkem) hash ^= SourceType.GetHashCode();
       if (ClickCellId != 0) hash ^= ClickCellId.GetHashCode();
       if (TriggerCellId != 0) hash ^= TriggerCellId.GetHashCode();
       if (EffectType != 0) hash ^= EffectType.GetHashCode();
@@ -235,7 +235,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(18);
         output.WriteMessage(Detail);
       }
-      if (SourceType != global::CastoriceHoney.Server.Proto.NGAEFPNBDAD.Pcpdhelpkem) {
+      if (SourceType != global::March7thHoney.Proto.NGAEFPNBDAD.Pcpdhelpkem) {
         output.WriteRawTag(24);
         output.WriteEnum((int) SourceType);
       }
@@ -273,7 +273,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(18);
         output.WriteMessage(Detail);
       }
-      if (SourceType != global::CastoriceHoney.Server.Proto.NGAEFPNBDAD.Pcpdhelpkem) {
+      if (SourceType != global::March7thHoney.Proto.NGAEFPNBDAD.Pcpdhelpkem) {
         output.WriteRawTag(24);
         output.WriteEnum((int) SourceType);
       }
@@ -310,7 +310,7 @@ namespace CastoriceHoney.Server.Proto {
       if (detail_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Detail);
       }
-      if (SourceType != global::CastoriceHoney.Server.Proto.NGAEFPNBDAD.Pcpdhelpkem) {
+      if (SourceType != global::March7thHoney.Proto.NGAEFPNBDAD.Pcpdhelpkem) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) SourceType);
       }
       if (ClickCellId != 0) {
@@ -342,11 +342,11 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.detail_ != null) {
         if (detail_ == null) {
-          Detail = new global::CastoriceHoney.Server.Proto.JDMPAAEGMCD();
+          Detail = new global::March7thHoney.Proto.JDMPAAEGMCD();
         }
         Detail.MergeFrom(other.Detail);
       }
-      if (other.SourceType != global::CastoriceHoney.Server.Proto.NGAEFPNBDAD.Pcpdhelpkem) {
+      if (other.SourceType != global::March7thHoney.Proto.NGAEFPNBDAD.Pcpdhelpkem) {
         SourceType = other.SourceType;
       }
       if (other.ClickCellId != 0) {
@@ -385,13 +385,13 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 18: {
             if (detail_ == null) {
-              Detail = new global::CastoriceHoney.Server.Proto.JDMPAAEGMCD();
+              Detail = new global::March7thHoney.Proto.JDMPAAEGMCD();
             }
             input.ReadMessage(Detail);
             break;
           }
           case 24: {
-            SourceType = (global::CastoriceHoney.Server.Proto.NGAEFPNBDAD) input.ReadEnum();
+            SourceType = (global::March7thHoney.Proto.NGAEFPNBDAD) input.ReadEnum();
             break;
           }
           case 56: {
@@ -435,13 +435,13 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 18: {
             if (detail_ == null) {
-              Detail = new global::CastoriceHoney.Server.Proto.JDMPAAEGMCD();
+              Detail = new global::March7thHoney.Proto.JDMPAAEGMCD();
             }
             input.ReadMessage(Detail);
             break;
           }
           case 24: {
-            SourceType = (global::CastoriceHoney.Server.Proto.NGAEFPNBDAD) input.ReadEnum();
+            SourceType = (global::March7thHoney.Proto.NGAEFPNBDAD) input.ReadEnum();
             break;
           }
           case 56: {

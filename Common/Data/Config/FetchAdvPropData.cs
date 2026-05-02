@@ -1,6 +1,6 @@
-using CastoriceHoney.Server.Data.Config.Task;
+using March7thHoney.Data.Config.Task;
 
-namespace CastoriceHoney.Server.Data.Config;
+namespace March7thHoney.Data.Config;
 
 public class FetchAdvPropData
 {

@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Enums.RogueMagic;
+namespace March7thHoney.Enums.RogueMagic;
 
 public enum RogueMagicRangeTypeEnum
 {

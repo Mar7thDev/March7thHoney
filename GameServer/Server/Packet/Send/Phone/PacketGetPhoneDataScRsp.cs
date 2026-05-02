@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Send.Phone;
+namespace March7thHoney.GameServer.Server.Packet.Send.Phone;
 
 public class PacketGetPhoneDataScRsp : BasePacket
 {

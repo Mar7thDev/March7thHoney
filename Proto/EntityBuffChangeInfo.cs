@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from EntityBuffChangeInfo.proto</summary>
   public static partial class EntityBuffChangeInfoReflection {
@@ -33,9 +33,9 @@ namespace CastoriceHoney.Server.Proto {
             "MwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZl",
             "ci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.BuffInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.SceneEntityBuffChangeTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.BuffInfoReflection.Descriptor, global::March7thHoney.Proto.SceneEntityBuffChangeTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.EntityBuffChangeInfo), global::CastoriceHoney.Server.Proto.EntityBuffChangeInfo.Parser, new[]{ "EntityId", "CastEntityId", "Reason", "BuffChangeInfo", "RemoveBuffId" }, new[]{ "BPIHFAJCLOC" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EntityBuffChangeInfo), global::March7thHoney.Proto.EntityBuffChangeInfo.Parser, new[]{ "EntityId", "CastEntityId", "Reason", "BuffChangeInfo", "RemoveBuffId" }, new[]{ "BPIHFAJCLOC" }, null, null, null)
           }));
     }
     #endregion
@@ -57,7 +57,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.EntityBuffChangeInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.EntityBuffChangeInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -124,10 +124,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "reason" field.</summary>
     public const int ReasonFieldNumber = 12;
-    private global::CastoriceHoney.Server.Proto.SceneEntityBuffChangeType reason_ = global::CastoriceHoney.Server.Proto.SceneEntityBuffChangeType.Default;
+    private global::March7thHoney.Proto.SceneEntityBuffChangeType reason_ = global::March7thHoney.Proto.SceneEntityBuffChangeType.Default;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.SceneEntityBuffChangeType Reason {
+    public global::March7thHoney.Proto.SceneEntityBuffChangeType Reason {
       get { return reason_; }
       set {
         reason_ = value;
@@ -138,8 +138,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int BuffChangeInfoFieldNumber = 11;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.BuffInfo BuffChangeInfo {
-      get { return bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.BuffChangeInfo ? (global::CastoriceHoney.Server.Proto.BuffInfo) bPIHFAJCLOC_ : null; }
+    public global::March7thHoney.Proto.BuffInfo BuffChangeInfo {
+      get { return bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.BuffChangeInfo ? (global::March7thHoney.Proto.BuffInfo) bPIHFAJCLOC_ : null; }
       set {
         bPIHFAJCLOC_ = value;
         bPIHFAJCLOCCase_ = value == null ? BPIHFAJCLOCOneofCase.None : BPIHFAJCLOCOneofCase.BuffChangeInfo;
@@ -223,7 +223,7 @@ namespace CastoriceHoney.Server.Proto {
       int hash = 1;
       if (EntityId != 0) hash ^= EntityId.GetHashCode();
       if (CastEntityId != 0) hash ^= CastEntityId.GetHashCode();
-      if (Reason != global::CastoriceHoney.Server.Proto.SceneEntityBuffChangeType.Default) hash ^= Reason.GetHashCode();
+      if (Reason != global::March7thHoney.Proto.SceneEntityBuffChangeType.Default) hash ^= Reason.GetHashCode();
       if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.BuffChangeInfo) hash ^= BuffChangeInfo.GetHashCode();
       if (HasRemoveBuffId) hash ^= RemoveBuffId.GetHashCode();
       hash ^= (int) bPIHFAJCLOCCase_;
@@ -257,7 +257,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(90);
         output.WriteMessage(BuffChangeInfo);
       }
-      if (Reason != global::CastoriceHoney.Server.Proto.SceneEntityBuffChangeType.Default) {
+      if (Reason != global::March7thHoney.Proto.SceneEntityBuffChangeType.Default) {
         output.WriteRawTag(96);
         output.WriteEnum((int) Reason);
       }
@@ -287,7 +287,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(90);
         output.WriteMessage(BuffChangeInfo);
       }
-      if (Reason != global::CastoriceHoney.Server.Proto.SceneEntityBuffChangeType.Default) {
+      if (Reason != global::March7thHoney.Proto.SceneEntityBuffChangeType.Default) {
         output.WriteRawTag(96);
         output.WriteEnum((int) Reason);
       }
@@ -311,7 +311,7 @@ namespace CastoriceHoney.Server.Proto {
       if (CastEntityId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CastEntityId);
       }
-      if (Reason != global::CastoriceHoney.Server.Proto.SceneEntityBuffChangeType.Default) {
+      if (Reason != global::March7thHoney.Proto.SceneEntityBuffChangeType.Default) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Reason);
       }
       if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.BuffChangeInfo) {
@@ -338,13 +338,13 @@ namespace CastoriceHoney.Server.Proto {
       if (other.CastEntityId != 0) {
         CastEntityId = other.CastEntityId;
       }
-      if (other.Reason != global::CastoriceHoney.Server.Proto.SceneEntityBuffChangeType.Default) {
+      if (other.Reason != global::March7thHoney.Proto.SceneEntityBuffChangeType.Default) {
         Reason = other.Reason;
       }
       switch (other.BPIHFAJCLOCCase) {
         case BPIHFAJCLOCOneofCase.BuffChangeInfo:
           if (BuffChangeInfo == null) {
-            BuffChangeInfo = new global::CastoriceHoney.Server.Proto.BuffInfo();
+            BuffChangeInfo = new global::March7thHoney.Proto.BuffInfo();
           }
           BuffChangeInfo.MergeFrom(other.BuffChangeInfo);
           break;
@@ -381,7 +381,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 90: {
-            global::CastoriceHoney.Server.Proto.BuffInfo subBuilder = new global::CastoriceHoney.Server.Proto.BuffInfo();
+            global::March7thHoney.Proto.BuffInfo subBuilder = new global::March7thHoney.Proto.BuffInfo();
             if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.BuffChangeInfo) {
               subBuilder.MergeFrom(BuffChangeInfo);
             }
@@ -390,7 +390,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 96: {
-            Reason = (global::CastoriceHoney.Server.Proto.SceneEntityBuffChangeType) input.ReadEnum();
+            Reason = (global::March7thHoney.Proto.SceneEntityBuffChangeType) input.ReadEnum();
             break;
           }
           case 112: {
@@ -425,7 +425,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 90: {
-            global::CastoriceHoney.Server.Proto.BuffInfo subBuilder = new global::CastoriceHoney.Server.Proto.BuffInfo();
+            global::March7thHoney.Proto.BuffInfo subBuilder = new global::March7thHoney.Proto.BuffInfo();
             if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.BuffChangeInfo) {
               subBuilder.MergeFrom(BuffChangeInfo);
             }
@@ -434,7 +434,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 96: {
-            Reason = (global::CastoriceHoney.Server.Proto.SceneEntityBuffChangeType) input.ReadEnum();
+            Reason = (global::March7thHoney.Proto.SceneEntityBuffChangeType) input.ReadEnum();
             break;
           }
           case 112: {

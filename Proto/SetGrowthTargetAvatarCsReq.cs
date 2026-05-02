@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from SetGrowthTargetAvatarCsReq.proto</summary>
   public static partial class SetGrowthTargetAvatarCsReqReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "b3d0aFRhcmdldFN0YXRlQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0",
             "b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GrowthTargetStateReflection.Descriptor, global::CastoriceHoney.Server.Proto.GrowthTartgetFuncTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GrowthTargetStateReflection.Descriptor, global::March7thHoney.Proto.GrowthTartgetFuncTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.SetGrowthTargetAvatarCsReq), global::CastoriceHoney.Server.Proto.SetGrowthTargetAvatarCsReq.Parser, new[]{ "KNCJPJFMPAJ", "DHAIJLJCJAF", "AvatarId", "Source" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetGrowthTargetAvatarCsReq), global::March7thHoney.Proto.SetGrowthTargetAvatarCsReq.Parser, new[]{ "KNCJPJFMPAJ", "DHAIJLJCJAF", "AvatarId", "Source" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.SetGrowthTargetAvatarCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.SetGrowthTargetAvatarCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -103,12 +103,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "DHAIJLJCJAF" field.</summary>
     public const int DHAIJLJCJAFFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.GrowthTartgetFuncType> _repeated_dHAIJLJCJAF_codec
-        = pb::FieldCodec.ForEnum(34, x => (int) x, x => (global::CastoriceHoney.Server.Proto.GrowthTartgetFuncType) x);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GrowthTartgetFuncType> dHAIJLJCJAF_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GrowthTartgetFuncType>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GrowthTartgetFuncType> _repeated_dHAIJLJCJAF_codec
+        = pb::FieldCodec.ForEnum(34, x => (int) x, x => (global::March7thHoney.Proto.GrowthTartgetFuncType) x);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GrowthTartgetFuncType> dHAIJLJCJAF_ = new pbc::RepeatedField<global::March7thHoney.Proto.GrowthTartgetFuncType>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GrowthTartgetFuncType> DHAIJLJCJAF {
+    public pbc::RepeatedField<global::March7thHoney.Proto.GrowthTartgetFuncType> DHAIJLJCJAF {
       get { return dHAIJLJCJAF_; }
     }
 
@@ -126,10 +126,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "source" field.</summary>
     public const int SourceFieldNumber = 14;
-    private global::CastoriceHoney.Server.Proto.GrowthTargetState source_ = global::CastoriceHoney.Server.Proto.GrowthTargetState.HdjkgmlafnpAabjfikbhjk;
+    private global::March7thHoney.Proto.GrowthTargetState source_ = global::March7thHoney.Proto.GrowthTargetState.HdjkgmlafnpAabjfikbhjk;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GrowthTargetState Source {
+    public global::March7thHoney.Proto.GrowthTargetState Source {
       get { return source_; }
       set {
         source_ = value;
@@ -165,7 +165,7 @@ namespace CastoriceHoney.Server.Proto {
       if (KNCJPJFMPAJ != 0) hash ^= KNCJPJFMPAJ.GetHashCode();
       hash ^= dHAIJLJCJAF_.GetHashCode();
       if (AvatarId != 0) hash ^= AvatarId.GetHashCode();
-      if (Source != global::CastoriceHoney.Server.Proto.GrowthTargetState.HdjkgmlafnpAabjfikbhjk) hash ^= Source.GetHashCode();
+      if (Source != global::March7thHoney.Proto.GrowthTargetState.HdjkgmlafnpAabjfikbhjk) hash ^= Source.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -193,7 +193,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(72);
         output.WriteUInt32(AvatarId);
       }
-      if (Source != global::CastoriceHoney.Server.Proto.GrowthTargetState.HdjkgmlafnpAabjfikbhjk) {
+      if (Source != global::March7thHoney.Proto.GrowthTargetState.HdjkgmlafnpAabjfikbhjk) {
         output.WriteRawTag(112);
         output.WriteEnum((int) Source);
       }
@@ -216,7 +216,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(72);
         output.WriteUInt32(AvatarId);
       }
-      if (Source != global::CastoriceHoney.Server.Proto.GrowthTargetState.HdjkgmlafnpAabjfikbhjk) {
+      if (Source != global::March7thHoney.Proto.GrowthTargetState.HdjkgmlafnpAabjfikbhjk) {
         output.WriteRawTag(112);
         output.WriteEnum((int) Source);
       }
@@ -237,7 +237,7 @@ namespace CastoriceHoney.Server.Proto {
       if (AvatarId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarId);
       }
-      if (Source != global::CastoriceHoney.Server.Proto.GrowthTargetState.HdjkgmlafnpAabjfikbhjk) {
+      if (Source != global::March7thHoney.Proto.GrowthTargetState.HdjkgmlafnpAabjfikbhjk) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Source);
       }
       if (_unknownFields != null) {
@@ -259,7 +259,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other.AvatarId != 0) {
         AvatarId = other.AvatarId;
       }
-      if (other.Source != global::CastoriceHoney.Server.Proto.GrowthTargetState.HdjkgmlafnpAabjfikbhjk) {
+      if (other.Source != global::March7thHoney.Proto.GrowthTargetState.HdjkgmlafnpAabjfikbhjk) {
         Source = other.Source;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -295,7 +295,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 112: {
-            Source = (global::CastoriceHoney.Server.Proto.GrowthTargetState) input.ReadEnum();
+            Source = (global::March7thHoney.Proto.GrowthTargetState) input.ReadEnum();
             break;
           }
         }
@@ -331,7 +331,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 112: {
-            Source = (global::CastoriceHoney.Server.Proto.GrowthTargetState) input.ReadEnum();
+            Source = (global::March7thHoney.Proto.GrowthTargetState) input.ReadEnum();
             break;
           }
         }

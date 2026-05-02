@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from HitMonsterBattleInfo.proto</summary>
   public static partial class HitMonsterBattleInfoReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "CSABKA4yEi5Nb25zdGVyQmF0dGxlVHlwZUIzChNlbXUubHVuYXJjb3JlLnBy",
             "b3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.MonsterBattleTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.MonsterBattleTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.HitMonsterBattleInfo), global::CastoriceHoney.Server.Proto.HitMonsterBattleInfo.Parser, new[]{ "TargetMonsterEntityId", "MonsterBattleType" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HitMonsterBattleInfo), global::March7thHoney.Proto.HitMonsterBattleInfo.Parser, new[]{ "TargetMonsterEntityId", "MonsterBattleType" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.HitMonsterBattleInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.HitMonsterBattleInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -99,10 +99,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "monster_battle_type" field.</summary>
     public const int MonsterBattleTypeFieldNumber = 9;
-    private global::CastoriceHoney.Server.Proto.MonsterBattleType monsterBattleType_ = global::CastoriceHoney.Server.Proto.MonsterBattleType.None;
+    private global::March7thHoney.Proto.MonsterBattleType monsterBattleType_ = global::March7thHoney.Proto.MonsterBattleType.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.MonsterBattleType MonsterBattleType {
+    public global::March7thHoney.Proto.MonsterBattleType MonsterBattleType {
       get { return monsterBattleType_; }
       set {
         monsterBattleType_ = value;
@@ -134,7 +134,7 @@ namespace CastoriceHoney.Server.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (TargetMonsterEntityId != 0) hash ^= TargetMonsterEntityId.GetHashCode();
-      if (MonsterBattleType != global::CastoriceHoney.Server.Proto.MonsterBattleType.None) hash ^= MonsterBattleType.GetHashCode();
+      if (MonsterBattleType != global::March7thHoney.Proto.MonsterBattleType.None) hash ^= MonsterBattleType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -157,7 +157,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(40);
         output.WriteUInt32(TargetMonsterEntityId);
       }
-      if (MonsterBattleType != global::CastoriceHoney.Server.Proto.MonsterBattleType.None) {
+      if (MonsterBattleType != global::March7thHoney.Proto.MonsterBattleType.None) {
         output.WriteRawTag(72);
         output.WriteEnum((int) MonsterBattleType);
       }
@@ -175,7 +175,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(40);
         output.WriteUInt32(TargetMonsterEntityId);
       }
-      if (MonsterBattleType != global::CastoriceHoney.Server.Proto.MonsterBattleType.None) {
+      if (MonsterBattleType != global::March7thHoney.Proto.MonsterBattleType.None) {
         output.WriteRawTag(72);
         output.WriteEnum((int) MonsterBattleType);
       }
@@ -192,7 +192,7 @@ namespace CastoriceHoney.Server.Proto {
       if (TargetMonsterEntityId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TargetMonsterEntityId);
       }
-      if (MonsterBattleType != global::CastoriceHoney.Server.Proto.MonsterBattleType.None) {
+      if (MonsterBattleType != global::March7thHoney.Proto.MonsterBattleType.None) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) MonsterBattleType);
       }
       if (_unknownFields != null) {
@@ -210,7 +210,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other.TargetMonsterEntityId != 0) {
         TargetMonsterEntityId = other.TargetMonsterEntityId;
       }
-      if (other.MonsterBattleType != global::CastoriceHoney.Server.Proto.MonsterBattleType.None) {
+      if (other.MonsterBattleType != global::March7thHoney.Proto.MonsterBattleType.None) {
         MonsterBattleType = other.MonsterBattleType;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -237,7 +237,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 72: {
-            MonsterBattleType = (global::CastoriceHoney.Server.Proto.MonsterBattleType) input.ReadEnum();
+            MonsterBattleType = (global::March7thHoney.Proto.MonsterBattleType) input.ReadEnum();
             break;
           }
         }
@@ -264,7 +264,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 72: {
-            MonsterBattleType = (global::CastoriceHoney.Server.Proto.MonsterBattleType) input.ReadEnum();
+            MonsterBattleType = (global::March7thHoney.Proto.MonsterBattleType) input.ReadEnum();
             break;
           }
         }

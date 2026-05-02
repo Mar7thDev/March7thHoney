@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from LineupAvatar.proto</summary>
   public static partial class LineupAvatarReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "U3BCYXJJbmZvQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VI",
             "b25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.AvatarTypeReflection.Descriptor, global::CastoriceHoney.Server.Proto.SpBarInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.AvatarTypeReflection.Descriptor, global::March7thHoney.Proto.SpBarInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.LineupAvatar), global::CastoriceHoney.Server.Proto.LineupAvatar.Parser, new[]{ "Slot", "Id", "Hp", "Satiety", "AvatarType", "SpBar" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LineupAvatar), global::March7thHoney.Proto.LineupAvatar.Parser, new[]{ "Slot", "Id", "Hp", "Satiety", "AvatarType", "SpBar" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.LineupAvatarReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.LineupAvatarReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -140,10 +140,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "avatar_type" field.</summary>
     public const int AvatarTypeFieldNumber = 12;
-    private global::CastoriceHoney.Server.Proto.AvatarType avatarType_ = global::CastoriceHoney.Server.Proto.AvatarType.None;
+    private global::March7thHoney.Proto.AvatarType avatarType_ = global::March7thHoney.Proto.AvatarType.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.AvatarType AvatarType {
+    public global::March7thHoney.Proto.AvatarType AvatarType {
       get { return avatarType_; }
       set {
         avatarType_ = value;
@@ -152,10 +152,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "sp_bar" field.</summary>
     public const int SpBarFieldNumber = 15;
-    private global::CastoriceHoney.Server.Proto.SpBarInfo spBar_;
+    private global::March7thHoney.Proto.SpBarInfo spBar_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.SpBarInfo SpBar {
+    public global::March7thHoney.Proto.SpBarInfo SpBar {
       get { return spBar_; }
       set {
         spBar_ = value;
@@ -194,7 +194,7 @@ namespace CastoriceHoney.Server.Proto {
       if (Id != 0) hash ^= Id.GetHashCode();
       if (Hp != 0) hash ^= Hp.GetHashCode();
       if (Satiety != 0) hash ^= Satiety.GetHashCode();
-      if (AvatarType != global::CastoriceHoney.Server.Proto.AvatarType.None) hash ^= AvatarType.GetHashCode();
+      if (AvatarType != global::March7thHoney.Proto.AvatarType.None) hash ^= AvatarType.GetHashCode();
       if (spBar_ != null) hash ^= SpBar.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -230,7 +230,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(88);
         output.WriteUInt32(Satiety);
       }
-      if (AvatarType != global::CastoriceHoney.Server.Proto.AvatarType.None) {
+      if (AvatarType != global::March7thHoney.Proto.AvatarType.None) {
         output.WriteRawTag(96);
         output.WriteEnum((int) AvatarType);
       }
@@ -264,7 +264,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(88);
         output.WriteUInt32(Satiety);
       }
-      if (AvatarType != global::CastoriceHoney.Server.Proto.AvatarType.None) {
+      if (AvatarType != global::March7thHoney.Proto.AvatarType.None) {
         output.WriteRawTag(96);
         output.WriteEnum((int) AvatarType);
       }
@@ -294,7 +294,7 @@ namespace CastoriceHoney.Server.Proto {
       if (Satiety != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Satiety);
       }
-      if (AvatarType != global::CastoriceHoney.Server.Proto.AvatarType.None) {
+      if (AvatarType != global::March7thHoney.Proto.AvatarType.None) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) AvatarType);
       }
       if (spBar_ != null) {
@@ -324,12 +324,12 @@ namespace CastoriceHoney.Server.Proto {
       if (other.Satiety != 0) {
         Satiety = other.Satiety;
       }
-      if (other.AvatarType != global::CastoriceHoney.Server.Proto.AvatarType.None) {
+      if (other.AvatarType != global::March7thHoney.Proto.AvatarType.None) {
         AvatarType = other.AvatarType;
       }
       if (other.spBar_ != null) {
         if (spBar_ == null) {
-          SpBar = new global::CastoriceHoney.Server.Proto.SpBarInfo();
+          SpBar = new global::March7thHoney.Proto.SpBarInfo();
         }
         SpBar.MergeFrom(other.SpBar);
       }
@@ -369,12 +369,12 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 96: {
-            AvatarType = (global::CastoriceHoney.Server.Proto.AvatarType) input.ReadEnum();
+            AvatarType = (global::March7thHoney.Proto.AvatarType) input.ReadEnum();
             break;
           }
           case 122: {
             if (spBar_ == null) {
-              SpBar = new global::CastoriceHoney.Server.Proto.SpBarInfo();
+              SpBar = new global::March7thHoney.Proto.SpBarInfo();
             }
             input.ReadMessage(SpBar);
             break;
@@ -415,12 +415,12 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 96: {
-            AvatarType = (global::CastoriceHoney.Server.Proto.AvatarType) input.ReadEnum();
+            AvatarType = (global::March7thHoney.Proto.AvatarType) input.ReadEnum();
             break;
           }
           case 122: {
             if (spBar_ == null) {
-              SpBar = new global::CastoriceHoney.Server.Proto.SpBarInfo();
+              SpBar = new global::March7thHoney.Proto.SpBarInfo();
             }
             input.ReadMessage(SpBar);
             break;

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GetChallengeGroupStatisticsScRsp.proto</summary>
   public static partial class GetChallengeGroupStatisticsScRspReflection {
@@ -35,9 +35,9 @@ namespace CastoriceHoney.Server.Proto {
             "DQoLSElBQ05ITkxDR0xCMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3Rv",
             "cmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ChallengeBossStatisticsReflection.Descriptor, global::CastoriceHoney.Server.Proto.ChallengeStatisticsReflection.Descriptor, global::CastoriceHoney.Server.Proto.ChallengeStoryStatisticsReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChallengeBossStatisticsReflection.Descriptor, global::March7thHoney.Proto.ChallengeStatisticsReflection.Descriptor, global::March7thHoney.Proto.ChallengeStoryStatisticsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GetChallengeGroupStatisticsScRsp), global::CastoriceHoney.Server.Proto.GetChallengeGroupStatisticsScRsp.Parser, new[]{ "GroupId", "Retcode", "ChallengeStory", "ChallengeDefault", "ChallengeBoss" }, new[]{ "HIACNHNLCGL" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetChallengeGroupStatisticsScRsp), global::March7thHoney.Proto.GetChallengeGroupStatisticsScRsp.Parser, new[]{ "GroupId", "Retcode", "ChallengeStory", "ChallengeDefault", "ChallengeBoss" }, new[]{ "HIACNHNLCGL" }, null, null, null)
           }));
     }
     #endregion
@@ -59,7 +59,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GetChallengeGroupStatisticsScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GetChallengeGroupStatisticsScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -130,8 +130,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int ChallengeStoryFieldNumber = 1;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ChallengeStoryStatistics ChallengeStory {
-      get { return hIACNHNLCGLCase_ == HIACNHNLCGLOneofCase.ChallengeStory ? (global::CastoriceHoney.Server.Proto.ChallengeStoryStatistics) hIACNHNLCGL_ : null; }
+    public global::March7thHoney.Proto.ChallengeStoryStatistics ChallengeStory {
+      get { return hIACNHNLCGLCase_ == HIACNHNLCGLOneofCase.ChallengeStory ? (global::March7thHoney.Proto.ChallengeStoryStatistics) hIACNHNLCGL_ : null; }
       set {
         hIACNHNLCGL_ = value;
         hIACNHNLCGLCase_ = value == null ? HIACNHNLCGLOneofCase.None : HIACNHNLCGLOneofCase.ChallengeStory;
@@ -142,8 +142,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int ChallengeDefaultFieldNumber = 6;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ChallengeStatistics ChallengeDefault {
-      get { return hIACNHNLCGLCase_ == HIACNHNLCGLOneofCase.ChallengeDefault ? (global::CastoriceHoney.Server.Proto.ChallengeStatistics) hIACNHNLCGL_ : null; }
+    public global::March7thHoney.Proto.ChallengeStatistics ChallengeDefault {
+      get { return hIACNHNLCGLCase_ == HIACNHNLCGLOneofCase.ChallengeDefault ? (global::March7thHoney.Proto.ChallengeStatistics) hIACNHNLCGL_ : null; }
       set {
         hIACNHNLCGL_ = value;
         hIACNHNLCGLCase_ = value == null ? HIACNHNLCGLOneofCase.None : HIACNHNLCGLOneofCase.ChallengeDefault;
@@ -154,8 +154,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int ChallengeBossFieldNumber = 7;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ChallengeBossStatistics ChallengeBoss {
-      get { return hIACNHNLCGLCase_ == HIACNHNLCGLOneofCase.ChallengeBoss ? (global::CastoriceHoney.Server.Proto.ChallengeBossStatistics) hIACNHNLCGL_ : null; }
+    public global::March7thHoney.Proto.ChallengeBossStatistics ChallengeBoss {
+      get { return hIACNHNLCGLCase_ == HIACNHNLCGLOneofCase.ChallengeBoss ? (global::March7thHoney.Proto.ChallengeBossStatistics) hIACNHNLCGL_ : null; }
       set {
         hIACNHNLCGL_ = value;
         hIACNHNLCGLCase_ = value == null ? HIACNHNLCGLOneofCase.None : HIACNHNLCGLOneofCase.ChallengeBoss;
@@ -332,19 +332,19 @@ namespace CastoriceHoney.Server.Proto {
       switch (other.HIACNHNLCGLCase) {
         case HIACNHNLCGLOneofCase.ChallengeStory:
           if (ChallengeStory == null) {
-            ChallengeStory = new global::CastoriceHoney.Server.Proto.ChallengeStoryStatistics();
+            ChallengeStory = new global::March7thHoney.Proto.ChallengeStoryStatistics();
           }
           ChallengeStory.MergeFrom(other.ChallengeStory);
           break;
         case HIACNHNLCGLOneofCase.ChallengeDefault:
           if (ChallengeDefault == null) {
-            ChallengeDefault = new global::CastoriceHoney.Server.Proto.ChallengeStatistics();
+            ChallengeDefault = new global::March7thHoney.Proto.ChallengeStatistics();
           }
           ChallengeDefault.MergeFrom(other.ChallengeDefault);
           break;
         case HIACNHNLCGLOneofCase.ChallengeBoss:
           if (ChallengeBoss == null) {
-            ChallengeBoss = new global::CastoriceHoney.Server.Proto.ChallengeBossStatistics();
+            ChallengeBoss = new global::March7thHoney.Proto.ChallengeBossStatistics();
           }
           ChallengeBoss.MergeFrom(other.ChallengeBoss);
           break;
@@ -370,7 +370,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            global::CastoriceHoney.Server.Proto.ChallengeStoryStatistics subBuilder = new global::CastoriceHoney.Server.Proto.ChallengeStoryStatistics();
+            global::March7thHoney.Proto.ChallengeStoryStatistics subBuilder = new global::March7thHoney.Proto.ChallengeStoryStatistics();
             if (hIACNHNLCGLCase_ == HIACNHNLCGLOneofCase.ChallengeStory) {
               subBuilder.MergeFrom(ChallengeStory);
             }
@@ -379,7 +379,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 50: {
-            global::CastoriceHoney.Server.Proto.ChallengeStatistics subBuilder = new global::CastoriceHoney.Server.Proto.ChallengeStatistics();
+            global::March7thHoney.Proto.ChallengeStatistics subBuilder = new global::March7thHoney.Proto.ChallengeStatistics();
             if (hIACNHNLCGLCase_ == HIACNHNLCGLOneofCase.ChallengeDefault) {
               subBuilder.MergeFrom(ChallengeDefault);
             }
@@ -388,7 +388,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 58: {
-            global::CastoriceHoney.Server.Proto.ChallengeBossStatistics subBuilder = new global::CastoriceHoney.Server.Proto.ChallengeBossStatistics();
+            global::March7thHoney.Proto.ChallengeBossStatistics subBuilder = new global::March7thHoney.Proto.ChallengeBossStatistics();
             if (hIACNHNLCGLCase_ == HIACNHNLCGLOneofCase.ChallengeBoss) {
               subBuilder.MergeFrom(ChallengeBoss);
             }
@@ -424,7 +424,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            global::CastoriceHoney.Server.Proto.ChallengeStoryStatistics subBuilder = new global::CastoriceHoney.Server.Proto.ChallengeStoryStatistics();
+            global::March7thHoney.Proto.ChallengeStoryStatistics subBuilder = new global::March7thHoney.Proto.ChallengeStoryStatistics();
             if (hIACNHNLCGLCase_ == HIACNHNLCGLOneofCase.ChallengeStory) {
               subBuilder.MergeFrom(ChallengeStory);
             }
@@ -433,7 +433,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 50: {
-            global::CastoriceHoney.Server.Proto.ChallengeStatistics subBuilder = new global::CastoriceHoney.Server.Proto.ChallengeStatistics();
+            global::March7thHoney.Proto.ChallengeStatistics subBuilder = new global::March7thHoney.Proto.ChallengeStatistics();
             if (hIACNHNLCGLCase_ == HIACNHNLCGLOneofCase.ChallengeDefault) {
               subBuilder.MergeFrom(ChallengeDefault);
             }
@@ -442,7 +442,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 58: {
-            global::CastoriceHoney.Server.Proto.ChallengeBossStatistics subBuilder = new global::CastoriceHoney.Server.Proto.ChallengeBossStatistics();
+            global::March7thHoney.Proto.ChallengeBossStatistics subBuilder = new global::March7thHoney.Proto.ChallengeBossStatistics();
             if (hIACNHNLCGLCase_ == HIACNHNLCGLOneofCase.ChallengeBoss) {
               subBuilder.MergeFrom(ChallengeBoss);
             }

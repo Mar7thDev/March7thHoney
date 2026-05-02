@@ -1,6 +1,6 @@
-﻿using CastoriceHoney.Server.Database.Account;
+using March7thHoney.Database.Account;
 
-namespace CastoriceHoney.Server.WebServer.Server;
+namespace March7thHoney.WebServer.Server;
 
 public class MuipSession
 {

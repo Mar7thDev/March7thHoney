@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from SceneCastSkillCsReq.proto</summary>
   public static partial class SceneCastSkillCsReqReflection {
@@ -38,9 +38,9 @@ namespace CastoriceHoney.Server.Proto {
             "Z3MYDiADKA4yDi5Ta2lsbEV4dHJhVGFnQjMKE2VtdS5sdW5hcmNvcmUucHJv",
             "dG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.AssistMonsterEntityInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.DynamicValuesReflection.Descriptor, global::CastoriceHoney.Server.Proto.MotionInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.SkillExtraTagReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.AssistMonsterEntityInfoReflection.Descriptor, global::March7thHoney.Proto.DynamicValuesReflection.Descriptor, global::March7thHoney.Proto.MotionInfoReflection.Descriptor, global::March7thHoney.Proto.SkillExtraTagReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.SceneCastSkillCsReq), global::CastoriceHoney.Server.Proto.SceneCastSkillCsReq.Parser, new[]{ "HitTargetEntityIdList", "AttackedByEntityId", "AssistMonsterEntityInfo", "MazeAbilityStr", "CastEntityId", "JJABNMFLKKI", "TargetMotion", "SkillIndex", "AssistMonsterEntityIdList", "DynamicValues", "SkillExtraTags" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneCastSkillCsReq), global::March7thHoney.Proto.SceneCastSkillCsReq.Parser, new[]{ "HitTargetEntityIdList", "AttackedByEntityId", "AssistMonsterEntityInfo", "MazeAbilityStr", "CastEntityId", "JJABNMFLKKI", "TargetMotion", "SkillIndex", "AssistMonsterEntityIdList", "DynamicValues", "SkillExtraTags" }, null, null, null, null)
           }));
     }
     #endregion
@@ -62,7 +62,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.SceneCastSkillCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.SceneCastSkillCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -127,12 +127,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "assist_monster_entity_info" field.</summary>
     public const int AssistMonsterEntityInfoFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.AssistMonsterEntityInfo> _repeated_assistMonsterEntityInfo_codec
-        = pb::FieldCodec.ForMessage(26, global::CastoriceHoney.Server.Proto.AssistMonsterEntityInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AssistMonsterEntityInfo> assistMonsterEntityInfo_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AssistMonsterEntityInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AssistMonsterEntityInfo> _repeated_assistMonsterEntityInfo_codec
+        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.AssistMonsterEntityInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AssistMonsterEntityInfo> assistMonsterEntityInfo_ = new pbc::RepeatedField<global::March7thHoney.Proto.AssistMonsterEntityInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AssistMonsterEntityInfo> AssistMonsterEntityInfo {
+    public pbc::RepeatedField<global::March7thHoney.Proto.AssistMonsterEntityInfo> AssistMonsterEntityInfo {
       get { return assistMonsterEntityInfo_; }
     }
 
@@ -174,10 +174,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "target_motion" field.</summary>
     public const int TargetMotionFieldNumber = 7;
-    private global::CastoriceHoney.Server.Proto.MotionInfo targetMotion_;
+    private global::March7thHoney.Proto.MotionInfo targetMotion_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.MotionInfo TargetMotion {
+    public global::March7thHoney.Proto.MotionInfo TargetMotion {
       get { return targetMotion_; }
       set {
         targetMotion_ = value;
@@ -209,23 +209,23 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "dynamic_values" field.</summary>
     public const int DynamicValuesFieldNumber = 13;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.DynamicValues> _repeated_dynamicValues_codec
-        = pb::FieldCodec.ForMessage(106, global::CastoriceHoney.Server.Proto.DynamicValues.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.DynamicValues> dynamicValues_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.DynamicValues>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.DynamicValues> _repeated_dynamicValues_codec
+        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.DynamicValues.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.DynamicValues> dynamicValues_ = new pbc::RepeatedField<global::March7thHoney.Proto.DynamicValues>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.DynamicValues> DynamicValues {
+    public pbc::RepeatedField<global::March7thHoney.Proto.DynamicValues> DynamicValues {
       get { return dynamicValues_; }
     }
 
     /// <summary>Field number for the "skill_extra_tags" field.</summary>
     public const int SkillExtraTagsFieldNumber = 14;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.SkillExtraTag> _repeated_skillExtraTags_codec
-        = pb::FieldCodec.ForEnum(114, x => (int) x, x => (global::CastoriceHoney.Server.Proto.SkillExtraTag) x);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.SkillExtraTag> skillExtraTags_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.SkillExtraTag>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.SkillExtraTag> _repeated_skillExtraTags_codec
+        = pb::FieldCodec.ForEnum(114, x => (int) x, x => (global::March7thHoney.Proto.SkillExtraTag) x);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.SkillExtraTag> skillExtraTags_ = new pbc::RepeatedField<global::March7thHoney.Proto.SkillExtraTag>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.SkillExtraTag> SkillExtraTags {
+    public pbc::RepeatedField<global::March7thHoney.Proto.SkillExtraTag> SkillExtraTags {
       get { return skillExtraTags_; }
     }
 
@@ -420,7 +420,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.targetMotion_ != null) {
         if (targetMotion_ == null) {
-          TargetMotion = new global::CastoriceHoney.Server.Proto.MotionInfo();
+          TargetMotion = new global::March7thHoney.Proto.MotionInfo();
         }
         TargetMotion.MergeFrom(other.TargetMotion);
       }
@@ -476,7 +476,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 58: {
             if (targetMotion_ == null) {
-              TargetMotion = new global::CastoriceHoney.Server.Proto.MotionInfo();
+              TargetMotion = new global::March7thHoney.Proto.MotionInfo();
             }
             input.ReadMessage(TargetMotion);
             break;
@@ -545,7 +545,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 58: {
             if (targetMotion_ == null) {
-              TargetMotion = new global::CastoriceHoney.Server.Proto.MotionInfo();
+              TargetMotion = new global::March7thHoney.Proto.MotionInfo();
             }
             input.ReadMessage(TargetMotion);
             break;

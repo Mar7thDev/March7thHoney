@@ -1,15 +1,15 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Database;
-using CastoriceHoney.Server.Database.Gacha;
-using CastoriceHoney.Server.Database.Inventory;
-using CastoriceHoney.Server.Enums;
-using CastoriceHoney.Server.Enums.Item;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.PlayerSync;
-using CastoriceHoney.Server.Proto;
-using GachaInfo = CastoriceHoney.Server.Database.Gacha.GachaInfo;
+using March7thHoney.Data;
+using March7thHoney.Database;
+using March7thHoney.Database.Gacha;
+using March7thHoney.Database.Inventory;
+using March7thHoney.Enums;
+using March7thHoney.Enums.Item;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
+using March7thHoney.Proto;
+using GachaInfo = March7thHoney.Database.Gacha.GachaInfo;
 
-namespace CastoriceHoney.Server.GameServer.Game.Gacha;
+namespace March7thHoney.GameServer.Game.Gacha;
 
 public class GachaManager : BasePlayerManager
 {

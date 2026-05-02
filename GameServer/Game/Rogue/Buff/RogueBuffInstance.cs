@@ -1,11 +1,11 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Data.Custom;
-using CastoriceHoney.Server.Data.Excel;
-using CastoriceHoney.Server.Enums.Rogue;
-using CastoriceHoney.Server.GameServer.Game.Battle;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Data;
+using March7thHoney.Data.Custom;
+using March7thHoney.Data.Excel;
+using March7thHoney.Enums.Rogue;
+using March7thHoney.GameServer.Game.Battle;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Game.Rogue.Buff;
+namespace March7thHoney.GameServer.Game.Rogue.Buff;
 
 public class RogueBuffInstance(int buffId, int buffLevel)
 {

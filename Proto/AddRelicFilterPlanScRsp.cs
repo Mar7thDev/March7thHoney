@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from AddRelicFilterPlanScRsp.proto</summary>
   public static partial class AddRelicFilterPlanScRspReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90",
             "b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.EECJMIOAFFGReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.EECJMIOAFFGReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.AddRelicFilterPlanScRsp), global::CastoriceHoney.Server.Proto.AddRelicFilterPlanScRsp.Parser, new[]{ "RelicPlan", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AddRelicFilterPlanScRsp), global::March7thHoney.Proto.AddRelicFilterPlanScRsp.Parser, new[]{ "RelicPlan", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.AddRelicFilterPlanScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.AddRelicFilterPlanScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -87,10 +87,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "relic_plan" field.</summary>
     public const int RelicPlanFieldNumber = 6;
-    private global::CastoriceHoney.Server.Proto.EECJMIOAFFG relicPlan_;
+    private global::March7thHoney.Proto.EECJMIOAFFG relicPlan_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.EECJMIOAFFG RelicPlan {
+    public global::March7thHoney.Proto.EECJMIOAFFG RelicPlan {
       get { return relicPlan_; }
       set {
         relicPlan_ = value;
@@ -209,7 +209,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.relicPlan_ != null) {
         if (relicPlan_ == null) {
-          RelicPlan = new global::CastoriceHoney.Server.Proto.EECJMIOAFFG();
+          RelicPlan = new global::March7thHoney.Proto.EECJMIOAFFG();
         }
         RelicPlan.MergeFrom(other.RelicPlan);
       }
@@ -237,7 +237,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 50: {
             if (relicPlan_ == null) {
-              RelicPlan = new global::CastoriceHoney.Server.Proto.EECJMIOAFFG();
+              RelicPlan = new global::March7thHoney.Proto.EECJMIOAFFG();
             }
             input.ReadMessage(RelicPlan);
             break;
@@ -267,7 +267,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 50: {
             if (relicPlan_ == null) {
-              RelicPlan = new global::CastoriceHoney.Server.Proto.EECJMIOAFFG();
+              RelicPlan = new global::March7thHoney.Proto.EECJMIOAFFG();
             }
             input.ReadMessage(RelicPlan);
             break;

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from ABOLGABIPJA.proto</summary>
   public static partial class ABOLGABIPJAReflection {
@@ -37,7 +37,7 @@ namespace CastoriceHoney.Server.Proto {
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ABOLGABIPJA), global::CastoriceHoney.Server.Proto.ABOLGABIPJA.Parser, new[]{ "MLOFNLCKNBL", "AuthkeyVer", "LDEBCMJBCLD", "NHDDHMGGKBO", "HDHJEFFIPOL", "NGCFMHKACDO", "AJKHDLNMBMP", "IGJOBFGJAMI", "EBABMGKJIAF", "JEBNJPNCPMP", "Id", "HKEHIIPBDHA", "FLMEHIPGBJN", "EMHMHACKBOI", "DDALNHLOGJK", "LHHMLLFGFLI", "DAMFMNKHFIH" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ABOLGABIPJA), global::March7thHoney.Proto.ABOLGABIPJA.Parser, new[]{ "MLOFNLCKNBL", "AuthkeyVer", "LDEBCMJBCLD", "NHDDHMGGKBO", "HDHJEFFIPOL", "NGCFMHKACDO", "AJKHDLNMBMP", "IGJOBFGJAMI", "EBABMGKJIAF", "JEBNJPNCPMP", "Id", "HKEHIIPBDHA", "FLMEHIPGBJN", "EMHMHACKBOI", "DDALNHLOGJK", "LHHMLLFGFLI", "DAMFMNKHFIH" }, null, null, null, null)
           }));
     }
     #endregion
@@ -59,7 +59,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ABOLGABIPJAReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ABOLGABIPJAReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

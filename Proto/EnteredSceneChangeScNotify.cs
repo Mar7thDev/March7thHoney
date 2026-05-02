@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from EnteredSceneChangeScNotify.proto</summary>
   public static partial class EnteredSceneChangeScNotifyReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "ZUluZm9CMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5",
             "LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.EnteredSceneInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.EnteredSceneInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.EnteredSceneChangeScNotify), global::CastoriceHoney.Server.Proto.EnteredSceneChangeScNotify.Parser, new[]{ "EnteredSceneInfoList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EnteredSceneChangeScNotify), global::March7thHoney.Proto.EnteredSceneChangeScNotify.Parser, new[]{ "EnteredSceneInfoList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.EnteredSceneChangeScNotifyReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.EnteredSceneChangeScNotifyReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -86,12 +86,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "entered_scene_info_list" field.</summary>
     public const int EnteredSceneInfoListFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.EnteredSceneInfo> _repeated_enteredSceneInfoList_codec
-        = pb::FieldCodec.ForMessage(34, global::CastoriceHoney.Server.Proto.EnteredSceneInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.EnteredSceneInfo> enteredSceneInfoList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.EnteredSceneInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EnteredSceneInfo> _repeated_enteredSceneInfoList_codec
+        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.EnteredSceneInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EnteredSceneInfo> enteredSceneInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.EnteredSceneInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.EnteredSceneInfo> EnteredSceneInfoList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.EnteredSceneInfo> EnteredSceneInfoList {
       get { return enteredSceneInfoList_; }
     }
 

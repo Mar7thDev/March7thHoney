@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from TakeKilledPunkLordMonsterScoreScRsp.proto</summary>
   public static partial class TakeKilledPunkLordMonsterScoreScRspReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "Y29yZV9pZBgMIAEoDUIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9y",
             "aWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.JLLIDDIBOHIReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.JLLIDDIBOHIReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.TakeKilledPunkLordMonsterScoreScRsp), global::CastoriceHoney.Server.Proto.TakeKilledPunkLordMonsterScoreScRsp.Parser, new[]{ "MDNFLHMOLNB", "DGLHFPIPFDJ", "Retcode", "ScoreId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TakeKilledPunkLordMonsterScoreScRsp), global::March7thHoney.Proto.TakeKilledPunkLordMonsterScoreScRsp.Parser, new[]{ "MDNFLHMOLNB", "DGLHFPIPFDJ", "Retcode", "ScoreId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.TakeKilledPunkLordMonsterScoreScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.TakeKilledPunkLordMonsterScoreScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -102,12 +102,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "DGLHFPIPFDJ" field.</summary>
     public const int DGLHFPIPFDJFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.JLLIDDIBOHI> _repeated_dGLHFPIPFDJ_codec
-        = pb::FieldCodec.ForMessage(34, global::CastoriceHoney.Server.Proto.JLLIDDIBOHI.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.JLLIDDIBOHI> dGLHFPIPFDJ_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.JLLIDDIBOHI>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.JLLIDDIBOHI> _repeated_dGLHFPIPFDJ_codec
+        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.JLLIDDIBOHI.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.JLLIDDIBOHI> dGLHFPIPFDJ_ = new pbc::RepeatedField<global::March7thHoney.Proto.JLLIDDIBOHI>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.JLLIDDIBOHI> DGLHFPIPFDJ {
+    public pbc::RepeatedField<global::March7thHoney.Proto.JLLIDDIBOHI> DGLHFPIPFDJ {
       get { return dGLHFPIPFDJ_; }
     }
 

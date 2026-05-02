@@ -1,12 +1,12 @@
-using CastoriceHoney.Server.Database.Account;
-using CastoriceHoney.Server.Util;
-using CastoriceHoney.Server.WebServer.Objects;
+using March7thHoney.Database.Account;
+using March7thHoney.Util;
+using March7thHoney.WebServer.Objects;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using System.Security.Cryptography;
-using static CastoriceHoney.Server.WebServer.Objects.NewLoginResJson;
+using static March7thHoney.WebServer.Objects.NewLoginResJson;
 
-namespace CastoriceHoney.Server.WebServer.Handler;
+namespace March7thHoney.WebServer.Handler;
 
 public class NewTokenLoginHandler
 {

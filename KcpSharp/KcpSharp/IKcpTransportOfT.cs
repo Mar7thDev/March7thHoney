@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Kcp.KcpSharp;
+namespace March7thHoney.Kcp.KcpSharp;
 
 /// <summary>
 ///     A transport instance for upper-level connections.

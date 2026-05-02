@@ -1,6 +1,6 @@
-using CastoriceHoney.Server.Kcp;
+using March7thHoney.Kcp;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.RndOption;
+namespace March7thHoney.GameServer.Server.Packet.Recv.RndOption;
 
 [Opcode(CmdIds.GetRndOptionCsReq)]
 public class HandlerGetRndOptionCsReq : Handler

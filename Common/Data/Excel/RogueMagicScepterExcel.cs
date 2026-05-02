@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Enums.RogueMagic;
+using March7thHoney.Enums.RogueMagic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueMagicScepter.json")]
 public class RogueMagicScepterExcel : ExcelResource

@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
-using CastoriceHoney.Server.Util.Security;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
+using March7thHoney.Util;
+using March7thHoney.Util.Security;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Send.Player;
+namespace March7thHoney.GameServer.Server.Packet.Send.Player;
 
 public class PacketPlayerGetTokenScRsp : BasePacket
 {

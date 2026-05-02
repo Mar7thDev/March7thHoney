@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from StatisticEvent.proto</summary>
   public static partial class StatisticEventReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "FQoNZGlzcGxheV92YWx1ZRgDIAEoDUIzChNlbXUubHVuYXJjb3JlLnByb3Rv",
             "qgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.BattleStaticticEventTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.BattleStaticticEventTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.StatisticEvent), global::CastoriceHoney.Server.Proto.StatisticEvent.Parser, new[]{ "Type", "PICEGMCCHME", "DisplayValue" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StatisticEvent), global::March7thHoney.Proto.StatisticEvent.Parser, new[]{ "Type", "PICEGMCCHME", "DisplayValue" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.StatisticEventReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.StatisticEventReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -88,10 +88,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "type" field.</summary>
     public const int TypeFieldNumber = 1;
-    private global::CastoriceHoney.Server.Proto.BattleStaticticEventType type_ = global::CastoriceHoney.Server.Proto.BattleStaticticEventType.BattleStaticticEventNone;
+    private global::March7thHoney.Proto.BattleStaticticEventType type_ = global::March7thHoney.Proto.BattleStaticticEventType.BattleStaticticEventNone;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.BattleStaticticEventType Type {
+    public global::March7thHoney.Proto.BattleStaticticEventType Type {
       get { return type_; }
       set {
         type_ = value;
@@ -147,7 +147,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Type != global::CastoriceHoney.Server.Proto.BattleStaticticEventType.BattleStaticticEventNone) hash ^= Type.GetHashCode();
+      if (Type != global::March7thHoney.Proto.BattleStaticticEventType.BattleStaticticEventNone) hash ^= Type.GetHashCode();
       if (PICEGMCCHME != 0) hash ^= PICEGMCCHME.GetHashCode();
       if (DisplayValue != 0) hash ^= DisplayValue.GetHashCode();
       if (_unknownFields != null) {
@@ -168,7 +168,7 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Type != global::CastoriceHoney.Server.Proto.BattleStaticticEventType.BattleStaticticEventNone) {
+      if (Type != global::March7thHoney.Proto.BattleStaticticEventType.BattleStaticticEventNone) {
         output.WriteRawTag(8);
         output.WriteEnum((int) Type);
       }
@@ -190,7 +190,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Type != global::CastoriceHoney.Server.Proto.BattleStaticticEventType.BattleStaticticEventNone) {
+      if (Type != global::March7thHoney.Proto.BattleStaticticEventType.BattleStaticticEventNone) {
         output.WriteRawTag(8);
         output.WriteEnum((int) Type);
       }
@@ -212,7 +212,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Type != global::CastoriceHoney.Server.Proto.BattleStaticticEventType.BattleStaticticEventNone) {
+      if (Type != global::March7thHoney.Proto.BattleStaticticEventType.BattleStaticticEventNone) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
       }
       if (PICEGMCCHME != 0) {
@@ -233,7 +233,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.Type != global::CastoriceHoney.Server.Proto.BattleStaticticEventType.BattleStaticticEventNone) {
+      if (other.Type != global::March7thHoney.Proto.BattleStaticticEventType.BattleStaticticEventNone) {
         Type = other.Type;
       }
       if (other.PICEGMCCHME != 0) {
@@ -262,7 +262,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            Type = (global::CastoriceHoney.Server.Proto.BattleStaticticEventType) input.ReadEnum();
+            Type = (global::March7thHoney.Proto.BattleStaticticEventType) input.ReadEnum();
             break;
           }
           case 16: {
@@ -293,7 +293,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            Type = (global::CastoriceHoney.Server.Proto.BattleStaticticEventType) input.ReadEnum();
+            Type = (global::March7thHoney.Proto.BattleStaticticEventType) input.ReadEnum();
             break;
           }
           case 16: {

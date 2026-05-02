@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.EraFlipper;
-using CastoriceHoney.Server.Kcp;
+using March7thHoney.GameServer.Server.Packet.Send.EraFlipper;
+using March7thHoney.Kcp;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.EraFlipper;
+namespace March7thHoney.GameServer.Server.Packet.Recv.EraFlipper;
 
 [Opcode(CmdIds.GetEraFlipperDataCsReq)]
 public class HandlerGetEraFlipperDataCsReq : Handler

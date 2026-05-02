@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.Database.Gacha;
-using CastoriceHoney.Server.Enums;
-using CastoriceHoney.Server.Proto;
-using GachaInfo = CastoriceHoney.Server.Proto.GachaInfo;
+using March7thHoney.Database.Gacha;
+using March7thHoney.Enums;
+using March7thHoney.Proto;
+using GachaInfo = March7thHoney.Proto.GachaInfo;
 
-namespace CastoriceHoney.Server.Data.Custom;
+namespace March7thHoney.Data.Custom;
 
 public class BannersConfig
 {

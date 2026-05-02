@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Enums.Task;
+namespace March7thHoney.Enums.Task;
 
 public enum TargetFetchAdvPropFetchTypeEnum
 {

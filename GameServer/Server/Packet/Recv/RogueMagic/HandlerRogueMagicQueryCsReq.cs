@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.RogueMagic;
-using CastoriceHoney.Server.Kcp;
+using March7thHoney.GameServer.Server.Packet.Send.RogueMagic;
+using March7thHoney.Kcp;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.RogueMagic;
+namespace March7thHoney.GameServer.Server.Packet.Recv.RogueMagic;
 
 [Opcode(CmdIds.RogueMagicQueryCsReq)]
 public class HandlerRogueMagicQueryCsReq : Handler

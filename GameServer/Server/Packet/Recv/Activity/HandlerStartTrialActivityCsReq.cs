@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.GameServer.Game.Activity.Activities;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.GameServer.Game.Activity.Activities;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Activity;
+namespace March7thHoney.GameServer.Server.Packet.Recv.Activity;
 
 [Opcode(CmdIds.StartTrialActivityCsReq)]
 public class HandlerStartTrialActivityCsReq : Handler

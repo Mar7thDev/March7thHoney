@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Proto;
 using Google.Protobuf;
 using SqlSugar;
 
-namespace CastoriceHoney.Server.Database.Player;
+namespace March7thHoney.Database.Player;
 
 [SugarTable("server_prefs_data")]
 public class ServerPrefsData : BaseDatabaseDataHelper

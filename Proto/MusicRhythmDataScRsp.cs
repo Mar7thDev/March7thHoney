@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from MusicRhythmDataScRsp.proto</summary>
   public static partial class MusicRhythmDataScRspReflection {
@@ -34,9 +34,9 @@ namespace CastoriceHoney.Server.Proto {
             "c3QYDCADKA0SEwoLY3VyX3NvbmdfaWQYDiABKA1CMwoTZW11Lmx1bmFyY29y",
             "ZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.MusicRhythmGroupReflection.Descriptor, global::CastoriceHoney.Server.Proto.MusicRhythmLevelReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.MusicRhythmGroupReflection.Descriptor, global::March7thHoney.Proto.MusicRhythmLevelReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.MusicRhythmDataScRsp), global::CastoriceHoney.Server.Proto.MusicRhythmDataScRsp.Parser, new[]{ "LevelDataList", "UnlockPhaseList", "ShowHint", "UnlockTrackList", "MusicGroup", "Retcode", "CurLevelId", "UnlockSongList", "CurSongId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MusicRhythmDataScRsp), global::March7thHoney.Proto.MusicRhythmDataScRsp.Parser, new[]{ "LevelDataList", "UnlockPhaseList", "ShowHint", "UnlockTrackList", "MusicGroup", "Retcode", "CurLevelId", "UnlockSongList", "CurSongId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -58,7 +58,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.MusicRhythmDataScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.MusicRhythmDataScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -98,12 +98,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "level_data_list" field.</summary>
     public const int LevelDataListFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.MusicRhythmLevel> _repeated_levelDataList_codec
-        = pb::FieldCodec.ForMessage(10, global::CastoriceHoney.Server.Proto.MusicRhythmLevel.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MusicRhythmLevel> levelDataList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MusicRhythmLevel>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MusicRhythmLevel> _repeated_levelDataList_codec
+        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.MusicRhythmLevel.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MusicRhythmLevel> levelDataList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MusicRhythmLevel>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MusicRhythmLevel> LevelDataList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.MusicRhythmLevel> LevelDataList {
       get { return levelDataList_; }
     }
 
@@ -143,12 +143,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "music_group" field.</summary>
     public const int MusicGroupFieldNumber = 8;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.MusicRhythmGroup> _repeated_musicGroup_codec
-        = pb::FieldCodec.ForMessage(66, global::CastoriceHoney.Server.Proto.MusicRhythmGroup.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MusicRhythmGroup> musicGroup_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MusicRhythmGroup>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MusicRhythmGroup> _repeated_musicGroup_codec
+        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.MusicRhythmGroup.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MusicRhythmGroup> musicGroup_ = new pbc::RepeatedField<global::March7thHoney.Proto.MusicRhythmGroup>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MusicRhythmGroup> MusicGroup {
+    public pbc::RepeatedField<global::March7thHoney.Proto.MusicRhythmGroup> MusicGroup {
       get { return musicGroup_; }
     }
 

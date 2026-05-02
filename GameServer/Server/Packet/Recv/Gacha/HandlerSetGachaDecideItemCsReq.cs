@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Gacha;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.GameServer.Server.Packet.Send.Gacha;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Gacha;
+namespace March7thHoney.GameServer.Server.Packet.Recv.Gacha;
 
 [Opcode(CmdIds.SetGachaDecideItemCsReq)]
 public class HandlerSetGachaDecideItemCsReq : Handler

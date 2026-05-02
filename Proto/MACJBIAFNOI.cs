@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from MACJBIAFNOI.proto</summary>
   public static partial class MACJBIAFNOIReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "ASgDQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5T",
             "ZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.VectorReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.VectorReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.MACJBIAFNOI), global::CastoriceHoney.Server.Proto.MACJBIAFNOI.Parser, new[]{ "Pos", "Rot", "GNGKNDCKKKC", "NALBEFMOKIB", "DCBBKFFHHDL", "JCBGHAODNDD", "MEKPIHJKJBL", "KHAJDKDHPGD" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MACJBIAFNOI), global::March7thHoney.Proto.MACJBIAFNOI.Parser, new[]{ "Pos", "Rot", "GNGKNDCKKKC", "NALBEFMOKIB", "DCBBKFFHHDL", "JCBGHAODNDD", "MEKPIHJKJBL", "KHAJDKDHPGD" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.MACJBIAFNOIReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.MACJBIAFNOIReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -95,10 +95,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "pos" field.</summary>
     public const int PosFieldNumber = 1;
-    private global::CastoriceHoney.Server.Proto.Vector pos_;
+    private global::March7thHoney.Proto.Vector pos_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.Vector Pos {
+    public global::March7thHoney.Proto.Vector Pos {
       get { return pos_; }
       set {
         pos_ = value;
@@ -107,10 +107,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "rot" field.</summary>
     public const int RotFieldNumber = 2;
-    private global::CastoriceHoney.Server.Proto.Vector rot_;
+    private global::March7thHoney.Proto.Vector rot_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.Vector Rot {
+    public global::March7thHoney.Proto.Vector Rot {
       get { return rot_; }
       set {
         rot_ = value;
@@ -131,10 +131,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "NALBEFMOKIB" field.</summary>
     public const int NALBEFMOKIBFieldNumber = 4;
-    private global::CastoriceHoney.Server.Proto.Vector nALBEFMOKIB_;
+    private global::March7thHoney.Proto.Vector nALBEFMOKIB_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.Vector NALBEFMOKIB {
+    public global::March7thHoney.Proto.Vector NALBEFMOKIB {
       get { return nALBEFMOKIB_; }
       set {
         nALBEFMOKIB_ = value;
@@ -367,13 +367,13 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.pos_ != null) {
         if (pos_ == null) {
-          Pos = new global::CastoriceHoney.Server.Proto.Vector();
+          Pos = new global::March7thHoney.Proto.Vector();
         }
         Pos.MergeFrom(other.Pos);
       }
       if (other.rot_ != null) {
         if (rot_ == null) {
-          Rot = new global::CastoriceHoney.Server.Proto.Vector();
+          Rot = new global::March7thHoney.Proto.Vector();
         }
         Rot.MergeFrom(other.Rot);
       }
@@ -382,7 +382,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.nALBEFMOKIB_ != null) {
         if (nALBEFMOKIB_ == null) {
-          NALBEFMOKIB = new global::CastoriceHoney.Server.Proto.Vector();
+          NALBEFMOKIB = new global::March7thHoney.Proto.Vector();
         }
         NALBEFMOKIB.MergeFrom(other.NALBEFMOKIB);
       }
@@ -419,14 +419,14 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 10: {
             if (pos_ == null) {
-              Pos = new global::CastoriceHoney.Server.Proto.Vector();
+              Pos = new global::March7thHoney.Proto.Vector();
             }
             input.ReadMessage(Pos);
             break;
           }
           case 18: {
             if (rot_ == null) {
-              Rot = new global::CastoriceHoney.Server.Proto.Vector();
+              Rot = new global::March7thHoney.Proto.Vector();
             }
             input.ReadMessage(Rot);
             break;
@@ -437,7 +437,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 34: {
             if (nALBEFMOKIB_ == null) {
-              NALBEFMOKIB = new global::CastoriceHoney.Server.Proto.Vector();
+              NALBEFMOKIB = new global::March7thHoney.Proto.Vector();
             }
             input.ReadMessage(NALBEFMOKIB);
             break;
@@ -479,14 +479,14 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 10: {
             if (pos_ == null) {
-              Pos = new global::CastoriceHoney.Server.Proto.Vector();
+              Pos = new global::March7thHoney.Proto.Vector();
             }
             input.ReadMessage(Pos);
             break;
           }
           case 18: {
             if (rot_ == null) {
-              Rot = new global::CastoriceHoney.Server.Proto.Vector();
+              Rot = new global::March7thHoney.Proto.Vector();
             }
             input.ReadMessage(Rot);
             break;
@@ -497,7 +497,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 34: {
             if (nALBEFMOKIB_ == null) {
-              NALBEFMOKIB = new global::CastoriceHoney.Server.Proto.Vector();
+              NALBEFMOKIB = new global::March7thHoney.Proto.Vector();
             }
             input.ReadMessage(NALBEFMOKIB);
             break;

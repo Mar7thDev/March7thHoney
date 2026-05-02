@@ -1,23 +1,23 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Data.Excel;
-using CastoriceHoney.Server.Enums.Rogue;
-using CastoriceHoney.Server.Enums.RogueMagic;
-using CastoriceHoney.Server.GameServer.Game.Battle;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.GameServer.Game.Rogue;
-using CastoriceHoney.Server.GameServer.Game.Rogue.Event;
-using CastoriceHoney.Server.GameServer.Game.RogueMagic.Adventure;
-using CastoriceHoney.Server.GameServer.Game.RogueMagic.MagicUnit;
-using CastoriceHoney.Server.GameServer.Game.RogueMagic.Scene;
-using CastoriceHoney.Server.GameServer.Game.RogueMagic.Scepter;
-using CastoriceHoney.Server.GameServer.Game.Scene.Entity;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Lineup;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.RogueCommon;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.RogueMagic;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Data;
+using March7thHoney.Data.Excel;
+using March7thHoney.Enums.Rogue;
+using March7thHoney.Enums.RogueMagic;
+using March7thHoney.GameServer.Game.Battle;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Game.Rogue;
+using March7thHoney.GameServer.Game.Rogue.Event;
+using March7thHoney.GameServer.Game.RogueMagic.Adventure;
+using March7thHoney.GameServer.Game.RogueMagic.MagicUnit;
+using March7thHoney.GameServer.Game.RogueMagic.Scene;
+using March7thHoney.GameServer.Game.RogueMagic.Scepter;
+using March7thHoney.GameServer.Game.Scene.Entity;
+using March7thHoney.GameServer.Server.Packet.Send.Lineup;
+using March7thHoney.GameServer.Server.Packet.Send.RogueCommon;
+using March7thHoney.GameServer.Server.Packet.Send.RogueMagic;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.GameServer.Game.RogueMagic;
+namespace March7thHoney.GameServer.Game.RogueMagic;
 
 public class RogueMagicInstance : BaseRogueInstance
 {

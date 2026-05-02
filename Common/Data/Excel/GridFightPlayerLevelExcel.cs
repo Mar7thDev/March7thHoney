@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("GridFightPlayerLevel.json")]
 public class GridFightPlayerLevelExcel : ExcelResource

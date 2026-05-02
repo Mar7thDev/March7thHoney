@@ -1,7 +1,7 @@
 using System.Collections.Concurrent;
 using Newtonsoft.Json;
 
-namespace CastoriceHoney.Server.Util;
+namespace March7thHoney.Util;
 
 public class ConcurrentBagConverter<T> : JsonConverter<ConcurrentBag<T>>
 {

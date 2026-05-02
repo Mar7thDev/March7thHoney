@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
-using static CastoriceHoney.Server.GameServer.Plugin.Event.PluginEvent;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
+using March7thHoney.Util;
+using static March7thHoney.GameServer.Plugin.Event.PluginEvent;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Challenge;
+namespace March7thHoney.GameServer.Server.Packet.Recv.Challenge;
 
 [Opcode(CmdIds.LeaveChallengeCsReq)]
 public class HandlerLeaveChallengeCsReq : Handler

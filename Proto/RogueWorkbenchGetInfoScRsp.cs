@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from RogueWorkbenchGetInfoScRsp.proto</summary>
   public static partial class RogueWorkbenchGetInfoScRspReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "Q0NER0Y6AjgBQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VI",
             "b25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.CGKBEBCCDGFReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.CGKBEBCCDGFReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.RogueWorkbenchGetInfoScRsp), global::CastoriceHoney.Server.Proto.RogueWorkbenchGetInfoScRsp.Parser, new[]{ "Retcode", "DKOAPDJGLOA" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RogueWorkbenchGetInfoScRsp), global::March7thHoney.Proto.RogueWorkbenchGetInfoScRsp.Parser, new[]{ "Retcode", "DKOAPDJGLOA" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.RogueWorkbenchGetInfoScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.RogueWorkbenchGetInfoScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -101,12 +101,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "DKOAPDJGLOA" field.</summary>
     public const int DKOAPDJGLOAFieldNumber = 12;
-    private static readonly pbc::MapField<uint, global::CastoriceHoney.Server.Proto.CGKBEBCCDGF>.Codec _map_dKOAPDJGLOA_codec
-        = new pbc::MapField<uint, global::CastoriceHoney.Server.Proto.CGKBEBCCDGF>.Codec(pb::FieldCodec.ForUInt32(8, 0), pb::FieldCodec.ForMessage(18, global::CastoriceHoney.Server.Proto.CGKBEBCCDGF.Parser), 98);
-    private readonly pbc::MapField<uint, global::CastoriceHoney.Server.Proto.CGKBEBCCDGF> dKOAPDJGLOA_ = new pbc::MapField<uint, global::CastoriceHoney.Server.Proto.CGKBEBCCDGF>();
+    private static readonly pbc::MapField<uint, global::March7thHoney.Proto.CGKBEBCCDGF>.Codec _map_dKOAPDJGLOA_codec
+        = new pbc::MapField<uint, global::March7thHoney.Proto.CGKBEBCCDGF>.Codec(pb::FieldCodec.ForUInt32(8, 0), pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.CGKBEBCCDGF.Parser), 98);
+    private readonly pbc::MapField<uint, global::March7thHoney.Proto.CGKBEBCCDGF> dKOAPDJGLOA_ = new pbc::MapField<uint, global::March7thHoney.Proto.CGKBEBCCDGF>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<uint, global::CastoriceHoney.Server.Proto.CGKBEBCCDGF> DKOAPDJGLOA {
+    public pbc::MapField<uint, global::March7thHoney.Proto.CGKBEBCCDGF> DKOAPDJGLOA {
       get { return dKOAPDJGLOA_; }
     }
 

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from ElationActivityBattleEndScNotify.proto</summary>
   public static partial class ElationActivityBattleEndScNotifyReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "ZXZlbF9pZBgPIAEoDUIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9y",
             "aWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ElationActivityLevelDataReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ElationActivityLevelDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ElationActivityBattleEndScNotify), global::CastoriceHoney.Server.Proto.ElationActivityBattleEndScNotify.Parser, new[]{ "GGCPDPFMAEG", "PerfectWave", "LevelData", "HJAADAOGAMP", "LevelId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ElationActivityBattleEndScNotify), global::March7thHoney.Proto.ElationActivityBattleEndScNotify.Parser, new[]{ "GGCPDPFMAEG", "PerfectWave", "LevelData", "HJAADAOGAMP", "LevelId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ElationActivityBattleEndScNotifyReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ElationActivityBattleEndScNotifyReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -116,10 +116,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "level_data" field.</summary>
     public const int LevelDataFieldNumber = 10;
-    private global::CastoriceHoney.Server.Proto.ElationActivityLevelData levelData_;
+    private global::March7thHoney.Proto.ElationActivityLevelData levelData_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ElationActivityLevelData LevelData {
+    public global::March7thHoney.Proto.ElationActivityLevelData LevelData {
       get { return levelData_; }
       set {
         levelData_ = value;
@@ -295,7 +295,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.levelData_ != null) {
         if (levelData_ == null) {
-          LevelData = new global::CastoriceHoney.Server.Proto.ElationActivityLevelData();
+          LevelData = new global::March7thHoney.Proto.ElationActivityLevelData();
         }
         LevelData.MergeFrom(other.LevelData);
       }
@@ -334,7 +334,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 82: {
             if (levelData_ == null) {
-              LevelData = new global::CastoriceHoney.Server.Proto.ElationActivityLevelData();
+              LevelData = new global::March7thHoney.Proto.ElationActivityLevelData();
             }
             input.ReadMessage(LevelData);
             break;
@@ -376,7 +376,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 82: {
             if (levelData_ == null) {
-              LevelData = new global::CastoriceHoney.Server.Proto.ElationActivityLevelData();
+              LevelData = new global::March7thHoney.Proto.ElationActivityLevelData();
             }
             input.ReadMessage(LevelData);
             break;

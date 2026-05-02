@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace CastoriceHoney.Server.Kcp.KcpSharp;
+namespace March7thHoney.Kcp.KcpSharp;
 
 /// <summary>
 ///     The buffer rented and owned by KcpSharp.

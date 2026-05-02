@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from MonopolySelectOptionScRsp.proto</summary>
   public static partial class MonopolySelectOptionScRspReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "RUVCMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNl",
             "cnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.BLIJEKKOIJHReflection.Descriptor, global::CastoriceHoney.Server.Proto.NPLALEFPIEEReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.BLIJEKKOIJHReflection.Descriptor, global::March7thHoney.Proto.NPLALEFPIEEReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.MonopolySelectOptionScRsp), global::CastoriceHoney.Server.Proto.MonopolySelectOptionScRsp.Parser, new[]{ "Retcode", "GGLDOGIHFLG", "AMADFJNHMFF", "EventId", "JBLLICOOCAK" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MonopolySelectOptionScRsp), global::March7thHoney.Proto.MonopolySelectOptionScRsp.Parser, new[]{ "Retcode", "GGLDOGIHFLG", "AMADFJNHMFF", "EventId", "JBLLICOOCAK" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.MonopolySelectOptionScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.MonopolySelectOptionScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -104,10 +104,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "GGLDOGIHFLG" field.</summary>
     public const int GGLDOGIHFLGFieldNumber = 2;
-    private global::CastoriceHoney.Server.Proto.BLIJEKKOIJH gGLDOGIHFLG_;
+    private global::March7thHoney.Proto.BLIJEKKOIJH gGLDOGIHFLG_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.BLIJEKKOIJH GGLDOGIHFLG {
+    public global::March7thHoney.Proto.BLIJEKKOIJH GGLDOGIHFLG {
       get { return gGLDOGIHFLG_; }
       set {
         gGLDOGIHFLG_ = value;
@@ -140,12 +140,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "JBLLICOOCAK" field.</summary>
     public const int JBLLICOOCAKFieldNumber = 14;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.NPLALEFPIEE> _repeated_jBLLICOOCAK_codec
-        = pb::FieldCodec.ForMessage(114, global::CastoriceHoney.Server.Proto.NPLALEFPIEE.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.NPLALEFPIEE> jBLLICOOCAK_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.NPLALEFPIEE>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.NPLALEFPIEE> _repeated_jBLLICOOCAK_codec
+        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.NPLALEFPIEE.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.NPLALEFPIEE> jBLLICOOCAK_ = new pbc::RepeatedField<global::March7thHoney.Proto.NPLALEFPIEE>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.NPLALEFPIEE> JBLLICOOCAK {
+    public pbc::RepeatedField<global::March7thHoney.Proto.NPLALEFPIEE> JBLLICOOCAK {
       get { return jBLLICOOCAK_; }
     }
 
@@ -283,7 +283,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.gGLDOGIHFLG_ != null) {
         if (gGLDOGIHFLG_ == null) {
-          GGLDOGIHFLG = new global::CastoriceHoney.Server.Proto.BLIJEKKOIJH();
+          GGLDOGIHFLG = new global::March7thHoney.Proto.BLIJEKKOIJH();
         }
         GGLDOGIHFLG.MergeFrom(other.GGLDOGIHFLG);
       }
@@ -319,7 +319,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 18: {
             if (gGLDOGIHFLG_ == null) {
-              GGLDOGIHFLG = new global::CastoriceHoney.Server.Proto.BLIJEKKOIJH();
+              GGLDOGIHFLG = new global::March7thHoney.Proto.BLIJEKKOIJH();
             }
             input.ReadMessage(GGLDOGIHFLG);
             break;
@@ -361,7 +361,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 18: {
             if (gGLDOGIHFLG_ == null) {
-              GGLDOGIHFLG = new global::CastoriceHoney.Server.Proto.BLIJEKKOIJH();
+              GGLDOGIHFLG = new global::March7thHoney.Proto.BLIJEKKOIJH();
             }
             input.ReadMessage(GGLDOGIHFLG);
             break;

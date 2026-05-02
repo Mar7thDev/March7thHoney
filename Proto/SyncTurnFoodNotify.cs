@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from SyncTurnFoodNotify.proto</summary>
   public static partial class SyncTurnFoodNotifyReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "dS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJv",
             "dG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.TurnFoodSwitchReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.TurnFoodSwitchReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.SyncTurnFoodNotify), global::CastoriceHoney.Server.Proto.SyncTurnFoodNotify.Parser, new[]{ "MAODNHNHLIJ", "DBPDPHIMBDJ" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SyncTurnFoodNotify), global::March7thHoney.Proto.SyncTurnFoodNotify.Parser, new[]{ "MAODNHNHLIJ", "DBPDPHIMBDJ" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.SyncTurnFoodNotifyReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.SyncTurnFoodNotifyReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -87,12 +87,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "MAODNHNHLIJ" field.</summary>
     public const int MAODNHNHLIJFieldNumber = 9;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.TurnFoodSwitch> _repeated_mAODNHNHLIJ_codec
-        = pb::FieldCodec.ForEnum(74, x => (int) x, x => (global::CastoriceHoney.Server.Proto.TurnFoodSwitch) x);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.TurnFoodSwitch> mAODNHNHLIJ_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.TurnFoodSwitch>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.TurnFoodSwitch> _repeated_mAODNHNHLIJ_codec
+        = pb::FieldCodec.ForEnum(74, x => (int) x, x => (global::March7thHoney.Proto.TurnFoodSwitch) x);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.TurnFoodSwitch> mAODNHNHLIJ_ = new pbc::RepeatedField<global::March7thHoney.Proto.TurnFoodSwitch>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.TurnFoodSwitch> MAODNHNHLIJ {
+    public pbc::RepeatedField<global::March7thHoney.Proto.TurnFoodSwitch> MAODNHNHLIJ {
       get { return mAODNHNHLIJ_; }
     }
 

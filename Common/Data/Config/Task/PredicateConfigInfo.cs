@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace CastoriceHoney.Server.Data.Config.Task;
+namespace March7thHoney.Data.Config.Task;
 
 public class PredicateConfigInfo : TaskConfigInfo
 {
@@ -13,7 +13,7 @@ public class PredicateConfigInfo : TaskConfigInfo
         info.Type = obj[nameof(Type)]!.ToObject<string>()!;
 
         var typeStr = info.Type.Replace("RPG.GameCore.", "");
-        var className = "CastoriceHoney.Server.Data.Config.Task." + typeStr;
+        var className = "March7thHoney.Data.Config.Task." + typeStr;
 
         switch (typeStr)
         {

@@ -1,4 +1,4 @@
-﻿namespace CastoriceHoney.Server.WebServer.Response;
+namespace March7thHoney.WebServer.Response;
 
 public class AuthAdminKeyResponse(int code, string message, AuthAdminKeyData? data)
     : BaseResponse<AuthAdminKeyData>(code, message, data)

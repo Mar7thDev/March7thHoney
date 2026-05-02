@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Util;
+using March7thHoney.Util;
 using Newtonsoft.Json;
 using SqlSugar;
 
-namespace CastoriceHoney.Server.Database;
+namespace March7thHoney.Database;
 
 public class CustomSerializeService : ISerializeService
 {

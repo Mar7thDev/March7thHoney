@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GetAiPamChatHistoryScRsp.proto</summary>
   public static partial class GetAiPamChatHistoryScRspReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "ShgLIAMoCzIQLkNoYXRNZXNzYWdlRGF0YUIzChNlbXUubHVuYXJjb3JlLnBy",
             "b3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ChatMessageDataReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChatMessageDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GetAiPamChatHistoryScRsp), global::CastoriceHoney.Server.Proto.GetAiPamChatHistoryScRsp.Parser, new[]{ "Retcode", "TargetSide", "BAPMDIEFDOJ" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetAiPamChatHistoryScRsp), global::March7thHoney.Proto.GetAiPamChatHistoryScRsp.Parser, new[]{ "Retcode", "TargetSide", "BAPMDIEFDOJ" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GetAiPamChatHistoryScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GetAiPamChatHistoryScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -112,12 +112,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "BAPMDIEFDOJ" field.</summary>
     public const int BAPMDIEFDOJFieldNumber = 11;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ChatMessageData> _repeated_bAPMDIEFDOJ_codec
-        = pb::FieldCodec.ForMessage(90, global::CastoriceHoney.Server.Proto.ChatMessageData.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ChatMessageData> bAPMDIEFDOJ_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ChatMessageData>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChatMessageData> _repeated_bAPMDIEFDOJ_codec
+        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.ChatMessageData.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChatMessageData> bAPMDIEFDOJ_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChatMessageData>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ChatMessageData> BAPMDIEFDOJ {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ChatMessageData> BAPMDIEFDOJ {
       get { return bAPMDIEFDOJ_; }
     }
 

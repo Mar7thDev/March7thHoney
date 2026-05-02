@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Mission;
-using CastoriceHoney.Server.Kcp;
+using March7thHoney.GameServer.Server.Packet.Send.Mission;
+using March7thHoney.Kcp;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Mission;
+namespace March7thHoney.GameServer.Server.Packet.Recv.Mission;
 
 [Opcode(CmdIds.GetMissionDataCsReq)]
 public class HandlerGetMissionDataCsReq : Handler

@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueNousMainStory.json")]
 public class RogueNousMainStoryExcel : ExcelResource

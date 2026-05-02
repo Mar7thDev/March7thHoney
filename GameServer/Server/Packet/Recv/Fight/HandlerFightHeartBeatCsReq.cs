@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Fight;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.GameServer.Server.Packet.Send.Fight;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Fight;
+namespace March7thHoney.GameServer.Server.Packet.Recv.Fight;
 
 [Opcode(CmdIds.FightHeartBeatCsReq)]
 public class HandlerFightHeartBeatCsReq : Handler

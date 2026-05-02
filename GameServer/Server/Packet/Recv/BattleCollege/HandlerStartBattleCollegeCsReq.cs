@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.BattleCollege;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.GameServer.Server.Packet.Send.BattleCollege;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.BattleCollege;
+namespace March7thHoney.GameServer.Server.Packet.Recv.BattleCollege;
 
 [Opcode(CmdIds.StartBattleCollegeCsReq)]
 public class HandlerStartBattleCollegeCsReq : Handler

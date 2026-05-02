@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.Enums.TournRogue;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Enums.TournRogue;
+using March7thHoney.Proto;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueTournTitanBless.json")]
 public class RogueTournTitanBlessExcel : ExcelResource

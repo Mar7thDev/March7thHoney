@@ -1,8 +1,8 @@
 using System.Net;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Util;
 using Microsoft.AspNetCore;
 
-namespace CastoriceHoney.Server.WebServer;
+namespace March7thHoney.WebServer;
 
 public class WebProgram
 {

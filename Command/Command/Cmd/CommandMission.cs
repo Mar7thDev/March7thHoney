@@ -1,9 +1,9 @@
 using System.Text;
-using CastoriceHoney.Server.Enums.Mission;
-using CastoriceHoney.Server.GameServer.Game.Mission;
-using CastoriceHoney.Server.Internationalization;
+using March7thHoney.Enums.Mission;
+using March7thHoney.GameServer.Game.Mission;
+using March7thHoney.Internationalization;
 
-namespace CastoriceHoney.Server.Command.Command.Cmd;
+namespace March7thHoney.Command.Command.Cmd;
 
 [CommandInfo("mission", "Game.Command.Mission.Desc", "Game.Command.Mission.Usage", ["m"])]
 public class CommandMission : ICommand

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from SceneEntityRefreshInfo.proto</summary>
   public static partial class SceneEntityRefreshInfoReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "dHlwZUIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXku",
             "U2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.SceneEntityInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.SceneEntityInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.SceneEntityRefreshInfo), global::CastoriceHoney.Server.Proto.SceneEntityRefreshInfo.Parser, new[]{ "HBIEDAJFELO", "DeleteEntity", "AddEntity" }, new[]{ "RefreshType" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneEntityRefreshInfo), global::March7thHoney.Proto.SceneEntityRefreshInfo.Parser, new[]{ "HBIEDAJFELO", "DeleteEntity", "AddEntity" }, new[]{ "RefreshType" }, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.SceneEntityRefreshInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.SceneEntityRefreshInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -152,8 +152,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int AddEntityFieldNumber = 14;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.SceneEntityInfo AddEntity {
-      get { return refreshTypeCase_ == RefreshTypeOneofCase.AddEntity ? (global::CastoriceHoney.Server.Proto.SceneEntityInfo) refreshType_ : null; }
+    public global::March7thHoney.Proto.SceneEntityInfo AddEntity {
+      get { return refreshTypeCase_ == RefreshTypeOneofCase.AddEntity ? (global::March7thHoney.Proto.SceneEntityInfo) refreshType_ : null; }
       set {
         refreshType_ = value;
         refreshTypeCase_ = value == null ? RefreshTypeOneofCase.None : RefreshTypeOneofCase.AddEntity;
@@ -304,7 +304,7 @@ namespace CastoriceHoney.Server.Proto {
           break;
         case RefreshTypeOneofCase.AddEntity:
           if (AddEntity == null) {
-            AddEntity = new global::CastoriceHoney.Server.Proto.SceneEntityInfo();
+            AddEntity = new global::March7thHoney.Proto.SceneEntityInfo();
           }
           AddEntity.MergeFrom(other.AddEntity);
           break;
@@ -338,7 +338,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 114: {
-            global::CastoriceHoney.Server.Proto.SceneEntityInfo subBuilder = new global::CastoriceHoney.Server.Proto.SceneEntityInfo();
+            global::March7thHoney.Proto.SceneEntityInfo subBuilder = new global::March7thHoney.Proto.SceneEntityInfo();
             if (refreshTypeCase_ == RefreshTypeOneofCase.AddEntity) {
               subBuilder.MergeFrom(AddEntity);
             }
@@ -374,7 +374,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 114: {
-            global::CastoriceHoney.Server.Proto.SceneEntityInfo subBuilder = new global::CastoriceHoney.Server.Proto.SceneEntityInfo();
+            global::March7thHoney.Proto.SceneEntityInfo subBuilder = new global::March7thHoney.Proto.SceneEntityInfo();
             if (refreshTypeCase_ == RefreshTypeOneofCase.AddEntity) {
               subBuilder.MergeFrom(AddEntity);
             }

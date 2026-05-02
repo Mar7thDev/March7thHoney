@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GCACHJFLGHH.proto</summary>
   public static partial class GCACHJFLGHHReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "SE5NGAsgASgNSABCDQoLQUdGQ1BHSFBFRERCMwoTZW11Lmx1bmFyY29yZS5w",
             "cm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.EFEGKDHEMFNReflection.Descriptor, global::CastoriceHoney.Server.Proto.PlanetFesQuestStateReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.EFEGKDHEMFNReflection.Descriptor, global::March7thHoney.Proto.PlanetFesQuestStateReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GCACHJFLGHH), global::CastoriceHoney.Server.Proto.GCACHJFLGHH.Parser, new[]{ "Status", "Progress", "QuestId", "OJBEACGLLOH", "CHFNLJPEENB", "KGAABCGGHNM" }, new[]{ "AGFCPGHPEDD" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GCACHJFLGHH), global::March7thHoney.Proto.GCACHJFLGHH.Parser, new[]{ "Status", "Progress", "QuestId", "OJBEACGLLOH", "CHFNLJPEENB", "KGAABCGGHNM" }, new[]{ "AGFCPGHPEDD" }, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GCACHJFLGHHReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GCACHJFLGHHReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -100,10 +100,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "status" field.</summary>
     public const int StatusFieldNumber = 2;
-    private global::CastoriceHoney.Server.Proto.PlanetFesQuestState status_ = global::CastoriceHoney.Server.Proto.PlanetFesQuestState.GkbampagnbeAldgogpgnmo;
+    private global::March7thHoney.Proto.PlanetFesQuestState status_ = global::March7thHoney.Proto.PlanetFesQuestState.GkbampagnbeAldgogpgnmo;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.PlanetFesQuestState Status {
+    public global::March7thHoney.Proto.PlanetFesQuestState Status {
       get { return status_; }
       set {
         status_ = value;
@@ -150,8 +150,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int CHFNLJPEENBFieldNumber = 1;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.EFEGKDHEMFN CHFNLJPEENB {
-      get { return aGFCPGHPEDDCase_ == AGFCPGHPEDDOneofCase.CHFNLJPEENB ? (global::CastoriceHoney.Server.Proto.EFEGKDHEMFN) aGFCPGHPEDD_ : null; }
+    public global::March7thHoney.Proto.EFEGKDHEMFN CHFNLJPEENB {
+      get { return aGFCPGHPEDDCase_ == AGFCPGHPEDDOneofCase.CHFNLJPEENB ? (global::March7thHoney.Proto.EFEGKDHEMFN) aGFCPGHPEDD_ : null; }
       set {
         aGFCPGHPEDD_ = value;
         aGFCPGHPEDDCase_ = value == null ? AGFCPGHPEDDOneofCase.None : AGFCPGHPEDDOneofCase.CHFNLJPEENB;
@@ -234,7 +234,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Status != global::CastoriceHoney.Server.Proto.PlanetFesQuestState.GkbampagnbeAldgogpgnmo) hash ^= Status.GetHashCode();
+      if (Status != global::March7thHoney.Proto.PlanetFesQuestState.GkbampagnbeAldgogpgnmo) hash ^= Status.GetHashCode();
       if (Progress != 0) hash ^= Progress.GetHashCode();
       if (QuestId != 0) hash ^= QuestId.GetHashCode();
       if (OJBEACGLLOH != 0) hash ^= OJBEACGLLOH.GetHashCode();
@@ -263,7 +263,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(10);
         output.WriteMessage(CHFNLJPEENB);
       }
-      if (Status != global::CastoriceHoney.Server.Proto.PlanetFesQuestState.GkbampagnbeAldgogpgnmo) {
+      if (Status != global::March7thHoney.Proto.PlanetFesQuestState.GkbampagnbeAldgogpgnmo) {
         output.WriteRawTag(16);
         output.WriteEnum((int) Status);
       }
@@ -297,7 +297,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(10);
         output.WriteMessage(CHFNLJPEENB);
       }
-      if (Status != global::CastoriceHoney.Server.Proto.PlanetFesQuestState.GkbampagnbeAldgogpgnmo) {
+      if (Status != global::March7thHoney.Proto.PlanetFesQuestState.GkbampagnbeAldgogpgnmo) {
         output.WriteRawTag(16);
         output.WriteEnum((int) Status);
       }
@@ -327,7 +327,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Status != global::CastoriceHoney.Server.Proto.PlanetFesQuestState.GkbampagnbeAldgogpgnmo) {
+      if (Status != global::March7thHoney.Proto.PlanetFesQuestState.GkbampagnbeAldgogpgnmo) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Status);
       }
       if (Progress != 0) {
@@ -357,7 +357,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.Status != global::CastoriceHoney.Server.Proto.PlanetFesQuestState.GkbampagnbeAldgogpgnmo) {
+      if (other.Status != global::March7thHoney.Proto.PlanetFesQuestState.GkbampagnbeAldgogpgnmo) {
         Status = other.Status;
       }
       if (other.Progress != 0) {
@@ -372,7 +372,7 @@ namespace CastoriceHoney.Server.Proto {
       switch (other.AGFCPGHPEDDCase) {
         case AGFCPGHPEDDOneofCase.CHFNLJPEENB:
           if (CHFNLJPEENB == null) {
-            CHFNLJPEENB = new global::CastoriceHoney.Server.Proto.EFEGKDHEMFN();
+            CHFNLJPEENB = new global::March7thHoney.Proto.EFEGKDHEMFN();
           }
           CHFNLJPEENB.MergeFrom(other.CHFNLJPEENB);
           break;
@@ -401,7 +401,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            global::CastoriceHoney.Server.Proto.EFEGKDHEMFN subBuilder = new global::CastoriceHoney.Server.Proto.EFEGKDHEMFN();
+            global::March7thHoney.Proto.EFEGKDHEMFN subBuilder = new global::March7thHoney.Proto.EFEGKDHEMFN();
             if (aGFCPGHPEDDCase_ == AGFCPGHPEDDOneofCase.CHFNLJPEENB) {
               subBuilder.MergeFrom(CHFNLJPEENB);
             }
@@ -410,7 +410,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 16: {
-            Status = (global::CastoriceHoney.Server.Proto.PlanetFesQuestState) input.ReadEnum();
+            Status = (global::March7thHoney.Proto.PlanetFesQuestState) input.ReadEnum();
             break;
           }
           case 40: {
@@ -449,7 +449,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            global::CastoriceHoney.Server.Proto.EFEGKDHEMFN subBuilder = new global::CastoriceHoney.Server.Proto.EFEGKDHEMFN();
+            global::March7thHoney.Proto.EFEGKDHEMFN subBuilder = new global::March7thHoney.Proto.EFEGKDHEMFN();
             if (aGFCPGHPEDDCase_ == AGFCPGHPEDDOneofCase.CHFNLJPEENB) {
               subBuilder.MergeFrom(CHFNLJPEENB);
             }
@@ -458,7 +458,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 16: {
-            Status = (global::CastoriceHoney.Server.Proto.PlanetFesQuestState) input.ReadEnum();
+            Status = (global::March7thHoney.Proto.PlanetFesQuestState) input.ReadEnum();
             break;
           }
           case 40: {

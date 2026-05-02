@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from UpdatePlayerSettingCsReq.proto</summary>
   public static partial class UpdatePlayerSettingCsReqReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "ChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVy",
             "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.UpdatePlayerSettingReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.UpdatePlayerSettingReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.UpdatePlayerSettingCsReq), global::CastoriceHoney.Server.Proto.UpdatePlayerSettingCsReq.Parser, new[]{ "PlayerSetting" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UpdatePlayerSettingCsReq), global::March7thHoney.Proto.UpdatePlayerSettingCsReq.Parser, new[]{ "PlayerSetting" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.UpdatePlayerSettingCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.UpdatePlayerSettingCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -86,10 +86,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "player_setting" field.</summary>
     public const int PlayerSettingFieldNumber = 3;
-    private global::CastoriceHoney.Server.Proto.UpdatePlayerSetting playerSetting_;
+    private global::March7thHoney.Proto.UpdatePlayerSetting playerSetting_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.UpdatePlayerSetting PlayerSetting {
+    public global::March7thHoney.Proto.UpdatePlayerSetting PlayerSetting {
       get { return playerSetting_; }
       set {
         playerSetting_ = value;
@@ -183,7 +183,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.playerSetting_ != null) {
         if (playerSetting_ == null) {
-          PlayerSetting = new global::CastoriceHoney.Server.Proto.UpdatePlayerSetting();
+          PlayerSetting = new global::March7thHoney.Proto.UpdatePlayerSetting();
         }
         PlayerSetting.MergeFrom(other.PlayerSetting);
       }
@@ -208,7 +208,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 26: {
             if (playerSetting_ == null) {
-              PlayerSetting = new global::CastoriceHoney.Server.Proto.UpdatePlayerSetting();
+              PlayerSetting = new global::March7thHoney.Proto.UpdatePlayerSetting();
             }
             input.ReadMessage(PlayerSetting);
             break;
@@ -234,7 +234,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 26: {
             if (playerSetting_ == null) {
-              PlayerSetting = new global::CastoriceHoney.Server.Proto.UpdatePlayerSetting();
+              PlayerSetting = new global::March7thHoney.Proto.UpdatePlayerSetting();
             }
             input.ReadMessage(PlayerSetting);
             break;

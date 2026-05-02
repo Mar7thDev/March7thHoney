@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GridFightGameOrbInfo.proto</summary>
   public static partial class GridFightGameOrbInfoReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "aWRHYW1lT3JiSW5mb0IzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9y",
             "aWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GridGameOrbInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridGameOrbInfo1Reflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridGameOrbInfoReflection.Descriptor, global::March7thHoney.Proto.GridGameOrbInfo1Reflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GridFightGameOrbInfo), global::CastoriceHoney.Server.Proto.GridFightGameOrbInfo.Parser, new[]{ "GridGameOrb1List", "GridGameOrbList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightGameOrbInfo), global::March7thHoney.Proto.GridFightGameOrbInfo.Parser, new[]{ "GridGameOrb1List", "GridGameOrbList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GridFightGameOrbInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GridFightGameOrbInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -88,23 +88,23 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "grid_game_orb1_list" field.</summary>
     public const int GridGameOrb1ListFieldNumber = 10;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.GridGameOrbInfo1> _repeated_gridGameOrb1List_codec
-        = pb::FieldCodec.ForMessage(82, global::CastoriceHoney.Server.Proto.GridGameOrbInfo1.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridGameOrbInfo1> gridGameOrb1List_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridGameOrbInfo1>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GridGameOrbInfo1> _repeated_gridGameOrb1List_codec
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.GridGameOrbInfo1.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GridGameOrbInfo1> gridGameOrb1List_ = new pbc::RepeatedField<global::March7thHoney.Proto.GridGameOrbInfo1>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridGameOrbInfo1> GridGameOrb1List {
+    public pbc::RepeatedField<global::March7thHoney.Proto.GridGameOrbInfo1> GridGameOrb1List {
       get { return gridGameOrb1List_; }
     }
 
     /// <summary>Field number for the "grid_game_orb_list" field.</summary>
     public const int GridGameOrbListFieldNumber = 14;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.GridGameOrbInfo> _repeated_gridGameOrbList_codec
-        = pb::FieldCodec.ForMessage(114, global::CastoriceHoney.Server.Proto.GridGameOrbInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridGameOrbInfo> gridGameOrbList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridGameOrbInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GridGameOrbInfo> _repeated_gridGameOrbList_codec
+        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.GridGameOrbInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GridGameOrbInfo> gridGameOrbList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GridGameOrbInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridGameOrbInfo> GridGameOrbList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.GridGameOrbInfo> GridGameOrbList {
       get { return gridGameOrbList_; }
     }
 

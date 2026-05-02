@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.Enums.Avatar;
+using March7thHoney.Enums.Avatar;
 using Newtonsoft.Json;
 
-namespace CastoriceHoney.Server.Data.Config;
+namespace March7thHoney.Data.Config;
 
 public class TaskInfo
 {

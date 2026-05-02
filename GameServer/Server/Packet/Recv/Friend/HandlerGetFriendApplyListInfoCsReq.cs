@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Friend;
-using CastoriceHoney.Server.Kcp;
+using March7thHoney.GameServer.Server.Packet.Send.Friend;
+using March7thHoney.Kcp;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Friend;
+namespace March7thHoney.GameServer.Server.Packet.Recv.Friend;
 
 [Opcode(CmdIds.GetFriendApplyListInfoCsReq)]
 public class HandlerGetFriendApplyListInfoCsReq : Handler

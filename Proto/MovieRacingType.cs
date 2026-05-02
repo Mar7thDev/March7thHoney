@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from MovieRacingType.proto</summary>
   public static partial class MovieRacingTypeReflection {
@@ -31,7 +31,7 @@ namespace CastoriceHoney.Server.Proto {
             "dG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::CastoriceHoney.Server.Proto.MovieRacingType), }, null, null));
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.MovieRacingType), }, null, null));
     }
     #endregion
 

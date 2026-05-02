@@ -1,12 +1,12 @@
 using System.Numerics;
 using System.Text;
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Internationalization;
-using CastoriceHoney.Server.Program.Program;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Data;
+using March7thHoney.Internationalization;
+using March7thHoney.Program.Program;
+using March7thHoney.Util;
 using Newtonsoft.Json;
 
-namespace CastoriceHoney.Server.Program.Handbook;
+namespace March7thHoney.Program.Handbook;
 
 public static class HandbookGenerator
 {

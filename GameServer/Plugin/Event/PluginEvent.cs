@@ -1,13 +1,13 @@
-using CastoriceHoney.Server.Command;
-using CastoriceHoney.Server.GameServer.Game.Battle;
-using CastoriceHoney.Server.GameServer.Game.Challenge.Definitions;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.GameServer.Game.Scene;
-using CastoriceHoney.Server.GameServer.Game.Scene.Entity;
-using CastoriceHoney.Server.Proto;
-using LineupInfo = CastoriceHoney.Server.Database.Lineup.LineupInfo;
+using March7thHoney.Command;
+using March7thHoney.GameServer.Game.Battle;
+using March7thHoney.GameServer.Game.Challenge.Definitions;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Game.Scene;
+using March7thHoney.GameServer.Game.Scene.Entity;
+using March7thHoney.Proto;
+using LineupInfo = March7thHoney.Database.Lineup.LineupInfo;
 
-namespace CastoriceHoney.Server.GameServer.Plugin.Event;
+namespace March7thHoney.GameServer.Plugin.Event;
 
 public static class PluginEvent
 {

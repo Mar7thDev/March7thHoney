@@ -1,9 +1,9 @@
-// using CastoriceHoney.Server.Data;
-// using CastoriceHoney.Server.GameServer.Game.GridFight.Component;
-// using CastoriceHoney.Server.Internationalization;
-// using CastoriceHoney.Server.Proto;
+// using March7thHoney.Data;
+// using March7thHoney.GameServer.Game.GridFight.Component;
+// using March7thHoney.Internationalization;
+// using March7thHoney.Proto;
 
-// namespace CastoriceHoney.Server.Command.Command.Cmd;
+// namespace March7thHoney.Command.Command.Cmd;
 
 // [CommandInfo("grid", "Game.Command.Grid.Desc", "Game.Command.Grid.Usage")]
 // public class CommandGrid : ICommand

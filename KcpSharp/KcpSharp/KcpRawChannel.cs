@@ -2,7 +2,7 @@ using System.Buffers.Binary;
 using System.Net;
 using System.Net.Sockets;
 
-namespace CastoriceHoney.Server.Kcp.KcpSharp;
+namespace March7thHoney.Kcp.KcpSharp;
 
 /// <summary>
 ///     An unreliable channel with a conversation ID.

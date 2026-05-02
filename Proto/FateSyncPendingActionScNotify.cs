@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from FateSyncPendingActionScNotify.proto</summary>
   public static partial class FateSyncPendingActionScNotifyReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "bHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3Rv",
             "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.DFAHMBOGMANReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.DFAHMBOGMANReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.FateSyncPendingActionScNotify), global::CastoriceHoney.Server.Proto.FateSyncPendingActionScNotify.Parser, new[]{ "PendingAction" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FateSyncPendingActionScNotify), global::March7thHoney.Proto.FateSyncPendingActionScNotify.Parser, new[]{ "PendingAction" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.FateSyncPendingActionScNotifyReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.FateSyncPendingActionScNotifyReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -86,10 +86,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "pending_action" field.</summary>
     public const int PendingActionFieldNumber = 10;
-    private global::CastoriceHoney.Server.Proto.DFAHMBOGMAN pendingAction_;
+    private global::March7thHoney.Proto.DFAHMBOGMAN pendingAction_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.DFAHMBOGMAN PendingAction {
+    public global::March7thHoney.Proto.DFAHMBOGMAN PendingAction {
       get { return pendingAction_; }
       set {
         pendingAction_ = value;
@@ -183,7 +183,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.pendingAction_ != null) {
         if (pendingAction_ == null) {
-          PendingAction = new global::CastoriceHoney.Server.Proto.DFAHMBOGMAN();
+          PendingAction = new global::March7thHoney.Proto.DFAHMBOGMAN();
         }
         PendingAction.MergeFrom(other.PendingAction);
       }
@@ -208,7 +208,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 82: {
             if (pendingAction_ == null) {
-              PendingAction = new global::CastoriceHoney.Server.Proto.DFAHMBOGMAN();
+              PendingAction = new global::March7thHoney.Proto.DFAHMBOGMAN();
             }
             input.ReadMessage(PendingAction);
             break;
@@ -234,7 +234,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 82: {
             if (pendingAction_ == null) {
-              PendingAction = new global::CastoriceHoney.Server.Proto.DFAHMBOGMAN();
+              PendingAction = new global::March7thHoney.Proto.DFAHMBOGMAN();
             }
             input.ReadMessage(PendingAction);
             break;

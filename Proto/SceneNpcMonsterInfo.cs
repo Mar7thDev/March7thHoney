@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from SceneNpcMonsterInfo.proto</summary>
   public static partial class SceneNpcMonsterInfoReflection {
@@ -33,9 +33,9 @@ namespace CastoriceHoney.Server.Proto {
             "DiABKAhCMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5",
             "LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.NpcMonsterExtraInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.PECMFBCBLHHReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.NpcMonsterExtraInfoReflection.Descriptor, global::March7thHoney.Proto.PECMFBCBLHHReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.SceneNpcMonsterInfo), global::CastoriceHoney.Server.Proto.SceneNpcMonsterInfo.Parser, new[]{ "ExtraInfo", "DKGCLLLIFNH", "WorldLevel", "MonsterId", "JJAPBFGDPLA", "EventId", "FDIHGHGEIOH" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneNpcMonsterInfo), global::March7thHoney.Proto.SceneNpcMonsterInfo.Parser, new[]{ "ExtraInfo", "DKGCLLLIFNH", "WorldLevel", "MonsterId", "JJAPBFGDPLA", "EventId", "FDIHGHGEIOH" }, null, null, null, null)
           }));
     }
     #endregion
@@ -57,7 +57,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.SceneNpcMonsterInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.SceneNpcMonsterInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -95,10 +95,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "extra_info" field.</summary>
     public const int ExtraInfoFieldNumber = 2;
-    private global::CastoriceHoney.Server.Proto.NpcMonsterExtraInfo extraInfo_;
+    private global::March7thHoney.Proto.NpcMonsterExtraInfo extraInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.NpcMonsterExtraInfo ExtraInfo {
+    public global::March7thHoney.Proto.NpcMonsterExtraInfo ExtraInfo {
       get { return extraInfo_; }
       set {
         extraInfo_ = value;
@@ -143,10 +143,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "JJAPBFGDPLA" field.</summary>
     public const int JJAPBFGDPLAFieldNumber = 12;
-    private global::CastoriceHoney.Server.Proto.PECMFBCBLHH jJAPBFGDPLA_;
+    private global::March7thHoney.Proto.PECMFBCBLHH jJAPBFGDPLA_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.PECMFBCBLHH JJAPBFGDPLA {
+    public global::March7thHoney.Proto.PECMFBCBLHH JJAPBFGDPLA {
       get { return jJAPBFGDPLA_; }
       set {
         jJAPBFGDPLA_ = value;
@@ -342,7 +342,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.extraInfo_ != null) {
         if (extraInfo_ == null) {
-          ExtraInfo = new global::CastoriceHoney.Server.Proto.NpcMonsterExtraInfo();
+          ExtraInfo = new global::March7thHoney.Proto.NpcMonsterExtraInfo();
         }
         ExtraInfo.MergeFrom(other.ExtraInfo);
       }
@@ -357,7 +357,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.jJAPBFGDPLA_ != null) {
         if (jJAPBFGDPLA_ == null) {
-          JJAPBFGDPLA = new global::CastoriceHoney.Server.Proto.PECMFBCBLHH();
+          JJAPBFGDPLA = new global::March7thHoney.Proto.PECMFBCBLHH();
         }
         JJAPBFGDPLA.MergeFrom(other.JJAPBFGDPLA);
       }
@@ -388,7 +388,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 18: {
             if (extraInfo_ == null) {
-              ExtraInfo = new global::CastoriceHoney.Server.Proto.NpcMonsterExtraInfo();
+              ExtraInfo = new global::March7thHoney.Proto.NpcMonsterExtraInfo();
             }
             input.ReadMessage(ExtraInfo);
             break;
@@ -407,7 +407,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 98: {
             if (jJAPBFGDPLA_ == null) {
-              JJAPBFGDPLA = new global::CastoriceHoney.Server.Proto.PECMFBCBLHH();
+              JJAPBFGDPLA = new global::March7thHoney.Proto.PECMFBCBLHH();
             }
             input.ReadMessage(JJAPBFGDPLA);
             break;
@@ -441,7 +441,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 18: {
             if (extraInfo_ == null) {
-              ExtraInfo = new global::CastoriceHoney.Server.Proto.NpcMonsterExtraInfo();
+              ExtraInfo = new global::March7thHoney.Proto.NpcMonsterExtraInfo();
             }
             input.ReadMessage(ExtraInfo);
             break;
@@ -460,7 +460,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 98: {
             if (jJAPBFGDPLA_ == null) {
-              JJAPBFGDPLA = new global::CastoriceHoney.Server.Proto.PECMFBCBLHH();
+              JJAPBFGDPLA = new global::March7thHoney.Proto.PECMFBCBLHH();
             }
             input.ReadMessage(JJAPBFGDPLA);
             break;

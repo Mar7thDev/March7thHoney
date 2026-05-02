@@ -1,14 +1,14 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Enums.GridFight;
-using CastoriceHoney.Server.GameServer.Game.GridFight.PendingAction;
-using CastoriceHoney.Server.GameServer.Game.GridFight.Sync;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.GridFight;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Proto.ServerSide;
+using March7thHoney.Data;
+using March7thHoney.Enums.GridFight;
+using March7thHoney.GameServer.Game.GridFight.PendingAction;
+using March7thHoney.GameServer.Game.GridFight.Sync;
+using March7thHoney.GameServer.Server.Packet.Send.GridFight;
+using March7thHoney.Proto;
+using March7thHoney.Proto.ServerSide;
 using System.Data.OscarClient;
-using CastoriceHoney.Server.Data.Excel;
+using March7thHoney.Data.Excel;
 
-namespace CastoriceHoney.Server.GameServer.Game.GridFight.Component;
+namespace March7thHoney.GameServer.Game.GridFight.Component;
 
 public class GridFightTraitComponent(GridFightInstance inst) : BaseGridFightComponent(inst)
 {

@@ -1,9 +1,9 @@
 using System.Reflection;
-using CastoriceHoney.Server.GameServer.Game.Mission;
-using CastoriceHoney.Server.GameServer.Game.Mission.FinishAction;
-using CastoriceHoney.Server.GameServer.Game.Mission.FinishType;
+using March7thHoney.GameServer.Game.Mission;
+using March7thHoney.GameServer.Game.Mission.FinishAction;
+using March7thHoney.GameServer.Game.Mission.FinishType;
 
-namespace CastoriceHoney.Server.GameServer.Server;
+namespace March7thHoney.GameServer.Server;
 
 public static class ServerUtils
 {

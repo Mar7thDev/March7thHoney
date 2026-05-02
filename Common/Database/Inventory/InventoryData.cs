@@ -1,11 +1,11 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Data.Excel;
-using CastoriceHoney.Server.Enums.Item;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Data;
+using March7thHoney.Data.Excel;
+using March7thHoney.Enums.Item;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 using SqlSugar;
 
-namespace CastoriceHoney.Server.Database.Inventory;
+namespace March7thHoney.Database.Inventory;
 
 [SugarTable("InventoryData")]
 public class InventoryData : BaseDatabaseDataHelper

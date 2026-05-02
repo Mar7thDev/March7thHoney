@@ -1,9 +1,9 @@
 using System.Collections.Concurrent;
 using System.Net;
-using CastoriceHoney.Server.Kcp.KcpSharp;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Kcp.KcpSharp;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.Kcp;
+namespace March7thHoney.Kcp;
 
 public class DanhengConnection
 {

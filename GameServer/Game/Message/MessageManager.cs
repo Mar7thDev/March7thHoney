@@ -1,13 +1,13 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Database;
-using CastoriceHoney.Server.Database.Message;
-using CastoriceHoney.Server.Enums.Mission;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.PlayerSync;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Data;
+using March7thHoney.Database;
+using March7thHoney.Database.Message;
+using March7thHoney.Enums.Mission;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.GameServer.Game.Message;
+namespace March7thHoney.GameServer.Game.Message;
 
 public class MessageManager(PlayerInstance player) : BasePlayerManager(player)
 {

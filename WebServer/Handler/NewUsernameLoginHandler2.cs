@@ -1,9 +1,9 @@
-﻿using CastoriceHoney.Server.Database.Account;
-using CastoriceHoney.Server.Util;
-using CastoriceHoney.Server.WebServer.Objects;
+using March7thHoney.Database.Account;
+using March7thHoney.Util;
+using March7thHoney.WebServer.Objects;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CastoriceHoney.Server.WebServer.Handler;
+namespace March7thHoney.WebServer.Handler;
 
 public class NewUsernameLoginHandler2
 {

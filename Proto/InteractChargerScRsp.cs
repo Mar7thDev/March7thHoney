@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from InteractChargerScRsp.proto</summary>
   public static partial class InteractChargerScRspReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "Y29kZRgPIAEoDUIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNl",
             "SG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ChargerInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.RotaterEnergyInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChargerInfoReflection.Descriptor, global::March7thHoney.Proto.RotaterEnergyInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.InteractChargerScRsp), global::CastoriceHoney.Server.Proto.InteractChargerScRsp.Parser, new[]{ "ChargerInfo", "EnergyInfo", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.InteractChargerScRsp), global::March7thHoney.Proto.InteractChargerScRsp.Parser, new[]{ "ChargerInfo", "EnergyInfo", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.InteractChargerScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.InteractChargerScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -89,10 +89,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "charger_info" field.</summary>
     public const int ChargerInfoFieldNumber = 8;
-    private global::CastoriceHoney.Server.Proto.ChargerInfo chargerInfo_;
+    private global::March7thHoney.Proto.ChargerInfo chargerInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ChargerInfo ChargerInfo {
+    public global::March7thHoney.Proto.ChargerInfo ChargerInfo {
       get { return chargerInfo_; }
       set {
         chargerInfo_ = value;
@@ -101,10 +101,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "energy_info" field.</summary>
     public const int EnergyInfoFieldNumber = 10;
-    private global::CastoriceHoney.Server.Proto.RotaterEnergyInfo energyInfo_;
+    private global::March7thHoney.Proto.RotaterEnergyInfo energyInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.RotaterEnergyInfo EnergyInfo {
+    public global::March7thHoney.Proto.RotaterEnergyInfo EnergyInfo {
       get { return energyInfo_; }
       set {
         energyInfo_ = value;
@@ -236,13 +236,13 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.chargerInfo_ != null) {
         if (chargerInfo_ == null) {
-          ChargerInfo = new global::CastoriceHoney.Server.Proto.ChargerInfo();
+          ChargerInfo = new global::March7thHoney.Proto.ChargerInfo();
         }
         ChargerInfo.MergeFrom(other.ChargerInfo);
       }
       if (other.energyInfo_ != null) {
         if (energyInfo_ == null) {
-          EnergyInfo = new global::CastoriceHoney.Server.Proto.RotaterEnergyInfo();
+          EnergyInfo = new global::March7thHoney.Proto.RotaterEnergyInfo();
         }
         EnergyInfo.MergeFrom(other.EnergyInfo);
       }
@@ -270,14 +270,14 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 66: {
             if (chargerInfo_ == null) {
-              ChargerInfo = new global::CastoriceHoney.Server.Proto.ChargerInfo();
+              ChargerInfo = new global::March7thHoney.Proto.ChargerInfo();
             }
             input.ReadMessage(ChargerInfo);
             break;
           }
           case 82: {
             if (energyInfo_ == null) {
-              EnergyInfo = new global::CastoriceHoney.Server.Proto.RotaterEnergyInfo();
+              EnergyInfo = new global::March7thHoney.Proto.RotaterEnergyInfo();
             }
             input.ReadMessage(EnergyInfo);
             break;
@@ -307,14 +307,14 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 66: {
             if (chargerInfo_ == null) {
-              ChargerInfo = new global::CastoriceHoney.Server.Proto.ChargerInfo();
+              ChargerInfo = new global::March7thHoney.Proto.ChargerInfo();
             }
             input.ReadMessage(ChargerInfo);
             break;
           }
           case 82: {
             if (energyInfo_ == null) {
-              EnergyInfo = new global::CastoriceHoney.Server.Proto.RotaterEnergyInfo();
+              EnergyInfo = new global::March7thHoney.Proto.RotaterEnergyInfo();
             }
             input.ReadMessage(EnergyInfo);
             break;

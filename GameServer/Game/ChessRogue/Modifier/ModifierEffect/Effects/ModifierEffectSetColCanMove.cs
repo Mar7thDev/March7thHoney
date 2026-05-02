@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.Enums.Rogue;
-using CastoriceHoney.Server.GameServer.Game.Battle;
+using March7thHoney.Enums.Rogue;
+using March7thHoney.GameServer.Game.Battle;
 
-namespace CastoriceHoney.Server.GameServer.Game.ChessRogue.Modifier.ModifierEffect.Effects;
+namespace March7thHoney.GameServer.Game.ChessRogue.Modifier.ModifierEffect.Effects;
 
 [ModifierEffect(ModifierEffectTypeEnum.SetColCanMove)]
 public class ModifierEffectSetColCanMove : ModifierEffectHandler

@@ -4,8 +4,8 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <AssemblyName>CastoriceHoney.KcpSharp</AssemblyName>
-    <RootNamespace>CastoriceHoney.Server.Kcp</RootNamespace>
+    <AssemblyName>March7thHoney.KcpSharp</AssemblyName>
+    <RootNamespace>March7thHoney.Kcp</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

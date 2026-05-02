@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.TalkEvent;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.GameServer.Server.Packet.Send.TalkEvent;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.TalkEvent;
+namespace March7thHoney.GameServer.Server.Packet.Recv.TalkEvent;
 
 [Opcode(CmdIds.SelectInclinationTextCsReq)]
 public class HandlerSelectInclinationTextCsReq : Handler

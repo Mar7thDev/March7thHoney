@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Database.Inventory;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Database.Inventory;
+using March7thHoney.Proto;
 using SqlSugar;
 
-namespace CastoriceHoney.Server.Database.Mail;
+namespace March7thHoney.Database.Mail;
 
 [SugarTable("Mail")]
 public class MailData : BaseDatabaseDataHelper

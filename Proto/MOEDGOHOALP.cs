@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from MOEDGOHOALP.proto</summary>
   public static partial class MOEDGOHOALPReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "b3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90",
             "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.AvatarTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.AvatarTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.MOEDGOHOALP), global::CastoriceHoney.Server.Proto.MOEDGOHOALP.Parser, new[]{ "AvatarType", "Damage", "AvatarId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MOEDGOHOALP), global::March7thHoney.Proto.MOEDGOHOALP.Parser, new[]{ "AvatarType", "Damage", "AvatarId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.MOEDGOHOALPReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.MOEDGOHOALPReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -88,10 +88,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "avatar_type" field.</summary>
     public const int AvatarTypeFieldNumber = 3;
-    private global::CastoriceHoney.Server.Proto.AvatarType avatarType_ = global::CastoriceHoney.Server.Proto.AvatarType.None;
+    private global::March7thHoney.Proto.AvatarType avatarType_ = global::March7thHoney.Proto.AvatarType.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.AvatarType AvatarType {
+    public global::March7thHoney.Proto.AvatarType AvatarType {
       get { return avatarType_; }
       set {
         avatarType_ = value;
@@ -147,7 +147,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (AvatarType != global::CastoriceHoney.Server.Proto.AvatarType.None) hash ^= AvatarType.GetHashCode();
+      if (AvatarType != global::March7thHoney.Proto.AvatarType.None) hash ^= AvatarType.GetHashCode();
       if (Damage != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Damage);
       if (AvatarId != 0) hash ^= AvatarId.GetHashCode();
       if (_unknownFields != null) {
@@ -168,7 +168,7 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (AvatarType != global::CastoriceHoney.Server.Proto.AvatarType.None) {
+      if (AvatarType != global::March7thHoney.Proto.AvatarType.None) {
         output.WriteRawTag(24);
         output.WriteEnum((int) AvatarType);
       }
@@ -190,7 +190,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (AvatarType != global::CastoriceHoney.Server.Proto.AvatarType.None) {
+      if (AvatarType != global::March7thHoney.Proto.AvatarType.None) {
         output.WriteRawTag(24);
         output.WriteEnum((int) AvatarType);
       }
@@ -212,7 +212,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (AvatarType != global::CastoriceHoney.Server.Proto.AvatarType.None) {
+      if (AvatarType != global::March7thHoney.Proto.AvatarType.None) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) AvatarType);
       }
       if (Damage != 0D) {
@@ -233,7 +233,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.AvatarType != global::CastoriceHoney.Server.Proto.AvatarType.None) {
+      if (other.AvatarType != global::March7thHoney.Proto.AvatarType.None) {
         AvatarType = other.AvatarType;
       }
       if (other.Damage != 0D) {
@@ -262,7 +262,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 24: {
-            AvatarType = (global::CastoriceHoney.Server.Proto.AvatarType) input.ReadEnum();
+            AvatarType = (global::March7thHoney.Proto.AvatarType) input.ReadEnum();
             break;
           }
           case 73: {
@@ -293,7 +293,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 24: {
-            AvatarType = (global::CastoriceHoney.Server.Proto.AvatarType) input.ReadEnum();
+            AvatarType = (global::March7thHoney.Proto.AvatarType) input.ReadEnum();
             break;
           }
           case 73: {

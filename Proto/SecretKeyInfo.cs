@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from SecretKeyInfo.proto</summary>
   public static partial class SecretKeyInfoReflection {
@@ -29,9 +29,9 @@ namespace CastoriceHoney.Server.Proto {
             "ASgOMg4uU2VjcmV0S2V5VHlwZUIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIb",
             "Q2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.SecretKeyTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.SecretKeyTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.SecretKeyInfo), global::CastoriceHoney.Server.Proto.SecretKeyInfo.Parser, new[]{ "SecretKey", "Type" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SecretKeyInfo), global::March7thHoney.Proto.SecretKeyInfo.Parser, new[]{ "SecretKey", "Type" }, null, null, null, null)
           }));
     }
     #endregion
@@ -53,7 +53,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.SecretKeyInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.SecretKeyInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -98,10 +98,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "type" field.</summary>
     public const int TypeFieldNumber = 15;
-    private global::CastoriceHoney.Server.Proto.SecretKeyType type_ = global::CastoriceHoney.Server.Proto.SecretKeyType.SecretKeyNone;
+    private global::March7thHoney.Proto.SecretKeyType type_ = global::March7thHoney.Proto.SecretKeyType.SecretKeyNone;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.SecretKeyType Type {
+    public global::March7thHoney.Proto.SecretKeyType Type {
       get { return type_; }
       set {
         type_ = value;
@@ -133,7 +133,7 @@ namespace CastoriceHoney.Server.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (SecretKey.Length != 0) hash ^= SecretKey.GetHashCode();
-      if (Type != global::CastoriceHoney.Server.Proto.SecretKeyType.SecretKeyNone) hash ^= Type.GetHashCode();
+      if (Type != global::March7thHoney.Proto.SecretKeyType.SecretKeyNone) hash ^= Type.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -156,7 +156,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(106);
         output.WriteString(SecretKey);
       }
-      if (Type != global::CastoriceHoney.Server.Proto.SecretKeyType.SecretKeyNone) {
+      if (Type != global::March7thHoney.Proto.SecretKeyType.SecretKeyNone) {
         output.WriteRawTag(120);
         output.WriteEnum((int) Type);
       }
@@ -174,7 +174,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(106);
         output.WriteString(SecretKey);
       }
-      if (Type != global::CastoriceHoney.Server.Proto.SecretKeyType.SecretKeyNone) {
+      if (Type != global::March7thHoney.Proto.SecretKeyType.SecretKeyNone) {
         output.WriteRawTag(120);
         output.WriteEnum((int) Type);
       }
@@ -191,7 +191,7 @@ namespace CastoriceHoney.Server.Proto {
       if (SecretKey.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(SecretKey);
       }
-      if (Type != global::CastoriceHoney.Server.Proto.SecretKeyType.SecretKeyNone) {
+      if (Type != global::March7thHoney.Proto.SecretKeyType.SecretKeyNone) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
       }
       if (_unknownFields != null) {
@@ -209,7 +209,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other.SecretKey.Length != 0) {
         SecretKey = other.SecretKey;
       }
-      if (other.Type != global::CastoriceHoney.Server.Proto.SecretKeyType.SecretKeyNone) {
+      if (other.Type != global::March7thHoney.Proto.SecretKeyType.SecretKeyNone) {
         Type = other.Type;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -236,7 +236,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 120: {
-            Type = (global::CastoriceHoney.Server.Proto.SecretKeyType) input.ReadEnum();
+            Type = (global::March7thHoney.Proto.SecretKeyType) input.ReadEnum();
             break;
           }
         }
@@ -263,7 +263,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 120: {
-            Type = (global::CastoriceHoney.Server.Proto.SecretKeyType) input.ReadEnum();
+            Type = (global::March7thHoney.Proto.SecretKeyType) input.ReadEnum();
             break;
           }
         }

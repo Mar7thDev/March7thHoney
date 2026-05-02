@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.GameServer.Game.Task.AvatarTask;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Game.Task.AvatarTask;
 
-namespace CastoriceHoney.Server.GameServer.Game.Task;
+namespace March7thHoney.GameServer.Game.Task;
 
 public class TaskManager(PlayerInstance player) : BasePlayerManager(player)
 {

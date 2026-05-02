@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from SwordTrainingStoryConfirmCsReq.proto</summary>
   public static partial class SwordTrainingStoryConfirmCsReqReflection {
@@ -31,7 +31,7 @@ namespace CastoriceHoney.Server.Proto {
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.SwordTrainingStoryConfirmCsReq), global::CastoriceHoney.Server.Proto.SwordTrainingStoryConfirmCsReq.Parser, new[]{ "MAFMCIPAIKK" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SwordTrainingStoryConfirmCsReq), global::March7thHoney.Proto.SwordTrainingStoryConfirmCsReq.Parser, new[]{ "MAFMCIPAIKK" }, null, null, null, null)
           }));
     }
     #endregion
@@ -53,7 +53,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.SwordTrainingStoryConfirmCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.SwordTrainingStoryConfirmCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

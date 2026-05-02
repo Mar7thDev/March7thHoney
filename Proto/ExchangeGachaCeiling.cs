@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from ExchangeGachaCeiling.proto</summary>
   public static partial class ExchangeGachaCeilingReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "E2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIu",
             "UHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GachaCeilingReflection.Descriptor, global::CastoriceHoney.Server.Proto.ItemListReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GachaCeilingReflection.Descriptor, global::March7thHoney.Proto.ItemListReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ExchangeGachaCeiling), global::CastoriceHoney.Server.Proto.ExchangeGachaCeiling.Parser, new[]{ "Retcode", "TransferItemList", "GachaCeiling", "GachaType", "AvatarId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ExchangeGachaCeiling), global::March7thHoney.Proto.ExchangeGachaCeiling.Parser, new[]{ "Retcode", "TransferItemList", "GachaCeiling", "GachaType", "AvatarId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ExchangeGachaCeilingReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ExchangeGachaCeilingReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -104,10 +104,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "transfer_item_list" field.</summary>
     public const int TransferItemListFieldNumber = 3;
-    private global::CastoriceHoney.Server.Proto.ItemList transferItemList_;
+    private global::March7thHoney.Proto.ItemList transferItemList_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ItemList TransferItemList {
+    public global::March7thHoney.Proto.ItemList TransferItemList {
       get { return transferItemList_; }
       set {
         transferItemList_ = value;
@@ -116,10 +116,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "gacha_ceiling" field.</summary>
     public const int GachaCeilingFieldNumber = 6;
-    private global::CastoriceHoney.Server.Proto.GachaCeiling gachaCeiling_;
+    private global::March7thHoney.Proto.GachaCeiling gachaCeiling_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GachaCeiling GachaCeiling {
+    public global::March7thHoney.Proto.GachaCeiling GachaCeiling {
       get { return gachaCeiling_; }
       set {
         gachaCeiling_ = value;
@@ -292,13 +292,13 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.transferItemList_ != null) {
         if (transferItemList_ == null) {
-          TransferItemList = new global::CastoriceHoney.Server.Proto.ItemList();
+          TransferItemList = new global::March7thHoney.Proto.ItemList();
         }
         TransferItemList.MergeFrom(other.TransferItemList);
       }
       if (other.gachaCeiling_ != null) {
         if (gachaCeiling_ == null) {
-          GachaCeiling = new global::CastoriceHoney.Server.Proto.GachaCeiling();
+          GachaCeiling = new global::March7thHoney.Proto.GachaCeiling();
         }
         GachaCeiling.MergeFrom(other.GachaCeiling);
       }
@@ -333,14 +333,14 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 26: {
             if (transferItemList_ == null) {
-              TransferItemList = new global::CastoriceHoney.Server.Proto.ItemList();
+              TransferItemList = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(TransferItemList);
             break;
           }
           case 50: {
             if (gachaCeiling_ == null) {
-              GachaCeiling = new global::CastoriceHoney.Server.Proto.GachaCeiling();
+              GachaCeiling = new global::March7thHoney.Proto.GachaCeiling();
             }
             input.ReadMessage(GachaCeiling);
             break;
@@ -378,14 +378,14 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 26: {
             if (transferItemList_ == null) {
-              TransferItemList = new global::CastoriceHoney.Server.Proto.ItemList();
+              TransferItemList = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(TransferItemList);
             break;
           }
           case 50: {
             if (gachaCeiling_ == null) {
-              GachaCeiling = new global::CastoriceHoney.Server.Proto.GachaCeiling();
+              GachaCeiling = new global::March7thHoney.Proto.GachaCeiling();
             }
             input.ReadMessage(GachaCeiling);
             break;

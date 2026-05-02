@@ -1,6 +1,6 @@
 using SqlSugar;
 
-namespace CastoriceHoney.Server.Database.Player;
+namespace March7thHoney.Database.Player;
 
 [SugarTable("UnlockData")]
 public class PlayerUnlockData : BaseDatabaseDataHelper

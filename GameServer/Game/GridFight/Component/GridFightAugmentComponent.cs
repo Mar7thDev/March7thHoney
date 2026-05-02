@@ -1,10 +1,10 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.GameServer.Game.GridFight.Sync;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.GridFight;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Proto.ServerSide;
+using March7thHoney.Data;
+using March7thHoney.GameServer.Game.GridFight.Sync;
+using March7thHoney.GameServer.Server.Packet.Send.GridFight;
+using March7thHoney.Proto;
+using March7thHoney.Proto.ServerSide;
 
-namespace CastoriceHoney.Server.GameServer.Game.GridFight.Component;
+namespace March7thHoney.GameServer.Game.GridFight.Component;
 
 public class GridFightAugmentComponent(GridFightInstance inst) : BaseGridFightComponent(inst)
 {

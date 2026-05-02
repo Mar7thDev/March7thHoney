@@ -1,12 +1,12 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Data.Custom;
-using CastoriceHoney.Server.Database.ChessRogue;
-using CastoriceHoney.Server.GameServer.Game.ChessRogue.Modifier;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.RogueModifier;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Data;
+using March7thHoney.Data.Custom;
+using March7thHoney.Database.ChessRogue;
+using March7thHoney.GameServer.Game.ChessRogue.Modifier;
+using March7thHoney.GameServer.Server.Packet.Send.RogueModifier;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.GameServer.Game.ChessRogue.Dice;
+namespace March7thHoney.GameServer.Game.ChessRogue.Dice;
 
 public class ChessRogueDiceInstance(ChessRogueInstance instance, ChessRogueNousDiceData diceData)
 {

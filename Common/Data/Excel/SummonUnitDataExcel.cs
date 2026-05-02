@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.Data.Config.SummonUnit;
-using CastoriceHoney.Server.Enums.Avatar;
+using March7thHoney.Data.Config.SummonUnit;
+using March7thHoney.Enums.Avatar;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("SummonUnitData.json")]
 public class SummonUnitDataExcel : ExcelResource

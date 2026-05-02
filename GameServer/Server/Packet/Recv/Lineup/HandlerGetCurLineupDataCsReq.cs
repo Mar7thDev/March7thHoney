@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Lineup;
-using CastoriceHoney.Server.Kcp;
+using March7thHoney.GameServer.Server.Packet.Send.Lineup;
+using March7thHoney.Kcp;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Lineup;
+namespace March7thHoney.GameServer.Server.Packet.Recv.Lineup;
 
 [Opcode(CmdIds.GetCurLineupDataCsReq)]
 public class HandlerGetCurLineupDataCsReq : Handler

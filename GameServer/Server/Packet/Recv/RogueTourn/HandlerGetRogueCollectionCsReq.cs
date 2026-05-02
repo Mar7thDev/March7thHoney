@@ -1,6 +1,6 @@
-using CastoriceHoney.Server.Kcp;
+using March7thHoney.Kcp;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.RogueTourn;
+namespace March7thHoney.GameServer.Server.Packet.Recv.RogueTourn;
 
 [Opcode(CmdIds.GetRogueCollectionCsReq)]
 public class HandlerGetRogueCollectionCsReq : Handler

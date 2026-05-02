@@ -1,10 +1,10 @@
-using CastoriceHoney.Server.Data.Excel;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Proto.ServerSide;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Data.Excel;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.Proto;
+using March7thHoney.Proto.ServerSide;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.GameServer.Game.Challenge.Definitions;
+namespace March7thHoney.GameServer.Game.Challenge.Definitions;
 
 public abstract class BaseLegacyChallengeInstance(PlayerInstance player, ChallengeDataPb data)
     : BaseChallengeInstance(player, data)

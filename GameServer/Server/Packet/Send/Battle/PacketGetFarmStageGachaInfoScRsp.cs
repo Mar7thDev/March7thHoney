@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Send.Battle;
+namespace March7thHoney.GameServer.Server.Packet.Send.Battle;
 
 public class PacketGetFarmStageGachaInfoScRsp : BasePacket
 {

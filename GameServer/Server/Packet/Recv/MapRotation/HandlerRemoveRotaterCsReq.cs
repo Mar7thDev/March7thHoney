@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.MapRotation;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.GameServer.Server.Packet.Send.MapRotation;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.MapRotation;
+namespace March7thHoney.GameServer.Server.Packet.Recv.MapRotation;
 
 [Opcode(CmdIds.RemoveRotaterCsReq)]
 public class HandlerRemoveRotaterCsReq : Handler

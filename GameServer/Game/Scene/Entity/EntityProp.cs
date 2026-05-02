@@ -1,12 +1,12 @@
-using CastoriceHoney.Server.Data.Config.Scene;
-using CastoriceHoney.Server.Data.Excel;
-using CastoriceHoney.Server.Database.Scene;
-using CastoriceHoney.Server.Enums.Scene;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Scene;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Data.Config.Scene;
+using March7thHoney.Data.Excel;
+using March7thHoney.Database.Scene;
+using March7thHoney.Enums.Scene;
+using March7thHoney.GameServer.Server.Packet.Send.Scene;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.GameServer.Game.Scene.Entity;
+namespace March7thHoney.GameServer.Game.Scene.Entity;
 
 public class EntityProp(SceneInstance scene, MazePropExcel excel, GroupInfo group, PropInfo prop) : BaseGameEntity
 {

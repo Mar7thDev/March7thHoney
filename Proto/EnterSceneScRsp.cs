@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from EnterSceneScRsp.proto</summary>
   public static partial class EnterSceneScRspReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "YXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZw",
             "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.SceneIdentifierReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.SceneIdentifierReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.EnterSceneScRsp), global::CastoriceHoney.Server.Proto.EnterSceneScRsp.Parser, new[]{ "SceneIdentifier", "Retcode", "IsCloseMap", "IsOverMap" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EnterSceneScRsp), global::March7thHoney.Proto.EnterSceneScRsp.Parser, new[]{ "SceneIdentifier", "Retcode", "IsCloseMap", "IsOverMap" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.EnterSceneScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.EnterSceneScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -90,10 +90,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "scene_identifier" field.</summary>
     public const int SceneIdentifierFieldNumber = 2;
-    private global::CastoriceHoney.Server.Proto.SceneIdentifier sceneIdentifier_;
+    private global::March7thHoney.Proto.SceneIdentifier sceneIdentifier_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.SceneIdentifier SceneIdentifier {
+    public global::March7thHoney.Proto.SceneIdentifier SceneIdentifier {
       get { return sceneIdentifier_; }
       set {
         sceneIdentifier_ = value;
@@ -262,7 +262,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.sceneIdentifier_ != null) {
         if (sceneIdentifier_ == null) {
-          SceneIdentifier = new global::CastoriceHoney.Server.Proto.SceneIdentifier();
+          SceneIdentifier = new global::March7thHoney.Proto.SceneIdentifier();
         }
         SceneIdentifier.MergeFrom(other.SceneIdentifier);
       }
@@ -296,7 +296,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 18: {
             if (sceneIdentifier_ == null) {
-              SceneIdentifier = new global::CastoriceHoney.Server.Proto.SceneIdentifier();
+              SceneIdentifier = new global::March7thHoney.Proto.SceneIdentifier();
             }
             input.ReadMessage(SceneIdentifier);
             break;
@@ -334,7 +334,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 18: {
             if (sceneIdentifier_ == null) {
-              SceneIdentifier = new global::CastoriceHoney.Server.Proto.SceneIdentifier();
+              SceneIdentifier = new global::March7thHoney.Proto.SceneIdentifier();
             }
             input.ReadMessage(SceneIdentifier);
             break;

@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Database.Lineup;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Database.Lineup;
+using March7thHoney.Util;
 using SqlSugar;
 
-namespace CastoriceHoney.Server.Database.Quests;
+namespace March7thHoney.Database.Quests;
 
 [SugarTable("StoryLineData")]
 public class StoryLineData : BaseDatabaseDataHelper

@@ -1,6 +1,6 @@
-using CastoriceHoney.Server.Enums.Mission;
+using March7thHoney.Enums.Mission;
 
-namespace CastoriceHoney.Server.GameServer.Game.Mission.FinishType;
+namespace March7thHoney.GameServer.Game.Mission.FinishType;
 
 public class MissionFinishTypeAttribute(MissionFinishTypeEnum finishType) : Attribute
 {

@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.Database.Player;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Database.Player;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Send.Friend;
+namespace March7thHoney.GameServer.Server.Packet.Send.Friend;
 
 public class PacketSyncApplyFriendScNotify : BasePacket
 {

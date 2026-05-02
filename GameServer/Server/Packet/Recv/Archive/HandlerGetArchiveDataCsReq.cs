@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Archive;
-using CastoriceHoney.Server.Kcp;
+using March7thHoney.GameServer.Server.Packet.Send.Archive;
+using March7thHoney.Kcp;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Archive;
+namespace March7thHoney.GameServer.Server.Packet.Recv.Archive;
 
 [Opcode(CmdIds.GetArchiveDataCsReq)]
 public class HandlerGetArchiveDataCsReq : Handler

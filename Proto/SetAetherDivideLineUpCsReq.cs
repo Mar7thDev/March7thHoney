@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from SetAetherDivideLineUpCsReq.proto</summary>
   public static partial class SetAetherDivideLineUpCsReqReflection {
@@ -29,9 +29,9 @@ namespace CastoriceHoney.Server.Proto {
             "ZXVwGA4gASgLMgwuRExHRlBNS1BMRU9CMwoTZW11Lmx1bmFyY29yZS5wcm90",
             "b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.DLGFPMKPLEOReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.DLGFPMKPLEOReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.SetAetherDivideLineUpCsReq), global::CastoriceHoney.Server.Proto.SetAetherDivideLineUpCsReq.Parser, new[]{ "Lineup" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetAetherDivideLineUpCsReq), global::March7thHoney.Proto.SetAetherDivideLineUpCsReq.Parser, new[]{ "Lineup" }, null, null, null, null)
           }));
     }
     #endregion
@@ -53,7 +53,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.SetAetherDivideLineUpCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.SetAetherDivideLineUpCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -85,10 +85,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "lineup" field.</summary>
     public const int LineupFieldNumber = 14;
-    private global::CastoriceHoney.Server.Proto.DLGFPMKPLEO lineup_;
+    private global::March7thHoney.Proto.DLGFPMKPLEO lineup_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.DLGFPMKPLEO Lineup {
+    public global::March7thHoney.Proto.DLGFPMKPLEO Lineup {
       get { return lineup_; }
       set {
         lineup_ = value;
@@ -182,7 +182,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.lineup_ != null) {
         if (lineup_ == null) {
-          Lineup = new global::CastoriceHoney.Server.Proto.DLGFPMKPLEO();
+          Lineup = new global::March7thHoney.Proto.DLGFPMKPLEO();
         }
         Lineup.MergeFrom(other.Lineup);
       }
@@ -207,7 +207,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 114: {
             if (lineup_ == null) {
-              Lineup = new global::CastoriceHoney.Server.Proto.DLGFPMKPLEO();
+              Lineup = new global::March7thHoney.Proto.DLGFPMKPLEO();
             }
             input.ReadMessage(Lineup);
             break;
@@ -233,7 +233,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 114: {
             if (lineup_ == null) {
-              Lineup = new global::CastoriceHoney.Server.Proto.DLGFPMKPLEO();
+              Lineup = new global::March7thHoney.Proto.DLGFPMKPLEO();
             }
             input.ReadMessage(Lineup);
             break;

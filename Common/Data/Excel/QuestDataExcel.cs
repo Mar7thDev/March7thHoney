@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Enums.Quest;
+using March7thHoney.Enums.Quest;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("QuestData.json")]
 public class QuestDataExcel : ExcelResource

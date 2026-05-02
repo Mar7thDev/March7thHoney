@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.HeartDial;
-using CastoriceHoney.Server.Kcp;
+using March7thHoney.GameServer.Server.Packet.Send.HeartDial;
+using March7thHoney.Kcp;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.HeartDial;
+namespace March7thHoney.GameServer.Server.Packet.Recv.HeartDial;
 
 [Opcode(CmdIds.GetHeartDialInfoCsReq)]
 public class HandlerGetHeartDialInfoCsReq : Handler

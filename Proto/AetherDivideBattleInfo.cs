@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from AetherDivideBattleInfo.proto</summary>
   public static partial class AetherDivideBattleInfoReflection {
@@ -34,9 +34,9 @@ namespace CastoriceHoney.Server.Proto {
             "EQoJYmF0dGxlX2lkGA8gASgNQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtD",
             "YXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.AetherAvatarInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.BattleBuffReflection.Descriptor, global::CastoriceHoney.Server.Proto.SceneMonsterWaveReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.AetherAvatarInfoReflection.Descriptor, global::March7thHoney.Proto.BattleBuffReflection.Descriptor, global::March7thHoney.Proto.SceneMonsterWaveReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.AetherDivideBattleInfo), global::CastoriceHoney.Server.Proto.AetherDivideBattleInfo.Parser, new[]{ "StageId", "BuffList", "BattleAvatarList", "EODHMOBOENG", "LogicRandomSeed", "MonsterWaveList", "BattleId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AetherDivideBattleInfo), global::March7thHoney.Proto.AetherDivideBattleInfo.Parser, new[]{ "StageId", "BuffList", "BattleAvatarList", "EODHMOBOENG", "LogicRandomSeed", "MonsterWaveList", "BattleId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -58,7 +58,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.AetherDivideBattleInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.AetherDivideBattleInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -108,23 +108,23 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "buff_list" field.</summary>
     public const int BuffListFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.BattleBuff> _repeated_buffList_codec
-        = pb::FieldCodec.ForMessage(18, global::CastoriceHoney.Server.Proto.BattleBuff.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BattleBuff> buffList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BattleBuff>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BattleBuff> _repeated_buffList_codec
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.BattleBuff.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BattleBuff> buffList_ = new pbc::RepeatedField<global::March7thHoney.Proto.BattleBuff>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BattleBuff> BuffList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.BattleBuff> BuffList {
       get { return buffList_; }
     }
 
     /// <summary>Field number for the "battle_avatar_list" field.</summary>
     public const int BattleAvatarListFieldNumber = 5;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.AetherAvatarInfo> _repeated_battleAvatarList_codec
-        = pb::FieldCodec.ForMessage(42, global::CastoriceHoney.Server.Proto.AetherAvatarInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AetherAvatarInfo> battleAvatarList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AetherAvatarInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AetherAvatarInfo> _repeated_battleAvatarList_codec
+        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.AetherAvatarInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AetherAvatarInfo> battleAvatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.AetherAvatarInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AetherAvatarInfo> BattleAvatarList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.AetherAvatarInfo> BattleAvatarList {
       get { return battleAvatarList_; }
     }
 
@@ -154,12 +154,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "monster_wave_list" field.</summary>
     public const int MonsterWaveListFieldNumber = 11;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.SceneMonsterWave> _repeated_monsterWaveList_codec
-        = pb::FieldCodec.ForMessage(90, global::CastoriceHoney.Server.Proto.SceneMonsterWave.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.SceneMonsterWave> monsterWaveList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.SceneMonsterWave>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.SceneMonsterWave> _repeated_monsterWaveList_codec
+        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.SceneMonsterWave.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.SceneMonsterWave> monsterWaveList_ = new pbc::RepeatedField<global::March7thHoney.Proto.SceneMonsterWave>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.SceneMonsterWave> MonsterWaveList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.SceneMonsterWave> MonsterWaveList {
       get { return monsterWaveList_; }
     }
 

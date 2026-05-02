@@ -1,6 +1,6 @@
-using CastoriceHoney.Server.GameServer.Game.Player;
+using March7thHoney.GameServer.Game.Player;
 
-namespace CastoriceHoney.Server.GameServer.Game;
+namespace March7thHoney.GameServer.Game;
 
 public class BasePlayerManager(PlayerInstance player)
 {

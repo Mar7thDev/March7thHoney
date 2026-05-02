@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from AlleyPlacingGameCsReq.proto</summary>
   public static partial class AlleyPlacingGameCsReqReflection {
@@ -33,9 +33,9 @@ namespace CastoriceHoney.Server.Proto {
             "UE5ES1BQRkdHGA8gASgNQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0",
             "b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.AlleyPlacingShipReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.AlleyPlacingShipReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.AlleyPlacingGameCsReq), global::CastoriceHoney.Server.Proto.AlleyPlacingGameCsReq.Parser, new[]{ "MAMGGFKGKCE", "CostTime", "FCDCFAMOHAE", "ONEPNPGPMNO", "PBDJOIIAKHK", "KEBODNOMNDJ", "FOBGBGCOKAE", "BHJPEAABOGP", "OBPNDKPPFGG" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AlleyPlacingGameCsReq), global::March7thHoney.Proto.AlleyPlacingGameCsReq.Parser, new[]{ "MAMGGFKGKCE", "CostTime", "FCDCFAMOHAE", "ONEPNPGPMNO", "PBDJOIIAKHK", "KEBODNOMNDJ", "FOBGBGCOKAE", "BHJPEAABOGP", "OBPNDKPPFGG" }, null, null, null, null)
           }));
     }
     #endregion
@@ -57,7 +57,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.AlleyPlacingGameCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.AlleyPlacingGameCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -121,10 +121,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "FCDCFAMOHAE" field.</summary>
     public const int FCDCFAMOHAEFieldNumber = 8;
-    private global::CastoriceHoney.Server.Proto.AlleyPlacingShip fCDCFAMOHAE_;
+    private global::March7thHoney.Proto.AlleyPlacingShip fCDCFAMOHAE_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.AlleyPlacingShip FCDCFAMOHAE {
+    public global::March7thHoney.Proto.AlleyPlacingShip FCDCFAMOHAE {
       get { return fCDCFAMOHAE_; }
       set {
         fCDCFAMOHAE_ = value;
@@ -400,7 +400,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.fCDCFAMOHAE_ != null) {
         if (fCDCFAMOHAE_ == null) {
-          FCDCFAMOHAE = new global::CastoriceHoney.Server.Proto.AlleyPlacingShip();
+          FCDCFAMOHAE = new global::March7thHoney.Proto.AlleyPlacingShip();
         }
         FCDCFAMOHAE.MergeFrom(other.FCDCFAMOHAE);
       }
@@ -451,7 +451,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 66: {
             if (fCDCFAMOHAE_ == null) {
-              FCDCFAMOHAE = new global::CastoriceHoney.Server.Proto.AlleyPlacingShip();
+              FCDCFAMOHAE = new global::March7thHoney.Proto.AlleyPlacingShip();
             }
             input.ReadMessage(FCDCFAMOHAE);
             break;
@@ -509,7 +509,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 66: {
             if (fCDCFAMOHAE_ == null) {
-              FCDCFAMOHAE = new global::CastoriceHoney.Server.Proto.AlleyPlacingShip();
+              FCDCFAMOHAE = new global::March7thHoney.Proto.AlleyPlacingShip();
             }
             input.ReadMessage(FCDCFAMOHAE);
             break;

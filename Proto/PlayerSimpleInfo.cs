@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from PlayerSimpleInfo.proto</summary>
   public static partial class PlayerSimpleInfoReflection {
@@ -41,9 +41,9 @@ namespace CastoriceHoney.Server.Proto {
             "b3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90",
             "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.AssistSimpleInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.FriendOnlineStatusReflection.Descriptor, global::CastoriceHoney.Server.Proto.HeadFrameInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.PlatformTypeReflection.Descriptor, global::CastoriceHoney.Server.Proto.PlayerOutfitInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.AssistSimpleInfoReflection.Descriptor, global::March7thHoney.Proto.FriendOnlineStatusReflection.Descriptor, global::March7thHoney.Proto.HeadFrameInfoReflection.Descriptor, global::March7thHoney.Proto.PlatformTypeReflection.Descriptor, global::March7thHoney.Proto.PlayerOutfitInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.PlayerSimpleInfo), global::CastoriceHoney.Server.Proto.PlayerSimpleInfo.Parser, new[]{ "Nickname", "Signature", "PlatformUuid", "PlayerOutfitData", "Uid", "PlatformNick", "Platform", "PersonalCard", "LastActiveTime", "OnlineStatus", "ChatBubbleId", "HeadIcon", "IsBanned", "Level", "AssistSimpleInfoList", "HeadFrameInfo", "Gender" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlayerSimpleInfo), global::March7thHoney.Proto.PlayerSimpleInfo.Parser, new[]{ "Nickname", "Signature", "PlatformUuid", "PlayerOutfitData", "Uid", "PlatformNick", "Platform", "PersonalCard", "LastActiveTime", "OnlineStatus", "ChatBubbleId", "HeadIcon", "IsBanned", "Level", "AssistSimpleInfoList", "HeadFrameInfo", "Gender" }, null, null, null, null)
           }));
     }
     #endregion
@@ -65,7 +65,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.PlayerSimpleInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.PlayerSimpleInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -149,10 +149,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "player_outfit_data" field.</summary>
     public const int PlayerOutfitDataFieldNumber = 4;
-    private global::CastoriceHoney.Server.Proto.PlayerOutfitInfo playerOutfitData_;
+    private global::March7thHoney.Proto.PlayerOutfitInfo playerOutfitData_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.PlayerOutfitInfo PlayerOutfitData {
+    public global::March7thHoney.Proto.PlayerOutfitInfo PlayerOutfitData {
       get { return playerOutfitData_; }
       set {
         playerOutfitData_ = value;
@@ -185,10 +185,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "platform" field.</summary>
     public const int PlatformFieldNumber = 7;
-    private global::CastoriceHoney.Server.Proto.PlatformType platform_ = global::CastoriceHoney.Server.Proto.PlatformType.Editor;
+    private global::March7thHoney.Proto.PlatformType platform_ = global::March7thHoney.Proto.PlatformType.Editor;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.PlatformType Platform {
+    public global::March7thHoney.Proto.PlatformType Platform {
       get { return platform_; }
       set {
         platform_ = value;
@@ -221,10 +221,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "online_status" field.</summary>
     public const int OnlineStatusFieldNumber = 10;
-    private global::CastoriceHoney.Server.Proto.FriendOnlineStatus onlineStatus_ = global::CastoriceHoney.Server.Proto.FriendOnlineStatus.Offline;
+    private global::March7thHoney.Proto.FriendOnlineStatus onlineStatus_ = global::March7thHoney.Proto.FriendOnlineStatus.Offline;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.FriendOnlineStatus OnlineStatus {
+    public global::March7thHoney.Proto.FriendOnlineStatus OnlineStatus {
       get { return onlineStatus_; }
       set {
         onlineStatus_ = value;
@@ -281,21 +281,21 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "assist_simple_info_list" field.</summary>
     public const int AssistSimpleInfoListFieldNumber = 15;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.AssistSimpleInfo> _repeated_assistSimpleInfoList_codec
-        = pb::FieldCodec.ForMessage(122, global::CastoriceHoney.Server.Proto.AssistSimpleInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AssistSimpleInfo> assistSimpleInfoList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AssistSimpleInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AssistSimpleInfo> _repeated_assistSimpleInfoList_codec
+        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.AssistSimpleInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AssistSimpleInfo> assistSimpleInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.AssistSimpleInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AssistSimpleInfo> AssistSimpleInfoList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.AssistSimpleInfo> AssistSimpleInfoList {
       get { return assistSimpleInfoList_; }
     }
 
     /// <summary>Field number for the "head_frame_info" field.</summary>
     public const int HeadFrameInfoFieldNumber = 105;
-    private global::CastoriceHoney.Server.Proto.HeadFrameInfo headFrameInfo_;
+    private global::March7thHoney.Proto.HeadFrameInfo headFrameInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.HeadFrameInfo HeadFrameInfo {
+    public global::March7thHoney.Proto.HeadFrameInfo HeadFrameInfo {
       get { return headFrameInfo_; }
       set {
         headFrameInfo_ = value;
@@ -359,10 +359,10 @@ namespace CastoriceHoney.Server.Proto {
       if (playerOutfitData_ != null) hash ^= PlayerOutfitData.GetHashCode();
       if (Uid != 0) hash ^= Uid.GetHashCode();
       if (PlatformNick.Length != 0) hash ^= PlatformNick.GetHashCode();
-      if (Platform != global::CastoriceHoney.Server.Proto.PlatformType.Editor) hash ^= Platform.GetHashCode();
+      if (Platform != global::March7thHoney.Proto.PlatformType.Editor) hash ^= Platform.GetHashCode();
       if (PersonalCard != 0) hash ^= PersonalCard.GetHashCode();
       if (LastActiveTime != 0L) hash ^= LastActiveTime.GetHashCode();
-      if (OnlineStatus != global::CastoriceHoney.Server.Proto.FriendOnlineStatus.Offline) hash ^= OnlineStatus.GetHashCode();
+      if (OnlineStatus != global::March7thHoney.Proto.FriendOnlineStatus.Offline) hash ^= OnlineStatus.GetHashCode();
       if (ChatBubbleId != 0) hash ^= ChatBubbleId.GetHashCode();
       if (HeadIcon != 0) hash ^= HeadIcon.GetHashCode();
       if (IsBanned != false) hash ^= IsBanned.GetHashCode();
@@ -412,7 +412,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(50);
         output.WriteString(PlatformNick);
       }
-      if (Platform != global::CastoriceHoney.Server.Proto.PlatformType.Editor) {
+      if (Platform != global::March7thHoney.Proto.PlatformType.Editor) {
         output.WriteRawTag(56);
         output.WriteEnum((int) Platform);
       }
@@ -424,7 +424,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(72);
         output.WriteInt64(LastActiveTime);
       }
-      if (OnlineStatus != global::CastoriceHoney.Server.Proto.FriendOnlineStatus.Offline) {
+      if (OnlineStatus != global::March7thHoney.Proto.FriendOnlineStatus.Offline) {
         output.WriteRawTag(80);
         output.WriteEnum((int) OnlineStatus);
       }
@@ -487,7 +487,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(50);
         output.WriteString(PlatformNick);
       }
-      if (Platform != global::CastoriceHoney.Server.Proto.PlatformType.Editor) {
+      if (Platform != global::March7thHoney.Proto.PlatformType.Editor) {
         output.WriteRawTag(56);
         output.WriteEnum((int) Platform);
       }
@@ -499,7 +499,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(72);
         output.WriteInt64(LastActiveTime);
       }
-      if (OnlineStatus != global::CastoriceHoney.Server.Proto.FriendOnlineStatus.Offline) {
+      if (OnlineStatus != global::March7thHoney.Proto.FriendOnlineStatus.Offline) {
         output.WriteRawTag(80);
         output.WriteEnum((int) OnlineStatus);
       }
@@ -556,7 +556,7 @@ namespace CastoriceHoney.Server.Proto {
       if (PlatformNick.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(PlatformNick);
       }
-      if (Platform != global::CastoriceHoney.Server.Proto.PlatformType.Editor) {
+      if (Platform != global::March7thHoney.Proto.PlatformType.Editor) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Platform);
       }
       if (PersonalCard != 0) {
@@ -565,7 +565,7 @@ namespace CastoriceHoney.Server.Proto {
       if (LastActiveTime != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(LastActiveTime);
       }
-      if (OnlineStatus != global::CastoriceHoney.Server.Proto.FriendOnlineStatus.Offline) {
+      if (OnlineStatus != global::March7thHoney.Proto.FriendOnlineStatus.Offline) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) OnlineStatus);
       }
       if (ChatBubbleId != 0) {
@@ -610,7 +610,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.playerOutfitData_ != null) {
         if (playerOutfitData_ == null) {
-          PlayerOutfitData = new global::CastoriceHoney.Server.Proto.PlayerOutfitInfo();
+          PlayerOutfitData = new global::March7thHoney.Proto.PlayerOutfitInfo();
         }
         PlayerOutfitData.MergeFrom(other.PlayerOutfitData);
       }
@@ -620,7 +620,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other.PlatformNick.Length != 0) {
         PlatformNick = other.PlatformNick;
       }
-      if (other.Platform != global::CastoriceHoney.Server.Proto.PlatformType.Editor) {
+      if (other.Platform != global::March7thHoney.Proto.PlatformType.Editor) {
         Platform = other.Platform;
       }
       if (other.PersonalCard != 0) {
@@ -629,7 +629,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other.LastActiveTime != 0L) {
         LastActiveTime = other.LastActiveTime;
       }
-      if (other.OnlineStatus != global::CastoriceHoney.Server.Proto.FriendOnlineStatus.Offline) {
+      if (other.OnlineStatus != global::March7thHoney.Proto.FriendOnlineStatus.Offline) {
         OnlineStatus = other.OnlineStatus;
       }
       if (other.ChatBubbleId != 0) {
@@ -647,7 +647,7 @@ namespace CastoriceHoney.Server.Proto {
       assistSimpleInfoList_.Add(other.assistSimpleInfoList_);
       if (other.headFrameInfo_ != null) {
         if (headFrameInfo_ == null) {
-          HeadFrameInfo = new global::CastoriceHoney.Server.Proto.HeadFrameInfo();
+          HeadFrameInfo = new global::March7thHoney.Proto.HeadFrameInfo();
         }
         HeadFrameInfo.MergeFrom(other.HeadFrameInfo);
       }
@@ -687,7 +687,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 34: {
             if (playerOutfitData_ == null) {
-              PlayerOutfitData = new global::CastoriceHoney.Server.Proto.PlayerOutfitInfo();
+              PlayerOutfitData = new global::March7thHoney.Proto.PlayerOutfitInfo();
             }
             input.ReadMessage(PlayerOutfitData);
             break;
@@ -701,7 +701,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 56: {
-            Platform = (global::CastoriceHoney.Server.Proto.PlatformType) input.ReadEnum();
+            Platform = (global::March7thHoney.Proto.PlatformType) input.ReadEnum();
             break;
           }
           case 64: {
@@ -713,7 +713,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 80: {
-            OnlineStatus = (global::CastoriceHoney.Server.Proto.FriendOnlineStatus) input.ReadEnum();
+            OnlineStatus = (global::March7thHoney.Proto.FriendOnlineStatus) input.ReadEnum();
             break;
           }
           case 88: {
@@ -738,7 +738,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 842: {
             if (headFrameInfo_ == null) {
-              HeadFrameInfo = new global::CastoriceHoney.Server.Proto.HeadFrameInfo();
+              HeadFrameInfo = new global::March7thHoney.Proto.HeadFrameInfo();
             }
             input.ReadMessage(HeadFrameInfo);
             break;
@@ -780,7 +780,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 34: {
             if (playerOutfitData_ == null) {
-              PlayerOutfitData = new global::CastoriceHoney.Server.Proto.PlayerOutfitInfo();
+              PlayerOutfitData = new global::March7thHoney.Proto.PlayerOutfitInfo();
             }
             input.ReadMessage(PlayerOutfitData);
             break;
@@ -794,7 +794,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 56: {
-            Platform = (global::CastoriceHoney.Server.Proto.PlatformType) input.ReadEnum();
+            Platform = (global::March7thHoney.Proto.PlatformType) input.ReadEnum();
             break;
           }
           case 64: {
@@ -806,7 +806,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 80: {
-            OnlineStatus = (global::CastoriceHoney.Server.Proto.FriendOnlineStatus) input.ReadEnum();
+            OnlineStatus = (global::March7thHoney.Proto.FriendOnlineStatus) input.ReadEnum();
             break;
           }
           case 88: {
@@ -831,7 +831,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 842: {
             if (headFrameInfo_ == null) {
-              HeadFrameInfo = new global::CastoriceHoney.Server.Proto.HeadFrameInfo();
+              HeadFrameInfo = new global::March7thHoney.Proto.HeadFrameInfo();
             }
             input.ReadMessage(HeadFrameInfo);
             break;

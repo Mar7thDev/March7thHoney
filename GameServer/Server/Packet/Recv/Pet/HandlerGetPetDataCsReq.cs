@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Pet;
-using CastoriceHoney.Server.Kcp;
+using March7thHoney.GameServer.Server.Packet.Send.Pet;
+using March7thHoney.Kcp;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Pet;
+namespace March7thHoney.GameServer.Server.Packet.Recv.Pet;
 
 [Opcode(CmdIds.GetPetDataCsReq)]
 public class HandlerGetPetDataCsReq : Handler

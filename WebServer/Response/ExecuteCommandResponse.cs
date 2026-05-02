@@ -1,4 +1,4 @@
-﻿namespace CastoriceHoney.Server.WebServer.Response;
+namespace March7thHoney.WebServer.Response;
 
 public class ExecuteCommandResponse(int code, string message, ExecuteCommandData? data = null)
     : BaseResponse<ExecuteCommandData>(code, message, data)

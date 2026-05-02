@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Item;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.GameServer.Server.Packet.Send.Item;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Item;
+namespace March7thHoney.GameServer.Server.Packet.Recv.Item;
 
 [Opcode(CmdIds.ExpUpRelicCsReq)]
 public class HandlerExpUpRelicCsReq : Handler

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GridFightPendingAction.proto</summary>
   public static partial class GridFightPendingActionReflection {
@@ -58,9 +58,9 @@ namespace CastoriceHoney.Server.Proto {
             "SUIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2Vy",
             "dmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.EEJAJMNKAMIReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightAugmentActionInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightEliteBranchActionInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightForgeRoleActionInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightPortalBuffActionInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightRecommendEquipmentActionInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightReturnPreparationActionInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightRoundBeginActionInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightSupplyActionInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightTraitActionInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightUpgradeEquipActionInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.HEPFIAFJAHLReflection.Descriptor, global::CastoriceHoney.Server.Proto.KIKMJKNHJGAReflection.Descriptor, global::CastoriceHoney.Server.Proto.NHJCELBCFNFReflection.Descriptor, global::CastoriceHoney.Server.Proto.NJJFPLFEEFCReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.EEJAJMNKAMIReflection.Descriptor, global::March7thHoney.Proto.GridFightAugmentActionInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightEliteBranchActionInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightForgeRoleActionInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightPortalBuffActionInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightRecommendEquipmentActionInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightReturnPreparationActionInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightRoundBeginActionInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightSupplyActionInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightTraitActionInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightUpgradeEquipActionInfoReflection.Descriptor, global::March7thHoney.Proto.HEPFIAFJAHLReflection.Descriptor, global::March7thHoney.Proto.KIKMJKNHJGAReflection.Descriptor, global::March7thHoney.Proto.NHJCELBCFNFReflection.Descriptor, global::March7thHoney.Proto.NJJFPLFEEFCReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GridFightPendingAction), global::CastoriceHoney.Server.Proto.GridFightPendingAction.Parser, new[]{ "QueuePosition", "SupplyAction", "ReturnPreparationAction", "DJEJJKADBCI", "HPMNOGGMKKH", "AugmentAction", "RoundBeginAction", "RecommendEquipmentAction", "UpgradeEquipAction", "ForgeRoleActionInfo", "KACDGAJHNBI", "APLEGHKNFOK", "PKCONHLNMIJ", "TraitAction", "PortalBuffAction", "EliteBranchAction" }, new[]{ "BGGBIMBKHEI" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightPendingAction), global::March7thHoney.Proto.GridFightPendingAction.Parser, new[]{ "QueuePosition", "SupplyAction", "ReturnPreparationAction", "DJEJJKADBCI", "HPMNOGGMKKH", "AugmentAction", "RoundBeginAction", "RecommendEquipmentAction", "UpgradeEquipAction", "ForgeRoleActionInfo", "KACDGAJHNBI", "APLEGHKNFOK", "PKCONHLNMIJ", "TraitAction", "PortalBuffAction", "EliteBranchAction" }, new[]{ "BGGBIMBKHEI" }, null, null, null)
           }));
     }
     #endregion
@@ -82,7 +82,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GridFightPendingActionReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GridFightPendingActionReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -176,8 +176,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int SupplyActionFieldNumber = 21;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightSupplyActionInfo SupplyAction {
-      get { return bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.SupplyAction ? (global::CastoriceHoney.Server.Proto.GridFightSupplyActionInfo) bGGBIMBKHEI_ : null; }
+    public global::March7thHoney.Proto.GridFightSupplyActionInfo SupplyAction {
+      get { return bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.SupplyAction ? (global::March7thHoney.Proto.GridFightSupplyActionInfo) bGGBIMBKHEI_ : null; }
       set {
         bGGBIMBKHEI_ = value;
         bGGBIMBKHEICase_ = value == null ? BGGBIMBKHEIOneofCase.None : BGGBIMBKHEIOneofCase.SupplyAction;
@@ -188,8 +188,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int ReturnPreparationActionFieldNumber = 38;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightReturnPreparationActionInfo ReturnPreparationAction {
-      get { return bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.ReturnPreparationAction ? (global::CastoriceHoney.Server.Proto.GridFightReturnPreparationActionInfo) bGGBIMBKHEI_ : null; }
+    public global::March7thHoney.Proto.GridFightReturnPreparationActionInfo ReturnPreparationAction {
+      get { return bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.ReturnPreparationAction ? (global::March7thHoney.Proto.GridFightReturnPreparationActionInfo) bGGBIMBKHEI_ : null; }
       set {
         bGGBIMBKHEI_ = value;
         bGGBIMBKHEICase_ = value == null ? BGGBIMBKHEIOneofCase.None : BGGBIMBKHEIOneofCase.ReturnPreparationAction;
@@ -200,8 +200,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int DJEJJKADBCIFieldNumber = 164;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.KIKMJKNHJGA DJEJJKADBCI {
-      get { return bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.DJEJJKADBCI ? (global::CastoriceHoney.Server.Proto.KIKMJKNHJGA) bGGBIMBKHEI_ : null; }
+    public global::March7thHoney.Proto.KIKMJKNHJGA DJEJJKADBCI {
+      get { return bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.DJEJJKADBCI ? (global::March7thHoney.Proto.KIKMJKNHJGA) bGGBIMBKHEI_ : null; }
       set {
         bGGBIMBKHEI_ = value;
         bGGBIMBKHEICase_ = value == null ? BGGBIMBKHEIOneofCase.None : BGGBIMBKHEIOneofCase.DJEJJKADBCI;
@@ -212,8 +212,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int HPMNOGGMKKHFieldNumber = 284;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.NHJCELBCFNF HPMNOGGMKKH {
-      get { return bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.HPMNOGGMKKH ? (global::CastoriceHoney.Server.Proto.NHJCELBCFNF) bGGBIMBKHEI_ : null; }
+    public global::March7thHoney.Proto.NHJCELBCFNF HPMNOGGMKKH {
+      get { return bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.HPMNOGGMKKH ? (global::March7thHoney.Proto.NHJCELBCFNF) bGGBIMBKHEI_ : null; }
       set {
         bGGBIMBKHEI_ = value;
         bGGBIMBKHEICase_ = value == null ? BGGBIMBKHEIOneofCase.None : BGGBIMBKHEIOneofCase.HPMNOGGMKKH;
@@ -224,8 +224,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int AugmentActionFieldNumber = 482;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightAugmentActionInfo AugmentAction {
-      get { return bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.AugmentAction ? (global::CastoriceHoney.Server.Proto.GridFightAugmentActionInfo) bGGBIMBKHEI_ : null; }
+    public global::March7thHoney.Proto.GridFightAugmentActionInfo AugmentAction {
+      get { return bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.AugmentAction ? (global::March7thHoney.Proto.GridFightAugmentActionInfo) bGGBIMBKHEI_ : null; }
       set {
         bGGBIMBKHEI_ = value;
         bGGBIMBKHEICase_ = value == null ? BGGBIMBKHEIOneofCase.None : BGGBIMBKHEIOneofCase.AugmentAction;
@@ -236,8 +236,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int RoundBeginActionFieldNumber = 872;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightRoundBeginActionInfo RoundBeginAction {
-      get { return bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.RoundBeginAction ? (global::CastoriceHoney.Server.Proto.GridFightRoundBeginActionInfo) bGGBIMBKHEI_ : null; }
+    public global::March7thHoney.Proto.GridFightRoundBeginActionInfo RoundBeginAction {
+      get { return bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.RoundBeginAction ? (global::March7thHoney.Proto.GridFightRoundBeginActionInfo) bGGBIMBKHEI_ : null; }
       set {
         bGGBIMBKHEI_ = value;
         bGGBIMBKHEICase_ = value == null ? BGGBIMBKHEIOneofCase.None : BGGBIMBKHEIOneofCase.RoundBeginAction;
@@ -248,8 +248,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int RecommendEquipmentActionFieldNumber = 980;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightRecommendEquipmentActionInfo RecommendEquipmentAction {
-      get { return bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.RecommendEquipmentAction ? (global::CastoriceHoney.Server.Proto.GridFightRecommendEquipmentActionInfo) bGGBIMBKHEI_ : null; }
+    public global::March7thHoney.Proto.GridFightRecommendEquipmentActionInfo RecommendEquipmentAction {
+      get { return bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.RecommendEquipmentAction ? (global::March7thHoney.Proto.GridFightRecommendEquipmentActionInfo) bGGBIMBKHEI_ : null; }
       set {
         bGGBIMBKHEI_ = value;
         bGGBIMBKHEICase_ = value == null ? BGGBIMBKHEIOneofCase.None : BGGBIMBKHEIOneofCase.RecommendEquipmentAction;
@@ -260,8 +260,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int UpgradeEquipActionFieldNumber = 1063;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightUpgradeEquipActionInfo UpgradeEquipAction {
-      get { return bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.UpgradeEquipAction ? (global::CastoriceHoney.Server.Proto.GridFightUpgradeEquipActionInfo) bGGBIMBKHEI_ : null; }
+    public global::March7thHoney.Proto.GridFightUpgradeEquipActionInfo UpgradeEquipAction {
+      get { return bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.UpgradeEquipAction ? (global::March7thHoney.Proto.GridFightUpgradeEquipActionInfo) bGGBIMBKHEI_ : null; }
       set {
         bGGBIMBKHEI_ = value;
         bGGBIMBKHEICase_ = value == null ? BGGBIMBKHEIOneofCase.None : BGGBIMBKHEIOneofCase.UpgradeEquipAction;
@@ -272,8 +272,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int ForgeRoleActionInfoFieldNumber = 1151;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightForgeRoleActionInfo ForgeRoleActionInfo {
-      get { return bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.ForgeRoleActionInfo ? (global::CastoriceHoney.Server.Proto.GridFightForgeRoleActionInfo) bGGBIMBKHEI_ : null; }
+    public global::March7thHoney.Proto.GridFightForgeRoleActionInfo ForgeRoleActionInfo {
+      get { return bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.ForgeRoleActionInfo ? (global::March7thHoney.Proto.GridFightForgeRoleActionInfo) bGGBIMBKHEI_ : null; }
       set {
         bGGBIMBKHEI_ = value;
         bGGBIMBKHEICase_ = value == null ? BGGBIMBKHEIOneofCase.None : BGGBIMBKHEIOneofCase.ForgeRoleActionInfo;
@@ -284,8 +284,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int KACDGAJHNBIFieldNumber = 1211;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.NJJFPLFEEFC KACDGAJHNBI {
-      get { return bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.KACDGAJHNBI ? (global::CastoriceHoney.Server.Proto.NJJFPLFEEFC) bGGBIMBKHEI_ : null; }
+    public global::March7thHoney.Proto.NJJFPLFEEFC KACDGAJHNBI {
+      get { return bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.KACDGAJHNBI ? (global::March7thHoney.Proto.NJJFPLFEEFC) bGGBIMBKHEI_ : null; }
       set {
         bGGBIMBKHEI_ = value;
         bGGBIMBKHEICase_ = value == null ? BGGBIMBKHEIOneofCase.None : BGGBIMBKHEIOneofCase.KACDGAJHNBI;
@@ -296,8 +296,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int APLEGHKNFOKFieldNumber = 1446;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.HEPFIAFJAHL APLEGHKNFOK {
-      get { return bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.APLEGHKNFOK ? (global::CastoriceHoney.Server.Proto.HEPFIAFJAHL) bGGBIMBKHEI_ : null; }
+    public global::March7thHoney.Proto.HEPFIAFJAHL APLEGHKNFOK {
+      get { return bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.APLEGHKNFOK ? (global::March7thHoney.Proto.HEPFIAFJAHL) bGGBIMBKHEI_ : null; }
       set {
         bGGBIMBKHEI_ = value;
         bGGBIMBKHEICase_ = value == null ? BGGBIMBKHEIOneofCase.None : BGGBIMBKHEIOneofCase.APLEGHKNFOK;
@@ -308,8 +308,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int PKCONHLNMIJFieldNumber = 1540;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.EEJAJMNKAMI PKCONHLNMIJ {
-      get { return bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.PKCONHLNMIJ ? (global::CastoriceHoney.Server.Proto.EEJAJMNKAMI) bGGBIMBKHEI_ : null; }
+    public global::March7thHoney.Proto.EEJAJMNKAMI PKCONHLNMIJ {
+      get { return bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.PKCONHLNMIJ ? (global::March7thHoney.Proto.EEJAJMNKAMI) bGGBIMBKHEI_ : null; }
       set {
         bGGBIMBKHEI_ = value;
         bGGBIMBKHEICase_ = value == null ? BGGBIMBKHEIOneofCase.None : BGGBIMBKHEIOneofCase.PKCONHLNMIJ;
@@ -320,8 +320,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int TraitActionFieldNumber = 1800;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightTraitActionInfo TraitAction {
-      get { return bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.TraitAction ? (global::CastoriceHoney.Server.Proto.GridFightTraitActionInfo) bGGBIMBKHEI_ : null; }
+    public global::March7thHoney.Proto.GridFightTraitActionInfo TraitAction {
+      get { return bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.TraitAction ? (global::March7thHoney.Proto.GridFightTraitActionInfo) bGGBIMBKHEI_ : null; }
       set {
         bGGBIMBKHEI_ = value;
         bGGBIMBKHEICase_ = value == null ? BGGBIMBKHEIOneofCase.None : BGGBIMBKHEIOneofCase.TraitAction;
@@ -332,8 +332,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int PortalBuffActionFieldNumber = 1843;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightPortalBuffActionInfo PortalBuffAction {
-      get { return bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.PortalBuffAction ? (global::CastoriceHoney.Server.Proto.GridFightPortalBuffActionInfo) bGGBIMBKHEI_ : null; }
+    public global::March7thHoney.Proto.GridFightPortalBuffActionInfo PortalBuffAction {
+      get { return bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.PortalBuffAction ? (global::March7thHoney.Proto.GridFightPortalBuffActionInfo) bGGBIMBKHEI_ : null; }
       set {
         bGGBIMBKHEI_ = value;
         bGGBIMBKHEICase_ = value == null ? BGGBIMBKHEIOneofCase.None : BGGBIMBKHEIOneofCase.PortalBuffAction;
@@ -344,8 +344,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int EliteBranchActionFieldNumber = 1893;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightEliteBranchActionInfo EliteBranchAction {
-      get { return bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.EliteBranchAction ? (global::CastoriceHoney.Server.Proto.GridFightEliteBranchActionInfo) bGGBIMBKHEI_ : null; }
+    public global::March7thHoney.Proto.GridFightEliteBranchActionInfo EliteBranchAction {
+      get { return bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.EliteBranchAction ? (global::March7thHoney.Proto.GridFightEliteBranchActionInfo) bGGBIMBKHEI_ : null; }
       set {
         bGGBIMBKHEI_ = value;
         bGGBIMBKHEICase_ = value == null ? BGGBIMBKHEIOneofCase.None : BGGBIMBKHEIOneofCase.EliteBranchAction;
@@ -674,91 +674,91 @@ namespace CastoriceHoney.Server.Proto {
       switch (other.BGGBIMBKHEICase) {
         case BGGBIMBKHEIOneofCase.SupplyAction:
           if (SupplyAction == null) {
-            SupplyAction = new global::CastoriceHoney.Server.Proto.GridFightSupplyActionInfo();
+            SupplyAction = new global::March7thHoney.Proto.GridFightSupplyActionInfo();
           }
           SupplyAction.MergeFrom(other.SupplyAction);
           break;
         case BGGBIMBKHEIOneofCase.ReturnPreparationAction:
           if (ReturnPreparationAction == null) {
-            ReturnPreparationAction = new global::CastoriceHoney.Server.Proto.GridFightReturnPreparationActionInfo();
+            ReturnPreparationAction = new global::March7thHoney.Proto.GridFightReturnPreparationActionInfo();
           }
           ReturnPreparationAction.MergeFrom(other.ReturnPreparationAction);
           break;
         case BGGBIMBKHEIOneofCase.DJEJJKADBCI:
           if (DJEJJKADBCI == null) {
-            DJEJJKADBCI = new global::CastoriceHoney.Server.Proto.KIKMJKNHJGA();
+            DJEJJKADBCI = new global::March7thHoney.Proto.KIKMJKNHJGA();
           }
           DJEJJKADBCI.MergeFrom(other.DJEJJKADBCI);
           break;
         case BGGBIMBKHEIOneofCase.HPMNOGGMKKH:
           if (HPMNOGGMKKH == null) {
-            HPMNOGGMKKH = new global::CastoriceHoney.Server.Proto.NHJCELBCFNF();
+            HPMNOGGMKKH = new global::March7thHoney.Proto.NHJCELBCFNF();
           }
           HPMNOGGMKKH.MergeFrom(other.HPMNOGGMKKH);
           break;
         case BGGBIMBKHEIOneofCase.AugmentAction:
           if (AugmentAction == null) {
-            AugmentAction = new global::CastoriceHoney.Server.Proto.GridFightAugmentActionInfo();
+            AugmentAction = new global::March7thHoney.Proto.GridFightAugmentActionInfo();
           }
           AugmentAction.MergeFrom(other.AugmentAction);
           break;
         case BGGBIMBKHEIOneofCase.RoundBeginAction:
           if (RoundBeginAction == null) {
-            RoundBeginAction = new global::CastoriceHoney.Server.Proto.GridFightRoundBeginActionInfo();
+            RoundBeginAction = new global::March7thHoney.Proto.GridFightRoundBeginActionInfo();
           }
           RoundBeginAction.MergeFrom(other.RoundBeginAction);
           break;
         case BGGBIMBKHEIOneofCase.RecommendEquipmentAction:
           if (RecommendEquipmentAction == null) {
-            RecommendEquipmentAction = new global::CastoriceHoney.Server.Proto.GridFightRecommendEquipmentActionInfo();
+            RecommendEquipmentAction = new global::March7thHoney.Proto.GridFightRecommendEquipmentActionInfo();
           }
           RecommendEquipmentAction.MergeFrom(other.RecommendEquipmentAction);
           break;
         case BGGBIMBKHEIOneofCase.UpgradeEquipAction:
           if (UpgradeEquipAction == null) {
-            UpgradeEquipAction = new global::CastoriceHoney.Server.Proto.GridFightUpgradeEquipActionInfo();
+            UpgradeEquipAction = new global::March7thHoney.Proto.GridFightUpgradeEquipActionInfo();
           }
           UpgradeEquipAction.MergeFrom(other.UpgradeEquipAction);
           break;
         case BGGBIMBKHEIOneofCase.ForgeRoleActionInfo:
           if (ForgeRoleActionInfo == null) {
-            ForgeRoleActionInfo = new global::CastoriceHoney.Server.Proto.GridFightForgeRoleActionInfo();
+            ForgeRoleActionInfo = new global::March7thHoney.Proto.GridFightForgeRoleActionInfo();
           }
           ForgeRoleActionInfo.MergeFrom(other.ForgeRoleActionInfo);
           break;
         case BGGBIMBKHEIOneofCase.KACDGAJHNBI:
           if (KACDGAJHNBI == null) {
-            KACDGAJHNBI = new global::CastoriceHoney.Server.Proto.NJJFPLFEEFC();
+            KACDGAJHNBI = new global::March7thHoney.Proto.NJJFPLFEEFC();
           }
           KACDGAJHNBI.MergeFrom(other.KACDGAJHNBI);
           break;
         case BGGBIMBKHEIOneofCase.APLEGHKNFOK:
           if (APLEGHKNFOK == null) {
-            APLEGHKNFOK = new global::CastoriceHoney.Server.Proto.HEPFIAFJAHL();
+            APLEGHKNFOK = new global::March7thHoney.Proto.HEPFIAFJAHL();
           }
           APLEGHKNFOK.MergeFrom(other.APLEGHKNFOK);
           break;
         case BGGBIMBKHEIOneofCase.PKCONHLNMIJ:
           if (PKCONHLNMIJ == null) {
-            PKCONHLNMIJ = new global::CastoriceHoney.Server.Proto.EEJAJMNKAMI();
+            PKCONHLNMIJ = new global::March7thHoney.Proto.EEJAJMNKAMI();
           }
           PKCONHLNMIJ.MergeFrom(other.PKCONHLNMIJ);
           break;
         case BGGBIMBKHEIOneofCase.TraitAction:
           if (TraitAction == null) {
-            TraitAction = new global::CastoriceHoney.Server.Proto.GridFightTraitActionInfo();
+            TraitAction = new global::March7thHoney.Proto.GridFightTraitActionInfo();
           }
           TraitAction.MergeFrom(other.TraitAction);
           break;
         case BGGBIMBKHEIOneofCase.PortalBuffAction:
           if (PortalBuffAction == null) {
-            PortalBuffAction = new global::CastoriceHoney.Server.Proto.GridFightPortalBuffActionInfo();
+            PortalBuffAction = new global::March7thHoney.Proto.GridFightPortalBuffActionInfo();
           }
           PortalBuffAction.MergeFrom(other.PortalBuffAction);
           break;
         case BGGBIMBKHEIOneofCase.EliteBranchAction:
           if (EliteBranchAction == null) {
-            EliteBranchAction = new global::CastoriceHoney.Server.Proto.GridFightEliteBranchActionInfo();
+            EliteBranchAction = new global::March7thHoney.Proto.GridFightEliteBranchActionInfo();
           }
           EliteBranchAction.MergeFrom(other.EliteBranchAction);
           break;
@@ -788,7 +788,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 170: {
-            global::CastoriceHoney.Server.Proto.GridFightSupplyActionInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightSupplyActionInfo();
+            global::March7thHoney.Proto.GridFightSupplyActionInfo subBuilder = new global::March7thHoney.Proto.GridFightSupplyActionInfo();
             if (bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.SupplyAction) {
               subBuilder.MergeFrom(SupplyAction);
             }
@@ -797,7 +797,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 306: {
-            global::CastoriceHoney.Server.Proto.GridFightReturnPreparationActionInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightReturnPreparationActionInfo();
+            global::March7thHoney.Proto.GridFightReturnPreparationActionInfo subBuilder = new global::March7thHoney.Proto.GridFightReturnPreparationActionInfo();
             if (bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.ReturnPreparationAction) {
               subBuilder.MergeFrom(ReturnPreparationAction);
             }
@@ -806,7 +806,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 1314: {
-            global::CastoriceHoney.Server.Proto.KIKMJKNHJGA subBuilder = new global::CastoriceHoney.Server.Proto.KIKMJKNHJGA();
+            global::March7thHoney.Proto.KIKMJKNHJGA subBuilder = new global::March7thHoney.Proto.KIKMJKNHJGA();
             if (bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.DJEJJKADBCI) {
               subBuilder.MergeFrom(DJEJJKADBCI);
             }
@@ -815,7 +815,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 2274: {
-            global::CastoriceHoney.Server.Proto.NHJCELBCFNF subBuilder = new global::CastoriceHoney.Server.Proto.NHJCELBCFNF();
+            global::March7thHoney.Proto.NHJCELBCFNF subBuilder = new global::March7thHoney.Proto.NHJCELBCFNF();
             if (bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.HPMNOGGMKKH) {
               subBuilder.MergeFrom(HPMNOGGMKKH);
             }
@@ -824,7 +824,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 3858: {
-            global::CastoriceHoney.Server.Proto.GridFightAugmentActionInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightAugmentActionInfo();
+            global::March7thHoney.Proto.GridFightAugmentActionInfo subBuilder = new global::March7thHoney.Proto.GridFightAugmentActionInfo();
             if (bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.AugmentAction) {
               subBuilder.MergeFrom(AugmentAction);
             }
@@ -833,7 +833,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 6978: {
-            global::CastoriceHoney.Server.Proto.GridFightRoundBeginActionInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightRoundBeginActionInfo();
+            global::March7thHoney.Proto.GridFightRoundBeginActionInfo subBuilder = new global::March7thHoney.Proto.GridFightRoundBeginActionInfo();
             if (bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.RoundBeginAction) {
               subBuilder.MergeFrom(RoundBeginAction);
             }
@@ -842,7 +842,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 7842: {
-            global::CastoriceHoney.Server.Proto.GridFightRecommendEquipmentActionInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightRecommendEquipmentActionInfo();
+            global::March7thHoney.Proto.GridFightRecommendEquipmentActionInfo subBuilder = new global::March7thHoney.Proto.GridFightRecommendEquipmentActionInfo();
             if (bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.RecommendEquipmentAction) {
               subBuilder.MergeFrom(RecommendEquipmentAction);
             }
@@ -851,7 +851,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 8506: {
-            global::CastoriceHoney.Server.Proto.GridFightUpgradeEquipActionInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightUpgradeEquipActionInfo();
+            global::March7thHoney.Proto.GridFightUpgradeEquipActionInfo subBuilder = new global::March7thHoney.Proto.GridFightUpgradeEquipActionInfo();
             if (bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.UpgradeEquipAction) {
               subBuilder.MergeFrom(UpgradeEquipAction);
             }
@@ -860,7 +860,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 9210: {
-            global::CastoriceHoney.Server.Proto.GridFightForgeRoleActionInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightForgeRoleActionInfo();
+            global::March7thHoney.Proto.GridFightForgeRoleActionInfo subBuilder = new global::March7thHoney.Proto.GridFightForgeRoleActionInfo();
             if (bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.ForgeRoleActionInfo) {
               subBuilder.MergeFrom(ForgeRoleActionInfo);
             }
@@ -869,7 +869,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 9690: {
-            global::CastoriceHoney.Server.Proto.NJJFPLFEEFC subBuilder = new global::CastoriceHoney.Server.Proto.NJJFPLFEEFC();
+            global::March7thHoney.Proto.NJJFPLFEEFC subBuilder = new global::March7thHoney.Proto.NJJFPLFEEFC();
             if (bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.KACDGAJHNBI) {
               subBuilder.MergeFrom(KACDGAJHNBI);
             }
@@ -878,7 +878,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 11570: {
-            global::CastoriceHoney.Server.Proto.HEPFIAFJAHL subBuilder = new global::CastoriceHoney.Server.Proto.HEPFIAFJAHL();
+            global::March7thHoney.Proto.HEPFIAFJAHL subBuilder = new global::March7thHoney.Proto.HEPFIAFJAHL();
             if (bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.APLEGHKNFOK) {
               subBuilder.MergeFrom(APLEGHKNFOK);
             }
@@ -887,7 +887,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 12322: {
-            global::CastoriceHoney.Server.Proto.EEJAJMNKAMI subBuilder = new global::CastoriceHoney.Server.Proto.EEJAJMNKAMI();
+            global::March7thHoney.Proto.EEJAJMNKAMI subBuilder = new global::March7thHoney.Proto.EEJAJMNKAMI();
             if (bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.PKCONHLNMIJ) {
               subBuilder.MergeFrom(PKCONHLNMIJ);
             }
@@ -896,7 +896,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 14402: {
-            global::CastoriceHoney.Server.Proto.GridFightTraitActionInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightTraitActionInfo();
+            global::March7thHoney.Proto.GridFightTraitActionInfo subBuilder = new global::March7thHoney.Proto.GridFightTraitActionInfo();
             if (bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.TraitAction) {
               subBuilder.MergeFrom(TraitAction);
             }
@@ -905,7 +905,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 14746: {
-            global::CastoriceHoney.Server.Proto.GridFightPortalBuffActionInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightPortalBuffActionInfo();
+            global::March7thHoney.Proto.GridFightPortalBuffActionInfo subBuilder = new global::March7thHoney.Proto.GridFightPortalBuffActionInfo();
             if (bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.PortalBuffAction) {
               subBuilder.MergeFrom(PortalBuffAction);
             }
@@ -914,7 +914,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 15146: {
-            global::CastoriceHoney.Server.Proto.GridFightEliteBranchActionInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightEliteBranchActionInfo();
+            global::March7thHoney.Proto.GridFightEliteBranchActionInfo subBuilder = new global::March7thHoney.Proto.GridFightEliteBranchActionInfo();
             if (bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.EliteBranchAction) {
               subBuilder.MergeFrom(EliteBranchAction);
             }
@@ -946,7 +946,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 170: {
-            global::CastoriceHoney.Server.Proto.GridFightSupplyActionInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightSupplyActionInfo();
+            global::March7thHoney.Proto.GridFightSupplyActionInfo subBuilder = new global::March7thHoney.Proto.GridFightSupplyActionInfo();
             if (bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.SupplyAction) {
               subBuilder.MergeFrom(SupplyAction);
             }
@@ -955,7 +955,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 306: {
-            global::CastoriceHoney.Server.Proto.GridFightReturnPreparationActionInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightReturnPreparationActionInfo();
+            global::March7thHoney.Proto.GridFightReturnPreparationActionInfo subBuilder = new global::March7thHoney.Proto.GridFightReturnPreparationActionInfo();
             if (bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.ReturnPreparationAction) {
               subBuilder.MergeFrom(ReturnPreparationAction);
             }
@@ -964,7 +964,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 1314: {
-            global::CastoriceHoney.Server.Proto.KIKMJKNHJGA subBuilder = new global::CastoriceHoney.Server.Proto.KIKMJKNHJGA();
+            global::March7thHoney.Proto.KIKMJKNHJGA subBuilder = new global::March7thHoney.Proto.KIKMJKNHJGA();
             if (bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.DJEJJKADBCI) {
               subBuilder.MergeFrom(DJEJJKADBCI);
             }
@@ -973,7 +973,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 2274: {
-            global::CastoriceHoney.Server.Proto.NHJCELBCFNF subBuilder = new global::CastoriceHoney.Server.Proto.NHJCELBCFNF();
+            global::March7thHoney.Proto.NHJCELBCFNF subBuilder = new global::March7thHoney.Proto.NHJCELBCFNF();
             if (bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.HPMNOGGMKKH) {
               subBuilder.MergeFrom(HPMNOGGMKKH);
             }
@@ -982,7 +982,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 3858: {
-            global::CastoriceHoney.Server.Proto.GridFightAugmentActionInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightAugmentActionInfo();
+            global::March7thHoney.Proto.GridFightAugmentActionInfo subBuilder = new global::March7thHoney.Proto.GridFightAugmentActionInfo();
             if (bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.AugmentAction) {
               subBuilder.MergeFrom(AugmentAction);
             }
@@ -991,7 +991,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 6978: {
-            global::CastoriceHoney.Server.Proto.GridFightRoundBeginActionInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightRoundBeginActionInfo();
+            global::March7thHoney.Proto.GridFightRoundBeginActionInfo subBuilder = new global::March7thHoney.Proto.GridFightRoundBeginActionInfo();
             if (bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.RoundBeginAction) {
               subBuilder.MergeFrom(RoundBeginAction);
             }
@@ -1000,7 +1000,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 7842: {
-            global::CastoriceHoney.Server.Proto.GridFightRecommendEquipmentActionInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightRecommendEquipmentActionInfo();
+            global::March7thHoney.Proto.GridFightRecommendEquipmentActionInfo subBuilder = new global::March7thHoney.Proto.GridFightRecommendEquipmentActionInfo();
             if (bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.RecommendEquipmentAction) {
               subBuilder.MergeFrom(RecommendEquipmentAction);
             }
@@ -1009,7 +1009,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 8506: {
-            global::CastoriceHoney.Server.Proto.GridFightUpgradeEquipActionInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightUpgradeEquipActionInfo();
+            global::March7thHoney.Proto.GridFightUpgradeEquipActionInfo subBuilder = new global::March7thHoney.Proto.GridFightUpgradeEquipActionInfo();
             if (bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.UpgradeEquipAction) {
               subBuilder.MergeFrom(UpgradeEquipAction);
             }
@@ -1018,7 +1018,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 9210: {
-            global::CastoriceHoney.Server.Proto.GridFightForgeRoleActionInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightForgeRoleActionInfo();
+            global::March7thHoney.Proto.GridFightForgeRoleActionInfo subBuilder = new global::March7thHoney.Proto.GridFightForgeRoleActionInfo();
             if (bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.ForgeRoleActionInfo) {
               subBuilder.MergeFrom(ForgeRoleActionInfo);
             }
@@ -1027,7 +1027,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 9690: {
-            global::CastoriceHoney.Server.Proto.NJJFPLFEEFC subBuilder = new global::CastoriceHoney.Server.Proto.NJJFPLFEEFC();
+            global::March7thHoney.Proto.NJJFPLFEEFC subBuilder = new global::March7thHoney.Proto.NJJFPLFEEFC();
             if (bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.KACDGAJHNBI) {
               subBuilder.MergeFrom(KACDGAJHNBI);
             }
@@ -1036,7 +1036,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 11570: {
-            global::CastoriceHoney.Server.Proto.HEPFIAFJAHL subBuilder = new global::CastoriceHoney.Server.Proto.HEPFIAFJAHL();
+            global::March7thHoney.Proto.HEPFIAFJAHL subBuilder = new global::March7thHoney.Proto.HEPFIAFJAHL();
             if (bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.APLEGHKNFOK) {
               subBuilder.MergeFrom(APLEGHKNFOK);
             }
@@ -1045,7 +1045,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 12322: {
-            global::CastoriceHoney.Server.Proto.EEJAJMNKAMI subBuilder = new global::CastoriceHoney.Server.Proto.EEJAJMNKAMI();
+            global::March7thHoney.Proto.EEJAJMNKAMI subBuilder = new global::March7thHoney.Proto.EEJAJMNKAMI();
             if (bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.PKCONHLNMIJ) {
               subBuilder.MergeFrom(PKCONHLNMIJ);
             }
@@ -1054,7 +1054,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 14402: {
-            global::CastoriceHoney.Server.Proto.GridFightTraitActionInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightTraitActionInfo();
+            global::March7thHoney.Proto.GridFightTraitActionInfo subBuilder = new global::March7thHoney.Proto.GridFightTraitActionInfo();
             if (bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.TraitAction) {
               subBuilder.MergeFrom(TraitAction);
             }
@@ -1063,7 +1063,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 14746: {
-            global::CastoriceHoney.Server.Proto.GridFightPortalBuffActionInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightPortalBuffActionInfo();
+            global::March7thHoney.Proto.GridFightPortalBuffActionInfo subBuilder = new global::March7thHoney.Proto.GridFightPortalBuffActionInfo();
             if (bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.PortalBuffAction) {
               subBuilder.MergeFrom(PortalBuffAction);
             }
@@ -1072,7 +1072,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 15146: {
-            global::CastoriceHoney.Server.Proto.GridFightEliteBranchActionInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightEliteBranchActionInfo();
+            global::March7thHoney.Proto.GridFightEliteBranchActionInfo subBuilder = new global::March7thHoney.Proto.GridFightEliteBranchActionInfo();
             if (bGGBIMBKHEICase_ == BGGBIMBKHEIOneofCase.EliteBranchAction) {
               subBuilder.MergeFrom(EliteBranchAction);
             }

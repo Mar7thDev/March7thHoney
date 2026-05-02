@@ -1,4 +1,4 @@
-﻿namespace CastoriceHoney.Server.WebServer.Response;
+namespace March7thHoney.WebServer.Response;
 
 public class BaseResponse<T>(int code, string message, T? data)
 {

@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Enums.RogueMagic;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Data;
+using March7thHoney.Enums.RogueMagic;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.GameServer.Game.RogueMagic.Scene;
+namespace March7thHoney.GameServer.Game.RogueMagic.Scene;
 
 public class RogueMagicLevelInstance
 {

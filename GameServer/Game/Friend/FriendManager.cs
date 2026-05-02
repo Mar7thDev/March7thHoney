@@ -1,16 +1,16 @@
-using CastoriceHoney.Server.Database;
-using CastoriceHoney.Server.Database.Friend;
-using CastoriceHoney.Server.Database.Player;
-using CastoriceHoney.Server.GameServer.Command;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.GameServer.Server;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Chat;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Friend;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Database;
+using March7thHoney.Database.Friend;
+using March7thHoney.Database.Player;
+using March7thHoney.GameServer.Command;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Server;
+using March7thHoney.GameServer.Server.Packet.Send.Chat;
+using March7thHoney.GameServer.Server.Packet.Send.Friend;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.GameServer.Game.Friend;
+namespace March7thHoney.GameServer.Game.Friend;
 
 public class FriendManager(PlayerInstance player) : BasePlayerManager(player)
 {

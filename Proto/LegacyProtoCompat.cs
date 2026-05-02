@@ -1,7 +1,7 @@
 using Google.Protobuf;
 using Google.Protobuf.Collections;
 
-namespace CastoriceHoney.Server.Proto;
+namespace March7thHoney.Proto;
 
 // Temporary compatibility models for symbols removed/renamed in newer proto sets.
 public class ChessRogueDice

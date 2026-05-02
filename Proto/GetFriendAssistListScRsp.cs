@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GetFriendAssistListScRsp.proto</summary>
   public static partial class GetFriendAssistListScRspReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "c3QYDCADKAsyES5QbGF5ZXJBc3Npc3RJbmZvQjMKE2VtdS5sdW5hcmNvcmUu",
             "cHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.PlayerAssistInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.PlayerAssistInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GetFriendAssistListScRsp), global::CastoriceHoney.Server.Proto.GetFriendAssistListScRsp.Parser, new[]{ "Retcode", "TargetSide", "AssistList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetFriendAssistListScRsp), global::March7thHoney.Proto.GetFriendAssistListScRsp.Parser, new[]{ "Retcode", "TargetSide", "AssistList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GetFriendAssistListScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GetFriendAssistListScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -112,12 +112,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "assist_list" field.</summary>
     public const int AssistListFieldNumber = 12;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.PlayerAssistInfo> _repeated_assistList_codec
-        = pb::FieldCodec.ForMessage(98, global::CastoriceHoney.Server.Proto.PlayerAssistInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.PlayerAssistInfo> assistList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.PlayerAssistInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.PlayerAssistInfo> _repeated_assistList_codec
+        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.PlayerAssistInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.PlayerAssistInfo> assistList_ = new pbc::RepeatedField<global::March7thHoney.Proto.PlayerAssistInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.PlayerAssistInfo> AssistList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.PlayerAssistInfo> AssistList {
       get { return assistList_; }
     }
 

@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.GameServer.Game.Scene;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.GameServer.Game.Scene;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Game.Battle;
+namespace March7thHoney.GameServer.Game.Battle;
 
 public class MazeBuff(int buffID, int buffLevel, int owner)
 {

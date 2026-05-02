@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from BAFDFBJHLGK.proto</summary>
   public static partial class BAFDFBJHLGKReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "ZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Q",
             "cm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.AetherAvatarInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.BattleBuffReflection.Descriptor, global::CastoriceHoney.Server.Proto.BattleMonsterWaveReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.AetherAvatarInfoReflection.Descriptor, global::March7thHoney.Proto.BattleBuffReflection.Descriptor, global::March7thHoney.Proto.BattleMonsterWaveReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.BAFDFBJHLGK), global::CastoriceHoney.Server.Proto.BAFDFBJHLGK.Parser, new[]{ "AvatarList", "MonsterWaveList", "BuffList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BAFDFBJHLGK), global::March7thHoney.Proto.BAFDFBJHLGK.Parser, new[]{ "AvatarList", "MonsterWaveList", "BuffList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.BAFDFBJHLGKReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.BAFDFBJHLGKReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -90,34 +90,34 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "avatar_list" field.</summary>
     public const int AvatarListFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.AetherAvatarInfo> _repeated_avatarList_codec
-        = pb::FieldCodec.ForMessage(10, global::CastoriceHoney.Server.Proto.AetherAvatarInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AetherAvatarInfo> avatarList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AetherAvatarInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AetherAvatarInfo> _repeated_avatarList_codec
+        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.AetherAvatarInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AetherAvatarInfo> avatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.AetherAvatarInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AetherAvatarInfo> AvatarList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.AetherAvatarInfo> AvatarList {
       get { return avatarList_; }
     }
 
     /// <summary>Field number for the "monster_wave_list" field.</summary>
     public const int MonsterWaveListFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.BattleMonsterWave> _repeated_monsterWaveList_codec
-        = pb::FieldCodec.ForMessage(18, global::CastoriceHoney.Server.Proto.BattleMonsterWave.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BattleMonsterWave> monsterWaveList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BattleMonsterWave>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BattleMonsterWave> _repeated_monsterWaveList_codec
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.BattleMonsterWave.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BattleMonsterWave> monsterWaveList_ = new pbc::RepeatedField<global::March7thHoney.Proto.BattleMonsterWave>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BattleMonsterWave> MonsterWaveList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.BattleMonsterWave> MonsterWaveList {
       get { return monsterWaveList_; }
     }
 
     /// <summary>Field number for the "buff_list" field.</summary>
     public const int BuffListFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.BattleBuff> _repeated_buffList_codec
-        = pb::FieldCodec.ForMessage(26, global::CastoriceHoney.Server.Proto.BattleBuff.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BattleBuff> buffList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BattleBuff>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BattleBuff> _repeated_buffList_codec
+        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.BattleBuff.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BattleBuff> buffList_ = new pbc::RepeatedField<global::March7thHoney.Proto.BattleBuff>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BattleBuff> BuffList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.BattleBuff> BuffList {
       get { return buffList_; }
     }
 

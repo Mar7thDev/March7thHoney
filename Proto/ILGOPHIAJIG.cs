@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from ILGOPHIAJIG.proto</summary>
   public static partial class ILGOPHIAJIGReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "BiABKA0SEwoLRkdFREtPSU5NQUcYByABKA1CMwoTZW11Lmx1bmFyY29yZS5w",
             "cm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GridFightGlobalHpChangeReasonReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridFightGlobalHpChangeReasonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ILGOPHIAJIG), global::CastoriceHoney.Server.Proto.ILGOPHIAJIG.Parser, new[]{ "Reason", "EHMKLNEKIOE", "FGEDKOINMAG" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ILGOPHIAJIG), global::March7thHoney.Proto.ILGOPHIAJIG.Parser, new[]{ "Reason", "EHMKLNEKIOE", "FGEDKOINMAG" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ILGOPHIAJIGReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ILGOPHIAJIGReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -88,10 +88,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "reason" field.</summary>
     public const int ReasonFieldNumber = 3;
-    private global::CastoriceHoney.Server.Proto.GridFightGlobalHpChangeReason reason_ = global::CastoriceHoney.Server.Proto.GridFightGlobalHpChangeReason.FoohmnafkbnEigonmaefpj;
+    private global::March7thHoney.Proto.GridFightGlobalHpChangeReason reason_ = global::March7thHoney.Proto.GridFightGlobalHpChangeReason.FoohmnafkbnEigonmaefpj;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightGlobalHpChangeReason Reason {
+    public global::March7thHoney.Proto.GridFightGlobalHpChangeReason Reason {
       get { return reason_; }
       set {
         reason_ = value;
@@ -147,7 +147,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Reason != global::CastoriceHoney.Server.Proto.GridFightGlobalHpChangeReason.FoohmnafkbnEigonmaefpj) hash ^= Reason.GetHashCode();
+      if (Reason != global::March7thHoney.Proto.GridFightGlobalHpChangeReason.FoohmnafkbnEigonmaefpj) hash ^= Reason.GetHashCode();
       if (EHMKLNEKIOE != 0) hash ^= EHMKLNEKIOE.GetHashCode();
       if (FGEDKOINMAG != 0) hash ^= FGEDKOINMAG.GetHashCode();
       if (_unknownFields != null) {
@@ -168,7 +168,7 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Reason != global::CastoriceHoney.Server.Proto.GridFightGlobalHpChangeReason.FoohmnafkbnEigonmaefpj) {
+      if (Reason != global::March7thHoney.Proto.GridFightGlobalHpChangeReason.FoohmnafkbnEigonmaefpj) {
         output.WriteRawTag(24);
         output.WriteEnum((int) Reason);
       }
@@ -190,7 +190,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Reason != global::CastoriceHoney.Server.Proto.GridFightGlobalHpChangeReason.FoohmnafkbnEigonmaefpj) {
+      if (Reason != global::March7thHoney.Proto.GridFightGlobalHpChangeReason.FoohmnafkbnEigonmaefpj) {
         output.WriteRawTag(24);
         output.WriteEnum((int) Reason);
       }
@@ -212,7 +212,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Reason != global::CastoriceHoney.Server.Proto.GridFightGlobalHpChangeReason.FoohmnafkbnEigonmaefpj) {
+      if (Reason != global::March7thHoney.Proto.GridFightGlobalHpChangeReason.FoohmnafkbnEigonmaefpj) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Reason);
       }
       if (EHMKLNEKIOE != 0) {
@@ -233,7 +233,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.Reason != global::CastoriceHoney.Server.Proto.GridFightGlobalHpChangeReason.FoohmnafkbnEigonmaefpj) {
+      if (other.Reason != global::March7thHoney.Proto.GridFightGlobalHpChangeReason.FoohmnafkbnEigonmaefpj) {
         Reason = other.Reason;
       }
       if (other.EHMKLNEKIOE != 0) {
@@ -262,7 +262,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 24: {
-            Reason = (global::CastoriceHoney.Server.Proto.GridFightGlobalHpChangeReason) input.ReadEnum();
+            Reason = (global::March7thHoney.Proto.GridFightGlobalHpChangeReason) input.ReadEnum();
             break;
           }
           case 48: {
@@ -293,7 +293,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 24: {
-            Reason = (global::CastoriceHoney.Server.Proto.GridFightGlobalHpChangeReason) input.ReadEnum();
+            Reason = (global::March7thHoney.Proto.GridFightGlobalHpChangeReason) input.ReadEnum();
             break;
           }
           case 48: {

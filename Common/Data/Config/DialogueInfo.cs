@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace CastoriceHoney.Server.Data.Config;
+namespace March7thHoney.Data.Config;
 
 public class DialogueInfo
 {

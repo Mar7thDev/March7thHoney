@@ -1,12 +1,12 @@
-using CastoriceHoney.Server.Configuration;
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Internationalization;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
-using CastoriceHoney.Server.WebServer.Request;
+using March7thHoney.Configuration;
+using March7thHoney.Data;
+using March7thHoney.Internationalization;
+using March7thHoney.Proto;
+using March7thHoney.Util;
+using March7thHoney.WebServer.Request;
 using Google.Protobuf;
 
-namespace CastoriceHoney.Server.WebServer.Handler;
+namespace March7thHoney.WebServer.Handler;
 
 internal class QueryGatewayHandler
 {

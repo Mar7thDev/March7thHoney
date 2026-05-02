@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Kcp.KcpSharp;
+namespace March7thHoney.Kcp.KcpSharp;
 
 /// <summary>
 ///     Options used to control the behaviors of <see cref="KcpRawChannelOptions" />.

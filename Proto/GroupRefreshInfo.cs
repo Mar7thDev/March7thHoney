@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GroupRefreshInfo.proto</summary>
   public static partial class GroupRefreshInfoReflection {
@@ -35,9 +35,9 @@ namespace CastoriceHoney.Server.Proto {
             "dW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9i",
             "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.NNHGOBLNCIEReflection.Descriptor, global::CastoriceHoney.Server.Proto.SceneEntityGroupInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.SceneEntityRefreshInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.SceneGroupRefreshTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.NNHGOBLNCIEReflection.Descriptor, global::March7thHoney.Proto.SceneEntityGroupInfoReflection.Descriptor, global::March7thHoney.Proto.SceneEntityRefreshInfoReflection.Descriptor, global::March7thHoney.Proto.SceneGroupRefreshTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GroupRefreshInfo), global::CastoriceHoney.Server.Proto.GroupRefreshInfo.Parser, new[]{ "Unk1", "RefreshType", "GroupId", "DCLAKCFJCPJ", "RefreshEntity", "State" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GroupRefreshInfo), global::March7thHoney.Proto.GroupRefreshInfo.Parser, new[]{ "Unk1", "RefreshType", "GroupId", "DCLAKCFJCPJ", "RefreshEntity", "State" }, null, null, null, null)
           }));
     }
     #endregion
@@ -59,7 +59,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GroupRefreshInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GroupRefreshInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -96,10 +96,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "unk1" field.</summary>
     public const int Unk1FieldNumber = 1;
-    private global::CastoriceHoney.Server.Proto.SceneEntityGroupInfo unk1_;
+    private global::March7thHoney.Proto.SceneEntityGroupInfo unk1_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.SceneEntityGroupInfo Unk1 {
+    public global::March7thHoney.Proto.SceneEntityGroupInfo Unk1 {
       get { return unk1_; }
       set {
         unk1_ = value;
@@ -108,10 +108,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "refresh_type" field.</summary>
     public const int RefreshTypeFieldNumber = 8;
-    private global::CastoriceHoney.Server.Proto.SceneGroupRefreshType refreshType_ = global::CastoriceHoney.Server.Proto.SceneGroupRefreshType.None;
+    private global::March7thHoney.Proto.SceneGroupRefreshType refreshType_ = global::March7thHoney.Proto.SceneGroupRefreshType.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.SceneGroupRefreshType RefreshType {
+    public global::March7thHoney.Proto.SceneGroupRefreshType RefreshType {
       get { return refreshType_; }
       set {
         refreshType_ = value;
@@ -132,23 +132,23 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "DCLAKCFJCPJ" field.</summary>
     public const int DCLAKCFJCPJFieldNumber = 11;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.NNHGOBLNCIE> _repeated_dCLAKCFJCPJ_codec
-        = pb::FieldCodec.ForMessage(90, global::CastoriceHoney.Server.Proto.NNHGOBLNCIE.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.NNHGOBLNCIE> dCLAKCFJCPJ_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.NNHGOBLNCIE>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.NNHGOBLNCIE> _repeated_dCLAKCFJCPJ_codec
+        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.NNHGOBLNCIE.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.NNHGOBLNCIE> dCLAKCFJCPJ_ = new pbc::RepeatedField<global::March7thHoney.Proto.NNHGOBLNCIE>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.NNHGOBLNCIE> DCLAKCFJCPJ {
+    public pbc::RepeatedField<global::March7thHoney.Proto.NNHGOBLNCIE> DCLAKCFJCPJ {
       get { return dCLAKCFJCPJ_; }
     }
 
     /// <summary>Field number for the "refresh_entity" field.</summary>
     public const int RefreshEntityFieldNumber = 12;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.SceneEntityRefreshInfo> _repeated_refreshEntity_codec
-        = pb::FieldCodec.ForMessage(98, global::CastoriceHoney.Server.Proto.SceneEntityRefreshInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.SceneEntityRefreshInfo> refreshEntity_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.SceneEntityRefreshInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.SceneEntityRefreshInfo> _repeated_refreshEntity_codec
+        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.SceneEntityRefreshInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.SceneEntityRefreshInfo> refreshEntity_ = new pbc::RepeatedField<global::March7thHoney.Proto.SceneEntityRefreshInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.SceneEntityRefreshInfo> RefreshEntity {
+    public pbc::RepeatedField<global::March7thHoney.Proto.SceneEntityRefreshInfo> RefreshEntity {
       get { return refreshEntity_; }
     }
 
@@ -193,7 +193,7 @@ namespace CastoriceHoney.Server.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (unk1_ != null) hash ^= Unk1.GetHashCode();
-      if (RefreshType != global::CastoriceHoney.Server.Proto.SceneGroupRefreshType.None) hash ^= RefreshType.GetHashCode();
+      if (RefreshType != global::March7thHoney.Proto.SceneGroupRefreshType.None) hash ^= RefreshType.GetHashCode();
       if (GroupId != 0) hash ^= GroupId.GetHashCode();
       hash ^= dCLAKCFJCPJ_.GetHashCode();
       hash ^= refreshEntity_.GetHashCode();
@@ -220,7 +220,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(10);
         output.WriteMessage(Unk1);
       }
-      if (RefreshType != global::CastoriceHoney.Server.Proto.SceneGroupRefreshType.None) {
+      if (RefreshType != global::March7thHoney.Proto.SceneGroupRefreshType.None) {
         output.WriteRawTag(64);
         output.WriteEnum((int) RefreshType);
       }
@@ -248,7 +248,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(10);
         output.WriteMessage(Unk1);
       }
-      if (RefreshType != global::CastoriceHoney.Server.Proto.SceneGroupRefreshType.None) {
+      if (RefreshType != global::March7thHoney.Proto.SceneGroupRefreshType.None) {
         output.WriteRawTag(64);
         output.WriteEnum((int) RefreshType);
       }
@@ -275,7 +275,7 @@ namespace CastoriceHoney.Server.Proto {
       if (unk1_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Unk1);
       }
-      if (RefreshType != global::CastoriceHoney.Server.Proto.SceneGroupRefreshType.None) {
+      if (RefreshType != global::March7thHoney.Proto.SceneGroupRefreshType.None) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) RefreshType);
       }
       if (GroupId != 0) {
@@ -300,11 +300,11 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.unk1_ != null) {
         if (unk1_ == null) {
-          Unk1 = new global::CastoriceHoney.Server.Proto.SceneEntityGroupInfo();
+          Unk1 = new global::March7thHoney.Proto.SceneEntityGroupInfo();
         }
         Unk1.MergeFrom(other.Unk1);
       }
-      if (other.RefreshType != global::CastoriceHoney.Server.Proto.SceneGroupRefreshType.None) {
+      if (other.RefreshType != global::March7thHoney.Proto.SceneGroupRefreshType.None) {
         RefreshType = other.RefreshType;
       }
       if (other.GroupId != 0) {
@@ -336,13 +336,13 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 10: {
             if (unk1_ == null) {
-              Unk1 = new global::CastoriceHoney.Server.Proto.SceneEntityGroupInfo();
+              Unk1 = new global::March7thHoney.Proto.SceneEntityGroupInfo();
             }
             input.ReadMessage(Unk1);
             break;
           }
           case 64: {
-            RefreshType = (global::CastoriceHoney.Server.Proto.SceneGroupRefreshType) input.ReadEnum();
+            RefreshType = (global::March7thHoney.Proto.SceneGroupRefreshType) input.ReadEnum();
             break;
           }
           case 72: {
@@ -382,13 +382,13 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 10: {
             if (unk1_ == null) {
-              Unk1 = new global::CastoriceHoney.Server.Proto.SceneEntityGroupInfo();
+              Unk1 = new global::March7thHoney.Proto.SceneEntityGroupInfo();
             }
             input.ReadMessage(Unk1);
             break;
           }
           case 64: {
-            RefreshType = (global::CastoriceHoney.Server.Proto.SceneGroupRefreshType) input.ReadEnum();
+            RefreshType = (global::March7thHoney.Proto.SceneGroupRefreshType) input.ReadEnum();
             break;
           }
           case 72: {

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from CurTrialActivityScNotify.proto</summary>
   public static partial class CurTrialActivityScNotifyReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "dHlfc3RhZ2VfaWQYBSABKA1CMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nh",
             "c3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.TrialActivityStatusReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.TrialActivityStatusReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.CurTrialActivityScNotify), global::CastoriceHoney.Server.Proto.CurTrialActivityScNotify.Parser, new[]{ "Status", "ActivityStageId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.CurTrialActivityScNotify), global::March7thHoney.Proto.CurTrialActivityScNotify.Parser, new[]{ "Status", "ActivityStageId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.CurTrialActivityScNotifyReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.CurTrialActivityScNotifyReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -87,10 +87,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "status" field.</summary>
     public const int StatusFieldNumber = 4;
-    private global::CastoriceHoney.Server.Proto.TrialActivityStatus status_ = global::CastoriceHoney.Server.Proto.TrialActivityStatus.None;
+    private global::March7thHoney.Proto.TrialActivityStatus status_ = global::March7thHoney.Proto.TrialActivityStatus.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.TrialActivityStatus Status {
+    public global::March7thHoney.Proto.TrialActivityStatus Status {
       get { return status_; }
       set {
         status_ = value;
@@ -133,7 +133,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Status != global::CastoriceHoney.Server.Proto.TrialActivityStatus.None) hash ^= Status.GetHashCode();
+      if (Status != global::March7thHoney.Proto.TrialActivityStatus.None) hash ^= Status.GetHashCode();
       if (ActivityStageId != 0) hash ^= ActivityStageId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -153,7 +153,7 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Status != global::CastoriceHoney.Server.Proto.TrialActivityStatus.None) {
+      if (Status != global::March7thHoney.Proto.TrialActivityStatus.None) {
         output.WriteRawTag(32);
         output.WriteEnum((int) Status);
       }
@@ -171,7 +171,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Status != global::CastoriceHoney.Server.Proto.TrialActivityStatus.None) {
+      if (Status != global::March7thHoney.Proto.TrialActivityStatus.None) {
         output.WriteRawTag(32);
         output.WriteEnum((int) Status);
       }
@@ -189,7 +189,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Status != global::CastoriceHoney.Server.Proto.TrialActivityStatus.None) {
+      if (Status != global::March7thHoney.Proto.TrialActivityStatus.None) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Status);
       }
       if (ActivityStageId != 0) {
@@ -207,7 +207,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.Status != global::CastoriceHoney.Server.Proto.TrialActivityStatus.None) {
+      if (other.Status != global::March7thHoney.Proto.TrialActivityStatus.None) {
         Status = other.Status;
       }
       if (other.ActivityStageId != 0) {
@@ -233,7 +233,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 32: {
-            Status = (global::CastoriceHoney.Server.Proto.TrialActivityStatus) input.ReadEnum();
+            Status = (global::March7thHoney.Proto.TrialActivityStatus) input.ReadEnum();
             break;
           }
           case 40: {
@@ -260,7 +260,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 32: {
-            Status = (global::CastoriceHoney.Server.Proto.TrialActivityStatus) input.ReadEnum();
+            Status = (global::March7thHoney.Proto.TrialActivityStatus) input.ReadEnum();
             break;
           }
           case 40: {

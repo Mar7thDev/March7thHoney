@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GridFightAugmentActionInfo.proto</summary>
   public static partial class GridFightAugmentActionInfoReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "HC5HcmlkRmlnaHRQZW5kaW5nQXVnbWVudEluZm9CMwoTZW11Lmx1bmFyY29y",
             "ZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GridFightPendingAugmentInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridFightPendingAugmentInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GridFightAugmentActionInfo), global::CastoriceHoney.Server.Proto.GridFightAugmentActionInfo.Parser, new[]{ "PendingAugmentInfoList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightAugmentActionInfo), global::March7thHoney.Proto.GridFightAugmentActionInfo.Parser, new[]{ "PendingAugmentInfoList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GridFightAugmentActionInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GridFightAugmentActionInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -86,12 +86,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "pending_augment_info_list" field.</summary>
     public const int PendingAugmentInfoListFieldNumber = 9;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.GridFightPendingAugmentInfo> _repeated_pendingAugmentInfoList_codec
-        = pb::FieldCodec.ForMessage(74, global::CastoriceHoney.Server.Proto.GridFightPendingAugmentInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridFightPendingAugmentInfo> pendingAugmentInfoList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridFightPendingAugmentInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GridFightPendingAugmentInfo> _repeated_pendingAugmentInfoList_codec
+        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.GridFightPendingAugmentInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GridFightPendingAugmentInfo> pendingAugmentInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GridFightPendingAugmentInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridFightPendingAugmentInfo> PendingAugmentInfoList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.GridFightPendingAugmentInfo> PendingAugmentInfoList {
       get { return pendingAugmentInfoList_; }
     }
 

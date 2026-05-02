@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from MainMissionSnapshot.proto</summary>
   public static partial class MainMissionSnapshotReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "c3Npb25TbmFwc2hvdEIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9y",
             "aWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.SubMissionSnapshotReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.SubMissionSnapshotReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.MainMissionSnapshot), global::CastoriceHoney.Server.Proto.MainMissionSnapshot.Parser, new[]{ "MainMissionId", "SubMissionList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MainMissionSnapshot), global::March7thHoney.Proto.MainMissionSnapshot.Parser, new[]{ "MainMissionId", "SubMissionList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.MainMissionSnapshotReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.MainMissionSnapshotReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -99,12 +99,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "sub_mission_list" field.</summary>
     public const int SubMissionListFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.SubMissionSnapshot> _repeated_subMissionList_codec
-        = pb::FieldCodec.ForMessage(18, global::CastoriceHoney.Server.Proto.SubMissionSnapshot.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.SubMissionSnapshot> subMissionList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.SubMissionSnapshot>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.SubMissionSnapshot> _repeated_subMissionList_codec
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.SubMissionSnapshot.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.SubMissionSnapshot> subMissionList_ = new pbc::RepeatedField<global::March7thHoney.Proto.SubMissionSnapshot>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.SubMissionSnapshot> SubMissionList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.SubMissionSnapshot> SubMissionList {
       get { return subMissionList_; }
     }
 

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GetAvatarDataScRsp.proto</summary>
   public static partial class GetAvatarDataScRspReflection {
@@ -37,9 +37,9 @@ namespace CastoriceHoney.Server.Proto {
             "chITCgtNTU9QQ0tMUEhJTxgPIAEoDUIzChNlbXUubHVuYXJjb3JlLnByb3Rv",
             "qgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.AvatarReflection.Descriptor, global::CastoriceHoney.Server.Proto.AvatarPathDataReflection.Descriptor, global::CastoriceHoney.Server.Proto.GKDEKJKOIJNReflection.Descriptor, global::CastoriceHoney.Server.Proto.GrowthTartgetFuncTypeReflection.Descriptor, global::CastoriceHoney.Server.Proto.PlayerOutfitInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.AvatarReflection.Descriptor, global::March7thHoney.Proto.AvatarPathDataReflection.Descriptor, global::March7thHoney.Proto.GKDEKJKOIJNReflection.Descriptor, global::March7thHoney.Proto.GrowthTartgetFuncTypeReflection.Descriptor, global::March7thHoney.Proto.PlayerOutfitInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GetAvatarDataScRsp), global::CastoriceHoney.Server.Proto.GetAvatarDataScRsp.Parser, new[]{ "PlayerOutfitData", "MMEKFJDMILJ", "CurAvatarPath", "SkinList", "IsGetAll", "Retcode", "BasicTypeIdList", "AvatarPathDataInfoList", "AvatarList", "MMOPCKLPHIO" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetAvatarDataScRsp), global::March7thHoney.Proto.GetAvatarDataScRsp.Parser, new[]{ "PlayerOutfitData", "MMEKFJDMILJ", "CurAvatarPath", "SkinList", "IsGetAll", "Retcode", "BasicTypeIdList", "AvatarPathDataInfoList", "AvatarList", "MMOPCKLPHIO" }, null, null, null, null)
           }));
     }
     #endregion
@@ -61,7 +61,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GetAvatarDataScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GetAvatarDataScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -102,10 +102,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "PlayerOutfitData" field.</summary>
     public const int PlayerOutfitDataFieldNumber = 1;
-    private global::CastoriceHoney.Server.Proto.PlayerOutfitInfo playerOutfitData_;
+    private global::March7thHoney.Proto.PlayerOutfitInfo playerOutfitData_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.PlayerOutfitInfo PlayerOutfitData {
+    public global::March7thHoney.Proto.PlayerOutfitInfo PlayerOutfitData {
       get { return playerOutfitData_; }
       set {
         playerOutfitData_ = value;
@@ -114,23 +114,23 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "MMEKFJDMILJ" field.</summary>
     public const int MMEKFJDMILJFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.GKDEKJKOIJN> _repeated_mMEKFJDMILJ_codec
-        = pb::FieldCodec.ForMessage(26, global::CastoriceHoney.Server.Proto.GKDEKJKOIJN.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GKDEKJKOIJN> mMEKFJDMILJ_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GKDEKJKOIJN>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GKDEKJKOIJN> _repeated_mMEKFJDMILJ_codec
+        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.GKDEKJKOIJN.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GKDEKJKOIJN> mMEKFJDMILJ_ = new pbc::RepeatedField<global::March7thHoney.Proto.GKDEKJKOIJN>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GKDEKJKOIJN> MMEKFJDMILJ {
+    public pbc::RepeatedField<global::March7thHoney.Proto.GKDEKJKOIJN> MMEKFJDMILJ {
       get { return mMEKFJDMILJ_; }
     }
 
     /// <summary>Field number for the "CurAvatarPath" field.</summary>
     public const int CurAvatarPathFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.GrowthTartgetFuncType> _repeated_curAvatarPath_codec
-        = pb::FieldCodec.ForEnum(34, x => (int) x, x => (global::CastoriceHoney.Server.Proto.GrowthTartgetFuncType) x);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GrowthTartgetFuncType> curAvatarPath_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GrowthTartgetFuncType>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GrowthTartgetFuncType> _repeated_curAvatarPath_codec
+        = pb::FieldCodec.ForEnum(34, x => (int) x, x => (global::March7thHoney.Proto.GrowthTartgetFuncType) x);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GrowthTartgetFuncType> curAvatarPath_ = new pbc::RepeatedField<global::March7thHoney.Proto.GrowthTartgetFuncType>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GrowthTartgetFuncType> CurAvatarPath {
+    public pbc::RepeatedField<global::March7thHoney.Proto.GrowthTartgetFuncType> CurAvatarPath {
       get { return curAvatarPath_; }
     }
 
@@ -182,23 +182,23 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "avatar_path_data_info_list" field.</summary>
     public const int AvatarPathDataInfoListFieldNumber = 12;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.AvatarPathData> _repeated_avatarPathDataInfoList_codec
-        = pb::FieldCodec.ForMessage(98, global::CastoriceHoney.Server.Proto.AvatarPathData.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AvatarPathData> avatarPathDataInfoList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AvatarPathData>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AvatarPathData> _repeated_avatarPathDataInfoList_codec
+        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.AvatarPathData.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AvatarPathData> avatarPathDataInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.AvatarPathData>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AvatarPathData> AvatarPathDataInfoList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.AvatarPathData> AvatarPathDataInfoList {
       get { return avatarPathDataInfoList_; }
     }
 
     /// <summary>Field number for the "avatar_list" field.</summary>
     public const int AvatarListFieldNumber = 14;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.Avatar> _repeated_avatarList_codec
-        = pb::FieldCodec.ForMessage(114, global::CastoriceHoney.Server.Proto.Avatar.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.Avatar> avatarList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.Avatar>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.Avatar> _repeated_avatarList_codec
+        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.Avatar.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.Avatar> avatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.Avatar>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.Avatar> AvatarList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.Avatar> AvatarList {
       get { return avatarList_; }
     }
 
@@ -370,7 +370,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.playerOutfitData_ != null) {
         if (playerOutfitData_ == null) {
-          PlayerOutfitData = new global::CastoriceHoney.Server.Proto.PlayerOutfitInfo();
+          PlayerOutfitData = new global::March7thHoney.Proto.PlayerOutfitInfo();
         }
         PlayerOutfitData.MergeFrom(other.PlayerOutfitData);
       }
@@ -410,7 +410,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 10: {
             if (playerOutfitData_ == null) {
-              PlayerOutfitData = new global::CastoriceHoney.Server.Proto.PlayerOutfitInfo();
+              PlayerOutfitData = new global::March7thHoney.Proto.PlayerOutfitInfo();
             }
             input.ReadMessage(PlayerOutfitData);
             break;
@@ -475,7 +475,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 10: {
             if (playerOutfitData_ == null) {
-              PlayerOutfitData = new global::CastoriceHoney.Server.Proto.PlayerOutfitInfo();
+              PlayerOutfitData = new global::March7thHoney.Proto.PlayerOutfitInfo();
             }
             input.ReadMessage(PlayerOutfitData);
             break;

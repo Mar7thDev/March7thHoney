@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.GameServer.Game.Challenge.Instances;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.GameServer.Game.Challenge.Instances;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Send.Challenge;
+namespace March7thHoney.GameServer.Server.Packet.Send.Challenge;
 
 public class PacketChallengeBossPhaseSettleNotify : BasePacket
 {

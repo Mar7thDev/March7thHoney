@@ -1,12 +1,12 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Data.Custom;
-using CastoriceHoney.Server.Enums.Rogue;
-using CastoriceHoney.Server.Enums.TournRogue;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Data;
+using March7thHoney.Data.Custom;
+using March7thHoney.Enums.Rogue;
+using March7thHoney.Enums.TournRogue;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 using System;
 
-namespace CastoriceHoney.Server.GameServer.Game.RogueTourn.Scene;
+namespace March7thHoney.GameServer.Game.RogueTourn.Scene;
 
 public class RogueTournRoomInstance(int roomIndex, RogueTournLevelInstance levelInstance)
 {

@@ -1,7 +1,7 @@
 using System.Globalization;
-using CastoriceHoney.Server.Enums.Task;
+using March7thHoney.Enums.Task;
 
-namespace CastoriceHoney.Server.Util;
+namespace March7thHoney.Util;
 
 public static class UtilTools
 {

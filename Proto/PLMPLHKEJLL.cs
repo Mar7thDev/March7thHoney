@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from PLMPLHKEJLL.proto</summary>
   public static partial class PLMPLHKEJLLReflection {
@@ -34,9 +34,9 @@ namespace CastoriceHoney.Server.Proto {
             "GAsgAygNEhMKC0hLQkRKSExNSUJGGA8gASgNQjMKE2VtdS5sdW5hcmNvcmUu",
             "cHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.CPPAAIIHAGIReflection.Descriptor, global::CastoriceHoney.Server.Proto.ChessRogueBoardCellStatusReflection.Descriptor, global::CastoriceHoney.Server.Proto.OAKIPKACMJFReflection.Descriptor, global::CastoriceHoney.Server.Proto.OLDMMODMOEIReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.CPPAAIIHAGIReflection.Descriptor, global::March7thHoney.Proto.ChessRogueBoardCellStatusReflection.Descriptor, global::March7thHoney.Proto.OAKIPKACMJFReflection.Descriptor, global::March7thHoney.Proto.OLDMMODMOEIReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.PLMPLHKEJLL), global::CastoriceHoney.Server.Proto.PLMPLHKEJLL.Parser, new[]{ "BMKPIIGHODH", "IBOKGBFBKKD", "OMCINMJNPIF", "NBEEBMJFOEA", "CHHAMIKKKCI", "PNEMJFMGKJJ", "HKBDJHLMIBF" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PLMPLHKEJLL), global::March7thHoney.Proto.PLMPLHKEJLL.Parser, new[]{ "BMKPIIGHODH", "IBOKGBFBKKD", "OMCINMJNPIF", "NBEEBMJFOEA", "CHHAMIKKKCI", "PNEMJFMGKJJ", "HKBDJHLMIBF" }, null, null, null, null)
           }));
     }
     #endregion
@@ -58,7 +58,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.PLMPLHKEJLLReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.PLMPLHKEJLLReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -96,10 +96,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "BMKPIIGHODH" field.</summary>
     public const int BMKPIIGHODHFieldNumber = 2;
-    private global::CastoriceHoney.Server.Proto.OLDMMODMOEI bMKPIIGHODH_;
+    private global::March7thHoney.Proto.OLDMMODMOEI bMKPIIGHODH_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.OLDMMODMOEI BMKPIIGHODH {
+    public global::March7thHoney.Proto.OLDMMODMOEI BMKPIIGHODH {
       get { return bMKPIIGHODH_; }
       set {
         bMKPIIGHODH_ = value;
@@ -108,21 +108,21 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "IBOKGBFBKKD" field.</summary>
     public const int IBOKGBFBKKDFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.OAKIPKACMJF> _repeated_iBOKGBFBKKD_codec
-        = pb::FieldCodec.ForMessage(26, global::CastoriceHoney.Server.Proto.OAKIPKACMJF.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.OAKIPKACMJF> iBOKGBFBKKD_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.OAKIPKACMJF>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.OAKIPKACMJF> _repeated_iBOKGBFBKKD_codec
+        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.OAKIPKACMJF.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.OAKIPKACMJF> iBOKGBFBKKD_ = new pbc::RepeatedField<global::March7thHoney.Proto.OAKIPKACMJF>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.OAKIPKACMJF> IBOKGBFBKKD {
+    public pbc::RepeatedField<global::March7thHoney.Proto.OAKIPKACMJF> IBOKGBFBKKD {
       get { return iBOKGBFBKKD_; }
     }
 
     /// <summary>Field number for the "OMCINMJNPIF" field.</summary>
     public const int OMCINMJNPIFFieldNumber = 4;
-    private global::CastoriceHoney.Server.Proto.CPPAAIIHAGI oMCINMJNPIF_;
+    private global::March7thHoney.Proto.CPPAAIIHAGI oMCINMJNPIF_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.CPPAAIIHAGI OMCINMJNPIF {
+    public global::March7thHoney.Proto.CPPAAIIHAGI OMCINMJNPIF {
       get { return oMCINMJNPIF_; }
       set {
         oMCINMJNPIF_ = value;
@@ -143,10 +143,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "CHHAMIKKKCI" field.</summary>
     public const int CHHAMIKKKCIFieldNumber = 9;
-    private global::CastoriceHoney.Server.Proto.ChessRogueBoardCellStatus cHHAMIKKKCI_ = global::CastoriceHoney.Server.Proto.ChessRogueBoardCellStatus.GbikcjpglbkGhgapoakgab;
+    private global::March7thHoney.Proto.ChessRogueBoardCellStatus cHHAMIKKKCI_ = global::March7thHoney.Proto.ChessRogueBoardCellStatus.GbikcjpglbkGhgapoakgab;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ChessRogueBoardCellStatus CHHAMIKKKCI {
+    public global::March7thHoney.Proto.ChessRogueBoardCellStatus CHHAMIKKKCI {
       get { return cHHAMIKKKCI_; }
       set {
         cHHAMIKKKCI_ = value;
@@ -209,7 +209,7 @@ namespace CastoriceHoney.Server.Proto {
       hash ^= iBOKGBFBKKD_.GetHashCode();
       if (oMCINMJNPIF_ != null) hash ^= OMCINMJNPIF.GetHashCode();
       if (NBEEBMJFOEA != 0) hash ^= NBEEBMJFOEA.GetHashCode();
-      if (CHHAMIKKKCI != global::CastoriceHoney.Server.Proto.ChessRogueBoardCellStatus.GbikcjpglbkGhgapoakgab) hash ^= CHHAMIKKKCI.GetHashCode();
+      if (CHHAMIKKKCI != global::March7thHoney.Proto.ChessRogueBoardCellStatus.GbikcjpglbkGhgapoakgab) hash ^= CHHAMIKKKCI.GetHashCode();
       hash ^= pNEMJFMGKJJ_.GetHashCode();
       if (HKBDJHLMIBF != 0) hash ^= HKBDJHLMIBF.GetHashCode();
       if (_unknownFields != null) {
@@ -243,7 +243,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(48);
         output.WriteUInt32(NBEEBMJFOEA);
       }
-      if (CHHAMIKKKCI != global::CastoriceHoney.Server.Proto.ChessRogueBoardCellStatus.GbikcjpglbkGhgapoakgab) {
+      if (CHHAMIKKKCI != global::March7thHoney.Proto.ChessRogueBoardCellStatus.GbikcjpglbkGhgapoakgab) {
         output.WriteRawTag(72);
         output.WriteEnum((int) CHHAMIKKKCI);
       }
@@ -275,7 +275,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(48);
         output.WriteUInt32(NBEEBMJFOEA);
       }
-      if (CHHAMIKKKCI != global::CastoriceHoney.Server.Proto.ChessRogueBoardCellStatus.GbikcjpglbkGhgapoakgab) {
+      if (CHHAMIKKKCI != global::March7thHoney.Proto.ChessRogueBoardCellStatus.GbikcjpglbkGhgapoakgab) {
         output.WriteRawTag(72);
         output.WriteEnum((int) CHHAMIKKKCI);
       }
@@ -304,7 +304,7 @@ namespace CastoriceHoney.Server.Proto {
       if (NBEEBMJFOEA != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(NBEEBMJFOEA);
       }
-      if (CHHAMIKKKCI != global::CastoriceHoney.Server.Proto.ChessRogueBoardCellStatus.GbikcjpglbkGhgapoakgab) {
+      if (CHHAMIKKKCI != global::March7thHoney.Proto.ChessRogueBoardCellStatus.GbikcjpglbkGhgapoakgab) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) CHHAMIKKKCI);
       }
       size += pNEMJFMGKJJ_.CalculateSize(_repeated_pNEMJFMGKJJ_codec);
@@ -325,21 +325,21 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.bMKPIIGHODH_ != null) {
         if (bMKPIIGHODH_ == null) {
-          BMKPIIGHODH = new global::CastoriceHoney.Server.Proto.OLDMMODMOEI();
+          BMKPIIGHODH = new global::March7thHoney.Proto.OLDMMODMOEI();
         }
         BMKPIIGHODH.MergeFrom(other.BMKPIIGHODH);
       }
       iBOKGBFBKKD_.Add(other.iBOKGBFBKKD_);
       if (other.oMCINMJNPIF_ != null) {
         if (oMCINMJNPIF_ == null) {
-          OMCINMJNPIF = new global::CastoriceHoney.Server.Proto.CPPAAIIHAGI();
+          OMCINMJNPIF = new global::March7thHoney.Proto.CPPAAIIHAGI();
         }
         OMCINMJNPIF.MergeFrom(other.OMCINMJNPIF);
       }
       if (other.NBEEBMJFOEA != 0) {
         NBEEBMJFOEA = other.NBEEBMJFOEA;
       }
-      if (other.CHHAMIKKKCI != global::CastoriceHoney.Server.Proto.ChessRogueBoardCellStatus.GbikcjpglbkGhgapoakgab) {
+      if (other.CHHAMIKKKCI != global::March7thHoney.Proto.ChessRogueBoardCellStatus.GbikcjpglbkGhgapoakgab) {
         CHHAMIKKKCI = other.CHHAMIKKKCI;
       }
       pNEMJFMGKJJ_.Add(other.pNEMJFMGKJJ_);
@@ -367,7 +367,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 18: {
             if (bMKPIIGHODH_ == null) {
-              BMKPIIGHODH = new global::CastoriceHoney.Server.Proto.OLDMMODMOEI();
+              BMKPIIGHODH = new global::March7thHoney.Proto.OLDMMODMOEI();
             }
             input.ReadMessage(BMKPIIGHODH);
             break;
@@ -378,7 +378,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 34: {
             if (oMCINMJNPIF_ == null) {
-              OMCINMJNPIF = new global::CastoriceHoney.Server.Proto.CPPAAIIHAGI();
+              OMCINMJNPIF = new global::March7thHoney.Proto.CPPAAIIHAGI();
             }
             input.ReadMessage(OMCINMJNPIF);
             break;
@@ -388,7 +388,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 72: {
-            CHHAMIKKKCI = (global::CastoriceHoney.Server.Proto.ChessRogueBoardCellStatus) input.ReadEnum();
+            CHHAMIKKKCI = (global::March7thHoney.Proto.ChessRogueBoardCellStatus) input.ReadEnum();
             break;
           }
           case 90:
@@ -421,7 +421,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 18: {
             if (bMKPIIGHODH_ == null) {
-              BMKPIIGHODH = new global::CastoriceHoney.Server.Proto.OLDMMODMOEI();
+              BMKPIIGHODH = new global::March7thHoney.Proto.OLDMMODMOEI();
             }
             input.ReadMessage(BMKPIIGHODH);
             break;
@@ -432,7 +432,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 34: {
             if (oMCINMJNPIF_ == null) {
-              OMCINMJNPIF = new global::CastoriceHoney.Server.Proto.CPPAAIIHAGI();
+              OMCINMJNPIF = new global::March7thHoney.Proto.CPPAAIIHAGI();
             }
             input.ReadMessage(OMCINMJNPIF);
             break;
@@ -442,7 +442,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 72: {
-            CHHAMIKKKCI = (global::CastoriceHoney.Server.Proto.ChessRogueBoardCellStatus) input.ReadEnum();
+            CHHAMIKKKCI = (global::March7thHoney.Proto.ChessRogueBoardCellStatus) input.ReadEnum();
             break;
           }
           case 90:

@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Util;
+namespace March7thHoney.Util;
 
 public static class GameConstants
 {

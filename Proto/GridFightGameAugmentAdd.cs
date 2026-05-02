@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GridFightGameAugmentAdd.proto</summary>
   public static partial class GridFightGameAugmentAddReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "b0IzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2Vy",
             "dmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GridGameAugmentInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridGameAugmentInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GridFightGameAugmentAdd), global::CastoriceHoney.Server.Proto.GridFightGameAugmentAdd.Parser, new[]{ "UpdateAugmentInfo" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightGameAugmentAdd), global::March7thHoney.Proto.GridFightGameAugmentAdd.Parser, new[]{ "UpdateAugmentInfo" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GridFightGameAugmentAddReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GridFightGameAugmentAddReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -86,10 +86,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "update_augment_info" field.</summary>
     public const int UpdateAugmentInfoFieldNumber = 3;
-    private global::CastoriceHoney.Server.Proto.GridGameAugmentInfo updateAugmentInfo_;
+    private global::March7thHoney.Proto.GridGameAugmentInfo updateAugmentInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridGameAugmentInfo UpdateAugmentInfo {
+    public global::March7thHoney.Proto.GridGameAugmentInfo UpdateAugmentInfo {
       get { return updateAugmentInfo_; }
       set {
         updateAugmentInfo_ = value;
@@ -183,7 +183,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.updateAugmentInfo_ != null) {
         if (updateAugmentInfo_ == null) {
-          UpdateAugmentInfo = new global::CastoriceHoney.Server.Proto.GridGameAugmentInfo();
+          UpdateAugmentInfo = new global::March7thHoney.Proto.GridGameAugmentInfo();
         }
         UpdateAugmentInfo.MergeFrom(other.UpdateAugmentInfo);
       }
@@ -208,7 +208,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 26: {
             if (updateAugmentInfo_ == null) {
-              UpdateAugmentInfo = new global::CastoriceHoney.Server.Proto.GridGameAugmentInfo();
+              UpdateAugmentInfo = new global::March7thHoney.Proto.GridGameAugmentInfo();
             }
             input.ReadMessage(UpdateAugmentInfo);
             break;
@@ -234,7 +234,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 26: {
             if (updateAugmentInfo_ == null) {
-              UpdateAugmentInfo = new global::CastoriceHoney.Server.Proto.GridGameAugmentInfo();
+              UpdateAugmentInfo = new global::March7thHoney.Proto.GridGameAugmentInfo();
             }
             input.ReadMessage(UpdateAugmentInfo);
             break;

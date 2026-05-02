@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from FBJDFGMMMFP.proto</summary>
   public static partial class FBJDFGMMMFPReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "DRITCgtJQVBGQkdFREdBTRgLIAEoDUIzChNlbXUubHVuYXJjb3JlLnByb3Rv",
             "qgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GameplayCounterUpdateReasonReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GameplayCounterUpdateReasonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.FBJDFGMMMFP), global::CastoriceHoney.Server.Proto.FBJDFGMMMFP.Parser, new[]{ "Reason", "NNBKPDKPIGI", "IAPFBGEDGAM" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FBJDFGMMMFP), global::March7thHoney.Proto.FBJDFGMMMFP.Parser, new[]{ "Reason", "NNBKPDKPIGI", "IAPFBGEDGAM" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.FBJDFGMMMFPReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.FBJDFGMMMFPReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -88,10 +88,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "reason" field.</summary>
     public const int ReasonFieldNumber = 6;
-    private global::CastoriceHoney.Server.Proto.GameplayCounterUpdateReason reason_ = global::CastoriceHoney.Server.Proto.GameplayCounterUpdateReason.None;
+    private global::March7thHoney.Proto.GameplayCounterUpdateReason reason_ = global::March7thHoney.Proto.GameplayCounterUpdateReason.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GameplayCounterUpdateReason Reason {
+    public global::March7thHoney.Proto.GameplayCounterUpdateReason Reason {
       get { return reason_; }
       set {
         reason_ = value;
@@ -147,7 +147,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Reason != global::CastoriceHoney.Server.Proto.GameplayCounterUpdateReason.None) hash ^= Reason.GetHashCode();
+      if (Reason != global::March7thHoney.Proto.GameplayCounterUpdateReason.None) hash ^= Reason.GetHashCode();
       if (NNBKPDKPIGI != 0) hash ^= NNBKPDKPIGI.GetHashCode();
       if (IAPFBGEDGAM != 0) hash ^= IAPFBGEDGAM.GetHashCode();
       if (_unknownFields != null) {
@@ -168,7 +168,7 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Reason != global::CastoriceHoney.Server.Proto.GameplayCounterUpdateReason.None) {
+      if (Reason != global::March7thHoney.Proto.GameplayCounterUpdateReason.None) {
         output.WriteRawTag(48);
         output.WriteEnum((int) Reason);
       }
@@ -190,7 +190,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Reason != global::CastoriceHoney.Server.Proto.GameplayCounterUpdateReason.None) {
+      if (Reason != global::March7thHoney.Proto.GameplayCounterUpdateReason.None) {
         output.WriteRawTag(48);
         output.WriteEnum((int) Reason);
       }
@@ -212,7 +212,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Reason != global::CastoriceHoney.Server.Proto.GameplayCounterUpdateReason.None) {
+      if (Reason != global::March7thHoney.Proto.GameplayCounterUpdateReason.None) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Reason);
       }
       if (NNBKPDKPIGI != 0) {
@@ -233,7 +233,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.Reason != global::CastoriceHoney.Server.Proto.GameplayCounterUpdateReason.None) {
+      if (other.Reason != global::March7thHoney.Proto.GameplayCounterUpdateReason.None) {
         Reason = other.Reason;
       }
       if (other.NNBKPDKPIGI != 0) {
@@ -262,7 +262,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 48: {
-            Reason = (global::CastoriceHoney.Server.Proto.GameplayCounterUpdateReason) input.ReadEnum();
+            Reason = (global::March7thHoney.Proto.GameplayCounterUpdateReason) input.ReadEnum();
             break;
           }
           case 72: {
@@ -293,7 +293,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 48: {
-            Reason = (global::CastoriceHoney.Server.Proto.GameplayCounterUpdateReason) input.ReadEnum();
+            Reason = (global::March7thHoney.Proto.GameplayCounterUpdateReason) input.ReadEnum();
             break;
           }
           case 72: {

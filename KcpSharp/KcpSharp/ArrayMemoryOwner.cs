@@ -2,7 +2,7 @@
 
 using System.Buffers;
 
-namespace CastoriceHoney.Server.Kcp.KcpSharp;
+namespace March7thHoney.Kcp.KcpSharp;
 
 internal sealed class ArrayMemoryOwner : IMemoryOwner<byte>
 {

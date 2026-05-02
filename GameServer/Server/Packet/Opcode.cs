@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.GameServer.Server.Packet;
+namespace March7thHoney.GameServer.Server.Packet;
 
 [AttributeUsage(AttributeTargets.Class)]
 public class Opcode(int cmdId) : Attribute

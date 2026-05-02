@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Util.Security;
+namespace March7thHoney.Util.Security;
 
 public class MT19937
 {

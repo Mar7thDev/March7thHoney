@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from OfferingInfo.proto</summary>
   public static partial class OfferingInfoReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IG",
             "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.OfferingStateReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.OfferingStateReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.OfferingInfo), global::CastoriceHoney.Server.Proto.OfferingInfo.Parser, new[]{ "TotalExp", "OfferingLevel", "HasTakenRewardIdList", "OfferingId", "LevelExp", "OfferingState" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.OfferingInfo), global::March7thHoney.Proto.OfferingInfo.Parser, new[]{ "TotalExp", "OfferingLevel", "HasTakenRewardIdList", "OfferingId", "LevelExp", "OfferingState" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.OfferingInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.OfferingInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -152,10 +152,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "offering_state" field.</summary>
     public const int OfferingStateFieldNumber = 14;
-    private global::CastoriceHoney.Server.Proto.OfferingState offeringState_ = global::CastoriceHoney.Server.Proto.OfferingState.None;
+    private global::March7thHoney.Proto.OfferingState offeringState_ = global::March7thHoney.Proto.OfferingState.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.OfferingState OfferingState {
+    public global::March7thHoney.Proto.OfferingState OfferingState {
       get { return offeringState_; }
       set {
         offeringState_ = value;
@@ -195,7 +195,7 @@ namespace CastoriceHoney.Server.Proto {
       hash ^= hasTakenRewardIdList_.GetHashCode();
       if (OfferingId != 0) hash ^= OfferingId.GetHashCode();
       if (LevelExp != 0) hash ^= LevelExp.GetHashCode();
-      if (OfferingState != global::CastoriceHoney.Server.Proto.OfferingState.None) hash ^= OfferingState.GetHashCode();
+      if (OfferingState != global::March7thHoney.Proto.OfferingState.None) hash ^= OfferingState.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -231,7 +231,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(96);
         output.WriteUInt32(LevelExp);
       }
-      if (OfferingState != global::CastoriceHoney.Server.Proto.OfferingState.None) {
+      if (OfferingState != global::March7thHoney.Proto.OfferingState.None) {
         output.WriteRawTag(112);
         output.WriteEnum((int) OfferingState);
       }
@@ -262,7 +262,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(96);
         output.WriteUInt32(LevelExp);
       }
-      if (OfferingState != global::CastoriceHoney.Server.Proto.OfferingState.None) {
+      if (OfferingState != global::March7thHoney.Proto.OfferingState.None) {
         output.WriteRawTag(112);
         output.WriteEnum((int) OfferingState);
       }
@@ -289,7 +289,7 @@ namespace CastoriceHoney.Server.Proto {
       if (LevelExp != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LevelExp);
       }
-      if (OfferingState != global::CastoriceHoney.Server.Proto.OfferingState.None) {
+      if (OfferingState != global::March7thHoney.Proto.OfferingState.None) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) OfferingState);
       }
       if (_unknownFields != null) {
@@ -317,7 +317,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other.LevelExp != 0) {
         LevelExp = other.LevelExp;
       }
-      if (other.OfferingState != global::CastoriceHoney.Server.Proto.OfferingState.None) {
+      if (other.OfferingState != global::March7thHoney.Proto.OfferingState.None) {
         OfferingState = other.OfferingState;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -361,7 +361,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 112: {
-            OfferingState = (global::CastoriceHoney.Server.Proto.OfferingState) input.ReadEnum();
+            OfferingState = (global::March7thHoney.Proto.OfferingState) input.ReadEnum();
             break;
           }
         }
@@ -405,7 +405,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 112: {
-            OfferingState = (global::CastoriceHoney.Server.Proto.OfferingState) input.ReadEnum();
+            OfferingState = (global::March7thHoney.Proto.OfferingState) input.ReadEnum();
             break;
           }
         }

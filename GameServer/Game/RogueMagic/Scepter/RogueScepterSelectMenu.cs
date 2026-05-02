@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.Data.Excel;
-using CastoriceHoney.Server.GameServer.Game.Rogue;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Data.Excel;
+using March7thHoney.GameServer.Game.Rogue;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.GameServer.Game.RogueMagic.Scepter;
+namespace March7thHoney.GameServer.Game.RogueMagic.Scepter;
 
 public class RogueScepterSelectMenu(BaseRogueInstance rogue) : BaseRogueSelectMenu
 {

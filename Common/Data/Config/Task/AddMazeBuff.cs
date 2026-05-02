@@ -1,6 +1,6 @@
 using Newtonsoft.Json.Linq;
 
-namespace CastoriceHoney.Server.Data.Config.Task;
+namespace March7thHoney.Data.Config.Task;
 
 public class AddMazeBuff : TaskConfigInfo
 {
@@ -24,8 +24,8 @@ public class AddMazeBuff : TaskConfigInfo
             var targetType = value as JObject;
             var classType =
                 System.Type.GetType(
-                    $"CastoriceHoney.Server.Data.Config.Task.{targetType?["Type"]?.ToString().Replace("RPG.GameCore.", "")}");
-            classType ??= System.Type.GetType("CastoriceHoney.Server.Data.Config.Task.TargetEvaluator");
+                    $"March7thHoney.Data.Config.Task.{targetType?["Type"]?.ToString().Replace("RPG.GameCore.", "")}");
+            classType ??= System.Type.GetType("March7thHoney.Data.Config.Task.TargetEvaluator");
             info.TargetType = (targetType!.ToObject(classType!) as TargetEvaluator)!;
         }
 
@@ -35,8 +35,8 @@ public class AddMazeBuff : TaskConfigInfo
             var condition = value as JObject;
             var classType =
                 System.Type.GetType(
-                    $"CastoriceHoney.Server.Data.Config.Task.{condition?["Type"]?.ToString().Replace("RPG.GameCore.", "")}");
-            classType ??= System.Type.GetType("CastoriceHoney.Server.Data.Config.Task.PredicateConfigInfo");
+                    $"March7thHoney.Data.Config.Task.{condition?["Type"]?.ToString().Replace("RPG.GameCore.", "")}");
+            classType ??= System.Type.GetType("March7thHoney.Data.Config.Task.PredicateConfigInfo");
             info.Condition = (condition!.ToObject(classType!) as PredicateConfigInfo)!;
         }
 
@@ -45,8 +45,8 @@ public class AddMazeBuff : TaskConfigInfo
             var bindingAffectedTarget = value as JObject;
             var classType =
                 System.Type.GetType(
-                    $"CastoriceHoney.Server.Data.Config.Task.{bindingAffectedTarget?["Type"]?.ToString().Replace("RPG.GameCore.", "")}");
-            classType ??= System.Type.GetType("CastoriceHoney.Server.Data.Config.Task.TargetEvaluator");
+                    $"March7thHoney.Data.Config.Task.{bindingAffectedTarget?["Type"]?.ToString().Replace("RPG.GameCore.", "")}");
+            classType ??= System.Type.GetType("March7thHoney.Data.Config.Task.TargetEvaluator");
             info.BindingAffectedTarget = (bindingAffectedTarget!.ToObject(classType!) as TargetEvaluator)!;
         }
 

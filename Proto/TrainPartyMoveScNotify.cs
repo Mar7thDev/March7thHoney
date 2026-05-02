@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from TrainPartyMoveScNotify.proto</summary>
   public static partial class TrainPartyMoveScNotifyReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "ZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Q",
             "cm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ANBOFKHHDNEReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ANBOFKHHDNEReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.TrainPartyMoveScNotify), global::CastoriceHoney.Server.Proto.TrainPartyMoveScNotify.Parser, new[]{ "HACAPEDIPAB", "DGBNFMAEMKM" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TrainPartyMoveScNotify), global::March7thHoney.Proto.TrainPartyMoveScNotify.Parser, new[]{ "HACAPEDIPAB", "DGBNFMAEMKM" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.TrainPartyMoveScNotifyReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.TrainPartyMoveScNotifyReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -87,12 +87,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "HACAPEDIPAB" field.</summary>
     public const int HACAPEDIPABFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ANBOFKHHDNE> _repeated_hACAPEDIPAB_codec
-        = pb::FieldCodec.ForMessage(18, global::CastoriceHoney.Server.Proto.ANBOFKHHDNE.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ANBOFKHHDNE> hACAPEDIPAB_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ANBOFKHHDNE>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ANBOFKHHDNE> _repeated_hACAPEDIPAB_codec
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.ANBOFKHHDNE.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ANBOFKHHDNE> hACAPEDIPAB_ = new pbc::RepeatedField<global::March7thHoney.Proto.ANBOFKHHDNE>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ANBOFKHHDNE> HACAPEDIPAB {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ANBOFKHHDNE> HACAPEDIPAB {
       get { return hACAPEDIPAB_; }
     }
 

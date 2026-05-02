@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from RelicPresetAddPlanCsReq.proto</summary>
   public static partial class RelicPresetAddPlanCsReqReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "aWNQcmVzZXRQbGFuU291cmNlVHlwZUIzChNlbXUubHVuYXJjb3JlLnByb3Rv",
             "qgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ENAKDNCEJBOReflection.Descriptor, global::CastoriceHoney.Server.Proto.RelicPresetPlanSourceTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ENAKDNCEJBOReflection.Descriptor, global::March7thHoney.Proto.RelicPresetPlanSourceTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.RelicPresetAddPlanCsReq), global::CastoriceHoney.Server.Proto.RelicPresetAddPlanCsReq.Parser, new[]{ "HBNHKPDMGIP", "RelicIds", "AvatarId", "Name", "ALFHNEHOBJA" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RelicPresetAddPlanCsReq), global::March7thHoney.Proto.RelicPresetAddPlanCsReq.Parser, new[]{ "HBNHKPDMGIP", "RelicIds", "AvatarId", "Name", "ALFHNEHOBJA" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.RelicPresetAddPlanCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.RelicPresetAddPlanCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -92,10 +92,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "HBNHKPDMGIP" field.</summary>
     public const int HBNHKPDMGIPFieldNumber = 3;
-    private global::CastoriceHoney.Server.Proto.ENAKDNCEJBO hBNHKPDMGIP_ = global::CastoriceHoney.Server.Proto.ENAKDNCEJBO.Pcpdhelpkem;
+    private global::March7thHoney.Proto.ENAKDNCEJBO hBNHKPDMGIP_ = global::March7thHoney.Proto.ENAKDNCEJBO.Pcpdhelpkem;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ENAKDNCEJBO HBNHKPDMGIP {
+    public global::March7thHoney.Proto.ENAKDNCEJBO HBNHKPDMGIP {
       get { return hBNHKPDMGIP_; }
       set {
         hBNHKPDMGIP_ = value;
@@ -139,10 +139,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "ALFHNEHOBJA" field.</summary>
     public const int ALFHNEHOBJAFieldNumber = 14;
-    private global::CastoriceHoney.Server.Proto.RelicPresetPlanSourceType aLFHNEHOBJA_ = global::CastoriceHoney.Server.Proto.RelicPresetPlanSourceType.KhimaphkdliPcpdhelpkem;
+    private global::March7thHoney.Proto.RelicPresetPlanSourceType aLFHNEHOBJA_ = global::March7thHoney.Proto.RelicPresetPlanSourceType.KhimaphkdliPcpdhelpkem;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.RelicPresetPlanSourceType ALFHNEHOBJA {
+    public global::March7thHoney.Proto.RelicPresetPlanSourceType ALFHNEHOBJA {
       get { return aLFHNEHOBJA_; }
       set {
         aLFHNEHOBJA_ = value;
@@ -176,11 +176,11 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (HBNHKPDMGIP != global::CastoriceHoney.Server.Proto.ENAKDNCEJBO.Pcpdhelpkem) hash ^= HBNHKPDMGIP.GetHashCode();
+      if (HBNHKPDMGIP != global::March7thHoney.Proto.ENAKDNCEJBO.Pcpdhelpkem) hash ^= HBNHKPDMGIP.GetHashCode();
       hash ^= relicIds_.GetHashCode();
       if (AvatarId != 0) hash ^= AvatarId.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
-      if (ALFHNEHOBJA != global::CastoriceHoney.Server.Proto.RelicPresetPlanSourceType.KhimaphkdliPcpdhelpkem) hash ^= ALFHNEHOBJA.GetHashCode();
+      if (ALFHNEHOBJA != global::March7thHoney.Proto.RelicPresetPlanSourceType.KhimaphkdliPcpdhelpkem) hash ^= ALFHNEHOBJA.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -199,7 +199,7 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (HBNHKPDMGIP != global::CastoriceHoney.Server.Proto.ENAKDNCEJBO.Pcpdhelpkem) {
+      if (HBNHKPDMGIP != global::March7thHoney.Proto.ENAKDNCEJBO.Pcpdhelpkem) {
         output.WriteRawTag(24);
         output.WriteEnum((int) HBNHKPDMGIP);
       }
@@ -212,7 +212,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(90);
         output.WriteString(Name);
       }
-      if (ALFHNEHOBJA != global::CastoriceHoney.Server.Proto.RelicPresetPlanSourceType.KhimaphkdliPcpdhelpkem) {
+      if (ALFHNEHOBJA != global::March7thHoney.Proto.RelicPresetPlanSourceType.KhimaphkdliPcpdhelpkem) {
         output.WriteRawTag(112);
         output.WriteEnum((int) ALFHNEHOBJA);
       }
@@ -226,7 +226,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (HBNHKPDMGIP != global::CastoriceHoney.Server.Proto.ENAKDNCEJBO.Pcpdhelpkem) {
+      if (HBNHKPDMGIP != global::March7thHoney.Proto.ENAKDNCEJBO.Pcpdhelpkem) {
         output.WriteRawTag(24);
         output.WriteEnum((int) HBNHKPDMGIP);
       }
@@ -239,7 +239,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(90);
         output.WriteString(Name);
       }
-      if (ALFHNEHOBJA != global::CastoriceHoney.Server.Proto.RelicPresetPlanSourceType.KhimaphkdliPcpdhelpkem) {
+      if (ALFHNEHOBJA != global::March7thHoney.Proto.RelicPresetPlanSourceType.KhimaphkdliPcpdhelpkem) {
         output.WriteRawTag(112);
         output.WriteEnum((int) ALFHNEHOBJA);
       }
@@ -253,7 +253,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (HBNHKPDMGIP != global::CastoriceHoney.Server.Proto.ENAKDNCEJBO.Pcpdhelpkem) {
+      if (HBNHKPDMGIP != global::March7thHoney.Proto.ENAKDNCEJBO.Pcpdhelpkem) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) HBNHKPDMGIP);
       }
       size += relicIds_.CalculateSize(_repeated_relicIds_codec);
@@ -263,7 +263,7 @@ namespace CastoriceHoney.Server.Proto {
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
       }
-      if (ALFHNEHOBJA != global::CastoriceHoney.Server.Proto.RelicPresetPlanSourceType.KhimaphkdliPcpdhelpkem) {
+      if (ALFHNEHOBJA != global::March7thHoney.Proto.RelicPresetPlanSourceType.KhimaphkdliPcpdhelpkem) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ALFHNEHOBJA);
       }
       if (_unknownFields != null) {
@@ -278,7 +278,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.HBNHKPDMGIP != global::CastoriceHoney.Server.Proto.ENAKDNCEJBO.Pcpdhelpkem) {
+      if (other.HBNHKPDMGIP != global::March7thHoney.Proto.ENAKDNCEJBO.Pcpdhelpkem) {
         HBNHKPDMGIP = other.HBNHKPDMGIP;
       }
       relicIds_.Add(other.relicIds_);
@@ -288,7 +288,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other.Name.Length != 0) {
         Name = other.Name;
       }
-      if (other.ALFHNEHOBJA != global::CastoriceHoney.Server.Proto.RelicPresetPlanSourceType.KhimaphkdliPcpdhelpkem) {
+      if (other.ALFHNEHOBJA != global::March7thHoney.Proto.RelicPresetPlanSourceType.KhimaphkdliPcpdhelpkem) {
         ALFHNEHOBJA = other.ALFHNEHOBJA;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -311,7 +311,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 24: {
-            HBNHKPDMGIP = (global::CastoriceHoney.Server.Proto.ENAKDNCEJBO) input.ReadEnum();
+            HBNHKPDMGIP = (global::March7thHoney.Proto.ENAKDNCEJBO) input.ReadEnum();
             break;
           }
           case 34:
@@ -328,7 +328,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 112: {
-            ALFHNEHOBJA = (global::CastoriceHoney.Server.Proto.RelicPresetPlanSourceType) input.ReadEnum();
+            ALFHNEHOBJA = (global::March7thHoney.Proto.RelicPresetPlanSourceType) input.ReadEnum();
             break;
           }
         }
@@ -351,7 +351,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 24: {
-            HBNHKPDMGIP = (global::CastoriceHoney.Server.Proto.ENAKDNCEJBO) input.ReadEnum();
+            HBNHKPDMGIP = (global::March7thHoney.Proto.ENAKDNCEJBO) input.ReadEnum();
             break;
           }
           case 34:
@@ -368,7 +368,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 112: {
-            ALFHNEHOBJA = (global::CastoriceHoney.Server.Proto.RelicPresetPlanSourceType) input.ReadEnum();
+            ALFHNEHOBJA = (global::March7thHoney.Proto.RelicPresetPlanSourceType) input.ReadEnum();
             break;
           }
         }

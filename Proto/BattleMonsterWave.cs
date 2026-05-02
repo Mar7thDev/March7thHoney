@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from BattleMonsterWave.proto</summary>
   public static partial class BattleMonsterWaveReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "QjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2",
             "ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.BattleMonsterReflection.Descriptor, global::CastoriceHoney.Server.Proto.BattleMonsterParamReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.BattleMonsterReflection.Descriptor, global::March7thHoney.Proto.BattleMonsterParamReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.BattleMonsterWave), global::CastoriceHoney.Server.Proto.BattleMonsterWave.Parser, new[]{ "MonsterList", "MonsterParam", "BattleStageId", "BattleWaveId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BattleMonsterWave), global::March7thHoney.Proto.BattleMonsterWave.Parser, new[]{ "MonsterList", "MonsterParam", "BattleStageId", "BattleWaveId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.BattleMonsterWaveReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.BattleMonsterWaveReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -91,21 +91,21 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "monster_list" field.</summary>
     public const int MonsterListFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.BattleMonster> _repeated_monsterList_codec
-        = pb::FieldCodec.ForMessage(10, global::CastoriceHoney.Server.Proto.BattleMonster.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BattleMonster> monsterList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BattleMonster>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BattleMonster> _repeated_monsterList_codec
+        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.BattleMonster.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BattleMonster> monsterList_ = new pbc::RepeatedField<global::March7thHoney.Proto.BattleMonster>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BattleMonster> MonsterList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.BattleMonster> MonsterList {
       get { return monsterList_; }
     }
 
     /// <summary>Field number for the "monster_param" field.</summary>
     public const int MonsterParamFieldNumber = 2;
-    private global::CastoriceHoney.Server.Proto.BattleMonsterParam monsterParam_;
+    private global::March7thHoney.Proto.BattleMonsterParam monsterParam_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.BattleMonsterParam MonsterParam {
+    public global::March7thHoney.Proto.BattleMonsterParam MonsterParam {
       get { return monsterParam_; }
       set {
         monsterParam_ = value;
@@ -255,7 +255,7 @@ namespace CastoriceHoney.Server.Proto {
       monsterList_.Add(other.monsterList_);
       if (other.monsterParam_ != null) {
         if (monsterParam_ == null) {
-          MonsterParam = new global::CastoriceHoney.Server.Proto.BattleMonsterParam();
+          MonsterParam = new global::March7thHoney.Proto.BattleMonsterParam();
         }
         MonsterParam.MergeFrom(other.MonsterParam);
       }
@@ -290,7 +290,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 18: {
             if (monsterParam_ == null) {
-              MonsterParam = new global::CastoriceHoney.Server.Proto.BattleMonsterParam();
+              MonsterParam = new global::March7thHoney.Proto.BattleMonsterParam();
             }
             input.ReadMessage(MonsterParam);
             break;
@@ -328,7 +328,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 18: {
             if (monsterParam_ == null) {
-              MonsterParam = new global::CastoriceHoney.Server.Proto.BattleMonsterParam();
+              MonsterParam = new global::March7thHoney.Proto.BattleMonsterParam();
             }
             input.ReadMessage(MonsterParam);
             break;

@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.GameServer.Game.Rogue.Miracle;
+namespace March7thHoney.GameServer.Game.Rogue.Miracle;
 
 public class RogueMiracleSelectMenu(BaseRogueInstance instance)
 {

@@ -1,10 +1,10 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Enums.Fight;
-using CastoriceHoney.Server.GameServer.Game.Lobby.Player;
-using CastoriceHoney.Server.GameServer.Game.MultiPlayer.MarbleGame.Seal;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Data;
+using March7thHoney.Enums.Fight;
+using March7thHoney.GameServer.Game.Lobby.Player;
+using March7thHoney.GameServer.Game.MultiPlayer.MarbleGame.Seal;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Game.MultiPlayer.MarbleGame;
+namespace March7thHoney.GameServer.Game.MultiPlayer.MarbleGame;
 
 public class MarbleGamePlayerInstance : BaseGamePlayerInstance
 {

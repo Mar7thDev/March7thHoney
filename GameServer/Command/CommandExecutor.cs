@@ -1,6 +1,6 @@
-using CastoriceHoney.Server.Command;
+using March7thHoney.Command;
 
-namespace CastoriceHoney.Server.GameServer.Command;
+namespace March7thHoney.GameServer.Command;
 
 public static class CommandExecutor
 {

@@ -1,11 +1,11 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Enums.Rogue;
-using CastoriceHoney.Server.Enums.TournRogue;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.RogueCommon;
+using March7thHoney.Data;
+using March7thHoney.Enums.Rogue;
+using March7thHoney.Enums.TournRogue;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Server.Packet.Send.RogueCommon;
 using Newtonsoft.Json.Linq;
 
-namespace CastoriceHoney.Server.GameServer.Game.Rogue.Event;
+namespace March7thHoney.GameServer.Game.Rogue.Event;
 
 public class RogueEventManager(PlayerInstance player, BaseRogueInstance rogueInstance)
 {

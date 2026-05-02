@@ -1,10 +1,10 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Data.Custom;
-using CastoriceHoney.Server.Enums.Scene;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Scene;
+using March7thHoney.Data;
+using March7thHoney.Data.Custom;
+using March7thHoney.Enums.Scene;
+using March7thHoney.GameServer.Server.Packet.Send.Scene;
 using Newtonsoft.Json.Linq;
 
-namespace CastoriceHoney.Server.GameServer.Game.Scene.Component;
+namespace March7thHoney.GameServer.Game.Scene.Component;
 
 public class RainbowSceneComponent(SceneInstance scene) : BaseSceneComponent(scene)
 {

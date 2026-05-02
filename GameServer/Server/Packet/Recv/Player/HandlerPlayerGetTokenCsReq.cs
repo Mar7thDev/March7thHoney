@@ -1,14 +1,14 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Database;
-using CastoriceHoney.Server.Database.Account;
-using CastoriceHoney.Server.Database.Player;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Player;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Data;
+using March7thHoney.Database;
+using March7thHoney.Database.Account;
+using March7thHoney.Database.Player;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Server.Packet.Send.Player;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Player;
+namespace March7thHoney.GameServer.Server.Packet.Recv.Player;
 
 [Opcode(CmdIds.PlayerGetTokenCsReq)]
 public class HandlerPlayerGetTokenCsReq : Handler

@@ -1,10 +1,10 @@
-// using CastoriceHoney.Server.Data;
-// using CastoriceHoney.Server.Data.Excel;
-// using CastoriceHoney.Server.Enums.Rogue;
-// using CastoriceHoney.Server.GameServer.Game.Rogue.Scene.Entity;
-// using CastoriceHoney.Server.Internationalization;
+// using March7thHoney.Data;
+// using March7thHoney.Data.Excel;
+// using March7thHoney.Enums.Rogue;
+// using March7thHoney.GameServer.Game.Rogue.Scene.Entity;
+// using March7thHoney.Internationalization;
 
-// namespace CastoriceHoney.Server.Command.Command.Cmd;
+// namespace March7thHoney.Command.Command.Cmd;
 
 // [CommandInfo("rogue", "Game.Command.Rogue.Desc", "Game.Command.Rogue.Usage", ["r"])]
 // public class CommandRogue : ICommand

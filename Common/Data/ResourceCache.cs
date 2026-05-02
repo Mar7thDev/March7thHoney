@@ -2,13 +2,13 @@ using System.IO.Compression;
 using System.IO.MemoryMappedFiles;
 using System.Reflection;
 using System.Text;
-using CastoriceHoney.Server.Data.Config.Scene;
-using CastoriceHoney.Server.Internationalization;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Data.Config.Scene;
+using March7thHoney.Internationalization;
+using March7thHoney.Util;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace CastoriceHoney.Server.Data;
+namespace March7thHoney.Data;
 
 public static class CompressionHelper
 {

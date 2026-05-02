@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from TrainPartyArea.proto</summary>
   public static partial class TrainPartyAreaReflection {
@@ -33,9 +33,9 @@ namespace CastoriceHoney.Server.Proto {
             "c3MYDyABKA1CMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhv",
             "bmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.AreaDynamicInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.AreaStepInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.AreaDynamicInfoReflection.Descriptor, global::March7thHoney.Proto.AreaStepInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.TrainPartyArea), global::CastoriceHoney.Server.Proto.TrainPartyArea.Parser, new[]{ "StepIdList", "DynamicInfo", "AreaStepInfo", "AreaId", "StaticPropIdList", "VerifyStepIdList", "Progress" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TrainPartyArea), global::March7thHoney.Proto.TrainPartyArea.Parser, new[]{ "StepIdList", "DynamicInfo", "AreaStepInfo", "AreaId", "StaticPropIdList", "VerifyStepIdList", "Progress" }, null, null, null, null)
           }));
     }
     #endregion
@@ -57,7 +57,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.TrainPartyAreaReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.TrainPartyAreaReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -106,21 +106,21 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "dynamic_info" field.</summary>
     public const int DynamicInfoFieldNumber = 8;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.AreaDynamicInfo> _repeated_dynamicInfo_codec
-        = pb::FieldCodec.ForMessage(66, global::CastoriceHoney.Server.Proto.AreaDynamicInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AreaDynamicInfo> dynamicInfo_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AreaDynamicInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AreaDynamicInfo> _repeated_dynamicInfo_codec
+        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.AreaDynamicInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AreaDynamicInfo> dynamicInfo_ = new pbc::RepeatedField<global::March7thHoney.Proto.AreaDynamicInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AreaDynamicInfo> DynamicInfo {
+    public pbc::RepeatedField<global::March7thHoney.Proto.AreaDynamicInfo> DynamicInfo {
       get { return dynamicInfo_; }
     }
 
     /// <summary>Field number for the "area_step_info" field.</summary>
     public const int AreaStepInfoFieldNumber = 10;
-    private global::CastoriceHoney.Server.Proto.AreaStepInfo areaStepInfo_;
+    private global::March7thHoney.Proto.AreaStepInfo areaStepInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.AreaStepInfo AreaStepInfo {
+    public global::March7thHoney.Proto.AreaStepInfo AreaStepInfo {
       get { return areaStepInfo_; }
       set {
         areaStepInfo_ = value;
@@ -308,7 +308,7 @@ namespace CastoriceHoney.Server.Proto {
       dynamicInfo_.Add(other.dynamicInfo_);
       if (other.areaStepInfo_ != null) {
         if (areaStepInfo_ == null) {
-          AreaStepInfo = new global::CastoriceHoney.Server.Proto.AreaStepInfo();
+          AreaStepInfo = new global::March7thHoney.Proto.AreaStepInfo();
         }
         AreaStepInfo.MergeFrom(other.AreaStepInfo);
       }
@@ -350,7 +350,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 82: {
             if (areaStepInfo_ == null) {
-              AreaStepInfo = new global::CastoriceHoney.Server.Proto.AreaStepInfo();
+              AreaStepInfo = new global::March7thHoney.Proto.AreaStepInfo();
             }
             input.ReadMessage(AreaStepInfo);
             break;
@@ -403,7 +403,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 82: {
             if (areaStepInfo_ == null) {
-              AreaStepInfo = new global::CastoriceHoney.Server.Proto.AreaStepInfo();
+              AreaStepInfo = new global::March7thHoney.Proto.AreaStepInfo();
             }
             input.ReadMessage(AreaStepInfo);
             break;

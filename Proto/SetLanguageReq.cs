@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from SetLanguageReq.proto</summary>
   public static partial class SetLanguageReqReflection {
@@ -29,9 +29,9 @@ namespace CastoriceHoney.Server.Proto {
             "Z2VUeXBlQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25l",
             "eS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.LanguageTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.LanguageTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.SetLanguageReq), global::CastoriceHoney.Server.Proto.SetLanguageReq.Parser, new[]{ "BNPGKDAEJPB" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetLanguageReq), global::March7thHoney.Proto.SetLanguageReq.Parser, new[]{ "BNPGKDAEJPB" }, null, null, null, null)
           }));
     }
     #endregion
@@ -53,7 +53,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.SetLanguageReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.SetLanguageReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -85,10 +85,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "BNPGKDAEJPB" field.</summary>
     public const int BNPGKDAEJPBFieldNumber = 11;
-    private global::CastoriceHoney.Server.Proto.LanguageType bNPGKDAEJPB_ = global::CastoriceHoney.Server.Proto.LanguageType.LanguageNone;
+    private global::March7thHoney.Proto.LanguageType bNPGKDAEJPB_ = global::March7thHoney.Proto.LanguageType.LanguageNone;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.LanguageType BNPGKDAEJPB {
+    public global::March7thHoney.Proto.LanguageType BNPGKDAEJPB {
       get { return bNPGKDAEJPB_; }
       set {
         bNPGKDAEJPB_ = value;
@@ -118,7 +118,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (BNPGKDAEJPB != global::CastoriceHoney.Server.Proto.LanguageType.LanguageNone) hash ^= BNPGKDAEJPB.GetHashCode();
+      if (BNPGKDAEJPB != global::March7thHoney.Proto.LanguageType.LanguageNone) hash ^= BNPGKDAEJPB.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -137,7 +137,7 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (BNPGKDAEJPB != global::CastoriceHoney.Server.Proto.LanguageType.LanguageNone) {
+      if (BNPGKDAEJPB != global::March7thHoney.Proto.LanguageType.LanguageNone) {
         output.WriteRawTag(88);
         output.WriteEnum((int) BNPGKDAEJPB);
       }
@@ -151,7 +151,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (BNPGKDAEJPB != global::CastoriceHoney.Server.Proto.LanguageType.LanguageNone) {
+      if (BNPGKDAEJPB != global::March7thHoney.Proto.LanguageType.LanguageNone) {
         output.WriteRawTag(88);
         output.WriteEnum((int) BNPGKDAEJPB);
       }
@@ -165,7 +165,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (BNPGKDAEJPB != global::CastoriceHoney.Server.Proto.LanguageType.LanguageNone) {
+      if (BNPGKDAEJPB != global::March7thHoney.Proto.LanguageType.LanguageNone) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) BNPGKDAEJPB);
       }
       if (_unknownFields != null) {
@@ -180,7 +180,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.BNPGKDAEJPB != global::CastoriceHoney.Server.Proto.LanguageType.LanguageNone) {
+      if (other.BNPGKDAEJPB != global::March7thHoney.Proto.LanguageType.LanguageNone) {
         BNPGKDAEJPB = other.BNPGKDAEJPB;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -203,7 +203,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 88: {
-            BNPGKDAEJPB = (global::CastoriceHoney.Server.Proto.LanguageType) input.ReadEnum();
+            BNPGKDAEJPB = (global::March7thHoney.Proto.LanguageType) input.ReadEnum();
             break;
           }
         }
@@ -226,7 +226,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 88: {
-            BNPGKDAEJPB = (global::CastoriceHoney.Server.Proto.LanguageType) input.ReadEnum();
+            BNPGKDAEJPB = (global::March7thHoney.Proto.LanguageType) input.ReadEnum();
             break;
           }
         }

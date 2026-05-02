@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Proto;
 using Google.Protobuf;
 
-namespace CastoriceHoney.Server.Kcp;
+namespace March7thHoney.Kcp;
 
 public class HandshakePacket : BasePacket
 {

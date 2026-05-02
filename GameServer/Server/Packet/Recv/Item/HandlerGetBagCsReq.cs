@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Item;
-using CastoriceHoney.Server.Kcp;
+using March7thHoney.GameServer.Server.Packet.Send.Item;
+using March7thHoney.Kcp;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Item;
+namespace March7thHoney.GameServer.Server.Packet.Recv.Item;
 
 [Opcode(CmdIds.GetBagCsReq)]
 public class HandlerGetBagCsReq : Handler

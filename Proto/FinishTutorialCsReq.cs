@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from FinishTutorialCsReq.proto</summary>
   public static partial class FinishTutorialCsReqReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "VHlwZUIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXku",
             "U2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.TutorialFinishTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.TutorialFinishTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.FinishTutorialCsReq), global::CastoriceHoney.Server.Proto.FinishTutorialCsReq.Parser, new[]{ "TutorialId", "NGJKIIIJBIB" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FinishTutorialCsReq), global::March7thHoney.Proto.FinishTutorialCsReq.Parser, new[]{ "TutorialId", "NGJKIIIJBIB" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.FinishTutorialCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.FinishTutorialCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -99,10 +99,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "NGJKIIIJBIB" field.</summary>
     public const int NGJKIIIJBIBFieldNumber = 11;
-    private global::CastoriceHoney.Server.Proto.TutorialFinishType nGJKIIIJBIB_ = global::CastoriceHoney.Server.Proto.TutorialFinishType.GcpjlendficPcpdhelpkem;
+    private global::March7thHoney.Proto.TutorialFinishType nGJKIIIJBIB_ = global::March7thHoney.Proto.TutorialFinishType.GcpjlendficPcpdhelpkem;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.TutorialFinishType NGJKIIIJBIB {
+    public global::March7thHoney.Proto.TutorialFinishType NGJKIIIJBIB {
       get { return nGJKIIIJBIB_; }
       set {
         nGJKIIIJBIB_ = value;
@@ -134,7 +134,7 @@ namespace CastoriceHoney.Server.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (TutorialId != 0) hash ^= TutorialId.GetHashCode();
-      if (NGJKIIIJBIB != global::CastoriceHoney.Server.Proto.TutorialFinishType.GcpjlendficPcpdhelpkem) hash ^= NGJKIIIJBIB.GetHashCode();
+      if (NGJKIIIJBIB != global::March7thHoney.Proto.TutorialFinishType.GcpjlendficPcpdhelpkem) hash ^= NGJKIIIJBIB.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -157,7 +157,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(40);
         output.WriteUInt32(TutorialId);
       }
-      if (NGJKIIIJBIB != global::CastoriceHoney.Server.Proto.TutorialFinishType.GcpjlendficPcpdhelpkem) {
+      if (NGJKIIIJBIB != global::March7thHoney.Proto.TutorialFinishType.GcpjlendficPcpdhelpkem) {
         output.WriteRawTag(88);
         output.WriteEnum((int) NGJKIIIJBIB);
       }
@@ -175,7 +175,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(40);
         output.WriteUInt32(TutorialId);
       }
-      if (NGJKIIIJBIB != global::CastoriceHoney.Server.Proto.TutorialFinishType.GcpjlendficPcpdhelpkem) {
+      if (NGJKIIIJBIB != global::March7thHoney.Proto.TutorialFinishType.GcpjlendficPcpdhelpkem) {
         output.WriteRawTag(88);
         output.WriteEnum((int) NGJKIIIJBIB);
       }
@@ -192,7 +192,7 @@ namespace CastoriceHoney.Server.Proto {
       if (TutorialId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TutorialId);
       }
-      if (NGJKIIIJBIB != global::CastoriceHoney.Server.Proto.TutorialFinishType.GcpjlendficPcpdhelpkem) {
+      if (NGJKIIIJBIB != global::March7thHoney.Proto.TutorialFinishType.GcpjlendficPcpdhelpkem) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) NGJKIIIJBIB);
       }
       if (_unknownFields != null) {
@@ -210,7 +210,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other.TutorialId != 0) {
         TutorialId = other.TutorialId;
       }
-      if (other.NGJKIIIJBIB != global::CastoriceHoney.Server.Proto.TutorialFinishType.GcpjlendficPcpdhelpkem) {
+      if (other.NGJKIIIJBIB != global::March7thHoney.Proto.TutorialFinishType.GcpjlendficPcpdhelpkem) {
         NGJKIIIJBIB = other.NGJKIIIJBIB;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -237,7 +237,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 88: {
-            NGJKIIIJBIB = (global::CastoriceHoney.Server.Proto.TutorialFinishType) input.ReadEnum();
+            NGJKIIIJBIB = (global::March7thHoney.Proto.TutorialFinishType) input.ReadEnum();
             break;
           }
         }
@@ -264,7 +264,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 88: {
-            NGJKIIIJBIB = (global::CastoriceHoney.Server.Proto.TutorialFinishType) input.ReadEnum();
+            NGJKIIIJBIB = (global::March7thHoney.Proto.TutorialFinishType) input.ReadEnum();
             break;
           }
         }

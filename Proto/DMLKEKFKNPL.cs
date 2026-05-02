@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from DMLKEKFKNPL.proto</summary>
   public static partial class DMLKEKFKNPLReflection {
@@ -33,9 +33,9 @@ namespace CastoriceHoney.Server.Proto {
             "bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IG",
             "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GridFightDropInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridFightDropInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.DMLKEKFKNPL), global::CastoriceHoney.Server.Proto.DMLKEKFKNPL.Parser, new[]{ "EffectId", "SwitchList", "TraitEffectLevelReward" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DMLKEKFKNPL), global::March7thHoney.Proto.DMLKEKFKNPL.Parser, new[]{ "EffectId", "SwitchList", "TraitEffectLevelReward" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -57,7 +57,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.DMLKEKFKNPLReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.DMLKEKFKNPLReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -114,12 +114,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "trait_effect_level_reward" field.</summary>
     public const int TraitEffectLevelRewardFieldNumber = 5;
-    private static readonly pbc::MapField<uint, global::CastoriceHoney.Server.Proto.GridFightDropInfo>.Codec _map_traitEffectLevelReward_codec
-        = new pbc::MapField<uint, global::CastoriceHoney.Server.Proto.GridFightDropInfo>.Codec(pb::FieldCodec.ForUInt32(8, 0), pb::FieldCodec.ForMessage(18, global::CastoriceHoney.Server.Proto.GridFightDropInfo.Parser), 42);
-    private readonly pbc::MapField<uint, global::CastoriceHoney.Server.Proto.GridFightDropInfo> traitEffectLevelReward_ = new pbc::MapField<uint, global::CastoriceHoney.Server.Proto.GridFightDropInfo>();
+    private static readonly pbc::MapField<uint, global::March7thHoney.Proto.GridFightDropInfo>.Codec _map_traitEffectLevelReward_codec
+        = new pbc::MapField<uint, global::March7thHoney.Proto.GridFightDropInfo>.Codec(pb::FieldCodec.ForUInt32(8, 0), pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.GridFightDropInfo.Parser), 42);
+    private readonly pbc::MapField<uint, global::March7thHoney.Proto.GridFightDropInfo> traitEffectLevelReward_ = new pbc::MapField<uint, global::March7thHoney.Proto.GridFightDropInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<uint, global::CastoriceHoney.Server.Proto.GridFightDropInfo> TraitEffectLevelReward {
+    public pbc::MapField<uint, global::March7thHoney.Proto.GridFightDropInfo> TraitEffectLevelReward {
       get { return traitEffectLevelReward_; }
     }
 

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GetFriendRecommendListInfoScRsp.proto</summary>
   public static partial class GetFriendRecommendListInfoScRspReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "dW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9i",
             "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.FriendRecommendInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.FriendRecommendInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GetFriendRecommendListInfoScRsp), global::CastoriceHoney.Server.Proto.GetFriendRecommendListInfoScRsp.Parser, new[]{ "FriendRecommendList", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetFriendRecommendListInfoScRsp), global::March7thHoney.Proto.GetFriendRecommendListInfoScRsp.Parser, new[]{ "FriendRecommendList", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GetFriendRecommendListInfoScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GetFriendRecommendListInfoScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -88,12 +88,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "friend_recommend_list" field.</summary>
     public const int FriendRecommendListFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.FriendRecommendInfo> _repeated_friendRecommendList_codec
-        = pb::FieldCodec.ForMessage(34, global::CastoriceHoney.Server.Proto.FriendRecommendInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.FriendRecommendInfo> friendRecommendList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.FriendRecommendInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.FriendRecommendInfo> _repeated_friendRecommendList_codec
+        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.FriendRecommendInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.FriendRecommendInfo> friendRecommendList_ = new pbc::RepeatedField<global::March7thHoney.Proto.FriendRecommendInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.FriendRecommendInfo> FriendRecommendList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.FriendRecommendInfo> FriendRecommendList {
       get { return friendRecommendList_; }
     }
 

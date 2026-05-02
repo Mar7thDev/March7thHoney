@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Program", "Program\Program.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proto", "Proto\Proto.csproj", "{8A0ECA1A-167B-4B97-BF79-3665AF654A52}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CastoriceHoney.KcpSharp", "KcpSharp\KcpSharp.csproj", "{CD7EFAA3-C655-40EE-8F6A-A8E2DA3B0FCB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "March7thHoney.KcpSharp", "KcpSharp\KcpSharp.csproj", "{CD7EFAA3-C655-40EE-8F6A-A8E2DA3B0FCB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerSideProto", "ServerSideProto\ServerSideProto.csproj", "{1F94D996-0E35-4A56-9437-00949576D6B8}"
 EndProject

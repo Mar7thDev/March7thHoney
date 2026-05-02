@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GetFightFestDataScRsp.proto</summary>
   public static partial class GetFightFestDataScRspReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "R0RPTE1OSUVCMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhv",
             "bmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.NPGGDOLMNIEReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.NPGGDOLMNIEReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GetFightFestDataScRsp), global::CastoriceHoney.Server.Proto.GetFightFestDataScRsp.Parser, new[]{ "ItemValue", "GIGPHJEBDFL", "Retcode", "ScoreId", "ChallengeList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetFightFestDataScRsp), global::March7thHoney.Proto.GetFightFestDataScRsp.Parser, new[]{ "ItemValue", "GIGPHJEBDFL", "Retcode", "ScoreId", "ChallengeList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GetFightFestDataScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GetFightFestDataScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -138,12 +138,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "challenge_list" field.</summary>
     public const int ChallengeListFieldNumber = 14;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.NPGGDOLMNIE> _repeated_challengeList_codec
-        = pb::FieldCodec.ForMessage(114, global::CastoriceHoney.Server.Proto.NPGGDOLMNIE.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.NPGGDOLMNIE> challengeList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.NPGGDOLMNIE>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.NPGGDOLMNIE> _repeated_challengeList_codec
+        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.NPGGDOLMNIE.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.NPGGDOLMNIE> challengeList_ = new pbc::RepeatedField<global::March7thHoney.Proto.NPGGDOLMNIE>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.NPGGDOLMNIE> ChallengeList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.NPGGDOLMNIE> ChallengeList {
       get { return challengeList_; }
     }
 

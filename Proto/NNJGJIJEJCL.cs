@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from NNJGJIJEJCL.proto</summary>
   public static partial class NNJGJIJEJCLReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "YXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZw",
             "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.FAEBBLFGAFFReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.FAEBBLFGAFFReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.NNJGJIJEJCL), global::CastoriceHoney.Server.Proto.NNJGJIJEJCL.Parser, new[]{ "AJECCJKMHOG", "PHGGPFMFBAL", "FCHAKFNDCND" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NNJGJIJEJCL), global::March7thHoney.Proto.NNJGJIJEJCL.Parser, new[]{ "AJECCJKMHOG", "PHGGPFMFBAL", "FCHAKFNDCND" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.NNJGJIJEJCLReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.NNJGJIJEJCLReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -102,12 +102,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "PHGGPFMFBAL" field.</summary>
     public const int PHGGPFMFBALFieldNumber = 2;
-    private static readonly pbc::MapField<string, global::CastoriceHoney.Server.Proto.FAEBBLFGAFF>.Codec _map_pHGGPFMFBAL_codec
-        = new pbc::MapField<string, global::CastoriceHoney.Server.Proto.FAEBBLFGAFF>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::CastoriceHoney.Server.Proto.FAEBBLFGAFF.Parser), 18);
-    private readonly pbc::MapField<string, global::CastoriceHoney.Server.Proto.FAEBBLFGAFF> pHGGPFMFBAL_ = new pbc::MapField<string, global::CastoriceHoney.Server.Proto.FAEBBLFGAFF>();
+    private static readonly pbc::MapField<string, global::March7thHoney.Proto.FAEBBLFGAFF>.Codec _map_pHGGPFMFBAL_codec
+        = new pbc::MapField<string, global::March7thHoney.Proto.FAEBBLFGAFF>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.FAEBBLFGAFF.Parser), 18);
+    private readonly pbc::MapField<string, global::March7thHoney.Proto.FAEBBLFGAFF> pHGGPFMFBAL_ = new pbc::MapField<string, global::March7thHoney.Proto.FAEBBLFGAFF>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<string, global::CastoriceHoney.Server.Proto.FAEBBLFGAFF> PHGGPFMFBAL {
+    public pbc::MapField<string, global::March7thHoney.Proto.FAEBBLFGAFF> PHGGPFMFBAL {
       get { return pHGGPFMFBAL_; }
     }
 

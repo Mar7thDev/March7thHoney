@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from LEPAGPCIDLP.proto</summary>
   public static partial class LEPAGPCIDLPReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "ASgLMgwuQUNQTUtQTE9CRUZCMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nh",
             "c3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ACPMKPLOBEFReflection.Descriptor, global::CastoriceHoney.Server.Proto.ADHNJADIJACReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ACPMKPLOBEFReflection.Descriptor, global::March7thHoney.Proto.ADHNJADIJACReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.LEPAGPCIDLP), global::CastoriceHoney.Server.Proto.LEPAGPCIDLP.Parser, new[]{ "Retcode", "BIEBFHECEPM", "Data" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LEPAGPCIDLP), global::March7thHoney.Proto.LEPAGPCIDLP.Parser, new[]{ "Retcode", "BIEBFHECEPM", "Data" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.LEPAGPCIDLPReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.LEPAGPCIDLPReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -100,21 +100,21 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "BIEBFHECEPM" field.</summary>
     public const int BIEBFHECEPMFieldNumber = 5;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ADHNJADIJAC> _repeated_bIEBFHECEPM_codec
-        = pb::FieldCodec.ForMessage(42, global::CastoriceHoney.Server.Proto.ADHNJADIJAC.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ADHNJADIJAC> bIEBFHECEPM_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ADHNJADIJAC>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ADHNJADIJAC> _repeated_bIEBFHECEPM_codec
+        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.ADHNJADIJAC.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ADHNJADIJAC> bIEBFHECEPM_ = new pbc::RepeatedField<global::March7thHoney.Proto.ADHNJADIJAC>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ADHNJADIJAC> BIEBFHECEPM {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ADHNJADIJAC> BIEBFHECEPM {
       get { return bIEBFHECEPM_; }
     }
 
     /// <summary>Field number for the "data" field.</summary>
     public const int DataFieldNumber = 9;
-    private global::CastoriceHoney.Server.Proto.ACPMKPLOBEF data_;
+    private global::March7thHoney.Proto.ACPMKPLOBEF data_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ACPMKPLOBEF Data {
+    public global::March7thHoney.Proto.ACPMKPLOBEF Data {
       get { return data_; }
       set {
         data_ = value;
@@ -230,7 +230,7 @@ namespace CastoriceHoney.Server.Proto {
       bIEBFHECEPM_.Add(other.bIEBFHECEPM_);
       if (other.data_ != null) {
         if (data_ == null) {
-          Data = new global::CastoriceHoney.Server.Proto.ACPMKPLOBEF();
+          Data = new global::March7thHoney.Proto.ACPMKPLOBEF();
         }
         Data.MergeFrom(other.Data);
       }
@@ -263,7 +263,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 74: {
             if (data_ == null) {
-              Data = new global::CastoriceHoney.Server.Proto.ACPMKPLOBEF();
+              Data = new global::March7thHoney.Proto.ACPMKPLOBEF();
             }
             input.ReadMessage(Data);
             break;
@@ -297,7 +297,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 74: {
             if (data_ == null) {
-              Data = new global::CastoriceHoney.Server.Proto.ACPMKPLOBEF();
+              Data = new global::March7thHoney.Proto.ACPMKPLOBEF();
             }
             input.ReadMessage(Data);
             break;

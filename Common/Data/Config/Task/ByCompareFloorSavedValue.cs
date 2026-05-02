@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Enums.Task;
+using March7thHoney.Enums.Task;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace CastoriceHoney.Server.Data.Config.Task;
+namespace March7thHoney.Data.Config.Task;
 
 public class ByCompareFloorSavedValue : PredicateConfigInfo
 {

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from BattlePassInfoNotify.proto</summary>
   public static partial class BattlePassInfoNotifyReflection {
@@ -34,9 +34,9 @@ namespace CastoriceHoney.Server.Proto {
             "GA4gASgEEhMKC0tQT0dBSkJMRE5DGA8gASgEQjMKE2VtdS5sdW5hcmNvcmUu",
             "cHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.BpTierTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.BpTierTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.BattlePassInfoNotify), global::CastoriceHoney.Server.Proto.BattlePassInfoNotify.Parser, new[]{ "HEBILJIIICG", "IHMNMNBKJPG", "EDGECHCLDHG", "KBCPNAMDBJE", "Exp", "OKNMGHGAEIG", "CDKCGAKABAL", "BpTierType", "Level", "GCLPLAOIJEO", "AEGLOAAPHEB", "GENINOGKLAP", "KPOGAJBLDNC" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BattlePassInfoNotify), global::March7thHoney.Proto.BattlePassInfoNotify.Parser, new[]{ "HEBILJIIICG", "IHMNMNBKJPG", "EDGECHCLDHG", "KBCPNAMDBJE", "Exp", "OKNMGHGAEIG", "CDKCGAKABAL", "BpTierType", "Level", "GCLPLAOIJEO", "AEGLOAAPHEB", "GENINOGKLAP", "KPOGAJBLDNC" }, null, null, null, null)
           }));
     }
     #endregion
@@ -58,7 +58,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.BattlePassInfoNotifyReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.BattlePassInfoNotifyReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -186,10 +186,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "BpTierType" field.</summary>
     public const int BpTierTypeFieldNumber = 9;
-    private global::CastoriceHoney.Server.Proto.BpTierType bpTierType_ = global::CastoriceHoney.Server.Proto.BpTierType.AnmmopchjdiPcpdhelpkem;
+    private global::March7thHoney.Proto.BpTierType bpTierType_ = global::March7thHoney.Proto.BpTierType.AnmmopchjdiPcpdhelpkem;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.BpTierType BpTierType {
+    public global::March7thHoney.Proto.BpTierType BpTierType {
       get { return bpTierType_; }
       set {
         bpTierType_ = value;
@@ -298,7 +298,7 @@ namespace CastoriceHoney.Server.Proto {
       if (Exp != 0) hash ^= Exp.GetHashCode();
       if (OKNMGHGAEIG != 0UL) hash ^= OKNMGHGAEIG.GetHashCode();
       if (CDKCGAKABAL != 0UL) hash ^= CDKCGAKABAL.GetHashCode();
-      if (BpTierType != global::CastoriceHoney.Server.Proto.BpTierType.AnmmopchjdiPcpdhelpkem) hash ^= BpTierType.GetHashCode();
+      if (BpTierType != global::March7thHoney.Proto.BpTierType.AnmmopchjdiPcpdhelpkem) hash ^= BpTierType.GetHashCode();
       if (Level != 0) hash ^= Level.GetHashCode();
       if (GCLPLAOIJEO != 0) hash ^= GCLPLAOIJEO.GetHashCode();
       if (AEGLOAAPHEB != 0UL) hash ^= AEGLOAAPHEB.GetHashCode();
@@ -350,7 +350,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(64);
         output.WriteUInt64(CDKCGAKABAL);
       }
-      if (BpTierType != global::CastoriceHoney.Server.Proto.BpTierType.AnmmopchjdiPcpdhelpkem) {
+      if (BpTierType != global::March7thHoney.Proto.BpTierType.AnmmopchjdiPcpdhelpkem) {
         output.WriteRawTag(72);
         output.WriteEnum((int) BpTierType);
       }
@@ -412,7 +412,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(64);
         output.WriteUInt64(CDKCGAKABAL);
       }
-      if (BpTierType != global::CastoriceHoney.Server.Proto.BpTierType.AnmmopchjdiPcpdhelpkem) {
+      if (BpTierType != global::March7thHoney.Proto.BpTierType.AnmmopchjdiPcpdhelpkem) {
         output.WriteRawTag(72);
         output.WriteEnum((int) BpTierType);
       }
@@ -467,7 +467,7 @@ namespace CastoriceHoney.Server.Proto {
       if (CDKCGAKABAL != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(CDKCGAKABAL);
       }
-      if (BpTierType != global::CastoriceHoney.Server.Proto.BpTierType.AnmmopchjdiPcpdhelpkem) {
+      if (BpTierType != global::March7thHoney.Proto.BpTierType.AnmmopchjdiPcpdhelpkem) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) BpTierType);
       }
       if (Level != 0) {
@@ -518,7 +518,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other.CDKCGAKABAL != 0UL) {
         CDKCGAKABAL = other.CDKCGAKABAL;
       }
-      if (other.BpTierType != global::CastoriceHoney.Server.Proto.BpTierType.AnmmopchjdiPcpdhelpkem) {
+      if (other.BpTierType != global::March7thHoney.Proto.BpTierType.AnmmopchjdiPcpdhelpkem) {
         BpTierType = other.BpTierType;
       }
       if (other.Level != 0) {
@@ -584,7 +584,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 72: {
-            BpTierType = (global::CastoriceHoney.Server.Proto.BpTierType) input.ReadEnum();
+            BpTierType = (global::March7thHoney.Proto.BpTierType) input.ReadEnum();
             break;
           }
           case 80: {
@@ -655,7 +655,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 72: {
-            BpTierType = (global::CastoriceHoney.Server.Proto.BpTierType) input.ReadEnum();
+            BpTierType = (global::March7thHoney.Proto.BpTierType) input.ReadEnum();
             break;
           }
           case 80: {

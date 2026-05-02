@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GridFightSyncData.proto</summary>
   public static partial class GridFightSyncDataReflection {
@@ -102,9 +102,9 @@ namespace CastoriceHoney.Server.Proto {
             "T0NDR0VPRUNPQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VI",
             "b25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.CKCKIDHMMEGReflection.Descriptor, global::CastoriceHoney.Server.Proto.CLOEPPBCKGFReflection.Descriptor, global::CastoriceHoney.Server.Proto.CMCJNKPKBEMReflection.Descriptor, global::CastoriceHoney.Server.Proto.DIBJGAKOCLOReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightDamageSttInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightEliteBranchSyncInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightGameAugmentAddReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightGameAugmentUpdateReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightGameItemInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightGameItemSyncInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightLevelSyncInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightLineupHpSyncInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightLockInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightLockTypeReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightOrbSyncInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightPendingActionReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightPlayerLevelSyncInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightPortalServerDataUpdateReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightSectionRecordInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightShopSyncInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightTraitSyncInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightTraitTrackSyncInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightTutorialSyncInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridGameForgeItemInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridGameNpcInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridGameOrbInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridGameRoleInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.JPBCKCDEGOMReflection.Descriptor, global::CastoriceHoney.Server.Proto.RoleTrackEquipmentSyncInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.CKCKIDHMMEGReflection.Descriptor, global::March7thHoney.Proto.CLOEPPBCKGFReflection.Descriptor, global::March7thHoney.Proto.CMCJNKPKBEMReflection.Descriptor, global::March7thHoney.Proto.DIBJGAKOCLOReflection.Descriptor, global::March7thHoney.Proto.GridFightDamageSttInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightEliteBranchSyncInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightGameAugmentAddReflection.Descriptor, global::March7thHoney.Proto.GridFightGameAugmentUpdateReflection.Descriptor, global::March7thHoney.Proto.GridFightGameItemInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightGameItemSyncInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightLevelSyncInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightLineupHpSyncInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightLockInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightLockTypeReflection.Descriptor, global::March7thHoney.Proto.GridFightOrbSyncInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightPendingActionReflection.Descriptor, global::March7thHoney.Proto.GridFightPlayerLevelSyncInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightPortalServerDataUpdateReflection.Descriptor, global::March7thHoney.Proto.GridFightSectionRecordInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightShopSyncInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightTraitSyncInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightTraitTrackSyncInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightTutorialSyncInfoReflection.Descriptor, global::March7thHoney.Proto.GridGameForgeItemInfoReflection.Descriptor, global::March7thHoney.Proto.GridGameNpcInfoReflection.Descriptor, global::March7thHoney.Proto.GridGameOrbInfoReflection.Descriptor, global::March7thHoney.Proto.GridGameRoleInfoReflection.Descriptor, global::March7thHoney.Proto.JPBCKCDEGOMReflection.Descriptor, global::March7thHoney.Proto.RoleTrackEquipmentSyncInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GridFightSyncData), global::CastoriceHoney.Server.Proto.GridFightSyncData.Parser, new[]{ "CJEMKCOCECG", "RemoveOrbUniqueId", "EquipmentTrackSyncInfo", "MaxBattleRoleNum", "CFNPGNMPNDN", "AddRoleInfo", "AddNpcInfo", "HLFBBANMJDJ", "TraitSyncInfo", "PortalServerDataUpdate", "UpdateGameItemInfo", "AddForgeInfo", "UpdateRoleInfo", "AJIMOAMGCII", "GridFightDamageSttInfo", "GridFightComboWinNum", "SyncLockInfo", "GDPBJDHGFLB", "RemoveAugmentUniqueId", "GridFightMaxAvatarCount", "AugmentSyncInfo", "FinishPendingActionPos", "PendingAction", "POIPGNHONMA", "LevelSyncInfo", "GridFightMaxInterestGold", "UpdateForgeInfo", "PlayerLevel", "KACHJHDMNLM", "JIFKOHLNHAK", "GridFightTutorialSync", "GridFightOffFieldMaxCount", "LockType", "RemoveGameItemInfo", "GridFightLineupHp", "SectionRecordSyncInfo", "GridFightSyncGameItemInfo", "GridFightBuyExpCost", "TraitTrackSyncInfo", "BAODHPCOJLH", "AddGameItemInfo", "UpdateNpcInfo", "RemoveForgeUniqueId", "RemoveTraitEffectId", "GMJLJDJDIGM", "FHHHEBLMOBL", "RemoveRoleUniqueId", "EliteBranchSyncInfo", "IBCEPCFFMOL", "PGPKPMOIAIL", "OrbSyncInfo", "ItemValue", "GridGameAugmentUpdate", "ShopSyncInfo", "RemoveNpcUniqueId" }, new[]{ "KCOCCGEOECO" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightSyncData), global::March7thHoney.Proto.GridFightSyncData.Parser, new[]{ "CJEMKCOCECG", "RemoveOrbUniqueId", "EquipmentTrackSyncInfo", "MaxBattleRoleNum", "CFNPGNMPNDN", "AddRoleInfo", "AddNpcInfo", "HLFBBANMJDJ", "TraitSyncInfo", "PortalServerDataUpdate", "UpdateGameItemInfo", "AddForgeInfo", "UpdateRoleInfo", "AJIMOAMGCII", "GridFightDamageSttInfo", "GridFightComboWinNum", "SyncLockInfo", "GDPBJDHGFLB", "RemoveAugmentUniqueId", "GridFightMaxAvatarCount", "AugmentSyncInfo", "FinishPendingActionPos", "PendingAction", "POIPGNHONMA", "LevelSyncInfo", "GridFightMaxInterestGold", "UpdateForgeInfo", "PlayerLevel", "KACHJHDMNLM", "JIFKOHLNHAK", "GridFightTutorialSync", "GridFightOffFieldMaxCount", "LockType", "RemoveGameItemInfo", "GridFightLineupHp", "SectionRecordSyncInfo", "GridFightSyncGameItemInfo", "GridFightBuyExpCost", "TraitTrackSyncInfo", "BAODHPCOJLH", "AddGameItemInfo", "UpdateNpcInfo", "RemoveForgeUniqueId", "RemoveTraitEffectId", "GMJLJDJDIGM", "FHHHEBLMOBL", "RemoveRoleUniqueId", "EliteBranchSyncInfo", "IBCEPCFFMOL", "PGPKPMOIAIL", "OrbSyncInfo", "ItemValue", "GridGameAugmentUpdate", "ShopSyncInfo", "RemoveNpcUniqueId" }, new[]{ "KCOCCGEOECO" }, null, null, null)
           }));
     }
     #endregion
@@ -126,7 +126,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GridFightSyncDataReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GridFightSyncDataReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -379,8 +379,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int EquipmentTrackSyncInfoFieldNumber = 57;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.RoleTrackEquipmentSyncInfo EquipmentTrackSyncInfo {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.EquipmentTrackSyncInfo ? (global::CastoriceHoney.Server.Proto.RoleTrackEquipmentSyncInfo) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.RoleTrackEquipmentSyncInfo EquipmentTrackSyncInfo {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.EquipmentTrackSyncInfo ? (global::March7thHoney.Proto.RoleTrackEquipmentSyncInfo) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.EquipmentTrackSyncInfo;
@@ -417,8 +417,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int CFNPGNMPNDNFieldNumber = 140;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.CMCJNKPKBEM CFNPGNMPNDN {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.CFNPGNMPNDN ? (global::CastoriceHoney.Server.Proto.CMCJNKPKBEM) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.CMCJNKPKBEM CFNPGNMPNDN {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.CFNPGNMPNDN ? (global::March7thHoney.Proto.CMCJNKPKBEM) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.CFNPGNMPNDN;
@@ -429,8 +429,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int AddRoleInfoFieldNumber = 210;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridGameRoleInfo AddRoleInfo {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.AddRoleInfo ? (global::CastoriceHoney.Server.Proto.GridGameRoleInfo) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.GridGameRoleInfo AddRoleInfo {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.AddRoleInfo ? (global::March7thHoney.Proto.GridGameRoleInfo) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.AddRoleInfo;
@@ -441,8 +441,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int AddNpcInfoFieldNumber = 230;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridGameNpcInfo AddNpcInfo {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.AddNpcInfo ? (global::CastoriceHoney.Server.Proto.GridGameNpcInfo) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.GridGameNpcInfo AddNpcInfo {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.AddNpcInfo ? (global::March7thHoney.Proto.GridGameNpcInfo) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.AddNpcInfo;
@@ -479,8 +479,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int TraitSyncInfoFieldNumber = 258;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightTraitSyncInfo TraitSyncInfo {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.TraitSyncInfo ? (global::CastoriceHoney.Server.Proto.GridFightTraitSyncInfo) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.GridFightTraitSyncInfo TraitSyncInfo {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.TraitSyncInfo ? (global::March7thHoney.Proto.GridFightTraitSyncInfo) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.TraitSyncInfo;
@@ -491,8 +491,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int PortalServerDataUpdateFieldNumber = 271;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightPortalServerDataUpdate PortalServerDataUpdate {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.PortalServerDataUpdate ? (global::CastoriceHoney.Server.Proto.GridFightPortalServerDataUpdate) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.GridFightPortalServerDataUpdate PortalServerDataUpdate {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.PortalServerDataUpdate ? (global::March7thHoney.Proto.GridFightPortalServerDataUpdate) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.PortalServerDataUpdate;
@@ -503,8 +503,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int UpdateGameItemInfoFieldNumber = 284;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightGameItemSyncInfo UpdateGameItemInfo {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.UpdateGameItemInfo ? (global::CastoriceHoney.Server.Proto.GridFightGameItemSyncInfo) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.GridFightGameItemSyncInfo UpdateGameItemInfo {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.UpdateGameItemInfo ? (global::March7thHoney.Proto.GridFightGameItemSyncInfo) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.UpdateGameItemInfo;
@@ -515,8 +515,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int AddForgeInfoFieldNumber = 386;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridGameForgeItemInfo AddForgeInfo {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.AddForgeInfo ? (global::CastoriceHoney.Server.Proto.GridGameForgeItemInfo) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.GridGameForgeItemInfo AddForgeInfo {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.AddForgeInfo ? (global::March7thHoney.Proto.GridGameForgeItemInfo) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.AddForgeInfo;
@@ -527,8 +527,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int UpdateRoleInfoFieldNumber = 393;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridGameRoleInfo UpdateRoleInfo {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.UpdateRoleInfo ? (global::CastoriceHoney.Server.Proto.GridGameRoleInfo) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.GridGameRoleInfo UpdateRoleInfo {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.UpdateRoleInfo ? (global::March7thHoney.Proto.GridGameRoleInfo) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.UpdateRoleInfo;
@@ -565,8 +565,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int GridFightDamageSttInfoFieldNumber = 437;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightDamageSttInfo GridFightDamageSttInfo {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.GridFightDamageSttInfo ? (global::CastoriceHoney.Server.Proto.GridFightDamageSttInfo) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.GridFightDamageSttInfo GridFightDamageSttInfo {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.GridFightDamageSttInfo ? (global::March7thHoney.Proto.GridFightDamageSttInfo) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.GridFightDamageSttInfo;
@@ -603,8 +603,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int SyncLockInfoFieldNumber = 468;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightLockInfo SyncLockInfo {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.SyncLockInfo ? (global::CastoriceHoney.Server.Proto.GridFightLockInfo) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.GridFightLockInfo SyncLockInfo {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.SyncLockInfo ? (global::March7thHoney.Proto.GridFightLockInfo) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.SyncLockInfo;
@@ -693,8 +693,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int AugmentSyncInfoFieldNumber = 558;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightGameAugmentAdd AugmentSyncInfo {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.AugmentSyncInfo ? (global::CastoriceHoney.Server.Proto.GridFightGameAugmentAdd) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.GridFightGameAugmentAdd AugmentSyncInfo {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.AugmentSyncInfo ? (global::March7thHoney.Proto.GridFightGameAugmentAdd) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.AugmentSyncInfo;
@@ -731,8 +731,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int PendingActionFieldNumber = 786;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightPendingAction PendingAction {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.PendingAction ? (global::CastoriceHoney.Server.Proto.GridFightPendingAction) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.GridFightPendingAction PendingAction {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.PendingAction ? (global::March7thHoney.Proto.GridFightPendingAction) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.PendingAction;
@@ -743,8 +743,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int POIPGNHONMAFieldNumber = 798;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridGameOrbInfo POIPGNHONMA {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.POIPGNHONMA ? (global::CastoriceHoney.Server.Proto.GridGameOrbInfo) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.GridGameOrbInfo POIPGNHONMA {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.POIPGNHONMA ? (global::March7thHoney.Proto.GridGameOrbInfo) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.POIPGNHONMA;
@@ -755,8 +755,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int LevelSyncInfoFieldNumber = 838;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightLevelSyncInfo LevelSyncInfo {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.LevelSyncInfo ? (global::CastoriceHoney.Server.Proto.GridFightLevelSyncInfo) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.GridFightLevelSyncInfo LevelSyncInfo {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.LevelSyncInfo ? (global::March7thHoney.Proto.GridFightLevelSyncInfo) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.LevelSyncInfo;
@@ -793,8 +793,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int UpdateForgeInfoFieldNumber = 909;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridGameForgeItemInfo UpdateForgeInfo {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.UpdateForgeInfo ? (global::CastoriceHoney.Server.Proto.GridGameForgeItemInfo) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.GridGameForgeItemInfo UpdateForgeInfo {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.UpdateForgeInfo ? (global::March7thHoney.Proto.GridGameForgeItemInfo) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.UpdateForgeInfo;
@@ -805,8 +805,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int PlayerLevelFieldNumber = 995;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightPlayerLevelSyncInfo PlayerLevel {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.PlayerLevel ? (global::CastoriceHoney.Server.Proto.GridFightPlayerLevelSyncInfo) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.GridFightPlayerLevelSyncInfo PlayerLevel {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.PlayerLevel ? (global::March7thHoney.Proto.GridFightPlayerLevelSyncInfo) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.PlayerLevel;
@@ -843,8 +843,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int JIFKOHLNHAKFieldNumber = 1016;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.CKCKIDHMMEG JIFKOHLNHAK {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.JIFKOHLNHAK ? (global::CastoriceHoney.Server.Proto.CKCKIDHMMEG) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.CKCKIDHMMEG JIFKOHLNHAK {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.JIFKOHLNHAK ? (global::March7thHoney.Proto.CKCKIDHMMEG) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.JIFKOHLNHAK;
@@ -855,8 +855,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int GridFightTutorialSyncFieldNumber = 1022;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightTutorialSyncInfo GridFightTutorialSync {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.GridFightTutorialSync ? (global::CastoriceHoney.Server.Proto.GridFightTutorialSyncInfo) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.GridFightTutorialSyncInfo GridFightTutorialSync {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.GridFightTutorialSync ? (global::March7thHoney.Proto.GridFightTutorialSyncInfo) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.GridFightTutorialSync;
@@ -893,8 +893,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int LockTypeFieldNumber = 1112;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightLockType LockType {
-      get { return HasLockType ? (global::CastoriceHoney.Server.Proto.GridFightLockType) kCOCCGEOECO_ : global::CastoriceHoney.Server.Proto.GridFightLockType.PjbmhhnlclbLnloohdeaeo; }
+    public global::March7thHoney.Proto.GridFightLockType LockType {
+      get { return HasLockType ? (global::March7thHoney.Proto.GridFightLockType) kCOCCGEOECO_ : global::March7thHoney.Proto.GridFightLockType.PjbmhhnlclbLnloohdeaeo; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = KCOCCGEOECOOneofCase.LockType;
@@ -919,8 +919,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int RemoveGameItemInfoFieldNumber = 1129;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightGameItemSyncInfo RemoveGameItemInfo {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.RemoveGameItemInfo ? (global::CastoriceHoney.Server.Proto.GridFightGameItemSyncInfo) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.GridFightGameItemSyncInfo RemoveGameItemInfo {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.RemoveGameItemInfo ? (global::March7thHoney.Proto.GridFightGameItemSyncInfo) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.RemoveGameItemInfo;
@@ -931,8 +931,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int GridFightLineupHpFieldNumber = 1138;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightLineupHpSyncInfo GridFightLineupHp {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.GridFightLineupHp ? (global::CastoriceHoney.Server.Proto.GridFightLineupHpSyncInfo) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.GridFightLineupHpSyncInfo GridFightLineupHp {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.GridFightLineupHp ? (global::March7thHoney.Proto.GridFightLineupHpSyncInfo) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.GridFightLineupHp;
@@ -943,8 +943,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int SectionRecordSyncInfoFieldNumber = 1155;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightSectionRecordInfo SectionRecordSyncInfo {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.SectionRecordSyncInfo ? (global::CastoriceHoney.Server.Proto.GridFightSectionRecordInfo) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.GridFightSectionRecordInfo SectionRecordSyncInfo {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.SectionRecordSyncInfo ? (global::March7thHoney.Proto.GridFightSectionRecordInfo) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.SectionRecordSyncInfo;
@@ -955,8 +955,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int GridFightSyncGameItemInfoFieldNumber = 1182;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightGameItemInfo GridFightSyncGameItemInfo {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.GridFightSyncGameItemInfo ? (global::CastoriceHoney.Server.Proto.GridFightGameItemInfo) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.GridFightGameItemInfo GridFightSyncGameItemInfo {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.GridFightSyncGameItemInfo ? (global::March7thHoney.Proto.GridFightGameItemInfo) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.GridFightSyncGameItemInfo;
@@ -993,8 +993,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int TraitTrackSyncInfoFieldNumber = 1345;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightTraitTrackSyncInfo TraitTrackSyncInfo {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.TraitTrackSyncInfo ? (global::CastoriceHoney.Server.Proto.GridFightTraitTrackSyncInfo) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.GridFightTraitTrackSyncInfo TraitTrackSyncInfo {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.TraitTrackSyncInfo ? (global::March7thHoney.Proto.GridFightTraitTrackSyncInfo) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.TraitTrackSyncInfo;
@@ -1005,8 +1005,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int BAODHPCOJLHFieldNumber = 1444;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.CKCKIDHMMEG BAODHPCOJLH {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.BAODHPCOJLH ? (global::CastoriceHoney.Server.Proto.CKCKIDHMMEG) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.CKCKIDHMMEG BAODHPCOJLH {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.BAODHPCOJLH ? (global::March7thHoney.Proto.CKCKIDHMMEG) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.BAODHPCOJLH;
@@ -1017,8 +1017,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int AddGameItemInfoFieldNumber = 1513;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightGameItemSyncInfo AddGameItemInfo {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.AddGameItemInfo ? (global::CastoriceHoney.Server.Proto.GridFightGameItemSyncInfo) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.GridFightGameItemSyncInfo AddGameItemInfo {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.AddGameItemInfo ? (global::March7thHoney.Proto.GridFightGameItemSyncInfo) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.AddGameItemInfo;
@@ -1029,8 +1029,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int UpdateNpcInfoFieldNumber = 1517;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridGameNpcInfo UpdateNpcInfo {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.UpdateNpcInfo ? (global::CastoriceHoney.Server.Proto.GridGameNpcInfo) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.GridGameNpcInfo UpdateNpcInfo {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.UpdateNpcInfo ? (global::March7thHoney.Proto.GridGameNpcInfo) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.UpdateNpcInfo;
@@ -1093,8 +1093,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int GMJLJDJDIGMFieldNumber = 1628;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.JPBCKCDEGOM GMJLJDJDIGM {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.GMJLJDJDIGM ? (global::CastoriceHoney.Server.Proto.JPBCKCDEGOM) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.JPBCKCDEGOM GMJLJDJDIGM {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.GMJLJDJDIGM ? (global::March7thHoney.Proto.JPBCKCDEGOM) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.GMJLJDJDIGM;
@@ -1157,8 +1157,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int EliteBranchSyncInfoFieldNumber = 1738;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightEliteBranchSyncInfo EliteBranchSyncInfo {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.EliteBranchSyncInfo ? (global::CastoriceHoney.Server.Proto.GridFightEliteBranchSyncInfo) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.GridFightEliteBranchSyncInfo EliteBranchSyncInfo {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.EliteBranchSyncInfo ? (global::March7thHoney.Proto.GridFightEliteBranchSyncInfo) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.EliteBranchSyncInfo;
@@ -1169,8 +1169,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int IBCEPCFFMOLFieldNumber = 1813;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.DIBJGAKOCLO IBCEPCFFMOL {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.IBCEPCFFMOL ? (global::CastoriceHoney.Server.Proto.DIBJGAKOCLO) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.DIBJGAKOCLO IBCEPCFFMOL {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.IBCEPCFFMOL ? (global::March7thHoney.Proto.DIBJGAKOCLO) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.IBCEPCFFMOL;
@@ -1181,8 +1181,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int PGPKPMOIAILFieldNumber = 1858;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.CLOEPPBCKGF PGPKPMOIAIL {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.PGPKPMOIAIL ? (global::CastoriceHoney.Server.Proto.CLOEPPBCKGF) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.CLOEPPBCKGF PGPKPMOIAIL {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.PGPKPMOIAIL ? (global::March7thHoney.Proto.CLOEPPBCKGF) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.PGPKPMOIAIL;
@@ -1193,8 +1193,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int OrbSyncInfoFieldNumber = 1895;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightOrbSyncInfo OrbSyncInfo {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.OrbSyncInfo ? (global::CastoriceHoney.Server.Proto.GridFightOrbSyncInfo) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.GridFightOrbSyncInfo OrbSyncInfo {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.OrbSyncInfo ? (global::March7thHoney.Proto.GridFightOrbSyncInfo) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.OrbSyncInfo;
@@ -1231,8 +1231,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int GridGameAugmentUpdateFieldNumber = 1994;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightGameAugmentUpdate GridGameAugmentUpdate {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.GridGameAugmentUpdate ? (global::CastoriceHoney.Server.Proto.GridFightGameAugmentUpdate) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.GridFightGameAugmentUpdate GridGameAugmentUpdate {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.GridGameAugmentUpdate ? (global::March7thHoney.Proto.GridFightGameAugmentUpdate) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.GridGameAugmentUpdate;
@@ -1243,8 +1243,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int ShopSyncInfoFieldNumber = 2039;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightShopSyncInfo ShopSyncInfo {
-      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.ShopSyncInfo ? (global::CastoriceHoney.Server.Proto.GridFightShopSyncInfo) kCOCCGEOECO_ : null; }
+    public global::March7thHoney.Proto.GridFightShopSyncInfo ShopSyncInfo {
+      get { return kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.ShopSyncInfo ? (global::March7thHoney.Proto.GridFightShopSyncInfo) kCOCCGEOECO_ : null; }
       set {
         kCOCCGEOECO_ = value;
         kCOCCGEOECOCase_ = value == null ? KCOCCGEOECOOneofCase.None : KCOCCGEOECOOneofCase.ShopSyncInfo;
@@ -2149,7 +2149,7 @@ namespace CastoriceHoney.Server.Proto {
           break;
         case KCOCCGEOECOOneofCase.EquipmentTrackSyncInfo:
           if (EquipmentTrackSyncInfo == null) {
-            EquipmentTrackSyncInfo = new global::CastoriceHoney.Server.Proto.RoleTrackEquipmentSyncInfo();
+            EquipmentTrackSyncInfo = new global::March7thHoney.Proto.RoleTrackEquipmentSyncInfo();
           }
           EquipmentTrackSyncInfo.MergeFrom(other.EquipmentTrackSyncInfo);
           break;
@@ -2158,19 +2158,19 @@ namespace CastoriceHoney.Server.Proto {
           break;
         case KCOCCGEOECOOneofCase.CFNPGNMPNDN:
           if (CFNPGNMPNDN == null) {
-            CFNPGNMPNDN = new global::CastoriceHoney.Server.Proto.CMCJNKPKBEM();
+            CFNPGNMPNDN = new global::March7thHoney.Proto.CMCJNKPKBEM();
           }
           CFNPGNMPNDN.MergeFrom(other.CFNPGNMPNDN);
           break;
         case KCOCCGEOECOOneofCase.AddRoleInfo:
           if (AddRoleInfo == null) {
-            AddRoleInfo = new global::CastoriceHoney.Server.Proto.GridGameRoleInfo();
+            AddRoleInfo = new global::March7thHoney.Proto.GridGameRoleInfo();
           }
           AddRoleInfo.MergeFrom(other.AddRoleInfo);
           break;
         case KCOCCGEOECOOneofCase.AddNpcInfo:
           if (AddNpcInfo == null) {
-            AddNpcInfo = new global::CastoriceHoney.Server.Proto.GridGameNpcInfo();
+            AddNpcInfo = new global::March7thHoney.Proto.GridGameNpcInfo();
           }
           AddNpcInfo.MergeFrom(other.AddNpcInfo);
           break;
@@ -2179,31 +2179,31 @@ namespace CastoriceHoney.Server.Proto {
           break;
         case KCOCCGEOECOOneofCase.TraitSyncInfo:
           if (TraitSyncInfo == null) {
-            TraitSyncInfo = new global::CastoriceHoney.Server.Proto.GridFightTraitSyncInfo();
+            TraitSyncInfo = new global::March7thHoney.Proto.GridFightTraitSyncInfo();
           }
           TraitSyncInfo.MergeFrom(other.TraitSyncInfo);
           break;
         case KCOCCGEOECOOneofCase.PortalServerDataUpdate:
           if (PortalServerDataUpdate == null) {
-            PortalServerDataUpdate = new global::CastoriceHoney.Server.Proto.GridFightPortalServerDataUpdate();
+            PortalServerDataUpdate = new global::March7thHoney.Proto.GridFightPortalServerDataUpdate();
           }
           PortalServerDataUpdate.MergeFrom(other.PortalServerDataUpdate);
           break;
         case KCOCCGEOECOOneofCase.UpdateGameItemInfo:
           if (UpdateGameItemInfo == null) {
-            UpdateGameItemInfo = new global::CastoriceHoney.Server.Proto.GridFightGameItemSyncInfo();
+            UpdateGameItemInfo = new global::March7thHoney.Proto.GridFightGameItemSyncInfo();
           }
           UpdateGameItemInfo.MergeFrom(other.UpdateGameItemInfo);
           break;
         case KCOCCGEOECOOneofCase.AddForgeInfo:
           if (AddForgeInfo == null) {
-            AddForgeInfo = new global::CastoriceHoney.Server.Proto.GridGameForgeItemInfo();
+            AddForgeInfo = new global::March7thHoney.Proto.GridGameForgeItemInfo();
           }
           AddForgeInfo.MergeFrom(other.AddForgeInfo);
           break;
         case KCOCCGEOECOOneofCase.UpdateRoleInfo:
           if (UpdateRoleInfo == null) {
-            UpdateRoleInfo = new global::CastoriceHoney.Server.Proto.GridGameRoleInfo();
+            UpdateRoleInfo = new global::March7thHoney.Proto.GridGameRoleInfo();
           }
           UpdateRoleInfo.MergeFrom(other.UpdateRoleInfo);
           break;
@@ -2212,7 +2212,7 @@ namespace CastoriceHoney.Server.Proto {
           break;
         case KCOCCGEOECOOneofCase.GridFightDamageSttInfo:
           if (GridFightDamageSttInfo == null) {
-            GridFightDamageSttInfo = new global::CastoriceHoney.Server.Proto.GridFightDamageSttInfo();
+            GridFightDamageSttInfo = new global::March7thHoney.Proto.GridFightDamageSttInfo();
           }
           GridFightDamageSttInfo.MergeFrom(other.GridFightDamageSttInfo);
           break;
@@ -2221,7 +2221,7 @@ namespace CastoriceHoney.Server.Proto {
           break;
         case KCOCCGEOECOOneofCase.SyncLockInfo:
           if (SyncLockInfo == null) {
-            SyncLockInfo = new global::CastoriceHoney.Server.Proto.GridFightLockInfo();
+            SyncLockInfo = new global::March7thHoney.Proto.GridFightLockInfo();
           }
           SyncLockInfo.MergeFrom(other.SyncLockInfo);
           break;
@@ -2236,7 +2236,7 @@ namespace CastoriceHoney.Server.Proto {
           break;
         case KCOCCGEOECOOneofCase.AugmentSyncInfo:
           if (AugmentSyncInfo == null) {
-            AugmentSyncInfo = new global::CastoriceHoney.Server.Proto.GridFightGameAugmentAdd();
+            AugmentSyncInfo = new global::March7thHoney.Proto.GridFightGameAugmentAdd();
           }
           AugmentSyncInfo.MergeFrom(other.AugmentSyncInfo);
           break;
@@ -2245,19 +2245,19 @@ namespace CastoriceHoney.Server.Proto {
           break;
         case KCOCCGEOECOOneofCase.PendingAction:
           if (PendingAction == null) {
-            PendingAction = new global::CastoriceHoney.Server.Proto.GridFightPendingAction();
+            PendingAction = new global::March7thHoney.Proto.GridFightPendingAction();
           }
           PendingAction.MergeFrom(other.PendingAction);
           break;
         case KCOCCGEOECOOneofCase.POIPGNHONMA:
           if (POIPGNHONMA == null) {
-            POIPGNHONMA = new global::CastoriceHoney.Server.Proto.GridGameOrbInfo();
+            POIPGNHONMA = new global::March7thHoney.Proto.GridGameOrbInfo();
           }
           POIPGNHONMA.MergeFrom(other.POIPGNHONMA);
           break;
         case KCOCCGEOECOOneofCase.LevelSyncInfo:
           if (LevelSyncInfo == null) {
-            LevelSyncInfo = new global::CastoriceHoney.Server.Proto.GridFightLevelSyncInfo();
+            LevelSyncInfo = new global::March7thHoney.Proto.GridFightLevelSyncInfo();
           }
           LevelSyncInfo.MergeFrom(other.LevelSyncInfo);
           break;
@@ -2266,13 +2266,13 @@ namespace CastoriceHoney.Server.Proto {
           break;
         case KCOCCGEOECOOneofCase.UpdateForgeInfo:
           if (UpdateForgeInfo == null) {
-            UpdateForgeInfo = new global::CastoriceHoney.Server.Proto.GridGameForgeItemInfo();
+            UpdateForgeInfo = new global::March7thHoney.Proto.GridGameForgeItemInfo();
           }
           UpdateForgeInfo.MergeFrom(other.UpdateForgeInfo);
           break;
         case KCOCCGEOECOOneofCase.PlayerLevel:
           if (PlayerLevel == null) {
-            PlayerLevel = new global::CastoriceHoney.Server.Proto.GridFightPlayerLevelSyncInfo();
+            PlayerLevel = new global::March7thHoney.Proto.GridFightPlayerLevelSyncInfo();
           }
           PlayerLevel.MergeFrom(other.PlayerLevel);
           break;
@@ -2281,13 +2281,13 @@ namespace CastoriceHoney.Server.Proto {
           break;
         case KCOCCGEOECOOneofCase.JIFKOHLNHAK:
           if (JIFKOHLNHAK == null) {
-            JIFKOHLNHAK = new global::CastoriceHoney.Server.Proto.CKCKIDHMMEG();
+            JIFKOHLNHAK = new global::March7thHoney.Proto.CKCKIDHMMEG();
           }
           JIFKOHLNHAK.MergeFrom(other.JIFKOHLNHAK);
           break;
         case KCOCCGEOECOOneofCase.GridFightTutorialSync:
           if (GridFightTutorialSync == null) {
-            GridFightTutorialSync = new global::CastoriceHoney.Server.Proto.GridFightTutorialSyncInfo();
+            GridFightTutorialSync = new global::March7thHoney.Proto.GridFightTutorialSyncInfo();
           }
           GridFightTutorialSync.MergeFrom(other.GridFightTutorialSync);
           break;
@@ -2299,25 +2299,25 @@ namespace CastoriceHoney.Server.Proto {
           break;
         case KCOCCGEOECOOneofCase.RemoveGameItemInfo:
           if (RemoveGameItemInfo == null) {
-            RemoveGameItemInfo = new global::CastoriceHoney.Server.Proto.GridFightGameItemSyncInfo();
+            RemoveGameItemInfo = new global::March7thHoney.Proto.GridFightGameItemSyncInfo();
           }
           RemoveGameItemInfo.MergeFrom(other.RemoveGameItemInfo);
           break;
         case KCOCCGEOECOOneofCase.GridFightLineupHp:
           if (GridFightLineupHp == null) {
-            GridFightLineupHp = new global::CastoriceHoney.Server.Proto.GridFightLineupHpSyncInfo();
+            GridFightLineupHp = new global::March7thHoney.Proto.GridFightLineupHpSyncInfo();
           }
           GridFightLineupHp.MergeFrom(other.GridFightLineupHp);
           break;
         case KCOCCGEOECOOneofCase.SectionRecordSyncInfo:
           if (SectionRecordSyncInfo == null) {
-            SectionRecordSyncInfo = new global::CastoriceHoney.Server.Proto.GridFightSectionRecordInfo();
+            SectionRecordSyncInfo = new global::March7thHoney.Proto.GridFightSectionRecordInfo();
           }
           SectionRecordSyncInfo.MergeFrom(other.SectionRecordSyncInfo);
           break;
         case KCOCCGEOECOOneofCase.GridFightSyncGameItemInfo:
           if (GridFightSyncGameItemInfo == null) {
-            GridFightSyncGameItemInfo = new global::CastoriceHoney.Server.Proto.GridFightGameItemInfo();
+            GridFightSyncGameItemInfo = new global::March7thHoney.Proto.GridFightGameItemInfo();
           }
           GridFightSyncGameItemInfo.MergeFrom(other.GridFightSyncGameItemInfo);
           break;
@@ -2326,25 +2326,25 @@ namespace CastoriceHoney.Server.Proto {
           break;
         case KCOCCGEOECOOneofCase.TraitTrackSyncInfo:
           if (TraitTrackSyncInfo == null) {
-            TraitTrackSyncInfo = new global::CastoriceHoney.Server.Proto.GridFightTraitTrackSyncInfo();
+            TraitTrackSyncInfo = new global::March7thHoney.Proto.GridFightTraitTrackSyncInfo();
           }
           TraitTrackSyncInfo.MergeFrom(other.TraitTrackSyncInfo);
           break;
         case KCOCCGEOECOOneofCase.BAODHPCOJLH:
           if (BAODHPCOJLH == null) {
-            BAODHPCOJLH = new global::CastoriceHoney.Server.Proto.CKCKIDHMMEG();
+            BAODHPCOJLH = new global::March7thHoney.Proto.CKCKIDHMMEG();
           }
           BAODHPCOJLH.MergeFrom(other.BAODHPCOJLH);
           break;
         case KCOCCGEOECOOneofCase.AddGameItemInfo:
           if (AddGameItemInfo == null) {
-            AddGameItemInfo = new global::CastoriceHoney.Server.Proto.GridFightGameItemSyncInfo();
+            AddGameItemInfo = new global::March7thHoney.Proto.GridFightGameItemSyncInfo();
           }
           AddGameItemInfo.MergeFrom(other.AddGameItemInfo);
           break;
         case KCOCCGEOECOOneofCase.UpdateNpcInfo:
           if (UpdateNpcInfo == null) {
-            UpdateNpcInfo = new global::CastoriceHoney.Server.Proto.GridGameNpcInfo();
+            UpdateNpcInfo = new global::March7thHoney.Proto.GridGameNpcInfo();
           }
           UpdateNpcInfo.MergeFrom(other.UpdateNpcInfo);
           break;
@@ -2356,7 +2356,7 @@ namespace CastoriceHoney.Server.Proto {
           break;
         case KCOCCGEOECOOneofCase.GMJLJDJDIGM:
           if (GMJLJDJDIGM == null) {
-            GMJLJDJDIGM = new global::CastoriceHoney.Server.Proto.JPBCKCDEGOM();
+            GMJLJDJDIGM = new global::March7thHoney.Proto.JPBCKCDEGOM();
           }
           GMJLJDJDIGM.MergeFrom(other.GMJLJDJDIGM);
           break;
@@ -2368,25 +2368,25 @@ namespace CastoriceHoney.Server.Proto {
           break;
         case KCOCCGEOECOOneofCase.EliteBranchSyncInfo:
           if (EliteBranchSyncInfo == null) {
-            EliteBranchSyncInfo = new global::CastoriceHoney.Server.Proto.GridFightEliteBranchSyncInfo();
+            EliteBranchSyncInfo = new global::March7thHoney.Proto.GridFightEliteBranchSyncInfo();
           }
           EliteBranchSyncInfo.MergeFrom(other.EliteBranchSyncInfo);
           break;
         case KCOCCGEOECOOneofCase.IBCEPCFFMOL:
           if (IBCEPCFFMOL == null) {
-            IBCEPCFFMOL = new global::CastoriceHoney.Server.Proto.DIBJGAKOCLO();
+            IBCEPCFFMOL = new global::March7thHoney.Proto.DIBJGAKOCLO();
           }
           IBCEPCFFMOL.MergeFrom(other.IBCEPCFFMOL);
           break;
         case KCOCCGEOECOOneofCase.PGPKPMOIAIL:
           if (PGPKPMOIAIL == null) {
-            PGPKPMOIAIL = new global::CastoriceHoney.Server.Proto.CLOEPPBCKGF();
+            PGPKPMOIAIL = new global::March7thHoney.Proto.CLOEPPBCKGF();
           }
           PGPKPMOIAIL.MergeFrom(other.PGPKPMOIAIL);
           break;
         case KCOCCGEOECOOneofCase.OrbSyncInfo:
           if (OrbSyncInfo == null) {
-            OrbSyncInfo = new global::CastoriceHoney.Server.Proto.GridFightOrbSyncInfo();
+            OrbSyncInfo = new global::March7thHoney.Proto.GridFightOrbSyncInfo();
           }
           OrbSyncInfo.MergeFrom(other.OrbSyncInfo);
           break;
@@ -2395,13 +2395,13 @@ namespace CastoriceHoney.Server.Proto {
           break;
         case KCOCCGEOECOOneofCase.GridGameAugmentUpdate:
           if (GridGameAugmentUpdate == null) {
-            GridGameAugmentUpdate = new global::CastoriceHoney.Server.Proto.GridFightGameAugmentUpdate();
+            GridGameAugmentUpdate = new global::March7thHoney.Proto.GridFightGameAugmentUpdate();
           }
           GridGameAugmentUpdate.MergeFrom(other.GridGameAugmentUpdate);
           break;
         case KCOCCGEOECOOneofCase.ShopSyncInfo:
           if (ShopSyncInfo == null) {
-            ShopSyncInfo = new global::CastoriceHoney.Server.Proto.GridFightShopSyncInfo();
+            ShopSyncInfo = new global::March7thHoney.Proto.GridFightShopSyncInfo();
           }
           ShopSyncInfo.MergeFrom(other.ShopSyncInfo);
           break;
@@ -2438,7 +2438,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 458: {
-            global::CastoriceHoney.Server.Proto.RoleTrackEquipmentSyncInfo subBuilder = new global::CastoriceHoney.Server.Proto.RoleTrackEquipmentSyncInfo();
+            global::March7thHoney.Proto.RoleTrackEquipmentSyncInfo subBuilder = new global::March7thHoney.Proto.RoleTrackEquipmentSyncInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.EquipmentTrackSyncInfo) {
               subBuilder.MergeFrom(EquipmentTrackSyncInfo);
             }
@@ -2451,7 +2451,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 1122: {
-            global::CastoriceHoney.Server.Proto.CMCJNKPKBEM subBuilder = new global::CastoriceHoney.Server.Proto.CMCJNKPKBEM();
+            global::March7thHoney.Proto.CMCJNKPKBEM subBuilder = new global::March7thHoney.Proto.CMCJNKPKBEM();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.CFNPGNMPNDN) {
               subBuilder.MergeFrom(CFNPGNMPNDN);
             }
@@ -2460,7 +2460,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 1682: {
-            global::CastoriceHoney.Server.Proto.GridGameRoleInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridGameRoleInfo();
+            global::March7thHoney.Proto.GridGameRoleInfo subBuilder = new global::March7thHoney.Proto.GridGameRoleInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.AddRoleInfo) {
               subBuilder.MergeFrom(AddRoleInfo);
             }
@@ -2469,7 +2469,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 1842: {
-            global::CastoriceHoney.Server.Proto.GridGameNpcInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridGameNpcInfo();
+            global::March7thHoney.Proto.GridGameNpcInfo subBuilder = new global::March7thHoney.Proto.GridGameNpcInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.AddNpcInfo) {
               subBuilder.MergeFrom(AddNpcInfo);
             }
@@ -2482,7 +2482,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 2066: {
-            global::CastoriceHoney.Server.Proto.GridFightTraitSyncInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightTraitSyncInfo();
+            global::March7thHoney.Proto.GridFightTraitSyncInfo subBuilder = new global::March7thHoney.Proto.GridFightTraitSyncInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.TraitSyncInfo) {
               subBuilder.MergeFrom(TraitSyncInfo);
             }
@@ -2491,7 +2491,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 2170: {
-            global::CastoriceHoney.Server.Proto.GridFightPortalServerDataUpdate subBuilder = new global::CastoriceHoney.Server.Proto.GridFightPortalServerDataUpdate();
+            global::March7thHoney.Proto.GridFightPortalServerDataUpdate subBuilder = new global::March7thHoney.Proto.GridFightPortalServerDataUpdate();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.PortalServerDataUpdate) {
               subBuilder.MergeFrom(PortalServerDataUpdate);
             }
@@ -2500,7 +2500,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 2274: {
-            global::CastoriceHoney.Server.Proto.GridFightGameItemSyncInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightGameItemSyncInfo();
+            global::March7thHoney.Proto.GridFightGameItemSyncInfo subBuilder = new global::March7thHoney.Proto.GridFightGameItemSyncInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.UpdateGameItemInfo) {
               subBuilder.MergeFrom(UpdateGameItemInfo);
             }
@@ -2509,7 +2509,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 3090: {
-            global::CastoriceHoney.Server.Proto.GridGameForgeItemInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridGameForgeItemInfo();
+            global::March7thHoney.Proto.GridGameForgeItemInfo subBuilder = new global::March7thHoney.Proto.GridGameForgeItemInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.AddForgeInfo) {
               subBuilder.MergeFrom(AddForgeInfo);
             }
@@ -2518,7 +2518,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 3146: {
-            global::CastoriceHoney.Server.Proto.GridGameRoleInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridGameRoleInfo();
+            global::March7thHoney.Proto.GridGameRoleInfo subBuilder = new global::March7thHoney.Proto.GridGameRoleInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.UpdateRoleInfo) {
               subBuilder.MergeFrom(UpdateRoleInfo);
             }
@@ -2531,7 +2531,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 3498: {
-            global::CastoriceHoney.Server.Proto.GridFightDamageSttInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightDamageSttInfo();
+            global::March7thHoney.Proto.GridFightDamageSttInfo subBuilder = new global::March7thHoney.Proto.GridFightDamageSttInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.GridFightDamageSttInfo) {
               subBuilder.MergeFrom(GridFightDamageSttInfo);
             }
@@ -2544,7 +2544,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 3746: {
-            global::CastoriceHoney.Server.Proto.GridFightLockInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightLockInfo();
+            global::March7thHoney.Proto.GridFightLockInfo subBuilder = new global::March7thHoney.Proto.GridFightLockInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.SyncLockInfo) {
               subBuilder.MergeFrom(SyncLockInfo);
             }
@@ -2565,7 +2565,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 4466: {
-            global::CastoriceHoney.Server.Proto.GridFightGameAugmentAdd subBuilder = new global::CastoriceHoney.Server.Proto.GridFightGameAugmentAdd();
+            global::March7thHoney.Proto.GridFightGameAugmentAdd subBuilder = new global::March7thHoney.Proto.GridFightGameAugmentAdd();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.AugmentSyncInfo) {
               subBuilder.MergeFrom(AugmentSyncInfo);
             }
@@ -2578,7 +2578,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 6290: {
-            global::CastoriceHoney.Server.Proto.GridFightPendingAction subBuilder = new global::CastoriceHoney.Server.Proto.GridFightPendingAction();
+            global::March7thHoney.Proto.GridFightPendingAction subBuilder = new global::March7thHoney.Proto.GridFightPendingAction();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.PendingAction) {
               subBuilder.MergeFrom(PendingAction);
             }
@@ -2587,7 +2587,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 6386: {
-            global::CastoriceHoney.Server.Proto.GridGameOrbInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridGameOrbInfo();
+            global::March7thHoney.Proto.GridGameOrbInfo subBuilder = new global::March7thHoney.Proto.GridGameOrbInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.POIPGNHONMA) {
               subBuilder.MergeFrom(POIPGNHONMA);
             }
@@ -2596,7 +2596,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 6706: {
-            global::CastoriceHoney.Server.Proto.GridFightLevelSyncInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightLevelSyncInfo();
+            global::March7thHoney.Proto.GridFightLevelSyncInfo subBuilder = new global::March7thHoney.Proto.GridFightLevelSyncInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.LevelSyncInfo) {
               subBuilder.MergeFrom(LevelSyncInfo);
             }
@@ -2609,7 +2609,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 7274: {
-            global::CastoriceHoney.Server.Proto.GridGameForgeItemInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridGameForgeItemInfo();
+            global::March7thHoney.Proto.GridGameForgeItemInfo subBuilder = new global::March7thHoney.Proto.GridGameForgeItemInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.UpdateForgeInfo) {
               subBuilder.MergeFrom(UpdateForgeInfo);
             }
@@ -2618,7 +2618,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 7962: {
-            global::CastoriceHoney.Server.Proto.GridFightPlayerLevelSyncInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightPlayerLevelSyncInfo();
+            global::March7thHoney.Proto.GridFightPlayerLevelSyncInfo subBuilder = new global::March7thHoney.Proto.GridFightPlayerLevelSyncInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.PlayerLevel) {
               subBuilder.MergeFrom(PlayerLevel);
             }
@@ -2631,7 +2631,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 8130: {
-            global::CastoriceHoney.Server.Proto.CKCKIDHMMEG subBuilder = new global::CastoriceHoney.Server.Proto.CKCKIDHMMEG();
+            global::March7thHoney.Proto.CKCKIDHMMEG subBuilder = new global::March7thHoney.Proto.CKCKIDHMMEG();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.JIFKOHLNHAK) {
               subBuilder.MergeFrom(JIFKOHLNHAK);
             }
@@ -2640,7 +2640,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 8178: {
-            global::CastoriceHoney.Server.Proto.GridFightTutorialSyncInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightTutorialSyncInfo();
+            global::March7thHoney.Proto.GridFightTutorialSyncInfo subBuilder = new global::March7thHoney.Proto.GridFightTutorialSyncInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.GridFightTutorialSync) {
               subBuilder.MergeFrom(GridFightTutorialSync);
             }
@@ -2658,7 +2658,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 9034: {
-            global::CastoriceHoney.Server.Proto.GridFightGameItemSyncInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightGameItemSyncInfo();
+            global::March7thHoney.Proto.GridFightGameItemSyncInfo subBuilder = new global::March7thHoney.Proto.GridFightGameItemSyncInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.RemoveGameItemInfo) {
               subBuilder.MergeFrom(RemoveGameItemInfo);
             }
@@ -2667,7 +2667,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 9106: {
-            global::CastoriceHoney.Server.Proto.GridFightLineupHpSyncInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightLineupHpSyncInfo();
+            global::March7thHoney.Proto.GridFightLineupHpSyncInfo subBuilder = new global::March7thHoney.Proto.GridFightLineupHpSyncInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.GridFightLineupHp) {
               subBuilder.MergeFrom(GridFightLineupHp);
             }
@@ -2676,7 +2676,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 9242: {
-            global::CastoriceHoney.Server.Proto.GridFightSectionRecordInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightSectionRecordInfo();
+            global::March7thHoney.Proto.GridFightSectionRecordInfo subBuilder = new global::March7thHoney.Proto.GridFightSectionRecordInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.SectionRecordSyncInfo) {
               subBuilder.MergeFrom(SectionRecordSyncInfo);
             }
@@ -2685,7 +2685,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 9458: {
-            global::CastoriceHoney.Server.Proto.GridFightGameItemInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightGameItemInfo();
+            global::March7thHoney.Proto.GridFightGameItemInfo subBuilder = new global::March7thHoney.Proto.GridFightGameItemInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.GridFightSyncGameItemInfo) {
               subBuilder.MergeFrom(GridFightSyncGameItemInfo);
             }
@@ -2698,7 +2698,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 10762: {
-            global::CastoriceHoney.Server.Proto.GridFightTraitTrackSyncInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightTraitTrackSyncInfo();
+            global::March7thHoney.Proto.GridFightTraitTrackSyncInfo subBuilder = new global::March7thHoney.Proto.GridFightTraitTrackSyncInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.TraitTrackSyncInfo) {
               subBuilder.MergeFrom(TraitTrackSyncInfo);
             }
@@ -2707,7 +2707,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 11554: {
-            global::CastoriceHoney.Server.Proto.CKCKIDHMMEG subBuilder = new global::CastoriceHoney.Server.Proto.CKCKIDHMMEG();
+            global::March7thHoney.Proto.CKCKIDHMMEG subBuilder = new global::March7thHoney.Proto.CKCKIDHMMEG();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.BAODHPCOJLH) {
               subBuilder.MergeFrom(BAODHPCOJLH);
             }
@@ -2716,7 +2716,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 12106: {
-            global::CastoriceHoney.Server.Proto.GridFightGameItemSyncInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightGameItemSyncInfo();
+            global::March7thHoney.Proto.GridFightGameItemSyncInfo subBuilder = new global::March7thHoney.Proto.GridFightGameItemSyncInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.AddGameItemInfo) {
               subBuilder.MergeFrom(AddGameItemInfo);
             }
@@ -2725,7 +2725,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 12138: {
-            global::CastoriceHoney.Server.Proto.GridGameNpcInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridGameNpcInfo();
+            global::March7thHoney.Proto.GridGameNpcInfo subBuilder = new global::March7thHoney.Proto.GridGameNpcInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.UpdateNpcInfo) {
               subBuilder.MergeFrom(UpdateNpcInfo);
             }
@@ -2742,7 +2742,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 13026: {
-            global::CastoriceHoney.Server.Proto.JPBCKCDEGOM subBuilder = new global::CastoriceHoney.Server.Proto.JPBCKCDEGOM();
+            global::March7thHoney.Proto.JPBCKCDEGOM subBuilder = new global::March7thHoney.Proto.JPBCKCDEGOM();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.GMJLJDJDIGM) {
               subBuilder.MergeFrom(GMJLJDJDIGM);
             }
@@ -2759,7 +2759,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 13906: {
-            global::CastoriceHoney.Server.Proto.GridFightEliteBranchSyncInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightEliteBranchSyncInfo();
+            global::March7thHoney.Proto.GridFightEliteBranchSyncInfo subBuilder = new global::March7thHoney.Proto.GridFightEliteBranchSyncInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.EliteBranchSyncInfo) {
               subBuilder.MergeFrom(EliteBranchSyncInfo);
             }
@@ -2768,7 +2768,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 14506: {
-            global::CastoriceHoney.Server.Proto.DIBJGAKOCLO subBuilder = new global::CastoriceHoney.Server.Proto.DIBJGAKOCLO();
+            global::March7thHoney.Proto.DIBJGAKOCLO subBuilder = new global::March7thHoney.Proto.DIBJGAKOCLO();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.IBCEPCFFMOL) {
               subBuilder.MergeFrom(IBCEPCFFMOL);
             }
@@ -2777,7 +2777,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 14866: {
-            global::CastoriceHoney.Server.Proto.CLOEPPBCKGF subBuilder = new global::CastoriceHoney.Server.Proto.CLOEPPBCKGF();
+            global::March7thHoney.Proto.CLOEPPBCKGF subBuilder = new global::March7thHoney.Proto.CLOEPPBCKGF();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.PGPKPMOIAIL) {
               subBuilder.MergeFrom(PGPKPMOIAIL);
             }
@@ -2786,7 +2786,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 15162: {
-            global::CastoriceHoney.Server.Proto.GridFightOrbSyncInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightOrbSyncInfo();
+            global::March7thHoney.Proto.GridFightOrbSyncInfo subBuilder = new global::March7thHoney.Proto.GridFightOrbSyncInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.OrbSyncInfo) {
               subBuilder.MergeFrom(OrbSyncInfo);
             }
@@ -2799,7 +2799,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 15954: {
-            global::CastoriceHoney.Server.Proto.GridFightGameAugmentUpdate subBuilder = new global::CastoriceHoney.Server.Proto.GridFightGameAugmentUpdate();
+            global::March7thHoney.Proto.GridFightGameAugmentUpdate subBuilder = new global::March7thHoney.Proto.GridFightGameAugmentUpdate();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.GridGameAugmentUpdate) {
               subBuilder.MergeFrom(GridGameAugmentUpdate);
             }
@@ -2808,7 +2808,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 16314: {
-            global::CastoriceHoney.Server.Proto.GridFightShopSyncInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightShopSyncInfo();
+            global::March7thHoney.Proto.GridFightShopSyncInfo subBuilder = new global::March7thHoney.Proto.GridFightShopSyncInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.ShopSyncInfo) {
               subBuilder.MergeFrom(ShopSyncInfo);
             }
@@ -2848,7 +2848,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 458: {
-            global::CastoriceHoney.Server.Proto.RoleTrackEquipmentSyncInfo subBuilder = new global::CastoriceHoney.Server.Proto.RoleTrackEquipmentSyncInfo();
+            global::March7thHoney.Proto.RoleTrackEquipmentSyncInfo subBuilder = new global::March7thHoney.Proto.RoleTrackEquipmentSyncInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.EquipmentTrackSyncInfo) {
               subBuilder.MergeFrom(EquipmentTrackSyncInfo);
             }
@@ -2861,7 +2861,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 1122: {
-            global::CastoriceHoney.Server.Proto.CMCJNKPKBEM subBuilder = new global::CastoriceHoney.Server.Proto.CMCJNKPKBEM();
+            global::March7thHoney.Proto.CMCJNKPKBEM subBuilder = new global::March7thHoney.Proto.CMCJNKPKBEM();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.CFNPGNMPNDN) {
               subBuilder.MergeFrom(CFNPGNMPNDN);
             }
@@ -2870,7 +2870,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 1682: {
-            global::CastoriceHoney.Server.Proto.GridGameRoleInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridGameRoleInfo();
+            global::March7thHoney.Proto.GridGameRoleInfo subBuilder = new global::March7thHoney.Proto.GridGameRoleInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.AddRoleInfo) {
               subBuilder.MergeFrom(AddRoleInfo);
             }
@@ -2879,7 +2879,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 1842: {
-            global::CastoriceHoney.Server.Proto.GridGameNpcInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridGameNpcInfo();
+            global::March7thHoney.Proto.GridGameNpcInfo subBuilder = new global::March7thHoney.Proto.GridGameNpcInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.AddNpcInfo) {
               subBuilder.MergeFrom(AddNpcInfo);
             }
@@ -2892,7 +2892,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 2066: {
-            global::CastoriceHoney.Server.Proto.GridFightTraitSyncInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightTraitSyncInfo();
+            global::March7thHoney.Proto.GridFightTraitSyncInfo subBuilder = new global::March7thHoney.Proto.GridFightTraitSyncInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.TraitSyncInfo) {
               subBuilder.MergeFrom(TraitSyncInfo);
             }
@@ -2901,7 +2901,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 2170: {
-            global::CastoriceHoney.Server.Proto.GridFightPortalServerDataUpdate subBuilder = new global::CastoriceHoney.Server.Proto.GridFightPortalServerDataUpdate();
+            global::March7thHoney.Proto.GridFightPortalServerDataUpdate subBuilder = new global::March7thHoney.Proto.GridFightPortalServerDataUpdate();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.PortalServerDataUpdate) {
               subBuilder.MergeFrom(PortalServerDataUpdate);
             }
@@ -2910,7 +2910,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 2274: {
-            global::CastoriceHoney.Server.Proto.GridFightGameItemSyncInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightGameItemSyncInfo();
+            global::March7thHoney.Proto.GridFightGameItemSyncInfo subBuilder = new global::March7thHoney.Proto.GridFightGameItemSyncInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.UpdateGameItemInfo) {
               subBuilder.MergeFrom(UpdateGameItemInfo);
             }
@@ -2919,7 +2919,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 3090: {
-            global::CastoriceHoney.Server.Proto.GridGameForgeItemInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridGameForgeItemInfo();
+            global::March7thHoney.Proto.GridGameForgeItemInfo subBuilder = new global::March7thHoney.Proto.GridGameForgeItemInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.AddForgeInfo) {
               subBuilder.MergeFrom(AddForgeInfo);
             }
@@ -2928,7 +2928,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 3146: {
-            global::CastoriceHoney.Server.Proto.GridGameRoleInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridGameRoleInfo();
+            global::March7thHoney.Proto.GridGameRoleInfo subBuilder = new global::March7thHoney.Proto.GridGameRoleInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.UpdateRoleInfo) {
               subBuilder.MergeFrom(UpdateRoleInfo);
             }
@@ -2941,7 +2941,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 3498: {
-            global::CastoriceHoney.Server.Proto.GridFightDamageSttInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightDamageSttInfo();
+            global::March7thHoney.Proto.GridFightDamageSttInfo subBuilder = new global::March7thHoney.Proto.GridFightDamageSttInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.GridFightDamageSttInfo) {
               subBuilder.MergeFrom(GridFightDamageSttInfo);
             }
@@ -2954,7 +2954,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 3746: {
-            global::CastoriceHoney.Server.Proto.GridFightLockInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightLockInfo();
+            global::March7thHoney.Proto.GridFightLockInfo subBuilder = new global::March7thHoney.Proto.GridFightLockInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.SyncLockInfo) {
               subBuilder.MergeFrom(SyncLockInfo);
             }
@@ -2975,7 +2975,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 4466: {
-            global::CastoriceHoney.Server.Proto.GridFightGameAugmentAdd subBuilder = new global::CastoriceHoney.Server.Proto.GridFightGameAugmentAdd();
+            global::March7thHoney.Proto.GridFightGameAugmentAdd subBuilder = new global::March7thHoney.Proto.GridFightGameAugmentAdd();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.AugmentSyncInfo) {
               subBuilder.MergeFrom(AugmentSyncInfo);
             }
@@ -2988,7 +2988,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 6290: {
-            global::CastoriceHoney.Server.Proto.GridFightPendingAction subBuilder = new global::CastoriceHoney.Server.Proto.GridFightPendingAction();
+            global::March7thHoney.Proto.GridFightPendingAction subBuilder = new global::March7thHoney.Proto.GridFightPendingAction();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.PendingAction) {
               subBuilder.MergeFrom(PendingAction);
             }
@@ -2997,7 +2997,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 6386: {
-            global::CastoriceHoney.Server.Proto.GridGameOrbInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridGameOrbInfo();
+            global::March7thHoney.Proto.GridGameOrbInfo subBuilder = new global::March7thHoney.Proto.GridGameOrbInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.POIPGNHONMA) {
               subBuilder.MergeFrom(POIPGNHONMA);
             }
@@ -3006,7 +3006,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 6706: {
-            global::CastoriceHoney.Server.Proto.GridFightLevelSyncInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightLevelSyncInfo();
+            global::March7thHoney.Proto.GridFightLevelSyncInfo subBuilder = new global::March7thHoney.Proto.GridFightLevelSyncInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.LevelSyncInfo) {
               subBuilder.MergeFrom(LevelSyncInfo);
             }
@@ -3019,7 +3019,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 7274: {
-            global::CastoriceHoney.Server.Proto.GridGameForgeItemInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridGameForgeItemInfo();
+            global::March7thHoney.Proto.GridGameForgeItemInfo subBuilder = new global::March7thHoney.Proto.GridGameForgeItemInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.UpdateForgeInfo) {
               subBuilder.MergeFrom(UpdateForgeInfo);
             }
@@ -3028,7 +3028,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 7962: {
-            global::CastoriceHoney.Server.Proto.GridFightPlayerLevelSyncInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightPlayerLevelSyncInfo();
+            global::March7thHoney.Proto.GridFightPlayerLevelSyncInfo subBuilder = new global::March7thHoney.Proto.GridFightPlayerLevelSyncInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.PlayerLevel) {
               subBuilder.MergeFrom(PlayerLevel);
             }
@@ -3041,7 +3041,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 8130: {
-            global::CastoriceHoney.Server.Proto.CKCKIDHMMEG subBuilder = new global::CastoriceHoney.Server.Proto.CKCKIDHMMEG();
+            global::March7thHoney.Proto.CKCKIDHMMEG subBuilder = new global::March7thHoney.Proto.CKCKIDHMMEG();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.JIFKOHLNHAK) {
               subBuilder.MergeFrom(JIFKOHLNHAK);
             }
@@ -3050,7 +3050,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 8178: {
-            global::CastoriceHoney.Server.Proto.GridFightTutorialSyncInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightTutorialSyncInfo();
+            global::March7thHoney.Proto.GridFightTutorialSyncInfo subBuilder = new global::March7thHoney.Proto.GridFightTutorialSyncInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.GridFightTutorialSync) {
               subBuilder.MergeFrom(GridFightTutorialSync);
             }
@@ -3068,7 +3068,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 9034: {
-            global::CastoriceHoney.Server.Proto.GridFightGameItemSyncInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightGameItemSyncInfo();
+            global::March7thHoney.Proto.GridFightGameItemSyncInfo subBuilder = new global::March7thHoney.Proto.GridFightGameItemSyncInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.RemoveGameItemInfo) {
               subBuilder.MergeFrom(RemoveGameItemInfo);
             }
@@ -3077,7 +3077,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 9106: {
-            global::CastoriceHoney.Server.Proto.GridFightLineupHpSyncInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightLineupHpSyncInfo();
+            global::March7thHoney.Proto.GridFightLineupHpSyncInfo subBuilder = new global::March7thHoney.Proto.GridFightLineupHpSyncInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.GridFightLineupHp) {
               subBuilder.MergeFrom(GridFightLineupHp);
             }
@@ -3086,7 +3086,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 9242: {
-            global::CastoriceHoney.Server.Proto.GridFightSectionRecordInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightSectionRecordInfo();
+            global::March7thHoney.Proto.GridFightSectionRecordInfo subBuilder = new global::March7thHoney.Proto.GridFightSectionRecordInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.SectionRecordSyncInfo) {
               subBuilder.MergeFrom(SectionRecordSyncInfo);
             }
@@ -3095,7 +3095,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 9458: {
-            global::CastoriceHoney.Server.Proto.GridFightGameItemInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightGameItemInfo();
+            global::March7thHoney.Proto.GridFightGameItemInfo subBuilder = new global::March7thHoney.Proto.GridFightGameItemInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.GridFightSyncGameItemInfo) {
               subBuilder.MergeFrom(GridFightSyncGameItemInfo);
             }
@@ -3108,7 +3108,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 10762: {
-            global::CastoriceHoney.Server.Proto.GridFightTraitTrackSyncInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightTraitTrackSyncInfo();
+            global::March7thHoney.Proto.GridFightTraitTrackSyncInfo subBuilder = new global::March7thHoney.Proto.GridFightTraitTrackSyncInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.TraitTrackSyncInfo) {
               subBuilder.MergeFrom(TraitTrackSyncInfo);
             }
@@ -3117,7 +3117,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 11554: {
-            global::CastoriceHoney.Server.Proto.CKCKIDHMMEG subBuilder = new global::CastoriceHoney.Server.Proto.CKCKIDHMMEG();
+            global::March7thHoney.Proto.CKCKIDHMMEG subBuilder = new global::March7thHoney.Proto.CKCKIDHMMEG();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.BAODHPCOJLH) {
               subBuilder.MergeFrom(BAODHPCOJLH);
             }
@@ -3126,7 +3126,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 12106: {
-            global::CastoriceHoney.Server.Proto.GridFightGameItemSyncInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightGameItemSyncInfo();
+            global::March7thHoney.Proto.GridFightGameItemSyncInfo subBuilder = new global::March7thHoney.Proto.GridFightGameItemSyncInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.AddGameItemInfo) {
               subBuilder.MergeFrom(AddGameItemInfo);
             }
@@ -3135,7 +3135,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 12138: {
-            global::CastoriceHoney.Server.Proto.GridGameNpcInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridGameNpcInfo();
+            global::March7thHoney.Proto.GridGameNpcInfo subBuilder = new global::March7thHoney.Proto.GridGameNpcInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.UpdateNpcInfo) {
               subBuilder.MergeFrom(UpdateNpcInfo);
             }
@@ -3152,7 +3152,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 13026: {
-            global::CastoriceHoney.Server.Proto.JPBCKCDEGOM subBuilder = new global::CastoriceHoney.Server.Proto.JPBCKCDEGOM();
+            global::March7thHoney.Proto.JPBCKCDEGOM subBuilder = new global::March7thHoney.Proto.JPBCKCDEGOM();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.GMJLJDJDIGM) {
               subBuilder.MergeFrom(GMJLJDJDIGM);
             }
@@ -3169,7 +3169,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 13906: {
-            global::CastoriceHoney.Server.Proto.GridFightEliteBranchSyncInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightEliteBranchSyncInfo();
+            global::March7thHoney.Proto.GridFightEliteBranchSyncInfo subBuilder = new global::March7thHoney.Proto.GridFightEliteBranchSyncInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.EliteBranchSyncInfo) {
               subBuilder.MergeFrom(EliteBranchSyncInfo);
             }
@@ -3178,7 +3178,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 14506: {
-            global::CastoriceHoney.Server.Proto.DIBJGAKOCLO subBuilder = new global::CastoriceHoney.Server.Proto.DIBJGAKOCLO();
+            global::March7thHoney.Proto.DIBJGAKOCLO subBuilder = new global::March7thHoney.Proto.DIBJGAKOCLO();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.IBCEPCFFMOL) {
               subBuilder.MergeFrom(IBCEPCFFMOL);
             }
@@ -3187,7 +3187,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 14866: {
-            global::CastoriceHoney.Server.Proto.CLOEPPBCKGF subBuilder = new global::CastoriceHoney.Server.Proto.CLOEPPBCKGF();
+            global::March7thHoney.Proto.CLOEPPBCKGF subBuilder = new global::March7thHoney.Proto.CLOEPPBCKGF();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.PGPKPMOIAIL) {
               subBuilder.MergeFrom(PGPKPMOIAIL);
             }
@@ -3196,7 +3196,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 15162: {
-            global::CastoriceHoney.Server.Proto.GridFightOrbSyncInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightOrbSyncInfo();
+            global::March7thHoney.Proto.GridFightOrbSyncInfo subBuilder = new global::March7thHoney.Proto.GridFightOrbSyncInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.OrbSyncInfo) {
               subBuilder.MergeFrom(OrbSyncInfo);
             }
@@ -3209,7 +3209,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 15954: {
-            global::CastoriceHoney.Server.Proto.GridFightGameAugmentUpdate subBuilder = new global::CastoriceHoney.Server.Proto.GridFightGameAugmentUpdate();
+            global::March7thHoney.Proto.GridFightGameAugmentUpdate subBuilder = new global::March7thHoney.Proto.GridFightGameAugmentUpdate();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.GridGameAugmentUpdate) {
               subBuilder.MergeFrom(GridGameAugmentUpdate);
             }
@@ -3218,7 +3218,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 16314: {
-            global::CastoriceHoney.Server.Proto.GridFightShopSyncInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightShopSyncInfo();
+            global::March7thHoney.Proto.GridFightShopSyncInfo subBuilder = new global::March7thHoney.Proto.GridFightShopSyncInfo();
             if (kCOCCGEOECOCase_ == KCOCCGEOECOOneofCase.ShopSyncInfo) {
               subBuilder.MergeFrom(ShopSyncInfo);
             }

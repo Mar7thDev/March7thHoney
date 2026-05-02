@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Data.Config.Character;
+namespace March7thHoney.Data.Config.Character;
 
 public class CharacterConfigInfo
 {

@@ -1,10 +1,10 @@
-using CastoriceHoney.Server.Data.Excel;
-using CastoriceHoney.Server.GameServer.Game.Battle;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Proto.ServerSide;
+using March7thHoney.Data.Excel;
+using March7thHoney.GameServer.Game.Battle;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.Proto;
+using March7thHoney.Proto.ServerSide;
 
-namespace CastoriceHoney.Server.GameServer.Game.Challenge.Definitions;
+namespace March7thHoney.GameServer.Game.Challenge.Definitions;
 
 public abstract class BaseChallengeInstance(PlayerInstance player, ChallengeDataPb data)
 {

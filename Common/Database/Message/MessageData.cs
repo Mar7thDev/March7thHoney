@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Proto;
 using SqlSugar;
 
-namespace CastoriceHoney.Server.Database.Message;
+namespace March7thHoney.Database.Message;
 
 [SugarTable("Message")]
 public class MessageData : BaseDatabaseDataHelper

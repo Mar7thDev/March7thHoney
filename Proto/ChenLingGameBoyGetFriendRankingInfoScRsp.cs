@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from ChenLingGameBoyGetFriendRankingInfoScRsp.proto</summary>
   public static partial class ChenLingGameBoyGetFriendRankingInfoScRspReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "DSABKA0SEwoLR1BKSEpPT0lKSkMYDyABKA1CMwoTZW11Lmx1bmFyY29yZS5w",
             "cm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.PCMHMCLACNKReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.PCMHMCLACNKReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ChenLingGameBoyGetFriendRankingInfoScRsp), global::CastoriceHoney.Server.Proto.ChenLingGameBoyGetFriendRankingInfoScRsp.Parser, new[]{ "JPNALKEFHOH", "KEPMJKGJLNJ", "Retcode", "GPJHJOOIJJC" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChenLingGameBoyGetFriendRankingInfoScRsp), global::March7thHoney.Proto.ChenLingGameBoyGetFriendRankingInfoScRsp.Parser, new[]{ "JPNALKEFHOH", "KEPMJKGJLNJ", "Retcode", "GPJHJOOIJJC" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ChenLingGameBoyGetFriendRankingInfoScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ChenLingGameBoyGetFriendRankingInfoScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -90,12 +90,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "JPNALKEFHOH" field.</summary>
     public const int JPNALKEFHOHFieldNumber = 8;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.PCMHMCLACNK> _repeated_jPNALKEFHOH_codec
-        = pb::FieldCodec.ForMessage(66, global::CastoriceHoney.Server.Proto.PCMHMCLACNK.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.PCMHMCLACNK> jPNALKEFHOH_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.PCMHMCLACNK>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.PCMHMCLACNK> _repeated_jPNALKEFHOH_codec
+        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.PCMHMCLACNK.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.PCMHMCLACNK> jPNALKEFHOH_ = new pbc::RepeatedField<global::March7thHoney.Proto.PCMHMCLACNK>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.PCMHMCLACNK> JPNALKEFHOH {
+    public pbc::RepeatedField<global::March7thHoney.Proto.PCMHMCLACNK> JPNALKEFHOH {
       get { return jPNALKEFHOH_; }
     }
 

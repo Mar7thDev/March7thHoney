@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 using Google.Protobuf.Collections;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Send.PlayerBoard;
+namespace March7thHoney.GameServer.Server.Packet.Send.PlayerBoard;
 
 public class PacketSetDisplayAvatarScRsp : BasePacket
 {

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from DifficultyAdjustmentUpdateDataScRsp.proto</summary>
   public static partial class DifficultyAdjustmentUpdateDataScRspReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "TUhPSU1MR05HTUIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNl",
             "SG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.LMHOIMLGNGMReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.LMHOIMLGNGMReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.DifficultyAdjustmentUpdateDataScRsp), global::CastoriceHoney.Server.Proto.DifficultyAdjustmentUpdateDataScRsp.Parser, new[]{ "Retcode", "Data", "ContentPackageList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DifficultyAdjustmentUpdateDataScRsp), global::March7thHoney.Proto.DifficultyAdjustmentUpdateDataScRsp.Parser, new[]{ "Retcode", "Data", "ContentPackageList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.DifficultyAdjustmentUpdateDataScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.DifficultyAdjustmentUpdateDataScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -101,10 +101,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "data" field.</summary>
     public const int DataFieldNumber = 6;
-    private global::CastoriceHoney.Server.Proto.LMHOIMLGNGM data_;
+    private global::March7thHoney.Proto.LMHOIMLGNGM data_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.LMHOIMLGNGM Data {
+    public global::March7thHoney.Proto.LMHOIMLGNGM Data {
       get { return data_; }
       set {
         data_ = value;
@@ -113,12 +113,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "content_package_list" field.</summary>
     public const int ContentPackageListFieldNumber = 12;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.LMHOIMLGNGM> _repeated_contentPackageList_codec
-        = pb::FieldCodec.ForMessage(98, global::CastoriceHoney.Server.Proto.LMHOIMLGNGM.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.LMHOIMLGNGM> contentPackageList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.LMHOIMLGNGM>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.LMHOIMLGNGM> _repeated_contentPackageList_codec
+        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.LMHOIMLGNGM.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.LMHOIMLGNGM> contentPackageList_ = new pbc::RepeatedField<global::March7thHoney.Proto.LMHOIMLGNGM>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.LMHOIMLGNGM> ContentPackageList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.LMHOIMLGNGM> ContentPackageList {
       get { return contentPackageList_; }
     }
 
@@ -230,7 +230,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.data_ != null) {
         if (data_ == null) {
-          Data = new global::CastoriceHoney.Server.Proto.LMHOIMLGNGM();
+          Data = new global::March7thHoney.Proto.LMHOIMLGNGM();
         }
         Data.MergeFrom(other.Data);
       }
@@ -260,7 +260,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 50: {
             if (data_ == null) {
-              Data = new global::CastoriceHoney.Server.Proto.LMHOIMLGNGM();
+              Data = new global::March7thHoney.Proto.LMHOIMLGNGM();
             }
             input.ReadMessage(Data);
             break;
@@ -294,7 +294,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 50: {
             if (data_ == null) {
-              Data = new global::CastoriceHoney.Server.Proto.LMHOIMLGNGM();
+              Data = new global::March7thHoney.Proto.LMHOIMLGNGM();
             }
             input.ReadMessage(Data);
             break;

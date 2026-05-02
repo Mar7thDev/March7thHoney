@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace CastoriceHoney.Server.Data.Custom;
+namespace March7thHoney.Data.Custom;
 
 public class BaseRogueBuffGroupExcel : ExcelResource
 {

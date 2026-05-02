@@ -1,11 +1,11 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Database.Inventory;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.RollShop;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Data;
+using March7thHoney.Database.Inventory;
+using March7thHoney.GameServer.Server.Packet.Send.RollShop;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.RollShop;
+namespace March7thHoney.GameServer.Server.Packet.Recv.RollShop;
 
 [Opcode(CmdIds.DoGachaInRollShopCsReq)]
 public class HandlerDoGachaInRollShopCsReq : Handler

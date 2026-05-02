@@ -1,12 +1,12 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Database.Avatar;
-using CastoriceHoney.Server.Database.Challenge;
-using CastoriceHoney.Server.Database.Friend;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Data;
+using March7thHoney.Database.Avatar;
+using March7thHoney.Database.Challenge;
+using March7thHoney.Database.Friend;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Send.Friend;
+namespace March7thHoney.GameServer.Server.Packet.Send.Friend;
 
 public class PacketGetFriendBattleRecordDetailScRsp : BasePacket
 {

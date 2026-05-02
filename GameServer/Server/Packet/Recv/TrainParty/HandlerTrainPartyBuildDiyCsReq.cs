@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.TrainParty;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.GameServer.Server.Packet.Send.TrainParty;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.TrainParty;
+namespace March7thHoney.GameServer.Server.Packet.Recv.TrainParty;
 
 [Opcode(CmdIds.TrainPartyBuildDiyCsReq)]
 public class HandlerTrainPartyBuildDiyCsReq : Handler

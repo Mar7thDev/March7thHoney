@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("GridFightPortalBuff.json")]
 public class GridFightPortalBuffExcel : ExcelResource

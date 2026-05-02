@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from ChallengePeakGroupDataUpdateScNotify.proto</summary>
   public static partial class ChallengePeakGroupDataUpdateScNotifyReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "AiABKAsyEy5DaGFsbGVuZ2VQZWFrR3JvdXBCMwoTZW11Lmx1bmFyY29yZS5w",
             "cm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ChallengePeakGroupReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChallengePeakGroupReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ChallengePeakGroupDataUpdateScNotify), global::CastoriceHoney.Server.Proto.ChallengePeakGroupDataUpdateScNotify.Parser, new[]{ "ChallengePeakGroup" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakGroupDataUpdateScNotify), global::March7thHoney.Proto.ChallengePeakGroupDataUpdateScNotify.Parser, new[]{ "ChallengePeakGroup" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ChallengePeakGroupDataUpdateScNotifyReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ChallengePeakGroupDataUpdateScNotifyReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -86,10 +86,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "challenge_peak_group" field.</summary>
     public const int ChallengePeakGroupFieldNumber = 2;
-    private global::CastoriceHoney.Server.Proto.ChallengePeakGroup challengePeakGroup_;
+    private global::March7thHoney.Proto.ChallengePeakGroup challengePeakGroup_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ChallengePeakGroup ChallengePeakGroup {
+    public global::March7thHoney.Proto.ChallengePeakGroup ChallengePeakGroup {
       get { return challengePeakGroup_; }
       set {
         challengePeakGroup_ = value;
@@ -183,7 +183,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.challengePeakGroup_ != null) {
         if (challengePeakGroup_ == null) {
-          ChallengePeakGroup = new global::CastoriceHoney.Server.Proto.ChallengePeakGroup();
+          ChallengePeakGroup = new global::March7thHoney.Proto.ChallengePeakGroup();
         }
         ChallengePeakGroup.MergeFrom(other.ChallengePeakGroup);
       }
@@ -208,7 +208,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 18: {
             if (challengePeakGroup_ == null) {
-              ChallengePeakGroup = new global::CastoriceHoney.Server.Proto.ChallengePeakGroup();
+              ChallengePeakGroup = new global::March7thHoney.Proto.ChallengePeakGroup();
             }
             input.ReadMessage(ChallengePeakGroup);
             break;
@@ -234,7 +234,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 18: {
             if (challengePeakGroup_ == null) {
-              ChallengePeakGroup = new global::CastoriceHoney.Server.Proto.ChallengePeakGroup();
+              ChallengePeakGroup = new global::March7thHoney.Proto.ChallengePeakGroup();
             }
             input.ReadMessage(ChallengePeakGroup);
             break;

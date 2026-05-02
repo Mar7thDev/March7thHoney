@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from SharePunkLordMonsterCsReq.proto</summary>
   public static partial class SharePunkLordMonsterCsReqReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "b3JkU2hhcmVUeXBlEgsKA3VpZBgNIAEoDUIzChNlbXUubHVuYXJjb3JlLnBy",
             "b3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.PunkLordShareTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.PunkLordShareTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.SharePunkLordMonsterCsReq), global::CastoriceHoney.Server.Proto.SharePunkLordMonsterCsReq.Parser, new[]{ "MonsterId", "ShareType", "Uid" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SharePunkLordMonsterCsReq), global::March7thHoney.Proto.SharePunkLordMonsterCsReq.Parser, new[]{ "MonsterId", "ShareType", "Uid" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.SharePunkLordMonsterCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.SharePunkLordMonsterCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -100,10 +100,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "share_type" field.</summary>
     public const int ShareTypeFieldNumber = 12;
-    private global::CastoriceHoney.Server.Proto.PunkLordShareType shareType_ = global::CastoriceHoney.Server.Proto.PunkLordShareType.FoodopdndlkPcpdhelpkem;
+    private global::March7thHoney.Proto.PunkLordShareType shareType_ = global::March7thHoney.Proto.PunkLordShareType.FoodopdndlkPcpdhelpkem;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.PunkLordShareType ShareType {
+    public global::March7thHoney.Proto.PunkLordShareType ShareType {
       get { return shareType_; }
       set {
         shareType_ = value;
@@ -148,7 +148,7 @@ namespace CastoriceHoney.Server.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (MonsterId != 0) hash ^= MonsterId.GetHashCode();
-      if (ShareType != global::CastoriceHoney.Server.Proto.PunkLordShareType.FoodopdndlkPcpdhelpkem) hash ^= ShareType.GetHashCode();
+      if (ShareType != global::March7thHoney.Proto.PunkLordShareType.FoodopdndlkPcpdhelpkem) hash ^= ShareType.GetHashCode();
       if (Uid != 0) hash ^= Uid.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -172,7 +172,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(24);
         output.WriteUInt32(MonsterId);
       }
-      if (ShareType != global::CastoriceHoney.Server.Proto.PunkLordShareType.FoodopdndlkPcpdhelpkem) {
+      if (ShareType != global::March7thHoney.Proto.PunkLordShareType.FoodopdndlkPcpdhelpkem) {
         output.WriteRawTag(96);
         output.WriteEnum((int) ShareType);
       }
@@ -194,7 +194,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(24);
         output.WriteUInt32(MonsterId);
       }
-      if (ShareType != global::CastoriceHoney.Server.Proto.PunkLordShareType.FoodopdndlkPcpdhelpkem) {
+      if (ShareType != global::March7thHoney.Proto.PunkLordShareType.FoodopdndlkPcpdhelpkem) {
         output.WriteRawTag(96);
         output.WriteEnum((int) ShareType);
       }
@@ -215,7 +215,7 @@ namespace CastoriceHoney.Server.Proto {
       if (MonsterId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MonsterId);
       }
-      if (ShareType != global::CastoriceHoney.Server.Proto.PunkLordShareType.FoodopdndlkPcpdhelpkem) {
+      if (ShareType != global::March7thHoney.Proto.PunkLordShareType.FoodopdndlkPcpdhelpkem) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ShareType);
       }
       if (Uid != 0) {
@@ -236,7 +236,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other.MonsterId != 0) {
         MonsterId = other.MonsterId;
       }
-      if (other.ShareType != global::CastoriceHoney.Server.Proto.PunkLordShareType.FoodopdndlkPcpdhelpkem) {
+      if (other.ShareType != global::March7thHoney.Proto.PunkLordShareType.FoodopdndlkPcpdhelpkem) {
         ShareType = other.ShareType;
       }
       if (other.Uid != 0) {
@@ -266,7 +266,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 96: {
-            ShareType = (global::CastoriceHoney.Server.Proto.PunkLordShareType) input.ReadEnum();
+            ShareType = (global::March7thHoney.Proto.PunkLordShareType) input.ReadEnum();
             break;
           }
           case 104: {
@@ -297,7 +297,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 96: {
-            ShareType = (global::CastoriceHoney.Server.Proto.PunkLordShareType) input.ReadEnum();
+            ShareType = (global::March7thHoney.Proto.PunkLordShareType) input.ReadEnum();
             break;
           }
           case 104: {

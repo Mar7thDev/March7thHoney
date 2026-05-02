@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from StartChallengeScRsp.proto</summary>
   public static partial class StartChallengeScRspReflection {
@@ -33,9 +33,9 @@ namespace CastoriceHoney.Server.Proto {
             "ZRgPIAEoCzIKLlNjZW5lSW5mb0IzChNlbXUubHVuYXJjb3JlLnByb3RvqgIb",
             "Q2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ChallengeStageInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.CurChallengeReflection.Descriptor, global::CastoriceHoney.Server.Proto.LineupInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.SceneInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChallengeStageInfoReflection.Descriptor, global::March7thHoney.Proto.CurChallengeReflection.Descriptor, global::March7thHoney.Proto.LineupInfoReflection.Descriptor, global::March7thHoney.Proto.SceneInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.StartChallengeScRsp), global::CastoriceHoney.Server.Proto.StartChallengeScRsp.Parser, new[]{ "StageInfo", "CurChallenge", "Retcode", "LineupList", "Scene" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartChallengeScRsp), global::March7thHoney.Proto.StartChallengeScRsp.Parser, new[]{ "StageInfo", "CurChallenge", "Retcode", "LineupList", "Scene" }, null, null, null, null)
           }));
     }
     #endregion
@@ -57,7 +57,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.StartChallengeScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.StartChallengeScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -93,10 +93,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "stage_info" field.</summary>
     public const int StageInfoFieldNumber = 2;
-    private global::CastoriceHoney.Server.Proto.ChallengeStageInfo stageInfo_;
+    private global::March7thHoney.Proto.ChallengeStageInfo stageInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ChallengeStageInfo StageInfo {
+    public global::March7thHoney.Proto.ChallengeStageInfo StageInfo {
       get { return stageInfo_; }
       set {
         stageInfo_ = value;
@@ -105,10 +105,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "cur_challenge" field.</summary>
     public const int CurChallengeFieldNumber = 3;
-    private global::CastoriceHoney.Server.Proto.CurChallenge curChallenge_;
+    private global::March7thHoney.Proto.CurChallenge curChallenge_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.CurChallenge CurChallenge {
+    public global::March7thHoney.Proto.CurChallenge CurChallenge {
       get { return curChallenge_; }
       set {
         curChallenge_ = value;
@@ -129,21 +129,21 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "lineup_list" field.</summary>
     public const int LineupListFieldNumber = 13;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.LineupInfo> _repeated_lineupList_codec
-        = pb::FieldCodec.ForMessage(106, global::CastoriceHoney.Server.Proto.LineupInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.LineupInfo> lineupList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.LineupInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.LineupInfo> _repeated_lineupList_codec
+        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.LineupInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.LineupInfo> lineupList_ = new pbc::RepeatedField<global::March7thHoney.Proto.LineupInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.LineupInfo> LineupList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.LineupInfo> LineupList {
       get { return lineupList_; }
     }
 
     /// <summary>Field number for the "scene" field.</summary>
     public const int SceneFieldNumber = 15;
-    private global::CastoriceHoney.Server.Proto.SceneInfo scene_;
+    private global::March7thHoney.Proto.SceneInfo scene_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.SceneInfo Scene {
+    public global::March7thHoney.Proto.SceneInfo Scene {
       get { return scene_; }
       set {
         scene_ = value;
@@ -281,13 +281,13 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.stageInfo_ != null) {
         if (stageInfo_ == null) {
-          StageInfo = new global::CastoriceHoney.Server.Proto.ChallengeStageInfo();
+          StageInfo = new global::March7thHoney.Proto.ChallengeStageInfo();
         }
         StageInfo.MergeFrom(other.StageInfo);
       }
       if (other.curChallenge_ != null) {
         if (curChallenge_ == null) {
-          CurChallenge = new global::CastoriceHoney.Server.Proto.CurChallenge();
+          CurChallenge = new global::March7thHoney.Proto.CurChallenge();
         }
         CurChallenge.MergeFrom(other.CurChallenge);
       }
@@ -297,7 +297,7 @@ namespace CastoriceHoney.Server.Proto {
       lineupList_.Add(other.lineupList_);
       if (other.scene_ != null) {
         if (scene_ == null) {
-          Scene = new global::CastoriceHoney.Server.Proto.SceneInfo();
+          Scene = new global::March7thHoney.Proto.SceneInfo();
         }
         Scene.MergeFrom(other.Scene);
       }
@@ -322,14 +322,14 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 18: {
             if (stageInfo_ == null) {
-              StageInfo = new global::CastoriceHoney.Server.Proto.ChallengeStageInfo();
+              StageInfo = new global::March7thHoney.Proto.ChallengeStageInfo();
             }
             input.ReadMessage(StageInfo);
             break;
           }
           case 26: {
             if (curChallenge_ == null) {
-              CurChallenge = new global::CastoriceHoney.Server.Proto.CurChallenge();
+              CurChallenge = new global::March7thHoney.Proto.CurChallenge();
             }
             input.ReadMessage(CurChallenge);
             break;
@@ -344,7 +344,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 122: {
             if (scene_ == null) {
-              Scene = new global::CastoriceHoney.Server.Proto.SceneInfo();
+              Scene = new global::March7thHoney.Proto.SceneInfo();
             }
             input.ReadMessage(Scene);
             break;
@@ -370,14 +370,14 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 18: {
             if (stageInfo_ == null) {
-              StageInfo = new global::CastoriceHoney.Server.Proto.ChallengeStageInfo();
+              StageInfo = new global::March7thHoney.Proto.ChallengeStageInfo();
             }
             input.ReadMessage(StageInfo);
             break;
           }
           case 26: {
             if (curChallenge_ == null) {
-              CurChallenge = new global::CastoriceHoney.Server.Proto.CurChallenge();
+              CurChallenge = new global::March7thHoney.Proto.CurChallenge();
             }
             input.ReadMessage(CurChallenge);
             break;
@@ -392,7 +392,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 122: {
             if (scene_ == null) {
-              Scene = new global::CastoriceHoney.Server.Proto.SceneInfo();
+              Scene = new global::March7thHoney.Proto.SceneInfo();
             }
             input.ReadMessage(Scene);
             break;

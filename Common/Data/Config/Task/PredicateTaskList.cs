@@ -1,6 +1,6 @@
 using Newtonsoft.Json.Linq;
 
-namespace CastoriceHoney.Server.Data.Config.Task;
+namespace March7thHoney.Data.Config.Task;
 
 public class PredicateTaskList : TaskConfigInfo
 {

@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Data.Custom;
-using CastoriceHoney.Server.GameServer.Plugin;
-using CastoriceHoney.Server.Internationalization;
+using March7thHoney.Data;
+using March7thHoney.Data.Custom;
+using March7thHoney.GameServer.Plugin;
+using March7thHoney.Internationalization;
 
-namespace CastoriceHoney.Server.Command.Command.Cmd;
+namespace March7thHoney.Command.Command.Cmd;
 
 [CommandInfo("reload", "Game.Command.Reload.Desc", "Game.Command.Reload.Usage", permission: "egglink.manage")]
 public class CommandReload : ICommand

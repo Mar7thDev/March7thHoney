@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from BigDataAvatarRelicRecommend.proto</summary>
   public static partial class BigDataAvatarRelicRecommendReflection {
@@ -36,9 +36,9 @@ namespace CastoriceHoney.Server.Proto {
             "cmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3Rv",
             "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.BKODLDOFMMJReflection.Descriptor, global::CastoriceHoney.Server.Proto.FNBJPMGMJDPReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.BKODLDOFMMJReflection.Descriptor, global::March7thHoney.Proto.FNBJPMGMJDPReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.BigDataAvatarRelicRecommend), global::CastoriceHoney.Server.Proto.BigDataAvatarRelicRecommend.Parser, new[]{ "AvatarId", "OuterSetList", "SphereMainPropertyList", "RopeMainPropertyList", "InnerSetList", "FootMainPropertyList", "BodyMainPropertyList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BigDataAvatarRelicRecommend), global::March7thHoney.Proto.BigDataAvatarRelicRecommend.Parser, new[]{ "AvatarId", "OuterSetList", "SphereMainPropertyList", "RopeMainPropertyList", "InnerSetList", "FootMainPropertyList", "BodyMainPropertyList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -60,7 +60,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.BigDataAvatarRelicRecommendReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.BigDataAvatarRelicRecommendReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -110,67 +110,67 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "outer_set_list" field.</summary>
     public const int OuterSetListFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.FNBJPMGMJDP> _repeated_outerSetList_codec
-        = pb::FieldCodec.ForMessage(18, global::CastoriceHoney.Server.Proto.FNBJPMGMJDP.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.FNBJPMGMJDP> outerSetList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.FNBJPMGMJDP>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.FNBJPMGMJDP> _repeated_outerSetList_codec
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.FNBJPMGMJDP.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.FNBJPMGMJDP> outerSetList_ = new pbc::RepeatedField<global::March7thHoney.Proto.FNBJPMGMJDP>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.FNBJPMGMJDP> OuterSetList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.FNBJPMGMJDP> OuterSetList {
       get { return outerSetList_; }
     }
 
     /// <summary>Field number for the "sphere_main_property_list" field.</summary>
     public const int SphereMainPropertyListFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.BKODLDOFMMJ> _repeated_sphereMainPropertyList_codec
-        = pb::FieldCodec.ForMessage(34, global::CastoriceHoney.Server.Proto.BKODLDOFMMJ.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BKODLDOFMMJ> sphereMainPropertyList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BKODLDOFMMJ>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BKODLDOFMMJ> _repeated_sphereMainPropertyList_codec
+        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.BKODLDOFMMJ.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BKODLDOFMMJ> sphereMainPropertyList_ = new pbc::RepeatedField<global::March7thHoney.Proto.BKODLDOFMMJ>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BKODLDOFMMJ> SphereMainPropertyList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.BKODLDOFMMJ> SphereMainPropertyList {
       get { return sphereMainPropertyList_; }
     }
 
     /// <summary>Field number for the "rope_main_property_list" field.</summary>
     public const int RopeMainPropertyListFieldNumber = 7;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.BKODLDOFMMJ> _repeated_ropeMainPropertyList_codec
-        = pb::FieldCodec.ForMessage(58, global::CastoriceHoney.Server.Proto.BKODLDOFMMJ.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BKODLDOFMMJ> ropeMainPropertyList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BKODLDOFMMJ>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BKODLDOFMMJ> _repeated_ropeMainPropertyList_codec
+        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.BKODLDOFMMJ.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BKODLDOFMMJ> ropeMainPropertyList_ = new pbc::RepeatedField<global::March7thHoney.Proto.BKODLDOFMMJ>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BKODLDOFMMJ> RopeMainPropertyList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.BKODLDOFMMJ> RopeMainPropertyList {
       get { return ropeMainPropertyList_; }
     }
 
     /// <summary>Field number for the "inner_set_list" field.</summary>
     public const int InnerSetListFieldNumber = 9;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.FNBJPMGMJDP> _repeated_innerSetList_codec
-        = pb::FieldCodec.ForMessage(74, global::CastoriceHoney.Server.Proto.FNBJPMGMJDP.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.FNBJPMGMJDP> innerSetList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.FNBJPMGMJDP>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.FNBJPMGMJDP> _repeated_innerSetList_codec
+        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.FNBJPMGMJDP.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.FNBJPMGMJDP> innerSetList_ = new pbc::RepeatedField<global::March7thHoney.Proto.FNBJPMGMJDP>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.FNBJPMGMJDP> InnerSetList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.FNBJPMGMJDP> InnerSetList {
       get { return innerSetList_; }
     }
 
     /// <summary>Field number for the "foot_main_property_list" field.</summary>
     public const int FootMainPropertyListFieldNumber = 13;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.BKODLDOFMMJ> _repeated_footMainPropertyList_codec
-        = pb::FieldCodec.ForMessage(106, global::CastoriceHoney.Server.Proto.BKODLDOFMMJ.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BKODLDOFMMJ> footMainPropertyList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BKODLDOFMMJ>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BKODLDOFMMJ> _repeated_footMainPropertyList_codec
+        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.BKODLDOFMMJ.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BKODLDOFMMJ> footMainPropertyList_ = new pbc::RepeatedField<global::March7thHoney.Proto.BKODLDOFMMJ>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BKODLDOFMMJ> FootMainPropertyList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.BKODLDOFMMJ> FootMainPropertyList {
       get { return footMainPropertyList_; }
     }
 
     /// <summary>Field number for the "body_main_property_list" field.</summary>
     public const int BodyMainPropertyListFieldNumber = 15;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.BKODLDOFMMJ> _repeated_bodyMainPropertyList_codec
-        = pb::FieldCodec.ForMessage(122, global::CastoriceHoney.Server.Proto.BKODLDOFMMJ.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BKODLDOFMMJ> bodyMainPropertyList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BKODLDOFMMJ>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BKODLDOFMMJ> _repeated_bodyMainPropertyList_codec
+        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.BKODLDOFMMJ.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BKODLDOFMMJ> bodyMainPropertyList_ = new pbc::RepeatedField<global::March7thHoney.Proto.BKODLDOFMMJ>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BKODLDOFMMJ> BodyMainPropertyList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.BKODLDOFMMJ> BodyMainPropertyList {
       get { return bodyMainPropertyList_; }
     }
 

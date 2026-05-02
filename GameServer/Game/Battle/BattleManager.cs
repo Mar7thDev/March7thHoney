@@ -1,18 +1,18 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Data.Excel;
-using CastoriceHoney.Server.Database.Avatar;
-using CastoriceHoney.Server.Database.Inventory;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.GameServer.Game.Scene;
-using CastoriceHoney.Server.GameServer.Game.Scene.Entity;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Battle;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Lineup;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Scene;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
-using static CastoriceHoney.Server.GameServer.Plugin.Event.PluginEvent;
+using March7thHoney.Data;
+using March7thHoney.Data.Excel;
+using March7thHoney.Database.Avatar;
+using March7thHoney.Database.Inventory;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Game.Scene;
+using March7thHoney.GameServer.Game.Scene.Entity;
+using March7thHoney.GameServer.Server.Packet.Send.Battle;
+using March7thHoney.GameServer.Server.Packet.Send.Lineup;
+using March7thHoney.GameServer.Server.Packet.Send.Scene;
+using March7thHoney.Proto;
+using March7thHoney.Util;
+using static March7thHoney.GameServer.Plugin.Event.PluginEvent;
 
-namespace CastoriceHoney.Server.GameServer.Game.Battle;
+namespace March7thHoney.GameServer.Game.Battle;
 
 public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
 {

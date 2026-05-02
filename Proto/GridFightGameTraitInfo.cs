@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GridFightGameTraitInfo.proto</summary>
   public static partial class GridFightGameTraitInfoReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "QUJHQktHQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25l",
             "eS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ELEOGABGBKGReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridGameTraitInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ELEOGABGBKGReflection.Descriptor, global::March7thHoney.Proto.GridGameTraitInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GridFightGameTraitInfo), global::CastoriceHoney.Server.Proto.GridFightGameTraitInfo.Parser, new[]{ "GridFightTraitInfo", "ALIDDLBDPDH" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightGameTraitInfo), global::March7thHoney.Proto.GridFightGameTraitInfo.Parser, new[]{ "GridFightTraitInfo", "ALIDDLBDPDH" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GridFightGameTraitInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GridFightGameTraitInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -88,23 +88,23 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "grid_fight_trait_info" field.</summary>
     public const int GridFightTraitInfoFieldNumber = 5;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.GridGameTraitInfo> _repeated_gridFightTraitInfo_codec
-        = pb::FieldCodec.ForMessage(42, global::CastoriceHoney.Server.Proto.GridGameTraitInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridGameTraitInfo> gridFightTraitInfo_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridGameTraitInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GridGameTraitInfo> _repeated_gridFightTraitInfo_codec
+        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.GridGameTraitInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GridGameTraitInfo> gridFightTraitInfo_ = new pbc::RepeatedField<global::March7thHoney.Proto.GridGameTraitInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridGameTraitInfo> GridFightTraitInfo {
+    public pbc::RepeatedField<global::March7thHoney.Proto.GridGameTraitInfo> GridFightTraitInfo {
       get { return gridFightTraitInfo_; }
     }
 
     /// <summary>Field number for the "ALIDDLBDPDH" field.</summary>
     public const int ALIDDLBDPDHFieldNumber = 13;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ELEOGABGBKG> _repeated_aLIDDLBDPDH_codec
-        = pb::FieldCodec.ForMessage(106, global::CastoriceHoney.Server.Proto.ELEOGABGBKG.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ELEOGABGBKG> aLIDDLBDPDH_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ELEOGABGBKG>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ELEOGABGBKG> _repeated_aLIDDLBDPDH_codec
+        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.ELEOGABGBKG.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ELEOGABGBKG> aLIDDLBDPDH_ = new pbc::RepeatedField<global::March7thHoney.Proto.ELEOGABGBKG>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ELEOGABGBKG> ALIDDLBDPDH {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ELEOGABGBKG> ALIDDLBDPDH {
       get { return aLIDDLBDPDH_; }
     }
 

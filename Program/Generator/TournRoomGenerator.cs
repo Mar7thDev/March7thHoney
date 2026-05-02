@@ -1,11 +1,11 @@
 using System.Text;
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Data.Custom;
-using CastoriceHoney.Server.Enums.TournRogue;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Data;
+using March7thHoney.Data.Custom;
+using March7thHoney.Enums.TournRogue;
+using March7thHoney.Util;
 using Newtonsoft.Json;
 
-namespace CastoriceHoney.Server.Program.Generator;
+namespace March7thHoney.Program.Generator;
 
 public static class TournRoomGenerator
 {

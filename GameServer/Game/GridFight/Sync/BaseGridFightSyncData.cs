@@ -1,6 +1,6 @@
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Game.GridFight.Sync;
+namespace March7thHoney.GameServer.Game.GridFight.Sync;
 
 public abstract class BaseGridFightSyncData(GridFightSrc src, uint groupId = 0, params uint[] syncParams)
 {

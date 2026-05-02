@@ -1,26 +1,26 @@
-using CastoriceHoney.Server.Command;
-using CastoriceHoney.Server.Command.Command;
-using CastoriceHoney.Server.Configuration;
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Database;
-using CastoriceHoney.Server.Database.Avatar;
-using CastoriceHoney.Server.Enums;
-using CastoriceHoney.Server.GameServer.Command;
-using CastoriceHoney.Server.GameServer.Game.Challenge.Definitions;
-using CastoriceHoney.Server.GameServer.Plugin;
-using CastoriceHoney.Server.GameServer.Server;
-using CastoriceHoney.Server.GameServer.Server.Packet;
-using CastoriceHoney.Server.Internationalization;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Program.Generator;
-using CastoriceHoney.Server.Program.Handbook;
-using CastoriceHoney.Server.Util;
-using CastoriceHoney.Server.WebServer;
-using CastoriceHoney.Server.WebServer.Server;
+using March7thHoney.Command;
+using March7thHoney.Command.Command;
+using March7thHoney.Configuration;
+using March7thHoney.Data;
+using March7thHoney.Database;
+using March7thHoney.Database.Avatar;
+using March7thHoney.Enums;
+using March7thHoney.GameServer.Command;
+using March7thHoney.GameServer.Game.Challenge.Definitions;
+using March7thHoney.GameServer.Plugin;
+using March7thHoney.GameServer.Server;
+using March7thHoney.GameServer.Server.Packet;
+using March7thHoney.Internationalization;
+using March7thHoney.Kcp;
+using March7thHoney.Program.Generator;
+using March7thHoney.Program.Handbook;
+using March7thHoney.Util;
+using March7thHoney.WebServer;
+using March7thHoney.WebServer.Server;
 using System.Globalization;
 using System.IO.Compression;
 
-namespace CastoriceHoney.Server.Program.Program;
+namespace March7thHoney.Program.Program;
 
 public class EntryPoint
 {

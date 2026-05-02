@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.PlayerSync;
-using CastoriceHoney.Server.Internationalization;
+using March7thHoney.Data;
+using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
+using March7thHoney.Internationalization;
 
-namespace CastoriceHoney.Server.Command.Command.Cmd;
+namespace March7thHoney.Command.Command.Cmd;
 
 [CommandInfo("setlevel", "Game.Command.Setlevel.Desc", "Game.Command.Setlevel.Usage", ["level"])]
 public class CommandSetlevel : ICommand

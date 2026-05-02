@@ -1,9 +1,9 @@
 using System.Security.Cryptography;
 using System.Text;
-using CastoriceHoney.Server.Internationalization;
-using CastoriceHoney.Server.Util.Security;
+using March7thHoney.Internationalization;
+using March7thHoney.Util.Security;
 
-namespace CastoriceHoney.Server.Util;
+namespace March7thHoney.Util;
 
 public class Crypto
 {

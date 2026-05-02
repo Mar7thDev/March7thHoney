@@ -1,6 +1,6 @@
 using Newtonsoft.Json.Linq;
 
-namespace CastoriceHoney.Server.Data.Config.SummonUnit;
+namespace March7thHoney.Data.Config.SummonUnit;
 
 public class SummonUnitTriggerConfigInfo
 {

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from AvatarExpUpCsReq.proto</summary>
   public static partial class AvatarExpUpCsReqReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "Y29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJv",
             "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ItemCostDataReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemCostDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.AvatarExpUpCsReq), global::CastoriceHoney.Server.Proto.AvatarExpUpCsReq.Parser, new[]{ "BaseAvatarId", "ItemCost" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AvatarExpUpCsReq), global::March7thHoney.Proto.AvatarExpUpCsReq.Parser, new[]{ "BaseAvatarId", "ItemCost" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.AvatarExpUpCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.AvatarExpUpCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -99,10 +99,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "item_cost" field.</summary>
     public const int ItemCostFieldNumber = 9;
-    private global::CastoriceHoney.Server.Proto.ItemCostData itemCost_;
+    private global::March7thHoney.Proto.ItemCostData itemCost_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ItemCostData ItemCost {
+    public global::March7thHoney.Proto.ItemCostData ItemCost {
       get { return itemCost_; }
       set {
         itemCost_ = value;
@@ -212,7 +212,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.itemCost_ != null) {
         if (itemCost_ == null) {
-          ItemCost = new global::CastoriceHoney.Server.Proto.ItemCostData();
+          ItemCost = new global::March7thHoney.Proto.ItemCostData();
         }
         ItemCost.MergeFrom(other.ItemCost);
       }
@@ -241,7 +241,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 74: {
             if (itemCost_ == null) {
-              ItemCost = new global::CastoriceHoney.Server.Proto.ItemCostData();
+              ItemCost = new global::March7thHoney.Proto.ItemCostData();
             }
             input.ReadMessage(ItemCost);
             break;
@@ -271,7 +271,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 74: {
             if (itemCost_ == null) {
-              ItemCost = new global::CastoriceHoney.Server.Proto.ItemCostData();
+              ItemCost = new global::March7thHoney.Proto.ItemCostData();
             }
             input.ReadMessage(ItemCost);
             break;

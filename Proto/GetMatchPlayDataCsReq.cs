@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GetMatchPlayDataCsReq.proto</summary>
   public static partial class GetMatchPlayDataCsReqReflection {
@@ -29,9 +29,9 @@ namespace CastoriceHoney.Server.Proto {
             "GAggAygOMg4uRmlnaHRHYW1lTW9kZUIzChNlbXUubHVuYXJjb3JlLnByb3Rv",
             "qgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.FightGameModeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.FightGameModeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GetMatchPlayDataCsReq), global::CastoriceHoney.Server.Proto.GetMatchPlayDataCsReq.Parser, new[]{ "BFBJKAALFHD" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetMatchPlayDataCsReq), global::March7thHoney.Proto.GetMatchPlayDataCsReq.Parser, new[]{ "BFBJKAALFHD" }, null, null, null, null)
           }));
     }
     #endregion
@@ -53,7 +53,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GetMatchPlayDataCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GetMatchPlayDataCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -85,12 +85,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "BFBJKAALFHD" field.</summary>
     public const int BFBJKAALFHDFieldNumber = 8;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.FightGameMode> _repeated_bFBJKAALFHD_codec
-        = pb::FieldCodec.ForEnum(66, x => (int) x, x => (global::CastoriceHoney.Server.Proto.FightGameMode) x);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.FightGameMode> bFBJKAALFHD_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.FightGameMode>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.FightGameMode> _repeated_bFBJKAALFHD_codec
+        = pb::FieldCodec.ForEnum(66, x => (int) x, x => (global::March7thHoney.Proto.FightGameMode) x);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.FightGameMode> bFBJKAALFHD_ = new pbc::RepeatedField<global::March7thHoney.Proto.FightGameMode>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.FightGameMode> BFBJKAALFHD {
+    public pbc::RepeatedField<global::March7thHoney.Proto.FightGameMode> BFBJKAALFHD {
       get { return bFBJKAALFHD_; }
     }
 

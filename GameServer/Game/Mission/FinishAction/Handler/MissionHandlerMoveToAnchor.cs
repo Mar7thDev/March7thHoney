@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.Enums.Mission;
-using CastoriceHoney.Server.GameServer.Game.Player;
+using March7thHoney.Enums.Mission;
+using March7thHoney.GameServer.Game.Player;
 
-namespace CastoriceHoney.Server.GameServer.Game.Mission.FinishAction.Handler;
+namespace March7thHoney.GameServer.Game.Mission.FinishAction.Handler;
 
 [MissionFinishAction(FinishActionTypeEnum.MoveToAnchor)]
 public class MissionHandlerMoveToAnchor : MissionFinishActionHandler

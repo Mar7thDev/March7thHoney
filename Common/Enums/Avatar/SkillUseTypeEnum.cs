@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Enums.Avatar;
+namespace March7thHoney.Enums.Avatar;
 
 public enum SkillUseTypeEnum
 {

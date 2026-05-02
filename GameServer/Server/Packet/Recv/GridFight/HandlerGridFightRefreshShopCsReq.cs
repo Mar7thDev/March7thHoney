@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.GameServer.Game.GridFight.Component;
-using CastoriceHoney.Server.Kcp;
+using March7thHoney.GameServer.Game.GridFight.Component;
+using March7thHoney.Kcp;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.GridFight;
+namespace March7thHoney.GameServer.Server.Packet.Recv.GridFight;
 
 [Opcode(CmdIds.GridFightRefreshShopCsReq)]
 public class HandlerGridFightRefreshShopCsReq : Handler

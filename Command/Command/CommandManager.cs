@@ -1,12 +1,12 @@
 using System.Reflection;
-using CastoriceHoney.Server.GameServer.Server;
-using CastoriceHoney.Server.Internationalization;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Util;
+using March7thHoney.GameServer.Server;
+using March7thHoney.Internationalization;
+using March7thHoney.Kcp;
+using March7thHoney.Util;
 using Spectre.Console;
-using static CastoriceHoney.Server.GameServer.Plugin.Event.PluginEvent;
+using static March7thHoney.GameServer.Plugin.Event.PluginEvent;
 
-namespace CastoriceHoney.Server.Command.Command;
+namespace March7thHoney.Command.Command;
 
 public class CommandManager
 {

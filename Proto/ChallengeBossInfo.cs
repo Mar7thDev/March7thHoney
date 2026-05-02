@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from ChallengeBossInfo.proto</summary>
   public static partial class ChallengeBossInfoReflection {
@@ -44,9 +44,9 @@ namespace CastoriceHoney.Server.Proto {
             "Zm86AjgBQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25l",
             "eS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ChallengeBossAvatarRelicInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.ChallengeBossEquipmentInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.ChallengeBossSingleNodeInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.EEBPHJCNBFOReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChallengeBossAvatarRelicInfoReflection.Descriptor, global::March7thHoney.Proto.ChallengeBossEquipmentInfoReflection.Descriptor, global::March7thHoney.Proto.ChallengeBossSingleNodeInfoReflection.Descriptor, global::March7thHoney.Proto.EEBPHJCNBFOReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ChallengeBossInfo), global::CastoriceHoney.Server.Proto.ChallengeBossInfo.Parser, new[]{ "SecondNode", "ABNDFKFIKCI", "ChallengeAvatarRelicMap", "FirstLineup", "ChallengeAvatarEquipmentMap", "BKNKLEOCJNO", "FirstNode", "SecondLineup", "Unk1" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengeBossInfo), global::March7thHoney.Proto.ChallengeBossInfo.Parser, new[]{ "SecondNode", "ABNDFKFIKCI", "ChallengeAvatarRelicMap", "FirstLineup", "ChallengeAvatarEquipmentMap", "BKNKLEOCJNO", "FirstNode", "SecondLineup", "Unk1" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, })
           }));
     }
     #endregion
@@ -68,7 +68,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ChallengeBossInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ChallengeBossInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -108,10 +108,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "second_node" field.</summary>
     public const int SecondNodeFieldNumber = 2;
-    private global::CastoriceHoney.Server.Proto.ChallengeBossSingleNodeInfo secondNode_;
+    private global::March7thHoney.Proto.ChallengeBossSingleNodeInfo secondNode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ChallengeBossSingleNodeInfo SecondNode {
+    public global::March7thHoney.Proto.ChallengeBossSingleNodeInfo SecondNode {
       get { return secondNode_; }
       set {
         secondNode_ = value;
@@ -120,23 +120,23 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "ABNDFKFIKCI" field.</summary>
     public const int ABNDFKFIKCIFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.EEBPHJCNBFO> _repeated_aBNDFKFIKCI_codec
-        = pb::FieldCodec.ForMessage(34, global::CastoriceHoney.Server.Proto.EEBPHJCNBFO.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.EEBPHJCNBFO> aBNDFKFIKCI_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.EEBPHJCNBFO>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EEBPHJCNBFO> _repeated_aBNDFKFIKCI_codec
+        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.EEBPHJCNBFO.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EEBPHJCNBFO> aBNDFKFIKCI_ = new pbc::RepeatedField<global::March7thHoney.Proto.EEBPHJCNBFO>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.EEBPHJCNBFO> ABNDFKFIKCI {
+    public pbc::RepeatedField<global::March7thHoney.Proto.EEBPHJCNBFO> ABNDFKFIKCI {
       get { return aBNDFKFIKCI_; }
     }
 
     /// <summary>Field number for the "challenge_avatar_relic_map" field.</summary>
     public const int ChallengeAvatarRelicMapFieldNumber = 5;
-    private static readonly pbc::MapField<uint, global::CastoriceHoney.Server.Proto.ChallengeBossAvatarRelicInfo>.Codec _map_challengeAvatarRelicMap_codec
-        = new pbc::MapField<uint, global::CastoriceHoney.Server.Proto.ChallengeBossAvatarRelicInfo>.Codec(pb::FieldCodec.ForUInt32(8, 0), pb::FieldCodec.ForMessage(18, global::CastoriceHoney.Server.Proto.ChallengeBossAvatarRelicInfo.Parser), 42);
-    private readonly pbc::MapField<uint, global::CastoriceHoney.Server.Proto.ChallengeBossAvatarRelicInfo> challengeAvatarRelicMap_ = new pbc::MapField<uint, global::CastoriceHoney.Server.Proto.ChallengeBossAvatarRelicInfo>();
+    private static readonly pbc::MapField<uint, global::March7thHoney.Proto.ChallengeBossAvatarRelicInfo>.Codec _map_challengeAvatarRelicMap_codec
+        = new pbc::MapField<uint, global::March7thHoney.Proto.ChallengeBossAvatarRelicInfo>.Codec(pb::FieldCodec.ForUInt32(8, 0), pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.ChallengeBossAvatarRelicInfo.Parser), 42);
+    private readonly pbc::MapField<uint, global::March7thHoney.Proto.ChallengeBossAvatarRelicInfo> challengeAvatarRelicMap_ = new pbc::MapField<uint, global::March7thHoney.Proto.ChallengeBossAvatarRelicInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<uint, global::CastoriceHoney.Server.Proto.ChallengeBossAvatarRelicInfo> ChallengeAvatarRelicMap {
+    public pbc::MapField<uint, global::March7thHoney.Proto.ChallengeBossAvatarRelicInfo> ChallengeAvatarRelicMap {
       get { return challengeAvatarRelicMap_; }
     }
 
@@ -153,32 +153,32 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "challenge_avatar_equipment_map" field.</summary>
     public const int ChallengeAvatarEquipmentMapFieldNumber = 7;
-    private static readonly pbc::MapField<uint, global::CastoriceHoney.Server.Proto.ChallengeBossEquipmentInfo>.Codec _map_challengeAvatarEquipmentMap_codec
-        = new pbc::MapField<uint, global::CastoriceHoney.Server.Proto.ChallengeBossEquipmentInfo>.Codec(pb::FieldCodec.ForUInt32(8, 0), pb::FieldCodec.ForMessage(18, global::CastoriceHoney.Server.Proto.ChallengeBossEquipmentInfo.Parser), 58);
-    private readonly pbc::MapField<uint, global::CastoriceHoney.Server.Proto.ChallengeBossEquipmentInfo> challengeAvatarEquipmentMap_ = new pbc::MapField<uint, global::CastoriceHoney.Server.Proto.ChallengeBossEquipmentInfo>();
+    private static readonly pbc::MapField<uint, global::March7thHoney.Proto.ChallengeBossEquipmentInfo>.Codec _map_challengeAvatarEquipmentMap_codec
+        = new pbc::MapField<uint, global::March7thHoney.Proto.ChallengeBossEquipmentInfo>.Codec(pb::FieldCodec.ForUInt32(8, 0), pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.ChallengeBossEquipmentInfo.Parser), 58);
+    private readonly pbc::MapField<uint, global::March7thHoney.Proto.ChallengeBossEquipmentInfo> challengeAvatarEquipmentMap_ = new pbc::MapField<uint, global::March7thHoney.Proto.ChallengeBossEquipmentInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<uint, global::CastoriceHoney.Server.Proto.ChallengeBossEquipmentInfo> ChallengeAvatarEquipmentMap {
+    public pbc::MapField<uint, global::March7thHoney.Proto.ChallengeBossEquipmentInfo> ChallengeAvatarEquipmentMap {
       get { return challengeAvatarEquipmentMap_; }
     }
 
     /// <summary>Field number for the "BKNKLEOCJNO" field.</summary>
     public const int BKNKLEOCJNOFieldNumber = 10;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.EEBPHJCNBFO> _repeated_bKNKLEOCJNO_codec
-        = pb::FieldCodec.ForMessage(82, global::CastoriceHoney.Server.Proto.EEBPHJCNBFO.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.EEBPHJCNBFO> bKNKLEOCJNO_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.EEBPHJCNBFO>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EEBPHJCNBFO> _repeated_bKNKLEOCJNO_codec
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.EEBPHJCNBFO.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EEBPHJCNBFO> bKNKLEOCJNO_ = new pbc::RepeatedField<global::March7thHoney.Proto.EEBPHJCNBFO>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.EEBPHJCNBFO> BKNKLEOCJNO {
+    public pbc::RepeatedField<global::March7thHoney.Proto.EEBPHJCNBFO> BKNKLEOCJNO {
       get { return bKNKLEOCJNO_; }
     }
 
     /// <summary>Field number for the "first_node" field.</summary>
     public const int FirstNodeFieldNumber = 11;
-    private global::CastoriceHoney.Server.Proto.ChallengeBossSingleNodeInfo firstNode_;
+    private global::March7thHoney.Proto.ChallengeBossSingleNodeInfo firstNode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ChallengeBossSingleNodeInfo FirstNode {
+    public global::March7thHoney.Proto.ChallengeBossSingleNodeInfo FirstNode {
       get { return firstNode_; }
       set {
         firstNode_ = value;
@@ -351,7 +351,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.secondNode_ != null) {
         if (secondNode_ == null) {
-          SecondNode = new global::CastoriceHoney.Server.Proto.ChallengeBossSingleNodeInfo();
+          SecondNode = new global::March7thHoney.Proto.ChallengeBossSingleNodeInfo();
         }
         SecondNode.MergeFrom(other.SecondNode);
       }
@@ -362,7 +362,7 @@ namespace CastoriceHoney.Server.Proto {
       bKNKLEOCJNO_.Add(other.bKNKLEOCJNO_);
       if (other.firstNode_ != null) {
         if (firstNode_ == null) {
-          FirstNode = new global::CastoriceHoney.Server.Proto.ChallengeBossSingleNodeInfo();
+          FirstNode = new global::March7thHoney.Proto.ChallengeBossSingleNodeInfo();
         }
         FirstNode.MergeFrom(other.FirstNode);
       }
@@ -391,7 +391,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 18: {
             if (secondNode_ == null) {
-              SecondNode = new global::CastoriceHoney.Server.Proto.ChallengeBossSingleNodeInfo();
+              SecondNode = new global::March7thHoney.Proto.ChallengeBossSingleNodeInfo();
             }
             input.ReadMessage(SecondNode);
             break;
@@ -419,7 +419,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 90: {
             if (firstNode_ == null) {
-              FirstNode = new global::CastoriceHoney.Server.Proto.ChallengeBossSingleNodeInfo();
+              FirstNode = new global::March7thHoney.Proto.ChallengeBossSingleNodeInfo();
             }
             input.ReadMessage(FirstNode);
             break;
@@ -454,7 +454,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 18: {
             if (secondNode_ == null) {
-              SecondNode = new global::CastoriceHoney.Server.Proto.ChallengeBossSingleNodeInfo();
+              SecondNode = new global::March7thHoney.Proto.ChallengeBossSingleNodeInfo();
             }
             input.ReadMessage(SecondNode);
             break;
@@ -482,7 +482,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 90: {
             if (firstNode_ == null) {
-              FirstNode = new global::CastoriceHoney.Server.Proto.ChallengeBossSingleNodeInfo();
+              FirstNode = new global::March7thHoney.Proto.ChallengeBossSingleNodeInfo();
             }
             input.ReadMessage(FirstNode);
             break;

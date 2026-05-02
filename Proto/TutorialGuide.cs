@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from TutorialGuide.proto</summary>
   public static partial class TutorialGuideReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "VHV0b3JpYWxHdWlkZVR5cGUSCgoCaWQYDSABKA1CMwoTZW11Lmx1bmFyY29y",
             "ZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.TutorialGuideTypeReflection.Descriptor, global::CastoriceHoney.Server.Proto.TutorialStatusReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.TutorialGuideTypeReflection.Descriptor, global::March7thHoney.Proto.TutorialStatusReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.TutorialGuide), global::CastoriceHoney.Server.Proto.TutorialGuide.Parser, new[]{ "Status", "Type", "Id" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TutorialGuide), global::March7thHoney.Proto.TutorialGuide.Parser, new[]{ "Status", "Type", "Id" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.TutorialGuideReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.TutorialGuideReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -88,10 +88,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "status" field.</summary>
     public const int StatusFieldNumber = 9;
-    private global::CastoriceHoney.Server.Proto.TutorialStatus status_ = global::CastoriceHoney.Server.Proto.TutorialStatus.TutorialNone;
+    private global::March7thHoney.Proto.TutorialStatus status_ = global::March7thHoney.Proto.TutorialStatus.TutorialNone;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.TutorialStatus Status {
+    public global::March7thHoney.Proto.TutorialStatus Status {
       get { return status_; }
       set {
         status_ = value;
@@ -100,10 +100,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "type" field.</summary>
     public const int TypeFieldNumber = 12;
-    private global::CastoriceHoney.Server.Proto.TutorialGuideType type_ = global::CastoriceHoney.Server.Proto.TutorialGuideType.FgklpmcjbacNnmbahcckja;
+    private global::March7thHoney.Proto.TutorialGuideType type_ = global::March7thHoney.Proto.TutorialGuideType.FgklpmcjbacNnmbahcckja;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.TutorialGuideType Type {
+    public global::March7thHoney.Proto.TutorialGuideType Type {
       get { return type_; }
       set {
         type_ = value;
@@ -147,8 +147,8 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Status != global::CastoriceHoney.Server.Proto.TutorialStatus.TutorialNone) hash ^= Status.GetHashCode();
-      if (Type != global::CastoriceHoney.Server.Proto.TutorialGuideType.FgklpmcjbacNnmbahcckja) hash ^= Type.GetHashCode();
+      if (Status != global::March7thHoney.Proto.TutorialStatus.TutorialNone) hash ^= Status.GetHashCode();
+      if (Type != global::March7thHoney.Proto.TutorialGuideType.FgklpmcjbacNnmbahcckja) hash ^= Type.GetHashCode();
       if (Id != 0) hash ^= Id.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -168,11 +168,11 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Status != global::CastoriceHoney.Server.Proto.TutorialStatus.TutorialNone) {
+      if (Status != global::March7thHoney.Proto.TutorialStatus.TutorialNone) {
         output.WriteRawTag(72);
         output.WriteEnum((int) Status);
       }
-      if (Type != global::CastoriceHoney.Server.Proto.TutorialGuideType.FgklpmcjbacNnmbahcckja) {
+      if (Type != global::March7thHoney.Proto.TutorialGuideType.FgklpmcjbacNnmbahcckja) {
         output.WriteRawTag(96);
         output.WriteEnum((int) Type);
       }
@@ -190,11 +190,11 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Status != global::CastoriceHoney.Server.Proto.TutorialStatus.TutorialNone) {
+      if (Status != global::March7thHoney.Proto.TutorialStatus.TutorialNone) {
         output.WriteRawTag(72);
         output.WriteEnum((int) Status);
       }
-      if (Type != global::CastoriceHoney.Server.Proto.TutorialGuideType.FgklpmcjbacNnmbahcckja) {
+      if (Type != global::March7thHoney.Proto.TutorialGuideType.FgklpmcjbacNnmbahcckja) {
         output.WriteRawTag(96);
         output.WriteEnum((int) Type);
       }
@@ -212,10 +212,10 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Status != global::CastoriceHoney.Server.Proto.TutorialStatus.TutorialNone) {
+      if (Status != global::March7thHoney.Proto.TutorialStatus.TutorialNone) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Status);
       }
-      if (Type != global::CastoriceHoney.Server.Proto.TutorialGuideType.FgklpmcjbacNnmbahcckja) {
+      if (Type != global::March7thHoney.Proto.TutorialGuideType.FgklpmcjbacNnmbahcckja) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
       }
       if (Id != 0) {
@@ -233,10 +233,10 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.Status != global::CastoriceHoney.Server.Proto.TutorialStatus.TutorialNone) {
+      if (other.Status != global::March7thHoney.Proto.TutorialStatus.TutorialNone) {
         Status = other.Status;
       }
-      if (other.Type != global::CastoriceHoney.Server.Proto.TutorialGuideType.FgklpmcjbacNnmbahcckja) {
+      if (other.Type != global::March7thHoney.Proto.TutorialGuideType.FgklpmcjbacNnmbahcckja) {
         Type = other.Type;
       }
       if (other.Id != 0) {
@@ -262,11 +262,11 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 72: {
-            Status = (global::CastoriceHoney.Server.Proto.TutorialStatus) input.ReadEnum();
+            Status = (global::March7thHoney.Proto.TutorialStatus) input.ReadEnum();
             break;
           }
           case 96: {
-            Type = (global::CastoriceHoney.Server.Proto.TutorialGuideType) input.ReadEnum();
+            Type = (global::March7thHoney.Proto.TutorialGuideType) input.ReadEnum();
             break;
           }
           case 104: {
@@ -293,11 +293,11 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 72: {
-            Status = (global::CastoriceHoney.Server.Proto.TutorialStatus) input.ReadEnum();
+            Status = (global::March7thHoney.Proto.TutorialStatus) input.ReadEnum();
             break;
           }
           case 96: {
-            Type = (global::CastoriceHoney.Server.Proto.TutorialGuideType) input.ReadEnum();
+            Type = (global::March7thHoney.Proto.TutorialGuideType) input.ReadEnum();
             break;
           }
           case 104: {

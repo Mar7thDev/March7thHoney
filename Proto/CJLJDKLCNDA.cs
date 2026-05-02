@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from CJLJDKLCNDA.proto</summary>
   public static partial class CJLJDKLCNDAReflection {
@@ -35,9 +35,9 @@ namespace CastoriceHoney.Server.Proto {
             "AygNQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5T",
             "ZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.BattleGridFightSpecialBattleInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.BattleTargetReflection.Descriptor, global::CastoriceHoney.Server.Proto.GCHPNHBDCDOReflection.Descriptor, global::CastoriceHoney.Server.Proto.MOEDGOHOALPReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.BattleGridFightSpecialBattleInfoReflection.Descriptor, global::March7thHoney.Proto.BattleTargetReflection.Descriptor, global::March7thHoney.Proto.GCHPNHBDCDOReflection.Descriptor, global::March7thHoney.Proto.MOEDGOHOALPReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.CJLJDKLCNDA), global::CastoriceHoney.Server.Proto.CJLJDKLCNDA.Parser, new[]{ "RoundCnt", "BattleInfo", "BattleTargetList", "EGLCKGKECAJ", "KCOKNIJECLN", "AvatarList", "IEPGKLIDHEK" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.CJLJDKLCNDA), global::March7thHoney.Proto.CJLJDKLCNDA.Parser, new[]{ "RoundCnt", "BattleInfo", "BattleTargetList", "EGLCKGKECAJ", "KCOKNIJECLN", "AvatarList", "IEPGKLIDHEK" }, null, null, null, null)
           }));
     }
     #endregion
@@ -59,7 +59,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.CJLJDKLCNDAReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.CJLJDKLCNDAReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -109,10 +109,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "battle_info" field.</summary>
     public const int BattleInfoFieldNumber = 9;
-    private global::CastoriceHoney.Server.Proto.BattleGridFightSpecialBattleInfo battleInfo_;
+    private global::March7thHoney.Proto.BattleGridFightSpecialBattleInfo battleInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.BattleGridFightSpecialBattleInfo BattleInfo {
+    public global::March7thHoney.Proto.BattleGridFightSpecialBattleInfo BattleInfo {
       get { return battleInfo_; }
       set {
         battleInfo_ = value;
@@ -121,21 +121,21 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "battle_target_list" field.</summary>
     public const int BattleTargetListFieldNumber = 10;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.BattleTarget> _repeated_battleTargetList_codec
-        = pb::FieldCodec.ForMessage(82, global::CastoriceHoney.Server.Proto.BattleTarget.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BattleTarget> battleTargetList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BattleTarget>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BattleTarget> _repeated_battleTargetList_codec
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.BattleTarget.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BattleTarget> battleTargetList_ = new pbc::RepeatedField<global::March7thHoney.Proto.BattleTarget>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BattleTarget> BattleTargetList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.BattleTarget> BattleTargetList {
       get { return battleTargetList_; }
     }
 
     /// <summary>Field number for the "EGLCKGKECAJ" field.</summary>
     public const int EGLCKGKECAJFieldNumber = 11;
-    private global::CastoriceHoney.Server.Proto.GCHPNHBDCDO eGLCKGKECAJ_ = global::CastoriceHoney.Server.Proto.GCHPNHBDCDO.Bfkfdkmglho;
+    private global::March7thHoney.Proto.GCHPNHBDCDO eGLCKGKECAJ_ = global::March7thHoney.Proto.GCHPNHBDCDO.Bfkfdkmglho;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GCHPNHBDCDO EGLCKGKECAJ {
+    public global::March7thHoney.Proto.GCHPNHBDCDO EGLCKGKECAJ {
       get { return eGLCKGKECAJ_; }
       set {
         eGLCKGKECAJ_ = value;
@@ -156,12 +156,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "avatar_list" field.</summary>
     public const int AvatarListFieldNumber = 14;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.MOEDGOHOALP> _repeated_avatarList_codec
-        = pb::FieldCodec.ForMessage(114, global::CastoriceHoney.Server.Proto.MOEDGOHOALP.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MOEDGOHOALP> avatarList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MOEDGOHOALP>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MOEDGOHOALP> _repeated_avatarList_codec
+        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.MOEDGOHOALP.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MOEDGOHOALP> avatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MOEDGOHOALP>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MOEDGOHOALP> AvatarList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.MOEDGOHOALP> AvatarList {
       get { return avatarList_; }
     }
 
@@ -208,7 +208,7 @@ namespace CastoriceHoney.Server.Proto {
       if (RoundCnt != 0) hash ^= RoundCnt.GetHashCode();
       if (battleInfo_ != null) hash ^= BattleInfo.GetHashCode();
       hash ^= battleTargetList_.GetHashCode();
-      if (EGLCKGKECAJ != global::CastoriceHoney.Server.Proto.GCHPNHBDCDO.Bfkfdkmglho) hash ^= EGLCKGKECAJ.GetHashCode();
+      if (EGLCKGKECAJ != global::March7thHoney.Proto.GCHPNHBDCDO.Bfkfdkmglho) hash ^= EGLCKGKECAJ.GetHashCode();
       if (KCOKNIJECLN != 0) hash ^= KCOKNIJECLN.GetHashCode();
       hash ^= avatarList_.GetHashCode();
       hash ^= iEPGKLIDHEK_.GetHashCode();
@@ -239,7 +239,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteMessage(BattleInfo);
       }
       battleTargetList_.WriteTo(output, _repeated_battleTargetList_codec);
-      if (EGLCKGKECAJ != global::CastoriceHoney.Server.Proto.GCHPNHBDCDO.Bfkfdkmglho) {
+      if (EGLCKGKECAJ != global::March7thHoney.Proto.GCHPNHBDCDO.Bfkfdkmglho) {
         output.WriteRawTag(88);
         output.WriteEnum((int) EGLCKGKECAJ);
       }
@@ -268,7 +268,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteMessage(BattleInfo);
       }
       battleTargetList_.WriteTo(ref output, _repeated_battleTargetList_codec);
-      if (EGLCKGKECAJ != global::CastoriceHoney.Server.Proto.GCHPNHBDCDO.Bfkfdkmglho) {
+      if (EGLCKGKECAJ != global::March7thHoney.Proto.GCHPNHBDCDO.Bfkfdkmglho) {
         output.WriteRawTag(88);
         output.WriteEnum((int) EGLCKGKECAJ);
       }
@@ -295,7 +295,7 @@ namespace CastoriceHoney.Server.Proto {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(BattleInfo);
       }
       size += battleTargetList_.CalculateSize(_repeated_battleTargetList_codec);
-      if (EGLCKGKECAJ != global::CastoriceHoney.Server.Proto.GCHPNHBDCDO.Bfkfdkmglho) {
+      if (EGLCKGKECAJ != global::March7thHoney.Proto.GCHPNHBDCDO.Bfkfdkmglho) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) EGLCKGKECAJ);
       }
       if (KCOKNIJECLN != 0) {
@@ -320,12 +320,12 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.battleInfo_ != null) {
         if (battleInfo_ == null) {
-          BattleInfo = new global::CastoriceHoney.Server.Proto.BattleGridFightSpecialBattleInfo();
+          BattleInfo = new global::March7thHoney.Proto.BattleGridFightSpecialBattleInfo();
         }
         BattleInfo.MergeFrom(other.BattleInfo);
       }
       battleTargetList_.Add(other.battleTargetList_);
-      if (other.EGLCKGKECAJ != global::CastoriceHoney.Server.Proto.GCHPNHBDCDO.Bfkfdkmglho) {
+      if (other.EGLCKGKECAJ != global::March7thHoney.Proto.GCHPNHBDCDO.Bfkfdkmglho) {
         EGLCKGKECAJ = other.EGLCKGKECAJ;
       }
       if (other.KCOKNIJECLN != 0) {
@@ -358,7 +358,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 74: {
             if (battleInfo_ == null) {
-              BattleInfo = new global::CastoriceHoney.Server.Proto.BattleGridFightSpecialBattleInfo();
+              BattleInfo = new global::March7thHoney.Proto.BattleGridFightSpecialBattleInfo();
             }
             input.ReadMessage(BattleInfo);
             break;
@@ -368,7 +368,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 88: {
-            EGLCKGKECAJ = (global::CastoriceHoney.Server.Proto.GCHPNHBDCDO) input.ReadEnum();
+            EGLCKGKECAJ = (global::March7thHoney.Proto.GCHPNHBDCDO) input.ReadEnum();
             break;
           }
           case 96: {
@@ -409,7 +409,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 74: {
             if (battleInfo_ == null) {
-              BattleInfo = new global::CastoriceHoney.Server.Proto.BattleGridFightSpecialBattleInfo();
+              BattleInfo = new global::March7thHoney.Proto.BattleGridFightSpecialBattleInfo();
             }
             input.ReadMessage(BattleInfo);
             break;
@@ -419,7 +419,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 88: {
-            EGLCKGKECAJ = (global::CastoriceHoney.Server.Proto.GCHPNHBDCDO) input.ReadEnum();
+            EGLCKGKECAJ = (global::March7thHoney.Proto.GCHPNHBDCDO) input.ReadEnum();
             break;
           }
           case 96: {

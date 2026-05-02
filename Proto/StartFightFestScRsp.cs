@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from StartFightFestScRsp.proto</summary>
   public static partial class StartFightFestScRspReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "b3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90",
             "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.FightFestTypeReflection.Descriptor, global::CastoriceHoney.Server.Proto.SceneBattleInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.FightFestTypeReflection.Descriptor, global::March7thHoney.Proto.SceneBattleInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.StartFightFestScRsp), global::CastoriceHoney.Server.Proto.StartFightFestScRsp.Parser, new[]{ "BattleInfo", "Id", "Type", "Retcode", "EventId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartFightFestScRsp), global::March7thHoney.Proto.StartFightFestScRsp.Parser, new[]{ "BattleInfo", "Id", "Type", "Retcode", "EventId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.StartFightFestScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.StartFightFestScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -92,10 +92,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "battle_info" field.</summary>
     public const int BattleInfoFieldNumber = 6;
-    private global::CastoriceHoney.Server.Proto.SceneBattleInfo battleInfo_;
+    private global::March7thHoney.Proto.SceneBattleInfo battleInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.SceneBattleInfo BattleInfo {
+    public global::March7thHoney.Proto.SceneBattleInfo BattleInfo {
       get { return battleInfo_; }
       set {
         battleInfo_ = value;
@@ -116,10 +116,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "type" field.</summary>
     public const int TypeFieldNumber = 9;
-    private global::CastoriceHoney.Server.Proto.FightFestType type_ = global::CastoriceHoney.Server.Proto.FightFestType.MhkeafapmfpPcpdhelpkem;
+    private global::March7thHoney.Proto.FightFestType type_ = global::March7thHoney.Proto.FightFestType.MhkeafapmfpPcpdhelpkem;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.FightFestType Type {
+    public global::March7thHoney.Proto.FightFestType Type {
       get { return type_; }
       set {
         type_ = value;
@@ -179,7 +179,7 @@ namespace CastoriceHoney.Server.Proto {
       int hash = 1;
       if (battleInfo_ != null) hash ^= BattleInfo.GetHashCode();
       if (Id != 0) hash ^= Id.GetHashCode();
-      if (Type != global::CastoriceHoney.Server.Proto.FightFestType.MhkeafapmfpPcpdhelpkem) hash ^= Type.GetHashCode();
+      if (Type != global::March7thHoney.Proto.FightFestType.MhkeafapmfpPcpdhelpkem) hash ^= Type.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (EventId != 0) hash ^= EventId.GetHashCode();
       if (_unknownFields != null) {
@@ -208,7 +208,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(64);
         output.WriteUInt32(Id);
       }
-      if (Type != global::CastoriceHoney.Server.Proto.FightFestType.MhkeafapmfpPcpdhelpkem) {
+      if (Type != global::March7thHoney.Proto.FightFestType.MhkeafapmfpPcpdhelpkem) {
         output.WriteRawTag(72);
         output.WriteEnum((int) Type);
       }
@@ -238,7 +238,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(64);
         output.WriteUInt32(Id);
       }
-      if (Type != global::CastoriceHoney.Server.Proto.FightFestType.MhkeafapmfpPcpdhelpkem) {
+      if (Type != global::March7thHoney.Proto.FightFestType.MhkeafapmfpPcpdhelpkem) {
         output.WriteRawTag(72);
         output.WriteEnum((int) Type);
       }
@@ -266,7 +266,7 @@ namespace CastoriceHoney.Server.Proto {
       if (Id != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Id);
       }
-      if (Type != global::CastoriceHoney.Server.Proto.FightFestType.MhkeafapmfpPcpdhelpkem) {
+      if (Type != global::March7thHoney.Proto.FightFestType.MhkeafapmfpPcpdhelpkem) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
       }
       if (Retcode != 0) {
@@ -289,14 +289,14 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.battleInfo_ != null) {
         if (battleInfo_ == null) {
-          BattleInfo = new global::CastoriceHoney.Server.Proto.SceneBattleInfo();
+          BattleInfo = new global::March7thHoney.Proto.SceneBattleInfo();
         }
         BattleInfo.MergeFrom(other.BattleInfo);
       }
       if (other.Id != 0) {
         Id = other.Id;
       }
-      if (other.Type != global::CastoriceHoney.Server.Proto.FightFestType.MhkeafapmfpPcpdhelpkem) {
+      if (other.Type != global::March7thHoney.Proto.FightFestType.MhkeafapmfpPcpdhelpkem) {
         Type = other.Type;
       }
       if (other.Retcode != 0) {
@@ -326,7 +326,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 50: {
             if (battleInfo_ == null) {
-              BattleInfo = new global::CastoriceHoney.Server.Proto.SceneBattleInfo();
+              BattleInfo = new global::March7thHoney.Proto.SceneBattleInfo();
             }
             input.ReadMessage(BattleInfo);
             break;
@@ -336,7 +336,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 72: {
-            Type = (global::CastoriceHoney.Server.Proto.FightFestType) input.ReadEnum();
+            Type = (global::March7thHoney.Proto.FightFestType) input.ReadEnum();
             break;
           }
           case 88: {
@@ -368,7 +368,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 50: {
             if (battleInfo_ == null) {
-              BattleInfo = new global::CastoriceHoney.Server.Proto.SceneBattleInfo();
+              BattleInfo = new global::March7thHoney.Proto.SceneBattleInfo();
             }
             input.ReadMessage(BattleInfo);
             break;
@@ -378,7 +378,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 72: {
-            Type = (global::CastoriceHoney.Server.Proto.FightFestType) input.ReadEnum();
+            Type = (global::March7thHoney.Proto.FightFestType) input.ReadEnum();
             break;
           }
           case 88: {

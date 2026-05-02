@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("DecideAvatarOrder.json")]
 public class DecideAvatarOrderExcel : ExcelResource

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from KEBHKHCALBO.proto</summary>
   public static partial class KEBHKHCALBOReflection {
@@ -29,9 +29,9 @@ namespace CastoriceHoney.Server.Proto {
             "C0dOREpQTkJFQ0pQGAogASgIQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtD",
             "YXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.KFKDIEAJPCJReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.KFKDIEAJPCJReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.KEBHKHCALBO), global::CastoriceHoney.Server.Proto.KEBHKHCALBO.Parser, new[]{ "BlackList", "GNDJPNBECJP" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.KEBHKHCALBO), global::March7thHoney.Proto.KEBHKHCALBO.Parser, new[]{ "BlackList", "GNDJPNBECJP" }, null, null, null, null)
           }));
     }
     #endregion
@@ -53,7 +53,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.KEBHKHCALBOReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.KEBHKHCALBOReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -86,10 +86,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "black_list" field.</summary>
     public const int BlackListFieldNumber = 7;
-    private global::CastoriceHoney.Server.Proto.KFKDIEAJPCJ blackList_;
+    private global::March7thHoney.Proto.KFKDIEAJPCJ blackList_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.KFKDIEAJPCJ BlackList {
+    public global::March7thHoney.Proto.KFKDIEAJPCJ BlackList {
       get { return blackList_; }
       set {
         blackList_ = value;
@@ -208,7 +208,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.blackList_ != null) {
         if (blackList_ == null) {
-          BlackList = new global::CastoriceHoney.Server.Proto.KFKDIEAJPCJ();
+          BlackList = new global::March7thHoney.Proto.KFKDIEAJPCJ();
         }
         BlackList.MergeFrom(other.BlackList);
       }
@@ -236,7 +236,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 58: {
             if (blackList_ == null) {
-              BlackList = new global::CastoriceHoney.Server.Proto.KFKDIEAJPCJ();
+              BlackList = new global::March7thHoney.Proto.KFKDIEAJPCJ();
             }
             input.ReadMessage(BlackList);
             break;
@@ -266,7 +266,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 58: {
             if (blackList_ == null) {
-              BlackList = new global::CastoriceHoney.Server.Proto.KFKDIEAJPCJ();
+              BlackList = new global::March7thHoney.Proto.KFKDIEAJPCJ();
             }
             input.ReadMessage(BlackList);
             break;

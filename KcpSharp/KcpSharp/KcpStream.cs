@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Kcp.KcpSharp;
+namespace March7thHoney.Kcp.KcpSharp;
 
 /// <summary>
 ///     A stream wrapper of <see cref="KcpConversation" />.

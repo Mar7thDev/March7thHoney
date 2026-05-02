@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from HeartDialScriptChangeScNotify.proto</summary>
   public static partial class HeartDialScriptChangeScNotifyReflection {
@@ -35,9 +35,9 @@ namespace CastoriceHoney.Server.Proto {
             "DC5QSUNJTElJRktCRUIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9y",
             "aWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.HeartDialDialogueInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.HeartDialScriptInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.HeartDialUnlockStatusReflection.Descriptor, global::CastoriceHoney.Server.Proto.PICILIIFKBEReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.HeartDialDialogueInfoReflection.Descriptor, global::March7thHoney.Proto.HeartDialScriptInfoReflection.Descriptor, global::March7thHoney.Proto.HeartDialUnlockStatusReflection.Descriptor, global::March7thHoney.Proto.PICILIIFKBEReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.HeartDialScriptChangeScNotify), global::CastoriceHoney.Server.Proto.HeartDialScriptChangeScNotify.Parser, new[]{ "ChangedDialogueInfoList", "ChangedScriptInfoList", "UnlockStatus", "OOGJAKIPFDJ" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HeartDialScriptChangeScNotify), global::March7thHoney.Proto.HeartDialScriptChangeScNotify.Parser, new[]{ "ChangedDialogueInfoList", "ChangedScriptInfoList", "UnlockStatus", "OOGJAKIPFDJ" }, null, null, null, null)
           }));
     }
     #endregion
@@ -59,7 +59,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.HeartDialScriptChangeScNotifyReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.HeartDialScriptChangeScNotifyReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -94,32 +94,32 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "changed_dialogue_info_list" field.</summary>
     public const int ChangedDialogueInfoListFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.HeartDialDialogueInfo> _repeated_changedDialogueInfoList_codec
-        = pb::FieldCodec.ForMessage(18, global::CastoriceHoney.Server.Proto.HeartDialDialogueInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.HeartDialDialogueInfo> changedDialogueInfoList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.HeartDialDialogueInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.HeartDialDialogueInfo> _repeated_changedDialogueInfoList_codec
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.HeartDialDialogueInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.HeartDialDialogueInfo> changedDialogueInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.HeartDialDialogueInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.HeartDialDialogueInfo> ChangedDialogueInfoList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.HeartDialDialogueInfo> ChangedDialogueInfoList {
       get { return changedDialogueInfoList_; }
     }
 
     /// <summary>Field number for the "changed_script_info_list" field.</summary>
     public const int ChangedScriptInfoListFieldNumber = 5;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.HeartDialScriptInfo> _repeated_changedScriptInfoList_codec
-        = pb::FieldCodec.ForMessage(42, global::CastoriceHoney.Server.Proto.HeartDialScriptInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.HeartDialScriptInfo> changedScriptInfoList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.HeartDialScriptInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.HeartDialScriptInfo> _repeated_changedScriptInfoList_codec
+        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.HeartDialScriptInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.HeartDialScriptInfo> changedScriptInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.HeartDialScriptInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.HeartDialScriptInfo> ChangedScriptInfoList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.HeartDialScriptInfo> ChangedScriptInfoList {
       get { return changedScriptInfoList_; }
     }
 
     /// <summary>Field number for the "unlock_status" field.</summary>
     public const int UnlockStatusFieldNumber = 10;
-    private global::CastoriceHoney.Server.Proto.HeartDialUnlockStatus unlockStatus_ = global::CastoriceHoney.Server.Proto.HeartDialUnlockStatus.Lock;
+    private global::March7thHoney.Proto.HeartDialUnlockStatus unlockStatus_ = global::March7thHoney.Proto.HeartDialUnlockStatus.Lock;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.HeartDialUnlockStatus UnlockStatus {
+    public global::March7thHoney.Proto.HeartDialUnlockStatus UnlockStatus {
       get { return unlockStatus_; }
       set {
         unlockStatus_ = value;
@@ -128,12 +128,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "OOGJAKIPFDJ" field.</summary>
     public const int OOGJAKIPFDJFieldNumber = 11;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.PICILIIFKBE> _repeated_oOGJAKIPFDJ_codec
-        = pb::FieldCodec.ForMessage(90, global::CastoriceHoney.Server.Proto.PICILIIFKBE.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.PICILIIFKBE> oOGJAKIPFDJ_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.PICILIIFKBE>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.PICILIIFKBE> _repeated_oOGJAKIPFDJ_codec
+        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.PICILIIFKBE.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.PICILIIFKBE> oOGJAKIPFDJ_ = new pbc::RepeatedField<global::March7thHoney.Proto.PICILIIFKBE>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.PICILIIFKBE> OOGJAKIPFDJ {
+    public pbc::RepeatedField<global::March7thHoney.Proto.PICILIIFKBE> OOGJAKIPFDJ {
       get { return oOGJAKIPFDJ_; }
     }
 
@@ -165,7 +165,7 @@ namespace CastoriceHoney.Server.Proto {
       int hash = 1;
       hash ^= changedDialogueInfoList_.GetHashCode();
       hash ^= changedScriptInfoList_.GetHashCode();
-      if (UnlockStatus != global::CastoriceHoney.Server.Proto.HeartDialUnlockStatus.Lock) hash ^= UnlockStatus.GetHashCode();
+      if (UnlockStatus != global::March7thHoney.Proto.HeartDialUnlockStatus.Lock) hash ^= UnlockStatus.GetHashCode();
       hash ^= oOGJAKIPFDJ_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -187,7 +187,7 @@ namespace CastoriceHoney.Server.Proto {
     #else
       changedDialogueInfoList_.WriteTo(output, _repeated_changedDialogueInfoList_codec);
       changedScriptInfoList_.WriteTo(output, _repeated_changedScriptInfoList_codec);
-      if (UnlockStatus != global::CastoriceHoney.Server.Proto.HeartDialUnlockStatus.Lock) {
+      if (UnlockStatus != global::March7thHoney.Proto.HeartDialUnlockStatus.Lock) {
         output.WriteRawTag(80);
         output.WriteEnum((int) UnlockStatus);
       }
@@ -204,7 +204,7 @@ namespace CastoriceHoney.Server.Proto {
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       changedDialogueInfoList_.WriteTo(ref output, _repeated_changedDialogueInfoList_codec);
       changedScriptInfoList_.WriteTo(ref output, _repeated_changedScriptInfoList_codec);
-      if (UnlockStatus != global::CastoriceHoney.Server.Proto.HeartDialUnlockStatus.Lock) {
+      if (UnlockStatus != global::March7thHoney.Proto.HeartDialUnlockStatus.Lock) {
         output.WriteRawTag(80);
         output.WriteEnum((int) UnlockStatus);
       }
@@ -221,7 +221,7 @@ namespace CastoriceHoney.Server.Proto {
       int size = 0;
       size += changedDialogueInfoList_.CalculateSize(_repeated_changedDialogueInfoList_codec);
       size += changedScriptInfoList_.CalculateSize(_repeated_changedScriptInfoList_codec);
-      if (UnlockStatus != global::CastoriceHoney.Server.Proto.HeartDialUnlockStatus.Lock) {
+      if (UnlockStatus != global::March7thHoney.Proto.HeartDialUnlockStatus.Lock) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) UnlockStatus);
       }
       size += oOGJAKIPFDJ_.CalculateSize(_repeated_oOGJAKIPFDJ_codec);
@@ -239,7 +239,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       changedDialogueInfoList_.Add(other.changedDialogueInfoList_);
       changedScriptInfoList_.Add(other.changedScriptInfoList_);
-      if (other.UnlockStatus != global::CastoriceHoney.Server.Proto.HeartDialUnlockStatus.Lock) {
+      if (other.UnlockStatus != global::March7thHoney.Proto.HeartDialUnlockStatus.Lock) {
         UnlockStatus = other.UnlockStatus;
       }
       oOGJAKIPFDJ_.Add(other.oOGJAKIPFDJ_);
@@ -271,7 +271,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 80: {
-            UnlockStatus = (global::CastoriceHoney.Server.Proto.HeartDialUnlockStatus) input.ReadEnum();
+            UnlockStatus = (global::March7thHoney.Proto.HeartDialUnlockStatus) input.ReadEnum();
             break;
           }
           case 90: {
@@ -306,7 +306,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 80: {
-            UnlockStatus = (global::CastoriceHoney.Server.Proto.HeartDialUnlockStatus) input.ReadEnum();
+            UnlockStatus = (global::March7thHoney.Proto.HeartDialUnlockStatus) input.ReadEnum();
             break;
           }
           case 90: {

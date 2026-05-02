@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GridFightForgeGoodsInfo.proto</summary>
   public static partial class GridFightForgeGoodsInfoReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "dWlwbWVudEluZm9IAEINCgtDS01FQUlES09JQUIzChNlbXUubHVuYXJjb3Jl",
             "LnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GridFightForgeEquipmentInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightForgeRoleInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridFightForgeEquipmentInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightForgeRoleInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GridFightForgeGoodsInfo), global::CastoriceHoney.Server.Proto.GridFightForgeGoodsInfo.Parser, new[]{ "RoleGoodsInfo", "EquipmentGoodsInfo" }, new[]{ "CKMEAIDKOIA" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightForgeGoodsInfo), global::March7thHoney.Proto.GridFightForgeGoodsInfo.Parser, new[]{ "RoleGoodsInfo", "EquipmentGoodsInfo" }, new[]{ "CKMEAIDKOIA" }, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GridFightForgeGoodsInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GridFightForgeGoodsInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -98,8 +98,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int RoleGoodsInfoFieldNumber = 3;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightForgeRoleInfo RoleGoodsInfo {
-      get { return cKMEAIDKOIACase_ == CKMEAIDKOIAOneofCase.RoleGoodsInfo ? (global::CastoriceHoney.Server.Proto.GridFightForgeRoleInfo) cKMEAIDKOIA_ : null; }
+    public global::March7thHoney.Proto.GridFightForgeRoleInfo RoleGoodsInfo {
+      get { return cKMEAIDKOIACase_ == CKMEAIDKOIAOneofCase.RoleGoodsInfo ? (global::March7thHoney.Proto.GridFightForgeRoleInfo) cKMEAIDKOIA_ : null; }
       set {
         cKMEAIDKOIA_ = value;
         cKMEAIDKOIACase_ = value == null ? CKMEAIDKOIAOneofCase.None : CKMEAIDKOIAOneofCase.RoleGoodsInfo;
@@ -110,8 +110,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int EquipmentGoodsInfoFieldNumber = 9;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightForgeEquipmentInfo EquipmentGoodsInfo {
-      get { return cKMEAIDKOIACase_ == CKMEAIDKOIAOneofCase.EquipmentGoodsInfo ? (global::CastoriceHoney.Server.Proto.GridFightForgeEquipmentInfo) cKMEAIDKOIA_ : null; }
+    public global::March7thHoney.Proto.GridFightForgeEquipmentInfo EquipmentGoodsInfo {
+      get { return cKMEAIDKOIACase_ == CKMEAIDKOIAOneofCase.EquipmentGoodsInfo ? (global::March7thHoney.Proto.GridFightForgeEquipmentInfo) cKMEAIDKOIA_ : null; }
       set {
         cKMEAIDKOIA_ = value;
         cKMEAIDKOIACase_ = value == null ? CKMEAIDKOIAOneofCase.None : CKMEAIDKOIAOneofCase.EquipmentGoodsInfo;
@@ -242,13 +242,13 @@ namespace CastoriceHoney.Server.Proto {
       switch (other.CKMEAIDKOIACase) {
         case CKMEAIDKOIAOneofCase.RoleGoodsInfo:
           if (RoleGoodsInfo == null) {
-            RoleGoodsInfo = new global::CastoriceHoney.Server.Proto.GridFightForgeRoleInfo();
+            RoleGoodsInfo = new global::March7thHoney.Proto.GridFightForgeRoleInfo();
           }
           RoleGoodsInfo.MergeFrom(other.RoleGoodsInfo);
           break;
         case CKMEAIDKOIAOneofCase.EquipmentGoodsInfo:
           if (EquipmentGoodsInfo == null) {
-            EquipmentGoodsInfo = new global::CastoriceHoney.Server.Proto.GridFightForgeEquipmentInfo();
+            EquipmentGoodsInfo = new global::March7thHoney.Proto.GridFightForgeEquipmentInfo();
           }
           EquipmentGoodsInfo.MergeFrom(other.EquipmentGoodsInfo);
           break;
@@ -274,7 +274,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 26: {
-            global::CastoriceHoney.Server.Proto.GridFightForgeRoleInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightForgeRoleInfo();
+            global::March7thHoney.Proto.GridFightForgeRoleInfo subBuilder = new global::March7thHoney.Proto.GridFightForgeRoleInfo();
             if (cKMEAIDKOIACase_ == CKMEAIDKOIAOneofCase.RoleGoodsInfo) {
               subBuilder.MergeFrom(RoleGoodsInfo);
             }
@@ -283,7 +283,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 74: {
-            global::CastoriceHoney.Server.Proto.GridFightForgeEquipmentInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightForgeEquipmentInfo();
+            global::March7thHoney.Proto.GridFightForgeEquipmentInfo subBuilder = new global::March7thHoney.Proto.GridFightForgeEquipmentInfo();
             if (cKMEAIDKOIACase_ == CKMEAIDKOIAOneofCase.EquipmentGoodsInfo) {
               subBuilder.MergeFrom(EquipmentGoodsInfo);
             }
@@ -311,7 +311,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 26: {
-            global::CastoriceHoney.Server.Proto.GridFightForgeRoleInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightForgeRoleInfo();
+            global::March7thHoney.Proto.GridFightForgeRoleInfo subBuilder = new global::March7thHoney.Proto.GridFightForgeRoleInfo();
             if (cKMEAIDKOIACase_ == CKMEAIDKOIAOneofCase.RoleGoodsInfo) {
               subBuilder.MergeFrom(RoleGoodsInfo);
             }
@@ -320,7 +320,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 74: {
-            global::CastoriceHoney.Server.Proto.GridFightForgeEquipmentInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightForgeEquipmentInfo();
+            global::March7thHoney.Proto.GridFightForgeEquipmentInfo subBuilder = new global::March7thHoney.Proto.GridFightForgeEquipmentInfo();
             if (cKMEAIDKOIACase_ == CKMEAIDKOIAOneofCase.EquipmentGoodsInfo) {
               subBuilder.MergeFrom(EquipmentGoodsInfo);
             }

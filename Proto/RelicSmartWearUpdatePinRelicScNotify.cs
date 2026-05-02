@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from RelicSmartWearUpdatePinRelicScNotify.proto</summary>
   public static partial class RelicSmartWearUpdatePinRelicScNotifyReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "bGljX3VuaXF1ZV9pZBgJIAEoDUIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIb",
             "Q2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.BDEKEIKAKMLReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.BDEKEIKAKMLReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.RelicSmartWearUpdatePinRelicScNotify), global::CastoriceHoney.Server.Proto.RelicSmartWearUpdatePinRelicScNotify.Parser, new[]{ "BKDEIHEKGIC", "NAEIPMIIIEC", "RelicUniqueId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RelicSmartWearUpdatePinRelicScNotify), global::March7thHoney.Proto.RelicSmartWearUpdatePinRelicScNotify.Parser, new[]{ "BKDEIHEKGIC", "NAEIPMIIIEC", "RelicUniqueId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.RelicSmartWearUpdatePinRelicScNotifyReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.RelicSmartWearUpdatePinRelicScNotifyReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -89,23 +89,23 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "BKDEIHEKGIC" field.</summary>
     public const int BKDEIHEKGICFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.BDEKEIKAKML> _repeated_bKDEIHEKGIC_codec
-        = pb::FieldCodec.ForMessage(34, global::CastoriceHoney.Server.Proto.BDEKEIKAKML.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BDEKEIKAKML> bKDEIHEKGIC_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BDEKEIKAKML>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BDEKEIKAKML> _repeated_bKDEIHEKGIC_codec
+        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.BDEKEIKAKML.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BDEKEIKAKML> bKDEIHEKGIC_ = new pbc::RepeatedField<global::March7thHoney.Proto.BDEKEIKAKML>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BDEKEIKAKML> BKDEIHEKGIC {
+    public pbc::RepeatedField<global::March7thHoney.Proto.BDEKEIKAKML> BKDEIHEKGIC {
       get { return bKDEIHEKGIC_; }
     }
 
     /// <summary>Field number for the "NAEIPMIIIEC" field.</summary>
     public const int NAEIPMIIIECFieldNumber = 5;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.BDEKEIKAKML> _repeated_nAEIPMIIIEC_codec
-        = pb::FieldCodec.ForMessage(42, global::CastoriceHoney.Server.Proto.BDEKEIKAKML.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BDEKEIKAKML> nAEIPMIIIEC_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BDEKEIKAKML>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BDEKEIKAKML> _repeated_nAEIPMIIIEC_codec
+        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.BDEKEIKAKML.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BDEKEIKAKML> nAEIPMIIIEC_ = new pbc::RepeatedField<global::March7thHoney.Proto.BDEKEIKAKML>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BDEKEIKAKML> NAEIPMIIIEC {
+    public pbc::RepeatedField<global::March7thHoney.Proto.BDEKEIKAKML> NAEIPMIIIEC {
       get { return nAEIPMIIIEC_; }
     }
 

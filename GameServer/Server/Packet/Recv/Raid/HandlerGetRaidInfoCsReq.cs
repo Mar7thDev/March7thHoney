@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Raid;
-using CastoriceHoney.Server.Kcp;
+using March7thHoney.GameServer.Server.Packet.Send.Raid;
+using March7thHoney.Kcp;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Raid;
+namespace March7thHoney.GameServer.Server.Packet.Recv.Raid;
 
 [Opcode(CmdIds.GetRaidInfoCsReq)]
 public class HandlerGetRaidInfoCsReq : Handler

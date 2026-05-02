@@ -1,12 +1,12 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Database;
-using CastoriceHoney.Server.Database.Inventory;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Offering;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.PlayerSync;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Data;
+using March7thHoney.Database;
+using March7thHoney.Database.Inventory;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Server.Packet.Send.Offering;
+using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Game.Inventory;
+namespace March7thHoney.GameServer.Game.Inventory;
 
 public class OfferingManager(PlayerInstance player) : BasePlayerManager(player)
 {

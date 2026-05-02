@@ -1,6 +1,6 @@
-using CastoriceHoney.Server.Enums.Language;
+using March7thHoney.Enums.Language;
 
-namespace CastoriceHoney.Server.Internationalization;
+namespace March7thHoney.Internationalization;
 
 [AttributeUsage(AttributeTargets.Class)]
 public class PluginLanguageAttribute(ProgramLanguageTypeEnum languageType) : Attribute

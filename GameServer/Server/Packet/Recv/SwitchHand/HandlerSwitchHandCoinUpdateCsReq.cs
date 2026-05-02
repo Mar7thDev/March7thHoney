@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.GameServer.Game.Player.Components;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.SwitchHand;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.GameServer.Game.Player.Components;
+using March7thHoney.GameServer.Server.Packet.Send.SwitchHand;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.SwitchHand;
+namespace March7thHoney.GameServer.Server.Packet.Recv.SwitchHand;
 
 [Opcode(CmdIds.SwitchHandCoinUpdateCsReq)]
 public class HandlerSwitchHandCoinUpdateCsReq : Handler

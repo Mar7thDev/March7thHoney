@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from ChallengeLineupList.proto</summary>
   public static partial class ChallengeLineupListReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "cmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3Rv",
             "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ChallengeAvatarInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChallengeAvatarInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ChallengeLineupList), global::CastoriceHoney.Server.Proto.ChallengeLineupList.Parser, new[]{ "AvatarList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengeLineupList), global::March7thHoney.Proto.ChallengeLineupList.Parser, new[]{ "AvatarList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ChallengeLineupListReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ChallengeLineupListReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -86,12 +86,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "avatar_list" field.</summary>
     public const int AvatarListFieldNumber = 15;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ChallengeAvatarInfo> _repeated_avatarList_codec
-        = pb::FieldCodec.ForMessage(122, global::CastoriceHoney.Server.Proto.ChallengeAvatarInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ChallengeAvatarInfo> avatarList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ChallengeAvatarInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChallengeAvatarInfo> _repeated_avatarList_codec
+        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.ChallengeAvatarInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChallengeAvatarInfo> avatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChallengeAvatarInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ChallengeAvatarInfo> AvatarList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ChallengeAvatarInfo> AvatarList {
       get { return avatarList_; }
     }
 

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from MessageChatData.proto</summary>
   public static partial class MessageChatDataReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "QjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2",
             "ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ChatDataReflection.Descriptor, global::CastoriceHoney.Server.Proto.MsgTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChatDataReflection.Descriptor, global::March7thHoney.Proto.MsgTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.MessageChatData), global::CastoriceHoney.Server.Proto.MessageChatData.Parser, new[]{ "MessageType", "ChatData" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MessageChatData), global::March7thHoney.Proto.MessageChatData.Parser, new[]{ "MessageType", "ChatData" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.MessageChatDataReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.MessageChatDataReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -87,10 +87,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "message_type" field.</summary>
     public const int MessageTypeFieldNumber = 1;
-    private global::CastoriceHoney.Server.Proto.MsgType messageType_ = global::CastoriceHoney.Server.Proto.MsgType.None;
+    private global::March7thHoney.Proto.MsgType messageType_ = global::March7thHoney.Proto.MsgType.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.MsgType MessageType {
+    public global::March7thHoney.Proto.MsgType MessageType {
       get { return messageType_; }
       set {
         messageType_ = value;
@@ -99,10 +99,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "chat_data" field.</summary>
     public const int ChatDataFieldNumber = 2;
-    private global::CastoriceHoney.Server.Proto.ChatData chatData_;
+    private global::March7thHoney.Proto.ChatData chatData_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ChatData ChatData {
+    public global::March7thHoney.Proto.ChatData ChatData {
       get { return chatData_; }
       set {
         chatData_ = value;
@@ -133,7 +133,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (MessageType != global::CastoriceHoney.Server.Proto.MsgType.None) hash ^= MessageType.GetHashCode();
+      if (MessageType != global::March7thHoney.Proto.MsgType.None) hash ^= MessageType.GetHashCode();
       if (chatData_ != null) hash ^= ChatData.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -153,7 +153,7 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (MessageType != global::CastoriceHoney.Server.Proto.MsgType.None) {
+      if (MessageType != global::March7thHoney.Proto.MsgType.None) {
         output.WriteRawTag(8);
         output.WriteEnum((int) MessageType);
       }
@@ -171,7 +171,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (MessageType != global::CastoriceHoney.Server.Proto.MsgType.None) {
+      if (MessageType != global::March7thHoney.Proto.MsgType.None) {
         output.WriteRawTag(8);
         output.WriteEnum((int) MessageType);
       }
@@ -189,7 +189,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (MessageType != global::CastoriceHoney.Server.Proto.MsgType.None) {
+      if (MessageType != global::March7thHoney.Proto.MsgType.None) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) MessageType);
       }
       if (chatData_ != null) {
@@ -207,12 +207,12 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.MessageType != global::CastoriceHoney.Server.Proto.MsgType.None) {
+      if (other.MessageType != global::March7thHoney.Proto.MsgType.None) {
         MessageType = other.MessageType;
       }
       if (other.chatData_ != null) {
         if (chatData_ == null) {
-          ChatData = new global::CastoriceHoney.Server.Proto.ChatData();
+          ChatData = new global::March7thHoney.Proto.ChatData();
         }
         ChatData.MergeFrom(other.ChatData);
       }
@@ -236,12 +236,12 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            MessageType = (global::CastoriceHoney.Server.Proto.MsgType) input.ReadEnum();
+            MessageType = (global::March7thHoney.Proto.MsgType) input.ReadEnum();
             break;
           }
           case 18: {
             if (chatData_ == null) {
-              ChatData = new global::CastoriceHoney.Server.Proto.ChatData();
+              ChatData = new global::March7thHoney.Proto.ChatData();
             }
             input.ReadMessage(ChatData);
             break;
@@ -266,12 +266,12 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            MessageType = (global::CastoriceHoney.Server.Proto.MsgType) input.ReadEnum();
+            MessageType = (global::March7thHoney.Proto.MsgType) input.ReadEnum();
             break;
           }
           case 18: {
             if (chatData_ == null) {
-              ChatData = new global::CastoriceHoney.Server.Proto.ChatData();
+              ChatData = new global::March7thHoney.Proto.ChatData();
             }
             input.ReadMessage(ChatData);
             break;

@@ -3,17 +3,17 @@ using LinkedListOfBufferItem = KcpSharp.NetstandardShim.LinkedList<KcpSharp.KcpS
 using LinkedListNodeOfBufferItem = KcpSharp.NetstandardShim.LinkedListNode<KcpSharp.KcpSendReceiveBufferItem>;
 #else
 using LinkedListOfBufferItem =
-    System.Collections.Generic.LinkedList<CastoriceHoney.Server.Kcp.KcpSharp.KcpSendReceiveBufferItem>;
+    System.Collections.Generic.LinkedList<March7thHoney.Kcp.KcpSharp.KcpSendReceiveBufferItem>;
 using LinkedListNodeOfBufferItem =
-    System.Collections.Generic.LinkedListNode<CastoriceHoney.Server.Kcp.KcpSharp.KcpSendReceiveBufferItem>;
+    System.Collections.Generic.LinkedListNode<March7thHoney.Kcp.KcpSharp.KcpSendReceiveBufferItem>;
 #endif
 using System.Buffers.Binary;
 using System.Net;
 using System.Net.Sockets;
 using System.Runtime.CompilerServices;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.Kcp.KcpSharp;
+namespace March7thHoney.Kcp.KcpSharp;
 
 /// <summary>
 ///     A reliable channel over an unreliable transport implemented in KCP protocol.

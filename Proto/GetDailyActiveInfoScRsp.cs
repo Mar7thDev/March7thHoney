@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GetDailyActiveInfoScRsp.proto</summary>
   public static partial class GetDailyActiveInfoScRspReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90",
             "b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.DailyActivityInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.DailyActivityInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GetDailyActiveInfoScRsp), global::CastoriceHoney.Server.Proto.GetDailyActiveInfoScRsp.Parser, new[]{ "Retcode", "DailyActiveLevelList", "DailyActiveQuestIdList", "DailyActivePoint" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetDailyActiveInfoScRsp), global::March7thHoney.Proto.GetDailyActiveInfoScRsp.Parser, new[]{ "Retcode", "DailyActiveLevelList", "DailyActiveQuestIdList", "DailyActivePoint" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GetDailyActiveInfoScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GetDailyActiveInfoScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -103,12 +103,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "daily_active_level_list" field.</summary>
     public const int DailyActiveLevelListFieldNumber = 9;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.DailyActivityInfo> _repeated_dailyActiveLevelList_codec
-        = pb::FieldCodec.ForMessage(74, global::CastoriceHoney.Server.Proto.DailyActivityInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.DailyActivityInfo> dailyActiveLevelList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.DailyActivityInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.DailyActivityInfo> _repeated_dailyActiveLevelList_codec
+        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.DailyActivityInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.DailyActivityInfo> dailyActiveLevelList_ = new pbc::RepeatedField<global::March7thHoney.Proto.DailyActivityInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.DailyActivityInfo> DailyActiveLevelList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.DailyActivityInfo> DailyActiveLevelList {
       get { return dailyActiveLevelList_; }
     }
 

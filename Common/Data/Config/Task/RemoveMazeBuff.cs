@@ -1,6 +1,6 @@
 using Newtonsoft.Json.Linq;
 
-namespace CastoriceHoney.Server.Data.Config.Task;
+namespace March7thHoney.Data.Config.Task;
 
 public class RemoveMazeBuff : TaskConfigInfo
 {
@@ -18,8 +18,8 @@ public class RemoveMazeBuff : TaskConfigInfo
             var targetType = value as JObject;
             var classType =
                 System.Type.GetType(
-                    $"CastoriceHoney.Server.Data.Config.Task.{targetType?["Type"]?.ToString().Replace("RPG.GameCore.", "")}");
-            classType ??= System.Type.GetType("CastoriceHoney.Server.Data.Config.Task.TargetEvaluator");
+                    $"March7thHoney.Data.Config.Task.{targetType?["Type"]?.ToString().Replace("RPG.GameCore.", "")}");
+            classType ??= System.Type.GetType("March7thHoney.Data.Config.Task.TargetEvaluator");
             info.TargetType = (targetType!.ToObject(classType!) as TargetEvaluator)!;
         }
 

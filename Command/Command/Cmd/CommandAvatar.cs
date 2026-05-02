@@ -1,11 +1,11 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Enums.Avatar;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Player;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.PlayerSync;
-using CastoriceHoney.Server.Internationalization;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Data;
+using March7thHoney.Enums.Avatar;
+using March7thHoney.GameServer.Server.Packet.Send.Player;
+using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
+using March7thHoney.Internationalization;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.Command.Command.Cmd;
+namespace March7thHoney.Command.Command.Cmd;
 
 [CommandInfo("avatar", "Game.Command.Avatar.Desc", "Game.Command.Avatar.Usage", ["av", "ava"])]
 public class CommandAvatar : ICommand

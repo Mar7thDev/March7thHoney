@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from MonopolyActionResultScNotify.proto</summary>
   public static partial class MonopolyActionResultScNotifyReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "ZXN1bHRCMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5",
             "LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.MonopolyActionResultReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.MonopolyActionResultReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.MonopolyActionResultScNotify), global::CastoriceHoney.Server.Proto.MonopolyActionResultScNotify.Parser, new[]{ "MMAAHMECGOE" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MonopolyActionResultScNotify), global::March7thHoney.Proto.MonopolyActionResultScNotify.Parser, new[]{ "MMAAHMECGOE" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.MonopolyActionResultScNotifyReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.MonopolyActionResultScNotifyReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -86,12 +86,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "MMAAHMECGOE" field.</summary>
     public const int MMAAHMECGOEFieldNumber = 5;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.MonopolyActionResult> _repeated_mMAAHMECGOE_codec
-        = pb::FieldCodec.ForMessage(42, global::CastoriceHoney.Server.Proto.MonopolyActionResult.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MonopolyActionResult> mMAAHMECGOE_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MonopolyActionResult>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MonopolyActionResult> _repeated_mMAAHMECGOE_codec
+        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.MonopolyActionResult.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MonopolyActionResult> mMAAHMECGOE_ = new pbc::RepeatedField<global::March7thHoney.Proto.MonopolyActionResult>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MonopolyActionResult> MMAAHMECGOE {
+    public pbc::RepeatedField<global::March7thHoney.Proto.MonopolyActionResult> MMAAHMECGOE {
       get { return mMAAHMECGOE_; }
     }
 

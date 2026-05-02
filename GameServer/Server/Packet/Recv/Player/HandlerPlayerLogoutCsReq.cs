@@ -1,6 +1,6 @@
-using CastoriceHoney.Server.Kcp;
+using March7thHoney.Kcp;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Player;
+namespace March7thHoney.GameServer.Server.Packet.Recv.Player;
 
 [Opcode(CmdIds.PlayerLogoutCsReq)]
 public class HandlerPlayerLogoutCsReq : Handler

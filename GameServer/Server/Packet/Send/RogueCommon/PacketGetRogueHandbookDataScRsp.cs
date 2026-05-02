@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Data;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Send.RogueCommon;
+namespace March7thHoney.GameServer.Server.Packet.Send.RogueCommon;
 
 public class PacketGetRogueHandbookDataScRsp : BasePacket
 {

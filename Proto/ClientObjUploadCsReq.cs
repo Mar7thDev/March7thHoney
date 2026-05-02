@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from ClientObjUploadCsReq.proto</summary>
   public static partial class ClientObjUploadCsReqReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "YXRhGAwgASgMQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VI",
             "b25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.NOFMHNNIJANReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.NOFMHNNIJANReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ClientObjUploadCsReq), global::CastoriceHoney.Server.Proto.ClientObjUploadCsReq.Parser, new[]{ "KKCDCIJHJFA", "MKHDINDGHMD", "ScData" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ClientObjUploadCsReq), global::March7thHoney.Proto.ClientObjUploadCsReq.Parser, new[]{ "KKCDCIJHJFA", "MKHDINDGHMD", "ScData" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ClientObjUploadCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ClientObjUploadCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -100,10 +100,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "MKHDINDGHMD" field.</summary>
     public const int MKHDINDGHMDFieldNumber = 10;
-    private global::CastoriceHoney.Server.Proto.NOFMHNNIJAN mKHDINDGHMD_ = global::CastoriceHoney.Server.Proto.NOFMHNNIJAN.Lhbkaepnida;
+    private global::March7thHoney.Proto.NOFMHNNIJAN mKHDINDGHMD_ = global::March7thHoney.Proto.NOFMHNNIJAN.Lhbkaepnida;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.NOFMHNNIJAN MKHDINDGHMD {
+    public global::March7thHoney.Proto.NOFMHNNIJAN MKHDINDGHMD {
       get { return mKHDINDGHMD_; }
       set {
         mKHDINDGHMD_ = value;
@@ -148,7 +148,7 @@ namespace CastoriceHoney.Server.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (KKCDCIJHJFA != 0) hash ^= KKCDCIJHJFA.GetHashCode();
-      if (MKHDINDGHMD != global::CastoriceHoney.Server.Proto.NOFMHNNIJAN.Lhbkaepnida) hash ^= MKHDINDGHMD.GetHashCode();
+      if (MKHDINDGHMD != global::March7thHoney.Proto.NOFMHNNIJAN.Lhbkaepnida) hash ^= MKHDINDGHMD.GetHashCode();
       if (ScData.Length != 0) hash ^= ScData.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -172,7 +172,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(16);
         output.WriteUInt32(KKCDCIJHJFA);
       }
-      if (MKHDINDGHMD != global::CastoriceHoney.Server.Proto.NOFMHNNIJAN.Lhbkaepnida) {
+      if (MKHDINDGHMD != global::March7thHoney.Proto.NOFMHNNIJAN.Lhbkaepnida) {
         output.WriteRawTag(80);
         output.WriteEnum((int) MKHDINDGHMD);
       }
@@ -194,7 +194,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(16);
         output.WriteUInt32(KKCDCIJHJFA);
       }
-      if (MKHDINDGHMD != global::CastoriceHoney.Server.Proto.NOFMHNNIJAN.Lhbkaepnida) {
+      if (MKHDINDGHMD != global::March7thHoney.Proto.NOFMHNNIJAN.Lhbkaepnida) {
         output.WriteRawTag(80);
         output.WriteEnum((int) MKHDINDGHMD);
       }
@@ -215,7 +215,7 @@ namespace CastoriceHoney.Server.Proto {
       if (KKCDCIJHJFA != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(KKCDCIJHJFA);
       }
-      if (MKHDINDGHMD != global::CastoriceHoney.Server.Proto.NOFMHNNIJAN.Lhbkaepnida) {
+      if (MKHDINDGHMD != global::March7thHoney.Proto.NOFMHNNIJAN.Lhbkaepnida) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) MKHDINDGHMD);
       }
       if (ScData.Length != 0) {
@@ -236,7 +236,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other.KKCDCIJHJFA != 0) {
         KKCDCIJHJFA = other.KKCDCIJHJFA;
       }
-      if (other.MKHDINDGHMD != global::CastoriceHoney.Server.Proto.NOFMHNNIJAN.Lhbkaepnida) {
+      if (other.MKHDINDGHMD != global::March7thHoney.Proto.NOFMHNNIJAN.Lhbkaepnida) {
         MKHDINDGHMD = other.MKHDINDGHMD;
       }
       if (other.ScData.Length != 0) {
@@ -266,7 +266,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 80: {
-            MKHDINDGHMD = (global::CastoriceHoney.Server.Proto.NOFMHNNIJAN) input.ReadEnum();
+            MKHDINDGHMD = (global::March7thHoney.Proto.NOFMHNNIJAN) input.ReadEnum();
             break;
           }
           case 98: {
@@ -297,7 +297,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 80: {
-            MKHDINDGHMD = (global::CastoriceHoney.Server.Proto.NOFMHNNIJAN) input.ReadEnum();
+            MKHDINDGHMD = (global::March7thHoney.Proto.NOFMHNNIJAN) input.ReadEnum();
             break;
           }
           case 98: {

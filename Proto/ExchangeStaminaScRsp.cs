@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from ExchangeStaminaScRsp.proto</summary>
   public static partial class ExchangeStaminaScRspReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "aW5hX2FkZBgPIAEoDUIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9y",
             "aWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ItemCostReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemCostReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ExchangeStaminaScRsp), global::CastoriceHoney.Server.Proto.ExchangeStaminaScRsp.Parser, new[]{ "ItemCostList", "ExchangeTimes", "LastRecoverTime", "Retcode", "StaminaAdd" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ExchangeStaminaScRsp), global::March7thHoney.Proto.ExchangeStaminaScRsp.Parser, new[]{ "ItemCostList", "ExchangeTimes", "LastRecoverTime", "Retcode", "StaminaAdd" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ExchangeStaminaScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ExchangeStaminaScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -91,12 +91,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "item_cost_list" field.</summary>
     public const int ItemCostListFieldNumber = 6;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ItemCost> _repeated_itemCostList_codec
-        = pb::FieldCodec.ForMessage(50, global::CastoriceHoney.Server.Proto.ItemCost.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ItemCost> itemCostList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ItemCost>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ItemCost> _repeated_itemCostList_codec
+        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.ItemCost.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ItemCost> itemCostList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ItemCost>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ItemCost> ItemCostList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ItemCost> ItemCostList {
       get { return itemCostList_; }
     }
 

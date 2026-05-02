@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.Database.Account;
-using CastoriceHoney.Server.Internationalization;
+using March7thHoney.Database.Account;
+using March7thHoney.Internationalization;
 
-namespace CastoriceHoney.Server.Command.Command.Cmd;
+namespace March7thHoney.Command.Command.Cmd;
 
 [CommandInfo("account", "Game.Command.Account.Desc", "Game.Command.Account.Usage", permission: "egglink.manage")]
 public class CommandAccount : ICommand

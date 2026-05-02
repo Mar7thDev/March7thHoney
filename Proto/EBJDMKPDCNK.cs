@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from EBJDMKPDCNK.proto</summary>
   public static partial class EBJDMKPDCNKReflection {
@@ -29,9 +29,9 @@ namespace CastoriceHoney.Server.Proto {
             "ChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVy",
             "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.JAFMFGJLGGAReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.JAFMFGJLGGAReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.EBJDMKPDCNK), global::CastoriceHoney.Server.Proto.EBJDMKPDCNK.Parser, new[]{ "LineupList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EBJDMKPDCNK), global::March7thHoney.Proto.EBJDMKPDCNK.Parser, new[]{ "LineupList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -53,7 +53,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.EBJDMKPDCNKReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.EBJDMKPDCNKReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -85,12 +85,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "lineup_list" field.</summary>
     public const int LineupListFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.JAFMFGJLGGA> _repeated_lineupList_codec
-        = pb::FieldCodec.ForMessage(10, global::CastoriceHoney.Server.Proto.JAFMFGJLGGA.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.JAFMFGJLGGA> lineupList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.JAFMFGJLGGA>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.JAFMFGJLGGA> _repeated_lineupList_codec
+        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.JAFMFGJLGGA.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.JAFMFGJLGGA> lineupList_ = new pbc::RepeatedField<global::March7thHoney.Proto.JAFMFGJLGGA>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.JAFMFGJLGGA> LineupList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.JAFMFGJLGGA> LineupList {
       get { return lineupList_; }
     }
 

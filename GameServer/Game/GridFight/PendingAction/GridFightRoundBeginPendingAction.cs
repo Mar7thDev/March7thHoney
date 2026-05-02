@@ -1,6 +1,6 @@
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Game.GridFight.PendingAction;
+namespace March7thHoney.GameServer.Game.GridFight.PendingAction;
 
 public class GridFightRoundBeginPendingAction(GridFightInstance inst) : BaseGridFightPendingAction(inst)
 {

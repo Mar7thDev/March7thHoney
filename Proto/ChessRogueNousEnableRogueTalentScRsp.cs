@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from ChessRogueNousEnableRogueTalentScRsp.proto</summary>
   public static partial class ChessRogueNousEnableRogueTalentScRspReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "ZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Q",
             "cm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.MCACDFHCPIEReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.MCACDFHCPIEReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ChessRogueNousEnableRogueTalentScRsp), global::CastoriceHoney.Server.Proto.ChessRogueNousEnableRogueTalentScRsp.Parser, new[]{ "MPGDJOGHKBH", "TalentInfo", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChessRogueNousEnableRogueTalentScRsp), global::March7thHoney.Proto.ChessRogueNousEnableRogueTalentScRsp.Parser, new[]{ "MPGDJOGHKBH", "TalentInfo", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ChessRogueNousEnableRogueTalentScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ChessRogueNousEnableRogueTalentScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -101,10 +101,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "talent_info" field.</summary>
     public const int TalentInfoFieldNumber = 13;
-    private global::CastoriceHoney.Server.Proto.MCACDFHCPIE talentInfo_;
+    private global::March7thHoney.Proto.MCACDFHCPIE talentInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.MCACDFHCPIE TalentInfo {
+    public global::March7thHoney.Proto.MCACDFHCPIE TalentInfo {
       get { return talentInfo_; }
       set {
         talentInfo_ = value;
@@ -239,7 +239,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.talentInfo_ != null) {
         if (talentInfo_ == null) {
-          TalentInfo = new global::CastoriceHoney.Server.Proto.MCACDFHCPIE();
+          TalentInfo = new global::March7thHoney.Proto.MCACDFHCPIE();
         }
         TalentInfo.MergeFrom(other.TalentInfo);
       }
@@ -271,7 +271,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 106: {
             if (talentInfo_ == null) {
-              TalentInfo = new global::CastoriceHoney.Server.Proto.MCACDFHCPIE();
+              TalentInfo = new global::March7thHoney.Proto.MCACDFHCPIE();
             }
             input.ReadMessage(TalentInfo);
             break;
@@ -305,7 +305,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 106: {
             if (talentInfo_ == null) {
-              TalentInfo = new global::CastoriceHoney.Server.Proto.MCACDFHCPIE();
+              TalentInfo = new global::March7thHoney.Proto.MCACDFHCPIE();
             }
             input.ReadMessage(TalentInfo);
             break;

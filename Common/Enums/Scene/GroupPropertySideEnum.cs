@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Enums.Scene;
+namespace March7thHoney.Enums.Scene;
 
 public enum GroupPropertySideEnum
 {

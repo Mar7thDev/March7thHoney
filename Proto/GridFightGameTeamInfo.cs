@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GridFightGameTeamInfo.proto</summary>
   public static partial class GridFightGameTeamInfoReflection {
@@ -35,9 +35,9 @@ namespace CastoriceHoney.Server.Proto {
             "EwoLSE9GSUVOTUFMT1AYDyADKA1CMwoTZW11Lmx1bmFyY29yZS5wcm90b6oC",
             "G0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.CKCKIDHMMEGReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridGameForgeItemInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridGameNpcInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridGameRoleInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.CKCKIDHMMEGReflection.Descriptor, global::March7thHoney.Proto.GridGameForgeItemInfoReflection.Descriptor, global::March7thHoney.Proto.GridGameNpcInfoReflection.Descriptor, global::March7thHoney.Proto.GridGameRoleInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GridFightGameTeamInfo), global::CastoriceHoney.Server.Proto.GridFightGameTeamInfo.Parser, new[]{ "CDLAIJCKJJN", "GridGameForgeItemList", "GridGameNpcList", "MMAJCLACOBN", "GridGameRoleList", "HOFIENMALOP" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightGameTeamInfo), global::March7thHoney.Proto.GridFightGameTeamInfo.Parser, new[]{ "CDLAIJCKJJN", "GridGameForgeItemList", "GridGameNpcList", "MMAJCLACOBN", "GridGameRoleList", "HOFIENMALOP" }, null, null, null, null)
           }));
     }
     #endregion
@@ -59,7 +59,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GridFightGameTeamInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GridFightGameTeamInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -107,45 +107,45 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "grid_game_forge_item_list" field.</summary>
     public const int GridGameForgeItemListFieldNumber = 8;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.GridGameForgeItemInfo> _repeated_gridGameForgeItemList_codec
-        = pb::FieldCodec.ForMessage(66, global::CastoriceHoney.Server.Proto.GridGameForgeItemInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridGameForgeItemInfo> gridGameForgeItemList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridGameForgeItemInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GridGameForgeItemInfo> _repeated_gridGameForgeItemList_codec
+        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.GridGameForgeItemInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GridGameForgeItemInfo> gridGameForgeItemList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GridGameForgeItemInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridGameForgeItemInfo> GridGameForgeItemList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.GridGameForgeItemInfo> GridGameForgeItemList {
       get { return gridGameForgeItemList_; }
     }
 
     /// <summary>Field number for the "grid_game_npc_list" field.</summary>
     public const int GridGameNpcListFieldNumber = 10;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.GridGameNpcInfo> _repeated_gridGameNpcList_codec
-        = pb::FieldCodec.ForMessage(82, global::CastoriceHoney.Server.Proto.GridGameNpcInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridGameNpcInfo> gridGameNpcList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridGameNpcInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GridGameNpcInfo> _repeated_gridGameNpcList_codec
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.GridGameNpcInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GridGameNpcInfo> gridGameNpcList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GridGameNpcInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridGameNpcInfo> GridGameNpcList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.GridGameNpcInfo> GridGameNpcList {
       get { return gridGameNpcList_; }
     }
 
     /// <summary>Field number for the "MMAJCLACOBN" field.</summary>
     public const int MMAJCLACOBNFieldNumber = 13;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.CKCKIDHMMEG> _repeated_mMAJCLACOBN_codec
-        = pb::FieldCodec.ForMessage(106, global::CastoriceHoney.Server.Proto.CKCKIDHMMEG.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.CKCKIDHMMEG> mMAJCLACOBN_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.CKCKIDHMMEG>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.CKCKIDHMMEG> _repeated_mMAJCLACOBN_codec
+        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.CKCKIDHMMEG.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.CKCKIDHMMEG> mMAJCLACOBN_ = new pbc::RepeatedField<global::March7thHoney.Proto.CKCKIDHMMEG>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.CKCKIDHMMEG> MMAJCLACOBN {
+    public pbc::RepeatedField<global::March7thHoney.Proto.CKCKIDHMMEG> MMAJCLACOBN {
       get { return mMAJCLACOBN_; }
     }
 
     /// <summary>Field number for the "grid_game_role_list" field.</summary>
     public const int GridGameRoleListFieldNumber = 14;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.GridGameRoleInfo> _repeated_gridGameRoleList_codec
-        = pb::FieldCodec.ForMessage(114, global::CastoriceHoney.Server.Proto.GridGameRoleInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridGameRoleInfo> gridGameRoleList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridGameRoleInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GridGameRoleInfo> _repeated_gridGameRoleList_codec
+        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.GridGameRoleInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GridGameRoleInfo> gridGameRoleList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GridGameRoleInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridGameRoleInfo> GridGameRoleList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.GridGameRoleInfo> GridGameRoleList {
       get { return gridGameRoleList_; }
     }
 

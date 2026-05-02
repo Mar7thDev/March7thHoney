@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from TravelBrochureApplyPasterListCsReq.proto</summary>
   public static partial class TravelBrochureApplyPasterListCsReqReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "EwoLSEJDSlBDTUpQSEUYDyABKA1CMwoTZW11Lmx1bmFyY29yZS5wcm90b6oC",
             "G0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.IHLLBHLEGMDReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.IHLLBHLEGMDReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.TravelBrochureApplyPasterListCsReq), global::CastoriceHoney.Server.Proto.TravelBrochureApplyPasterListCsReq.Parser, new[]{ "MLFNLIBCBMO", "HBCJPCMJPHE" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TravelBrochureApplyPasterListCsReq), global::March7thHoney.Proto.TravelBrochureApplyPasterListCsReq.Parser, new[]{ "MLFNLIBCBMO", "HBCJPCMJPHE" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.TravelBrochureApplyPasterListCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.TravelBrochureApplyPasterListCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -87,12 +87,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "MLFNLIBCBMO" field.</summary>
     public const int MLFNLIBCBMOFieldNumber = 13;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.IHLLBHLEGMD> _repeated_mLFNLIBCBMO_codec
-        = pb::FieldCodec.ForMessage(106, global::CastoriceHoney.Server.Proto.IHLLBHLEGMD.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.IHLLBHLEGMD> mLFNLIBCBMO_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.IHLLBHLEGMD>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.IHLLBHLEGMD> _repeated_mLFNLIBCBMO_codec
+        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.IHLLBHLEGMD.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.IHLLBHLEGMD> mLFNLIBCBMO_ = new pbc::RepeatedField<global::March7thHoney.Proto.IHLLBHLEGMD>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.IHLLBHLEGMD> MLFNLIBCBMO {
+    public pbc::RepeatedField<global::March7thHoney.Proto.IHLLBHLEGMD> MLFNLIBCBMO {
       get { return mLFNLIBCBMO_; }
     }
 

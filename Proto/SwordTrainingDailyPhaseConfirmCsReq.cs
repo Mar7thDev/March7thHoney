@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from SwordTrainingDailyPhaseConfirmCsReq.proto</summary>
   public static partial class SwordTrainingDailyPhaseConfirmCsReqReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "cmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnBy",
             "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.SwordTrainingDailyPhaseTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.SwordTrainingDailyPhaseTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.SwordTrainingDailyPhaseConfirmCsReq), global::CastoriceHoney.Server.Proto.SwordTrainingDailyPhaseConfirmCsReq.Parser, new[]{ "BFPFDMGMCAI" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SwordTrainingDailyPhaseConfirmCsReq), global::March7thHoney.Proto.SwordTrainingDailyPhaseConfirmCsReq.Parser, new[]{ "BFPFDMGMCAI" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.SwordTrainingDailyPhaseConfirmCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.SwordTrainingDailyPhaseConfirmCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -87,10 +87,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "BFPFDMGMCAI" field.</summary>
     public const int BFPFDMGMCAIFieldNumber = 4;
-    private global::CastoriceHoney.Server.Proto.SwordTrainingDailyPhaseType bFPFDMGMCAI_ = global::CastoriceHoney.Server.Proto.SwordTrainingDailyPhaseType.MmkjjkboneaPcpdhelpkem;
+    private global::March7thHoney.Proto.SwordTrainingDailyPhaseType bFPFDMGMCAI_ = global::March7thHoney.Proto.SwordTrainingDailyPhaseType.MmkjjkboneaPcpdhelpkem;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.SwordTrainingDailyPhaseType BFPFDMGMCAI {
+    public global::March7thHoney.Proto.SwordTrainingDailyPhaseType BFPFDMGMCAI {
       get { return bFPFDMGMCAI_; }
       set {
         bFPFDMGMCAI_ = value;
@@ -120,7 +120,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (BFPFDMGMCAI != global::CastoriceHoney.Server.Proto.SwordTrainingDailyPhaseType.MmkjjkboneaPcpdhelpkem) hash ^= BFPFDMGMCAI.GetHashCode();
+      if (BFPFDMGMCAI != global::March7thHoney.Proto.SwordTrainingDailyPhaseType.MmkjjkboneaPcpdhelpkem) hash ^= BFPFDMGMCAI.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -139,7 +139,7 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (BFPFDMGMCAI != global::CastoriceHoney.Server.Proto.SwordTrainingDailyPhaseType.MmkjjkboneaPcpdhelpkem) {
+      if (BFPFDMGMCAI != global::March7thHoney.Proto.SwordTrainingDailyPhaseType.MmkjjkboneaPcpdhelpkem) {
         output.WriteRawTag(32);
         output.WriteEnum((int) BFPFDMGMCAI);
       }
@@ -153,7 +153,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (BFPFDMGMCAI != global::CastoriceHoney.Server.Proto.SwordTrainingDailyPhaseType.MmkjjkboneaPcpdhelpkem) {
+      if (BFPFDMGMCAI != global::March7thHoney.Proto.SwordTrainingDailyPhaseType.MmkjjkboneaPcpdhelpkem) {
         output.WriteRawTag(32);
         output.WriteEnum((int) BFPFDMGMCAI);
       }
@@ -167,7 +167,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (BFPFDMGMCAI != global::CastoriceHoney.Server.Proto.SwordTrainingDailyPhaseType.MmkjjkboneaPcpdhelpkem) {
+      if (BFPFDMGMCAI != global::March7thHoney.Proto.SwordTrainingDailyPhaseType.MmkjjkboneaPcpdhelpkem) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) BFPFDMGMCAI);
       }
       if (_unknownFields != null) {
@@ -182,7 +182,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.BFPFDMGMCAI != global::CastoriceHoney.Server.Proto.SwordTrainingDailyPhaseType.MmkjjkboneaPcpdhelpkem) {
+      if (other.BFPFDMGMCAI != global::March7thHoney.Proto.SwordTrainingDailyPhaseType.MmkjjkboneaPcpdhelpkem) {
         BFPFDMGMCAI = other.BFPFDMGMCAI;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -205,7 +205,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 32: {
-            BFPFDMGMCAI = (global::CastoriceHoney.Server.Proto.SwordTrainingDailyPhaseType) input.ReadEnum();
+            BFPFDMGMCAI = (global::March7thHoney.Proto.SwordTrainingDailyPhaseType) input.ReadEnum();
             break;
           }
         }
@@ -228,7 +228,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 32: {
-            BFPFDMGMCAI = (global::CastoriceHoney.Server.Proto.SwordTrainingDailyPhaseType) input.ReadEnum();
+            BFPFDMGMCAI = (global::March7thHoney.Proto.SwordTrainingDailyPhaseType) input.ReadEnum();
             break;
           }
         }

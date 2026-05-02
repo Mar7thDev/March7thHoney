@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from PlayerSqueezedScNotify.proto</summary>
   public static partial class PlayerSqueezedScNotifyReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "IAEoCzIKLkJsYWNrSW5mb0IzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2Fz",
             "dG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.BlackInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.KickTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.BlackInfoReflection.Descriptor, global::March7thHoney.Proto.KickTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.PlayerSqueezedScNotify), global::CastoriceHoney.Server.Proto.PlayerSqueezedScNotify.Parser, new[]{ "KickType", "BlackInfo" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlayerSqueezedScNotify), global::March7thHoney.Proto.PlayerSqueezedScNotify.Parser, new[]{ "KickType", "BlackInfo" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.PlayerSqueezedScNotifyReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.PlayerSqueezedScNotifyReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -87,10 +87,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "kick_type" field.</summary>
     public const int KickTypeFieldNumber = 2;
-    private global::CastoriceHoney.Server.Proto.KickType kickType_ = global::CastoriceHoney.Server.Proto.KickType.KickSqueezed;
+    private global::March7thHoney.Proto.KickType kickType_ = global::March7thHoney.Proto.KickType.KickSqueezed;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.KickType KickType {
+    public global::March7thHoney.Proto.KickType KickType {
       get { return kickType_; }
       set {
         kickType_ = value;
@@ -99,10 +99,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "black_info" field.</summary>
     public const int BlackInfoFieldNumber = 4;
-    private global::CastoriceHoney.Server.Proto.BlackInfo blackInfo_;
+    private global::March7thHoney.Proto.BlackInfo blackInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.BlackInfo BlackInfo {
+    public global::March7thHoney.Proto.BlackInfo BlackInfo {
       get { return blackInfo_; }
       set {
         blackInfo_ = value;
@@ -133,7 +133,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (KickType != global::CastoriceHoney.Server.Proto.KickType.KickSqueezed) hash ^= KickType.GetHashCode();
+      if (KickType != global::March7thHoney.Proto.KickType.KickSqueezed) hash ^= KickType.GetHashCode();
       if (blackInfo_ != null) hash ^= BlackInfo.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -153,7 +153,7 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (KickType != global::CastoriceHoney.Server.Proto.KickType.KickSqueezed) {
+      if (KickType != global::March7thHoney.Proto.KickType.KickSqueezed) {
         output.WriteRawTag(16);
         output.WriteEnum((int) KickType);
       }
@@ -171,7 +171,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (KickType != global::CastoriceHoney.Server.Proto.KickType.KickSqueezed) {
+      if (KickType != global::March7thHoney.Proto.KickType.KickSqueezed) {
         output.WriteRawTag(16);
         output.WriteEnum((int) KickType);
       }
@@ -189,7 +189,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (KickType != global::CastoriceHoney.Server.Proto.KickType.KickSqueezed) {
+      if (KickType != global::March7thHoney.Proto.KickType.KickSqueezed) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) KickType);
       }
       if (blackInfo_ != null) {
@@ -207,12 +207,12 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.KickType != global::CastoriceHoney.Server.Proto.KickType.KickSqueezed) {
+      if (other.KickType != global::March7thHoney.Proto.KickType.KickSqueezed) {
         KickType = other.KickType;
       }
       if (other.blackInfo_ != null) {
         if (blackInfo_ == null) {
-          BlackInfo = new global::CastoriceHoney.Server.Proto.BlackInfo();
+          BlackInfo = new global::March7thHoney.Proto.BlackInfo();
         }
         BlackInfo.MergeFrom(other.BlackInfo);
       }
@@ -236,12 +236,12 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 16: {
-            KickType = (global::CastoriceHoney.Server.Proto.KickType) input.ReadEnum();
+            KickType = (global::March7thHoney.Proto.KickType) input.ReadEnum();
             break;
           }
           case 34: {
             if (blackInfo_ == null) {
-              BlackInfo = new global::CastoriceHoney.Server.Proto.BlackInfo();
+              BlackInfo = new global::March7thHoney.Proto.BlackInfo();
             }
             input.ReadMessage(BlackInfo);
             break;
@@ -266,12 +266,12 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 16: {
-            KickType = (global::CastoriceHoney.Server.Proto.KickType) input.ReadEnum();
+            KickType = (global::March7thHoney.Proto.KickType) input.ReadEnum();
             break;
           }
           case 34: {
             if (blackInfo_ == null) {
-              BlackInfo = new global::CastoriceHoney.Server.Proto.BlackInfo();
+              BlackInfo = new global::March7thHoney.Proto.BlackInfo();
             }
             input.ReadMessage(BlackInfo);
             break;

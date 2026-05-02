@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Enums.Server;
+namespace March7thHoney.Enums.Server;
 
 public enum PacketActionTypeEnum
 {

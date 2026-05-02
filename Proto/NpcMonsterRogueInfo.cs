@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from NpcMonsterRogueInfo.proto</summary>
   public static partial class NpcMonsterRogueInfoReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "YXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZw",
             "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.HDKDHKPLBJCReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.HDKDHKPLBJCReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.NpcMonsterRogueInfo), global::CastoriceHoney.Server.Proto.NpcMonsterRogueInfo.Parser, new[]{ "Level", "EliteGroup", "MCBPLGAEGDJ", "OPJAFNEFJDC", "RogueMonsterId", "HardLevelGroup" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NpcMonsterRogueInfo), global::March7thHoney.Proto.NpcMonsterRogueInfo.Parser, new[]{ "Level", "EliteGroup", "MCBPLGAEGDJ", "OPJAFNEFJDC", "RogueMonsterId", "HardLevelGroup" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.NpcMonsterRogueInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.NpcMonsterRogueInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -117,10 +117,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "MCBPLGAEGDJ" field.</summary>
     public const int MCBPLGAEGDJFieldNumber = 8;
-    private global::CastoriceHoney.Server.Proto.HDKDHKPLBJC mCBPLGAEGDJ_ = global::CastoriceHoney.Server.Proto.HDKDHKPLBJC.Ofghjkihmib;
+    private global::March7thHoney.Proto.HDKDHKPLBJC mCBPLGAEGDJ_ = global::March7thHoney.Proto.HDKDHKPLBJC.Ofghjkihmib;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.HDKDHKPLBJC MCBPLGAEGDJ {
+    public global::March7thHoney.Proto.HDKDHKPLBJC MCBPLGAEGDJ {
       get { return mCBPLGAEGDJ_; }
       set {
         mCBPLGAEGDJ_ = value;
@@ -193,7 +193,7 @@ namespace CastoriceHoney.Server.Proto {
       int hash = 1;
       if (Level != 0) hash ^= Level.GetHashCode();
       if (EliteGroup != 0) hash ^= EliteGroup.GetHashCode();
-      if (MCBPLGAEGDJ != global::CastoriceHoney.Server.Proto.HDKDHKPLBJC.Ofghjkihmib) hash ^= MCBPLGAEGDJ.GetHashCode();
+      if (MCBPLGAEGDJ != global::March7thHoney.Proto.HDKDHKPLBJC.Ofghjkihmib) hash ^= MCBPLGAEGDJ.GetHashCode();
       if (OPJAFNEFJDC != 0) hash ^= OPJAFNEFJDC.GetHashCode();
       if (RogueMonsterId != 0) hash ^= RogueMonsterId.GetHashCode();
       if (HardLevelGroup != 0) hash ^= HardLevelGroup.GetHashCode();
@@ -223,7 +223,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(40);
         output.WriteUInt32(EliteGroup);
       }
-      if (MCBPLGAEGDJ != global::CastoriceHoney.Server.Proto.HDKDHKPLBJC.Ofghjkihmib) {
+      if (MCBPLGAEGDJ != global::March7thHoney.Proto.HDKDHKPLBJC.Ofghjkihmib) {
         output.WriteRawTag(64);
         output.WriteEnum((int) MCBPLGAEGDJ);
       }
@@ -257,7 +257,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(40);
         output.WriteUInt32(EliteGroup);
       }
-      if (MCBPLGAEGDJ != global::CastoriceHoney.Server.Proto.HDKDHKPLBJC.Ofghjkihmib) {
+      if (MCBPLGAEGDJ != global::March7thHoney.Proto.HDKDHKPLBJC.Ofghjkihmib) {
         output.WriteRawTag(64);
         output.WriteEnum((int) MCBPLGAEGDJ);
       }
@@ -289,7 +289,7 @@ namespace CastoriceHoney.Server.Proto {
       if (EliteGroup != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EliteGroup);
       }
-      if (MCBPLGAEGDJ != global::CastoriceHoney.Server.Proto.HDKDHKPLBJC.Ofghjkihmib) {
+      if (MCBPLGAEGDJ != global::March7thHoney.Proto.HDKDHKPLBJC.Ofghjkihmib) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) MCBPLGAEGDJ);
       }
       if (OPJAFNEFJDC != 0) {
@@ -319,7 +319,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other.EliteGroup != 0) {
         EliteGroup = other.EliteGroup;
       }
-      if (other.MCBPLGAEGDJ != global::CastoriceHoney.Server.Proto.HDKDHKPLBJC.Ofghjkihmib) {
+      if (other.MCBPLGAEGDJ != global::March7thHoney.Proto.HDKDHKPLBJC.Ofghjkihmib) {
         MCBPLGAEGDJ = other.MCBPLGAEGDJ;
       }
       if (other.OPJAFNEFJDC != 0) {
@@ -359,7 +359,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 64: {
-            MCBPLGAEGDJ = (global::CastoriceHoney.Server.Proto.HDKDHKPLBJC) input.ReadEnum();
+            MCBPLGAEGDJ = (global::March7thHoney.Proto.HDKDHKPLBJC) input.ReadEnum();
             break;
           }
           case 80: {
@@ -402,7 +402,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 64: {
-            MCBPLGAEGDJ = (global::CastoriceHoney.Server.Proto.HDKDHKPLBJC) input.ReadEnum();
+            MCBPLGAEGDJ = (global::March7thHoney.Proto.HDKDHKPLBJC) input.ReadEnum();
             break;
           }
           case 80: {

@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Enums.Quest;
+namespace March7thHoney.Enums.Quest;
 
 public enum QuestUnlockTypeEnum
 {

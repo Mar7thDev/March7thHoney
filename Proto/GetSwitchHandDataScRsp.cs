@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GetSwitchHandDataScRsp.proto</summary>
   public static partial class GetSwitchHandDataScRspReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "YXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZw",
             "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GODHDEIPDJLReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GODHDEIPDJLReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GetSwitchHandDataScRsp), global::CastoriceHoney.Server.Proto.GetSwitchHandDataScRsp.Parser, new[]{ "FPBJIFLGIMK", "LFNIPECKNDH", "AINLIAIGOJF", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetSwitchHandDataScRsp), global::March7thHoney.Proto.GetSwitchHandDataScRsp.Parser, new[]{ "FPBJIFLGIMK", "LFNIPECKNDH", "AINLIAIGOJF", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GetSwitchHandDataScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GetSwitchHandDataScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -102,12 +102,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "LFNIPECKNDH" field.</summary>
     public const int LFNIPECKNDHFieldNumber = 8;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.GODHDEIPDJL> _repeated_lFNIPECKNDH_codec
-        = pb::FieldCodec.ForMessage(66, global::CastoriceHoney.Server.Proto.GODHDEIPDJL.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GODHDEIPDJL> lFNIPECKNDH_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GODHDEIPDJL>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GODHDEIPDJL> _repeated_lFNIPECKNDH_codec
+        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.GODHDEIPDJL.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GODHDEIPDJL> lFNIPECKNDH_ = new pbc::RepeatedField<global::March7thHoney.Proto.GODHDEIPDJL>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GODHDEIPDJL> LFNIPECKNDH {
+    public pbc::RepeatedField<global::March7thHoney.Proto.GODHDEIPDJL> LFNIPECKNDH {
       get { return lFNIPECKNDH_; }
     }
 

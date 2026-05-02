@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Data.Custom;
-using CastoriceHoney.Server.Internationalization;
+using March7thHoney.Data;
+using March7thHoney.Data.Custom;
+using March7thHoney.Internationalization;
 
-namespace CastoriceHoney.Server.Command.Command.Cmd;
+namespace March7thHoney.Command.Command.Cmd;
 
 [CommandInfo("debug", "Game.Command.Debug.Desc", "Game.Command.Debug.Usage")]
 public class CommandDebug : ICommand

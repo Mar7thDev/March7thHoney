@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.Enums.Avatar;
-using CastoriceHoney.Server.Enums.Item;
+using March7thHoney.Enums.Avatar;
+using March7thHoney.Enums.Item;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("UpgradeAvatarSubRelic.json")]
 public class UpgradeAvatarSubRelicExcel : ExcelResource

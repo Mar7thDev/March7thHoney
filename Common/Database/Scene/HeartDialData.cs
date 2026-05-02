@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Enums.Mission;
+using March7thHoney.Data;
+using March7thHoney.Enums.Mission;
 using SqlSugar;
 
-namespace CastoriceHoney.Server.Database.Scene;
+namespace March7thHoney.Database.Scene;
 
 [SugarTable("HeartDial")]
 public class HeartDialData : BaseDatabaseDataHelper

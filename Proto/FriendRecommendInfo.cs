@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from FriendRecommendInfo.proto</summary>
   public static partial class FriendRecommendInfoReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "MwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZl",
             "ci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.PlayerSimpleInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.PlayerSimpleInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.FriendRecommendInfo), global::CastoriceHoney.Server.Proto.FriendRecommendInfo.Parser, new[]{ "ApplyTime", "PlayerInfo" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FriendRecommendInfo), global::March7thHoney.Proto.FriendRecommendInfo.Parser, new[]{ "ApplyTime", "PlayerInfo" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.FriendRecommendInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.FriendRecommendInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -99,10 +99,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "player_info" field.</summary>
     public const int PlayerInfoFieldNumber = 11;
-    private global::CastoriceHoney.Server.Proto.PlayerSimpleInfo playerInfo_;
+    private global::March7thHoney.Proto.PlayerSimpleInfo playerInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.PlayerSimpleInfo PlayerInfo {
+    public global::March7thHoney.Proto.PlayerSimpleInfo PlayerInfo {
       get { return playerInfo_; }
       set {
         playerInfo_ = value;
@@ -212,7 +212,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.playerInfo_ != null) {
         if (playerInfo_ == null) {
-          PlayerInfo = new global::CastoriceHoney.Server.Proto.PlayerSimpleInfo();
+          PlayerInfo = new global::March7thHoney.Proto.PlayerSimpleInfo();
         }
         PlayerInfo.MergeFrom(other.PlayerInfo);
       }
@@ -241,7 +241,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 90: {
             if (playerInfo_ == null) {
-              PlayerInfo = new global::CastoriceHoney.Server.Proto.PlayerSimpleInfo();
+              PlayerInfo = new global::March7thHoney.Proto.PlayerSimpleInfo();
             }
             input.ReadMessage(PlayerInfo);
             break;
@@ -271,7 +271,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 90: {
             if (playerInfo_ == null) {
-              PlayerInfo = new global::CastoriceHoney.Server.Proto.PlayerSimpleInfo();
+              PlayerInfo = new global::March7thHoney.Proto.PlayerSimpleInfo();
             }
             input.ReadMessage(PlayerInfo);
             break;

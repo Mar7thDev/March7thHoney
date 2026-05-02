@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GetPlatformPlayerInfoCsReq.proto</summary>
   public static partial class GetPlatformPlayerInfoCsReqReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "eXBlQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5T",
             "ZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.PlatformTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.PlatformTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GetPlatformPlayerInfoCsReq), global::CastoriceHoney.Server.Proto.GetPlatformPlayerInfoCsReq.Parser, new[]{ "PBHLHFPIACP", "Platform" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetPlatformPlayerInfoCsReq), global::March7thHoney.Proto.GetPlatformPlayerInfoCsReq.Parser, new[]{ "PBHLHFPIACP", "Platform" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GetPlatformPlayerInfoCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GetPlatformPlayerInfoCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -98,10 +98,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "platform" field.</summary>
     public const int PlatformFieldNumber = 14;
-    private global::CastoriceHoney.Server.Proto.PlatformType platform_ = global::CastoriceHoney.Server.Proto.PlatformType.Editor;
+    private global::March7thHoney.Proto.PlatformType platform_ = global::March7thHoney.Proto.PlatformType.Editor;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.PlatformType Platform {
+    public global::March7thHoney.Proto.PlatformType Platform {
       get { return platform_; }
       set {
         platform_ = value;
@@ -133,7 +133,7 @@ namespace CastoriceHoney.Server.Proto {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= pBHLHFPIACP_.GetHashCode();
-      if (Platform != global::CastoriceHoney.Server.Proto.PlatformType.Editor) hash ^= Platform.GetHashCode();
+      if (Platform != global::March7thHoney.Proto.PlatformType.Editor) hash ^= Platform.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -153,7 +153,7 @@ namespace CastoriceHoney.Server.Proto {
       output.WriteRawMessage(this);
     #else
       pBHLHFPIACP_.WriteTo(output, _repeated_pBHLHFPIACP_codec);
-      if (Platform != global::CastoriceHoney.Server.Proto.PlatformType.Editor) {
+      if (Platform != global::March7thHoney.Proto.PlatformType.Editor) {
         output.WriteRawTag(112);
         output.WriteEnum((int) Platform);
       }
@@ -168,7 +168,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       pBHLHFPIACP_.WriteTo(ref output, _repeated_pBHLHFPIACP_codec);
-      if (Platform != global::CastoriceHoney.Server.Proto.PlatformType.Editor) {
+      if (Platform != global::March7thHoney.Proto.PlatformType.Editor) {
         output.WriteRawTag(112);
         output.WriteEnum((int) Platform);
       }
@@ -183,7 +183,7 @@ namespace CastoriceHoney.Server.Proto {
     public int CalculateSize() {
       int size = 0;
       size += pBHLHFPIACP_.CalculateSize(_repeated_pBHLHFPIACP_codec);
-      if (Platform != global::CastoriceHoney.Server.Proto.PlatformType.Editor) {
+      if (Platform != global::March7thHoney.Proto.PlatformType.Editor) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Platform);
       }
       if (_unknownFields != null) {
@@ -199,7 +199,7 @@ namespace CastoriceHoney.Server.Proto {
         return;
       }
       pBHLHFPIACP_.Add(other.pBHLHFPIACP_);
-      if (other.Platform != global::CastoriceHoney.Server.Proto.PlatformType.Editor) {
+      if (other.Platform != global::March7thHoney.Proto.PlatformType.Editor) {
         Platform = other.Platform;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -226,7 +226,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 112: {
-            Platform = (global::CastoriceHoney.Server.Proto.PlatformType) input.ReadEnum();
+            Platform = (global::March7thHoney.Proto.PlatformType) input.ReadEnum();
             break;
           }
         }
@@ -253,7 +253,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 112: {
-            Platform = (global::CastoriceHoney.Server.Proto.PlatformType) input.ReadEnum();
+            Platform = (global::March7thHoney.Proto.PlatformType) input.ReadEnum();
             break;
           }
         }

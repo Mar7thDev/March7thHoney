@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from PlayerBoardModuleSync.proto</summary>
   public static partial class PlayerBoardModuleSyncReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "EhMKC0JOR0pHRVBHRE5LGA8gAygNQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+q",
             "AhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.HeadFrameInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.HeadIconDataReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.HeadFrameInfoReflection.Descriptor, global::March7thHoney.Proto.HeadIconDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.PlayerBoardModuleSync), global::CastoriceHoney.Server.Proto.PlayerBoardModuleSync.Parser, new[]{ "Signature", "UnlockedHeadIconList", "HeadFrameInfo", "DGHJLFEKMPO", "BNGJGEPGDNK" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlayerBoardModuleSync), global::March7thHoney.Proto.PlayerBoardModuleSync.Parser, new[]{ "Signature", "UnlockedHeadIconList", "HeadFrameInfo", "DGHJLFEKMPO", "BNGJGEPGDNK" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.PlayerBoardModuleSyncReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.PlayerBoardModuleSyncReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -104,21 +104,21 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "unlocked_head_icon_list" field.</summary>
     public const int UnlockedHeadIconListFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.HeadIconData> _repeated_unlockedHeadIconList_codec
-        = pb::FieldCodec.ForMessage(26, global::CastoriceHoney.Server.Proto.HeadIconData.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.HeadIconData> unlockedHeadIconList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.HeadIconData>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.HeadIconData> _repeated_unlockedHeadIconList_codec
+        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.HeadIconData.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.HeadIconData> unlockedHeadIconList_ = new pbc::RepeatedField<global::March7thHoney.Proto.HeadIconData>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.HeadIconData> UnlockedHeadIconList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.HeadIconData> UnlockedHeadIconList {
       get { return unlockedHeadIconList_; }
     }
 
     /// <summary>Field number for the "head_frame_info" field.</summary>
     public const int HeadFrameInfoFieldNumber = 7;
-    private global::CastoriceHoney.Server.Proto.HeadFrameInfo headFrameInfo_;
+    private global::March7thHoney.Proto.HeadFrameInfo headFrameInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.HeadFrameInfo HeadFrameInfo {
+    public global::March7thHoney.Proto.HeadFrameInfo HeadFrameInfo {
       get { return headFrameInfo_; }
       set {
         headFrameInfo_ = value;
@@ -275,7 +275,7 @@ namespace CastoriceHoney.Server.Proto {
       unlockedHeadIconList_.Add(other.unlockedHeadIconList_);
       if (other.headFrameInfo_ != null) {
         if (headFrameInfo_ == null) {
-          HeadFrameInfo = new global::CastoriceHoney.Server.Proto.HeadFrameInfo();
+          HeadFrameInfo = new global::March7thHoney.Proto.HeadFrameInfo();
         }
         HeadFrameInfo.MergeFrom(other.HeadFrameInfo);
       }
@@ -312,7 +312,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 58: {
             if (headFrameInfo_ == null) {
-              HeadFrameInfo = new global::CastoriceHoney.Server.Proto.HeadFrameInfo();
+              HeadFrameInfo = new global::March7thHoney.Proto.HeadFrameInfo();
             }
             input.ReadMessage(HeadFrameInfo);
             break;
@@ -355,7 +355,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 58: {
             if (headFrameInfo_ == null) {
-              HeadFrameInfo = new global::CastoriceHoney.Server.Proto.HeadFrameInfo();
+              HeadFrameInfo = new global::March7thHoney.Proto.HeadFrameInfo();
             }
             input.ReadMessage(HeadFrameInfo);
             break;

@@ -1,11 +1,11 @@
-using CastoriceHoney.Server.Data.Config.Scene;
-using CastoriceHoney.Server.GameServer.Game.Rogue.Event;
-using CastoriceHoney.Server.GameServer.Game.Scene;
-using CastoriceHoney.Server.GameServer.Game.Scene.Entity;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Scene;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Data.Config.Scene;
+using March7thHoney.GameServer.Game.Rogue.Event;
+using March7thHoney.GameServer.Game.Scene;
+using March7thHoney.GameServer.Game.Scene.Entity;
+using March7thHoney.GameServer.Server.Packet.Send.Scene;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Game.Rogue.Scene.Entity;
+namespace March7thHoney.GameServer.Game.Rogue.Scene.Entity;
 
 public class RogueNpc(SceneInstance scene, GroupInfo group, NpcInfo npcInfo) : EntityNpc(scene, group, npcInfo)
 {

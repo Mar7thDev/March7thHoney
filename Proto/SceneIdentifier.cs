@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from SceneIdentifier.proto</summary>
   public static partial class SceneIdentifierReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "Y29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJv",
             "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.TeleportInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.TeleportInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.SceneIdentifier), global::CastoriceHoney.Server.Proto.SceneIdentifier.Parser, new[]{ "FloorId", "GameStoryLineId", "ContentId", "TeleportInfo" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneIdentifier), global::March7thHoney.Proto.SceneIdentifier.Parser, new[]{ "FloorId", "GameStoryLineId", "ContentId", "TeleportInfo" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.SceneIdentifierReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.SceneIdentifierReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -126,10 +126,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "teleport_info" field.</summary>
     public const int TeleportInfoFieldNumber = 1621;
-    private global::CastoriceHoney.Server.Proto.TeleportInfo teleportInfo_;
+    private global::March7thHoney.Proto.TeleportInfo teleportInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.TeleportInfo TeleportInfo {
+    public global::March7thHoney.Proto.TeleportInfo TeleportInfo {
       get { return teleportInfo_; }
       set {
         teleportInfo_ = value;
@@ -271,7 +271,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.teleportInfo_ != null) {
         if (teleportInfo_ == null) {
-          TeleportInfo = new global::CastoriceHoney.Server.Proto.TeleportInfo();
+          TeleportInfo = new global::March7thHoney.Proto.TeleportInfo();
         }
         TeleportInfo.MergeFrom(other.TeleportInfo);
       }
@@ -308,7 +308,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 12970: {
             if (teleportInfo_ == null) {
-              TeleportInfo = new global::CastoriceHoney.Server.Proto.TeleportInfo();
+              TeleportInfo = new global::March7thHoney.Proto.TeleportInfo();
             }
             input.ReadMessage(TeleportInfo);
             break;
@@ -346,7 +346,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 12970: {
             if (teleportInfo_ == null) {
-              TeleportInfo = new global::CastoriceHoney.Server.Proto.TeleportInfo();
+              TeleportInfo = new global::March7thHoney.Proto.TeleportInfo();
             }
             input.ReadMessage(TeleportInfo);
             break;

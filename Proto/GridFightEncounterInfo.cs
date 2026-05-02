@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GridFightEncounterInfo.proto</summary>
   public static partial class GridFightEncounterInfoReflection {
@@ -33,9 +33,9 @@ namespace CastoriceHoney.Server.Proto {
             "Zm9CMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNl",
             "cnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GridEncounterMonsterWaveReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightDropInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridEncounterMonsterWaveReflection.Descriptor, global::March7thHoney.Proto.GridFightDropInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GridFightEncounterInfo), global::CastoriceHoney.Server.Proto.GridFightEncounterInfo.Parser, new[]{ "LFKBMDHKPFI", "GDOEOGMJDAO", "MonsterWaveList", "BAGCBHFJIMN", "LMLAOPMDCCA" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightEncounterInfo), global::March7thHoney.Proto.GridFightEncounterInfo.Parser, new[]{ "LFKBMDHKPFI", "GDOEOGMJDAO", "MonsterWaveList", "BAGCBHFJIMN", "LMLAOPMDCCA" }, null, null, null, null)
           }));
     }
     #endregion
@@ -57,7 +57,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GridFightEncounterInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GridFightEncounterInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -117,12 +117,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "monster_wave_list" field.</summary>
     public const int MonsterWaveListFieldNumber = 13;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.GridEncounterMonsterWave> _repeated_monsterWaveList_codec
-        = pb::FieldCodec.ForMessage(106, global::CastoriceHoney.Server.Proto.GridEncounterMonsterWave.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridEncounterMonsterWave> monsterWaveList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridEncounterMonsterWave>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GridEncounterMonsterWave> _repeated_monsterWaveList_codec
+        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.GridEncounterMonsterWave.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GridEncounterMonsterWave> monsterWaveList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GridEncounterMonsterWave>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridEncounterMonsterWave> MonsterWaveList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.GridEncounterMonsterWave> MonsterWaveList {
       get { return monsterWaveList_; }
     }
 
@@ -140,10 +140,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "LMLAOPMDCCA" field.</summary>
     public const int LMLAOPMDCCAFieldNumber = 15;
-    private global::CastoriceHoney.Server.Proto.GridFightDropInfo lMLAOPMDCCA_;
+    private global::March7thHoney.Proto.GridFightDropInfo lMLAOPMDCCA_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightDropInfo LMLAOPMDCCA {
+    public global::March7thHoney.Proto.GridFightDropInfo LMLAOPMDCCA {
       get { return lMLAOPMDCCA_; }
       set {
         lMLAOPMDCCA_ = value;
@@ -291,7 +291,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.lMLAOPMDCCA_ != null) {
         if (lMLAOPMDCCA_ == null) {
-          LMLAOPMDCCA = new global::CastoriceHoney.Server.Proto.GridFightDropInfo();
+          LMLAOPMDCCA = new global::March7thHoney.Proto.GridFightDropInfo();
         }
         LMLAOPMDCCA.MergeFrom(other.LMLAOPMDCCA);
       }
@@ -332,7 +332,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 122: {
             if (lMLAOPMDCCA_ == null) {
-              LMLAOPMDCCA = new global::CastoriceHoney.Server.Proto.GridFightDropInfo();
+              LMLAOPMDCCA = new global::March7thHoney.Proto.GridFightDropInfo();
             }
             input.ReadMessage(LMLAOPMDCCA);
             break;
@@ -374,7 +374,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 122: {
             if (lMLAOPMDCCA_ == null) {
-              LMLAOPMDCCA = new global::CastoriceHoney.Server.Proto.GridFightDropInfo();
+              LMLAOPMDCCA = new global::March7thHoney.Proto.GridFightDropInfo();
             }
             input.ReadMessage(LMLAOPMDCCA);
             break;

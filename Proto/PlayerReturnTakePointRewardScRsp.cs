@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from PlayerReturnTakePointRewardScRsp.proto</summary>
   public static partial class PlayerReturnTakePointRewardScRspReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "ASgNQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5T",
             "ZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ItemListReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemListReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.PlayerReturnTakePointRewardScRsp), global::CastoriceHoney.Server.Proto.PlayerReturnTakePointRewardScRsp.Parser, new[]{ "BGPKPKHCGKE", "EDIGJGGPPON", "Retcode", "HDABMKCNJJK" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlayerReturnTakePointRewardScRsp), global::March7thHoney.Proto.PlayerReturnTakePointRewardScRsp.Parser, new[]{ "BGPKPKHCGKE", "EDIGJGGPPON", "Retcode", "HDABMKCNJJK" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.PlayerReturnTakePointRewardScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.PlayerReturnTakePointRewardScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -90,10 +90,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "BGPKPKHCGKE" field.</summary>
     public const int BGPKPKHCGKEFieldNumber = 1;
-    private global::CastoriceHoney.Server.Proto.ItemList bGPKPKHCGKE_;
+    private global::March7thHoney.Proto.ItemList bGPKPKHCGKE_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ItemList BGPKPKHCGKE {
+    public global::March7thHoney.Proto.ItemList BGPKPKHCGKE {
       get { return bGPKPKHCGKE_; }
       set {
         bGPKPKHCGKE_ = value;
@@ -262,7 +262,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.bGPKPKHCGKE_ != null) {
         if (bGPKPKHCGKE_ == null) {
-          BGPKPKHCGKE = new global::CastoriceHoney.Server.Proto.ItemList();
+          BGPKPKHCGKE = new global::March7thHoney.Proto.ItemList();
         }
         BGPKPKHCGKE.MergeFrom(other.BGPKPKHCGKE);
       }
@@ -296,7 +296,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 10: {
             if (bGPKPKHCGKE_ == null) {
-              BGPKPKHCGKE = new global::CastoriceHoney.Server.Proto.ItemList();
+              BGPKPKHCGKE = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(BGPKPKHCGKE);
             break;
@@ -334,7 +334,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 10: {
             if (bGPKPKHCGKE_ == null) {
-              BGPKPKHCGKE = new global::CastoriceHoney.Server.Proto.ItemList();
+              BGPKPKHCGKE = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(BGPKPKHCGKE);
             break;

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from ComposeItemCsReq.proto</summary>
   public static partial class ComposeItemCsReqReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "RGF0YUIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXku",
             "U2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ItemCostDataReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemCostDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ComposeItemCsReq), global::CastoriceHoney.Server.Proto.ComposeItemCsReq.Parser, new[]{ "ComposeId", "ComposeItemList", "Count", "ConvertItemList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ComposeItemCsReq), global::March7thHoney.Proto.ComposeItemCsReq.Parser, new[]{ "ComposeId", "ComposeItemList", "Count", "ConvertItemList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ComposeItemCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ComposeItemCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -102,10 +102,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "compose_item_list" field.</summary>
     public const int ComposeItemListFieldNumber = 10;
-    private global::CastoriceHoney.Server.Proto.ItemCostData composeItemList_;
+    private global::March7thHoney.Proto.ItemCostData composeItemList_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ItemCostData ComposeItemList {
+    public global::March7thHoney.Proto.ItemCostData ComposeItemList {
       get { return composeItemList_; }
       set {
         composeItemList_ = value;
@@ -126,10 +126,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "convert_item_list" field.</summary>
     public const int ConvertItemListFieldNumber = 13;
-    private global::CastoriceHoney.Server.Proto.ItemCostData convertItemList_;
+    private global::March7thHoney.Proto.ItemCostData convertItemList_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ItemCostData ConvertItemList {
+    public global::March7thHoney.Proto.ItemCostData ConvertItemList {
       get { return convertItemList_; }
       set {
         convertItemList_ = value;
@@ -265,7 +265,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.composeItemList_ != null) {
         if (composeItemList_ == null) {
-          ComposeItemList = new global::CastoriceHoney.Server.Proto.ItemCostData();
+          ComposeItemList = new global::March7thHoney.Proto.ItemCostData();
         }
         ComposeItemList.MergeFrom(other.ComposeItemList);
       }
@@ -274,7 +274,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.convertItemList_ != null) {
         if (convertItemList_ == null) {
-          ConvertItemList = new global::CastoriceHoney.Server.Proto.ItemCostData();
+          ConvertItemList = new global::March7thHoney.Proto.ItemCostData();
         }
         ConvertItemList.MergeFrom(other.ConvertItemList);
       }
@@ -303,7 +303,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 82: {
             if (composeItemList_ == null) {
-              ComposeItemList = new global::CastoriceHoney.Server.Proto.ItemCostData();
+              ComposeItemList = new global::March7thHoney.Proto.ItemCostData();
             }
             input.ReadMessage(ComposeItemList);
             break;
@@ -314,7 +314,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 106: {
             if (convertItemList_ == null) {
-              ConvertItemList = new global::CastoriceHoney.Server.Proto.ItemCostData();
+              ConvertItemList = new global::March7thHoney.Proto.ItemCostData();
             }
             input.ReadMessage(ConvertItemList);
             break;
@@ -344,7 +344,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 82: {
             if (composeItemList_ == null) {
-              ComposeItemList = new global::CastoriceHoney.Server.Proto.ItemCostData();
+              ComposeItemList = new global::March7thHoney.Proto.ItemCostData();
             }
             input.ReadMessage(ComposeItemList);
             break;
@@ -355,7 +355,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 106: {
             if (convertItemList_ == null) {
-              ConvertItemList = new global::CastoriceHoney.Server.Proto.ItemCostData();
+              ConvertItemList = new global::March7thHoney.Proto.ItemCostData();
             }
             input.ReadMessage(ConvertItemList);
             break;

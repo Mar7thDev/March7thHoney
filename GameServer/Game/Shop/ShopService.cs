@@ -1,10 +1,10 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Database.Inventory;
-using CastoriceHoney.Server.Enums.Item;
-using CastoriceHoney.Server.Enums.Mission;
-using CastoriceHoney.Server.GameServer.Game.Player;
+using March7thHoney.Data;
+using March7thHoney.Database.Inventory;
+using March7thHoney.Enums.Item;
+using March7thHoney.Enums.Mission;
+using March7thHoney.GameServer.Game.Player;
 
-namespace CastoriceHoney.Server.GameServer.Game.Shop;
+namespace March7thHoney.GameServer.Game.Shop;
 
 public class ShopService(PlayerInstance player) : BasePlayerManager(player)
 {

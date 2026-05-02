@@ -1,9 +1,9 @@
-﻿using CastoriceHoney.Server.Database.Account;
-using CastoriceHoney.Server.WebServer.Objects;
+using March7thHoney.Database.Account;
+using March7thHoney.WebServer.Objects;
 using Microsoft.AspNetCore.Mvc;
-using static CastoriceHoney.Server.WebServer.Objects.LoginResJson;
+using static March7thHoney.WebServer.Objects.LoginResJson;
 
-namespace CastoriceHoney.Server.WebServer.Handler;
+namespace March7thHoney.WebServer.Handler;
 
 public class TokenLoginHandler
 {

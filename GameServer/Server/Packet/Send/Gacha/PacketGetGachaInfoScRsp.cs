@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.Kcp;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.Kcp;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Send.Gacha;
+namespace March7thHoney.GameServer.Server.Packet.Send.Gacha;
 
 public class PacketGetGachaInfoScRsp : BasePacket
 {

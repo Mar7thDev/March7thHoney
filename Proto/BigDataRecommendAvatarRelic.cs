@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from BigDataRecommendAvatarRelic.proto</summary>
   public static partial class BigDataRecommendAvatarRelicReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "Y29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJv",
             "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.BigDataAvatarRelicRecommendReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.BigDataAvatarRelicRecommendReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.BigDataRecommendAvatarRelic), global::CastoriceHoney.Server.Proto.BigDataRecommendAvatarRelic.Parser, new[]{ "RecomendedRelicInfoList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BigDataRecommendAvatarRelic), global::March7thHoney.Proto.BigDataRecommendAvatarRelic.Parser, new[]{ "RecomendedRelicInfoList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.BigDataRecommendAvatarRelicReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.BigDataRecommendAvatarRelicReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -87,12 +87,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "recomended_relic_info_list" field.</summary>
     public const int RecomendedRelicInfoListFieldNumber = 12;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.BigDataAvatarRelicRecommend> _repeated_recomendedRelicInfoList_codec
-        = pb::FieldCodec.ForMessage(98, global::CastoriceHoney.Server.Proto.BigDataAvatarRelicRecommend.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BigDataAvatarRelicRecommend> recomendedRelicInfoList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BigDataAvatarRelicRecommend>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BigDataAvatarRelicRecommend> _repeated_recomendedRelicInfoList_codec
+        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.BigDataAvatarRelicRecommend.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BigDataAvatarRelicRecommend> recomendedRelicInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.BigDataAvatarRelicRecommend>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BigDataAvatarRelicRecommend> RecomendedRelicInfoList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.BigDataAvatarRelicRecommend> RecomendedRelicInfoList {
       get { return recomendedRelicInfoList_; }
     }
 

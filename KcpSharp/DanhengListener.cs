@@ -1,10 +1,10 @@
 using System.Net;
 using System.Net.Sockets;
-using CastoriceHoney.Server.Internationalization;
-using CastoriceHoney.Server.Kcp.KcpSharp;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Internationalization;
+using March7thHoney.Kcp.KcpSharp;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.Kcp;
+namespace March7thHoney.Kcp;
 
 public class DanhengListener
 {

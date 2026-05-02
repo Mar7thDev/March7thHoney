@@ -1,6 +1,6 @@
-﻿using CastoriceHoney.Server.Command;
+using March7thHoney.Command;
 
-namespace CastoriceHoney.Server.WebServer.Server;
+namespace March7thHoney.WebServer.Server;
 
 public class MuipCommandSender(MuipSession session, Action<string> action) : ICommandSender
 {

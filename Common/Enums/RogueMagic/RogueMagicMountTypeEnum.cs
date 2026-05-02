@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace CastoriceHoney.Server.Enums.RogueMagic;
+namespace March7thHoney.Enums.RogueMagic;
 
 [JsonConverter(typeof(StringEnumConverter))]
 public enum RogueMagicMountTypeEnum

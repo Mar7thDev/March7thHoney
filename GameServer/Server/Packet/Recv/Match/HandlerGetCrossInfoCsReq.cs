@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Match;
-using CastoriceHoney.Server.Kcp;
+using March7thHoney.GameServer.Server.Packet.Send.Match;
+using March7thHoney.Kcp;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Match;
+namespace March7thHoney.GameServer.Server.Packet.Recv.Match;
 
 [Opcode(CmdIds.GetCrossInfoCsReq)]
 public class HandlerGetCrossInfoCsReq : Handler

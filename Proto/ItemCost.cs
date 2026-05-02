@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from ItemCost.proto</summary>
   public static partial class ItemCostReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "BgoEaXRlbUIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9u",
             "ZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.PileItemReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.PileItemReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ItemCost), global::CastoriceHoney.Server.Proto.ItemCost.Parser, new[]{ "EquipmentUniqueId", "PileItem", "RelicUniqueId" }, new[]{ "Item" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ItemCost), global::March7thHoney.Proto.ItemCost.Parser, new[]{ "EquipmentUniqueId", "PileItem", "RelicUniqueId" }, new[]{ "Item" }, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ItemCostReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ItemCostReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -125,8 +125,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int PileItemFieldNumber = 11;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.PileItem PileItem {
-      get { return itemCase_ == ItemOneofCase.PileItem ? (global::CastoriceHoney.Server.Proto.PileItem) item_ : null; }
+    public global::March7thHoney.Proto.PileItem PileItem {
+      get { return itemCase_ == ItemOneofCase.PileItem ? (global::March7thHoney.Proto.PileItem) item_ : null; }
       set {
         item_ = value;
         itemCase_ = value == null ? ItemOneofCase.None : ItemOneofCase.PileItem;
@@ -300,7 +300,7 @@ namespace CastoriceHoney.Server.Proto {
           break;
         case ItemOneofCase.PileItem:
           if (PileItem == null) {
-            PileItem = new global::CastoriceHoney.Server.Proto.PileItem();
+            PileItem = new global::March7thHoney.Proto.PileItem();
           }
           PileItem.MergeFrom(other.PileItem);
           break;
@@ -333,7 +333,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 90: {
-            global::CastoriceHoney.Server.Proto.PileItem subBuilder = new global::CastoriceHoney.Server.Proto.PileItem();
+            global::March7thHoney.Proto.PileItem subBuilder = new global::March7thHoney.Proto.PileItem();
             if (itemCase_ == ItemOneofCase.PileItem) {
               subBuilder.MergeFrom(PileItem);
             }
@@ -369,7 +369,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 90: {
-            global::CastoriceHoney.Server.Proto.PileItem subBuilder = new global::CastoriceHoney.Server.Proto.PileItem();
+            global::March7thHoney.Proto.PileItem subBuilder = new global::March7thHoney.Proto.PileItem();
             if (itemCase_ == ItemOneofCase.PileItem) {
               subBuilder.MergeFrom(PileItem);
             }

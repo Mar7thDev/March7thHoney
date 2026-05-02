@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Configuration;
+namespace March7thHoney.Configuration;
 
 public class ConfigContainer
 {

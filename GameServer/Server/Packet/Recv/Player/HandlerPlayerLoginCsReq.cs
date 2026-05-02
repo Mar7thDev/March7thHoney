@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.ContentPackage;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Player;
-using CastoriceHoney.Server.Kcp;
+using March7thHoney.GameServer.Server.Packet.Send.ContentPackage;
+using March7thHoney.GameServer.Server.Packet.Send.Player;
+using March7thHoney.Kcp;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Player;
+namespace March7thHoney.GameServer.Server.Packet.Recv.Player;
 
 [Opcode(CmdIds.PlayerLoginCsReq)]
 public class HandlerPlayerLoginCsReq : Handler

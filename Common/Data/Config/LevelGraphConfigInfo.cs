@@ -1,6 +1,6 @@
 using Newtonsoft.Json.Linq;
 
-namespace CastoriceHoney.Server.Data.Config;
+namespace March7thHoney.Data.Config;
 
 public class LevelGraphConfigInfo
 {

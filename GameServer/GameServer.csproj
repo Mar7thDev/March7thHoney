@@ -5,10 +5,10 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <RootNamespace>CastoriceHoney.Server.GameServer</RootNamespace>
+    <RootNamespace>March7thHoney.GameServer</RootNamespace>
     <StartupObject></StartupObject>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <AssemblyName>CastoriceHoney.GameServer</AssemblyName>
+    <AssemblyName>March7thHoney.GameServer</AssemblyName>
     <ApplicationIcon>CastoriceHoney.ico</ApplicationIcon>
   </PropertyGroup>
 

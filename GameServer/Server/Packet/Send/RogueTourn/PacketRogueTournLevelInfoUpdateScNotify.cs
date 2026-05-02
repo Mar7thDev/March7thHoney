@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.GameServer.Game.RogueTourn;
-using CastoriceHoney.Server.GameServer.Game.RogueTourn.Scene;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.GameServer.Game.RogueTourn;
+using March7thHoney.GameServer.Game.RogueTourn.Scene;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Send.RogueTourn;
+namespace March7thHoney.GameServer.Server.Packet.Send.RogueTourn;
 
 public class PacketRogueTournLevelInfoUpdateScNotify : BasePacket
 {

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from HKFDCBOOEIO.proto</summary>
   public static partial class HKFDCBOOEIOReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "b3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90",
             "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.LobbyInteractTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.LobbyInteractTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.HKFDCBOOEIO), global::CastoriceHoney.Server.Proto.HKFDCBOOEIO.Parser, new[]{ "TeleportId", "HGIAGJMHDOB" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HKFDCBOOEIO), global::March7thHoney.Proto.HKFDCBOOEIO.Parser, new[]{ "TeleportId", "HGIAGJMHDOB" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.HKFDCBOOEIOReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.HKFDCBOOEIOReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -99,10 +99,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "HGIAGJMHDOB" field.</summary>
     public const int HGIAGJMHDOBFieldNumber = 3;
-    private global::CastoriceHoney.Server.Proto.LobbyInteractType hGIAGJMHDOB_ = global::CastoriceHoney.Server.Proto.LobbyInteractType.JbpdgdgaeklPcpdhelpkem;
+    private global::March7thHoney.Proto.LobbyInteractType hGIAGJMHDOB_ = global::March7thHoney.Proto.LobbyInteractType.JbpdgdgaeklPcpdhelpkem;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.LobbyInteractType HGIAGJMHDOB {
+    public global::March7thHoney.Proto.LobbyInteractType HGIAGJMHDOB {
       get { return hGIAGJMHDOB_; }
       set {
         hGIAGJMHDOB_ = value;
@@ -134,7 +134,7 @@ namespace CastoriceHoney.Server.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (TeleportId != 0) hash ^= TeleportId.GetHashCode();
-      if (HGIAGJMHDOB != global::CastoriceHoney.Server.Proto.LobbyInteractType.JbpdgdgaeklPcpdhelpkem) hash ^= HGIAGJMHDOB.GetHashCode();
+      if (HGIAGJMHDOB != global::March7thHoney.Proto.LobbyInteractType.JbpdgdgaeklPcpdhelpkem) hash ^= HGIAGJMHDOB.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -157,7 +157,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(16);
         output.WriteUInt32(TeleportId);
       }
-      if (HGIAGJMHDOB != global::CastoriceHoney.Server.Proto.LobbyInteractType.JbpdgdgaeklPcpdhelpkem) {
+      if (HGIAGJMHDOB != global::March7thHoney.Proto.LobbyInteractType.JbpdgdgaeklPcpdhelpkem) {
         output.WriteRawTag(24);
         output.WriteEnum((int) HGIAGJMHDOB);
       }
@@ -175,7 +175,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(16);
         output.WriteUInt32(TeleportId);
       }
-      if (HGIAGJMHDOB != global::CastoriceHoney.Server.Proto.LobbyInteractType.JbpdgdgaeklPcpdhelpkem) {
+      if (HGIAGJMHDOB != global::March7thHoney.Proto.LobbyInteractType.JbpdgdgaeklPcpdhelpkem) {
         output.WriteRawTag(24);
         output.WriteEnum((int) HGIAGJMHDOB);
       }
@@ -192,7 +192,7 @@ namespace CastoriceHoney.Server.Proto {
       if (TeleportId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TeleportId);
       }
-      if (HGIAGJMHDOB != global::CastoriceHoney.Server.Proto.LobbyInteractType.JbpdgdgaeklPcpdhelpkem) {
+      if (HGIAGJMHDOB != global::March7thHoney.Proto.LobbyInteractType.JbpdgdgaeklPcpdhelpkem) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) HGIAGJMHDOB);
       }
       if (_unknownFields != null) {
@@ -210,7 +210,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other.TeleportId != 0) {
         TeleportId = other.TeleportId;
       }
-      if (other.HGIAGJMHDOB != global::CastoriceHoney.Server.Proto.LobbyInteractType.JbpdgdgaeklPcpdhelpkem) {
+      if (other.HGIAGJMHDOB != global::March7thHoney.Proto.LobbyInteractType.JbpdgdgaeklPcpdhelpkem) {
         HGIAGJMHDOB = other.HGIAGJMHDOB;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -237,7 +237,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 24: {
-            HGIAGJMHDOB = (global::CastoriceHoney.Server.Proto.LobbyInteractType) input.ReadEnum();
+            HGIAGJMHDOB = (global::March7thHoney.Proto.LobbyInteractType) input.ReadEnum();
             break;
           }
         }
@@ -264,7 +264,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 24: {
-            HGIAGJMHDOB = (global::CastoriceHoney.Server.Proto.LobbyInteractType) input.ReadEnum();
+            HGIAGJMHDOB = (global::March7thHoney.Proto.LobbyInteractType) input.ReadEnum();
             break;
           }
         }

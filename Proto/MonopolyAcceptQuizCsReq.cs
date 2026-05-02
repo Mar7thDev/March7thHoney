@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from MonopolyAcceptQuizCsReq.proto</summary>
   public static partial class MonopolyAcceptQuizCsReqReflection {
@@ -29,9 +29,9 @@ namespace CastoriceHoney.Server.Proto {
             "T0kYDyADKAsyDC5OT0tLQVBHQk5IUEIzChNlbXUubHVuYXJjb3JlLnByb3Rv",
             "qgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.NOKKAPGBNHPReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.NOKKAPGBNHPReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.MonopolyAcceptQuizCsReq), global::CastoriceHoney.Server.Proto.MonopolyAcceptQuizCsReq.Parser, new[]{ "NNKHMIEJPOI" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MonopolyAcceptQuizCsReq), global::March7thHoney.Proto.MonopolyAcceptQuizCsReq.Parser, new[]{ "NNKHMIEJPOI" }, null, null, null, null)
           }));
     }
     #endregion
@@ -53,7 +53,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.MonopolyAcceptQuizCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.MonopolyAcceptQuizCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -85,12 +85,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "NNKHMIEJPOI" field.</summary>
     public const int NNKHMIEJPOIFieldNumber = 15;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.NOKKAPGBNHP> _repeated_nNKHMIEJPOI_codec
-        = pb::FieldCodec.ForMessage(122, global::CastoriceHoney.Server.Proto.NOKKAPGBNHP.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.NOKKAPGBNHP> nNKHMIEJPOI_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.NOKKAPGBNHP>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.NOKKAPGBNHP> _repeated_nNKHMIEJPOI_codec
+        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.NOKKAPGBNHP.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.NOKKAPGBNHP> nNKHMIEJPOI_ = new pbc::RepeatedField<global::March7thHoney.Proto.NOKKAPGBNHP>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.NOKKAPGBNHP> NNKHMIEJPOI {
+    public pbc::RepeatedField<global::March7thHoney.Proto.NOKKAPGBNHP> NNKHMIEJPOI {
       get { return nNKHMIEJPOI_; }
     }
 

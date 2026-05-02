@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueTournLayerRoom.json")]
 public class RogueTournLayerRoomExcel : ExcelResource

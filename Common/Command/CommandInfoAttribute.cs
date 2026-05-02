@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Command;
+namespace March7thHoney.Command;
 
 [AttributeUsage(AttributeTargets.Class)]
 public class CommandInfoAttribute(

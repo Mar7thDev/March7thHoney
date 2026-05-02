@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from MADEENABOKE.proto</summary>
   public static partial class MADEENABOKEReflection {
@@ -34,9 +34,9 @@ namespace CastoriceHoney.Server.Proto {
             "Di5Sb3RhdGVNYXBJbmZvQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0",
             "b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ChargerInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.RotateMapInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.RotaterDataReflection.Descriptor, global::CastoriceHoney.Server.Proto.RotaterEnergyInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChargerInfoReflection.Descriptor, global::March7thHoney.Proto.RotateMapInfoReflection.Descriptor, global::March7thHoney.Proto.RotaterDataReflection.Descriptor, global::March7thHoney.Proto.RotaterEnergyInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.MADEENABOKE), global::CastoriceHoney.Server.Proto.MADEENABOKE.Parser, new[]{ "GPKABIBKJHF", "EnergyInfo", "JHDLNBPNEKG", "DJHDDOFHMCF", "AOLFFOLEJLB", "BCPCBHMFIIN", "AMMJECHPGPE" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MADEENABOKE), global::March7thHoney.Proto.MADEENABOKE.Parser, new[]{ "GPKABIBKJHF", "EnergyInfo", "JHDLNBPNEKG", "DJHDDOFHMCF", "AOLFFOLEJLB", "BCPCBHMFIIN", "AMMJECHPGPE" }, null, null, null, null)
           }));
     }
     #endregion
@@ -58,7 +58,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.MADEENABOKEReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.MADEENABOKEReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -96,21 +96,21 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "GPKABIBKJHF" field.</summary>
     public const int GPKABIBKJHFFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ChargerInfo> _repeated_gPKABIBKJHF_codec
-        = pb::FieldCodec.ForMessage(18, global::CastoriceHoney.Server.Proto.ChargerInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ChargerInfo> gPKABIBKJHF_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ChargerInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChargerInfo> _repeated_gPKABIBKJHF_codec
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.ChargerInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChargerInfo> gPKABIBKJHF_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChargerInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ChargerInfo> GPKABIBKJHF {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ChargerInfo> GPKABIBKJHF {
       get { return gPKABIBKJHF_; }
     }
 
     /// <summary>Field number for the "energy_info" field.</summary>
     public const int EnergyInfoFieldNumber = 4;
-    private global::CastoriceHoney.Server.Proto.RotaterEnergyInfo energyInfo_;
+    private global::March7thHoney.Proto.RotaterEnergyInfo energyInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.RotaterEnergyInfo EnergyInfo {
+    public global::March7thHoney.Proto.RotaterEnergyInfo EnergyInfo {
       get { return energyInfo_; }
       set {
         energyInfo_ = value;
@@ -131,12 +131,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "DJHDDOFHMCF" field.</summary>
     public const int DJHDDOFHMCFFieldNumber = 6;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.RotaterData> _repeated_dJHDDOFHMCF_codec
-        = pb::FieldCodec.ForMessage(50, global::CastoriceHoney.Server.Proto.RotaterData.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.RotaterData> dJHDDOFHMCF_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.RotaterData>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.RotaterData> _repeated_dJHDDOFHMCF_codec
+        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.RotaterData.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.RotaterData> dJHDDOFHMCF_ = new pbc::RepeatedField<global::March7thHoney.Proto.RotaterData>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.RotaterData> DJHDDOFHMCF {
+    public pbc::RepeatedField<global::March7thHoney.Proto.RotaterData> DJHDDOFHMCF {
       get { return dJHDDOFHMCF_; }
     }
 
@@ -166,10 +166,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "AMMJECHPGPE" field.</summary>
     public const int AMMJECHPGPEFieldNumber = 15;
-    private global::CastoriceHoney.Server.Proto.RotateMapInfo aMMJECHPGPE_;
+    private global::March7thHoney.Proto.RotateMapInfo aMMJECHPGPE_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.RotateMapInfo AMMJECHPGPE {
+    public global::March7thHoney.Proto.RotateMapInfo AMMJECHPGPE {
       get { return aMMJECHPGPE_; }
       set {
         aMMJECHPGPE_ = value;
@@ -326,7 +326,7 @@ namespace CastoriceHoney.Server.Proto {
       gPKABIBKJHF_.Add(other.gPKABIBKJHF_);
       if (other.energyInfo_ != null) {
         if (energyInfo_ == null) {
-          EnergyInfo = new global::CastoriceHoney.Server.Proto.RotaterEnergyInfo();
+          EnergyInfo = new global::March7thHoney.Proto.RotaterEnergyInfo();
         }
         EnergyInfo.MergeFrom(other.EnergyInfo);
       }
@@ -342,7 +342,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.aMMJECHPGPE_ != null) {
         if (aMMJECHPGPE_ == null) {
-          AMMJECHPGPE = new global::CastoriceHoney.Server.Proto.RotateMapInfo();
+          AMMJECHPGPE = new global::March7thHoney.Proto.RotateMapInfo();
         }
         AMMJECHPGPE.MergeFrom(other.AMMJECHPGPE);
       }
@@ -371,7 +371,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 34: {
             if (energyInfo_ == null) {
-              EnergyInfo = new global::CastoriceHoney.Server.Proto.RotaterEnergyInfo();
+              EnergyInfo = new global::March7thHoney.Proto.RotaterEnergyInfo();
             }
             input.ReadMessage(EnergyInfo);
             break;
@@ -394,7 +394,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 122: {
             if (aMMJECHPGPE_ == null) {
-              AMMJECHPGPE = new global::CastoriceHoney.Server.Proto.RotateMapInfo();
+              AMMJECHPGPE = new global::March7thHoney.Proto.RotateMapInfo();
             }
             input.ReadMessage(AMMJECHPGPE);
             break;
@@ -424,7 +424,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 34: {
             if (energyInfo_ == null) {
-              EnergyInfo = new global::CastoriceHoney.Server.Proto.RotaterEnergyInfo();
+              EnergyInfo = new global::March7thHoney.Proto.RotaterEnergyInfo();
             }
             input.ReadMessage(EnergyInfo);
             break;
@@ -447,7 +447,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 122: {
             if (aMMJECHPGPE_ == null) {
-              AMMJECHPGPE = new global::CastoriceHoney.Server.Proto.RotateMapInfo();
+              AMMJECHPGPE = new global::March7thHoney.Proto.RotateMapInfo();
             }
             input.ReadMessage(AMMJECHPGPE);
             break;

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from StartChallengeCsReq.proto</summary>
   public static partial class StartChallengeCsReqReflection {
@@ -33,9 +33,9 @@ namespace CastoriceHoney.Server.Proto {
             "Rk9CMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNl",
             "cnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ChallengeBuffInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.EEBPHJCNBFOReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChallengeBuffInfoReflection.Descriptor, global::March7thHoney.Proto.EEBPHJCNBFOReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.StartChallengeCsReq), global::CastoriceHoney.Server.Proto.StartChallengeCsReq.Parser, new[]{ "ABNDFKFIKCI", "ChallengeId", "StageInfo", "SecondLineup", "FirstLineup", "BKNKLEOCJNO" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartChallengeCsReq), global::March7thHoney.Proto.StartChallengeCsReq.Parser, new[]{ "ABNDFKFIKCI", "ChallengeId", "StageInfo", "SecondLineup", "FirstLineup", "BKNKLEOCJNO" }, null, null, null, null)
           }));
     }
     #endregion
@@ -57,7 +57,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.StartChallengeCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.StartChallengeCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -94,12 +94,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "ABNDFKFIKCI" field.</summary>
     public const int ABNDFKFIKCIFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.EEBPHJCNBFO> _repeated_aBNDFKFIKCI_codec
-        = pb::FieldCodec.ForMessage(18, global::CastoriceHoney.Server.Proto.EEBPHJCNBFO.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.EEBPHJCNBFO> aBNDFKFIKCI_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.EEBPHJCNBFO>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EEBPHJCNBFO> _repeated_aBNDFKFIKCI_codec
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.EEBPHJCNBFO.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EEBPHJCNBFO> aBNDFKFIKCI_ = new pbc::RepeatedField<global::March7thHoney.Proto.EEBPHJCNBFO>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.EEBPHJCNBFO> ABNDFKFIKCI {
+    public pbc::RepeatedField<global::March7thHoney.Proto.EEBPHJCNBFO> ABNDFKFIKCI {
       get { return aBNDFKFIKCI_; }
     }
 
@@ -117,10 +117,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "stage_info" field.</summary>
     public const int StageInfoFieldNumber = 8;
-    private global::CastoriceHoney.Server.Proto.ChallengeBuffInfo stageInfo_;
+    private global::March7thHoney.Proto.ChallengeBuffInfo stageInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ChallengeBuffInfo StageInfo {
+    public global::March7thHoney.Proto.ChallengeBuffInfo StageInfo {
       get { return stageInfo_; }
       set {
         stageInfo_ = value;
@@ -151,12 +151,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "BKNKLEOCJNO" field.</summary>
     public const int BKNKLEOCJNOFieldNumber = 13;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.EEBPHJCNBFO> _repeated_bKNKLEOCJNO_codec
-        = pb::FieldCodec.ForMessage(106, global::CastoriceHoney.Server.Proto.EEBPHJCNBFO.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.EEBPHJCNBFO> bKNKLEOCJNO_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.EEBPHJCNBFO>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EEBPHJCNBFO> _repeated_bKNKLEOCJNO_codec
+        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.EEBPHJCNBFO.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EEBPHJCNBFO> bKNKLEOCJNO_ = new pbc::RepeatedField<global::March7thHoney.Proto.EEBPHJCNBFO>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.EEBPHJCNBFO> BKNKLEOCJNO {
+    public pbc::RepeatedField<global::March7thHoney.Proto.EEBPHJCNBFO> BKNKLEOCJNO {
       get { return bKNKLEOCJNO_; }
     }
 
@@ -284,7 +284,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.stageInfo_ != null) {
         if (stageInfo_ == null) {
-          StageInfo = new global::CastoriceHoney.Server.Proto.ChallengeBuffInfo();
+          StageInfo = new global::March7thHoney.Proto.ChallengeBuffInfo();
         }
         StageInfo.MergeFrom(other.StageInfo);
       }
@@ -320,7 +320,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 66: {
             if (stageInfo_ == null) {
-              StageInfo = new global::CastoriceHoney.Server.Proto.ChallengeBuffInfo();
+              StageInfo = new global::March7thHoney.Proto.ChallengeBuffInfo();
             }
             input.ReadMessage(StageInfo);
             break;
@@ -368,7 +368,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 66: {
             if (stageInfo_ == null) {
-              StageInfo = new global::CastoriceHoney.Server.Proto.ChallengeBuffInfo();
+              StageInfo = new global::March7thHoney.Proto.ChallengeBuffInfo();
             }
             input.ReadMessage(StageInfo);
             break;

@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Chat;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.GameServer.Server.Packet.Send.Chat;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Chat;
+namespace March7thHoney.GameServer.Server.Packet.Recv.Chat;
 
 [Opcode(CmdIds.GetPrivateChatHistoryCsReq)]
 public class HandlerGetPrivateChatHistoryCsReq : Handler

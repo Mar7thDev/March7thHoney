@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.Database.Friend;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Database.Friend;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 using Google.Protobuf.Collections;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Send.Challenge;
+namespace March7thHoney.GameServer.Server.Packet.Send.Challenge;
 
 public class PacketGetChallengeGroupStatisticsScRsp : BasePacket
 {

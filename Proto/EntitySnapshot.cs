@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from EntitySnapshot.proto</summary>
   public static partial class EntitySnapshotReflection {
@@ -33,9 +33,9 @@ namespace CastoriceHoney.Server.Proto {
             "dS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJv",
             "dG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.JHNKDJMLBJDReflection.Descriptor, global::CastoriceHoney.Server.Proto.MotionInfoSnapshotReflection.Descriptor, global::CastoriceHoney.Server.Proto.PropInfoSnapshotReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.JHNKDJMLBJDReflection.Descriptor, global::March7thHoney.Proto.MotionInfoSnapshotReflection.Descriptor, global::March7thHoney.Proto.PropInfoSnapshotReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.EntitySnapshot), global::CastoriceHoney.Server.Proto.EntitySnapshot.Parser, new[]{ "EntityId", "InstanceId", "MotionInfo", "MapObjectType", "Prop" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EntitySnapshot), global::March7thHoney.Proto.EntitySnapshot.Parser, new[]{ "EntityId", "InstanceId", "MotionInfo", "MapObjectType", "Prop" }, null, null, null, null)
           }));
     }
     #endregion
@@ -57,7 +57,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.EntitySnapshotReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.EntitySnapshotReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -117,10 +117,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "motion_info" field.</summary>
     public const int MotionInfoFieldNumber = 3;
-    private global::CastoriceHoney.Server.Proto.MotionInfoSnapshot motionInfo_;
+    private global::March7thHoney.Proto.MotionInfoSnapshot motionInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.MotionInfoSnapshot MotionInfo {
+    public global::March7thHoney.Proto.MotionInfoSnapshot MotionInfo {
       get { return motionInfo_; }
       set {
         motionInfo_ = value;
@@ -129,10 +129,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "map_object_type" field.</summary>
     public const int MapObjectTypeFieldNumber = 4;
-    private global::CastoriceHoney.Server.Proto.JHNKDJMLBJD mapObjectType_ = global::CastoriceHoney.Server.Proto.JHNKDJMLBJD.Ibddkljdmkg;
+    private global::March7thHoney.Proto.JHNKDJMLBJD mapObjectType_ = global::March7thHoney.Proto.JHNKDJMLBJD.Ibddkljdmkg;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.JHNKDJMLBJD MapObjectType {
+    public global::March7thHoney.Proto.JHNKDJMLBJD MapObjectType {
       get { return mapObjectType_; }
       set {
         mapObjectType_ = value;
@@ -141,10 +141,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "prop" field.</summary>
     public const int PropFieldNumber = 5;
-    private global::CastoriceHoney.Server.Proto.PropInfoSnapshot prop_;
+    private global::March7thHoney.Proto.PropInfoSnapshot prop_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.PropInfoSnapshot Prop {
+    public global::March7thHoney.Proto.PropInfoSnapshot Prop {
       get { return prop_; }
       set {
         prop_ = value;
@@ -181,7 +181,7 @@ namespace CastoriceHoney.Server.Proto {
       if (EntityId != 0) hash ^= EntityId.GetHashCode();
       if (InstanceId != 0) hash ^= InstanceId.GetHashCode();
       if (motionInfo_ != null) hash ^= MotionInfo.GetHashCode();
-      if (MapObjectType != global::CastoriceHoney.Server.Proto.JHNKDJMLBJD.Ibddkljdmkg) hash ^= MapObjectType.GetHashCode();
+      if (MapObjectType != global::March7thHoney.Proto.JHNKDJMLBJD.Ibddkljdmkg) hash ^= MapObjectType.GetHashCode();
       if (prop_ != null) hash ^= Prop.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -213,7 +213,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(26);
         output.WriteMessage(MotionInfo);
       }
-      if (MapObjectType != global::CastoriceHoney.Server.Proto.JHNKDJMLBJD.Ibddkljdmkg) {
+      if (MapObjectType != global::March7thHoney.Proto.JHNKDJMLBJD.Ibddkljdmkg) {
         output.WriteRawTag(32);
         output.WriteEnum((int) MapObjectType);
       }
@@ -243,7 +243,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(26);
         output.WriteMessage(MotionInfo);
       }
-      if (MapObjectType != global::CastoriceHoney.Server.Proto.JHNKDJMLBJD.Ibddkljdmkg) {
+      if (MapObjectType != global::March7thHoney.Proto.JHNKDJMLBJD.Ibddkljdmkg) {
         output.WriteRawTag(32);
         output.WriteEnum((int) MapObjectType);
       }
@@ -270,7 +270,7 @@ namespace CastoriceHoney.Server.Proto {
       if (motionInfo_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(MotionInfo);
       }
-      if (MapObjectType != global::CastoriceHoney.Server.Proto.JHNKDJMLBJD.Ibddkljdmkg) {
+      if (MapObjectType != global::March7thHoney.Proto.JHNKDJMLBJD.Ibddkljdmkg) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) MapObjectType);
       }
       if (prop_ != null) {
@@ -296,16 +296,16 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.motionInfo_ != null) {
         if (motionInfo_ == null) {
-          MotionInfo = new global::CastoriceHoney.Server.Proto.MotionInfoSnapshot();
+          MotionInfo = new global::March7thHoney.Proto.MotionInfoSnapshot();
         }
         MotionInfo.MergeFrom(other.MotionInfo);
       }
-      if (other.MapObjectType != global::CastoriceHoney.Server.Proto.JHNKDJMLBJD.Ibddkljdmkg) {
+      if (other.MapObjectType != global::March7thHoney.Proto.JHNKDJMLBJD.Ibddkljdmkg) {
         MapObjectType = other.MapObjectType;
       }
       if (other.prop_ != null) {
         if (prop_ == null) {
-          Prop = new global::CastoriceHoney.Server.Proto.PropInfoSnapshot();
+          Prop = new global::March7thHoney.Proto.PropInfoSnapshot();
         }
         Prop.MergeFrom(other.Prop);
       }
@@ -338,18 +338,18 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 26: {
             if (motionInfo_ == null) {
-              MotionInfo = new global::CastoriceHoney.Server.Proto.MotionInfoSnapshot();
+              MotionInfo = new global::March7thHoney.Proto.MotionInfoSnapshot();
             }
             input.ReadMessage(MotionInfo);
             break;
           }
           case 32: {
-            MapObjectType = (global::CastoriceHoney.Server.Proto.JHNKDJMLBJD) input.ReadEnum();
+            MapObjectType = (global::March7thHoney.Proto.JHNKDJMLBJD) input.ReadEnum();
             break;
           }
           case 42: {
             if (prop_ == null) {
-              Prop = new global::CastoriceHoney.Server.Proto.PropInfoSnapshot();
+              Prop = new global::March7thHoney.Proto.PropInfoSnapshot();
             }
             input.ReadMessage(Prop);
             break;
@@ -383,18 +383,18 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 26: {
             if (motionInfo_ == null) {
-              MotionInfo = new global::CastoriceHoney.Server.Proto.MotionInfoSnapshot();
+              MotionInfo = new global::March7thHoney.Proto.MotionInfoSnapshot();
             }
             input.ReadMessage(MotionInfo);
             break;
           }
           case 32: {
-            MapObjectType = (global::CastoriceHoney.Server.Proto.JHNKDJMLBJD) input.ReadEnum();
+            MapObjectType = (global::March7thHoney.Proto.JHNKDJMLBJD) input.ReadEnum();
             break;
           }
           case 42: {
             if (prop_ == null) {
-              Prop = new global::CastoriceHoney.Server.Proto.PropInfoSnapshot();
+              Prop = new global::March7thHoney.Proto.PropInfoSnapshot();
             }
             input.ReadMessage(Prop);
             break;

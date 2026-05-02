@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from DiscardRelicScRsp.proto</summary>
   public static partial class DiscardRelicScRspReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "cmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3Rv",
             "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.RelicDiscardTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.RelicDiscardTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.DiscardRelicScRsp), global::CastoriceHoney.Server.Proto.DiscardRelicScRsp.Parser, new[]{ "Retcode", "RelicIds", "Discarded", "HHHLMNLMAGC" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DiscardRelicScRsp), global::March7thHoney.Proto.DiscardRelicScRsp.Parser, new[]{ "Retcode", "RelicIds", "Discarded", "HHHLMNLMAGC" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.DiscardRelicScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.DiscardRelicScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -125,10 +125,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "HHHLMNLMAGC" field.</summary>
     public const int HHHLMNLMAGCFieldNumber = 14;
-    private global::CastoriceHoney.Server.Proto.RelicDiscardType hHHLMNLMAGC_ = global::CastoriceHoney.Server.Proto.RelicDiscardType.EgejgnadohgIfpdlcoienf;
+    private global::March7thHoney.Proto.RelicDiscardType hHHLMNLMAGC_ = global::March7thHoney.Proto.RelicDiscardType.EgejgnadohgIfpdlcoienf;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.RelicDiscardType HHHLMNLMAGC {
+    public global::March7thHoney.Proto.RelicDiscardType HHHLMNLMAGC {
       get { return hHHLMNLMAGC_; }
       set {
         hHHLMNLMAGC_ = value;
@@ -164,7 +164,7 @@ namespace CastoriceHoney.Server.Proto {
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
       hash ^= relicIds_.GetHashCode();
       if (Discarded != false) hash ^= Discarded.GetHashCode();
-      if (HHHLMNLMAGC != global::CastoriceHoney.Server.Proto.RelicDiscardType.EgejgnadohgIfpdlcoienf) hash ^= HHHLMNLMAGC.GetHashCode();
+      if (HHHLMNLMAGC != global::March7thHoney.Proto.RelicDiscardType.EgejgnadohgIfpdlcoienf) hash ^= HHHLMNLMAGC.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -192,7 +192,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(96);
         output.WriteBool(Discarded);
       }
-      if (HHHLMNLMAGC != global::CastoriceHoney.Server.Proto.RelicDiscardType.EgejgnadohgIfpdlcoienf) {
+      if (HHHLMNLMAGC != global::March7thHoney.Proto.RelicDiscardType.EgejgnadohgIfpdlcoienf) {
         output.WriteRawTag(112);
         output.WriteEnum((int) HHHLMNLMAGC);
       }
@@ -215,7 +215,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(96);
         output.WriteBool(Discarded);
       }
-      if (HHHLMNLMAGC != global::CastoriceHoney.Server.Proto.RelicDiscardType.EgejgnadohgIfpdlcoienf) {
+      if (HHHLMNLMAGC != global::March7thHoney.Proto.RelicDiscardType.EgejgnadohgIfpdlcoienf) {
         output.WriteRawTag(112);
         output.WriteEnum((int) HHHLMNLMAGC);
       }
@@ -236,7 +236,7 @@ namespace CastoriceHoney.Server.Proto {
       if (Discarded != false) {
         size += 1 + 1;
       }
-      if (HHHLMNLMAGC != global::CastoriceHoney.Server.Proto.RelicDiscardType.EgejgnadohgIfpdlcoienf) {
+      if (HHHLMNLMAGC != global::March7thHoney.Proto.RelicDiscardType.EgejgnadohgIfpdlcoienf) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) HHHLMNLMAGC);
       }
       if (_unknownFields != null) {
@@ -258,7 +258,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other.Discarded != false) {
         Discarded = other.Discarded;
       }
-      if (other.HHHLMNLMAGC != global::CastoriceHoney.Server.Proto.RelicDiscardType.EgejgnadohgIfpdlcoienf) {
+      if (other.HHHLMNLMAGC != global::March7thHoney.Proto.RelicDiscardType.EgejgnadohgIfpdlcoienf) {
         HHHLMNLMAGC = other.HHHLMNLMAGC;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -294,7 +294,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 112: {
-            HHHLMNLMAGC = (global::CastoriceHoney.Server.Proto.RelicDiscardType) input.ReadEnum();
+            HHHLMNLMAGC = (global::March7thHoney.Proto.RelicDiscardType) input.ReadEnum();
             break;
           }
         }
@@ -330,7 +330,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 112: {
-            HHHLMNLMAGC = (global::CastoriceHoney.Server.Proto.RelicDiscardType) input.ReadEnum();
+            HHHLMNLMAGC = (global::March7thHoney.Proto.RelicDiscardType) input.ReadEnum();
             break;
           }
         }

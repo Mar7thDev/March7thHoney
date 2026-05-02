@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from BGMLAAEOFOH.proto</summary>
   public static partial class BGMLAAEOFOHReflection {
@@ -33,9 +33,9 @@ namespace CastoriceHoney.Server.Proto {
             "ChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVy",
             "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ILOGJILOJGBReflection.Descriptor, global::CastoriceHoney.Server.Proto.NFABIIBMNPBReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ILOGJILOJGBReflection.Descriptor, global::March7thHoney.Proto.NFABIIBMNPBReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.BGMLAAEOFOH), global::CastoriceHoney.Server.Proto.BGMLAAEOFOH.Parser, new[]{ "Uid", "ANBBPPHBCJH", "BBDOCJGAEEJ", "MPPFOJCENPD", "DCPKPNLKGMM", "SectionId", "GridGameRoleList", "LHCHBABCPMI" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BGMLAAEOFOH), global::March7thHoney.Proto.BGMLAAEOFOH.Parser, new[]{ "Uid", "ANBBPPHBCJH", "BBDOCJGAEEJ", "MPPFOJCENPD", "DCPKPNLKGMM", "SectionId", "GridGameRoleList", "LHCHBABCPMI" }, null, null, null, null)
           }));
     }
     #endregion
@@ -57,7 +57,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.BGMLAAEOFOHReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.BGMLAAEOFOHReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -168,21 +168,21 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "grid_game_role_list" field.</summary>
     public const int GridGameRoleListFieldNumber = 7;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.NFABIIBMNPB> _repeated_gridGameRoleList_codec
-        = pb::FieldCodec.ForMessage(58, global::CastoriceHoney.Server.Proto.NFABIIBMNPB.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.NFABIIBMNPB> gridGameRoleList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.NFABIIBMNPB>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.NFABIIBMNPB> _repeated_gridGameRoleList_codec
+        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.NFABIIBMNPB.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.NFABIIBMNPB> gridGameRoleList_ = new pbc::RepeatedField<global::March7thHoney.Proto.NFABIIBMNPB>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.NFABIIBMNPB> GridGameRoleList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.NFABIIBMNPB> GridGameRoleList {
       get { return gridGameRoleList_; }
     }
 
     /// <summary>Field number for the "LHCHBABCPMI" field.</summary>
     public const int LHCHBABCPMIFieldNumber = 8;
-    private global::CastoriceHoney.Server.Proto.ILOGJILOJGB lHCHBABCPMI_;
+    private global::March7thHoney.Proto.ILOGJILOJGB lHCHBABCPMI_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ILOGJILOJGB LHCHBABCPMI {
+    public global::March7thHoney.Proto.ILOGJILOJGB LHCHBABCPMI {
       get { return lHCHBABCPMI_; }
       set {
         lHCHBABCPMI_ = value;
@@ -378,7 +378,7 @@ namespace CastoriceHoney.Server.Proto {
       gridGameRoleList_.Add(other.gridGameRoleList_);
       if (other.lHCHBABCPMI_ != null) {
         if (lHCHBABCPMI_ == null) {
-          LHCHBABCPMI = new global::CastoriceHoney.Server.Proto.ILOGJILOJGB();
+          LHCHBABCPMI = new global::March7thHoney.Proto.ILOGJILOJGB();
         }
         LHCHBABCPMI.MergeFrom(other.LHCHBABCPMI);
       }
@@ -431,7 +431,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 66: {
             if (lHCHBABCPMI_ == null) {
-              LHCHBABCPMI = new global::CastoriceHoney.Server.Proto.ILOGJILOJGB();
+              LHCHBABCPMI = new global::March7thHoney.Proto.ILOGJILOJGB();
             }
             input.ReadMessage(LHCHBABCPMI);
             break;
@@ -485,7 +485,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 66: {
             if (lHCHBABCPMI_ == null) {
-              LHCHBABCPMI = new global::CastoriceHoney.Server.Proto.ILOGJILOJGB();
+              LHCHBABCPMI = new global::March7thHoney.Proto.ILOGJILOJGB();
             }
             input.ReadMessage(LHCHBABCPMI);
             break;

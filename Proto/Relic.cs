@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from Relic.proto</summary>
   public static partial class RelicReflection {
@@ -35,9 +35,9 @@ namespace CastoriceHoney.Server.Proto {
             "cmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3Rv",
             "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.RelicAffixReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.RelicAffixReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.Relic), global::CastoriceHoney.Server.Proto.Relic.Parser, new[]{ "ReforgeSubAffixList", "IsDiscarded", "SubAffixList", "EBEOECJMBKN", "DressAvatarId", "IsProtected", "Level", "Tid", "MainAffixId", "UniqueId", "ReforgeBlockSubAffixId", "Exp" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.Relic), global::March7thHoney.Proto.Relic.Parser, new[]{ "ReforgeSubAffixList", "IsDiscarded", "SubAffixList", "EBEOECJMBKN", "DressAvatarId", "IsProtected", "Level", "Tid", "MainAffixId", "UniqueId", "ReforgeBlockSubAffixId", "Exp" }, null, null, null, null)
           }));
     }
     #endregion
@@ -59,7 +59,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.RelicReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.RelicReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -102,12 +102,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "reforge_sub_affix_list" field.</summary>
     public const int ReforgeSubAffixListFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.RelicAffix> _repeated_reforgeSubAffixList_codec
-        = pb::FieldCodec.ForMessage(10, global::CastoriceHoney.Server.Proto.RelicAffix.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.RelicAffix> reforgeSubAffixList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.RelicAffix>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.RelicAffix> _repeated_reforgeSubAffixList_codec
+        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.RelicAffix.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.RelicAffix> reforgeSubAffixList_ = new pbc::RepeatedField<global::March7thHoney.Proto.RelicAffix>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.RelicAffix> ReforgeSubAffixList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.RelicAffix> ReforgeSubAffixList {
       get { return reforgeSubAffixList_; }
     }
 
@@ -125,23 +125,23 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "sub_affix_list" field.</summary>
     public const int SubAffixListFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.RelicAffix> _repeated_subAffixList_codec
-        = pb::FieldCodec.ForMessage(26, global::CastoriceHoney.Server.Proto.RelicAffix.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.RelicAffix> subAffixList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.RelicAffix>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.RelicAffix> _repeated_subAffixList_codec
+        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.RelicAffix.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.RelicAffix> subAffixList_ = new pbc::RepeatedField<global::March7thHoney.Proto.RelicAffix>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.RelicAffix> SubAffixList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.RelicAffix> SubAffixList {
       get { return subAffixList_; }
     }
 
     /// <summary>Field number for the "EBEOECJMBKN" field.</summary>
     public const int EBEOECJMBKNFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.RelicAffix> _repeated_eBEOECJMBKN_codec
-        = pb::FieldCodec.ForMessage(34, global::CastoriceHoney.Server.Proto.RelicAffix.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.RelicAffix> eBEOECJMBKN_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.RelicAffix>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.RelicAffix> _repeated_eBEOECJMBKN_codec
+        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.RelicAffix.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.RelicAffix> eBEOECJMBKN_ = new pbc::RepeatedField<global::March7thHoney.Proto.RelicAffix>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.RelicAffix> EBEOECJMBKN {
+    public pbc::RepeatedField<global::March7thHoney.Proto.RelicAffix> EBEOECJMBKN {
       get { return eBEOECJMBKN_; }
     }
 

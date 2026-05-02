@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from CmdMultipleDropType.proto</summary>
   public static partial class CmdMultipleDropTypeReflection {
@@ -35,7 +35,7 @@ namespace CastoriceHoney.Server.Proto {
             "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::CastoriceHoney.Server.Proto.CmdMultipleDropType), }, null, null));
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdMultipleDropType), }, null, null));
     }
     #endregion
 

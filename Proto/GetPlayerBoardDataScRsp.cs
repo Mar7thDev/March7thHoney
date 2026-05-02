@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GetPlayerBoardDataScRsp.proto</summary>
   public static partial class GetPlayerBoardDataScRspReflection {
@@ -36,9 +36,9 @@ namespace CastoriceHoney.Server.Proto {
             "IAEoCzIRLkRpc3BsYXlBdmF0YXJWZWNCMwoTZW11Lmx1bmFyY29yZS5wcm90",
             "b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.DisplayAvatarVecReflection.Descriptor, global::CastoriceHoney.Server.Proto.HeadFrameInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.HeadIconDataReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.DisplayAvatarVecReflection.Descriptor, global::March7thHoney.Proto.HeadFrameInfoReflection.Descriptor, global::March7thHoney.Proto.HeadIconDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GetPlayerBoardDataScRsp), global::CastoriceHoney.Server.Proto.GetPlayerBoardDataScRsp.Parser, new[]{ "CurrentHeadIconId", "CurrentPersonalCardId", "HeadFrameInfo", "Signature", "UnlockedPersonalCardList", "Retcode", "UnlockedHeadIconList", "AssistAvatarIdList", "DisplayAvatarVec" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetPlayerBoardDataScRsp), global::March7thHoney.Proto.GetPlayerBoardDataScRsp.Parser, new[]{ "CurrentHeadIconId", "CurrentPersonalCardId", "HeadFrameInfo", "Signature", "UnlockedPersonalCardList", "Retcode", "UnlockedHeadIconList", "AssistAvatarIdList", "DisplayAvatarVec" }, null, null, null, null)
           }));
     }
     #endregion
@@ -60,7 +60,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GetPlayerBoardDataScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GetPlayerBoardDataScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -124,10 +124,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "head_frame_info" field.</summary>
     public const int HeadFrameInfoFieldNumber = 4;
-    private global::CastoriceHoney.Server.Proto.HeadFrameInfo headFrameInfo_;
+    private global::March7thHoney.Proto.HeadFrameInfo headFrameInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.HeadFrameInfo HeadFrameInfo {
+    public global::March7thHoney.Proto.HeadFrameInfo HeadFrameInfo {
       get { return headFrameInfo_; }
       set {
         headFrameInfo_ = value;
@@ -171,12 +171,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "unlocked_head_icon_list" field.</summary>
     public const int UnlockedHeadIconListFieldNumber = 9;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.HeadIconData> _repeated_unlockedHeadIconList_codec
-        = pb::FieldCodec.ForMessage(74, global::CastoriceHoney.Server.Proto.HeadIconData.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.HeadIconData> unlockedHeadIconList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.HeadIconData>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.HeadIconData> _repeated_unlockedHeadIconList_codec
+        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.HeadIconData.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.HeadIconData> unlockedHeadIconList_ = new pbc::RepeatedField<global::March7thHoney.Proto.HeadIconData>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.HeadIconData> UnlockedHeadIconList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.HeadIconData> UnlockedHeadIconList {
       get { return unlockedHeadIconList_; }
     }
 
@@ -193,10 +193,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "display_avatar_vec" field.</summary>
     public const int DisplayAvatarVecFieldNumber = 15;
-    private global::CastoriceHoney.Server.Proto.DisplayAvatarVec displayAvatarVec_;
+    private global::March7thHoney.Proto.DisplayAvatarVec displayAvatarVec_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.DisplayAvatarVec DisplayAvatarVec {
+    public global::March7thHoney.Proto.DisplayAvatarVec DisplayAvatarVec {
       get { return displayAvatarVec_; }
       set {
         displayAvatarVec_ = value;
@@ -376,7 +376,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.headFrameInfo_ != null) {
         if (headFrameInfo_ == null) {
-          HeadFrameInfo = new global::CastoriceHoney.Server.Proto.HeadFrameInfo();
+          HeadFrameInfo = new global::March7thHoney.Proto.HeadFrameInfo();
         }
         HeadFrameInfo.MergeFrom(other.HeadFrameInfo);
       }
@@ -391,7 +391,7 @@ namespace CastoriceHoney.Server.Proto {
       assistAvatarIdList_.Add(other.assistAvatarIdList_);
       if (other.displayAvatarVec_ != null) {
         if (displayAvatarVec_ == null) {
-          DisplayAvatarVec = new global::CastoriceHoney.Server.Proto.DisplayAvatarVec();
+          DisplayAvatarVec = new global::March7thHoney.Proto.DisplayAvatarVec();
         }
         DisplayAvatarVec.MergeFrom(other.DisplayAvatarVec);
       }
@@ -424,7 +424,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 34: {
             if (headFrameInfo_ == null) {
-              HeadFrameInfo = new global::CastoriceHoney.Server.Proto.HeadFrameInfo();
+              HeadFrameInfo = new global::March7thHoney.Proto.HeadFrameInfo();
             }
             input.ReadMessage(HeadFrameInfo);
             break;
@@ -453,7 +453,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 122: {
             if (displayAvatarVec_ == null) {
-              DisplayAvatarVec = new global::CastoriceHoney.Server.Proto.DisplayAvatarVec();
+              DisplayAvatarVec = new global::March7thHoney.Proto.DisplayAvatarVec();
             }
             input.ReadMessage(DisplayAvatarVec);
             break;
@@ -487,7 +487,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 34: {
             if (headFrameInfo_ == null) {
-              HeadFrameInfo = new global::CastoriceHoney.Server.Proto.HeadFrameInfo();
+              HeadFrameInfo = new global::March7thHoney.Proto.HeadFrameInfo();
             }
             input.ReadMessage(HeadFrameInfo);
             break;
@@ -516,7 +516,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 122: {
             if (displayAvatarVec_ == null) {
-              DisplayAvatarVec = new global::CastoriceHoney.Server.Proto.DisplayAvatarVec();
+              DisplayAvatarVec = new global::March7thHoney.Proto.DisplayAvatarVec();
             }
             input.ReadMessage(DisplayAvatarVec);
             break;

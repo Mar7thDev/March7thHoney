@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Data.Config.Rogue;
+namespace March7thHoney.Data.Config.Rogue;
 
 public class RogueDialogueEventOptionDynamicConfigInfo
 {

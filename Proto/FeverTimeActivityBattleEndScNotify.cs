@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from FeverTimeActivityBattleEndScNotify.proto</summary>
   public static partial class FeverTimeActivityBattleEndScNotifyReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "IAEoDRIRCgl0dXJuX2xlZnQYDSABKA1CMwoTZW11Lmx1bmFyY29yZS5wcm90",
             "b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.FeverTimeBattleRankReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.FeverTimeBattleRankReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.FeverTimeActivityBattleEndScNotify), global::CastoriceHoney.Server.Proto.FeverTimeActivityBattleEndScNotify.Parser, new[]{ "KIKCDKLKCPC", "Id", "PKPIOIJPPBL", "TurnLeft" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FeverTimeActivityBattleEndScNotify), global::March7thHoney.Proto.FeverTimeActivityBattleEndScNotify.Parser, new[]{ "KIKCDKLKCPC", "Id", "PKPIOIJPPBL", "TurnLeft" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.FeverTimeActivityBattleEndScNotifyReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.FeverTimeActivityBattleEndScNotifyReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -90,10 +90,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "KIKCDKLKCPC" field.</summary>
     public const int KIKCDKLKCPCFieldNumber = 5;
-    private global::CastoriceHoney.Server.Proto.FeverTimeBattleRank kIKCDKLKCPC_ = global::CastoriceHoney.Server.Proto.FeverTimeBattleRank.GknlgibclcnIjljfpkieop;
+    private global::March7thHoney.Proto.FeverTimeBattleRank kIKCDKLKCPC_ = global::March7thHoney.Proto.FeverTimeBattleRank.GknlgibclcnIjljfpkieop;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.FeverTimeBattleRank KIKCDKLKCPC {
+    public global::March7thHoney.Proto.FeverTimeBattleRank KIKCDKLKCPC {
       get { return kIKCDKLKCPC_; }
       set {
         kIKCDKLKCPC_ = value;
@@ -162,7 +162,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (KIKCDKLKCPC != global::CastoriceHoney.Server.Proto.FeverTimeBattleRank.GknlgibclcnIjljfpkieop) hash ^= KIKCDKLKCPC.GetHashCode();
+      if (KIKCDKLKCPC != global::March7thHoney.Proto.FeverTimeBattleRank.GknlgibclcnIjljfpkieop) hash ^= KIKCDKLKCPC.GetHashCode();
       if (Id != 0) hash ^= Id.GetHashCode();
       if (PKPIOIJPPBL != 0) hash ^= PKPIOIJPPBL.GetHashCode();
       if (TurnLeft != 0) hash ^= TurnLeft.GetHashCode();
@@ -184,7 +184,7 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (KIKCDKLKCPC != global::CastoriceHoney.Server.Proto.FeverTimeBattleRank.GknlgibclcnIjljfpkieop) {
+      if (KIKCDKLKCPC != global::March7thHoney.Proto.FeverTimeBattleRank.GknlgibclcnIjljfpkieop) {
         output.WriteRawTag(40);
         output.WriteEnum((int) KIKCDKLKCPC);
       }
@@ -210,7 +210,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (KIKCDKLKCPC != global::CastoriceHoney.Server.Proto.FeverTimeBattleRank.GknlgibclcnIjljfpkieop) {
+      if (KIKCDKLKCPC != global::March7thHoney.Proto.FeverTimeBattleRank.GknlgibclcnIjljfpkieop) {
         output.WriteRawTag(40);
         output.WriteEnum((int) KIKCDKLKCPC);
       }
@@ -236,7 +236,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (KIKCDKLKCPC != global::CastoriceHoney.Server.Proto.FeverTimeBattleRank.GknlgibclcnIjljfpkieop) {
+      if (KIKCDKLKCPC != global::March7thHoney.Proto.FeverTimeBattleRank.GknlgibclcnIjljfpkieop) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) KIKCDKLKCPC);
       }
       if (Id != 0) {
@@ -260,7 +260,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.KIKCDKLKCPC != global::CastoriceHoney.Server.Proto.FeverTimeBattleRank.GknlgibclcnIjljfpkieop) {
+      if (other.KIKCDKLKCPC != global::March7thHoney.Proto.FeverTimeBattleRank.GknlgibclcnIjljfpkieop) {
         KIKCDKLKCPC = other.KIKCDKLKCPC;
       }
       if (other.Id != 0) {
@@ -292,7 +292,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 40: {
-            KIKCDKLKCPC = (global::CastoriceHoney.Server.Proto.FeverTimeBattleRank) input.ReadEnum();
+            KIKCDKLKCPC = (global::March7thHoney.Proto.FeverTimeBattleRank) input.ReadEnum();
             break;
           }
           case 88: {
@@ -327,7 +327,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 40: {
-            KIKCDKLKCPC = (global::CastoriceHoney.Server.Proto.FeverTimeBattleRank) input.ReadEnum();
+            KIKCDKLKCPC = (global::March7thHoney.Proto.FeverTimeBattleRank) input.ReadEnum();
             break;
           }
           case 88: {

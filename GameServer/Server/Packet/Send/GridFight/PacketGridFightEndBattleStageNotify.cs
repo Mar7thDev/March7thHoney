@@ -1,11 +1,11 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.GameServer.Game.GridFight;
-using CastoriceHoney.Server.GameServer.Game.GridFight.Component;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Proto.ServerSide;
+using March7thHoney.Data;
+using March7thHoney.GameServer.Game.GridFight;
+using March7thHoney.GameServer.Game.GridFight.Component;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
+using March7thHoney.Proto.ServerSide;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Send.GridFight;
+namespace March7thHoney.GameServer.Server.Packet.Send.GridFight;
 
 public class PacketGridFightEndBattleStageNotify : BasePacket
 {

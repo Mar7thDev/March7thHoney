@@ -1,6 +1,6 @@
-using CastoriceHoney.Server.Kcp;
+using March7thHoney.Kcp;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.MapRotation;
+namespace March7thHoney.GameServer.Server.Packet.Recv.MapRotation;
 
 [Opcode(CmdIds.LeaveMapRotationRegionCsReq)]
 public class HandlerLeaveMapRotationRegionCsReq : Handler

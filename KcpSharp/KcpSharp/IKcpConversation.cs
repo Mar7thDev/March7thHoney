@@ -1,6 +1,6 @@
 using System.Net.Sockets;
 
-namespace CastoriceHoney.Server.Kcp.KcpSharp;
+namespace March7thHoney.Kcp.KcpSharp;
 
 /// <summary>
 ///     A conversation or a channel over the transport.

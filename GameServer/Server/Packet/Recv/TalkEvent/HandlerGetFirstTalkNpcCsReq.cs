@@ -1,6 +1,6 @@
-using CastoriceHoney.Server.Kcp;
+using March7thHoney.Kcp;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.TalkEvent;
+namespace March7thHoney.GameServer.Server.Packet.Recv.TalkEvent;
 
 [Opcode(CmdIds.GetFirstTalkNpcCsReq)]
 public class HandlerGetFirstTalkNpcCsReq : Handler

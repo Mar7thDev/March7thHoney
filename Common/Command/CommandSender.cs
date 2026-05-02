@@ -1,6 +1,6 @@
-using CastoriceHoney.Server.Util;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.Command;
+namespace March7thHoney.Command;
 
 public interface ICommandSender
 {

@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueDialogueOptionDisplay.json")]
 public class RogueDialogueOptionDisplayExcel : ExcelResource

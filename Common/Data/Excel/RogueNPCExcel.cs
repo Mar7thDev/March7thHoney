@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.Data.Config.Rogue;
+using March7thHoney.Data.Config.Rogue;
 using Newtonsoft.Json;
 
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueNPC.json,RogueTournNPC.json", true)]
 public class RogueNPCExcel : ExcelResource

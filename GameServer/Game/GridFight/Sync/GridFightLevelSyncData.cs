@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.GameServer.Game.GridFight.Component;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.GameServer.Game.GridFight.Component;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Game.GridFight.Sync;
+namespace March7thHoney.GameServer.Game.GridFight.Sync;
 
 public class GridFightLevelSyncData(
     GridFightSrc src,

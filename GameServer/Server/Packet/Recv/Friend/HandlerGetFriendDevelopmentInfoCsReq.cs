@@ -1,10 +1,10 @@
-using CastoriceHoney.Server.Database;
-using CastoriceHoney.Server.Database.Friend;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Friend;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Database;
+using March7thHoney.Database.Friend;
+using March7thHoney.GameServer.Server.Packet.Send.Friend;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Friend;
+namespace March7thHoney.GameServer.Server.Packet.Recv.Friend;
 
 [Opcode(CmdIds.GetFriendDevelopmentInfoCsReq)]
 public class HandlerGetFriendDevelopmentInfoCsReq : Handler

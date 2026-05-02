@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from KACOOFIKHOG.proto</summary>
   public static partial class KACOOFIKHOGReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "EhMKC0VOT09FRkxKSUZIGA0gASgNQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+q",
             "AhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.TrainPartyMtSkillBriefTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.TrainPartyMtSkillBriefTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.KACOOFIKHOG), global::CastoriceHoney.Server.Proto.KACOOFIKHOG.Parser, new[]{ "SkillType", "SkillId", "ENOOEFLJIFH" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.KACOOFIKHOG), global::March7thHoney.Proto.KACOOFIKHOG.Parser, new[]{ "SkillType", "SkillId", "ENOOEFLJIFH" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.KACOOFIKHOGReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.KACOOFIKHOGReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -88,10 +88,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "skill_type" field.</summary>
     public const int SkillTypeFieldNumber = 8;
-    private global::CastoriceHoney.Server.Proto.TrainPartyMtSkillBriefType skillType_ = global::CastoriceHoney.Server.Proto.TrainPartyMtSkillBriefType.HjbfkhgaajiHibophohgdl;
+    private global::March7thHoney.Proto.TrainPartyMtSkillBriefType skillType_ = global::March7thHoney.Proto.TrainPartyMtSkillBriefType.HjbfkhgaajiHibophohgdl;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.TrainPartyMtSkillBriefType SkillType {
+    public global::March7thHoney.Proto.TrainPartyMtSkillBriefType SkillType {
       get { return skillType_; }
       set {
         skillType_ = value;
@@ -147,7 +147,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (SkillType != global::CastoriceHoney.Server.Proto.TrainPartyMtSkillBriefType.HjbfkhgaajiHibophohgdl) hash ^= SkillType.GetHashCode();
+      if (SkillType != global::March7thHoney.Proto.TrainPartyMtSkillBriefType.HjbfkhgaajiHibophohgdl) hash ^= SkillType.GetHashCode();
       if (SkillId != 0) hash ^= SkillId.GetHashCode();
       if (ENOOEFLJIFH != 0) hash ^= ENOOEFLJIFH.GetHashCode();
       if (_unknownFields != null) {
@@ -168,7 +168,7 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (SkillType != global::CastoriceHoney.Server.Proto.TrainPartyMtSkillBriefType.HjbfkhgaajiHibophohgdl) {
+      if (SkillType != global::March7thHoney.Proto.TrainPartyMtSkillBriefType.HjbfkhgaajiHibophohgdl) {
         output.WriteRawTag(64);
         output.WriteEnum((int) SkillType);
       }
@@ -190,7 +190,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (SkillType != global::CastoriceHoney.Server.Proto.TrainPartyMtSkillBriefType.HjbfkhgaajiHibophohgdl) {
+      if (SkillType != global::March7thHoney.Proto.TrainPartyMtSkillBriefType.HjbfkhgaajiHibophohgdl) {
         output.WriteRawTag(64);
         output.WriteEnum((int) SkillType);
       }
@@ -212,7 +212,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (SkillType != global::CastoriceHoney.Server.Proto.TrainPartyMtSkillBriefType.HjbfkhgaajiHibophohgdl) {
+      if (SkillType != global::March7thHoney.Proto.TrainPartyMtSkillBriefType.HjbfkhgaajiHibophohgdl) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) SkillType);
       }
       if (SkillId != 0) {
@@ -233,7 +233,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.SkillType != global::CastoriceHoney.Server.Proto.TrainPartyMtSkillBriefType.HjbfkhgaajiHibophohgdl) {
+      if (other.SkillType != global::March7thHoney.Proto.TrainPartyMtSkillBriefType.HjbfkhgaajiHibophohgdl) {
         SkillType = other.SkillType;
       }
       if (other.SkillId != 0) {
@@ -262,7 +262,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 64: {
-            SkillType = (global::CastoriceHoney.Server.Proto.TrainPartyMtSkillBriefType) input.ReadEnum();
+            SkillType = (global::March7thHoney.Proto.TrainPartyMtSkillBriefType) input.ReadEnum();
             break;
           }
           case 88: {
@@ -293,7 +293,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 64: {
-            SkillType = (global::CastoriceHoney.Server.Proto.TrainPartyMtSkillBriefType) input.ReadEnum();
+            SkillType = (global::March7thHoney.Proto.TrainPartyMtSkillBriefType) input.ReadEnum();
             break;
           }
           case 88: {

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from MainMission.proto</summary>
   public static partial class MainMissionReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90",
             "b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.MissionCustomValueReflection.Descriptor, global::CastoriceHoney.Server.Proto.MissionStatusReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.MissionCustomValueReflection.Descriptor, global::March7thHoney.Proto.MissionStatusReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.MainMission), global::CastoriceHoney.Server.Proto.MainMission.Parser, new[]{ "Id", "Status", "CustomValueList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MainMission), global::March7thHoney.Proto.MainMission.Parser, new[]{ "Id", "Status", "CustomValueList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.MainMissionReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.MainMissionReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -101,10 +101,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "status" field.</summary>
     public const int StatusFieldNumber = 5;
-    private global::CastoriceHoney.Server.Proto.MissionStatus status_ = global::CastoriceHoney.Server.Proto.MissionStatus.MissionNone;
+    private global::March7thHoney.Proto.MissionStatus status_ = global::March7thHoney.Proto.MissionStatus.MissionNone;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.MissionStatus Status {
+    public global::March7thHoney.Proto.MissionStatus Status {
       get { return status_; }
       set {
         status_ = value;
@@ -113,12 +113,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "custom_value_list" field.</summary>
     public const int CustomValueListFieldNumber = 12;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.MissionCustomValue> _repeated_customValueList_codec
-        = pb::FieldCodec.ForMessage(98, global::CastoriceHoney.Server.Proto.MissionCustomValue.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MissionCustomValue> customValueList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MissionCustomValue>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MissionCustomValue> _repeated_customValueList_codec
+        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.MissionCustomValue.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MissionCustomValue> customValueList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MissionCustomValue>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MissionCustomValue> CustomValueList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.MissionCustomValue> CustomValueList {
       get { return customValueList_; }
     }
 
@@ -148,7 +148,7 @@ namespace CastoriceHoney.Server.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (Id != 0) hash ^= Id.GetHashCode();
-      if (Status != global::CastoriceHoney.Server.Proto.MissionStatus.MissionNone) hash ^= Status.GetHashCode();
+      if (Status != global::March7thHoney.Proto.MissionStatus.MissionNone) hash ^= Status.GetHashCode();
       hash ^= customValueList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -172,7 +172,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(16);
         output.WriteUInt32(Id);
       }
-      if (Status != global::CastoriceHoney.Server.Proto.MissionStatus.MissionNone) {
+      if (Status != global::March7thHoney.Proto.MissionStatus.MissionNone) {
         output.WriteRawTag(40);
         output.WriteEnum((int) Status);
       }
@@ -191,7 +191,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(16);
         output.WriteUInt32(Id);
       }
-      if (Status != global::CastoriceHoney.Server.Proto.MissionStatus.MissionNone) {
+      if (Status != global::March7thHoney.Proto.MissionStatus.MissionNone) {
         output.WriteRawTag(40);
         output.WriteEnum((int) Status);
       }
@@ -209,7 +209,7 @@ namespace CastoriceHoney.Server.Proto {
       if (Id != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Id);
       }
-      if (Status != global::CastoriceHoney.Server.Proto.MissionStatus.MissionNone) {
+      if (Status != global::March7thHoney.Proto.MissionStatus.MissionNone) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Status);
       }
       size += customValueList_.CalculateSize(_repeated_customValueList_codec);
@@ -228,7 +228,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other.Id != 0) {
         Id = other.Id;
       }
-      if (other.Status != global::CastoriceHoney.Server.Proto.MissionStatus.MissionNone) {
+      if (other.Status != global::March7thHoney.Proto.MissionStatus.MissionNone) {
         Status = other.Status;
       }
       customValueList_.Add(other.customValueList_);
@@ -256,7 +256,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 40: {
-            Status = (global::CastoriceHoney.Server.Proto.MissionStatus) input.ReadEnum();
+            Status = (global::March7thHoney.Proto.MissionStatus) input.ReadEnum();
             break;
           }
           case 98: {
@@ -287,7 +287,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 40: {
-            Status = (global::CastoriceHoney.Server.Proto.MissionStatus) input.ReadEnum();
+            Status = (global::March7thHoney.Proto.MissionStatus) input.ReadEnum();
             break;
           }
           case 98: {

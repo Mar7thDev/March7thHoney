@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Game.Lobby;
+namespace March7thHoney.GameServer.Game.Lobby;
 
 /// <summary>
 ///     Server Manager:

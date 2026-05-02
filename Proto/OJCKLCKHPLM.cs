@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from OJCKLCKHPLM.proto</summary>
   public static partial class OJCKLCKHPLMReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90",
             "b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.HOIKCKDHPGCReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.HOIKCKDHPGCReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.OJCKLCKHPLM), global::CastoriceHoney.Server.Proto.OJCKLCKHPLM.Parser, new[]{ "PBPDBJBLPGL", "EMENFKABDEK" }, new[]{ "FNJJNAOCOII" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.OJCKLCKHPLM), global::March7thHoney.Proto.OJCKLCKHPLM.Parser, new[]{ "PBPDBJBLPGL", "EMENFKABDEK" }, new[]{ "FNJJNAOCOII" }, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.OJCKLCKHPLMReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.OJCKLCKHPLMReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -122,8 +122,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int EMENFKABDEKFieldNumber = 12;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.HOIKCKDHPGC EMENFKABDEK {
-      get { return fNJJNAOCOIICase_ == FNJJNAOCOIIOneofCase.EMENFKABDEK ? (global::CastoriceHoney.Server.Proto.HOIKCKDHPGC) fNJJNAOCOII_ : null; }
+    public global::March7thHoney.Proto.HOIKCKDHPGC EMENFKABDEK {
+      get { return fNJJNAOCOIICase_ == FNJJNAOCOIIOneofCase.EMENFKABDEK ? (global::March7thHoney.Proto.HOIKCKDHPGC) fNJJNAOCOII_ : null; }
       set {
         fNJJNAOCOII_ = value;
         fNJJNAOCOIICase_ = value == null ? FNJJNAOCOIIOneofCase.None : FNJJNAOCOIIOneofCase.EMENFKABDEK;
@@ -257,7 +257,7 @@ namespace CastoriceHoney.Server.Proto {
           break;
         case FNJJNAOCOIIOneofCase.EMENFKABDEK:
           if (EMENFKABDEK == null) {
-            EMENFKABDEK = new global::CastoriceHoney.Server.Proto.HOIKCKDHPGC();
+            EMENFKABDEK = new global::March7thHoney.Proto.HOIKCKDHPGC();
           }
           EMENFKABDEK.MergeFrom(other.EMENFKABDEK);
           break;
@@ -287,7 +287,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 98: {
-            global::CastoriceHoney.Server.Proto.HOIKCKDHPGC subBuilder = new global::CastoriceHoney.Server.Proto.HOIKCKDHPGC();
+            global::March7thHoney.Proto.HOIKCKDHPGC subBuilder = new global::March7thHoney.Proto.HOIKCKDHPGC();
             if (fNJJNAOCOIICase_ == FNJJNAOCOIIOneofCase.EMENFKABDEK) {
               subBuilder.MergeFrom(EMENFKABDEK);
             }
@@ -319,7 +319,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 98: {
-            global::CastoriceHoney.Server.Proto.HOIKCKDHPGC subBuilder = new global::CastoriceHoney.Server.Proto.HOIKCKDHPGC();
+            global::March7thHoney.Proto.HOIKCKDHPGC subBuilder = new global::March7thHoney.Proto.HOIKCKDHPGC();
             if (fNJJNAOCOIICase_ == FNJJNAOCOIIOneofCase.EMENFKABDEK) {
               subBuilder.MergeFrom(EMENFKABDEK);
             }

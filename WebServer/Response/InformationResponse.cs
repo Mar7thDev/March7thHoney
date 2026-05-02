@@ -1,9 +1,9 @@
-﻿using System.Text.Json.Serialization;
-using CastoriceHoney.Server.Enums;
-using CastoriceHoney.Server.WebServer.Server;
+using System.Text.Json.Serialization;
+using March7thHoney.Enums;
+using March7thHoney.WebServer.Server;
 using Newtonsoft.Json.Converters;
 
-namespace CastoriceHoney.Server.WebServer.Response;
+namespace March7thHoney.WebServer.Response;
 
 public class ServerInformationResponse(int code, string message, ServerInformationData? data = null)
     : BaseResponse<ServerInformationData>(code, message, data)

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from MonopolyGetRaffleTicketScRsp.proto</summary>
   public static partial class MonopolyGetRaffleTicketScRspReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "Sk1BSUwYDSADKAsyDC5QTkRPS09MRVBMQ0IzChNlbXUubHVuYXJjb3JlLnBy",
             "b3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.PNDOKOLEPLCReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.PNDOKOLEPLCReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.MonopolyGetRaffleTicketScRsp), global::CastoriceHoney.Server.Proto.MonopolyGetRaffleTicketScRsp.Parser, new[]{ "Retcode", "MBMICCJEBJB", "ELNFNMJMAIL" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MonopolyGetRaffleTicketScRsp), global::March7thHoney.Proto.MonopolyGetRaffleTicketScRsp.Parser, new[]{ "Retcode", "MBMICCJEBJB", "ELNFNMJMAIL" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.MonopolyGetRaffleTicketScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.MonopolyGetRaffleTicketScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -112,12 +112,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "ELNFNMJMAIL" field.</summary>
     public const int ELNFNMJMAILFieldNumber = 13;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.PNDOKOLEPLC> _repeated_eLNFNMJMAIL_codec
-        = pb::FieldCodec.ForMessage(106, global::CastoriceHoney.Server.Proto.PNDOKOLEPLC.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.PNDOKOLEPLC> eLNFNMJMAIL_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.PNDOKOLEPLC>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.PNDOKOLEPLC> _repeated_eLNFNMJMAIL_codec
+        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.PNDOKOLEPLC.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.PNDOKOLEPLC> eLNFNMJMAIL_ = new pbc::RepeatedField<global::March7thHoney.Proto.PNDOKOLEPLC>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.PNDOKOLEPLC> ELNFNMJMAIL {
+    public pbc::RepeatedField<global::March7thHoney.Proto.PNDOKOLEPLC> ELNFNMJMAIL {
       get { return eLNFNMJMAIL_; }
     }
 

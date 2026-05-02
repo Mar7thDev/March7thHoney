@@ -1,11 +1,11 @@
-using CastoriceHoney.Server.Command;
-using CastoriceHoney.Server.Database;
-using CastoriceHoney.Server.Database.Account;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Chat;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Command;
+using March7thHoney.Database;
+using March7thHoney.Database.Account;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Server.Packet.Send.Chat;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.GameServer.Command;
+namespace March7thHoney.GameServer.Command;
 
 public class PlayerCommandSender(PlayerInstance player) : ICommandSender
 {

@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using static CastoriceHoney.Server.WebServer.Handler.FingerprintResJson;
+using Microsoft.AspNetCore.Mvc;
+using static March7thHoney.WebServer.Handler.FingerprintResJson;
 
-namespace CastoriceHoney.Server.WebServer.Handler;
+namespace March7thHoney.WebServer.Handler;
 
 public class FingerprintHandler
 {

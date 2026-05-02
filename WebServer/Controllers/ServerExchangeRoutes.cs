@@ -1,9 +1,9 @@
-﻿using CastoriceHoney.Server.Database;
-using CastoriceHoney.Server.Database.Account;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Database;
+using March7thHoney.Database.Account;
+using March7thHoney.Util;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CastoriceHoney.Server.WebServer.Controllers;
+namespace March7thHoney.WebServer.Controllers;
 
 [ApiController]
 [Route("/")]

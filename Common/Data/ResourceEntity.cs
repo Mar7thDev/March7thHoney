@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Data;
+namespace March7thHoney.Data;
 
 [AttributeUsage(AttributeTargets.Class, Inherited = false)]
 public class ResourceEntity : Attribute

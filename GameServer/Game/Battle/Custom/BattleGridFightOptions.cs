@@ -1,15 +1,15 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Database.Avatar;
-using CastoriceHoney.Server.Database.Lineup;
-using CastoriceHoney.Server.Enums.GridFight;
-using CastoriceHoney.Server.GameServer.Game.GridFight;
-using CastoriceHoney.Server.GameServer.Game.GridFight.Component;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
-using LineupInfo = CastoriceHoney.Server.Database.Lineup.LineupInfo;
+using March7thHoney.Data;
+using March7thHoney.Database.Avatar;
+using March7thHoney.Database.Lineup;
+using March7thHoney.Enums.GridFight;
+using March7thHoney.GameServer.Game.GridFight;
+using March7thHoney.GameServer.Game.GridFight.Component;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.Proto;
+using March7thHoney.Util;
+using LineupInfo = March7thHoney.Database.Lineup.LineupInfo;
 
-namespace CastoriceHoney.Server.GameServer.Game.Battle.Custom;
+namespace March7thHoney.GameServer.Game.Battle.Custom;
 
 public class BattleGridFightOptions(GridFightGameSectionInfo curSection, GridFightInstance inst, PlayerInstance player)
 {

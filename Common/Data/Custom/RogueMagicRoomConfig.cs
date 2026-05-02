@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.Enums.Rogue;
-using CastoriceHoney.Server.Enums.RogueMagic;
+using March7thHoney.Enums.Rogue;
+using March7thHoney.Enums.RogueMagic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace CastoriceHoney.Server.Data.Custom;
+namespace March7thHoney.Data.Custom;
 
 public class RogueMagicRoomConfig
 {

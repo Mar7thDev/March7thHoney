@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GridFightLayerInfo.proto</summary>
   public static partial class GridFightLayerInfoReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "dXRlSW5mb0IzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9u",
             "ZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GridFightRouteInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridFightRouteInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GridFightLayerInfo), global::CastoriceHoney.Server.Proto.GridFightLayerInfo.Parser, new[]{ "RouteIsPending", "RouteInfo" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightLayerInfo), global::March7thHoney.Proto.GridFightLayerInfo.Parser, new[]{ "RouteIsPending", "RouteInfo" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GridFightLayerInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GridFightLayerInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -99,10 +99,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "route_info" field.</summary>
     public const int RouteInfoFieldNumber = 1965;
-    private global::CastoriceHoney.Server.Proto.GridFightRouteInfo routeInfo_;
+    private global::March7thHoney.Proto.GridFightRouteInfo routeInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightRouteInfo RouteInfo {
+    public global::March7thHoney.Proto.GridFightRouteInfo RouteInfo {
       get { return routeInfo_; }
       set {
         routeInfo_ = value;
@@ -212,7 +212,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.routeInfo_ != null) {
         if (routeInfo_ == null) {
-          RouteInfo = new global::CastoriceHoney.Server.Proto.GridFightRouteInfo();
+          RouteInfo = new global::March7thHoney.Proto.GridFightRouteInfo();
         }
         RouteInfo.MergeFrom(other.RouteInfo);
       }
@@ -241,7 +241,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 15722: {
             if (routeInfo_ == null) {
-              RouteInfo = new global::CastoriceHoney.Server.Proto.GridFightRouteInfo();
+              RouteInfo = new global::March7thHoney.Proto.GridFightRouteInfo();
             }
             input.ReadMessage(RouteInfo);
             break;
@@ -271,7 +271,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 15722: {
             if (routeInfo_ == null) {
-              RouteInfo = new global::CastoriceHoney.Server.Proto.GridFightRouteInfo();
+              RouteInfo = new global::March7thHoney.Proto.GridFightRouteInfo();
             }
             input.ReadMessage(RouteInfo);
             break;

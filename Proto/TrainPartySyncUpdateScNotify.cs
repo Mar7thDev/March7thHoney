@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from TrainPartySyncUpdateScNotify.proto</summary>
   public static partial class TrainPartySyncUpdateScNotifyReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "bXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlBy",
             "b3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.DCIEAIDBBCIReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.DCIEAIDBBCIReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.TrainPartySyncUpdateScNotify), global::CastoriceHoney.Server.Proto.TrainPartySyncUpdateScNotify.Parser, new[]{ "UpdateDynamicList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TrainPartySyncUpdateScNotify), global::March7thHoney.Proto.TrainPartySyncUpdateScNotify.Parser, new[]{ "UpdateDynamicList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.TrainPartySyncUpdateScNotifyReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.TrainPartySyncUpdateScNotifyReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -86,12 +86,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "update_dynamic_list" field.</summary>
     public const int UpdateDynamicListFieldNumber = 11;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.DCIEAIDBBCI> _repeated_updateDynamicList_codec
-        = pb::FieldCodec.ForMessage(90, global::CastoriceHoney.Server.Proto.DCIEAIDBBCI.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.DCIEAIDBBCI> updateDynamicList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.DCIEAIDBBCI>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.DCIEAIDBBCI> _repeated_updateDynamicList_codec
+        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.DCIEAIDBBCI.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.DCIEAIDBBCI> updateDynamicList_ = new pbc::RepeatedField<global::March7thHoney.Proto.DCIEAIDBBCI>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.DCIEAIDBBCI> UpdateDynamicList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.DCIEAIDBBCI> UpdateDynamicList {
       get { return updateDynamicList_; }
     }
 
