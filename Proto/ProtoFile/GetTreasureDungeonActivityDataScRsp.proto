@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "DOACEKEEKLJ.proto";
+
+message GetTreasureDungeonActivityDataScRsp {
+    uint32 retcode = 3;
+    repeated DOACEKEEKLJ BPCKFOJKCBK = 12;
+}

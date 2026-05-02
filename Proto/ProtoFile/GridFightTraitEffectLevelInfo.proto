@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "GridFightDropInfo.proto";
+
+message GridFightTraitEffectLevelInfo {
+    uint32 trait_effect_level_exp = 1;
+    map<uint32, GridFightDropInfo> trait_effect_level_reward = 2;
+}

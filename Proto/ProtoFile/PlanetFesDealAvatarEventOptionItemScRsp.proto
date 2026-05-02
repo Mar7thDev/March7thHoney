@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "HLLCDBLCIPK.proto";
+import "JIPACDEJKJC.proto";
+
+message PlanetFesDealAvatarEventOptionItemScRsp {
+    bool ICOGAHFFCLD = 1;
+    uint32 AAIJKIBONOO = 7;
+    HLLCDBLCIPK reward = 9;
+    uint32 EEMNDGIPBIC = 10;
+    JIPACDEJKJC DIHECIIKELE = 12;
+    uint32 retcode = 13;
+}

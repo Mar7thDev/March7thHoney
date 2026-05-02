@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ItemList.proto";
+
+message MonopolyLikeScRsp {
+    ItemList reward_list = 4;
+    uint32 teleport_id = 11;
+    uint32 retcode = 13;
+}

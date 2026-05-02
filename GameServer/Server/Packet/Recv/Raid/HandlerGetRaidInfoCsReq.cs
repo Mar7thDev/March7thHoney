@@ -1,0 +1,13 @@
+using CastoriceHoney.Server.GameServer.Server.Packet.Send.Raid;
+using CastoriceHoney.Server.Kcp;
+
+namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Raid;
+
+[Opcode(CmdIds.GetRaidInfoCsReq)]
+public class HandlerGetRaidInfoCsReq : Handler
+{
+    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    {
+        await connection.SendPacket(new PacketGetRaidInfoScRsp(connection.Player!));
+    }
+}

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message MarkChatEmojiScRsp {
+    uint32 retcode = 6;
+    uint32 extra_id = 9;
+    bool is_remove_id = 10;
+}

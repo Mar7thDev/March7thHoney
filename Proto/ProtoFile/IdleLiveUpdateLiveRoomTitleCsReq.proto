@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message IdleLiveUpdateLiveRoomTitleCsReq {
+    oneof NLPPPCHGGPF {
+        string title = 2;
+        uint32 FCOKOGNOGCA = 8;
+    }
+}

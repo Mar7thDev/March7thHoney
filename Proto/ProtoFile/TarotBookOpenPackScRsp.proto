@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message TarotBookOpenPackScRsp {
+    uint32 retcode = 2;
+    uint32 energy_info = 5;
+    map<uint32, uint32> EKJFDJCHKLM = 6;
+    uint32 FBOFMOPCMCD = 8;
+    map<uint32, uint32> FCINHMNNOGK = 13;
+    uint32 JGKCBGBGMOD = 14;
+}

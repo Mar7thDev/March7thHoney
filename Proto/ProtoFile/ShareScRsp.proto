@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ItemList.proto";
+import "LHMHFNBOAGC.proto";
+
+message ShareScRsp {
+    LHMHFNBOAGC CCDAMJKBCGC = 3;
+    ItemList reward = 13;
+    uint32 retcode = 14;
+}

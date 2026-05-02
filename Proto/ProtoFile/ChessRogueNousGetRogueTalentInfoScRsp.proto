@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "MCACDFHCPIE.proto";
+
+message ChessRogueNousGetRogueTalentInfoScRsp {
+    uint32 MPGDJOGHKBH = 1;
+    uint32 retcode = 2;
+    MCACDFHCPIE talent_info = 9;
+}

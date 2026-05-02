@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum CmdRndOptionType {
+    EDOOKEJHPAD_PCPDHELPKEM = 0;
+    CmdDailyFirstMeetPamCsReq = 3494;
+    CmdGetRndOptionCsReq = 3491;
+    CmdEEAMBMDGIHF = 3410;
+    CmdCBEFFNAFPEL = 3495;
+}

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "StatType.proto";
+
+message UpgradeAreaStatCsReq {
+    uint32 level = 7;
+    StatType DGFGNMJALGJ = 12;
+    uint32 area_id = 14;
+}

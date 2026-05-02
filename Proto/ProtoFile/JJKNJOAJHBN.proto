@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "EOOEGPCPHKP.proto";
+
+message JJKNJOAJHBN {
+    uint32 LOIDOGEENOB = 6;
+    repeated EOOEGPCPHKP rogue_current_game_info = 9;
+}

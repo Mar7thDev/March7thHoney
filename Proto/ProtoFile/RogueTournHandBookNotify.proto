@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ALABNDBMKBI.proto";
+import "CGCPHIPOBJF.proto";
+import "EHNENCJAJPC.proto";
+import "IAJOKPOPGCJ.proto";
+import "KGOAODDFPBP.proto";
+import "LCALDPAIJDO.proto";
+
+message RogueTournHandBookNotify {
+    oneof BPIHFAJCLOC {
+        ALABNDBMKBI BBFOLFIINCM = 2;
+        CGCPHIPOBJF PJHGGHAPKCK = 4;
+        EHNENCJAJPC HMLPFKAPFJB = 7;
+        LCALDPAIJDO BAAANBEIPBG = 8;
+        IAJOKPOPGCJ ABIJBGENKHA = 9;
+        KGOAODDFPBP GLNJOAHBBKK = 13;
+    }
+}

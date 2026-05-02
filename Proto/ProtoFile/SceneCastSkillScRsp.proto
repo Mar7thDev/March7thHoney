@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "HitMonsterBattleInfo.proto";
+import "SceneBattleInfo.proto";
+
+message SceneCastSkillScRsp {
+    SceneBattleInfo battle_info = 1;
+    repeated HitMonsterBattleInfo monster_battle_info = 2;
+    uint32 cast_entity_id = 4;
+    uint32 retcode = 6;
+}

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ItemList.proto";
+
+message FinishFirstTalkByPerformanceNpcScRsp {
+    uint32 performance_id = 1;
+    uint32 retcode = 4;
+    ItemList reward = 10;
+}

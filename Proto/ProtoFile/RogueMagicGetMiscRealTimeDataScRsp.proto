@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "HHAANBNCLHI.proto";
+import "IGJJFOKAHAP.proto";
+
+message RogueMagicGetMiscRealTimeDataScRsp {
+    IGJJFOKAHAP NOCNEOMKFIO = 3;
+    uint32 retcode = 5;
+    HHAANBNCLHI KKLHGCJKPLJ = 9;
+}

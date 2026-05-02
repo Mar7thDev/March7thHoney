@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "GODHDEIPDJL.proto";
+
+message GetSwitchHandDataScRsp {
+    uint32 FPBJIFLGIMK = 4;
+    repeated GODHDEIPDJL LFNIPECKNDH = 8;
+    uint32 AINLIAIGOJF = 13;
+    uint32 retcode = 15;
+}

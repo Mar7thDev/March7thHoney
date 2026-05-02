@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "PBOFIBLBPGJ.proto";
+
+message FightFestUpdateChallengeRecordNotify {
+    uint32 HEILKBJCAGB = 3;
+    PBOFIBLBPGJ LJMLNINDHEF = 4;
+    PBOFIBLBPGJ rank = 5;
+    uint32 challenge_id = 6;
+    uint32 turn_left = 12;
+}

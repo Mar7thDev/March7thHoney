@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message FantasticStoryActivityBattleEndScNotify {
+    uint32 CEIMNDJFDJD = 2;
+    uint32 JHGANJGBALI = 3;
+    uint32 battle_id = 7;
+}

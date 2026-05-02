@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "PKJGGAPLONC.proto";
+
+message CLFIIPBIBBG {
+    repeated uint32 finished_target_list = 9;
+    repeated PKJGGAPLONC avatar_list = 15;
+}

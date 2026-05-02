@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "FNJJCIGJIKC.proto";
+
+message StartRaidScRsp {
+    uint32 retcode = 10;
+    FNJJCIGJIKC scene = 14;
+}

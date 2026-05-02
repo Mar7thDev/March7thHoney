@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ItemList.proto";
+
+message TrainVisitorBehaviorFinishScRsp {
+    ItemList reward = 8;
+    uint32 retcode = 9;
+    uint32 visitor_id = 15;
+}

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum RogueCommonBuffSelectSourceType {
+    MAFPONIDMLD_PCPDHELPKEM = 0;
+    MAFPONIDMLD_HLIDGDLNFHM = 1;
+    MAFPONIDMLD_EGFBGJGIEKM = 2;
+    MAFPONIDMLD_NPDCOJCAHPE = 3;
+    MAFPONIDMLD_GALGFIOMOIO = 4;
+}

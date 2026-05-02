@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum IPFAGFAPCCD {
+    IPFAGFAPCCD_PCPDHELPKEM = 0;
+    IPFAGFAPCCD_MLEMOAKKJJH = 1;
+    IPFAGFAPCCD_BAOGAMKCLMO = 2;
+}

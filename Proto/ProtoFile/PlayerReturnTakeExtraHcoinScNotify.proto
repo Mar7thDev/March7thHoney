@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message PlayerReturnTakeExtraHcoinScNotify {
+    uint32 HBPNBAPCHNJ = 1;
+    uint32 ADDCPAGHJND = 10;
+    bool BDFMCPBINKE = 12;
+}

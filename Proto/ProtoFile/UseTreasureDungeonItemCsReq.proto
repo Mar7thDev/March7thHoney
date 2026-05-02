@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message UseTreasureDungeonItemCsReq {
+    uint32 CJOPNFDBJHD = 5;
+    uint32 item_id = 6;
+    uint32 target_side = 14;
+}

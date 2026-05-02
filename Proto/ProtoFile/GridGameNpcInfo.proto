@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message GridGameNpcInfo {
+    repeated uint32 update_equips_component = 2;
+    uint32 unique_id = 8;
+    uint32 id = 10;
+    uint32 pos = 13;
+}

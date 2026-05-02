@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message PunkLordDataChangeNotify {
+    uint32 CLMONEEIEJE = 4;
+    uint32 EJFEBCKDNNH = 7;
+    uint32 DBAKNBHLNJK = 12;
+}

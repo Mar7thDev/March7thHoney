@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message QuickStartFarmElementCsReq {
+    uint32 Count = 2;
+    uint32 world_level = 9;
+    uint32 FarmElementId = 15;
+}

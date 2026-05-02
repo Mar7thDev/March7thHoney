@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "CJLJDKLCNDA.proto";
+import "SceneBattleInfo.proto";
+
+message EvolveBuildStartStageScRsp {
+    CJLJDKLCNDA MODDIBHCPPD = 5;
+    SceneBattleInfo DDHGCAFFFOP = 6;
+    uint32 retcode = 7;
+}

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message MusicRhythmSaveSongConfigDataScRsp {
+    uint32 DMKIGOLBGHE = 3;
+    uint32 retcode = 12;
+    uint32 HNEDAOLNAGO = 13;
+}

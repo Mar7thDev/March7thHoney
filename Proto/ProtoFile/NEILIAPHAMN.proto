@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "RogueAreaStatus.proto";
+import "RogueStatus.proto";
+
+message NEILIAPHAMN {
+    RogueAreaStatus ECJPEBDJKKE = 3;
+    uint32 map_id = 4;
+    RogueStatus FIMAMEDNNIL = 5;
+    uint32 area_id = 7;
+    uint32 PGINLOFKCMD = 12;
+    bool CNDKAPOIEOJ = 13;
+}

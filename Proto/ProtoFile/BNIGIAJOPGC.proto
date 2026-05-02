@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "MovieRacingType.proto";
+
+message BNIGIAJOPGC {
+    uint32 CEEGGCPPAFJ = 1;
+    uint32 ILHDBHMAAMO = 6;
+    uint32 level = 13;
+    MovieRacingType type = 14;
+}

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "GridFightStaticGameInfo.proto";
+import "MIGEAHDEBOE.proto";
+
+message GridFightSystemInfo {
+    GridFightStaticGameInfo EGLCKGKECAJ = 8;
+    MIGEAHDEBOE FCKKGFFLDFA = 13;
+}

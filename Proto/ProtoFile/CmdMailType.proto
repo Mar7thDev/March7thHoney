@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum CmdMailType {
+    DHLEHKEIMMN_PCPDHELPKEM = 0;
+    CmdGetMailCsReq = 891;
+    CmdMarkReadMailCsReq = 894;
+    CmdTakeMailAttachmentScRsp = 898;
+    CmdTakeMailAttachmentCsReq = 809;
+    CmdNewMailScNotify = 863;
+    CmdDelMailCsReq = 814;
+    CmdGetMailScRsp = 810;
+    CmdDelMailScRsp = 818;
+    CmdLOHGBNAIAIL = 895;
+}

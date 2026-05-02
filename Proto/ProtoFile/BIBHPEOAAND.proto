@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message BIBHPEOAAND {
+    repeated uint32 ODMGIDMJHOL = 7;
+}

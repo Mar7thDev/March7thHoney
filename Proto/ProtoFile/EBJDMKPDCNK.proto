@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "JAFMFGJLGGA.proto";
+
+message EBJDMKPDCNK {
+    repeated JAFMFGJLGGA lineup_list = 1;
+}

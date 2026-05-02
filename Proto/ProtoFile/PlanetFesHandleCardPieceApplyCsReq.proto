@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message PlanetFesHandleCardPieceApplyCsReq {
+    bool ILCOOFLFGFH = 4;
+    uint32 EPGIKGCADHM = 7;
+    uint32 GIIIGJFMHPO = 11;
+    repeated uint32 MGAFDDCGJPM = 13;
+}

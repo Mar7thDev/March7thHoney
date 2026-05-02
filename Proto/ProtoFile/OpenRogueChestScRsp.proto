@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ItemList.proto";
+import "NNOIJJNCHJB.proto";
+
+message OpenRogueChestScRsp {
+    uint32 retcode = 1;
+    ItemList reward = 2;
+    ItemList drop_data = 7;
+    NNOIJJNCHJB HICNFJDGGGL = 12;
+}

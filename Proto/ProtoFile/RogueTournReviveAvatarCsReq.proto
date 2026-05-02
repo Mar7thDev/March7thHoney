@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "HDDBJIKNEPF.proto";
+
+message RogueTournReviveAvatarCsReq {
+    uint32 interacted_prop_entity_id = 2;
+    repeated HDDBJIKNEPF avatar_list = 11;
+}

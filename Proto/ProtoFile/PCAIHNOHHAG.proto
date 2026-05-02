@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "JAMLHOHBIGB.proto";
+
+message PCAIHNOHHAG {
+    bool DLFPDEHDNGK = 2;
+    JAMLHOHBIGB ECBCOIDFPON = 6;
+    uint32 retcode = 9;
+    uint32 cur_index = 14;
+}

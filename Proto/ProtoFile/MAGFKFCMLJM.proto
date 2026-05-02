@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "BNIBEBILFLF.proto";
+import "DOBIOOHLGAA.proto";
+
+message MAGFKFCMLJM {
+    repeated BNIBEBILFLF HBKJKEEIHKE = 5;
+    repeated DOBIOOHLGAA DMMNCNGGPHL = 6;
+    uint32 FCLIKOAJCFN = 15;
+}

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum PunkLordShareType {
+    FOODOPDNDLK_PCPDHELPKEM = 0;
+    FOODOPDNDLK_DKCKDCLCPEL = 1;
+    FOODOPDNDLK_PNMCJHFNBOO = 2;
+}

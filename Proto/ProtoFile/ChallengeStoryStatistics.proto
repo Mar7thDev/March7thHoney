@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "PLJJECPCMJD.proto";
+
+message ChallengeStoryStatistics {
+    PLJJECPCMJD NCEGEKNLJCE = 5;
+    uint32 record_id = 15;
+}

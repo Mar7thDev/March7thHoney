@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "HLLCDBLCIPK.proto";
+
+message PlanetFesAvatarLevelUpScRsp {
+    uint32 IHLLMLLNIFN = 1;
+    HLLCDBLCIPK reward = 3;
+    uint32 retcode = 5;
+    uint32 ODADJILOEKO = 9;
+    uint32 avatar_id = 15;
+}

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum CmdActiveType {
+    DOILPDPENLJ_PCPDHELPKEM = 0;
+    CmdGetActiveActivityDataScRsp = 9570;
+    CmdActiveActivityDataChangeScNotify = 9565;
+    CmdTakeActiveActivityRewardCsReq = 9552;
+    CmdGetActivityActiveDataCsReq = 9551;
+    CmdTakeActiveActivityRewardScRsp = 9560;
+}

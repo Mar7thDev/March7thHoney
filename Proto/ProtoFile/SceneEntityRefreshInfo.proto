@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "SceneEntityInfo.proto";
+
+message SceneEntityRefreshInfo {
+    oneof refresh_type {
+        uint32 HBIEDAJFELO = 4;
+        uint32 delete_entity = 12;
+        SceneEntityInfo add_entity = 14;
+    }
+}

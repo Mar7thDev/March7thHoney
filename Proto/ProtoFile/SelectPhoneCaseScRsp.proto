@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message SelectPhoneCaseScRsp {
+    uint32 retcode = 3;
+    uint32 GMHOEABHKIG = 4;
+    uint32 cur_phone_case = 10;
+}

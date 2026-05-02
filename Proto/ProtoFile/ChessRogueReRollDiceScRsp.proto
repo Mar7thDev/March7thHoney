@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "DFAOIALEBOH.proto";
+
+message ChessRogueReRollDiceScRsp {
+    uint32 retcode = 10;
+    DFAOIALEBOH PJABKDBFPIM = 11;
+}

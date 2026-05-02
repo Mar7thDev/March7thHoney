@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message JCPPEBGEKHC {
+    uint32 DOAOPBBIGPO = 1;
+    uint32 level = 2;
+    double total_damage = 3;
+}

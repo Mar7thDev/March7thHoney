@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "APCNLFANPEP.proto";
+import "CMHAMBKCJBK.proto";
+
+message DFJGPODAKAM {
+    uint32 ILEMMKPGPND = 1;
+    repeated uint32 NKGIGKEBODG = 2;
+    repeated APCNLFANPEP grid_fight_equipment_list = 3;
+    map<string, int32> OPLJDFOOMGF = 4;
+    repeated CMHAMBKCJBK FDJMJOKGOMF = 5;
+}

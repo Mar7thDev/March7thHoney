@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "FriendSimpleInfo.proto";
+
+message HandleFriendScRsp {
+    uint32 retcode = 2;
+    bool is_accept = 3;
+    uint32 uid = 12;
+    FriendSimpleInfo friend_info = 14;
+}

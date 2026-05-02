@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "NNFJAOJKKFO.proto";
+import "TrialActivityInfo.proto";
+
+message TrialActivityDataChangeScNotify {
+    repeated NNFJAOJKKFO MANGLIPKMDI = 3;
+    TrialActivityInfo trial_activity_info = 10;
+    repeated uint32 BLDLBKLAIAL = 14;
+}

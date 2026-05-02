@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "NHPKMMDOHIH.proto";
+
+message CCBKGJGNDCL {
+    repeated NHPKMMDOHIH FGKAOMIJJBN = 3;
+    uint32 cost_time = 8;
+    uint32 map_id = 12;
+}

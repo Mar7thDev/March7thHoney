@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "DPFOHPLLOIJ.proto";
+import "FMFMGICMPCA.proto";
+import "MOEOOOMLGCG.proto";
+
+message SyncRogueCommonActionResultScNotify {
+    uint32 LOIDOGEENOB = 7;
+    repeated DPFOHPLLOIJ BEAEJDOGDBG = 10;
+    repeated MOEOOOMLGCG ANIADNFEMAH = 11;
+    FMFMGICMPCA HCPAHPCOEKK = 14;
+}

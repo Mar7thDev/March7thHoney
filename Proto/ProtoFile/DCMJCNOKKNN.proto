@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "AlleyEventState.proto";
+
+message DCMJCNOKKNN {
+    uint32 event_id = 7;
+    AlleyEventState state = 12;
+    uint32 EIAAKEGPKME = 13;
+}

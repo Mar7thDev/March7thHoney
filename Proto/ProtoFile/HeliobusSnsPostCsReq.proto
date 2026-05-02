@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message HeliobusSnsPostCsReq {
+    uint32 ILEMMKPGPND = 3;
+    uint32 CDKEDFPEFIJ = 8;
+    uint32 HFOKNODFIJI = 14;
+}

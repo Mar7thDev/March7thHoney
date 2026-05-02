@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "LFGMADFAKHK.proto";
+
+message ADPDKFBHJPN {
+    uint32 DGFNOAHLCMK = 7;
+    LFGMADFAKHK status = 8;
+    uint32 progress = 12;
+}

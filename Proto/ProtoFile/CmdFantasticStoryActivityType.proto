@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum CmdFantasticStoryActivityType {
+    PGEKJIEDHHD_PCPDHELPKEM = 0;
+    CmdFantasticStoryActivityBattleEndScNotify = 4918;
+    CmdEnterActivityFantasticStoryCsReq = 4995;
+    CmdNDKKAGKCFGH = 4994;
+    CmdEnterFantasticStoryActivityStageScRsp = 4914;
+    CmdGetFantasticStoryActivityDataScRsp = 4910;
+    CmdGetFantasticStoryActivityDataCsReq = 4991;
+}

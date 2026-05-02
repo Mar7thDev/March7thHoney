@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum BFDGAGJDODA {
+    BFDGAGJDODA_PCPDHELPKEM = 0;
+    BFDGAGJDODA_IAJIDAMBBJB = 1;
+    BFDGAGJDODA_PEDDMFMOEIC = 2;
+    BFDGAGJDODA_MIAGCABFAKB = 3;
+}

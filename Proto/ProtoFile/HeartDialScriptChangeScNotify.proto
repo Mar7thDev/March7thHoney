@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "HeartDialDialogueInfo.proto";
+import "HeartDialScriptInfo.proto";
+import "HeartDialUnlockStatus.proto";
+import "PICILIIFKBE.proto";
+
+message HeartDialScriptChangeScNotify {
+    repeated HeartDialDialogueInfo changed_dialogue_info_list = 2;
+    repeated HeartDialScriptInfo changed_script_info_list = 5;
+    HeartDialUnlockStatus unlock_status = 10;
+    repeated PICILIIFKBE OOGJAKIPFDJ = 11;
+}

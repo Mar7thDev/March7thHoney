@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "DisplayAvatarDetailInfo.proto";
+import "PlayerSimpleInfo.proto";
+
+message PlayerAssistInfo {
+    DisplayAvatarDetailInfo assist_avatar = 11;
+    PlayerSimpleInfo player_info = 15;
+}

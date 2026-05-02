@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "JIBMJCBNDKK.proto";
+
+message SelectRogueCommonDialogueOptionScRsp {
+    bool MFHLBHFIAGO = 2;
+    uint32 AMADFJNHMFF = 5;
+    uint32 HOHANPJNANA = 7;
+    repeated uint32 DLEGCNJINIE = 10;
+    JIBMJCBNDKK LFPLCDMNNAP = 12;
+    uint32 retcode = 15;
+}

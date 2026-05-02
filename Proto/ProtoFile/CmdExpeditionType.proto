@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum CmdExpeditionType {
+    FJKMDGNDILO_PCPDHELPKEM = 0;
+    CmdAcceptMultipleExpeditionCsReq = 2503;
+    CmdAcceptMultipleExpeditionScRsp = 2550;
+    CmdTakeMultipleExpeditionRewardCsReq = 2516;
+    CmdGetExpeditionDataCsReq = 2513;
+    CmdTakeMultipleExpeditionRewardScRsp = 2531;
+    CmdGAJMDNEKPOP = 2547;
+    CmdGetExpeditionDataScRsp = 2507;
+}

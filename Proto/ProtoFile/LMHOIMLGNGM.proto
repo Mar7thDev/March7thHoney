@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "DifficultyAdjustmentType.proto";
+import "NHJLJBJJKFJ.proto";
+
+message LMHOIMLGNGM {
+    NHJLJBJJKFJ ALFHNEHOBJA = 5;
+    uint32 id = 8;
+    DifficultyAdjustmentType MJLHLLMJHGJ = 15;
+}

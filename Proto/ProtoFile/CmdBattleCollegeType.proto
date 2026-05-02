@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum CmdBattleCollegeType {
+    BKHGOOJKNGI_PCPDHELPKEM = 0;
+    CmdGetBattleCollegeDataCsReq = 5791;
+    CmdStartBattleCollegeScRsp = 5714;
+    CmdGetBattleCollegeDataScRsp = 5710;
+    CmdSyncBattleCollegeDataChangeScNotify = 5794;
+    CmdStartBattleCollegeCsReq = 5795;
+}

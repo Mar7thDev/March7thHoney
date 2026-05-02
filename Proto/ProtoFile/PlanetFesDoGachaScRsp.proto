@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "EIKLOCHPNBM.proto";
+import "FBBMDFDOEEF.proto";
+import "FFBDADKFPBF.proto";
+
+message PlanetFesDoGachaScRsp {
+    uint32 retcode = 4;
+    uint32 gacha_id = 11;
+    repeated FBBMDFDOEEF JIGIBLLFPKF = 14;
+    oneof FNJJNAOCOII {
+        FFBDADKFPBF MAHHENHIHDK = 1;
+        EIKLOCHPNBM BBMGOFHLEAK = 9;
+    }
+}

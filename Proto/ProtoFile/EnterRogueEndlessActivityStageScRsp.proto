@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "DGDHBAGEOOI.proto";
+import "SceneBattleInfo.proto";
+
+message EnterRogueEndlessActivityStageScRsp {
+    SceneBattleInfo battle_info = 3;
+    uint32 retcode = 11;
+    DGDHBAGEOOI BNOCEPKMPGK = 12;
+}

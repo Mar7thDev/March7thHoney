@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message SpBarInfo {
+    uint32 cur_sp = 1;
+    uint32 max_sp = 2;
+}

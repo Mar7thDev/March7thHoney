@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "LineupInfo.proto";
+import "MADEENABOKE.proto";
+import "SceneInfo.proto";
+
+message BFEIPELFCDF {
+    SceneInfo scene = 2;
+    LineupInfo lineup = 8;
+    MADEENABOKE ENPAICNLCMK = 14;
+}

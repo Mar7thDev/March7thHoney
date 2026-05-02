@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum RogueStatus {
+    JBFMHGKNEGL_PCPDHELPKEM = 0;
+    JBFMHGKNEGL_NMBCDILDGNK = 1;
+    JBFMHGKNEGL_OPNADFKBGNN = 2;
+    JBFMHGKNEGL_OEKFLGEFGPP = 3;
+    JBFMHGKNEGL_KLHDCOPPLNG = 4;
+}

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "PBOFIBLBPGJ.proto";
+
+message NPGGDOLMNIE {
+    uint32 JANDBBGLJEO = 1;
+    uint32 HEILKBJCAGB = 2;
+    uint32 challenge_id = 13;
+    PBOFIBLBPGJ NHICMEMJFNI = 14;
+}

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "MotionInfo.proto";
+import "RotateMapInfo.proto";
+
+message ResetMapRotationRegionCsReq {
+    MotionInfo motion = 1;
+    RotateMapInfo AMMJECHPGPE = 12;
+}

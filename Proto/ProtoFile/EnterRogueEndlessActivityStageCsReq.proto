@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "FCIMCHDEPPJ.proto";
+
+message EnterRogueEndlessActivityStageCsReq {
+    uint32 PJMBJBMBKCE = 3;
+    repeated FCIMCHDEPPJ avatar_list = 15;
+}

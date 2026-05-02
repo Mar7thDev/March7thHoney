@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ABIPCNKGFNI.proto";
+import "ItemList.proto";
+
+message TakeRechargeGiftRewardScRsp {
+    uint32 retcode = 7;
+    ItemList reward = 11;
+    ABIPCNKGFNI ECDFDDEOOIO = 15;
+}

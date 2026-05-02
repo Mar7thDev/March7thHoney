@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "PEEDNOBMBNN.proto";
+
+message OLDMKCIINGH {
+    uint32 retcode = 6;
+    uint32 MOHHIJGHPNB = 8;
+    PEEDNOBMBNN JOGFDBPAMDP = 11;
+}

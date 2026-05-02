@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "GameplayCounterUpdateReason.proto";
+
+message FBJDFGMMMFP {
+    GameplayCounterUpdateReason reason = 6;
+    uint32 NNBKPDKPIGI = 9;
+    uint32 IAPFBGEDGAM = 11;
+}

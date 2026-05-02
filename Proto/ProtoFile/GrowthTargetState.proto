@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum GrowthTargetState {
+    HDJKGMLAFNP_AABJFIKBHJK = 0;
+    HDJKGMLAFNP_NDNKDFHEHBC = 1;
+    HDJKGMLAFNP_IPBFAACIGHN = 2;
+    HDJKGMLAFNP_OONJKCDGCKN = 3;
+    HDJKGMLAFNP_IEAJEFALFLG = 4;
+    HDJKGMLAFNP_NEGGJOGHMAK = 5;
+}

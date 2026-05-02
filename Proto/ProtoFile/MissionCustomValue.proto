@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message MissionCustomValue {
+    uint32 custom_value = 4;
+    string DLCLDIAOIMK = 14;
+    uint32 index = 15;
+}

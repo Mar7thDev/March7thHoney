@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ItemList.proto";
+
+message SubmitEmotionItemCsReq {
+    uint32 AILOMBIMICB = 12;
+    ItemList item_list = 14;
+    uint32 script_id = 15;
+}

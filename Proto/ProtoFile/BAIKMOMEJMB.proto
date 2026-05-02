@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ILLBNKFBNBP.proto";
+import "ItemCostData.proto";
+
+message BAIKMOMEJMB {
+    ILLBNKFBNBP EIENKJFFFJG = 9;
+    ItemCostData cost_data = 11;
+    bool KLNHLEJKDML = 13;
+    ItemCostData EKKIAHNMDHM = 14;
+}

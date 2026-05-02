@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "PNDOKOLEPLC.proto";
+
+message MonopolyGetRaffleTicketScRsp {
+    uint32 retcode = 5;
+    uint32 MBMICCJEBJB = 10;
+    repeated PNDOKOLEPLC ELNFNMJMAIL = 13;
+}

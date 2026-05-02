@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "GridFightLockReason.proto";
+import "GridFightLockType.proto";
+
+message GridFightLockInfo {
+    GridFightLockReason lock_reason = 7;
+    GridFightLockType lock_type = 10;
+}

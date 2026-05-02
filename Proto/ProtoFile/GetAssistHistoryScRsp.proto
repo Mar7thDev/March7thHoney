@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message GetAssistHistoryScRsp {
+    repeated uint32 PLPDAACEKJB = 1;
+    uint32 retcode = 7;
+    uint32 OKPBNIIDCEJ = 9;
+    uint32 KLEMGGNGEHG = 13;
+    uint32 KJIDHDCPCHH = 15;
+}

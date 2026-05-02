@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ChallengeLineupList.proto";
+
+message PLJJECPCMJD {
+    repeated ChallengeLineupList lineup_list = 1;
+    uint32 buff_one = 2;
+    uint32 score_id = 7;
+    uint32 ABJGNBJMJJG = 9;
+    uint32 level = 10;
+    uint32 buff_two = 13;
+}

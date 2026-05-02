@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum HeartDialUnlockStatus {
+    HEART_DIAL_UNLOCK_STATUS_LOCK = 0;
+    HEART_DIAL_UNLOCK_STATUS_UNLOCK_SINGLE = 1;
+    HEART_DIAL_UNLOCK_STATUS_UNLOCK_ALL = 2;
+}

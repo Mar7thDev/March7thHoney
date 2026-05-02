@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "CNHNGLEEBKP.proto";
+
+message GetRogueAeonInfoScRsp {
+    repeated CNHNGLEEBKP OFENICFJANC = 1;
+    uint32 retcode = 7;
+}

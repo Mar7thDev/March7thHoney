@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "DGKNDMAHMAP.proto";
+import "EKOIHOMFMDE.proto";
+import "EOKOFFPBJME.proto";
+import "IAMLOJCIKIH.proto";
+import "OECPLDABABL.proto";
+
+message SettleHipplenWorkScRsp {
+    DGKNDMAHMAP LJJAJGFIGNM = 3;
+    repeated IAMLOJCIKIH GHPINELGNNE = 7;
+    repeated EKOIHOMFMDE CLKAILDCPJC = 12;
+    uint32 retcode = 15;
+    oneof NPBHJGIEDHL {
+        EOKOFFPBJME EDGOIAODJLH = 2;
+        OECPLDABABL BJGDFMJDJMH = 14;
+    }
+}

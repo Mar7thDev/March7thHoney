@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "FCLDNHOHPII.proto";
+import "FMEMPPNNKJH.proto";
+
+message ChenLingGetDataScRsp {
+    uint32 JJABPPDILOK = 6;
+    FMEMPPNNKJH POGCGMLPEON = 7;
+    FCLDNHOHPII IKKMNDMELLN = 12;
+    repeated uint32 DOAIHFIFFNO = 13;
+    uint32 retcode = 14;
+}

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "AGBLLFGOBKE.proto";
+
+message NOJNMAIACGB {
+    int32 unique_id = 1;
+    AGBLLFGOBKE pos = 7;
+    uint32 FGMLMKKCMJM = 11;
+}

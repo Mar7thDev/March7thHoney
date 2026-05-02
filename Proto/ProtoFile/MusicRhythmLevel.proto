@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message MusicRhythmLevel {
+    uint32 unlock_level = 5;
+    bool full_combo = 6;
+    uint32 level_id = 8;
+}

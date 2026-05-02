@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message SetAssistScRsp {
+    uint32 avatar_id = 1;
+    uint32 uid = 2;
+    uint32 retcode = 4;
+    uint32 FNCINGFDLPA = 5;
+}

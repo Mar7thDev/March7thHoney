@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "AAHBECICOEN.proto";
+
+message MonopolyEventLoadUpdateScNotify {
+    repeated AAHBECICOEN LCPIODCLNHL = 3;
+    repeated AAHBECICOEN PGIHGNOLIOI = 7;
+}

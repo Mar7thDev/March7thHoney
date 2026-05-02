@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "JCFDCEKLBFH.proto";
+
+message FateShopRefreshGoodsScRsp {
+    bool EBKLPKNANLN = 2;
+    repeated JCFDCEKLBFH shop_goods_list = 11;
+    uint32 retcode = 13;
+}

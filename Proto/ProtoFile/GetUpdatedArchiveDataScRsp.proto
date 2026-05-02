@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ArchiveData.proto";
+
+message GetUpdatedArchiveDataScRsp {
+    uint32 retcode = 7;
+    ArchiveData archive_data = 8;
+}

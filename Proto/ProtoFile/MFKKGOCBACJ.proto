@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "IPFAGFAPCCD.proto";
+import "MotionInfo.proto";
+
+message MFKKGOCBACJ {
+    uint32 PJMLJPAPIIK = 2;
+    IPFAGFAPCCD FBOGMBOKPHJ = 3;
+    uint32 PJNFFBKCGEM = 6;
+    MotionInfo MJDMNDIEKHK = 9;
+}

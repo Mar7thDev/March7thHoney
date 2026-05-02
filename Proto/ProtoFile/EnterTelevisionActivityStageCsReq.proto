@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "NOJCIEGKAOB.proto";
+
+message EnterTelevisionActivityStageCsReq {
+    repeated uint32 buff_list = 1;
+    uint32 DEBMOGCGMLI = 8;
+    repeated NOJCIEGKAOB avatar_list = 10;
+}

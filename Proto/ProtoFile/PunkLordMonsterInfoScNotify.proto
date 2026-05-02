@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "INPBGNJMNKJ.proto";
+import "PHOCECJOBHH.proto";
+import "PunkLordMonsterBasicInfo.proto";
+
+message PunkLordMonsterInfoScNotify {
+    INPBGNJMNKJ reason = 7;
+    PunkLordMonsterBasicInfo basic_info = 8;
+    PHOCECJOBHH FHPOILIMKII = 11;
+    repeated uint32 GDBIIMNJLBA = 12;
+}

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message ActivityRaidPlacingGameScRsp {
+    uint32 retcode = 1;
+    oneof DLOMKFLEEIC {
+        uint32 OBPNDKPPFGG = 8;
+        uint32 MFMHHAPPPJJ = 10;
+    }
+}

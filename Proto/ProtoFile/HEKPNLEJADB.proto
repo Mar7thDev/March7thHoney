@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum HEKPNLEJADB {
+    HEKPNLEJADB_GMINCMKDPNE = 0;
+    HEKPNLEJADB_LBKMMMDIADI = 1;
+    HEKPNLEJADB_ANINMMAMAHD = 2;
+}

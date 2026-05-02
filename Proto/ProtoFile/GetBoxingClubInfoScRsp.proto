@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "OOMINGEFPAF.proto";
+
+message GetBoxingClubInfoScRsp {
+    uint32 retcode = 3;
+    repeated OOMINGEFPAF challenge_list = 13;
+}

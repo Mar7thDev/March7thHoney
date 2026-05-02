@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "IIJKILFJENL.proto";
+
+message TakeBenefitActivityRewardCsReq {
+    bool FHFMNOGAMHA = 1;
+    repeated IIJKILFJENL switch_list = 3;
+}

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message GetAuthkeyCsReq {
+    uint32 authkey_ver = 3;
+    uint32 sign_type = 7;
+    string auth_appid = 15;
+}

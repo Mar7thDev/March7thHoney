@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "BLKAIEHOCBC.proto";
+
+message MIOMFOAEHEC {
+    BLKAIEHOCBC IPHHGMECAKB = 5;
+    uint32 MAGCGPMHHEA = 6;
+    BLKAIEHOCBC IJAEBDCFEMG = 12;
+}

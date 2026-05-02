@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ContentPackageInfo.proto";
+
+message ContentPackageData {
+    uint32 cur_content_id = 13;
+    repeated ContentPackageInfo content_package_list = 14;
+}

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "PlayerChallengePeakRecordBossData.proto";
+import "PlayerChallengePeakRecordMobData.proto";
+
+message NCLCIIMIHDH {
+    uint32 group_id = 1;
+    PlayerChallengePeakRecordBossData NFCLJMBLFMK = 3;
+    repeated PlayerChallengePeakRecordMobData DDJIDIKHANH = 11;
+}

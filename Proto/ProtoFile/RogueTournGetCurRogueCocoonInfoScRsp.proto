@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message RogueTournGetCurRogueCocoonInfoScRsp {
+    uint32 Count = 3;
+    uint32 LJPLIHEPGHA = 4;
+    uint32 difficulty_level = 5;
+    uint32 JOMHEIHLLDM = 9;
+    uint32 retcode = 10;
+}

@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum CmdServerPrefsType {
+    BEGKEJFHGMG_PCPDHELPKEM = 0;
+    CmdLKNDIJJELKN = 6195;
+    CmdALHHONKCLNJ = 6110;
+    CmdJFCAKMIDPIA = 6118;
+    CmdUpdateServerPrefsDataCsReq = 6114;
+    CmdGetAllServerPrefsDataCsReq = 6191;
+    BEGKEJFHGMG_KNDCLCNGIDO = 6194;
+}

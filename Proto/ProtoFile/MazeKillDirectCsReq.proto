@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "EBKOLHJIOFN.proto";
+
+message MazeKillDirectCsReq {
+    repeated uint32 entity_list = 4;
+    uint32 GJKGPDHNKHE = 8;
+    EBKOLHJIOFN ALFHNEHOBJA = 9;
+}

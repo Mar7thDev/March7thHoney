@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum TurnFoodSwitch {
+    HINDKODOBAA_PCPDHELPKEM = 0;
+    HINDKODOBAA_KEBPGFMOCDD = 1;
+    HINDKODOBAA_EMLCFOEIAHM = 2;
+}

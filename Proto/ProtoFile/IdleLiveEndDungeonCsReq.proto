@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "KFNFHIAEKIN.proto";
+
+message IdleLiveEndDungeonCsReq {
+    bool LDJKEEPNJDC = 7;
+    KFNFHIAEKIN MNLBMALDPEJ = 8;
+    repeated uint32 IGGKKDPJDBE = 15;
+}

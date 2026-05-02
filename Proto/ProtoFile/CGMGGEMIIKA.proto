@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "MPGIOHDMFCG.proto";
+import "PBKPPEAPBOM.proto";
+
+message CGMGGEMIIKA {
+    uint32 OKCNHPLOMCD = 1;
+    PBKPPEAPBOM state = 7;
+    uint32 hp = 10;
+    repeated MPGIOHDMFCG item_list = 11;
+    uint32 score_id = 14;
+    uint32 MCCLNDCJAMI = 15;
+}

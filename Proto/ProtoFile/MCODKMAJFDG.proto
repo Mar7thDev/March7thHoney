@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "MLIBLHFBAFJ.proto";
+import "OBPMPPCFNLJ.proto";
+
+message MCODKMAJFDG {
+    MLIBLHFBAFJ FPHGHAPGNAE = 3;
+    uint64 DMHLLKBMHEL = 11;
+    repeated OBPMPPCFNLJ APHJIAFODHJ = 13;
+}

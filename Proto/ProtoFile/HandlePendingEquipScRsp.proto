@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "IJPFIHHGNGP.proto";
+
+message HandlePendingEquipScRsp {
+    uint32 retcode = 1;
+    IJPFIHHGNGP DGKEEOEIOBB = 3;
+    bool Discarded = 13;
+}

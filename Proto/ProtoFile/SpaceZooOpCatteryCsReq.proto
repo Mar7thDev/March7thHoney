@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message SpaceZooOpCatteryCsReq {
+    uint32 op_type = 3;
+    uint32 IKAGBIMJPOM = 4;
+    uint32 BFLKIJDPPAI = 12;
+}

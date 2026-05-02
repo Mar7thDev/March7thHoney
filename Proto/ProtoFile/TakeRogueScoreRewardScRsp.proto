@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "BGKINCFGKGI.proto";
+import "ItemList.proto";
+
+message TakeRogueScoreRewardScRsp {
+    uint32 retcode = 2;
+    ItemList reward = 4;
+    BGKINCFGKGI AHBFAAMNKNO = 6;
+    uint32 MBMICCJEBJB = 7;
+}

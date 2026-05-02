@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "LimaoNewsOfficeSurveyState.proto";
+
+message OEOJCBLAMGP {
+    repeated uint32 IEBFIIPBADJ = 4;
+    repeated uint32 OPFEKAKFNJM = 6;
+    repeated LimaoNewsOfficeSurveyState ANAHLHJDDDC = 13;
+}

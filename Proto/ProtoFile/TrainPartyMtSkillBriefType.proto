@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum TrainPartyMtSkillBriefType {
+    HJBFKHGAAJI_HIBOPHOHGDL = 0;
+    HJBFKHGAAJI_IHBOCFIPHII = 1;
+    HJBFKHGAAJI_KEMJCNKKAFE = 2;
+    HJBFKHGAAJI_KMAJBNFAAPB = 3;
+    HJBFKHGAAJI_IBBACLEDGFG = 4;
+}

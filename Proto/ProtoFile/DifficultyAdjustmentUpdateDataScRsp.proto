@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "LMHOIMLGNGM.proto";
+
+message DifficultyAdjustmentUpdateDataScRsp {
+    uint32 retcode = 2;
+    LMHOIMLGNGM data = 6;
+    repeated LMHOIMLGNGM content_package_list = 12;
+}

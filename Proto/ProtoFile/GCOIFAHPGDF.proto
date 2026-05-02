@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "FOFNOBHLKGO.proto";
+import "NPLEDHFMFDM.proto";
+
+message GCOIFAHPGDF {
+    repeated NPLEDHFMFDM AFEJACMLOLH = 1;
+    FOFNOBHLKGO PEOECDDANNP = 2;
+    int64 FIHMHJHGHOG = 3;
+    int64 DHLGCEGONIB = 4;
+    uint32 GJGAGFEJABC = 5;
+    uint32 GIIIBCKEODP = 6;
+}

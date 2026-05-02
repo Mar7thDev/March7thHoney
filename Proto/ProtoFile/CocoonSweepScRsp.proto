@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ItemList.proto";
+
+message CocoonSweepScRsp {
+    uint32 cocoon_id = 1;
+    uint32 retcode = 4;
+    ItemList drop_data = 5;
+    ItemList multiple_drop_data = 12;
+}

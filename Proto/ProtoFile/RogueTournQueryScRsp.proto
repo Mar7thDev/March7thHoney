@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "APMHDGPDGNP.proto";
+import "BEBEOMBMDFB.proto";
+
+message RogueTournQueryScRsp {
+    uint32 retcode = 1;
+    BEBEOMBMDFB rogue_get_info = 7;
+    APMHDGPDGNP HHDLEADBJGN = 13;
+}

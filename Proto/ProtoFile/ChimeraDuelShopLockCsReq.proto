@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message ChimeraDuelShopLockCsReq {
+    bool is_locked = 15;
+    oneof BPIHFAJCLOC {
+        uint32 HCNKAJNKGFH = 8;
+        uint32 DEAKOOEBLJL = 13;
+    }
+}

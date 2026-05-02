@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "CJEAIHMINMJ.proto";
+import "KJBGALBCAEG.proto";
+import "OJOLPAEPBDN.proto";
+import "ONCIMHEMJDD.proto";
+
+message SettleHipplenWorkCsReq {
+    oneof HDACCIEIJFO {
+        CJEAIHMINMJ PGJIAGGHBBA = 2;
+        ONCIMHEMJDD MNIMAFBIGGP = 3;
+        OJOLPAEPBDN PPJOJOKOOBF = 10;
+        KJBGALBCAEG BJGDFMJDJMH = 13;
+    }
+}

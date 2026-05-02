@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "EPNCDFBAHEA.proto";
+
+message IFBLMCNFIEO {
+    uint32 id = 4;
+    EPNCDFBAHEA custom_value_list = 1788;
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message PropRogueInfo {
+    uint32 CNPOJFHKEKH = 2;
+    uint32 HCMJDMFNENE = 5;
+    uint32 room_id = 8;
+    uint32 KGFFNDAINAK = 15;
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "AFHIHMKCPNF.proto";
+
+message APDJGIIDJAA {
+    uint32 AAAGBKEHKLC = 1;
+    repeated AFHIHMKCPNF kill_monster_list = 2;
+}

@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "FightGameMode.proto";
+import "LobbyGameExtInfo.proto";
+import "PBICJCPDLGD.proto";
+
+message LobbyCreateCsReq {
+    LobbyGameExtInfo JHCJMKDDNNF = 1;
+    uint32 CHEODMKAHJM = 5;
+    FightGameMode PLOBMBFPNFK = 12;
+    PBICJCPDLGD POFOCMIHJIA = 13;
+}

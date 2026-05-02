@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message RogueTournUseSuperRewardKeyCsReq {
+    uint32 difficulty_level = 1;
+    uint32 count = 12;
+    uint32 cocoon_id = 14;
+}

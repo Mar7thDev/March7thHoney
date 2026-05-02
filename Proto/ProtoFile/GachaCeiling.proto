@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "GachaCeilingAvatar.proto";
+
+message GachaCeiling {
+    repeated GachaCeilingAvatar avatar_list = 8;
+    uint32 ceiling_num = 11;
+    bool is_claimed = 15;
+}

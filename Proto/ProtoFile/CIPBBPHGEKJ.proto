@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message CIPBBPHGEKJ {
+    uint32 passenger_id = 2;
+    uint32 unique_id = 9;
+    uint32 KKIOIFLJEEL = 14;
+}

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "DIMBAAJNEAF.proto";
+
+message PHMBJKMKMDK {
+    repeated DIMBAAJNEAF buff_list = 9;
+}

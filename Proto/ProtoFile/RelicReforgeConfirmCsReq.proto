@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message RelicReforgeConfirmCsReq {
+    bool is_cancel = 9;
+    uint32 relic_unique_id = 11;
+}

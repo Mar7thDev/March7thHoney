@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum PlanetFesCustomKey {
+    ONMKDPCEFJE_PCPDHELPKEM = 0;
+    ONMKDPCEFJE_HKNHNJOJGBL = 1;
+    ONMKDPCEFJE_AEKPGLJLOHM = 2;
+    ONMKDPCEFJE_CALNCGIFFCB = 3;
+    ONMKDPCEFJE_MIGMLOKEPGL = 4;
+}

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "CALIPIKFDEJ.proto";
+import "ItemCostData.proto";
+
+message MICOMIBPIOA {
+    repeated CALIPIKFDEJ BAGFAOJMPHE = 3;
+    ItemCostData EBMKBDJMAAF = 8;
+}

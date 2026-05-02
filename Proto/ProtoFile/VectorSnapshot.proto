@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message VectorSnapshot {
+    sint32 x = 1;
+    sint32 y = 2;
+    sint32 z = 3;
+}

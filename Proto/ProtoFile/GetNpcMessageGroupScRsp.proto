@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "MessageGroup.proto";
+
+message GetNpcMessageGroupScRsp {
+    uint32 retcode = 1;
+    repeated MessageGroup message_group_list = 6;
+}

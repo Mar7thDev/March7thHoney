@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "KBOJACAEADL.proto";
+
+message BNFIBKPENEF {
+    uint32 BOEFCCPBCDD = 4;
+    uint32 LOIJLIKOMJN = 15;
+    oneof CJFBEONJIDL {
+        uint32 LOLOEFOBOKA = 2;
+        KBOJACAEADL NANHFKEJMCJ = 11;
+    }
+}

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "SceneBattleInfo.proto";
+
+message EnterSummonActivityStageScRsp {
+    uint32 INOMFFAIEOA = 2;
+    SceneBattleInfo battle_info = 4;
+    uint32 retcode = 8;
+    uint32 group_id = 13;
+}

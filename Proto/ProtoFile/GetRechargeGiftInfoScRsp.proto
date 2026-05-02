@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ABIPCNKGFNI.proto";
+
+message GetRechargeGiftInfoScRsp {
+    uint32 retcode = 1;
+    repeated ABIPCNKGFNI FEKLJCAOGII = 14;
+}

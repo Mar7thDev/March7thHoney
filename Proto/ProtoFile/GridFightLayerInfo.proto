@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "GridFightRouteInfo.proto";
+
+message GridFightLayerInfo {
+    bool route_is_pending = 11;
+    GridFightRouteInfo route_info = 1965;
+}

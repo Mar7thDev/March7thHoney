@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ItemList.proto";
+
+message FateTakeExpRewardScRsp {
+    repeated uint32 AKCJLIELLCC = 2;
+    ItemList reward = 7;
+    repeated uint32 NLCDIKNHMJM = 9;
+    uint32 retcode = 11;
+}

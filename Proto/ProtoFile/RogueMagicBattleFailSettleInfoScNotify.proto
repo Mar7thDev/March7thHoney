@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "BHMJAJGOJPM.proto";
+import "JKAIDKIGEGP.proto";
+
+message RogueMagicBattleFailSettleInfoScNotify {
+    JKAIDKIGEGP AFLJJJFCBIN = 1;
+    BHMJAJGOJPM EDKJMPACHNJ = 11;
+}

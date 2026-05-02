@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message RotaterData {
+    float MBAFIOCLMAI = 5;
+    uint32 group_id = 9;
+    uint32 PBOLMBLKDND = 14;
+}

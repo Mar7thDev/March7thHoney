@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "BJHDDMCFAMF.proto";
+
+message ChessRogueSelectCellScRsp {
+    uint32 JNLNMHOOEKL = 5;
+    uint32 EIIAGABAFEC = 6;
+    BJHDDMCFAMF KAEALLELADN = 8;
+    uint32 retcode = 9;
+}

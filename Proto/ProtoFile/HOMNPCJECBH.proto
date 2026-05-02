@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "DOGGIDNINJP.proto";
+
+message HOMNPCJECBH {
+    DOGGIDNINJP ENPGAGBMHOE = 4;
+}

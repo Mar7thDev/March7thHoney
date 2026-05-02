@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "MainMission.proto";
+
+message GetMainMissionCustomValueScRsp {
+    repeated MainMission main_mission_list = 6;
+    uint32 retcode = 10;
+}

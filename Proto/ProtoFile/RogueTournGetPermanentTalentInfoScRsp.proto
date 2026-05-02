@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ECJNAIOLKJD.proto";
+
+message RogueTournGetPermanentTalentInfoScRsp {
+    ECJNAIOLKJD FMKEFGJMCHA = 5;
+    uint32 retcode = 9;
+}

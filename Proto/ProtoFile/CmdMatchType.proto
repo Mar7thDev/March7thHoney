@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum CmdMatchType {
+    PCGFLPCNCLM_PCPDHELPKEM = 0;
+    CmdGetCrossInfoCsReq = 7338;
+    CmdCancelMatchCsReq = 7330;
+    CmdStartMatchCsReq = 7313;
+    CmdAAHCMMKMENA = 7307;
+    CmdJOLDJBKMHGA = 7327;
+    CmdGetCrossInfoScRsp = 7305;
+    CmdJOEPJJKIPJC = 7335;
+}

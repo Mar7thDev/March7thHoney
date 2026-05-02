@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "PileItem.proto";
+
+message DPBEGBNICPG {
+    PileItem CFEHPHAJIOD = 5;
+    repeated PileItem HKIBJPFKLLO = 14;
+}

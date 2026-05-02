@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum ChessRogueNousDicePhase {
+    FEPPEMMMGMM_PCPDHELPKEM = 0;
+    FEPPEMMMGMM_MGMNBLIPFLP = 1;
+    FEPPEMMMGMM_JGILIPEPOCJ = 2;
+}

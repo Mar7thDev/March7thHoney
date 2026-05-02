@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message FateShopSellBuffCsReq {
+    bool PHGCDAOHLDA = 4;
+    uint32 OIBPLMKKGGL = 12;
+    uint32 NPMAANOOCOJ = 13;
+}

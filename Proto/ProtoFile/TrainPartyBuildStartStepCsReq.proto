@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "AreaDynamicInfo.proto";
+
+message TrainPartyBuildStartStepCsReq {
+    uint32 OIGHBOMFGGD = 1;
+    uint32 area_id = 3;
+    uint32 FNLNPLHOEJN = 13;
+    AreaDynamicInfo LMHIBHGINLG = 15;
+}

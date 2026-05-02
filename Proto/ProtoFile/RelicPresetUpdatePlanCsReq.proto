@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "DPDDLAOBMBH.proto";
+
+message RelicPresetUpdatePlanCsReq {
+    uint32 unique_id = 10;
+    oneof BPIHFAJCLOC {
+        DPDDLAOBMBH relic_list = 3;
+        string name = 14;
+    }
+}

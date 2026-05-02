@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum ChessRogueBoardCellStatus {
+    GBIKCJPGLBK_GHGAPOAKGAB = 0;
+    GBIKCJPGLBK_HGNGADNILFC = 1;
+    GBIKCJPGLBK_HPJEBFFHJNP = 2;
+    GBIKCJPGLBK_KLHDCOPPLNG = 3;
+}

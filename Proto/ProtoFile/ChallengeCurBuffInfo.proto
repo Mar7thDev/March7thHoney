@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ChallengeBossBuffList.proto";
+import "ChallengeStoryBuffList.proto";
+
+message ChallengeCurBuffInfo {
+    oneof BPIHFAJCLOC {
+        ChallengeStoryBuffList cur_story_buffs = 3;
+        ChallengeBossBuffList cur_boss_buffs = 15;
+    }
+}

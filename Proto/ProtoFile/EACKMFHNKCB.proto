@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ItemList.proto";
+
+message EACKMFHNKCB {
+    uint32 retcode = 2;
+    uint32 COOOFFKIDMC = 3;
+    ItemList item_list = 9;
+    uint32 group_id = 10;
+}

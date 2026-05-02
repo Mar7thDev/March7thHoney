@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "GODHDEIPDJL.proto";
+import "HKLKGJCJJEB.proto";
+
+message SwitchHandUpdateCsReq {
+    GODHDEIPDJL HKAEEMABJLA = 5;
+    HKLKGJCJJEB CNPILGNBDNB = 8;
+}

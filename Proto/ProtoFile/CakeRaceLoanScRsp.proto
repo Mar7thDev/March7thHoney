@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ItemList.proto";
+
+message CakeRaceLoanScRsp {
+    uint32 MFJGHLDFJPI = 6;
+    uint32 retcode = 10;
+    ItemList item_list = 12;
+}

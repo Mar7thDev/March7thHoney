@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "CIGKBDIGGOI.proto";
+
+message MakeMissionDrinkScRsp {
+    bool is_save = 5;
+    bool DAIKNKALKCM = 7;
+    CIGKBDIGGOI DKGODNAMBHH = 11;
+    uint32 retcode = 14;
+}

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "DAKIKKDICAN.proto";
+
+message AKGLAEKCFNO {
+    uint32 KPNNKBILLBL = 1;
+    bool CHCGMAMOBMH = 4;
+    repeated DAKIKKDICAN LOLJHLDHPPN = 7;
+}

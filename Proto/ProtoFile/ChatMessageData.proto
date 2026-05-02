@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "MessageChatData.proto";
+import "SourceData.proto";
+
+message ChatMessageData {
+    uint64 create_time = 4;
+    SourceData SourceData = 8;
+    repeated MessageChatData message_datas = 9;
+}

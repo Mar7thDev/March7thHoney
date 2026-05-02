@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "LineupInfo.proto";
+import "SyncLineupReason.proto";
+
+message SyncLineupNotify {
+    LineupInfo lineup = 2;
+    repeated SyncLineupReason reason_list = 9;
+}

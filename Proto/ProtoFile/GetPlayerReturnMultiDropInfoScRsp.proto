@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "AEOEFOILEBP.proto";
+import "ENALOKIFDFH.proto";
+
+message GetPlayerReturnMultiDropInfoScRsp {
+    uint32 retcode = 4;
+    repeated AEOEFOILEBP JNGHGLMBPOH = 13;
+    ENALOKIFDFH BMAGGBCMDLB = 15;
+}

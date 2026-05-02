@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "FHBNDNNKDON.proto";
+import "LobbyCharacterStatus.proto";
+
+message PKEIDNJOLEL {
+    FHBNDNNKDON HBCMPOLIKHG = 1;
+    LobbyCharacterStatus status = 2;
+}

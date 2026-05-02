@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "PHHKNAADBHA.proto";
+
+message DCLIFPOFFLI {
+    uint32 HMIBJHDMLNB = 2;
+    uint64 PPNHNDEOOLJ = 3;
+    uint32 NFPBAKBCCHG = 4;
+    repeated PHHKNAADBHA NEBGNOFPAGE = 14;
+}

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message ELAGCLMOFFI {
+    double damage = 8;
+    uint32 augment_id = 11;
+    double BOIEGPAPHOP = 13;
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "GridFightCurrentTask.proto";
+
+message GridFightSyncCurrentTaskInfo {
+    repeated uint32 finish_task_list = 5;
+    GridFightCurrentTask cur_task = 7;
+}

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ItemList.proto";
+
+message AIMHLKDEMGF {
+    map<uint32, ItemList> DBDOIHPLAFM = 1;
+    uint32 JAFNCOMGABG = 3;
+    uint32 EIIAGABAFEC = 8;
+    ItemList MJANOKEODIB = 13;
+}

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message ChimeraDuelShopBuyChimeraCsReq {
+    uint32 LNBILCHBHAD = 2;
+    repeated uint32 AICHBBIODJC = 3;
+    uint32 FJGLPCIJICJ = 8;
+}

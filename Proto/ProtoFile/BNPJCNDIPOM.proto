@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "FateBuffData.proto";
+
+message BNPJCNDIPOM {
+    repeated uint32 DBPNDCDECKD = 3;
+    repeated FateBuffData GDCGBIEFIGO = 5;
+}

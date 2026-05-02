@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum ChimeraRoundWorkEndReason {
+    DJFFICEEBAA_ODCEOMJACME = 0;
+    DJFFICEEBAA_OHFGFBLBHEK = 1;
+    DJFFICEEBAA_CGLFGFHBEKB = 2;
+    DJFFICEEBAA_GGDKDLCPAJA = 3;
+}

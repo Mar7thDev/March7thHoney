@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ItemList.proto";
+
+message PlayerReturnTakeRelicScRsp {
+    uint32 retcode = 6;
+    ItemList item_list = 7;
+    uint32 avatar_id = 10;
+}

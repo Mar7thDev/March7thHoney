@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "EraFlipperDataList.proto";
+
+message ResetEraFlipperDataScRsp {
+    EraFlipperDataList data = 4;
+    uint32 retcode = 10;
+    bool OIPLJJIODIL = 13;
+}

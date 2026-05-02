@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ECKIDLIFAFG.proto";
+import "FKANIBDJNKG.proto";
+
+message MKLLLKLEEAP {
+    uint32 IJDMECLJEBD = 3;
+    uint32 DKAEIDJMJCJ = 8;
+    ECKIDLIFAFG MHFHODDBOPM = 12;
+    FKANIBDJNKG reason = 15;
+}

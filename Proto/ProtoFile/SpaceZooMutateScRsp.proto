@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "DMNDJBPGEKG.proto";
+import "LKJMLPJEPGG.proto";
+
+message SpaceZooMutateScRsp {
+    bool BFALLCGIPOG = 1;
+    uint32 retcode = 2;
+    repeated DMNDJBPGEKG DHHMBFHKLJG = 11;
+    LKJMLPJEPGG EAMEJGFGNPA = 14;
+}

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "JFFONIDPNDA.proto";
+
+message SetStuffToAreaCsReq {
+    uint32 GKFEGIBGEGI = 2;
+    uint32 PEGELNHGMJA = 7;
+    JFFONIDPNDA pos = 8;
+}

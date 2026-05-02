@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "MarkChestFuncInfo.proto";
+
+message GetMarkChestScRsp {
+    repeated MarkChestFuncInfo mark_chest_func_info = 1;
+    uint32 retcode = 11;
+}

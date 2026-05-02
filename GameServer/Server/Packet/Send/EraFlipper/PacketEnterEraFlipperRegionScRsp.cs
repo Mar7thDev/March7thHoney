@@ -1,0 +1,27 @@
+using CastoriceHoney.Server.Kcp;
+using CastoriceHoney.Server.Proto;
+
+namespace CastoriceHoney.Server.GameServer.Server.Packet.Send.EraFlipper;
+
+public class PacketEnterEraFlipperRegionScRsp : BasePacket
+{
+    public PacketEnterEraFlipperRegionScRsp(uint regionId) : base(CmdIds.EnterEraFlipperRegionScRsp)
+    {
+        var proto = new EnterEraFlipperRegionScRsp
+        {
+            EraFlipperRegionId = regionId
+        };
+
+        SetData(proto);
+    }
+
+    public PacketEnterEraFlipperRegionScRsp(Retcode code) : base(CmdIds.EnterEraFlipperRegionScRsp)
+    {
+        var proto = new EnterEraFlipperRegionScRsp
+        {
+            Retcode = (uint)code
+        };
+
+        SetData(proto);
+    }
+}
