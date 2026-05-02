@@ -1,4 +1,4 @@
-# Danheng Server
+# March7thHoney
 
 **__This project is under development! Some game technique might not correctly!__**
 
@@ -35,7 +35,7 @@ Some functions for the game might not support at the first time when new "Anime 
 
 ### Quick Start
 
-1. Download the executable file from [Action](https://github.com/EggLinks/March7thHoney/actions)
+1. Download the executable file from [Action](https://github.com/DBKAHHK/March7thHoney/actions)
 2. Open the downloaded `March7thHoney.zip` and extract it to any folder __*preferably an English path__
    (Optional) Download the `certificate.p12` from the WebServer folder of the source code to enable HTTPS mode, ensuring a more secure traffic
 3. Run GameServer.exe
@@ -53,7 +53,7 @@ March7thHoney is built using .NET Framework
 ##### Windows
 
 ```shell
-git clone --recurse-submodules https://github.com/EggLinks/March7thHoney.git
+git clone --recurse-submodules https://github.com/DBKAHHK/March7thHoney.git
 cd March7thHoney
 dotnet build # compile
 ```
@@ -70,7 +70,7 @@ sudo apt-get update && \
 
 - Compile and run environment
 ```shell
-git clone --recurse-submodules https://github.com/EggLinks/March7thHoney.git
+git clone --recurse-submodules https://github.com/DBKAHHK/March7thHoney.git
 cd March7thHoney
 .\dotnet build # compile
 ./Gameserver
