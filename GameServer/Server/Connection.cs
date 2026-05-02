@@ -202,10 +202,10 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : Danhe
 
                 // get proto class
                 var typ = AppDomain.CurrentDomain.GetAssemblies()
-                    .SingleOrDefault(assembly => assembly.GetName().Name == "CastoriceHoney.Proto")!.GetTypes()
+                    .SingleOrDefault(assembly => assembly.GetName().Name == "March7thHoney.Proto")!.GetTypes()
                     .First(t => t.Name == rspName); //get the type using the packet name
                 var curTyp = AppDomain.CurrentDomain.GetAssemblies()
-                    .SingleOrDefault(assembly => assembly.GetName().Name == "CastoriceHoney.Proto")!.GetTypes()
+                    .SingleOrDefault(assembly => assembly.GetName().Name == "March7thHoney.Proto")!.GetTypes()
                     .First(t => t.Name == curPacket); //get the type using the packet name
 
                 // create the response packet

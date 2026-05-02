@@ -7,11 +7,11 @@
     <Nullable>enable</Nullable>
     <RootNamespace>March7thHoney.Program</RootNamespace>
     <AssemblyName>March7thHoney</AssemblyName>
-    <ApplicationIcon>CastoriceHoney.ico</ApplicationIcon>
+    <ApplicationIcon>March7thHoney.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-	  <Content Include="CastoriceHoney.ico" />
+	  <Content Include="March7thHoney.ico" />
   </ItemGroup>
 
   <ItemGroup>

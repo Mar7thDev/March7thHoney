@@ -152,7 +152,7 @@ public class ServerInfoTextCHS
 {
     public string Shutdown => "关闭中…";
     public string CancelKeyPressed => "已按下取消键 (Ctrl + C)，服务器即将关闭…";
-    public string StartingServer => "正在启动 CastoriceHoney…";
+    public string StartingServer => "正在启动 March7thHoney…";
     public string CurrentVersion => "当前服务端支持的版本: {0}";
     public string LoadingItem => "正在加载 {0}…";
     public string GeneratingItem => "正在生成 {0}…";

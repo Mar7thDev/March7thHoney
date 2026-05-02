@@ -43,7 +43,7 @@ public class GameServerConfig
     public string PublicAddress { get; set; } = "127.0.0.1";
     public uint Port { get; set; } = 23301;
     public string GameServerId { get; set; } = "Castorice_Honey";
-    public string GameServerName { get; set; } = "CastoriceHoney";
+    public string GameServerName { get; set; } = "March7thHoney";
     public string GameServerDescription { get; set; } = "A re-implementation of StarRail server";
     public bool UsePacketEncryption { get; set; } = true;
 
@@ -65,12 +65,12 @@ public class PathConfig
 public class DatabaseConfig
 {
     public string DatabaseType { get; set; } = "sqlite";
-    public string DatabaseName { get; set; } = "CastoriceHoney.db";
+    public string DatabaseName { get; set; } = "March7thHoney.db";
     public string MySqlHost { get; set; } = "127.0.0.1";
     public int MySqlPort { get; set; } = 3306;
     public string MySqlUser { get; set; } = "root";
     public string MySqlPassword { get; set; } = "123456";
-    public string MySqlDatabase { get; set; } = "CastoriceHoney";
+    public string MySqlDatabase { get; set; } = "March7thHoney";
 }
 
 public class ServerOption
@@ -128,7 +128,7 @@ public class LogOption
 public class ServerAnnounce
 {
     public bool EnableAnnounce { get; set; } = true;
-    public string AnnounceContent { get; set; } = "Welcome to CastoriceHoney!";
+    public string AnnounceContent { get; set; } = "Welcome to March7thHoney!";
 }
 
 public class ServerProfile

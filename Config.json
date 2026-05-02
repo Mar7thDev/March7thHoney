@@ -16,7 +16,7 @@
     "PublicAddress": "127.0.0.1",
     "Port": 23301,
     "GameServerId": "Castorice_Honey",
-    "GameServerName": "CastoriceHoney",
+    "GameServerName": "March7thHoney",
     "GameServerDescription": "A re-implementation of StarRail server",
     "UsePacketEncryption": true
   },
@@ -29,12 +29,12 @@
   },
   "Database": {
     "DatabaseType": "sqlite",
-    "DatabaseName": "CastoriceHoney.db",
+    "DatabaseName": "March7thHoney.db",
     "MySqlHost": "127.0.0.1",
     "MySqlPort": 3306,
     "MySqlUser": "root",
     "MySqlPassword": "123456",
-    "MySqlDatabase": "CastoriceHoney"
+    "MySqlDatabase": "March7thHoney"
   },
   "ServerOption": {
     "StartTrailblazerLevel": 1,
@@ -49,7 +49,7 @@
     ],
     "ServerAnnounce": {
       "EnableAnnounce": true,
-      "AnnounceContent": "Welcome to CastoriceHoney!"
+      "AnnounceContent": "Welcome to March7thHoney!"
     },
     "ServerProfile": {
       "Name": "HyacineLover",
@@ -81,7 +81,7 @@
       "Regions": []
     },
     "FarmingDropRate": 1,
-    "UseCache": false
+    "UseCache": true
   },
   "MuipServer": {
     "AdminKey": "d9ec7c53-4ddf-4336-b5c8-7bba8c1ba071"

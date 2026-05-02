@@ -152,7 +152,7 @@ public class ServerInfoTextEN
 {
     public string Shutdown => "Shutting down...";
     public string CancelKeyPressed => "Cancel key (Ctrl + C) pressed. The server will shut down shortly...";
-    public string StartingServer => "Starting CastoriceHoney...";
+    public string StartingServer => "Starting March7thHoney...";
     public string CurrentVersion => "Current server-supported version: {0}";
     public string LoadingItem => "Loading {0}...";
     public string GeneratingItem => "Generating {0}...";
