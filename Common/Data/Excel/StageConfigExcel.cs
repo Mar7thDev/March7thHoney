@@ -1,8 +1,8 @@
 using System.Numerics;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Proto;
 using Newtonsoft.Json;
 
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("StageConfig.json,StageTestConfig.json", true)]
 public class StageConfigExcel : ExcelResource

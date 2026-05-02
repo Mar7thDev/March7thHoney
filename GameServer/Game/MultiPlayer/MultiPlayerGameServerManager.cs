@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.GameServer.Game.Lobby;
-using CastoriceHoney.Server.GameServer.Game.MultiPlayer.MarbleGame;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.GameServer.Game.Lobby;
+using March7thHoney.GameServer.Game.MultiPlayer.MarbleGame;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Game.MultiPlayer;
+namespace March7thHoney.GameServer.Game.MultiPlayer;
 
 public class MultiPlayerGameServerManager
 {

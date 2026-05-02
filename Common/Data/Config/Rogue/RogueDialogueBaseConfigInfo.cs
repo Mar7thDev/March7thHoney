@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.Internationalization;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Internationalization;
+using March7thHoney.Util;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace CastoriceHoney.Server.Data.Config.Rogue;
+namespace March7thHoney.Data.Config.Rogue;
 
 public class RogueDialogueBaseConfigInfo
 {

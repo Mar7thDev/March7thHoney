@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.Internationalization;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Internationalization;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.Command.Command.Cmd;
+namespace March7thHoney.Command.Command.Cmd;
 
 [CommandInfo("help", "Game.Command.Help.Desc", "Game.Command.Help.Usage", ["h"])]
 public class CommandHelp : ICommand

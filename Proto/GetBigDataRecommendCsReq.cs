@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GetBigDataRecommendCsReq.proto</summary>
   public static partial class GetBigDataRecommendCsReqReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "b3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90",
             "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.BigDataRecommendTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.BigDataRecommendTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GetBigDataRecommendCsReq), global::CastoriceHoney.Server.Proto.GetBigDataRecommendCsReq.Parser, new[]{ "BigDataRecommendType", "EquipAvatar" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetBigDataRecommendCsReq), global::March7thHoney.Proto.GetBigDataRecommendCsReq.Parser, new[]{ "BigDataRecommendType", "EquipAvatar" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GetBigDataRecommendCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GetBigDataRecommendCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -88,10 +88,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "big_data_recommend_type" field.</summary>
     public const int BigDataRecommendTypeFieldNumber = 2;
-    private global::CastoriceHoney.Server.Proto.BigDataRecommendType bigDataRecommendType_ = global::CastoriceHoney.Server.Proto.BigDataRecommendType.None;
+    private global::March7thHoney.Proto.BigDataRecommendType bigDataRecommendType_ = global::March7thHoney.Proto.BigDataRecommendType.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.BigDataRecommendType BigDataRecommendType {
+    public global::March7thHoney.Proto.BigDataRecommendType BigDataRecommendType {
       get { return bigDataRecommendType_; }
       set {
         bigDataRecommendType_ = value;
@@ -134,7 +134,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (BigDataRecommendType != global::CastoriceHoney.Server.Proto.BigDataRecommendType.None) hash ^= BigDataRecommendType.GetHashCode();
+      if (BigDataRecommendType != global::March7thHoney.Proto.BigDataRecommendType.None) hash ^= BigDataRecommendType.GetHashCode();
       if (EquipAvatar != 0) hash ^= EquipAvatar.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -154,7 +154,7 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (BigDataRecommendType != global::CastoriceHoney.Server.Proto.BigDataRecommendType.None) {
+      if (BigDataRecommendType != global::March7thHoney.Proto.BigDataRecommendType.None) {
         output.WriteRawTag(16);
         output.WriteEnum((int) BigDataRecommendType);
       }
@@ -172,7 +172,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (BigDataRecommendType != global::CastoriceHoney.Server.Proto.BigDataRecommendType.None) {
+      if (BigDataRecommendType != global::March7thHoney.Proto.BigDataRecommendType.None) {
         output.WriteRawTag(16);
         output.WriteEnum((int) BigDataRecommendType);
       }
@@ -190,7 +190,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (BigDataRecommendType != global::CastoriceHoney.Server.Proto.BigDataRecommendType.None) {
+      if (BigDataRecommendType != global::March7thHoney.Proto.BigDataRecommendType.None) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) BigDataRecommendType);
       }
       if (EquipAvatar != 0) {
@@ -208,7 +208,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.BigDataRecommendType != global::CastoriceHoney.Server.Proto.BigDataRecommendType.None) {
+      if (other.BigDataRecommendType != global::March7thHoney.Proto.BigDataRecommendType.None) {
         BigDataRecommendType = other.BigDataRecommendType;
       }
       if (other.EquipAvatar != 0) {
@@ -234,7 +234,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 16: {
-            BigDataRecommendType = (global::CastoriceHoney.Server.Proto.BigDataRecommendType) input.ReadEnum();
+            BigDataRecommendType = (global::March7thHoney.Proto.BigDataRecommendType) input.ReadEnum();
             break;
           }
           case 72: {
@@ -261,7 +261,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 16: {
-            BigDataRecommendType = (global::CastoriceHoney.Server.Proto.BigDataRecommendType) input.ReadEnum();
+            BigDataRecommendType = (global::March7thHoney.Proto.BigDataRecommendType) input.ReadEnum();
             break;
           }
           case 72: {

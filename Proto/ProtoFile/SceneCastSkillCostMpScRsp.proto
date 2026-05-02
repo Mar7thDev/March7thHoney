@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-option csharp_namespace = "CastoriceHoney.Server.Proto";
+option csharp_namespace = "March7thHoney.Proto";
 
-option java_package = "emu.lunarcore.proto";
+
 
 message SceneCastSkillCostMpScRsp {
     uint32 cast_entity_id = 8;

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from MessageGroup.proto</summary>
   public static partial class MessageGroupReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "GA8gASgNQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25l",
             "eS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.MessageGroupStatusReflection.Descriptor, global::CastoriceHoney.Server.Proto.MessageSectionReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.MessageGroupStatusReflection.Descriptor, global::March7thHoney.Proto.MessageSectionReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.MessageGroup), global::CastoriceHoney.Server.Proto.MessageGroup.Parser, new[]{ "Status", "Id", "RefreshTime", "MessageSectionList", "MessageSectionId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MessageGroup), global::March7thHoney.Proto.MessageGroup.Parser, new[]{ "Status", "Id", "RefreshTime", "MessageSectionList", "MessageSectionId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.MessageGroupReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.MessageGroupReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -92,10 +92,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "status" field.</summary>
     public const int StatusFieldNumber = 5;
-    private global::CastoriceHoney.Server.Proto.MessageGroupStatus status_ = global::CastoriceHoney.Server.Proto.MessageGroupStatus.MessageGroupNone;
+    private global::March7thHoney.Proto.MessageGroupStatus status_ = global::March7thHoney.Proto.MessageGroupStatus.MessageGroupNone;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.MessageGroupStatus Status {
+    public global::March7thHoney.Proto.MessageGroupStatus Status {
       get { return status_; }
       set {
         status_ = value;
@@ -128,12 +128,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "message_section_list" field.</summary>
     public const int MessageSectionListFieldNumber = 14;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.MessageSection> _repeated_messageSectionList_codec
-        = pb::FieldCodec.ForMessage(114, global::CastoriceHoney.Server.Proto.MessageSection.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MessageSection> messageSectionList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MessageSection>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MessageSection> _repeated_messageSectionList_codec
+        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.MessageSection.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MessageSection> messageSectionList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MessageSection>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MessageSection> MessageSectionList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.MessageSection> MessageSectionList {
       get { return messageSectionList_; }
     }
 
@@ -176,7 +176,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Status != global::CastoriceHoney.Server.Proto.MessageGroupStatus.MessageGroupNone) hash ^= Status.GetHashCode();
+      if (Status != global::March7thHoney.Proto.MessageGroupStatus.MessageGroupNone) hash ^= Status.GetHashCode();
       if (Id != 0) hash ^= Id.GetHashCode();
       if (RefreshTime != 0L) hash ^= RefreshTime.GetHashCode();
       hash ^= messageSectionList_.GetHashCode();
@@ -199,7 +199,7 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Status != global::CastoriceHoney.Server.Proto.MessageGroupStatus.MessageGroupNone) {
+      if (Status != global::March7thHoney.Proto.MessageGroupStatus.MessageGroupNone) {
         output.WriteRawTag(40);
         output.WriteEnum((int) Status);
       }
@@ -226,7 +226,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Status != global::CastoriceHoney.Server.Proto.MessageGroupStatus.MessageGroupNone) {
+      if (Status != global::March7thHoney.Proto.MessageGroupStatus.MessageGroupNone) {
         output.WriteRawTag(40);
         output.WriteEnum((int) Status);
       }
@@ -253,7 +253,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Status != global::CastoriceHoney.Server.Proto.MessageGroupStatus.MessageGroupNone) {
+      if (Status != global::March7thHoney.Proto.MessageGroupStatus.MessageGroupNone) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Status);
       }
       if (Id != 0) {
@@ -278,7 +278,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.Status != global::CastoriceHoney.Server.Proto.MessageGroupStatus.MessageGroupNone) {
+      if (other.Status != global::March7thHoney.Proto.MessageGroupStatus.MessageGroupNone) {
         Status = other.Status;
       }
       if (other.Id != 0) {
@@ -311,7 +311,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 40: {
-            Status = (global::CastoriceHoney.Server.Proto.MessageGroupStatus) input.ReadEnum();
+            Status = (global::March7thHoney.Proto.MessageGroupStatus) input.ReadEnum();
             break;
           }
           case 88: {
@@ -350,7 +350,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 40: {
-            Status = (global::CastoriceHoney.Server.Proto.MessageGroupStatus) input.ReadEnum();
+            Status = (global::March7thHoney.Proto.MessageGroupStatus) input.ReadEnum();
             break;
           }
           case 88: {

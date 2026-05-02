@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from FeatureSwitchClosedScNotify.proto</summary>
   public static partial class FeatureSwitchClosedScNotifyReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "E2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIu",
             "UHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.FeatureSwitchTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.FeatureSwitchTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.FeatureSwitchClosedScNotify), global::CastoriceHoney.Server.Proto.FeatureSwitchClosedScNotify.Parser, new[]{ "OFDFKMLOGKO" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FeatureSwitchClosedScNotify), global::March7thHoney.Proto.FeatureSwitchClosedScNotify.Parser, new[]{ "OFDFKMLOGKO" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.FeatureSwitchClosedScNotifyReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.FeatureSwitchClosedScNotifyReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -86,10 +86,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "OFDFKMLOGKO" field.</summary>
     public const int OFDFKMLOGKOFieldNumber = 4;
-    private global::CastoriceHoney.Server.Proto.FeatureSwitchType oFDFKMLOGKO_ = global::CastoriceHoney.Server.Proto.FeatureSwitchType.IgckijddjfjAhmckdaolne;
+    private global::March7thHoney.Proto.FeatureSwitchType oFDFKMLOGKO_ = global::March7thHoney.Proto.FeatureSwitchType.IgckijddjfjAhmckdaolne;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.FeatureSwitchType OFDFKMLOGKO {
+    public global::March7thHoney.Proto.FeatureSwitchType OFDFKMLOGKO {
       get { return oFDFKMLOGKO_; }
       set {
         oFDFKMLOGKO_ = value;
@@ -119,7 +119,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (OFDFKMLOGKO != global::CastoriceHoney.Server.Proto.FeatureSwitchType.IgckijddjfjAhmckdaolne) hash ^= OFDFKMLOGKO.GetHashCode();
+      if (OFDFKMLOGKO != global::March7thHoney.Proto.FeatureSwitchType.IgckijddjfjAhmckdaolne) hash ^= OFDFKMLOGKO.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -138,7 +138,7 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (OFDFKMLOGKO != global::CastoriceHoney.Server.Proto.FeatureSwitchType.IgckijddjfjAhmckdaolne) {
+      if (OFDFKMLOGKO != global::March7thHoney.Proto.FeatureSwitchType.IgckijddjfjAhmckdaolne) {
         output.WriteRawTag(32);
         output.WriteEnum((int) OFDFKMLOGKO);
       }
@@ -152,7 +152,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (OFDFKMLOGKO != global::CastoriceHoney.Server.Proto.FeatureSwitchType.IgckijddjfjAhmckdaolne) {
+      if (OFDFKMLOGKO != global::March7thHoney.Proto.FeatureSwitchType.IgckijddjfjAhmckdaolne) {
         output.WriteRawTag(32);
         output.WriteEnum((int) OFDFKMLOGKO);
       }
@@ -166,7 +166,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (OFDFKMLOGKO != global::CastoriceHoney.Server.Proto.FeatureSwitchType.IgckijddjfjAhmckdaolne) {
+      if (OFDFKMLOGKO != global::March7thHoney.Proto.FeatureSwitchType.IgckijddjfjAhmckdaolne) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) OFDFKMLOGKO);
       }
       if (_unknownFields != null) {
@@ -181,7 +181,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.OFDFKMLOGKO != global::CastoriceHoney.Server.Proto.FeatureSwitchType.IgckijddjfjAhmckdaolne) {
+      if (other.OFDFKMLOGKO != global::March7thHoney.Proto.FeatureSwitchType.IgckijddjfjAhmckdaolne) {
         OFDFKMLOGKO = other.OFDFKMLOGKO;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -204,7 +204,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 32: {
-            OFDFKMLOGKO = (global::CastoriceHoney.Server.Proto.FeatureSwitchType) input.ReadEnum();
+            OFDFKMLOGKO = (global::March7thHoney.Proto.FeatureSwitchType) input.ReadEnum();
             break;
           }
         }
@@ -227,7 +227,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 32: {
-            OFDFKMLOGKO = (global::CastoriceHoney.Server.Proto.FeatureSwitchType) input.ReadEnum();
+            OFDFKMLOGKO = (global::March7thHoney.Proto.FeatureSwitchType) input.ReadEnum();
             break;
           }
         }

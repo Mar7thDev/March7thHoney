@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.GameServer.Game.Player.Components;
+namespace March7thHoney.GameServer.Game.Player.Components;
 
 public abstract class BasePlayerComponent(PlayerInstance player)
 {

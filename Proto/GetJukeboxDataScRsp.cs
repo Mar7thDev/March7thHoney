@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GetJukeboxDataScRsp.proto</summary>
   public static partial class GetJukeboxDataScRspReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "E2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIu",
             "UHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.MCPPIEJEBEFReflection.Descriptor, global::CastoriceHoney.Server.Proto.MusicDataReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.MCPPIEJEBEFReflection.Descriptor, global::March7thHoney.Proto.MusicDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GetJukeboxDataScRsp), global::CastoriceHoney.Server.Proto.GetJukeboxDataScRsp.Parser, new[]{ "UnlockedMusicList", "Retcode", "JILKOPINLDC" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetJukeboxDataScRsp), global::March7thHoney.Proto.GetJukeboxDataScRsp.Parser, new[]{ "UnlockedMusicList", "Retcode", "JILKOPINLDC" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GetJukeboxDataScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GetJukeboxDataScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -89,12 +89,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "UnlockedMusicList" field.</summary>
     public const int UnlockedMusicListFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.MusicData> _repeated_unlockedMusicList_codec
-        = pb::FieldCodec.ForMessage(34, global::CastoriceHoney.Server.Proto.MusicData.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MusicData> unlockedMusicList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MusicData>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MusicData> _repeated_unlockedMusicList_codec
+        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.MusicData.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MusicData> unlockedMusicList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MusicData>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MusicData> UnlockedMusicList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.MusicData> UnlockedMusicList {
       get { return unlockedMusicList_; }
     }
 
@@ -112,10 +112,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "JILKOPINLDC" field.</summary>
     public const int JILKOPINLDCFieldNumber = 14;
-    private global::CastoriceHoney.Server.Proto.MCPPIEJEBEF jILKOPINLDC_;
+    private global::March7thHoney.Proto.MCPPIEJEBEF jILKOPINLDC_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.MCPPIEJEBEF JILKOPINLDC {
+    public global::March7thHoney.Proto.MCPPIEJEBEF JILKOPINLDC {
       get { return jILKOPINLDC_; }
       set {
         jILKOPINLDC_ = value;
@@ -231,7 +231,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.jILKOPINLDC_ != null) {
         if (jILKOPINLDC_ == null) {
-          JILKOPINLDC = new global::CastoriceHoney.Server.Proto.MCPPIEJEBEF();
+          JILKOPINLDC = new global::March7thHoney.Proto.MCPPIEJEBEF();
         }
         JILKOPINLDC.MergeFrom(other.JILKOPINLDC);
       }
@@ -264,7 +264,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 114: {
             if (jILKOPINLDC_ == null) {
-              JILKOPINLDC = new global::CastoriceHoney.Server.Proto.MCPPIEJEBEF();
+              JILKOPINLDC = new global::March7thHoney.Proto.MCPPIEJEBEF();
             }
             input.ReadMessage(JILKOPINLDC);
             break;
@@ -298,7 +298,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 114: {
             if (jILKOPINLDC_ == null) {
-              JILKOPINLDC = new global::CastoriceHoney.Server.Proto.MCPPIEJEBEF();
+              JILKOPINLDC = new global::March7thHoney.Proto.MCPPIEJEBEF();
             }
             input.ReadMessage(JILKOPINLDC);
             break;

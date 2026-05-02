@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from BattleAvatarServantInfo.proto</summary>
   public static partial class BattleAvatarServantInfoReflection {
@@ -44,9 +44,9 @@ namespace CastoriceHoney.Server.Proto {
             "QjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2",
             "ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.AttackDamagePropertyReflection.Descriptor, global::CastoriceHoney.Server.Proto.SkillUsePropertyReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.AttackDamagePropertyReflection.Descriptor, global::March7thHoney.Proto.SkillUsePropertyReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.BattleAvatarServantInfo), global::CastoriceHoney.Server.Proto.BattleAvatarServantInfo.Parser, new[]{ "AvatarId", "FIFHKNHEIBD", "TotalTurns", "NFEHGEPLPAJ", "SkillTimes", "TotalDamage", "TotalBreakDamage", "AttackTypeDamage", "AttackTypeBreakDamage", "AttackTypeMaxDamage", "TotalDamageTaken", "TotalHeal", "TotalHpRecover", "TotalShield", "TotalShieldTaken", "TotalShieldDamage", "BreakTimes", "CEHLLNCEMDN", "HOOFEMEKKOB", "DOAPBOLJOGF", "FJLIHMDENML", "EntityId", "ANMBAIFOBJP", "OGDGEKFJAFO" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BattleAvatarServantInfo), global::March7thHoney.Proto.BattleAvatarServantInfo.Parser, new[]{ "AvatarId", "FIFHKNHEIBD", "TotalTurns", "NFEHGEPLPAJ", "SkillTimes", "TotalDamage", "TotalBreakDamage", "AttackTypeDamage", "AttackTypeBreakDamage", "AttackTypeMaxDamage", "TotalDamageTaken", "TotalHeal", "TotalHpRecover", "TotalShield", "TotalShieldTaken", "TotalShieldDamage", "BreakTimes", "CEHLLNCEMDN", "HOOFEMEKKOB", "DOAPBOLJOGF", "FJLIHMDENML", "EntityId", "ANMBAIFOBJP", "OGDGEKFJAFO" }, null, null, null, null)
           }));
     }
     #endregion
@@ -68,7 +68,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.BattleAvatarServantInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.BattleAvatarServantInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -171,12 +171,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "skill_times" field.</summary>
     public const int SkillTimesFieldNumber = 5;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.SkillUseProperty> _repeated_skillTimes_codec
-        = pb::FieldCodec.ForMessage(42, global::CastoriceHoney.Server.Proto.SkillUseProperty.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.SkillUseProperty> skillTimes_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.SkillUseProperty>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.SkillUseProperty> _repeated_skillTimes_codec
+        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.SkillUseProperty.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.SkillUseProperty> skillTimes_ = new pbc::RepeatedField<global::March7thHoney.Proto.SkillUseProperty>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.SkillUseProperty> SkillTimes {
+    public pbc::RepeatedField<global::March7thHoney.Proto.SkillUseProperty> SkillTimes {
       get { return skillTimes_; }
     }
 
@@ -206,34 +206,34 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "attack_type_damage" field.</summary>
     public const int AttackTypeDamageFieldNumber = 8;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.AttackDamageProperty> _repeated_attackTypeDamage_codec
-        = pb::FieldCodec.ForMessage(66, global::CastoriceHoney.Server.Proto.AttackDamageProperty.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AttackDamageProperty> attackTypeDamage_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AttackDamageProperty>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AttackDamageProperty> _repeated_attackTypeDamage_codec
+        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.AttackDamageProperty.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty> attackTypeDamage_ = new pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AttackDamageProperty> AttackTypeDamage {
+    public pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty> AttackTypeDamage {
       get { return attackTypeDamage_; }
     }
 
     /// <summary>Field number for the "attack_type_break_damage" field.</summary>
     public const int AttackTypeBreakDamageFieldNumber = 9;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.AttackDamageProperty> _repeated_attackTypeBreakDamage_codec
-        = pb::FieldCodec.ForMessage(74, global::CastoriceHoney.Server.Proto.AttackDamageProperty.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AttackDamageProperty> attackTypeBreakDamage_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AttackDamageProperty>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AttackDamageProperty> _repeated_attackTypeBreakDamage_codec
+        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.AttackDamageProperty.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty> attackTypeBreakDamage_ = new pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AttackDamageProperty> AttackTypeBreakDamage {
+    public pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty> AttackTypeBreakDamage {
       get { return attackTypeBreakDamage_; }
     }
 
     /// <summary>Field number for the "attack_type_max_damage" field.</summary>
     public const int AttackTypeMaxDamageFieldNumber = 10;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.AttackDamageProperty> _repeated_attackTypeMaxDamage_codec
-        = pb::FieldCodec.ForMessage(82, global::CastoriceHoney.Server.Proto.AttackDamageProperty.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AttackDamageProperty> attackTypeMaxDamage_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AttackDamageProperty>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AttackDamageProperty> _repeated_attackTypeMaxDamage_codec
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.AttackDamageProperty.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty> attackTypeMaxDamage_ = new pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AttackDamageProperty> AttackTypeMaxDamage {
+    public pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty> AttackTypeMaxDamage {
       get { return attackTypeMaxDamage_; }
     }
 

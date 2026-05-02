@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from HeartDialScriptInfo.proto</summary>
   public static partial class HeartDialScriptInfoReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "IAEoCBIRCglzY3JpcHRfaWQYDyABKA1CMwoTZW11Lmx1bmFyY29yZS5wcm90",
             "b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.HeartDialEmotionTypeReflection.Descriptor, global::CastoriceHoney.Server.Proto.HeartDialStepTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.HeartDialEmotionTypeReflection.Descriptor, global::March7thHoney.Proto.HeartDialStepTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.HeartDialScriptInfo), global::CastoriceHoney.Server.Proto.HeartDialScriptInfo.Parser, new[]{ "GKOALBAPIHB", "Step", "CurEmotionType", "HPNINIJEOBH", "ScriptId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HeartDialScriptInfo), global::March7thHoney.Proto.HeartDialScriptInfo.Parser, new[]{ "GKOALBAPIHB", "Step", "CurEmotionType", "HPNINIJEOBH", "ScriptId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.HeartDialScriptInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.HeartDialScriptInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -104,10 +104,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "step" field.</summary>
     public const int StepFieldNumber = 10;
-    private global::CastoriceHoney.Server.Proto.HeartDialStepType step_ = global::CastoriceHoney.Server.Proto.HeartDialStepType.Coeejalelpf;
+    private global::March7thHoney.Proto.HeartDialStepType step_ = global::March7thHoney.Proto.HeartDialStepType.Coeejalelpf;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.HeartDialStepType Step {
+    public global::March7thHoney.Proto.HeartDialStepType Step {
       get { return step_; }
       set {
         step_ = value;
@@ -116,10 +116,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "cur_emotion_type" field.</summary>
     public const int CurEmotionTypeFieldNumber = 12;
-    private global::CastoriceHoney.Server.Proto.HeartDialEmotionType curEmotionType_ = global::CastoriceHoney.Server.Proto.HeartDialEmotionType.Peace;
+    private global::March7thHoney.Proto.HeartDialEmotionType curEmotionType_ = global::March7thHoney.Proto.HeartDialEmotionType.Peace;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.HeartDialEmotionType CurEmotionType {
+    public global::March7thHoney.Proto.HeartDialEmotionType CurEmotionType {
       get { return curEmotionType_; }
       set {
         curEmotionType_ = value;
@@ -178,8 +178,8 @@ namespace CastoriceHoney.Server.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (GKOALBAPIHB != false) hash ^= GKOALBAPIHB.GetHashCode();
-      if (Step != global::CastoriceHoney.Server.Proto.HeartDialStepType.Coeejalelpf) hash ^= Step.GetHashCode();
-      if (CurEmotionType != global::CastoriceHoney.Server.Proto.HeartDialEmotionType.Peace) hash ^= CurEmotionType.GetHashCode();
+      if (Step != global::March7thHoney.Proto.HeartDialStepType.Coeejalelpf) hash ^= Step.GetHashCode();
+      if (CurEmotionType != global::March7thHoney.Proto.HeartDialEmotionType.Peace) hash ^= CurEmotionType.GetHashCode();
       if (HPNINIJEOBH != false) hash ^= HPNINIJEOBH.GetHashCode();
       if (ScriptId != 0) hash ^= ScriptId.GetHashCode();
       if (_unknownFields != null) {
@@ -204,11 +204,11 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(32);
         output.WriteBool(GKOALBAPIHB);
       }
-      if (Step != global::CastoriceHoney.Server.Proto.HeartDialStepType.Coeejalelpf) {
+      if (Step != global::March7thHoney.Proto.HeartDialStepType.Coeejalelpf) {
         output.WriteRawTag(80);
         output.WriteEnum((int) Step);
       }
-      if (CurEmotionType != global::CastoriceHoney.Server.Proto.HeartDialEmotionType.Peace) {
+      if (CurEmotionType != global::March7thHoney.Proto.HeartDialEmotionType.Peace) {
         output.WriteRawTag(96);
         output.WriteEnum((int) CurEmotionType);
       }
@@ -234,11 +234,11 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(32);
         output.WriteBool(GKOALBAPIHB);
       }
-      if (Step != global::CastoriceHoney.Server.Proto.HeartDialStepType.Coeejalelpf) {
+      if (Step != global::March7thHoney.Proto.HeartDialStepType.Coeejalelpf) {
         output.WriteRawTag(80);
         output.WriteEnum((int) Step);
       }
-      if (CurEmotionType != global::CastoriceHoney.Server.Proto.HeartDialEmotionType.Peace) {
+      if (CurEmotionType != global::March7thHoney.Proto.HeartDialEmotionType.Peace) {
         output.WriteRawTag(96);
         output.WriteEnum((int) CurEmotionType);
       }
@@ -263,10 +263,10 @@ namespace CastoriceHoney.Server.Proto {
       if (GKOALBAPIHB != false) {
         size += 1 + 1;
       }
-      if (Step != global::CastoriceHoney.Server.Proto.HeartDialStepType.Coeejalelpf) {
+      if (Step != global::March7thHoney.Proto.HeartDialStepType.Coeejalelpf) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Step);
       }
-      if (CurEmotionType != global::CastoriceHoney.Server.Proto.HeartDialEmotionType.Peace) {
+      if (CurEmotionType != global::March7thHoney.Proto.HeartDialEmotionType.Peace) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) CurEmotionType);
       }
       if (HPNINIJEOBH != false) {
@@ -290,10 +290,10 @@ namespace CastoriceHoney.Server.Proto {
       if (other.GKOALBAPIHB != false) {
         GKOALBAPIHB = other.GKOALBAPIHB;
       }
-      if (other.Step != global::CastoriceHoney.Server.Proto.HeartDialStepType.Coeejalelpf) {
+      if (other.Step != global::March7thHoney.Proto.HeartDialStepType.Coeejalelpf) {
         Step = other.Step;
       }
-      if (other.CurEmotionType != global::CastoriceHoney.Server.Proto.HeartDialEmotionType.Peace) {
+      if (other.CurEmotionType != global::March7thHoney.Proto.HeartDialEmotionType.Peace) {
         CurEmotionType = other.CurEmotionType;
       }
       if (other.HPNINIJEOBH != false) {
@@ -326,11 +326,11 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 80: {
-            Step = (global::CastoriceHoney.Server.Proto.HeartDialStepType) input.ReadEnum();
+            Step = (global::March7thHoney.Proto.HeartDialStepType) input.ReadEnum();
             break;
           }
           case 96: {
-            CurEmotionType = (global::CastoriceHoney.Server.Proto.HeartDialEmotionType) input.ReadEnum();
+            CurEmotionType = (global::March7thHoney.Proto.HeartDialEmotionType) input.ReadEnum();
             break;
           }
           case 104: {
@@ -365,11 +365,11 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 80: {
-            Step = (global::CastoriceHoney.Server.Proto.HeartDialStepType) input.ReadEnum();
+            Step = (global::March7thHoney.Proto.HeartDialStepType) input.ReadEnum();
             break;
           }
           case 96: {
-            CurEmotionType = (global::CastoriceHoney.Server.Proto.HeartDialEmotionType) input.ReadEnum();
+            CurEmotionType = (global::March7thHoney.Proto.HeartDialEmotionType) input.ReadEnum();
             break;
           }
           case 104: {

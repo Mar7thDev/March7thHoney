@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from PlayerHeartBeatScRsp.proto</summary>
   public static partial class PlayerHeartBeatScRspReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "bXMYDiABKARCMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhv",
             "bmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ClientDownloadDataReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ClientDownloadDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.PlayerHeartBeatScRsp), global::CastoriceHoney.Server.Proto.PlayerHeartBeatScRsp.Parser, new[]{ "DownloadData", "Retcode", "ClientTimeMs", "ServerTimeMs" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlayerHeartBeatScRsp), global::March7thHoney.Proto.PlayerHeartBeatScRsp.Parser, new[]{ "DownloadData", "Retcode", "ClientTimeMs", "ServerTimeMs" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.PlayerHeartBeatScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.PlayerHeartBeatScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -90,10 +90,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "download_data" field.</summary>
     public const int DownloadDataFieldNumber = 4;
-    private global::CastoriceHoney.Server.Proto.ClientDownloadData downloadData_;
+    private global::March7thHoney.Proto.ClientDownloadData downloadData_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ClientDownloadData DownloadData {
+    public global::March7thHoney.Proto.ClientDownloadData DownloadData {
       get { return downloadData_; }
       set {
         downloadData_ = value;
@@ -262,7 +262,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.downloadData_ != null) {
         if (downloadData_ == null) {
-          DownloadData = new global::CastoriceHoney.Server.Proto.ClientDownloadData();
+          DownloadData = new global::March7thHoney.Proto.ClientDownloadData();
         }
         DownloadData.MergeFrom(other.DownloadData);
       }
@@ -296,7 +296,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 34: {
             if (downloadData_ == null) {
-              DownloadData = new global::CastoriceHoney.Server.Proto.ClientDownloadData();
+              DownloadData = new global::March7thHoney.Proto.ClientDownloadData();
             }
             input.ReadMessage(DownloadData);
             break;
@@ -334,7 +334,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 34: {
             if (downloadData_ == null) {
-              DownloadData = new global::CastoriceHoney.Server.Proto.ClientDownloadData();
+              DownloadData = new global::March7thHoney.Proto.ClientDownloadData();
             }
             input.ReadMessage(DownloadData);
             break;

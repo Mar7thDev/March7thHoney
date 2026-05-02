@@ -1,25 +1,25 @@
 using System.Reflection;
-using CastoriceHoney.Server.Data.Config;
-using CastoriceHoney.Server.Data.Config.AdventureAbility;
-using CastoriceHoney.Server.Data.Config.Character;
-using CastoriceHoney.Server.Data.Config.Rogue;
-using CastoriceHoney.Server.Data.Config.Scene;
-using CastoriceHoney.Server.Data.Config.SummonUnit;
-using CastoriceHoney.Server.Data.Custom;
-using CastoriceHoney.Server.Data.Excel;
-using CastoriceHoney.Server.Enums.Rogue;
-using CastoriceHoney.Server.Enums.RogueMagic;
-using CastoriceHoney.Server.Enums.TournRogue;
-using CastoriceHoney.Server.Internationalization;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Data.Config;
+using March7thHoney.Data.Config.AdventureAbility;
+using March7thHoney.Data.Config.Character;
+using March7thHoney.Data.Config.Rogue;
+using March7thHoney.Data.Config.Scene;
+using March7thHoney.Data.Config.SummonUnit;
+using March7thHoney.Data.Custom;
+using March7thHoney.Data.Excel;
+using March7thHoney.Enums.Rogue;
+using March7thHoney.Enums.RogueMagic;
+using March7thHoney.Enums.TournRogue;
+using March7thHoney.Internationalization;
+using March7thHoney.Util;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace CastoriceHoney.Server.Data;
+namespace March7thHoney.Data;
 
 public class ResourceManager
 {
-    public static Logger Logger { get; } = new("ResourceManager");
+    public static Logger Logger { get; } = new("ResMgr");
     public static bool IsLoaded { get; set; }
 
     public static void LoadGameData()

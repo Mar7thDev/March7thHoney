@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Enums.TournRogue;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Data;
+using March7thHoney.Enums.TournRogue;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.GameServer.Game.RogueTourn.Scene;
+namespace March7thHoney.GameServer.Game.RogueTourn.Scene;
 
 public class RogueTournLevelInstance
 {

@@ -1,7 +1,7 @@
 using System.Buffers.Binary;
 using System.Diagnostics;
 
-namespace CastoriceHoney.Server.Kcp.KcpSharp;
+namespace March7thHoney.Kcp.KcpSharp;
 
 internal readonly struct KcpPacketHeader : IEquatable<KcpPacketHeader>
 {

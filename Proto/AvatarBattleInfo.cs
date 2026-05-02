@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from AvatarBattleInfo.proto</summary>
   public static partial class AvatarBattleInfoReflection {
@@ -68,9 +68,9 @@ namespace CastoriceHoney.Server.Proto {
             "bHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3Rv",
             "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.AttackDamagePropertyReflection.Descriptor, global::CastoriceHoney.Server.Proto.AvatarPropertyReflection.Descriptor, global::CastoriceHoney.Server.Proto.AvatarSkillTreeReflection.Descriptor, global::CastoriceHoney.Server.Proto.AvatarTypeReflection.Descriptor, global::CastoriceHoney.Server.Proto.BattleRelicReflection.Descriptor, global::CastoriceHoney.Server.Proto.DHNFGJBHMAAReflection.Descriptor, global::CastoriceHoney.Server.Proto.EquipmentPropertyReflection.Descriptor, global::CastoriceHoney.Server.Proto.HBFAMLLHFAFReflection.Descriptor, global::CastoriceHoney.Server.Proto.OEMOCFJLGFIReflection.Descriptor, global::CastoriceHoney.Server.Proto.SkillUsePropertyReflection.Descriptor, global::CastoriceHoney.Server.Proto.SpAddSourceReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.AttackDamagePropertyReflection.Descriptor, global::March7thHoney.Proto.AvatarPropertyReflection.Descriptor, global::March7thHoney.Proto.AvatarSkillTreeReflection.Descriptor, global::March7thHoney.Proto.AvatarTypeReflection.Descriptor, global::March7thHoney.Proto.BattleRelicReflection.Descriptor, global::March7thHoney.Proto.DHNFGJBHMAAReflection.Descriptor, global::March7thHoney.Proto.EquipmentPropertyReflection.Descriptor, global::March7thHoney.Proto.HBFAMLLHFAFReflection.Descriptor, global::March7thHoney.Proto.OEMOCFJLGFIReflection.Descriptor, global::March7thHoney.Proto.SkillUsePropertyReflection.Descriptor, global::March7thHoney.Proto.SpAddSourceReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.AvatarBattleInfo), global::CastoriceHoney.Server.Proto.AvatarBattleInfo.Parser, new[]{ "AvatarType", "Id", "AvatarLevel", "AvatarRank", "AvatarPromotion", "AvatarStatus", "AvatarSkill", "AvatarEquipment", "TotalTurns", "TotalDamage", "TotalHeal", "TotalDamageTaken", "TotalHpRecover", "TotalSpCost", "StageId", "StageType", "TotalBreakDamage", "AttackTypeDamage", "AttackTypeBreakDamage", "AttackTypeMaxDamage", "SkillTimes", "DelayCumulate", "TotalSpAdd", "SpAddSource", "TotalBpCost", "DieTimes", "ReviveTimes", "BreakTimes", "ExtraTurns", "TotalShield", "TotalShieldTaken", "TotalShieldDamage", "InitialStatus", "Relics", "AssistUid", "HLOOFKLELLJ", "OEJPKJPMKBC", "OGDGEKFJAFO", "AGLKPIJKKGN", "KONMGBJBIEA", "GDAHCGCKOBO", "HOOFEMEKKOB", "DOAPBOLJOGF", "FJLIHMDENML", "LLCNOCGHJOO", "GFBLNAEHPCH", "KNGOCHGELCE", "FODKMBNLCKA", "LNIHALFAAGA", "BENJFNNODEF", "LBLAJJAFFBH", "DPDAAIHDGAA", "MGOHBOKJBKD", "HMIFOFDMCCC", "EnhancedId", "ANMBAIFOBJP", "NODDDNJAALP", "MNHIJDJBKLB" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AvatarBattleInfo), global::March7thHoney.Proto.AvatarBattleInfo.Parser, new[]{ "AvatarType", "Id", "AvatarLevel", "AvatarRank", "AvatarPromotion", "AvatarStatus", "AvatarSkill", "AvatarEquipment", "TotalTurns", "TotalDamage", "TotalHeal", "TotalDamageTaken", "TotalHpRecover", "TotalSpCost", "StageId", "StageType", "TotalBreakDamage", "AttackTypeDamage", "AttackTypeBreakDamage", "AttackTypeMaxDamage", "SkillTimes", "DelayCumulate", "TotalSpAdd", "SpAddSource", "TotalBpCost", "DieTimes", "ReviveTimes", "BreakTimes", "ExtraTurns", "TotalShield", "TotalShieldTaken", "TotalShieldDamage", "InitialStatus", "Relics", "AssistUid", "HLOOFKLELLJ", "OEJPKJPMKBC", "OGDGEKFJAFO", "AGLKPIJKKGN", "KONMGBJBIEA", "GDAHCGCKOBO", "HOOFEMEKKOB", "DOAPBOLJOGF", "FJLIHMDENML", "LLCNOCGHJOO", "GFBLNAEHPCH", "KNGOCHGELCE", "FODKMBNLCKA", "LNIHALFAAGA", "BENJFNNODEF", "LBLAJJAFFBH", "DPDAAIHDGAA", "MGOHBOKJBKD", "HMIFOFDMCCC", "EnhancedId", "ANMBAIFOBJP", "NODDDNJAALP", "MNHIJDJBKLB" }, null, null, null, null)
           }));
     }
     #endregion
@@ -92,7 +92,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.AvatarBattleInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.AvatarBattleInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -181,10 +181,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "avatar_type" field.</summary>
     public const int AvatarTypeFieldNumber = 1;
-    private global::CastoriceHoney.Server.Proto.AvatarType avatarType_ = global::CastoriceHoney.Server.Proto.AvatarType.None;
+    private global::March7thHoney.Proto.AvatarType avatarType_ = global::March7thHoney.Proto.AvatarType.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.AvatarType AvatarType {
+    public global::March7thHoney.Proto.AvatarType AvatarType {
       get { return avatarType_; }
       set {
         avatarType_ = value;
@@ -241,10 +241,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "avatar_status" field.</summary>
     public const int AvatarStatusFieldNumber = 6;
-    private global::CastoriceHoney.Server.Proto.AvatarProperty avatarStatus_;
+    private global::March7thHoney.Proto.AvatarProperty avatarStatus_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.AvatarProperty AvatarStatus {
+    public global::March7thHoney.Proto.AvatarProperty AvatarStatus {
       get { return avatarStatus_; }
       set {
         avatarStatus_ = value;
@@ -253,23 +253,23 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "avatar_skill" field.</summary>
     public const int AvatarSkillFieldNumber = 7;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.AvatarSkillTree> _repeated_avatarSkill_codec
-        = pb::FieldCodec.ForMessage(58, global::CastoriceHoney.Server.Proto.AvatarSkillTree.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AvatarSkillTree> avatarSkill_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AvatarSkillTree>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AvatarSkillTree> _repeated_avatarSkill_codec
+        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.AvatarSkillTree.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AvatarSkillTree> avatarSkill_ = new pbc::RepeatedField<global::March7thHoney.Proto.AvatarSkillTree>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AvatarSkillTree> AvatarSkill {
+    public pbc::RepeatedField<global::March7thHoney.Proto.AvatarSkillTree> AvatarSkill {
       get { return avatarSkill_; }
     }
 
     /// <summary>Field number for the "avatar_equipment" field.</summary>
     public const int AvatarEquipmentFieldNumber = 8;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.EquipmentProperty> _repeated_avatarEquipment_codec
-        = pb::FieldCodec.ForMessage(66, global::CastoriceHoney.Server.Proto.EquipmentProperty.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.EquipmentProperty> avatarEquipment_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.EquipmentProperty>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EquipmentProperty> _repeated_avatarEquipment_codec
+        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.EquipmentProperty.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EquipmentProperty> avatarEquipment_ = new pbc::RepeatedField<global::March7thHoney.Proto.EquipmentProperty>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.EquipmentProperty> AvatarEquipment {
+    public pbc::RepeatedField<global::March7thHoney.Proto.EquipmentProperty> AvatarEquipment {
       get { return avatarEquipment_; }
     }
 
@@ -383,45 +383,45 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "attack_type_damage" field.</summary>
     public const int AttackTypeDamageFieldNumber = 18;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.AttackDamageProperty> _repeated_attackTypeDamage_codec
-        = pb::FieldCodec.ForMessage(146, global::CastoriceHoney.Server.Proto.AttackDamageProperty.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AttackDamageProperty> attackTypeDamage_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AttackDamageProperty>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AttackDamageProperty> _repeated_attackTypeDamage_codec
+        = pb::FieldCodec.ForMessage(146, global::March7thHoney.Proto.AttackDamageProperty.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty> attackTypeDamage_ = new pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AttackDamageProperty> AttackTypeDamage {
+    public pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty> AttackTypeDamage {
       get { return attackTypeDamage_; }
     }
 
     /// <summary>Field number for the "attack_type_break_damage" field.</summary>
     public const int AttackTypeBreakDamageFieldNumber = 19;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.AttackDamageProperty> _repeated_attackTypeBreakDamage_codec
-        = pb::FieldCodec.ForMessage(154, global::CastoriceHoney.Server.Proto.AttackDamageProperty.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AttackDamageProperty> attackTypeBreakDamage_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AttackDamageProperty>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AttackDamageProperty> _repeated_attackTypeBreakDamage_codec
+        = pb::FieldCodec.ForMessage(154, global::March7thHoney.Proto.AttackDamageProperty.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty> attackTypeBreakDamage_ = new pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AttackDamageProperty> AttackTypeBreakDamage {
+    public pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty> AttackTypeBreakDamage {
       get { return attackTypeBreakDamage_; }
     }
 
     /// <summary>Field number for the "attack_type_max_damage" field.</summary>
     public const int AttackTypeMaxDamageFieldNumber = 20;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.AttackDamageProperty> _repeated_attackTypeMaxDamage_codec
-        = pb::FieldCodec.ForMessage(162, global::CastoriceHoney.Server.Proto.AttackDamageProperty.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AttackDamageProperty> attackTypeMaxDamage_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AttackDamageProperty>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AttackDamageProperty> _repeated_attackTypeMaxDamage_codec
+        = pb::FieldCodec.ForMessage(162, global::March7thHoney.Proto.AttackDamageProperty.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty> attackTypeMaxDamage_ = new pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AttackDamageProperty> AttackTypeMaxDamage {
+    public pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty> AttackTypeMaxDamage {
       get { return attackTypeMaxDamage_; }
     }
 
     /// <summary>Field number for the "skill_times" field.</summary>
     public const int SkillTimesFieldNumber = 21;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.SkillUseProperty> _repeated_skillTimes_codec
-        = pb::FieldCodec.ForMessage(170, global::CastoriceHoney.Server.Proto.SkillUseProperty.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.SkillUseProperty> skillTimes_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.SkillUseProperty>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.SkillUseProperty> _repeated_skillTimes_codec
+        = pb::FieldCodec.ForMessage(170, global::March7thHoney.Proto.SkillUseProperty.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.SkillUseProperty> skillTimes_ = new pbc::RepeatedField<global::March7thHoney.Proto.SkillUseProperty>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.SkillUseProperty> SkillTimes {
+    public pbc::RepeatedField<global::March7thHoney.Proto.SkillUseProperty> SkillTimes {
       get { return skillTimes_; }
     }
 
@@ -451,12 +451,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "sp_add_source" field.</summary>
     public const int SpAddSourceFieldNumber = 24;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.SpAddSource> _repeated_spAddSource_codec
-        = pb::FieldCodec.ForMessage(194, global::CastoriceHoney.Server.Proto.SpAddSource.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.SpAddSource> spAddSource_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.SpAddSource>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.SpAddSource> _repeated_spAddSource_codec
+        = pb::FieldCodec.ForMessage(194, global::March7thHoney.Proto.SpAddSource.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.SpAddSource> spAddSource_ = new pbc::RepeatedField<global::March7thHoney.Proto.SpAddSource>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.SpAddSource> SpAddSource {
+    public pbc::RepeatedField<global::March7thHoney.Proto.SpAddSource> SpAddSource {
       get { return spAddSource_; }
     }
 
@@ -558,10 +558,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "initial_status" field.</summary>
     public const int InitialStatusFieldNumber = 33;
-    private global::CastoriceHoney.Server.Proto.AvatarProperty initialStatus_;
+    private global::March7thHoney.Proto.AvatarProperty initialStatus_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.AvatarProperty InitialStatus {
+    public global::March7thHoney.Proto.AvatarProperty InitialStatus {
       get { return initialStatus_; }
       set {
         initialStatus_ = value;
@@ -570,12 +570,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "relics" field.</summary>
     public const int RelicsFieldNumber = 34;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.BattleRelic> _repeated_relics_codec
-        = pb::FieldCodec.ForMessage(274, global::CastoriceHoney.Server.Proto.BattleRelic.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BattleRelic> relics_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BattleRelic>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BattleRelic> _repeated_relics_codec
+        = pb::FieldCodec.ForMessage(274, global::March7thHoney.Proto.BattleRelic.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BattleRelic> relics_ = new pbc::RepeatedField<global::March7thHoney.Proto.BattleRelic>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BattleRelic> Relics {
+    public pbc::RepeatedField<global::March7thHoney.Proto.BattleRelic> Relics {
       get { return relics_; }
     }
 
@@ -593,12 +593,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "HLOOFKLELLJ" field.</summary>
     public const int HLOOFKLELLJFieldNumber = 36;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.AttackDamageProperty> _repeated_hLOOFKLELLJ_codec
-        = pb::FieldCodec.ForMessage(290, global::CastoriceHoney.Server.Proto.AttackDamageProperty.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AttackDamageProperty> hLOOFKLELLJ_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AttackDamageProperty>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AttackDamageProperty> _repeated_hLOOFKLELLJ_codec
+        = pb::FieldCodec.ForMessage(290, global::March7thHoney.Proto.AttackDamageProperty.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty> hLOOFKLELLJ_ = new pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AttackDamageProperty> HLOOFKLELLJ {
+    public pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty> HLOOFKLELLJ {
       get { return hLOOFKLELLJ_; }
     }
 
@@ -652,12 +652,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "GDAHCGCKOBO" field.</summary>
     public const int GDAHCGCKOBOFieldNumber = 41;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.OEMOCFJLGFI> _repeated_gDAHCGCKOBO_codec
-        = pb::FieldCodec.ForMessage(330, global::CastoriceHoney.Server.Proto.OEMOCFJLGFI.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.OEMOCFJLGFI> gDAHCGCKOBO_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.OEMOCFJLGFI>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.OEMOCFJLGFI> _repeated_gDAHCGCKOBO_codec
+        = pb::FieldCodec.ForMessage(330, global::March7thHoney.Proto.OEMOCFJLGFI.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.OEMOCFJLGFI> gDAHCGCKOBO_ = new pbc::RepeatedField<global::March7thHoney.Proto.OEMOCFJLGFI>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.OEMOCFJLGFI> GDAHCGCKOBO {
+    public pbc::RepeatedField<global::March7thHoney.Proto.OEMOCFJLGFI> GDAHCGCKOBO {
       get { return gDAHCGCKOBO_; }
     }
 
@@ -843,10 +843,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "NODDDNJAALP" field.</summary>
     public const int NODDDNJAALPFieldNumber = 57;
-    private global::CastoriceHoney.Server.Proto.HBFAMLLHFAF nODDDNJAALP_;
+    private global::March7thHoney.Proto.HBFAMLLHFAF nODDDNJAALP_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.HBFAMLLHFAF NODDDNJAALP {
+    public global::March7thHoney.Proto.HBFAMLLHFAF NODDDNJAALP {
       get { return nODDDNJAALP_; }
       set {
         nODDDNJAALP_ = value;
@@ -855,10 +855,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "MNHIJDJBKLB" field.</summary>
     public const int MNHIJDJBKLBFieldNumber = 58;
-    private global::CastoriceHoney.Server.Proto.DHNFGJBHMAA mNHIJDJBKLB_;
+    private global::March7thHoney.Proto.DHNFGJBHMAA mNHIJDJBKLB_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.DHNFGJBHMAA MNHIJDJBKLB {
+    public global::March7thHoney.Proto.DHNFGJBHMAA MNHIJDJBKLB {
       get { return mNHIJDJBKLB_; }
       set {
         mNHIJDJBKLB_ = value;
@@ -945,7 +945,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (AvatarType != global::CastoriceHoney.Server.Proto.AvatarType.None) hash ^= AvatarType.GetHashCode();
+      if (AvatarType != global::March7thHoney.Proto.AvatarType.None) hash ^= AvatarType.GetHashCode();
       if (Id != 0) hash ^= Id.GetHashCode();
       if (AvatarLevel != 0) hash ^= AvatarLevel.GetHashCode();
       if (AvatarRank != 0) hash ^= AvatarRank.GetHashCode();
@@ -1021,7 +1021,7 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (AvatarType != global::CastoriceHoney.Server.Proto.AvatarType.None) {
+      if (AvatarType != global::March7thHoney.Proto.AvatarType.None) {
         output.WriteRawTag(8);
         output.WriteEnum((int) AvatarType);
       }
@@ -1233,7 +1233,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (AvatarType != global::CastoriceHoney.Server.Proto.AvatarType.None) {
+      if (AvatarType != global::March7thHoney.Proto.AvatarType.None) {
         output.WriteRawTag(8);
         output.WriteEnum((int) AvatarType);
       }
@@ -1445,7 +1445,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (AvatarType != global::CastoriceHoney.Server.Proto.AvatarType.None) {
+      if (AvatarType != global::March7thHoney.Proto.AvatarType.None) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) AvatarType);
       }
       if (Id != 0) {
@@ -1611,7 +1611,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.AvatarType != global::CastoriceHoney.Server.Proto.AvatarType.None) {
+      if (other.AvatarType != global::March7thHoney.Proto.AvatarType.None) {
         AvatarType = other.AvatarType;
       }
       if (other.Id != 0) {
@@ -1628,7 +1628,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.avatarStatus_ != null) {
         if (avatarStatus_ == null) {
-          AvatarStatus = new global::CastoriceHoney.Server.Proto.AvatarProperty();
+          AvatarStatus = new global::March7thHoney.Proto.AvatarProperty();
         }
         AvatarStatus.MergeFrom(other.AvatarStatus);
       }
@@ -1698,7 +1698,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.initialStatus_ != null) {
         if (initialStatus_ == null) {
-          InitialStatus = new global::CastoriceHoney.Server.Proto.AvatarProperty();
+          InitialStatus = new global::March7thHoney.Proto.AvatarProperty();
         }
         InitialStatus.MergeFrom(other.InitialStatus);
       }
@@ -1767,13 +1767,13 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.nODDDNJAALP_ != null) {
         if (nODDDNJAALP_ == null) {
-          NODDDNJAALP = new global::CastoriceHoney.Server.Proto.HBFAMLLHFAF();
+          NODDDNJAALP = new global::March7thHoney.Proto.HBFAMLLHFAF();
         }
         NODDDNJAALP.MergeFrom(other.NODDDNJAALP);
       }
       if (other.mNHIJDJBKLB_ != null) {
         if (mNHIJDJBKLB_ == null) {
-          MNHIJDJBKLB = new global::CastoriceHoney.Server.Proto.DHNFGJBHMAA();
+          MNHIJDJBKLB = new global::March7thHoney.Proto.DHNFGJBHMAA();
         }
         MNHIJDJBKLB.MergeFrom(other.MNHIJDJBKLB);
       }
@@ -1797,7 +1797,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            AvatarType = (global::CastoriceHoney.Server.Proto.AvatarType) input.ReadEnum();
+            AvatarType = (global::March7thHoney.Proto.AvatarType) input.ReadEnum();
             break;
           }
           case 16: {
@@ -1818,7 +1818,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 50: {
             if (avatarStatus_ == null) {
-              AvatarStatus = new global::CastoriceHoney.Server.Proto.AvatarProperty();
+              AvatarStatus = new global::March7thHoney.Proto.AvatarProperty();
             }
             input.ReadMessage(AvatarStatus);
             break;
@@ -1929,7 +1929,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 266: {
             if (initialStatus_ == null) {
-              InitialStatus = new global::CastoriceHoney.Server.Proto.AvatarProperty();
+              InitialStatus = new global::March7thHoney.Proto.AvatarProperty();
             }
             input.ReadMessage(InitialStatus);
             break;
@@ -2028,14 +2028,14 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 458: {
             if (nODDDNJAALP_ == null) {
-              NODDDNJAALP = new global::CastoriceHoney.Server.Proto.HBFAMLLHFAF();
+              NODDDNJAALP = new global::March7thHoney.Proto.HBFAMLLHFAF();
             }
             input.ReadMessage(NODDDNJAALP);
             break;
           }
           case 466: {
             if (mNHIJDJBKLB_ == null) {
-              MNHIJDJBKLB = new global::CastoriceHoney.Server.Proto.DHNFGJBHMAA();
+              MNHIJDJBKLB = new global::March7thHoney.Proto.DHNFGJBHMAA();
             }
             input.ReadMessage(MNHIJDJBKLB);
             break;
@@ -2060,7 +2060,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            AvatarType = (global::CastoriceHoney.Server.Proto.AvatarType) input.ReadEnum();
+            AvatarType = (global::March7thHoney.Proto.AvatarType) input.ReadEnum();
             break;
           }
           case 16: {
@@ -2081,7 +2081,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 50: {
             if (avatarStatus_ == null) {
-              AvatarStatus = new global::CastoriceHoney.Server.Proto.AvatarProperty();
+              AvatarStatus = new global::March7thHoney.Proto.AvatarProperty();
             }
             input.ReadMessage(AvatarStatus);
             break;
@@ -2192,7 +2192,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 266: {
             if (initialStatus_ == null) {
-              InitialStatus = new global::CastoriceHoney.Server.Proto.AvatarProperty();
+              InitialStatus = new global::March7thHoney.Proto.AvatarProperty();
             }
             input.ReadMessage(InitialStatus);
             break;
@@ -2291,14 +2291,14 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 458: {
             if (nODDDNJAALP_ == null) {
-              NODDDNJAALP = new global::CastoriceHoney.Server.Proto.HBFAMLLHFAF();
+              NODDDNJAALP = new global::March7thHoney.Proto.HBFAMLLHFAF();
             }
             input.ReadMessage(NODDDNJAALP);
             break;
           }
           case 466: {
             if (mNHIJDJBKLB_ == null) {
-              MNHIJDJBKLB = new global::CastoriceHoney.Server.Proto.DHNFGJBHMAA();
+              MNHIJDJBKLB = new global::March7thHoney.Proto.DHNFGJBHMAA();
             }
             input.ReadMessage(MNHIJDJBKLB);
             break;

@@ -1,11 +1,11 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Data.Config;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.GameServer.Game.Scene;
-using CastoriceHoney.Server.GameServer.Game.Scene.Entity;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Data;
+using March7thHoney.Data.Config;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Game.Scene;
+using March7thHoney.GameServer.Game.Scene.Entity;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Game.Battle;
+namespace March7thHoney.GameServer.Game.Battle;
 
 public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player)
 {

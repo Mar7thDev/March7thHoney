@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.Data.Excel;
-using CastoriceHoney.Server.GameServer.Game.Battle;
+using March7thHoney.Data.Excel;
+using March7thHoney.GameServer.Game.Battle;
 
-namespace CastoriceHoney.Server.GameServer.Game.RogueTourn.Titan;
+namespace March7thHoney.GameServer.Game.RogueTourn.Titan;
 
 public class RogueTitanBlessInstance
 {

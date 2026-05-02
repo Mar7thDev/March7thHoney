@@ -1,10 +1,10 @@
-using CastoriceHoney.Server.Enums.RogueMagic;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.RogueMagic;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Scene;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Enums.RogueMagic;
+using March7thHoney.GameServer.Server.Packet.Send.RogueMagic;
+using March7thHoney.GameServer.Server.Packet.Send.Scene;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.RogueMagic;
+namespace March7thHoney.GameServer.Server.Packet.Recv.RogueMagic;
 
 [Opcode(CmdIds.RogueMagicEnterRoomCsReq)]
 public class HandlerRogueMagicEnterRoomCsReq : Handler

@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.Database.Inventory;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Quest;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Database.Inventory;
+using March7thHoney.GameServer.Server.Packet.Send.Quest;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Quest;
+namespace March7thHoney.GameServer.Server.Packet.Recv.Quest;
 
 [Opcode(CmdIds.TakeQuestRewardCsReq)]
 public class HandlerTakeQuestRewardCsReq : Handler

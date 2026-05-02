@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from DressRelicAvatarCsReq.proto</summary>
   public static partial class DressRelicAvatarCsReqReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "QjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2",
             "ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.DressRelicParamReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.DressRelicParamReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.DressRelicAvatarCsReq), global::CastoriceHoney.Server.Proto.DressRelicAvatarCsReq.Parser, new[]{ "AvatarId", "SwitchList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DressRelicAvatarCsReq), global::March7thHoney.Proto.DressRelicAvatarCsReq.Parser, new[]{ "AvatarId", "SwitchList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.DressRelicAvatarCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.DressRelicAvatarCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -99,12 +99,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "switch_list" field.</summary>
     public const int SwitchListFieldNumber = 10;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.DressRelicParam> _repeated_switchList_codec
-        = pb::FieldCodec.ForMessage(82, global::CastoriceHoney.Server.Proto.DressRelicParam.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.DressRelicParam> switchList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.DressRelicParam>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.DressRelicParam> _repeated_switchList_codec
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.DressRelicParam.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.DressRelicParam> switchList_ = new pbc::RepeatedField<global::March7thHoney.Proto.DressRelicParam>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.DressRelicParam> SwitchList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.DressRelicParam> SwitchList {
       get { return switchList_; }
     }
 

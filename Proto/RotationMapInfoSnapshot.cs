@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from RotationMapInfoSnapshot.proto</summary>
   public static partial class RotationMapInfoSnapshotReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "ZWN0b3JTbmFwc2hvdEIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9y",
             "aWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.VectorSnapshotReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.VectorSnapshotReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.RotationMapInfoSnapshot), global::CastoriceHoney.Server.Proto.RotationMapInfoSnapshot.Parser, new[]{ "MapPos", "MapRot" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RotationMapInfoSnapshot), global::March7thHoney.Proto.RotationMapInfoSnapshot.Parser, new[]{ "MapPos", "MapRot" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.RotationMapInfoSnapshotReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.RotationMapInfoSnapshotReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -87,10 +87,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "map_pos" field.</summary>
     public const int MapPosFieldNumber = 1;
-    private global::CastoriceHoney.Server.Proto.VectorSnapshot mapPos_;
+    private global::March7thHoney.Proto.VectorSnapshot mapPos_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.VectorSnapshot MapPos {
+    public global::March7thHoney.Proto.VectorSnapshot MapPos {
       get { return mapPos_; }
       set {
         mapPos_ = value;
@@ -99,10 +99,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "map_rot" field.</summary>
     public const int MapRotFieldNumber = 2;
-    private global::CastoriceHoney.Server.Proto.VectorSnapshot mapRot_;
+    private global::March7thHoney.Proto.VectorSnapshot mapRot_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.VectorSnapshot MapRot {
+    public global::March7thHoney.Proto.VectorSnapshot MapRot {
       get { return mapRot_; }
       set {
         mapRot_ = value;
@@ -209,13 +209,13 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.mapPos_ != null) {
         if (mapPos_ == null) {
-          MapPos = new global::CastoriceHoney.Server.Proto.VectorSnapshot();
+          MapPos = new global::March7thHoney.Proto.VectorSnapshot();
         }
         MapPos.MergeFrom(other.MapPos);
       }
       if (other.mapRot_ != null) {
         if (mapRot_ == null) {
-          MapRot = new global::CastoriceHoney.Server.Proto.VectorSnapshot();
+          MapRot = new global::March7thHoney.Proto.VectorSnapshot();
         }
         MapRot.MergeFrom(other.MapRot);
       }
@@ -240,14 +240,14 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 10: {
             if (mapPos_ == null) {
-              MapPos = new global::CastoriceHoney.Server.Proto.VectorSnapshot();
+              MapPos = new global::March7thHoney.Proto.VectorSnapshot();
             }
             input.ReadMessage(MapPos);
             break;
           }
           case 18: {
             if (mapRot_ == null) {
-              MapRot = new global::CastoriceHoney.Server.Proto.VectorSnapshot();
+              MapRot = new global::March7thHoney.Proto.VectorSnapshot();
             }
             input.ReadMessage(MapRot);
             break;
@@ -273,14 +273,14 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 10: {
             if (mapPos_ == null) {
-              MapPos = new global::CastoriceHoney.Server.Proto.VectorSnapshot();
+              MapPos = new global::March7thHoney.Proto.VectorSnapshot();
             }
             input.ReadMessage(MapPos);
             break;
           }
           case 18: {
             if (mapRot_ == null) {
-              MapRot = new global::CastoriceHoney.Server.Proto.VectorSnapshot();
+              MapRot = new global::March7thHoney.Proto.VectorSnapshot();
             }
             input.ReadMessage(MapRot);
             break;

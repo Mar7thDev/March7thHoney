@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GateServer.proto</summary>
   public static partial class GateServerReflection {
@@ -41,7 +41,7 @@ namespace CastoriceHoney.Server.Proto {
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GateServer), global::CastoriceHoney.Server.Proto.GateServer.Parser, new[]{ "Ip", "LuaUrl", "Port", "RegionName", "Unk1", "ExResourceUrl", "AssetBundleUrl", "Retcode", "Unk2", "Msg", "Unk3", "Unk4", "Unk10", "Unk5", "Unk6", "Unk14", "Unk13", "Unk7", "Unk8", "Unk15", "Unk16", "IfixVersion", "MdkResVersion", "Unk12", "AssetBundleUrlAndroid", "Unk11", "IfixUrl", "Unk9", "ClientSecretKey" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GateServer), global::March7thHoney.Proto.GateServer.Parser, new[]{ "Ip", "LuaUrl", "Port", "RegionName", "Unk1", "ExResourceUrl", "AssetBundleUrl", "Retcode", "Unk2", "Msg", "Unk3", "Unk4", "Unk10", "Unk5", "Unk6", "Unk14", "Unk13", "Unk7", "Unk8", "Unk15", "Unk16", "IfixVersion", "MdkResVersion", "Unk12", "AssetBundleUrlAndroid", "Unk11", "IfixUrl", "Unk9", "ClientSecretKey" }, null, null, null, null)
           }));
     }
     #endregion
@@ -63,7 +63,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GateServerReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GateServerReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

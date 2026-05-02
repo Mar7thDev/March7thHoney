@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Data.Excel;
-using CastoriceHoney.Server.GameServer.Game.RogueMagic.MagicUnit;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Data.Excel;
+using March7thHoney.GameServer.Game.RogueMagic.MagicUnit;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Game.RogueMagic.Scepter;
+namespace March7thHoney.GameServer.Game.RogueMagic.Scepter;
 
 public class RogueScepterInstance(RogueMagicScepterExcel excel)
 {

@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Enums.Server;
+using March7thHoney.Enums.Server;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace CastoriceHoney.Server.Data.Custom;
+namespace March7thHoney.Data.Custom;
 
 public class CustomPacketQueueConfig
 {

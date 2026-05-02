@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from DFKGECLBCDK.proto</summary>
   public static partial class DFKGECLBCDKReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "bV9saXN0GA8gAygNQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3Jp",
             "Y2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GridFightEquipTrackSourceReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridFightEquipTrackSourceReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.DFKGECLBCDK), global::CastoriceHoney.Server.Proto.DFKGECLBCDK.Parser, new[]{ "Source", "EDGEHIDLDBF", "BCGCGHEPDEA", "TrackEquippedIdList", "FANOLNOMHFI", "GridFightItemList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DFKGECLBCDK), global::March7thHoney.Proto.DFKGECLBCDK.Parser, new[]{ "Source", "EDGEHIDLDBF", "BCGCGHEPDEA", "TrackEquippedIdList", "FANOLNOMHFI", "GridFightItemList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.DFKGECLBCDKReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.DFKGECLBCDKReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -93,10 +93,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "source" field.</summary>
     public const int SourceFieldNumber = 1;
-    private global::CastoriceHoney.Server.Proto.GridFightEquipTrackSource source_ = global::CastoriceHoney.Server.Proto.GridFightEquipTrackSource.HnkkndhlognHlnmmmkheem;
+    private global::March7thHoney.Proto.GridFightEquipTrackSource source_ = global::March7thHoney.Proto.GridFightEquipTrackSource.HnkkndhlognHlnmmmkheem;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightEquipTrackSource Source {
+    public global::March7thHoney.Proto.GridFightEquipTrackSource Source {
       get { return source_; }
       set {
         source_ = value;
@@ -189,7 +189,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Source != global::CastoriceHoney.Server.Proto.GridFightEquipTrackSource.HnkkndhlognHlnmmmkheem) hash ^= Source.GetHashCode();
+      if (Source != global::March7thHoney.Proto.GridFightEquipTrackSource.HnkkndhlognHlnmmmkheem) hash ^= Source.GetHashCode();
       if (EDGEHIDLDBF != false) hash ^= EDGEHIDLDBF.GetHashCode();
       if (BCGCGHEPDEA != 0) hash ^= BCGCGHEPDEA.GetHashCode();
       hash ^= trackEquippedIdList_.GetHashCode();
@@ -213,7 +213,7 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Source != global::CastoriceHoney.Server.Proto.GridFightEquipTrackSource.HnkkndhlognHlnmmmkheem) {
+      if (Source != global::March7thHoney.Proto.GridFightEquipTrackSource.HnkkndhlognHlnmmmkheem) {
         output.WriteRawTag(8);
         output.WriteEnum((int) Source);
       }
@@ -241,7 +241,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Source != global::CastoriceHoney.Server.Proto.GridFightEquipTrackSource.HnkkndhlognHlnmmmkheem) {
+      if (Source != global::March7thHoney.Proto.GridFightEquipTrackSource.HnkkndhlognHlnmmmkheem) {
         output.WriteRawTag(8);
         output.WriteEnum((int) Source);
       }
@@ -269,7 +269,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Source != global::CastoriceHoney.Server.Proto.GridFightEquipTrackSource.HnkkndhlognHlnmmmkheem) {
+      if (Source != global::March7thHoney.Proto.GridFightEquipTrackSource.HnkkndhlognHlnmmmkheem) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Source);
       }
       if (EDGEHIDLDBF != false) {
@@ -295,7 +295,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.Source != global::CastoriceHoney.Server.Proto.GridFightEquipTrackSource.HnkkndhlognHlnmmmkheem) {
+      if (other.Source != global::March7thHoney.Proto.GridFightEquipTrackSource.HnkkndhlognHlnmmmkheem) {
         Source = other.Source;
       }
       if (other.EDGEHIDLDBF != false) {
@@ -329,7 +329,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            Source = (global::CastoriceHoney.Server.Proto.GridFightEquipTrackSource) input.ReadEnum();
+            Source = (global::March7thHoney.Proto.GridFightEquipTrackSource) input.ReadEnum();
             break;
           }
           case 24: {
@@ -374,7 +374,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            Source = (global::CastoriceHoney.Server.Proto.GridFightEquipTrackSource) input.ReadEnum();
+            Source = (global::March7thHoney.Proto.GridFightEquipTrackSource) input.ReadEnum();
             break;
           }
           case 24: {

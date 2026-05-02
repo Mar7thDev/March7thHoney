@@ -1,11 +1,11 @@
-using CastoriceHoney.Server.Database.Inventory;
-using CastoriceHoney.Server.Enums.Item;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Database.Inventory;
+using March7thHoney.Enums.Item;
+using March7thHoney.Util;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("MappingInfo.json")]
 public class MappingInfoExcel : ExcelResource

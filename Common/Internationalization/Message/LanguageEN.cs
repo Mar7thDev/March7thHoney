@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Internationalization.Message;
+namespace March7thHoney.Internationalization.Message;
 
 #region Root
 

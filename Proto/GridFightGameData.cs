@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GridFightGameData.proto</summary>
   public static partial class GridFightGameDataReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "cmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3Rv",
             "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GridFightGameItemInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridFightGameItemInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GridFightGameData), global::CastoriceHoney.Server.Proto.GridFightGameData.Parser, new[]{ "PGFMICHMHFC" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightGameData), global::March7thHoney.Proto.GridFightGameData.Parser, new[]{ "PGFMICHMHFC" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GridFightGameDataReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GridFightGameDataReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -86,12 +86,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "PGFMICHMHFC" field.</summary>
     public const int PGFMICHMHFCFieldNumber = 12;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.GridFightGameItemInfo> _repeated_pGFMICHMHFC_codec
-        = pb::FieldCodec.ForMessage(98, global::CastoriceHoney.Server.Proto.GridFightGameItemInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridFightGameItemInfo> pGFMICHMHFC_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridFightGameItemInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GridFightGameItemInfo> _repeated_pGFMICHMHFC_codec
+        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.GridFightGameItemInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GridFightGameItemInfo> pGFMICHMHFC_ = new pbc::RepeatedField<global::March7thHoney.Proto.GridFightGameItemInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridFightGameItemInfo> PGFMICHMHFC {
+    public pbc::RepeatedField<global::March7thHoney.Proto.GridFightGameItemInfo> PGFMICHMHFC {
       get { return pGFMICHMHFC_; }
     }
 

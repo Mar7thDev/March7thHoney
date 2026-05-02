@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from AOHPHEKEJMC.proto</summary>
   public static partial class AOHPHEKEJMCReflection {
@@ -30,7 +30,7 @@ namespace CastoriceHoney.Server.Proto {
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.AOHPHEKEJMC), global::CastoriceHoney.Server.Proto.AOHPHEKEJMC.Parser, new[]{ "BEDLMDHNMBJ" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AOHPHEKEJMC), global::March7thHoney.Proto.AOHPHEKEJMC.Parser, new[]{ "BEDLMDHNMBJ" }, null, null, null, null)
           }));
     }
     #endregion
@@ -52,7 +52,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.AOHPHEKEJMCReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.AOHPHEKEJMCReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

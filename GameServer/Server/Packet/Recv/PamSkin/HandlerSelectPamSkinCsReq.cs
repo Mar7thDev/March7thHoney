@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.PamSkin;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Data;
+using March7thHoney.GameServer.Server.Packet.Send.PamSkin;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.PamSkin;
+namespace March7thHoney.GameServer.Server.Packet.Recv.PamSkin;
 
 [Opcode(CmdIds.SelectPamSkinCsReq)]
 public class HandlerSelectPamSkinCsReq : Handler

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from SceneEntityInfo.proto</summary>
   public static partial class SceneEntityInfoReflection {
@@ -37,9 +37,9 @@ namespace CastoriceHoney.Server.Proto {
             "BmVudGl0eUIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9u",
             "ZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.MotionInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.SceneActorInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.SceneNpcInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.SceneNpcMonsterInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.ScenePropInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.SceneSummonUnitInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.MotionInfoReflection.Descriptor, global::March7thHoney.Proto.SceneActorInfoReflection.Descriptor, global::March7thHoney.Proto.SceneNpcInfoReflection.Descriptor, global::March7thHoney.Proto.SceneNpcMonsterInfoReflection.Descriptor, global::March7thHoney.Proto.ScenePropInfoReflection.Descriptor, global::March7thHoney.Proto.SceneSummonUnitInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.SceneEntityInfo), global::CastoriceHoney.Server.Proto.SceneEntityInfo.Parser, new[]{ "InstId", "Motion", "GroupId", "EntityId", "Actor", "Prop", "Npc", "NpcMonster", "SummonUnit" }, new[]{ "Entity" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneEntityInfo), global::March7thHoney.Proto.SceneEntityInfo.Parser, new[]{ "InstId", "Motion", "GroupId", "EntityId", "Actor", "Prop", "Npc", "NpcMonster", "SummonUnit" }, new[]{ "Entity" }, null, null, null)
           }));
     }
     #endregion
@@ -61,7 +61,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.SceneEntityInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.SceneEntityInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -126,10 +126,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "motion" field.</summary>
     public const int MotionFieldNumber = 12;
-    private global::CastoriceHoney.Server.Proto.MotionInfo motion_;
+    private global::March7thHoney.Proto.MotionInfo motion_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.MotionInfo Motion {
+    public global::March7thHoney.Proto.MotionInfo Motion {
       get { return motion_; }
       set {
         motion_ = value;
@@ -164,8 +164,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int ActorFieldNumber = 1;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.SceneActorInfo Actor {
-      get { return entityCase_ == EntityOneofCase.Actor ? (global::CastoriceHoney.Server.Proto.SceneActorInfo) entity_ : null; }
+    public global::March7thHoney.Proto.SceneActorInfo Actor {
+      get { return entityCase_ == EntityOneofCase.Actor ? (global::March7thHoney.Proto.SceneActorInfo) entity_ : null; }
       set {
         entity_ = value;
         entityCase_ = value == null ? EntityOneofCase.None : EntityOneofCase.Actor;
@@ -176,8 +176,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int PropFieldNumber = 3;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ScenePropInfo Prop {
-      get { return entityCase_ == EntityOneofCase.Prop ? (global::CastoriceHoney.Server.Proto.ScenePropInfo) entity_ : null; }
+    public global::March7thHoney.Proto.ScenePropInfo Prop {
+      get { return entityCase_ == EntityOneofCase.Prop ? (global::March7thHoney.Proto.ScenePropInfo) entity_ : null; }
       set {
         entity_ = value;
         entityCase_ = value == null ? EntityOneofCase.None : EntityOneofCase.Prop;
@@ -188,8 +188,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int NpcFieldNumber = 8;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.SceneNpcInfo Npc {
-      get { return entityCase_ == EntityOneofCase.Npc ? (global::CastoriceHoney.Server.Proto.SceneNpcInfo) entity_ : null; }
+    public global::March7thHoney.Proto.SceneNpcInfo Npc {
+      get { return entityCase_ == EntityOneofCase.Npc ? (global::March7thHoney.Proto.SceneNpcInfo) entity_ : null; }
       set {
         entity_ = value;
         entityCase_ = value == null ? EntityOneofCase.None : EntityOneofCase.Npc;
@@ -200,8 +200,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int NpcMonsterFieldNumber = 9;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.SceneNpcMonsterInfo NpcMonster {
-      get { return entityCase_ == EntityOneofCase.NpcMonster ? (global::CastoriceHoney.Server.Proto.SceneNpcMonsterInfo) entity_ : null; }
+    public global::March7thHoney.Proto.SceneNpcMonsterInfo NpcMonster {
+      get { return entityCase_ == EntityOneofCase.NpcMonster ? (global::March7thHoney.Proto.SceneNpcMonsterInfo) entity_ : null; }
       set {
         entity_ = value;
         entityCase_ = value == null ? EntityOneofCase.None : EntityOneofCase.NpcMonster;
@@ -212,8 +212,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int SummonUnitFieldNumber = 11;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.SceneSummonUnitInfo SummonUnit {
-      get { return entityCase_ == EntityOneofCase.SummonUnit ? (global::CastoriceHoney.Server.Proto.SceneSummonUnitInfo) entity_ : null; }
+    public global::March7thHoney.Proto.SceneSummonUnitInfo SummonUnit {
+      get { return entityCase_ == EntityOneofCase.SummonUnit ? (global::March7thHoney.Proto.SceneSummonUnitInfo) entity_ : null; }
       set {
         entity_ = value;
         entityCase_ = value == null ? EntityOneofCase.None : EntityOneofCase.SummonUnit;
@@ -440,7 +440,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.motion_ != null) {
         if (motion_ == null) {
-          Motion = new global::CastoriceHoney.Server.Proto.MotionInfo();
+          Motion = new global::March7thHoney.Proto.MotionInfo();
         }
         Motion.MergeFrom(other.Motion);
       }
@@ -453,31 +453,31 @@ namespace CastoriceHoney.Server.Proto {
       switch (other.EntityCase) {
         case EntityOneofCase.Actor:
           if (Actor == null) {
-            Actor = new global::CastoriceHoney.Server.Proto.SceneActorInfo();
+            Actor = new global::March7thHoney.Proto.SceneActorInfo();
           }
           Actor.MergeFrom(other.Actor);
           break;
         case EntityOneofCase.Prop:
           if (Prop == null) {
-            Prop = new global::CastoriceHoney.Server.Proto.ScenePropInfo();
+            Prop = new global::March7thHoney.Proto.ScenePropInfo();
           }
           Prop.MergeFrom(other.Prop);
           break;
         case EntityOneofCase.Npc:
           if (Npc == null) {
-            Npc = new global::CastoriceHoney.Server.Proto.SceneNpcInfo();
+            Npc = new global::March7thHoney.Proto.SceneNpcInfo();
           }
           Npc.MergeFrom(other.Npc);
           break;
         case EntityOneofCase.NpcMonster:
           if (NpcMonster == null) {
-            NpcMonster = new global::CastoriceHoney.Server.Proto.SceneNpcMonsterInfo();
+            NpcMonster = new global::March7thHoney.Proto.SceneNpcMonsterInfo();
           }
           NpcMonster.MergeFrom(other.NpcMonster);
           break;
         case EntityOneofCase.SummonUnit:
           if (SummonUnit == null) {
-            SummonUnit = new global::CastoriceHoney.Server.Proto.SceneSummonUnitInfo();
+            SummonUnit = new global::March7thHoney.Proto.SceneSummonUnitInfo();
           }
           SummonUnit.MergeFrom(other.SummonUnit);
           break;
@@ -503,7 +503,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            global::CastoriceHoney.Server.Proto.SceneActorInfo subBuilder = new global::CastoriceHoney.Server.Proto.SceneActorInfo();
+            global::March7thHoney.Proto.SceneActorInfo subBuilder = new global::March7thHoney.Proto.SceneActorInfo();
             if (entityCase_ == EntityOneofCase.Actor) {
               subBuilder.MergeFrom(Actor);
             }
@@ -512,7 +512,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 26: {
-            global::CastoriceHoney.Server.Proto.ScenePropInfo subBuilder = new global::CastoriceHoney.Server.Proto.ScenePropInfo();
+            global::March7thHoney.Proto.ScenePropInfo subBuilder = new global::March7thHoney.Proto.ScenePropInfo();
             if (entityCase_ == EntityOneofCase.Prop) {
               subBuilder.MergeFrom(Prop);
             }
@@ -525,7 +525,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 66: {
-            global::CastoriceHoney.Server.Proto.SceneNpcInfo subBuilder = new global::CastoriceHoney.Server.Proto.SceneNpcInfo();
+            global::March7thHoney.Proto.SceneNpcInfo subBuilder = new global::March7thHoney.Proto.SceneNpcInfo();
             if (entityCase_ == EntityOneofCase.Npc) {
               subBuilder.MergeFrom(Npc);
             }
@@ -534,7 +534,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 74: {
-            global::CastoriceHoney.Server.Proto.SceneNpcMonsterInfo subBuilder = new global::CastoriceHoney.Server.Proto.SceneNpcMonsterInfo();
+            global::March7thHoney.Proto.SceneNpcMonsterInfo subBuilder = new global::March7thHoney.Proto.SceneNpcMonsterInfo();
             if (entityCase_ == EntityOneofCase.NpcMonster) {
               subBuilder.MergeFrom(NpcMonster);
             }
@@ -543,7 +543,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 90: {
-            global::CastoriceHoney.Server.Proto.SceneSummonUnitInfo subBuilder = new global::CastoriceHoney.Server.Proto.SceneSummonUnitInfo();
+            global::March7thHoney.Proto.SceneSummonUnitInfo subBuilder = new global::March7thHoney.Proto.SceneSummonUnitInfo();
             if (entityCase_ == EntityOneofCase.SummonUnit) {
               subBuilder.MergeFrom(SummonUnit);
             }
@@ -553,7 +553,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 98: {
             if (motion_ == null) {
-              Motion = new global::CastoriceHoney.Server.Proto.MotionInfo();
+              Motion = new global::March7thHoney.Proto.MotionInfo();
             }
             input.ReadMessage(Motion);
             break;
@@ -586,7 +586,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            global::CastoriceHoney.Server.Proto.SceneActorInfo subBuilder = new global::CastoriceHoney.Server.Proto.SceneActorInfo();
+            global::March7thHoney.Proto.SceneActorInfo subBuilder = new global::March7thHoney.Proto.SceneActorInfo();
             if (entityCase_ == EntityOneofCase.Actor) {
               subBuilder.MergeFrom(Actor);
             }
@@ -595,7 +595,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 26: {
-            global::CastoriceHoney.Server.Proto.ScenePropInfo subBuilder = new global::CastoriceHoney.Server.Proto.ScenePropInfo();
+            global::March7thHoney.Proto.ScenePropInfo subBuilder = new global::March7thHoney.Proto.ScenePropInfo();
             if (entityCase_ == EntityOneofCase.Prop) {
               subBuilder.MergeFrom(Prop);
             }
@@ -608,7 +608,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 66: {
-            global::CastoriceHoney.Server.Proto.SceneNpcInfo subBuilder = new global::CastoriceHoney.Server.Proto.SceneNpcInfo();
+            global::March7thHoney.Proto.SceneNpcInfo subBuilder = new global::March7thHoney.Proto.SceneNpcInfo();
             if (entityCase_ == EntityOneofCase.Npc) {
               subBuilder.MergeFrom(Npc);
             }
@@ -617,7 +617,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 74: {
-            global::CastoriceHoney.Server.Proto.SceneNpcMonsterInfo subBuilder = new global::CastoriceHoney.Server.Proto.SceneNpcMonsterInfo();
+            global::March7thHoney.Proto.SceneNpcMonsterInfo subBuilder = new global::March7thHoney.Proto.SceneNpcMonsterInfo();
             if (entityCase_ == EntityOneofCase.NpcMonster) {
               subBuilder.MergeFrom(NpcMonster);
             }
@@ -626,7 +626,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 90: {
-            global::CastoriceHoney.Server.Proto.SceneSummonUnitInfo subBuilder = new global::CastoriceHoney.Server.Proto.SceneSummonUnitInfo();
+            global::March7thHoney.Proto.SceneSummonUnitInfo subBuilder = new global::March7thHoney.Proto.SceneSummonUnitInfo();
             if (entityCase_ == EntityOneofCase.SummonUnit) {
               subBuilder.MergeFrom(SummonUnit);
             }
@@ -636,7 +636,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 98: {
             if (motion_ == null) {
-              Motion = new global::CastoriceHoney.Server.Proto.MotionInfo();
+              Motion = new global::March7thHoney.Proto.MotionInfo();
             }
             input.ReadMessage(Motion);
             break;

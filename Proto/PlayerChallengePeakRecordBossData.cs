@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from PlayerChallengePeakRecordBossData.proto</summary>
   public static partial class PlayerChallengePeakRecordBossDataReflection {
@@ -33,9 +33,9 @@ namespace CastoriceHoney.Server.Proto {
             "CBIPCgdwZWFrX2lkGAsgASgNQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtD",
             "YXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ChallengeLineupListReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChallengeLineupListReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.PlayerChallengePeakRecordBossData), global::CastoriceHoney.Server.Proto.PlayerChallengePeakRecordBossData.Parser, new[]{ "Lineup", "OBPDENLMNII", "BestCycleCount", "EPCMADFOACA", "BuffId", "HEILKBJCAGB", "AFFIKAAMEJE", "PeakId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlayerChallengePeakRecordBossData), global::March7thHoney.Proto.PlayerChallengePeakRecordBossData.Parser, new[]{ "Lineup", "OBPDENLMNII", "BestCycleCount", "EPCMADFOACA", "BuffId", "HEILKBJCAGB", "AFFIKAAMEJE", "PeakId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -57,7 +57,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.PlayerChallengePeakRecordBossDataReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.PlayerChallengePeakRecordBossDataReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -96,10 +96,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "lineup" field.</summary>
     public const int LineupFieldNumber = 1;
-    private global::CastoriceHoney.Server.Proto.ChallengeLineupList lineup_;
+    private global::March7thHoney.Proto.ChallengeLineupList lineup_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ChallengeLineupList Lineup {
+    public global::March7thHoney.Proto.ChallengeLineupList Lineup {
       get { return lineup_; }
       set {
         lineup_ = value;
@@ -359,7 +359,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.lineup_ != null) {
         if (lineup_ == null) {
-          Lineup = new global::CastoriceHoney.Server.Proto.ChallengeLineupList();
+          Lineup = new global::March7thHoney.Proto.ChallengeLineupList();
         }
         Lineup.MergeFrom(other.Lineup);
       }
@@ -403,7 +403,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 10: {
             if (lineup_ == null) {
-              Lineup = new global::CastoriceHoney.Server.Proto.ChallengeLineupList();
+              Lineup = new global::March7thHoney.Proto.ChallengeLineupList();
             }
             input.ReadMessage(Lineup);
             break;
@@ -458,7 +458,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 10: {
             if (lineup_ == null) {
-              Lineup = new global::CastoriceHoney.Server.Proto.ChallengeLineupList();
+              Lineup = new global::March7thHoney.Proto.ChallengeLineupList();
             }
             input.ReadMessage(Lineup);
             break;

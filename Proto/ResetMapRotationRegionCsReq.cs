@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from ResetMapRotationRegionCsReq.proto</summary>
   public static partial class ResetMapRotationRegionCsReqReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "dW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9i",
             "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.MotionInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.RotateMapInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.MotionInfoReflection.Descriptor, global::March7thHoney.Proto.RotateMapInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ResetMapRotationRegionCsReq), global::CastoriceHoney.Server.Proto.ResetMapRotationRegionCsReq.Parser, new[]{ "Motion", "AMMJECHPGPE" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ResetMapRotationRegionCsReq), global::March7thHoney.Proto.ResetMapRotationRegionCsReq.Parser, new[]{ "Motion", "AMMJECHPGPE" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ResetMapRotationRegionCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ResetMapRotationRegionCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -88,10 +88,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "motion" field.</summary>
     public const int MotionFieldNumber = 1;
-    private global::CastoriceHoney.Server.Proto.MotionInfo motion_;
+    private global::March7thHoney.Proto.MotionInfo motion_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.MotionInfo Motion {
+    public global::March7thHoney.Proto.MotionInfo Motion {
       get { return motion_; }
       set {
         motion_ = value;
@@ -100,10 +100,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "AMMJECHPGPE" field.</summary>
     public const int AMMJECHPGPEFieldNumber = 12;
-    private global::CastoriceHoney.Server.Proto.RotateMapInfo aMMJECHPGPE_;
+    private global::March7thHoney.Proto.RotateMapInfo aMMJECHPGPE_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.RotateMapInfo AMMJECHPGPE {
+    public global::March7thHoney.Proto.RotateMapInfo AMMJECHPGPE {
       get { return aMMJECHPGPE_; }
       set {
         aMMJECHPGPE_ = value;
@@ -210,13 +210,13 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.motion_ != null) {
         if (motion_ == null) {
-          Motion = new global::CastoriceHoney.Server.Proto.MotionInfo();
+          Motion = new global::March7thHoney.Proto.MotionInfo();
         }
         Motion.MergeFrom(other.Motion);
       }
       if (other.aMMJECHPGPE_ != null) {
         if (aMMJECHPGPE_ == null) {
-          AMMJECHPGPE = new global::CastoriceHoney.Server.Proto.RotateMapInfo();
+          AMMJECHPGPE = new global::March7thHoney.Proto.RotateMapInfo();
         }
         AMMJECHPGPE.MergeFrom(other.AMMJECHPGPE);
       }
@@ -241,14 +241,14 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 10: {
             if (motion_ == null) {
-              Motion = new global::CastoriceHoney.Server.Proto.MotionInfo();
+              Motion = new global::March7thHoney.Proto.MotionInfo();
             }
             input.ReadMessage(Motion);
             break;
           }
           case 98: {
             if (aMMJECHPGPE_ == null) {
-              AMMJECHPGPE = new global::CastoriceHoney.Server.Proto.RotateMapInfo();
+              AMMJECHPGPE = new global::March7thHoney.Proto.RotateMapInfo();
             }
             input.ReadMessage(AMMJECHPGPE);
             break;
@@ -274,14 +274,14 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 10: {
             if (motion_ == null) {
-              Motion = new global::CastoriceHoney.Server.Proto.MotionInfo();
+              Motion = new global::March7thHoney.Proto.MotionInfo();
             }
             input.ReadMessage(Motion);
             break;
           }
           case 98: {
             if (aMMJECHPGPE_ == null) {
-              AMMJECHPGPE = new global::CastoriceHoney.Server.Proto.RotateMapInfo();
+              AMMJECHPGPE = new global::March7thHoney.Proto.RotateMapInfo();
             }
             input.ReadMessage(AMMJECHPGPE);
             break;

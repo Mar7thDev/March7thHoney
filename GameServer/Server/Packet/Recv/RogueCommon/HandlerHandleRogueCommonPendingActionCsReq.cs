@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.GameServer.Game.RogueMagic;
-using CastoriceHoney.Server.GameServer.Game.RogueTourn;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.GameServer.Game.RogueMagic;
+using March7thHoney.GameServer.Game.RogueTourn;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.RogueCommon;
+namespace March7thHoney.GameServer.Server.Packet.Recv.RogueCommon;
 
 [Opcode(CmdIds.HandleRogueCommonPendingActionCsReq)]
 public class HandlerHandleRogueCommonPendingActionCsReq : Handler

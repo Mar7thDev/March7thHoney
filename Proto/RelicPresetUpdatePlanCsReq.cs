@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from RelicPresetUpdatePlanCsReq.proto</summary>
   public static partial class RelicPresetUpdatePlanCsReqReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "YXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZw",
             "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.DPDDLAOBMBHReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.DPDDLAOBMBHReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.RelicPresetUpdatePlanCsReq), global::CastoriceHoney.Server.Proto.RelicPresetUpdatePlanCsReq.Parser, new[]{ "UniqueId", "RelicList", "Name" }, new[]{ "BPIHFAJCLOC" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RelicPresetUpdatePlanCsReq), global::March7thHoney.Proto.RelicPresetUpdatePlanCsReq.Parser, new[]{ "UniqueId", "RelicList", "Name" }, new[]{ "BPIHFAJCLOC" }, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.RelicPresetUpdatePlanCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.RelicPresetUpdatePlanCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -110,8 +110,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int RelicListFieldNumber = 3;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.DPDDLAOBMBH RelicList {
-      get { return bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.RelicList ? (global::CastoriceHoney.Server.Proto.DPDDLAOBMBH) bPIHFAJCLOC_ : null; }
+    public global::March7thHoney.Proto.DPDDLAOBMBH RelicList {
+      get { return bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.RelicList ? (global::March7thHoney.Proto.DPDDLAOBMBH) bPIHFAJCLOC_ : null; }
       set {
         bPIHFAJCLOC_ = value;
         bPIHFAJCLOCCase_ = value == null ? BPIHFAJCLOCOneofCase.None : BPIHFAJCLOCOneofCase.RelicList;
@@ -284,7 +284,7 @@ namespace CastoriceHoney.Server.Proto {
       switch (other.BPIHFAJCLOCCase) {
         case BPIHFAJCLOCOneofCase.RelicList:
           if (RelicList == null) {
-            RelicList = new global::CastoriceHoney.Server.Proto.DPDDLAOBMBH();
+            RelicList = new global::March7thHoney.Proto.DPDDLAOBMBH();
           }
           RelicList.MergeFrom(other.RelicList);
           break;
@@ -313,7 +313,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 26: {
-            global::CastoriceHoney.Server.Proto.DPDDLAOBMBH subBuilder = new global::CastoriceHoney.Server.Proto.DPDDLAOBMBH();
+            global::March7thHoney.Proto.DPDDLAOBMBH subBuilder = new global::March7thHoney.Proto.DPDDLAOBMBH();
             if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.RelicList) {
               subBuilder.MergeFrom(RelicList);
             }
@@ -349,7 +349,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 26: {
-            global::CastoriceHoney.Server.Proto.DPDDLAOBMBH subBuilder = new global::CastoriceHoney.Server.Proto.DPDDLAOBMBH();
+            global::March7thHoney.Proto.DPDDLAOBMBH subBuilder = new global::March7thHoney.Proto.DPDDLAOBMBH();
             if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.RelicList) {
               subBuilder.MergeFrom(RelicList);
             }

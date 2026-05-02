@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from TravelBrochureGetDataScRsp.proto</summary>
   public static partial class TravelBrochureGetDataScRspReflection {
@@ -35,9 +35,9 @@ namespace CastoriceHoney.Server.Proto {
             "dmFsdWUYAiABKA06AjgBQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0",
             "b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.PBPIOFGODHCReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.PBPIOFGODHCReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.TravelBrochureGetDataScRsp), global::CastoriceHoney.Server.Proto.TravelBrochureGetDataScRsp.Parser, new[]{ "LNDBNIHAICB", "Retcode", "CustomValue", "CIBCCOJLLIA" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TravelBrochureGetDataScRsp), global::March7thHoney.Proto.TravelBrochureGetDataScRsp.Parser, new[]{ "LNDBNIHAICB", "Retcode", "CustomValue", "CIBCCOJLLIA" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, })
           }));
     }
     #endregion
@@ -59,7 +59,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.TravelBrochureGetDataScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.TravelBrochureGetDataScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -94,12 +94,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "LNDBNIHAICB" field.</summary>
     public const int LNDBNIHAICBFieldNumber = 3;
-    private static readonly pbc::MapField<uint, global::CastoriceHoney.Server.Proto.PBPIOFGODHC>.Codec _map_lNDBNIHAICB_codec
-        = new pbc::MapField<uint, global::CastoriceHoney.Server.Proto.PBPIOFGODHC>.Codec(pb::FieldCodec.ForUInt32(8, 0), pb::FieldCodec.ForMessage(18, global::CastoriceHoney.Server.Proto.PBPIOFGODHC.Parser), 26);
-    private readonly pbc::MapField<uint, global::CastoriceHoney.Server.Proto.PBPIOFGODHC> lNDBNIHAICB_ = new pbc::MapField<uint, global::CastoriceHoney.Server.Proto.PBPIOFGODHC>();
+    private static readonly pbc::MapField<uint, global::March7thHoney.Proto.PBPIOFGODHC>.Codec _map_lNDBNIHAICB_codec
+        = new pbc::MapField<uint, global::March7thHoney.Proto.PBPIOFGODHC>.Codec(pb::FieldCodec.ForUInt32(8, 0), pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.PBPIOFGODHC.Parser), 26);
+    private readonly pbc::MapField<uint, global::March7thHoney.Proto.PBPIOFGODHC> lNDBNIHAICB_ = new pbc::MapField<uint, global::March7thHoney.Proto.PBPIOFGODHC>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<uint, global::CastoriceHoney.Server.Proto.PBPIOFGODHC> LNDBNIHAICB {
+    public pbc::MapField<uint, global::March7thHoney.Proto.PBPIOFGODHC> LNDBNIHAICB {
       get { return lNDBNIHAICB_; }
     }
 

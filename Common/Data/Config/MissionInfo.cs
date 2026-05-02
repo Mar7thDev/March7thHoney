@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.Data.Excel;
-using CastoriceHoney.Server.Enums.Mission;
+using March7thHoney.Data.Excel;
+using March7thHoney.Enums.Mission;
 using Newtonsoft.Json;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.Data.Config;
+namespace March7thHoney.Data.Config;
 
 public class MissionInfo
 {

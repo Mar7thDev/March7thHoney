@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from BatchRankUpEquipmentCsReq.proto</summary>
   public static partial class BatchRankUpEquipmentCsReqReflection {
@@ -29,9 +29,9 @@ namespace CastoriceHoney.Server.Proto {
             "aF9saXN0GAIgAygLMgwuS0NDRk5NT0lNQVBCMwoTZW11Lmx1bmFyY29yZS5w",
             "cm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.KCCFNMOIMAPReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.KCCFNMOIMAPReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.BatchRankUpEquipmentCsReq), global::CastoriceHoney.Server.Proto.BatchRankUpEquipmentCsReq.Parser, new[]{ "SwitchList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BatchRankUpEquipmentCsReq), global::March7thHoney.Proto.BatchRankUpEquipmentCsReq.Parser, new[]{ "SwitchList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -53,7 +53,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.BatchRankUpEquipmentCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.BatchRankUpEquipmentCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -85,12 +85,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "switch_list" field.</summary>
     public const int SwitchListFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.KCCFNMOIMAP> _repeated_switchList_codec
-        = pb::FieldCodec.ForMessage(18, global::CastoriceHoney.Server.Proto.KCCFNMOIMAP.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.KCCFNMOIMAP> switchList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.KCCFNMOIMAP>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.KCCFNMOIMAP> _repeated_switchList_codec
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.KCCFNMOIMAP.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.KCCFNMOIMAP> switchList_ = new pbc::RepeatedField<global::March7thHoney.Proto.KCCFNMOIMAP>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.KCCFNMOIMAP> SwitchList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.KCCFNMOIMAP> SwitchList {
       get { return switchList_; }
     }
 

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from TechTreeChangeNodeStateCsRsp.proto</summary>
   public static partial class TechTreeChangeNodeStateCsRspReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "EhMKC05MR05BS0tDREdPGAYgASgNQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+q",
             "AhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.JDKJPFGJOBIReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.JDKJPFGJOBIReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.TechTreeChangeNodeStateCsRsp), global::CastoriceHoney.Server.Proto.TechTreeChangeNodeStateCsRsp.Parser, new[]{ "Retcode", "OpType", "NLGNAKKCDGO" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TechTreeChangeNodeStateCsRsp), global::March7thHoney.Proto.TechTreeChangeNodeStateCsRsp.Parser, new[]{ "Retcode", "OpType", "NLGNAKKCDGO" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.TechTreeChangeNodeStateCsRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.TechTreeChangeNodeStateCsRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -100,10 +100,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "op_type" field.</summary>
     public const int OpTypeFieldNumber = 5;
-    private global::CastoriceHoney.Server.Proto.JDKJPFGJOBI opType_ = global::CastoriceHoney.Server.Proto.JDKJPFGJOBI.Pcpdhelpkem;
+    private global::March7thHoney.Proto.JDKJPFGJOBI opType_ = global::March7thHoney.Proto.JDKJPFGJOBI.Pcpdhelpkem;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.JDKJPFGJOBI OpType {
+    public global::March7thHoney.Proto.JDKJPFGJOBI OpType {
       get { return opType_; }
       set {
         opType_ = value;
@@ -148,7 +148,7 @@ namespace CastoriceHoney.Server.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
-      if (OpType != global::CastoriceHoney.Server.Proto.JDKJPFGJOBI.Pcpdhelpkem) hash ^= OpType.GetHashCode();
+      if (OpType != global::March7thHoney.Proto.JDKJPFGJOBI.Pcpdhelpkem) hash ^= OpType.GetHashCode();
       if (NLGNAKKCDGO != 0) hash ^= NLGNAKKCDGO.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -172,7 +172,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(24);
         output.WriteUInt32(Retcode);
       }
-      if (OpType != global::CastoriceHoney.Server.Proto.JDKJPFGJOBI.Pcpdhelpkem) {
+      if (OpType != global::March7thHoney.Proto.JDKJPFGJOBI.Pcpdhelpkem) {
         output.WriteRawTag(40);
         output.WriteEnum((int) OpType);
       }
@@ -194,7 +194,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(24);
         output.WriteUInt32(Retcode);
       }
-      if (OpType != global::CastoriceHoney.Server.Proto.JDKJPFGJOBI.Pcpdhelpkem) {
+      if (OpType != global::March7thHoney.Proto.JDKJPFGJOBI.Pcpdhelpkem) {
         output.WriteRawTag(40);
         output.WriteEnum((int) OpType);
       }
@@ -215,7 +215,7 @@ namespace CastoriceHoney.Server.Proto {
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
-      if (OpType != global::CastoriceHoney.Server.Proto.JDKJPFGJOBI.Pcpdhelpkem) {
+      if (OpType != global::March7thHoney.Proto.JDKJPFGJOBI.Pcpdhelpkem) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) OpType);
       }
       if (NLGNAKKCDGO != 0) {
@@ -236,7 +236,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
-      if (other.OpType != global::CastoriceHoney.Server.Proto.JDKJPFGJOBI.Pcpdhelpkem) {
+      if (other.OpType != global::March7thHoney.Proto.JDKJPFGJOBI.Pcpdhelpkem) {
         OpType = other.OpType;
       }
       if (other.NLGNAKKCDGO != 0) {
@@ -266,7 +266,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 40: {
-            OpType = (global::CastoriceHoney.Server.Proto.JDKJPFGJOBI) input.ReadEnum();
+            OpType = (global::March7thHoney.Proto.JDKJPFGJOBI) input.ReadEnum();
             break;
           }
           case 48: {
@@ -297,7 +297,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 40: {
-            OpType = (global::CastoriceHoney.Server.Proto.JDKJPFGJOBI) input.ReadEnum();
+            OpType = (global::March7thHoney.Proto.JDKJPFGJOBI) input.ReadEnum();
             break;
           }
           case 48: {

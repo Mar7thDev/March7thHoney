@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from TrainVisitorRewardSendNotify.proto</summary>
   public static partial class TrainVisitorRewardSendNotifyReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "ChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVy",
             "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ItemListReflection.Descriptor, global::CastoriceHoney.Server.Proto.PLHBBMEMDBGReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemListReflection.Descriptor, global::March7thHoney.Proto.PLHBBMEMDBGReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.TrainVisitorRewardSendNotify), global::CastoriceHoney.Server.Proto.TrainVisitorRewardSendNotify.Parser, new[]{ "VisitorId", "Type", "Reward" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TrainVisitorRewardSendNotify), global::March7thHoney.Proto.TrainVisitorRewardSendNotify.Parser, new[]{ "VisitorId", "Type", "Reward" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.TrainVisitorRewardSendNotifyReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.TrainVisitorRewardSendNotifyReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -101,10 +101,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "type" field.</summary>
     public const int TypeFieldNumber = 10;
-    private global::CastoriceHoney.Server.Proto.PLHBBMEMDBG type_ = global::CastoriceHoney.Server.Proto.PLHBBMEMDBG.Nmhbefnnoac;
+    private global::March7thHoney.Proto.PLHBBMEMDBG type_ = global::March7thHoney.Proto.PLHBBMEMDBG.Nmhbefnnoac;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.PLHBBMEMDBG Type {
+    public global::March7thHoney.Proto.PLHBBMEMDBG Type {
       get { return type_; }
       set {
         type_ = value;
@@ -113,10 +113,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "reward" field.</summary>
     public const int RewardFieldNumber = 13;
-    private global::CastoriceHoney.Server.Proto.ItemList reward_;
+    private global::March7thHoney.Proto.ItemList reward_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ItemList Reward {
+    public global::March7thHoney.Proto.ItemList Reward {
       get { return reward_; }
       set {
         reward_ = value;
@@ -149,7 +149,7 @@ namespace CastoriceHoney.Server.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (VisitorId != 0) hash ^= VisitorId.GetHashCode();
-      if (Type != global::CastoriceHoney.Server.Proto.PLHBBMEMDBG.Nmhbefnnoac) hash ^= Type.GetHashCode();
+      if (Type != global::March7thHoney.Proto.PLHBBMEMDBG.Nmhbefnnoac) hash ^= Type.GetHashCode();
       if (reward_ != null) hash ^= Reward.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -173,7 +173,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(48);
         output.WriteUInt32(VisitorId);
       }
-      if (Type != global::CastoriceHoney.Server.Proto.PLHBBMEMDBG.Nmhbefnnoac) {
+      if (Type != global::March7thHoney.Proto.PLHBBMEMDBG.Nmhbefnnoac) {
         output.WriteRawTag(80);
         output.WriteEnum((int) Type);
       }
@@ -195,7 +195,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(48);
         output.WriteUInt32(VisitorId);
       }
-      if (Type != global::CastoriceHoney.Server.Proto.PLHBBMEMDBG.Nmhbefnnoac) {
+      if (Type != global::March7thHoney.Proto.PLHBBMEMDBG.Nmhbefnnoac) {
         output.WriteRawTag(80);
         output.WriteEnum((int) Type);
       }
@@ -216,7 +216,7 @@ namespace CastoriceHoney.Server.Proto {
       if (VisitorId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(VisitorId);
       }
-      if (Type != global::CastoriceHoney.Server.Proto.PLHBBMEMDBG.Nmhbefnnoac) {
+      if (Type != global::March7thHoney.Proto.PLHBBMEMDBG.Nmhbefnnoac) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
       }
       if (reward_ != null) {
@@ -237,12 +237,12 @@ namespace CastoriceHoney.Server.Proto {
       if (other.VisitorId != 0) {
         VisitorId = other.VisitorId;
       }
-      if (other.Type != global::CastoriceHoney.Server.Proto.PLHBBMEMDBG.Nmhbefnnoac) {
+      if (other.Type != global::March7thHoney.Proto.PLHBBMEMDBG.Nmhbefnnoac) {
         Type = other.Type;
       }
       if (other.reward_ != null) {
         if (reward_ == null) {
-          Reward = new global::CastoriceHoney.Server.Proto.ItemList();
+          Reward = new global::March7thHoney.Proto.ItemList();
         }
         Reward.MergeFrom(other.Reward);
       }
@@ -270,12 +270,12 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 80: {
-            Type = (global::CastoriceHoney.Server.Proto.PLHBBMEMDBG) input.ReadEnum();
+            Type = (global::March7thHoney.Proto.PLHBBMEMDBG) input.ReadEnum();
             break;
           }
           case 106: {
             if (reward_ == null) {
-              Reward = new global::CastoriceHoney.Server.Proto.ItemList();
+              Reward = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(Reward);
             break;
@@ -304,12 +304,12 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 80: {
-            Type = (global::CastoriceHoney.Server.Proto.PLHBBMEMDBG) input.ReadEnum();
+            Type = (global::March7thHoney.Proto.PLHBBMEMDBG) input.ReadEnum();
             break;
           }
           case 106: {
             if (reward_ == null) {
-              Reward = new global::CastoriceHoney.Server.Proto.ItemList();
+              Reward = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(Reward);
             break;

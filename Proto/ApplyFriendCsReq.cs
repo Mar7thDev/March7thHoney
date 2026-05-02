@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from ApplyFriendCsReq.proto</summary>
   public static partial class ApplyFriendCsReqReflection {
@@ -29,9 +29,9 @@ namespace CastoriceHoney.Server.Proto {
             "aWVuZEFwcGx5U291cmNlEgsKA3VpZBgPIAEoDUIzChNlbXUubHVuYXJjb3Jl",
             "LnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.FriendApplySourceReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.FriendApplySourceReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ApplyFriendCsReq), global::CastoriceHoney.Server.Proto.ApplyFriendCsReq.Parser, new[]{ "Source", "Uid" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ApplyFriendCsReq), global::March7thHoney.Proto.ApplyFriendCsReq.Parser, new[]{ "Source", "Uid" }, null, null, null, null)
           }));
     }
     #endregion
@@ -53,7 +53,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ApplyFriendCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ApplyFriendCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -86,10 +86,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "source" field.</summary>
     public const int SourceFieldNumber = 8;
-    private global::CastoriceHoney.Server.Proto.FriendApplySource source_ = global::CastoriceHoney.Server.Proto.FriendApplySource.PabbphoidbfPcpdhelpkem;
+    private global::March7thHoney.Proto.FriendApplySource source_ = global::March7thHoney.Proto.FriendApplySource.PabbphoidbfPcpdhelpkem;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.FriendApplySource Source {
+    public global::March7thHoney.Proto.FriendApplySource Source {
       get { return source_; }
       set {
         source_ = value;
@@ -132,7 +132,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Source != global::CastoriceHoney.Server.Proto.FriendApplySource.PabbphoidbfPcpdhelpkem) hash ^= Source.GetHashCode();
+      if (Source != global::March7thHoney.Proto.FriendApplySource.PabbphoidbfPcpdhelpkem) hash ^= Source.GetHashCode();
       if (Uid != 0) hash ^= Uid.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -152,7 +152,7 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Source != global::CastoriceHoney.Server.Proto.FriendApplySource.PabbphoidbfPcpdhelpkem) {
+      if (Source != global::March7thHoney.Proto.FriendApplySource.PabbphoidbfPcpdhelpkem) {
         output.WriteRawTag(64);
         output.WriteEnum((int) Source);
       }
@@ -170,7 +170,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Source != global::CastoriceHoney.Server.Proto.FriendApplySource.PabbphoidbfPcpdhelpkem) {
+      if (Source != global::March7thHoney.Proto.FriendApplySource.PabbphoidbfPcpdhelpkem) {
         output.WriteRawTag(64);
         output.WriteEnum((int) Source);
       }
@@ -188,7 +188,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Source != global::CastoriceHoney.Server.Proto.FriendApplySource.PabbphoidbfPcpdhelpkem) {
+      if (Source != global::March7thHoney.Proto.FriendApplySource.PabbphoidbfPcpdhelpkem) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Source);
       }
       if (Uid != 0) {
@@ -206,7 +206,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.Source != global::CastoriceHoney.Server.Proto.FriendApplySource.PabbphoidbfPcpdhelpkem) {
+      if (other.Source != global::March7thHoney.Proto.FriendApplySource.PabbphoidbfPcpdhelpkem) {
         Source = other.Source;
       }
       if (other.Uid != 0) {
@@ -232,7 +232,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 64: {
-            Source = (global::CastoriceHoney.Server.Proto.FriendApplySource) input.ReadEnum();
+            Source = (global::March7thHoney.Proto.FriendApplySource) input.ReadEnum();
             break;
           }
           case 120: {
@@ -259,7 +259,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 64: {
-            Source = (global::CastoriceHoney.Server.Proto.FriendApplySource) input.ReadEnum();
+            Source = (global::March7thHoney.Proto.FriendApplySource) input.ReadEnum();
             break;
           }
           case 120: {

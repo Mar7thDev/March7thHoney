@@ -1,21 +1,21 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Database.Challenge;
-using CastoriceHoney.Server.Database.Lineup;
-using CastoriceHoney.Server.GameServer.Game.Challenge.Instances;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.ChallengePeak;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Proto.ServerSide;
-using CastoriceHoney.Server.Util;
-using ChallengePeakLevelInfo = CastoriceHoney.Server.Proto.ChallengePeakLevelInfo;
+using March7thHoney.Data;
+using March7thHoney.Database.Challenge;
+using March7thHoney.Database.Lineup;
+using March7thHoney.GameServer.Game.Challenge.Instances;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Server.Packet.Send.ChallengePeak;
+using March7thHoney.Proto;
+using March7thHoney.Proto.ServerSide;
+using March7thHoney.Util;
+using ChallengePeakLevelInfo = March7thHoney.Proto.ChallengePeakLevelInfo;
 
-namespace CastoriceHoney.Server.GameServer.Game.ChallengePeak;
+namespace March7thHoney.GameServer.Game.ChallengePeak;
 
 /// <summary>
 ///     this class is used to manage the challenge peak for a player
 ///     but the challenge instance shouldnt be stored here ( see ChallengeManager )
 /// </summary>
-/// <see cref="CastoriceHoney.Server.GameServer.Game.Challenge.ChallengeManager" />
+/// <see cref="March7thHoney.GameServer.Game.Challenge.ChallengeManager" />
 public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(player)
 {
     public bool BossIsHard { get; set; } = true;

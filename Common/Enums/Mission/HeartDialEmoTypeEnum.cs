@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Enums.Mission;
+namespace March7thHoney.Enums.Mission;
 
 public enum HeartDialEmoTypeEnum
 {

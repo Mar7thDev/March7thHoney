@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from PerformanceStartSnapshot.proto</summary>
   public static partial class PerformanceStartSnapshotReflection {
@@ -54,9 +54,9 @@ namespace CastoriceHoney.Server.Proto {
             "b3Q6AjgBQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25l",
             "eS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.DialogSnapshotReflection.Descriptor, global::CastoriceHoney.Server.Proto.EraFlipperSnapshotReflection.Descriptor, global::CastoriceHoney.Server.Proto.FloorCustomValueSnapshotReflection.Descriptor, global::CastoriceHoney.Server.Proto.GroupSnapshotReflection.Descriptor, global::CastoriceHoney.Server.Proto.MapRotationSnapshotReflection.Descriptor, global::CastoriceHoney.Server.Proto.MissionSnapshotReflection.Descriptor, global::CastoriceHoney.Server.Proto.PlayerSnapshotReflection.Descriptor, global::CastoriceHoney.Server.Proto.SwitchHandSnapshotReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.DialogSnapshotReflection.Descriptor, global::March7thHoney.Proto.EraFlipperSnapshotReflection.Descriptor, global::March7thHoney.Proto.FloorCustomValueSnapshotReflection.Descriptor, global::March7thHoney.Proto.GroupSnapshotReflection.Descriptor, global::March7thHoney.Proto.MapRotationSnapshotReflection.Descriptor, global::March7thHoney.Proto.MissionSnapshotReflection.Descriptor, global::March7thHoney.Proto.PlayerSnapshotReflection.Descriptor, global::March7thHoney.Proto.SwitchHandSnapshotReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.PerformanceStartSnapshot), global::CastoriceHoney.Server.Proto.PerformanceStartSnapshot.Parser, new[]{ "PerformanceId", "PerformanceType", "PlaneId", "FloorId", "DimensionId", "StoryLineId", "ContentId", "EntryId", "Version", "Player", "Mission", "EraFlipper", "ServerGroupList", "ClientGroupList", "ServerLegacyGroupList", "ClientLegacyGroupList", "FloorSavedValueList", "FloorCustomValueList", "MapRotation", "WorldId", "Dialog", "OwnerGroupId", "SwitchHand" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PerformanceStartSnapshot), global::March7thHoney.Proto.PerformanceStartSnapshot.Parser, new[]{ "PerformanceId", "PerformanceType", "PlaneId", "FloorId", "DimensionId", "StoryLineId", "ContentId", "EntryId", "Version", "Player", "Mission", "EraFlipper", "ServerGroupList", "ClientGroupList", "ServerLegacyGroupList", "ClientLegacyGroupList", "FloorSavedValueList", "FloorCustomValueList", "MapRotation", "WorldId", "Dialog", "OwnerGroupId", "SwitchHand" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, })
           }));
     }
     #endregion
@@ -78,7 +78,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.PerformanceStartSnapshotReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.PerformanceStartSnapshotReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -240,10 +240,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "player" field.</summary>
     public const int PlayerFieldNumber = 10;
-    private global::CastoriceHoney.Server.Proto.PlayerSnapshot player_;
+    private global::March7thHoney.Proto.PlayerSnapshot player_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.PlayerSnapshot Player {
+    public global::March7thHoney.Proto.PlayerSnapshot Player {
       get { return player_; }
       set {
         player_ = value;
@@ -252,10 +252,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "mission" field.</summary>
     public const int MissionFieldNumber = 11;
-    private global::CastoriceHoney.Server.Proto.MissionSnapshot mission_;
+    private global::March7thHoney.Proto.MissionSnapshot mission_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.MissionSnapshot Mission {
+    public global::March7thHoney.Proto.MissionSnapshot Mission {
       get { return mission_; }
       set {
         mission_ = value;
@@ -264,10 +264,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "era_flipper" field.</summary>
     public const int EraFlipperFieldNumber = 12;
-    private global::CastoriceHoney.Server.Proto.EraFlipperSnapshot eraFlipper_;
+    private global::March7thHoney.Proto.EraFlipperSnapshot eraFlipper_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.EraFlipperSnapshot EraFlipper {
+    public global::March7thHoney.Proto.EraFlipperSnapshot EraFlipper {
       get { return eraFlipper_; }
       set {
         eraFlipper_ = value;
@@ -276,45 +276,45 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "server_group_list" field.</summary>
     public const int ServerGroupListFieldNumber = 13;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.GroupSnapshot> _repeated_serverGroupList_codec
-        = pb::FieldCodec.ForMessage(106, global::CastoriceHoney.Server.Proto.GroupSnapshot.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GroupSnapshot> serverGroupList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GroupSnapshot>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GroupSnapshot> _repeated_serverGroupList_codec
+        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.GroupSnapshot.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot> serverGroupList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GroupSnapshot> ServerGroupList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot> ServerGroupList {
       get { return serverGroupList_; }
     }
 
     /// <summary>Field number for the "client_group_list" field.</summary>
     public const int ClientGroupListFieldNumber = 14;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.GroupSnapshot> _repeated_clientGroupList_codec
-        = pb::FieldCodec.ForMessage(114, global::CastoriceHoney.Server.Proto.GroupSnapshot.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GroupSnapshot> clientGroupList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GroupSnapshot>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GroupSnapshot> _repeated_clientGroupList_codec
+        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.GroupSnapshot.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot> clientGroupList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GroupSnapshot> ClientGroupList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot> ClientGroupList {
       get { return clientGroupList_; }
     }
 
     /// <summary>Field number for the "server_legacy_group_list" field.</summary>
     public const int ServerLegacyGroupListFieldNumber = 15;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.GroupSnapshot> _repeated_serverLegacyGroupList_codec
-        = pb::FieldCodec.ForMessage(122, global::CastoriceHoney.Server.Proto.GroupSnapshot.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GroupSnapshot> serverLegacyGroupList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GroupSnapshot>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GroupSnapshot> _repeated_serverLegacyGroupList_codec
+        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.GroupSnapshot.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot> serverLegacyGroupList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GroupSnapshot> ServerLegacyGroupList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot> ServerLegacyGroupList {
       get { return serverLegacyGroupList_; }
     }
 
     /// <summary>Field number for the "client_legacy_group_list" field.</summary>
     public const int ClientLegacyGroupListFieldNumber = 16;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.GroupSnapshot> _repeated_clientLegacyGroupList_codec
-        = pb::FieldCodec.ForMessage(130, global::CastoriceHoney.Server.Proto.GroupSnapshot.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GroupSnapshot> clientLegacyGroupList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GroupSnapshot>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GroupSnapshot> _repeated_clientLegacyGroupList_codec
+        = pb::FieldCodec.ForMessage(130, global::March7thHoney.Proto.GroupSnapshot.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot> clientLegacyGroupList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GroupSnapshot> ClientLegacyGroupList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot> ClientLegacyGroupList {
       get { return clientLegacyGroupList_; }
     }
 
@@ -331,21 +331,21 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "floor_custom_value_list" field.</summary>
     public const int FloorCustomValueListFieldNumber = 18;
-    private static readonly pbc::MapField<string, global::CastoriceHoney.Server.Proto.FloorCustomValueSnapshot>.Codec _map_floorCustomValueList_codec
-        = new pbc::MapField<string, global::CastoriceHoney.Server.Proto.FloorCustomValueSnapshot>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::CastoriceHoney.Server.Proto.FloorCustomValueSnapshot.Parser), 146);
-    private readonly pbc::MapField<string, global::CastoriceHoney.Server.Proto.FloorCustomValueSnapshot> floorCustomValueList_ = new pbc::MapField<string, global::CastoriceHoney.Server.Proto.FloorCustomValueSnapshot>();
+    private static readonly pbc::MapField<string, global::March7thHoney.Proto.FloorCustomValueSnapshot>.Codec _map_floorCustomValueList_codec
+        = new pbc::MapField<string, global::March7thHoney.Proto.FloorCustomValueSnapshot>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.FloorCustomValueSnapshot.Parser), 146);
+    private readonly pbc::MapField<string, global::March7thHoney.Proto.FloorCustomValueSnapshot> floorCustomValueList_ = new pbc::MapField<string, global::March7thHoney.Proto.FloorCustomValueSnapshot>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<string, global::CastoriceHoney.Server.Proto.FloorCustomValueSnapshot> FloorCustomValueList {
+    public pbc::MapField<string, global::March7thHoney.Proto.FloorCustomValueSnapshot> FloorCustomValueList {
       get { return floorCustomValueList_; }
     }
 
     /// <summary>Field number for the "map_rotation" field.</summary>
     public const int MapRotationFieldNumber = 19;
-    private global::CastoriceHoney.Server.Proto.MapRotationSnapshot mapRotation_;
+    private global::March7thHoney.Proto.MapRotationSnapshot mapRotation_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.MapRotationSnapshot MapRotation {
+    public global::March7thHoney.Proto.MapRotationSnapshot MapRotation {
       get { return mapRotation_; }
       set {
         mapRotation_ = value;
@@ -366,10 +366,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "dialog" field.</summary>
     public const int DialogFieldNumber = 21;
-    private global::CastoriceHoney.Server.Proto.DialogSnapshot dialog_;
+    private global::March7thHoney.Proto.DialogSnapshot dialog_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.DialogSnapshot Dialog {
+    public global::March7thHoney.Proto.DialogSnapshot Dialog {
       get { return dialog_; }
       set {
         dialog_ = value;
@@ -390,10 +390,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "switch_hand" field.</summary>
     public const int SwitchHandFieldNumber = 23;
-    private global::CastoriceHoney.Server.Proto.SwitchHandSnapshot switchHand_;
+    private global::March7thHoney.Proto.SwitchHandSnapshot switchHand_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.SwitchHandSnapshot SwitchHand {
+    public global::March7thHoney.Proto.SwitchHandSnapshot SwitchHand {
       get { return switchHand_; }
       set {
         switchHand_ = value;
@@ -752,19 +752,19 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.player_ != null) {
         if (player_ == null) {
-          Player = new global::CastoriceHoney.Server.Proto.PlayerSnapshot();
+          Player = new global::March7thHoney.Proto.PlayerSnapshot();
         }
         Player.MergeFrom(other.Player);
       }
       if (other.mission_ != null) {
         if (mission_ == null) {
-          Mission = new global::CastoriceHoney.Server.Proto.MissionSnapshot();
+          Mission = new global::March7thHoney.Proto.MissionSnapshot();
         }
         Mission.MergeFrom(other.Mission);
       }
       if (other.eraFlipper_ != null) {
         if (eraFlipper_ == null) {
-          EraFlipper = new global::CastoriceHoney.Server.Proto.EraFlipperSnapshot();
+          EraFlipper = new global::March7thHoney.Proto.EraFlipperSnapshot();
         }
         EraFlipper.MergeFrom(other.EraFlipper);
       }
@@ -776,7 +776,7 @@ namespace CastoriceHoney.Server.Proto {
       floorCustomValueList_.MergeFrom(other.floorCustomValueList_);
       if (other.mapRotation_ != null) {
         if (mapRotation_ == null) {
-          MapRotation = new global::CastoriceHoney.Server.Proto.MapRotationSnapshot();
+          MapRotation = new global::March7thHoney.Proto.MapRotationSnapshot();
         }
         MapRotation.MergeFrom(other.MapRotation);
       }
@@ -785,7 +785,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.dialog_ != null) {
         if (dialog_ == null) {
-          Dialog = new global::CastoriceHoney.Server.Proto.DialogSnapshot();
+          Dialog = new global::March7thHoney.Proto.DialogSnapshot();
         }
         Dialog.MergeFrom(other.Dialog);
       }
@@ -794,7 +794,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.switchHand_ != null) {
         if (switchHand_ == null) {
-          SwitchHand = new global::CastoriceHoney.Server.Proto.SwitchHandSnapshot();
+          SwitchHand = new global::March7thHoney.Proto.SwitchHandSnapshot();
         }
         SwitchHand.MergeFrom(other.SwitchHand);
       }
@@ -855,21 +855,21 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 82: {
             if (player_ == null) {
-              Player = new global::CastoriceHoney.Server.Proto.PlayerSnapshot();
+              Player = new global::March7thHoney.Proto.PlayerSnapshot();
             }
             input.ReadMessage(Player);
             break;
           }
           case 90: {
             if (mission_ == null) {
-              Mission = new global::CastoriceHoney.Server.Proto.MissionSnapshot();
+              Mission = new global::March7thHoney.Proto.MissionSnapshot();
             }
             input.ReadMessage(Mission);
             break;
           }
           case 98: {
             if (eraFlipper_ == null) {
-              EraFlipper = new global::CastoriceHoney.Server.Proto.EraFlipperSnapshot();
+              EraFlipper = new global::March7thHoney.Proto.EraFlipperSnapshot();
             }
             input.ReadMessage(EraFlipper);
             break;
@@ -900,7 +900,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 154: {
             if (mapRotation_ == null) {
-              MapRotation = new global::CastoriceHoney.Server.Proto.MapRotationSnapshot();
+              MapRotation = new global::March7thHoney.Proto.MapRotationSnapshot();
             }
             input.ReadMessage(MapRotation);
             break;
@@ -911,7 +911,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 170: {
             if (dialog_ == null) {
-              Dialog = new global::CastoriceHoney.Server.Proto.DialogSnapshot();
+              Dialog = new global::March7thHoney.Proto.DialogSnapshot();
             }
             input.ReadMessage(Dialog);
             break;
@@ -922,7 +922,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 186: {
             if (switchHand_ == null) {
-              SwitchHand = new global::CastoriceHoney.Server.Proto.SwitchHandSnapshot();
+              SwitchHand = new global::March7thHoney.Proto.SwitchHandSnapshot();
             }
             input.ReadMessage(SwitchHand);
             break;
@@ -984,21 +984,21 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 82: {
             if (player_ == null) {
-              Player = new global::CastoriceHoney.Server.Proto.PlayerSnapshot();
+              Player = new global::March7thHoney.Proto.PlayerSnapshot();
             }
             input.ReadMessage(Player);
             break;
           }
           case 90: {
             if (mission_ == null) {
-              Mission = new global::CastoriceHoney.Server.Proto.MissionSnapshot();
+              Mission = new global::March7thHoney.Proto.MissionSnapshot();
             }
             input.ReadMessage(Mission);
             break;
           }
           case 98: {
             if (eraFlipper_ == null) {
-              EraFlipper = new global::CastoriceHoney.Server.Proto.EraFlipperSnapshot();
+              EraFlipper = new global::March7thHoney.Proto.EraFlipperSnapshot();
             }
             input.ReadMessage(EraFlipper);
             break;
@@ -1029,7 +1029,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 154: {
             if (mapRotation_ == null) {
-              MapRotation = new global::CastoriceHoney.Server.Proto.MapRotationSnapshot();
+              MapRotation = new global::March7thHoney.Proto.MapRotationSnapshot();
             }
             input.ReadMessage(MapRotation);
             break;
@@ -1040,7 +1040,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 170: {
             if (dialog_ == null) {
-              Dialog = new global::CastoriceHoney.Server.Proto.DialogSnapshot();
+              Dialog = new global::March7thHoney.Proto.DialogSnapshot();
             }
             input.ReadMessage(Dialog);
             break;
@@ -1051,7 +1051,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 186: {
             if (switchHand_ == null) {
-              SwitchHand = new global::CastoriceHoney.Server.Proto.SwitchHandSnapshot();
+              SwitchHand = new global::March7thHoney.Proto.SwitchHandSnapshot();
             }
             input.ReadMessage(SwitchHand);
             break;

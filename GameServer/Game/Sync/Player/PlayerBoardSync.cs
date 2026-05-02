@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Game.Sync.Player;
+namespace March7thHoney.GameServer.Game.Sync.Player;
 
 public class PlayerBoardSync(PlayerInstance player) : BaseSyncData
 {

@@ -1,4 +1,4 @@
-﻿namespace CastoriceHoney.Server.WebServer.Objects;
+namespace March7thHoney.WebServer.Objects;
 
 public class ComboTokenResJson
 {

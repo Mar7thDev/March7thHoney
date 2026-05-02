@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Mail;
-using CastoriceHoney.Server.Kcp;
+using March7thHoney.GameServer.Server.Packet.Send.Mail;
+using March7thHoney.Kcp;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Mail;
+namespace March7thHoney.GameServer.Server.Packet.Recv.Mail;
 
 [Opcode(CmdIds.GetMailCsReq)]
 public class HandlerGetMailCsReq : Handler

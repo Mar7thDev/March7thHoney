@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Proto;
 using SqlSugar;
 
-namespace CastoriceHoney.Server.Database.Activity;
+namespace March7thHoney.Database.Activity;
 
 [SugarTable("Activity")]
 public class ActivityData : BaseDatabaseDataHelper

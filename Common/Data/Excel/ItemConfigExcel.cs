@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Enums.Item;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Enums.Item;
+using March7thHoney.Util;
 using Newtonsoft.Json;
 
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("ItemConfig.json,ItemConfigAvatar.json,ItemConfigAvatarPlayerIcon.json," +
                 "ItemConfigAvatarRank.json,ItemConfigBook.json,ItemConfigDisk.json," +

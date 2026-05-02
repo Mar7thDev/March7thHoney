@@ -1,6 +1,6 @@
 using System.Net.Sockets;
 
-namespace CastoriceHoney.Server.Kcp.KcpSharp;
+namespace March7thHoney.Kcp.KcpSharp;
 
 internal sealed class KcpSocketTransportForMultiplexConnection<T> : KcpSocketTransport<KcpMultiplexConnection<T>>,
     IKcpTransport<IKcpMultiplexConnection<T>>

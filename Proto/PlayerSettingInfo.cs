@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from PlayerSettingInfo.proto</summary>
   public static partial class PlayerSettingInfoReflection {
@@ -37,9 +37,9 @@ namespace CastoriceHoney.Server.Proto {
             "IAEoCEIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXku",
             "U2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.NECGMCGFANNReflection.Descriptor, global::CastoriceHoney.Server.Proto.OEEEAEJBENBReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.NECGMCGFANNReflection.Descriptor, global::March7thHoney.Proto.OEEEAEJBENBReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.PlayerSettingInfo), global::CastoriceHoney.Server.Proto.PlayerSettingInfo.Parser, new[]{ "COIGOCJHBOP", "CHCNEDNCIDJ", "EHKLNPCMMHE", "LPEPIDNJDEM", "BKDCFBDMNIJ", "PFJMEECGJMM", "MFCPDJGGCMO", "CCNGHBADHBL", "FIJNAPNICJF", "NHLKFBOBDOM", "CPOGDKALGOM", "LENKIEBIIHP", "EJDGNLEOBCN", "HGHFECOMJNA", "KFBLHCCGEPO", "BMEHFMDNKLE" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlayerSettingInfo), global::March7thHoney.Proto.PlayerSettingInfo.Parser, new[]{ "COIGOCJHBOP", "CHCNEDNCIDJ", "EHKLNPCMMHE", "LPEPIDNJDEM", "BKDCFBDMNIJ", "PFJMEECGJMM", "MFCPDJGGCMO", "CCNGHBADHBL", "FIJNAPNICJF", "NHLKFBOBDOM", "CPOGDKALGOM", "LENKIEBIIHP", "EJDGNLEOBCN", "HGHFECOMJNA", "KFBLHCCGEPO", "BMEHFMDNKLE" }, null, null, null, null)
           }));
     }
     #endregion
@@ -61,7 +61,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.PlayerSettingInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.PlayerSettingInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -132,10 +132,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "EHKLNPCMMHE" field.</summary>
     public const int EHKLNPCMMHEFieldNumber = 5;
-    private global::CastoriceHoney.Server.Proto.OEEEAEJBENB eHKLNPCMMHE_;
+    private global::March7thHoney.Proto.OEEEAEJBENB eHKLNPCMMHE_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.OEEEAEJBENB EHKLNPCMMHE {
+    public global::March7thHoney.Proto.OEEEAEJBENB EHKLNPCMMHE {
       get { return eHKLNPCMMHE_; }
       set {
         eHKLNPCMMHE_ = value;
@@ -264,10 +264,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "HGHFECOMJNA" field.</summary>
     public const int HGHFECOMJNAFieldNumber = 524;
-    private global::CastoriceHoney.Server.Proto.NECGMCGFANN hGHFECOMJNA_;
+    private global::March7thHoney.Proto.NECGMCGFANN hGHFECOMJNA_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.NECGMCGFANN HGHFECOMJNA {
+    public global::March7thHoney.Proto.NECGMCGFANN HGHFECOMJNA {
       get { return hGHFECOMJNA_; }
       set {
         hGHFECOMJNA_ = value;
@@ -586,7 +586,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.eHKLNPCMMHE_ != null) {
         if (eHKLNPCMMHE_ == null) {
-          EHKLNPCMMHE = new global::CastoriceHoney.Server.Proto.OEEEAEJBENB();
+          EHKLNPCMMHE = new global::March7thHoney.Proto.OEEEAEJBENB();
         }
         EHKLNPCMMHE.MergeFrom(other.EHKLNPCMMHE);
       }
@@ -622,7 +622,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.hGHFECOMJNA_ != null) {
         if (hGHFECOMJNA_ == null) {
-          HGHFECOMJNA = new global::CastoriceHoney.Server.Proto.NECGMCGFANN();
+          HGHFECOMJNA = new global::March7thHoney.Proto.NECGMCGFANN();
         }
         HGHFECOMJNA.MergeFrom(other.HGHFECOMJNA);
       }
@@ -661,7 +661,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 42: {
             if (eHKLNPCMMHE_ == null) {
-              EHKLNPCMMHE = new global::CastoriceHoney.Server.Proto.OEEEAEJBENB();
+              EHKLNPCMMHE = new global::March7thHoney.Proto.OEEEAEJBENB();
             }
             input.ReadMessage(EHKLNPCMMHE);
             break;
@@ -708,7 +708,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 4194: {
             if (hGHFECOMJNA_ == null) {
-              HGHFECOMJNA = new global::CastoriceHoney.Server.Proto.NECGMCGFANN();
+              HGHFECOMJNA = new global::March7thHoney.Proto.NECGMCGFANN();
             }
             input.ReadMessage(HGHFECOMJNA);
             break;
@@ -750,7 +750,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 42: {
             if (eHKLNPCMMHE_ == null) {
-              EHKLNPCMMHE = new global::CastoriceHoney.Server.Proto.OEEEAEJBENB();
+              EHKLNPCMMHE = new global::March7thHoney.Proto.OEEEAEJBENB();
             }
             input.ReadMessage(EHKLNPCMMHE);
             break;
@@ -797,7 +797,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 4194: {
             if (hGHFECOMJNA_ == null) {
-              HGHFECOMJNA = new global::CastoriceHoney.Server.Proto.NECGMCGFANN();
+              HGHFECOMJNA = new global::March7thHoney.Proto.NECGMCGFANN();
             }
             input.ReadMessage(HGHFECOMJNA);
             break;

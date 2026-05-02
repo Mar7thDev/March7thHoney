@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace CastoriceHoney.Server.Data.Config.Task;
+namespace March7thHoney.Data.Config.Task;
 
 public class TaskConfigInfo
 {
@@ -14,7 +14,7 @@ public class TaskConfigInfo
         if (string.IsNullOrEmpty(type)) return new TaskConfigInfo();
 
         var typeStr = type.Replace("RPG.GameCore.", "");
-        var className = "CastoriceHoney.Server.Data.Config.Task." + typeStr;
+        var className = "March7thHoney.Data.Config.Task." + typeStr;
         var typeClass = System.Type.GetType(className);
         if (typeStr == "PredicateTaskList")
         {

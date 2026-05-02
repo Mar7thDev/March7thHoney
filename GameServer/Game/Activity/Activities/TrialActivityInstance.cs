@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Database.Activity;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Activity;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Data;
+using March7thHoney.Database.Activity;
+using March7thHoney.GameServer.Server.Packet.Send.Activity;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Game.Activity.Activities;
+namespace March7thHoney.GameServer.Game.Activity.Activities;
 
 public class TrialActivityInstance : BaseActivityInstance
 {

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from ChallengePeakBoss.proto</summary>
   public static partial class ChallengePeakBossReflection {
@@ -33,9 +33,9 @@ namespace CastoriceHoney.Server.Proto {
             "cmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnBy",
             "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ChallengePeakBossClearanceReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChallengePeakBossClearanceReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ChallengePeakBoss), global::CastoriceHoney.Server.Proto.ChallengePeakBoss.Parser, new[]{ "LJGDCGBFNKN", "FinishedTargetList", "HardMode", "HardModeHasPassed", "EasyMode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakBoss), global::March7thHoney.Proto.ChallengePeakBoss.Parser, new[]{ "LJGDCGBFNKN", "FinishedTargetList", "HardMode", "HardModeHasPassed", "EasyMode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -57,7 +57,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ChallengePeakBossReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ChallengePeakBossReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -116,10 +116,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "hard_mode" field.</summary>
     public const int HardModeFieldNumber = 6;
-    private global::CastoriceHoney.Server.Proto.ChallengePeakBossClearance hardMode_;
+    private global::March7thHoney.Proto.ChallengePeakBossClearance hardMode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ChallengePeakBossClearance HardMode {
+    public global::March7thHoney.Proto.ChallengePeakBossClearance HardMode {
       get { return hardMode_; }
       set {
         hardMode_ = value;
@@ -140,10 +140,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "easy_mode" field.</summary>
     public const int EasyModeFieldNumber = 14;
-    private global::CastoriceHoney.Server.Proto.ChallengePeakBossClearance easyMode_;
+    private global::March7thHoney.Proto.ChallengePeakBossClearance easyMode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ChallengePeakBossClearance EasyMode {
+    public global::March7thHoney.Proto.ChallengePeakBossClearance EasyMode {
       get { return easyMode_; }
       set {
         easyMode_ = value;
@@ -285,7 +285,7 @@ namespace CastoriceHoney.Server.Proto {
       finishedTargetList_.Add(other.finishedTargetList_);
       if (other.hardMode_ != null) {
         if (hardMode_ == null) {
-          HardMode = new global::CastoriceHoney.Server.Proto.ChallengePeakBossClearance();
+          HardMode = new global::March7thHoney.Proto.ChallengePeakBossClearance();
         }
         HardMode.MergeFrom(other.HardMode);
       }
@@ -294,7 +294,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.easyMode_ != null) {
         if (easyMode_ == null) {
-          EasyMode = new global::CastoriceHoney.Server.Proto.ChallengePeakBossClearance();
+          EasyMode = new global::March7thHoney.Proto.ChallengePeakBossClearance();
         }
         EasyMode.MergeFrom(other.EasyMode);
       }
@@ -328,7 +328,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 50: {
             if (hardMode_ == null) {
-              HardMode = new global::CastoriceHoney.Server.Proto.ChallengePeakBossClearance();
+              HardMode = new global::March7thHoney.Proto.ChallengePeakBossClearance();
             }
             input.ReadMessage(HardMode);
             break;
@@ -339,7 +339,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 114: {
             if (easyMode_ == null) {
-              EasyMode = new global::CastoriceHoney.Server.Proto.ChallengePeakBossClearance();
+              EasyMode = new global::March7thHoney.Proto.ChallengePeakBossClearance();
             }
             input.ReadMessage(EasyMode);
             break;
@@ -374,7 +374,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 50: {
             if (hardMode_ == null) {
-              HardMode = new global::CastoriceHoney.Server.Proto.ChallengePeakBossClearance();
+              HardMode = new global::March7thHoney.Proto.ChallengePeakBossClearance();
             }
             input.ReadMessage(HardMode);
             break;
@@ -385,7 +385,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 114: {
             if (easyMode_ == null) {
-              EasyMode = new global::CastoriceHoney.Server.Proto.ChallengePeakBossClearance();
+              EasyMode = new global::March7thHoney.Proto.ChallengePeakBossClearance();
             }
             input.ReadMessage(EasyMode);
             break;

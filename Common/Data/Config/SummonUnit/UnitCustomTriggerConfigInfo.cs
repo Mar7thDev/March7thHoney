@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.Data.Config.Task;
+using March7thHoney.Data.Config.Task;
 using Newtonsoft.Json.Linq;
 
-namespace CastoriceHoney.Server.Data.Config.SummonUnit;
+namespace March7thHoney.Data.Config.SummonUnit;
 
 public class UnitCustomTriggerConfigInfo
 {

@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Proto.ServerSide;
+using March7thHoney.Proto;
+using March7thHoney.Proto.ServerSide;
 
-namespace CastoriceHoney.Server.GameServer.Game.GridFight.Sync;
+namespace March7thHoney.GameServer.Game.GridFight.Sync;
 
 public class GridFightRemoveForgeSyncData(GridFightSrc src, GridFightForgeInfoPb info, uint groupId = 0, params uint[] syncParams) : BaseGridFightSyncData(src, groupId, syncParams)
 {

@@ -1,6 +1,6 @@
-using CastoriceHoney.Server.Data.Excel;
+using March7thHoney.Data.Excel;
 
-namespace CastoriceHoney.Server.Data.Custom;
+namespace March7thHoney.Data.Custom;
 
 public class GridFightBasicOrbRewardsConfig
 {

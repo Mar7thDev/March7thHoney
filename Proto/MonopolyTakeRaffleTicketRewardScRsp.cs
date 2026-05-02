@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from MonopolyTakeRaffleTicketRewardScRsp.proto</summary>
   public static partial class MonopolyTakeRaffleTicketRewardScRspReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "TkVERxgOIAEoDUIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNl",
             "SG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ItemListReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemListReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.MonopolyTakeRaffleTicketRewardScRsp), global::CastoriceHoney.Server.Proto.MonopolyTakeRaffleTicketRewardScRsp.Parser, new[]{ "RewardList", "Retcode", "MBMICCJEBJB", "CBOMHCDNEDG" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MonopolyTakeRaffleTicketRewardScRsp), global::March7thHoney.Proto.MonopolyTakeRaffleTicketRewardScRsp.Parser, new[]{ "RewardList", "Retcode", "MBMICCJEBJB", "CBOMHCDNEDG" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.MonopolyTakeRaffleTicketRewardScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.MonopolyTakeRaffleTicketRewardScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -90,10 +90,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "reward_list" field.</summary>
     public const int RewardListFieldNumber = 3;
-    private global::CastoriceHoney.Server.Proto.ItemList rewardList_;
+    private global::March7thHoney.Proto.ItemList rewardList_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ItemList RewardList {
+    public global::March7thHoney.Proto.ItemList RewardList {
       get { return rewardList_; }
       set {
         rewardList_ = value;
@@ -262,7 +262,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.rewardList_ != null) {
         if (rewardList_ == null) {
-          RewardList = new global::CastoriceHoney.Server.Proto.ItemList();
+          RewardList = new global::March7thHoney.Proto.ItemList();
         }
         RewardList.MergeFrom(other.RewardList);
       }
@@ -296,7 +296,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 26: {
             if (rewardList_ == null) {
-              RewardList = new global::CastoriceHoney.Server.Proto.ItemList();
+              RewardList = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(RewardList);
             break;
@@ -334,7 +334,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 26: {
             if (rewardList_ == null) {
-              RewardList = new global::CastoriceHoney.Server.Proto.ItemList();
+              RewardList = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(RewardList);
             break;

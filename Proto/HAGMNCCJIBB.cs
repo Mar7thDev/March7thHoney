@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from HAGMNCCJIBB.proto</summary>
   public static partial class HAGMNCCJIBBReflection {
@@ -29,9 +29,9 @@ namespace CastoriceHoney.Server.Proto {
             "ZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Q",
             "cm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.BJFJFCDPFNGReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.BJFJFCDPFNGReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.HAGMNCCJIBB), global::CastoriceHoney.Server.Proto.HAGMNCCJIBB.Parser, new[]{ "KickType" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HAGMNCCJIBB), global::March7thHoney.Proto.HAGMNCCJIBB.Parser, new[]{ "KickType" }, null, null, null, null)
           }));
     }
     #endregion
@@ -53,7 +53,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.HAGMNCCJIBBReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.HAGMNCCJIBBReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -85,10 +85,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "kick_type" field.</summary>
     public const int KickTypeFieldNumber = 4;
-    private global::CastoriceHoney.Server.Proto.BJFJFCDPFNG kickType_ = global::CastoriceHoney.Server.Proto.BJFJFCDPFNG.Dfnbodimigl;
+    private global::March7thHoney.Proto.BJFJFCDPFNG kickType_ = global::March7thHoney.Proto.BJFJFCDPFNG.Dfnbodimigl;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.BJFJFCDPFNG KickType {
+    public global::March7thHoney.Proto.BJFJFCDPFNG KickType {
       get { return kickType_; }
       set {
         kickType_ = value;
@@ -118,7 +118,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (KickType != global::CastoriceHoney.Server.Proto.BJFJFCDPFNG.Dfnbodimigl) hash ^= KickType.GetHashCode();
+      if (KickType != global::March7thHoney.Proto.BJFJFCDPFNG.Dfnbodimigl) hash ^= KickType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -137,7 +137,7 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (KickType != global::CastoriceHoney.Server.Proto.BJFJFCDPFNG.Dfnbodimigl) {
+      if (KickType != global::March7thHoney.Proto.BJFJFCDPFNG.Dfnbodimigl) {
         output.WriteRawTag(32);
         output.WriteEnum((int) KickType);
       }
@@ -151,7 +151,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (KickType != global::CastoriceHoney.Server.Proto.BJFJFCDPFNG.Dfnbodimigl) {
+      if (KickType != global::March7thHoney.Proto.BJFJFCDPFNG.Dfnbodimigl) {
         output.WriteRawTag(32);
         output.WriteEnum((int) KickType);
       }
@@ -165,7 +165,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (KickType != global::CastoriceHoney.Server.Proto.BJFJFCDPFNG.Dfnbodimigl) {
+      if (KickType != global::March7thHoney.Proto.BJFJFCDPFNG.Dfnbodimigl) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) KickType);
       }
       if (_unknownFields != null) {
@@ -180,7 +180,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.KickType != global::CastoriceHoney.Server.Proto.BJFJFCDPFNG.Dfnbodimigl) {
+      if (other.KickType != global::March7thHoney.Proto.BJFJFCDPFNG.Dfnbodimigl) {
         KickType = other.KickType;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -203,7 +203,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 32: {
-            KickType = (global::CastoriceHoney.Server.Proto.BJFJFCDPFNG) input.ReadEnum();
+            KickType = (global::March7thHoney.Proto.BJFJFCDPFNG) input.ReadEnum();
             break;
           }
         }
@@ -226,7 +226,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 32: {
-            KickType = (global::CastoriceHoney.Server.Proto.BJFJFCDPFNG) input.ReadEnum();
+            KickType = (global::March7thHoney.Proto.BJFJFCDPFNG) input.ReadEnum();
             break;
           }
         }

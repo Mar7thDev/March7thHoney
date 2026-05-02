@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from PunkLordMonsterBasicInfo.proto</summary>
   public static partial class PunkLordMonsterBasicInfoReflection {
@@ -33,9 +33,9 @@ namespace CastoriceHoney.Server.Proto {
             "TE5NRRgJIAEoCEIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNl",
             "SG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.PunkLordShareTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.PunkLordShareTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.PunkLordMonsterBasicInfo), global::CastoriceHoney.Server.Proto.PunkLordMonsterBasicInfo.Parser, new[]{ "Uid", "MonsterId", "ConfigId", "WorldLevel", "CreateTime", "LeftHp", "AttackerNum", "ShareType", "OKHELIELNME" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PunkLordMonsterBasicInfo), global::March7thHoney.Proto.PunkLordMonsterBasicInfo.Parser, new[]{ "Uid", "MonsterId", "ConfigId", "WorldLevel", "CreateTime", "LeftHp", "AttackerNum", "ShareType", "OKHELIELNME" }, null, null, null, null)
           }));
     }
     #endregion
@@ -57,7 +57,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.PunkLordMonsterBasicInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.PunkLordMonsterBasicInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -181,10 +181,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "share_type" field.</summary>
     public const int ShareTypeFieldNumber = 8;
-    private global::CastoriceHoney.Server.Proto.PunkLordShareType shareType_ = global::CastoriceHoney.Server.Proto.PunkLordShareType.FoodopdndlkPcpdhelpkem;
+    private global::March7thHoney.Proto.PunkLordShareType shareType_ = global::March7thHoney.Proto.PunkLordShareType.FoodopdndlkPcpdhelpkem;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.PunkLordShareType ShareType {
+    public global::March7thHoney.Proto.PunkLordShareType ShareType {
       get { return shareType_; }
       set {
         shareType_ = value;
@@ -241,7 +241,7 @@ namespace CastoriceHoney.Server.Proto {
       if (CreateTime != 0L) hash ^= CreateTime.GetHashCode();
       if (LeftHp != 0) hash ^= LeftHp.GetHashCode();
       if (AttackerNum != 0) hash ^= AttackerNum.GetHashCode();
-      if (ShareType != global::CastoriceHoney.Server.Proto.PunkLordShareType.FoodopdndlkPcpdhelpkem) hash ^= ShareType.GetHashCode();
+      if (ShareType != global::March7thHoney.Proto.PunkLordShareType.FoodopdndlkPcpdhelpkem) hash ^= ShareType.GetHashCode();
       if (OKHELIELNME != false) hash ^= OKHELIELNME.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -289,7 +289,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(56);
         output.WriteUInt32(AttackerNum);
       }
-      if (ShareType != global::CastoriceHoney.Server.Proto.PunkLordShareType.FoodopdndlkPcpdhelpkem) {
+      if (ShareType != global::March7thHoney.Proto.PunkLordShareType.FoodopdndlkPcpdhelpkem) {
         output.WriteRawTag(64);
         output.WriteEnum((int) ShareType);
       }
@@ -335,7 +335,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(56);
         output.WriteUInt32(AttackerNum);
       }
-      if (ShareType != global::CastoriceHoney.Server.Proto.PunkLordShareType.FoodopdndlkPcpdhelpkem) {
+      if (ShareType != global::March7thHoney.Proto.PunkLordShareType.FoodopdndlkPcpdhelpkem) {
         output.WriteRawTag(64);
         output.WriteEnum((int) ShareType);
       }
@@ -374,7 +374,7 @@ namespace CastoriceHoney.Server.Proto {
       if (AttackerNum != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AttackerNum);
       }
-      if (ShareType != global::CastoriceHoney.Server.Proto.PunkLordShareType.FoodopdndlkPcpdhelpkem) {
+      if (ShareType != global::March7thHoney.Proto.PunkLordShareType.FoodopdndlkPcpdhelpkem) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ShareType);
       }
       if (OKHELIELNME != false) {
@@ -413,7 +413,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other.AttackerNum != 0) {
         AttackerNum = other.AttackerNum;
       }
-      if (other.ShareType != global::CastoriceHoney.Server.Proto.PunkLordShareType.FoodopdndlkPcpdhelpkem) {
+      if (other.ShareType != global::March7thHoney.Proto.PunkLordShareType.FoodopdndlkPcpdhelpkem) {
         ShareType = other.ShareType;
       }
       if (other.OKHELIELNME != false) {
@@ -467,7 +467,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 64: {
-            ShareType = (global::CastoriceHoney.Server.Proto.PunkLordShareType) input.ReadEnum();
+            ShareType = (global::March7thHoney.Proto.PunkLordShareType) input.ReadEnum();
             break;
           }
           case 72: {
@@ -522,7 +522,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 64: {
-            ShareType = (global::CastoriceHoney.Server.Proto.PunkLordShareType) input.ReadEnum();
+            ShareType = (global::March7thHoney.Proto.PunkLordShareType) input.ReadEnum();
             break;
           }
           case 72: {

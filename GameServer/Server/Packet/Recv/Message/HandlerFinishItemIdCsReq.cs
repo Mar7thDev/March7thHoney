@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Message;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.GameServer.Server.Packet.Send.Message;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Message;
+namespace March7thHoney.GameServer.Server.Packet.Recv.Message;
 
 [Opcode(CmdIds.FinishItemIdCsReq)]
 public class HandlerFinishItemIdCsReq : Handler

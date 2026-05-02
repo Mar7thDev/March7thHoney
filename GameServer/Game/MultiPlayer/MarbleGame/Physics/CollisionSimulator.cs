@@ -1,6 +1,6 @@
 using System.Numerics;
 
-namespace CastoriceHoney.Server.GameServer.Game.MultiPlayer.MarbleGame.Physics;
+namespace March7thHoney.GameServer.Game.MultiPlayer.MarbleGame.Physics;
 
 public class CollisionSimulator(
     float leftBound,

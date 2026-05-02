@@ -1,13 +1,13 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Data.Config;
-using CastoriceHoney.Server.Data.Custom;
-using CastoriceHoney.Server.Data.Excel;
-using CastoriceHoney.Server.Enums.Rogue;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
-using CellFinalMonsterInfo = CastoriceHoney.Server.Proto.CellFinalMonsterInfo;
+using March7thHoney.Data;
+using March7thHoney.Data.Config;
+using March7thHoney.Data.Custom;
+using March7thHoney.Data.Excel;
+using March7thHoney.Enums.Rogue;
+using March7thHoney.Proto;
+using March7thHoney.Util;
+using CellFinalMonsterInfo = March7thHoney.Proto.CellFinalMonsterInfo;
 
-namespace CastoriceHoney.Server.GameServer.Game.ChessRogue.Cell;
+namespace March7thHoney.GameServer.Game.ChessRogue.Cell;
 
 public class ChessRogueCellInstance
 {

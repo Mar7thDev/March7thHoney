@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from ChenLingFinishBattleCsReq.proto</summary>
   public static partial class ChenLingFinishBattleCsReqReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "Eg4KBmlzX3dpbhgOIAEoCEIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2Fz",
             "dG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.LKFNDAOGMMOReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.LKFNDAOGMMOReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ChenLingFinishBattleCsReq), global::CastoriceHoney.Server.Proto.ChenLingFinishBattleCsReq.Parser, new[]{ "PJLADGOOFKE", "DKMPDLPEIJB", "HAIOHANDIKI", "LMIICENMOBI", "IsWin" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChenLingFinishBattleCsReq), global::March7thHoney.Proto.ChenLingFinishBattleCsReq.Parser, new[]{ "PJLADGOOFKE", "DKMPDLPEIJB", "HAIOHANDIKI", "LMIICENMOBI", "IsWin" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ChenLingFinishBattleCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ChenLingFinishBattleCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -115,12 +115,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "HAIOHANDIKI" field.</summary>
     public const int HAIOHANDIKIFieldNumber = 9;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.LKFNDAOGMMO> _repeated_hAIOHANDIKI_codec
-        = pb::FieldCodec.ForMessage(74, global::CastoriceHoney.Server.Proto.LKFNDAOGMMO.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.LKFNDAOGMMO> hAIOHANDIKI_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.LKFNDAOGMMO>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.LKFNDAOGMMO> _repeated_hAIOHANDIKI_codec
+        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.LKFNDAOGMMO.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.LKFNDAOGMMO> hAIOHANDIKI_ = new pbc::RepeatedField<global::March7thHoney.Proto.LKFNDAOGMMO>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.LKFNDAOGMMO> HAIOHANDIKI {
+    public pbc::RepeatedField<global::March7thHoney.Proto.LKFNDAOGMMO> HAIOHANDIKI {
       get { return hAIOHANDIKI_; }
     }
 

@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("BattleEventData.json")]
 public partial class BattleEventDataExcel : ExcelResource

@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.GameServer.Game.Scene.Component;
+namespace March7thHoney.GameServer.Game.Scene.Component;
 
 public class RotatableRegionSceneComponent(SceneInstance scene) : BaseSceneComponent(scene)
 {

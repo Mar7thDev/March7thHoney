@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from ChessRogueEnterNextLayerScRsp.proto</summary>
   public static partial class ChessRogueEnterNextLayerScRspReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "T0pFQ0tPREoYDCABKAsyDC5FQkdKS1BKTlBCTEIzChNlbXUubHVuYXJjb3Jl",
             "LnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.EBGJKPJNPBLReflection.Descriptor, global::CastoriceHoney.Server.Proto.EJCCHHAAGNHReflection.Descriptor, global::CastoriceHoney.Server.Proto.ILEJGEDBEKFReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.EBGJKPJNPBLReflection.Descriptor, global::March7thHoney.Proto.EJCCHHAAGNHReflection.Descriptor, global::March7thHoney.Proto.ILEJGEDBEKFReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ChessRogueEnterNextLayerScRsp), global::CastoriceHoney.Server.Proto.ChessRogueEnterNextLayerScRsp.Parser, new[]{ "StageInfo", "RogueGameInfo", "Retcode", "EOHOJECKODJ" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChessRogueEnterNextLayerScRsp), global::March7thHoney.Proto.ChessRogueEnterNextLayerScRsp.Parser, new[]{ "StageInfo", "RogueGameInfo", "Retcode", "EOHOJECKODJ" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ChessRogueEnterNextLayerScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ChessRogueEnterNextLayerScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -91,10 +91,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "stage_info" field.</summary>
     public const int StageInfoFieldNumber = 1;
-    private global::CastoriceHoney.Server.Proto.EJCCHHAAGNH stageInfo_;
+    private global::March7thHoney.Proto.EJCCHHAAGNH stageInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.EJCCHHAAGNH StageInfo {
+    public global::March7thHoney.Proto.EJCCHHAAGNH StageInfo {
       get { return stageInfo_; }
       set {
         stageInfo_ = value;
@@ -103,10 +103,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "rogue_game_info" field.</summary>
     public const int RogueGameInfoFieldNumber = 9;
-    private global::CastoriceHoney.Server.Proto.ILEJGEDBEKF rogueGameInfo_;
+    private global::March7thHoney.Proto.ILEJGEDBEKF rogueGameInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ILEJGEDBEKF RogueGameInfo {
+    public global::March7thHoney.Proto.ILEJGEDBEKF RogueGameInfo {
       get { return rogueGameInfo_; }
       set {
         rogueGameInfo_ = value;
@@ -127,10 +127,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "EOHOJECKODJ" field.</summary>
     public const int EOHOJECKODJFieldNumber = 12;
-    private global::CastoriceHoney.Server.Proto.EBGJKPJNPBL eOHOJECKODJ_;
+    private global::March7thHoney.Proto.EBGJKPJNPBL eOHOJECKODJ_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.EBGJKPJNPBL EOHOJECKODJ {
+    public global::March7thHoney.Proto.EBGJKPJNPBL EOHOJECKODJ {
       get { return eOHOJECKODJ_; }
       set {
         eOHOJECKODJ_ = value;
@@ -263,13 +263,13 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.stageInfo_ != null) {
         if (stageInfo_ == null) {
-          StageInfo = new global::CastoriceHoney.Server.Proto.EJCCHHAAGNH();
+          StageInfo = new global::March7thHoney.Proto.EJCCHHAAGNH();
         }
         StageInfo.MergeFrom(other.StageInfo);
       }
       if (other.rogueGameInfo_ != null) {
         if (rogueGameInfo_ == null) {
-          RogueGameInfo = new global::CastoriceHoney.Server.Proto.ILEJGEDBEKF();
+          RogueGameInfo = new global::March7thHoney.Proto.ILEJGEDBEKF();
         }
         RogueGameInfo.MergeFrom(other.RogueGameInfo);
       }
@@ -278,7 +278,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.eOHOJECKODJ_ != null) {
         if (eOHOJECKODJ_ == null) {
-          EOHOJECKODJ = new global::CastoriceHoney.Server.Proto.EBGJKPJNPBL();
+          EOHOJECKODJ = new global::March7thHoney.Proto.EBGJKPJNPBL();
         }
         EOHOJECKODJ.MergeFrom(other.EOHOJECKODJ);
       }
@@ -303,14 +303,14 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 10: {
             if (stageInfo_ == null) {
-              StageInfo = new global::CastoriceHoney.Server.Proto.EJCCHHAAGNH();
+              StageInfo = new global::March7thHoney.Proto.EJCCHHAAGNH();
             }
             input.ReadMessage(StageInfo);
             break;
           }
           case 74: {
             if (rogueGameInfo_ == null) {
-              RogueGameInfo = new global::CastoriceHoney.Server.Proto.ILEJGEDBEKF();
+              RogueGameInfo = new global::March7thHoney.Proto.ILEJGEDBEKF();
             }
             input.ReadMessage(RogueGameInfo);
             break;
@@ -321,7 +321,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 98: {
             if (eOHOJECKODJ_ == null) {
-              EOHOJECKODJ = new global::CastoriceHoney.Server.Proto.EBGJKPJNPBL();
+              EOHOJECKODJ = new global::March7thHoney.Proto.EBGJKPJNPBL();
             }
             input.ReadMessage(EOHOJECKODJ);
             break;
@@ -347,14 +347,14 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 10: {
             if (stageInfo_ == null) {
-              StageInfo = new global::CastoriceHoney.Server.Proto.EJCCHHAAGNH();
+              StageInfo = new global::March7thHoney.Proto.EJCCHHAAGNH();
             }
             input.ReadMessage(StageInfo);
             break;
           }
           case 74: {
             if (rogueGameInfo_ == null) {
-              RogueGameInfo = new global::CastoriceHoney.Server.Proto.ILEJGEDBEKF();
+              RogueGameInfo = new global::March7thHoney.Proto.ILEJGEDBEKF();
             }
             input.ReadMessage(RogueGameInfo);
             break;
@@ -365,7 +365,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 98: {
             if (eOHOJECKODJ_ == null) {
-              EOHOJECKODJ = new global::CastoriceHoney.Server.Proto.EBGJKPJNPBL();
+              EOHOJECKODJ = new global::March7thHoney.Proto.EBGJKPJNPBL();
             }
             input.ReadMessage(EOHOJECKODJ);
             break;

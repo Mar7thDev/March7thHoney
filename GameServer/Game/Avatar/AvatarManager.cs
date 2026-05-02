@@ -1,17 +1,17 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Data.Excel;
-using CastoriceHoney.Server.Database;
-using CastoriceHoney.Server.Database.Avatar;
-using CastoriceHoney.Server.Database.Friend;
-using CastoriceHoney.Server.Database.Inventory;
-using CastoriceHoney.Server.Enums.Item;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Avatar;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.PlayerSync;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Data;
+using March7thHoney.Data.Excel;
+using March7thHoney.Database;
+using March7thHoney.Database.Avatar;
+using March7thHoney.Database.Friend;
+using March7thHoney.Database.Inventory;
+using March7thHoney.Enums.Item;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Server.Packet.Send.Avatar;
+using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.GameServer.Game.Avatar;
+namespace March7thHoney.GameServer.Game.Avatar;
 
 public class AvatarManager(PlayerInstance player) : BasePlayerManager(player)
 {

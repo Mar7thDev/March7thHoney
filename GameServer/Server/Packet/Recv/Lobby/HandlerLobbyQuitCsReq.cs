@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Lobby;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.GameServer.Server.Packet.Send.Lobby;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Lobby;
+namespace March7thHoney.GameServer.Server.Packet.Recv.Lobby;
 
 [Opcode(CmdIds.LobbyQuitCsReq)]
 public class HandlerLobbyQuitCsReq : Handler

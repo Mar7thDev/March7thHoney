@@ -1,19 +1,19 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Data.Excel;
-using CastoriceHoney.Server.Database;
-using CastoriceHoney.Server.Database.Avatar;
-using CastoriceHoney.Server.Database.Inventory;
-using CastoriceHoney.Server.Enums.Avatar;
-using CastoriceHoney.Server.GameServer.Game.Lineup;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.GameServer.Game.Scene;
-using CastoriceHoney.Server.GameServer.Game.Scene.Entity;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.BattleCollege;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
-using LineupInfo = CastoriceHoney.Server.Database.Lineup.LineupInfo;
+using March7thHoney.Data;
+using March7thHoney.Data.Excel;
+using March7thHoney.Database;
+using March7thHoney.Database.Avatar;
+using March7thHoney.Database.Inventory;
+using March7thHoney.Enums.Avatar;
+using March7thHoney.GameServer.Game.Lineup;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Game.Scene;
+using March7thHoney.GameServer.Game.Scene.Entity;
+using March7thHoney.GameServer.Server.Packet.Send.BattleCollege;
+using March7thHoney.Proto;
+using March7thHoney.Util;
+using LineupInfo = March7thHoney.Database.Lineup.LineupInfo;
 
-namespace CastoriceHoney.Server.GameServer.Game.Battle;
+namespace March7thHoney.GameServer.Game.Battle;
 
 public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<StageConfigExcel> stages)
     : BasePlayerManager(player)

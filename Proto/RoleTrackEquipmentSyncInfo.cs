@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from RoleTrackEquipmentSyncInfo.proto</summary>
   public static partial class RoleTrackEquipmentSyncInfoReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "ZVRyYWNrRXF1aXBtZW50SW5mb0IzChNlbXUubHVuYXJjb3JlLnByb3RvqgIb",
             "Q2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.RoleTrackEquipmentInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.RoleTrackEquipmentInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.RoleTrackEquipmentSyncInfo), global::CastoriceHoney.Server.Proto.RoleTrackEquipmentSyncInfo.Parser, new[]{ "RoleTrackEquipmentList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RoleTrackEquipmentSyncInfo), global::March7thHoney.Proto.RoleTrackEquipmentSyncInfo.Parser, new[]{ "RoleTrackEquipmentList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.RoleTrackEquipmentSyncInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.RoleTrackEquipmentSyncInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -86,12 +86,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "role_track_equipment_list" field.</summary>
     public const int RoleTrackEquipmentListFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.RoleTrackEquipmentInfo> _repeated_roleTrackEquipmentList_codec
-        = pb::FieldCodec.ForMessage(34, global::CastoriceHoney.Server.Proto.RoleTrackEquipmentInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.RoleTrackEquipmentInfo> roleTrackEquipmentList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.RoleTrackEquipmentInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.RoleTrackEquipmentInfo> _repeated_roleTrackEquipmentList_codec
+        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.RoleTrackEquipmentInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.RoleTrackEquipmentInfo> roleTrackEquipmentList_ = new pbc::RepeatedField<global::March7thHoney.Proto.RoleTrackEquipmentInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.RoleTrackEquipmentInfo> RoleTrackEquipmentList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.RoleTrackEquipmentInfo> RoleTrackEquipmentList {
       get { return roleTrackEquipmentList_; }
     }
 

@@ -1,6 +1,6 @@
 using System.Globalization;
 
-namespace CastoriceHoney.Server.Kcp.KcpSharp;
+namespace March7thHoney.Kcp.KcpSharp;
 
 /// <summary>
 ///     The result of a receive or peek operation.

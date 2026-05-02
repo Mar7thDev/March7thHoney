@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Enums.Language;
+namespace March7thHoney.Enums.Language;
 
 public enum ProgramLanguageTypeEnum
 {

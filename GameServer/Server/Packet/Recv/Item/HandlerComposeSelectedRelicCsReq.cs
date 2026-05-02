@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Item;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.GameServer.Server.Packet.Send.Item;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Item;
+namespace March7thHoney.GameServer.Server.Packet.Recv.Item;
 
 [Opcode(CmdIds.ComposeSelectedRelicCsReq)]
 public class HandlerComposeSelectedRelicCsReq : Handler

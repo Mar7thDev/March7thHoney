@@ -1,9 +1,9 @@
 using System.Reflection;
-using CastoriceHoney.Server.Enums.Language;
-using CastoriceHoney.Server.Internationalization.Message;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Enums.Language;
+using March7thHoney.Internationalization.Message;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.Internationalization;
+namespace March7thHoney.Internationalization;
 
 public static class I18NManager
 {
@@ -14,14 +14,14 @@ public static class I18NManager
 
     public static void LoadLanguage()
     {
-        var languageStr = "CastoriceHoney.Server.Internationalization.Message.Language" +
+        var languageStr = "March7thHoney.Internationalization.Message.Language" +
                           ConfigManager.Config.ServerOption.Language;
         var languageType = Type.GetType(languageStr);
         if (languageType == null)
         {
             Logger.Warn("Language not found, fallback to EN");
             // fallback to English
-            languageType = Type.GetType("CastoriceHoney.Server.Internationalization.Message.LanguageEN")!;
+            languageType = Type.GetType("March7thHoney.Internationalization.Message.LanguageEN")!;
         }
 
         var language = Activator.CreateInstance(languageType) ?? throw new Exception("Language not found");
@@ -69,10 +69,10 @@ public static class I18NManager
 
     public static string TranslateAsCertainLang(string langStr, string key, params string[] args)
     {
-        var languageStr = "CastoriceHoney.Server.Internationalization.Message.Language" +
+        var languageStr = "March7thHoney.Internationalization.Message.Language" +
                           langStr;
         var languageType = Type.GetType(languageStr) ??
-                           Type.GetType("CastoriceHoney.Server.Internationalization.Message.LanguageEN")!;
+                           Type.GetType("March7thHoney.Internationalization.Message.LanguageEN")!;
         var language = Activator.CreateInstance(languageType) ?? throw new Exception("Language not found");
 
         List<object> langs = [language];

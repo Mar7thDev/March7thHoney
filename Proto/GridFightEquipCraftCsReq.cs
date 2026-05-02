@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GridFightEquipCraftCsReq.proto</summary>
   public static partial class GridFightEquipCraftCsReqReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "dXJjZRITCgtFR0xPQUNEUE5MRBgMIAEoDUIzChNlbXUubHVuYXJjb3JlLnBy",
             "b3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GridFightEquipCraftSourceReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridFightEquipCraftSourceReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GridFightEquipCraftCsReq), global::CastoriceHoney.Server.Proto.GridFightEquipCraftCsReq.Parser, new[]{ "CraftMaterials", "BGEKACPOAOP", "Source", "EGLOACDPNLD" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightEquipCraftCsReq), global::March7thHoney.Proto.GridFightEquipCraftCsReq.Parser, new[]{ "CraftMaterials", "BGEKACPOAOP", "Source", "EGLOACDPNLD" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GridFightEquipCraftCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GridFightEquipCraftCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -113,10 +113,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "source" field.</summary>
     public const int SourceFieldNumber = 8;
-    private global::CastoriceHoney.Server.Proto.GridFightEquipCraftSource source_ = global::CastoriceHoney.Server.Proto.GridFightEquipCraftSource.BnmlepcncihAialpdejijk;
+    private global::March7thHoney.Proto.GridFightEquipCraftSource source_ = global::March7thHoney.Proto.GridFightEquipCraftSource.BnmlepcncihAialpdejijk;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightEquipCraftSource Source {
+    public global::March7thHoney.Proto.GridFightEquipCraftSource Source {
       get { return source_; }
       set {
         source_ = value;
@@ -163,7 +163,7 @@ namespace CastoriceHoney.Server.Proto {
       int hash = 1;
       hash ^= craftMaterials_.GetHashCode();
       if (BGEKACPOAOP != 0) hash ^= BGEKACPOAOP.GetHashCode();
-      if (Source != global::CastoriceHoney.Server.Proto.GridFightEquipCraftSource.BnmlepcncihAialpdejijk) hash ^= Source.GetHashCode();
+      if (Source != global::March7thHoney.Proto.GridFightEquipCraftSource.BnmlepcncihAialpdejijk) hash ^= Source.GetHashCode();
       if (EGLOACDPNLD != 0) hash ^= EGLOACDPNLD.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -188,7 +188,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(56);
         output.WriteUInt32(BGEKACPOAOP);
       }
-      if (Source != global::CastoriceHoney.Server.Proto.GridFightEquipCraftSource.BnmlepcncihAialpdejijk) {
+      if (Source != global::March7thHoney.Proto.GridFightEquipCraftSource.BnmlepcncihAialpdejijk) {
         output.WriteRawTag(64);
         output.WriteEnum((int) Source);
       }
@@ -211,7 +211,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(56);
         output.WriteUInt32(BGEKACPOAOP);
       }
-      if (Source != global::CastoriceHoney.Server.Proto.GridFightEquipCraftSource.BnmlepcncihAialpdejijk) {
+      if (Source != global::March7thHoney.Proto.GridFightEquipCraftSource.BnmlepcncihAialpdejijk) {
         output.WriteRawTag(64);
         output.WriteEnum((int) Source);
       }
@@ -233,7 +233,7 @@ namespace CastoriceHoney.Server.Proto {
       if (BGEKACPOAOP != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BGEKACPOAOP);
       }
-      if (Source != global::CastoriceHoney.Server.Proto.GridFightEquipCraftSource.BnmlepcncihAialpdejijk) {
+      if (Source != global::March7thHoney.Proto.GridFightEquipCraftSource.BnmlepcncihAialpdejijk) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Source);
       }
       if (EGLOACDPNLD != 0) {
@@ -255,7 +255,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other.BGEKACPOAOP != 0) {
         BGEKACPOAOP = other.BGEKACPOAOP;
       }
-      if (other.Source != global::CastoriceHoney.Server.Proto.GridFightEquipCraftSource.BnmlepcncihAialpdejijk) {
+      if (other.Source != global::March7thHoney.Proto.GridFightEquipCraftSource.BnmlepcncihAialpdejijk) {
         Source = other.Source;
       }
       if (other.EGLOACDPNLD != 0) {
@@ -290,7 +290,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 64: {
-            Source = (global::CastoriceHoney.Server.Proto.GridFightEquipCraftSource) input.ReadEnum();
+            Source = (global::March7thHoney.Proto.GridFightEquipCraftSource) input.ReadEnum();
             break;
           }
           case 96: {
@@ -326,7 +326,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 64: {
-            Source = (global::CastoriceHoney.Server.Proto.GridFightEquipCraftSource) input.ReadEnum();
+            Source = (global::March7thHoney.Proto.GridFightEquipCraftSource) input.ReadEnum();
             break;
           }
           case 96: {

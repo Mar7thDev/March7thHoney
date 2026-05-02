@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.GameServer.Game.Rogue;
+namespace March7thHoney.GameServer.Game.Rogue;
 
 public abstract class BaseRogueSelectMenu
 {

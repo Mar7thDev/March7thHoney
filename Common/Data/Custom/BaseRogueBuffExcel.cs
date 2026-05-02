@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.Enums.Rogue;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Enums.Rogue;
+using March7thHoney.Proto;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace CastoriceHoney.Server.Data.Custom;
+namespace March7thHoney.Data.Custom;
 
 public class BaseRogueBuffExcel : ExcelResource
 {

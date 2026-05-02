@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from SearchPlayerScRsp.proto</summary>
   public static partial class SearchPlayerScRspReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "CiADKA0SDwoHcmV0Y29kZRgMIAEoDUIzChNlbXUubHVuYXJjb3JlLnByb3Rv",
             "qgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.PlayerSimpleInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.PlayerSimpleInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.SearchPlayerScRsp), global::CastoriceHoney.Server.Proto.SearchPlayerScRsp.Parser, new[]{ "SimpleInfoList", "ResultUidList", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SearchPlayerScRsp), global::March7thHoney.Proto.SearchPlayerScRsp.Parser, new[]{ "SimpleInfoList", "ResultUidList", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.SearchPlayerScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.SearchPlayerScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -88,12 +88,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "simple_info_list" field.</summary>
     public const int SimpleInfoListFieldNumber = 7;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.PlayerSimpleInfo> _repeated_simpleInfoList_codec
-        = pb::FieldCodec.ForMessage(58, global::CastoriceHoney.Server.Proto.PlayerSimpleInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.PlayerSimpleInfo> simpleInfoList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.PlayerSimpleInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.PlayerSimpleInfo> _repeated_simpleInfoList_codec
+        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.PlayerSimpleInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.PlayerSimpleInfo> simpleInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.PlayerSimpleInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.PlayerSimpleInfo> SimpleInfoList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.PlayerSimpleInfo> SimpleInfoList {
       get { return simpleInfoList_; }
     }
 

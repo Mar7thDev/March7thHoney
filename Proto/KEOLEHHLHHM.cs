@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from KEOLEHHLHHM.proto</summary>
   public static partial class KEOLEHHLHHMReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "bXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlBy",
             "b3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.BDHENEOKMFEReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.BDHENEOKMFEReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.KEOLEHHLHHM), global::CastoriceHoney.Server.Proto.KEOLEHHLHHM.Parser, new[]{ "EDIGJGGPPON", "AuthkeyVer", "HMPPEEMEPMC" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.KEOLEHHLHHM), global::March7thHoney.Proto.KEOLEHHLHHM.Parser, new[]{ "EDIGJGGPPON", "AuthkeyVer", "HMPPEEMEPMC" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.KEOLEHHLHHMReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.KEOLEHHLHHMReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -100,10 +100,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "authkey_ver" field.</summary>
     public const int AuthkeyVerFieldNumber = 8;
-    private global::CastoriceHoney.Server.Proto.BDHENEOKMFE authkeyVer_ = global::CastoriceHoney.Server.Proto.BDHENEOKMFE.Pcpdhelpkem;
+    private global::March7thHoney.Proto.BDHENEOKMFE authkeyVer_ = global::March7thHoney.Proto.BDHENEOKMFE.Pcpdhelpkem;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.BDHENEOKMFE AuthkeyVer {
+    public global::March7thHoney.Proto.BDHENEOKMFE AuthkeyVer {
       get { return authkeyVer_; }
       set {
         authkeyVer_ = value;
@@ -148,7 +148,7 @@ namespace CastoriceHoney.Server.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (EDIGJGGPPON != 0) hash ^= EDIGJGGPPON.GetHashCode();
-      if (AuthkeyVer != global::CastoriceHoney.Server.Proto.BDHENEOKMFE.Pcpdhelpkem) hash ^= AuthkeyVer.GetHashCode();
+      if (AuthkeyVer != global::March7thHoney.Proto.BDHENEOKMFE.Pcpdhelpkem) hash ^= AuthkeyVer.GetHashCode();
       if (HMPPEEMEPMC != 0) hash ^= HMPPEEMEPMC.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -172,7 +172,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(32);
         output.WriteUInt32(EDIGJGGPPON);
       }
-      if (AuthkeyVer != global::CastoriceHoney.Server.Proto.BDHENEOKMFE.Pcpdhelpkem) {
+      if (AuthkeyVer != global::March7thHoney.Proto.BDHENEOKMFE.Pcpdhelpkem) {
         output.WriteRawTag(64);
         output.WriteEnum((int) AuthkeyVer);
       }
@@ -194,7 +194,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(32);
         output.WriteUInt32(EDIGJGGPPON);
       }
-      if (AuthkeyVer != global::CastoriceHoney.Server.Proto.BDHENEOKMFE.Pcpdhelpkem) {
+      if (AuthkeyVer != global::March7thHoney.Proto.BDHENEOKMFE.Pcpdhelpkem) {
         output.WriteRawTag(64);
         output.WriteEnum((int) AuthkeyVer);
       }
@@ -215,7 +215,7 @@ namespace CastoriceHoney.Server.Proto {
       if (EDIGJGGPPON != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EDIGJGGPPON);
       }
-      if (AuthkeyVer != global::CastoriceHoney.Server.Proto.BDHENEOKMFE.Pcpdhelpkem) {
+      if (AuthkeyVer != global::March7thHoney.Proto.BDHENEOKMFE.Pcpdhelpkem) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) AuthkeyVer);
       }
       if (HMPPEEMEPMC != 0) {
@@ -236,7 +236,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other.EDIGJGGPPON != 0) {
         EDIGJGGPPON = other.EDIGJGGPPON;
       }
-      if (other.AuthkeyVer != global::CastoriceHoney.Server.Proto.BDHENEOKMFE.Pcpdhelpkem) {
+      if (other.AuthkeyVer != global::March7thHoney.Proto.BDHENEOKMFE.Pcpdhelpkem) {
         AuthkeyVer = other.AuthkeyVer;
       }
       if (other.HMPPEEMEPMC != 0) {
@@ -266,7 +266,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 64: {
-            AuthkeyVer = (global::CastoriceHoney.Server.Proto.BDHENEOKMFE) input.ReadEnum();
+            AuthkeyVer = (global::March7thHoney.Proto.BDHENEOKMFE) input.ReadEnum();
             break;
           }
           case 120: {
@@ -297,7 +297,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 64: {
-            AuthkeyVer = (global::CastoriceHoney.Server.Proto.BDHENEOKMFE) input.ReadEnum();
+            AuthkeyVer = (global::March7thHoney.Proto.BDHENEOKMFE) input.ReadEnum();
             break;
           }
           case 120: {

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GetRaidInfoScRsp.proto</summary>
   public static partial class GetRaidInfoScRspReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "aW5pc2hlZFJhaWRJbmZvQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0",
             "b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ENDOLEJCHKPReflection.Descriptor, global::CastoriceHoney.Server.Proto.FinishedRaidInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ENDOLEJCHKPReflection.Descriptor, global::March7thHoney.Proto.FinishedRaidInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GetRaidInfoScRsp), global::CastoriceHoney.Server.Proto.GetRaidInfoScRsp.Parser, new[]{ "ChallengeTakenRewardIdList", "Retcode", "ChallengeRaidList", "FinishedRaidInfoList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetRaidInfoScRsp), global::March7thHoney.Proto.GetRaidInfoScRsp.Parser, new[]{ "ChallengeTakenRewardIdList", "Retcode", "ChallengeRaidList", "FinishedRaidInfoList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GetRaidInfoScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GetRaidInfoScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -114,23 +114,23 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "challenge_raid_list" field.</summary>
     public const int ChallengeRaidListFieldNumber = 13;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ENDOLEJCHKP> _repeated_challengeRaidList_codec
-        = pb::FieldCodec.ForMessage(106, global::CastoriceHoney.Server.Proto.ENDOLEJCHKP.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ENDOLEJCHKP> challengeRaidList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ENDOLEJCHKP>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ENDOLEJCHKP> _repeated_challengeRaidList_codec
+        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.ENDOLEJCHKP.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ENDOLEJCHKP> challengeRaidList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ENDOLEJCHKP>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ENDOLEJCHKP> ChallengeRaidList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ENDOLEJCHKP> ChallengeRaidList {
       get { return challengeRaidList_; }
     }
 
     /// <summary>Field number for the "finished_raid_info_list" field.</summary>
     public const int FinishedRaidInfoListFieldNumber = 14;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.FinishedRaidInfo> _repeated_finishedRaidInfoList_codec
-        = pb::FieldCodec.ForMessage(114, global::CastoriceHoney.Server.Proto.FinishedRaidInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.FinishedRaidInfo> finishedRaidInfoList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.FinishedRaidInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.FinishedRaidInfo> _repeated_finishedRaidInfoList_codec
+        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.FinishedRaidInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.FinishedRaidInfo> finishedRaidInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.FinishedRaidInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.FinishedRaidInfo> FinishedRaidInfoList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.FinishedRaidInfo> FinishedRaidInfoList {
       get { return finishedRaidInfoList_; }
     }
 

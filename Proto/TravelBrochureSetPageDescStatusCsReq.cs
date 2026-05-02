@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from TravelBrochureSetPageDescStatusCsReq.proto</summary>
   public static partial class TravelBrochureSetPageDescStatusCsReqReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "RE1MEhMKC0hCQ0pQQ01KUEhFGAkgASgNQjMKE2VtdS5sdW5hcmNvcmUucHJv",
             "dG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.HADIBEMFDMLReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.HADIBEMFDMLReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.TravelBrochureSetPageDescStatusCsReq), global::CastoriceHoney.Server.Proto.TravelBrochureSetPageDescStatusCsReq.Parser, new[]{ "GODADABGOJD", "HBCJPCMJPHE" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TravelBrochureSetPageDescStatusCsReq), global::March7thHoney.Proto.TravelBrochureSetPageDescStatusCsReq.Parser, new[]{ "GODADABGOJD", "HBCJPCMJPHE" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.TravelBrochureSetPageDescStatusCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.TravelBrochureSetPageDescStatusCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -87,10 +87,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "GODADABGOJD" field.</summary>
     public const int GODADABGOJDFieldNumber = 5;
-    private global::CastoriceHoney.Server.Proto.HADIBEMFDML gODADABGOJD_ = global::CastoriceHoney.Server.Proto.HADIBEMFDML.Imkmpbmamdg;
+    private global::March7thHoney.Proto.HADIBEMFDML gODADABGOJD_ = global::March7thHoney.Proto.HADIBEMFDML.Imkmpbmamdg;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.HADIBEMFDML GODADABGOJD {
+    public global::March7thHoney.Proto.HADIBEMFDML GODADABGOJD {
       get { return gODADABGOJD_; }
       set {
         gODADABGOJD_ = value;
@@ -133,7 +133,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (GODADABGOJD != global::CastoriceHoney.Server.Proto.HADIBEMFDML.Imkmpbmamdg) hash ^= GODADABGOJD.GetHashCode();
+      if (GODADABGOJD != global::March7thHoney.Proto.HADIBEMFDML.Imkmpbmamdg) hash ^= GODADABGOJD.GetHashCode();
       if (HBCJPCMJPHE != 0) hash ^= HBCJPCMJPHE.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -153,7 +153,7 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (GODADABGOJD != global::CastoriceHoney.Server.Proto.HADIBEMFDML.Imkmpbmamdg) {
+      if (GODADABGOJD != global::March7thHoney.Proto.HADIBEMFDML.Imkmpbmamdg) {
         output.WriteRawTag(40);
         output.WriteEnum((int) GODADABGOJD);
       }
@@ -171,7 +171,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (GODADABGOJD != global::CastoriceHoney.Server.Proto.HADIBEMFDML.Imkmpbmamdg) {
+      if (GODADABGOJD != global::March7thHoney.Proto.HADIBEMFDML.Imkmpbmamdg) {
         output.WriteRawTag(40);
         output.WriteEnum((int) GODADABGOJD);
       }
@@ -189,7 +189,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (GODADABGOJD != global::CastoriceHoney.Server.Proto.HADIBEMFDML.Imkmpbmamdg) {
+      if (GODADABGOJD != global::March7thHoney.Proto.HADIBEMFDML.Imkmpbmamdg) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) GODADABGOJD);
       }
       if (HBCJPCMJPHE != 0) {
@@ -207,7 +207,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.GODADABGOJD != global::CastoriceHoney.Server.Proto.HADIBEMFDML.Imkmpbmamdg) {
+      if (other.GODADABGOJD != global::March7thHoney.Proto.HADIBEMFDML.Imkmpbmamdg) {
         GODADABGOJD = other.GODADABGOJD;
       }
       if (other.HBCJPCMJPHE != 0) {
@@ -233,7 +233,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 40: {
-            GODADABGOJD = (global::CastoriceHoney.Server.Proto.HADIBEMFDML) input.ReadEnum();
+            GODADABGOJD = (global::March7thHoney.Proto.HADIBEMFDML) input.ReadEnum();
             break;
           }
           case 72: {
@@ -260,7 +260,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 40: {
-            GODADABGOJD = (global::CastoriceHoney.Server.Proto.HADIBEMFDML) input.ReadEnum();
+            GODADABGOJD = (global::March7thHoney.Proto.HADIBEMFDML) input.ReadEnum();
             break;
           }
           case 72: {

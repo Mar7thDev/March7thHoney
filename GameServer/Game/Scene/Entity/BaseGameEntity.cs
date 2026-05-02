@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.GameServer.Game.Battle;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.GameServer.Game.Battle;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Game.Scene.Entity;
+namespace March7thHoney.GameServer.Game.Scene.Entity;
 
 public abstract class BaseGameEntity
 {

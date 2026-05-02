@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GridFightUpdatePosCsReq.proto</summary>
   public static partial class GridFightUpdatePosCsReqReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "QjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2",
             "ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GridFightPosInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridFightPosInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GridFightUpdatePosCsReq), global::CastoriceHoney.Server.Proto.GridFightUpdatePosCsReq.Parser, new[]{ "GridFightPosInfoList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightUpdatePosCsReq), global::March7thHoney.Proto.GridFightUpdatePosCsReq.Parser, new[]{ "GridFightPosInfoList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GridFightUpdatePosCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GridFightUpdatePosCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -86,12 +86,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "grid_fight_pos_info_list" field.</summary>
     public const int GridFightPosInfoListFieldNumber = 10;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.GridFightPosInfo> _repeated_gridFightPosInfoList_codec
-        = pb::FieldCodec.ForMessage(82, global::CastoriceHoney.Server.Proto.GridFightPosInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridFightPosInfo> gridFightPosInfoList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridFightPosInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GridFightPosInfo> _repeated_gridFightPosInfoList_codec
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.GridFightPosInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GridFightPosInfo> gridFightPosInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GridFightPosInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridFightPosInfo> GridFightPosInfoList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.GridFightPosInfo> GridFightPosInfoList {
       get { return gridFightPosInfoList_; }
     }
 

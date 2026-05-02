@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from BattleRecordType.proto</summary>
   public static partial class BattleRecordTypeReflection {
@@ -31,7 +31,7 @@ namespace CastoriceHoney.Server.Proto {
             "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::CastoriceHoney.Server.Proto.BattleRecordType), }, null, null));
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.BattleRecordType), }, null, null));
     }
     #endregion
 

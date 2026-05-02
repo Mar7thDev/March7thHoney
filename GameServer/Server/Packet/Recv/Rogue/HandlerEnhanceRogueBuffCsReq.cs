@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Rogue;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.GameServer.Server.Packet.Send.Rogue;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Rogue;
+namespace March7thHoney.GameServer.Server.Packet.Recv.Rogue;
 
 [Opcode(CmdIds.EnhanceRogueBuffCsReq)]
 public class HandlerEnhanceRogueBuffCsReq : Handler

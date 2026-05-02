@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("AvatarDemoConfig.json")]
 public class AvatarDemoConfigExcel : ExcelResource

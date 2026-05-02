@@ -1,11 +1,11 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Data.Custom;
-using CastoriceHoney.Server.Enums.Rogue;
-using CastoriceHoney.Server.GameServer.Game.Battle;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.RogueCommon;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Data;
+using March7thHoney.Data.Custom;
+using March7thHoney.Enums.Rogue;
+using March7thHoney.GameServer.Game.Battle;
+using March7thHoney.GameServer.Server.Packet.Send.RogueCommon;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Game.Rogue.Miracle;
+namespace March7thHoney.GameServer.Game.Rogue.Miracle;
 
 public class RogueMiracleInstance
 {

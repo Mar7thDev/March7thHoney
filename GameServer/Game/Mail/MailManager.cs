@@ -1,12 +1,12 @@
-using CastoriceHoney.Server.Database;
-using CastoriceHoney.Server.Database.Inventory;
-using CastoriceHoney.Server.Database.Mail;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Mail;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Database;
+using March7thHoney.Database.Inventory;
+using March7thHoney.Database.Mail;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Server.Packet.Send.Mail;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.GameServer.Game.Mail;
+namespace March7thHoney.GameServer.Game.Mail;
 
 public class MailManager(PlayerInstance player) : BasePlayerManager(player)
 {

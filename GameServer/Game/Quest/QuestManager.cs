@@ -1,16 +1,16 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Database;
-using CastoriceHoney.Server.Database.Inventory;
-using CastoriceHoney.Server.Database.Quests;
-using CastoriceHoney.Server.Enums.Mission;
-using CastoriceHoney.Server.Enums.Quest;
-using CastoriceHoney.Server.GameServer.Game.Battle;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.PlayerSync;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Data;
+using March7thHoney.Database;
+using March7thHoney.Database.Inventory;
+using March7thHoney.Database.Quests;
+using March7thHoney.Enums.Mission;
+using March7thHoney.Enums.Quest;
+using March7thHoney.GameServer.Game.Battle;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.GameServer.Game.Quest;
+namespace March7thHoney.GameServer.Game.Quest;
 
 public class QuestManager(PlayerInstance player) : BasePlayerManager(player)
 {

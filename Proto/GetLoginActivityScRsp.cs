@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GetLoginActivityScRsp.proto</summary>
   public static partial class GetLoginActivityScRspReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "Y29kZRgPIAEoDUIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNl",
             "SG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.LoginActivityDataReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.LoginActivityDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GetLoginActivityScRsp), global::CastoriceHoney.Server.Proto.GetLoginActivityScRsp.Parser, new[]{ "LoginActivityList", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetLoginActivityScRsp), global::March7thHoney.Proto.GetLoginActivityScRsp.Parser, new[]{ "LoginActivityList", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GetLoginActivityScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GetLoginActivityScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -87,12 +87,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "login_activity_list" field.</summary>
     public const int LoginActivityListFieldNumber = 9;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.LoginActivityData> _repeated_loginActivityList_codec
-        = pb::FieldCodec.ForMessage(74, global::CastoriceHoney.Server.Proto.LoginActivityData.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.LoginActivityData> loginActivityList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.LoginActivityData>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.LoginActivityData> _repeated_loginActivityList_codec
+        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.LoginActivityData.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.LoginActivityData> loginActivityList_ = new pbc::RepeatedField<global::March7thHoney.Proto.LoginActivityData>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.LoginActivityData> LoginActivityList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.LoginActivityData> LoginActivityList {
       get { return loginActivityList_; }
     }
 

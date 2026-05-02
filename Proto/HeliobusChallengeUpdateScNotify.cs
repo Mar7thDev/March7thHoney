@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from HeliobusChallengeUpdateScNotify.proto</summary>
   public static partial class HeliobusChallengeUpdateScNotifyReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "Q2hhbGxlbmdlRGF0YUIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9y",
             "aWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.HeliobusChallengeDataReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.HeliobusChallengeDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.HeliobusChallengeUpdateScNotify), global::CastoriceHoney.Server.Proto.HeliobusChallengeUpdateScNotify.Parser, new[]{ "OPCGNJMGJDE" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HeliobusChallengeUpdateScNotify), global::March7thHoney.Proto.HeliobusChallengeUpdateScNotify.Parser, new[]{ "OPCGNJMGJDE" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.HeliobusChallengeUpdateScNotifyReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.HeliobusChallengeUpdateScNotifyReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -86,10 +86,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "OPCGNJMGJDE" field.</summary>
     public const int OPCGNJMGJDEFieldNumber = 6;
-    private global::CastoriceHoney.Server.Proto.HeliobusChallengeData oPCGNJMGJDE_;
+    private global::March7thHoney.Proto.HeliobusChallengeData oPCGNJMGJDE_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.HeliobusChallengeData OPCGNJMGJDE {
+    public global::March7thHoney.Proto.HeliobusChallengeData OPCGNJMGJDE {
       get { return oPCGNJMGJDE_; }
       set {
         oPCGNJMGJDE_ = value;
@@ -183,7 +183,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.oPCGNJMGJDE_ != null) {
         if (oPCGNJMGJDE_ == null) {
-          OPCGNJMGJDE = new global::CastoriceHoney.Server.Proto.HeliobusChallengeData();
+          OPCGNJMGJDE = new global::March7thHoney.Proto.HeliobusChallengeData();
         }
         OPCGNJMGJDE.MergeFrom(other.OPCGNJMGJDE);
       }
@@ -208,7 +208,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 50: {
             if (oPCGNJMGJDE_ == null) {
-              OPCGNJMGJDE = new global::CastoriceHoney.Server.Proto.HeliobusChallengeData();
+              OPCGNJMGJDE = new global::March7thHoney.Proto.HeliobusChallengeData();
             }
             input.ReadMessage(OPCGNJMGJDE);
             break;
@@ -234,7 +234,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 50: {
             if (oPCGNJMGJDE_ == null) {
-              OPCGNJMGJDE = new global::CastoriceHoney.Server.Proto.HeliobusChallengeData();
+              OPCGNJMGJDE = new global::March7thHoney.Proto.HeliobusChallengeData();
             }
             input.ReadMessage(OPCGNJMGJDE);
             break;

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GridFightLockInfo.proto</summary>
   public static partial class GridFightLockInfoReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "QjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2",
             "ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GridFightLockReasonReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightLockTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridFightLockReasonReflection.Descriptor, global::March7thHoney.Proto.GridFightLockTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GridFightLockInfo), global::CastoriceHoney.Server.Proto.GridFightLockInfo.Parser, new[]{ "LockReason", "LockType" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightLockInfo), global::March7thHoney.Proto.GridFightLockInfo.Parser, new[]{ "LockReason", "LockType" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GridFightLockInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GridFightLockInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -88,10 +88,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "lock_reason" field.</summary>
     public const int LockReasonFieldNumber = 7;
-    private global::CastoriceHoney.Server.Proto.GridFightLockReason lockReason_ = global::CastoriceHoney.Server.Proto.GridFightLockReason.DfofffceffoDionkbmffdn;
+    private global::March7thHoney.Proto.GridFightLockReason lockReason_ = global::March7thHoney.Proto.GridFightLockReason.DfofffceffoDionkbmffdn;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightLockReason LockReason {
+    public global::March7thHoney.Proto.GridFightLockReason LockReason {
       get { return lockReason_; }
       set {
         lockReason_ = value;
@@ -100,10 +100,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "lock_type" field.</summary>
     public const int LockTypeFieldNumber = 10;
-    private global::CastoriceHoney.Server.Proto.GridFightLockType lockType_ = global::CastoriceHoney.Server.Proto.GridFightLockType.PjbmhhnlclbLnloohdeaeo;
+    private global::March7thHoney.Proto.GridFightLockType lockType_ = global::March7thHoney.Proto.GridFightLockType.PjbmhhnlclbLnloohdeaeo;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightLockType LockType {
+    public global::March7thHoney.Proto.GridFightLockType LockType {
       get { return lockType_; }
       set {
         lockType_ = value;
@@ -134,8 +134,8 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (LockReason != global::CastoriceHoney.Server.Proto.GridFightLockReason.DfofffceffoDionkbmffdn) hash ^= LockReason.GetHashCode();
-      if (LockType != global::CastoriceHoney.Server.Proto.GridFightLockType.PjbmhhnlclbLnloohdeaeo) hash ^= LockType.GetHashCode();
+      if (LockReason != global::March7thHoney.Proto.GridFightLockReason.DfofffceffoDionkbmffdn) hash ^= LockReason.GetHashCode();
+      if (LockType != global::March7thHoney.Proto.GridFightLockType.PjbmhhnlclbLnloohdeaeo) hash ^= LockType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -154,11 +154,11 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (LockReason != global::CastoriceHoney.Server.Proto.GridFightLockReason.DfofffceffoDionkbmffdn) {
+      if (LockReason != global::March7thHoney.Proto.GridFightLockReason.DfofffceffoDionkbmffdn) {
         output.WriteRawTag(56);
         output.WriteEnum((int) LockReason);
       }
-      if (LockType != global::CastoriceHoney.Server.Proto.GridFightLockType.PjbmhhnlclbLnloohdeaeo) {
+      if (LockType != global::March7thHoney.Proto.GridFightLockType.PjbmhhnlclbLnloohdeaeo) {
         output.WriteRawTag(80);
         output.WriteEnum((int) LockType);
       }
@@ -172,11 +172,11 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (LockReason != global::CastoriceHoney.Server.Proto.GridFightLockReason.DfofffceffoDionkbmffdn) {
+      if (LockReason != global::March7thHoney.Proto.GridFightLockReason.DfofffceffoDionkbmffdn) {
         output.WriteRawTag(56);
         output.WriteEnum((int) LockReason);
       }
-      if (LockType != global::CastoriceHoney.Server.Proto.GridFightLockType.PjbmhhnlclbLnloohdeaeo) {
+      if (LockType != global::March7thHoney.Proto.GridFightLockType.PjbmhhnlclbLnloohdeaeo) {
         output.WriteRawTag(80);
         output.WriteEnum((int) LockType);
       }
@@ -190,10 +190,10 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (LockReason != global::CastoriceHoney.Server.Proto.GridFightLockReason.DfofffceffoDionkbmffdn) {
+      if (LockReason != global::March7thHoney.Proto.GridFightLockReason.DfofffceffoDionkbmffdn) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) LockReason);
       }
-      if (LockType != global::CastoriceHoney.Server.Proto.GridFightLockType.PjbmhhnlclbLnloohdeaeo) {
+      if (LockType != global::March7thHoney.Proto.GridFightLockType.PjbmhhnlclbLnloohdeaeo) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) LockType);
       }
       if (_unknownFields != null) {
@@ -208,10 +208,10 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.LockReason != global::CastoriceHoney.Server.Proto.GridFightLockReason.DfofffceffoDionkbmffdn) {
+      if (other.LockReason != global::March7thHoney.Proto.GridFightLockReason.DfofffceffoDionkbmffdn) {
         LockReason = other.LockReason;
       }
-      if (other.LockType != global::CastoriceHoney.Server.Proto.GridFightLockType.PjbmhhnlclbLnloohdeaeo) {
+      if (other.LockType != global::March7thHoney.Proto.GridFightLockType.PjbmhhnlclbLnloohdeaeo) {
         LockType = other.LockType;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -234,11 +234,11 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 56: {
-            LockReason = (global::CastoriceHoney.Server.Proto.GridFightLockReason) input.ReadEnum();
+            LockReason = (global::March7thHoney.Proto.GridFightLockReason) input.ReadEnum();
             break;
           }
           case 80: {
-            LockType = (global::CastoriceHoney.Server.Proto.GridFightLockType) input.ReadEnum();
+            LockType = (global::March7thHoney.Proto.GridFightLockType) input.ReadEnum();
             break;
           }
         }
@@ -261,11 +261,11 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 56: {
-            LockReason = (global::CastoriceHoney.Server.Proto.GridFightLockReason) input.ReadEnum();
+            LockReason = (global::March7thHoney.Proto.GridFightLockReason) input.ReadEnum();
             break;
           }
           case 80: {
-            LockType = (global::CastoriceHoney.Server.Proto.GridFightLockType) input.ReadEnum();
+            LockType = (global::March7thHoney.Proto.GridFightLockType) input.ReadEnum();
             break;
           }
         }

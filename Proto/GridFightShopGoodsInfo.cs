@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GridFightShopGoodsInfo.proto</summary>
   public static partial class GridFightShopGoodsInfoReflection {
@@ -33,9 +33,9 @@ namespace CastoriceHoney.Server.Proto {
             "b2RzSW5mb0gAQg0KC0ZMQkNNQUNQSE1KQjMKE2VtdS5sdW5hcmNvcmUucHJv",
             "dG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GridFightRoleGoodsInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightSpecialGoodsInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridFightRoleGoodsInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightSpecialGoodsInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GridFightShopGoodsInfo), global::CastoriceHoney.Server.Proto.GridFightShopGoodsInfo.Parser, new[]{ "ShopGoodsPrice", "IsSoldOut", "SpecialGoodsInfo", "RoleGoodsInfo" }, new[]{ "FLBCMACPHMJ" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightShopGoodsInfo), global::March7thHoney.Proto.GridFightShopGoodsInfo.Parser, new[]{ "ShopGoodsPrice", "IsSoldOut", "SpecialGoodsInfo", "RoleGoodsInfo" }, new[]{ "FLBCMACPHMJ" }, null, null, null)
           }));
     }
     #endregion
@@ -57,7 +57,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GridFightShopGoodsInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GridFightShopGoodsInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -125,8 +125,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int SpecialGoodsInfoFieldNumber = 1244;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightSpecialGoodsInfo SpecialGoodsInfo {
-      get { return fLBCMACPHMJCase_ == FLBCMACPHMJOneofCase.SpecialGoodsInfo ? (global::CastoriceHoney.Server.Proto.GridFightSpecialGoodsInfo) fLBCMACPHMJ_ : null; }
+    public global::March7thHoney.Proto.GridFightSpecialGoodsInfo SpecialGoodsInfo {
+      get { return fLBCMACPHMJCase_ == FLBCMACPHMJOneofCase.SpecialGoodsInfo ? (global::March7thHoney.Proto.GridFightSpecialGoodsInfo) fLBCMACPHMJ_ : null; }
       set {
         fLBCMACPHMJ_ = value;
         fLBCMACPHMJCase_ = value == null ? FLBCMACPHMJOneofCase.None : FLBCMACPHMJOneofCase.SpecialGoodsInfo;
@@ -137,8 +137,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int RoleGoodsInfoFieldNumber = 1427;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightRoleGoodsInfo RoleGoodsInfo {
-      get { return fLBCMACPHMJCase_ == FLBCMACPHMJOneofCase.RoleGoodsInfo ? (global::CastoriceHoney.Server.Proto.GridFightRoleGoodsInfo) fLBCMACPHMJ_ : null; }
+    public global::March7thHoney.Proto.GridFightRoleGoodsInfo RoleGoodsInfo {
+      get { return fLBCMACPHMJCase_ == FLBCMACPHMJOneofCase.RoleGoodsInfo ? (global::March7thHoney.Proto.GridFightRoleGoodsInfo) fLBCMACPHMJ_ : null; }
       set {
         fLBCMACPHMJ_ = value;
         fLBCMACPHMJCase_ = value == null ? FLBCMACPHMJOneofCase.None : FLBCMACPHMJOneofCase.RoleGoodsInfo;
@@ -301,13 +301,13 @@ namespace CastoriceHoney.Server.Proto {
       switch (other.FLBCMACPHMJCase) {
         case FLBCMACPHMJOneofCase.SpecialGoodsInfo:
           if (SpecialGoodsInfo == null) {
-            SpecialGoodsInfo = new global::CastoriceHoney.Server.Proto.GridFightSpecialGoodsInfo();
+            SpecialGoodsInfo = new global::March7thHoney.Proto.GridFightSpecialGoodsInfo();
           }
           SpecialGoodsInfo.MergeFrom(other.SpecialGoodsInfo);
           break;
         case FLBCMACPHMJOneofCase.RoleGoodsInfo:
           if (RoleGoodsInfo == null) {
-            RoleGoodsInfo = new global::CastoriceHoney.Server.Proto.GridFightRoleGoodsInfo();
+            RoleGoodsInfo = new global::March7thHoney.Proto.GridFightRoleGoodsInfo();
           }
           RoleGoodsInfo.MergeFrom(other.RoleGoodsInfo);
           break;
@@ -341,7 +341,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 9954: {
-            global::CastoriceHoney.Server.Proto.GridFightSpecialGoodsInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightSpecialGoodsInfo();
+            global::March7thHoney.Proto.GridFightSpecialGoodsInfo subBuilder = new global::March7thHoney.Proto.GridFightSpecialGoodsInfo();
             if (fLBCMACPHMJCase_ == FLBCMACPHMJOneofCase.SpecialGoodsInfo) {
               subBuilder.MergeFrom(SpecialGoodsInfo);
             }
@@ -350,7 +350,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 11418: {
-            global::CastoriceHoney.Server.Proto.GridFightRoleGoodsInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightRoleGoodsInfo();
+            global::March7thHoney.Proto.GridFightRoleGoodsInfo subBuilder = new global::March7thHoney.Proto.GridFightRoleGoodsInfo();
             if (fLBCMACPHMJCase_ == FLBCMACPHMJOneofCase.RoleGoodsInfo) {
               subBuilder.MergeFrom(RoleGoodsInfo);
             }
@@ -386,7 +386,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 9954: {
-            global::CastoriceHoney.Server.Proto.GridFightSpecialGoodsInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightSpecialGoodsInfo();
+            global::March7thHoney.Proto.GridFightSpecialGoodsInfo subBuilder = new global::March7thHoney.Proto.GridFightSpecialGoodsInfo();
             if (fLBCMACPHMJCase_ == FLBCMACPHMJOneofCase.SpecialGoodsInfo) {
               subBuilder.MergeFrom(SpecialGoodsInfo);
             }
@@ -395,7 +395,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 11418: {
-            global::CastoriceHoney.Server.Proto.GridFightRoleGoodsInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightRoleGoodsInfo();
+            global::March7thHoney.Proto.GridFightRoleGoodsInfo subBuilder = new global::March7thHoney.Proto.GridFightRoleGoodsInfo();
             if (fLBCMACPHMJCase_ == FLBCMACPHMJOneofCase.RoleGoodsInfo) {
               subBuilder.MergeFrom(RoleGoodsInfo);
             }

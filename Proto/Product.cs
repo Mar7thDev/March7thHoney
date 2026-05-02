@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from Product.proto</summary>
   public static partial class ProductReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "DiABKA0SEwoLSkNKR0hDT0VPT0oYDyABKA1CMwoTZW11Lmx1bmFyY29yZS5w",
             "cm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ProductGiftTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ProductGiftTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.Product), global::CastoriceHoney.Server.Proto.Product.Parser, new[]{ "BeginTime", "PriceTier", "MEMNCJLKAEE", "GiftType", "ProductId", "EndTime", "DoubleReward", "EEFHEBKHKAB", "JCJGHCOEOOJ" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.Product), global::March7thHoney.Proto.Product.Parser, new[]{ "BeginTime", "PriceTier", "MEMNCJLKAEE", "GiftType", "ProductId", "EndTime", "DoubleReward", "EEFHEBKHKAB", "JCJGHCOEOOJ" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ProductReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ProductReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -132,10 +132,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "gift_type" field.</summary>
     public const int GiftTypeFieldNumber = 7;
-    private global::CastoriceHoney.Server.Proto.ProductGiftType giftType_ = global::CastoriceHoney.Server.Proto.ProductGiftType.ProductGiftNone;
+    private global::March7thHoney.Proto.ProductGiftType giftType_ = global::March7thHoney.Proto.ProductGiftType.ProductGiftNone;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ProductGiftType GiftType {
+    public global::March7thHoney.Proto.ProductGiftType GiftType {
       get { return giftType_; }
       set {
         giftType_ = value;
@@ -236,7 +236,7 @@ namespace CastoriceHoney.Server.Proto {
       if (BeginTime != 0L) hash ^= BeginTime.GetHashCode();
       if (PriceTier.Length != 0) hash ^= PriceTier.GetHashCode();
       if (MEMNCJLKAEE != 0) hash ^= MEMNCJLKAEE.GetHashCode();
-      if (GiftType != global::CastoriceHoney.Server.Proto.ProductGiftType.ProductGiftNone) hash ^= GiftType.GetHashCode();
+      if (GiftType != global::March7thHoney.Proto.ProductGiftType.ProductGiftNone) hash ^= GiftType.GetHashCode();
       if (ProductId.Length != 0) hash ^= ProductId.GetHashCode();
       if (EndTime != 0L) hash ^= EndTime.GetHashCode();
       if (DoubleReward != false) hash ^= DoubleReward.GetHashCode();
@@ -272,7 +272,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(40);
         output.WriteUInt32(MEMNCJLKAEE);
       }
-      if (GiftType != global::CastoriceHoney.Server.Proto.ProductGiftType.ProductGiftNone) {
+      if (GiftType != global::March7thHoney.Proto.ProductGiftType.ProductGiftNone) {
         output.WriteRawTag(56);
         output.WriteEnum((int) GiftType);
       }
@@ -318,7 +318,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(40);
         output.WriteUInt32(MEMNCJLKAEE);
       }
-      if (GiftType != global::CastoriceHoney.Server.Proto.ProductGiftType.ProductGiftNone) {
+      if (GiftType != global::March7thHoney.Proto.ProductGiftType.ProductGiftNone) {
         output.WriteRawTag(56);
         output.WriteEnum((int) GiftType);
       }
@@ -361,7 +361,7 @@ namespace CastoriceHoney.Server.Proto {
       if (MEMNCJLKAEE != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MEMNCJLKAEE);
       }
-      if (GiftType != global::CastoriceHoney.Server.Proto.ProductGiftType.ProductGiftNone) {
+      if (GiftType != global::March7thHoney.Proto.ProductGiftType.ProductGiftNone) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) GiftType);
       }
       if (ProductId.Length != 0) {
@@ -400,7 +400,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other.MEMNCJLKAEE != 0) {
         MEMNCJLKAEE = other.MEMNCJLKAEE;
       }
-      if (other.GiftType != global::CastoriceHoney.Server.Proto.ProductGiftType.ProductGiftNone) {
+      if (other.GiftType != global::March7thHoney.Proto.ProductGiftType.ProductGiftNone) {
         GiftType = other.GiftType;
       }
       if (other.ProductId.Length != 0) {
@@ -450,7 +450,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 56: {
-            GiftType = (global::CastoriceHoney.Server.Proto.ProductGiftType) input.ReadEnum();
+            GiftType = (global::March7thHoney.Proto.ProductGiftType) input.ReadEnum();
             break;
           }
           case 66: {
@@ -505,7 +505,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 56: {
-            GiftType = (global::CastoriceHoney.Server.Proto.ProductGiftType) input.ReadEnum();
+            GiftType = (global::March7thHoney.Proto.ProductGiftType) input.ReadEnum();
             break;
           }
           case 66: {

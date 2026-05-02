@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GetFirstTalkByPerformanceNpcScRsp.proto</summary>
   public static partial class GetFirstTalkByPerformanceNpcScRspReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "ZGUYDyABKA1CMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhv",
             "bmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.NpcMeetByPerformanceStatusReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.NpcMeetByPerformanceStatusReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GetFirstTalkByPerformanceNpcScRsp), global::CastoriceHoney.Server.Proto.GetFirstTalkByPerformanceNpcScRsp.Parser, new[]{ "NpcMeetStatusList", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetFirstTalkByPerformanceNpcScRsp), global::March7thHoney.Proto.GetFirstTalkByPerformanceNpcScRsp.Parser, new[]{ "NpcMeetStatusList", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GetFirstTalkByPerformanceNpcScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GetFirstTalkByPerformanceNpcScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -88,12 +88,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "npc_meet_status_list" field.</summary>
     public const int NpcMeetStatusListFieldNumber = 10;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.NpcMeetByPerformanceStatus> _repeated_npcMeetStatusList_codec
-        = pb::FieldCodec.ForMessage(82, global::CastoriceHoney.Server.Proto.NpcMeetByPerformanceStatus.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.NpcMeetByPerformanceStatus> npcMeetStatusList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.NpcMeetByPerformanceStatus>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.NpcMeetByPerformanceStatus> _repeated_npcMeetStatusList_codec
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.NpcMeetByPerformanceStatus.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.NpcMeetByPerformanceStatus> npcMeetStatusList_ = new pbc::RepeatedField<global::March7thHoney.Proto.NpcMeetByPerformanceStatus>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.NpcMeetByPerformanceStatus> NpcMeetStatusList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.NpcMeetByPerformanceStatus> NpcMeetStatusList {
       get { return npcMeetStatusList_; }
     }
 

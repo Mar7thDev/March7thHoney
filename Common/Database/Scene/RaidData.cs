@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.Database.Lineup;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Database.Lineup;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 using SqlSugar;
 
-namespace CastoriceHoney.Server.Database.Scene;
+namespace March7thHoney.Database.Scene;
 
 [SugarTable("RaidData")]
 public class RaidData : BaseDatabaseDataHelper

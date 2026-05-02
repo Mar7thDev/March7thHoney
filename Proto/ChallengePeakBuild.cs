@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from ChallengePeakBuild.proto</summary>
   public static partial class ChallengePeakBuildReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "cl9pZBgNIAEoDUIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNl",
             "SG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.EquipRelicReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.EquipRelicReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ChallengePeakBuild), global::CastoriceHoney.Server.Proto.ChallengePeakBuild.Parser, new[]{ "EquipmentUniqueId", "RelicList", "AvatarType", "CBHKFOEOMFF", "AvatarId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakBuild), global::March7thHoney.Proto.ChallengePeakBuild.Parser, new[]{ "EquipmentUniqueId", "RelicList", "AvatarType", "CBHKFOEOMFF", "AvatarId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ChallengePeakBuildReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ChallengePeakBuildReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -103,12 +103,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "relic_list" field.</summary>
     public const int RelicListFieldNumber = 5;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.EquipRelic> _repeated_relicList_codec
-        = pb::FieldCodec.ForMessage(42, global::CastoriceHoney.Server.Proto.EquipRelic.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.EquipRelic> relicList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.EquipRelic>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EquipRelic> _repeated_relicList_codec
+        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.EquipRelic.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EquipRelic> relicList_ = new pbc::RepeatedField<global::March7thHoney.Proto.EquipRelic>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.EquipRelic> RelicList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.EquipRelic> RelicList {
       get { return relicList_; }
     }
 

@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Enums.GridFight;
+using March7thHoney.Enums.GridFight;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("GridFightTraitEffect.json")]
 public class GridFightTraitEffectExcel : ExcelResource

@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Enums.Item;
+namespace March7thHoney.Enums.Item;
 
 public enum ItemUseMethodEnum
 {

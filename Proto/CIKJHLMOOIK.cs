@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from CIKJHLMOOIK.proto</summary>
   public static partial class CIKJHLMOOIKReflection {
@@ -33,9 +33,9 @@ namespace CastoriceHoney.Server.Proto {
             "bXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlBy",
             "b3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.JOLDDNMGBHDReflection.Descriptor, global::CastoriceHoney.Server.Proto.PunkLordAttackerStatusReflection.Descriptor, global::CastoriceHoney.Server.Proto.PunkLordMonsterBasicInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.JOLDDNMGBHDReflection.Descriptor, global::March7thHoney.Proto.PunkLordAttackerStatusReflection.Descriptor, global::March7thHoney.Proto.PunkLordMonsterBasicInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.CIKJHLMOOIK), global::CastoriceHoney.Server.Proto.CIKJHLMOOIK.Parser, new[]{ "DHHALBIANOG", "GGGOOMKOJBF", "BasicInfo", "FHPOILIMKII" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.CIKJHLMOOIK), global::March7thHoney.Proto.CIKJHLMOOIK.Parser, new[]{ "DHHALBIANOG", "GGGOOMKOJBF", "BasicInfo", "FHPOILIMKII" }, null, null, null, null)
           }));
     }
     #endregion
@@ -57,7 +57,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.CIKJHLMOOIKReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.CIKJHLMOOIKReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -92,10 +92,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "DHHALBIANOG" field.</summary>
     public const int DHHALBIANOGFieldNumber = 2;
-    private global::CastoriceHoney.Server.Proto.PunkLordAttackerStatus dHHALBIANOG_ = global::CastoriceHoney.Server.Proto.PunkLordAttackerStatus.IhdhfkjhaahPcpdhelpkem;
+    private global::March7thHoney.Proto.PunkLordAttackerStatus dHHALBIANOG_ = global::March7thHoney.Proto.PunkLordAttackerStatus.IhdhfkjhaahPcpdhelpkem;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.PunkLordAttackerStatus DHHALBIANOG {
+    public global::March7thHoney.Proto.PunkLordAttackerStatus DHHALBIANOG {
       get { return dHHALBIANOG_; }
       set {
         dHHALBIANOG_ = value;
@@ -116,10 +116,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "basic_info" field.</summary>
     public const int BasicInfoFieldNumber = 11;
-    private global::CastoriceHoney.Server.Proto.PunkLordMonsterBasicInfo basicInfo_;
+    private global::March7thHoney.Proto.PunkLordMonsterBasicInfo basicInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.PunkLordMonsterBasicInfo BasicInfo {
+    public global::March7thHoney.Proto.PunkLordMonsterBasicInfo BasicInfo {
       get { return basicInfo_; }
       set {
         basicInfo_ = value;
@@ -128,10 +128,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "FHPOILIMKII" field.</summary>
     public const int FHPOILIMKIIFieldNumber = 12;
-    private global::CastoriceHoney.Server.Proto.JOLDDNMGBHD fHPOILIMKII_;
+    private global::March7thHoney.Proto.JOLDDNMGBHD fHPOILIMKII_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.JOLDDNMGBHD FHPOILIMKII {
+    public global::March7thHoney.Proto.JOLDDNMGBHD FHPOILIMKII {
       get { return fHPOILIMKII_; }
       set {
         fHPOILIMKII_ = value;
@@ -164,7 +164,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (DHHALBIANOG != global::CastoriceHoney.Server.Proto.PunkLordAttackerStatus.IhdhfkjhaahPcpdhelpkem) hash ^= DHHALBIANOG.GetHashCode();
+      if (DHHALBIANOG != global::March7thHoney.Proto.PunkLordAttackerStatus.IhdhfkjhaahPcpdhelpkem) hash ^= DHHALBIANOG.GetHashCode();
       if (GGGOOMKOJBF != 0) hash ^= GGGOOMKOJBF.GetHashCode();
       if (basicInfo_ != null) hash ^= BasicInfo.GetHashCode();
       if (fHPOILIMKII_ != null) hash ^= FHPOILIMKII.GetHashCode();
@@ -186,7 +186,7 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (DHHALBIANOG != global::CastoriceHoney.Server.Proto.PunkLordAttackerStatus.IhdhfkjhaahPcpdhelpkem) {
+      if (DHHALBIANOG != global::March7thHoney.Proto.PunkLordAttackerStatus.IhdhfkjhaahPcpdhelpkem) {
         output.WriteRawTag(16);
         output.WriteEnum((int) DHHALBIANOG);
       }
@@ -212,7 +212,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (DHHALBIANOG != global::CastoriceHoney.Server.Proto.PunkLordAttackerStatus.IhdhfkjhaahPcpdhelpkem) {
+      if (DHHALBIANOG != global::March7thHoney.Proto.PunkLordAttackerStatus.IhdhfkjhaahPcpdhelpkem) {
         output.WriteRawTag(16);
         output.WriteEnum((int) DHHALBIANOG);
       }
@@ -238,7 +238,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (DHHALBIANOG != global::CastoriceHoney.Server.Proto.PunkLordAttackerStatus.IhdhfkjhaahPcpdhelpkem) {
+      if (DHHALBIANOG != global::March7thHoney.Proto.PunkLordAttackerStatus.IhdhfkjhaahPcpdhelpkem) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) DHHALBIANOG);
       }
       if (GGGOOMKOJBF != 0) {
@@ -262,7 +262,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.DHHALBIANOG != global::CastoriceHoney.Server.Proto.PunkLordAttackerStatus.IhdhfkjhaahPcpdhelpkem) {
+      if (other.DHHALBIANOG != global::March7thHoney.Proto.PunkLordAttackerStatus.IhdhfkjhaahPcpdhelpkem) {
         DHHALBIANOG = other.DHHALBIANOG;
       }
       if (other.GGGOOMKOJBF != 0) {
@@ -270,13 +270,13 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.basicInfo_ != null) {
         if (basicInfo_ == null) {
-          BasicInfo = new global::CastoriceHoney.Server.Proto.PunkLordMonsterBasicInfo();
+          BasicInfo = new global::March7thHoney.Proto.PunkLordMonsterBasicInfo();
         }
         BasicInfo.MergeFrom(other.BasicInfo);
       }
       if (other.fHPOILIMKII_ != null) {
         if (fHPOILIMKII_ == null) {
-          FHPOILIMKII = new global::CastoriceHoney.Server.Proto.JOLDDNMGBHD();
+          FHPOILIMKII = new global::March7thHoney.Proto.JOLDDNMGBHD();
         }
         FHPOILIMKII.MergeFrom(other.FHPOILIMKII);
       }
@@ -300,7 +300,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 16: {
-            DHHALBIANOG = (global::CastoriceHoney.Server.Proto.PunkLordAttackerStatus) input.ReadEnum();
+            DHHALBIANOG = (global::March7thHoney.Proto.PunkLordAttackerStatus) input.ReadEnum();
             break;
           }
           case 32: {
@@ -309,14 +309,14 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 90: {
             if (basicInfo_ == null) {
-              BasicInfo = new global::CastoriceHoney.Server.Proto.PunkLordMonsterBasicInfo();
+              BasicInfo = new global::March7thHoney.Proto.PunkLordMonsterBasicInfo();
             }
             input.ReadMessage(BasicInfo);
             break;
           }
           case 98: {
             if (fHPOILIMKII_ == null) {
-              FHPOILIMKII = new global::CastoriceHoney.Server.Proto.JOLDDNMGBHD();
+              FHPOILIMKII = new global::March7thHoney.Proto.JOLDDNMGBHD();
             }
             input.ReadMessage(FHPOILIMKII);
             break;
@@ -341,7 +341,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 16: {
-            DHHALBIANOG = (global::CastoriceHoney.Server.Proto.PunkLordAttackerStatus) input.ReadEnum();
+            DHHALBIANOG = (global::March7thHoney.Proto.PunkLordAttackerStatus) input.ReadEnum();
             break;
           }
           case 32: {
@@ -350,14 +350,14 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 90: {
             if (basicInfo_ == null) {
-              BasicInfo = new global::CastoriceHoney.Server.Proto.PunkLordMonsterBasicInfo();
+              BasicInfo = new global::March7thHoney.Proto.PunkLordMonsterBasicInfo();
             }
             input.ReadMessage(BasicInfo);
             break;
           }
           case 98: {
             if (fHPOILIMKII_ == null) {
-              FHPOILIMKII = new global::CastoriceHoney.Server.Proto.JOLDDNMGBHD();
+              FHPOILIMKII = new global::March7thHoney.Proto.JOLDDNMGBHD();
             }
             input.ReadMessage(FHPOILIMKII);
             break;

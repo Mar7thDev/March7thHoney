@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from DDJIOFONKME.proto</summary>
   public static partial class DDJIOFONKMEReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "IAEoCzIXLkdyaWRGaWdodERhbWFnZVN0dEluZm9CMwoTZW11Lmx1bmFyY29y",
             "ZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GridFightDamageSttInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightSectionRecordInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridFightDamageSttInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightSectionRecordInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.DDJIOFONKME), global::CastoriceHoney.Server.Proto.DDJIOFONKME.Parser, new[]{ "KILABGPMPBB", "GridFightDamageSttInfo" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DDJIOFONKME), global::March7thHoney.Proto.DDJIOFONKME.Parser, new[]{ "KILABGPMPBB", "GridFightDamageSttInfo" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.DDJIOFONKMEReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.DDJIOFONKMEReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -88,21 +88,21 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "KILABGPMPBB" field.</summary>
     public const int KILABGPMPBBFieldNumber = 9;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.GridFightSectionRecordInfo> _repeated_kILABGPMPBB_codec
-        = pb::FieldCodec.ForMessage(74, global::CastoriceHoney.Server.Proto.GridFightSectionRecordInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridFightSectionRecordInfo> kILABGPMPBB_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridFightSectionRecordInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GridFightSectionRecordInfo> _repeated_kILABGPMPBB_codec
+        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.GridFightSectionRecordInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GridFightSectionRecordInfo> kILABGPMPBB_ = new pbc::RepeatedField<global::March7thHoney.Proto.GridFightSectionRecordInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridFightSectionRecordInfo> KILABGPMPBB {
+    public pbc::RepeatedField<global::March7thHoney.Proto.GridFightSectionRecordInfo> KILABGPMPBB {
       get { return kILABGPMPBB_; }
     }
 
     /// <summary>Field number for the "grid_fight_damage_stt_info" field.</summary>
     public const int GridFightDamageSttInfoFieldNumber = 13;
-    private global::CastoriceHoney.Server.Proto.GridFightDamageSttInfo gridFightDamageSttInfo_;
+    private global::March7thHoney.Proto.GridFightDamageSttInfo gridFightDamageSttInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightDamageSttInfo GridFightDamageSttInfo {
+    public global::March7thHoney.Proto.GridFightDamageSttInfo GridFightDamageSttInfo {
       get { return gridFightDamageSttInfo_; }
       set {
         gridFightDamageSttInfo_ = value;
@@ -202,7 +202,7 @@ namespace CastoriceHoney.Server.Proto {
       kILABGPMPBB_.Add(other.kILABGPMPBB_);
       if (other.gridFightDamageSttInfo_ != null) {
         if (gridFightDamageSttInfo_ == null) {
-          GridFightDamageSttInfo = new global::CastoriceHoney.Server.Proto.GridFightDamageSttInfo();
+          GridFightDamageSttInfo = new global::March7thHoney.Proto.GridFightDamageSttInfo();
         }
         GridFightDamageSttInfo.MergeFrom(other.GridFightDamageSttInfo);
       }
@@ -231,7 +231,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 106: {
             if (gridFightDamageSttInfo_ == null) {
-              GridFightDamageSttInfo = new global::CastoriceHoney.Server.Proto.GridFightDamageSttInfo();
+              GridFightDamageSttInfo = new global::March7thHoney.Proto.GridFightDamageSttInfo();
             }
             input.ReadMessage(GridFightDamageSttInfo);
             break;
@@ -261,7 +261,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 106: {
             if (gridFightDamageSttInfo_ == null) {
-              GridFightDamageSttInfo = new global::CastoriceHoney.Server.Proto.GridFightDamageSttInfo();
+              GridFightDamageSttInfo = new global::March7thHoney.Proto.GridFightDamageSttInfo();
             }
             input.ReadMessage(GridFightDamageSttInfo);
             break;

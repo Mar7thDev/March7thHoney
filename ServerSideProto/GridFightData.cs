@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto.ServerSide {
+namespace March7thHoney.Proto.ServerSide {
 
   /// <summary>Holder for reflection information generated from GridFightData.proto</summary>
   public static partial class GridFightDataReflection {
@@ -93,29 +93,29 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ServerSide.GridFightShopRoleItemPb), global::CastoriceHoney.Server.Proto.ServerSide.GridFightShopRoleItemPb.Parser, new[]{ "RoleId", "Tier" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ServerSide.GridFightShopItemPb), global::CastoriceHoney.Server.Proto.ServerSide.GridFightShopItemPb.Parser, new[]{ "RoleItem", "Cost", "SoldOut" }, new[]{ "ItemType" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ServerSide.GridFightShopInfoPb), global::CastoriceHoney.Server.Proto.ServerSide.GridFightShopInfoPb.Parser, new[]{ "ShopLocked", "FreeRefreshCount", "RefreshCost", "ShopItems" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ServerSide.GridFightGameInfoPb), global::CastoriceHoney.Server.Proto.ServerSide.GridFightGameInfoPb.Parser, new[]{ "UniqueId", "DivisionId", "IsOverLock", "Season", "Components" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ServerSide.GridFightBasicInfoPb), global::CastoriceHoney.Server.Proto.ServerSide.GridFightBasicInfoPb.Parser, new[]{ "CurGold", "CurLevel", "LevelExp", "BuyLevelCost", "CurHp", "MaxAvatarNum", "ComboNum", "LockType", "LockReason", "MaxInterest", "TrackingTraits", "TrackingEquipments", "GuideCode", "MaxLevel", "OffFieldAvatarNum" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ServerSide.GridFightEquipmentTrackInfoPb), global::CastoriceHoney.Server.Proto.ServerSide.GridFightEquipmentTrackInfoPb.Parser, new[]{ "Priority", "RoleId", "EquipmentIds" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ServerSide.GridFightRoleInfoPb), global::CastoriceHoney.Server.Proto.ServerSide.GridFightRoleInfoPb.Parser, new[]{ "RoleId", "Tier", "Pos", "UniqueId", "SavedValues", "EquipmentIds" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ServerSide.GridFightNpcInfoPb), global::CastoriceHoney.Server.Proto.ServerSide.GridFightNpcInfoPb.Parser, new[]{ "NpcId", "Pos", "UniqueId", "EquipmentIds" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ServerSide.GridFightForgeInfoPb), global::CastoriceHoney.Server.Proto.ServerSide.GridFightForgeInfoPb.Parser, new[]{ "ForgeItemId", "Pos", "UniqueId", "Goods" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ServerSide.GridFightForgeGoodsInfoPb), global::CastoriceHoney.Server.Proto.ServerSide.GridFightForgeGoodsInfoPb.Parser, new[]{ "ItemId", "RoleInfo" }, new[]{ "GoodsType" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ServerSide.GridFightForgeRoleGoodsInfoPb), global::CastoriceHoney.Server.Proto.ServerSide.GridFightForgeRoleGoodsInfoPb.Parser, new[]{ "RoleId", "Tier" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ServerSide.GridFightTeamInfoPb), global::CastoriceHoney.Server.Proto.ServerSide.GridFightTeamInfoPb.Parser, new[]{ "Roles", "Npcs", "Forges", "CurUniqueId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ServerSide.GridFightGameOrbPb), global::CastoriceHoney.Server.Proto.ServerSide.GridFightGameOrbPb.Parser, new[]{ "OrbItemId", "UniqueId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ServerSide.GridFightOrbInfoPb), global::CastoriceHoney.Server.Proto.ServerSide.GridFightOrbInfoPb.Parser, new[]{ "Orbs" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ServerSide.GridFightGameAugmentPb), global::CastoriceHoney.Server.Proto.ServerSide.GridFightGameAugmentPb.Parser, new[]{ "AugmentId", "SavedValues" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ServerSide.GridFightAugmentInfoPb), global::CastoriceHoney.Server.Proto.ServerSide.GridFightAugmentInfoPb.Parser, new[]{ "Augments" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ServerSide.GridFightGameTraitEffectPb), global::CastoriceHoney.Server.Proto.ServerSide.GridFightGameTraitEffectPb.Parser, new[]{ "TraitId", "EffectId", "Threshold", "CoreRoleUniqueId" }, new[]{ "EffectParam" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ServerSide.GridFightGameTraitPb), global::CastoriceHoney.Server.Proto.ServerSide.GridFightGameTraitPb.Parser, new[]{ "TraitId", "Effects", "TraitLayer" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ServerSide.GridFightTraitInfoPb), global::CastoriceHoney.Server.Proto.ServerSide.GridFightTraitInfoPb.Parser, new[]{ "Traits" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ServerSide.GridFightEquipmentItemPb), global::CastoriceHoney.Server.Proto.ServerSide.GridFightEquipmentItemPb.Parser, new[]{ "ItemId", "UniqueId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ServerSide.GridFightConsumableItemPb), global::CastoriceHoney.Server.Proto.ServerSide.GridFightConsumableItemPb.Parser, new[]{ "ItemId", "Count" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ServerSide.GridFightItemsInfoPb), global::CastoriceHoney.Server.Proto.ServerSide.GridFightItemsInfoPb.Parser, new[]{ "EquipmentItems", "ConsumableItems" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ServerSide.GridFightComponentPb), global::CastoriceHoney.Server.Proto.ServerSide.GridFightComponentPb.Parser, new[]{ "ShopInfo", "BasicInfo", "TeamInfo", "OrbInfo", "AugmentInfo", "TraitInfo", "ItemsInfo" }, new[]{ "ComponentType" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ServerSide.GridFightShopRoleItemPb), global::March7thHoney.Proto.ServerSide.GridFightShopRoleItemPb.Parser, new[]{ "RoleId", "Tier" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ServerSide.GridFightShopItemPb), global::March7thHoney.Proto.ServerSide.GridFightShopItemPb.Parser, new[]{ "RoleItem", "Cost", "SoldOut" }, new[]{ "ItemType" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ServerSide.GridFightShopInfoPb), global::March7thHoney.Proto.ServerSide.GridFightShopInfoPb.Parser, new[]{ "ShopLocked", "FreeRefreshCount", "RefreshCost", "ShopItems" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ServerSide.GridFightGameInfoPb), global::March7thHoney.Proto.ServerSide.GridFightGameInfoPb.Parser, new[]{ "UniqueId", "DivisionId", "IsOverLock", "Season", "Components" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ServerSide.GridFightBasicInfoPb), global::March7thHoney.Proto.ServerSide.GridFightBasicInfoPb.Parser, new[]{ "CurGold", "CurLevel", "LevelExp", "BuyLevelCost", "CurHp", "MaxAvatarNum", "ComboNum", "LockType", "LockReason", "MaxInterest", "TrackingTraits", "TrackingEquipments", "GuideCode", "MaxLevel", "OffFieldAvatarNum" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ServerSide.GridFightEquipmentTrackInfoPb), global::March7thHoney.Proto.ServerSide.GridFightEquipmentTrackInfoPb.Parser, new[]{ "Priority", "RoleId", "EquipmentIds" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ServerSide.GridFightRoleInfoPb), global::March7thHoney.Proto.ServerSide.GridFightRoleInfoPb.Parser, new[]{ "RoleId", "Tier", "Pos", "UniqueId", "SavedValues", "EquipmentIds" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ServerSide.GridFightNpcInfoPb), global::March7thHoney.Proto.ServerSide.GridFightNpcInfoPb.Parser, new[]{ "NpcId", "Pos", "UniqueId", "EquipmentIds" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ServerSide.GridFightForgeInfoPb), global::March7thHoney.Proto.ServerSide.GridFightForgeInfoPb.Parser, new[]{ "ForgeItemId", "Pos", "UniqueId", "Goods" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ServerSide.GridFightForgeGoodsInfoPb), global::March7thHoney.Proto.ServerSide.GridFightForgeGoodsInfoPb.Parser, new[]{ "ItemId", "RoleInfo" }, new[]{ "GoodsType" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ServerSide.GridFightForgeRoleGoodsInfoPb), global::March7thHoney.Proto.ServerSide.GridFightForgeRoleGoodsInfoPb.Parser, new[]{ "RoleId", "Tier" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ServerSide.GridFightTeamInfoPb), global::March7thHoney.Proto.ServerSide.GridFightTeamInfoPb.Parser, new[]{ "Roles", "Npcs", "Forges", "CurUniqueId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ServerSide.GridFightGameOrbPb), global::March7thHoney.Proto.ServerSide.GridFightGameOrbPb.Parser, new[]{ "OrbItemId", "UniqueId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ServerSide.GridFightOrbInfoPb), global::March7thHoney.Proto.ServerSide.GridFightOrbInfoPb.Parser, new[]{ "Orbs" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ServerSide.GridFightGameAugmentPb), global::March7thHoney.Proto.ServerSide.GridFightGameAugmentPb.Parser, new[]{ "AugmentId", "SavedValues" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ServerSide.GridFightAugmentInfoPb), global::March7thHoney.Proto.ServerSide.GridFightAugmentInfoPb.Parser, new[]{ "Augments" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ServerSide.GridFightGameTraitEffectPb), global::March7thHoney.Proto.ServerSide.GridFightGameTraitEffectPb.Parser, new[]{ "TraitId", "EffectId", "Threshold", "CoreRoleUniqueId" }, new[]{ "EffectParam" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ServerSide.GridFightGameTraitPb), global::March7thHoney.Proto.ServerSide.GridFightGameTraitPb.Parser, new[]{ "TraitId", "Effects", "TraitLayer" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ServerSide.GridFightTraitInfoPb), global::March7thHoney.Proto.ServerSide.GridFightTraitInfoPb.Parser, new[]{ "Traits" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ServerSide.GridFightEquipmentItemPb), global::March7thHoney.Proto.ServerSide.GridFightEquipmentItemPb.Parser, new[]{ "ItemId", "UniqueId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ServerSide.GridFightConsumableItemPb), global::March7thHoney.Proto.ServerSide.GridFightConsumableItemPb.Parser, new[]{ "ItemId", "Count" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ServerSide.GridFightItemsInfoPb), global::March7thHoney.Proto.ServerSide.GridFightItemsInfoPb.Parser, new[]{ "EquipmentItems", "ConsumableItems" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ServerSide.GridFightComponentPb), global::March7thHoney.Proto.ServerSide.GridFightComponentPb.Parser, new[]{ "ShopInfo", "BasicInfo", "TeamInfo", "OrbInfo", "AugmentInfo", "TraitInfo", "ItemsInfo" }, new[]{ "ComponentType" }, null, null, null)
           }));
     }
     #endregion
@@ -137,7 +137,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -364,7 +364,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[1]; }
+      get { return global::March7thHoney.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -405,8 +405,8 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
     public const int RoleItemFieldNumber = 1;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ServerSide.GridFightShopRoleItemPb RoleItem {
-      get { return itemTypeCase_ == ItemTypeOneofCase.RoleItem ? (global::CastoriceHoney.Server.Proto.ServerSide.GridFightShopRoleItemPb) itemType_ : null; }
+    public global::March7thHoney.Proto.ServerSide.GridFightShopRoleItemPb RoleItem {
+      get { return itemTypeCase_ == ItemTypeOneofCase.RoleItem ? (global::March7thHoney.Proto.ServerSide.GridFightShopRoleItemPb) itemType_ : null; }
       set {
         itemType_ = value;
         itemTypeCase_ = value == null ? ItemTypeOneofCase.None : ItemTypeOneofCase.RoleItem;
@@ -579,7 +579,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
       switch (other.ItemTypeCase) {
         case ItemTypeOneofCase.RoleItem:
           if (RoleItem == null) {
-            RoleItem = new global::CastoriceHoney.Server.Proto.ServerSide.GridFightShopRoleItemPb();
+            RoleItem = new global::March7thHoney.Proto.ServerSide.GridFightShopRoleItemPb();
           }
           RoleItem.MergeFrom(other.RoleItem);
           break;
@@ -601,7 +601,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            global::CastoriceHoney.Server.Proto.ServerSide.GridFightShopRoleItemPb subBuilder = new global::CastoriceHoney.Server.Proto.ServerSide.GridFightShopRoleItemPb();
+            global::March7thHoney.Proto.ServerSide.GridFightShopRoleItemPb subBuilder = new global::March7thHoney.Proto.ServerSide.GridFightShopRoleItemPb();
             if (itemTypeCase_ == ItemTypeOneofCase.RoleItem) {
               subBuilder.MergeFrom(RoleItem);
             }
@@ -633,7 +633,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            global::CastoriceHoney.Server.Proto.ServerSide.GridFightShopRoleItemPb subBuilder = new global::CastoriceHoney.Server.Proto.ServerSide.GridFightShopRoleItemPb();
+            global::March7thHoney.Proto.ServerSide.GridFightShopRoleItemPb subBuilder = new global::March7thHoney.Proto.ServerSide.GridFightShopRoleItemPb();
             if (itemTypeCase_ == ItemTypeOneofCase.RoleItem) {
               subBuilder.MergeFrom(RoleItem);
             }
@@ -671,7 +671,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[2]; }
+      get { return global::March7thHoney.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -742,12 +742,12 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
 
     /// <summary>Field number for the "ShopItems" field.</summary>
     public const int ShopItemsFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ServerSide.GridFightShopItemPb> _repeated_shopItems_codec
-        = pb::FieldCodec.ForMessage(34, global::CastoriceHoney.Server.Proto.ServerSide.GridFightShopItemPb.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightShopItemPb> shopItems_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightShopItemPb>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ServerSide.GridFightShopItemPb> _repeated_shopItems_codec
+        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.ServerSide.GridFightShopItemPb.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightShopItemPb> shopItems_ = new pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightShopItemPb>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightShopItemPb> ShopItems {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightShopItemPb> ShopItems {
       get { return shopItems_; }
     }
 
@@ -961,7 +961,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[3]; }
+      get { return global::March7thHoney.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1045,12 +1045,12 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
 
     /// <summary>Field number for the "Components" field.</summary>
     public const int ComponentsFieldNumber = 5;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ServerSide.GridFightComponentPb> _repeated_components_codec
-        = pb::FieldCodec.ForMessage(42, global::CastoriceHoney.Server.Proto.ServerSide.GridFightComponentPb.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightComponentPb> components_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightComponentPb>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ServerSide.GridFightComponentPb> _repeated_components_codec
+        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.ServerSide.GridFightComponentPb.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightComponentPb> components_ = new pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightComponentPb>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightComponentPb> Components {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightComponentPb> Components {
       get { return components_; }
     }
 
@@ -1288,7 +1288,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[4]; }
+      get { return global::March7thHoney.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1465,12 +1465,12 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
 
     /// <summary>Field number for the "TrackingEquipments" field.</summary>
     public const int TrackingEquipmentsFieldNumber = 12;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ServerSide.GridFightEquipmentTrackInfoPb> _repeated_trackingEquipments_codec
-        = pb::FieldCodec.ForMessage(98, global::CastoriceHoney.Server.Proto.ServerSide.GridFightEquipmentTrackInfoPb.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightEquipmentTrackInfoPb> trackingEquipments_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightEquipmentTrackInfoPb>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ServerSide.GridFightEquipmentTrackInfoPb> _repeated_trackingEquipments_codec
+        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.ServerSide.GridFightEquipmentTrackInfoPb.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightEquipmentTrackInfoPb> trackingEquipments_ = new pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightEquipmentTrackInfoPb>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightEquipmentTrackInfoPb> TrackingEquipments {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightEquipmentTrackInfoPb> TrackingEquipments {
       get { return trackingEquipments_; }
     }
 
@@ -1976,7 +1976,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[5]; }
+      get { return global::March7thHoney.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2231,7 +2231,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[6]; }
+      get { return global::March7thHoney.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2586,7 +2586,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[7]; }
+      get { return global::March7thHoney.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2878,7 +2878,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[8]; }
+      get { return global::March7thHoney.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2949,12 +2949,12 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
 
     /// <summary>Field number for the "Goods" field.</summary>
     public const int GoodsFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ServerSide.GridFightForgeGoodsInfoPb> _repeated_goods_codec
-        = pb::FieldCodec.ForMessage(34, global::CastoriceHoney.Server.Proto.ServerSide.GridFightForgeGoodsInfoPb.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightForgeGoodsInfoPb> goods_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightForgeGoodsInfoPb>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ServerSide.GridFightForgeGoodsInfoPb> _repeated_goods_codec
+        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.ServerSide.GridFightForgeGoodsInfoPb.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightForgeGoodsInfoPb> goods_ = new pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightForgeGoodsInfoPb>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightForgeGoodsInfoPb> Goods {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightForgeGoodsInfoPb> Goods {
       get { return goods_; }
     }
 
@@ -3168,7 +3168,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[9]; }
+      get { return global::March7thHoney.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3236,8 +3236,8 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
     public const int RoleInfoFieldNumber = 2;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ServerSide.GridFightForgeRoleGoodsInfoPb RoleInfo {
-      get { return goodsTypeCase_ == GoodsTypeOneofCase.RoleInfo ? (global::CastoriceHoney.Server.Proto.ServerSide.GridFightForgeRoleGoodsInfoPb) goodsType_ : null; }
+    public global::March7thHoney.Proto.ServerSide.GridFightForgeRoleGoodsInfoPb RoleInfo {
+      get { return goodsTypeCase_ == GoodsTypeOneofCase.RoleInfo ? (global::March7thHoney.Proto.ServerSide.GridFightForgeRoleGoodsInfoPb) goodsType_ : null; }
       set {
         goodsType_ = value;
         goodsTypeCase_ = value == null ? GoodsTypeOneofCase.None : GoodsTypeOneofCase.RoleInfo;
@@ -3371,7 +3371,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
           break;
         case GoodsTypeOneofCase.RoleInfo:
           if (RoleInfo == null) {
-            RoleInfo = new global::CastoriceHoney.Server.Proto.ServerSide.GridFightForgeRoleGoodsInfoPb();
+            RoleInfo = new global::March7thHoney.Proto.ServerSide.GridFightForgeRoleGoodsInfoPb();
           }
           RoleInfo.MergeFrom(other.RoleInfo);
           break;
@@ -3397,7 +3397,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
             break;
           }
           case 18: {
-            global::CastoriceHoney.Server.Proto.ServerSide.GridFightForgeRoleGoodsInfoPb subBuilder = new global::CastoriceHoney.Server.Proto.ServerSide.GridFightForgeRoleGoodsInfoPb();
+            global::March7thHoney.Proto.ServerSide.GridFightForgeRoleGoodsInfoPb subBuilder = new global::March7thHoney.Proto.ServerSide.GridFightForgeRoleGoodsInfoPb();
             if (goodsTypeCase_ == GoodsTypeOneofCase.RoleInfo) {
               subBuilder.MergeFrom(RoleInfo);
             }
@@ -3425,7 +3425,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
             break;
           }
           case 18: {
-            global::CastoriceHoney.Server.Proto.ServerSide.GridFightForgeRoleGoodsInfoPb subBuilder = new global::CastoriceHoney.Server.Proto.ServerSide.GridFightForgeRoleGoodsInfoPb();
+            global::March7thHoney.Proto.ServerSide.GridFightForgeRoleGoodsInfoPb subBuilder = new global::March7thHoney.Proto.ServerSide.GridFightForgeRoleGoodsInfoPb();
             if (goodsTypeCase_ == GoodsTypeOneofCase.RoleInfo) {
               subBuilder.MergeFrom(RoleInfo);
             }
@@ -3455,7 +3455,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[10]; }
+      get { return global::March7thHoney.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3682,7 +3682,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[11]; }
+      get { return global::March7thHoney.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[11]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3717,34 +3717,34 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
 
     /// <summary>Field number for the "Roles" field.</summary>
     public const int RolesFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ServerSide.GridFightRoleInfoPb> _repeated_roles_codec
-        = pb::FieldCodec.ForMessage(10, global::CastoriceHoney.Server.Proto.ServerSide.GridFightRoleInfoPb.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightRoleInfoPb> roles_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightRoleInfoPb>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ServerSide.GridFightRoleInfoPb> _repeated_roles_codec
+        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.ServerSide.GridFightRoleInfoPb.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightRoleInfoPb> roles_ = new pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightRoleInfoPb>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightRoleInfoPb> Roles {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightRoleInfoPb> Roles {
       get { return roles_; }
     }
 
     /// <summary>Field number for the "Npcs" field.</summary>
     public const int NpcsFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ServerSide.GridFightNpcInfoPb> _repeated_npcs_codec
-        = pb::FieldCodec.ForMessage(18, global::CastoriceHoney.Server.Proto.ServerSide.GridFightNpcInfoPb.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightNpcInfoPb> npcs_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightNpcInfoPb>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ServerSide.GridFightNpcInfoPb> _repeated_npcs_codec
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.ServerSide.GridFightNpcInfoPb.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightNpcInfoPb> npcs_ = new pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightNpcInfoPb>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightNpcInfoPb> Npcs {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightNpcInfoPb> Npcs {
       get { return npcs_; }
     }
 
     /// <summary>Field number for the "Forges" field.</summary>
     public const int ForgesFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ServerSide.GridFightForgeInfoPb> _repeated_forges_codec
-        = pb::FieldCodec.ForMessage(26, global::CastoriceHoney.Server.Proto.ServerSide.GridFightForgeInfoPb.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightForgeInfoPb> forges_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightForgeInfoPb>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ServerSide.GridFightForgeInfoPb> _repeated_forges_codec
+        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.ServerSide.GridFightForgeInfoPb.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightForgeInfoPb> forges_ = new pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightForgeInfoPb>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightForgeInfoPb> Forges {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightForgeInfoPb> Forges {
       get { return forges_; }
     }
 
@@ -3950,7 +3950,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[12]; }
+      get { return global::March7thHoney.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[12]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4177,7 +4177,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[13]; }
+      get { return global::March7thHoney.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[13]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4209,12 +4209,12 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
 
     /// <summary>Field number for the "Orbs" field.</summary>
     public const int OrbsFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ServerSide.GridFightGameOrbPb> _repeated_orbs_codec
-        = pb::FieldCodec.ForMessage(10, global::CastoriceHoney.Server.Proto.ServerSide.GridFightGameOrbPb.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightGameOrbPb> orbs_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightGameOrbPb>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ServerSide.GridFightGameOrbPb> _repeated_orbs_codec
+        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.ServerSide.GridFightGameOrbPb.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightGameOrbPb> orbs_ = new pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightGameOrbPb>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightGameOrbPb> Orbs {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightGameOrbPb> Orbs {
       get { return orbs_; }
     }
 
@@ -4356,7 +4356,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[14]; }
+      get { return global::March7thHoney.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[14]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4572,7 +4572,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[15]; }
+      get { return global::March7thHoney.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[15]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4604,12 +4604,12 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
 
     /// <summary>Field number for the "Augments" field.</summary>
     public const int AugmentsFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ServerSide.GridFightGameAugmentPb> _repeated_augments_codec
-        = pb::FieldCodec.ForMessage(10, global::CastoriceHoney.Server.Proto.ServerSide.GridFightGameAugmentPb.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightGameAugmentPb> augments_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightGameAugmentPb>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ServerSide.GridFightGameAugmentPb> _repeated_augments_codec
+        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.ServerSide.GridFightGameAugmentPb.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightGameAugmentPb> augments_ = new pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightGameAugmentPb>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightGameAugmentPb> Augments {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightGameAugmentPb> Augments {
       get { return augments_; }
     }
 
@@ -4751,7 +4751,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[16]; }
+      get { return global::March7thHoney.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[16]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5113,7 +5113,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[17]; }
+      get { return global::March7thHoney.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[17]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5159,12 +5159,12 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
 
     /// <summary>Field number for the "Effects" field.</summary>
     public const int EffectsFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ServerSide.GridFightGameTraitEffectPb> _repeated_effects_codec
-        = pb::FieldCodec.ForMessage(18, global::CastoriceHoney.Server.Proto.ServerSide.GridFightGameTraitEffectPb.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightGameTraitEffectPb> effects_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightGameTraitEffectPb>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ServerSide.GridFightGameTraitEffectPb> _repeated_effects_codec
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.ServerSide.GridFightGameTraitEffectPb.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightGameTraitEffectPb> effects_ = new pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightGameTraitEffectPb>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightGameTraitEffectPb> Effects {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightGameTraitEffectPb> Effects {
       get { return effects_; }
     }
 
@@ -5366,7 +5366,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[18]; }
+      get { return global::March7thHoney.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[18]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5398,12 +5398,12 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
 
     /// <summary>Field number for the "Traits" field.</summary>
     public const int TraitsFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ServerSide.GridFightGameTraitPb> _repeated_traits_codec
-        = pb::FieldCodec.ForMessage(10, global::CastoriceHoney.Server.Proto.ServerSide.GridFightGameTraitPb.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightGameTraitPb> traits_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightGameTraitPb>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ServerSide.GridFightGameTraitPb> _repeated_traits_codec
+        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.ServerSide.GridFightGameTraitPb.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightGameTraitPb> traits_ = new pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightGameTraitPb>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightGameTraitPb> Traits {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightGameTraitPb> Traits {
       get { return traits_; }
     }
 
@@ -5545,7 +5545,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[19]; }
+      get { return global::March7thHoney.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[19]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5772,7 +5772,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[20]; }
+      get { return global::March7thHoney.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[20]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5999,7 +5999,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[21]; }
+      get { return global::March7thHoney.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[21]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6032,23 +6032,23 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
 
     /// <summary>Field number for the "EquipmentItems" field.</summary>
     public const int EquipmentItemsFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ServerSide.GridFightEquipmentItemPb> _repeated_equipmentItems_codec
-        = pb::FieldCodec.ForMessage(10, global::CastoriceHoney.Server.Proto.ServerSide.GridFightEquipmentItemPb.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightEquipmentItemPb> equipmentItems_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightEquipmentItemPb>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ServerSide.GridFightEquipmentItemPb> _repeated_equipmentItems_codec
+        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.ServerSide.GridFightEquipmentItemPb.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightEquipmentItemPb> equipmentItems_ = new pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightEquipmentItemPb>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightEquipmentItemPb> EquipmentItems {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightEquipmentItemPb> EquipmentItems {
       get { return equipmentItems_; }
     }
 
     /// <summary>Field number for the "ConsumableItems" field.</summary>
     public const int ConsumableItemsFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ServerSide.GridFightConsumableItemPb> _repeated_consumableItems_codec
-        = pb::FieldCodec.ForMessage(18, global::CastoriceHoney.Server.Proto.ServerSide.GridFightConsumableItemPb.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightConsumableItemPb> consumableItems_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightConsumableItemPb>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ServerSide.GridFightConsumableItemPb> _repeated_consumableItems_codec
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.ServerSide.GridFightConsumableItemPb.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightConsumableItemPb> consumableItems_ = new pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightConsumableItemPb>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ServerSide.GridFightConsumableItemPb> ConsumableItems {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ServerSide.GridFightConsumableItemPb> ConsumableItems {
       get { return consumableItems_; }
     }
 
@@ -6204,7 +6204,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[22]; }
+      get { return global::March7thHoney.Proto.ServerSide.GridFightDataReflection.Descriptor.MessageTypes[22]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6261,8 +6261,8 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
     public const int ShopInfoFieldNumber = 1;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ServerSide.GridFightShopInfoPb ShopInfo {
-      get { return componentTypeCase_ == ComponentTypeOneofCase.ShopInfo ? (global::CastoriceHoney.Server.Proto.ServerSide.GridFightShopInfoPb) componentType_ : null; }
+    public global::March7thHoney.Proto.ServerSide.GridFightShopInfoPb ShopInfo {
+      get { return componentTypeCase_ == ComponentTypeOneofCase.ShopInfo ? (global::March7thHoney.Proto.ServerSide.GridFightShopInfoPb) componentType_ : null; }
       set {
         componentType_ = value;
         componentTypeCase_ = value == null ? ComponentTypeOneofCase.None : ComponentTypeOneofCase.ShopInfo;
@@ -6273,8 +6273,8 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
     public const int BasicInfoFieldNumber = 2;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ServerSide.GridFightBasicInfoPb BasicInfo {
-      get { return componentTypeCase_ == ComponentTypeOneofCase.BasicInfo ? (global::CastoriceHoney.Server.Proto.ServerSide.GridFightBasicInfoPb) componentType_ : null; }
+    public global::March7thHoney.Proto.ServerSide.GridFightBasicInfoPb BasicInfo {
+      get { return componentTypeCase_ == ComponentTypeOneofCase.BasicInfo ? (global::March7thHoney.Proto.ServerSide.GridFightBasicInfoPb) componentType_ : null; }
       set {
         componentType_ = value;
         componentTypeCase_ = value == null ? ComponentTypeOneofCase.None : ComponentTypeOneofCase.BasicInfo;
@@ -6285,8 +6285,8 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
     public const int TeamInfoFieldNumber = 3;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ServerSide.GridFightTeamInfoPb TeamInfo {
-      get { return componentTypeCase_ == ComponentTypeOneofCase.TeamInfo ? (global::CastoriceHoney.Server.Proto.ServerSide.GridFightTeamInfoPb) componentType_ : null; }
+    public global::March7thHoney.Proto.ServerSide.GridFightTeamInfoPb TeamInfo {
+      get { return componentTypeCase_ == ComponentTypeOneofCase.TeamInfo ? (global::March7thHoney.Proto.ServerSide.GridFightTeamInfoPb) componentType_ : null; }
       set {
         componentType_ = value;
         componentTypeCase_ = value == null ? ComponentTypeOneofCase.None : ComponentTypeOneofCase.TeamInfo;
@@ -6297,8 +6297,8 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
     public const int OrbInfoFieldNumber = 4;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ServerSide.GridFightOrbInfoPb OrbInfo {
-      get { return componentTypeCase_ == ComponentTypeOneofCase.OrbInfo ? (global::CastoriceHoney.Server.Proto.ServerSide.GridFightOrbInfoPb) componentType_ : null; }
+    public global::March7thHoney.Proto.ServerSide.GridFightOrbInfoPb OrbInfo {
+      get { return componentTypeCase_ == ComponentTypeOneofCase.OrbInfo ? (global::March7thHoney.Proto.ServerSide.GridFightOrbInfoPb) componentType_ : null; }
       set {
         componentType_ = value;
         componentTypeCase_ = value == null ? ComponentTypeOneofCase.None : ComponentTypeOneofCase.OrbInfo;
@@ -6309,8 +6309,8 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
     public const int AugmentInfoFieldNumber = 5;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ServerSide.GridFightAugmentInfoPb AugmentInfo {
-      get { return componentTypeCase_ == ComponentTypeOneofCase.AugmentInfo ? (global::CastoriceHoney.Server.Proto.ServerSide.GridFightAugmentInfoPb) componentType_ : null; }
+    public global::March7thHoney.Proto.ServerSide.GridFightAugmentInfoPb AugmentInfo {
+      get { return componentTypeCase_ == ComponentTypeOneofCase.AugmentInfo ? (global::March7thHoney.Proto.ServerSide.GridFightAugmentInfoPb) componentType_ : null; }
       set {
         componentType_ = value;
         componentTypeCase_ = value == null ? ComponentTypeOneofCase.None : ComponentTypeOneofCase.AugmentInfo;
@@ -6321,8 +6321,8 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
     public const int TraitInfoFieldNumber = 6;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ServerSide.GridFightTraitInfoPb TraitInfo {
-      get { return componentTypeCase_ == ComponentTypeOneofCase.TraitInfo ? (global::CastoriceHoney.Server.Proto.ServerSide.GridFightTraitInfoPb) componentType_ : null; }
+    public global::March7thHoney.Proto.ServerSide.GridFightTraitInfoPb TraitInfo {
+      get { return componentTypeCase_ == ComponentTypeOneofCase.TraitInfo ? (global::March7thHoney.Proto.ServerSide.GridFightTraitInfoPb) componentType_ : null; }
       set {
         componentType_ = value;
         componentTypeCase_ = value == null ? ComponentTypeOneofCase.None : ComponentTypeOneofCase.TraitInfo;
@@ -6333,8 +6333,8 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
     public const int ItemsInfoFieldNumber = 7;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ServerSide.GridFightItemsInfoPb ItemsInfo {
-      get { return componentTypeCase_ == ComponentTypeOneofCase.ItemsInfo ? (global::CastoriceHoney.Server.Proto.ServerSide.GridFightItemsInfoPb) componentType_ : null; }
+    public global::March7thHoney.Proto.ServerSide.GridFightItemsInfoPb ItemsInfo {
+      get { return componentTypeCase_ == ComponentTypeOneofCase.ItemsInfo ? (global::March7thHoney.Proto.ServerSide.GridFightItemsInfoPb) componentType_ : null; }
       set {
         componentType_ = value;
         componentTypeCase_ = value == null ? ComponentTypeOneofCase.None : ComponentTypeOneofCase.ItemsInfo;
@@ -6535,43 +6535,43 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
       switch (other.ComponentTypeCase) {
         case ComponentTypeOneofCase.ShopInfo:
           if (ShopInfo == null) {
-            ShopInfo = new global::CastoriceHoney.Server.Proto.ServerSide.GridFightShopInfoPb();
+            ShopInfo = new global::March7thHoney.Proto.ServerSide.GridFightShopInfoPb();
           }
           ShopInfo.MergeFrom(other.ShopInfo);
           break;
         case ComponentTypeOneofCase.BasicInfo:
           if (BasicInfo == null) {
-            BasicInfo = new global::CastoriceHoney.Server.Proto.ServerSide.GridFightBasicInfoPb();
+            BasicInfo = new global::March7thHoney.Proto.ServerSide.GridFightBasicInfoPb();
           }
           BasicInfo.MergeFrom(other.BasicInfo);
           break;
         case ComponentTypeOneofCase.TeamInfo:
           if (TeamInfo == null) {
-            TeamInfo = new global::CastoriceHoney.Server.Proto.ServerSide.GridFightTeamInfoPb();
+            TeamInfo = new global::March7thHoney.Proto.ServerSide.GridFightTeamInfoPb();
           }
           TeamInfo.MergeFrom(other.TeamInfo);
           break;
         case ComponentTypeOneofCase.OrbInfo:
           if (OrbInfo == null) {
-            OrbInfo = new global::CastoriceHoney.Server.Proto.ServerSide.GridFightOrbInfoPb();
+            OrbInfo = new global::March7thHoney.Proto.ServerSide.GridFightOrbInfoPb();
           }
           OrbInfo.MergeFrom(other.OrbInfo);
           break;
         case ComponentTypeOneofCase.AugmentInfo:
           if (AugmentInfo == null) {
-            AugmentInfo = new global::CastoriceHoney.Server.Proto.ServerSide.GridFightAugmentInfoPb();
+            AugmentInfo = new global::March7thHoney.Proto.ServerSide.GridFightAugmentInfoPb();
           }
           AugmentInfo.MergeFrom(other.AugmentInfo);
           break;
         case ComponentTypeOneofCase.TraitInfo:
           if (TraitInfo == null) {
-            TraitInfo = new global::CastoriceHoney.Server.Proto.ServerSide.GridFightTraitInfoPb();
+            TraitInfo = new global::March7thHoney.Proto.ServerSide.GridFightTraitInfoPb();
           }
           TraitInfo.MergeFrom(other.TraitInfo);
           break;
         case ComponentTypeOneofCase.ItemsInfo:
           if (ItemsInfo == null) {
-            ItemsInfo = new global::CastoriceHoney.Server.Proto.ServerSide.GridFightItemsInfoPb();
+            ItemsInfo = new global::March7thHoney.Proto.ServerSide.GridFightItemsInfoPb();
           }
           ItemsInfo.MergeFrom(other.ItemsInfo);
           break;
@@ -6593,7 +6593,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            global::CastoriceHoney.Server.Proto.ServerSide.GridFightShopInfoPb subBuilder = new global::CastoriceHoney.Server.Proto.ServerSide.GridFightShopInfoPb();
+            global::March7thHoney.Proto.ServerSide.GridFightShopInfoPb subBuilder = new global::March7thHoney.Proto.ServerSide.GridFightShopInfoPb();
             if (componentTypeCase_ == ComponentTypeOneofCase.ShopInfo) {
               subBuilder.MergeFrom(ShopInfo);
             }
@@ -6602,7 +6602,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
             break;
           }
           case 18: {
-            global::CastoriceHoney.Server.Proto.ServerSide.GridFightBasicInfoPb subBuilder = new global::CastoriceHoney.Server.Proto.ServerSide.GridFightBasicInfoPb();
+            global::March7thHoney.Proto.ServerSide.GridFightBasicInfoPb subBuilder = new global::March7thHoney.Proto.ServerSide.GridFightBasicInfoPb();
             if (componentTypeCase_ == ComponentTypeOneofCase.BasicInfo) {
               subBuilder.MergeFrom(BasicInfo);
             }
@@ -6611,7 +6611,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
             break;
           }
           case 26: {
-            global::CastoriceHoney.Server.Proto.ServerSide.GridFightTeamInfoPb subBuilder = new global::CastoriceHoney.Server.Proto.ServerSide.GridFightTeamInfoPb();
+            global::March7thHoney.Proto.ServerSide.GridFightTeamInfoPb subBuilder = new global::March7thHoney.Proto.ServerSide.GridFightTeamInfoPb();
             if (componentTypeCase_ == ComponentTypeOneofCase.TeamInfo) {
               subBuilder.MergeFrom(TeamInfo);
             }
@@ -6620,7 +6620,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
             break;
           }
           case 34: {
-            global::CastoriceHoney.Server.Proto.ServerSide.GridFightOrbInfoPb subBuilder = new global::CastoriceHoney.Server.Proto.ServerSide.GridFightOrbInfoPb();
+            global::March7thHoney.Proto.ServerSide.GridFightOrbInfoPb subBuilder = new global::March7thHoney.Proto.ServerSide.GridFightOrbInfoPb();
             if (componentTypeCase_ == ComponentTypeOneofCase.OrbInfo) {
               subBuilder.MergeFrom(OrbInfo);
             }
@@ -6629,7 +6629,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
             break;
           }
           case 42: {
-            global::CastoriceHoney.Server.Proto.ServerSide.GridFightAugmentInfoPb subBuilder = new global::CastoriceHoney.Server.Proto.ServerSide.GridFightAugmentInfoPb();
+            global::March7thHoney.Proto.ServerSide.GridFightAugmentInfoPb subBuilder = new global::March7thHoney.Proto.ServerSide.GridFightAugmentInfoPb();
             if (componentTypeCase_ == ComponentTypeOneofCase.AugmentInfo) {
               subBuilder.MergeFrom(AugmentInfo);
             }
@@ -6638,7 +6638,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
             break;
           }
           case 50: {
-            global::CastoriceHoney.Server.Proto.ServerSide.GridFightTraitInfoPb subBuilder = new global::CastoriceHoney.Server.Proto.ServerSide.GridFightTraitInfoPb();
+            global::March7thHoney.Proto.ServerSide.GridFightTraitInfoPb subBuilder = new global::March7thHoney.Proto.ServerSide.GridFightTraitInfoPb();
             if (componentTypeCase_ == ComponentTypeOneofCase.TraitInfo) {
               subBuilder.MergeFrom(TraitInfo);
             }
@@ -6647,7 +6647,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
             break;
           }
           case 58: {
-            global::CastoriceHoney.Server.Proto.ServerSide.GridFightItemsInfoPb subBuilder = new global::CastoriceHoney.Server.Proto.ServerSide.GridFightItemsInfoPb();
+            global::March7thHoney.Proto.ServerSide.GridFightItemsInfoPb subBuilder = new global::March7thHoney.Proto.ServerSide.GridFightItemsInfoPb();
             if (componentTypeCase_ == ComponentTypeOneofCase.ItemsInfo) {
               subBuilder.MergeFrom(ItemsInfo);
             }
@@ -6671,7 +6671,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            global::CastoriceHoney.Server.Proto.ServerSide.GridFightShopInfoPb subBuilder = new global::CastoriceHoney.Server.Proto.ServerSide.GridFightShopInfoPb();
+            global::March7thHoney.Proto.ServerSide.GridFightShopInfoPb subBuilder = new global::March7thHoney.Proto.ServerSide.GridFightShopInfoPb();
             if (componentTypeCase_ == ComponentTypeOneofCase.ShopInfo) {
               subBuilder.MergeFrom(ShopInfo);
             }
@@ -6680,7 +6680,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
             break;
           }
           case 18: {
-            global::CastoriceHoney.Server.Proto.ServerSide.GridFightBasicInfoPb subBuilder = new global::CastoriceHoney.Server.Proto.ServerSide.GridFightBasicInfoPb();
+            global::March7thHoney.Proto.ServerSide.GridFightBasicInfoPb subBuilder = new global::March7thHoney.Proto.ServerSide.GridFightBasicInfoPb();
             if (componentTypeCase_ == ComponentTypeOneofCase.BasicInfo) {
               subBuilder.MergeFrom(BasicInfo);
             }
@@ -6689,7 +6689,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
             break;
           }
           case 26: {
-            global::CastoriceHoney.Server.Proto.ServerSide.GridFightTeamInfoPb subBuilder = new global::CastoriceHoney.Server.Proto.ServerSide.GridFightTeamInfoPb();
+            global::March7thHoney.Proto.ServerSide.GridFightTeamInfoPb subBuilder = new global::March7thHoney.Proto.ServerSide.GridFightTeamInfoPb();
             if (componentTypeCase_ == ComponentTypeOneofCase.TeamInfo) {
               subBuilder.MergeFrom(TeamInfo);
             }
@@ -6698,7 +6698,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
             break;
           }
           case 34: {
-            global::CastoriceHoney.Server.Proto.ServerSide.GridFightOrbInfoPb subBuilder = new global::CastoriceHoney.Server.Proto.ServerSide.GridFightOrbInfoPb();
+            global::March7thHoney.Proto.ServerSide.GridFightOrbInfoPb subBuilder = new global::March7thHoney.Proto.ServerSide.GridFightOrbInfoPb();
             if (componentTypeCase_ == ComponentTypeOneofCase.OrbInfo) {
               subBuilder.MergeFrom(OrbInfo);
             }
@@ -6707,7 +6707,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
             break;
           }
           case 42: {
-            global::CastoriceHoney.Server.Proto.ServerSide.GridFightAugmentInfoPb subBuilder = new global::CastoriceHoney.Server.Proto.ServerSide.GridFightAugmentInfoPb();
+            global::March7thHoney.Proto.ServerSide.GridFightAugmentInfoPb subBuilder = new global::March7thHoney.Proto.ServerSide.GridFightAugmentInfoPb();
             if (componentTypeCase_ == ComponentTypeOneofCase.AugmentInfo) {
               subBuilder.MergeFrom(AugmentInfo);
             }
@@ -6716,7 +6716,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
             break;
           }
           case 50: {
-            global::CastoriceHoney.Server.Proto.ServerSide.GridFightTraitInfoPb subBuilder = new global::CastoriceHoney.Server.Proto.ServerSide.GridFightTraitInfoPb();
+            global::March7thHoney.Proto.ServerSide.GridFightTraitInfoPb subBuilder = new global::March7thHoney.Proto.ServerSide.GridFightTraitInfoPb();
             if (componentTypeCase_ == ComponentTypeOneofCase.TraitInfo) {
               subBuilder.MergeFrom(TraitInfo);
             }
@@ -6725,7 +6725,7 @@ namespace CastoriceHoney.Server.Proto.ServerSide {
             break;
           }
           case 58: {
-            global::CastoriceHoney.Server.Proto.ServerSide.GridFightItemsInfoPb subBuilder = new global::CastoriceHoney.Server.Proto.ServerSide.GridFightItemsInfoPb();
+            global::March7thHoney.Proto.ServerSide.GridFightItemsInfoPb subBuilder = new global::March7thHoney.Proto.ServerSide.GridFightItemsInfoPb();
             if (componentTypeCase_ == ComponentTypeOneofCase.ItemsInfo) {
               subBuilder.MergeFrom(ItemsInfo);
             }

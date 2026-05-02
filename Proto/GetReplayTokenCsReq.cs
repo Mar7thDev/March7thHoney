@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GetReplayTokenCsReq.proto</summary>
   public static partial class GetReplayTokenCsReqReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "QUJMGAwgASgNEhAKCHN0YWdlX2lkGA8gASgNQjMKE2VtdS5sdW5hcmNvcmUu",
             "cHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.OCLEJLEFBFOReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.OCLEJLEFBFOReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GetReplayTokenCsReq), global::CastoriceHoney.Server.Proto.GetReplayTokenCsReq.Parser, new[]{ "EBNFHHGKDKE", "ReplayType", "KALAGIBCNAO", "DFLMKCIKFOP", "DAFEJIENABL", "StageId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetReplayTokenCsReq), global::March7thHoney.Proto.GetReplayTokenCsReq.Parser, new[]{ "EBNFHHGKDKE", "ReplayType", "KALAGIBCNAO", "DFLMKCIKFOP", "DAFEJIENABL", "StageId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GetReplayTokenCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GetReplayTokenCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -104,10 +104,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "replay_type" field.</summary>
     public const int ReplayTypeFieldNumber = 2;
-    private global::CastoriceHoney.Server.Proto.OCLEJLEFBFO replayType_ = global::CastoriceHoney.Server.Proto.OCLEJLEFBFO.Pcpdhelpkem;
+    private global::March7thHoney.Proto.OCLEJLEFBFO replayType_ = global::March7thHoney.Proto.OCLEJLEFBFO.Pcpdhelpkem;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.OCLEJLEFBFO ReplayType {
+    public global::March7thHoney.Proto.OCLEJLEFBFO ReplayType {
       get { return replayType_; }
       set {
         replayType_ = value;
@@ -191,7 +191,7 @@ namespace CastoriceHoney.Server.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (EBNFHHGKDKE.Length != 0) hash ^= EBNFHHGKDKE.GetHashCode();
-      if (ReplayType != global::CastoriceHoney.Server.Proto.OCLEJLEFBFO.Pcpdhelpkem) hash ^= ReplayType.GetHashCode();
+      if (ReplayType != global::March7thHoney.Proto.OCLEJLEFBFO.Pcpdhelpkem) hash ^= ReplayType.GetHashCode();
       if (KALAGIBCNAO != 0) hash ^= KALAGIBCNAO.GetHashCode();
       if (DFLMKCIKFOP.Length != 0) hash ^= DFLMKCIKFOP.GetHashCode();
       if (DAFEJIENABL != 0) hash ^= DAFEJIENABL.GetHashCode();
@@ -218,7 +218,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(10);
         output.WriteString(EBNFHHGKDKE);
       }
-      if (ReplayType != global::CastoriceHoney.Server.Proto.OCLEJLEFBFO.Pcpdhelpkem) {
+      if (ReplayType != global::March7thHoney.Proto.OCLEJLEFBFO.Pcpdhelpkem) {
         output.WriteRawTag(16);
         output.WriteEnum((int) ReplayType);
       }
@@ -252,7 +252,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(10);
         output.WriteString(EBNFHHGKDKE);
       }
-      if (ReplayType != global::CastoriceHoney.Server.Proto.OCLEJLEFBFO.Pcpdhelpkem) {
+      if (ReplayType != global::March7thHoney.Proto.OCLEJLEFBFO.Pcpdhelpkem) {
         output.WriteRawTag(16);
         output.WriteEnum((int) ReplayType);
       }
@@ -285,7 +285,7 @@ namespace CastoriceHoney.Server.Proto {
       if (EBNFHHGKDKE.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(EBNFHHGKDKE);
       }
-      if (ReplayType != global::CastoriceHoney.Server.Proto.OCLEJLEFBFO.Pcpdhelpkem) {
+      if (ReplayType != global::March7thHoney.Proto.OCLEJLEFBFO.Pcpdhelpkem) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ReplayType);
       }
       if (KALAGIBCNAO != 0) {
@@ -315,7 +315,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other.EBNFHHGKDKE.Length != 0) {
         EBNFHHGKDKE = other.EBNFHHGKDKE;
       }
-      if (other.ReplayType != global::CastoriceHoney.Server.Proto.OCLEJLEFBFO.Pcpdhelpkem) {
+      if (other.ReplayType != global::March7thHoney.Proto.OCLEJLEFBFO.Pcpdhelpkem) {
         ReplayType = other.ReplayType;
       }
       if (other.KALAGIBCNAO != 0) {
@@ -354,7 +354,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 16: {
-            ReplayType = (global::CastoriceHoney.Server.Proto.OCLEJLEFBFO) input.ReadEnum();
+            ReplayType = (global::March7thHoney.Proto.OCLEJLEFBFO) input.ReadEnum();
             break;
           }
           case 24: {
@@ -397,7 +397,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 16: {
-            ReplayType = (global::CastoriceHoney.Server.Proto.OCLEJLEFBFO) input.ReadEnum();
+            ReplayType = (global::March7thHoney.Proto.OCLEJLEFBFO) input.ReadEnum();
             break;
           }
           case 24: {

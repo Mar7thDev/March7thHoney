@@ -1,4 +1,4 @@
-﻿namespace CastoriceHoney.Server.WebServer.Response;
+namespace March7thHoney.WebServer.Response;
 
 public class CreateSessionResponse(int code, string message, CreateSessionData? data)
     : BaseResponse<CreateSessionData>(code, message, data)

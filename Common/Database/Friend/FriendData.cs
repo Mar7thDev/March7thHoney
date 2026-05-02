@@ -1,6 +1,6 @@
 using SqlSugar;
 
-namespace CastoriceHoney.Server.Database.Friend;
+namespace March7thHoney.Database.Friend;
 
 [SugarTable("Friend")]
 public class FriendData : BaseDatabaseDataHelper

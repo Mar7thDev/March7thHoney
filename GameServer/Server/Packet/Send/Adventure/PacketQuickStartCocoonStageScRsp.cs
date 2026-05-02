@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.GameServer.Game.Battle;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.GameServer.Game.Battle;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Send.Adventure;
+namespace March7thHoney.GameServer.Server.Packet.Send.Adventure;
 
 public class PacketQuickStartCocoonStageScRsp : BasePacket
 {

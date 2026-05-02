@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from LobbyInteractScNotify.proto</summary>
   public static partial class LobbyInteractScNotifyReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "GAUgASgNQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25l",
             "eS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.LobbyInteractTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.LobbyInteractTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.LobbyInteractScNotify), global::CastoriceHoney.Server.Proto.LobbyInteractScNotify.Parser, new[]{ "HGIAGJMHDOB", "AONGOEAFKOC" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LobbyInteractScNotify), global::March7thHoney.Proto.LobbyInteractScNotify.Parser, new[]{ "HGIAGJMHDOB", "AONGOEAFKOC" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.LobbyInteractScNotifyReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.LobbyInteractScNotifyReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -87,10 +87,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "HGIAGJMHDOB" field.</summary>
     public const int HGIAGJMHDOBFieldNumber = 4;
-    private global::CastoriceHoney.Server.Proto.LobbyInteractType hGIAGJMHDOB_ = global::CastoriceHoney.Server.Proto.LobbyInteractType.JbpdgdgaeklPcpdhelpkem;
+    private global::March7thHoney.Proto.LobbyInteractType hGIAGJMHDOB_ = global::March7thHoney.Proto.LobbyInteractType.JbpdgdgaeklPcpdhelpkem;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.LobbyInteractType HGIAGJMHDOB {
+    public global::March7thHoney.Proto.LobbyInteractType HGIAGJMHDOB {
       get { return hGIAGJMHDOB_; }
       set {
         hGIAGJMHDOB_ = value;
@@ -133,7 +133,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (HGIAGJMHDOB != global::CastoriceHoney.Server.Proto.LobbyInteractType.JbpdgdgaeklPcpdhelpkem) hash ^= HGIAGJMHDOB.GetHashCode();
+      if (HGIAGJMHDOB != global::March7thHoney.Proto.LobbyInteractType.JbpdgdgaeklPcpdhelpkem) hash ^= HGIAGJMHDOB.GetHashCode();
       if (AONGOEAFKOC != 0) hash ^= AONGOEAFKOC.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -153,7 +153,7 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (HGIAGJMHDOB != global::CastoriceHoney.Server.Proto.LobbyInteractType.JbpdgdgaeklPcpdhelpkem) {
+      if (HGIAGJMHDOB != global::March7thHoney.Proto.LobbyInteractType.JbpdgdgaeklPcpdhelpkem) {
         output.WriteRawTag(32);
         output.WriteEnum((int) HGIAGJMHDOB);
       }
@@ -171,7 +171,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (HGIAGJMHDOB != global::CastoriceHoney.Server.Proto.LobbyInteractType.JbpdgdgaeklPcpdhelpkem) {
+      if (HGIAGJMHDOB != global::March7thHoney.Proto.LobbyInteractType.JbpdgdgaeklPcpdhelpkem) {
         output.WriteRawTag(32);
         output.WriteEnum((int) HGIAGJMHDOB);
       }
@@ -189,7 +189,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (HGIAGJMHDOB != global::CastoriceHoney.Server.Proto.LobbyInteractType.JbpdgdgaeklPcpdhelpkem) {
+      if (HGIAGJMHDOB != global::March7thHoney.Proto.LobbyInteractType.JbpdgdgaeklPcpdhelpkem) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) HGIAGJMHDOB);
       }
       if (AONGOEAFKOC != 0) {
@@ -207,7 +207,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.HGIAGJMHDOB != global::CastoriceHoney.Server.Proto.LobbyInteractType.JbpdgdgaeklPcpdhelpkem) {
+      if (other.HGIAGJMHDOB != global::March7thHoney.Proto.LobbyInteractType.JbpdgdgaeklPcpdhelpkem) {
         HGIAGJMHDOB = other.HGIAGJMHDOB;
       }
       if (other.AONGOEAFKOC != 0) {
@@ -233,7 +233,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 32: {
-            HGIAGJMHDOB = (global::CastoriceHoney.Server.Proto.LobbyInteractType) input.ReadEnum();
+            HGIAGJMHDOB = (global::March7thHoney.Proto.LobbyInteractType) input.ReadEnum();
             break;
           }
           case 40: {
@@ -260,7 +260,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 32: {
-            HGIAGJMHDOB = (global::CastoriceHoney.Server.Proto.LobbyInteractType) input.ReadEnum();
+            HGIAGJMHDOB = (global::March7thHoney.Proto.LobbyInteractType) input.ReadEnum();
             break;
           }
           case 40: {

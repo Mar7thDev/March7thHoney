@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from EraFlipperSnapshot.proto</summary>
   public static partial class EraFlipperSnapshotReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "YXBzaG90QjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25l",
             "eS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.EraFlipperRegionDataSnapshotReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.EraFlipperRegionDataSnapshotReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.EraFlipperSnapshot), global::CastoriceHoney.Server.Proto.EraFlipperSnapshot.Parser, new[]{ "RegionDataList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EraFlipperSnapshot), global::March7thHoney.Proto.EraFlipperSnapshot.Parser, new[]{ "RegionDataList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.EraFlipperSnapshotReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.EraFlipperSnapshotReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -86,12 +86,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "region_data_list" field.</summary>
     public const int RegionDataListFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.EraFlipperRegionDataSnapshot> _repeated_regionDataList_codec
-        = pb::FieldCodec.ForMessage(10, global::CastoriceHoney.Server.Proto.EraFlipperRegionDataSnapshot.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.EraFlipperRegionDataSnapshot> regionDataList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.EraFlipperRegionDataSnapshot>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EraFlipperRegionDataSnapshot> _repeated_regionDataList_codec
+        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.EraFlipperRegionDataSnapshot.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EraFlipperRegionDataSnapshot> regionDataList_ = new pbc::RepeatedField<global::March7thHoney.Proto.EraFlipperRegionDataSnapshot>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.EraFlipperRegionDataSnapshot> RegionDataList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.EraFlipperRegionDataSnapshot> RegionDataList {
       get { return regionDataList_; }
     }
 

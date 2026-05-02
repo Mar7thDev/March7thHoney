@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Database.Inventory;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Database.Inventory;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Send.Item;
+namespace March7thHoney.GameServer.Server.Packet.Send.Item;
 
 public class PacketComposeItemScRsp : BasePacket
 {

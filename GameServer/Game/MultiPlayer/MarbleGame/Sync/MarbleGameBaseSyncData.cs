@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.Enums.Fight;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Enums.Fight;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Game.MultiPlayer.MarbleGame.Sync;
+namespace March7thHoney.GameServer.Game.MultiPlayer.MarbleGame.Sync;
 
 public abstract class MarbleGameBaseSyncData(MarbleNetWorkMsgEnum type)
 {

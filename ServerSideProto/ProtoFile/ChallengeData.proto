@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option csharp_namespace = "CastoriceHoney.Server.Proto.ServerSide";
+option csharp_namespace = "March7thHoney.Proto.ServerSide";
 
 enum ChallengeLineupTypePb {
     ChallengeLineupTypePb_None = 0;

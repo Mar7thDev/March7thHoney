@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from JIICPJNINBB.proto</summary>
   public static partial class JIICPJNINBBReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "bHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3Rv",
             "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.MHGCNDDMIIJReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.MHGCNDDMIIJReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.JIICPJNINBB), global::CastoriceHoney.Server.Proto.JIICPJNINBB.Parser, new[]{ "JHEDINDCODE" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.JIICPJNINBB), global::March7thHoney.Proto.JIICPJNINBB.Parser, new[]{ "JHEDINDCODE" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.JIICPJNINBBReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.JIICPJNINBBReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -87,12 +87,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "JHEDINDCODE" field.</summary>
     public const int JHEDINDCODEFieldNumber = 12;
-    private static readonly pbc::MapField<uint, global::CastoriceHoney.Server.Proto.MHGCNDDMIIJ>.Codec _map_jHEDINDCODE_codec
-        = new pbc::MapField<uint, global::CastoriceHoney.Server.Proto.MHGCNDDMIIJ>.Codec(pb::FieldCodec.ForUInt32(8, 0), pb::FieldCodec.ForMessage(18, global::CastoriceHoney.Server.Proto.MHGCNDDMIIJ.Parser), 98);
-    private readonly pbc::MapField<uint, global::CastoriceHoney.Server.Proto.MHGCNDDMIIJ> jHEDINDCODE_ = new pbc::MapField<uint, global::CastoriceHoney.Server.Proto.MHGCNDDMIIJ>();
+    private static readonly pbc::MapField<uint, global::March7thHoney.Proto.MHGCNDDMIIJ>.Codec _map_jHEDINDCODE_codec
+        = new pbc::MapField<uint, global::March7thHoney.Proto.MHGCNDDMIIJ>.Codec(pb::FieldCodec.ForUInt32(8, 0), pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.MHGCNDDMIIJ.Parser), 98);
+    private readonly pbc::MapField<uint, global::March7thHoney.Proto.MHGCNDDMIIJ> jHEDINDCODE_ = new pbc::MapField<uint, global::March7thHoney.Proto.MHGCNDDMIIJ>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<uint, global::CastoriceHoney.Server.Proto.MHGCNDDMIIJ> JHEDINDCODE {
+    public pbc::MapField<uint, global::March7thHoney.Proto.MHGCNDDMIIJ> JHEDINDCODE {
       get { return jHEDINDCODE_; }
     }
 

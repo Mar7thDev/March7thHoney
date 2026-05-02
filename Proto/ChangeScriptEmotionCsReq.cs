@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from ChangeScriptEmotionCsReq.proto</summary>
   public static partial class ChangeScriptEmotionCsReqReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "QjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2",
             "ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.HeartDialEmotionTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.HeartDialEmotionTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ChangeScriptEmotionCsReq), global::CastoriceHoney.Server.Proto.ChangeScriptEmotionCsReq.Parser, new[]{ "AILOMBIMICB", "ScriptId", "TargetEmotionType" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChangeScriptEmotionCsReq), global::March7thHoney.Proto.ChangeScriptEmotionCsReq.Parser, new[]{ "AILOMBIMICB", "ScriptId", "TargetEmotionType" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ChangeScriptEmotionCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ChangeScriptEmotionCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -113,10 +113,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "target_emotion_type" field.</summary>
     public const int TargetEmotionTypeFieldNumber = 15;
-    private global::CastoriceHoney.Server.Proto.HeartDialEmotionType targetEmotionType_ = global::CastoriceHoney.Server.Proto.HeartDialEmotionType.Peace;
+    private global::March7thHoney.Proto.HeartDialEmotionType targetEmotionType_ = global::March7thHoney.Proto.HeartDialEmotionType.Peace;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.HeartDialEmotionType TargetEmotionType {
+    public global::March7thHoney.Proto.HeartDialEmotionType TargetEmotionType {
       get { return targetEmotionType_; }
       set {
         targetEmotionType_ = value;
@@ -150,7 +150,7 @@ namespace CastoriceHoney.Server.Proto {
       int hash = 1;
       if (AILOMBIMICB != 0) hash ^= AILOMBIMICB.GetHashCode();
       if (ScriptId != 0) hash ^= ScriptId.GetHashCode();
-      if (TargetEmotionType != global::CastoriceHoney.Server.Proto.HeartDialEmotionType.Peace) hash ^= TargetEmotionType.GetHashCode();
+      if (TargetEmotionType != global::March7thHoney.Proto.HeartDialEmotionType.Peace) hash ^= TargetEmotionType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -177,7 +177,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(104);
         output.WriteUInt32(ScriptId);
       }
-      if (TargetEmotionType != global::CastoriceHoney.Server.Proto.HeartDialEmotionType.Peace) {
+      if (TargetEmotionType != global::March7thHoney.Proto.HeartDialEmotionType.Peace) {
         output.WriteRawTag(120);
         output.WriteEnum((int) TargetEmotionType);
       }
@@ -199,7 +199,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(104);
         output.WriteUInt32(ScriptId);
       }
-      if (TargetEmotionType != global::CastoriceHoney.Server.Proto.HeartDialEmotionType.Peace) {
+      if (TargetEmotionType != global::March7thHoney.Proto.HeartDialEmotionType.Peace) {
         output.WriteRawTag(120);
         output.WriteEnum((int) TargetEmotionType);
       }
@@ -219,7 +219,7 @@ namespace CastoriceHoney.Server.Proto {
       if (ScriptId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ScriptId);
       }
-      if (TargetEmotionType != global::CastoriceHoney.Server.Proto.HeartDialEmotionType.Peace) {
+      if (TargetEmotionType != global::March7thHoney.Proto.HeartDialEmotionType.Peace) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) TargetEmotionType);
       }
       if (_unknownFields != null) {
@@ -240,7 +240,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other.ScriptId != 0) {
         ScriptId = other.ScriptId;
       }
-      if (other.TargetEmotionType != global::CastoriceHoney.Server.Proto.HeartDialEmotionType.Peace) {
+      if (other.TargetEmotionType != global::March7thHoney.Proto.HeartDialEmotionType.Peace) {
         TargetEmotionType = other.TargetEmotionType;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -271,7 +271,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 120: {
-            TargetEmotionType = (global::CastoriceHoney.Server.Proto.HeartDialEmotionType) input.ReadEnum();
+            TargetEmotionType = (global::March7thHoney.Proto.HeartDialEmotionType) input.ReadEnum();
             break;
           }
         }
@@ -302,7 +302,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 120: {
-            TargetEmotionType = (global::CastoriceHoney.Server.Proto.HeartDialEmotionType) input.ReadEnum();
+            TargetEmotionType = (global::March7thHoney.Proto.HeartDialEmotionType) input.ReadEnum();
             break;
           }
         }

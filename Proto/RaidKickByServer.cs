@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from RaidKickByServer.proto</summary>
   public static partial class RaidKickByServerReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "ChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVy",
             "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.AANCGOFCJJLReflection.Descriptor, global::CastoriceHoney.Server.Proto.LineupInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.SceneInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.AANCGOFCJJLReflection.Descriptor, global::March7thHoney.Proto.LineupInfoReflection.Descriptor, global::March7thHoney.Proto.SceneInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.RaidKickByServer), global::CastoriceHoney.Server.Proto.RaidKickByServer.Parser, new[]{ "Scene", "RaidId", "Lineup", "Reason", "WorldLevel" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RaidKickByServer), global::March7thHoney.Proto.RaidKickByServer.Parser, new[]{ "Scene", "RaidId", "Lineup", "Reason", "WorldLevel" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.RaidKickByServerReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.RaidKickByServerReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -92,10 +92,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "scene" field.</summary>
     public const int SceneFieldNumber = 2;
-    private global::CastoriceHoney.Server.Proto.SceneInfo scene_;
+    private global::March7thHoney.Proto.SceneInfo scene_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.SceneInfo Scene {
+    public global::March7thHoney.Proto.SceneInfo Scene {
       get { return scene_; }
       set {
         scene_ = value;
@@ -116,10 +116,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "lineup" field.</summary>
     public const int LineupFieldNumber = 4;
-    private global::CastoriceHoney.Server.Proto.LineupInfo lineup_;
+    private global::March7thHoney.Proto.LineupInfo lineup_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.LineupInfo Lineup {
+    public global::March7thHoney.Proto.LineupInfo Lineup {
       get { return lineup_; }
       set {
         lineup_ = value;
@@ -128,10 +128,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "reason" field.</summary>
     public const int ReasonFieldNumber = 11;
-    private global::CastoriceHoney.Server.Proto.AANCGOFCJJL reason_ = global::CastoriceHoney.Server.Proto.AANCGOFCJJL.Pcpdhelpkem;
+    private global::March7thHoney.Proto.AANCGOFCJJL reason_ = global::March7thHoney.Proto.AANCGOFCJJL.Pcpdhelpkem;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.AANCGOFCJJL Reason {
+    public global::March7thHoney.Proto.AANCGOFCJJL Reason {
       get { return reason_; }
       set {
         reason_ = value;
@@ -180,7 +180,7 @@ namespace CastoriceHoney.Server.Proto {
       if (scene_ != null) hash ^= Scene.GetHashCode();
       if (RaidId != 0) hash ^= RaidId.GetHashCode();
       if (lineup_ != null) hash ^= Lineup.GetHashCode();
-      if (Reason != global::CastoriceHoney.Server.Proto.AANCGOFCJJL.Pcpdhelpkem) hash ^= Reason.GetHashCode();
+      if (Reason != global::March7thHoney.Proto.AANCGOFCJJL.Pcpdhelpkem) hash ^= Reason.GetHashCode();
       if (WorldLevel != 0) hash ^= WorldLevel.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -212,7 +212,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(34);
         output.WriteMessage(Lineup);
       }
-      if (Reason != global::CastoriceHoney.Server.Proto.AANCGOFCJJL.Pcpdhelpkem) {
+      if (Reason != global::March7thHoney.Proto.AANCGOFCJJL.Pcpdhelpkem) {
         output.WriteRawTag(88);
         output.WriteEnum((int) Reason);
       }
@@ -242,7 +242,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(34);
         output.WriteMessage(Lineup);
       }
-      if (Reason != global::CastoriceHoney.Server.Proto.AANCGOFCJJL.Pcpdhelpkem) {
+      if (Reason != global::March7thHoney.Proto.AANCGOFCJJL.Pcpdhelpkem) {
         output.WriteRawTag(88);
         output.WriteEnum((int) Reason);
       }
@@ -269,7 +269,7 @@ namespace CastoriceHoney.Server.Proto {
       if (lineup_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Lineup);
       }
-      if (Reason != global::CastoriceHoney.Server.Proto.AANCGOFCJJL.Pcpdhelpkem) {
+      if (Reason != global::March7thHoney.Proto.AANCGOFCJJL.Pcpdhelpkem) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Reason);
       }
       if (WorldLevel != 0) {
@@ -289,7 +289,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.scene_ != null) {
         if (scene_ == null) {
-          Scene = new global::CastoriceHoney.Server.Proto.SceneInfo();
+          Scene = new global::March7thHoney.Proto.SceneInfo();
         }
         Scene.MergeFrom(other.Scene);
       }
@@ -298,11 +298,11 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.lineup_ != null) {
         if (lineup_ == null) {
-          Lineup = new global::CastoriceHoney.Server.Proto.LineupInfo();
+          Lineup = new global::March7thHoney.Proto.LineupInfo();
         }
         Lineup.MergeFrom(other.Lineup);
       }
-      if (other.Reason != global::CastoriceHoney.Server.Proto.AANCGOFCJJL.Pcpdhelpkem) {
+      if (other.Reason != global::March7thHoney.Proto.AANCGOFCJJL.Pcpdhelpkem) {
         Reason = other.Reason;
       }
       if (other.WorldLevel != 0) {
@@ -329,7 +329,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 18: {
             if (scene_ == null) {
-              Scene = new global::CastoriceHoney.Server.Proto.SceneInfo();
+              Scene = new global::March7thHoney.Proto.SceneInfo();
             }
             input.ReadMessage(Scene);
             break;
@@ -340,13 +340,13 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 34: {
             if (lineup_ == null) {
-              Lineup = new global::CastoriceHoney.Server.Proto.LineupInfo();
+              Lineup = new global::March7thHoney.Proto.LineupInfo();
             }
             input.ReadMessage(Lineup);
             break;
           }
           case 88: {
-            Reason = (global::CastoriceHoney.Server.Proto.AANCGOFCJJL) input.ReadEnum();
+            Reason = (global::March7thHoney.Proto.AANCGOFCJJL) input.ReadEnum();
             break;
           }
           case 112: {
@@ -374,7 +374,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 18: {
             if (scene_ == null) {
-              Scene = new global::CastoriceHoney.Server.Proto.SceneInfo();
+              Scene = new global::March7thHoney.Proto.SceneInfo();
             }
             input.ReadMessage(Scene);
             break;
@@ -385,13 +385,13 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 34: {
             if (lineup_ == null) {
-              Lineup = new global::CastoriceHoney.Server.Proto.LineupInfo();
+              Lineup = new global::March7thHoney.Proto.LineupInfo();
             }
             input.ReadMessage(Lineup);
             break;
           }
           case 88: {
-            Reason = (global::CastoriceHoney.Server.Proto.AANCGOFCJJL) input.ReadEnum();
+            Reason = (global::March7thHoney.Proto.AANCGOFCJJL) input.ReadEnum();
             break;
           }
           case 112: {

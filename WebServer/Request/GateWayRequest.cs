@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.WebServer.Request;
+namespace March7thHoney.WebServer.Request;
 
 public class GateWayRequest
 {

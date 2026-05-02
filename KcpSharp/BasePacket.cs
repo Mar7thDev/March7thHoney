@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.Util;
+using March7thHoney.Util;
 using Google.Protobuf;
 
-namespace CastoriceHoney.Server.Kcp;
+namespace March7thHoney.Kcp;
 
 public class BasePacket(ushort cmdId)
 {

@@ -1,16 +1,16 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Data.Config.Scene;
-using CastoriceHoney.Server.Data.Excel;
-using CastoriceHoney.Server.Enums.RogueMagic;
-using CastoriceHoney.Server.Enums.Scene;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.GameServer.Game.Rogue.Scene.Entity;
-using CastoriceHoney.Server.GameServer.Game.RogueTourn.Scene;
-using CastoriceHoney.Server.GameServer.Game.Scene;
-using CastoriceHoney.Server.GameServer.Game.Scene.Entity;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Data;
+using March7thHoney.Data.Config.Scene;
+using March7thHoney.Data.Excel;
+using March7thHoney.Enums.RogueMagic;
+using March7thHoney.Enums.Scene;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Game.Rogue.Scene.Entity;
+using March7thHoney.GameServer.Game.RogueTourn.Scene;
+using March7thHoney.GameServer.Game.Scene;
+using March7thHoney.GameServer.Game.Scene.Entity;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.GameServer.Game.RogueMagic.Scene;
+namespace March7thHoney.GameServer.Game.RogueMagic.Scene;
 
 public class RogueMagicEntityLoader(SceneInstance scene, PlayerInstance player) : SceneEntityLoader(scene)
 {

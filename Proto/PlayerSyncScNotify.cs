@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from PlayerSyncScNotify.proto</summary>
   public static partial class PlayerSyncScNotifyReflection {
@@ -53,9 +53,9 @@ namespace CastoriceHoney.Server.Proto {
             "YXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZw",
             "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.AvatarSyncReflection.Descriptor, global::CastoriceHoney.Server.Proto.BasicModuleSyncReflection.Descriptor, global::CastoriceHoney.Server.Proto.DPBEGBNICPGReflection.Descriptor, global::CastoriceHoney.Server.Proto.EquipmentReflection.Descriptor, global::CastoriceHoney.Server.Proto.IEBAILGKMLBReflection.Descriptor, global::CastoriceHoney.Server.Proto.ItemListReflection.Descriptor, global::CastoriceHoney.Server.Proto.LAEHDNHPGCCReflection.Descriptor, global::CastoriceHoney.Server.Proto.MaterialReflection.Descriptor, global::CastoriceHoney.Server.Proto.MissionSyncReflection.Descriptor, global::CastoriceHoney.Server.Proto.PFFDAFJLNOOReflection.Descriptor, global::CastoriceHoney.Server.Proto.PlayerBasicInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.PlayerBoardModuleSyncReflection.Descriptor, global::CastoriceHoney.Server.Proto.PlayerOutfitInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.QuestReflection.Descriptor, global::CastoriceHoney.Server.Proto.RelicReflection.Descriptor, global::CastoriceHoney.Server.Proto.SyncStatusReflection.Descriptor, global::CastoriceHoney.Server.Proto.WaitDelResourceReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.AvatarSyncReflection.Descriptor, global::March7thHoney.Proto.BasicModuleSyncReflection.Descriptor, global::March7thHoney.Proto.DPBEGBNICPGReflection.Descriptor, global::March7thHoney.Proto.EquipmentReflection.Descriptor, global::March7thHoney.Proto.IEBAILGKMLBReflection.Descriptor, global::March7thHoney.Proto.ItemListReflection.Descriptor, global::March7thHoney.Proto.LAEHDNHPGCCReflection.Descriptor, global::March7thHoney.Proto.MaterialReflection.Descriptor, global::March7thHoney.Proto.MissionSyncReflection.Descriptor, global::March7thHoney.Proto.PFFDAFJLNOOReflection.Descriptor, global::March7thHoney.Proto.PlayerBasicInfoReflection.Descriptor, global::March7thHoney.Proto.PlayerBoardModuleSyncReflection.Descriptor, global::March7thHoney.Proto.PlayerOutfitInfoReflection.Descriptor, global::March7thHoney.Proto.QuestReflection.Descriptor, global::March7thHoney.Proto.RelicReflection.Descriptor, global::March7thHoney.Proto.SyncStatusReflection.Descriptor, global::March7thHoney.Proto.WaitDelResourceReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.PlayerSyncScNotify), global::CastoriceHoney.Server.Proto.PlayerSyncScNotify.Parser, new[]{ "AvatarSync", "MissionSync", "RelicList", "EquipmentList", "CJEFCMACJLG", "WaitDelResourceList", "DelRelicList", "BasicModuleSync", "MaterialList", "QuestList", "BasicInfo", "IIBDADNFLFP", "EDAHGEAMDCF", "FFEENBPPGNG", "GHGKCFIFMBB", "SyncStatus", "TotalAchievementExp", "PlayerOutfitData", "PEFMKLKKCFJ", "PlayerboardModuleSync", "DelEquipmentList", "NAJNBCDBIHO" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlayerSyncScNotify), global::March7thHoney.Proto.PlayerSyncScNotify.Parser, new[]{ "AvatarSync", "MissionSync", "RelicList", "EquipmentList", "CJEFCMACJLG", "WaitDelResourceList", "DelRelicList", "BasicModuleSync", "MaterialList", "QuestList", "BasicInfo", "IIBDADNFLFP", "EDAHGEAMDCF", "FFEENBPPGNG", "GHGKCFIFMBB", "SyncStatus", "TotalAchievementExp", "PlayerOutfitData", "PEFMKLKKCFJ", "PlayerboardModuleSync", "DelEquipmentList", "NAJNBCDBIHO" }, null, null, null, null)
           }));
     }
     #endregion
@@ -77,7 +77,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.PlayerSyncScNotifyReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.PlayerSyncScNotifyReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -130,10 +130,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "avatar_sync" field.</summary>
     public const int AvatarSyncFieldNumber = 1;
-    private global::CastoriceHoney.Server.Proto.AvatarSync avatarSync_;
+    private global::March7thHoney.Proto.AvatarSync avatarSync_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.AvatarSync AvatarSync {
+    public global::March7thHoney.Proto.AvatarSync AvatarSync {
       get { return avatarSync_; }
       set {
         avatarSync_ = value;
@@ -142,10 +142,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "mission_sync" field.</summary>
     public const int MissionSyncFieldNumber = 4;
-    private global::CastoriceHoney.Server.Proto.MissionSync missionSync_;
+    private global::March7thHoney.Proto.MissionSync missionSync_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.MissionSync MissionSync {
+    public global::March7thHoney.Proto.MissionSync MissionSync {
       get { return missionSync_; }
       set {
         missionSync_ = value;
@@ -154,23 +154,23 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "relic_list" field.</summary>
     public const int RelicListFieldNumber = 5;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.Relic> _repeated_relicList_codec
-        = pb::FieldCodec.ForMessage(42, global::CastoriceHoney.Server.Proto.Relic.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.Relic> relicList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.Relic>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.Relic> _repeated_relicList_codec
+        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.Relic.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.Relic> relicList_ = new pbc::RepeatedField<global::March7thHoney.Proto.Relic>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.Relic> RelicList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.Relic> RelicList {
       get { return relicList_; }
     }
 
     /// <summary>Field number for the "equipment_list" field.</summary>
     public const int EquipmentListFieldNumber = 6;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.Equipment> _repeated_equipmentList_codec
-        = pb::FieldCodec.ForMessage(50, global::CastoriceHoney.Server.Proto.Equipment.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.Equipment> equipmentList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.Equipment>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.Equipment> _repeated_equipmentList_codec
+        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.Equipment.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.Equipment> equipmentList_ = new pbc::RepeatedField<global::March7thHoney.Proto.Equipment>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.Equipment> EquipmentList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.Equipment> EquipmentList {
       get { return equipmentList_; }
     }
 
@@ -187,12 +187,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "wait_del_resource_list" field.</summary>
     public const int WaitDelResourceListFieldNumber = 9;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.WaitDelResource> _repeated_waitDelResourceList_codec
-        = pb::FieldCodec.ForMessage(74, global::CastoriceHoney.Server.Proto.WaitDelResource.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.WaitDelResource> waitDelResourceList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.WaitDelResource>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.WaitDelResource> _repeated_waitDelResourceList_codec
+        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.WaitDelResource.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.WaitDelResource> waitDelResourceList_ = new pbc::RepeatedField<global::March7thHoney.Proto.WaitDelResource>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.WaitDelResource> WaitDelResourceList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.WaitDelResource> WaitDelResourceList {
       get { return waitDelResourceList_; }
     }
 
@@ -209,10 +209,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "basic_module_sync" field.</summary>
     public const int BasicModuleSyncFieldNumber = 11;
-    private global::CastoriceHoney.Server.Proto.BasicModuleSync basicModuleSync_;
+    private global::March7thHoney.Proto.BasicModuleSync basicModuleSync_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.BasicModuleSync BasicModuleSync {
+    public global::March7thHoney.Proto.BasicModuleSync BasicModuleSync {
       get { return basicModuleSync_; }
       set {
         basicModuleSync_ = value;
@@ -221,32 +221,32 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "material_list" field.</summary>
     public const int MaterialListFieldNumber = 12;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.Material> _repeated_materialList_codec
-        = pb::FieldCodec.ForMessage(98, global::CastoriceHoney.Server.Proto.Material.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.Material> materialList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.Material>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.Material> _repeated_materialList_codec
+        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.Material.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.Material> materialList_ = new pbc::RepeatedField<global::March7thHoney.Proto.Material>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.Material> MaterialList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.Material> MaterialList {
       get { return materialList_; }
     }
 
     /// <summary>Field number for the "quest_list" field.</summary>
     public const int QuestListFieldNumber = 13;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.Quest> _repeated_questList_codec
-        = pb::FieldCodec.ForMessage(106, global::CastoriceHoney.Server.Proto.Quest.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.Quest> questList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.Quest>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.Quest> _repeated_questList_codec
+        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.Quest.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.Quest> questList_ = new pbc::RepeatedField<global::March7thHoney.Proto.Quest>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.Quest> QuestList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.Quest> QuestList {
       get { return questList_; }
     }
 
     /// <summary>Field number for the "basic_info" field.</summary>
     public const int BasicInfoFieldNumber = 14;
-    private global::CastoriceHoney.Server.Proto.PlayerBasicInfo basicInfo_;
+    private global::March7thHoney.Proto.PlayerBasicInfo basicInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.PlayerBasicInfo BasicInfo {
+    public global::March7thHoney.Proto.PlayerBasicInfo BasicInfo {
       get { return basicInfo_; }
       set {
         basicInfo_ = value;
@@ -255,21 +255,21 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "IIBDADNFLFP" field.</summary>
     public const int IIBDADNFLFPFieldNumber = 34;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.DPBEGBNICPG> _repeated_iIBDADNFLFP_codec
-        = pb::FieldCodec.ForMessage(274, global::CastoriceHoney.Server.Proto.DPBEGBNICPG.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.DPBEGBNICPG> iIBDADNFLFP_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.DPBEGBNICPG>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.DPBEGBNICPG> _repeated_iIBDADNFLFP_codec
+        = pb::FieldCodec.ForMessage(274, global::March7thHoney.Proto.DPBEGBNICPG.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.DPBEGBNICPG> iIBDADNFLFP_ = new pbc::RepeatedField<global::March7thHoney.Proto.DPBEGBNICPG>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.DPBEGBNICPG> IIBDADNFLFP {
+    public pbc::RepeatedField<global::March7thHoney.Proto.DPBEGBNICPG> IIBDADNFLFP {
       get { return iIBDADNFLFP_; }
     }
 
     /// <summary>Field number for the "EDAHGEAMDCF" field.</summary>
     public const int EDAHGEAMDCFFieldNumber = 69;
-    private global::CastoriceHoney.Server.Proto.ItemList eDAHGEAMDCF_;
+    private global::March7thHoney.Proto.ItemList eDAHGEAMDCF_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ItemList EDAHGEAMDCF {
+    public global::March7thHoney.Proto.ItemList EDAHGEAMDCF {
       get { return eDAHGEAMDCF_; }
       set {
         eDAHGEAMDCF_ = value;
@@ -278,10 +278,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "FFEENBPPGNG" field.</summary>
     public const int FFEENBPPGNGFieldNumber = 220;
-    private global::CastoriceHoney.Server.Proto.IEBAILGKMLB fFEENBPPGNG_;
+    private global::March7thHoney.Proto.IEBAILGKMLB fFEENBPPGNG_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.IEBAILGKMLB FFEENBPPGNG {
+    public global::March7thHoney.Proto.IEBAILGKMLB FFEENBPPGNG {
       get { return fFEENBPPGNG_; }
       set {
         fFEENBPPGNG_ = value;
@@ -290,21 +290,21 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "GHGKCFIFMBB" field.</summary>
     public const int GHGKCFIFMBBFieldNumber = 231;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.Material> _repeated_gHGKCFIFMBB_codec
-        = pb::FieldCodec.ForMessage(1850, global::CastoriceHoney.Server.Proto.Material.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.Material> gHGKCFIFMBB_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.Material>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.Material> _repeated_gHGKCFIFMBB_codec
+        = pb::FieldCodec.ForMessage(1850, global::March7thHoney.Proto.Material.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.Material> gHGKCFIFMBB_ = new pbc::RepeatedField<global::March7thHoney.Proto.Material>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.Material> GHGKCFIFMBB {
+    public pbc::RepeatedField<global::March7thHoney.Proto.Material> GHGKCFIFMBB {
       get { return gHGKCFIFMBB_; }
     }
 
     /// <summary>Field number for the "sync_status" field.</summary>
     public const int SyncStatusFieldNumber = 322;
-    private global::CastoriceHoney.Server.Proto.SyncStatus syncStatus_;
+    private global::March7thHoney.Proto.SyncStatus syncStatus_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.SyncStatus SyncStatus {
+    public global::March7thHoney.Proto.SyncStatus SyncStatus {
       get { return syncStatus_; }
       set {
         syncStatus_ = value;
@@ -325,10 +325,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "PlayerOutfitData" field.</summary>
     public const int PlayerOutfitDataFieldNumber = 1170;
-    private global::CastoriceHoney.Server.Proto.PlayerOutfitInfo playerOutfitData_;
+    private global::March7thHoney.Proto.PlayerOutfitInfo playerOutfitData_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.PlayerOutfitInfo PlayerOutfitData {
+    public global::March7thHoney.Proto.PlayerOutfitInfo PlayerOutfitData {
       get { return playerOutfitData_; }
       set {
         playerOutfitData_ = value;
@@ -337,21 +337,21 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "PEFMKLKKCFJ" field.</summary>
     public const int PEFMKLKKCFJFieldNumber = 1287;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.PFFDAFJLNOO> _repeated_pEFMKLKKCFJ_codec
-        = pb::FieldCodec.ForMessage(10298, global::CastoriceHoney.Server.Proto.PFFDAFJLNOO.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.PFFDAFJLNOO> pEFMKLKKCFJ_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.PFFDAFJLNOO>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.PFFDAFJLNOO> _repeated_pEFMKLKKCFJ_codec
+        = pb::FieldCodec.ForMessage(10298, global::March7thHoney.Proto.PFFDAFJLNOO.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.PFFDAFJLNOO> pEFMKLKKCFJ_ = new pbc::RepeatedField<global::March7thHoney.Proto.PFFDAFJLNOO>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.PFFDAFJLNOO> PEFMKLKKCFJ {
+    public pbc::RepeatedField<global::March7thHoney.Proto.PFFDAFJLNOO> PEFMKLKKCFJ {
       get { return pEFMKLKKCFJ_; }
     }
 
     /// <summary>Field number for the "playerboard_module_sync" field.</summary>
     public const int PlayerboardModuleSyncFieldNumber = 1335;
-    private global::CastoriceHoney.Server.Proto.PlayerBoardModuleSync playerboardModuleSync_;
+    private global::March7thHoney.Proto.PlayerBoardModuleSync playerboardModuleSync_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.PlayerBoardModuleSync PlayerboardModuleSync {
+    public global::March7thHoney.Proto.PlayerBoardModuleSync PlayerboardModuleSync {
       get { return playerboardModuleSync_; }
       set {
         playerboardModuleSync_ = value;
@@ -371,12 +371,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "NAJNBCDBIHO" field.</summary>
     public const int NAJNBCDBIHOFieldNumber = 1836;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.LAEHDNHPGCC> _repeated_nAJNBCDBIHO_codec
-        = pb::FieldCodec.ForMessage(14690, global::CastoriceHoney.Server.Proto.LAEHDNHPGCC.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.LAEHDNHPGCC> nAJNBCDBIHO_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.LAEHDNHPGCC>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.LAEHDNHPGCC> _repeated_nAJNBCDBIHO_codec
+        = pb::FieldCodec.ForMessage(14690, global::March7thHoney.Proto.LAEHDNHPGCC.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.LAEHDNHPGCC> nAJNBCDBIHO_ = new pbc::RepeatedField<global::March7thHoney.Proto.LAEHDNHPGCC>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.LAEHDNHPGCC> NAJNBCDBIHO {
+    public pbc::RepeatedField<global::March7thHoney.Proto.LAEHDNHPGCC> NAJNBCDBIHO {
       get { return nAJNBCDBIHO_; }
     }
 
@@ -644,13 +644,13 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.avatarSync_ != null) {
         if (avatarSync_ == null) {
-          AvatarSync = new global::CastoriceHoney.Server.Proto.AvatarSync();
+          AvatarSync = new global::March7thHoney.Proto.AvatarSync();
         }
         AvatarSync.MergeFrom(other.AvatarSync);
       }
       if (other.missionSync_ != null) {
         if (missionSync_ == null) {
-          MissionSync = new global::CastoriceHoney.Server.Proto.MissionSync();
+          MissionSync = new global::March7thHoney.Proto.MissionSync();
         }
         MissionSync.MergeFrom(other.MissionSync);
       }
@@ -661,7 +661,7 @@ namespace CastoriceHoney.Server.Proto {
       delRelicList_.Add(other.delRelicList_);
       if (other.basicModuleSync_ != null) {
         if (basicModuleSync_ == null) {
-          BasicModuleSync = new global::CastoriceHoney.Server.Proto.BasicModuleSync();
+          BasicModuleSync = new global::March7thHoney.Proto.BasicModuleSync();
         }
         BasicModuleSync.MergeFrom(other.BasicModuleSync);
       }
@@ -669,27 +669,27 @@ namespace CastoriceHoney.Server.Proto {
       questList_.Add(other.questList_);
       if (other.basicInfo_ != null) {
         if (basicInfo_ == null) {
-          BasicInfo = new global::CastoriceHoney.Server.Proto.PlayerBasicInfo();
+          BasicInfo = new global::March7thHoney.Proto.PlayerBasicInfo();
         }
         BasicInfo.MergeFrom(other.BasicInfo);
       }
       iIBDADNFLFP_.Add(other.iIBDADNFLFP_);
       if (other.eDAHGEAMDCF_ != null) {
         if (eDAHGEAMDCF_ == null) {
-          EDAHGEAMDCF = new global::CastoriceHoney.Server.Proto.ItemList();
+          EDAHGEAMDCF = new global::March7thHoney.Proto.ItemList();
         }
         EDAHGEAMDCF.MergeFrom(other.EDAHGEAMDCF);
       }
       if (other.fFEENBPPGNG_ != null) {
         if (fFEENBPPGNG_ == null) {
-          FFEENBPPGNG = new global::CastoriceHoney.Server.Proto.IEBAILGKMLB();
+          FFEENBPPGNG = new global::March7thHoney.Proto.IEBAILGKMLB();
         }
         FFEENBPPGNG.MergeFrom(other.FFEENBPPGNG);
       }
       gHGKCFIFMBB_.Add(other.gHGKCFIFMBB_);
       if (other.syncStatus_ != null) {
         if (syncStatus_ == null) {
-          SyncStatus = new global::CastoriceHoney.Server.Proto.SyncStatus();
+          SyncStatus = new global::March7thHoney.Proto.SyncStatus();
         }
         SyncStatus.MergeFrom(other.SyncStatus);
       }
@@ -698,14 +698,14 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.playerOutfitData_ != null) {
         if (playerOutfitData_ == null) {
-          PlayerOutfitData = new global::CastoriceHoney.Server.Proto.PlayerOutfitInfo();
+          PlayerOutfitData = new global::March7thHoney.Proto.PlayerOutfitInfo();
         }
         PlayerOutfitData.MergeFrom(other.PlayerOutfitData);
       }
       pEFMKLKKCFJ_.Add(other.pEFMKLKKCFJ_);
       if (other.playerboardModuleSync_ != null) {
         if (playerboardModuleSync_ == null) {
-          PlayerboardModuleSync = new global::CastoriceHoney.Server.Proto.PlayerBoardModuleSync();
+          PlayerboardModuleSync = new global::March7thHoney.Proto.PlayerBoardModuleSync();
         }
         PlayerboardModuleSync.MergeFrom(other.PlayerboardModuleSync);
       }
@@ -732,14 +732,14 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 10: {
             if (avatarSync_ == null) {
-              AvatarSync = new global::CastoriceHoney.Server.Proto.AvatarSync();
+              AvatarSync = new global::March7thHoney.Proto.AvatarSync();
             }
             input.ReadMessage(AvatarSync);
             break;
           }
           case 34: {
             if (missionSync_ == null) {
-              MissionSync = new global::CastoriceHoney.Server.Proto.MissionSync();
+              MissionSync = new global::March7thHoney.Proto.MissionSync();
             }
             input.ReadMessage(MissionSync);
             break;
@@ -768,7 +768,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 90: {
             if (basicModuleSync_ == null) {
-              BasicModuleSync = new global::CastoriceHoney.Server.Proto.BasicModuleSync();
+              BasicModuleSync = new global::March7thHoney.Proto.BasicModuleSync();
             }
             input.ReadMessage(BasicModuleSync);
             break;
@@ -783,7 +783,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 114: {
             if (basicInfo_ == null) {
-              BasicInfo = new global::CastoriceHoney.Server.Proto.PlayerBasicInfo();
+              BasicInfo = new global::March7thHoney.Proto.PlayerBasicInfo();
             }
             input.ReadMessage(BasicInfo);
             break;
@@ -794,14 +794,14 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 554: {
             if (eDAHGEAMDCF_ == null) {
-              EDAHGEAMDCF = new global::CastoriceHoney.Server.Proto.ItemList();
+              EDAHGEAMDCF = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(EDAHGEAMDCF);
             break;
           }
           case 1762: {
             if (fFEENBPPGNG_ == null) {
-              FFEENBPPGNG = new global::CastoriceHoney.Server.Proto.IEBAILGKMLB();
+              FFEENBPPGNG = new global::March7thHoney.Proto.IEBAILGKMLB();
             }
             input.ReadMessage(FFEENBPPGNG);
             break;
@@ -812,7 +812,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 2578: {
             if (syncStatus_ == null) {
-              SyncStatus = new global::CastoriceHoney.Server.Proto.SyncStatus();
+              SyncStatus = new global::March7thHoney.Proto.SyncStatus();
             }
             input.ReadMessage(SyncStatus);
             break;
@@ -823,7 +823,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 9362: {
             if (playerOutfitData_ == null) {
-              PlayerOutfitData = new global::CastoriceHoney.Server.Proto.PlayerOutfitInfo();
+              PlayerOutfitData = new global::March7thHoney.Proto.PlayerOutfitInfo();
             }
             input.ReadMessage(PlayerOutfitData);
             break;
@@ -834,7 +834,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 10682: {
             if (playerboardModuleSync_ == null) {
-              PlayerboardModuleSync = new global::CastoriceHoney.Server.Proto.PlayerBoardModuleSync();
+              PlayerboardModuleSync = new global::March7thHoney.Proto.PlayerBoardModuleSync();
             }
             input.ReadMessage(PlayerboardModuleSync);
             break;
@@ -869,14 +869,14 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 10: {
             if (avatarSync_ == null) {
-              AvatarSync = new global::CastoriceHoney.Server.Proto.AvatarSync();
+              AvatarSync = new global::March7thHoney.Proto.AvatarSync();
             }
             input.ReadMessage(AvatarSync);
             break;
           }
           case 34: {
             if (missionSync_ == null) {
-              MissionSync = new global::CastoriceHoney.Server.Proto.MissionSync();
+              MissionSync = new global::March7thHoney.Proto.MissionSync();
             }
             input.ReadMessage(MissionSync);
             break;
@@ -905,7 +905,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 90: {
             if (basicModuleSync_ == null) {
-              BasicModuleSync = new global::CastoriceHoney.Server.Proto.BasicModuleSync();
+              BasicModuleSync = new global::March7thHoney.Proto.BasicModuleSync();
             }
             input.ReadMessage(BasicModuleSync);
             break;
@@ -920,7 +920,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 114: {
             if (basicInfo_ == null) {
-              BasicInfo = new global::CastoriceHoney.Server.Proto.PlayerBasicInfo();
+              BasicInfo = new global::March7thHoney.Proto.PlayerBasicInfo();
             }
             input.ReadMessage(BasicInfo);
             break;
@@ -931,14 +931,14 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 554: {
             if (eDAHGEAMDCF_ == null) {
-              EDAHGEAMDCF = new global::CastoriceHoney.Server.Proto.ItemList();
+              EDAHGEAMDCF = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(EDAHGEAMDCF);
             break;
           }
           case 1762: {
             if (fFEENBPPGNG_ == null) {
-              FFEENBPPGNG = new global::CastoriceHoney.Server.Proto.IEBAILGKMLB();
+              FFEENBPPGNG = new global::March7thHoney.Proto.IEBAILGKMLB();
             }
             input.ReadMessage(FFEENBPPGNG);
             break;
@@ -949,7 +949,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 2578: {
             if (syncStatus_ == null) {
-              SyncStatus = new global::CastoriceHoney.Server.Proto.SyncStatus();
+              SyncStatus = new global::March7thHoney.Proto.SyncStatus();
             }
             input.ReadMessage(SyncStatus);
             break;
@@ -960,7 +960,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 9362: {
             if (playerOutfitData_ == null) {
-              PlayerOutfitData = new global::CastoriceHoney.Server.Proto.PlayerOutfitInfo();
+              PlayerOutfitData = new global::March7thHoney.Proto.PlayerOutfitInfo();
             }
             input.ReadMessage(PlayerOutfitData);
             break;
@@ -971,7 +971,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 10682: {
             if (playerboardModuleSync_ == null) {
-              PlayerboardModuleSync = new global::CastoriceHoney.Server.Proto.PlayerBoardModuleSync();
+              PlayerboardModuleSync = new global::March7thHoney.Proto.PlayerBoardModuleSync();
             }
             input.ReadMessage(PlayerboardModuleSync);
             break;

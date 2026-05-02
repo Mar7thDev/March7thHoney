@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.Enums.Avatar;
-using CastoriceHoney.Server.Enums.Quest;
+using March7thHoney.Enums.Avatar;
+using March7thHoney.Enums.Quest;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("MultiplePathAvatarConfig.json")]
 public class MultiplePathAvatarConfigExcel : ExcelResource

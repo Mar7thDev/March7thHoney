@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from PVEBattleResultScRsp.proto</summary>
   public static partial class PVEBattleResultScRspReflection {
@@ -40,9 +40,9 @@ namespace CastoriceHoney.Server.Proto {
             "SEpCQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5T",
             "ZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.BattleAvatarReflection.Descriptor, global::CastoriceHoney.Server.Proto.BattleEndStatusReflection.Descriptor, global::CastoriceHoney.Server.Proto.ItemListReflection.Descriptor, global::CastoriceHoney.Server.Proto.NNOIJJNCHJBReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.BattleAvatarReflection.Descriptor, global::March7thHoney.Proto.BattleEndStatusReflection.Descriptor, global::March7thHoney.Proto.ItemListReflection.Descriptor, global::March7thHoney.Proto.NNOIJJNCHJBReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.PVEBattleResultScRsp), global::CastoriceHoney.Server.Proto.PVEBattleResultScRsp.Parser, new[]{ "GGDBPDDAPDG", "ResVersion", "StageId", "EndStatus", "MultipleDropData", "DropData", "ItemListUnk1", "CheckIdentical", "BattleAvatarList", "CJAJBMAJNJP", "NDEJJDHJBIM", "EventId", "BattleId", "Retcode", "BinVersion", "ItemListUnk2", "HICNFJDGGGL" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PVEBattleResultScRsp), global::March7thHoney.Proto.PVEBattleResultScRsp.Parser, new[]{ "GGDBPDDAPDG", "ResVersion", "StageId", "EndStatus", "MultipleDropData", "DropData", "ItemListUnk1", "CheckIdentical", "BattleAvatarList", "CJAJBMAJNJP", "NDEJJDHJBIM", "EventId", "BattleId", "Retcode", "BinVersion", "ItemListUnk2", "HICNFJDGGGL" }, null, null, null, null)
           }));
     }
     #endregion
@@ -64,7 +64,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.PVEBattleResultScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.PVEBattleResultScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -148,10 +148,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "end_status" field.</summary>
     public const int EndStatusFieldNumber = 4;
-    private global::CastoriceHoney.Server.Proto.BattleEndStatus endStatus_ = global::CastoriceHoney.Server.Proto.BattleEndStatus.BattleEndNone;
+    private global::March7thHoney.Proto.BattleEndStatus endStatus_ = global::March7thHoney.Proto.BattleEndStatus.BattleEndNone;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.BattleEndStatus EndStatus {
+    public global::March7thHoney.Proto.BattleEndStatus EndStatus {
       get { return endStatus_; }
       set {
         endStatus_ = value;
@@ -160,10 +160,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "multiple_drop_data" field.</summary>
     public const int MultipleDropDataFieldNumber = 5;
-    private global::CastoriceHoney.Server.Proto.ItemList multipleDropData_;
+    private global::March7thHoney.Proto.ItemList multipleDropData_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ItemList MultipleDropData {
+    public global::March7thHoney.Proto.ItemList MultipleDropData {
       get { return multipleDropData_; }
       set {
         multipleDropData_ = value;
@@ -172,10 +172,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "drop_data" field.</summary>
     public const int DropDataFieldNumber = 6;
-    private global::CastoriceHoney.Server.Proto.ItemList dropData_;
+    private global::March7thHoney.Proto.ItemList dropData_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ItemList DropData {
+    public global::March7thHoney.Proto.ItemList DropData {
       get { return dropData_; }
       set {
         dropData_ = value;
@@ -184,10 +184,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "item_list_unk1" field.</summary>
     public const int ItemListUnk1FieldNumber = 7;
-    private global::CastoriceHoney.Server.Proto.ItemList itemListUnk1_;
+    private global::March7thHoney.Proto.ItemList itemListUnk1_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ItemList ItemListUnk1 {
+    public global::March7thHoney.Proto.ItemList ItemListUnk1 {
       get { return itemListUnk1_; }
       set {
         itemListUnk1_ = value;
@@ -208,12 +208,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "battle_avatar_list" field.</summary>
     public const int BattleAvatarListFieldNumber = 9;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.BattleAvatar> _repeated_battleAvatarList_codec
-        = pb::FieldCodec.ForMessage(74, global::CastoriceHoney.Server.Proto.BattleAvatar.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BattleAvatar> battleAvatarList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BattleAvatar>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BattleAvatar> _repeated_battleAvatarList_codec
+        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.BattleAvatar.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BattleAvatar> battleAvatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.BattleAvatar>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.BattleAvatar> BattleAvatarList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.BattleAvatar> BattleAvatarList {
       get { return battleAvatarList_; }
     }
 
@@ -291,10 +291,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "item_list_unk2" field.</summary>
     public const int ItemListUnk2FieldNumber = 460;
-    private global::CastoriceHoney.Server.Proto.ItemList itemListUnk2_;
+    private global::March7thHoney.Proto.ItemList itemListUnk2_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ItemList ItemListUnk2 {
+    public global::March7thHoney.Proto.ItemList ItemListUnk2 {
       get { return itemListUnk2_; }
       set {
         itemListUnk2_ = value;
@@ -303,10 +303,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "HICNFJDGGGL" field.</summary>
     public const int HICNFJDGGGLFieldNumber = 1582;
-    private global::CastoriceHoney.Server.Proto.NNOIJJNCHJB hICNFJDGGGL_;
+    private global::March7thHoney.Proto.NNOIJJNCHJB hICNFJDGGGL_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.NNOIJJNCHJB HICNFJDGGGL {
+    public global::March7thHoney.Proto.NNOIJJNCHJB HICNFJDGGGL {
       get { return hICNFJDGGGL_; }
       set {
         hICNFJDGGGL_ = value;
@@ -355,7 +355,7 @@ namespace CastoriceHoney.Server.Proto {
       if (GGDBPDDAPDG != 0) hash ^= GGDBPDDAPDG.GetHashCode();
       if (ResVersion.Length != 0) hash ^= ResVersion.GetHashCode();
       if (StageId != 0) hash ^= StageId.GetHashCode();
-      if (EndStatus != global::CastoriceHoney.Server.Proto.BattleEndStatus.BattleEndNone) hash ^= EndStatus.GetHashCode();
+      if (EndStatus != global::March7thHoney.Proto.BattleEndStatus.BattleEndNone) hash ^= EndStatus.GetHashCode();
       if (multipleDropData_ != null) hash ^= MultipleDropData.GetHashCode();
       if (dropData_ != null) hash ^= DropData.GetHashCode();
       if (itemListUnk1_ != null) hash ^= ItemListUnk1.GetHashCode();
@@ -399,7 +399,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(24);
         output.WriteUInt32(StageId);
       }
-      if (EndStatus != global::CastoriceHoney.Server.Proto.BattleEndStatus.BattleEndNone) {
+      if (EndStatus != global::March7thHoney.Proto.BattleEndStatus.BattleEndNone) {
         output.WriteRawTag(32);
         output.WriteEnum((int) EndStatus);
       }
@@ -474,7 +474,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(24);
         output.WriteUInt32(StageId);
       }
-      if (EndStatus != global::CastoriceHoney.Server.Proto.BattleEndStatus.BattleEndNone) {
+      if (EndStatus != global::March7thHoney.Proto.BattleEndStatus.BattleEndNone) {
         output.WriteRawTag(32);
         output.WriteEnum((int) EndStatus);
       }
@@ -546,7 +546,7 @@ namespace CastoriceHoney.Server.Proto {
       if (StageId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(StageId);
       }
-      if (EndStatus != global::CastoriceHoney.Server.Proto.BattleEndStatus.BattleEndNone) {
+      if (EndStatus != global::March7thHoney.Proto.BattleEndStatus.BattleEndNone) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) EndStatus);
       }
       if (multipleDropData_ != null) {
@@ -607,24 +607,24 @@ namespace CastoriceHoney.Server.Proto {
       if (other.StageId != 0) {
         StageId = other.StageId;
       }
-      if (other.EndStatus != global::CastoriceHoney.Server.Proto.BattleEndStatus.BattleEndNone) {
+      if (other.EndStatus != global::March7thHoney.Proto.BattleEndStatus.BattleEndNone) {
         EndStatus = other.EndStatus;
       }
       if (other.multipleDropData_ != null) {
         if (multipleDropData_ == null) {
-          MultipleDropData = new global::CastoriceHoney.Server.Proto.ItemList();
+          MultipleDropData = new global::March7thHoney.Proto.ItemList();
         }
         MultipleDropData.MergeFrom(other.MultipleDropData);
       }
       if (other.dropData_ != null) {
         if (dropData_ == null) {
-          DropData = new global::CastoriceHoney.Server.Proto.ItemList();
+          DropData = new global::March7thHoney.Proto.ItemList();
         }
         DropData.MergeFrom(other.DropData);
       }
       if (other.itemListUnk1_ != null) {
         if (itemListUnk1_ == null) {
-          ItemListUnk1 = new global::CastoriceHoney.Server.Proto.ItemList();
+          ItemListUnk1 = new global::March7thHoney.Proto.ItemList();
         }
         ItemListUnk1.MergeFrom(other.ItemListUnk1);
       }
@@ -652,13 +652,13 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.itemListUnk2_ != null) {
         if (itemListUnk2_ == null) {
-          ItemListUnk2 = new global::CastoriceHoney.Server.Proto.ItemList();
+          ItemListUnk2 = new global::March7thHoney.Proto.ItemList();
         }
         ItemListUnk2.MergeFrom(other.ItemListUnk2);
       }
       if (other.hICNFJDGGGL_ != null) {
         if (hICNFJDGGGL_ == null) {
-          HICNFJDGGGL = new global::CastoriceHoney.Server.Proto.NNOIJJNCHJB();
+          HICNFJDGGGL = new global::March7thHoney.Proto.NNOIJJNCHJB();
         }
         HICNFJDGGGL.MergeFrom(other.HICNFJDGGGL);
       }
@@ -694,26 +694,26 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 32: {
-            EndStatus = (global::CastoriceHoney.Server.Proto.BattleEndStatus) input.ReadEnum();
+            EndStatus = (global::March7thHoney.Proto.BattleEndStatus) input.ReadEnum();
             break;
           }
           case 42: {
             if (multipleDropData_ == null) {
-              MultipleDropData = new global::CastoriceHoney.Server.Proto.ItemList();
+              MultipleDropData = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(MultipleDropData);
             break;
           }
           case 50: {
             if (dropData_ == null) {
-              DropData = new global::CastoriceHoney.Server.Proto.ItemList();
+              DropData = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(DropData);
             break;
           }
           case 58: {
             if (itemListUnk1_ == null) {
-              ItemListUnk1 = new global::CastoriceHoney.Server.Proto.ItemList();
+              ItemListUnk1 = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(ItemListUnk1);
             break;
@@ -752,14 +752,14 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 3682: {
             if (itemListUnk2_ == null) {
-              ItemListUnk2 = new global::CastoriceHoney.Server.Proto.ItemList();
+              ItemListUnk2 = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(ItemListUnk2);
             break;
           }
           case 12658: {
             if (hICNFJDGGGL_ == null) {
-              HICNFJDGGGL = new global::CastoriceHoney.Server.Proto.NNOIJJNCHJB();
+              HICNFJDGGGL = new global::March7thHoney.Proto.NNOIJJNCHJB();
             }
             input.ReadMessage(HICNFJDGGGL);
             break;
@@ -796,26 +796,26 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 32: {
-            EndStatus = (global::CastoriceHoney.Server.Proto.BattleEndStatus) input.ReadEnum();
+            EndStatus = (global::March7thHoney.Proto.BattleEndStatus) input.ReadEnum();
             break;
           }
           case 42: {
             if (multipleDropData_ == null) {
-              MultipleDropData = new global::CastoriceHoney.Server.Proto.ItemList();
+              MultipleDropData = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(MultipleDropData);
             break;
           }
           case 50: {
             if (dropData_ == null) {
-              DropData = new global::CastoriceHoney.Server.Proto.ItemList();
+              DropData = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(DropData);
             break;
           }
           case 58: {
             if (itemListUnk1_ == null) {
-              ItemListUnk1 = new global::CastoriceHoney.Server.Proto.ItemList();
+              ItemListUnk1 = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(ItemListUnk1);
             break;
@@ -854,14 +854,14 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 3682: {
             if (itemListUnk2_ == null) {
-              ItemListUnk2 = new global::CastoriceHoney.Server.Proto.ItemList();
+              ItemListUnk2 = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(ItemListUnk2);
             break;
           }
           case 12658: {
             if (hICNFJDGGGL_ == null) {
-              HICNFJDGGGL = new global::CastoriceHoney.Server.Proto.NNOIJJNCHJB();
+              HICNFJDGGGL = new global::March7thHoney.Proto.NNOIJJNCHJB();
             }
             input.ReadMessage(HICNFJDGGGL);
             break;

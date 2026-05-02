@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from AvatarPathData.proto</summary>
   public static partial class AvatarPathDataReflection {
@@ -34,9 +34,9 @@ namespace CastoriceHoney.Server.Proto {
             "QjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2",
             "ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.AvatarPathSkillTreeReflection.Descriptor, global::CastoriceHoney.Server.Proto.EquipRelicReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.AvatarPathSkillTreeReflection.Descriptor, global::March7thHoney.Proto.EquipRelicReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.AvatarPathData), global::CastoriceHoney.Server.Proto.AvatarPathData.Parser, new[]{ "AvatarPathSkillTree", "DressedSkinId", "EquipRelicList", "AvatarId", "Rank", "UnlockTimestamp", "PathEquipmentId", "UnkEnhancedId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AvatarPathData), global::March7thHoney.Proto.AvatarPathData.Parser, new[]{ "AvatarPathSkillTree", "DressedSkinId", "EquipRelicList", "AvatarId", "Rank", "UnlockTimestamp", "PathEquipmentId", "UnkEnhancedId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -58,7 +58,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.AvatarPathDataReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.AvatarPathDataReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -97,12 +97,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "avatar_path_skill_tree" field.</summary>
     public const int AvatarPathSkillTreeFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.AvatarPathSkillTree> _repeated_avatarPathSkillTree_codec
-        = pb::FieldCodec.ForMessage(10, global::CastoriceHoney.Server.Proto.AvatarPathSkillTree.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AvatarPathSkillTree> avatarPathSkillTree_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AvatarPathSkillTree>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AvatarPathSkillTree> _repeated_avatarPathSkillTree_codec
+        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.AvatarPathSkillTree.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AvatarPathSkillTree> avatarPathSkillTree_ = new pbc::RepeatedField<global::March7thHoney.Proto.AvatarPathSkillTree>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AvatarPathSkillTree> AvatarPathSkillTree {
+    public pbc::RepeatedField<global::March7thHoney.Proto.AvatarPathSkillTree> AvatarPathSkillTree {
       get { return avatarPathSkillTree_; }
     }
 
@@ -120,12 +120,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "equip_relic_list" field.</summary>
     public const int EquipRelicListFieldNumber = 9;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.EquipRelic> _repeated_equipRelicList_codec
-        = pb::FieldCodec.ForMessage(74, global::CastoriceHoney.Server.Proto.EquipRelic.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.EquipRelic> equipRelicList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.EquipRelic>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EquipRelic> _repeated_equipRelicList_codec
+        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.EquipRelic.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EquipRelic> equipRelicList_ = new pbc::RepeatedField<global::March7thHoney.Proto.EquipRelic>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.EquipRelic> EquipRelicList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.EquipRelic> EquipRelicList {
       get { return equipRelicList_; }
     }
 

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from BNFIBKPENEF.proto</summary>
   public static partial class BNFIBKPENEFReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "dW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9i",
             "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.KBOJACAEADLReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.KBOJACAEADLReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.BNFIBKPENEF), global::CastoriceHoney.Server.Proto.BNFIBKPENEF.Parser, new[]{ "BOEFCCPBCDD", "LOIJLIKOMJN", "LOLOEFOBOKA", "NANHFKEJMCJ" }, new[]{ "CJFBEONJIDL" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BNFIBKPENEF), global::March7thHoney.Proto.BNFIBKPENEF.Parser, new[]{ "BOEFCCPBCDD", "LOIJLIKOMJN", "LOLOEFOBOKA", "NANHFKEJMCJ" }, new[]{ "CJFBEONJIDL" }, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.BNFIBKPENEFReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.BNFIBKPENEFReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -149,8 +149,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int NANHFKEJMCJFieldNumber = 11;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.KBOJACAEADL NANHFKEJMCJ {
-      get { return cJFBEONJIDLCase_ == CJFBEONJIDLOneofCase.NANHFKEJMCJ ? (global::CastoriceHoney.Server.Proto.KBOJACAEADL) cJFBEONJIDL_ : null; }
+    public global::March7thHoney.Proto.KBOJACAEADL NANHFKEJMCJ {
+      get { return cJFBEONJIDLCase_ == CJFBEONJIDLOneofCase.NANHFKEJMCJ ? (global::March7thHoney.Proto.KBOJACAEADL) cJFBEONJIDL_ : null; }
       set {
         cJFBEONJIDL_ = value;
         cJFBEONJIDLCase_ = value == null ? CJFBEONJIDLOneofCase.None : CJFBEONJIDLOneofCase.NANHFKEJMCJ;
@@ -316,7 +316,7 @@ namespace CastoriceHoney.Server.Proto {
           break;
         case CJFBEONJIDLOneofCase.NANHFKEJMCJ:
           if (NANHFKEJMCJ == null) {
-            NANHFKEJMCJ = new global::CastoriceHoney.Server.Proto.KBOJACAEADL();
+            NANHFKEJMCJ = new global::March7thHoney.Proto.KBOJACAEADL();
           }
           NANHFKEJMCJ.MergeFrom(other.NANHFKEJMCJ);
           break;
@@ -350,7 +350,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 90: {
-            global::CastoriceHoney.Server.Proto.KBOJACAEADL subBuilder = new global::CastoriceHoney.Server.Proto.KBOJACAEADL();
+            global::March7thHoney.Proto.KBOJACAEADL subBuilder = new global::March7thHoney.Proto.KBOJACAEADL();
             if (cJFBEONJIDLCase_ == CJFBEONJIDLOneofCase.NANHFKEJMCJ) {
               subBuilder.MergeFrom(NANHFKEJMCJ);
             }
@@ -390,7 +390,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 90: {
-            global::CastoriceHoney.Server.Proto.KBOJACAEADL subBuilder = new global::CastoriceHoney.Server.Proto.KBOJACAEADL();
+            global::March7thHoney.Proto.KBOJACAEADL subBuilder = new global::March7thHoney.Proto.KBOJACAEADL();
             if (cJFBEONJIDLCase_ == CJFBEONJIDLOneofCase.NANHFKEJMCJ) {
               subBuilder.MergeFrom(NANHFKEJMCJ);
             }

@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Enums.Mission;
-using CastoriceHoney.Server.Enums.Quest;
-using CastoriceHoney.Server.GameServer.Game.Player;
+using March7thHoney.Data;
+using March7thHoney.Enums.Mission;
+using March7thHoney.Enums.Quest;
+using March7thHoney.GameServer.Game.Player;
 
-namespace CastoriceHoney.Server.GameServer.Game.Quest;
+namespace March7thHoney.GameServer.Game.Quest;
 
 public class UnlockHandler(PlayerInstance player)
 {

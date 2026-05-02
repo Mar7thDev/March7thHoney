@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from FateShopRefreshGoodsScRsp.proto</summary>
   public static partial class FateShopRefreshGoodsScRspReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "RUtMQkZIEg8KB3JldGNvZGUYDSABKA1CMwoTZW11Lmx1bmFyY29yZS5wcm90",
             "b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.JCFDCEKLBFHReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.JCFDCEKLBFHReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.FateShopRefreshGoodsScRsp), global::CastoriceHoney.Server.Proto.FateShopRefreshGoodsScRsp.Parser, new[]{ "EBKLPKNANLN", "ShopGoodsList", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FateShopRefreshGoodsScRsp), global::March7thHoney.Proto.FateShopRefreshGoodsScRsp.Parser, new[]{ "EBKLPKNANLN", "ShopGoodsList", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.FateShopRefreshGoodsScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.FateShopRefreshGoodsScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -100,12 +100,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "shop_goods_list" field.</summary>
     public const int ShopGoodsListFieldNumber = 11;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.JCFDCEKLBFH> _repeated_shopGoodsList_codec
-        = pb::FieldCodec.ForMessage(90, global::CastoriceHoney.Server.Proto.JCFDCEKLBFH.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.JCFDCEKLBFH> shopGoodsList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.JCFDCEKLBFH>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.JCFDCEKLBFH> _repeated_shopGoodsList_codec
+        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.JCFDCEKLBFH.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.JCFDCEKLBFH> shopGoodsList_ = new pbc::RepeatedField<global::March7thHoney.Proto.JCFDCEKLBFH>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.JCFDCEKLBFH> ShopGoodsList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.JCFDCEKLBFH> ShopGoodsList {
       get { return shopGoodsList_; }
     }
 

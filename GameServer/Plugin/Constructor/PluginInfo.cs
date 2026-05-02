@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.GameServer.Plugin.Constructor;
+namespace March7thHoney.GameServer.Plugin.Constructor;
 
 [AttributeUsage(AttributeTargets.Class)]
 public class PluginInfo(string name, string description, string version) : Attribute

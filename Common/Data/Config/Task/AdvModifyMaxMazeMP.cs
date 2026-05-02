@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Enums.Avatar;
+using March7thHoney.Enums.Avatar;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace CastoriceHoney.Server.Data.Config.Task;
+namespace March7thHoney.Data.Config.Task;
 
 public class AdvModifyMaxMazeMP : TaskConfigInfo
 {

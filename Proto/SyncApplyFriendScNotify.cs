@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from SyncApplyFriendScNotify.proto</summary>
   public static partial class SyncApplyFriendScNotifyReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "dW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9i",
             "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.FriendApplyInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.FriendApplyInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.SyncApplyFriendScNotify), global::CastoriceHoney.Server.Proto.SyncApplyFriendScNotify.Parser, new[]{ "FriendApplyInfo" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SyncApplyFriendScNotify), global::March7thHoney.Proto.SyncApplyFriendScNotify.Parser, new[]{ "FriendApplyInfo" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.SyncApplyFriendScNotifyReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.SyncApplyFriendScNotifyReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -86,10 +86,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "friend_apply_info" field.</summary>
     public const int FriendApplyInfoFieldNumber = 4;
-    private global::CastoriceHoney.Server.Proto.FriendApplyInfo friendApplyInfo_;
+    private global::March7thHoney.Proto.FriendApplyInfo friendApplyInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.FriendApplyInfo FriendApplyInfo {
+    public global::March7thHoney.Proto.FriendApplyInfo FriendApplyInfo {
       get { return friendApplyInfo_; }
       set {
         friendApplyInfo_ = value;
@@ -183,7 +183,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.friendApplyInfo_ != null) {
         if (friendApplyInfo_ == null) {
-          FriendApplyInfo = new global::CastoriceHoney.Server.Proto.FriendApplyInfo();
+          FriendApplyInfo = new global::March7thHoney.Proto.FriendApplyInfo();
         }
         FriendApplyInfo.MergeFrom(other.FriendApplyInfo);
       }
@@ -208,7 +208,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 34: {
             if (friendApplyInfo_ == null) {
-              FriendApplyInfo = new global::CastoriceHoney.Server.Proto.FriendApplyInfo();
+              FriendApplyInfo = new global::March7thHoney.Proto.FriendApplyInfo();
             }
             input.ReadMessage(FriendApplyInfo);
             break;
@@ -234,7 +234,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 34: {
             if (friendApplyInfo_ == null) {
-              FriendApplyInfo = new global::CastoriceHoney.Server.Proto.FriendApplyInfo();
+              FriendApplyInfo = new global::March7thHoney.Proto.FriendApplyInfo();
             }
             input.ReadMessage(FriendApplyInfo);
             break;

@@ -1,13 +1,13 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Database.Activity;
-using CastoriceHoney.Server.Database.Inventory;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Activity;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.PlayerSync;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Scene;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Data;
+using March7thHoney.Database.Activity;
+using March7thHoney.Database.Inventory;
+using March7thHoney.GameServer.Server.Packet.Send.Activity;
+using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
+using March7thHoney.GameServer.Server.Packet.Send.Scene;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Activity;
+namespace March7thHoney.GameServer.Server.Packet.Recv.Activity;
 
 [Opcode(CmdIds.TakeTrialActivityRewardCsReq)]
 public class HandlerTakeTrialActivityRewardCsReq : Handler

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from ChallengeSettleNotify.proto</summary>
   public static partial class ChallengeSettleNotifyReflection {
@@ -35,9 +35,9 @@ namespace CastoriceHoney.Server.Proto {
             "cmVfdHdvGA8gASgNQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3Jp",
             "Y2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ChallengeHistoryMaxLevelReflection.Descriptor, global::CastoriceHoney.Server.Proto.CurChallengeReflection.Descriptor, global::CastoriceHoney.Server.Proto.ItemListReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChallengeHistoryMaxLevelReflection.Descriptor, global::March7thHoney.Proto.CurChallengeReflection.Descriptor, global::March7thHoney.Proto.ItemListReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ChallengeSettleNotify), global::CastoriceHoney.Server.Proto.ChallengeSettleNotify.Parser, new[]{ "ChallengeId", "MHAPIHCJPJM", "Star", "EACKNOAFICF", "Reward", "CurChallenge", "IsWin", "MaxLevel", "ChallengeScore", "ScoreTwo" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengeSettleNotify), global::March7thHoney.Proto.ChallengeSettleNotify.Parser, new[]{ "ChallengeId", "MHAPIHCJPJM", "Star", "EACKNOAFICF", "Reward", "CurChallenge", "IsWin", "MaxLevel", "ChallengeScore", "ScoreTwo" }, null, null, null, null)
           }));
     }
     #endregion
@@ -59,7 +59,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ChallengeSettleNotifyReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ChallengeSettleNotifyReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -147,10 +147,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "reward" field.</summary>
     public const int RewardFieldNumber = 10;
-    private global::CastoriceHoney.Server.Proto.ItemList reward_;
+    private global::March7thHoney.Proto.ItemList reward_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ItemList Reward {
+    public global::March7thHoney.Proto.ItemList Reward {
       get { return reward_; }
       set {
         reward_ = value;
@@ -159,10 +159,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "cur_challenge" field.</summary>
     public const int CurChallengeFieldNumber = 11;
-    private global::CastoriceHoney.Server.Proto.CurChallenge curChallenge_;
+    private global::March7thHoney.Proto.CurChallenge curChallenge_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.CurChallenge CurChallenge {
+    public global::March7thHoney.Proto.CurChallenge CurChallenge {
       get { return curChallenge_; }
       set {
         curChallenge_ = value;
@@ -183,10 +183,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "max_level" field.</summary>
     public const int MaxLevelFieldNumber = 13;
-    private global::CastoriceHoney.Server.Proto.ChallengeHistoryMaxLevel maxLevel_;
+    private global::March7thHoney.Proto.ChallengeHistoryMaxLevel maxLevel_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ChallengeHistoryMaxLevel MaxLevel {
+    public global::March7thHoney.Proto.ChallengeHistoryMaxLevel MaxLevel {
       get { return maxLevel_; }
       set {
         maxLevel_ = value;
@@ -423,13 +423,13 @@ namespace CastoriceHoney.Server.Proto {
       eACKNOAFICF_.Add(other.eACKNOAFICF_);
       if (other.reward_ != null) {
         if (reward_ == null) {
-          Reward = new global::CastoriceHoney.Server.Proto.ItemList();
+          Reward = new global::March7thHoney.Proto.ItemList();
         }
         Reward.MergeFrom(other.Reward);
       }
       if (other.curChallenge_ != null) {
         if (curChallenge_ == null) {
-          CurChallenge = new global::CastoriceHoney.Server.Proto.CurChallenge();
+          CurChallenge = new global::March7thHoney.Proto.CurChallenge();
         }
         CurChallenge.MergeFrom(other.CurChallenge);
       }
@@ -438,7 +438,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.maxLevel_ != null) {
         if (maxLevel_ == null) {
-          MaxLevel = new global::CastoriceHoney.Server.Proto.ChallengeHistoryMaxLevel();
+          MaxLevel = new global::March7thHoney.Proto.ChallengeHistoryMaxLevel();
         }
         MaxLevel.MergeFrom(other.MaxLevel);
       }
@@ -486,14 +486,14 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 82: {
             if (reward_ == null) {
-              Reward = new global::CastoriceHoney.Server.Proto.ItemList();
+              Reward = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(Reward);
             break;
           }
           case 90: {
             if (curChallenge_ == null) {
-              CurChallenge = new global::CastoriceHoney.Server.Proto.CurChallenge();
+              CurChallenge = new global::March7thHoney.Proto.CurChallenge();
             }
             input.ReadMessage(CurChallenge);
             break;
@@ -504,7 +504,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 106: {
             if (maxLevel_ == null) {
-              MaxLevel = new global::CastoriceHoney.Server.Proto.ChallengeHistoryMaxLevel();
+              MaxLevel = new global::March7thHoney.Proto.ChallengeHistoryMaxLevel();
             }
             input.ReadMessage(MaxLevel);
             break;
@@ -555,14 +555,14 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 82: {
             if (reward_ == null) {
-              Reward = new global::CastoriceHoney.Server.Proto.ItemList();
+              Reward = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(Reward);
             break;
           }
           case 90: {
             if (curChallenge_ == null) {
-              CurChallenge = new global::CastoriceHoney.Server.Proto.CurChallenge();
+              CurChallenge = new global::March7thHoney.Proto.CurChallenge();
             }
             input.ReadMessage(CurChallenge);
             break;
@@ -573,7 +573,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 106: {
             if (maxLevel_ == null) {
-              MaxLevel = new global::CastoriceHoney.Server.Proto.ChallengeHistoryMaxLevel();
+              MaxLevel = new global::March7thHoney.Proto.ChallengeHistoryMaxLevel();
             }
             input.ReadMessage(MaxLevel);
             break;

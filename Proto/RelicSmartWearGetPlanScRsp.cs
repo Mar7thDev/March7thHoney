@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from RelicSmartWearGetPlanScRsp.proto</summary>
   public static partial class RelicSmartWearGetPlanScRspReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "bHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3Rv",
             "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.RelicSmartWearPlanReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.RelicSmartWearPlanReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.RelicSmartWearGetPlanScRsp), global::CastoriceHoney.Server.Proto.RelicSmartWearGetPlanScRsp.Parser, new[]{ "AvatarId", "Retcode", "RelicPlanList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RelicSmartWearGetPlanScRsp), global::March7thHoney.Proto.RelicSmartWearGetPlanScRsp.Parser, new[]{ "AvatarId", "Retcode", "RelicPlanList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.RelicSmartWearGetPlanScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.RelicSmartWearGetPlanScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -113,12 +113,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "relic_plan_list" field.</summary>
     public const int RelicPlanListFieldNumber = 11;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.RelicSmartWearPlan> _repeated_relicPlanList_codec
-        = pb::FieldCodec.ForMessage(90, global::CastoriceHoney.Server.Proto.RelicSmartWearPlan.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.RelicSmartWearPlan> relicPlanList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.RelicSmartWearPlan>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.RelicSmartWearPlan> _repeated_relicPlanList_codec
+        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.RelicSmartWearPlan.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.RelicSmartWearPlan> relicPlanList_ = new pbc::RepeatedField<global::March7thHoney.Proto.RelicSmartWearPlan>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.RelicSmartWearPlan> RelicPlanList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.RelicSmartWearPlan> RelicPlanList {
       get { return relicPlanList_; }
     }
 

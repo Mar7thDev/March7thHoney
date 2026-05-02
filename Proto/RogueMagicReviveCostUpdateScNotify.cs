@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from RogueMagicReviveCostUpdateScNotify.proto</summary>
   public static partial class RogueMagicReviveCostUpdateScNotifyReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "YUIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2Vy",
             "dmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ItemCostDataReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemCostDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.RogueMagicReviveCostUpdateScNotify), global::CastoriceHoney.Server.Proto.RogueMagicReviveCostUpdateScNotify.Parser, new[]{ "EBMKBDJMAAF" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RogueMagicReviveCostUpdateScNotify), global::March7thHoney.Proto.RogueMagicReviveCostUpdateScNotify.Parser, new[]{ "EBMKBDJMAAF" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.RogueMagicReviveCostUpdateScNotifyReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.RogueMagicReviveCostUpdateScNotifyReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -86,10 +86,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "EBMKBDJMAAF" field.</summary>
     public const int EBMKBDJMAAFFieldNumber = 8;
-    private global::CastoriceHoney.Server.Proto.ItemCostData eBMKBDJMAAF_;
+    private global::March7thHoney.Proto.ItemCostData eBMKBDJMAAF_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ItemCostData EBMKBDJMAAF {
+    public global::March7thHoney.Proto.ItemCostData EBMKBDJMAAF {
       get { return eBMKBDJMAAF_; }
       set {
         eBMKBDJMAAF_ = value;
@@ -183,7 +183,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.eBMKBDJMAAF_ != null) {
         if (eBMKBDJMAAF_ == null) {
-          EBMKBDJMAAF = new global::CastoriceHoney.Server.Proto.ItemCostData();
+          EBMKBDJMAAF = new global::March7thHoney.Proto.ItemCostData();
         }
         EBMKBDJMAAF.MergeFrom(other.EBMKBDJMAAF);
       }
@@ -208,7 +208,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 66: {
             if (eBMKBDJMAAF_ == null) {
-              EBMKBDJMAAF = new global::CastoriceHoney.Server.Proto.ItemCostData();
+              EBMKBDJMAAF = new global::March7thHoney.Proto.ItemCostData();
             }
             input.ReadMessage(EBMKBDJMAAF);
             break;
@@ -234,7 +234,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 66: {
             if (eBMKBDJMAAF_ == null) {
-              EBMKBDJMAAF = new global::CastoriceHoney.Server.Proto.ItemCostData();
+              EBMKBDJMAAF = new global::March7thHoney.Proto.ItemCostData();
             }
             input.ReadMessage(EBMKBDJMAAF);
             break;

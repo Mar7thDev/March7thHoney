@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Database.Inventory;
-using CastoriceHoney.Server.Enums.Scene;
+using March7thHoney.Data;
+using March7thHoney.Database.Inventory;
+using March7thHoney.Enums.Scene;
 
-namespace CastoriceHoney.Server.GameServer.Game.Drop;
+namespace March7thHoney.GameServer.Game.Drop;
 
 public class DropService
 {

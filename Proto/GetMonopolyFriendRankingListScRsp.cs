@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GetMonopolyFriendRankingListScRsp.proto</summary>
   public static partial class GetMonopolyFriendRankingListScRspReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "cG9seUZyaWVuZFJhbmtpbmdMaXN0Q3NSZXFCMwoTZW11Lmx1bmFyY29yZS5w",
             "cm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GetMonopolyFriendRankingListCsReqReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GetMonopolyFriendRankingListCsReqReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GetMonopolyFriendRankingListScRsp), global::CastoriceHoney.Server.Proto.GetMonopolyFriendRankingListScRsp.Parser, new[]{ "Retcode", "JPNALKEFHOH", "KNNIAEBMHGM" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetMonopolyFriendRankingListScRsp), global::March7thHoney.Proto.GetMonopolyFriendRankingListScRsp.Parser, new[]{ "Retcode", "JPNALKEFHOH", "KNNIAEBMHGM" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GetMonopolyFriendRankingListScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GetMonopolyFriendRankingListScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -102,21 +102,21 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "JPNALKEFHOH" field.</summary>
     public const int JPNALKEFHOHFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.GetMonopolyFriendRankingListCsReq> _repeated_jPNALKEFHOH_codec
-        = pb::FieldCodec.ForMessage(34, global::CastoriceHoney.Server.Proto.GetMonopolyFriendRankingListCsReq.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GetMonopolyFriendRankingListCsReq> jPNALKEFHOH_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GetMonopolyFriendRankingListCsReq>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GetMonopolyFriendRankingListCsReq> _repeated_jPNALKEFHOH_codec
+        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.GetMonopolyFriendRankingListCsReq.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GetMonopolyFriendRankingListCsReq> jPNALKEFHOH_ = new pbc::RepeatedField<global::March7thHoney.Proto.GetMonopolyFriendRankingListCsReq>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GetMonopolyFriendRankingListCsReq> JPNALKEFHOH {
+    public pbc::RepeatedField<global::March7thHoney.Proto.GetMonopolyFriendRankingListCsReq> JPNALKEFHOH {
       get { return jPNALKEFHOH_; }
     }
 
     /// <summary>Field number for the "KNNIAEBMHGM" field.</summary>
     public const int KNNIAEBMHGMFieldNumber = 6;
-    private global::CastoriceHoney.Server.Proto.GetMonopolyFriendRankingListCsReq kNNIAEBMHGM_;
+    private global::March7thHoney.Proto.GetMonopolyFriendRankingListCsReq kNNIAEBMHGM_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GetMonopolyFriendRankingListCsReq KNNIAEBMHGM {
+    public global::March7thHoney.Proto.GetMonopolyFriendRankingListCsReq KNNIAEBMHGM {
       get { return kNNIAEBMHGM_; }
       set {
         kNNIAEBMHGM_ = value;
@@ -232,7 +232,7 @@ namespace CastoriceHoney.Server.Proto {
       jPNALKEFHOH_.Add(other.jPNALKEFHOH_);
       if (other.kNNIAEBMHGM_ != null) {
         if (kNNIAEBMHGM_ == null) {
-          KNNIAEBMHGM = new global::CastoriceHoney.Server.Proto.GetMonopolyFriendRankingListCsReq();
+          KNNIAEBMHGM = new global::March7thHoney.Proto.GetMonopolyFriendRankingListCsReq();
         }
         KNNIAEBMHGM.MergeFrom(other.KNNIAEBMHGM);
       }
@@ -265,7 +265,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 50: {
             if (kNNIAEBMHGM_ == null) {
-              KNNIAEBMHGM = new global::CastoriceHoney.Server.Proto.GetMonopolyFriendRankingListCsReq();
+              KNNIAEBMHGM = new global::March7thHoney.Proto.GetMonopolyFriendRankingListCsReq();
             }
             input.ReadMessage(KNNIAEBMHGM);
             break;
@@ -299,7 +299,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 50: {
             if (kNNIAEBMHGM_ == null) {
-              KNNIAEBMHGM = new global::CastoriceHoney.Server.Proto.GetMonopolyFriendRankingListCsReq();
+              KNNIAEBMHGM = new global::March7thHoney.Proto.GetMonopolyFriendRankingListCsReq();
             }
             input.ReadMessage(KNNIAEBMHGM);
             break;

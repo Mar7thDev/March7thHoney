@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Enums.Mission;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Enums.Mission;
+using March7thHoney.Util;
 using SqlSugar;
 
-namespace CastoriceHoney.Server.Database.Quests;
+namespace March7thHoney.Database.Quests;
 
 [SugarTable("Mission")]
 public class MissionData : BaseDatabaseDataHelper

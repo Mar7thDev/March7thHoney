@@ -1,7 +1,7 @@
 using System.Numerics;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Game.MultiPlayer.MarbleGame.Seal;
+namespace March7thHoney.GameServer.Game.MultiPlayer.MarbleGame.Seal;
 
 public abstract class BaseMarbleGameSyncData
 {

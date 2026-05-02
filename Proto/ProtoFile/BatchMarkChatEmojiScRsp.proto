@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-option csharp_namespace = "CastoriceHoney.Server.Proto";
+option csharp_namespace = "March7thHoney.Proto";
 
-option java_package = "emu.lunarcore.proto";
+
 
 message BatchMarkChatEmojiScRsp {
     repeated uint32 marked_emoji_id_list = 2;

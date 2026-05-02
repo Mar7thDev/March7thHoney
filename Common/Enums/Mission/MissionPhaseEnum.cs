@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.Enums.Task;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Enums.Task;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.Enums.Mission;
+namespace March7thHoney.Enums.Mission;
 
 public enum MissionPhaseEnum
 {

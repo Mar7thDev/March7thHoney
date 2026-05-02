@@ -1,13 +1,13 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Database.Avatar;
-using CastoriceHoney.Server.Database.Inventory;
-using CastoriceHoney.Server.Database.Quests;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Data;
+using March7thHoney.Database.Avatar;
+using March7thHoney.Database.Inventory;
+using March7thHoney.Database.Quests;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 using SqlSugar;
-using LineupInfo = CastoriceHoney.Server.Database.Lineup.LineupInfo;
+using LineupInfo = March7thHoney.Database.Lineup.LineupInfo;
 
-namespace CastoriceHoney.Server.Database.Player;
+namespace March7thHoney.Database.Player;
 
 [SugarTable("Player")]
 public class PlayerData : BaseDatabaseDataHelper

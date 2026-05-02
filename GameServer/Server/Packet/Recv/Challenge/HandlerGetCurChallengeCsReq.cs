@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Challenge;
-using CastoriceHoney.Server.Kcp;
+using March7thHoney.GameServer.Server.Packet.Send.Challenge;
+using March7thHoney.Kcp;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Challenge;
+namespace March7thHoney.GameServer.Server.Packet.Recv.Challenge;
 
 [Opcode(CmdIds.GetCurChallengeCsReq)]
 public class HandlerGetCurChallengeCsReq : Handler

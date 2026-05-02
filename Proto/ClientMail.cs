@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from ClientMail.proto</summary>
   public static partial class ClientMailReflection {
@@ -33,9 +33,9 @@ namespace CastoriceHoney.Server.Proto {
             "SXRlbUxpc3RCMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhv",
             "bmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ItemListReflection.Descriptor, global::CastoriceHoney.Server.Proto.MailTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemListReflection.Descriptor, global::March7thHoney.Proto.MailTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ClientMail), global::CastoriceHoney.Server.Proto.ClientMail.Parser, new[]{ "Time", "Id", "IsRead", "Content", "ParaList", "ExpireTime", "MailType", "TemplateId", "Sender", "Title", "Attachment" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ClientMail), global::March7thHoney.Proto.ClientMail.Parser, new[]{ "Time", "Id", "IsRead", "Content", "ParaList", "ExpireTime", "MailType", "TemplateId", "Sender", "Title", "Attachment" }, null, null, null, null)
           }));
     }
     #endregion
@@ -57,7 +57,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ClientMailReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ClientMailReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -170,10 +170,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "mail_type" field.</summary>
     public const int MailTypeFieldNumber = 9;
-    private global::CastoriceHoney.Server.Proto.MailType mailType_ = global::CastoriceHoney.Server.Proto.MailType.Normal;
+    private global::March7thHoney.Proto.MailType mailType_ = global::March7thHoney.Proto.MailType.Normal;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.MailType MailType {
+    public global::March7thHoney.Proto.MailType MailType {
       get { return mailType_; }
       set {
         mailType_ = value;
@@ -218,10 +218,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "attachment" field.</summary>
     public const int AttachmentFieldNumber = 15;
-    private global::CastoriceHoney.Server.Proto.ItemList attachment_;
+    private global::March7thHoney.Proto.ItemList attachment_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ItemList Attachment {
+    public global::March7thHoney.Proto.ItemList Attachment {
       get { return attachment_; }
       set {
         attachment_ = value;
@@ -267,7 +267,7 @@ namespace CastoriceHoney.Server.Proto {
       if (Content.Length != 0) hash ^= Content.GetHashCode();
       hash ^= paraList_.GetHashCode();
       if (ExpireTime != 0L) hash ^= ExpireTime.GetHashCode();
-      if (MailType != global::CastoriceHoney.Server.Proto.MailType.Normal) hash ^= MailType.GetHashCode();
+      if (MailType != global::March7thHoney.Proto.MailType.Normal) hash ^= MailType.GetHashCode();
       if (TemplateId != 0) hash ^= TemplateId.GetHashCode();
       if (Sender.Length != 0) hash ^= Sender.GetHashCode();
       if (Title.Length != 0) hash ^= Title.GetHashCode();
@@ -311,7 +311,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(56);
         output.WriteInt64(ExpireTime);
       }
-      if (MailType != global::CastoriceHoney.Server.Proto.MailType.Normal) {
+      if (MailType != global::March7thHoney.Proto.MailType.Normal) {
         output.WriteRawTag(72);
         output.WriteEnum((int) MailType);
       }
@@ -362,7 +362,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(56);
         output.WriteInt64(ExpireTime);
       }
-      if (MailType != global::CastoriceHoney.Server.Proto.MailType.Normal) {
+      if (MailType != global::March7thHoney.Proto.MailType.Normal) {
         output.WriteRawTag(72);
         output.WriteEnum((int) MailType);
       }
@@ -408,7 +408,7 @@ namespace CastoriceHoney.Server.Proto {
       if (ExpireTime != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(ExpireTime);
       }
-      if (MailType != global::CastoriceHoney.Server.Proto.MailType.Normal) {
+      if (MailType != global::March7thHoney.Proto.MailType.Normal) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) MailType);
       }
       if (TemplateId != 0) {
@@ -451,7 +451,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other.ExpireTime != 0L) {
         ExpireTime = other.ExpireTime;
       }
-      if (other.MailType != global::CastoriceHoney.Server.Proto.MailType.Normal) {
+      if (other.MailType != global::March7thHoney.Proto.MailType.Normal) {
         MailType = other.MailType;
       }
       if (other.TemplateId != 0) {
@@ -465,7 +465,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.attachment_ != null) {
         if (attachment_ == null) {
-          Attachment = new global::CastoriceHoney.Server.Proto.ItemList();
+          Attachment = new global::March7thHoney.Proto.ItemList();
         }
         Attachment.MergeFrom(other.Attachment);
       }
@@ -513,7 +513,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 72: {
-            MailType = (global::CastoriceHoney.Server.Proto.MailType) input.ReadEnum();
+            MailType = (global::March7thHoney.Proto.MailType) input.ReadEnum();
             break;
           }
           case 80: {
@@ -530,7 +530,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 122: {
             if (attachment_ == null) {
-              Attachment = new global::CastoriceHoney.Server.Proto.ItemList();
+              Attachment = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(Attachment);
             break;
@@ -579,7 +579,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 72: {
-            MailType = (global::CastoriceHoney.Server.Proto.MailType) input.ReadEnum();
+            MailType = (global::March7thHoney.Proto.MailType) input.ReadEnum();
             break;
           }
           case 80: {
@@ -596,7 +596,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 122: {
             if (attachment_ == null) {
-              Attachment = new global::CastoriceHoney.Server.Proto.ItemList();
+              Attachment = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(Attachment);
             break;

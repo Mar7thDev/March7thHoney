@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from AAPCAHCHMFN.proto</summary>
   public static partial class AAPCAHCHMFNReflection {
@@ -29,9 +29,9 @@ namespace CastoriceHoney.Server.Proto {
             "ChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVy",
             "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GMFCNNFHMGEReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GMFCNNFHMGEReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.AAPCAHCHMFN), global::CastoriceHoney.Server.Proto.AAPCAHCHMFN.Parser, new[]{ "EPGAPCCAEMP" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AAPCAHCHMFN), global::March7thHoney.Proto.AAPCAHCHMFN.Parser, new[]{ "EPGAPCCAEMP" }, null, null, null, null)
           }));
     }
     #endregion
@@ -53,7 +53,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.AAPCAHCHMFNReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.AAPCAHCHMFNReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -85,12 +85,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "EPGAPCCAEMP" field.</summary>
     public const int EPGAPCCAEMPFieldNumber = 12;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.GMFCNNFHMGE> _repeated_ePGAPCCAEMP_codec
-        = pb::FieldCodec.ForMessage(98, global::CastoriceHoney.Server.Proto.GMFCNNFHMGE.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GMFCNNFHMGE> ePGAPCCAEMP_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GMFCNNFHMGE>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GMFCNNFHMGE> _repeated_ePGAPCCAEMP_codec
+        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.GMFCNNFHMGE.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GMFCNNFHMGE> ePGAPCCAEMP_ = new pbc::RepeatedField<global::March7thHoney.Proto.GMFCNNFHMGE>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GMFCNNFHMGE> EPGAPCCAEMP {
+    public pbc::RepeatedField<global::March7thHoney.Proto.GMFCNNFHMGE> EPGAPCCAEMP {
       get { return ePGAPCCAEMP_; }
     }
 

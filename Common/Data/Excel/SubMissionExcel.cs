@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.Data.Config;
+using March7thHoney.Data.Config;
 using Newtonsoft.Json;
 
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("SubMission.json")]
 public class SubMissionExcel : ExcelResource

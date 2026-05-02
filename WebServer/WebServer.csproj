@@ -3,7 +3,7 @@
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>CastoriceHoney.Server.WebServer</RootNamespace>
+    <RootNamespace>March7thHoney.WebServer</RootNamespace>
     <OutputType>Library</OutputType>
     <AssemblyName>WebServer</AssemblyName>
   </PropertyGroup>

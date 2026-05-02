@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace CastoriceHoney.Server.Util;
+namespace March7thHoney.Util;
 
 public class SafeStringEnumConverter<TEnum> : JsonConverter<TEnum> where TEnum : struct, Enum
 {

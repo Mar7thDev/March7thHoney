@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from CEIIEHNDPAJ.proto</summary>
   public static partial class CEIIEHNDPAJReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "ZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Q",
             "cm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GridFightSyncDataReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightUpdateSrcTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridFightSyncDataReflection.Descriptor, global::March7thHoney.Proto.GridFightUpdateSrcTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.CEIIEHNDPAJ), global::CastoriceHoney.Server.Proto.CEIIEHNDPAJ.Parser, new[]{ "GridUpdateSrc", "UpdateDynamicList", "SyncEffectParamList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.CEIIEHNDPAJ), global::March7thHoney.Proto.CEIIEHNDPAJ.Parser, new[]{ "GridUpdateSrc", "UpdateDynamicList", "SyncEffectParamList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.CEIIEHNDPAJReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.CEIIEHNDPAJReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -90,10 +90,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "grid_update_src" field.</summary>
     public const int GridUpdateSrcFieldNumber = 3;
-    private global::CastoriceHoney.Server.Proto.GridFightUpdateSrcType gridUpdateSrc_ = global::CastoriceHoney.Server.Proto.GridFightUpdateSrcType.LnpfefkjdhpHefepinlbdp;
+    private global::March7thHoney.Proto.GridFightUpdateSrcType gridUpdateSrc_ = global::March7thHoney.Proto.GridFightUpdateSrcType.LnpfefkjdhpHefepinlbdp;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightUpdateSrcType GridUpdateSrc {
+    public global::March7thHoney.Proto.GridFightUpdateSrcType GridUpdateSrc {
       get { return gridUpdateSrc_; }
       set {
         gridUpdateSrc_ = value;
@@ -102,12 +102,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "update_dynamic_list" field.</summary>
     public const int UpdateDynamicListFieldNumber = 7;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.GridFightSyncData> _repeated_updateDynamicList_codec
-        = pb::FieldCodec.ForMessage(58, global::CastoriceHoney.Server.Proto.GridFightSyncData.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridFightSyncData> updateDynamicList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridFightSyncData>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GridFightSyncData> _repeated_updateDynamicList_codec
+        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.GridFightSyncData.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GridFightSyncData> updateDynamicList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GridFightSyncData>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridFightSyncData> UpdateDynamicList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.GridFightSyncData> UpdateDynamicList {
       get { return updateDynamicList_; }
     }
 
@@ -147,7 +147,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (GridUpdateSrc != global::CastoriceHoney.Server.Proto.GridFightUpdateSrcType.LnpfefkjdhpHefepinlbdp) hash ^= GridUpdateSrc.GetHashCode();
+      if (GridUpdateSrc != global::March7thHoney.Proto.GridFightUpdateSrcType.LnpfefkjdhpHefepinlbdp) hash ^= GridUpdateSrc.GetHashCode();
       hash ^= updateDynamicList_.GetHashCode();
       hash ^= syncEffectParamList_.GetHashCode();
       if (_unknownFields != null) {
@@ -168,7 +168,7 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (GridUpdateSrc != global::CastoriceHoney.Server.Proto.GridFightUpdateSrcType.LnpfefkjdhpHefepinlbdp) {
+      if (GridUpdateSrc != global::March7thHoney.Proto.GridFightUpdateSrcType.LnpfefkjdhpHefepinlbdp) {
         output.WriteRawTag(24);
         output.WriteEnum((int) GridUpdateSrc);
       }
@@ -184,7 +184,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (GridUpdateSrc != global::CastoriceHoney.Server.Proto.GridFightUpdateSrcType.LnpfefkjdhpHefepinlbdp) {
+      if (GridUpdateSrc != global::March7thHoney.Proto.GridFightUpdateSrcType.LnpfefkjdhpHefepinlbdp) {
         output.WriteRawTag(24);
         output.WriteEnum((int) GridUpdateSrc);
       }
@@ -200,7 +200,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (GridUpdateSrc != global::CastoriceHoney.Server.Proto.GridFightUpdateSrcType.LnpfefkjdhpHefepinlbdp) {
+      if (GridUpdateSrc != global::March7thHoney.Proto.GridFightUpdateSrcType.LnpfefkjdhpHefepinlbdp) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) GridUpdateSrc);
       }
       size += updateDynamicList_.CalculateSize(_repeated_updateDynamicList_codec);
@@ -217,7 +217,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.GridUpdateSrc != global::CastoriceHoney.Server.Proto.GridFightUpdateSrcType.LnpfefkjdhpHefepinlbdp) {
+      if (other.GridUpdateSrc != global::March7thHoney.Proto.GridFightUpdateSrcType.LnpfefkjdhpHefepinlbdp) {
         GridUpdateSrc = other.GridUpdateSrc;
       }
       updateDynamicList_.Add(other.updateDynamicList_);
@@ -242,7 +242,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 24: {
-            GridUpdateSrc = (global::CastoriceHoney.Server.Proto.GridFightUpdateSrcType) input.ReadEnum();
+            GridUpdateSrc = (global::March7thHoney.Proto.GridFightUpdateSrcType) input.ReadEnum();
             break;
           }
           case 58: {
@@ -274,7 +274,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 24: {
-            GridUpdateSrc = (global::CastoriceHoney.Server.Proto.GridFightUpdateSrcType) input.ReadEnum();
+            GridUpdateSrc = (global::March7thHoney.Proto.GridFightUpdateSrcType) input.ReadEnum();
             break;
           }
           case 58: {

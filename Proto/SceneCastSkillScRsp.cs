@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from SceneCastSkillScRsp.proto</summary>
   public static partial class SceneCastSkillScRspReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "b2RlGAYgASgNQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VI",
             "b25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.HitMonsterBattleInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.SceneBattleInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.HitMonsterBattleInfoReflection.Descriptor, global::March7thHoney.Proto.SceneBattleInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.SceneCastSkillScRsp), global::CastoriceHoney.Server.Proto.SceneCastSkillScRsp.Parser, new[]{ "BattleInfo", "MonsterBattleInfo", "CastEntityId", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneCastSkillScRsp), global::March7thHoney.Proto.SceneCastSkillScRsp.Parser, new[]{ "BattleInfo", "MonsterBattleInfo", "CastEntityId", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.SceneCastSkillScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.SceneCastSkillScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -91,10 +91,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "battle_info" field.</summary>
     public const int BattleInfoFieldNumber = 1;
-    private global::CastoriceHoney.Server.Proto.SceneBattleInfo battleInfo_;
+    private global::March7thHoney.Proto.SceneBattleInfo battleInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.SceneBattleInfo BattleInfo {
+    public global::March7thHoney.Proto.SceneBattleInfo BattleInfo {
       get { return battleInfo_; }
       set {
         battleInfo_ = value;
@@ -103,12 +103,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "monster_battle_info" field.</summary>
     public const int MonsterBattleInfoFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.HitMonsterBattleInfo> _repeated_monsterBattleInfo_codec
-        = pb::FieldCodec.ForMessage(18, global::CastoriceHoney.Server.Proto.HitMonsterBattleInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.HitMonsterBattleInfo> monsterBattleInfo_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.HitMonsterBattleInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.HitMonsterBattleInfo> _repeated_monsterBattleInfo_codec
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.HitMonsterBattleInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.HitMonsterBattleInfo> monsterBattleInfo_ = new pbc::RepeatedField<global::March7thHoney.Proto.HitMonsterBattleInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.HitMonsterBattleInfo> MonsterBattleInfo {
+    public pbc::RepeatedField<global::March7thHoney.Proto.HitMonsterBattleInfo> MonsterBattleInfo {
       get { return monsterBattleInfo_; }
     }
 
@@ -254,7 +254,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.battleInfo_ != null) {
         if (battleInfo_ == null) {
-          BattleInfo = new global::CastoriceHoney.Server.Proto.SceneBattleInfo();
+          BattleInfo = new global::March7thHoney.Proto.SceneBattleInfo();
         }
         BattleInfo.MergeFrom(other.BattleInfo);
       }
@@ -286,7 +286,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 10: {
             if (battleInfo_ == null) {
-              BattleInfo = new global::CastoriceHoney.Server.Proto.SceneBattleInfo();
+              BattleInfo = new global::March7thHoney.Proto.SceneBattleInfo();
             }
             input.ReadMessage(BattleInfo);
             break;
@@ -324,7 +324,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 10: {
             if (battleInfo_ == null) {
-              BattleInfo = new global::CastoriceHoney.Server.Proto.SceneBattleInfo();
+              BattleInfo = new global::March7thHoney.Proto.SceneBattleInfo();
             }
             input.ReadMessage(BattleInfo);
             break;

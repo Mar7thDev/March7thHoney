@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Proto;
 using SqlSugar;
 
-namespace CastoriceHoney.Server.Database.Quests;
+namespace March7thHoney.Database.Quests;
 
 [SugarTable("quest_data")]
 public class QuestData : BaseDatabaseDataHelper

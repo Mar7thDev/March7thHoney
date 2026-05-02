@@ -1,17 +1,17 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Database;
-using CastoriceHoney.Server.Database.Avatar;
-using CastoriceHoney.Server.Database.Lineup;
-using CastoriceHoney.Server.Enums.Avatar;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Lineup;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Scene;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
-using LineupInfo = CastoriceHoney.Server.Database.Lineup.LineupInfo;
-using static CastoriceHoney.Server.GameServer.Plugin.Event.PluginEvent;
+using March7thHoney.Data;
+using March7thHoney.Database;
+using March7thHoney.Database.Avatar;
+using March7thHoney.Database.Lineup;
+using March7thHoney.Enums.Avatar;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Server.Packet.Send.Lineup;
+using March7thHoney.GameServer.Server.Packet.Send.Scene;
+using March7thHoney.Proto;
+using March7thHoney.Util;
+using LineupInfo = March7thHoney.Database.Lineup.LineupInfo;
+using static March7thHoney.GameServer.Plugin.Event.PluginEvent;
 
-namespace CastoriceHoney.Server.GameServer.Game.Lineup;
+namespace March7thHoney.GameServer.Game.Lineup;
 
 public class LineupManager : BasePlayerManager
 {

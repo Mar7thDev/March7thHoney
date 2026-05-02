@@ -1,22 +1,22 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using System.Management;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Database;
-using CastoriceHoney.Server.Database.Avatar;
-using CastoriceHoney.Server.Database.Lineup;
-using CastoriceHoney.Server.Database.Player;
-using CastoriceHoney.Server.Database.Quests;
-using CastoriceHoney.Server.Enums;
-using CastoriceHoney.Server.Util;
-using CastoriceHoney.Server.WebServer.Response;
+using March7thHoney.Data;
+using March7thHoney.Database;
+using March7thHoney.Database.Avatar;
+using March7thHoney.Database.Lineup;
+using March7thHoney.Database.Player;
+using March7thHoney.Database.Quests;
+using March7thHoney.Enums;
+using March7thHoney.Util;
+using March7thHoney.WebServer.Response;
 using Org.BouncyCastle.Crypto.Parameters;
 using Org.BouncyCastle.Math;
 using Org.BouncyCastle.X509;
 
-namespace CastoriceHoney.Server.WebServer.Server;
+namespace March7thHoney.WebServer.Server;
 
 public static class MuipManager
 {

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from UnlockBackGroundMusicScRsp.proto</summary>
   public static partial class UnlockBackGroundMusicScRspReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "GAogAygNEg8KB3JldGNvZGUYDiABKA1CMwoTZW11Lmx1bmFyY29yZS5wcm90",
             "b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.MusicDataReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.MusicDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.UnlockBackGroundMusicScRsp), global::CastoriceHoney.Server.Proto.UnlockBackGroundMusicScRsp.Parser, new[]{ "UnlockedMusicList", "CHAKAAOEDHC", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UnlockBackGroundMusicScRsp), global::March7thHoney.Proto.UnlockBackGroundMusicScRsp.Parser, new[]{ "UnlockedMusicList", "CHAKAAOEDHC", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.UnlockBackGroundMusicScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.UnlockBackGroundMusicScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -88,12 +88,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "UnlockedMusicList" field.</summary>
     public const int UnlockedMusicListFieldNumber = 7;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.MusicData> _repeated_unlockedMusicList_codec
-        = pb::FieldCodec.ForMessage(58, global::CastoriceHoney.Server.Proto.MusicData.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MusicData> unlockedMusicList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MusicData>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MusicData> _repeated_unlockedMusicList_codec
+        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.MusicData.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MusicData> unlockedMusicList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MusicData>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MusicData> UnlockedMusicList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.MusicData> UnlockedMusicList {
       get { return unlockedMusicList_; }
     }
 

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GetSecretKeyInfoScRsp.proto</summary>
   public static partial class GetSecretKeyInfoScRspReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "Y3JldF9yc3AYDiABKAxCMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3Rv",
             "cmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.SecretKeyInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.SecretKeyInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GetSecretKeyInfoScRsp), global::CastoriceHoney.Server.Proto.GetSecretKeyInfoScRsp.Parser, new[]{ "SecretInfo", "Retcode", "SecretRsp" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetSecretKeyInfoScRsp), global::March7thHoney.Proto.GetSecretKeyInfoScRsp.Parser, new[]{ "SecretInfo", "Retcode", "SecretRsp" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GetSecretKeyInfoScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GetSecretKeyInfoScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -88,12 +88,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "secret_info" field.</summary>
     public const int SecretInfoFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.SecretKeyInfo> _repeated_secretInfo_codec
-        = pb::FieldCodec.ForMessage(18, global::CastoriceHoney.Server.Proto.SecretKeyInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.SecretKeyInfo> secretInfo_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.SecretKeyInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.SecretKeyInfo> _repeated_secretInfo_codec
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.SecretKeyInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.SecretKeyInfo> secretInfo_ = new pbc::RepeatedField<global::March7thHoney.Proto.SecretKeyInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.SecretKeyInfo> SecretInfo {
+    public pbc::RepeatedField<global::March7thHoney.Proto.SecretKeyInfo> SecretInfo {
       get { return secretInfo_; }
     }
 

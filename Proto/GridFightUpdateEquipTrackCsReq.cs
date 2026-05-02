@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GridFightUpdateEquipTrackCsReq.proto</summary>
   public static partial class GridFightUpdateEquipTrackCsReqReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "aWRGaWdodEVxdWlwVHJhY2tTb3VyY2VCMwoTZW11Lmx1bmFyY29yZS5wcm90",
             "b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.DFKGECLBCDKReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightEquipTrackSourceReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.DFKGECLBCDKReflection.Descriptor, global::March7thHoney.Proto.GridFightEquipTrackSourceReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GridFightUpdateEquipTrackCsReq), global::CastoriceHoney.Server.Proto.GridFightUpdateEquipTrackCsReq.Parser, new[]{ "BEPEKLPAHMC", "Source" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightUpdateEquipTrackCsReq), global::March7thHoney.Proto.GridFightUpdateEquipTrackCsReq.Parser, new[]{ "BEPEKLPAHMC", "Source" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GridFightUpdateEquipTrackCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GridFightUpdateEquipTrackCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -88,21 +88,21 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "BEPEKLPAHMC" field.</summary>
     public const int BEPEKLPAHMCFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.DFKGECLBCDK> _repeated_bEPEKLPAHMC_codec
-        = pb::FieldCodec.ForMessage(26, global::CastoriceHoney.Server.Proto.DFKGECLBCDK.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.DFKGECLBCDK> bEPEKLPAHMC_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.DFKGECLBCDK>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.DFKGECLBCDK> _repeated_bEPEKLPAHMC_codec
+        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.DFKGECLBCDK.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.DFKGECLBCDK> bEPEKLPAHMC_ = new pbc::RepeatedField<global::March7thHoney.Proto.DFKGECLBCDK>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.DFKGECLBCDK> BEPEKLPAHMC {
+    public pbc::RepeatedField<global::March7thHoney.Proto.DFKGECLBCDK> BEPEKLPAHMC {
       get { return bEPEKLPAHMC_; }
     }
 
     /// <summary>Field number for the "source" field.</summary>
     public const int SourceFieldNumber = 15;
-    private global::CastoriceHoney.Server.Proto.GridFightEquipTrackSource source_ = global::CastoriceHoney.Server.Proto.GridFightEquipTrackSource.HnkkndhlognHlnmmmkheem;
+    private global::March7thHoney.Proto.GridFightEquipTrackSource source_ = global::March7thHoney.Proto.GridFightEquipTrackSource.HnkkndhlognHlnmmmkheem;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightEquipTrackSource Source {
+    public global::March7thHoney.Proto.GridFightEquipTrackSource Source {
       get { return source_; }
       set {
         source_ = value;
@@ -134,7 +134,7 @@ namespace CastoriceHoney.Server.Proto {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= bEPEKLPAHMC_.GetHashCode();
-      if (Source != global::CastoriceHoney.Server.Proto.GridFightEquipTrackSource.HnkkndhlognHlnmmmkheem) hash ^= Source.GetHashCode();
+      if (Source != global::March7thHoney.Proto.GridFightEquipTrackSource.HnkkndhlognHlnmmmkheem) hash ^= Source.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -154,7 +154,7 @@ namespace CastoriceHoney.Server.Proto {
       output.WriteRawMessage(this);
     #else
       bEPEKLPAHMC_.WriteTo(output, _repeated_bEPEKLPAHMC_codec);
-      if (Source != global::CastoriceHoney.Server.Proto.GridFightEquipTrackSource.HnkkndhlognHlnmmmkheem) {
+      if (Source != global::March7thHoney.Proto.GridFightEquipTrackSource.HnkkndhlognHlnmmmkheem) {
         output.WriteRawTag(120);
         output.WriteEnum((int) Source);
       }
@@ -169,7 +169,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       bEPEKLPAHMC_.WriteTo(ref output, _repeated_bEPEKLPAHMC_codec);
-      if (Source != global::CastoriceHoney.Server.Proto.GridFightEquipTrackSource.HnkkndhlognHlnmmmkheem) {
+      if (Source != global::March7thHoney.Proto.GridFightEquipTrackSource.HnkkndhlognHlnmmmkheem) {
         output.WriteRawTag(120);
         output.WriteEnum((int) Source);
       }
@@ -184,7 +184,7 @@ namespace CastoriceHoney.Server.Proto {
     public int CalculateSize() {
       int size = 0;
       size += bEPEKLPAHMC_.CalculateSize(_repeated_bEPEKLPAHMC_codec);
-      if (Source != global::CastoriceHoney.Server.Proto.GridFightEquipTrackSource.HnkkndhlognHlnmmmkheem) {
+      if (Source != global::March7thHoney.Proto.GridFightEquipTrackSource.HnkkndhlognHlnmmmkheem) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Source);
       }
       if (_unknownFields != null) {
@@ -200,7 +200,7 @@ namespace CastoriceHoney.Server.Proto {
         return;
       }
       bEPEKLPAHMC_.Add(other.bEPEKLPAHMC_);
-      if (other.Source != global::CastoriceHoney.Server.Proto.GridFightEquipTrackSource.HnkkndhlognHlnmmmkheem) {
+      if (other.Source != global::March7thHoney.Proto.GridFightEquipTrackSource.HnkkndhlognHlnmmmkheem) {
         Source = other.Source;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -227,7 +227,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 120: {
-            Source = (global::CastoriceHoney.Server.Proto.GridFightEquipTrackSource) input.ReadEnum();
+            Source = (global::March7thHoney.Proto.GridFightEquipTrackSource) input.ReadEnum();
             break;
           }
         }
@@ -254,7 +254,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 120: {
-            Source = (global::CastoriceHoney.Server.Proto.GridFightEquipTrackSource) input.ReadEnum();
+            Source = (global::March7thHoney.Proto.GridFightEquipTrackSource) input.ReadEnum();
             break;
           }
         }

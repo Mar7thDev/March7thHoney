@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Enums.Fight;
+namespace March7thHoney.Enums.Fight;
 
 public enum MarbleNetWorkMsgEnum
 {

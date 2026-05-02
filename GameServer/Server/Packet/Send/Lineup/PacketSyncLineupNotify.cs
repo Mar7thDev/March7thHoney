@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
-using LineupInfo = CastoriceHoney.Server.Database.Lineup.LineupInfo;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
+using LineupInfo = March7thHoney.Database.Lineup.LineupInfo;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Send.Lineup;
+namespace March7thHoney.GameServer.Server.Packet.Send.Lineup;
 
 public class PacketSyncLineupNotify : BasePacket
 {

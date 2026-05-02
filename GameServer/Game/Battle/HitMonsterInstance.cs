@@ -1,6 +1,6 @@
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Game.Battle;
+namespace March7thHoney.GameServer.Game.Battle;
 
 public class HitMonsterInstance(int monsterId, MonsterBattleType battleType)
 {

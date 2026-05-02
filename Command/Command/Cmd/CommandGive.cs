@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Internationalization;
+using March7thHoney.Data;
+using March7thHoney.Internationalization;
 
-namespace CastoriceHoney.Server.Command.Command.Cmd;
+namespace March7thHoney.Command.Command.Cmd;
 
 [CommandInfo("give", "Game.Command.Give.Desc", "Game.Command.Give.Usage", ["g"])]
 public class CommandGive : ICommand

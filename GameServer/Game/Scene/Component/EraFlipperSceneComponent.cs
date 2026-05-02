@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.EraFlipper;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.GameServer.Server.Packet.Send.EraFlipper;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Game.Scene.Component;
+namespace March7thHoney.GameServer.Game.Scene.Component;
 
 public class EraFlipperSceneComponent(SceneInstance scene) : BaseSceneComponent(scene)
 {

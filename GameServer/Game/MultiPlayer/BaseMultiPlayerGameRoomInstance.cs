@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.GameServer.Game.Lobby;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.GameServer.Game.Lobby;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Game.MultiPlayer;
+namespace March7thHoney.GameServer.Game.MultiPlayer;
 
 public abstract class BaseMultiPlayerGameRoomInstance(long roomId, LobbyRoomInstance parentLobby)
 {

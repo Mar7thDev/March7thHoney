@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Enums.Rogue;
+using March7thHoney.Enums.Rogue;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace CastoriceHoney.Server.Data.Custom;
+namespace March7thHoney.Data.Custom;
 
 public class RogueMiracleEffectConfig
 {

@@ -1,6 +1,6 @@
 using System.Runtime.CompilerServices;
 
-namespace CastoriceHoney.Server.Kcp.KcpSharp;
+namespace March7thHoney.Kcp.KcpSharp;
 
 internal sealed class KcpAcknowledgeList
 {

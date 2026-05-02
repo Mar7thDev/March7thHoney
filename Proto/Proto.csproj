@@ -4,8 +4,8 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <AssemblyName>CastoriceHoney.Proto</AssemblyName>
-    <RootNamespace>CastoriceHoney.Server.Proto</RootNamespace>
+    <AssemblyName>March7thHoney.Proto</AssemblyName>
+    <RootNamespace>March7thHoney.Proto</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

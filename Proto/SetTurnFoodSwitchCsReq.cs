@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from SetTurnFoodSwitchCsReq.proto</summary>
   public static partial class SetTurnFoodSwitchCsReqReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "KAhCMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNl",
             "cnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.TurnFoodSwitchReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.TurnFoodSwitchReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.SetTurnFoodSwitchCsReq), global::CastoriceHoney.Server.Proto.SetTurnFoodSwitchCsReq.Parser, new[]{ "EDDIOHMNNNB", "AMFLNLGBJGL" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetTurnFoodSwitchCsReq), global::March7thHoney.Proto.SetTurnFoodSwitchCsReq.Parser, new[]{ "EDDIOHMNNNB", "AMFLNLGBJGL" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.SetTurnFoodSwitchCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.SetTurnFoodSwitchCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -87,10 +87,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "EDDIOHMNNNB" field.</summary>
     public const int EDDIOHMNNNBFieldNumber = 3;
-    private global::CastoriceHoney.Server.Proto.TurnFoodSwitch eDDIOHMNNNB_ = global::CastoriceHoney.Server.Proto.TurnFoodSwitch.HindkodobaaPcpdhelpkem;
+    private global::March7thHoney.Proto.TurnFoodSwitch eDDIOHMNNNB_ = global::March7thHoney.Proto.TurnFoodSwitch.HindkodobaaPcpdhelpkem;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.TurnFoodSwitch EDDIOHMNNNB {
+    public global::March7thHoney.Proto.TurnFoodSwitch EDDIOHMNNNB {
       get { return eDDIOHMNNNB_; }
       set {
         eDDIOHMNNNB_ = value;
@@ -133,7 +133,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (EDDIOHMNNNB != global::CastoriceHoney.Server.Proto.TurnFoodSwitch.HindkodobaaPcpdhelpkem) hash ^= EDDIOHMNNNB.GetHashCode();
+      if (EDDIOHMNNNB != global::March7thHoney.Proto.TurnFoodSwitch.HindkodobaaPcpdhelpkem) hash ^= EDDIOHMNNNB.GetHashCode();
       if (AMFLNLGBJGL != false) hash ^= AMFLNLGBJGL.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -153,7 +153,7 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (EDDIOHMNNNB != global::CastoriceHoney.Server.Proto.TurnFoodSwitch.HindkodobaaPcpdhelpkem) {
+      if (EDDIOHMNNNB != global::March7thHoney.Proto.TurnFoodSwitch.HindkodobaaPcpdhelpkem) {
         output.WriteRawTag(24);
         output.WriteEnum((int) EDDIOHMNNNB);
       }
@@ -171,7 +171,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (EDDIOHMNNNB != global::CastoriceHoney.Server.Proto.TurnFoodSwitch.HindkodobaaPcpdhelpkem) {
+      if (EDDIOHMNNNB != global::March7thHoney.Proto.TurnFoodSwitch.HindkodobaaPcpdhelpkem) {
         output.WriteRawTag(24);
         output.WriteEnum((int) EDDIOHMNNNB);
       }
@@ -189,7 +189,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (EDDIOHMNNNB != global::CastoriceHoney.Server.Proto.TurnFoodSwitch.HindkodobaaPcpdhelpkem) {
+      if (EDDIOHMNNNB != global::March7thHoney.Proto.TurnFoodSwitch.HindkodobaaPcpdhelpkem) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) EDDIOHMNNNB);
       }
       if (AMFLNLGBJGL != false) {
@@ -207,7 +207,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.EDDIOHMNNNB != global::CastoriceHoney.Server.Proto.TurnFoodSwitch.HindkodobaaPcpdhelpkem) {
+      if (other.EDDIOHMNNNB != global::March7thHoney.Proto.TurnFoodSwitch.HindkodobaaPcpdhelpkem) {
         EDDIOHMNNNB = other.EDDIOHMNNNB;
       }
       if (other.AMFLNLGBJGL != false) {
@@ -233,7 +233,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 24: {
-            EDDIOHMNNNB = (global::CastoriceHoney.Server.Proto.TurnFoodSwitch) input.ReadEnum();
+            EDDIOHMNNNB = (global::March7thHoney.Proto.TurnFoodSwitch) input.ReadEnum();
             break;
           }
           case 48: {
@@ -260,7 +260,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 24: {
-            EDDIOHMNNNB = (global::CastoriceHoney.Server.Proto.TurnFoodSwitch) input.ReadEnum();
+            EDDIOHMNNNB = (global::March7thHoney.Proto.TurnFoodSwitch) input.ReadEnum();
             break;
           }
           case 48: {

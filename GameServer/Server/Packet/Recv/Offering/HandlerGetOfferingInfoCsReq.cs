@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.Database.Inventory;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Offering;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Database.Inventory;
+using March7thHoney.GameServer.Server.Packet.Send.Offering;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Offering;
+namespace March7thHoney.GameServer.Server.Packet.Recv.Offering;
 
 [Opcode(CmdIds.GetOfferingInfoCsReq)]
 public class HandlerGetOfferingInfoCsReq : Handler

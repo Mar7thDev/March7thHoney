@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using System.Threading.Tasks.Sources;
 
-namespace CastoriceHoney.Server.Kcp.KcpSharp;
+namespace March7thHoney.Kcp.KcpSharp;
 
 internal class AsyncAutoResetEvent<T> : IValueTaskSource<T>
 {

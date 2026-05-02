@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from SceneMapInfo.proto</summary>
   public static partial class SceneMapInfoReflection {
@@ -44,9 +44,9 @@ namespace CastoriceHoney.Server.Proto {
             "AiABKAU6AjgBQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VI",
             "b25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ChestInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.MazeGroupReflection.Descriptor, global::CastoriceHoney.Server.Proto.MazePropStateReflection.Descriptor, global::CastoriceHoney.Server.Proto.MissionStatusBySceneInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.PLDHJGAEEAEReflection.Descriptor, global::CastoriceHoney.Server.Proto.SceneIdentifierReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChestInfoReflection.Descriptor, global::March7thHoney.Proto.MazeGroupReflection.Descriptor, global::March7thHoney.Proto.MazePropStateReflection.Descriptor, global::March7thHoney.Proto.MissionStatusBySceneInfoReflection.Descriptor, global::March7thHoney.Proto.PLDHJGAEEAEReflection.Descriptor, global::March7thHoney.Proto.SceneIdentifierReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.SceneMapInfo), global::CastoriceHoney.Server.Proto.SceneMapInfo.Parser, new[]{ "EntryId", "FloorSavedData", "CurMapEntryId", "MazeGroupList", "MazePropList", "FloorId", "DimensionId", "LightenSectionList", "ChestList", "UnlockTeleportList", "Retcode", "ChestMonsterList", "SceneIdentifier", "OpenedChestIdList", "ClientGroupMissionInfo", "FinishedChestMonsterIdList" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneMapInfo), global::March7thHoney.Proto.SceneMapInfo.Parser, new[]{ "EntryId", "FloorSavedData", "CurMapEntryId", "MazeGroupList", "MazePropList", "FloorId", "DimensionId", "LightenSectionList", "ChestList", "UnlockTeleportList", "Retcode", "ChestMonsterList", "SceneIdentifier", "OpenedChestIdList", "ClientGroupMissionInfo", "FinishedChestMonsterIdList" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -68,7 +68,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.SceneMapInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.SceneMapInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -150,23 +150,23 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "maze_group_list" field.</summary>
     public const int MazeGroupListFieldNumber = 5;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.MazeGroup> _repeated_mazeGroupList_codec
-        = pb::FieldCodec.ForMessage(42, global::CastoriceHoney.Server.Proto.MazeGroup.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MazeGroup> mazeGroupList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MazeGroup>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MazeGroup> _repeated_mazeGroupList_codec
+        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.MazeGroup.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MazeGroup> mazeGroupList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MazeGroup>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MazeGroup> MazeGroupList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.MazeGroup> MazeGroupList {
       get { return mazeGroupList_; }
     }
 
     /// <summary>Field number for the "maze_prop_list" field.</summary>
     public const int MazePropListFieldNumber = 6;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.MazePropState> _repeated_mazePropList_codec
-        = pb::FieldCodec.ForMessage(50, global::CastoriceHoney.Server.Proto.MazePropState.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MazePropState> mazePropList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MazePropState>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MazePropState> _repeated_mazePropList_codec
+        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.MazePropState.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MazePropState> mazePropList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MazePropState>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MazePropState> MazePropList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.MazePropState> MazePropList {
       get { return mazePropList_; }
     }
 
@@ -207,12 +207,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "chest_list" field.</summary>
     public const int ChestListFieldNumber = 12;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ChestInfo> _repeated_chestList_codec
-        = pb::FieldCodec.ForMessage(98, global::CastoriceHoney.Server.Proto.ChestInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ChestInfo> chestList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ChestInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChestInfo> _repeated_chestList_codec
+        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.ChestInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChestInfo> chestList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChestInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ChestInfo> ChestList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ChestInfo> ChestList {
       get { return chestList_; }
     }
 
@@ -241,21 +241,21 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "chest_monster_list" field.</summary>
     public const int ChestMonsterListFieldNumber = 15;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.PLDHJGAEEAE> _repeated_chestMonsterList_codec
-        = pb::FieldCodec.ForMessage(122, global::CastoriceHoney.Server.Proto.PLDHJGAEEAE.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.PLDHJGAEEAE> chestMonsterList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.PLDHJGAEEAE>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.PLDHJGAEEAE> _repeated_chestMonsterList_codec
+        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.PLDHJGAEEAE.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.PLDHJGAEEAE> chestMonsterList_ = new pbc::RepeatedField<global::March7thHoney.Proto.PLDHJGAEEAE>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.PLDHJGAEEAE> ChestMonsterList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.PLDHJGAEEAE> ChestMonsterList {
       get { return chestMonsterList_; }
     }
 
     /// <summary>Field number for the "scene_identifier" field.</summary>
     public const int SceneIdentifierFieldNumber = 383;
-    private global::CastoriceHoney.Server.Proto.SceneIdentifier sceneIdentifier_;
+    private global::March7thHoney.Proto.SceneIdentifier sceneIdentifier_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.SceneIdentifier SceneIdentifier {
+    public global::March7thHoney.Proto.SceneIdentifier SceneIdentifier {
       get { return sceneIdentifier_; }
       set {
         sceneIdentifier_ = value;
@@ -275,10 +275,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "client_group_mission_info" field.</summary>
     public const int ClientGroupMissionInfoFieldNumber = 893;
-    private global::CastoriceHoney.Server.Proto.MissionStatusBySceneInfo clientGroupMissionInfo_;
+    private global::March7thHoney.Proto.MissionStatusBySceneInfo clientGroupMissionInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.MissionStatusBySceneInfo ClientGroupMissionInfo {
+    public global::March7thHoney.Proto.MissionStatusBySceneInfo ClientGroupMissionInfo {
       get { return clientGroupMissionInfo_; }
       set {
         clientGroupMissionInfo_ = value;
@@ -528,14 +528,14 @@ namespace CastoriceHoney.Server.Proto {
       chestMonsterList_.Add(other.chestMonsterList_);
       if (other.sceneIdentifier_ != null) {
         if (sceneIdentifier_ == null) {
-          SceneIdentifier = new global::CastoriceHoney.Server.Proto.SceneIdentifier();
+          SceneIdentifier = new global::March7thHoney.Proto.SceneIdentifier();
         }
         SceneIdentifier.MergeFrom(other.SceneIdentifier);
       }
       openedChestIdList_.Add(other.openedChestIdList_);
       if (other.clientGroupMissionInfo_ != null) {
         if (clientGroupMissionInfo_ == null) {
-          ClientGroupMissionInfo = new global::CastoriceHoney.Server.Proto.MissionStatusBySceneInfo();
+          ClientGroupMissionInfo = new global::March7thHoney.Proto.MissionStatusBySceneInfo();
         }
         ClientGroupMissionInfo.MergeFrom(other.ClientGroupMissionInfo);
       }
@@ -611,7 +611,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 3066: {
             if (sceneIdentifier_ == null) {
-              SceneIdentifier = new global::CastoriceHoney.Server.Proto.SceneIdentifier();
+              SceneIdentifier = new global::March7thHoney.Proto.SceneIdentifier();
             }
             input.ReadMessage(SceneIdentifier);
             break;
@@ -623,7 +623,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 7146: {
             if (clientGroupMissionInfo_ == null) {
-              ClientGroupMissionInfo = new global::CastoriceHoney.Server.Proto.MissionStatusBySceneInfo();
+              ClientGroupMissionInfo = new global::March7thHoney.Proto.MissionStatusBySceneInfo();
             }
             input.ReadMessage(ClientGroupMissionInfo);
             break;
@@ -704,7 +704,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 3066: {
             if (sceneIdentifier_ == null) {
-              SceneIdentifier = new global::CastoriceHoney.Server.Proto.SceneIdentifier();
+              SceneIdentifier = new global::March7thHoney.Proto.SceneIdentifier();
             }
             input.ReadMessage(SceneIdentifier);
             break;
@@ -716,7 +716,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 7146: {
             if (clientGroupMissionInfo_ == null) {
-              ClientGroupMissionInfo = new global::CastoriceHoney.Server.Proto.MissionStatusBySceneInfo();
+              ClientGroupMissionInfo = new global::March7thHoney.Proto.MissionStatusBySceneInfo();
             }
             input.ReadMessage(ClientGroupMissionInfo);
             break;

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from StartMatchCsReq.proto</summary>
   public static partial class StartMatchCsReqReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "TUJGUE5GSxgOIAEoDjIOLkZpZ2h0R2FtZU1vZGVCMwoTZW11Lmx1bmFyY29y",
             "ZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.FightGameModeReflection.Descriptor, global::CastoriceHoney.Server.Proto.LobbyGameExtInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.FightGameModeReflection.Descriptor, global::March7thHoney.Proto.LobbyGameExtInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.StartMatchCsReq), global::CastoriceHoney.Server.Proto.StartMatchCsReq.Parser, new[]{ "JHCJMKDDNNF", "PLOBMBFPNFK" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartMatchCsReq), global::March7thHoney.Proto.StartMatchCsReq.Parser, new[]{ "JHCJMKDDNNF", "PLOBMBFPNFK" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.StartMatchCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.StartMatchCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -87,10 +87,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "JHCJMKDDNNF" field.</summary>
     public const int JHCJMKDDNNFFieldNumber = 8;
-    private global::CastoriceHoney.Server.Proto.LobbyGameExtInfo jHCJMKDDNNF_;
+    private global::March7thHoney.Proto.LobbyGameExtInfo jHCJMKDDNNF_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.LobbyGameExtInfo JHCJMKDDNNF {
+    public global::March7thHoney.Proto.LobbyGameExtInfo JHCJMKDDNNF {
       get { return jHCJMKDDNNF_; }
       set {
         jHCJMKDDNNF_ = value;
@@ -99,10 +99,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "PLOBMBFPNFK" field.</summary>
     public const int PLOBMBFPNFKFieldNumber = 14;
-    private global::CastoriceHoney.Server.Proto.FightGameMode pLOBMBFPNFK_ = global::CastoriceHoney.Server.Proto.FightGameMode.EjimiogaoklPcpdhelpkem;
+    private global::March7thHoney.Proto.FightGameMode pLOBMBFPNFK_ = global::March7thHoney.Proto.FightGameMode.EjimiogaoklPcpdhelpkem;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.FightGameMode PLOBMBFPNFK {
+    public global::March7thHoney.Proto.FightGameMode PLOBMBFPNFK {
       get { return pLOBMBFPNFK_; }
       set {
         pLOBMBFPNFK_ = value;
@@ -134,7 +134,7 @@ namespace CastoriceHoney.Server.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (jHCJMKDDNNF_ != null) hash ^= JHCJMKDDNNF.GetHashCode();
-      if (PLOBMBFPNFK != global::CastoriceHoney.Server.Proto.FightGameMode.EjimiogaoklPcpdhelpkem) hash ^= PLOBMBFPNFK.GetHashCode();
+      if (PLOBMBFPNFK != global::March7thHoney.Proto.FightGameMode.EjimiogaoklPcpdhelpkem) hash ^= PLOBMBFPNFK.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -157,7 +157,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(66);
         output.WriteMessage(JHCJMKDDNNF);
       }
-      if (PLOBMBFPNFK != global::CastoriceHoney.Server.Proto.FightGameMode.EjimiogaoklPcpdhelpkem) {
+      if (PLOBMBFPNFK != global::March7thHoney.Proto.FightGameMode.EjimiogaoklPcpdhelpkem) {
         output.WriteRawTag(112);
         output.WriteEnum((int) PLOBMBFPNFK);
       }
@@ -175,7 +175,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(66);
         output.WriteMessage(JHCJMKDDNNF);
       }
-      if (PLOBMBFPNFK != global::CastoriceHoney.Server.Proto.FightGameMode.EjimiogaoklPcpdhelpkem) {
+      if (PLOBMBFPNFK != global::March7thHoney.Proto.FightGameMode.EjimiogaoklPcpdhelpkem) {
         output.WriteRawTag(112);
         output.WriteEnum((int) PLOBMBFPNFK);
       }
@@ -192,7 +192,7 @@ namespace CastoriceHoney.Server.Proto {
       if (jHCJMKDDNNF_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(JHCJMKDDNNF);
       }
-      if (PLOBMBFPNFK != global::CastoriceHoney.Server.Proto.FightGameMode.EjimiogaoklPcpdhelpkem) {
+      if (PLOBMBFPNFK != global::March7thHoney.Proto.FightGameMode.EjimiogaoklPcpdhelpkem) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) PLOBMBFPNFK);
       }
       if (_unknownFields != null) {
@@ -209,11 +209,11 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.jHCJMKDDNNF_ != null) {
         if (jHCJMKDDNNF_ == null) {
-          JHCJMKDDNNF = new global::CastoriceHoney.Server.Proto.LobbyGameExtInfo();
+          JHCJMKDDNNF = new global::March7thHoney.Proto.LobbyGameExtInfo();
         }
         JHCJMKDDNNF.MergeFrom(other.JHCJMKDDNNF);
       }
-      if (other.PLOBMBFPNFK != global::CastoriceHoney.Server.Proto.FightGameMode.EjimiogaoklPcpdhelpkem) {
+      if (other.PLOBMBFPNFK != global::March7thHoney.Proto.FightGameMode.EjimiogaoklPcpdhelpkem) {
         PLOBMBFPNFK = other.PLOBMBFPNFK;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -237,13 +237,13 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 66: {
             if (jHCJMKDDNNF_ == null) {
-              JHCJMKDDNNF = new global::CastoriceHoney.Server.Proto.LobbyGameExtInfo();
+              JHCJMKDDNNF = new global::March7thHoney.Proto.LobbyGameExtInfo();
             }
             input.ReadMessage(JHCJMKDDNNF);
             break;
           }
           case 112: {
-            PLOBMBFPNFK = (global::CastoriceHoney.Server.Proto.FightGameMode) input.ReadEnum();
+            PLOBMBFPNFK = (global::March7thHoney.Proto.FightGameMode) input.ReadEnum();
             break;
           }
         }
@@ -267,13 +267,13 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 66: {
             if (jHCJMKDDNNF_ == null) {
-              JHCJMKDDNNF = new global::CastoriceHoney.Server.Proto.LobbyGameExtInfo();
+              JHCJMKDDNNF = new global::March7thHoney.Proto.LobbyGameExtInfo();
             }
             input.ReadMessage(JHCJMKDDNNF);
             break;
           }
           case 112: {
-            PLOBMBFPNFK = (global::CastoriceHoney.Server.Proto.FightGameMode) input.ReadEnum();
+            PLOBMBFPNFK = (global::March7thHoney.Proto.FightGameMode) input.ReadEnum();
             break;
           }
         }

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from TrialActivityDataChangeScNotify.proto</summary>
   public static partial class TrialActivityDataChangeScNotifyReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "MwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZl",
             "ci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.NNFJAOJKKFOReflection.Descriptor, global::CastoriceHoney.Server.Proto.TrialActivityInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.NNFJAOJKKFOReflection.Descriptor, global::March7thHoney.Proto.TrialActivityInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.TrialActivityDataChangeScNotify), global::CastoriceHoney.Server.Proto.TrialActivityDataChangeScNotify.Parser, new[]{ "MANGLIPKMDI", "TrialActivityInfo", "BLDLBKLAIAL" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TrialActivityDataChangeScNotify), global::March7thHoney.Proto.TrialActivityDataChangeScNotify.Parser, new[]{ "MANGLIPKMDI", "TrialActivityInfo", "BLDLBKLAIAL" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.TrialActivityDataChangeScNotifyReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.TrialActivityDataChangeScNotifyReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -90,21 +90,21 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "MANGLIPKMDI" field.</summary>
     public const int MANGLIPKMDIFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.NNFJAOJKKFO> _repeated_mANGLIPKMDI_codec
-        = pb::FieldCodec.ForMessage(26, global::CastoriceHoney.Server.Proto.NNFJAOJKKFO.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.NNFJAOJKKFO> mANGLIPKMDI_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.NNFJAOJKKFO>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.NNFJAOJKKFO> _repeated_mANGLIPKMDI_codec
+        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.NNFJAOJKKFO.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.NNFJAOJKKFO> mANGLIPKMDI_ = new pbc::RepeatedField<global::March7thHoney.Proto.NNFJAOJKKFO>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.NNFJAOJKKFO> MANGLIPKMDI {
+    public pbc::RepeatedField<global::March7thHoney.Proto.NNFJAOJKKFO> MANGLIPKMDI {
       get { return mANGLIPKMDI_; }
     }
 
     /// <summary>Field number for the "trial_activity_info" field.</summary>
     public const int TrialActivityInfoFieldNumber = 10;
-    private global::CastoriceHoney.Server.Proto.TrialActivityInfo trialActivityInfo_;
+    private global::March7thHoney.Proto.TrialActivityInfo trialActivityInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.TrialActivityInfo TrialActivityInfo {
+    public global::March7thHoney.Proto.TrialActivityInfo TrialActivityInfo {
       get { return trialActivityInfo_; }
       set {
         trialActivityInfo_ = value;
@@ -220,7 +220,7 @@ namespace CastoriceHoney.Server.Proto {
       mANGLIPKMDI_.Add(other.mANGLIPKMDI_);
       if (other.trialActivityInfo_ != null) {
         if (trialActivityInfo_ == null) {
-          TrialActivityInfo = new global::CastoriceHoney.Server.Proto.TrialActivityInfo();
+          TrialActivityInfo = new global::March7thHoney.Proto.TrialActivityInfo();
         }
         TrialActivityInfo.MergeFrom(other.TrialActivityInfo);
       }
@@ -250,7 +250,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 82: {
             if (trialActivityInfo_ == null) {
-              TrialActivityInfo = new global::CastoriceHoney.Server.Proto.TrialActivityInfo();
+              TrialActivityInfo = new global::March7thHoney.Proto.TrialActivityInfo();
             }
             input.ReadMessage(TrialActivityInfo);
             break;
@@ -285,7 +285,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 82: {
             if (trialActivityInfo_ == null) {
-              TrialActivityInfo = new global::CastoriceHoney.Server.Proto.TrialActivityInfo();
+              TrialActivityInfo = new global::March7thHoney.Proto.TrialActivityInfo();
             }
             input.ReadMessage(TrialActivityInfo);
             break;

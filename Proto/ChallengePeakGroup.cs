@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from ChallengePeakGroup.proto</summary>
   public static partial class ChallengePeakGroupReflection {
@@ -36,9 +36,9 @@ namespace CastoriceHoney.Server.Proto {
             "cnMYDiABKA1CMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhv",
             "bmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ChallengePeakReflection.Descriptor, global::CastoriceHoney.Server.Proto.ChallengePeakBossReflection.Descriptor, global::CastoriceHoney.Server.Proto.FCPEKKEEKFIReflection.Descriptor, global::CastoriceHoney.Server.Proto.WaitConfirmDataReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChallengePeakReflection.Descriptor, global::March7thHoney.Proto.ChallengePeakBossReflection.Descriptor, global::March7thHoney.Proto.FCPEKKEEKFIReflection.Descriptor, global::March7thHoney.Proto.WaitConfirmDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ChallengePeakGroup), global::CastoriceHoney.Server.Proto.ChallengePeakGroup.Parser, new[]{ "PeakGroupId", "CountOfPeaks", "WaitConfirmData", "PeakBoss", "Peaks", "DisableHardMode", "PLJLPOHJHEE", "TakenStarRewards", "ObtainedStars" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakGroup), global::March7thHoney.Proto.ChallengePeakGroup.Parser, new[]{ "PeakGroupId", "CountOfPeaks", "WaitConfirmData", "PeakBoss", "Peaks", "DisableHardMode", "PLJLPOHJHEE", "TakenStarRewards", "ObtainedStars" }, null, null, null, null)
           }));
     }
     #endregion
@@ -60,7 +60,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ChallengePeakGroupReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ChallengePeakGroupReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -124,10 +124,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "wait_confirm_data" field.</summary>
     public const int WaitConfirmDataFieldNumber = 4;
-    private global::CastoriceHoney.Server.Proto.WaitConfirmData waitConfirmData_;
+    private global::March7thHoney.Proto.WaitConfirmData waitConfirmData_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.WaitConfirmData WaitConfirmData {
+    public global::March7thHoney.Proto.WaitConfirmData WaitConfirmData {
       get { return waitConfirmData_; }
       set {
         waitConfirmData_ = value;
@@ -136,10 +136,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "peak_boss" field.</summary>
     public const int PeakBossFieldNumber = 5;
-    private global::CastoriceHoney.Server.Proto.ChallengePeakBoss peakBoss_;
+    private global::March7thHoney.Proto.ChallengePeakBoss peakBoss_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ChallengePeakBoss PeakBoss {
+    public global::March7thHoney.Proto.ChallengePeakBoss PeakBoss {
       get { return peakBoss_; }
       set {
         peakBoss_ = value;
@@ -148,12 +148,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "peaks" field.</summary>
     public const int PeaksFieldNumber = 6;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ChallengePeak> _repeated_peaks_codec
-        = pb::FieldCodec.ForMessage(50, global::CastoriceHoney.Server.Proto.ChallengePeak.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ChallengePeak> peaks_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ChallengePeak>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChallengePeak> _repeated_peaks_codec
+        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.ChallengePeak.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeak> peaks_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeak>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ChallengePeak> Peaks {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeak> Peaks {
       get { return peaks_; }
     }
 
@@ -171,10 +171,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "PLJLPOHJHEE" field.</summary>
     public const int PLJLPOHJHEEFieldNumber = 11;
-    private global::CastoriceHoney.Server.Proto.FCPEKKEEKFI pLJLPOHJHEE_;
+    private global::March7thHoney.Proto.FCPEKKEEKFI pLJLPOHJHEE_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.FCPEKKEEKFI PLJLPOHJHEE {
+    public global::March7thHoney.Proto.FCPEKKEEKFI PLJLPOHJHEE {
       get { return pLJLPOHJHEE_; }
       set {
         pLJLPOHJHEE_ = value;
@@ -385,13 +385,13 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.waitConfirmData_ != null) {
         if (waitConfirmData_ == null) {
-          WaitConfirmData = new global::CastoriceHoney.Server.Proto.WaitConfirmData();
+          WaitConfirmData = new global::March7thHoney.Proto.WaitConfirmData();
         }
         WaitConfirmData.MergeFrom(other.WaitConfirmData);
       }
       if (other.peakBoss_ != null) {
         if (peakBoss_ == null) {
-          PeakBoss = new global::CastoriceHoney.Server.Proto.ChallengePeakBoss();
+          PeakBoss = new global::March7thHoney.Proto.ChallengePeakBoss();
         }
         PeakBoss.MergeFrom(other.PeakBoss);
       }
@@ -401,7 +401,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.pLJLPOHJHEE_ != null) {
         if (pLJLPOHJHEE_ == null) {
-          PLJLPOHJHEE = new global::CastoriceHoney.Server.Proto.FCPEKKEEKFI();
+          PLJLPOHJHEE = new global::March7thHoney.Proto.FCPEKKEEKFI();
         }
         PLJLPOHJHEE.MergeFrom(other.PLJLPOHJHEE);
       }
@@ -438,14 +438,14 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 34: {
             if (waitConfirmData_ == null) {
-              WaitConfirmData = new global::CastoriceHoney.Server.Proto.WaitConfirmData();
+              WaitConfirmData = new global::March7thHoney.Proto.WaitConfirmData();
             }
             input.ReadMessage(WaitConfirmData);
             break;
           }
           case 42: {
             if (peakBoss_ == null) {
-              PeakBoss = new global::CastoriceHoney.Server.Proto.ChallengePeakBoss();
+              PeakBoss = new global::March7thHoney.Proto.ChallengePeakBoss();
             }
             input.ReadMessage(PeakBoss);
             break;
@@ -460,7 +460,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 90: {
             if (pLJLPOHJHEE_ == null) {
-              PLJLPOHJHEE = new global::CastoriceHoney.Server.Proto.FCPEKKEEKFI();
+              PLJLPOHJHEE = new global::March7thHoney.Proto.FCPEKKEEKFI();
             }
             input.ReadMessage(PLJLPOHJHEE);
             break;
@@ -503,14 +503,14 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 34: {
             if (waitConfirmData_ == null) {
-              WaitConfirmData = new global::CastoriceHoney.Server.Proto.WaitConfirmData();
+              WaitConfirmData = new global::March7thHoney.Proto.WaitConfirmData();
             }
             input.ReadMessage(WaitConfirmData);
             break;
           }
           case 42: {
             if (peakBoss_ == null) {
-              PeakBoss = new global::CastoriceHoney.Server.Proto.ChallengePeakBoss();
+              PeakBoss = new global::March7thHoney.Proto.ChallengePeakBoss();
             }
             input.ReadMessage(PeakBoss);
             break;
@@ -525,7 +525,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 90: {
             if (pLJLPOHJHEE_ == null) {
-              PLJLPOHJHEE = new global::CastoriceHoney.Server.Proto.FCPEKKEEKFI();
+              PLJLPOHJHEE = new global::March7thHoney.Proto.FCPEKKEEKFI();
             }
             input.ReadMessage(PLJLPOHJHEE);
             break;

@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.Enums.Mission;
-using CastoriceHoney.Server.Enums.Quest;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Enums.Mission;
+using March7thHoney.Enums.Quest;
+using March7thHoney.Util;
 using Newtonsoft.Json;
 
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("FinishWay.json,FinishWayRogue.json,RogueDLCFinishWay.json", true)]
 public class FinishWayExcel : ExcelResource

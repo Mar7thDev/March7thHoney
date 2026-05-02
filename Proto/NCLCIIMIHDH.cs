@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from NCLCIIMIHDH.proto</summary>
   public static partial class NCLCIIMIHDHReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "bGVuZ2VQZWFrUmVjb3JkTW9iRGF0YUIzChNlbXUubHVuYXJjb3JlLnByb3Rv",
             "qgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.PlayerChallengePeakRecordBossDataReflection.Descriptor, global::CastoriceHoney.Server.Proto.PlayerChallengePeakRecordMobDataReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.PlayerChallengePeakRecordBossDataReflection.Descriptor, global::March7thHoney.Proto.PlayerChallengePeakRecordMobDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.NCLCIIMIHDH), global::CastoriceHoney.Server.Proto.NCLCIIMIHDH.Parser, new[]{ "GroupId", "NFCLJMBLFMK", "DDJIDIKHANH" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NCLCIIMIHDH), global::March7thHoney.Proto.NCLCIIMIHDH.Parser, new[]{ "GroupId", "NFCLJMBLFMK", "DDJIDIKHANH" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.NCLCIIMIHDHReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.NCLCIIMIHDHReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -102,10 +102,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "NFCLJMBLFMK" field.</summary>
     public const int NFCLJMBLFMKFieldNumber = 3;
-    private global::CastoriceHoney.Server.Proto.PlayerChallengePeakRecordBossData nFCLJMBLFMK_;
+    private global::March7thHoney.Proto.PlayerChallengePeakRecordBossData nFCLJMBLFMK_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.PlayerChallengePeakRecordBossData NFCLJMBLFMK {
+    public global::March7thHoney.Proto.PlayerChallengePeakRecordBossData NFCLJMBLFMK {
       get { return nFCLJMBLFMK_; }
       set {
         nFCLJMBLFMK_ = value;
@@ -114,12 +114,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "DDJIDIKHANH" field.</summary>
     public const int DDJIDIKHANHFieldNumber = 11;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.PlayerChallengePeakRecordMobData> _repeated_dDJIDIKHANH_codec
-        = pb::FieldCodec.ForMessage(90, global::CastoriceHoney.Server.Proto.PlayerChallengePeakRecordMobData.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.PlayerChallengePeakRecordMobData> dDJIDIKHANH_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.PlayerChallengePeakRecordMobData>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.PlayerChallengePeakRecordMobData> _repeated_dDJIDIKHANH_codec
+        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.PlayerChallengePeakRecordMobData.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.PlayerChallengePeakRecordMobData> dDJIDIKHANH_ = new pbc::RepeatedField<global::March7thHoney.Proto.PlayerChallengePeakRecordMobData>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.PlayerChallengePeakRecordMobData> DDJIDIKHANH {
+    public pbc::RepeatedField<global::March7thHoney.Proto.PlayerChallengePeakRecordMobData> DDJIDIKHANH {
       get { return dDJIDIKHANH_; }
     }
 
@@ -231,7 +231,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.nFCLJMBLFMK_ != null) {
         if (nFCLJMBLFMK_ == null) {
-          NFCLJMBLFMK = new global::CastoriceHoney.Server.Proto.PlayerChallengePeakRecordBossData();
+          NFCLJMBLFMK = new global::March7thHoney.Proto.PlayerChallengePeakRecordBossData();
         }
         NFCLJMBLFMK.MergeFrom(other.NFCLJMBLFMK);
       }
@@ -261,7 +261,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 26: {
             if (nFCLJMBLFMK_ == null) {
-              NFCLJMBLFMK = new global::CastoriceHoney.Server.Proto.PlayerChallengePeakRecordBossData();
+              NFCLJMBLFMK = new global::March7thHoney.Proto.PlayerChallengePeakRecordBossData();
             }
             input.ReadMessage(NFCLJMBLFMK);
             break;
@@ -295,7 +295,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 26: {
             if (nFCLJMBLFMK_ == null) {
-              NFCLJMBLFMK = new global::CastoriceHoney.Server.Proto.PlayerChallengePeakRecordBossData();
+              NFCLJMBLFMK = new global::March7thHoney.Proto.PlayerChallengePeakRecordBossData();
             }
             input.ReadMessage(NFCLJMBLFMK);
             break;

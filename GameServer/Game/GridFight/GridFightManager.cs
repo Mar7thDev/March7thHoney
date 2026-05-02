@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.GameServer.Game.Rogue;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Data;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Game.Rogue;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Game.GridFight;
+namespace March7thHoney.GameServer.Game.GridFight;
 
 public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
 {

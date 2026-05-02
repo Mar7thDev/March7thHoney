@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from MGOMBDGDGCP.proto</summary>
   public static partial class MGOMBDGDGCPReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "c2NvcmUYDSABKA1CMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3Rvcmlj",
             "ZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.BattleEndStatusReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.BattleEndStatusReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.MGOMBDGDGCP), global::CastoriceHoney.Server.Proto.MGOMBDGDGCP.Parser, new[]{ "ScoreId", "TotalDamage", "PDBNGNABDJI", "ACKKACCMMIM", "EndStatus", "AGJGLGBCMGF", "StageId", "MaxScore" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MGOMBDGDGCP), global::March7thHoney.Proto.MGOMBDGDGCP.Parser, new[]{ "ScoreId", "TotalDamage", "PDBNGNABDJI", "ACKKACCMMIM", "EndStatus", "AGJGLGBCMGF", "StageId", "MaxScore" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.MGOMBDGDGCPReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.MGOMBDGDGCPReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -143,10 +143,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "end_status" field.</summary>
     public const int EndStatusFieldNumber = 10;
-    private global::CastoriceHoney.Server.Proto.BattleEndStatus endStatus_ = global::CastoriceHoney.Server.Proto.BattleEndStatus.BattleEndNone;
+    private global::March7thHoney.Proto.BattleEndStatus endStatus_ = global::March7thHoney.Proto.BattleEndStatus.BattleEndNone;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.BattleEndStatus EndStatus {
+    public global::March7thHoney.Proto.BattleEndStatus EndStatus {
       get { return endStatus_; }
       set {
         endStatus_ = value;
@@ -223,7 +223,7 @@ namespace CastoriceHoney.Server.Proto {
       if (TotalDamage != 0) hash ^= TotalDamage.GetHashCode();
       if (PDBNGNABDJI != 0) hash ^= PDBNGNABDJI.GetHashCode();
       if (ACKKACCMMIM != 0) hash ^= ACKKACCMMIM.GetHashCode();
-      if (EndStatus != global::CastoriceHoney.Server.Proto.BattleEndStatus.BattleEndNone) hash ^= EndStatus.GetHashCode();
+      if (EndStatus != global::March7thHoney.Proto.BattleEndStatus.BattleEndNone) hash ^= EndStatus.GetHashCode();
       if (AGJGLGBCMGF != 0) hash ^= AGJGLGBCMGF.GetHashCode();
       if (StageId != 0) hash ^= StageId.GetHashCode();
       if (MaxScore != 0) hash ^= MaxScore.GetHashCode();
@@ -261,7 +261,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(56);
         output.WriteUInt32(ACKKACCMMIM);
       }
-      if (EndStatus != global::CastoriceHoney.Server.Proto.BattleEndStatus.BattleEndNone) {
+      if (EndStatus != global::March7thHoney.Proto.BattleEndStatus.BattleEndNone) {
         output.WriteRawTag(80);
         output.WriteEnum((int) EndStatus);
       }
@@ -303,7 +303,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(56);
         output.WriteUInt32(ACKKACCMMIM);
       }
-      if (EndStatus != global::CastoriceHoney.Server.Proto.BattleEndStatus.BattleEndNone) {
+      if (EndStatus != global::March7thHoney.Proto.BattleEndStatus.BattleEndNone) {
         output.WriteRawTag(80);
         output.WriteEnum((int) EndStatus);
       }
@@ -341,7 +341,7 @@ namespace CastoriceHoney.Server.Proto {
       if (ACKKACCMMIM != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ACKKACCMMIM);
       }
-      if (EndStatus != global::CastoriceHoney.Server.Proto.BattleEndStatus.BattleEndNone) {
+      if (EndStatus != global::March7thHoney.Proto.BattleEndStatus.BattleEndNone) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) EndStatus);
       }
       if (AGJGLGBCMGF != 0) {
@@ -377,7 +377,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other.ACKKACCMMIM != 0) {
         ACKKACCMMIM = other.ACKKACCMMIM;
       }
-      if (other.EndStatus != global::CastoriceHoney.Server.Proto.BattleEndStatus.BattleEndNone) {
+      if (other.EndStatus != global::March7thHoney.Proto.BattleEndStatus.BattleEndNone) {
         EndStatus = other.EndStatus;
       }
       if (other.AGJGLGBCMGF != 0) {
@@ -425,7 +425,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 80: {
-            EndStatus = (global::CastoriceHoney.Server.Proto.BattleEndStatus) input.ReadEnum();
+            EndStatus = (global::March7thHoney.Proto.BattleEndStatus) input.ReadEnum();
             break;
           }
           case 88: {
@@ -476,7 +476,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 80: {
-            EndStatus = (global::CastoriceHoney.Server.Proto.BattleEndStatus) input.ReadEnum();
+            EndStatus = (global::March7thHoney.Proto.BattleEndStatus) input.ReadEnum();
             break;
           }
           case 88: {

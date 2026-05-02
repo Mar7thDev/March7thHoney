@@ -1,6 +1,6 @@
 using SqlSugar;
 
-namespace CastoriceHoney.Server.Database.Gacha;
+namespace March7thHoney.Database.Gacha;
 
 [SugarTable("Gacha")]
 public class GachaData : BaseDatabaseDataHelper

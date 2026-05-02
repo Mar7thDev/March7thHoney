@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GridFightTraitSyncInfo.proto</summary>
   public static partial class GridFightTraitSyncInfoReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "IAEoCEIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXku",
             "U2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GridFightTraitEffectInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridFightTraitEffectInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GridFightTraitSyncInfo), global::CastoriceHoney.Server.Proto.GridFightTraitSyncInfo.Parser, new[]{ "TraitEffectInfo", "TraitId", "IsSyncEffect" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightTraitSyncInfo), global::March7thHoney.Proto.GridFightTraitSyncInfo.Parser, new[]{ "TraitEffectInfo", "TraitId", "IsSyncEffect" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GridFightTraitSyncInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GridFightTraitSyncInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -89,10 +89,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "trait_effect_info" field.</summary>
     public const int TraitEffectInfoFieldNumber = 12;
-    private global::CastoriceHoney.Server.Proto.GridFightTraitEffectInfo traitEffectInfo_;
+    private global::March7thHoney.Proto.GridFightTraitEffectInfo traitEffectInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightTraitEffectInfo TraitEffectInfo {
+    public global::March7thHoney.Proto.GridFightTraitEffectInfo TraitEffectInfo {
       get { return traitEffectInfo_; }
       set {
         traitEffectInfo_ = value;
@@ -236,7 +236,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.traitEffectInfo_ != null) {
         if (traitEffectInfo_ == null) {
-          TraitEffectInfo = new global::CastoriceHoney.Server.Proto.GridFightTraitEffectInfo();
+          TraitEffectInfo = new global::March7thHoney.Proto.GridFightTraitEffectInfo();
         }
         TraitEffectInfo.MergeFrom(other.TraitEffectInfo);
       }
@@ -267,7 +267,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 98: {
             if (traitEffectInfo_ == null) {
-              TraitEffectInfo = new global::CastoriceHoney.Server.Proto.GridFightTraitEffectInfo();
+              TraitEffectInfo = new global::March7thHoney.Proto.GridFightTraitEffectInfo();
             }
             input.ReadMessage(TraitEffectInfo);
             break;
@@ -301,7 +301,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 98: {
             if (traitEffectInfo_ == null) {
-              TraitEffectInfo = new global::CastoriceHoney.Server.Proto.GridFightTraitEffectInfo();
+              TraitEffectInfo = new global::March7thHoney.Proto.GridFightTraitEffectInfo();
             }
             input.ReadMessage(TraitEffectInfo);
             break;

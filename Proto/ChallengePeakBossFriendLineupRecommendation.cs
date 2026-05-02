@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from ChallengePeakBossFriendLineupRecommendation.proto</summary>
   public static partial class ChallengePeakBossFriendLineupRecommendationReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "FGhhcmRfbW9kZV9oYXNfcGFzc2VkGA4gASgIQjMKE2VtdS5sdW5hcmNvcmUu",
             "cHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.PKJGGAPLONCReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.PKJGGAPLONCReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ChallengePeakBossFriendLineupRecommendation), global::CastoriceHoney.Server.Proto.ChallengePeakBossFriendLineupRecommendation.Parser, new[]{ "AvatarList", "FinishedTargetList", "IsHardMode", "BuffId", "HardModeHasPassed" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakBossFriendLineupRecommendation), global::March7thHoney.Proto.ChallengePeakBossFriendLineupRecommendation.Parser, new[]{ "AvatarList", "FinishedTargetList", "IsHardMode", "BuffId", "HardModeHasPassed" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ChallengePeakBossFriendLineupRecommendationReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ChallengePeakBossFriendLineupRecommendationReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -92,12 +92,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "avatar_list" field.</summary>
     public const int AvatarListFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.PKJGGAPLONC> _repeated_avatarList_codec
-        = pb::FieldCodec.ForMessage(10, global::CastoriceHoney.Server.Proto.PKJGGAPLONC.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.PKJGGAPLONC> avatarList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.PKJGGAPLONC>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.PKJGGAPLONC> _repeated_avatarList_codec
+        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.PKJGGAPLONC.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.PKJGGAPLONC> avatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.PKJGGAPLONC>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.PKJGGAPLONC> AvatarList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.PKJGGAPLONC> AvatarList {
       get { return avatarList_; }
     }
 

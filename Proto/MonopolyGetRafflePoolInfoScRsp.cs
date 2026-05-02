@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from MonopolyGetRafflePoolInfoScRsp.proto</summary>
   public static partial class MonopolyGetRafflePoolInfoScRspReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "SE1BSE1DQkZCMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhv",
             "bmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.JLLHMAHMCBFReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.JLLHMAHMCBFReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.MonopolyGetRafflePoolInfoScRsp), global::CastoriceHoney.Server.Proto.MonopolyGetRafflePoolInfoScRsp.Parser, new[]{ "Retcode", "FBACKLDDEBL" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MonopolyGetRafflePoolInfoScRsp), global::March7thHoney.Proto.MonopolyGetRafflePoolInfoScRsp.Parser, new[]{ "Retcode", "FBACKLDDEBL" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.MonopolyGetRafflePoolInfoScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.MonopolyGetRafflePoolInfoScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -99,10 +99,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "FBACKLDDEBL" field.</summary>
     public const int FBACKLDDEBLFieldNumber = 15;
-    private global::CastoriceHoney.Server.Proto.JLLHMAHMCBF fBACKLDDEBL_;
+    private global::March7thHoney.Proto.JLLHMAHMCBF fBACKLDDEBL_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.JLLHMAHMCBF FBACKLDDEBL {
+    public global::March7thHoney.Proto.JLLHMAHMCBF FBACKLDDEBL {
       get { return fBACKLDDEBL_; }
       set {
         fBACKLDDEBL_ = value;
@@ -212,7 +212,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.fBACKLDDEBL_ != null) {
         if (fBACKLDDEBL_ == null) {
-          FBACKLDDEBL = new global::CastoriceHoney.Server.Proto.JLLHMAHMCBF();
+          FBACKLDDEBL = new global::March7thHoney.Proto.JLLHMAHMCBF();
         }
         FBACKLDDEBL.MergeFrom(other.FBACKLDDEBL);
       }
@@ -241,7 +241,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 122: {
             if (fBACKLDDEBL_ == null) {
-              FBACKLDDEBL = new global::CastoriceHoney.Server.Proto.JLLHMAHMCBF();
+              FBACKLDDEBL = new global::March7thHoney.Proto.JLLHMAHMCBF();
             }
             input.ReadMessage(FBACKLDDEBL);
             break;
@@ -271,7 +271,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 122: {
             if (fBACKLDDEBL_ == null) {
-              FBACKLDDEBL = new global::CastoriceHoney.Server.Proto.JLLHMAHMCBF();
+              FBACKLDDEBL = new global::March7thHoney.Proto.JLLHMAHMCBF();
             }
             input.ReadMessage(FBACKLDDEBL);
             break;

@@ -1,6 +1,6 @@
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Game.GridFight.Component;
+namespace March7thHoney.GameServer.Game.GridFight.Component;
 
 public abstract class BaseGridFightComponent(GridFightInstance inst)
 {

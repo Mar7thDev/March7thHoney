@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from SetPlayerOutfitCsReq.proto</summary>
   public static partial class SetPlayerOutfitCsReqReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "b3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90",
             "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.PlayerOutfitInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.PlayerOutfitInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.SetPlayerOutfitCsReq), global::CastoriceHoney.Server.Proto.SetPlayerOutfitCsReq.Parser, new[]{ "PlayerOutfitData" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetPlayerOutfitCsReq), global::March7thHoney.Proto.SetPlayerOutfitCsReq.Parser, new[]{ "PlayerOutfitData" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.SetPlayerOutfitCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.SetPlayerOutfitCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -86,10 +86,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "PlayerOutfitData" field.</summary>
     public const int PlayerOutfitDataFieldNumber = 2;
-    private global::CastoriceHoney.Server.Proto.PlayerOutfitInfo playerOutfitData_;
+    private global::March7thHoney.Proto.PlayerOutfitInfo playerOutfitData_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.PlayerOutfitInfo PlayerOutfitData {
+    public global::March7thHoney.Proto.PlayerOutfitInfo PlayerOutfitData {
       get { return playerOutfitData_; }
       set {
         playerOutfitData_ = value;
@@ -183,7 +183,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.playerOutfitData_ != null) {
         if (playerOutfitData_ == null) {
-          PlayerOutfitData = new global::CastoriceHoney.Server.Proto.PlayerOutfitInfo();
+          PlayerOutfitData = new global::March7thHoney.Proto.PlayerOutfitInfo();
         }
         PlayerOutfitData.MergeFrom(other.PlayerOutfitData);
       }
@@ -208,7 +208,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 18: {
             if (playerOutfitData_ == null) {
-              PlayerOutfitData = new global::CastoriceHoney.Server.Proto.PlayerOutfitInfo();
+              PlayerOutfitData = new global::March7thHoney.Proto.PlayerOutfitInfo();
             }
             input.ReadMessage(PlayerOutfitData);
             break;
@@ -234,7 +234,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 18: {
             if (playerOutfitData_ == null) {
-              PlayerOutfitData = new global::CastoriceHoney.Server.Proto.PlayerOutfitInfo();
+              PlayerOutfitData = new global::March7thHoney.Proto.PlayerOutfitInfo();
             }
             input.ReadMessage(PlayerOutfitData);
             break;

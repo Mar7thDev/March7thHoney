@@ -1,13 +1,13 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Data.Config.Scene;
-using CastoriceHoney.Server.Enums.Scene;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.GameServer.Game.Scene;
-using CastoriceHoney.Server.GameServer.Game.Scene.Entity;
-using CastoriceHoney.Server.Proto.ServerSide;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Data;
+using March7thHoney.Data.Config.Scene;
+using March7thHoney.Enums.Scene;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Game.Scene;
+using March7thHoney.GameServer.Game.Scene.Entity;
+using March7thHoney.Proto.ServerSide;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.GameServer.Game.Challenge;
+namespace March7thHoney.GameServer.Game.Challenge;
 
 public class ChallengeEntityLoader(SceneInstance scene, PlayerInstance player) : SceneEntityLoader(scene)
 {

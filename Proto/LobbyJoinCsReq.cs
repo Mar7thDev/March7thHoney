@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from LobbyJoinCsReq.proto</summary>
   public static partial class LobbyJoinCsReqReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "ZBgHIAEoBEIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9u",
             "ZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.LobbyGameExtInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.LobbyGameExtInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.LobbyJoinCsReq), global::CastoriceHoney.Server.Proto.LobbyJoinCsReq.Parser, new[]{ "JHCJMKDDNNF", "GFFIMGEKDNL", "RoomId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LobbyJoinCsReq), global::March7thHoney.Proto.LobbyJoinCsReq.Parser, new[]{ "JHCJMKDDNNF", "GFFIMGEKDNL", "RoomId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.LobbyJoinCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.LobbyJoinCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -88,10 +88,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "JHCJMKDDNNF" field.</summary>
     public const int JHCJMKDDNNFFieldNumber = 5;
-    private global::CastoriceHoney.Server.Proto.LobbyGameExtInfo jHCJMKDDNNF_;
+    private global::March7thHoney.Proto.LobbyGameExtInfo jHCJMKDDNNF_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.LobbyGameExtInfo JHCJMKDDNNF {
+    public global::March7thHoney.Proto.LobbyGameExtInfo JHCJMKDDNNF {
       get { return jHCJMKDDNNF_; }
       set {
         jHCJMKDDNNF_ = value;
@@ -235,7 +235,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.jHCJMKDDNNF_ != null) {
         if (jHCJMKDDNNF_ == null) {
-          JHCJMKDDNNF = new global::CastoriceHoney.Server.Proto.LobbyGameExtInfo();
+          JHCJMKDDNNF = new global::March7thHoney.Proto.LobbyGameExtInfo();
         }
         JHCJMKDDNNF.MergeFrom(other.JHCJMKDDNNF);
       }
@@ -266,7 +266,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 42: {
             if (jHCJMKDDNNF_ == null) {
-              JHCJMKDDNNF = new global::CastoriceHoney.Server.Proto.LobbyGameExtInfo();
+              JHCJMKDDNNF = new global::March7thHoney.Proto.LobbyGameExtInfo();
             }
             input.ReadMessage(JHCJMKDDNNF);
             break;
@@ -300,7 +300,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 42: {
             if (jHCJMKDDNNF_ == null) {
-              JHCJMKDDNNF = new global::CastoriceHoney.Server.Proto.LobbyGameExtInfo();
+              JHCJMKDDNNF = new global::March7thHoney.Proto.LobbyGameExtInfo();
             }
             input.ReadMessage(JHCJMKDDNNF);
             break;

@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Proto;
 using SqlSugar;
 
-namespace CastoriceHoney.Server.Database.ChessRogue;
+namespace March7thHoney.Database.ChessRogue;
 
 [SugarTable("ChessRogueNous")]
 public class ChessRogueNousData : BaseDatabaseDataHelper

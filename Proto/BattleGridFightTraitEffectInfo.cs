@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from BattleGridFightTraitEffectInfo.proto</summary>
   public static partial class BattleGridFightTraitEffectInfoReflection {
@@ -37,9 +37,9 @@ namespace CastoriceHoney.Server.Proto {
             "UE9EQUtBTUgAQg0KC0hEQUNDSUVJSkZPQjMKE2VtdS5sdW5hcmNvcmUucHJv",
             "dG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.BattleGridFightTraitCoreRoleInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.BattleGridFigntAvatarCoreRoleInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.DFJGPODAKAMReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightTraitEffectLevelInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.BattleGridFightTraitCoreRoleInfoReflection.Descriptor, global::March7thHoney.Proto.BattleGridFigntAvatarCoreRoleInfoReflection.Descriptor, global::March7thHoney.Proto.DFJGPODAKAMReflection.Descriptor, global::March7thHoney.Proto.GridFightTraitEffectLevelInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.BattleGridFightTraitEffectInfo), global::CastoriceHoney.Server.Proto.BattleGridFightTraitEffectInfo.Parser, new[]{ "EffectId", "TraitCoreRole", "AvatarCoreInfo", "TraitEffectLevelInfo", "HAINJKLLLKF" }, new[]{ "HDACCIEIJFO" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BattleGridFightTraitEffectInfo), global::March7thHoney.Proto.BattleGridFightTraitEffectInfo.Parser, new[]{ "EffectId", "TraitCoreRole", "AvatarCoreInfo", "TraitEffectLevelInfo", "HAINJKLLLKF" }, new[]{ "HDACCIEIJFO" }, null, null, null)
           }));
     }
     #endregion
@@ -61,7 +61,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.BattleGridFightTraitEffectInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.BattleGridFightTraitEffectInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -122,8 +122,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int TraitCoreRoleFieldNumber = 101;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.BattleGridFightTraitCoreRoleInfo TraitCoreRole {
-      get { return hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.TraitCoreRole ? (global::CastoriceHoney.Server.Proto.BattleGridFightTraitCoreRoleInfo) hDACCIEIJFO_ : null; }
+    public global::March7thHoney.Proto.BattleGridFightTraitCoreRoleInfo TraitCoreRole {
+      get { return hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.TraitCoreRole ? (global::March7thHoney.Proto.BattleGridFightTraitCoreRoleInfo) hDACCIEIJFO_ : null; }
       set {
         hDACCIEIJFO_ = value;
         hDACCIEIJFOCase_ = value == null ? HDACCIEIJFOOneofCase.None : HDACCIEIJFOOneofCase.TraitCoreRole;
@@ -134,8 +134,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int AvatarCoreInfoFieldNumber = 102;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.BattleGridFigntAvatarCoreRoleInfo AvatarCoreInfo {
-      get { return hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.AvatarCoreInfo ? (global::CastoriceHoney.Server.Proto.BattleGridFigntAvatarCoreRoleInfo) hDACCIEIJFO_ : null; }
+    public global::March7thHoney.Proto.BattleGridFigntAvatarCoreRoleInfo AvatarCoreInfo {
+      get { return hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.AvatarCoreInfo ? (global::March7thHoney.Proto.BattleGridFigntAvatarCoreRoleInfo) hDACCIEIJFO_ : null; }
       set {
         hDACCIEIJFO_ = value;
         hDACCIEIJFOCase_ = value == null ? HDACCIEIJFOOneofCase.None : HDACCIEIJFOOneofCase.AvatarCoreInfo;
@@ -146,8 +146,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int TraitEffectLevelInfoFieldNumber = 103;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightTraitEffectLevelInfo TraitEffectLevelInfo {
-      get { return hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.TraitEffectLevelInfo ? (global::CastoriceHoney.Server.Proto.GridFightTraitEffectLevelInfo) hDACCIEIJFO_ : null; }
+    public global::March7thHoney.Proto.GridFightTraitEffectLevelInfo TraitEffectLevelInfo {
+      get { return hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.TraitEffectLevelInfo ? (global::March7thHoney.Proto.GridFightTraitEffectLevelInfo) hDACCIEIJFO_ : null; }
       set {
         hDACCIEIJFO_ = value;
         hDACCIEIJFOCase_ = value == null ? HDACCIEIJFOOneofCase.None : HDACCIEIJFOOneofCase.TraitEffectLevelInfo;
@@ -158,8 +158,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int HAINJKLLLKFFieldNumber = 104;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.DFJGPODAKAM HAINJKLLLKF {
-      get { return hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.HAINJKLLLKF ? (global::CastoriceHoney.Server.Proto.DFJGPODAKAM) hDACCIEIJFO_ : null; }
+    public global::March7thHoney.Proto.DFJGPODAKAM HAINJKLLLKF {
+      get { return hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.HAINJKLLLKF ? (global::March7thHoney.Proto.DFJGPODAKAM) hDACCIEIJFO_ : null; }
       set {
         hDACCIEIJFO_ = value;
         hDACCIEIJFOCase_ = value == null ? HDACCIEIJFOOneofCase.None : HDACCIEIJFOOneofCase.HAINJKLLLKF;
@@ -334,25 +334,25 @@ namespace CastoriceHoney.Server.Proto {
       switch (other.HDACCIEIJFOCase) {
         case HDACCIEIJFOOneofCase.TraitCoreRole:
           if (TraitCoreRole == null) {
-            TraitCoreRole = new global::CastoriceHoney.Server.Proto.BattleGridFightTraitCoreRoleInfo();
+            TraitCoreRole = new global::March7thHoney.Proto.BattleGridFightTraitCoreRoleInfo();
           }
           TraitCoreRole.MergeFrom(other.TraitCoreRole);
           break;
         case HDACCIEIJFOOneofCase.AvatarCoreInfo:
           if (AvatarCoreInfo == null) {
-            AvatarCoreInfo = new global::CastoriceHoney.Server.Proto.BattleGridFigntAvatarCoreRoleInfo();
+            AvatarCoreInfo = new global::March7thHoney.Proto.BattleGridFigntAvatarCoreRoleInfo();
           }
           AvatarCoreInfo.MergeFrom(other.AvatarCoreInfo);
           break;
         case HDACCIEIJFOOneofCase.TraitEffectLevelInfo:
           if (TraitEffectLevelInfo == null) {
-            TraitEffectLevelInfo = new global::CastoriceHoney.Server.Proto.GridFightTraitEffectLevelInfo();
+            TraitEffectLevelInfo = new global::March7thHoney.Proto.GridFightTraitEffectLevelInfo();
           }
           TraitEffectLevelInfo.MergeFrom(other.TraitEffectLevelInfo);
           break;
         case HDACCIEIJFOOneofCase.HAINJKLLLKF:
           if (HAINJKLLLKF == null) {
-            HAINJKLLLKF = new global::CastoriceHoney.Server.Proto.DFJGPODAKAM();
+            HAINJKLLLKF = new global::March7thHoney.Proto.DFJGPODAKAM();
           }
           HAINJKLLLKF.MergeFrom(other.HAINJKLLLKF);
           break;
@@ -382,7 +382,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 810: {
-            global::CastoriceHoney.Server.Proto.BattleGridFightTraitCoreRoleInfo subBuilder = new global::CastoriceHoney.Server.Proto.BattleGridFightTraitCoreRoleInfo();
+            global::March7thHoney.Proto.BattleGridFightTraitCoreRoleInfo subBuilder = new global::March7thHoney.Proto.BattleGridFightTraitCoreRoleInfo();
             if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.TraitCoreRole) {
               subBuilder.MergeFrom(TraitCoreRole);
             }
@@ -391,7 +391,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 818: {
-            global::CastoriceHoney.Server.Proto.BattleGridFigntAvatarCoreRoleInfo subBuilder = new global::CastoriceHoney.Server.Proto.BattleGridFigntAvatarCoreRoleInfo();
+            global::March7thHoney.Proto.BattleGridFigntAvatarCoreRoleInfo subBuilder = new global::March7thHoney.Proto.BattleGridFigntAvatarCoreRoleInfo();
             if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.AvatarCoreInfo) {
               subBuilder.MergeFrom(AvatarCoreInfo);
             }
@@ -400,7 +400,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 826: {
-            global::CastoriceHoney.Server.Proto.GridFightTraitEffectLevelInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightTraitEffectLevelInfo();
+            global::March7thHoney.Proto.GridFightTraitEffectLevelInfo subBuilder = new global::March7thHoney.Proto.GridFightTraitEffectLevelInfo();
             if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.TraitEffectLevelInfo) {
               subBuilder.MergeFrom(TraitEffectLevelInfo);
             }
@@ -409,7 +409,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 834: {
-            global::CastoriceHoney.Server.Proto.DFJGPODAKAM subBuilder = new global::CastoriceHoney.Server.Proto.DFJGPODAKAM();
+            global::March7thHoney.Proto.DFJGPODAKAM subBuilder = new global::March7thHoney.Proto.DFJGPODAKAM();
             if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.HAINJKLLLKF) {
               subBuilder.MergeFrom(HAINJKLLLKF);
             }
@@ -441,7 +441,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 810: {
-            global::CastoriceHoney.Server.Proto.BattleGridFightTraitCoreRoleInfo subBuilder = new global::CastoriceHoney.Server.Proto.BattleGridFightTraitCoreRoleInfo();
+            global::March7thHoney.Proto.BattleGridFightTraitCoreRoleInfo subBuilder = new global::March7thHoney.Proto.BattleGridFightTraitCoreRoleInfo();
             if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.TraitCoreRole) {
               subBuilder.MergeFrom(TraitCoreRole);
             }
@@ -450,7 +450,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 818: {
-            global::CastoriceHoney.Server.Proto.BattleGridFigntAvatarCoreRoleInfo subBuilder = new global::CastoriceHoney.Server.Proto.BattleGridFigntAvatarCoreRoleInfo();
+            global::March7thHoney.Proto.BattleGridFigntAvatarCoreRoleInfo subBuilder = new global::March7thHoney.Proto.BattleGridFigntAvatarCoreRoleInfo();
             if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.AvatarCoreInfo) {
               subBuilder.MergeFrom(AvatarCoreInfo);
             }
@@ -459,7 +459,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 826: {
-            global::CastoriceHoney.Server.Proto.GridFightTraitEffectLevelInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightTraitEffectLevelInfo();
+            global::March7thHoney.Proto.GridFightTraitEffectLevelInfo subBuilder = new global::March7thHoney.Proto.GridFightTraitEffectLevelInfo();
             if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.TraitEffectLevelInfo) {
               subBuilder.MergeFrom(TraitEffectLevelInfo);
             }
@@ -468,7 +468,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 834: {
-            global::CastoriceHoney.Server.Proto.DFJGPODAKAM subBuilder = new global::CastoriceHoney.Server.Proto.DFJGPODAKAM();
+            global::March7thHoney.Proto.DFJGPODAKAM subBuilder = new global::March7thHoney.Proto.DFJGPODAKAM();
             if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.HAINJKLLLKF) {
               subBuilder.MergeFrom(HAINJKLLLKF);
             }

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from ArchiveData.proto</summary>
   public static partial class ArchiveDataReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "c3NpbmdfZXF1aXBtZW50X2lkX2xpc3QYDCADKA1CMwoTZW11Lmx1bmFyY29y",
             "ZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.MonsterListReflection.Descriptor, global::CastoriceHoney.Server.Proto.RelicListReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.MonsterListReflection.Descriptor, global::March7thHoney.Proto.RelicListReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ArchiveData), global::CastoriceHoney.Server.Proto.ArchiveData.Parser, new[]{ "ArchiveAvatarIdList", "KillMonsterList", "ArchiveEquipmentIdList", "RelicList", "ArchiveMissingEquipmentIdList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ArchiveData), global::March7thHoney.Proto.ArchiveData.Parser, new[]{ "ArchiveAvatarIdList", "KillMonsterList", "ArchiveEquipmentIdList", "RelicList", "ArchiveMissingEquipmentIdList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ArchiveDataReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ArchiveDataReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -103,12 +103,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "kill_monster_list" field.</summary>
     public const int KillMonsterListFieldNumber = 6;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.MonsterList> _repeated_killMonsterList_codec
-        = pb::FieldCodec.ForMessage(50, global::CastoriceHoney.Server.Proto.MonsterList.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MonsterList> killMonsterList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MonsterList>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MonsterList> _repeated_killMonsterList_codec
+        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.MonsterList.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MonsterList> killMonsterList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MonsterList>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MonsterList> KillMonsterList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.MonsterList> KillMonsterList {
       get { return killMonsterList_; }
     }
 
@@ -125,12 +125,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "relic_list" field.</summary>
     public const int RelicListFieldNumber = 8;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.RelicList> _repeated_relicList_codec
-        = pb::FieldCodec.ForMessage(66, global::CastoriceHoney.Server.Proto.RelicList.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.RelicList> relicList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.RelicList>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.RelicList> _repeated_relicList_codec
+        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.RelicList.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.RelicList> relicList_ = new pbc::RepeatedField<global::March7thHoney.Proto.RelicList>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.RelicList> RelicList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.RelicList> RelicList {
       get { return relicList_; }
     }
 

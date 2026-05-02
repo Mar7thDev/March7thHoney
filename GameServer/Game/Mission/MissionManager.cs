@@ -1,22 +1,22 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Data.Config;
-using CastoriceHoney.Server.Database;
-using CastoriceHoney.Server.Database.Inventory;
-using CastoriceHoney.Server.Enums.Item;
-using CastoriceHoney.Server.Enums.Mission;
-using CastoriceHoney.Server.GameServer.Game.Battle;
-using CastoriceHoney.Server.GameServer.Game.Mission.FinishAction;
-using CastoriceHoney.Server.GameServer.Game.Mission.FinishType;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.GameServer.Plugin.Event;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.HeartDial;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Mission;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.PlayerSync;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
-using MissionData = CastoriceHoney.Server.Database.Quests.MissionData;
+using March7thHoney.Data;
+using March7thHoney.Data.Config;
+using March7thHoney.Database;
+using March7thHoney.Database.Inventory;
+using March7thHoney.Enums.Item;
+using March7thHoney.Enums.Mission;
+using March7thHoney.GameServer.Game.Battle;
+using March7thHoney.GameServer.Game.Mission.FinishAction;
+using March7thHoney.GameServer.Game.Mission.FinishType;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Plugin.Event;
+using March7thHoney.GameServer.Server.Packet.Send.HeartDial;
+using March7thHoney.GameServer.Server.Packet.Send.Mission;
+using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
+using March7thHoney.Proto;
+using March7thHoney.Util;
+using MissionData = March7thHoney.Database.Quests.MissionData;
 
-namespace CastoriceHoney.Server.GameServer.Game.Mission;
+namespace March7thHoney.GameServer.Game.Mission;
 
 public class MissionManager(PlayerInstance player) : BasePlayerManager(player)
 {

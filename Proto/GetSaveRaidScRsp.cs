@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GetSaveRaidScRsp.proto</summary>
   public static partial class GetSaveRaidScRspReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "KA1CMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNl",
             "cnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.RaidTargetInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.RaidTargetInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GetSaveRaidScRsp), global::CastoriceHoney.Server.Proto.GetSaveRaidScRsp.Parser, new[]{ "WorldLevel", "RaidTargetInfo", "IsSave", "Retcode", "RaidId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetSaveRaidScRsp), global::March7thHoney.Proto.GetSaveRaidScRsp.Parser, new[]{ "WorldLevel", "RaidTargetInfo", "IsSave", "Retcode", "RaidId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GetSaveRaidScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GetSaveRaidScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -103,12 +103,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "raid_target_info" field.</summary>
     public const int RaidTargetInfoFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.RaidTargetInfo> _repeated_raidTargetInfo_codec
-        = pb::FieldCodec.ForMessage(26, global::CastoriceHoney.Server.Proto.RaidTargetInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.RaidTargetInfo> raidTargetInfo_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.RaidTargetInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.RaidTargetInfo> _repeated_raidTargetInfo_codec
+        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.RaidTargetInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.RaidTargetInfo> raidTargetInfo_ = new pbc::RepeatedField<global::March7thHoney.Proto.RaidTargetInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.RaidTargetInfo> RaidTargetInfo {
+    public pbc::RepeatedField<global::March7thHoney.Proto.RaidTargetInfo> RaidTargetInfo {
       get { return raidTargetInfo_; }
     }
 

@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Enums.Scene;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Enums.Scene;
+using March7thHoney.Util;
 using Newtonsoft.Json;
 
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("MazeChest.json")]
 public class MazeChestExcel : ExcelResource

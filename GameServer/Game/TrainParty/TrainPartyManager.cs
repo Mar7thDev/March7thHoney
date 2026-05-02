@@ -1,10 +1,10 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Database;
-using CastoriceHoney.Server.Database.TrainParty;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Data;
+using March7thHoney.Database;
+using March7thHoney.Database.TrainParty;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Game.TrainParty;
+namespace March7thHoney.GameServer.Game.TrainParty;
 
 public class TrainPartyManager(PlayerInstance player) : BasePlayerManager(player)
 {

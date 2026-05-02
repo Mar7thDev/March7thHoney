@@ -13,7 +13,7 @@ New-Item -ItemType Directory -Force -Path $protoFileDir | Out-Null
 
 Copy-Item -Path (Join-Path $SourceProtoDir "*.proto") -Destination $protoFileDir -Force
 
-$targetNs = 'option csharp_namespace = "CastoriceHoney.Server.Proto";'
+$targetNs = 'option csharp_namespace = "March7thHoney.Proto";'
 Get-ChildItem $protoFileDir -File -Filter *.proto | ForEach-Object {
     $path = $_.FullName
     $raw = Get-Content -LiteralPath $path -Raw

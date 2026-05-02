@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Enums.TournRogue;
+namespace March7thHoney.Enums.TournRogue;
 
 public enum RogueFormulaCategoryEnum
 {

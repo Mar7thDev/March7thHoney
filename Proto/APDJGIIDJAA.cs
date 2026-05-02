@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from APDJGIIDJAA.proto</summary>
   public static partial class APDJGIIDJAAReflection {
@@ -29,9 +29,9 @@ namespace CastoriceHoney.Server.Proto {
             "X2xpc3QYAiADKAsyDC5BRkhJSE1LQ1BORkIzChNlbXUubHVuYXJjb3JlLnBy",
             "b3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.AFHIHMKCPNFReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.AFHIHMKCPNFReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.APDJGIIDJAA), global::CastoriceHoney.Server.Proto.APDJGIIDJAA.Parser, new[]{ "AAAGBKEHKLC", "KillMonsterList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.APDJGIIDJAA), global::March7thHoney.Proto.APDJGIIDJAA.Parser, new[]{ "AAAGBKEHKLC", "KillMonsterList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -53,7 +53,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.APDJGIIDJAAReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.APDJGIIDJAAReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -98,12 +98,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "kill_monster_list" field.</summary>
     public const int KillMonsterListFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.AFHIHMKCPNF> _repeated_killMonsterList_codec
-        = pb::FieldCodec.ForMessage(18, global::CastoriceHoney.Server.Proto.AFHIHMKCPNF.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AFHIHMKCPNF> killMonsterList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AFHIHMKCPNF>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AFHIHMKCPNF> _repeated_killMonsterList_codec
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.AFHIHMKCPNF.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AFHIHMKCPNF> killMonsterList_ = new pbc::RepeatedField<global::March7thHoney.Proto.AFHIHMKCPNF>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AFHIHMKCPNF> KillMonsterList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.AFHIHMKCPNF> KillMonsterList {
       get { return killMonsterList_; }
     }
 

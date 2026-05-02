@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from ExpUpRelicScRsp.proto</summary>
   public static partial class ExpUpRelicScRspReflection {
@@ -29,9 +29,9 @@ namespace CastoriceHoney.Server.Proto {
             "ZUl0ZW0SDwoHcmV0Y29kZRgMIAEoDUIzChNlbXUubHVuYXJjb3JlLnByb3Rv",
             "qgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.PileItemReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.PileItemReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ExpUpRelicScRsp), global::CastoriceHoney.Server.Proto.ExpUpRelicScRsp.Parser, new[]{ "ReturnItemList", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ExpUpRelicScRsp), global::March7thHoney.Proto.ExpUpRelicScRsp.Parser, new[]{ "ReturnItemList", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -53,7 +53,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ExpUpRelicScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ExpUpRelicScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -86,12 +86,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "return_item_list" field.</summary>
     public const int ReturnItemListFieldNumber = 10;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.PileItem> _repeated_returnItemList_codec
-        = pb::FieldCodec.ForMessage(82, global::CastoriceHoney.Server.Proto.PileItem.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.PileItem> returnItemList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.PileItem>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.PileItem> _repeated_returnItemList_codec
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.PileItem.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.PileItem> returnItemList_ = new pbc::RepeatedField<global::March7thHoney.Proto.PileItem>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.PileItem> ReturnItemList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.PileItem> ReturnItemList {
       get { return returnItemList_; }
     }
 

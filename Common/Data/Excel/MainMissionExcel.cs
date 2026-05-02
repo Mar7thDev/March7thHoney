@@ -1,12 +1,12 @@
-using CastoriceHoney.Server.Database.Player;
-using CastoriceHoney.Server.Database.Quests;
-using CastoriceHoney.Server.Enums;
-using CastoriceHoney.Server.Enums.Mission;
+using March7thHoney.Database.Player;
+using March7thHoney.Database.Quests;
+using March7thHoney.Enums;
+using March7thHoney.Enums.Mission;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using MissionInfo = CastoriceHoney.Server.Data.Config.MissionInfo;
+using MissionInfo = March7thHoney.Data.Config.MissionInfo;
 
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("MainMission.json")]
 public class MainMissionExcel : ExcelResource

@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.Internationalization;
-using CastoriceHoney.Server.Kcp;
+using March7thHoney.Internationalization;
+using March7thHoney.Kcp;
 
-namespace CastoriceHoney.Server.Command.Command.Cmd;
+namespace March7thHoney.Command.Command.Cmd;
 
 [CommandInfo("windy", "Kinda windy today!", "/windy <lua>")]
 public class CommandWindy : ICommand

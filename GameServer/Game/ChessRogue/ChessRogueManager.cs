@@ -1,12 +1,12 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Database;
-using CastoriceHoney.Server.Database.ChessRogue;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.ChessRogue;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Lineup;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Data;
+using March7thHoney.Database;
+using March7thHoney.Database.ChessRogue;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Server.Packet.Send.ChessRogue;
+using March7thHoney.GameServer.Server.Packet.Send.Lineup;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Game.ChessRogue;
+namespace March7thHoney.GameServer.Game.ChessRogue;
 
 public class ChessRogueManager(PlayerInstance player) : BasePlayerManager(player)
 {

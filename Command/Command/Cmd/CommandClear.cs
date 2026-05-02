@@ -1,6 +1,6 @@
-using CastoriceHoney.Server.Internationalization;
+using March7thHoney.Internationalization;
 
-namespace CastoriceHoney.Server.Command.Command.Cmd;
+namespace March7thHoney.Command.Command.Cmd;
 
 [CommandInfo("clear", "Game.Command.Clear.Desc", "Game.Command.Clear.Usage")]
 public class CommandClear : ICommand

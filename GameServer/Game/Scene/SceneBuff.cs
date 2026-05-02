@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.GameServer.Game.Scene;
+namespace March7thHoney.GameServer.Game.Scene;
 
 public class SceneBuff(int buffId, int buffLevel, int owner, int duration = -1)
 {

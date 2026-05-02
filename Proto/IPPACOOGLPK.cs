@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from IPPACOOGLPK.proto</summary>
   public static partial class IPPACOOGLPKReflection {
@@ -29,9 +29,9 @@ namespace CastoriceHoney.Server.Proto {
             "CgtNR01GRU5JT1BITxgLIAEoCUIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIb",
             "Q2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.IEACMDFDLBFReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.IEACMDFDLBFReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.IPPACOOGLPK), global::CastoriceHoney.Server.Proto.IPPACOOGLPK.Parser, new[]{ "ReturnData", "MGMFENIOPHO" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.IPPACOOGLPK), global::March7thHoney.Proto.IPPACOOGLPK.Parser, new[]{ "ReturnData", "MGMFENIOPHO" }, null, null, null, null)
           }));
     }
     #endregion
@@ -53,7 +53,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.IPPACOOGLPKReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.IPPACOOGLPKReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -86,10 +86,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "return_data" field.</summary>
     public const int ReturnDataFieldNumber = 10;
-    private global::CastoriceHoney.Server.Proto.IEACMDFDLBF returnData_;
+    private global::March7thHoney.Proto.IEACMDFDLBF returnData_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.IEACMDFDLBF ReturnData {
+    public global::March7thHoney.Proto.IEACMDFDLBF ReturnData {
       get { return returnData_; }
       set {
         returnData_ = value;
@@ -208,7 +208,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.returnData_ != null) {
         if (returnData_ == null) {
-          ReturnData = new global::CastoriceHoney.Server.Proto.IEACMDFDLBF();
+          ReturnData = new global::March7thHoney.Proto.IEACMDFDLBF();
         }
         ReturnData.MergeFrom(other.ReturnData);
       }
@@ -236,7 +236,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 82: {
             if (returnData_ == null) {
-              ReturnData = new global::CastoriceHoney.Server.Proto.IEACMDFDLBF();
+              ReturnData = new global::March7thHoney.Proto.IEACMDFDLBF();
             }
             input.ReadMessage(ReturnData);
             break;
@@ -266,7 +266,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 82: {
             if (returnData_ == null) {
-              ReturnData = new global::CastoriceHoney.Server.Proto.IEACMDFDLBF();
+              ReturnData = new global::March7thHoney.Proto.IEACMDFDLBF();
             }
             input.ReadMessage(ReturnData);
             break;

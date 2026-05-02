@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.RogueCommon;
-using CastoriceHoney.Server.Kcp;
+using March7thHoney.GameServer.Server.Packet.Send.RogueCommon;
+using March7thHoney.Kcp;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.RogueCommon;
+namespace March7thHoney.GameServer.Server.Packet.Recv.RogueCommon;
 
 [Opcode(CmdIds.GetRogueHandbookDataCsReq)]
 public class HandlerGetRogueHandbookDataCsReq : Handler

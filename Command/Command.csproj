@@ -4,8 +4,8 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <RootNamespace>CastoriceHoney.Server.Command</RootNamespace>
-    <AssemblyName>CastoriceHoney.Command</AssemblyName>
+    <RootNamespace>March7thHoney.Command</RootNamespace>
+    <AssemblyName>March7thHoney.Command</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

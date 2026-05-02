@@ -1,10 +1,10 @@
 using System.Collections.Concurrent;
 using System.Reflection;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Proto;
 using Google.Protobuf;
 using Google.Protobuf.Reflection;
 
-namespace CastoriceHoney.Server.Kcp;
+namespace March7thHoney.Kcp;
 
 public static class PacketLogHelper
 {
@@ -31,7 +31,7 @@ public static class PacketLogHelper
             var asbly = Assembly.GetAssembly(typeof(PlayerGetTokenCsReq));
             if (asbly == null) return null;
 
-            var typ = asbly.GetType($"CastoriceHoney.Server.Proto.{DanhengConnection.LogMap[opcode]}");
+            var typ = asbly.GetType($"March7thHoney.Proto.{DanhengConnection.LogMap[opcode]}");
             if (typ == null) return null;
             var desc = typ.GetProperty("Descriptor", BindingFlags.Public | BindingFlags.Static);
             if (desc?.GetMethod == null) return null;

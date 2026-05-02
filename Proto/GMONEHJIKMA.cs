@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GMONEHJIKMA.proto</summary>
   public static partial class GMONEHJIKMAReflection {
@@ -28,9 +28,9 @@ namespace CastoriceHoney.Server.Proto {
             "TUESFgoGcmVsaWNzGAkgAygLMgYuUmVsaWNCMwoTZW11Lmx1bmFyY29yZS5w",
             "cm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.RelicReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.RelicReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GMONEHJIKMA), global::CastoriceHoney.Server.Proto.GMONEHJIKMA.Parser, new[]{ "Relics" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GMONEHJIKMA), global::March7thHoney.Proto.GMONEHJIKMA.Parser, new[]{ "Relics" }, null, null, null, null)
           }));
     }
     #endregion
@@ -52,7 +52,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GMONEHJIKMAReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GMONEHJIKMAReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -84,12 +84,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "relics" field.</summary>
     public const int RelicsFieldNumber = 9;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.Relic> _repeated_relics_codec
-        = pb::FieldCodec.ForMessage(74, global::CastoriceHoney.Server.Proto.Relic.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.Relic> relics_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.Relic>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.Relic> _repeated_relics_codec
+        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.Relic.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.Relic> relics_ = new pbc::RepeatedField<global::March7thHoney.Proto.Relic>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.Relic> Relics {
+    public pbc::RepeatedField<global::March7thHoney.Proto.Relic> Relics {
       get { return relics_; }
     }
 

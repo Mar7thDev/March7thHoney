@@ -1,9 +1,9 @@
 using System.Buffers;
 using System.Net;
 using System.Net.Sockets;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.Kcp.KcpSharp;
+namespace March7thHoney.Kcp.KcpSharp;
 
 /// <summary>
 ///     A Socket transport for upper-level connections.

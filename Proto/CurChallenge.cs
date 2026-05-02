@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from CurChallenge.proto</summary>
   public static partial class CurChallengeReflection {
@@ -36,9 +36,9 @@ namespace CastoriceHoney.Server.Proto {
             "Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90",
             "b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ChallengeCurBuffInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.ChallengeStatusReflection.Descriptor, global::CastoriceHoney.Server.Proto.ExtraLineupTypeReflection.Descriptor, global::CastoriceHoney.Server.Proto.KillMonsterReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChallengeCurBuffInfoReflection.Descriptor, global::March7thHoney.Proto.ChallengeStatusReflection.Descriptor, global::March7thHoney.Proto.ExtraLineupTypeReflection.Descriptor, global::March7thHoney.Proto.KillMonsterReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.CurChallenge), global::CastoriceHoney.Server.Proto.CurChallenge.Parser, new[]{ "RoundCount", "StageInfo", "ExtraLineupType", "ScoreId", "KillMonsterList", "Status", "ChallengeId", "DeadAvatarNum", "ScoreTwo" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.CurChallenge), global::March7thHoney.Proto.CurChallenge.Parser, new[]{ "RoundCount", "StageInfo", "ExtraLineupType", "ScoreId", "KillMonsterList", "Status", "ChallengeId", "DeadAvatarNum", "ScoreTwo" }, null, null, null, null)
           }));
     }
     #endregion
@@ -60,7 +60,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.CurChallengeReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.CurChallengeReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -112,10 +112,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "stage_info" field.</summary>
     public const int StageInfoFieldNumber = 2;
-    private global::CastoriceHoney.Server.Proto.ChallengeCurBuffInfo stageInfo_;
+    private global::March7thHoney.Proto.ChallengeCurBuffInfo stageInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ChallengeCurBuffInfo StageInfo {
+    public global::March7thHoney.Proto.ChallengeCurBuffInfo StageInfo {
       get { return stageInfo_; }
       set {
         stageInfo_ = value;
@@ -124,10 +124,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "extra_lineup_type" field.</summary>
     public const int ExtraLineupTypeFieldNumber = 4;
-    private global::CastoriceHoney.Server.Proto.ExtraLineupType extraLineupType_ = global::CastoriceHoney.Server.Proto.ExtraLineupType.LineupNone;
+    private global::March7thHoney.Proto.ExtraLineupType extraLineupType_ = global::March7thHoney.Proto.ExtraLineupType.LineupNone;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ExtraLineupType ExtraLineupType {
+    public global::March7thHoney.Proto.ExtraLineupType ExtraLineupType {
       get { return extraLineupType_; }
       set {
         extraLineupType_ = value;
@@ -148,21 +148,21 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "kill_monster_list" field.</summary>
     public const int KillMonsterListFieldNumber = 7;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.KillMonster> _repeated_killMonsterList_codec
-        = pb::FieldCodec.ForMessage(58, global::CastoriceHoney.Server.Proto.KillMonster.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.KillMonster> killMonsterList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.KillMonster>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.KillMonster> _repeated_killMonsterList_codec
+        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.KillMonster.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.KillMonster> killMonsterList_ = new pbc::RepeatedField<global::March7thHoney.Proto.KillMonster>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.KillMonster> KillMonsterList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.KillMonster> KillMonsterList {
       get { return killMonsterList_; }
     }
 
     /// <summary>Field number for the "status" field.</summary>
     public const int StatusFieldNumber = 8;
-    private global::CastoriceHoney.Server.Proto.ChallengeStatus status_ = global::CastoriceHoney.Server.Proto.ChallengeStatus.ChallengeUnknown;
+    private global::March7thHoney.Proto.ChallengeStatus status_ = global::March7thHoney.Proto.ChallengeStatus.ChallengeUnknown;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ChallengeStatus Status {
+    public global::March7thHoney.Proto.ChallengeStatus Status {
       get { return status_; }
       set {
         status_ = value;
@@ -238,10 +238,10 @@ namespace CastoriceHoney.Server.Proto {
       int hash = 1;
       if (RoundCount != 0) hash ^= RoundCount.GetHashCode();
       if (stageInfo_ != null) hash ^= StageInfo.GetHashCode();
-      if (ExtraLineupType != global::CastoriceHoney.Server.Proto.ExtraLineupType.LineupNone) hash ^= ExtraLineupType.GetHashCode();
+      if (ExtraLineupType != global::March7thHoney.Proto.ExtraLineupType.LineupNone) hash ^= ExtraLineupType.GetHashCode();
       if (ScoreId != 0) hash ^= ScoreId.GetHashCode();
       hash ^= killMonsterList_.GetHashCode();
-      if (Status != global::CastoriceHoney.Server.Proto.ChallengeStatus.ChallengeUnknown) hash ^= Status.GetHashCode();
+      if (Status != global::March7thHoney.Proto.ChallengeStatus.ChallengeUnknown) hash ^= Status.GetHashCode();
       if (ChallengeId != 0) hash ^= ChallengeId.GetHashCode();
       if (DeadAvatarNum != 0) hash ^= DeadAvatarNum.GetHashCode();
       if (ScoreTwo != 0) hash ^= ScoreTwo.GetHashCode();
@@ -271,7 +271,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(18);
         output.WriteMessage(StageInfo);
       }
-      if (ExtraLineupType != global::CastoriceHoney.Server.Proto.ExtraLineupType.LineupNone) {
+      if (ExtraLineupType != global::March7thHoney.Proto.ExtraLineupType.LineupNone) {
         output.WriteRawTag(32);
         output.WriteEnum((int) ExtraLineupType);
       }
@@ -280,7 +280,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteUInt32(ScoreId);
       }
       killMonsterList_.WriteTo(output, _repeated_killMonsterList_codec);
-      if (Status != global::CastoriceHoney.Server.Proto.ChallengeStatus.ChallengeUnknown) {
+      if (Status != global::March7thHoney.Proto.ChallengeStatus.ChallengeUnknown) {
         output.WriteRawTag(64);
         output.WriteEnum((int) Status);
       }
@@ -314,7 +314,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(18);
         output.WriteMessage(StageInfo);
       }
-      if (ExtraLineupType != global::CastoriceHoney.Server.Proto.ExtraLineupType.LineupNone) {
+      if (ExtraLineupType != global::March7thHoney.Proto.ExtraLineupType.LineupNone) {
         output.WriteRawTag(32);
         output.WriteEnum((int) ExtraLineupType);
       }
@@ -323,7 +323,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteUInt32(ScoreId);
       }
       killMonsterList_.WriteTo(ref output, _repeated_killMonsterList_codec);
-      if (Status != global::CastoriceHoney.Server.Proto.ChallengeStatus.ChallengeUnknown) {
+      if (Status != global::March7thHoney.Proto.ChallengeStatus.ChallengeUnknown) {
         output.WriteRawTag(64);
         output.WriteEnum((int) Status);
       }
@@ -355,14 +355,14 @@ namespace CastoriceHoney.Server.Proto {
       if (stageInfo_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(StageInfo);
       }
-      if (ExtraLineupType != global::CastoriceHoney.Server.Proto.ExtraLineupType.LineupNone) {
+      if (ExtraLineupType != global::March7thHoney.Proto.ExtraLineupType.LineupNone) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ExtraLineupType);
       }
       if (ScoreId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ScoreId);
       }
       size += killMonsterList_.CalculateSize(_repeated_killMonsterList_codec);
-      if (Status != global::CastoriceHoney.Server.Proto.ChallengeStatus.ChallengeUnknown) {
+      if (Status != global::March7thHoney.Proto.ChallengeStatus.ChallengeUnknown) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Status);
       }
       if (ChallengeId != 0) {
@@ -391,18 +391,18 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.stageInfo_ != null) {
         if (stageInfo_ == null) {
-          StageInfo = new global::CastoriceHoney.Server.Proto.ChallengeCurBuffInfo();
+          StageInfo = new global::March7thHoney.Proto.ChallengeCurBuffInfo();
         }
         StageInfo.MergeFrom(other.StageInfo);
       }
-      if (other.ExtraLineupType != global::CastoriceHoney.Server.Proto.ExtraLineupType.LineupNone) {
+      if (other.ExtraLineupType != global::March7thHoney.Proto.ExtraLineupType.LineupNone) {
         ExtraLineupType = other.ExtraLineupType;
       }
       if (other.ScoreId != 0) {
         ScoreId = other.ScoreId;
       }
       killMonsterList_.Add(other.killMonsterList_);
-      if (other.Status != global::CastoriceHoney.Server.Proto.ChallengeStatus.ChallengeUnknown) {
+      if (other.Status != global::March7thHoney.Proto.ChallengeStatus.ChallengeUnknown) {
         Status = other.Status;
       }
       if (other.ChallengeId != 0) {
@@ -439,13 +439,13 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 18: {
             if (stageInfo_ == null) {
-              StageInfo = new global::CastoriceHoney.Server.Proto.ChallengeCurBuffInfo();
+              StageInfo = new global::March7thHoney.Proto.ChallengeCurBuffInfo();
             }
             input.ReadMessage(StageInfo);
             break;
           }
           case 32: {
-            ExtraLineupType = (global::CastoriceHoney.Server.Proto.ExtraLineupType) input.ReadEnum();
+            ExtraLineupType = (global::March7thHoney.Proto.ExtraLineupType) input.ReadEnum();
             break;
           }
           case 40: {
@@ -457,7 +457,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 64: {
-            Status = (global::CastoriceHoney.Server.Proto.ChallengeStatus) input.ReadEnum();
+            Status = (global::March7thHoney.Proto.ChallengeStatus) input.ReadEnum();
             break;
           }
           case 72: {
@@ -497,13 +497,13 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 18: {
             if (stageInfo_ == null) {
-              StageInfo = new global::CastoriceHoney.Server.Proto.ChallengeCurBuffInfo();
+              StageInfo = new global::March7thHoney.Proto.ChallengeCurBuffInfo();
             }
             input.ReadMessage(StageInfo);
             break;
           }
           case 32: {
-            ExtraLineupType = (global::CastoriceHoney.Server.Proto.ExtraLineupType) input.ReadEnum();
+            ExtraLineupType = (global::March7thHoney.Proto.ExtraLineupType) input.ReadEnum();
             break;
           }
           case 40: {
@@ -515,7 +515,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 64: {
-            Status = (global::CastoriceHoney.Server.Proto.ChallengeStatus) input.ReadEnum();
+            Status = (global::March7thHoney.Proto.ChallengeStatus) input.ReadEnum();
             break;
           }
           case 72: {

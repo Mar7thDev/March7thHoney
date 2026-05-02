@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from SelectRogueCommonDialogueOptionScRsp.proto</summary>
   public static partial class SelectRogueCommonDialogueOptionScRspReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "CgdyZXRjb2RlGA8gASgNQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0",
             "b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.JIBMJCBNDKKReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.JIBMJCBNDKKReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.SelectRogueCommonDialogueOptionScRsp), global::CastoriceHoney.Server.Proto.SelectRogueCommonDialogueOptionScRsp.Parser, new[]{ "MFHLBHFIAGO", "AMADFJNHMFF", "HOHANPJNANA", "DLEGCNJINIE", "LFPLCDMNNAP", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SelectRogueCommonDialogueOptionScRsp), global::March7thHoney.Proto.SelectRogueCommonDialogueOptionScRsp.Parser, new[]{ "MFHLBHFIAGO", "AMADFJNHMFF", "HOHANPJNANA", "DLEGCNJINIE", "LFPLCDMNNAP", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.SelectRogueCommonDialogueOptionScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.SelectRogueCommonDialogueOptionScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -140,10 +140,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "LFPLCDMNNAP" field.</summary>
     public const int LFPLCDMNNAPFieldNumber = 12;
-    private global::CastoriceHoney.Server.Proto.JIBMJCBNDKK lFPLCDMNNAP_;
+    private global::March7thHoney.Proto.JIBMJCBNDKK lFPLCDMNNAP_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.JIBMJCBNDKK LFPLCDMNNAP {
+    public global::March7thHoney.Proto.JIBMJCBNDKK LFPLCDMNNAP {
       get { return lFPLCDMNNAP_; }
       set {
         lFPLCDMNNAP_ = value;
@@ -316,7 +316,7 @@ namespace CastoriceHoney.Server.Proto {
       dLEGCNJINIE_.Add(other.dLEGCNJINIE_);
       if (other.lFPLCDMNNAP_ != null) {
         if (lFPLCDMNNAP_ == null) {
-          LFPLCDMNNAP = new global::CastoriceHoney.Server.Proto.JIBMJCBNDKK();
+          LFPLCDMNNAP = new global::March7thHoney.Proto.JIBMJCBNDKK();
         }
         LFPLCDMNNAP.MergeFrom(other.LFPLCDMNNAP);
       }
@@ -361,7 +361,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 98: {
             if (lFPLCDMNNAP_ == null) {
-              LFPLCDMNNAP = new global::CastoriceHoney.Server.Proto.JIBMJCBNDKK();
+              LFPLCDMNNAP = new global::March7thHoney.Proto.JIBMJCBNDKK();
             }
             input.ReadMessage(LFPLCDMNNAP);
             break;
@@ -408,7 +408,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 98: {
             if (lFPLCDMNNAP_ == null) {
-              LFPLCDMNNAP = new global::CastoriceHoney.Server.Proto.JIBMJCBNDKK();
+              LFPLCDMNNAP = new global::March7thHoney.Proto.JIBMJCBNDKK();
             }
             input.ReadMessage(LFPLCDMNNAP);
             break;

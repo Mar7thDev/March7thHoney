@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GetCurBattleInfoScRsp.proto</summary>
   public static partial class GetCurBattleInfoScRspReflection {
@@ -33,9 +33,9 @@ namespace CastoriceHoney.Server.Proto {
             "dHVzGA8gASgOMhAuQmF0dGxlRW5kU3RhdHVzQjMKE2VtdS5sdW5hcmNvcmUu",
             "cHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.AetherDivideBattleInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.BattleEndStatusReflection.Descriptor, global::CastoriceHoney.Server.Proto.SceneBattleInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.AetherDivideBattleInfoReflection.Descriptor, global::March7thHoney.Proto.BattleEndStatusReflection.Descriptor, global::March7thHoney.Proto.SceneBattleInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GetCurBattleInfoScRsp), global::CastoriceHoney.Server.Proto.GetCurBattleInfoScRsp.Parser, new[]{ "Retcode", "DPCNCLIBJBC", "BattleInfo", "HMBGOPOLOJO", "LastEndStatus" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetCurBattleInfoScRsp), global::March7thHoney.Proto.GetCurBattleInfoScRsp.Parser, new[]{ "Retcode", "DPCNCLIBJBC", "BattleInfo", "HMBGOPOLOJO", "LastEndStatus" }, null, null, null, null)
           }));
     }
     #endregion
@@ -57,7 +57,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GetCurBattleInfoScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GetCurBattleInfoScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -105,10 +105,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "DPCNCLIBJBC" field.</summary>
     public const int DPCNCLIBJBCFieldNumber = 10;
-    private global::CastoriceHoney.Server.Proto.AetherDivideBattleInfo dPCNCLIBJBC_;
+    private global::March7thHoney.Proto.AetherDivideBattleInfo dPCNCLIBJBC_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.AetherDivideBattleInfo DPCNCLIBJBC {
+    public global::March7thHoney.Proto.AetherDivideBattleInfo DPCNCLIBJBC {
       get { return dPCNCLIBJBC_; }
       set {
         dPCNCLIBJBC_ = value;
@@ -117,10 +117,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "battle_info" field.</summary>
     public const int BattleInfoFieldNumber = 12;
-    private global::CastoriceHoney.Server.Proto.SceneBattleInfo battleInfo_;
+    private global::March7thHoney.Proto.SceneBattleInfo battleInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.SceneBattleInfo BattleInfo {
+    public global::March7thHoney.Proto.SceneBattleInfo BattleInfo {
       get { return battleInfo_; }
       set {
         battleInfo_ = value;
@@ -141,10 +141,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "last_end_status" field.</summary>
     public const int LastEndStatusFieldNumber = 15;
-    private global::CastoriceHoney.Server.Proto.BattleEndStatus lastEndStatus_ = global::CastoriceHoney.Server.Proto.BattleEndStatus.BattleEndNone;
+    private global::March7thHoney.Proto.BattleEndStatus lastEndStatus_ = global::March7thHoney.Proto.BattleEndStatus.BattleEndNone;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.BattleEndStatus LastEndStatus {
+    public global::March7thHoney.Proto.BattleEndStatus LastEndStatus {
       get { return lastEndStatus_; }
       set {
         lastEndStatus_ = value;
@@ -182,7 +182,7 @@ namespace CastoriceHoney.Server.Proto {
       if (dPCNCLIBJBC_ != null) hash ^= DPCNCLIBJBC.GetHashCode();
       if (battleInfo_ != null) hash ^= BattleInfo.GetHashCode();
       if (HMBGOPOLOJO != 0) hash ^= HMBGOPOLOJO.GetHashCode();
-      if (LastEndStatus != global::CastoriceHoney.Server.Proto.BattleEndStatus.BattleEndNone) hash ^= LastEndStatus.GetHashCode();
+      if (LastEndStatus != global::March7thHoney.Proto.BattleEndStatus.BattleEndNone) hash ^= LastEndStatus.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -217,7 +217,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(104);
         output.WriteUInt32(HMBGOPOLOJO);
       }
-      if (LastEndStatus != global::CastoriceHoney.Server.Proto.BattleEndStatus.BattleEndNone) {
+      if (LastEndStatus != global::March7thHoney.Proto.BattleEndStatus.BattleEndNone) {
         output.WriteRawTag(120);
         output.WriteEnum((int) LastEndStatus);
       }
@@ -247,7 +247,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(104);
         output.WriteUInt32(HMBGOPOLOJO);
       }
-      if (LastEndStatus != global::CastoriceHoney.Server.Proto.BattleEndStatus.BattleEndNone) {
+      if (LastEndStatus != global::March7thHoney.Proto.BattleEndStatus.BattleEndNone) {
         output.WriteRawTag(120);
         output.WriteEnum((int) LastEndStatus);
       }
@@ -273,7 +273,7 @@ namespace CastoriceHoney.Server.Proto {
       if (HMBGOPOLOJO != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(HMBGOPOLOJO);
       }
-      if (LastEndStatus != global::CastoriceHoney.Server.Proto.BattleEndStatus.BattleEndNone) {
+      if (LastEndStatus != global::March7thHoney.Proto.BattleEndStatus.BattleEndNone) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) LastEndStatus);
       }
       if (_unknownFields != null) {
@@ -293,20 +293,20 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.dPCNCLIBJBC_ != null) {
         if (dPCNCLIBJBC_ == null) {
-          DPCNCLIBJBC = new global::CastoriceHoney.Server.Proto.AetherDivideBattleInfo();
+          DPCNCLIBJBC = new global::March7thHoney.Proto.AetherDivideBattleInfo();
         }
         DPCNCLIBJBC.MergeFrom(other.DPCNCLIBJBC);
       }
       if (other.battleInfo_ != null) {
         if (battleInfo_ == null) {
-          BattleInfo = new global::CastoriceHoney.Server.Proto.SceneBattleInfo();
+          BattleInfo = new global::March7thHoney.Proto.SceneBattleInfo();
         }
         BattleInfo.MergeFrom(other.BattleInfo);
       }
       if (other.HMBGOPOLOJO != 0) {
         HMBGOPOLOJO = other.HMBGOPOLOJO;
       }
-      if (other.LastEndStatus != global::CastoriceHoney.Server.Proto.BattleEndStatus.BattleEndNone) {
+      if (other.LastEndStatus != global::March7thHoney.Proto.BattleEndStatus.BattleEndNone) {
         LastEndStatus = other.LastEndStatus;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -334,14 +334,14 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 82: {
             if (dPCNCLIBJBC_ == null) {
-              DPCNCLIBJBC = new global::CastoriceHoney.Server.Proto.AetherDivideBattleInfo();
+              DPCNCLIBJBC = new global::March7thHoney.Proto.AetherDivideBattleInfo();
             }
             input.ReadMessage(DPCNCLIBJBC);
             break;
           }
           case 98: {
             if (battleInfo_ == null) {
-              BattleInfo = new global::CastoriceHoney.Server.Proto.SceneBattleInfo();
+              BattleInfo = new global::March7thHoney.Proto.SceneBattleInfo();
             }
             input.ReadMessage(BattleInfo);
             break;
@@ -351,7 +351,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 120: {
-            LastEndStatus = (global::CastoriceHoney.Server.Proto.BattleEndStatus) input.ReadEnum();
+            LastEndStatus = (global::March7thHoney.Proto.BattleEndStatus) input.ReadEnum();
             break;
           }
         }
@@ -379,14 +379,14 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 82: {
             if (dPCNCLIBJBC_ == null) {
-              DPCNCLIBJBC = new global::CastoriceHoney.Server.Proto.AetherDivideBattleInfo();
+              DPCNCLIBJBC = new global::March7thHoney.Proto.AetherDivideBattleInfo();
             }
             input.ReadMessage(DPCNCLIBJBC);
             break;
           }
           case 98: {
             if (battleInfo_ == null) {
-              BattleInfo = new global::CastoriceHoney.Server.Proto.SceneBattleInfo();
+              BattleInfo = new global::March7thHoney.Proto.SceneBattleInfo();
             }
             input.ReadMessage(BattleInfo);
             break;
@@ -396,7 +396,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 120: {
-            LastEndStatus = (global::CastoriceHoney.Server.Proto.BattleEndStatus) input.ReadEnum();
+            LastEndStatus = (global::March7thHoney.Proto.BattleEndStatus) input.ReadEnum();
             break;
           }
         }

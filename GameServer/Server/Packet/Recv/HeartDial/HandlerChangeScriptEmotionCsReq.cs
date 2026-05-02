@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.Enums.Mission;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.HeartDial;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Enums.Mission;
+using March7thHoney.GameServer.Server.Packet.Send.HeartDial;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.HeartDial;
+namespace March7thHoney.GameServer.Server.Packet.Recv.HeartDial;
 
 [Opcode(CmdIds.ChangeScriptEmotionCsReq)]
 public class HandlerChangeScriptEmotionCsReq : Handler

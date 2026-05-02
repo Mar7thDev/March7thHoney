@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Database.Scene;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Database.Scene;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Send.Raid;
+namespace March7thHoney.GameServer.Server.Packet.Send.Raid;
 
 public class PacketRaidInfoNotify : BasePacket
 {

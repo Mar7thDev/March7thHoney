@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.Data.Custom;
-using CastoriceHoney.Server.GameServer.Game.RogueTourn;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Data.Custom;
+using March7thHoney.GameServer.Game.RogueTourn;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.GameServer.Game.Rogue.Buff;
+namespace March7thHoney.GameServer.Game.Rogue.Buff;
 
 public class RogueBuffSelectMenu(BaseRogueInstance rogue)
 {

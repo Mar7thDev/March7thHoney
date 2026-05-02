@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Data.Custom;
-using CastoriceHoney.Server.GameServer.Game.Battle;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Data.Custom;
+using March7thHoney.GameServer.Game.Battle;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Game.ChessRogue.Modifier;
+namespace March7thHoney.GameServer.Game.ChessRogue.Modifier;
 
 public class ChessRogueDiceModifierInstance(int modifierId, ChessRogueDiceSurfaceContentEffect effect)
 {

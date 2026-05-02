@@ -1,14 +1,14 @@
-﻿using Google.Protobuf;
-using CastoriceHoney.Server.Configuration;
-using CastoriceHoney.Server.Database.Account;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
-using CastoriceHoney.Server.WebServer.Handler;
-using CastoriceHoney.Server.WebServer.Objects;
+using Google.Protobuf;
+using March7thHoney.Configuration;
+using March7thHoney.Database.Account;
+using March7thHoney.Proto;
+using March7thHoney.Util;
+using March7thHoney.WebServer.Handler;
+using March7thHoney.WebServer.Objects;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CastoriceHoney.Server.WebServer.Controllers;
+namespace March7thHoney.WebServer.Controllers;
 
 [ApiController]
 [EnableCors("AllowAll")]

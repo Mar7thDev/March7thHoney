@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from Quest.proto</summary>
   public static partial class QuestReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "aWQYDSABKA1CMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhv",
             "bmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.QuestStatusReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.QuestStatusReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.Quest), global::CastoriceHoney.Server.Proto.Quest.Parser, new[]{ "LFBADOCHCDN", "Progress", "FinishTime", "Status", "Id" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.Quest), global::March7thHoney.Proto.Quest.Parser, new[]{ "LFBADOCHCDN", "Progress", "FinishTime", "Status", "Id" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.QuestReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.QuestReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -125,10 +125,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "status" field.</summary>
     public const int StatusFieldNumber = 8;
-    private global::CastoriceHoney.Server.Proto.QuestStatus status_ = global::CastoriceHoney.Server.Proto.QuestStatus.QuestNone;
+    private global::March7thHoney.Proto.QuestStatus status_ = global::March7thHoney.Proto.QuestStatus.QuestNone;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.QuestStatus Status {
+    public global::March7thHoney.Proto.QuestStatus Status {
       get { return status_; }
       set {
         status_ = value;
@@ -177,7 +177,7 @@ namespace CastoriceHoney.Server.Proto {
       hash ^= lFBADOCHCDN_.GetHashCode();
       if (Progress != 0) hash ^= Progress.GetHashCode();
       if (FinishTime != 0L) hash ^= FinishTime.GetHashCode();
-      if (Status != global::CastoriceHoney.Server.Proto.QuestStatus.QuestNone) hash ^= Status.GetHashCode();
+      if (Status != global::March7thHoney.Proto.QuestStatus.QuestNone) hash ^= Status.GetHashCode();
       if (Id != 0) hash ^= Id.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -206,7 +206,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(24);
         output.WriteInt64(FinishTime);
       }
-      if (Status != global::CastoriceHoney.Server.Proto.QuestStatus.QuestNone) {
+      if (Status != global::March7thHoney.Proto.QuestStatus.QuestNone) {
         output.WriteRawTag(64);
         output.WriteEnum((int) Status);
       }
@@ -233,7 +233,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(24);
         output.WriteInt64(FinishTime);
       }
-      if (Status != global::CastoriceHoney.Server.Proto.QuestStatus.QuestNone) {
+      if (Status != global::March7thHoney.Proto.QuestStatus.QuestNone) {
         output.WriteRawTag(64);
         output.WriteEnum((int) Status);
       }
@@ -258,7 +258,7 @@ namespace CastoriceHoney.Server.Proto {
       if (FinishTime != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(FinishTime);
       }
-      if (Status != global::CastoriceHoney.Server.Proto.QuestStatus.QuestNone) {
+      if (Status != global::March7thHoney.Proto.QuestStatus.QuestNone) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Status);
       }
       if (Id != 0) {
@@ -283,7 +283,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other.FinishTime != 0L) {
         FinishTime = other.FinishTime;
       }
-      if (other.Status != global::CastoriceHoney.Server.Proto.QuestStatus.QuestNone) {
+      if (other.Status != global::March7thHoney.Proto.QuestStatus.QuestNone) {
         Status = other.Status;
       }
       if (other.Id != 0) {
@@ -322,7 +322,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 64: {
-            Status = (global::CastoriceHoney.Server.Proto.QuestStatus) input.ReadEnum();
+            Status = (global::March7thHoney.Proto.QuestStatus) input.ReadEnum();
             break;
           }
           case 104: {
@@ -362,7 +362,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 64: {
-            Status = (global::CastoriceHoney.Server.Proto.QuestStatus) input.ReadEnum();
+            Status = (global::March7thHoney.Proto.QuestStatus) input.ReadEnum();
             break;
           }
           case 104: {

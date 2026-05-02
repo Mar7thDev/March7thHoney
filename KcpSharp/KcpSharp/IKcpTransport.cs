@@ -1,6 +1,6 @@
 using System.Net;
 
-namespace CastoriceHoney.Server.Kcp.KcpSharp;
+namespace March7thHoney.Kcp.KcpSharp;
 
 /// <summary>
 ///     A transport to send and receive packets.

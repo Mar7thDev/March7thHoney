@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GroupStatus.proto</summary>
   public static partial class GroupStatusReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "bWUYCSABKANCMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhv",
             "bmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.MessageGroupStatusReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.MessageGroupStatusReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GroupStatus), global::CastoriceHoney.Server.Proto.GroupStatus.Parser, new[]{ "GroupStatus_", "GroupId", "RefreshTime" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GroupStatus), global::March7thHoney.Proto.GroupStatus.Parser, new[]{ "GroupStatus_", "GroupId", "RefreshTime" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GroupStatusReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GroupStatusReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -88,10 +88,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "group_status" field.</summary>
     public const int GroupStatus_FieldNumber = 3;
-    private global::CastoriceHoney.Server.Proto.MessageGroupStatus groupStatus_ = global::CastoriceHoney.Server.Proto.MessageGroupStatus.MessageGroupNone;
+    private global::March7thHoney.Proto.MessageGroupStatus groupStatus_ = global::March7thHoney.Proto.MessageGroupStatus.MessageGroupNone;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.MessageGroupStatus GroupStatus_ {
+    public global::March7thHoney.Proto.MessageGroupStatus GroupStatus_ {
       get { return groupStatus_; }
       set {
         groupStatus_ = value;
@@ -147,7 +147,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (GroupStatus_ != global::CastoriceHoney.Server.Proto.MessageGroupStatus.MessageGroupNone) hash ^= GroupStatus_.GetHashCode();
+      if (GroupStatus_ != global::March7thHoney.Proto.MessageGroupStatus.MessageGroupNone) hash ^= GroupStatus_.GetHashCode();
       if (GroupId != 0) hash ^= GroupId.GetHashCode();
       if (RefreshTime != 0L) hash ^= RefreshTime.GetHashCode();
       if (_unknownFields != null) {
@@ -168,7 +168,7 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (GroupStatus_ != global::CastoriceHoney.Server.Proto.MessageGroupStatus.MessageGroupNone) {
+      if (GroupStatus_ != global::March7thHoney.Proto.MessageGroupStatus.MessageGroupNone) {
         output.WriteRawTag(24);
         output.WriteEnum((int) GroupStatus_);
       }
@@ -190,7 +190,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (GroupStatus_ != global::CastoriceHoney.Server.Proto.MessageGroupStatus.MessageGroupNone) {
+      if (GroupStatus_ != global::March7thHoney.Proto.MessageGroupStatus.MessageGroupNone) {
         output.WriteRawTag(24);
         output.WriteEnum((int) GroupStatus_);
       }
@@ -212,7 +212,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (GroupStatus_ != global::CastoriceHoney.Server.Proto.MessageGroupStatus.MessageGroupNone) {
+      if (GroupStatus_ != global::March7thHoney.Proto.MessageGroupStatus.MessageGroupNone) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) GroupStatus_);
       }
       if (GroupId != 0) {
@@ -233,7 +233,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.GroupStatus_ != global::CastoriceHoney.Server.Proto.MessageGroupStatus.MessageGroupNone) {
+      if (other.GroupStatus_ != global::March7thHoney.Proto.MessageGroupStatus.MessageGroupNone) {
         GroupStatus_ = other.GroupStatus_;
       }
       if (other.GroupId != 0) {
@@ -262,7 +262,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 24: {
-            GroupStatus_ = (global::CastoriceHoney.Server.Proto.MessageGroupStatus) input.ReadEnum();
+            GroupStatus_ = (global::March7thHoney.Proto.MessageGroupStatus) input.ReadEnum();
             break;
           }
           case 40: {
@@ -293,7 +293,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 24: {
-            GroupStatus_ = (global::CastoriceHoney.Server.Proto.MessageGroupStatus) input.ReadEnum();
+            GroupStatus_ = (global::March7thHoney.Proto.MessageGroupStatus) input.ReadEnum();
             break;
           }
           case 40: {

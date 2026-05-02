@@ -1,6 +1,6 @@
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Game.Sync;
+namespace March7thHoney.GameServer.Game.Sync;
 
 public abstract class BaseSyncData
 {

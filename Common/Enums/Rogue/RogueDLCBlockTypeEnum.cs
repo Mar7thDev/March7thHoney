@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Enums.Rogue;
+namespace March7thHoney.Enums.Rogue;
 
 // Original class: RogueDLCBlockType
 public enum RogueDLCBlockTypeEnum

@@ -1,6 +1,6 @@
-using CastoriceHoney.Server.Enums.Task;
+using March7thHoney.Enums.Task;
 
-namespace CastoriceHoney.Server.Data.Config.Task;
+namespace March7thHoney.Data.Config.Task;
 
 public class ByCompareSubMissionState : PredicateConfigInfo
 {

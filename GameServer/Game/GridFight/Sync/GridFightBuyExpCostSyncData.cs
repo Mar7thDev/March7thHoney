@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Proto.ServerSide;
+using March7thHoney.Proto;
+using March7thHoney.Proto.ServerSide;
 
-namespace CastoriceHoney.Server.GameServer.Game.GridFight.Sync;
+namespace March7thHoney.GameServer.Game.GridFight.Sync;
 
 public class GridFightBuyExpCostSyncData(GridFightSrc src, GridFightBasicInfoPb info, params uint[] param) : BaseGridFightSyncData(src, 0, param)
 {

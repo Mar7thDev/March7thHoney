@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("TrainPartyDynamicConfig.json")]
 public class TrainPartyDynamicConfigExcel : ExcelResource

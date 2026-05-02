@@ -3,13 +3,13 @@ using LinkedListOfQueueItem = KcpSharp.NetstandardShim.LinkedList<(KcpSharp.KcpB
 using LinkedListNodeOfQueueItem = KcpSharp.NetstandardShim.LinkedListNode<(KcpSharp.KcpBuffer Data, byte Fragment)>;
 #else
 using LinkedListNodeOfQueueItem =
-    System.Collections.Generic.LinkedListNode<(CastoriceHoney.Server.Kcp.KcpSharp.KcpBuffer Data, byte Fragment
+    System.Collections.Generic.LinkedListNode<(March7thHoney.Kcp.KcpSharp.KcpBuffer Data, byte Fragment
         )>;
 using LinkedListOfQueueItem =
-    System.Collections.Generic.LinkedList<(CastoriceHoney.Server.Kcp.KcpSharp.KcpBuffer Data, byte Fragment)>;
+    System.Collections.Generic.LinkedList<(March7thHoney.Kcp.KcpSharp.KcpBuffer Data, byte Fragment)>;
 #endif
 
-namespace CastoriceHoney.Server.Kcp.KcpSharp;
+namespace March7thHoney.Kcp.KcpSharp;
 
 internal sealed class KcpSendReceiveQueueItemCache
 {

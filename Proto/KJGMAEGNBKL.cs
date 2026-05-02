@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from KJGMAEGNBKL.proto</summary>
   public static partial class KJGMAEGNBKLReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "QkJKTRgJIAMoCzIMLklPQkJJTEdPRkNMQjMKE2VtdS5sdW5hcmNvcmUucHJv",
             "dG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.AreaDynamicInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.IOBBILGOFCLReflection.Descriptor, global::CastoriceHoney.Server.Proto.LMHFOFIEIMNReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.AreaDynamicInfoReflection.Descriptor, global::March7thHoney.Proto.IOBBILGOFCLReflection.Descriptor, global::March7thHoney.Proto.LMHFOFIEIMNReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.KJGMAEGNBKL), global::CastoriceHoney.Server.Proto.KJGMAEGNBKL.Parser, new[]{ "JDBOIHJHEHP", "NMLANPJGJFA", "IDPHCKABBJM" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.KJGMAEGNBKL), global::March7thHoney.Proto.KJGMAEGNBKL.Parser, new[]{ "JDBOIHJHEHP", "NMLANPJGJFA", "IDPHCKABBJM" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.KJGMAEGNBKLReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.KJGMAEGNBKLReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -89,34 +89,34 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "JDBOIHJHEHP" field.</summary>
     public const int JDBOIHJHEHPFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.AreaDynamicInfo> _repeated_jDBOIHJHEHP_codec
-        = pb::FieldCodec.ForMessage(18, global::CastoriceHoney.Server.Proto.AreaDynamicInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AreaDynamicInfo> jDBOIHJHEHP_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AreaDynamicInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AreaDynamicInfo> _repeated_jDBOIHJHEHP_codec
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.AreaDynamicInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AreaDynamicInfo> jDBOIHJHEHP_ = new pbc::RepeatedField<global::March7thHoney.Proto.AreaDynamicInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AreaDynamicInfo> JDBOIHJHEHP {
+    public pbc::RepeatedField<global::March7thHoney.Proto.AreaDynamicInfo> JDBOIHJHEHP {
       get { return jDBOIHJHEHP_; }
     }
 
     /// <summary>Field number for the "NMLANPJGJFA" field.</summary>
     public const int NMLANPJGJFAFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.LMHFOFIEIMN> _repeated_nMLANPJGJFA_codec
-        = pb::FieldCodec.ForMessage(34, global::CastoriceHoney.Server.Proto.LMHFOFIEIMN.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.LMHFOFIEIMN> nMLANPJGJFA_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.LMHFOFIEIMN>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.LMHFOFIEIMN> _repeated_nMLANPJGJFA_codec
+        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.LMHFOFIEIMN.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.LMHFOFIEIMN> nMLANPJGJFA_ = new pbc::RepeatedField<global::March7thHoney.Proto.LMHFOFIEIMN>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.LMHFOFIEIMN> NMLANPJGJFA {
+    public pbc::RepeatedField<global::March7thHoney.Proto.LMHFOFIEIMN> NMLANPJGJFA {
       get { return nMLANPJGJFA_; }
     }
 
     /// <summary>Field number for the "IDPHCKABBJM" field.</summary>
     public const int IDPHCKABBJMFieldNumber = 9;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.IOBBILGOFCL> _repeated_iDPHCKABBJM_codec
-        = pb::FieldCodec.ForMessage(74, global::CastoriceHoney.Server.Proto.IOBBILGOFCL.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.IOBBILGOFCL> iDPHCKABBJM_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.IOBBILGOFCL>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.IOBBILGOFCL> _repeated_iDPHCKABBJM_codec
+        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.IOBBILGOFCL.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.IOBBILGOFCL> iDPHCKABBJM_ = new pbc::RepeatedField<global::March7thHoney.Proto.IOBBILGOFCL>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.IOBBILGOFCL> IDPHCKABBJM {
+    public pbc::RepeatedField<global::March7thHoney.Proto.IOBBILGOFCL> IDPHCKABBJM {
       get { return iDPHCKABBJM_; }
     }
 

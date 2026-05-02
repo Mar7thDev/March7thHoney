@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Data.Excel;
-using CastoriceHoney.Server.GameServer.Game.Player;
+using March7thHoney.Data;
+using March7thHoney.Data.Excel;
+using March7thHoney.GameServer.Game.Player;
 
-namespace CastoriceHoney.Server.GameServer.Game.Task;
+namespace March7thHoney.GameServer.Game.Task;
 
 public class SceneTaskTrigger(PlayerInstance player)
 {

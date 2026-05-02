@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from TakeBpRewardCsReq.proto</summary>
   public static partial class TakeBpRewardCsReqReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "ASgNQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5T",
             "ZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.BpRewardTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.BpRewardTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.TakeBpRewardCsReq), global::CastoriceHoney.Server.Proto.TakeBpRewardCsReq.Parser, new[]{ "Type", "OptionalRewardId", "Level" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TakeBpRewardCsReq), global::March7thHoney.Proto.TakeBpRewardCsReq.Parser, new[]{ "Type", "OptionalRewardId", "Level" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.TakeBpRewardCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.TakeBpRewardCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -88,10 +88,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "type" field.</summary>
     public const int TypeFieldNumber = 2;
-    private global::CastoriceHoney.Server.Proto.BpRewardType type_ = global::CastoriceHoney.Server.Proto.BpRewardType.FaajkcacgcdOejcecbchlc;
+    private global::March7thHoney.Proto.BpRewardType type_ = global::March7thHoney.Proto.BpRewardType.FaajkcacgcdOejcecbchlc;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.BpRewardType Type {
+    public global::March7thHoney.Proto.BpRewardType Type {
       get { return type_; }
       set {
         type_ = value;
@@ -147,7 +147,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Type != global::CastoriceHoney.Server.Proto.BpRewardType.FaajkcacgcdOejcecbchlc) hash ^= Type.GetHashCode();
+      if (Type != global::March7thHoney.Proto.BpRewardType.FaajkcacgcdOejcecbchlc) hash ^= Type.GetHashCode();
       if (OptionalRewardId != 0) hash ^= OptionalRewardId.GetHashCode();
       if (Level != 0) hash ^= Level.GetHashCode();
       if (_unknownFields != null) {
@@ -168,7 +168,7 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Type != global::CastoriceHoney.Server.Proto.BpRewardType.FaajkcacgcdOejcecbchlc) {
+      if (Type != global::March7thHoney.Proto.BpRewardType.FaajkcacgcdOejcecbchlc) {
         output.WriteRawTag(16);
         output.WriteEnum((int) Type);
       }
@@ -190,7 +190,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Type != global::CastoriceHoney.Server.Proto.BpRewardType.FaajkcacgcdOejcecbchlc) {
+      if (Type != global::March7thHoney.Proto.BpRewardType.FaajkcacgcdOejcecbchlc) {
         output.WriteRawTag(16);
         output.WriteEnum((int) Type);
       }
@@ -212,7 +212,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Type != global::CastoriceHoney.Server.Proto.BpRewardType.FaajkcacgcdOejcecbchlc) {
+      if (Type != global::March7thHoney.Proto.BpRewardType.FaajkcacgcdOejcecbchlc) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
       }
       if (OptionalRewardId != 0) {
@@ -233,7 +233,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.Type != global::CastoriceHoney.Server.Proto.BpRewardType.FaajkcacgcdOejcecbchlc) {
+      if (other.Type != global::March7thHoney.Proto.BpRewardType.FaajkcacgcdOejcecbchlc) {
         Type = other.Type;
       }
       if (other.OptionalRewardId != 0) {
@@ -262,7 +262,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 16: {
-            Type = (global::CastoriceHoney.Server.Proto.BpRewardType) input.ReadEnum();
+            Type = (global::March7thHoney.Proto.BpRewardType) input.ReadEnum();
             break;
           }
           case 40: {
@@ -293,7 +293,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 16: {
-            Type = (global::CastoriceHoney.Server.Proto.BpRewardType) input.ReadEnum();
+            Type = (global::March7thHoney.Proto.BpRewardType) input.ReadEnum();
             break;
           }
           case 40: {

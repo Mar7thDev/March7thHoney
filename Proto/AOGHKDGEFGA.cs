@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from AOGHKDGEFGA.proto</summary>
   public static partial class AOGHKDGEFGAReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90",
             "b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.NBMFOJAKMGPReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.NBMFOJAKMGPReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.AOGHKDGEFGA), global::CastoriceHoney.Server.Proto.AOGHKDGEFGA.Parser, new[]{ "RelicPlanList", "AvatarId", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AOGHKDGEFGA), global::March7thHoney.Proto.AOGHKDGEFGA.Parser, new[]{ "RelicPlanList", "AvatarId", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.AOGHKDGEFGAReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.AOGHKDGEFGAReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -88,12 +88,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "relic_plan_list" field.</summary>
     public const int RelicPlanListFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.NBMFOJAKMGP> _repeated_relicPlanList_codec
-        = pb::FieldCodec.ForMessage(18, global::CastoriceHoney.Server.Proto.NBMFOJAKMGP.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.NBMFOJAKMGP> relicPlanList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.NBMFOJAKMGP>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.NBMFOJAKMGP> _repeated_relicPlanList_codec
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.NBMFOJAKMGP.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.NBMFOJAKMGP> relicPlanList_ = new pbc::RepeatedField<global::March7thHoney.Proto.NBMFOJAKMGP>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.NBMFOJAKMGP> RelicPlanList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.NBMFOJAKMGP> RelicPlanList {
       get { return relicPlanList_; }
     }
 

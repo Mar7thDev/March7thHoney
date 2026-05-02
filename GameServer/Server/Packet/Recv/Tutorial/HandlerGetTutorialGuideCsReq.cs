@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Tutorial;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Util;
+using March7thHoney.GameServer.Server.Packet.Send.Tutorial;
+using March7thHoney.Kcp;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Tutorial;
+namespace March7thHoney.GameServer.Server.Packet.Recv.Tutorial;
 
 [Opcode(CmdIds.GetTutorialGuideCsReq)]
 public class HandlerGetTutorialGuideCsReq : Handler

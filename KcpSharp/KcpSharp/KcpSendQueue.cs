@@ -3,12 +3,12 @@ using LinkedListOfQueueItem = KcpSharp.NetstandardShim.LinkedList<(KcpSharp.KcpB
 using LinkedListNodeOfQueueItem = KcpSharp.NetstandardShim.LinkedListNode<(KcpSharp.KcpBuffer Data, byte Fragment)>;
 #else
 using LinkedListOfQueueItem =
-    System.Collections.Generic.LinkedList<(CastoriceHoney.Server.Kcp.KcpSharp.KcpBuffer Data, byte Fragment)>;
+    System.Collections.Generic.LinkedList<(March7thHoney.Kcp.KcpSharp.KcpBuffer Data, byte Fragment)>;
 #endif
 using System.Diagnostics;
 using System.Threading.Tasks.Sources;
 
-namespace CastoriceHoney.Server.Kcp.KcpSharp;
+namespace March7thHoney.Kcp.KcpSharp;
 
 internal sealed class KcpSendQueue : IValueTaskSource<bool>, IValueTaskSource, IDisposable
 {

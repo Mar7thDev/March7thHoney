@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from ClientObjDownloadData.proto</summary>
   public static partial class ClientObjDownloadDataReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "RG93bmxvYWREYXRhQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3Jp",
             "Y2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ClientDownloadDataReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ClientDownloadDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ClientObjDownloadData), global::CastoriceHoney.Server.Proto.ClientObjDownloadData.Parser, new[]{ "ScInfo", "ClientObjDownloadData_", "DynCode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ClientObjDownloadData), global::March7thHoney.Proto.ClientObjDownloadData.Parser, new[]{ "ScInfo", "ClientObjDownloadData_", "DynCode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ClientObjDownloadDataReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ClientObjDownloadDataReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -101,10 +101,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "client_obj_download_data" field.</summary>
     public const int ClientObjDownloadData_FieldNumber = 2;
-    private global::CastoriceHoney.Server.Proto.ClientDownloadData clientObjDownloadData_;
+    private global::March7thHoney.Proto.ClientDownloadData clientObjDownloadData_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ClientDownloadData ClientObjDownloadData_ {
+    public global::March7thHoney.Proto.ClientDownloadData ClientObjDownloadData_ {
       get { return clientObjDownloadData_; }
       set {
         clientObjDownloadData_ = value;
@@ -113,12 +113,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "dyn_code" field.</summary>
     public const int DynCodeFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ClientDownloadData> _repeated_dynCode_codec
-        = pb::FieldCodec.ForMessage(26, global::CastoriceHoney.Server.Proto.ClientDownloadData.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ClientDownloadData> dynCode_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ClientDownloadData>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ClientDownloadData> _repeated_dynCode_codec
+        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.ClientDownloadData.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ClientDownloadData> dynCode_ = new pbc::RepeatedField<global::March7thHoney.Proto.ClientDownloadData>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ClientDownloadData> DynCode {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ClientDownloadData> DynCode {
       get { return dynCode_; }
     }
 
@@ -230,7 +230,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.clientObjDownloadData_ != null) {
         if (clientObjDownloadData_ == null) {
-          ClientObjDownloadData_ = new global::CastoriceHoney.Server.Proto.ClientDownloadData();
+          ClientObjDownloadData_ = new global::March7thHoney.Proto.ClientDownloadData();
         }
         ClientObjDownloadData_.MergeFrom(other.ClientObjDownloadData_);
       }
@@ -260,7 +260,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 18: {
             if (clientObjDownloadData_ == null) {
-              ClientObjDownloadData_ = new global::CastoriceHoney.Server.Proto.ClientDownloadData();
+              ClientObjDownloadData_ = new global::March7thHoney.Proto.ClientDownloadData();
             }
             input.ReadMessage(ClientObjDownloadData_);
             break;
@@ -294,7 +294,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 18: {
             if (clientObjDownloadData_ == null) {
-              ClientObjDownloadData_ = new global::CastoriceHoney.Server.Proto.ClientDownloadData();
+              ClientObjDownloadData_ = new global::March7thHoney.Proto.ClientDownloadData();
             }
             input.ReadMessage(ClientObjDownloadData_);
             break;

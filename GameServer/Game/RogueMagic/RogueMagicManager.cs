@@ -1,10 +1,10 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Enums.RogueMagic;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Lineup;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Data;
+using March7thHoney.Enums.RogueMagic;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Server.Packet.Send.Lineup;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Game.RogueMagic;
+namespace March7thHoney.GameServer.Game.RogueMagic;
 
 public class RogueMagicManager(PlayerInstance player) : BasePlayerManager(player)
 {

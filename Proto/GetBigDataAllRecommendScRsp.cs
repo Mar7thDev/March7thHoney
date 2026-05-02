@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GetBigDataAllRecommendScRsp.proto</summary>
   public static partial class GetBigDataAllRecommendScRspReflection {
@@ -36,9 +36,9 @@ namespace CastoriceHoney.Server.Proto {
             "DnJlY29tbWVuZF90eXBlQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0",
             "b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.BigDataRecommendAvatarRelicReflection.Descriptor, global::CastoriceHoney.Server.Proto.BigDataRecommendRelicAvatarReflection.Descriptor, global::CastoriceHoney.Server.Proto.BigDataRecommendTypeReflection.Descriptor, global::CastoriceHoney.Server.Proto.EBJDMKPDCNKReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.BigDataRecommendAvatarRelicReflection.Descriptor, global::March7thHoney.Proto.BigDataRecommendRelicAvatarReflection.Descriptor, global::March7thHoney.Proto.BigDataRecommendTypeReflection.Descriptor, global::March7thHoney.Proto.EBJDMKPDCNKReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GetBigDataAllRecommendScRsp), global::CastoriceHoney.Server.Proto.GetBigDataAllRecommendScRsp.Parser, new[]{ "BigDataRecommendType", "Retcode", "RelicAvatar", "GIJOGKBMDIP", "AvatarRelic" }, new[]{ "RecommendType" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetBigDataAllRecommendScRsp), global::March7thHoney.Proto.GetBigDataAllRecommendScRsp.Parser, new[]{ "BigDataRecommendType", "Retcode", "RelicAvatar", "GIJOGKBMDIP", "AvatarRelic" }, new[]{ "RecommendType" }, null, null, null)
           }));
     }
     #endregion
@@ -60,7 +60,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GetBigDataAllRecommendScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GetBigDataAllRecommendScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -105,10 +105,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "big_data_recommend_type" field.</summary>
     public const int BigDataRecommendTypeFieldNumber = 2;
-    private global::CastoriceHoney.Server.Proto.BigDataRecommendType bigDataRecommendType_ = global::CastoriceHoney.Server.Proto.BigDataRecommendType.None;
+    private global::March7thHoney.Proto.BigDataRecommendType bigDataRecommendType_ = global::March7thHoney.Proto.BigDataRecommendType.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.BigDataRecommendType BigDataRecommendType {
+    public global::March7thHoney.Proto.BigDataRecommendType BigDataRecommendType {
       get { return bigDataRecommendType_; }
       set {
         bigDataRecommendType_ = value;
@@ -131,8 +131,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int RelicAvatarFieldNumber = 4;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.BigDataRecommendRelicAvatar RelicAvatar {
-      get { return recommendTypeCase_ == RecommendTypeOneofCase.RelicAvatar ? (global::CastoriceHoney.Server.Proto.BigDataRecommendRelicAvatar) recommendType_ : null; }
+    public global::March7thHoney.Proto.BigDataRecommendRelicAvatar RelicAvatar {
+      get { return recommendTypeCase_ == RecommendTypeOneofCase.RelicAvatar ? (global::March7thHoney.Proto.BigDataRecommendRelicAvatar) recommendType_ : null; }
       set {
         recommendType_ = value;
         recommendTypeCase_ = value == null ? RecommendTypeOneofCase.None : RecommendTypeOneofCase.RelicAvatar;
@@ -143,8 +143,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int GIJOGKBMDIPFieldNumber = 13;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.EBJDMKPDCNK GIJOGKBMDIP {
-      get { return recommendTypeCase_ == RecommendTypeOneofCase.GIJOGKBMDIP ? (global::CastoriceHoney.Server.Proto.EBJDMKPDCNK) recommendType_ : null; }
+    public global::March7thHoney.Proto.EBJDMKPDCNK GIJOGKBMDIP {
+      get { return recommendTypeCase_ == RecommendTypeOneofCase.GIJOGKBMDIP ? (global::March7thHoney.Proto.EBJDMKPDCNK) recommendType_ : null; }
       set {
         recommendType_ = value;
         recommendTypeCase_ = value == null ? RecommendTypeOneofCase.None : RecommendTypeOneofCase.GIJOGKBMDIP;
@@ -155,8 +155,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int AvatarRelicFieldNumber = 15;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.BigDataRecommendAvatarRelic AvatarRelic {
-      get { return recommendTypeCase_ == RecommendTypeOneofCase.AvatarRelic ? (global::CastoriceHoney.Server.Proto.BigDataRecommendAvatarRelic) recommendType_ : null; }
+    public global::March7thHoney.Proto.BigDataRecommendAvatarRelic AvatarRelic {
+      get { return recommendTypeCase_ == RecommendTypeOneofCase.AvatarRelic ? (global::March7thHoney.Proto.BigDataRecommendAvatarRelic) recommendType_ : null; }
       set {
         recommendType_ = value;
         recommendTypeCase_ = value == null ? RecommendTypeOneofCase.None : RecommendTypeOneofCase.AvatarRelic;
@@ -213,7 +213,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (BigDataRecommendType != global::CastoriceHoney.Server.Proto.BigDataRecommendType.None) hash ^= BigDataRecommendType.GetHashCode();
+      if (BigDataRecommendType != global::March7thHoney.Proto.BigDataRecommendType.None) hash ^= BigDataRecommendType.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (recommendTypeCase_ == RecommendTypeOneofCase.RelicAvatar) hash ^= RelicAvatar.GetHashCode();
       if (recommendTypeCase_ == RecommendTypeOneofCase.GIJOGKBMDIP) hash ^= GIJOGKBMDIP.GetHashCode();
@@ -237,7 +237,7 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (BigDataRecommendType != global::CastoriceHoney.Server.Proto.BigDataRecommendType.None) {
+      if (BigDataRecommendType != global::March7thHoney.Proto.BigDataRecommendType.None) {
         output.WriteRawTag(16);
         output.WriteEnum((int) BigDataRecommendType);
       }
@@ -267,7 +267,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (BigDataRecommendType != global::CastoriceHoney.Server.Proto.BigDataRecommendType.None) {
+      if (BigDataRecommendType != global::March7thHoney.Proto.BigDataRecommendType.None) {
         output.WriteRawTag(16);
         output.WriteEnum((int) BigDataRecommendType);
       }
@@ -297,7 +297,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (BigDataRecommendType != global::CastoriceHoney.Server.Proto.BigDataRecommendType.None) {
+      if (BigDataRecommendType != global::March7thHoney.Proto.BigDataRecommendType.None) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) BigDataRecommendType);
       }
       if (Retcode != 0) {
@@ -324,7 +324,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.BigDataRecommendType != global::CastoriceHoney.Server.Proto.BigDataRecommendType.None) {
+      if (other.BigDataRecommendType != global::March7thHoney.Proto.BigDataRecommendType.None) {
         BigDataRecommendType = other.BigDataRecommendType;
       }
       if (other.Retcode != 0) {
@@ -333,19 +333,19 @@ namespace CastoriceHoney.Server.Proto {
       switch (other.RecommendTypeCase) {
         case RecommendTypeOneofCase.RelicAvatar:
           if (RelicAvatar == null) {
-            RelicAvatar = new global::CastoriceHoney.Server.Proto.BigDataRecommendRelicAvatar();
+            RelicAvatar = new global::March7thHoney.Proto.BigDataRecommendRelicAvatar();
           }
           RelicAvatar.MergeFrom(other.RelicAvatar);
           break;
         case RecommendTypeOneofCase.GIJOGKBMDIP:
           if (GIJOGKBMDIP == null) {
-            GIJOGKBMDIP = new global::CastoriceHoney.Server.Proto.EBJDMKPDCNK();
+            GIJOGKBMDIP = new global::March7thHoney.Proto.EBJDMKPDCNK();
           }
           GIJOGKBMDIP.MergeFrom(other.GIJOGKBMDIP);
           break;
         case RecommendTypeOneofCase.AvatarRelic:
           if (AvatarRelic == null) {
-            AvatarRelic = new global::CastoriceHoney.Server.Proto.BigDataRecommendAvatarRelic();
+            AvatarRelic = new global::March7thHoney.Proto.BigDataRecommendAvatarRelic();
           }
           AvatarRelic.MergeFrom(other.AvatarRelic);
           break;
@@ -371,11 +371,11 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 16: {
-            BigDataRecommendType = (global::CastoriceHoney.Server.Proto.BigDataRecommendType) input.ReadEnum();
+            BigDataRecommendType = (global::March7thHoney.Proto.BigDataRecommendType) input.ReadEnum();
             break;
           }
           case 34: {
-            global::CastoriceHoney.Server.Proto.BigDataRecommendRelicAvatar subBuilder = new global::CastoriceHoney.Server.Proto.BigDataRecommendRelicAvatar();
+            global::March7thHoney.Proto.BigDataRecommendRelicAvatar subBuilder = new global::March7thHoney.Proto.BigDataRecommendRelicAvatar();
             if (recommendTypeCase_ == RecommendTypeOneofCase.RelicAvatar) {
               subBuilder.MergeFrom(RelicAvatar);
             }
@@ -388,7 +388,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 106: {
-            global::CastoriceHoney.Server.Proto.EBJDMKPDCNK subBuilder = new global::CastoriceHoney.Server.Proto.EBJDMKPDCNK();
+            global::March7thHoney.Proto.EBJDMKPDCNK subBuilder = new global::March7thHoney.Proto.EBJDMKPDCNK();
             if (recommendTypeCase_ == RecommendTypeOneofCase.GIJOGKBMDIP) {
               subBuilder.MergeFrom(GIJOGKBMDIP);
             }
@@ -397,7 +397,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 122: {
-            global::CastoriceHoney.Server.Proto.BigDataRecommendAvatarRelic subBuilder = new global::CastoriceHoney.Server.Proto.BigDataRecommendAvatarRelic();
+            global::March7thHoney.Proto.BigDataRecommendAvatarRelic subBuilder = new global::March7thHoney.Proto.BigDataRecommendAvatarRelic();
             if (recommendTypeCase_ == RecommendTypeOneofCase.AvatarRelic) {
               subBuilder.MergeFrom(AvatarRelic);
             }
@@ -425,11 +425,11 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 16: {
-            BigDataRecommendType = (global::CastoriceHoney.Server.Proto.BigDataRecommendType) input.ReadEnum();
+            BigDataRecommendType = (global::March7thHoney.Proto.BigDataRecommendType) input.ReadEnum();
             break;
           }
           case 34: {
-            global::CastoriceHoney.Server.Proto.BigDataRecommendRelicAvatar subBuilder = new global::CastoriceHoney.Server.Proto.BigDataRecommendRelicAvatar();
+            global::March7thHoney.Proto.BigDataRecommendRelicAvatar subBuilder = new global::March7thHoney.Proto.BigDataRecommendRelicAvatar();
             if (recommendTypeCase_ == RecommendTypeOneofCase.RelicAvatar) {
               subBuilder.MergeFrom(RelicAvatar);
             }
@@ -442,7 +442,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 106: {
-            global::CastoriceHoney.Server.Proto.EBJDMKPDCNK subBuilder = new global::CastoriceHoney.Server.Proto.EBJDMKPDCNK();
+            global::March7thHoney.Proto.EBJDMKPDCNK subBuilder = new global::March7thHoney.Proto.EBJDMKPDCNK();
             if (recommendTypeCase_ == RecommendTypeOneofCase.GIJOGKBMDIP) {
               subBuilder.MergeFrom(GIJOGKBMDIP);
             }
@@ -451,7 +451,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 122: {
-            global::CastoriceHoney.Server.Proto.BigDataRecommendAvatarRelic subBuilder = new global::CastoriceHoney.Server.Proto.BigDataRecommendAvatarRelic();
+            global::March7thHoney.Proto.BigDataRecommendAvatarRelic subBuilder = new global::March7thHoney.Proto.BigDataRecommendAvatarRelic();
             if (recommendTypeCase_ == RecommendTypeOneofCase.AvatarRelic) {
               subBuilder.MergeFrom(AvatarRelic);
             }

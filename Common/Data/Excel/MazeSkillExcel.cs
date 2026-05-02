@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("MazeSkill.json,MazeSkillLD.json", true)]
 public class MazeSkillExcel : ExcelResource

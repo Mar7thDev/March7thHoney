@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from MonopolyCellUpdateNotify.proto</summary>
   public static partial class MonopolyCellUpdateNotifyReflection {
@@ -29,9 +29,9 @@ namespace CastoriceHoney.Server.Proto {
             "Rk5KSBgIIAEoCzIMLkFBSEJFQ0lDT0VOQjMKE2VtdS5sdW5hcmNvcmUucHJv",
             "dG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.AAHBECICOENReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.AAHBECICOENReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.MonopolyCellUpdateNotify), global::CastoriceHoney.Server.Proto.MonopolyCellUpdateNotify.Parser, new[]{ "LJHDOFBFNJH" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MonopolyCellUpdateNotify), global::March7thHoney.Proto.MonopolyCellUpdateNotify.Parser, new[]{ "LJHDOFBFNJH" }, null, null, null, null)
           }));
     }
     #endregion
@@ -53,7 +53,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.MonopolyCellUpdateNotifyReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.MonopolyCellUpdateNotifyReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -85,10 +85,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "LJHDOFBFNJH" field.</summary>
     public const int LJHDOFBFNJHFieldNumber = 8;
-    private global::CastoriceHoney.Server.Proto.AAHBECICOEN lJHDOFBFNJH_;
+    private global::March7thHoney.Proto.AAHBECICOEN lJHDOFBFNJH_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.AAHBECICOEN LJHDOFBFNJH {
+    public global::March7thHoney.Proto.AAHBECICOEN LJHDOFBFNJH {
       get { return lJHDOFBFNJH_; }
       set {
         lJHDOFBFNJH_ = value;
@@ -182,7 +182,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.lJHDOFBFNJH_ != null) {
         if (lJHDOFBFNJH_ == null) {
-          LJHDOFBFNJH = new global::CastoriceHoney.Server.Proto.AAHBECICOEN();
+          LJHDOFBFNJH = new global::March7thHoney.Proto.AAHBECICOEN();
         }
         LJHDOFBFNJH.MergeFrom(other.LJHDOFBFNJH);
       }
@@ -207,7 +207,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 66: {
             if (lJHDOFBFNJH_ == null) {
-              LJHDOFBFNJH = new global::CastoriceHoney.Server.Proto.AAHBECICOEN();
+              LJHDOFBFNJH = new global::March7thHoney.Proto.AAHBECICOEN();
             }
             input.ReadMessage(LJHDOFBFNJH);
             break;
@@ -233,7 +233,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 66: {
             if (lJHDOFBFNJH_ == null) {
-              LJHDOFBFNJH = new global::CastoriceHoney.Server.Proto.AAHBECICOEN();
+              LJHDOFBFNJH = new global::March7thHoney.Proto.AAHBECICOEN();
             }
             input.ReadMessage(LJHDOFBFNJH);
             break;

@@ -1,10 +1,10 @@
-using CastoriceHoney.Server.GameServer.Game.Player.Components;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.SwitchHand;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.GameServer.Game.Player.Components;
+using March7thHoney.GameServer.Server.Packet.Send.SwitchHand;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.SwitchHand;
+namespace March7thHoney.GameServer.Server.Packet.Recv.SwitchHand;
 
 [Opcode(CmdIds.SwitchHandResetHandPosCsReq)]
 public class HandlerSwitchHandResetHandPosCsReq : Handler

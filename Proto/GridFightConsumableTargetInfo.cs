@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GridFightConsumableTargetInfo.proto</summary>
   public static partial class GridFightConsumableTargetInfoReflection {
@@ -41,9 +41,9 @@ namespace CastoriceHoney.Server.Proto {
             "REFDQ0lFSUpGT0IzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNl",
             "SG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GridFightCopyTypeTargetInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightGainRecommendEquipTypeTargetInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightRemoveTypeTargetInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightRollTypeTargetInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightUpgradeTypeTargetInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridFightCopyTypeTargetInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightGainRecommendEquipTypeTargetInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightRemoveTypeTargetInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightRollTypeTargetInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightUpgradeTypeTargetInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GridFightConsumableTargetInfo), global::CastoriceHoney.Server.Proto.GridFightConsumableTargetInfo.Parser, new[]{ "UpgradeTypeTargetInfo", "CopyTypeTargetInfo", "GainRecommendEquipTypeTargetInfo", "RemoveTypeTargetInfo", "RollTypeTargetInfo" }, new[]{ "HDACCIEIJFO" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightConsumableTargetInfo), global::March7thHoney.Proto.GridFightConsumableTargetInfo.Parser, new[]{ "UpgradeTypeTargetInfo", "CopyTypeTargetInfo", "GainRecommendEquipTypeTargetInfo", "RemoveTypeTargetInfo", "RollTypeTargetInfo" }, new[]{ "HDACCIEIJFO" }, null, null, null)
           }));
     }
     #endregion
@@ -65,7 +65,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GridFightConsumableTargetInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GridFightConsumableTargetInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -116,8 +116,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int UpgradeTypeTargetInfoFieldNumber = 186;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightUpgradeTypeTargetInfo UpgradeTypeTargetInfo {
-      get { return hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.UpgradeTypeTargetInfo ? (global::CastoriceHoney.Server.Proto.GridFightUpgradeTypeTargetInfo) hDACCIEIJFO_ : null; }
+    public global::March7thHoney.Proto.GridFightUpgradeTypeTargetInfo UpgradeTypeTargetInfo {
+      get { return hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.UpgradeTypeTargetInfo ? (global::March7thHoney.Proto.GridFightUpgradeTypeTargetInfo) hDACCIEIJFO_ : null; }
       set {
         hDACCIEIJFO_ = value;
         hDACCIEIJFOCase_ = value == null ? HDACCIEIJFOOneofCase.None : HDACCIEIJFOOneofCase.UpgradeTypeTargetInfo;
@@ -128,8 +128,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int CopyTypeTargetInfoFieldNumber = 391;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightCopyTypeTargetInfo CopyTypeTargetInfo {
-      get { return hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.CopyTypeTargetInfo ? (global::CastoriceHoney.Server.Proto.GridFightCopyTypeTargetInfo) hDACCIEIJFO_ : null; }
+    public global::March7thHoney.Proto.GridFightCopyTypeTargetInfo CopyTypeTargetInfo {
+      get { return hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.CopyTypeTargetInfo ? (global::March7thHoney.Proto.GridFightCopyTypeTargetInfo) hDACCIEIJFO_ : null; }
       set {
         hDACCIEIJFO_ = value;
         hDACCIEIJFOCase_ = value == null ? HDACCIEIJFOOneofCase.None : HDACCIEIJFOOneofCase.CopyTypeTargetInfo;
@@ -140,8 +140,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int GainRecommendEquipTypeTargetInfoFieldNumber = 654;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightGainRecommendEquipTypeTargetInfo GainRecommendEquipTypeTargetInfo {
-      get { return hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.GainRecommendEquipTypeTargetInfo ? (global::CastoriceHoney.Server.Proto.GridFightGainRecommendEquipTypeTargetInfo) hDACCIEIJFO_ : null; }
+    public global::March7thHoney.Proto.GridFightGainRecommendEquipTypeTargetInfo GainRecommendEquipTypeTargetInfo {
+      get { return hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.GainRecommendEquipTypeTargetInfo ? (global::March7thHoney.Proto.GridFightGainRecommendEquipTypeTargetInfo) hDACCIEIJFO_ : null; }
       set {
         hDACCIEIJFO_ = value;
         hDACCIEIJFOCase_ = value == null ? HDACCIEIJFOOneofCase.None : HDACCIEIJFOOneofCase.GainRecommendEquipTypeTargetInfo;
@@ -152,8 +152,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int RemoveTypeTargetInfoFieldNumber = 1308;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightRemoveTypeTargetInfo RemoveTypeTargetInfo {
-      get { return hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.RemoveTypeTargetInfo ? (global::CastoriceHoney.Server.Proto.GridFightRemoveTypeTargetInfo) hDACCIEIJFO_ : null; }
+    public global::March7thHoney.Proto.GridFightRemoveTypeTargetInfo RemoveTypeTargetInfo {
+      get { return hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.RemoveTypeTargetInfo ? (global::March7thHoney.Proto.GridFightRemoveTypeTargetInfo) hDACCIEIJFO_ : null; }
       set {
         hDACCIEIJFO_ = value;
         hDACCIEIJFOCase_ = value == null ? HDACCIEIJFOOneofCase.None : HDACCIEIJFOOneofCase.RemoveTypeTargetInfo;
@@ -164,8 +164,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int RollTypeTargetInfoFieldNumber = 1501;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightRollTypeTargetInfo RollTypeTargetInfo {
-      get { return hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.RollTypeTargetInfo ? (global::CastoriceHoney.Server.Proto.GridFightRollTypeTargetInfo) hDACCIEIJFO_ : null; }
+    public global::March7thHoney.Proto.GridFightRollTypeTargetInfo RollTypeTargetInfo {
+      get { return hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.RollTypeTargetInfo ? (global::March7thHoney.Proto.GridFightRollTypeTargetInfo) hDACCIEIJFO_ : null; }
       set {
         hDACCIEIJFO_ = value;
         hDACCIEIJFOCase_ = value == null ? HDACCIEIJFOOneofCase.None : HDACCIEIJFOOneofCase.RollTypeTargetInfo;
@@ -338,31 +338,31 @@ namespace CastoriceHoney.Server.Proto {
       switch (other.HDACCIEIJFOCase) {
         case HDACCIEIJFOOneofCase.UpgradeTypeTargetInfo:
           if (UpgradeTypeTargetInfo == null) {
-            UpgradeTypeTargetInfo = new global::CastoriceHoney.Server.Proto.GridFightUpgradeTypeTargetInfo();
+            UpgradeTypeTargetInfo = new global::March7thHoney.Proto.GridFightUpgradeTypeTargetInfo();
           }
           UpgradeTypeTargetInfo.MergeFrom(other.UpgradeTypeTargetInfo);
           break;
         case HDACCIEIJFOOneofCase.CopyTypeTargetInfo:
           if (CopyTypeTargetInfo == null) {
-            CopyTypeTargetInfo = new global::CastoriceHoney.Server.Proto.GridFightCopyTypeTargetInfo();
+            CopyTypeTargetInfo = new global::March7thHoney.Proto.GridFightCopyTypeTargetInfo();
           }
           CopyTypeTargetInfo.MergeFrom(other.CopyTypeTargetInfo);
           break;
         case HDACCIEIJFOOneofCase.GainRecommendEquipTypeTargetInfo:
           if (GainRecommendEquipTypeTargetInfo == null) {
-            GainRecommendEquipTypeTargetInfo = new global::CastoriceHoney.Server.Proto.GridFightGainRecommendEquipTypeTargetInfo();
+            GainRecommendEquipTypeTargetInfo = new global::March7thHoney.Proto.GridFightGainRecommendEquipTypeTargetInfo();
           }
           GainRecommendEquipTypeTargetInfo.MergeFrom(other.GainRecommendEquipTypeTargetInfo);
           break;
         case HDACCIEIJFOOneofCase.RemoveTypeTargetInfo:
           if (RemoveTypeTargetInfo == null) {
-            RemoveTypeTargetInfo = new global::CastoriceHoney.Server.Proto.GridFightRemoveTypeTargetInfo();
+            RemoveTypeTargetInfo = new global::March7thHoney.Proto.GridFightRemoveTypeTargetInfo();
           }
           RemoveTypeTargetInfo.MergeFrom(other.RemoveTypeTargetInfo);
           break;
         case HDACCIEIJFOOneofCase.RollTypeTargetInfo:
           if (RollTypeTargetInfo == null) {
-            RollTypeTargetInfo = new global::CastoriceHoney.Server.Proto.GridFightRollTypeTargetInfo();
+            RollTypeTargetInfo = new global::March7thHoney.Proto.GridFightRollTypeTargetInfo();
           }
           RollTypeTargetInfo.MergeFrom(other.RollTypeTargetInfo);
           break;
@@ -388,7 +388,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 1490: {
-            global::CastoriceHoney.Server.Proto.GridFightUpgradeTypeTargetInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightUpgradeTypeTargetInfo();
+            global::March7thHoney.Proto.GridFightUpgradeTypeTargetInfo subBuilder = new global::March7thHoney.Proto.GridFightUpgradeTypeTargetInfo();
             if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.UpgradeTypeTargetInfo) {
               subBuilder.MergeFrom(UpgradeTypeTargetInfo);
             }
@@ -397,7 +397,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 3130: {
-            global::CastoriceHoney.Server.Proto.GridFightCopyTypeTargetInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightCopyTypeTargetInfo();
+            global::March7thHoney.Proto.GridFightCopyTypeTargetInfo subBuilder = new global::March7thHoney.Proto.GridFightCopyTypeTargetInfo();
             if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.CopyTypeTargetInfo) {
               subBuilder.MergeFrom(CopyTypeTargetInfo);
             }
@@ -406,7 +406,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 5234: {
-            global::CastoriceHoney.Server.Proto.GridFightGainRecommendEquipTypeTargetInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightGainRecommendEquipTypeTargetInfo();
+            global::March7thHoney.Proto.GridFightGainRecommendEquipTypeTargetInfo subBuilder = new global::March7thHoney.Proto.GridFightGainRecommendEquipTypeTargetInfo();
             if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.GainRecommendEquipTypeTargetInfo) {
               subBuilder.MergeFrom(GainRecommendEquipTypeTargetInfo);
             }
@@ -415,7 +415,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 10466: {
-            global::CastoriceHoney.Server.Proto.GridFightRemoveTypeTargetInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightRemoveTypeTargetInfo();
+            global::March7thHoney.Proto.GridFightRemoveTypeTargetInfo subBuilder = new global::March7thHoney.Proto.GridFightRemoveTypeTargetInfo();
             if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.RemoveTypeTargetInfo) {
               subBuilder.MergeFrom(RemoveTypeTargetInfo);
             }
@@ -424,7 +424,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 12010: {
-            global::CastoriceHoney.Server.Proto.GridFightRollTypeTargetInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightRollTypeTargetInfo();
+            global::March7thHoney.Proto.GridFightRollTypeTargetInfo subBuilder = new global::March7thHoney.Proto.GridFightRollTypeTargetInfo();
             if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.RollTypeTargetInfo) {
               subBuilder.MergeFrom(RollTypeTargetInfo);
             }
@@ -452,7 +452,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 1490: {
-            global::CastoriceHoney.Server.Proto.GridFightUpgradeTypeTargetInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightUpgradeTypeTargetInfo();
+            global::March7thHoney.Proto.GridFightUpgradeTypeTargetInfo subBuilder = new global::March7thHoney.Proto.GridFightUpgradeTypeTargetInfo();
             if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.UpgradeTypeTargetInfo) {
               subBuilder.MergeFrom(UpgradeTypeTargetInfo);
             }
@@ -461,7 +461,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 3130: {
-            global::CastoriceHoney.Server.Proto.GridFightCopyTypeTargetInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightCopyTypeTargetInfo();
+            global::March7thHoney.Proto.GridFightCopyTypeTargetInfo subBuilder = new global::March7thHoney.Proto.GridFightCopyTypeTargetInfo();
             if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.CopyTypeTargetInfo) {
               subBuilder.MergeFrom(CopyTypeTargetInfo);
             }
@@ -470,7 +470,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 5234: {
-            global::CastoriceHoney.Server.Proto.GridFightGainRecommendEquipTypeTargetInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightGainRecommendEquipTypeTargetInfo();
+            global::March7thHoney.Proto.GridFightGainRecommendEquipTypeTargetInfo subBuilder = new global::March7thHoney.Proto.GridFightGainRecommendEquipTypeTargetInfo();
             if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.GainRecommendEquipTypeTargetInfo) {
               subBuilder.MergeFrom(GainRecommendEquipTypeTargetInfo);
             }
@@ -479,7 +479,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 10466: {
-            global::CastoriceHoney.Server.Proto.GridFightRemoveTypeTargetInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightRemoveTypeTargetInfo();
+            global::March7thHoney.Proto.GridFightRemoveTypeTargetInfo subBuilder = new global::March7thHoney.Proto.GridFightRemoveTypeTargetInfo();
             if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.RemoveTypeTargetInfo) {
               subBuilder.MergeFrom(RemoveTypeTargetInfo);
             }
@@ -488,7 +488,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 12010: {
-            global::CastoriceHoney.Server.Proto.GridFightRollTypeTargetInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightRollTypeTargetInfo();
+            global::March7thHoney.Proto.GridFightRollTypeTargetInfo subBuilder = new global::March7thHoney.Proto.GridFightRollTypeTargetInfo();
             if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.RollTypeTargetInfo) {
               subBuilder.MergeFrom(RollTypeTargetInfo);
             }

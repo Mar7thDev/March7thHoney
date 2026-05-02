@@ -1,11 +1,11 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Enums.Mission;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Player;
-using CastoriceHoney.Server.Internationalization;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Data;
+using March7thHoney.Enums.Mission;
+using March7thHoney.GameServer.Server.Packet.Send.Player;
+using March7thHoney.Internationalization;
+using March7thHoney.Proto;
 using Google.Protobuf.WellKnownTypes;
 
-namespace CastoriceHoney.Server.Command.Command.Cmd;
+namespace March7thHoney.Command.Command.Cmd;
 
 [CommandInfo("unlockall", "Game.Command.UnlockAll.Desc", "Game.Command.UnlockAll.Usage", ["ua"])]
 public class CommandUnlockAll : ICommand

@@ -1,6 +1,6 @@
-using CastoriceHoney.Server.Enums.Rogue;
+using March7thHoney.Enums.Rogue;
 
-namespace CastoriceHoney.Server.GameServer.Game.ChessRogue.Modifier.ModifierEffect;
+namespace March7thHoney.GameServer.Game.ChessRogue.Modifier.ModifierEffect;
 
 [AttributeUsage(AttributeTargets.Class)]
 public class ModifierEffectAttribute(ModifierEffectTypeEnum effectType) : Attribute

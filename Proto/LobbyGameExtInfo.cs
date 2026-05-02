@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from LobbyGameExtInfo.proto</summary>
   public static partial class LobbyGameExtInfoReflection {
@@ -37,9 +37,9 @@ namespace CastoriceHoney.Server.Proto {
             "b3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90",
             "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GCJAMHEGKGEReflection.Descriptor, global::CastoriceHoney.Server.Proto.LobbyGridFightInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.LobbyMarbleInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.LobbyMarchInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.OIFJHEPAFOOReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GCJAMHEGKGEReflection.Descriptor, global::March7thHoney.Proto.LobbyGridFightInfoReflection.Descriptor, global::March7thHoney.Proto.LobbyMarbleInfoReflection.Descriptor, global::March7thHoney.Proto.LobbyMarchInfoReflection.Descriptor, global::March7thHoney.Proto.OIFJHEPAFOOReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.LobbyGameExtInfo), global::CastoriceHoney.Server.Proto.LobbyGameExtInfo.Parser, new[]{ "BHILEPGIFNE", "HMPCFJPJDOE", "LobbyMarchInfo", "LobbyMarbleInfo", "NIFBKKNFKEG", "LobbyGridFightInfo", "PCFNJJCOJED" }, new[]{ "JNJJJGBCEDG" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LobbyGameExtInfo), global::March7thHoney.Proto.LobbyGameExtInfo.Parser, new[]{ "BHILEPGIFNE", "HMPCFJPJDOE", "LobbyMarchInfo", "LobbyMarbleInfo", "NIFBKKNFKEG", "LobbyGridFightInfo", "PCFNJJCOJED" }, new[]{ "JNJJJGBCEDG" }, null, null, null)
           }));
     }
     #endregion
@@ -61,7 +61,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.LobbyGameExtInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.LobbyGameExtInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -137,8 +137,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int LobbyMarchInfoFieldNumber = 1001;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.LobbyMarchInfo LobbyMarchInfo {
-      get { return jNJJJGBCEDGCase_ == JNJJJGBCEDGOneofCase.LobbyMarchInfo ? (global::CastoriceHoney.Server.Proto.LobbyMarchInfo) jNJJJGBCEDG_ : null; }
+    public global::March7thHoney.Proto.LobbyMarchInfo LobbyMarchInfo {
+      get { return jNJJJGBCEDGCase_ == JNJJJGBCEDGOneofCase.LobbyMarchInfo ? (global::March7thHoney.Proto.LobbyMarchInfo) jNJJJGBCEDG_ : null; }
       set {
         jNJJJGBCEDG_ = value;
         jNJJJGBCEDGCase_ = value == null ? JNJJJGBCEDGOneofCase.None : JNJJJGBCEDGOneofCase.LobbyMarchInfo;
@@ -149,8 +149,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int LobbyMarbleInfoFieldNumber = 1002;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.LobbyMarbleInfo LobbyMarbleInfo {
-      get { return jNJJJGBCEDGCase_ == JNJJJGBCEDGOneofCase.LobbyMarbleInfo ? (global::CastoriceHoney.Server.Proto.LobbyMarbleInfo) jNJJJGBCEDG_ : null; }
+    public global::March7thHoney.Proto.LobbyMarbleInfo LobbyMarbleInfo {
+      get { return jNJJJGBCEDGCase_ == JNJJJGBCEDGOneofCase.LobbyMarbleInfo ? (global::March7thHoney.Proto.LobbyMarbleInfo) jNJJJGBCEDG_ : null; }
       set {
         jNJJJGBCEDG_ = value;
         jNJJJGBCEDGCase_ = value == null ? JNJJJGBCEDGOneofCase.None : JNJJJGBCEDGOneofCase.LobbyMarbleInfo;
@@ -161,8 +161,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int NIFBKKNFKEGFieldNumber = 1003;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.OIFJHEPAFOO NIFBKKNFKEG {
-      get { return jNJJJGBCEDGCase_ == JNJJJGBCEDGOneofCase.NIFBKKNFKEG ? (global::CastoriceHoney.Server.Proto.OIFJHEPAFOO) jNJJJGBCEDG_ : null; }
+    public global::March7thHoney.Proto.OIFJHEPAFOO NIFBKKNFKEG {
+      get { return jNJJJGBCEDGCase_ == JNJJJGBCEDGOneofCase.NIFBKKNFKEG ? (global::March7thHoney.Proto.OIFJHEPAFOO) jNJJJGBCEDG_ : null; }
       set {
         jNJJJGBCEDG_ = value;
         jNJJJGBCEDGCase_ = value == null ? JNJJJGBCEDGOneofCase.None : JNJJJGBCEDGOneofCase.NIFBKKNFKEG;
@@ -173,8 +173,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int LobbyGridFightInfoFieldNumber = 1004;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.LobbyGridFightInfo LobbyGridFightInfo {
-      get { return jNJJJGBCEDGCase_ == JNJJJGBCEDGOneofCase.LobbyGridFightInfo ? (global::CastoriceHoney.Server.Proto.LobbyGridFightInfo) jNJJJGBCEDG_ : null; }
+    public global::March7thHoney.Proto.LobbyGridFightInfo LobbyGridFightInfo {
+      get { return jNJJJGBCEDGCase_ == JNJJJGBCEDGOneofCase.LobbyGridFightInfo ? (global::March7thHoney.Proto.LobbyGridFightInfo) jNJJJGBCEDG_ : null; }
       set {
         jNJJJGBCEDG_ = value;
         jNJJJGBCEDGCase_ = value == null ? JNJJJGBCEDGOneofCase.None : JNJJJGBCEDGOneofCase.LobbyGridFightInfo;
@@ -185,8 +185,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int PCFNJJCOJEDFieldNumber = 1005;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GCJAMHEGKGE PCFNJJCOJED {
-      get { return jNJJJGBCEDGCase_ == JNJJJGBCEDGOneofCase.PCFNJJCOJED ? (global::CastoriceHoney.Server.Proto.GCJAMHEGKGE) jNJJJGBCEDG_ : null; }
+    public global::March7thHoney.Proto.GCJAMHEGKGE PCFNJJCOJED {
+      get { return jNJJJGBCEDGCase_ == JNJJJGBCEDGOneofCase.PCFNJJCOJED ? (global::March7thHoney.Proto.GCJAMHEGKGE) jNJJJGBCEDG_ : null; }
       set {
         jNJJJGBCEDG_ = value;
         jNJJJGBCEDGCase_ = value == null ? JNJJJGBCEDGOneofCase.None : JNJJJGBCEDGOneofCase.PCFNJJCOJED;
@@ -381,31 +381,31 @@ namespace CastoriceHoney.Server.Proto {
       switch (other.JNJJJGBCEDGCase) {
         case JNJJJGBCEDGOneofCase.LobbyMarchInfo:
           if (LobbyMarchInfo == null) {
-            LobbyMarchInfo = new global::CastoriceHoney.Server.Proto.LobbyMarchInfo();
+            LobbyMarchInfo = new global::March7thHoney.Proto.LobbyMarchInfo();
           }
           LobbyMarchInfo.MergeFrom(other.LobbyMarchInfo);
           break;
         case JNJJJGBCEDGOneofCase.LobbyMarbleInfo:
           if (LobbyMarbleInfo == null) {
-            LobbyMarbleInfo = new global::CastoriceHoney.Server.Proto.LobbyMarbleInfo();
+            LobbyMarbleInfo = new global::March7thHoney.Proto.LobbyMarbleInfo();
           }
           LobbyMarbleInfo.MergeFrom(other.LobbyMarbleInfo);
           break;
         case JNJJJGBCEDGOneofCase.NIFBKKNFKEG:
           if (NIFBKKNFKEG == null) {
-            NIFBKKNFKEG = new global::CastoriceHoney.Server.Proto.OIFJHEPAFOO();
+            NIFBKKNFKEG = new global::March7thHoney.Proto.OIFJHEPAFOO();
           }
           NIFBKKNFKEG.MergeFrom(other.NIFBKKNFKEG);
           break;
         case JNJJJGBCEDGOneofCase.LobbyGridFightInfo:
           if (LobbyGridFightInfo == null) {
-            LobbyGridFightInfo = new global::CastoriceHoney.Server.Proto.LobbyGridFightInfo();
+            LobbyGridFightInfo = new global::March7thHoney.Proto.LobbyGridFightInfo();
           }
           LobbyGridFightInfo.MergeFrom(other.LobbyGridFightInfo);
           break;
         case JNJJJGBCEDGOneofCase.PCFNJJCOJED:
           if (PCFNJJCOJED == null) {
-            PCFNJJCOJED = new global::CastoriceHoney.Server.Proto.GCJAMHEGKGE();
+            PCFNJJCOJED = new global::March7thHoney.Proto.GCJAMHEGKGE();
           }
           PCFNJJCOJED.MergeFrom(other.PCFNJJCOJED);
           break;
@@ -439,7 +439,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 8010: {
-            global::CastoriceHoney.Server.Proto.LobbyMarchInfo subBuilder = new global::CastoriceHoney.Server.Proto.LobbyMarchInfo();
+            global::March7thHoney.Proto.LobbyMarchInfo subBuilder = new global::March7thHoney.Proto.LobbyMarchInfo();
             if (jNJJJGBCEDGCase_ == JNJJJGBCEDGOneofCase.LobbyMarchInfo) {
               subBuilder.MergeFrom(LobbyMarchInfo);
             }
@@ -448,7 +448,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 8018: {
-            global::CastoriceHoney.Server.Proto.LobbyMarbleInfo subBuilder = new global::CastoriceHoney.Server.Proto.LobbyMarbleInfo();
+            global::March7thHoney.Proto.LobbyMarbleInfo subBuilder = new global::March7thHoney.Proto.LobbyMarbleInfo();
             if (jNJJJGBCEDGCase_ == JNJJJGBCEDGOneofCase.LobbyMarbleInfo) {
               subBuilder.MergeFrom(LobbyMarbleInfo);
             }
@@ -457,7 +457,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 8026: {
-            global::CastoriceHoney.Server.Proto.OIFJHEPAFOO subBuilder = new global::CastoriceHoney.Server.Proto.OIFJHEPAFOO();
+            global::March7thHoney.Proto.OIFJHEPAFOO subBuilder = new global::March7thHoney.Proto.OIFJHEPAFOO();
             if (jNJJJGBCEDGCase_ == JNJJJGBCEDGOneofCase.NIFBKKNFKEG) {
               subBuilder.MergeFrom(NIFBKKNFKEG);
             }
@@ -466,7 +466,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 8034: {
-            global::CastoriceHoney.Server.Proto.LobbyGridFightInfo subBuilder = new global::CastoriceHoney.Server.Proto.LobbyGridFightInfo();
+            global::March7thHoney.Proto.LobbyGridFightInfo subBuilder = new global::March7thHoney.Proto.LobbyGridFightInfo();
             if (jNJJJGBCEDGCase_ == JNJJJGBCEDGOneofCase.LobbyGridFightInfo) {
               subBuilder.MergeFrom(LobbyGridFightInfo);
             }
@@ -475,7 +475,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 8042: {
-            global::CastoriceHoney.Server.Proto.GCJAMHEGKGE subBuilder = new global::CastoriceHoney.Server.Proto.GCJAMHEGKGE();
+            global::March7thHoney.Proto.GCJAMHEGKGE subBuilder = new global::March7thHoney.Proto.GCJAMHEGKGE();
             if (jNJJJGBCEDGCase_ == JNJJJGBCEDGOneofCase.PCFNJJCOJED) {
               subBuilder.MergeFrom(PCFNJJCOJED);
             }
@@ -511,7 +511,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 8010: {
-            global::CastoriceHoney.Server.Proto.LobbyMarchInfo subBuilder = new global::CastoriceHoney.Server.Proto.LobbyMarchInfo();
+            global::March7thHoney.Proto.LobbyMarchInfo subBuilder = new global::March7thHoney.Proto.LobbyMarchInfo();
             if (jNJJJGBCEDGCase_ == JNJJJGBCEDGOneofCase.LobbyMarchInfo) {
               subBuilder.MergeFrom(LobbyMarchInfo);
             }
@@ -520,7 +520,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 8018: {
-            global::CastoriceHoney.Server.Proto.LobbyMarbleInfo subBuilder = new global::CastoriceHoney.Server.Proto.LobbyMarbleInfo();
+            global::March7thHoney.Proto.LobbyMarbleInfo subBuilder = new global::March7thHoney.Proto.LobbyMarbleInfo();
             if (jNJJJGBCEDGCase_ == JNJJJGBCEDGOneofCase.LobbyMarbleInfo) {
               subBuilder.MergeFrom(LobbyMarbleInfo);
             }
@@ -529,7 +529,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 8026: {
-            global::CastoriceHoney.Server.Proto.OIFJHEPAFOO subBuilder = new global::CastoriceHoney.Server.Proto.OIFJHEPAFOO();
+            global::March7thHoney.Proto.OIFJHEPAFOO subBuilder = new global::March7thHoney.Proto.OIFJHEPAFOO();
             if (jNJJJGBCEDGCase_ == JNJJJGBCEDGOneofCase.NIFBKKNFKEG) {
               subBuilder.MergeFrom(NIFBKKNFKEG);
             }
@@ -538,7 +538,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 8034: {
-            global::CastoriceHoney.Server.Proto.LobbyGridFightInfo subBuilder = new global::CastoriceHoney.Server.Proto.LobbyGridFightInfo();
+            global::March7thHoney.Proto.LobbyGridFightInfo subBuilder = new global::March7thHoney.Proto.LobbyGridFightInfo();
             if (jNJJJGBCEDGCase_ == JNJJJGBCEDGOneofCase.LobbyGridFightInfo) {
               subBuilder.MergeFrom(LobbyGridFightInfo);
             }
@@ -547,7 +547,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 8042: {
-            global::CastoriceHoney.Server.Proto.GCJAMHEGKGE subBuilder = new global::CastoriceHoney.Server.Proto.GCJAMHEGKGE();
+            global::March7thHoney.Proto.GCJAMHEGKGE subBuilder = new global::March7thHoney.Proto.GCJAMHEGKGE();
             if (jNJJJGBCEDGCase_ == JNJJJGBCEDGOneofCase.PCFNJJCOJED) {
               subBuilder.MergeFrom(PCFNJJCOJED);
             }

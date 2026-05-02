@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from SceneNpcInfo.proto</summary>
   public static partial class SceneNpcInfoReflection {
@@ -29,9 +29,9 @@ namespace CastoriceHoney.Server.Proto {
             "KAsyDS5OcGNFeHRyYUluZm9CMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nh",
             "c3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.NpcExtraInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.NpcExtraInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.SceneNpcInfo), global::CastoriceHoney.Server.Proto.SceneNpcInfo.Parser, new[]{ "NpcId", "ExtraInfo" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneNpcInfo), global::March7thHoney.Proto.SceneNpcInfo.Parser, new[]{ "NpcId", "ExtraInfo" }, null, null, null, null)
           }));
     }
     #endregion
@@ -53,7 +53,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.SceneNpcInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.SceneNpcInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -98,10 +98,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "extra_info" field.</summary>
     public const int ExtraInfoFieldNumber = 12;
-    private global::CastoriceHoney.Server.Proto.NpcExtraInfo extraInfo_;
+    private global::March7thHoney.Proto.NpcExtraInfo extraInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.NpcExtraInfo ExtraInfo {
+    public global::March7thHoney.Proto.NpcExtraInfo ExtraInfo {
       get { return extraInfo_; }
       set {
         extraInfo_ = value;
@@ -211,7 +211,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.extraInfo_ != null) {
         if (extraInfo_ == null) {
-          ExtraInfo = new global::CastoriceHoney.Server.Proto.NpcExtraInfo();
+          ExtraInfo = new global::March7thHoney.Proto.NpcExtraInfo();
         }
         ExtraInfo.MergeFrom(other.ExtraInfo);
       }
@@ -240,7 +240,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 98: {
             if (extraInfo_ == null) {
-              ExtraInfo = new global::CastoriceHoney.Server.Proto.NpcExtraInfo();
+              ExtraInfo = new global::March7thHoney.Proto.NpcExtraInfo();
             }
             input.ReadMessage(ExtraInfo);
             break;
@@ -270,7 +270,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 98: {
             if (extraInfo_ == null) {
-              ExtraInfo = new global::CastoriceHoney.Server.Proto.NpcExtraInfo();
+              ExtraInfo = new global::March7thHoney.Proto.NpcExtraInfo();
             }
             input.ReadMessage(ExtraInfo);
             break;

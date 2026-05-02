@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GridFightGetDataScRsp.proto</summary>
   public static partial class GridFightGetDataScRspReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "MwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZl",
             "ci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GridFightCurrentInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightSystemInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridFightCurrentInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightSystemInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GridFightGetDataScRsp), global::CastoriceHoney.Server.Proto.GridFightGetDataScRsp.Parser, new[]{ "Retcode", "RogueGetInfo", "FightCurrentInfo" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightGetDataScRsp), global::March7thHoney.Proto.GridFightGetDataScRsp.Parser, new[]{ "Retcode", "RogueGetInfo", "FightCurrentInfo" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GridFightGetDataScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GridFightGetDataScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -102,10 +102,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "rogue_get_info" field.</summary>
     public const int RogueGetInfoFieldNumber = 4;
-    private global::CastoriceHoney.Server.Proto.GridFightSystemInfo rogueGetInfo_;
+    private global::March7thHoney.Proto.GridFightSystemInfo rogueGetInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightSystemInfo RogueGetInfo {
+    public global::March7thHoney.Proto.GridFightSystemInfo RogueGetInfo {
       get { return rogueGetInfo_; }
       set {
         rogueGetInfo_ = value;
@@ -114,10 +114,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "fight_current_info" field.</summary>
     public const int FightCurrentInfoFieldNumber = 13;
-    private global::CastoriceHoney.Server.Proto.GridFightCurrentInfo fightCurrentInfo_;
+    private global::March7thHoney.Proto.GridFightCurrentInfo fightCurrentInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightCurrentInfo FightCurrentInfo {
+    public global::March7thHoney.Proto.GridFightCurrentInfo FightCurrentInfo {
       get { return fightCurrentInfo_; }
       set {
         fightCurrentInfo_ = value;
@@ -240,13 +240,13 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.rogueGetInfo_ != null) {
         if (rogueGetInfo_ == null) {
-          RogueGetInfo = new global::CastoriceHoney.Server.Proto.GridFightSystemInfo();
+          RogueGetInfo = new global::March7thHoney.Proto.GridFightSystemInfo();
         }
         RogueGetInfo.MergeFrom(other.RogueGetInfo);
       }
       if (other.fightCurrentInfo_ != null) {
         if (fightCurrentInfo_ == null) {
-          FightCurrentInfo = new global::CastoriceHoney.Server.Proto.GridFightCurrentInfo();
+          FightCurrentInfo = new global::March7thHoney.Proto.GridFightCurrentInfo();
         }
         FightCurrentInfo.MergeFrom(other.FightCurrentInfo);
       }
@@ -275,14 +275,14 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 34: {
             if (rogueGetInfo_ == null) {
-              RogueGetInfo = new global::CastoriceHoney.Server.Proto.GridFightSystemInfo();
+              RogueGetInfo = new global::March7thHoney.Proto.GridFightSystemInfo();
             }
             input.ReadMessage(RogueGetInfo);
             break;
           }
           case 106: {
             if (fightCurrentInfo_ == null) {
-              FightCurrentInfo = new global::CastoriceHoney.Server.Proto.GridFightCurrentInfo();
+              FightCurrentInfo = new global::March7thHoney.Proto.GridFightCurrentInfo();
             }
             input.ReadMessage(FightCurrentInfo);
             break;
@@ -312,14 +312,14 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 34: {
             if (rogueGetInfo_ == null) {
-              RogueGetInfo = new global::CastoriceHoney.Server.Proto.GridFightSystemInfo();
+              RogueGetInfo = new global::March7thHoney.Proto.GridFightSystemInfo();
             }
             input.ReadMessage(RogueGetInfo);
             break;
           }
           case 106: {
             if (fightCurrentInfo_ == null) {
-              FightCurrentInfo = new global::CastoriceHoney.Server.Proto.GridFightCurrentInfo();
+              FightCurrentInfo = new global::March7thHoney.Proto.GridFightCurrentInfo();
             }
             input.ReadMessage(FightCurrentInfo);
             break;

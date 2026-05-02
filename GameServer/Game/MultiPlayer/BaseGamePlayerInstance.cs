@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.GameServer.Game.Lobby.Player;
-using CastoriceHoney.Server.GameServer.Server;
-using CastoriceHoney.Server.Kcp;
+using March7thHoney.GameServer.Game.Lobby.Player;
+using March7thHoney.GameServer.Server;
+using March7thHoney.Kcp;
 
-namespace CastoriceHoney.Server.GameServer.Game.MultiPlayer;
+namespace March7thHoney.GameServer.Game.MultiPlayer;
 
 public abstract class BaseGamePlayerInstance(LobbyPlayerInstance lobby)
 {

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from TrainPartyData.proto</summary>
   public static partial class TrainPartyDataReflection {
@@ -34,9 +34,9 @@ namespace CastoriceHoney.Server.Proto {
             "ZWFfbnVtGA8gASgNQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3Jp",
             "Y2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.FKPMOKOJNHPReflection.Descriptor, global::CastoriceHoney.Server.Proto.TrainPartyInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.TrainPartyPassengerInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.FKPMOKOJNHPReflection.Descriptor, global::March7thHoney.Proto.TrainPartyInfoReflection.Descriptor, global::March7thHoney.Proto.TrainPartyPassengerInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.TrainPartyData), global::CastoriceHoney.Server.Proto.TrainPartyData.Parser, new[]{ "GGHOAIDMOMC", "RecordId", "PassengerInfo", "TrainPartyInfo", "HPHOMPJEDBH", "KPCHEKDDFMG", "UnlockAreaNum" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TrainPartyData), global::March7thHoney.Proto.TrainPartyData.Parser, new[]{ "GGHOAIDMOMC", "RecordId", "PassengerInfo", "TrainPartyInfo", "HPHOMPJEDBH", "KPCHEKDDFMG", "UnlockAreaNum" }, null, null, null, null)
           }));
     }
     #endregion
@@ -58,7 +58,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.TrainPartyDataReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.TrainPartyDataReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -96,10 +96,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "GGHOAIDMOMC" field.</summary>
     public const int GGHOAIDMOMCFieldNumber = 2;
-    private global::CastoriceHoney.Server.Proto.FKPMOKOJNHP gGHOAIDMOMC_;
+    private global::March7thHoney.Proto.FKPMOKOJNHP gGHOAIDMOMC_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.FKPMOKOJNHP GGHOAIDMOMC {
+    public global::March7thHoney.Proto.FKPMOKOJNHP GGHOAIDMOMC {
       get { return gGHOAIDMOMC_; }
       set {
         gGHOAIDMOMC_ = value;
@@ -120,10 +120,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "passenger_info" field.</summary>
     public const int PassengerInfoFieldNumber = 5;
-    private global::CastoriceHoney.Server.Proto.TrainPartyPassengerInfo passengerInfo_;
+    private global::March7thHoney.Proto.TrainPartyPassengerInfo passengerInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.TrainPartyPassengerInfo PassengerInfo {
+    public global::March7thHoney.Proto.TrainPartyPassengerInfo PassengerInfo {
       get { return passengerInfo_; }
       set {
         passengerInfo_ = value;
@@ -132,10 +132,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "train_party_info" field.</summary>
     public const int TrainPartyInfoFieldNumber = 10;
-    private global::CastoriceHoney.Server.Proto.TrainPartyInfo trainPartyInfo_;
+    private global::March7thHoney.Proto.TrainPartyInfo trainPartyInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.TrainPartyInfo TrainPartyInfo {
+    public global::March7thHoney.Proto.TrainPartyInfo TrainPartyInfo {
       get { return trainPartyInfo_; }
       set {
         trainPartyInfo_ = value;
@@ -343,7 +343,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.gGHOAIDMOMC_ != null) {
         if (gGHOAIDMOMC_ == null) {
-          GGHOAIDMOMC = new global::CastoriceHoney.Server.Proto.FKPMOKOJNHP();
+          GGHOAIDMOMC = new global::March7thHoney.Proto.FKPMOKOJNHP();
         }
         GGHOAIDMOMC.MergeFrom(other.GGHOAIDMOMC);
       }
@@ -352,13 +352,13 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.passengerInfo_ != null) {
         if (passengerInfo_ == null) {
-          PassengerInfo = new global::CastoriceHoney.Server.Proto.TrainPartyPassengerInfo();
+          PassengerInfo = new global::March7thHoney.Proto.TrainPartyPassengerInfo();
         }
         PassengerInfo.MergeFrom(other.PassengerInfo);
       }
       if (other.trainPartyInfo_ != null) {
         if (trainPartyInfo_ == null) {
-          TrainPartyInfo = new global::CastoriceHoney.Server.Proto.TrainPartyInfo();
+          TrainPartyInfo = new global::March7thHoney.Proto.TrainPartyInfo();
         }
         TrainPartyInfo.MergeFrom(other.TrainPartyInfo);
       }
@@ -392,7 +392,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 18: {
             if (gGHOAIDMOMC_ == null) {
-              GGHOAIDMOMC = new global::CastoriceHoney.Server.Proto.FKPMOKOJNHP();
+              GGHOAIDMOMC = new global::March7thHoney.Proto.FKPMOKOJNHP();
             }
             input.ReadMessage(GGHOAIDMOMC);
             break;
@@ -403,14 +403,14 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 42: {
             if (passengerInfo_ == null) {
-              PassengerInfo = new global::CastoriceHoney.Server.Proto.TrainPartyPassengerInfo();
+              PassengerInfo = new global::March7thHoney.Proto.TrainPartyPassengerInfo();
             }
             input.ReadMessage(PassengerInfo);
             break;
           }
           case 82: {
             if (trainPartyInfo_ == null) {
-              TrainPartyInfo = new global::CastoriceHoney.Server.Proto.TrainPartyInfo();
+              TrainPartyInfo = new global::March7thHoney.Proto.TrainPartyInfo();
             }
             input.ReadMessage(TrainPartyInfo);
             break;
@@ -448,7 +448,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 18: {
             if (gGHOAIDMOMC_ == null) {
-              GGHOAIDMOMC = new global::CastoriceHoney.Server.Proto.FKPMOKOJNHP();
+              GGHOAIDMOMC = new global::March7thHoney.Proto.FKPMOKOJNHP();
             }
             input.ReadMessage(GGHOAIDMOMC);
             break;
@@ -459,14 +459,14 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 42: {
             if (passengerInfo_ == null) {
-              PassengerInfo = new global::CastoriceHoney.Server.Proto.TrainPartyPassengerInfo();
+              PassengerInfo = new global::March7thHoney.Proto.TrainPartyPassengerInfo();
             }
             input.ReadMessage(PassengerInfo);
             break;
           }
           case 82: {
             if (trainPartyInfo_ == null) {
-              TrainPartyInfo = new global::CastoriceHoney.Server.Proto.TrainPartyInfo();
+              TrainPartyInfo = new global::March7thHoney.Proto.TrainPartyInfo();
             }
             input.ReadMessage(TrainPartyInfo);
             break;

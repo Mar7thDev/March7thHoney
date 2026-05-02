@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GetChallengeScRsp.proto</summary>
   public static partial class GetChallengeScRspReflection {
@@ -33,9 +33,9 @@ namespace CastoriceHoney.Server.Proto {
             "bGVuZ2VIaXN0b3J5TWF4TGV2ZWxCMwoTZW11Lmx1bmFyY29yZS5wcm90b6oC",
             "G0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ChallengeReflection.Descriptor, global::CastoriceHoney.Server.Proto.ChallengeGroupReflection.Descriptor, global::CastoriceHoney.Server.Proto.ChallengeHistoryMaxLevelReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChallengeReflection.Descriptor, global::March7thHoney.Proto.ChallengeGroupReflection.Descriptor, global::March7thHoney.Proto.ChallengeHistoryMaxLevelReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GetChallengeScRsp), global::CastoriceHoney.Server.Proto.GetChallengeScRsp.Parser, new[]{ "MHAPIHCJPJM", "ChallengeList", "ChallengeGroupList", "Retcode", "MaxLevelList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetChallengeScRsp), global::March7thHoney.Proto.GetChallengeScRsp.Parser, new[]{ "MHAPIHCJPJM", "ChallengeList", "ChallengeGroupList", "Retcode", "MaxLevelList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -57,7 +57,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GetChallengeScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GetChallengeScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -105,23 +105,23 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "challenge_list" field.</summary>
     public const int ChallengeListFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.Challenge> _repeated_challengeList_codec
-        = pb::FieldCodec.ForMessage(34, global::CastoriceHoney.Server.Proto.Challenge.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.Challenge> challengeList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.Challenge>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.Challenge> _repeated_challengeList_codec
+        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.Challenge.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.Challenge> challengeList_ = new pbc::RepeatedField<global::March7thHoney.Proto.Challenge>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.Challenge> ChallengeList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.Challenge> ChallengeList {
       get { return challengeList_; }
     }
 
     /// <summary>Field number for the "challenge_group_list" field.</summary>
     public const int ChallengeGroupListFieldNumber = 8;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ChallengeGroup> _repeated_challengeGroupList_codec
-        = pb::FieldCodec.ForMessage(66, global::CastoriceHoney.Server.Proto.ChallengeGroup.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ChallengeGroup> challengeGroupList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ChallengeGroup>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChallengeGroup> _repeated_challengeGroupList_codec
+        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.ChallengeGroup.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChallengeGroup> challengeGroupList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChallengeGroup>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ChallengeGroup> ChallengeGroupList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ChallengeGroup> ChallengeGroupList {
       get { return challengeGroupList_; }
     }
 
@@ -139,12 +139,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "max_level_list" field.</summary>
     public const int MaxLevelListFieldNumber = 12;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ChallengeHistoryMaxLevel> _repeated_maxLevelList_codec
-        = pb::FieldCodec.ForMessage(98, global::CastoriceHoney.Server.Proto.ChallengeHistoryMaxLevel.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ChallengeHistoryMaxLevel> maxLevelList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ChallengeHistoryMaxLevel>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChallengeHistoryMaxLevel> _repeated_maxLevelList_codec
+        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.ChallengeHistoryMaxLevel.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChallengeHistoryMaxLevel> maxLevelList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChallengeHistoryMaxLevel>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ChallengeHistoryMaxLevel> MaxLevelList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ChallengeHistoryMaxLevel> MaxLevelList {
       get { return maxLevelList_; }
     }
 

@@ -1,12 +1,12 @@
-using CastoriceHoney.Server.Enums.Rogue;
-using CastoriceHoney.Server.GameServer.Game.Battle;
-using CastoriceHoney.Server.GameServer.Game.ChessRogue.Cell;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.ChessRogue;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.RogueModifier;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Enums.Rogue;
+using March7thHoney.GameServer.Game.Battle;
+using March7thHoney.GameServer.Game.ChessRogue.Cell;
+using March7thHoney.GameServer.Server.Packet.Send.ChessRogue;
+using March7thHoney.GameServer.Server.Packet.Send.RogueModifier;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.GameServer.Game.ChessRogue.Modifier.ModifierEffect.Effects;
+namespace March7thHoney.GameServer.Game.ChessRogue.Modifier.ModifierEffect.Effects;
 
 [ModifierEffect(ModifierEffectTypeEnum.SetBlockTypeToAround)]
 public class ModifierEffectSetBlockTypeToAround : ModifierEffectHandler

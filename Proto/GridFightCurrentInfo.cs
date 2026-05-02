@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GridFightCurrentInfo.proto</summary>
   public static partial class GridFightCurrentInfoReflection {
@@ -36,9 +36,9 @@ namespace CastoriceHoney.Server.Proto {
             "RkNCRUhHSkJKQ05CMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3Rvcmlj",
             "ZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.FCBEHGJBJCNReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightGameDataReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightGameInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightPendingActionReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.FCBEHGJBJCNReflection.Descriptor, global::March7thHoney.Proto.GridFightGameDataReflection.Descriptor, global::March7thHoney.Proto.GridFightGameInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightPendingActionReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GridFightCurrentInfo), global::CastoriceHoney.Server.Proto.GridFightCurrentInfo.Parser, new[]{ "PendingAction", "UniqueId", "RogueCurrentGameInfo", "IsOverlock", "DivisionId", "GridFightGameData", "Season", "BCHPAOCOHIL" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightCurrentInfo), global::March7thHoney.Proto.GridFightCurrentInfo.Parser, new[]{ "PendingAction", "UniqueId", "RogueCurrentGameInfo", "IsOverlock", "DivisionId", "GridFightGameData", "Season", "BCHPAOCOHIL" }, null, null, null, null)
           }));
     }
     #endregion
@@ -60,7 +60,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GridFightCurrentInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GridFightCurrentInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -99,10 +99,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "pending_action" field.</summary>
     public const int PendingActionFieldNumber = 2;
-    private global::CastoriceHoney.Server.Proto.GridFightPendingAction pendingAction_;
+    private global::March7thHoney.Proto.GridFightPendingAction pendingAction_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightPendingAction PendingAction {
+    public global::March7thHoney.Proto.GridFightPendingAction PendingAction {
       get { return pendingAction_; }
       set {
         pendingAction_ = value;
@@ -123,12 +123,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "rogue_current_game_info" field.</summary>
     public const int RogueCurrentGameInfoFieldNumber = 8;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.GridFightGameInfo> _repeated_rogueCurrentGameInfo_codec
-        = pb::FieldCodec.ForMessage(66, global::CastoriceHoney.Server.Proto.GridFightGameInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridFightGameInfo> rogueCurrentGameInfo_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridFightGameInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GridFightGameInfo> _repeated_rogueCurrentGameInfo_codec
+        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.GridFightGameInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GridFightGameInfo> rogueCurrentGameInfo_ = new pbc::RepeatedField<global::March7thHoney.Proto.GridFightGameInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridFightGameInfo> RogueCurrentGameInfo {
+    public pbc::RepeatedField<global::March7thHoney.Proto.GridFightGameInfo> RogueCurrentGameInfo {
       get { return rogueCurrentGameInfo_; }
     }
 
@@ -158,10 +158,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "grid_fight_game_data" field.</summary>
     public const int GridFightGameDataFieldNumber = 12;
-    private global::CastoriceHoney.Server.Proto.GridFightGameData gridFightGameData_;
+    private global::March7thHoney.Proto.GridFightGameData gridFightGameData_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightGameData GridFightGameData {
+    public global::March7thHoney.Proto.GridFightGameData GridFightGameData {
       get { return gridFightGameData_; }
       set {
         gridFightGameData_ = value;
@@ -182,10 +182,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "BCHPAOCOHIL" field.</summary>
     public const int BCHPAOCOHILFieldNumber = 14;
-    private global::CastoriceHoney.Server.Proto.FCBEHGJBJCN bCHPAOCOHIL_;
+    private global::March7thHoney.Proto.FCBEHGJBJCN bCHPAOCOHIL_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.FCBEHGJBJCN BCHPAOCOHIL {
+    public global::March7thHoney.Proto.FCBEHGJBJCN BCHPAOCOHIL {
       get { return bCHPAOCOHIL_; }
       set {
         bCHPAOCOHIL_ = value;
@@ -362,7 +362,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.pendingAction_ != null) {
         if (pendingAction_ == null) {
-          PendingAction = new global::CastoriceHoney.Server.Proto.GridFightPendingAction();
+          PendingAction = new global::March7thHoney.Proto.GridFightPendingAction();
         }
         PendingAction.MergeFrom(other.PendingAction);
       }
@@ -378,7 +378,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.gridFightGameData_ != null) {
         if (gridFightGameData_ == null) {
-          GridFightGameData = new global::CastoriceHoney.Server.Proto.GridFightGameData();
+          GridFightGameData = new global::March7thHoney.Proto.GridFightGameData();
         }
         GridFightGameData.MergeFrom(other.GridFightGameData);
       }
@@ -387,7 +387,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.bCHPAOCOHIL_ != null) {
         if (bCHPAOCOHIL_ == null) {
-          BCHPAOCOHIL = new global::CastoriceHoney.Server.Proto.FCBEHGJBJCN();
+          BCHPAOCOHIL = new global::March7thHoney.Proto.FCBEHGJBJCN();
         }
         BCHPAOCOHIL.MergeFrom(other.BCHPAOCOHIL);
       }
@@ -412,7 +412,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 18: {
             if (pendingAction_ == null) {
-              PendingAction = new global::CastoriceHoney.Server.Proto.GridFightPendingAction();
+              PendingAction = new global::March7thHoney.Proto.GridFightPendingAction();
             }
             input.ReadMessage(PendingAction);
             break;
@@ -435,7 +435,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 98: {
             if (gridFightGameData_ == null) {
-              GridFightGameData = new global::CastoriceHoney.Server.Proto.GridFightGameData();
+              GridFightGameData = new global::March7thHoney.Proto.GridFightGameData();
             }
             input.ReadMessage(GridFightGameData);
             break;
@@ -446,7 +446,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 114: {
             if (bCHPAOCOHIL_ == null) {
-              BCHPAOCOHIL = new global::CastoriceHoney.Server.Proto.FCBEHGJBJCN();
+              BCHPAOCOHIL = new global::March7thHoney.Proto.FCBEHGJBJCN();
             }
             input.ReadMessage(BCHPAOCOHIL);
             break;
@@ -472,7 +472,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 18: {
             if (pendingAction_ == null) {
-              PendingAction = new global::CastoriceHoney.Server.Proto.GridFightPendingAction();
+              PendingAction = new global::March7thHoney.Proto.GridFightPendingAction();
             }
             input.ReadMessage(PendingAction);
             break;
@@ -495,7 +495,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 98: {
             if (gridFightGameData_ == null) {
-              GridFightGameData = new global::CastoriceHoney.Server.Proto.GridFightGameData();
+              GridFightGameData = new global::March7thHoney.Proto.GridFightGameData();
             }
             input.ReadMessage(GridFightGameData);
             break;
@@ -506,7 +506,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 114: {
             if (bCHPAOCOHIL_ == null) {
-              BCHPAOCOHIL = new global::CastoriceHoney.Server.Proto.FCBEHGJBJCN();
+              BCHPAOCOHIL = new global::March7thHoney.Proto.FCBEHGJBJCN();
             }
             input.ReadMessage(BCHPAOCOHIL);
             break;

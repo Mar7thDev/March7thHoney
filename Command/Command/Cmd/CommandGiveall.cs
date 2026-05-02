@@ -1,12 +1,12 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Database.Inventory;
-using CastoriceHoney.Server.Database.TrainParty;
-using CastoriceHoney.Server.Enums.Avatar;
-using CastoriceHoney.Server.Enums.Item;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.PlayerSync;
-using CastoriceHoney.Server.Internationalization;
+using March7thHoney.Data;
+using March7thHoney.Database.Inventory;
+using March7thHoney.Database.TrainParty;
+using March7thHoney.Enums.Avatar;
+using March7thHoney.Enums.Item;
+using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
+using March7thHoney.Internationalization;
 
-namespace CastoriceHoney.Server.Command.Command.Cmd;
+namespace March7thHoney.Command.Command.Cmd;
 
 [CommandInfo("giveall", "Game.Command.GiveAll.Desc", "Game.Command.GiveAll.Usage", ["ga"])]
 public class CommandGiveall : ICommand

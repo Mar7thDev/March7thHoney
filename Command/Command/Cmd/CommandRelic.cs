@@ -1,6 +1,6 @@
-using CastoriceHoney.Server.Internationalization;
+using March7thHoney.Internationalization;
 
-namespace CastoriceHoney.Server.Command.Command.Cmd;
+namespace March7thHoney.Command.Command.Cmd;
 
 [CommandInfo("relic", "Game.Command.Relic.Desc", "Game.Command.Relic.Usage")]
 public class CommandRelic : ICommand

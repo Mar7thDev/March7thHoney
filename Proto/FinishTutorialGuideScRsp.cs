@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from FinishTutorialGuideScRsp.proto</summary>
   public static partial class FinishTutorialGuideScRspReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "DUIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2Vy",
             "dmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ItemListReflection.Descriptor, global::CastoriceHoney.Server.Proto.TutorialGuideReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemListReflection.Descriptor, global::March7thHoney.Proto.TutorialGuideReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.FinishTutorialGuideScRsp), global::CastoriceHoney.Server.Proto.FinishTutorialGuideScRsp.Parser, new[]{ "Reward", "TutorialGuide", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FinishTutorialGuideScRsp), global::March7thHoney.Proto.FinishTutorialGuideScRsp.Parser, new[]{ "Reward", "TutorialGuide", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.FinishTutorialGuideScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.FinishTutorialGuideScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -89,10 +89,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "reward" field.</summary>
     public const int RewardFieldNumber = 1;
-    private global::CastoriceHoney.Server.Proto.ItemList reward_;
+    private global::March7thHoney.Proto.ItemList reward_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ItemList Reward {
+    public global::March7thHoney.Proto.ItemList Reward {
       get { return reward_; }
       set {
         reward_ = value;
@@ -101,10 +101,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "tutorial_guide" field.</summary>
     public const int TutorialGuideFieldNumber = 7;
-    private global::CastoriceHoney.Server.Proto.TutorialGuide tutorialGuide_;
+    private global::March7thHoney.Proto.TutorialGuide tutorialGuide_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.TutorialGuide TutorialGuide {
+    public global::March7thHoney.Proto.TutorialGuide TutorialGuide {
       get { return tutorialGuide_; }
       set {
         tutorialGuide_ = value;
@@ -236,13 +236,13 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.reward_ != null) {
         if (reward_ == null) {
-          Reward = new global::CastoriceHoney.Server.Proto.ItemList();
+          Reward = new global::March7thHoney.Proto.ItemList();
         }
         Reward.MergeFrom(other.Reward);
       }
       if (other.tutorialGuide_ != null) {
         if (tutorialGuide_ == null) {
-          TutorialGuide = new global::CastoriceHoney.Server.Proto.TutorialGuide();
+          TutorialGuide = new global::March7thHoney.Proto.TutorialGuide();
         }
         TutorialGuide.MergeFrom(other.TutorialGuide);
       }
@@ -270,14 +270,14 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 10: {
             if (reward_ == null) {
-              Reward = new global::CastoriceHoney.Server.Proto.ItemList();
+              Reward = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(Reward);
             break;
           }
           case 58: {
             if (tutorialGuide_ == null) {
-              TutorialGuide = new global::CastoriceHoney.Server.Proto.TutorialGuide();
+              TutorialGuide = new global::March7thHoney.Proto.TutorialGuide();
             }
             input.ReadMessage(TutorialGuide);
             break;
@@ -307,14 +307,14 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 10: {
             if (reward_ == null) {
-              Reward = new global::CastoriceHoney.Server.Proto.ItemList();
+              Reward = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(Reward);
             break;
           }
           case 58: {
             if (tutorialGuide_ == null) {
-              TutorialGuide = new global::CastoriceHoney.Server.Proto.TutorialGuide();
+              TutorialGuide = new global::March7thHoney.Proto.TutorialGuide();
             }
             input.ReadMessage(TutorialGuide);
             break;

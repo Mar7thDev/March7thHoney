@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.GameServer.Game.Lobby;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.GameServer.Game.Lobby;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Send.Lobby;
+namespace March7thHoney.GameServer.Server.Packet.Send.Lobby;
 
 public class PacketLobbyJoinScRsp : BasePacket
 {

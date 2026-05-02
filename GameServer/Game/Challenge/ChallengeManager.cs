@@ -1,19 +1,19 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Database;
-using CastoriceHoney.Server.Database.Challenge;
-using CastoriceHoney.Server.Database.Friend;
-using CastoriceHoney.Server.Database.Inventory;
-using CastoriceHoney.Server.GameServer.Game.Challenge.Definitions;
-using CastoriceHoney.Server.GameServer.Game.Challenge.Instances;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Challenge;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Scene;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Proto.ServerSide;
+using March7thHoney.Data;
+using March7thHoney.Database;
+using March7thHoney.Database.Challenge;
+using March7thHoney.Database.Friend;
+using March7thHoney.Database.Inventory;
+using March7thHoney.GameServer.Game.Challenge.Definitions;
+using March7thHoney.GameServer.Game.Challenge.Instances;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Server.Packet.Send.Challenge;
+using March7thHoney.GameServer.Server.Packet.Send.Scene;
+using March7thHoney.Proto;
+using March7thHoney.Proto.ServerSide;
 using Google.Protobuf;
-using static CastoriceHoney.Server.GameServer.Plugin.Event.PluginEvent;
+using static March7thHoney.GameServer.Plugin.Event.PluginEvent;
 
-namespace CastoriceHoney.Server.GameServer.Game.Challenge;
+namespace March7thHoney.GameServer.Game.Challenge;
 
 public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
 {

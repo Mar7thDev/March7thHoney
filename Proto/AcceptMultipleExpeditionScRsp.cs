@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from AcceptMultipleExpeditionScRsp.proto</summary>
   public static partial class AcceptMultipleExpeditionScRspReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "SW5mb0IzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXku",
             "U2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ExpeditionInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.ItemListReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ExpeditionInfoReflection.Descriptor, global::March7thHoney.Proto.ItemListReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.AcceptMultipleExpeditionScRsp), global::CastoriceHoney.Server.Proto.AcceptMultipleExpeditionScRsp.Parser, new[]{ "KAMBBFDEBAM", "Retcode", "HALFGLGLDLO", "AcceptMultiExpedition" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AcceptMultipleExpeditionScRsp), global::March7thHoney.Proto.AcceptMultipleExpeditionScRsp.Parser, new[]{ "KAMBBFDEBAM", "Retcode", "HALFGLGLDLO", "AcceptMultiExpedition" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.AcceptMultipleExpeditionScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.AcceptMultipleExpeditionScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -115,23 +115,23 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "HALFGLGLDLO" field.</summary>
     public const int HALFGLGLDLOFieldNumber = 14;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ItemList> _repeated_hALFGLGLDLO_codec
-        = pb::FieldCodec.ForMessage(114, global::CastoriceHoney.Server.Proto.ItemList.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ItemList> hALFGLGLDLO_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ItemList>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ItemList> _repeated_hALFGLGLDLO_codec
+        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.ItemList.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ItemList> hALFGLGLDLO_ = new pbc::RepeatedField<global::March7thHoney.Proto.ItemList>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ItemList> HALFGLGLDLO {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ItemList> HALFGLGLDLO {
       get { return hALFGLGLDLO_; }
     }
 
     /// <summary>Field number for the "accept_multi_expedition" field.</summary>
     public const int AcceptMultiExpeditionFieldNumber = 15;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ExpeditionInfo> _repeated_acceptMultiExpedition_codec
-        = pb::FieldCodec.ForMessage(122, global::CastoriceHoney.Server.Proto.ExpeditionInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ExpeditionInfo> acceptMultiExpedition_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ExpeditionInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ExpeditionInfo> _repeated_acceptMultiExpedition_codec
+        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.ExpeditionInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ExpeditionInfo> acceptMultiExpedition_ = new pbc::RepeatedField<global::March7thHoney.Proto.ExpeditionInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ExpeditionInfo> AcceptMultiExpedition {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ExpeditionInfo> AcceptMultiExpedition {
       get { return acceptMultiExpedition_; }
     }
 

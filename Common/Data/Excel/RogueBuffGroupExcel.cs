@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Data.Custom;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Data.Custom;
+using March7thHoney.Util;
 using Newtonsoft.Json;
 
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueBuffGroup.json")]
 public class RogueBuffGroupExcel : BaseRogueBuffGroupExcel

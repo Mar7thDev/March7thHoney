@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from SetPlayerInfoCsReq.proto</summary>
   public static partial class SetPlayerInfoCsReqReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "YXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZw",
             "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GenderReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GenderReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.SetPlayerInfoCsReq), global::CastoriceHoney.Server.Proto.SetPlayerInfoCsReq.Parser, new[]{ "Gender", "Nickname", "IsModify" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetPlayerInfoCsReq), global::March7thHoney.Proto.SetPlayerInfoCsReq.Parser, new[]{ "Gender", "Nickname", "IsModify" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.SetPlayerInfoCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.SetPlayerInfoCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -88,10 +88,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "gender" field.</summary>
     public const int GenderFieldNumber = 2;
-    private global::CastoriceHoney.Server.Proto.Gender gender_ = global::CastoriceHoney.Server.Proto.Gender.None;
+    private global::March7thHoney.Proto.Gender gender_ = global::March7thHoney.Proto.Gender.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.Gender Gender {
+    public global::March7thHoney.Proto.Gender Gender {
       get { return gender_; }
       set {
         gender_ = value;
@@ -147,7 +147,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Gender != global::CastoriceHoney.Server.Proto.Gender.None) hash ^= Gender.GetHashCode();
+      if (Gender != global::March7thHoney.Proto.Gender.None) hash ^= Gender.GetHashCode();
       if (Nickname.Length != 0) hash ^= Nickname.GetHashCode();
       if (IsModify != false) hash ^= IsModify.GetHashCode();
       if (_unknownFields != null) {
@@ -168,7 +168,7 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Gender != global::CastoriceHoney.Server.Proto.Gender.None) {
+      if (Gender != global::March7thHoney.Proto.Gender.None) {
         output.WriteRawTag(16);
         output.WriteEnum((int) Gender);
       }
@@ -190,7 +190,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Gender != global::CastoriceHoney.Server.Proto.Gender.None) {
+      if (Gender != global::March7thHoney.Proto.Gender.None) {
         output.WriteRawTag(16);
         output.WriteEnum((int) Gender);
       }
@@ -212,7 +212,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Gender != global::CastoriceHoney.Server.Proto.Gender.None) {
+      if (Gender != global::March7thHoney.Proto.Gender.None) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Gender);
       }
       if (Nickname.Length != 0) {
@@ -233,7 +233,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.Gender != global::CastoriceHoney.Server.Proto.Gender.None) {
+      if (other.Gender != global::March7thHoney.Proto.Gender.None) {
         Gender = other.Gender;
       }
       if (other.Nickname.Length != 0) {
@@ -262,7 +262,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 16: {
-            Gender = (global::CastoriceHoney.Server.Proto.Gender) input.ReadEnum();
+            Gender = (global::March7thHoney.Proto.Gender) input.ReadEnum();
             break;
           }
           case 82: {
@@ -293,7 +293,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 16: {
-            Gender = (global::CastoriceHoney.Server.Proto.Gender) input.ReadEnum();
+            Gender = (global::March7thHoney.Proto.Gender) input.ReadEnum();
             break;
           }
           case 82: {

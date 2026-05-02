@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from RaidInfoNotify.proto</summary>
   public static partial class RaidInfoNotifyReflection {
@@ -33,9 +33,9 @@ namespace CastoriceHoney.Server.Proto {
             "Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90",
             "b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ItemListReflection.Descriptor, global::CastoriceHoney.Server.Proto.RaidStatusReflection.Descriptor, global::CastoriceHoney.Server.Proto.RaidTargetInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemListReflection.Descriptor, global::March7thHoney.Proto.RaidStatusReflection.Descriptor, global::March7thHoney.Proto.RaidTargetInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.RaidInfoNotify), global::CastoriceHoney.Server.Proto.RaidInfoNotify.Parser, new[]{ "RaidTargetInfo", "Status", "RaidFinishTime", "WorldLevel", "RaidId", "ItemList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RaidInfoNotify), global::March7thHoney.Proto.RaidInfoNotify.Parser, new[]{ "RaidTargetInfo", "Status", "RaidFinishTime", "WorldLevel", "RaidId", "ItemList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -57,7 +57,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.RaidInfoNotifyReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.RaidInfoNotifyReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -94,21 +94,21 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "raid_target_info" field.</summary>
     public const int RaidTargetInfoFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.RaidTargetInfo> _repeated_raidTargetInfo_codec
-        = pb::FieldCodec.ForMessage(10, global::CastoriceHoney.Server.Proto.RaidTargetInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.RaidTargetInfo> raidTargetInfo_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.RaidTargetInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.RaidTargetInfo> _repeated_raidTargetInfo_codec
+        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.RaidTargetInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.RaidTargetInfo> raidTargetInfo_ = new pbc::RepeatedField<global::March7thHoney.Proto.RaidTargetInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.RaidTargetInfo> RaidTargetInfo {
+    public pbc::RepeatedField<global::March7thHoney.Proto.RaidTargetInfo> RaidTargetInfo {
       get { return raidTargetInfo_; }
     }
 
     /// <summary>Field number for the "status" field.</summary>
     public const int StatusFieldNumber = 3;
-    private global::CastoriceHoney.Server.Proto.RaidStatus status_ = global::CastoriceHoney.Server.Proto.RaidStatus.None;
+    private global::March7thHoney.Proto.RaidStatus status_ = global::March7thHoney.Proto.RaidStatus.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.RaidStatus Status {
+    public global::March7thHoney.Proto.RaidStatus Status {
       get { return status_; }
       set {
         status_ = value;
@@ -153,10 +153,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "item_list" field.</summary>
     public const int ItemListFieldNumber = 12;
-    private global::CastoriceHoney.Server.Proto.ItemList itemList_;
+    private global::March7thHoney.Proto.ItemList itemList_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ItemList ItemList {
+    public global::March7thHoney.Proto.ItemList ItemList {
       get { return itemList_; }
       set {
         itemList_ = value;
@@ -192,7 +192,7 @@ namespace CastoriceHoney.Server.Proto {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= raidTargetInfo_.GetHashCode();
-      if (Status != global::CastoriceHoney.Server.Proto.RaidStatus.None) hash ^= Status.GetHashCode();
+      if (Status != global::March7thHoney.Proto.RaidStatus.None) hash ^= Status.GetHashCode();
       if (RaidFinishTime != 0UL) hash ^= RaidFinishTime.GetHashCode();
       if (WorldLevel != 0) hash ^= WorldLevel.GetHashCode();
       if (RaidId != 0) hash ^= RaidId.GetHashCode();
@@ -216,7 +216,7 @@ namespace CastoriceHoney.Server.Proto {
       output.WriteRawMessage(this);
     #else
       raidTargetInfo_.WriteTo(output, _repeated_raidTargetInfo_codec);
-      if (Status != global::CastoriceHoney.Server.Proto.RaidStatus.None) {
+      if (Status != global::March7thHoney.Proto.RaidStatus.None) {
         output.WriteRawTag(24);
         output.WriteEnum((int) Status);
       }
@@ -247,7 +247,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       raidTargetInfo_.WriteTo(ref output, _repeated_raidTargetInfo_codec);
-      if (Status != global::CastoriceHoney.Server.Proto.RaidStatus.None) {
+      if (Status != global::March7thHoney.Proto.RaidStatus.None) {
         output.WriteRawTag(24);
         output.WriteEnum((int) Status);
       }
@@ -278,7 +278,7 @@ namespace CastoriceHoney.Server.Proto {
     public int CalculateSize() {
       int size = 0;
       size += raidTargetInfo_.CalculateSize(_repeated_raidTargetInfo_codec);
-      if (Status != global::CastoriceHoney.Server.Proto.RaidStatus.None) {
+      if (Status != global::March7thHoney.Proto.RaidStatus.None) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Status);
       }
       if (RaidFinishTime != 0UL) {
@@ -306,7 +306,7 @@ namespace CastoriceHoney.Server.Proto {
         return;
       }
       raidTargetInfo_.Add(other.raidTargetInfo_);
-      if (other.Status != global::CastoriceHoney.Server.Proto.RaidStatus.None) {
+      if (other.Status != global::March7thHoney.Proto.RaidStatus.None) {
         Status = other.Status;
       }
       if (other.RaidFinishTime != 0UL) {
@@ -320,7 +320,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.itemList_ != null) {
         if (itemList_ == null) {
-          ItemList = new global::CastoriceHoney.Server.Proto.ItemList();
+          ItemList = new global::March7thHoney.Proto.ItemList();
         }
         ItemList.MergeFrom(other.ItemList);
       }
@@ -348,7 +348,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 24: {
-            Status = (global::CastoriceHoney.Server.Proto.RaidStatus) input.ReadEnum();
+            Status = (global::March7thHoney.Proto.RaidStatus) input.ReadEnum();
             break;
           }
           case 40: {
@@ -365,7 +365,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 98: {
             if (itemList_ == null) {
-              ItemList = new global::CastoriceHoney.Server.Proto.ItemList();
+              ItemList = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(ItemList);
             break;
@@ -394,7 +394,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 24: {
-            Status = (global::CastoriceHoney.Server.Proto.RaidStatus) input.ReadEnum();
+            Status = (global::March7thHoney.Proto.RaidStatus) input.ReadEnum();
             break;
           }
           case 40: {
@@ -411,7 +411,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 98: {
             if (itemList_ == null) {
-              ItemList = new global::CastoriceHoney.Server.Proto.ItemList();
+              ItemList = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(ItemList);
             break;

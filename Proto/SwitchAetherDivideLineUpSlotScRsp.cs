@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from SwitchAetherDivideLineUpSlotScRsp.proto</summary>
   public static partial class SwitchAetherDivideLineUpSlotScRspReflection {
@@ -31,7 +31,7 @@ namespace CastoriceHoney.Server.Proto {
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.SwitchAetherDivideLineUpSlotScRsp), global::CastoriceHoney.Server.Proto.SwitchAetherDivideLineUpSlotScRsp.Parser, new[]{ "Retcode", "FNCINGFDLPA" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SwitchAetherDivideLineUpSlotScRsp), global::March7thHoney.Proto.SwitchAetherDivideLineUpSlotScRsp.Parser, new[]{ "Retcode", "FNCINGFDLPA" }, null, null, null, null)
           }));
     }
     #endregion
@@ -53,7 +53,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.SwitchAetherDivideLineUpSlotScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.SwitchAetherDivideLineUpSlotScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

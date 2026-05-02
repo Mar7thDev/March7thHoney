@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Quest;
-using CastoriceHoney.Server.Kcp;
+using March7thHoney.GameServer.Server.Packet.Send.Quest;
+using March7thHoney.Kcp;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Quest;
+namespace March7thHoney.GameServer.Server.Packet.Recv.Quest;
 
 [Opcode(CmdIds.GetQuestDataCsReq)]
 public class HandlerGetQuestDataCsReq : Handler

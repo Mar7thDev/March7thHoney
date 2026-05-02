@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from EnterChessRogueAeonRoomScRsp.proto</summary>
   public static partial class EnterChessRogueAeonRoomScRspReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "R05IQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5T",
             "ZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.EJCCHHAAGNHReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.EJCCHHAAGNHReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.EnterChessRogueAeonRoomScRsp), global::CastoriceHoney.Server.Proto.EnterChessRogueAeonRoomScRsp.Parser, new[]{ "Retcode", "StageInfo" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EnterChessRogueAeonRoomScRsp), global::March7thHoney.Proto.EnterChessRogueAeonRoomScRsp.Parser, new[]{ "Retcode", "StageInfo" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.EnterChessRogueAeonRoomScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.EnterChessRogueAeonRoomScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -99,10 +99,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "stage_info" field.</summary>
     public const int StageInfoFieldNumber = 3;
-    private global::CastoriceHoney.Server.Proto.EJCCHHAAGNH stageInfo_;
+    private global::March7thHoney.Proto.EJCCHHAAGNH stageInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.EJCCHHAAGNH StageInfo {
+    public global::March7thHoney.Proto.EJCCHHAAGNH StageInfo {
       get { return stageInfo_; }
       set {
         stageInfo_ = value;
@@ -212,7 +212,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.stageInfo_ != null) {
         if (stageInfo_ == null) {
-          StageInfo = new global::CastoriceHoney.Server.Proto.EJCCHHAAGNH();
+          StageInfo = new global::March7thHoney.Proto.EJCCHHAAGNH();
         }
         StageInfo.MergeFrom(other.StageInfo);
       }
@@ -241,7 +241,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 26: {
             if (stageInfo_ == null) {
-              StageInfo = new global::CastoriceHoney.Server.Proto.EJCCHHAAGNH();
+              StageInfo = new global::March7thHoney.Proto.EJCCHHAAGNH();
             }
             input.ReadMessage(StageInfo);
             break;
@@ -271,7 +271,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 26: {
             if (stageInfo_ == null) {
-              StageInfo = new global::CastoriceHoney.Server.Proto.EJCCHHAAGNH();
+              StageInfo = new global::March7thHoney.Proto.EJCCHHAAGNH();
             }
             input.ReadMessage(StageInfo);
             break;

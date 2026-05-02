@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from RelicRecommend.proto</summary>
   public static partial class RelicRecommendReflection {
@@ -29,9 +29,9 @@ namespace CastoriceHoney.Server.Proto {
             "TUpCRUIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXku",
             "U2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.MNGIIJPMJBEReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.MNGIIJPMJBEReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.RelicRecommend), global::CastoriceHoney.Server.Proto.RelicRecommend.Parser, new[]{ "PEDFGEMEONK" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RelicRecommend), global::March7thHoney.Proto.RelicRecommend.Parser, new[]{ "PEDFGEMEONK" }, null, null, null, null)
           }));
     }
     #endregion
@@ -53,7 +53,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.RelicRecommendReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.RelicRecommendReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -85,12 +85,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "PEDFGEMEONK" field.</summary>
     public const int PEDFGEMEONKFieldNumber = 7;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.MNGIIJPMJBE> _repeated_pEDFGEMEONK_codec
-        = pb::FieldCodec.ForMessage(58, global::CastoriceHoney.Server.Proto.MNGIIJPMJBE.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MNGIIJPMJBE> pEDFGEMEONK_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MNGIIJPMJBE>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MNGIIJPMJBE> _repeated_pEDFGEMEONK_codec
+        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.MNGIIJPMJBE.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MNGIIJPMJBE> pEDFGEMEONK_ = new pbc::RepeatedField<global::March7thHoney.Proto.MNGIIJPMJBE>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MNGIIJPMJBE> PEDFGEMEONK {
+    public pbc::RepeatedField<global::March7thHoney.Proto.MNGIIJPMJBE> PEDFGEMEONK {
       get { return pEDFGEMEONK_; }
     }
 

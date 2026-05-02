@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from BuyGoodsScRsp.proto</summary>
   public static partial class BuyGoodsScRspReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "YXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZw",
             "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ItemListReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemListReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.BuyGoodsScRsp), global::CastoriceHoney.Server.Proto.BuyGoodsScRsp.Parser, new[]{ "GoodsId", "GoodsBuyTimes", "ReturnItemList", "Retcode", "ShopId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BuyGoodsScRsp), global::March7thHoney.Proto.BuyGoodsScRsp.Parser, new[]{ "GoodsId", "GoodsBuyTimes", "ReturnItemList", "Retcode", "ShopId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.BuyGoodsScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.BuyGoodsScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -115,10 +115,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "return_item_list" field.</summary>
     public const int ReturnItemListFieldNumber = 6;
-    private global::CastoriceHoney.Server.Proto.ItemList returnItemList_;
+    private global::March7thHoney.Proto.ItemList returnItemList_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ItemList ReturnItemList {
+    public global::March7thHoney.Proto.ItemList ReturnItemList {
       get { return returnItemList_; }
       set {
         returnItemList_ = value;
@@ -294,7 +294,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.returnItemList_ != null) {
         if (returnItemList_ == null) {
-          ReturnItemList = new global::CastoriceHoney.Server.Proto.ItemList();
+          ReturnItemList = new global::March7thHoney.Proto.ItemList();
         }
         ReturnItemList.MergeFrom(other.ReturnItemList);
       }
@@ -333,7 +333,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 50: {
             if (returnItemList_ == null) {
-              ReturnItemList = new global::CastoriceHoney.Server.Proto.ItemList();
+              ReturnItemList = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(ReturnItemList);
             break;
@@ -375,7 +375,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 50: {
             if (returnItemList_ == null) {
-              ReturnItemList = new global::CastoriceHoney.Server.Proto.ItemList();
+              ReturnItemList = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(ReturnItemList);
             break;

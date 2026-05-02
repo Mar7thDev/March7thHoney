@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from TakeMailAttachmentScRsp.proto</summary>
   public static partial class TakeMailAttachmentScRspReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "EhkKEXN1Y2NfbWFpbF9pZF9saXN0GAogAygNQjMKE2VtdS5sdW5hcmNvcmUu",
             "cHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ItemListReflection.Descriptor, global::CastoriceHoney.Server.Proto.KEOAIHACHKGReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemListReflection.Descriptor, global::March7thHoney.Proto.KEOAIHACHKGReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.TakeMailAttachmentScRsp), global::CastoriceHoney.Server.Proto.TakeMailAttachmentScRsp.Parser, new[]{ "Retcode", "FailMailList", "Attachment", "SuccMailIdList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TakeMailAttachmentScRsp), global::March7thHoney.Proto.TakeMailAttachmentScRsp.Parser, new[]{ "Retcode", "FailMailList", "Attachment", "SuccMailIdList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.TakeMailAttachmentScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.TakeMailAttachmentScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -102,21 +102,21 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "fail_mail_list" field.</summary>
     public const int FailMailListFieldNumber = 6;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.KEOAIHACHKG> _repeated_failMailList_codec
-        = pb::FieldCodec.ForMessage(50, global::CastoriceHoney.Server.Proto.KEOAIHACHKG.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.KEOAIHACHKG> failMailList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.KEOAIHACHKG>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.KEOAIHACHKG> _repeated_failMailList_codec
+        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.KEOAIHACHKG.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.KEOAIHACHKG> failMailList_ = new pbc::RepeatedField<global::March7thHoney.Proto.KEOAIHACHKG>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.KEOAIHACHKG> FailMailList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.KEOAIHACHKG> FailMailList {
       get { return failMailList_; }
     }
 
     /// <summary>Field number for the "attachment" field.</summary>
     public const int AttachmentFieldNumber = 7;
-    private global::CastoriceHoney.Server.Proto.ItemList attachment_;
+    private global::March7thHoney.Proto.ItemList attachment_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ItemList Attachment {
+    public global::March7thHoney.Proto.ItemList Attachment {
       get { return attachment_; }
       set {
         attachment_ = value;
@@ -248,7 +248,7 @@ namespace CastoriceHoney.Server.Proto {
       failMailList_.Add(other.failMailList_);
       if (other.attachment_ != null) {
         if (attachment_ == null) {
-          Attachment = new global::CastoriceHoney.Server.Proto.ItemList();
+          Attachment = new global::March7thHoney.Proto.ItemList();
         }
         Attachment.MergeFrom(other.Attachment);
       }
@@ -282,7 +282,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 58: {
             if (attachment_ == null) {
-              Attachment = new global::CastoriceHoney.Server.Proto.ItemList();
+              Attachment = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(Attachment);
             break;
@@ -321,7 +321,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 58: {
             if (attachment_ == null) {
-              Attachment = new global::CastoriceHoney.Server.Proto.ItemList();
+              Attachment = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(Attachment);
             break;

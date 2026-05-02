@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Proto.ServerSide;
+using March7thHoney.Proto;
+using March7thHoney.Proto.ServerSide;
 
-namespace CastoriceHoney.Server.GameServer.Game.GridFight.PendingAction;
+namespace March7thHoney.GameServer.Game.GridFight.PendingAction;
 
 public class GridFightTraitPendingAction(GridFightInstance inst, GridFightGameTraitEffectPb effect) : BaseGridFightPendingAction(inst)
 {

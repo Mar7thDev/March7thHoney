@@ -1,14 +1,14 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Database.Avatar;
-using CastoriceHoney.Server.Database.Inventory;
-using CastoriceHoney.Server.Database.Message;
-using CastoriceHoney.Server.Database.Quests;
-using CastoriceHoney.Server.Enums.Item;
-using CastoriceHoney.Server.GameServer.Game.Sync;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Data;
+using March7thHoney.Database.Avatar;
+using March7thHoney.Database.Inventory;
+using March7thHoney.Database.Message;
+using March7thHoney.Database.Quests;
+using March7thHoney.Enums.Item;
+using March7thHoney.GameServer.Game.Sync;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Send.PlayerSync;
+namespace March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
 
 public class PacketPlayerSyncScNotify : BasePacket
 {

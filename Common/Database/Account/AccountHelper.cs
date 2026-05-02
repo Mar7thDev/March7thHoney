@@ -1,6 +1,6 @@
-using CastoriceHoney.Server.Util;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.Database.Account;
+namespace March7thHoney.Database.Account;
 
 public static class AccountHelper
 {

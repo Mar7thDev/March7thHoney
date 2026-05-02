@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Enums.GridFight;
+namespace March7thHoney.Enums.GridFight;
 
 public enum GridFightForgeFuncTypeEnum
 {

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from DPOGOCFMOFP.proto</summary>
   public static partial class DPOGOCFMOFPReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "ByABKA0SEwoLT0RERkVBRUVKSkQYDCABKA1CMwoTZW11Lmx1bmFyY29yZS5w",
             "cm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.CLHDILKAKEPReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.CLHDILKAKEPReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.DPOGOCFMOFP), global::CastoriceHoney.Server.Proto.DPOGOCFMOFP.Parser, new[]{ "COFELCKDBJE", "FriendRecommendList", "EDNIACNOPMN", "ODDFEAEEJJD" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DPOGOCFMOFP), global::March7thHoney.Proto.DPOGOCFMOFP.Parser, new[]{ "COFELCKDBJE", "FriendRecommendList", "EDNIACNOPMN", "ODDFEAEEJJD" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.DPOGOCFMOFPReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.DPOGOCFMOFPReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -101,12 +101,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "friend_recommend_list" field.</summary>
     public const int FriendRecommendListFieldNumber = 6;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.CLHDILKAKEP> _repeated_friendRecommendList_codec
-        = pb::FieldCodec.ForMessage(50, global::CastoriceHoney.Server.Proto.CLHDILKAKEP.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.CLHDILKAKEP> friendRecommendList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.CLHDILKAKEP>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.CLHDILKAKEP> _repeated_friendRecommendList_codec
+        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.CLHDILKAKEP.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.CLHDILKAKEP> friendRecommendList_ = new pbc::RepeatedField<global::March7thHoney.Proto.CLHDILKAKEP>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.CLHDILKAKEP> FriendRecommendList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.CLHDILKAKEP> FriendRecommendList {
       get { return friendRecommendList_; }
     }
 

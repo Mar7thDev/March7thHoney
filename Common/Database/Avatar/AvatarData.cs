@@ -1,15 +1,15 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Data.Excel;
-using CastoriceHoney.Server.Database.Inventory;
-using CastoriceHoney.Server.Database.Player;
-using CastoriceHoney.Server.Enums.Avatar;
-using CastoriceHoney.Server.Enums.Item;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Data;
+using March7thHoney.Data.Excel;
+using March7thHoney.Database.Inventory;
+using March7thHoney.Database.Player;
+using March7thHoney.Enums.Avatar;
+using March7thHoney.Enums.Item;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 using SqlSugar;
-using LineupInfo = CastoriceHoney.Server.Database.Lineup.LineupInfo;
+using LineupInfo = March7thHoney.Database.Lineup.LineupInfo;
 
-namespace CastoriceHoney.Server.Database.Avatar;
+namespace March7thHoney.Database.Avatar;
 
 [SugarTable("Avatar")]
 public class AvatarData : BaseDatabaseDataHelper

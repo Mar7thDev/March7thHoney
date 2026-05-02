@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from UpdateTrackMainMissionCsReq.proto</summary>
   public static partial class UpdateTrackMainMissionCsReqReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "AyABKA0SEwoLR05QREdMR0JJTU0YBCABKA1CMwoTZW11Lmx1bmFyY29yZS5w",
             "cm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.TrackMainMissionUpdateReasonIdReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.TrackMainMissionUpdateReasonIdReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.UpdateTrackMainMissionCsReq), global::CastoriceHoney.Server.Proto.UpdateTrackMainMissionCsReq.Parser, new[]{ "NILLMKMKODP", "TrackMissionId", "GNPDGLGBIMM" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UpdateTrackMainMissionCsReq), global::March7thHoney.Proto.UpdateTrackMainMissionCsReq.Parser, new[]{ "NILLMKMKODP", "TrackMissionId", "GNPDGLGBIMM" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.UpdateTrackMainMissionCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.UpdateTrackMainMissionCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -89,10 +89,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "NILLMKMKODP" field.</summary>
     public const int NILLMKMKODPFieldNumber = 1;
-    private global::CastoriceHoney.Server.Proto.TrackMainMissionUpdateReasonId nILLMKMKODP_ = global::CastoriceHoney.Server.Proto.TrackMainMissionUpdateReasonId.DjeoglfdjifDpdfiineaff;
+    private global::March7thHoney.Proto.TrackMainMissionUpdateReasonId nILLMKMKODP_ = global::March7thHoney.Proto.TrackMainMissionUpdateReasonId.DjeoglfdjifDpdfiineaff;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.TrackMainMissionUpdateReasonId NILLMKMKODP {
+    public global::March7thHoney.Proto.TrackMainMissionUpdateReasonId NILLMKMKODP {
       get { return nILLMKMKODP_; }
       set {
         nILLMKMKODP_ = value;
@@ -148,7 +148,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (NILLMKMKODP != global::CastoriceHoney.Server.Proto.TrackMainMissionUpdateReasonId.DjeoglfdjifDpdfiineaff) hash ^= NILLMKMKODP.GetHashCode();
+      if (NILLMKMKODP != global::March7thHoney.Proto.TrackMainMissionUpdateReasonId.DjeoglfdjifDpdfiineaff) hash ^= NILLMKMKODP.GetHashCode();
       if (TrackMissionId != 0) hash ^= TrackMissionId.GetHashCode();
       if (GNPDGLGBIMM != 0) hash ^= GNPDGLGBIMM.GetHashCode();
       if (_unknownFields != null) {
@@ -169,7 +169,7 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (NILLMKMKODP != global::CastoriceHoney.Server.Proto.TrackMainMissionUpdateReasonId.DjeoglfdjifDpdfiineaff) {
+      if (NILLMKMKODP != global::March7thHoney.Proto.TrackMainMissionUpdateReasonId.DjeoglfdjifDpdfiineaff) {
         output.WriteRawTag(8);
         output.WriteEnum((int) NILLMKMKODP);
       }
@@ -191,7 +191,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (NILLMKMKODP != global::CastoriceHoney.Server.Proto.TrackMainMissionUpdateReasonId.DjeoglfdjifDpdfiineaff) {
+      if (NILLMKMKODP != global::March7thHoney.Proto.TrackMainMissionUpdateReasonId.DjeoglfdjifDpdfiineaff) {
         output.WriteRawTag(8);
         output.WriteEnum((int) NILLMKMKODP);
       }
@@ -213,7 +213,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (NILLMKMKODP != global::CastoriceHoney.Server.Proto.TrackMainMissionUpdateReasonId.DjeoglfdjifDpdfiineaff) {
+      if (NILLMKMKODP != global::March7thHoney.Proto.TrackMainMissionUpdateReasonId.DjeoglfdjifDpdfiineaff) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) NILLMKMKODP);
       }
       if (TrackMissionId != 0) {
@@ -234,7 +234,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.NILLMKMKODP != global::CastoriceHoney.Server.Proto.TrackMainMissionUpdateReasonId.DjeoglfdjifDpdfiineaff) {
+      if (other.NILLMKMKODP != global::March7thHoney.Proto.TrackMainMissionUpdateReasonId.DjeoglfdjifDpdfiineaff) {
         NILLMKMKODP = other.NILLMKMKODP;
       }
       if (other.TrackMissionId != 0) {
@@ -263,7 +263,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            NILLMKMKODP = (global::CastoriceHoney.Server.Proto.TrackMainMissionUpdateReasonId) input.ReadEnum();
+            NILLMKMKODP = (global::March7thHoney.Proto.TrackMainMissionUpdateReasonId) input.ReadEnum();
             break;
           }
           case 24: {
@@ -294,7 +294,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            NILLMKMKODP = (global::CastoriceHoney.Server.Proto.TrackMainMissionUpdateReasonId) input.ReadEnum();
+            NILLMKMKODP = (global::March7thHoney.Proto.TrackMainMissionUpdateReasonId) input.ReadEnum();
             break;
           }
           case 24: {

@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Lineup;
-using CastoriceHoney.Server.Internationalization;
+using March7thHoney.GameServer.Server.Packet.Send.Lineup;
+using March7thHoney.Internationalization;
 
-namespace CastoriceHoney.Server.Command.Command.Cmd;
+namespace March7thHoney.Command.Command.Cmd;
 
 [CommandInfo("lineup", "Game.Command.Lineup.Desc", "Game.Command.Lineup.Usage")]
 public class CommandLineup : ICommand

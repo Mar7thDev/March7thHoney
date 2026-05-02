@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GridFightSeasonHandBookNotify.proto</summary>
   public static partial class GridFightSeasonHandBookNotifyReflection {
@@ -41,9 +41,9 @@ namespace CastoriceHoney.Server.Proto {
             "ChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVy",
             "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GridFightHandBookAugmentInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightHandBookEquipInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightHandBookMonsterInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightHandBookPortalInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightHandBookRoleInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridFightHandBookAugmentInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightHandBookEquipInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightHandBookMonsterInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightHandBookPortalInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightHandBookRoleInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GridFightSeasonHandBookNotify), global::CastoriceHoney.Server.Proto.GridFightSeasonHandBookNotify.Parser, new[]{ "HandbookGridFightMonsterInfo", "HandbookGridFightAugmentInfo", "HandbookGridFightRoleInfo", "HandbookGridFightEquipInfo", "HandbookGridFightPortalInfo" }, new[]{ "BPIHFAJCLOC" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightSeasonHandBookNotify), global::March7thHoney.Proto.GridFightSeasonHandBookNotify.Parser, new[]{ "HandbookGridFightMonsterInfo", "HandbookGridFightAugmentInfo", "HandbookGridFightRoleInfo", "HandbookGridFightEquipInfo", "HandbookGridFightPortalInfo" }, new[]{ "BPIHFAJCLOC" }, null, null, null)
           }));
     }
     #endregion
@@ -65,7 +65,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GridFightSeasonHandBookNotifyReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GridFightSeasonHandBookNotifyReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -116,8 +116,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int HandbookGridFightMonsterInfoFieldNumber = 326;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightHandBookMonsterInfo HandbookGridFightMonsterInfo {
-      get { return bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.HandbookGridFightMonsterInfo ? (global::CastoriceHoney.Server.Proto.GridFightHandBookMonsterInfo) bPIHFAJCLOC_ : null; }
+    public global::March7thHoney.Proto.GridFightHandBookMonsterInfo HandbookGridFightMonsterInfo {
+      get { return bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.HandbookGridFightMonsterInfo ? (global::March7thHoney.Proto.GridFightHandBookMonsterInfo) bPIHFAJCLOC_ : null; }
       set {
         bPIHFAJCLOC_ = value;
         bPIHFAJCLOCCase_ = value == null ? BPIHFAJCLOCOneofCase.None : BPIHFAJCLOCOneofCase.HandbookGridFightMonsterInfo;
@@ -128,8 +128,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int HandbookGridFightAugmentInfoFieldNumber = 900;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightHandBookAugmentInfo HandbookGridFightAugmentInfo {
-      get { return bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.HandbookGridFightAugmentInfo ? (global::CastoriceHoney.Server.Proto.GridFightHandBookAugmentInfo) bPIHFAJCLOC_ : null; }
+    public global::March7thHoney.Proto.GridFightHandBookAugmentInfo HandbookGridFightAugmentInfo {
+      get { return bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.HandbookGridFightAugmentInfo ? (global::March7thHoney.Proto.GridFightHandBookAugmentInfo) bPIHFAJCLOC_ : null; }
       set {
         bPIHFAJCLOC_ = value;
         bPIHFAJCLOCCase_ = value == null ? BPIHFAJCLOCOneofCase.None : BPIHFAJCLOCOneofCase.HandbookGridFightAugmentInfo;
@@ -140,8 +140,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int HandbookGridFightRoleInfoFieldNumber = 944;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightHandBookRoleInfo HandbookGridFightRoleInfo {
-      get { return bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.HandbookGridFightRoleInfo ? (global::CastoriceHoney.Server.Proto.GridFightHandBookRoleInfo) bPIHFAJCLOC_ : null; }
+    public global::March7thHoney.Proto.GridFightHandBookRoleInfo HandbookGridFightRoleInfo {
+      get { return bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.HandbookGridFightRoleInfo ? (global::March7thHoney.Proto.GridFightHandBookRoleInfo) bPIHFAJCLOC_ : null; }
       set {
         bPIHFAJCLOC_ = value;
         bPIHFAJCLOCCase_ = value == null ? BPIHFAJCLOCOneofCase.None : BPIHFAJCLOCOneofCase.HandbookGridFightRoleInfo;
@@ -152,8 +152,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int HandbookGridFightEquipInfoFieldNumber = 1614;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightHandBookEquipInfo HandbookGridFightEquipInfo {
-      get { return bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.HandbookGridFightEquipInfo ? (global::CastoriceHoney.Server.Proto.GridFightHandBookEquipInfo) bPIHFAJCLOC_ : null; }
+    public global::March7thHoney.Proto.GridFightHandBookEquipInfo HandbookGridFightEquipInfo {
+      get { return bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.HandbookGridFightEquipInfo ? (global::March7thHoney.Proto.GridFightHandBookEquipInfo) bPIHFAJCLOC_ : null; }
       set {
         bPIHFAJCLOC_ = value;
         bPIHFAJCLOCCase_ = value == null ? BPIHFAJCLOCOneofCase.None : BPIHFAJCLOCOneofCase.HandbookGridFightEquipInfo;
@@ -164,8 +164,8 @@ namespace CastoriceHoney.Server.Proto {
     public const int HandbookGridFightPortalInfoFieldNumber = 1914;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightHandBookPortalInfo HandbookGridFightPortalInfo {
-      get { return bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.HandbookGridFightPortalInfo ? (global::CastoriceHoney.Server.Proto.GridFightHandBookPortalInfo) bPIHFAJCLOC_ : null; }
+    public global::March7thHoney.Proto.GridFightHandBookPortalInfo HandbookGridFightPortalInfo {
+      get { return bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.HandbookGridFightPortalInfo ? (global::March7thHoney.Proto.GridFightHandBookPortalInfo) bPIHFAJCLOC_ : null; }
       set {
         bPIHFAJCLOC_ = value;
         bPIHFAJCLOCCase_ = value == null ? BPIHFAJCLOCOneofCase.None : BPIHFAJCLOCOneofCase.HandbookGridFightPortalInfo;
@@ -338,31 +338,31 @@ namespace CastoriceHoney.Server.Proto {
       switch (other.BPIHFAJCLOCCase) {
         case BPIHFAJCLOCOneofCase.HandbookGridFightMonsterInfo:
           if (HandbookGridFightMonsterInfo == null) {
-            HandbookGridFightMonsterInfo = new global::CastoriceHoney.Server.Proto.GridFightHandBookMonsterInfo();
+            HandbookGridFightMonsterInfo = new global::March7thHoney.Proto.GridFightHandBookMonsterInfo();
           }
           HandbookGridFightMonsterInfo.MergeFrom(other.HandbookGridFightMonsterInfo);
           break;
         case BPIHFAJCLOCOneofCase.HandbookGridFightAugmentInfo:
           if (HandbookGridFightAugmentInfo == null) {
-            HandbookGridFightAugmentInfo = new global::CastoriceHoney.Server.Proto.GridFightHandBookAugmentInfo();
+            HandbookGridFightAugmentInfo = new global::March7thHoney.Proto.GridFightHandBookAugmentInfo();
           }
           HandbookGridFightAugmentInfo.MergeFrom(other.HandbookGridFightAugmentInfo);
           break;
         case BPIHFAJCLOCOneofCase.HandbookGridFightRoleInfo:
           if (HandbookGridFightRoleInfo == null) {
-            HandbookGridFightRoleInfo = new global::CastoriceHoney.Server.Proto.GridFightHandBookRoleInfo();
+            HandbookGridFightRoleInfo = new global::March7thHoney.Proto.GridFightHandBookRoleInfo();
           }
           HandbookGridFightRoleInfo.MergeFrom(other.HandbookGridFightRoleInfo);
           break;
         case BPIHFAJCLOCOneofCase.HandbookGridFightEquipInfo:
           if (HandbookGridFightEquipInfo == null) {
-            HandbookGridFightEquipInfo = new global::CastoriceHoney.Server.Proto.GridFightHandBookEquipInfo();
+            HandbookGridFightEquipInfo = new global::March7thHoney.Proto.GridFightHandBookEquipInfo();
           }
           HandbookGridFightEquipInfo.MergeFrom(other.HandbookGridFightEquipInfo);
           break;
         case BPIHFAJCLOCOneofCase.HandbookGridFightPortalInfo:
           if (HandbookGridFightPortalInfo == null) {
-            HandbookGridFightPortalInfo = new global::CastoriceHoney.Server.Proto.GridFightHandBookPortalInfo();
+            HandbookGridFightPortalInfo = new global::March7thHoney.Proto.GridFightHandBookPortalInfo();
           }
           HandbookGridFightPortalInfo.MergeFrom(other.HandbookGridFightPortalInfo);
           break;
@@ -388,7 +388,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 2610: {
-            global::CastoriceHoney.Server.Proto.GridFightHandBookMonsterInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightHandBookMonsterInfo();
+            global::March7thHoney.Proto.GridFightHandBookMonsterInfo subBuilder = new global::March7thHoney.Proto.GridFightHandBookMonsterInfo();
             if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.HandbookGridFightMonsterInfo) {
               subBuilder.MergeFrom(HandbookGridFightMonsterInfo);
             }
@@ -397,7 +397,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 7202: {
-            global::CastoriceHoney.Server.Proto.GridFightHandBookAugmentInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightHandBookAugmentInfo();
+            global::March7thHoney.Proto.GridFightHandBookAugmentInfo subBuilder = new global::March7thHoney.Proto.GridFightHandBookAugmentInfo();
             if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.HandbookGridFightAugmentInfo) {
               subBuilder.MergeFrom(HandbookGridFightAugmentInfo);
             }
@@ -406,7 +406,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 7554: {
-            global::CastoriceHoney.Server.Proto.GridFightHandBookRoleInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightHandBookRoleInfo();
+            global::March7thHoney.Proto.GridFightHandBookRoleInfo subBuilder = new global::March7thHoney.Proto.GridFightHandBookRoleInfo();
             if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.HandbookGridFightRoleInfo) {
               subBuilder.MergeFrom(HandbookGridFightRoleInfo);
             }
@@ -415,7 +415,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 12914: {
-            global::CastoriceHoney.Server.Proto.GridFightHandBookEquipInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightHandBookEquipInfo();
+            global::March7thHoney.Proto.GridFightHandBookEquipInfo subBuilder = new global::March7thHoney.Proto.GridFightHandBookEquipInfo();
             if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.HandbookGridFightEquipInfo) {
               subBuilder.MergeFrom(HandbookGridFightEquipInfo);
             }
@@ -424,7 +424,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 15314: {
-            global::CastoriceHoney.Server.Proto.GridFightHandBookPortalInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightHandBookPortalInfo();
+            global::March7thHoney.Proto.GridFightHandBookPortalInfo subBuilder = new global::March7thHoney.Proto.GridFightHandBookPortalInfo();
             if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.HandbookGridFightPortalInfo) {
               subBuilder.MergeFrom(HandbookGridFightPortalInfo);
             }
@@ -452,7 +452,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 2610: {
-            global::CastoriceHoney.Server.Proto.GridFightHandBookMonsterInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightHandBookMonsterInfo();
+            global::March7thHoney.Proto.GridFightHandBookMonsterInfo subBuilder = new global::March7thHoney.Proto.GridFightHandBookMonsterInfo();
             if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.HandbookGridFightMonsterInfo) {
               subBuilder.MergeFrom(HandbookGridFightMonsterInfo);
             }
@@ -461,7 +461,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 7202: {
-            global::CastoriceHoney.Server.Proto.GridFightHandBookAugmentInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightHandBookAugmentInfo();
+            global::March7thHoney.Proto.GridFightHandBookAugmentInfo subBuilder = new global::March7thHoney.Proto.GridFightHandBookAugmentInfo();
             if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.HandbookGridFightAugmentInfo) {
               subBuilder.MergeFrom(HandbookGridFightAugmentInfo);
             }
@@ -470,7 +470,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 7554: {
-            global::CastoriceHoney.Server.Proto.GridFightHandBookRoleInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightHandBookRoleInfo();
+            global::March7thHoney.Proto.GridFightHandBookRoleInfo subBuilder = new global::March7thHoney.Proto.GridFightHandBookRoleInfo();
             if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.HandbookGridFightRoleInfo) {
               subBuilder.MergeFrom(HandbookGridFightRoleInfo);
             }
@@ -479,7 +479,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 12914: {
-            global::CastoriceHoney.Server.Proto.GridFightHandBookEquipInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightHandBookEquipInfo();
+            global::March7thHoney.Proto.GridFightHandBookEquipInfo subBuilder = new global::March7thHoney.Proto.GridFightHandBookEquipInfo();
             if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.HandbookGridFightEquipInfo) {
               subBuilder.MergeFrom(HandbookGridFightEquipInfo);
             }
@@ -488,7 +488,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 15314: {
-            global::CastoriceHoney.Server.Proto.GridFightHandBookPortalInfo subBuilder = new global::CastoriceHoney.Server.Proto.GridFightHandBookPortalInfo();
+            global::March7thHoney.Proto.GridFightHandBookPortalInfo subBuilder = new global::March7thHoney.Proto.GridFightHandBookPortalInfo();
             if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.HandbookGridFightPortalInfo) {
               subBuilder.MergeFrom(HandbookGridFightPortalInfo);
             }

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from ADHNJADIJAC.proto</summary>
   public static partial class ADHNJADIJACReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "AyABKAsyES5Mb2JieUdhbWVFeHRJbmZvQjMKE2VtdS5sdW5hcmNvcmUucHJv",
             "dG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.LobbyGameExtInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.NIIGAPILPGDReflection.Descriptor, global::CastoriceHoney.Server.Proto.PKEIDNJOLELReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.LobbyGameExtInfoReflection.Descriptor, global::March7thHoney.Proto.NIIGAPILPGDReflection.Descriptor, global::March7thHoney.Proto.PKEIDNJOLELReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ADHNJADIJAC), global::CastoriceHoney.Server.Proto.ADHNJADIJAC.Parser, new[]{ "BasicInfo", "NEBABKOGGAA", "StageInfo" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ADHNJADIJAC), global::March7thHoney.Proto.ADHNJADIJAC.Parser, new[]{ "BasicInfo", "NEBABKOGGAA", "StageInfo" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ADHNJADIJACReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ADHNJADIJACReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -89,10 +89,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "basic_info" field.</summary>
     public const int BasicInfoFieldNumber = 1;
-    private global::CastoriceHoney.Server.Proto.NIIGAPILPGD basicInfo_;
+    private global::March7thHoney.Proto.NIIGAPILPGD basicInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.NIIGAPILPGD BasicInfo {
+    public global::March7thHoney.Proto.NIIGAPILPGD BasicInfo {
       get { return basicInfo_; }
       set {
         basicInfo_ = value;
@@ -101,10 +101,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "NEBABKOGGAA" field.</summary>
     public const int NEBABKOGGAAFieldNumber = 2;
-    private global::CastoriceHoney.Server.Proto.PKEIDNJOLEL nEBABKOGGAA_;
+    private global::March7thHoney.Proto.PKEIDNJOLEL nEBABKOGGAA_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.PKEIDNJOLEL NEBABKOGGAA {
+    public global::March7thHoney.Proto.PKEIDNJOLEL NEBABKOGGAA {
       get { return nEBABKOGGAA_; }
       set {
         nEBABKOGGAA_ = value;
@@ -113,10 +113,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "stage_info" field.</summary>
     public const int StageInfoFieldNumber = 3;
-    private global::CastoriceHoney.Server.Proto.LobbyGameExtInfo stageInfo_;
+    private global::March7thHoney.Proto.LobbyGameExtInfo stageInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.LobbyGameExtInfo StageInfo {
+    public global::March7thHoney.Proto.LobbyGameExtInfo StageInfo {
       get { return stageInfo_; }
       set {
         stageInfo_ = value;
@@ -236,19 +236,19 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.basicInfo_ != null) {
         if (basicInfo_ == null) {
-          BasicInfo = new global::CastoriceHoney.Server.Proto.NIIGAPILPGD();
+          BasicInfo = new global::March7thHoney.Proto.NIIGAPILPGD();
         }
         BasicInfo.MergeFrom(other.BasicInfo);
       }
       if (other.nEBABKOGGAA_ != null) {
         if (nEBABKOGGAA_ == null) {
-          NEBABKOGGAA = new global::CastoriceHoney.Server.Proto.PKEIDNJOLEL();
+          NEBABKOGGAA = new global::March7thHoney.Proto.PKEIDNJOLEL();
         }
         NEBABKOGGAA.MergeFrom(other.NEBABKOGGAA);
       }
       if (other.stageInfo_ != null) {
         if (stageInfo_ == null) {
-          StageInfo = new global::CastoriceHoney.Server.Proto.LobbyGameExtInfo();
+          StageInfo = new global::March7thHoney.Proto.LobbyGameExtInfo();
         }
         StageInfo.MergeFrom(other.StageInfo);
       }
@@ -273,21 +273,21 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 10: {
             if (basicInfo_ == null) {
-              BasicInfo = new global::CastoriceHoney.Server.Proto.NIIGAPILPGD();
+              BasicInfo = new global::March7thHoney.Proto.NIIGAPILPGD();
             }
             input.ReadMessage(BasicInfo);
             break;
           }
           case 18: {
             if (nEBABKOGGAA_ == null) {
-              NEBABKOGGAA = new global::CastoriceHoney.Server.Proto.PKEIDNJOLEL();
+              NEBABKOGGAA = new global::March7thHoney.Proto.PKEIDNJOLEL();
             }
             input.ReadMessage(NEBABKOGGAA);
             break;
           }
           case 26: {
             if (stageInfo_ == null) {
-              StageInfo = new global::CastoriceHoney.Server.Proto.LobbyGameExtInfo();
+              StageInfo = new global::March7thHoney.Proto.LobbyGameExtInfo();
             }
             input.ReadMessage(StageInfo);
             break;
@@ -313,21 +313,21 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 10: {
             if (basicInfo_ == null) {
-              BasicInfo = new global::CastoriceHoney.Server.Proto.NIIGAPILPGD();
+              BasicInfo = new global::March7thHoney.Proto.NIIGAPILPGD();
             }
             input.ReadMessage(BasicInfo);
             break;
           }
           case 18: {
             if (nEBABKOGGAA_ == null) {
-              NEBABKOGGAA = new global::CastoriceHoney.Server.Proto.PKEIDNJOLEL();
+              NEBABKOGGAA = new global::March7thHoney.Proto.PKEIDNJOLEL();
             }
             input.ReadMessage(NEBABKOGGAA);
             break;
           }
           case 26: {
             if (stageInfo_ == null) {
-              StageInfo = new global::CastoriceHoney.Server.Proto.LobbyGameExtInfo();
+              StageInfo = new global::March7thHoney.Proto.LobbyGameExtInfo();
             }
             input.ReadMessage(StageInfo);
             break;

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GridFightStaticGameInfo.proto</summary>
   public static partial class GridFightStaticGameInfoReflection {
@@ -35,9 +35,9 @@ namespace CastoriceHoney.Server.Proto {
             "ShgPIAEoDUIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9u",
             "ZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GridFightHandBookInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightTalentInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.JIBAKJGOPJMReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridFightHandBookInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightTalentInfoReflection.Descriptor, global::March7thHoney.Proto.JIBAKJGOPJMReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GridFightStaticGameInfo), global::CastoriceHoney.Server.Proto.GridFightStaticGameInfo.Parser, new[]{ "Exp", "EDIGFNFPBKA", "GridFightComboWinNum", "EJCFDAABLOC", "CKFIACKHNAE", "DivisionId", "OJLAODIALLE", "CALIMAKGGHJ" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightStaticGameInfo), global::March7thHoney.Proto.GridFightStaticGameInfo.Parser, new[]{ "Exp", "EDIGFNFPBKA", "GridFightComboWinNum", "EJCFDAABLOC", "CKFIACKHNAE", "DivisionId", "OJLAODIALLE", "CALIMAKGGHJ" }, null, null, null, null)
           }));
     }
     #endregion
@@ -59,7 +59,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GridFightStaticGameInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GridFightStaticGameInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -98,10 +98,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "exp" field.</summary>
     public const int ExpFieldNumber = 2;
-    private global::CastoriceHoney.Server.Proto.JIBAKJGOPJM exp_;
+    private global::March7thHoney.Proto.JIBAKJGOPJM exp_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.JIBAKJGOPJM Exp {
+    public global::March7thHoney.Proto.JIBAKJGOPJM Exp {
       get { return exp_; }
       set {
         exp_ = value;
@@ -134,10 +134,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "EJCFDAABLOC" field.</summary>
     public const int EJCFDAABLOCFieldNumber = 8;
-    private global::CastoriceHoney.Server.Proto.GridFightHandBookInfo eJCFDAABLOC_;
+    private global::March7thHoney.Proto.GridFightHandBookInfo eJCFDAABLOC_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightHandBookInfo EJCFDAABLOC {
+    public global::March7thHoney.Proto.GridFightHandBookInfo EJCFDAABLOC {
       get { return eJCFDAABLOC_; }
       set {
         eJCFDAABLOC_ = value;
@@ -170,10 +170,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "OJLAODIALLE" field.</summary>
     public const int OJLAODIALLEFieldNumber = 13;
-    private global::CastoriceHoney.Server.Proto.GridFightTalentInfo oJLAODIALLE_;
+    private global::March7thHoney.Proto.GridFightTalentInfo oJLAODIALLE_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightTalentInfo OJLAODIALLE {
+    public global::March7thHoney.Proto.GridFightTalentInfo OJLAODIALLE {
       get { return oJLAODIALLE_; }
       set {
         oJLAODIALLE_ = value;
@@ -370,7 +370,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.exp_ != null) {
         if (exp_ == null) {
-          Exp = new global::CastoriceHoney.Server.Proto.JIBAKJGOPJM();
+          Exp = new global::March7thHoney.Proto.JIBAKJGOPJM();
         }
         Exp.MergeFrom(other.Exp);
       }
@@ -382,7 +382,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.eJCFDAABLOC_ != null) {
         if (eJCFDAABLOC_ == null) {
-          EJCFDAABLOC = new global::CastoriceHoney.Server.Proto.GridFightHandBookInfo();
+          EJCFDAABLOC = new global::March7thHoney.Proto.GridFightHandBookInfo();
         }
         EJCFDAABLOC.MergeFrom(other.EJCFDAABLOC);
       }
@@ -394,7 +394,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.oJLAODIALLE_ != null) {
         if (oJLAODIALLE_ == null) {
-          OJLAODIALLE = new global::CastoriceHoney.Server.Proto.GridFightTalentInfo();
+          OJLAODIALLE = new global::March7thHoney.Proto.GridFightTalentInfo();
         }
         OJLAODIALLE.MergeFrom(other.OJLAODIALLE);
       }
@@ -422,7 +422,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 18: {
             if (exp_ == null) {
-              Exp = new global::CastoriceHoney.Server.Proto.JIBAKJGOPJM();
+              Exp = new global::March7thHoney.Proto.JIBAKJGOPJM();
             }
             input.ReadMessage(Exp);
             break;
@@ -437,7 +437,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 66: {
             if (eJCFDAABLOC_ == null) {
-              EJCFDAABLOC = new global::CastoriceHoney.Server.Proto.GridFightHandBookInfo();
+              EJCFDAABLOC = new global::March7thHoney.Proto.GridFightHandBookInfo();
             }
             input.ReadMessage(EJCFDAABLOC);
             break;
@@ -452,7 +452,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 106: {
             if (oJLAODIALLE_ == null) {
-              OJLAODIALLE = new global::CastoriceHoney.Server.Proto.GridFightTalentInfo();
+              OJLAODIALLE = new global::March7thHoney.Proto.GridFightTalentInfo();
             }
             input.ReadMessage(OJLAODIALLE);
             break;
@@ -482,7 +482,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 18: {
             if (exp_ == null) {
-              Exp = new global::CastoriceHoney.Server.Proto.JIBAKJGOPJM();
+              Exp = new global::March7thHoney.Proto.JIBAKJGOPJM();
             }
             input.ReadMessage(Exp);
             break;
@@ -497,7 +497,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 66: {
             if (eJCFDAABLOC_ == null) {
-              EJCFDAABLOC = new global::CastoriceHoney.Server.Proto.GridFightHandBookInfo();
+              EJCFDAABLOC = new global::March7thHoney.Proto.GridFightHandBookInfo();
             }
             input.ReadMessage(EJCFDAABLOC);
             break;
@@ -512,7 +512,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 106: {
             if (oJLAODIALLE_ == null) {
-              OJLAODIALLE = new global::CastoriceHoney.Server.Proto.GridFightTalentInfo();
+              OJLAODIALLE = new global::March7thHoney.Proto.GridFightTalentInfo();
             }
             input.ReadMessage(OJLAODIALLE);
             break;

@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.GameServer.Game.Challenge.Instances;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Challenge;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.GameServer.Game.Challenge.Instances;
+using March7thHoney.GameServer.Server.Packet.Send.Challenge;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Recv.Challenge;
+namespace March7thHoney.GameServer.Server.Packet.Recv.Challenge;
 
 [Opcode(CmdIds.EnterChallengeNextPhaseCsReq)]
 public class HandlerEnterChallengeNextPhaseCsReq : Handler

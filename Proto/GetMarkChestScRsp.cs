@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GetMarkChestScRsp.proto</summary>
   public static partial class GetMarkChestScRspReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "ASgNQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5T",
             "ZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.MarkChestFuncInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.MarkChestFuncInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GetMarkChestScRsp), global::CastoriceHoney.Server.Proto.GetMarkChestScRsp.Parser, new[]{ "MarkChestFuncInfo", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetMarkChestScRsp), global::March7thHoney.Proto.GetMarkChestScRsp.Parser, new[]{ "MarkChestFuncInfo", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GetMarkChestScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GetMarkChestScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -87,12 +87,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "mark_chest_func_info" field.</summary>
     public const int MarkChestFuncInfoFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.MarkChestFuncInfo> _repeated_markChestFuncInfo_codec
-        = pb::FieldCodec.ForMessage(10, global::CastoriceHoney.Server.Proto.MarkChestFuncInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MarkChestFuncInfo> markChestFuncInfo_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MarkChestFuncInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MarkChestFuncInfo> _repeated_markChestFuncInfo_codec
+        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.MarkChestFuncInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MarkChestFuncInfo> markChestFuncInfo_ = new pbc::RepeatedField<global::March7thHoney.Proto.MarkChestFuncInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MarkChestFuncInfo> MarkChestFuncInfo {
+    public pbc::RepeatedField<global::March7thHoney.Proto.MarkChestFuncInfo> MarkChestFuncInfo {
       get { return markChestFuncInfo_; }
     }
 

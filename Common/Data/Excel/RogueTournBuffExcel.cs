@@ -1,6 +1,6 @@
-using CastoriceHoney.Server.Data.Custom;
+using March7thHoney.Data.Custom;
 
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueTournBuff.json")]
 public class RogueTournBuffExcel : BaseRogueBuffExcel

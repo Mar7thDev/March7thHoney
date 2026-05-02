@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Enums.Rogue;
+using March7thHoney.Enums.Rogue;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("DialogueDynamicContent.json")]
 public class DialogueDynamicContentExcel : ExcelResource

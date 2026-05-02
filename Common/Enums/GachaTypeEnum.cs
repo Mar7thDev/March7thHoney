@@ -1,4 +1,4 @@
-namespace CastoriceHoney.Server.Enums;
+namespace March7thHoney.Enums;
 
 public enum GachaTypeEnum
 {

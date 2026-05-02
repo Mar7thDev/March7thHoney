@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Data;
+using March7thHoney.Proto;
 using SqlSugar;
 
-namespace CastoriceHoney.Server.Database.TrainParty;
+namespace March7thHoney.Database.TrainParty;
 
 [SugarTable("TrainParty")]
 public class TrainData : BaseDatabaseDataHelper

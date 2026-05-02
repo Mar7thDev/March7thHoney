@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GachaCeiling.proto</summary>
   public static partial class GachaCeilingReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "aW1lZBgPIAEoCEIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNl",
             "SG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GachaCeilingAvatarReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GachaCeilingAvatarReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GachaCeiling), global::CastoriceHoney.Server.Proto.GachaCeiling.Parser, new[]{ "AvatarList", "CeilingNum", "IsClaimed" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GachaCeiling), global::March7thHoney.Proto.GachaCeiling.Parser, new[]{ "AvatarList", "CeilingNum", "IsClaimed" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GachaCeilingReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GachaCeilingReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -88,12 +88,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "avatar_list" field.</summary>
     public const int AvatarListFieldNumber = 8;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.GachaCeilingAvatar> _repeated_avatarList_codec
-        = pb::FieldCodec.ForMessage(66, global::CastoriceHoney.Server.Proto.GachaCeilingAvatar.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GachaCeilingAvatar> avatarList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GachaCeilingAvatar>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GachaCeilingAvatar> _repeated_avatarList_codec
+        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.GachaCeilingAvatar.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GachaCeilingAvatar> avatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GachaCeilingAvatar>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GachaCeilingAvatar> AvatarList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.GachaCeilingAvatar> AvatarList {
       get { return avatarList_; }
     }
 

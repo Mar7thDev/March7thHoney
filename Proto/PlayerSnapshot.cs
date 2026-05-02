@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from PlayerSnapshot.proto</summary>
   public static partial class PlayerSnapshotReflection {
@@ -30,9 +30,9 @@ namespace CastoriceHoney.Server.Proto {
             "bHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3Rv",
             "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.MotionInfoSnapshotReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.MotionInfoSnapshotReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.PlayerSnapshot), global::CastoriceHoney.Server.Proto.PlayerSnapshot.Parser, new[]{ "MotionInfo", "MapLayer" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlayerSnapshot), global::March7thHoney.Proto.PlayerSnapshot.Parser, new[]{ "MotionInfo", "MapLayer" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.PlayerSnapshotReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.PlayerSnapshotReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -87,10 +87,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "motion_info" field.</summary>
     public const int MotionInfoFieldNumber = 1;
-    private global::CastoriceHoney.Server.Proto.MotionInfoSnapshot motionInfo_;
+    private global::March7thHoney.Proto.MotionInfoSnapshot motionInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.MotionInfoSnapshot MotionInfo {
+    public global::March7thHoney.Proto.MotionInfoSnapshot MotionInfo {
       get { return motionInfo_; }
       set {
         motionInfo_ = value;
@@ -209,7 +209,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.motionInfo_ != null) {
         if (motionInfo_ == null) {
-          MotionInfo = new global::CastoriceHoney.Server.Proto.MotionInfoSnapshot();
+          MotionInfo = new global::March7thHoney.Proto.MotionInfoSnapshot();
         }
         MotionInfo.MergeFrom(other.MotionInfo);
       }
@@ -237,7 +237,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 10: {
             if (motionInfo_ == null) {
-              MotionInfo = new global::CastoriceHoney.Server.Proto.MotionInfoSnapshot();
+              MotionInfo = new global::March7thHoney.Proto.MotionInfoSnapshot();
             }
             input.ReadMessage(MotionInfo);
             break;
@@ -267,7 +267,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           case 10: {
             if (motionInfo_ == null) {
-              MotionInfo = new global::CastoriceHoney.Server.Proto.MotionInfoSnapshot();
+              MotionInfo = new global::March7thHoney.Proto.MotionInfoSnapshot();
             }
             input.ReadMessage(MotionInfo);
             break;

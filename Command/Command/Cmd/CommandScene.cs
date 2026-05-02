@@ -1,11 +1,11 @@
 using System.Numerics;
-using CastoriceHoney.Server.Enums.Scene;
-using CastoriceHoney.Server.GameServer.Game.Scene.Entity;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Scene;
-using CastoriceHoney.Server.Internationalization;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Enums.Scene;
+using March7thHoney.GameServer.Game.Scene.Entity;
+using March7thHoney.GameServer.Server.Packet.Send.Scene;
+using March7thHoney.Internationalization;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.Command.Command.Cmd;
+namespace March7thHoney.Command.Command.Cmd;
 
 [CommandInfo("scene", "Game.Command.Scene.Desc", "Game.Command.Scene.Usage")]
 public class CommandScene : ICommand

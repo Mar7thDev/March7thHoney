@@ -1,6 +1,6 @@
-using CastoriceHoney.Server.GameServer.Game.Player;
+using March7thHoney.GameServer.Game.Player;
 
-namespace CastoriceHoney.Server.GameServer.Game.Mission.FinishAction;
+namespace March7thHoney.GameServer.Game.Mission.FinishAction;
 
 public abstract class MissionFinishActionHandler
 {

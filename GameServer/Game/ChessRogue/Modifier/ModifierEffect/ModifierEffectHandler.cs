@@ -1,6 +1,6 @@
-using CastoriceHoney.Server.GameServer.Game.Battle;
+using March7thHoney.GameServer.Game.Battle;
 
-namespace CastoriceHoney.Server.GameServer.Game.ChessRogue.Modifier.ModifierEffect;
+namespace March7thHoney.GameServer.Game.ChessRogue.Modifier.ModifierEffect;
 
 public abstract class ModifierEffectHandler
 {

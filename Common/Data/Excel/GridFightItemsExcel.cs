@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("GridFightItems.json")]
 public class GridFightItemsExcel : ExcelResource

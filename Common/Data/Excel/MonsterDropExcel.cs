@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Database.Inventory;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Database.Inventory;
+using March7thHoney.Util;
 using Newtonsoft.Json;
 
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("MonsterDrop.json")]
 public class MonsterDropExcel : ExcelResource

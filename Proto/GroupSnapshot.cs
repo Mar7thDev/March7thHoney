@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GroupSnapshot.proto</summary>
   public static partial class GroupSnapshotReflection {
@@ -35,9 +35,9 @@ namespace CastoriceHoney.Server.Proto {
             "E2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIu",
             "UHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ActiveMCVKeySnapshotReflection.Descriptor, global::CastoriceHoney.Server.Proto.EntitySnapshotReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ActiveMCVKeySnapshotReflection.Descriptor, global::March7thHoney.Proto.EntitySnapshotReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GroupSnapshot), global::CastoriceHoney.Server.Proto.GroupSnapshot.Parser, new[]{ "GroupId", "GroupState", "EntityList", "PropertyMap", "ActiveSubmissionList", "ActiveMcvKeyList" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GroupSnapshot), global::March7thHoney.Proto.GroupSnapshot.Parser, new[]{ "GroupId", "GroupState", "EntityList", "PropertyMap", "ActiveSubmissionList", "ActiveMcvKeyList" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -59,7 +59,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GroupSnapshotReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GroupSnapshotReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -120,12 +120,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "entity_list" field.</summary>
     public const int EntityListFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.EntitySnapshot> _repeated_entityList_codec
-        = pb::FieldCodec.ForMessage(26, global::CastoriceHoney.Server.Proto.EntitySnapshot.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.EntitySnapshot> entityList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.EntitySnapshot>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EntitySnapshot> _repeated_entityList_codec
+        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.EntitySnapshot.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EntitySnapshot> entityList_ = new pbc::RepeatedField<global::March7thHoney.Proto.EntitySnapshot>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.EntitySnapshot> EntityList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.EntitySnapshot> EntityList {
       get { return entityList_; }
     }
 
@@ -153,12 +153,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "active_mcv_key_list" field.</summary>
     public const int ActiveMcvKeyListFieldNumber = 6;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ActiveMCVKeySnapshot> _repeated_activeMcvKeyList_codec
-        = pb::FieldCodec.ForMessage(50, global::CastoriceHoney.Server.Proto.ActiveMCVKeySnapshot.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ActiveMCVKeySnapshot> activeMcvKeyList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ActiveMCVKeySnapshot>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ActiveMCVKeySnapshot> _repeated_activeMcvKeyList_codec
+        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.ActiveMCVKeySnapshot.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ActiveMCVKeySnapshot> activeMcvKeyList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ActiveMCVKeySnapshot>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ActiveMCVKeySnapshot> ActiveMcvKeyList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ActiveMCVKeySnapshot> ActiveMcvKeyList {
       get { return activeMcvKeyList_; }
     }
 

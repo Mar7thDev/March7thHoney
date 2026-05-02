@@ -1,6 +1,6 @@
-using CastoriceHoney.Server.Enums.Mission;
+using March7thHoney.Enums.Mission;
 
-namespace CastoriceHoney.Server.GameServer.Game.Mission.FinishAction;
+namespace March7thHoney.GameServer.Game.Mission.FinishAction;
 
 [AttributeUsage(AttributeTargets.Class)]
 public class MissionFinishActionAttribute(FinishActionTypeEnum finishAction) : Attribute

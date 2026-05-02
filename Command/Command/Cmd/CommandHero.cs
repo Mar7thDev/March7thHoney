@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Enums.Avatar;
-using CastoriceHoney.Server.Internationalization;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Enums.Avatar;
+using March7thHoney.Internationalization;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.Command.Command.Cmd;
+namespace March7thHoney.Command.Command.Cmd;
 
 [CommandInfo("hero", "Game.Command.Hero.Desc", "Game.Command.Hero.Usage")]
 public class CommandHero : ICommand

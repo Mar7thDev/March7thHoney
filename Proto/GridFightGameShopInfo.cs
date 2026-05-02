@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GridFightGameShopInfo.proto</summary>
   public static partial class GridFightGameShopInfoReflection {
@@ -33,9 +33,9 @@ namespace CastoriceHoney.Server.Proto {
             "ZHNJbmZvQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25l",
             "eS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.FJPONJFLOOHReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightShopGoodsInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.FJPONJFLOOHReflection.Descriptor, global::March7thHoney.Proto.GridFightShopGoodsInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GridFightGameShopInfo), global::CastoriceHoney.Server.Proto.GridFightGameShopInfo.Parser, new[]{ "NDGMCJHKNIN", "DNOIFMMLJDN", "GLIFNMBMMBL", "LDEDGOOKHFL", "ShopIsLocked", "ShopGoodsList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightGameShopInfo), global::March7thHoney.Proto.GridFightGameShopInfo.Parser, new[]{ "NDGMCJHKNIN", "DNOIFMMLJDN", "GLIFNMBMMBL", "LDEDGOOKHFL", "ShopIsLocked", "ShopGoodsList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -57,7 +57,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GridFightGameShopInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GridFightGameShopInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -129,10 +129,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "LDEDGOOKHFL" field.</summary>
     public const int LDEDGOOKHFLFieldNumber = 4;
-    private global::CastoriceHoney.Server.Proto.FJPONJFLOOH lDEDGOOKHFL_;
+    private global::March7thHoney.Proto.FJPONJFLOOH lDEDGOOKHFL_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.FJPONJFLOOH LDEDGOOKHFL {
+    public global::March7thHoney.Proto.FJPONJFLOOH LDEDGOOKHFL {
       get { return lDEDGOOKHFL_; }
       set {
         lDEDGOOKHFL_ = value;
@@ -153,12 +153,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "shop_goods_list" field.</summary>
     public const int ShopGoodsListFieldNumber = 10;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.GridFightShopGoodsInfo> _repeated_shopGoodsList_codec
-        = pb::FieldCodec.ForMessage(82, global::CastoriceHoney.Server.Proto.GridFightShopGoodsInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridFightShopGoodsInfo> shopGoodsList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridFightShopGoodsInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GridFightShopGoodsInfo> _repeated_shopGoodsList_codec
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.GridFightShopGoodsInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GridFightShopGoodsInfo> shopGoodsList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GridFightShopGoodsInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridFightShopGoodsInfo> ShopGoodsList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.GridFightShopGoodsInfo> ShopGoodsList {
       get { return shopGoodsList_; }
     }
 
@@ -305,7 +305,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.lDEDGOOKHFL_ != null) {
         if (lDEDGOOKHFL_ == null) {
-          LDEDGOOKHFL = new global::CastoriceHoney.Server.Proto.FJPONJFLOOH();
+          LDEDGOOKHFL = new global::March7thHoney.Proto.FJPONJFLOOH();
         }
         LDEDGOOKHFL.MergeFrom(other.LDEDGOOKHFL);
       }
@@ -347,7 +347,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 34: {
             if (lDEDGOOKHFL_ == null) {
-              LDEDGOOKHFL = new global::CastoriceHoney.Server.Proto.FJPONJFLOOH();
+              LDEDGOOKHFL = new global::March7thHoney.Proto.FJPONJFLOOH();
             }
             input.ReadMessage(LDEDGOOKHFL);
             break;
@@ -394,7 +394,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 34: {
             if (lDEDGOOKHFL_ == null) {
-              LDEDGOOKHFL = new global::CastoriceHoney.Server.Proto.FJPONJFLOOH();
+              LDEDGOOKHFL = new global::March7thHoney.Proto.FJPONJFLOOH();
             }
             input.ReadMessage(LDEDGOOKHFL);
             break;

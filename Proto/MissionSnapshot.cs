@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from MissionSnapshot.proto</summary>
   public static partial class MissionSnapshotReflection {
@@ -35,9 +35,9 @@ namespace CastoriceHoney.Server.Proto {
             "dS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJv",
             "dG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.MainMissionMcvSnapshotReflection.Descriptor, global::CastoriceHoney.Server.Proto.MainMissionSnapshotReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.MainMissionMcvSnapshotReflection.Descriptor, global::March7thHoney.Proto.MainMissionSnapshotReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.MissionSnapshot), global::CastoriceHoney.Server.Proto.MissionSnapshot.Parser, new[]{ "ServerMcvList", "ClientMcvList", "TrackingMainMission", "HasMissionAudioSnapshot", "CurAudioEmotionState", "CurSoundEffectState" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MissionSnapshot), global::March7thHoney.Proto.MissionSnapshot.Parser, new[]{ "ServerMcvList", "ClientMcvList", "TrackingMainMission", "HasMissionAudioSnapshot", "CurAudioEmotionState", "CurSoundEffectState" }, null, null, null, null)
           }));
     }
     #endregion
@@ -59,7 +59,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.MissionSnapshotReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.MissionSnapshotReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -96,32 +96,32 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "server_mcv_list" field.</summary>
     public const int ServerMcvListFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.MainMissionMcvSnapshot> _repeated_serverMcvList_codec
-        = pb::FieldCodec.ForMessage(10, global::CastoriceHoney.Server.Proto.MainMissionMcvSnapshot.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MainMissionMcvSnapshot> serverMcvList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MainMissionMcvSnapshot>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MainMissionMcvSnapshot> _repeated_serverMcvList_codec
+        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.MainMissionMcvSnapshot.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MainMissionMcvSnapshot> serverMcvList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MainMissionMcvSnapshot>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MainMissionMcvSnapshot> ServerMcvList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.MainMissionMcvSnapshot> ServerMcvList {
       get { return serverMcvList_; }
     }
 
     /// <summary>Field number for the "client_mcv_list" field.</summary>
     public const int ClientMcvListFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.MainMissionMcvSnapshot> _repeated_clientMcvList_codec
-        = pb::FieldCodec.ForMessage(18, global::CastoriceHoney.Server.Proto.MainMissionMcvSnapshot.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MainMissionMcvSnapshot> clientMcvList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MainMissionMcvSnapshot>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MainMissionMcvSnapshot> _repeated_clientMcvList_codec
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.MainMissionMcvSnapshot.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MainMissionMcvSnapshot> clientMcvList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MainMissionMcvSnapshot>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MainMissionMcvSnapshot> ClientMcvList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.MainMissionMcvSnapshot> ClientMcvList {
       get { return clientMcvList_; }
     }
 
     /// <summary>Field number for the "tracking_main_mission" field.</summary>
     public const int TrackingMainMissionFieldNumber = 3;
-    private global::CastoriceHoney.Server.Proto.MainMissionSnapshot trackingMainMission_;
+    private global::March7thHoney.Proto.MainMissionSnapshot trackingMainMission_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.MainMissionSnapshot TrackingMainMission {
+    public global::March7thHoney.Proto.MainMissionSnapshot TrackingMainMission {
       get { return trackingMainMission_; }
       set {
         trackingMainMission_ = value;
@@ -302,7 +302,7 @@ namespace CastoriceHoney.Server.Proto {
       clientMcvList_.Add(other.clientMcvList_);
       if (other.trackingMainMission_ != null) {
         if (trackingMainMission_ == null) {
-          TrackingMainMission = new global::CastoriceHoney.Server.Proto.MainMissionSnapshot();
+          TrackingMainMission = new global::March7thHoney.Proto.MainMissionSnapshot();
         }
         TrackingMainMission.MergeFrom(other.TrackingMainMission);
       }
@@ -344,7 +344,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 26: {
             if (trackingMainMission_ == null) {
-              TrackingMainMission = new global::CastoriceHoney.Server.Proto.MainMissionSnapshot();
+              TrackingMainMission = new global::March7thHoney.Proto.MainMissionSnapshot();
             }
             input.ReadMessage(TrackingMainMission);
             break;
@@ -390,7 +390,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 26: {
             if (trackingMainMission_ == null) {
-              TrackingMainMission = new global::CastoriceHoney.Server.Proto.MainMissionSnapshot();
+              TrackingMainMission = new global::March7thHoney.Proto.MainMissionSnapshot();
             }
             input.ReadMessage(TrackingMainMission);
             break;

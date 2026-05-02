@@ -1,10 +1,10 @@
 using System.Collections.Concurrent;
-using CastoriceHoney.Server.Enums.Scene;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Enums.Scene;
+using March7thHoney.Util;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace CastoriceHoney.Server.Data.Config.Scene;
+namespace March7thHoney.Data.Config.Scene;
 
 public class FloorInfo
 {

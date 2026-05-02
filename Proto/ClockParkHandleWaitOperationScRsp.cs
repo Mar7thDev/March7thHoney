@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from ClockParkHandleWaitOperationScRsp.proto</summary>
   public static partial class ClockParkHandleWaitOperationScRspReflection {
@@ -33,9 +33,9 @@ namespace CastoriceHoney.Server.Proto {
             "EhMKC0lITk1ITlBNSEpHGA8gASgNQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+q",
             "AhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ClockParkPlayStatusReflection.Descriptor, global::CastoriceHoney.Server.Proto.SceneBattleInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ClockParkPlayStatusReflection.Descriptor, global::March7thHoney.Proto.SceneBattleInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ClockParkHandleWaitOperationScRsp), global::CastoriceHoney.Server.Proto.ClockParkHandleWaitOperationScRsp.Parser, new[]{ "NKAHDEEOHAO", "Retcode", "NDEEBDDEOFA", "BattleInfo", "NNFAMOJAHCH", "IHNMHNPMHJG" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ClockParkHandleWaitOperationScRsp), global::March7thHoney.Proto.ClockParkHandleWaitOperationScRsp.Parser, new[]{ "NKAHDEEOHAO", "Retcode", "NDEEBDDEOFA", "BattleInfo", "NNFAMOJAHCH", "IHNMHNPMHJG" }, null, null, null, null)
           }));
     }
     #endregion
@@ -57,7 +57,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ClockParkHandleWaitOperationScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ClockParkHandleWaitOperationScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -94,10 +94,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "NKAHDEEOHAO" field.</summary>
     public const int NKAHDEEOHAOFieldNumber = 2;
-    private global::CastoriceHoney.Server.Proto.ClockParkPlayStatus nKAHDEEOHAO_ = global::CastoriceHoney.Server.Proto.ClockParkPlayStatus.FogfbpodidnEcfaomlddgl;
+    private global::March7thHoney.Proto.ClockParkPlayStatus nKAHDEEOHAO_ = global::March7thHoney.Proto.ClockParkPlayStatus.FogfbpodidnEcfaomlddgl;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ClockParkPlayStatus NKAHDEEOHAO {
+    public global::March7thHoney.Proto.ClockParkPlayStatus NKAHDEEOHAO {
       get { return nKAHDEEOHAO_; }
       set {
         nKAHDEEOHAO_ = value;
@@ -130,10 +130,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "battle_info" field.</summary>
     public const int BattleInfoFieldNumber = 11;
-    private global::CastoriceHoney.Server.Proto.SceneBattleInfo battleInfo_;
+    private global::March7thHoney.Proto.SceneBattleInfo battleInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.SceneBattleInfo BattleInfo {
+    public global::March7thHoney.Proto.SceneBattleInfo BattleInfo {
       get { return battleInfo_; }
       set {
         battleInfo_ = value;
@@ -192,7 +192,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (NKAHDEEOHAO != global::CastoriceHoney.Server.Proto.ClockParkPlayStatus.FogfbpodidnEcfaomlddgl) hash ^= NKAHDEEOHAO.GetHashCode();
+      if (NKAHDEEOHAO != global::March7thHoney.Proto.ClockParkPlayStatus.FogfbpodidnEcfaomlddgl) hash ^= NKAHDEEOHAO.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (NDEEBDDEOFA != 0) hash ^= NDEEBDDEOFA.GetHashCode();
       if (battleInfo_ != null) hash ^= BattleInfo.GetHashCode();
@@ -216,7 +216,7 @@ namespace CastoriceHoney.Server.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (NKAHDEEOHAO != global::CastoriceHoney.Server.Proto.ClockParkPlayStatus.FogfbpodidnEcfaomlddgl) {
+      if (NKAHDEEOHAO != global::March7thHoney.Proto.ClockParkPlayStatus.FogfbpodidnEcfaomlddgl) {
         output.WriteRawTag(16);
         output.WriteEnum((int) NKAHDEEOHAO);
       }
@@ -250,7 +250,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (NKAHDEEOHAO != global::CastoriceHoney.Server.Proto.ClockParkPlayStatus.FogfbpodidnEcfaomlddgl) {
+      if (NKAHDEEOHAO != global::March7thHoney.Proto.ClockParkPlayStatus.FogfbpodidnEcfaomlddgl) {
         output.WriteRawTag(16);
         output.WriteEnum((int) NKAHDEEOHAO);
       }
@@ -284,7 +284,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (NKAHDEEOHAO != global::CastoriceHoney.Server.Proto.ClockParkPlayStatus.FogfbpodidnEcfaomlddgl) {
+      if (NKAHDEEOHAO != global::March7thHoney.Proto.ClockParkPlayStatus.FogfbpodidnEcfaomlddgl) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) NKAHDEEOHAO);
       }
       if (Retcode != 0) {
@@ -314,7 +314,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other == null) {
         return;
       }
-      if (other.NKAHDEEOHAO != global::CastoriceHoney.Server.Proto.ClockParkPlayStatus.FogfbpodidnEcfaomlddgl) {
+      if (other.NKAHDEEOHAO != global::March7thHoney.Proto.ClockParkPlayStatus.FogfbpodidnEcfaomlddgl) {
         NKAHDEEOHAO = other.NKAHDEEOHAO;
       }
       if (other.Retcode != 0) {
@@ -325,7 +325,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.battleInfo_ != null) {
         if (battleInfo_ == null) {
-          BattleInfo = new global::CastoriceHoney.Server.Proto.SceneBattleInfo();
+          BattleInfo = new global::March7thHoney.Proto.SceneBattleInfo();
         }
         BattleInfo.MergeFrom(other.BattleInfo);
       }
@@ -355,7 +355,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 16: {
-            NKAHDEEOHAO = (global::CastoriceHoney.Server.Proto.ClockParkPlayStatus) input.ReadEnum();
+            NKAHDEEOHAO = (global::March7thHoney.Proto.ClockParkPlayStatus) input.ReadEnum();
             break;
           }
           case 56: {
@@ -368,7 +368,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 90: {
             if (battleInfo_ == null) {
-              BattleInfo = new global::CastoriceHoney.Server.Proto.SceneBattleInfo();
+              BattleInfo = new global::March7thHoney.Proto.SceneBattleInfo();
             }
             input.ReadMessage(BattleInfo);
             break;
@@ -401,7 +401,7 @@ namespace CastoriceHoney.Server.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 16: {
-            NKAHDEEOHAO = (global::CastoriceHoney.Server.Proto.ClockParkPlayStatus) input.ReadEnum();
+            NKAHDEEOHAO = (global::March7thHoney.Proto.ClockParkPlayStatus) input.ReadEnum();
             break;
           }
           case 56: {
@@ -414,7 +414,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 90: {
             if (battleInfo_ == null) {
-              BattleInfo = new global::CastoriceHoney.Server.Proto.SceneBattleInfo();
+              BattleInfo = new global::March7thHoney.Proto.SceneBattleInfo();
             }
             input.ReadMessage(BattleInfo);
             break;

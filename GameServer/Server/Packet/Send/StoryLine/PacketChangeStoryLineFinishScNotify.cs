@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Send.StoryLine;
+namespace March7thHoney.GameServer.Server.Packet.Send.StoryLine;
 
 public class PacketChangeStoryLineFinishScNotify : BasePacket
 {

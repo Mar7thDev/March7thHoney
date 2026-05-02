@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Data;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Send.Avatar;
+namespace March7thHoney.GameServer.Server.Packet.Send.Avatar;
 
 public class PacketGetAvatarDataScRsp : BasePacket
 {
@@ -20,7 +20,7 @@ public class PacketGetAvatarDataScRsp : BasePacket
 
         var basicTypeIds = new HashSet<uint>();
 
-        foreach (var avatar in player.AvatarManager?.AvatarData?.FormalAvatars ?? Enumerable.Empty<CastoriceHoney.Server.Database.Avatar.FormalAvatarInfo>())
+        foreach (var avatar in player.AvatarManager?.AvatarData?.FormalAvatars ?? Enumerable.Empty<March7thHoney.Database.Avatar.FormalAvatarInfo>())
         {
             proto.AvatarList.Add(avatar.ToProto());
             var pathProtos = avatar.ToAvatarPathDataProto();

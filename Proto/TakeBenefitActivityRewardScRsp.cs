@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from TakeBenefitActivityRewardScRsp.proto</summary>
   public static partial class TakeBenefitActivityRewardScRspReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "dGNvZGUYDyABKA1CMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3Rvcmlj",
             "ZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.DOMOEOOHLJAReflection.Descriptor, global::CastoriceHoney.Server.Proto.ItemListReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.DOMOEOOHLJAReflection.Descriptor, global::March7thHoney.Proto.ItemListReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.TakeBenefitActivityRewardScRsp), global::CastoriceHoney.Server.Proto.TakeBenefitActivityRewardScRsp.Parser, new[]{ "SwitchList", "DBMFJIIOFOI", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TakeBenefitActivityRewardScRsp), global::March7thHoney.Proto.TakeBenefitActivityRewardScRsp.Parser, new[]{ "SwitchList", "DBMFJIIOFOI", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.TakeBenefitActivityRewardScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.TakeBenefitActivityRewardScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -89,21 +89,21 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "switch_list" field.</summary>
     public const int SwitchListFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.DOMOEOOHLJA> _repeated_switchList_codec
-        = pb::FieldCodec.ForMessage(18, global::CastoriceHoney.Server.Proto.DOMOEOOHLJA.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.DOMOEOOHLJA> switchList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.DOMOEOOHLJA>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.DOMOEOOHLJA> _repeated_switchList_codec
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.DOMOEOOHLJA.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.DOMOEOOHLJA> switchList_ = new pbc::RepeatedField<global::March7thHoney.Proto.DOMOEOOHLJA>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.DOMOEOOHLJA> SwitchList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.DOMOEOOHLJA> SwitchList {
       get { return switchList_; }
     }
 
     /// <summary>Field number for the "DBMFJIIOFOI" field.</summary>
     public const int DBMFJIIOFOIFieldNumber = 13;
-    private global::CastoriceHoney.Server.Proto.ItemList dBMFJIIOFOI_;
+    private global::March7thHoney.Proto.ItemList dBMFJIIOFOI_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ItemList DBMFJIIOFOI {
+    public global::March7thHoney.Proto.ItemList DBMFJIIOFOI {
       get { return dBMFJIIOFOI_; }
       set {
         dBMFJIIOFOI_ = value;
@@ -228,7 +228,7 @@ namespace CastoriceHoney.Server.Proto {
       switchList_.Add(other.switchList_);
       if (other.dBMFJIIOFOI_ != null) {
         if (dBMFJIIOFOI_ == null) {
-          DBMFJIIOFOI = new global::CastoriceHoney.Server.Proto.ItemList();
+          DBMFJIIOFOI = new global::March7thHoney.Proto.ItemList();
         }
         DBMFJIIOFOI.MergeFrom(other.DBMFJIIOFOI);
       }
@@ -260,7 +260,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 106: {
             if (dBMFJIIOFOI_ == null) {
-              DBMFJIIOFOI = new global::CastoriceHoney.Server.Proto.ItemList();
+              DBMFJIIOFOI = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(DBMFJIIOFOI);
             break;
@@ -294,7 +294,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 106: {
             if (dBMFJIIOFOI_ == null) {
-              DBMFJIIOFOI = new global::CastoriceHoney.Server.Proto.ItemList();
+              DBMFJIIOFOI = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(DBMFJIIOFOI);
             break;

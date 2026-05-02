@@ -1,6 +1,6 @@
-using CastoriceHoney.Server.Data.Config;
+using March7thHoney.Data.Config;
 
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("GridFightTraitEffectLayerPa.json")]
 public class GridFightTraitEffectLayerPaExcel : ExcelResource

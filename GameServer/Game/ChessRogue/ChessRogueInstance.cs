@@ -1,22 +1,22 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Data.Config.AdventureAbility;
-using CastoriceHoney.Server.Data.Custom;
-using CastoriceHoney.Server.Data.Excel;
-using CastoriceHoney.Server.Enums.Rogue;
-using CastoriceHoney.Server.GameServer.Game.Battle;
-using CastoriceHoney.Server.GameServer.Game.ChessRogue.Cell;
-using CastoriceHoney.Server.GameServer.Game.ChessRogue.Dice;
-using CastoriceHoney.Server.GameServer.Game.ChessRogue.Modifier.ModifierEffect;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.GameServer.Game.Rogue;
-using CastoriceHoney.Server.GameServer.Game.Rogue.Buff;
-using CastoriceHoney.Server.GameServer.Game.Rogue.Event;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.ChessRogue;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.RogueModifier;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Data;
+using March7thHoney.Data.Config.AdventureAbility;
+using March7thHoney.Data.Custom;
+using March7thHoney.Data.Excel;
+using March7thHoney.Enums.Rogue;
+using March7thHoney.GameServer.Game.Battle;
+using March7thHoney.GameServer.Game.ChessRogue.Cell;
+using March7thHoney.GameServer.Game.ChessRogue.Dice;
+using March7thHoney.GameServer.Game.ChessRogue.Modifier.ModifierEffect;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Game.Rogue;
+using March7thHoney.GameServer.Game.Rogue.Buff;
+using March7thHoney.GameServer.Game.Rogue.Event;
+using March7thHoney.GameServer.Server.Packet.Send.ChessRogue;
+using March7thHoney.GameServer.Server.Packet.Send.RogueModifier;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.GameServer.Game.ChessRogue;
+namespace March7thHoney.GameServer.Game.ChessRogue;
 
 public class ChessRogueInstance : BaseRogueInstance
 {

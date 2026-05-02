@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GridFightSectionRecordInfo.proto</summary>
   public static partial class GridFightSectionRecordInfoReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "QjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2",
             "ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GridFightSectionCampRecordInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridFightSectionCampRecordInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GridFightSectionRecordInfo), global::CastoriceHoney.Server.Proto.GridFightSectionRecordInfo.Parser, new[]{ "BNLHIMHFGDK", "SectionId", "DCPKPNLKGMM", "CampRecordInfo" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightSectionRecordInfo), global::March7thHoney.Proto.GridFightSectionRecordInfo.Parser, new[]{ "BNLHIMHFGDK", "SectionId", "DCPKPNLKGMM", "CampRecordInfo" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GridFightSectionRecordInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GridFightSectionRecordInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -127,10 +127,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "camp_record_info" field.</summary>
     public const int CampRecordInfoFieldNumber = 412;
-    private global::CastoriceHoney.Server.Proto.GridFightSectionCampRecordInfo campRecordInfo_;
+    private global::March7thHoney.Proto.GridFightSectionCampRecordInfo campRecordInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.GridFightSectionCampRecordInfo CampRecordInfo {
+    public global::March7thHoney.Proto.GridFightSectionCampRecordInfo CampRecordInfo {
       get { return campRecordInfo_; }
       set {
         campRecordInfo_ = value;
@@ -272,7 +272,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.campRecordInfo_ != null) {
         if (campRecordInfo_ == null) {
-          CampRecordInfo = new global::CastoriceHoney.Server.Proto.GridFightSectionCampRecordInfo();
+          CampRecordInfo = new global::March7thHoney.Proto.GridFightSectionCampRecordInfo();
         }
         CampRecordInfo.MergeFrom(other.CampRecordInfo);
       }
@@ -309,7 +309,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 3298: {
             if (campRecordInfo_ == null) {
-              CampRecordInfo = new global::CastoriceHoney.Server.Proto.GridFightSectionCampRecordInfo();
+              CampRecordInfo = new global::March7thHoney.Proto.GridFightSectionCampRecordInfo();
             }
             input.ReadMessage(CampRecordInfo);
             break;
@@ -347,7 +347,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 3298: {
             if (campRecordInfo_ == null) {
-              CampRecordInfo = new global::CastoriceHoney.Server.Proto.GridFightSectionCampRecordInfo();
+              CampRecordInfo = new global::March7thHoney.Proto.GridFightSectionCampRecordInfo();
             }
             input.ReadMessage(CampRecordInfo);
             break;

@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.GameServer.Game.GridFight.PendingAction;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.GameServer.Game.GridFight.PendingAction;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Game.GridFight.Sync;
+namespace March7thHoney.GameServer.Game.GridFight.Sync;
 
 public class GridFightPendingActionSyncData(GridFightSrc src, BaseGridFightPendingAction action, uint groupId = 0, params uint[] param) : BaseGridFightSyncData(src, groupId, param)
 {

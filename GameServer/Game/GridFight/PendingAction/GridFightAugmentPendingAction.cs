@@ -1,10 +1,10 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.GameServer.Game.GridFight.Sync;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.GridFight;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Data;
+using March7thHoney.GameServer.Game.GridFight.Sync;
+using March7thHoney.GameServer.Server.Packet.Send.GridFight;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.GameServer.Game.GridFight.PendingAction;
+namespace March7thHoney.GameServer.Game.GridFight.PendingAction;
 
 public class GridFightAugmentPendingAction : BaseGridFightPendingAction
 {

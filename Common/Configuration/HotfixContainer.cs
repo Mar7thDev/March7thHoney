@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Enums;
+using March7thHoney.Enums;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace CastoriceHoney.Server.Configuration;
+namespace March7thHoney.Configuration;
 
 public class HotfixContainer
 {

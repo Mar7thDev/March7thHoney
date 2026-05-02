@@ -1,9 +1,9 @@
-using CastoriceHoney.Server.Database;
-using CastoriceHoney.Server.Database.Player;
-using CastoriceHoney.Server.Internationalization;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Database;
+using March7thHoney.Database.Player;
+using March7thHoney.Internationalization;
+using March7thHoney.Util;
 
-namespace CastoriceHoney.Server.Command.Command.Cmd;
+namespace March7thHoney.Command.Command.Cmd;
 
 [CommandInfo("unstuck", "Game.Command.Unstuck.Desc", "Game.Command.Unstuck.Usage")]
 public class CommandUnstuck : ICommand

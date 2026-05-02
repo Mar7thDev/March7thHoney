@@ -1,9 +1,9 @@
-﻿using CastoriceHoney.Server.WebServer.Request;
-using CastoriceHoney.Server.WebServer.Server;
+using March7thHoney.WebServer.Request;
+using March7thHoney.WebServer.Server;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CastoriceHoney.Server.WebServer.Controllers;
+namespace March7thHoney.WebServer.Controllers;
 
 [ApiController]
 [EnableCors("AllowAll")]

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from ReplaceLineupCsReq.proto</summary>
   public static partial class ReplaceLineupCsReqReflection {
@@ -34,9 +34,9 @@ namespace CastoriceHoney.Server.Proto {
             "YUxpbmV1cFR5cGVCMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3Rvcmlj",
             "ZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ExtraLineupTypeReflection.Descriptor, global::CastoriceHoney.Server.Proto.LineupSlotDataReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ExtraLineupTypeReflection.Descriptor, global::March7thHoney.Proto.LineupSlotDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.ReplaceLineupCsReq), global::CastoriceHoney.Server.Proto.ReplaceLineupCsReq.Parser, new[]{ "LeaderSlot", "FLFJMCFACKN", "BJADHCOFLGI", "Index", "IsVirtual", "LineupSlotList", "GameStoryLineId", "PlaneId", "ExtraLineupType" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ReplaceLineupCsReq), global::March7thHoney.Proto.ReplaceLineupCsReq.Parser, new[]{ "LeaderSlot", "FLFJMCFACKN", "BJADHCOFLGI", "Index", "IsVirtual", "LineupSlotList", "GameStoryLineId", "PlaneId", "ExtraLineupType" }, null, null, null, null)
           }));
     }
     #endregion
@@ -58,7 +58,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ReplaceLineupCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ReplaceLineupCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -158,12 +158,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "lineup_slot_list" field.</summary>
     public const int LineupSlotListFieldNumber = 11;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.LineupSlotData> _repeated_lineupSlotList_codec
-        = pb::FieldCodec.ForMessage(90, global::CastoriceHoney.Server.Proto.LineupSlotData.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.LineupSlotData> lineupSlotList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.LineupSlotData>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.LineupSlotData> _repeated_lineupSlotList_codec
+        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.LineupSlotData.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.LineupSlotData> lineupSlotList_ = new pbc::RepeatedField<global::March7thHoney.Proto.LineupSlotData>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.LineupSlotData> LineupSlotList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.LineupSlotData> LineupSlotList {
       get { return lineupSlotList_; }
     }
 
@@ -193,10 +193,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "extra_lineup_type" field.</summary>
     public const int ExtraLineupTypeFieldNumber = 15;
-    private global::CastoriceHoney.Server.Proto.ExtraLineupType extraLineupType_ = global::CastoriceHoney.Server.Proto.ExtraLineupType.LineupNone;
+    private global::March7thHoney.Proto.ExtraLineupType extraLineupType_ = global::March7thHoney.Proto.ExtraLineupType.LineupNone;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ExtraLineupType ExtraLineupType {
+    public global::March7thHoney.Proto.ExtraLineupType ExtraLineupType {
       get { return extraLineupType_; }
       set {
         extraLineupType_ = value;
@@ -242,7 +242,7 @@ namespace CastoriceHoney.Server.Proto {
       hash ^= lineupSlotList_.GetHashCode();
       if (GameStoryLineId != 0) hash ^= GameStoryLineId.GetHashCode();
       if (PlaneId != 0) hash ^= PlaneId.GetHashCode();
-      if (ExtraLineupType != global::CastoriceHoney.Server.Proto.ExtraLineupType.LineupNone) hash ^= ExtraLineupType.GetHashCode();
+      if (ExtraLineupType != global::March7thHoney.Proto.ExtraLineupType.LineupNone) hash ^= ExtraLineupType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -290,7 +290,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(112);
         output.WriteUInt32(PlaneId);
       }
-      if (ExtraLineupType != global::CastoriceHoney.Server.Proto.ExtraLineupType.LineupNone) {
+      if (ExtraLineupType != global::March7thHoney.Proto.ExtraLineupType.LineupNone) {
         output.WriteRawTag(120);
         output.WriteEnum((int) ExtraLineupType);
       }
@@ -333,7 +333,7 @@ namespace CastoriceHoney.Server.Proto {
         output.WriteRawTag(112);
         output.WriteUInt32(PlaneId);
       }
-      if (ExtraLineupType != global::CastoriceHoney.Server.Proto.ExtraLineupType.LineupNone) {
+      if (ExtraLineupType != global::March7thHoney.Proto.ExtraLineupType.LineupNone) {
         output.WriteRawTag(120);
         output.WriteEnum((int) ExtraLineupType);
       }
@@ -369,7 +369,7 @@ namespace CastoriceHoney.Server.Proto {
       if (PlaneId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PlaneId);
       }
-      if (ExtraLineupType != global::CastoriceHoney.Server.Proto.ExtraLineupType.LineupNone) {
+      if (ExtraLineupType != global::March7thHoney.Proto.ExtraLineupType.LineupNone) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ExtraLineupType);
       }
       if (_unknownFields != null) {
@@ -406,7 +406,7 @@ namespace CastoriceHoney.Server.Proto {
       if (other.PlaneId != 0) {
         PlaneId = other.PlaneId;
       }
-      if (other.ExtraLineupType != global::CastoriceHoney.Server.Proto.ExtraLineupType.LineupNone) {
+      if (other.ExtraLineupType != global::March7thHoney.Proto.ExtraLineupType.LineupNone) {
         ExtraLineupType = other.ExtraLineupType;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -461,7 +461,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 120: {
-            ExtraLineupType = (global::CastoriceHoney.Server.Proto.ExtraLineupType) input.ReadEnum();
+            ExtraLineupType = (global::March7thHoney.Proto.ExtraLineupType) input.ReadEnum();
             break;
           }
         }
@@ -516,7 +516,7 @@ namespace CastoriceHoney.Server.Proto {
             break;
           }
           case 120: {
-            ExtraLineupType = (global::CastoriceHoney.Server.Proto.ExtraLineupType) input.ReadEnum();
+            ExtraLineupType = (global::March7thHoney.Proto.ExtraLineupType) input.ReadEnum();
             break;
           }
         }

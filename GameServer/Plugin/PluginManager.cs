@@ -1,10 +1,10 @@
 using System.Reflection;
-using CastoriceHoney.Server.GameServer.Plugin.Constructor;
-using CastoriceHoney.Server.Internationalization;
-using CastoriceHoney.Server.Util;
+using March7thHoney.GameServer.Plugin.Constructor;
+using March7thHoney.Internationalization;
+using March7thHoney.Util;
 using McMaster.NETCore.Plugins;
 
-namespace CastoriceHoney.Server.GameServer.Plugin;
+namespace March7thHoney.GameServer.Plugin;
 
 public class PluginManager
 {

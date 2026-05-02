@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from DisplayAvatarDetailInfo.proto</summary>
   public static partial class DisplayAvatarDetailInfoReflection {
@@ -36,9 +36,9 @@ namespace CastoriceHoney.Server.Proto {
             "dW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9i",
             "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.AvatarSkillTreeReflection.Descriptor, global::CastoriceHoney.Server.Proto.DisplayEquipmentInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.DisplayRelicInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.AvatarSkillTreeReflection.Descriptor, global::March7thHoney.Proto.DisplayEquipmentInfoReflection.Descriptor, global::March7thHoney.Proto.DisplayRelicInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.DisplayAvatarDetailInfo), global::CastoriceHoney.Server.Proto.DisplayAvatarDetailInfo.Parser, new[]{ "DressedSkinId", "Rank", "Pos", "Level", "Exp", "EnhancedId", "SkilltreeList", "Equipment", "RelicList", "AvatarId", "Promotion" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DisplayAvatarDetailInfo), global::March7thHoney.Proto.DisplayAvatarDetailInfo.Parser, new[]{ "DressedSkinId", "Rank", "Pos", "Level", "Exp", "EnhancedId", "SkilltreeList", "Equipment", "RelicList", "AvatarId", "Promotion" }, null, null, null, null)
           }));
     }
     #endregion
@@ -60,7 +60,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.DisplayAvatarDetailInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.DisplayAvatarDetailInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -174,21 +174,21 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "skilltree_list" field.</summary>
     public const int SkilltreeListFieldNumber = 11;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.AvatarSkillTree> _repeated_skilltreeList_codec
-        = pb::FieldCodec.ForMessage(90, global::CastoriceHoney.Server.Proto.AvatarSkillTree.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AvatarSkillTree> skilltreeList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AvatarSkillTree>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AvatarSkillTree> _repeated_skilltreeList_codec
+        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.AvatarSkillTree.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AvatarSkillTree> skilltreeList_ = new pbc::RepeatedField<global::March7thHoney.Proto.AvatarSkillTree>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.AvatarSkillTree> SkilltreeList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.AvatarSkillTree> SkilltreeList {
       get { return skilltreeList_; }
     }
 
     /// <summary>Field number for the "equipment" field.</summary>
     public const int EquipmentFieldNumber = 12;
-    private global::CastoriceHoney.Server.Proto.DisplayEquipmentInfo equipment_;
+    private global::March7thHoney.Proto.DisplayEquipmentInfo equipment_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.DisplayEquipmentInfo Equipment {
+    public global::March7thHoney.Proto.DisplayEquipmentInfo Equipment {
       get { return equipment_; }
       set {
         equipment_ = value;
@@ -197,12 +197,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "relic_list" field.</summary>
     public const int RelicListFieldNumber = 13;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.DisplayRelicInfo> _repeated_relicList_codec
-        = pb::FieldCodec.ForMessage(106, global::CastoriceHoney.Server.Proto.DisplayRelicInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.DisplayRelicInfo> relicList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.DisplayRelicInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.DisplayRelicInfo> _repeated_relicList_codec
+        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.DisplayRelicInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.DisplayRelicInfo> relicList_ = new pbc::RepeatedField<global::March7thHoney.Proto.DisplayRelicInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.DisplayRelicInfo> RelicList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.DisplayRelicInfo> RelicList {
       get { return relicList_; }
     }
 
@@ -450,7 +450,7 @@ namespace CastoriceHoney.Server.Proto {
       skilltreeList_.Add(other.skilltreeList_);
       if (other.equipment_ != null) {
         if (equipment_ == null) {
-          Equipment = new global::CastoriceHoney.Server.Proto.DisplayEquipmentInfo();
+          Equipment = new global::March7thHoney.Proto.DisplayEquipmentInfo();
         }
         Equipment.MergeFrom(other.Equipment);
       }
@@ -510,7 +510,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 98: {
             if (equipment_ == null) {
-              Equipment = new global::CastoriceHoney.Server.Proto.DisplayEquipmentInfo();
+              Equipment = new global::March7thHoney.Proto.DisplayEquipmentInfo();
             }
             input.ReadMessage(Equipment);
             break;
@@ -576,7 +576,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 98: {
             if (equipment_ == null) {
-              Equipment = new global::CastoriceHoney.Server.Proto.DisplayEquipmentInfo();
+              Equipment = new global::March7thHoney.Proto.DisplayEquipmentInfo();
             }
             input.ReadMessage(Equipment);
             break;

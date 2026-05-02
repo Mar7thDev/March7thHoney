@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from GridFightGameItemSyncInfo.proto</summary>
   public static partial class GridFightGameItemSyncInfoReflection {
@@ -37,9 +37,9 @@ namespace CastoriceHoney.Server.Proto {
             "ZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Q",
             "cm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.GridFightConsumableInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightConsumableUpdateInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridFightEquipmentInfoReflection.Descriptor, global::CastoriceHoney.Server.Proto.GridGameForgeItemInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridFightConsumableInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightConsumableUpdateInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightEquipmentInfoReflection.Descriptor, global::March7thHoney.Proto.GridGameForgeItemInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.GridFightGameItemSyncInfo), global::CastoriceHoney.Server.Proto.GridFightGameItemSyncInfo.Parser, new[]{ "GridGameForgeItemList", "GridFightEquipmentList", "GridFightConsumableList", "UpdateGridFightConsumableList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightGameItemSyncInfo), global::March7thHoney.Proto.GridFightGameItemSyncInfo.Parser, new[]{ "GridGameForgeItemList", "GridFightEquipmentList", "GridFightConsumableList", "UpdateGridFightConsumableList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -61,7 +61,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.GridFightGameItemSyncInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.GridFightGameItemSyncInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -96,45 +96,45 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "grid_game_forge_item_list" field.</summary>
     public const int GridGameForgeItemListFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.GridGameForgeItemInfo> _repeated_gridGameForgeItemList_codec
-        = pb::FieldCodec.ForMessage(34, global::CastoriceHoney.Server.Proto.GridGameForgeItemInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridGameForgeItemInfo> gridGameForgeItemList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridGameForgeItemInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GridGameForgeItemInfo> _repeated_gridGameForgeItemList_codec
+        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.GridGameForgeItemInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GridGameForgeItemInfo> gridGameForgeItemList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GridGameForgeItemInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridGameForgeItemInfo> GridGameForgeItemList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.GridGameForgeItemInfo> GridGameForgeItemList {
       get { return gridGameForgeItemList_; }
     }
 
     /// <summary>Field number for the "grid_fight_equipment_list" field.</summary>
     public const int GridFightEquipmentListFieldNumber = 9;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.GridFightEquipmentInfo> _repeated_gridFightEquipmentList_codec
-        = pb::FieldCodec.ForMessage(74, global::CastoriceHoney.Server.Proto.GridFightEquipmentInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridFightEquipmentInfo> gridFightEquipmentList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridFightEquipmentInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GridFightEquipmentInfo> _repeated_gridFightEquipmentList_codec
+        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.GridFightEquipmentInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GridFightEquipmentInfo> gridFightEquipmentList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GridFightEquipmentInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridFightEquipmentInfo> GridFightEquipmentList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.GridFightEquipmentInfo> GridFightEquipmentList {
       get { return gridFightEquipmentList_; }
     }
 
     /// <summary>Field number for the "grid_fight_consumable_list" field.</summary>
     public const int GridFightConsumableListFieldNumber = 10;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.GridFightConsumableInfo> _repeated_gridFightConsumableList_codec
-        = pb::FieldCodec.ForMessage(82, global::CastoriceHoney.Server.Proto.GridFightConsumableInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridFightConsumableInfo> gridFightConsumableList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridFightConsumableInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GridFightConsumableInfo> _repeated_gridFightConsumableList_codec
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.GridFightConsumableInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GridFightConsumableInfo> gridFightConsumableList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GridFightConsumableInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridFightConsumableInfo> GridFightConsumableList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.GridFightConsumableInfo> GridFightConsumableList {
       get { return gridFightConsumableList_; }
     }
 
     /// <summary>Field number for the "update_grid_fight_consumable_list" field.</summary>
     public const int UpdateGridFightConsumableListFieldNumber = 12;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.GridFightConsumableUpdateInfo> _repeated_updateGridFightConsumableList_codec
-        = pb::FieldCodec.ForMessage(98, global::CastoriceHoney.Server.Proto.GridFightConsumableUpdateInfo.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridFightConsumableUpdateInfo> updateGridFightConsumableList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridFightConsumableUpdateInfo>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GridFightConsumableUpdateInfo> _repeated_updateGridFightConsumableList_codec
+        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.GridFightConsumableUpdateInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GridFightConsumableUpdateInfo> updateGridFightConsumableList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GridFightConsumableUpdateInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.GridFightConsumableUpdateInfo> UpdateGridFightConsumableList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.GridFightConsumableUpdateInfo> UpdateGridFightConsumableList {
       get { return updateGridFightConsumableList_; }
     }
 

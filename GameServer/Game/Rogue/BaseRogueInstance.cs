@@ -1,26 +1,26 @@
-using CastoriceHoney.Server.Data;
-using CastoriceHoney.Server.Data.Config.AdventureAbility;
-using CastoriceHoney.Server.Data.Custom;
-using CastoriceHoney.Server.Data.Excel;
-using CastoriceHoney.Server.Database.Inventory;
-using CastoriceHoney.Server.Enums.Rogue;
-using CastoriceHoney.Server.GameServer.Game.Battle;
-using CastoriceHoney.Server.GameServer.Game.ChessRogue;
-using CastoriceHoney.Server.GameServer.Game.Player;
-using CastoriceHoney.Server.GameServer.Game.Rogue.Buff;
-using CastoriceHoney.Server.GameServer.Game.Rogue.Event;
-using CastoriceHoney.Server.GameServer.Game.Rogue.Miracle;
-using CastoriceHoney.Server.GameServer.Game.Rogue.Scene.Entity;
-using CastoriceHoney.Server.GameServer.Game.RogueTourn;
-using CastoriceHoney.Server.GameServer.Game.Scene.Entity;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.RogueCommon;
-using CastoriceHoney.Server.GameServer.Server.Packet.Send.Scene;
-using CastoriceHoney.Server.Proto;
-using CastoriceHoney.Server.Util;
+using March7thHoney.Data;
+using March7thHoney.Data.Config.AdventureAbility;
+using March7thHoney.Data.Custom;
+using March7thHoney.Data.Excel;
+using March7thHoney.Database.Inventory;
+using March7thHoney.Enums.Rogue;
+using March7thHoney.GameServer.Game.Battle;
+using March7thHoney.GameServer.Game.ChessRogue;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Game.Rogue.Buff;
+using March7thHoney.GameServer.Game.Rogue.Event;
+using March7thHoney.GameServer.Game.Rogue.Miracle;
+using March7thHoney.GameServer.Game.Rogue.Scene.Entity;
+using March7thHoney.GameServer.Game.RogueTourn;
+using March7thHoney.GameServer.Game.Scene.Entity;
+using March7thHoney.GameServer.Server.Packet.Send.RogueCommon;
+using March7thHoney.GameServer.Server.Packet.Send.Scene;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 using System;
-using LineupInfo = CastoriceHoney.Server.Database.Lineup.LineupInfo;
+using LineupInfo = March7thHoney.Database.Lineup.LineupInfo;
 
-namespace CastoriceHoney.Server.GameServer.Game.Rogue;
+namespace March7thHoney.GameServer.Game.Rogue;
 
 public abstract class BaseRogueInstance(PlayerInstance player, RogueSubModeEnum rogueSubMode, int rogueBuffType)
 {

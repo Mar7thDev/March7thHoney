@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from OpenRogueChestScRsp.proto</summary>
   public static partial class OpenRogueChestScRspReflection {
@@ -31,9 +31,9 @@ namespace CastoriceHoney.Server.Proto {
             "CzIMLk5OT0lKSk5DSEpCQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0",
             "b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ItemListReflection.Descriptor, global::CastoriceHoney.Server.Proto.NNOIJJNCHJBReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemListReflection.Descriptor, global::March7thHoney.Proto.NNOIJJNCHJBReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.OpenRogueChestScRsp), global::CastoriceHoney.Server.Proto.OpenRogueChestScRsp.Parser, new[]{ "Retcode", "Reward", "DropData", "HICNFJDGGGL" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.OpenRogueChestScRsp), global::March7thHoney.Proto.OpenRogueChestScRsp.Parser, new[]{ "Retcode", "Reward", "DropData", "HICNFJDGGGL" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.OpenRogueChestScRspReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.OpenRogueChestScRspReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -102,10 +102,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "reward" field.</summary>
     public const int RewardFieldNumber = 2;
-    private global::CastoriceHoney.Server.Proto.ItemList reward_;
+    private global::March7thHoney.Proto.ItemList reward_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ItemList Reward {
+    public global::March7thHoney.Proto.ItemList Reward {
       get { return reward_; }
       set {
         reward_ = value;
@@ -114,10 +114,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "drop_data" field.</summary>
     public const int DropDataFieldNumber = 7;
-    private global::CastoriceHoney.Server.Proto.ItemList dropData_;
+    private global::March7thHoney.Proto.ItemList dropData_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.ItemList DropData {
+    public global::March7thHoney.Proto.ItemList DropData {
       get { return dropData_; }
       set {
         dropData_ = value;
@@ -126,10 +126,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "HICNFJDGGGL" field.</summary>
     public const int HICNFJDGGGLFieldNumber = 12;
-    private global::CastoriceHoney.Server.Proto.NNOIJJNCHJB hICNFJDGGGL_;
+    private global::March7thHoney.Proto.NNOIJJNCHJB hICNFJDGGGL_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.NNOIJJNCHJB HICNFJDGGGL {
+    public global::March7thHoney.Proto.NNOIJJNCHJB HICNFJDGGGL {
       get { return hICNFJDGGGL_; }
       set {
         hICNFJDGGGL_ = value;
@@ -265,19 +265,19 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.reward_ != null) {
         if (reward_ == null) {
-          Reward = new global::CastoriceHoney.Server.Proto.ItemList();
+          Reward = new global::March7thHoney.Proto.ItemList();
         }
         Reward.MergeFrom(other.Reward);
       }
       if (other.dropData_ != null) {
         if (dropData_ == null) {
-          DropData = new global::CastoriceHoney.Server.Proto.ItemList();
+          DropData = new global::March7thHoney.Proto.ItemList();
         }
         DropData.MergeFrom(other.DropData);
       }
       if (other.hICNFJDGGGL_ != null) {
         if (hICNFJDGGGL_ == null) {
-          HICNFJDGGGL = new global::CastoriceHoney.Server.Proto.NNOIJJNCHJB();
+          HICNFJDGGGL = new global::March7thHoney.Proto.NNOIJJNCHJB();
         }
         HICNFJDGGGL.MergeFrom(other.HICNFJDGGGL);
       }
@@ -306,21 +306,21 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 18: {
             if (reward_ == null) {
-              Reward = new global::CastoriceHoney.Server.Proto.ItemList();
+              Reward = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(Reward);
             break;
           }
           case 58: {
             if (dropData_ == null) {
-              DropData = new global::CastoriceHoney.Server.Proto.ItemList();
+              DropData = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(DropData);
             break;
           }
           case 98: {
             if (hICNFJDGGGL_ == null) {
-              HICNFJDGGGL = new global::CastoriceHoney.Server.Proto.NNOIJJNCHJB();
+              HICNFJDGGGL = new global::March7thHoney.Proto.NNOIJJNCHJB();
             }
             input.ReadMessage(HICNFJDGGGL);
             break;
@@ -350,21 +350,21 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 18: {
             if (reward_ == null) {
-              Reward = new global::CastoriceHoney.Server.Proto.ItemList();
+              Reward = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(Reward);
             break;
           }
           case 58: {
             if (dropData_ == null) {
-              DropData = new global::CastoriceHoney.Server.Proto.ItemList();
+              DropData = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(DropData);
             break;
           }
           case 98: {
             if (hICNFJDGGGL_ == null) {
-              HICNFJDGGGL = new global::CastoriceHoney.Server.Proto.NNOIJJNCHJB();
+              HICNFJDGGGL = new global::March7thHoney.Proto.NNOIJJNCHJB();
             }
             input.ReadMessage(HICNFJDGGGL);
             break;

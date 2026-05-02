@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from EnterElationActivityStageCsReq.proto</summary>
   public static partial class EnterElationActivityStageCsReqReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "ZBgLIAEoDUIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9u",
             "ZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.ElationActivityAvatarReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ElationActivityAvatarReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.EnterElationActivityStageCsReq), global::CastoriceHoney.Server.Proto.EnterElationActivityStageCsReq.Parser, new[]{ "PlayerSelectedAvatarList", "FixedAvatarList", "LevelId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EnterElationActivityStageCsReq), global::March7thHoney.Proto.EnterElationActivityStageCsReq.Parser, new[]{ "PlayerSelectedAvatarList", "FixedAvatarList", "LevelId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.EnterElationActivityStageCsReqReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.EnterElationActivityStageCsReqReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -90,23 +90,23 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "player_selected_avatar_list" field.</summary>
     public const int PlayerSelectedAvatarListFieldNumber = 7;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ElationActivityAvatar> _repeated_playerSelectedAvatarList_codec
-        = pb::FieldCodec.ForMessage(58, global::CastoriceHoney.Server.Proto.ElationActivityAvatar.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ElationActivityAvatar> playerSelectedAvatarList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ElationActivityAvatar>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ElationActivityAvatar> _repeated_playerSelectedAvatarList_codec
+        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.ElationActivityAvatar.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ElationActivityAvatar> playerSelectedAvatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ElationActivityAvatar>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ElationActivityAvatar> PlayerSelectedAvatarList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ElationActivityAvatar> PlayerSelectedAvatarList {
       get { return playerSelectedAvatarList_; }
     }
 
     /// <summary>Field number for the "fixed_avatar_list" field.</summary>
     public const int FixedAvatarListFieldNumber = 8;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.ElationActivityAvatar> _repeated_fixedAvatarList_codec
-        = pb::FieldCodec.ForMessage(66, global::CastoriceHoney.Server.Proto.ElationActivityAvatar.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ElationActivityAvatar> fixedAvatarList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ElationActivityAvatar>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ElationActivityAvatar> _repeated_fixedAvatarList_codec
+        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.ElationActivityAvatar.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ElationActivityAvatar> fixedAvatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ElationActivityAvatar>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.ElationActivityAvatar> FixedAvatarList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ElationActivityAvatar> FixedAvatarList {
       get { return fixedAvatarList_; }
     }
 

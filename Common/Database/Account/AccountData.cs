@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.Util;
+using March7thHoney.Util;
 using SqlSugar;
 
-namespace CastoriceHoney.Server.Database.Account;
+namespace March7thHoney.Database.Account;
 
 [SugarTable("Account")]
 public class AccountData : BaseDatabaseDataHelper

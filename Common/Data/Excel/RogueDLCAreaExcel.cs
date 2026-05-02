@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.Enums.Rogue;
+using March7thHoney.Enums.Rogue;
 using Newtonsoft.Json;
 
-namespace CastoriceHoney.Server.Data.Excel;
+namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueDLCArea.json")]
 public class RogueDLCAreaExcel : ExcelResource

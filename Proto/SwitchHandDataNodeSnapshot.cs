@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from SwitchHandDataNodeSnapshot.proto</summary>
   public static partial class SwitchHandDataNodeSnapshotReflection {
@@ -32,9 +32,9 @@ namespace CastoriceHoney.Server.Proto {
             "dS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJv",
             "dG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.MotionInfoSnapshotReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.MotionInfoSnapshotReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.SwitchHandDataNodeSnapshot), global::CastoriceHoney.Server.Proto.SwitchHandDataNodeSnapshot.Parser, new[]{ "ConfigId", "HandTransform", "HandState", "HandParam", "GetCoinCount" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SwitchHandDataNodeSnapshot), global::March7thHoney.Proto.SwitchHandDataNodeSnapshot.Parser, new[]{ "ConfigId", "HandTransform", "HandState", "HandParam", "GetCoinCount" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +56,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.SwitchHandDataNodeSnapshotReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.SwitchHandDataNodeSnapshotReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -104,10 +104,10 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "hand_transform" field.</summary>
     public const int HandTransformFieldNumber = 2;
-    private global::CastoriceHoney.Server.Proto.MotionInfoSnapshot handTransform_;
+    private global::March7thHoney.Proto.MotionInfoSnapshot handTransform_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::CastoriceHoney.Server.Proto.MotionInfoSnapshot HandTransform {
+    public global::March7thHoney.Proto.MotionInfoSnapshot HandTransform {
       get { return handTransform_; }
       set {
         handTransform_ = value;
@@ -292,7 +292,7 @@ namespace CastoriceHoney.Server.Proto {
       }
       if (other.handTransform_ != null) {
         if (handTransform_ == null) {
-          HandTransform = new global::CastoriceHoney.Server.Proto.MotionInfoSnapshot();
+          HandTransform = new global::March7thHoney.Proto.MotionInfoSnapshot();
         }
         HandTransform.MergeFrom(other.HandTransform);
       }
@@ -330,7 +330,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 18: {
             if (handTransform_ == null) {
-              HandTransform = new global::CastoriceHoney.Server.Proto.MotionInfoSnapshot();
+              HandTransform = new global::March7thHoney.Proto.MotionInfoSnapshot();
             }
             input.ReadMessage(HandTransform);
             break;
@@ -372,7 +372,7 @@ namespace CastoriceHoney.Server.Proto {
           }
           case 18: {
             if (handTransform_ == null) {
-              HandTransform = new global::CastoriceHoney.Server.Proto.MotionInfoSnapshot();
+              HandTransform = new global::March7thHoney.Proto.MotionInfoSnapshot();
             }
             input.ReadMessage(HandTransform);
             break;

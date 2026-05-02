@@ -1,7 +1,7 @@
-using CastoriceHoney.Server.Proto;
-using GridFightPortalBuffInfo = CastoriceHoney.Server.GameServer.Game.GridFight.Component.GridFightPortalBuffInfo;
+using March7thHoney.Proto;
+using GridFightPortalBuffInfo = March7thHoney.GameServer.Game.GridFight.Component.GridFightPortalBuffInfo;
 
-namespace CastoriceHoney.Server.GameServer.Game.GridFight.Sync;
+namespace March7thHoney.GameServer.Game.GridFight.Sync;
 
 public class GridFightAddPortalBuffSyncData(GridFightSrc src, GridFightPortalBuffInfo info, uint groupId = 0, params uint[] param) : BaseGridFightSyncData(src, groupId, param)
 {

@@ -1,6 +1,6 @@
 using SqlSugar;
 
-namespace CastoriceHoney.Server.Database.Tutorial;
+namespace March7thHoney.Database.Tutorial;
 
 [SugarTable("battle_college_data")]
 public class BattleCollegeData : BaseDatabaseDataHelper

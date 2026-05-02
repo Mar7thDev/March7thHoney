@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from Receive.proto</summary>
   public static partial class ReceiveReflection {
@@ -29,9 +29,9 @@ namespace CastoriceHoney.Server.Proto {
             "SEtNQktPS0IzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9u",
             "ZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.MALGHKMBKOKReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.MALGHKMBKOKReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.Receive), global::CastoriceHoney.Server.Proto.Receive.Parser, new[]{ "Retcode", "FriendList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.Receive), global::March7thHoney.Proto.Receive.Parser, new[]{ "Retcode", "FriendList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -53,7 +53,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.ReceiveReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.ReceiveReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -98,12 +98,12 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "friend_list" field.</summary>
     public const int FriendListFieldNumber = 14;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.MALGHKMBKOK> _repeated_friendList_codec
-        = pb::FieldCodec.ForMessage(114, global::CastoriceHoney.Server.Proto.MALGHKMBKOK.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MALGHKMBKOK> friendList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MALGHKMBKOK>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MALGHKMBKOK> _repeated_friendList_codec
+        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.MALGHKMBKOK.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MALGHKMBKOK> friendList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MALGHKMBKOK>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MALGHKMBKOK> FriendList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.MALGHKMBKOK> FriendList {
       get { return friendList_; }
     }
 

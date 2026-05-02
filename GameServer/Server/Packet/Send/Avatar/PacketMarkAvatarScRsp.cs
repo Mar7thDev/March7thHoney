@@ -1,8 +1,8 @@
-using CastoriceHoney.Server.Database.Avatar;
-using CastoriceHoney.Server.Kcp;
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Database.Avatar;
+using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.GameServer.Server.Packet.Send.Avatar;
+namespace March7thHoney.GameServer.Server.Packet.Send.Avatar;
 
 public class PacketMarkAvatarScRsp : BasePacket
 {

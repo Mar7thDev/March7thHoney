@@ -1,6 +1,6 @@
-using CastoriceHoney.Server.Proto;
+using March7thHoney.Proto;
 
-namespace CastoriceHoney.Server.Util;
+namespace March7thHoney.Util;
 
 public class Position
 {

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace CastoriceHoney.Server.Proto {
+namespace March7thHoney.Proto {
 
   /// <summary>Holder for reflection information generated from MissionStatusBySceneInfo.proto</summary>
   public static partial class MissionStatusBySceneInfoReflection {
@@ -34,9 +34,9 @@ namespace CastoriceHoney.Server.Proto {
             "MwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZl",
             "ci5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CastoriceHoney.Server.Proto.MainMissionCustomValueReflection.Descriptor, global::CastoriceHoney.Server.Proto.MissionReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.MainMissionCustomValueReflection.Descriptor, global::March7thHoney.Proto.MissionReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CastoriceHoney.Server.Proto.MissionStatusBySceneInfo), global::CastoriceHoney.Server.Proto.MissionStatusBySceneInfo.Parser, new[]{ "DisabledMainMissionIdList", "SubMissionStatusList", "NEDJGJNLIPF", "UnfinishedMainMissionIdList", "FinishedMainMissionIdList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MissionStatusBySceneInfo), global::March7thHoney.Proto.MissionStatusBySceneInfo.Parser, new[]{ "DisabledMainMissionIdList", "SubMissionStatusList", "NEDJGJNLIPF", "UnfinishedMainMissionIdList", "FinishedMainMissionIdList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -58,7 +58,7 @@ namespace CastoriceHoney.Server.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CastoriceHoney.Server.Proto.MissionStatusBySceneInfoReflection.Descriptor.MessageTypes[0]; }
+      get { return global::March7thHoney.Proto.MissionStatusBySceneInfoReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -105,23 +105,23 @@ namespace CastoriceHoney.Server.Proto {
 
     /// <summary>Field number for the "sub_mission_status_list" field.</summary>
     public const int SubMissionStatusListFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.Mission> _repeated_subMissionStatusList_codec
-        = pb::FieldCodec.ForMessage(18, global::CastoriceHoney.Server.Proto.Mission.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.Mission> subMissionStatusList_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.Mission>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.Mission> _repeated_subMissionStatusList_codec
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.Mission.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.Mission> subMissionStatusList_ = new pbc::RepeatedField<global::March7thHoney.Proto.Mission>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.Mission> SubMissionStatusList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.Mission> SubMissionStatusList {
       get { return subMissionStatusList_; }
     }
 
     /// <summary>Field number for the "NEDJGJNLIPF" field.</summary>
     public const int NEDJGJNLIPFFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::CastoriceHoney.Server.Proto.MainMissionCustomValue> _repeated_nEDJGJNLIPF_codec
-        = pb::FieldCodec.ForMessage(34, global::CastoriceHoney.Server.Proto.MainMissionCustomValue.Parser);
-    private readonly pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MainMissionCustomValue> nEDJGJNLIPF_ = new pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MainMissionCustomValue>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MainMissionCustomValue> _repeated_nEDJGJNLIPF_codec
+        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.MainMissionCustomValue.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MainMissionCustomValue> nEDJGJNLIPF_ = new pbc::RepeatedField<global::March7thHoney.Proto.MainMissionCustomValue>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::CastoriceHoney.Server.Proto.MainMissionCustomValue> NEDJGJNLIPF {
+    public pbc::RepeatedField<global::March7thHoney.Proto.MainMissionCustomValue> NEDJGJNLIPF {
       get { return nEDJGJNLIPF_; }
     }
 
