@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ItemList.proto";
+
+message TakeRogueEndlessActivityAllBonusRewardScRsp {
+    repeated uint32 MOGBNJOHKLA = 3;
+    ItemList reward = 5;
+    uint32 NAGLJDCLGGB = 7;
+    uint32 retcode = 13;
+}

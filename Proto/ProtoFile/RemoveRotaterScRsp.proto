@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "RotaterData.proto";
+import "RotaterEnergyInfo.proto";
+
+message RemoveRotaterScRsp {
+    RotaterEnergyInfo energy_info = 1;
+    RotaterData rotater_data = 9;
+    uint32 retcode = 15;
+}

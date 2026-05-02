@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum CmdLocalLegendType {
+    FOAKFHBIJLN_PCPDHELPKEM = 0;
+    CmdStartLocalLegendLevelCsReq = 6577;
+    CmdGetLocalLegendDataCsReq = 6576;
+    CmdLocalLegendDataChangeNotify = 6578;
+    CmdEnterLocalLegendLevelScRsp = 6589;
+    CmdGetLocalLegendDataScRsp = 6579;
+}

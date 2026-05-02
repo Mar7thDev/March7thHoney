@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "PCMHMCLACNK.proto";
+
+message ChenLingGameBoyGetFriendRankingInfoScRsp {
+    repeated PCMHMCLACNK JPNALKEFHOH = 8;
+    bool KEPMJKGJLNJ = 12;
+    uint32 retcode = 13;
+    uint32 GPJHJOOIJJC = 15;
+}

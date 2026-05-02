@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "BattleAvatarServantInfo.proto";
+
+message FPFFHGOKBNK {
+    repeated BattleAvatarServantInfo EKDHCCEFJGA = 1;
+    uint32 JPKDNCPELDM = 2;
+    uint32 PHJCDHKFNPJ = 3;
+}

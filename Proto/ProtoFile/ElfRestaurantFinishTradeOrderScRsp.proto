@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ItemCostData.proto";
+import "ItemList.proto";
+
+message ElfRestaurantFinishTradeOrderScRsp {
+    uint32 IIMKIFDKJHO = 2;
+    ItemList PPMAFCBNAJF = 5;
+    uint32 retcode = 9;
+    ItemCostData KBEFKONPKGJ = 15;
+}

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "LIEEDGOEGMK.proto";
+
+message GetSwitchMascotDataScRsp {
+    uint32 retcode = 4;
+    repeated LIEEDGOEGMK OHFBMFGPMJO = 11;
+    uint32 CPMOOKFKBEG = 13;
+}

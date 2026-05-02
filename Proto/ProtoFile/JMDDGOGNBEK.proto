@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "BAPBJANOPLP.proto";
+
+message JMDDGOGNBEK {
+    uint32 goods_id = 10;
+    repeated BAPBJANOPLP JDFCLIFHEBE = 15;
+}

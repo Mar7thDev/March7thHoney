@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "KDJIDJBBHHE.proto";
+import "MFMEMDJKDAF.proto";
+
+message FateQueryScRsp {
+    uint32 retcode = 6;
+    MFMEMDJKDAF rogue_get_info = 8;
+    KDJIDJBBHHE MODDIBHCPPD = 11;
+}

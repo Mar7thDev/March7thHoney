@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ItemList.proto";
+import "NHDKLMIMLKC.proto";
+
+message DJCCBIOKNOD {
+    repeated uint32 BLKACGBDAHB = 1;
+    ItemList reward = 7;
+    uint32 retcode = 8;
+    NHDKLMIMLKC IMNOJIDJBNG = 12;
+}

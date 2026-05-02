@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ChallengeLineupList.proto";
+
+message PlayerChallengePeakRecordMobData {
+    uint32 cycles_used = 1;
+    uint32 peak_id = 3;
+    ChallengeLineupList lineup = 4;
+    repeated uint32 OBPDENLMNII = 8;
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "CJLJDKLCNDA.proto";
+
+message PCKNAJOFGLD {
+    uint32 retcode = 11;
+    CJLJDKLCNDA MODDIBHCPPD = 12;
+}

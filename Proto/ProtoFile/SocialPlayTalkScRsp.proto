@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "GFLKDHPBAMJ.proto";
+
+message SocialPlayTalkScRsp {
+    uint32 retcode = 4;
+    GFLKDHPBAMJ NGPGKFELCED = 5;
+    int64 end_time = 11;
+}

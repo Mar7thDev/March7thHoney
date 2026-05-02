@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "OMHAOBFKIKE.proto";
+
+message SetRelicBoxTargetScRsp {
+    OMHAOBFKIKE GPEAFAJGCPH = 7;
+    uint32 retcode = 14;
+}

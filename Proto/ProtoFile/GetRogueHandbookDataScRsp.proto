@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "KMPCIKLJIHH.proto";
+
+message GetRogueHandbookDataScRsp {
+    uint32 retcode = 2;
+    KMPCIKLJIHH IGFPODGEPIB = 9;
+}

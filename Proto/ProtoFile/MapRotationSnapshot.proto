@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "RotationMapInfoSnapshot.proto";
+
+message MapRotationSnapshot {
+    int32 region_id = 1;
+    uint32 pose_id = 2;
+    RotationMapInfoSnapshot map_info = 3;
+}

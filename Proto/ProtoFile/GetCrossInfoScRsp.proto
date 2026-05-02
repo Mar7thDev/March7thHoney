@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "FightGameMode.proto";
+
+message GetCrossInfoScRsp {
+    FightGameMode PLOBMBFPNFK = 3;
+    uint64 room_id = 4;
+    uint32 retcode = 8;
+    uint64 EIFFDNNBGMC = 14;
+}

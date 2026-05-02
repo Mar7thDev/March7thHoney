@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "AEOEFOILEBP.proto";
+import "DMINLLDNNDL.proto";
+import "ENALOKIFDFH.proto";
+
+message MultipleDropInfoNotify {
+    repeated DMINLLDNNDL DFEOOEHFAAC = 1;
+    repeated ENALOKIFDFH ALDKLKHLGGP = 5;
+    repeated AEOEFOILEBP JNGHGLMBPOH = 14;
+}

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ItemList.proto";
+import "KEOLEHHLHHM.proto";
+
+message PlayerReturnSignScRsp {
+    uint32 retcode = 10;
+    repeated ItemList EBCAEFONDJC = 13;
+    repeated KEOLEHHLHHM DMHGDPBAALN = 15;
+}

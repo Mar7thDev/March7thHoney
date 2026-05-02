@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message EBFBPHIADMI {
+    uint32 visitor_id = 1;
+    bool is_meet = 2;
+    uint32 FGCOHAAGIEG = 11;
+}

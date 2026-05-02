@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "Vector.proto";
+import "Vector4.proto";
+
+message RotateMapInfo {
+    Vector4 JOGBJIBEEEB = 8;
+    Vector LGKMEPOJACI = 11;
+}

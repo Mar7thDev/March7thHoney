@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message RefreshTriggerByClientScRsp {
+    uint32 retcode = 8;
+    string trigger_name = 9;
+    uint32 trigger_entity_id = 10;
+    bool refresh_trigger = 13;
+}

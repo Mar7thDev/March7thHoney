@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum RogueAreaStatus {
+    FDPOAPLBFKC_DKLPAAFFLEE = 0;
+    FDPOAPLBFKC_NGMMICOGDFP = 1;
+    FDPOAPLBFKC_ONMIBBEMGJO = 2;
+    FDPOAPLBFKC_CLPHMAJJILA = 3;
+}

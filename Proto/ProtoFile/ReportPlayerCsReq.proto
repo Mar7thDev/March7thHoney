@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message ReportPlayerCsReq {
+    uint32 HELHPDMDLBO = 8;
+    string MPCOLHBJPBP = 11;
+    uint32 uid = 15;
+}

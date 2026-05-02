@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "JFFONIDPNDA.proto";
+
+message AEIMINCOFHF {
+    uint32 GKFEGIBGEGI = 2;
+    JFFONIDPNDA pos = 14;
+}

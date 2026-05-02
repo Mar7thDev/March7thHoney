@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message StoryLineTrialAvatarChangeScNotify {
+    repeated uint32 OMNHJDBLFNK = 3;
+    repeated uint32 OCAKFNFEPCO = 9;
+    bool BPJLLBDDNDM = 10;
+}

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "TrainPartyPassengerInfo.proto";
+
+message TrainPartyGamePlaySettleNotify {
+    repeated uint32 IENGEPCHHMC = 5;
+    uint32 unlock_area_num = 9;
+    uint32 record_id = 10;
+    TrainPartyPassengerInfo FIJHIEOANNM = 12;
+}

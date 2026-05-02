@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message DelSaveRaidScNotify {
+    uint32 raid_id = 6;
+    uint32 world_level = 9;
+}

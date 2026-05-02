@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "FeverTimeBattleRank.proto";
+
+message FeverTimeActivityBattleEndScNotify {
+    FeverTimeBattleRank KIKCDKLKCPC = 5;
+    uint32 id = 11;
+    uint32 PKPIOIJPPBL = 12;
+    uint32 turn_left = 13;
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "LOCEJAIMMGG.proto";
+
+message AFDBEFKBBFM {
+    repeated LOCEJAIMMGG JPNALKEFHOH = 2;
+    uint32 level_id = 8;
+}

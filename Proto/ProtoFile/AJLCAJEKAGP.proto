@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "GrowthTartgetFuncType.proto";
+
+message AJLCAJEKAGP {
+    repeated GrowthTartgetFuncType DHAIJLJCJAF = 7;
+    uint32 MMOPCKLPHIO = 11;
+}

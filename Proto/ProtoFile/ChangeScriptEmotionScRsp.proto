@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "HeartDialEmotionType.proto";
+
+message ChangeScriptEmotionScRsp {
+    uint32 retcode = 2;
+    HeartDialEmotionType emotion_type = 9;
+    uint32 script_id = 14;
+}

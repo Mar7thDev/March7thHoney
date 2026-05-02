@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum ItemType {
+    ITEM_TYPE_NONE = 0;
+    ITEM_AVATAR_CARD = 1;
+    ITEM_EQUIPMENT = 2;
+    ITEM_MATERIAL = 3;
+    ITEM_AVATAR_EXP = 4;
+    ITEM_RELIC = 5;
+}

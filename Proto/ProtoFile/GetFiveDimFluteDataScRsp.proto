@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message GetFiveDimFluteDataScRsp {
+    uint32 retcode = 1;
+    repeated uint32 OHGFEGDFKNG = 5;
+    repeated uint32 EPPHGOBAFMP = 15;
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "DisplayAvatarData.proto";
+
+message SetDisplayAvatarScRsp {
+    uint32 retcode = 1;
+    repeated DisplayAvatarData display_avatar_list = 7;
+}

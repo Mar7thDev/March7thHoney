@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message BatchMarkChatEmojiCsReq {
+    repeated uint32 marked_emoji_id_list = 7;
+}

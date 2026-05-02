@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ICIKHNKEELJ.proto";
+
+message MMFFHGPBALO {
+    bytes LENCLJPKDAO = 4;
+    uint32 dice_slot_id = 5;
+    string name = 9;
+    repeated ICIKHNKEELJ EFIJDEBFFNF = 12;
+    string BOINMJJEBBE = 13;
+}

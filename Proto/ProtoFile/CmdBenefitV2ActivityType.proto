@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum CmdBenefitV2ActivityType {
+    HNDFOLKOIGI_PCPDHELPKEM = 0;
+    CmdMEKCPJMGCOC = 9827;
+    HNDFOLKOIGI_JMPPOFMFAFN = 9821;
+    HNDFOLKOIGI_LBLHKHEOJDI = 9825;
+    CmdKOKPDKOLBLE = 9830;
+    CmdEACKMFHNKCB = 9824;
+    HNDFOLKOIGI_HEFGFDAAFCI = 9829;
+}

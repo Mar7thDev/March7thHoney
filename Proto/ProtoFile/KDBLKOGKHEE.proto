@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "DGCGFFLKKAA.proto";
+import "SwordTrainingDailyPhaseType.proto";
+
+message KDBLKOGKHEE {
+    SwordTrainingDailyPhaseType DICCEIAFIJB = 2;
+    repeated uint32 EDKJPBBDCBG = 4;
+    repeated DGCGFFLKKAA PIGEOFBCNCN = 9;
+}

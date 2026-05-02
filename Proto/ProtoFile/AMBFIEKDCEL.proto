@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message AMBFIEKDCEL {
+    double max_hp = 1;
+    double attack = 2;
+    double defence = 3;
+    double MAAHELIACOJ = 4;
+    double speed = 5;
+    double left_hp = 6;
+    double KEJCBOAPDDB = 7;
+}

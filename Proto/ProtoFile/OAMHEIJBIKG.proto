@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ItemList.proto";
+
+message OAMHEIJBIKG {
+    uint32 DAFENDGOABE = 1;
+    uint32 CAHDOOIHJKB = 4;
+    ItemList reward_list = 9;
+    uint32 progress = 10;
+}

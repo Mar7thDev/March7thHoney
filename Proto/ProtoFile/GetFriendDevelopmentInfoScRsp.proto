@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "OHNPAFLKHNA.proto";
+
+message GetFriendDevelopmentInfoScRsp {
+    uint32 retcode = 2;
+    repeated OHNPAFLKHNA DPLGFNNDOLB = 3;
+    uint32 uid = 7;
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "TutorialGuideType.proto";
+
+message FinishTutorialGuideCsReq {
+    uint32 group_id = 6;
+    TutorialGuideType type = 14;
+}

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message EPPGPHKLHNF {
+    int64 end_time = 1;
+    uint32 season = 11;
+    int64 begin_time = 15;
+}

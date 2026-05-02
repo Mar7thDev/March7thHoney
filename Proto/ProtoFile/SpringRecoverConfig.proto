@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "AvatarPresetHp.proto";
+
+message SpringRecoverConfig {
+    uint32 BJJMAHMKONC = 4;
+    repeated AvatarPresetHp FOHMBNJNLKF = 9;
+    bool CACHECAODEN = 10;
+}

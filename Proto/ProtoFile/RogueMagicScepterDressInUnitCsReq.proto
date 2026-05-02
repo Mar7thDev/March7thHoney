@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message RogueMagicScepterDressInUnitCsReq {
+    uint32 dice_slot_id = 2;
+    uint32 NCHHOPJJDCE = 12;
+    uint32 DOAOPBBIGPO = 13;
+}

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "DPFHPILPNON.proto";
+
+message IDHNJFPAEGP {
+    DPFHPILPNON status = 3;
+    uint32 FNLNPLHOEJN = 11;
+    uint32 ANAMOLBDCOL = 14;
+}

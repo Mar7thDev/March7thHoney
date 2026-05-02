@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ItemCostData.proto";
+
+message ExpUpRelicCsReq {
+    uint32 relic_unique_id = 1;
+    ItemCostData cost_data = 2;
+}

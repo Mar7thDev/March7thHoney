@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "AEBCLFBDHPE.proto";
+
+message GetFeverTimeActivityDataScRsp {
+    uint32 retcode = 8;
+    repeated AEBCLFBDHPE PCDIFDGCDOK = 12;
+}

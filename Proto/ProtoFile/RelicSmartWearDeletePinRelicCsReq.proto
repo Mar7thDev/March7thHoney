@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "NHFOGDPBOHN.proto";
+
+message RelicSmartWearDeletePinRelicCsReq {
+    bool OPCPHICEOOF = 3;
+    uint32 avatar_id = 6;
+    repeated NHFOGDPBOHN DHCNMIAIBGF = 11;
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message DiceCombatFinishPveStageCsReq {
+    uint32 MMLKFJIAKKH = 2;
+    bool is_win = 5;
+    uint32 damage = 7;
+    bool BIODAJLLINO = 10;
+}

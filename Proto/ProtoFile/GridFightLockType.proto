@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum GridFightLockType {
+    PJBMHHNLCLB_LNLOOHDEAEO = 0;
+    PJBMHHNLCLB_EHFHDGPOCNH = 6;
+    PJBMHHNLCLB_IAOBLNOEKKH = 7;
+    PJBMHHNLCLB_EBEKPGLFIIM = 8;
+}

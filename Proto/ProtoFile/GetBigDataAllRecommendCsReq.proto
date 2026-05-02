@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "BigDataRecommendType.proto";
+
+message GetBigDataAllRecommendCsReq {
+    BigDataRecommendType big_data_recommend_type = 1;
+}

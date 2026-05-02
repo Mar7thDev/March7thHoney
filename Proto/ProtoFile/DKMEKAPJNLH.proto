@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ItemCostData.proto";
+
+message DKMEKAPJNLH {
+    uint32 buff_id = 4;
+    ItemCostData cost_data = 12;
+}

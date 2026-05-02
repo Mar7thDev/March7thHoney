@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "FDOEMKPGHFL.proto";
+
+message ChenLingMoveEntityCsReq {
+    uint32 PENLMEIJIFK = 10;
+    FDOEMKPGHFL JDPHGEJLPPH = 14;
+}

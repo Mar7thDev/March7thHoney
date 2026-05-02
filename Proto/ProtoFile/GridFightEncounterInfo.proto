@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "GridEncounterMonsterWave.proto";
+import "GridFightDropInfo.proto";
+
+message GridFightEncounterInfo {
+    uint32 LFKBMDHKPFI = 8;
+    uint32 GDOEOGMJDAO = 11;
+    repeated GridEncounterMonsterWave monster_wave_list = 13;
+    uint32 BAGCBHFJIMN = 14;
+    GridFightDropInfo LMLAOPMDCCA = 15;
+}

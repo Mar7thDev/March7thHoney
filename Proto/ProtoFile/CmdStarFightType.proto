@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum CmdStarFightType {
+    JHPDEBBIDMN_PCPDHELPKEM = 0;
+    CmdGetStarFightDataScRsp = 7170;
+    CmdStartStarFightLevelScRsp = 7167;
+    CmdStarFightDataChangeNotify = 7165;
+    CmdGetStarFightDataCsReq = 7169;
+    CmdStartStarFightLevelCsReq = 7161;
+}

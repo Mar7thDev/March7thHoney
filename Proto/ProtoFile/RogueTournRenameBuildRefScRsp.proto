@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message RogueTournRenameBuildRefScRsp {
+    uint32 KKGIEENCOIC = 3;
+    uint32 retcode = 10;
+    string name = 11;
+}

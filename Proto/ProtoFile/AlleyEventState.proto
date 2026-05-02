@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum AlleyEventState {
+    HEBAGHLEECH_MFDPLAOEKFE = 0;
+    HEBAGHLEECH_GKBODJFAJCE = 1;
+    HEBAGHLEECH_DOIBPFNOJFJ = 2;
+    HEBAGHLEECH_DAFADDIENIH = 3;
+}

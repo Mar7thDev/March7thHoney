@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum ChessRogueDiceStatus {
+    HPHBEGJDIID_EOBBBBEHNNH = 0;
+    HPHBEGJDIID_NBDBAGCOKPN = 1;
+    HPHBEGJDIID_MENJPEGIBNC = 2;
+    HPHBEGJDIID_JEJKOOGGEHA = 3;
+}

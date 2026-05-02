@@ -1,0 +1,20 @@
+using CastoriceHoney.Server.Kcp;
+using CastoriceHoney.Server.Proto;
+
+namespace CastoriceHoney.Server.GameServer.Server.Packet.Send.Tutorial;
+
+public class PacketUnlockTutorialGuideScRsp : BasePacket
+{
+    public PacketUnlockTutorialGuideScRsp(uint tutorialId) : base(CmdIds.UnlockTutorialGuideScRsp)
+    {
+        var proto = new UnlockTutorialGuideScRsp
+        {
+            TutorialGuide = new TutorialGuide
+            {
+                Id = tutorialId,
+                Status = TutorialStatus.TutorialUnlock
+            }
+        };
+        SetData(proto);
+    }
+}

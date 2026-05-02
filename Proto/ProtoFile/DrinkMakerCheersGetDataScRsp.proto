@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "NCIFDEHCMBK.proto";
+
+message DrinkMakerCheersGetDataScRsp {
+    uint32 HKEABJLEIPM = 3;
+    uint32 retcode = 7;
+    uint32 EEDGBJFEECA = 8;
+    repeated NCIFDEHCMBK MFEPAEKOPNN = 11;
+}

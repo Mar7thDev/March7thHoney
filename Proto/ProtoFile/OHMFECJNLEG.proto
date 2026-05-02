@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ENDOLEJCHKP.proto";
+
+message OHMFECJNLEG {
+    repeated uint32 EOGMIHEPCGM = 2;
+    repeated ENDOLEJCHKP BFMNAKCPGNN = 3;
+    uint32 retcode = 14;
+}

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "RelicDiscardType.proto";
+
+message DiscardRelicScRsp {
+    uint32 retcode = 2;
+    repeated uint32 relic_ids = 9;
+    bool Discarded = 12;
+    RelicDiscardType HHHLMNLMAGC = 14;
+}

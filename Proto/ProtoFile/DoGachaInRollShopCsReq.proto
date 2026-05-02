@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message DoGachaInRollShopCsReq {
+    uint32 gacha_count = 6;
+    uint32 gacha_random = 7;
+    uint32 roll_shop_id = 9;
+}

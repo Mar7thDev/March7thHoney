@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message PlanetFesBusinessDayRefreshEventCsReq {
+    bool DGAHMJOBDNE = 1;
+    uint32 GAFPECGGICC = 5;
+    uint32 PHKAHAHLDAE = 7;
+}

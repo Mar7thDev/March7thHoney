@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "UpdatePlayerSetting.proto";
+
+message UpdatePlayerSettingCsReq {
+    UpdatePlayerSetting player_setting = 3;
+}

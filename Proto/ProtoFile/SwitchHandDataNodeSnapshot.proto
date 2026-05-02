@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "MotionInfoSnapshot.proto";
+
+message SwitchHandDataNodeSnapshot {
+    uint32 config_id = 1;
+    MotionInfoSnapshot hand_transform = 2;
+    uint32 hand_state = 3;
+    bytes hand_param = 4;
+    uint32 get_coin_count = 5;
+}

@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "AlleyPlacingShip.proto";
+
+message ActivityRaidPlacingGameCsReq {
+    AlleyPlacingShip FCDCFAMOHAE = 11;
+    oneof DLOMKFLEEIC {
+        uint32 MFMHHAPPPJJ = 1;
+        uint32 OBPNDKPPFGG = 12;
+    }
+}

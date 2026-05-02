@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "DisplayAvatarDetailInfo.proto";
+import "NFKEJJIHOCJ.proto";
+
+message GetFriendRecommendLineupDetailScRsp {
+    uint32 key = 5;
+    repeated DisplayAvatarDetailInfo MEOFNGCFABJ = 7;
+    uint32 retcode = 10;
+    NFKEJJIHOCJ type = 11;
+    uint32 uid = 15;
+}

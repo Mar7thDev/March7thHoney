@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "EPLGMCCNALG.proto";
+import "MMPOOBGAEKE.proto";
+
+message SetRogueCollectionScRsp {
+    repeated MMPOOBGAEKE IBNNOAJMAKE = 1;
+    repeated EPLGMCCNALG LNINOMPEBOB = 8;
+    uint32 retcode = 15;
+}

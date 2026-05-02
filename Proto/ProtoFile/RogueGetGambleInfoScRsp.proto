@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "DKFAEKPKADH.proto";
+
+message RogueGetGambleInfoScRsp {
+    DKFAEKPKADH CFADFLLLOPC = 3;
+    uint32 retcode = 5;
+}

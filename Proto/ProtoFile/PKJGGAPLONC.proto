@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "AvatarType.proto";
+
+message PKJGGAPLONC {
+    AvatarType avatar_type = 1;
+    uint32 id = 2;
+    uint32 level = 3;
+    uint32 index = 4;
+    uint32 CBHKFOEOMFF = 5;
+}

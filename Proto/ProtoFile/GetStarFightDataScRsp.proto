@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "EAKBDLAEKHJ.proto";
+
+message GetStarFightDataScRsp {
+    uint32 retcode = 5;
+    repeated EAKBDLAEKHJ BBFKAGEBKAL = 12;
+}

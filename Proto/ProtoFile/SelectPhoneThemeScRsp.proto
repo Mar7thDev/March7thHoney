@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message SelectPhoneThemeScRsp {
+    uint32 NALLEBNBPKB = 1;
+    uint32 cur_phone_theme = 6;
+    uint32 retcode = 8;
+}

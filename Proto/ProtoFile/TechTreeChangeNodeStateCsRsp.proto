@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "JDKJPFGJOBI.proto";
+
+message TechTreeChangeNodeStateCsRsp {
+    uint32 retcode = 3;
+    JDKJPFGJOBI op_type = 5;
+    uint32 NLGNAKKCDGO = 6;
+}

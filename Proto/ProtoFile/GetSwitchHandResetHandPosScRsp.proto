@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "GODHDEIPDJL.proto";
+
+message GetSwitchHandResetHandPosScRsp {
+    uint32 retcode = 4;
+    GODHDEIPDJL LFNIPECKNDH = 12;
+}

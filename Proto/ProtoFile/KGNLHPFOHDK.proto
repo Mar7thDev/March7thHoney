@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message KGNLHPFOHDK {
+    uint32 LANHJOMCKNJ = 5;
+    uint32 max_score = 8;
+    uint32 level_id = 9;
+}

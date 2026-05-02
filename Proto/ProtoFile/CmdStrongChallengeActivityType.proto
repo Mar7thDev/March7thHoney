@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum CmdStrongChallengeActivityType {
+    IAIFCMLMDAF_PCPDHELPKEM = 0;
+    CmdEnterActivityStrongChallengeCsReq = 6694;
+    CmdEnterStrongChallengeActivityStageScRsp = 6695;
+    CmdBMILHKCAKEA = 6691;
+    CmdLBGODAIEMFC = 6610;
+    CmdMGOMBDGDGCP = 6614;
+}

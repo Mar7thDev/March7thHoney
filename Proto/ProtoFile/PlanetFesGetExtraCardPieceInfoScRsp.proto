@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "PEHOCGJJMNF.proto";
+
+message PlanetFesGetExtraCardPieceInfoScRsp {
+    PEHOCGJJMNF ADJEEIILGBO = 6;
+    uint32 retcode = 8;
+}

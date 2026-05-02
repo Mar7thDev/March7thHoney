@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "KFNFHIAEKIN.proto";
+import "KGFMBNIIPPA.proto";
+
+message IdleLiveFinishNodeBattleQuitCsReq {
+    KGFMBNIIPPA LMLFOELDMJD = 7;
+    KFNFHIAEKIN MNLBMALDPEJ = 15;
+}

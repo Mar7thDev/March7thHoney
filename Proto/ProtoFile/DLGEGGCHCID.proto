@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "LHPPIAKKFME.proto";
+
+message DLGEGGCHCID {
+    uint32 role_star = 8;
+    repeated LHPPIAKKFME PGNMDJIIKJB = 14;
+}

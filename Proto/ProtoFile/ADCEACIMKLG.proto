@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "TurnFoodSwitch.proto";
+
+message ADCEACIMKLG {
+    TurnFoodSwitch EDDIOHMNNNB = 4;
+    bool AMFLNLGBJGL = 7;
+    uint32 retcode = 15;
+}

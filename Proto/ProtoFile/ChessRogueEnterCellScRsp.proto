@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "EJCCHHAAGNH.proto";
+import "ILEJGEDBEKF.proto";
+
+message ChessRogueEnterCellScRsp {
+    uint32 EIIAGABAFEC = 4;
+    ILEJGEDBEKF LJMFGDFBLCK = 7;
+    uint32 retcode = 8;
+    EJCCHHAAGNH stage_info = 13;
+}

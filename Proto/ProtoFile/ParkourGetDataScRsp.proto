@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "LNGJCJNKPKE.proto";
+
+message ParkourGetDataScRsp {
+    repeated LNGJCJNKPKE LCPHEKPADKF = 1;
+    uint32 retcode = 14;
+}

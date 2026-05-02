@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message UnlockSkilltreeScRsp {
+    uint32 point_id = 3;
+    uint32 level = 8;
+    uint32 retcode = 11;
+}

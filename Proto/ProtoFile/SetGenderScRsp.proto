@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "MultiPathAvatarType.proto";
+
+message SetGenderScRsp {
+    uint32 retcode = 3;
+    MultiPathAvatarType cur_avatar_path = 4;
+}

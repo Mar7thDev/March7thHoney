@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum ClockParkPlayStatus {
+    FOGFBPODIDN_ECFAOMLDDGL = 0;
+    FOGFBPODIDN_NLJJDPFDDNG = 1;
+    FOGFBPODIDN_CPKIKJBGOLB = 2;
+    FOGFBPODIDN_CCIHCBAGIMH = 5;
+}

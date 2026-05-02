@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ItemList.proto";
+
+message SyncBattleCollegeDataChangeScNotify {
+    ItemList reward = 4;
+    uint32 LCDALEEEDJJ = 5;
+    repeated uint32 finished_college_id_list = 7;
+}

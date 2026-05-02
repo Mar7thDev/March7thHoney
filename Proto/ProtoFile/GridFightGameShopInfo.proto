@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "FJPONJFLOOH.proto";
+import "GridFightShopGoodsInfo.proto";
+
+message GridFightGameShopInfo {
+    uint32 NDGMCJHKNIN = 1;
+    repeated uint32 DNOIFMMLJDN = 2;
+    uint32 GLIFNMBMMBL = 3;
+    FJPONJFLOOH LDEDGOOKHFL = 4;
+    bool shop_is_locked = 8;
+    repeated GridFightShopGoodsInfo shop_goods_list = 10;
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "CGKBEBCCDGF.proto";
+
+message RogueWorkbenchGetInfoScRsp {
+    uint32 retcode = 2;
+    map<uint32, CGKBEBCCDGF> DKOAPDJGLOA = 12;
+}

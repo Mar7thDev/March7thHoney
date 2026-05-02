@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message RecallPetScRsp {
+    uint32 cur_pet_id = 4;
+    uint32 retcode = 9;
+    uint32 select_pet_id = 10;
+}

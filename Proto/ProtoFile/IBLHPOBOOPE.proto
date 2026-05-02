@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message IBLHPOBOOPE {
+    bool is_win = 8;
+    uint32 battle_event_id = 9;
+    map<uint32, uint32> OHOGDBPKLFM = 15;
+}

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "TrackMainMissionUpdateReasonId.proto";
+
+message UpdateTrackMainMissionCsReq {
+    TrackMainMissionUpdateReasonId NILLMKMKODP = 1;
+    uint32 track_mission_id = 3;
+    uint32 GNPDGLGBIMM = 4;
+}

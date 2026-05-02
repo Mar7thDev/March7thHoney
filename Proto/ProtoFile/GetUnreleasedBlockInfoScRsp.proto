@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message GetUnreleasedBlockInfoScRsp {
+    int64 DDBFEEIGPJI = 3;
+    repeated uint32 GOMNGAADJLM = 5;
+    repeated uint32 FLFPOJFLHOD = 8;
+    uint32 retcode = 9;
+}

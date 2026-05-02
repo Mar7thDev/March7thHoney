@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "AFFIMBGBMBJ.proto";
+
+message KNNODAPAKJA {
+    uint32 OODPDEBICHF = 3;
+    repeated uint32 JILAADEFNGD = 4;
+    repeated AFFIMBGBMBJ PADDEJDLFLA = 7;
+}

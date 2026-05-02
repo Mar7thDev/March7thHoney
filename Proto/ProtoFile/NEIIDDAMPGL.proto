@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "HLDONLICNOB.proto";
+import "JAMLHOHBIGB.proto";
+
+message NEIIDDAMPGL {
+    HLDONLICNOB GGOKHOBBHHF = 4;
+    JAMLHOHBIGB PIMAHGFDGCD = 8;
+}

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "CBCBJCPPOMP.proto";
+
+message BattleMonster {
+    uint32 monster_id = 1;
+    uint32 cur_hp = 2;
+    uint32 max_hp = 3;
+    CBCBJCPPOMP extra_info = 4;
+}

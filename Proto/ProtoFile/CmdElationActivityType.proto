@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum CmdElationActivityType {
+    LMALBOAPKOH_PCPDHELPKEM = 0;
+    CmdElationActivityBattleEndScNotify = 9105;
+    CmdEnterElationActivityStageScRsp = 9107;
+    CmdEnterElationActivityStageCsReq = 9101;
+    CmdGetElationActivityDataScRsp = 9110;
+    CmdGetActivityElationDataCsReq = 9109;
+}

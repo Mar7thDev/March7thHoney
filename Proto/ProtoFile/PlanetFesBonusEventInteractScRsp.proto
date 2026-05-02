@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "HLLCDBLCIPK.proto";
+import "JIPACDEJKJC.proto";
+
+message PlanetFesBonusEventInteractScRsp {
+    uint32 PHKAHAHLDAE = 2;
+    JIPACDEJKJC DIHECIIKELE = 7;
+    HLLCDBLCIPK reward = 8;
+    uint32 retcode = 14;
+}

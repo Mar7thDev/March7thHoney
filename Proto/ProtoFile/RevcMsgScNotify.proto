@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ChatMessageData.proto";
+import "ChatType.proto";
+
+message RevcMsgScNotify {
+    ChatType chat_type = 5;
+    uint32 source_uid = 9;
+    ChatMessageData recv_message_data = 15;
+}

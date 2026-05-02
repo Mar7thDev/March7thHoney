@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum FightMarbleHpChangeType {
+    AGHLHAFIAEJ_OPPEOEKLDCJ = 0;
+    AGHLHAFIAEJ_CBHGOMHNLMI = 1;
+    AGHLHAFIAEJ_DNOOPAMDACC = 2;
+}

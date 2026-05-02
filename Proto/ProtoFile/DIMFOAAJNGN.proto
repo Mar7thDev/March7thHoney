@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum DIMFOAAJNGN {
+    DIMFOAAJNGN_CMBCCLIAIIK = 0;
+    DIMFOAAJNGN_JHPDGKKLLBI = 1;
+    DIMFOAAJNGN_HCNHAPBAPGD = 2;
+    DIMFOAAJNGN_DOJOHGNOFFL = 3;
+    DIMFOAAJNGN_ILBPPLNFMHN = 4;
+}

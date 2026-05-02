@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "BattleStatistics.proto";
+import "RebattleType.proto";
+
+message QuitBattleCsReq {
+    RebattleType MGABMCBOHMK = 2;
+    BattleStatistics stt = 8;
+}

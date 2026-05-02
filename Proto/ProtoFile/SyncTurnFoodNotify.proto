@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "TurnFoodSwitch.proto";
+
+message SyncTurnFoodNotify {
+    repeated TurnFoodSwitch MAODNHNHLIJ = 9;
+    repeated uint32 DBPDPHIMBDJ = 15;
+}

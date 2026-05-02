@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum GridFightEquipTrackSource {
+    HNKKNDHLOGN_HLNMMMKHEEM = 0;
+    HNKKNDHLOGN_JFCAABPNAGG = 1;
+    HNKKNDHLOGN_KMJCOPIANCG = 2;
+    HNKKNDHLOGN_HHFCNLCCGHN = 3;
+}

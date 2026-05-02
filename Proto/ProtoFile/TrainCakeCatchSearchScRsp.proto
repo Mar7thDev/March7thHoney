@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "LGGABHPGPDD.proto";
+import "PKILNDNCAMI.proto";
+
+message TrainCakeCatchSearchScRsp {
+    uint32 retcode = 1;
+    repeated uint32 OMFCGLJDFPD = 6;
+    PKILNDNCAMI BLEDIOOJPNL = 12;
+    uint32 HCJPDNDOHAM = 13;
+    repeated LGGABHPGPDD KALIBGCODNF = 14;
+}

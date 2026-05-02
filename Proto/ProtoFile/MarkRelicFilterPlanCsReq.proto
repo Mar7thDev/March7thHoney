@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message MarkRelicFilterPlanCsReq {
+    repeated uint32 IBJMBIACFEK = 2;
+    bool KBNKNAHGPHG = 10;
+    bool KIPBINBIDAE = 15;
+}

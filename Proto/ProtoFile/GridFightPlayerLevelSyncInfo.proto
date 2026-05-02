@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message GridFightPlayerLevelSyncInfo {
+    uint32 exp = 1;
+    uint32 level = 4;
+    uint32 max_level = 12;
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum CmdPamMissionType {
+    PBMDIDPANOI_PCPDHELPKEM = 0;
+    CmdOLLNKPHMEPH = 4010;
+    CmdSyncAcceptedPamMissionNotify = 4094;
+    CmdAcceptedPamMissionExpireCsReq = 4091;
+}

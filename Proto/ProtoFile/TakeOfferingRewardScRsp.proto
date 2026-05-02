@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ItemList.proto";
+import "OfferingInfo.proto";
+
+message TakeOfferingRewardScRsp {
+    uint32 retcode = 2;
+    ItemList reward = 5;
+    OfferingInfo offering_info = 8;
+}

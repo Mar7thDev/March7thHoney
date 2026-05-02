@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "MessageChatData.proto";
+
+message AiPamTeamExplainCsReq {
+    bool BHFBIGFEDHL = 4;
+    MessageChatData message_datas = 5;
+    bool ELBDJNLMEFN = 9;
+    string NMLIMJJHOPK = 11;
+    bool LLLCJNJHEPE = 13;
+}

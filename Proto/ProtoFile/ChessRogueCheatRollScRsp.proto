@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "DFAOIALEBOH.proto";
+
+message ChessRogueCheatRollScRsp {
+    uint32 retcode = 1;
+    DFAOIALEBOH PJABKDBFPIM = 3;
+    uint32 CCOGFKLOFKL = 8;
+    uint32 OEFFFDCFAFC = 13;
+}

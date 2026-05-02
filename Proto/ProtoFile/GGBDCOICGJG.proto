@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "HHIPKINNCAP.proto";
+
+message GGBDCOICGJG {
+    uint32 wave = 1;
+    uint32 score_id = 2;
+    uint32 OIPAAMGIIEG = 3;
+    repeated HHIPKINNCAP BHFCPJAKIBG = 4;
+    float JHFKANKGLJN = 5;
+}

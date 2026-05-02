@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message GetMonopolyFriendRankingListCsReq {
+    uint32 CHNPMIBHOAA = 2;
+    uint32 FKAKCCJCGAF = 3;
+    uint32 NNAOHMMIBEB = 5;
+    uint32 DLDGHJEJDPF = 11;
+    uint32 uid = 15;
+}

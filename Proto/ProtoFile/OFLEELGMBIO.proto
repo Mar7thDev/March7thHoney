@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "KFKDIEAJPCJ.proto";
+
+message OFLEELGMBIO {
+    oneof BHKPAMDFGAA {
+        bool GNDJPNBECJP = 321;
+        KFKDIEAJPCJ CDDLJOJAHOA = 1303;
+        KFKDIEAJPCJ NHKHKKFBDEN = 1500;
+    }
+}

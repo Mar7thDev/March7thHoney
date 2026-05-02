@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message MNBHEHAMOKL {
+    bool CHCNEDNCIDJ = 2;
+    bool CPOGDKALGOM = 3;
+    bool FIJNAPNICJF = 6;
+    bool NHLKFBOBDOM = 13;
+    bool LPEPIDNJDEM = 14;
+}

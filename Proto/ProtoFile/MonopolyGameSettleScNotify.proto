@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ItemList.proto";
+import "KHCHPPLOFJN.proto";
+
+message MonopolyGameSettleScNotify {
+    ItemList JEILIIABKLG = 10;
+    KHCHPPLOFJN BMKAEFAKNFJ = 14;
+    ItemList item_list = 15;
+}

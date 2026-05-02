@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "VectorSnapshot.proto";
+
+message RotationMapInfoSnapshot {
+    VectorSnapshot map_pos = 1;
+    VectorSnapshot map_rot = 2;
+}

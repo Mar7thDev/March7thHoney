@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "KEBHKHCALBO.proto";
+import "OFLEELGMBIO.proto";
+
+message UpdatePlayWithPsnOnlySettingCsReq {
+    oneof HNIKGLBIMMI {
+        KEBHKHCALBO AGJCGOHEGPL = 786;
+        OFLEELGMBIO KNOEKHPLAAN = 931;
+    }
+}

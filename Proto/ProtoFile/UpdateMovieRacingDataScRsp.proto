@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "BNIGIAJOPGC.proto";
+
+message UpdateMovieRacingDataScRsp {
+    uint32 retcode = 8;
+    BNIGIAJOPGC IMCEKFOOKHC = 10;
+}

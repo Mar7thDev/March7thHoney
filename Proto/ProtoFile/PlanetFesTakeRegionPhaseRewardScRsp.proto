@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ItemList.proto";
+
+message PlanetFesTakeRegionPhaseRewardScRsp {
+    ItemList reward_list = 3;
+    uint32 HJMGGLANHML = 7;
+    uint32 retcode = 12;
+}

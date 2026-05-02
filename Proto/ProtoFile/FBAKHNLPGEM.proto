@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "DLCCOJPHBCB.proto";
+import "FMANPCKGFDD.proto";
+
+message FBAKHNLPGEM {
+    DLCCOJPHBCB HGPGDCOCDFK = 12;
+    FMANPCKGFDD reason = 13;
+}

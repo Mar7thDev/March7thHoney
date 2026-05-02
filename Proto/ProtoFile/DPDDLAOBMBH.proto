@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ENAKDNCEJBO.proto";
+import "RelicPresetPlanSourceType.proto";
+
+message DPDDLAOBMBH {
+    ENAKDNCEJBO HBNHKPDMGIP = 6;
+    RelicPresetPlanSourceType ALFHNEHOBJA = 13;
+    repeated uint32 relic_ids = 14;
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum HeartDialEmotionType {
+    HEART_DIAL_EMOTION_TYPE_PEACE = 0;
+    HEART_DIAL_EMOTION_TYPE_ANGER = 1;
+    HEART_DIAL_EMOTION_TYPE_HAPPY = 2;
+    HEART_DIAL_EMOTION_TYPE_SAD = 3;
+}

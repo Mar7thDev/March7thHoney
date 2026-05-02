@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "CJLJDKLCNDA.proto";
+
+message GetEvolveBuildGiveupScRsp {
+    uint32 retcode = 3;
+    CJLJDKLCNDA MODDIBHCPPD = 6;
+}

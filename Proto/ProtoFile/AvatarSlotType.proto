@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum AvatarSlotType {
+    AVATAR_SLOT_1 = 0;
+    AVATAR_SLOT_2 = 1;
+    AVATAR_SLOT_3 = 2;
+}

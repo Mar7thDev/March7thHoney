@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "HeartDialEmotionType.proto";
+
+message ChangeScriptEmotionCsReq {
+    uint32 AILOMBIMICB = 2;
+    uint32 script_id = 13;
+    HeartDialEmotionType target_emotion_type = 15;
+}

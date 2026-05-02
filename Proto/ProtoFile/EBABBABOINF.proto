@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum EBABBABOINF {
+    EBABBABOINF_PCPDHELPKEM = 0;
+    EBABBABOINF_CDPLPIBDKNN = 1;
+    EBABBABOINF_JAIAFPJODFE = 2;
+}

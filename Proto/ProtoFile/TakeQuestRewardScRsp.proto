@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ItemList.proto";
+
+message TakeQuestRewardScRsp {
+    ItemList reward = 1;
+    repeated uint32 FNIPKMFJMCE = 2;
+    repeated uint32 succ_quest_id_list = 4;
+    uint32 retcode = 5;
+}

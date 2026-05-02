@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "PGLFACHCGCB.proto";
+
+message OpenRelicBoxScRsp {
+    uint32 BDCJKFPGMFL = 1;
+    uint32 retcode = 9;
+    PGLFACHCGCB CGCJLHFLEPN = 12;
+}

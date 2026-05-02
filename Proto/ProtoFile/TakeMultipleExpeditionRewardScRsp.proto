@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ItemList.proto";
+
+message TakeMultipleExpeditionRewardScRsp {
+    int64 KAMBBFDEBAM = 8;
+    uint32 retcode = 11;
+    repeated ItemList HALFGLGLDLO = 12;
+    repeated uint32 ANMHKDANNDL = 15;
+}

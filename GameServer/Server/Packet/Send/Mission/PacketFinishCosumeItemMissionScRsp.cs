@@ -1,0 +1,26 @@
+using CastoriceHoney.Server.Kcp;
+using CastoriceHoney.Server.Proto;
+
+namespace CastoriceHoney.Server.GameServer.Server.Packet.Send.Mission;
+
+public class PacketFinishCosumeItemMissionScRsp : BasePacket
+{
+    public PacketFinishCosumeItemMissionScRsp(uint subMissionId) : base(CmdIds.FinishCosumeItemMissionScRsp)
+    {
+        var proto = new FinishCosumeItemMissionScRsp
+        {
+            SubMissionId = subMissionId
+        };
+
+        SetData(proto);
+    }
+
+    public PacketFinishCosumeItemMissionScRsp() : base(CmdIds.FinishCosumeItemMissionScRsp)
+    {
+        var proto = new FinishCosumeItemMissionScRsp
+        {
+            Retcode = 1
+        };
+        SetData(proto);
+    }
+}

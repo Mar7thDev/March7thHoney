@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "ChallengePeakGroup.proto";
+
+message ChallengePeakGroupDataUpdateScNotify {
+    ChallengePeakGroup challenge_peak_group = 2;
+}

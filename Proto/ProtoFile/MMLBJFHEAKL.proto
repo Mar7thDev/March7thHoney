@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+message MMLBJFHEAKL {
+    uint32 panel_id = 1;
+    uint32 MKHDINDGHMD = 2;
+    uint64 ENNLJKJGMEI = 3;
+}

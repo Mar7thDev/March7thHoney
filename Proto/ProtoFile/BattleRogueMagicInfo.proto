@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "FIHMEHKCDAL.proto";
+import "NGJPJANLDHI.proto";
+
+message BattleRogueMagicInfo {
+    NGJPJANLDHI IMPOEHIOCBC = 1;
+    FIHMEHKCDAL detail_info = 2;
+}

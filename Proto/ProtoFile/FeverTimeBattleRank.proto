@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+enum FeverTimeBattleRank {
+    GKNLGIBCLCN_IJLJFPKIEOP = 0;
+    GKNLGIBCLCN_ABMBOMJPMND = 1;
+    GKNLGIBCLCN_EFLJDDBCIFD = 2;
+    GKNLGIBCLCN_CKODLDEPEPG = 3;
+    GKNLGIBCLCN_DCPNAILIKFM = 4;
+}

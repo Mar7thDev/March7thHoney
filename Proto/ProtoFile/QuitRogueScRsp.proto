@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "CastoriceHoney.Server.Proto";
+
+option java_package = "emu.lunarcore.proto";
+
+import "JPFGHCPGHGO.proto";
+
+message QuitRogueScRsp {
+    JPFGHCPGHGO rogue_game_info = 5;
+    uint32 retcode = 15;
+}
