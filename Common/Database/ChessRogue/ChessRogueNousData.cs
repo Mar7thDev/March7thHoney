@@ -16,18 +16,11 @@ public class ChessRogueNousDiceData
     public int AreaId { get; set; }
     public int DifficultyLevel { get; set; }
 
-    public ChessRogueDice ToProto()
+    public DFAOIALEBOH ToProto()
     {
-        return new ChessRogueDice
+        return new DFAOIALEBOH
         {
-            BranchId = (uint)BranchId,
-            SurfaceList =
-            {
-                Surfaces.Select(x => new ChessRogueDiceSurfaceInfo
-                    { DiceSlotId = (uint)x.Key, DiceSurfaceId = (uint)x.Value })
-            }
-            //MaxAreaId = (uint)AreaId,
-            //MaxDifficultyLevel = (uint)DifficultyLevel
+            FBMDOIAKCNB = (uint)BranchId
         };
     }
 }

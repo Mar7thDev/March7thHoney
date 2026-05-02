@@ -21,12 +21,12 @@ public class BaseRogueBuffExcel : ExcelResource
         return MazeBuffID * 100 + MazeBuffLevel;
     }
 
-    public RogueCommonBuff ToProto()
+    public HJGFDIKDIHO ToProto()
     {
-        return new RogueCommonBuff
+        return new HJGFDIKDIHO
         {
             BuffId = (uint)MazeBuffID,
-            BuffLevel = (uint)MazeBuffLevel
+            EBMHDHJKBKC = (uint)MazeBuffLevel
         };
     }
 }

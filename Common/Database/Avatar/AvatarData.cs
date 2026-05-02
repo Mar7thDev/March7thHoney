@@ -451,9 +451,9 @@ public class FormalAvatarInfo : BaseAvatarInfo
 
     #endregion
 
-    public ChallengePeakAvatar ToPeakAvatarProto()
+    public ChallengePeakBuild ToPeakAvatarProto()
     {
-        return new ChallengePeakAvatar
+        return new ChallengePeakBuild
         {
             AvatarId = (uint)AvatarId,
             EquipmentUniqueId = (uint)GetCurPathInfo().EquipId,

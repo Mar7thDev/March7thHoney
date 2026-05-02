@@ -119,8 +119,8 @@ public class BannerConfig
         var info = new GachaInfo
         {
             GachaId = (uint)GachaId,
-            DetailWebview = "",
-            DropHistoryWebview = ""
+            DetailUrl = "",
+            HistoryUrl = ""
         };
 
         if (GachaType != GachaTypeEnum.Normal)

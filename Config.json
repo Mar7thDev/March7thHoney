@@ -24,8 +24,8 @@
     "ResourcePath": "Resources",
     "ConfigPath": "Config",
     "DatabasePath": "Config/Database",
-    "LogPath": "Logs",
-    "PluginPath": "Plugins"
+    "LogPath": "Config/Logs",
+    "PluginPath": "Config/Plugins"
   },
   "Database": {
     "DatabaseType": "sqlite",

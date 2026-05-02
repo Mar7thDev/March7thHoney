@@ -363,4 +363,6 @@ MigrationBackup/
 FodyWeavers.xsd
 /GameServer/OriginalProto
 Resources/
-GM Handbook
+Config/Handbook
+Config/Logs
+Config/Plugins

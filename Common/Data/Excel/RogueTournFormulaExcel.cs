@@ -1,3 +1,4 @@
+using March7thHoney.Enums.Rogue;
 using March7thHoney.Enums.TournRogue;
 using March7thHoney.Proto;
 using Newtonsoft.Json;
@@ -40,28 +41,17 @@ public class RogueTournFormulaExcel : ExcelResource
         GameData.RogueTournFormulaData.TryAdd(GetId(), this);
     }
 
-    public FormulaInfo ToProto(List<int> buffIdList)
+    public object ToProto(List<int> buffIdList)
     {
-        var proto = new FormulaInfo
+        return new
         {
-            FormulaId = (uint)FormulaID,
+            FormulaID,
+            MainBuffTypeID,
+            MainBuffNum,
+            SubBuffTypeID,
+            SubBuffNum,
             IsExpand = IsExpanded(buffIdList)
         };
-
-        proto.FormulaBuffTypeList.Add(new FormulaBuffTypeInfo
-        {
-            Key = (uint)MainBuffTypeID,
-            FormulaBuffNum = MainBuffNum
-        });
-
-        if (SubBuffTypeID != 0)
-            proto.FormulaBuffTypeList.Add(new FormulaBuffTypeInfo
-            {
-                Key = (uint)SubBuffTypeID,
-                FormulaBuffNum = SubBuffNum
-            });
-
-        return proto;
     }
 
     public bool IsExpanded(List<int> buffIdList)
@@ -77,63 +67,23 @@ public class RogueTournFormulaExcel : ExcelResource
         return SubBuffTypeID == 0 || buffTypeNumDict.GetValueOrDefault(SubBuffTypeID, 0) >= SubBuffNum;
     }
 
-    public RogueCommonActionResult ToResultProto(RogueCommonActionResultSourceType select, List<int> buffIdList)
+    public object ToResultProto(RogueCommonActionResultSourceType select, List<int> buffIdList)
     {
-        return new RogueCommonActionResult
-        {
-            RogueAction = new RogueCommonActionResultData
-            {
-                GetFormulaList = new RogueCommonFormula
-                {
-                    FormulaInfo = ToProto(buffIdList)
-                }
-            },
-            Source = select
-        };
+        return new { Source = (int)select, Data = ToProto(buffIdList) };
     }
 
-    public RogueCommonActionResult ToRemoveResultProto(RogueCommonActionResultSourceType select, List<int> buffIdList)
+    public object ToRemoveResultProto(RogueCommonActionResultSourceType select, List<int> buffIdList)
     {
-        return new RogueCommonActionResult
-        {
-            RogueAction = new RogueCommonActionResultData
-            {
-                RemoveFormulaList = new RogueCommonRemoveFormula
-                {
-                    FormulaInfo = ToProto(buffIdList)
-                }
-            },
-            Source = select
-        };
+        return new { Source = (int)select, Data = ToProto(buffIdList) };
     }
 
-    public RogueCommonActionResult ToExpandResultProto(RogueCommonActionResultSourceType select, List<int> buffIdList)
+    public object ToExpandResultProto(RogueCommonActionResultSourceType select, List<int> buffIdList)
     {
-        return new RogueCommonActionResult
-        {
-            RogueAction = new RogueCommonActionResultData
-            {
-                ExpandFormulaList = new RogueCommonExpandedFormula
-                {
-                    FormulaInfo = ToProto(buffIdList)
-                }
-            },
-            Source = select
-        };
+        return new { Source = (int)select, Data = ToProto(buffIdList) };
     }
 
-    public RogueCommonActionResult ToContractResultProto(RogueCommonActionResultSourceType select, List<int> buffIdList)
+    public object ToContractResultProto(RogueCommonActionResultSourceType select, List<int> buffIdList)
     {
-        return new RogueCommonActionResult
-        {
-            RogueAction = new RogueCommonActionResultData
-            {
-                ContractFormulaList = new RogueCommonContractFormula
-                {
-                    FormulaInfo = ToProto(buffIdList)
-                }
-            },
-            Source = select
-        };
+        return new { Source = (int)select, Data = ToProto(buffIdList) };
     }
 }

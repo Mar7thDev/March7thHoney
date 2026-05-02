@@ -1,3 +1,4 @@
+using March7thHoney.Enums.Rogue;
 using March7thHoney.Enums.TournRogue;
 using March7thHoney.Proto;
 using Newtonsoft.Json;
@@ -29,18 +30,8 @@ public class RogueTournTitanBlessExcel : ExcelResource
         GameData.RogueTournTitanBlessData.Add(TitanBlessID, this);
     }
 
-    public RogueCommonActionResult ToResultProto(RogueCommonActionResultSourceType select)
+    public object ToResultProto(RogueCommonActionResultSourceType select)
     {
-        return new RogueCommonActionResult
-        {
-            Source = select,
-            RogueAction = new RogueCommonActionResultData
-            {
-                TitanBlessEvent = new RogueTitanBlessEvent
-                {
-                    EventUniqueId = (uint)TitanBlessID
-                }
-            }
-        };
+        return new { Source = (int)select, TitanBlessID };
     }
 }
