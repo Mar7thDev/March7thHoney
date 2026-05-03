@@ -46,20 +46,23 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
     public override async Task SendWatermarkLuaAsync()
     {
         if (Player == null) return;
-        var nickname = EscapeLuaString(Player.Data.Name ?? "");
+        var nickname = Player.Data.Name ?? "";
         var uid = Player.Uid.ToString();
-        var version = EscapeLuaString(string.IsNullOrEmpty(ClientVersionCache.LatestVersion)
+        var version = string.IsNullOrEmpty(ClientVersionCache.LatestVersion)
             ? $"WIN{GameConstants.GAME_VERSION}"
-            : ClientVersionCache.LatestVersion);
+            : ClientVersionCache.LatestVersion;
 
-        var watermark = $"{nickname}｜March7thHoney\\n{version}｜ {uid}";
+        var line1 = ApplyGradient($"{nickname}｜March7thHoney");
+        var line2 = ApplyGradient($"{version}｜ {uid}");
+        var luaText = EscapeLuaString(line1 + "\n" + line2);
 
         var lua =
             "local function modify_texts()\n" +
             "    local vGo = CS.UnityEngine.GameObject.Find(\"VersionText\")\n" +
             "    if vGo == nil then return end\n" +
             "    local vt = vGo:GetComponent(\"Text\")\n" +
-            "    vt.text = \"" + watermark + "\"\n" +
+            "    vt.supportRichText = true\n" +
+            "    vt.text = \"" + luaText + "\"\n" +
             "    vt.fontSize = 76.0\n" +
             "end\n" +
             "\n" +
@@ -74,6 +77,34 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
 
         var pkt = new HandshakePacket(System.Text.Encoding.UTF8.GetBytes(lua));
         await SendPacket(pkt.BuildPacket());
+    }
+
+    private static string ApplyGradient(string line)
+    {
+        const int r0 = 0x54, g0 = 0xC3, b0 = 0xF7;
+        const int r1 = 0xC6, g1 = 0x73, b1 = 0xAA;
+
+        var visible = 0;
+        foreach (var c in line)
+            if (c != ' ') visible++;
+
+        var sb = new System.Text.StringBuilder(line.Length * 24);
+        var idx = 0;
+        foreach (var c in line)
+        {
+            if (c == ' ')
+            {
+                sb.Append(' ');
+                continue;
+            }
+            var t = visible <= 1 ? 0.0 : (double)idx / (visible - 1);
+            var r = (int)(r0 + (r1 - r0) * t);
+            var g = (int)(g0 + (g1 - g0) * t);
+            var b = (int)(b0 + (b1 - b0) * t);
+            sb.Append($"<color=#{r:X2}{g:X2}{b:X2}>").Append(c).Append("</color>");
+            idx++;
+        }
+        return sb.ToString();
     }
 
     private static string EscapeLuaString(string s)
