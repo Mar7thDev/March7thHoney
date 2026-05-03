@@ -54,16 +54,10 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
         var res = await Player.TaskManager!.AbilityLevelTask.TriggerTasks(abilities, targetAbility.OnStart,
             attackEntity, targetEntities, req);
 
-        // Fallback: some challenge/peak setups don't have complete TriggerBattle ability tasks.
-        // If entities were explicitly targeted, start battle directly so entering combat is reliable.
-        var battleInstance = res.Instance;
-        if (battleInstance == null && targetEntities.Count > 0)
-            battleInstance = await Player.BattleManager!.StartBattle(attackEntity, targetEntities, true);
-
         // check if avatar execute
         if (attackEntity is AvatarSceneInfo) await Player.SceneInstance!.OnUseSkill(req);
 
-        return new SkillResultData(Retcode.RetSucc, battleInstance, res.BattleInfos);
+        return new SkillResultData(Retcode.RetSucc, res.Instance, res.BattleInfos);
     }
 
     private AdventureAbilityConfigListInfo? GetAbilityConfig(BaseGameEntity entity)
