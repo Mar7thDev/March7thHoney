@@ -18,18 +18,39 @@ public class PacketGetChallengeScRsp : BasePacket
             if (player.ChallengeManager?.ChallengeData.History.TryGetValue(challengeExcel.ID, out var value) == true)
             {
                 var history = value;
+                if (history.GroupId == 0) history.GroupId = challengeExcel.GroupID;
                 proto.ChallengeList.Add(history.ToProto());
             }
             else
             {
                 proto.ChallengeList.Add(new Proto.Challenge
                 {
-                    ChallengeId = (uint)challengeExcel.ID
+                    ChallengeId = (uint)challengeExcel.ID,
+                    Star = 7
                 });
             }
 
-        foreach (var reward in player.ChallengeManager?.ChallengeData?.TakenRewards.Values.ToList() ?? [])
-            proto.ChallengeGroupList.Add(reward.ToProto());
+        var takenRewardDict = player.ChallengeManager?.ChallengeData?.TakenRewards ?? [];
+        foreach (var groupId in GameData.ChallengeGroupData.Keys.OrderBy(x => x))
+        {
+            if (takenRewardDict.TryGetValue(groupId, out var reward))
+            {
+                proto.ChallengeGroupList.Add(reward.ToProto());
+            }
+            else
+            {
+                proto.ChallengeGroupList.Add(new ChallengeGroup
+                {
+                    GroupId = (uint)groupId,
+                    TakenStarsCountReward = 0
+                });
+            }
+        }
+
+        // Keep this aligned with official behavior: non-empty max level list controls client unlock display paths.
+        proto.MaxLevelList.Add(new ChallengeHistoryMaxLevel { RewardDisplayType = 1, Level = 12 });
+        proto.MaxLevelList.Add(new ChallengeHistoryMaxLevel { RewardDisplayType = 2, Level = 4 });
+        proto.MaxLevelList.Add(new ChallengeHistoryMaxLevel { RewardDisplayType = 3, Level = 4 });
 
         SetData(proto);
     }

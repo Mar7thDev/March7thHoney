@@ -30,8 +30,8 @@ namespace March7thHoney.Proto {
             "cHJpY2UYASABKA0SEwoLaXNfc29sZF9vdXQYDCABKAgSOQoSc3BlY2lhbF9n",
             "b29kc19pbmZvGNwJIAEoCzIaLkdyaWRGaWdodFNwZWNpYWxHb29kc0luZm9I",
             "ABIzCg9yb2xlX2dvb2RzX2luZm8YkwsgASgLMhcuR3JpZEZpZ2h0Um9sZUdv",
-            "b2RzSW5mb0gAQg0KC0ZMQkNNQUNQSE1KQjMKE2VtdS5sdW5hcmNvcmUucHJv",
-            "dG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
+            "b2RzSW5mb0gAQg0KC0ZMQkNNQUNQSE1KQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
+            "b3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridFightRoleGoodsInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightSpecialGoodsInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

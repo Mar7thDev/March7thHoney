@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChhDaGVzc1JvZ3VlRGljZVR5cGUucHJvdG8qTgoSQ2hlc3NSb2d1ZURpY2VU",
             "eXBlEhsKF0hCQ09LRElKTUJLX0lDSkxHSExPS0ZHEAASGwoXSEJDT0tESUpN",
-            "QktfT0hHR0NLTExMRVAQAUIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2Fz",
-            "dG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
+            "QktfT0hHR0NLTExMRVAQAUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJv",
+            "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.ChessRogueDiceType), }, null, null));

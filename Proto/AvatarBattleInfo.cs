@@ -64,9 +64,8 @@ namespace March7thHoney.Proto {
             "C0RQREFBSUhER0FBGDQgASgBEhMKC01HT0hCT0tKQktEGDUgASgNEhMKC0hN",
             "SUZPRkRNQ0NDGDYgASgNEhMKC2VuaGFuY2VkX2lkGDcgASgNEhMKC0FOTUJB",
             "SUZPQkpQGDggASgNEiEKC05PRERETkpBQUxQGDkgASgLMgwuSEJGQU1MTEhG",
-            "QUYSIQoLTU5ISUpESkJLTEIYOiABKAsyDC5ESE5GR0pCSE1BQUIzChNlbXUu",
-            "bHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3Rv",
-            "YgZwcm90bzM="));
+            "QUYSIQoLTU5ISUpESkJLTEIYOiABKAsyDC5ESE5GR0pCSE1BQUIWqgITTWFy",
+            "Y2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.AttackDamagePropertyReflection.Descriptor, global::March7thHoney.Proto.AvatarPropertyReflection.Descriptor, global::March7thHoney.Proto.AvatarSkillTreeReflection.Descriptor, global::March7thHoney.Proto.AvatarTypeReflection.Descriptor, global::March7thHoney.Proto.BattleRelicReflection.Descriptor, global::March7thHoney.Proto.DHNFGJBHMAAReflection.Descriptor, global::March7thHoney.Proto.EquipmentPropertyReflection.Descriptor, global::March7thHoney.Proto.HBFAMLLHFAFReflection.Descriptor, global::March7thHoney.Proto.OEMOCFJLGFIReflection.Descriptor, global::March7thHoney.Proto.SkillUsePropertyReflection.Descriptor, global::March7thHoney.Proto.SpAddSourceReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

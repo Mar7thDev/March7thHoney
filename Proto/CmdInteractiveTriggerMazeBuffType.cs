@@ -27,8 +27,8 @@ namespace March7thHoney.Proto {
             "CidDbWRJbnRlcmFjdGl2ZVRyaWdnZXJNYXplQnVmZlR5cGUucHJvdG8qagoh",
             "Q21kSW50ZXJhY3RpdmVUcmlnZ2VyTWF6ZUJ1ZmZUeXBlEhsKF0NPQ05CTU1G",
             "TElJX1BDUERIRUxQS0VNEAASEwoOQ21kQ09FT0hFQkZJQ08Qh0oSEwoOQ21k",
-            "SkhJQUdMR1BNQkQQiEpCMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3Rv",
-            "cmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
+            "SkhJQUdMR1BNQkQQiEpCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
+            "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdInteractiveTriggerMazeBuffType), }, null, null));

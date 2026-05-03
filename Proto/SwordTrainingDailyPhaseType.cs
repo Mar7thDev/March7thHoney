@@ -28,9 +28,8 @@ namespace March7thHoney.Proto {
             "VHJhaW5pbmdEYWlseVBoYXNlVHlwZRIbChdNTUtKSktCT05FQV9QQ1BESEVM",
             "UEtFTRAAEhsKF01NS0pKS0JPTkVBX0ZITktGSkZEQ0tPEAESGwoXTU1LSkpL",
             "Qk9ORUFfT0RQREhQRE1BRkMQAhIbChdNTUtKSktCT05FQV9DUEFERktIS0RN",
-            "RBADEhsKF01NS0pKS0JPTkVBX0pOTFBGS0FMQ0lCEARCMwoTZW11Lmx1bmFy",
-            "Y29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJv",
-            "dG8z"));
+            "RBADEhsKF01NS0pKS0JPTkVBX0pOTFBGS0FMQ0lCEARCFqoCE01hcmNoN3Ro",
+            "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.SwordTrainingDailyPhaseType), }, null, null));

@@ -27,9 +27,8 @@ namespace March7thHoney.Proto {
             "ChlDbG9ja1BhcmtQbGF5U3RhdHVzLnByb3RvKokBChNDbG9ja1BhcmtQbGF5",
             "U3RhdHVzEhsKF0ZPR0ZCUE9ESUROX0VDRkFPTUxEREdMEAASGwoXRk9HRkJQ",
             "T0RJRE5fTkxKSkRQRkRETkcQARIbChdGT0dGQlBPRElETl9DUEtJS0pCR09M",
-            "QhACEhsKF0ZPR0ZCUE9ESUROX0NDSUhDQkFHSU1IEAVCMwoTZW11Lmx1bmFy",
-            "Y29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJv",
-            "dG8z"));
+            "QhACEhsKF0ZPR0ZCUE9ESUROX0NDSUhDQkFHSU1IEAVCFqoCE01hcmNoN3Ro",
+            "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.ClockParkPlayStatus), }, null, null));

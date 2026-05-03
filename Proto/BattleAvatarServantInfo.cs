@@ -41,8 +41,7 @@ namespace March7thHoney.Proto {
             "Q0VNRE4YEiABKA0SEwoLSE9PRkVNRUtLT0IYEyABKA0SEwoLRE9BUEJPTEpP",
             "R0YYFCABKA0SEwoLRkpMSUhNREVOTUwYFSABKAESEQoJZW50aXR5X2lkGBYg",
             "ASgNEhMKC0FOTUJBSUZPQkpQGBcgASgNEhMKC09HREdFS0ZKQUZPGBggASgB",
-            "QjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2",
-            "ZXIuUHJvdG9iBnByb3RvMw=="));
+            "QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.AttackDamagePropertyReflection.Descriptor, global::March7thHoney.Proto.SkillUsePropertyReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

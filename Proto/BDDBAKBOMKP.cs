@@ -28,9 +28,8 @@ namespace March7thHoney.Proto {
             "YXN0ZXJTdGF0dXNUeXBlLnByb3RvIpQBCgtCRERCQUtCT01LUBIOCgZtYXhf",
             "aHAYASABKAUSJQoGc3RhdHVzGAIgASgOMhUuRmF0ZU1hc3RlclN0YXR1c1R5",
             "cGUSEQoJYXZhdGFyX2lkGAQgASgNEiEKC0lBS0ZQTU9FSkxGGAUgAygLMgwu",
-            "Rk5PTlBNQk9GTkUSCgoCaHAYCSABKAUSDAoEcmFuaxgLIAEoDUIzChNlbXUu",
-            "bHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3Rv",
-            "YgZwcm90bzM="));
+            "Rk5PTlBNQk9GTkUSCgoCaHAYCSABKAUSDAoEcmFuaxgLIAEoDUIWqgITTWFy",
+            "Y2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.FNONPMBOFNEReflection.Descriptor, global::March7thHoney.Proto.FateMasterStatusTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

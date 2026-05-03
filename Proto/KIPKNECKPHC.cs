@@ -27,9 +27,8 @@ namespace March7thHoney.Proto {
             "ChFLSVBLTkVDS1BIQy5wcm90bxotUm9ndWVBZHZlbnR1cmVSb29tR2FtZXBs",
             "YXlXb2xmR3VuVGFyZ2V0LnByb3RvImgKC0tJUEtORUNLUEhDEkQKEmJhdHRs",
             "ZV90YXJnZXRfbGlzdBgFIAMoCzIoLlJvZ3VlQWR2ZW50dXJlUm9vbUdhbWVw",
-            "bGF5V29sZkd1blRhcmdldBITCgtBT0JQRkxFSEJPSBgPIAEoDUIzChNlbXUu",
-            "bHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3Rv",
-            "YgZwcm90bzM="));
+            "bGF5V29sZkd1blRhcmdldBITCgtBT0JQRkxFSEJPSBgPIAEoDUIWqgITTWFy",
+            "Y2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.RogueAdventureRoomGameplayWolfGunTargetReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

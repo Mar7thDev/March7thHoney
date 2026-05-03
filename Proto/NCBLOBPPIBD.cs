@@ -31,8 +31,7 @@ namespace March7thHoney.Proto {
             "SEpQQk9LGAggASgNEhMKC0pHTEtORU9DSkNIGAogASgNEi8KC0dFUEdHR0RL",
             "Qk5LGAsgASgLMhouQ2hpbWVyYUR1ZWxQbGF5ZXJSYW5rRGF0YRITCgtHTENP",
             "SU5IS0hNTRgOIAMoDRIhCgtFQVBMR0lPRkRERxgPIAMoCzIMLkhQSE1NUERG",
-            "TUFLQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5T",
-            "ZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
+            "TUFLQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChimeraDuelPlayerRankDataReflection.Descriptor, global::March7thHoney.Proto.HPHMMPDFMAKReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

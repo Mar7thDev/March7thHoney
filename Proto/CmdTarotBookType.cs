@@ -39,8 +39,7 @@ namespace March7thHoney.Proto {
             "a0FuZFVubG9ja1N0b3J5U2NSc3AQ2T8SJwoiQ21kVGFyb3RCb29rRmluaXNo",
             "SW50ZXJhY3Rpb25TY1JzcBDXPxInCiJDbWRUYXJvdEJvb2tVbmxvY2tJbnRl",
             "cmFjdGlvblNjUnNwENA/EiEKHENtZFRhcm90Qm9va1VubG9ja1N0b3J5Q3NS",
-            "ZXEQ2z9CMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5",
-            "LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
+            "ZXEQ2z9CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdTarotBookType), }, null, null));

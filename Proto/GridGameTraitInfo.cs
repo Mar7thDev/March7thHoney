@@ -29,9 +29,8 @@ namespace March7thHoney.Proto {
             "S0dERhgBIAEoDRI0ChF0cmFpdF9lZmZlY3RfbGlzdBgEIAMoCzIZLkdyaWRG",
             "aWdodFRyYWl0RWZmZWN0SW5mbxITCgtERk5DRk9LUE1DShgGIAEoDRITCgtO",
             "S0ZEQkVIUE5MRxgMIAEoDRIQCgh0cmFpdF9pZBgNIAEoDRIuCiZncmlkX2Zp",
-            "Z2h0X3RyYWl0X21lbWJlcl91bmlxdWVfaWRfbGlzdBgOIAMoDUIzChNlbXUu",
-            "bHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3Rv",
-            "YgZwcm90bzM="));
+            "Z2h0X3RyYWl0X21lbWJlcl91bmlxdWVfaWRfbGlzdBgOIAMoDUIWqgITTWFy",
+            "Y2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridFightTraitEffectInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

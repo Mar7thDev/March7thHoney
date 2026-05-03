@@ -30,9 +30,8 @@ namespace March7thHoney.Proto {
             "EiAKG0NtZFBsYXlCYWNrR3JvdW5kTXVzaWNDc1JlcRD6GBITCg5DbWRJREVC",
             "REdJQ0hBShClGBIbChZDbWRHZXRKdWtlYm94RGF0YUNzUmVxEPcYEhMKDkNt",
             "ZENKQVBGT09PTktDEP4YEiIKHUNtZFVubG9ja0JhY2tHcm91bmRNdXNpY1Nj",
-            "UnNwEK4YEiAKG0NtZFBsYXlCYWNrR3JvdW5kTXVzaWNTY1JzcBD7GEIzChNl",
-            "bXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlBy",
-            "b3RvYgZwcm90bzM="));
+            "UnNwEK4YEiAKG0NtZFBsYXlCYWNrR3JvdW5kTXVzaWNTY1JzcBD7GEIWqgIT",
+            "TWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdJukeboxType), }, null, null));

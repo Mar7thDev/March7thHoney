@@ -14,7 +14,11 @@ namespace March7thHoney.Command.Command.Cmd;
 [CommandInfo("json", "Game.Command.Json.Desc", "Game.Command.Json.Usage")]
 public class CommandJson : ICommand
 {
-    private const string JsonDirectoryRelativePath = "Config/Json";
+    private static readonly string[] JsonDirectoryRelativePaths =
+    [
+        "Config/Json",
+        "Config/Custom"
+    ];
 
     private static readonly JsonSerializerOptions JsonOptions = new()
     {
@@ -23,12 +27,18 @@ public class CommandJson : ICommand
         AllowTrailingCommas = true
     };
 
-    private static DirectoryInfo GetJsonDirectory(bool createIfMissing = false)
+    private static List<DirectoryInfo> GetJsonDirectories(bool createIfMissing = false)
     {
-        var dir = new DirectoryInfo(Path.GetFullPath(JsonDirectoryRelativePath));
-        if (createIfMissing && !dir.Exists)
-            dir.Create();
-        return dir;
+        var dirs = new List<DirectoryInfo>(JsonDirectoryRelativePaths.Length);
+        foreach (var relativePath in JsonDirectoryRelativePaths)
+        {
+            var dir = new DirectoryInfo(Path.GetFullPath(relativePath));
+            if (createIfMissing && !dir.Exists && relativePath.Equals("Config/Json", StringComparison.OrdinalIgnoreCase))
+                dir.Create();
+            dirs.Add(dir);
+        }
+
+        return dirs;
     }
 
     [CommandDefault]
@@ -41,7 +51,7 @@ public class CommandJson : ICommand
             return;
         }
 
-        var input = (arg.Raw ?? string.Empty).Trim();
+        var input = string.Join(" ", arg.BasicArgs).Trim();
         if (string.IsNullOrWhiteSpace(input))
         {
             await ShowFileList(arg);
@@ -146,25 +156,31 @@ public class CommandJson : ICommand
         if (looksLikePath)
             return Path.GetFullPath(input);
 
-        // Treat as filename under Config/Json
-        var jsonDir = GetJsonDirectory(createIfMissing: true);
+        // Treat as filename under configured json directories.
+        var jsonDirs = GetJsonDirectories(createIfMissing: true);
         var fileName = input.EndsWith(".json", StringComparison.OrdinalIgnoreCase) ? input : input + ".json";
-        var candidate = Path.Combine(jsonDir.FullName, input);
-        if (File.Exists(candidate)) return candidate;
-        candidate = Path.Combine(jsonDir.FullName, fileName);
-        if (File.Exists(candidate)) return candidate;
+        foreach (var jsonDir in jsonDirs)
+        {
+            var candidate = Path.Combine(jsonDir.FullName, input);
+            if (File.Exists(candidate)) return candidate;
+            candidate = Path.Combine(jsonDir.FullName, fileName);
+            if (File.Exists(candidate)) return candidate;
+        }
 
-        // Fallback to the default Json directory.
-        return Path.Combine(jsonDir.FullName, fileName);
+        // Fallback to primary directory.
+        return Path.Combine(jsonDirs[0].FullName, fileName);
     }
 
     private static List<FileInfo> GetJsonFiles()
     {
-        var dir = GetJsonDirectory(createIfMissing: true);
-        if (!dir.Exists) return [];
+        var dirs = GetJsonDirectories(createIfMissing: true);
         try
         {
-            return dir.GetFiles("*.json", SearchOption.TopDirectoryOnly).ToList();
+            return dirs
+                .Where(x => x.Exists)
+                .SelectMany(x => x.GetFiles("*.json", SearchOption.TopDirectoryOnly))
+                .DistinctBy(x => x.FullName)
+                .ToList();
         }
         catch
         {
@@ -177,7 +193,7 @@ public class CommandJson : ICommand
         var files = GetJsonFiles().OrderBy(f => f.LastWriteTimeUtc).ToList();
         if (files.Count == 0)
         {
-            var searched = new List<string> { GetJsonDirectory(createIfMissing: true).FullName };
+            var searched = GetJsonDirectories(createIfMissing: true).Select(x => x.FullName).ToList();
             await arg.SendMsg(I18NManager.Translate("Game.Command.Json.NoFileFound"));
             if (searched.Count > 0)
             {

@@ -42,9 +42,8 @@ namespace March7thHoney.Proto {
             "LRIeChlDbWRIZWxpb2J1c1N0YXJ0UmFpZFNjUnNwENQtEiEKHENtZEhlbGlv",
             "YnVzVXBncmFkZUxldmVsU2NSc3AQzS0SHgoZQ21kSGVsaW9idXNTdGFydFJh",
             "aWRDc1JlcRDiLRIfChpDbWRIZWxpb2J1c1Nuc0NvbW1lbnRTY1JzcBDCLRIg",
-            "ChtDbWRIZWxpb2J1c1NlbGVjdFNraWxsU2NSc3AQ8C1CMwoTZW11Lmx1bmFy",
-            "Y29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJv",
-            "dG8z"));
+            "ChtDbWRIZWxpb2J1c1NlbGVjdFNraWxsU2NSc3AQ8C1CFqoCE01hcmNoN3Ro",
+            "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdHeliobusType), }, null, null));

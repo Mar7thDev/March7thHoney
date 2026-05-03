@@ -52,8 +52,7 @@ namespace March7thHoney.Proto {
             "R0NMTU9GRkkSIgoLUEhERU9QRUpJSUQYxQogAygLMgwuREFDSkRNUElDRUwS",
             "IgoLQkNIUEFPQ09ISUwY0AogASgLMgwuRkNCRUhHSkJKQ04SJwoGcmVhc29u",
             "GMILIAEoDjIWLkdyaWRGaWdodFNldHRsZVJlYXNvbhIUCgtNUEdGR0tEQkFI",
-            "ThiMDCABKAhCMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhv",
-            "bmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
+            "ThiMDCABKAhCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CKCKIDHMMEGReflection.Descriptor, global::March7thHoney.Proto.CLOEPPBCKGFReflection.Descriptor, global::March7thHoney.Proto.DACJDMPICELReflection.Descriptor, global::March7thHoney.Proto.DIBJGAKOCLOReflection.Descriptor, global::March7thHoney.Proto.ELAGCLMOFFIReflection.Descriptor, global::March7thHoney.Proto.FCBEHGJBJCNReflection.Descriptor, global::March7thHoney.Proto.GridFightBossInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightEquipmentInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightGamePortalBuffInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightSettleReasonReflection.Descriptor, global::March7thHoney.Proto.GridGameAugmentInfoReflection.Descriptor, global::March7thHoney.Proto.GridGameNpcInfoReflection.Descriptor, global::March7thHoney.Proto.GridGameRoleInfoReflection.Descriptor, global::March7thHoney.Proto.GridGameTraitInfoReflection.Descriptor, global::March7thHoney.Proto.HHHMMJBGCNGReflection.Descriptor, global::March7thHoney.Proto.JCFJADFEOJNReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

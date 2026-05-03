@@ -28,8 +28,7 @@ namespace March7thHoney.Proto {
             "YXRlTWFwSW5mby5wcm90byJ5Cg5Sb3RhdGVNYXBDc1JlcRIbCgZtb3Rpb24Y",
             "AiABKAsyCy5Nb3Rpb25JbmZvEhAKCGdyb3VwX2lkGAQgASgNEiMKC0FNTUpF",
             "Q0hQR1BFGAYgASgLMg4uUm90YXRlTWFwSW5mbxITCgtQQk9MTUJMS0RORBgO",
-            "IAEoDUIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXku",
-            "U2VydmVyLlByb3RvYgZwcm90bzM="));
+            "IAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MotionInfoReflection.Descriptor, global::March7thHoney.Proto.RotateMapInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

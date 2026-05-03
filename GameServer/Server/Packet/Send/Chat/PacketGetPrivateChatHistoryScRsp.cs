@@ -6,15 +6,17 @@ namespace March7thHoney.GameServer.Server.Packet.Send.Chat;
 
 public class PacketGetPrivateChatHistoryScRsp : BasePacket
 {
-    public PacketGetPrivateChatHistoryScRsp(uint contactId, PlayerInstance player) : base(
+    public PacketGetPrivateChatHistoryScRsp(uint contactSide, uint targetSide, PlayerInstance player) : base(
         CmdIds.GetPrivateChatHistoryScRsp)
     {
         var proto = new GetPrivateChatHistoryScRsp
         {
-            ContactSide = contactId
+            ContactSide = contactSide,
+            TargetSide = targetSide
         };
 
-        var infos = player.FriendManager!.GetHistoryInfo((int)contactId);
+        // ChatHistory is keyed by the other side's uid.
+        var infos = player.FriendManager!.GetHistoryInfo((int)targetSide);
         proto.ChatMessageList.AddRange(infos);
 
         SetData(proto);

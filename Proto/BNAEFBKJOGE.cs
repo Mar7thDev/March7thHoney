@@ -42,8 +42,8 @@ namespace March7thHoney.Proto {
             "TWFnaWNJbmZvEiEKC0lBSkRDSklBSEZQGA8gASgLMgwuQ0FLR09HTUVKT0YS",
             "IQoLQUZDTU9PRkdCUEsYECABKAsyDC5PR0VPTURKSUFHSRpKChVCYXR0bGVU",
             "YXJnZXRJbmZvRW50cnkSCwoDa2V5GAEgASgNEiAKBXZhbHVlGAIgASgLMhEu",
-            "QmF0dGxlVGFyZ2V0TGlzdDoCOAFCMwoTZW11Lmx1bmFyY29yZS5wcm90b6oC",
-            "G0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
+            "QmF0dGxlVGFyZ2V0TGlzdDoCOAFCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
+            "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.BattleAvatarReflection.Descriptor, global::March7thHoney.Proto.BattleBuffReflection.Descriptor, global::March7thHoney.Proto.BattleGridFightSpecialBattleInfoReflection.Descriptor, global::March7thHoney.Proto.BattleMonsterWaveReflection.Descriptor, global::March7thHoney.Proto.BattleRogueMagicInfoReflection.Descriptor, global::March7thHoney.Proto.BattleTargetListReflection.Descriptor, global::March7thHoney.Proto.CAKGOGMEJOFReflection.Descriptor, global::March7thHoney.Proto.KCGPMNNKIKNReflection.Descriptor, global::March7thHoney.Proto.MLDEDCCOHBFReflection.Descriptor, global::March7thHoney.Proto.OGEOMDJIAGIReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

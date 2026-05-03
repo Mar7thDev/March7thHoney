@@ -29,8 +29,8 @@ namespace March7thHoney.Proto {
             "AQoQTG9iYnlDcmVhdGVDc1JlcRImCgtKSENKTUtERE5ORhgBIAEoCzIRLkxv",
             "YmJ5R2FtZUV4dEluZm8SEwoLQ0hFT0RNS0FISk0YBSABKA0SIwoLUExPQk1C",
             "RlBORksYDCABKA4yDi5GaWdodEdhbWVNb2RlEiEKC1BPRk9DTUlISklBGA0g",
-            "ASgLMgwuUEJJQ0pDUERMR0RCMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nh",
-            "c3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
+            "ASgLMgwuUEJJQ0pDUERMR0RCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
+            "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.FightGameModeReflection.Descriptor, global::March7thHoney.Proto.LobbyGameExtInfoReflection.Descriptor, global::March7thHoney.Proto.PBICJCPDLGDReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

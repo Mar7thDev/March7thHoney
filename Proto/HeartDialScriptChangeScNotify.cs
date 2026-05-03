@@ -32,8 +32,7 @@ namespace March7thHoney.Proto {
             "YWxvZ3VlSW5mbxI2ChhjaGFuZ2VkX3NjcmlwdF9pbmZvX2xpc3QYBSADKAsy",
             "FC5IZWFydERpYWxTY3JpcHRJbmZvEi0KDXVubG9ja19zdGF0dXMYCiABKA4y",
             "Fi5IZWFydERpYWxVbmxvY2tTdGF0dXMSIQoLT09HSkFLSVBGREoYCyADKAsy",
-            "DC5QSUNJTElJRktCRUIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9y",
-            "aWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
+            "DC5QSUNJTElJRktCRUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.HeartDialDialogueInfoReflection.Descriptor, global::March7thHoney.Proto.HeartDialScriptInfoReflection.Descriptor, global::March7thHoney.Proto.HeartDialUnlockStatusReflection.Descriptor, global::March7thHoney.Proto.PICILIIFKBEReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

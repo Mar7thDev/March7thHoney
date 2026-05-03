@@ -31,8 +31,8 @@ namespace March7thHoney.Proto {
             "GENtZFJvZ3VlQXJjYWRlU3RhcnRDc1JlcRCHPBIfChpDbWRSb2d1ZUFyY2Fk",
             "ZVJlc3RhcnRTY1JzcBCSPBIdChhDbWRSb2d1ZUFyY2FkZUxlYXZlU2NSc3AQ",
             "5zsSHQoYQ21kUm9ndWVBcmNhZGVTdGFydFNjUnNwEPQ7Eh0KGENtZFJvZ3Vl",
-            "QXJjYWRlTGVhdmVDc1JlcRDpO0IzChNlbXUubHVuYXJjb3JlLnByb3RvqgIb",
-            "Q2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
+            "QXJjYWRlTGVhdmVDc1JlcRDpO0IWqgITTWFyY2g3dGhIb25leS5Qcm90b2IG",
+            "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdRogueArcadeType), }, null, null));
