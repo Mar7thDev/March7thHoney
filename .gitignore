@@ -367,3 +367,21 @@ Config/Handbook
 Config/Logs
 Config/Plugins
 Config.json
+
+# macOS AppleDouble metadata
+._*
+.DS_Store
+
+# Local IDE / editor settings
+.vscode/
+
+# Local AI assistant config
+CLAUDE.md
+
+# Local SQLite databases
+Config/Database/
+
+# Local GM handbook output
+GM Handbook/
+
+Config/Hotfix.json
