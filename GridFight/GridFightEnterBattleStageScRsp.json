@@ -1,0 +1,1206 @@
+{
+  "battleInfo": {
+    "AFCMOOFGBPK": {
+      "ANBBPPHBCJH": 3,
+      "BBDOCJGAEEJ": 10706,
+      "HDCAEIKAPND": 3,
+      "LFKBMDHKPFI": 90303,
+      "OGHGLMGJGEM": {
+        "GP_Avatar_Sparkle_01": 0,
+        "GP_Avatar_Sparxie_00": 2,
+        "GP_Avatar_Tribbie_01": 0,
+        "GP_Avatar_YaoGuang_01": 0
+      },
+      "OIHHKOJFHFG": {
+        "BNLHIMHFGDK": 1,
+        "DCPKPNLKGMM": 1,
+        "NDOCIKPLKIF": 1600,
+        "sectionId": 1
+      },
+      "OOPPKDAFFDG": 44,
+      "PIDIGFGKAMK": [
+        {
+          "PJLADGOOFKE": 4764,
+          "avatarType": "AVATAR_GRID_FIGHT_TYPE",
+          "enhancedId": 1,
+          "equipmentList": [
+            {
+              "id": 21046,
+              "level": 80,
+              "promotion": 6,
+              "rank": 1
+            }
+          ],
+          "hp": 10000,
+          "id": 1306,
+          "level": 80,
+          "promotion": 6,
+          "relicList": [
+            {
+              "id": 61141,
+              "level": 15,
+              "mainAffixId": 1,
+              "subAffixList": [
+                {
+                  "affixId": 2,
+                  "cnt": 2,
+                  "step": 1
+                },
+                {
+                  "affixId": 3,
+                  "cnt": 3,
+                  "step": 3
+                },
+                {
+                  "affixId": 7,
+                  "cnt": 2
+                },
+                {
+                  "affixId": 9,
+                  "cnt": 1,
+                  "step": 1
+                }
+              ]
+            },
+            {
+              "id": 61142,
+              "level": 15,
+              "mainAffixId": 1,
+              "subAffixList": [
+                {
+                  "affixId": 5,
+                  "cnt": 2,
+                  "step": 2
+                },
+                {
+                  "affixId": 6,
+                  "cnt": 3
+                },
+                {
+                  "affixId": 7,
+                  "cnt": 2
+                },
+                {
+                  "affixId": 11,
+                  "cnt": 1,
+                  "step": 1
+                }
+              ]
+            },
+            {
+              "id": 61143,
+              "level": 15,
+              "mainAffixId": 5,
+              "subAffixList": [
+                {
+                  "affixId": 3,
+                  "cnt": 4,
+                  "step": 3
+                },
+                {
+                  "affixId": 5,
+                  "cnt": 2,
+                  "step": 3
+                },
+                {
+                  "affixId": 7,
+                  "cnt": 1,
+                  "step": 1
+                },
+                {
+                  "affixId": 12,
+                  "cnt": 1
+                }
+              ]
+            },
+            {
+              "id": 61144,
+              "level": 15,
+              "mainAffixId": 1,
+              "subAffixList": [
+                {
+                  "affixId": 6,
+                  "cnt": 3,
+                  "step": 6
+                },
+                {
+                  "affixId": 7,
+                  "cnt": 3,
+                  "step": 3
+                },
+                {
+                  "affixId": 9,
+                  "cnt": 1,
+                  "step": 2
+                },
+                {
+                  "affixId": 12,
+                  "cnt": 1,
+                  "step": 1
+                }
+              ]
+            },
+            {
+              "id": 63105,
+              "level": 15,
+              "mainAffixId": 1,
+              "subAffixList": [
+                {
+                  "affixId": 1,
+                  "cnt": 1
+                },
+                {
+                  "affixId": 3,
+                  "cnt": 3,
+                  "step": 4
+                },
+                {
+                  "affixId": 10,
+                  "cnt": 2,
+                  "step": 1
+                },
+                {
+                  "affixId": 11,
+                  "cnt": 2,
+                  "step": 3
+                }
+              ]
+            },
+            {
+              "id": 63106,
+              "level": 15,
+              "mainAffixId": 2,
+              "subAffixList": [
+                {
+                  "affixId": 3,
+                  "cnt": 3,
+                  "step": 4
+                },
+                {
+                  "affixId": 4,
+                  "cnt": 2,
+                  "step": 2
+                },
+                {
+                  "affixId": 8,
+                  "cnt": 3,
+                  "step": 4
+                },
+                {
+                  "affixId": 9,
+                  "cnt": 1,
+                  "step": 2
+                }
+              ]
+            }
+          ],
+          "skilltreeList": [
+            {
+              "level": 5,
+              "pointId": 11306001
+            },
+            {
+              "level": 8,
+              "pointId": 11306002
+            },
+            {
+              "level": 8,
+              "pointId": 11306003
+            },
+            {
+              "level": 9,
+              "pointId": 11306004
+            },
+            {
+              "level": 1,
+              "pointId": 11306007
+            },
+            {
+              "level": 1,
+              "pointId": 11306101
+            },
+            {
+              "level": 1,
+              "pointId": 11306102
+            },
+            {
+              "level": 1,
+              "pointId": 11306103
+            },
+            {
+              "level": 1,
+              "pointId": 11306201
+            },
+            {
+              "level": 1,
+              "pointId": 11306202
+            },
+            {
+              "level": 1,
+              "pointId": 11306203
+            },
+            {
+              "level": 1,
+              "pointId": 11306204
+            },
+            {
+              "level": 1,
+              "pointId": 11306205
+            },
+            {
+              "level": 1,
+              "pointId": 11306206
+            },
+            {
+              "level": 1,
+              "pointId": 11306207
+            },
+            {
+              "level": 1,
+              "pointId": 11306208
+            },
+            {
+              "level": 1,
+              "pointId": 11306209
+            },
+            {
+              "level": 1,
+              "pointId": 11306210
+            }
+          ],
+          "spBar": {
+            "maxSp": 10000
+          },
+          "worldLevel": 6
+        }
+      ],
+      "gridFightLineupHp": 80,
+      "gridFightPortalBuffList": [
+        {
+          "portalBuffId": 111
+        }
+      ],
+      "gridFightTraitInfo": [
+        {
+          "MEEPFKLLIJB": [
+            {
+              "EIHHLAOKAPH": "GAPBBJCLMGP_DGECGAAFDJM",
+              "GDNIKJGAEBH": 1502,
+              "IPDCMHIEKIJ": 6,
+              "gridUpdateSrc": "PFODGDGFBBN_IOMEEECOIOB"
+            }
+          ],
+          "traitId": 1007
+        },
+        {
+          "MEEPFKLLIJB": [
+            {
+              "EIHHLAOKAPH": "GAPBBJCLMGP_DGECGAAFDJM",
+              "GDNIKJGAEBH": 1306,
+              "IPDCMHIEKIJ": 4,
+              "gridUpdateSrc": "PFODGDGFBBN_IOMEEECOIOB"
+            }
+          ],
+          "traitId": 1010
+        },
+        {
+          "MEEPFKLLIJB": [
+            {
+              "EIHHLAOKAPH": "GAPBBJCLMGP_DGECGAAFDJM",
+              "GDNIKJGAEBH": 1403,
+              "IPDCMHIEKIJ": 5,
+              "gridUpdateSrc": "PFODGDGFBBN_IOMEEECOIOB"
+            }
+          ],
+          "traitId": 1011
+        },
+        {
+          "MEEPFKLLIJB": [
+            {
+              "EIHHLAOKAPH": "GAPBBJCLMGP_DGECGAAFDJM",
+              "GDNIKJGAEBH": 1403,
+              "IPDCMHIEKIJ": 5,
+              "gridUpdateSrc": "PFODGDGFBBN_IOMEEECOIOB"
+            }
+          ],
+          "traitId": 2003
+        },
+        {
+          "MEEPFKLLIJB": [
+            {
+              "EIHHLAOKAPH": "GAPBBJCLMGP_DGECGAAFDJM",
+              "GDNIKJGAEBH": 1403,
+              "IPDCMHIEKIJ": 5,
+              "gridUpdateSrc": "PFODGDGFBBN_IOMEEECOIOB"
+            },
+            {
+              "EIHHLAOKAPH": "GAPBBJCLMGP_DGECGAAFDJM",
+              "GDNIKJGAEBH": 1306,
+              "IPDCMHIEKIJ": 4,
+              "gridUpdateSrc": "PFODGDGFBBN_IOMEEECOIOB"
+            }
+          ],
+          "NKFDBEHPNLG": 2,
+          "traitId": 2009
+        },
+        {
+          "MEEPFKLLIJB": [
+            {
+              "EIHHLAOKAPH": "GAPBBJCLMGP_DGECGAAFDJM",
+              "GDNIKJGAEBH": 1306,
+              "IPDCMHIEKIJ": 4,
+              "gridUpdateSrc": "PFODGDGFBBN_IOMEEECOIOB"
+            },
+            {
+              "EIHHLAOKAPH": "GAPBBJCLMGP_DGECGAAFDJM",
+              "GDNIKJGAEBH": 1502,
+              "IPDCMHIEKIJ": 6,
+              "gridUpdateSrc": "PFODGDGFBBN_IOMEEECOIOB"
+            }
+          ],
+          "NKFDBEHPNLG": 2,
+          "traitId": 2011
+        },
+        {
+          "MEEPFKLLIJB": [
+            {
+              "EIHHLAOKAPH": "GAPBBJCLMGP_DGECGAAFDJM",
+              "GDNIKJGAEBH": 1502,
+              "IPDCMHIEKIJ": 6,
+              "gridUpdateSrc": "PFODGDGFBBN_IOMEEECOIOB"
+            }
+          ],
+          "traitId": 2012
+        }
+      ],
+      "gridGameRoleList": [
+        {
+          "GJEHIGGNIAP": {},
+          "avatarId": 1502,
+          "convertPropertyToFixpoint": {
+            "32": 180,
+            "33": 480,
+            "34": 440,
+            "44": 304,
+            "49": 180,
+            "52": 240,
+            "53": 480,
+            "57": 240,
+            "59": 450,
+            "1013": 100,
+            "1014": 100,
+            "1019": 100,
+            "1025": 100
+          },
+          "pos": 1,
+          "roleId": 1502,
+          "roleStar": 1,
+          "uniqueId": 6
+        },
+        {
+          "GJEHIGGNIAP": {},
+          "avatarId": 1403,
+          "convertPropertyToFixpoint": {
+            "32": 180,
+            "33": 480,
+            "34": 440,
+            "44": 304,
+            "49": 180,
+            "52": 240,
+            "53": 480,
+            "57": 240,
+            "59": 450,
+            "1013": 100,
+            "1014": 100,
+            "1019": 100,
+            "1025": 100
+          },
+          "pos": 2,
+          "roleId": 1403,
+          "roleStar": 1,
+          "uniqueId": 5
+        },
+        {
+          "GJEHIGGNIAP": {},
+          "avatarId": 1306,
+          "convertPropertyToFixpoint": {
+            "32": 180,
+            "33": 480,
+            "34": 440,
+            "44": 304,
+            "49": 180,
+            "52": 240,
+            "53": 480,
+            "57": 240,
+            "59": 450,
+            "1013": 100,
+            "1014": 100,
+            "1019": 100,
+            "1025": 100
+          },
+          "pos": 5,
+          "roleId": 1306,
+          "roleStar": 1,
+          "uniqueId": 4
+        }
+      ],
+      "season": 1
+    },
+    "GDAGHIJADOD": {},
+    "battleAvatarList": [
+      {
+        "PJLADGOOFKE": 4839,
+        "avatarType": "AVATAR_TRIAL_TYPE",
+        "equipmentList": [
+          {
+            "id": 21064,
+            "level": 80,
+            "promotion": 6,
+            "rank": 1
+          }
+        ],
+        "hp": 10000,
+        "id": 3701502,
+        "level": 80,
+        "promotion": 6,
+        "skilltreeList": [
+          {
+            "level": 5,
+            "pointId": 1502001
+          },
+          {
+            "level": 8,
+            "pointId": 1502002
+          },
+          {
+            "level": 8,
+            "pointId": 1502003
+          },
+          {
+            "level": 8,
+            "pointId": 1502004
+          },
+          {
+            "level": 1,
+            "pointId": 1502007
+          },
+          {
+            "level": 1,
+            "pointId": 1502101
+          },
+          {
+            "level": 1,
+            "pointId": 1502102
+          },
+          {
+            "level": 1,
+            "pointId": 1502103
+          },
+          {
+            "level": 1,
+            "pointId": 1502201
+          },
+          {
+            "level": 1,
+            "pointId": 1502202
+          },
+          {
+            "level": 1,
+            "pointId": 1502203
+          },
+          {
+            "level": 1,
+            "pointId": 1502204
+          },
+          {
+            "level": 1,
+            "pointId": 1502205
+          },
+          {
+            "level": 1,
+            "pointId": 1502206
+          },
+          {
+            "level": 1,
+            "pointId": 1502207
+          },
+          {
+            "level": 1,
+            "pointId": 1502208
+          },
+          {
+            "level": 8,
+            "pointId": 1502420
+          }
+        ],
+        "spBar": {
+          "maxSp": 10000
+        },
+        "worldLevel": 6
+      },
+      {
+        "PJLADGOOFKE": 4719,
+        "avatarType": "AVATAR_TRIAL_TYPE",
+        "equipmentList": [
+          {
+            "id": 22002,
+            "level": 80,
+            "promotion": 6,
+            "rank": 1
+          }
+        ],
+        "hp": 10000,
+        "id": 3701403,
+        "index": 1,
+        "level": 80,
+        "promotion": 6,
+        "skilltreeList": [
+          {
+            "level": 5,
+            "pointId": 1403001
+          },
+          {
+            "level": 8,
+            "pointId": 1403002
+          },
+          {
+            "level": 8,
+            "pointId": 1403003
+          },
+          {
+            "level": 8,
+            "pointId": 1403004
+          },
+          {
+            "level": 1,
+            "pointId": 1403007
+          },
+          {
+            "level": 1,
+            "pointId": 1403101
+          },
+          {
+            "level": 1,
+            "pointId": 1403102
+          },
+          {
+            "level": 1,
+            "pointId": 1403103
+          },
+          {
+            "level": 1,
+            "pointId": 1403201
+          },
+          {
+            "level": 1,
+            "pointId": 1403202
+          },
+          {
+            "level": 1,
+            "pointId": 1403203
+          },
+          {
+            "level": 1,
+            "pointId": 1403204
+          },
+          {
+            "level": 1,
+            "pointId": 1403205
+          },
+          {
+            "level": 1,
+            "pointId": 1403206
+          },
+          {
+            "level": 1,
+            "pointId": 1403207
+          },
+          {
+            "level": 1,
+            "pointId": 1403208
+          }
+        ],
+        "spBar": {
+          "maxSp": 10000
+        },
+        "worldLevel": 6
+      }
+    ],
+    "battleEvent": [
+      {
+        "battleEventId": 60014,
+        "status": {
+          "spBar": {
+            "maxSp": 100000
+          }
+        }
+      },
+      {
+        "battleEventId": 60020,
+        "status": {
+          "spBar": {
+            "curSp": 50000,
+            "maxSp": 100000
+          }
+        }
+      }
+    ],
+    "battleId": 2451,
+    "battleTargetInfo": {
+      "1": {},
+      "2": {
+        "battleTargetList": [
+          {
+            "id": 20009,
+            "totalProgress": 1
+          },
+          {
+            "id": 20031,
+            "progress": 3,
+            "totalProgress": 20
+          },
+          {
+            "id": 20032,
+            "progress": 3,
+            "totalProgress": 60
+          },
+          {
+            "id": 20044,
+            "progress": 280,
+            "totalProgress": 300
+          },
+          {
+            "id": 20050,
+            "totalProgress": 1
+          },
+          {
+            "id": 20052,
+            "totalProgress": 1
+          },
+          {
+            "id": 30008,
+            "totalProgress": 1
+          },
+          {
+            "id": 30021,
+            "totalProgress": 1
+          },
+          {
+            "id": 30038,
+            "totalProgress": 1
+          },
+          {
+            "id": 30041,
+            "totalProgress": 1
+          },
+          {
+            "id": 30043,
+            "totalProgress": 1
+          },
+          {
+            "id": 30044,
+            "totalProgress": 1
+          },
+          {
+            "id": 30045,
+            "totalProgress": 1
+          },
+          {
+            "id": 30046,
+            "totalProgress": 1
+          },
+          {
+            "id": 30053,
+            "totalProgress": 1
+          },
+          {
+            "id": 30054,
+            "totalProgress": 1
+          },
+          {
+            "id": 30055,
+            "totalProgress": 1
+          },
+          {
+            "id": 30056,
+            "totalProgress": 1
+          },
+          {
+            "id": 30057,
+            "totalProgress": 1
+          },
+          {
+            "id": 30058,
+            "totalProgress": 1
+          },
+          {
+            "id": 30059,
+            "totalProgress": 1
+          },
+          {
+            "id": 30061,
+            "totalProgress": 1
+          },
+          {
+            "id": 30062,
+            "totalProgress": 1
+          },
+          {
+            "id": 30063,
+            "totalProgress": 1
+          },
+          {
+            "id": 30064,
+            "totalProgress": 1
+          },
+          {
+            "id": 30065,
+            "totalProgress": 1
+          },
+          {
+            "id": 30066,
+            "totalProgress": 1
+          },
+          {
+            "id": 30067,
+            "totalProgress": 1
+          },
+          {
+            "id": 30068,
+            "totalProgress": 1
+          },
+          {
+            "id": 30069,
+            "totalProgress": 1
+          },
+          {
+            "id": 30070,
+            "totalProgress": 1
+          },
+          {
+            "id": 30072,
+            "totalProgress": 1
+          },
+          {
+            "id": 30079,
+            "totalProgress": 1
+          },
+          {
+            "id": 30080,
+            "totalProgress": 1
+          },
+          {
+            "id": 30083,
+            "totalProgress": 1
+          },
+          {
+            "id": 30106,
+            "totalProgress": 1
+          },
+          {
+            "id": 30117,
+            "totalProgress": 1
+          },
+          {
+            "id": 30141,
+            "totalProgress": 1
+          },
+          {
+            "id": 30142,
+            "totalProgress": 1
+          },
+          {
+            "id": 30143,
+            "totalProgress": 1
+          },
+          {
+            "id": 30144,
+            "totalProgress": 1
+          },
+          {
+            "id": 30145,
+            "totalProgress": 1
+          },
+          {
+            "id": 30146,
+            "totalProgress": 1
+          },
+          {
+            "id": 30147,
+            "totalProgress": 1
+          },
+          {
+            "id": 30148,
+            "totalProgress": 1
+          },
+          {
+            "id": 30149,
+            "totalProgress": 1
+          },
+          {
+            "id": 30150,
+            "totalProgress": 1
+          },
+          {
+            "id": 30151,
+            "totalProgress": 1
+          },
+          {
+            "id": 30152,
+            "totalProgress": 1
+          },
+          {
+            "id": 30153,
+            "totalProgress": 1
+          },
+          {
+            "id": 30154,
+            "totalProgress": 1
+          },
+          {
+            "id": 30155,
+            "totalProgress": 1
+          },
+          {
+            "id": 30158,
+            "totalProgress": 1
+          },
+          {
+            "id": 30159,
+            "totalProgress": 1
+          },
+          {
+            "id": 30160,
+            "totalProgress": 1
+          },
+          {
+            "id": 30161,
+            "totalProgress": 1
+          },
+          {
+            "id": 30162,
+            "totalProgress": 1
+          },
+          {
+            "id": 30163,
+            "totalProgress": 1
+          },
+          {
+            "id": 30168,
+            "totalProgress": 1
+          },
+          {
+            "id": 30169,
+            "totalProgress": 1
+          },
+          {
+            "id": 30170,
+            "totalProgress": 1
+          },
+          {
+            "id": 30177,
+            "totalProgress": 1
+          },
+          {
+            "id": 30178,
+            "totalProgress": 1
+          },
+          {
+            "id": 30184,
+            "totalProgress": 1
+          },
+          {
+            "id": 30189,
+            "totalProgress": 1
+          },
+          {
+            "id": 30194,
+            "totalProgress": 1
+          },
+          {
+            "id": 30199,
+            "totalProgress": 1
+          },
+          {
+            "id": 30200,
+            "totalProgress": 1
+          },
+          {
+            "id": 30201,
+            "totalProgress": 1
+          },
+          {
+            "id": 30202,
+            "totalProgress": 1
+          },
+          {
+            "id": 30203,
+            "totalProgress": 1
+          },
+          {
+            "id": 30204,
+            "totalProgress": 1
+          },
+          {
+            "id": 30207,
+            "totalProgress": 1
+          },
+          {
+            "id": 30214,
+            "totalProgress": 1
+          },
+          {
+            "id": 30217,
+            "totalProgress": 1
+          },
+          {
+            "id": 30219,
+            "totalProgress": 1
+          },
+          {
+            "id": 30220,
+            "totalProgress": 1
+          },
+          {
+            "id": 30223,
+            "totalProgress": 1
+          },
+          {
+            "id": 30226,
+            "totalProgress": 1
+          },
+          {
+            "id": 30231,
+            "progress": 1,
+            "totalProgress": 5
+          },
+          {
+            "id": 30236,
+            "totalProgress": 1
+          },
+          {
+            "id": 30237,
+            "totalProgress": 1
+          },
+          {
+            "id": 30239,
+            "totalProgress": 1
+          },
+          {
+            "id": 30240,
+            "totalProgress": 1
+          },
+          {
+            "id": 30241,
+            "totalProgress": 1
+          },
+          {
+            "id": 30242,
+            "totalProgress": 1
+          },
+          {
+            "id": 30248,
+            "totalProgress": 1
+          },
+          {
+            "id": 30249,
+            "totalProgress": 1
+          },
+          {
+            "id": 30251,
+            "totalProgress": 1
+          },
+          {
+            "id": 30252,
+            "totalProgress": 1
+          },
+          {
+            "id": 30253,
+            "totalProgress": 1
+          },
+          {
+            "id": 30254,
+            "totalProgress": 1
+          },
+          {
+            "id": 30255,
+            "totalProgress": 1
+          },
+          {
+            "id": 30256,
+            "totalProgress": 1
+          },
+          {
+            "id": 40064,
+            "totalProgress": 1
+          },
+          {
+            "id": 40068,
+            "totalProgress": 1
+          },
+          {
+            "id": 40074,
+            "totalProgress": 1
+          },
+          {
+            "id": 40113,
+            "totalProgress": 1
+          },
+          {
+            "id": 40114,
+            "totalProgress": 1
+          },
+          {
+            "id": 40115,
+            "totalProgress": 1
+          },
+          {
+            "id": 40116,
+            "totalProgress": 1
+          },
+          {
+            "id": 40117,
+            "totalProgress": 1
+          },
+          {
+            "id": 40118,
+            "totalProgress": 1
+          },
+          {
+            "id": 40120,
+            "totalProgress": 1
+          }
+        ]
+      },
+      "3": {},
+      "4": {},
+      "5": {}
+    },
+    "buffList": [
+      {
+        "id": 150201,
+        "level": 1,
+        "waveFlag": 4294967295
+      },
+      {
+        "id": 140301,
+        "level": 1,
+        "ownerIndex": 1,
+        "waveFlag": 4294967295
+      },
+      {
+        "dynamicValues": {
+          "SkillIndex": 1
+        },
+        "id": 1000111,
+        "level": 1,
+        "waveFlag": 4294967295
+      },
+      {
+        "id": 1000121,
+        "level": 1,
+        "waveFlag": 4294967295
+      },
+      {
+        "id": 35302009,
+        "level": 1,
+        "ownerIndex": 4294967295,
+        "waveFlag": 4294967295
+      },
+      {
+        "id": 35303012,
+        "level": 1,
+        "ownerIndex": 4294967295,
+        "waveFlag": 4294967295
+      },
+      {
+        "id": 35509001,
+        "level": 1,
+        "ownerIndex": 4294967295,
+        "waveFlag": 4294967295
+      },
+      {
+        "id": 35602011,
+        "level": 1,
+        "ownerIndex": 4294967295,
+        "waveFlag": 4294967295
+      },
+      {
+        "id": 35602061,
+        "level": 1,
+        "ownerIndex": 4294967295,
+        "waveFlag": 4294967295
+      },
+      {
+        "id": 35604031,
+        "level": 1,
+        "ownerIndex": 4294967295,
+        "waveFlag": 4294967295
+      }
+    ],
+    "logicRandomSeed": 2481891745,
+    "monsterWaveList": [
+      {
+        "battleWaveId": 1,
+        "monsterList": [
+          {
+            "extraInfo": {
+              "AFCMOOFGBPK": {
+                "PGNMDJIIKJB": [
+                  {
+                    "BGKDAMDFFKH": "HIOLCNPOPON_MKPPCDPCHIE",
+                    "JJFFLMCCCMM": 102,
+                    "num": 1
+                  },
+                  {
+                    "BGKDAMDFFKH": "HIOLCNPOPON_MKPPCDPCHIE",
+                    "JJFFLMCCCMM": 204,
+                    "num": 1
+                  }
+                ],
+                "roleStar": 1
+              }
+            },
+            "monsterId": 201102005
+          },
+          {
+            "extraInfo": {
+              "AFCMOOFGBPK": {
+                "PGNMDJIIKJB": [
+                  {
+                    "BGKDAMDFFKH": "HIOLCNPOPON_MKPPCDPCHIE",
+                    "JJFFLMCCCMM": 203,
+                    "num": 1
+                  }
+                ],
+                "roleStar": 1
+              }
+            },
+            "monsterId": 201101005
+          },
+          {
+            "extraInfo": {
+              "AFCMOOFGBPK": {
+                "PGNMDJIIKJB": [
+                  {
+                    "BGKDAMDFFKH": "HIOLCNPOPON_MKPPCDPCHIE",
+                    "JJFFLMCCCMM": 199,
+                    "num": 1
+                  }
+                ],
+                "roleStar": 1
+              }
+            },
+            "monsterId": 800105007
+          }
+        ],
+        "monsterParam": {
+          "BDCCEFHMFHO": 5,
+          "eliteGroup": 1816
+        }
+      }
+    ],
+    "stageId": 70000001,
+    "worldLevel": 6
+  }
+}

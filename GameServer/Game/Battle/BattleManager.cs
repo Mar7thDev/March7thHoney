@@ -3,6 +3,7 @@ using March7thHoney.Data.Excel;
 using March7thHoney.Database.Avatar;
 using March7thHoney.Database.Inventory;
 using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Game.GridFight;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
 using March7thHoney.GameServer.Server.Packet.Send.Battle;
@@ -280,7 +281,36 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
 
     public BattleInstance? StartGridFightBattle(object inst)
     {
-        return null;
+        if (inst is not GridFightInstance gridFightInstance)
+            return null;
+
+        if (Player.BattleInstance != null)
+            return Player.BattleInstance;
+
+        var lineup = Player.LineupManager?.GetCurLineup();
+        if (lineup == null)
+            return null;
+
+        StageConfigExcel? stageConfig = null;
+        foreach (var stageId in gridFightInstance.StageCandidates)
+        {
+            if (GameData.StageConfigData.TryGetValue((int)stageId, out var found))
+            {
+                stageConfig = found;
+                break;
+            }
+        }
+
+        stageConfig ??= GameData.StageConfigData.Values.FirstOrDefault();
+        if (stageConfig == null)
+            return null;
+
+        var battle = new BattleInstance(Player, lineup, [stageConfig])
+        {
+            WorldLevel = Player.Data.WorldLevel
+        };
+        Player.BattleInstance = battle;
+        return battle;
     }
 
     public async ValueTask EndBattle(PVEBattleResultCsReq req)
@@ -363,6 +393,12 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
         battle.BattleResult = req;
 
         Player.BattleInstance = null;
+
+        if (Player.GridFightManager?.GridFightInstance != null)
+        {
+            // GridFight flow handles its own result notify / progression.
+            await Player.GridFightManager.GridFightInstance.EndBattle(battle, req);
+        }
 
         battle.OnBattleEnd += Player.MissionManager!.OnBattleFinish;
         await battle.TriggerOnBattleEnd();
