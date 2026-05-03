@@ -11,7 +11,7 @@ public class PacketQueryProductInfoScRsp : BasePacket
         {
             BAMOOGPNJEH = 5,
             IFKKKLCFOBK = 5,
-            MonthCardOutDateTime = 1787774400,
+            MonthCardOutDateTime = (ulong)Extensions.GetUnixSec() + 8640000, // 100 day
             ProductList =
             {
                 new Product
