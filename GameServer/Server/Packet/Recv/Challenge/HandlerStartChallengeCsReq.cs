@@ -17,13 +17,17 @@ public class HandlerStartChallengeCsReq : Handler
         ChallengeBossBuffInfo? bossBuffInfo = null;
         if (req.StageInfo != null && req.StageInfo.BossInfo != null) bossBuffInfo = req.StageInfo.BossInfo;
 
-        if (req.FirstLineup.Count > 0)
-            await connection.Player!.LineupManager!.ReplaceLineup(0, req.FirstLineup.Select(x => (int)x).ToList(),
-                ExtraLineupType.LineupChallenge);
+        var firstLineup = req.ABNDFKFIKCI.Count > 0
+            ? req.ABNDFKFIKCI.Select(x => (int)x.Id).Where(x => x > 0).ToList()
+            : req.FirstLineup.Select(x => (int)x).Where(x => x > 0).ToList();
+        if (firstLineup.Count > 0)
+            await connection.Player!.LineupManager!.ReplaceLineup(0, firstLineup, ExtraLineupType.LineupChallenge);
 
-        if (req.SecondLineup.Count > 0)
-            await connection.Player!.LineupManager!.ReplaceLineup(0, req.SecondLineup.Select(x => (int)x).ToList(),
-                ExtraLineupType.LineupChallenge2);
+        var secondLineup = req.BKNKLEOCJNO.Count > 0
+            ? req.BKNKLEOCJNO.Select(x => (int)x.Id).Where(x => x > 0).ToList()
+            : req.SecondLineup.Select(x => (int)x).Where(x => x > 0).ToList();
+        if (secondLineup.Count > 0)
+            await connection.Player!.LineupManager!.ReplaceLineup(0, secondLineup, ExtraLineupType.LineupChallenge2);
 
         await connection.Player!.ChallengeManager!.StartChallenge((int)req.ChallengeId, storyBuffInfo, bossBuffInfo);
     }

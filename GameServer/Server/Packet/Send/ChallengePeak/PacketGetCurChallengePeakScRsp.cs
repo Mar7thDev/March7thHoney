@@ -13,10 +13,10 @@ public class PacketGetCurChallengePeakScRsp : BasePacket
 
         if (player.ChallengeManager!.ChallengeInstance is ChallengePeakInstance peak)
         {
-            proto.IsFinished = true;
-            proto.PeakLevelId = peak.Data.Peak.CurrentPeakLevelId;
-            proto.PeakBossBuff = peak.Data.Peak.Buffs.FirstOrDefault(0u);
-            proto.PeakRoundsCount = peak.Data.Peak.RoundCnt;
+            proto.HasPassed = true;
+            proto.PeakId = peak.Data.Peak.CurrentPeakLevelId;
+            proto.BossBuffId = peak.Data.Peak.Buffs.FirstOrDefault(0u);
+            proto.CyclesUsed = peak.Data.Peak.RoundCnt;
         }
 
         SetData(proto);

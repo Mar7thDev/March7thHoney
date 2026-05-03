@@ -17,7 +17,7 @@ public class PropInfo : PositionInfo
     public int ChestID { get; set; }
     public int FarmElementID { get; set; }
     public bool IsClientOnly { get; set; }
-    public bool LoadOnInitial { get; set; }
+    public bool LoadOnInitial { get; set; } = true;
 
     public ValueSourceInfo? ValueSource { get; set; }
     public string? InitLevelGraph { get; set; }

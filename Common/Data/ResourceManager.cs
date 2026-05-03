@@ -45,6 +45,10 @@ public class ResourceManager
         GameData.SceneRainbowGroupPropertyData =
             LoadCustomFile<SceneRainbowGroupPropertyConfig>("Scene Rainbow Group Property",
                 "SceneRainbowGroupProperty") ?? new SceneRainbowGroupPropertyConfig();
+        GameData.ChallengePeakOverrideConfig =
+            LoadDataFile<ChallengePeakOverrideConfig>("ChallengePeak Override", "ChallengePeak") ??
+            new ChallengePeakOverrideConfig();
+        ApplyChallengePeakOverrides();
 
         Task.WaitAll(t1, t2, t3, t4, t5, t6, t8, t9);
 
@@ -429,6 +433,61 @@ public class ResourceManager
         }
 
         return customFile;
+    }
+
+    public static T? LoadDataFile<T>(string filetype, string filename)
+    {
+        Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem", filetype));
+        var dataPath = Path.Combine(ConfigManager.Config.Path.ConfigPath, "Data", $"{filename}.json");
+        FileInfo file = new(dataPath);
+        if (!file.Exists)
+        {
+            Logger.Warn(I18NManager.Translate("Server.ServerInfo.ConfigMissing", filetype, dataPath, filetype));
+            return default;
+        }
+
+        try
+        {
+            using var reader = file.OpenRead();
+            using StreamReader reader2 = new(reader);
+            var text = reader2.ReadToEnd();
+            return JsonConvert.DeserializeObject<T>(text);
+        }
+        catch (Exception ex)
+        {
+            ResourceCache.IsComplete = false;
+            Logger.Error("Error in reading " + file.Name, ex);
+            return default;
+        }
+    }
+
+    public static void ApplyChallengePeakOverrides()
+    {
+        foreach (var group in GameData.ChallengePeakOverrideConfig.ChallengePeak)
+        {
+            if (GameData.ChallengePeakGroupConfigData.TryGetValue(group.GroupId, out var groupExcel))
+            {
+                var firstStage = group.Stages.Values.FirstOrDefault();
+                if (firstStage != null && firstStage.MapEntranceId > 0)
+                {
+                    groupExcel.MapEntranceID = firstStage.MapEntranceId;
+                    groupExcel.MapEntranceBoss = firstStage.MapEntranceId;
+                }
+            }
+
+            foreach (var stage in group.Stages)
+            {
+                if (!int.TryParse(stage.Key, out var levelId)) continue;
+                if (!GameData.ChallengePeakConfigData.TryGetValue(levelId, out var levelExcel)) continue;
+
+                levelExcel.OverrideMapEntranceId = stage.Value.MapEntranceId;
+                levelExcel.OverrideMazeGroupId = stage.Value.MazeGroupId;
+                levelExcel.OverrideNpcMonsterId = stage.Value.NpcMonsterId > 0
+                    ? stage.Value.NpcMonsterId
+                    : group.NpcMonsterIdDefault;
+                levelExcel.RebuildChallengeMonsters();
+            }
+        }
     }
 
     public static void LoadMazeSkill()

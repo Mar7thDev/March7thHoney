@@ -1,4 +1,3 @@
-using March7thHoney.Util;
 using Newtonsoft.Json;
 
 namespace March7thHoney.Data.Excel;
@@ -17,6 +16,9 @@ public class ChallengePeakConfigExcel : ExcelResource
     public Dictionary<int, List<ChallengeConfigExcel.ChallengeMonsterInfo>> ChallengeMonsters { get; } = [];
 
     [JsonIgnore] public ChallengePeakBossConfigExcel? BossExcel { get; set; }
+    [JsonIgnore] public int OverrideMapEntranceId { get; set; }
+    [JsonIgnore] public int OverrideMazeGroupId { get; set; }
+    [JsonIgnore] public int OverrideNpcMonsterId { get; set; }
 
     public override int GetId()
     {
@@ -30,7 +32,24 @@ public class ChallengePeakConfigExcel : ExcelResource
 
     public override void AfterAllDone()
     {
-        var groupId = (int)GameConstants.CHALLENGE_PEAK_TARGET_ENTRY_ID[GameConstants.CHALLENGE_PEAK_CUR_GROUP_ID][1];
+        RebuildChallengeMonsters();
+    }
+
+    public int GetMapEntranceId()
+    {
+        return OverrideMapEntranceId > 0 ? OverrideMapEntranceId : 0;
+    }
+
+    public int GetMazeGroupId()
+    {
+        if (OverrideMazeGroupId > 0) return OverrideMazeGroupId;
+        return 0;
+    }
+
+    public void RebuildChallengeMonsters()
+    {
+        var groupId = GetMazeGroupId();
+        ChallengeMonsters.Clear();
         ChallengeMonsters.Add(groupId, []);
 
         var curConfId = 200000;
@@ -43,7 +62,7 @@ public class ChallengePeakConfigExcel : ExcelResource
             if (!GameData.MonsterConfigData.TryGetValue(monsterId, out var monsterConf)) continue;
             if (!GameData.MonsterTemplateConfigData.TryGetValue(monsterConf.MonsterTemplateID, out var template)) continue;
 
-            var npcMonsterId = template.NPCMonsterList.Take(2).LastOrDefault(0);
+            var npcMonsterId = OverrideNpcMonsterId > 0 ? OverrideNpcMonsterId : template.NPCMonsterList.Take(2).LastOrDefault(0);
 
             ChallengeMonsters[groupId]
                 .Add(new ChallengeConfigExcel.ChallengeMonsterInfo(++curConfId, npcMonsterId,

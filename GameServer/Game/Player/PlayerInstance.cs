@@ -10,6 +10,7 @@ using March7thHoney.GameServer.Game.Activity;
 using March7thHoney.GameServer.Game.Avatar;
 using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.Challenge;
+using March7thHoney.GameServer.Game.ChallengePeak;
 using March7thHoney.GameServer.Game.Friend;
 using March7thHoney.GameServer.Game.Gacha;
 using March7thHoney.GameServer.Game.Inventory;
@@ -82,6 +83,7 @@ public partial class PlayerInstance(PlayerData data)
     public MailManager? MailManager { get; private set; }
     public FriendManager? FriendManager { get; private set; }
     public ChallengeManager? ChallengeManager { get; private set; }
+    public ChallengePeakManager? ChallengePeakManager { get; private set; }
 
     #endregion
 
@@ -166,6 +168,7 @@ public partial class PlayerInstance(PlayerData data)
         FriendManager = new FriendManager(this);
         ShopService = new ShopService(this);
         ChallengeManager = new ChallengeManager(this);
+        ChallengePeakManager = new ChallengePeakManager(this);
         TaskManager = new TaskManager(this);
         RaidManager = new RaidManager(this);
         StoryLineManager = new StoryLineManager(this);

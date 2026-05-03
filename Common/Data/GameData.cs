@@ -97,6 +97,7 @@ public static class GameData
 
     public static Dictionary<int, ChallengePeakConfigExcel> ChallengePeakConfigData { get; private set; } = [];
     public static Dictionary<int, ChallengePeakBossConfigExcel> ChallengePeakBossConfigData { get; private set; } = [];
+    public static ChallengePeakOverrideConfig ChallengePeakOverrideConfig { get; set; } = new();
     public static Dictionary<int, List<ChallengeRewardExcel>> ChallengeRewardData { get; private set; } = [];
 
     #endregion
@@ -493,6 +494,18 @@ public static class GameData
     public static int GetMinPromotionForLevel(int level)
     {
         return Math.Max(Math.Min((int)((level - 11) / 10D), 6), 0);
+    }
+
+    public static int GetCurrentChallengePeakGroupId()
+    {
+        // Prefer explicit group order from Config/Data/ChallengePeak.json overrides.
+        if (ChallengePeakOverrideConfig.ChallengePeak.Count > 0)
+            return ChallengePeakOverrideConfig.ChallengePeak.Max(x => x.GroupId);
+
+        if (ChallengePeakGroupConfigData.Count > 0)
+            return ChallengePeakGroupConfigData.Keys.Max();
+
+        return 1;
     }
 
     #endregion
