@@ -18,6 +18,7 @@ public class HandlerSetPlayerInfoCsReq : Handler
         if (req.Gender == Gender.None)
         {
             await connection.SendPacket(new PacketSetPlayerInfoScRsp(player, req.IsModify));
+            await connection.SendWatermarkLuaAsync();
             return;
         }
 
@@ -34,5 +35,6 @@ public class HandlerSetPlayerInfoCsReq : Handler
 
         await connection.SendPacket(new PacketSetPlayerInfoScRsp(player, req.IsModify));
         await connection.SendPacket(new PacketPlayerSyncScNotify(player.ToProto()));
+        await connection.SendWatermarkLuaAsync();
     }
 }
