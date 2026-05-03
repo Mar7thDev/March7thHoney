@@ -7,7 +7,6 @@ using March7thHoney.GameServer.Server.Packet.Send.ChallengePeak;
 using March7thHoney.Proto;
 using March7thHoney.Proto.ServerSide;
 using March7thHoney.Util;
-using ChallengePeakLevelInfo = March7thHoney.Proto.ChallengePeakLevelInfo;
 
 namespace March7thHoney.GameServer.Game.ChallengePeak;
 
@@ -20,9 +19,9 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
 {
     public bool BossIsHard { get; set; } = true;
 
-    public ChallengePeakLevelInfo GetChallengePeakInfo(int groupId)
+    public ChallengePeakGroup GetChallengePeakInfo(int groupId)
     {
-        var proto = new ChallengePeakLevelInfo
+        var proto = new ChallengePeakGroup
         {
             PeakGroupId = (uint)groupId
         };
@@ -36,35 +35,26 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
             var levelData = GameData.ChallengePeakConfigData.GetValueOrDefault(levelId);
             if (levelData == null) continue;
 
-            var levelProto = new ChallengePeakPreLevel
+            var levelProto = new Proto.ChallengePeak
             {
-                PeakLevelId = (uint)levelId,
-                IsFinished = true
+                PeakId = (uint)levelId,
+                HasPassed = true
             };
 
             if (Player.ChallengeManager!.ChallengeData.PeakLevelDatas.TryGetValue(levelId, out var levelPbData))
             {
                 starNum += (int)levelPbData.PeakStar;
 
-                levelProto.PeakRoundsCount = levelPbData.RoundCnt;
-                levelProto.PeakLevelAvatarIdList.AddRange(levelPbData.BaseAvatarList);
-                levelProto.PeakTargetList.AddRange(levelPbData.FinishedTargetList);
-
-                foreach (var avatarId in levelPbData.BaseAvatarList)
-                {
-                    var avatar = Player.AvatarManager!.GetFormalAvatar((int)avatarId);
-                    if (avatar == null) continue;
-
-                    levelProto.PeakAvatarInfoList.Add(avatar.ToPeakAvatarProto());
-                }
-
-                proto.FinishedPreNum++;
+                levelProto.CyclesUsed = levelPbData.RoundCnt;
+                levelProto.PeakAvatarIdList.AddRange(levelPbData.BaseAvatarList);
+                levelProto.FinishedTargetList.AddRange(levelPbData.FinishedTargetList);
             }
 
-            proto.PeakPreLevelInfoList.Add(levelProto);
+            proto.Peaks.Add(levelProto);
         }
 
-        proto.PreLevelStars = (uint)starNum;
+        proto.ObtainedStars = (uint)starNum;
+        proto.CountOfPeaks = (uint)proto.Peaks.Count;
 
         // boss
         var bossLevelId = data.BossLevelID;
@@ -73,45 +63,40 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         var bossLevelData = GameData.ChallengePeakBossConfigData.GetValueOrDefault(bossLevelId);
         if (bossLevelData == null) return proto;
 
-        var bossProto = new ChallengePeakBossLevel
+        var bossProto = new Proto.ChallengePeakBoss
         {
-            PeakBossLevelId = (uint)bossLevelId,
-            IsUltraBossWin = true,
-            PeakEasyBoss = new ChallengePeakBossInfo(),
-            PeakHardBoss = new ChallengePeakBossInfo()
+            LJGDCGBFNKN = (uint)bossLevelId,
+            HardModeHasPassed = true,
+            EasyMode = new ChallengePeakBossClearance(),
+            HardMode = new ChallengePeakBossClearance()
         };
 
         HashSet<uint> targetIds = [];
-        if (Player.ChallengeManager!.ChallengeData.PeakBossLevelDatas.TryGetValue((bossLevelId << 2) | 0,
+            if (Player.ChallengeManager!.ChallengeData.PeakBossLevelDatas.TryGetValue((bossLevelId << 2) | 0,
                 out var bossPbData)) // easy (is hard = 0)
         {
-            bossProto.PeakEasyBoss.PeakLevelAvatarIdList.AddRange(bossPbData.BaseAvatarList);
-            bossProto.PeakEasyBoss.BossDisplayAvatarIdList.AddRange(bossPbData.BaseAvatarList);
-
-            bossProto.PeakEasyBoss.LeastRoundsCount = bossPbData.RoundCnt;
-            bossProto.PeakEasyBoss.IsFinished = true;
-            bossProto.PeakEasyBoss.BuffId = bossPbData.BuffId;
+            bossProto.EasyMode.PeakAvatarIdList.AddRange(bossPbData.BaseAvatarList);
+            bossProto.EasyMode.BestCycleCount = bossPbData.RoundCnt;
+            bossProto.EasyMode.HasPassed = true;
+            bossProto.EasyMode.BuffId = bossPbData.BuffId;
 
             foreach (var targetId in bossPbData.FinishedTargetList) targetIds.Add(targetId);
         }
 
-        if (Player.ChallengeManager!.ChallengeData.PeakBossLevelDatas.TryGetValue((bossLevelId << 2) | 1,
+            if (Player.ChallengeManager!.ChallengeData.PeakBossLevelDatas.TryGetValue((bossLevelId << 2) | 1,
                 out var bossHardPbData)) // easy (is hard = 1)
         {
-            bossProto.IsUltraBossWin = true;
-            bossProto.PeakHardBoss.PeakLevelAvatarIdList.AddRange(bossHardPbData.BaseAvatarList);
-            bossProto.PeakHardBoss.BossDisplayAvatarIdList.AddRange(bossHardPbData.BaseAvatarList);
-
-            bossProto.PeakHardBoss.LeastRoundsCount = bossHardPbData.RoundCnt;
-            bossProto.PeakHardBoss.IsFinished = true;
-            bossProto.PeakHardBoss.BuffId = bossHardPbData.BuffId;
+            bossProto.HardModeHasPassed = true;
+            bossProto.HardMode.PeakAvatarIdList.AddRange(bossHardPbData.BaseAvatarList);
+            bossProto.HardMode.BestCycleCount = bossHardPbData.RoundCnt;
+            bossProto.HardMode.HasPassed = true;
+            bossProto.HardMode.BuffId = bossHardPbData.BuffId;
 
             foreach (var targetId in bossHardPbData.FinishedTargetList) targetIds.Add(targetId);
         }
 
-        bossProto.PeakTargetList.AddRange(targetIds);
-
-        proto.PeakBossLevel = bossProto;
+        bossProto.FinishedTargetList.AddRange(targetIds);
+        proto.PeakBoss = bossProto;
 
         return proto;
     }
@@ -123,16 +108,16 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         {
             List<uint> avatarIds = [];
 
-            foreach (var avatarId in lineup.PeakLevelAvatarIdList.ToList())
+            foreach (var avatarId in lineup.PeakAvatarIdList.ToList())
             {
                 var avatar = Player.AvatarManager!.GetFormalAvatar((int)avatarId);
                 if (avatar != null)
                     avatarIds.Add((uint)avatar.BaseAvatarId);
             }
 
-            datas[(int)lineup.PeakLevelId] = new ChallengePeakLevelData
+            datas[(int)lineup.PeakId] = new ChallengePeakLevelData
             {
-                LevelId = (int)lineup.PeakLevelId,
+                LevelId = (int)lineup.PeakId,
                 BaseAvatarList = avatarIds
             }; // reset
         }
@@ -266,7 +251,8 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
             Peak = new ChallengePeakDataPb
             {
                 CurrentPeakGroupId = (uint)(GameData.ChallengePeakGroupConfigData.Values
-                    .FirstOrDefault(x => x.BossLevelID == levelId || x.PreLevelIDList.Contains(levelId))?.ID ?? 1),
+                    .FirstOrDefault(x => x.BossLevelID == levelId || x.PreLevelIDList.Contains(levelId))?.ID ??
+                    GameData.GetCurrentChallengePeakGroupId()),
                 CurrentPeakLevelId = (uint)levelId,
                 CurrentExtraLineup = ChallengeLineupTypePb.Challenge1,
                 CurStatus = 1
@@ -288,7 +274,21 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         // Enter scene
         try
         {
-            await Player.EnterScene((int)GameConstants.CHALLENGE_PEAK_TARGET_ENTRY_ID[GameConstants.CHALLENGE_PEAK_CUR_GROUP_ID][0], 0, true);
+            var mapEntranceId = excel.GetMapEntranceId();
+            if (mapEntranceId <= 0)
+            {
+                mapEntranceId = GameData.ChallengePeakGroupConfigData.Values
+                    .FirstOrDefault(x => x.BossLevelID == levelId || x.PreLevelIDList.Contains(levelId))
+                    ?.MapEntranceID ?? 0;
+            }
+
+            if (mapEntranceId <= 0)
+            {
+                await Player.SendPacket(new PacketStartChallengePeakScRsp(Retcode.RetChallengeNotExist));
+                return;
+            }
+
+            await Player.EnterScene(mapEntranceId, 0, true);
         }
         catch
         {

@@ -277,7 +277,9 @@ public class SceneEntityLoader(SceneInstance scene)
 
     public virtual async ValueTask<EntityProp?> LoadProp(PropInfo info, GroupInfo group, bool sendPacket = false)
     {
-        if (info.IsClientOnly || info.IsDelete || !info.LoadOnInitial) return null;
+        // Runtime floor/group exports are not always consistent for IsClientOnly/LoadOnInitial on props.
+        // Keep server-side prop availability driven by group-level loading and explicit deletion only.
+        if (info.IsDelete) return null;
 
         GameData.MazePropData.TryGetValue(info.PropID, out var excel);
         if (excel == null) return null;
@@ -292,9 +294,10 @@ public class SceneEntityLoader(SceneInstance scene)
 
         // load from database
         var propData = Scene.Player.GetScenePropData(Scene.FloorId, group.Id, info.ID);
-        if (propData != null && Scene.Excel.PlaneType != PlaneTypeEnum.Raid) // raid is not saved
+        var hasSavedState = propData != null && Scene.Excel.PlaneType != PlaneTypeEnum.Raid; // raid is not saved
+        if (hasSavedState)
         {
-            prop.State = propData.State;
+            prop.State = propData!.State;
         }
         else
         {
@@ -315,7 +318,8 @@ public class SceneEntityLoader(SceneInstance scene)
             return prop;
         }
 
-        if (prop.PropInfo.Name.Contains("Case") && prop.PropInfo.State == PropStateEnum.Open)
+        // Only apply default "Case -> Closed" normalization when there is no persisted state.
+        if (!hasSavedState && prop.PropInfo.Name.Contains("Case") && prop.State == PropStateEnum.Open)
             await prop.SetState(PropStateEnum.Closed);
 
         if (prop.PropInfo.PropID == 1003)

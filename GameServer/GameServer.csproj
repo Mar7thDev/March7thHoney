@@ -28,12 +28,4 @@
     <PackageReference Include="System.IO.Pipelines" Version="10.0.0" />
   </ItemGroup>
 
-  <!-- Temporary: disable modules that depend on missing 4.2 proto definitions. -->
-  <ItemGroup>
-    <Compile Remove="Game\ChallengePeak\**\*.cs" />
-    <Compile Remove="Server\Packet\Send\ChallengePeak\**\*.cs" />
-    <Compile Remove="Server\Packet\Recv\ChallengePeak\**\*.cs" />
-    <Compile Remove="Game\Challenge\Instances\ChallengePeakInstance.cs" />
-  </ItemGroup>
-
 </Project>

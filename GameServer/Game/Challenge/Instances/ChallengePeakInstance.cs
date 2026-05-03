@@ -24,7 +24,7 @@ public class ChallengePeakInstance(PlayerInstance player, ChallengeDataPb data) 
 
         Dictionary<int, List<ChallengeConfigExcel.ChallengeMonsterInfo>> monsters = [];
 
-        var groupId = (int)GameConstants.CHALLENGE_PEAK_TARGET_ENTRY_ID[GameConstants.CHALLENGE_PEAK_CUR_GROUP_ID][1];
+        var groupId = Config.GetMazeGroupId();
         monsters.Add(groupId, []);
 
 
@@ -126,7 +126,7 @@ public class ChallengePeakInstance(PlayerInstance player, ChallengeDataPb data) 
                     // add development
                     Player.FriendRecordData!.AddAndRemoveOld(new FriendDevelopmentInfoPb
                     {
-                        DevelopmentType = DevelopmentType.DevelopmentChallengePeak,
+                        DevelopmentType = DevelopmentType.KghodpfjgliMjfldkhkdab,
                         Params = { { "PeakLevelId", (uint)Config.ID } }
                     });
                 }

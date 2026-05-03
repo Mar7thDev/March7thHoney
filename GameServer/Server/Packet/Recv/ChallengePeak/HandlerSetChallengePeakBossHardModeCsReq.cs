@@ -11,8 +11,8 @@ public class HandlerSetChallengePeakBossHardModeCsReq : Handler
     {
         var req = SetChallengePeakBossHardModeCsReq.Parser.ParseFrom(data);
 
-        connection.Player!.ChallengePeakManager!.BossIsHard = req.IsHard;
+        connection.Player!.ChallengePeakManager!.BossIsHard = req.IsHardMode;
 
-        await connection.SendPacket(new PacketSetChallengePeakBossHardModeScRsp(req.PeakGroupId, req.IsHard));
+        await connection.SendPacket(new PacketSetChallengePeakBossHardModeScRsp(req.PeakGroupId, req.IsHardMode));
     }
 }

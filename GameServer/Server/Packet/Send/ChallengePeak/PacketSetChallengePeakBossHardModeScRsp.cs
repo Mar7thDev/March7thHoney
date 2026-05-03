@@ -10,7 +10,7 @@ public class PacketSetChallengePeakBossHardModeScRsp : BasePacket
     {
         var proto = new SetChallengePeakBossHardModeScRsp
         {
-            IsHard = isHard,
+            IsHardMode = isHard,
             PeakGroupId = groupId
         };
 

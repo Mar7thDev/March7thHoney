@@ -5,12 +5,12 @@ namespace March7thHoney.GameServer.Server.Packet.Send.ChallengePeak;
 
 public class PacketChallengePeakGroupDataUpdateScNotify : BasePacket
 {
-    public PacketChallengePeakGroupDataUpdateScNotify(ChallengePeakLevelInfo info) : base(
+    public PacketChallengePeakGroupDataUpdateScNotify(Proto.ChallengePeakGroup info) : base(
         CmdIds.ChallengePeakGroupDataUpdateScNotify)
     {
         var proto = new ChallengePeakGroupDataUpdateScNotify
         {
-            UpdatePeakData = info
+            ChallengePeakGroup = info
         };
 
         SetData(proto);
