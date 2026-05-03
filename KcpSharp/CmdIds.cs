@@ -816,7 +816,7 @@ public class CmdIds
     public const int GridFightStartGamePlayCsReq = 8519;
     public const int INHDFEIOBNK = 8540;
     public const int GridFightQuitLeaveGamePlayCsReq = 8458;
-    public const int CENLNIAOMAK = 8583;
+    public const int GridFightQuitLeaveGamePlayScRsp = 8583;
     public const int GridFightResumeGamePlayCsReq = 8752;
     public const int KMDHLENLIMF = 8753;
     public const int GridFightFinishTutorialCsReq = 8428;
@@ -862,8 +862,8 @@ public class CmdIds
     public const int FavourArchiveCsReq = 8530;
     public const int FavourArchiveScRsp = 8585;
     public const int GridFightSyncKeepWinCntNotify = 8767;
-    public const int GridFightBackToPrepareReq = 8800;
-    public const int GDMIIBNJJEJ = 8739;
+    public const int GridFightBackToPrepareCsReq = 8800;
+    public const int GridFightBackToPrepareScRsp = 8739;
     public const int HLMGOIBAKPH = 8795;
     public const int KEKKIEFKKGO = 8570;
     public const int NLIDDKHJJDO = 8729;
