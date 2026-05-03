@@ -27,6 +27,8 @@ internal class QueryGatewayHandler
         var isNewFormat = string.Equals(req.is_new_format, "1", StringComparison.Ordinal);
         Debug($"query_gateway begin: version={req.version} uid={req.uid} lang={req.language_type} platform={req.platform_type} channel={req.channel_id}/{req.sub_channel_id} is_new_format={isNewFormat}");
 
+        ClientVersionCache.Update(req.version);
+
         var gateServer = new GateServer
         {
             RegionName = config.GameServer.GameServerId,

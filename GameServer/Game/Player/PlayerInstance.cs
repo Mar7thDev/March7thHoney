@@ -119,6 +119,7 @@ public partial class PlayerInstance(PlayerData data)
         IsNewPlayer = true;
         Data.NextStaminaRecover = Extensions.GetUnixSec() + GameConstants.STAMINA_RESERVE_RECOVERY_TIME;
         Data.Level = ConfigManager.Config.ServerOption.StartTrailblazerLevel;
+        Data.Name = ConfigManager.Config.ServerOption.DefaultNickname;
 
         DatabaseHelper.SaveInstance(Data);
 

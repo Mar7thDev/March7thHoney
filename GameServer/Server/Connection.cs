@@ -43,6 +43,44 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
         base.Stop();
     }
 
+    public override async Task SendWatermarkLuaAsync()
+    {
+        if (Player == null) return;
+        var nickname = EscapeLuaString(Player.Data.Name ?? "");
+        var uid = Player.Uid.ToString();
+        var version = EscapeLuaString(string.IsNullOrEmpty(ClientVersionCache.LatestVersion)
+            ? $"WIN{GameConstants.GAME_VERSION}"
+            : ClientVersionCache.LatestVersion);
+
+        var watermark = $"{nickname}｜March7thHoney\\n{version}｜ {uid}";
+
+        var lua =
+            "local function modify_texts()\n" +
+            "    local vGo = CS.UnityEngine.GameObject.Find(\"VersionText\")\n" +
+            "    if vGo == nil then return end\n" +
+            "    local vt = vGo:GetComponent(\"Text\")\n" +
+            "    vt.text = \"" + watermark + "\"\n" +
+            "    vt.fontSize = 76.0\n" +
+            "end\n" +
+            "\n" +
+            "local function on_error(err)\n" +
+            "    local files = io.open(\"./error.txt\", \"w\")\n" +
+            "    files:write(err)\n" +
+            "    files:close()\n" +
+            "end\n" +
+            "\n" +
+            "local status, err = pcall(modify_texts)\n" +
+            "if not status then on_error(err) end\n";
+
+        var pkt = new HandshakePacket(System.Text.Encoding.UTF8.GetBytes(lua));
+        await SendPacket(pkt.BuildPacket());
+    }
+
+    private static string EscapeLuaString(string s)
+    {
+        return s.Replace("\\", "\\\\").Replace("\"", "\\\"").Replace("\n", "\\n").Replace("\r", "");
+    }
+
     protected async Task ReceiveLoop()
     {
         while (!CancelToken.IsCancellationRequested)
