@@ -214,7 +214,19 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         }
 
         // Get lineup
-        var lineup = Player.LineupManager!.GetExtraLineup(ExtraLineupType.LineupChallenge)!;
+        var lineup = Player.LineupManager!.GetExtraLineup(ExtraLineupType.LineupChallenge);
+        if (lineup == null)
+        {
+            // Ensure challenge extra lineup exists before filling avatars.
+            Player.LineupManager.SetExtraLineup(ExtraLineupType.LineupChallenge, []);
+            lineup = Player.LineupManager.GetExtraLineup(ExtraLineupType.LineupChallenge);
+        }
+
+        if (lineup == null)
+        {
+            await Player.SendPacket(new PacketStartChallengePeakScRsp(Retcode.RetChallengeLineupEmpty));
+            return;
+        }
         if (avatarIds.Count > 0)
             lineup.BaseAvatars = avatarIds.Select(x => new LineupAvatarInfo
             {
