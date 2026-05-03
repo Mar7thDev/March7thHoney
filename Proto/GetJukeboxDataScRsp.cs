@@ -27,9 +27,8 @@ namespace March7thHoney.Proto {
             "ChlHZXRKdWtlYm94RGF0YVNjUnNwLnByb3RvGhFNQ1BQSUVKRUJFRi5wcm90",
             "bxoPTXVzaWNEYXRhLnByb3RvInAKE0dldEp1a2Vib3hEYXRhU2NSc3ASJQoR",
             "VW5sb2NrZWRNdXNpY0xpc3QYBCADKAsyCi5NdXNpY0RhdGESDwoHcmV0Y29k",
-            "ZRgJIAEoDRIhCgtKSUxLT1BJTkxEQxgOIAEoCzIMLk1DUFBJRUpFQkVGQjMK",
-            "E2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIu",
-            "UHJvdG9iBnByb3RvMw=="));
+            "ZRgJIAEoDRIhCgtKSUxLT1BJTkxEQxgOIAEoCzIMLk1DUFBJRUpFQkVGQhaq",
+            "AhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MCPPIEJEBEFReflection.Descriptor, global::March7thHoney.Proto.MusicDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

@@ -27,9 +27,8 @@ namespace March7thHoney.Proto {
             "ChlFcXVpcFNraWxsQ29yZVNjUnNwLnByb3RvGhFKQkpJS0pHRUJBSC5wcm90",
             "bxoRS05IS0JIQURKR0UucHJvdG8ibAoTRXF1aXBTa2lsbENvcmVTY1JzcBIh",
             "CgtIS09ISUhDQkdBQRgBIAEoCzIMLktOSEtCSEFESkdFEiEKC0dDTkRPSU1B",
-            "Q0FOGAsgASgLMgwuSkJKSUtKR0VCQUgSDwoHcmV0Y29kZRgOIAEoDUIzChNl",
-            "bXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlBy",
-            "b3RvYgZwcm90bzM="));
+            "Q0FOGAsgASgLMgwuSkJKSUtKR0VCQUgSDwoHcmV0Y29kZRgOIAEoDUIWqgIT",
+            "TWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.JBJIKJGEBAHReflection.Descriptor, global::March7thHoney.Proto.KNHKBHADJGEReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

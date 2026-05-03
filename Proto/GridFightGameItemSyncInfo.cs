@@ -33,9 +33,8 @@ namespace March7thHoney.Proto {
             "ZW50X2xpc3QYCSADKAsyFy5HcmlkRmlnaHRFcXVpcG1lbnRJbmZvEjwKGmdy",
             "aWRfZmlnaHRfY29uc3VtYWJsZV9saXN0GAogAygLMhguR3JpZEZpZ2h0Q29u",
             "c3VtYWJsZUluZm8SSQohdXBkYXRlX2dyaWRfZmlnaHRfY29uc3VtYWJsZV9s",
-            "aXN0GAwgAygLMh4uR3JpZEZpZ2h0Q29uc3VtYWJsZVVwZGF0ZUluZm9CMwoT",
-            "ZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Q",
-            "cm90b2IGcHJvdG8z"));
+            "aXN0GAwgAygLMh4uR3JpZEZpZ2h0Q29uc3VtYWJsZVVwZGF0ZUluZm9CFqoC",
+            "E01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridFightConsumableInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightConsumableUpdateInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightEquipmentInfoReflection.Descriptor, global::March7thHoney.Proto.GridGameForgeItemInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

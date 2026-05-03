@@ -34,8 +34,8 @@ namespace March7thHoney.Proto {
             "c3AQiUYSGQoUQ21kT3BlblJlbGljQm94Q3NSZXEQ/UUSHAoXQ21kR2V0UmVs",
             "aWNCb3hEYXRhU2NSc3AQikYSIQocQ21kUmVwb3J0UmVsaWNCb3hBY3Rpb25T",
             "Y1JzcBD/RRIcChdDbWRHZXRSZWxpY0JveERhdGFDc1JlcRD3RRIhChxDbWRS",
-            "ZXBvcnRSZWxpY0JveEFjdGlvbkNzUmVxEPlFQjMKE2VtdS5sdW5hcmNvcmUu",
-            "cHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
+            "ZXBvcnRSZWxpY0JveEFjdGlvbkNzUmVxEPlFQhaqAhNNYXJjaDd0aEhvbmV5",
+            "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdRelicBoxType), }, null, null));

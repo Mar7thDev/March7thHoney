@@ -42,8 +42,8 @@ namespace March7thHoney.Proto {
             "QRD+RhITCg5DbWRKS1BLRFBISVBIRBDvRhIjCh5DbWRHZXRGaXZlRGltTWlu",
             "aUdhbWVEYXRhQ3NSZXEQ30YSHAoXRk9QQUJLSUZLQ0FfTkxBUENFSURGQ00Q",
             "jEcSHAoXRk9QQUJLSUZLQ0FfR09NQktKQkhNQUYQ7EYSIgodQ21kRmluaXNo",
-            "Q2hlbkxpbmdHYW1lQm95U2NSc3AQ9UZCMwoTZW11Lmx1bmFyY29yZS5wcm90",
-            "b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
+            "Q2hlbkxpbmdHYW1lQm95U2NSc3AQ9UZCFqoCE01hcmNoN3RoSG9uZXkuUHJv",
+            "dG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdMazePuzzleType), }, null, null));

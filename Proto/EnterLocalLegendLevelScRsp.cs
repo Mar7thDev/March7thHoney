@@ -28,8 +28,7 @@ namespace March7thHoney.Proto {
             "bGVJbmZvLnByb3RvInsKGkVudGVyTG9jYWxMZWdlbmRMZXZlbFNjUnNwEg8K",
             "B3JldGNvZGUYBCABKA0SJQoLYmF0dGxlX2luZm8YByABKAsyEC5TY2VuZUJh",
             "dHRsZUluZm8SEAoIZ3JvdXBfaWQYCSABKA0SEwoLSU5PTUZGQUlFT0EYDyAB",
-            "KA1CMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNl",
-            "cnZlci5Qcm90b2IGcHJvdG8z"));
+            "KA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.SceneBattleInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

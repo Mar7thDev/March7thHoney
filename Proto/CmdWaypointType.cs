@@ -30,8 +30,8 @@ namespace March7thHoney.Proto {
             "DkNtZEpHTE1BTkpFTUpBEM8DEhMKDkNtZE5LSU9JUE1DT05HEO8DEhMKDkNt",
             "ZEtQT0NBSU5GSkRBEKIDEhwKF0RDRUVESE1FUE1DX0hESU5ESkdNQ0xCEO4D",
             "EhMKDkNtZE9MRE1LQ0lJTkdIEJoDEhwKF0RDRUVESE1FUE1DX05KTUNQQ0lF",
-            "REdEEOsDEhMKDkNtZERFQkhISElGSUhLEJkDQjMKE2VtdS5sdW5hcmNvcmUu",
-            "cHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
+            "REdEEOsDEhMKDkNtZERFQkhISElGSUhLEJkDQhaqAhNNYXJjaDd0aEhvbmV5",
+            "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdWaypointType), }, null, null));

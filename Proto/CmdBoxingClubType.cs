@@ -39,8 +39,8 @@ namespace March7thHoney.Proto {
             "KQokQ21kU2V0Qm94aW5nQ2x1YlJlc29uYW5jZUxpbmV1cENzUmVxELIhEi4K",
             "KUNtZENob29zZUJveGluZ0NsdWJTdGFnZU9wdGlvbmFsQnVmZkNzUmVxEOwg",
             "EiAKG0NtZEJveGluZ0NsdWJSZXdhcmRTY05vdGlmeRCnIRIjCh5DbWRTZXRC",
-            "b3hpbmdDbHViUmVzb25hbmNlU2NSc3AQjSFCMwoTZW11Lmx1bmFyY29yZS5w",
-            "cm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
+            "b3hpbmdDbHViUmVzb25hbmNlU2NSc3AQjSFCFqoCE01hcmNoN3RoSG9uZXku",
+            "UHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdBoxingClubType), }, null, null));

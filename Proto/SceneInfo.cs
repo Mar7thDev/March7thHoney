@@ -50,8 +50,7 @@ namespace March7thHoney.Proto {
             "mw8gASgLMhAuU2NlbmVJZGVudGlmaWVyGkAKEEtISE9QTkpKQUJIRW50cnkS",
             "CwoDa2V5GAEgASgNEhsKBXZhbHVlGAIgASgLMgwuSUFISExJT0xDREI6AjgB",
             "GjUKE0Zsb29yU2F2ZWREYXRhRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVl",
-            "GAIgASgFOgI4AUIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNl",
-            "SG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
+            "GAIgASgFOgI4AUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.BuffInfoReflection.Descriptor, global::March7thHoney.Proto.CustomSaveDataReflection.Descriptor, global::March7thHoney.Proto.DPNDJIGACFJReflection.Descriptor, global::March7thHoney.Proto.IAHHLIOLCDBReflection.Descriptor, global::March7thHoney.Proto.MissionStatusBySceneInfoReflection.Descriptor, global::March7thHoney.Proto.NBCOOLLEOIDReflection.Descriptor, global::March7thHoney.Proto.SceneEntityGroupInfoReflection.Descriptor, global::March7thHoney.Proto.SceneEntityInfoReflection.Descriptor, global::March7thHoney.Proto.SceneGroupStateReflection.Descriptor, global::March7thHoney.Proto.SceneIdentifierReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

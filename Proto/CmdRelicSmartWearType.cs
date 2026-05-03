@@ -39,8 +39,7 @@ namespace March7thHoney.Proto {
             "bWFydFdlYXJHZXRQbGFuU2NSc3AQzkASKQokQ21kUmVsaWNTbWFydFdlYXJE",
             "ZWxldGVQaW5SZWxpY1NjUnNwEMBAEiYKIUNtZFJlbGljU21hcnRXZWFyR2V0",
             "UGluUmVsaWNDc1JlcRDFQBIiCh1DbWRSZWxpY1NtYXJ0V2VhckdldFBsYW5D",
-            "c1JlcRC7QEIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9u",
-            "ZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
+            "c1JlcRC7QEIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdRelicSmartWearType), }, null, null));

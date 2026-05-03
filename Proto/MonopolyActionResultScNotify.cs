@@ -27,8 +27,7 @@ namespace March7thHoney.Proto {
             "CiJNb25vcG9seUFjdGlvblJlc3VsdFNjTm90aWZ5LnByb3RvGhpNb25vcG9s",
             "eUFjdGlvblJlc3VsdC5wcm90byJKChxNb25vcG9seUFjdGlvblJlc3VsdFNj",
             "Tm90aWZ5EioKC01NQUFITUVDR09FGAUgAygLMhUuTW9ub3BvbHlBY3Rpb25S",
-            "ZXN1bHRCMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5",
-            "LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
+            "ZXN1bHRCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MonopolyActionResultReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

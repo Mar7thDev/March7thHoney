@@ -41,8 +41,7 @@ namespace March7thHoney.Proto {
             "MhcuR3JpZEZpZ2h0R2FtZVRyYWl0SW5mb0gAEjAKD2dyaWRfbGV2ZWxfaW5m",
             "bxgNIAEoCzIVLkdyaWRGaWdodEdhbWVPcmJJbmZvSAASMgoPZ3JpZF9iYXNp",
             "Y19pbmZvGA8gASgLMhcuR3JpZEZpZ2h0R2FtZUJhc2ljSW5mb0gAQg0KC0ZI",
-            "UEpKSkROS0lPQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VI",
-            "b25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
+            "UEpKSkROS0lPQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridFightGameAugmentSyncReflection.Descriptor, global::March7thHoney.Proto.GridFightGameBasicInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightGameItemsInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightGameOrbInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightGameShopInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightGameTeamInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightGameTraitInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightLevelInfoReflection.Descriptor, global::March7thHoney.Proto.LHFDOPGEOMLReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

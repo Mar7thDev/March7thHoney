@@ -124,30 +124,8 @@ public class FriendManager(PlayerInstance player) : BasePlayerManager(player)
 
     public async ValueTask SendMessage(int sendUid, int recvUid, string? message = null, int? extraId = null)
     {
-        var data = new FriendChatData
-        {
-            SendUid = sendUid,
-            ReceiveUid = recvUid,
-            Message = message ?? "",
-            ExtraId = extraId ?? 0,
-            SendTime = Extensions.GetUnixSec()
-        };
-
-        if (!FriendData.ChatHistory.TryGetValue(recvUid, out var value))
-        {
-            FriendData.ChatHistory[recvUid] = new FriendChatHistory();
-            value = FriendData.ChatHistory[recvUid];
-        }
-
-        value.MessageList.Add(data);
-
-        PacketRevcMsgScNotify proto;
-        if (message != null)
-            proto = new PacketRevcMsgScNotify((uint)recvUid, (uint)sendUid, message);
-        else
-            proto = new PacketRevcMsgScNotify((uint)recvUid, (uint)sendUid, (uint)(extraId ?? 0));
-
-        await Player.SendPacket(proto);
+        var data = BuildChatData(sendUid, recvUid, message, extraId);
+        await PushPrivateMessageAsync(recvUid, (uint)sendUid, data);
 
         if (recvUid == ConfigManager.Config.ServerOption.ServerProfile.Uid)
             if (message?.StartsWith('/') == true)
@@ -186,30 +164,8 @@ public class FriendManager(PlayerInstance player) : BasePlayerManager(player)
 
     public async ValueTask ReceiveMessage(int sendUid, int recvUid, string? message = null, int? extraId = null)
     {
-        var data = new FriendChatData
-        {
-            SendUid = sendUid,
-            ReceiveUid = recvUid,
-            Message = message ?? "",
-            ExtraId = extraId ?? 0,
-            SendTime = Extensions.GetUnixSec()
-        };
-
-        if (!FriendData.ChatHistory.TryGetValue(sendUid, out var value))
-        {
-            FriendData.ChatHistory[sendUid] = new FriendChatHistory();
-            value = FriendData.ChatHistory[sendUid];
-        }
-
-        value.MessageList.Add(data);
-
-        PacketRevcMsgScNotify proto;
-        if (message != null)
-            proto = new PacketRevcMsgScNotify((uint)recvUid, (uint)sendUid, message);
-        else
-            proto = new PacketRevcMsgScNotify((uint)recvUid, (uint)sendUid, (uint)(extraId ?? 0));
-
-        await Player.SendPacket(proto);
+        var data = BuildChatData(sendUid, recvUid, message, extraId);
+        await PushPrivateMessageAsync(sendUid, (uint)sendUid, data);
     }
 
     public async ValueTask ReceiveInviteMessage(int sendUid, int recvUid, object info)
@@ -234,26 +190,71 @@ public class FriendManager(PlayerInstance player) : BasePlayerManager(player)
         var info = new List<ChatMessageData>();
 
         foreach (var chat in history.MessageList)
+        {
+            var chatData = new ChatData();
+            if (chat.ExtraId > 0)
+                chatData.ExtraId = (uint)chat.ExtraId;
+            else
+                chatData.MessageText = chat.Message;
+
             info.Add(new ChatMessageData
             {
                 CreateTime = (ulong)chat.SendTime,
+                ExtraA = new ChatMessageExtra
+                {
+                    Kind = 1,
+                    Value = (ulong)chat.SendUid
+                },
+                ExtraB = new ChatMessageExtra
+                {
+                    Kind = 1,
+                    Value = (ulong)chat.ReceiveUid
+                },
                 MessageDatas =
                 {
                     new MessageChatData
                     {
                         MessageType = chat.ExtraId > 0 ? MsgType.Emoji : MsgType.CustomText,
-                        ChatData = new ChatData
-                        {
-                            MessageText = chat.ExtraId > 0 ? "" : chat.Message,
-                            ExtraId = (uint)(chat.ExtraId > 0 ? chat.ExtraId : 0)
-                        }
+                        ChatData = chatData
                     }
                 }
             });
+        }
 
         info.Reverse();
 
         return info;
+    }
+
+    private static FriendChatData BuildChatData(int sendUid, int recvUid, string? message, int? extraId)
+    {
+        return new FriendChatData
+        {
+            SendUid = sendUid,
+            ReceiveUid = recvUid,
+            Message = message ?? "",
+            ExtraId = extraId ?? 0,
+            SendTime = Extensions.GetUnixSec()
+        };
+    }
+
+    private async ValueTask PushPrivateMessageAsync(int historyKeyUid, uint sourceUid, FriendChatData data)
+    {
+        if (!FriendData.ChatHistory.TryGetValue(historyKeyUid, out var history))
+        {
+            FriendData.ChatHistory[historyKeyUid] = new FriendChatHistory();
+            history = FriendData.ChatHistory[historyKeyUid];
+        }
+
+        history.MessageList.Add(data);
+
+        await Player.SendPacket(
+            new PacketRevcMsgScNotify(
+                sourceUid,
+                (uint)data.ReceiveUid,
+                data.ExtraId > 0 ? null : data.Message,
+                (uint)Math.Max(0, data.ExtraId),
+                data.SendTime));
     }
 
     public List<PlayerData> GetFriendPlayerData(List<int>? uids = null)

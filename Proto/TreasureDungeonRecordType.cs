@@ -43,8 +43,8 @@ namespace March7thHoney.Proto {
             "S0hPQkNCSk4QJBIbChdDRUxNS0pGS0NMS19FSUtETEtPS0hDQRAlEhsKF0NF",
             "TE1LSkZLQ0xLX05JUE9CTkdERUdBECgSGwoXQ0VMTUtKRktDTEtfQlBFSURD",
             "SU9DQ0cQKRIbChdDRUxNS0pGS0NMS19FT01NTEtLRVBMQxAqEhsKF0NFTE1L",
-            "SkZLQ0xLX0lMTk1ORUtCR01NECtCMwoTZW11Lmx1bmFyY29yZS5wcm90b6oC",
-            "G0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
+            "SkZLQ0xLX0lMTk1ORUtCR01NECtCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
+            "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.TreasureDungeonRecordType), }, null, null));

@@ -41,8 +41,7 @@ namespace March7thHoney.Proto {
             "Q21kVHJhdmVsQnJvY2h1cmVSZW1vdmVQYXN0ZXJDc1JlcRC/MhITCg5DbWRB",
             "UEhPTEFOS0VQThDKMhIsCidDbWRUcmF2ZWxCcm9jaHVyZVNldFBhZ2VEZXNj",
             "U3RhdHVzQ3NSZXEQyDISKAojQ21kVHJhdmVsQnJvY2h1cmVQYWdlVW5sb2Nr",
-            "U2NOb3RpZnkQ3jJCMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3Rvcmlj",
-            "ZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
+            "U2NOb3RpZnkQ3jJCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdTravelBrochureType), }, null, null));

@@ -58,8 +58,7 @@ namespace March7thHoney.Proto {
             "YWluaW5nUmVzdG9yZUdhbWVDc1JlcRDBOhIhChxDbWRHZXRTd29yZFRyYWlu",
             "aW5nRGF0YVNjUnNwELg6EicKIkNtZFN3b3JkVHJhaW5pbmdHYW1lU2V0dGxl",
             "U2NOb3RpZnkQojoSKgolQ21kU3dvcmRUcmFpbmluZ01hcmtFbmRpbmdWaWV3",
-            "ZWRDc1JlcRDEOkIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNl",
-            "SG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
+            "ZWRDc1JlcRDEOkIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdSwordTrainingType), }, null, null));

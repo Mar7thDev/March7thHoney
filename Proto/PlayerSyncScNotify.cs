@@ -49,9 +49,8 @@ namespace March7thHoney.Proto {
             "T3V0Zml0SW5mbxIiCgtQRUZNS0xLS0NGShiHCiADKAsyDC5QRkZEQUZKTE5P",
             "TxI4ChdwbGF5ZXJib2FyZF9tb2R1bGVfc3luYxi3CiABKAsyFi5QbGF5ZXJC",
             "b2FyZE1vZHVsZVN5bmMSGwoSZGVsX2VxdWlwbWVudF9saXN0GMILIAMoDRIi",
-            "CgtOQUpOQkNEQklITxisDiADKAsyDC5MQUVIRE5IUEdDQ0IzChNlbXUubHVu",
-            "YXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZw",
-            "cm90bzM="));
+            "CgtOQUpOQkNEQklITxisDiADKAsyDC5MQUVIRE5IUEdDQ0IWqgITTWFyY2g3",
+            "dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.AvatarSyncReflection.Descriptor, global::March7thHoney.Proto.BasicModuleSyncReflection.Descriptor, global::March7thHoney.Proto.DPBEGBNICPGReflection.Descriptor, global::March7thHoney.Proto.EquipmentReflection.Descriptor, global::March7thHoney.Proto.IEBAILGKMLBReflection.Descriptor, global::March7thHoney.Proto.ItemListReflection.Descriptor, global::March7thHoney.Proto.LAEHDNHPGCCReflection.Descriptor, global::March7thHoney.Proto.MaterialReflection.Descriptor, global::March7thHoney.Proto.MissionSyncReflection.Descriptor, global::March7thHoney.Proto.PFFDAFJLNOOReflection.Descriptor, global::March7thHoney.Proto.PlayerBasicInfoReflection.Descriptor, global::March7thHoney.Proto.PlayerBoardModuleSyncReflection.Descriptor, global::March7thHoney.Proto.PlayerOutfitInfoReflection.Descriptor, global::March7thHoney.Proto.QuestReflection.Descriptor, global::March7thHoney.Proto.RelicReflection.Descriptor, global::March7thHoney.Proto.SyncStatusReflection.Descriptor, global::March7thHoney.Proto.WaitDelResourceReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

@@ -1,4 +1,6 @@
 using March7thHoney.Kcp;
+using March7thHoney.Proto;
+using March7thHoney.GameServer.Server.Packet.Send.TalkEvent;
 
 namespace March7thHoney.GameServer.Server.Packet.Recv.TalkEvent;
 
@@ -7,6 +9,7 @@ public class HandlerGetFirstTalkNpcCsReq : Handler
 {
     public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
     {
-        await connection.SendPacket(CmdIds.GetFirstTalkNpcScRsp);
+        var req = GetFirstTalkNpcCsReq.Parser.ParseFrom(data);
+        await connection.SendPacket(new PacketGetFirstTalkNpcScRsp(req));
     }
 }

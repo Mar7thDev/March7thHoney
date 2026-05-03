@@ -27,8 +27,8 @@ namespace March7thHoney.Proto {
             "Cg9DaGVzdFR5cGUucHJvdG8qjAEKCUNoZXN0VHlwZRIcChhNQVBfSU5GT19D",
             "SEVTVF9UWVBFX05PTkUQABIeChpNQVBfSU5GT19DSEVTVF9UWVBFX05PUk1B",
             "TBBlEiEKHU1BUF9JTkZPX0NIRVNUX1RZUEVfQ0hBTExFTkdFEGYSHgoaTUFQ",
-            "X0lORk9fQ0hFU1RfVFlQRV9QVVpaTEUQaEIzChNlbXUubHVuYXJjb3JlLnBy",
-            "b3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
+            "X0lORk9fQ0hFU1RfVFlQRV9QVVpaTEUQaEIWqgITTWFyY2g3dGhIb25leS5Q",
+            "cm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.ChestType), }, null, null));
