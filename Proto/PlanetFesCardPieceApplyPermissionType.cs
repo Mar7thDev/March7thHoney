@@ -27,9 +27,8 @@ namespace March7thHoney.Proto {
             "CitQbGFuZXRGZXNDYXJkUGllY2VBcHBseVBlcm1pc3Npb25UeXBlLnByb3Rv",
             "Kn4KJVBsYW5ldEZlc0NhcmRQaWVjZUFwcGx5UGVybWlzc2lvblR5cGUSGwoX",
             "UFBKUEpLUEpITUdfTktBREZDTUVLR04QABIbChdQUEpQSktQSkhNR19QTUpN",
-            "RUZER09IQxABEhsKF1BQSlBKS1BKSE1HX0hMUEZCTUJES1BQEAJCMwoTZW11",
-            "Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90",
-            "b2IGcHJvdG8z"));
+            "RUZER09IQxABEhsKF1BQSlBKS1BKSE1HX0hMUEZCTUJES1BQEAJCFqoCE01h",
+            "cmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.PlanetFesCardPieceApplyPermissionType), }, null, null));

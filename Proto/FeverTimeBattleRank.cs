@@ -28,8 +28,8 @@ namespace March7thHoney.Proto {
             "bGVSYW5rEhsKF0dLTkxHSUJDTENOX0lKTEpGUEtJRU9QEAASGwoXR0tOTEdJ",
             "QkNMQ05fQUJNQk9NSlBNTkQQARIbChdHS05MR0lCQ0xDTl9FRkxKRERCQ0lG",
             "RBACEhsKF0dLTkxHSUJDTENOX0NLT0RMREVQRVBHEAMSGwoXR0tOTEdJQkNM",
-            "Q05fRENQTkFJTElLRk0QBEIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2Fz",
-            "dG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
+            "Q05fRENQTkFJTElLRk0QBEIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJv",
+            "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.FeverTimeBattleRank), }, null, null));

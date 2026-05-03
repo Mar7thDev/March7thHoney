@@ -29,8 +29,8 @@ namespace March7thHoney.Proto {
             "RGF0YS5wcm90byKQAQoLTkNMQ0lJTUlIREgSEAoIZ3JvdXBfaWQYASABKA0S",
             "NwoLTkZDTEpNQkxGTUsYAyABKAsyIi5QbGF5ZXJDaGFsbGVuZ2VQZWFrUmVj",
             "b3JkQm9zc0RhdGESNgoLRERKSURJS0hBTkgYCyADKAsyIS5QbGF5ZXJDaGFs",
-            "bGVuZ2VQZWFrUmVjb3JkTW9iRGF0YUIzChNlbXUubHVuYXJjb3JlLnByb3Rv",
-            "qgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
+            "bGVuZ2VQZWFrUmVjb3JkTW9iRGF0YUIWqgITTWFyY2g3dGhIb25leS5Qcm90",
+            "b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.PlayerChallengePeakRecordBossDataReflection.Descriptor, global::March7thHoney.Proto.PlayerChallengePeakRecordMobDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

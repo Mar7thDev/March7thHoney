@@ -30,8 +30,7 @@ namespace March7thHoney.Proto {
             "YWxsZW5nZUJvc3NBdmF0YXJSZWxpY0luZm8uQXZhdGFyUmVsaWNTbG90TWFw",
             "RW50cnkaUgoXQXZhdGFyUmVsaWNTbG90TWFwRW50cnkSCwoDa2V5GAEgASgN",
             "EiYKBXZhbHVlGAIgASgLMhcuQ2hhbGxlbmdlQm9zc1JlbGljSW5mbzoCOAFC",
-            "MwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZl",
-            "ci5Qcm90b2IGcHJvdG8z"));
+            "FqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChallengeBossRelicInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

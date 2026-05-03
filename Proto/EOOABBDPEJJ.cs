@@ -57,9 +57,8 @@ namespace March7thHoney.Proto {
             "T0JJRkgAEiQKC0lITkRHQ0hDTkJFGPYLIAEoCzIMLkdQTU5CTUpJRkhKSAAS",
             "JAoLRkhFUERBTEVDTkUY+AsgASgLMgwuSEpNTE5MS0NPSkpIABIkCgtDTlBH",
             "RU5FT0FIQRiaDCABKAsyDC5HSExETUFET0hIRkgAEiQKC0tHQUpOQUhIQUlK",
-            "GK8PIAEoCzIMLkFHTE5ETU1HRk1MSABCDQoLQlBJSEZBSkNMT0NCMwoTZW11",
-            "Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90",
-            "b2IGcHJvdG8z"));
+            "GK8PIAEoCzIMLkFHTE5ETU1HRk1MSABCDQoLQlBJSEZBSkNMT0NCFqoCE01h",
+            "cmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.AGAOJNNBALAReflection.Descriptor, global::March7thHoney.Proto.AGLNDMMGFMLReflection.Descriptor, global::March7thHoney.Proto.BBOGAPHFIBGReflection.Descriptor, global::March7thHoney.Proto.FFFKFKHHEOGReflection.Descriptor, global::March7thHoney.Proto.GCACHJFLGHHReflection.Descriptor, global::March7thHoney.Proto.GGJFDIHCFIHReflection.Descriptor, global::March7thHoney.Proto.GHLDMADOHHFReflection.Descriptor, global::March7thHoney.Proto.GLIFHDOLJMOReflection.Descriptor, global::March7thHoney.Proto.GPMNBMJIFHJReflection.Descriptor, global::March7thHoney.Proto.HBMNFGPKECHReflection.Descriptor, global::March7thHoney.Proto.HFHMIKIFLPOReflection.Descriptor, global::March7thHoney.Proto.HHKHKGDAMNBReflection.Descriptor, global::March7thHoney.Proto.HJMLNLKCOJJReflection.Descriptor, global::March7thHoney.Proto.IEMDAMOLKFLReflection.Descriptor, global::March7thHoney.Proto.IIKMHADLJFLReflection.Descriptor, global::March7thHoney.Proto.JNMOPCFJDPDReflection.Descriptor, global::March7thHoney.Proto.LBJMGIHILGBReflection.Descriptor, global::March7thHoney.Proto.LCEEJNOPNIBReflection.Descriptor, global::March7thHoney.Proto.NCHLAEEOBIFReflection.Descriptor, global::March7thHoney.Proto.OHAOFLALHBLReflection.Descriptor, global::March7thHoney.Proto.PlanetFesUnlockChangeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

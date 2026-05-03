@@ -90,8 +90,8 @@ namespace March7thHoney.Proto {
             "EJBDEhMKDkNtZENFSUlFSE5EUEFKENhEEiUKIENtZEdyaWRGaWdodFNlYXNv",
             "bkhhbmRCb29rTm90aWZ5EJ1DEhMKDkNtZEtNREhMRU5MSU1GELFEEikKJENt",
             "ZEdyaWRGaWdodERlc3Ryb3lXZWVrbHlSZXdhcmRDc1JlcRDZQhIdChhDbWRH",
-            "cmlkRmlnaHRHZXREYXRhQ3NSZXEQ90FCMwoTZW11Lmx1bmFyY29yZS5wcm90",
-            "b6oCG0Nhc3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
+            "cmlkRmlnaHRHZXREYXRhQ3NSZXEQ90FCFqoCE01hcmNoN3RoSG9uZXkuUHJv",
+            "dG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdGridFightType), }, null, null));

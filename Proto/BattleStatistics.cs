@@ -68,8 +68,8 @@ namespace March7thHoney.Proto {
             "UEdOGC4gASgLMgwuUFBORUdNQ0lFQ0UaMwoRQ3VzdG9tVmFsdWVzRW50cnkS",
             "CwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgCOgI4ARpKChVCYXR0bGVUYXJn",
             "ZXRJbmZvRW50cnkSCwoDa2V5GAEgASgNEiAKBXZhbHVlGAIgASgLMhEuQmF0",
-            "dGxlVGFyZ2V0TGlzdDoCOAFCMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nh",
-            "c3RvcmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
+            "dGxlVGFyZ2V0TGlzdDoCOAFCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
+            "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.AvatarBattleInfoReflection.Descriptor, global::March7thHoney.Proto.BEGMHEEKGIFReflection.Descriptor, global::March7thHoney.Proto.BattleAvatarGlobalBuffInfoReflection.Descriptor, global::March7thHoney.Proto.BattleEndReasonReflection.Descriptor, global::March7thHoney.Proto.BattleEventBattleInfoReflection.Descriptor, global::March7thHoney.Proto.BattleGridFightSpecialBattleInfoReflection.Descriptor, global::March7thHoney.Proto.BattleTargetListReflection.Descriptor, global::March7thHoney.Proto.CMJBMFHCOFIReflection.Descriptor, global::March7thHoney.Proto.DCFMPNBKKPFReflection.Descriptor, global::March7thHoney.Proto.DLFPFFOOHKPReflection.Descriptor, global::March7thHoney.Proto.FAGCFBEBKEOReflection.Descriptor, global::March7thHoney.Proto.FPFFHGOKBNKReflection.Descriptor, global::March7thHoney.Proto.JNADLLIIIFPReflection.Descriptor, global::March7thHoney.Proto.KFKHGLEFDKKReflection.Descriptor, global::March7thHoney.Proto.LEHCCNGFKGMReflection.Descriptor, global::March7thHoney.Proto.LFPNDKKDEKNReflection.Descriptor, global::March7thHoney.Proto.LOCPKDNGLKMReflection.Descriptor, global::March7thHoney.Proto.MIGJFGJMCGOReflection.Descriptor, global::March7thHoney.Proto.MonsterBattleInfoReflection.Descriptor, global::March7thHoney.Proto.NJCOFDJNMMLReflection.Descriptor, global::March7thHoney.Proto.PPNEGMCIECEReflection.Descriptor, global::March7thHoney.Proto.StatisticEventReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

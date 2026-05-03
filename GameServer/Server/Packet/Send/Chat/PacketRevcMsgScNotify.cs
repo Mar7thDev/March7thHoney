@@ -5,9 +5,10 @@ namespace March7thHoney.GameServer.Server.Packet.Send.Chat;
 
 public class PacketRevcMsgScNotify : BasePacket
 {
-    public PacketRevcMsgScNotify(uint toUid, uint fromUid, string msg) : base(CmdIds.RevcMsgScNotify)
+    public PacketRevcMsgScNotify(uint fromUid, uint toUid, string? message, uint extraId, long sendTime) : base(
+        CmdIds.RevcMsgScNotify)
     {
-        var chat = BuildText(msg);
+        var chat = BuildChat(fromUid, toUid, message, extraId, sendTime);
 
         var proto = new RevcMsgScNotify
         {
@@ -19,53 +20,33 @@ public class PacketRevcMsgScNotify : BasePacket
         SetData(proto);
     }
 
-    public PacketRevcMsgScNotify(uint toUid, uint fromUid, uint extraId) : base(CmdIds.RevcMsgScNotify)
+    private static ChatMessageData BuildChat(uint fromUid, uint toUid, string? message, uint extraId, long sendTime)
     {
-        var chat = BuildEmoji(extraId);
+        var chatData = new ChatData();
+        if (extraId > 0)
+            chatData.ExtraId = extraId;
+        else
+            chatData.MessageText = message ?? "";
 
-        var proto = new RevcMsgScNotify
-        {
-            ChatType = ChatType.Private,
-            SourceUid = fromUid,
-            RecvMessageData = chat
-        };
-
-        SetData(proto);
-    }
-
-    private static ChatMessageData BuildText(string msg)
-    {
         return new ChatMessageData
         {
-            CreateTime = (ulong)DateTimeOffset.UtcNow.ToUnixTimeSeconds(),
+            CreateTime = (ulong)sendTime,
+            ExtraA = new ChatMessageExtra
+            {
+                Kind = 1,
+                Value = fromUid
+            },
+            ExtraB = new ChatMessageExtra
+            {
+                Kind = 1,
+                Value = toUid
+            },
             MessageDatas =
             {
                 new MessageChatData
                 {
-                    MessageType = MsgType.CustomText,
-                    ChatData = new ChatData
-                    {
-                        MessageText = msg
-                    }
-                }
-            }
-        };
-    }
-
-    private static ChatMessageData BuildEmoji(uint extraId)
-    {
-        return new ChatMessageData
-        {
-            CreateTime = (ulong)DateTimeOffset.UtcNow.ToUnixTimeSeconds(),
-            MessageDatas =
-            {
-                new MessageChatData
-                {
-                    MessageType = MsgType.Emoji,
-                    ChatData = new ChatData
-                    {
-                        ExtraId = extraId
-                    }
+                    MessageType = extraId > 0 ? MsgType.Emoji : MsgType.CustomText,
+                    ChatData = chatData
                 }
             }
         };

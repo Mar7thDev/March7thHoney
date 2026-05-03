@@ -27,9 +27,8 @@ namespace March7thHoney.Proto {
             "CilTd29yZFRyYWluaW5nRGFpbHlQaGFzZUNvbmZpcm1Dc1JlcS5wcm90bxoh",
             "U3dvcmRUcmFpbmluZ0RhaWx5UGhhc2VUeXBlLnByb3RvIlgKI1N3b3JkVHJh",
             "aW5pbmdEYWlseVBoYXNlQ29uZmlybUNzUmVxEjEKC0JGUEZETUdNQ0FJGAQg",
-            "ASgOMhwuU3dvcmRUcmFpbmluZ0RhaWx5UGhhc2VUeXBlQjMKE2VtdS5sdW5h",
-            "cmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnBy",
-            "b3RvMw=="));
+            "ASgOMhwuU3dvcmRUcmFpbmluZ0RhaWx5UGhhc2VUeXBlQhaqAhNNYXJjaDd0",
+            "aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.SwordTrainingDailyPhaseTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

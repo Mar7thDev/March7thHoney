@@ -91,8 +91,8 @@ namespace March7thHoney.Proto {
             "b3RpZnkQjzcSGgoVQ21kR2V0TWJ0aVJlcG9ydENzUmVxEOQ2EiQKH0NtZE1v",
             "bm9wb2x5Q2xpY2tNYnRpUmVwb3J0Q3NSZXEQhTcSJgohQ21kTW9ub3BvbHlH",
             "ZXRSYWZmbGVQb29sSW5mb1NjUnNwEOc2EiEKHENtZE1vbm9wb2x5VXBncmFk",
-            "ZUFzc2V0Q3NSZXEQhDdCMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3Rv",
-            "cmljZUhvbmV5LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
+            "ZUFzc2V0Q3NSZXEQhDdCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
+            "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdMonopolyType), }, null, null));

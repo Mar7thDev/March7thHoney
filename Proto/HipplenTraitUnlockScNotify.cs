@@ -26,8 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiBIaXBwbGVuVHJhaXRVbmxvY2tTY05vdGlmeS5wcm90byI7ChpIaXBwbGVu",
             "VHJhaXRVbmxvY2tTY05vdGlmeRIdChVncmlkX2ZpZ2h0X3RyYWl0X2luZm8Y",
-            "DSADKA1CMwoTZW11Lmx1bmFyY29yZS5wcm90b6oCG0Nhc3RvcmljZUhvbmV5",
-            "LlNlcnZlci5Qcm90b2IGcHJvdG8z"));
+            "DSADKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

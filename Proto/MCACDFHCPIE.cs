@@ -25,9 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFNQ0FDREZIQ1BJRS5wcm90bxoRTE1JRkpCTEpGSFAucHJvdG8iMAoLTUNB",
-            "Q0RGSENQSUUSIQoLSEFIS0tFREtNQ0EYAiADKAsyDC5MTUlGSkJMSkZIUEIz",
-            "ChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVy",
-            "LlByb3RvYgZwcm90bzM="));
+            "Q0RGSENQSUUSIQoLSEFIS0tFREtNQ0EYAiADKAsyDC5MTUlGSkJMSkZIUEIW",
+            "qgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.LMIFJBLJFHPReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

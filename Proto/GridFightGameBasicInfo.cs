@@ -42,9 +42,8 @@ namespace March7thHoney.Proto {
             "bxikAiABKAsyEi5HcmlkRmlnaHRMb2NrSW5mbxIlChxncmlkX2ZpZ2h0X3Rh",
             "cmdldF9ndWlkZV9jb2RlGM4CIAEoCRJEChxncmlkX2ZpZ2h0X3N5bmNfY3Vy",
             "dGFza19pbmZvGJ4EIAEoCzIdLkdyaWRGaWdodFN5bmNDdXJyZW50VGFza0lu",
-            "Zm8SIAoXdHV0b3JpYWxfdW5sb2NrX2lkX2xpc3QYzQ0gAygNQjMKE2VtdS5s",
-            "dW5hcmNvcmUucHJvdG+qAhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9i",
-            "BnByb3RvMw=="));
+            "Zm8SIAoXdHV0b3JpYWxfdW5sb2NrX2lkX2xpc3QYzQ0gAygNQhaqAhNNYXJj",
+            "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridFightLockInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightLockTypeReflection.Descriptor, global::March7thHoney.Proto.GridFightSyncCurrentTaskInfoReflection.Descriptor, global::March7thHoney.Proto.RoleTrackEquipmentInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

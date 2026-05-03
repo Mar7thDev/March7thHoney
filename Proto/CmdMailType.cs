@@ -30,8 +30,8 @@ namespace March7thHoney.Proto {
             "ZW50U2NSc3AQggcSHwoaQ21kVGFrZU1haWxBdHRhY2htZW50Q3NSZXEQqQYS",
             "FwoSQ21kTmV3TWFpbFNjTm90aWZ5EN8GEhQKD0NtZERlbE1haWxDc1JlcRCu",
             "BhIUCg9DbWRHZXRNYWlsU2NSc3AQqgYSFAoPQ21kRGVsTWFpbFNjUnNwELIG",
-            "EhMKDkNtZExPSEdCTkFJQUlMEP8GQjMKE2VtdS5sdW5hcmNvcmUucHJvdG+q",
-            "AhtDYXN0b3JpY2VIb25leS5TZXJ2ZXIuUHJvdG9iBnByb3RvMw=="));
+            "EhMKDkNtZExPSEdCTkFJQUlMEP8GQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
+            "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdMailType), }, null, null));

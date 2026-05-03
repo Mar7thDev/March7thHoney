@@ -65,8 +65,8 @@ namespace March7thHoney.Proto {
             "DSABKAsyIi5HcmlkRmlnaHRVcGdyYWRlRXF1aXBBY3Rpb25SZXN1bHRIABIk",
             "CgtIUE1OT0dHTUtLSBisDSABKAsyDC5QUENKQkRIREhMTEgAEjgKDmF1Z21l",
             "bnRfYWN0aW9uGJ8PIAEoCzIdLkdyaWRGaWdodEF1Z21lbnRBY3Rpb25SZXN1",
-            "bHRIAEINCgtCR0dCSU1CS0hFSUIzChNlbXUubHVuYXJjb3JlLnByb3RvqgIb",
-            "Q2FzdG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
+            "bHRIAEINCgtCR0dCSU1CS0hFSUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IG",
+            "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.EKJGGLLEELKReflection.Descriptor, global::March7thHoney.Proto.ENIHADNBFFIReflection.Descriptor, global::March7thHoney.Proto.GridFightAugmentActionResultReflection.Descriptor, global::March7thHoney.Proto.GridFightAugmentRerollActionResultReflection.Descriptor, global::March7thHoney.Proto.GridFightEliteBranchActionResultReflection.Descriptor, global::March7thHoney.Proto.GridFightForgeRoleActionResultReflection.Descriptor, global::March7thHoney.Proto.GridFightPortalBuffActionResultReflection.Descriptor, global::March7thHoney.Proto.GridFightPortalBuffRerollActionResultReflection.Descriptor, global::March7thHoney.Proto.GridFightRecommendEquipmentActionResultReflection.Descriptor, global::March7thHoney.Proto.GridFightReturnPreparationActionResultReflection.Descriptor, global::March7thHoney.Proto.GridFightRoundBeginActionResultReflection.Descriptor, global::March7thHoney.Proto.GridFightSupplyActionResultReflection.Descriptor, global::March7thHoney.Proto.GridFightSupplyRerollActionResultReflection.Descriptor, global::March7thHoney.Proto.GridFightTraitActionResultReflection.Descriptor, global::March7thHoney.Proto.GridFightUpgradeEquipActionResultReflection.Descriptor, global::March7thHoney.Proto.JFKOCHAJKDGReflection.Descriptor, global::March7thHoney.Proto.KKIPICBFJPMReflection.Descriptor, global::March7thHoney.Proto.LFKEDPPLOKLReflection.Descriptor, global::March7thHoney.Proto.PPCJBDHDHLLReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

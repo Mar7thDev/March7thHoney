@@ -39,8 +39,8 @@ namespace March7thHoney.Proto {
             "CnJlbGljX2xpc3QYDCADKAsyBi5SZWxpYxIhCgtPS0dDR01DTVBKShgNIAMo",
             "CzIMLkFORE1MSUVHUEtFEhMKC0lLRUFGR0NQRUNLGA4gAygNEiAKDW1hdGVy",
             "aWFsX2xpc3QYDyADKAsyCS5NYXRlcmlhbBIiCgtQRUZNS0xLS0NGShihAyAD",
-            "KAsyDC5QRkZEQUZKTE5PT0IzChNlbXUubHVuYXJjb3JlLnByb3RvqgIbQ2Fz",
-            "dG9yaWNlSG9uZXkuU2VydmVyLlByb3RvYgZwcm90bzM="));
+            "KAsyDC5QRkZEQUZKTE5PT0IWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJv",
+            "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ANDMLIEGPKEReflection.Descriptor, global::March7thHoney.Proto.EquipmentReflection.Descriptor, global::March7thHoney.Proto.JLAEDKMBGEKReflection.Descriptor, global::March7thHoney.Proto.MaterialReflection.Descriptor, global::March7thHoney.Proto.PFFDAFJLNOOReflection.Descriptor, global::March7thHoney.Proto.PileItemReflection.Descriptor, global::March7thHoney.Proto.RelicReflection.Descriptor, global::March7thHoney.Proto.TurnFoodSwitchReflection.Descriptor, global::March7thHoney.Proto.WaitDelResourceReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

@@ -75,7 +75,7 @@ public class DatabaseConfig
 
 public class ServerOption
 {
-    public string DefaultNickname { get; set; } = "march7th";
+    public string DefaultNickname { get; set; } = "March7thHoney";
     public int StartTrailblazerLevel { get; set; } = 1;
     public bool AutoUpgradeWorldLevel { get; set; } = true;
     public bool EnableMission { get; set; } = false; // experimental

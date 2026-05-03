@@ -25,9 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChxDbWRGaWdodERpY2VDb21iYXRUeXBlLnByb3RvKjUKFkNtZEZpZ2h0RGlj",
-            "ZUNvbWJhdFR5cGUSGwoXTU9JSkZNRUdPR0NfUENQREhFTFBLRU0QAEIzChNl",
-            "bXUubHVuYXJjb3JlLnByb3RvqgIbQ2FzdG9yaWNlSG9uZXkuU2VydmVyLlBy",
-            "b3RvYgZwcm90bzM="));
+            "ZUNvbWJhdFR5cGUSGwoXTU9JSkZNRUdPR0NfUENQREhFTFBLRU0QAEIWqgIT",
+            "TWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdFightDiceCombatType), }, null, null));

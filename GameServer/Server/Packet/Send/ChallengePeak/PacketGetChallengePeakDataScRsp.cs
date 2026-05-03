@@ -9,12 +9,17 @@ public class PacketGetChallengePeakDataScRsp : BasePacket
 {
     public PacketGetChallengePeakDataScRsp(PlayerInstance player) : base(CmdIds.GetChallengePeakDataScRsp)
     {
+        var currentGroupId = GameData.GetCurrentChallengePeakGroupId();
+        if (!GameData.ChallengePeakGroupConfigData.ContainsKey(currentGroupId) &&
+            GameData.ChallengePeakGroupConfigData.Count > 0)
+            currentGroupId = GameData.ChallengePeakGroupConfigData.Keys.Max();
+
         var proto = new GetChallengePeakDataScRsp
         {
-            CurrentPeakGroupId = (uint)GameData.GetCurrentChallengePeakGroupId()
+            CurrentPeakGroupId = (uint)currentGroupId
         };
 
-        foreach (var groupId in GameData.ChallengePeakGroupConfigData.Keys)
+        foreach (var groupId in GameData.ChallengePeakGroupConfigData.Keys.OrderBy(x => x))
             proto.ChallengePeakGroups.Add(player.ChallengePeakManager!.GetChallengePeakInfo(groupId));
 
         SetData(proto);
