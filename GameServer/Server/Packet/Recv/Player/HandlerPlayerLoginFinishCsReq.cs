@@ -1,5 +1,6 @@
 using March7thHoney.Kcp;
 using March7thHoney.Database.Inventory;
+using March7thHoney.GameServer.Server.Packet.Send.DailyActive;
 using March7thHoney.GameServer.Server.Packet.Send.Player;
 
 namespace March7thHoney.GameServer.Server.Packet.Recv.Player;
@@ -15,5 +16,6 @@ public class HandlerPlayerLoginFinishCsReq : Handler
             ItemId = 1,
             Count = 90
         }]));
+        await connection.SendPacket(new PacketDailyActiveInfoNotify());
     }
 }
