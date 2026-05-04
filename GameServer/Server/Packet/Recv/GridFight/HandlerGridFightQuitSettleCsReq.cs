@@ -10,8 +10,14 @@ public class HandlerGridFightQuitSettleCsReq : Handler
     public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
     {
         _ = GridFightQuitSettleCsReq.Parser.ParseFrom(data);
-        await connection.SendPacket(new PacketGridFightSettleNotify(connection.Player!));
-        connection.Player!.GridFightManager!.GridFightInstance = null;
+        var player = connection.Player!;
+        var keepWinCnt = player.GridFightManager?.GridFightInstance?.KeepWinCnt ?? 0;
+
+        await connection.SendPacket(new PacketGridFightWeeklyExtraSeasonExpScRsp());
+        await connection.SendPacket(new PacketGridFightSyncKeepWinCntNotify(keepWinCnt));
+        await connection.SendPacket(new PacketGridFightSettleNotify(player));
+        player.GridFightManager!.GridFightInstance = null;
+
         var rsp = new BasePacket((ushort)CmdIds.GCOBEPOGHPL);
         rsp.SetData(new GCOBEPOGHPL());
         await connection.SendPacket(rsp);
