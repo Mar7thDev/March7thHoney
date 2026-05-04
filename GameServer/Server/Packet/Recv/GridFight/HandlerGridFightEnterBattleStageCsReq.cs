@@ -11,18 +11,12 @@ public class HandlerGridFightEnterBattleStageCsReq : Handler
     {
         _ = GridFightEnterBattleStageCsReq.Parser.ParseFrom(data);
         var player = connection.Player!;
-        var inst = player.GridFightManager!.GridFightInstance;
+        var inst = player.GridFightManager?.GridFightInstance;
+
         if (inst != null)
         {
-            var battleAvatarIds = inst.BuildBattleAvatarIds();
-            if (battleAvatarIds.Count > 0)
-            {
-                var lineupIndex = player.LineupManager!.LineupData.GetCurLineupIndex();
-                await player.LineupManager.ReplaceLineup(lineupIndex, battleAvatarIds);
-            }
+            await connection.SendPacket(new PacketGridFightSeasonHandBookNotify(inst.BuildHandbookNotifyForBattle()));
         }
-
-        var battle = inst?.StartBattle();
-        await connection.SendPacket(new PacketGridFightEnterBattleStageScRsp(battle));
+        await connection.SendPacket(new PacketGridFightEnterBattleStageScRsp(inst));
     }
 }

@@ -10,7 +10,20 @@ public class HandlerGridFightStartGamePlayCsReq : Handler
     public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
     {
         var req = GridFightStartGamePlayCsReq.Parser.ParseFrom(data);
-        connection.Player!.GridFightManager!.StartGamePlay(req.Season, req.DivisionId, req.IsOverlock);
-        await connection.SendPacket(new PacketINHDFEIOBNK(connection.Player!));
+        var player = connection.Player!;
+        var (_, inst) = player.GridFightManager!.StartGamePlay(req.Season, req.DivisionId, req.IsOverlock);
+        if (inst != null && inst.PendingAction == null)
+        {
+            inst.PendingAction = new GridFightPendingAction
+            {
+                QueuePosition = inst.QueuePosition,
+                PortalBuffAction = new GridFightPortalBuffActionInfo
+                {
+                    FCHPJKAIBHB = 1,
+                    GridFightPortalBuffList = { 1115u, 106u, 147u }
+                }
+            };
+        }
+        await connection.SendPacket(new PacketINHDFEIOBNK(player));
     }
 }
