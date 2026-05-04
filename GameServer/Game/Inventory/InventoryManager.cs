@@ -126,7 +126,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
                     break;
                 }
 
-                (_, itemData) = await HandleRelic(itemId, ++Data.NextUniqueId, 0);
+                (_, itemData) = await HandleRelic(itemId, ++Data.NextUniqueId, level, sync: sync);
                 break;
             case ItemMainTypeEnum.Virtual:
                 var actualCount = 0;
@@ -516,7 +516,8 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
     }
 
     public async ValueTask<(int, ItemData?)> HandleRelic(
-        int relicId, int uniqueId, int level, int mainAffixId = 0, List<(int, int)>? subAffixes = null)
+        int relicId, int uniqueId, int level, int mainAffixId = 0, List<(int, int)>? subAffixes = null,
+        bool sync = true)
     {
         // Excel
         GameData.RelicConfigData.TryGetValue(relicId, out var itemConfig);
@@ -555,7 +556,16 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
         var remainUpCnt = level / 3 - (4 - initSubCnt) - subAffixes.Sum(x => x.Item2);
         relic.IncreaseRandomRelicSubAffix(remainUpCnt); // Level up
 
-        await Player.InventoryManager!.AddItem(relic, false);
+        if (sync)
+        {
+            await Player.InventoryManager!.AddItem(relic, false);
+        }
+        else
+        {
+            await PutItem(relic.ItemId, relic.Count, relic.Rank, relic.Promotion, relic.Level,
+                relic.Exp, relic.TotalExp, relic.MainAffix, relic.SubAffixes,
+                relic.ReforgeSubAffixes, relic.UniqueId);
+        }
         return (0, relic);
     }
 
