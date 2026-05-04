@@ -30,11 +30,11 @@ public class PacketGridFightEnterBattleStageScRsp : BasePacket
             LogicRandomSeed = (uint)(DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() & 0x7fffffff),
             AFCMOOFGBPK = new OGEOMDJIAGI
             {
-                BBDOCJGAEEJ = inst.BattleMaxHp,
+                BBDOCJGAEEJ = inst.DivisionId,
                 LFKBMDHKPFI = 90303,
                 ANBBPPHBCJH = 3,
                 HDCAEIKAPND = 3,
-                OOPPKDAFFDG = 107,
+                OOPPKDAFFDG = 44,
                 Season = inst.Season,
                 IsOverlock = inst.IsOverLock,
                 GridFightLineupHp = inst.LineupHp,
@@ -42,7 +42,7 @@ public class PacketGridFightEnterBattleStageScRsp : BasePacket
                 {
                     BNLHIMHFGDK = 1,
                     DCPKPNLKGMM = inst.Level,
-                    NDOCIKPLKIF = inst.NDOCIKPLKIF,
+                    NDOCIKPLKIF = 1600,
                     SectionId = inst.SectionId
                 }
             }
@@ -55,6 +55,36 @@ public class PacketGridFightEnterBattleStageScRsp : BasePacket
         {
             info.BattleAvatarList.Add(av);
             info.AFCMOOFGBPK.PIDIGFGKAMK.Add(av);
+        }
+
+        foreach (var (pos, uniqueId) in inst.UniqueIdByPos.OrderBy(kv => kv.Key))
+        {
+            if (pos == 0 || pos > 4) continue;
+            if (uniqueId == 0 || !inst.RoleByUniqueId.TryGetValue(uniqueId, out var avatarId)) continue;
+
+            var roleInfo = new JAJOBJJPINN
+            {
+                RoleId = avatarId,
+                AvatarId = avatarId,
+                Pos = pos,
+                UniqueId = uniqueId,
+                RoleStar = inst.RoleStarByUniqueId.GetValueOrDefault(uniqueId, 1u),
+                GJEHIGGNIAP = new IFDFHPAMHCL()
+            };
+            roleInfo.ConvertPropertyToFixpoint.Add(32, 180);
+            roleInfo.ConvertPropertyToFixpoint.Add(33, 480);
+            roleInfo.ConvertPropertyToFixpoint.Add(34, 440);
+            roleInfo.ConvertPropertyToFixpoint.Add(44, 304);
+            roleInfo.ConvertPropertyToFixpoint.Add(49, 180);
+            roleInfo.ConvertPropertyToFixpoint.Add(52, 240);
+            roleInfo.ConvertPropertyToFixpoint.Add(53, 480);
+            roleInfo.ConvertPropertyToFixpoint.Add(57, 240);
+            roleInfo.ConvertPropertyToFixpoint.Add(59, 450);
+            roleInfo.ConvertPropertyToFixpoint.Add(1013, 100);
+            roleInfo.ConvertPropertyToFixpoint.Add(1014, 100);
+            roleInfo.ConvertPropertyToFixpoint.Add(1019, 100);
+            roleInfo.ConvertPropertyToFixpoint.Add(1025, 100);
+            info.AFCMOOFGBPK.GridGameRoleList.Add(roleInfo);
         }
 
         // 怪物波（参考抓包 seq 462 一波 3 怪）
