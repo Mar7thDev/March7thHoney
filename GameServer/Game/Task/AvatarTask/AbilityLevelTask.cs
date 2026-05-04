@@ -164,39 +164,53 @@ public class AbilityLevelTask(PlayerInstance player)
 
         if (param.Act is AdventureTriggerAttack adventureTriggerAttack)
         {
-            var methodName = adventureTriggerAttack.AttackTargetType.Type.Replace("RPG.GameCore.", "");
-            var method = GetOrCreateExecuteTask(methodName);
-            if (method == null) return new AbilityLevelResult();
-            var resp = await method(param with { TargetEvaluator = adventureTriggerAttack.AttackTargetType });
-
-            if (resp is List<BaseGameEntity> target)
+            // 解析命中目标：优先用 AttackTargetType 求值，缺失时回落到客户端在请求里报告的命中怪物
+            List<BaseGameEntity> target;
+            if (!string.IsNullOrEmpty(adventureTriggerAttack.AttackTargetType.Type))
             {
-                foreach (var task in adventureTriggerAttack.OnAttack)
+                var methodName = adventureTriggerAttack.AttackTargetType.Type.Replace("RPG.GameCore.", "");
+                var method = GetOrCreateExecuteTask(methodName);
+                if (method == null) return new AbilityLevelResult();
+                var resp = await method(param with { TargetEvaluator = adventureTriggerAttack.AttackTargetType });
+                if (resp is not List<BaseGameEntity> t) return new AbilityLevelResult();
+                target = t;
+            }
+            else
+            {
+                target = [.. param.TargetEntities];
+            }
+
+            foreach (var task in adventureTriggerAttack.OnAttack)
+            {
+                var result = await TriggerTask(param with { Act = task, TargetEntities = target });
+                if (result.BattleInfos != null) battleInfos.AddRange(result.BattleInfos);
+            }
+
+            // 仅当 ability 显式声明要开战时才开战：
+            // - TriggerBattle: true（旧式）
+            // - EnterBattleSelectTargetType 非空（新式，如 Evanescia 的 AllHitTarget）
+            var shouldTriggerBattle = adventureTriggerAttack.TriggerBattle
+                                      || !string.IsNullOrEmpty(adventureTriggerAttack.EnterBattleSelectTargetType);
+
+            if (target.Count > 0 && shouldTriggerBattle)
+            {
+                foreach (var task in adventureTriggerAttack.OnBattle)
                 {
-                    var result = await TriggerTask(param with { Act = task });
+                    var result = await TriggerTask(param with { Act = task, TargetEntities = target });
                     if (result.BattleInfos != null) battleInfos.AddRange(result.BattleInfos);
                 }
 
-                if (target.Count > 0 && adventureTriggerAttack.TriggerBattle)
+                foreach (var entity in target)
                 {
-                    foreach (var task in adventureTriggerAttack.OnBattle)
-                    {
-                        var result = await TriggerTask(param with { Act = task });
-                        if (result.BattleInfos != null) battleInfos.AddRange(result.BattleInfos);
-                    }
+                    var type = MonsterBattleType.TriggerBattle;
+                    if (entity is EntityMonster { IsAlive: false })
+                        type = MonsterBattleType.DirectDieSkipBattle;
 
-                    foreach (var entity in param.TargetEntities)
-                    {
-                        var type = MonsterBattleType.TriggerBattle;
-                        if (entity is EntityMonster { IsAlive: false })
-                            type = MonsterBattleType.DirectDieSkipBattle;
-
-                        battleInfos.Add(new HitMonsterInstance(entity.EntityId, type));
-                    }
-
-                    instance = await Player.BattleManager!.StartBattle(param.CasterEntity, param.TargetEntities,
-                        param.Request.SkillIndex == 1);
+                    battleInfos.Add(new HitMonsterInstance(entity.EntityId, type));
                 }
+
+                instance = await Player.BattleManager!.StartBattle(param.CasterEntity, target,
+                    param.Request.SkillIndex == 1);
             }
         }
 
