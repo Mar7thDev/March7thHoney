@@ -186,11 +186,15 @@ public class AbilityLevelTask(PlayerInstance player)
                 if (result.BattleInfos != null) battleInfos.AddRange(result.BattleInfos);
             }
 
-            // 仅当 ability 显式声明要开战时才开战：
-            // - TriggerBattle: true（旧式）
+            // 开战判定：
+            // - TriggerBattle: true（旧式 ability 显式声明）
             // - EnterBattleSelectTargetType 非空（新式，如 Evanescia 的 AllHitTarget）
+            // - 普攻（SkillIndex == 0）命中怪物：开放世界进入战斗的核心机制，
+            //   官方依赖客户端在请求里报告 assistMonsterEntityIdList 而非 ability 配置驱动
+            var hasHitMonster = target.OfType<EntityMonster>().Any(x => x.IsAlive);
             var shouldTriggerBattle = adventureTriggerAttack.TriggerBattle
-                                      || !string.IsNullOrEmpty(adventureTriggerAttack.EnterBattleSelectTargetType);
+                                      || !string.IsNullOrEmpty(adventureTriggerAttack.EnterBattleSelectTargetType)
+                                      || (param.Request.SkillIndex == 0 && hasHitMonster);
 
             if (target.Count > 0 && shouldTriggerBattle)
             {
