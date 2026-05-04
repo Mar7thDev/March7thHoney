@@ -21,6 +21,7 @@ public class AdventureTriggerAttack : TaskConfigInfo
     public bool HitTargetFaceToAttacker { get; set; }
     public bool TriggerBattleByAllHitTarget { get; set; }
     public bool AttackDetectCollision { get; set; }
+    public string EnterBattleSelectTargetType { get; set; } = "";
 
 
     public new static TaskConfigInfo LoadFromJsonObject(JObject obj)
@@ -71,6 +72,8 @@ public class AdventureTriggerAttack : TaskConfigInfo
             info.TriggerBattleByAllHitTarget = value.ToObject<bool>();
         if (obj.TryGetValue(nameof(AttackDetectCollision), out value))
             info.AttackDetectCollision = value.ToObject<bool>();
+        if (obj.TryGetValue(nameof(EnterBattleSelectTargetType), out value))
+            info.EnterBattleSelectTargetType = value.ToObject<string>() ?? "";
         return info;
     }
 }
