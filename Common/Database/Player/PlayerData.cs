@@ -15,7 +15,7 @@ public class PlayerData : BaseDatabaseDataHelper
     public string? Name { get; set; } = "";
     public string? Signature { get; set; } = "";
     public int Birthday { get; set; } = 0;
-    public int CurBasicType { get; set; } = 8001;
+    public int CurBasicType { get; set; } = 8002;
     public int HeadIcon { get; set; } = 208001;
     public int PhoneTheme { get; set; } = 221000;
     public int ChatBubble { get; set; } = 220000;
@@ -24,7 +24,7 @@ public class PlayerData : BaseDatabaseDataHelper
     public int CurrentBgm { get; set; } = 210007;
     public int CurrentPamSkin { get; set; } = 252000;
     public bool IsGenderSet { get; set; } = false;
-    public Gender CurrentGender { get; set; } = Gender.Man;
+    public Gender CurrentGender { get; set; } = Gender.Woman;
     public int Level { get; set; } = 1;
     public int Exp { get; set; } = 0;
     public int WorldLevel { get; set; } = 0;

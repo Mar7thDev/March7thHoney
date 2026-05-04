@@ -129,7 +129,7 @@ public class LogOption
 
 public class ServerAnnounce
 {
-    public bool EnableAnnounce { get; set; } = true;
+    public bool EnableAnnounce { get; set; } = false;
     public string AnnounceContent { get; set; } = "Welcome to March7thHoney!";
 }
 

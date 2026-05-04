@@ -16,8 +16,7 @@ public class CommandJson : ICommand
 {
     private static readonly string[] JsonDirectoryRelativePaths =
     [
-        "Config/Json",
-        "Config/Custom"
+        "Config/Json"
     ];
 
     private static readonly JsonSerializerOptions JsonOptions = new()

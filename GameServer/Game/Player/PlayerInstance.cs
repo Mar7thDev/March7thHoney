@@ -130,7 +130,7 @@ public partial class PlayerInstance(PlayerData data)
         {
             await InitialPlayerManager();
 
-            await AddAvatar(8001);
+            await AddAvatar(8002);
             await AddAvatar(1001);
             if (ConfigManager.Config.ServerOption.EnableMission)
             {
@@ -138,9 +138,9 @@ public partial class PlayerInstance(PlayerData data)
             }
             else
             {
-                await LineupManager!.AddAvatarToCurTeam(8001);
-                Data.CurrentGender = Gender.Man;
-                Data.CurBasicType = 8001;
+                await LineupManager!.AddAvatarToCurTeam(8002);
+                Data.CurrentGender = Gender.Woman;
+                Data.CurBasicType = 8002;
             }
         });
         t.Wait();
