@@ -383,5 +383,5 @@ Config/Database/
 
 # Local GM handbook output
 GM Handbook/
-
+*.db
 Config/Hotfix.json
