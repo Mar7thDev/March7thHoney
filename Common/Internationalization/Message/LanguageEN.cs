@@ -177,6 +177,14 @@ public class ServerInfoTextEN
     public string WaitForAllDone => "Cannot enter the game yet. Please wait until all items are loaded before trying again.";
 
     public string UnhandledException => "An unhandled exception occurred: {0}";
+    public string LicenseFileNotFound => "License file not found: {0}";
+    public string LicenseInvalid => "License invalid. Please get authorization from {0}";
+    public string LicenseParseFailed => "License parse failed.";
+    public string LicenseExpired => "License expired.";
+    public string LicenseHwidMismatch => "License HWID mismatch.";
+    public string LicenseCurrentHwid => "Current machine HWID: {0}";
+    public string LicenseVerified => "License verified for {0}. Expires at: {1}";
+    public string LicenseValidateFailed => "Failed to validate License.";
 }
 
 #endregion

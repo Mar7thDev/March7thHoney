@@ -15,6 +15,7 @@ using March7thHoney.Kcp;
 using March7thHoney.Program.Generator;
 using March7thHoney.Program.Handbook;
 using March7thHoney.Util;
+using March7thHoney.Util.License;
 using March7thHoney.WebServer;
 using March7thHoney.WebServer.Server;
 using System.Globalization;
@@ -31,6 +32,7 @@ public class EntryPoint
 
     public static async Task Main(string[] args)
     {
+        var publicMode = PublicModeSwitch.Enabled;
         IConsole.InitConsole();
         IConsole.RedrawInput(IConsole.Input);
         AppDomain.CurrentDomain.ProcessExit += (_, _) =>
@@ -111,7 +113,7 @@ public class EntryPoint
         // Load the config
         try
         {
-            ConfigManager.LoadConfig();
+            ConfigManager.LoadConfig(publicMode);
         }
         catch (Exception e)
         {
@@ -140,6 +142,22 @@ public class EntryPoint
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem", I18NManager.Translate("Word.Language")));
         ConfigManager.Logger.Info(
             I18NManager.Translate("Server.ServerInfo.CurrentVersion", GameConstants.GAME_VERSION));
+        if (publicMode)
+        {
+            Logger.Warn("Public mode enabled.");
+            if (!LicenseManager.ValidateInPublicMode())
+            {
+                Logger.Warn("Public mode validation failed. Program loading has been stopped.");
+                if (!Console.IsInputRedirected)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Press Enter to close...");
+                    Console.ReadLine();
+                }
+
+                return;
+            }
+        }
 
         // Initialize the database
         try
@@ -419,6 +437,7 @@ public class EntryPoint
         IConsole.ListenConsole();
     }
 
+
     public static ConfigContainer GetConfig()
     {
         return ConfigManager.Config;
@@ -445,3 +464,4 @@ public class EntryPoint
         }
     }
 }
+
