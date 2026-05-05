@@ -13,6 +13,7 @@ public class ChallengeData : BaseDatabaseDataHelper
     [SugarColumn] public string Instance { get; set; } = ""; // placeholder
 
     [SugarColumn(IsJson = true)] public Dictionary<int, ChallengeGroupReward> TakenRewards { get; set; } = new();
+    [SugarColumn(IsJson = true)] public Dictionary<int, List<int>> PeakTakenRewardIds { get; set; } = new();
     [SugarColumn(IsJson = true)] public Dictionary<int, ChallengePeakLevelData> PeakLevelDatas { get; set; } = new();
 
     [SugarColumn(IsJson = true)]
