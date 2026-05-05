@@ -225,7 +225,9 @@ public class LineupManager : BasePlayerManager
             }
             else
             {
-                if (baseAvatarId > 8000) baseAvatarId = 8001;
+                // 仅当 avatarId 不是有效角色时才回退到男主，避免把女主/其他命途主角强制锁成 8001
+                if (baseAvatarId > 8000 && !GameData.AvatarConfigData.ContainsKey(baseAvatarId))
+                    baseAvatarId = 8001;
             }
 
             lineup = new LineupInfo
@@ -256,7 +258,9 @@ public class LineupManager : BasePlayerManager
             }
             else
             {
-                if (baseAvatarId > 8000) baseAvatarId = 8001;
+                // 仅当 avatarId 不是有效角色时才回退到男主，避免把女主/其他命途主角强制锁成 8001
+                if (baseAvatarId > 8000 && !GameData.AvatarConfigData.ContainsKey(baseAvatarId))
+                    baseAvatarId = 8001;
             }
 
             lineup.BaseAvatars?.Add(new LineupAvatarInfo
