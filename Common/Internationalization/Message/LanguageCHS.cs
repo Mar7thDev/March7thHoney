@@ -177,6 +177,14 @@ public class ServerInfoTextCHS
     public string WaitForAllDone => "现在还不可以进入游戏，请等待所有项目加载完成后再试";
 
     public string UnhandledException => "发生未经处理的异常：{0}";
+    public string LicenseFileNotFound => "未找到许可证文件：{0}";
+    public string LicenseInvalid => "许可证无效，请前往 {0} 获取授权";
+    public string LicenseParseFailed => "许可证解析失败。";
+    public string LicenseExpired => "许可证已过期。";
+    public string LicenseHwidMismatch => "许可证 HWID 不匹配。";
+    public string LicenseCurrentHwid => "当前机器 HWID：{0}";
+    public string LicenseVerified => "许可证校验通过：{0}，过期时间：{1}";
+    public string LicenseValidateFailed => "许可证校验失败。";
 }
 
 #endregion

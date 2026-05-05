@@ -1,5 +1,6 @@
 using March7thHoney.Configuration;
 using March7thHoney.Internationalization;
+using March7thHoney.Util.License;
 using Newtonsoft.Json;
 
 namespace March7thHoney.Util;
@@ -9,12 +10,17 @@ public static class ConfigManager
     public static readonly Logger Logger = new("ConfigManager");
     private static readonly string ConfigFilePath = "Config.json";
     private static string HotfixFilePath => Config.Path.ConfigPath + "/Hotfix.json";
+    public static bool IsPublicMode { get; private set; }
     public static ConfigContainer Config { get; private set; } = new();
     public static HotfixContainer Hotfix { get; private set; } = new();
 
-    public static void LoadConfig()
+    public static void LoadConfig(bool publicMode = false)
     {
-        LoadConfigData();
+        IsPublicMode = publicMode;
+        if (IsPublicMode)
+            LoadPublicConfigData();
+        else
+            LoadConfigData();
         LoadHotfixData();
     }
 
@@ -51,6 +57,11 @@ public static class ConfigManager
         }
 
         SaveData(Config, ConfigFilePath);
+    }
+
+    private static void LoadPublicConfigData()
+    {
+        Config = PublicConfigProvider.Create();
     }
 
     private static void LoadHotfixData()
@@ -108,3 +119,4 @@ public static class ConfigManager
         }
     }
 }
+
