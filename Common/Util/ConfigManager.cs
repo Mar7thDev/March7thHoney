@@ -85,8 +85,6 @@ public static class ConfigManager
             if (!Hotfix.HotfixData.TryGetValue(version, out _))
                 Hotfix.HotfixData[version] = new DownloadUrlConfig();
 
-        Logger.Info(I18NManager.Translate("Server.ServerInfo.CurrentVersion", GameConstants.GAME_VERSION));
-
         SaveData(Hotfix, HotfixFilePath);
     }
 

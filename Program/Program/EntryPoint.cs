@@ -108,11 +108,7 @@ public class EntryPoint
 
         Logger.SetLogFile(file);
         Logger.SetDebugLogFile(debugFile);
-        // Starting the server
-        Logger.Info(I18NManager.Translate("Server.ServerInfo.StartingServer"));
-
         // Load the config
-        Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem", I18NManager.Translate("Word.Config")));
         try
         {
             ConfigManager.LoadConfig();
@@ -126,7 +122,6 @@ public class EntryPoint
         }
 
         // Load the language
-        Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem", I18NManager.Translate("Word.Language")));
         try
         {
             I18NManager.LoadLanguage();
@@ -138,6 +133,13 @@ public class EntryPoint
             Console.ReadLine();
             return;
         }
+
+        // Starting logs after i18n is ready
+        Logger.Info(I18NManager.Translate("Server.ServerInfo.StartingServer"));
+        Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem", I18NManager.Translate("Word.Config")));
+        Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem", I18NManager.Translate("Word.Language")));
+        ConfigManager.Logger.Info(
+            I18NManager.Translate("Server.ServerInfo.CurrentVersion", GameConstants.GAME_VERSION));
 
         // Initialize the database
         try
