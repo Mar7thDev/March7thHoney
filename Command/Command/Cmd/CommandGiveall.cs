@@ -31,30 +31,36 @@ public class CommandGiveall : ICommand
             return;
         }
 
+        await GiveAllPath(arg);
+
+        var clampedLevel = Math.Clamp(level, 1, 80);
+        var clampedRank = Math.Clamp(rank, 0, 6);
+        var promotion = GameData.GetMinPromotionForLevel(clampedLevel);
+
         var avatarList = GameData.AvatarConfigData.Values;
         foreach (var avatar in avatarList)
         {
             if (avatar.AvatarID > 2000 && avatar.AvatarID != 8001)
-                continue; // Hacky way to prevent giving random avatars
-            if (player.AvatarManager!.GetFormalAvatar(avatar.AvatarID) == null)
+                continue;
+
+            if (GameData.MultiplePathAvatarConfigData.TryGetValue(avatar.AvatarID, out var multiPathAvatar)
+                && avatar.AvatarID != multiPathAvatar.BaseAvatarID)
+                continue;
+
+            try
             {
-                GameData.MultiplePathAvatarConfigData.TryGetValue(avatar.AvatarID, out var multiPathAvatar);
-                if (multiPathAvatar != null && avatar.AvatarID != multiPathAvatar.BaseAvatarID) continue;
-                // Normal avatar
-                await player.InventoryManager!.AddItem(avatar.AvatarID, 1, false, sync: false);
-                player.AvatarManager!.GetFormalAvatar(avatar.AvatarID)!.Level = Math.Max(Math.Min(level, 80), 0);
-                player.AvatarManager!.GetFormalAvatar(avatar.AvatarID)!.Promotion =
-                    GameData.GetMinPromotionForLevel(Math.Max(Math.Min(level, 80), 0));
-                player.AvatarManager!.GetFormalAvatar(avatar.AvatarID)!.GetCurPathInfo().Rank =
-                    Math.Max(Math.Min(rank, 6), 0);
+                if (player.AvatarManager!.GetFormalAvatar(avatar.AvatarID) == null)
+                    await player.InventoryManager!.AddItem(avatar.AvatarID, 1, false, sync: false);
+
+                var formalAvatar = player.AvatarManager!.GetFormalAvatar(avatar.AvatarID);
+                if (formalAvatar == null) continue;
+
+                formalAvatar.Level = clampedLevel;
+                formalAvatar.Promotion = promotion;
+                formalAvatar.GetCurPathInfo().Rank = clampedRank;
             }
-            else
+            catch (Exception)
             {
-                player.AvatarManager!.GetFormalAvatar(avatar.AvatarID)!.Level = Math.Max(Math.Min(level, 80), 0);
-                player.AvatarManager!.GetFormalAvatar(avatar.AvatarID)!.Promotion =
-                    GameData.GetMinPromotionForLevel(Math.Max(Math.Min(level, 80), 0));
-                player.AvatarManager!.GetFormalAvatar(avatar.AvatarID)!.GetCurPathInfo().Rank =
-                    Math.Max(Math.Min(rank, 6), 0);
             }
         }
 
