@@ -130,6 +130,11 @@ public partial class PlayerInstance(PlayerData data)
         {
             await InitialPlayerManager();
 
+            // 8002/8004/... 是 8001 的命途变体（同一基础角色不同 path），AvatarManager.AddAvatar
+            // 走 path 分支时会先在 FormalAvatars 里找 BaseAvatarID(=8001) 再挂 PathInfo，
+            // 因此必须先添加基础 8001 再添加 8002 path，否则 FormalAvatars 里没有任何主角，
+            // lineup 引用 8001/8002 都会 Find 不到导致 ToProto 抛 null
+            await AddAvatar(8001);
             await AddAvatar(8002);
             await AddAvatar(1001);
             if (ConfigManager.Config.ServerOption.EnableMission)
@@ -138,9 +143,13 @@ public partial class PlayerInstance(PlayerData data)
             }
             else
             {
-                await LineupManager!.AddAvatarToCurTeam(8002);
+                await LineupManager!.AddAvatarToCurTeam(8001);
                 Data.CurrentGender = Gender.Woman;
                 Data.CurBasicType = 8002;
+                // FormalAvatar.AvatarId 决定客户端显示的命途/性别（CurMultiPathAvatarType），
+                // AddAvatar 创建时 AvatarId=8001（男），需要切到 8002 才会显示女主
+                var hero = AvatarManager!.GetHero();
+                if (hero != null) hero.AvatarId = 8002;
             }
         });
         t.Wait();
