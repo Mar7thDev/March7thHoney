@@ -177,6 +177,14 @@ public class ServerInfoTextCHT
     public string WaitForAllDone => "現在還不可以進入遊戲，請等待所有項目加載完成後再試";
 
     public string UnhandledException => "發生未經處理的異常：{0}";
+    public string LicenseFileNotFound => "未找到授權檔：{0}";
+    public string LicenseInvalid => "授權無效，請前往 {0} 取得授權";
+    public string LicenseParseFailed => "授權解析失敗。";
+    public string LicenseExpired => "授權已過期。";
+    public string LicenseHwidMismatch => "授權 HWID 不匹配。";
+    public string LicenseCurrentHwid => "當前機器 HWID：{0}";
+    public string LicenseVerified => "授權驗證通過：{0}，到期時間：{1}";
+    public string LicenseValidateFailed => "授權驗證失敗。";
 }
 
 #endregion
