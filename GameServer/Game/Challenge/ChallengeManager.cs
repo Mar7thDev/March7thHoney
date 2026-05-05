@@ -193,9 +193,6 @@ public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
             // Check if reward has been taken
             if (reward.HasTakenReward(challengeReward.StarCount)) continue;
 
-            // Set reward as taken
-            reward.SetTakenReward(challengeReward.StarCount);
-
             // Get reward excel
             if (!GameData.RewardDataData.ContainsKey(challengeReward.RewardID)) continue;
             var rewardExcel = GameData.RewardDataData[challengeReward.RewardID];
@@ -219,6 +216,8 @@ public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
                 data.Add(itemData);
             }
 
+            // Set reward as taken only after reward payload is built successfully.
+            reward.SetTakenReward(challengeReward.StarCount);
             rewardInfos.Add(proto);
         }
 

@@ -1,5 +1,7 @@
 using March7thHoney.Data;
+using March7thHoney.Data.Excel;
 using March7thHoney.Database.Challenge;
+using March7thHoney.Database.Inventory;
 using March7thHoney.Database.Lineup;
 using March7thHoney.GameServer.Game.Challenge.Instances;
 using March7thHoney.GameServer.Game.Player;
@@ -55,6 +57,8 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
 
         proto.ObtainedStars = (uint)starNum;
         proto.CountOfPeaks = (uint)proto.Peaks.Count;
+        if (Player.ChallengeManager!.ChallengeData.PeakTakenRewardIds.TryGetValue(groupId, out var takenRewards))
+            proto.TakenStarRewards.AddRange(takenRewards.Select(x => (uint)x));
 
         // boss
         var bossLevelId = data.BossLevelID;
@@ -99,6 +103,76 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         proto.PeakBoss = bossProto;
 
         return proto;
+    }
+
+    public async ValueTask<List<ChallengePeakRewardGroup>?> TakeRewards(int groupId, IEnumerable<uint> requestRewardIds)
+    {
+        if (!GameData.ChallengePeakGroupConfigData.TryGetValue(groupId, out var groupConfig)) return null;
+        if (!GameData.ChallengeRewardData.TryGetValue(groupConfig.RewardGroupID, out var rewardLine)) return null;
+
+        var totalStars = GetObtainedStars(groupConfig);
+        if (!Player.ChallengeManager!.ChallengeData.PeakTakenRewardIds.TryGetValue(groupId, out var takenList))
+        {
+            takenList = [];
+            Player.ChallengeManager.ChallengeData.PeakTakenRewardIds[groupId] = takenList;
+        }
+
+        var requested = requestRewardIds.Select(x => (int)x).ToHashSet();
+        if (requested.Count == 0) requested = rewardLine.Select(x => x.RewardID).ToHashSet();
+
+        var rspGroups = new List<ChallengePeakRewardGroup>();
+        var gainItems = new List<ItemData>();
+
+        foreach (var reward in rewardLine.OrderBy(x => x.StarCount))
+        {
+            if (!requested.Contains(reward.RewardID)) continue;
+            if (totalStars < reward.StarCount) continue;
+            if (takenList.Contains(reward.RewardID)) continue;
+            if (!GameData.RewardDataData.TryGetValue(reward.RewardID, out var rewardExcel)) continue;
+
+            var group = new ChallengePeakRewardGroup
+            {
+                RewardId = (uint)reward.RewardID,
+                Reward = new ItemList()
+            };
+
+            foreach (var (itemId, count) in rewardExcel.GetItems())
+            {
+                var item = new ItemData
+                {
+                    ItemId = itemId,
+                    Count = count
+                };
+                gainItems.Add(item);
+                group.Reward.ItemList_.Add(item.ToProto());
+            }
+
+            takenList.Add(reward.RewardID);
+            rspGroups.Add(group);
+        }
+
+        if (gainItems.Count > 0) await Player.InventoryManager!.AddItems(gainItems);
+        return rspGroups;
+    }
+
+    private int GetObtainedStars(ChallengePeakGroupConfigExcel groupConfig)
+    {
+        var stars = 0;
+        foreach (var levelId in groupConfig.PreLevelIDList)
+            if (Player.ChallengeManager!.ChallengeData.PeakLevelDatas.TryGetValue(levelId, out var levelData))
+                stars += (int)levelData.PeakStar;
+
+        if (groupConfig.BossLevelID > 0)
+        {
+            var easyKey = (groupConfig.BossLevelID << 2) | 0;
+            var hardKey = (groupConfig.BossLevelID << 2) | 1;
+            if (Player.ChallengeManager!.ChallengeData.PeakBossLevelDatas.TryGetValue(easyKey, out var easyData))
+                stars += (int)easyData.PeakStar;
+            if (Player.ChallengeManager!.ChallengeData.PeakBossLevelDatas.TryGetValue(hardKey, out var hardData))
+                stars += (int)hardData.PeakStar;
+        }
+
+        return stars;
     }
 
     public async ValueTask SetLineupAvatars(int groupId, List<ChallengePeakLineup> lineups)
