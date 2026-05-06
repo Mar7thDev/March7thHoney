@@ -229,35 +229,22 @@ public class ChallengeStoryInstance(PlayerInstance player, ChallengeDataPb data)
         }
         else
         {
-            // Increment and reset stage
             Data.Story.CurrentStage++;
-            // Unload scene group for stage 1
-            await Player.SceneInstance!.EntityLoader!.UnloadGroup(Config.MazeGroupID1);
 
-            // Load scene group for stage 2
-            await Player.SceneInstance!.EntityLoader!.LoadGroup(Config.MazeGroupID2);
-
-            // Change player line up
+            // 先切到下半 lineup，这样 EnterScene 新建场景时 LoadEntity 会用 LineupChallenge2 加载角色实体。
             SetCurrentExtraLineup(ExtraLineupType.LineupChallenge2);
             await Player.LineupManager!.SetExtraLineup((ExtraLineupType)GetCurrentExtraLineupType());
+
+            // ChallengeStory 配置里 MapEntranceID == MapEntranceID2（92/92 验证），entrance 为 0 时回退到 MapEntranceID。
+            // EnterScene 触发 ChallengeEntityLoader.LoadEntity，按 CurrentStage==2 选 ChallengeMonsters2 加载下半 boss group。
+            var entranceId = Config.MapEntranceID2 != 0 ? Config.MapEntranceID2 : Config.MapEntranceID;
+            await Player.EnterScene(entranceId, 0, true);
+
             await Player.SendPacket(new PacketChallengeLineupNotify((ExtraLineupType)Data.Story.CurrentExtraLineup));
-            await Player.SceneInstance!.SyncLineup();
 
             Data.Story.SavedMp = (uint)Player.LineupManager.GetCurLineup()!.Mp;
-
-            // Move player
-            if (Config.MapEntranceID2 != 0 && Config.MapEntranceID2 != Config.MapEntranceID)
-            {
-                await Player.EnterScene(Config.MapEntranceID2, 0, true);
-                Data.Story.StartPos = Player.Data.Pos!.ToVector3Pb();
-                Data.Story.StartRot = Player.Data.Rot!.ToVector3Pb();
-                await Player.SceneInstance!.EntityLoader!.UnloadGroup(Config.MazeGroupID1);
-                await Player.SceneInstance!.EntityLoader!.LoadGroup(Config.MazeGroupID2);
-            }
-            else
-            {
-                await Player.MoveTo(Data.Story.StartPos.ToPosition(), Data.Story.StartRot.ToPosition());
-            }
+            Data.Story.StartPos = Player.Data.Pos!.ToVector3Pb();
+            Data.Story.StartRot = Player.Data.Rot!.ToVector3Pb();
 
             Player.ChallengeManager!.SaveInstance(this);
         }
