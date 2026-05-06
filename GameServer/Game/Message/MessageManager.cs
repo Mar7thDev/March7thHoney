@@ -29,6 +29,7 @@ public class MessageManager(PlayerInstance player) : BasePlayerManager(player)
     {
         GameData.MessageContactsConfigData.TryGetValue(contactId, out var contactConfig);
         if (contactConfig == null) return [];
+        var stubFinishUnseen = !ConfigManager.Config.ServerOption.EnableMission;
         var result = new List<MessageGroup>();
         foreach (var item in contactConfig.Groups)
             if (Data.Groups.TryGetValue(item.ID, out var group))
@@ -56,6 +57,30 @@ public class MessageManager(PlayerInstance player) : BasePlayerManager(player)
 
                 groupInfo.MessageSectionId = (uint)group.CurrentSectionId;
                 result.Add(groupInfo);
+            }
+            else if (stubFinishUnseen)
+            {
+                // EnableMission=false 时整个任务系统停掉，玩家永远走不到手机消息流程，
+                // 但部分客户端解锁（如忘却之庭通过帕姆消息推进 4010105/4010134）会以
+                // 消息组完成态作为门控。把未见过的组按"全部已完成"返回，对齐 stub 语义。
+                var stub = new MessageGroup
+                {
+                    Id = (uint)item.ID,
+                    Status = MessageGroupStatus.MessageGroupFinish,
+                    RefreshTime = Extensions.GetUnixSec()
+                };
+                if (GameData.MessageGroupConfigData.TryGetValue(item.ID, out var groupConfig))
+                {
+                    foreach (var sid in groupConfig.MessageSectionIDList)
+                        stub.MessageSectionList.Add(new MessageSection
+                        {
+                            Id = (uint)sid,
+                            Status = MessageSectionStatus.MessageSectionFinish
+                        });
+                    if (groupConfig.MessageSectionIDList.Count > 0)
+                        stub.MessageSectionId = (uint)groupConfig.MessageSectionIDList[^1];
+                }
+                result.Add(stub);
             }
             else
             {
