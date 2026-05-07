@@ -189,35 +189,19 @@ public class ChallengeMemoryInstance(PlayerInstance player, ChallengeDataPb data
         }
         else
         {
-            // Increment and reset stage
             Data.Memory.CurrentStage++;
-            // Unload scene group for stage 1
-            await Player.SceneInstance!.EntityLoader!.UnloadGroup(Config.MazeGroupID1);
 
-            // Load scene group for stage 2
-            await Player.SceneInstance!.EntityLoader!.LoadGroup(Config.MazeGroupID2);
-
-            // Change player line up
             SetCurrentExtraLineup(ExtraLineupType.LineupChallenge2);
             await Player.LineupManager!.SetExtraLineup((ExtraLineupType)GetCurrentExtraLineupType());
+
+            var entranceId = Config.MapEntranceID2 != 0 ? Config.MapEntranceID2 : Config.MapEntranceID;
+            await Player.EnterScene(entranceId, 0, true);
+
             await Player.SendPacket(new PacketChallengeLineupNotify((ExtraLineupType)Data.Memory.CurrentExtraLineup));
-            await Player.SceneInstance!.SyncLineup();
 
             Data.Memory.SavedMp = (uint)Player.LineupManager.GetCurLineup()!.Mp;
-
-            // Move player
-            if (Config.MapEntranceID2 != 0 && Config.MapEntranceID2 != Config.MapEntranceID)
-            {
-                await Player.EnterScene(Config.MapEntranceID2, 0, true);
-                Data.Memory.StartPos = Player.Data.Pos!.ToVector3Pb();
-                Data.Memory.StartRot = Player.Data.Rot!.ToVector3Pb();
-                await Player.SceneInstance!.EntityLoader!.UnloadGroup(Config.MazeGroupID1);
-                await Player.SceneInstance!.EntityLoader!.LoadGroup(Config.MazeGroupID2);
-            }
-            else
-            {
-                await Player.MoveTo(Data.Memory.StartPos.ToPosition(), Data.Memory.StartRot.ToPosition());
-            }
+            Data.Memory.StartPos = Player.Data.Pos!.ToVector3Pb();
+            Data.Memory.StartRot = Player.Data.Rot!.ToVector3Pb();
 
             Player.ChallengeManager!.SaveInstance(this);
         }
