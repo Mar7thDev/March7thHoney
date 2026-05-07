@@ -57,6 +57,21 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
         // check if avatar execute
         if (attackEntity is AvatarSceneInfo) await Player.SceneInstance!.OnUseSkill(req);
 
+        // backfill character maze buffs for techniques whose ability JSON spawns
+        // a summon unit instead of calling AddMazeBuff (e.g. Dahlia 1321 -> 132101)
+        if (req.SkillIndex == 1 && attackEntity is AvatarSceneInfo casterAvatar)
+        {
+            var avatarId = casterAvatar.AvatarInfo.BaseAvatarId;
+            foreach (var (key, mazeBuff) in GameData.MazeBuffData)
+            {
+                if (mazeBuff.MazeBuffType != "Character") continue;
+                if (key / 10 / 100 != avatarId) continue;
+                var buffId = key / 10;
+                if (casterAvatar.BuffList.Any(b => b.BuffId == buffId)) continue;
+                await casterAvatar.AddBuff(new SceneBuff(buffId, mazeBuff.Lv, avatarId));
+            }
+        }
+
         return new SkillResultData(Retcode.RetSucc, res.Instance, res.BattleInfos);
     }
 
