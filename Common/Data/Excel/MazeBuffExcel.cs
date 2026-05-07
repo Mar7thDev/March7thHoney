@@ -8,6 +8,7 @@ public class MazeBuffExcel : ExcelResource
     public int ID { get; set; }
     public int Lv { get; set; }
     public string ModifierName { get; set; } = string.Empty;
+    public string MazeBuffType { get; set; } = string.Empty;
 
     public override int GetId()
     {
