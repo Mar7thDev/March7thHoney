@@ -1,6 +1,7 @@
 using March7thHoney.Database.Gacha;
 using March7thHoney.Enums;
 using March7thHoney.Proto;
+using Newtonsoft.Json;
 using GachaInfo = March7thHoney.Proto.GachaInfo;
 
 namespace March7thHoney.Data.Custom;
@@ -12,7 +13,7 @@ public class BannersConfig
 
 public class BannerConfig
 {
-    public int GachaId { get; set; }
+    [JsonProperty("id")] public int GachaId { get; set; }
     public long BeginTime { get; set; }
     public long EndTime { get; set; }
     public GachaTypeEnum GachaType { get; set; }
