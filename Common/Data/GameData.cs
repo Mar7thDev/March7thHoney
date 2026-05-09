@@ -26,6 +26,7 @@ public static class GameData
     #region VideoKeys
 
     public static VideoKeysConfig VideoKeysConfig { get; set; } = new();
+    public static QueryProductInfoConfig QueryProductInfoConfig { get; set; } = new();
 
     #endregion
 

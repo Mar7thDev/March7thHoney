@@ -90,7 +90,8 @@ public class ServerOption
     public LogOption LogOption { get; set; } = new();
     public ServerConfig ServerConfig { get; set; } = new();
     public int FarmingDropRate { get; set; } = 1;
-    public bool UseCache { get; set; } = true; 
+    public bool UseCache { get; set; } = true;
+    public bool EnableMonthCard { get; set; } = true;
 
     public int ValidFarmingDropRate()
     {
