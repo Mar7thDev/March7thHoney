@@ -1,5 +1,8 @@
 using March7thHoney.Data;
 using March7thHoney.Data.Config;
+using March7thHoney.Database.Inventory;
+using March7thHoney.Enums.Scene;
+using March7thHoney.GameServer.Game.Drop;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
@@ -11,6 +14,8 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
 {
     public async ValueTask<SkillResultData> OnCast(SceneCastSkillCsReq req)
     {
+        await HandleDestructPropDrops(req);
+
         // get entities
         List<BaseGameEntity> targetEntities = []; // enemy
         BaseGameEntity? attackEntity; // caster
@@ -88,6 +93,71 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
         }
 
         return new SkillResultData(Retcode.RetSucc, res.Instance, res.BattleInfos);
+    }
+
+    private async ValueTask HandleDestructPropDrops(SceneCastSkillCsReq req)
+    {
+        if (Player.SceneInstance == null || Player.InventoryManager == null) return;
+
+        HashSet<int> hitEntityIds = [(int)req.AttackedByEntityId];
+        foreach (var id in req.AssistMonsterEntityIdList)
+            hitEntityIds.Add((int)id);
+
+        foreach (var info in req.AssistMonsterEntityInfo)
+        foreach (var id in info.EntityIdList)
+            hitEntityIds.Add((int)id);
+
+        foreach (var entityId in hitEntityIds)
+        {
+            if (!Player.SceneInstance.Entities.TryGetValue(entityId, out var entity)) continue;
+            if (entity is not EntityProp prop) continue;
+            if (prop.Excel.PropType != PropTypeEnum.PROP_DESTRUCT) continue;
+            if (prop.State == PropStateEnum.Open) continue;
+
+            await prop.SetState(PropStateEnum.Open);
+
+            if (prop.PropInfo.EventID > 0)
+            {
+                var eventItems = BuildPlaneEventRewards(prop.PropInfo.EventID);
+                if (eventItems.Count > 0) await Player.InventoryManager.AddItems(eventItems);
+            }
+
+            if (prop.PropInfo.ChestID <= 0) continue;
+            var items = DropService.CalculateDropsFromProp(prop.PropInfo.ChestID);
+            if (items.Count > 0) await Player.InventoryManager.AddItems(items);
+        }
+    }
+
+    private List<ItemData> BuildPlaneEventRewards(int eventId)
+    {
+        List<ItemData> items = [];
+        GameData.PlaneEventData.TryGetValue(eventId * 10 + Player.Data.WorldLevel, out var planeEvent);
+        if (planeEvent == null) return items;
+
+        AddRewardItems(planeEvent.Reward, items);
+        foreach (var dropRewardId in planeEvent.DropList) AddRewardItems(dropRewardId, items);
+
+        return items;
+    }
+
+    private static void AddRewardItems(int rewardId, List<ItemData> items)
+    {
+        GameData.RewardDataData.TryGetValue(rewardId, out var reward);
+        if (reward == null) return;
+
+        if (reward.Hcoin > 0)
+            items.Add(new ItemData
+            {
+                ItemId = 1,
+                Count = reward.Hcoin
+            });
+
+        foreach (var (itemId, count) in reward.GetItems())
+            items.Add(new ItemData
+            {
+                ItemId = itemId,
+                Count = count
+            });
     }
 
     private AdventureAbilityConfigListInfo? GetAbilityConfig(BaseGameEntity entity)

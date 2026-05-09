@@ -1,5 +1,6 @@
 using March7thHoney.Kcp;
 using March7thHoney.Database.Inventory;
+using March7thHoney.Util;
 using March7thHoney.GameServer.Server.Packet.Send.DailyActive;
 using March7thHoney.GameServer.Server.Packet.Send.Mission;
 using March7thHoney.GameServer.Server.Packet.Send.Player;
@@ -12,11 +13,16 @@ public class HandlerPlayerLoginFinishCsReq : Handler
     public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
     {
         await connection.SendPacket(CmdIds.PlayerLoginFinishScRsp);
-        await connection.SendPacket(new PacketMonthCardRewardNotify([new ItemData
+        if (ConfigManager.Config.ServerOption.EnableMonthCard && connection.Player?.InventoryManager != null)
         {
-            ItemId = 1,
-            Count = 90
-        }]));
+            await connection.Player.InventoryManager.AddItem(1, 90, false);
+            await connection.SendPacket(new PacketMonthCardRewardNotify([new ItemData
+            {
+                ItemId = 1,
+                Count = 90
+            }]));
+        }
+
         await connection.SendPacket(new PacketFinishedMissionScNotify(
             connection.Player?.MissionManager?.GetAllFinishedMissionIds() ?? []));
         await connection.SendPacket(new PacketDailyActiveInfoNotify());
