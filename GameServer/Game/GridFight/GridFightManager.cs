@@ -1,5 +1,6 @@
 using March7thHoney.Data;
 using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Game.GridFight.Sync;
 using March7thHoney.Proto;
 
 namespace March7thHoney.GameServer.Game.GridFight;
@@ -11,9 +12,13 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
 
     public GridFightSystemInfo ToProto()
     {
+        var divisionId = GameData.GridFightDivisionInfoData.Count > 0
+            ? GameData.GridFightDivisionInfoData.Keys.Max()
+            : 10939u;
+
         var staticInfo = new GridFightStaticGameInfo
         {
-            DivisionId = 10939,
+            DivisionId = divisionId,
             CKFIACKHNAE = 1,
             CALIMAKGGHJ = 3,
             Exp = new JIBAKJGOPJM(),
@@ -28,7 +33,10 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
             }
         };
 
-        staticInfo.OJLAODIALLE.DANAGDAPKJE.Add([2011, 2021, 2022, 2031, 2032, 2033, 2041, 2042, 2043, 2044, 2051, 2061, 2062, 2063, 3011, 3021, 3022, 3031, 3032, 3033, 3041, 3042, 3043, 3044, 3051, 3061, 3062, 3063, 4011, 4021, 4022, 4031, 4032, 4041, 4042, 4043, 4051, 4052, 4053, 4061]);
+        if (GameData.GridFightSeasonTalentData.Count > 0)
+            staticInfo.OJLAODIALLE.DANAGDAPKJE.Add(GameData.GridFightSeasonTalentData.Keys.OrderBy(x => x));
+        else
+            staticInfo.OJLAODIALLE.DANAGDAPKJE.Add([2011, 2021, 2022, 2031, 2032, 2033, 2041, 2042, 2043, 2044, 2051, 2061, 2062, 2063, 3011, 3021, 3022, 3031, 3032, 3033, 3041, 3042, 3043, 3044, 3051, 3061, 3062, 3063, 4011, 4021, 4022, 4031, 4032, 4041, 4042, 4043, 4051, 4052, 4053, 4061]);
         staticInfo.EJCFDAABLOC.GridFightMonsterInfo.HGAHMIPIBLO.Add([1, 2, 4, 5, 6, 8, 10, 11, 12, 13, 15, 16, 17, 23, 24, 25, 27]);
         staticInfo.EJCFDAABLOC.GridFightRoleInfo.GridFightAvatarList.Add([1001, 1003, 1004, 1005, 1009, 1013, 1014, 1015, 1105, 1108, 1112, 1202, 1203, 1204, 1205, 1208, 1209, 1212, 1213, 1217, 1218, 1220, 1221, 1222, 1223, 1225, 1301, 1302, 1303, 1304, 1305, 1306, 1307, 1308, 1309, 1310, 1313, 1314, 1317, 1401, 1402, 1403, 1404, 1405, 1406, 1407, 1408, 1409, 1410, 1412, 1413, 1414, 1415, 1501, 1502, 1505, 8007, 8009, 11011, 11012, 15061, 15062, 15063]);
         staticInfo.EJCFDAABLOC.GridFightPortalInfo.PELJLONLDNM.Add([101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 127, 129, 134, 135, 138, 147, 1001, 1002, 1003, 1004, 1005, 1007, 1008, 1010, 1014, 1016, 1101, 1102, 1104, 1106, 1107, 1112, 1113, 1114, 1115, 1116, 1118]);
@@ -42,13 +50,16 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
             EGLCKGKECAJ = staticInfo,
             FCKKGFFLDFA = new MIGEAHDEBOE { OJLAODIALLE = new GridFightTalentInfo() }
         };
-        system.FCKKGFFLDFA.OJLAODIALLE.DANAGDAPKJE.Add([1011, 1021, 1022, 1031, 1041, 1042, 1051, 1061, 1062, 1071, 1072, 1073, 1081]);
+        if (GameData.GridFightTalentData.Count > 0)
+            system.FCKKGFFLDFA.OJLAODIALLE.DANAGDAPKJE.Add(GameData.GridFightTalentData.Keys.OrderBy(x => x));
+        else
+            system.FCKKGFFLDFA.OJLAODIALLE.DANAGDAPKJE.Add([1011, 1021, 1022, 1031, 1041, 1042, 1051, 1061, 1062, 1071, 1072, 1073, 1081]);
         return system;
     }
 
     public GridFightSyncUpdateResultScNotify BuildSyncUpdateNotify(
         IEnumerable<GridFightPosInfo>? updatedPosList = null,
-        GridFightSyncKind kind = GridFightSyncKind.Bootstrap,
+        int kind = GridFightSyncKind.Bootstrap,
         object? extra = null)
     {
         if (updatedPosList != null) return BuildPosUpdateSync(updatedPosList);
@@ -246,125 +257,7 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
 
     private GridFightSyncUpdateResultScNotify BuildBootstrapSync()
     {
-        var notify = new GridFightSyncUpdateResultScNotify();
-
-        var augmentSync = new GridFightSyncResultData();
-        var augmentItem = new GridFightSyncData { GMJLJDJDIGM = new JPBCKCDEGOM() };
-        augmentItem.GMJLJDJDIGM.ALIDDLBDPDH.Add(new ELEOGABGBKG { DMEKIFJDKFL = 8007, CELFGCJFMPH = { 8007u, 8009u } });
-        augmentItem.GMJLJDJDIGM.ALIDDLBDPDH.Add(new ELEOGABGBKG { DMEKIFJDKFL = 11011, CELFGCJFMPH = { 11011u, 11012u } });
-        augmentSync.UpdateDynamicList.Add(augmentItem);
-        notify.SyncResultDataList.Add(augmentSync);
-
-        var portalAndRoleSync = new GridFightSyncResultData
-        {
-            GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpHndkhmefaal
-        };
-        portalAndRoleSync.UpdateDynamicList.Add(new GridFightSyncData
-        {
-            PortalServerDataUpdate = new GridFightPortalServerDataUpdate { PortalBuffId = 111 }
-        });
-        notify.SyncResultDataList.Add(portalAndRoleSync);
-
-        var addRoleSync = new GridFightSyncResultData
-        {
-            GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpBjdeaahibge
-        };
-        addRoleSync.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = 3 });
-        addRoleSync.UpdateDynamicList.Add(new GridFightSyncData
-        {
-            AddRoleInfo = new GridGameRoleInfo { Id = 1009, Pos = 14, RoleStar = 1, UniqueId = 3, GridFightValueInitComponent = { ["GP_Avatar_Asta_01"] = 0 } }
-        });
-        addRoleSync.UpdateDynamicList.Add(new GridFightSyncData
-        {
-            AddRoleInfo = new GridGameRoleInfo { Id = 1306, Pos = 15, RoleStar = 1, UniqueId = 4, GridFightValueInitComponent = { ["GP_Avatar_Sparkle_01"] = 0 } }
-        });
-        addRoleSync.UpdateDynamicList.Add(new GridFightSyncData
-        {
-            AddRoleInfo = new GridGameRoleInfo { Id = 1403, Pos = 16, RoleStar = 1, UniqueId = 5, GridFightValueInitComponent = { ["GP_Avatar_Tribbie_01"] = 0 } }
-        });
-        addRoleSync.UpdateDynamicList.Add(new GridFightSyncData
-        {
-            AddRoleInfo = new GridGameRoleInfo { Id = 1502, Pos = 17, RoleStar = 1, UniqueId = 6, GridFightValueInitComponent = { ["GP_Avatar_YaoGuang_01"] = 0 } }
-        });
-        notify.SyncResultDataList.Add(addRoleSync);
-
-        var finishPendingSync = new GridFightSyncResultData();
-        finishPendingSync.UpdateDynamicList.Add(new GridFightSyncData { FinishPendingActionPos = 1 });
-        finishPendingSync.UpdateDynamicList.Add(new GridFightSyncData { SyncLockInfo = new GridFightLockInfo() });
-        notify.SyncResultDataList.Add(finishPendingSync);
-
-        var shopSync = new GridFightSyncResultData();
-        shopSync.UpdateDynamicList.Add(new GridFightSyncData
-        {
-            ShopSyncInfo = new GridFightShopSyncInfo
-            {
-                GLIFNMBMMBL = 2,
-                LDEDGOOKHFL = new FJPONJFLOOH
-                {
-                    EDJPMNLLGGB =
-                    {
-                        new MJJEHCBNOKI { MMKNFIFOPPA = 1, FLICPMGFKOK = 100 },
-                        new MJJEHCBNOKI { MMKNFIFOPPA = 2 },
-                        new MJJEHCBNOKI { MMKNFIFOPPA = 3 },
-                        new MJJEHCBNOKI { MMKNFIFOPPA = 4 },
-                        new MJJEHCBNOKI { MMKNFIFOPPA = 5 }
-                    }
-                },
-                ShopGoodsList =
-                {
-                    new GridFightShopGoodsInfo { ShopGoodsPrice = 1, RoleGoodsInfo = new GridFightRoleGoodsInfo { RoleId = 1217, RoleStar = 1 } },
-                    new GridFightShopGoodsInfo { ShopGoodsPrice = 1, RoleGoodsInfo = new GridFightRoleGoodsInfo { RoleId = 1314, RoleStar = 1 } },
-                    new GridFightShopGoodsInfo { ShopGoodsPrice = 1, RoleGoodsInfo = new GridFightRoleGoodsInfo { RoleId = 1108, RoleStar = 1 } },
-                    new GridFightShopGoodsInfo { ShopGoodsPrice = 1, RoleGoodsInfo = new GridFightRoleGoodsInfo { RoleId = 1220, RoleStar = 1 } },
-                    new GridFightShopGoodsInfo { ShopGoodsPrice = 1, RoleGoodsInfo = new GridFightRoleGoodsInfo { RoleId = 1406, RoleStar = 1 } }
-                }
-            }
-        });
-        notify.SyncResultDataList.Add(shopSync);
-
-        var lockAndPendingSync = new GridFightSyncResultData();
-        lockAndPendingSync.UpdateDynamicList.Add(new GridFightSyncData
-        {
-            SyncLockInfo = new GridFightLockInfo
-            {
-                LockReason = GridFightLockReason.DfofffceffoKjmjdbjmbmc,
-                LockType = GridFightLockType.PjbmhhnlclbEhfhdgpocnh
-            }
-        });
-        lockAndPendingSync.UpdateDynamicList.Add(new GridFightSyncData
-        {
-            PendingAction = new GridFightPendingAction
-            {
-                QueuePosition = 2,
-                RoundBeginAction = new GridFightRoundBeginActionInfo()
-            }
-        });
-        notify.SyncResultDataList.Add(lockAndPendingSync);
-
-        var finishReturnSync = new GridFightSyncResultData();
-        finishReturnSync.UpdateDynamicList.Add(new GridFightSyncData { FinishPendingActionPos = 2 });
-        finishReturnSync.UpdateDynamicList.Add(new GridFightSyncData { SyncLockInfo = new GridFightLockInfo() });
-        notify.SyncResultDataList.Add(finishReturnSync);
-
-        var returnPendingSync = new GridFightSyncResultData();
-        returnPendingSync.UpdateDynamicList.Add(new GridFightSyncData
-        {
-            SyncLockInfo = new GridFightLockInfo
-            {
-                LockReason = GridFightLockReason.DfofffceffoKjmjdbjmbmc,
-                LockType = GridFightLockType.PjbmhhnlclbEhfhdgpocnh
-            }
-        });
-        returnPendingSync.UpdateDynamicList.Add(new GridFightSyncData
-        {
-            PendingAction = new GridFightPendingAction
-            {
-                QueuePosition = 8,
-                ReturnPreparationAction = new GridFightReturnPreparationActionInfo()
-            }
-        });
-        notify.SyncResultDataList.Add(returnPendingSync);
-        return notify;
+        return GridFightBootstrapSyncBuilder.Build();
     }
 
     public GridFightSettleNotify BuildSettleNotify()

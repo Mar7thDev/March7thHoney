@@ -1,3 +1,4 @@
+using March7thHoney.GameServer.Game.GridFight.Sync;
 using March7thHoney.GameServer.Game.GridFight;
 using March7thHoney.GameServer.Server.Packet.Send.GridFight;
 using March7thHoney.Kcp;
@@ -18,7 +19,7 @@ public class HandlerGridFightUseConsumableCsReq : Handler { public override asyn
 public class HandlerGridFightUseForgeCsReq : Handler { public override async Task OnHandle(Connection connection, byte[] header, byte[] data) { _ = GridFightUseForgeCsReq.Parser.ParseFrom(data); await connection.SendPacket(new PacketEEBMIAFNJMC()); await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(connection.Player!, GridFightSyncKind.NoOp)); } }
 
 [Opcode(CmdIds.GridFightBuyExpCsReq)]
-public class HandlerGridFightBuyExpCsReq : Handler { public override async Task OnHandle(Connection connection, byte[] header, byte[] data) { _ = GridFightBuyExpCsReq.Parser.ParseFrom(data); connection.Player!.GridFightManager?.GridFightInstance?.TryBuyExp(); await connection.SendPacket(new PacketDJCHCHCAJPB()); await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(connection.Player!, GridFightSyncKind.BuyExp)); } }
+public class HandlerGridFightBuyExpCsReq : Handler { public override async Task OnHandle(Connection connection, byte[] header, byte[] data) { _ = GridFightBuyExpCsReq.Parser.ParseFrom(data); var player = connection.Player!; _ = new GridFightService(player).BuyExp(); await connection.SendPacket(new PacketDJCHCHCAJPB()); await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(player, GridFightSyncKind.BuyExp)); } }
 
 [Opcode(CmdIds.GridFightLockShopCsReq)]
 public class HandlerGridFightLockShopCsReq : Handler { public override async Task OnHandle(Connection connection, byte[] header, byte[] data) { _ = GridFightLockShopCsReq.Parser.ParseFrom(data); await connection.SendPacket(new PacketHGOIBDBMDBG()); await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(connection.Player!, GridFightSyncKind.NoOp)); } }
@@ -30,13 +31,7 @@ public class HandlerGridFightRecycleRoleCsReq : Handler
     {
         var req = GridFightRecycleRoleCsReq.Parser.ParseFrom(data);
         var player = connection.Player!;
-        var inst = player.GridFightManager?.GridFightInstance;
-        uint refund = 0;
-        if (inst != null)
-        {
-            var (_, r) = inst.TryRecycleRole(req.UniqueId);
-            refund = r;
-        }
+        var refund = new GridFightService(player).RecycleRole(req.UniqueId);
         await connection.SendPacket(new PacketGridFightRecycleRoleScRsp());
         await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(player, GridFightSyncKind.RecycleRole, (req.UniqueId, (int)refund)));
     }
