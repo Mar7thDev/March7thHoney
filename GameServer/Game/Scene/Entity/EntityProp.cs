@@ -60,7 +60,9 @@ public class EntityProp(SceneInstance scene, MazePropExcel excel, GroupInfo grou
     {
         //if (State == PropStateEnum.Open) return;  // already open   DO NOT CLOSE AGAIN
         State = state;
-        if (sendPacket) await Scene.Player.SendPacket(new PacketSceneGroupRefreshScNotify(Scene.Player, this));
+        if (sendPacket)
+            await Scene.Player.SendPacket(new PacketSceneGroupRefreshScNotify(Scene.Player, this, null,
+                SceneGroupRefreshType.Afibfmafncc));
 
         // save
         if (Group.SaveType == SaveTypeEnum.Reset) return;
