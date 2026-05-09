@@ -1,8 +1,12 @@
 using March7thHoney.Data;
 using March7thHoney.Database;
+using March7thHoney.Database.Quests;
 using March7thHoney.Database.TrainCakeCatch;
+using March7thHoney.Enums.Quest;
 using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
 using March7thHoney.Proto;
+using March7thHoney.Util;
 
 namespace March7thHoney.GameServer.Game.TrainCakeCatch;
 
@@ -123,6 +127,35 @@ public class TrainCakeCatchManager(PlayerInstance player) : BasePlayerManager(pl
 
         DatabaseHelper.ToSaveUidList.Add(Player.Uid);
         return BuildDiyProto();
+    }
+
+    public async ValueTask UnlockAllPerformanceQuests()
+    {
+        var qm = Player.QuestManager;
+        if (qm == null) return;
+
+        var changed = new List<QuestInfo>();
+        foreach (var perf in GameData.CakePerformanceConfigData.Values)
+        {
+            if (perf.QuestID == 0) continue;
+            if (!qm.QuestData.Quests.TryGetValue(perf.QuestID, out var info))
+            {
+                info = new QuestInfo { QuestId = perf.QuestID };
+                qm.QuestData.Quests[perf.QuestID] = info;
+            }
+
+            if (info.QuestStatus is QuestStatus.QuestFinish or QuestStatus.QuestClose) continue;
+
+            info.QuestStatus = QuestStatus.QuestFinish;
+            info.FinishTime = DateTime.Now.ToUnixSec();
+            info.Progress = 1;
+            changed.Add(info);
+        }
+
+        if (changed.Count == 0) return;
+
+        DatabaseHelper.ToSaveUidList.Add(Player.Uid);
+        await Player.SendPacket(new PacketPlayerSyncScNotify(changed));
     }
 
     public void SetCatTreeSlots(IEnumerable<(int CreatureId, int Slot)> placements)
