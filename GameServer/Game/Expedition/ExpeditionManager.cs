@@ -1,6 +1,7 @@
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.Proto;
 using March7thHoney.Data;
+using March7thHoney.Database.Inventory;
 using March7thHoney.Database;
 using March7thHoney.Database.Expedition;
 using March7thHoney.Util;
@@ -65,5 +66,45 @@ public class ExpeditionManager : BasePlayerManager
         DatabaseHelper.ToSaveUidList.SafeAdd(Player.Uid);
 
         return _activeExpeditionIds.Select(id => new ExpeditionInfo { Id = id }).ToList();
+    }
+
+    public bool CanTakeRewardNow()
+    {
+        return Data.RefreshTime > 0 && Extensions.GetUnixSec() >= Data.RefreshTime;
+    }
+
+    public List<ItemData> BuildTakeRewardItems()
+    {
+        List<ItemData> rewards = [];
+        foreach (var expeditionId in _activeExpeditionIds)
+        {
+            if (!GameData.ExpeditionRewardData.TryGetValue((int)expeditionId, out var rewardRows)) continue;
+            var rewardRow = rewardRows.OrderBy(x => x.Duration).FirstOrDefault();
+            if (rewardRow == null) continue;
+
+            if (!GameData.RewardDataData.TryGetValue(rewardRow.RewardID, out var reward)) continue;
+
+            if (reward.Hcoin > 0)
+                rewards.Add(new ItemData
+                {
+                    ItemId = 1,
+                    Count = reward.Hcoin
+                });
+
+            foreach (var (itemId, count) in reward.GetItems())
+                rewards.Add(new ItemData
+                {
+                    ItemId = itemId,
+                    Count = count
+                });
+        }
+
+        return rewards;
+    }
+
+    public void MarkRewardTaken()
+    {
+        Data.RefreshTime = Extensions.GetUnixSec() + ExpeditionRefreshDelaySec;
+        DatabaseHelper.ToSaveUidList.SafeAdd(Player.Uid);
     }
 }
