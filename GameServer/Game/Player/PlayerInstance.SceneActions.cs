@@ -43,7 +43,6 @@ public partial class PlayerInstance
         var oldState = prop.State;
         await prop.SetState(config.TargetState);
         var newState = prop.State;
-        await SendPacket(new PacketGroupStateChangeScNotify(Data.EntryId, prop.GroupId, prop.State));
 
         switch (prop.Excel.PropType)
         {
