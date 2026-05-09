@@ -172,6 +172,7 @@ public class ServerInfoTextCHT
     public string CacheLoadSkip => "已跳過緩存加載。";
 
     public string ConfigMissing => "{0} 缺失，請檢查你的資源文件夾：{1}，{2} 可能不能使用。";
+    public string PartialConfigMissing => "{0} 部分缺失，缺失數量: {1}，示例路徑: {2}";
     public string UnloadedItems => "卸載了所有 {0}。";
     public string SaveDatabase => "已保存數據庫，用時 {0}s";
     public string WaitForAllDone => "現在還不可以進入遊戲，請等待所有項目加載完成後再試";

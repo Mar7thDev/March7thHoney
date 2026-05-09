@@ -172,6 +172,7 @@ public class ServerInfoTextEN
     public string CacheLoadSkip => "Cache loading skipped.";
 
     public string ConfigMissing => "{0} is missing. Please check your resource folder: {1}. {2} may not be available.";
+    public string PartialConfigMissing => "{0} is partially missing. Missing count: {1}. Sample paths: {2}";
     public string UnloadedItems => "Unloaded all {0}.";
     public string SaveDatabase => "Saved database. Took {0}s";
     public string WaitForAllDone => "Cannot enter the game yet. Please wait until all items are loaded before trying again.";

@@ -355,8 +355,8 @@ public class ResourceManager
         while (!res.IsCompleted) Thread.Sleep(10);
 
         if (missingMissionInfos)
-            Logger.Warn(
-                $"{I18NManager.Translate("Word.MissionInfo")} 部分缺失，缺失数量: {missingCount}，示例路径: {string.Join(" | ", missingSamples)}");
+            Logger.Warn(I18NManager.Translate("Server.ServerInfo.PartialConfigMissing",
+                I18NManager.Translate("Word.MissionInfo"), missingCount.ToString(), string.Join(" | ", missingSamples)));
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),
             I18NManager.Translate("Word.MissionInfo")));
     }
@@ -585,8 +585,8 @@ public class ResourceManager
         while (!res.IsCompleted || !res2.IsCompleted) Thread.Sleep(10);
 
         if (missingCount > 0)
-            Logger.Warn(
-                $"{I18NManager.Translate("Word.MazeSkillInfo")} 部分缺失，缺失数量: {missingCount}，示例路径: {string.Join(" | ", missingSamples)}");
+            Logger.Warn(I18NManager.Translate("Server.ServerInfo.PartialConfigMissing",
+                I18NManager.Translate("Word.MazeSkillInfo"), missingCount.ToString(), string.Join(" | ", missingSamples)));
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),
             I18NManager.Translate("Word.MazeSkillInfo")));
@@ -638,8 +638,8 @@ public class ResourceManager
         while (!res.IsCompleted) Thread.Sleep(10);
 
         if (missingCount > 0)
-            Logger.Warn(
-                $"{I18NManager.Translate("Word.SummonUnitInfo")} 部分缺失，缺失数量: {missingCount}，示例路径: {string.Join(" | ", missingSamples)}");
+            Logger.Warn(I18NManager.Translate("Server.ServerInfo.PartialConfigMissing",
+                I18NManager.Translate("Word.SummonUnitInfo"), missingCount.ToString(), string.Join(" | ", missingSamples)));
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),
             I18NManager.Translate("Word.SummonUnitInfo")));
@@ -689,8 +689,8 @@ public class ResourceManager
         while (!res.IsCompleted) Thread.Sleep(10);
 
         if (missingCount > 0)
-            Logger.Warn(
-                $"{I18NManager.Translate("Word.DialogueInfo")} 部分缺失，缺失数量: {missingCount}，示例路径: {string.Join(" | ", missingSamples)}");
+            Logger.Warn(I18NManager.Translate("Server.ServerInfo.PartialConfigMissing",
+                I18NManager.Translate("Word.DialogueInfo"), missingCount.ToString(), string.Join(" | ", missingSamples)));
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),
             I18NManager.Translate("Word.DialogueInfo")));
