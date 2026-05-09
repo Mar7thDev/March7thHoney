@@ -1,4 +1,7 @@
+using March7thHoney.GameServer.Game.GridFight.Sync;
 using March7thHoney.GameServer.Game.Battle;
+using March7thHoney.GameServer.Game.GridFight.Battle;
+using March7thHoney.GameServer.Game.GridFight.Component;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server.Packet.Send.GridFight;
 using March7thHoney.Proto;
@@ -23,6 +26,7 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     public uint NDOCIKPLKIF { get; } = 1801;
     public uint KeepWinCnt { get; set; }
     public int BattlesFinished { get; set; }
+    public GridFightBattleComponent BattleComponent { get; } = new();
 
     // 队列与唯一 ID 分配
     public uint QueuePosition { get; set; } = 1;
@@ -270,7 +274,12 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
 
     public BattleInstance? StartBattle()
     {
-        return Player.BattleManager!.StartGridFightBattle(this);
+        return GridFightBattleModule.StartBattle(Player, this);
+    }
+
+    public void ConfigureNextBattle(uint stageId, IEnumerable<uint> monsterIds)
+    {
+        BattleComponent.SetEncounter(stageId, monsterIds);
     }
 
     public async ValueTask EndBattle(BattleInstance battle, PVEBattleResultCsReq req)
