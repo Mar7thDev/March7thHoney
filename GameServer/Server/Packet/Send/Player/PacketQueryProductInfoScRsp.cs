@@ -1,6 +1,10 @@
+using March7thHoney.Data;
+using March7thHoney.Data.Custom;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
 using March7thHoney.Util;
+using Newtonsoft.Json.Linq;
+using System.Reflection;
 
 namespace March7thHoney.GameServer.Server.Packet.Send.Player;
 
@@ -12,190 +16,71 @@ public class PacketQueryProductInfoScRsp : BasePacket
         {
             BAMOOGPNJEH = 5,
             IFKKKLCFOBK = 5,
-            MonthCardOutDateTime = (ulong)Extensions.GetUnixSec() + 8640000, // 100 day
-            ProductList =
-            {
-                new Product
-                {
-                    JCJGHCOEOOJ = 50,
-                    BeginTime = 978278400,
-                    EndTime = 4070880000,
-                    GiftType = ProductGiftType.ProductGiftAppleGiftCard,
-                    PriceTier = "Tier_2",
-                    ProductId = "rpgchnios050giftcard"
-                },
-                new Product
-                {
-                    BeginTime = 1577808000,
-                    EndTime = 4070880000,
-                    GiftType = ProductGiftType.ProductGiftMonthCard,
-                    PriceTier = "Tier_5",
-                    ProductId = "rpgchnmonthcardtier5"
-                },
-                new Product
-                {
-                    EEFHEBKHKAB = 1,
-                    JCJGHCOEOOJ = 1,
-                    BeginTime = 1743969600,
-                    EndTime = 1747724399,
-                    GiftType = ProductGiftType.ProductGiftSingle6,
-                    PriceTier = "Tier_1",
-                    ProductId = "rpgchnyeartier1"
-                },
-                new Product
-                {
-                    BeginTime = 978278400,
-                    EndTime = 4070880000,
-                    GiftType = ProductGiftType.ProductGiftBp68Upgrade128,
-                    PriceTier = "Tier_12",
-                    ProductId = "rpgchnbattlepassupgradetier12"
-                },
-                new Product
-                {
-                    BeginTime = 1577808000,
-                    DoubleReward = true,
-                    EndTime = 4070880000,
-                    GiftType = ProductGiftType.ProductGiftCoin,
-                    PriceTier = "Tier_1",
-                    ProductId = "rpgchncoin60tier1"
-                },
-                new Product
-                {
-                    BeginTime = 1577808000,
-                    EndTime = 4070880000,
-                    GiftType = ProductGiftType.ProductGiftCoin,
-                    PriceTier = "Tier_60",
-                    ProductId = "rpgchncoin6480tier60"
-                },
-                new Product
-                {
-                    BeginTime = 1577808000,
-                    DoubleReward = true,
-                    EndTime = 4070880000,
-                    GiftType = ProductGiftType.ProductGiftCoin,
-                    PriceTier = "Tier_5",
-                    ProductId = "rpgchncoin300tier5"
-                },
-                new Product
-                {
-                    BeginTime = 978278400,
-                    EndTime = 4070880000,
-                    GiftType = ProductGiftType.ProductGiftBp128,
-                    PriceTier = "Tier_20",
-                    ProductId = "rpgchnbattlepassdeluxetier20"
-                },
-                new Product
-                {
-                    BeginTime = 978278400,
-                    EndTime = 4070880000,
-                    GiftType = ProductGiftType.ProductGiftBp68,
-                    PriceTier = "Tier_10",
-                    ProductId = "rpgchnbattlepassnormaltier10"
-                },
-                new Product
-                {
-                    BeginTime = 1577808000,
-                    EndTime = 4070880000,
-                    GiftType = ProductGiftType.ProductGiftCoin,
-                    PriceTier = "Tier_50",
-                    ProductId = "rpgchncoin3280tier50"
-                },
-                new Product
-                {
-                    BeginTime = 1577808000,
-                    DoubleReward = true,
-                    EndTime = 4070880000,
-                    GiftType = ProductGiftType.ProductGiftCoin,
-                    PriceTier = "Tier_15",
-                    ProductId = "rpgchncoin980tier15"
-                },
-                new Product
-                {
-                    BeginTime = 1577808000,
-                    DoubleReward = true,
-                    EndTime = 4070880000,
-                    GiftType = ProductGiftType.ProductGiftCoin,
-                    PriceTier = "Tier_30",
-                    ProductId = "rpgchncoin1980tier30"
-                },
-                new Product
-                {
-                    EEFHEBKHKAB = 1,
-                    JCJGHCOEOOJ = 1,
-                    BeginTime = 1751227200,
-                    EndTime = 1754981999,
-                    GiftType = ProductGiftType.ProductGiftSingle6,
-                    PriceTier = "Tier_1",
-                    ProductId = "rpgchnyear2tier1"
-                },
-                new Product
-                {
-                    EEFHEBKHKAB = 1,
-                    JCJGHCOEOOJ = 1,
-                    MEMNCJLKAEE = 2,
-                    BeginTime = 1770850800,
-                    EndTime = 1774335600,
-                    GiftType = ProductGiftType.ProductGiftSingle6,
-                    PriceTier = "Tier_1",
-                    ProductId = "rpgchnyear3tier1"
-                },
-                new Product
-                {
-                    EEFHEBKHKAB = 1,
-                    JCJGHCOEOOJ = 1,
-                    MEMNCJLKAEE = 1,
-                    BeginTime = 1776675600,
-                    EndTime = 1780257599,
-                    GiftType = (ProductGiftType)25,
-                    PriceTier = "Alternate_Tier_A",
-                    ProductId = "rpgchnyear4tiercny100"
-                },
-                new Product
-                {
-                    EEFHEBKHKAB = 1,
-                    JCJGHCOEOOJ = 1,
-                    MEMNCJLKAEE = 3,
-                    BeginTime = 1776675600,
-                    EndTime = 1780257599,
-                    GiftType = ProductGiftType.ProductGiftDailyLogin30,
-                    PriceTier = "Tier_5",
-                    ProductId = "rpgchnyear3tier5"
-                },
-                new Product
-                {
-                    EEFHEBKHKAB = 1,
-                    JCJGHCOEOOJ = 2,
-                    MEMNCJLKAEE = 1,
-                    BeginTime = 1770850800,
-                    EndTime = 1774335600,
-                    GiftType = ProductGiftType.ProductGiftTicket10,
-                    PriceTier = "Tier_15",
-                    ProductId = "rpgchnticket3tier15"
-                },
-                new Product
-                {
-                    EEFHEBKHKAB = 2,
-                    JCJGHCOEOOJ = 2,
-                    BeginTime = 1751227200,
-                    EndTime = 1754981999,
-                    GiftType = ProductGiftType.ProductGiftTicket10,
-                    PriceTier = "Tier_15",
-                    ProductId = "rpgchntickettier15"
-                },
-                new Product
-                {
-                    EEFHEBKHKAB = 1,
-                    JCJGHCOEOOJ = 1,
-                    MEMNCJLKAEE = 1,
-                    BeginTime = 1776810600,
-                    EndTime = 4070880000,
-                    GiftType = ProductGiftType.EjebhiikajfDbiadngnfmd,
-                    PriceTier = "Tier_4",
-                    ProductId = "rpgchnskintier4"
-                }
-            }
+            MonthCardOutDateTime = ConfigManager.Config.ServerOption.EnableMonthCard
+                ? (ulong)March7thHoney.Util.Extensions.GetUnixSec() + 8640000
+                : 0
         };
 
+        foreach (var item in BuildProducts(GameData.QueryProductInfoConfig, ConfigManager.Config.ServerOption.EnableMonthCard))
+            proto.ProductList.Add(item);
+
         SetData(proto);
+    }
+
+    private static List<Product> BuildProducts(QueryProductInfoConfig config, bool enableMonthCard)
+    {
+        List<Product> products = [];
+        foreach (var item in config.ProductList)
+        {
+            var giftType = ParseGiftType(item.GiftType);
+            if (!enableMonthCard && giftType == ProductGiftType.ProductGiftMonthCard) continue;
+
+            products.Add(new Product
+            {
+                JCJGHCOEOOJ = item.JCJGHCOEOOJ,
+                MEMNCJLKAEE = item.MEMNCJLKAEE,
+                EEFHEBKHKAB = item.EEFHEBKHKAB,
+                BeginTime = item.BeginTime,
+                EndTime = item.EndTime,
+                GiftType = giftType,
+                PriceTier = item.PriceTier ?? "",
+                ProductId = item.ProductId ?? "",
+                DoubleReward = item.DoubleReward
+            });
+        }
+
+        return products;
+    }
+
+    private static ProductGiftType ParseGiftType(object raw)
+    {
+        if (raw is null) return ProductGiftType.ProductGiftNone;
+
+        if (raw is long l) return (ProductGiftType)l;
+        if (raw is int i) return (ProductGiftType)i;
+        if (raw is JValue jv)
+        {
+            if (jv.Type == JTokenType.Integer) return (ProductGiftType)jv.Value<long>();
+            var strValue = jv.Value<string>();
+            if (!string.IsNullOrWhiteSpace(strValue)) return ParseGiftTypeFromString(strValue);
+            return ProductGiftType.ProductGiftNone;
+        }
+
+        return ParseGiftTypeFromString(raw.ToString() ?? "");
+    }
+
+    private static ProductGiftType ParseGiftTypeFromString(string value)
+    {
+        if (long.TryParse(value, out var number)) return (ProductGiftType)number;
+        if (Enum.TryParse<ProductGiftType>(value, true, out var byName)) return byName;
+
+        foreach (var field in typeof(ProductGiftType).GetFields(BindingFlags.Public | BindingFlags.Static))
+        {
+            var attr = field.GetCustomAttribute<Google.Protobuf.Reflection.OriginalNameAttribute>();
+            if (attr != null && string.Equals(attr.Name, value, StringComparison.OrdinalIgnoreCase))
+                return (ProductGiftType)field.GetValue(null)!;
+        }
+
+        return ProductGiftType.ProductGiftNone;
     }
 }

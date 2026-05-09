@@ -42,6 +42,9 @@ public class ResourceManager
         GameData.BannersConfig = LoadCustomFile<BannersConfig>("Banner", "Banners") ?? new BannersConfig();
         GameData.VideoKeysConfig =
             LoadCustomFile<VideoKeysConfig>("VideoKeys", "VideoKeysConfig") ?? new VideoKeysConfig();
+        GameData.QueryProductInfoConfig =
+            LoadCustomFile<QueryProductInfoConfig>("QueryProductInfo", "QueryProductInfoConfig") ??
+            new QueryProductInfoConfig();
         GameData.SceneRainbowGroupPropertyData =
             LoadCustomFile<SceneRainbowGroupPropertyConfig>("Scene Rainbow Group Property",
                 "SceneRainbowGroupProperty") ?? new SceneRainbowGroupPropertyConfig();
