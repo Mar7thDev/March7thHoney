@@ -201,6 +201,7 @@ public static class GameData
     public static Dictionary<int, ChatBubbleConfigExcel> ChatBubbleConfigData { get; private set; } = [];
     public static Dictionary<string, RechargeConfigExcel> RechargeConfigData { get; private set; } = [];
     public static Dictionary<int, RechargeGiftConfigExcel> RechargeGiftConfigData { get; private set; } = [];
+    public static Dictionary<int, ExpeditionDataExcel> ExpeditionDataData { get; private set; } = [];
 
     #endregion
 

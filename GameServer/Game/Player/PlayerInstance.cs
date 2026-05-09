@@ -11,6 +11,7 @@ using March7thHoney.GameServer.Game.Avatar;
 using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.Challenge;
 using March7thHoney.GameServer.Game.ChallengePeak;
+using March7thHoney.GameServer.Game.Expedition;
 using March7thHoney.GameServer.Game.Friend;
 using March7thHoney.GameServer.Game.GridFight;
 using March7thHoney.GameServer.Game.Gacha;
@@ -88,6 +89,7 @@ public partial class PlayerInstance(PlayerData data)
     public ChallengeManager? ChallengeManager { get; private set; }
     public ChallengePeakManager? ChallengePeakManager { get; private set; }
     public GridFightManager? GridFightManager { get; private set; }
+    public ExpeditionManager? ExpeditionManager { get; private set; }
 
     #endregion
 
@@ -184,6 +186,7 @@ public partial class PlayerInstance(PlayerData data)
         ChallengeManager = new ChallengeManager(this);
         ChallengePeakManager = new ChallengePeakManager(this);
         GridFightManager = new GridFightManager(this);
+        ExpeditionManager = new ExpeditionManager(this);
         TaskManager = new TaskManager(this);
         RaidManager = new RaidManager(this);
         StoryLineManager = new StoryLineManager(this);
