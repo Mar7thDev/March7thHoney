@@ -216,6 +216,8 @@ public class LineupManager : BasePlayerManager
         if (lineup == null)
         {
             var baseAvatarId = avatarId;
+            if (GameData.MultiplePathAvatarConfigData.TryGetValue(baseAvatarId, out var multiPathAvatar))
+                baseAvatarId = multiPathAvatar.BaseAvatarID;
             var specialAvatarId = avatarId * 10 + 0;
             GameData.SpecialAvatarData.TryGetValue(specialAvatarId, out var specialAvatar);
             if (specialAvatar != null)
@@ -249,6 +251,8 @@ public class LineupManager : BasePlayerManager
             if (lineup.BaseAvatars!.Count >= 4) return;
 
             var baseAvatarId = avatarId;
+            if (GameData.MultiplePathAvatarConfigData.TryGetValue(baseAvatarId, out var multiPathAvatar))
+                baseAvatarId = multiPathAvatar.BaseAvatarID;
             var specialAvatarId = avatarId * 10 + 0;
             GameData.SpecialAvatarData.TryGetValue(specialAvatarId, out var specialAvatar);
             if (specialAvatar != null)

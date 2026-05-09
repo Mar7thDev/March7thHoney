@@ -139,27 +139,35 @@ public class LineupInfo
 
         if (BaseAvatars != null)
             foreach (var avatar in BaseAvatars)
+            {
+                if (avatar == null) continue;
+
                 if (avatar.AssistUid != 0) // assist avatar
                 {
                     var assistPlayer = DatabaseHelper.Instance?.GetInstance<AvatarData>(avatar.AssistUid);
                     if (assistPlayer != null)
-                        info.AvatarList.Add(assistPlayer?.FormalAvatars
+                    {
+                        var lineupAvatar = assistPlayer.FormalAvatars
                             ?.Find(item => item.BaseAvatarId == avatar.BaseAvatarId)
-                            ?.ToLineupInfo(BaseAvatars.IndexOf(avatar), this,
-                                AvatarType.AvatarAssistType)); // assist avatar may not work
+                            ?.ToLineupInfo(BaseAvatars.IndexOf(avatar), this, AvatarType.AvatarAssistType);
+                        if (lineupAvatar != null) info.AvatarList.Add(lineupAvatar); // assist avatar may not work
+                    }
                 }
                 else if (avatar.SpecialAvatarId != 0) // special avatar
                 {
-                    info.AvatarList.Add(AvatarData?.TrialAvatars
+                    var lineupAvatar = AvatarData?.TrialAvatars
                         ?.Find(item => item.SpecialAvatarId == avatar.SpecialAvatarId)
-                        ?.ToLineupInfo(BaseAvatars.IndexOf(avatar), this, AvatarType.AvatarTrialType));
+                        ?.ToLineupInfo(BaseAvatars.IndexOf(avatar), this, AvatarType.AvatarTrialType);
+                    if (lineupAvatar != null) info.AvatarList.Add(lineupAvatar);
                 }
                 else // normal avatar
                 {
-                    info.AvatarList.Add(AvatarData?.FormalAvatars
+                    var lineupAvatar = AvatarData?.FormalAvatars
                         ?.Find(item => item.BaseAvatarId == avatar.BaseAvatarId)
-                        ?.ToLineupInfo(BaseAvatars.IndexOf(avatar), this));
+                        ?.ToLineupInfo(BaseAvatars.IndexOf(avatar), this);
+                    if (lineupAvatar != null) info.AvatarList.Add(lineupAvatar);
                 }
+            }
 
         var storyId = DatabaseHelper.Instance!.GetInstance<StoryLineData>(AvatarData!.Uid)?.CurStoryLineId;
         if (storyId != null && storyId != 0)
