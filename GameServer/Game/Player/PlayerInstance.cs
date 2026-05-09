@@ -26,6 +26,7 @@ using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Shop;
 using March7thHoney.GameServer.Game.Sync.Player;
 using March7thHoney.GameServer.Game.Task;
+using March7thHoney.GameServer.Game.TrainCakeCatch;
 using March7thHoney.GameServer.Game.TrainParty;
 using March7thHoney.GameServer.Server;
 using March7thHoney.GameServer.Server.Packet.Send.Player;
@@ -76,6 +77,7 @@ public partial class PlayerInstance(PlayerData data)
 
     public ActivityManager? ActivityManager { get; private set; }
     public TrainPartyManager? TrainPartyManager { get; private set; }
+    public TrainCakeCatchManager? TrainCakeCatchManager { get; private set; }
 
     #endregion
 
@@ -187,6 +189,7 @@ public partial class PlayerInstance(PlayerData data)
         StoryLineManager = new StoryLineManager(this);
         QuestManager = new QuestManager(this);
         TrainPartyManager = new TrainPartyManager(this);
+        TrainCakeCatchManager = new TrainCakeCatchManager(this);
         OfferingManager = new OfferingManager(this);
 
         PlayerUnlockData = InitializeDatabase<PlayerUnlockData>();

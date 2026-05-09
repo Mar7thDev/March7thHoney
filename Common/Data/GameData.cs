@@ -258,6 +258,14 @@ public static class GameData
 
     #endregion
 
+    #region TrainCakeCatch
+
+    public static Dictionary<int, CakeConfigExcel> CakeConfigData { get; private set; } = [];
+
+    public static Dictionary<string, CakeCatchConstValueCommonExcel> CakeCatchConstValueData { get; private set; } = [];
+
+    #endregion
+
     #region Items
 
     public static Dictionary<int, MappingInfoExcel> MappingInfoData { get; private set; } = [];
