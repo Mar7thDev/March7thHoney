@@ -309,6 +309,8 @@ public class ResourceManager
         }
 
         var missingMissionInfos = false;
+        var missingCount = 0;
+        var missingSamples = new List<string>();
         var count = 0;
         var res = Parallel.ForEach(GameData.MainMissionData, missionExcel =>
         {
@@ -319,6 +321,11 @@ public class ResourceManager
                 if (!File.Exists(path))
                 {
                     missingMissionInfos = true;
+                    Interlocked.Increment(ref missingCount);
+                    lock (missingSamples)
+                    {
+                        if (missingSamples.Count < 3) missingSamples.Add(path);
+                    }
                     return;
                 }
 
@@ -348,10 +355,8 @@ public class ResourceManager
         while (!res.IsCompleted) Thread.Sleep(10);
 
         if (missingMissionInfos)
-            Logger.Warn(I18NManager.Translate("Server.ServerInfo.ConfigMissing",
-                I18NManager.Translate("Word.MissionInfo"),
-                $"{ConfigManager.Config.Path.ResourcePath}/Config/Level/Mission",
-                I18NManager.Translate("Word.Mission")));
+            Logger.Warn(
+                $"{I18NManager.Translate("Word.MissionInfo")} 部分缺失，缺失数量: {missingCount}，示例路径: {string.Join(" | ", missingSamples)}");
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),
             I18NManager.Translate("Word.MissionInfo")));
     }
@@ -498,13 +503,24 @@ public class ResourceManager
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem",
             I18NManager.Translate("Word.MazeSkillInfo")));
         var count = 0;
+        var missingCount = 0;
+        var missingSamples = new List<string>();
         var res = Parallel.ForEach(GameData.AdventurePlayerData.Values, adventure =>
         {
             var adventurePath = adventure.PlayerJsonPath.Replace("_Config.json", "_Ability.json")
                 .Replace("ConfigCharacter", "ConfigAdventureAbility");
             var path = ConfigManager.Config.Path.ResourcePath + "/" + adventurePath;
             var file = new FileInfo(path);
-            if (!file.Exists) return;
+            if (!file.Exists)
+            {
+                Interlocked.Increment(ref missingCount);
+                lock (missingSamples)
+                {
+                    if (missingSamples.Count < 3) missingSamples.Add(path);
+                }
+
+                return;
+            }
             try
             {
                 using var reader = file.OpenRead();
@@ -534,7 +550,16 @@ public class ResourceManager
 
             var path = ConfigManager.Config.Path.ResourcePath + "/" + adventurePath;
             var file = new FileInfo(path);
-            if (!file.Exists) return;
+            if (!file.Exists)
+            {
+                Interlocked.Increment(ref missingCount);
+                lock (missingSamples)
+                {
+                    if (missingSamples.Count < 3) missingSamples.Add(path);
+                }
+
+                return;
+            }
             try
             {
                 using var reader = file.OpenRead();
@@ -559,11 +584,9 @@ public class ResourceManager
         // wait it done
         while (!res.IsCompleted || !res2.IsCompleted) Thread.Sleep(10);
 
-        if (count < GameData.AdventurePlayerData.Count + GameData.NpcMonsterDataData.Count)
-            Logger.Warn(I18NManager.Translate("Server.ServerInfo.ConfigMissing",
-                I18NManager.Translate("Word.MazeSkillInfo"),
-                $"{ConfigManager.Config.Path.ResourcePath}/Config/Level/AdventureAbility",
-                I18NManager.Translate("Word.MazeSkill")));
+        if (missingCount > 0)
+            Logger.Warn(
+                $"{I18NManager.Translate("Word.MazeSkillInfo")} 部分缺失，缺失数量: {missingCount}，示例路径: {string.Join(" | ", missingSamples)}");
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),
             I18NManager.Translate("Word.MazeSkillInfo")));
@@ -574,11 +597,22 @@ public class ResourceManager
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem",
             I18NManager.Translate("Word.SummonUnitInfo")));
         var count = 0;
+        var missingCount = 0;
+        var missingSamples = new List<string>();
         var res = Parallel.ForEach(GameData.SummonUnitDataData.Values, summonUnit =>
         {
             var path = ConfigManager.Config.Path.ResourcePath + "/" + summonUnit.JsonPath;
             var file = new FileInfo(path);
-            if (!file.Exists) return;
+            if (!file.Exists)
+            {
+                Interlocked.Increment(ref missingCount);
+                lock (missingSamples)
+                {
+                    if (missingSamples.Count < 3) missingSamples.Add(path);
+                }
+
+                return;
+            }
             try
             {
                 using var reader = file.OpenRead();
@@ -603,11 +637,9 @@ public class ResourceManager
         // wait it done
         while (!res.IsCompleted) Thread.Sleep(10);
 
-        if (count < GameData.SummonUnitDataData.Count)
-            Logger.Warn(I18NManager.Translate("Server.ServerInfo.ConfigMissing",
-                I18NManager.Translate("Word.SummonUnitInfo"),
-                $"{ConfigManager.Config.Path.ResourcePath}/ConfigSummonUnit",
-                I18NManager.Translate("Word.SummonUnit")));
+        if (missingCount > 0)
+            Logger.Warn(
+                $"{I18NManager.Translate("Word.SummonUnitInfo")} 部分缺失，缺失数量: {missingCount}，示例路径: {string.Join(" | ", missingSamples)}");
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),
             I18NManager.Translate("Word.SummonUnitInfo")));
@@ -617,11 +649,22 @@ public class ResourceManager
     {
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem", I18NManager.Translate("Word.DialogueInfo")));
         var count = 0;
+        var missingCount = 0;
+        var missingSamples = new List<string>();
         var res = Parallel.ForEach(GameData.RogueNPCData.Values, dialogue =>
         {
             var path = ConfigManager.Config.Path.ResourcePath + "/" + dialogue.NPCJsonPath;
             var file = new FileInfo(path);
-            if (!file.Exists) return;
+            if (!file.Exists)
+            {
+                Interlocked.Increment(ref missingCount);
+                lock (missingSamples)
+                {
+                    if (missingSamples.Count < 3) missingSamples.Add(path);
+                }
+
+                return;
+            }
             try
             {
                 using var reader = file.OpenRead();
@@ -645,11 +688,9 @@ public class ResourceManager
         // wait it done
         while (!res.IsCompleted) Thread.Sleep(10);
 
-        if (count < GameData.RogueNPCData.Count)
-            Logger.Warn(I18NManager.Translate("Server.ServerInfo.ConfigMissing",
-                I18NManager.Translate("Word.DialogueInfo"),
-                $"{ConfigManager.Config.Path.ResourcePath}/Config/Level/Rogue",
-                I18NManager.Translate("Word.Dialogue")));
+        if (missingCount > 0)
+            Logger.Warn(
+                $"{I18NManager.Translate("Word.DialogueInfo")} 部分缺失，缺失数量: {missingCount}，示例路径: {string.Join(" | ", missingSamples)}");
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),
             I18NManager.Translate("Word.DialogueInfo")));

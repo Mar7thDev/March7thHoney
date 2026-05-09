@@ -520,7 +520,7 @@ public class CmdIds
     public const int AddItemRsp = 9278;
     public const int DiceCombatMainPageRollDiceCsReq = 9261;
     public const int EJEAJOAAEMB = 9282;
-    public const int GetDiceCombatShopDataReq = 9273;
+    public const int GetDiceCombatShopDataCsReq = 9273;
     public const int GetShopDataScRsp = 9277;
     public const int DiceCombatBuyShopGoodReq = 9290;
     public const int BuyShopGoodScRsp = 9266;
