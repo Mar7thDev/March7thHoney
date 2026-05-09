@@ -4,6 +4,7 @@ namespace March7thHoney.Data.Excel;
 public class CakePerformanceConfigExcel : ExcelResource
 {
     public int ID { get; set; }
+    public int QuestID { get; set; }
 
     public override int GetId()
     {
