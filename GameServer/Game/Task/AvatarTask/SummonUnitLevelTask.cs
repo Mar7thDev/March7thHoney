@@ -101,7 +101,9 @@ public class SummonUnitLevelTask
 
         var buff = new SceneBuff(addMazeBuff.ID, 1, summonUnit?.CreateAvatarId ?? 0)
         {
-            SummonUnitEntityId = summonUnit?.EntityId ?? 0
+            SummonUnitEntityId = summonUnit?.AttachEntityId ?? 0,
+            CastEntityId = summonUnit?.AttachEntityId ?? 0,
+            ChangeReason = SceneEntityBuffChangeType.AddMazebuff
         };
 
         foreach (var item in addMazeBuff.DynamicValues)
@@ -139,7 +141,9 @@ public class SummonUnitLevelTask
 
         var buff = new SceneBuff(refreshMazeBuffTime.ID, 1, summonUnit?.CreateAvatarId ?? 0)
         {
-            SummonUnitEntityId = summonUnit?.EntityId ?? 0,
+            SummonUnitEntityId = summonUnit?.AttachEntityId ?? 0,
+            CastEntityId = summonUnit?.AttachEntityId ?? 0,
+            ChangeReason = SceneEntityBuffChangeType.AddMazebuff,
             Duration = refreshMazeBuffTime.LifeTime.GetValue() == 0 ? -1 : refreshMazeBuffTime.LifeTime.GetValue()
         };
 

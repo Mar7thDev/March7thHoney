@@ -14,6 +14,8 @@ public class SceneBuff(int buffId, int buffLevel, int owner, int duration = -1)
     public long CreatedTime { get; set; } = Extensions.GetUnixMs();
 
     public int SummonUnitEntityId { get; set; } = 0;
+    public int CastEntityId { get; set; } = 0;
+    public SceneEntityBuffChangeType ChangeReason { get; set; } = SceneEntityBuffChangeType.AddMazebuff;
 
     public bool IsExpired()
     {

@@ -202,6 +202,7 @@ public static class GameData
     public static Dictionary<string, RechargeConfigExcel> RechargeConfigData { get; private set; } = [];
     public static Dictionary<int, RechargeGiftConfigExcel> RechargeGiftConfigData { get; private set; } = [];
     public static Dictionary<int, ExpeditionDataExcel> ExpeditionDataData { get; private set; } = [];
+    public static Dictionary<int, List<ExpeditionRewardExcel>> ExpeditionRewardData { get; private set; } = [];
 
     #endregion
 

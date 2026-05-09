@@ -530,7 +530,11 @@ public class SceneInstance
             }
         }
 
-        await Player.SendPacket(new PacketSceneGroupRefreshScNotify(Player, entity, removeEntity));
+        await Player.SendPacket(new PacketSceneGroupRefreshScNotify(
+            Player,
+            entity,
+            removeEntity,
+            SceneGroupRefreshType.Afibfmafncc));
         SummonUnit[summonUnitKey] = entity;
 
         return Retcode.RetSucc;

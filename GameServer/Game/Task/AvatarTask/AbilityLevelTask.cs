@@ -243,12 +243,22 @@ public class AbilityLevelTask(PlayerInstance player)
                 addMazeBuff.LifeTime.FixedValue.Value is > 30 or < 10 ? -1 : addMazeBuff.LifeTime.FixedValue.Value;
 
             foreach (var entity in target)
-                await entity.AddBuff(new SceneBuff(addMazeBuff.ID, 1,
-                    (param.CasterEntity as AvatarSceneInfo)?.AvatarInfo.BaseAvatarId ?? 0,
-                    time)
+            {
+                var buffOwnerAvatarId = (param.CasterEntity as AvatarSceneInfo)?.AvatarInfo.BaseAvatarId ?? 0;
+                var summonCaster = param.CasterEntity as EntitySummonUnit;
+                if (summonCaster != null) buffOwnerAvatarId = summonCaster.CreateAvatarId;
+
+                await entity.AddBuff(new SceneBuff(addMazeBuff.ID, 1, buffOwnerAvatarId, time)
                 {
-                    DynamicValues = dynamic
+                    DynamicValues = dynamic,
+                    // Buff source is cast request entity when available, otherwise current caster entity.
+                    CastEntityId = param.Request.CastEntityId == 0
+                        ? param.CasterEntity.EntityId
+                        : (int)param.Request.CastEntityId,
+                    // For summon-unit driven buffs, official uses attach entity id as summon reference.
+                    SummonUnitEntityId = summonCaster?.AttachEntityId ?? 0
                 });
+            }
         }
 
         return new AbilityLevelResult(instance, battleInfos);
@@ -349,7 +359,7 @@ public class AbilityLevelTask(PlayerInstance player)
                 AttachEntityId = excel.ConfigInfo?.AttachPoint == "Origin" ? param.CasterEntity.EntityId : 0,
                 SummonUnitId = excel.ID,
                 CreateAvatarId = (param.CasterEntity as AvatarSceneInfo)?.AvatarInfo.BaseAvatarId ?? 0,
-                LifeTimeMs = createSummonUnit.Duration.FixedValue.Value == -1 ? -1 : 20000,
+                LifeTimeMs = createSummonUnit.Duration.GetValue() < 0 ? -1 : createSummonUnit.Duration.GetValue() * 1000,
                 TriggerList = excel.ConfigInfo?.TriggerConfig.CustomTriggers ?? [],
                 Motion = param.Request.TargetMotion
             };
