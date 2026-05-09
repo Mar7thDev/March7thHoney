@@ -1,5 +1,6 @@
 using March7thHoney.GameServer.Game.GridFight;
 using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Game.GridFight.Sync;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
 
@@ -9,12 +10,12 @@ public class PacketGridFightSyncUpdateResultScNotify : BasePacket
 {
     public PacketGridFightSyncUpdateResultScNotify(PlayerInstance player, IEnumerable<GridFightPosInfo>? updatedPosList = null) : base(CmdIds.GridFightSyncUpdateResultScNotify)
     {
-        SetData(player.GridFightManager!.BuildSyncUpdateNotify(updatedPosList));
+        SetData(GridFightSyncBuilder.Build(player, updatedPosList));
     }
 
-    public PacketGridFightSyncUpdateResultScNotify(PlayerInstance player, GridFightSyncKind kind, object? extra = null) : base(CmdIds.GridFightSyncUpdateResultScNotify)
+    public PacketGridFightSyncUpdateResultScNotify(PlayerInstance player, int kind, object? extra = null) : base(CmdIds.GridFightSyncUpdateResultScNotify)
     {
-        SetData(player.GridFightManager!.BuildSyncUpdateNotify(null, kind, extra));
+        SetData(GridFightSyncBuilder.Build(player, null, kind, extra));
     }
 
     public PacketGridFightSyncUpdateResultScNotify(GridFightSyncUpdateResultScNotify built) : base(CmdIds.GridFightSyncUpdateResultScNotify)

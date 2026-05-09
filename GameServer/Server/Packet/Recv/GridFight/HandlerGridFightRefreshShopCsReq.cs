@@ -1,3 +1,4 @@
+using March7thHoney.GameServer.Game.GridFight.Sync;
 using March7thHoney.GameServer.Game.GridFight;
 using March7thHoney.GameServer.Server.Packet.Send.GridFight;
 using March7thHoney.Kcp;
@@ -12,7 +13,7 @@ public class HandlerGridFightRefreshShopCsReq : Handler
     {
         _ = GridFightRefreshShopCsReq.Parser.ParseFrom(data);
         var player = connection.Player!;
-        player.GridFightManager?.GridFightInstance?.TryRefreshShop();
+        _ = new GridFightService(player).RefreshShop();
 
         var rsp = new BasePacket((ushort)CmdIds.CMJCEEDCIAN);
         rsp.SetData(new CMJCEEDCIAN());
