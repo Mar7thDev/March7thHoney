@@ -330,6 +330,9 @@ public class SceneEntityLoader(SceneInstance scene)
 
         if (prop.PropInfo.PropID is 104006 or 104005) await prop.SetState(PropStateEnum.Open);
 
+        // Destructibles that were already opened should not respawn on reload.
+        if (prop.Excel.PropType == PropTypeEnum.PROP_DESTRUCT && prop.State == PropStateEnum.Open) return null;
+
         await Scene.AddEntity(prop, sendPacket);
 
         return prop;

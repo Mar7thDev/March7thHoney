@@ -6,15 +6,20 @@ using March7thHoney.GameServer.Game.Drop;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
+using March7thHoney.GameServer.Server.Packet.Send.Scene;
 using March7thHoney.Proto;
 
 namespace March7thHoney.GameServer.Game.Battle;
 
 public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player)
 {
+    private const int SpeedDestructEventId = 10003;
+    private const int SpeedDestructBuffId = 2041101;
+    private const int SpeedDestructBuffDurationSec = 15;
+
     public async ValueTask<SkillResultData> OnCast(SceneCastSkillCsReq req)
     {
-        await HandleDestructPropDrops(req);
+        var handledDestruct = await HandleDestructPropDrops(req);
 
         // get entities
         List<BaseGameEntity> targetEntities = []; // enemy
@@ -39,7 +44,10 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
         }
 
         attackEntity = Player.SceneInstance!.Entities.GetValueOrDefault((int)req.AttackedByEntityId);
-        if (attackEntity == null) return new SkillResultData(Retcode.RetSceneEntityNotExist);
+        if (attackEntity == null)
+            return handledDestruct
+                ? new SkillResultData(Retcode.RetSucc)
+                : new SkillResultData(Retcode.RetSceneEntityNotExist);
         // get ability file
         var abilities = GetAbilityConfig(attackEntity);
         if (abilities == null || abilities.AbilityList.Count < 1)
@@ -95,9 +103,11 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
         return new SkillResultData(Retcode.RetSucc, res.Instance, res.BattleInfos);
     }
 
-    private async ValueTask HandleDestructPropDrops(SceneCastSkillCsReq req)
+    private async ValueTask<bool> HandleDestructPropDrops(SceneCastSkillCsReq req)
     {
-        if (Player.SceneInstance == null || Player.InventoryManager == null) return;
+        if (Player.SceneInstance == null || Player.InventoryManager == null) return false;
+
+        var handled = false;
 
         HashSet<int> hitEntityIds = [(int)req.AttackedByEntityId];
         foreach (var id in req.AssistMonsterEntityIdList)
@@ -112,20 +122,59 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
             if (!Player.SceneInstance.Entities.TryGetValue(entityId, out var entity)) continue;
             if (entity is not EntityProp prop) continue;
             if (prop.Excel.PropType != PropTypeEnum.PROP_DESTRUCT) continue;
-            if (prop.State == PropStateEnum.Open) continue;
-
-            await prop.SetState(PropStateEnum.Open);
+            handled = true;
 
             if (prop.PropInfo.EventID > 0)
             {
+                await ApplyPropEventEffect(prop, req);
+
                 var eventItems = BuildPlaneEventRewards(prop.PropInfo.EventID);
-                if (eventItems.Count > 0) await Player.InventoryManager.AddItems(eventItems);
+                if (eventItems.Count > 0)
+                {
+                    await Player.InventoryManager.AddItems(eventItems);
+                }
+                else
+                {
+                    // Client still expects a plane-event notify for special destructibles with no item reward.
+                    await Player.SendPacket(new PacketScenePlaneEventScNotify(new ItemList()));
+                }
             }
 
-            if (prop.PropInfo.ChestID <= 0) continue;
-            var items = DropService.CalculateDropsFromProp(prop.PropInfo.ChestID);
-            if (items.Count > 0) await Player.InventoryManager.AddItems(items);
+            if (prop.PropInfo.ChestID > 0)
+            {
+                var items = DropService.CalculateDropsFromProp(prop.PropInfo.ChestID);
+                if (items.Count > 0) await Player.InventoryManager.AddItems(items);
+            }
+
+            // Destruct props should disappear from scene instead of being refreshed as opened state.
+            await Player.SceneInstance.RemoveEntity(prop, false);
+            await Player.SendPacket(new PacketSceneGroupRefreshScNotify(
+                Player,
+                null,
+                prop,
+                SceneGroupRefreshType.Afibfmafncc));
+
+            // Persist as opened for non-reset groups so relog won't respawn it.
+            if (prop.Group.SaveType != SaveTypeEnum.Reset)
+                Player.SetScenePropData(Player.SceneInstance.FloorId, prop.GroupId, prop.PropInfo.ID, PropStateEnum.Open);
         }
+
+        return handled;
+    }
+
+    private async ValueTask ApplyPropEventEffect(EntityProp prop, SceneCastSkillCsReq req)
+    {
+        if (prop.PropInfo.EventID != SpeedDestructEventId) return;
+        if (Player.SceneInstance == null) return;
+
+        var casterEntity = Player.SceneInstance.Entities.GetValueOrDefault((int)req.AttackedByEntityId);
+        if (casterEntity is not AvatarSceneInfo casterAvatar) return;
+
+        await casterAvatar.AddBuff(new SceneBuff(
+            SpeedDestructBuffId,
+            1,
+            casterAvatar.AvatarInfo.BaseAvatarId,
+            SpeedDestructBuffDurationSec));
     }
 
     private List<ItemData> BuildPlaneEventRewards(int eventId)
