@@ -55,7 +55,9 @@ public class TrainCakeCatchManager(PlayerInstance player) : BasePlayerManager(pl
             }
         };
 
-        rsp.PerformanceIdList.AddRange(Data.PerformanceIds.Select(x => (uint)x));
+        rsp.PerformanceIdList.AddRange(GameData.CakePerformanceConfigData.Keys
+            .Union(Data.PerformanceIds)
+            .Select(x => (uint)x));
 
         rsp.AFEJACMLOLH.AddRange(Data.CatTreeSlots.Select(x => new NPLEDHFMFDM
         {

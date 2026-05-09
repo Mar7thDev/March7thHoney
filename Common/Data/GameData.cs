@@ -262,6 +262,8 @@ public static class GameData
 
     public static Dictionary<int, CakeConfigExcel> CakeConfigData { get; private set; } = [];
 
+    public static Dictionary<int, CakePerformanceConfigExcel> CakePerformanceConfigData { get; private set; } = [];
+
     public static Dictionary<string, CakeCatchConstValueCommonExcel> CakeCatchConstValueData { get; private set; } = [];
 
     #endregion
