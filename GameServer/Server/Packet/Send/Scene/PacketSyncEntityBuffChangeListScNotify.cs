@@ -14,6 +14,8 @@ public class PacketSyncEntityBuffChangeListScNotify : BasePacket
         var change = new EntityBuffChangeInfo
         {
             EntityId = (uint)entity.EntityId,
+            CastEntityId = (uint)buff.CastEntityId,
+            Reason = buff.ChangeReason,
             BuffChangeInfo = buff.ToProto()
         };
         proto.EntityBuffChangeList.Add(change);
