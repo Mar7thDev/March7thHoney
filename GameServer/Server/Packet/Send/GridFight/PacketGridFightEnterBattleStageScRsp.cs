@@ -48,7 +48,7 @@ public class PacketGridFightEnterBattleStageScRsp : BasePacket
 
         foreach (var (pos, uniqueId) in inst.UniqueIdByPos.OrderBy(kv => kv.Key))
         {
-            if (pos == 0 || pos > 4) continue;
+            if (pos == 0 || pos > 13) continue;
             if (uniqueId == 0 || !inst.RoleByUniqueId.TryGetValue(uniqueId, out var avatarId)) continue;
 
             var roleInfo = new JAJOBJJPINN
