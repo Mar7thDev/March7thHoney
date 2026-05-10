@@ -131,7 +131,9 @@ public class DispatchRoutes : ControllerBase
     public JsonResult Login([FromBody] LoginReqJson req)
     {
         Debug($"shield login: account={req.account} is_crypto={req.is_crypto}");
-        return new UsernameLoginHandler().Handle(req.account!, req.password!, req.is_crypto);
+        var useRsa = req.is_crypto || Config.WebSecurity.EnableRsaLoginDecrypt;
+        var (account, password) = LoginCryptoHelper.TryDecryptCredentials(req.account, req.password, useRsa);
+        return new UsernameLoginHandler().Handle(account, password, req.is_crypto);
     }
 
     [HttpPost("/hkrpg_global/account/ma-passport/api/appLoginByPassword")]
@@ -139,7 +141,9 @@ public class DispatchRoutes : ControllerBase
     public JsonResult Login([FromBody] NewLoginReqJson req)
     {
         Debug($"appLoginByPassword: account={req.account}");
-        return new NewUsernameLoginHandler().Handle(req.account!, req.password!);
+        var (account, password) =
+            LoginCryptoHelper.TryDecryptCredentials(req.account, req.password, Config.WebSecurity.EnableRsaLoginDecrypt);
+        return new NewUsernameLoginHandler().Handle(account, password);
     }
 
     [HttpPost("/hkrpg_global/mdk/shield/api/verify")]
@@ -162,7 +166,9 @@ public class DispatchRoutes : ControllerBase
     public ContentResult NewLogin([FromBody] NewLoginReqJson req)
     {
         Debug($"ma loginByPassword: account={req.account}");
-        return new NewUsernameLoginHandler2().Handle(req.account!, req.password!);
+        var (account, password) =
+            LoginCryptoHelper.TryDecryptCredentials(req.account, req.password, Config.WebSecurity.EnableRsaLoginDecrypt);
+        return new NewUsernameLoginHandler2().Handle(account, password);
     }
 
     [HttpPost("/account/ma-cn-session/app/verify")]
