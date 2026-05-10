@@ -4,6 +4,8 @@ using March7thHoney.Database;
 using March7thHoney.Database.Avatar;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Enums.Avatar;
+using March7thHoney.GameServer.Game.GridFight;
+using March7thHoney.GameServer.Game.GridFight.Battle;
 using March7thHoney.GameServer.Game.Lineup;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene;
@@ -84,6 +86,7 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
     public BattleCollegeConfigExcel? CollegeConfigExcel { get; set; }
     public PVEBattleResultCsReq? BattleResult { get; set; }
     public bool IsTournRogue { get; set; }
+    public GridFightInstance? GridFightContext { get; set; }
 
     public delegate ValueTask OnBattleEndDelegate(BattleInstance battle, PVEBattleResultCsReq req);
 
@@ -276,10 +279,18 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
             }
         }
 
-        var avatars = GetBattleAvatars();
-        foreach (var avatar in avatars)
-            proto.BattleAvatarList.Add(avatar.AvatarInfo.ToBattleProto(
-                new PlayerDataCollection(Player.Data, Player.InventoryManager!.Data, Lineup), avatar.AvatarType));
+        List<AvatarLineupData> avatars;
+        if (GridFightContext != null)
+        {
+            avatars = GridFightBattleProtoBuilder.HandleProto(this, GridFightContext, proto);
+        }
+        else
+        {
+            avatars = GetBattleAvatars();
+            foreach (var avatar in avatars)
+                proto.BattleAvatarList.Add(avatar.AvatarInfo.ToBattleProto(
+                    new PlayerDataCollection(Player.Data, Player.InventoryManager!.Data, Lineup), avatar.AvatarType));
+        }
 
         System.Threading.Tasks.Task.Run(async () =>
         {
