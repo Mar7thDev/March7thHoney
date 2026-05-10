@@ -115,25 +115,37 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
         }
     }
 
-    public List<int> BuildBattleAvatarIds(int maxCount = 4)
+    public List<int> BuildForegroundAvatarIds(int maxCount = 4)
     {
         EnsureDefaultRoles();
         var list = new List<int>();
         foreach (var (pos, uniqueId) in UniqueIdByPos.OrderBy(x => x.Key))
         {
-            if (pos == 0 || pos > 4) continue; // 仅前 4 位为出战阵容
+            if (pos == 0 || pos > 4) continue;
             if (uniqueId == 0 || !RoleByUniqueId.TryGetValue(uniqueId, out var avatarId)) continue;
             list.Add((int)avatarId);
             if (list.Count >= maxCount) break;
         }
         if (list.Count == 0)
         {
-            foreach (var (uniqueId, avatarId) in RoleByUniqueId)
+            foreach (var (_, avatarId) in RoleByUniqueId)
             {
-                _ = uniqueId;
                 list.Add((int)avatarId);
                 if (list.Count >= maxCount) break;
             }
+        }
+        return list;
+    }
+
+    public List<int> BuildBackgroundAvatarIds()
+    {
+        EnsureDefaultRoles();
+        var list = new List<int>();
+        foreach (var (pos, uniqueId) in UniqueIdByPos.OrderBy(x => x.Key))
+        {
+            if (pos < 5 || pos > 13) continue;
+            if (uniqueId == 0 || !RoleByUniqueId.TryGetValue(uniqueId, out var avatarId)) continue;
+            list.Add((int)avatarId);
         }
         return list;
     }
