@@ -9,6 +9,7 @@ public class ConfigContainer
     public DatabaseConfig Database { get; set; } = new();
     public ServerOption ServerOption { get; set; } = new();
     public MuipServerConfig MuipServer { get; set; } = new();
+    public WebSecurityConfig WebSecurity { get; set; } = new();
 }
 
 public class HttpServerConfig
@@ -161,4 +162,11 @@ public class ServerAssistInfo
 public class MuipServerConfig
 {
     public string AdminKey { get; set; } = "None";
+}
+
+public class WebSecurityConfig
+{
+    public bool EnableRsaLoginDecrypt { get; set; } = false;
+    public string RsaPublicKeyPem { get; set; } = "";
+    public string RsaPrivateKeyPem { get; set; } = "";
 }
