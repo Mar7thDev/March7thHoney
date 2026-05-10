@@ -1,7 +1,10 @@
 using March7thHoney.Data;
 using March7thHoney.Data.Excel;
+using March7thHoney.Database.Lineup;
 using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.Player;
+using March7thHoney.Proto;
+using LineupInfo = March7thHoney.Database.Lineup.LineupInfo;
 
 namespace March7thHoney.GameServer.Game.GridFight.Battle;
 
@@ -11,10 +14,6 @@ public static class GridFightBattleModule
     {
         if (player.BattleInstance != null)
             return player.BattleInstance;
-
-        var lineup = player.LineupManager?.GetCurLineup();
-        if (lineup == null)
-            return null;
 
         StageConfigExcel? stageConfig = null;
         if (gridFightInstance.BattleComponent.StageId > 0 &&
@@ -37,9 +36,22 @@ public static class GridFightBattleModule
         if (stageConfig == null)
             return null;
 
-        var battle = new BattleInstance(player, lineup, [stageConfig])
+        var foregroundIds = gridFightInstance.BuildForegroundAvatarIds();
+        var backgroundIds = gridFightInstance.BuildBackgroundAvatarIds();
+
+        var tempLineup = new LineupInfo
         {
-            WorldLevel = player.Data.WorldLevel
+            LineupType = (int)ExtraLineupType.LineupChessRogue,
+            BaseAvatars = foregroundIds.Concat(backgroundIds)
+                .Select(id => new LineupAvatarInfo { BaseAvatarId = id })
+                .ToList(),
+            AvatarData = player.AvatarManager?.AvatarData
+        };
+
+        var battle = new BattleInstance(player, tempLineup, [stageConfig])
+        {
+            WorldLevel = player.Data.WorldLevel,
+            GridFightContext = gridFightInstance
         };
 
         player.BattleManager!.NextBattleMonsterIds = gridFightInstance.BattleComponent.MonsterIds.Select(x => (int)x).ToList();
