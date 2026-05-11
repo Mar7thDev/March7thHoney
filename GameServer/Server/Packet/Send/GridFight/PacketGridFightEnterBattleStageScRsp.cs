@@ -70,25 +70,8 @@ public class PacketGridFightEnterBattleStageScRsp : BasePacket
             info.AFCMOOFGBPK.PIDIGFGKAMK.Add(ba);
         }
 
-        foreach (var traitId in enc.TraitIds)
-        {
-            var trait = new IENNMHMOONM { TraitId = traitId };
-            foreach (var (roleId, _) in inst.UniqueIdByPos
-                         .Where(kv => kv.Value != 0 && inst.RoleByUniqueId.ContainsKey(kv.Value))
-                         .Select(kv => (RoleId: inst.RoleByUniqueId[kv.Value], Pos: kv.Key)))
-            {
-                if (!GameData.GridFightRoleBasicInfoData.TryGetValue(roleId, out var basicInfo)) continue;
-                if (!basicInfo.TraitList.Contains(traitId)) continue;
-                trait.MEEPFKLLIJB.Add(new BGNGLHHBGMI
-                {
-                    EIHHLAOKAPH = GAPBBJCLMGP.Dgecgaafdjm,
-                    GDNIKJGAEBH = basicInfo.AvatarID,
-                    IPDCMHIEKIJ = 1,
-                    GridUpdateSrc = PFODGDGFBBN.Iomeeecoiob
-                });
-            }
+        foreach (var trait in inst.CheckTrait())
             info.AFCMOOFGBPK.GridFightTraitInfo.Add(trait);
-        }
 
         foreach (var (pos, uniqueId) in inst.UniqueIdByPos.OrderBy(kv => kv.Key))
         {
