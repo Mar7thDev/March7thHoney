@@ -17,8 +17,10 @@ jobs:
         include:
           - mode: "1"
             mode_name: "Private"
+            define_constants: ""
           - mode: "2"
             mode_name: "Public"
+            define_constants: "PUBLIC_MODE"
 
     steps:
       - name: Checkout Code
@@ -29,11 +31,71 @@ jobs:
         with:
           dotnet-version: '9.0.x'
 
-      - name: Execute Publish Script
+      - name: Publish Single File
         shell: pwsh
         run: |
-          # 显式传递 Mode 参数，跳过脚本内的 Read-Host 交互
-          ./Publish-SingleFile.ps1 -Mode "${{ matrix.mode }}" -Runtime "win-x64" -Configuration "Release"
+          $ErrorActionPreference = "Stop"
+
+          $projectPath = "Program/Program.csproj"
+          $outputDir = "Publish/win-x64"
+
+          if (Test-Path $outputDir) {
+            Remove-Item -LiteralPath $outputDir -Recurse -Force
+          }
+          New-Item -ItemType Directory -Path $outputDir | Out-Null
+
+          $publishArgs = @(
+            "publish"
+            $projectPath
+            "-c", "Release"
+            "-f", "net9.0"
+            "-r", "win-x64"
+            "--self-contained", "true"
+            "-o", $outputDir
+            "/p:PublishSingleFile=true"
+            "/p:IncludeNativeLibrariesForSelfExtract=true"
+            "/p:EnableCompressionInSingleFile=true"
+            "/p:PublishReadyToRun=true"
+            "/p:PublishTrimmed=false"
+          )
+
+          if ("${{ matrix.define_constants }}") {
+            $publishArgs += "/p:DefineConstants=${{ matrix.define_constants }}"
+          }
+
+          dotnet @publishArgs
+
+      - name: Prepare Publish Files
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+
+          $outputDir = "Publish/win-x64"
+          $repoConfigDir = "Config"
+          $publishConfigDir = Join-Path $outputDir "Config"
+
+          Get-ChildItem -Path $outputDir -Filter "*.pdb" -File -ErrorAction SilentlyContinue | Remove-Item -Force
+          Get-ChildItem -Path $outputDir -Filter "appsettings*.json" -File -ErrorAction SilentlyContinue | Remove-Item -Force
+
+          if (Test-Path $publishConfigDir) {
+            Remove-Item -LiteralPath $publishConfigDir -Recurse -Force
+          }
+          New-Item -ItemType Directory -Path $publishConfigDir | Out-Null
+
+          if (Test-Path $repoConfigDir) {
+            $resourceCachePath = Join-Path $repoConfigDir "Resource.cache"
+            if (Test-Path $resourceCachePath) {
+              Copy-Item -Path $resourceCachePath -Destination (Join-Path $publishConfigDir "Resource.cache") -Force
+            }
+
+            foreach ($name in @("Json", "Handbook", "Data", "Custom", "Security")) {
+              $src = Join-Path $repoConfigDir $name
+              $dst = Join-Path $publishConfigDir $name
+              if (Test-Path $src) {
+                Copy-Item -Path $src -Destination $dst -Recurse
+              }
+            }
+          }
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
