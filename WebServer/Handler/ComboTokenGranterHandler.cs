@@ -18,8 +18,15 @@ public class ComboTokenGranterHandler
             return new JsonResult(res);
         }
 
-        var account = AccountData.GetAccountByUid(int.Parse(tokenData.uid!));
-        if (account == null)
+        if (!int.TryParse(tokenData.uid, out var uid))
+        {
+            res.retcode = -202;
+            res.message = "Invalid login data";
+            return new JsonResult(res);
+        }
+
+        var account = AccountData.GetAccountByUid(uid);
+        if (account == null || !string.Equals(account.DispatchToken, tokenData.token, StringComparison.Ordinal))
         {
             res.retcode = -201;
             res.message = "Game account cache information error";

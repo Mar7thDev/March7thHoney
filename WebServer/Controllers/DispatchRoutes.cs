@@ -168,7 +168,7 @@ public class DispatchRoutes : ControllerBase
         Debug($"ma loginByPassword: account={req.account}");
         var (account, password) =
             LoginCryptoHelper.TryDecryptCredentials(req.account, req.password, Config.WebSecurity.EnableRsaLoginDecrypt);
-        return new NewUsernameLoginHandler2().Handle(account, password);
+        return new NewUsernameLoginHandler().HandleLegacy(account, password);
     }
 
     [HttpPost("/account/ma-cn-session/app/verify")]
