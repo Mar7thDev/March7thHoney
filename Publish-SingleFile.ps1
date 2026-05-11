@@ -73,10 +73,6 @@ dotnet @publishArgs
 
 $repoConfigDir = Join-Path $scriptDir "Config"
 $publishConfigDir = Join-Path $outputDir "Config"
-$repoCommonSecurityDir = Join-Path $scriptDir "Common/Security"
-$repoCommonUtilSecurityDir = Join-Path $scriptDir "Common/Util/Security"
-$publishCommonDir = Join-Path $outputDir "Common"
-$publishCommonSecurityDir = Join-Path $publishCommonDir "Security"
 
 Get-ChildItem -Path $outputDir -Filter "*.pdb" -File -ErrorAction SilentlyContinue | Remove-Item -Force
 Get-ChildItem -Path $outputDir -Filter "appsettings*.json" -File -ErrorAction SilentlyContinue | Remove-Item -Force
@@ -102,29 +98,20 @@ if (Test-Path $repoConfigDir) {
         Copy-Item -Path $handbookDir -Destination (Join-Path $publishConfigDir "Handbook") -Recurse
     }
 
+    $dataDir = Join-Path $repoConfigDir "Data"
+    if (Test-Path $dataDir) {
+        Copy-Item -Path $dataDir -Destination (Join-Path $publishConfigDir "Data") -Recurse
+    }
+
+    $customDir = Join-Path $repoConfigDir "Custom"
+    if (Test-Path $customDir) {
+        Copy-Item -Path $customDir -Destination (Join-Path $publishConfigDir "Custom") -Recurse
+    }
+
     $securityDir = Join-Path $repoConfigDir "Security"
     if (Test-Path $securityDir) {
         Copy-Item -Path $securityDir -Destination (Join-Path $publishConfigDir "Security") -Recurse
     }
-}
-
-if (Test-Path $publishCommonSecurityDir) {
-    Remove-Item -LiteralPath $publishCommonSecurityDir -Recurse -Force
-}
-
-$securitySourceDir = $null
-if (Test-Path $repoCommonSecurityDir) {
-    $securitySourceDir = $repoCommonSecurityDir
-} elseif (Test-Path $repoCommonUtilSecurityDir) {
-    $securitySourceDir = $repoCommonUtilSecurityDir
-}
-
-if ($securitySourceDir) {
-    if (-not (Test-Path $publishCommonDir)) {
-        New-Item -ItemType Directory -Path $publishCommonDir | Out-Null
-    }
-
-    Copy-Item -Path $securitySourceDir -Destination $publishCommonSecurityDir -Recurse
 }
 
 Write-Host ""
