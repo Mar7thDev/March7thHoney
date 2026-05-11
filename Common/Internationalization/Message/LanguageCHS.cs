@@ -186,6 +186,8 @@ public class ServerInfoTextCHS
     public string LicenseCurrentHwid => "当前机器 HWID：{0}";
     public string LicenseVerified => "许可证校验通过：{0}，过期时间：{1}";
     public string LicenseValidateFailed => "许可证校验失败。";
+    public string PublicModeEnabled => "服务器为公开版本，正在启用额外的安全措施。";
+    public string PublicModeValidationFailed => "许可证验证失败，程序加载已停止。";
 }
 
 #endregion

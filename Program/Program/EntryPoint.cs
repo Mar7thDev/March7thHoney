@@ -144,10 +144,10 @@ public class EntryPoint
             I18NManager.Translate("Server.ServerInfo.CurrentVersion", GameConstants.GAME_VERSION));
         if (publicMode)
         {
-            Logger.Warn("Public mode enabled.");
+            Logger.Warn(I18NManager.Translate("Server.ServerInfo.PublicModeEnabled"));
             if (!LicenseManager.ValidateInPublicMode())
             {
-                Logger.Warn("Public mode validation failed. Program loading has been stopped.");
+                Logger.Warn(I18NManager.Translate("Server.ServerInfo.PublicModeValidationFailed"));
                 if (!Console.IsInputRedirected)
                 {
                     Console.WriteLine();
