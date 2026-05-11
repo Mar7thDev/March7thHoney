@@ -1,3 +1,4 @@
+using March7thHoney.Data;
 using March7thHoney.GameServer.Game.GridFight.Sync;
 using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.GridFight.Battle;
@@ -24,6 +25,8 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     public uint Level { get; } = 1;
     public uint SectionId { get; set; } = 1;
     public uint NDOCIKPLKIF { get; } = 1801;
+    public uint CurrentChapterId { get; set; } = 1;
+    public uint CurrentBranchId { get; set; } = 1;
     public uint KeepWinCnt { get; set; }
     public int BattlesFinished { get; set; }
     public GridFightBattleComponent BattleComponent { get; } = new();
@@ -106,6 +109,10 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
         foreach (var posInfo in posInfoList)
         {
             if (posInfo.Pos == 0) continue;
+            foreach (var stale in UniqueIdByPos
+                         .Where(kv => kv.Key != posInfo.Pos && kv.Value == posInfo.UniqueId)
+                         .Select(kv => kv.Key).ToList())
+                UniqueIdByPos.Remove(stale);
             UniqueIdByPos[posInfo.Pos] = posInfo.UniqueId;
             if (posInfo.UniqueId != 0 && !RoleByUniqueId.ContainsKey(posInfo.UniqueId))
             {
@@ -115,39 +122,100 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
         }
     }
 
-    public List<int> BuildForegroundAvatarIds(int maxCount = 4)
+    public List<(uint RoleId, uint Pos)> ResolveForegroundRoles()
     {
         EnsureDefaultRoles();
-        var list = new List<int>();
-        foreach (var (pos, uniqueId) in UniqueIdByPos.OrderBy(x => x.Key))
-        {
-            if (pos == 0 || pos > 4) continue;
-            if (uniqueId == 0 || !RoleByUniqueId.TryGetValue(uniqueId, out var avatarId)) continue;
-            list.Add((int)avatarId);
-            if (list.Count >= maxCount) break;
-        }
+        return UniqueIdByPos.OrderBy(kv => kv.Key)
+            .Where(kv => kv.Key is > 0 and <= 4)
+            .Select(kv => (Role: RoleByUniqueId.GetValueOrDefault(kv.Value), Pos: kv.Key))
+            .Where(t => t.Role != 0)
+            .Select(t => (RoleId: t.Role, t.Pos))
+            .ToList();
+    }
+
+    public List<(uint RoleId, uint Pos)> ResolveBackgroundRoles()
+    {
+        EnsureDefaultRoles();
+        return UniqueIdByPos.OrderBy(kv => kv.Key)
+            .Where(kv => kv.Key is > 4 and <= 13)
+            .Select(kv => (Role: RoleByUniqueId.GetValueOrDefault(kv.Value), Pos: kv.Key))
+            .Where(t => t.Role != 0)
+            .Select(t => (RoleId: t.Role, t.Pos))
+            .ToList();
+    }
+
+    public List<int> BuildForegroundAvatarIds(int maxCount = 4)
+    {
+        var list = ResolveForegroundRoles().Select(t => RoleIdToAvatarId(t.RoleId)).Where(id => id != 0).Take(maxCount).ToList();
         if (list.Count == 0)
-        {
-            foreach (var (_, avatarId) in RoleByUniqueId)
-            {
-                list.Add((int)avatarId);
-                if (list.Count >= maxCount) break;
-            }
-        }
+            list = RoleByUniqueId.Values.Take(maxCount).Select(x => (int)x).ToList();
         return list;
     }
 
     public List<int> BuildBackgroundAvatarIds()
     {
+        return ResolveBackgroundRoles().Select(t => RoleIdToAvatarId(t.RoleId)).Where(id => id != 0).ToList();
+    }
+
+    private static int RoleIdToAvatarId(uint roleId) =>
+        GameData.GridFightRoleBasicInfoData.TryGetValue(roleId, out var e) ? (int)e.AvatarID : (int)roleId;
+
+    public List<IENNMHMOONM> CheckTrait()
+    {
         EnsureDefaultRoles();
-        var list = new List<int>();
-        foreach (var (pos, uniqueId) in UniqueIdByPos.OrderBy(x => x.Key))
+        var counts = new Dictionary<uint, uint>();
+        var memberMap = new Dictionary<uint, List<(uint AvatarId, uint UniqueId)>>();
+
+        foreach (var kv in UniqueIdByPos.Where(kv => kv.Key is > 0 and <= 13))
         {
-            if (pos < 5 || pos > 13) continue;
-            if (uniqueId == 0 || !RoleByUniqueId.TryGetValue(uniqueId, out var avatarId)) continue;
-            list.Add((int)avatarId);
+            var uniqueId = kv.Value;
+            if (uniqueId == 0 || !RoleByUniqueId.TryGetValue(uniqueId, out var roleId)) continue;
+            if (!GameData.GridFightRoleBasicInfoData.TryGetValue(roleId, out var role)) continue;
+            foreach (var tid in role.TraitList)
+            {
+                counts[tid] = counts.GetValueOrDefault(tid) + 1;
+                if (!memberMap.TryGetValue(tid, out var list))
+                    memberMap[tid] = list = new List<(uint, uint)>();
+                list.Add((role.AvatarID, uniqueId));
+            }
         }
-        return list;
+
+        var result = new List<IENNMHMOONM>();
+        foreach (var (tid, count) in counts)
+        {
+            if (count == 0) continue;
+            if (!GameData.GridFightTraitBasicInfoData.TryGetValue(tid, out var traitExcel)) continue;
+
+            uint layer = 0;
+            if (GameData.GridFightTraitLayerData.TryGetValue(tid, out var layerMap) && layerMap.Count > 0)
+            {
+                foreach (var (threshold, excel) in layerMap)
+                    if (threshold <= count && excel.Layer > layer)
+                        layer = excel.Layer;
+            }
+
+            var trait = new IENNMHMOONM { TraitId = tid, NKFDBEHPNLG = layer };
+            if (memberMap.TryGetValue(tid, out var members))
+            {
+                foreach (var (avatarId, uniqueId) in members)
+                {
+                    trait.MEEPFKLLIJB.Add(new BGNGLHHBGMI
+                    {
+                        EIHHLAOKAPH = GAPBBJCLMGP.Dgecgaafdjm,
+                        GDNIKJGAEBH = avatarId,
+                        IPDCMHIEKIJ = uniqueId,
+                        GridUpdateSrc = PFODGDGFBBN.Iomeeecoiob
+                    });
+                }
+            }
+            if (layer > 0)
+            {
+                foreach (var effectId in traitExcel.TraitEffectList)
+                    trait.TraitEffectList.Add(new BattleGridFightTraitEffectInfo { EffectId = effectId });
+            }
+            result.Add(trait);
+        }
+        return result;
     }
 
     public void RotateShop()
@@ -272,13 +340,14 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     {
         return new GridFightEndBattleStageNotify
         {
-            BCOLJFHDLLD = win ? BattleMaxHp - 20u : 0u,
+            BCOLJFHDLLD = LineupHp,
+            FGEDKOINMAG = LineupHp,
+            IJEIEJLPGGJ = LineupMaxHp,
+            KDOINLGKMBI = LineupMaxHp,
             DCPKPNLKGMM = Level,
             NDOCIKPLKIF = NDOCIKPLKIF,
             SectionId = SectionId,
-            IJEIEJLPGGJ = BattleMaxHp,
-            KDOINLGKMBI = BattleMaxHp,
-            EJEIBPEKHLD = Level,
+            EJEIBPEKHLD = 3,
             PNOJLNNHBIH = 1,
             HPOACJCPJHN = win
         };
@@ -296,8 +365,7 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
 
     public async ValueTask EndBattle(BattleInstance battle, PVEBattleResultCsReq req)
     {
-        var win = req.EndStatus == BattleEndStatus.BattleEndWin;
-        OnBattleResolved(win);
+        var win = req.EndStatus != BattleEndStatus.BattleEndLose;
         AdvanceQueue(7);
         PendingAction = new GridFightPendingAction
         {
@@ -306,10 +374,9 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
         };
 
         await Player.SendPacket(new PacketGridFightEndBattleStageNotify(this, win));
-        await Player.SendPacket(new PacketGridFightSyncKeepWinCntNotify(KeepWinCnt));
-        await Player.SendPacket(new PacketGridFightSeasonHandBookNotify(BuildHandbookNotifyForBattle()));
-        await Player.SendPacket(new PacketGridFightHandlePendingActionScRsp(QueuePosition));
         await Player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(Player, GridFightSyncKind.PostBattle));
+
+        OnBattleResolved(win);
     }
 
     public GridFightCurrentInfo ToProto()
