@@ -203,6 +203,13 @@ public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
                 Reward = new ItemList()
             };
 
+            if (rewardExcel.Hcoin > 0)
+            {
+                var hcoinData = new ItemData { ItemId = 1, Count = rewardExcel.Hcoin };
+                proto.Reward.ItemList_.Add(hcoinData.ToProto());
+                data.Add(hcoinData);
+            }
+
             foreach (var item in rewardExcel.GetItems())
             {
                 var itemData = new ItemData
