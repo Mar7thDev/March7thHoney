@@ -1,5 +1,9 @@
-using March7thHoney.GameServer.Game.GridFight;
+using March7thHoney.Data;
+using March7thHoney.Database.Avatar;
 using March7thHoney.GameServer.Game.Battle;
+using March7thHoney.GameServer.Game.GridFight;
+using March7thHoney.GameServer.Game.GridFight.Battle;
+using March7thHoney.GameServer.Game.Lineup;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
 
@@ -20,14 +24,15 @@ public class PacketGridFightEnterBattleStageScRsp : BasePacket
     private static SceneBattleInfo BuildBattleInfo(GridFightInstance inst, BattleInstance battle)
     {
         var info = battle.ToProto();
+        var enc = GridFightLevelResolver.Resolve(inst);
 
         info.AFCMOOFGBPK = new OGEOMDJIAGI
         {
             BBDOCJGAEEJ = inst.DivisionId,
-            LFKBMDHKPFI = (uint)battle.StageId,
+            LFKBMDHKPFI = enc.PenaltyBonusRuleId,
             ANBBPPHBCJH = 3,
             HDCAEIKAPND = 3,
-            OOPPKDAFFDG = 44,
+            OOPPKDAFFDG = 108,
             Season = inst.Season,
             IsOverlock = inst.IsOverLock,
             GridFightLineupHp = inst.LineupHp,
@@ -35,25 +40,65 @@ public class PacketGridFightEnterBattleStageScRsp : BasePacket
             {
                 BNLHIMHFGDK = 1,
                 DCPKPNLKGMM = inst.Level,
-                NDOCIKPLKIF = 1600,
+                NDOCIKPLKIF = inst.NDOCIKPLKIF,
                 SectionId = inst.SectionId
             }
         };
 
         foreach (var portalBuffId in inst.ActivePortalBuffIds)
             info.AFCMOOFGBPK.GridFightPortalBuffList.Add(new MMDJJDEJMMN { PortalBuffId = portalBuffId });
+
+        foreach (var (roleId, _) in inst.UniqueIdByPos
+                     .OrderBy(kv => kv.Key)
+                     .Where(kv => kv.Key > 0 && kv.Key <= 13 && kv.Value != 0 && inst.RoleByUniqueId.ContainsKey(kv.Value))
+                     .Select(kv => (RoleId: inst.RoleByUniqueId[kv.Value], Pos: kv.Key)))
+        {
+            if (!GameData.GridFightRoleBasicInfoData.TryGetValue(roleId, out var basicInfo)) continue;
+            foreach (var savedValue in basicInfo.RoleSavedValueList)
+                info.AFCMOOFGBPK.OGHGLMGJGEM[savedValue] = 0;
+        }
         info.AFCMOOFGBPK.OGHGLMGJGEM["GP_Avatar_Sparxie_00"] = 2;
 
-        info.AFCMOOFGBPK.PIDIGFGKAMK.Add(info.BattleAvatarList);
+        var player = battle.Player;
+        var collection = new PlayerDataCollection(player.Data, player.InventoryManager!.Data, battle.Lineup);
+        foreach (var (roleId, _) in inst.ResolveBackgroundRoles())
+        {
+            var avatar = GridFightBattleProtoBuilder.ResolveTrialAvatar(player, roleId);
+            if (avatar == null) continue;
+            var ba = avatar.ToBattleProto(collection, AvatarType.AvatarGridFightType);
+            ba.Id = (uint)(GameData.GridFightRoleBasicInfoData.TryGetValue(roleId, out var bi) ? bi.AvatarID : roleId);
+            info.AFCMOOFGBPK.PIDIGFGKAMK.Add(ba);
+        }
+
+        foreach (var traitId in enc.TraitIds)
+        {
+            var trait = new IENNMHMOONM { TraitId = traitId };
+            foreach (var (roleId, _) in inst.UniqueIdByPos
+                         .Where(kv => kv.Value != 0 && inst.RoleByUniqueId.ContainsKey(kv.Value))
+                         .Select(kv => (RoleId: inst.RoleByUniqueId[kv.Value], Pos: kv.Key)))
+            {
+                if (!GameData.GridFightRoleBasicInfoData.TryGetValue(roleId, out var basicInfo)) continue;
+                if (!basicInfo.TraitList.Contains(traitId)) continue;
+                trait.MEEPFKLLIJB.Add(new BGNGLHHBGMI
+                {
+                    EIHHLAOKAPH = GAPBBJCLMGP.Dgecgaafdjm,
+                    GDNIKJGAEBH = basicInfo.AvatarID,
+                    IPDCMHIEKIJ = 1,
+                    GridUpdateSrc = PFODGDGFBBN.Iomeeecoiob
+                });
+            }
+            info.AFCMOOFGBPK.GridFightTraitInfo.Add(trait);
+        }
 
         foreach (var (pos, uniqueId) in inst.UniqueIdByPos.OrderBy(kv => kv.Key))
         {
             if (pos == 0 || pos > 13) continue;
-            if (uniqueId == 0 || !inst.RoleByUniqueId.TryGetValue(uniqueId, out var avatarId)) continue;
+            if (uniqueId == 0 || !inst.RoleByUniqueId.TryGetValue(uniqueId, out var roleId)) continue;
+            var avatarId = GameData.GridFightRoleBasicInfoData.TryGetValue(roleId, out var bi) ? bi.AvatarID : roleId;
 
             var roleInfo = new JAJOBJJPINN
             {
-                RoleId = avatarId,
+                RoleId = roleId,
                 AvatarId = avatarId,
                 Pos = pos,
                 UniqueId = uniqueId,
