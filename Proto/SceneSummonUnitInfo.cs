@@ -91,7 +91,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "summon_unit_id" field.</summary>
-    public const int SummonUnitIdFieldNumber = 1;
+    public const int SummonUnitIdFieldNumber = 15;
     private uint summonUnitId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -150,7 +150,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "caster_entity_id" field.</summary>
-    public const int CasterEntityIdFieldNumber = 15;
+    public const int CasterEntityIdFieldNumber = 1;
     private uint casterEntityId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -214,7 +214,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (SummonUnitId != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(120);
         output.WriteUInt32(SummonUnitId);
       }
       triggerNameList_.WriteTo(output, _repeated_triggerNameList_codec);
@@ -231,7 +231,7 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(AttachEntityId);
       }
       if (CasterEntityId != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(8);
         output.WriteUInt32(CasterEntityId);
       }
       if (_unknownFields != null) {
@@ -245,7 +245,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (SummonUnitId != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(120);
         output.WriteUInt32(SummonUnitId);
       }
       triggerNameList_.WriteTo(ref output, _repeated_triggerNameList_codec);
@@ -262,7 +262,7 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(AttachEntityId);
       }
       if (CasterEntityId != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(8);
         output.WriteUInt32(CasterEntityId);
       }
       if (_unknownFields != null) {
@@ -339,7 +339,7 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            SummonUnitId = input.ReadUInt32();
+            CasterEntityId = input.ReadUInt32();
             break;
           }
           case 26: {
@@ -359,7 +359,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 120: {
-            CasterEntityId = input.ReadUInt32();
+            SummonUnitId = input.ReadUInt32();
             break;
           }
         }
@@ -382,7 +382,7 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            SummonUnitId = input.ReadUInt32();
+            CasterEntityId = input.ReadUInt32();
             break;
           }
           case 26: {
@@ -402,7 +402,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 120: {
-            CasterEntityId = input.ReadUInt32();
+            SummonUnitId = input.ReadUInt32();
             break;
           }
         }
