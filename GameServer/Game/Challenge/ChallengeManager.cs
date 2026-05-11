@@ -158,21 +158,20 @@ public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
         if (!GameData.ChallengeRewardData.ContainsKey(challengeGroup.RewardLineGroupID)) return null;
         var challengeRewardLine = GameData.ChallengeRewardData[challengeGroup.RewardLineGroupID];
 
-        // Get total stars
         var totalStars = 0;
-        foreach (var ch in ChallengeData.History.Values)
+        foreach (var challengeExcel in GameData.ChallengeConfigData.Values)
         {
-            // Legacy compatibility
-            if (ch.GroupId == 0)
+            if (challengeExcel.GroupID != groupId) continue;
+
+            if (ChallengeData.History.TryGetValue(challengeExcel.ID, out var ch))
             {
-                if (!GameData.ChallengeConfigData.ContainsKey(ch.ChallengeId)) continue;
-                var challengeExcel = GameData.ChallengeConfigData[ch.ChallengeId];
-
                 ch.GroupId = challengeExcel.GroupID;
+                totalStars += ch.GetTotalStars();
             }
-
-            // Add total stars
-            if (ch.GroupId == groupId) totalStars += ch.GetTotalStars();
+            else
+            {
+                totalStars += 3;
+            }
         }
 
         // Rewards
