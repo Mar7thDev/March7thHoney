@@ -101,6 +101,8 @@ public static class GameData
     public static ChallengePeakOverrideConfig ChallengePeakOverrideConfig { get; set; } = new();
     public static Dictionary<int, List<ChallengeRewardExcel>> ChallengeRewardData { get; private set; } = [];
 
+    public static Dictionary<int, List<ChallengePeakRewardExcel>> ChallengePeakRewardData { get; private set; } = [];
+
     #endregion
 
     #region Battle
