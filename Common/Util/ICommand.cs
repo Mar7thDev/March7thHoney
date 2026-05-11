@@ -33,14 +33,14 @@ namespace March7thHoney.Util
 
         public static void InitConsole()
         {
-            Console.Title = "Cyrene | March 7th Honey";
+            Console.Title = "March7thHoney";
             Console.OutputEncoding = System.Text.Encoding.UTF8;
             PrintBanner();
         }
 
         public static void PrintBanner()
         {
-            var text = "Cyrene | March 7th Honey";
+            var text = "March7thHoney";
             var markup = BuildGradientMarkup(text);
             var panel = new Panel(new Markup(markup))
             {
