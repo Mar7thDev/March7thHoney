@@ -28,10 +28,12 @@ public class UsernameLoginHandler
 
         if (accountData != null)
         {
+            var canonicalAccount = AccountData.GetAccountByUid(accountData.Uid) ?? accountData;
+            var username = canonicalAccount.Username ?? account;
             res.message = "OK";
-            res.data = new VerifyData(accountData.Uid.ToString(), accountData.Username + "@StarRail.com",
-                accountData.GenerateDispatchToken());
-            res.data.account.name = accountData.Username;
+            res.data = new VerifyData(canonicalAccount.Uid.ToString(), username + "@StarRail.com",
+                canonicalAccount.GenerateDispatchToken());
+            res.data.account.name = username;
             res.data.account.is_email_verify = "1";
         }
 

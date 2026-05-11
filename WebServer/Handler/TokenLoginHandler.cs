@@ -11,16 +11,17 @@ public class TokenLoginHandler
     {
         var account = AccountData.GetAccountByUid(int.Parse(uid));
         var res = new LoginResJson();
-        if (account == null || !account?.DispatchToken?.Equals(token) == true)
+        if (account == null || !string.Equals(account.DispatchToken, token, StringComparison.Ordinal))
         {
             res.retcode = -201;
             res.message = "Game account cache information error";
         }
         else
         {
+            var username = account.Username ?? uid;
             res.message = "OK";
-            res.data = new VerifyData(account!.Uid.ToString(), account.Username + "@StarRail.com", token);
-            res.data.account.name = account.Username;
+            res.data = new VerifyData(account.Uid.ToString(), username + "@StarRail.com", token);
+            res.data.account.name = username;
             res.data.account.is_email_verify = "1";
         }
 
