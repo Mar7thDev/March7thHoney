@@ -186,6 +186,8 @@ public class ServerInfoTextCHT
     public string LicenseCurrentHwid => "當前機器 HWID：{0}";
     public string LicenseVerified => "授權驗證通過：{0}，到期時間：{1}";
     public string LicenseValidateFailed => "授權驗證失敗。";
+        public string PublicModeEnabled => "伺服器為公開版本，正在啟用額外的安全措施。";
+    public string PublicModeValidationFailed => "許可證驗證失敗，程序加載已停止。";
 }
 
 #endregion
