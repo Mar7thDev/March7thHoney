@@ -1,3 +1,4 @@
+using March7thHoney.Data;
 using March7thHoney.GameServer.Game.GridFight.Sync;
 using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.GridFight.Battle;
@@ -24,6 +25,8 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     public uint Level { get; } = 1;
     public uint SectionId { get; set; } = 1;
     public uint NDOCIKPLKIF { get; } = 1801;
+    public uint CurrentChapterId { get; set; } = 1;
+    public uint CurrentBranchId { get; set; } = 1;
     public uint KeepWinCnt { get; set; }
     public int BattlesFinished { get; set; }
     public GridFightBattleComponent BattleComponent { get; } = new();
@@ -106,6 +109,10 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
         foreach (var posInfo in posInfoList)
         {
             if (posInfo.Pos == 0) continue;
+            foreach (var stale in UniqueIdByPos
+                         .Where(kv => kv.Key != posInfo.Pos && kv.Value == posInfo.UniqueId)
+                         .Select(kv => kv.Key).ToList())
+                UniqueIdByPos.Remove(stale);
             UniqueIdByPos[posInfo.Pos] = posInfo.UniqueId;
             if (posInfo.UniqueId != 0 && !RoleByUniqueId.ContainsKey(posInfo.UniqueId))
             {
@@ -115,40 +122,43 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
         }
     }
 
-    public List<int> BuildForegroundAvatarIds(int maxCount = 4)
+    public List<(uint RoleId, uint Pos)> ResolveForegroundRoles()
     {
         EnsureDefaultRoles();
-        var list = new List<int>();
-        foreach (var (pos, uniqueId) in UniqueIdByPos.OrderBy(x => x.Key))
-        {
-            if (pos == 0 || pos > 4) continue;
-            if (uniqueId == 0 || !RoleByUniqueId.TryGetValue(uniqueId, out var avatarId)) continue;
-            list.Add((int)avatarId);
-            if (list.Count >= maxCount) break;
-        }
+        return UniqueIdByPos.OrderBy(kv => kv.Key)
+            .Where(kv => kv.Key is > 0 and <= 4)
+            .Select(kv => (Role: RoleByUniqueId.GetValueOrDefault(kv.Value), Pos: kv.Key))
+            .Where(t => t.Role != 0)
+            .Select(t => (RoleId: t.Role, t.Pos))
+            .ToList();
+    }
+
+    public List<(uint RoleId, uint Pos)> ResolveBackgroundRoles()
+    {
+        EnsureDefaultRoles();
+        return UniqueIdByPos.OrderBy(kv => kv.Key)
+            .Where(kv => kv.Key is > 4 and <= 13)
+            .Select(kv => (Role: RoleByUniqueId.GetValueOrDefault(kv.Value), Pos: kv.Key))
+            .Where(t => t.Role != 0)
+            .Select(t => (RoleId: t.Role, t.Pos))
+            .ToList();
+    }
+
+    public List<int> BuildForegroundAvatarIds(int maxCount = 4)
+    {
+        var list = ResolveForegroundRoles().Select(t => RoleIdToAvatarId(t.RoleId)).Where(id => id != 0).Take(maxCount).ToList();
         if (list.Count == 0)
-        {
-            foreach (var (_, avatarId) in RoleByUniqueId)
-            {
-                list.Add((int)avatarId);
-                if (list.Count >= maxCount) break;
-            }
-        }
+            list = RoleByUniqueId.Values.Take(maxCount).Select(x => (int)x).ToList();
         return list;
     }
 
     public List<int> BuildBackgroundAvatarIds()
     {
-        EnsureDefaultRoles();
-        var list = new List<int>();
-        foreach (var (pos, uniqueId) in UniqueIdByPos.OrderBy(x => x.Key))
-        {
-            if (pos < 5 || pos > 13) continue;
-            if (uniqueId == 0 || !RoleByUniqueId.TryGetValue(uniqueId, out var avatarId)) continue;
-            list.Add((int)avatarId);
-        }
-        return list;
+        return ResolveBackgroundRoles().Select(t => RoleIdToAvatarId(t.RoleId)).Where(id => id != 0).ToList();
     }
+
+    private static int RoleIdToAvatarId(uint roleId) =>
+        GameData.GridFightRoleBasicInfoData.TryGetValue(roleId, out var e) ? (int)e.AvatarID : (int)roleId;
 
     public void RotateShop()
     {
