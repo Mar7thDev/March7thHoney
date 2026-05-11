@@ -8,7 +8,11 @@ namespace March7thHoney.Database.TrainParty;
 public class TrainData : BaseDatabaseDataHelper
 {
     public int Fund { get; set; }
+    public int RecordId { get; set; }
+    public uint WorldId { get; set; }
+    public long RefreshTime { get; set; }
     [SugarColumn(IsJson = true)] public Dictionary<int, TrainAreaInfo> Areas { get; set; } = [];
+    [SugarColumn(IsJson = true)] public List<TrainSelfDisplayEntry> SelfDisplay { get; set; } = [];
 }
 
 public class TrainAreaInfo
@@ -46,4 +50,11 @@ public class TrainAreaInfo
 
         return info;
     }
+}
+
+public class TrainSelfDisplayEntry
+{
+    public uint Slot { get; set; }
+    public uint Id { get; set; }
+    public uint Type { get; set; }
 }
