@@ -70,9 +70,12 @@ switch ($Duration) {
     default { $validDays = 30 }
 }
 
-$expireAt = [DateTimeOffset]::UtcNow.AddDays($validDays).ToUnixTimeSeconds()
+$issuedAt = [DateTimeOffset]::UtcNow.ToUnixTimeSeconds()
+$expireAt = [DateTimeOffset]::FromUnixTimeSeconds($issuedAt).AddDays($validDays).ToUnixTimeSeconds()
 $licenseObj = [ordered]@{
     hwid = $Hwid.Trim()
+    issuedAt = $issuedAt
+    trialDays = $validDays
     expireAt = $expireAt
     holder = $Holder.Trim()
 }
@@ -92,5 +95,6 @@ Write-Host "License generated:"
 Write-Host "  Holder: $Holder"
 Write-Host "  HWID: $Hwid"
 Write-Host "  Duration: $Duration ($validDays day(s))"
+Write-Host "  IssuedAt(Unix): $issuedAt"
 Write-Host "  ExpireAt(Unix): $expireAt"
 Write-Host "  Output: $outputPath"
