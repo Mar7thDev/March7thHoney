@@ -15,6 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <AssemblyMetadata Include="BuildUtc" Value="$([System.DateTime]::UtcNow.ToString(&quot;yyyy-MM-ddTHH:mm:ssZ&quot;))" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.33.1" />
     <PackageReference Include="Google.Protobuf.Tools" Version="3.33.1" />
   </ItemGroup>
