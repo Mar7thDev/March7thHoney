@@ -1,0 +1,46 @@
+name: Build and Publish
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch: # 支持在 GitHub 页面上手动点击运行
+
+jobs:
+  build-and-publish:
+    name: Publish (${{ matrix.mode_name }})
+    runs-on: windows-latest
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        # 这里的 mode 对应你脚本中的 switch 判断逻辑
+        include:
+          - mode: "1"
+            mode_name: "Private"
+          - mode: "2"
+            mode_name: "Public"
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Execute Publish Script
+        shell: pwsh
+        run: |
+          # 显式传递 Mode 参数，跳过脚本内的 Read-Host 交互
+          ./Publish-SingleFile.ps1 -Mode "${{ matrix.mode }}" -Runtime "win-x64" -Configuration "Release"
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          # 成品名称会区分 Private 和 Public
+          name: Program-win-x64-${{ matrix.mode_name }}
+          # 对应脚本中的 $OutputRoot/$Runtime，即 Publish/win-x64
+          path: Publish/win-x64/
+          if-no-files-found: error
+          retention-days: 7
