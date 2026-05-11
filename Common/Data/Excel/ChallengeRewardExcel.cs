@@ -1,6 +1,6 @@
 namespace March7thHoney.Data.Excel;
 
-[ResourceEntity("ChallengeMazeRewardLine.json,ChallengeStoryRewardLine.json", true)]
+[ResourceEntity("ChallengeMazeRewardLine.json,ChallengeStoryRewardLine.json,ChallengeBossRewardLine.json", true)]
 public class ChallengeRewardExcel : ExcelResource
 {
     public int GroupID { get; set; }
