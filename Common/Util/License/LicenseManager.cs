@@ -1,5 +1,6 @@
 using March7thHoney.Internationalization;
 using Newtonsoft.Json;
+using System.Diagnostics;
 using System.Reflection;
 
 namespace March7thHoney.Util.License;
@@ -85,14 +86,27 @@ public static class LicenseManager
 
     private static bool IsWithinBuildTrialWindow()
     {
-        var entryAssembly = Assembly.GetEntryAssembly();
-        var entryLocation = entryAssembly?.Location;
-        if (string.IsNullOrWhiteSpace(entryLocation) || !File.Exists(entryLocation))
+        var binaryPath = GetExecutablePath();
+        if (string.IsNullOrWhiteSpace(binaryPath) || !File.Exists(binaryPath))
             return false;
 
-        var buildTimeUtc = File.GetLastWriteTimeUtc(entryLocation);
+        var buildTimeUtc = File.GetLastWriteTimeUtc(binaryPath);
         var trialExpireUtc = buildTimeUtc.AddDays(PublicModeBuildTrialDays);
         return DateTime.UtcNow <= trialExpireUtc;
+    }
+
+    private static string? GetExecutablePath()
+    {
+        var processPath = Environment.ProcessPath;
+        if (!string.IsNullOrWhiteSpace(processPath))
+            return processPath;
+
+        var mainModulePath = Process.GetCurrentProcess().MainModule?.FileName;
+        if (!string.IsNullOrWhiteSpace(mainModulePath))
+            return mainModulePath;
+
+        var entryPath = Assembly.GetEntryAssembly()?.Location;
+        return !string.IsNullOrWhiteSpace(entryPath) ? entryPath : null;
     }
 }
 
