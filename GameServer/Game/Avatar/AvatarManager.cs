@@ -115,6 +115,45 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager(player)
         return avatar;
     }
 
+    public SpecialAvatarInfo? GetTrialAvatarByWorldLevel(int specialAvatarId, int worldLevel)
+    {
+        var avatar = AvatarData.TrialAvatars.Find(a => a.SpecialAvatarId == specialAvatarId);
+        if (avatar != null) return avatar;
+
+        SpecialAvatarExcel? excel = null;
+        for (var wl = worldLevel; wl >= 0 && excel == null; wl--)
+            GameData.SpecialAvatarData.TryGetValue(specialAvatarId * 10 + wl, out excel);
+        if (excel == null) return null;
+
+        var baseAvatarId = excel.AvatarID;
+        if (GameData.MultiplePathAvatarConfigData.TryGetValue(baseAvatarId, out var multiple))
+            baseAvatarId = multiple.BaseAvatarID;
+        avatar = new SpecialAvatarInfo
+        {
+            SpecialAvatarId = excel.SpecialAvatarID,
+            AvatarId = excel.AvatarID,
+            BaseAvatarId = baseAvatarId,
+            Level = excel.Level,
+            Promotion = excel.Promotion
+        };
+        avatar.PathInfos.Add(excel.AvatarID, new PathInfo(excel.AvatarID)
+        {
+            Rank = excel.Rank,
+            EquipData = new ItemData
+            {
+                ItemId = excel.EquipmentID,
+                Level = excel.EquipmentLevel,
+                Promotion = excel.EquipmentPromotion,
+                Rank = excel.EquipmentRank
+            }
+        });
+
+        if (!GameData.AvatarConfigData.TryGetValue(avatar.BaseAvatarId, out _)) return avatar;
+        avatar.GetCurPathInfo().GetSkillTree();
+        AvatarData.TrialAvatars.Add(avatar);
+        return avatar;
+    }
+
     public FormalAvatarInfo? GetHero()
     {
         return AvatarData.FormalAvatars.Find(avatar => avatar.BaseAvatarId == 8001);

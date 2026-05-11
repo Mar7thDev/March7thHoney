@@ -1,5 +1,4 @@
 using March7thHoney.Data;
-using March7thHoney.Data.Excel;
 using March7thHoney.Database.Lineup;
 using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.Player;
@@ -15,25 +14,7 @@ public static class GridFightBattleModule
         if (player.BattleInstance != null)
             return player.BattleInstance;
 
-        StageConfigExcel? stageConfig = null;
-        if (gridFightInstance.BattleComponent.StageId > 0 &&
-            GameData.StageConfigData.TryGetValue((int)gridFightInstance.BattleComponent.StageId, out var gridStage))
-        {
-            stageConfig = gridStage;
-        }
-
-        if (stageConfig == null)
-        {
-            foreach (var stageId in gridFightInstance.StageCandidates)
-            {
-                if (!GameData.StageConfigData.TryGetValue((int)stageId, out var found)) continue;
-                stageConfig = found;
-                break;
-            }
-        }
-
-        stageConfig ??= GameData.StageConfigData.Values.FirstOrDefault();
-        if (stageConfig == null)
+        if (!GameData.StageConfigData.TryGetValue((int)GridFightLevelResolver.UnifiedStageId, out var stageConfig))
             return null;
 
         var foregroundIds = gridFightInstance.BuildForegroundAvatarIds();
@@ -54,7 +35,6 @@ public static class GridFightBattleModule
             GridFightContext = gridFightInstance
         };
 
-        player.BattleManager!.NextBattleMonsterIds = gridFightInstance.BattleComponent.MonsterIds.Select(x => (int)x).ToList();
         player.BattleInstance = battle;
         return battle;
     }

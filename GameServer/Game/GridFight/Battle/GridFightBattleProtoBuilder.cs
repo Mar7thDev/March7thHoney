@@ -1,10 +1,10 @@
+using March7thHoney.Data;
 using March7thHoney.Database.Avatar;
-using March7thHoney.Database.Lineup;
 using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.Lineup;
+using March7thHoney.GameServer.Game.Player;
 using March7thHoney.Proto;
 using March7thHoney.Util;
-using LineupInfo = March7thHoney.Database.Lineup.LineupInfo;
 
 namespace March7thHoney.GameServer.Game.GridFight.Battle;
 
@@ -12,60 +12,66 @@ public static class GridFightBattleProtoBuilder
 {
     public static List<AvatarLineupData> HandleProto(BattleInstance battle, GridFightInstance inst, SceneBattleInfo proto)
     {
+        var enc = GridFightLevelResolver.Resolve(inst);
         var player = battle.Player;
-        var foregroundIds = inst.BuildForegroundAvatarIds();
-        var backgroundIds = inst.BuildBackgroundAvatarIds();
+        var foregroundData = new List<AvatarLineupData>();
 
-        var foreground = ResolveAvatars(battle, foregroundIds);
-        var background = ResolveAvatars(battle, backgroundIds);
+        var collection = new PlayerDataCollection(player.Data, player.InventoryManager!.Data, battle.Lineup);
 
-        var tempLineup = new LineupInfo
+        foreach (var (roleId, _) in inst.ResolveForegroundRoles())
         {
-            LineupType = (int)ExtraLineupType.LineupChessRogue,
-            BaseAvatars = foreground
-                .Concat(background)
-                .Select(a => new LineupAvatarInfo { BaseAvatarId = a.AvatarInfo.BaseAvatarId })
-                .ToList(),
-            AvatarData = player.AvatarManager?.AvatarData
+            var avatar = ResolveTrialAvatar(player, roleId);
+            if (avatar == null) continue;
+            proto.BattleAvatarList.Add(avatar.ToBattleProto(collection, AvatarType.AvatarTrialType));
+            foregroundData.Add(new AvatarLineupData(avatar, AvatarType.AvatarTrialType));
+        }
+
+        proto.MonsterWaveList.Clear();
+        var wave = new SceneMonsterWave
+        {
+            BattleStageId = (uint)battle.StageId,
+            BattleWaveId = 1,
+            MonsterParam = new SceneMonsterWaveParam
+            {
+                EliteGroup = enc.EliteGroupId,
+                BDCCEFHMFHO = 5
+            }
         };
+        foreach (var spec in enc.Monsters)
+        {
+            var sceneMonster = new SceneMonster
+            {
+                MonsterId = spec.MonsterId,
+                ExtraInfo = new MEHAOMGBOMC
+                {
+                    AFCMOOFGBPK = new DLGEGGCHCID { RoleStar = spec.RoleStar }
+                }
+            };
+            foreach (var itemId in spec.DropItemIds)
+            {
+                sceneMonster.ExtraInfo.AFCMOOFGBPK.PGNMDJIIKJB.Add(new LHPPIAKKFME
+                {
+                    BGKDAMDFFKH = GridFightDropType.HiolcnpoponMkppcdpchie,
+                    JJFFLMCCCMM = itemId,
+                    Num = 1
+                });
+            }
+            wave.MonsterList.Add(sceneMonster);
+        }
+        proto.MonsterWaveList.Add(wave);
 
-        foreach (var item in foreground.Concat(background))
-            item.AvatarInfo.SetCurHp(10000, true);
+        foreach (var buffId in enc.BindingBuffs)
+            battle.Buffs.Add(new MazeBuff((int)buffId, 1, -1) { WaveFlag = -1 });
 
-        var collection = new PlayerDataCollection(player.Data, player.InventoryManager!.Data, tempLineup);
+        foreach (var beId in enc.BattleEvents)
+            battle.BattleEvents.TryAdd((int)beId, new BattleEventInstance((int)beId, 0, 100000));
 
-        foreach (var item in foreground.Take(4))
-            proto.BattleAvatarList.Add(item.AvatarInfo.ToBattleProto(collection, item.AvatarType));
-
-        return foreground;
+        return foregroundData;
     }
 
-    private static List<AvatarLineupData> ResolveAvatars(BattleInstance battle, IEnumerable<int> avatarIds)
+    internal static SpecialAvatarInfo? ResolveTrialAvatar(PlayerInstance player, uint roleId)
     {
-        var list = new List<AvatarLineupData>();
-        foreach (var id in avatarIds)
-        {
-            var info = ResolveAvatar(battle, id);
-            if (info != null) list.Add(info);
-        }
-        return list;
-    }
-
-    private static AvatarLineupData? ResolveAvatar(BattleInstance battle, int avatarId)
-    {
-        var avatarMgr = battle.Player.AvatarManager;
-        if (avatarMgr == null) return null;
-
-        var formal = avatarMgr.GetFormalAvatar(avatarId);
-        if (formal != null) return new AvatarLineupData(formal, AvatarType.AvatarGridFightType);
-
-        var trial = avatarMgr.GetTrialAvatar(avatarId);
-        if (trial != null)
-        {
-            trial.CheckLevel(battle.Player.Data.WorldLevel);
-            return new AvatarLineupData(trial, AvatarType.AvatarTrialType);
-        }
-
-        return null;
+        if (!GameData.GridFightRoleBasicInfoData.TryGetValue(roleId, out var basicInfo)) return null;
+        return player.AvatarManager?.GetTrialAvatarByWorldLevel((int)basicInfo.SpecialAvatarID, player.Data.WorldLevel);
     }
 }

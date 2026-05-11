@@ -8,6 +8,8 @@ public class GridFightRoleBasicInfoExcel : ExcelResource
     public uint AvatarID { get; set; }
     public uint SeasonID { get; set; }
     public uint Rarity { get; set; }
+    public string FrontBackType { get; set; } = "Front";
+    public uint EquipmentID { get; set; }
     public List<uint> TraitList { get; set; } = [];
     public List<string> RoleSavedValueList { get; set; } = [];
     public bool IsInPool { get; set; }
