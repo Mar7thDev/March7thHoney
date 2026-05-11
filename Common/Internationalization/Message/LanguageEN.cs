@@ -186,6 +186,8 @@ public class ServerInfoTextEN
     public string LicenseCurrentHwid => "Current machine HWID: {0}";
     public string LicenseVerified => "License verified for {0}. Expires at: {1}";
     public string LicenseValidateFailed => "Failed to validate License.";
+    public string PublicModeEnabled => "Server is in public mode. Enabling additional security measures.";
+    public string PublicModeValidationFailed => "License validation failed, program loading has been stopped.";
 }
 
 #endregion
