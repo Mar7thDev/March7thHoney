@@ -350,7 +350,16 @@ public class AbilityLevelTask(PlayerInstance player)
             if (!GameData.SummonUnitDataData.TryGetValue(createSummonUnit.SummonUnitID, out var excel))
                 return new AbilityLevelResult();
 
-            if (excel.IsClient) return new AbilityLevelResult();
+            var fallbackMotion = new MotionInfo
+            {
+                Pos = Player.Data.Pos?.ToProto() ?? new Vector(),
+                Rot = Player.Data.Rot?.ToProto() ?? new Vector()
+            };
+            var spawnMotion = param.Request.TargetMotion ?? fallbackMotion;
+            if (spawnMotion.Pos == null) spawnMotion.Pos = fallbackMotion.Pos;
+            if (spawnMotion.Rot == null) spawnMotion.Rot = fallbackMotion.Rot;
+
+            const int summonLifeTimeMs = 45 * 1000;
 
             var unit = new EntitySummonUnit
             {
@@ -359,9 +368,9 @@ public class AbilityLevelTask(PlayerInstance player)
                 AttachEntityId = excel.ConfigInfo?.AttachPoint == "Origin" ? param.CasterEntity.EntityId : 0,
                 SummonUnitId = excel.ID,
                 CreateAvatarId = (param.CasterEntity as AvatarSceneInfo)?.AvatarInfo.BaseAvatarId ?? 0,
-                LifeTimeMs = createSummonUnit.Duration.GetValue() < 0 ? -1 : createSummonUnit.Duration.GetValue() * 1000,
+                LifeTimeMs = summonLifeTimeMs,
                 TriggerList = excel.ConfigInfo?.TriggerConfig.CustomTriggers ?? [],
-                Motion = param.Request.TargetMotion
+                Motion = spawnMotion
             };
 
             await Player.SceneInstance!.AddSummonUnitEntity(unit);
