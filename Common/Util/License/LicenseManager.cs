@@ -25,7 +25,7 @@ public static class LicenseManager
                 if (IsWithinBuildTrialWindow())
                 {
                     Logger.Warn(
-                        $"Public mode trial active. Remaining license-free window is based on build time + {PublicModeBuildTrialDays} days.");
+                        $"Public mode trial active. license-free {PublicModeBuildTrialDays} days.");
                     return true;
                 }
 
