@@ -30,13 +30,13 @@ public class LoginV2ReqJson
 
 public class VerifySTokenReqJson
 {
-    public string mid { get; set; }
+    public string mid { get; set; } = "";
     public bool refresh { get; set; }
-    public TokenInfo token { get; set; }
+    public TokenInfo token { get; set; } = new();
 
     public class TokenInfo
     {
         public int token_type { get; set; }
-        public string token { get; set; }
+        public string token { get; set; } = "";
     }
 }
