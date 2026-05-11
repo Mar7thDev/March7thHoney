@@ -1,6 +1,6 @@
 using March7thHoney.Internationalization;
 using Newtonsoft.Json;
-using System.Diagnostics;
+using System.Globalization;
 using System.Reflection;
 
 namespace March7thHoney.Util.License;
@@ -10,8 +10,7 @@ public static class LicenseManager
     private static readonly Logger Logger = new("License");
     private const string LicensePath = "Config/March7thHoney.license";
     private const string HelpUrl = "discord.gg/castoriceps";
-    private const int DefaultTrialDays = 30;
-    private const int PublicModeBuildTrialDays = 30;
+    private const string BuildUtcMetadataKey = "BuildUtc";
 
     public static bool ValidateInPublicMode()
     {
@@ -24,8 +23,8 @@ public static class LicenseManager
             {
                 if (IsWithinBuildTrialWindow())
                 {
-                    Logger.Warn(
-                        $"Public mode trial active. license-free {PublicModeBuildTrialDays} days.");
+                    Logger.Warn(I18NManager.Translate("Server.ServerInfo.PublicModeTrialActive",
+                        LicenseInfo.TrialDays.ToString()));
                     return true;
                 }
 
@@ -46,8 +45,7 @@ public static class LicenseManager
             }
 
             var now = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-            var effectiveExpireAt = GetEffectiveExpireAt(license);
-            if (effectiveExpireAt <= now)
+            if (license.ExpireAt <= now)
             {
                 Logger.Error(I18NManager.Translate("Server.ServerInfo.LicenseExpired"));
                 Logger.Error(I18NManager.Translate("Server.ServerInfo.LicenseInvalid", HelpUrl));
@@ -61,7 +59,7 @@ public static class LicenseManager
                 return false;
             }
 
-            var localTime = DateTimeOffset.FromUnixTimeSeconds(effectiveExpireAt).ToLocalTime();
+            var localTime = DateTimeOffset.FromUnixTimeSeconds(license.ExpireAt).ToLocalTime();
             Logger.Info(I18NManager.Translate("Server.ServerInfo.LicenseVerified",
                 license.Holder, localTime.ToString("yyyy-MM-dd HH:mm:ss")));
             return true;
@@ -74,39 +72,40 @@ public static class LicenseManager
         }
     }
 
-    private static long GetEffectiveExpireAt(LicenseInfo license)
-    {
-        var fallbackIssuedAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-        var issuedAt = license.IssuedAt > 0 ? license.IssuedAt : fallbackIssuedAt;
-        var trialDays = license.TrialDays > 0 ? license.TrialDays : DefaultTrialDays;
-        var trialExpireAt = DateTimeOffset.FromUnixTimeSeconds(issuedAt).AddDays(trialDays).ToUnixTimeSeconds();
-
-        return license.ExpireAt > 0 ? Math.Min(license.ExpireAt, trialExpireAt) : trialExpireAt;
-    }
-
     private static bool IsWithinBuildTrialWindow()
     {
-        var binaryPath = GetExecutablePath();
-        if (string.IsNullOrWhiteSpace(binaryPath) || !File.Exists(binaryPath))
+        var buildTimeUtc = GetCompileTimeUtcFromEntryAssembly();
+        if (buildTimeUtc == null)
+        {
+            Logger.Warn(I18NManager.Translate("Server.ServerInfo.PublicModeBuildTimeUnavailable"));
             return false;
+        }
 
-        var buildTimeUtc = File.GetLastWriteTimeUtc(binaryPath);
-        var trialExpireUtc = buildTimeUtc.AddDays(PublicModeBuildTrialDays);
+        var trialExpireUtc = buildTimeUtc.Value.AddDays(LicenseInfo.TrialDays);
         return DateTime.UtcNow <= trialExpireUtc;
     }
 
-    private static string? GetExecutablePath()
+    private static DateTime? GetCompileTimeUtcFromEntryAssembly()
     {
-        var processPath = Environment.ProcessPath;
-        if (!string.IsNullOrWhiteSpace(processPath))
-            return processPath;
+        var candidates = new[]
+        {
+            Assembly.GetEntryAssembly(),
+            Assembly.GetExecutingAssembly()
+        };
 
-        var mainModulePath = Process.GetCurrentProcess().MainModule?.FileName;
-        if (!string.IsNullOrWhiteSpace(mainModulePath))
-            return mainModulePath;
+        foreach (var asm in candidates.Where(x => x != null))
+        {
+            var metadata = asm!.GetCustomAttributes<AssemblyMetadataAttribute>();
+            var buildUtcRaw = metadata.FirstOrDefault(x => x.Key == BuildUtcMetadataKey)?.Value;
+            if (string.IsNullOrWhiteSpace(buildUtcRaw))
+                continue;
 
-        var entryPath = Assembly.GetEntryAssembly()?.Location;
-        return !string.IsNullOrWhiteSpace(entryPath) ? entryPath : null;
+            if (DateTime.TryParseExact(buildUtcRaw, "yyyy-MM-ddTHH:mm:ssZ", CultureInfo.InvariantCulture,
+                    DateTimeStyles.AdjustToUniversal | DateTimeStyles.AssumeUniversal, out var buildUtc))
+                return buildUtc;
+        }
+
+        return null;
     }
 }
 
