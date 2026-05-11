@@ -108,9 +108,14 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
     public async ValueTask<List<ChallengePeakRewardGroup>?> TakeRewards(int groupId, IEnumerable<uint> requestRewardIds)
     {
         if (!GameData.ChallengePeakGroupConfigData.TryGetValue(groupId, out var groupConfig)) return null;
-        if (!GameData.ChallengeRewardData.TryGetValue(groupConfig.RewardGroupID, out var rewardLine)) return null;
+        if (!GameData.ChallengePeakRewardData.TryGetValue(groupConfig.RewardGroupID, out var rewardLine)) return null;
 
-        var totalStars = GetObtainedStars(groupConfig);
+        var passedMobs = groupConfig.PreLevelIDList.Count;
+        var mobStars = passedMobs * 3;
+        var hasBoss = groupConfig.BossLevelID > 0;
+        var bossStars = hasBoss ? 3 : 0;
+        var bossHardStars = hasBoss ? 3 : 0;
+
         if (!Player.ChallengeManager!.ChallengeData.PeakTakenRewardIds.TryGetValue(groupId, out var takenList))
         {
             takenList = [];
@@ -118,23 +123,41 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         }
 
         var requested = requestRewardIds.Select(x => (int)x).ToHashSet();
-        if (requested.Count == 0) requested = rewardLine.Select(x => x.RewardID).ToHashSet();
+        if (requested.Count == 0) requested = rewardLine.Select(x => x.ID).ToHashSet();
 
         var rspGroups = new List<ChallengePeakRewardGroup>();
         var gainItems = new List<ItemData>();
 
-        foreach (var reward in rewardLine.OrderBy(x => x.StarCount))
+        foreach (var entry in rewardLine.OrderBy(x => x.ID))
         {
-            if (!requested.Contains(reward.RewardID)) continue;
-            if (totalStars < reward.StarCount) continue;
-            if (takenList.Contains(reward.RewardID)) continue;
-            if (!GameData.RewardDataData.TryGetValue(reward.RewardID, out var rewardExcel)) continue;
+            if (!requested.Contains(entry.ID)) continue;
+            if (takenList.Contains(entry.ID)) continue;
+
+            var passed = entry.RewardType switch
+            {
+                "MOB_PASS_REWARD" => passedMobs >= entry.TypeValue,
+                "MOB_STAR_REWARD" => mobStars >= entry.TypeValue,
+                "BOSS_STAR_REWARD" => bossStars >= entry.TypeValue,
+                "BOSS_STAR_LIMIT_REWARD" => bossHardStars >= entry.TypeValue,
+                "BOSS_COLOR_TARGET_REWARD" => hasBoss,
+                _ => false
+            };
+            if (!passed) continue;
+
+            if (!GameData.RewardDataData.TryGetValue(entry.RewardID, out var rewardExcel)) continue;
 
             var group = new ChallengePeakRewardGroup
             {
-                RewardId = (uint)reward.RewardID,
+                RewardId = (uint)entry.ID,
                 Reward = new ItemList()
             };
+
+            if (rewardExcel.Hcoin > 0)
+            {
+                var hcoin = new ItemData { ItemId = 1, Count = rewardExcel.Hcoin };
+                gainItems.Add(hcoin);
+                group.Reward.ItemList_.Add(hcoin.ToProto());
+            }
 
             foreach (var (itemId, count) in rewardExcel.GetItems())
             {
@@ -147,7 +170,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
                 group.Reward.ItemList_.Add(item.ToProto());
             }
 
-            takenList.Add(reward.RewardID);
+            takenList.Add(entry.ID);
             rspGroups.Add(group);
         }
 
