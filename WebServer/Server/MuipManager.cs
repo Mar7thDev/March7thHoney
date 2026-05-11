@@ -76,21 +76,7 @@ public static class MuipManager
                 return new AuthAdminKeyResponse(1, "Session has expired!", null);
             }
 
-            // decrypt key
-            var rsa = new RSACryptoServiceProvider();
-            rsa.FromXmlString(GetRsaKeyPair().Item2); // private key
-            byte[] decrypted;
-
-            try
-            {
-                decrypted = rsa.Decrypt(Convert.FromBase64String(key), RSAEncryptionPadding.Pkcs1);
-            }
-            catch
-            {
-                return new AuthAdminKeyResponse(3, "Wrong encrypted key", null);
-            }
-
-            var keyStr = Encoding.UTF8.GetString(decrypted);
+            var keyStr = DecodeWithRsaFallback(key);
             if (keyStr != ConfigManager.Config.MuipServer.AdminKey)
                 return new AuthAdminKeyResponse(2, "Admin key is invalid!", null);
 
@@ -139,20 +125,10 @@ public static class MuipManager
             if (!session.IsAuthorized)
                 return new ExecuteCommandResponse(4, "Not authorized!");
 
-            var rsa = new RSACryptoServiceProvider();
-            rsa.FromXmlString(GetRsaKeyPair().Item2);
-            byte[] decrypted;
-
-            try
-            {
-                decrypted = rsa.Decrypt(Convert.FromBase64String(command), RSAEncryptionPadding.Pkcs1);
-            }
-            catch
-            {
+            var commandStr = DecodeWithRsaFallback(command);
+            if (string.IsNullOrWhiteSpace(commandStr))
                 return new ExecuteCommandResponse(3, "Wrong encrypted key");
-            }
 
-            var commandStr = Encoding.UTF8.GetString(decrypted);
             logger.Info($"SessionId: {sessionId}, UID: {targetUid}, ExecuteCommand: {commandStr}");
             var returnStr = "";
 
@@ -308,6 +284,41 @@ public static class MuipManager
     }
 
     #region Tools
+
+    private static string DecodeWithRsaFallback(string text)
+    {
+        if (string.IsNullOrWhiteSpace(text))
+            return string.Empty;
+
+        // Prefer RSA decrypt first.
+        try
+        {
+            var rsa = new RSACryptoServiceProvider();
+            rsa.FromXmlString(GetRsaKeyPair().Item2);
+            var decrypted = rsa.Decrypt(Convert.FromBase64String(text), RSAEncryptionPadding.Pkcs1);
+            return Encoding.UTF8.GetString(decrypted);
+        }
+        catch
+        {
+            // fallback below
+        }
+
+        // Fallback 1: treat payload as base64 plain UTF-8.
+        try
+        {
+            var plainBytes = Convert.FromBase64String(text);
+            var plain = Encoding.UTF8.GetString(plainBytes);
+            if (!string.IsNullOrWhiteSpace(plain))
+                return plain;
+        }
+        catch
+        {
+            // fallback below
+        }
+
+        // Fallback 2: direct plain text.
+        return text;
+    }
 
     /// <summary>
     ///     get rsa key pair
