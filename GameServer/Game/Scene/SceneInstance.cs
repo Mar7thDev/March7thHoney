@@ -512,13 +512,10 @@ public class SceneInstance
         if (!GameData.SummonUnitDataData.TryGetValue(entity.SummonUnitId, out var summonUnitExcel))
             return Retcode.RetMonsterConfigNotExist;
 
-        BaseGameEntity? removeEntity = null;
         // get old summon unit
         var summonUnitKey = summonUnitExcel.UniqueGroup == SummonUnitUniqueGroupEnum.None ? summonUnitExcel.ID : 1;
         if (SummonUnit.TryGetValue(summonUnitKey, out var oldSummonUnit))
         {
-            // clear old summon unit
-            removeEntity = oldSummonUnit;
             foreach (var e in Entities.Values.Where(x => x is EntityMonster))
             {
                 var monster = e as EntityMonster;
@@ -528,13 +525,14 @@ public class SceneInstance
                         // clear old buff
                         await monster.RemoveBuff(sceneBuff.BuffId);
             }
+
+            await Player.SendPacket(new PacketSceneGroupRefreshScNotify(Player, null, oldSummonUnit));
+            SummonUnit.Remove(summonUnitKey);
+            Entities.Remove(oldSummonUnit.EntityId);
         }
 
-        await Player.SendPacket(new PacketSceneGroupRefreshScNotify(
-            Player,
-            entity,
-            removeEntity,
-            SceneGroupRefreshType.Afibfmafncc));
+        await Player.SendPacket(new PacketSceneGroupRefreshScNotify(Player, entity, null));
+        Entities[entity.EntityId] = entity;
         SummonUnit[summonUnitKey] = entity;
 
         return Retcode.RetSucc;
@@ -652,6 +650,7 @@ public class SceneInstance
         await Player.SendPacket(new PacketSceneGroupRefreshScNotify(Player, null, summonUnit.Value));
 
         SummonUnit.Remove(summonUnit.Key);
+        Entities.Remove(summonUnit.Value.EntityId);
 
         foreach (var entity in Entities.Values.Where(x => x is EntityMonster))
         {
@@ -684,6 +683,7 @@ public class SceneInstance
 
             removeEntities.Add(unit.Value);
             SummonUnit.Remove(unit.Key);
+            Entities.Remove(unit.Value.EntityId);
         }
 
         await Player.SendPacket(new PacketSceneGroupRefreshScNotify(Player, [], removeEntities));
