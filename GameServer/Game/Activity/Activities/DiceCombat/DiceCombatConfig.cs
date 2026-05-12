@@ -1,0 +1,36 @@
+namespace March7thHoney.GameServer.Game.Activity.Activities.DiceCombat;
+
+internal static class DiceCombatItems
+{
+    public const int CombatAnalystCertificateId = 150093;
+}
+
+internal static class DiceCombatConfig
+{
+    // Captured GetDiceCombatSystemDataScRsp payload from the official server when the
+    // activity has been fully completed (uid 119737013, 2026-05-12 capture).
+    // Used to seed DiceCombatActivityInstance with the same all-cards-unlocked state.
+    public const string OfficialCompletedSnapshotBase64 =
+        "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" +
+        "BmDRD2ikP1oGYNIPaLA7WgZg0w9otEI=";
+}
