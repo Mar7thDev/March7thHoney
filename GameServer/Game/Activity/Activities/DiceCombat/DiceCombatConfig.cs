@@ -7,9 +7,6 @@ internal static class DiceCombatItems
 
 internal static class DiceCombatConfig
 {
-    // Captured GetDiceCombatSystemDataScRsp payload from the official server when the
-    // activity has been fully completed (uid 119737013, 2026-05-12 capture).
-    // Used to seed DiceCombatActivityInstance with the same all-cards-unlocked state.
     public const string OfficialCompletedSnapshotBase64 =
         "MhkIwI4QEAIaCqWPEImQEO2QEAAgie6ls8UzMhcIwY4QEAIaCKWPEImQEAAAIIuas7PFMzIXCMKOEBACGgiljxCJ" +
         "kBAAACCHlYnZxTMyFQjDjhAQAhoGpY8QAAAAILO1idnFMzIXCMSOEBACGgiljxCJkBAAACDl6aKFxjMyFwjFjhAQ" +

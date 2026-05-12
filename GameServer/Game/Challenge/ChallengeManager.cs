@@ -168,10 +168,6 @@ public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
                 ch.GroupId = challengeExcel.GroupID;
                 totalStars += ch.GetTotalStars();
             }
-            else
-            {
-                totalStars += 3;
-            }
         }
 
         // Rewards
