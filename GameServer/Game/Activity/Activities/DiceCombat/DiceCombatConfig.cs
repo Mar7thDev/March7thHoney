@@ -1,5 +1,10 @@
 namespace March7thHoney.GameServer.Game.Activity.Activities.DiceCombat;
 
+internal static class DiceCombatItems
+{
+    public const int CombatAnalystCertificateId = 150093;
+}
+
 internal static class DiceCombatConfig
 {
     // Captured GetDiceCombatSystemDataScRsp payload from the official server when the
