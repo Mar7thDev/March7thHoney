@@ -183,6 +183,62 @@ public class QuestManager(PlayerInstance player) : BasePlayerManager(player)
         return (Retcode.RetSucc, items);
     }
 
+    public async ValueTask<(Retcode, List<ItemData>)> TakeQuestOptionalReward(int questId, int optionalRewardId)
+    {
+        var rewards = new List<ItemData>();
+
+        GameData.QuestDataData.TryGetValue(questId, out var questExcel);
+        if (questExcel == null) return (Retcode.RetFail, rewards);
+
+        if (!QuestData.Quests.TryGetValue(questId, out var questInfo)) return (Retcode.RetQuestNotAccept, rewards);
+        if (questInfo.QuestStatus != QuestStatus.QuestFinish) return (Retcode.RetQuestNotFinish, rewards);
+
+        questInfo.QuestStatus = QuestStatus.QuestClose;
+
+        if (questExcel.RewardID != 0)
+        {
+            await AppendGrantedRewardForRsp(questExcel.RewardID, rewards);
+        }
+
+        if (optionalRewardId != 0)
+        {
+            // In most quest packets this id is a RewardID, not a direct ItemID.
+            if (GameData.RewardDataData.ContainsKey(optionalRewardId))
+            {
+                await AppendGrantedRewardForRsp(optionalRewardId, rewards);
+            }
+            else
+            {
+                var optionalReward = await Player.InventoryManager!.AddItem(optionalRewardId, 1, false);
+                if (optionalReward != null) rewards.Add(optionalReward);
+            }
+        }
+
+        await Player.SendPacket(new PacketPlayerSyncScNotify(questInfo));
+
+        return (Retcode.RetSucc, rewards);
+    }
+
+    private async ValueTask AppendGrantedRewardForRsp(int rewardId, List<ItemData> rewards)
+    {
+        var granted = await Player.InventoryManager!.HandleReward(rewardId);
+        if (granted.Count > 0)
+        {
+            rewards.AddRange(granted);
+            return;
+        }
+
+        // Fallback: still fill rsp from resource config when runtime grant list is empty.
+        if (!GameData.RewardDataData.TryGetValue(rewardId, out var rewardData) || rewardData == null) return;
+
+        foreach (var (itemId, count) in rewardData.GetItems())
+            if (itemId > 0 && count > 0)
+                rewards.Add(new ItemData { ItemId = itemId, Count = count });
+
+        if (rewardData.Hcoin > 0)
+            rewards.Add(new ItemData { ItemId = 1, Count = rewardData.Hcoin });
+    }
+
     public async ValueTask AddQuestProgress(int questId, int progress, bool push = false)
     {
         GameData.QuestDataData.TryGetValue(questId, out var questExcel);
