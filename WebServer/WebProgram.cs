@@ -1,6 +1,6 @@
 using System.Net;
 using March7thHoney.Util;
-using Microsoft.AspNetCore;
+using Microsoft.Extensions.Hosting;
 
 namespace March7thHoney.WebServer;
 
@@ -11,26 +11,29 @@ public class WebProgram
         BuildWebHost(args, port, address).Start();
     }
 
-    public static IWebHost BuildWebHost(string[] args, int port, string address)
+    public static IHost BuildWebHost(string[] args, int port, string address)
     {
-        var b = WebHost.CreateDefaultBuilder(args)
-            .UseStartup<Startup>()
-            .ConfigureLogging((hostingContext, logging) => { logging.ClearProviders(); })
-            .UseUrls(address);
-
-        if (ConfigManager.Config.HttpServer.UseSSL)
-            b.UseKestrel(options =>
+        return Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
             {
-                options.Listen(IPAddress.Any, port, listenOptions =>
-                {
-                    listenOptions.UseHttps(
-                        ConfigManager.Config.KeyStore.KeyStorePath,
-                        ConfigManager.Config.KeyStore.KeyStorePassword
-                    );
-                });
-            });
+                webBuilder
+                    .UseStartup<Startup>()
+                    .ConfigureLogging((hostingContext, logging) => { logging.ClearProviders(); })
+                    .UseUrls(address);
 
-        return b.Build();
+                if (ConfigManager.Config.HttpServer.UseSSL)
+                    webBuilder.UseKestrel(options =>
+                    {
+                        options.Listen(IPAddress.Any, port, listenOptions =>
+                        {
+                            listenOptions.UseHttps(
+                                ConfigManager.Config.KeyStore.KeyStorePath,
+                                ConfigManager.Config.KeyStore.KeyStorePassword
+                            );
+                        });
+                    });
+            })
+            .Build();
     }
 }
 
