@@ -678,6 +678,26 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager(player)
                 info.SceneMissionInfo.FinishedMainMissionIdList.Add((uint)mainId);
             else if (GetMainMissionStatus(mainId) == MissionPhaseEnum.Accept)
                 info.SceneMissionInfo.UnfinishedMainMissionIdList.Add((uint)mainId);
+
+        // Activity-bound main missions: for each ContentPackage whose entrance lives on the
+        // floor the player is loading, surface its main missions as "unfinished" so the client
+        // treats the activity entry (map icons, in-scene activity NPCs) as live. We keep the
+        // regular Mission system untouched - this only affects scene-mission serialization.
+        var currentFloor = Player.SceneInstance?.FloorId ?? 0;
+        if (currentFloor != 0)
+            foreach (var pkg in GameData.ContentPackageConfigData.Values)
+            {
+                if (pkg.MainMissionIDList.Count == 0) continue;
+                if (!pkg.TouchesFloor(currentFloor)) continue;
+
+                foreach (var missionId in pkg.MainMissionIDList)
+                {
+                    var mid = (uint)missionId;
+                    if (info.SceneMissionInfo.FinishedMainMissionIdList.Contains(mid)) continue;
+                    if (info.SceneMissionInfo.UnfinishedMainMissionIdList.Contains(mid)) continue;
+                    info.SceneMissionInfo.UnfinishedMainMissionIdList.Add(mid);
+                }
+            }
     }
 
     #endregion
