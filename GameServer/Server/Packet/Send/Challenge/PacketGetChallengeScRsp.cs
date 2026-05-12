@@ -25,8 +25,7 @@ public class PacketGetChallengeScRsp : BasePacket
             {
                 proto.ChallengeList.Add(new Proto.Challenge
                 {
-                    ChallengeId = (uint)challengeExcel.ID,
-                    Star = 7
+                    ChallengeId = (uint)challengeExcel.ID
                 });
             }
 
