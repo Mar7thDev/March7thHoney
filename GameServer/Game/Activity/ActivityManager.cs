@@ -2,6 +2,7 @@ using March7thHoney.Data;
 using March7thHoney.Database;
 using March7thHoney.Database.Activity;
 using March7thHoney.GameServer.Game.Activity.Activities;
+using March7thHoney.GameServer.Game.Activity.Activities.DiceCombat;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.Proto;
 
@@ -14,6 +15,8 @@ public class ActivityManager : BasePlayerManager
         Data = DatabaseHelper.Instance!.GetInstanceOrCreateNew<ActivityData>(player.Uid);
 
         if (Data.TrialActivityData.CurTrialStageId != 0) TrialActivityInstance = new TrialActivityInstance(this);
+
+        DiceCombat = new DiceCombatActivityInstance(this);
     }
 
     #region Data
@@ -25,6 +28,7 @@ public class ActivityManager : BasePlayerManager
     #region Instance
 
     public TrialActivityInstance? TrialActivityInstance { get; set; }
+    public DiceCombatActivityInstance DiceCombat { get; set; }
 
     #endregion
 
