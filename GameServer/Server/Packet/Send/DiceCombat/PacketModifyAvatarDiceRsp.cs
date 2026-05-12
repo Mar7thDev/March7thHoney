@@ -8,11 +8,10 @@ public class PacketModifyAvatarDiceRsp : BasePacket
 {
     public PacketModifyAvatarDiceRsp(DiceCombatActivityInstance instance, uint avatarId) : base(CmdIds.ModifyAvatarDiceRsp)
     {
-        var state = instance.GetOrCreateAvatar(avatarId);
         SetData(new ModifyAvatarDiceRsp
         {
             Retcode = 0,
-            OJCBGGOEEIE = instance.BuildAvatarProto(avatarId, state)
+            OJCBGGOEEIE = instance.FindAvatar(avatarId) ?? new DiceCombatAvatar { DiceAvatarId = avatarId }
         });
     }
 }
