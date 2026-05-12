@@ -11,12 +11,6 @@ public class HandlerDiceCombatModifyAvatarDiceCsReq : Handler
     {
         var req = DiceCombatModifyAvatarDiceCsReq.Parser.ParseFrom(data);
         var instance = connection.Player!.ActivityManager!.DiceCombat;
-        var state = instance.GetOrCreateAvatar(req.AvatarId);
-        if (req.KNOPNCFBPEG != 0)
-        {
-            state.DiceIds.Clear();
-            state.DiceIds.Add(req.KNOPNCFBPEG);
-        }
         await connection.SendPacket(new PacketModifyAvatarDiceRsp(instance, req.AvatarId));
     }
 }
