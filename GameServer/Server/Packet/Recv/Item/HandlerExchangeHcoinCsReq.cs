@@ -8,8 +8,9 @@ namespace March7thHoney.GameServer.Server.Packet.Recv.Item;
 [Opcode(CmdIds.ExchangeHcoinCsReq)]
 public class HandlerExchangeHcoinCsReq : Handler
 {
-    private const int ExchangeRate = 10000; // 1 Hcoin -> 10000 Scoin
-    private const int ExchangeMaterialItemId = 201; // 扣除等量原材料
+    private const int SourceItemId = 3; // Mcoin
+    private const int TargetItemId = 1; // Hcoin
+    private const int ExchangeRate = 1; // 1:1
 
     public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
     {
@@ -23,22 +24,15 @@ public class HandlerExchangeHcoinCsReq : Handler
             return;
         }
 
-        if (player.Data.Hcoin < req.Num)
+        var sourceItem = player.InventoryManager.GetItem(SourceItemId);
+        if (sourceItem == null || sourceItem.Count < req.Num)
         {
             await connection.SendPacket(new PacketExchangeHcoinScRsp(req.Num, Retcode.RetItemNotEnough));
             return;
         }
 
-        var material = player.InventoryManager.GetItem(ExchangeMaterialItemId);
-        if (material == null || material.Count < req.Num)
-        {
-            await connection.SendPacket(new PacketExchangeHcoinScRsp(req.Num, Retcode.RetItemNotEnough));
-            return;
-        }
-
-        await player.InventoryManager.RemoveItem(1, (int)req.Num, sync: false);
-        await player.InventoryManager.RemoveItem(ExchangeMaterialItemId, (int)req.Num, sync: false);
-        await player.InventoryManager.AddItem(2, (int)req.Num * ExchangeRate, notify: false, sync: false);
+        await player.InventoryManager.RemoveItem(SourceItemId, (int)req.Num, sync: false);
+        await player.InventoryManager.AddItem(TargetItemId, (int)req.Num * ExchangeRate, notify: false, sync: false);
         await player.SendPacket(new PacketPlayerSyncScNotify(player.ToProto()));
 
         await connection.SendPacket(new PacketExchangeHcoinScRsp(req.Num));
