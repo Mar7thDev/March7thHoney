@@ -341,6 +341,24 @@ public class ResourceManager
 
                 var json = File.ReadAllText(path);
                 var missionInfo = JsonConvert.DeserializeObject<MissionInfo>(json);
+                var partialPath =
+                    $"{ConfigManager.Config.Path.ResourcePath}/Config/Level/Mission/{missionExcel.Key}/MissionInfo_{missionExcel.Key}.partial.json";
+                if (missionInfo != null && File.Exists(partialPath))
+                    try
+                    {
+                        var partialJson = File.ReadAllText(partialPath);
+                        var partialMissionInfo = JsonConvert.DeserializeObject<MissionInfo>(partialJson);
+                        if (partialMissionInfo?.SubMissionList is { Count: > 0 })
+                            missionInfo.SubMissionList = partialMissionInfo.SubMissionList;
+                    }
+                    catch (Exception ex)
+                    {
+                        ResourceCache.IsComplete = false;
+                        Logger.Error(
+                            I18NManager.Translate("Server.ServerInfo.FailedToReadItem",
+                                $"MissionInfo_{missionExcel.Key}.partial.json", I18NManager.Translate("Word.Error")),
+                            ex);
+                    }
                 if (missionInfo != null)
                 {
                     GameData.MainMissionData[missionExcel.Key].SetMissionInfo(missionInfo);
