@@ -16,8 +16,7 @@ public class DiceCombatActivityInstance : BaseActivityInstance
 
     public DiceCombatActivityInstance(ActivityManager manager) : base(manager)
     {
-        var bytes = Convert.FromBase64String(DiceCombatConfig.OfficialCompletedSnapshotBase64);
-        Snapshot = GetSystemDataRsp.Parser.ParseFrom(bytes);
+        Snapshot = DiceCombatConfig.BuildOfficialCompletedSnapshot();
 
         foreach (var stage in Snapshot.FAMFCIPLGON)
             Stages[stage.FLEOCMEFANH] = new DiceCombatStageState
