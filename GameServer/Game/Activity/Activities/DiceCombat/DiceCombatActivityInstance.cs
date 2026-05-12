@@ -1,13 +1,7 @@
+using Google.Protobuf;
 using March7thHoney.Proto;
 
 namespace March7thHoney.GameServer.Game.Activity.Activities.DiceCombat;
-
-public class DiceCombatAvatarState
-{
-    public uint Level { get; set; } = DiceCombatConfig.DefaultAvatarLevel;
-    public List<uint> DiceIds { get; set; } = new(DiceCombatConfig.DefaultDiceIds);
-    public long UnlockTime { get; set; } = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
-}
 
 public class DiceCombatStageState
 {
@@ -17,61 +11,42 @@ public class DiceCombatStageState
 
 public class DiceCombatActivityInstance : BaseActivityInstance
 {
-    public Dictionary<uint, DiceCombatAvatarState> Avatars { get; } = new();
+    public GetSystemDataRsp Snapshot { get; }
     public Dictionary<uint, DiceCombatStageState> Stages { get; } = new();
-    public HashSet<uint> FeatureUnlocks { get; } = new();
-    public HashSet<uint> ScoreTakenIds { get; } = new();
 
     public DiceCombatActivityInstance(ActivityManager manager) : base(manager)
     {
-        InitializeDefaults();
+        var bytes = Convert.FromBase64String(DiceCombatConfig.OfficialCompletedSnapshotBase64);
+        Snapshot = GetSystemDataRsp.Parser.ParseFrom(bytes);
+
+        foreach (var stage in Snapshot.FAMFCIPLGON)
+            Stages[stage.FLEOCMEFANH] = new DiceCombatStageState
+            {
+                Completed = true,
+                CompletedTime = stage.UnlockTimestamp
+            };
     }
 
-    private void InitializeDefaults()
+    public DiceCombatAvatar? FindAvatar(uint avatarId)
     {
-        var now = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
-
-        for (var id = DiceCombatConfig.AvatarIdBegin; id <= DiceCombatConfig.AvatarIdEnd; id++)
-            Avatars[id] = new DiceCombatAvatarState { UnlockTime = now };
-
-        foreach (var stageId in DiceCombatConfig.CompletedStageIds)
-            Stages[stageId] = new DiceCombatStageState { Completed = true, CompletedTime = now };
-
-        foreach (var id in DiceCombatConfig.FeatureUnlockIds) FeatureUnlocks.Add(id);
-        foreach (var id in DiceCombatConfig.ScoreTakenIds) ScoreTakenIds.Add(id);
-    }
-
-    public DiceCombatAvatar BuildAvatarProto(uint avatarId, DiceCombatAvatarState state)
-    {
-        var proto = new DiceCombatAvatar
-        {
-            DiceAvatarId = avatarId,
-            Level = state.Level,
-            UnlockTime = state.UnlockTime
-        };
-        proto.DiceIdList.AddRange(state.DiceIds);
-        return proto;
+        foreach (var avatar in Snapshot.AvatarList)
+            if (avatar.DiceAvatarId == avatarId) return avatar;
+        return null;
     }
 
     public void RecordStageFinish(uint stageId, bool isWin)
     {
         if (!isWin) return;
+        var time = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
         if (!Stages.TryGetValue(stageId, out var state))
         {
             state = new DiceCombatStageState();
             Stages[stageId] = state;
+            Snapshot.FAMFCIPLGON.Add(new INACEGAAALJ { FLEOCMEFANH = stageId, UnlockTimestamp = time });
         }
         state.Completed = true;
-        state.CompletedTime = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+        state.CompletedTime = time;
     }
 
-    public DiceCombatAvatarState GetOrCreateAvatar(uint avatarId)
-    {
-        if (!Avatars.TryGetValue(avatarId, out var state))
-        {
-            state = new DiceCombatAvatarState();
-            Avatars[avatarId] = state;
-        }
-        return state;
-    }
+    public byte[] BuildSystemDataPayload() => Snapshot.ToByteArray();
 }
