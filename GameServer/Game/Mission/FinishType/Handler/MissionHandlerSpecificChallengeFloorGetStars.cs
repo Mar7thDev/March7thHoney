@@ -7,7 +7,7 @@ namespace March7thHoney.GameServer.Game.Mission.FinishType.Handler;
 
 // 客户端解锁「漫游签证 → 异相仲裁」依赖一组前置 Quest，
 // 它们的 FinishWay 是 SpecificChallengeFloorGetStars（如混沌回忆12层3星等）。
-// 私服默认所有历代挑战皆满星，因此 quest 一被接受就直接推进到完成进度。
+// 这里仅用于解锁入口，不写入/修改任何挑战历史星级数据。
 [MissionFinishType(MissionFinishTypeEnum.SpecificChallengeFloorGetStars)]
 public class MissionHandlerSpecificChallengeFloorGetStars : MissionFinishTypeHandler
 {
