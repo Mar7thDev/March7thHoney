@@ -25,16 +25,10 @@ public class TrialActivityEntityLoader(SceneInstance scene, PlayerInstance playe
         // Setup stage
         GameData.AvatarDemoConfigData.TryGetValue(instance.Data.CurTrialStageId, out var excel);
         if (excel == null) return;
+        LoadGroups.Clear();
+        LoadGroups.Add(excel.MazeGroupID1);
         Scene.FloorInfo!.Groups.TryGetValue(excel.MazeGroupID1, out var groupData);
         if (groupData != null) await LoadGroup(groupData);
-
-        foreach (var group in Scene.FloorInfo.Groups.Values)
-        {
-            // Skip non-server groups
-            if (group.LoadSide != GroupLoadSideEnum.Server) continue;
-
-            await LoadGroup(group);
-        }
 
         Scene.IsLoaded = true;
     }
@@ -51,11 +45,7 @@ public class TrialActivityEntityLoader(SceneInstance scene, PlayerInstance playe
         // Get current stage monster infos
         GameData.AvatarDemoConfigData.TryGetValue(instance.Data.CurTrialStageId, out var excel);
         if (excel == null) return null;
-        Dictionary<int, AvatarDemoConfigExcel.StageMonsterInfo> stageMonsters;
-        if (excel.MazeGroupID1 == group.Id)
-            stageMonsters = excel.StageMonsters1;
-        else
-            return null;
+        var stageMonsters = excel.StageMonsters1;
 
         // Get challenge monster info
         if (!stageMonsters.ContainsKey(info.ID)) return null;
