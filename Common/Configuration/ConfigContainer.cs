@@ -93,11 +93,19 @@ public class ServerOption
     public int FarmingDropRate { get; set; } = 1;
     public bool UseCache { get; set; } = true;
     public bool EnableMonthCard { get; set; } = true;
+    public ServerTimeOption ServerTime { get; set; } = new();
 
     public int ValidFarmingDropRate()
     {
         return Math.Max(Math.Min(FarmingDropRate, 999), 1);
     }
+}
+
+public class ServerTimeOption
+{
+    public bool EnableFakeServerTime { get; set; } = true;
+    // yyyy-MM-dd or "today"
+    public string FixedDate { get; set; } = "2026-05-12";
 }
 
 public class ServerConfig
