@@ -11,7 +11,7 @@ public class PacketPlayerHeartBeatScRsp : BasePacket
         var data = new PlayerHeartBeatScRsp
         {
             ClientTimeMs = (ulong)clientTime,
-            ServerTimeMs = (ulong)Extensions.GetUnixMs()
+            ServerTimeMs = (ulong)ServerTimeProvider.GetServerUnixMs()
         };
 
         SetData(data);
