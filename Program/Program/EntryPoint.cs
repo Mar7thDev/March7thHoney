@@ -410,9 +410,7 @@ public class EntryPoint
         {
             Logger.Info(I18NManager.Translate("Server.ServerInfo.UpdatedItem",
                 I18NManager.Translate("Word.Database")));
-
-            Console.ReadLine();
-            Environment.Exit(0);
+            DatabaseHelper.SaveDatabase();
         }
 
         if (args.Contains("--upgrade-database")) DatabaseHelper.UpgradeDatabase();
