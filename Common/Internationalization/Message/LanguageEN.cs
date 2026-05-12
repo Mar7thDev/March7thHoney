@@ -164,6 +164,7 @@ public class ServerInfoTextEN
     public string FailedToInitializeItem => "Failed to initialize {0}.";
     public string FailedToReadItem => "Failed to read {0}. File {1}";
     public string GeneratedItem => "Generated {0}.";
+    public string UpdatedItem => "Updated {0}.";
     public string LoadedItem => "Loaded {0}.";
     public string LoadedItems => "Loaded {0} {1}.";
     public string ServerRunning => "{0} server is listening on {1}";
@@ -536,3 +537,4 @@ public class JsonTextEN
 #endregion
 
 #endregion
+

@@ -164,6 +164,7 @@ public class ServerInfoTextCHT
     public string FailedToInitializeItem => "初始化 {0} 失敗。";
     public string FailedToReadItem => "讀取 {0} 失敗，文件{1}";
     public string GeneratedItem => "已生成 {0}。";
+    public string UpdatedItem => "已更新 {0}。";
     public string LoadedItem => "已加載 {0}。";
     public string LoadedItems => "已加載 {0} 個 {1}。";
     public string ServerRunning => "{0} 服務器正在監聽 {1}";
@@ -536,3 +537,4 @@ public class JsonTextCHT
 #endregion
 
 #endregion
+
