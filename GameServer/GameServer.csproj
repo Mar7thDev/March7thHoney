@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <RootNamespace>March7thHoney.GameServer</RootNamespace>
@@ -25,7 +25,7 @@
     <PackageReference Include="Google.Protobuf.Tools" Version="3.33.1" />
     <PackageReference Include="McMaster.NETCore.Plugins" Version="2.0.0" />
     <PackageReference Include="McMaster.NETCore.Plugins.Mvc" Version="2.0.0" />
-    <PackageReference Include="System.IO.Pipelines" Version="10.0.0" />
   </ItemGroup>
 
 </Project>
+
