@@ -14,6 +14,10 @@ public class PacketSceneGroupRefreshScNotify : BasePacket
         SceneGroupRefreshType refreshType = SceneGroupRefreshType.Loaded)
         : base(CmdIds.SceneGroupRefreshScNotify)
     {
+        // Live traces use AFIBFMAFNCC for packets that include entity deletion.
+        if (refreshType == SceneGroupRefreshType.Loaded && removeEntity is { Count: > 0 })
+            refreshType = SceneGroupRefreshType.Afibfmafncc;
+
         var proto = new SceneGroupRefreshScNotify
         {
             FloorId = (uint)player.Data.FloorId,
