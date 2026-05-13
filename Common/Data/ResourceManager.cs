@@ -26,10 +26,13 @@ public class ResourceManager
     {
         if (missingCount <= 0) return;
 
-        Logger.Warn($"{itemName} 部分缺失，缺失数量: {missingCount}");
-        Logger.WriteToFile($"[{DateTime.Now:HH:mm:ss}] [ResMgr] WARN {itemName} missing file list start ({missingCount}):");
+        var examplePath = missingFiles.Count > 0 ? missingFiles[0] : string.Empty;
+        var summary = I18NManager.Translate("Server.ServerInfo.PartialConfigMissing", itemName, missingCount.ToString(),
+            examplePath);
+
+        Logger.Warn(summary);
+        Logger.WriteToFile($"[{DateTime.Now:HH:mm:ss}] [ResMgr] WARN {summary}");
         foreach (var file in missingFiles) Logger.WriteToFile(file);
-        Logger.WriteToFile($"[{DateTime.Now:HH:mm:ss}] [ResMgr] WARN {itemName} missing file list end");
     }
 
     public static void LoadGameData()
@@ -431,7 +434,9 @@ public class ResourceManager
         catch (Exception ex)
         {
             ResourceCache.IsComplete = false;
-            Logger.Error("Error in reading " + file.Name, ex);
+            Logger.Error(
+                I18NManager.Translate("Server.ServerInfo.FailedToReadItem", file.Name,
+                    I18NManager.Translate("Word.Error")), ex);
         }
 
         switch (customFile)
@@ -491,7 +496,9 @@ public class ResourceManager
         catch (Exception ex)
         {
             ResourceCache.IsComplete = false;
-            Logger.Error("Error in reading " + file.Name, ex);
+            Logger.Error(
+                I18NManager.Translate("Server.ServerInfo.FailedToReadItem", file.Name,
+                    I18NManager.Translate("Word.Error")), ex);
             return default;
         }
     }
@@ -1064,7 +1071,9 @@ public class ResourceManager
         catch (Exception ex)
         {
             ResourceCache.IsComplete = false;
-            Logger.Error("Error in reading " + file.Name, ex);
+            Logger.Error(
+                I18NManager.Translate("Server.ServerInfo.FailedToReadItem", file.Name,
+                    I18NManager.Translate("Word.Error")), ex);
         }
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),
@@ -1109,7 +1118,9 @@ public class ResourceManager
         catch (Exception ex)
         {
             ResourceCache.IsComplete = false;
-            Logger.Error("Error in reading " + file.Name, ex);
+            Logger.Error(
+                I18NManager.Translate("Server.ServerInfo.FailedToReadItem", file.Name,
+                    I18NManager.Translate("Word.Error")), ex);
         }
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),
@@ -1155,7 +1166,9 @@ public class ResourceManager
         catch (Exception ex)
         {
             ResourceCache.IsComplete = false;
-            Logger.Error("Error in reading " + file.Name, ex);
+            Logger.Error(
+                I18NManager.Translate("Server.ServerInfo.FailedToReadItem", file.Name,
+                    I18NManager.Translate("Word.Error")), ex);
         }
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),
@@ -1194,7 +1207,9 @@ public class ResourceManager
         catch (Exception ex)
         {
             ResourceCache.IsComplete = false;
-            Logger.Error("Error in reading " + file.Name, ex);
+            Logger.Error(
+                I18NManager.Translate("Server.ServerInfo.FailedToReadItem", file.Name,
+                    I18NManager.Translate("Word.Error")), ex);
         }
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),
@@ -1252,7 +1267,9 @@ public class ResourceManager
             catch (Exception ex)
             {
                 ResourceCache.IsComplete = false;
-                Logger.Error("Error in reading " + cosmosRogue.Name, ex);
+                Logger.Error(
+                    I18NManager.Translate("Server.ServerInfo.FailedToReadItem", file.Key.Name,
+                        I18NManager.Translate("Word.Error")), ex);
             }
         }
 
@@ -1296,7 +1313,9 @@ public class ResourceManager
         catch (Exception ex)
         {
             ResourceCache.IsComplete = false;
-            Logger.Error("Error in reading " + file.Name, ex);
+            Logger.Error(
+                I18NManager.Translate("Server.ServerInfo.FailedToReadItem", file.Name,
+                    I18NManager.Translate("Word.Error")), ex);
         }
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),
