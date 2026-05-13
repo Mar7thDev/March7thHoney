@@ -306,6 +306,9 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
         switch (req.EndStatus)
         {
             case BattleEndStatus.BattleEndWin:
+                if (battle.EntityMonsters.Count == 0)
+                    battle.EntityMonsters = ResolveSceneMonstersByStageId(battle.StageId);
+
                 // Drops
                 foreach (var monster in battle.EntityMonsters) dropItems.AddRange(await monster.Kill(false));
                 // Spend stamina
@@ -381,5 +384,54 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
             await Player.ActivityManager.TrialActivityInstance.EndActivity(TrialActivityStatus.Finish);
 
         await Player.SendPacket(new PacketPVEBattleResultScRsp(req, Player, battle));
+    }
+
+    private List<EntityMonster> ResolveSceneMonstersByStageId(int stageId)
+    {
+        if (stageId == 0 || Player.SceneInstance == null) return [];
+
+        var monsters = new List<EntityMonster>();
+        foreach (var monster in Player.SceneInstance.Entities.Values.OfType<EntityMonster>())
+        {
+            if (!monster.IsAlive) continue;
+            if (!TryResolveStageFromEvent(monster.GetStageId(), Player.Data.WorldLevel, out var stage) || stage == null)
+                continue;
+            if (stage.StageID == stageId) monsters.Add(monster);
+        }
+
+        if (monsters.Count > 0) return monsters;
+
+        foreach (var monster in Player.SceneInstance.Entities.Values.OfType<EntityMonster>())
+        {
+            if (!monster.IsAlive) continue;
+            if (!TryResolveStageFromEvent(monster.Info.EventID, Player.Data.WorldLevel, out var stage) || stage == null)
+                continue;
+            if (stage.StageID == stageId) monsters.Add(monster);
+        }
+
+        return monsters;
+    }
+
+    private static bool TryResolveStageFromEvent(int eventId, int worldLevel, out StageConfigExcel? stage)
+    {
+        stage = null;
+        if (eventId <= 0) return false;
+
+        if (GameData.PlaneEventData.TryGetValue(eventId * 10 + worldLevel, out var exactPlaneEvent) &&
+            GameData.StageConfigData.TryGetValue(exactPlaneEvent.StageID, out stage))
+            return true;
+
+        if (GameData.PlaneEventData.TryGetValue(eventId, out var directPlaneEvent) &&
+            GameData.StageConfigData.TryGetValue(directPlaneEvent.StageID, out stage))
+            return true;
+
+        if (GameData.StageConfigData.TryGetValue(eventId * 10 + worldLevel, out stage))
+            return true;
+
+        if (GameData.StageConfigData.TryGetValue(eventId, out stage))
+            return true;
+
+        stage = null;
+        return false;
     }
 }
