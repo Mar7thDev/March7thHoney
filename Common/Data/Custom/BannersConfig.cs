@@ -124,6 +124,10 @@ public class BannerConfig
             HistoryUrl = ""
         };
 
+        // Client uses this field for banner featured pool display.
+        // Keep all configured featured entries (some banners include the current 5-star here as well).
+        if (RateUpItems4.Count > 0) info.CBHAEFNAFLE.AddRange(RateUpItems4.Select(id => (uint)id));
+
         if (GachaType != GachaTypeEnum.Normal)
         {
             info.BeginTime = BeginTime;
@@ -132,12 +136,9 @@ public class BannerConfig
 
         if (GachaId == 1001)
         {
-            if (RateUpItems4.Count > 0) info.ItemDetailList.AddRange(RateUpItems4.Select(id => (uint)id));
-
             if (RateUpItems5.Count > 0)
             {
                 info.PrizeItemList.AddRange(RateUpItems5.Select(id => (uint)id));
-                info.ItemDetailList.AddRange(RateUpItems5.Select(id => (uint)id));
             }
 
             info.GachaCeiling = new GachaCeiling
@@ -148,13 +149,13 @@ public class BannerConfig
         }
         else
         {
-            if (RateUpItems4.Count > 0) info.ItemDetailList.AddRange(RateUpItems4.Select(id => (uint)id));
-
             if (RateUpItems5.Count > 0)
             {
                 info.PrizeItemList.AddRange(RateUpItems5.Select(id => (uint)id));
-                info.ItemDetailList.AddRange(RateUpItems5.Select(id => (uint)id));
             }
+
+            // Observed official packet behavior: avatar event banners carry marker "11" here.
+            if (GachaType == GachaTypeEnum.AvatarUp) info.ItemDetailList.Add(11);
         }
 
         return info;
