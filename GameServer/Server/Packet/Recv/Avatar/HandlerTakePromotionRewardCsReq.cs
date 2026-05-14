@@ -13,11 +13,36 @@ public class HandlerTakePromotionRewardCsReq : Handler
         var req = TakePromotionRewardCsReq.Parser.ParseFrom(data);
 
         var avatar = connection.Player!.AvatarManager!.GetFormalAvatar((int)req.BaseAvatarId);
-        if (avatar == null) return;
+        if (avatar == null)
+        {
+            await connection.SendPacket(new PacketTakePromotionRewardScRsp(Retcode.RetAvatarNotExist));
+            return;
+        }
+
+        var promotion = (int)req.Promotion;
+        if (promotion < 0 || promotion >= avatar.Promotion)
+        {
+            await connection.SendPacket(new PacketTakePromotionRewardScRsp(Retcode.RetPromotionRewardConfigNotExist));
+            return;
+        }
+
+        if (avatar.HasTakenReward(promotion))
+        {
+            await connection.SendPacket(new PacketTakePromotionRewardScRsp(Retcode.RetPromotionRewardAlreadyTaken));
+            return;
+        }
+
         avatar.TakeReward((int)req.Promotion);
         await connection.Player!.InventoryManager!.AddItem(101, 1, false);
         await connection.SendPacket(new PacketPlayerSyncScNotify(avatar));
 
-        await connection.SendPacket(new PacketTakePromotionRewardScRsp());
+        await connection.SendPacket(new PacketTakePromotionRewardScRsp(Retcode.RetSucc,
+        [
+            new Proto.Item
+            {
+                ItemId = 101,
+                Num = 1
+            }
+        ]));
     }
 }
