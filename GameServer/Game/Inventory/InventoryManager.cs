@@ -102,7 +102,17 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
                         break;
                     case ItemSubTypeEnum.PhoneCase:
                         if (!Player.PlayerUnlockData!.PhoneCases.Contains(itemId))
+                        {
                             Player.PlayerUnlockData!.PhoneCases.Add(itemId);
+                            await Player.SendPacket(new PacketUnlockPhoneCaseScNotify(itemId));
+                        }
+                        break;
+                    case ItemSubTypeEnum.PlayerOutfit:
+                        if (!Player.Data.PlayerOutfitList.Contains(itemId))
+                        {
+                            Player.Data.PlayerOutfitList.Add(itemId);
+                            await Player.SendPacket(new PacketPlayerSyncScNotify(Player.Data.ToPlayerOutfitProto()));
+                        }
                         break;
                     case ItemSubTypeEnum.AvatarSkin:
                         if (!GameData.AvatarSkinData.TryGetValue(itemId, out var skinExcel)) break;
