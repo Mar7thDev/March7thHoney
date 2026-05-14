@@ -94,11 +94,33 @@ public class ServerOption
     public bool UseCache { get; set; } = true;
     public bool EnableMonthCard { get; set; } = true;
     public ServerTimeOption ServerTime { get; set; } = new();
+    public WelcomeMailConfig WelcomeMail { get; set; } = new();
 
     public int ValidFarmingDropRate()
     {
         return Math.Max(Math.Min(FarmingDropRate, 999), 1);
     }
+}
+
+public class WelcomeMailConfig
+{
+    public bool Enabled { get; set; } = false;
+    public string Sender { get; set; } = "March7thHoney";
+    public string Title { get; set; } = "Welcome";
+    public string Content { get; set; } = "Welcome, {username}!";
+    public int TemplateId { get; set; } = 0;
+    public int ExpireDays { get; set; } = 30;
+    public bool IsStar { get; set; } = false;
+    public List<WelcomeMailItemConfig> Items { get; set; } = [];
+}
+
+public class WelcomeMailItemConfig
+{
+    public int ItemId { get; set; }
+    public int Count { get; set; }
+    public int Rank { get; set; } = 1;
+    public int Level { get; set; } = 1;
+    public int Promotion { get; set; } = 0;
 }
 
 public class ServerTimeOption

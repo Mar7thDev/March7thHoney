@@ -100,7 +100,7 @@ public class CommandGiveall : ICommand
             foreach (var lightcone in lightconeList)
             {
                 var item = await player.InventoryManager!.AddItem(lightcone.EquipmentID, 1, false,
-                    Math.Max(Math.Min(rank, 5), 0), Math.Max(Math.Min(level, 80), 0), false);
+                    Math.Max(Math.Min(rank, 5), 0), Math.Max(Math.Min(level, 80), 0), sync: false);
 
                 if (item != null)
                     items.Add(item);
@@ -212,7 +212,7 @@ public class CommandGiveall : ICommand
             foreach (var relic in relicList)
             {
                 var item = await player.InventoryManager!.AddItem(relic.ID, amount, false, 1,
-                    Math.Max(Math.Min(level, relic.MaxLevel), 1), false);
+                    Math.Max(Math.Min(level, relic.MaxLevel), 1), sync: false);
 
                 if (item != null)
                     items.Add(item);
