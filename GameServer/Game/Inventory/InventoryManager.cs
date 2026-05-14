@@ -49,7 +49,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
     }
 
     public async ValueTask<ItemData?> AddItem(int itemId, int count, bool notify = true, int rank = 1, int level = 1,
-        bool sync = true, bool returnRaw = false)
+        int promotion = 0, bool sync = true, bool returnRaw = false)
     {
         GameData.ItemConfigData.TryGetValue(itemId, out var itemConfig);
         if (itemConfig == null) return null;
@@ -65,7 +65,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
                     break;
                 }
 
-                itemData = await PutItem(itemId, 1, rank, level: level, uniqueId: ++Data.NextUniqueId);
+                itemData = await PutItem(itemId, 1, rank, promotion, level, uniqueId: ++Data.NextUniqueId);
 
                 if (itemConfig.Rarity == ItemRarityEnum.SuperRare)
                     // add development
