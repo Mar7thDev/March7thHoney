@@ -28,14 +28,14 @@ public class PacketComposeSelectedRelicScRsp : BasePacket
         SetData(proto);
     }
 
-    public PacketComposeSelectedRelicScRsp(uint composeId, ItemData item)
+    public PacketComposeSelectedRelicScRsp(uint composeId, IEnumerable<ItemData> items)
         : base(CmdIds.ComposeSelectedRelicScRsp)
     {
         var proto = new ComposeSelectedRelicScRsp
         {
             ReturnItemList = new ItemList
             {
-                ItemList_ = { item.ToProto() }
+                ItemList_ = { items.Select(item => item.ToProto()) }
             },
             ComposeId = composeId
         };
