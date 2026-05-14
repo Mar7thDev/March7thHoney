@@ -6,7 +6,7 @@ public class AdventureTriggerAttack : TaskConfigInfo
 {
     public TargetEvaluator AttackTargetType { get; set; } = new();
     public TargetEvaluator AttackRootTargetType { get; set; } = new();
-    public bool TriggerBattle { get; set; }
+    public bool TriggerBattle { get; set; } = true;
 
     public float TriggerBattleDelay { get; set; }
 
