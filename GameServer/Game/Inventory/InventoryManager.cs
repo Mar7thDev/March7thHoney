@@ -80,12 +80,16 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
                 {
                     case ItemSubTypeEnum.HeadIcon:
                         if (!Player.PlayerUnlockData!.HeadIcons.Contains(itemId))
+                        {
                             Player.PlayerUnlockData!.HeadIcons.Add(itemId);
+                            DatabaseHelper.ToSaveUidList.SafeAdd(Player.Uid);
+                        }
                         break;
                     case ItemSubTypeEnum.ChatBubble:
                         if (!Player.PlayerUnlockData!.ChatBubbles.Contains(itemId))
                         {
                             Player.PlayerUnlockData!.ChatBubbles.Add(itemId);
+                            DatabaseHelper.ToSaveUidList.SafeAdd(Player.Uid);
                             await Player.SendPacket(new PacketUnlockChatBubbleScNotify(itemId));
                         }
                         break;
@@ -93,26 +97,27 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
                         if (!Player.PlayerUnlockData!.PhoneThemes.Contains(itemId))
                         {
                             Player.PlayerUnlockData!.PhoneThemes.Add(itemId);
+                            DatabaseHelper.ToSaveUidList.SafeAdd(Player.Uid);
                             await Player.SendPacket(new PacketUnlockPhoneThemeScNotify(itemId));
                         }
                         break;
                     case ItemSubTypeEnum.PersonalCard:
                         if (!Player.PlayerUnlockData!.PersonalCards.Contains(itemId))
+                        {
                             Player.PlayerUnlockData!.PersonalCards.Add(itemId);
+                            DatabaseHelper.ToSaveUidList.SafeAdd(Player.Uid);
+                        }
                         break;
                     case ItemSubTypeEnum.PhoneCase:
                         if (!Player.PlayerUnlockData!.PhoneCases.Contains(itemId))
                         {
                             Player.PlayerUnlockData!.PhoneCases.Add(itemId);
+                            DatabaseHelper.ToSaveUidList.SafeAdd(Player.Uid);
                             await Player.SendPacket(new PacketUnlockPhoneCaseScNotify(itemId));
                         }
                         break;
                     case ItemSubTypeEnum.PlayerOutfit:
-                        if (!Player.Data.PlayerOutfitList.Contains(itemId))
-                        {
-                            Player.Data.PlayerOutfitList.Add(itemId);
-                            await Player.SendPacket(new PacketPlayerSyncScNotify(Player.Data.ToPlayerOutfitProto()));
-                        }
+                        itemData = await PutItem(itemId, count);
                         break;
                     case ItemSubTypeEnum.AvatarSkin:
                         if (!GameData.AvatarSkinData.TryGetValue(itemId, out var skinExcel)) break;
@@ -126,6 +131,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
                         if (!value.Contains(itemId))
                         {
                             value.Add(itemId);
+                            DatabaseHelper.ToSaveUidList.SafeAdd(Player.Uid);
                             await Player.SendPacket(new PacketUnlockAvatarSkinScNotify(itemId));
                         }
                         break;
