@@ -12,20 +12,21 @@ public class HandlerComposeSelectedRelicCsReq : Handler
     {
         var req = ComposeSelectedRelicCsReq.Parser.ParseFrom(data);
         var player = connection.Player!;
-        if (player.InventoryManager!.Data.RelicItems.Count >= GameConstants.INVENTORY_MAX_RELIC)
+        var count = Math.Max(1, (int)req.Count);
+        if (player.InventoryManager!.Data.RelicItems.Count + count > GameConstants.INVENTORY_MAX_RELIC)
         {
             await connection.SendPacket(
                 new PacketComposeSelectedRelicScRsp(req.ComposeId, Retcode.RetRelicExceedLimit));
             return;
         }
 
-        var item = await player.InventoryManager.ComposeRelic(req);
-        if (item == null)
+        var items = await player.InventoryManager.ComposeRelic(req);
+        if (items.Count == 0)
         {
             await connection.SendPacket(new PacketComposeSelectedRelicScRsp(req.ComposeId));
             return;
         }
 
-        await connection.SendPacket(new PacketComposeSelectedRelicScRsp(req.ComposeId, item));
+        await connection.SendPacket(new PacketComposeSelectedRelicScRsp(req.ComposeId, items));
     }
 }

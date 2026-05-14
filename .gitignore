@@ -375,6 +375,7 @@ Config.json
 
 # Local IDE / editor settings
 .vscode/
+*.lscache
 
 # Local AI assistant config
 CLAUDE.md

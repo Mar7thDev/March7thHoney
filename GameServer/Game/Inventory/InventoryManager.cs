@@ -586,8 +586,10 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
         return await AddItem(composeConfig.ItemID, count, false);
     }
 
-    public async ValueTask<ItemData?> ComposeRelic(ComposeSelectedRelicCsReq req)
+    public async ValueTask<List<ItemData>> ComposeRelic(ComposeSelectedRelicCsReq req)
     {
+        var count = Math.Max(1, (int)req.Count);
+
         // Cost items in req
         if (req.ComposeItemList != null)
             foreach (var cost in req.ComposeItemList.ItemList)
@@ -598,32 +600,37 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
 
         // Cost items in excel
         GameData.ItemComposeConfigData.TryGetValue((int)req.ComposeId, out var composeConfig);
-        if (composeConfig == null) return null;
+        if (composeConfig == null) return [];
         foreach (var cost in composeConfig.MaterialCost)
-            await RemoveItem(cost.ItemID, (int)(cost.ItemNum * req.Count));
+            await RemoveItem(cost.ItemID, cost.ItemNum * count);
 
-        await RemoveItem(2, (int)(composeConfig.CoinCost * req.Count));
+        await RemoveItem(2, composeConfig.CoinCost * count);
 
         var relicId = (int)req.ComposeRelicId;
         GameData.RelicConfigData.TryGetValue(relicId, out var itemConfig);
         GameData.RelicSubAffixData.TryGetValue(itemConfig!.SubAffixGroup, out var subAffixConfig);
 
-        // Add relic
         var mainAffix = (int)req.MainAffixId;
-        var itemData = new ItemData
+        List<ItemData> items = [];
+        for (var i = 0; i < count; i++)
         {
-            ItemId = relicId,
-            Level = 0,
-            UniqueId = ++Data.NextUniqueId,
-            MainAffix = mainAffix,
-            SubAffixes = req.SubAffixIdList.Select(subId => new ItemSubAffix(subAffixConfig![(int)subId], 1)).ToList(),
-            Count = 1
-        };
-        if (mainAffix == 0) itemData.AddRandomRelicMainAffix();
-        itemData.AddRandomRelicSubAffix(3 - itemData.SubAffixes.Count + itemData.LuckyRelicSubAffixCount());
-        await AddItem(itemData, false);
+            var itemData = new ItemData
+            {
+                ItemId = relicId,
+                Level = 0,
+                UniqueId = ++Data.NextUniqueId,
+                MainAffix = mainAffix,
+                SubAffixes = req.SubAffixIdList.Select(subId => new ItemSubAffix(subAffixConfig![(int)subId], 1))
+                    .ToList(),
+                Count = 1
+            };
+            if (mainAffix == 0) itemData.AddRandomRelicMainAffix();
+            itemData.AddRandomRelicSubAffix(3 - itemData.SubAffixes.Count + itemData.LuckyRelicSubAffixCount());
+            await AddItem(itemData, false);
+            items.Add(itemData);
+        }
 
-        return itemData;
+        return items;
     }
 
     public async ValueTask<List<ItemData>> SellItem(ItemCostData costData, bool toMaterial)
