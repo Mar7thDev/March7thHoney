@@ -9,6 +9,7 @@ using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Server.Packet.Send.Avatar;
 using March7thHoney.GameServer.Server.Packet.Send.Lineup;
+using March7thHoney.GameServer.Server.Packet.Send.Phone;
 using March7thHoney.GameServer.Server.Packet.Send.Player;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
@@ -78,30 +79,61 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
                 switch (itemConfig.ItemSubType)
                 {
                     case ItemSubTypeEnum.HeadIcon:
-                        Player.PlayerUnlockData!.HeadIcons.Add(itemId);
+                        if (!Player.PlayerUnlockData!.HeadIcons.Contains(itemId))
+                        {
+                            Player.PlayerUnlockData!.HeadIcons.Add(itemId);
+                            DatabaseHelper.ToSaveUidList.SafeAdd(Player.Uid);
+                        }
                         break;
                     case ItemSubTypeEnum.ChatBubble:
-                        Player.PlayerUnlockData!.ChatBubbles.Add(itemId);
+                        if (!Player.PlayerUnlockData!.ChatBubbles.Contains(itemId))
+                        {
+                            Player.PlayerUnlockData!.ChatBubbles.Add(itemId);
+                            DatabaseHelper.ToSaveUidList.SafeAdd(Player.Uid);
+                            await Player.SendPacket(new PacketUnlockChatBubbleScNotify(itemId));
+                        }
                         break;
                     case ItemSubTypeEnum.PhoneTheme:
-                        Player.PlayerUnlockData!.PhoneThemes.Add(itemId);
+                        if (!Player.PlayerUnlockData!.PhoneThemes.Contains(itemId))
+                        {
+                            Player.PlayerUnlockData!.PhoneThemes.Add(itemId);
+                            DatabaseHelper.ToSaveUidList.SafeAdd(Player.Uid);
+                            await Player.SendPacket(new PacketUnlockPhoneThemeScNotify(itemId));
+                        }
                         break;
                     case ItemSubTypeEnum.PersonalCard:
-                        Player.PlayerUnlockData!.PersonalCards.Add(itemId);
+                        if (!Player.PlayerUnlockData!.PersonalCards.Contains(itemId))
+                        {
+                            Player.PlayerUnlockData!.PersonalCards.Add(itemId);
+                            DatabaseHelper.ToSaveUidList.SafeAdd(Player.Uid);
+                        }
                         break;
                     case ItemSubTypeEnum.PhoneCase:
-                        Player.PlayerUnlockData!.PhoneCases.Add(itemId);
+                        if (!Player.PlayerUnlockData!.PhoneCases.Contains(itemId))
+                        {
+                            Player.PlayerUnlockData!.PhoneCases.Add(itemId);
+                            DatabaseHelper.ToSaveUidList.SafeAdd(Player.Uid);
+                            await Player.SendPacket(new PacketUnlockPhoneCaseScNotify(itemId));
+                        }
+                        break;
+                    case ItemSubTypeEnum.PlayerOutfit:
+                        itemData = await PutItem(itemId, count);
                         break;
                     case ItemSubTypeEnum.AvatarSkin:
-                        var avatarId = GameData.AvatarSkinData[itemId].AvatarID;
+                        if (!GameData.AvatarSkinData.TryGetValue(itemId, out var skinExcel)) break;
+                        var avatarId = skinExcel.AvatarID;
                         if (!Player.PlayerUnlockData!.Skins.TryGetValue(avatarId, out var value))
                         {
                             value = [];
                             Player.PlayerUnlockData.Skins[avatarId] = value;
                         }
 
-                        value.Add(itemId);
-                        await Player.SendPacket(new PacketUnlockAvatarSkinScNotify(itemId));
+                        if (!value.Contains(itemId))
+                        {
+                            value.Add(itemId);
+                            DatabaseHelper.ToSaveUidList.SafeAdd(Player.Uid);
+                            await Player.SendPacket(new PacketUnlockAvatarSkinScNotify(itemId));
+                        }
                         break;
                     case ItemSubTypeEnum.Food:
                     case ItemSubTypeEnum.Book:
