@@ -1,3 +1,4 @@
+using March7thHoney.Database.Mail;
 using March7thHoney.Util;
 
 namespace March7thHoney.Database.Account;
@@ -7,9 +8,7 @@ public static class AccountHelper
     public static void CreateAccount(string username, int uid)
     {
         if (AccountData.GetAccountByUserName(username) != null) throw new Exception("Account already exists");
-        if (AccountData.GetAccountByUid(uid) != null)
-        {
-        }
+        if (uid != 0 && AccountData.GetAccountByUid(uid) != null) throw new Exception("UID already exists");
 
         var newUid = uid;
         if (uid == 0)
@@ -27,5 +26,6 @@ public static class AccountHelper
             Permissions = perStr
         };
         DatabaseHelper.SaveInstance(account);
+        MailHelper.SendWelcomeMail(newUid, username);
     }
 }

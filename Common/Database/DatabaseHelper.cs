@@ -299,8 +299,14 @@ public class DatabaseHelper
     public static void SaveInstance<T>(T instance) where T : class, new()
     {
         sqlSugarScope?.Insertable(instance).ExecuteCommand();
-        UidInstanceMap[(instance as BaseDatabaseDataHelper)!.Uid]
-            .Add((instance as BaseDatabaseDataHelper)!); // add to the map
+        var baseInstance = (instance as BaseDatabaseDataHelper)!;
+        if (!UidInstanceMap.TryGetValue(baseInstance.Uid, out var value))
+        {
+            value = [];
+            UidInstanceMap[baseInstance.Uid] = value;
+        }
+
+        value.Add(baseInstance); // add to the map
     }
 
     public void CalcSaveDatabase() // per 5 min
