@@ -11,9 +11,7 @@ public class HandlerFinishTutorialCsReq : Handler
     {
         var req = FinishTutorialCsReq.Parser.ParseFrom(data);
         var player = connection.Player!;
-        if (player.TutorialData!.Tutorials.TryGetValue((int)req.TutorialId, out var res))
-            if (res != TutorialStatus.TutorialFinish)
-                player.TutorialData!.Tutorials[(int)req.TutorialId] = TutorialStatus.TutorialFinish;
+        player.TutorialData!.Tutorials[(int)req.TutorialId] = TutorialStatus.TutorialFinish;
 
         await connection.SendPacket(new PacketFinishTutorialScRsp(req.TutorialId));
     }

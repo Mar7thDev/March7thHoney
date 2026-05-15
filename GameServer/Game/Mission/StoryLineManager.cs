@@ -15,6 +15,11 @@ public class StoryLineManager(PlayerInstance player) : BasePlayerManager(player)
     public StoryLineData StoryLineData { get; set; } =
         DatabaseHelper.Instance!.GetInstanceOrCreateNew<StoryLineData>(player.Uid);
 
+    private void MarkStoryLineDataDirty()
+    {
+        DatabaseHelper.ToSaveUidList.SafeAdd(Player.Uid);
+    }
+
     public async ValueTask CheckIfEnterStoryLine()
     {
         if (StoryLineData.CurStoryLineId != 0) return;
@@ -45,6 +50,7 @@ public class StoryLineManager(PlayerInstance player) : BasePlayerManager(player)
         Player.LineupManager!.SetExtraLineup(ExtraLineupType.LineupHeliobus, avatarList);
 
         StoryLineData.CurStoryLineId = storyExcel.StoryLineID;
+        MarkStoryLineDataDirty();
         await Player.SendPacket(new PacketStoryLineInfoScNotify(Player));
         await Player.SendPacket(new PacketSyncLineupNotify(Player.LineupManager!.GetCurLineup()!));
         if (entryId > 0)
@@ -78,6 +84,7 @@ public class StoryLineManager(PlayerInstance player) : BasePlayerManager(player)
         };
 
         StoryLineData.RunningStoryLines[storyExcel.StoryLineID] = record;
+        MarkStoryLineDataDirty();
     }
 
     public async ValueTask EnterStoryLine(int storyLineId, bool tp = true)
@@ -110,6 +117,7 @@ public class StoryLineManager(PlayerInstance player) : BasePlayerManager(player)
             lineInfo.Lineup.Select(x => x.SpecialAvatarId > 0 ? x.SpecialAvatarId : x.BaseAvatarId).ToList());
 
         StoryLineData.CurStoryLineId = lineInfo.StoryLineId;
+        MarkStoryLineDataDirty();
         await Player.SendPacket(new PacketStoryLineInfoScNotify(Player));
         await Player.SendPacket(new PacketSyncLineupNotify(Player.LineupManager!.GetCurLineup()!));
 
@@ -144,6 +152,7 @@ public class StoryLineManager(PlayerInstance player) : BasePlayerManager(player)
         // save
         StoryLineData.RunningStoryLines[storyExcel.StoryLineID] = record;
         StoryLineData.CurStoryLineId = 0;
+        MarkStoryLineDataDirty();
 
         await Player.SendPacket(new PacketStoryLineInfoScNotify(Player));
         await Player.SendPacket(new PacketSyncLineupNotify(Player.LineupManager!.GetCurLineup()!));
@@ -208,6 +217,7 @@ public class StoryLineManager(PlayerInstance player) : BasePlayerManager(player)
         StoryLineData.OldFloorId = 0;
         StoryLineData.OldPos = new Position();
         StoryLineData.OldRot = new Position();
+        MarkStoryLineDataDirty();
 
         await Player.SendPacket(new PacketSyncLineupNotify(Player.LineupManager!.GetCurLineup()!));
         await Player.SendPacket(new PacketStoryLineInfoScNotify(Player));

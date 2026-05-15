@@ -371,6 +371,8 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
 
         Player.BattleInstance = null;
 
+        await Player.SendPacket(new PacketPVEBattleResultScRsp(req, Player, battle));
+
         if (Player.GridFightManager?.GridFightInstance != null)
         {
             // GridFight flow handles its own result notify / progression.
@@ -382,8 +384,6 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
 
         if (Player.ActivityManager!.TrialActivityInstance != null && req.EndStatus == BattleEndStatus.BattleEndWin)
             await Player.ActivityManager.TrialActivityInstance.EndActivity(TrialActivityStatus.Finish);
-
-        await Player.SendPacket(new PacketPVEBattleResultScRsp(req, Player, battle));
     }
 
     private List<EntityMonster> ResolveSceneMonstersByStageId(int stageId)

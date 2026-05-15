@@ -10,6 +10,7 @@ public class MissionInfo
     public int MainMissionID { get; set; }
     public List<int> StartSubMissionList { get; set; } = [];
     public List<int> FinishSubMissionList { get; set; } = [];
+    public bool IsShow { get; set; } = true;
     public List<SubMissionInfo> SubMissionList { get; set; } = [];
     public List<CustomValueInfo> MissionCustomValueList { get; set; } = [];
 }

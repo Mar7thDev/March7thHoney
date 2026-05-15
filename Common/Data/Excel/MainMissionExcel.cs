@@ -22,8 +22,11 @@ public class MainMissionExcel : ExcelResource
 
     public List<MissionParam> TakeParam { get; set; } = [];
     public List<MissionParam> BeginParam { get; set; } = [];
+    public int NextTrackMainMission { get; set; }
     public int RewardID { get; set; }
+    public int MissionPack { get; set; }
     public List<int> SubRewardList { get; set; } = [];
+    [JsonIgnore] public bool IsShow { get; set; } = true;
 
     [JsonIgnore] public MissionInfo MissionInfo { get; protected set; } = new();
     [JsonIgnore] public List<int> SubMissionIds { get; set; } = [];
@@ -41,6 +44,8 @@ public class MainMissionExcel : ExcelResource
     public void SetMissionInfo(MissionInfo missionInfo)
     {
         MissionInfo = missionInfo;
+        IsShow = missionInfo?.IsShow != false;
+        SubMissionIds.Clear();
         if (missionInfo != null)
             foreach (var sub in missionInfo.SubMissionList)
             {

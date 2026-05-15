@@ -1,5 +1,6 @@
 using March7thHoney.Data;
 using March7thHoney.Data.Config;
+using March7thHoney.Data.Excel;
 using March7thHoney.Database;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Enums.Item;
@@ -14,6 +15,7 @@ using March7thHoney.GameServer.Server.Packet.Send.Mission;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
 using March7thHoney.Proto;
 using March7thHoney.Util;
+using System.Linq;
 using MissionData = March7thHoney.Database.Quests.MissionData;
 
 namespace March7thHoney.GameServer.Game.Mission;
@@ -29,6 +31,33 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager(player)
     public readonly List<int> SkipSubMissionList = []; // bug
 
     #endregion
+
+    private void MarkMissionDataDirty()
+    {
+        DatabaseHelper.ToSaveUidList.SafeAdd(Player.Uid);
+    }
+
+    private async ValueTask RefreshMissionState(bool syncScene = true, bool syncStoryLine = true, bool syncQuest = true)
+    {
+        await Player.SendPacket(new PacketGetMissionDataScRsp(Player));
+        await Player.SendPacket(new PacketGetMissionStatusScRsp(new GetMissionStatusCsReq
+        {
+            MainMissionIdList = { GameData.MainMissionData.Keys.Select(x => (uint)x) },
+            SubMissionIdList = { GameData.SubMissionInfoData.Keys.Select(x => (uint)x) }
+        }, Player));
+
+        if (syncScene)
+            Player.SceneInstance?.SyncGroupInfo();
+
+        if (syncStoryLine && Player.StoryLineManager != null)
+        {
+            await Player.StoryLineManager.CheckIfFinishStoryLine();
+            await Player.StoryLineManager.CheckIfEnterStoryLine();
+        }
+
+        if (syncQuest && Player.QuestManager != null)
+            await Player.QuestManager.SyncQuest();
+    }
 
     #region Mission Actions
 
@@ -50,7 +79,14 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager(player)
         GameData.MainMissionData.TryGetValue(missionId, out var mission);
         if (mission == null) return [];
 
+        if (mission.MissionInfo != null && mission.SubMissionIds.Count == 0)
+        {
+            ResourceManager.TryPopulateMissionInfoFromMissionPack(mission, mission.MissionInfo);
+            mission.SetMissionInfo(mission.MissionInfo);
+        }
+
         Data.SetMainMissionStatus(missionId, MissionPhaseEnum.Accept);
+        MarkMissionDataDirty();
 
         var list = new List<MissionSync?>();
         foreach (var subMissionId in mission.MissionInfo?.StartSubMissionList ?? [])
@@ -88,15 +124,26 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager(player)
     public async ValueTask<MissionSync> AcceptMainMissionByCondition(bool sendPacket = true)
     {
         var sync = new MissionSync();
+        var newlyAcceptedMainMissionIds = new List<int>();
         foreach (var nextMission in GameData.MainMissionData.Values)
         {
             if (!nextMission.IsEqual(Data)) continue;
             if (Data.GetMainMissionStatus(nextMission.MainMissionID) != MissionPhaseEnum.None)
                 continue; // already accepted
             var res = await AcceptMainMission(nextMission.MainMissionID, sendPacket);
+            newlyAcceptedMainMissionIds.Add(nextMission.MainMissionID);
             foreach (var subMission in res)
                 if (subMission != null)
                     sync.MissionList.AddRange(subMission.MissionList);
+        }
+
+        if (Data.TrackingMainMissionId == 0 && newlyAcceptedMainMissionIds.Count > 0)
+        {
+            var nextTrackMissionId = newlyAcceptedMainMissionIds
+                .OrderBy(id => GameData.MainMissionData.GetValueOrDefault(id)?.GetId() ?? int.MaxValue)
+                .First();
+            Data.TrackingMainMissionId = nextTrackMissionId;
+            MarkMissionDataDirty();
         }
 
         return sync;
@@ -129,27 +176,16 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager(player)
         Data.SetMainMissionStatus(missionId, MissionPhaseEnum.None);
         if (Data.TrackingMainMissionId == missionId)
             Data.TrackingMainMissionId = 0;
+        MarkMissionDataDirty();
 
         await Player.SendPacket(new PacketPlayerSyncScNotify(sync));
 
         var result = await AcceptMainMission(missionId, sendPacket);
         Data.TrackingMainMissionId = missionId;
-        await Player.SendPacket(new PacketGetMissionDataScRsp(Player));
-        await Player.SendPacket(new PacketGetMissionStatusScRsp(new GetMissionStatusCsReq
-        {
-            MainMissionIdList = { GameData.MainMissionData.Keys.Select(x => (uint)x) },
-            SubMissionIdList = { GameData.SubMissionInfoData.Keys.Select(x => (uint)x) }
-        }, Player));
+        if (sendPacket)
+            await Player.SendPacket(new PacketAcceptMainMissionScRsp((uint)missionId));
+        await RefreshMissionState();
         await Player.SendPacket(new PacketUpdateTrackMainMissionIdScRsp(0, missionId));
-        Player.SceneInstance?.SyncGroupInfo();
-        if (Player.StoryLineManager != null)
-        {
-            await Player.StoryLineManager.CheckIfFinishStoryLine();
-            await Player.StoryLineManager.CheckIfEnterStoryLine();
-        }
-
-        if (Player.QuestManager != null)
-            await Player.QuestManager.SyncQuest();
 
         return result;
     }
@@ -158,6 +194,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager(player)
     {
         if (!ConfigManager.Config.ServerOption.EnableMission) return;
         Data.SetMainMissionStatus(missionId, MissionPhaseEnum.None);
+        MarkMissionDataDirty();
 
         GameData.MainMissionData.TryGetValue(missionId, out var mission);
         if (mission == null) return;
@@ -193,6 +230,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager(player)
         if (Data.GetSubMissionStatus(missionId) != MissionPhaseEnum.None) return null; // already accepted
 
         Data.SetSubMissionStatus(missionId, MissionPhaseEnum.Accept);
+        MarkMissionDataDirty();
 
         var sync = new MissionSync();
         sync.MissionList.Add(new Proto.Mission
@@ -234,6 +272,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager(player)
         if (!GameData.MainMissionData.TryGetValue(missionId, out var mainMission)) return;
         if (Data.GetMainMissionStatus(missionId) != MissionPhaseEnum.Accept) return;
         Data.SetMainMissionStatus(missionId, MissionPhaseEnum.Finish);
+        MarkMissionDataDirty();
         var finishedMissionIds = new List<int> { missionId };
         var sync = new MissionSync();
         sync.FinishedMainMissionIdList.Add((uint)missionId);
@@ -254,15 +293,76 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager(player)
         var mainSync = await AcceptMainMissionByCondition(false);
         sync.MissionList.AddRange(mainSync.MissionList);
 
+        if (mainMission.NextTrackMainMission > 0 &&
+            Data.GetMainMissionStatus(mainMission.NextTrackMainMission) == MissionPhaseEnum.None)
+        {
+            var nextMainSync = await AcceptMainMission(mainMission.NextTrackMainMission, false);
+            foreach (var subMissionSync in nextMainSync)
+                if (subMissionSync != null)
+                    sync.MissionList.AddRange(subMissionSync.MissionList);
+        }
+
+        if (Data.TrackingMainMissionId == 0 && GameData.MainMissionData.TryGetValue(missionId, out var finishedMain) &&
+            finishedMain.NextTrackMainMission > 0 &&
+            GetMainMissionStatus(finishedMain.NextTrackMainMission) == MissionPhaseEnum.Accept)
+            Data.TrackingMainMissionId = finishedMain.NextTrackMainMission;
+
         await Player.SendPacket(new PacketPlayerSyncScNotify(sync));
         await Player.SendPacket(new PacketStartFinishMainMissionScNotify(missionId));
         await Player.SendPacket(new PacketFinishedMissionScNotify(finishedMissionIds));
+        await Player.SendPacket(new PacketGetMissionDataScRsp(Player));
+        await Player.SendPacket(new PacketGetMissionStatusScRsp(new GetMissionStatusCsReq
+        {
+            MainMissionIdList = { GameData.MainMissionData.Keys.Select(x => (uint)x) },
+            SubMissionIdList = { GameData.SubMissionInfoData.Keys.Select(x => (uint)x) }
+        }, Player));
         await HandleMissionReward(missionId);
         await HandleFinishType(MissionFinishTypeEnum.FinishMission);
 
         await Player.RaidManager!.CheckIfLeaveRaid();
 
         PluginEvent.InvokeOnPlayerFinishMainMission(Player, missionId);
+    }
+
+    public async ValueTask<bool> ForceFinishMainMission(int missionId)
+    {
+        if (!ConfigManager.Config.ServerOption.EnableMission) return false;
+        if (!GameData.MainMissionData.TryGetValue(missionId, out var mainMission)) return false;
+
+        var status = Data.GetMainMissionStatus(missionId);
+        if (status == MissionPhaseEnum.Finish) return false;
+
+        Data.SetMainMissionStatus(missionId, MissionPhaseEnum.Accept);
+        if (Data.TrackingMainMissionId == 0)
+            Data.TrackingMainMissionId = missionId;
+        MarkMissionDataDirty();
+
+        foreach (var subMissionId in mainMission.SubMissionIds)
+        {
+            Data.SetSubMissionStatus(subMissionId, MissionPhaseEnum.Finish);
+            Data.SubMissionProgressDict[subMissionId] =
+                GameData.SubMissionInfoData.GetValueOrDefault(subMissionId)?.SubMissionInfo?.Progress ?? 1;
+        }
+
+        Data.SetMainMissionStatus(missionId, MissionPhaseEnum.Finish);
+        MarkMissionDataDirty();
+
+        var nextTrackMissionId = mainMission.NextTrackMainMission;
+        if (nextTrackMissionId > 0 && Data.GetMainMissionStatus(nextTrackMissionId) == MissionPhaseEnum.None)
+            await AcceptMainMission(nextTrackMissionId, false);
+
+        if (Data.TrackingMainMissionId == missionId)
+        {
+            if (nextTrackMissionId > 0 && Data.GetMainMissionStatus(nextTrackMissionId) == MissionPhaseEnum.Accept)
+                Data.TrackingMainMissionId = nextTrackMissionId;
+            else
+                Data.TrackingMainMissionId = 0;
+            MarkMissionDataDirty();
+        }
+
+        await AcceptMainMissionByCondition(false);
+        await RefreshMissionState(syncScene: false, syncStoryLine: false, syncQuest: false);
+        return Data.GetMainMissionStatus(missionId) == MissionPhaseEnum.Finish;
     }
 
     public async ValueTask FinishSubMission(int missionId)
@@ -275,6 +375,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager(player)
         GameData.MainMissionData.TryGetValue(mainMissionId, out var mainMission); // get main mission
         if (mainMission == null) return;
         Data.SetSubMissionStatus(missionId, MissionPhaseEnum.Finish); // set finish
+        MarkMissionDataDirty();
 
         await SetMissionProgress(missionId, subMission.SubMissionInfo?.Progress ?? 1);
 
@@ -285,6 +386,8 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager(player)
             Status = MissionStatus.MissionFinish,
             Progress = (uint)(subMission.SubMissionInfo?.Progress ?? 1)
         });
+
+        var acceptedNextMission = false;
 
         // get next sub mission
         foreach (var nextMission in mainMission.MissionInfo?.SubMissionList ?? [])
@@ -310,10 +413,33 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager(player)
             {
                 var s = await AcceptSubMission(nextMission.ID, false, false);
                 if (s != null)
+                {
+                    acceptedNextMission = true;
                     sync.MissionList.Add(new Proto.Mission
                     {
                         Id = (uint)nextMission.ID,
-                        Status = MissionStatus.MissionDoing
+                        Status = MissionStatus.MissionDoing,
+                        Progress = (uint)GetMissionProgress(nextMission.ID)
+                    });
+                }
+            }
+        }
+
+        // 4.x mission resources often only provide an ordered sub-mission list via
+        // partial layout without legacy take-type metadata. In that case, fall back
+        // to a simple sequential chain so early main-story missions remain playable.
+        if (!acceptedNextMission)
+        {
+            var sequentialNextMissionId = GetSequentialNextSubMissionId(mainMission, missionId);
+            if (sequentialNextMissionId > 0)
+            {
+                var s = await AcceptSubMission(sequentialNextMissionId, false, false);
+                if (s != null)
+                    sync.MissionList.Add(new Proto.Mission
+                    {
+                        Id = (uint)sequentialNextMissionId,
+                        Status = MissionStatus.MissionDoing,
+                        Progress = (uint)GetMissionProgress(sequentialNextMissionId)
                     });
             }
         }
@@ -361,7 +487,104 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager(player)
         //Player.StoryLineManager!.CheckIfEnterStoryLine();
         //Player.StoryLineManager!.CheckIfFinishStoryLine();
 
+        // 4.x client task UI does not always rebuild from MissionSync alone after a sub-mission
+        // switch. Push the lightweight full mission snapshot so the newly accepted sub-mission
+        // appears in the task panel immediately.
+        if (!shouldFinish)
+            await RefreshMissionState(syncScene: false, syncStoryLine: false, syncQuest: false);
+
         PluginEvent.InvokeOnPlayerFinishSubMission(Player, missionId);
+    }
+
+    public async ValueTask<bool> ForceFinishSubMission(int missionId)
+    {
+        if (!ConfigManager.Config.ServerOption.EnableMission) return false;
+        GameData.SubMissionInfoData.TryGetValue(missionId, out var subMission);
+        if (subMission == null) return false;
+
+        var status = Data.GetSubMissionStatus(missionId);
+        if (status == MissionPhaseEnum.Finish) return false;
+
+        if (Data.GetMainMissionStatus(subMission.MainMissionId) == MissionPhaseEnum.None)
+            Data.SetMainMissionStatus(subMission.MainMissionId, MissionPhaseEnum.Accept);
+
+        Data.SetSubMissionStatus(missionId, MissionPhaseEnum.Finish);
+        Data.SubMissionProgressDict[missionId] = subMission.SubMissionInfo?.Progress ?? 1;
+        if (Data.TrackingMainMissionId == 0)
+            Data.TrackingMainMissionId = subMission.MainMissionId;
+        MarkMissionDataDirty();
+
+        GameData.MainMissionData.TryGetValue(subMission.MainMissionId, out var mainMission);
+        if (mainMission != null)
+        {
+            var acceptedNextMission = false;
+
+            foreach (var nextMission in mainMission.MissionInfo?.SubMissionList ?? [])
+            {
+                if (Data.GetSubMissionStatus(nextMission.ID) != MissionPhaseEnum.None) continue;
+                if (nextMission.TakeType != SubMissionTakeTypeEnum.AnySequence &&
+                    nextMission.TakeType != SubMissionTakeTypeEnum.MultiSequence) continue;
+
+                var canAccept = nextMission.TakeType == SubMissionTakeTypeEnum.MultiSequence;
+                foreach (var id in nextMission.TakeParamIntList ?? [])
+                    if (GetSubMissionStatus(id) != MissionPhaseEnum.Finish &&
+                        nextMission.TakeType == SubMissionTakeTypeEnum.MultiSequence)
+                    {
+                        canAccept = false;
+                        break;
+                    }
+                    else if (GetSubMissionStatus(id) == MissionPhaseEnum.Finish &&
+                             nextMission.TakeType == SubMissionTakeTypeEnum.AnySequence)
+                    {
+                        canAccept = true;
+                        break;
+                    }
+
+                if (!canAccept) continue;
+
+                Data.SetSubMissionStatus(nextMission.ID, MissionPhaseEnum.Accept);
+                acceptedNextMission = true;
+            }
+
+            if (!acceptedNextMission)
+            {
+                var sequentialNextMissionId = GetSequentialNextSubMissionId(mainMission, missionId);
+                if (sequentialNextMissionId > 0 && Data.GetSubMissionStatus(sequentialNextMissionId) == MissionPhaseEnum.None)
+                    Data.SetSubMissionStatus(sequentialNextMissionId, MissionPhaseEnum.Accept);
+            }
+
+            var shouldFinishMain = mainMission.MissionInfo?.FinishSubMissionList.All(id =>
+                GetSubMissionStatus(id) == MissionPhaseEnum.Finish) ?? false;
+
+            if (shouldFinishMain)
+                return await ForceFinishMainMission(subMission.MainMissionId);
+        }
+
+        MarkMissionDataDirty();
+        await AcceptMainMissionByCondition(false);
+        await RefreshMissionState(syncScene: false, syncStoryLine: false, syncQuest: false);
+        return Data.GetSubMissionStatus(missionId) == MissionPhaseEnum.Finish;
+    }
+
+    private int GetSequentialNextSubMissionId(MainMissionExcel mainMission, int currentMissionId)
+    {
+        var orderedSubMissionIds = mainMission.MissionInfo?.SubMissionList
+            .Select(x => x.ID)
+            .Where(x => x > 0)
+            .Distinct()
+            .ToList() ?? [];
+
+        var currentIndex = orderedSubMissionIds.IndexOf(currentMissionId);
+        if (currentIndex < 0) return 0;
+
+        for (var i = currentIndex + 1; i < orderedSubMissionIds.Count; i++)
+        {
+            var nextMissionId = orderedSubMissionIds[i];
+            if (Data.GetSubMissionStatus(nextMissionId) == MissionPhaseEnum.None)
+                return nextMissionId;
+        }
+
+        return 0;
     }
 
     public async ValueTask HandleFinishAction(MissionInfo info, int subMissionId)
@@ -542,6 +765,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager(player)
 
         Data.SubMissionProgressDict.TryGetValue(missionId, out var currentProgress);
         Data.SubMissionProgressDict[missionId] = currentProgress + progress;
+        MarkMissionDataDirty();
         GameData.SubMissionInfoData.TryGetValue(missionId, out var subMission);
         if (subMission == null) return;
 
@@ -562,6 +786,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager(player)
         if (!ConfigManager.Config.ServerOption.EnableMission) return;
 
         Data.SubMissionProgressDict[missionId] = progress;
+        MarkMissionDataDirty();
         GameData.SubMissionInfoData.TryGetValue(missionId, out var subMission);
         if (subMission == null) return;
 
@@ -578,9 +803,142 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager(player)
             await Player.SendPacket(new PacketPlayerSyncScNotify(sync));
     }
 
+    public List<MissionCustomValue> GetMainMissionCustomValueList(int missionId)
+    {
+        var result = new List<MissionCustomValue>();
+        var storedValues = Data.MainMissionCustomValueDict.GetValueOrDefault(missionId) ?? [];
+        var missionInfo = GameData.MainMissionData.GetValueOrDefault(missionId)?.MissionInfo;
+
+        var indexToKey = new Dictionary<int, string>();
+        foreach (var (key, value) in storedValues)
+        {
+            if (TryGetMissionCustomValueIndex(key, out var index))
+                indexToKey[index] = key;
+
+            result.Add(new MissionCustomValue
+            {
+                DLCLDIAOIMK = key,
+                CustomValue = value
+            });
+        }
+
+        foreach (var customValue in missionInfo?.MissionCustomValueList ?? [])
+        {
+            var proto = new MissionCustomValue
+            {
+                Index = (uint)customValue.Index
+            };
+
+            if (indexToKey.TryGetValue(customValue.Index, out var key))
+                proto.DLCLDIAOIMK = key;
+
+            if (customValue.ValidValueParamList.Count > 0)
+                proto.CustomValue = storedValues.GetValueOrDefault(proto.DLCLDIAOIMK,
+                    (uint)customValue.ValidValueParamList[0]);
+            else if (proto.DLCLDIAOIMK.Length > 0)
+                proto.CustomValue = storedValues.GetValueOrDefault(proto.DLCLDIAOIMK);
+
+            result.Add(proto);
+        }
+
+        return result
+            .GroupBy(x => (x.DLCLDIAOIMK, x.Index))
+            .Select(g => g.First())
+            .ToList();
+    }
+
+    public void SetMainMissionCustomValue(int missionId, string key, uint value)
+    {
+        if (!Data.MainMissionCustomValueDict.TryGetValue(missionId, out var customValues))
+        {
+            customValues = [];
+            Data.MainMissionCustomValueDict[missionId] = customValues;
+        }
+
+        customValues[key] = value;
+        MarkMissionDataDirty();
+    }
+
+    private static bool TryGetMissionCustomValueIndex(string key, out int index)
+    {
+        index = 0;
+        var digits = new string(key.Reverse().TakeWhile(char.IsDigit).Reverse().ToArray());
+        return digits.Length > 0 && int.TryParse(digits, out index);
+    }
+
     #endregion
 
     #region Mission Status
+
+    public MissionStatusBySceneInfo BuildSceneMissionInfo(int floorId)
+    {
+        var info = new MissionStatusBySceneInfo();
+        var targetSubIds = GameData.MainMissionData.Values
+            .Where(x => x.MissionInfo != null)
+            .SelectMany(x => x.MissionInfo.SubMissionList)
+            .Where(x => x.LevelFloorID == floorId || (x.GroupIDList?.Count ?? 0) > 0)
+            .Select(x => x.ID)
+            .Distinct()
+            .ToHashSet();
+
+        if (GameData.GetFloorInfo(floorId) is { } floorInfo)
+        {
+            foreach (var relatedMissionId in floorInfo.Groups.Values.SelectMany(x => x.RelatedMissionId))
+                targetSubIds.Add(relatedMissionId);
+        }
+
+        HashSet<int> mainIds = [];
+        foreach (var mainMission in GameData.MainMissionData.Values)
+        foreach (var subMission in mainMission.MissionInfo.SubMissionList)
+            if (targetSubIds.Contains(subMission.ID))
+            {
+                info.SubMissionStatusList.Add(new Proto.Mission
+                {
+                    Id = (uint)subMission.ID,
+                    Status = GetSubMissionStatus(subMission.ID).ToProto(),
+                    Progress = (uint)GetMissionProgress(subMission.ID)
+                });
+
+                mainIds.Add(mainMission.MainMissionID);
+            }
+
+        foreach (var mainId in mainIds)
+        {
+            if (GetMainMissionStatus(mainId) == MissionPhaseEnum.Finish)
+                info.FinishedMainMissionIdList.Add((uint)mainId);
+            else if (GetMainMissionStatus(mainId) == MissionPhaseEnum.Accept)
+                info.UnfinishedMainMissionIdList.Add((uint)mainId);
+
+            var customValueList = GetMainMissionCustomValueList(mainId);
+            if (customValueList.Count > 0)
+                info.NEDJGJNLIPF.Add(new MainMissionCustomValue
+                {
+                    MainMissionId = (uint)mainId,
+                    CustomValueList = new EPNCDFBAHEA
+                    {
+                        CustomValueList = { customValueList }
+                    }
+                });
+        }
+
+        var currentFloor = floorId;
+        if (currentFloor != 0)
+            foreach (var pkg in GameData.ContentPackageConfigData.Values)
+            {
+                if (pkg.MainMissionIDList.Count == 0) continue;
+                if (!pkg.TouchesFloor(currentFloor)) continue;
+
+                foreach (var missionId in pkg.MainMissionIDList)
+                {
+                    var mid = (uint)missionId;
+                    if (info.FinishedMainMissionIdList.Contains(mid)) continue;
+                    if (info.UnfinishedMainMissionIdList.Contains(mid)) continue;
+                    info.UnfinishedMainMissionIdList.Add(mid);
+                }
+            }
+
+        return info;
+    }
 
     public MissionPhaseEnum GetMainMissionStatus(int missionId)
     {
@@ -626,6 +984,71 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager(player)
         }
 
         return list;
+    }
+
+    public bool IsMainMissionVisible(int mainMissionId)
+    {
+        return GameData.MainMissionData.GetValueOrDefault(mainMissionId)?.IsShow != false;
+    }
+
+    public bool TryResolveMainMissionId(int missionId, out int mainMissionId)
+    {
+        mainMissionId = 0;
+
+        if (GameData.MainMissionData.ContainsKey(missionId))
+        {
+            mainMissionId = missionId;
+            return true;
+        }
+
+        if (GameData.SubMissionInfoData.TryGetValue(missionId, out var subMissionInfo))
+        {
+            mainMissionId = subMissionInfo.MainMissionId;
+            return mainMissionId > 0;
+        }
+
+        if (GameData.SubMissionData.TryGetValue(missionId, out var subMissionData))
+        {
+            mainMissionId = subMissionData.MainMissionID;
+            return mainMissionId > 0;
+        }
+
+        return false;
+    }
+
+    public bool HasMainMissionDefinition(int mainMissionId)
+    {
+        if (!GameData.MainMissionData.TryGetValue(mainMissionId, out var mainMission))
+            return false;
+
+        if (mainMission.SubMissionIds.Count > 0)
+            return true;
+
+        if (mainMission.MissionInfo == null)
+            return false;
+
+        return mainMission.MissionInfo.SubMissionList.Count > 0 ||
+               mainMission.MissionInfo.StartSubMissionList.Count > 0 ||
+               mainMission.MissionInfo.FinishSubMissionList.Count > 0;
+    }
+
+    public int GetClientTrackingMainMissionId()
+    {
+        if (Data.TrackingMainMissionId > 0 && IsMainMissionVisible(Data.TrackingMainMissionId))
+            return Data.TrackingMainMissionId;
+
+        foreach (var mainMissionId in Data.RunningMainMissionIds)
+            if (IsMainMissionVisible(mainMissionId))
+                return mainMissionId;
+
+        return 0;
+    }
+
+    public List<SubMissionInfo> GetClientRunningSubMissionList()
+    {
+        return GetRunningSubMissionList()
+            .Where(x => IsMainMissionVisible(x.MainMissionID))
+            .ToList();
     }
 
     public int GetMissionProgress(int missionId)
@@ -686,49 +1109,8 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager(player)
 
     public void OnLoadScene(SceneInfo info)
     {
-        var targetSubIds =
-            Player.SceneInstance?.FloorInfo?.Groups.Values.SelectMany(x => x.RelatedMissionId).ToList() ?? [];
-
-        HashSet<int> mainIds = [];
-        foreach (var mainMission in GameData.MainMissionData.Values)
-        foreach (var subMission in mainMission.MissionInfo.SubMissionList)
-            if (targetSubIds.Contains(subMission.ID))
-            {
-                info.SceneMissionInfo.SubMissionStatusList.Add(new Proto.Mission
-                {
-                    Id = (uint)subMission.ID,
-                    Status = GetSubMissionStatus(subMission.ID).ToProto(),
-                    Progress = (uint)GetMissionProgress(subMission.ID)
-                });
-
-                mainIds.Add(mainMission.MainMissionID);
-            }
-
-        foreach (var mainId in mainIds)
-            if (GetMainMissionStatus(mainId) == MissionPhaseEnum.Finish)
-                info.SceneMissionInfo.FinishedMainMissionIdList.Add((uint)mainId);
-            else if (GetMainMissionStatus(mainId) == MissionPhaseEnum.Accept)
-                info.SceneMissionInfo.UnfinishedMainMissionIdList.Add((uint)mainId);
-
-        // Activity-bound main missions: for each ContentPackage whose entrance lives on the
-        // floor the player is loading, surface its main missions as "unfinished" so the client
-        // treats the activity entry (map icons, in-scene activity NPCs) as live. We keep the
-        // regular Mission system untouched - this only affects scene-mission serialization.
-        var currentFloor = Player.SceneInstance?.FloorId ?? 0;
-        if (currentFloor != 0)
-            foreach (var pkg in GameData.ContentPackageConfigData.Values)
-            {
-                if (pkg.MainMissionIDList.Count == 0) continue;
-                if (!pkg.TouchesFloor(currentFloor)) continue;
-
-                foreach (var missionId in pkg.MainMissionIDList)
-                {
-                    var mid = (uint)missionId;
-                    if (info.SceneMissionInfo.FinishedMainMissionIdList.Contains(mid)) continue;
-                    if (info.SceneMissionInfo.UnfinishedMainMissionIdList.Contains(mid)) continue;
-                    info.SceneMissionInfo.UnfinishedMainMissionIdList.Add(mid);
-                }
-            }
+        var floorId = Player.SceneInstance?.FloorId ?? (int)info.FloorId;
+        info.SceneMissionInfo = BuildSceneMissionInfo(floorId);
     }
 
     #endregion

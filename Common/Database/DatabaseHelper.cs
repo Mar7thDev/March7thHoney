@@ -362,6 +362,31 @@ public class DatabaseHelper
         }
     }
 
+    public void SaveUid(int uid)
+    {
+        try
+        {
+            if (!UidInstanceMap.TryGetValue(uid, out var value)) return;
+
+            var baseType = typeof(BaseDatabaseDataHelper);
+            var assembly = typeof(BaseDatabaseDataHelper).Assembly;
+            var types = assembly.GetTypes().Where(t => t.IsSubclassOf(baseType));
+            foreach (var type in types)
+            {
+                var instance = value.Find(x => x.GetType() == type);
+                if (instance != null)
+                    typeof(DatabaseHelper).GetMethod(nameof(SaveDatabaseType))?.MakeGenericMethod(type)
+                        .Invoke(null, [instance]);
+            }
+
+            ToSaveUidList.Remove(uid);
+        }
+        catch (Exception e)
+        {
+            logger.Error("An error occurred while saving the uid database", e);
+        }
+    }
+
     public void DeleteInstance<T>(T instance) where T : class, new()
     {
         sqlSugarScope?.Deleteable(instance).ExecuteCommand();

@@ -315,6 +315,7 @@ public static class GameData
     public static Dictionary<int, MessageSectionConfigExcel> MessageSectionConfigData { get; private set; } = [];
     public static Dictionary<int, MessageContactsConfigExcel> MessageContactsConfigData { get; private set; } = [];
     public static Dictionary<int, MessageItemConfigExcel> MessageItemConfigData { get; private set; } = [];
+    public static Dictionary<int, PerformanceCExcel> PerformanceCData { get; private set; } = [];
     public static Dictionary<int, PerformanceDExcel> PerformanceDData { get; private set; } = [];
     public static Dictionary<int, PerformanceEExcel> PerformanceEData { get; private set; } = [];
     public static Dictionary<int, StoryLineExcel> StoryLineData { get; private set; } = [];

@@ -9,6 +9,7 @@ using March7thHoney.Enums.Task;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene.Entity;
 using March7thHoney.Proto;
+using System.Text.RegularExpressions;
 
 namespace March7thHoney.GameServer.Game.Task;
 
@@ -39,24 +40,29 @@ public class LevelTask(PlayerInstance player)
 
     #region Manage
 
-    public void TriggerInitAct(LevelInitSequeceConfigInfo act, SubMissionData subMission, GroupInfo? group = null)
+    public async ValueTask TriggerInitAct(LevelInitSequeceConfigInfo act, SubMissionData subMission,
+        GroupInfo? group = null)
     {
-        foreach (var task in act.TaskList) TriggerTask(task, subMission, group);
+        foreach (var task in act.TaskList)
+            await TriggerTask(task, subMission, group);
     }
 
-    public void TriggerStartAct(LevelStartSequeceConfigInfo act, SubMissionData subMission, GroupInfo? group = null)
+    public async ValueTask TriggerStartAct(LevelStartSequeceConfigInfo act, SubMissionData subMission,
+        GroupInfo? group = null)
     {
-        foreach (var task in act.TaskList) TriggerTask(task, subMission, group);
+        foreach (var task in act.TaskList)
+            await TriggerTask(task, subMission, group);
     }
 
-    private void TriggerTask(TaskConfigInfo act, SubMissionData subMission, GroupInfo? group = null)
+    private async ValueTask TriggerTask(TaskConfigInfo act, SubMissionData subMission, GroupInfo? group = null)
     {
         try
         {
             var methodName = act.Type.Replace("RPG.GameCore.", "");
 
             var method = GetOrCreateExecuteTask(methodName);
-            if (method != null) _ = method(act, subMission, group);
+            if (method != null)
+                await method(act, subMission, group);
         }
         catch
         {
@@ -122,6 +128,98 @@ public class LevelTask(PlayerInstance player)
         return null;
     }
 
+    public async ValueTask<object?> WaitCustomString(TaskConfigInfo act, SubMissionData subMission,
+        GroupInfo? group = null)
+    {
+        await ValueTask.CompletedTask;
+        return null;
+    }
+
+    public async ValueTask<object?> WaitSecond(TaskConfigInfo act, SubMissionData subMission, GroupInfo? group = null)
+    {
+        if (act is WaitSecond waitSecond)
+        {
+            var seconds = waitSecond.WaitTime?.GetValue() ?? 0;
+            if (seconds > 0)
+                await System.Threading.Tasks.Task.Delay(TimeSpan.FromSeconds(seconds));
+        }
+
+        await ValueTask.CompletedTask;
+        return null;
+    }
+
+    public async ValueTask<object?> LockPlayerControl(TaskConfigInfo act, SubMissionData subMission,
+        GroupInfo? group = null)
+    {
+        await ValueTask.CompletedTask;
+        return null;
+    }
+
+    public async ValueTask<object?> UnLockPlayerControl(TaskConfigInfo act, SubMissionData subMission,
+        GroupInfo? group = null)
+    {
+        await ValueTask.CompletedTask;
+        return null;
+    }
+
+    public async ValueTask<object?> PlayMissionTalk(TaskConfigInfo act, SubMissionData subMission,
+        GroupInfo? group = null)
+    {
+        await ValueTask.CompletedTask;
+        return null;
+    }
+
+    public async ValueTask<object?> FinishPerformanceMission(TaskConfigInfo act, SubMissionData subMission,
+        GroupInfo? group = null)
+    {
+        if (act is FinishPerformanceMission finishPerformanceMission)
+        {
+            var match = Regex.Match(finishPerformanceMission.Key ?? string.Empty, @"Mission_(\d+)");
+            if (match.Success && int.TryParse(match.Groups[1].Value, out var missionId))
+                await Player.MissionManager!.FinishSubMission(missionId);
+            else if (subMission.MissionId > 0)
+                await Player.MissionManager!.FinishSubMission(subMission.MissionId);
+        }
+
+        return null;
+    }
+
+    public async ValueTask<object?> FinishLevelGraph(TaskConfigInfo act, SubMissionData subMission,
+        GroupInfo? group = null)
+    {
+        if (subMission.MissionId > 0)
+            await Player.MissionManager!.FinishSubMission(subMission.MissionId);
+
+        return null;
+    }
+
+    public async ValueTask<object?> WaitPerformanceEnd(TaskConfigInfo act, SubMissionData subMission,
+        GroupInfo? group = null)
+    {
+        await ValueTask.CompletedTask;
+        return null;
+    }
+
+    public async ValueTask<object?> EndPerformance(TaskConfigInfo act, SubMissionData subMission,
+        GroupInfo? group = null)
+    {
+        await ValueTask.CompletedTask;
+        return null;
+    }
+
+    public async ValueTask<object?> PlayVideo(TaskConfigInfo act, SubMissionData subMission, GroupInfo? group = null)
+    {
+        await ValueTask.CompletedTask;
+        return null;
+    }
+
+    public async ValueTask<object?> LevelPerformanceInitialize(TaskConfigInfo act, SubMissionData subMission,
+        GroupInfo? group = null)
+    {
+        await ValueTask.CompletedTask;
+        return null;
+    }
+
     public async ValueTask<object?> EnterMap(TaskConfigInfo act, SubMissionData subMission, GroupInfo? group = null)
     {
         if (act is EnterMap enterMap)
@@ -144,7 +242,10 @@ public class LevelTask(PlayerInstance player)
     {
         if (act is TriggerPerformance triggerPerformance)
         {
-            if (triggerPerformance.PerformanceType == ELevelPerformanceTypeEnum.E)
+            if (triggerPerformance.PerformanceType == ELevelPerformanceTypeEnum.C)
+                Player.TaskManager?.PerformanceTrigger.TriggerPerformanceC(triggerPerformance.PerformanceID,
+                    subMission);
+            else if (triggerPerformance.PerformanceType == ELevelPerformanceTypeEnum.E)
                 Player.TaskManager?.PerformanceTrigger.TriggerPerformanceE(triggerPerformance.PerformanceID,
                     subMission);
             else if (triggerPerformance.PerformanceType == ELevelPerformanceTypeEnum.D)
@@ -171,10 +272,10 @@ public class LevelTask(PlayerInstance player)
             var resp = await method(predicateTaskList.Predicate, subMission, group);
             if (resp is true)
                 foreach (var task in predicateTaskList.SuccessTaskList)
-                    TriggerTask(task, subMission, group);
+                    await TriggerTask(task, subMission, group);
             else
                 foreach (var task in predicateTaskList.FailedTaskList)
-                    TriggerTask(task, subMission, group);
+                    await TriggerTask(task, subMission, group);
         }
 
         return null;
@@ -377,7 +478,7 @@ public class LevelTask(PlayerInstance player)
     {
         if (act is PropSetupUITrigger propSetupUiTrigger)
             foreach (var task in propSetupUiTrigger.ButtonCallback)
-                TriggerTask(task, subMission, group);
+                await TriggerTask(task, subMission, group);
 
         await ValueTask.CompletedTask;
 
@@ -400,6 +501,20 @@ public class LevelTask(PlayerInstance player)
             }
         }
 
+        return null;
+    }
+
+    public async ValueTask<object?> PropSetupTrigger(TaskConfigInfo act, SubMissionData subMission,
+        GroupInfo? group = null)
+    {
+        if (act is not PropSetupTrigger trigger) return null;
+
+        // Minimal 4.x compatibility: run trigger-enter actions immediately so early
+        // mission graphs can advance even without full client-side collider support.
+        foreach (var task in trigger.OnTriggerEnter)
+            TriggerTask(task, subMission, group);
+
+        await ValueTask.CompletedTask;
         return null;
     }
 

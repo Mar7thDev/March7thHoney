@@ -8,6 +8,21 @@ public class PerformanceTrigger(PlayerInstance player)
 {
     public PlayerInstance Player { get; } = player;
 
+    public void TriggerPerformanceC(int performanceCId, SubMissionData subMission)
+    {
+        GameData.PerformanceCData.TryGetValue(performanceCId, out var excel);
+        if (excel != null) TriggerPerformanceC(excel, subMission);
+    }
+
+    public void TriggerPerformanceC(PerformanceCExcel excel, SubMissionData subMission)
+    {
+        if (excel.ActInfo == null) return;
+        foreach (var act in excel.ActInfo.OnInitSequece) Player.TaskManager?.LevelTask.TriggerInitAct(act, subMission);
+
+        foreach (var act in excel.ActInfo.OnStartSequece)
+            Player.TaskManager?.LevelTask.TriggerStartAct(act, subMission);
+    }
+
     public void TriggerPerformanceE(int performanceEId, SubMissionData subMission)
     {
         GameData.PerformanceEData.TryGetValue(performanceEId, out var excel);
