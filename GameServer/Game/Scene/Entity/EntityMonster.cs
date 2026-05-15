@@ -153,9 +153,9 @@ public class EntityMonster(
         return Info.EventID;
     }
 
-    public async ValueTask<List<ItemData>> Kill(bool sendPacket = true)
+    public async ValueTask<List<ItemData>> Kill(bool sendPacket = true, bool removeFromScene = true)
     {
-        IsAlive = false;
+        if (removeFromScene) IsAlive = false;
 
         GameData.MonsterDropData.TryGetValue(MonsterData.ID * 10 + Scene.Player.Data.WorldLevel, out var dropData);
         if (dropData == null) return [];
@@ -165,7 +165,7 @@ public class EntityMonster(
         // TODO: Rogue support
         // call mission handler
         await Scene.Player.MissionManager!.HandleFinishType(MissionFinishTypeEnum.KillMonster, this);
-        await Scene.RemoveEntity(this);
+        if (removeFromScene) await Scene.RemoveEntity(this);
         return dropItems;
     }
 }

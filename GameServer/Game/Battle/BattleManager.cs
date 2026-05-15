@@ -310,7 +310,12 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
                     battle.EntityMonsters = ResolveSceneMonstersByStageId(battle.StageId);
 
                 // Drops
-                foreach (var monster in battle.EntityMonsters) dropItems.AddRange(await monster.Kill(false));
+                var farmEntityId = (int)Player.ActiveFarmElementEntityId;
+                foreach (var monster in battle.EntityMonsters)
+                {
+                    var keepInScene = farmEntityId != 0 && monster.EntityId == farmEntityId;
+                    dropItems.AddRange(await monster.Kill(false, removeFromScene: !keepInScene));
+                }
                 // Spend stamina
                 if (battle.StaminaCost > 0) await Player.SpendStamina(battle.StaminaCost);
                 break;
@@ -363,6 +368,10 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
                 );
                 if (anchor != null) await Player.MoveTo(anchor.ToPositionProto());
             }
+        }
+        else if (Player.ActiveFarmElementEntityId != 0 && Player.FarmElementReturnPos != null)
+        {
+            await Player.MoveTo(Player.FarmElementReturnPos, Player.FarmElementReturnRot ?? Player.Data.Rot!);
         }
 
         // call battle end
