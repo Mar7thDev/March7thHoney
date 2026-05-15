@@ -132,6 +132,7 @@ public class CommandTextEN
     public SetlevelTextEN Setlevel { get; } = new();
     public GridTextEN Grid { get; } = new();
     public JsonTextEN Json { get; } = new();
+    public CalyxTextEN Calyx { get; } = new();
 }
 
 #endregion
@@ -532,6 +533,20 @@ public class JsonTextEN
     public string FileListItem => "{0}. {1}";
     public string UsageSelectHint => "Use /json [index] or /json [filename] to import.";
     public string AvatarExcelNotFound => "Avatar config not found: {0}";
+}
+
+/// <summary>
+///     path: Game.Command.Calyx
+/// </summary>
+public class CalyxTextEN
+{
+    public string Desc => "Toggle calyx override mode that replaces calyx battles with freesr file content.";
+    public string Usage => "Usage: /calyx on [index]\nUsage: /calyx off";
+    public string ToggleOn => "Calyx override is ON. Loaded: {0}";
+    public string ToggleOff => "Calyx override is OFF.";
+    public string MissingIndex => "Please provide a freesr file index. Usage: /calyx on [index]";
+    public string InvalidMode => "Unknown mode '{0}'. Use /calyx on [index] or /calyx off.";
+    public string LoadFailed => "Failed to load freesr file.";
 }
 
 #endregion
