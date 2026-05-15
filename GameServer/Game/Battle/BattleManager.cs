@@ -201,6 +201,9 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
     {
         if (Player.BattleInstance != null) return null;
 
+        if (Player.CalyxOverrideManager?.IsActive == true)
+            return await Player.CalyxOverrideManager.BuildOverrideBattle(cocoonId, wave, worldLevel);
+
         GameData.CocoonConfigData.TryGetValue(cocoonId * 100 + worldLevel, out var config);
         if (config == null) return null;
 
