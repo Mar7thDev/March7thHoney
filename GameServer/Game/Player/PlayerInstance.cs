@@ -115,6 +115,10 @@ public partial class PlayerInstance(PlayerData data)
     public int NextBattleId { get; set; } = 0;
     public int ChargerNum { get; set; } = 0;
 
+    public uint ActiveFarmElementEntityId { get; set; }
+    public Position? FarmElementReturnPos { get; set; }
+    public Position? FarmElementReturnRot { get; set; }
+
     #endregion
 
     #region Initializers
