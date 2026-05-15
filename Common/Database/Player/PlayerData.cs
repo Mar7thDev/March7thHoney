@@ -16,7 +16,7 @@ public class PlayerData : BaseDatabaseDataHelper
     public string? Signature { get; set; } = "";
     public int Birthday { get; set; } = 0;
     public int CurBasicType { get; set; } = 8002;
-    public int HeadIcon { get; set; } = 208001;
+    public int HeadIcon { get; set; } = 208002;
     public int PhoneTheme { get; set; } = 221000;
     public int ChatBubble { get; set; } = 220000;
     public int PersonalCard { get; set; } = 253000;
