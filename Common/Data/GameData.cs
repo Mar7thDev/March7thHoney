@@ -108,6 +108,7 @@ public static class GameData
     #region Battle
 
     public static Dictionary<int, CocoonConfigExcel> CocoonConfigData { get; private set; } = [];
+    public static Dictionary<int, FarmElementConfigExcel> FarmElementConfigData { get; private set; } = [];
     public static Dictionary<int, StageConfigExcel> StageConfigData { get; private set; } = [];
     public static Dictionary<int, RaidConfigExcel> RaidConfigData { get; private set; } = [];
     public static Dictionary<int, MazeBuffExcel> MazeBuffData { get; private set; } = [];
