@@ -715,7 +715,11 @@ public class PathInfo(int pathId)
 
     public Dictionary<int, int> GetSkillTree()
     {
-        if (EnhanceInfos.TryGetValue(EnhanceId, out var enhance)) return enhance.SkillTree;
+        if (EnhanceInfos.TryGetValue(EnhanceId, out var enhance))
+        {
+            NormalizePointIdsForEnhanceId(enhance);
+            return enhance.SkillTree;
+        }
 
         EnhanceInfos[EnhanceId] = new EnhanceInfo(EnhanceId);
 
@@ -729,6 +733,34 @@ public class PathInfo(int pathId)
         foreach (var skill in skills) EnhanceInfos[EnhanceId].SkillTree.Add(skill.PointID, skill.Level);
 
         return EnhanceInfos[EnhanceId].SkillTree;
+    }
+
+    // Legacy DB rows can hold enhanced-prefix PointIDs (e.g. 11004001) inside
+    // EnhanceInfos[0], so an unenhanced battle proto would leak them to the client
+    // and battle entry stalls. Remap any cached key whose AvatarSkillTreeConfig
+    // EnhancedID disagrees with the current EnhanceId by matching AnchorType slot.
+    private void NormalizePointIdsForEnhanceId(EnhanceInfo enhance)
+    {
+        if (!GameData.AvatarConfigData.TryGetValue(PathId, out var pathExcel)) return;
+        var authoritative = pathExcel.SkillTree.GetValueOrDefault(EnhanceId);
+        if (authoritative == null || authoritative.Count == 0) return;
+
+        var mismatched = enhance.SkillTree
+            .Where(kv => GameData.AvatarSkillTreeConfigData.TryGetValue(kv.Key * 100 + 1, out var ex)
+                         && ex.EnhancedID != EnhanceId)
+            .ToList();
+        if (mismatched.Count == 0) return;
+
+        foreach (var (oldKey, level) in mismatched)
+        {
+            enhance.SkillTree.Remove(oldKey);
+            if (!GameData.AvatarSkillTreeConfigData.TryGetValue(oldKey * 100 + 1, out var oldEx)) continue;
+            var slot = oldEx.GetMultiPointId();
+            if (slot <= 0) continue;
+            var correct = authoritative.Find(a => a.GetMultiPointId() == slot);
+            if (correct == null) continue;
+            enhance.SkillTree[correct.PointID] = Math.Min(level, correct.MaxLevel);
+        }
     }
 }
 
