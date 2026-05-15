@@ -252,6 +252,36 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
         return battleInstance;
     }
 
+    public async ValueTask<BattleInstance?> StartFarmElementStage(FarmElementConfigExcel config)
+    {
+        if (Player.BattleInstance != null) return null;
+        if (Player.Data.Stamina < config.StaminaCost) return null;
+
+        GameData.StageConfigData.TryGetValue(config.StageID, out var stageConfig);
+        if (stageConfig == null) return null;
+
+        BattleInstance battleInstance = new(Player, Player.LineupManager!.GetCurLineup()!, [stageConfig])
+        {
+            StaminaCost = config.StaminaCost,
+            WorldLevel = config.WorldLevel,
+            CocoonWave = 1,
+            MappingInfoId = config.MappingInfoID
+        };
+
+        var avatarList = Player.LineupManager!.GetCurLineup()!.BaseAvatars!.Select(item =>
+                Player.SceneInstance!.AvatarInfo.Values.FirstOrDefault(x => x.AvatarInfo.AvatarId == item.BaseAvatarId))
+            .OfType<AvatarSceneInfo>().ToList();
+
+        battleInstance.AvatarInfo = avatarList;
+
+        Player.BattleInstance = battleInstance;
+        Player.QuestManager!.OnBattleStart(battleInstance);
+
+        InvokeOnPlayerEnterBattle(Player, battleInstance);
+        await ValueTask.CompletedTask;
+        return battleInstance;
+    }
+
     public (Retcode, BattleInstance?) StartBattleCollege(int collegeId)
     {
         if (Player.BattleInstance != null) return (Retcode.RetInBattleNow, null);
