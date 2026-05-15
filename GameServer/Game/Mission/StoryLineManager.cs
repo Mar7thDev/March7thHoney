@@ -180,6 +180,11 @@ public class StoryLineManager(PlayerInstance player) : BasePlayerManager(player)
 
         GameData.StoryLineData.TryGetValue(StoryLineData.CurStoryLineId, out var storyExcel);
         if (storyExcel == null) return;
+        var oldPlaneId = StoryLineData.OldPlaneId;
+        var oldFloorId = StoryLineData.OldFloorId;
+        var oldEntryId = StoryLineData.OldEntryId;
+        var oldPos = StoryLineData.OldPos;
+        var oldRot = StoryLineData.OldRot;
         Player.LineupManager!.SetExtraLineup(ExtraLineupType.LineupNone, []);
 
         // delete old & reset
@@ -213,8 +218,7 @@ public class StoryLineManager(PlayerInstance player) : BasePlayerManager(player)
             if (entryId > 0)
                 await Player.EnterSceneByEntranceId(entryId, anchorGroupId, anchorId, true);
             else
-                await Player.LoadScene(StoryLineData.OldPlaneId, StoryLineData.OldFloorId, StoryLineData.OldEntryId,
-                    StoryLineData.OldPos, StoryLineData.OldRot, true);
+                await Player.LoadScene(oldPlaneId, oldFloorId, oldEntryId, oldPos, oldRot, true);
         }
     }
 

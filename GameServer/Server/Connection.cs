@@ -268,6 +268,11 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
                 var rspName = curPacket.Replace("Cs", "Sc").Replace("Req", "Rsp"); // Get the response packet name
                 if (rspName == curPacket) return; // do not send rsp when resp name = recv name
                 var rspOpcode = LogMap.FirstOrDefault(x => x.Value == rspName).Key; // Get the response opcode
+                if (rspOpcode <= 0)
+                {
+                    Logger.Debug($"No response opcode found for {curPacket}, skip auto response.");
+                    return;
+                }
 
                 // get proto class
                 var typ = AppDomain.CurrentDomain.GetAssemblies()
@@ -317,6 +322,11 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
         var respName = packetName.Replace("Cs", "Sc").Replace("Req", "Rsp"); // Get the response packet name
         if (respName == packetName) return; // do not send rsp when resp name = recv name
         var respOpcode = LogMap.FirstOrDefault(x => x.Value == respName).Key; // Get the response opcode
+        if (respOpcode <= 0)
+        {
+            Logger.Debug($"No response opcode found for {packetName}, skip auto response.");
+            return;
+        }
 
         // Send Rsp
         await SendPacket(respOpcode);

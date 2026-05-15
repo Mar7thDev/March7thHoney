@@ -71,36 +71,18 @@ public class March7thHoneyConnection
     {
         if (!ConfigManager.Config.ServerOption.LogOption.EnableGamePacketLog) return;
 
-        try
+        if (IgnoreLog.Contains(opcode)) return;
+
+        var output = $"{sendOrRecv}: {LogMap.GetValueOrDefault(opcode, "UnknownPacket")}({opcode})";
+
+        if (ConfigManager.Config.ServerOption.LogOption.LogPacketToConsole)
+            Logger.Debug(output);
+
+        if (DebugFile != "" && ConfigManager.Config.ServerOption.LogOption.SavePersonalDebugFile)
         {
-            if (IgnoreLog.Contains(opcode)) return;
-
-            if (ConfigManager.Config.ServerOption.LogOption.DisableLogDetailPacket) throw new Exception();
-
-            var asJson = PacketLogHelper.ConvertPacketToJson(opcode, payload);
-            var output = $"{sendOrRecv}: {LogMap[opcode]}({opcode})\r\n{asJson}";
-
-            if (ConfigManager.Config.ServerOption.LogOption.LogPacketToConsole)
-                Logger.Debug(output);
-
-            if (DebugFile == "" || !ConfigManager.Config.ServerOption.LogOption.SavePersonalDebugFile) return;
             var sw = GetWriter();
             sw.WriteLine($"[{DateTime.Now:HH:mm:ss}] [GameServer] [DEBUG] " + output);
             sw.Flush();
-        }
-        catch
-        {
-            var output = $"{sendOrRecv}: {LogMap.GetValueOrDefault(opcode, "UnknownPacket")}({opcode})";
-
-            if (ConfigManager.Config.ServerOption.LogOption.LogPacketToConsole)
-                Logger.Debug(output);
-
-            if (DebugFile != "" && ConfigManager.Config.ServerOption.LogOption.SavePersonalDebugFile)
-            {
-                var sw = GetWriter();
-                sw.WriteLine($"[{DateTime.Now:HH:mm:ss}] [GameServer] [DEBUG] " + output);
-                sw.Flush();
-            }
         }
     }
 

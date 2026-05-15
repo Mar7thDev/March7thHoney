@@ -1,4 +1,5 @@
 using System.Reflection;
+using System.Threading.Tasks;
 using March7thHoney.GameServer.Server;
 using March7thHoney.Internationalization;
 using March7thHoney.Kcp;
@@ -239,7 +240,7 @@ public class CommandManager
 
                     if (!canRun) continue;
                     isFound = true;
-                    method.Invoke(command, [arg]);
+                    InvokeCommandMethod(command, method, arg);
                     break;
                 }
 
@@ -250,7 +251,7 @@ public class CommandManager
                     var attr = method.GetCustomAttribute<CommandDefaultAttribute>();
                     if (attr == null) continue;
                     isFound = true;
-                    method.Invoke(command, [arg]);
+                    InvokeCommandMethod(command, method, arg);
                     break;
                 }
 
@@ -266,6 +267,32 @@ public class CommandManager
         {
             Logger.Error(I18NManager.Translate("Game.Command.Notice.InternalError"), e);
             sender.SendMsg(I18NManager.Translate("Game.Command.Notice.InternalError"));
+        }
+    }
+
+    private static void InvokeCommandMethod(ICommand command, MethodInfo method, CommandArg arg)
+    {
+        var result = method.Invoke(command, [arg]);
+        if (result == null) return;
+
+        if (result is Task task)
+        {
+            task.GetAwaiter().GetResult();
+            return;
+        }
+
+        if (result is ValueTask valueTask)
+        {
+            valueTask.GetAwaiter().GetResult();
+            return;
+        }
+
+        var returnType = method.ReturnType;
+        if (returnType.IsGenericType && returnType.GetGenericTypeDefinition() == typeof(ValueTask<>))
+        {
+            var asTaskMethod = returnType.GetMethod(nameof(ValueTask.AsTask));
+            if (asTaskMethod?.Invoke(result, null) is Task boxedTask)
+                boxedTask.GetAwaiter().GetResult();
         }
     }
 }

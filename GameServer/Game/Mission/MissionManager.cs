@@ -53,12 +53,17 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager(player)
         Data.SetMainMissionStatus(missionId, MissionPhaseEnum.Accept);
 
         var list = new List<MissionSync?>();
-        mission.MissionInfo?.StartSubMissionList.ForEach(async i => list.Add(await AcceptSubMission(i, sendPacket)));
+        foreach (var subMissionId in mission.MissionInfo?.StartSubMissionList ?? [])
+            list.Add(await AcceptSubMission(subMissionId, sendPacket));
+
         if (missionId == 4030001 || missionId == 4030002)
         {
             // skip  not implemented
-            mission.MissionInfo?.SubMissionList.ForEach(async x => await AcceptSubMission(x.ID));
-            mission.MissionInfo?.SubMissionList.ForEach(async x => await FinishSubMission(x.ID));
+            foreach (var subMission in mission.MissionInfo?.SubMissionList ?? [])
+                await AcceptSubMission(subMission.ID);
+
+            foreach (var subMission in mission.MissionInfo?.SubMissionList ?? [])
+                await FinishSubMission(subMission.ID);
         }
 
         if (missionId == 1000400)
@@ -103,6 +108,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager(player)
 
         GameData.MainMissionData.TryGetValue(missionId, out var mission);
         if (mission == null) return [];
+
         MissionSync sync = new();
 
         foreach (var subMission in mission.SubMissionIds)
@@ -114,13 +120,38 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager(player)
                     Status = MissionStatus.MissionNone
                 });
 
-        foreach (var subMission in
-                 mission.SubMissionIds) Data.SetSubMissionStatus(subMission, MissionPhaseEnum.None); // reset
+        foreach (var subMission in mission.SubMissionIds)
+        {
+            Data.SetSubMissionStatus(subMission, MissionPhaseEnum.None);
+            Data.SubMissionProgressDict.Remove(subMission);
+        }
 
-        Data.SetMainMissionStatus(missionId, MissionPhaseEnum.None); // reset
+        Data.SetMainMissionStatus(missionId, MissionPhaseEnum.None);
+        if (Data.TrackingMainMissionId == missionId)
+            Data.TrackingMainMissionId = 0;
+
         await Player.SendPacket(new PacketPlayerSyncScNotify(sync));
 
-        return await AcceptMainMission(missionId, sendPacket);
+        var result = await AcceptMainMission(missionId, sendPacket);
+        Data.TrackingMainMissionId = missionId;
+        await Player.SendPacket(new PacketGetMissionDataScRsp(Player));
+        await Player.SendPacket(new PacketGetMissionStatusScRsp(new GetMissionStatusCsReq
+        {
+            MainMissionIdList = { GameData.MainMissionData.Keys.Select(x => (uint)x) },
+            SubMissionIdList = { GameData.SubMissionInfoData.Keys.Select(x => (uint)x) }
+        }, Player));
+        await Player.SendPacket(new PacketUpdateTrackMainMissionIdScRsp(0, missionId));
+        Player.SceneInstance?.SyncGroupInfo();
+        if (Player.StoryLineManager != null)
+        {
+            await Player.StoryLineManager.CheckIfFinishStoryLine();
+            await Player.StoryLineManager.CheckIfEnterStoryLine();
+        }
+
+        if (Player.QuestManager != null)
+            await Player.QuestManager.SyncQuest();
+
+        return result;
     }
 
     public async ValueTask RemoveMainMission(int missionId)
