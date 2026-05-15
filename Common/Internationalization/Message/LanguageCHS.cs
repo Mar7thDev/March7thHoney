@@ -132,6 +132,7 @@ public class CommandTextCHS
     public SetlevelTextCHS Setlevel { get; } = new();
     public GridTextCHS Grid { get; } = new();
     public JsonTextCHS Json { get; } = new();
+    public CalyxTextCHS Calyx { get; } = new();
 }
 
 #endregion
@@ -532,6 +533,20 @@ public class JsonTextCHS
     public string FileListItem => "{0}. {1}";
     public string UsageSelectHint => "输入 /json [序号] 或 /json [文件名] 进行导入。";
     public string AvatarExcelNotFound => "未找到角色配置：{0}";
+}
+
+/// <summary>
+///     path: Game.Command.Calyx
+/// </summary>
+public class CalyxTextCHS
+{
+    public string Desc => "切换花萼覆盖模式：开启时将拟造花萼替换为 freesr 文件中的关卡内容。";
+    public string Usage => "用法：/calyx on [序号]\n用法：/calyx off";
+    public string ToggleOn => "花萼覆盖已开启，已加载：{0}";
+    public string ToggleOff => "花萼覆盖已关闭。";
+    public string MissingIndex => "请指定 freesr 文件序号。用法：/calyx on [序号]";
+    public string InvalidMode => "未知模式 '{0}'。请使用 /calyx on [序号] 或 /calyx off。";
+    public string LoadFailed => "加载 freesr 文件失败。";
 }
 
 #endregion

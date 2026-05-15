@@ -4,6 +4,7 @@ using March7thHoney.Database;
 using March7thHoney.Database.Avatar;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Enums.Avatar;
+using March7thHoney.GameServer.Game.Calyx;
 using March7thHoney.GameServer.Game.GridFight;
 using March7thHoney.GameServer.Game.GridFight.Battle;
 using March7thHoney.GameServer.Game.Lineup;
@@ -87,6 +88,7 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
     public PVEBattleResultCsReq? BattleResult { get; set; }
     public bool IsTournRogue { get; set; }
     public GridFightInstance? GridFightContext { get; set; }
+    public CalyxOverrideContext? CalyxOverride { get; set; }
 
     public delegate ValueTask OnBattleEndDelegate(BattleInstance battle, PVEBattleResultCsReq req);
 
@@ -340,6 +342,8 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
                 count++;
             }
         }
+
+        CalyxOverride?.Apply(this, proto);
 
         proto.BuffList.AddRange(Buffs.Select(buff => buff.ToProto(this)));
         return proto;

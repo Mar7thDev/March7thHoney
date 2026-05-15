@@ -1,6 +1,7 @@
 using March7thHoney.Data;
 using March7thHoney.Database;
 using March7thHoney.Database.Avatar;
+using March7thHoney.Database.Calyx;
 using March7thHoney.Database.Friend;
 using March7thHoney.Database.Player;
 using March7thHoney.Database.Scene;
@@ -9,6 +10,7 @@ using March7thHoney.Enums.Avatar;
 using March7thHoney.GameServer.Game.Activity;
 using March7thHoney.GameServer.Game.Avatar;
 using March7thHoney.GameServer.Game.Battle;
+using March7thHoney.GameServer.Game.Calyx;
 using March7thHoney.GameServer.Game.Challenge;
 using March7thHoney.GameServer.Game.ChallengePeak;
 using March7thHoney.GameServer.Game.Expedition;
@@ -51,6 +53,7 @@ public partial class PlayerInstance(PlayerData data)
     public InventoryManager? InventoryManager { get; private set; }
     public BattleManager? BattleManager { get; private set; }
     public SceneSkillManager? SceneSkillManager { get; private set; }
+    public CalyxOverrideManager? CalyxOverrideManager { get; private set; }
     public BattleInstance? BattleInstance { get; set; }
 
     #endregion
@@ -105,6 +108,7 @@ public partial class PlayerInstance(PlayerData data)
     public TutorialData? TutorialData { get; private set; }
     public TutorialGuideData? TutorialGuideData { get; private set; }
     public BattleCollegeData? BattleCollegeData { get; private set; }
+    public CalyxOverrideData? CalyxOverrideData { get; private set; }
     public ServerPrefsData? ServerPrefsData { get; private set; }
     public SceneInstance? SceneInstance { get; private set; }
     public List<BasePlayerComponent> Components { get; } = [];
@@ -181,6 +185,7 @@ public partial class PlayerInstance(PlayerData data)
         InventoryManager = new InventoryManager(this);
         BattleManager = new BattleManager(this);
         SceneSkillManager = new SceneSkillManager(this);
+        CalyxOverrideManager = new CalyxOverrideManager(this);
         MissionManager = new MissionManager(this);
         GachaManager = new GachaManager(this);
         MessageManager = new MessageManager(this);
@@ -206,6 +211,8 @@ public partial class PlayerInstance(PlayerData data)
         TutorialGuideData = InitializeDatabase<TutorialGuideData>();
         ServerPrefsData = InitializeDatabase<ServerPrefsData>();
         BattleCollegeData = InitializeDatabase<BattleCollegeData>();
+        CalyxOverrideData = InitializeDatabase<CalyxOverrideData>();
+        CalyxOverrideManager!.AttachData(CalyxOverrideData);
         FriendRecordData = InitializeDatabase<FriendRecordData>();
 
         Components.Add(new SwitchHandComponent(this));

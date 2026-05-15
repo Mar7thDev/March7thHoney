@@ -1,0 +1,296 @@
+using System.Text.Json;
+using March7thHoney.Data;
+using March7thHoney.Data.Freesr;
+using March7thHoney.Database.Avatar;
+using March7thHoney.Database.Inventory;
+using March7thHoney.Enums.Item;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.Internationalization;
+
+namespace March7thHoney.GameServer.Game.Calyx;
+
+// Independent copy of freesr-data.json helpers used exclusively by /calyx.
+// CommandJson.cs intentionally does NOT reference this file or these DTOs.
+// Two parallel copies coexist so /json behavior cannot drift from this module.
+public static class FreesrShared
+{
+    public static readonly string[] JsonDirectoryRelativePaths =
+    [
+        "Config/Json"
+    ];
+
+    public static readonly JsonSerializerOptions JsonOptions = new()
+    {
+        PropertyNameCaseInsensitive = true,
+        ReadCommentHandling = JsonCommentHandling.Skip,
+        AllowTrailingCommas = true
+    };
+
+    public static List<DirectoryInfo> GetJsonDirectories(bool createIfMissing = false)
+    {
+        var dirs = new List<DirectoryInfo>(JsonDirectoryRelativePaths.Length);
+        foreach (var relativePath in JsonDirectoryRelativePaths)
+        {
+            var dir = new DirectoryInfo(Path.GetFullPath(relativePath));
+            if (createIfMissing && !dir.Exists && relativePath.Equals("Config/Json", StringComparison.OrdinalIgnoreCase))
+                dir.Create();
+            dirs.Add(dir);
+        }
+
+        return dirs;
+    }
+
+    public static List<FileInfo> GetJsonFiles()
+    {
+        var dirs = GetJsonDirectories(createIfMissing: true);
+        try
+        {
+            return dirs
+                .Where(x => x.Exists)
+                .SelectMany(x => x.GetFiles("*.json", SearchOption.TopDirectoryOnly))
+                .DistinctBy(x => x.FullName)
+                .ToList();
+        }
+        catch
+        {
+            return [];
+        }
+    }
+
+    public static async ValueTask<(List<FormalAvatarInfo> changedAvatars, List<ItemData> removedItems)>
+        ClearRelicAndEquipment(PlayerInstance player)
+    {
+        var changed = new Dictionary<int, FormalAvatarInfo>();
+
+        void MarkChanged(FormalAvatarInfo avatar)
+        {
+            if (!changed.ContainsKey(avatar.AvatarId))
+                changed.Add(avatar.AvatarId, avatar);
+        }
+
+        var inv = player.InventoryManager!.Data;
+
+        foreach (var item in inv.EquipmentItems)
+        {
+            if (item.EquipAvatar <= 0) continue;
+            var avatar = player.AvatarManager?.GetFormalAvatar(item.EquipAvatar);
+            if (avatar == null) continue;
+            var pathInfo = avatar.PathInfos.GetValueOrDefault(item.EquipAvatar)
+                           ?? avatar.PathInfos.Values.FirstOrDefault(x => x.EquipId == item.UniqueId);
+            if (pathInfo != null && pathInfo.EquipId == item.UniqueId)
+                pathInfo.EquipId = 0;
+            item.EquipAvatar = 0;
+            MarkChanged(avatar);
+        }
+
+        foreach (var item in inv.RelicItems)
+        {
+            if (item.EquipAvatar <= 0) continue;
+            var avatar = player.AvatarManager?.GetFormalAvatar(item.EquipAvatar);
+            if (avatar == null) continue;
+            var pathInfo = avatar.PathInfos.GetValueOrDefault(item.EquipAvatar)
+                           ?? avatar.PathInfos.Values.FirstOrDefault(x => x.Relic.Values.Contains(item.UniqueId));
+            if (pathInfo != null)
+            {
+                var toRemoveSlots = pathInfo.Relic.Where(kv => kv.Value == item.UniqueId).Select(kv => kv.Key).ToList();
+                foreach (var slot in toRemoveSlots) pathInfo.Relic.Remove(slot);
+            }
+
+            item.EquipAvatar = 0;
+            MarkChanged(avatar);
+        }
+
+        var toRemove = new List<(int itemId, int count, int uniqueId)>(inv.EquipmentItems.Count + inv.RelicItems.Count);
+        toRemove.AddRange(inv.EquipmentItems.Select(x => (x.ItemId, 1, x.UniqueId)));
+        toRemove.AddRange(inv.RelicItems.Select(x => (x.ItemId, 1, x.UniqueId)));
+
+        var removed = await player.InventoryManager.RemoveItems(toRemove, sync: false);
+
+        return ([.. changed.Values], removed);
+    }
+
+    public static async ValueTask<List<FormalAvatarInfo>> ImportAvatars(
+        PlayerInstance player,
+        FreesrCalyxData data,
+        Func<string, ValueTask>? sendMsg = null)
+    {
+        var changed = new Dictionary<int, FormalAvatarInfo>();
+
+        if (data.Avatars == null || data.Avatars.Count == 0) return [];
+
+        foreach (var (avatarKey, avatarJson) in data.Avatars)
+        {
+            var avatarId = avatarJson.AvatarId > 0 ? avatarJson.AvatarId : avatarKey;
+            var baseAvatarId = GameData.MultiplePathAvatarConfigData.TryGetValue(avatarId, out var multiplePath)
+                ? multiplePath.BaseAvatarID
+                : avatarId;
+
+            if (!GameData.AvatarConfigData.ContainsKey(avatarId))
+            {
+                if (sendMsg != null)
+                    await sendMsg(I18NManager.Translate("Game.Command.Json.AvatarExcelNotFound", avatarId.ToString()));
+                continue;
+            }
+
+            if (player.AvatarManager?.GetFormalAvatar(baseAvatarId) == null)
+            {
+                await player.InventoryManager!.AddItem(baseAvatarId, 1, notify: false, sync: false);
+            }
+
+            var avatar = player.AvatarManager?.GetFormalAvatar(baseAvatarId);
+            if (avatar == null) continue;
+            if (!avatar.PathInfos.ContainsKey(avatarId))
+            {
+                avatar.PathInfos[avatarId] = new PathInfo(avatarId);
+                avatar.PathInfos[avatarId].GetSkillTree();
+            }
+
+            avatar.Level = Math.Clamp(avatarJson.Level, 1, 80);
+            avatar.Promotion = avatarJson.Promotion > 0
+                ? Math.Clamp(avatarJson.Promotion, 0, 6)
+                : GameData.GetMinPromotionForLevel(avatar.Level);
+
+            var pathInfo = avatar.PathInfos[avatarId];
+            pathInfo.Rank = Math.Clamp(avatarJson.Data?.Rank ?? 0, 0, 6);
+
+            if (avatarJson.Data?.Skills != null)
+            {
+                var skillTree = pathInfo.GetSkillTree();
+                skillTree.Clear();
+                foreach (var (pointId, level) in avatarJson.Data.Skills)
+                    skillTree[pointId] = Math.Max(1, level);
+            }
+
+            changed[avatar.BaseAvatarId] = avatar;
+        }
+
+        return [.. changed.Values];
+    }
+
+    public static async ValueTask<List<ItemData>> ImportRelicsAndLightcones(
+        PlayerInstance player,
+        FreesrCalyxData data,
+        List<FormalAvatarInfo> avatarChanged)
+    {
+        var importedItems = new List<ItemData>(Math.Max(16, (data.Relics?.Count ?? 0) + (data.Lightcones?.Count ?? 0)));
+        var avatarChangedMap = avatarChanged.ToDictionary(x => x.BaseAvatarId, x => x);
+
+        FormalAvatarInfo? GetAvatar(int pathOrBaseAvatarId)
+        {
+            var baseAvatarId = GameData.MultiplePathAvatarConfigData.TryGetValue(pathOrBaseAvatarId, out var multiPath)
+                ? multiPath.BaseAvatarID
+                : pathOrBaseAvatarId;
+
+            if (avatarChangedMap.TryGetValue(baseAvatarId, out var existing)) return existing;
+            var avatar = player.AvatarManager?.GetFormalAvatar(baseAvatarId);
+            if (avatar == null) return null;
+            avatarChangedMap[baseAvatarId] = avatar;
+            return avatar;
+        }
+
+        void EnsurePath(FormalAvatarInfo avatar, int avatarId)
+        {
+            if (!avatar.PathInfos.ContainsKey(avatarId))
+            {
+                avatar.PathInfos[avatarId] = new PathInfo(avatarId);
+                avatar.PathInfos[avatarId].GetSkillTree();
+            }
+        }
+
+        if (data.Relics != null)
+        {
+            foreach (var relic in data.Relics)
+            {
+                if (!GameData.RelicConfigData.TryGetValue(relic.RelicId, out var relicConfig)) continue;
+                if (!GameData.ItemConfigData.TryGetValue(relic.RelicId, out var itemConfig) ||
+                    itemConfig.ItemMainType != ItemMainTypeEnum.Relic)
+                    continue;
+                if (!GameData.RelicMainAffixData.TryGetValue(relicConfig.MainAffixGroup, out var mainAffixGroup) ||
+                    mainAffixGroup.Count == 0)
+                    continue;
+
+                var subAffixes = new List<ItemSubAffix>(relic.SubAffixes?.Count ?? 0);
+                if (relic.SubAffixes != null &&
+                    GameData.RelicSubAffixData.TryGetValue(relicConfig.SubAffixGroup, out var subGroup) &&
+                    subGroup != null)
+                    foreach (var sub in relic.SubAffixes)
+                    {
+                        if (!subGroup.ContainsKey(sub.SubAffixId)) continue;
+                        subAffixes.Add(new ItemSubAffix
+                        {
+                            Id = sub.SubAffixId,
+                            Count = Math.Max(1, sub.Count),
+                            Step = Math.Max(0, sub.Step)
+                        });
+                    }
+
+                var mainAffixId = mainAffixGroup.ContainsKey(relic.MainAffixId)
+                    ? relic.MainAffixId
+                    : mainAffixGroup.Keys.First();
+
+                var item = await player.InventoryManager!.PutItem(
+                    relic.RelicId,
+                    1,
+                    level: Math.Clamp(relic.Level, 0, relicConfig.MaxLevel),
+                    mainAffix: mainAffixId,
+                    subAffixes: subAffixes,
+                    uniqueId: ++player.InventoryManager.Data.NextUniqueId);
+
+                importedItems.Add(item);
+
+                if (relic.EquipAvatar > 0)
+                {
+                    var targetPathId = relic.EquipAvatar;
+                    if (!GameData.AvatarConfigData.ContainsKey(targetPathId)) continue;
+
+                    var avatar = GetAvatar(targetPathId);
+                    if (avatar == null) continue;
+
+                    EnsurePath(avatar, targetPathId);
+                    var slot = (int)relicConfig.Type;
+                    avatar.PathInfos[targetPathId].Relic[slot] = item.UniqueId;
+                    item.EquipAvatar = targetPathId;
+                }
+            }
+        }
+
+        if (data.Lightcones != null)
+        {
+            foreach (var lightcone in data.Lightcones)
+            {
+                if (!GameData.ItemConfigData.TryGetValue(lightcone.ItemId, out var itemConfig) ||
+                    itemConfig.ItemMainType != ItemMainTypeEnum.Equipment)
+                    continue;
+                if (!GameData.EquipmentConfigData.TryGetValue(lightcone.ItemId, out var equipmentConfig))
+                    continue;
+
+                var item = await player.InventoryManager!.PutItem(
+                    lightcone.ItemId,
+                    1,
+                    rank: Math.Clamp(lightcone.Rank, 1, Math.Max(1, equipmentConfig.MaxRank)),
+                    promotion: Math.Clamp(lightcone.Promotion, 0, Math.Max(0, equipmentConfig.MaxPromotion)),
+                    level: Math.Clamp(lightcone.Level, 1, 80),
+                    uniqueId: ++player.InventoryManager.Data.NextUniqueId);
+
+                importedItems.Add(item);
+
+                if (lightcone.EquipAvatar > 0)
+                {
+                    var targetPathId = lightcone.EquipAvatar;
+                    if (!GameData.AvatarConfigData.ContainsKey(targetPathId)) continue;
+
+                    var avatar = GetAvatar(targetPathId);
+                    if (avatar == null) continue;
+                    EnsurePath(avatar, targetPathId);
+                    avatar.PathInfos[targetPathId].EquipId = item.UniqueId;
+                    item.EquipAvatar = targetPathId;
+                }
+            }
+        }
+
+        avatarChanged.Clear();
+        avatarChanged.AddRange(avatarChangedMap.Values);
+
+        return importedItems;
+    }
+}
