@@ -1,97 +1,122 @@
-# March7thHoney S# March7thHoney
-
-**__此專案目前尚在開發中！__**
+# March7thHoney
 
 <p align="center">
-<a href="https://visualstudio.com"><img src="https://img.shields.io/badge/Visual%20Studio-000000.svg?style=for-the-badge&logo=visual-studio&logoColor=white" /></a>
-<a href="https://dotnet.microsoft.com/"><img src="https://img.shields.io/badge/.NET-000000.svg?style=for-the-badge&logo=.NET&logoColor=white" /></a>
-<a href="https://www.gnu.org/"><img src="https://img.shields.io/badge/GNU-000000.svg?style=for-the-badge&logo=GNU&logoColor=white" /></a>
-</p>
-<p align="center">
-  <a href="https://discord.gg/xRtZsmHBVj"><img src="https://img.shields.io/badge/Discord%20Server-000000.svg?style=for-the-badge&logo=Discord&logoColor=white" /></a>
+  <img src="https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet&logoColor=white" alt=".NET 10" />
+  <img src="https://img.shields.io/badge/平台-Windows%20%7C%20Linux-2ea44f" alt="Platform" />
+  <img src="https://img.shields.io/badge/狀態-持續開發-f39c12" alt="Status" />
+  <img src="https://img.shields.io/badge/授權-GPLv3-blue" alt="License" />
 </p>
 
-[EN](../README.md) | [簡中](README_zh-CN.md) | [繁中](README_zh-CN.md) | [JP](README_ja-JP.md)
+March7thHoney 是一個基於 .NET 10 的私服專案。
+目前仍在持續開發中，功能會持續更新，也可能隨版本迭代出現局部回歸。
 
-## 💡功能
+[EN](../README.md) | [简中](README_zh-CN.md) | [繁中](README_zh-TW.md) | [JP](README_ja-JP.md)
 
-- [√] **商店**
-- [√] **編隊**
-- [√] **抽卡** - 可自訂機率: )
-- [√] **戰鬥** - 場景技能中有可能存在一些錯誤
-- [√] **場景** - 走路模擬器、互動、正確載入實體
-- [√] **基本的角色培養** - 一些小bug，影響體驗不大
-- [√] **任務** - 某些任務中可能存在一些錯誤，貝洛伯格主線任務已全數完成，剩餘內容正在製作中或是尚未測試，適用於星與穹
-- [√] **好友**
-- [√] **忘卻之庭 & 虛構敘事**
-- [√] **模擬宇宙**
+## 目錄
 
-- [ ] **更多**  - Coming soon...
+- [功能進度](#功能進度)
+- [開發計畫](#開發計畫)
+- [倉庫結構](#倉庫結構)
+- [環境需求](#環境需求)
+- [快速啟動](#快速啟動)
+- [建置](#建置)
+- [CI 產物](#ci-產物)
+- [說明](#說明)
+- [疑難排解](#疑難排解)
+- [致謝](#致謝)
 
-當新版本之「某動漫遊戲」發佈時，某些功能將不會在第一時間支援，請持續關注我們的提交內容。自從2.3版本起，我們建立了適用於Beta版本的私人分支，將在準備完成後第一時間合併至主倉庫。
+## 功能進度
 
-## 🍗使用&安裝
+| 模組 | 狀態 | 備註 |
+|---|---|---|
+| 商店系統 | 穩定 | 瀏覽與購買流程可用 |
+| 編隊系統 | 穩定 | 隊伍切換與槽位調整可用 |
+| 抽卡系統 | 穩定 | 完整抽卡與結果展示流程 |
+| 戰鬥流程 | 穩定 | 核心戰鬥循環可遊玩 |
+| 大世界場景 | 穩定 | 場景載入、互動、探索可用 |
+| 角色養成 | 穩定 | 等級/突破基礎鏈路可用 |
+| 任務系統 | 持續完善 | 主線與常規任務可推進，仍有邊緣問題 |
+| 好友系統 | 穩定 | 核心展示與互動可用 |
+| 異相仲裁 | 持續完善 | 已支援解鎖、挑戰、領獎主流程 |
+| 挑戰玩法 | 持續完善 | 忘卻之庭 / 虛構敘事 / 末日幻影可玩 |
+| 差分宇宙相關 | 持續完善 | 基礎流程已接入 |
+| 成就系統 | 持續完善 | 大多數成就可追蹤與完成 |
 
-### 快速啟動
+## 開發計畫
 
-1. 在 [Action](https://github.com/DBKAHHK/March7thHoney/actions) 下載可執行文件
-2. 打開下載完成的 `March7thHoney.zip` 解解壓至任意資料夹 __*最好是英文路徑*__
+1. 持續完善差分宇宙與高複雜玩法鏈路。
+2. 補齊剩餘任務與特殊觸發邏輯。
+3. 提升結算與同步在邊緣場景下的穩定性。
+4. 擴展活動玩法覆蓋範圍。
+5. 持續修復 UI 與狀態同步問題。
+6. 增加更多可配置選項。
 
-> (可選) 在原始碼的WebServer資料夾中下載 `certificate.p12` 使其以HTTPS模式啟動 讓你的傳輸更加安全: )
+## 倉庫結構
 
-3. 運行GameServer.exe
-4. 運行代理 啟動遊戲 連結，享受！
+- `Program/` 啟動入口與整體編排
+- `GameServer/` 遊戲邏輯、封包處理、執行期管理器
+- `WebServer/` 分發與 HTTP 服務
+- `Command/` 指令系統實作
+- `Common/` 共用資料模型、設定、列舉、資料庫實體
+- `Config/` 執行資源與自訂資料
+- `docs/` 多語系文件與 API 文件
 
-### 構建
+## 環境需求
 
-March7thHoney 使用 .NET Framework 構建
+- .NET SDK 10
+- Git
+- Windows 或 Linux（`x64` / `arm64`）
 
-**前置：**
+## 快速啟動
 
-- [.NET](https://dotnet.microsoft.com/)
-- [Git](https://git-scm.com/downloads)
-
-##### Windows
-
-```shell
-git clone --recurse-submodules https://github.com/DBKAHHK/March7thHoney.git
+```bash
+git clone --recurse-submodules https://github.com/Mar7thLover/March7thHoney.git
 cd March7thHoney
-.\dotnet build # 編譯
-```
-##### Linux （Ubuntu 20.04）
-```shell
-# 添加 Microsoft 包儲存庫
-wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-sudo dpkg -i packages-microsoft-prod.deb
-rm packages-microsoft-prod.deb
-
-# 安裝 .NET SDK
-sudo apt-get update && \
-  sudo apt-get install -y dotnet-sdk-8.0
+dotnet restore
+dotnet run --project program
 ```
 
-- 編譯並運行環境
-```shell
-git clone --recurse-submodules https://github.com/DBKAHHK/March7thHoney.git
-cd March7thHoney
-.\dotnet build # 編譯
-./Gameserver
+## 建置
+
+```bash
+dotnet build program/program.csproj -c Release
 ```
-**向 Microsoft 顯示其他系統版本**
-- [微軟教學](https://dotnet.microsoft.com/zh-tw/download/dotnet/thank-you/sdk-8.0.204-linux-x64-binaries)
 
-## ❓幫助
+## CI 產物
 
-- 支持Android系统
-- 100040119（無法自動完成）（使用 /mission finish 100040119 進行修復）
+目前工作流程發佈以下自包含建置：
 
-## ❕️故障排除
+| 執行時 | 產物名稱 |
+|---|---|
+| `win-x64` | `March7thHoney-win-x64` |
+| `linux-x64` | `March7thHoney-linux-x64` |
+| `linux-arm64` | `March7thHoney-linux-arm64` |
 
-獲取常見問題的解決方案或尋求幫助，請加入[我們的Discord伺服器](https://discord.gg/xRtZsmHBVj)
+<details>
+<summary>手動發佈說明</summary>
 
-## 🙌感謝
+- 在 Actions 儲存配額緊張時，建議僅手動觸發上傳產物。
+- 若配額超限，請清理歷史產物或等待平台重新計算用量。
 
-- Weedwacker - 提供 kcp 實現
-- [SqlSugar](https://github.com/donet5/SqlSugar) - 提供 ORM
-- [LunarCore](https://github.com/Melledy/LunarCore) - 一些資料結構和算法
-erver
+</details>
+
+## 說明
+
+- 拉取新提交後若行為異常，建議先清理快取/執行資料，再以新帳號重測。
+- 部分模組仍在重構中，文件與實際封包行為可能存在短期落差。
+
+## 疑難排解
+
+- 先檢查你設定的日誌目錄輸出。
+- 常見問題可先嘗試 `/help`、`/mission`、`/unstuck`、`/reload`。
+- 社群支援：<https://discord.gg/xRtZsmHBVj>
+
+## 致謝
+
+- [Mar7thLover](https://github.com/Mar7thLover)
+- [Cyrup](https://github.com/March7thHoney)
+- [Melioli](https://github.com/Melioli)
+- [Yuki](https://github.com/Yuki8859)
+- [SqlSugar](https://github.com/donet5/SqlSugar)
+- [LunarCore](https://github.com/Melledy/LunarCore)
+- [DanhengServer](https://github.com/Mar7thLover/DanhengServer-OpenSource)

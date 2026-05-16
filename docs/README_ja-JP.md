@@ -1,98 +1,122 @@
 # March7thHoney
 
-**__このプロジェクトは開発中です！__**
-
 <p align="center">
-<a href="https://visualstudio.com"><img src="https://img.shields.io/badge/Visual%20Studio-000000.svg?style=for-the-badge&logo=visual-studio&logoColor=white" /></a>
-<a href="https://dotnet.microsoft.com/"><img src="https://img.shields.io/badge/.NET-000000.svg?style=for-the-badge&logo=.NET&logoColor=white" /></a>
-<a href="https://www.gnu.org/"><img src="https://img.shields.io/badge/GNU-000000.svg?style=for-the-badge&logo=GNU&logoColor=white" /></a>
-</p>
-<p align="center">
-  <a href="https://discord.gg/xRtZsmHBVj"><img src="https://img.shields.io/badge/Discord%20Server-000000.svg?style=for-the-badge&logo=Discord&logoColor=white" /></a>
+  <img src="https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet&logoColor=white" alt=".NET 10" />
+  <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Linux-2ea44f" alt="Platform" />
+  <img src="https://img.shields.io/badge/Status-Active%20Development-f39c12" alt="Status" />
+  <img src="https://img.shields.io/badge/License-GPLv3-blue" alt="License" />
 </p>
 
-[EN](../README.md) | [簡中](README_zh-CN.md) | [繁中](README_zh-CN.md) | [JP](README_ja-JP.md)
+March7thHoney は .NET 10 ベースのプライベートサーバープロジェクトです。
+現在も継続的に開発中で、機能追加と修正が続いています。
 
-## 💡機能
+[EN](../README.md) | [简中](README_zh-CN.md) | [繁中](README_zh-TW.md) | [JP](README_ja-JP.md)
 
-- [√] **ストア機能**
-- [√] **チームを編成する**
-- [√] **ドロー** - カスタム可能な確率: )
-- [√] **と戦う** - シーンスキルにいくつかのエラーがあります
-- [√] **シーン** - 歩行シミュレータ、インタラクティブ、正確なエンティティロード
-- [√] **基本的な役割育成** - ちょっとバグがありますが、影響はあまりありません
-- [√] **タスク＃タスク＃** - 一部のタスクにはエラーがある可能性があります。ベロブルグの主要なタスクはすべて完了しています。男性主人公と女性主人公にはまだテストされていません
-- [-] **交友機能**
-- [-] **忘却の庭 & 虚構叙事**
-- [-] **模擬宇宙**
+## 目次
 
-- [ ] **詳細**  - Coming soon...
+- [機能進捗](#機能進捗)
+- [ロードマップ](#ロードマップ)
+- [リポジトリ構成](#リポジトリ構成)
+- [必要環境](#必要環境)
+- [クイックスタート](#クイックスタート)
+- [ビルド](#ビルド)
+- [CI成果物](#ci成果物)
+- [補足](#補足)
+- [トラブルシューティング](#トラブルシューティング)
+- [クレジット](#クレジット)
 
-「アニメーション ゲーム」の新しいバージョンがリリースされると、最初は一部の機能がサポートされなくなります。引き続き、私たちの投稿にご注意ください。  バージョン 2.3 以降、ベータ版に適したプライベート ブランチを設立し、準備が完了次第、メイン ウェアハウスにマージされます。
+## 機能進捗
 
-## 🍗使用&インストール
+| モジュール | 状態 | メモ |
+|---|---|---|
+| ショップ | 安定 | 閲覧・購入フローに対応 |
+| 編成 | 安定 | 編成切替・スロット変更に対応 |
+| ガチャ | 安定 | 一連の抽選・表示フローに対応 |
+| バトル | 安定 | コア戦闘ループはプレイ可能 |
+| フィールド/シーン | 安定 | 読み込み・インタラクション・探索に対応 |
+| キャラ育成 | 安定 | レベル/昇格の基本ループに対応 |
+| クエスト | 改善中 | 進行可能だが一部エッジケースあり |
+| フレンド | 安定 | 基本機能に対応 |
+| 異相仲裁 | 改善中 | 解放・挑戦・報酬受取に対応 |
+| チャレンジ系 | 改善中 | FH / PF / AS はプレイ可能 |
+| 差分宇宙関連 | 改善中 | 基本フロー導入済み |
+| 実績 | 改善中 | 多くの実績に対応 |
 
-### クイックスタート
+## ロードマップ
 
-1. [Action](https://github.com/DBKAHHK/March7thHoney/actions) で実行可能ファイルをダウンロードする
-2. ダウンロードが完了した` March7thHoney.zip `を開いて任意のフォルダに解凍します __*英文パスが望ましい*__
+1. 差分宇宙と高複雑コンテンツの安定化。
+2. 残タスクと特殊トリガー処理の補完。
+3. 精算・同期の安定性をさらに改善。
+4. イベント系コンテンツ対応範囲の拡張。
+5. UI/状態同期の不整合を継続修正。
+6. サーバー設定項目の拡充。
 
-> (オプション) ソースコードのWebServerフォルダに` certificate.p 12 `をダウンロードすることで、HTTPSモードで起動して転送をより安全にすることができます: )
+## リポジトリ構成
 
-3. GameServer.exeの実行
-4. エージェント起動ゲームの実行
+- `Program/` 起動エントリと全体オーケストレーション
+- `GameServer/` ゲームロジック、パケット処理、ランタイム管理
+- `WebServer/` ディスパッチ/HTTP サービス
+- `Command/` コマンド実装
+- `Common/` 共有データモデル、設定、列挙、DBエンティティ
+- `Config/` 実行時リソースとカスタムデータ
+- `docs/` 多言語ドキュメント/API
 
-### 構築＃コウチク＃
+## 必要環境
 
-March7thHoneyserver Dotnetを使用した構築
+- .NET SDK 10
+- Git
+- Windows または Linux（`x64` / `arm64`）
 
-**プリソフトウェア：**
+## クイックスタート
 
-- [.NET](https://dotnet.microsoft.com/)
-- [Git](https://git-scm.com/downloads)
-
-##### Windows
-
-```shell
-git clone --recurse-submodules https://github.com/DBKAHHK/March7thHoney.git
+```bash
+git clone --recurse-submodules https://github.com/Mar7thLover/March7thHoney.git
 cd March7thHoney
-.\dotnet build # コンパイル
+dotnet restore
+dotnet run --project program
 ```
 
-##### Linux （Ubuntu20.04）
-- インストール環境
-```shell
-# Microsoftパッケージリポジトリの追加
-wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-sudo dpkg -i packages-microsoft-prod.deb
-rm packages-microsoft-prod.deb
+## ビルド
 
-# SDKのインストール
-sudo apt-get update && \
-  sudo apt-get install -y dotnet-sdk-8.0
+```bash
+dotnet build program/program.csproj -c Release
 ```
 
-- 環境をコンパイルして実行する
-```shell
-git clone --recurse-submodules https://github.com/DBKAHHK/March7thHoney.git
-cd March7thHoney
-.\dotnet build # コンパイル
-./Gameserver
-```
-**他のシステムバージョンはMicrosoftに表示してください**
-- [Microsoftのチュートリアル](https://dotnet.microsoft.com/zh-cn/download/dotnet/thank-you/sdk-8.0.204-linux-x64-binaries)
+## CI成果物
 
-## ❓ヘルプ
+現在のワークフローは以下の自己完結ビルドを出力します。
 
-- アンドロイドシステムのサポート
-- 100040119（自動完了できません）（/mission finish 100040119 を使用した修正）
+| ランタイム | 成果物名 |
+|---|---|
+| `win-x64` | `March7thHoney-win-x64` |
+| `linux-x64` | `March7thHoney-linux-x64` |
+| `linux-arm64` | `March7thHoney-linux-arm64` |
 
-## ❕️トラブルシューティング
+<details>
+<summary>手動公開メモ</summary>
 
-一般的な問題の解決策を入手するか、ヘルプを参照してください。[デルのDiscordサーバ](https://discord.gg/xRtZsmHBVj)
+- Actions のストレージ逼迫時は手動実行時のみ成果物アップロードを推奨。
+- 容量超過時は過去成果物の削除、または再計算待ちが必要です。
 
-## 🙌に感謝
+</details>
 
-- Weedwacker - kcp実装の提供
-- [SqlSugar](https://github.com/donet5/SqlSugar) - ORMの提供
-- [LunarCore](https://github.com/Melledy/LunarCore) - いくつかのデータ構造とアルゴリズム
+## 補足
+
+- 更新後に挙動不整合が出る場合、まずキャッシュ/実行データを整理して再検証してください。
+- 一部モジュールはリファクタ中のため、ドキュメントと実装に一時的な差分が出ることがあります。
+
+## トラブルシューティング
+
+- まず設定済みログ出力先を確認してください。
+- よく使う復旧コマンドは `/help`、`/mission`、`/unstuck`、`/reload`。
+- コミュニティサポート: <https://discord.gg/xRtZsmHBVj>
+
+## クレジット
+
+- [Mar7thLover](https://github.com/Mar7thLover)
+- [Cyrup](https://github.com/March7thHoney)
+- [Melioli](https://github.com/Melioli)
+- [Yuki](https://github.com/Yuki8859)
+- [SqlSugar](https://github.com/donet5/SqlSugar)
+- [LunarCore](https://github.com/Melledy/LunarCore)
+- [DanhengServer](https://github.com/Mar7thLover/DanhengServer-OpenSource)
