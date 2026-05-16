@@ -71,19 +71,22 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
         if (attackEntity is AvatarSceneInfo) await Player.SceneInstance!.OnUseSkill(req);
 
         // backfill character maze buffs for techniques whose ability JSON spawns
-        // a summon unit instead of calling AddMazeBuff (e.g. Dahlia 1321 -> 132101).
-        // candidates = AvatarMazeBuff entries bound to the SkillMaze slot. If the
-        // ability JSON already added one of them, skip entirely; otherwise apply
-        // the canonical primary entry (UseType SummonUnit/AddBattleBuff/TriggerBattle)
-        // so battleInfo.buffList picks it up. This keeps multi-entry avatars (Cyrene,
-        // Cerydra, Robin...) from receiving stray summon/listener buffs.
+        // a summon unit instead of calling AddMazeBuff (e.g. Dahlia 1321 -> 132101,
+        // Silver Wolf lv.999 1506 -> 150601 which uses CharacterSkillAdv binding).
+        // candidates = AvatarMazeBuff entries bound to the SkillMaze slot via either
+        // CharacterSkill or CharacterSkillAdv. If the ability JSON already added one
+        // of them, skip entirely; otherwise apply the canonical primary entry
+        // (UseType SummonUnit/AddBattleBuff/TriggerBattle) so battleInfo.buffList
+        // picks it up. This keeps multi-entry avatars (Cyrene, Cerydra, Robin...)
+        // from receiving stray summon/listener buffs.
         if (req.SkillIndex == 1 && attackEntity is AvatarSceneInfo casterAvatar)
         {
             var avatarId = casterAvatar.AvatarInfo.BaseAvatarId;
             var candidates = GameData.MazeBuffData
                 .Where(kvp => kvp.Key / 10 / 100 == avatarId
                               && kvp.Value.MazeBuffType == "Character"
-                              && kvp.Value.InBattleBindingType == "CharacterSkill"
+                              && (kvp.Value.InBattleBindingType == "CharacterSkill"
+                                  || kvp.Value.InBattleBindingType == "CharacterSkillAdv")
                               && kvp.Value.InBattleBindingKey == "SkillMaze")
                 .Select(kvp => (BuffId: kvp.Key / 10, Excel: kvp.Value))
                 .ToList();
