@@ -30,13 +30,6 @@ public class TaskConfigInfo
             return res;
         }
 
-        if (typeStr == "PropSetupTrigger")
-        {
-            var res = PropSetupTrigger.LoadFromJsonObject(json);
-            res.Type = type;
-            return res;
-        }
-
         if (typeStr == "PropStateExecute")
         {
             var res = PropStateExecute.LoadFromJsonObject(json);

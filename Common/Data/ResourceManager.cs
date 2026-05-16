@@ -14,7 +14,6 @@ using March7thHoney.Internationalization;
 using March7thHoney.Util;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Text.RegularExpressions;
 
 namespace March7thHoney.Data;
 
@@ -363,47 +362,6 @@ public class ResourceManager
                                 $"MissionInfo_{missionExcel.Key}.partial.json", I18NManager.Translate("Word.Error")),
                             ex);
                     }
-
-                if (missionInfo != null && missionInfo.SubMissionList.Count == 0)
-                {
-                    var partialLayoutPath =
-                        $"{ConfigManager.Config.Path.ResourcePath}/Config/Level/Mission/{missionExcel.Key}/MissionInfo_{missionExcel.Key}.partial.layout.json";
-                    if (File.Exists(partialLayoutPath))
-                        try
-                        {
-                            var partialLayoutJson = File.ReadAllText(partialLayoutPath);
-                            var partialLayout = JsonConvert.DeserializeObject<MissionPartialLayout>(partialLayoutJson);
-                            foreach (var layout in partialLayout?.BakeInfoLayouts ?? [])
-                            {
-                                var subMissionId = TryParseSubMissionId(layout.UniqueName);
-                                if (subMissionId <= 0) continue;
-
-                                var missionJsonPath =
-                                    $"Config/Level/Mission/{missionExcel.Key}/Mission_{subMissionId}.json";
-                                if (!File.Exists($"{ConfigManager.Config.Path.ResourcePath}/{missionJsonPath}"))
-                                    missionJsonPath = TryResolveActMissionJsonPath(missionExcel.Key, subMissionId);
-
-                                missionInfo.SubMissionList.Add(new SubMissionInfo
-                                {
-                                    ID = subMissionId,
-                                    MainMissionID = missionExcel.Key,
-                                    MissionJsonPath = missionJsonPath
-                                });
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            ResourceCache.IsComplete = false;
-                            Logger.Error(
-                                I18NManager.Translate("Server.ServerInfo.FailedToReadItem",
-                                    $"MissionInfo_{missionExcel.Key}.partial.layout.json",
-                                    I18NManager.Translate("Word.Error")), ex);
-                        }
-                }
-
-                if (missionInfo != null && missionInfo.SubMissionList.Count == 0)
-                    TryPopulateMissionInfoFromMissionPack(missionExcel.Value, missionInfo);
-
                 if (missionInfo != null)
                 {
                     GameData.MainMissionData[missionExcel.Key].SetMissionInfo(missionInfo);
@@ -431,78 +389,6 @@ public class ResourceManager
             LogPartialMissingSummary(I18NManager.Translate("Word.MissionInfo"), missingCount, missingFiles);
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),
             I18NManager.Translate("Word.MissionInfo")));
-    }
-
-    private static int TryParseSubMissionId(string uniqueName)
-    {
-        if (string.IsNullOrWhiteSpace(uniqueName)) return 0;
-        var match = Regex.Match(uniqueName, @"SubMission_(\d+)");
-        return match.Success && int.TryParse(match.Groups[1].Value, out var subMissionId) ? subMissionId : 0;
-    }
-
-    private static string TryResolveActMissionJsonPath(int mainMissionId, int subMissionId)
-    {
-        var missionDirectory =
-            $"{ConfigManager.Config.Path.ResourcePath}/Config/Level/Mission/{mainMissionId}/Act";
-        if (!Directory.Exists(missionDirectory)) return string.Empty;
-
-        var subMissionIdString = subMissionId.ToString();
-        var candidates = Directory.GetFiles(missionDirectory, "Act*.json")
-            .Select(Path.GetFileName)
-            .Where(x => !string.IsNullOrWhiteSpace(x))
-            .OrderBy(x => x)
-            .ToList();
-
-        var exact = candidates.FirstOrDefault(x =>
-            x!.Contains(subMissionIdString, StringComparison.OrdinalIgnoreCase));
-        if (!string.IsNullOrEmpty(exact))
-            return $"Config/Level/Mission/{mainMissionId}/Act/{exact}";
-
-        var suffix = subMissionIdString.Length > 3 ? subMissionIdString[^3..] : subMissionIdString;
-        var fuzzy = candidates.FirstOrDefault(x =>
-            x!.Contains(suffix, StringComparison.OrdinalIgnoreCase));
-        return !string.IsNullOrEmpty(fuzzy) ? $"Config/Level/Mission/{mainMissionId}/Act/{fuzzy}" : string.Empty;
-    }
-
-    private static string TryResolveMissionJsonPath(int directoryMissionId, int subMissionId)
-    {
-        var missionPath =
-            $"{ConfigManager.Config.Path.ResourcePath}/Config/Level/Mission/{directoryMissionId}/Mission_{subMissionId}.json";
-        if (File.Exists(missionPath))
-            return $"Config/Level/Mission/{directoryMissionId}/Mission_{subMissionId}.json";
-
-        return TryResolveActMissionJsonPath(directoryMissionId, subMissionId);
-    }
-
-    public static void TryPopulateMissionInfoFromMissionPack(MainMissionExcel missionExcel, MissionInfo missionInfo)
-    {
-        if (missionInfo.SubMissionList.Count > 0)
-            return;
-
-        var missionPackId = missionExcel.MissionPack > 0 ? missionExcel.MissionPack : missionExcel.MainMissionID;
-        var missionPackDirectory =
-            $"{ConfigManager.Config.Path.ResourcePath}/Config/Level/Mission/{missionPackId}";
-        if (!Directory.Exists(missionPackDirectory))
-            return;
-
-        var startSubMissionId = missionInfo.StartSubMissionList.FirstOrDefault();
-        var finishSubMissionId = missionInfo.FinishSubMissionList.LastOrDefault();
-        if (startSubMissionId <= 0 || finishSubMissionId <= 0 || finishSubMissionId < startSubMissionId)
-            return;
-
-        for (var subMissionId = startSubMissionId; subMissionId <= finishSubMissionId; subMissionId++)
-        {
-            var missionJsonPath = TryResolveMissionJsonPath(missionPackId, subMissionId);
-            if (string.IsNullOrEmpty(missionJsonPath))
-                continue;
-
-            missionInfo.SubMissionList.Add(new SubMissionInfo
-            {
-                ID = subMissionId,
-                MainMissionID = missionExcel.MainMissionID,
-                MissionJsonPath = missionJsonPath
-            });
-        }
     }
 
     public static T? LoadCustomFile<T>(string filetype, string filename)
@@ -856,36 +742,6 @@ public class ResourceManager
             I18NManager.Translate("Word.PerformanceInfo")));
         var count = 0;
 
-        var res0 = Parallel.ForEach(GameData.PerformanceCData.Values, performance =>
-        {
-            if (performance.PerformancePath == "")
-            {
-                count++;
-                return;
-            }
-
-            var path = ConfigManager.Config.Path.ResourcePath + "/" + performance.PerformancePath;
-            var file = new FileInfo(path);
-            if (!file.Exists) return;
-            try
-            {
-                using var reader = file.OpenRead();
-                using StreamReader reader2 = new(reader);
-                var text = reader2.ReadToEnd().Replace("$type", "Type");
-                var obj = JObject.Parse(text);
-                var info = LevelGraphConfigInfo.LoadFromJsonObject(obj);
-                performance.ActInfo = info;
-                count++;
-            }
-            catch (Exception ex)
-            {
-                ResourceCache.IsComplete = false;
-                Logger.Error(
-                    I18NManager.Translate("Server.ServerInfo.FailedToReadItem", file.Name,
-                        I18NManager.Translate("Word.Error")), ex);
-            }
-        });
-
         var res = Parallel.ForEach(GameData.PerformanceEData.Values, performance =>
         {
             if (performance.PerformancePath == "")
@@ -947,9 +803,9 @@ public class ResourceManager
         });
 
         // wait it done
-        while (!(res0.IsCompleted && res.IsCompleted && res2.IsCompleted)) Thread.Sleep(10);
+        while (!(res.IsCompleted && res2.IsCompleted)) Thread.Sleep(10);
 
-        if (count < GameData.PerformanceCData.Count + GameData.PerformanceEData.Count + GameData.PerformanceDData.Count)
+        if (count < GameData.PerformanceEData.Count + GameData.PerformanceDData.Count)
         {
             // looks like many dont exist
             //Logger.Warn("Performance infos are missing, please check your resources folder: " + ConfigManager.Config.Path.ResourcePath + "/Config/Level/Mission/*/Act. Performances may not work!");

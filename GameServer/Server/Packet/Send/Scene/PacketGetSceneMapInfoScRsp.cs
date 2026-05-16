@@ -151,9 +151,6 @@ public class PacketGetSceneMapInfoScRsp : BasePacket
                 mazeMap.LightenSectionList.AddRange(floorInfo.MapSections.Select(x => (uint)x));
             }
 
-            if (player.MissionManager != null)
-                mazeMap.ClientGroupMissionInfo = player.MissionManager.BuildSceneMissionInfo((int)floorId);
-
             rsp.SceneMapInfo.Add(mazeMap);
         }
 

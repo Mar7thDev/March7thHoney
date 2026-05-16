@@ -1,5 +1,4 @@
 using System.Text;
-using March7thHoney.Data;
 using March7thHoney.Enums.Mission;
 using March7thHoney.GameServer.Game.Mission;
 using March7thHoney.Internationalization;
@@ -46,13 +45,7 @@ public class CommandMission : ICommand
         }
 
         var mission = arg.Target!.Player!.MissionManager!;
-        var finished = await mission.ForceFinishSubMission(missionId);
-        if (!finished)
-        {
-            await arg.SendMsg($"任务 {missionId} 未完成，可能是任务ID不存在、已完成，或资源链路仍不完整。");
-            return;
-        }
-
+        await mission.FinishSubMission(missionId);
         await arg.SendMsg(I18NManager.Translate("Game.Command.Mission.MissionFinished", missionId.ToString()));
     }
 
@@ -66,7 +59,7 @@ public class CommandMission : ICommand
         }
 
         var mission = arg.Target!.Player!.MissionManager!;
-        var runningMissions = mission.GetClientRunningSubMissionList();
+        var runningMissions = mission.GetRunningSubMissionList();
         if (runningMissions.Count == 0)
         {
             await arg.SendMsg(I18NManager.Translate("Game.Command.Mission.NoRunningMissions"));
@@ -75,7 +68,6 @@ public class CommandMission : ICommand
 
         await arg.SendMsg(I18NManager.Translate("Game.Command.Mission.RunningMissions"));
         Dictionary<int, List<int>> missionMap = [];
-        var trackingMainMissionId = mission.GetClientTrackingMainMissionId();
 
         //build missionMap
         foreach (var m in runningMissions)
@@ -89,7 +81,7 @@ public class CommandMission : ICommand
             value.Add(m.ID);
         }
 
-        if ((arg.BasicArgs.Count == 1 && arg.BasicArgs[0] == "-all") || trackingMainMissionId == 0)
+        if ((arg.BasicArgs.Count == 1 && arg.BasicArgs[0] == "-all") || mission.Data.TrackingMainMissionId == 0)
         {
             //Show all the missions
             await ShowMissionList(mission, missionMap, arg);
@@ -98,13 +90,7 @@ public class CommandMission : ICommand
         {
             //Only show tracking missions
             Dictionary<int, List<int>> runningMissionMap = [];
-            if (!missionMap.TryGetValue(trackingMainMissionId, out var trackedMissionList))
-            {
-                await ShowMissionList(mission, missionMap, arg);
-                return;
-            }
-
-            runningMissionMap[trackingMainMissionId] = trackedMissionList;
+            runningMissionMap[mission.Data.TrackingMainMissionId] = missionMap[mission.Data.TrackingMainMissionId];
             await ShowMissionList(mission, runningMissionMap, arg);
         }
 
@@ -183,20 +169,8 @@ public class CommandMission : ICommand
         }
 
         var mission = arg.Target!.Player!.MissionManager!;
-        if (!mission.TryResolveMainMissionId(missionId, out var mainMissionId))
-        {
-            await arg.SendMsg($"任务 {missionId} 不存在，或当前无法解析到所属主任务。");
-            return;
-        }
-
-        if (!mission.HasMainMissionDefinition(mainMissionId))
-        {
-            await arg.SendMsg($"任务 {mainMissionId} 的主任务定义资源不完整，当前无法安全重接。");
-            return;
-        }
-
-        await mission.ReAcceptMainMission(mainMissionId);
-        await arg.SendMsg(I18NManager.Translate("Game.Command.Mission.MissionReAccepted", mainMissionId.ToString()));
+        await mission.ReAcceptMainMission(missionId);
+        await arg.SendMsg(I18NManager.Translate("Game.Command.Mission.MissionReAccepted", missionId.ToString()));
     }
 
     [CommandMethod("0 finishmain")]
@@ -221,13 +195,7 @@ public class CommandMission : ICommand
         }
 
         var mission = arg.Target!.Player!.MissionManager!;
-        var finished = await mission.ForceFinishMainMission(missionId);
-        if (!finished)
-        {
-            await arg.SendMsg($"主任务 {missionId} 未完成，可能是任务ID不存在、已完成，或资源链路仍不完整。");
-            return;
-        }
-
+        await mission.FinishMainMission(missionId);
         await arg.SendMsg(I18NManager.Translate("Game.Command.Mission.MissionFinished", missionId.ToString()));
     }
 }

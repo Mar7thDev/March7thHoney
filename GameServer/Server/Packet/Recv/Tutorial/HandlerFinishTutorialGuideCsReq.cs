@@ -11,8 +11,13 @@ public class HandlerFinishTutorialGuideCsReq : Handler
     {
         var req = FinishTutorialGuideCsReq.Parser.ParseFrom(data);
         var player = connection.Player!;
-        player.TutorialGuideData!.Tutorials[(int)req.GroupId] = TutorialStatus.TutorialFinish;
+        if (player.TutorialGuideData!.Tutorials.TryGetValue((int)req.GroupId, out var res))
+            if (res != TutorialStatus.TutorialFinish)
+            {
+                await player.InventoryManager!.AddItem(1, 1, false);
+                player.TutorialGuideData!.Tutorials[(int)req.GroupId] = TutorialStatus.TutorialFinish;
+            }
 
-        await connection.SendPacket(new PacketFinishTutorialGuideScRsp(req.GroupId, req.Type));
+        await connection.SendPacket(new PacketFinishTutorialGuideScRsp(req.GroupId));
     }
 }

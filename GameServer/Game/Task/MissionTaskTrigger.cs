@@ -19,9 +19,9 @@ public class MissionTaskTrigger(PlayerInstance player)
     public void TriggerMissionTask(LevelGraphConfigInfo subMissionTaskInfo, SubMissionData subMission)
     {
         foreach (var task in subMissionTaskInfo.OnInitSequece)
-            _ = Player.TaskManager?.LevelTask.TriggerInitAct(task, subMission);
+            Player.TaskManager?.LevelTask.TriggerInitAct(task, subMission);
 
         foreach (var task in subMissionTaskInfo.OnStartSequece)
-            _ = Player.TaskManager?.LevelTask.TriggerStartAct(task, subMission);
+            Player.TaskManager?.LevelTask.TriggerStartAct(task, subMission);
     }
 }

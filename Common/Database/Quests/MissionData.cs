@@ -27,9 +27,6 @@ public class MissionData : BaseDatabaseDataHelper
 
     [SugarColumn(IsJson = true)] public Dictionary<int, int> SubMissionProgressDict { get; set; } = [];
 
-    [SugarColumn(IsJson = true, ColumnDataType = "TEXT")]
-    public Dictionary<int, Dictionary<string, uint>> MainMissionCustomValueDict { get; set; } = [];
-
     public int TrackingMainMissionId { get; set; }
 
     public MissionPhaseEnum GetMainMissionStatus(int missionId)

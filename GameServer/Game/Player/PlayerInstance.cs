@@ -327,8 +327,6 @@ public partial class PlayerInstance(PlayerData data)
 
     public void OnLogoutAsync()
     {
-        DatabaseHelper.ToSaveUidList.SafeAdd(Uid);
-        DatabaseHelper.Instance?.SaveUid(Uid);
         InvokeOnPlayerLogout(this);
     }
 
