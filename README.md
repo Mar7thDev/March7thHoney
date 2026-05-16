@@ -1,92 +1,122 @@
 # March7thHoney
 
-**__This project is under development! Some game technique might not correctly!__**
-
 <p align="center">
-<a href="https://visualstudio.com"><img src="https://img.shields.io/badge/Visual%20Studio-000000.svg?style=for-the-badge&logo=visual-studio&logoColor=white" /></a>
-<a href="https://dotnet.microsoft.com/"><img src="https://img.shields.io/badge/.NET-000000.svg?style=for-the-badge&logo=.NET&logoColor=white" /></a>
-<a href="https://www.gnu.org/"><img src="https://img.shields.io/badge/GNU-000000.svg?style=for-the-badge&logo=GNU&logoColor=white" /></a>
-</p>
-<p align="center">
-  <a href="https://discord.gg/xRtZsmHBVj"><img src="https://img.shields.io/badge/Discord%20Server-000000.svg?style=for-the-badge&logo=Discord&logoColor=white" /></a>
+  <img src="https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet&logoColor=white" alt=".NET 10" />
+  <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Linux-2ea44f" alt="Platform" />
+  <img src="https://img.shields.io/badge/Status-Active%20Development-f39c12" alt="Status" />
+  <img src="https://img.shields.io/badge/License-GPLv3-blue" alt="License" />
 </p>
 
-[EN](README.md) | [簡中](docs/README_zh-CN.md) | [繁中](docs/README_zh-CN.md) | [JP](docs/README_ja-JP.md)
+March7thHoney is a private server project built with .NET 10.
+The project is actively developed, with regular feature updates and fixes.
 
-## 💡 Function
+[EN](README.md) | [简中](docs/README_zh-CN.md) | [繁中](docs/README_zh-TW.md) | [JP](docs/README_ja-JP.md)
 
-- [√] **Shop**
-- [√] **Formation**
-- [√] **Gacha** - Custom probability : )
-- [√] **Battle** - Some errors are exist among scene skills
-- [√] **Scene** - Walking simulator, interaction, correct loading of entities
-- [√] **Basic character development** - Some minor bugs that don't significantly affect the playing experience
-- [√] **Quests** - There may be some bugs in some missions, the main story before Penacony is basically playable, and most of the story after Penacony has bugs
-- [√] **Friends**
-- [√] **Forgotten Hall & Pure Fiction & Apocalyptic Shadow**
-- [√] **Simulated Universe & Gold and Gears**
-- [√] **Achievements** - Most achievements can be completed.
+## Table of Contents
 
-- [ ] **More**  - Coming soon
+- [Feature Progress](#feature-progress)
+- [Roadmap](#roadmap)
+- [Repository Layout](#repository-layout)
+- [Requirements](#requirements)
+- [Quick Start](#quick-start)
+- [Build](#build)
+- [CI Artifacts](#ci-artifacts)
+- [Notes](#notes)
+- [Troubleshooting](#troubleshooting)
+- [Credits](#credits)
 
-Some functions for the game might not support at the first time when new "Anime Game" version drops, please stay tune to our new commit. Since version 2.3, we've created a private fork which supports beta version, and will merge to main branch asap when it's ready.
+## Feature Progress
 
-## 🍗 Use & Installation
+| Module | Status | Notes |
+|---|---|---|
+| Shop system | Stable | Browse and purchase flow works |
+| Team formation | Stable | Lineup and slot switching available |
+| Warp/Gacha | Stable | Full pull flow and result display |
+| Battle flow | Stable | Core combat loop is playable |
+| Open-world scene | Stable | Scene loading, interaction, exploration |
+| Character progression | Stable | Leveling and promotion loops available |
+| Quest system | In progress | Main/common progression works, edge cases remain |
+| Friend system | Stable | Core interaction and display |
+| Anomaly Arbitration | In progress | Entry/challenge/reward supported |
+| Challenge modes | In progress | FH / PF / AS playable |
+| Currency War | In progress | Basic gameplay flow available |
+| Achievement system | In progress | Most achievements supported |
 
-### Quick Start
+## Roadmap
 
-1. Download the executable file from [Action](https://github.com/DBKAHHK/March7thHoney/actions)
-2. Open the downloaded `March7thHoney.zip` and extract it to any folder __*preferably an English path__
-   (Optional) Download the `certificate.p12` from the WebServer folder of the source code to enable HTTPS mode, ensuring a more secure traffic
-3. Run GameServer.exe
-4. Run proxy, start the game, and enjoy!
+1. Improve Currency War and Divergent Universe.
+2. Fill remaining quests and special trigger logic.
+3. Improve settlement/sync stability in edge cases.
+4. Expand event-mode gameplay coverage.
+5. Continue fixing UI and state-sync issues.
+6. Add more configurable server options.
 
-### Build
+## Repository Layout
 
-March7thHoney is built using .NET Framework
+- `Program/` startup entry and orchestration
+- `GameServer/` gameplay logic, packet handlers, runtime managers
+- `WebServer/` dispatch/http side services
+- `Command/` command implementations
+- `Common/` shared data models, config, enums, and database entities
+- `Config/` runtime resources and custom data
+- `docs/` multilingual docs and API docs
 
-**Requirement: **
+## Requirements
 
-- [.NET](https://dotnet.microsoft.com/)
-- [Git](https://git-scm.com/downloads)
+- .NET SDK 10
+- Git
+- Windows or Linux (`x64` / `arm64`)
 
-##### Windows
+## Quick Start
 
-```shell
-git clone --recurse-submodules https://github.com/DBKAHHK/March7thHoney.git
+```bash
+git clone --recurse-submodules https://github.com/Mar7thLover/March7thHoney.git
 cd March7thHoney
-dotnet build # compile
-```
-##### Linux （Ubuntu 20.04）
-```shell
-wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-sudo dpkg -i packages-microsoft-prod.deb
-rm packages-microsoft-prod.deb
-
-# Install .NET SDK
-sudo apt-get update && \
-  sudo apt-get install -y dotnet-sdk-8.0
+dotnet restore
+dotnet run --project program
 ```
 
-- Compile and run environment
-```shell
-git clone --recurse-submodules https://github.com/DBKAHHK/March7thHoney.git
-cd March7thHoney
-.\dotnet build # compile
-./Gameserver
+## Build
+
+```bash
+dotnet build program/program.csproj -c Release
 ```
 
-## ❓ Help
+## CI Artifacts
 
-- Support Android system
-- Mission 100040119 (cannot complet automatically) (use /mission finish 100040119 to fix it)
+Workflow publishes self-contained builds for:
 
-## ❕️ Troubleshooting
+| Runtime | Artifact Name |
+|---|---|
+| `win-x64` | `March7thHoney-win-x64` |
+| `linux-x64` | `March7thHoney-linux-x64` |
+| `linux-arm64` | `March7thHoney-linux-arm64` |
 
-For solutions to common problems or assistance, please join our Discord server at [https://discord.gg/xRtZsmHBVj](https://discord.gg/xRtZsmHBVj)
+<details>
+<summary>Manual Publish Notes</summary>
 
-## 🙌 Acknowledgements
+- Artifact upload is intended for manual workflow runs when storage is tight.
+- If Actions storage quota is exceeded, wait for usage recalculation or delete old artifacts.
 
-- Weedwacker - Provides kcp implementation
-- [SqlSugar](https://github.com/donet5/SqlSugar) - Provides ORM
-- [LunarCore](https://github.com/Melledy/LunarCore) - Some data structures and algorithms
+</details>
+
+## Notes
+
+- If behavior looks inconsistent after updating commits, clear runtime cache/data and retest with a fresh account state first.
+- Some modules are still under refactor, so packet behavior may change before docs fully catch up.
+
+## Troubleshooting
+
+- Check server logs under your configured log path.
+- `/scene reload` can solve most of the problem.
+- Community support: <https://discord.gg/castoriceps>
+
+## Credits
+
+- [Mar7thLover](https://github.com/Mar7thLover)
+- [Cyrup](https://github.com/March7thHoney)
+- [Melioli](https://github.com/Melioli)
+- [Yuki](https://github.com/Yuki8859)
+- [SqlSugar](https://github.com/donet5/SqlSugar)
+- [LunarCore](https://github.com/Melledy/LunarCore)
+- [DanhengServer](https://github.com/Mar7thLover/DanhengServer-OpenSource)
