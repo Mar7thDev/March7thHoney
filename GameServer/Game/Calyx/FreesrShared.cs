@@ -153,6 +153,20 @@ public static class FreesrShared
             var pathInfo = avatar.PathInfos[avatarId];
             pathInfo.Rank = Math.Clamp(avatarJson.Data?.Rank ?? 0, 0, 6);
 
+            // Import enhanced state first so subsequent skill import lands in the
+            // correct enhanced skill tree instead of default(0).
+            var targetEnhancedId = avatarJson.EnhancedId.GetValueOrDefault();
+            if (GameData.AvatarConfigData.TryGetValue(pathInfo.PathId, out var pathExcel))
+            {
+                var exists = pathExcel.SkillTree.ContainsKey(targetEnhancedId) ||
+                             pathExcel.DefaultSkillTree.ContainsKey(targetEnhancedId);
+                pathInfo.EnhanceId = exists ? targetEnhancedId : 0;
+            }
+            else
+            {
+                pathInfo.EnhanceId = targetEnhancedId;
+            }
+
             if (avatarJson.Data?.Skills != null)
             {
                 var skillTree = pathInfo.GetSkillTree();
