@@ -125,7 +125,7 @@ public class WelcomeMailItemConfig
 
 public class ServerTimeOption
 {
-    public bool EnableFakeServerTime { get; set; } = true;
+    public bool EnableFakeServerTime { get; set; } = false;
     // yyyy-MM-dd or "today"
     public string FixedDate { get; set; } = "2026-05-12";
 }
@@ -196,7 +196,7 @@ public class MuipServerConfig
 
 public class WebSecurityConfig
 {
-    public bool EnableRsaLoginDecrypt { get; set; } = true;
+    public bool EnableRsaLoginDecrypt { get; set; } = false;
     public string RsaPublicKeyPem { get; set; } = "";
     public string RsaPrivateKeyPem { get; set; } = "";
 }
