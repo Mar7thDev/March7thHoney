@@ -104,7 +104,7 @@ public class ServerOption
 
 public class WelcomeMailConfig
 {
-    public bool Enabled { get; set; } = false;
+    public bool Enabled { get; set; } = true;
     public string Sender { get; set; } = "March7thHoney";
     public string Title { get; set; } = "Welcome";
     public string Content { get; set; } = "Welcome, {username}!";
