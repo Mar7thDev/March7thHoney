@@ -117,12 +117,68 @@ public class CalyxOverrideManager(PlayerInstance player) : BasePlayerManager(pla
             .OfType<AvatarSceneInfo>().ToList();
         battle.AvatarInfo = avatarList;
 
+        ApplyChallengeStageRules(battle, bc.StageId > 0 ? bc.StageId : anchor.StageID);
+
         Player.BattleInstance = battle;
         Player.QuestManager!.OnBattleStart(battle);
         InvokeOnPlayerEnterBattle(Player, battle);
 
         await ValueTask.CompletedTask;
         return battle;
+    }
+
+    // Reverse index from stage_id back to its owning ChallengeConfigExcel (PF/AS/MoC).
+    // Built lazily on first use; ChallengeConfigData is fully loaded at server boot.
+    private static Dictionary<int, ChallengeConfigExcel>? _stageToChallenge;
+
+    private static Dictionary<int, ChallengeConfigExcel> GetStageToChallengeIndex()
+    {
+        if (_stageToChallenge != null) return _stageToChallenge;
+        var idx = new Dictionary<int, ChallengeConfigExcel>();
+        foreach (var config in GameData.ChallengeConfigData.Values)
+        {
+            void Map(int eventId)
+            {
+                if (eventId <= 0) return;
+                idx.TryAdd(eventId, config);
+                if (GameData.PlaneEventData.TryGetValue(eventId, out var pe))
+                    idx.TryAdd(pe.StageID, config);
+                for (var wl = 1; wl <= 6; wl++)
+                    if (GameData.PlaneEventData.TryGetValue(eventId * 10 + wl, out var pe2))
+                        idx.TryAdd(pe2.StageID, config);
+            }
+            foreach (var list in config.ChallengeMonsters1.Values)
+                foreach (var m in list) Map(m.EventId);
+            foreach (var list in config.ChallengeMonsters2.Values)
+                foreach (var m in list) Map(m.EventId);
+        }
+        _stageToChallenge = idx;
+        return idx;
+    }
+
+    // For freesr stages that map to a real PF/AS/MoC config, mirror the OnBattleStart
+    // logic so endgame UI (score header/tail, maze buff) renders correctly in calyx mode.
+    private static void ApplyChallengeStageRules(BattleInstance battle, int stageId)
+    {
+        if (!GetStageToChallengeIndex().TryGetValue(stageId, out var config)) return;
+
+        if (config.MazeBuffID > 0)
+            battle.Buffs.Add(new MazeBuff(config.MazeBuffID, 1, -1) { WaveFlag = -1 });
+
+        if (config.IsStory())
+        {
+            // Pure Fiction: score header on slot 1, per-target list on slot 5.
+            battle.AddBattleTarget(1, 10002, 0);
+            if (config.StoryExcel?.BattleTargetID != null)
+                foreach (var id in config.StoryExcel.BattleTargetID)
+                    battle.AddBattleTarget(5, id, 0);
+        }
+        else if (config.IsBoss())
+        {
+            // Apocalyptic Shadow: score header on slot 1.
+            battle.AddBattleTarget(1, 90004, 0);
+            battle.AddBattleTarget(1, 90005, 0);
+        }
     }
 
     private static List<StageMonsterList>? BuildMonsterList(List<List<FreesrMonsterEntry>>? waves)
