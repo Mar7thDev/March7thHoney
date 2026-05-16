@@ -167,8 +167,10 @@ public class CalyxOverrideManager(PlayerInstance player) : BasePlayerManager(pla
 
         if (config.IsStory())
         {
-            // Pure Fiction: score header on slot 1, per-target list on slot 5.
-            battle.AddBattleTarget(1, 10002, 0);
+            // Pure Fiction / FantasticStory: id 10003 is the continuous-wave score
+            // container (client settles only after all waves clear). Using legacy
+            // 10002 cuts the battle short after wave 1.
+            battle.AddBattleTarget(1, 10003, 0);
             if (config.StoryExcel?.BattleTargetID != null)
                 foreach (var id in config.StoryExcel.BattleTargetID)
                     battle.AddBattleTarget(5, id, 0);
