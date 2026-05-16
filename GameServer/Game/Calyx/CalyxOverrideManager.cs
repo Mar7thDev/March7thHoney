@@ -194,28 +194,35 @@ public sealed class CalyxOverrideContext(FreesrCalyxData data)
                 ba.EnhancedId = (uint)eid;
         }
 
+        var lineupAvatarIds = proto.BattleAvatarList.Select(b => (int)b.Id).ToHashSet();
+
+        // freesr `techniques` is an array of maze buff IDs to activate for this avatar.
+        // Data-driven: trust the IDs verbatim, look up Lv from MazeBuffData when available.
         foreach (var (avatarKey, aj) in data.Avatars)
         {
             if (aj.Techniques == null || aj.Techniques.Count == 0) continue;
             var avatarId = aj.AvatarId > 0 ? aj.AvatarId : avatarKey;
+            if (!lineupAvatarIds.Contains(avatarId)) continue;
 
-            var candidates = GameData.MazeBuffData
-                .Where(kvp => kvp.Key / 10 / 100 == avatarId
-                              && kvp.Value.MazeBuffType == "Character"
-                              && kvp.Value.InBattleBindingType == "CharacterSkill"
-                              && kvp.Value.InBattleBindingKey == "SkillMaze")
-                .Select(kvp => (BuffId: kvp.Key / 10, Excel: kvp.Value))
-                .ToList();
-
-            var primary = candidates.FirstOrDefault(c =>
-                c.Excel.UseType is "SummonUnit" or "AddBattleBuff" or "TriggerBattle");
-            if (primary.BuffId == 0) continue;
-
-            battle.Buffs.Add(new MazeBuff(primary.BuffId, primary.Excel.Lv, -1)
+            foreach (var buffId in aj.Techniques)
             {
-                OwnerAvatarId = avatarId,
-                WaveFlag = -1
-            });
+                if (buffId <= 0) continue;
+                var lv = GameData.MazeBuffData.Values
+                    .Where(x => x.ID == buffId)
+                    .Select(x => x.Lv)
+                    .DefaultIfEmpty(1)
+                    .Max();
+
+                var mb = new MazeBuff(buffId, lv, -1)
+                {
+                    OwnerAvatarId = avatarId,
+                    WaveFlag = -1
+                };
+                // Client uses SkillIndex=0 to recognize a technique-triggered buff
+                // (matches the M7thLite convention).
+                mb.DynamicValues["SkillIndex"] = 0;
+                battle.Buffs.Add(mb);
+            }
         }
     }
 }
