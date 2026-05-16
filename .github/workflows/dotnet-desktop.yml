@@ -7,20 +7,22 @@ on:
 
 jobs:
   build-and-publish:
-    name: Publish (${{ matrix.mode_name }})
-    runs-on: windows-latest
+    name: Publish (${{ matrix.runtime }})
+    runs-on: ${{ matrix.os }}
     
     strategy:
       fail-fast: false
       matrix:
-        # 这里的 mode 对应你脚本中的 switch 判断逻辑
         include:
-          - mode: "1"
-            mode_name: "Private"
-            define_constants: ""
-          - mode: "2"
-            mode_name: "Public"
-            define_constants: "PUBLIC_MODE"
+          - os: windows-latest
+            runtime: win-x64
+            artifact_name: March7thHoney-win-x64
+          - os: ubuntu-latest
+            runtime: linux-x86
+            artifact_name: March7thHoney-linux-x86
+          - os: ubuntu-latest
+            runtime: linux-arm64
+            artifact_name: March7thHoney-linux-arm64
 
     steps:
       - name: Checkout Code
@@ -37,7 +39,8 @@ jobs:
           $ErrorActionPreference = "Stop"
 
           $projectPath = "Program/Program.csproj"
-          $outputDir = "Publish/win-x64"
+          $runtime = "${{ matrix.runtime }}"
+          $outputDir = "Publish/$runtime"
 
           if (Test-Path $outputDir) {
             Remove-Item -LiteralPath $outputDir -Recurse -Force
@@ -49,7 +52,7 @@ jobs:
             $projectPath
             "-c", "Release"
             "-f", "net10.0"
-            "-r", "win-x64"
+            "-r", $runtime
             "--self-contained", "true"
             "-o", $outputDir
             "/p:PublishSingleFile=true"
@@ -57,11 +60,8 @@ jobs:
             "/p:EnableCompressionInSingleFile=true"
             "/p:PublishReadyToRun=true"
             "/p:PublishTrimmed=false"
+            "/p:DefineConstants=PUBLIC_MODE"
           )
-
-          if ("${{ matrix.define_constants }}") {
-            $publishArgs += "/p:DefineConstants=${{ matrix.define_constants }}"
-          }
 
           dotnet @publishArgs
 
@@ -70,7 +70,8 @@ jobs:
         run: |
           $ErrorActionPreference = "Stop"
 
-          $outputDir = "Publish/win-x64"
+          $runtime = "${{ matrix.runtime }}"
+          $outputDir = "Publish/$runtime"
           $repoConfigDir = "Config"
           $publishConfigDir = Join-Path $outputDir "Config"
 
@@ -100,9 +101,7 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          # 成品名称会区分 Private 和 Public
-          name: Program-win-x64-${{ matrix.mode_name }}
-          # 对应脚本中的 $OutputRoot/$Runtime，即 Publish/win-x64
-          path: Publish/win-x64/
+          name: ${{ matrix.artifact_name }}
+          path: Publish/${{ matrix.runtime }}/
           if-no-files-found: error
           retention-days: 7
