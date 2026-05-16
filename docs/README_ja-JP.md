@@ -7,8 +7,8 @@
   <img src="https://img.shields.io/badge/License-GPLv3-blue" alt="License" />
 </p>
 
-March7thHoney は .NET 10 ベースのプライベートサーバープロジェクトです。
-現在も継続的に開発中で、機能追加と修正が続いています。
+March7thHoneyは、.NET 10をベースとしたサーバープロジェクトです。
+このプロジェクトは現在も継続的に開発が進められており、新機能の追加やバグ修正が行われています。
 
 [EN](../README.md) | [简中](README_zh-CN.md) | [繁中](README_zh-TW.md) | [JP](README_ja-JP.md)
 
@@ -108,7 +108,7 @@ dotnet build program/program.csproj -c Release
 ## トラブルシューティング
 
 - まず設定済みログ出力先を確認してください。
-- よく使う復旧コマンドは `/help`、`/mission`、`/unstuck`、`/reload`。
+- よく使う復旧コマンドは `/scene reload`。
 - コミュニティサポート: <https://discord.gg/xRtZsmHBVj>
 
 ## クレジット

@@ -7,8 +7,8 @@
   <img src="https://img.shields.io/badge/许可证-GPLv3-blue" alt="License" />
 </p>
 
-March7thHoney 是一个基于 .NET 10 的私服项目。
-项目仍在持续开发中，功能会持续更新，也会伴随版本迭代带来局部回归。
+March7thHoney 是一个基于 .NET 10 的服务器项目。
+项目仍在持续开发中，功能会持续更新。
 
 [EN](../README.md) | [简中](README_zh-CN.md) | [繁中](README_zh-TW.md) | [JP](README_ja-JP.md)
 
@@ -108,7 +108,7 @@ dotnet build program/program.csproj -c Release
 ## 故障排查
 
 - 先检查你配置的日志目录输出。
-- 常见问题可先尝试 `/help`、`/mission`、`/unstuck`、`/reload`。
+- 常见问题可先尝试 `/scene reload`。
 - 社区支持：<https://discord.gg/xRtZsmHBVj>
 
 ## 致谢
