@@ -22,8 +22,8 @@ namespace March7thHoney.WebServer.Controllers
                 string body = await reader.ReadToEndAsync();
 
                 var obj = Newtonsoft.Json.Linq.JToken.Parse(body);
-                string username = obj["username"]?.Value<string>("username") ?? "";
-                string password = obj["password"]?.Value<string>("password") ?? "";
+                string username = obj["username"]?.ToString() ?? "";
+                string password = obj["password"]?.ToString() ?? "";
                 string dataJson = obj["data"]?.ToString(Newtonsoft.Json.Formatting.None) ?? "";
 
                 var acc = AccountData.GetAccountByUserName(username);
@@ -64,18 +64,21 @@ namespace March7thHoney.WebServer.Controllers
                     };
                 }
 
-                var player = con.Player;
-                await FreeDataProcess.ImportJson(dataJson, player, async (msg) =>
+                if (dataJson != string.Empty)
                 {
-                    if (msg[0] == "Game.Command.Json.ImportSummary")
+                    var player = con.Player;
+                    await FreeDataProcess.ImportJson(dataJson, player, async (msg) =>
                     {
-                        return;
-                    }
-                    else
-                    {
-                        throw new Exception(I18NManager.Translate(msg[0], msg.Skip(1).ToArray()));
-                    }
-                });
+                        if (msg[0] == "Game.Command.Json.ImportSummary" || msg[0] == "Game.Command.Json.AvatarExcelNotFound")
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            throw new Exception(I18NManager.Translate(msg[0], msg.Skip(1).ToArray()));
+                        }
+                    });
+                }
 
                 return new ContentResult()
                 {
