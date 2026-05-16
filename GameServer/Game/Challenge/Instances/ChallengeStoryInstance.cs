@@ -118,7 +118,10 @@ public class ChallengeStoryInstance(PlayerInstance player, ChallengeDataPb data)
         });
 
         if (Config.StoryExcel == null) return;
-        battle.AddBattleTarget(1, 10002, GetTotalScore());
+        // Target id 10003 = FantasticStory continuous-wave score container.
+        // Using 10002 (legacy PF) causes the client to settle after wave 1 only,
+        // capping a full-clear at ~2300 instead of the expected ~40000.
+        battle.AddBattleTarget(1, 10003, GetTotalScore());
 
         foreach (var id in Config.StoryExcel.BattleTargetID!) battle.AddBattleTarget(5, id, GetTotalScore());
 
