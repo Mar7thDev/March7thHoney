@@ -1,3 +1,4 @@
+using March7thHoney.Data;
 using March7thHoney.GameServer.Game.GridFight.Sync;
 using March7thHoney.GameServer.Server.Packet.Send.GridFight;
 using March7thHoney.GameServer.Server;
@@ -85,6 +86,36 @@ public static class GridFightPendingActionProcessor
         await connection.SendPacket(new PacketGridFightHandlePendingActionScRsp(ackPos));
 
         var sync = new GridFightSyncUpdateResultScNotify();
+
+        var grantedEquipIds = new List<uint>();
+        if (GameData.GridFightPortalBuffData.TryGetValue(buffId, out var portalBuffData))
+        {
+            // 抓包确认：buff 派的是 ShowBonusIDList 里的星徽，EffectParamList 是另一码事
+            foreach (var bonusId in portalBuffData.ShowBonusIDList)
+            {
+                if (GameData.GridFightEquipmentData.ContainsKey(bonusId))
+                    grantedEquipIds.Add(bonusId);
+            }
+        }
+        if (grantedEquipIds.Count > 0)
+        {
+            var sec0 = new GridFightSyncResultData { GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpPnejelgglej };
+            sec0.SyncEffectParamList.Add(buffId);
+            sec0.SyncEffectParamList.Add(0u);
+            var addItemInfo = new GridFightGameItemSyncInfo();
+            foreach (var equipId in grantedEquipIds)
+            {
+                addItemInfo.GridFightEquipmentList.Add(new GridFightEquipmentInfo
+                {
+                    GridFightEquipmentId = equipId,
+                    Source = 1,
+                    UniqueId = inst.AllocEquipUniqueId()
+                });
+            }
+            sec0.UpdateDynamicList.Add(new GridFightSyncData { AddGameItemInfo = addItemInfo });
+            sync.SyncResultDataList.Add(sec0);
+        }
+
         var sec2 = new GridFightSyncResultData { GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpHndkhmefaal };
         sec2.UpdateDynamicList.Add(new GridFightSyncData { PortalServerDataUpdate = new GridFightPortalServerDataUpdate { PortalBuffId = buffId } });
         sync.SyncResultDataList.Add(sec2);
