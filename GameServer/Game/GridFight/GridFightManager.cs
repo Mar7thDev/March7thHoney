@@ -10,11 +10,14 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
     public GridFightInstance? GridFightInstance { get; set; }
     public uint CurUniqueId { get; set; }
 
+    private static uint MaxDivisionId() =>
+        GameData.GridFightDivisionInfoData.Count > 0
+            ? GameData.GridFightDivisionInfoData.Keys.Max()
+            : 10940u;
+
     public GridFightSystemInfo ToProto()
     {
-        var divisionId = GameData.GridFightDivisionInfoData.Count > 0
-            ? GameData.GridFightDivisionInfoData.Keys.Max()
-            : 10939u;
+        var divisionId = MaxDivisionId();
 
         var staticInfo = new GridFightStaticGameInfo
         {
@@ -73,6 +76,7 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
             GridFightSyncKind.RecycleRole    => BuildRecycleRoleSync(extra),
             GridFightSyncKind.BuyExp         => BuildBuyExpSync(),
             GridFightSyncKind.PostBattle     => BuildPostBattleSync(),
+            GridFightSyncKind.PreSettle      => BuildPreSettleSync(),
             GridFightSyncKind.NoOp           => new GridFightSyncUpdateResultScNotify(),
             _                                => new GridFightSyncUpdateResultScNotify()
         };
@@ -160,28 +164,63 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
     private GridFightSyncUpdateResultScNotify BuildBuyGoodsSync(object? extra)
     {
         var notify = new GridFightSyncUpdateResultScNotify();
-        var sync = new GridFightSyncResultData();
-        if (extra is ValueTuple<uint, uint, uint, int> info)
+        var inst = GridFightInstance;
+        if (inst == null || extra is not ValueTuple<uint, uint, uint, int> info)
         {
-            var (roleId, roleUniqueId, pos, goldDelta) = info;
-            sync.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = (uint)Math.Max(0, GridFightInstance?.Gold ?? 0) });
-            if (roleUniqueId > 0)
-            {
-                sync.UpdateDynamicList.Add(new GridFightSyncData
-                {
-                    AddRoleInfo = new GridGameRoleInfo
-                    {
-                        Id = roleId,
-                        Pos = pos,
-                        RoleStar = 1,
-                        UniqueId = roleUniqueId
-                    }
-                });
-            }
-            _ = goldDelta;
+            notify.SyncResultDataList.Add(new GridFightSyncResultData());
+            return notify;
         }
-        notify.SyncResultDataList.Add(sync);
+        var (roleId, roleUniqueId, pos, _) = info;
+
+        var sec0 = new GridFightSyncResultData { GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpDpekjiiicgh };
+        sec0.SyncEffectParamList.Add(0u);
+        sec0.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = inst.Gold });
+        if (roleUniqueId > 0)
+        {
+            var roleInfo = new GridGameRoleInfo
+            {
+                Id = roleId,
+                Pos = pos,
+                RoleStar = 1,
+                UniqueId = roleUniqueId
+            };
+            if (GameData.GridFightRoleBasicInfoData.TryGetValue(roleId, out var roleExcel)
+                && roleExcel.RoleSavedValueList.Count > 0)
+            {
+                roleInfo.GridFightValueInitComponent[roleExcel.RoleSavedValueList[0]] = 0;
+            }
+            sec0.UpdateDynamicList.Add(new GridFightSyncData { AddRoleInfo = roleInfo });
+        }
+        notify.SyncResultDataList.Add(sec0);
+
+        var sec1 = new GridFightSyncResultData { GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpDpekjiiicgh };
+        sec1.SyncEffectParamList.Add(0u);
+        sec1.UpdateDynamicList.Add(new GridFightSyncData { ShopSyncInfo = BuildShopSyncInfo(inst) });
+        notify.SyncResultDataList.Add(sec1);
+
         return notify;
+    }
+
+    private static GridFightShopSyncInfo BuildShopSyncInfo(GridFightInstance inst)
+    {
+        var shopSync = new GridFightShopSyncInfo
+        {
+            GLIFNMBMMBL = inst.ShopRefreshLeft,
+            LDEDGOOKHFL = new FJPONJFLOOH
+            {
+                EDJPMNLLGGB =
+                {
+                    new MJJEHCBNOKI { MMKNFIFOPPA = 1, FLICPMGFKOK = 100 },
+                    new MJJEHCBNOKI { MMKNFIFOPPA = 2 },
+                    new MJJEHCBNOKI { MMKNFIFOPPA = 3 },
+                    new MJJEHCBNOKI { MMKNFIFOPPA = 4 },
+                    new MJJEHCBNOKI { MMKNFIFOPPA = 5 }
+                }
+            }
+        };
+        foreach (var goods in inst.ShopGoods)
+            shopSync.ShopGoodsList.Add(goods);
+        return shopSync;
     }
 
     private GridFightSyncUpdateResultScNotify BuildRefreshShopSync()
@@ -189,26 +228,9 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
         var notify = new GridFightSyncUpdateResultScNotify();
         var inst = GridFightInstance;
         if (inst == null) return notify;
-        var sync = new GridFightSyncResultData();
-        sync.UpdateDynamicList.Add(new GridFightSyncData
-        {
-            ShopSyncInfo = new GridFightShopSyncInfo
-            {
-                GLIFNMBMMBL = inst.ShopRefreshLeft,
-                LDEDGOOKHFL = new FJPONJFLOOH
-                {
-                    EDJPMNLLGGB =
-                    {
-                        new MJJEHCBNOKI { MMKNFIFOPPA = 1, FLICPMGFKOK = 65 },
-                        new MJJEHCBNOKI { MMKNFIFOPPA = 2, FLICPMGFKOK = 25 },
-                        new MJJEHCBNOKI { MMKNFIFOPPA = 3, FLICPMGFKOK = 10 },
-                        new MJJEHCBNOKI { MMKNFIFOPPA = 4 },
-                        new MJJEHCBNOKI { MMKNFIFOPPA = 5 }
-                    }
-                },
-                ShopGoodsList = { inst.ShopGoods }
-            }
-        });
+        var sync = new GridFightSyncResultData { GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpEjkejdnhioe };
+        sync.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = inst.Gold });
+        sync.UpdateDynamicList.Add(new GridFightSyncData { ShopSyncInfo = BuildShopSyncInfo(inst) });
         notify.SyncResultDataList.Add(sync);
         return notify;
     }
@@ -242,8 +264,40 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
         var notify = new GridFightSyncUpdateResultScNotify();
         var inst = GridFightInstance;
         if (inst == null) return notify;
-        var sync = new GridFightSyncResultData();
-        sync.UpdateDynamicList.Add(new GridFightSyncData
+
+        var levelSync = new GridFightSyncResultData();
+        var levelInfo = new GridFightLevelSyncInfo
+        {
+            DCPKPNLKGMM = inst.Level,
+            SectionId = inst.SectionId + 1,
+            GridFightLayerInfo = new GridFightLayerInfo
+            {
+                RouteInfo = new GridFightRouteInfo
+                {
+                    EliteBranchId = 1,
+                    FightCampId = inst.CampId
+                }
+            }
+        };
+        var encounter = new GridFightEncounterInfo { LFKBMDHKPFI = 90304 };
+        var wave = new GridEncounterMonsterWave { IGMMPDDCJIN = 1 };
+        foreach (var monsterId in new uint[] { 800101020u, 800105007u, 800105007u, 800105007u, 800104004u })
+            wave.PPOEDDFFEKK.Add(new PJLBDMPEKFP { MonsterId = monsterId, RoleStar = 1 });
+        encounter.MonsterWaveList.Add(wave);
+        levelInfo.GridFightLayerInfo.RouteInfo.RouteEncounterList.Add(encounter);
+        levelSync.UpdateDynamicList.Add(new GridFightSyncData { LevelSyncInfo = levelInfo });
+        notify.SyncResultDataList.Add(levelSync);
+
+        var lockSync = new GridFightSyncResultData();
+        lockSync.UpdateDynamicList.Add(new GridFightSyncData
+        {
+            SyncLockInfo = new GridFightLockInfo
+            {
+                LockReason = GridFightLockReason.DfofffceffoKjmjdbjmbmc,
+                LockType = GridFightLockType.PjbmhhnlclbEhfhdgpocnh
+            }
+        });
+        lockSync.UpdateDynamicList.Add(new GridFightSyncData
         {
             PendingAction = inst.PendingAction ?? new GridFightPendingAction
             {
@@ -251,7 +305,77 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
                 RoundBeginAction = new GridFightRoundBeginActionInfo()
             }
         });
-        notify.SyncResultDataList.Add(sync);
+        notify.SyncResultDataList.Add(lockSync);
+
+        return notify;
+    }
+
+    private GridFightSyncUpdateResultScNotify BuildPreSettleSync()
+    {
+        var notify = new GridFightSyncUpdateResultScNotify();
+        var inst = GridFightInstance;
+        if (inst == null) return notify;
+
+        var unlock = new GridFightSyncResultData();
+        unlock.UpdateDynamicList.Add(new GridFightSyncData { SyncLockInfo = new GridFightLockInfo() });
+        notify.SyncResultDataList.Add(unlock);
+
+        var stt = new GridFightSyncResultData
+        {
+            GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpJalhdinecfe
+        };
+        stt.SyncEffectParamList.Add(1u);
+        stt.SyncEffectParamList.Add(1u);
+        if (inst.LastBattleDamageStt != null)
+            stt.UpdateDynamicList.Add(new GridFightSyncData { GridFightDamageSttInfo = inst.LastBattleDamageStt.Clone() });
+        stt.UpdateDynamicList.Add(new GridFightSyncData
+        {
+            GridFightLineupHp = new GridFightLineupHpSyncInfo
+            {
+                GridFightLineupHp = inst.LineupHp,
+                GridFightLineupMaxHp = inst.LineupMaxHp
+            }
+        });
+        stt.UpdateDynamicList.Add(new GridFightSyncData
+        {
+            SectionRecordSyncInfo = new GridFightSectionRecordInfo
+            {
+                DCPKPNLKGMM = inst.Level,
+                SectionId = inst.SectionId,
+                CampRecordInfo = new GridFightSectionCampRecordInfo { PMOGHFIGKPO = inst.CampId }
+            }
+        });
+        notify.SyncResultDataList.Add(stt);
+
+        var rewards = new GridFightSyncResultData
+        {
+            GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpJalhdinecfe
+        };
+        rewards.SyncEffectParamList.Add(1u);
+        rewards.SyncEffectParamList.Add(1u);
+        rewards.UpdateDynamicList.Add(new GridFightSyncData
+        {
+            PlayerLevel = new GridFightPlayerLevelSyncInfo
+            {
+                Level = inst.PlayerLevel,
+                Exp = inst.PlayerExp,
+                MaxLevel = inst.PlayerMaxLevel
+            }
+        });
+        if (inst.Gold > inst.PreBattleGold)
+        {
+            rewards.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = inst.PreBattleGold + 3u });
+            rewards.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = inst.Gold });
+        }
+        foreach (var (itemId, uniqueId) in inst.LastRewardedOrbs)
+        {
+            rewards.UpdateDynamicList.Add(new GridFightSyncData
+            {
+                OrbSyncInfo = new GridFightOrbSyncInfo { OrbItemId = itemId, UniqueId = uniqueId }
+            });
+        }
+        notify.SyncResultDataList.Add(rewards);
+
         return notify;
     }
 
@@ -266,8 +390,8 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
         var notify = new GridFightSettleNotify
         {
             BHLDAEKNMCD = inst?.KeepWinCnt ?? 0,
-            EDKIICIKJKL = 10706,
-            OHOPKAAKOGF = 10706,
+            EDKIICIKJKL = MaxDivisionId(),
+            OHOPKAAKOGF = MaxDivisionId(),
             EDKJMPACHNJ = new GridFightFinishInfo
             {
                 BCHPAOCOHIL = new FCBEHGJBJCN
@@ -276,7 +400,7 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
                 },
                 NLILNONCNFC = new JCFJADFEOJN
                 {
-                    BBDOCJGAEEJ = inst?.DivisionId ?? 10706,
+                    BBDOCJGAEEJ = inst?.DivisionId ?? MaxDivisionId(),
                     BCOLJFHDLLD = inst?.LineupHp ?? 80,
                     BFNPCJOMGFL = (uint)(inst?.BattlesFinished ?? 3),
                     DCPKPNLKGMM = inst?.Level ?? 1,
@@ -297,31 +421,32 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
             notify.EDKJMPACHNJ.IAKFPMOEJLF.Add(new DIBJGAKOCLO { AffixId = affixId });
         foreach (var equip in inst?.Equipments ?? new List<GridFightEquipmentInfo>())
             notify.EDKJMPACHNJ.GridFightEquipmentList.Add(equip);
-        if (notify.EDKJMPACHNJ.GridFightEquipmentList.Count == 0)
-            notify.EDKJMPACHNJ.GridFightEquipmentList.Add(new GridFightEquipmentInfo
-            {
-                GridFightEquipmentId = 350205,
-                UniqueId = 10
-            });
 
         return notify;
     }
 
-    public GridFightCurrentInfo BuildCurrentInfo() => GridFightInstance?.ToProto() ?? new GridFightCurrentInfo
+    public GridFightCurrentInfo BuildCurrentInfo()
     {
-        Season = 1,
-        DivisionId = 10706,
-        UniqueId = CurUniqueId,
-        PendingAction = new GridFightPendingAction
+        if (GridFightInstance != null) return GridFightInstance.ToProto();
+
+        var maxDiv = MaxDivisionId();
+        var stub = new GridFightInstance(Player, 1u, maxDiv, false, CurUniqueId);
+        return new GridFightCurrentInfo
         {
-            QueuePosition = 1,
-            PortalBuffAction = new GridFightPortalBuffActionInfo
+            Season = 1,
+            DivisionId = maxDiv,
+            UniqueId = CurUniqueId,
+            PendingAction = new GridFightPendingAction
             {
-                FCHPJKAIBHB = 1,
-                GridFightPortalBuffList = { 1115u, 106u, 147u }
+                QueuePosition = 1,
+                PortalBuffAction = new GridFightPortalBuffActionInfo
+                {
+                    FCHPJKAIBHB = 1,
+                    GridFightPortalBuffList = { stub.RollPortalBuffs() }
+                }
             }
-        }
-    };
+        };
+    }
 
     public (Retcode, GridFightInstance?) StartGamePlay(uint season, uint divisionId, bool isOverLock)
     {
@@ -329,7 +454,7 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
             return (Retcode.RetSucc, GridFightInstance);
 
         GridFightInstance = new GridFightInstance(Player, season == 0 ? 1u : season,
-            divisionId == 0 ? 10939u : divisionId, isOverLock, ++CurUniqueId);
+            divisionId == 0 ? MaxDivisionId() : divisionId, isOverLock, ++CurUniqueId);
         return (Retcode.RetSucc, GridFightInstance);
     }
 }
