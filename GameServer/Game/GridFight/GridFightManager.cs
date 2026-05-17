@@ -164,28 +164,63 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
     private GridFightSyncUpdateResultScNotify BuildBuyGoodsSync(object? extra)
     {
         var notify = new GridFightSyncUpdateResultScNotify();
-        var sync = new GridFightSyncResultData();
-        if (extra is ValueTuple<uint, uint, uint, int> info)
+        var inst = GridFightInstance;
+        if (inst == null || extra is not ValueTuple<uint, uint, uint, int> info)
         {
-            var (roleId, roleUniqueId, pos, goldDelta) = info;
-            sync.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = (uint)Math.Max(0, GridFightInstance?.Gold ?? 0) });
-            if (roleUniqueId > 0)
-            {
-                sync.UpdateDynamicList.Add(new GridFightSyncData
-                {
-                    AddRoleInfo = new GridGameRoleInfo
-                    {
-                        Id = roleId,
-                        Pos = pos,
-                        RoleStar = 1,
-                        UniqueId = roleUniqueId
-                    }
-                });
-            }
-            _ = goldDelta;
+            notify.SyncResultDataList.Add(new GridFightSyncResultData());
+            return notify;
         }
-        notify.SyncResultDataList.Add(sync);
+        var (roleId, roleUniqueId, pos, _) = info;
+
+        var sec0 = new GridFightSyncResultData { GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpDpekjiiicgh };
+        sec0.SyncEffectParamList.Add(0u);
+        sec0.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = inst.Gold });
+        if (roleUniqueId > 0)
+        {
+            var roleInfo = new GridGameRoleInfo
+            {
+                Id = roleId,
+                Pos = pos,
+                RoleStar = 1,
+                UniqueId = roleUniqueId
+            };
+            if (GameData.GridFightRoleBasicInfoData.TryGetValue(roleId, out var roleExcel)
+                && roleExcel.RoleSavedValueList.Count > 0)
+            {
+                roleInfo.GridFightValueInitComponent[roleExcel.RoleSavedValueList[0]] = 0;
+            }
+            sec0.UpdateDynamicList.Add(new GridFightSyncData { AddRoleInfo = roleInfo });
+        }
+        notify.SyncResultDataList.Add(sec0);
+
+        var sec1 = new GridFightSyncResultData { GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpDpekjiiicgh };
+        sec1.SyncEffectParamList.Add(0u);
+        sec1.UpdateDynamicList.Add(new GridFightSyncData { ShopSyncInfo = BuildShopSyncInfo(inst) });
+        notify.SyncResultDataList.Add(sec1);
+
         return notify;
+    }
+
+    private static GridFightShopSyncInfo BuildShopSyncInfo(GridFightInstance inst)
+    {
+        var shopSync = new GridFightShopSyncInfo
+        {
+            GLIFNMBMMBL = inst.ShopRefreshLeft,
+            LDEDGOOKHFL = new FJPONJFLOOH
+            {
+                EDJPMNLLGGB =
+                {
+                    new MJJEHCBNOKI { MMKNFIFOPPA = 1, FLICPMGFKOK = 100 },
+                    new MJJEHCBNOKI { MMKNFIFOPPA = 2 },
+                    new MJJEHCBNOKI { MMKNFIFOPPA = 3 },
+                    new MJJEHCBNOKI { MMKNFIFOPPA = 4 },
+                    new MJJEHCBNOKI { MMKNFIFOPPA = 5 }
+                }
+            }
+        };
+        foreach (var goods in inst.ShopGoods)
+            shopSync.ShopGoodsList.Add(goods);
+        return shopSync;
     }
 
     private GridFightSyncUpdateResultScNotify BuildRefreshShopSync()
@@ -193,26 +228,9 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
         var notify = new GridFightSyncUpdateResultScNotify();
         var inst = GridFightInstance;
         if (inst == null) return notify;
-        var sync = new GridFightSyncResultData();
-        sync.UpdateDynamicList.Add(new GridFightSyncData
-        {
-            ShopSyncInfo = new GridFightShopSyncInfo
-            {
-                GLIFNMBMMBL = inst.ShopRefreshLeft,
-                LDEDGOOKHFL = new FJPONJFLOOH
-                {
-                    EDJPMNLLGGB =
-                    {
-                        new MJJEHCBNOKI { MMKNFIFOPPA = 1, FLICPMGFKOK = 65 },
-                        new MJJEHCBNOKI { MMKNFIFOPPA = 2, FLICPMGFKOK = 25 },
-                        new MJJEHCBNOKI { MMKNFIFOPPA = 3, FLICPMGFKOK = 10 },
-                        new MJJEHCBNOKI { MMKNFIFOPPA = 4 },
-                        new MJJEHCBNOKI { MMKNFIFOPPA = 5 }
-                    }
-                },
-                ShopGoodsList = { inst.ShopGoods }
-            }
-        });
+        var sync = new GridFightSyncResultData { GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpEjkejdnhioe };
+        sync.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = inst.Gold });
+        sync.UpdateDynamicList.Add(new GridFightSyncData { ShopSyncInfo = BuildShopSyncInfo(inst) });
         notify.SyncResultDataList.Add(sync);
         return notify;
     }
