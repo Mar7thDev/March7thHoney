@@ -44,7 +44,7 @@ public static class GridFightPendingActionProcessor
 
     private static async System.Threading.Tasks.Task HandlePortalBuffReroll(Connection connection, GridFightInstance inst, uint ackPos)
     {
-        var newBuffList = new List<uint> { 105u, 1014u, 132u };
+        var newBuffList = inst.RollPortalBuffs(exclude: inst.CurrentPortalBuffOffer.ToList());
         inst.QueuePosition = ackPos;
         inst.PendingAction = new GridFightPendingAction
         {
@@ -53,7 +53,7 @@ public static class GridFightPendingActionProcessor
         };
 
         var notify = new GridFightSeasonHandBookNotify { HandbookGridFightPortalInfo = new GridFightHandBookPortalInfo() };
-        notify.HandbookGridFightPortalInfo.PELJLONLDNM.Add(132u);
+        foreach (var buffId in newBuffList) notify.HandbookGridFightPortalInfo.PELJLONLDNM.Add(buffId);
         await connection.SendPacket(new PacketGridFightSeasonHandBookNotify(notify));
         await connection.SendPacket(new PacketGridFightHandlePendingActionScRsp(ackPos));
 
@@ -67,6 +67,7 @@ public static class GridFightPendingActionProcessor
     private static async System.Threading.Tasks.Task HandlePortalBuffSelect(Connection connection, GridFightInstance inst, uint ackPos, uint buffId)
     {
         if (buffId > 0 && !inst.ActivePortalBuffIds.Contains(buffId)) inst.ActivePortalBuffIds.Add(buffId);
+        inst.ClearPortalBuffOffer();
         inst.MaterializeInitialBenchTeam();
         inst.ConfigureNextBattle(90303, new uint[] { 300101007, 800102021, 300101007 });
 
