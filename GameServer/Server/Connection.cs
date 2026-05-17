@@ -38,6 +38,7 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
 
     public override void Stop()
     {
+        Player?.TrainCakeCatchManager?.LeaveSocialPlayRoom();
         Player?.OnLogoutAsync();
         March7thHoneyListener.UnregisterConnection(this);
         base.Stop();
