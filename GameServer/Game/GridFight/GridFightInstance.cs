@@ -116,7 +116,6 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     // 初始 4 名 bench 角色（PortalBuff 确认后从池子里随机抽取，实例化到 pos 14-17）
     public List<(uint AvatarId, uint Pos, uint UniqueId, string Component)> RolledBenchRoles { get; private set; }
         = new();
-    public uint RolledInitialEquipmentId { get; private set; }
 
     public void EnsureDefaultRoles()
     {
@@ -214,25 +213,6 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
         return RolledBenchRoles;
     }
 
-    public uint RollInitialEquipmentId()
-    {
-        if (RolledInitialEquipmentId > 0) return RolledInitialEquipmentId;
-        var pool = GameData.GridFightEquipmentData.Keys
-            .Where(id => id >= 350200 && id < 350900)
-            .ToList();
-        if (pool.Count == 0) pool = new List<uint> { 350602 };
-        RolledInitialEquipmentId = pool[Random.Shared.Next(pool.Count)];
-        return RolledInitialEquipmentId;
-    }
-
-    public List<uint> RollForgeGoods(int count = 4)
-    {
-        var pool = GameData.GridFightEquipmentData.Keys
-            .Where(id => id >= 350200 && id < 350900)
-            .ToList();
-        if (pool.Count == 0) pool = new List<uint> { 350204, 350205, 350208, 350207 };
-        return PickDistinct(pool, count);
-    }
 
     public uint AllocRoleUniqueId() => ++NextRoleUniqueId;
     public uint AllocEquipUniqueId() => ++NextEquipUniqueId;

@@ -85,39 +85,6 @@ public static class GridFightPendingActionProcessor
         await connection.SendPacket(new PacketGridFightHandlePendingActionScRsp(ackPos));
 
         var sync = new GridFightSyncUpdateResultScNotify();
-        var sec0 = new GridFightSyncResultData { GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpPnejelgglej };
-        sec0.SyncEffectParamList.Add(buffId);
-        sec0.UpdateDynamicList.Add(new GridFightSyncData
-        {
-            AddGameItemInfo = new GridFightGameItemSyncInfo
-            {
-                GridFightEquipmentList =
-                {
-                    new GridFightEquipmentInfo
-                    {
-                        GridFightEquipmentId = inst.RollInitialEquipmentId(),
-                        Source = 1,
-                        UniqueId = inst.AllocEquipUniqueId()
-                    }
-                }
-            }
-        });
-        sync.SyncResultDataList.Add(sec0);
-
-        var sec1 = new GridFightSyncResultData { GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpPnejelgglej };
-        var forgeUid = inst.AllocEquipUniqueId();
-        sec1.SyncEffectParamList.Add(buffId);
-        var forgeGoods = new GridGameForgeItemInfo
-        {
-            ForgeItemId = 99999,
-            Pos = 14,
-            UniqueId = forgeUid
-        };
-        foreach (var equipId in inst.RollForgeGoods(count: 4))
-            forgeGoods.ForgeGoodsList.Add(new GridFightForgeGoodsInfo { EquipmentGoodsInfo = new GridFightForgeEquipmentInfo { GridFightEquipmentId = equipId } });
-        sec1.UpdateDynamicList.Add(new GridFightSyncData { AddForgeInfo = forgeGoods });
-        sync.SyncResultDataList.Add(sec1);
-
         var sec2 = new GridFightSyncResultData { GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpHndkhmefaal };
         sec2.UpdateDynamicList.Add(new GridFightSyncData { PortalServerDataUpdate = new GridFightPortalServerDataUpdate { PortalBuffId = buffId } });
         sync.SyncResultDataList.Add(sec2);
