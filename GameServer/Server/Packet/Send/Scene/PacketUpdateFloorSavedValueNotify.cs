@@ -12,7 +12,8 @@ public class PacketUpdateFloorSavedValueNotify : BasePacket
         var proto = new UpdateFloorSavedValueNotify
         {
             FloorId = (uint)player.SceneInstance!.FloorId,
-            PlaneId = (uint)player.SceneInstance!.PlaneId
+            PlaneId = (uint)player.SceneInstance!.PlaneId,
+            DimensionId = (uint)player.SceneInstance.ResolveDimensionId()
         };
 
         proto.SavedValue.Add(name, savedValue);
@@ -26,7 +27,8 @@ public class PacketUpdateFloorSavedValueNotify : BasePacket
         var proto = new UpdateFloorSavedValueNotify
         {
             FloorId = (uint)player.SceneInstance!.FloorId,
-            PlaneId = (uint)player.SceneInstance!.PlaneId
+            PlaneId = (uint)player.SceneInstance!.PlaneId,
+            DimensionId = (uint)player.SceneInstance.ResolveDimensionId()
         };
 
         foreach (var i in update) proto.SavedValue.Add(i.Key, i.Value);

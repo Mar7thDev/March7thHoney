@@ -5,6 +5,7 @@ public class CakePerformanceConfigExcel : ExcelResource
 {
     public int ID { get; set; }
     public int QuestID { get; set; }
+    public List<int> ActorsList { get; set; } = [];
 
     public override int GetId()
     {

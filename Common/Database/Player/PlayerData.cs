@@ -98,7 +98,9 @@ public class PlayerData : BaseDatabaseDataHelper
             LastActiveTime = LastActiveTime,
             ChatBubbleId = (uint)ChatBubble,
             PersonalCard = (uint)PersonalCard,
-            HeadFrameInfo = HeadFrame.ToProto()
+            HeadFrameInfo = HeadFrame.ToProto(),
+            PlayerOutfitData = ToPlayerOutfitProto(),
+            Gender = (uint)CurrentGender
         };
 
         var pos = 0;

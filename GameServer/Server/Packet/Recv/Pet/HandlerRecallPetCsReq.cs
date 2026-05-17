@@ -14,5 +14,6 @@ public class HandlerRecallPetCsReq : Handler
         connection.Player!.Data.Pet = 0;
 
         await connection.SendPacket(new PacketRecallPetScRsp(req.SummonedPetId));
+        await connection.Player.TrainCakeCatchManager!.BroadcastPlayerStateAsync();
     }
 }
