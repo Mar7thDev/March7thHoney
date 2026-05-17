@@ -1,4 +1,5 @@
 using March7thHoney.Data;
+using March7thHoney.Data.Excel;
 using March7thHoney.GameServer.Game.GridFight.Sync;
 using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.GridFight.Battle;
@@ -112,14 +113,10 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
 
     public void ClearPortalBuffOffer() => CurrentPortalBuffOffer = new List<uint>();
 
-    // 初始 4 名 bench 角色（PortalBuff 确认后实例化到 pos 15-18）
-    public static readonly (uint AvatarId, uint Pos, uint UniqueId, string Component)[] InitialBenchRoles =
-    {
-        (1009, 15, 5, "GP_Avatar_Asta_01"),
-        (1306, 16, 6, "GP_Avatar_Sparkle_01"),
-        (1403, 17, 7, "GP_Avatar_Tribbie_01"),
-        (1502, 18, 8, "GP_Avatar_YaoGuang_01")
-    };
+    // 初始 4 名 bench 角色（PortalBuff 确认后从池子里随机抽取，实例化到 pos 14-17）
+    public List<(uint AvatarId, uint Pos, uint UniqueId, string Component)> RolledBenchRoles { get; private set; }
+        = new();
+    public uint RolledInitialEquipmentId { get; private set; }
 
     public void EnsureDefaultRoles()
     {
@@ -180,12 +177,61 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     public void MaterializeInitialBenchTeam()
     {
         if (RoleByUniqueId.Count > 0) return;
-        foreach (var (avatarId, pos, uniqueId, _) in InitialBenchRoles)
+        if (RolledBenchRoles.Count == 0) RollInitialBenchRoles();
+        foreach (var (avatarId, pos, uniqueId, _) in RolledBenchRoles)
         {
             RoleByUniqueId[uniqueId] = avatarId;
             RoleStarByUniqueId[uniqueId] = 1;
             UniqueIdByPos[pos] = uniqueId;
         }
+    }
+
+    public List<(uint AvatarId, uint Pos, uint UniqueId, string Component)> RollInitialBenchRoles(int count = 4)
+    {
+        var pool = GameData.GridFightRoleBasicInfoData.Values
+            .Where(r => r.IsInPool && (r.SeasonID == Season || r.SeasonID == 0))
+            .Where(r => r.AvatarID >= 1000 && r.AvatarID < 2000)
+            .Where(r => r.RoleSavedValueList.Count > 0)
+            .ToList();
+
+        var rng = Random.Shared;
+        var copy = pool.ToList();
+        var picked = new List<GridFightRoleBasicInfoExcel>(count);
+        while (picked.Count < count && copy.Count > 0)
+        {
+            var idx = rng.Next(copy.Count);
+            picked.Add(copy[idx]);
+            copy.RemoveAt(idx);
+        }
+
+        RolledBenchRoles = new List<(uint, uint, uint, string)>(picked.Count);
+        for (var i = 0; i < picked.Count; i++)
+        {
+            var role = picked[i];
+            RolledBenchRoles.Add((role.AvatarID, (uint)(14 + i), AllocRoleUniqueId(),
+                role.RoleSavedValueList[0]));
+        }
+        return RolledBenchRoles;
+    }
+
+    public uint RollInitialEquipmentId()
+    {
+        if (RolledInitialEquipmentId > 0) return RolledInitialEquipmentId;
+        var pool = GameData.GridFightEquipmentData.Keys
+            .Where(id => id >= 350200 && id < 350900)
+            .ToList();
+        if (pool.Count == 0) pool = new List<uint> { 350602 };
+        RolledInitialEquipmentId = pool[Random.Shared.Next(pool.Count)];
+        return RolledInitialEquipmentId;
+    }
+
+    public List<uint> RollForgeGoods(int count = 4)
+    {
+        var pool = GameData.GridFightEquipmentData.Keys
+            .Where(id => id >= 350200 && id < 350900)
+            .ToList();
+        if (pool.Count == 0) pool = new List<uint> { 350204, 350205, 350208, 350207 };
+        return PickDistinct(pool, count);
     }
 
     public uint AllocRoleUniqueId() => ++NextRoleUniqueId;
