@@ -9,6 +9,7 @@ public class GridFightPortalBuffExcel : ExcelResource
     public bool IfInBook { get; set; }
     public List<FixedValueInfo<uint>> EffectParamList { get; set; } = [];
     public List<uint> ShowBonusIDList { get; set; } = [];
+    public List<uint> PortalGameRefTrait { get; set; } = [];
 
     public override int GetId()
     {
