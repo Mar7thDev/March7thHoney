@@ -1,4 +1,5 @@
 using March7thHoney.Data;
+using March7thHoney.Data.Excel;
 using March7thHoney.GameServer.Game.GridFight.Sync;
 using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.GridFight.Battle;
@@ -36,6 +37,7 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     public GridFightPendingAction? PendingAction { get; set; }
     public uint NextRoleUniqueId { get; set; } = 100;
     public uint NextEquipUniqueId { get; set; } = 50;
+    public uint NextOrbUniqueId { get; set; } = 10;
 
     // 角色阵容
     public Dictionary<uint, uint> RoleByUniqueId { get; } = new();
@@ -53,40 +55,129 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     // 装备草稿与背包
     public List<uint> StageCandidates { get; } = new() { 35030205, 35030405, 35030208, 350202, 35030606 };
     public List<uint> CurrentEquipDraft { get; private set; } = new() { 35030205u, 35030405u, 35030208u };
-    public List<GridFightEquipmentInfo> Equipments { get; } = new()
-    {
-        new GridFightEquipmentInfo { GridFightEquipmentId = 350205, Source = 1, UniqueId = 10 }
-    };
-    public List<GridFightConsumableInfo> Consumables { get; } = new()
-    {
-        new GridFightConsumableInfo { ItemId = 350101, Num = 1 }
-    };
+    public List<GridFightEquipmentInfo> Equipments { get; } = new();
+    public List<GridFightConsumableInfo> Consumables { get; } = new();
 
     // 区段固定数据（增益、关卡）
-    public List<uint> SectionAffixIds { get; } = new() { 1002, 3005, 4010 };
+    public List<uint> SectionAffixIds { get; private set; } = new();
+    public List<uint> SessionCampIds { get; private set; } = new();
     public List<uint> ActivePortalBuffIds { get; } = new() { 106 };
     public List<uint> AvailablePortalBuffRerolls { get; } = new() { 105, 1014, 132 };
+    public List<uint> CurrentPortalBuffOffer { get; private set; } = new();
 
-    // 初始 4 名 bench 角色（PortalBuff 确认后实例化到 pos 15-18）
-    public static readonly (uint AvatarId, uint Pos, uint UniqueId, string Component)[] InitialBenchRoles =
+    private static readonly uint[] FallbackPortalBuffPool =
     {
-        (1009, 15, 5, "GP_Avatar_Asta_01"),
-        (1306, 16, 6, "GP_Avatar_Sparkle_01"),
-        (1403, 17, 7, "GP_Avatar_Tribbie_01"),
-        (1502, 18, 8, "GP_Avatar_YaoGuang_01")
+        101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115,
+        116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 127, 129, 134, 135, 138,
+        147, 1001, 1002, 1003, 1004, 1005, 1007, 1008, 1010, 1014, 1016,
+        1101, 1102, 1104, 1106, 1107, 1108, 1112, 1113, 1114, 1115, 1116, 1118
     };
+
+    public List<uint> RollPortalBuffs(int count = 3, IEnumerable<uint>? exclude = null)
+    {
+        var pool = (GameData.GridFightSeasonPortalData.TryGetValue(Season, out var seasonPool) && seasonPool.Count > 0)
+            ? seasonPool.ToList()
+            : FallbackPortalBuffPool.ToList();
+        if (exclude != null)
+            foreach (var id in exclude) pool.Remove(id);
+        if (pool.Count <= count)
+        {
+            var fallback = pool.Distinct().ToList();
+            while (fallback.Count < count)
+                fallback.Add(FallbackPortalBuffPool[fallback.Count % FallbackPortalBuffPool.Length]);
+            CurrentPortalBuffOffer = fallback.Take(count).ToList();
+            return CurrentPortalBuffOffer;
+        }
+        var rng = Random.Shared;
+        var picked = new List<uint>(count);
+        while (picked.Count < count)
+        {
+            var idx = rng.Next(pool.Count);
+            picked.Add(pool[idx]);
+            pool.RemoveAt(idx);
+        }
+        CurrentPortalBuffOffer = picked;
+        return CurrentPortalBuffOffer;
+    }
+
+    public List<uint> EnsurePortalBuffOffer()
+    {
+        if (CurrentPortalBuffOffer.Count == 0) RollPortalBuffs();
+        return CurrentPortalBuffOffer;
+    }
+
+    public void ClearPortalBuffOffer() => CurrentPortalBuffOffer = new List<uint>();
+
+    // 初始 4 名 bench 角色（PortalBuff 确认后从池子里随机抽取，实例化到 pos 14-17）
+    public List<(uint AvatarId, uint Pos, uint UniqueId, string Component)> RolledBenchRoles { get; private set; }
+        = new();
 
     public void EnsureDefaultRoles()
     {
         // 抓包确认：StartGamePlay 后初始团队为空，角色在 PortalBuff 确认时通过 sync 实例化
         if (ShopGoods.Count == 0) RotateShop();
+        EnsureSessionPreview();
+    }
+
+    public void EnsureSessionPreview()
+    {
+        if (SessionCampIds.Count == 0) SessionCampIds = RollSessionCamps();
+        if (SectionAffixIds.Count == 0) SectionAffixIds = RollSessionAffixes();
+    }
+
+    private List<uint> RollSessionCamps(int count = 3)
+    {
+        var pool = GameData.GridFightCampData.Values
+            .Where(c => c.SeasonID == Season || c.SeasonID == 0)
+            .Select(c => c.ID)
+            .Distinct()
+            .ToList();
+        if (pool.Count == 0)
+            pool = new List<uint> { 1, 2, 4, 5, 6, 8, 10, 11, 12, 13, 15, 16, 17, 23, 24, 25, 26, 27, 28 };
+        return PickDistinct(pool, count);
+    }
+
+    private List<uint> RollSessionAffixes()
+    {
+        var totalCount = 3;
+        if (GameData.GridFightDivisionStageData.TryGetValue(DivisionId, out var stage)
+            && stage.AffixChooseNumList.Count > 0)
+        {
+            totalCount = (int)stage.AffixChooseNumList.Sum(x => x);
+        }
+        if (totalCount <= 0) return new List<uint>();
+        var pool = GameData.GridFightAffixConfigData.Keys.ToList();
+        if (pool.Count == 0)
+            pool = new List<uint> { 1001, 1002, 1003, 1004, 1005, 2002, 2003, 2004, 2005, 2006, 3001, 3002, 3003, 3004, 3005, 3006, 3007, 3008, 4001, 4002, 4003, 4005, 4006, 4007, 4008, 4009, 4010, 4011, 4012, 4013 };
+        return PickDistinct(pool, totalCount);
+    }
+
+    private static List<uint> PickDistinct(List<uint> pool, int count)
+    {
+        var rng = Random.Shared;
+        var copy = pool.ToList();
+        var picked = new List<uint>(count);
+        while (picked.Count < count && copy.Count > 0)
+        {
+            var idx = rng.Next(copy.Count);
+            picked.Add(copy[idx]);
+            copy.RemoveAt(idx);
+        }
+        while (picked.Count < count) picked.Add(pool[picked.Count % Math.Max(1, pool.Count)]);
+        return picked;
     }
 
     // 在 PortalBuffAction 确认后调用，把 4 名 bench 角色加入实例状态
-    public void MaterializeInitialBenchTeam()
+    // requiredTrait > 0 时，至少 1 名角色必须带这个 trait（让选了的星徽能穿上）
+    public void MaterializeInitialBenchTeam(uint requiredTrait = 0)
     {
         if (RoleByUniqueId.Count > 0) return;
-        foreach (var (avatarId, pos, uniqueId, _) in InitialBenchRoles)
+        if (RolledBenchRoles.Count == 0
+            || (requiredTrait > 0 && !RolledBenchRoles.Any(r => RoleHasTrait(r.AvatarId, requiredTrait))))
+        {
+            RollInitialBenchRoles(requiredTrait: requiredTrait);
+        }
+        foreach (var (avatarId, pos, uniqueId, _) in RolledBenchRoles)
         {
             RoleByUniqueId[uniqueId] = avatarId;
             RoleStarByUniqueId[uniqueId] = 1;
@@ -94,8 +185,70 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
         }
     }
 
+    private static bool RoleHasTrait(uint avatarId, uint trait) =>
+        GameData.GridFightRoleBasicInfoData.Values
+            .Any(r => r.AvatarID == avatarId && r.TraitList.Contains(trait));
+
+    public List<(uint AvatarId, uint Pos, uint UniqueId, string Component)> RollInitialBenchRoles(int count = 4, uint requiredTrait = 0)
+    {
+        var pool = GameData.GridFightRoleBasicInfoData.Values
+            .Where(r => r.IsInPool && (r.SeasonID == Season || r.SeasonID == 0))
+            .Where(r => r.AvatarID >= 1000 && r.AvatarID < 2000)
+            .Where(r => r.RoleSavedValueList.Count > 0)
+            .ToList();
+
+        var rng = Random.Shared;
+        var copy = pool.ToList();
+        var picked = new List<GridFightRoleBasicInfoExcel>(count);
+
+        // 抓包确认：官服在选了带 trait 的 buff 后，必至少 1 名 bench 角色带这个 trait，否则星徽穿不上、客户端不前进
+        if (requiredTrait > 0)
+        {
+            var traitMatched = copy.Where(r => r.TraitList.Contains(requiredTrait)).ToList();
+            if (traitMatched.Count > 0)
+            {
+                var pivot = traitMatched[rng.Next(traitMatched.Count)];
+                picked.Add(pivot);
+                copy.Remove(pivot);
+            }
+        }
+
+        while (picked.Count < count && copy.Count > 0)
+        {
+            var idx = rng.Next(copy.Count);
+            picked.Add(copy[idx]);
+            copy.RemoveAt(idx);
+        }
+
+        RolledBenchRoles = new List<(uint, uint, uint, string)>(picked.Count);
+        for (var i = 0; i < picked.Count; i++)
+        {
+            var role = picked[i];
+            RolledBenchRoles.Add((role.AvatarID, (uint)(14 + i), AllocRoleUniqueId(),
+                role.RoleSavedValueList[0]));
+        }
+        return RolledBenchRoles;
+    }
+
+
     public uint AllocRoleUniqueId() => ++NextRoleUniqueId;
     public uint AllocEquipUniqueId() => ++NextEquipUniqueId;
+    public uint AllocOrbUniqueId() => ++NextOrbUniqueId;
+
+    // 结算快照
+    public uint PreBattleLineupHp { get; set; }
+    public uint PreBattleLevel { get; set; }
+    public uint PreBattleExp { get; set; }
+    public uint PlayerLevel { get; set; } = 2;
+    public uint PlayerExp { get; set; }
+    public uint PlayerMaxLevel { get; } = 10;
+    public uint LevelUpExpNeed { get; } = 4;
+    public uint CampId { get; set; } = 18;
+    public uint PreBattleGold { get; set; }
+    public Proto.GridFightDamageSttInfo? LastBattleDamageStt { get; set; }
+    public List<(uint ItemId, uint UniqueId)> LastRewardedOrbs { get; } = new();
+    public List<Proto.GridFightHpModifyInfo> LastHpModifyTimeline { get; } = new();
+    public Dictionary<uint, Proto.GridFightDropInfo> LastSectionRewards { get; } = new();
 
     public void AdvanceQueue(uint by = 1)
     {
@@ -248,10 +401,11 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     {
         if (shopIndex < 0 || shopIndex >= ShopGoods.Count) return (false, 0, 0, 0);
         var goods = ShopGoods[shopIndex];
-        if (goods.RoleGoodsInfo == null) return (false, 0, 0, 0);
+        if (goods.RoleGoodsInfo == null || goods.IsSoldOut) return (false, 0, 0, 0);
         var price = goods.ShopGoodsPrice;
         if (Gold < price) Gold = price; // 私服宽松：金币不足时仍发买单
         Gold -= price;
+        goods.IsSoldOut = true;
         var roleId = goods.RoleGoodsInfo.RoleId;
         var uniqueId = AllocRoleUniqueId();
         RoleByUniqueId[uniqueId] = roleId;
@@ -283,8 +437,9 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
 
     public bool TryRefreshShop()
     {
-        if (ShopRefreshLeft == 0) ShopRefreshLeft = 1; // 私服宽松
-        ShopRefreshLeft--;
+        // 抓包：GLIFNMBMMBL=2 是刷新单价，不是次数；金币不够也宽松放行
+        var cost = ShopRefreshLeft == 0 ? 2u : ShopRefreshLeft;
+        Gold = Gold < cost ? 0 : Gold - cost;
         RotateShop();
         return true;
     }
@@ -315,15 +470,104 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
         {
             KeepWinCnt++;
             SectionId++;
-            Gold += 5;
-        }
-        else
-        {
-            LineupHp = LineupHp >= 20 ? LineupHp - 20 : 0;
         }
         ShopRefreshLeft = 2;
         RotateShop();
         RefreshEquipDraft();
+    }
+
+    private static readonly uint[] Section1RewardOrbs = { 102u, 199u, 203u, 204u };
+
+    public void RecordBattleSnapshot(PVEBattleResultCsReq req, bool win)
+    {
+        PreBattleLineupHp = LineupHp;
+        PreBattleLevel = PlayerLevel;
+        PreBattleExp = PlayerExp;
+        PreBattleGold = Gold;
+
+        LastBattleDamageStt = new GridFightDamageSttInfo();
+        var activeRoleIds = new HashSet<uint>();
+        if (req.Stt?.OGPOFMOGPIP?.JPDJMCCKENI != null)
+        {
+            foreach (var entry in req.Stt.OGPOFMOGPIP.JPDJMCCKENI)
+            {
+                var roleId = entry.RoleId;
+                if (roleId == 0) continue;
+                var inActive = entry.Damage > 0 || entry.BOIEGPAPHOP > 0;
+                if (inActive) activeRoleIds.Add(roleId);
+                LastBattleDamageStt.EABPCKEDDBH.Add(new HHHMMJBGCNG
+                {
+                    RoleId = roleId,
+                    RoleStar = 1,
+                    TotalDamage = entry.Damage,
+                    LDMNBDIDFCC = inActive,
+                    HNLEDBPGDBC = !inActive
+                });
+            }
+        }
+
+        LastRewardedOrbs.Clear();
+        LastSectionRewards.Clear();
+        LastHpModifyTimeline.Clear();
+
+        if (!win) return;
+
+        // 1-1 通关固定奖励：金币 +3 基础 +1 连胜，4 颗晶矿
+        Gold += 3;
+        Gold += 1;
+        var dropInfo = new GridFightDropInfo();
+        foreach (var orbId in Section1RewardOrbs)
+        {
+            var orbUniqueId = AllocOrbUniqueId();
+            LastRewardedOrbs.Add((orbId, orbUniqueId));
+            dropInfo.PIBLJLBCKJL.Add(new LHPPIAKKFME
+            {
+                BGKDAMDFFKH = GridFightDropType.HiolcnpoponMkppcdpchie,
+                JJFFLMCCCMM = orbId,
+                Num = 1
+            });
+        }
+        LastSectionRewards[2u] = dropInfo;
+
+        PlayerExp += 2;
+        if (PlayerExp >= LevelUpExpNeed && PlayerLevel < PlayerMaxLevel)
+        {
+            PlayerExp -= LevelUpExpNeed;
+            PlayerLevel++;
+        }
+
+        // 完美通关 +2 生命值
+        var perfectClear = req.Stt?.OGPOFMOGPIP?.GMOBFEBBFIE >= 0; // 无阵亡视为完美
+        if (req.EndStatus == BattleEndStatus.BattleEndWin && perfectClear)
+        {
+            LineupHp = Math.Min(LineupMaxHp, LineupHp + 2);
+        }
+
+        // 5 段 HP 变化时间线，最后一段标记 +2
+        var hpBefore = PreBattleLineupHp;
+        foreach (var reason in new[]
+        {
+            GridFightUpdateGlobalHpReason.BakggpnhnneAhikonfebmj,
+            GridFightUpdateGlobalHpReason.BakggpnhnneIkhlilhaiol,
+            GridFightUpdateGlobalHpReason.BakggpnhnnePonicjjabek,
+            GridFightUpdateGlobalHpReason.BakggpnhnneGpdhibafdcg
+        })
+        {
+            LastHpModifyTimeline.Add(new GridFightHpModifyInfo
+            {
+                Reason = reason,
+                FGEDKOINMAG = (int)hpBefore,
+                EHMKLNEKIOE = (int)hpBefore
+            });
+        }
+        LastHpModifyTimeline.Add(new GridFightHpModifyInfo
+        {
+            Reason = GridFightUpdateGlobalHpReason.BakggpnhnneGfimnccfkik,
+            FGEDKOINMAG = (int)PreBattleLineupHp,
+            EHMKLNEKIOE = (int)LineupHp,
+            HPOPDNGCALL = LineupHp - PreBattleLineupHp,
+            PDEKDHPNCEN = 1081
+        });
     }
 
     public GridFightSeasonHandBookNotify BuildHandbookNotifyForBattle()
@@ -338,19 +582,45 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
 
     public GridFightEndBattleStageNotify BuildEndBattleNotify(bool win)
     {
-        return new GridFightEndBattleStageNotify
+        var notify = new GridFightEndBattleStageNotify
         {
             BCOLJFHDLLD = LineupHp,
-            FGEDKOINMAG = LineupHp,
+            FGEDKOINMAG = PreBattleLineupHp,
             IJEIEJLPGGJ = LineupMaxHp,
             KDOINLGKMBI = LineupMaxHp,
             DCPKPNLKGMM = Level,
             NDOCIKPLKIF = NDOCIKPLKIF,
             SectionId = SectionId,
-            EJEIBPEKHLD = 3,
+            EJEIBPEKHLD = PlayerLevel,
             PNOJLNNHBIH = 1,
-            HPOACJCPJHN = win
+            HPOACJCPJHN = win,
+            GCBBEEGANEG = new MIOMFOAEHEC
+            {
+                IPHHGMECAKB = new BLKAIEHOCBC
+                {
+                    Level = PlayerLevel,
+                    Exp = PlayerExp,
+                    DKHKEJIAJBN = LevelUpExpNeed
+                },
+                IJAEBDCFEMG = new BLKAIEHOCBC
+                {
+                    Level = PlayerLevel,
+                    DKHKEJIAJBN = LevelUpExpNeed
+                },
+                MAGCGPMHHEA = 2
+            }
         };
+
+        if (LastBattleDamageStt != null)
+            notify.GridFightDamageSttInfo = LastBattleDamageStt.Clone();
+
+        foreach (var (sectionIdx, drop) in LastSectionRewards)
+            notify.DHMBKAPKJFN[sectionIdx] = drop.Clone();
+
+        foreach (var hp in LastHpModifyTimeline)
+            notify.NNFAFGCGMBB.Add(hp.Clone());
+
+        return notify;
     }
 
     public BattleInstance? StartBattle()
@@ -366,6 +636,7 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     public async ValueTask EndBattle(BattleInstance battle, PVEBattleResultCsReq req)
     {
         var win = req.EndStatus != BattleEndStatus.BattleEndLose;
+        RecordBattleSnapshot(req, win);
         AdvanceQueue(7);
         PendingAction = new GridFightPendingAction
         {
@@ -373,6 +644,7 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
             RoundBeginAction = new GridFightRoundBeginActionInfo()
         };
 
+        await Player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(Player, GridFightSyncKind.PreSettle));
         await Player.SendPacket(new PacketGridFightEndBattleStageNotify(this, win));
         await Player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(Player, GridFightSyncKind.PostBattle));
 
@@ -397,7 +669,7 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
                 PortalBuffAction = new GridFightPortalBuffActionInfo
                 {
                     FCHPJKAIBHB = 1,
-                    GridFightPortalBuffList = { 1115u, 106u, 147u }
+                    GridFightPortalBuffList = { EnsurePortalBuffOffer() }
                 }
             },
             BCHPAOCOHIL = new FCBEHGJBJCN { AMNJHJJMPJF = { CurrentEquipDraft } },
@@ -522,9 +794,9 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
             BossInfo = new GridFightBossInfo(),
             CMHBDMOJJEN = new IKFEDFBLOOG()
         };
-        lvl.HGAHMIPIBLO.Add(new OPBCCOLPDPC { PMOGHFIGKPO = 17 });
-        lvl.HGAHMIPIBLO.Add(new OPBCCOLPDPC { PMOGHFIGKPO = 8 });
-        lvl.HGAHMIPIBLO.Add(new OPBCCOLPDPC { PMOGHFIGKPO = 24 });
+        EnsureSessionPreview();
+        foreach (var campId in SessionCampIds)
+            lvl.HGAHMIPIBLO.Add(new OPBCCOLPDPC { PMOGHFIGKPO = campId });
         foreach (var affix in SectionAffixIds)
             lvl.IAKFPMOEJLF.Add(new DIBJGAKOCLO { AffixId = affix });
         foreach (var portalBuff in ActivePortalBuffIds)

@@ -18,5 +18,6 @@ public class HandlerSummonPetCsReq : Handler
         connection.Player!.Data.Pet = (int)req.SummonedPetId;
 
         await connection.SendPacket(new PacketSummonPetScRsp(curPetId, req.SummonedPetId));
+        await connection.Player.TrainCakeCatchManager!.BroadcastPlayerStateAsync();
     }
 }
