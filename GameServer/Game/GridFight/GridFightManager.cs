@@ -410,21 +410,27 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
         return notify;
     }
 
-    public GridFightCurrentInfo BuildCurrentInfo() => GridFightInstance?.ToProto() ?? new GridFightCurrentInfo
+    public GridFightCurrentInfo BuildCurrentInfo()
     {
-        Season = 1,
-        DivisionId = 10706,
-        UniqueId = CurUniqueId,
-        PendingAction = new GridFightPendingAction
+        if (GridFightInstance != null) return GridFightInstance.ToProto();
+
+        var stub = new GridFightInstance(Player, 1u, 10706u, false, CurUniqueId);
+        return new GridFightCurrentInfo
         {
-            QueuePosition = 1,
-            PortalBuffAction = new GridFightPortalBuffActionInfo
+            Season = 1,
+            DivisionId = 10706,
+            UniqueId = CurUniqueId,
+            PendingAction = new GridFightPendingAction
             {
-                FCHPJKAIBHB = 1,
-                GridFightPortalBuffList = { 1115u, 106u, 147u }
+                QueuePosition = 1,
+                PortalBuffAction = new GridFightPortalBuffActionInfo
+                {
+                    FCHPJKAIBHB = 1,
+                    GridFightPortalBuffList = { stub.RollPortalBuffs() }
+                }
             }
-        }
-    };
+        };
+    }
 
     public (Retcode, GridFightInstance?) StartGamePlay(uint season, uint divisionId, bool isOverLock)
     {

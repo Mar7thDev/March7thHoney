@@ -66,6 +66,50 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     public List<uint> SectionAffixIds { get; } = new() { 1002, 3005, 4010 };
     public List<uint> ActivePortalBuffIds { get; } = new() { 106 };
     public List<uint> AvailablePortalBuffRerolls { get; } = new() { 105, 1014, 132 };
+    public List<uint> CurrentPortalBuffOffer { get; private set; } = new();
+
+    private static readonly uint[] FallbackPortalBuffPool =
+    {
+        101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115,
+        116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 127, 129, 134, 135, 138,
+        147, 1001, 1002, 1003, 1004, 1005, 1007, 1008, 1010, 1014, 1016,
+        1101, 1102, 1104, 1106, 1107, 1108, 1112, 1113, 1114, 1115, 1116, 1118
+    };
+
+    public List<uint> RollPortalBuffs(int count = 3, IEnumerable<uint>? exclude = null)
+    {
+        var pool = (GameData.GridFightSeasonPortalData.TryGetValue(Season, out var seasonPool) && seasonPool.Count > 0)
+            ? seasonPool.ToList()
+            : FallbackPortalBuffPool.ToList();
+        if (exclude != null)
+            foreach (var id in exclude) pool.Remove(id);
+        if (pool.Count <= count)
+        {
+            var fallback = pool.Distinct().ToList();
+            while (fallback.Count < count)
+                fallback.Add(FallbackPortalBuffPool[fallback.Count % FallbackPortalBuffPool.Length]);
+            CurrentPortalBuffOffer = fallback.Take(count).ToList();
+            return CurrentPortalBuffOffer;
+        }
+        var rng = Random.Shared;
+        var picked = new List<uint>(count);
+        while (picked.Count < count)
+        {
+            var idx = rng.Next(pool.Count);
+            picked.Add(pool[idx]);
+            pool.RemoveAt(idx);
+        }
+        CurrentPortalBuffOffer = picked;
+        return CurrentPortalBuffOffer;
+    }
+
+    public List<uint> EnsurePortalBuffOffer()
+    {
+        if (CurrentPortalBuffOffer.Count == 0) RollPortalBuffs();
+        return CurrentPortalBuffOffer;
+    }
+
+    public void ClearPortalBuffOffer() => CurrentPortalBuffOffer = new List<uint>();
 
     // 初始 4 名 bench 角色（PortalBuff 确认后实例化到 pos 15-18）
     public static readonly (uint AvatarId, uint Pos, uint UniqueId, string Component)[] InitialBenchRoles =
@@ -531,7 +575,7 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
                 PortalBuffAction = new GridFightPortalBuffActionInfo
                 {
                     FCHPJKAIBHB = 1,
-                    GridFightPortalBuffList = { 1115u, 106u, 147u }
+                    GridFightPortalBuffList = { EnsurePortalBuffOffer() }
                 }
             },
             BCHPAOCOHIL = new FCBEHGJBJCN { AMNJHJJMPJF = { CurrentEquipDraft } },
