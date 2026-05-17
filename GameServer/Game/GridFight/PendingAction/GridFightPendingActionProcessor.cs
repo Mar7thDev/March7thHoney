@@ -69,7 +69,14 @@ public static class GridFightPendingActionProcessor
     {
         if (buffId > 0 && !inst.ActivePortalBuffIds.Contains(buffId)) inst.ActivePortalBuffIds.Add(buffId);
         inst.ClearPortalBuffOffer();
-        inst.MaterializeInitialBenchTeam();
+
+        uint requiredTrait = 0;
+        if (GameData.GridFightPortalBuffData.TryGetValue(buffId, out var buffData)
+            && buffData.PortalGameRefTrait.Count > 0)
+        {
+            requiredTrait = buffData.PortalGameRefTrait[0];
+        }
+        inst.MaterializeInitialBenchTeam(requiredTrait);
         inst.ConfigureNextBattle(90303, new uint[] { 300101007, 800102021, 300101007 });
 
         var nextPos = ackPos + 1;

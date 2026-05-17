@@ -37,6 +37,7 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     public GridFightPendingAction? PendingAction { get; set; }
     public uint NextRoleUniqueId { get; set; } = 100;
     public uint NextEquipUniqueId { get; set; } = 50;
+    public uint NextOrbUniqueId { get; set; } = 10;
 
     // 角色阵容
     public Dictionary<uint, uint> RoleByUniqueId { get; } = new();
@@ -167,10 +168,15 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     }
 
     // 在 PortalBuffAction 确认后调用，把 4 名 bench 角色加入实例状态
-    public void MaterializeInitialBenchTeam()
+    // requiredTrait > 0 时，至少 1 名角色必须带这个 trait（让选了的星徽能穿上）
+    public void MaterializeInitialBenchTeam(uint requiredTrait = 0)
     {
         if (RoleByUniqueId.Count > 0) return;
-        if (RolledBenchRoles.Count == 0) RollInitialBenchRoles();
+        if (RolledBenchRoles.Count == 0
+            || (requiredTrait > 0 && !RolledBenchRoles.Any(r => RoleHasTrait(r.AvatarId, requiredTrait))))
+        {
+            RollInitialBenchRoles(requiredTrait: requiredTrait);
+        }
         foreach (var (avatarId, pos, uniqueId, _) in RolledBenchRoles)
         {
             RoleByUniqueId[uniqueId] = avatarId;
@@ -179,7 +185,11 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
         }
     }
 
-    public List<(uint AvatarId, uint Pos, uint UniqueId, string Component)> RollInitialBenchRoles(int count = 4)
+    private static bool RoleHasTrait(uint avatarId, uint trait) =>
+        GameData.GridFightRoleBasicInfoData.Values
+            .Any(r => r.AvatarID == avatarId && r.TraitList.Contains(trait));
+
+    public List<(uint AvatarId, uint Pos, uint UniqueId, string Component)> RollInitialBenchRoles(int count = 4, uint requiredTrait = 0)
     {
         var pool = GameData.GridFightRoleBasicInfoData.Values
             .Where(r => r.IsInPool && (r.SeasonID == Season || r.SeasonID == 0))
@@ -190,6 +200,19 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
         var rng = Random.Shared;
         var copy = pool.ToList();
         var picked = new List<GridFightRoleBasicInfoExcel>(count);
+
+        // 抓包确认：官服在选了带 trait 的 buff 后，必至少 1 名 bench 角色带这个 trait，否则星徽穿不上、客户端不前进
+        if (requiredTrait > 0)
+        {
+            var traitMatched = copy.Where(r => r.TraitList.Contains(requiredTrait)).ToList();
+            if (traitMatched.Count > 0)
+            {
+                var pivot = traitMatched[rng.Next(traitMatched.Count)];
+                picked.Add(pivot);
+                copy.Remove(pivot);
+            }
+        }
+
         while (picked.Count < count && copy.Count > 0)
         {
             var idx = rng.Next(copy.Count);
@@ -213,7 +236,6 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     public uint AllocOrbUniqueId() => ++NextOrbUniqueId;
 
     // 结算快照
-    public uint NextOrbUniqueId { get; set; } = 10;
     public uint PreBattleLineupHp { get; set; }
     public uint PreBattleLevel { get; set; }
     public uint PreBattleExp { get; set; }
@@ -379,10 +401,11 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     {
         if (shopIndex < 0 || shopIndex >= ShopGoods.Count) return (false, 0, 0, 0);
         var goods = ShopGoods[shopIndex];
-        if (goods.RoleGoodsInfo == null) return (false, 0, 0, 0);
+        if (goods.RoleGoodsInfo == null || goods.IsSoldOut) return (false, 0, 0, 0);
         var price = goods.ShopGoodsPrice;
         if (Gold < price) Gold = price; // 私服宽松：金币不足时仍发买单
         Gold -= price;
+        goods.IsSoldOut = true;
         var roleId = goods.RoleGoodsInfo.RoleId;
         var uniqueId = AllocRoleUniqueId();
         RoleByUniqueId[uniqueId] = roleId;
@@ -414,8 +437,9 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
 
     public bool TryRefreshShop()
     {
-        if (ShopRefreshLeft == 0) ShopRefreshLeft = 1; // 私服宽松
-        ShopRefreshLeft--;
+        // 抓包：GLIFNMBMMBL=2 是刷新单价，不是次数；金币不够也宽松放行
+        var cost = ShopRefreshLeft == 0 ? 2u : ShopRefreshLeft;
+        Gold = Gold < cost ? 0 : Gold - cost;
         RotateShop();
         return true;
     }
