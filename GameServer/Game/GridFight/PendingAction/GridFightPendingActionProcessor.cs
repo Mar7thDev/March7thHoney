@@ -1,3 +1,4 @@
+using March7thHoney.Data;
 using March7thHoney.GameServer.Game.GridFight.Sync;
 using March7thHoney.GameServer.Server.Packet.Send.GridFight;
 using March7thHoney.GameServer.Server;
@@ -44,7 +45,7 @@ public static class GridFightPendingActionProcessor
 
     private static async System.Threading.Tasks.Task HandlePortalBuffReroll(Connection connection, GridFightInstance inst, uint ackPos)
     {
-        var newBuffList = new List<uint> { 105u, 1014u, 132u };
+        var newBuffList = inst.RollPortalBuffs(exclude: inst.CurrentPortalBuffOffer.ToList());
         inst.QueuePosition = ackPos;
         inst.PendingAction = new GridFightPendingAction
         {
@@ -53,7 +54,7 @@ public static class GridFightPendingActionProcessor
         };
 
         var notify = new GridFightSeasonHandBookNotify { HandbookGridFightPortalInfo = new GridFightHandBookPortalInfo() };
-        notify.HandbookGridFightPortalInfo.PELJLONLDNM.Add(132u);
+        foreach (var buffId in newBuffList) notify.HandbookGridFightPortalInfo.PELJLONLDNM.Add(buffId);
         await connection.SendPacket(new PacketGridFightSeasonHandBookNotify(notify));
         await connection.SendPacket(new PacketGridFightHandlePendingActionScRsp(ackPos));
 
@@ -67,7 +68,15 @@ public static class GridFightPendingActionProcessor
     private static async System.Threading.Tasks.Task HandlePortalBuffSelect(Connection connection, GridFightInstance inst, uint ackPos, uint buffId)
     {
         if (buffId > 0 && !inst.ActivePortalBuffIds.Contains(buffId)) inst.ActivePortalBuffIds.Add(buffId);
-        inst.MaterializeInitialBenchTeam();
+        inst.ClearPortalBuffOffer();
+
+        uint requiredTrait = 0;
+        if (GameData.GridFightPortalBuffData.TryGetValue(buffId, out var buffData)
+            && buffData.PortalGameRefTrait.Count > 0)
+        {
+            requiredTrait = buffData.PortalGameRefTrait[0];
+        }
+        inst.MaterializeInitialBenchTeam(requiredTrait);
         inst.ConfigureNextBattle(90303, new uint[] { 300101007, 800102021, 300101007 });
 
         var nextPos = ackPos + 1;
@@ -84,41 +93,35 @@ public static class GridFightPendingActionProcessor
         await connection.SendPacket(new PacketGridFightHandlePendingActionScRsp(ackPos));
 
         var sync = new GridFightSyncUpdateResultScNotify();
-        var sec0 = new GridFightSyncResultData { GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpPnejelgglej };
-        var equipUid = inst.AllocEquipUniqueId();
-        sec0.SyncEffectParamList.Add(buffId);
-        sec0.UpdateDynamicList.Add(new GridFightSyncData
-        {
-            AddGameItemInfo = new GridFightGameItemSyncInfo
-            {
-                GridFightEquipmentList =
-                {
-                    new GridFightEquipmentInfo { GridFightEquipmentId = 350602, Source = 1, UniqueId = equipUid }
-                }
-            }
-        });
-        sync.SyncResultDataList.Add(sec0);
 
-        var sec1 = new GridFightSyncResultData { GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpPnejelgglej };
-        var forgeUid = inst.AllocEquipUniqueId();
-        sec1.SyncEffectParamList.Add(buffId);
-        sec1.UpdateDynamicList.Add(new GridFightSyncData
+        var grantedEquipIds = new List<uint>();
+        if (GameData.GridFightPortalBuffData.TryGetValue(buffId, out var portalBuffData))
         {
-            AddForgeInfo = new GridGameForgeItemInfo
+            // 抓包确认：buff 派的是 ShowBonusIDList 里的星徽，EffectParamList 是另一码事
+            foreach (var bonusId in portalBuffData.ShowBonusIDList)
             {
-                ForgeItemId = 99999,
-                Pos = 14,
-                UniqueId = forgeUid,
-                ForgeGoodsList =
-                {
-                    new GridFightForgeGoodsInfo { EquipmentGoodsInfo = new GridFightForgeEquipmentInfo { GridFightEquipmentId = 350204 } },
-                    new GridFightForgeGoodsInfo { EquipmentGoodsInfo = new GridFightForgeEquipmentInfo { GridFightEquipmentId = 350205 } },
-                    new GridFightForgeGoodsInfo { EquipmentGoodsInfo = new GridFightForgeEquipmentInfo { GridFightEquipmentId = 350208 } },
-                    new GridFightForgeGoodsInfo { EquipmentGoodsInfo = new GridFightForgeEquipmentInfo { GridFightEquipmentId = 350207 } }
-                }
+                if (GameData.GridFightEquipmentData.ContainsKey(bonusId))
+                    grantedEquipIds.Add(bonusId);
             }
-        });
-        sync.SyncResultDataList.Add(sec1);
+        }
+        if (grantedEquipIds.Count > 0)
+        {
+            var sec0 = new GridFightSyncResultData { GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpPnejelgglej };
+            sec0.SyncEffectParamList.Add(buffId);
+            sec0.SyncEffectParamList.Add(0u);
+            var addItemInfo = new GridFightGameItemSyncInfo();
+            foreach (var equipId in grantedEquipIds)
+            {
+                addItemInfo.GridFightEquipmentList.Add(new GridFightEquipmentInfo
+                {
+                    GridFightEquipmentId = equipId,
+                    Source = 1,
+                    UniqueId = inst.AllocEquipUniqueId()
+                });
+            }
+            sec0.UpdateDynamicList.Add(new GridFightSyncData { AddGameItemInfo = addItemInfo });
+            sync.SyncResultDataList.Add(sec0);
+        }
 
         var sec2 = new GridFightSyncResultData { GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpHndkhmefaal };
         sec2.UpdateDynamicList.Add(new GridFightSyncData { PortalServerDataUpdate = new GridFightPortalServerDataUpdate { PortalBuffId = buffId } });
@@ -126,7 +129,7 @@ public static class GridFightPendingActionProcessor
 
         var sec3 = new GridFightSyncResultData { GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpBjdeaahibge };
         sec3.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = inst.Gold });
-        foreach (var (avatarId, pos, uniqueId, component) in GridFightInstance.InitialBenchRoles)
+        foreach (var (avatarId, pos, uniqueId, component) in inst.RolledBenchRoles)
         {
             sec3.UpdateDynamicList.Add(new GridFightSyncData
             {
