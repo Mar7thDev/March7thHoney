@@ -24,5 +24,6 @@ public class HandlerSetPlayerOutfitCsReq : Handler
 
         await connection.SendPacket(new PacketPlayerSyncScNotify(player.Data.ToPlayerOutfitProto()));
         await connection.SendPacket(new PacketSetPlayerOutfitScRsp());
+        await player.TrainCakeCatchManager!.BroadcastPlayerStateAsync();
     }
 }

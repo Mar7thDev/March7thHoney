@@ -2,6 +2,7 @@ using March7thHoney.Data;
 using March7thHoney.GameServer.Game.Scene.Entity;
 using March7thHoney.Enums.Scene;
 using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
 using March7thHoney.Util;
@@ -21,14 +22,23 @@ public class PacketGetSceneMapInfoScRsp : BasePacket
             var mazeMap = new SceneMapInfo
             {
                 FloorId = floorId,
+                DimensionId = player.SceneInstance?.FloorId == floorId
+                    ? (uint)player.SceneInstance.ResolveDimensionId()
+                    : 0,
                 // Keep SceneIdentifier in sync with floor to satisfy newer client map-info parsing.
                 SceneIdentifier = new SceneIdentifier
                 {
                     FloorId = floorId
                 }
-                //DimensionId = (uint)(player.SceneInstance?.EntityLoader is StoryLineEntityLoader loader ? loader.DimensionId
-                //    : 0)
             };
+            var roomOwnerUid = player.TrainCakeCatchManager?.GetSceneTeleportRoomOwnerUid();
+            if (sceneIdentifier.TeleportInfo != null || roomOwnerUid != null)
+            {
+                mazeMap.SceneIdentifier.TeleportInfo = new TeleportInfo
+                {
+                    TeleportId = roomOwnerUid ?? sceneIdentifier.TeleportInfo?.TeleportId ?? 0
+                };
+            }
             var mapDatas = GameData.MapEntranceData.Values.Where(x => x.FloorID == floorId).ToList();
 
             if (mapDatas.Count == 0)
@@ -44,6 +54,9 @@ public class PacketGetSceneMapInfoScRsp : BasePacket
                 rsp.SceneMapInfo.Add(mazeMap);
                 continue;
             }
+
+            if (mazeMap.DimensionId == 0)
+                mazeMap.DimensionId = (uint)SceneInstance.ResolveDimensionId(floorInfo, mapData.ID);
 
             mazeMap.ChestList.Add(new ChestInfo
             {
