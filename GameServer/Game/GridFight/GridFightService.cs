@@ -26,7 +26,7 @@ public sealed class GridFightService(PlayerInstance player)
                 PortalBuffAction = new GridFightPortalBuffActionInfo
                 {
                     FCHPJKAIBHB = 1,
-                    GridFightPortalBuffList = { 1115u, 106u, 147u }
+                    GridFightPortalBuffList = { inst.EnsurePortalBuffOffer() }
                 }
             };
         }
