@@ -63,7 +63,8 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     };
 
     // 区段固定数据（增益、关卡）
-    public List<uint> SectionAffixIds { get; } = new() { 1002, 3005, 4010 };
+    public List<uint> SectionAffixIds { get; private set; } = new();
+    public List<uint> SessionCampIds { get; private set; } = new();
     public List<uint> ActivePortalBuffIds { get; } = new() { 106 };
     public List<uint> AvailablePortalBuffRerolls { get; } = new() { 105, 1014, 132 };
     public List<uint> CurrentPortalBuffOffer { get; private set; } = new();
@@ -124,6 +125,55 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     {
         // 抓包确认：StartGamePlay 后初始团队为空，角色在 PortalBuff 确认时通过 sync 实例化
         if (ShopGoods.Count == 0) RotateShop();
+        EnsureSessionPreview();
+    }
+
+    public void EnsureSessionPreview()
+    {
+        if (SessionCampIds.Count == 0) SessionCampIds = RollSessionCamps();
+        if (SectionAffixIds.Count == 0) SectionAffixIds = RollSessionAffixes();
+    }
+
+    private List<uint> RollSessionCamps(int count = 3)
+    {
+        var pool = GameData.GridFightCampData.Values
+            .Where(c => c.SeasonID == Season || c.SeasonID == 0)
+            .Select(c => c.ID)
+            .Distinct()
+            .ToList();
+        if (pool.Count == 0)
+            pool = new List<uint> { 1, 2, 4, 5, 6, 8, 10, 11, 12, 13, 15, 16, 17, 23, 24, 25, 26, 27, 28 };
+        return PickDistinct(pool, count);
+    }
+
+    private List<uint> RollSessionAffixes()
+    {
+        var totalCount = 3;
+        if (GameData.GridFightDivisionStageData.TryGetValue(DivisionId, out var stage)
+            && stage.AffixChooseNumList.Count > 0)
+        {
+            totalCount = (int)stage.AffixChooseNumList.Sum(x => x);
+        }
+        if (totalCount <= 0) return new List<uint>();
+        var pool = GameData.GridFightAffixConfigData.Keys.ToList();
+        if (pool.Count == 0)
+            pool = new List<uint> { 1001, 1002, 1003, 1004, 1005, 2002, 2003, 2004, 2005, 2006, 3001, 3002, 3003, 3004, 3005, 3006, 3007, 3008, 4001, 4002, 4003, 4005, 4006, 4007, 4008, 4009, 4010, 4011, 4012, 4013 };
+        return PickDistinct(pool, totalCount);
+    }
+
+    private static List<uint> PickDistinct(List<uint> pool, int count)
+    {
+        var rng = Random.Shared;
+        var copy = pool.ToList();
+        var picked = new List<uint>(count);
+        while (picked.Count < count && copy.Count > 0)
+        {
+            var idx = rng.Next(copy.Count);
+            picked.Add(copy[idx]);
+            copy.RemoveAt(idx);
+        }
+        while (picked.Count < count) picked.Add(pool[picked.Count % Math.Max(1, pool.Count)]);
+        return picked;
     }
 
     // 在 PortalBuffAction 确认后调用，把 4 名 bench 角色加入实例状态
@@ -700,9 +750,9 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
             BossInfo = new GridFightBossInfo(),
             CMHBDMOJJEN = new IKFEDFBLOOG()
         };
-        lvl.HGAHMIPIBLO.Add(new OPBCCOLPDPC { PMOGHFIGKPO = 17 });
-        lvl.HGAHMIPIBLO.Add(new OPBCCOLPDPC { PMOGHFIGKPO = 8 });
-        lvl.HGAHMIPIBLO.Add(new OPBCCOLPDPC { PMOGHFIGKPO = 24 });
+        EnsureSessionPreview();
+        foreach (var campId in SessionCampIds)
+            lvl.HGAHMIPIBLO.Add(new OPBCCOLPDPC { PMOGHFIGKPO = campId });
         foreach (var affix in SectionAffixIds)
             lvl.IAKFPMOEJLF.Add(new DIBJGAKOCLO { AffixId = affix });
         foreach (var portalBuff in ActivePortalBuffIds)
