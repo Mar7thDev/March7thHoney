@@ -46,6 +46,44 @@ public class SceneInstance
 
     #region Serialization
 
+    public int ResolveDimensionId()
+    {
+        if (EntityLoader is StoryLineEntityLoader loader && loader.DimensionId != 0)
+            return loader.DimensionId;
+
+        return ResolveDimensionId(FloorInfo, EntryId, Groups);
+    }
+
+    public static int ResolveDimensionId(FloorInfo? floorInfo, int entryId = 0, IEnumerable<int>? preferredGroupIds = null)
+    {
+        if (floorInfo == null)
+            return 0;
+
+        HashSet<int> candidateGroupIds = [];
+        if (entryId != 0
+            && GameData.MapEntranceData.TryGetValue(entryId, out var entrance)
+            && entrance.FloorID == floorInfo.FloorID)
+            candidateGroupIds.Add(entrance.StartGroupID);
+
+        if (floorInfo.StartGroupID != 0)
+            candidateGroupIds.Add(floorInfo.StartGroupID);
+
+        if (preferredGroupIds != null)
+            foreach (var groupId in preferredGroupIds.Where(groupId => groupId != 0))
+                candidateGroupIds.Add(groupId);
+
+        foreach (var groupId in candidateGroupIds)
+        {
+            var dimension = floorInfo.DimensionList.FirstOrDefault(info => info.GroupIDList.Contains(groupId));
+            if (dimension != null)
+                return dimension.ID;
+        }
+
+        return floorInfo.DimensionList.FirstOrDefault(info => info.ID != 0)?.ID
+               ?? floorInfo.DimensionList.FirstOrDefault()?.ID
+               ?? 0;
+    }
+
     public SceneInfo ToProto()
     {
         SceneInfo sceneInfo = new()
@@ -56,7 +94,7 @@ public class SceneInstance
             FloorId = (uint)FloorId,
             EntryId = (uint)EntryId,
             SceneMissionInfo = new MissionStatusBySceneInfo(),
-            DimensionId = (uint)(EntityLoader is StoryLineEntityLoader loader ? loader.DimensionId : 0),
+            DimensionId = (uint)ResolveDimensionId(),
             GameStoryLineId = (uint)(Player.StoryLineManager?.StoryLineData.CurStoryLineId ?? 0),
             // 4.2.0 client expects SceneInfo.SceneIdentifier to be present during scene sync.
             SceneIdentifier = new SceneIdentifier
@@ -65,6 +103,12 @@ public class SceneInstance
                 GameStoryLineId = (uint)(Player.StoryLineManager?.StoryLineData.CurStoryLineId ?? 0)
             }
         };
+
+        if (Player.TrainCakeCatchManager?.GetSceneTeleportRoomOwnerUid() is { } roomOwnerUid)
+            sceneInfo.SceneIdentifier.TeleportInfo = new TeleportInfo
+            {
+                TeleportId = roomOwnerUid
+            };
 
         var playerGroupInfo = new SceneEntityGroupInfo(); // avatar group
         foreach (var avatar in AvatarInfo)

@@ -159,6 +159,7 @@ public static class GameData
     public static Dictionary<uint, Dictionary<uint, GridFightTraitLayerExcel>> GridFightTraitLayerData { get; private set; } = [];
     public static Dictionary<uint, Dictionary<uint, GridFightTraitEffectLayerPaExcel>> GridFightTraitEffectLayerPaData { get; private set; } = [];
     public static Dictionary<uint, GridFightSeasonTalentExcel> GridFightSeasonTalentData { get; private set; } = [];
+    public static Dictionary<uint, List<uint>> GridFightSeasonPortalData { get; private set; } = [];
     public static Dictionary<uint, Dictionary<uint, GridFightStageRouteExcel>> GridFightStageRouteData { get; private set; } = [];
     public static Dictionary<uint, GridFightNodeTemplateExcel> GridFightNodeTemplateData { get; private set; } = [];
 

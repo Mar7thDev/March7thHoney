@@ -9,7 +9,7 @@ public sealed class GridFightService(PlayerInstance player)
 
     public GridFightInstance? Current => Manager.GridFightInstance;
 
-    public GridFightInstance EnsureOrStart(uint season = 1, uint divisionId = 10939, bool isOverlock = false)
+    public GridFightInstance EnsureOrStart(uint season = 1, uint divisionId = 10940, bool isOverlock = false)
     {
         var (_, inst) = Manager.StartGamePlay(season, divisionId, isOverlock);
         return inst!;
@@ -26,7 +26,7 @@ public sealed class GridFightService(PlayerInstance player)
                 PortalBuffAction = new GridFightPortalBuffActionInfo
                 {
                     FCHPJKAIBHB = 1,
-                    GridFightPortalBuffList = { 1115u, 106u, 147u }
+                    GridFightPortalBuffList = { inst.EnsurePortalBuffOffer() }
                 }
             };
         }

@@ -21,7 +21,7 @@ public class PacketSceneGroupRefreshScNotify : BasePacket
         var proto = new SceneGroupRefreshScNotify
         {
             FloorId = (uint)player.Data.FloorId,
-            DimensionId = (uint)((player.SceneInstance!.EntityLoader as StoryLineEntityLoader)?.DimensionId ?? 0)
+            DimensionId = (uint)player.SceneInstance!.ResolveDimensionId()
         };
         Dictionary<int, GroupRefreshInfo> refreshInfo = [];
 
@@ -79,7 +79,7 @@ public class PacketSceneGroupRefreshScNotify : BasePacket
         var proto = new SceneGroupRefreshScNotify
         {
             FloorId = (uint)scene.FloorId,
-            DimensionId = (uint)((scene.EntityLoader as StoryLineEntityLoader)?.DimensionId ?? 0)
+            DimensionId = (uint)scene.ResolveDimensionId()
         };
 
         Dictionary<int, List<GroupPropertyRefreshData>> refreshDataDict = [];
