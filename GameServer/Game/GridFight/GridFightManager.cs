@@ -403,12 +403,6 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
             notify.EDKJMPACHNJ.IAKFPMOEJLF.Add(new DIBJGAKOCLO { AffixId = affixId });
         foreach (var equip in inst?.Equipments ?? new List<GridFightEquipmentInfo>())
             notify.EDKJMPACHNJ.GridFightEquipmentList.Add(equip);
-        if (notify.EDKJMPACHNJ.GridFightEquipmentList.Count == 0)
-            notify.EDKJMPACHNJ.GridFightEquipmentList.Add(new GridFightEquipmentInfo
-            {
-                GridFightEquipmentId = 350205,
-                UniqueId = 10
-            });
 
         return notify;
     }

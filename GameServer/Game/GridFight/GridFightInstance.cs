@@ -54,14 +54,8 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     // 装备草稿与背包
     public List<uint> StageCandidates { get; } = new() { 35030205, 35030405, 35030208, 350202, 35030606 };
     public List<uint> CurrentEquipDraft { get; private set; } = new() { 35030205u, 35030405u, 35030208u };
-    public List<GridFightEquipmentInfo> Equipments { get; } = new()
-    {
-        new GridFightEquipmentInfo { GridFightEquipmentId = 350205, Source = 1, UniqueId = 10 }
-    };
-    public List<GridFightConsumableInfo> Consumables { get; } = new()
-    {
-        new GridFightConsumableInfo { ItemId = 350101, Num = 1 }
-    };
+    public List<GridFightEquipmentInfo> Equipments { get; } = new();
+    public List<GridFightConsumableInfo> Consumables { get; } = new();
 
     // 区段固定数据（增益、关卡）
     public List<uint> SectionAffixIds { get; private set; } = new();
