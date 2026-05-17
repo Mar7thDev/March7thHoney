@@ -73,6 +73,7 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
             GridFightSyncKind.RecycleRole    => BuildRecycleRoleSync(extra),
             GridFightSyncKind.BuyExp         => BuildBuyExpSync(),
             GridFightSyncKind.PostBattle     => BuildPostBattleSync(),
+            GridFightSyncKind.PreSettle      => BuildPreSettleSync(),
             GridFightSyncKind.NoOp           => new GridFightSyncUpdateResultScNotify(),
             _                                => new GridFightSyncUpdateResultScNotify()
         };
@@ -242,8 +243,40 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
         var notify = new GridFightSyncUpdateResultScNotify();
         var inst = GridFightInstance;
         if (inst == null) return notify;
-        var sync = new GridFightSyncResultData();
-        sync.UpdateDynamicList.Add(new GridFightSyncData
+
+        var levelSync = new GridFightSyncResultData();
+        var levelInfo = new GridFightLevelSyncInfo
+        {
+            DCPKPNLKGMM = inst.Level,
+            SectionId = inst.SectionId + 1,
+            GridFightLayerInfo = new GridFightLayerInfo
+            {
+                RouteInfo = new GridFightRouteInfo
+                {
+                    EliteBranchId = 1,
+                    FightCampId = inst.CampId
+                }
+            }
+        };
+        var encounter = new GridFightEncounterInfo { LFKBMDHKPFI = 90304 };
+        var wave = new GridEncounterMonsterWave { IGMMPDDCJIN = 1 };
+        foreach (var monsterId in new uint[] { 800101020u, 800105007u, 800105007u, 800105007u, 800104004u })
+            wave.PPOEDDFFEKK.Add(new PJLBDMPEKFP { MonsterId = monsterId, RoleStar = 1 });
+        encounter.MonsterWaveList.Add(wave);
+        levelInfo.GridFightLayerInfo.RouteInfo.RouteEncounterList.Add(encounter);
+        levelSync.UpdateDynamicList.Add(new GridFightSyncData { LevelSyncInfo = levelInfo });
+        notify.SyncResultDataList.Add(levelSync);
+
+        var lockSync = new GridFightSyncResultData();
+        lockSync.UpdateDynamicList.Add(new GridFightSyncData
+        {
+            SyncLockInfo = new GridFightLockInfo
+            {
+                LockReason = GridFightLockReason.DfofffceffoKjmjdbjmbmc,
+                LockType = GridFightLockType.PjbmhhnlclbEhfhdgpocnh
+            }
+        });
+        lockSync.UpdateDynamicList.Add(new GridFightSyncData
         {
             PendingAction = inst.PendingAction ?? new GridFightPendingAction
             {
@@ -251,7 +284,77 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
                 RoundBeginAction = new GridFightRoundBeginActionInfo()
             }
         });
-        notify.SyncResultDataList.Add(sync);
+        notify.SyncResultDataList.Add(lockSync);
+
+        return notify;
+    }
+
+    private GridFightSyncUpdateResultScNotify BuildPreSettleSync()
+    {
+        var notify = new GridFightSyncUpdateResultScNotify();
+        var inst = GridFightInstance;
+        if (inst == null) return notify;
+
+        var unlock = new GridFightSyncResultData();
+        unlock.UpdateDynamicList.Add(new GridFightSyncData { SyncLockInfo = new GridFightLockInfo() });
+        notify.SyncResultDataList.Add(unlock);
+
+        var stt = new GridFightSyncResultData
+        {
+            GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpJalhdinecfe
+        };
+        stt.SyncEffectParamList.Add(1u);
+        stt.SyncEffectParamList.Add(1u);
+        if (inst.LastBattleDamageStt != null)
+            stt.UpdateDynamicList.Add(new GridFightSyncData { GridFightDamageSttInfo = inst.LastBattleDamageStt.Clone() });
+        stt.UpdateDynamicList.Add(new GridFightSyncData
+        {
+            GridFightLineupHp = new GridFightLineupHpSyncInfo
+            {
+                GridFightLineupHp = inst.LineupHp,
+                GridFightLineupMaxHp = inst.LineupMaxHp
+            }
+        });
+        stt.UpdateDynamicList.Add(new GridFightSyncData
+        {
+            SectionRecordSyncInfo = new GridFightSectionRecordInfo
+            {
+                DCPKPNLKGMM = inst.Level,
+                SectionId = inst.SectionId,
+                CampRecordInfo = new GridFightSectionCampRecordInfo { PMOGHFIGKPO = inst.CampId }
+            }
+        });
+        notify.SyncResultDataList.Add(stt);
+
+        var rewards = new GridFightSyncResultData
+        {
+            GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpJalhdinecfe
+        };
+        rewards.SyncEffectParamList.Add(1u);
+        rewards.SyncEffectParamList.Add(1u);
+        rewards.UpdateDynamicList.Add(new GridFightSyncData
+        {
+            PlayerLevel = new GridFightPlayerLevelSyncInfo
+            {
+                Level = inst.PlayerLevel,
+                Exp = inst.PlayerExp,
+                MaxLevel = inst.PlayerMaxLevel
+            }
+        });
+        if (inst.Gold > inst.PreBattleGold)
+        {
+            rewards.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = inst.PreBattleGold + 3u });
+            rewards.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = inst.Gold });
+        }
+        foreach (var (itemId, uniqueId) in inst.LastRewardedOrbs)
+        {
+            rewards.UpdateDynamicList.Add(new GridFightSyncData
+            {
+                OrbSyncInfo = new GridFightOrbSyncInfo { OrbItemId = itemId, UniqueId = uniqueId }
+            });
+        }
+        notify.SyncResultDataList.Add(rewards);
+
         return notify;
     }
 
