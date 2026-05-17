@@ -96,6 +96,23 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
 
     public uint AllocRoleUniqueId() => ++NextRoleUniqueId;
     public uint AllocEquipUniqueId() => ++NextEquipUniqueId;
+    public uint AllocOrbUniqueId() => ++NextOrbUniqueId;
+
+    // 结算快照
+    public uint NextOrbUniqueId { get; set; } = 10;
+    public uint PreBattleLineupHp { get; set; }
+    public uint PreBattleLevel { get; set; }
+    public uint PreBattleExp { get; set; }
+    public uint PlayerLevel { get; set; } = 2;
+    public uint PlayerExp { get; set; }
+    public uint PlayerMaxLevel { get; } = 10;
+    public uint LevelUpExpNeed { get; } = 4;
+    public uint CampId { get; set; } = 18;
+    public uint PreBattleGold { get; set; }
+    public Proto.GridFightDamageSttInfo? LastBattleDamageStt { get; set; }
+    public List<(uint ItemId, uint UniqueId)> LastRewardedOrbs { get; } = new();
+    public List<Proto.GridFightHpModifyInfo> LastHpModifyTimeline { get; } = new();
+    public Dictionary<uint, Proto.GridFightDropInfo> LastSectionRewards { get; } = new();
 
     public void AdvanceQueue(uint by = 1)
     {
@@ -315,15 +332,104 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
         {
             KeepWinCnt++;
             SectionId++;
-            Gold += 5;
-        }
-        else
-        {
-            LineupHp = LineupHp >= 20 ? LineupHp - 20 : 0;
         }
         ShopRefreshLeft = 2;
         RotateShop();
         RefreshEquipDraft();
+    }
+
+    private static readonly uint[] Section1RewardOrbs = { 102u, 199u, 203u, 204u };
+
+    public void RecordBattleSnapshot(PVEBattleResultCsReq req, bool win)
+    {
+        PreBattleLineupHp = LineupHp;
+        PreBattleLevel = PlayerLevel;
+        PreBattleExp = PlayerExp;
+        PreBattleGold = Gold;
+
+        LastBattleDamageStt = new GridFightDamageSttInfo();
+        var activeRoleIds = new HashSet<uint>();
+        if (req.Stt?.OGPOFMOGPIP?.JPDJMCCKENI != null)
+        {
+            foreach (var entry in req.Stt.OGPOFMOGPIP.JPDJMCCKENI)
+            {
+                var roleId = entry.RoleId;
+                if (roleId == 0) continue;
+                var inActive = entry.Damage > 0 || entry.BOIEGPAPHOP > 0;
+                if (inActive) activeRoleIds.Add(roleId);
+                LastBattleDamageStt.EABPCKEDDBH.Add(new HHHMMJBGCNG
+                {
+                    RoleId = roleId,
+                    RoleStar = 1,
+                    TotalDamage = entry.Damage,
+                    LDMNBDIDFCC = inActive,
+                    HNLEDBPGDBC = !inActive
+                });
+            }
+        }
+
+        LastRewardedOrbs.Clear();
+        LastSectionRewards.Clear();
+        LastHpModifyTimeline.Clear();
+
+        if (!win) return;
+
+        // 1-1 通关固定奖励：金币 +3 基础 +1 连胜，4 颗晶矿
+        Gold += 3;
+        Gold += 1;
+        var dropInfo = new GridFightDropInfo();
+        foreach (var orbId in Section1RewardOrbs)
+        {
+            var orbUniqueId = AllocOrbUniqueId();
+            LastRewardedOrbs.Add((orbId, orbUniqueId));
+            dropInfo.PIBLJLBCKJL.Add(new LHPPIAKKFME
+            {
+                BGKDAMDFFKH = GridFightDropType.HiolcnpoponMkppcdpchie,
+                JJFFLMCCCMM = orbId,
+                Num = 1
+            });
+        }
+        LastSectionRewards[2u] = dropInfo;
+
+        PlayerExp += 2;
+        if (PlayerExp >= LevelUpExpNeed && PlayerLevel < PlayerMaxLevel)
+        {
+            PlayerExp -= LevelUpExpNeed;
+            PlayerLevel++;
+        }
+
+        // 完美通关 +2 生命值
+        var perfectClear = req.Stt?.OGPOFMOGPIP?.GMOBFEBBFIE >= 0; // 无阵亡视为完美
+        if (req.EndStatus == BattleEndStatus.BattleEndWin && perfectClear)
+        {
+            LineupHp = Math.Min(LineupMaxHp, LineupHp + 2);
+        }
+
+        // 5 段 HP 变化时间线，最后一段标记 +2
+        var hpBefore = PreBattleLineupHp;
+        foreach (var reason in new[]
+        {
+            GridFightUpdateGlobalHpReason.BakggpnhnneAhikonfebmj,
+            GridFightUpdateGlobalHpReason.BakggpnhnneIkhlilhaiol,
+            GridFightUpdateGlobalHpReason.BakggpnhnnePonicjjabek,
+            GridFightUpdateGlobalHpReason.BakggpnhnneGpdhibafdcg
+        })
+        {
+            LastHpModifyTimeline.Add(new GridFightHpModifyInfo
+            {
+                Reason = reason,
+                FGEDKOINMAG = (int)hpBefore,
+                EHMKLNEKIOE = (int)hpBefore
+            });
+        }
+        LastHpModifyTimeline.Add(new GridFightHpModifyInfo
+        {
+            Reason = GridFightUpdateGlobalHpReason.BakggpnhnneGfimnccfkik,
+            FGEDKOINMAG = (int)PreBattleLineupHp,
+            EHMKLNEKIOE = (int)LineupHp,
+            HPOPDNGCALL = LineupHp - PreBattleLineupHp,
+            PDEKDHPNCEN = 1081
+        });
     }
 
     public GridFightSeasonHandBookNotify BuildHandbookNotifyForBattle()
@@ -338,19 +444,45 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
 
     public GridFightEndBattleStageNotify BuildEndBattleNotify(bool win)
     {
-        return new GridFightEndBattleStageNotify
+        var notify = new GridFightEndBattleStageNotify
         {
             BCOLJFHDLLD = LineupHp,
-            FGEDKOINMAG = LineupHp,
+            FGEDKOINMAG = PreBattleLineupHp,
             IJEIEJLPGGJ = LineupMaxHp,
             KDOINLGKMBI = LineupMaxHp,
             DCPKPNLKGMM = Level,
             NDOCIKPLKIF = NDOCIKPLKIF,
             SectionId = SectionId,
-            EJEIBPEKHLD = 3,
+            EJEIBPEKHLD = PlayerLevel,
             PNOJLNNHBIH = 1,
-            HPOACJCPJHN = win
+            HPOACJCPJHN = win,
+            GCBBEEGANEG = new MIOMFOAEHEC
+            {
+                IPHHGMECAKB = new BLKAIEHOCBC
+                {
+                    Level = PlayerLevel,
+                    Exp = PlayerExp,
+                    DKHKEJIAJBN = LevelUpExpNeed
+                },
+                IJAEBDCFEMG = new BLKAIEHOCBC
+                {
+                    Level = PlayerLevel,
+                    DKHKEJIAJBN = LevelUpExpNeed
+                },
+                MAGCGPMHHEA = 2
+            }
         };
+
+        if (LastBattleDamageStt != null)
+            notify.GridFightDamageSttInfo = LastBattleDamageStt.Clone();
+
+        foreach (var (sectionIdx, drop) in LastSectionRewards)
+            notify.DHMBKAPKJFN[sectionIdx] = drop.Clone();
+
+        foreach (var hp in LastHpModifyTimeline)
+            notify.NNFAFGCGMBB.Add(hp.Clone());
+
+        return notify;
     }
 
     public BattleInstance? StartBattle()
@@ -366,6 +498,7 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     public async ValueTask EndBattle(BattleInstance battle, PVEBattleResultCsReq req)
     {
         var win = req.EndStatus != BattleEndStatus.BattleEndLose;
+        RecordBattleSnapshot(req, win);
         AdvanceQueue(7);
         PendingAction = new GridFightPendingAction
         {
@@ -373,6 +506,7 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
             RoundBeginAction = new GridFightRoundBeginActionInfo()
         };
 
+        await Player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(Player, GridFightSyncKind.PreSettle));
         await Player.SendPacket(new PacketGridFightEndBattleStageNotify(this, win));
         await Player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(Player, GridFightSyncKind.PostBattle));
 
