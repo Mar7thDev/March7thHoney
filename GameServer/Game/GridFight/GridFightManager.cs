@@ -10,11 +10,14 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
     public GridFightInstance? GridFightInstance { get; set; }
     public uint CurUniqueId { get; set; }
 
+    private static uint MaxDivisionId() =>
+        GameData.GridFightDivisionInfoData.Count > 0
+            ? GameData.GridFightDivisionInfoData.Keys.Max()
+            : 10940u;
+
     public GridFightSystemInfo ToProto()
     {
-        var divisionId = GameData.GridFightDivisionInfoData.Count > 0
-            ? GameData.GridFightDivisionInfoData.Keys.Max()
-            : 10939u;
+        var divisionId = MaxDivisionId();
 
         var staticInfo = new GridFightStaticGameInfo
         {
@@ -369,8 +372,8 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
         var notify = new GridFightSettleNotify
         {
             BHLDAEKNMCD = inst?.KeepWinCnt ?? 0,
-            EDKIICIKJKL = 10706,
-            OHOPKAAKOGF = 10706,
+            EDKIICIKJKL = MaxDivisionId(),
+            OHOPKAAKOGF = MaxDivisionId(),
             EDKJMPACHNJ = new GridFightFinishInfo
             {
                 BCHPAOCOHIL = new FCBEHGJBJCN
@@ -379,7 +382,7 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
                 },
                 NLILNONCNFC = new JCFJADFEOJN
                 {
-                    BBDOCJGAEEJ = inst?.DivisionId ?? 10706,
+                    BBDOCJGAEEJ = inst?.DivisionId ?? MaxDivisionId(),
                     BCOLJFHDLLD = inst?.LineupHp ?? 80,
                     BFNPCJOMGFL = (uint)(inst?.BattlesFinished ?? 3),
                     DCPKPNLKGMM = inst?.Level ?? 1,
@@ -414,11 +417,12 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
     {
         if (GridFightInstance != null) return GridFightInstance.ToProto();
 
-        var stub = new GridFightInstance(Player, 1u, 10706u, false, CurUniqueId);
+        var maxDiv = MaxDivisionId();
+        var stub = new GridFightInstance(Player, 1u, maxDiv, false, CurUniqueId);
         return new GridFightCurrentInfo
         {
             Season = 1,
-            DivisionId = 10706,
+            DivisionId = maxDiv,
             UniqueId = CurUniqueId,
             PendingAction = new GridFightPendingAction
             {
@@ -438,7 +442,7 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
             return (Retcode.RetSucc, GridFightInstance);
 
         GridFightInstance = new GridFightInstance(Player, season == 0 ? 1u : season,
-            divisionId == 0 ? 10939u : divisionId, isOverLock, ++CurUniqueId);
+            divisionId == 0 ? MaxDivisionId() : divisionId, isOverLock, ++CurUniqueId);
         return (Retcode.RetSucc, GridFightInstance);
     }
 }
