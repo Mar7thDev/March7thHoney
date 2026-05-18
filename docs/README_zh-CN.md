@@ -42,6 +42,12 @@ March7thHoney 是一个基于 .NET 10 的服务器项目。
 | 货币战争 | 持续完善 | 基础流程已接入 |
 | 成就系统 | 稳定 | 大多数成就可追踪与完成 |
 
+详细开发进度： [英文](GameplayImplementationTree.md) | [简中](GameplayImplementationTree_zh-CN.md) | [繁中](GameplayImplementationTree_zh-TW.md) | [日文](GameplayImplementationTree_ja-JP.md)
+
+## Muip API 入口
+
+- Muip API 文档： [英文](MuipAPI.md) | [简中](MuipAPI_zh-CN.md) | [繁中](MuipAPI_zh-TW.md) | [日文](MuipAPI_ja-JP.md)
+
 ## 开发计划
 
 1. 持续完善差分宇宙与高复杂玩法链路。
@@ -113,14 +119,17 @@ dotnet build program/program.csproj -c Release
 
 ## 致谢
 
-Collaborators:
+协作者：
+
 - [Mar7thLover](https://github.com/Mar7thLover)
 - [Cyrup](https://github.com/March7thHoney)
 - [Melioli](https://github.com/Melioli)
-Contributors:
+贡献者：
+
 - [Yuki](https://github.com/Yuki8859)
 - [Cyt](https://github.com/qinfyy)
-Projects:
+相关项目：
+
 - [SqlSugar](https://github.com/donet5/SqlSugar)
 - [LunarCore](https://github.com/Melledy/LunarCore)
 - [DanhengServer](https://github.com/Mar7thLover/DanhengServer-OpenSource)

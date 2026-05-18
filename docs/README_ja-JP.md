@@ -42,6 +42,12 @@ March7thHoneyは、.NET 10をベースとしたサーバープロジェクトで
 | 差分宇宙関連 | 改善中 | 基本フロー導入済み |
 | 実績 | 安定 | 多くの実績に対応 |
 
+詳細な開発進捗： [英語](GameplayImplementationTree.md) | [簡体字中国語](GameplayImplementationTree_zh-CN.md) | [繁体字中国語](GameplayImplementationTree_zh-TW.md) | [日本語](GameplayImplementationTree_ja-JP.md)
+
+## Muip API 入口
+
+- Muip API ドキュメント： [英語](MuipAPI.md) | [簡体字中国語](MuipAPI_zh-CN.md) | [繁体字中国語](MuipAPI_zh-TW.md) | [日本語](MuipAPI_ja-JP.md)
+
 ## ロードマップ
 
 1. 差分宇宙と高複雑コンテンツの安定化。
@@ -113,14 +119,17 @@ dotnet build program/program.csproj -c Release
 
 ## クレジット
 
-Collaborators:
+共同開発者：
+
 - [Mar7thLover](https://github.com/Mar7thLover)
 - [Cyrup](https://github.com/March7thHoney)
 - [Melioli](https://github.com/Melioli)
-Contributors:
+貢献者：
+
 - [Yuki](https://github.com/Yuki8859)
 - [Cyt](https://github.com/qinfyy)
-Projects:
+関連プロジェクト：
+
 - [SqlSugar](https://github.com/donet5/SqlSugar)
 - [LunarCore](https://github.com/Melledy/LunarCore)
 - [DanhengServer](https://github.com/Mar7thLover/DanhengServer-OpenSource)
