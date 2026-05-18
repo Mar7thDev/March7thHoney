@@ -15,6 +15,8 @@ The project is actively developed, with regular feature updates and fixes.
 ## Table of Contents
 
 - [Feature Progress](#feature-progress)
+- [Gameplay Implementation Tree](docs/GameplayImplementationTree.md)
+- [Muip API Entry](#muip-api-entry)
 - [Roadmap](#roadmap)
 - [Repository Layout](#repository-layout)
 - [Requirements](#requirements)
@@ -41,6 +43,13 @@ The project is actively developed, with regular feature updates and fixes.
 | Challenge modes | Stable | FH / PF / AS playable |
 | Currency War | In progress | Basic gameplay flow available |
 | Achievement system | Stable | Most achievements supported |
+
+Detailed implementation progress: [Gameplay Implementation Tree](docs/GameplayImplementationTree.md) | [简中](docs/GameplayImplementationTree_zh-CN.md) | [繁中](docs/GameplayImplementationTree_zh-TW.md) | [JP](docs/GameplayImplementationTree_ja-JP.md)
+
+## Muip API Entry
+
+- Muip API docs: [English](docs/MuipAPI.md) | [简中](docs/MuipAPI_zh-CN.md) | [繁中](docs/MuipAPI_zh-TW.md) | [日本語](docs/MuipAPI_ja-JP.md)
+
 
 ## Roadmap
 
@@ -114,13 +123,16 @@ Workflow publishes self-contained builds for:
 ## Credits
 
 Collaborators:
+
 - [Mar7thLover](https://github.com/Mar7thLover)
 - [Cyrup](https://github.com/March7thHoney)
 - [Melioli](https://github.com/Melioli)
 Contributors:
+
 - [Yuki](https://github.com/Yuki8859)
 - [Cyt](https://github.com/qinfyy)
 Projects:
+
 - [SqlSugar](https://github.com/donet5/SqlSugar)
 - [LunarCore](https://github.com/Melledy/LunarCore)
 - [DanhengServer](https://github.com/Mar7thLover/DanhengServer-OpenSource)
