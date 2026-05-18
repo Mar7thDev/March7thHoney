@@ -3,6 +3,7 @@ using March7thHoney.Data;
 using March7thHoney.Data.Freesr;
 using March7thHoney.Database;
 using March7thHoney.Database.Avatar;
+using March7thHoney.Database.Calyx;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Enums.Item;
 using March7thHoney.GameServer.Game.Player;
@@ -57,7 +58,7 @@ public static class FreesrShared
         }
     }
 
-    public static async ValueTask<(List<FormalAvatarInfo> changedAvatars, List<ItemData> removedItems)>
+    public static ValueTask<(List<FormalAvatarInfo> changedAvatars, List<ItemData> removedItems)>
         ClearRelicAndEquipment(PlayerInstance player)
     {
         var changed = new Dictionary<int, FormalAvatarInfo>();
@@ -100,13 +101,26 @@ public static class FreesrShared
             MarkChanged(avatar);
         }
 
-        var toRemove = new List<(int itemId, int count, int uniqueId)>(inv.EquipmentItems.Count + inv.RelicItems.Count);
-        toRemove.AddRange(inv.EquipmentItems.Select(x => (x.ItemId, 1, x.UniqueId)));
-        toRemove.AddRange(inv.RelicItems.Select(x => (x.ItemId, 1, x.UniqueId)));
+        // Do not rely on item-config lookup during removal; directly clear all
+        // relic/equipment entries so sync import always starts from a clean state.
+        var removed = new List<ItemData>(inv.EquipmentItems.Count + inv.RelicItems.Count);
+        removed.AddRange(inv.EquipmentItems.Select(x =>
+        {
+            var clone = x.Clone();
+            clone.Count = 0;
+            return clone;
+        }));
+        removed.AddRange(inv.RelicItems.Select(x =>
+        {
+            var clone = x.Clone();
+            clone.Count = 0;
+            return clone;
+        }));
 
-        var removed = await player.InventoryManager.RemoveItems(toRemove, sync: false);
+        inv.EquipmentItems.Clear();
+        inv.RelicItems.Clear();
 
-        return ([.. changed.Values], removed);
+        return ValueTask.FromResult<(List<FormalAvatarInfo>, List<ItemData>)>(([.. changed.Values], removed));
     }
 
     public static async ValueTask<List<FormalAvatarInfo>> ImportAvatars(
@@ -313,7 +327,7 @@ public static class FreesrShared
         PlayerInstance player,
         Func<string[], System.Threading.Tasks.Task> sendI18nCallback)
     {
-        var data = JsonSerializer.Deserialize<FreesrCalyxData>(json, JsonOptions);
+        var data = DeserializeFreesrPayload(json);
         if (data == null)
         {
             await sendI18nCallback(["Game.Command.Json.InvalidJsonContent"]);
@@ -336,6 +350,15 @@ public static class FreesrShared
         if (avatarChanged.Count > 0)
             await player.SendPacket(new PacketPlayerSyncScNotify(avatarChanged));
 
+        // Keep battle_config in sync for Calyx override consumers.
+        if (data.BattleConfig != null && player.CalyxOverrideManager != null)
+        {
+            var overrideData = player.CalyxOverrideManager.Data;
+            overrideData.CachedJson ??= new FreesrCalyxData();
+            overrideData.CachedJson.BattleConfig = data.BattleConfig;
+            DatabaseHelper.ToSaveUidList.SafeAdd(player.Uid);
+        }
+
         DatabaseHelper.ToSaveUidList.SafeAdd(player.Uid);
 
         await sendI18nCallback([
@@ -344,6 +367,32 @@ public static class FreesrShared
             (data.Relics?.Count ?? 0).ToString(),
             (data.Lightcones?.Count ?? 0).ToString()
         ]);
+    }
+
+    private static FreesrCalyxData? DeserializeFreesrPayload(string json)
+    {
+        var data = JsonSerializer.Deserialize<FreesrCalyxData>(json, JsonOptions);
+        if (data == null) return null;
+
+        try
+        {
+            using var doc = JsonDocument.Parse(json);
+            var root = doc.RootElement;
+
+            if (data.BattleConfig == null && root.TryGetProperty("battleConfig", out var battleConfig))
+                data.BattleConfig = JsonSerializer.Deserialize<FreesrBattleConfig>(battleConfig.GetRawText(), JsonOptions);
+
+            if ((data.Lightcones == null || data.Lightcones.Count == 0) &&
+                root.TryGetProperty("lightCones", out var lightCones))
+                data.Lightcones =
+                    JsonSerializer.Deserialize<List<FreesrCalyxLightcone>>(lightCones.GetRawText(), JsonOptions) ?? [];
+        }
+        catch
+        {
+            // Keep best-effort compatibility; original parsed payload is still usable.
+        }
+
+        return data;
     }
 
     public static async ValueTask<string> ExportPlayerDataAsync(int uid, bool writeIndented)
@@ -414,6 +463,10 @@ public static class FreesrShared
                 });
             }
         }
+
+        var calyxOverrideData = dbHelper.GetInstance<CalyxOverrideData>(uid);
+        if (calyxOverrideData?.CachedJson?.BattleConfig != null)
+            data.BattleConfig = calyxOverrideData.CachedJson.BattleConfig;
 
         return await System.Threading.Tasks.Task.FromResult(JsonSerializer.Serialize(data, new JsonSerializerOptions
         {
