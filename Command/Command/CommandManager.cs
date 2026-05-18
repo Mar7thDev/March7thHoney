@@ -203,7 +203,7 @@ public class CommandManager
                 var arg = new CommandArg(split.JoinFormat(" ", ""), sender, tempTarget);
 
                 // judge permission
-                if (arg.Target?.Player?.Uid != sender.GetSender() && !sender.HasPermission("command.others"))
+                if (arg.Target?.Player?.Uid != sender.GetSender() && !sender.HasPermission(CommandPermissions.TargetOthers))
                 {
                     sender.SendMsg(I18NManager.Translate("Game.Command.Notice.NoPermission"));
                     return;

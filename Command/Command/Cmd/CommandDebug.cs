@@ -4,7 +4,7 @@ using March7thHoney.Internationalization;
 
 namespace March7thHoney.Command.Command.Cmd;
 
-[CommandInfo("debug", "Game.Command.Debug.Desc", "Game.Command.Debug.Usage")]
+[CommandInfo("debug", "Game.Command.Debug.Desc", "Game.Command.Debug.Usage", permission: CommandPermissions.Debug)]
 public class CommandDebug : ICommand
 {
     [CommandMethod("0 specific")]

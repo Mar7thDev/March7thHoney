@@ -4,7 +4,7 @@ using March7thHoney.Proto;
 
 namespace March7thHoney.Command.Command.Cmd;
 
-[CommandInfo("hero", "Game.Command.Hero.Desc", "Game.Command.Hero.Usage")]
+[CommandInfo("hero", "Game.Command.Hero.Desc", "Game.Command.Hero.Usage", permission: CommandPermissions.Player)]
 public class CommandHero : ICommand
 {
     [CommandMethod("0 gender")]

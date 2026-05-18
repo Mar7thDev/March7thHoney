@@ -1,12 +1,47 @@
 using March7thHoney.Data;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Internationalization;
+using March7thHoney.Util;
 
 namespace March7thHoney.Command.Command.Cmd;
 
-[CommandInfo("mail", "Game.Command.Mail.Desc", "Game.Command.Mail.Usage", permission: "egglink.manage")]
+[CommandInfo("mail", "Game.Command.Mail.Desc", "Game.Command.Mail.Usage", permission: CommandPermissions.Mail)]
 public class CommandMail : ICommand
 {
+    [CommandMethod("welcome")]
+    public async ValueTask WelcomeMail(CommandArg arg)
+    {
+        if (arg.Target == null)
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.PlayerNotFound"));
+            return;
+        }
+
+        var player = arg.Target.Player!;
+        var config = ConfigManager.Config.ServerOption.WelcomeMail;
+        var attachments = config.Items
+            .Where(item => item.ItemId > 0 && item.Count > 0 && GameData.ItemConfigData.ContainsKey(item.ItemId))
+            .Select(item => new ItemData
+            {
+                ItemId = item.ItemId,
+                Count = item.Count,
+                Rank = item.Rank,
+                Level = item.Level,
+                Promotion = item.Promotion
+            })
+            .ToList();
+
+        await player.MailManager!.SendMail(
+            FormatText(config.Sender, player.Uid, player.Data.Name ?? ""),
+            FormatText(config.Title, player.Uid, player.Data.Name ?? ""),
+            FormatText(config.Content, player.Uid, player.Data.Name ?? ""),
+            config.TemplateId,
+            attachments,
+            config.ExpireDays);
+
+        await arg.SendMsg(I18NManager.Translate("Game.Command.Mail.MailSentWithAttachment"));
+    }
+
     [CommandDefault]
     public async ValueTask Mail(CommandArg arg)
     {
@@ -173,5 +208,13 @@ public class CommandMail : ICommand
             default:
                 return false;
         }
+    }
+
+    private static string FormatText(string value, int uid, string username)
+    {
+        return value
+            .Replace("{uid}", uid.ToString())
+            .Replace("{username}", username)
+            .Replace("{account}", username);
     }
 }

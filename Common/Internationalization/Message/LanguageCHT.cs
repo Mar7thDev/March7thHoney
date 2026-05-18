@@ -460,7 +460,7 @@ public class RaidTextCHT
 public class AccountTextCHT
 {
     public string Desc => "創建賬號\n注意：此命令未經測試，請謹慎使用！";
-    public string Usage => "用法：/account create [用戶名]";
+    public string Usage => "用法：/account create [用戶名]\n用法：/account setpassword [用戶名|UID] [密碼]\n用法：/account role [用戶名|UID] [角色]\n用法：/account roles";
     public string InvalidUid => "無效UID參數！";
     public string CreateError => "出現內部錯誤 {0} ";
     public string CreateSuccess => "新賬號 {0} 創建成功!";

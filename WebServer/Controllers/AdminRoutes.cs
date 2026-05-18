@@ -1,6 +1,7 @@
 using March7thHoney.Database;
 using March7thHoney.Database.Account;
 using March7thHoney.Database.Player;
+using March7thHoney.Command;
 using March7thHoney.Util;
 using March7thHoney.WebServer.Handler;
 using March7thHoney.WebServer.Pages;
@@ -66,7 +67,10 @@ public class AdminRoutes : ControllerBase
         return Success(new
         {
             accounts,
-            count = accounts.Count
+            count = accounts.Count,
+            roles = GetRoleNames(),
+            default_role = CommandRoles.NormalizeRole(null, ConfigManager.Config.ServerOption.DefaultPermissionRole,
+                GetConfiguredRoles())
         });
     }
 
@@ -87,7 +91,8 @@ public class AdminRoutes : ControllerBase
         var uid = request.uid.GetValueOrDefault();
         try
         {
-            AccountHelper.CreateAccount(username, request.password, uid);
+            var role = NormalizeRole(request.role);
+            AccountHelper.CreateAccount(username, request.password, uid, role);
             var account = AccountData.GetAccountByUserName(username);
             if (account == null)
                 return Error("Failed to create account");
@@ -129,6 +134,7 @@ public class AdminRoutes : ControllerBase
             return Error("Username already exists");
 
         account.Username = username;
+        account.Role = NormalizeRole(request.role);
         account.Permissions = NormalizePermissions(request.permissions);
         DatabaseHelper.SaveDatabaseType(account);
 
@@ -215,16 +221,38 @@ public class AdminRoutes : ControllerBase
             player?.Name ?? "",
             player?.Level,
             account.HasPassword(),
+            account.GetRole(),
             account.Permissions ?? "",
+            account.GetEffectivePermissions(),
             account.DispatchTokenExpireAt,
             account.ComboTokenExpireAt);
     }
 
     private static string NormalizePermissions(string? permissions)
     {
-        return string.Join(",", (permissions ?? string.Empty)
-            .Split([',', '\r', '\n', ' ', '\t'], StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
-            .Distinct(StringComparer.Ordinal));
+        return CommandPermissions.Normalize(permissions);
+    }
+
+    private static string NormalizeRole(string? role)
+    {
+        return CommandRoles.NormalizeRole(role, ConfigManager.Config.ServerOption.DefaultPermissionRole,
+            GetConfiguredRoles());
+    }
+
+    private static List<string> GetRoleNames()
+    {
+        return GetConfiguredRoles().Keys
+            .OrderBy(role => role == CommandRoles.User ? 0 :
+                role == CommandRoles.Moderator ? 1 :
+                role == CommandRoles.Administrator ? 2 :
+                role == CommandRoles.Developer ? 3 : 4)
+            .ThenBy(role => role, StringComparer.OrdinalIgnoreCase)
+            .ToList();
+    }
+
+    private static IReadOnlyDictionary<string, HashSet<string>> GetConfiguredRoles()
+    {
+        return ConfigManager.Config.ServerOption.PermissionRoles ?? CommandRoles.DefaultRoles();
     }
 
     private static JsonResult Success(object data)
@@ -250,12 +278,14 @@ public class AdminRoutes : ControllerBase
         public string? username { get; set; }
         public string? password { get; set; }
         public int? uid { get; set; }
+        public string? role { get; set; }
         public string? permissions { get; set; }
     }
 
     public class AdminUpdateAccountRequest
     {
         public string? username { get; set; }
+        public string? role { get; set; }
         public string? permissions { get; set; }
     }
 
@@ -270,7 +300,9 @@ public class AdminRoutes : ControllerBase
         string nickname,
         int? level,
         bool has_password,
+        string role,
         string permissions,
+        string effective_permissions,
         long dispatch_token_expires_at,
         long combo_token_expires_at);
 }
