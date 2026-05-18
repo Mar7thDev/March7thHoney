@@ -1,8 +1,11 @@
 using March7thHoney.Data;
 using March7thHoney.Database;
+using March7thHoney.Database.Avatar;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Database.Mail;
+using March7thHoney.Enums.Item;
 using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Server.Packet.Send.Avatar;
 using March7thHoney.GameServer.Server.Packet.Send.Mail;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
 using March7thHoney.Proto;
@@ -53,6 +56,7 @@ public class MailManager(PlayerInstance player) : BasePlayerManager(player)
         };
 
         MailData.MailList.Add(mail);
+        DatabaseHelper.ToSaveUidList.SafeAdd(Player.Uid);
 
         await Player.SendPacket(new PacketNewMailScNotify(mail.MailID));
     }
@@ -76,6 +80,7 @@ public class MailManager(PlayerInstance player) : BasePlayerManager(player)
         };
 
         MailData.MailList.Add(mail);
+        DatabaseHelper.ToSaveUidList.SafeAdd(Player.Uid);
 
         await Player.SendPacket(new PacketNewMailScNotify(mail.MailID));
     }
@@ -124,21 +129,27 @@ public class MailManager(PlayerInstance player) : BasePlayerManager(player)
                 continue;
             }
 
-            var grantedItems = new List<ItemData>();
+            var attachmentItems = new List<ItemData>();
+            var syncItems = new List<ItemData>();
+            var avatars = new List<FormalAvatarInfo>();
+            var newAvatarIds = new List<int>();
+
             foreach (var item in mail.Attachment.Items)
             {
-                var grantedItem = await Player.InventoryManager!.AddItem(item.ItemId, item.Count, false, item.Rank,
-                    item.Level, item.Promotion, sync: false, returnRaw: true);
-                if (grantedItem != null) grantedItems.Add(grantedItem);
-            }
+                if (await GrantAttachmentItem(item, attachmentItems, syncItems, avatars, newAvatarIds))
+                    continue;
 
-            if (grantedItems.Count != mail.Attachment.Items.Count)
-            {
                 result.FailedMails.Add(new TakeMailAttachmentFailInfo(mailId, Retcode.RetMailAttachementInvalid));
-                continue;
+                break;
             }
 
-            result.Attachment.Items.AddRange(grantedItems);
+            if (result.FailedMails.Any(mail => mail.MailId == mailId))
+                continue;
+
+            result.Attachment.Items.AddRange(attachmentItems);
+            result.SyncItems.AddRange(syncItems);
+            result.Avatars.AddRange(avatars);
+            result.NewAvatarIds.AddRange(newAvatarIds);
             result.SuccessMailIds.Add(mailId);
             mail.Attachment.Items.Clear();
             mail.IsRead = true;
@@ -147,16 +158,118 @@ public class MailManager(PlayerInstance player) : BasePlayerManager(player)
         if (result.SuccessMailIds.Count > 0)
         {
             DatabaseHelper.ToSaveUidList.SafeAdd(Player.Uid);
-            await Player.SendPacket(new PacketPlayerSyncScNotify(result.Attachment.Items));
+
+            if (result.SyncItems.Count > 0)
+                await Player.SendPacket(new PacketPlayerSyncScNotify(result.SyncItems));
+
+            if (result.Avatars.Count > 0)
+                await Player.SendPacket(new PacketPlayerSyncScNotify(result.Avatars));
+
+            foreach (var avatarId in result.NewAvatarIds)
+                await Player.SendPacket(new PacketAddAvatarScNotify(avatarId, false));
         }
 
         return result;
+    }
+
+    private async ValueTask<bool> GrantAttachmentItem(ItemData item, List<ItemData> attachmentItems,
+        List<ItemData> syncItems, List<FormalAvatarInfo> avatars, List<int> newAvatarIds)
+    {
+        var itemConfig = GameData.ItemConfigData[item.ItemId];
+        var grantCount = GrantsOneAtATime(itemConfig.ItemMainType) ? item.Count : 1;
+        var countPerGrant = GrantsOneAtATime(itemConfig.ItemMainType) ? 1 : item.Count;
+        var rank = GetAttachmentRank(item, itemConfig.ItemMainType);
+        var level = GetAttachmentLevel(item, itemConfig.ItemMainType);
+
+        for (var i = 0; i < grantCount; i++)
+        {
+            var avatarBeforeGrant = itemConfig.ItemMainType == ItemMainTypeEnum.AvatarCard
+                ? Player.AvatarManager?.GetFormalAvatar(item.ItemId)
+                : null;
+
+            var rawItem = await Player.InventoryManager!.AddItem(item.ItemId, countPerGrant, false, rank,
+                level, item.Promotion, sync: false, returnRaw: true);
+            if (rawItem != null)
+            {
+                syncItems.Add(rawItem);
+
+                if (itemConfig.ItemMainType == ItemMainTypeEnum.AvatarCard && avatarBeforeGrant != null)
+                {
+                    ApplyAvatarAttachmentOptions(avatarBeforeGrant, item);
+                    if (avatars.All(avatar => avatar.BaseAvatarId != avatarBeforeGrant.BaseAvatarId))
+                        avatars.Add(avatarBeforeGrant);
+                }
+
+                var receivedItem = rawItem.Clone();
+                receivedItem.Count = countPerGrant;
+                attachmentItems.Add(receivedItem);
+                continue;
+            }
+
+            if (itemConfig.ItemMainType == ItemMainTypeEnum.AvatarCard &&
+                avatarBeforeGrant == null &&
+                Player.AvatarManager?.GetFormalAvatar(item.ItemId) is { } grantedAvatar)
+            {
+                ApplyAvatarAttachmentOptions(grantedAvatar, item);
+                avatars.Add(grantedAvatar);
+                newAvatarIds.Add(grantedAvatar.BaseAvatarId);
+
+                var receivedItem = item.Clone();
+                receivedItem.Count = countPerGrant;
+                attachmentItems.Add(receivedItem);
+                continue;
+            }
+
+            if (itemConfig.ItemMainType == ItemMainTypeEnum.AvatarCard && avatarBeforeGrant != null)
+            {
+                ApplyAvatarAttachmentOptions(avatarBeforeGrant, item);
+                if (avatars.All(avatar => avatar.BaseAvatarId != avatarBeforeGrant.BaseAvatarId))
+                    avatars.Add(avatarBeforeGrant);
+
+                continue;
+            }
+
+            return false;
+        }
+
+        return true;
+    }
+
+    private static bool GrantsOneAtATime(ItemMainTypeEnum itemMainType)
+    {
+        return itemMainType is ItemMainTypeEnum.AvatarCard or ItemMainTypeEnum.Equipment or ItemMainTypeEnum.Relic;
+    }
+
+    private static int GetAttachmentRank(ItemData item, ItemMainTypeEnum itemMainType)
+    {
+        return itemMainType == ItemMainTypeEnum.Equipment ? Math.Clamp(item.Rank, 0, 5) : item.Rank;
+    }
+
+    private static int GetAttachmentLevel(ItemData item, ItemMainTypeEnum itemMainType)
+    {
+        if (itemMainType == ItemMainTypeEnum.Equipment) return Math.Clamp(item.Level, 1, 80);
+        if (itemMainType == ItemMainTypeEnum.Relic &&
+            GameData.RelicConfigData.TryGetValue(item.ItemId, out var relicConfig))
+            return Math.Clamp(item.Level, 1, relicConfig.MaxLevel);
+
+        return item.Level;
+    }
+
+    private static void ApplyAvatarAttachmentOptions(FormalAvatarInfo avatar, ItemData item)
+    {
+        if (item.Level <= 1) return;
+
+        avatar.Level = Math.Clamp(item.Level, 1, 80);
+        avatar.Promotion = GameData.GetMinPromotionForLevel(avatar.Level);
     }
 }
 
 public class TakeMailAttachmentResult
 {
     public MailAttachmentInfo Attachment { get; } = new();
+    public List<ItemData> SyncItems { get; } = [];
+    public List<FormalAvatarInfo> Avatars { get; } = [];
+    public List<int> NewAvatarIds { get; } = [];
     public List<uint> SuccessMailIds { get; } = [];
     public List<TakeMailAttachmentFailInfo> FailedMails { get; } = [];
 }
