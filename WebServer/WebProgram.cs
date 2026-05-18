@@ -1,5 +1,6 @@
 using System.Net;
 using March7thHoney.Util;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Hosting;
 
 namespace March7thHoney.WebServer;
@@ -41,6 +42,14 @@ public class Startup
 {
     public void ConfigureServices(IServiceCollection services)
     {
+        services.Configure<ForwardedHeadersOptions>(options =>
+        {
+            options.ForwardedHeaders =
+                ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedHost | ForwardedHeaders.XForwardedProto;
+            options.KnownIPNetworks.Clear();
+            options.KnownProxies.Clear();
+        });
+
         services.AddCors(options =>
         {
             options.AddPolicy("AllowAll",
@@ -58,6 +67,8 @@ public class Startup
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
         if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
+
+        app.UseForwardedHeaders();
 
         app.Use(async (context, next) =>
         {
