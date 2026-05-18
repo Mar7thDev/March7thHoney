@@ -1,4 +1,3 @@
-using System.Text.Json;
 using March7thHoney.Data;
 using March7thHoney.Data.Excel;
 using March7thHoney.Data.Freesr;
@@ -7,8 +6,6 @@ using March7thHoney.Database.Calyx;
 using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene;
-using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
-using March7thHoney.Internationalization;
 using March7thHoney.Proto;
 using March7thHoney.Util;
 using static March7thHoney.GameServer.Plugin.Event.PluginEvent;
@@ -30,83 +27,11 @@ public class CalyxOverrideManager(PlayerInstance player) : BasePlayerManager(pla
         DatabaseHelper.ToSaveUidList.SafeAdd(Player.Uid);
     }
 
-    public async ValueTask<(bool ok, string? error, string? fileName)> LoadFromIndex(int index, Func<string, ValueTask>? sendMsg = null)
+    public void Enable()
     {
-        var files = FreesrShared.GetJsonFiles().OrderBy(f => f.LastWriteTimeUtc).ToList();
-        if (files.Count == 0)
-            return (false, I18NManager.Translate("Game.Command.Json.NoFileFoundWithHint"), null);
-        if (index < 1 || index > files.Count)
-            return (false, I18NManager.Translate("Game.Command.Json.InvalidChoice", files.Count.ToString()), null);
-
-        var selectedPath = files[index - 1].FullName;
-        FreesrCalyxData? data;
-        try
-        {
-            var json = await File.ReadAllTextAsync(selectedPath);
-            data = JsonSerializer.Deserialize<FreesrCalyxData>(json, FreesrShared.JsonOptions);
-        }
-        catch (Exception e)
-        {
-            return (false, I18NManager.Translate("Game.Command.Json.ReadOrParseFailed", e.Message), null);
-        }
-
-        if (data == null)
-            return (false, I18NManager.Translate("Game.Command.Json.InvalidJsonContent"), null);
-
-        var (clearedAvatars, clearedItems) = await FreesrShared.ClearRelicAndEquipment(Player);
-        if (clearedAvatars.Count > 0)
-            await Player.SendPacket(new PacketPlayerSyncScNotify(clearedAvatars));
-        if (clearedItems.Count > 0)
-            await Player.SendPacket(new PacketPlayerSyncScNotify(clearedItems));
-
-        var avatarChanged = await FreesrShared.ImportAvatars(Player, data, sendMsg);
-        var importedItems = await FreesrShared.ImportRelicsAndLightcones(Player, data, avatarChanged);
-
-        if (importedItems.Count > 0)
-            await Player.SendPacket(new PacketPlayerSyncScNotify(importedItems));
-        if (avatarChanged.Count > 0)
-            await Player.SendPacket(new PacketPlayerSyncScNotify(avatarChanged));
-
         Data.IsActive = true;
-        Data.CachedJson = data;
-        Data.SourceFileName = Path.GetFileName(selectedPath);
-        Data.SourcePath = selectedPath;
-        Data.LoadedAtUnix = Extensions.GetUnixSec();
-
-        DatabaseHelper.ToSaveUidList.SafeAdd(Player.Uid);
-
-        return (true, null, Data.SourceFileName);
-    }
-
-    public async ValueTask<(bool ok, string? error, string? fileName)> EnableLatestOnlyEnemyOverride()
-    {
-        var files = FreesrShared.GetJsonFiles().OrderBy(f => f.LastWriteTimeUtc).ToList();
-        if (files.Count == 0)
-            return (false, I18NManager.Translate("Game.Command.Json.NoFileFoundWithHint"), null);
-
-        var selectedPath = files[^1].FullName;
-        FreesrCalyxData? data;
-        try
-        {
-            var json = await File.ReadAllTextAsync(selectedPath);
-            data = JsonSerializer.Deserialize<FreesrCalyxData>(json, FreesrShared.JsonOptions);
-        }
-        catch (Exception e)
-        {
-            return (false, I18NManager.Translate("Game.Command.Json.ReadOrParseFailed", e.Message), null);
-        }
-
-        if (data == null)
-            return (false, I18NManager.Translate("Game.Command.Json.InvalidJsonContent"), null);
-
-        // Command /calyx now only toggles enemy override; do not mutate avatar/inventory.
-        Data.IsActive = true;
-        Data.CachedJson = data;
-        Data.SourceFileName = Path.GetFileName(selectedPath);
-        Data.SourcePath = selectedPath;
         Data.LoadedAtUnix = Extensions.GetUnixSec();
         DatabaseHelper.ToSaveUidList.SafeAdd(Player.Uid);
-        return (true, null, Data.SourceFileName);
     }
 
     public async ValueTask<BattleInstance?> BuildOverrideBattle(int cocoonId, int wave, int worldLevel)
