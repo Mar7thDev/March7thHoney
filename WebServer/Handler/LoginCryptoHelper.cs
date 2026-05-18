@@ -14,21 +14,43 @@ public static class LoginCryptoHelper
     {
         var rawAccount = account ?? string.Empty;
         var rawPassword = password ?? string.Empty;
-
-        if (!decryptRequested) return (rawAccount, rawPassword);
-
         var privatePem = LoadPrivateKey();
-        if (string.IsNullOrWhiteSpace(privatePem))
+        var hasPrivateKey = !string.IsNullOrWhiteSpace(privatePem);
+        var payloadLooksEncrypted = LooksLikeBase64(rawAccount) || LooksLikeBase64(rawPassword);
+        var shouldAttemptDecrypt = hasPrivateKey && (decryptRequested || payloadLooksEncrypted);
+
+        if (decryptRequested && !hasPrivateKey)
+        {
+            Logger.Warn(
+                $"RSA login decrypt was requested but no private key was found. Expected file: {PrivateKeyPath}");
+        }
+
+        if (!shouldAttemptDecrypt)
             return (rawAccount, rawPassword);
 
+        if (!decryptRequested && payloadLooksEncrypted)
+        {
+            Logger.Warn(
+                "Encrypted-looking login payload detected while EnableRsaLoginDecrypt is disabled. Attempting automatic RSA decrypt with the configured private key.");
+        }
+
         privatePem = NormalizePem(privatePem);
-        return (TryDecrypt(rawAccount, privatePem), TryDecrypt(rawPassword, privatePem));
+        var accountResult = TryDecrypt(rawAccount, privatePem);
+        var passwordResult = TryDecrypt(rawPassword, privatePem);
+
+        if (payloadLooksEncrypted && !accountResult.Succeeded && !passwordResult.Succeeded)
+        {
+            Logger.Warn(
+                "RSA login payload could not be decrypted with the configured private key. The client patch may be missing, not loaded, or using a different public key.");
+        }
+
+        return (accountResult.Value, passwordResult.Value);
     }
 
-    private static string TryDecrypt(string raw, string privatePem)
+    private static DecryptResult TryDecrypt(string raw, string privatePem)
     {
-        if (string.IsNullOrWhiteSpace(raw)) return raw;
-        if (!LooksLikeBase64(raw)) return raw;
+        if (string.IsNullOrWhiteSpace(raw)) return new DecryptResult(raw, false);
+        if (!LooksLikeBase64(raw)) return new DecryptResult(raw, false);
 
         var paddings = new[]
         {
@@ -41,7 +63,8 @@ public static class LoginCryptoHelper
         {
             try
             {
-                return March7thHoney.Util.Security.RSA.DecryptFromBase64(raw, privatePem, null, padding);
+                return new DecryptResult(
+                    March7thHoney.Util.Security.RSA.DecryptFromBase64(raw, privatePem, null, padding), true);
             }
             catch (Exception e)
             {
@@ -50,7 +73,7 @@ public static class LoginCryptoHelper
         }
 
         Logger.Debug($"RSA login decrypt failed for all paddings, fallback plaintext. len={raw.Length}");
-        return raw;
+        return new DecryptResult(raw, false);
     }
 
     private static bool LooksLikeBase64(string value)
@@ -86,4 +109,6 @@ public static class LoginCryptoHelper
 
         return ConfigManager.Config.WebSecurity.RsaPrivateKeyPem;
     }
+
+    private readonly record struct DecryptResult(string Value, bool Succeeded);
 }

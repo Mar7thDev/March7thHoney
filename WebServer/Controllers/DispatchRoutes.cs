@@ -5,8 +5,10 @@ using March7thHoney.Proto;
 using March7thHoney.Util;
 using March7thHoney.WebServer.Handler;
 using March7thHoney.WebServer.Objects;
+using March7thHoney.WebServer.Pages;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace March7thHoney.WebServer.Controllers;
 
@@ -85,7 +87,7 @@ public class DispatchRoutes : ControllerBase
                 Name = Config.GameServer.GameServerId,
                 Title = Config.GameServer.GameServerName,
                 DispatchUrl = $"{publicBaseUrl}/query_gateway",
-                EnvType = "9",
+                EnvType = Config.GameServer.EnvType.ToString(),
                 DisplayName = Config.GameServer.GameServerName
             });
         }
@@ -134,7 +136,107 @@ public class DispatchRoutes : ControllerBase
         };
     }
 
+    [HttpGet("/login-platform")]
+    [HttpGet("/login-platform/")]
+    [HttpGet("/login-platform/{*pagePath}")]
+    public IActionResult LoginPlatform(string? pagePath)
+    {
+        if (string.IsNullOrWhiteSpace(pagePath))
+            return Redirect($"/login-platform/index.html{Request.QueryString}");
+
+        var route = NormalizeLoginPlatformPagePath(pagePath);
+
+        if (string.IsNullOrEmpty(route) || route == "index")
+        {
+            return new ContentResult
+            {
+                Content = LoginPlatformRouterPage.Render(),
+                ContentType = "text/html; charset=utf-8"
+            };
+        }
+
+        if (IsLoginPlatformRegistrationRoute(route))
+        {
+            return new ContentResult
+            {
+                Content = RegistrationPage.Render(
+                    Math.Max(Config.ServerOption.Auth.MinimumPasswordLength, 1),
+                    Config.GameServer.GameServerName,
+                    Config.ServerOption.Auth.RegistrationPageIcon,
+                    Config.ServerOption.Auth.EnableRegistration),
+                ContentType = "text/html; charset=utf-8"
+            };
+        }
+
+        return LoginPlatformNotFound();
+    }
+
+    private ContentResult LoginPlatformNotFound()
+    {
+        return new ContentResult
+        {
+            Content = LoginPlatformNotFoundPage.Render(
+                Config.GameServer.GameServerName,
+                Config.ServerOption.Auth.RegistrationPageIcon),
+            ContentType = "text/html; charset=utf-8",
+            StatusCode = 404
+        };
+    }
+
+    private static string NormalizeLoginPlatformPagePath(string? pagePath)
+    {
+        var route = (pagePath ?? string.Empty).Trim().Replace('\\', '/').Trim('/');
+
+        if (route.EndsWith("/index.html", StringComparison.OrdinalIgnoreCase))
+            route = route[..^"/index.html".Length];
+
+        if (route.EndsWith(".html", StringComparison.OrdinalIgnoreCase))
+            route = route[..^".html".Length];
+
+        return route.Trim('/').ToLowerInvariant();
+    }
+
+    private static bool IsLoginPlatformRegistrationRoute(string route)
+    {
+        route = route.Replace('_', '-');
+        var segments = route.Split('/', StringSplitOptions.RemoveEmptyEntries);
+
+        return route is "register" or "registration" or "signup" or "sign-up" ||
+               route.StartsWith("register/", StringComparison.Ordinal) ||
+               route.StartsWith("registration/", StringComparison.Ordinal) ||
+               route.StartsWith("signup/", StringComparison.Ordinal) ||
+               route.StartsWith("sign-up/", StringComparison.Ordinal) ||
+               route.EndsWith("/register", StringComparison.Ordinal) ||
+               route.EndsWith("/registration", StringComparison.Ordinal) ||
+               route.EndsWith("/signup", StringComparison.Ordinal) ||
+               route.EndsWith("/sign-up", StringComparison.Ordinal) ||
+               segments.Any(IsLoginPlatformRegistrationSegment);
+    }
+
+    private static bool IsLoginPlatformRegistrationSegment(string segment)
+    {
+        return segment is "register" or "registration" or "signup" or "sign-up" ||
+               segment.StartsWith("register-", StringComparison.Ordinal) ||
+               segment.StartsWith("registration-", StringComparison.Ordinal) ||
+               segment.EndsWith("-register", StringComparison.Ordinal) ||
+               segment.EndsWith("-registration", StringComparison.Ordinal) ||
+               segment.EndsWith("-signup", StringComparison.Ordinal) ||
+               segment.EndsWith("-sign-up", StringComparison.Ordinal);
+    }
+
     // === AUTHENTICATION ===
+    [HttpPost("/account/register")]
+    [HttpPost("/account/ma-passport/api/register")]
+    [HttpPost("/account/ma-passport/api/webRegisterByPassword")]
+    [HttpPost("/hkrpg_global/account/ma-passport/api/webRegisterByPassword")]
+    [HttpPost("/{gameKey}/account/ma-passport/api/webRegisterByPassword")]
+    public JsonResult Register([FromBody] RegisterReqJson? req)
+    {
+        req ??= new RegisterReqJson();
+        Debug($"register: username={req.username ?? req.account ?? req.email}");
+        return new RegistrationHandler().Handle(req);
+    }
+
     [HttpPost("/hkrpg_global/mdk/shield/api/login")]
     [HttpPost("/{gameKey}/mdk/shield/api/login")]
     public JsonResult Login([FromBody] LoginReqJson req)
@@ -142,17 +244,17 @@ public class DispatchRoutes : ControllerBase
         Debug($"shield login: account={req.account} is_crypto={req.is_crypto}");
         var useRsa = req.is_crypto || Config.WebSecurity.EnableRsaLoginDecrypt;
         var (account, password) = LoginCryptoHelper.TryDecryptCredentials(req.account, req.password, useRsa);
-        return new UsernameLoginHandler().Handle(account, password, req.is_crypto);
+        return new UsernameLoginHandler().HandleShieldLogin(account, password);
     }
 
     [HttpPost("/hkrpg_global/account/ma-passport/api/appLoginByPassword")]
     [HttpPost("/{gameKey}/account/ma-passport/api/appLoginByPassword")]
-    public JsonResult Login([FromBody] NewLoginReqJson req)
+    public JsonResult PassportLogin([FromBody] PassportLoginReqJson req)
     {
         Debug($"appLoginByPassword: account={req.account}");
         var (account, password) =
             LoginCryptoHelper.TryDecryptCredentials(req.account, req.password, Config.WebSecurity.EnableRsaLoginDecrypt);
-        return new NewUsernameLoginHandler().Handle(account, password);
+        return new UsernameLoginHandler().HandlePassportLogin(account, password);
     }
 
     [HttpPost("/hkrpg_global/mdk/shield/api/verify")]
@@ -160,7 +262,7 @@ public class DispatchRoutes : ControllerBase
     public JsonResult Verify([FromBody] VerifyReqJson req)
     {
         Debug($"shield verify: uid={req.uid} token_len={(req.token?.Length ?? 0)}");
-        return new TokenLoginHandler().Handle(req.uid!, req.token!);
+        return new TokenLoginHandler().HandleShieldVerify(req.uid!, req.token!);
     }
 
     [HttpPost("/hkrpg_global/combo/granter/login/v2/login")]
@@ -172,19 +274,19 @@ public class DispatchRoutes : ControllerBase
     }
 
     [HttpPost("/account/ma-cn-passport/app/loginByPassword")]
-    public ContentResult NewLogin([FromBody] NewLoginReqJson req)
+    public ContentResult LegacyPassportLogin([FromBody] PassportLoginReqJson req)
     {
         Debug($"ma loginByPassword: account={req.account}");
         var (account, password) =
             LoginCryptoHelper.TryDecryptCredentials(req.account, req.password, Config.WebSecurity.EnableRsaLoginDecrypt);
-        return new NewUsernameLoginHandler().HandleLegacy(account, password);
+        return new UsernameLoginHandler().HandleLegacyPassportLogin(account, password);
     }
 
     [HttpPost("/account/ma-cn-session/app/verify")]
-    public ContentResult NewVerify([FromBody] VerifySTokenReqJson req)
+    public ContentResult PassportTokenVerify([FromBody] PassportTokenVerifyReqJson req)
     {
-        Debug($"ma verify: mid={req.mid}, token={req.token.token}");
-        return new NewTokenLoginHandler().Handle(req.mid!, req.token.token!);
+        Debug($"ma verify: mid={req.mid}, token_len={(req.token.token?.Length ?? 0)} refresh={req.refresh}");
+        return new TokenLoginHandler().HandlePassportVerify(req.mid!, req.token.token!, req.refresh);
     }
 
     [HttpGet("/hkrpg_global/combo/granter/api/getConfig")]
@@ -242,8 +344,41 @@ public class DispatchRoutes : ControllerBase
     {
         return new ContentResult
         {
-            Content =
-                "{\"retcode\":0,\"message\":\"OK\",\"data\":{\"id\":24,\"game_key\":\"hkrpg_global\",\"client\":\"PC\",\"identity\":\"I_IDENTITY\",\"guest\":false,\"ignore_versions\":\"\",\"scene\":\"S_NORMAL\",\"name\":\"崩�??RPG\",\"disable_regist\":false,\"enable_email_captcha\":false,\"thirdparty\":[\"fb\",\"tw\",\"gl\",\"ap\"],\"disable_mmt\":false,\"server_guest\":false,\"thirdparty_ignore\":{},\"enable_ps_bind_account\":false,\"thirdparty_login_configs\":{\"tw\":{\"token_type\":\"TK_GAME_TOKEN\",\"game_token_expires_in\":2592000},\"ap\":{\"token_type\":\"TK_GAME_TOKEN\",\"game_token_expires_in\":604800},\"fb\":{\"token_type\":\"TK_GAME_TOKEN\",\"game_token_expires_in\":2592000},\"gl\":{\"token_type\":\"TK_GAME_TOKEN\",\"game_token_expires_in\":604800}},\"initialize_firebase\":false,\"bbs_auth_login\":false,\"bbs_auth_login_ignore\":[],\"fetch_instance_id\":false,\"enable_flash_login\":false}}",
+            Content = JsonConvert.SerializeObject(new
+            {
+                retcode = 0,
+                message = "OK",
+                data = new
+                {
+                    id = 24,
+                    game_key = "hkrpg_global",
+                    client = "PC",
+                    identity = "I_IDENTITY",
+                    guest = false,
+                    ignore_versions = "",
+                    scene = "S_NORMAL",
+                    name = "崩�??RPG",
+                    disable_regist = !Config.ServerOption.Auth.EnableRegistration,
+                    enable_email_captcha = false,
+                    thirdparty = new[] { "fb", "tw", "gl", "ap" },
+                    disable_mmt = false,
+                    server_guest = false,
+                    thirdparty_ignore = new Dictionary<string, object>(),
+                    enable_ps_bind_account = false,
+                    thirdparty_login_configs = new
+                    {
+                        tw = new { token_type = "TK_GAME_TOKEN", game_token_expires_in = 2592000 },
+                        ap = new { token_type = "TK_GAME_TOKEN", game_token_expires_in = 604800 },
+                        fb = new { token_type = "TK_GAME_TOKEN", game_token_expires_in = 2592000 },
+                        gl = new { token_type = "TK_GAME_TOKEN", game_token_expires_in = 604800 }
+                    },
+                    initialize_firebase = false,
+                    bbs_auth_login = false,
+                    bbs_auth_login_ignore = Array.Empty<object>(),
+                    fetch_instance_id = false,
+                    enable_flash_login = false
+                }
+            }),
             ContentType = "application/json"
         };
     }

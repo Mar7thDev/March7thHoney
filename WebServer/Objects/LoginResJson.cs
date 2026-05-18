@@ -6,6 +6,29 @@ public class LoginResJson
     public int retcode { get; set; }
     public VerifyData? data { get; set; }
 
+    public static LoginResJson Error(int retcode, string message)
+    {
+        return new LoginResJson
+        {
+            retcode = retcode,
+            message = message,
+            data = null
+        };
+    }
+
+    public static LoginResJson Success(string uid, string username, string email, string token)
+    {
+        var response = new LoginResJson
+        {
+            retcode = 0,
+            message = "OK",
+            data = new VerifyData(uid, email, token)
+        };
+        response.data.account.name = username;
+        response.data.account.is_email_verify = "1";
+        return response;
+    }
+
     public class VerifyData
     {
         public VerifyData(string accountUid, string email, string token)
