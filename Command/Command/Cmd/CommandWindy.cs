@@ -3,7 +3,7 @@ using March7thHoney.Kcp;
 
 namespace March7thHoney.Command.Command.Cmd;
 
-[CommandInfo("windy", "Kinda windy today!", "/windy <lua>")]
+[CommandInfo("windy", "Kinda windy today!", "/windy <lua>", permission: CommandPermissions.Debug)]
 public class CommandWindy : ICommand
 {
     [CommandDefault]

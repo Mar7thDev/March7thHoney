@@ -1,3 +1,5 @@
+using March7thHoney.Command;
+
 namespace March7thHoney.Configuration;
 
 public class ConfigContainer
@@ -85,7 +87,9 @@ public class ServerOption
     public bool AutoLightSection { get; set; } = true;
     public string Language { get; set; } = "EN";
     public string FallbackLanguage { get; set; } = "EN";
-    public HashSet<string> DefaultPermissions { get; set; } = ["*"];
+    public string DefaultPermissionRole { get; set; } = CommandRoles.User;
+    public Dictionary<string, HashSet<string>> PermissionRoles { get; set; } = CommandRoles.DefaultRoles();
+    public HashSet<string> DefaultPermissions { get; set; } = [];
     public ServerAnnounce ServerAnnounce { get; set; } = new();
     public ServerProfile ServerProfile { get; set; } = new();
     public WatermarkConfig Watermark { get; set; } = new();

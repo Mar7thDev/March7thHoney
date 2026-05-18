@@ -1,3 +1,4 @@
+using March7thHoney.Command;
 using March7thHoney.Util;
 using March7thHoney.Util.Security;
 using SqlSugar;
@@ -17,6 +18,9 @@ public class AccountData : BaseDatabaseDataHelper
 
     [SugarColumn(IsNullable = true)] public string? DispatchToken { get; set; }
     public long DispatchTokenExpireAt { get; set; }
+
+    [SugarColumn(IsNullable = true)]
+    public string? Role { get; set; }
 
     [SugarColumn(IsNullable = true)]
     public string? Permissions { get; set; } // type: permission1,permission2,permission3...
@@ -51,6 +55,25 @@ public class AccountData : BaseDatabaseDataHelper
         PasswordHash = hash;
         PasswordIterations = iterations;
         PersistAuthState();
+    }
+
+    public string GetRole()
+    {
+        var serverOption = ConfigManager.Config.ServerOption;
+        return CommandRoles.NormalizeRole(Role, serverOption.DefaultPermissionRole, serverOption.PermissionRoles);
+    }
+
+    public string GetEffectivePermissions()
+    {
+        var serverOption = ConfigManager.Config.ServerOption;
+        var rolePermissions = CommandRoles.GetPermissions(Role, serverOption.DefaultPermissionRole,
+            serverOption.PermissionRoles);
+        return CommandPermissions.Normalize(rolePermissions.Concat(CommandPermissions.Parse(Permissions)));
+    }
+
+    public bool HasPermission(string permission)
+    {
+        return CommandPermissions.Allows(GetEffectivePermissions(), permission);
     }
 
     public bool VerifyPassword(string password)
