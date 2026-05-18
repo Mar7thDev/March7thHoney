@@ -122,16 +122,18 @@ Workflow publishes self-contained builds for:
 
 ## Credits
 
-Collaborators:
+### Collaborators
 
 - [Mar7thLover](https://github.com/Mar7thLover)
 - [Cyrup](https://github.com/March7thHoney)
 - [Melioli](https://github.com/Melioli)
-Contributors:
+
+### Contributors
 
 - [Yuki](https://github.com/Yuki8859)
 - [Cyt](https://github.com/qinfyy)
-Projects:
+
+### Projects
 
 - [SqlSugar](https://github.com/donet5/SqlSugar)
 - [LunarCore](https://github.com/Melledy/LunarCore)
