@@ -20,7 +20,7 @@ March7thHoney 是一个基于 .NET 10 的服务器项目。
 - [环境要求](#环境要求)
 - [快速启动](#快速启动)
 - [构建](#构建)
-- [CI 产物](#ci-产物)
+- [产物](#产物)
 - [说明](#说明)
 - [故障排查](#故障排查)
 - [致谢](#致谢)
@@ -35,12 +35,12 @@ March7thHoney 是一个基于 .NET 10 的服务器项目。
 | 战斗流程 | 稳定 | 核心战斗循环可游玩 |
 | 大世界场景 | 稳定 | 场景加载、交互、探索可用 |
 | 角色养成 | 稳定 | 等级/突破基础链路可用 |
-| 任务系统 | 持续完善 | 主线与常规任务可推进，仍有边缘问题 |
+| 任务系统 | 持续完善 | 主线与常规任务可推进 |
 | 好友系统 | 稳定 | 核心展示与交互可用 |
-| 异相仲裁 | 持续完善 | 已支持解锁、挑战、领奖主流程 |
-| 挑战玩法 | 持续完善 | 忘却之庭 / 虚构叙事 / 末日幻影可玩 |
+| 异相仲裁 | 稳定 | 已支持解锁、挑战、领奖主流程 |
+| 挑战玩法 | 稳定 | 忘却之庭 / 虚构叙事 / 末日幻影可玩 |
 | 货币战争 | 持续完善 | 基础流程已接入 |
-| 成就系统 | 持续完善 | 大多数成就可追踪与完成 |
+| 成就系统 | 稳定 | 大多数成就可追踪与完成 |
 
 ## 开发计划
 
@@ -109,14 +109,18 @@ dotnet build program/program.csproj -c Release
 
 - 先检查你配置的日志目录输出。
 - 常见问题可先尝试 `/scene reload`。
-- 社区支持：<https://discord.gg/xRtZsmHBVj>
+- 社区支持：<https://discord.gg/castoriceps>
 
 ## 致谢
 
+Collaborators:
 - [Mar7thLover](https://github.com/Mar7thLover)
 - [Cyrup](https://github.com/March7thHoney)
 - [Melioli](https://github.com/Melioli)
+Contributors:
 - [Yuki](https://github.com/Yuki8859)
+- [Cyt](https://github.com/qinfyy)
+Projects:
 - [SqlSugar](https://github.com/donet5/SqlSugar)
 - [LunarCore](https://github.com/Melledy/LunarCore)
 - [DanhengServer](https://github.com/Mar7thLover/DanhengServer-OpenSource)

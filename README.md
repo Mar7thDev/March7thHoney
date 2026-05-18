@@ -7,7 +7,7 @@
   <img src="https://img.shields.io/badge/License-GPLv3-blue" alt="License" />
 </p>
 
-March7thHoney is a private server project built with .NET 10.
+March7thHoney is a server project built with .NET 10.
 The project is actively developed, with regular feature updates and fixes.
 
 [EN](README.md) | [简中](docs/README_zh-CN.md) | [繁中](docs/README_zh-TW.md) | [JP](docs/README_ja-JP.md)
@@ -37,10 +37,10 @@ The project is actively developed, with regular feature updates and fixes.
 | Character progression | Stable | Leveling and promotion loops available |
 | Quest system | In progress | Main/common progression works, edge cases remain |
 | Friend system | Stable | Core interaction and display |
-| Anomaly Arbitration | In progress | Entry/challenge/reward supported |
-| Challenge modes | In progress | FH / PF / AS playable |
+| Anomaly Arbitration | Stable | Entry/challenge/reward supported |
+| Challenge modes | Stable | FH / PF / AS playable |
 | Currency War | In progress | Basic gameplay flow available |
-| Achievement system | In progress | Most achievements supported |
+| Achievement system | Stable | Most achievements supported |
 
 ## Roadmap
 
@@ -113,10 +113,14 @@ Workflow publishes self-contained builds for:
 
 ## Credits
 
+Collaborators:
 - [Mar7thLover](https://github.com/Mar7thLover)
 - [Cyrup](https://github.com/March7thHoney)
 - [Melioli](https://github.com/Melioli)
+Contributors:
 - [Yuki](https://github.com/Yuki8859)
+- [Cyt](https://github.com/qinfyy)
+Projects:
 - [SqlSugar](https://github.com/donet5/SqlSugar)
 - [LunarCore](https://github.com/Melledy/LunarCore)
 - [DanhengServer](https://github.com/Mar7thLover/DanhengServer-OpenSource)

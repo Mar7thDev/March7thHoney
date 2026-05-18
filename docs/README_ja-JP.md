@@ -37,10 +37,10 @@ March7thHoneyは、.NET 10をベースとしたサーバープロジェクトで
 | キャラ育成 | 安定 | レベル/昇格の基本ループに対応 |
 | クエスト | 改善中 | 進行可能だが一部エッジケースあり |
 | フレンド | 安定 | 基本機能に対応 |
-| 異相仲裁 | 改善中 | 解放・挑戦・報酬受取に対応 |
-| チャレンジ系 | 改善中 | FH / PF / AS はプレイ可能 |
+| 異相仲裁 | 安定 | 解放・挑戦・報酬受取に対応 |
+| チャレンジ系 | 安定 | FH / PF / AS はプレイ可能 |
 | 差分宇宙関連 | 改善中 | 基本フロー導入済み |
-| 実績 | 改善中 | 多くの実績に対応 |
+| 実績 | 安定 | 多くの実績に対応 |
 
 ## ロードマップ
 
@@ -109,14 +109,18 @@ dotnet build program/program.csproj -c Release
 
 - まず設定済みログ出力先を確認してください。
 - よく使う復旧コマンドは `/scene reload`。
-- コミュニティサポート: <https://discord.gg/xRtZsmHBVj>
+- コミュニティサポート: <https://discord.gg/castoriceps>
 
 ## クレジット
 
+Collaborators:
 - [Mar7thLover](https://github.com/Mar7thLover)
 - [Cyrup](https://github.com/March7thHoney)
 - [Melioli](https://github.com/Melioli)
+Contributors:
 - [Yuki](https://github.com/Yuki8859)
+- [Cyt](https://github.com/qinfyy)
+Projects:
 - [SqlSugar](https://github.com/donet5/SqlSugar)
 - [LunarCore](https://github.com/Melledy/LunarCore)
 - [DanhengServer](https://github.com/Mar7thLover/DanhengServer-OpenSource)
