@@ -78,6 +78,37 @@ public class CalyxOverrideManager(PlayerInstance player) : BasePlayerManager(pla
         return (true, null, Data.SourceFileName);
     }
 
+    public async ValueTask<(bool ok, string? error, string? fileName)> EnableLatestOnlyEnemyOverride()
+    {
+        var files = FreesrShared.GetJsonFiles().OrderBy(f => f.LastWriteTimeUtc).ToList();
+        if (files.Count == 0)
+            return (false, I18NManager.Translate("Game.Command.Json.NoFileFoundWithHint"), null);
+
+        var selectedPath = files[^1].FullName;
+        FreesrCalyxData? data;
+        try
+        {
+            var json = await File.ReadAllTextAsync(selectedPath);
+            data = JsonSerializer.Deserialize<FreesrCalyxData>(json, FreesrShared.JsonOptions);
+        }
+        catch (Exception e)
+        {
+            return (false, I18NManager.Translate("Game.Command.Json.ReadOrParseFailed", e.Message), null);
+        }
+
+        if (data == null)
+            return (false, I18NManager.Translate("Game.Command.Json.InvalidJsonContent"), null);
+
+        // Command /calyx now only toggles enemy override; do not mutate avatar/inventory.
+        Data.IsActive = true;
+        Data.CachedJson = data;
+        Data.SourceFileName = Path.GetFileName(selectedPath);
+        Data.SourcePath = selectedPath;
+        Data.LoadedAtUnix = Extensions.GetUnixSec();
+        DatabaseHelper.ToSaveUidList.SafeAdd(Player.Uid);
+        return (true, null, Data.SourceFileName);
+    }
+
     public async ValueTask<BattleInstance?> BuildOverrideBattle(int cocoonId, int wave, int worldLevel)
     {
         var data = Data.CachedJson;

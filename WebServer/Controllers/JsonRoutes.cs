@@ -1,5 +1,5 @@
 using March7thHoney.Database.Account;
-using March7thHoney.GameServer.Command;
+using March7thHoney.GameServer.Game.Calyx;
 using March7thHoney.GameServer.Server;
 using March7thHoney.Internationalization;
 using March7thHoney.Kcp;
@@ -67,7 +67,7 @@ namespace March7thHoney.WebServer.Controllers
                 if (dataJson != string.Empty)
                 {
                     var player = con.Player;
-                    await FreeDataProcess.ImportJson(dataJson, player, async (msg) =>
+                    await FreesrShared.ImportJson(dataJson, player, async (msg) =>
                     {
                         if (msg[0] == "Game.Command.Json.ImportSummary" || msg[0] == "Game.Command.Json.AvatarExcelNotFound")
                         {
@@ -115,7 +115,7 @@ namespace March7thHoney.WebServer.Controllers
                 return new EmptyResult();
             }
 
-            var json = await FreeDataProcess.ExportPlayerDataAsync(uid, true);
+            var json = await FreesrShared.ExportPlayerDataAsync(uid, true);
 
             Response.StatusCode = 200;
             Response.ContentType = "application/octet-stream";
