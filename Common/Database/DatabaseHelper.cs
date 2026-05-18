@@ -369,4 +369,16 @@ public class DatabaseHelper
             .Remove((instance as BaseDatabaseDataHelper)!); // remove from the map
         ToSaveUidList.Remove((instance as BaseDatabaseDataHelper)!.Uid); // remove from the save list
     }
+
+    public void DeleteUidData(int uid)
+    {
+        if (!UidInstanceMap.TryGetValue(uid, out var value)) return;
+
+        foreach (var instance in value.ToList())
+            typeof(DatabaseHelper).GetMethod(nameof(DeleteInstance))?.MakeGenericMethod(instance.GetType())
+                .Invoke(this, [instance]);
+
+        UidInstanceMap.TryRemove(uid, out _);
+        ToSaveUidList.Remove(uid);
+    }
 }

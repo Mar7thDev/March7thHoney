@@ -18,16 +18,20 @@ public class HandlerPlayerGetTokenCsReq : Handler
     public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
     {
         var req = PlayerGetTokenCsReq.Parser.ParseFrom(data);
+        if (!int.TryParse(req.AccountUid, out var requestedUid) || string.IsNullOrWhiteSpace(req.Token))
+        {
+            await connection.SendPacket(new PacketPlayerGetTokenScRsp(0, Retcode.RetNotInWhiteList));
+            return;
+        }
 
-        // call dispatch /get_account_info api to get account info
+        // Validate the game login token before creating a player session.
         int uid;
 
         if (ConfigManager.Config.ServerOption.ServerConfig.RunDispatch ||
             string.IsNullOrEmpty(ConfigManager.Config.ServerOption.ServerConfig.FromDispatchBaseUrl))
         {
-            // dispatch running, use local db
-            var account = DatabaseHelper.Instance?.GetInstance<AccountData>(int.Parse(req.AccountUid));
-            if (account == null)
+            var account = DatabaseHelper.Instance?.GetInstance<AccountData>(requestedUid);
+            if (account == null || !account.ValidateGameToken(req.Token))
             {
                 await connection.SendPacket(new PacketPlayerGetTokenScRsp(0, Retcode.RetNotInWhiteList));
                 return;
@@ -37,17 +41,31 @@ public class HandlerPlayerGetTokenCsReq : Handler
         }
         else
         {
-            // dispatch not running, use dispatch api
             var dispatchUrl = ConfigManager.Config.ServerOption.ServerConfig.FromDispatchBaseUrl;
-            var targetUrl = $"{dispatchUrl}/get_account_info?accountUid={req.AccountUid}";
-            var res = await HttpNetwork.SendGetRequest(targetUrl);
+            var targetUrl = $"{dispatchUrl}/validate_account_token";
+            var headers = new Dictionary<string, string>();
+            var exchangeSecret = ConfigManager.Config.ServerOption.ServerConfig.ServerExchangeSecret;
+            if (!string.IsNullOrWhiteSpace(exchangeSecret))
+                headers["X-March7thHoney-Server-Secret"] = exchangeSecret;
+
+            var form = new Dictionary<string, string>
+            {
+                ["accountUid"] = req.AccountUid,
+                ["token"] = req.Token
+            };
+
+            var res = await HttpNetwork.SendPostFormRequest(targetUrl, form, headers);
             if (res.Item1 != 200 || res.Item2 == null)
             {
                 await connection.SendPacket(new PacketPlayerGetTokenScRsp(0, Retcode.RetNotInWhiteList));
                 return;
             }
 
-            uid = int.Parse(res.Item2);
+            if (!int.TryParse(res.Item2, out uid))
+            {
+                await connection.SendPacket(new PacketPlayerGetTokenScRsp(0, Retcode.RetNotInWhiteList));
+                return;
+            }
         }
 
 

@@ -1,4 +1,5 @@
 using March7thHoney.Database.Account;
+using March7thHoney.Util;
 using March7thHoney.WebServer.Objects;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -7,12 +8,15 @@ namespace March7thHoney.WebServer.Handler;
 
 public class ComboTokenGranterHandler
 {
+    private static readonly Logger Logger = new("ComboLoginV2");
+
     public JsonResult Handle(int app_id, int channel_id, string data, string device, string sign)
     {
         var tokenData = JsonConvert.DeserializeObject<LoginTokenData>(data);
         var res = new ComboTokenResJson();
         if (tokenData == null)
         {
+            Logger.Warn($"Failed to deserialize combo login payload. raw_len={data?.Length ?? 0}");
             res.retcode = -202;
             res.message = "Invalid login data";
             return new JsonResult(res);
@@ -20,19 +24,23 @@ public class ComboTokenGranterHandler
 
         if (!int.TryParse(tokenData.uid, out var uid))
         {
+            Logger.Warn($"Invalid combo login uid. uid={tokenData.uid ?? "<null>"} token_len={tokenData.token?.Length ?? 0}");
             res.retcode = -202;
             res.message = "Invalid login data";
             return new JsonResult(res);
         }
 
         var account = AccountData.GetAccountByUid(uid);
-        if (account == null || !string.Equals(account.DispatchToken, tokenData.token, StringComparison.Ordinal))
+        if (account == null || !account.ValidateDispatchToken(tokenData.token))
         {
+            Logger.Warn(
+                $"Combo login cache validation failed. uid={uid} token_len={tokenData.token?.Length ?? 0} account_exists={account != null}");
             res.retcode = -201;
             res.message = "Game account cache information error";
             return new JsonResult(res);
         }
 
+        Logger.Info($"Combo login cache validated. uid={uid} token_len={tokenData.token?.Length ?? 0}");
         res.message = "OK";
         res.data = new ComboTokenResJson.LoginData(account.Uid.ToString(), account.GenerateComboToken());
         return new JsonResult(res);

@@ -46,6 +46,7 @@ public class GameServerConfig
     public string GameServerId { get; set; } = "March7th_Honey";
     public string GameServerName { get; set; } = "March7thHoney";
     public string GameServerDescription { get; set; } = "A re-implementation of StarRail server";
+    public int EnvType { get; set; } = 9;
     public bool UsePacketEncryption { get; set; } = true;
 
     public string GetDisplayAddress()
@@ -88,6 +89,7 @@ public class ServerOption
     public ServerAnnounce ServerAnnounce { get; set; } = new();
     public ServerProfile ServerProfile { get; set; } = new();
     public WatermarkConfig Watermark { get; set; } = new();
+    public AuthOption Auth { get; set; } = new();
     public bool AutoCreateUser { get; set; } = true;
     public LogOption LogOption { get; set; } = new();
     public ServerConfig ServerConfig { get; set; } = new();
@@ -112,6 +114,16 @@ public class WatermarkConfig
     public bool UseGradient { get; set; } = true;
     public string GradientStartColor { get; set; } = "#54C3F7";
     public string GradientEndColor { get; set; } = "#C673AA";
+}
+
+public class AuthOption
+{
+    public int MinimumPasswordLength { get; set; } = 8;
+    public int PasswordHashIterations { get; set; } = 600000;
+    public int DispatchTokenExpireMinutes { get; set; } = 60;
+    public int ComboTokenExpireMinutes { get; set; } = 60;
+    public bool EnableRegistration { get; set; } = true;
+    public string RegistrationPageIcon { get; set; } = "M7";
 }
 
 public class WelcomeMailConfig
@@ -146,6 +158,7 @@ public class ServerConfig
 {
     public bool RunDispatch { get; set; } = true;
     public string FromDispatchBaseUrl { get; set; } = "";
+    public string ServerExchangeSecret { get; set; } = "";
     public bool RunGateway { get; set; } = true; // if run gateway, also run game server
     public List<ServerRegion> Regions { get; set; } = [];
 }
