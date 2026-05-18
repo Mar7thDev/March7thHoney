@@ -87,6 +87,7 @@ public class ServerOption
     public HashSet<string> DefaultPermissions { get; set; } = ["*"];
     public ServerAnnounce ServerAnnounce { get; set; } = new();
     public ServerProfile ServerProfile { get; set; } = new();
+    public WatermarkConfig Watermark { get; set; } = new();
     public bool AutoCreateUser { get; set; } = true;
     public LogOption LogOption { get; set; } = new();
     public ServerConfig ServerConfig { get; set; } = new();
@@ -100,6 +101,17 @@ public class ServerOption
     {
         return Math.Max(Math.Min(FarmingDropRate, 999), 1);
     }
+}
+
+public class WatermarkConfig
+{
+    public bool Enabled { get; set; } = true;
+    public string Line1Template { get; set; } = "{nickname}｜{serverName}";
+    public string Line2Template { get; set; } = "{version}｜ {uid}";
+    public double FontSize { get; set; } = 76.0;
+    public bool UseGradient { get; set; } = true;
+    public string GradientStartColor { get; set; } = "#54C3F7";
+    public string GradientEndColor { get; set; } = "#C673AA";
 }
 
 public class WelcomeMailConfig

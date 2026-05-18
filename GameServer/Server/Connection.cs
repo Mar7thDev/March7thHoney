@@ -1,6 +1,8 @@
 using System.Buffers;
+using System.Globalization;
 using System.Net;
 using System.Reflection;
+using March7thHoney.Configuration;
 using March7thHoney.Data.Custom;
 using March7thHoney.Enums.Server;
 using March7thHoney.GameServer.Game.Player;
@@ -47,15 +49,25 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
     public override async Task SendWatermarkLuaAsync()
     {
         if (Player == null) return;
+        var watermark = ConfigManager.Config.ServerOption.Watermark;
+        if (!watermark.Enabled) return;
+
         var nickname = Player.Data.Name ?? "";
         var uid = Player.Uid.ToString();
         var version = string.IsNullOrEmpty(ClientVersionCache.LatestVersion)
             ? $"WIN{GameConstants.GAME_VERSION}"
             : ClientVersionCache.LatestVersion;
 
-        var line1 = ApplyGradient($"{nickname}｜March7thHoney");
-        var line2 = ApplyGradient($"{version}｜ {uid}");
-        var luaText = EscapeLuaString(line1 + "\n" + line2);
+        var line1 = BuildWatermarkLine(watermark.Line1Template, nickname, uid, version, watermark);
+        var line2 = BuildWatermarkLine(watermark.Line2Template, nickname, uid, version, watermark);
+
+        var lines = new List<string>();
+        if (!string.IsNullOrWhiteSpace(line1)) lines.Add(line1);
+        if (!string.IsNullOrWhiteSpace(line2)) lines.Add(line2);
+        if (lines.Count == 0) return;
+
+        var luaText = EscapeLuaString(string.Join("\n", lines));
+        var fontSize = watermark.FontSize.ToString(CultureInfo.InvariantCulture);
 
         var lua =
             "local function modify_texts()\n" +
@@ -64,7 +76,7 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
             "    local vt = vGo:GetComponent(\"Text\")\n" +
             "    vt.supportRichText = true\n" +
             "    vt.text = \"" + luaText + "\"\n" +
-            "    vt.fontSize = 76.0\n" +
+            "    vt.fontSize = " + fontSize + "\n" +
             "end\n" +
             "\n" +
             "local function on_error(err)\n" +
@@ -80,10 +92,27 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
         await SendPacket(pkt.BuildPacket());
     }
 
-    private static string ApplyGradient(string line)
+    private static string BuildWatermarkLine(string template, string nickname, string uid, string version,
+        WatermarkConfig watermark)
     {
-        const int r0 = 0x54, g0 = 0xC3, b0 = 0xF7;
-        const int r1 = 0xC6, g1 = 0x73, b1 = 0xAA;
+        var line = template
+            .Replace("{nickname}", nickname, StringComparison.Ordinal)
+            .Replace("{uid}", uid, StringComparison.Ordinal)
+            .Replace("{version}", version, StringComparison.Ordinal)
+            .Replace("{serverName}", ConfigManager.Config.GameServer.GameServerName, StringComparison.Ordinal)
+            .Replace("{serverId}", ConfigManager.Config.GameServer.GameServerId, StringComparison.Ordinal);
+
+        if (!watermark.UseGradient) return line;
+        return ApplyGradient(line, watermark.GradientStartColor, watermark.GradientEndColor);
+    }
+
+    private static string ApplyGradient(string line, string startColor, string endColor)
+    {
+        if (!TryParseHexColor(startColor, out var r0, out var g0, out var b0) ||
+            !TryParseHexColor(endColor, out var r1, out var g1, out var b1))
+        {
+            return line;
+        }
 
         var visible = 0;
         foreach (var c in line)
@@ -106,6 +135,20 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
             idx++;
         }
         return sb.ToString();
+    }
+
+    private static bool TryParseHexColor(string value, out int r, out int g, out int b)
+    {
+        r = g = b = 0;
+        var hex = value.Trim();
+        if (hex.StartsWith("#", StringComparison.Ordinal))
+            hex = hex[1..];
+
+        if (hex.Length != 6) return false;
+        if (!int.TryParse(hex[..2], NumberStyles.HexNumber, CultureInfo.InvariantCulture, out r)) return false;
+        if (!int.TryParse(hex.Substring(2, 2), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out g))
+            return false;
+        return int.TryParse(hex.Substring(4, 2), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out b);
     }
 
     private static string EscapeLuaString(string s)
