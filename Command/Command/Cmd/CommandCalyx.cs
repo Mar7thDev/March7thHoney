@@ -32,11 +32,15 @@ public class CommandCalyx : ICommand
 
         if (mode == "on")
         {
-            var (ok, error, fileName) = await player.CalyxOverrideManager!.EnableLatestOnlyEnemyOverride();
-            if (!ok)
-                await arg.SendMsg(error ?? I18NManager.Translate("Game.Command.Calyx.LoadFailed"));
-            else
-                await arg.SendMsg(I18NManager.Translate("Game.Command.Calyx.ToggleOn", fileName ?? ""));
+            var manager = player.CalyxOverrideManager!;
+            if (manager.Data.CachedJson?.BattleConfig == null)
+            {
+                await arg.SendMsg(I18NManager.Translate("Game.Command.Calyx.NoCachedData"));
+                return;
+            }
+
+            manager.Enable();
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Calyx.ToggleOn"));
             return;
         }
 
