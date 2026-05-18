@@ -1,4 +1,5 @@
 using March7thHoney.Data;
+using March7thHoney.Data.Excel;
 
 namespace March7thHoney.GameServer.Game.GridFight.Battle;
 
@@ -20,7 +21,8 @@ public static class GridFightLevelResolver
 
     public static GridFightLevelEncounter Resolve(GridFightInstance inst)
     {
-        var stageId = UnifiedStageId;
+        var route = ResolveRoute(inst);
+        var stageId = route?.StageID ?? UnifiedStageId;
         var penaltyRuleId = ResolvePenaltyRuleId(inst);
         var (eliteGroup, monsters) = ResolveWave(inst);
         var bindingBuffs = ResolveBindingBuffs();
@@ -38,11 +40,16 @@ public static class GridFightLevelResolver
         );
     }
 
-    private static uint ResolvePenaltyRuleId(GridFightInstance inst)
+    private static GridFightStageRouteExcel? ResolveRoute(GridFightInstance inst)
     {
-        var route = GameData.GridFightStageRouteData.Values
+        return GameData.GridFightStageRouteData.Values
             .SelectMany(d => d.Values)
             .FirstOrDefault(r => r.ChapterID == inst.CurrentChapterId && r.SectionID == inst.SectionId);
+    }
+
+    private static uint ResolvePenaltyRuleId(GridFightInstance inst)
+    {
+        var route = ResolveRoute(inst);
         if (route == null) return 90303u;
 
         if (route.PenaltyBonusRuleIDList.Count > 0) return route.PenaltyBonusRuleIDList[0];
@@ -53,13 +60,88 @@ public static class GridFightLevelResolver
 
     private static (uint EliteGroup, List<GridFightMonsterSpec> Monsters) ResolveWave(GridFightInstance inst)
     {
-        // 1-1 默认 wave（与官服抓包一致）
-        return (1816u, new List<GridFightMonsterSpec>
+        var route = ResolveRoute(inst);
+
+        var camp = ResolveCamp(inst);
+        var monsters = camp?.Monsters ?? [];
+        if (monsters.Count == 0)
         {
-            new(201101005, 1, new List<uint> { 102, 204 }),
-            new(800104004, 1, new List<uint> { 203 }),
-            new(800104004, 1, new List<uint> { 199 })
-        });
+            return (1816u, new List<GridFightMonsterSpec>
+            {
+                new(201101005, 1, new List<uint> { 102 }),
+                new(800104004, 1, new List<uint> { 199 }),
+                new(800104004, 1, new List<uint> { 203 })
+            });
+        }
+
+        var rng = Random.Shared;
+        var wave = new List<GridFightMonsterSpec>();
+        var nodeType = route?.NodeType;
+
+        // 对齐 DH：普通怪点优先低 Tier，避免 1-1 刷出过高血量怪
+        if (nodeType == Enums.GridFight.GridFightNodeTypeEnum.Monster)
+        {
+            var pool = monsters.Where(m => m.MonsterTier <= 2).ToList();
+            if (pool.Count == 0) pool = monsters.ToList();
+            for (var i = 0; i < 5 && pool.Count > 0; i++)
+            {
+                var pick = pool[rng.Next(pool.Count)];
+                wave.Add(new GridFightMonsterSpec(pick.MonsterID, 1, []));
+            }
+            return (1816u, wave);
+        }
+
+        if (nodeType == Enums.GridFight.GridFightNodeTypeEnum.CampMonster
+            || nodeType == Enums.GridFight.GridFightNodeTypeEnum.EliteBranch)
+        {
+            var targetTiers = new uint[] { 3, 2, 2, 2, 2 };
+            foreach (var tier in targetTiers)
+            {
+                var pool = monsters.Where(m => m.MonsterTier == tier).ToList();
+                if (pool.Count == 0) pool = monsters.Where(m => m.MonsterTier <= 3).ToList();
+                if (pool.Count == 0) continue;
+                var pick = pool[rng.Next(pool.Count)];
+                wave.Add(new GridFightMonsterSpec(pick.MonsterID, 1, []));
+            }
+            if (wave.Count == 0)
+            {
+                var pick = monsters[rng.Next(monsters.Count)];
+                wave.Add(new GridFightMonsterSpec(pick.MonsterID, 1, []));
+            }
+            return (1817u, wave);
+        }
+
+        if (nodeType == Enums.GridFight.GridFightNodeTypeEnum.Boss)
+        {
+            var bossPool = monsters.Where(m => m.MonsterTier >= 5).ToList();
+            if (bossPool.Count == 0) bossPool = monsters.ToList();
+            var pick = bossPool[rng.Next(bossPool.Count)];
+            wave.Add(new GridFightMonsterSpec(pick.MonsterID, 1, []));
+            return (1819u, wave);
+        }
+
+        var fallbackPool = monsters.Where(m => m.MonsterTier <= 2).ToList();
+        if (fallbackPool.Count == 0) fallbackPool = monsters.ToList();
+        for (var i = 0; i < 3 && fallbackPool.Count > 0; i++)
+        {
+            var pick = fallbackPool[rng.Next(fallbackPool.Count)];
+            wave.Add(new GridFightMonsterSpec(pick.MonsterID, 1, []));
+        }
+        return (1816u, wave);
+    }
+
+    private static GridFightCampExcel? ResolveCamp(GridFightInstance inst)
+    {
+        foreach (var campId in inst.SessionCampIds)
+        {
+            if (GameData.GridFightCampData.TryGetValue(campId, out var camp) && camp.Monsters.Count > 0)
+                return camp;
+        }
+
+        return GameData.GridFightCampData.Values
+            .Where(c => c.Monsters.Count > 0 && (c.SeasonID == 0 || c.SeasonID == inst.Season))
+            .OrderBy(c => c.ID)
+            .FirstOrDefault();
     }
 
     private static List<uint> ResolveBindingBuffs() => new() { 35100001 };

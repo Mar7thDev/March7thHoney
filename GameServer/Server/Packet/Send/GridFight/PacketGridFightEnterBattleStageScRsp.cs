@@ -63,9 +63,10 @@ public class PacketGridFightEnterBattleStageScRsp : BasePacket
         var collection = new PlayerDataCollection(player.Data, player.InventoryManager!.Data, battle.Lineup);
         foreach (var (roleId, _) in inst.ResolveBackgroundRoles())
         {
-            var avatar = GridFightBattleProtoBuilder.ResolveTrialAvatar(player, roleId);
+            var resolved = GridFightBattleProtoBuilder.ResolveBattleAvatar(player, roleId);
+            var avatar = resolved.Avatar;
             if (avatar == null) continue;
-            var ba = avatar.ToBattleProto(collection, AvatarType.AvatarGridFightType);
+            var ba = avatar.ToBattleProto(collection, resolved.AvatarType);
             ba.Id = (uint)(GameData.GridFightRoleBasicInfoData.TryGetValue(roleId, out var bi) ? bi.AvatarID : roleId);
             info.AFCMOOFGBPK.PIDIGFGKAMK.Add(ba);
         }

@@ -1,6 +1,7 @@
 using March7thHoney.Data;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.GridFight.Sync;
+using March7thHoney.GameServer.Game.GridFight.Battle;
 using March7thHoney.Proto;
 
 namespace March7thHoney.GameServer.Game.GridFight;
@@ -91,14 +92,21 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
         {
             if (posInfo.Pos == 0 || posInfo.UniqueId == 0) continue;
             if (!GridFightInstance.RoleByUniqueId.TryGetValue(posInfo.UniqueId, out var avatarId)) continue;
+            var roleInfo = new GridGameRoleInfo
+            {
+                Id = avatarId,
+                Pos = posInfo.Pos,
+                UniqueId = posInfo.UniqueId,
+                RoleStar = GridFightInstance.RoleStarByUniqueId.GetValueOrDefault(posInfo.UniqueId, 1u)
+            };
+            if (GameData.GridFightRoleBasicInfoData.TryGetValue(avatarId, out var roleExcel)
+                && roleExcel.RoleSavedValueList.Count > 0)
+            {
+                roleInfo.GridFightValueInitComponent[roleExcel.RoleSavedValueList[0]] = 0;
+            }
             sync.UpdateDynamicList.Add(new GridFightSyncData
             {
-                UpdateRoleInfo = new GridGameRoleInfo
-                {
-                    Id = avatarId,
-                    Pos = posInfo.Pos,
-                    UniqueId = posInfo.UniqueId
-                }
+                UpdateRoleInfo = roleInfo
             });
         }
         notify.SyncResultDataList.Add(sync);
@@ -165,31 +173,81 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
     {
         var notify = new GridFightSyncUpdateResultScNotify();
         var inst = GridFightInstance;
-        if (inst == null || extra is not ValueTuple<uint, uint, uint, int> info)
+        if (inst == null || extra == null)
         {
             notify.SyncResultDataList.Add(new GridFightSyncResultData());
             return notify;
         }
-        var (roleId, roleUniqueId, pos, _) = info;
+        uint roleId;
+        uint roleUniqueId;
+        uint pos;
+        List<uint> mergedRemoved;
+        uint mergedKeepUid;
+        uint mergedNewStar;
+        if (extra is ValueTuple<uint, uint, uint, int, List<uint>, uint, uint> v2)
+        {
+            (roleId, roleUniqueId, pos, _, mergedRemoved, mergedKeepUid, mergedNewStar) = v2;
+        }
+        else if (extra is ValueTuple<uint, uint, uint, int> v1)
+        {
+            (roleId, roleUniqueId, pos, _) = v1;
+            mergedRemoved = [];
+            mergedKeepUid = 0;
+            mergedNewStar = 0;
+        }
+        else
+        {
+            notify.SyncResultDataList.Add(new GridFightSyncResultData());
+            return notify;
+        }
 
         var sec0 = new GridFightSyncResultData { GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpDpekjiiicgh };
         sec0.SyncEffectParamList.Add(0u);
         sec0.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = inst.Gold });
         if (roleUniqueId > 0)
         {
-            var roleInfo = new GridGameRoleInfo
+            if (mergedRemoved.Count == 0 || mergedKeepUid == 0)
             {
-                Id = roleId,
-                Pos = pos,
-                RoleStar = 1,
-                UniqueId = roleUniqueId
-            };
-            if (GameData.GridFightRoleBasicInfoData.TryGetValue(roleId, out var roleExcel)
-                && roleExcel.RoleSavedValueList.Count > 0)
-            {
-                roleInfo.GridFightValueInitComponent[roleExcel.RoleSavedValueList[0]] = 0;
+                var roleInfo = new GridGameRoleInfo
+                {
+                    Id = roleId,
+                    Pos = pos,
+                    RoleStar = 1,
+                    UniqueId = roleUniqueId
+                };
+                if (GameData.GridFightRoleBasicInfoData.TryGetValue(roleId, out var roleExcel)
+                    && roleExcel.RoleSavedValueList.Count > 0)
+                {
+                    roleInfo.GridFightValueInitComponent[roleExcel.RoleSavedValueList[0]] = 0;
+                }
+                sec0.UpdateDynamicList.Add(new GridFightSyncData { AddRoleInfo = roleInfo });
             }
-            sec0.UpdateDynamicList.Add(new GridFightSyncData { AddRoleInfo = roleInfo });
+            else
+            {
+                foreach (var removedUid in mergedRemoved)
+                    sec0.UpdateDynamicList.Add(new GridFightSyncData { RemoveRoleUniqueId = removedUid });
+
+                var keepPos = inst.UniqueIdByPos.FirstOrDefault(kv => kv.Value == mergedKeepUid).Key;
+                var mergedRole = new GridGameRoleInfo
+                {
+                    Id = roleId,
+                    Pos = keepPos,
+                    RoleStar = mergedNewStar,
+                    UniqueId = mergedKeepUid
+                };
+                if (GameData.GridFightRoleBasicInfoData.TryGetValue(roleId, out var roleExcel)
+                    && roleExcel.RoleSavedValueList.Count > 0)
+                {
+                    mergedRole.GridFightValueInitComponent[roleExcel.RoleSavedValueList[0]] = 0;
+                }
+
+                // 若保留的是本次新买入角色，客户端尚未持有该 uniqueId，需要 AddRoleInfo；
+                // 若保留的是旧角色，则用 UpdateRoleInfo 升星。
+                if (mergedKeepUid == roleUniqueId)
+                    sec0.UpdateDynamicList.Add(new GridFightSyncData { AddRoleInfo = mergedRole });
+                else
+                    sec0.UpdateDynamicList.Add(new GridFightSyncData { UpdateRoleInfo = mergedRole });
+            }
         }
         notify.SyncResultDataList.Add(sec0);
 
@@ -254,7 +312,28 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
     {
         var notify = new GridFightSyncUpdateResultScNotify();
         var sync = new GridFightSyncResultData();
-        sync.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = (uint)Math.Max(0, GridFightInstance?.Gold ?? 0) });
+        var inst = GridFightInstance;
+        sync.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = (uint)Math.Max(0, inst?.Gold ?? 0) });
+        if (inst != null)
+        {
+            sync.UpdateDynamicList.Add(new GridFightSyncData
+            {
+                PlayerLevel = new GridFightPlayerLevelSyncInfo
+                {
+                    Level = inst.PlayerLevel,
+                    Exp = inst.PlayerExp,
+                    MaxLevel = inst.PlayerMaxLevel
+                }
+            });
+            sync.UpdateDynamicList.Add(new GridFightSyncData
+            {
+                GridFightBuyExpCost = inst.GetBuyExpCost()
+            });
+            sync.UpdateDynamicList.Add(new GridFightSyncData
+            {
+                MaxBattleRoleNum = inst.GetCurrentMaxBattleRoleNum()
+            });
+        }
         notify.SyncResultDataList.Add(sync);
         return notify;
     }
@@ -279,9 +358,13 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
                 }
             }
         };
-        var encounter = new GridFightEncounterInfo { LFKBMDHKPFI = 90304 };
+        var nextEncounter = GridFightLevelResolver.Resolve(inst);
+        var encounter = new GridFightEncounterInfo { LFKBMDHKPFI = nextEncounter.StageId };
         var wave = new GridEncounterMonsterWave { IGMMPDDCJIN = 1 };
-        foreach (var monsterId in new uint[] { 800101020u, 800105007u, 800105007u, 800105007u, 800104004u })
+        var previewMonsters = inst.BattleComponent.MonsterIds.Count > 0
+            ? inst.BattleComponent.MonsterIds
+            : nextEncounter.Monsters.Select(m => m.MonsterId).ToList();
+        foreach (var monsterId in previewMonsters)
             wave.PPOEDDFFEKK.Add(new PJLBDMPEKFP { MonsterId = monsterId, RoleStar = 1 });
         encounter.MonsterWaveList.Add(wave);
         levelInfo.GridFightLayerInfo.RouteInfo.RouteEncounterList.Add(encounter);

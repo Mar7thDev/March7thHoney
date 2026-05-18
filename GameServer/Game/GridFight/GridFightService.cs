@@ -41,16 +41,18 @@ public sealed class GridFightService(PlayerInstance player)
         return list;
     }
 
-    public (uint roleId, uint roleUniqueId, uint pos, int goldDelta) BuyGoods(IList<uint> buyGoodsIndexList)
+    public (uint roleId, uint roleUniqueId, uint pos, int goldDelta, List<uint> mergedRemoved, uint mergedKeepUid, uint mergedNewStar) BuyGoods(IList<uint> buyGoodsIndexList)
     {
         var inst = Current;
         if (inst == null || buyGoodsIndexList.Count == 0)
-            return (0, 0, 14, 0);
+            return (0, 0, 14, 0, [], 0, 0);
 
         var idx = (int)buyGoodsIndexList[0];
         var (ok, uid, rid, addedPos) = inst.TryBuyGoods(idx);
-        if (!ok) return (0, 0, 14, 0);
-        return (rid, uid, addedPos == 0 ? 14u : addedPos, -1);
+        if (!ok) return (0, 0, 14, 0, [], 0, 0);
+
+        var merge = inst.TryAutoMergeRole(rid, uid);
+        return (rid, uid, addedPos == 0 ? 14u : addedPos, -1, merge.RemovedUniqueIds, merge.KeptUniqueId, merge.NewStar);
     }
 
     public bool RefreshShop()
