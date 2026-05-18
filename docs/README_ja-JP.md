@@ -119,16 +119,18 @@ dotnet build program/program.csproj -c Release
 
 ## クレジット
 
-共同開発者：
+### 共同開発者
 
 - [Mar7thLover](https://github.com/Mar7thLover)
 - [Cyrup](https://github.com/March7thHoney)
 - [Melioli](https://github.com/Melioli)
-貢献者：
+
+### 貢献者
 
 - [Yuki](https://github.com/Yuki8859)
 - [Cyt](https://github.com/qinfyy)
-関連プロジェクト：
+
+### 関連プロジェクト
 
 - [SqlSugar](https://github.com/donet5/SqlSugar)
 - [LunarCore](https://github.com/Melledy/LunarCore)
