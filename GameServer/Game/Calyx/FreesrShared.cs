@@ -167,26 +167,29 @@ public static class FreesrShared
             var pathInfo = avatar.PathInfos[avatarId];
             pathInfo.Rank = Math.Clamp(avatarJson.Data?.Rank ?? 0, 0, 6);
 
-            // Import enhanced state first so subsequent skill import lands in the
-            // correct enhanced skill tree instead of default(0).
-            var targetEnhancedId = avatarJson.EnhancedId.GetValueOrDefault();
-            if (GameData.AvatarConfigData.TryGetValue(pathInfo.PathId, out var pathExcel))
-            {
-                var exists = pathExcel.SkillTree.ContainsKey(targetEnhancedId) ||
-                             pathExcel.DefaultSkillTree.ContainsKey(targetEnhancedId);
-                pathInfo.EnhanceId = exists ? targetEnhancedId : 0;
-            }
-            else
-            {
-                pathInfo.EnhanceId = targetEnhancedId;
-            }
-
             if (avatarJson.Data?.Skills != null)
             {
-                var skillTree = pathInfo.GetSkillTree();
-                skillTree.Clear();
-                foreach (var (pointId, level) in avatarJson.Data.Skills)
-                    skillTree[pointId] = Math.Max(1, level);
+                var freesrEnhanceId = avatarJson.EnhancedId.GetValueOrDefault();
+                if (GameData.AvatarConfigData.TryGetValue(pathInfo.PathId, out var pathExcel))
+                {
+                    var exists = pathExcel.SkillTree.ContainsKey(freesrEnhanceId) ||
+                                 pathExcel.DefaultSkillTree.ContainsKey(freesrEnhanceId);
+                    if (!exists) freesrEnhanceId = 0;
+                }
+
+                var savedEnhanceId = pathInfo.EnhanceId;
+                pathInfo.EnhanceId = freesrEnhanceId;
+                try
+                {
+                    var skillTree = pathInfo.GetSkillTree();
+                    skillTree.Clear();
+                    foreach (var (pointId, level) in avatarJson.Data.Skills)
+                        skillTree[pointId] = Math.Max(1, level);
+                }
+                finally
+                {
+                    pathInfo.EnhanceId = savedEnhanceId;
+                }
             }
 
             changed[avatar.BaseAvatarId] = avatar;
@@ -350,12 +353,16 @@ public static class FreesrShared
         if (avatarChanged.Count > 0)
             await player.SendPacket(new PacketPlayerSyncScNotify(avatarChanged));
 
-        // Keep battle_config in sync for Calyx override consumers.
-        if (data.BattleConfig != null && player.CalyxOverrideManager != null)
+        // Cache battle_config and per-avatar battle state for Calyx override consumers.
+        // Missing fields keep their previous cached values.
+        if (player.CalyxOverrideManager != null && (data.BattleConfig != null || data.Avatars != null))
         {
             var overrideData = player.CalyxOverrideManager.Data;
             overrideData.CachedJson ??= new FreesrCalyxData();
-            overrideData.CachedJson.BattleConfig = data.BattleConfig;
+            if (data.BattleConfig != null)
+                overrideData.CachedJson.BattleConfig = data.BattleConfig;
+            if (data.Avatars != null)
+                overrideData.CachedJson.Avatars = data.Avatars;
             DatabaseHelper.ToSaveUidList.SafeAdd(player.Uid);
         }
 
@@ -408,6 +415,9 @@ public static class FreesrShared
         if (dbHelper == null)
             throw new Exception("DatabaseHelper not initialized.");
 
+        var calyxOverrideData = dbHelper.GetInstance<CalyxOverrideData>(uid);
+        var cachedAvatars = calyxOverrideData?.CachedJson?.Avatars;
+
         var avatarData = dbHelper.GetInstance<AvatarData>(uid);
         if (avatarData != null)
         {
@@ -415,12 +425,18 @@ public static class FreesrShared
             {
                 foreach (var path in avatar.PathInfos.Values)
                 {
+                    FreesrCalyxAvatar? cached = null;
+                    cachedAvatars?.TryGetValue(path.PathId, out cached);
+
                     data.Avatars[path.PathId] = new FreesrCalyxAvatar
                     {
                         AvatarId = path.PathId,
                         Level = avatar.Level,
                         Promotion = avatar.Promotion,
-                        EnhancedId = path.EnhanceId,
+                        EnhancedId = cached?.EnhancedId ?? path.EnhanceId,
+                        SpValue = cached?.SpValue,
+                        SpMax = cached?.SpMax,
+                        Techniques = cached?.Techniques,
                         Data = new FreesrCalyxAvatarExtra
                         {
                             Rank = path.Rank,
@@ -464,7 +480,6 @@ public static class FreesrShared
             }
         }
 
-        var calyxOverrideData = dbHelper.GetInstance<CalyxOverrideData>(uid);
         if (calyxOverrideData?.CachedJson?.BattleConfig != null)
             data.BattleConfig = calyxOverrideData.CachedJson.BattleConfig;
 
