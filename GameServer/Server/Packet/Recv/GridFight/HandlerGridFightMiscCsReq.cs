@@ -24,6 +24,58 @@ public class HandlerGridFightBuyExpCsReq : Handler { public override async Task 
 [Opcode(CmdIds.GridFightLockShopCsReq)]
 public class HandlerGridFightLockShopCsReq : Handler { public override async Task OnHandle(Connection connection, byte[] header, byte[] data) { _ = GridFightLockShopCsReq.Parser.ParseFrom(data); await connection.SendPacket(new PacketHGOIBDBMDBG()); await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(connection.Player!, GridFightSyncKind.NoOp)); } }
 
+[Opcode(CmdIds.GJMIIBDEAAJ)]
+public class HandlerGridFightUseOrbCsReq : Handler
+{
+    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    {
+        var req = GJMIIBDEAAJ.Parser.ParseFrom(data);
+        var player = connection.Player!;
+        var inst = player.GridFightManager?.GridFightInstance;
+
+        await connection.SendPacket(new PacketCEFIMADBIBH());
+        if (inst == null) return;
+
+        var (removedOrbUniqueIds, levelChanged, goldChanged) = inst.TryUseOrbs(req.HDFJAINBKJG, req.IsGetAll);
+
+        var sync = new GridFightSyncUpdateResultScNotify();
+        var sec = new GridFightSyncResultData();
+        foreach (var uniqueId in removedOrbUniqueIds)
+            sec.UpdateDynamicList.Add(new GridFightSyncData { RemoveOrbUniqueId = uniqueId });
+
+        if (goldChanged)
+            sec.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = inst.Gold });
+
+        if (levelChanged)
+        {
+            sec.UpdateDynamicList.Add(new GridFightSyncData
+            {
+                PlayerLevel = new GridFightPlayerLevelSyncInfo
+                {
+                    Level = inst.PlayerLevel,
+                    Exp = inst.PlayerExp,
+                    MaxLevel = inst.PlayerMaxLevel
+                }
+            });
+            sec.UpdateDynamicList.Add(new GridFightSyncData
+            {
+                GridFightBuyExpCost = inst.GetBuyExpCost()
+            });
+            sec.UpdateDynamicList.Add(new GridFightSyncData
+            {
+                MaxBattleRoleNum = inst.GetCurrentMaxBattleRoleNum()
+            });
+        }
+
+        // 防止客户端面板卡住：即使本次没有实际消耗到 orb，也回一帧同步结果。
+        if (sec.UpdateDynamicList.Count == 0)
+            sec.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = inst.Gold });
+
+        sync.SyncResultDataList.Add(sec);
+        await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(sync));
+    }
+}
+
 [Opcode(CmdIds.GridFightRecycleRoleCsReq)]
 public class HandlerGridFightRecycleRoleCsReq : Handler
 {

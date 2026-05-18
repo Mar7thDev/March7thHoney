@@ -15,18 +15,31 @@ public class HandlerGridFightBackToPrepareReq : Handler
         var player = connection.Player!;
         var inst = player.GridFightManager?.GridFightInstance;
 
-        await connection.SendPacket(new PacketGDMIIBNJJEJ());
-        if (inst != null)
+        if (inst == null)
         {
-            var oldPos = inst.QueuePosition;
-            inst.AdvanceQueue();
-            inst.PendingAction = new GridFightPendingAction
-            {
-                QueuePosition = inst.QueuePosition,
-                RoundBeginAction = new GridFightRoundBeginActionInfo()
-            };
-            await connection.SendPacket(new PacketGridFightHandlePendingActionScRsp(inst.QueuePosition));
-            await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(player, GridFightSyncKind.PendingAdvance, (oldPos, inst.QueuePosition)));
+            var rsp = new BasePacket((ushort)CmdIds.GridFightBackToPrepareScRsp);
+            rsp.SetData(new GDMIIBNJJEJ { Retcode = (uint)Retcode.RetGridFightNotInGameplay });
+            await connection.SendPacket(rsp);
+            return;
         }
+
+        await connection.SendPacket(new PacketGDMIIBNJJEJ());
+
+        // 仅在 ReturnPreparation pending 阶段推进，避免客户端/服务端状态错位导致反复请求
+        if (inst.PendingAction?.ReturnPreparationAction == null)
+        {
+            await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(player, GridFightSyncKind.NoOp));
+            return;
+        }
+
+        var oldPos = inst.QueuePosition;
+        inst.AdvanceQueue();
+        inst.PendingAction = new GridFightPendingAction
+        {
+            QueuePosition = inst.QueuePosition,
+            RoundBeginAction = new GridFightRoundBeginActionInfo()
+        };
+        await connection.SendPacket(new PacketGridFightHandlePendingActionScRsp(inst.QueuePosition));
+        await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(player, GridFightSyncKind.PendingAdvance, (oldPos, inst.QueuePosition)));
     }
 }

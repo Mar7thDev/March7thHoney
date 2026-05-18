@@ -501,9 +501,13 @@ public class GridTextEN
                            "Usage: /grid role [RoleID] [Role Star]\n\n" +
                            "Usage: /grid equip [EquipmentID]\n\n" +
                            "Usage: /grid consumable [ConsumableID]\n\n" +
-                           "Usage: /grid orb [OrbID]";
+                           "Usage: /grid orb [OrbID]\n\n" +
+                           "Usage: /grid section [ChapterID] [SectionID]";
     public string NotInGame => "Not in Aetherium War!";
     public string InvalidRole => "Role ID or Star does not exist!";
+    public string InvalidEquipment => "Equipment ID does not exist!";
+    public string InvalidOrb => "Orb ID does not exist!";
+    public string InvalidConsumable => "Consumable ID does not exist!";
     public string AddedRole => "Role added.";
     public string UpdateGold => "Gained {0} Gold.";
     public string AddEquipment => "Added {0} equipment.";

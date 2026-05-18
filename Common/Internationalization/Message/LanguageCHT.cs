@@ -501,9 +501,13 @@ public class GridTextCHT
                            "用法：/grid role [角色ID] [角色星級]\n\n" +
                            "用法：/grid equip [裝備ID]\n\n" +
                            "用法：/grid consumable [消耗品ID]\n\n" +
-                           "用法：/grid orb [晶礦ID]";
+                           "用法：/grid orb [晶礦ID]\n\n" +
+                           "用法：/grid section [章節ID] [關卡ID]";
     public string NotInGame => "不在貨幣戰爭中！";
     public string InvalidRole => "角色ID或星級不存在！";
+    public string InvalidEquipment => "裝備ID不存在！";
+    public string InvalidOrb => "晶礦ID不存在！";
+    public string InvalidConsumable => "消耗品ID不存在！";
     public string AddedRole => "已添加角色。";
     public string UpdateGold => "獲得 {0} 個金幣。";
     public string AddEquipment => "已添加 {0} 裝備。";

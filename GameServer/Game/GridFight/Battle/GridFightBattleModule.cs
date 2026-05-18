@@ -14,7 +14,13 @@ public static class GridFightBattleModule
         if (player.BattleInstance != null)
             return player.BattleInstance;
 
-        if (!GameData.StageConfigData.TryGetValue((int)GridFightLevelResolver.UnifiedStageId, out var stageConfig))
+        var encounter = GridFightLevelResolver.Resolve(gridFightInstance);
+        var ok = GameData.StageConfigData.TryGetValue((int)encounter.StageId, out var stageConfig);
+        if (!ok)
+            ok = GameData.StageConfigData.TryGetValue((int)GridFightLevelResolver.UnifiedStageId, out stageConfig);
+        if (!ok)
+            stageConfig = GameData.StageConfigData.Values.FirstOrDefault();
+        if (stageConfig == null)
             return null;
 
         var foregroundIds = gridFightInstance.BuildForegroundAvatarIds();

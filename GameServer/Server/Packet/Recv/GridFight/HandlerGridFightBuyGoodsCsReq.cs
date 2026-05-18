@@ -14,11 +14,12 @@ public class HandlerGridFightBuyGoodsCsReq : Handler
         var req = GridFightBuyGoodsCsReq.Parser.ParseFrom(data);
         var player = connection.Player!;
         var service = new GridFightService(player);
-        var (roleId, roleUniqueId, pos, goldDelta) = service.BuyGoods(req.BuyGoodsIndexList);
+        var (roleId, roleUniqueId, pos, goldDelta, mergedRemoved, mergedKeepUid, mergedNewStar) = service.BuyGoods(req.BuyGoodsIndexList);
 
         var rsp = new BasePacket((ushort)CmdIds.CEFIMADBIBH);
         rsp.SetData(new CEFIMADBIBH());
         await connection.SendPacket(rsp);
-        await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(player, GridFightSyncKind.BuyGoods, (roleId, roleUniqueId, pos, goldDelta)));
+        await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(player, GridFightSyncKind.BuyGoods,
+            (roleId, roleUniqueId, pos, goldDelta, mergedRemoved, mergedKeepUid, mergedNewStar)));
     }
 }
