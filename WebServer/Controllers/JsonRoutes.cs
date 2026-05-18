@@ -26,14 +26,24 @@ namespace March7thHoney.WebServer.Controllers
                 string password = obj["password"]?.ToString() ?? "";
                 string dataJson = obj["data"]?.ToString(Newtonsoft.Json.Formatting.None) ?? "";
 
-                var acc = AccountData.GetAccountByUserName(username);
+                if (!int.TryParse(username, out var uid))
+                {
+                    return new ContentResult()
+                    {
+                        StatusCode = 400,
+                        Content = "Username field must be the player's UID (integer).",
+                        ContentType = "text/plain"
+                    };
+                }
+
+                var acc = AccountData.GetAccountByUid(uid);
 
                 if (acc == null)
                 {
                     return new ContentResult()
                     {
                         StatusCode = 400,
-                        Content = "username not found on server",
+                        Content = "uid not found on server",
                         ContentType = "text/plain"
                     };
                 }
