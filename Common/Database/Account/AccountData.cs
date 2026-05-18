@@ -1,4 +1,5 @@
 using March7thHoney.Util;
+using March7thHoney.Util.Security;
 using SqlSugar;
 
 namespace March7thHoney.Database.Account;
@@ -7,20 +8,27 @@ namespace March7thHoney.Database.Account;
 public class AccountData : BaseDatabaseDataHelper
 {
     public string? Username { get; set; }
+    [SugarColumn(IsNullable = true)] public string? PasswordSalt { get; set; }
+    [SugarColumn(IsNullable = true)] public string? PasswordHash { get; set; }
+    public int PasswordIterations { get; set; }
 
     [SugarColumn(IsNullable = true)] public string? ComboToken { get; set; }
+    public long ComboTokenExpireAt { get; set; }
 
     [SugarColumn(IsNullable = true)] public string? DispatchToken { get; set; }
+    public long DispatchTokenExpireAt { get; set; }
 
     [SugarColumn(IsNullable = true)]
     public string? Permissions { get; set; } // type: permission1,permission2,permission3...
 
     public static AccountData? GetAccountByUserName(string username)
     {
+        var normalized = username.Trim();
         AccountData? result = null;
-        DatabaseHelper.GetAllInstance<AccountData>()?.ForEach(account =>
+        var accounts = DatabaseHelper.GetAllInstanceFromMap<AccountData>() ?? DatabaseHelper.GetAllInstance<AccountData>();
+        accounts?.ForEach(account =>
         {
-            if (account.Username == username) result = account;
+            if (string.Equals(account.Username?.Trim(), normalized, StringComparison.Ordinal)) result = account;
         });
         return result;
     }
@@ -31,15 +39,73 @@ public class AccountData : BaseDatabaseDataHelper
         return result;
     }
 
+    public bool HasPassword()
+    {
+        return !string.IsNullOrWhiteSpace(PasswordSalt) && !string.IsNullOrWhiteSpace(PasswordHash);
+    }
+
+    public void SetPassword(string password)
+    {
+        var (salt, hash, iterations) = AuthSecurity.HashPassword(password);
+        PasswordSalt = salt;
+        PasswordHash = hash;
+        PasswordIterations = iterations;
+        PersistAuthState();
+    }
+
+    public bool VerifyPassword(string password)
+    {
+        return AuthSecurity.VerifyPassword(password, PasswordSalt, PasswordHash, PasswordIterations);
+    }
+
     public string GenerateDispatchToken()
     {
-        DispatchToken = Crypto.CreateSessionKey(Uid.ToString());
+        DispatchToken = AuthSecurity.GenerateSessionToken();
+        DispatchTokenExpireAt = Extensions.GetUnixSec() +
+                                Math.Max(ConfigManager.Config.ServerOption.Auth.DispatchTokenExpireMinutes, 1) * 60L;
+        PersistAuthState();
         return DispatchToken;
     }
 
     public string GenerateComboToken()
     {
-        ComboToken = Crypto.CreateSessionKey(Uid.ToString());
+        ComboToken = AuthSecurity.GenerateSessionToken();
+        ComboTokenExpireAt = Extensions.GetUnixSec() +
+                             Math.Max(ConfigManager.Config.ServerOption.Auth.ComboTokenExpireMinutes, 1) * 60L;
+        PersistAuthState();
         return ComboToken;
+    }
+
+    public bool ValidateDispatchToken(string? token)
+    {
+        return ValidateToken(token, DispatchToken, DispatchTokenExpireAt);
+    }
+
+    public bool ValidateComboToken(string? token)
+    {
+        return ValidateToken(token, ComboToken, ComboTokenExpireAt);
+    }
+
+    public bool ValidateGameToken(string? token)
+    {
+        return ValidateDispatchToken(token) || ValidateComboToken(token);
+    }
+
+    private static bool ValidateToken(string? providedToken, string? storedToken, long expireAt)
+    {
+        if (string.IsNullOrWhiteSpace(providedToken) ||
+            string.IsNullOrWhiteSpace(storedToken) ||
+            expireAt <= Extensions.GetUnixSec())
+        {
+            return false;
+        }
+
+        return string.Equals(storedToken, providedToken, StringComparison.Ordinal);
+    }
+
+    private void PersistAuthState()
+    {
+        DatabaseHelper.ToSaveUidList.SafeAdd(Uid);
+        DatabaseHelper.SaveDatabaseType(this);
     }
 }

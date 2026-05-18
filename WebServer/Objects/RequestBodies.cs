@@ -7,7 +7,7 @@ public class LoginReqJson
     public bool is_crypto { get; set; }
 }
 
-public class NewLoginReqJson
+public class PassportLoginReqJson
 {
     public string? account { get; set; }
     public string? password { get; set; }
@@ -28,7 +28,7 @@ public class LoginV2ReqJson
     public string? sign { get; set; }
 }
 
-public class VerifySTokenReqJson
+public class PassportTokenVerifyReqJson
 {
     public string mid { get; set; } = "";
     public bool refresh { get; set; }
@@ -39,4 +39,15 @@ public class VerifySTokenReqJson
         public int token_type { get; set; }
         public string token { get; set; } = "";
     }
+}
+
+public class RegisterReqJson
+{
+    public string? account { get; set; }
+    public string? username { get; set; }
+    public string? email { get; set; }
+    public string? password { get; set; }
+    public string? confirm { get; set; }
+    public string? confirm_password { get; set; }
+    public string? confirmPassword { get; set; }
 }
