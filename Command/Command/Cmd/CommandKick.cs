@@ -3,7 +3,7 @@ using March7thHoney.Internationalization;
 
 namespace March7thHoney.Command.Command.Cmd;
 
-[CommandInfo("kick", "Game.Command.Kick.Desc", "Game.Command.Kick.Usage", permission: "egglink.manage")]
+[CommandInfo("kick", "Game.Command.Kick.Desc", "Game.Command.Kick.Usage", permission: CommandPermissions.Moderate)]
 public class CommandKick : ICommand
 {
     [CommandDefault]

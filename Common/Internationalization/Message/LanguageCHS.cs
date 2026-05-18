@@ -460,7 +460,7 @@ public class RaidTextCHS
 public class AccountTextCHS
 {
     public string Desc => "创建账号\n注意：此命令未经测试，请谨慎使用！";
-    public string Usage => "用法：/account create [用户名]";
+    public string Usage => "用法：/account create [用户名]\n用法：/account setpassword [用户名|UID] [密码]\n用法：/account role [用户名|UID] [角色]\n用法：/account roles";
     public string InvalidUid => "无效UID参数！";
     public string CreateError => "出现内部错误 {0} ";
     public string CreateSuccess => "新账号 {0} 创建成功!";

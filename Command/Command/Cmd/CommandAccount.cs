@@ -1,9 +1,11 @@
+using March7thHoney.Database;
 using March7thHoney.Database.Account;
 using March7thHoney.Internationalization;
+using March7thHoney.Util;
 
 namespace March7thHoney.Command.Command.Cmd;
 
-[CommandInfo("account", "Game.Command.Account.Desc", "Game.Command.Account.Usage", permission: "egglink.manage")]
+[CommandInfo("account", "Game.Command.Account.Desc", "Game.Command.Account.Usage", permission: CommandPermissions.Manage)]
 public class CommandAccount : ICommand
 {
     [CommandMethod("create")]
@@ -88,5 +90,78 @@ public class CommandAccount : ICommand
         {
             await arg.SendMsg(I18NManager.Translate("Game.Command.Account.CreateError", ex.Message));
         }
+    }
+
+    [CommandMethod("setrole")]
+    public async ValueTask SetRole(CommandArg arg)
+    {
+        await SetRoleInternal(arg);
+    }
+
+    [CommandMethod("role")]
+    public async ValueTask Role(CommandArg arg)
+    {
+        await SetRoleInternal(arg);
+    }
+
+    [CommandMethod("roles")]
+    public async ValueTask Roles(CommandArg arg)
+    {
+        await arg.SendMsg("Available roles: " + string.Join(", ", GetConfiguredRoles().Keys));
+    }
+
+    private static async ValueTask SetRoleInternal(CommandArg arg)
+    {
+        if (arg.Args.Count < 3)
+        {
+            await arg.SendMsg("Usage: /account role [Username|UID] [Role]");
+            return;
+        }
+
+        var accountKey = arg.Args[1];
+        var account = ResolveAccount(accountKey);
+        if (account == null)
+        {
+            await arg.SendMsg($"Account {accountKey} does not exist.");
+            return;
+        }
+
+        if (!TryNormalizeRole(arg.Args[2], out var role))
+        {
+            await arg.SendMsg($"Unknown role {arg.Args[2]}. Available roles: {string.Join(", ", GetConfiguredRoles().Keys)}");
+            return;
+        }
+
+        account.Role = role;
+        DatabaseHelper.SaveDatabaseType(account);
+        await arg.SendMsg($"Role for {account.Username ?? account.Uid.ToString()} updated to {role}.");
+    }
+
+    private static AccountData? ResolveAccount(string accountKey)
+    {
+        if (int.TryParse(accountKey, out var uid))
+            return AccountData.GetAccountByUid(uid);
+
+        var account = AccountData.GetAccountByUserName(accountKey);
+        return account == null ? null : AccountData.GetAccountByUid(account.Uid) ?? account;
+    }
+
+    private static bool TryNormalizeRole(string role, out string normalizedRole)
+    {
+        foreach (var configuredRole in GetConfiguredRoles().Keys)
+        {
+            if (!string.Equals(configuredRole, role, StringComparison.OrdinalIgnoreCase)) continue;
+
+            normalizedRole = configuredRole;
+            return true;
+        }
+
+        normalizedRole = "";
+        return false;
+    }
+
+    private static IReadOnlyDictionary<string, HashSet<string>> GetConfiguredRoles()
+    {
+        return ConfigManager.Config.ServerOption.PermissionRoles ?? CommandRoles.DefaultRoles();
     }
 }

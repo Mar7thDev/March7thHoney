@@ -1,4 +1,5 @@
 using System.Net;
+using March7thHoney.Command;
 
 namespace March7thHoney.WebServer.Pages;
 
@@ -9,6 +10,8 @@ public static class AdminPageRenderer
         var displayName = string.IsNullOrWhiteSpace(serverName) ? "March7thHoney" : serverName.Trim();
         var encodedDisplayName = WebUtility.HtmlEncode(displayName);
         var encodedTitle = WebUtility.HtmlEncode($"Admin - {displayName}");
+        var encodedPermissionHint = WebUtility.HtmlEncode(
+            $"Permission overrides: {string.Join(", ", CommandPermissions.KnownPermissions())}.");
 
         return $$"""
 <!doctype html>
@@ -52,6 +55,7 @@ public static class AdminPageRenderer
 
     button,
     input,
+    select,
     textarea {
       font: inherit;
     }
@@ -95,6 +99,7 @@ public static class AdminPageRenderer
     }
 
     input,
+    select,
     textarea {
       width: 100%;
       min-height: 40px;
@@ -112,6 +117,7 @@ public static class AdminPageRenderer
     }
 
     input:focus,
+    select:focus,
     textarea:focus {
       border-color: var(--accent);
       box-shadow: 0 0 0 3px rgba(79, 140, 255, 0.22);
@@ -359,10 +365,10 @@ public static class AdminPageRenderer
         padding: 16px 0;
       }
 
-      th:nth-child(4),
-      td:nth-child(4),
       th:nth-child(5),
-      td:nth-child(5) {
+      td:nth-child(5),
+      th:nth-child(6),
+      td:nth-child(6) {
         display: none;
       }
     }
@@ -399,7 +405,7 @@ public static class AdminPageRenderer
       <section id="admin-workspace" class="workspace hidden">
         <div>
           <div class="toolbar">
-            <input id="search" type="search" placeholder="Search users by UID, username, nickname, or permissions">
+            <input id="search" type="search" placeholder="Search users by UID, username, role, nickname, or permissions">
             <button id="refresh-button" type="button">Refresh</button>
             <span id="account-count" class="pill">0 users</span>
           </div>
@@ -411,6 +417,7 @@ public static class AdminPageRenderer
                 <tr>
                   <th style="width: 90px;">UID</th>
                   <th>Username</th>
+                  <th style="width: 130px;">Role</th>
                   <th>Nickname</th>
                   <th style="width: 90px;">Level</th>
                   <th style="width: 120px;">Password</th>
@@ -438,9 +445,14 @@ public static class AdminPageRenderer
                 <input id="create-uid" type="number" min="1" placeholder="Auto">
               </label>
               <label>
-                Permissions
-                <textarea id="create-permissions" spellcheck="false" placeholder="Leave empty for default permissions"></textarea>
+                Role
+                <select id="create-role"></select>
               </label>
+              <label>
+                Permissions
+                <textarea id="create-permissions" spellcheck="false" placeholder="Optional permission overrides"></textarea>
+              </label>
+              <p class="hint">{{encodedPermissionHint}}</p>
               <button class="primary" type="submit">Create user</button>
               <div id="create-message" class="message" role="status" aria-live="polite"></div>
             </form>
@@ -455,8 +467,17 @@ public static class AdminPageRenderer
                 <input id="edit-username" disabled maxlength="64" autocomplete="off">
               </label>
               <label>
+                Role
+                <select id="edit-role" disabled></select>
+              </label>
+              <label>
                 Permissions
                 <textarea id="edit-permissions" disabled spellcheck="false"></textarea>
+              </label>
+              <p class="hint">{{encodedPermissionHint}}</p>
+              <label>
+                Effective permissions
+                <textarea id="edit-effective-permissions" disabled spellcheck="false"></textarea>
               </label>
               <div class="actions">
                 <button id="save-user-button" class="primary" type="submit" disabled>Save changes</button>
@@ -487,6 +508,8 @@ public static class AdminPageRenderer
     const state = {
       token: localStorage.getItem("m7-admin-token") || "",
       accounts: [],
+      roles: [],
+      defaultRole: "User",
       selectedUid: null
     };
 
@@ -554,7 +577,28 @@ public static class AdminPageRenderer
     async function loadAccounts() {
       const data = await api("/admin/api/accounts");
       state.accounts = data.accounts || [];
+      state.roles = data.roles || [];
+      state.defaultRole = data.default_role || state.roles[0] || "User";
+      populateRoleSelects();
       renderAccounts();
+    }
+
+    function populateRoleSelects() {
+      const roles = state.roles.length ? state.roles : [state.defaultRole];
+      for (const id of ["create-role", "edit-role"]) {
+        const select = document.getElementById(id);
+        const previous = select.value;
+        select.innerHTML = "";
+
+        for (const role of roles) {
+          const option = document.createElement("option");
+          option.value = role;
+          option.textContent = role;
+          select.appendChild(option);
+        }
+
+        select.value = roles.includes(previous) ? previous : state.defaultRole;
+      }
     }
 
     function renderAccounts() {
@@ -563,8 +607,10 @@ public static class AdminPageRenderer
         const text = [
           account.uid,
           account.username,
+          account.role,
           account.nickname,
-          account.permissions
+          account.permissions,
+          account.effective_permissions
         ].join(" ").toLowerCase();
         return !query || text.includes(query);
       });
@@ -583,6 +629,7 @@ public static class AdminPageRenderer
         tr.innerHTML = `
           <td>${escapeHtml(account.uid)}</td>
           <td>${escapeHtml(account.username || "")}</td>
+          <td><span class="pill">${escapeHtml(account.role || "")}</span></td>
           <td class="muted">${escapeHtml(account.nickname || "")}</td>
           <td>${account.level ?? ""}</td>
           <td><span class="pill ${account.has_password ? "good" : "warn"}">${account.has_password ? "Set" : "Missing"}</span></td>
@@ -601,11 +648,13 @@ public static class AdminPageRenderer
       state.selectedUid = uid;
       document.getElementById("selected-hint").textContent = `UID ${account.uid}`;
       document.getElementById("edit-username").value = account.username || "";
+      document.getElementById("edit-role").value = account.role || state.defaultRole;
       document.getElementById("edit-permissions").value = account.permissions || "";
+      document.getElementById("edit-effective-permissions").value = account.effective_permissions || "";
       document.getElementById("edit-password").value = "";
       document.getElementById("delete-confirm").value = "";
 
-      for (const id of ["edit-username", "edit-permissions", "edit-password", "delete-confirm", "save-user-button", "set-password-button", "delete-user-button"]) {
+      for (const id of ["edit-username", "edit-role", "edit-permissions", "edit-password", "delete-confirm", "save-user-button", "set-password-button", "delete-user-button"]) {
         document.getElementById(id).disabled = false;
       }
 
@@ -683,6 +732,7 @@ public static class AdminPageRenderer
             username: document.getElementById("create-username").value.trim(),
             password: document.getElementById("create-password").value,
             uid: uidValue ? Number(uidValue) : null,
+            role: document.getElementById("create-role").value,
             permissions: document.getElementById("create-permissions").value
           })
         });
@@ -705,6 +755,7 @@ public static class AdminPageRenderer
           method: "PUT",
           body: JSON.stringify({
             username: document.getElementById("edit-username").value.trim(),
+            role: document.getElementById("edit-role").value,
             permissions: document.getElementById("edit-permissions").value
           })
         });
@@ -752,7 +803,7 @@ public static class AdminPageRenderer
         await api(`/admin/api/accounts/${uid}`, { method: "DELETE" });
         state.selectedUid = null;
         await loadAccounts();
-        for (const id of ["edit-username", "edit-permissions", "edit-password", "delete-confirm", "save-user-button", "set-password-button", "delete-user-button"]) {
+        for (const id of ["edit-username", "edit-role", "edit-permissions", "edit-effective-permissions", "edit-password", "delete-confirm", "save-user-button", "set-password-button", "delete-user-button"]) {
           const element = document.getElementById(id);
           element.disabled = true;
           if ("value" in element) {

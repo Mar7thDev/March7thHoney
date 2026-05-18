@@ -439,7 +439,7 @@ public class SceneTextEN
 public class MailTextEN
 {
     public string Desc => "Manage player's mail";
-    public string Usage => "Usage: /mail [Sender Name] [TemplateID] [Expire Days] _TITLE [Title] _CONTENT [Content] _ATTACH [ItemId] x[Count] r[Rank] l[Level] ...";
+    public string Usage => "Usage: /mail [Sender Name] [TemplateID] [Expire Days] _TITLE [Title] _CONTENT [Content] _ATTACH [ItemId] x[Count] r[Rank] l[Level] ...\nUsage: /mail welcome";
     public string MailSent => "Mail sent!";
     public string MailSentWithAttachment => "Mail with attachment sent!";
 }
@@ -460,7 +460,7 @@ public class RaidTextEN
 public class AccountTextEN
 {
     public string Desc => "Create an account.\nNote: This command is untested. Use with caution!";
-    public string Usage => "Usage: /account create [Username]";
+    public string Usage => "Usage: /account create [Username]\nUsage: /account setpassword [Username|UID] [Password]\nUsage: /account role [Username|UID] [Role]\nUsage: /account roles";
     public string InvalidUid => "Invalid UID parameter!";
     public string CreateError => "Internal error occurred {0} ";
     public string CreateSuccess => "New account {0} created successfully!";

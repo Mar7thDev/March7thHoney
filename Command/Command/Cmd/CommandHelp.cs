@@ -3,7 +3,7 @@ using March7thHoney.Util;
 
 namespace March7thHoney.Command.Command.Cmd;
 
-[CommandInfo("help", "Game.Command.Help.Desc", "Game.Command.Help.Usage", ["h"])]
+[CommandInfo("help", "Game.Command.Help.Desc", "Game.Command.Help.Usage", ["h"], permission: CommandPermissions.Public)]
 public class CommandHelp : ICommand
 {
     [CommandDefault]

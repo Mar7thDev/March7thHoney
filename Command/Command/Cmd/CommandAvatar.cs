@@ -7,7 +7,7 @@ using March7thHoney.Proto;
 
 namespace March7thHoney.Command.Command.Cmd;
 
-[CommandInfo("avatar", "Game.Command.Avatar.Desc", "Game.Command.Avatar.Usage", ["av", "ava"])]
+[CommandInfo("avatar", "Game.Command.Avatar.Desc", "Game.Command.Avatar.Usage", ["av", "ava"], permission: CommandPermissions.Player)]
 public class CommandAvatar : ICommand
 {
     [CommandMethod("talent")]

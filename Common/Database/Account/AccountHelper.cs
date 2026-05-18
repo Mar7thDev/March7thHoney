@@ -1,4 +1,5 @@
 using March7thHoney.Database.Mail;
+using March7thHoney.Command;
 using March7thHoney.Util;
 
 namespace March7thHoney.Database.Account;
@@ -12,6 +13,11 @@ public static class AccountHelper
 
     public static void CreateAccount(string username, string? password, int uid)
     {
+        CreateAccount(username, password, uid, null);
+    }
+
+    public static void CreateAccount(string username, string? password, int uid, string? role)
+    {
         username = username.Trim();
         if (string.IsNullOrWhiteSpace(username)) throw new Exception("Username cannot be empty");
         if (AccountData.GetAccountByUserName(username) != null) throw new Exception("Account already exists");
@@ -24,12 +30,14 @@ public static class AccountHelper
             while (AccountData.GetAccountByUid(newUid) != null) newUid++;
         }
 
-        var per = ConfigManager.Config.ServerOption.DefaultPermissions;
-        var perStr = string.Join(",", per);
+        var perStr = CommandPermissions.Normalize(ConfigManager.Config.ServerOption.DefaultPermissions);
+        var roleName = CommandRoles.NormalizeRole(role, ConfigManager.Config.ServerOption.DefaultPermissionRole,
+            ConfigManager.Config.ServerOption.PermissionRoles);
         var account = new AccountData
         {
             Uid = newUid,
             Username = username,
+            Role = roleName,
             Permissions = perStr
         };
 

@@ -7,7 +7,7 @@ using March7thHoney.Util;
 
 namespace March7thHoney.Command.Command.Cmd;
 
-[CommandInfo("scene", "Game.Command.Scene.Desc", "Game.Command.Scene.Usage")]
+[CommandInfo("scene", "Game.Command.Scene.Desc", "Game.Command.Scene.Usage", permission: CommandPermissions.Scene)]
 public class CommandScene : ICommand
 {
     [CommandMethod("0 group")]

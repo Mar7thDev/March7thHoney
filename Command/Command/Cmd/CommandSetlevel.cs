@@ -4,7 +4,7 @@ using March7thHoney.Internationalization;
 
 namespace March7thHoney.Command.Command.Cmd;
 
-[CommandInfo("setlevel", "Game.Command.Setlevel.Desc", "Game.Command.Setlevel.Usage", ["level"])]
+[CommandInfo("setlevel", "Game.Command.Setlevel.Desc", "Game.Command.Setlevel.Usage", ["level"], permission: CommandPermissions.Player)]
 public class CommandSetlevel : ICommand
 {
     [CommandDefault]

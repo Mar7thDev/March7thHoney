@@ -2,7 +2,7 @@ using March7thHoney.Internationalization;
 
 namespace March7thHoney.Command.Command.Cmd;
 
-[CommandInfo("calyx", "Game.Command.Calyx.Desc", "Game.Command.Calyx.Usage")]
+[CommandInfo("calyx", "Game.Command.Calyx.Desc", "Game.Command.Calyx.Usage", permission: CommandPermissions.Inventory)]
 public class CommandCalyx : ICommand
 {
     [CommandDefault]
