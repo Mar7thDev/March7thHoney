@@ -1,13 +1,11 @@
 <div align="center">
 <table>
-<td valign="center"><a href="MuipAPI.md"><img src="https://github.com/twitter/twemoji/blob/master/assets/72x72/1f1fa-1f1f8.png" width="16"/> English</td>
- 
-<td valign="center"><img src="https://github.com/twitter/twemoji/blob/master/assets/72x72/1f1e8-1f1f3.png?raw=true" width="16"/> 简中</td>
- 
-<td valign="center"><a href="MuipAPI_zh-TW.md"><img src="https://github.com/twitter/twemoji/blob/master/assets/72x72/1f1f9-1f1fc.png?raw=true" width="16"/> 繁中</td>
- 
-<td valign="center"><a href="MuipAPI_ja-JP.md"><img src="https://github.com/twitter/twemoji/blob/master/assets/72x72/1f1ef-1f1f5.png" width="16"/> 日本語</td>
-</td>
+<tr>
+<td valign="center"><a href="MuipAPI.md"><img src="https://github.com/twitter/twemoji/blob/master/assets/72x72/1f1fa-1f1f8.png" width="16"/> English</a></td>
+<td valign="center"><a href="MuipAPI_zh-CN.md"><img src="https://github.com/twitter/twemoji/blob/master/assets/72x72/1f1e8-1f1f3.png?raw=true" width="16"/> 简中</a></td>
+<td valign="center"><a href="MuipAPI_zh-TW.md"><img src="https://github.com/twitter/twemoji/blob/master/assets/72x72/1f1f9-1f1fc.png?raw=true" width="16"/> 繁中</a></td>
+<td valign="center"><img src="https://github.com/twitter/twemoji/blob/master/assets/72x72/1f1ef-1f1f5.png" width="16"/> 日本語</td>
+</tr>
 </table>
 </div>
 
