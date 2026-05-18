@@ -32,13 +32,7 @@ public class CommandCalyx : ICommand
 
         if (mode == "on")
         {
-            if (tokens.Length < 2 || !int.TryParse(tokens[1], out var index))
-            {
-                await arg.SendMsg(I18NManager.Translate("Game.Command.Calyx.MissingIndex"));
-                return;
-            }
-
-            var (ok, error, fileName) = await player.CalyxOverrideManager!.LoadFromIndex(index, arg.SendMsg);
+            var (ok, error, fileName) = await player.CalyxOverrideManager!.EnableLatestOnlyEnemyOverride();
             if (!ok)
                 await arg.SendMsg(error ?? I18NManager.Translate("Game.Command.Calyx.LoadFailed"));
             else

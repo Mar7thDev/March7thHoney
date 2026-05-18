@@ -1,17 +1,17 @@
 using System.Text.Json;
 using March7thHoney.Data;
 using March7thHoney.Data.Freesr;
+using March7thHoney.Database;
 using March7thHoney.Database.Avatar;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Enums.Item;
 using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
 using March7thHoney.Internationalization;
+using March7thHoney.Util;
 
 namespace March7thHoney.GameServer.Game.Calyx;
 
-// Independent copy of freesr-data.json helpers used exclusively by /calyx.
-// CommandJson.cs intentionally does NOT reference this file or these DTOs.
-// Two parallel copies coexist so /json behavior cannot drift from this module.
 public static class FreesrShared
 {
     public static readonly string[] JsonDirectoryRelativePaths =
@@ -306,5 +306,119 @@ public static class FreesrShared
         avatarChanged.AddRange(avatarChangedMap.Values);
 
         return importedItems;
+    }
+
+    public static async ValueTask ImportJson(
+        string json,
+        PlayerInstance player,
+        Func<string[], System.Threading.Tasks.Task> sendI18nCallback)
+    {
+        var data = JsonSerializer.Deserialize<FreesrCalyxData>(json, JsonOptions);
+        if (data == null)
+        {
+            await sendI18nCallback(["Game.Command.Json.InvalidJsonContent"]);
+            return;
+        }
+
+        // Keep existing behavior: every sync clears relic/lightcone inventory first.
+        var (clearedAvatars, clearedItems) = await ClearRelicAndEquipment(player);
+        if (clearedAvatars.Count > 0)
+            await player.SendPacket(new PacketPlayerSyncScNotify(clearedAvatars));
+        if (clearedItems.Count > 0)
+            await player.SendPacket(new PacketPlayerSyncScNotify(clearedItems));
+
+        // Keep enhanced-id special handling in ImportAvatars.
+        var avatarChanged = await ImportAvatars(player, data);
+        var importedItems = await ImportRelicsAndLightcones(player, data, avatarChanged);
+
+        if (importedItems.Count > 0)
+            await player.SendPacket(new PacketPlayerSyncScNotify(importedItems));
+        if (avatarChanged.Count > 0)
+            await player.SendPacket(new PacketPlayerSyncScNotify(avatarChanged));
+
+        DatabaseHelper.ToSaveUidList.SafeAdd(player.Uid);
+
+        await sendI18nCallback([
+            "Game.Command.Json.ImportSummary",
+            (data.Avatars?.Count ?? 0).ToString(),
+            (data.Relics?.Count ?? 0).ToString(),
+            (data.Lightcones?.Count ?? 0).ToString()
+        ]);
+    }
+
+    public static async ValueTask<string> ExportPlayerDataAsync(int uid, bool writeIndented)
+    {
+        var data = new FreesrCalyxData
+        {
+            Avatars = new Dictionary<int, FreesrCalyxAvatar>(),
+            Relics = [],
+            Lightcones = []
+        };
+
+        var dbHelper = DatabaseHelper.Instance;
+        if (dbHelper == null)
+            throw new Exception("DatabaseHelper not initialized.");
+
+        var avatarData = dbHelper.GetInstance<AvatarData>(uid);
+        if (avatarData != null)
+        {
+            foreach (var avatar in avatarData.FormalAvatars)
+            {
+                foreach (var path in avatar.PathInfos.Values)
+                {
+                    data.Avatars[path.PathId] = new FreesrCalyxAvatar
+                    {
+                        AvatarId = path.PathId,
+                        Level = avatar.Level,
+                        Promotion = avatar.Promotion,
+                        EnhancedId = path.EnhanceId,
+                        Data = new FreesrCalyxAvatarExtra
+                        {
+                            Rank = path.Rank,
+                            Skills = path.GetSkillTree().ToDictionary(kv => kv.Key, kv => kv.Value)
+                        }
+                    };
+                }
+            }
+        }
+
+        var inventoryData = dbHelper.GetInstance<InventoryData>(uid);
+        if (inventoryData != null)
+        {
+            foreach (var relic in inventoryData.RelicItems)
+            {
+                data.Relics.Add(new FreesrCalyxRelic
+                {
+                    Level = relic.Level,
+                    RelicId = relic.ItemId,
+                    MainAffixId = relic.MainAffix,
+                    EquipAvatar = relic.EquipAvatar,
+                    SubAffixes = relic.SubAffixes?.Select(sa => new FreesrCalyxRelicSubAffix
+                    {
+                        SubAffixId = sa.Id,
+                        Count = sa.Count,
+                        Step = sa.Step
+                    }).ToList()
+                });
+            }
+
+            foreach (var equip in inventoryData.EquipmentItems)
+            {
+                data.Lightcones.Add(new FreesrCalyxLightcone
+                {
+                    ItemId = equip.ItemId,
+                    Level = equip.Level,
+                    Rank = equip.Rank,
+                    Promotion = equip.Promotion,
+                    EquipAvatar = equip.EquipAvatar
+                });
+            }
+        }
+
+        return await System.Threading.Tasks.Task.FromResult(JsonSerializer.Serialize(data, new JsonSerializerOptions
+        {
+            WriteIndented = writeIndented,
+            DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+        }));
     }
 }
