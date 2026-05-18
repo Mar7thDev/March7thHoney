@@ -1,5 +1,5 @@
 using March7thHoney.Database;
-using March7thHoney.GameServer.Command;
+using March7thHoney.GameServer.Game.Calyx;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
 using March7thHoney.Internationalization;
 using March7thHoney.Util;
@@ -48,7 +48,7 @@ public class CommandJson : ICommand
 
         if (input.Equals("clear", StringComparison.OrdinalIgnoreCase))
         {
-            var (changedAvatars, removedItems) = await FreeDataProcess.ClearRelicAndEquipment(player);
+            var (changedAvatars, removedItems) = await FreesrShared.ClearRelicAndEquipment(player);
             if (changedAvatars.Count > 0)
                 await player.SendPacket(new PacketPlayerSyncScNotify(changedAvatars));
             if (removedItems.Count > 0)
@@ -82,8 +82,8 @@ public class CommandJson : ICommand
                 }
             }
 
-            string outputjson = await FreeDataProcess.ExportPlayerDataAsync(player.Uid, geshihua);
-            var dir = GetJsonDirectories().FirstOrDefault();
+            string outputjson = await FreesrShared.ExportPlayerDataAsync(player.Uid, geshihua);
+            var dir = GetJsonDirectories(createIfMissing: true)[0];
             string combinedPath = Path.Combine(dir.FullName, outputFileName);
             await File.WriteAllTextAsync(combinedPath, outputjson, Encoding.UTF8);
 
@@ -116,7 +116,7 @@ public class CommandJson : ICommand
             return;
         }
 
-        await FreeDataProcess.ImportJson(json, player, async (msg) =>
+        await FreesrShared.ImportJson(json, player, async (msg) =>
         {
             if (msg[0] == "Game.Command.Json.ImportSummary")
             {
