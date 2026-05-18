@@ -11,6 +11,7 @@ public class PacketDJCHCHCAJPB : BasePacket { public PacketDJCHCHCAJPB() : base(
 public class PacketHGOIBDBMDBG : BasePacket { public PacketHGOIBDBMDBG() : base(CmdIds.HGOIBDBMDBG) => SetData(new HGOIBDBMDBG()); }
 public class PacketGridFightRecycleRoleScRsp : BasePacket { public PacketGridFightRecycleRoleScRsp() : base(CmdIds.GridFightRecycleRoleScRsp) => SetData(new GridFightRecycleRoleScRsp()); }
 public class PacketGridFightUpdateEquipTrackScRsp : BasePacket { public PacketGridFightUpdateEquipTrackScRsp() : base(CmdIds.GridFightUpdateEquipTrackScRsp) => SetData(new GridFightUpdateEquipTrackScRsp()); }
+public class PacketCEFIMADBIBH : BasePacket { public PacketCEFIMADBIBH() : base(CmdIds.CEFIMADBIBH) => SetData(new CEFIMADBIBH()); }
 
 public class PacketKMDHLENLIMF : BasePacket { public PacketKMDHLENLIMF() : base(CmdIds.KMDHLENLIMF) => SetData(new KMDHLENLIMF()); }
 public class PacketEMIDPCIJAEN : BasePacket { public PacketEMIDPCIJAEN() : base(CmdIds.EMIDPCIJAEN) => SetData(new EMIDPCIJAEN()); }

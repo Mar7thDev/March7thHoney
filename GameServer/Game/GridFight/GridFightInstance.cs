@@ -7,11 +7,19 @@ using March7thHoney.GameServer.Game.GridFight.Component;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server.Packet.Send.GridFight;
 using March7thHoney.Proto;
+using March7thHoney.Enums.GridFight;
 
 namespace March7thHoney.GameServer.Game.GridFight;
 
 public class GridFightInstance(PlayerInstance player, uint season, uint divisionId, bool isOverLock, uint uniqueId)
 {
+    public sealed class RoleMergeResult
+    {
+        public List<uint> RemovedUniqueIds { get; } = new();
+        public uint KeptUniqueId { get; set; }
+        public uint NewStar { get; set; }
+        public bool Merged => RemovedUniqueIds.Count > 0 && KeptUniqueId > 0;
+    }
     public PlayerInstance Player { get; } = player;
     public uint Season { get; } = season;
     public uint DivisionId { get; } = divisionId;
@@ -46,11 +54,9 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
 
     // 商店
     public uint ShopRefreshLeft { get; set; } = 2;
+    public uint ShopRollCounter { get; set; }
     public List<GridFightShopGoodsInfo> ShopGoods { get; } = new();
-    public List<uint> ShopRolePool { get; } = new()
-    {
-        1217, 1314, 1108, 1220, 1406, 1001, 1009, 1306, 1403, 1502, 1408, 1321, 1409, 1402
-    };
+    public List<uint> ShopRolePool { get; } = new();
 
     // 装备草稿与背包
     public List<uint> StageCandidates { get; } = new() { 35030205, 35030405, 35030208, 350202, 35030606 };
@@ -239,14 +245,14 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     public uint PreBattleLineupHp { get; set; }
     public uint PreBattleLevel { get; set; }
     public uint PreBattleExp { get; set; }
-    public uint PlayerLevel { get; set; } = 2;
+    public uint PlayerLevel { get; set; } = 3;
     public uint PlayerExp { get; set; }
     public uint PlayerMaxLevel { get; } = 10;
-    public uint LevelUpExpNeed { get; } = 4;
     public uint CampId { get; set; } = 18;
     public uint PreBattleGold { get; set; }
     public Proto.GridFightDamageSttInfo? LastBattleDamageStt { get; set; }
     public List<(uint ItemId, uint UniqueId)> LastRewardedOrbs { get; } = new();
+    public Dictionary<uint, uint> OrbItemByUniqueId { get; } = new() { [7u] = 199u };
     public List<Proto.GridFightHpModifyInfo> LastHpModifyTimeline { get; } = new();
     public Dictionary<uint, Proto.GridFightDropInfo> LastSectionRewards { get; } = new();
 
@@ -267,11 +273,6 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
                          .Select(kv => kv.Key).ToList())
                 UniqueIdByPos.Remove(stale);
             UniqueIdByPos[posInfo.Pos] = posInfo.UniqueId;
-            if (posInfo.UniqueId != 0 && !RoleByUniqueId.ContainsKey(posInfo.UniqueId))
-            {
-                RoleByUniqueId[posInfo.UniqueId] = 8001;
-                RoleStarByUniqueId[posInfo.UniqueId] = 1;
-            }
         }
     }
 
@@ -374,16 +375,75 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     public void RotateShop()
     {
         ShopGoods.Clear();
-        if (ShopRolePool.Count == 0) return;
+        ShopRollCounter++;
+
+        var rng = Random.Shared;
+        var rarityWeights = GetShopRarityWeights();
+        var rolePoolByRarity = BuildShopRolePoolByRarity();
+
         for (var i = 0; i < 5; i++)
         {
-            var roleId = ShopRolePool[(BattlesFinished * 5 + i) % ShopRolePool.Count];
+            var rarity = RollShopRarity(rarityWeights, rng);
+            if (!rolePoolByRarity.TryGetValue(rarity, out var pool) || pool.Count == 0)
+            {
+                pool = rolePoolByRarity.Values.FirstOrDefault(x => x.Count > 0) ?? [];
+            }
+            if (pool.Count == 0) break;
+
+            var roleId = pool[rng.Next(pool.Count)];
+            var price = GetShopGoodsPrice(rarity, 1);
             ShopGoods.Add(new GridFightShopGoodsInfo
             {
-                ShopGoodsPrice = 1,
+                ShopGoodsPrice = price,
                 RoleGoodsInfo = new GridFightRoleGoodsInfo { RoleId = roleId, RoleStar = 1 }
             });
         }
+    }
+
+    private List<uint> GetShopRarityWeights()
+    {
+        if (GameData.GridFightPlayerLevelData.TryGetValue(PlayerLevel, out var conf)
+            && conf.RarityWeights.Count >= 5)
+            return conf.RarityWeights;
+        return [100, 0, 0, 0, 0];
+    }
+
+    private Dictionary<uint, List<uint>> BuildShopRolePoolByRarity()
+    {
+        var dict = new Dictionary<uint, List<uint>>();
+        foreach (var role in GameData.GridFightRoleBasicInfoData.Values)
+        {
+            if (!role.IsInPool) continue;
+            if (role.SeasonID != 0 && role.SeasonID != Season) continue;
+            if (role.AvatarID < 1000 || role.AvatarID >= 2000) continue;
+            if (!dict.TryGetValue(role.Rarity, out var list))
+                dict[role.Rarity] = list = [];
+            list.Add(role.ID);
+        }
+        return dict;
+    }
+
+    private static uint RollShopRarity(IReadOnlyList<uint> weights, Random rng)
+    {
+        var total = 0u;
+        for (var i = 0; i < Math.Min(5, weights.Count); i++) total += weights[i];
+        if (total == 0) return 1;
+
+        var roll = (uint)rng.Next(1, (int)total + 1);
+        for (var i = 0; i < Math.Min(5, weights.Count); i++)
+        {
+            if (roll <= weights[i]) return (uint)(i + 1);
+            roll -= weights[i];
+        }
+        return 1;
+    }
+
+    private static uint GetShopGoodsPrice(uint rarity, uint star)
+    {
+        if (!GameData.GridFightShopPriceData.TryGetValue(rarity, out var priceConf))
+            return 1;
+        var idx = (int)Math.Clamp(star, 1u, 4u) - 1;
+        return priceConf.BuyGoldList[idx];
     }
 
     public void RefreshEquipDraft()
@@ -424,15 +484,75 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
         return (true, uniqueId, roleId, pos);
     }
 
+    public RoleMergeResult TryAutoMergeRole(uint roleId, uint roleUniqueId)
+    {
+        var result = new RoleMergeResult();
+        if (roleId == 0 || roleUniqueId == 0) return result;
+
+        var keepUniqueId = roleUniqueId;
+        var currentStar = RoleStarByUniqueId.GetValueOrDefault(keepUniqueId, 1u);
+        while (true)
+        {
+            var nextStar = currentStar + 1;
+            if (!GameData.GridFightRoleStarData.ContainsKey(roleId << 4 | nextStar))
+                break;
+
+            var sameTier = RoleByUniqueId
+                .Where(kv => kv.Value == roleId && RoleStarByUniqueId.GetValueOrDefault(kv.Key, 1u) == currentStar)
+                .Select(kv => kv.Key)
+                .Distinct()
+                .ToList();
+            if (sameTier.Count < 3) break;
+
+            if (!sameTier.Contains(keepUniqueId))
+                keepUniqueId = sameTier[0];
+
+            var consume = sameTier.Where(x => x != keepUniqueId).Take(2).ToList();
+            if (consume.Count < 2) break;
+
+            foreach (var uid in consume)
+            {
+                RoleByUniqueId.Remove(uid);
+                RoleStarByUniqueId.Remove(uid);
+                foreach (var pos in UniqueIdByPos.Where(kv => kv.Value == uid).Select(kv => kv.Key).ToList())
+                    UniqueIdByPos.Remove(pos);
+                result.RemovedUniqueIds.Add(uid);
+            }
+
+            currentStar = nextStar;
+            RoleStarByUniqueId[keepUniqueId] = currentStar;
+        }
+
+        if (result.RemovedUniqueIds.Count > 0)
+        {
+            result.KeptUniqueId = keepUniqueId;
+            result.NewStar = RoleStarByUniqueId.GetValueOrDefault(keepUniqueId, 1u);
+        }
+        return result;
+    }
+
     public (bool ok, uint refund) TryRecycleRole(uint uniqueId)
     {
-        if (!RoleByUniqueId.Remove(uniqueId)) return (false, 0);
+        if (!RoleByUniqueId.TryGetValue(uniqueId, out var roleId)) return (false, 0);
+        RoleByUniqueId.Remove(uniqueId);
+        var roleStar = RoleStarByUniqueId.GetValueOrDefault(uniqueId, 1u);
         RoleStarByUniqueId.Remove(uniqueId);
         foreach (var pos in UniqueIdByPos.Where(kv => kv.Value == uniqueId).Select(kv => kv.Key).ToList())
             UniqueIdByPos.Remove(pos);
-        var refund = 1u;
+        var refund = GetRoleSellPrice(roleId, roleStar);
         Gold += refund;
         return (true, refund);
+    }
+
+    private static uint GetRoleSellPrice(uint roleId, uint roleStar)
+    {
+        if (!GameData.GridFightRoleBasicInfoData.TryGetValue(roleId, out var role))
+            return 1;
+        if (!GameData.GridFightShopPriceData.TryGetValue(role.Rarity, out var priceConf))
+            return 1;
+
+        var idx = (int)Math.Clamp(roleStar, 1u, 4u) - 1;
+        return priceConf.SellGoldList[idx];
     }
 
     public bool TryRefreshShop()
@@ -446,8 +566,112 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
 
     public bool TryBuyExp()
     {
-        Gold = Gold < 4 ? 0 : Gold - 4;
+        var cost = GetBuyExpCost();
+        if (cost == 0) cost = 4;
+
+        Gold = Gold < cost ? 0 : Gold - cost;
+        AddPlayerExp(cost);
         return true;
+    }
+
+    public uint GetBuyExpCost()
+    {
+        if (GameData.GridFightPlayerLevelData.TryGetValue(PlayerLevel, out var conf))
+        {
+            if (conf.LevelUpExp == 0) return 0; // 已满级
+        }
+        return 4;
+    }
+
+    public uint GetCurrentMaxBattleRoleNum()
+    {
+        if (GameData.GridFightPlayerLevelData.TryGetValue(PlayerLevel, out var conf))
+            return Math.Clamp(conf.AvatarMaxNumber, 0u, 13u);
+        return 4;
+    }
+
+    private void AddPlayerExp(uint value)
+    {
+        if (value == 0) return;
+
+        PlayerExp += value;
+        while (PlayerLevel < GetConfiguredMaxPlayerLevel())
+        {
+            var need = GetLevelUpExpNeed(PlayerLevel);
+            if (need == 0 || PlayerExp < need) break;
+            PlayerExp -= need;
+            PlayerLevel++;
+        }
+    }
+
+    public void GainPlayerExp(uint value) => AddPlayerExp(value);
+
+    public (List<uint> removedOrbUniqueIds, bool levelChanged, bool goldChanged) TryUseOrbs(IEnumerable<uint> uniqueIds, bool isGetAll)
+    {
+        var targets = isGetAll ? OrbItemByUniqueId.Keys.ToList() : uniqueIds.Distinct().ToList();
+        var removed = new List<uint>();
+        var oldLevel = PlayerLevel;
+        var oldExp = PlayerExp;
+        var oldGold = Gold;
+
+        foreach (var uniqueId in targets)
+        {
+            if (!OrbItemByUniqueId.TryGetValue(uniqueId, out var orbItemId)) continue;
+            OrbItemByUniqueId.Remove(uniqueId);
+            removed.Add(uniqueId);
+
+            if (!GameData.GridFightOrbData.TryGetValue(orbItemId, out var orbExcel)) continue;
+            switch (orbExcel.Type)
+            {
+                case GridFightOrbTypeEnum.White:
+                    Gold += 2;
+                    break;
+                case GridFightOrbTypeEnum.Blue:
+                    AddPlayerExp(2);
+                    break;
+                case GridFightOrbTypeEnum.Glod:
+                    Gold += 5;
+                    break;
+                case GridFightOrbTypeEnum.Colorful:
+                    AddPlayerExp(4);
+                    break;
+                case GridFightOrbTypeEnum.BigColorful:
+                    AddPlayerExp(8);
+                    break;
+                case GridFightOrbTypeEnum.GoldenEgg:
+                    Gold += 8;
+                    break;
+                default:
+                    Gold += 1;
+                    break;
+            }
+        }
+
+        var levelChanged = PlayerLevel != oldLevel || PlayerExp != oldExp;
+        var goldChanged = Gold != oldGold;
+        return (removed, levelChanged, goldChanged);
+    }
+
+    public uint GetLevelUpExpNeed(uint level)
+    {
+        if (GameData.GridFightPlayerLevelData.TryGetValue(level, out var conf))
+            return conf.LevelUpExp;
+        return 4;
+    }
+
+    public uint GetConfiguredMaxPlayerLevel()
+    {
+        if (GameData.GridFightPlayerLevelData.Count > 0)
+            return GameData.GridFightPlayerLevelData.Keys.Max();
+        return PlayerMaxLevel;
+    }
+
+    public uint GetEnemyDifficultyLevel()
+    {
+        if (GameData.GridFightDivisionStageData.TryGetValue(DivisionId, out var stage)
+            && stage.EnemyDifficultyLevel > 0)
+            return stage.EnemyDifficultyLevel;
+        return 1;
     }
 
     public bool TryEquipFromDraft(uint idx)
@@ -520,6 +744,7 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
         {
             var orbUniqueId = AllocOrbUniqueId();
             LastRewardedOrbs.Add((orbId, orbUniqueId));
+            OrbItemByUniqueId[orbUniqueId] = orbId;
             dropInfo.PIBLJLBCKJL.Add(new LHPPIAKKFME
             {
                 BGKDAMDFFKH = GridFightDropType.HiolcnpoponMkppcdpchie,
@@ -529,12 +754,7 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
         }
         LastSectionRewards[2u] = dropInfo;
 
-        PlayerExp += 2;
-        if (PlayerExp >= LevelUpExpNeed && PlayerLevel < PlayerMaxLevel)
-        {
-            PlayerExp -= LevelUpExpNeed;
-            PlayerLevel++;
-        }
+        AddPlayerExp(2);
 
         // 完美通关 +2 生命值
         var perfectClear = req.Stt?.OGPOFMOGPIP?.GMOBFEBBFIE >= 0; // 无阵亡视为完美
@@ -600,12 +820,12 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
                 {
                     Level = PlayerLevel,
                     Exp = PlayerExp,
-                    DKHKEJIAJBN = LevelUpExpNeed
+                    DKHKEJIAJBN = GetLevelUpExpNeed(PlayerLevel)
                 },
                 IJAEBDCFEMG = new BLKAIEHOCBC
                 {
                     Level = PlayerLevel,
-                    DKHKEJIAJBN = LevelUpExpNeed
+                    DKHKEJIAJBN = GetLevelUpExpNeed(PlayerLevel)
                 },
                 MAGCGPMHHEA = 2
             }
@@ -649,6 +869,7 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
         await Player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(Player, GridFightSyncKind.PostBattle));
 
         OnBattleResolved(win);
+        await Player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(Player, GridFightSyncKind.RefreshShop));
     }
 
     public GridFightCurrentInfo ToProto()
@@ -779,7 +1000,10 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     {
         GridLevelInfo = new GridFightGameOrbInfo
         {
-            GridGameOrbList = { new GridGameOrbInfo { OrbItemId = 199, UniqueId = 7 } }
+            GridGameOrbList =
+            {
+                OrbItemByUniqueId.Select(kv => new GridGameOrbInfo { UniqueId = kv.Key, OrbItemId = kv.Value })
+            }
         }
     };
 

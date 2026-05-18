@@ -1,5 +1,6 @@
 using March7thHoney.Data;
 using March7thHoney.GameServer.Game.GridFight.Sync;
+using March7thHoney.GameServer.Game.GridFight.Battle;
 using March7thHoney.GameServer.Server.Packet.Send.GridFight;
 using March7thHoney.GameServer.Server;
 using March7thHoney.Kcp;
@@ -77,7 +78,8 @@ public static class GridFightPendingActionProcessor
             requiredTrait = buffData.PortalGameRefTrait[0];
         }
         inst.MaterializeInitialBenchTeam(requiredTrait);
-        inst.ConfigureNextBattle(90303, new uint[] { 300101007, 800102021, 300101007 });
+        var encounter = GridFightLevelResolver.Resolve(inst);
+        inst.ConfigureNextBattle(encounter.StageId, encounter.Monsters.Select(m => m.MonsterId));
 
         var nextPos = ackPos + 1;
         inst.QueuePosition = nextPos;
@@ -206,6 +208,7 @@ public static class GridFightPendingActionProcessor
         };
         await connection.SendPacket(new PacketGridFightHandlePendingActionScRsp(ackPos));
         await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(connection.Player!, GridFightSyncKind.PendingAdvance, (ackPos, nextPos)));
+        await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(connection.Player!, GridFightSyncKind.RefreshShop));
     }
 
     private static async System.Threading.Tasks.Task HandleReturnPreparation(Connection connection, GridFightInstance inst, uint ackPos)
