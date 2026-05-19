@@ -502,7 +502,7 @@ public partial class PlayerInstance(PlayerData data)
         if (OfferingManager != null)
             await OfferingManager.UpdateOfferingData();
 
-        DatabaseHelper.MarkUidForSave(Uid);
+        DatabaseHelper.ToSaveUidList.Add(Uid);
     }
 
     public T GetComponent<T>() where T : BasePlayerComponent

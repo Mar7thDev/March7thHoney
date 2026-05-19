@@ -15,8 +15,6 @@ public class DatabaseHelper
     public static DatabaseHelper? Instance;
     public static readonly ConcurrentDictionary<int, List<BaseDatabaseDataHelper>> UidInstanceMap = [];
     public static readonly List<int> ToSaveUidList = [];
-    private static readonly object SaveListLock = new();
-    private static readonly object DatabaseWriteLock = new();
     public static long LastSaveTick = DateTime.UtcNow.Ticks;
     public static Thread? SaveThread;
     public static bool LoadAccount;
@@ -118,40 +116,11 @@ public class DatabaseHelper
 
         SaveThread = new Thread(() =>
         {
-            while (true)
-            {
-                CalcSaveDatabase();
-                Thread.Sleep(1000);
-            }
+            while (true) CalcSaveDatabase();
         });
         SaveThread.Start();
 
         LoadAllData = true;
-    }
-
-    public static void MarkUidForSave(int uid)
-    {
-        lock (SaveListLock)
-        {
-            if (!ToSaveUidList.Contains(uid))
-                ToSaveUidList.Add(uid);
-        }
-    }
-
-    public static void RemoveUidFromSaveList(int uid)
-    {
-        lock (SaveListLock)
-        {
-            ToSaveUidList.RemoveAll(savedUid => savedUid == uid);
-        }
-    }
-
-    public static void QueueSaveDatabaseType<T>(T instance) where T : class, new()
-    {
-        if (instance is BaseDatabaseDataHelper baseInstance)
-            MarkUidForSave(baseInstance.Uid);
-
-        _ = Task.Run(() => SaveDatabaseType(instance));
     }
 
     public static void InitializeTable<T>(int uid) where T : BaseDatabaseDataHelper, new()
@@ -331,11 +300,7 @@ public class DatabaseHelper
 
     public static void SaveInstance<T>(T instance) where T : class, new()
     {
-        lock (DatabaseWriteLock)
-        {
-            sqlSugarScope?.Insertable(instance).ExecuteCommand();
-        }
-
+        sqlSugarScope?.Insertable(instance).ExecuteCommand();
         var baseInstance = (instance as BaseDatabaseDataHelper)!;
         if (!UidInstanceMap.TryGetValue(baseInstance.Uid, out var value))
         {
@@ -357,14 +322,7 @@ public class DatabaseHelper
         try
         {
             var prev = DateTime.Now;
-            List<int> list;
-            lock (SaveListLock)
-            {
-                list = ToSaveUidList.Distinct().ToList();
-                foreach (var uid in list)
-                    ToSaveUidList.RemoveAll(savedUid => savedUid == uid);
-            }
-
+            var list = ToSaveUidList.ToList(); // copy the list to avoid the exception
             foreach (var uid in list)
             {
                 var value = UidInstanceMap[uid];
@@ -383,6 +341,8 @@ public class DatabaseHelper
             var t = (DateTime.Now - prev).TotalSeconds;
             logger.Info(I18NManager.Translate("Server.ServerInfo.SaveDatabase",
                 Math.Round(t, 2).ToString(CultureInfo.InvariantCulture)));
+
+            ToSaveUidList.Clear();
         }
         catch (Exception e)
         {
@@ -396,10 +356,7 @@ public class DatabaseHelper
     {
         try
         {
-            lock (DatabaseWriteLock)
-            {
-                sqlSugarScope?.Updateable(instance).ExecuteCommand();
-            }
+            sqlSugarScope?.Updateable(instance).ExecuteCommand();
         }
         catch (Exception e)
         {
@@ -421,7 +378,7 @@ public class DatabaseHelper
         if (UidInstanceMap.TryGetValue(uid, out var value))
             value.RemoveAll(instance => instance is not AccountData);
 
-        RemoveUidFromSaveList(uid);
+        ToSaveUidList.RemoveAll(savedUid => savedUid == uid);
     }
 
     public static void DeleteUidDatabaseType<T>(int uid) where T : BaseDatabaseDataHelper, new()
@@ -441,7 +398,7 @@ public class DatabaseHelper
         sqlSugarScope?.Deleteable(instance).ExecuteCommand();
         UidInstanceMap[(instance as BaseDatabaseDataHelper)!.Uid]
             .Remove((instance as BaseDatabaseDataHelper)!); // remove from the map
-        RemoveUidFromSaveList((instance as BaseDatabaseDataHelper)!.Uid); // remove from the save list
+        ToSaveUidList.Remove((instance as BaseDatabaseDataHelper)!.Uid); // remove from the save list
     }
 
     public void DeleteUidData(int uid)
@@ -453,6 +410,6 @@ public class DatabaseHelper
                 .Invoke(this, [instance]);
 
         UidInstanceMap.TryRemove(uid, out _);
-        RemoveUidFromSaveList(uid);
+        ToSaveUidList.Remove(uid);
     }
 }
