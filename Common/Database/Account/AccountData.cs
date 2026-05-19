@@ -106,7 +106,8 @@ public class AccountData : BaseDatabaseDataHelper
         var now = Extensions.GetUnixSec();
         if (BanExpireAt > 0 && BanExpireAt <= now)
         {
-            ClearBan();
+            ClearBan(persist: false);
+            DatabaseHelper.MarkUidForSave(Uid);
             return AccountBanStatus.Inactive;
         }
 
@@ -119,7 +120,7 @@ public class AccountData : BaseDatabaseDataHelper
             identityMatched);
     }
 
-    public void Ban(string? reason, long expireAt)
+    public void Ban(string? reason, long expireAt, bool persist = true)
     {
         IsBanned = true;
         BanReason = string.IsNullOrWhiteSpace(reason) ? "No reason provided" : reason.Trim();
@@ -127,7 +128,10 @@ public class AccountData : BaseDatabaseDataHelper
         if (BanCreatedAt <= 0) BanCreatedAt = Extensions.GetUnixSec();
         BanUpdatedAt = Extensions.GetUnixSec();
         ClearLoginTokens(false);
-        PersistAuthState();
+        if (persist)
+            PersistAuthState();
+        else
+            DatabaseHelper.MarkUidForSave(Uid);
     }
 
     public void ClearBan(bool persist = true)
@@ -147,7 +151,10 @@ public class AccountData : BaseDatabaseDataHelper
             return;
 
         KnownIdentityKeys = string.IsNullOrWhiteSpace(merged) ? null : merged;
-        if (persist) PersistAuthState();
+        if (persist)
+            PersistAuthState();
+        else
+            DatabaseHelper.MarkUidForSave(Uid);
     }
 
     public void SetPassword(string password)
@@ -348,7 +355,7 @@ public class AccountData : BaseDatabaseDataHelper
 
     private void PersistAuthState()
     {
-        DatabaseHelper.ToSaveUidList.SafeAdd(Uid);
+        DatabaseHelper.MarkUidForSave(Uid);
         DatabaseHelper.SaveDatabaseType(this);
     }
 }

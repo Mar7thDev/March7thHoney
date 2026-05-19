@@ -3,9 +3,7 @@ using March7thHoney.Database.Account;
 using March7thHoney.Database.Mail;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server;
-using March7thHoney.GameServer.Server.Packet.Send.Player;
 using March7thHoney.Internationalization;
-using March7thHoney.Proto;
 using March7thHoney.Util;
 
 namespace March7thHoney.Command.Command.Cmd;
@@ -180,17 +178,11 @@ public class CommandAccount : ICommand
         }
 
         var reason = string.Join(" ", arg.Args.Skip(3)).Trim();
-        account.AddKnownIdentityKeys(GetActiveConnectionIdentityKeys(account.Uid));
-        account.Ban(reason, expireAt);
+        account.AddKnownIdentityKeys(GetActiveConnectionIdentityKeys(account.Uid), persist: false);
+        account.Ban(reason, expireAt, persist: false);
+        DatabaseHelper.QueueSaveDatabaseType(account);
         var banStatus = account.GetBanStatus();
-
-        var activeConnection = Listener.GetActiveConnection(account.Uid);
-        if (activeConnection != null)
-        {
-            await activeConnection.SendPacket(new PacketPlayerSqueezedScNotify(KickType.KickBlack,
-                AccountBanHelper.ToBlackInfo(banStatus)));
-            activeConnection.Stop();
-        }
+        ConnectionDisconnectHelper.KickBanned(Listener.GetActiveConnection(account.Uid), banStatus);
 
         await arg.SendMsg(
             $"Account {account.Username ?? account.Uid.ToString()} banned. {banStatus.FormatLoginMessage()}");
@@ -213,7 +205,8 @@ public class CommandAccount : ICommand
             return;
         }
 
-        account.ClearBan();
+        account.ClearBan(persist: false);
+        DatabaseHelper.QueueSaveDatabaseType(account);
         await arg.SendMsg($"Account {account.Username ?? account.Uid.ToString()} unbanned.");
     }
 
@@ -287,10 +280,7 @@ public class CommandAccount : ICommand
 
         var activeConnection = Listener.GetActiveConnection(account.Uid);
         if (activeConnection != null)
-        {
-            await activeConnection.SendPacket(new PacketPlayerSqueezedScNotify(KickType.KickByGm));
-            activeConnection.Stop();
-        }
+            ConnectionDisconnectHelper.KickByGm(activeConnection);
 
         DatabaseHelper.Instance.DeleteUidGameplayData(account.Uid);
 
@@ -301,7 +291,7 @@ public class CommandAccount : ICommand
 
         MailHelper.SendWelcomeMail(account.Uid, displayName);
 
-        DatabaseHelper.ToSaveUidList.SafeAdd(account.Uid);
+        DatabaseHelper.MarkUidForSave(account.Uid);
         DatabaseHelper.Instance.SaveDatabase();
 
         if (!isSelfReset)
@@ -355,10 +345,7 @@ public class CommandAccount : ICommand
 
         var activeConnection = Listener.GetActiveConnection(account.Uid);
         if (activeConnection != null)
-        {
-            await activeConnection.SendPacket(new PacketPlayerSqueezedScNotify(KickType.KickByGm));
-            activeConnection.Stop();
-        }
+            ConnectionDisconnectHelper.KickByGm(activeConnection);
 
         DatabaseHelper.Instance.DeleteUidData(account.Uid);
 

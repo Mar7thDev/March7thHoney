@@ -19,7 +19,7 @@ public static class MonthCardService
         if (data.MonthCardExpireTime > now) return data.MonthCardExpireTime;
 
         data.MonthCardExpireTime = now + (long)TimeSpan.FromDays(DefaultActiveDays).TotalSeconds;
-        DatabaseHelper.ToSaveUidList.SafeAdd(data.Uid);
+        DatabaseHelper.MarkUidForSave(data.Uid);
         return data.MonthCardExpireTime;
     }
 
@@ -36,7 +36,7 @@ public static class MonthCardService
         if (data.LastMonthCardRewardDate == today) return false;
 
         data.LastMonthCardRewardDate = today;
-        DatabaseHelper.ToSaveUidList.SafeAdd(data.Uid);
+        DatabaseHelper.MarkUidForSave(data.Uid);
         reward = new ItemData
         {
             ItemId = RewardItemId,

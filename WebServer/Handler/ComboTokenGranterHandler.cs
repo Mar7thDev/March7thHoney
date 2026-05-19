@@ -53,7 +53,7 @@ public class ComboTokenGranterHandler
         }
 
         if (account.GetBanStatus().IsActive)
-            account.AddKnownIdentityKeys(identityKeys);
+            account.AddKnownIdentityKeys(identityKeys, persist: false);
 
         if (!LoginSessionFactory.CanAuthenticate(account, identityKeys, out var failure))
         {
@@ -63,7 +63,7 @@ public class ComboTokenGranterHandler
             return new JsonResult(res);
         }
 
-        account.AddKnownIdentityKeys(identityKeys);
+        account.AddKnownIdentityKeys(identityKeys, persist: false);
         Logger.Info(
             $"Combo login cache validated. uid={uid} token_type={(isDispatchToken ? "dispatch" : "combo")} token_len={tokenData.token?.Length ?? 0}");
         res.message = "OK";
