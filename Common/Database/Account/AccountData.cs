@@ -63,12 +63,36 @@ public class AccountData : BaseDatabaseDataHelper
         return CommandRoles.NormalizeRole(Role, serverOption.DefaultPermissionRole, serverOption.PermissionRoles);
     }
 
-    public string GetEffectivePermissions()
+    public string SetRole(string? role)
     {
         var serverOption = ConfigManager.Config.ServerOption;
-        var rolePermissions = CommandRoles.GetPermissions(Role, serverOption.DefaultPermissionRole,
+        Role = CommandRoles.NormalizeRole(role, serverOption.DefaultPermissionRole, serverOption.PermissionRoles);
+        return SyncPermissionsWithRole();
+    }
+
+    public string SyncPermissionsWithRole(bool persist = true)
+    {
+        var serverOption = ConfigManager.Config.ServerOption;
+        var normalizedRole = CommandRoles.NormalizeRole(Role, serverOption.DefaultPermissionRole,
             serverOption.PermissionRoles);
-        return CommandPermissions.Normalize(rolePermissions.Concat(CommandPermissions.Parse(Permissions)));
+        var rolePermissions = CommandRoles.GetPermissions(normalizedRole, serverOption.DefaultPermissionRole,
+            serverOption.PermissionRoles);
+        var syncedPermissions = CommandPermissions.Normalize(rolePermissions.Concat(serverOption.DefaultPermissions));
+        var changed =
+            !string.Equals(Role, normalizedRole, StringComparison.Ordinal) ||
+            !string.Equals(Permissions, syncedPermissions, StringComparison.OrdinalIgnoreCase);
+
+        Role = normalizedRole;
+        Permissions = syncedPermissions;
+
+        if (changed && persist) PersistAuthState();
+
+        return syncedPermissions;
+    }
+
+    public string GetEffectivePermissions()
+    {
+        return SyncPermissionsWithRole();
     }
 
     public bool HasPermission(string permission)

@@ -30,16 +30,15 @@ public static class AccountHelper
             while (AccountData.GetAccountByUid(newUid) != null) newUid++;
         }
 
-        var perStr = CommandPermissions.Normalize(ConfigManager.Config.ServerOption.DefaultPermissions);
         var roleName = CommandRoles.NormalizeRole(role, ConfigManager.Config.ServerOption.DefaultPermissionRole,
             ConfigManager.Config.ServerOption.PermissionRoles);
         var account = new AccountData
         {
             Uid = newUid,
             Username = username,
-            Role = roleName,
-            Permissions = perStr
+            Role = roleName
         };
+        account.SyncPermissionsWithRole(false);
 
         if (!string.IsNullOrWhiteSpace(password))
         {

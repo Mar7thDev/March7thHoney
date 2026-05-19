@@ -92,6 +92,8 @@ public class DatabaseHelper
             value.Add(inst); // add to the map
         }
 
+        foreach (var account in list) account.SyncPermissionsWithRole();
+
         // start dispatch server
         LoadAccount = true;
 

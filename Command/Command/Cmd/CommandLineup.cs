@@ -3,7 +3,7 @@ using March7thHoney.Internationalization;
 
 namespace March7thHoney.Command.Command.Cmd;
 
-[CommandInfo("lineup", "Game.Command.Lineup.Desc", "Game.Command.Lineup.Usage", permission: CommandPermissions.Player)]
+[CommandInfo("lineup", "Game.Command.Lineup.Desc", "Game.Command.Lineup.Usage", permission: CommandPermissions.Lineup)]
 public class CommandLineup : ICommand
 {
     [CommandMethod("0 mp")]
