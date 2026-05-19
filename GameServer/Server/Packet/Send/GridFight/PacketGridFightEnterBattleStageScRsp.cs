@@ -39,7 +39,7 @@ public class PacketGridFightEnterBattleStageScRsp : BasePacket
             OIHHKOJFHFG = new OMBNHGAJANJ
             {
                 BNLHIMHFGDK = 1,
-                DCPKPNLKGMM = inst.Level,
+                DCPKPNLKGMM = inst.CurrentChapterId,
                 NDOCIKPLKIF = inst.NDOCIKPLKIF,
                 SectionId = inst.SectionId
             }
