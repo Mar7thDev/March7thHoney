@@ -471,7 +471,7 @@ public class TrainPartyManager(PlayerInstance player) : BasePlayerManager(player
 
     private void MarkDirty()
     {
-        DatabaseHelper.MarkUidForSave(Player.Uid);
+        DatabaseHelper.ToSaveUidList.Add(Player.Uid);
     }
 
     private static readonly TrainSelfDisplayEntry[] DefaultSelfDisplay =

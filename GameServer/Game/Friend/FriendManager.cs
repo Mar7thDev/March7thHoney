@@ -36,7 +36,7 @@ public class FriendManager(PlayerInstance player) : BasePlayerManager(player)
         if (targetPlayer != null)
             await targetPlayer.SendPacket(new PacketSyncApplyFriendScNotify(Player.Data));
 
-        DatabaseHelper.MarkUidForSave(targetUid);
+        DatabaseHelper.ToSaveUidList.Add(targetUid);
         return Retcode.RetSucc;
     }
 
@@ -61,7 +61,7 @@ public class FriendManager(PlayerInstance player) : BasePlayerManager(player)
         if (targetPlayer != null)
             await targetPlayer.SendPacket(new PacketSyncHandleFriendScNotify((uint)Player.Uid, true, Player.Data));
 
-        DatabaseHelper.MarkUidForSave(targetUid);
+        DatabaseHelper.ToSaveUidList.Add(targetUid);
         return targetData;
     }
 
@@ -77,7 +77,7 @@ public class FriendManager(PlayerInstance player) : BasePlayerManager(player)
         if (targetPlayer != null)
             await targetPlayer.SendPacket(new PacketSyncHandleFriendScNotify((uint)Player.Uid, false, Player.Data));
 
-        DatabaseHelper.MarkUidForSave(targetUid);
+        DatabaseHelper.ToSaveUidList.Add(targetUid);
     }
 
     public async ValueTask<PlayerData?> AddBlackList(int targetUid)
@@ -95,7 +95,7 @@ public class FriendManager(PlayerInstance player) : BasePlayerManager(player)
         if (targetPlayer != null)
             await targetPlayer.SendPacket(new PacketSyncAddBlacklistScNotify(Player.Uid));
 
-        DatabaseHelper.MarkUidForSave(targetUid);
+        DatabaseHelper.ToSaveUidList.Add(targetUid);
         return blackInfo;
     }
 
@@ -118,7 +118,7 @@ public class FriendManager(PlayerInstance player) : BasePlayerManager(player)
         if (targetPlayer != null)
             await targetPlayer.SendPacket(new PacketSyncDeleteFriendScNotify(Player.Uid));
 
-        DatabaseHelper.MarkUidForSave(targetUid);
+        DatabaseHelper.ToSaveUidList.Add(targetUid);
         return targetUid;
     }
 
@@ -153,7 +153,7 @@ public class FriendManager(PlayerInstance player) : BasePlayerManager(player)
 
             history.MessageList.Add(data);
 
-            DatabaseHelper.MarkUidForSave(recvUid);
+            DatabaseHelper.ToSaveUidList.Add(recvUid);
         }
     }
 

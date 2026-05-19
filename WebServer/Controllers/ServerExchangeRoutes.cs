@@ -86,8 +86,7 @@ public class ServerExchangeRoutes : ControllerBase
             HttpContext.Connection.RemoteIpAddress?.ToString());
         if (AccountBanHelper.TryGetActiveBan(account, identityKeys, out var banStatus))
         {
-            account.ClearLoginTokens(persist: false);
-            DatabaseHelper.QueueSaveDatabaseType(account);
+            account.ClearLoginTokens();
             return new ContentResult
             {
                 StatusCode = 403,
@@ -97,8 +96,7 @@ public class ServerExchangeRoutes : ControllerBase
 
         if (!account.CanLogin())
         {
-            account.ClearLoginTokens(persist: false);
-            DatabaseHelper.QueueSaveDatabaseType(account);
+            account.ClearLoginTokens();
             return new ContentResult
             {
                 StatusCode = 403,

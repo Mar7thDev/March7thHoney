@@ -1,4 +1,3 @@
-using March7thHoney.Database;
 using March7thHoney.Database.Account;
 using March7thHoney.Util;
 
@@ -52,13 +51,13 @@ internal static class LoginSessionFactory
         }
 
         if (canonicalAccount.GetBanStatus().IsActive)
-            canonicalAccount.AddKnownIdentityKeys(identityKeys, persist: false);
+            canonicalAccount.AddKnownIdentityKeys(identityKeys);
 
         if (!CanAuthenticate(canonicalAccount, identityKeys, out failure))
             return false;
 
         var username = canonicalAccount.Username ?? normalizedAccount;
-        canonicalAccount.AddKnownIdentityKeys(identityKeys, persist: false);
+        canonicalAccount.AddKnownIdentityKeys(identityKeys);
         canonicalAccount.SyncPermissionsWithRole();
         var dispatchToken = canonicalAccount.GenerateDispatchToken();
         session = new LoginSession(
@@ -82,8 +81,7 @@ internal static class LoginSessionFactory
 
         if (AccountBanHelper.TryGetActiveBan(account, identityKeys, out var banStatus))
         {
-            account.ClearLoginTokens(persist: false);
-            DatabaseHelper.QueueSaveDatabaseType(account);
+            account.ClearLoginTokens();
             failure = LoginFailure.Banned(banStatus);
             return false;
         }
@@ -91,8 +89,7 @@ internal static class LoginSessionFactory
         if (account.CanLogin())
             return true;
 
-        account.ClearLoginTokens(persist: false);
-        DatabaseHelper.QueueSaveDatabaseType(account);
+        account.ClearLoginTokens();
         failure = LoginFailure.EmailVerificationRequired();
         return false;
     }
