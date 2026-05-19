@@ -424,6 +424,8 @@ public class DispatchRoutes : ControllerBase
     [HttpGet("/{gameKey}/mdk/shield/api/loadConfig")]
     public ContentResult LoadConfig()
     {
+        var gameTokenExpiresIn = Math.Max(Config.ServerOption.Auth.ComboTokenExpireMinutes, 1) * 60;
+
         return new ContentResult
         {
             Content = JsonConvert.SerializeObject(new
@@ -449,10 +451,10 @@ public class DispatchRoutes : ControllerBase
                     enable_ps_bind_account = false,
                     thirdparty_login_configs = new
                     {
-                        tw = new { token_type = "TK_GAME_TOKEN", game_token_expires_in = 2592000 },
-                        ap = new { token_type = "TK_GAME_TOKEN", game_token_expires_in = 604800 },
-                        fb = new { token_type = "TK_GAME_TOKEN", game_token_expires_in = 2592000 },
-                        gl = new { token_type = "TK_GAME_TOKEN", game_token_expires_in = 604800 }
+                        tw = new { token_type = "TK_GAME_TOKEN", game_token_expires_in = gameTokenExpiresIn },
+                        ap = new { token_type = "TK_GAME_TOKEN", game_token_expires_in = gameTokenExpiresIn },
+                        fb = new { token_type = "TK_GAME_TOKEN", game_token_expires_in = gameTokenExpiresIn },
+                        gl = new { token_type = "TK_GAME_TOKEN", game_token_expires_in = gameTokenExpiresIn }
                     },
                     initialize_firebase = false,
                     bbs_auth_login = false,

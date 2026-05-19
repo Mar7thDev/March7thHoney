@@ -47,6 +47,8 @@ public class March7thHoneyListener
         KCPTransport.Start();
         Logger.Info(I18NManager.Translate("Server.ServerInfo.ServerRunning", I18NManager.Translate("Word.Game"),
             ConfigManager.Config.GameServer.GetDisplayAddress()));
+        Logger.Info(
+            $"Game UDP listener bound to {ListenAddress}. Advertised gateway is {ConfigManager.Config.GameServer.GetDisplayAddress()}");
     }
 
     private static void RegisterConnection(March7thHoneyConnection con)
@@ -123,6 +125,7 @@ public class March7thHoneyListener
         var convId = Connections.GetNextAvailableIndex();
         var convo = Multiplex?.CreateConversation(convId, rcv.RemoteEndPoint, ConvOpt);
         if (convo == null || CreateConnection == null) return;
+        Logger.Info($"Accepting game handshake from {rcv.RemoteEndPoint}. conv_id={convId} enet={enet}");
         var con = CreateConnection(convo, rcv.RemoteEndPoint);
         RegisterConnection(con);
         await SendHandshakeResponse(con, enet);
