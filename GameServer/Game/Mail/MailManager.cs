@@ -56,7 +56,7 @@ public class MailManager(PlayerInstance player) : BasePlayerManager(player)
         };
 
         MailData.MailList.Add(mail);
-        DatabaseHelper.ToSaveUidList.SafeAdd(Player.Uid);
+        DatabaseHelper.MarkUidForSave(Player.Uid);
 
         await Player.SendPacket(new PacketNewMailScNotify(mail.MailID));
     }
@@ -80,7 +80,7 @@ public class MailManager(PlayerInstance player) : BasePlayerManager(player)
         };
 
         MailData.MailList.Add(mail);
-        DatabaseHelper.ToSaveUidList.SafeAdd(Player.Uid);
+        DatabaseHelper.MarkUidForSave(Player.Uid);
 
         await Player.SendPacket(new PacketNewMailScNotify(mail.MailID));
     }
@@ -157,7 +157,7 @@ public class MailManager(PlayerInstance player) : BasePlayerManager(player)
 
         if (result.SuccessMailIds.Count > 0)
         {
-            DatabaseHelper.ToSaveUidList.SafeAdd(Player.Uid);
+            DatabaseHelper.MarkUidForSave(Player.Uid);
 
             if (result.SyncItems.Count > 0)
                 await Player.SendPacket(new PacketPlayerSyncScNotify(result.SyncItems));

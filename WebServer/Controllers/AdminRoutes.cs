@@ -3,8 +3,6 @@ using March7thHoney.Database.Account;
 using March7thHoney.Database.Player;
 using March7thHoney.Command;
 using March7thHoney.GameServer.Server;
-using March7thHoney.GameServer.Server.Packet.Send.Player;
-using March7thHoney.Proto;
 using March7thHoney.Util;
 using March7thHoney.WebServer.Handler;
 using March7thHoney.WebServer.Pages;
@@ -223,7 +221,7 @@ public class AdminRoutes : ControllerBase
     }
 
     [HttpPost("/admin/api/accounts/{uid:int}/ban")]
-    public async Task<JsonResult> BanAccount([FromRoute] int uid, [FromBody] AdminBanAccountRequest? request)
+    public JsonResult BanAccount([FromRoute] int uid, [FromBody] AdminBanAccountRequest? request)
     {
         if (!IsAuthorized(out var unauthorized))
             return unauthorized;
@@ -236,9 +234,10 @@ public class AdminRoutes : ControllerBase
         if (!TryResolveBanExpireAt(request, out var expireAt, out var error))
             return Error(error);
 
-        account.AddKnownIdentityKeys(GetActiveConnectionIdentityKeys(account.Uid));
-        account.Ban(request.reason, expireAt);
-        await KickBannedConnection(account.Uid, account.GetBanStatus());
+        account.AddKnownIdentityKeys(GetActiveConnectionIdentityKeys(account.Uid), persist: false);
+        account.Ban(request.reason, expireAt, persist: false);
+        DatabaseHelper.QueueSaveDatabaseType(account);
+        KickBannedConnection(account.Uid, account.GetBanStatus());
 
         return Success(new
         {
@@ -256,7 +255,8 @@ public class AdminRoutes : ControllerBase
         if (account == null)
             return Error("Account not found", statusCode: StatusCodes.Status404NotFound);
 
-        account.ClearBan();
+        account.ClearBan(persist: false);
+        DatabaseHelper.QueueSaveDatabaseType(account);
         return Success(new
         {
             account = ToAccountSummary(account)
@@ -419,15 +419,9 @@ public class AdminRoutes : ControllerBase
             : AccountBanHelper.BuildIdentityKeys([], activeConnection.RemoteEndPoint.Address.ToString());
     }
 
-    private static async Task KickBannedConnection(int uid, AccountBanStatus banStatus)
+    private static void KickBannedConnection(int uid, AccountBanStatus banStatus)
     {
-        var activeConnection = Listener.GetActiveConnection(uid);
-        if (activeConnection == null)
-            return;
-
-        await activeConnection.SendPacket(new PacketPlayerSqueezedScNotify(KickType.KickBlack,
-            AccountBanHelper.ToBlackInfo(banStatus)));
-        activeConnection.Stop();
+        ConnectionDisconnectHelper.KickBanned(Listener.GetActiveConnection(uid), banStatus);
     }
 
     public class AdminLoginRequest
