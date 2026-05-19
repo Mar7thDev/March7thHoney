@@ -34,6 +34,13 @@ public class AccountData : BaseDatabaseDataHelper
     [SugarColumn(IsNullable = true)]
     public string? Permissions { get; set; } // type: permission1,permission2,permission3...
 
+    [SugarColumn(IsNullable = true)] public bool IsBanned { get; set; }
+    [SugarColumn(IsNullable = true)] public string? BanReason { get; set; }
+    [SugarColumn(IsNullable = true)] public long BanExpireAt { get; set; }
+    [SugarColumn(IsNullable = true)] public long BanCreatedAt { get; set; }
+    [SugarColumn(IsNullable = true)] public long BanUpdatedAt { get; set; }
+    [SugarColumn(IsNullable = true)] public string? KnownIdentityKeys { get; set; }
+
     public static AccountData? GetAccountByUserName(string username)
     {
         var normalized = username.Trim();
@@ -89,6 +96,58 @@ public class AccountData : BaseDatabaseDataHelper
     public bool CanLogin()
     {
         return !ConfigManager.Config.ServerOption.Auth.RequireVerifiedEmailForLogin || IsEmailVerified;
+    }
+
+    public AccountBanStatus GetBanStatus(bool identityMatched = false)
+    {
+        if (!IsBanned)
+            return AccountBanStatus.Inactive;
+
+        var now = Extensions.GetUnixSec();
+        if (BanExpireAt > 0 && BanExpireAt <= now)
+        {
+            ClearBan();
+            return AccountBanStatus.Inactive;
+        }
+
+        return new AccountBanStatus(
+            true,
+            Uid,
+            BanReason ?? string.Empty,
+            BanExpireAt,
+            BanCreatedAt,
+            identityMatched);
+    }
+
+    public void Ban(string? reason, long expireAt)
+    {
+        IsBanned = true;
+        BanReason = string.IsNullOrWhiteSpace(reason) ? "No reason provided" : reason.Trim();
+        BanExpireAt = Math.Max(0, expireAt);
+        if (BanCreatedAt <= 0) BanCreatedAt = Extensions.GetUnixSec();
+        BanUpdatedAt = Extensions.GetUnixSec();
+        ClearLoginTokens(false);
+        PersistAuthState();
+    }
+
+    public void ClearBan(bool persist = true)
+    {
+        IsBanned = false;
+        BanReason = null;
+        BanExpireAt = 0;
+        BanCreatedAt = 0;
+        BanUpdatedAt = Extensions.GetUnixSec();
+        if (persist) PersistAuthState();
+    }
+
+    public void AddKnownIdentityKeys(IEnumerable<string>? identityKeys, bool persist = true)
+    {
+        var merged = AccountBanHelper.MergeIdentityKeys(KnownIdentityKeys, identityKeys);
+        if (string.Equals(KnownIdentityKeys ?? string.Empty, merged, StringComparison.Ordinal))
+            return;
+
+        KnownIdentityKeys = string.IsNullOrWhiteSpace(merged) ? null : merged;
+        if (persist) PersistAuthState();
     }
 
     public void SetPassword(string password)

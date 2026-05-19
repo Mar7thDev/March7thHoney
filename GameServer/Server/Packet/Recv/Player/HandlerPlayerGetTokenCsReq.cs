@@ -52,6 +52,22 @@ public class HandlerPlayerGetTokenCsReq : Handler
                 return;
             }
 
+            var identityKeys = AccountBanHelper.BuildIdentityKeys([],
+                connection.RemoteEndPoint.Address.ToString());
+            if (account.GetBanStatus().IsActive)
+                account.AddKnownIdentityKeys(identityKeys);
+
+            if (AccountBanHelper.TryGetActiveBan(account, identityKeys, out var banStatus))
+            {
+                account.ClearLoginTokens();
+                await connection.SendPacket(new PacketPlayerGetTokenScRsp(
+                    (uint)account.Uid,
+                    Retcode.RetNotInWhiteList,
+                    AccountBanHelper.ToBlackInfo(banStatus),
+                    msg: banStatus.FormatLoginMessage()));
+                return;
+            }
+
             if (!account.CanLogin())
             {
                 account.ClearLoginTokens();
@@ -63,6 +79,7 @@ public class HandlerPlayerGetTokenCsReq : Handler
             }
 
             uid = account.Uid;
+            account.AddKnownIdentityKeys(identityKeys);
             account.SyncPermissionsWithRole();
             _logger.Info(
                 $"PlayerGetToken accepted. remote={connection.RemoteEndPoint} uid={uid} token_type={(isDispatchToken ? "dispatch" : "combo")}");
@@ -87,7 +104,8 @@ public class HandlerPlayerGetTokenCsReq : Handler
             {
                 _logger.Warn(
                     $"PlayerGetToken dispatch exchange rejected. remote={connection.RemoteEndPoint} status={res.Item1} body_len={res.Item2?.Length ?? 0}");
-                await connection.SendPacket(new PacketPlayerGetTokenScRsp(0, Retcode.RetNotInWhiteList));
+                await connection.SendPacket(new PacketPlayerGetTokenScRsp(0, Retcode.RetNotInWhiteList,
+                    msg: res.Item1 == 403 ? res.Item2 ?? string.Empty : string.Empty));
                 return;
             }
 

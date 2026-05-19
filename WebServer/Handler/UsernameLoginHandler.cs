@@ -6,10 +6,10 @@ namespace March7thHoney.WebServer.Handler;
 
 public class UsernameLoginHandler
 {
-    public JsonResult HandleShieldLogin(string account, string password)
+    public JsonResult HandleShieldLogin(string account, string password, IReadOnlyCollection<string> identityKeys)
     {
         LoginSessionFactory.LoginFailure failure;
-        if (!LoginSessionFactory.TryCreateSession(account, password, out var session, out failure))
+        if (!LoginSessionFactory.TryCreateSession(account, password, identityKeys, out var session, out failure))
             return new JsonResult(LoginResJson.Error(failure.Retcode, failure.Message));
 
         return new JsonResult(LoginResJson.Success(
@@ -20,19 +20,19 @@ public class UsernameLoginHandler
             session.DispatchToken));
     }
 
-    public JsonResult HandlePassportLogin(string account, string password)
+    public JsonResult HandlePassportLogin(string account, string password, IReadOnlyCollection<string> identityKeys)
     {
         LoginSessionFactory.LoginFailure failure;
-        if (!LoginSessionFactory.TryCreateSession(account, password, out var session, out failure))
+        if (!LoginSessionFactory.TryCreateSession(account, password, identityKeys, out var session, out failure))
             return new JsonResult(new { retcode = failure.Retcode, message = failure.Message, data = (object?)null });
 
         return new JsonResult(BuildPassportLoginBody(session));
     }
 
-    public ContentResult HandleLegacyPassportLogin(string account, string password)
+    public ContentResult HandleLegacyPassportLogin(string account, string password, IReadOnlyCollection<string> identityKeys)
     {
         LoginSessionFactory.LoginFailure failure;
-        if (!LoginSessionFactory.TryCreateSession(account, password, out var session, out failure))
+        if (!LoginSessionFactory.TryCreateSession(account, password, identityKeys, out var session, out failure))
         {
             return new ContentResult
             {

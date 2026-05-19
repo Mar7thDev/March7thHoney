@@ -11,6 +11,12 @@ internal static class LoginSessionFactory
 
     public static bool TryCreateSession(string? account, string? password, out LoginSession session, out LoginFailure failure)
     {
+        return TryCreateSession(account, password, [], out session, out failure);
+    }
+
+    public static bool TryCreateSession(string? account, string? password, IReadOnlyCollection<string> identityKeys,
+        out LoginSession session, out LoginFailure failure)
+    {
         session = default;
         failure = LoginFailure.InvalidCredentials();
 
@@ -24,11 +30,11 @@ internal static class LoginSessionFactory
             return false;
 
         var canonicalAccount = AccountData.GetAccountByUid(accountData.Uid) ?? accountData;
-        if (!CanAuthenticate(canonicalAccount, out failure))
-            return false;
-
         if (!canonicalAccount.HasPassword())
         {
+            if (!CanAuthenticate(canonicalAccount, identityKeys, out failure))
+                return false;
+
             try
             {
                 AccountHelper.SetPassword(canonicalAccount, normalizedPassword);
@@ -44,7 +50,14 @@ internal static class LoginSessionFactory
             return false;
         }
 
+        if (canonicalAccount.GetBanStatus().IsActive)
+            canonicalAccount.AddKnownIdentityKeys(identityKeys);
+
+        if (!CanAuthenticate(canonicalAccount, identityKeys, out failure))
+            return false;
+
         var username = canonicalAccount.Username ?? normalizedAccount;
+        canonicalAccount.AddKnownIdentityKeys(identityKeys);
         canonicalAccount.SyncPermissionsWithRole();
         var dispatchToken = canonicalAccount.GenerateDispatchToken();
         session = new LoginSession(
@@ -58,7 +71,20 @@ internal static class LoginSessionFactory
 
     public static bool CanAuthenticate(AccountData account, out LoginFailure failure)
     {
+        return CanAuthenticate(account, [], out failure);
+    }
+
+    public static bool CanAuthenticate(AccountData account, IReadOnlyCollection<string> identityKeys,
+        out LoginFailure failure)
+    {
         failure = LoginFailure.InvalidCredentials();
+
+        if (AccountBanHelper.TryGetActiveBan(account, identityKeys, out var banStatus))
+        {
+            account.ClearLoginTokens();
+            failure = LoginFailure.Banned(banStatus);
+            return false;
+        }
 
         if (account.CanLogin())
             return true;
@@ -86,6 +112,11 @@ internal static class LoginSessionFactory
         public static LoginFailure EmailVerificationRequired()
         {
             return new LoginFailure(-202, EmailVerificationRequiredMessage);
+        }
+
+        public static LoginFailure Banned(AccountBanStatus banStatus)
+        {
+            return new LoginFailure(-203, banStatus.FormatLoginMessage());
         }
     }
 
