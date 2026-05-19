@@ -126,7 +126,7 @@ public class TrainCakeCatchManager(PlayerInstance player) : BasePlayerManager(pl
         changed |= SyncCollectedCreatures(target);
 
         if (changed)
-            DatabaseHelper.ToSaveUidList.Add(targetUid);
+            DatabaseHelper.MarkUidForSave(targetUid);
     }
 
     public TrainCakeCatchGetDataScRsp ToGetDataProto()
@@ -703,7 +703,7 @@ public class TrainCakeCatchManager(PlayerInstance player) : BasePlayerManager(pl
         }).ToList();
 
         SyncCollectedCreatures(Data);
-        DatabaseHelper.ToSaveUidList.Add(Player.Uid);
+        DatabaseHelper.MarkUidForSave(Player.Uid);
         return BuildDiyProto();
     }
 
@@ -723,7 +723,7 @@ public class TrainCakeCatchManager(PlayerInstance player) : BasePlayerManager(pl
         var unlockedAfterSearch = GetUnlockedPerformanceIds(Data);
         Data.PerformanceIds = unlockedAfterSearch.ToList();
 
-        DatabaseHelper.ToSaveUidList.Add(Player.Uid);
+        DatabaseHelper.MarkUidForSave(Player.Uid);
         var rsp = new TrainCakeCatchSearchScRsp
         {
             HCJPDNDOHAM = creatureId,
@@ -758,7 +758,7 @@ public class TrainCakeCatchManager(PlayerInstance player) : BasePlayerManager(pl
             ];
         }
 
-        DatabaseHelper.ToSaveUidList.Add(Player.Uid);
+        DatabaseHelper.MarkUidForSave(Player.Uid);
 
         var rsp = new TrainCakeCatchOpenBoxScRsp
         {
@@ -781,7 +781,7 @@ public class TrainCakeCatchManager(PlayerInstance player) : BasePlayerManager(pl
         if (!Data.DiyLikeIds.Contains(Player.Uid))
             Data.DiyLikeIds.Add(Player.Uid);
 
-        DatabaseHelper.ToSaveUidList.Add(Player.Uid);
+        DatabaseHelper.MarkUidForSave(Player.Uid);
 
         var rsp = new TrainCakeCatchDiyLikeScRsp();
         rsp.JNNKJAEMOBN.AddRange(Data.DiyLikeIds.Select(x => (uint)x));
@@ -813,7 +813,7 @@ public class TrainCakeCatchManager(PlayerInstance player) : BasePlayerManager(pl
 
         if (changed.Count == 0) return;
 
-        DatabaseHelper.ToSaveUidList.Add(Player.Uid);
+        DatabaseHelper.MarkUidForSave(Player.Uid);
         await Player.SendPacket(new PacketPlayerSyncScNotify(changed));
     }
 
@@ -824,7 +824,7 @@ public class TrainCakeCatchManager(PlayerInstance player) : BasePlayerManager(pl
             CreatureId = p.CreatureId,
             Slot = p.Slot
         }).ToList();
-        DatabaseHelper.ToSaveUidList.Add(Player.Uid);
+        DatabaseHelper.MarkUidForSave(Player.Uid);
     }
 
     private OEBJBPNNOKO BuildSocialPlayPlayer(uint uid, bool isSelf)

@@ -40,6 +40,8 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
 
     public override void Stop()
     {
+        if (!IsOnline) return;
+
         Player?.TrainCakeCatchManager?.LeaveSocialPlayRoom();
         Player?.OnLogoutAsync();
         March7thHoneyListener.UnregisterConnection(this);
@@ -158,37 +160,57 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
 
     protected async Task ReceiveLoop()
     {
-        while (!CancelToken.IsCancellationRequested)
+        try
         {
-            // WaitToReceiveAsync call completes when there is at least one message is received or the transport is closed.
-            var result = await Conversation.WaitToReceiveAsync(CancelToken.Token);
-            if (result.TransportClosed)
+            while (!CancelToken.IsCancellationRequested)
             {
-                Logger.Debug("Connection was closed");
-                break;
-            }
-
-            var buffer = ArrayPool<byte>.Shared.Rent(result.BytesReceived);
-            try
-            {
-                // TryReceive should not return false here, unless the transport is closed.
-                // So we don't need to check for result.TransportClosed.
-                if (!Conversation.TryReceive(buffer, out result))
+                KcpConversationReceiveResult result;
+                try
                 {
-                    Logger.Error("Failed to receive packet");
+                    // WaitToReceiveAsync call completes when there is at least one message is received or the transport is closed.
+                    result = await Conversation.WaitToReceiveAsync(CancelToken.Token);
+                }
+                catch (OperationCanceledException) when (CancelToken.IsCancellationRequested)
+                {
+                    break;
+                }
+                catch (ObjectDisposedException)
+                {
                     break;
                 }
 
-                await ProcessMessageAsync(buffer.AsMemory(0, result.BytesReceived));
+                if (result.TransportClosed)
+                {
+                    Logger.Debug("Connection was closed");
+                    break;
+                }
+
+                var buffer = ArrayPool<byte>.Shared.Rent(result.BytesReceived);
+                try
+                {
+                    // TryReceive should not return false here, unless the transport is closed.
+                    // So we don't need to check for result.TransportClosed.
+                    if (!Conversation.TryReceive(buffer, out result))
+                    {
+                        Logger.Error("Failed to receive packet");
+                        break;
+                    }
+
+                    await ProcessMessageAsync(buffer.AsMemory(0, result.BytesReceived));
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error("Packet parse error", ex);
+                }
+                finally
+                {
+                    ArrayPool<byte>.Shared.Return(buffer);
+                }
             }
-            catch (Exception ex)
-            {
-                Logger.Error("Packet parse error", ex);
-            }
-            finally
-            {
-                ArrayPool<byte>.Shared.Return(buffer);
-            }
+        }
+        catch (Exception ex)
+        {
+            Logger.Error("Connection receive loop crashed", ex);
         }
 
         Stop();
