@@ -439,7 +439,7 @@ public class SceneTextEN
 public class MailTextEN
 {
     public string Desc => "Manage player's mail";
-    public string Usage => "Usage: /mail [Sender Name] [TemplateID] [Expire Days] _TITLE [Title] _CONTENT [Content] _ATTACH [ItemId] x[Count] r[Rank] l[Level] ...\nUsage: /mail welcome";
+    public string Usage => "Usage: /mail [Sender Name] [TemplateID] [Expire Days] _TITLE [Title] _CONTENT [Content] _ATTACH [ItemId] x[Count] r[Rank/Eidolon] s[Superimposition] l[Level] p[Promotion] t[TalentLevel|max] ...\nUsage: /mail all [Sender Name] [TemplateID] [Expire Days] _TITLE [Title] _CONTENT [Content] _ATTACH ...\nUsage: /mail welcome [all]";
     public string MailSent => "Mail sent!";
     public string MailSentWithAttachment => "Mail with attachment sent!";
 }
