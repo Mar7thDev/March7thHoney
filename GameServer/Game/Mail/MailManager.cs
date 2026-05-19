@@ -176,6 +176,9 @@ public class MailManager(PlayerInstance player) : BasePlayerManager(player)
         List<ItemData> syncItems, List<FormalAvatarInfo> avatars, List<int> newAvatarIds)
     {
         var itemConfig = GameData.ItemConfigData[item.ItemId];
+        if (itemConfig.ItemMainType == ItemMainTypeEnum.AvatarCard && HasAvatarAttachmentOptions(item))
+            return await GrantAvatarAttachment(item, attachmentItems, avatars, newAvatarIds);
+
         var grantCount = GrantsOneAtATime(itemConfig.ItemMainType) ? item.Count : 1;
         var countPerGrant = GrantsOneAtATime(itemConfig.ItemMainType) ? 1 : item.Count;
         var rank = GetAttachmentRank(item, itemConfig.ItemMainType);
@@ -235,6 +238,39 @@ public class MailManager(PlayerInstance player) : BasePlayerManager(player)
         return true;
     }
 
+    private async ValueTask<bool> GrantAvatarAttachment(ItemData item, List<ItemData> attachmentItems,
+        List<FormalAvatarInfo> avatars, List<int> newAvatarIds)
+    {
+        var avatar = Player.AvatarManager?.GetFormalAvatar(item.ItemId);
+        var isNewAvatar = avatar == null;
+        if (avatar == null)
+        {
+            var baseAvatarId = GameData.MultiplePathAvatarConfigData.TryGetValue(item.ItemId, out var multiPath)
+                ? multiPath.BaseAvatarID
+                : item.ItemId;
+
+            await Player.InventoryManager!.AddItem(baseAvatarId, 1, false, sync: false, returnRaw: true);
+            avatar = Player.AvatarManager?.GetFormalAvatar(baseAvatarId);
+            if (avatar == null) return false;
+        }
+
+        ApplyAvatarAttachmentOptions(avatar, item);
+        if (avatars.All(changedAvatar => changedAvatar.BaseAvatarId != avatar.BaseAvatarId))
+            avatars.Add(avatar);
+
+        if (isNewAvatar) newAvatarIds.Add(avatar.BaseAvatarId);
+
+        var receivedItem = item.Clone();
+        receivedItem.Count = 1;
+        attachmentItems.Add(receivedItem);
+        return true;
+    }
+
+    private static bool HasAvatarAttachmentOptions(ItemData item)
+    {
+        return item.Level > 1 || item.Promotion > 0 || item.Rank > 0 || item.TalentLevel > 0;
+    }
+
     private static bool GrantsOneAtATime(ItemMainTypeEnum itemMainType)
     {
         return itemMainType is ItemMainTypeEnum.AvatarCard or ItemMainTypeEnum.Equipment or ItemMainTypeEnum.Relic;
@@ -242,7 +278,7 @@ public class MailManager(PlayerInstance player) : BasePlayerManager(player)
 
     private static int GetAttachmentRank(ItemData item, ItemMainTypeEnum itemMainType)
     {
-        return itemMainType == ItemMainTypeEnum.Equipment ? Math.Clamp(item.Rank, 0, 5) : item.Rank;
+        return itemMainType == ItemMainTypeEnum.Equipment ? Math.Clamp(item.Rank <= 0 ? 1 : item.Rank, 1, 5) : item.Rank;
     }
 
     private static int GetAttachmentLevel(ItemData item, ItemMainTypeEnum itemMainType)
@@ -257,10 +293,53 @@ public class MailManager(PlayerInstance player) : BasePlayerManager(player)
 
     private static void ApplyAvatarAttachmentOptions(FormalAvatarInfo avatar, ItemData item)
     {
-        if (item.Level <= 1) return;
+        var pathInfo = GetOrCreateAvatarPath(avatar, item.ItemId);
 
-        avatar.Level = Math.Clamp(item.Level, 1, 80);
-        avatar.Promotion = GameData.GetMinPromotionForLevel(avatar.Level);
+        if (item.Level > 1)
+        {
+            avatar.Level = Math.Clamp(item.Level, 1, 80);
+            avatar.Promotion = item.Promotion > 0
+                ? Math.Clamp(item.Promotion, 0, 6)
+                : GameData.GetMinPromotionForLevel(avatar.Level);
+        }
+        else if (item.Promotion > 0)
+        {
+            avatar.Promotion = Math.Clamp(item.Promotion, 0, 6);
+        }
+
+        if (item.Rank > 0)
+            pathInfo.Rank = Math.Clamp(item.Rank, 0, 6);
+
+        if (item.TalentLevel > 0)
+            ApplyAvatarTalentLevel(pathInfo, item.TalentLevel);
+    }
+
+    private static PathInfo GetOrCreateAvatarPath(FormalAvatarInfo avatar, int itemId)
+    {
+        var pathId = GameData.AvatarConfigData.ContainsKey(itemId) ? itemId : avatar.AvatarId;
+        if (!avatar.PathInfos.TryGetValue(pathId, out var pathInfo))
+        {
+            pathInfo = new PathInfo(pathId);
+            avatar.PathInfos[pathId] = pathInfo;
+        }
+
+        pathInfo.GetSkillTree();
+        return pathInfo;
+    }
+
+    private static void ApplyAvatarTalentLevel(PathInfo pathInfo, int talentLevel)
+    {
+        if (!GameData.AvatarConfigData.TryGetValue(pathInfo.PathId, out var avatarExcel)) return;
+        if (!avatarExcel.SkillTree.TryGetValue(pathInfo.EnhanceId, out var skills)) return;
+
+        var skillTree = pathInfo.GetSkillTree();
+        foreach (var skill in skills)
+        {
+            var maxLevel = Math.Max(skill.MaxLevel, 1);
+            skillTree[skill.PointID] = talentLevel == int.MaxValue
+                ? maxLevel
+                : Math.Clamp(talentLevel, 1, maxLevel);
+        }
     }
 }
 

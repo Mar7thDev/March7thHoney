@@ -31,6 +31,7 @@ public class ItemData
     public int TotalExp { get; set; }
     public int Promotion { get; set; }
     public int Rank { get; set; } // Superimpose
+    public int TalentLevel { get; set; }
     public bool Locked { get; set; }
     public bool Discarded { get; set; }
 
@@ -305,6 +306,7 @@ public class ItemData
             TotalExp = TotalExp,
             Promotion = Promotion,
             Rank = Rank,
+            TalentLevel = TalentLevel,
             Locked = Locked,
             Discarded = Discarded,
             MainAffix = MainAffix,
