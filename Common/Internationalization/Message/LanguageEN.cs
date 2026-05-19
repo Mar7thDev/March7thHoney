@@ -460,11 +460,15 @@ public class RaidTextEN
 public class AccountTextEN
 {
     public string Desc => "Manage accounts.\nNote: This command is untested. Use with caution!";
-    public string Usage => "Usage: /account create [Username]\nUsage: /account setpassword [Username|UID] [Password]\nUsage: /account reset [Username|UID]\nUsage: /account role [Username|UID] [Role]\nUsage: /account roles";
-    public string ResetUsage => "Usage: /account reset [Username|UID]";
+    public string Usage => "Usage: /account create [Username] [Email] [Password] [UID]\nUsage: /account setpassword [Username|UID|Email] [Password]\nUsage: /account setemail [Username|UID|Email] [Email] [verified:true|false]\nUsage: /account verifyemail [Username|UID|Email]\nUsage: /account reset [Username|UID|Email]\nUsage: /account delete [Username|UID|Email] confirm\nUsage: /account role [Username|UID|Email] [Role]\nUsage: /account roles";
+    public string ResetUsage => "Usage: /account reset [Username|UID|Email]";
     public string AccountNotFound => "Account {0} does not exist.";
     public string ResetStarted => "Resetting account {0}. You will be disconnected and can reconnect to start fresh.";
     public string ResetSuccess => "Account {0} has been reset.";
+    public string DeleteUsage => "Usage: /account delete [Username|UID|Email] confirm";
+    public string DeleteRequiresConfirm => "This will permanently delete account {0} and all player data. Run /account delete {0} confirm to continue.";
+    public string DeleteStarted => "Deleting account {0}. You will be disconnected.";
+    public string DeleteSuccess => "Account {0} has been deleted.";
     public string InvalidUid => "Invalid UID parameter!";
     public string CreateError => "Internal error occurred {0} ";
     public string CreateSuccess => "New account {0} created successfully!";

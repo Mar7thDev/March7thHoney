@@ -82,6 +82,16 @@ public class ServerExchangeRoutes : ControllerBase
                 Content = "Account token not found"
             };
 
+        if (!account.CanLogin())
+        {
+            account.ClearLoginTokens();
+            return new ContentResult
+            {
+                StatusCode = 403,
+                Content = ConfigManager.Config.ServerOption.Auth.EmailVerificationRequiredMessage
+            };
+        }
+
         await ValueTask.CompletedTask;
 
         return new ContentResult

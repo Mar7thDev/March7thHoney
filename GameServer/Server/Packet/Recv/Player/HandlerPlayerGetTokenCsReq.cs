@@ -37,6 +37,16 @@ public class HandlerPlayerGetTokenCsReq : Handler
                 return;
             }
 
+            if (!account.CanLogin())
+            {
+                account.ClearLoginTokens();
+                await connection.SendPacket(new PacketPlayerGetTokenScRsp(
+                    (uint)account.Uid,
+                    Retcode.RetNotInWhiteList,
+                    msg: ConfigManager.Config.ServerOption.Auth.EmailVerificationRequiredMessage));
+                return;
+            }
+
             uid = account.Uid;
             account.SyncPermissionsWithRole();
         }

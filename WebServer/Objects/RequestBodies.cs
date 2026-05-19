@@ -51,3 +51,27 @@ public class RegisterReqJson
     public string? confirm_password { get; set; }
     public string? confirmPassword { get; set; }
 }
+
+public class SendVerificationEmailReqJson
+{
+    public string? account { get; set; }
+    public string? username { get; set; }
+    public string? email { get; set; }
+}
+
+public class ForgotPasswordReqJson
+{
+    public string? account { get; set; }
+    public string? username { get; set; }
+    public string? email { get; set; }
+}
+
+public class ResetPasswordReqJson
+{
+    public string? uid { get; set; }
+    public string? token { get; set; }
+    public string? password { get; set; }
+    public string? confirm { get; set; }
+    public string? confirm_password { get; set; }
+    public string? confirmPassword { get; set; }
+}

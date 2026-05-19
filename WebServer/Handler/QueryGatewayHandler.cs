@@ -1,5 +1,6 @@
 using March7thHoney.Configuration;
 using March7thHoney.Data;
+using March7thHoney.Database.Account;
 using March7thHoney.Internationalization;
 using March7thHoney.Proto;
 using March7thHoney.Util;
@@ -34,7 +35,7 @@ internal class QueryGatewayHandler
             RegionName = config.GameServer.GameServerId,
             Ip = config.GameServer.PublicAddress,
             Port = config.GameServer.Port,
-            Msg = "Access verification failed. Please check if you have logged in to the correct account and server.",
+            Msg = GetAccessVerificationMessage(req),
         };
 
         gateServer.Unk1 = true;
@@ -184,6 +185,19 @@ internal class QueryGatewayHandler
         gateServer.ExResourceUrl = string.Empty;
         gateServer.LuaUrl = string.Empty;
         gateServer.IfixUrl = string.Empty;
+    }
+
+    private static string GetAccessVerificationMessage(GateWayRequest req)
+    {
+        var accountUid = string.IsNullOrWhiteSpace(req.account_uid) ? req.uid : req.account_uid;
+        if (int.TryParse(accountUid, out var uid))
+        {
+            var account = AccountData.GetAccountByUid(uid);
+            if (account != null && !account.CanLogin())
+                return ConfigManager.Config.ServerOption.Auth.EmailVerificationRequiredMessage;
+        }
+
+        return "Access verification failed. Please check if you have logged in to the correct account and server.";
     }
 
     private string GetGatewayUrlByVersion(string version)

@@ -16,7 +16,7 @@ public class LoginResJson
         };
     }
 
-    public static LoginResJson Success(string uid, string username, string email, string token)
+    public static LoginResJson Success(string uid, string username, string email, bool isEmailVerified, string token)
     {
         var response = new LoginResJson
         {
@@ -25,7 +25,7 @@ public class LoginResJson
             data = new VerifyData(uid, email, token)
         };
         response.data.account.name = username;
-        response.data.account.is_email_verify = "1";
+        response.data.account.is_email_verify = isEmailVerified ? "1" : "0";
         return response;
     }
 

@@ -16,6 +16,7 @@ public class UsernameLoginHandler
             session.Uid,
             session.Username,
             session.Email,
+            session.IsEmailVerified,
             session.DispatchToken));
     }
 
@@ -63,7 +64,7 @@ public class UsernameLoginHandler
                     mid = session.Uid,
                     account_name = session.Username,
                     email = session.Email,
-                    is_email_verify = 0,
+                    is_email_verify = session.IsEmailVerified ? 1 : 0,
                     area_code = "**",
                     mobile = "",
                     safe_area_code = "",
@@ -77,8 +78,8 @@ public class UsernameLoginHandler
                     country = "CN",
                     password_time = "1",
                     is_adult = 0,
-                    unmasked_email = "",
-                    unmasked_email_type = 0
+                    unmasked_email = session.Email,
+                    unmasked_email_type = string.IsNullOrWhiteSpace(session.Email) ? 0 : 1
                 },
                 token = new { token_type = 1, token = session.DispatchToken },
                 ext_user_info = new { guardian_email = "", birth = "0" }

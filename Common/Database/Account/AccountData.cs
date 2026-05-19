@@ -9,6 +9,15 @@ namespace March7thHoney.Database.Account;
 public class AccountData : BaseDatabaseDataHelper
 {
     public string? Username { get; set; }
+    [SugarColumn(IsNullable = true)] public string? Email { get; set; }
+    [SugarColumn(IsNullable = true)] public string? NormalizedEmail { get; set; }
+    [SugarColumn(IsNullable = true)] public bool IsEmailVerified { get; set; }
+    [SugarColumn(IsNullable = true)] public long EmailVerifiedAt { get; set; }
+    [SugarColumn(IsNullable = true)] public string? EmailVerificationTokenHash { get; set; }
+    [SugarColumn(IsNullable = true)] public long EmailVerificationTokenExpireAt { get; set; }
+    [SugarColumn(IsNullable = true)] public string? PasswordResetTokenHash { get; set; }
+    [SugarColumn(IsNullable = true)] public long PasswordResetTokenExpireAt { get; set; }
+
     [SugarColumn(IsNullable = true)] public string? PasswordSalt { get; set; }
     [SugarColumn(IsNullable = true)] public string? PasswordHash { get; set; }
     public int PasswordIterations { get; set; }
@@ -37,15 +46,49 @@ public class AccountData : BaseDatabaseDataHelper
         return result;
     }
 
+    public static AccountData? GetAccountByEmail(string email)
+    {
+        var normalized = NormalizeEmail(email);
+        if (string.IsNullOrWhiteSpace(normalized)) return null;
+
+        AccountData? result = null;
+        var accounts = DatabaseHelper.GetAllInstanceFromMap<AccountData>() ?? DatabaseHelper.GetAllInstance<AccountData>();
+        accounts?.ForEach(account =>
+        {
+            var accountEmail = account.NormalizedEmail;
+            if (string.IsNullOrWhiteSpace(accountEmail))
+                accountEmail = NormalizeEmail(account.Email);
+
+            if (string.Equals(accountEmail, normalized, StringComparison.OrdinalIgnoreCase)) result = account;
+        });
+        return result;
+    }
+
+    public static AccountData? GetAccountByLoginIdentifier(string account)
+    {
+        var byUsername = GetAccountByUserName(account);
+        return byUsername ?? GetAccountByEmail(account);
+    }
+
     public static AccountData? GetAccountByUid(int uid)
     {
         var result = DatabaseHelper.Instance?.GetInstance<AccountData>(uid);
         return result;
     }
 
+    public static string NormalizeEmail(string? email)
+    {
+        return string.IsNullOrWhiteSpace(email) ? "" : email.Trim().ToLowerInvariant();
+    }
+
     public bool HasPassword()
     {
         return !string.IsNullOrWhiteSpace(PasswordSalt) && !string.IsNullOrWhiteSpace(PasswordHash);
+    }
+
+    public bool CanLogin()
+    {
+        return !ConfigManager.Config.ServerOption.Auth.RequireVerifiedEmailForLogin || IsEmailVerified;
     }
 
     public void SetPassword(string password)
@@ -105,6 +148,88 @@ public class AccountData : BaseDatabaseDataHelper
         return AuthSecurity.VerifyPassword(password, PasswordSalt, PasswordHash, PasswordIterations);
     }
 
+    public void SetEmail(string email, bool verified)
+    {
+        var normalizedEmail = NormalizeEmail(email);
+        var emailChanged = !string.Equals(NormalizedEmail ?? NormalizeEmail(Email), normalizedEmail,
+            StringComparison.OrdinalIgnoreCase);
+
+        Email = email.Trim();
+        NormalizedEmail = normalizedEmail;
+        IsEmailVerified = verified;
+        EmailVerifiedAt = verified ? Extensions.GetUnixSec() : 0;
+        ClearEmailVerificationToken(false);
+        if (emailChanged || !verified)
+            ClearPasswordResetToken(false);
+        if (!verified)
+            ClearLoginTokens(false);
+        PersistAuthState();
+    }
+
+    public string GenerateEmailVerificationToken()
+    {
+        var token = AuthSecurity.GenerateSessionToken();
+        EmailVerificationTokenHash = AuthSecurity.HashToken(token);
+        EmailVerificationTokenExpireAt = Extensions.GetUnixSec() +
+                                         Math.Max(
+                                             ConfigManager.Config.ServerOption.Auth
+                                                 .EmailVerificationTokenExpireMinutes, 1) * 60L;
+        PersistAuthState();
+        return token;
+    }
+
+    public bool ValidateEmailVerificationToken(string? token)
+    {
+        return ValidateActionToken(token, EmailVerificationTokenHash, EmailVerificationTokenExpireAt);
+    }
+
+    public void MarkEmailVerified()
+    {
+        IsEmailVerified = true;
+        EmailVerifiedAt = Extensions.GetUnixSec();
+        ClearEmailVerificationToken(false);
+        PersistAuthState();
+    }
+
+    public void ClearEmailVerificationToken(bool persist = true)
+    {
+        EmailVerificationTokenHash = null;
+        EmailVerificationTokenExpireAt = 0;
+        if (persist) PersistAuthState();
+    }
+
+    public string GeneratePasswordResetToken()
+    {
+        var token = AuthSecurity.GenerateSessionToken();
+        PasswordResetTokenHash = AuthSecurity.HashToken(token);
+        PasswordResetTokenExpireAt = Extensions.GetUnixSec() +
+                                     Math.Max(ConfigManager.Config.ServerOption.Auth.PasswordResetTokenExpireMinutes,
+                                         1) * 60L;
+        PersistAuthState();
+        return token;
+    }
+
+    public bool ValidatePasswordResetToken(string? token)
+    {
+        return ValidateActionToken(token, PasswordResetTokenHash, PasswordResetTokenExpireAt);
+    }
+
+    public void ClearPasswordResetToken(bool persist = true)
+    {
+        PasswordResetTokenHash = null;
+        PasswordResetTokenExpireAt = 0;
+        if (persist) PersistAuthState();
+    }
+
+    public void ClearLoginTokens(bool persist = true)
+    {
+        DispatchToken = null;
+        DispatchTokenExpireAt = 0;
+        ComboToken = null;
+        ComboTokenExpireAt = 0;
+        if (persist) PersistAuthState();
+    }
+
     public string GenerateDispatchToken()
     {
         DispatchToken = AuthSecurity.GenerateSessionToken();
@@ -148,6 +273,18 @@ public class AccountData : BaseDatabaseDataHelper
         }
 
         return string.Equals(storedToken, providedToken, StringComparison.Ordinal);
+    }
+
+    private static bool ValidateActionToken(string? providedToken, string? storedTokenHash, long expireAt)
+    {
+        if (string.IsNullOrWhiteSpace(providedToken) ||
+            string.IsNullOrWhiteSpace(storedTokenHash) ||
+            expireAt <= Extensions.GetUnixSec())
+        {
+            return false;
+        }
+
+        return AuthSecurity.VerifyToken(providedToken, storedTokenHash);
     }
 
     private void PersistAuthState()
