@@ -439,7 +439,7 @@ public class SceneTextCHS
 public class MailTextCHS
 {
     public string Desc => "管理玩家的邮件";
-    public string Usage => "用法：/mail [发送名称] [模板ID] [过期天数] _TITLE [标题] _CONTENT [内容] _ATTACH [物品ID] x[数量] r[叠影] l[等级] ...";
+    public string Usage => "用法：/mail [发送名称] [模板ID] [过期天数] _TITLE [标题] _CONTENT [内容] _ATTACH [物品ID] x[数量] r[星魂/叠影] s[叠影] l[等级] p[晋阶] t[行迹等级|max] ...\n用法：/mail all [发送名称] [模板ID] [过期天数] _TITLE [标题] _CONTENT [内容] _ATTACH ...\n用法：/mail welcome [all]";
     public string MailSent => "邮件已发送!";
     public string MailSentWithAttachment => "带附件的邮件已发送!";
 }
