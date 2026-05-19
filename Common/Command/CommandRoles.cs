@@ -16,6 +16,7 @@ public static class CommandRoles
             [
                 CommandPermissions.Help,
                 CommandPermissions.Hero,
+                CommandPermissions.Calyx,
                 CommandPermissions.Scene,
                 CommandPermissions.Mission
             ],
@@ -29,9 +30,12 @@ public static class CommandRoles
             [
                 RoleReferencePrefix + Moderator,
                 CommandPermissions.Account,
+                CommandPermissions.Avatar,
                 CommandPermissions.Give,
                 CommandPermissions.GiveAll,
+                CommandPermissions.Grid,
                 CommandPermissions.Json,
+                CommandPermissions.Lineup,
                 CommandPermissions.Mail,
                 CommandPermissions.Raid,
                 CommandPermissions.Relic,
