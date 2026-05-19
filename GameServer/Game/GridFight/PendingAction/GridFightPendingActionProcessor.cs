@@ -180,7 +180,7 @@ public static class GridFightPendingActionProcessor
         {
             LevelSyncInfo = new GridFightLevelSyncInfo
             {
-                DCPKPNLKGMM = inst.Level,
+                DCPKPNLKGMM = inst.CurrentChapterId,
                 SectionId = inst.SectionId,
                 GridFightLayerInfo = new GridFightLayerInfo
                 {
@@ -272,7 +272,7 @@ public static class GridFightPendingActionProcessor
         {
             LevelSyncInfo = new GridFightLevelSyncInfo
             {
-                DCPKPNLKGMM = inst.Level,
+                DCPKPNLKGMM = inst.CurrentChapterId,
                 GridFightLayerInfo = new GridFightLayerInfo { RouteInfo = routeInfo }
             }
         });
@@ -525,7 +525,7 @@ public static class GridFightPendingActionProcessor
         {
             LevelSyncInfo = new GridFightLevelSyncInfo
             {
-                DCPKPNLKGMM = inst.Level,
+                DCPKPNLKGMM = inst.CurrentChapterId,
                 SectionId = inst.SectionId,
                 GridFightLayerInfo = new GridFightLayerInfo { RouteInfo = routeInfo }
             }
@@ -614,7 +614,7 @@ public static class GridFightPendingActionProcessor
             {
                 LevelSyncInfo = new GridFightLevelSyncInfo
                 {
-                    DCPKPNLKGMM = inst.Level,
+                    DCPKPNLKGMM = inst.CurrentChapterId,
                     SectionId = inst.SectionId,
                     GridFightLayerInfo = new GridFightLayerInfo { RouteInfo = routeInfo }
                 }

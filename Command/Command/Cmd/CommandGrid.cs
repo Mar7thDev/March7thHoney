@@ -267,7 +267,8 @@ public class CommandGrid : ICommand
 
         var chapterId = (uint)Math.Max(1, arg.GetInt(0));
         var sectionId = (uint)Math.Max(1, arg.GetInt(1));
-        if (chapterId != 1 || sectionId > 9)
+        var maxSection = inst.GetChapterSectionCount(chapterId);
+        if (chapterId > 3 || maxSection == 0 || sectionId > maxSection)
         {
             await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.InvalidArguments"));
             return;

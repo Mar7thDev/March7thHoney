@@ -375,8 +375,17 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
         var levelSync = new GridFightSyncResultData();
 
         var probeSection = inst.SectionId + 1;
+        var probeChapter = inst.CurrentChapterId;
+        var maxSection = inst.GetChapterSectionCount(probeChapter);
+        if (maxSection > 0 && probeSection > maxSection)
+        {
+            probeChapter++;
+            probeSection = 1;
+        }
         var prevSection = inst.SectionId;
+        var prevChapter = inst.CurrentChapterId;
         inst.SectionId = probeSection;
+        inst.CurrentChapterId = probeChapter;
         var nextRoute = GridFightLevelResolver.ResolveRoute(inst);
         var nextType = nextRoute?.NodeType;
         var isEliteBranch = nextType == Enums.GridFight.GridFightNodeTypeEnum.EliteBranch;
@@ -424,10 +433,11 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
             routeInfo.RouteEncounterList.Add(encounter);
         }
         inst.SectionId = prevSection;
+        inst.CurrentChapterId = prevChapter;
 
         var levelInfo = new GridFightLevelSyncInfo
         {
-            DCPKPNLKGMM = inst.Level,
+            DCPKPNLKGMM = probeChapter,
             SectionId = probeSection,
             GridFightLayerInfo = new GridFightLayerInfo { RouteInfo = routeInfo }
         };
@@ -486,7 +496,7 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
         {
             SectionRecordSyncInfo = new GridFightSectionRecordInfo
             {
-                DCPKPNLKGMM = inst.Level,
+                DCPKPNLKGMM = inst.CurrentChapterId,
                 SectionId = inst.SectionId,
                 CampRecordInfo = new GridFightSectionCampRecordInfo { PMOGHFIGKPO = inst.CampId }
             }

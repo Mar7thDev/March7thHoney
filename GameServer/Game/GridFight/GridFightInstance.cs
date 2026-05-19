@@ -715,11 +715,41 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
         if (win)
         {
             KeepWinCnt++;
-            SectionId++;
+            var nextSection = SectionId + 1;
+            var maxSection = GetChapterSectionCount(CurrentChapterId);
+            if (maxSection > 0 && nextSection > maxSection)
+            {
+                CurrentChapterId++;
+                SectionId = 1;
+                LastAugmentConsumedSection = 0;
+                LastSupplyConsumedSection = 0;
+                LastEliteBranchConsumedSection = 0;
+                ClearAugmentOffer();
+                ClearSupplyOffer();
+                ClearEliteBranchOptions();
+                CurrentAugmentReroll = 3;
+                CurrentSupplyReroll = 1;
+                CurrentEliteBranchReroll = 1;
+            }
+            else
+            {
+                SectionId = nextSection;
+            }
         }
         ShopRefreshLeft = 2;
         RotateShop();
         RefreshEquipDraft();
+    }
+
+    public uint GetChapterSectionCount(uint chapter)
+    {
+        if (!GameData.GridFightStageRouteData.TryGetValue(RouteId, out var bucket)) return 0;
+        var max = 0u;
+        foreach (var route in bucket.Values)
+        {
+            if (route.ChapterID == chapter && route.SectionID > max) max = route.SectionID;
+        }
+        return max;
     }
 
     private static readonly uint[] Section1RewardOrbs = { 102u, 199u, 203u, 204u };
@@ -830,7 +860,7 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
             FGEDKOINMAG = PreBattleLineupHp,
             IJEIEJLPGGJ = LineupMaxHp,
             KDOINLGKMBI = LineupMaxHp,
-            DCPKPNLKGMM = Level,
+            DCPKPNLKGMM = CurrentChapterId,
             NDOCIKPLKIF = NDOCIKPLKIF,
             SectionId = SectionId,
             EJEIBPEKHLD = PlayerLevel,
@@ -1033,7 +1063,7 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     {
         var lvl = new GridFightLevelInfo
         {
-            DCPKPNLKGMM = Level,
+            DCPKPNLKGMM = CurrentChapterId,
             NDOCIKPLKIF = NDOCIKPLKIF,
             SectionId = SectionId,
             ECCGJDMOGAN = new DDJIOFONKME(),
