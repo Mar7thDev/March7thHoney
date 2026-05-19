@@ -23,6 +23,20 @@ public static class GridFightLevelResolver
     {
         var route = ResolveRoute(inst);
         var stageId = route?.StageID ?? UnifiedStageId;
+
+        if (route?.NodeType == Enums.GridFight.GridFightNodeTypeEnum.Supply)
+        {
+            return new GridFightLevelEncounter(
+                StageId: stageId,
+                PenaltyBonusRuleId: 0u,
+                EliteGroupId: 0u,
+                Monsters: new List<GridFightMonsterSpec>(),
+                BindingBuffs: new List<uint>(),
+                BattleEvents: new List<uint>(),
+                TraitIds: new List<uint>()
+            );
+        }
+
         var penaltyRuleId = ResolvePenaltyRuleId(inst);
         var (eliteGroup, monsters) = ResolveWave(inst);
         var bindingBuffs = ResolveBindingBuffs();
@@ -40,11 +54,21 @@ public static class GridFightLevelResolver
         );
     }
 
-    private static GridFightStageRouteExcel? ResolveRoute(GridFightInstance inst)
+    public static GridFightStageRouteExcel? ResolveRoute(GridFightInstance inst)
     {
+        var key = (inst.CurrentChapterId << 8) | inst.SectionId;
+        if (GameData.GridFightStageRouteData.TryGetValue(inst.RouteId, out var routeBucket)
+            && routeBucket.TryGetValue(key, out var route))
+            return route;
         return GameData.GridFightStageRouteData.Values
             .SelectMany(d => d.Values)
             .FirstOrDefault(r => r.ChapterID == inst.CurrentChapterId && r.SectionID == inst.SectionId);
+    }
+
+    public static bool IsCombatNode(GridFightInstance inst)
+    {
+        var nt = ResolveRoute(inst)?.NodeType;
+        return nt is not (null or Enums.GridFight.GridFightNodeTypeEnum.Supply);
     }
 
     private static uint ResolvePenaltyRuleId(GridFightInstance inst)
@@ -111,6 +135,11 @@ public static class GridFightLevelResolver
             return (1817u, wave);
         }
 
+        if (nodeType == Enums.GridFight.GridFightNodeTypeEnum.Supply)
+        {
+            return (0u, new List<GridFightMonsterSpec>());
+        }
+
         if (nodeType == Enums.GridFight.GridFightNodeTypeEnum.Boss)
         {
             var bossPool = monsters.Where(m => m.MonsterTier >= 5).ToList();
@@ -132,10 +161,15 @@ public static class GridFightLevelResolver
 
     private static GridFightCampExcel? ResolveCamp(GridFightInstance inst)
     {
-        foreach (var campId in inst.SessionCampIds)
+        if (inst.SessionCampIds.Count > 0)
         {
-            if (GameData.GridFightCampData.TryGetValue(campId, out var camp) && camp.Monsters.Count > 0)
-                return camp;
+            var idx = (int)(((inst.CurrentChapterId - 1) * 9 + (inst.SectionId - 1)) % (uint)inst.SessionCampIds.Count);
+            for (var i = 0; i < inst.SessionCampIds.Count; i++)
+            {
+                var pick = inst.SessionCampIds[(idx + i) % inst.SessionCampIds.Count];
+                if (GameData.GridFightCampData.TryGetValue(pick, out var camp) && camp.Monsters.Count > 0)
+                    return camp;
+            }
         }
 
         return GameData.GridFightCampData.Values
