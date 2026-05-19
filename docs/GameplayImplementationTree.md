@@ -59,11 +59,11 @@ Legend:
   - [ ] Combat Tutorial full feature coverage
 
 - [ ] Simulated Universe Family
-  - [ ] Rogue (base) full coverage
-  - [ ] RogueTourn (Divergent Universe) full coverage
-  - [ ] RogueMagic (Unknowable Domain) full coverage
+  - [ ] Base 
+  - [ ] Divergent Universe 
+  - [ ] Unknowable Domain 
 
-- [ ] Aetherium Wars / Currency War
+- [ ] Currency War
   - [x] Core match flow
   - [x] Shop buy/refresh/sell baseline
   - [x] Orb use baseline
