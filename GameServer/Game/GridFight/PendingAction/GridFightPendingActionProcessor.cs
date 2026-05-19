@@ -23,6 +23,36 @@ public static class GridFightPendingActionProcessor
             await HandlePortalBuffSelect(connection, inst, ackPos, req.PortalBuffAction.SelectPortalBuffId);
             return;
         }
+        if (req.RerollAugmentAction != null)
+        {
+            await HandleAugmentReroll(connection, inst, ackPos, req.RerollAugmentAction.AugmentId);
+            return;
+        }
+        if (req.AugmentAction != null)
+        {
+            await HandleAugmentSelect(connection, inst, ackPos, req.AugmentAction.AugmentId);
+            return;
+        }
+        if (req.RerollSupplyAction != null)
+        {
+            await HandleSupplyReroll(connection, inst, ackPos);
+            return;
+        }
+        if (req.SupplyAction != null)
+        {
+            await HandleSupplySelect(connection, inst, ackPos, req.SupplyAction.SelectSupplyIndexes);
+            return;
+        }
+        if (req.HGKMHOOFNDA != null)
+        {
+            await HandleEliteBranchReroll(connection, inst, ackPos);
+            return;
+        }
+        if (req.EliteBranchAction != null)
+        {
+            await HandleEliteBranchSelect(connection, inst, ackPos, req.EliteBranchAction.EliteBranchId);
+            return;
+        }
         if (req.RoundBeginAction != null)
         {
             await HandleRoundBegin(connection, inst, ackPos);
@@ -199,16 +229,55 @@ public static class GridFightPendingActionProcessor
     private static async System.Threading.Tasks.Task HandleRoundBegin(Connection connection, GridFightInstance inst, uint ackPos)
     {
         inst.RotateShop();
-        var nextPos = ackPos + 8;
-        inst.QueuePosition = nextPos;
-        inst.PendingAction = new GridFightPendingAction
-        {
-            QueuePosition = nextPos,
-            ReturnPreparationAction = new GridFightReturnPreparationActionInfo()
-        };
+        var nextPos = ackPos + 1;
+        var next = inst.BuildSectionEntryPending(nextPos);
+        inst.QueuePosition = next.QueuePosition;
+        inst.PendingAction = next;
         await connection.SendPacket(new PacketGridFightHandlePendingActionScRsp(ackPos));
-        await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(connection.Player!, GridFightSyncKind.PendingAdvance, (ackPos, nextPos)));
+
+        await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(connection.Player!, GridFightSyncKind.PendingAdvance, (ackPos, next.QueuePosition)));
         await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(connection.Player!, GridFightSyncKind.RefreshShop));
+    }
+
+    private static GridFightSyncUpdateResultScNotify BuildEliteBranchRouteSync(GridFightInstance inst)
+    {
+        var notify = new GridFightSyncUpdateResultScNotify();
+        var routeSec = new GridFightSyncResultData();
+        var routeInfo = new GridFightRouteInfo { FightCampId = 1u };
+        foreach (var opt in inst.CurrentEliteBranchOptions)
+        {
+            var enc = new GridFightEncounterInfo
+            {
+                BAGCBHFJIMN = opt.EncounterId,
+                LFKBMDHKPFI = opt.PenaltyRuleId
+            };
+            if (opt.DifficultyTier > 1) enc.GDOEOGMJDAO = (opt.DifficultyTier - 1) * 10u;
+            var isItemReward = opt.RewardItemId >= 1000;
+            var wave = new GridEncounterMonsterWave { IGMMPDDCJIN = 1 };
+            foreach (var mid in opt.MonsterIds)
+                wave.PPOEDDFFEKK.Add(new PJLBDMPEKFP { MonsterId = mid, RoleStar = 1 });
+            enc.MonsterWaveList.Add(wave);
+            var drop = new GridFightDropInfo();
+            var dropItem = new LHPPIAKKFME
+            {
+                BGKDAMDFFKH = isItemReward ? GridFightDropType.HiolcnpoponBikhoegfefd : GridFightDropType.HiolcnpoponHhnbgnfbdho,
+                Num = opt.RewardCount
+            };
+            if (isItemReward) dropItem.JJFFLMCCCMM = opt.RewardItemId;
+            drop.PIBLJLBCKJL.Add(dropItem);
+            enc.LMLAOPMDCCA = drop;
+            routeInfo.RouteEncounterList.Add(enc);
+        }
+        routeSec.UpdateDynamicList.Add(new GridFightSyncData
+        {
+            LevelSyncInfo = new GridFightLevelSyncInfo
+            {
+                DCPKPNLKGMM = inst.Level,
+                GridFightLayerInfo = new GridFightLayerInfo { RouteInfo = routeInfo }
+            }
+        });
+        notify.SyncResultDataList.Add(routeSec);
+        return notify;
     }
 
     private static async System.Threading.Tasks.Task HandleReturnPreparation(Connection connection, GridFightInstance inst, uint ackPos)
@@ -218,5 +287,354 @@ public static class GridFightPendingActionProcessor
         inst.PendingAction = null;
         await connection.SendPacket(new PacketGridFightHandlePendingActionScRsp(ackPos));
         await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(connection.Player!, GridFightSyncKind.PendingAdvance, (ackPos, nextPos)));
+
+        if (GridFightLevelResolver.IsCombatNode(inst) && inst.LastEliteBranchConsumedSection != inst.SectionId)
+        {
+            var encounter = GridFightLevelResolver.Resolve(inst);
+            inst.ConfigureNextBattle(encounter.StageId, encounter.Monsters.Select(m => m.MonsterId));
+        }
+    }
+
+    private static async System.Threading.Tasks.Task HandleAugmentReroll(Connection connection, GridFightInstance inst, uint ackPos, uint augmentId)
+    {
+        if (inst.CurrentAugmentOffer.Contains(augmentId))
+        {
+            var idx = inst.CurrentAugmentOffer.IndexOf(augmentId);
+            var pool = March7thHoney.GameServer.Game.GridFight.GridFightManager.AugmentPoolKD;
+            var rng = Random.Shared;
+            uint replacement;
+            var attempts = 0;
+            do { replacement = pool[rng.Next(pool.Length)]; attempts++; }
+            while (inst.CurrentAugmentOffer.Contains(replacement) && attempts < 32);
+            inst.CurrentAugmentOffer[idx] = replacement;
+            if (inst.CurrentAugmentReroll > 0) inst.CurrentAugmentReroll--;
+        }
+
+        inst.PendingAction = new GridFightPendingAction
+        {
+            QueuePosition = ackPos,
+            AugmentAction = BuildAugmentPendingInfo(inst.CurrentAugmentOffer)
+        };
+
+        var sync = new GridFightSyncUpdateResultScNotify();
+        var sec = new GridFightSyncResultData();
+        sec.UpdateDynamicList.Add(new GridFightSyncData { PendingAction = inst.PendingAction });
+        sync.SyncResultDataList.Add(sec);
+        await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(sync));
+        await connection.SendPacket(new PacketGridFightHandlePendingActionScRsp(ackPos));
+    }
+
+    private static async System.Threading.Tasks.Task HandleAugmentSelect(Connection connection, GridFightInstance inst, uint ackPos, uint augmentId)
+    {
+        var grantedRoleId = 0u;
+        var grantedRoleUniqueId = 0u;
+        uint grantedPos = 0;
+        string? grantedComponent = null;
+        if (augmentId > 0)
+        {
+            var rng = Random.Shared;
+            var rolePool = GameData.GridFightRoleBasicInfoData.Values
+                .Where(r => r.IsInPool && (r.SeasonID == inst.Season || r.SeasonID == 0))
+                .Where(r => r.AvatarID >= 1000 && r.AvatarID < 2000)
+                .Where(r => r.RoleSavedValueList.Count > 0)
+                .ToList();
+            if (rolePool.Count > 0)
+            {
+                var pick = rolePool[rng.Next(rolePool.Count)];
+                grantedRoleId = pick.AvatarID;
+                grantedComponent = pick.RoleSavedValueList[0];
+                grantedRoleUniqueId = inst.AllocRoleUniqueId();
+                for (uint p = 14; p <= 18; p++)
+                {
+                    if (inst.UniqueIdByPos.ContainsKey(p)) continue;
+                    grantedPos = p; break;
+                }
+                if (grantedPos == 0) grantedPos = 14;
+                inst.RoleByUniqueId[grantedRoleUniqueId] = grantedRoleId;
+                inst.RoleStarByUniqueId[grantedRoleUniqueId] = 1;
+                inst.UniqueIdByPos[grantedPos] = grantedRoleUniqueId;
+            }
+        }
+
+        inst.LastAugmentConsumedSection = inst.SectionId;
+        inst.ClearAugmentOffer();
+
+        var nextPos = ackPos + 1;
+        inst.QueuePosition = nextPos;
+        inst.PendingAction = new GridFightPendingAction
+        {
+            QueuePosition = nextPos,
+            ReturnPreparationAction = new GridFightReturnPreparationActionInfo()
+        };
+
+        await connection.SendPacket(new PacketGridFightHandlePendingActionScRsp(ackPos));
+
+        var sync = new GridFightSyncUpdateResultScNotify();
+        if (grantedRoleId > 0)
+        {
+            var roleSec = new GridFightSyncResultData { GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpLfnkhcbhmpd };
+            roleSec.SyncEffectParamList.Add(augmentId);
+            var roleInfo = new GridGameRoleInfo
+            {
+                Id = grantedRoleId,
+                Pos = grantedPos,
+                UniqueId = grantedRoleUniqueId,
+                RoleStar = 1
+            };
+            if (grantedComponent != null) roleInfo.GridFightValueInitComponent[grantedComponent] = 0;
+            roleSec.UpdateDynamicList.Add(new GridFightSyncData { AddRoleInfo = roleInfo });
+            sync.SyncResultDataList.Add(roleSec);
+        }
+        var finishSec = new GridFightSyncResultData();
+        finishSec.UpdateDynamicList.Add(new GridFightSyncData { FinishPendingActionPos = ackPos });
+        finishSec.UpdateDynamicList.Add(new GridFightSyncData { SyncLockInfo = new GridFightLockInfo() });
+        sync.SyncResultDataList.Add(finishSec);
+        var nextSec = new GridFightSyncResultData();
+        nextSec.UpdateDynamicList.Add(new GridFightSyncData { PendingAction = inst.PendingAction });
+        sync.SyncResultDataList.Add(nextSec);
+        await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(sync));
+    }
+
+    private static async System.Threading.Tasks.Task HandleSupplyReroll(Connection connection, GridFightInstance inst, uint ackPos)
+    {
+        inst.RollSupplies();
+        if (inst.CurrentSupplyReroll > 0) inst.CurrentSupplyReroll--;
+
+        var info = new GridFightSupplyActionInfo
+        {
+            FCHPJKAIBHB = inst.CurrentSupplyReroll,
+            CGFLMCHMBHL = 1
+        };
+        foreach (var (roleId, equipId) in inst.CurrentSupplyOffer)
+        {
+            var sup = new GridFightSupplyRoleInfo { RoleId = roleId };
+            sup.GridFightItemList.Add(equipId);
+            info.SupplyRoleInfoList.Add(sup);
+        }
+        inst.PendingAction = new GridFightPendingAction { QueuePosition = ackPos, SupplyAction = info };
+
+        var sync = new GridFightSyncUpdateResultScNotify();
+        var sec = new GridFightSyncResultData();
+        sec.UpdateDynamicList.Add(new GridFightSyncData { PendingAction = inst.PendingAction });
+        sync.SyncResultDataList.Add(sec);
+        await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(sync));
+        await connection.SendPacket(new PacketGridFightHandlePendingActionScRsp(ackPos));
+    }
+
+    private static async System.Threading.Tasks.Task HandleSupplySelect(Connection connection, GridFightInstance inst, uint ackPos, IList<uint> indexes)
+    {
+        var grantedRoleId = 0u;
+        var grantedRoleUniqueId = 0u;
+        var grantedEquipId = 0u;
+        var grantedEquipUniqueId = 0u;
+        uint grantedPos = 0;
+        string? grantedComponent = null;
+        var pickIndex = indexes.Count > 0 ? (int)indexes[0] - 1 : -1;
+        if (pickIndex >= 0 && pickIndex < inst.CurrentSupplyOffer.Count)
+        {
+            (grantedRoleId, grantedEquipId) = inst.CurrentSupplyOffer[pickIndex];
+            grantedRoleUniqueId = inst.AllocRoleUniqueId();
+            grantedEquipUniqueId = inst.AllocEquipUniqueId();
+            for (uint p = 14; p <= 18; p++)
+            {
+                if (inst.UniqueIdByPos.ContainsKey(p)) continue;
+                grantedPos = p; break;
+            }
+            if (grantedPos == 0) grantedPos = 14;
+            inst.RoleByUniqueId[grantedRoleUniqueId] = grantedRoleId;
+            inst.RoleStarByUniqueId[grantedRoleUniqueId] = 1;
+            inst.UniqueIdByPos[grantedPos] = grantedRoleUniqueId;
+            inst.Equipments.Add(new GridFightEquipmentInfo
+            {
+                GridFightEquipmentId = grantedEquipId,
+                Source = 1,
+                UniqueId = grantedEquipUniqueId
+            });
+            if (GameData.GridFightRoleBasicInfoData.TryGetValue(grantedRoleId, out var roleExcel)
+                && roleExcel.RoleSavedValueList.Count > 0)
+                grantedComponent = roleExcel.RoleSavedValueList[0];
+        }
+
+        inst.LastSupplyConsumedSection = inst.SectionId;
+        inst.ClearSupplyOffer();
+        inst.SectionId++;
+        if (GridFightLevelResolver.IsCombatNode(inst))
+        {
+            var nextEncounter = GridFightLevelResolver.Resolve(inst);
+            inst.ConfigureNextBattle(nextEncounter.StageId, nextEncounter.Monsters.Select(m => m.MonsterId));
+        }
+        inst.RotateShop();
+
+        var nextPos = ackPos + 1;
+        inst.QueuePosition = nextPos;
+        inst.PendingAction = new GridFightPendingAction
+        {
+            QueuePosition = nextPos,
+            ReturnPreparationAction = new GridFightReturnPreparationActionInfo()
+        };
+
+        await connection.SendPacket(new PacketGridFightHandlePendingActionScRsp(ackPos));
+
+        var sync = new GridFightSyncUpdateResultScNotify();
+        if (grantedEquipId > 0)
+        {
+            var equipSec = new GridFightSyncResultData { GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpFkfklefkbbm };
+            equipSec.SyncEffectParamList.Add(indexes.Count > 0 ? indexes[0] : 0u);
+            var addItem = new GridFightGameItemSyncInfo();
+            addItem.GridFightEquipmentList.Add(new GridFightEquipmentInfo
+            {
+                GridFightEquipmentId = grantedEquipId,
+                Source = 1,
+                UniqueId = grantedEquipUniqueId
+            });
+            equipSec.UpdateDynamicList.Add(new GridFightSyncData { AddGameItemInfo = addItem });
+            sync.SyncResultDataList.Add(equipSec);
+        }
+        if (grantedRoleId > 0)
+        {
+            var roleSec = new GridFightSyncResultData { GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpFkfklefkbbm };
+            roleSec.SyncEffectParamList.Add(indexes.Count > 0 ? indexes[0] : 0u);
+            var roleInfo = new GridGameRoleInfo
+            {
+                Id = grantedRoleId,
+                Pos = grantedPos,
+                UniqueId = grantedRoleUniqueId,
+                RoleStar = 1
+            };
+            if (grantedComponent != null) roleInfo.GridFightValueInitComponent[grantedComponent] = 0;
+            roleSec.UpdateDynamicList.Add(new GridFightSyncData { AddRoleInfo = roleInfo });
+            sync.SyncResultDataList.Add(roleSec);
+        }
+        var finishSec = new GridFightSyncResultData();
+        finishSec.UpdateDynamicList.Add(new GridFightSyncData { FinishPendingActionPos = ackPos });
+        finishSec.UpdateDynamicList.Add(new GridFightSyncData { SyncLockInfo = new GridFightLockInfo() });
+        sync.SyncResultDataList.Add(finishSec);
+
+        var levelSec = new GridFightSyncResultData();
+        var routeInfo = new GridFightRouteInfo { EliteBranchId = 1, FightCampId = inst.CampId };
+        if (inst.BattleComponent.MonsterIds.Count > 0)
+        {
+            var encounterInfo = new GridFightEncounterInfo { LFKBMDHKPFI = inst.BattleComponent.StageId };
+            var wave = new GridEncounterMonsterWave { IGMMPDDCJIN = 1 };
+            foreach (var mid in inst.BattleComponent.MonsterIds)
+                wave.PPOEDDFFEKK.Add(new PJLBDMPEKFP { MonsterId = mid, RoleStar = 1 });
+            encounterInfo.MonsterWaveList.Add(wave);
+            routeInfo.RouteEncounterList.Add(encounterInfo);
+        }
+        levelSec.UpdateDynamicList.Add(new GridFightSyncData
+        {
+            LevelSyncInfo = new GridFightLevelSyncInfo
+            {
+                DCPKPNLKGMM = inst.Level,
+                SectionId = inst.SectionId,
+                GridFightLayerInfo = new GridFightLayerInfo { RouteInfo = routeInfo }
+            }
+        });
+        sync.SyncResultDataList.Add(levelSec);
+
+        var nextSec = new GridFightSyncResultData();
+        nextSec.UpdateDynamicList.Add(new GridFightSyncData { PendingAction = inst.PendingAction });
+        sync.SyncResultDataList.Add(nextSec);
+        await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(sync));
+    }
+
+    private static GridFightAugmentActionInfo BuildAugmentPendingInfo(IEnumerable<uint> augmentIds)
+    {
+        var info = new GridFightAugmentActionInfo();
+        foreach (var aid in augmentIds)
+            info.PendingAugmentInfoList.Add(new GridFightPendingAugmentInfo { AugmentId = aid, ALJBADEOPAH = 1 });
+        return info;
+    }
+
+    private static async System.Threading.Tasks.Task HandleEliteBranchReroll(Connection connection, GridFightInstance inst, uint ackPos)
+    {
+        inst.RollEliteBranchOptions();
+        if (inst.CurrentEliteBranchReroll > 0) inst.CurrentEliteBranchReroll--;
+
+        inst.PendingAction = new GridFightPendingAction
+        {
+            QueuePosition = ackPos,
+            EliteBranchAction = new GridFightEliteBranchActionInfo { FCHPJKAIBHB = inst.CurrentEliteBranchReroll }
+        };
+        await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(BuildEliteBranchRouteSync(inst)));
+        await connection.SendPacket(new PacketGridFightHandlePendingActionScRsp(ackPos));
+    }
+
+    private static async System.Threading.Tasks.Task HandleEliteBranchSelect(Connection connection, GridFightInstance inst, uint ackPos, uint eliteBranchId)
+    {
+        var idx = (int)eliteBranchId - 1;
+        if (idx < 0 || idx >= inst.CurrentEliteBranchOptions.Count) idx = 0;
+        var chosen = inst.CurrentEliteBranchOptions.Count > 0 ? inst.CurrentEliteBranchOptions[idx] : null;
+        if (chosen != null)
+        {
+            inst.ConfigureNextBattle(chosen.StageId, chosen.MonsterIds);
+        }
+
+        inst.LastEliteBranchConsumedSection = inst.SectionId;
+
+        var nextPos = ackPos + 1;
+        inst.QueuePosition = nextPos;
+        inst.PendingAction = new GridFightPendingAction
+        {
+            QueuePosition = nextPos,
+            ReturnPreparationAction = new GridFightReturnPreparationActionInfo()
+        };
+
+        await connection.SendPacket(new PacketGridFightHandlePendingActionScRsp(ackPos));
+
+        var sync = new GridFightSyncUpdateResultScNotify();
+        var pickSec = new GridFightSyncResultData();
+        pickSec.UpdateDynamicList.Add(new GridFightSyncData
+        {
+            EliteBranchSyncInfo = new GridFightEliteBranchSyncInfo { EliteBranchId = eliteBranchId }
+        });
+        sync.SyncResultDataList.Add(pickSec);
+
+        var finishSec = new GridFightSyncResultData();
+        finishSec.UpdateDynamicList.Add(new GridFightSyncData { FinishPendingActionPos = ackPos });
+        finishSec.UpdateDynamicList.Add(new GridFightSyncData { SyncLockInfo = new GridFightLockInfo() });
+        sync.SyncResultDataList.Add(finishSec);
+
+        if (chosen != null)
+        {
+            var committedSec = new GridFightSyncResultData();
+            var routeInfo = new GridFightRouteInfo { FightCampId = 1u, EliteBranchId = eliteBranchId };
+            var enc = new GridFightEncounterInfo
+            {
+                BAGCBHFJIMN = chosen.EncounterId,
+                LFKBMDHKPFI = chosen.PenaltyRuleId
+            };
+            if (chosen.DifficultyTier > 1) enc.GDOEOGMJDAO = (chosen.DifficultyTier - 1) * 10u;
+            var wave = new GridEncounterMonsterWave { IGMMPDDCJIN = 1 };
+            foreach (var mid in chosen.MonsterIds)
+                wave.PPOEDDFFEKK.Add(new PJLBDMPEKFP { MonsterId = mid, RoleStar = 1 });
+            enc.MonsterWaveList.Add(wave);
+            routeInfo.RouteEncounterList.Add(enc);
+            committedSec.UpdateDynamicList.Add(new GridFightSyncData
+            {
+                LevelSyncInfo = new GridFightLevelSyncInfo
+                {
+                    DCPKPNLKGMM = inst.Level,
+                    SectionId = inst.SectionId,
+                    GridFightLayerInfo = new GridFightLayerInfo { RouteInfo = routeInfo }
+                }
+            });
+            sync.SyncResultDataList.Add(committedSec);
+        }
+
+        inst.ClearEliteBranchOptions();
+
+        var nextSec = new GridFightSyncResultData();
+        nextSec.UpdateDynamicList.Add(new GridFightSyncData
+        {
+            SyncLockInfo = new GridFightLockInfo
+            {
+                LockReason = GridFightLockReason.DfofffceffoKjmjdbjmbmc,
+                LockType = GridFightLockType.PjbmhhnlclbEhfhdgpocnh
+            }
+        });
+        nextSec.UpdateDynamicList.Add(new GridFightSyncData { PendingAction = inst.PendingAction });
+        sync.SyncResultDataList.Add(nextSec);
+        await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(sync));
     }
 }

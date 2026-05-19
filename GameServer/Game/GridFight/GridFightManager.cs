@@ -11,6 +11,34 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
     public GridFightInstance? GridFightInstance { get; set; }
     public uint CurUniqueId { get; set; }
 
+    public static readonly uint[] AugmentPoolJL =
+    {
+        100301, 100401, 100402, 100702, 100901, 101101, 101401, 101601, 101602, 102501, 102901, 103001, 103401, 103701,
+        110102, 150101, 150201, 150301, 150901, 151101, 200201, 200301, 200502, 200601, 200701, 200801, 201001, 201201,
+        201302, 201601, 202001, 203201, 203302, 210701, 210801, 211001, 220401, 231101, 250601, 250701, 250801, 251301,
+        251401, 251601, 252201, 252401, 253101, 253201, 300401, 300701, 301002, 301301, 301401, 301601, 301701, 301901,
+        302601, 302701, 320101, 320301, 320401, 330101, 330201, 330901, 331101, 332201, 350101, 350301, 350501, 350601,
+        350701, 350901, 351101, 351401, 351601, 351701, 360201
+    };
+
+    public static readonly uint[] AugmentPoolKD =
+    {
+        100101, 100301, 100401, 100402, 100403, 100501, 100601, 100701, 100702, 100901, 101101, 101102, 101201, 101301,
+        101401, 101402, 101501, 101601, 101602, 101701, 101801, 101901, 102001, 102101, 102201, 102501, 102502, 102601,
+        102801, 102901, 103001, 103201, 103202, 103401, 103402, 103701, 110101, 110102, 130101, 130301, 130401, 130501,
+        130701, 131001, 131101, 150101, 150201, 150301, 150601, 150701, 150801, 150901, 151101, 200101, 200201, 200301,
+        200502, 200601, 200602, 200701, 200801, 201001, 201102, 201201, 201301, 201302, 201501, 201601, 201801, 201901,
+        202001, 202101, 202201, 202301, 202501, 202701, 202901, 203001, 203201, 203302, 210301, 210701, 210801, 211001,
+        220401, 220501, 220701, 220801, 230201, 230301, 230401, 230501, 230601, 230801, 230901, 231101, 231201, 231301,
+        231601, 250101, 250301, 250401, 250601, 250701, 250801, 250901, 251001, 251201, 251301, 251401, 251501, 251601,
+        251801, 252001, 252101, 252201, 252301, 252401, 252501, 252601, 252701, 252801, 252901, 253101, 253201, 260301,
+        300101, 300401, 300501, 300701, 300801, 300901, 301001, 301002, 301101, 301301, 301401, 301601, 301701, 301801,
+        301901, 302001, 302201, 302601, 302701, 302901, 303001, 303101, 303401, 310501, 310601, 310701, 311101, 320101,
+        320201, 320301, 320401, 320801, 320901, 321101, 330101, 330201, 330301, 330401, 330501, 330701, 330801, 330901,
+        331001, 331101, 331201, 331301, 331401, 331501, 331601, 331901, 332101, 332201, 350101, 350301, 350402, 350403,
+        350501, 350601, 350701, 350801, 350901, 351001, 351101, 351401, 351501, 351601, 351701, 351801, 360201
+    };
+
     private static uint MaxDivisionId() =>
         GameData.GridFightDivisionInfoData.Count > 0
             ? GameData.GridFightDivisionInfoData.Keys.Max()
@@ -46,8 +74,8 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
         staticInfo.EJCFDAABLOC.GridFightPortalInfo.PELJLONLDNM.Add([101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 127, 129, 134, 135, 138, 147, 1001, 1002, 1003, 1004, 1005, 1007, 1008, 1010, 1014, 1016, 1101, 1102, 1104, 1106, 1107, 1112, 1113, 1114, 1115, 1116, 1118]);
         staticInfo.EJCFDAABLOC.GridFightPortalInfo.GridFightPortalBuffList.Add([101, 105, 106, 107, 108, 109, 110, 112, 113, 115, 120, 121, 123, 124, 127, 129, 138, 1002, 1003, 1004, 1007, 1014, 1016, 1112, 1113, 1116]);
         staticInfo.EJCFDAABLOC.GridFightEquipInfo.GridFightItemList.Add([99990, 99991, 99992, 99998, 99999, 350101, 350102, 350103, 350104, 350105, 350106, 350107, 350201, 350202, 350203, 350204, 350205, 350206, 350207, 350208, 350601, 350602, 350701, 352101, 352502, 35030101, 35030102, 35030103, 35030104, 35030105, 35030106, 35030107, 35030108, 35030202, 35030203, 35030204, 35030205, 35030206, 35030207, 35030208, 35030303, 35030304, 35030305, 35030306, 35030307, 35030308, 35030404, 35030405, 35030406, 35030407, 35030408, 35030505, 35030506, 35030507, 35030508, 35030606, 35030607, 35030608, 35030707, 35030708, 35030808, 35040101, 35051001, 35051006, 35051007, 35051008, 35051010, 35051012, 35052001, 35052002, 35052003, 35052004, 35052008, 35052009, 35100001, 35100002]);
-        staticInfo.EJCFDAABLOC.GridFightAugmentInfo.JLCDEDKPEAB.Add([100301, 100401, 100402, 100702, 100901, 101101, 101401, 101601, 101602, 102501, 102901, 103001, 103401, 103701, 110102, 150101, 150201, 150301, 150901, 151101, 200201, 200301, 200502, 200601, 200701, 200801, 201001, 201201, 201302, 201601, 202001, 203201, 203302, 210701, 210801, 211001, 220401, 231101, 250601, 250701, 250801, 251301, 251401, 251601, 252201, 252401, 253101, 253201, 300401, 300701, 301002, 301301, 301401, 301601, 301701, 301901, 302601, 302701, 320101, 320301, 320401, 330101, 330201, 330901, 331101, 332201, 350101, 350301, 350501, 350601, 350701, 350901, 351101, 351401, 351601, 351701, 360201]);
-        staticInfo.EJCFDAABLOC.GridFightAugmentInfo.KDFBCMANFMB.Add([100101, 100301, 100401, 100402, 100403, 100501, 100601, 100701, 100702, 100901, 101101, 101102, 101201, 101301, 101401, 101402, 101501, 101601, 101602, 101701, 101801, 101901, 102001, 102101, 102201, 102501, 102502, 102601, 102801, 102901, 103001, 103201, 103202, 103401, 103402, 103701, 110101, 110102, 130101, 130301, 130401, 130501, 130701, 131001, 131101, 150101, 150201, 150301, 150601, 150701, 150801, 150901, 151101, 200101, 200201, 200301, 200502, 200601, 200602, 200701, 200801, 201001, 201102, 201201, 201301, 201302, 201501, 201601, 201801, 201901, 202001, 202101, 202201, 202301, 202501, 202701, 202901, 203001, 203201, 203302, 210301, 210701, 210801, 211001, 220401, 220501, 220701, 220801, 230201, 230301, 230401, 230501, 230601, 230801, 230901, 231101, 231201, 231301, 231601, 250101, 250301, 250401, 250601, 250701, 250801, 250901, 251001, 251201, 251301, 251401, 251501, 251601, 251801, 252001, 252101, 252201, 252301, 252401, 252501, 252601, 252701, 252801, 252901, 253101, 253201, 260301, 300101, 300401, 300501, 300701, 300801, 300901, 301001, 301002, 301101, 301301, 301401, 301601, 301701, 301801, 301901, 302001, 302201, 302601, 302701, 302901, 303001, 303101, 303401, 310501, 310601, 310701, 311101, 320101, 320201, 320301, 320401, 320801, 320901, 321101, 330101, 330201, 330301, 330401, 330501, 330701, 330801, 330901, 331001, 331101, 331201, 331301, 331401, 331501, 331601, 331901, 332101, 332201, 350101, 350301, 350402, 350403, 350501, 350601, 350701, 350801, 350901, 351001, 351101, 351401, 351501, 351601, 351701, 351801, 360201]);
+        staticInfo.EJCFDAABLOC.GridFightAugmentInfo.JLCDEDKPEAB.Add(AugmentPoolJL);
+        staticInfo.EJCFDAABLOC.GridFightAugmentInfo.KDFBCMANFMB.Add(AugmentPoolKD);
 
         var system = new GridFightSystemInfo
         {
@@ -345,29 +373,64 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
         if (inst == null) return notify;
 
         var levelSync = new GridFightSyncResultData();
+
+        var probeSection = inst.SectionId + 1;
+        var prevSection = inst.SectionId;
+        inst.SectionId = probeSection;
+        var nextRoute = GridFightLevelResolver.ResolveRoute(inst);
+        var nextType = nextRoute?.NodeType;
+        var isEliteBranch = nextType == Enums.GridFight.GridFightNodeTypeEnum.EliteBranch;
+        var isSupply = nextType == Enums.GridFight.GridFightNodeTypeEnum.Supply;
+        var routeInfo = new GridFightRouteInfo
+        {
+            FightCampId = isEliteBranch ? 1u : inst.CampId
+        };
+        if (isEliteBranch)
+        {
+            inst.RollEliteBranchOptions();
+            foreach (var opt in inst.CurrentEliteBranchOptions)
+            {
+                var enc = new GridFightEncounterInfo
+                {
+                    BAGCBHFJIMN = opt.EncounterId,
+                    LFKBMDHKPFI = opt.PenaltyRuleId
+                };
+                if (opt.DifficultyTier > 1) enc.GDOEOGMJDAO = (opt.DifficultyTier - 1) * 10u;
+                var w = new GridEncounterMonsterWave { IGMMPDDCJIN = 1 };
+                foreach (var mid in opt.MonsterIds)
+                    w.PPOEDDFFEKK.Add(new PJLBDMPEKFP { MonsterId = mid, RoleStar = 1 });
+                enc.MonsterWaveList.Add(w);
+                var drop = new GridFightDropInfo();
+                var isItemReward = opt.RewardItemId >= 1000;
+                var dropItem = new LHPPIAKKFME
+                {
+                    BGKDAMDFFKH = isItemReward ? GridFightDropType.HiolcnpoponBikhoegfefd : GridFightDropType.HiolcnpoponHhnbgnfbdho,
+                    Num = opt.RewardCount
+                };
+                if (isItemReward) dropItem.JJFFLMCCCMM = opt.RewardItemId;
+                drop.PIBLJLBCKJL.Add(dropItem);
+                enc.LMLAOPMDCCA = drop;
+                routeInfo.RouteEncounterList.Add(enc);
+            }
+        }
+        else if (!isSupply)
+        {
+            var nextEncounter = GridFightLevelResolver.Resolve(inst);
+            var encounter = new GridFightEncounterInfo { LFKBMDHKPFI = nextEncounter.StageId };
+            var wave = new GridEncounterMonsterWave { IGMMPDDCJIN = 1 };
+            foreach (var spec in nextEncounter.Monsters)
+                wave.PPOEDDFFEKK.Add(new PJLBDMPEKFP { MonsterId = spec.MonsterId, RoleStar = 1 });
+            encounter.MonsterWaveList.Add(wave);
+            routeInfo.RouteEncounterList.Add(encounter);
+        }
+        inst.SectionId = prevSection;
+
         var levelInfo = new GridFightLevelSyncInfo
         {
             DCPKPNLKGMM = inst.Level,
-            SectionId = inst.SectionId + 1,
-            GridFightLayerInfo = new GridFightLayerInfo
-            {
-                RouteInfo = new GridFightRouteInfo
-                {
-                    EliteBranchId = 1,
-                    FightCampId = inst.CampId
-                }
-            }
+            SectionId = probeSection,
+            GridFightLayerInfo = new GridFightLayerInfo { RouteInfo = routeInfo }
         };
-        var nextEncounter = GridFightLevelResolver.Resolve(inst);
-        var encounter = new GridFightEncounterInfo { LFKBMDHKPFI = nextEncounter.StageId };
-        var wave = new GridEncounterMonsterWave { IGMMPDDCJIN = 1 };
-        var previewMonsters = inst.BattleComponent.MonsterIds.Count > 0
-            ? inst.BattleComponent.MonsterIds
-            : nextEncounter.Monsters.Select(m => m.MonsterId).ToList();
-        foreach (var monsterId in previewMonsters)
-            wave.PPOEDDFFEKK.Add(new PJLBDMPEKFP { MonsterId = monsterId, RoleStar = 1 });
-        encounter.MonsterWaveList.Add(wave);
-        levelInfo.GridFightLayerInfo.RouteInfo.RouteEncounterList.Add(encounter);
         levelSync.UpdateDynamicList.Add(new GridFightSyncData { LevelSyncInfo = levelInfo });
         notify.SyncResultDataList.Add(levelSync);
 
