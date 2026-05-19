@@ -36,6 +36,7 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     public uint NDOCIKPLKIF { get; } = 1801;
     public uint CurrentChapterId { get; set; } = 1;
     public uint CurrentBranchId { get; set; } = 1;
+    public uint RouteId { get; set; } = 1200;
     public uint KeepWinCnt { get; set; }
     public int BattlesFinished { get; set; }
     public GridFightBattleComponent BattleComponent { get; } = new();
@@ -70,6 +71,27 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     public List<uint> ActivePortalBuffIds { get; } = new() { 106 };
     public List<uint> AvailablePortalBuffRerolls { get; } = new() { 105, 1014, 132 };
     public List<uint> CurrentPortalBuffOffer { get; private set; } = new();
+
+    public List<uint> CurrentAugmentOffer { get; private set; } = new();
+    public uint CurrentAugmentReroll { get; set; } = 3;
+    public uint LastAugmentConsumedSection { get; set; }
+    public List<(uint RoleId, uint EquipId)> CurrentSupplyOffer { get; private set; } = new();
+    public uint CurrentSupplyReroll { get; set; } = 1;
+    public uint LastSupplyConsumedSection { get; set; }
+
+    public sealed class EliteBranchOption
+    {
+        public uint EncounterId;
+        public uint StageId;
+        public uint PenaltyRuleId;
+        public List<uint> MonsterIds = new();
+        public uint RewardItemId;
+        public uint RewardCount;
+        public uint DifficultyTier;
+    }
+    public List<EliteBranchOption> CurrentEliteBranchOptions { get; private set; } = new();
+    public uint CurrentEliteBranchReroll { get; set; } = 1;
+    public uint LastEliteBranchConsumedSection { get; set; }
 
     private static readonly uint[] FallbackPortalBuffPool =
     {
@@ -1044,4 +1066,178 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
             OGHGLMGJGEM = { ["GP_Avatar_Sparxie_00"] = 2 }
         }
     };
+
+    public List<uint> RollAugments(int count = 3, IEnumerable<uint>? exclude = null)
+    {
+        var pool = GridFightManager.AugmentPoolKD.ToList();
+        if (exclude != null) foreach (var id in exclude) pool.Remove(id);
+        var rng = Random.Shared;
+        var picked = new List<uint>(count);
+        while (picked.Count < count && pool.Count > 0)
+        {
+            var idx = rng.Next(pool.Count);
+            picked.Add(pool[idx]);
+            pool.RemoveAt(idx);
+        }
+        while (picked.Count < count)
+            picked.Add(GridFightManager.AugmentPoolKD[picked.Count % GridFightManager.AugmentPoolKD.Length]);
+        CurrentAugmentOffer = picked;
+        return CurrentAugmentOffer;
+    }
+
+    public void ClearAugmentOffer() => CurrentAugmentOffer = new List<uint>();
+
+    public List<(uint RoleId, uint EquipId)> RollSupplies(int count = 5)
+    {
+        var rolePool = GameData.GridFightRoleBasicInfoData.Values
+            .Where(r => r.IsInPool && (r.SeasonID == Season || r.SeasonID == 0))
+            .Where(r => r.AvatarID >= 1000 && r.AvatarID < 2000)
+            .Select(r => r.AvatarID)
+            .Distinct()
+            .ToList();
+        if (rolePool.Count == 0)
+            rolePool = new List<uint> { 1218, 1304, 1308, 1220, 1014 };
+
+        var equipPool = GameData.GridFightEquipmentData.Values
+            .Where(e => e.EquipCategory == Enums.GridFight.GridFightEquipCategoryEnum.Basic)
+            .Select(e => e.ID)
+            .ToList();
+        if (equipPool.Count == 0)
+            equipPool = new List<uint> { 350201, 350202, 350203, 350204, 350207 };
+
+        var rng = Random.Shared;
+        var roleCopy = rolePool.ToList();
+        var picks = new List<(uint, uint)>(count);
+        while (picks.Count < count && roleCopy.Count > 0)
+        {
+            var rIdx = rng.Next(roleCopy.Count);
+            var roleId = roleCopy[rIdx];
+            roleCopy.RemoveAt(rIdx);
+            var equipId = equipPool[rng.Next(equipPool.Count)];
+            picks.Add((roleId, equipId));
+        }
+        while (picks.Count < count)
+            picks.Add((rolePool[picks.Count % rolePool.Count], equipPool[picks.Count % equipPool.Count]));
+        CurrentSupplyOffer = picks;
+        return CurrentSupplyOffer;
+    }
+
+    public void ClearSupplyOffer() => CurrentSupplyOffer = new List<(uint, uint)>();
+
+    public List<EliteBranchOption> RollEliteBranchOptions()
+    {
+        var camp = GameData.GridFightCampData.Values
+            .Where(c => c.Monsters.Count > 0 && (c.SeasonID == Season || c.SeasonID == 0))
+            .OrderBy(_ => Random.Shared.Next())
+            .FirstOrDefault();
+        var monsters = camp?.Monsters ?? new List<GridFightMonsterExcel>();
+
+        var route = GridFightLevelResolver.ResolveRoute(this);
+        var baseStage = route?.StageID ?? 70000007u;
+        var groupBase = (route != null && route.ParamList.Count > 0) ? route.ParamList[0] : 103u;
+
+        var rng = Random.Shared;
+        List<uint> RollMonsters(int count, uint maxTier)
+        {
+            var picks = new List<uint>(count);
+            for (var i = 0; i < count; i++)
+            {
+                if (monsters.Count == 0) break;
+                var pool = monsters.Where(m => m.MonsterTier <= maxTier).ToList();
+                if (pool.Count == 0) pool = monsters.ToList();
+                picks.Add(pool[rng.Next(pool.Count)].MonsterID);
+            }
+            return picks;
+        }
+
+        var qualities = new[] { 1u, 2u, 3u, 4u }
+            .OrderBy(_ => rng.Next())
+            .Take(2)
+            .OrderBy(q => q)
+            .ToList();
+
+        var rewardByQuality = new (uint Type, uint Item, uint Count)[]
+        {
+            (0, 0, 0),
+            (1, 2u, 2),        // Q1: 金币 ×2
+            (1, 2u, 5),        // Q2: 金币 ×5
+            (5, 350103u, 1),   // Q3: forge equip
+            (5, 350105u, 1)    // Q4: 员工投影仪/装备
+        };
+
+        var chapter = groupBase / 100;
+        var variant = (groupBase / 10) % 10;
+        var penaltyBase = 91000u + chapter * 100 + variant * 10;
+        CurrentEliteBranchOptions = qualities.Select(quality => new EliteBranchOption
+        {
+            EncounterId = groupBase * 100 + quality,
+            StageId = baseStage,
+            PenaltyRuleId = penaltyBase + quality,
+            MonsterIds = RollMonsters(10, quality <= 2 ? 2u : 3u),
+            RewardItemId = rewardByQuality[quality].Item,
+            RewardCount = rewardByQuality[quality].Count,
+            DifficultyTier = quality
+        }).ToList();
+        return CurrentEliteBranchOptions;
+    }
+
+    public void ClearEliteBranchOptions() => CurrentEliteBranchOptions = new List<EliteBranchOption>();
+
+    public GridFightPendingAction BuildSectionEntryPending(uint queuePos)
+    {
+        var route = GridFightLevelResolver.ResolveRoute(this);
+        if (route == null)
+            return new GridFightPendingAction { QueuePosition = queuePos, ReturnPreparationAction = new GridFightReturnPreparationActionInfo() };
+
+        if (route.NodeType == GridFightNodeTypeEnum.Supply && LastSupplyConsumedSection != SectionId)
+        {
+            if (CurrentSupplyOffer.Count == 0) RollSupplies();
+            var supplyInfo = new GridFightSupplyActionInfo
+            {
+                FCHPJKAIBHB = CurrentSupplyReroll,
+                CGFLMCHMBHL = 1
+            };
+            foreach (var (roleId, equipId) in CurrentSupplyOffer)
+            {
+                var sup = new GridFightSupplyRoleInfo { RoleId = roleId };
+                sup.GridFightItemList.Add(equipId);
+                supplyInfo.SupplyRoleInfoList.Add(sup);
+            }
+            return new GridFightPendingAction
+            {
+                QueuePosition = queuePos,
+                SupplyAction = supplyInfo
+            };
+        }
+
+        if (route.NodeType == GridFightNodeTypeEnum.EliteBranch && LastEliteBranchConsumedSection != SectionId)
+        {
+            if (CurrentEliteBranchOptions.Count == 0) RollEliteBranchOptions();
+            return new GridFightPendingAction
+            {
+                QueuePosition = queuePos,
+                EliteBranchAction = new GridFightEliteBranchActionInfo { FCHPJKAIBHB = CurrentEliteBranchReroll }
+            };
+        }
+
+        if (route.NodeType == GridFightNodeTypeEnum.CampMonster && route.IsAugment == 1
+            && LastAugmentConsumedSection != SectionId)
+        {
+            if (CurrentAugmentOffer.Count == 0) RollAugments();
+            var augInfo = new GridFightAugmentActionInfo();
+            foreach (var aid in CurrentAugmentOffer)
+                augInfo.PendingAugmentInfoList.Add(new GridFightPendingAugmentInfo { AugmentId = aid, ALJBADEOPAH = 1 });
+            return new GridFightPendingAction
+            {
+                QueuePosition = queuePos,
+                AugmentAction = augInfo
+            };
+        }
+
+        return new GridFightPendingAction
+        {
+            QueuePosition = queuePos,
+            ReturnPreparationAction = new GridFightReturnPreparationActionInfo()
+        };
+    }
 }
