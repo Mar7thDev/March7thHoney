@@ -44,7 +44,7 @@ namespace March7thHoney.Proto {
     [pbr::OriginalName("LBJIAPDMOAH_PCPDHELPKEM")] LbjiapdmoahPcpdhelpkem = 0,
     [pbr::OriginalName("CmdGBFGABHFBCN")] CmdGbfgabhfbcn = 9850,
     [pbr::OriginalName("CmdRelicPresetAddPlanCsReq")] CmdRelicPresetAddPlanCsReq = 9842,
-    [pbr::OriginalName("CmdAOGHKDGEFGA")] CmdAoghkdgefga = 9860,
+    [pbr::OriginalName("CmdRelicPresetGetPlanScRsp")] CmdRelicPresetGetPlanScRsp = 9860,
     [pbr::OriginalName("CmdRelicPresetDeletePlanCsReq")] CmdRelicPresetDeletePlanCsReq = 9855,
     [pbr::OriginalName("CmdAIODMENCPKA")] CmdAiodmencpka = 9847,
     [pbr::OriginalName("CmdRelicPresetGetPlanCsReq")] CmdRelicPresetGetPlanCsReq = 9841,
