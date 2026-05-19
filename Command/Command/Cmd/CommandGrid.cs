@@ -1,6 +1,7 @@
 using March7thHoney.Data;
 using March7thHoney.GameServer.Game.GridFight;
 using March7thHoney.GameServer.Game.GridFight.Battle;
+using March7thHoney.GameServer.Game.GridFight.Sync;
 using March7thHoney.GameServer.Server.Packet.Send.GridFight;
 using March7thHoney.Internationalization;
 using March7thHoney.Proto;
@@ -266,11 +267,46 @@ public class CommandGrid : ICommand
 
         var chapterId = (uint)Math.Max(1, arg.GetInt(0));
         var sectionId = (uint)Math.Max(1, arg.GetInt(1));
+        var maxSection = inst.GetChapterSectionCount(chapterId);
+        if (chapterId > 3 || maxSection == 0 || sectionId > maxSection)
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.InvalidArguments"));
+            return;
+        }
+
+        inst.LastAugmentConsumedSection = 0;
+        inst.LastSupplyConsumedSection = 0;
+        inst.LastEliteBranchConsumedSection = 0;
+        inst.ClearAugmentOffer();
+        inst.ClearSupplyOffer();
+        inst.ClearEliteBranchOptions();
+        inst.CurrentAugmentReroll = 3;
+        inst.CurrentSupplyReroll = 1;
+        inst.CurrentEliteBranchReroll = 1;
+        inst.BattleComponent.SetEncounter(0, Array.Empty<uint>());
+
         inst.CurrentChapterId = chapterId;
+        inst.SectionId = sectionId - 1;
+
+        inst.AdvanceQueue(7);
+        inst.PendingAction = new GridFightPendingAction
+        {
+            QueuePosition = inst.QueuePosition,
+            RoundBeginAction = new GridFightRoundBeginActionInfo()
+        };
+
+        await player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(player, GridFightSyncKind.PostBattle));
+
         inst.SectionId = sectionId;
 
-        var encounter = GridFightLevelResolver.Resolve(inst);
-        inst.ConfigureNextBattle(encounter.StageId, encounter.Monsters.Select(m => m.MonsterId));
+        if (GridFightLevelResolver.IsCombatNode(inst))
+        {
+            var encounter = GridFightLevelResolver.Resolve(inst);
+            inst.ConfigureNextBattle(encounter.StageId, encounter.Monsters.Select(m => m.MonsterId));
+        }
+
+        await player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(player, GridFightSyncKind.RefreshShop));
+
         await arg.SendMsg(I18NManager.Translate("Game.Command.Grid.EnterSection", chapterId.ToString(), sectionId.ToString()));
     }
 }
