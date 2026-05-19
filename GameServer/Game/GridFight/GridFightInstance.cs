@@ -273,6 +273,8 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     public uint CampId { get; set; } = 18;
     public uint PreBattleGold { get; set; }
     public Proto.GridFightDamageSttInfo? LastBattleDamageStt { get; set; }
+    public uint LastBattleIDEAAPCCFPF { get; set; }
+    public Proto.GridFightSettleReason LastSettleReason { get; set; } = Proto.GridFightSettleReason.CdphdhnlhaoFmpbhelfgee;
     public List<(uint ItemId, uint UniqueId)> LastRewardedOrbs { get; } = new();
     public Dictionary<uint, uint> OrbItemByUniqueId { get; } = new() { [7u] = 199u };
     public List<Proto.GridFightHpModifyInfo> LastHpModifyTimeline { get; } = new();
@@ -714,22 +716,25 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
         BattlesFinished++;
         if (win)
         {
-            KeepWinCnt++;
             var nextSection = SectionId + 1;
             var maxSection = GetChapterSectionCount(CurrentChapterId);
             if (maxSection > 0 && nextSection > maxSection)
             {
-                CurrentChapterId++;
-                SectionId = 1;
-                LastAugmentConsumedSection = 0;
-                LastSupplyConsumedSection = 0;
-                LastEliteBranchConsumedSection = 0;
-                ClearAugmentOffer();
-                ClearSupplyOffer();
-                ClearEliteBranchOptions();
-                CurrentAugmentReroll = 3;
-                CurrentSupplyReroll = 1;
-                CurrentEliteBranchReroll = 1;
+                var nextChapter = CurrentChapterId + 1;
+                if (GetChapterSectionCount(nextChapter) > 0)
+                {
+                    CurrentChapterId = nextChapter;
+                    SectionId = 1;
+                    LastAugmentConsumedSection = 0;
+                    LastSupplyConsumedSection = 0;
+                    LastEliteBranchConsumedSection = 0;
+                    ClearAugmentOffer();
+                    ClearSupplyOffer();
+                    ClearEliteBranchOptions();
+                    CurrentAugmentReroll = 3;
+                    CurrentSupplyReroll = 1;
+                    CurrentEliteBranchReroll = 1;
+                }
             }
             else
             {
@@ -752,6 +757,22 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
         return max;
     }
 
+    public uint GetMaxChapterId()
+    {
+        if (!GameData.GridFightStageRouteData.TryGetValue(RouteId, out var bucket)) return 0;
+        var max = 0u;
+        foreach (var route in bucket.Values)
+            if (route.ChapterID > max) max = route.ChapterID;
+        return max;
+    }
+
+    public bool IsFinalSection(uint chapter, uint section)
+    {
+        var maxChapter = GetMaxChapterId();
+        if (maxChapter == 0 || chapter != maxChapter) return false;
+        return section == GetChapterSectionCount(chapter);
+    }
+
     private static readonly uint[] Section1RewardOrbs = { 102u, 199u, 203u, 204u };
 
     public void RecordBattleSnapshot(PVEBattleResultCsReq req, bool win)
@@ -762,6 +783,7 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
         PreBattleGold = Gold;
 
         LastBattleDamageStt = new GridFightDamageSttInfo();
+        LastBattleIDEAAPCCFPF = req.Stt?.OGPOFMOGPIP?.IDEAAPCCFPF ?? 0;
         var activeRoleIds = new HashSet<uint>();
         if (req.Stt?.OGPOFMOGPIP?.JPDJMCCKENI != null)
         {
@@ -864,8 +886,13 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
             NDOCIKPLKIF = NDOCIKPLKIF,
             SectionId = SectionId,
             EJEIBPEKHLD = PlayerLevel,
-            PNOJLNNHBIH = 1,
+            PNOJLNNHBIH = win ? 4u : 1u,
+            JGLEDADBNGP = win ? 1u : 0u,
             HPOACJCPJHN = win,
+            PACIAIJBOHO = KeepWinCnt,
+            IDEAAPCCFPF = LastBattleIDEAAPCCFPF,
+            IPCFJBAKLCG = 10,
+            MAGCGPMHHEA = PlayerMaxLevel,
             GCBBEEGANEG = new MIOMFOAEHEC
             {
                 IPHHGMECAKB = new BLKAIEHOCBC
@@ -879,7 +906,7 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
                     Level = PlayerLevel,
                     DKHKEJIAJBN = GetLevelUpExpNeed(PlayerLevel)
                 },
-                MAGCGPMHHEA = 2
+                MAGCGPMHHEA = PlayerMaxLevel
             }
         };
 
@@ -909,6 +936,14 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     {
         var win = req.EndStatus != BattleEndStatus.BattleEndLose;
         RecordBattleSnapshot(req, win);
+
+        if (win) KeepWinCnt++;
+
+        var isSeasonFinish = win && IsFinalSection(CurrentChapterId, SectionId);
+        LastSettleReason = win
+            ? Proto.GridFightSettleReason.CdphdhnlhaoClnlgbcmoij
+            : Proto.GridFightSettleReason.CdphdhnlhaoFlnhnhbcdkm;
+
         AdvanceQueue(7);
         PendingAction = new GridFightPendingAction
         {
@@ -918,6 +953,16 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
 
         await Player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(Player, GridFightSyncKind.PreSettle));
         await Player.SendPacket(new PacketGridFightEndBattleStageNotify(this, win));
+
+        if (isSeasonFinish)
+        {
+            BattlesFinished++;
+            await Player.SendPacket(new PacketGridFightSyncKeepWinCntNotify(1));
+            await Player.SendPacket(new PacketGridFightSettleNotify(Player));
+            Player.GridFightManager!.GridFightInstance = null;
+            return;
+        }
+
         await Player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(Player, GridFightSyncKind.PostBattle));
 
         OnBattleResolved(win);
