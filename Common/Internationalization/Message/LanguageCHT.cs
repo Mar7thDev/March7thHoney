@@ -459,8 +459,12 @@ public class RaidTextCHT
 /// </summary>
 public class AccountTextCHT
 {
-    public string Desc => "創建賬號\n注意：此命令未經測試，請謹慎使用！";
-    public string Usage => "用法：/account create [用戶名]\n用法：/account setpassword [用戶名|UID] [密碼]\n用法：/account role [用戶名|UID] [角色]\n用法：/account roles";
+    public string Desc => "管理賬號\n注意：此命令未經測試，請謹慎使用！";
+    public string Usage => "用法：/account create [用戶名]\n用法：/account setpassword [用戶名|UID] [密碼]\n用法：/account reset [用戶名|UID]\n用法：/account role [用戶名|UID] [角色]\n用法：/account roles";
+    public string ResetUsage => "用法：/account reset [用戶名|UID]";
+    public string AccountNotFound => "賬號 {0} 不存在。";
+    public string ResetStarted => "正在重置賬號 {0}。你將被斷開連接，重新登入後會重新開始。";
+    public string ResetSuccess => "賬號 {0} 已重置。";
     public string InvalidUid => "無效UID參數！";
     public string CreateError => "出現內部錯誤 {0} ";
     public string CreateSuccess => "新賬號 {0} 創建成功!";
