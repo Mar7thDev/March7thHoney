@@ -25,21 +25,45 @@ public class CommandAccount : ICommand
         string? password = null;
         var uid = 0;
 
-        if (arg.Args.Count > 3)
-            if (int.TryParse(arg.Args[3], out uid))
+        for (var i = 3; i < arg.Args.Count; i++)
+        {
+            var token = arg.Args[i];
+            if (token.Equals("--uid", StringComparison.OrdinalIgnoreCase) ||
+                token.Equals("-u", StringComparison.OrdinalIgnoreCase))
             {
-            }
-            else
-            {
-                password = arg.Args[3];
+                if (i + 1 >= arg.Args.Count || !int.TryParse(arg.Args[++i], out uid))
+                {
+                    await arg.SendMsg(I18NManager.Translate("Game.Command.Account.InvalidUid"));
+                    return;
+                }
+
+                continue;
             }
 
-        if (arg.Args.Count > 4)
-            if (!int.TryParse(arg.Args[4], out uid))
+            if (token.Equals("--password", StringComparison.OrdinalIgnoreCase) ||
+                token.Equals("-p", StringComparison.OrdinalIgnoreCase))
             {
-                await arg.SendMsg(I18NManager.Translate("Game.Command.Account.InvalidUid"));
-                return;
+                if (i + 1 >= arg.Args.Count)
+                {
+                    await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.InvalidArguments"));
+                    return;
+                }
+
+                password = arg.Args[++i];
+                continue;
             }
+
+            if (password == null)
+            {
+                password = token;
+                continue;
+            }
+
+            if (uid == 0 && int.TryParse(token, out uid)) continue;
+
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.InvalidArguments"));
+            return;
+        }
 
         if (AccountData.GetAccountByUserName(account) != null)
         {
@@ -77,7 +101,7 @@ public class CommandAccount : ICommand
     {
         if (arg.Args.Count < 3)
         {
-            await arg.SendMsg("Usage: /account setpassword [Username] [Password]");
+            await arg.SendMsg("Usage: /account setpassword <Username|UID|Email> <Password>");
             return;
         }
 
@@ -357,7 +381,7 @@ public class CommandAccount : ICommand
     {
         if (arg.Args.Count < 3)
         {
-            await arg.SendMsg("Usage: /account role [Username|UID] [Role]");
+            await arg.SendMsg("Usage: /account role <Username|UID|Email> <Role>");
             return;
         }
 

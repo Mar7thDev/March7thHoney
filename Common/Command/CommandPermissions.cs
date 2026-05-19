@@ -28,6 +28,7 @@ public static class CommandPermissions
     public const string Raid = "command.raid";
     public const string Relic = "command.relic";
     public const string Reload = "command.reload";
+    public const string Remove = "command.remove";
     public const string SetLevel = "command.setlevel";
     public const string UnlockAll = "command.unlockall";
     public const string Unstuck = "command.unstuck";
@@ -60,6 +61,7 @@ public static class CommandPermissions
         Raid,
         Relic,
         Reload,
+        Remove,
         SetLevel,
         UnlockAll,
         Unstuck,
@@ -129,6 +131,7 @@ public static class CommandPermissions
             Raid,
             Relic,
             Reload,
+            Remove,
             Scene,
             SetLevel,
             TargetOthers,

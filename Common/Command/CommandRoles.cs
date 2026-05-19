@@ -40,6 +40,7 @@ public static class CommandRoles
                 CommandPermissions.Raid,
                 CommandPermissions.Relic,
                 CommandPermissions.Reload,
+                CommandPermissions.Remove,
                 CommandPermissions.SetLevel,
                 CommandPermissions.UnlockAll,
                 CommandPermissions.Unstuck
