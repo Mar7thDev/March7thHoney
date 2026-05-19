@@ -99,7 +99,11 @@ public class CommandAvatar : ICommand
             return;
         }
 
-        if (arg.BasicArgs.Count < 1) await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.InvalidArguments"));
+        if (arg.BasicArgs.Count < 1)
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.InvalidArguments"));
+            return;
+        }
 
         var id = arg.GetInt(0);
         var excel = await arg.Target.Player!.AvatarManager!.AddAvatar(id);
@@ -122,7 +126,11 @@ public class CommandAvatar : ICommand
             return;
         }
 
-        if (arg.BasicArgs.Count < 2) await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.InvalidArguments"));
+        if (arg.BasicArgs.Count < 2)
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.InvalidArguments"));
+            return;
+        }
 
         var id = arg.GetInt(0);
         var rank = arg.GetInt(1);

@@ -16,14 +16,13 @@ public class CommandSetlevel : ICommand
             return;
         }
 
-        if (arg.Args.Count < 1)
+        if (!arg.TryGetInt(0, out var level) || level is < 1 or > 70)
         {
             await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.InvalidArguments"));
             return;
         }
 
         var player = arg.Target.Player!;
-        var level = Math.Max(Math.Min(arg.GetInt(0), 70), 1);
         player.Data.Level = level;
         player.OnLevelChange();
         player.Data.Exp = GameData.GetPlayerExpRequired(level);

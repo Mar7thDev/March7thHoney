@@ -48,6 +48,7 @@ public class WordTextCHS
     public string Buff => "祝福";
     public string Miracle => "奇物";
     public string Unlock => "奢侈品";
+    public string TrainParty => "列车派对物品";
 
     // server info
     public string Config => "配置文件";
@@ -133,6 +134,10 @@ public class CommandTextCHS
     public GridTextCHS Grid { get; } = new();
     public JsonTextCHS Json { get; } = new();
     public CalyxTextCHS Calyx { get; } = new();
+    public ClearTextCHS Clear { get; } = new();
+    public DebugTextCHS Debug { get; } = new();
+    public RemoveTextCHS Remove { get; } = new();
+    public WindyTextCHS Windy { get; } = new();
 }
 
 #endregion
@@ -225,7 +230,7 @@ public class HeroTextCHS
     public string Desc =>
         "切换主角的性别/形态\n当切换性别时，genderId为1代表男性，2代表女性\n当切换形态时，8001代表毁灭命途，8003代表存护命途，8005代表同谐命途。\n注意，切换性别时会清空所有可选命途以及行迹，为不可逆操作！";
 
-    public string Usage => "用法：/hero gender [genderId]\n\n用法：/hero type [typeId]";
+    public string Usage => "用法：/hero gender <genderId: 1=男, 2=女>\n\n用法：/hero type <typeId: 8001|8003|8005|8007|8009>";
     public string GenderNotSpecified => "性别不存在!";
     public string HeroTypeNotSpecified => "主角类型不存在!";
     public string GenderChanged => "性别已更改!";
@@ -243,7 +248,7 @@ public class UnlockAllTextCHS
         "使用 /unlockall tutorial 以解锁所有教程，使用后会被踢出，用于部分界面卡住无法行动的情况\n" +
         "使用 /unlockall rogue 以解锁所有类型模拟宇宙，使用后会被踢出，建议与 /unlockall tutorial 搭配使用以获取更好效果";
 
-    public string Usage => "用法：/unlockall [mission/tutorial/rogue]";
+    public string Usage => "用法：/unlockall <mission|quest|tutorial|rogue|challenge|grid>";
     public string UnlockedAll => "已解锁/完成所有{0}!";
 }
 
@@ -255,7 +260,7 @@ public class AvatarTextCHS
     public string Desc => "设定玩家已有角色的属性\n设置行迹等级时，设置X级即设置所有行迹节点至X级，若大于此节点允许的最高等级，设置为最高等级\n注意：-1意为所有已拥有角色";
 
     public string Usage =>
-        "用法：/avatar talent [角色ID/-1] [行迹等级]\n\n用法：/avatar get [角色ID]\n\n用法：/avatar rank [角色ID/-1] [星魂]\n\n用法：/avatar level [角色ID/-1] [角色等级]";
+        "用法：/avatar talent <角色ID|-1> <行迹等级 0-10>\n\n用法：/avatar get <角色ID>\n\n用法：/avatar rank <角色ID|-1> <星魂 0-6>\n\n用法：/avatar level <角色ID|-1> <角色等级 1-80>\n\n用法：/avatar path <角色ID> <命途ID>";
 
     public string InvalidLevel => "{0}等级无效";
     public string AllAvatarsLevelSet => "已将全部角色 {0}等级设置为 {1}";
@@ -271,7 +276,7 @@ public class AvatarTextCHS
 public class GiveTextCHS
 {
     public string Desc => "给予玩家物品，此处可输入角色ID，但无法设置行迹、等级及星魂";
-    public string Usage => "用法：/give <物品ID> l<等级> x<数量> r<叠影>";
+    public string Usage => "用法：/give <物品ID> [x<数量=1>] [l<等级=1, 1-80>] [r<叠影=1, 1-5>]";
     public string ItemNotFound => "未找到物品!";
     public string GiveItem => "给予 @{0} {1} 个物品 {2}";
 }
@@ -282,15 +287,16 @@ public class GiveTextCHS
 public class GiveAllTextCHS
 {
     public string Desc =>
-        "给予玩家全部指定类型的物品\navatar意为角色，equipment意为光锥，relic意为遗器，unlock意为气泡、手机壁纸、头像，train意为开拓者房间内容，pet意为宠物，path意为多命途角色命途";
+        "给予玩家全部指定类型的物品\navatar意为角色，equipment意为光锥，material意为可堆叠材料，relic意为遗器，unlock意为气泡、手机壁纸、头像，train意为开拓者房间内容，pet意为宠物，path意为多命途角色命途";
 
     public string Usage =>
         "用法：/giveall avatar r<星魂> l<等级>\n\n" +
-        "用法：/giveall equipment r<叠影> l<等级> x<数量>\n\n" +
+        "用法：/giveall equipment|lightcone r<叠影> l<等级> x<数量>\n\n" +
+        "用法：/giveall material [x<数量=1>]\n\n" +
         "用法：/giveall relic l<等级> x<数量>\n\n" +
         "用法：/giveall unlock\n\n" +
         "用法：/giveall train\n\n" +
-        "用法：/giveall pet\n\n" +
+        "用法：/giveall pet [x<数量=1>]\n\n" +
         "用法：/giveall path";
 
     public string GiveAllItems => "已给予所有 {0}, 各 {1} 个";
@@ -302,7 +308,7 @@ public class GiveAllTextCHS
 public class LineupTextCHS
 {
     public string Desc => "管理玩家的队伍\n秘技点一次性只能获得两个";
-    public string Usage => "用法：/lineup mp [秘技点数量]\n\n用法：/lineup heal";
+    public string Usage => "用法：/lineup mp [数量=2]\n\n用法：/lineup heal";
     public string PlayerGainedMp => "玩家已获得 {0} 秘技点";
     public string HealedAllAvatars => "成功治愈当前队伍中的所有角色";
 }
@@ -312,11 +318,12 @@ public class LineupTextCHS
 /// </summary>
 public class HelpTextCHS
 {
-    public string Desc => "显示帮助信息";
-    public string Usage => "用法：/help\n\n用法：/help [命令]";
+    public string Desc => "显示帮助信息。控制台命令可使用 @<UID> 指定在线目标。";
+    public string Usage => "用法：/help\n\n用法：/help [命令]\n\n目标：@<UID> <命令> ... 或 <命令> ... @<UID>";
     public string Commands => "命令:";
     public string CommandPermission => "所需权限: ";
     public string CommandAlias => "命令别名：";
+    public string CommandNotFound => "未找到命令! 输入 '/help' 来获取帮助";
 }
 
 /// <summary>
@@ -379,8 +386,8 @@ public class RelicTextCHS
 /// </summary>
 public class ReloadTextCHS
 {
-    public string Desc => "重新加载指定的配置\n配置名：banner - 卡池, activity - 活动";
-    public string Usage => "用法：/reload <配置名>";
+    public string Desc => "重新加载指定的配置\n配置名：banner, activity, videokey, plugin";
+    public string Usage => "用法：/reload <banner|activity|videokey|plugin>";
     public string ConfigReloaded => "配置 {0} 已重新加载!";
 }
 
@@ -419,7 +426,7 @@ public class SceneTextCHS
         "使用 reset 来重置指定场景所有道具状态，要获取当前FloorId，请使用 /scene cur";
 
     public string Usage =>
-        "用法：/scene prop [组ID] [道具ID] [状态]\n\n用法：/scene remove [实体ID]\n\n用法：/scene unlockall\n\n用法：/scene change [entryId]\n\n用法：/scene reload\n\n用法：/scene reset <floorId>";
+        "用法：/scene group\n\n用法：/scene prop <组ID> <道具ID> <状态>\n\n用法：/scene remove <实体ID>\n\n用法：/scene unlockall\n\n用法：/scene unlockallgroup\n\n用法：/scene change <entryId>\n\n用法：/scene reload\n\n用法：/scene reset <floorId>\n\n用法：/scene fsv <名称> <值>\n\n用法：/scene gp <组ID> <名称> <值>\n\n用法：/scene cur\n\n用法：/scene near\n\n用法：/scene forward <距离>";
 
     public string LoadedGroups => "已加载组: {0}";
     public string PropStateChanged => "道具: {0} 的状态已设置为 {1}";
@@ -431,6 +438,8 @@ public class SceneTextCHS
     public string SceneReloaded => "场景已重新加载!";
     public string SceneReset => "已重置场景 {0} 中所有道具状态！";
     public string CurrentScene => "当前场景Entry Id: {0}, Plane Id: {1}, Floor Id: {2}";
+    public string FSVSet => "已将 {0} 设置为 {1}";
+    public string Teleported => "已传送！";
 }
 
 /// <summary>
@@ -439,7 +448,7 @@ public class SceneTextCHS
 public class MailTextCHS
 {
     public string Desc => "管理玩家的邮件";
-    public string Usage => "用法：/mail [发送名称] [模板ID] [过期天数] _TITLE [标题] _CONTENT [内容] _ATTACH [物品ID] x[数量] r[星魂/叠影] s[叠影] l[等级] p[晋阶] t[行迹等级|max] ...\n用法：/mail all [发送名称] [模板ID] [过期天数] _TITLE [标题] _CONTENT [内容] _ATTACH ...\n用法：/mail welcome [all]";
+    public string Usage => "用法：/mail <发送者> <模板ID> <过期天数> _TITLE <标题> _CONTENT <内容> _ATTACH <物品ID> [x<数量>] [r<星魂/叠影>] [s<叠影>] [l<等级>] [p<晋阶>] [t<行迹等级|max>] ...\n用法：/mail all <发送者> <模板ID> <过期天数> _TITLE <标题> _CONTENT <内容> _ATTACH ...\n用法：/mail welcome [all]";
     public string MailSent => "邮件已发送!";
     public string MailSentWithAttachment => "带附件的邮件已发送!";
 }
@@ -450,7 +459,7 @@ public class MailTextCHS
 public class RaidTextCHS
 {
     public string Desc => "管理玩家的任务临时场景";
-    public string Usage => "用法：/raid leave - 离开临时场景";
+    public string Usage => "用法：/raid leave\n\n用法：/raid reset <RaidID> <Level>";
     public string Leaved => "已离开临时场景!";
 }
 
@@ -460,12 +469,12 @@ public class RaidTextCHS
 public class AccountTextCHS
 {
     public string Desc => "管理账号\n注意：此命令未经测试，请谨慎使用！";
-    public string Usage => "用法：/account create [用户名] [邮箱] [密码] [UID]\n用法：/account setpassword [用户名|UID|邮箱] [密码]\n用法：/account setemail [用户名|UID|邮箱] [邮箱] [verified:true|false]\n用法：/account verifyemail [用户名|UID|邮箱]\n用法：/account reset [用户名|UID|邮箱]\n用法：/account delete [用户名|UID|邮箱] confirm\n用法：/account role [用户名|UID|邮箱] [角色]\n用法：/account roles";
+    public string Usage => "用法：/account create <用户名> <邮箱> [密码] [UID]\n用法：/account create <用户名> <邮箱> [--password <密码>] [--uid <UID>]\n用法：/account setpassword <用户名|UID|邮箱> <密码>\n用法：/account setemail <用户名|UID|邮箱> <邮箱> [verified:true|false]\n用法：/account verifyemail <用户名|UID|邮箱>\n用法：/account ban <用户名|UID|邮箱> <permanent|duration> [原因]\n用法：/account unban <用户名|UID|邮箱>\n用法：/account baninfo <用户名|UID|邮箱>\n用法：/account reset [用户名|UID|邮箱]\n用法：/account delete <用户名|UID|邮箱> confirm\n用法：/account remove <用户名|UID|邮箱> confirm\n用法：/account role <用户名|UID|邮箱> <角色>\n用法：/account setrole <用户名|UID|邮箱> <角色>\n用法：/account roles";
     public string ResetUsage => "用法：/account reset [用户名|UID|邮箱]";
     public string AccountNotFound => "账号 {0} 不存在。";
     public string ResetStarted => "正在重置账号 {0}。你将被断开连接，重新登录后会重新开始。";
     public string ResetSuccess => "账号 {0} 已重置。";
-    public string DeleteUsage => "用法：/account delete [用户名|UID|邮箱] confirm";
+    public string DeleteUsage => "用法：/account delete|remove <用户名|UID|邮箱> confirm";
     public string DeleteRequiresConfirm => "这会永久删除账号 {0} 及其所有玩家数据。请执行 /account delete {0} confirm 继续。";
     public string DeleteStarted => "正在删除账号 {0}。你将被断开连接。";
     public string DeleteSuccess => "账号 {0} 已删除。";
@@ -482,8 +491,8 @@ public class AccountTextCHS
 /// </summary>
 public class UnstuckTextCHS
 {
-    public string Desc => "将玩家传送回默认场景";
-    public string Usage => "用法：/unstuck [UID]";
+    public string Desc => "将离线玩家传送回默认场景。面向控制台/管理员使用，目标必须离线。";
+    public string Usage => "用法：/unstuck <离线UID>";
     public string UnstuckSuccess => "已成功将该玩家传送回默认场景";
     public string UidNotExist => "该UID不存在！";
     public string PlayerIsOnline => "该玩家目前在线上！";
@@ -495,7 +504,7 @@ public class UnstuckTextCHS
 public class SetlevelTextCHS
 {
     public string Desc => "设定玩家等级";
-    public string Usage => "用法：/setlevel [等级]";
+    public string Usage => "用法：/setlevel <等级 1-70>";
     public string SetlevelSuccess => "等级设定成功！";
 }
 
@@ -530,7 +539,7 @@ public class GridTextCHS
 public class JsonTextCHS
 {
     public string Desc => "从 JSON 导入角色、遗器、光锥数据，或清空现有遗器和光锥。";
-    public string Usage => "用法：/json\n\n用法：/json [文件名/序号/绝对路径]\n\n用法：/json clear\n\n用法：/json export <name> <格式化(true/false)>";
+    public string Usage => "用法：/json\n\n用法：/json <文件名|序号|路径>\n\n用法：/json clear\n\n用法：/json export [name] [format=true|false]";
     public string ClearInventory => "已清空当前玩家的遗器和光锥。";
     public string FileNotFound => "未找到文件：{0}";
     public string ReadOrParseFailed => "读取或解析 JSON 失败：{0}";
@@ -562,6 +571,55 @@ public class CalyxTextCHS
     public string InvalidMode => "未知模式 '{0}'。请使用 /calyx on 或 /calyx off。";
     public string LoadFailed => "加载 freesr 文件失败。";
     public string NoCachedData => "未找到已缓存的 freesr 数据。请先使用 /json <文件名> 或通过 srtools 网站同步导入。";
+}
+
+/// <summary>
+///     path: Game.Command.Clear
+/// </summary>
+public class ClearTextCHS
+{
+    public string Desc => "从目标玩家背包中移除未装备的光锥或遗器。";
+    public string Usage => "用法：/clear equipment\n\n用法：/clear relic";
+    public string ClearEquipment => "已移除 {0} 个未装备光锥。";
+    public string ClearRelic => "已移除 {0} 个未装备遗器。";
+}
+
+/// <summary>
+///     path: Game.Command.Debug
+/// </summary>
+public class DebugTextCHS
+{
+    public string Desc => "调试战斗配置和自定义包加载。";
+    public string Usage => "用法：/debug specific <StageID>\n\n用法：/debug monster <MonsterID>\n\n用法：/debug customP <PacketJsonPath>";
+    public string InvalidStageId => "无效的关卡或怪物ID。";
+    public string SetStageId => "调试战斗覆盖已更新。";
+    public string CustomPacketFileNotFound => "未找到自定义包文件。";
+    public string CustomPacketFileInvalid => "自定义包文件无效或为空。";
+    public string CustomPacketFileLoaded => "自定义包队列已加载。";
+}
+
+/// <summary>
+///     path: Game.Command.Remove
+/// </summary>
+public class RemoveTextCHS
+{
+    public string Desc => "管理员专用：移除已拥有角色或光锥。";
+    public string Usage => "用法：/remove character <角色ID> confirm\n\n用法：/remove avatar <角色ID> confirm\n\n用法：/remove lightcone <唯一ID|物品ID> confirm\n\n用法：/remove equipment <唯一ID|物品ID> confirm\n\n添加 --dry-run 可预览将移除的内容。";
+    public string RequiresConfirm => "这是破坏性操作。添加 confirm 执行，或使用 --dry-run 预览。";
+    public string NotFound => "未找到 {0} {1}。";
+    public string DryRun => "预览：将移除 {0} 个 {1}。";
+    public string Success => "已移除 {0} 个 {1}。客户端可能需要重新登录才能完全刷新。";
+}
+
+/// <summary>
+///     path: Game.Command.Windy
+/// </summary>
+public class WindyTextCHS
+{
+    public string Desc => "加载 Lua 字节码并发送给目标玩家。";
+    public string Usage => "用法：/windy <相对于 Lua 文件夹的 lua 路径>";
+    public string Loaded => "已从 Lua 脚本读取 BYTECODE：{0}";
+    public string ReadError => "读取 Lua 脚本失败：{0}";
 }
 
 #endregion

@@ -48,6 +48,7 @@ public class WordTextEN
     public string Buff => "Blessing";
     public string Miracle => "Curio";
     public string Unlock => "Luxury Item";
+    public string TrainParty => "Train Party Item";
 
     // server info
     public string Config => "Config File";
@@ -133,6 +134,10 @@ public class CommandTextEN
     public GridTextEN Grid { get; } = new();
     public JsonTextEN Json { get; } = new();
     public CalyxTextEN Calyx { get; } = new();
+    public ClearTextEN Clear { get; } = new();
+    public DebugTextEN Debug { get; } = new();
+    public RemoveTextEN Remove { get; } = new();
+    public WindyTextEN Windy { get; } = new();
 }
 
 #endregion
@@ -225,7 +230,7 @@ public class HeroTextEN
     public string Desc =>
         "Switch the main character's gender/form.\nWhen switching gender, genderId 1 represents male, 2 represents female.\nWhen switching form, 8001 represents Destruction Path, 8003 represents Preservation Path, 8005 represents Harmony Path.\nNote: Switching gender will clear all optional Paths and Traces, and this operation is irreversible!";
 
-    public string Usage => "Usage: /hero gender [genderId]\n\nUsage: /hero type [typeId]";
+    public string Usage => "Usage: /hero gender <genderId: 1=male, 2=female>\n\nUsage: /hero type <typeId: 8001|8003|8005|8007|8009>";
     public string GenderNotSpecified => "Gender does not exist!";
     public string HeroTypeNotSpecified => "Hero type does not exist!";
     public string GenderChanged => "Gender changed!";
@@ -243,7 +248,7 @@ public class UnlockAllTextEN
         "Use /unlockall tutorial to unlock all tutorials. You will be kicked after use. Use for situations where the interface is stuck and you cannot act.\n" +
         "Use /unlockall rogue to unlock all types of Simulated Universe. You will be kicked after use. Recommended to use with /unlockall tutorial for better results.";
 
-    public string Usage => "Usage: /unlockall [mission/tutorial/rogue]";
+    public string Usage => "Usage: /unlockall <mission|quest|tutorial|rogue|challenge|grid>";
     public string UnlockedAll => "Unlocked/completed all {0}!";
 }
 
@@ -255,7 +260,7 @@ public class AvatarTextEN
     public string Desc => "Set properties for player's owned avatars.\nWhen setting trace level, setting to level X sets all trace nodes to level X. If greater than the node's max allowed level, sets to max level.\nNote: -1 means all owned avatars.";
 
     public string Usage =>
-        "Usage: /avatar talent [AvatarID/-1] [Trace Level]\n\nUsage: /avatar get [AvatarID]\n\nUsage: /avatar rank [AvatarID/-1] [Eidolon]\n\nUsage: /avatar level [AvatarID/-1] [Avatar Level]";
+        "Usage: /avatar talent <AvatarID|-1> <trace level 0-10>\n\nUsage: /avatar get <AvatarID>\n\nUsage: /avatar rank <AvatarID|-1> <eidolon 0-6>\n\nUsage: /avatar level <AvatarID|-1> <level 1-80>\n\nUsage: /avatar path <AvatarID> <PathID>";
 
     public string InvalidLevel => "Invalid {0} level";
     public string AllAvatarsLevelSet => "Set all avatars' {0} level to {1}";
@@ -271,7 +276,7 @@ public class AvatarTextEN
 public class GiveTextEN
 {
     public string Desc => "Give items to the player. Avatar IDs can be entered here, but traces, levels, and eidolons cannot be set.";
-    public string Usage => "Usage: /give <ItemID> l<Level> x<Count> r<Superimposition>";
+    public string Usage => "Usage: /give <ItemID> [x<count=1>] [l<level=1, 1-80>] [r<rank=1, 1-5>]";
     public string ItemNotFound => "Item not found!";
     public string GiveItem => "Gave @{0} {1} of item {2}";
 }
@@ -282,15 +287,16 @@ public class GiveTextEN
 public class GiveAllTextEN
 {
     public string Desc =>
-        "Give the player all items of the specified type.\navatar means characters, equipment means Light Cones, relic means relics, unlock means chat bubbles, phone wallpapers, avatars, train means Trailblazer's room contents, pet means pets, path means Paths for multi-Path characters.";
+        "Give the player all items of the specified type.\navatar means characters, equipment means Light Cones, material means stackable materials, relic means relics, unlock means chat bubbles, phone wallpapers, avatars, train means Trailblazer's room contents, pet means pets, path means Paths for multi-Path characters.";
 
     public string Usage =>
         "Usage: /giveall avatar r<Eidolon> l<Level>\n\n" +
-        "Usage: /giveall equipment r<Superimposition> l<Level> x<Count>\n\n" +
+        "Usage: /giveall equipment|lightcone r<Superimposition> l<Level> x<Count>\n\n" +
+        "Usage: /giveall material [x<count=1>]\n\n" +
         "Usage: /giveall relic l<Level> x<Count>\n\n" +
         "Usage: /giveall unlock\n\n" +
         "Usage: /giveall train\n\n" +
-        "Usage: /giveall pet\n\n" +
+        "Usage: /giveall pet [x<count=1>]\n\n" +
         "Usage: /giveall path";
 
     public string GiveAllItems => "Gave all {0}, {1} each";
@@ -302,7 +308,7 @@ public class GiveAllTextEN
 public class LineupTextEN
 {
     public string Desc => "Manage the player's lineup.\nMaze points can only be obtained two at a time.";
-    public string Usage => "Usage: /lineup mp [Maze Point Amount]\n\nUsage: /lineup heal";
+    public string Usage => "Usage: /lineup mp [amount=2]\n\nUsage: /lineup heal";
     public string PlayerGainedMp => "Player gained {0} Maze Points";
     public string HealedAllAvatars => "Successfully healed all avatars in the current lineup";
 }
@@ -312,11 +318,12 @@ public class LineupTextEN
 /// </summary>
 public class HelpTextEN
 {
-    public string Desc => "Show help information";
-    public string Usage => "Usage: /help\n\nUsage: /help [command]";
+    public string Desc => "Show help information. Console commands can target an online player with @<UID>.";
+    public string Usage => "Usage: /help\n\nUsage: /help [command]\n\nTargeting: @<UID> <command> ... or <command> ... @<UID>";
     public string Commands => "Commands:";
     public string CommandPermission => "Required Permission: ";
     public string CommandAlias => "Command Aliases: ";
+    public string CommandNotFound => "Command not found! Type '/help' for help";
 }
 
 /// <summary>
@@ -379,8 +386,8 @@ public class RelicTextEN
 /// </summary>
 public class ReloadTextEN
 {
-    public string Desc => "Reload specified configuration.\nConfiguration names: banner - banners, activity - activities";
-    public string Usage => "Usage: /reload <config name>";
+    public string Desc => "Reload specified configuration.\nConfiguration names: banner, activity, videokey, plugin.";
+    public string Usage => "Usage: /reload <banner|activity|videokey|plugin>";
     public string ConfigReloaded => "Configuration {0} reloaded!";
 }
 
@@ -419,7 +426,7 @@ public class SceneTextEN
         "Use reset to reset all prop states in a specified scene. To get current FloorId, use /scene cur.";
 
     public string Usage =>
-        "Usage: /scene prop [GroupID] [PropID] [State]\n\nUsage: /scene remove [EntityID]\n\nUsage: /scene unlockall\n\nUsage: /scene change [entryId]\n\nUsage: /scene reload\n\nUsage: /scene reset <floorId>";
+        "Usage: /scene group\n\nUsage: /scene prop <GroupID> <PropID> <State>\n\nUsage: /scene remove <EntityID>\n\nUsage: /scene unlockall\n\nUsage: /scene unlockallgroup\n\nUsage: /scene change <entryId>\n\nUsage: /scene reload\n\nUsage: /scene reset <floorId>\n\nUsage: /scene fsv <Name> <Value>\n\nUsage: /scene gp <GroupID> <Name> <Value>\n\nUsage: /scene cur\n\nUsage: /scene near\n\nUsage: /scene forward <Distance>";
 
     public string LoadedGroups => "Loaded groups: {0}";
     public string PropStateChanged => "Prop: {0} state set to {1}";
@@ -431,6 +438,8 @@ public class SceneTextEN
     public string SceneReloaded => "Scene reloaded!";
     public string SceneReset => "Reset all prop states in scene {0}!";
     public string CurrentScene => "Current scene Entry Id: {0}, Plane Id: {1}, Floor Id: {2}";
+    public string FSVSet => "Set {0} to {1}";
+    public string Teleported => "Teleported!";
 }
 
 /// <summary>
@@ -439,7 +448,7 @@ public class SceneTextEN
 public class MailTextEN
 {
     public string Desc => "Manage player's mail";
-    public string Usage => "Usage: /mail [Sender Name] [TemplateID] [Expire Days] _TITLE [Title] _CONTENT [Content] _ATTACH [ItemId] x[Count] r[Rank/Eidolon] s[Superimposition] l[Level] p[Promotion] t[TalentLevel|max] ...\nUsage: /mail all [Sender Name] [TemplateID] [Expire Days] _TITLE [Title] _CONTENT [Content] _ATTACH ...\nUsage: /mail welcome [all]";
+    public string Usage => "Usage: /mail <Sender> <TemplateID> <ExpireDays> _TITLE <Title> _CONTENT <Content> _ATTACH <ItemID> [x<count>] [r<rank/eidolon>] [s<superimposition>] [l<level>] [p<promotion>] [t<talentLevel|max>] ...\nUsage: /mail all <Sender> <TemplateID> <ExpireDays> _TITLE <Title> _CONTENT <Content> _ATTACH ...\nUsage: /mail welcome [all]";
     public string MailSent => "Mail sent!";
     public string MailSentWithAttachment => "Mail with attachment sent!";
 }
@@ -450,7 +459,7 @@ public class MailTextEN
 public class RaidTextEN
 {
     public string Desc => "Manage player's mission temporary scene";
-    public string Usage => "Usage: /raid leave - Leave temporary scene";
+    public string Usage => "Usage: /raid leave\n\nUsage: /raid reset <RaidID> <Level>";
     public string Leaved => "Left temporary scene!";
 }
 
@@ -460,12 +469,12 @@ public class RaidTextEN
 public class AccountTextEN
 {
     public string Desc => "Manage accounts.\nNote: This command is untested. Use with caution!";
-    public string Usage => "Usage: /account create [Username] [Email] [Password] [UID]\nUsage: /account setpassword [Username|UID|Email] [Password]\nUsage: /account setemail [Username|UID|Email] [Email] [verified:true|false]\nUsage: /account verifyemail [Username|UID|Email]\nUsage: /account reset [Username|UID|Email]\nUsage: /account delete [Username|UID|Email] confirm\nUsage: /account role [Username|UID|Email] [Role]\nUsage: /account roles";
+    public string Usage => "Usage: /account create <Username> <Email> [Password] [UID]\nUsage: /account create <Username> <Email> [--password <Password>] [--uid <UID>]\nUsage: /account setpassword <Username|UID|Email> <Password>\nUsage: /account setemail <Username|UID|Email> <Email> [verified:true|false]\nUsage: /account verifyemail <Username|UID|Email>\nUsage: /account ban <Username|UID|Email> <permanent|duration> [reason]\nUsage: /account unban <Username|UID|Email>\nUsage: /account baninfo <Username|UID|Email>\nUsage: /account reset [Username|UID|Email]\nUsage: /account delete <Username|UID|Email> confirm\nUsage: /account remove <Username|UID|Email> confirm\nUsage: /account role <Username|UID|Email> <Role>\nUsage: /account setrole <Username|UID|Email> <Role>\nUsage: /account roles";
     public string ResetUsage => "Usage: /account reset [Username|UID|Email]";
     public string AccountNotFound => "Account {0} does not exist.";
     public string ResetStarted => "Resetting account {0}. You will be disconnected and can reconnect to start fresh.";
     public string ResetSuccess => "Account {0} has been reset.";
-    public string DeleteUsage => "Usage: /account delete [Username|UID|Email] confirm";
+    public string DeleteUsage => "Usage: /account delete|remove <Username|UID|Email> confirm";
     public string DeleteRequiresConfirm => "This will permanently delete account {0} and all player data. Run /account delete {0} confirm to continue.";
     public string DeleteStarted => "Deleting account {0}. You will be disconnected.";
     public string DeleteSuccess => "Account {0} has been deleted.";
@@ -482,8 +491,8 @@ public class AccountTextEN
 /// </summary>
 public class UnstuckTextEN
 {
-    public string Desc => "Teleport the player back to the default scene";
-    public string Usage => "Usage: /unstuck [UID]";
+    public string Desc => "Teleport an offline player back to the default scene. Console/admin oriented; the target must be offline.";
+    public string Usage => "Usage: /unstuck <offline UID>";
     public string UnstuckSuccess => "Successfully teleported the player back to the default scene";
     public string UidNotExist => "This UID does not exist!";
     public string PlayerIsOnline => "The player is currently online!";
@@ -495,7 +504,7 @@ public class UnstuckTextEN
 public class SetlevelTextEN
 {
     public string Desc => "Set player level";
-    public string Usage => "Usage: /setlevel [Level]";
+    public string Usage => "Usage: /setlevel <level 1-70>";
     public string SetlevelSuccess => "Level set successfully!";
 }
 
@@ -530,7 +539,7 @@ public class GridTextEN
 public class JsonTextEN
 {
     public string Desc => "Import avatar/relic/light cone data from JSON, or clear existing relics and light cones.";
-    public string Usage => "Usage: /json\n\nUsage: /json [filename/index/absolute path]\n\nUsage: /json clear\n\nUsage：/json export <name> <格式化(true/false)>";
+    public string Usage => "Usage: /json\n\nUsage: /json <filename|index|path>\n\nUsage: /json clear\n\nUsage: /json export [name] [format=true|false]";
     public string ClearInventory => "Cleared relics and light cones for the current player.";
     public string FileNotFound => "File not found: {0}";
     public string ReadOrParseFailed => "Failed to read or parse JSON: {0}";
@@ -562,6 +571,55 @@ public class CalyxTextEN
     public string InvalidMode => "Unknown mode '{0}'. Use /calyx on or /calyx off.";
     public string LoadFailed => "Failed to load freesr file.";
     public string NoCachedData => "No cached freesr data. Run /json <file> or sync via srtools first.";
+}
+
+/// <summary>
+///     path: Game.Command.Clear
+/// </summary>
+public class ClearTextEN
+{
+    public string Desc => "Remove unequipped light cones or relics from the target player's inventory.";
+    public string Usage => "Usage: /clear equipment\n\nUsage: /clear relic";
+    public string ClearEquipment => "Removed {0} unequipped light cone(s).";
+    public string ClearRelic => "Removed {0} unequipped relic(s).";
+}
+
+/// <summary>
+///     path: Game.Command.Debug
+/// </summary>
+public class DebugTextEN
+{
+    public string Desc => "Debug battle setup and custom packet loading.";
+    public string Usage => "Usage: /debug specific <StageID>\n\nUsage: /debug monster <MonsterID>\n\nUsage: /debug customP <PacketJsonPath>";
+    public string InvalidStageId => "Invalid stage or monster ID.";
+    public string SetStageId => "Debug battle override updated.";
+    public string CustomPacketFileNotFound => "Custom packet file not found.";
+    public string CustomPacketFileInvalid => "Custom packet file is invalid or empty.";
+    public string CustomPacketFileLoaded => "Custom packet queue loaded.";
+}
+
+/// <summary>
+///     path: Game.Command.Remove
+/// </summary>
+public class RemoveTextEN
+{
+    public string Desc => "Admin-only removal for owned characters and light cones.";
+    public string Usage => "Usage: /remove character <AvatarID> confirm\n\nUsage: /remove avatar <AvatarID> confirm\n\nUsage: /remove lightcone <UniqueId|ItemID> confirm\n\nUsage: /remove equipment <UniqueId|ItemID> confirm\n\nAdd --dry-run to preview the removal.";
+    public string RequiresConfirm => "This is destructive. Add confirm to run it, or --dry-run to preview.";
+    public string NotFound => "{0} {1} was not found.";
+    public string DryRun => "Dry run: would remove {0} {1}(s).";
+    public string Success => "Removed {0} {1}(s). Reconnect may be required for the client to fully refresh.";
+}
+
+/// <summary>
+///     path: Game.Command.Windy
+/// </summary>
+public class WindyTextEN
+{
+    public string Desc => "Load and send Lua bytecode to the target player.";
+    public string Usage => "Usage: /windy <lua path relative to the Lua folder>";
+    public string Loaded => "Read BYTECODE from Lua script: {0}";
+    public string ReadError => "Error reading Lua script: {0}";
 }
 
 #endregion
