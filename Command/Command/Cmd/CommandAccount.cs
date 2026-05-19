@@ -202,9 +202,8 @@ public class CommandAccount : ICommand
         }
 
         var reason = string.Join(" ", arg.Args.Skip(3)).Trim();
-        account.AddKnownIdentityKeys(GetActiveConnectionIdentityKeys(account.Uid), persist: false);
-        account.Ban(reason, expireAt, persist: false);
-        DatabaseHelper.QueueSaveDatabaseType(account);
+        account.AddKnownIdentityKeys(GetActiveConnectionIdentityKeys(account.Uid));
+        account.Ban(reason, expireAt);
         var banStatus = account.GetBanStatus();
         ConnectionDisconnectHelper.KickBanned(Listener.GetActiveConnection(account.Uid), banStatus);
 
@@ -229,8 +228,7 @@ public class CommandAccount : ICommand
             return;
         }
 
-        account.ClearBan(persist: false);
-        DatabaseHelper.QueueSaveDatabaseType(account);
+        account.ClearBan();
         await arg.SendMsg($"Account {account.Username ?? account.Uid.ToString()} unbanned.");
     }
 
@@ -315,7 +313,7 @@ public class CommandAccount : ICommand
 
         MailHelper.SendWelcomeMail(account.Uid, displayName);
 
-        DatabaseHelper.MarkUidForSave(account.Uid);
+        DatabaseHelper.ToSaveUidList.SafeAdd(account.Uid);
         DatabaseHelper.Instance.SaveDatabase();
 
         if (!isSelfReset)

@@ -22,12 +22,12 @@ public class TokenLoginHandler
             return new JsonResult(LoginResJson.Error(-201, "Game account cache information error"));
 
         if (account.GetBanStatus().IsActive)
-            account.AddKnownIdentityKeys(identityKeys, persist: false);
+            account.AddKnownIdentityKeys(identityKeys);
 
         if (!LoginSessionFactory.CanAuthenticate(account, identityKeys, out var failure))
             return new JsonResult(LoginResJson.Error(failure.Retcode, failure.Message));
 
-        account.AddKnownIdentityKeys(identityKeys, persist: false);
+        account.AddKnownIdentityKeys(identityKeys);
         var dispatchToken = isDispatchToken ? token : account.GenerateDispatchToken();
         var username = account.Username ?? uid;
         return new JsonResult(LoginResJson.Success(
@@ -54,12 +54,12 @@ public class TokenLoginHandler
             return BuildJson(PassportLoginResJson.Error(-201, "Game account cache information error"));
 
         if (account.GetBanStatus().IsActive)
-            account.AddKnownIdentityKeys(identityKeys, persist: false);
+            account.AddKnownIdentityKeys(identityKeys);
 
         if (!LoginSessionFactory.CanAuthenticate(account, identityKeys, out var failure))
             return BuildJson(PassportLoginResJson.Error(failure.Retcode, failure.Message));
 
-        account.AddKnownIdentityKeys(identityKeys, persist: false);
+        account.AddKnownIdentityKeys(identityKeys);
         var dispatchToken = refresh || !isDispatchToken ? account.GenerateDispatchToken() : token;
         return BuildJson(PassportLoginResJson.Success(
             account.Uid.ToString(),

@@ -34,6 +34,9 @@ public class AccountData : BaseDatabaseDataHelper
     [SugarColumn(IsNullable = true)]
     public string? Permissions { get; set; } // type: permission1,permission2,permission3...
 
+    [SugarColumn(IsNullable = true)]
+    public string? PermissionOverrides { get; set; }
+
     [SugarColumn(IsNullable = true)] public bool IsBanned { get; set; }
     [SugarColumn(IsNullable = true)] public string? BanReason { get; set; }
     [SugarColumn(IsNullable = true)] public long BanExpireAt { get; set; }
@@ -106,8 +109,7 @@ public class AccountData : BaseDatabaseDataHelper
         var now = Extensions.GetUnixSec();
         if (BanExpireAt > 0 && BanExpireAt <= now)
         {
-            ClearBan(persist: false);
-            DatabaseHelper.MarkUidForSave(Uid);
+            ClearBan();
             return AccountBanStatus.Inactive;
         }
 
@@ -120,7 +122,7 @@ public class AccountData : BaseDatabaseDataHelper
             identityMatched);
     }
 
-    public void Ban(string? reason, long expireAt, bool persist = true)
+    public void Ban(string? reason, long expireAt)
     {
         IsBanned = true;
         BanReason = string.IsNullOrWhiteSpace(reason) ? "No reason provided" : reason.Trim();
@@ -128,10 +130,7 @@ public class AccountData : BaseDatabaseDataHelper
         if (BanCreatedAt <= 0) BanCreatedAt = Extensions.GetUnixSec();
         BanUpdatedAt = Extensions.GetUnixSec();
         ClearLoginTokens(false);
-        if (persist)
-            PersistAuthState();
-        else
-            DatabaseHelper.MarkUidForSave(Uid);
+        PersistAuthState();
     }
 
     public void ClearBan(bool persist = true)
@@ -151,10 +150,7 @@ public class AccountData : BaseDatabaseDataHelper
             return;
 
         KnownIdentityKeys = string.IsNullOrWhiteSpace(merged) ? null : merged;
-        if (persist)
-            PersistAuthState();
-        else
-            DatabaseHelper.MarkUidForSave(Uid);
+        if (persist) PersistAuthState();
     }
 
     public void SetPassword(string password)
@@ -181,12 +177,8 @@ public class AccountData : BaseDatabaseDataHelper
 
     public string SyncPermissionsWithRole(bool persist = true)
     {
-        var serverOption = ConfigManager.Config.ServerOption;
-        var normalizedRole = CommandRoles.NormalizeRole(Role, serverOption.DefaultPermissionRole,
-            serverOption.PermissionRoles);
-        var rolePermissions = CommandRoles.GetPermissions(normalizedRole, serverOption.DefaultPermissionRole,
-            serverOption.PermissionRoles);
-        var syncedPermissions = CommandPermissions.Normalize(rolePermissions.Concat(serverOption.DefaultPermissions));
+        var normalizedRole = GetNormalizedRole();
+        var syncedPermissions = GetBasePermissions(normalizedRole);
         var changed =
             !string.Equals(Role, normalizedRole, StringComparison.Ordinal) ||
             !string.Equals(Permissions, syncedPermissions, StringComparison.OrdinalIgnoreCase);
@@ -196,12 +188,46 @@ public class AccountData : BaseDatabaseDataHelper
 
         if (changed && persist) PersistAuthState();
 
-        return syncedPermissions;
+        return CommandPermissions.Normalize([syncedPermissions, PermissionOverrides ?? string.Empty]);
     }
 
     public string GetEffectivePermissions()
     {
         return SyncPermissionsWithRole();
+    }
+
+    public string GetPermissionOverrides()
+    {
+        return CommandPermissions.Normalize(PermissionOverrides);
+    }
+
+    public string SetPermissionOverrides(string? permissions, bool persist = true)
+    {
+        var normalizedOverrides = CommandPermissions.Normalize(permissions);
+        PermissionOverrides = string.IsNullOrWhiteSpace(normalizedOverrides) ? null : normalizedOverrides;
+        if (persist) PersistAuthState();
+
+        return GetEffectivePermissions();
+    }
+
+    public string GetBasePermissions()
+    {
+        return GetBasePermissions(GetNormalizedRole());
+    }
+
+    private string GetNormalizedRole()
+    {
+        var serverOption = ConfigManager.Config.ServerOption;
+        return CommandRoles.NormalizeRole(Role, serverOption.DefaultPermissionRole,
+            serverOption.PermissionRoles);
+    }
+
+    private static string GetBasePermissions(string normalizedRole)
+    {
+        var serverOption = ConfigManager.Config.ServerOption;
+        var rolePermissions = CommandRoles.GetPermissions(normalizedRole, serverOption.DefaultPermissionRole,
+            serverOption.PermissionRoles);
+        return CommandPermissions.Normalize(rolePermissions.Concat(serverOption.DefaultPermissions));
     }
 
     public bool HasPermission(string permission)
@@ -355,7 +381,7 @@ public class AccountData : BaseDatabaseDataHelper
 
     private void PersistAuthState()
     {
-        DatabaseHelper.MarkUidForSave(Uid);
+        DatabaseHelper.ToSaveUidList.SafeAdd(Uid);
         DatabaseHelper.SaveDatabaseType(this);
     }
 }

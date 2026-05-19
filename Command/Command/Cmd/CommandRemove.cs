@@ -70,7 +70,7 @@ public class CommandRemove : ICommand
         if (player.LineupManager.GetCurLineup() != null)
             await player.SendPacket(new PacketSyncLineupNotify(player.LineupManager.GetCurLineup()!));
 
-        DatabaseHelper.MarkUidForSave(player.Uid);
+        DatabaseHelper.ToSaveUidList.Add(player.Uid);
         await arg.SendMsg(I18NManager.Translate("Game.Command.Remove.Success",
             "1", I18NManager.Translate("Word.Avatar")));
     }
@@ -139,7 +139,7 @@ public class CommandRemove : ICommand
         if (changedAvatars.Count > 0)
             await player.SendPacket(new PacketPlayerSyncScNotify(changedAvatars));
 
-        DatabaseHelper.MarkUidForSave(player.Uid);
+        DatabaseHelper.ToSaveUidList.Add(player.Uid);
         await arg.SendMsg(I18NManager.Translate("Game.Command.Remove.Success",
             equipment.Count.ToString(), I18NManager.Translate("Word.Equipment")));
     }

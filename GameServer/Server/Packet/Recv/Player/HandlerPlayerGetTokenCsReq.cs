@@ -55,12 +55,11 @@ public class HandlerPlayerGetTokenCsReq : Handler
             var identityKeys = AccountBanHelper.BuildIdentityKeys([],
                 connection.RemoteEndPoint.Address.ToString());
             if (account.GetBanStatus().IsActive)
-                account.AddKnownIdentityKeys(identityKeys, persist: false);
+                account.AddKnownIdentityKeys(identityKeys);
 
             if (AccountBanHelper.TryGetActiveBan(account, identityKeys, out var banStatus))
             {
-                account.ClearLoginTokens(persist: false);
-                DatabaseHelper.QueueSaveDatabaseType(account);
+                account.ClearLoginTokens();
                 await connection.SendPacket(new PacketPlayerGetTokenScRsp(
                     (uint)account.Uid,
                     Retcode.RetNotInWhiteList,
@@ -71,8 +70,7 @@ public class HandlerPlayerGetTokenCsReq : Handler
 
             if (!account.CanLogin())
             {
-                account.ClearLoginTokens(persist: false);
-                DatabaseHelper.QueueSaveDatabaseType(account);
+                account.ClearLoginTokens();
                 await connection.SendPacket(new PacketPlayerGetTokenScRsp(
                     (uint)account.Uid,
                     Retcode.RetNotInWhiteList,
@@ -81,7 +79,7 @@ public class HandlerPlayerGetTokenCsReq : Handler
             }
 
             uid = account.Uid;
-            account.AddKnownIdentityKeys(identityKeys, persist: false);
+            account.AddKnownIdentityKeys(identityKeys);
             account.SyncPermissionsWithRole();
             _logger.Info(
                 $"PlayerGetToken accepted. remote={connection.RemoteEndPoint} uid={uid} token_type={(isDispatchToken ? "dispatch" : "combo")}");

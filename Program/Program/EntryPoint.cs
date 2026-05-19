@@ -403,7 +403,7 @@ public class EntryPoint
 
             avatarData.DatabaseVersion = "20250430";
             updated = true;
-            DatabaseHelper.MarkUidForSave(avatarData.Uid);
+            DatabaseHelper.ToSaveUidList.Add(avatarData.Uid);
         }
 
         if (updated)
