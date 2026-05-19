@@ -420,7 +420,7 @@ public static class AdminPageRenderer
       <section id="admin-workspace" class="workspace hidden">
         <div>
           <div class="toolbar">
-            <input id="search" type="search" placeholder="Search users by UID, username, email, role, nickname, or permissions">
+            <input id="search" type="search" placeholder="Search users by UID, username, email, role, nickname, permissions, or ban reason">
             <button id="refresh-button" type="button">Refresh</button>
             <span id="account-count" class="pill">0 users</span>
           </div>
@@ -438,6 +438,7 @@ public static class AdminPageRenderer
                   <th style="width: 90px;">Level</th>
                   <th style="width: 120px;">Password</th>
                   <th style="width: 110px;">Verified</th>
+                  <th style="width: 100px;">Ban</th>
                 </tr>
               </thead>
               <tbody id="accounts-body"></tbody>
@@ -523,6 +524,24 @@ public static class AdminPageRenderer
                 <input id="edit-password" type="password" disabled autocomplete="new-password">
               </label>
               <button id="set-password-button" type="submit" disabled>Set password</button>
+            </form>
+            <form id="ban-form" class="form-grid">
+              <label>
+                Ban reason
+                <textarea id="ban-reason" disabled spellcheck="false" placeholder="Reason shown to the player"></textarea>
+              </label>
+              <label class="check-row">
+                <input id="ban-permanent" type="checkbox" checked disabled>
+                Permanent ban
+              </label>
+              <label>
+                Ban expires
+                <input id="ban-expires" type="datetime-local" disabled>
+              </label>
+              <div class="actions">
+                <button id="ban-user-button" class="danger" type="submit" disabled>Ban user</button>
+                <button id="unban-user-button" type="button" disabled>Unban user</button>
+              </div>
             </form>
             <form id="delete-form" class="form-grid">
               <label>
@@ -645,7 +664,8 @@ public static class AdminPageRenderer
           account.role,
           account.nickname,
           account.permissions,
-          account.effective_permissions
+          account.effective_permissions,
+          account.ban_reason
         ].join(" ").toLowerCase();
         return !query || text.includes(query);
       });
@@ -670,6 +690,7 @@ public static class AdminPageRenderer
           <td>${account.level ?? ""}</td>
           <td><span class="pill ${account.has_password ? "good" : "warn"}">${account.has_password ? "Set" : "Missing"}</span></td>
           <td><span class="pill ${account.email_verified ? "good" : "warn"}">${account.email_verified ? "Yes" : "No"}</span></td>
+          <td><span class="pill ${account.banned ? "warn" : "good"}">${account.banned ? "Active" : "None"}</span></td>
         `;
         tr.addEventListener("click", () => selectAccount(account.uid));
         accountsBody.appendChild(tr);
@@ -691,11 +712,17 @@ public static class AdminPageRenderer
       document.getElementById("edit-permissions").value = account.permissions || "";
       document.getElementById("edit-effective-permissions").value = account.effective_permissions || "";
       document.getElementById("edit-password").value = "";
+      document.getElementById("ban-reason").value = account.ban_reason || "";
+      document.getElementById("ban-permanent").checked = account.banned ? account.ban_permanent !== false : true;
+      document.getElementById("ban-expires").value = account.ban_expires_at > 0
+        ? unixToDateTimeLocal(account.ban_expires_at)
+        : "";
       document.getElementById("delete-confirm").value = "";
 
-      for (const id of ["edit-username", "edit-email", "edit-email-verified", "edit-role", "edit-permissions", "edit-password", "delete-confirm", "save-user-button", "send-verification-button", "set-password-button", "delete-user-button"]) {
+      for (const id of ["edit-username", "edit-email", "edit-email-verified", "edit-role", "edit-permissions", "edit-password", "ban-reason", "ban-permanent", "ban-expires", "delete-confirm", "save-user-button", "send-verification-button", "set-password-button", "ban-user-button", "unban-user-button", "delete-user-button"]) {
         document.getElementById(id).disabled = false;
       }
+      document.getElementById("ban-expires").disabled = document.getElementById("ban-permanent").checked;
 
       setMessage(editMessage, "", "");
       renderAccounts();
@@ -716,6 +743,21 @@ public static class AdminPageRenderer
         .replaceAll(">", "&gt;")
         .replaceAll('"', "&quot;")
         .replaceAll("'", "&#039;");
+    }
+
+    function unixToDateTimeLocal(value) {
+      const date = new Date(Number(value) * 1000);
+      const local = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
+      return local.toISOString().slice(0, 16);
+    }
+
+    function dateTimeLocalToUnix(value) {
+      if (!value) {
+        return null;
+      }
+
+      const timestamp = new Date(value).getTime();
+      return Number.isFinite(timestamp) ? Math.floor(timestamp / 1000) : null;
     }
 
     document.getElementById("login-form").addEventListener("submit", async event => {
@@ -833,6 +875,53 @@ public static class AdminPageRenderer
       }
     });
 
+    document.getElementById("ban-permanent").addEventListener("change", event => {
+      document.getElementById("ban-expires").disabled = event.currentTarget.checked;
+    });
+
+    document.getElementById("ban-form").addEventListener("submit", async event => {
+      event.preventDefault();
+      setMessage(editMessage, "Banning user...", "");
+
+      try {
+        const uid = selectedUidOrThrow();
+        const permanent = document.getElementById("ban-permanent").checked;
+        const expireAt = permanent ? null : dateTimeLocalToUnix(document.getElementById("ban-expires").value);
+        if (!permanent && !expireAt) {
+          throw new Error("Choose when the timed ban expires");
+        }
+
+        await api(`/admin/api/accounts/${uid}/ban`, {
+          method: "POST",
+          body: JSON.stringify({
+            reason: document.getElementById("ban-reason").value.trim(),
+            permanent,
+            expire_at: expireAt
+          })
+        });
+
+        await loadAccounts();
+        selectAccount(uid);
+        setMessage(editMessage, "User banned.", "good");
+      } catch (error) {
+        setMessage(editMessage, error instanceof Error ? error.message : "Ban failed", "bad");
+      }
+    });
+
+    document.getElementById("unban-user-button").addEventListener("click", async () => {
+      setMessage(editMessage, "Removing ban...", "");
+
+      try {
+        const uid = selectedUidOrThrow();
+        await api(`/admin/api/accounts/${uid}/ban`, { method: "DELETE" });
+        await loadAccounts();
+        selectAccount(uid);
+        setMessage(editMessage, "User unbanned.", "good");
+      } catch (error) {
+        setMessage(editMessage, error instanceof Error ? error.message : "Unban failed", "bad");
+      }
+    });
+
     document.getElementById("send-verification-button").addEventListener("click", async () => {
       setMessage(editMessage, "Sending verification email...", "");
 
@@ -865,7 +954,7 @@ public static class AdminPageRenderer
         await api(`/admin/api/accounts/${uid}`, { method: "DELETE" });
         state.selectedUid = null;
         await loadAccounts();
-        for (const id of ["edit-username", "edit-email", "edit-email-verified", "edit-role", "edit-permissions", "edit-effective-permissions", "edit-password", "delete-confirm", "save-user-button", "send-verification-button", "set-password-button", "delete-user-button"]) {
+        for (const id of ["edit-username", "edit-email", "edit-email-verified", "edit-role", "edit-permissions", "edit-effective-permissions", "edit-password", "ban-reason", "ban-permanent", "ban-expires", "delete-confirm", "save-user-button", "send-verification-button", "set-password-button", "ban-user-button", "unban-user-button", "delete-user-button"]) {
           const element = document.getElementById(id);
           element.disabled = true;
           if ("value" in element) {

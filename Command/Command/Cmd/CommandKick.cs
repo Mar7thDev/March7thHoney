@@ -1,5 +1,6 @@
 using March7thHoney.GameServer.Server.Packet.Send.Player;
 using March7thHoney.Internationalization;
+using March7thHoney.Proto;
 
 namespace March7thHoney.Command.Command.Cmd;
 
@@ -15,7 +16,7 @@ public class CommandKick : ICommand
             return;
         }
 
-        await arg.Target.SendPacket(new PacketPlayerSqueezedScNotify());
+        await arg.Target.SendPacket(new PacketPlayerSqueezedScNotify(KickType.KickByGm));
         await arg.SendMsg(I18NManager.Translate("Game.Command.Kick.PlayerKicked", arg.Target.Player!.Data.Name!));
         arg.Target.Stop();
     }

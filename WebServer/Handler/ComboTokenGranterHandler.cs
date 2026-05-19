@@ -10,7 +10,8 @@ public class ComboTokenGranterHandler
 {
     private static readonly Logger Logger = new("ComboLoginV2");
 
-    public JsonResult Handle(int app_id, int channel_id, string data, string device, string sign)
+    public JsonResult Handle(int app_id, int channel_id, string data, string device, string sign,
+        IReadOnlyCollection<string> identityKeys)
     {
         var tokenData = JsonConvert.DeserializeObject<LoginTokenData>(data);
         var res = new ComboTokenResJson();
@@ -51,14 +52,18 @@ public class ComboTokenGranterHandler
             return new JsonResult(res);
         }
 
-        if (!LoginSessionFactory.CanAuthenticate(account, out var failure))
+        if (account.GetBanStatus().IsActive)
+            account.AddKnownIdentityKeys(identityKeys);
+
+        if (!LoginSessionFactory.CanAuthenticate(account, identityKeys, out var failure))
         {
-            Logger.Warn($"Combo login blocked pending email verification. uid={uid}");
+            Logger.Warn($"Combo login blocked. uid={uid} retcode={failure.Retcode}");
             res.retcode = failure.Retcode;
             res.message = failure.Message;
             return new JsonResult(res);
         }
 
+        account.AddKnownIdentityKeys(identityKeys);
         Logger.Info(
             $"Combo login cache validated. uid={uid} token_type={(isDispatchToken ? "dispatch" : "combo")} token_len={tokenData.token?.Length ?? 0}");
         res.message = "OK";

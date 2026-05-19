@@ -5,12 +5,18 @@ public class LoginReqJson
     public string? account { get; set; }
     public string? password { get; set; }
     public bool is_crypto { get; set; }
+    public string? device { get; set; }
+    public string? device_id { get; set; }
+    public string? device_fp { get; set; }
 }
 
 public class PassportLoginReqJson
 {
     public string? account { get; set; }
     public string? password { get; set; }
+    public string? device { get; set; }
+    public string? device_id { get; set; }
+    public string? device_fp { get; set; }
 }
 
 public class VerifyReqJson
@@ -50,6 +56,9 @@ public class RegisterReqJson
     public string? confirm { get; set; }
     public string? confirm_password { get; set; }
     public string? confirmPassword { get; set; }
+    public string? device { get; set; }
+    public string? device_id { get; set; }
+    public string? device_fp { get; set; }
 }
 
 public class SendVerificationEmailReqJson
