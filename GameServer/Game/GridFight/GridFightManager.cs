@@ -540,16 +540,20 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
         return GridFightBootstrapSyncBuilder.Build();
     }
 
-    public GridFightSettleNotify BuildSettleNotify()
+    public GridFightSettleNotify BuildSettleNotify(GridFightSettleReason? overrideReason = null)
     {
         var inst = GridFightInstance;
+        var chapterId = inst?.CurrentChapterId ?? 1u;
+        var reason = overrideReason ?? inst?.LastSettleReason ?? GridFightSettleReason.CdphdhnlhaoClnlgbcmoij;
         var notify = new GridFightSettleNotify
         {
-            BHLDAEKNMCD = inst?.KeepWinCnt ?? 0,
+            BHLDAEKNMCD = 140,
             EDKIICIKJKL = MaxDivisionId(),
             OHOPKAAKOGF = MaxDivisionId(),
             EDKJMPACHNJ = new GridFightFinishInfo
             {
+                Reason = reason,
+                HBNHKPDMGIP = chapterId,
                 BCHPAOCOHIL = new FCBEHGJBJCN
                 {
                     AMNJHJJMPJF = { inst?.CurrentEquipDraft ?? new List<uint> { 35030205u, 35030405u, 35030208u } }
@@ -559,7 +563,7 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
                     BBDOCJGAEEJ = inst?.DivisionId ?? MaxDivisionId(),
                     BCOLJFHDLLD = inst?.LineupHp ?? 80,
                     BFNPCJOMGFL = (uint)(inst?.BattlesFinished ?? 3),
-                    DCPKPNLKGMM = inst?.Level ?? 1,
+                    DCPKPNLKGMM = chapterId,
                     IJEIEJLPGGJ = inst?.LineupMaxHp ?? 100,
                     NDOCIKPLKIF = inst?.NDOCIKPLKIF ?? 1600,
                     SectionId = inst?.SectionId ?? 1
@@ -577,6 +581,43 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
             notify.EDKJMPACHNJ.IAKFPMOEJLF.Add(new DIBJGAKOCLO { AffixId = affixId });
         foreach (var equip in inst?.Equipments ?? new List<GridFightEquipmentInfo>())
             notify.EDKJMPACHNJ.GridFightEquipmentList.Add(equip);
+
+        if (inst != null)
+        {
+            if (inst.LastBattleDamageStt != null)
+            {
+                foreach (var row in inst.LastBattleDamageStt.EABPCKEDDBH)
+                    notify.EDKJMPACHNJ.EABPCKEDDBH.Add(row.Clone());
+                foreach (var trait in inst.LastBattleDamageStt.PHDEOPEJIID)
+                    notify.EDKJMPACHNJ.PHDEOPEJIID.Add(trait.Clone());
+            }
+
+            foreach (var trait in inst.CheckTrait())
+            {
+                var settleTrait = new GridGameTraitInfo
+                {
+                    TraitId = trait.TraitId,
+                    NKFDBEHPNLG = trait.NKFDBEHPNLG,
+                    DFNCFOKPMCJ = trait.NKFDBEHPNLG
+                };
+                foreach (var m in trait.MEEPFKLLIJB)
+                    settleTrait.GridFightTraitMemberUniqueIdList.Add(m.IPDCMHIEKIJ);
+                notify.EDKJMPACHNJ.GridFightTraitInfo.Add(settleTrait);
+            }
+
+            foreach (var (pos, uniqueId) in inst.UniqueIdByPos.OrderBy(kv => kv.Key))
+            {
+                if (pos == 0 || pos > 13) continue;
+                if (uniqueId == 0 || !inst.RoleByUniqueId.TryGetValue(uniqueId, out var roleId)) continue;
+                notify.EDKJMPACHNJ.GridGameRoleList.Add(new GridGameRoleInfo
+                {
+                    Id = roleId,
+                    Pos = pos,
+                    UniqueId = uniqueId,
+                    RoleStar = inst.RoleStarByUniqueId.GetValueOrDefault(uniqueId, 1u)
+                });
+            }
+        }
 
         return notify;
     }
