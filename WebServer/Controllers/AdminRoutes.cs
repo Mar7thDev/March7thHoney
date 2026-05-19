@@ -82,8 +82,12 @@ public class AdminRoutes : ControllerBase
 
         request ??= new AdminCreateAccountRequest();
         var username = (request.username ?? string.Empty).Trim();
+        var email = (request.email ?? string.Empty).Trim();
         if (string.IsNullOrWhiteSpace(username))
             return Error("Username cannot be empty");
+
+        if (string.IsNullOrWhiteSpace(email))
+            return Error("Email cannot be empty");
 
         if (string.IsNullOrWhiteSpace(request.password))
             return Error("Password cannot be empty");
@@ -92,7 +96,8 @@ public class AdminRoutes : ControllerBase
         try
         {
             var role = NormalizeRole(request.role);
-            AccountHelper.CreateAccount(username, request.password, uid, role);
+            AccountHelper.CreateAccount(username, email, request.password, uid, role,
+                request.email_verified.GetValueOrDefault());
             var account = AccountData.GetAccountByUserName(username);
             if (account == null)
                 return Error("Failed to create account");
@@ -111,7 +116,7 @@ public class AdminRoutes : ControllerBase
     }
 
     [HttpPut("/admin/api/accounts/{uid:int}")]
-    public JsonResult UpdateAccount([FromRoute] int uid, [FromBody] AdminUpdateAccountRequest? request)
+    public async Task<JsonResult> UpdateAccount([FromRoute] int uid, [FromBody] AdminUpdateAccountRequest? request)
     {
         if (!IsAuthorized(out var unauthorized))
             return unauthorized;
@@ -122,19 +127,48 @@ public class AdminRoutes : ControllerBase
             return Error("Account not found", statusCode: StatusCodes.Status404NotFound);
 
         var username = (request.username ?? string.Empty).Trim();
+        var email = (request.email ?? string.Empty).Trim();
         if (string.IsNullOrWhiteSpace(username))
             return Error("Username cannot be empty");
+
+        if (string.IsNullOrWhiteSpace(email))
+            return Error("Email cannot be empty");
 
         var existing = AccountData.GetAccountByUserName(username);
         if (existing != null && existing.Uid != uid)
             return Error("Username already exists");
 
-        account.Username = username;
-        account.SetRole(request.role);
+        var existingEmail = AccountData.GetAccountByEmail(email);
+        if (existingEmail != null && existingEmail.Uid != uid)
+            return Error("Email already exists");
+
+        var previousNormalizedEmail = account.NormalizedEmail;
+        if (string.IsNullOrWhiteSpace(previousNormalizedEmail))
+            previousNormalizedEmail = AccountData.NormalizeEmail(account.Email);
+        var previousEmailVerified = account.IsEmailVerified;
+        var requestedEmailVerified = request.email_verified.GetValueOrDefault(account.IsEmailVerified);
+
+        try
+        {
+            account.Username = username;
+            AccountHelper.SetEmail(account, email, requestedEmailVerified);
+            account.SetRole(request.role);
+        }
+        catch (Exception ex)
+        {
+            return Error(ex.Message);
+        }
+
+        var emailSent = false;
+        var emailChanged = !string.Equals(previousNormalizedEmail, account.NormalizedEmail, StringComparison.OrdinalIgnoreCase);
+        var changedFromVerifiedToUnverified = previousEmailVerified && !account.IsEmailVerified;
+        if (!account.IsEmailVerified && (emailChanged || changedFromVerifiedToUnverified))
+            emailSent = await AccountRecoveryHandler.SendVerificationEmailForAccount(account, Request);
 
         return Success(new
         {
-            account = ToAccountSummary(account)
+            account = ToAccountSummary(account),
+            email_sent = emailSent
         });
     }
 
@@ -161,6 +195,28 @@ public class AdminRoutes : ControllerBase
         {
             return Error(ex.Message);
         }
+    }
+
+    [HttpPost("/admin/api/accounts/{uid:int}/email/verification")]
+    public async Task<JsonResult> SendAccountVerificationEmail([FromRoute] int uid)
+    {
+        if (!IsAuthorized(out var unauthorized))
+            return unauthorized;
+
+        var account = AccountData.GetAccountByUid(uid);
+        if (account == null)
+            return Error("Account not found", statusCode: StatusCodes.Status404NotFound);
+
+        if (string.IsNullOrWhiteSpace(account.Email))
+            return Error("Account does not have an email address");
+
+        var emailSent = await AccountRecoveryHandler.SendVerificationEmailForAccount(account, Request,
+            markUnverified: true);
+        return Success(new
+        {
+            account = ToAccountSummary(account),
+            email_sent = emailSent
+        });
     }
 
     [HttpDelete("/admin/api/accounts/{uid:int}")]
@@ -214,6 +270,9 @@ public class AdminRoutes : ControllerBase
         return new AccountSummary(
             account.Uid,
             account.Username ?? "",
+            account.Email ?? "",
+            account.IsEmailVerified,
+            account.EmailVerifiedAt,
             player?.Name ?? "",
             player?.Level,
             account.HasPassword(),
@@ -272,17 +331,21 @@ public class AdminRoutes : ControllerBase
     public class AdminCreateAccountRequest
     {
         public string? username { get; set; }
+        public string? email { get; set; }
         public string? password { get; set; }
         public int? uid { get; set; }
         public string? role { get; set; }
         public string? permissions { get; set; }
+        public bool? email_verified { get; set; }
     }
 
     public class AdminUpdateAccountRequest
     {
         public string? username { get; set; }
+        public string? email { get; set; }
         public string? role { get; set; }
         public string? permissions { get; set; }
+        public bool? email_verified { get; set; }
     }
 
     public class AdminSetPasswordRequest
@@ -293,6 +356,9 @@ public class AdminRoutes : ControllerBase
     private readonly record struct AccountSummary(
         int uid,
         string username,
+        string email,
+        bool email_verified,
+        long email_verified_at,
         string nickname,
         int? level,
         bool has_password,

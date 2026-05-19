@@ -16,11 +16,15 @@ public class TokenLoginHandler
         if (account == null || !account.ValidateDispatchToken(token))
             return new JsonResult(LoginResJson.Error(-201, "Game account cache information error"));
 
+        if (!LoginSessionFactory.CanAuthenticate(account, out var failure))
+            return new JsonResult(LoginResJson.Error(failure.Retcode, failure.Message));
+
         var username = account.Username ?? uid;
         return new JsonResult(LoginResJson.Success(
             account.Uid.ToString(),
             username,
-            username + "@StarRail.com",
+            account.Email ?? string.Empty,
+            account.IsEmailVerified,
             token));
     }
 
@@ -36,11 +40,15 @@ public class TokenLoginHandler
         if (!account.ValidateDispatchToken(token))
             return BuildJson(PassportLoginResJson.Error(-201, "Game account cache information error"));
 
+        if (!LoginSessionFactory.CanAuthenticate(account, out var failure))
+            return BuildJson(PassportLoginResJson.Error(failure.Retcode, failure.Message));
+
         var dispatchToken = refresh ? account.GenerateDispatchToken() : account.DispatchToken!;
         return BuildJson(PassportLoginResJson.Success(
             account.Uid.ToString(),
             account.Username ?? uid.ToString(),
-            (account.Username ?? uid.ToString()) + "@StarRail.com",
+            account.Email ?? string.Empty,
+            account.IsEmailVerified,
             dispatchToken));
     }
 

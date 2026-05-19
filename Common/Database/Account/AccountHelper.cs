@@ -1,6 +1,7 @@
 using March7thHoney.Database.Mail;
 using March7thHoney.Command;
 using March7thHoney.Util;
+using System.Net.Mail;
 
 namespace March7thHoney.Database.Account;
 
@@ -13,14 +14,28 @@ public static class AccountHelper
 
     public static void CreateAccount(string username, string? password, int uid)
     {
-        CreateAccount(username, password, uid, null);
+        CreateAccount(username, null, password, uid, null);
     }
 
     public static void CreateAccount(string username, string? password, int uid, string? role)
     {
+        CreateAccount(username, null, password, uid, role);
+    }
+
+    public static void CreateAccount(string username, string email, string? password, int uid)
+    {
+        CreateAccount(username, email, password, uid, null);
+    }
+
+    public static void CreateAccount(string username, string? email, string? password, int uid, string? role,
+        bool emailVerified = false)
+    {
         username = username.Trim();
         if (string.IsNullOrWhiteSpace(username)) throw new Exception("Username cannot be empty");
+        email = NormalizeAndValidateEmail(email);
+
         if (AccountData.GetAccountByUserName(username) != null) throw new Exception("Account already exists");
+        if (AccountData.GetAccountByEmail(email) != null) throw new Exception("Email already exists");
         if (uid != 0 && AccountData.GetAccountByUid(uid) != null) throw new Exception("UID already exists");
 
         var newUid = uid;
@@ -36,6 +51,10 @@ public static class AccountHelper
         {
             Uid = newUid,
             Username = username,
+            Email = email,
+            NormalizedEmail = AccountData.NormalizeEmail(email),
+            IsEmailVerified = emailVerified,
+            EmailVerifiedAt = emailVerified ? Extensions.GetUnixSec() : 0,
             Role = roleName
         };
         account.SyncPermissionsWithRole(false);
@@ -57,6 +76,35 @@ public static class AccountHelper
     {
         ValidatePassword(password);
         account.SetPassword(password);
+    }
+
+    public static void SetEmail(AccountData account, string email, bool verified)
+    {
+        email = NormalizeAndValidateEmail(email);
+        var existing = AccountData.GetAccountByEmail(email);
+        if (existing != null && existing.Uid != account.Uid) throw new Exception("Email already exists");
+
+        account.SetEmail(email, verified);
+    }
+
+    public static string NormalizeAndValidateEmail(string? email)
+    {
+        if (string.IsNullOrWhiteSpace(email))
+            throw new Exception("Email cannot be empty");
+
+        email = email.Trim();
+        try
+        {
+            var address = new MailAddress(email);
+            if (!string.Equals(address.Address, email, StringComparison.OrdinalIgnoreCase))
+                throw new Exception();
+        }
+        catch
+        {
+            throw new Exception("Email is invalid");
+        }
+
+        return email;
     }
 
     public static void ValidatePassword(string password)

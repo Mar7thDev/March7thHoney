@@ -25,7 +25,8 @@ public class PassportLoginResJson
         };
     }
 
-    public static PassportLoginResJson Success(string uid, string username, string email, string token)
+    public static PassportLoginResJson Success(string uid, string username, string email, bool isEmailVerified,
+        string token)
     {
         var response = new PassportLoginResJson
         {
@@ -38,7 +39,7 @@ public class PassportLoginResJson
         response.data.user_info.mid = uid;
         response.data.user_info.account_name = username;
         response.data.user_info.email = email;
-        response.data.user_info.is_email_verify = "0";
+        response.data.user_info.is_email_verify = isEmailVerified ? "1" : "0";
         response.data.user_info.area_code = "**";
         response.data.user_info.mobile = "";
         response.data.user_info.safe_area_code = "";
@@ -52,8 +53,8 @@ public class PassportLoginResJson
         response.data.user_info.country = "CN";
         response.data.user_info.password_time = "1";
         response.data.user_info.is_adult = 0;
-        response.data.user_info.unmasked_email = "";
-        response.data.user_info.unmasked_email_type = 0;
+        response.data.user_info.unmasked_email = email;
+        response.data.user_info.unmasked_email_type = string.IsNullOrWhiteSpace(email) ? 0 : 1;
         response.data.token.token_type = "1";
         response.data.token.token = token;
         response.data.ext_user_info.guardian_email = "";

@@ -6,6 +6,8 @@ namespace March7thHoney.WebServer.Handler;
 internal static class LoginSessionFactory
 {
     public const string InvalidCredentialsMessage = "Incorrect account or password";
+    public static string EmailVerificationRequiredMessage =>
+        ConfigManager.Config.ServerOption.Auth.EmailVerificationRequiredMessage;
 
     public static bool TryCreateSession(string? account, string? password, out LoginSession session, out LoginFailure failure)
     {
@@ -17,32 +19,14 @@ internal static class LoginSessionFactory
         if (string.IsNullOrWhiteSpace(normalizedAccount) || string.IsNullOrWhiteSpace(normalizedPassword))
             return false;
 
-        var accountData = AccountData.GetAccountByUserName(normalizedAccount);
+        var accountData = AccountData.GetAccountByLoginIdentifier(normalizedAccount);
         if (accountData == null)
-        {
-            if (!ConfigManager.Config.ServerOption.AutoCreateUser ||
-                !ConfigManager.Config.ServerOption.Auth.EnableRegistration)
-                return false;
-
-            try
-            {
-                AccountHelper.CreateAccount(normalizedAccount, normalizedPassword, 0);
-            }
-            catch (Exception ex)
-            {
-                failure = new LoginFailure(-201, ex.Message);
-                return false;
-            }
-
-            accountData = AccountData.GetAccountByUserName(normalizedAccount);
-            if (accountData == null)
-            {
-                failure = new LoginFailure(-201, "Failed to create account");
-                return false;
-            }
-        }
+            return false;
 
         var canonicalAccount = AccountData.GetAccountByUid(accountData.Uid) ?? accountData;
+        if (!CanAuthenticate(canonicalAccount, out failure))
+            return false;
+
         if (!canonicalAccount.HasPassword())
         {
             try
@@ -63,9 +47,25 @@ internal static class LoginSessionFactory
         var username = canonicalAccount.Username ?? normalizedAccount;
         canonicalAccount.SyncPermissionsWithRole();
         var dispatchToken = canonicalAccount.GenerateDispatchToken();
-        session = new LoginSession(canonicalAccount.Uid.ToString(), username, username + "@StarRail.com",
+        session = new LoginSession(
+            canonicalAccount.Uid.ToString(),
+            username,
+            canonicalAccount.Email ?? string.Empty,
+            canonicalAccount.IsEmailVerified,
             dispatchToken);
         return true;
+    }
+
+    public static bool CanAuthenticate(AccountData account, out LoginFailure failure)
+    {
+        failure = LoginFailure.InvalidCredentials();
+
+        if (account.CanLogin())
+            return true;
+
+        account.ClearLoginTokens();
+        failure = LoginFailure.EmailVerificationRequired();
+        return false;
     }
 
     public static bool TryCreateSession(string? account, string? password, out LoginSession session, out string errorMessage)
@@ -82,7 +82,17 @@ internal static class LoginSessionFactory
         {
             return new LoginFailure(-201, InvalidCredentialsMessage);
         }
+
+        public static LoginFailure EmailVerificationRequired()
+        {
+            return new LoginFailure(-202, EmailVerificationRequiredMessage);
+        }
     }
 
-    internal readonly record struct LoginSession(string Uid, string Username, string Email, string DispatchToken);
+    internal readonly record struct LoginSession(
+        string Uid,
+        string Username,
+        string Email,
+        bool IsEmailVerified,
+        string DispatchToken);
 }

@@ -40,6 +40,14 @@ public class ComboTokenGranterHandler
             return new JsonResult(res);
         }
 
+        if (!LoginSessionFactory.CanAuthenticate(account, out var failure))
+        {
+            Logger.Warn($"Combo login blocked pending email verification. uid={uid}");
+            res.retcode = failure.Retcode;
+            res.message = failure.Message;
+            return new JsonResult(res);
+        }
+
         Logger.Info($"Combo login cache validated. uid={uid} token_len={tokenData.token?.Length ?? 0}");
         res.message = "OK";
         res.data = new ComboTokenResJson.LoginData(account.Uid.ToString(), account.GenerateComboToken());

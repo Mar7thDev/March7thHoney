@@ -1,4 +1,5 @@
 using System.Security.Cryptography;
+using System.Text;
 
 namespace March7thHoney.Util.Security;
 
@@ -11,6 +12,32 @@ public static class AuthSecurity
     public static string GenerateSessionToken(int byteCount = 32)
     {
         return Convert.ToHexString(RandomNumberGenerator.GetBytes(byteCount));
+    }
+
+    public static string HashToken(string token)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(token);
+
+        var hash = SHA256.HashData(Encoding.UTF8.GetBytes(token));
+        return Convert.ToBase64String(hash);
+    }
+
+    public static bool VerifyToken(string token, string? tokenHash)
+    {
+        if (string.IsNullOrWhiteSpace(token) || string.IsNullOrWhiteSpace(tokenHash))
+            return false;
+
+        try
+        {
+            var providedHash = Convert.FromBase64String(HashToken(token));
+            var storedHash = Convert.FromBase64String(tokenHash);
+            return providedHash.Length == storedHash.Length &&
+                   CryptographicOperations.FixedTimeEquals(providedHash, storedHash);
+        }
+        catch
+        {
+            return false;
+        }
     }
 
     public static (string Salt, string Hash, int Iterations) HashPassword(string password)

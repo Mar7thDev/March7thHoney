@@ -128,6 +128,37 @@ public class AuthOption
     public int ComboTokenExpireMinutes { get; set; } = 60;
     public bool EnableRegistration { get; set; } = true;
     public string RegistrationPageIcon { get; set; } = "M7";
+    public bool SendVerificationEmailOnRegister { get; set; } = true;
+    public bool RequireVerifiedEmailForLogin { get; set; } = true;
+    public string EmailVerificationRequiredMessage { get; set; } =
+        "Email verification required. Please check your inbox and verify your account before entering the server.";
+    public int EmailVerificationTokenExpireMinutes { get; set; } = 1440;
+    public int PasswordResetTokenExpireMinutes { get; set; } = 60;
+    public EmailOption Email { get; set; } = new();
+}
+
+public class EmailOption
+{
+    public bool Enabled { get; set; } = false;
+    public string PublicBaseUrl { get; set; } = "";
+    public SmtpOption Smtp { get; set; } = new();
+    public string VerificationSubject { get; set; } = "Verify your {serverName} email";
+    public string VerificationBody { get; set; } =
+        "Hi {username},\n\nVerify your email for {serverName}:\n{link}\n\nThis link expires in {minutes} minutes.";
+    public string PasswordResetSubject { get; set; } = "Reset your {serverName} password";
+    public string PasswordResetBody { get; set; } =
+        "Hi {username},\n\nReset your password for {serverName}:\n{link}\n\nThis link expires in {minutes} minutes.";
+}
+
+public class SmtpOption
+{
+    public string Host { get; set; } = "";
+    public int Port { get; set; } = 587;
+    public bool EnableSsl { get; set; } = true;
+    public string Username { get; set; } = "";
+    public string Password { get; set; } = "";
+    public string FromAddress { get; set; } = "";
+    public string FromName { get; set; } = "March7thHoney";
 }
 
 public class WelcomeMailConfig

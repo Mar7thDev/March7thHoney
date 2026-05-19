@@ -15,27 +15,28 @@ public class CommandAccount : ICommand
     [CommandMethod("create")]
     public async ValueTask CreateAccount(CommandArg arg)
     {
-        if (arg.Args.Count < 2)
+        if (arg.Args.Count < 3)
         {
             await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.InvalidArguments"));
             return;
         }
 
         var account = arg.Args[1];
+        var email = arg.Args[2];
         string? password = null;
         var uid = 0;
 
-        if (arg.Args.Count > 2)
-            if (int.TryParse(arg.Args[2], out uid))
+        if (arg.Args.Count > 3)
+            if (int.TryParse(arg.Args[3], out uid))
             {
             }
             else
             {
-                password = arg.Args[2];
+                password = arg.Args[3];
             }
 
-        if (arg.Args.Count > 3)
-            if (!int.TryParse(arg.Args[3], out uid))
+        if (arg.Args.Count > 4)
+            if (!int.TryParse(arg.Args[4], out uid))
             {
                 await arg.SendMsg(I18NManager.Translate("Game.Command.Account.InvalidUid"));
                 return;
@@ -47,6 +48,12 @@ public class CommandAccount : ICommand
             return;
         }
 
+        if (AccountData.GetAccountByEmail(email) != null)
+        {
+            await arg.SendMsg($"Email {email} already exists.");
+            return;
+        }
+
         if (uid != 0 && AccountData.GetAccountByUid(uid) != null)
         {
             await arg.SendMsg(string.Format(I18NManager.Translate("Game.Command.Account.DuplicateUID"), uid));
@@ -55,7 +62,7 @@ public class CommandAccount : ICommand
 
         try
         {
-            AccountHelper.CreateAccount(account, password, uid);
+            AccountHelper.CreateAccount(account, email, password, uid);
             await arg.SendMsg(string.IsNullOrWhiteSpace(password)
                 ? $"{I18NManager.Translate("Game.Command.Account.CreateSuccess", account)} Password is not set yet. Use /account setpassword {account} <password> before login."
                 : I18NManager.Translate("Game.Command.Account.CreateSuccess", account));
@@ -77,7 +84,7 @@ public class CommandAccount : ICommand
 
         var accountName = arg.Args[1];
         var password = arg.Args[2];
-        var account = AccountData.GetAccountByUserName(accountName);
+        var account = ResolveAccount(accountName);
         var canonicalAccount = account == null ? null : AccountData.GetAccountByUid(account.Uid) ?? account;
         if (canonicalAccount == null)
         {
@@ -94,6 +101,57 @@ public class CommandAccount : ICommand
         {
             await arg.SendMsg(I18NManager.Translate("Game.Command.Account.CreateError", ex.Message));
         }
+    }
+
+    [CommandMethod("setemail")]
+    public async ValueTask SetEmail(CommandArg arg)
+    {
+        if (arg.Args.Count < 3)
+        {
+            await arg.SendMsg("Usage: /account setemail [Username|UID|Email] [Email] [verified:true|false]");
+            return;
+        }
+
+        var accountKey = arg.Args[1];
+        var email = arg.Args[2];
+        var verified = arg.Args.Count > 3 && bool.TryParse(arg.Args[3], out var parsed) && parsed;
+        var account = ResolveAccount(accountKey);
+        if (account == null)
+        {
+            await arg.SendMsg($"Account {accountKey} does not exist.");
+            return;
+        }
+
+        try
+        {
+            AccountHelper.SetEmail(account, email, verified);
+            await arg.SendMsg($"Email updated for account {account.Username ?? account.Uid.ToString()}.");
+        }
+        catch (Exception ex)
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Account.CreateError", ex.Message));
+        }
+    }
+
+    [CommandMethod("verifyemail")]
+    public async ValueTask VerifyEmail(CommandArg arg)
+    {
+        if (arg.Args.Count < 2)
+        {
+            await arg.SendMsg("Usage: /account verifyemail [Username|UID|Email]");
+            return;
+        }
+
+        var accountKey = arg.Args[1];
+        var account = ResolveAccount(accountKey);
+        if (account == null)
+        {
+            await arg.SendMsg($"Account {accountKey} does not exist.");
+            return;
+        }
+
+        account.MarkEmailVerified();
+        await arg.SendMsg($"Email verified for account {account.Username ?? account.Uid.ToString()}.");
     }
 
     [CommandMethod("setrole")]
@@ -164,6 +222,64 @@ public class CommandAccount : ICommand
             await arg.SendMsg(I18NManager.Translate("Game.Command.Account.ResetSuccess", displayName));
     }
 
+    [CommandMethod("delete")]
+    public async ValueTask Delete(CommandArg arg)
+    {
+        await DeleteInternal(arg);
+    }
+
+    [CommandMethod("remove")]
+    public async ValueTask Remove(CommandArg arg)
+    {
+        await DeleteInternal(arg);
+    }
+
+    private static async ValueTask DeleteInternal(CommandArg arg)
+    {
+        if (arg.Args.Count < 2)
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Account.DeleteUsage"));
+            return;
+        }
+
+        var accountKey = arg.Args[1];
+        var account = ResolveAccount(accountKey);
+        if (account == null)
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Account.AccountNotFound", accountKey));
+            return;
+        }
+
+        if (arg.Args.Count < 3 || !string.Equals(arg.Args[2], "confirm", StringComparison.OrdinalIgnoreCase))
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Account.DeleteRequiresConfirm",
+                account.Username ?? account.Uid.ToString()));
+            return;
+        }
+
+        if (DatabaseHelper.Instance == null)
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Account.CreateError", "Database is not initialized"));
+            return;
+        }
+
+        var displayName = account.Username ?? account.Uid.ToString();
+        var isSelfDelete = account.Uid == arg.Sender.GetSender();
+        if (isSelfDelete) await arg.SendMsg(I18NManager.Translate("Game.Command.Account.DeleteStarted", displayName));
+
+        var activeConnection = Listener.GetActiveConnection(account.Uid);
+        if (activeConnection != null)
+        {
+            await activeConnection.SendPacket(new PacketPlayerSqueezedScNotify());
+            activeConnection.Stop();
+        }
+
+        DatabaseHelper.Instance.DeleteUidData(account.Uid);
+
+        if (!isSelfDelete)
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Account.DeleteSuccess", displayName));
+    }
+
     private static async ValueTask SetRoleInternal(CommandArg arg)
     {
         if (arg.Args.Count < 3)
@@ -196,7 +312,7 @@ public class CommandAccount : ICommand
         if (int.TryParse(accountKey, out var uid))
             return AccountData.GetAccountByUid(uid);
 
-        var account = AccountData.GetAccountByUserName(accountKey);
+        var account = AccountData.GetAccountByLoginIdentifier(accountKey);
         return account == null ? null : AccountData.GetAccountByUid(account.Uid) ?? account;
     }
 
