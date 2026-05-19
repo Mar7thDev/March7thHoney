@@ -38,6 +38,7 @@ public class HandlerPlayerGetTokenCsReq : Handler
             }
 
             uid = account.Uid;
+            account.SyncPermissionsWithRole();
         }
         else
         {

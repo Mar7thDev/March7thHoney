@@ -2,7 +2,7 @@ using March7thHoney.Internationalization;
 
 namespace March7thHoney.Command.Command.Cmd;
 
-[CommandInfo("raid", "Game.Command.Raid.Desc", "Game.Command.Raid.Usage", permission: CommandPermissions.Progress)]
+[CommandInfo("raid", "Game.Command.Raid.Desc", "Game.Command.Raid.Usage", permission: CommandPermissions.Raid)]
 public class CommandRaid : ICommand
 {
     [CommandMethod("0 leave")]

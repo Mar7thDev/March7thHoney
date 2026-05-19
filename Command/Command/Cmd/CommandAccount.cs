@@ -5,7 +5,7 @@ using March7thHoney.Util;
 
 namespace March7thHoney.Command.Command.Cmd;
 
-[CommandInfo("account", "Game.Command.Account.Desc", "Game.Command.Account.Usage", permission: CommandPermissions.Manage)]
+[CommandInfo("account", "Game.Command.Account.Desc", "Game.Command.Account.Usage", permission: CommandPermissions.Account)]
 public class CommandAccount : ICommand
 {
     [CommandMethod("create")]
@@ -132,9 +132,9 @@ public class CommandAccount : ICommand
             return;
         }
 
-        account.Role = role;
-        DatabaseHelper.SaveDatabaseType(account);
-        await arg.SendMsg($"Role for {account.Username ?? account.Uid.ToString()} updated to {role}.");
+        var permissions = account.SetRole(role);
+        await arg.SendMsg(
+            $"Role for {account.Username ?? account.Uid.ToString()} updated to {role}. Permissions synced: {permissions}.");
     }
 
     private static AccountData? ResolveAccount(string accountKey)

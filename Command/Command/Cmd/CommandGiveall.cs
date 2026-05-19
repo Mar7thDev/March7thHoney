@@ -8,7 +8,7 @@ using March7thHoney.Internationalization;
 
 namespace March7thHoney.Command.Command.Cmd;
 
-[CommandInfo("giveall", "Game.Command.GiveAll.Desc", "Game.Command.GiveAll.Usage", ["ga"], permission: CommandPermissions.Inventory)]
+[CommandInfo("giveall", "Game.Command.GiveAll.Desc", "Game.Command.GiveAll.Usage", ["ga"], permission: CommandPermissions.GiveAll)]
 public class CommandGiveall : ICommand
 {
     [CommandMethod("0 avatar")]
