@@ -1,5 +1,7 @@
 using March7thHoney.Data;
 using March7thHoney.Data.Custom;
+using March7thHoney.Database.Player;
+using March7thHoney.GameServer.Game.Player;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
 using March7thHoney.Util;
@@ -10,15 +12,13 @@ namespace March7thHoney.GameServer.Server.Packet.Send.Player;
 
 public class PacketQueryProductInfoScRsp : BasePacket
 {
-    public PacketQueryProductInfoScRsp() : base(CmdIds.QueryProductInfoScRsp)
+    public PacketQueryProductInfoScRsp(PlayerData? playerData) : base(CmdIds.QueryProductInfoScRsp)
     {
         var proto = new QueryProductInfoScRsp
         {
             BAMOOGPNJEH = 5,
             IFKKKLCFOBK = 5,
-            MonthCardOutDateTime = ConfigManager.Config.ServerOption.EnableMonthCard
-                ? (ulong)March7thHoney.Util.Extensions.GetUnixSec() + 8640000
-                : 0
+            MonthCardOutDateTime = playerData == null ? 0 : (ulong)MonthCardService.GetMonthCardOutDateTime(playerData)
         };
 
         foreach (var item in BuildProducts(GameData.QueryProductInfoConfig, ConfigManager.Config.ServerOption.EnableMonthCard))
