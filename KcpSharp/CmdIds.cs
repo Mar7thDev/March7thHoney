@@ -1735,7 +1735,7 @@ public class CmdIds
     public const int ReportRelicBoxActionScRsp = 8959;
     public const int RelicBoxRegularScNotify = 8963;
     public const int RelicPresetGetPlanCsReq = 9841;
-    public const int AOGHKDGEFGA = 9860;
+    public const int RelicPresetGetPlanScRsp = 9860;
     public const int RelicPresetAddPlanCsReq = 9842;
     public const int GBFGABHFBCN = 9850;
     public const int RelicPresetDeletePlanCsReq = 9855;
