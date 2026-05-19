@@ -5,6 +5,7 @@ using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server;
 using March7thHoney.GameServer.Server.Packet.Send.Player;
 using March7thHoney.Internationalization;
+using March7thHoney.Proto;
 using March7thHoney.Util;
 
 namespace March7thHoney.Command.Command.Cmd;
@@ -154,6 +155,91 @@ public class CommandAccount : ICommand
         await arg.SendMsg($"Email verified for account {account.Username ?? account.Uid.ToString()}.");
     }
 
+    [CommandMethod("ban")]
+    public async ValueTask Ban(CommandArg arg)
+    {
+        if (arg.Args.Count < 3)
+        {
+            await arg.SendMsg("Usage: /account ban [Username|UID|Email] [permanent|duration] [reason]");
+            await arg.SendMsg("Duration examples: 30m, 2h, 7d, 1w.");
+            return;
+        }
+
+        var accountKey = arg.Args[1];
+        var account = ResolveAccount(accountKey);
+        if (account == null)
+        {
+            await arg.SendMsg($"Account {accountKey} does not exist.");
+            return;
+        }
+
+        if (!TryParseBanDuration(arg.Args[2], out var expireAt, out var error))
+        {
+            await arg.SendMsg(error);
+            return;
+        }
+
+        var reason = string.Join(" ", arg.Args.Skip(3)).Trim();
+        account.AddKnownIdentityKeys(GetActiveConnectionIdentityKeys(account.Uid));
+        account.Ban(reason, expireAt);
+        var banStatus = account.GetBanStatus();
+
+        var activeConnection = Listener.GetActiveConnection(account.Uid);
+        if (activeConnection != null)
+        {
+            await activeConnection.SendPacket(new PacketPlayerSqueezedScNotify(KickType.KickBlack,
+                AccountBanHelper.ToBlackInfo(banStatus)));
+            activeConnection.Stop();
+        }
+
+        await arg.SendMsg(
+            $"Account {account.Username ?? account.Uid.ToString()} banned. {banStatus.FormatLoginMessage()}");
+    }
+
+    [CommandMethod("unban")]
+    public async ValueTask Unban(CommandArg arg)
+    {
+        if (arg.Args.Count < 2)
+        {
+            await arg.SendMsg("Usage: /account unban [Username|UID|Email]");
+            return;
+        }
+
+        var accountKey = arg.Args[1];
+        var account = ResolveAccount(accountKey);
+        if (account == null)
+        {
+            await arg.SendMsg($"Account {accountKey} does not exist.");
+            return;
+        }
+
+        account.ClearBan();
+        await arg.SendMsg($"Account {account.Username ?? account.Uid.ToString()} unbanned.");
+    }
+
+    [CommandMethod("baninfo")]
+    public async ValueTask BanInfo(CommandArg arg)
+    {
+        if (arg.Args.Count < 2)
+        {
+            await arg.SendMsg("Usage: /account baninfo [Username|UID|Email]");
+            return;
+        }
+
+        var accountKey = arg.Args[1];
+        var account = ResolveAccount(accountKey);
+        if (account == null)
+        {
+            await arg.SendMsg($"Account {accountKey} does not exist.");
+            return;
+        }
+
+        var banStatus = account.GetBanStatus();
+        await arg.SendMsg(banStatus.IsActive
+            ? banStatus.FormatLoginMessage()
+            : $"Account {account.Username ?? account.Uid.ToString()} is not banned.");
+    }
+
     [CommandMethod("setrole")]
     public async ValueTask SetRole(CommandArg arg)
     {
@@ -202,7 +288,7 @@ public class CommandAccount : ICommand
         var activeConnection = Listener.GetActiveConnection(account.Uid);
         if (activeConnection != null)
         {
-            await activeConnection.SendPacket(new PacketPlayerSqueezedScNotify());
+            await activeConnection.SendPacket(new PacketPlayerSqueezedScNotify(KickType.KickByGm));
             activeConnection.Stop();
         }
 
@@ -270,7 +356,7 @@ public class CommandAccount : ICommand
         var activeConnection = Listener.GetActiveConnection(account.Uid);
         if (activeConnection != null)
         {
-            await activeConnection.SendPacket(new PacketPlayerSqueezedScNotify());
+            await activeConnection.SendPacket(new PacketPlayerSqueezedScNotify(KickType.KickByGm));
             activeConnection.Stop();
         }
 
@@ -305,6 +391,64 @@ public class CommandAccount : ICommand
         var permissions = account.SetRole(role);
         await arg.SendMsg(
             $"Role for {account.Username ?? account.Uid.ToString()} updated to {role}. Permissions synced: {permissions}.");
+    }
+
+    private static IReadOnlyCollection<string> GetActiveConnectionIdentityKeys(int uid)
+    {
+        var activeConnection = Listener.GetActiveConnection(uid);
+        return activeConnection == null
+            ? []
+            : AccountBanHelper.BuildIdentityKeys([], activeConnection.RemoteEndPoint.Address.ToString());
+    }
+
+    private static bool TryParseBanDuration(string value, out long expireAt, out string error)
+    {
+        expireAt = 0;
+        error = string.Empty;
+
+        value = value.Trim();
+        if (value.Equals("permanent", StringComparison.OrdinalIgnoreCase) ||
+            value.Equals("perm", StringComparison.OrdinalIgnoreCase) ||
+            value.Equals("forever", StringComparison.OrdinalIgnoreCase))
+        {
+            return true;
+        }
+
+        var suffixStart = 0;
+        while (suffixStart < value.Length && char.IsDigit(value[suffixStart]))
+            suffixStart++;
+
+        if (suffixStart == 0 || suffixStart == value.Length)
+        {
+            error = "Ban duration must be permanent or a value like 30m, 2h, 7d, or 1w.";
+            return false;
+        }
+
+        if (!long.TryParse(value[..suffixStart], out var amount) || amount <= 0)
+        {
+            error = "Ban duration must be greater than zero.";
+            return false;
+        }
+
+        var suffix = value[suffixStart..].ToLowerInvariant();
+        var seconds = suffix switch
+        {
+            "s" or "sec" or "secs" or "second" or "seconds" => amount,
+            "m" or "min" or "mins" or "minute" or "minutes" => amount * 60,
+            "h" or "hr" or "hrs" or "hour" or "hours" => amount * 60 * 60,
+            "d" or "day" or "days" => amount * 60 * 60 * 24,
+            "w" or "week" or "weeks" => amount * 60 * 60 * 24 * 7,
+            _ => 0
+        };
+
+        if (seconds <= 0)
+        {
+            error = "Unknown ban duration unit. Use s, m, h, d, or w.";
+            return false;
+        }
+
+        expireAt = Extensions.GetUnixSec() + seconds;
+        return true;
     }
 
     private static AccountData? ResolveAccount(string accountKey)

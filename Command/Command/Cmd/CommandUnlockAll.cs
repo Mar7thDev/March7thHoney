@@ -42,7 +42,7 @@ public class CommandUnlockAll : ICommand
 
         await arg.SendMsg(I18NManager.Translate("Game.Command.UnlockAll.UnlockedAll",
             I18NManager.Translate("Word.Mission")));
-        await arg.Target!.Player!.SendPacket(new PacketPlayerSqueezedScNotify());
+        await arg.Target!.Player!.SendPacket(new PacketPlayerSqueezedScNotify(KickType.KickByGm));
         arg.Target!.Stop();
     }
 
@@ -86,7 +86,7 @@ public class CommandUnlockAll : ICommand
 
         await arg.SendMsg(I18NManager.Translate("Game.Command.UnlockAll.UnlockedAll",
             I18NManager.Translate("Word.Tutorial")));
-        await arg.Target!.Player!.SendPacket(new PacketPlayerSqueezedScNotify());
+        await arg.Target!.Player!.SendPacket(new PacketPlayerSqueezedScNotify(KickType.KickByGm));
         arg.Target!.Stop();
     }
 
@@ -117,7 +117,7 @@ public class CommandUnlockAll : ICommand
 
         await arg.SendMsg(I18NManager.Translate("Game.Command.UnlockAll.UnlockedAll",
             I18NManager.Translate("Word.TypesOfRogue")));
-        await arg.Target!.Player!.SendPacket(new PacketPlayerSqueezedScNotify());
+        await arg.Target!.Player!.SendPacket(new PacketPlayerSqueezedScNotify(KickType.KickByGm));
         arg.Target!.Stop();
     }
 

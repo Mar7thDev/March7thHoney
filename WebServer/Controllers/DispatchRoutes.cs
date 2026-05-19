@@ -326,7 +326,8 @@ public class DispatchRoutes : ControllerBase
         Debug($"shield login: account={req.account} is_crypto={req.is_crypto}");
         var useRsa = req.is_crypto || Config.WebSecurity.EnableRsaLoginDecrypt;
         var (account, password) = LoginCryptoHelper.TryDecryptCredentials(req.account, req.password, useRsa);
-        return new UsernameLoginHandler().HandleShieldLogin(account, password);
+        var identityKeys = LoginIdentityContextFactory.Build(Request, req.device, req.device_id, req.device_fp);
+        return new UsernameLoginHandler().HandleShieldLogin(account, password, identityKeys);
     }
 
     [HttpPost("/hkrpg_global/account/ma-passport/api/appLoginByPassword")]
@@ -336,7 +337,8 @@ public class DispatchRoutes : ControllerBase
         Debug($"appLoginByPassword: account={req.account}");
         var (account, password) =
             LoginCryptoHelper.TryDecryptCredentials(req.account, req.password, Config.WebSecurity.EnableRsaLoginDecrypt);
-        return new UsernameLoginHandler().HandlePassportLogin(account, password);
+        var identityKeys = LoginIdentityContextFactory.Build(Request, req.device, req.device_id, req.device_fp);
+        return new UsernameLoginHandler().HandlePassportLogin(account, password, identityKeys);
     }
 
     [HttpPost("/hkrpg_global/mdk/shield/api/verify")]
@@ -344,7 +346,8 @@ public class DispatchRoutes : ControllerBase
     public JsonResult Verify([FromBody] VerifyReqJson req)
     {
         Debug($"shield verify: uid={req.uid} token_len={(req.token?.Length ?? 0)}");
-        return new TokenLoginHandler().HandleShieldVerify(req.uid!, req.token!);
+        var identityKeys = LoginIdentityContextFactory.Build(Request);
+        return new TokenLoginHandler().HandleShieldVerify(req.uid!, req.token!, identityKeys);
     }
 
     [HttpPost("/hkrpg_global/combo/granter/login/v2/login")]
@@ -352,7 +355,9 @@ public class DispatchRoutes : ControllerBase
     public JsonResult LoginV2([FromBody] LoginV2ReqJson req)
     {
         Debug($"combo login v2: app_id={req.app_id} channel_id={req.channel_id} data_len={(req.data?.Length ?? 0)}");
-        return new ComboTokenGranterHandler().Handle(req.app_id, req.channel_id, req.data!, req.device!, req.sign!);
+        var identityKeys = LoginIdentityContextFactory.Build(Request, req.device, req.data);
+        return new ComboTokenGranterHandler().Handle(req.app_id, req.channel_id, req.data!, req.device!, req.sign!,
+            identityKeys);
     }
 
     [HttpPost("/account/ma-cn-passport/app/loginByPassword")]
@@ -361,14 +366,16 @@ public class DispatchRoutes : ControllerBase
         Debug($"ma loginByPassword: account={req.account}");
         var (account, password) =
             LoginCryptoHelper.TryDecryptCredentials(req.account, req.password, Config.WebSecurity.EnableRsaLoginDecrypt);
-        return new UsernameLoginHandler().HandleLegacyPassportLogin(account, password);
+        var identityKeys = LoginIdentityContextFactory.Build(Request, req.device, req.device_id, req.device_fp);
+        return new UsernameLoginHandler().HandleLegacyPassportLogin(account, password, identityKeys);
     }
 
     [HttpPost("/account/ma-cn-session/app/verify")]
     public ContentResult PassportTokenVerify([FromBody] PassportTokenVerifyReqJson req)
     {
         Debug($"ma verify: mid={req.mid}, token_len={(req.token.token?.Length ?? 0)} refresh={req.refresh}");
-        return new TokenLoginHandler().HandlePassportVerify(req.mid!, req.token.token!, req.refresh);
+        var identityKeys = LoginIdentityContextFactory.Build(Request);
+        return new TokenLoginHandler().HandlePassportVerify(req.mid!, req.token.token!, req.refresh, identityKeys);
     }
 
     [HttpGet("/hkrpg_global/combo/granter/api/getConfig")]

@@ -82,6 +82,18 @@ public class ServerExchangeRoutes : ControllerBase
                 Content = "Account token not found"
             };
 
+        var identityKeys = AccountBanHelper.BuildIdentityKeys([],
+            HttpContext.Connection.RemoteIpAddress?.ToString());
+        if (AccountBanHelper.TryGetActiveBan(account, identityKeys, out var banStatus))
+        {
+            account.ClearLoginTokens();
+            return new ContentResult
+            {
+                StatusCode = 403,
+                Content = banStatus.FormatLoginMessage()
+            };
+        }
+
         if (!account.CanLogin())
         {
             account.ClearLoginTokens();

@@ -7,7 +7,7 @@ namespace March7thHoney.WebServer.Handler;
 
 public class TokenLoginHandler
 {
-    public JsonResult HandleShieldVerify(string uid, string token)
+    public JsonResult HandleShieldVerify(string uid, string token, IReadOnlyCollection<string> identityKeys)
     {
         if (!int.TryParse(uid, out var parsedUid))
             return new JsonResult(LoginResJson.Error(-201, "Game account cache information error"));
@@ -21,9 +21,13 @@ public class TokenLoginHandler
         if (!isDispatchToken && !isComboToken)
             return new JsonResult(LoginResJson.Error(-201, "Game account cache information error"));
 
-        if (!LoginSessionFactory.CanAuthenticate(account, out var failure))
+        if (account.GetBanStatus().IsActive)
+            account.AddKnownIdentityKeys(identityKeys);
+
+        if (!LoginSessionFactory.CanAuthenticate(account, identityKeys, out var failure))
             return new JsonResult(LoginResJson.Error(failure.Retcode, failure.Message));
 
+        account.AddKnownIdentityKeys(identityKeys);
         var dispatchToken = isDispatchToken ? token : account.GenerateDispatchToken();
         var username = account.Username ?? uid;
         return new JsonResult(LoginResJson.Success(
@@ -34,7 +38,8 @@ public class TokenLoginHandler
             dispatchToken));
     }
 
-    public ContentResult HandlePassportVerify(string mid, string token, bool refresh)
+    public ContentResult HandlePassportVerify(string mid, string token, bool refresh,
+        IReadOnlyCollection<string> identityKeys)
     {
         if (!int.TryParse(mid, out var uid))
             return BuildJson(PassportLoginResJson.Error(-201, "Account not found"));
@@ -48,9 +53,13 @@ public class TokenLoginHandler
         if (!isDispatchToken && !isComboToken)
             return BuildJson(PassportLoginResJson.Error(-201, "Game account cache information error"));
 
-        if (!LoginSessionFactory.CanAuthenticate(account, out var failure))
+        if (account.GetBanStatus().IsActive)
+            account.AddKnownIdentityKeys(identityKeys);
+
+        if (!LoginSessionFactory.CanAuthenticate(account, identityKeys, out var failure))
             return BuildJson(PassportLoginResJson.Error(failure.Retcode, failure.Message));
 
+        account.AddKnownIdentityKeys(identityKeys);
         var dispatchToken = refresh || !isDispatchToken ? account.GenerateDispatchToken() : token;
         return BuildJson(PassportLoginResJson.Success(
             account.Uid.ToString(),

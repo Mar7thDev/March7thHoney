@@ -2,6 +2,9 @@ using March7thHoney.Database;
 using March7thHoney.Database.Account;
 using March7thHoney.Database.Player;
 using March7thHoney.Command;
+using March7thHoney.GameServer.Server;
+using March7thHoney.GameServer.Server.Packet.Send.Player;
+using March7thHoney.Proto;
 using March7thHoney.Util;
 using March7thHoney.WebServer.Handler;
 using March7thHoney.WebServer.Pages;
@@ -219,6 +222,47 @@ public class AdminRoutes : ControllerBase
         });
     }
 
+    [HttpPost("/admin/api/accounts/{uid:int}/ban")]
+    public async Task<JsonResult> BanAccount([FromRoute] int uid, [FromBody] AdminBanAccountRequest? request)
+    {
+        if (!IsAuthorized(out var unauthorized))
+            return unauthorized;
+
+        request ??= new AdminBanAccountRequest();
+        var account = AccountData.GetAccountByUid(uid);
+        if (account == null)
+            return Error("Account not found", statusCode: StatusCodes.Status404NotFound);
+
+        if (!TryResolveBanExpireAt(request, out var expireAt, out var error))
+            return Error(error);
+
+        account.AddKnownIdentityKeys(GetActiveConnectionIdentityKeys(account.Uid));
+        account.Ban(request.reason, expireAt);
+        await KickBannedConnection(account.Uid, account.GetBanStatus());
+
+        return Success(new
+        {
+            account = ToAccountSummary(account)
+        });
+    }
+
+    [HttpDelete("/admin/api/accounts/{uid:int}/ban")]
+    public JsonResult UnbanAccount([FromRoute] int uid)
+    {
+        if (!IsAuthorized(out var unauthorized))
+            return unauthorized;
+
+        var account = AccountData.GetAccountByUid(uid);
+        if (account == null)
+            return Error("Account not found", statusCode: StatusCodes.Status404NotFound);
+
+        account.ClearBan();
+        return Success(new
+        {
+            account = ToAccountSummary(account)
+        });
+    }
+
     [HttpDelete("/admin/api/accounts/{uid:int}")]
     public JsonResult DeleteAccount([FromRoute] int uid)
     {
@@ -267,6 +311,7 @@ public class AdminRoutes : ControllerBase
         var player = DatabaseHelper.Instance?.GetInstance<PlayerData>(account.Uid);
         var role = account.GetRole();
         var permissions = account.GetEffectivePermissions();
+        var banStatus = account.GetBanStatus();
         return new AccountSummary(
             account.Uid,
             account.Username ?? "",
@@ -280,7 +325,13 @@ public class AdminRoutes : ControllerBase
             permissions,
             permissions,
             account.DispatchTokenExpireAt,
-            account.ComboTokenExpireAt);
+            account.ComboTokenExpireAt,
+            banStatus.IsActive,
+            banStatus.Reason,
+            banStatus.ExpireAt,
+            banStatus.CreatedAt,
+            banStatus.IsPermanent,
+            banStatus.RemainingSeconds);
     }
 
     private static string NormalizePermissions(string? permissions)
@@ -323,6 +374,62 @@ public class AdminRoutes : ControllerBase
         };
     }
 
+    private static bool TryResolveBanExpireAt(AdminBanAccountRequest request, out long expireAt, out string error)
+    {
+        expireAt = 0;
+        error = string.Empty;
+
+        if (request.permanent.GetValueOrDefault(true))
+            return true;
+
+        var now = Extensions.GetUnixSec();
+        if (request.expire_at.HasValue)
+        {
+            expireAt = request.expire_at.Value;
+            if (expireAt <= now)
+            {
+                error = "Ban expiry must be in the future";
+                return false;
+            }
+
+            return true;
+        }
+
+        if (request.duration_seconds.HasValue)
+        {
+            if (request.duration_seconds.Value <= 0)
+            {
+                error = "Ban duration must be greater than zero";
+                return false;
+            }
+
+            expireAt = now + request.duration_seconds.Value;
+            return true;
+        }
+
+        error = "Timed bans require an expiry or duration";
+        return false;
+    }
+
+    private static IReadOnlyCollection<string> GetActiveConnectionIdentityKeys(int uid)
+    {
+        var activeConnection = Listener.GetActiveConnection(uid);
+        return activeConnection == null
+            ? []
+            : AccountBanHelper.BuildIdentityKeys([], activeConnection.RemoteEndPoint.Address.ToString());
+    }
+
+    private static async Task KickBannedConnection(int uid, AccountBanStatus banStatus)
+    {
+        var activeConnection = Listener.GetActiveConnection(uid);
+        if (activeConnection == null)
+            return;
+
+        await activeConnection.SendPacket(new PacketPlayerSqueezedScNotify(KickType.KickBlack,
+            AccountBanHelper.ToBlackInfo(banStatus)));
+        activeConnection.Stop();
+    }
+
     public class AdminLoginRequest
     {
         public string? admin_key { get; set; }
@@ -353,6 +460,14 @@ public class AdminRoutes : ControllerBase
         public string? password { get; set; }
     }
 
+    public class AdminBanAccountRequest
+    {
+        public string? reason { get; set; }
+        public bool? permanent { get; set; }
+        public long? expire_at { get; set; }
+        public int? duration_seconds { get; set; }
+    }
+
     private readonly record struct AccountSummary(
         int uid,
         string username,
@@ -366,5 +481,11 @@ public class AdminRoutes : ControllerBase
         string permissions,
         string effective_permissions,
         long dispatch_token_expires_at,
-        long combo_token_expires_at);
+        long combo_token_expires_at,
+        bool banned,
+        string ban_reason,
+        long ban_expires_at,
+        long ban_created_at,
+        bool ban_permanent,
+        long ban_remaining_seconds);
 }

@@ -12,6 +12,10 @@ public class RegistrationHandler
         if (!ConfigManager.Config.ServerOption.Auth.EnableRegistration)
             return Error("Registration is disabled");
 
+        var identityKeys = LoginIdentityContextFactory.Build(request, req.device, req.device_id, req.device_fp);
+        if (AccountBanHelper.TryFindActiveBanByIdentityKeys(identityKeys, null, out var banStatus))
+            return Error(banStatus.FormatLoginMessage(), -203);
+
         var username = ResolveUsername(req);
         var email = ResolveEmail(req);
         var password = req.password ?? string.Empty;
@@ -43,6 +47,7 @@ public class RegistrationHandler
 
         var emailSent = false;
         var account = AccountData.GetAccountByUserName(username);
+        account?.AddKnownIdentityKeys(identityKeys);
         if (account != null && ConfigManager.Config.ServerOption.Auth.SendVerificationEmailOnRegister)
         {
             var verificationToken = account.GenerateEmailVerificationToken();
@@ -53,7 +58,7 @@ public class RegistrationHandler
             return RegistrationSuccess(account, emailSent, requiresEmailVerification: true);
 
         LoginSessionFactory.LoginFailure failure;
-        if (!LoginSessionFactory.TryCreateSession(username, password, out var session, out failure))
+        if (!LoginSessionFactory.TryCreateSession(username, password, identityKeys, out var session, out failure))
             return Error(failure.Message, failure.Retcode);
 
         return new JsonResult(new
