@@ -31,10 +31,21 @@ public class ComboTokenGranterHandler
         }
 
         var account = AccountData.GetAccountByUid(uid);
-        if (account == null || !account.ValidateDispatchToken(tokenData.token))
+        if (account == null)
         {
             Logger.Warn(
                 $"Combo login cache validation failed. uid={uid} token_len={tokenData.token?.Length ?? 0} account_exists={account != null}");
+            res.retcode = -201;
+            res.message = "Game account cache information error";
+            return new JsonResult(res);
+        }
+
+        var isDispatchToken = account.ValidateDispatchToken(tokenData.token);
+        var isComboToken = account.ValidateComboToken(tokenData.token);
+        if (!isDispatchToken && !isComboToken)
+        {
+            Logger.Warn(
+                $"Combo login cache validation failed. uid={uid} token_len={tokenData.token?.Length ?? 0} account_exists=True");
             res.retcode = -201;
             res.message = "Game account cache information error";
             return new JsonResult(res);
@@ -48,7 +59,8 @@ public class ComboTokenGranterHandler
             return new JsonResult(res);
         }
 
-        Logger.Info($"Combo login cache validated. uid={uid} token_len={tokenData.token?.Length ?? 0}");
+        Logger.Info(
+            $"Combo login cache validated. uid={uid} token_type={(isDispatchToken ? "dispatch" : "combo")} token_len={tokenData.token?.Length ?? 0}");
         res.message = "OK";
         res.data = new ComboTokenResJson.LoginData(account.Uid.ToString(), account.GenerateComboToken());
         return new JsonResult(res);
