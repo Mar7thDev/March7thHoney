@@ -13,19 +13,25 @@ public class TokenLoginHandler
             return new JsonResult(LoginResJson.Error(-201, "Game account cache information error"));
 
         var account = AccountData.GetAccountByUid(parsedUid);
-        if (account == null || !account.ValidateDispatchToken(token))
+        if (account == null)
+            return new JsonResult(LoginResJson.Error(-201, "Game account cache information error"));
+
+        var isDispatchToken = account.ValidateDispatchToken(token);
+        var isComboToken = account.ValidateComboToken(token);
+        if (!isDispatchToken && !isComboToken)
             return new JsonResult(LoginResJson.Error(-201, "Game account cache information error"));
 
         if (!LoginSessionFactory.CanAuthenticate(account, out var failure))
             return new JsonResult(LoginResJson.Error(failure.Retcode, failure.Message));
 
+        var dispatchToken = isDispatchToken ? token : account.GenerateDispatchToken();
         var username = account.Username ?? uid;
         return new JsonResult(LoginResJson.Success(
             account.Uid.ToString(),
             username,
             account.Email ?? string.Empty,
             account.IsEmailVerified,
-            token));
+            dispatchToken));
     }
 
     public ContentResult HandlePassportVerify(string mid, string token, bool refresh)
@@ -37,13 +43,15 @@ public class TokenLoginHandler
         if (account == null)
             return BuildJson(PassportLoginResJson.Error(-201, "Account not found"));
 
-        if (!account.ValidateDispatchToken(token))
+        var isDispatchToken = account.ValidateDispatchToken(token);
+        var isComboToken = account.ValidateComboToken(token);
+        if (!isDispatchToken && !isComboToken)
             return BuildJson(PassportLoginResJson.Error(-201, "Game account cache information error"));
 
         if (!LoginSessionFactory.CanAuthenticate(account, out var failure))
             return BuildJson(PassportLoginResJson.Error(failure.Retcode, failure.Message));
 
-        var dispatchToken = refresh ? account.GenerateDispatchToken() : account.DispatchToken!;
+        var dispatchToken = refresh || !isDispatchToken ? account.GenerateDispatchToken() : token;
         return BuildJson(PassportLoginResJson.Success(
             account.Uid.ToString(),
             account.Username ?? uid.ToString(),

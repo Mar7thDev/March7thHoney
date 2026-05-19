@@ -35,8 +35,11 @@ internal class QueryGatewayHandler
             RegionName = config.GameServer.GameServerId,
             Ip = config.GameServer.PublicAddress,
             Port = config.GameServer.Port,
-            Msg = GetAccessVerificationMessage(req),
         };
+
+        var accessVerificationMessage = GetAccessVerificationMessage(req);
+        if (!string.IsNullOrWhiteSpace(accessVerificationMessage))
+            gateServer.Msg = accessVerificationMessage;
 
         gateServer.Unk1 = true;
         gateServer.Unk2 = true;
@@ -79,7 +82,8 @@ internal class QueryGatewayHandler
         var bytes = gateServer.ToByteArray();
         Data = Convert.ToBase64String(bytes);
 
-        Debug($"query_gateway result: protoBytes={bytes.Length}, base64Length={Data.Length}, retcode={gateServer.Retcode}");
+        Debug(
+            $"query_gateway result: protoBytes={bytes.Length}, base64Length={Data.Length}, retcode={gateServer.Retcode}, msg_len={gateServer.Msg.Length}");
         Debug($"query_gateway gate: region={gateServer.RegionName} ip={gateServer.Ip} port={gateServer.Port} encryption={(gateServer.ClientSecretKey?.Length ?? 0) > 0}");
         Debug($"query_gateway hotfix: ab={gateServer.AssetBundleUrl} exRes={gateServer.ExResourceUrl} lua={gateServer.LuaUrl} ifix={gateServer.IfixUrl}");
     }
@@ -197,7 +201,7 @@ internal class QueryGatewayHandler
                 return ConfigManager.Config.ServerOption.Auth.EmailVerificationRequiredMessage;
         }
 
-        return "Access verification failed. Please check if you have logged in to the correct account and server.";
+        return string.Empty;
     }
 
     private string GetGatewayUrlByVersion(string version)

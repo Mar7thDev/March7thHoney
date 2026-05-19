@@ -124,8 +124,8 @@ public class AuthOption
 {
     public int MinimumPasswordLength { get; set; } = 8;
     public int PasswordHashIterations { get; set; } = 600000;
-    public int DispatchTokenExpireMinutes { get; set; } = 60;
-    public int ComboTokenExpireMinutes { get; set; } = 60;
+    public int DispatchTokenExpireMinutes { get; set; } = 43200;
+    public int ComboTokenExpireMinutes { get; set; } = 43200;
     public bool EnableRegistration { get; set; } = true;
     public string RegistrationPageIcon { get; set; } = "M7";
     public bool SendVerificationEmailOnRegister { get; set; } = true;
@@ -141,13 +141,14 @@ public class EmailOption
 {
     public bool Enabled { get; set; } = false;
     public string PublicBaseUrl { get; set; } = "";
+    public string LogoUrl { get; set; } = "https://img.hoyotoon.com/raw/hoyotoonlogolong.png";
     public SmtpOption Smtp { get; set; } = new();
-    public string VerificationSubject { get; set; } = "Verify your {serverName} email";
+    public string VerificationSubject { get; set; } = "Verify your {serverName} account";
     public string VerificationBody { get; set; } =
-        "Hi {username},\n\nVerify your email for {serverName}:\n{link}\n\nThis link expires in {minutes} minutes.";
+        "Hi {username},\n\nYou are adding email security verification for {serverName}.\n\nVerify your email here:\n{link}\n\nPlease complete the account verification process in {minutes} minutes.\n\nThis is an automated email. Please do not reply.";
     public string PasswordResetSubject { get; set; } = "Reset your {serverName} password";
     public string PasswordResetBody { get; set; } =
-        "Hi {username},\n\nReset your password for {serverName}:\n{link}\n\nThis link expires in {minutes} minutes.";
+        "Hi {username},\n\nWe received a request to reset the password for your {serverName} account.\n\nReset your password here:\n{link}\n\nPlease complete the password reset process in {minutes} minutes.\n\nThis is an automated email. Please do not reply.";
 }
 
 public class SmtpOption

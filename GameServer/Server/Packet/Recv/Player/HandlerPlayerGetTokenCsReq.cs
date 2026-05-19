@@ -18,8 +18,12 @@ public class HandlerPlayerGetTokenCsReq : Handler
     public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
     {
         var req = PlayerGetTokenCsReq.Parser.ParseFrom(data);
+        _logger.Info(
+            $"PlayerGetToken requested. remote={connection.RemoteEndPoint} account_uid={req.AccountUid} token_len={req.Token?.Length ?? 0}");
         if (!int.TryParse(req.AccountUid, out var requestedUid) || string.IsNullOrWhiteSpace(req.Token))
         {
+            _logger.Warn(
+                $"PlayerGetToken rejected invalid request. remote={connection.RemoteEndPoint} account_uid={req.AccountUid} token_len={req.Token?.Length ?? 0}");
             await connection.SendPacket(new PacketPlayerGetTokenScRsp(0, Retcode.RetNotInWhiteList));
             return;
         }
@@ -31,8 +35,19 @@ public class HandlerPlayerGetTokenCsReq : Handler
             string.IsNullOrEmpty(ConfigManager.Config.ServerOption.ServerConfig.FromDispatchBaseUrl))
         {
             var account = DatabaseHelper.Instance?.GetInstance<AccountData>(requestedUid);
-            if (account == null || !account.ValidateGameToken(req.Token))
+            if (account == null)
             {
+                _logger.Warn($"PlayerGetToken rejected missing account. remote={connection.RemoteEndPoint} uid={requestedUid}");
+                await connection.SendPacket(new PacketPlayerGetTokenScRsp(0, Retcode.RetNotInWhiteList));
+                return;
+            }
+
+            var isDispatchToken = account.ValidateDispatchToken(req.Token);
+            var isComboToken = account.ValidateComboToken(req.Token);
+            if (!isDispatchToken && !isComboToken)
+            {
+                _logger.Warn(
+                    $"PlayerGetToken rejected invalid token. remote={connection.RemoteEndPoint} uid={requestedUid} token_len={req.Token?.Length ?? 0}");
                 await connection.SendPacket(new PacketPlayerGetTokenScRsp(0, Retcode.RetNotInWhiteList));
                 return;
             }
@@ -49,6 +64,8 @@ public class HandlerPlayerGetTokenCsReq : Handler
 
             uid = account.Uid;
             account.SyncPermissionsWithRole();
+            _logger.Info(
+                $"PlayerGetToken accepted. remote={connection.RemoteEndPoint} uid={uid} token_type={(isDispatchToken ? "dispatch" : "combo")}");
         }
         else
         {
@@ -68,12 +85,16 @@ public class HandlerPlayerGetTokenCsReq : Handler
             var res = await HttpNetwork.SendPostFormRequest(targetUrl, form, headers);
             if (res.Item1 != 200 || res.Item2 == null)
             {
+                _logger.Warn(
+                    $"PlayerGetToken dispatch exchange rejected. remote={connection.RemoteEndPoint} status={res.Item1} body_len={res.Item2?.Length ?? 0}");
                 await connection.SendPacket(new PacketPlayerGetTokenScRsp(0, Retcode.RetNotInWhiteList));
                 return;
             }
 
             if (!int.TryParse(res.Item2, out uid))
             {
+                _logger.Warn(
+                    $"PlayerGetToken dispatch exchange returned invalid uid. remote={connection.RemoteEndPoint} body={res.Item2}");
                 await connection.SendPacket(new PacketPlayerGetTokenScRsp(0, Retcode.RetNotInWhiteList));
                 return;
             }
@@ -81,8 +102,11 @@ public class HandlerPlayerGetTokenCsReq : Handler
 
 
         if (!ResourceManager.IsLoaded)
+        {
+            _logger.Warn($"PlayerGetToken accepted but resource manager is not loaded. remote={connection.RemoteEndPoint} uid={uid}");
             // resource manager not loaded, return
             return;
+        }
 
         var prev = Listener.GetActiveConnection(uid);
         if (prev != null)
