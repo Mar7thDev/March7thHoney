@@ -364,6 +364,35 @@ public class DatabaseHelper
         }
     }
 
+    public void DeleteUidGameplayData(int uid)
+    {
+        var baseType = typeof(BaseDatabaseDataHelper);
+        var assembly = typeof(BaseDatabaseDataHelper).Assembly;
+        var types = assembly.GetTypes()
+            .Where(t => t.IsSubclassOf(baseType) && t != typeof(AccountData));
+
+        foreach (var type in types)
+            typeof(DatabaseHelper).GetMethod(nameof(DeleteUidDatabaseType))?.MakeGenericMethod(type)
+                .Invoke(null, [uid]);
+
+        if (UidInstanceMap.TryGetValue(uid, out var value))
+            value.RemoveAll(instance => instance is not AccountData);
+
+        ToSaveUidList.RemoveAll(savedUid => savedUid == uid);
+    }
+
+    public static void DeleteUidDatabaseType<T>(int uid) where T : BaseDatabaseDataHelper, new()
+    {
+        try
+        {
+            sqlSugarScope?.Deleteable<T>().Where(data => data.Uid == uid).ExecuteCommand();
+        }
+        catch (Exception e)
+        {
+            logger.Error("An error occurred while deleting account gameplay data", e);
+        }
+    }
+
     public void DeleteInstance<T>(T instance) where T : class, new()
     {
         sqlSugarScope?.Deleteable(instance).ExecuteCommand();

@@ -459,8 +459,12 @@ public class RaidTextCHS
 /// </summary>
 public class AccountTextCHS
 {
-    public string Desc => "创建账号\n注意：此命令未经测试，请谨慎使用！";
-    public string Usage => "用法：/account create [用户名]\n用法：/account setpassword [用户名|UID] [密码]\n用法：/account role [用户名|UID] [角色]\n用法：/account roles";
+    public string Desc => "管理账号\n注意：此命令未经测试，请谨慎使用！";
+    public string Usage => "用法：/account create [用户名]\n用法：/account setpassword [用户名|UID] [密码]\n用法：/account reset [用户名|UID]\n用法：/account role [用户名|UID] [角色]\n用法：/account roles";
+    public string ResetUsage => "用法：/account reset [用户名|UID]";
+    public string AccountNotFound => "账号 {0} 不存在。";
+    public string ResetStarted => "正在重置账号 {0}。你将被断开连接，重新登录后会重新开始。";
+    public string ResetSuccess => "账号 {0} 已重置。";
     public string InvalidUid => "无效UID参数！";
     public string CreateError => "出现内部错误 {0} ";
     public string CreateSuccess => "新账号 {0} 创建成功!";
