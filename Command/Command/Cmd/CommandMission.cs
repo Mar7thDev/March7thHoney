@@ -5,7 +5,7 @@ using March7thHoney.Internationalization;
 
 namespace March7thHoney.Command.Command.Cmd;
 
-[CommandInfo("mission", "Game.Command.Mission.Desc", "Game.Command.Mission.Usage", ["m"], permission: CommandPermissions.Progress)]
+[CommandInfo("mission", "Game.Command.Mission.Desc", "Game.Command.Mission.Usage", ["m"], permission: CommandPermissions.Mission)]
 public class CommandMission : ICommand
 {
     [CommandMethod("0 pass")]

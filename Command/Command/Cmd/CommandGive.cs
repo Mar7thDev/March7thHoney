@@ -3,7 +3,7 @@ using March7thHoney.Internationalization;
 
 namespace March7thHoney.Command.Command.Cmd;
 
-[CommandInfo("give", "Game.Command.Give.Desc", "Game.Command.Give.Usage", ["g"], permission: CommandPermissions.Inventory)]
+[CommandInfo("give", "Game.Command.Give.Desc", "Game.Command.Give.Usage", ["g"], permission: CommandPermissions.Give)]
 public class CommandGive : ICommand
 {
     [CommandDefault]

@@ -11,6 +11,28 @@ public static class CommandPermissions
     public const string Mail = "command.mail";
     public const string Server = "command.server";
     public const string TargetOthers = "command.others";
+
+    public const string Account = "command.account";
+    public const string Avatar = "command.avatar";
+    public const string Calyx = "command.calyx";
+    public const string Clear = "command.clear";
+    public const string Give = "command.give";
+    public const string GiveAll = "command.giveall";
+    public const string Grid = "command.grid";
+    public const string Help = "command.help";
+    public const string Hero = "command.hero";
+    public const string Json = "command.json";
+    public const string Kick = "command.kick";
+    public const string Lineup = "command.lineup";
+    public const string Mission = "command.mission";
+    public const string Raid = "command.raid";
+    public const string Relic = "command.relic";
+    public const string Reload = "command.reload";
+    public const string SetLevel = "command.setlevel";
+    public const string UnlockAll = "command.unlockall";
+    public const string Unstuck = "command.unstuck";
+    public const string Windy = "command.windy";
+
     public const string Player = "command.player";
     public const string Inventory = "command.inventory";
     public const string Progress = "command.progress";
@@ -18,7 +40,28 @@ public static class CommandPermissions
     public const string Debug = "command.debug";
 
     private static readonly char[] Separators = [',', ';', '\r', '\n', ' ', '\t'];
-    private static readonly string[] LegacyManagePermissions = [Manage, Moderate, Mail, Server];
+    private static readonly string[] LegacyManagePermissions =
+    [
+        Manage,
+        Moderate,
+        Mail,
+        Server,
+        TargetOthers,
+        Account,
+        Clear,
+        Debug,
+        Give,
+        GiveAll,
+        Json,
+        Kick,
+        Raid,
+        Relic,
+        Reload,
+        SetLevel,
+        UnlockAll,
+        Unstuck,
+        Windy
+    ];
 
     public static bool Allows(string? grantedPermissions, string? requiredPermission)
     {
@@ -65,14 +108,34 @@ public static class CommandPermissions
         [
             All,
             AllCommands,
+            Account,
+            Avatar,
+            Calyx,
+            Clear,
+            Debug,
+            Give,
+            GiveAll,
+            Grid,
+            Help,
+            Hero,
+            Json,
+            Kick,
+            Lineup,
+            Mail,
+            Mission,
+            Raid,
+            Relic,
+            Reload,
+            Scene,
+            SetLevel,
+            TargetOthers,
+            UnlockAll,
+            Unstuck,
+            Windy,
             Player,
             Inventory,
             Progress,
-            Scene,
-            Debug,
-            TargetOthers,
             Moderate,
-            Mail,
             Server,
             Manage
         ];

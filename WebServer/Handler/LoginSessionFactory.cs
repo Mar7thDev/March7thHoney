@@ -61,6 +61,7 @@ internal static class LoginSessionFactory
         }
 
         var username = canonicalAccount.Username ?? normalizedAccount;
+        canonicalAccount.SyncPermissionsWithRole();
         var dispatchToken = canonicalAccount.GenerateDispatchToken();
         session = new LoginSession(canonicalAccount.Uid.ToString(), username, username + "@StarRail.com",
             dispatchToken);

@@ -97,11 +97,7 @@ public class AdminRoutes : ControllerBase
             if (account == null)
                 return Error("Failed to create account");
 
-            if (!string.IsNullOrWhiteSpace(request.permissions))
-            {
-                account.Permissions = NormalizePermissions(request.permissions);
-                DatabaseHelper.SaveDatabaseType(account);
-            }
+            account.SyncPermissionsWithRole();
 
             return Success(new
             {
@@ -134,9 +130,7 @@ public class AdminRoutes : ControllerBase
             return Error("Username already exists");
 
         account.Username = username;
-        account.Role = NormalizeRole(request.role);
-        account.Permissions = NormalizePermissions(request.permissions);
-        DatabaseHelper.SaveDatabaseType(account);
+        account.SetRole(request.role);
 
         return Success(new
         {
@@ -215,15 +209,17 @@ public class AdminRoutes : ControllerBase
     private static AccountSummary ToAccountSummary(AccountData account)
     {
         var player = DatabaseHelper.Instance?.GetInstance<PlayerData>(account.Uid);
+        var role = account.GetRole();
+        var permissions = account.GetEffectivePermissions();
         return new AccountSummary(
             account.Uid,
             account.Username ?? "",
             player?.Name ?? "",
             player?.Level,
             account.HasPassword(),
-            account.GetRole(),
-            account.Permissions ?? "",
-            account.GetEffectivePermissions(),
+            role,
+            permissions,
+            permissions,
             account.DispatchTokenExpireAt,
             account.ComboTokenExpireAt);
     }

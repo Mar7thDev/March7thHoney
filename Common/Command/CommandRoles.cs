@@ -6,6 +6,7 @@ public static class CommandRoles
     public const string Moderator = "Moderator";
     public const string Administrator = "Administrator";
     public const string Developer = "Developer";
+    public const string RoleReferencePrefix = "role:";
 
     public static Dictionary<string, HashSet<string>> DefaultRoles()
     {
@@ -13,27 +14,38 @@ public static class CommandRoles
         {
             [User] =
             [
-                CommandPermissions.Player,
-                CommandPermissions.Inventory,
-                CommandPermissions.Progress,
-                CommandPermissions.Scene
+                CommandPermissions.Help,
+                CommandPermissions.Hero,
+                CommandPermissions.Scene,
+                CommandPermissions.Mission
             ],
             [Moderator] =
             [
-                CommandPermissions.Player,
-                CommandPermissions.Inventory,
-                CommandPermissions.Progress,
-                CommandPermissions.Scene,
+                RoleReferencePrefix + User,
                 CommandPermissions.TargetOthers,
-                CommandPermissions.Moderate
+                CommandPermissions.Kick
             ],
             [Administrator] =
             [
-                CommandPermissions.AllCommands
+                RoleReferencePrefix + Moderator,
+                CommandPermissions.Account,
+                CommandPermissions.Give,
+                CommandPermissions.GiveAll,
+                CommandPermissions.Json,
+                CommandPermissions.Mail,
+                CommandPermissions.Raid,
+                CommandPermissions.Relic,
+                CommandPermissions.Reload,
+                CommandPermissions.SetLevel,
+                CommandPermissions.UnlockAll,
+                CommandPermissions.Unstuck
             ],
             [Developer] =
             [
-                CommandPermissions.All
+                RoleReferencePrefix + Administrator,
+                CommandPermissions.Windy,
+                CommandPermissions.Debug,
+                CommandPermissions.Clear
             ]
         };
     }
@@ -59,8 +71,55 @@ public static class CommandRoles
         var normalizedRole = NormalizeRole(role, defaultRole, roles);
 
         if (roles.TryGetValue(normalizedRole, out var permissions))
-            return permissions;
+            return ResolvePermissions(normalizedRole, roles, []);
 
-        return roles.TryGetValue(User, out var userPermissions) ? userPermissions : [];
+        return roles.TryGetValue(User, out var userPermissions) ? ResolvePermissions(User, roles, []) : [];
+    }
+
+    private static HashSet<string> ResolvePermissions(string role,
+        IReadOnlyDictionary<string, HashSet<string>> roles, HashSet<string> visiting)
+    {
+        var resolvedPermissions = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        if (!visiting.Add(role)) return resolvedPermissions;
+
+        if (!roles.TryGetValue(role, out var permissions))
+        {
+            visiting.Remove(role);
+            return resolvedPermissions;
+        }
+
+        foreach (var permission in permissions)
+        {
+            if (TryResolveRoleReference(permission, roles, out var inheritedRole))
+            {
+                resolvedPermissions.UnionWith(ResolvePermissions(inheritedRole, roles, visiting));
+                continue;
+            }
+
+            resolvedPermissions.Add(permission);
+        }
+
+        visiting.Remove(role);
+        return resolvedPermissions;
+    }
+
+    private static bool TryResolveRoleReference(string permission,
+        IReadOnlyDictionary<string, HashSet<string>> roles, out string inheritedRole)
+    {
+        inheritedRole = "";
+        if (!permission.StartsWith(RoleReferencePrefix, StringComparison.OrdinalIgnoreCase)) return false;
+
+        var requestedRole = permission[RoleReferencePrefix.Length..].Trim();
+        if (string.IsNullOrWhiteSpace(requestedRole)) return true;
+
+        foreach (var configuredRole in roles.Keys)
+        {
+            if (!string.Equals(configuredRole, requestedRole, StringComparison.OrdinalIgnoreCase)) continue;
+
+            inheritedRole = configuredRole;
+            return true;
+        }
+
+        return true;
     }
 }

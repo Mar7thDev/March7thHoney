@@ -7,7 +7,7 @@ using Google.Protobuf.WellKnownTypes;
 
 namespace March7thHoney.Command.Command.Cmd;
 
-[CommandInfo("unlockall", "Game.Command.UnlockAll.Desc", "Game.Command.UnlockAll.Usage", ["ua"], permission: CommandPermissions.Progress)]
+[CommandInfo("unlockall", "Game.Command.UnlockAll.Desc", "Game.Command.UnlockAll.Usage", ["ua"], permission: CommandPermissions.UnlockAll)]
 public class CommandUnlockAll : ICommand
 {
     [CommandMethod("0 mission")]
