@@ -15,8 +15,14 @@ public class CommandLineup : ICommand
             return;
         }
 
-        var count = arg.GetInt(0);
-        await arg.Target.Player!.LineupManager!.GainMp(count == 0 ? 2 : count);
+        var count = 2;
+        if (arg.Args.Count > 1 && !arg.TryGetInt(0, out count))
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.InvalidArguments"));
+            return;
+        }
+
+        await arg.Target.Player!.LineupManager!.GainMp(count);
         await arg.SendMsg(I18NManager.Translate("Game.Command.Lineup.PlayerGainedMp", count.ToString()));
     }
 
