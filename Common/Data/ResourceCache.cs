@@ -172,7 +172,23 @@ public class ResourceCache
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItem",
             I18NManager.Translate("Word.Cache")));
 
-        return true;
+        return ValidateLoadedCache();
+    }
+
+    private static bool ValidateLoadedCache()
+    {
+        if (GameData.EquipmentConfigData.Count == 0)
+        {
+            Logger.Warn("Resource cache is stale: EquipmentConfigData is missing.");
+            return false;
+        }
+
+        var staleEquipmentConfig = GameData.EquipmentConfigData.Values
+            .Any(config => config.Release && (config.ExpProvide <= 0 || config.CoinCost <= 0));
+        if (!staleEquipmentConfig) return true;
+
+        Logger.Warn("Resource cache is stale: EquipmentConfigData is missing Light Cone EXP/cost fields.");
+        return false;
     }
 
     private static void ApplyCachedValue(PropertyInfo prop, object? deserialized)
@@ -222,7 +238,22 @@ public class ResourceCache
                         ? Activator.CreateInstance(propType)
                         : null;
 
-            prop.SetValue(null, emptyValue);
+            if (prop.CanWrite)
+            {
+                prop.SetValue(null, emptyValue);
+                continue;
+            }
+
+            var current = prop.GetValue(null);
+            switch (current)
+            {
+                case IDictionary currentDict:
+                    currentDict.Clear();
+                    break;
+                case IList currentList:
+                    currentList.Clear();
+                    break;
+            }
         }
     }
 }
