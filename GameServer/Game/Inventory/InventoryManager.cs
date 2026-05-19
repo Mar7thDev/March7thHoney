@@ -230,7 +230,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
         if (itemData == null) return returnRaw ? itemData : clone ?? itemData;
 
         clone = itemData.Clone();
-        if (sync)
+        if (sync && itemConfig.ItemMainType != ItemMainTypeEnum.Virtual)
             await Player.SendPacket(new PacketPlayerSyncScNotify(itemData));
         clone.Count = count;
         if (notify) await Player.SendPacket(new PacketScenePlaneEventScNotify(clone));
@@ -298,6 +298,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
                 break;
         }
 
+        DatabaseHelper.ToSaveUidList.SafeAdd(Player.Uid);
         return item;
     }
 
@@ -378,7 +379,8 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
                 break;
         }
 
-        if (itemData != null && sync) await Player.SendPacket(new PacketPlayerSyncScNotify(itemData));
+        if (itemData != null && sync && itemConfig.ItemMainType != ItemMainTypeEnum.Virtual)
+            await Player.SendPacket(new PacketPlayerSyncScNotify(itemData));
 
         Player.MissionManager?.HandleFinishType(MissionFinishTypeEnum.UseItem, new ItemData
         {
@@ -386,6 +388,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
             Count = count
         });
 
+        DatabaseHelper.ToSaveUidList.SafeAdd(Player.Uid);
         return itemData;
     }
 
@@ -1046,44 +1049,78 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
 
     #region Levelup
 
-    public async ValueTask<List<ItemData>> LevelUpEquipment(int equipmentUniqueId, ItemCostData item)
+    private async ValueTask SyncStaleEquipmentIds(IEnumerable<int> equipmentIds)
+    {
+        var ids = equipmentIds.Where(id => id > 0).Select(id => (uint)id).Distinct().ToList();
+        if (ids.Count > 0) await Player.SendPacket(new PacketPlayerSyncScNotify(ids));
+    }
+
+    private async ValueTask SyncStaleEquipmentIds(IEnumerable<uint> equipmentIds)
+    {
+        var ids = equipmentIds.Where(id => id > 0).Distinct().ToList();
+        if (ids.Count > 0) await Player.SendPacket(new PacketPlayerSyncScNotify(ids));
+    }
+
+    public async ValueTask<(Retcode retcode, List<ItemData> returnItems)> LevelUpEquipment(int equipmentUniqueId,
+        ItemCostData item)
     {
         var itemData = Data.EquipmentItems.Find(x => x.UniqueId == equipmentUniqueId);
-        if (itemData == null) return [];
+        if (itemData == null)
+        {
+            await SyncStaleEquipmentIds([equipmentUniqueId]);
+            return (Retcode.RetEquipmentNotExist, []);
+        }
+
         GameData.EquipmentPromotionConfigData.TryGetValue(itemData.ItemId * 10 + itemData.Promotion,
             out var equipmentPromotionConfig);
         GameData.EquipmentConfigData.TryGetValue(itemData.ItemId, out var equipmentConfig);
-        if (equipmentConfig == null || equipmentPromotionConfig == null) return [];
+        if (equipmentConfig == null || equipmentPromotionConfig == null) return (Retcode.RetItemConfigNotExist, []);
+        if (itemData.Level >= equipmentPromotionConfig.MaxLevel) return (Retcode.RetEquipmentLevelReachMax, []);
+
         var exp = 0;
+        List<(int itemId, int count, int uniqueId)> costItems = [];
+        HashSet<uint> costEquipmentIds = [];
+        List<uint> staleEquipmentIds = [];
 
         foreach (var cost in item.ItemList)
-            if (cost.PileItem == null)
+            if (cost.HasEquipmentUniqueId)
             {
-                // TODO : add equipment
-                exp += 100;
+                if (cost.EquipmentUniqueId == equipmentUniqueId)
+                    return (Retcode.RetEquipmentConsumeSelf, []);
+                if (!costEquipmentIds.Add(cost.EquipmentUniqueId)) continue;
+
+                var costItem = Data.EquipmentItems.Find(x => x.UniqueId == cost.EquipmentUniqueId);
+                if (costItem == null)
+                {
+                    staleEquipmentIds.Add(cost.EquipmentUniqueId);
+                    continue;
+                }
+
+                if (costItem.Locked) return (Retcode.RetEquipmentLocked, []);
+
+                exp += costItem.CalcTotalEquipmentExpGained();
+                costItems.Add((costItem.ItemId, 1, (int)cost.EquipmentUniqueId));
             }
-            else
+            else if (cost.PileItem != null)
             {
-                GameData.ItemConfigData.TryGetValue((int)cost.PileItem.ItemId, out var itemConfig);
+                GameData.EquipmentExpItemConfigData.TryGetValue((int)cost.PileItem.ItemId, out var itemConfig);
                 if (itemConfig == null) continue;
-                exp += itemConfig.Exp * (int)cost.PileItem.ItemNum;
+                exp += itemConfig.ExpProvide * (int)cost.PileItem.ItemNum;
+                costItems.Add(((int)cost.PileItem.ItemId, (int)cost.PileItem.ItemNum, 0));
             }
 
         // payment
+        if (staleEquipmentIds.Count > 0)
+        {
+            await SyncStaleEquipmentIds(staleEquipmentIds);
+            return (Retcode.RetEquipmentNotExist, []);
+        }
+
+        if (exp <= 0 || costItems.Count == 0) return (Retcode.RetItemNoCost, []);
+
         var costScoin = exp / 2;
-        if (Player.Data.Scoin < costScoin) return [];
-        foreach (var cost in item.ItemList)
-            if (cost.PileItem == null)
-            {
-                // TODO : add equipment
-                var costItem = Data.EquipmentItems.Find(x => x.UniqueId == cost.EquipmentUniqueId);
-                if (costItem == null) continue;
-                await RemoveItem(costItem.ItemId, 1, (int)cost.EquipmentUniqueId);
-            }
-            else
-            {
-                await RemoveItem((int)cost.PileItem.ItemId, (int)cost.PileItem.ItemNum);
-            }
+        if (Player.Data.Scoin < costScoin) return (Retcode.RetScoinNotEnough, []);
+        await RemoveItems(costItems);
 
         await RemoveItem(2, costScoin);
 
@@ -1111,6 +1148,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
 
         itemData.Level = curLevel;
         itemData.Exp = curExp;
+        DatabaseHelper.ToSaveUidList.SafeAdd(Player.Uid);
         // leftover
         Dictionary<int, ItemData> list = [];
         var leftover = exp;
@@ -1146,7 +1184,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
 
         if (list.Count > 0) await Player.SendPacket(new PacketPlayerSyncScNotify(list.Values.ToList()));
         await Player.SendPacket(new PacketPlayerSyncScNotify(itemData));
-        return [.. list.Values];
+        return (Retcode.RetSucc, [.. list.Values]);
     }
 
     public async ValueTask<bool> PromoteAvatar(int avatarId)
@@ -1336,21 +1374,60 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
         await Player.SendPacket(new PacketPlayerSyncScNotify(avatarData));
     }
 
-    public async ValueTask RankUpEquipment(int equipmentUniqueId, ItemCostData costData)
+    public async ValueTask<Retcode> RankUpEquipment(int equipmentUniqueId, ItemCostData costData)
     {
-        var rank = 0;
-        foreach (var cost in costData.ItemList)
+        var itemData = Data.EquipmentItems.Find(x => x.UniqueId == equipmentUniqueId);
+        if (itemData == null)
         {
-            var costItem = Data.EquipmentItems.Find(x => x.UniqueId == cost.EquipmentUniqueId);
-            if (costItem == null) continue;
-            await RemoveItem(costItem.ItemId, 0, (int)cost.EquipmentUniqueId);
-            rank++;
+            await SyncStaleEquipmentIds([equipmentUniqueId]);
+            return Retcode.RetEquipmentNotExist;
         }
 
-        var itemData = Data.EquipmentItems.Find(x => x.UniqueId == equipmentUniqueId);
-        if (itemData == null) return;
-        itemData.Rank += rank;
-        await Player.SendPacket(new PacketPlayerSyncScNotify(itemData));
+        GameData.EquipmentConfigData.TryGetValue(itemData.ItemId, out var equipmentConfig);
+        if (equipmentConfig == null) return Retcode.RetItemConfigNotExist;
+
+        var maxRank = Math.Max(1, equipmentConfig.MaxRank);
+        if (itemData.Rank >= maxRank) return Retcode.RetEquipmentRankUpReachMax;
+
+        var rank = 0;
+        List<(int itemId, int count, int uniqueId)> costItems = [];
+        HashSet<uint> costEquipmentIds = [];
+        List<uint> staleEquipmentIds = [];
+        foreach (var cost in costData.ItemList)
+        {
+            if (!cost.HasEquipmentUniqueId) continue;
+            if (cost.EquipmentUniqueId == equipmentUniqueId) return Retcode.RetEquipmentConsumeSelf;
+            if (!costEquipmentIds.Add(cost.EquipmentUniqueId)) continue;
+
+            var costItem = Data.EquipmentItems.Find(x => x.UniqueId == cost.EquipmentUniqueId);
+            if (costItem == null)
+            {
+                staleEquipmentIds.Add(cost.EquipmentUniqueId);
+                continue;
+            }
+
+            if (costItem.Locked) return Retcode.RetEquipmentLocked;
+            if (costItem.ItemId != itemData.ItemId) return Retcode.RetEquipmentRankUpMustConsumeSameTid;
+
+            costItems.Add((costItem.ItemId, 1, (int)cost.EquipmentUniqueId));
+            rank += Math.Max(1, costItem.Rank);
+
+            if (itemData.Rank + rank >= maxRank) break;
+        }
+
+        if (staleEquipmentIds.Count > 0)
+        {
+            await SyncStaleEquipmentIds(staleEquipmentIds);
+            return Retcode.RetEquipmentNotExist;
+        }
+
+        if (rank == 0 || costItems.Count == 0) return Retcode.RetItemNoCost;
+
+        await RemoveItems(costItems, false);
+        itemData.Rank = Math.Min(itemData.Rank + rank, maxRank);
+        DatabaseHelper.ToSaveUidList.SafeAdd(Player.Uid);
+        await Player.SendPacket(new PacketPlayerSyncScNotify(itemData, costItems.Select(item => (uint)item.uniqueId)));
+        return Retcode.RetSucc;
     }
 
     #endregion

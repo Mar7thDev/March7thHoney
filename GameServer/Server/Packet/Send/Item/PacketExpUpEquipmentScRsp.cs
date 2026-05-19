@@ -6,9 +6,12 @@ namespace March7thHoney.GameServer.Server.Packet.Send.Item;
 
 public class PacketExpUpEquipmentScRsp : BasePacket
 {
-    public PacketExpUpEquipmentScRsp(List<ItemData> returnItem) : base(CmdIds.ExpUpEquipmentScRsp)
+    public PacketExpUpEquipmentScRsp(Retcode retcode, List<ItemData> returnItem) : base(CmdIds.ExpUpEquipmentScRsp)
     {
-        var proto = new ExpUpEquipmentScRsp();
+        var proto = new ExpUpEquipmentScRsp
+        {
+            Retcode = (uint)retcode
+        };
         proto.ReturnItemList.AddRange(returnItem.Select(item => item.ToPileProto()));
 
         SetData(proto);
