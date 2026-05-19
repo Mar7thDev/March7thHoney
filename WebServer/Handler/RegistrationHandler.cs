@@ -7,17 +7,21 @@ namespace March7thHoney.WebServer.Handler;
 
 public class RegistrationHandler
 {
-    public JsonResult Handle(RegisterReqJson req)
+    public async Task<JsonResult> Handle(RegisterReqJson req, HttpRequest request)
     {
         if (!ConfigManager.Config.ServerOption.Auth.EnableRegistration)
             return Error("Registration is disabled");
 
         var username = ResolveUsername(req);
+        var email = ResolveEmail(req);
         var password = req.password ?? string.Empty;
         var confirmation = req.confirm_password ?? req.confirmPassword ?? req.confirm;
 
         if (string.IsNullOrWhiteSpace(username))
             return Error("Username cannot be empty");
+
+        if (string.IsNullOrWhiteSpace(email))
+            return Error("Email cannot be empty");
 
         if (!string.IsNullOrEmpty(confirmation) && !string.Equals(password, confirmation, StringComparison.Ordinal))
             return Error("Passwords do not match");
@@ -25,14 +29,28 @@ public class RegistrationHandler
         if (AccountData.GetAccountByUserName(username) != null)
             return Error("Username already exists");
 
+        if (AccountData.GetAccountByEmail(email) != null)
+            return Error("Email already exists");
+
         try
         {
-            AccountHelper.CreateAccount(username, password, 0);
+            AccountHelper.CreateAccount(username, email, password, 0);
         }
         catch (Exception ex)
         {
             return Error(ex.Message);
         }
+
+        var emailSent = false;
+        var account = AccountData.GetAccountByUserName(username);
+        if (account != null && ConfigManager.Config.ServerOption.Auth.SendVerificationEmailOnRegister)
+        {
+            var verificationToken = account.GenerateEmailVerificationToken();
+            emailSent = await AccountEmailSender.SendVerificationEmailAsync(account, verificationToken, request);
+        }
+
+        if (account != null && !account.CanLogin())
+            return RegistrationSuccess(account, emailSent, requiresEmailVerification: true);
 
         LoginSessionFactory.LoginFailure failure;
         if (!LoginSessionFactory.TryCreateSession(username, password, out var session, out failure))
@@ -50,7 +68,7 @@ public class RegistrationHandler
                     name = session.Username,
                     email = session.Email,
                     token = session.DispatchToken,
-                    is_email_verify = "1"
+                    is_email_verify = session.IsEmailVerified ? "1" : "0"
                 },
                 user_info = new
                 {
@@ -58,9 +76,44 @@ public class RegistrationHandler
                     mid = session.Uid,
                     account_name = session.Username,
                     email = session.Email,
-                    is_email_verify = "1"
+                    is_email_verify = session.IsEmailVerified ? "1" : "0"
                 },
-                token = new { token_type = 1, token = session.DispatchToken }
+                token = new { token_type = 1, token = session.DispatchToken },
+                email_sent = emailSent
+            }
+        });
+    }
+
+    private static JsonResult RegistrationSuccess(AccountData account, bool emailSent, bool requiresEmailVerification)
+    {
+        var uid = account.Uid.ToString();
+        var username = account.Username ?? uid;
+        var email = account.Email ?? string.Empty;
+        return new JsonResult(new
+        {
+            retcode = 0,
+            message = requiresEmailVerification ? LoginSessionFactory.EmailVerificationRequiredMessage : "OK",
+            data = new
+            {
+                account = new
+                {
+                    uid,
+                    name = username,
+                    email,
+                    token = "",
+                    is_email_verify = account.IsEmailVerified ? "1" : "0"
+                },
+                user_info = new
+                {
+                    aid = uid,
+                    mid = uid,
+                    account_name = username,
+                    email,
+                    is_email_verify = account.IsEmailVerified ? "1" : "0"
+                },
+                token = new { token_type = 1, token = "" },
+                email_sent = emailSent,
+                email_verification_required = requiresEmailVerification
             }
         });
     }
@@ -72,6 +125,24 @@ public class RegistrationHandler
 
     private static string ResolveUsername(RegisterReqJson req)
     {
-        return (req.account ?? req.username ?? req.email ?? string.Empty).Trim();
+        var account = (req.account ?? string.Empty).Trim();
+        if (!string.IsNullOrWhiteSpace(req.username))
+            return req.username.Trim();
+
+        return LooksLikeEmail(account) ? string.Empty : account;
+    }
+
+    private static string ResolveEmail(RegisterReqJson req)
+    {
+        var account = (req.account ?? string.Empty).Trim();
+        if (!string.IsNullOrWhiteSpace(req.email))
+            return req.email.Trim();
+
+        return LooksLikeEmail(account) ? account : string.Empty;
+    }
+
+    private static bool LooksLikeEmail(string value)
+    {
+        return value.Contains('@', StringComparison.Ordinal);
     }
 }

@@ -131,6 +131,21 @@ public static class AdminPageRenderer
       font-weight: 700;
     }
 
+    .check-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .check-row input {
+      width: 18px;
+      min-height: 18px;
+      padding: 0;
+    }
+
     .shell {
       min-height: 100vh;
     }
@@ -405,7 +420,7 @@ public static class AdminPageRenderer
       <section id="admin-workspace" class="workspace hidden">
         <div>
           <div class="toolbar">
-            <input id="search" type="search" placeholder="Search users by UID, username, role, nickname, or permissions">
+            <input id="search" type="search" placeholder="Search users by UID, username, email, role, nickname, or permissions">
             <button id="refresh-button" type="button">Refresh</button>
             <span id="account-count" class="pill">0 users</span>
           </div>
@@ -417,10 +432,12 @@ public static class AdminPageRenderer
                 <tr>
                   <th style="width: 90px;">UID</th>
                   <th>Username</th>
+                  <th>Email</th>
                   <th style="width: 130px;">Role</th>
                   <th>Nickname</th>
                   <th style="width: 90px;">Level</th>
                   <th style="width: 120px;">Password</th>
+                  <th style="width: 110px;">Verified</th>
                 </tr>
               </thead>
               <tbody id="accounts-body"></tbody>
@@ -437,8 +454,16 @@ public static class AdminPageRenderer
                 <input id="create-username" required maxlength="64" autocomplete="off">
               </label>
               <label>
+                Email
+                <input id="create-email" type="email" required maxlength="254" autocomplete="off">
+              </label>
+              <label>
                 Password
                 <input id="create-password" type="password" required autocomplete="new-password">
+              </label>
+              <label class="check-row">
+                <input id="create-email-verified" type="checkbox">
+                Email verified
               </label>
               <label>
                 UID
@@ -467,6 +492,14 @@ public static class AdminPageRenderer
                 <input id="edit-username" disabled maxlength="64" autocomplete="off">
               </label>
               <label>
+                Email
+                <input id="edit-email" type="email" disabled maxlength="254" autocomplete="off">
+              </label>
+              <label class="check-row">
+                <input id="edit-email-verified" type="checkbox" disabled>
+                Email verified
+              </label>
+              <label>
                 Role
                 <select id="edit-role" disabled></select>
               </label>
@@ -481,6 +514,7 @@ public static class AdminPageRenderer
               </label>
               <div class="actions">
                 <button id="save-user-button" class="primary" type="submit" disabled>Save changes</button>
+                <button id="send-verification-button" type="button" disabled>Send verification email</button>
               </div>
             </form>
             <form id="password-form" class="form-grid">
@@ -607,6 +641,7 @@ public static class AdminPageRenderer
         const text = [
           account.uid,
           account.username,
+          account.email,
           account.role,
           account.nickname,
           account.permissions,
@@ -629,10 +664,12 @@ public static class AdminPageRenderer
         tr.innerHTML = `
           <td>${escapeHtml(account.uid)}</td>
           <td>${escapeHtml(account.username || "")}</td>
+          <td class="muted">${escapeHtml(account.email || "")}</td>
           <td><span class="pill">${escapeHtml(account.role || "")}</span></td>
           <td class="muted">${escapeHtml(account.nickname || "")}</td>
           <td>${account.level ?? ""}</td>
           <td><span class="pill ${account.has_password ? "good" : "warn"}">${account.has_password ? "Set" : "Missing"}</span></td>
+          <td><span class="pill ${account.email_verified ? "good" : "warn"}">${account.email_verified ? "Yes" : "No"}</span></td>
         `;
         tr.addEventListener("click", () => selectAccount(account.uid));
         accountsBody.appendChild(tr);
@@ -648,13 +685,15 @@ public static class AdminPageRenderer
       state.selectedUid = uid;
       document.getElementById("selected-hint").textContent = `UID ${account.uid}`;
       document.getElementById("edit-username").value = account.username || "";
+      document.getElementById("edit-email").value = account.email || "";
+      document.getElementById("edit-email-verified").checked = Boolean(account.email_verified);
       document.getElementById("edit-role").value = account.role || state.defaultRole;
       document.getElementById("edit-permissions").value = account.permissions || "";
       document.getElementById("edit-effective-permissions").value = account.effective_permissions || "";
       document.getElementById("edit-password").value = "";
       document.getElementById("delete-confirm").value = "";
 
-      for (const id of ["edit-username", "edit-role", "edit-permissions", "edit-password", "delete-confirm", "save-user-button", "set-password-button", "delete-user-button"]) {
+      for (const id of ["edit-username", "edit-email", "edit-email-verified", "edit-role", "edit-permissions", "edit-password", "delete-confirm", "save-user-button", "send-verification-button", "set-password-button", "delete-user-button"]) {
         document.getElementById(id).disabled = false;
       }
 
@@ -730,10 +769,12 @@ public static class AdminPageRenderer
           method: "POST",
           body: JSON.stringify({
             username: document.getElementById("create-username").value.trim(),
+            email: document.getElementById("create-email").value.trim(),
             password: document.getElementById("create-password").value,
             uid: uidValue ? Number(uidValue) : null,
             role: document.getElementById("create-role").value,
-            permissions: document.getElementById("create-permissions").value
+            permissions: document.getElementById("create-permissions").value,
+            email_verified: document.getElementById("create-email-verified").checked
           })
         });
 
@@ -751,18 +792,20 @@ public static class AdminPageRenderer
 
       try {
         const uid = selectedUidOrThrow();
-        await api(`/admin/api/accounts/${uid}`, {
+        const data = await api(`/admin/api/accounts/${uid}`, {
           method: "PUT",
           body: JSON.stringify({
             username: document.getElementById("edit-username").value.trim(),
+            email: document.getElementById("edit-email").value.trim(),
             role: document.getElementById("edit-role").value,
-            permissions: document.getElementById("edit-permissions").value
+            permissions: document.getElementById("edit-permissions").value,
+            email_verified: document.getElementById("edit-email-verified").checked
           })
         });
 
         await loadAccounts();
         selectAccount(uid);
-        setMessage(editMessage, "User updated.", "good");
+        setMessage(editMessage, data.email_sent ? "User updated. Verification email sent." : "User updated.", "good");
       } catch (error) {
         setMessage(editMessage, error instanceof Error ? error.message : "Save failed", "bad");
       }
@@ -790,6 +833,25 @@ public static class AdminPageRenderer
       }
     });
 
+    document.getElementById("send-verification-button").addEventListener("click", async () => {
+      setMessage(editMessage, "Sending verification email...", "");
+
+      try {
+        const uid = selectedUidOrThrow();
+        const data = await api(`/admin/api/accounts/${uid}/email/verification`, {
+          method: "POST"
+        });
+
+        await loadAccounts();
+        selectAccount(uid);
+        setMessage(editMessage,
+          data.email_sent ? "Verification email sent." : "Email marked unverified, but the email could not be sent.",
+          data.email_sent ? "good" : "bad");
+      } catch (error) {
+        setMessage(editMessage, error instanceof Error ? error.message : "Verification email failed", "bad");
+      }
+    });
+
     document.getElementById("delete-form").addEventListener("submit", async event => {
       event.preventDefault();
       setMessage(editMessage, "", "");
@@ -803,11 +865,14 @@ public static class AdminPageRenderer
         await api(`/admin/api/accounts/${uid}`, { method: "DELETE" });
         state.selectedUid = null;
         await loadAccounts();
-        for (const id of ["edit-username", "edit-role", "edit-permissions", "edit-effective-permissions", "edit-password", "delete-confirm", "save-user-button", "set-password-button", "delete-user-button"]) {
+        for (const id of ["edit-username", "edit-email", "edit-email-verified", "edit-role", "edit-permissions", "edit-effective-permissions", "edit-password", "delete-confirm", "save-user-button", "send-verification-button", "set-password-button", "delete-user-button"]) {
           const element = document.getElementById(id);
           element.disabled = true;
           if ("value" in element) {
             element.value = "";
+          }
+          if ("checked" in element) {
+            element.checked = false;
           }
         }
         document.getElementById("selected-hint").textContent = "Select a user from the table.";

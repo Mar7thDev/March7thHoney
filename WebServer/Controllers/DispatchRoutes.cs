@@ -168,6 +168,29 @@ public class DispatchRoutes : ControllerBase
             };
         }
 
+        if (IsLoginPlatformPasswordResetRoute(route))
+        {
+            return new ContentResult
+            {
+                Content = PasswordResetPage.Render(
+                    Math.Max(Config.ServerOption.Auth.MinimumPasswordLength, 1),
+                    Config.GameServer.GameServerName,
+                    Config.ServerOption.Auth.RegistrationPageIcon),
+                ContentType = "text/html; charset=utf-8"
+            };
+        }
+
+        if (IsLoginPlatformForgotPasswordRoute(route))
+        {
+            return new ContentResult
+            {
+                Content = PasswordForgotPage.Render(
+                    Config.GameServer.GameServerName,
+                    Config.ServerOption.Auth.RegistrationPageIcon),
+                ContentType = "text/html; charset=utf-8"
+            };
+        }
+
         return LoginPlatformNotFound();
     }
 
@@ -224,17 +247,76 @@ public class DispatchRoutes : ControllerBase
                segment.EndsWith("-sign-up", StringComparison.Ordinal);
     }
 
+    private static bool IsLoginPlatformPasswordResetRoute(string route)
+    {
+        route = route.Replace('_', '-');
+        var segments = route.Split('/', StringSplitOptions.RemoveEmptyEntries);
+
+        return route is "reset-password" or "password-reset" ||
+               route.StartsWith("reset-password/", StringComparison.Ordinal) ||
+               route.StartsWith("password-reset/", StringComparison.Ordinal) ||
+               route.EndsWith("/reset-password", StringComparison.Ordinal) ||
+               route.EndsWith("/password-reset", StringComparison.Ordinal) ||
+               segments.Any(segment => segment is "reset-password" or "password-reset");
+    }
+
+    private static bool IsLoginPlatformForgotPasswordRoute(string route)
+    {
+        route = route.Replace('_', '-');
+        var segments = route.Split('/', StringSplitOptions.RemoveEmptyEntries);
+
+        return route is "forgot-password" or "password-forgot" ||
+               route.StartsWith("forgot-password/", StringComparison.Ordinal) ||
+               route.StartsWith("password-forgot/", StringComparison.Ordinal) ||
+               route.EndsWith("/forgot-password", StringComparison.Ordinal) ||
+               route.EndsWith("/password-forgot", StringComparison.Ordinal) ||
+               segments.Any(segment => segment is "forgot-password" or "password-forgot");
+    }
+
     // === AUTHENTICATION ===
     [HttpPost("/account/register")]
     [HttpPost("/account/ma-passport/api/register")]
     [HttpPost("/account/ma-passport/api/webRegisterByPassword")]
     [HttpPost("/hkrpg_global/account/ma-passport/api/webRegisterByPassword")]
     [HttpPost("/{gameKey}/account/ma-passport/api/webRegisterByPassword")]
-    public JsonResult Register([FromBody] RegisterReqJson? req)
+    public async Task<JsonResult> Register([FromBody] RegisterReqJson? req)
     {
         req ??= new RegisterReqJson();
-        Debug($"register: username={req.username ?? req.account ?? req.email}");
-        return new RegistrationHandler().Handle(req);
+        Debug($"register: username={req.username ?? req.account} email={req.email}");
+        return await new RegistrationHandler().Handle(req, Request);
+    }
+
+    [HttpPost("/account/email/send-verification")]
+    [HttpPost("/hkrpg_global/account/email/send-verification")]
+    [HttpPost("/{gameKey}/account/email/send-verification")]
+    public async Task<JsonResult> SendVerificationEmail([FromBody] SendVerificationEmailReqJson? req)
+    {
+        req ??= new SendVerificationEmailReqJson();
+        return await new AccountRecoveryHandler().SendVerificationEmail(req, Request);
+    }
+
+    [HttpGet("/account/email/verify")]
+    public ContentResult VerifyEmail([FromQuery] string? uid, [FromQuery] string? token)
+    {
+        return new AccountRecoveryHandler().VerifyEmail(uid, token);
+    }
+
+    [HttpPost("/account/password/forgot")]
+    [HttpPost("/hkrpg_global/account/password/forgot")]
+    [HttpPost("/{gameKey}/account/password/forgot")]
+    public async Task<JsonResult> ForgotPassword([FromBody] ForgotPasswordReqJson? req)
+    {
+        req ??= new ForgotPasswordReqJson();
+        return await new AccountRecoveryHandler().ForgotPassword(req, Request);
+    }
+
+    [HttpPost("/account/password/reset")]
+    [HttpPost("/hkrpg_global/account/password/reset")]
+    [HttpPost("/{gameKey}/account/password/reset")]
+    public JsonResult ResetPassword([FromBody] ResetPasswordReqJson? req)
+    {
+        req ??= new ResetPasswordReqJson();
+        return new AccountRecoveryHandler().ResetPassword(req);
     }
 
     [HttpPost("/hkrpg_global/mdk/shield/api/login")]

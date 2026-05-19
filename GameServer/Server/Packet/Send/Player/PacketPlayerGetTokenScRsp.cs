@@ -31,7 +31,8 @@ public class PacketPlayerGetTokenScRsp : BasePacket
         {
             Retcode = (uint)ret,
             BlackInfo = black ?? new BlackInfo(),
-            Uid = uid
+            Uid = uid,
+            StopDesc = msg
         };
 
         SetData(rsp);

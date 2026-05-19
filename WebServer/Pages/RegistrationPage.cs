@@ -13,7 +13,7 @@ public static class RegistrationPage
         var displayName = string.IsNullOrWhiteSpace(serverName) ? "March7thHoney" : serverName.Trim();
         var encodedDisplayName = WebUtility.HtmlEncode(displayName);
         var encodedTitle = WebUtility.HtmlEncode($"Register - {displayName}");
-        var iconMarkup = RenderIcon(registrationPageIcon, displayName);
+        var iconMarkup = RenderIconMarkup(registrationPageIcon, displayName);
         var disabledAttribute = registrationEnabled ? "" : " disabled";
         var initialMessage = registrationEnabled ? "" : "Registration is disabled.";
         var encodedInitialMessage = WebUtility.HtmlEncode(initialMessage);
@@ -245,6 +245,11 @@ public static class RegistrationPage
         </label>
 
         <label>
+          Email
+          <input id="email" name="email" type="email" autocomplete="email" required maxlength="254"{{disabledAttribute}}>
+        </label>
+
+        <label>
           Password
           <input id="password" name="password" type="password" autocomplete="new-password" required minlength="{{minimumPasswordLength}}"{{disabledAttribute}}>
         </label>
@@ -260,7 +265,7 @@ public static class RegistrationPage
 
       <div id="result" class="result">
         UID <strong id="uid"></strong><br>
-        Return to the game login screen and sign in with this username.
+        <span id="next-step"></span>
       </div>
     </section>
   </main>
@@ -273,6 +278,7 @@ public static class RegistrationPage
     const message = document.getElementById("message");
     const result = document.getElementById("result");
     const uid = document.getElementById("uid");
+    const nextStep = document.getElementById("next-step");
 
     function setMessage(text, kind) {
       message.textContent = text;
@@ -289,11 +295,17 @@ public static class RegistrationPage
       }
 
       const username = document.getElementById("username").value.trim();
+      const email = document.getElementById("email").value.trim();
       const password = document.getElementById("password").value;
       const confirmPassword = document.getElementById("confirm-password").value;
 
       if (!username) {
         setMessage("Username cannot be empty.", "error");
+        return;
+      }
+
+      if (!email) {
+        setMessage("Email cannot be empty.", "error");
         return;
       }
 
@@ -316,6 +328,7 @@ public static class RegistrationPage
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             username,
+            email,
             password,
             confirm_password: confirmPassword
           })
@@ -327,9 +340,16 @@ public static class RegistrationPage
         }
 
         const accountUid = body.data?.account?.uid || body.data?.user_info?.aid || "";
+        const verificationRequired = Boolean(body.data?.email_verification_required);
+        const emailSent = Boolean(body.data?.email_sent);
         uid.textContent = accountUid;
+        nextStep.textContent = verificationRequired
+          ? (emailSent
+            ? "Check your email and verify the account before logging in."
+            : "Email verification is required, but the verification email could not be sent. Contact an administrator.")
+          : "Return to the game login screen and sign in with your username or email.";
         result.style.display = "block";
-        setMessage("Username created.", "success");
+        setMessage(verificationRequired ? "Account created. Email verification required." : "Account created.", "success");
         form.reset();
       } catch (error) {
         setMessage(error instanceof Error ? error.message : "Registration failed", "error");
@@ -343,7 +363,7 @@ public static class RegistrationPage
 """;
     }
 
-    private static string RenderIcon(string configuredIcon, string serverName)
+    public static string RenderIconMarkup(string configuredIcon, string serverName)
     {
         var icon = string.IsNullOrWhiteSpace(configuredIcon) ? BuildInitials(serverName) : configuredIcon.Trim();
 

@@ -460,11 +460,15 @@ public class RaidTextCHT
 public class AccountTextCHT
 {
     public string Desc => "管理賬號\n注意：此命令未經測試，請謹慎使用！";
-    public string Usage => "用法：/account create [用戶名]\n用法：/account setpassword [用戶名|UID] [密碼]\n用法：/account reset [用戶名|UID]\n用法：/account role [用戶名|UID] [角色]\n用法：/account roles";
-    public string ResetUsage => "用法：/account reset [用戶名|UID]";
+    public string Usage => "用法：/account create [用戶名] [郵箱] [密碼] [UID]\n用法：/account setpassword [用戶名|UID|郵箱] [密碼]\n用法：/account setemail [用戶名|UID|郵箱] [郵箱] [verified:true|false]\n用法：/account verifyemail [用戶名|UID|郵箱]\n用法：/account reset [用戶名|UID|郵箱]\n用法：/account delete [用戶名|UID|郵箱] confirm\n用法：/account role [用戶名|UID|郵箱] [角色]\n用法：/account roles";
+    public string ResetUsage => "用法：/account reset [用戶名|UID|郵箱]";
     public string AccountNotFound => "賬號 {0} 不存在。";
     public string ResetStarted => "正在重置賬號 {0}。你將被斷開連接，重新登入後會重新開始。";
     public string ResetSuccess => "賬號 {0} 已重置。";
+    public string DeleteUsage => "用法：/account delete [用戶名|UID|郵箱] confirm";
+    public string DeleteRequiresConfirm => "這會永久刪除賬號 {0} 及其所有玩家資料。請執行 /account delete {0} confirm 繼續。";
+    public string DeleteStarted => "正在刪除賬號 {0}。你將被斷開連接。";
+    public string DeleteSuccess => "賬號 {0} 已刪除。";
     public string InvalidUid => "無效UID參數！";
     public string CreateError => "出現內部錯誤 {0} ";
     public string CreateSuccess => "新賬號 {0} 創建成功!";
