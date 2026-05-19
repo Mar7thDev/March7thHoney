@@ -459,8 +459,12 @@ public class RaidTextEN
 /// </summary>
 public class AccountTextEN
 {
-    public string Desc => "Create an account.\nNote: This command is untested. Use with caution!";
-    public string Usage => "Usage: /account create [Username]\nUsage: /account setpassword [Username|UID] [Password]\nUsage: /account role [Username|UID] [Role]\nUsage: /account roles";
+    public string Desc => "Manage accounts.\nNote: This command is untested. Use with caution!";
+    public string Usage => "Usage: /account create [Username]\nUsage: /account setpassword [Username|UID] [Password]\nUsage: /account reset [Username|UID]\nUsage: /account role [Username|UID] [Role]\nUsage: /account roles";
+    public string ResetUsage => "Usage: /account reset [Username|UID]";
+    public string AccountNotFound => "Account {0} does not exist.";
+    public string ResetStarted => "Resetting account {0}. You will be disconnected and can reconnect to start fresh.";
+    public string ResetSuccess => "Account {0} has been reset.";
     public string InvalidUid => "Invalid UID parameter!";
     public string CreateError => "Internal error occurred {0} ";
     public string CreateSuccess => "New account {0} created successfully!";

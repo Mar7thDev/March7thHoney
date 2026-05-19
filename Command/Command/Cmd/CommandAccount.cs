@@ -1,5 +1,9 @@
 using March7thHoney.Database;
 using March7thHoney.Database.Account;
+using March7thHoney.Database.Mail;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Server;
+using March7thHoney.GameServer.Server.Packet.Send.Player;
 using March7thHoney.Internationalization;
 using March7thHoney.Util;
 
@@ -108,6 +112,56 @@ public class CommandAccount : ICommand
     public async ValueTask Roles(CommandArg arg)
     {
         await arg.SendMsg("Available roles: " + string.Join(", ", GetConfiguredRoles().Keys));
+    }
+
+    [CommandMethod("reset")]
+    public async ValueTask Reset(CommandArg arg)
+    {
+        var accountKey = arg.Args.Count > 1 ? arg.Args[1] : arg.Sender.GetSender().ToString();
+        if (string.IsNullOrWhiteSpace(accountKey) || accountKey == "0")
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Account.ResetUsage"));
+            return;
+        }
+
+        var account = ResolveAccount(accountKey);
+        if (account == null)
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Account.AccountNotFound", accountKey));
+            return;
+        }
+
+        if (DatabaseHelper.Instance == null)
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Account.CreateError", "Database is not initialized"));
+            return;
+        }
+
+        var displayName = account.Username ?? account.Uid.ToString();
+        var isSelfReset = account.Uid == arg.Sender.GetSender();
+        if (isSelfReset) await arg.SendMsg(I18NManager.Translate("Game.Command.Account.ResetStarted", displayName));
+
+        var activeConnection = Listener.GetActiveConnection(account.Uid);
+        if (activeConnection != null)
+        {
+            await activeConnection.SendPacket(new PacketPlayerSqueezedScNotify());
+            activeConnection.Stop();
+        }
+
+        DatabaseHelper.Instance.DeleteUidGameplayData(account.Uid);
+
+        var freshPlayer = new PlayerInstance(account.Uid);
+        freshPlayer.Data.Level = ConfigManager.Config.ServerOption.StartTrailblazerLevel;
+        freshPlayer.Data.Exp = 0;
+        freshPlayer.OnLevelChange();
+
+        MailHelper.SendWelcomeMail(account.Uid, displayName);
+
+        DatabaseHelper.ToSaveUidList.SafeAdd(account.Uid);
+        DatabaseHelper.Instance.SaveDatabase();
+
+        if (!isSelfReset)
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Account.ResetSuccess", displayName));
     }
 
     private static async ValueTask SetRoleInternal(CommandArg arg)
