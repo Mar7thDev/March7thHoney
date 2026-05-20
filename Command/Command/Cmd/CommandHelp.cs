@@ -3,7 +3,7 @@ using March7thHoney.Util;
 
 namespace March7thHoney.Command.Command.Cmd;
 
-[CommandInfo("help", "Game.Command.Help.Desc", "Game.Command.Help.Usage", ["h"])]
+[CommandInfo("help", "Game.Command.Help.Desc", "Game.Command.Help.Usage", ["h"], permission: CommandPermissions.Help)]
 public class CommandHelp : ICommand
 {
     [CommandDefault]
@@ -13,9 +13,22 @@ public class CommandHelp : ICommand
         if (arg.Args.Count == 1)
         {
             var cmd = arg.Args[0];
-            if (commands == null || !commands.TryGetValue(cmd, out var command))
+            CommandInfoAttribute? command = null;
+            if (commands?.TryGetValue(cmd, out var foundCommand) == true)
+                command = foundCommand;
+            else if (CommandManager.Instance?.CommandAlias.TryGetValue(cmd, out var realCmd) == true &&
+                     commands?.TryGetValue(realCmd, out foundCommand) == true)
+                command = foundCommand;
+
+            if (command == null)
             {
                 await arg.SendMsg(I18NManager.Translate("Game.Command.Help.CommandNotFound"));
+                return;
+            }
+
+            if (!arg.Sender.HasPermission(command.Permission))
+            {
+                await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.NoPermission"));
                 return;
             }
 
@@ -36,6 +49,8 @@ public class CommandHelp : ICommand
 
         foreach (var command in commands.Values)
         {
+            if (!arg.Sender.HasPermission(command.Permission)) continue;
+
             var msg =
                 $"/{command.Name} - {I18NManager.Translate(command.Description)}\n\n{I18NManager.Translate(command.Usage)}";
             if (command.Alias.Length > 0)

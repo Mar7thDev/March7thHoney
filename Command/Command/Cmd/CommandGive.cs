@@ -3,7 +3,7 @@ using March7thHoney.Internationalization;
 
 namespace March7thHoney.Command.Command.Cmd;
 
-[CommandInfo("give", "Game.Command.Give.Desc", "Game.Command.Give.Usage", ["g"])]
+[CommandInfo("give", "Game.Command.Give.Desc", "Game.Command.Give.Usage", ["g"], permission: CommandPermissions.Give)]
 public class CommandGive : ICommand
 {
     [CommandDefault]
@@ -36,14 +36,13 @@ public class CommandGive : ICommand
         levelStr ??= "1";
         rankStr ??= "1";
         if (!int.TryParse(str, out var amount) || !int.TryParse(levelStr, out var level) ||
-            !int.TryParse(rankStr, out var rank))
+            !int.TryParse(rankStr, out var rank) || amount < 1 || level is < 1 or > 80 || rank is < 1 or > 5)
         {
             await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.InvalidArguments"));
             return;
         }
 
-        await player.InventoryManager!.AddItem(arg.GetInt(0), amount, rank: Math.Min(rank, 5),
-            level: Math.Max(Math.Min(level, 80), 1));
+        await player.InventoryManager!.AddItem(arg.GetInt(0), amount, rank: rank, level: level);
 
         await arg.SendMsg(I18NManager.Translate("Game.Command.Give.GiveItem", player.Uid.ToString(), amount.ToString(),
             itemData.Name ?? itemData.ID.ToString()));

@@ -4,7 +4,7 @@ using March7thHoney.Proto;
 
 namespace March7thHoney.Command.Command.Cmd;
 
-[CommandInfo("hero", "Game.Command.Hero.Desc", "Game.Command.Hero.Usage")]
+[CommandInfo("hero", "Game.Command.Hero.Desc", "Game.Command.Hero.Usage", permission: CommandPermissions.Hero)]
 public class CommandHero : ICommand
 {
     [CommandMethod("0 gender")]
@@ -22,13 +22,13 @@ public class CommandHero : ICommand
             return;
         }
 
-        var gender = (Gender)arg.GetInt(0);
-        if (gender == Gender.None)
+        if (!arg.TryGetInt(0, out var genderId) || genderId is not 1 and not 2)
         {
             await arg.SendMsg(I18NManager.Translate("Game.Command.Hero.GenderNotSpecified"));
             return;
         }
 
+        var gender = (Gender)genderId;
         var player = arg.Target!.Player!;
         player.Data.CurrentGender = gender;
         await player.ChangeAvatarPathType(8001, MultiPathAvatarTypeEnum.Warrior);
@@ -51,13 +51,13 @@ public class CommandHero : ICommand
             return;
         }
 
-        var gender = (MultiPathAvatarTypeEnum)arg.GetInt(0);
-        if (gender == 0)
+        if (!arg.TryGetInt(0, out var pathId) || !Enum.IsDefined(typeof(MultiPathAvatarTypeEnum), pathId))
         {
             await arg.SendMsg(I18NManager.Translate("Game.Command.Hero.HeroTypeNotSpecified"));
             return;
         }
 
+        var gender = (MultiPathAvatarTypeEnum)pathId;
         var player = arg.Target!.Player!;
         await player.ChangeAvatarPathType(8001, gender);
 

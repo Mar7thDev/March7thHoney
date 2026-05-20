@@ -1,13 +1,13 @@
 using March7thHoney.Data;
 using March7thHoney.Enums.Mission;
-using March7thHoney.GameServer.Server.Packet.Send.Player;
+using March7thHoney.GameServer.Server;
 using March7thHoney.Internationalization;
 using March7thHoney.Proto;
 using Google.Protobuf.WellKnownTypes;
 
 namespace March7thHoney.Command.Command.Cmd;
 
-[CommandInfo("unlockall", "Game.Command.UnlockAll.Desc", "Game.Command.UnlockAll.Usage", ["ua"])]
+[CommandInfo("unlockall", "Game.Command.UnlockAll.Desc", "Game.Command.UnlockAll.Usage", ["ua"], permission: CommandPermissions.UnlockAll)]
 public class CommandUnlockAll : ICommand
 {
     [CommandMethod("0 mission")]
@@ -42,8 +42,7 @@ public class CommandUnlockAll : ICommand
 
         await arg.SendMsg(I18NManager.Translate("Game.Command.UnlockAll.UnlockedAll",
             I18NManager.Translate("Word.Mission")));
-        await arg.Target!.Player!.SendPacket(new PacketPlayerSqueezedScNotify());
-        arg.Target!.Stop();
+        ConnectionDisconnectHelper.KickByGm(arg.Target);
     }
 
     [CommandMethod("0 quest")]
@@ -86,8 +85,7 @@ public class CommandUnlockAll : ICommand
 
         await arg.SendMsg(I18NManager.Translate("Game.Command.UnlockAll.UnlockedAll",
             I18NManager.Translate("Word.Tutorial")));
-        await arg.Target!.Player!.SendPacket(new PacketPlayerSqueezedScNotify());
-        arg.Target!.Stop();
+        ConnectionDisconnectHelper.KickByGm(arg.Target);
     }
 
     [CommandMethod("0 rogue")]
@@ -117,8 +115,7 @@ public class CommandUnlockAll : ICommand
 
         await arg.SendMsg(I18NManager.Translate("Game.Command.UnlockAll.UnlockedAll",
             I18NManager.Translate("Word.TypesOfRogue")));
-        await arg.Target!.Player!.SendPacket(new PacketPlayerSqueezedScNotify());
-        arg.Target!.Stop();
+        ConnectionDisconnectHelper.KickByGm(arg.Target);
     }
 
     [CommandMethod("0 challenge")]

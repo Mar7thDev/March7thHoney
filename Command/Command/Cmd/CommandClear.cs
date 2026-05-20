@@ -2,7 +2,7 @@ using March7thHoney.Internationalization;
 
 namespace March7thHoney.Command.Command.Cmd;
 
-[CommandInfo("clear", "Game.Command.Clear.Desc", "Game.Command.Clear.Usage")]
+[CommandInfo("clear", "Game.Command.Clear.Desc", "Game.Command.Clear.Usage", permission: CommandPermissions.Clear)]
 public class CommandClear : ICommand
 {
     [CommandMethod("equipment")]

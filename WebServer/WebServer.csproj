@@ -10,8 +10,9 @@
 
   <ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.33.1" />
+    <PackageReference Include="MailKit" Version="4.16.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-    <PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
+    <PackageReference Include="BouncyCastle.Cryptography" Version="2.6.2" />
     <PackageReference Include="Spectre.Console" Version="0.54.0" />
     <PackageReference Include="System.Management" Version="10.0.0" />
   </ItemGroup>

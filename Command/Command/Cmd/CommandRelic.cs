@@ -2,7 +2,7 @@ using March7thHoney.Internationalization;
 
 namespace March7thHoney.Command.Command.Cmd;
 
-[CommandInfo("relic", "Game.Command.Relic.Desc", "Game.Command.Relic.Usage")]
+[CommandInfo("relic", "Game.Command.Relic.Desc", "Game.Command.Relic.Usage", permission: CommandPermissions.Relic)]
 public class CommandRelic : ICommand
 {
     [CommandDefault]

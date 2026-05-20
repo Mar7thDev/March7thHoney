@@ -15,9 +15,9 @@ public class CommandManager
     private readonly List<string> _commandHistory = [];
     private int _historyIndex = -1;
     public static CommandManager? Instance { get; private set; }
-    public Dictionary<string, ICommand> Commands { get; } = [];
-    public Dictionary<string, CommandInfoAttribute> CommandInfo { get; } = [];
-    public Dictionary<string, string> CommandAlias { get; } = []; // alias -> command
+    public Dictionary<string, ICommand> Commands { get; } = new(StringComparer.OrdinalIgnoreCase);
+    public Dictionary<string, CommandInfoAttribute> CommandInfo { get; } = new(StringComparer.OrdinalIgnoreCase);
+    public Dictionary<string, string> CommandAlias { get; } = new(StringComparer.OrdinalIgnoreCase); // alias -> command
     public Logger Logger { get; } = new("CommandManager");
     public Connection? Target { get; set; }
 
@@ -148,28 +148,38 @@ public class CommandManager
     {
         try
         {
-            var cmd = input.Split(' ')[0];
+            var split = CommandArg.Tokenize(input);
+            if (split.Count == 0) return;
+
+            var cmd = split[0].TrimStart('/');
 
             var tempTarget = Target;
             if (sender is ConsoleCommandSender)
             {
-                if (cmd.StartsWith('@'))
+                if (IsTargetToken(cmd))
                 {
                     var target = cmd[1..];
                     if (March7thHoneyListener.Connections.Values.ToList()
                             .Find(item => (item as Connection)?.Player?.Uid.ToString() == target) is Connection con)
                     {
-                        Target = con;
-                        sender.SendMsg(I18NManager.Translate("Game.Command.Notice.TargetFound", target,
-                            con.Player!.Data.Name!));
+                        if (split.Count == 1)
+                        {
+                            Target = con;
+                            sender.SendMsg(I18NManager.Translate("Game.Command.Notice.TargetFound", target,
+                                con.Player!.Data.Name!));
+                            return;
+                        }
+
+                        tempTarget = con;
+                        split.RemoveAt(0);
+                        cmd = split[0].TrimStart('/');
                     }
                     else
                     {
                         // offline or not exist
                         sender.SendMsg(I18NManager.Translate("Game.Command.Notice.TargetNotFound", target));
+                        return;
                     }
-
-                    return;
                 }
             }
             else
@@ -197,13 +207,27 @@ public class CommandManager
 
             if (Commands.TryGetValue(cmd, out var command))
             {
-                var split = input.Split(' ').ToList();
                 split.RemoveAt(0);
+                for (var i = split.Count - 1; i >= 0; i--)
+                {
+                    if (!IsTargetToken(split[i])) continue;
+                    var target = split[i][1..];
+                    if (March7thHoneyListener.Connections.Values.ToList()
+                            .Find(item => (item as Connection)?.Player?.Uid.ToString() == target) is Connection con)
+                    {
+                        tempTarget = con;
+                        split.RemoveAt(i);
+                        continue;
+                    }
 
-                var arg = new CommandArg(split.JoinFormat(" ", ""), sender, tempTarget);
+                    sender.SendMsg(I18NManager.Translate("Game.Command.Notice.TargetNotFound", target));
+                    return;
+                }
+
+                var arg = new CommandArg(split, split.JoinFormat(" ", ""), sender, tempTarget);
 
                 // judge permission
-                if (arg.Target?.Player?.Uid != sender.GetSender() && !sender.HasPermission("command.others"))
+                if (arg.Target?.Player?.Uid != sender.GetSender() && !sender.HasPermission(CommandPermissions.TargetOthers))
                 {
                     sender.SendMsg(I18NManager.Translate("Game.Command.Notice.NoPermission"));
                     return;
@@ -232,7 +256,8 @@ public class CommandManager
                             break;
                         }
 
-                        if (split[condition.Index].Equals(condition.ShouldBe)) continue;
+                        if (split[condition.Index].Equals(condition.ShouldBe, StringComparison.OrdinalIgnoreCase))
+                            continue;
                         canRun = false;
                         break;
                     }
@@ -267,5 +292,10 @@ public class CommandManager
             Logger.Error(I18NManager.Translate("Game.Command.Notice.InternalError"), e);
             sender.SendMsg(I18NManager.Translate("Game.Command.Notice.InternalError"));
         }
+    }
+
+    private static bool IsTargetToken(string token)
+    {
+        return token.Length > 1 && token[0] == '@' && int.TryParse(token[1..], out _);
     }
 }

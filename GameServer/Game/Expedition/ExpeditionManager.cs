@@ -63,7 +63,7 @@ public class ExpeditionManager : BasePlayerManager
         _activeExpeditionIds.AddRange(next);
         Data.ActiveExpeditionIds = _activeExpeditionIds.ToList();
         Data.RefreshTime = Extensions.GetUnixSec() + ExpeditionRefreshDelaySec;
-        DatabaseHelper.ToSaveUidList.SafeAdd(Player.Uid);
+        DatabaseHelper.ToSaveUidList.Add(Player.Uid);
 
         return _activeExpeditionIds.Select(id => new ExpeditionInfo { Id = id }).ToList();
     }
@@ -105,6 +105,6 @@ public class ExpeditionManager : BasePlayerManager
     public void MarkRewardTaken()
     {
         Data.RefreshTime = Extensions.GetUnixSec() + ExpeditionRefreshDelaySec;
-        DatabaseHelper.ToSaveUidList.SafeAdd(Player.Uid);
+        DatabaseHelper.ToSaveUidList.Add(Player.Uid);
     }
 }
