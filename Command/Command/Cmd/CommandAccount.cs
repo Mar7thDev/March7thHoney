@@ -101,7 +101,7 @@ public class CommandAccount : ICommand
     {
         if (arg.Args.Count < 3)
         {
-            await arg.SendMsg("Usage: /account setpassword <Username|UID|Email> <Password>");
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Account.SetPasswordUsage"));
             return;
         }
 
@@ -131,7 +131,7 @@ public class CommandAccount : ICommand
     {
         if (arg.Args.Count < 3)
         {
-            await arg.SendMsg("Usage: /account setemail [Username|UID|Email] [Email] [verified:true|false]");
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Account.SetEmailUsage"));
             return;
         }
 
@@ -161,7 +161,7 @@ public class CommandAccount : ICommand
     {
         if (arg.Args.Count < 2)
         {
-            await arg.SendMsg("Usage: /account verifyemail [Username|UID|Email]");
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Account.VerifyEmailUsage"));
             return;
         }
 
@@ -182,8 +182,8 @@ public class CommandAccount : ICommand
     {
         if (arg.Args.Count < 3)
         {
-            await arg.SendMsg("Usage: /account ban [Username|UID|Email] [permanent|duration] [reason]");
-            await arg.SendMsg("Duration examples: 30m, 2h, 7d, 1w.");
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Account.BanUsage"));
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Account.BanDurationExamples"));
             return;
         }
 
@@ -216,7 +216,7 @@ public class CommandAccount : ICommand
     {
         if (arg.Args.Count < 2)
         {
-            await arg.SendMsg("Usage: /account unban [Username|UID|Email]");
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Account.UnbanUsage"));
             return;
         }
 
@@ -237,7 +237,7 @@ public class CommandAccount : ICommand
     {
         if (arg.Args.Count < 2)
         {
-            await arg.SendMsg("Usage: /account baninfo [Username|UID|Email]");
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Account.BanInfoUsage"));
             return;
         }
 
@@ -379,7 +379,7 @@ public class CommandAccount : ICommand
     {
         if (arg.Args.Count < 3)
         {
-            await arg.SendMsg("Usage: /account role <Username|UID|Email> <Role>");
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Account.RoleUsage"));
             return;
         }
 

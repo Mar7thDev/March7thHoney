@@ -197,6 +197,32 @@ public class ServerInfoTextCHT
     public string PublicModeBuildTimeUnavailable => "試用模式不可用。";
     public string PublicModeEnabled => "伺服器為公開版本，正在啟用額外的安全措施。";
     public string PublicModeValidationFailed => "許可證驗證失敗，程序加載已停止。";
+    public string HandbookGeneratedAt => "手冊生成時間 {0}";
+    public string HandbookSectionCommand => "命令";
+    public string HandbookSectionAvatar => "角色";
+    public string HandbookSectionItem => "物品";
+    public string HandbookSectionStageId => "關卡ID";
+    public string HandbookSectionMainMission => "主任務";
+    public string HandbookSectionSubMission => "子任務";
+    public string HandbookSectionRogueBuff => "模擬宇宙祝福";
+    public string HandbookSectionRogueMiracle => "模擬宇宙奇物";
+    public string HandbookSectionCurrencyWarRole => "黃金與機械角色";
+    public string HandbookSectionCurrencyWarEquipment => "黃金與機械裝備";
+    public string HandbookSectionCurrencyWarConsumable => "黃金與機械消耗品";
+    public string HandbookSectionCurrencyWarOrb => "黃金與機械球";
+    public string HandbookSectionRogueDiceSurface => "骰面效果";
+    public string HandbookSectionRogueDialogue => "模擬宇宙事件對話";
+    public string HandbookDescriptionLabel => "描述";
+    public string HandbookUsageLabel => "用法";
+    public string HandbookAliasesLabel => "別名";
+    public string HandbookPermissionLabel => "權限";
+    public string HandbookCommandNotesTitle => "命令使用說明：";
+    public string HandbookCommandNoteTarget => "可在命令前後加 @<UID> 指定目標玩家。";
+    public string HandbookCommandNoteQuote => "包含空格的參數請用引號包裹，例如 \"Sender Name\"。";
+    public string HandbookCommandNoteCaseInsensitive => "子命令不區分大小寫。";
+    public string HandbookCommandNoteRequiredOptional => "<value> 為必填，[value] 為可選。";
+    public string HandbookCommandNoteOptionStyle => "x<count>、l<level>、r<rank> 為選項式參數。";
+    public string HandbookCommandNoteLongOptionAliases => "支持長選項別名：--count、--amount、--level、--rank、--eidolon、--superimposition。";
 }
 
 #endregion
@@ -470,6 +496,14 @@ public class AccountTextCHT
 {
     public string Desc => "管理賬號\n注意：此命令未經測試，請謹慎使用！";
     public string Usage => "用法：/account create <用戶名> <郵箱> [密碼] [UID]\n用法：/account create <用戶名> <郵箱> [--password <密碼>] [--uid <UID>]\n用法：/account setpassword <用戶名|UID|郵箱> <密碼>\n用法：/account setemail <用戶名|UID|郵箱> <郵箱> [verified:true|false]\n用法：/account verifyemail <用戶名|UID|郵箱>\n用法：/account ban <用戶名|UID|郵箱> <permanent|duration> [原因]\n用法：/account unban <用戶名|UID|郵箱>\n用法：/account baninfo <用戶名|UID|郵箱>\n用法：/account reset [用戶名|UID|郵箱]\n用法：/account delete <用戶名|UID|郵箱> confirm\n用法：/account remove <用戶名|UID|郵箱> confirm\n用法：/account role <用戶名|UID|郵箱> <角色>\n用法：/account setrole <用戶名|UID|郵箱> <角色>\n用法：/account roles";
+    public string SetPasswordUsage => "用法：/account setpassword <用戶名|UID|郵箱> <密碼>";
+    public string SetEmailUsage => "用法：/account setemail [用戶名|UID|郵箱] [郵箱] [verified:true|false]";
+    public string VerifyEmailUsage => "用法：/account verifyemail [用戶名|UID|郵箱]";
+    public string BanUsage => "用法：/account ban [用戶名|UID|郵箱] [permanent|duration] [原因]";
+    public string BanDurationExamples => "時長示例：30m、2h、7d、1w。";
+    public string UnbanUsage => "用法：/account unban [用戶名|UID|郵箱]";
+    public string BanInfoUsage => "用法：/account baninfo [用戶名|UID|郵箱]";
+    public string RoleUsage => "用法：/account role <用戶名|UID|郵箱> <角色>";
     public string ResetUsage => "用法：/account reset [用戶名|UID|郵箱]";
     public string AccountNotFound => "賬號 {0} 不存在。";
     public string ResetStarted => "正在重置賬號 {0}。你將被斷開連接，重新登入後會重新開始。";
