@@ -52,6 +52,7 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     public Dictionary<uint, uint> RoleByUniqueId { get; } = new();
     public Dictionary<uint, uint> UniqueIdByPos { get; } = new();
     public Dictionary<uint, uint> RoleStarByUniqueId { get; } = new();
+    public Dictionary<uint, List<uint>> EquipUniqueIdsByRoleUniqueId { get; } = new();
 
     // 商店
     public uint ShopRefreshLeft { get; set; } = 2;
