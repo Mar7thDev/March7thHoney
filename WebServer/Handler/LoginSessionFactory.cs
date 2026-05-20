@@ -1,5 +1,7 @@
 using March7thHoney.Database.Account;
 using March7thHoney.Util;
+using System.Net.Mail;
+using System.Text.RegularExpressions;
 
 namespace March7thHoney.WebServer.Handler;
 
@@ -19,6 +21,7 @@ internal static class LoginSessionFactory
     {
         session = default;
         failure = LoginFailure.InvalidCredentials();
+        var autoCreateUser = ConfigManager.Config.ServerOption.AutoCreateUser;
 
         var normalizedAccount = (account ?? string.Empty).Trim();
         var normalizedPassword = password ?? string.Empty;
@@ -26,18 +29,13 @@ internal static class LoginSessionFactory
             return false;
 
         var accountData = AccountData.GetAccountByLoginIdentifier(normalizedAccount);
-        if (accountData == null)
-            return false;
-
-        var canonicalAccount = AccountData.GetAccountByUid(accountData.Uid) ?? accountData;
-        if (!canonicalAccount.HasPassword())
+        if (accountData == null && autoCreateUser)
         {
-            if (!CanAuthenticate(canonicalAccount, identityKeys, out failure))
-                return false;
-
             try
             {
-                AccountHelper.SetPassword(canonicalAccount, normalizedPassword);
+                var autoEmail = BuildAutoCreateEmail(normalizedAccount);
+                AccountHelper.CreateAccount(normalizedAccount, autoEmail, normalizedPassword, 0);
+                accountData = AccountData.GetAccountByLoginIdentifier(normalizedAccount);
             }
             catch (Exception ex)
             {
@@ -45,7 +43,30 @@ internal static class LoginSessionFactory
                 return false;
             }
         }
-        else if (!canonicalAccount.VerifyPassword(normalizedPassword))
+
+        if (accountData == null)
+            return false;
+
+        var canonicalAccount = AccountData.GetAccountByUid(accountData.Uid) ?? accountData;
+        if (!canonicalAccount.HasPassword())
+        {
+            if (!autoCreateUser && !CanAuthenticate(canonicalAccount, identityKeys, out failure))
+                return false;
+
+            if (!autoCreateUser)
+            {
+                try
+                {
+                    AccountHelper.SetPassword(canonicalAccount, normalizedPassword);
+                }
+                catch (Exception ex)
+                {
+                    failure = new LoginFailure(-201, ex.Message);
+                    return false;
+                }
+            }
+        }
+        else if (!autoCreateUser && !canonicalAccount.VerifyPassword(normalizedPassword))
         {
             return false;
         }
@@ -53,7 +74,7 @@ internal static class LoginSessionFactory
         if (canonicalAccount.GetBanStatus().IsActive)
             canonicalAccount.AddKnownIdentityKeys(identityKeys);
 
-        if (!CanAuthenticate(canonicalAccount, identityKeys, out failure))
+        if (!autoCreateUser && !CanAuthenticate(canonicalAccount, identityKeys, out failure))
             return false;
 
         var username = canonicalAccount.Username ?? normalizedAccount;
@@ -85,6 +106,9 @@ internal static class LoginSessionFactory
             failure = LoginFailure.Banned(banStatus);
             return false;
         }
+
+        if (ConfigManager.Config.ServerOption.AutoCreateUser)
+            return true;
 
         if (account.CanLogin())
             return true;
@@ -126,4 +150,29 @@ internal static class LoginSessionFactory
         string Email,
         bool IsEmailVerified,
         string DispatchToken);
+
+    private static string BuildAutoCreateEmail(string account)
+    {
+        if (LooksLikeValidEmail(account))
+            return account.Trim();
+
+        var seed = Regex.Replace(account.Trim().ToLowerInvariant(), "[^a-z0-9._-]", "-");
+        if (string.IsNullOrWhiteSpace(seed))
+            seed = "user";
+
+        return $"{seed}@autocreate.local";
+    }
+
+    private static bool LooksLikeValidEmail(string value)
+    {
+        try
+        {
+            var address = new MailAddress(value.Trim());
+            return string.Equals(address.Address, value.Trim(), StringComparison.OrdinalIgnoreCase);
+        }
+        catch
+        {
+            return false;
+        }
+    }
 }

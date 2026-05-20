@@ -98,6 +98,9 @@ public class AccountData : BaseDatabaseDataHelper
 
     public bool CanLogin()
     {
+        if (ConfigManager.Config.ServerOption.AutoCreateUser)
+            return true;
+
         return !ConfigManager.Config.ServerOption.Auth.RequireVerifiedEmailForLogin || IsEmailVerified;
     }
 
