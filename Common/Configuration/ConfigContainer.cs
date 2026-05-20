@@ -129,7 +129,7 @@ public class AuthOption
     public bool EnableRegistration { get; set; } = true;
     public string RegistrationPageIcon { get; set; } = "M7";
     public bool SendVerificationEmailOnRegister { get; set; } = true;
-    public bool RequireVerifiedEmailForLogin { get; set; } = true;
+    public bool RequireVerifiedEmailForLogin { get; set; } = false;
     public string EmailVerificationRequiredMessage { get; set; } =
         "Email verification required. Please check your inbox and verify your account before entering the server.";
     public int EmailVerificationTokenExpireMinutes { get; set; } = 1440;
