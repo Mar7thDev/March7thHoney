@@ -324,7 +324,7 @@ public class DispatchRoutes : ControllerBase
     public JsonResult Login([FromBody] LoginReqJson req)
     {
         Debug($"shield login: account={req.account} is_crypto={req.is_crypto}");
-        var useRsa = req.is_crypto || Config.WebSecurity.EnableRsaLoginDecrypt;
+        var useRsa = Config.WebSecurity.EnableRsaLoginDecrypt;
         var (account, password) = LoginCryptoHelper.TryDecryptCredentials(req.account, req.password, useRsa);
         var identityKeys = LoginIdentityContextFactory.Build(Request, req.device, req.device_id, req.device_fp);
         return new UsernameLoginHandler().HandleShieldLogin(account, password, identityKeys);

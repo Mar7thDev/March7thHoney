@@ -14,35 +14,21 @@ public static class LoginCryptoHelper
     {
         var rawAccount = account ?? string.Empty;
         var rawPassword = password ?? string.Empty;
+        if (!decryptRequested)
+            return (rawAccount, rawPassword);
+
         var privatePem = LoadPrivateKey();
         var hasPrivateKey = !string.IsNullOrWhiteSpace(privatePem);
-        var payloadLooksEncrypted = LooksLikeBase64(rawAccount) || LooksLikeBase64(rawPassword);
-        var shouldAttemptDecrypt = hasPrivateKey && (decryptRequested || payloadLooksEncrypted);
-
-        if (decryptRequested && !hasPrivateKey)
+        if (!hasPrivateKey)
         {
             Logger.Warn(
                 $"RSA login decrypt was requested but no private key was found. Expected file: {PrivateKeyPath}");
-        }
-
-        if (!shouldAttemptDecrypt)
             return (rawAccount, rawPassword);
-
-        if (!decryptRequested && payloadLooksEncrypted)
-        {
-            Logger.Warn(
-                "Encrypted-looking login payload detected while EnableRsaLoginDecrypt is disabled. Attempting automatic RSA decrypt with the configured private key.");
         }
 
         privatePem = NormalizePem(privatePem);
         var accountResult = TryDecrypt(rawAccount, privatePem);
         var passwordResult = TryDecrypt(rawPassword, privatePem);
-
-        if (payloadLooksEncrypted && !accountResult.Succeeded && !passwordResult.Succeeded)
-        {
-            Logger.Warn(
-                "RSA login payload could not be decrypted with the configured private key. The client patch may be missing, not loaded, or using a different public key.");
-        }
 
         return (accountResult.Value, passwordResult.Value);
     }
