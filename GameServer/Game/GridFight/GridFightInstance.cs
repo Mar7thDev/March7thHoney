@@ -350,7 +350,21 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
             var uniqueId = kv.Value;
             if (uniqueId == 0 || !RoleByUniqueId.TryGetValue(uniqueId, out var roleId)) continue;
             if (!GameData.GridFightRoleBasicInfoData.TryGetValue(roleId, out var role)) continue;
-            foreach (var tid in role.TraitList)
+            var roleTraits = new HashSet<uint>(role.TraitList);
+            if (EquipUniqueIdsByRoleUniqueId.TryGetValue(uniqueId, out var dressed))
+            {
+                foreach (var equipUid in dressed)
+                {
+                    var equip = Equipments.FirstOrDefault(e => e.UniqueId == equipUid);
+                    if (equip == null) continue;
+                    if (!GameData.GridFightEquipmentData.TryGetValue(equip.GridFightEquipmentId, out var equipExcel)) continue;
+                    if (equipExcel.EquipFunc != Enums.GridFight.GridFightEquipFuncTypeEnum.OriginEmblem
+                        && equipExcel.EquipFunc != Enums.GridFight.GridFightEquipFuncTypeEnum.ClassEmblem) continue;
+                    if (equipExcel.EquipFuncParamList.Count == 0) continue;
+                    roleTraits.Add(equipExcel.EquipFuncParamList[0]);
+                }
+            }
+            foreach (var tid in roleTraits)
             {
                 counts[tid] = counts.GetValueOrDefault(tid) + 1;
                 if (!memberMap.TryGetValue(tid, out var list))
