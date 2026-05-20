@@ -5,7 +5,7 @@ using March7thHoney.Util;
 
 namespace March7thHoney.Command.Command.Cmd;
 
-[CommandInfo("unstuck", "Game.Command.Unstuck.Desc", "Game.Command.Unstuck.Usage")]
+[CommandInfo("unstuck", "Game.Command.Unstuck.Desc", "Game.Command.Unstuck.Usage", permission: CommandPermissions.Unstuck)]
 public class CommandUnstuck : ICommand
 {
     [CommandDefault]

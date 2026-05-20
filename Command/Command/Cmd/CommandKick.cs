@@ -1,9 +1,9 @@
-using March7thHoney.GameServer.Server.Packet.Send.Player;
 using March7thHoney.Internationalization;
+using March7thHoney.GameServer.Server;
 
 namespace March7thHoney.Command.Command.Cmd;
 
-[CommandInfo("kick", "Game.Command.Kick.Desc", "Game.Command.Kick.Usage", permission: "egglink.manage")]
+[CommandInfo("kick", "Game.Command.Kick.Desc", "Game.Command.Kick.Usage", permission: CommandPermissions.Kick)]
 public class CommandKick : ICommand
 {
     [CommandDefault]
@@ -15,8 +15,7 @@ public class CommandKick : ICommand
             return;
         }
 
-        await arg.Target.SendPacket(new PacketPlayerSqueezedScNotify());
+        ConnectionDisconnectHelper.KickByGm(arg.Target);
         await arg.SendMsg(I18NManager.Translate("Game.Command.Kick.PlayerKicked", arg.Target.Player!.Data.Name!));
-        arg.Target.Stop();
     }
 }

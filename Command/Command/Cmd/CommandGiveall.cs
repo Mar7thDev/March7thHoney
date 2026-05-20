@@ -8,7 +8,7 @@ using March7thHoney.Internationalization;
 
 namespace March7thHoney.Command.Command.Cmd;
 
-[CommandInfo("giveall", "Game.Command.GiveAll.Desc", "Game.Command.GiveAll.Usage", ["ga"])]
+[CommandInfo("giveall", "Game.Command.GiveAll.Desc", "Game.Command.GiveAll.Usage", ["ga"], permission: CommandPermissions.GiveAll)]
 public class CommandGiveall : ICommand
 {
     [CommandMethod("0 avatar")]
@@ -87,7 +87,7 @@ public class CommandGiveall : ICommand
         levelStr ??= "1";
         amountStr ??= "1";
         if (!int.TryParse(rankStr, out var rank) || !int.TryParse(levelStr, out var level) ||
-            !int.TryParse(amountStr, out var amount))
+            !int.TryParse(amountStr, out var amount) || amount < 1)
         {
             await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.InvalidArguments"));
             return;
@@ -112,6 +112,12 @@ public class CommandGiveall : ICommand
             I18NManager.Translate("Word.Equipment"), amount.ToString()));
     }
 
+    [CommandMethod("0 lightcone")]
+    public async ValueTask GiveAllLightconeAlias(CommandArg arg)
+    {
+        await GiveAllLightcone(arg);
+    }
+
     [CommandMethod("0 material")]
     public async ValueTask GiveAllMaterial(CommandArg arg)
     {
@@ -124,7 +130,7 @@ public class CommandGiveall : ICommand
 
         arg.CharacterArgs.TryGetValue("x", out var amountStr);
         amountStr ??= "1";
-        if (!int.TryParse(amountStr, out var amount))
+        if (!int.TryParse(amountStr, out var amount) || amount < 1)
         {
             await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.InvalidArguments"));
             return;
@@ -159,7 +165,7 @@ public class CommandGiveall : ICommand
 
         arg.CharacterArgs.TryGetValue("x", out var amountStr);
         amountStr ??= "1";
-        if (!int.TryParse(amountStr, out var amount))
+        if (!int.TryParse(amountStr, out var amount) || amount < 1)
         {
             await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.InvalidArguments"));
             return;
@@ -199,7 +205,7 @@ public class CommandGiveall : ICommand
 
         arg.CharacterArgs.TryGetValue("x", out var amountStr);
         amountStr ??= "1";
-        if (!int.TryParse(amountStr, out var amount))
+        if (!int.TryParse(amountStr, out var amount) || amount < 1)
         {
             await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.InvalidArguments"));
             return;
@@ -211,7 +217,7 @@ public class CommandGiveall : ICommand
         for (var i = 0; i < amount; i++)
             foreach (var relic in relicList)
             {
-                var item = await player.InventoryManager!.AddItem(relic.ID, amount, false, 1,
+                var item = await player.InventoryManager!.AddItem(relic.ID, 1, false, 1,
                     Math.Max(Math.Min(level, relic.MaxLevel), 1), sync: false);
 
                 if (item != null)

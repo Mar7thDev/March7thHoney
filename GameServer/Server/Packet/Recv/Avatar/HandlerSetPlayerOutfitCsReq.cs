@@ -20,7 +20,7 @@ public class HandlerSetPlayerOutfitCsReq : Handler
             foreach (var id in req.PlayerOutfitData.PlayerOutfitList)
                 player.Data.PlayerOutfitList.Add((int)id);
 
-        DatabaseHelper.ToSaveUidList.SafeAdd(player.Uid);
+        DatabaseHelper.ToSaveUidList.Add(player.Uid);
 
         await connection.SendPacket(new PacketPlayerSyncScNotify(player.Data.ToPlayerOutfitProto()));
         await connection.SendPacket(new PacketSetPlayerOutfitScRsp());

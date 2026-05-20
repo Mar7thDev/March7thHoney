@@ -1,5 +1,6 @@
 using System.Numerics;
 using System.Text;
+using March7thHoney.Command;
 using March7thHoney.Data;
 using March7thHoney.Internationalization;
 using March7thHoney.Program.Program;
@@ -24,7 +25,7 @@ public static class HandbookGenerator
 
         foreach (var langFile in directory.GetFiles())
         {
-            if (langFile.Extension != ".json") return;
+            if (langFile.Extension != ".json") continue;
             if (langFile.Name.StartsWith("TextMapMain", StringComparison.OrdinalIgnoreCase)) continue;
             var lang = langFile.Name.Replace("TextMap", "").Replace(".json", "");
 
@@ -33,8 +34,8 @@ public static class HandbookGenerator
             if (File.Exists(handbookPath))
             {
                 var handbookInfo = new FileInfo(handbookPath);
-                if (handbookInfo.LastWriteTime >= langFile.LastWriteTime)
-                    continue; // Skip if handbook is newer than language file
+                if (handbookInfo.LastWriteTime >= GetHandbookSourceLastWriteTime(langFile))
+                    continue; // Skip if handbook is newer than its input sources
             }
 
             Generate(lang);
@@ -155,12 +156,68 @@ public static class HandbookGenerator
 
     public static void GenerateCmd(StringBuilder builder, string lang)
     {
-        foreach (var cmd in EntryPoint.CommandManager.CommandInfo)
+        AppendCommandNotes(builder);
+
+        foreach (var cmd in EntryPoint.CommandManager.CommandInfo.Values
+                     .OrderBy(x => x.Name, StringComparer.OrdinalIgnoreCase))
         {
-            builder.Append("\t" + cmd.Key);
-            var desc = I18NManager.TranslateAsCertainLang(lang == "CN" ? "CHS" : lang, cmd.Value.Description).Replace("\n", "\n\t\t");
-            builder.AppendLine(": " + desc);
+            builder.AppendLine("/" + cmd.Name);
+            AppendTranslatedBlock(builder, lang, "Description", cmd.Description);
+            AppendTranslatedBlock(builder, lang, "Usage", cmd.Usage);
+
+            if (cmd.Alias.Length > 0)
+                builder.AppendLine("  Aliases: " + string.Join(", ", cmd.Alias.Select(x => "/" + x)));
+
+            if (!string.IsNullOrWhiteSpace(cmd.Permission))
+                builder.AppendLine("  Permission: " + cmd.Permission);
+
+            builder.AppendLine();
         }
+    }
+
+    private static void AppendCommandNotes(StringBuilder builder)
+    {
+        builder.AppendLine("Command usage notes:");
+        builder.AppendLine("  - Use @<UID> before or after a command to target another player.");
+        builder.AppendLine("  - Wrap arguments that contain spaces in quotes, for example \"Sender Name\".");
+        builder.AppendLine("  - Subcommands are case-insensitive.");
+        builder.AppendLine("  - <value> is required. [value] is optional.");
+        builder.AppendLine("  - x<count>, l<level>, and r<rank> are option-style arguments.");
+        builder.AppendLine("  - Long option aliases are supported: --count, --amount, --level, --rank, --eidolon, --superimposition.");
+        builder.AppendLine();
+    }
+
+    private static void AppendTranslatedBlock(StringBuilder builder, string lang, string label, string key)
+    {
+        var text = I18NManager.TranslateAsCertainLang(lang == "CN" ? "CHS" : lang, key)
+            .Replace("\r\n", "\n")
+            .Replace('\r', '\n')
+            .Trim();
+
+        builder.AppendLine("  " + label + ":");
+        foreach (var line in text.Split('\n'))
+        {
+            builder.Append("    ");
+            builder.AppendLine(line.TrimEnd());
+        }
+    }
+
+    private static DateTime GetHandbookSourceLastWriteTime(FileInfo langFile)
+    {
+        var latest = langFile.LastWriteTime;
+        latest = GetLatestWriteTime(latest, typeof(CommandInfoAttribute));
+        latest = GetLatestWriteTime(latest, typeof(HandbookGenerator));
+        return latest;
+    }
+
+    private static DateTime GetLatestWriteTime(DateTime latest, Type type)
+    {
+        var assemblyPath = type.Assembly.Location;
+        if (string.IsNullOrWhiteSpace(assemblyPath) || !File.Exists(assemblyPath))
+            return latest;
+
+        var assemblyWriteTime = File.GetLastWriteTime(assemblyPath);
+        return assemblyWriteTime > latest ? assemblyWriteTime : latest;
     }
 
     public static void GenerateItem(StringBuilder builder, Dictionary<BigInteger, string> map,

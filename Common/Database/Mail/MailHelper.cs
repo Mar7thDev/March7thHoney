@@ -1,4 +1,6 @@
+using March7thHoney.Data;
 using March7thHoney.Database.Inventory;
+using March7thHoney.Enums.Item;
 using March7thHoney.Util;
 
 namespace March7thHoney.Database.Mail;
@@ -32,9 +34,10 @@ public static class MailHelper
                     {
                         ItemId = item.ItemId,
                         Count = item.Count,
-                        Rank = item.Rank,
+                        Rank = GetConfiguredAttachmentRank(item.ItemId, item.Rank),
                         Level = item.Level,
-                        Promotion = item.Promotion
+                        Promotion = item.Promotion,
+                        TalentLevel = item.TalentLevel
                     })
                     .ToList()
             }
@@ -50,5 +53,14 @@ public static class MailHelper
             .Replace("{uid}", uid.ToString())
             .Replace("{username}", username)
             .Replace("{account}", username);
+    }
+
+    private static int GetConfiguredAttachmentRank(int itemId, int rank)
+    {
+        return GameData.ItemConfigData.TryGetValue(itemId, out var itemConfig) &&
+               itemConfig.ItemMainType == ItemMainTypeEnum.Equipment &&
+               rank <= 0
+            ? 1
+            : rank;
     }
 }

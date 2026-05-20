@@ -18,42 +18,113 @@ public class HandlerPlayerGetTokenCsReq : Handler
     public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
     {
         var req = PlayerGetTokenCsReq.Parser.ParseFrom(data);
+        _logger.Info(
+            $"PlayerGetToken requested. remote={connection.RemoteEndPoint} account_uid={req.AccountUid} token_len={req.Token?.Length ?? 0}");
+        if (!int.TryParse(req.AccountUid, out var requestedUid) || string.IsNullOrWhiteSpace(req.Token))
+        {
+            _logger.Warn(
+                $"PlayerGetToken rejected invalid request. remote={connection.RemoteEndPoint} account_uid={req.AccountUid} token_len={req.Token?.Length ?? 0}");
+            await connection.SendPacket(new PacketPlayerGetTokenScRsp(0, Retcode.RetNotInWhiteList));
+            return;
+        }
 
-        // call dispatch /get_account_info api to get account info
+        // Validate the game login token before creating a player session.
         int uid;
 
         if (ConfigManager.Config.ServerOption.ServerConfig.RunDispatch ||
             string.IsNullOrEmpty(ConfigManager.Config.ServerOption.ServerConfig.FromDispatchBaseUrl))
         {
-            // dispatch running, use local db
-            var account = DatabaseHelper.Instance?.GetInstance<AccountData>(int.Parse(req.AccountUid));
+            var account = DatabaseHelper.Instance?.GetInstance<AccountData>(requestedUid);
             if (account == null)
             {
+                _logger.Warn($"PlayerGetToken rejected missing account. remote={connection.RemoteEndPoint} uid={requestedUid}");
                 await connection.SendPacket(new PacketPlayerGetTokenScRsp(0, Retcode.RetNotInWhiteList));
+                return;
+            }
+
+            var isDispatchToken = account.ValidateDispatchToken(req.Token);
+            var isComboToken = account.ValidateComboToken(req.Token);
+            if (!isDispatchToken && !isComboToken)
+            {
+                _logger.Warn(
+                    $"PlayerGetToken rejected invalid token. remote={connection.RemoteEndPoint} uid={requestedUid} token_len={req.Token?.Length ?? 0}");
+                await connection.SendPacket(new PacketPlayerGetTokenScRsp(0, Retcode.RetNotInWhiteList));
+                return;
+            }
+
+            var identityKeys = AccountBanHelper.BuildIdentityKeys([],
+                connection.RemoteEndPoint.Address.ToString());
+            if (account.GetBanStatus().IsActive)
+                account.AddKnownIdentityKeys(identityKeys);
+
+            if (AccountBanHelper.TryGetActiveBan(account, identityKeys, out var banStatus))
+            {
+                account.ClearLoginTokens();
+                await connection.SendPacket(new PacketPlayerGetTokenScRsp(
+                    (uint)account.Uid,
+                    Retcode.RetNotInWhiteList,
+                    AccountBanHelper.ToBlackInfo(banStatus),
+                    msg: banStatus.FormatLoginMessage()));
+                return;
+            }
+
+            if (!account.CanLogin())
+            {
+                account.ClearLoginTokens();
+                await connection.SendPacket(new PacketPlayerGetTokenScRsp(
+                    (uint)account.Uid,
+                    Retcode.RetNotInWhiteList,
+                    msg: ConfigManager.Config.ServerOption.Auth.EmailVerificationRequiredMessage));
                 return;
             }
 
             uid = account.Uid;
+            account.AddKnownIdentityKeys(identityKeys);
+            account.SyncPermissionsWithRole();
+            _logger.Info(
+                $"PlayerGetToken accepted. remote={connection.RemoteEndPoint} uid={uid} token_type={(isDispatchToken ? "dispatch" : "combo")}");
         }
         else
         {
-            // dispatch not running, use dispatch api
             var dispatchUrl = ConfigManager.Config.ServerOption.ServerConfig.FromDispatchBaseUrl;
-            var targetUrl = $"{dispatchUrl}/get_account_info?accountUid={req.AccountUid}";
-            var res = await HttpNetwork.SendGetRequest(targetUrl);
+            var targetUrl = $"{dispatchUrl}/validate_account_token";
+            var headers = new Dictionary<string, string>();
+            var exchangeSecret = ConfigManager.Config.ServerOption.ServerConfig.ServerExchangeSecret;
+            if (!string.IsNullOrWhiteSpace(exchangeSecret))
+                headers["X-March7thHoney-Server-Secret"] = exchangeSecret;
+
+            var form = new Dictionary<string, string>
+            {
+                ["accountUid"] = req.AccountUid,
+                ["token"] = req.Token
+            };
+
+            var res = await HttpNetwork.SendPostFormRequest(targetUrl, form, headers);
             if (res.Item1 != 200 || res.Item2 == null)
             {
-                await connection.SendPacket(new PacketPlayerGetTokenScRsp(0, Retcode.RetNotInWhiteList));
+                _logger.Warn(
+                    $"PlayerGetToken dispatch exchange rejected. remote={connection.RemoteEndPoint} status={res.Item1} body_len={res.Item2?.Length ?? 0}");
+                await connection.SendPacket(new PacketPlayerGetTokenScRsp(0, Retcode.RetNotInWhiteList,
+                    msg: res.Item1 == 403 ? res.Item2 ?? string.Empty : string.Empty));
                 return;
             }
 
-            uid = int.Parse(res.Item2);
+            if (!int.TryParse(res.Item2, out uid))
+            {
+                _logger.Warn(
+                    $"PlayerGetToken dispatch exchange returned invalid uid. remote={connection.RemoteEndPoint} body={res.Item2}");
+                await connection.SendPacket(new PacketPlayerGetTokenScRsp(0, Retcode.RetNotInWhiteList));
+                return;
+            }
         }
 
 
         if (!ResourceManager.IsLoaded)
+        {
+            _logger.Warn($"PlayerGetToken accepted but resource manager is not loaded. remote={connection.RemoteEndPoint} uid={uid}");
             // resource manager not loaded, return
             return;
+        }
 
         var prev = Listener.GetActiveConnection(uid);
         if (prev != null)

@@ -12,7 +12,7 @@ public class MuipCommandSender(MuipSession session, Action<string> action) : ICo
     {
         if (Session.IsAdmin) return true;
 
-        return Session.Account?.Permissions?.Contains(permission) ?? false;
+        return Session.Account?.HasPermission(permission) ?? false;
     }
 
     public async ValueTask SendMsg(string msg)

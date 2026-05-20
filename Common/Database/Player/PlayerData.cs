@@ -32,6 +32,8 @@ public class PlayerData : BaseDatabaseDataHelper
     public int Hcoin { get; set; } = 0; // Jade
     public int Mcoin { get; set; } = 0; // Crystals
     public int TalentPoints { get; set; } = 0; // Rogue talent points
+    public long MonthCardExpireTime { get; set; } = 0;
+    public int LastMonthCardRewardDate { get; set; } = 0;
 
     public int Pet { get; set; } = 0;
     [SugarColumn(IsNullable = true)] public int CurMusicLevel { get; set; }

@@ -31,6 +31,7 @@ public class ItemData
     public int TotalExp { get; set; }
     public int Promotion { get; set; }
     public int Rank { get; set; } // Superimpose
+    public int TalentLevel { get; set; }
     public bool Locked { get; set; }
     public bool Discarded { get; set; }
 
@@ -51,6 +52,21 @@ public class ItemData
             GameData.RelicExpTypeData.TryGetValue(costExcel.ExpType * 100 + i, out var typeExcel);
             if (typeExcel != null)
                 exp += typeExcel.Exp;
+        }
+
+        return exp + Exp;
+    }
+
+    public int CalcTotalEquipmentExpGained()
+    {
+        GameData.EquipmentConfigData.TryGetValue(ItemId, out var equipmentConfig);
+        if (equipmentConfig == null) return 0;
+
+        var exp = equipmentConfig.ExpProvide;
+        for (var level = 1; level < Level; level++)
+        {
+            GameData.EquipmentExpTypeData.TryGetValue(equipmentConfig.ExpType * 100 + level, out var typeExcel);
+            if (typeExcel != null) exp += typeExcel.Exp;
         }
 
         return exp + Exp;
@@ -305,6 +321,7 @@ public class ItemData
             TotalExp = TotalExp,
             Promotion = Promotion,
             Rank = Rank,
+            TalentLevel = TalentLevel,
             Locked = Locked,
             Discarded = Discarded,
             MainAffix = MainAffix,
