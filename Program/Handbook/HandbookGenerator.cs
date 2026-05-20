@@ -48,6 +48,7 @@ public static class HandbookGenerator
     public static void Generate(string lang)
     {
         var config = ConfigManager.Config;
+        var handbookLang = lang == "CN" ? "CHS" : lang;
         var textMapPath = config.Path.ResourcePath + "/TextMap/TextMap" + lang + ".json";
         var fallbackTextMapPath = config.Path.ResourcePath + "/TextMap/TextMap" + config.ServerOption.FallbackLanguage +
                                   ".json";
@@ -77,75 +78,79 @@ public static class HandbookGenerator
         }
 
         var builder = new StringBuilder();
-        builder.AppendLine("#Handbook generated in " + DateTime.Now.ToString("yyyy/MM/dd HH:mm"));
+        builder.AppendLine("#" + I18NManager.TranslateAsCertainLang(handbookLang, "Server.ServerInfo.HandbookGeneratedAt",
+            DateTime.Now.ToString("yyyy/MM/dd HH:mm")));
         builder.AppendLine();
-        builder.AppendLine("#Command");
+        builder.AppendLine("#" + I18NManager.TranslateAsCertainLang(handbookLang, "Server.ServerInfo.HandbookSectionCommand"));
         builder.AppendLine();
-        GenerateCmd(builder, lang);
+        GenerateCmd(builder, handbookLang);
 
         builder.AppendLine();
-        builder.AppendLine("#Avatar");
+        builder.AppendLine("#" + I18NManager.TranslateAsCertainLang(handbookLang, "Server.ServerInfo.HandbookSectionAvatar"));
         builder.AppendLine();
         GenerateAvatar(builder, textMap, fallbackTextMap, lang == config.ServerOption.Language);
 
         builder.AppendLine();
-        builder.AppendLine("#Item");
+        builder.AppendLine("#" + I18NManager.TranslateAsCertainLang(handbookLang, "Server.ServerInfo.HandbookSectionItem"));
         builder.AppendLine();
         GenerateItem(builder, textMap, fallbackTextMap, lang == config.ServerOption.Language);
 
         builder.AppendLine();
-        builder.AppendLine("#StageId");
+        builder.AppendLine("#" + I18NManager.TranslateAsCertainLang(handbookLang, "Server.ServerInfo.HandbookSectionStageId"));
         builder.AppendLine();
         GenerateStageId(builder, textMap, fallbackTextMap);
 
         builder.AppendLine();
-        builder.AppendLine("#MainMission");
+        builder.AppendLine("#" + I18NManager.TranslateAsCertainLang(handbookLang, "Server.ServerInfo.HandbookSectionMainMission"));
         builder.AppendLine();
         GenerateMainMissionId(builder, textMap, fallbackTextMap);
 
         builder.AppendLine();
-        builder.AppendLine("#SubMission");
+        builder.AppendLine("#" + I18NManager.TranslateAsCertainLang(handbookLang, "Server.ServerInfo.HandbookSectionSubMission"));
         builder.AppendLine();
         GenerateSubMissionId(builder, textMap, fallbackTextMap);
 
         builder.AppendLine();
-        builder.AppendLine("#RogueBuff");
+        builder.AppendLine("#" + I18NManager.TranslateAsCertainLang(handbookLang, "Server.ServerInfo.HandbookSectionRogueBuff"));
         builder.AppendLine();
         GenerateRogueBuff(builder, textMap, fallbackTextMap, lang == config.ServerOption.Language);
 
         builder.AppendLine();
-        builder.AppendLine("#RogueMiracle");
+        builder.AppendLine("#" + I18NManager.TranslateAsCertainLang(handbookLang, "Server.ServerInfo.HandbookSectionRogueMiracle"));
         builder.AppendLine();
         GenerateRogueMiracleDisplay(builder, textMap, fallbackTextMap, lang == config.ServerOption.Language);
 
         builder.AppendLine();
-        builder.AppendLine("#CurrencyWarRole");
+        builder.AppendLine("#" + I18NManager.TranslateAsCertainLang(handbookLang,
+            "Server.ServerInfo.HandbookSectionCurrencyWarRole"));
         builder.AppendLine();
         GenerateCurrencyWarRole(builder, textMap, fallbackTextMap);
 
         builder.AppendLine();
-        builder.AppendLine("#CurrencyWarEquipment");
+        builder.AppendLine("#" + I18NManager.TranslateAsCertainLang(handbookLang,
+            "Server.ServerInfo.HandbookSectionCurrencyWarEquipment"));
         builder.AppendLine();
         GenerateCurrencyWarEquipment(builder, textMap, fallbackTextMap);
 
         builder.AppendLine();
-        builder.AppendLine("#CurrencyWarConsumable");
+        builder.AppendLine("#" + I18NManager.TranslateAsCertainLang(handbookLang,
+            "Server.ServerInfo.HandbookSectionCurrencyWarConsumable"));
         builder.AppendLine();
         GenerateCurrencyWarConsumable(builder, textMap, fallbackTextMap);
 
         builder.AppendLine();
-        builder.AppendLine("#CurrencyWarOrb");
+        builder.AppendLine("#" + I18NManager.TranslateAsCertainLang(handbookLang, "Server.ServerInfo.HandbookSectionCurrencyWarOrb"));
         builder.AppendLine();
         GenerateCurrencyWarOrb(builder, textMap, fallbackTextMap);
 
 #if DEBUG
         builder.AppendLine();
-        builder.AppendLine("#RogueDiceSurface");
+        builder.AppendLine("#" + I18NManager.TranslateAsCertainLang(handbookLang, "Server.ServerInfo.HandbookSectionRogueDiceSurface"));
         builder.AppendLine();
         GenerateRogueDiceSurfaceDisplay(builder, textMap, fallbackTextMap);
 
         builder.AppendLine();
-        builder.AppendLine("#RogueDialogue");
+        builder.AppendLine("#" + I18NManager.TranslateAsCertainLang(handbookLang, "Server.ServerInfo.HandbookSectionRogueDialogue"));
         builder.AppendLine();
         GenerateRogueDialogueDisplay(builder, textMap, fallbackTextMap);
 #endif
@@ -156,34 +161,34 @@ public static class HandbookGenerator
 
     public static void GenerateCmd(StringBuilder builder, string lang)
     {
-        AppendCommandNotes(builder);
+        AppendCommandNotes(builder, lang);
 
         foreach (var cmd in EntryPoint.CommandManager.CommandInfo.Values
                      .OrderBy(x => x.Name, StringComparer.OrdinalIgnoreCase))
         {
             builder.AppendLine("/" + cmd.Name);
-            AppendTranslatedBlock(builder, lang, "Description", cmd.Description);
-            AppendTranslatedBlock(builder, lang, "Usage", cmd.Usage);
+            AppendTranslatedBlock(builder, lang, I18NManager.TranslateAsCertainLang(lang, "Server.ServerInfo.HandbookDescriptionLabel"), cmd.Description);
+            AppendTranslatedBlock(builder, lang, I18NManager.TranslateAsCertainLang(lang, "Server.ServerInfo.HandbookUsageLabel"), cmd.Usage);
 
             if (cmd.Alias.Length > 0)
-                builder.AppendLine("  Aliases: " + string.Join(", ", cmd.Alias.Select(x => "/" + x)));
+                builder.AppendLine("  " + I18NManager.TranslateAsCertainLang(lang, "Server.ServerInfo.HandbookAliasesLabel") + ": " + string.Join(", ", cmd.Alias.Select(x => "/" + x)));
 
             if (!string.IsNullOrWhiteSpace(cmd.Permission))
-                builder.AppendLine("  Permission: " + cmd.Permission);
+                builder.AppendLine("  " + I18NManager.TranslateAsCertainLang(lang, "Server.ServerInfo.HandbookPermissionLabel") + ": " + cmd.Permission);
 
             builder.AppendLine();
         }
     }
 
-    private static void AppendCommandNotes(StringBuilder builder)
+    private static void AppendCommandNotes(StringBuilder builder, string lang)
     {
-        builder.AppendLine("Command usage notes:");
-        builder.AppendLine("  - Use @<UID> before or after a command to target another player.");
-        builder.AppendLine("  - Wrap arguments that contain spaces in quotes, for example \"Sender Name\".");
-        builder.AppendLine("  - Subcommands are case-insensitive.");
-        builder.AppendLine("  - <value> is required. [value] is optional.");
-        builder.AppendLine("  - x<count>, l<level>, and r<rank> are option-style arguments.");
-        builder.AppendLine("  - Long option aliases are supported: --count, --amount, --level, --rank, --eidolon, --superimposition.");
+        builder.AppendLine(I18NManager.TranslateAsCertainLang(lang, "Server.ServerInfo.HandbookCommandNotesTitle"));
+        builder.AppendLine("  - " + I18NManager.TranslateAsCertainLang(lang, "Server.ServerInfo.HandbookCommandNoteTarget"));
+        builder.AppendLine("  - " + I18NManager.TranslateAsCertainLang(lang, "Server.ServerInfo.HandbookCommandNoteQuote"));
+        builder.AppendLine("  - " + I18NManager.TranslateAsCertainLang(lang, "Server.ServerInfo.HandbookCommandNoteCaseInsensitive"));
+        builder.AppendLine("  - " + I18NManager.TranslateAsCertainLang(lang, "Server.ServerInfo.HandbookCommandNoteRequiredOptional"));
+        builder.AppendLine("  - " + I18NManager.TranslateAsCertainLang(lang, "Server.ServerInfo.HandbookCommandNoteOptionStyle"));
+        builder.AppendLine("  - " + I18NManager.TranslateAsCertainLang(lang, "Server.ServerInfo.HandbookCommandNoteLongOptionAliases"));
         builder.AppendLine();
     }
 

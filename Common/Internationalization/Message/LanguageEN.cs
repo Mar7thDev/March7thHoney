@@ -197,6 +197,32 @@ public class ServerInfoTextEN
     public string PublicModeBuildTimeUnavailable => "Trial mode cannot be used.";
     public string PublicModeEnabled => "Server is in public mode. Enabling additional security measures.";
     public string PublicModeValidationFailed => "License validation failed, program loading has been stopped.";
+    public string HandbookGeneratedAt => "Handbook generated in {0}";
+    public string HandbookSectionCommand => "Command";
+    public string HandbookSectionAvatar => "Avatar";
+    public string HandbookSectionItem => "Item";
+    public string HandbookSectionStageId => "StageId";
+    public string HandbookSectionMainMission => "MainMission";
+    public string HandbookSectionSubMission => "SubMission";
+    public string HandbookSectionRogueBuff => "RogueBuff";
+    public string HandbookSectionRogueMiracle => "RogueMiracle";
+    public string HandbookSectionCurrencyWarRole => "CurrencyWarRole";
+    public string HandbookSectionCurrencyWarEquipment => "CurrencyWarEquipment";
+    public string HandbookSectionCurrencyWarConsumable => "CurrencyWarConsumable";
+    public string HandbookSectionCurrencyWarOrb => "CurrencyWarOrb";
+    public string HandbookSectionRogueDiceSurface => "RogueDiceSurface";
+    public string HandbookSectionRogueDialogue => "RogueDialogue";
+    public string HandbookDescriptionLabel => "Description";
+    public string HandbookUsageLabel => "Usage";
+    public string HandbookAliasesLabel => "Aliases";
+    public string HandbookPermissionLabel => "Permission";
+    public string HandbookCommandNotesTitle => "Command usage notes:";
+    public string HandbookCommandNoteTarget => "Use @<UID> before or after a command to target another player.";
+    public string HandbookCommandNoteQuote => "Wrap arguments that contain spaces in quotes, for example \"Sender Name\".";
+    public string HandbookCommandNoteCaseInsensitive => "Subcommands are case-insensitive.";
+    public string HandbookCommandNoteRequiredOptional => "<value> is required. [value] is optional.";
+    public string HandbookCommandNoteOptionStyle => "x<count>, l<level>, and r<rank> are option-style arguments.";
+    public string HandbookCommandNoteLongOptionAliases => "Long option aliases are supported: --count, --amount, --level, --rank, --eidolon, --superimposition.";
 }
 
 #endregion
@@ -470,6 +496,14 @@ public class AccountTextEN
 {
     public string Desc => "Manage accounts.\nNote: This command is untested. Use with caution!";
     public string Usage => "Usage: /account create <Username> <Email> [Password] [UID]\nUsage: /account create <Username> <Email> [--password <Password>] [--uid <UID>]\nUsage: /account setpassword <Username|UID|Email> <Password>\nUsage: /account setemail <Username|UID|Email> <Email> [verified:true|false]\nUsage: /account verifyemail <Username|UID|Email>\nUsage: /account ban <Username|UID|Email> <permanent|duration> [reason]\nUsage: /account unban <Username|UID|Email>\nUsage: /account baninfo <Username|UID|Email>\nUsage: /account reset [Username|UID|Email]\nUsage: /account delete <Username|UID|Email> confirm\nUsage: /account remove <Username|UID|Email> confirm\nUsage: /account role <Username|UID|Email> <Role>\nUsage: /account setrole <Username|UID|Email> <Role>\nUsage: /account roles";
+    public string SetPasswordUsage => "Usage: /account setpassword <Username|UID|Email> <Password>";
+    public string SetEmailUsage => "Usage: /account setemail [Username|UID|Email] [Email] [verified:true|false]";
+    public string VerifyEmailUsage => "Usage: /account verifyemail [Username|UID|Email]";
+    public string BanUsage => "Usage: /account ban [Username|UID|Email] [permanent|duration] [reason]";
+    public string BanDurationExamples => "Duration examples: 30m, 2h, 7d, 1w.";
+    public string UnbanUsage => "Usage: /account unban [Username|UID|Email]";
+    public string BanInfoUsage => "Usage: /account baninfo [Username|UID|Email]";
+    public string RoleUsage => "Usage: /account role <Username|UID|Email> <Role>";
     public string ResetUsage => "Usage: /account reset [Username|UID|Email]";
     public string AccountNotFound => "Account {0} does not exist.";
     public string ResetStarted => "Resetting account {0}. You will be disconnected and can reconnect to start fresh.";
