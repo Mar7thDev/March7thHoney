@@ -144,12 +144,14 @@ public static class GridFightPendingActionProcessor
             var addItemInfo = new GridFightGameItemSyncInfo();
             foreach (var equipId in grantedEquipIds)
             {
-                addItemInfo.GridFightEquipmentList.Add(new GridFightEquipmentInfo
+                var equip = new GridFightEquipmentInfo
                 {
                     GridFightEquipmentId = equipId,
                     Source = 1,
                     UniqueId = inst.AllocEquipUniqueId()
-                });
+                };
+                inst.Equipments.Add(equip);
+                addItemInfo.GridFightEquipmentList.Add(equip);
             }
             sec0.UpdateDynamicList.Add(new GridFightSyncData { AddGameItemInfo = addItemInfo });
             sync.SyncResultDataList.Add(sec0);
