@@ -79,11 +79,23 @@ public class Startup
             var bodyStream = response.Body;
             response.Body = buffer;
 
-            await next.Invoke();
-            buffer.Position = 0;
-            context.Response.Headers["Content-Length"] = (response.ContentLength ?? buffer.Length).ToString();
-            context.Response.Headers.Remove("Transfer-Encoding");
-            await buffer.CopyToAsync(bodyStream);
+            try
+            {
+                await next.Invoke();
+                buffer.Position = 0;
+
+                if (!response.HasStarted)
+                {
+                    context.Response.Headers["Content-Length"] = (response.ContentLength ?? buffer.Length).ToString();
+                    context.Response.Headers.Remove("Transfer-Encoding");
+                }
+
+                await buffer.CopyToAsync(bodyStream);
+            }
+            finally
+            {
+                response.Body = bodyStream;
+            }
         });
 
         app.UseHttpsRedirection();
