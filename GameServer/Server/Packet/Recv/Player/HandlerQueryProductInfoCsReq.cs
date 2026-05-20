@@ -8,6 +8,6 @@ public class HandlerQueryProductInfoCsReq : Handler
 {
     public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
     {
-        await connection.SendPacket(new PacketQueryProductInfoScRsp());
+        await connection.SendPacket(new PacketQueryProductInfoScRsp(connection.Player?.Data));
     }
 }

@@ -1,5 +1,6 @@
 using March7thHoney.Configuration;
 using March7thHoney.Data;
+using March7thHoney.Database.Account;
 using March7thHoney.Internationalization;
 using March7thHoney.Proto;
 using March7thHoney.Util;
@@ -34,8 +35,11 @@ internal class QueryGatewayHandler
             RegionName = config.GameServer.GameServerId,
             Ip = config.GameServer.PublicAddress,
             Port = config.GameServer.Port,
-            Msg = "Access verification failed. Please check if you have logged in to the correct account and server.",
         };
+
+        var accessVerificationMessage = GetAccessVerificationMessage(req);
+        if (!string.IsNullOrWhiteSpace(accessVerificationMessage))
+            gateServer.Msg = accessVerificationMessage;
 
         gateServer.Unk1 = true;
         gateServer.Unk2 = true;
@@ -78,7 +82,8 @@ internal class QueryGatewayHandler
         var bytes = gateServer.ToByteArray();
         Data = Convert.ToBase64String(bytes);
 
-        Debug($"query_gateway result: protoBytes={bytes.Length}, base64Length={Data.Length}, retcode={gateServer.Retcode}");
+        Debug(
+            $"query_gateway result: protoBytes={bytes.Length}, base64Length={Data.Length}, retcode={gateServer.Retcode}, msg_len={gateServer.Msg.Length}");
         Debug($"query_gateway gate: region={gateServer.RegionName} ip={gateServer.Ip} port={gateServer.Port} encryption={(gateServer.ClientSecretKey?.Length ?? 0) > 0}");
         Debug($"query_gateway hotfix: ab={gateServer.AssetBundleUrl} exRes={gateServer.ExResourceUrl} lua={gateServer.LuaUrl} ifix={gateServer.IfixUrl}");
     }
@@ -184,6 +189,22 @@ internal class QueryGatewayHandler
         gateServer.ExResourceUrl = string.Empty;
         gateServer.LuaUrl = string.Empty;
         gateServer.IfixUrl = string.Empty;
+    }
+
+    private static string GetAccessVerificationMessage(GateWayRequest req)
+    {
+        var accountUid = string.IsNullOrWhiteSpace(req.account_uid) ? req.uid : req.account_uid;
+        if (int.TryParse(accountUid, out var uid))
+        {
+            var account = AccountData.GetAccountByUid(uid);
+            if (account != null && AccountBanHelper.TryGetActiveBan(account, [], out var banStatus))
+                return banStatus.FormatLoginMessage();
+
+            if (account != null && !account.CanLogin())
+                return ConfigManager.Config.ServerOption.Auth.EmailVerificationRequiredMessage;
+        }
+
+        return string.Empty;
     }
 
     private string GetGatewayUrlByVersion(string version)

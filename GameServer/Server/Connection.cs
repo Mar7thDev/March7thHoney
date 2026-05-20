@@ -40,6 +40,8 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
 
     public override void Stop()
     {
+        if (!IsOnline) return;
+
         Player?.TrainCakeCatchManager?.LeaveSocialPlayRoom();
         Player?.OnLogoutAsync();
         March7thHoneyListener.UnregisterConnection(this);
@@ -158,37 +160,57 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
 
     protected async Task ReceiveLoop()
     {
-        while (!CancelToken.IsCancellationRequested)
+        try
         {
-            // WaitToReceiveAsync call completes when there is at least one message is received or the transport is closed.
-            var result = await Conversation.WaitToReceiveAsync(CancelToken.Token);
-            if (result.TransportClosed)
+            while (!CancelToken.IsCancellationRequested)
             {
-                Logger.Debug("Connection was closed");
-                break;
-            }
-
-            var buffer = ArrayPool<byte>.Shared.Rent(result.BytesReceived);
-            try
-            {
-                // TryReceive should not return false here, unless the transport is closed.
-                // So we don't need to check for result.TransportClosed.
-                if (!Conversation.TryReceive(buffer, out result))
+                KcpConversationReceiveResult result;
+                try
                 {
-                    Logger.Error("Failed to receive packet");
+                    // WaitToReceiveAsync call completes when there is at least one message is received or the transport is closed.
+                    result = await Conversation.WaitToReceiveAsync(CancelToken.Token);
+                }
+                catch (OperationCanceledException) when (CancelToken.IsCancellationRequested)
+                {
+                    break;
+                }
+                catch (ObjectDisposedException)
+                {
                     break;
                 }
 
-                await ProcessMessageAsync(buffer.AsMemory(0, result.BytesReceived));
+                if (result.TransportClosed)
+                {
+                    Logger.Debug("Connection was closed");
+                    break;
+                }
+
+                var buffer = ArrayPool<byte>.Shared.Rent(result.BytesReceived);
+                try
+                {
+                    // TryReceive should not return false here, unless the transport is closed.
+                    // So we don't need to check for result.TransportClosed.
+                    if (!Conversation.TryReceive(buffer, out result))
+                    {
+                        Logger.Error("Failed to receive packet");
+                        break;
+                    }
+
+                    await ProcessMessageAsync(buffer.AsMemory(0, result.BytesReceived));
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error("Packet parse error", ex);
+                }
+                finally
+                {
+                    ArrayPool<byte>.Shared.Return(buffer);
+                }
             }
-            catch (Exception ex)
-            {
-                Logger.Error("Packet parse error", ex);
-            }
-            finally
-            {
-                ArrayPool<byte>.Shared.Return(buffer);
-            }
+        }
+        catch (Exception ex)
+        {
+            Logger.Error("Connection receive loop crashed", ex);
         }
 
         Stop();
@@ -311,7 +333,7 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
 
                 var rspName = curPacket.Replace("Cs", "Sc").Replace("Req", "Rsp"); // Get the response packet name
                 if (rspName == curPacket) return; // do not send rsp when resp name = recv name
-                var rspOpcode = LogMap.FirstOrDefault(x => x.Value == rspName).Key; // Get the response opcode
+                if (!TryGetOpcodeByName(rspName, out var rspOpcode)) return;
 
                 // get proto class
                 var typ = AppDomain.CurrentDomain.GetAssemblies()
@@ -360,9 +382,16 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
 
         var respName = packetName.Replace("Cs", "Sc").Replace("Req", "Rsp"); // Get the response packet name
         if (respName == packetName) return; // do not send rsp when resp name = recv name
-        var respOpcode = LogMap.FirstOrDefault(x => x.Value == respName).Key; // Get the response opcode
+        if (!TryGetOpcodeByName(respName, out var respOpcode)) return;
 
         // Send Rsp
         await SendPacket(respOpcode);
+    }
+
+    private static bool TryGetOpcodeByName(string packetName, out int opcode)
+    {
+        var match = LogMap.FirstOrDefault(x => x.Value == packetName);
+        opcode = match.Key;
+        return match.Value != null && opcode > 0;
     }
 }

@@ -12,6 +12,8 @@ public class EquipmentConfigExcel : ExcelResource
     public int ExpType { get; set; }
     public int MaxPromotion { get; set; } = 0;
     public int MaxRank { get; set; } = 0;
+    public int ExpProvide { get; set; }
+    public int CoinCost { get; set; }
 
     [JsonConverter(typeof(StringEnumConverter))]
     public RarityEnum Rarity { get; set; } = 0;

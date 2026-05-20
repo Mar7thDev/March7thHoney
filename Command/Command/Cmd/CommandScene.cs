@@ -7,7 +7,7 @@ using March7thHoney.Util;
 
 namespace March7thHoney.Command.Command.Cmd;
 
-[CommandInfo("scene", "Game.Command.Scene.Desc", "Game.Command.Scene.Usage")]
+[CommandInfo("scene", "Game.Command.Scene.Desc", "Game.Command.Scene.Usage", permission: CommandPermissions.Scene)]
 public class CommandScene : ICommand
 {
     [CommandMethod("0 group")]
@@ -36,10 +36,17 @@ public class CommandScene : ICommand
             return;
         }
 
+        if (!arg.TryGetInt(0, out var groupId) || !arg.TryGetInt(1, out var propId) ||
+            !arg.TryGetInt(2, out var stateId))
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.InvalidArguments"));
+            return;
+        }
+
         var scene = arg.Target!.Player!.SceneInstance!;
         EntityProp? prop = null;
-        foreach (var entity in scene.GetEntitiesInGroup<EntityProp>(arg.GetInt(0)))
-            if (entity.PropInfo.ID == arg.GetInt(1))
+        foreach (var entity in scene.GetEntitiesInGroup<EntityProp>(groupId))
+            if (entity.PropInfo.ID == propId)
             {
                 prop = entity;
                 break;
@@ -51,7 +58,7 @@ public class CommandScene : ICommand
             return;
         }
 
-        await prop.SetState((PropStateEnum)arg.GetInt(2));
+        await prop.SetState((PropStateEnum)stateId);
         await arg.SendMsg(I18NManager.Translate("Game.Command.Scene.PropStateChanged", prop.PropInfo.ID.ToString(),
             prop.State.ToString()));
     }
@@ -66,7 +73,13 @@ public class CommandScene : ICommand
         }
 
         var scene = arg.Target!.Player!.SceneInstance!;
-        scene.Entities.TryGetValue(arg.GetInt(0), out var entity);
+        if (!arg.TryGetInt(0, out var entityId))
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.InvalidArguments"));
+            return;
+        }
+
+        scene.Entities.TryGetValue(entityId, out var entity);
         if (entity == null)
         {
             await arg.SendMsg(I18NManager.Translate("Game.Command.Scene.EntityNotFound"));
@@ -142,15 +155,15 @@ public class CommandScene : ICommand
             return;
         }
 
-        if (arg.GetInt(0) == 0)
+        if (!arg.TryGetInt(0, out var entryId) || entryId == 0)
         {
             await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.InvalidArguments"));
             return;
         }
 
         var player = arg.Target!.Player!;
-        await player.EnterScene(arg.GetInt(0), 0, true);
-        await arg.SendMsg(I18NManager.Translate("Game.Command.Scene.SceneChanged", arg.GetInt(0).ToString()));
+        await player.EnterScene(entryId, 0, true);
+        await arg.SendMsg(I18NManager.Translate("Game.Command.Scene.SceneChanged", entryId.ToString()));
     }
 
     [CommandMethod("0 reload")]
@@ -176,8 +189,7 @@ public class CommandScene : ICommand
             return;
         }
 
-        var floorId = arg.GetInt(0);
-        if (floorId == 0)
+        if (!arg.TryGetInt(0, out var floorId) || floorId == 0)
         {
             await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.InvalidArguments"));
             return;
@@ -209,7 +221,11 @@ public class CommandScene : ICommand
         }
 
         var name = arg.Args[1];
-        var value = int.Parse(arg.Args[2]);
+        if (!int.TryParse(arg.Args[2], out var value))
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.InvalidArguments"));
+            return;
+        }
 
         await arg.Target!.Player!.SceneInstance!.UpdateFloorSavedValue(name, value);
         await arg.SendMsg(I18NManager.Translate("Game.Command.Scene.FSVSet", name, value.ToString()));
@@ -230,9 +246,13 @@ public class CommandScene : ICommand
             return;
         }
 
+        if (!int.TryParse(arg.Args[1], out var groupId) || !int.TryParse(arg.Args[3], out var value))
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.InvalidArguments"));
+            return;
+        }
+
         var name = arg.Args[2];
-        var value = int.Parse(arg.Args[3]);
-        var groupId = int.Parse(arg.Args[1]);
 
         await arg.Target!.Player!.SceneInstance!.UpdateGroupProperty(groupId, name, value);
         await arg.SendMsg(I18NManager.Translate("Game.Command.Scene.FSVSet", name, value.ToString()));
@@ -289,13 +309,12 @@ public class CommandScene : ICommand
             return;
         }
 
-        if (arg.BasicArgs.Count == 0)
+        if (!arg.TryGetInt(0, out var distance))
         {
             await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.InvalidArguments"));
             return;
         }
 
-        var distance = arg.GetInt(0);
         var player = arg.Target!.Player!;
 
         var posVec = new Vector3(player.Data.Pos!.X, player.Data.Pos!.Y, player.Data.Pos!.Z);
@@ -306,6 +325,6 @@ public class CommandScene : ICommand
 
         // set pos
         await player.MoveTo(new Position((int)posVec.X, (int)posVec.Y, (int)posVec.Z));
-        await arg.SendMsg("Teleported!");
+        await arg.SendMsg(I18NManager.Translate("Game.Command.Scene.Teleported"));
     }
 }

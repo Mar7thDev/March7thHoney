@@ -35,6 +35,21 @@ public class PacketPlayerSyncScNotify : BasePacket
         SetData(proto);
     }
 
+    public PacketPlayerSyncScNotify(IEnumerable<uint> delEquipmentIds) : base(CmdIds.PlayerSyncScNotify)
+    {
+        var proto = new PlayerSyncScNotify();
+        proto.CJEFCMACJLG.Add(delEquipmentIds);
+        SetData(proto);
+    }
+
+    public PacketPlayerSyncScNotify(ItemData item, IEnumerable<uint> delEquipmentIds) : base(CmdIds.PlayerSyncScNotify)
+    {
+        var proto = new PlayerSyncScNotify();
+        AddItemToProto(item, proto);
+        proto.CJEFCMACJLG.Add(delEquipmentIds);
+        SetData(proto);
+    }
+
     public PacketPlayerSyncScNotify(BaseAvatarInfo avatar) : base(CmdIds.PlayerSyncScNotify)
     {
         var proto = new PlayerSyncScNotify
@@ -178,7 +193,7 @@ public class PacketPlayerSyncScNotify : BasePacket
                 if (item.Count > 0)
                     notify.EquipmentList.Add(item.ToEquipmentProto());
                 else
-                    notify.DelEquipmentList.Add((uint)item.UniqueId);
+                    notify.CJEFCMACJLG.Add((uint)item.UniqueId);
                 break;
             case ItemMainTypeEnum.Relic:
                 if (item.Count > 0)

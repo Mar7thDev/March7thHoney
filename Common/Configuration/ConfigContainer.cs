@@ -1,3 +1,5 @@
+using March7thHoney.Command;
+
 namespace March7thHoney.Configuration;
 
 public class ConfigContainer
@@ -46,6 +48,7 @@ public class GameServerConfig
     public string GameServerId { get; set; } = "March7th_Honey";
     public string GameServerName { get; set; } = "March7thHoney";
     public string GameServerDescription { get; set; } = "A re-implementation of StarRail server";
+    public int EnvType { get; set; } = 9;
     public bool UsePacketEncryption { get; set; } = true;
 
     public string GetDisplayAddress()
@@ -84,10 +87,13 @@ public class ServerOption
     public bool AutoLightSection { get; set; } = true;
     public string Language { get; set; } = "EN";
     public string FallbackLanguage { get; set; } = "EN";
-    public HashSet<string> DefaultPermissions { get; set; } = ["*"];
+    public string DefaultPermissionRole { get; set; } = CommandRoles.User;
+    public Dictionary<string, HashSet<string>> PermissionRoles { get; set; } = CommandRoles.DefaultRoles();
+    public HashSet<string> DefaultPermissions { get; set; } = [];
     public ServerAnnounce ServerAnnounce { get; set; } = new();
     public ServerProfile ServerProfile { get; set; } = new();
     public WatermarkConfig Watermark { get; set; } = new();
+    public AuthOption Auth { get; set; } = new();
     public bool AutoCreateUser { get; set; } = true;
     public LogOption LogOption { get; set; } = new();
     public ServerConfig ServerConfig { get; set; } = new();
@@ -114,6 +120,48 @@ public class WatermarkConfig
     public string GradientEndColor { get; set; } = "#C673AA";
 }
 
+public class AuthOption
+{
+    public int MinimumPasswordLength { get; set; } = 8;
+    public int PasswordHashIterations { get; set; } = 600000;
+    public int DispatchTokenExpireMinutes { get; set; } = 43200;
+    public int ComboTokenExpireMinutes { get; set; } = 43200;
+    public bool EnableRegistration { get; set; } = true;
+    public string RegistrationPageIcon { get; set; } = "M7";
+    public bool SendVerificationEmailOnRegister { get; set; } = true;
+    public bool RequireVerifiedEmailForLogin { get; set; } = true;
+    public string EmailVerificationRequiredMessage { get; set; } =
+        "Email verification required. Please check your inbox and verify your account before entering the server.";
+    public int EmailVerificationTokenExpireMinutes { get; set; } = 1440;
+    public int PasswordResetTokenExpireMinutes { get; set; } = 60;
+    public EmailOption Email { get; set; } = new();
+}
+
+public class EmailOption
+{
+    public bool Enabled { get; set; } = false;
+    public string PublicBaseUrl { get; set; } = "";
+    public string LogoUrl { get; set; } = "https://img.hoyotoon.com/raw/hoyotoonlogolong.png";
+    public SmtpOption Smtp { get; set; } = new();
+    public string VerificationSubject { get; set; } = "Verify your {serverName} account";
+    public string VerificationBody { get; set; } =
+        "Hi {username},\n\nYou are adding email security verification for {serverName}.\n\nVerify your email here:\n{link}\n\nPlease complete the account verification process in {minutes} minutes.\n\nThis is an automated email. Please do not reply.";
+    public string PasswordResetSubject { get; set; } = "Reset your {serverName} password";
+    public string PasswordResetBody { get; set; } =
+        "Hi {username},\n\nWe received a request to reset the password for your {serverName} account.\n\nReset your password here:\n{link}\n\nPlease complete the password reset process in {minutes} minutes.\n\nThis is an automated email. Please do not reply.";
+}
+
+public class SmtpOption
+{
+    public string Host { get; set; } = "";
+    public int Port { get; set; } = 587;
+    public bool EnableSsl { get; set; } = true;
+    public string Username { get; set; } = "";
+    public string Password { get; set; } = "";
+    public string FromAddress { get; set; } = "";
+    public string FromName { get; set; } = "March7thHoney";
+}
+
 public class WelcomeMailConfig
 {
     public bool Enabled { get; set; } = true;
@@ -130,9 +178,10 @@ public class WelcomeMailItemConfig
 {
     public int ItemId { get; set; }
     public int Count { get; set; }
-    public int Rank { get; set; } = 1;
+    public int Rank { get; set; }
     public int Level { get; set; } = 1;
     public int Promotion { get; set; } = 0;
+    public int TalentLevel { get; set; }
 }
 
 public class ServerTimeOption
@@ -146,6 +195,7 @@ public class ServerConfig
 {
     public bool RunDispatch { get; set; } = true;
     public string FromDispatchBaseUrl { get; set; } = "";
+    public string ServerExchangeSecret { get; set; } = "";
     public bool RunGateway { get; set; } = true; // if run gateway, also run game server
     public List<ServerRegion> Regions { get; set; } = [];
 }

@@ -8,7 +8,7 @@ using March7thHoney.Proto;
 
 namespace March7thHoney.Command.Command.Cmd;
 
-[CommandInfo("grid", "Game.Command.Grid.Desc", "Game.Command.Grid.Usage")]
+[CommandInfo("grid", "Game.Command.Grid.Desc", "Game.Command.Grid.Usage", permission: CommandPermissions.Grid)]
 public class CommandGrid : ICommand
 {
     [CommandMethod("0 role")]

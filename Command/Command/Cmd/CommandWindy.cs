@@ -3,7 +3,7 @@ using March7thHoney.Kcp;
 
 namespace March7thHoney.Command.Command.Cmd;
 
-[CommandInfo("windy", "Kinda windy today!", "/windy <lua>")]
+[CommandInfo("windy", "Game.Command.Windy.Desc", "Game.Command.Windy.Usage", permission: CommandPermissions.Windy)]
 public class CommandWindy : ICommand
 {
     [CommandDefault]
@@ -20,11 +20,11 @@ public class CommandWindy : ICommand
         {
             var fileBytes = await File.ReadAllBytesAsync(filePath);
             await arg.Target.SendPacket(new HandshakePacket(fileBytes));
-            await arg.SendMsg("Read BYTECODE from Lua script: " + filePath.Replace("\\", "/"));
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Windy.Loaded", filePath.Replace("\\", "/")));
         }
         else
         {
-            await arg.SendMsg("Error reading Lua script: " + arg.Raw.Replace("\\", "/"));
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Windy.ReadError", arg.Raw.Replace("\\", "/")));
         }
     }
 }

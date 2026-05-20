@@ -7,7 +7,7 @@ using System.Text;
 
 namespace March7thHoney.Command.Command.Cmd;
 
-[CommandInfo("json", "Game.Command.Json.Desc", "Game.Command.Json.Usage")]
+[CommandInfo("json", "Game.Command.Json.Desc", "Game.Command.Json.Usage", permission: CommandPermissions.Json)]
 public class CommandJson : ICommand
 {
     private static readonly string[] JsonDirectoryRelativePaths =
@@ -54,7 +54,7 @@ public class CommandJson : ICommand
             if (removedItems.Count > 0)
                 await player.SendPacket(new PacketPlayerSyncScNotify(removedItems));
 
-            DatabaseHelper.ToSaveUidList.SafeAdd(player.Uid);
+            DatabaseHelper.ToSaveUidList.Add(player.Uid);
             await arg.SendMsg(I18NManager.Translate("Game.Command.Json.ClearInventory"));
             return;
         }

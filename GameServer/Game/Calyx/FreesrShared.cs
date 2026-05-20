@@ -361,10 +361,10 @@ public static class FreesrShared
                 overrideData.CachedJson.BattleConfig = data.BattleConfig;
             if (data.Avatars != null)
                 overrideData.CachedJson.Avatars = data.Avatars;
-            DatabaseHelper.ToSaveUidList.SafeAdd(player.Uid);
+            DatabaseHelper.ToSaveUidList.Add(player.Uid);
         }
 
-        DatabaseHelper.ToSaveUidList.SafeAdd(player.Uid);
+        DatabaseHelper.ToSaveUidList.Add(player.Uid);
 
         await sendI18nCallback([
             "Game.Command.Json.ImportSummary",

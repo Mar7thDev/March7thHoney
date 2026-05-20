@@ -5,7 +5,7 @@ using March7thHoney.Internationalization;
 
 namespace March7thHoney.Command.Command.Cmd;
 
-[CommandInfo("reload", "Game.Command.Reload.Desc", "Game.Command.Reload.Usage", permission: "egglink.manage")]
+[CommandInfo("reload", "Game.Command.Reload.Desc", "Game.Command.Reload.Usage", permission: CommandPermissions.Reload)]
 public class CommandReload : ICommand
 {
     [CommandMethod("0 banner")]
