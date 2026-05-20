@@ -57,8 +57,6 @@ public class PacketGridFightEnterBattleStageScRsp : BasePacket
             foreach (var savedValue in basicInfo.RoleSavedValueList)
                 info.AFCMOOFGBPK.OGHGLMGJGEM[savedValue] = 0;
         }
-        info.AFCMOOFGBPK.OGHGLMGJGEM["GP_Avatar_Sparxie_00"] = 2;
-
         var player = battle.Player;
         var collection = new PlayerDataCollection(player.Data, player.InventoryManager!.Data, battle.Lineup);
         foreach (var (roleId, _) in inst.ResolveBackgroundRoles())
