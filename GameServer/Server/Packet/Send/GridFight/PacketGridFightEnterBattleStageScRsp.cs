@@ -100,6 +100,21 @@ public class PacketGridFightEnterBattleStageScRsp : BasePacket
             roleInfo.ConvertPropertyToFixpoint.Add(1014, 100);
             roleInfo.ConvertPropertyToFixpoint.Add(1019, 100);
             roleInfo.ConvertPropertyToFixpoint.Add(1025, 100);
+
+            if (inst.EquipUniqueIdsByRoleUniqueId.TryGetValue(uniqueId, out var dressed))
+            {
+                foreach (var equipUid in dressed)
+                {
+                    var equip = inst.Equipments.FirstOrDefault(e => e.UniqueId == equipUid);
+                    if (equip == null) continue;
+                    roleInfo.HHIJFHKJEPL.Add(new APCNLFANPEP
+                    {
+                        GridFightEquipmentId = equip.GridFightEquipmentId,
+                        UniqueId = equip.UniqueId
+                    });
+                }
+            }
+
             info.AFCMOOFGBPK.GridGameRoleList.Add(roleInfo);
         }
 

@@ -1,3 +1,4 @@
+using March7thHoney.Data;
 using March7thHoney.GameServer.Game.GridFight.Sync;
 using March7thHoney.GameServer.Game.GridFight;
 using March7thHoney.GameServer.Server.Packet.Send.GridFight;
@@ -7,7 +8,51 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.GridFight;
 
 [Opcode(CmdIds.GridFightEquipDressCsReq)]
-public class HandlerGridFightEquipDressCsReq : Handler { public override async Task OnHandle(Connection connection, byte[] header, byte[] data) { _ = GridFightEquipDressCsReq.Parser.ParseFrom(data); await connection.SendPacket(new PacketJNNNJBAOCOB()); await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(connection.Player!, GridFightSyncKind.NoOp)); } }
+public class HandlerGridFightEquipDressCsReq : Handler
+{
+    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    {
+        var req = GridFightEquipDressCsReq.Parser.ParseFrom(data);
+        var player = connection.Player!;
+        var inst = player.GridFightManager?.GridFightInstance;
+
+        await connection.SendPacket(new PacketJNNNJBAOCOB());
+        if (inst == null) return;
+
+        var equipUid = req.DressEquipmentUniqueId;
+        var roleUid = req.DressRoleUniqueId;
+        if (!inst.RoleByUniqueId.TryGetValue(roleUid, out var roleId)) return;
+        if (!inst.Equipments.Any(e => e.UniqueId == equipUid)) return;
+
+        if (!inst.EquipUniqueIdsByRoleUniqueId.TryGetValue(roleUid, out var equipList))
+            inst.EquipUniqueIdsByRoleUniqueId[roleUid] = equipList = new List<uint>();
+        if (!equipList.Contains(equipUid)) equipList.Add(equipUid);
+
+        uint pos = 0;
+        foreach (var kv in inst.UniqueIdByPos)
+            if (kv.Value == roleUid) { pos = kv.Key; break; }
+
+        var roleInfo = new GridGameRoleInfo
+        {
+            Id = roleId,
+            Pos = pos,
+            UniqueId = roleUid,
+            RoleStar = inst.RoleStarByUniqueId.GetValueOrDefault(roleUid, 1u)
+        };
+        foreach (var eid in equipList) roleInfo.UpdateEquipsComponent.Add(eid);
+        if (GameData.GridFightRoleBasicInfoData.TryGetValue(roleId, out var roleExcel)
+            && roleExcel.RoleSavedValueList.Count > 0)
+        {
+            roleInfo.GridFightValueInitComponent[roleExcel.RoleSavedValueList[0]] = 0;
+        }
+
+        var sync = new GridFightSyncUpdateResultScNotify();
+        var sec = new GridFightSyncResultData();
+        sec.UpdateDynamicList.Add(new GridFightSyncData { UpdateRoleInfo = roleInfo });
+        sync.SyncResultDataList.Add(sec);
+        await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(sync));
+    }
+}
 
 [Opcode(CmdIds.GridFightEquipCraftCsReq)]
 public class HandlerGridFightEquipCraftCsReq : Handler { public override async Task OnHandle(Connection connection, byte[] header, byte[] data) { _ = GridFightEquipCraftCsReq.Parser.ParseFrom(data); await connection.SendPacket(new PacketEPJJBNPIFLC()); await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(connection.Player!, GridFightSyncKind.NoOp)); } }
