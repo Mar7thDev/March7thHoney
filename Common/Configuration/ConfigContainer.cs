@@ -94,7 +94,7 @@ public class ServerOption
     public ServerProfile ServerProfile { get; set; } = new();
     public WatermarkConfig Watermark { get; set; } = new();
     public AuthOption Auth { get; set; } = new();
-    public bool AutoCreateUser { get; set; } = true;
+    public bool AutoCreateUser { get; set; } = false;
     public LogOption LogOption { get; set; } = new();
     public ServerConfig ServerConfig { get; set; } = new();
     public int FarmingDropRate { get; set; } = 1;
@@ -258,7 +258,7 @@ public class MuipServerConfig
 
 public class WebSecurityConfig
 {
-    public bool EnableRsaLoginDecrypt { get; set; } = false;
+    public bool EnableRsaLoginDecrypt { get; set; } = true;
     public string RsaPublicKeyPem { get; set; } = "";
     public string RsaPrivateKeyPem { get; set; } = "";
 }
