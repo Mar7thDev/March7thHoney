@@ -267,7 +267,7 @@ public class CommandManager
 
                     if (!canRun) continue;
                     isFound = true;
-                    method.Invoke(command, [arg]);
+                    InvokeCommandMethod(method, command, arg, sender, cmd);
                     break;
                 }
 
@@ -278,7 +278,7 @@ public class CommandManager
                     var attr = method.GetCustomAttribute<CommandDefaultAttribute>();
                     if (attr == null) continue;
                     isFound = true;
-                    method.Invoke(command, [arg]);
+                    InvokeCommandMethod(method, command, arg, sender, cmd);
                     break;
                 }
 
@@ -300,5 +300,45 @@ public class CommandManager
     private static bool IsTargetToken(string token)
     {
         return token.Length > 1 && token[0] == '@' && int.TryParse(token[1..], out _);
+    }
+
+    private void InvokeCommandMethod(MethodInfo method, ICommand command, CommandArg arg, ICommandSender sender,
+        string commandName)
+    {
+        var result = method.Invoke(command, [arg]);
+        ObserveCommandResult(result, sender, commandName, method.Name);
+    }
+
+    private void ObserveCommandResult(object? result, ICommandSender sender, string commandName, string methodName)
+    {
+        switch (result)
+        {
+            case Task task:
+                _ = ObserveCommandTask(task, sender, commandName, methodName);
+                break;
+            case ValueTask valueTask:
+                _ = ObserveCommandTask(valueTask.AsTask(), sender, commandName, methodName);
+                break;
+        }
+    }
+
+    private async Task ObserveCommandTask(Task task, ICommandSender sender, string commandName, string methodName)
+    {
+        try
+        {
+            await task;
+        }
+        catch (Exception e)
+        {
+            Logger.Error($"Command {commandName}.{methodName} failed", e);
+            try
+            {
+                await sender.SendMsg(I18NManager.Translate("Game.Command.Notice.InternalError"));
+            }
+            catch (Exception sendException)
+            {
+                Logger.Warn($"Failed to send command error message for {commandName}.{methodName}", sendException);
+            }
+        }
     }
 }
