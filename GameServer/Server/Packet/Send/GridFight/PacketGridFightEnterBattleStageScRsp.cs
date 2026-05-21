@@ -32,7 +32,7 @@ public class PacketGridFightEnterBattleStageScRsp : BasePacket
             LFKBMDHKPFI = enc.PenaltyBonusRuleId,
             ANBBPPHBCJH = 3,
             HDCAEIKAPND = 3,
-            OOPPKDAFFDG = 108,
+            OOPPKDAFFDG = inst.GetEnemyDifficultyLevel(),
             Season = inst.Season,
             IsOverlock = inst.IsOverLock,
             GridFightLineupHp = inst.LineupHp,
