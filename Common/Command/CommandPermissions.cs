@@ -9,7 +9,7 @@ public static class CommandPermissions
     public const string Manage = "command.manage";
     public const string Moderate = "command.moderate";
     public const string Mail = "command.mail";
-    public const string Server = "command.server";
+    public const string Anno = "command.anno";
     public const string TargetOthers = "command.others";
 
     public const string Account = "command.account";
@@ -46,7 +46,7 @@ public static class CommandPermissions
         Manage,
         Moderate,
         Mail,
-        Server,
+        Anno,
         TargetOthers,
         Account,
         Avatar,
@@ -63,9 +63,9 @@ public static class CommandPermissions
         Reload,
         Remove,
         SetLevel,
-        UnlockAll,
-        Unstuck,
-        Windy
+            UnlockAll,
+            Unstuck,
+            Windy
     ];
 
     public static bool Allows(string? grantedPermissions, string? requiredPermission)
@@ -142,7 +142,7 @@ public static class CommandPermissions
             Inventory,
             Progress,
             Moderate,
-            Server,
+            Anno,
             Manage
         ];
     }

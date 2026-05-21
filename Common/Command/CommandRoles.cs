@@ -41,6 +41,7 @@ public static class CommandRoles
                 CommandPermissions.Relic,
                 CommandPermissions.Reload,
                 CommandPermissions.Remove,
+                CommandPermissions.Anno,
                 CommandPermissions.SetLevel,
                 CommandPermissions.UnlockAll,
                 CommandPermissions.Unstuck
