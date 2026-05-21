@@ -119,26 +119,42 @@ public static class GridFightLevelResolver
             || nodeType == Enums.GridFight.GridFightNodeTypeEnum.EliteBranch)
         {
             var isEarly = IsEarlyChapterBattle(inst, route);
-            var totalCount = 10;
-            var eliteStarCount = isEarly ? rng.Next(0, 2) : rng.Next(2, 4); // 早期 0-1 精英；之后 2-3 精英
-            // 早期战斗不引入 tier 3 怪，避免视觉上像精英；之后允许少量 tier 3
-            var basePool = monsters.Where(m => m.MonsterTier == 2).ToList();
-            if (basePool.Count == 0) basePool = monsters.Where(m => m.MonsterTier <= 2).ToList();
-            if (basePool.Count == 0) basePool = monsters.ToList();
-            var eliteBasePool = isEarly
-                ? basePool
-                : monsters.Where(m => m.MonsterTier is 2 or 3).ToList();
-            if (eliteBasePool.Count == 0) eliteBasePool = basePool;
+            var isEncounter = nodeType == Enums.GridFight.GridFightNodeTypeEnum.EliteBranch;
+            const int totalCount = 10;
 
-            for (var i = 0; i < totalCount; i++)
+            var tier2Pool = monsters.Where(m => m.MonsterTier == 2).ToList();
+            var tier3Pool = monsters.Where(m => m.MonsterTier == 3).ToList();
+            if (tier2Pool.Count == 0) tier2Pool = monsters.Where(m => m.MonsterTier <= 2).ToList();
+            if (tier2Pool.Count == 0) tier2Pool = monsters.ToList();
+
+            // 抓包：精英只指 tier3 单位（如 501301001），star=2 只是属性强化、外观不变。
+            // 早期战斗（1-3,1-4 / 2-1,2-2 / 3-1,3-2）：不放 tier3；
+            // 后期 CampMonster：~2 只 tier3 + 其余 tier2 中 1-2 只 star=2 强化；
+            // EliteBranch 遭遇：~3 只 tier3 + 其余 tier2 中 1-2 只 star=2 强化。
+            int tier3Count;
+            if (isEarly || tier3Pool.Count == 0) tier3Count = 0;
+            else if (isEncounter) tier3Count = Math.Min(totalCount, rng.Next(2, 4));
+            else tier3Count = Math.Min(totalCount, rng.Next(1, 3));
+
+            int normalCount = totalCount - tier3Count;
+            int normalStar2Count = isEarly ? rng.Next(0, 2) : rng.Next(1, 3);
+            normalStar2Count = Math.Min(normalStar2Count, normalCount);
+
+            for (var i = 0; i < tier3Count; i++)
             {
-                var useElite = i < eliteStarCount;
-                var pool = useElite ? eliteBasePool : basePool;
-                var pick = pool[rng.Next(pool.Count)];
-                wave.Add(new GridFightMonsterSpec(pick.MonsterID, useElite ? 2u : 1u, []));
+                var pick = tier3Pool[rng.Next(tier3Pool.Count)];
+                // tier3 自带视觉精英属性，让一半带 star=2 强化更靠近官服分布
+                var star = rng.Next(2) == 0 ? 1u : 2u;
+                wave.Add(new GridFightMonsterSpec(pick.MonsterID, star, []));
+            }
+            for (var i = 0; i < normalCount; i++)
+            {
+                var pick = tier2Pool[rng.Next(tier2Pool.Count)];
+                var star = i < normalStar2Count ? 2u : 1u;
+                wave.Add(new GridFightMonsterSpec(pick.MonsterID, star, []));
             }
             Shuffle(wave, rng);
-            var group = nodeType == Enums.GridFight.GridFightNodeTypeEnum.EliteBranch ? 1818u : 1817u;
+            var group = isEncounter ? 1818u : 1817u;
             return (group, wave);
         }
 
