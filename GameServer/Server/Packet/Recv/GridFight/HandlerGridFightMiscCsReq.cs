@@ -16,7 +16,7 @@ public class HandlerGridFightEquipDressCsReq : Handler
         var player = connection.Player!;
         var inst = player.GridFightManager?.GridFightInstance;
 
-        await connection.SendPacket(new PacketJNNNJBAOCOB());
+        await connection.SendPacket(new PacketGridFightEquipDressScRsp());
         if (inst == null) return;
 
         var equipUid = req.DressEquipmentUniqueId;

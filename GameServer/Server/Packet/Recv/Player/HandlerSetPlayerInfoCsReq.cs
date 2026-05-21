@@ -15,9 +15,10 @@ public class HandlerSetPlayerInfoCsReq : Handler
         var req = SetPlayerInfoCsReq.Parser.ParseFrom(data);
         if (req == null) return;
         player.Data.Name = req.Nickname;
-        if (req.Gender == Gender.None)
+        if (req.Gender == Gender.None || player.Data.IsGenderSet)
         {
             await connection.SendPacket(new PacketSetPlayerInfoScRsp(player, req.IsModify));
+            await connection.SendPacket(new PacketPlayerSyncScNotify(player.ToProto()));
             await connection.SendWatermarkLuaAsync();
             return;
         }
@@ -29,7 +30,8 @@ public class HandlerSetPlayerInfoCsReq : Handler
         player.Data.IsGenderSet = true;
         await player.ChangeAvatarPathType(8001, MultiPathAvatarTypeEnum.Warrior);
 
-        await player.LineupManager!.AddAvatarToCurTeam(8001);
+        var heroAvatarId = player.Data.CurrentGender == Gender.Woman ? 8002 : 8001;
+        await player.LineupManager!.AddAvatarToCurTeam(heroAvatarId);
         await player.LineupManager!.AddAvatarToCurTeam(1001);
         await player.MissionManager!.FinishSubMission(100010134);
 
