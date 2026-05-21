@@ -102,7 +102,7 @@ public static class GridFightLevelResolver
         var wave = new List<GridFightMonsterSpec>();
         var nodeType = route?.NodeType;
 
-        // 对齐 DH：普通怪点优先低 Tier，避免 1-1 刷出过高血量怪
+        // 奖励节点（1-1/1-2/1-8/2-6/3-6）：3-5 只低 Tier 怪，无精英
         if (nodeType == Enums.GridFight.GridFightNodeTypeEnum.Monster)
         {
             var pool = monsters.Where(m => m.MonsterTier <= 2).ToList();
@@ -118,21 +118,28 @@ public static class GridFightLevelResolver
         if (nodeType == Enums.GridFight.GridFightNodeTypeEnum.CampMonster
             || nodeType == Enums.GridFight.GridFightNodeTypeEnum.EliteBranch)
         {
-            var targetTiers = new uint[] { 3, 2, 2, 2, 2 };
-            foreach (var tier in targetTiers)
+            var isEarly = IsEarlyChapterBattle(inst, route);
+            var totalCount = 10;
+            var eliteStarCount = isEarly ? rng.Next(0, 2) : rng.Next(2, 4); // 早期 0-1 精英；之后 2-3 精英
+            // 早期战斗不引入 tier 3 怪，避免视觉上像精英；之后允许少量 tier 3
+            var basePool = monsters.Where(m => m.MonsterTier == 2).ToList();
+            if (basePool.Count == 0) basePool = monsters.Where(m => m.MonsterTier <= 2).ToList();
+            if (basePool.Count == 0) basePool = monsters.ToList();
+            var eliteBasePool = isEarly
+                ? basePool
+                : monsters.Where(m => m.MonsterTier is 2 or 3).ToList();
+            if (eliteBasePool.Count == 0) eliteBasePool = basePool;
+
+            for (var i = 0; i < totalCount; i++)
             {
-                var pool = monsters.Where(m => m.MonsterTier == tier).ToList();
-                if (pool.Count == 0) pool = monsters.Where(m => m.MonsterTier <= 3).ToList();
-                if (pool.Count == 0) continue;
+                var useElite = i < eliteStarCount;
+                var pool = useElite ? eliteBasePool : basePool;
                 var pick = pool[rng.Next(pool.Count)];
-                wave.Add(new GridFightMonsterSpec(pick.MonsterID, 1, []));
+                wave.Add(new GridFightMonsterSpec(pick.MonsterID, useElite ? 2u : 1u, []));
             }
-            if (wave.Count == 0)
-            {
-                var pick = monsters[rng.Next(monsters.Count)];
-                wave.Add(new GridFightMonsterSpec(pick.MonsterID, 1, []));
-            }
-            return (1817u, wave);
+            Shuffle(wave, rng);
+            var group = nodeType == Enums.GridFight.GridFightNodeTypeEnum.EliteBranch ? 1818u : 1817u;
+            return (group, wave);
         }
 
         if (nodeType == Enums.GridFight.GridFightNodeTypeEnum.Supply)
@@ -142,10 +149,16 @@ public static class GridFightLevelResolver
 
         if (nodeType == Enums.GridFight.GridFightNodeTypeEnum.Boss)
         {
-            var bossPool = monsters.Where(m => m.MonsterTier >= 5).ToList();
+            // 抓包：1-9/2-7/3-7 的 boss 必须与开局预告 bossInfo 一致
+            var promised = inst.GetCurrentBossMonsterId();
+            if (promised != 0)
+            {
+                wave.Add(new GridFightMonsterSpec(promised, 2, []));
+                return (1819u, wave);
+            }
+            var bossPool = monsters.Where(m => m.MonsterTier >= 5).OrderBy(m => m.MonsterTier).ThenBy(m => m.MonsterID).ToList();
             if (bossPool.Count == 0) bossPool = monsters.ToList();
-            var pick = bossPool[rng.Next(bossPool.Count)];
-            wave.Add(new GridFightMonsterSpec(pick.MonsterID, 1, []));
+            wave.Add(new GridFightMonsterSpec(bossPool[0].MonsterID, 2, []));
             return (1819u, wave);
         }
 
@@ -159,15 +172,46 @@ public static class GridFightLevelResolver
         return (1816u, wave);
     }
 
+    // 判断当前 CampMonster 节点是否属于本位面前 2 个战斗节点（1-3,1-4 / 2-1,2-2 / 3-1,3-2）
+    private static bool IsEarlyChapterBattle(GridFightInstance inst, GridFightStageRouteExcel? route)
+    {
+        if (route == null) return false;
+        if (route.NodeType != Enums.GridFight.GridFightNodeTypeEnum.CampMonster) return false;
+        if (!GameData.GridFightStageRouteData.TryGetValue(inst.RouteId, out var bucket)) return false;
+        var combatSections = bucket.Values
+            .Where(r => r.ChapterID == inst.CurrentChapterId
+                        && r.NodeType == Enums.GridFight.GridFightNodeTypeEnum.CampMonster)
+            .Select(r => r.SectionID)
+            .OrderBy(s => s)
+            .Take(2)
+            .ToList();
+        return combatSections.Contains(inst.SectionId);
+    }
+
+    private static void Shuffle<T>(List<T> list, Random rng)
+    {
+        for (var i = list.Count - 1; i > 0; i--)
+        {
+            var j = rng.Next(i + 1);
+            (list[i], list[j]) = (list[j], list[i]);
+        }
+    }
+
+    // 每个位面固定使用 SessionCampIds[chapter-1] 的 camp，保证 boss / 普通怪都属于同一位面
     private static GridFightCampExcel? ResolveCamp(GridFightInstance inst)
     {
         if (inst.SessionCampIds.Count > 0)
         {
-            var idx = (int)(((inst.CurrentChapterId - 1) * 9 + (inst.SectionId - 1)) % (uint)inst.SessionCampIds.Count);
-            for (var i = 0; i < inst.SessionCampIds.Count; i++)
+            var planeIdx = (int)inst.CurrentChapterId - 1;
+            if (planeIdx >= 0 && planeIdx < inst.SessionCampIds.Count)
             {
-                var pick = inst.SessionCampIds[(idx + i) % inst.SessionCampIds.Count];
+                var pick = inst.SessionCampIds[planeIdx];
                 if (GameData.GridFightCampData.TryGetValue(pick, out var camp) && camp.Monsters.Count > 0)
+                    return camp;
+            }
+            foreach (var fallbackId in inst.SessionCampIds)
+            {
+                if (GameData.GridFightCampData.TryGetValue(fallbackId, out var camp) && camp.Monsters.Count > 0)
                     return camp;
             }
         }
