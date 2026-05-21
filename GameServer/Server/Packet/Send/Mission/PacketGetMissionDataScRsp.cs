@@ -10,9 +10,14 @@ public class PacketGetMissionDataScRsp : BasePacket
 {
     public PacketGetMissionDataScRsp(PlayerInstance player) : base(CmdIds.GetMissionDataScRsp)
     {
+        var trackMissionId = player.MissionManager!.Data.TrackingMainMissionId;
+        if (trackMissionId <= 0 || player.MissionManager.GetMainMissionStatus(trackMissionId) != MissionPhaseEnum.Accept)
+            trackMissionId = player.MissionManager.Data.RunningMainMissionIds.FirstOrDefault();
+        player.MissionManager.Data.TrackingMainMissionId = trackMissionId;
+
         var proto = new GetMissionDataScRsp
         {
-            TrackMissionId = (uint)player.MissionManager!.Data.TrackingMainMissionId
+            TrackMissionId = (uint)trackMissionId
         };
 
         foreach (var mission in GameData.MainMissionData.Keys)
