@@ -206,10 +206,10 @@ public class ServerInfoTextCHT
     public string HandbookSectionSubMission => "子任務";
     public string HandbookSectionRogueBuff => "模擬宇宙祝福";
     public string HandbookSectionRogueMiracle => "模擬宇宙奇物";
-    public string HandbookSectionCurrencyWarRole => "黃金與機械角色";
-    public string HandbookSectionCurrencyWarEquipment => "黃金與機械裝備";
-    public string HandbookSectionCurrencyWarConsumable => "黃金與機械消耗品";
-    public string HandbookSectionCurrencyWarOrb => "黃金與機械球";
+    public string HandbookSectionCurrencyWarRole => "貨幣戰爭角色";
+    public string HandbookSectionCurrencyWarEquipment => "貨幣戰爭裝備";
+    public string HandbookSectionCurrencyWarConsumable => "貨幣戰爭消耗品";
+    public string HandbookSectionCurrencyWarOrb => "貨幣戰爭晶礦";
     public string HandbookSectionRogueDiceSurface => "骰面效果";
     public string HandbookSectionRogueDialogue => "模擬宇宙事件對話";
     public string HandbookDescriptionLabel => "描述";

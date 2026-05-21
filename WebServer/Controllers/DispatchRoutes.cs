@@ -324,8 +324,10 @@ public class DispatchRoutes : ControllerBase
     public JsonResult Login([FromBody] LoginReqJson req)
     {
         Debug($"shield login: account={req.account} is_crypto={req.is_crypto}");
-        var useRsa = Config.WebSecurity.EnableRsaLoginDecrypt;
-        var (account, password) = LoginCryptoHelper.TryDecryptCredentials(req.account, req.password, useRsa);
+        var useRsa = Config.WebSecurity.EnableRsaLoginDecrypt && req.is_crypto;
+        var (account, password, decryptFailed) = LoginCryptoHelper.TryDecryptCredentialsStrict(req.account, req.password, useRsa);
+        if (decryptFailed)
+            return new JsonResult(LoginResJson.Error(-202, "Invalid login data"));
         var identityKeys = LoginIdentityContextFactory.Build(Request, req.device, req.device_id, req.device_fp);
         return new UsernameLoginHandler().HandleShieldLogin(account, password, identityKeys);
     }

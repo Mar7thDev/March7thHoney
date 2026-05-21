@@ -47,8 +47,6 @@ public class March7thHoneyListener
         KCPTransport.Start();
         Logger.Info(I18NManager.Translate("Server.ServerInfo.ServerRunning", I18NManager.Translate("Word.Game"),
             ConfigManager.Config.GameServer.GetDisplayAddress()));
-        Logger.Info(
-            $"Game UDP listener bound to {ListenAddress}. Advertised gateway is {ConfigManager.Config.GameServer.GetDisplayAddress()}");
     }
 
     private static void RegisterConnection(March7thHoneyConnection con)
