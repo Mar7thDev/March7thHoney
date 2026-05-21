@@ -15,14 +15,6 @@ public class HandlerSetClientPausedCsReq : Handler
         var paused = req.Paused;
         await connection.SendPacket(new PacketSetClientPausedScRsp(paused));
         var player = connection.Player;
-        var announceCfg = ConfigManager.Config.ServerOption.ServerAnnounce;
-        if (player != null &&
-            !player.LoginAnnounceSent &&
-            announceCfg.EnableAnnounce &&
-            !string.IsNullOrWhiteSpace(announceCfg.AnnounceContent))
-        {
-            await connection.SendPacket(new PacketServerAnnounceNotify());
-            player.LoginAnnounceSent = true;
-        }
+        if (player != null) await player.TrySendWelcomeAnnounce();
     }
 }

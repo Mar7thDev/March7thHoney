@@ -598,10 +598,20 @@ public class JsonTextEN
 /// </summary>
 public class AnnoTextEN
 {
-    public string Desc => "Send a server popup announcement. Without arguments, sends configured announce content.";
-    public string Usage => "Usage: /anno\n\nUsage: /anno <announcement content>";
+    public string Desc => "Send a server popup announcement.";
+    public string Usage =>
+        "Usage: /anno [duration] [frequency] <announcement content>\n\n" +
+        "Examples:\n" +
+        "  /anno 10m Server restart soon\n" +
+        "  /anno 2h 5m Double drops are live\n" +
+        "  /anno @10001 10m Private notice\n\n" +
+        "Options:\n" +
+        "  --duration <time>    How long the announcement remains valid. Examples: 30s, 10m, 2h, 3d\n" +
+        "  --frequency <time>   How often the banner can reappear. Examples: 30s, 10m, 1h";
     public string Disabled => "Announcement feature is disabled. Enable ServerOption.ServerAnnounce.EnableAnnounce in config first.";
-    public string Sent => "Sent popup message to {0} online player(s).";
+    public string InvalidDuration => "Invalid announcement duration. Use values like 30s, 10m, 2h, or 3d.";
+    public string InvalidFrequency => "Invalid announcement frequency. Use values like 30s, 10m, 2h, or 3d.";
+    public string Sent => "Sent popup message to {0} online player(s). Duration: {1}. Frequency: {2}.";
 }
 
 /// <summary>
