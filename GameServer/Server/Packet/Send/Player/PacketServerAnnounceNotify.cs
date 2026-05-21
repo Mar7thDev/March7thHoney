@@ -6,18 +6,27 @@ namespace March7thHoney.GameServer.Server.Packet.Send.Player;
 
 public class PacketServerAnnounceNotify : BasePacket
 {
-    public PacketServerAnnounceNotify() : base(CmdIds.ServerAnnounceNotify)
+    public PacketServerAnnounceNotify(string? customContent = null) : base(CmdIds.ServerAnnounceNotify)
     {
+        var content = string.IsNullOrWhiteSpace(customContent)
+            ? ConfigManager.Config.ServerOption.ServerAnnounce.AnnounceContent
+            : customContent;
+        if (string.IsNullOrWhiteSpace(content)) return;
+
         var proto = new ServerAnnounceNotify();
+        var now = Extensions.GetUnixSec();
 
         proto.AnnounceDataList.Add(new AnnounceData
         {
-            BeginTime = Extensions.GetUnixSec(),
-            EndTime = Extensions.GetUnixSec() + 3600,
+            BeginTime = now,
+            EndTime = now + 86400 * 30,
             ConfigId = 1,
-            BannerText = ConfigManager.Config.ServerOption.ServerAnnounce.AnnounceContent // TODO
+            BannerFrequency = 3600,
+            HasRecommand = true,
+            EmergencyText = content,
+            BannerText = content
         });
 
-        if (ConfigManager.Config.ServerOption.ServerAnnounce.EnableAnnounce) SetData(proto);
+        SetData(proto);
     }
 }

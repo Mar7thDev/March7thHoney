@@ -118,6 +118,7 @@ public partial class PlayerInstance(PlayerData data)
     public bool IsNewPlayer { get; set; }
     public int NextBattleId { get; set; } = 0;
     public int ChargerNum { get; set; } = 0;
+    public bool LoginAnnounceSent { get; set; }
 
     public uint ActiveFarmElementEntityId { get; set; }
     public Position? FarmElementReturnPos { get; set; }

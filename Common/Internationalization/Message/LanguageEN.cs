@@ -133,6 +133,7 @@ public class CommandTextEN
     public SetlevelTextEN Setlevel { get; } = new();
     public GridTextEN Grid { get; } = new();
     public JsonTextEN Json { get; } = new();
+    public AnnoTextEN Anno { get; } = new();
     public CalyxTextEN Calyx { get; } = new();
     public ClearTextEN Clear { get; } = new();
     public DebugTextEN Debug { get; } = new();
@@ -590,6 +591,17 @@ public class JsonTextEN
     public string AvatarExcelNotFound => "Avatar config not found: {0}";
 
     public string ExportSuccess => "Export successful, file: {0}";
+}
+
+/// <summary>
+///     path: Game.Command.Anno
+/// </summary>
+public class AnnoTextEN
+{
+    public string Desc => "Send a server popup announcement. Without arguments, sends configured announce content.";
+    public string Usage => "Usage: /anno\n\nUsage: /anno <announcement content>";
+    public string Disabled => "Announcement feature is disabled. Enable ServerOption.ServerAnnounce.EnableAnnounce in config first.";
+    public string Sent => "Sent popup message to {0} online player(s).";
 }
 
 /// <summary>
