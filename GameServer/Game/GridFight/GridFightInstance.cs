@@ -404,11 +404,48 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
             if (layer > 0)
             {
                 foreach (var effectId in traitExcel.TraitEffectList)
-                    trait.TraitEffectList.Add(new BattleGridFightTraitEffectInfo { EffectId = effectId });
+                {
+                    var effectInfo = new BattleGridFightTraitEffectInfo { EffectId = effectId };
+                    AttachTraitEffectLevelInfo(effectInfo, effectId);
+                    trait.TraitEffectList.Add(effectInfo);
+                }
             }
             result.Add(trait);
         }
         return result;
+    }
+
+    private static void AttachTraitEffectLevelInfo(BattleGridFightTraitEffectInfo effectInfo, uint effectId)
+    {
+        if (!GameData.GridFightTraitEffectData.TryGetValue(effectId, out var effectExcel)) return;
+        if (effectExcel.TraitEffectType != GridFightTraitEffectTypeEnum.TraitBonus) return;
+        if (!GameData.GridFightTraitBonusData.TryGetValue(effectId, out var thresholdMap)) return;
+
+        var levelInfo = new GridFightTraitEffectLevelInfo();
+        foreach (var (threshold, bonusExcel) in thresholdMap)
+        {
+            var drop = new GridFightDropInfo();
+            foreach (var combinationId in bonusExcel.BonusParamList)
+            {
+                if (!GameData.GridFightCombinationBonusData.TryGetValue(combinationId, out var combination)) continue;
+                foreach (var poolId in combination.CombinationBonusList)
+                {
+                    if (!GameData.GridFightBasicBonusPoolV2Data.TryGetValue(poolId, out var pool)) continue;
+                    var itemId = pool.BonusTypeParamList.Count > 0 ? pool.BonusTypeParamList[0] : pool.BonusTypeParam;
+                    if (itemId == 0) continue;
+                    drop.PIBLJLBCKJL.Add(new LHPPIAKKFME
+                    {
+                        BGKDAMDFFKH = GridFightDropType.HiolcnpoponMkppcdpchie,
+                        JJFFLMCCCMM = itemId,
+                        Num = 1
+                    });
+                }
+            }
+            if (drop.PIBLJLBCKJL.Count > 0)
+                levelInfo.TraitEffectLevelReward[threshold] = drop;
+        }
+        if (levelInfo.TraitEffectLevelReward.Count > 0)
+            effectInfo.TraitEffectLevelInfo = levelInfo;
     }
 
     public void RotateShop()
