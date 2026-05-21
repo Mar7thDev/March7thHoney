@@ -598,10 +598,20 @@ public class JsonTextCHT
 /// </summary>
 public class AnnoTextCHT
 {
-    public string Desc => "發送伺服器彈窗公告。無參數時發送配置中的公告內容。";
-    public string Usage => "用法：/anno\n\n用法：/anno <公告內容>";
+    public string Desc => "發送伺服器彈窗公告。";
+    public string Usage =>
+        "用法：/anno [有效時長] [顯示間隔] <公告內容>\n\n" +
+        "示例：\n" +
+        "  /anno 10m 伺服器即將重啟\n" +
+        "  /anno 2h 5m 雙倍掉落已開啟\n" +
+        "  /anno @10001 10m 單人通知\n\n" +
+        "選項：\n" +
+        "  --duration <時間>    公告有效時長，例如：30s、10m、2h、3d\n" +
+        "  --frequency <時間>   橫幅再次顯示間隔，例如：30s、10m、1h";
     public string Disabled => "公告功能未啟用，請先在配置中開啟 ServerOption.ServerAnnounce.EnableAnnounce。";
-    public string Sent => "已向 {0} 名在線玩家發送彈窗消息。";
+    public string InvalidDuration => "公告有效時長無效，請使用類似 30s、10m、2h 或 3d 的格式。";
+    public string InvalidFrequency => "公告顯示間隔無效，請使用類似 30s、10m、2h 或 3d 的格式。";
+    public string Sent => "已向 {0} 名在線玩家發送彈窗消息。有效時長：{1}。顯示間隔：{2}。";
 }
 
 /// <summary>

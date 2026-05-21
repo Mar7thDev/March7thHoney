@@ -1,4 +1,5 @@
 using March7thHoney.Command;
+using March7thHoney.Util;
 
 namespace March7thHoney.Configuration;
 
@@ -223,8 +224,29 @@ public class LogOption
 
 public class ServerAnnounce
 {
+    private const long DefaultDurationSeconds = 86400L * 30;
+    private const uint DefaultBannerFrequencySeconds = 3600;
+
     public bool EnableAnnounce { get; set; } = false;
     public string AnnounceContent { get; set; } = "Welcome to March7thHoney!";
+    public string Duration { get; set; } = "30d";
+    public string BannerFrequency { get; set; } = "1h";
+
+    public long GetDurationSeconds()
+    {
+        if (!DurationParser.TryParseSeconds(Duration, out var seconds))
+            return DefaultDurationSeconds;
+
+        return Math.Clamp(seconds, 1, DurationParser.MaxDurationSeconds);
+    }
+
+    public uint GetBannerFrequencySeconds()
+    {
+        if (!DurationParser.TryParseSeconds(BannerFrequency, out var seconds))
+            return DefaultBannerFrequencySeconds;
+
+        return (uint)Math.Clamp(seconds, 1, uint.MaxValue);
+    }
 }
 
 public class ServerProfile

@@ -6,22 +6,29 @@ namespace March7thHoney.GameServer.Server.Packet.Send.Player;
 
 public class PacketServerAnnounceNotify : BasePacket
 {
-    public PacketServerAnnounceNotify(string? customContent = null) : base(CmdIds.ServerAnnounceNotify)
+    public PacketServerAnnounceNotify(
+        string? customContent = null,
+        long? durationSeconds = null,
+        uint? bannerFrequencySeconds = null) : base(CmdIds.ServerAnnounceNotify)
     {
+        var announceCfg = ConfigManager.Config.ServerOption.ServerAnnounce;
         var content = string.IsNullOrWhiteSpace(customContent)
-            ? ConfigManager.Config.ServerOption.ServerAnnounce.AnnounceContent
+            ? announceCfg.AnnounceContent
             : customContent;
         if (string.IsNullOrWhiteSpace(content)) return;
 
         var proto = new ServerAnnounceNotify();
         var now = Extensions.GetUnixSec();
+        var duration = Math.Clamp(durationSeconds ?? announceCfg.GetDurationSeconds(), 1, DurationParser.MaxDurationSeconds);
+        var frequency = bannerFrequencySeconds ?? announceCfg.GetBannerFrequencySeconds();
+        if (frequency == 0) frequency = 1;
 
         proto.AnnounceDataList.Add(new AnnounceData
         {
             BeginTime = now,
-            EndTime = now + 86400 * 30,
+            EndTime = now + duration,
             ConfigId = 1,
-            BannerFrequency = 3600,
+            BannerFrequency = frequency,
             HasRecommand = true,
             EmergencyText = content,
             BannerText = content

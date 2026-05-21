@@ -97,13 +97,7 @@ public class HandlerEnterSceneCsReq : Handler
         await connection.SendPacket(new PacketEnterSceneScRsp(overMapTp, req.IsCloseMap, storyLineId,
             (uint)player.Data.FloorId, isSocialPlayEnter ? roomOwnerUid : 0));
 
-        var announceCfg = ConfigManager.Config.ServerOption.ServerAnnounce;
-        if (!player.LoginAnnounceSent && announceCfg.EnableAnnounce &&
-            !string.IsNullOrWhiteSpace(announceCfg.AnnounceContent))
-        {
-            await connection.SendPacket(new PacketServerAnnounceNotify());
-            player.LoginAnnounceSent = true;
-        }
+        await player.TrySendWelcomeAnnounce();
 
         if (!isSocialPlayEnter)
             return;

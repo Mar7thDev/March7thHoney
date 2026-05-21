@@ -7,14 +7,17 @@ namespace March7thHoney.Command.Command;
 
 public class CommandArg
 {
-    public CommandArg(string raw, ICommandSender sender, Connection? con = null) : this(Tokenize(raw), raw, sender, con)
+    public CommandArg(string raw, ICommandSender sender, Connection? con = null, bool isTargetExplicit = false) :
+        this(Tokenize(raw), raw, sender, con, isTargetExplicit)
     {
     }
 
-    public CommandArg(IEnumerable<string> args, string raw, ICommandSender sender, Connection? con = null)
+    public CommandArg(IEnumerable<string> args, string raw, ICommandSender sender, Connection? con = null,
+        bool isTargetExplicit = false)
     {
         Raw = raw;
         Sender = sender;
+        IsTargetExplicit = isTargetExplicit;
         var tokens = args.ToList();
         for (var i = 0; i < tokens.Count; i++)
         {
@@ -59,7 +62,10 @@ public class CommandArg
         if (target == null || !int.TryParse(target, out _)) return;
         if (March7thHoneyListener.Connections.Values.ToList()
                 .Find(item => (item as Connection)?.Player?.Uid.ToString() == target) is Connection connection)
+        {
             Target = connection;
+            IsTargetExplicit = true;
+        }
     }
 
     public string Raw { get; }
@@ -67,6 +73,7 @@ public class CommandArg
     public List<string> BasicArgs { get; } = [];
     public Dictionary<string, string> CharacterArgs { get; } = [];
     public Connection? Target { get; set; }
+    public bool IsTargetExplicit { get; }
     public ICommandSender Sender { get; }
 
     public static List<string> Tokenize(string raw)

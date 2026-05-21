@@ -132,6 +132,7 @@ public partial class PlayerInstance(PlayerData data)
     {
         // new player
         IsNewPlayer = true;
+        Data.WelcomeAnnouncePending = true;
         Data.NextStaminaRecover = Extensions.GetUnixSec() + GameConstants.STAMINA_RESERVE_RECOVERY_TIME;
         Data.Level = ConfigManager.Config.ServerOption.StartTrailblazerLevel;
         Data.Name = ConfigManager.Config.ServerOption.DefaultNickname;
@@ -336,6 +337,24 @@ public partial class PlayerInstance(PlayerData data)
         if (SceneInstance == null) await EnterScene(2000101, 0, false);
 
         InvokeOnPlayerLogin(this);
+    }
+
+    public async ValueTask TrySendWelcomeAnnounce()
+    {
+        if (LoginAnnounceSent || !Data.WelcomeAnnouncePending) return;
+
+        var announceCfg = ConfigManager.Config.ServerOption.ServerAnnounce;
+        if (announceCfg.EnableAnnounce && !string.IsNullOrWhiteSpace(announceCfg.AnnounceContent))
+        {
+            await SendPacket(new PacketServerAnnounceNotify(
+                announceCfg.AnnounceContent,
+                announceCfg.GetDurationSeconds(),
+                announceCfg.GetBannerFrequencySeconds()));
+            LoginAnnounceSent = true;
+        }
+
+        Data.WelcomeAnnouncePending = false;
+        DatabaseHelper.ToSaveUidList.SafeAdd(Uid);
     }
 
     public void OnLogoutAsync()

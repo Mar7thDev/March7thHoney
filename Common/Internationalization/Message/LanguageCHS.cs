@@ -598,10 +598,20 @@ public class JsonTextCHS
 /// </summary>
 public class AnnoTextCHS
 {
-    public string Desc => "发送服务器弹窗公告。无参数时发送配置中的公告内容。";
-    public string Usage => "用法：/anno\n\n用法：/anno <公告内容>";
+    public string Desc => "发送服务器弹窗公告。";
+    public string Usage =>
+        "用法：/anno [有效时长] [显示间隔] <公告内容>\n\n" +
+        "示例：\n" +
+        "  /anno 10m 服务器即将重启\n" +
+        "  /anno 2h 5m 双倍掉落已开启\n" +
+        "  /anno @10001 10m 单人通知\n\n" +
+        "选项：\n" +
+        "  --duration <时间>    公告有效时长，例如：30s、10m、2h、3d\n" +
+        "  --frequency <时间>   横幅再次显示间隔，例如：30s、10m、1h";
     public string Disabled => "公告功能未启用，请先在配置中开启 ServerOption.ServerAnnounce.EnableAnnounce。";
-    public string Sent => "已向 {0} 名在线玩家发送弹窗消息。";
+    public string InvalidDuration => "公告有效时长无效，请使用类似 30s、10m、2h 或 3d 的格式。";
+    public string InvalidFrequency => "公告显示间隔无效，请使用类似 30s、10m、2h 或 3d 的格式。";
+    public string Sent => "已向 {0} 名在线玩家发送弹窗消息。有效时长：{1}。显示间隔：{2}。";
 }
 
 /// <summary>
