@@ -81,19 +81,74 @@ public class HandlerGridFightUseOrbCsReq : Handler
         await connection.SendPacket(new PacketCEFIMADBIBH());
         if (inst == null) return;
 
-        var (removedOrbUniqueIds, levelChanged, goldChanged) = inst.TryUseOrbs(req.HDFJAINBKJG, req.IsGetAll);
+        var results = inst.TryUseOrbsDetailed(req.HDFJAINBKJG, req.IsGetAll);
 
         var sync = new GridFightSyncUpdateResultScNotify();
-        var sec = new GridFightSyncResultData();
-        foreach (var uniqueId in removedOrbUniqueIds)
-            sec.UpdateDynamicList.Add(new GridFightSyncData { RemoveOrbUniqueId = uniqueId });
+        var levelChanged = false;
 
-        if (goldChanged)
-            sec.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = inst.Gold });
+        // 抓包：每颗晶矿单独一段 SyncResultData，gridUpdateSrc=OOPNBCIJHMP，
+        // syncEffectParamList=[uniqueId, itemId]，里面是 removeOrbUniqueId + 对应奖励。
+        // 客户端依赖这个分段格式播放收集动画并隐藏晶矿。
+        foreach (var r in results)
+        {
+            if (r.LevelChanged) levelChanged = true;
+
+            var sec = new GridFightSyncResultData
+            {
+                GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpOopnbcijhmp
+            };
+            sec.SyncEffectParamList.Add(r.UniqueId);
+            sec.SyncEffectParamList.Add(r.ItemId);
+            sec.UpdateDynamicList.Add(new GridFightSyncData { RemoveOrbUniqueId = r.UniqueId });
+
+            if (r.AddEquipmentId.HasValue && r.AddEquipmentUniqueId.HasValue)
+            {
+                var item = new GridFightGameItemSyncInfo();
+                item.GridFightEquipmentList.Add(new GridFightEquipmentInfo
+                {
+                    GridFightEquipmentId = r.AddEquipmentId.Value,
+                    Source = 1,
+                    UniqueId = r.AddEquipmentUniqueId.Value
+                });
+                sec.UpdateDynamicList.Add(new GridFightSyncData { AddGameItemInfo = item });
+            }
+
+            if (r.AddConsumableItemId.HasValue)
+            {
+                var item = new GridFightGameItemSyncInfo();
+                item.UpdateGridFightConsumableList.Add(new GridFightConsumableUpdateInfo
+                {
+                    ItemId = r.AddConsumableItemId.Value,
+                    ItemStackCount = 1,
+                    Num = 1
+                });
+                sec.UpdateDynamicList.Add(new GridFightSyncData { AddGameItemInfo = item });
+            }
+
+            if (r.GoldChanged)
+                sec.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = r.GoldAfter });
+
+            if (r.AddRoleId.HasValue && r.AddRoleUniqueId.HasValue && r.AddRolePos.HasValue)
+            {
+                var roleInfo = new GridGameRoleInfo
+                {
+                    Id = r.AddRoleId.Value,
+                    Pos = r.AddRolePos.Value,
+                    RoleStar = 1,
+                    UniqueId = r.AddRoleUniqueId.Value
+                };
+                if (!string.IsNullOrEmpty(r.AddRoleComponent))
+                    roleInfo.GridFightValueInitComponent[r.AddRoleComponent] = 0;
+                sec.UpdateDynamicList.Add(new GridFightSyncData { AddRoleInfo = roleInfo });
+            }
+
+            sync.SyncResultDataList.Add(sec);
+        }
 
         if (levelChanged)
         {
-            sec.UpdateDynamicList.Add(new GridFightSyncData
+            var lvlSec = new GridFightSyncResultData();
+            lvlSec.UpdateDynamicList.Add(new GridFightSyncData
             {
                 PlayerLevel = new GridFightPlayerLevelSyncInfo
                 {
@@ -102,21 +157,19 @@ public class HandlerGridFightUseOrbCsReq : Handler
                     MaxLevel = inst.PlayerMaxLevel
                 }
             });
-            sec.UpdateDynamicList.Add(new GridFightSyncData
-            {
-                GridFightBuyExpCost = inst.GetBuyExpCost()
-            });
-            sec.UpdateDynamicList.Add(new GridFightSyncData
-            {
-                MaxBattleRoleNum = inst.GetCurrentMaxBattleRoleNum()
-            });
+            lvlSec.UpdateDynamicList.Add(new GridFightSyncData { GridFightBuyExpCost = inst.GetBuyExpCost() });
+            lvlSec.UpdateDynamicList.Add(new GridFightSyncData { MaxBattleRoleNum = inst.GetCurrentMaxBattleRoleNum() });
+            sync.SyncResultDataList.Add(lvlSec);
         }
 
-        // 防止客户端面板卡住：即使本次没有实际消耗到 orb，也回一帧同步结果。
-        if (sec.UpdateDynamicList.Count == 0)
-            sec.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = inst.Gold });
+        // 没有任何 orb 被消耗时回一帧空结果，避免客户端面板卡住
+        if (sync.SyncResultDataList.Count == 0)
+        {
+            var noop = new GridFightSyncResultData();
+            noop.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = inst.Gold });
+            sync.SyncResultDataList.Add(noop);
+        }
 
-        sync.SyncResultDataList.Add(sec);
         await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(sync));
     }
 }
