@@ -154,6 +154,7 @@ public class CommandManager
             var cmd = split[0].TrimStart('/');
 
             var tempTarget = Target;
+            var isTargetExplicit = sender is ConsoleCommandSender && tempTarget != null;
             if (sender is ConsoleCommandSender)
             {
                 if (IsTargetToken(cmd))
@@ -171,6 +172,7 @@ public class CommandManager
                         }
 
                         tempTarget = con;
+                        isTargetExplicit = true;
                         split.RemoveAt(0);
                         cmd = split[0].TrimStart('/');
                     }
@@ -216,6 +218,7 @@ public class CommandManager
                             .Find(item => (item as Connection)?.Player?.Uid.ToString() == target) is Connection con)
                     {
                         tempTarget = con;
+                        isTargetExplicit = true;
                         split.RemoveAt(i);
                         continue;
                     }
@@ -224,7 +227,7 @@ public class CommandManager
                     return;
                 }
 
-                var arg = new CommandArg(split, split.JoinFormat(" ", ""), sender, tempTarget);
+                var arg = new CommandArg(split, split.JoinFormat(" ", ""), sender, tempTarget, isTargetExplicit);
 
                 // judge permission
                 if (arg.Target?.Player?.Uid != sender.GetSender() && !sender.HasPermission(CommandPermissions.TargetOthers))

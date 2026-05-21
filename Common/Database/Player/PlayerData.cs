@@ -34,6 +34,7 @@ public class PlayerData : BaseDatabaseDataHelper
     public int TalentPoints { get; set; } = 0; // Rogue talent points
     public long MonthCardExpireTime { get; set; } = 0;
     public int LastMonthCardRewardDate { get; set; } = 0;
+    public bool WelcomeAnnouncePending { get; set; } = false;
 
     public int Pet { get; set; } = 0;
     [SugarColumn(IsNullable = true)] public int CurMusicLevel { get; set; }
