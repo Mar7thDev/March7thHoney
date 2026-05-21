@@ -481,7 +481,7 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
             GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpJalhdinecfe
         };
         stt.SyncEffectParamList.Add(1u);
-        stt.SyncEffectParamList.Add(1u);
+        stt.SyncEffectParamList.Add(inst.SectionId);
         if (inst.LastBattleDamageStt != null)
             stt.UpdateDynamicList.Add(new GridFightSyncData { GridFightDamageSttInfo = inst.LastBattleDamageStt.Clone() });
         stt.UpdateDynamicList.Add(new GridFightSyncData
@@ -508,7 +508,7 @@ public class GridFightManager(PlayerInstance player) : BasePlayerManager(player)
             GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpJalhdinecfe
         };
         rewards.SyncEffectParamList.Add(1u);
-        rewards.SyncEffectParamList.Add(1u);
+        rewards.SyncEffectParamList.Add(inst.SectionId);
         rewards.UpdateDynamicList.Add(new GridFightSyncData
         {
             PlayerLevel = new GridFightPlayerLevelSyncInfo

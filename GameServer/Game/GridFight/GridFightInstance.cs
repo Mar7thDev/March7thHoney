@@ -69,6 +69,7 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     // 区段固定数据（增益、关卡）
     public List<uint> SectionAffixIds { get; private set; } = new();
     public List<uint> SessionCampIds { get; private set; } = new();
+    public List<uint> SessionBossMonsterIds { get; private set; } = new();
     public List<uint> ActivePortalBuffIds { get; } = new() { 106 };
     public List<uint> AvailablePortalBuffRerolls { get; } = new() { 105, 1014, 132 };
     public List<uint> CurrentPortalBuffOffer { get; private set; } = new();
@@ -151,19 +152,53 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     public void EnsureSessionPreview()
     {
         if (SessionCampIds.Count == 0) SessionCampIds = RollSessionCamps();
+        if (SessionBossMonsterIds.Count == 0) SessionBossMonsterIds = ResolveSessionBossMonsterIds();
         if (SectionAffixIds.Count == 0) SectionAffixIds = RollSessionAffixes();
     }
 
+    // 抓包：HGAHMIPIBLO 给出 3 个位面对应的 3 个 camp，每个 camp 必须有 BossBattleArea，
+    // 否则该位面的 boss 节点无法生成对应 boss
     private List<uint> RollSessionCamps(int count = 3)
     {
         var pool = GameData.GridFightCampData.Values
             .Where(c => c.SeasonID == Season || c.SeasonID == 0)
+            .Where(c => c.BossBattleArea > 0)
+            .Where(c => c.Monsters.Any(m => m.MonsterTier >= 5))
             .Select(c => c.ID)
             .Distinct()
             .ToList();
         if (pool.Count == 0)
-            pool = new List<uint> { 1, 2, 4, 5, 6, 8, 10, 11, 12, 13, 15, 16, 17, 23, 24, 25, 26, 27, 28 };
+            pool = new List<uint> { 5, 8, 10, 16, 23, 25, 26, 27, 28 };
         return PickDistinct(pool, count);
+    }
+
+    // 每个位面预先确定 boss monsterId（=该 camp 最低 tier≥5 的怪），保证 1-9 / 2-7 / 3-7 与开局预告一致
+    private List<uint> ResolveSessionBossMonsterIds()
+    {
+        var bosses = new List<uint>(SessionCampIds.Count);
+        foreach (var campId in SessionCampIds)
+        {
+            if (!GameData.GridFightCampData.TryGetValue(campId, out var camp))
+            {
+                bosses.Add(0);
+                continue;
+            }
+            var boss = camp.Monsters
+                .Where(m => m.MonsterTier >= 5)
+                .OrderBy(m => m.MonsterTier)
+                .ThenBy(m => m.MonsterID)
+                .FirstOrDefault();
+            bosses.Add(boss?.MonsterID ?? 0u);
+        }
+        return bosses;
+    }
+
+    public uint GetCurrentBossMonsterId()
+    {
+        EnsureSessionPreview();
+        var idx = (int)CurrentChapterId - 1;
+        if (idx < 0 || idx >= SessionBossMonsterIds.Count) return 0;
+        return SessionBossMonsterIds[idx];
     }
 
     private List<uint> RollSessionAffixes()
@@ -404,11 +439,48 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
             if (layer > 0)
             {
                 foreach (var effectId in traitExcel.TraitEffectList)
-                    trait.TraitEffectList.Add(new BattleGridFightTraitEffectInfo { EffectId = effectId });
+                {
+                    var effectInfo = new BattleGridFightTraitEffectInfo { EffectId = effectId };
+                    AttachTraitEffectLevelInfo(effectInfo, effectId);
+                    trait.TraitEffectList.Add(effectInfo);
+                }
             }
             result.Add(trait);
         }
         return result;
+    }
+
+    private static void AttachTraitEffectLevelInfo(BattleGridFightTraitEffectInfo effectInfo, uint effectId)
+    {
+        if (!GameData.GridFightTraitEffectData.TryGetValue(effectId, out var effectExcel)) return;
+        if (effectExcel.TraitEffectType != GridFightTraitEffectTypeEnum.TraitBonus) return;
+        if (!GameData.GridFightTraitBonusData.TryGetValue(effectId, out var thresholdMap)) return;
+
+        var levelInfo = new GridFightTraitEffectLevelInfo();
+        foreach (var (threshold, bonusExcel) in thresholdMap)
+        {
+            var drop = new GridFightDropInfo();
+            foreach (var combinationId in bonusExcel.BonusParamList)
+            {
+                if (!GameData.GridFightCombinationBonusData.TryGetValue(combinationId, out var combination)) continue;
+                foreach (var poolId in combination.CombinationBonusList)
+                {
+                    if (!GameData.GridFightBasicBonusPoolV2Data.TryGetValue(poolId, out var pool)) continue;
+                    var itemId = pool.BonusTypeParamList.Count > 0 ? pool.BonusTypeParamList[0] : pool.BonusTypeParam;
+                    if (itemId == 0) continue;
+                    drop.PIBLJLBCKJL.Add(new LHPPIAKKFME
+                    {
+                        BGKDAMDFFKH = GridFightDropType.HiolcnpoponMkppcdpchie,
+                        JJFFLMCCCMM = itemId,
+                        Num = 1
+                    });
+                }
+            }
+            if (drop.PIBLJLBCKJL.Count > 0)
+                levelInfo.TraitEffectLevelReward[threshold] = drop;
+        }
+        if (levelInfo.TraitEffectLevelReward.Count > 0)
+            effectInfo.TraitEffectLevelInfo = levelInfo;
     }
 
     public void RotateShop()
@@ -645,50 +717,171 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
 
     public void GainPlayerExp(uint value) => AddPlayerExp(value);
 
-    public (List<uint> removedOrbUniqueIds, bool levelChanged, bool goldChanged) TryUseOrbs(IEnumerable<uint> uniqueIds, bool isGetAll)
+    public sealed class OrbUseResult
+    {
+        public uint UniqueId;
+        public uint ItemId;
+        public uint GoldAfter; // 仅在 GoldChanged 时使用
+        public bool GoldChanged;
+        public bool LevelChanged;
+        public uint? AddRoleId;
+        public uint? AddRoleUniqueId;
+        public uint? AddRolePos;
+        public string? AddRoleComponent;
+        public uint? AddEquipmentId;
+        public uint? AddEquipmentUniqueId;
+        public uint? AddConsumableItemId;
+    }
+
+    private static readonly uint[] OrbEquipmentPool =
+    {
+        350201, 350202, 350203, 350204, 350205, 350206, 350207, 350208
+    };
+
+    private static readonly uint[] OrbConsumablePool = { 350101, 350103 };
+
+    public List<OrbUseResult> TryUseOrbsDetailed(IEnumerable<uint> uniqueIds, bool isGetAll)
     {
         var targets = isGetAll ? OrbItemByUniqueId.Keys.ToList() : uniqueIds.Distinct().ToList();
-        var removed = new List<uint>();
-        var oldLevel = PlayerLevel;
-        var oldExp = PlayerExp;
-        var oldGold = Gold;
+        var results = new List<OrbUseResult>();
+        var rng = Random.Shared;
 
         foreach (var uniqueId in targets)
         {
             if (!OrbItemByUniqueId.TryGetValue(uniqueId, out var orbItemId)) continue;
             OrbItemByUniqueId.Remove(uniqueId);
-            removed.Add(uniqueId);
 
-            if (!GameData.GridFightOrbData.TryGetValue(orbItemId, out var orbExcel)) continue;
-            switch (orbExcel.Type)
+            var r = new OrbUseResult { UniqueId = uniqueId, ItemId = orbItemId };
+
+            // 101XXX/211XXX/311XXX 形式的"角色解锁晶矿"：尾部 3 位 = 角色 ID 的尾 3 位
+            if (TryResolveRoleGrantOrb(orbItemId, out var roleId))
             {
-                case GridFightOrbTypeEnum.White:
-                    Gold += 2;
+                ApplyRoleGrant(r, roleId);
+                results.Add(r);
+                continue;
+            }
+
+            // 抓包归纳的固定效果：
+            //   199 → +2 金币
+            //   102/103 → +1 金币 + 1 个消耗品（350101/350103）
+            //   203 → 1 件简易装备（350201-208）
+            //   204 → +3 金币（蓝色"大"白）
+            // 其它走 Type 兜底
+            switch (orbItemId)
+            {
+                case 199u:
+                    ApplyGold(r, 2);
                     break;
-                case GridFightOrbTypeEnum.Blue:
-                    AddPlayerExp(2);
+                case 102u:
+                case 103u:
+                    ApplyGold(r, 1);
+                    ApplyConsumable(r, orbItemId == 102u ? 350101u : 350103u);
                     break;
-                case GridFightOrbTypeEnum.Glod:
-                    Gold += 5;
+                case 203u:
+                    ApplyEquipment(r, OrbEquipmentPool[rng.Next(OrbEquipmentPool.Length)]);
                     break;
-                case GridFightOrbTypeEnum.Colorful:
-                    AddPlayerExp(4);
-                    break;
-                case GridFightOrbTypeEnum.BigColorful:
-                    AddPlayerExp(8);
-                    break;
-                case GridFightOrbTypeEnum.GoldenEgg:
-                    Gold += 8;
+                case 204u:
+                    ApplyGold(r, 3);
                     break;
                 default:
-                    Gold += 1;
+                    ApplyTypeFallback(r, orbItemId, rng);
                     break;
             }
+
+            results.Add(r);
         }
 
-        var levelChanged = PlayerLevel != oldLevel || PlayerExp != oldExp;
-        var goldChanged = Gold != oldGold;
-        return (removed, levelChanged, goldChanged);
+        return results;
+    }
+
+    private static bool TryResolveRoleGrantOrb(uint orbItemId, out uint roleId)
+    {
+        roleId = 0;
+        // 101304 / 211314 / 311321 之类：>= 100000 且尾 3 位看起来像 1XXX 角色尾段
+        if (orbItemId < 100000u) return false;
+        var tail = orbItemId % 1000u;
+        if (tail < 1u || tail > 999u) return false;
+        // 角色 ID 形如 1XXX，尾段 = XXX -> 角色 ID = 1000 + tail
+        var candidate = 1000u + tail;
+        if (!GameData.GridFightRoleBasicInfoData.ContainsKey(candidate)) return false;
+        roleId = candidate;
+        return true;
+    }
+
+    private void ApplyGold(OrbUseResult r, uint amount)
+    {
+        Gold += amount;
+        r.GoldAfter = Gold;
+        r.GoldChanged = true;
+    }
+
+    private void ApplyExp(OrbUseResult r, uint amount)
+    {
+        var oldLevel = PlayerLevel;
+        var oldExp = PlayerExp;
+        AddPlayerExp(amount);
+        if (PlayerLevel != oldLevel || PlayerExp != oldExp) r.LevelChanged = true;
+    }
+
+    private void ApplyConsumable(OrbUseResult r, uint itemId)
+    {
+        Consumables.Add(new GridFightConsumableInfo { ItemId = itemId, Num = 1 });
+        r.AddConsumableItemId = itemId;
+    }
+
+    private void ApplyEquipment(OrbUseResult r, uint equipId)
+    {
+        var uid = AllocEquipUniqueId();
+        Equipments.Add(new GridFightEquipmentInfo
+        {
+            GridFightEquipmentId = equipId,
+            Source = 1,
+            UniqueId = uid
+        });
+        r.AddEquipmentId = equipId;
+        r.AddEquipmentUniqueId = uid;
+    }
+
+    private void ApplyRoleGrant(OrbUseResult r, uint roleId)
+    {
+        if (!GameData.GridFightRoleBasicInfoData.TryGetValue(roleId, out var roleExcel)) return;
+        uint pos = 0;
+        foreach (var candidate in new uint[] { 14, 15, 16, 17, 18, 19, 6, 7, 8, 9, 10, 11, 12, 13 })
+        {
+            if (!UniqueIdByPos.ContainsKey(candidate)) { pos = candidate; break; }
+        }
+        if (pos == 0) return;
+        var uid = AllocRoleUniqueId();
+        RoleByUniqueId[uid] = roleExcel.AvatarID;
+        RoleStarByUniqueId[uid] = 1;
+        UniqueIdByPos[pos] = uid;
+        r.AddRoleId = roleExcel.AvatarID;
+        r.AddRoleUniqueId = uid;
+        r.AddRolePos = pos;
+        if (roleExcel.RoleSavedValueList.Count > 0)
+            r.AddRoleComponent = roleExcel.RoleSavedValueList[0];
+    }
+
+    private void ApplyTypeFallback(OrbUseResult r, uint orbItemId, Random rng)
+    {
+        if (!GameData.GridFightOrbData.TryGetValue(orbItemId, out var orbExcel))
+        {
+            ApplyGold(r, 1);
+            return;
+        }
+        switch (orbExcel.Type)
+        {
+            case GridFightOrbTypeEnum.White: ApplyGold(r, 2); break;
+            case GridFightOrbTypeEnum.Blue: ApplyExp(r, 2); break;
+            case GridFightOrbTypeEnum.Glod:
+                if (rng.Next(2) == 0) ApplyEquipment(r, OrbEquipmentPool[rng.Next(OrbEquipmentPool.Length)]);
+                else ApplyGold(r, 5);
+                break;
+            case GridFightOrbTypeEnum.Colorful: ApplyExp(r, 4); break;
+            case GridFightOrbTypeEnum.BigColorful: ApplyExp(r, 8); break;
+            case GridFightOrbTypeEnum.GoldenEgg: ApplyGold(r, 8); break;
+            default: ApplyGold(r, 1); break;
+        }
     }
 
     public uint GetLevelUpExpNeed(uint level)
@@ -790,6 +983,24 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
 
     private static readonly uint[] Section1RewardOrbs = { 102u, 199u, 203u, 204u };
 
+    // 抓包：奖励节点掉 4-5 颗，从 {102/103, 199 多个, 203, 204} 这类 white/blue 池里随机
+    private static readonly uint[] RewardOrbPool = { 102u, 103u, 199u, 199u, 203u, 204u };
+
+    private List<uint> RollRewardOrbs()
+    {
+        var rng = Random.Shared;
+        var count = rng.Next(4, 6); // 4 或 5 颗
+        var picks = new List<uint>(count);
+        // 必带：白/蓝/绿各一颗，凑出基础奖励
+        picks.Add(rng.Next(2) == 0 ? 102u : 103u);
+        picks.Add(199u);
+        picks.Add(203u);
+        picks.Add(204u);
+        while (picks.Count < count)
+            picks.Add(RewardOrbPool[rng.Next(RewardOrbPool.Length)]);
+        return picks;
+    }
+
     public void RecordBattleSnapshot(PVEBattleResultCsReq req, bool win)
     {
         PreBattleLineupHp = LineupHp;
@@ -825,11 +1036,18 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
 
         if (!win) return;
 
-        // 1-1 通关固定奖励：金币 +3 基础 +1 连胜，4 颗晶矿
+        // 通关固定基础奖励
         Gold += 3;
         Gold += 1;
+        AddPlayerExp(2);
+
+        // 抓包：只有 Monster 类型（奖励节点 1-1/1-2/1-8/2-6/3-6）才掉晶矿，
+        // 战斗（CampMonster）/遭遇（EliteBranch）/Boss 都不掉。
+        var route = GridFightLevelResolver.ResolveRoute(this);
+        if (route?.NodeType != GridFightNodeTypeEnum.Monster) return;
+
         var dropInfo = new GridFightDropInfo();
-        foreach (var orbId in Section1RewardOrbs)
+        foreach (var orbId in RollRewardOrbs())
         {
             var orbUniqueId = AllocOrbUniqueId();
             LastRewardedOrbs.Add((orbId, orbUniqueId));
@@ -842,8 +1060,6 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
             });
         }
         LastSectionRewards[2u] = dropInfo;
-
-        AddPlayerExp(2);
 
         // 完美通关 +2 生命值
         var perfectClear = req.Stt?.OGPOFMOGPIP?.GMOBFEBBFIE >= 0; // 无阵亡视为完美
@@ -1133,6 +1349,8 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
         EnsureSessionPreview();
         foreach (var campId in SessionCampIds)
             lvl.HGAHMIPIBLO.Add(new OPBCCOLPDPC { PMOGHFIGKPO = campId });
+        foreach (var bossId in SessionBossMonsterIds.Where(id => id != 0))
+            lvl.BossInfo.IJOPBPABPPM.Add(new PJLBDMPEKFP { MonsterId = bossId, RoleStar = 1 });
         foreach (var affix in SectionAffixIds)
             lvl.IAKFPMOEJLF.Add(new DIBJGAKOCLO { AffixId = affix });
         foreach (var portalBuff in ActivePortalBuffIds)
