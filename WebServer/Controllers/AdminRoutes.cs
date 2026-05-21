@@ -445,7 +445,7 @@ public class AdminRoutes : ControllerBase
     }
 
     [HttpPost("/admin/api/accounts/{uid:int}/gameplay/reset")]
-    public JsonResult ResetAccountGameplay([FromRoute] int uid)
+    public async Task<JsonResult> ResetAccountGameplay([FromRoute] int uid)
     {
         if (!IsAuthorized(out var unauthorized))
             return unauthorized;
@@ -458,7 +458,8 @@ public class AdminRoutes : ControllerBase
             return Error("Database is not initialized");
 
         var activeConnection = Listener.GetActiveConnection(uid);
-        ConnectionDisconnectHelper.KickByGm(activeConnection);
+        if (activeConnection != null)
+            await ConnectionDisconnectHelper.KickByGmAsync(activeConnection);
 
         DatabaseHelper.Instance.DeleteUidGameplayData(uid);
 
@@ -469,7 +470,7 @@ public class AdminRoutes : ControllerBase
 
         MailHelper.SendWelcomeMail(uid, account.Username ?? uid.ToString());
         DatabaseHelper.ToSaveUidList.SafeAdd(uid);
-        DatabaseHelper.Instance.SaveDatabase();
+        DatabaseHelper.Instance.SaveUidData(uid);
 
         return Success(new
         {
