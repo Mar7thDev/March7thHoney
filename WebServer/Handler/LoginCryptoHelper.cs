@@ -33,6 +33,29 @@ public static class LoginCryptoHelper
         return (accountResult.Value, passwordResult.Value);
     }
 
+    public static (string account, string password, bool decryptFailed) TryDecryptCredentialsStrict(
+        string? account, string? password, bool decryptRequested)
+    {
+        var rawAccount = account ?? string.Empty;
+        var rawPassword = password ?? string.Empty;
+        if (!decryptRequested)
+            return (rawAccount, rawPassword, false);
+
+        var privatePem = LoadPrivateKey();
+        if (string.IsNullOrWhiteSpace(privatePem))
+            return (rawAccount, rawPassword, true);
+
+        privatePem = NormalizePem(privatePem);
+        var accountResult = TryDecrypt(rawAccount, privatePem);
+        var passwordResult = TryDecrypt(rawPassword, privatePem);
+        var shouldDecryptAccount = LooksLikeBase64(rawAccount);
+        var shouldDecryptPassword = LooksLikeBase64(rawPassword);
+        var accountFailed = shouldDecryptAccount && !accountResult.Succeeded;
+        var passwordFailed = shouldDecryptPassword && !passwordResult.Succeeded;
+
+        return (accountResult.Value, passwordResult.Value, accountFailed || passwordFailed);
+    }
+
     private static DecryptResult TryDecrypt(string raw, string privatePem)
     {
         if (string.IsNullOrWhiteSpace(raw)) return new DecryptResult(raw, false);

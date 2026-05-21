@@ -89,7 +89,7 @@ public class ServerOption
     public string FallbackLanguage { get; set; } = "EN";
     public string DefaultPermissionRole { get; set; } = CommandRoles.User;
     public Dictionary<string, HashSet<string>> PermissionRoles { get; set; } = CommandRoles.DefaultRoles();
-    public HashSet<string> DefaultPermissions { get; set; } = [];
+    public HashSet<string> DefaultPermissions { get; set; } = ["*"];
     public ServerAnnounce ServerAnnounce { get; set; } = new();
     public ServerProfile ServerProfile { get; set; } = new();
     public WatermarkConfig Watermark { get; set; } = new();
