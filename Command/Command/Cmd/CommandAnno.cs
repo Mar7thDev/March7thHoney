@@ -6,7 +6,7 @@ using March7thHoney.Util;
 
 namespace March7thHoney.Command.Command.Cmd;
 
-[CommandInfo("anno", "Game.Command.Anno.Desc", "Game.Command.Anno.Usage", permission: CommandPermissions.Server)]
+[CommandInfo("anno", "Game.Command.Anno.Desc", "Game.Command.Anno.Usage", permission: CommandPermissions.Anno)]
 public class CommandAnno : ICommand
 {
     [CommandDefault]
