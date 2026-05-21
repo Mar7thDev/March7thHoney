@@ -3,7 +3,7 @@ using March7thHoney.Proto;
 
 namespace March7thHoney.GameServer.Server.Packet.Send.GridFight;
 
-public class PacketJNNNJBAOCOB : BasePacket { public PacketJNNNJBAOCOB() : base(CmdIds.JNNNJBAOCOB) => SetData(new JNNNJBAOCOB()); }
+public class PacketGridFightEquipDressScRsp : BasePacket { public PacketGridFightEquipDressScRsp() : base(CmdIds.JNNNJBAOCOB) => SetData(new JNNNJBAOCOB()); }
 public class PacketEPJJBNPIFLC : BasePacket { public PacketEPJJBNPIFLC() : base(CmdIds.EPJJBNPIFLC) => SetData(new EPJJBNPIFLC()); }
 public class PacketOLOGIALOJDP : BasePacket { public PacketOLOGIALOJDP() : base(CmdIds.OLOGIALOJDP) => SetData(new OLOGIALOJDP()); }
 public class PacketEEBMIAFNJMC : BasePacket { public PacketEEBMIAFNJMC() : base(CmdIds.EEBMIAFNJMC) => SetData(new EEBMIAFNJMC()); }

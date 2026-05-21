@@ -11,11 +11,22 @@ public class HandlerUpdateTrackMainMissionIdCsReq : Handler
     {
         var req = UpdateTrackMainMissionCsReq.Parser.ParseFrom(data);
 
-        var prev = connection.Player!.MissionManager!.Data.TrackingMainMissionId;
-        connection.Player!.MissionManager!.Data.TrackingMainMissionId = (int)req.TrackMissionId;
+        var missionData = connection.Player!.MissionManager!.Data;
+        var prev = missionData.TrackingMainMissionId;
+        var target = ResolveTrackMissionId(req, missionData, prev);
+        missionData.TrackingMainMissionId = target;
 
         await connection.SendPacket(new PacketUpdateTrackMainMissionIdScRsp(prev,
-            connection.Player!.MissionManager!.Data.TrackingMainMissionId));
+            missionData.TrackingMainMissionId));
+    }
+
+    private static int ResolveTrackMissionId(UpdateTrackMainMissionCsReq req, March7thHoney.Database.Quests.MissionData data,
+        int prev)
+    {
+        if (req.TrackMissionId > 1) return (int)req.TrackMissionId;
+        if (req.GNPDGLGBIMM > 1) return (int)req.GNPDGLGBIMM;
+        if (prev > 0 && data.RunningMainMissionIds.Contains(prev)) return prev;
+        return data.RunningMainMissionIds.Count > 0 ? data.RunningMainMissionIds[0] : 0;
     }
 }
 
