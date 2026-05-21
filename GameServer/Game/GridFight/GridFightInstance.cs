@@ -69,6 +69,7 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     // 区段固定数据（增益、关卡）
     public List<uint> SectionAffixIds { get; private set; } = new();
     public List<uint> SessionCampIds { get; private set; } = new();
+    public List<uint> SessionBossMonsterIds { get; private set; } = new();
     public List<uint> ActivePortalBuffIds { get; } = new() { 106 };
     public List<uint> AvailablePortalBuffRerolls { get; } = new() { 105, 1014, 132 };
     public List<uint> CurrentPortalBuffOffer { get; private set; } = new();
@@ -151,19 +152,53 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     public void EnsureSessionPreview()
     {
         if (SessionCampIds.Count == 0) SessionCampIds = RollSessionCamps();
+        if (SessionBossMonsterIds.Count == 0) SessionBossMonsterIds = ResolveSessionBossMonsterIds();
         if (SectionAffixIds.Count == 0) SectionAffixIds = RollSessionAffixes();
     }
 
+    // 抓包：HGAHMIPIBLO 给出 3 个位面对应的 3 个 camp，每个 camp 必须有 BossBattleArea，
+    // 否则该位面的 boss 节点无法生成对应 boss
     private List<uint> RollSessionCamps(int count = 3)
     {
         var pool = GameData.GridFightCampData.Values
             .Where(c => c.SeasonID == Season || c.SeasonID == 0)
+            .Where(c => c.BossBattleArea > 0)
+            .Where(c => c.Monsters.Any(m => m.MonsterTier >= 5))
             .Select(c => c.ID)
             .Distinct()
             .ToList();
         if (pool.Count == 0)
-            pool = new List<uint> { 1, 2, 4, 5, 6, 8, 10, 11, 12, 13, 15, 16, 17, 23, 24, 25, 26, 27, 28 };
+            pool = new List<uint> { 5, 8, 10, 16, 23, 25, 26, 27, 28 };
         return PickDistinct(pool, count);
+    }
+
+    // 每个位面预先确定 boss monsterId（=该 camp 最低 tier≥5 的怪），保证 1-9 / 2-7 / 3-7 与开局预告一致
+    private List<uint> ResolveSessionBossMonsterIds()
+    {
+        var bosses = new List<uint>(SessionCampIds.Count);
+        foreach (var campId in SessionCampIds)
+        {
+            if (!GameData.GridFightCampData.TryGetValue(campId, out var camp))
+            {
+                bosses.Add(0);
+                continue;
+            }
+            var boss = camp.Monsters
+                .Where(m => m.MonsterTier >= 5)
+                .OrderBy(m => m.MonsterTier)
+                .ThenBy(m => m.MonsterID)
+                .FirstOrDefault();
+            bosses.Add(boss?.MonsterID ?? 0u);
+        }
+        return bosses;
+    }
+
+    public uint GetCurrentBossMonsterId()
+    {
+        EnsureSessionPreview();
+        var idx = (int)CurrentChapterId - 1;
+        if (idx < 0 || idx >= SessionBossMonsterIds.Count) return 0;
+        return SessionBossMonsterIds[idx];
     }
 
     private List<uint> RollSessionAffixes()
@@ -1170,6 +1205,8 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
         EnsureSessionPreview();
         foreach (var campId in SessionCampIds)
             lvl.HGAHMIPIBLO.Add(new OPBCCOLPDPC { PMOGHFIGKPO = campId });
+        foreach (var bossId in SessionBossMonsterIds.Where(id => id != 0))
+            lvl.BossInfo.IJOPBPABPPM.Add(new PJLBDMPEKFP { MonsterId = bossId, RoleStar = 1 });
         foreach (var affix in SectionAffixIds)
             lvl.IAKFPMOEJLF.Add(new DIBJGAKOCLO { AffixId = affix });
         foreach (var portalBuff in ActivePortalBuffIds)
