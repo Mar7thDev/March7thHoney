@@ -133,6 +133,7 @@ public class CommandTextCHT
     public SetlevelTextCHT Setlevel { get; } = new();
     public GridTextCHT Grid { get; } = new();
     public JsonTextCHT Json { get; } = new();
+    public AnnoTextCHT Anno { get; } = new();
     public CalyxTextCHT Calyx { get; } = new();
     public ClearTextCHT Clear { get; } = new();
     public DebugTextCHT Debug { get; } = new();
@@ -590,6 +591,17 @@ public class JsonTextCHT
     public string AvatarExcelNotFound => "未找到角色配置：{0}";
 
     public string ExportSuccess => "匯出成功，檔案：{0}";
+}
+
+/// <summary>
+///     path: Game.Command.Anno
+/// </summary>
+public class AnnoTextCHT
+{
+    public string Desc => "發送伺服器彈窗公告。無參數時發送配置中的公告內容。";
+    public string Usage => "用法：/anno\n\n用法：/anno <公告內容>";
+    public string Disabled => "公告功能未啟用，請先在配置中開啟 ServerOption.ServerAnnounce.EnableAnnounce。";
+    public string Sent => "已向 {0} 名在線玩家發送彈窗消息。";
 }
 
 /// <summary>

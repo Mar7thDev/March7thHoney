@@ -1,5 +1,6 @@
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
 using March7thHoney.GameServer.Server.Packet.Send.TrainParty;
+using March7thHoney.GameServer.Server.Packet.Send.Player;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
 using March7thHoney.Util;
@@ -95,6 +96,14 @@ public class HandlerEnterSceneCsReq : Handler
             storyLineId, req.IsCloseMap);
         await connection.SendPacket(new PacketEnterSceneScRsp(overMapTp, req.IsCloseMap, storyLineId,
             (uint)player.Data.FloorId, isSocialPlayEnter ? roomOwnerUid : 0));
+
+        var announceCfg = ConfigManager.Config.ServerOption.ServerAnnounce;
+        if (!player.LoginAnnounceSent && announceCfg.EnableAnnounce &&
+            !string.IsNullOrWhiteSpace(announceCfg.AnnounceContent))
+        {
+            await connection.SendPacket(new PacketServerAnnounceNotify());
+            player.LoginAnnounceSent = true;
+        }
 
         if (!isSocialPlayEnter)
             return;
