@@ -302,7 +302,7 @@ public class CommandAccount : ICommand
 
         var activeConnection = Listener.GetActiveConnection(account.Uid);
         if (activeConnection != null)
-            ConnectionDisconnectHelper.KickByGm(activeConnection);
+            await ConnectionDisconnectHelper.KickByGmAsync(activeConnection);
 
         DatabaseHelper.Instance.DeleteUidGameplayData(account.Uid);
 
@@ -314,7 +314,7 @@ public class CommandAccount : ICommand
         MailHelper.SendWelcomeMail(account.Uid, displayName);
 
         DatabaseHelper.ToSaveUidList.SafeAdd(account.Uid);
-        DatabaseHelper.Instance.SaveDatabase();
+        DatabaseHelper.Instance.SaveUidData(account.Uid);
 
         if (!isSelfReset)
             await arg.SendMsg(I18NManager.Translate("Game.Command.Account.ResetSuccess", displayName));

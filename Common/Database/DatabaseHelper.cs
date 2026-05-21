@@ -352,6 +352,31 @@ public class DatabaseHelper
         LastSaveTick = DateTime.UtcNow.Ticks;
     }
 
+    public void SaveUidData(int uid)
+    {
+        try
+        {
+            if (!UidInstanceMap.TryGetValue(uid, out var value)) return;
+
+            var baseType = typeof(BaseDatabaseDataHelper);
+            var assembly = typeof(BaseDatabaseDataHelper).Assembly;
+            var types = assembly.GetTypes().Where(t => t.IsSubclassOf(baseType));
+            foreach (var type in types)
+            {
+                var instance = value.Find(x => x.GetType() == type);
+                if (instance != null)
+                    typeof(DatabaseHelper).GetMethod(nameof(SaveDatabaseType))?.MakeGenericMethod(type)
+                        .Invoke(null, [instance]);
+            }
+
+            ToSaveUidList.RemoveAll(savedUid => savedUid == uid);
+        }
+        catch (Exception e)
+        {
+            logger.Error($"An error occurred while saving gameplay data for uid {uid}", e);
+        }
+    }
+
     public static void SaveDatabaseType<T>(T instance) where T : class, new()
     {
         try
