@@ -70,9 +70,11 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     public List<uint> SectionAffixIds { get; private set; } = new();
     public List<uint> SessionCampIds { get; private set; } = new();
     public List<uint> SessionBossMonsterIds { get; private set; } = new();
-    public List<uint> ActivePortalBuffIds { get; } = new() { 106 };
+    public List<uint> ActivePortalBuffIds { get; } = new();
     public List<uint> AvailablePortalBuffRerolls { get; } = new() { 105, 1014, 132 };
     public List<uint> CurrentPortalBuffOffer { get; private set; } = new();
+    // 已选投资策略（augment）。每次在 1-3 / 2-2 / 3-2 备战阶段选一个，保留显示
+    public List<uint> ActiveAugmentIds { get; } = new();
 
     public List<uint> CurrentAugmentOffer { get; private set; } = new();
     public uint CurrentAugmentReroll { get; set; } = 3;
@@ -1337,7 +1339,11 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
         info.RogueCurrentGameInfo.Add(BuildItemsShopSection());
         info.RogueCurrentGameInfo.Add(BuildOrbSection());
         info.RogueCurrentGameInfo.Add(BuildLevelSection());
-        info.RogueCurrentGameInfo.Add(new GridFightGameInfo { GridOrbInfo = new GridFightGameAugmentSync() });
+        // 抓包：已选 augment 通过 GridOrbInfo (实际是 GridFightGameAugmentSync) 的 SyncAugmentInfo 持久化
+        var augSync = new GridFightGameAugmentSync();
+        foreach (var aug in ActiveAugmentIds)
+            augSync.SyncAugmentInfo.Add(new GridGameAugmentInfo { AugmentId = aug, MHMLMKDFJLN = true });
+        info.RogueCurrentGameInfo.Add(new GridFightGameInfo { GridOrbInfo = augSync });
         info.RogueCurrentGameInfo.Add(BuildAugmentSection());
         info.RogueCurrentGameInfo.Add(BuildTeamGameInfoSection());
         return info;

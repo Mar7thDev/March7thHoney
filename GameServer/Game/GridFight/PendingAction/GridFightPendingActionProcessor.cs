@@ -360,6 +360,8 @@ public static class GridFightPendingActionProcessor
 
         inst.LastAugmentConsumedSection = inst.SectionId;
         inst.ClearAugmentOffer();
+        if (augmentId > 0 && !inst.ActiveAugmentIds.Contains(augmentId))
+            inst.ActiveAugmentIds.Add(augmentId);
 
         var nextPos = ackPos + 1;
         inst.QueuePosition = nextPos;
@@ -387,6 +389,25 @@ public static class GridFightPendingActionProcessor
             roleSec.UpdateDynamicList.Add(new GridFightSyncData { AddRoleInfo = roleInfo });
             sync.SyncResultDataList.Add(roleSec);
         }
+
+        // 抓包：augment 选中后必须发 augmentSyncInfo.updateAugmentInfo，客户端才会把它显示到顶部"投资策略"栏
+        if (augmentId > 0)
+        {
+            var augSec = new GridFightSyncResultData { GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpKcefflkabgh };
+            augSec.UpdateDynamicList.Add(new GridFightSyncData
+            {
+                AugmentSyncInfo = new GridFightGameAugmentAdd
+                {
+                    UpdateAugmentInfo = new GridGameAugmentInfo
+                    {
+                        AugmentId = augmentId,
+                        MHMLMKDFJLN = true
+                    }
+                }
+            });
+            sync.SyncResultDataList.Add(augSec);
+        }
+
         var finishSec = new GridFightSyncResultData();
         finishSec.UpdateDynamicList.Add(new GridFightSyncData { FinishPendingActionPos = ackPos });
         finishSec.UpdateDynamicList.Add(new GridFightSyncData { SyncLockInfo = new GridFightLockInfo() });
