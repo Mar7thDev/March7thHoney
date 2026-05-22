@@ -55,10 +55,178 @@ public class HandlerGridFightEquipDressCsReq : Handler
 }
 
 [Opcode(CmdIds.GridFightEquipCraftCsReq)]
-public class HandlerGridFightEquipCraftCsReq : Handler { public override async Task OnHandle(Connection connection, byte[] header, byte[] data) { _ = GridFightEquipCraftCsReq.Parser.ParseFrom(data); await connection.SendPacket(new PacketEPJJBNPIFLC()); await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(connection.Player!, GridFightSyncKind.NoOp)); } }
+public class HandlerGridFightEquipCraftCsReq : Handler
+{
+    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    {
+        var req = GridFightEquipCraftCsReq.Parser.ParseFrom(data);
+        var player = connection.Player!;
+        var inst = player.GridFightManager?.GridFightInstance;
+
+        await connection.SendPacket(new PacketEPJJBNPIFLC());
+        if (inst == null) return;
+
+        var targetId = req.BGEKACPOAOP;
+        var materials = req.CraftMaterials.ToList();
+        if (targetId == 0 || materials.Count == 0) return;
+
+        // 拿到所有合成素材；任何一件不存在就放弃
+        var matInfos = materials
+            .Select(uid => inst.FindEquipment(uid))
+            .Where(e => e != null)
+            .Cast<GridFightEquipmentInfo>()
+            .ToList();
+        if (matInfos.Count != materials.Count) return;
+
+        var sync = new GridFightSyncUpdateResultScNotify();
+        var sec = new GridFightSyncResultData { GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpDgojihijlaf };
+
+        // 抓包：每件素材单独一段 removeGameItemInfo
+        foreach (var mat in matInfos)
+        {
+            var clone = mat.Clone();
+            inst.RemoveEquipmentByUniqueId(mat.UniqueId);
+            var item = new GridFightGameItemSyncInfo();
+            item.GridFightEquipmentList.Add(clone);
+            sec.UpdateDynamicList.Add(new GridFightSyncData { RemoveGameItemInfo = item });
+        }
+
+        // 合成出的装备 source=5（抓包确认）
+        var crafted = inst.AddEquipment(targetId, 5);
+        var addItem = new GridFightGameItemSyncInfo();
+        addItem.GridFightEquipmentList.Add(crafted);
+        sec.UpdateDynamicList.Add(new GridFightSyncData { AddGameItemInfo = addItem });
+
+        sync.SyncResultDataList.Add(sec);
+        sync.SyncResultDataList.Add(new GridFightSyncResultData());
+        await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(sync));
+    }
+}
 
 [Opcode(CmdIds.GridFightUseConsumableCsReq)]
-public class HandlerGridFightUseConsumableCsReq : Handler { public override async Task OnHandle(Connection connection, byte[] header, byte[] data) { _ = GridFightUseConsumableCsReq.Parser.ParseFrom(data); await connection.SendPacket(new PacketOLOGIALOJDP()); await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(connection.Player!, GridFightSyncKind.NoOp)); } }
+public class HandlerGridFightUseConsumableCsReq : Handler
+{
+    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    {
+        var req = GridFightUseConsumableCsReq.Parser.ParseFrom(data);
+        var player = connection.Player!;
+        var inst = player.GridFightManager?.GridFightInstance;
+
+        await connection.SendPacket(new PacketOLOGIALOJDP());
+        if (inst == null) return;
+
+        var itemId = req.ItemId;
+        if (!GameData.GridFightConsumablesData.TryGetValue(itemId, out var consumable)) return;
+
+        var sync = new GridFightSyncUpdateResultScNotify();
+        var sec = new GridFightSyncResultData { GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpNefkflkampo };
+        sec.SyncEffectParamList.Add(itemId);
+
+        // 抓包：消耗品扣减用 removeGameItemInfo + itemStackCount=-1
+        var consumeRemoval = new GridFightGameItemSyncInfo();
+        consumeRemoval.UpdateGridFightConsumableList.Add(new GridFightConsumableUpdateInfo
+        {
+            ItemId = itemId,
+            ItemStackCount = -1
+        });
+        sec.UpdateDynamicList.Add(new GridFightSyncData { RemoveGameItemInfo = consumeRemoval });
+
+        var target = req.DisplayValue;
+        switch (consumable.ConsumableRule)
+        {
+            case Enums.GridFight.GridFightConsumeTypeEnum.Remove:
+                HandleRemoveRule(inst, target, sec);
+                break;
+            case Enums.GridFight.GridFightConsumeTypeEnum.Roll:
+                HandleRollRule(inst, target, sec);
+                break;
+            default:
+                // 其它规则（Upgrade/Copy/GainRecommendEquip）暂未实现，直接消耗
+                break;
+        }
+
+        inst.TryConsumeConsumable(itemId);
+
+        sync.SyncResultDataList.Add(sec);
+        sync.SyncResultDataList.Add(new GridFightSyncResultData());
+        await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(sync));
+    }
+
+    // 拆装扳手：清空目标角色身上的所有装备
+    private static void HandleRemoveRule(GridFightInstance inst, GridFightConsumableTargetInfo target, GridFightSyncResultData sec)
+    {
+        if (target?.RemoveTypeTargetInfo == null) return;
+        var roleUid = target.RemoveTypeTargetInfo.DressRoleUniqueId;
+        if (!inst.RoleByUniqueId.TryGetValue(roleUid, out var roleId)) return;
+        inst.UnequipAllFromRole(roleUid);
+        sec.UpdateDynamicList.Add(new GridFightSyncData { UpdateRoleInfo = BuildRoleInfoSnapshot(inst, roleUid, roleId) });
+    }
+
+    // 冶金炉：把目标装备或目标角色身上的装备替换为同类型其他装备
+    private static void HandleRollRule(GridFightInstance inst, GridFightConsumableTargetInfo target, GridFightSyncResultData sec)
+    {
+        if (target?.RollTypeTargetInfo == null) return;
+        var equipUid = target.RollTypeTargetInfo.DressEquipmentUniqueId;
+        var roleUid = target.RollTypeTargetInfo.DressRoleUniqueId;
+
+        if (equipUid != 0)
+        {
+            RollOneEquipment(inst, equipUid, sec);
+            return;
+        }
+
+        if (roleUid != 0 && inst.RoleByUniqueId.TryGetValue(roleUid, out var roleId))
+        {
+            // 抓包：对角色用冶金炉会把所有装备同类型重 roll
+            var equips = inst.EquipUniqueIdsByRoleUniqueId.TryGetValue(roleUid, out var list)
+                ? list.ToList()
+                : new List<uint>();
+            foreach (var uid in equips)
+                RollOneEquipment(inst, uid, sec);
+            sec.UpdateDynamicList.Add(new GridFightSyncData { UpdateRoleInfo = BuildRoleInfoSnapshot(inst, roleUid, roleId) });
+        }
+    }
+
+    private static void RollOneEquipment(GridFightInstance inst, uint equipUid, GridFightSyncResultData sec)
+    {
+        var old = inst.FindEquipment(equipUid);
+        if (old == null) return;
+        var newId = GridFightInstance.RollSameCategoryEquipment(old.GridFightEquipmentId);
+        if (newId == 0) return;
+        var oldClone = old.Clone();
+        var added = inst.RollEquipment(equipUid, newId, source: 1);
+        if (added == null) return;
+
+        var removeItem = new GridFightGameItemSyncInfo();
+        removeItem.GridFightEquipmentList.Add(oldClone);
+        sec.UpdateDynamicList.Add(new GridFightSyncData { RemoveGameItemInfo = removeItem });
+
+        var addItem = new GridFightGameItemSyncInfo();
+        addItem.GridFightEquipmentList.Add(added);
+        sec.UpdateDynamicList.Add(new GridFightSyncData { AddGameItemInfo = addItem });
+    }
+
+    private static GridGameRoleInfo BuildRoleInfoSnapshot(GridFightInstance inst, uint roleUid, uint roleId)
+    {
+        uint pos = 0;
+        foreach (var kv in inst.UniqueIdByPos)
+            if (kv.Value == roleUid) { pos = kv.Key; break; }
+
+        var roleInfo = new GridGameRoleInfo
+        {
+            Id = roleId,
+            Pos = pos,
+            UniqueId = roleUid,
+            RoleStar = inst.RoleStarByUniqueId.GetValueOrDefault(roleUid, 1u)
+        };
+        if (inst.EquipUniqueIdsByRoleUniqueId.TryGetValue(roleUid, out var equipList))
+            foreach (var eid in equipList) roleInfo.UpdateEquipsComponent.Add(eid);
+        if (GameData.GridFightRoleBasicInfoData.TryGetValue(roleId, out var roleExcel)
+            && roleExcel.RoleSavedValueList.Count > 0)
+            roleInfo.GridFightValueInitComponent[roleExcel.RoleSavedValueList[0]] = 0;
+        return roleInfo;
+    }
+}
 
 [Opcode(CmdIds.GridFightUseForgeCsReq)]
 public class HandlerGridFightUseForgeCsReq : Handler { public override async Task OnHandle(Connection connection, byte[] header, byte[] data) { _ = GridFightUseForgeCsReq.Parser.ParseFrom(data); await connection.SendPacket(new PacketEEBMIAFNJMC()); await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(connection.Player!, GridFightSyncKind.NoOp)); } }

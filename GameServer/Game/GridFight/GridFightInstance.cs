@@ -299,6 +299,82 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     public uint AllocEquipUniqueId() => ++NextEquipUniqueId;
     public uint AllocOrbUniqueId() => ++NextOrbUniqueId;
 
+    public GridFightEquipmentInfo? FindEquipment(uint uniqueId)
+        => Equipments.FirstOrDefault(e => e.UniqueId == uniqueId);
+
+    public void RemoveEquipmentByUniqueId(uint uniqueId)
+    {
+        Equipments.RemoveAll(e => e.UniqueId == uniqueId);
+        foreach (var kv in EquipUniqueIdsByRoleUniqueId)
+            kv.Value.RemoveAll(x => x == uniqueId);
+    }
+
+    public List<uint> UnequipAllFromRole(uint roleUid)
+    {
+        if (!EquipUniqueIdsByRoleUniqueId.TryGetValue(roleUid, out var list)) return new List<uint>();
+        var snapshot = list.ToList();
+        list.Clear();
+        return snapshot;
+    }
+
+    public GridFightEquipmentInfo AddEquipment(uint equipmentId, uint source = 1)
+    {
+        var info = new GridFightEquipmentInfo
+        {
+            GridFightEquipmentId = equipmentId,
+            Source = source,
+            UniqueId = AllocEquipUniqueId()
+        };
+        Equipments.Add(info);
+        return info;
+    }
+
+    // 把指定装备从原角色身上换成 newEquipId（保留 wearer 关系）
+    public GridFightEquipmentInfo? RollEquipment(uint oldUniqueId, uint newEquipId, uint source = 1)
+    {
+        var old = FindEquipment(oldUniqueId);
+        if (old == null) return null;
+        uint? wearer = null;
+        foreach (var kv in EquipUniqueIdsByRoleUniqueId)
+        {
+            if (kv.Value.Contains(oldUniqueId)) { wearer = kv.Key; break; }
+        }
+        RemoveEquipmentByUniqueId(oldUniqueId);
+        var added = AddEquipment(newEquipId, source);
+        if (wearer.HasValue)
+        {
+            if (!EquipUniqueIdsByRoleUniqueId.TryGetValue(wearer.Value, out var list))
+                EquipUniqueIdsByRoleUniqueId[wearer.Value] = list = new List<uint>();
+            list.Add(added.UniqueId);
+        }
+        return added;
+    }
+
+    public bool TryConsumeConsumable(uint itemId, int amount = 1)
+    {
+        for (var i = 0; i < amount; i++)
+        {
+            var entry = Consumables.FirstOrDefault(c => c.ItemId == itemId);
+            if (entry == null) return false;
+            if (entry.Num <= 1) Consumables.Remove(entry);
+            else entry.Num -= 1;
+        }
+        return true;
+    }
+
+    // 随机选一件同类型装备（排除当前 id），找不到返回 0
+    public static uint RollSameCategoryEquipment(uint currentEquipId)
+    {
+        if (!GameData.GridFightEquipmentData.TryGetValue(currentEquipId, out var current)) return 0;
+        var category = current.EquipCategory;
+        var pool = GameData.GridFightEquipmentData.Values
+            .Where(e => e.EquipCategory == category && e.ID != currentEquipId)
+            .Select(e => e.ID)
+            .ToList();
+        if (pool.Count == 0) return 0;
+        return pool[Random.Shared.Next(pool.Count)];
+    }
+
     // 结算快照
     public uint PreBattleLineupHp { get; set; }
     public uint PreBattleLevel { get; set; }
