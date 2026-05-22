@@ -26,13 +26,17 @@ public class PacketGridFightEnterBattleStageScRsp : BasePacket
         var info = battle.ToProto();
         var enc = GridFightLevelResolver.Resolve(inst);
 
+        // 抓包：ANBB/HDCA 是"当前在阵角色数"（前台 pos 1-4 + 后台 pos 5-13，不含 bench）
+        // 官服玩家每次都把阵容填满，所以抓包里 ANBB=HDCA=AvatarMax，但其实是"实际在阵数"
+        var placedCount = (uint)inst.UniqueIdByPos.Count(kv => kv.Key is >= 1 and <= 13 && kv.Value != 0);
         info.AFCMOOFGBPK = new OGEOMDJIAGI
         {
             BBDOCJGAEEJ = inst.DivisionId,
             LFKBMDHKPFI = enc.PenaltyBonusRuleId,
-            ANBBPPHBCJH = 3,
-            HDCAEIKAPND = 3,
-            OOPPKDAFFDG = inst.GetEnemyDifficultyLevel(),
+            ANBBPPHBCJH = placedCount,
+            HDCAEIKAPND = placedCount,
+            // base + 所有已选投资策略加成 + 当前 section 遭遇 quality 加成
+            OOPPKDAFFDG = inst.GetEffectiveEnemyDifficultyLevel(),
             Season = inst.Season,
             IsOverlock = inst.IsOverLock,
             GridFightLineupHp = inst.LineupHp,
@@ -44,6 +48,10 @@ public class PacketGridFightEnterBattleStageScRsp : BasePacket
                 SectionId = inst.SectionId
             }
         };
+
+        // 抓包：进入战斗带 augment 列表，客户端据此把投资策略效果挂到怪物身上
+        foreach (var augmentId in inst.ActiveAugmentIds)
+            info.AFCMOOFGBPK.SyncAugmentInfo.Add(new HLPCOGPKBFJ { AugmentId = augmentId });
 
         foreach (var portalBuffId in inst.ActivePortalBuffIds)
             info.AFCMOOFGBPK.GridFightPortalBuffList.Add(new MMDJJDEJMMN { PortalBuffId = portalBuffId });
