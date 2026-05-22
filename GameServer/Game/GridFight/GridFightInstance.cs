@@ -807,6 +807,7 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
         public uint? AddEquipmentId;
         public uint? AddEquipmentUniqueId;
         public uint? AddConsumableItemId;
+        public uint AddConsumableNewTotal;
     }
 
     private static readonly uint[] OrbEquipmentPool =
@@ -901,8 +902,15 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
 
     private void ApplyConsumable(OrbUseResult r, uint itemId)
     {
-        Consumables.Add(new GridFightConsumableInfo { ItemId = itemId, Num = 1 });
+        var entry = Consumables.FirstOrDefault(c => c.ItemId == itemId);
+        if (entry == null)
+        {
+            entry = new GridFightConsumableInfo { ItemId = itemId, Num = 1 };
+            Consumables.Add(entry);
+        }
+        else entry.Num += 1;
         r.AddConsumableItemId = itemId;
+        r.AddConsumableNewTotal = entry.Num;
     }
 
     private void ApplyEquipment(OrbUseResult r, uint equipId)
