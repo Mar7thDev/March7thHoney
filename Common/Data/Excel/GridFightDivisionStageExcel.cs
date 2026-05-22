@@ -8,6 +8,8 @@ public class GridFightDivisionStageExcel : ExcelResource
     public List<uint> AffixChooseNumList { get; set; } = [];
     public uint ExpModify { get; set; }
     public uint SeasonID { get; set; }
+    // 配表：进入遭遇关卡时按 (BinaryNodeDiffAddRule, 遭遇 quality) 查 GridFightBinaryDiffAddRule
+    public uint BinaryNodeDiffAddRule { get; set; }
 
     public override int GetId()
     {

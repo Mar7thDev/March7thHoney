@@ -28,7 +28,9 @@ public static class GridFightBattleProtoBuilder
         }
 
         proto.MonsterWaveList.Clear();
-        var enemyDifficultyLevel = inst.GetEnemyDifficultyLevel();
+        // 抓包：BDCCEFHMFHO 是 wave 的怪物 WorldLevel 标记。两份抓包（D8/D1，WL6 玩家）
+        // 几乎所有战斗都是 5，即 WorldLevel-1。低 WL 玩家也会得到对应的低基线。
+        var monsterWorldLevel = (uint)Math.Max(1, battle.Player.Data.WorldLevel - 1);
         var wave = new SceneMonsterWave
         {
             BattleStageId = (uint)battle.StageId,
@@ -36,7 +38,7 @@ public static class GridFightBattleProtoBuilder
             MonsterParam = new SceneMonsterWaveParam
             {
                 EliteGroup = enc.EliteGroupId,
-                BDCCEFHMFHO = enemyDifficultyLevel
+                BDCCEFHMFHO = monsterWorldLevel
             }
         };
         foreach (var spec in enc.Monsters)

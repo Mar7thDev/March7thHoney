@@ -224,21 +224,31 @@ public class CommandGrid : ICommand
         }
 
         var c = inst.Consumables.FirstOrDefault(x => x.ItemId == consumableId);
-        if (c == null)
+        var firstAdd = c == null;
+        if (firstAdd)
         {
             c = new GridFightConsumableInfo { ItemId = consumableId, Num = 1 };
             inst.Consumables.Add(c);
         }
         else
         {
-            c.Num += 1;
+            c!.Num += 1;
         }
 
-        var addItem = new GridFightGameItemSyncInfo();
-        addItem.GridFightConsumableList.Add(c.Clone());
+        // 抓包：首次新增用 addGameItemInfo，后续叠加用 updateGameItemInfo，
+        // 两者都走 updateGridFightConsumableList + itemStackCount=1 + num=新总数
+        var payload = new GridFightGameItemSyncInfo();
+        payload.UpdateGridFightConsumableList.Add(new GridFightConsumableUpdateInfo
+        {
+            ItemId = consumableId,
+            ItemStackCount = 1,
+            Num = c.Num
+        });
         var sync = new GridFightSyncUpdateResultScNotify();
         var sec = new GridFightSyncResultData();
-        sec.UpdateDynamicList.Add(new GridFightSyncData { AddGameItemInfo = addItem });
+        sec.UpdateDynamicList.Add(firstAdd
+            ? new GridFightSyncData { AddGameItemInfo = payload }
+            : new GridFightSyncData { UpdateGameItemInfo = payload });
         sync.SyncResultDataList.Add(sec);
         await player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(sync));
         await arg.SendMsg(I18NManager.Translate("Game.Command.Grid.AddConsumable", consumableId.ToString()));
