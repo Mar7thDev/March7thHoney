@@ -75,6 +75,10 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
     public List<uint> CurrentPortalBuffOffer { get; private set; } = new();
     // 已选投资策略（augment）。每次在 1-3 / 2-2 / 3-2 备战阶段选一个，保留显示
     public List<uint> ActiveAugmentIds { get; } = new();
+    // 当前 section 已选的遭遇 quality（1-4）；只在该 chapter/section 的遭遇战斗里生效
+    public uint LastEncounterQuality { get; set; }
+    public uint LastEncounterAppliedSection { get; set; }
+    public uint LastEncounterAppliedChapter { get; set; }
 
     public List<uint> CurrentAugmentOffer { get; private set; } = new();
     public uint CurrentAugmentReroll { get; set; } = 3;
@@ -990,6 +994,85 @@ public class GridFightInstance(PlayerInstance player, uint season, uint division
             && stage.EnemyDifficultyLevel > 0)
             return stage.EnemyDifficultyLevel;
         return 1;
+    }
+
+    public uint GetDivisionLevel()
+    {
+        if (GameData.GridFightDivisionInfoData.TryGetValue(DivisionId, out var info) && info.DivisionLevel > 0)
+            return info.DivisionLevel;
+        // fallback：从 division id 推 (10101→1, 10940→9)
+        return Math.Clamp((DivisionId - 10000u) / 100u, 1u, 9u);
+    }
+
+    // 当前所有已选投资策略给 EnemyDifficultyLevel 的累加：
+    // 按 (DivisionLevel, 该 augment 的 Quality) 查 GridFightAugmentMonster，求和
+    public uint GetActiveAugmentDifficultyAdd()
+    {
+        var divLv = GetDivisionLevel();
+        if (!GameData.GridFightAugmentMonsterData.TryGetValue(divLv, out var byQuality)) return 0;
+        uint sum = 0;
+        foreach (var augId in ActiveAugmentIds)
+        {
+            if (!GameData.GridFightAugmentData.TryGetValue(augId, out var aug)) continue;
+            if (byQuality.TryGetValue(aug.Quality, out var entry)) sum += entry.EnemyDiffLvAdd;
+        }
+        return sum;
+    }
+
+    // 进入"当前 section 的遭遇战斗"时，按 division.BinaryNodeDiffAddRule × 遭遇 quality 查表
+    public uint GetEncounterDifficultyAdd()
+    {
+        if (LastEncounterQuality == 0
+            || LastEncounterAppliedSection != SectionId
+            || LastEncounterAppliedChapter != CurrentChapterId) return 0;
+        if (!GameData.GridFightDivisionStageData.TryGetValue(DivisionId, out var stage)) return 0;
+        var rule = stage.BinaryNodeDiffAddRule;
+        if (rule == 0) return 0;
+        if (!GameData.GridFightBinaryDiffAddRuleData.TryGetValue(rule, out var byQuality)) return 0;
+        return byQuality.TryGetValue(LastEncounterQuality, out var entry) ? entry.EnemyDifficultyAddValue : 0u;
+    }
+
+    // 客户端用这个值做顶部展示 + 怪物属性缩放：base + 投资策略 + 当前遭遇
+    public uint GetEffectiveEnemyDifficultyLevel()
+        => GetEnemyDifficultyLevel() + GetActiveAugmentDifficultyAdd() + GetEncounterDifficultyAdd();
+
+    // 抓包：怪物 EliteGroup 跟战斗/奖励节点的位置走，跨位面递增
+    //   - 战斗节点（CampMonster/EliteBranch/Boss）按全局战斗序号：1800 + n
+    //     1-3=1801, 1-4=1802, 1-6=1803, 1-7=1804, 1-9=1805, 2-1=1806, 2-2=1807...
+    //   - 奖励节点（Monster）：1-1,1-2=1816；1-8=1817；2-6=1818；3-6=1819
+    public uint ResolveEliteGroupForCurrentSection()
+    {
+        var route = Battle.GridFightLevelResolver.ResolveRoute(this);
+        if (route == null) return 1816;
+        if (route.NodeType == Enums.GridFight.GridFightNodeTypeEnum.Monster)
+            return ResolveRewardEliteGroup(CurrentChapterId, SectionId);
+        if (route.NodeType == Enums.GridFight.GridFightNodeTypeEnum.Supply)
+            return 0;
+        // CampMonster / EliteBranch / Boss → 全局战斗序号
+        var n = CountCombatNodesUpToCurrent();
+        return 1800u + Math.Max(1u, n);
+    }
+
+    private static uint ResolveRewardEliteGroup(uint chapter, uint section)
+    {
+        // 1-1, 1-2 都是 1816；1-8 是 1817；2-6 是 1818；3-6 是 1819
+        if (chapter == 1 && section <= 2) return 1816;
+        if (chapter == 1) return 1817;     // 1-8
+        return 1816u + chapter;            // 2-6 → 1818, 3-6 → 1819
+    }
+
+    private uint CountCombatNodesUpToCurrent()
+    {
+        if (!GameData.GridFightStageRouteData.TryGetValue(RouteId, out var bucket)) return 1;
+        uint count = 0;
+        foreach (var r in bucket.Values.OrderBy(r => r.ChapterID).ThenBy(r => r.SectionID))
+        {
+            if (r.NodeType == Enums.GridFight.GridFightNodeTypeEnum.Supply) continue;
+            if (r.NodeType == Enums.GridFight.GridFightNodeTypeEnum.Monster) continue; // 奖励
+            count++;
+            if (r.ChapterID == CurrentChapterId && r.SectionID == SectionId) return count;
+        }
+        return count;
     }
 
     public bool TryEquipFromDraft(uint idx)

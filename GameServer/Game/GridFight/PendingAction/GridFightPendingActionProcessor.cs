@@ -591,6 +591,10 @@ public static class GridFightPendingActionProcessor
         if (chosen != null)
         {
             inst.ConfigureNextBattle(chosen.StageId, chosen.MonsterIds);
+            // 记录所选遭遇 quality，进入战斗时叠到 EnemyDifficultyLevel
+            inst.LastEncounterQuality = chosen.DifficultyTier;
+            inst.LastEncounterAppliedSection = inst.SectionId;
+            inst.LastEncounterAppliedChapter = inst.CurrentChapterId;
         }
 
         inst.LastEliteBranchConsumedSection = inst.SectionId;

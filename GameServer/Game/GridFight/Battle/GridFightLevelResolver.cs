@@ -112,7 +112,7 @@ public static class GridFightLevelResolver
                 var pick = pool[rng.Next(pool.Count)];
                 wave.Add(new GridFightMonsterSpec(pick.MonsterID, 1, []));
             }
-            return (1816u, wave);
+            return (inst.ResolveEliteGroupForCurrentSection(), wave);
         }
 
         if (nodeType == Enums.GridFight.GridFightNodeTypeEnum.CampMonster
@@ -154,8 +154,8 @@ public static class GridFightLevelResolver
                 wave.Add(new GridFightMonsterSpec(pick.MonsterID, star, []));
             }
             Shuffle(wave, rng);
-            var group = isEncounter ? 1818u : 1817u;
-            return (group, wave);
+            // 抓包：CampMonster/EliteBranch 都按"全局战斗序号"映射 EliteGroup，跨位面递增
+            return (inst.ResolveEliteGroupForCurrentSection(), wave);
         }
 
         if (nodeType == Enums.GridFight.GridFightNodeTypeEnum.Supply)
@@ -165,17 +165,18 @@ public static class GridFightLevelResolver
 
         if (nodeType == Enums.GridFight.GridFightNodeTypeEnum.Boss)
         {
-            // 抓包：1-9/2-7/3-7 的 boss 必须与开局预告 bossInfo 一致
+            // 抓包：1-9/2-7/3-7 的 boss 必须与开局预告 bossInfo 一致；EliteGroup 走全局序号
+            var bossEg = inst.ResolveEliteGroupForCurrentSection();
             var promised = inst.GetCurrentBossMonsterId();
             if (promised != 0)
             {
                 wave.Add(new GridFightMonsterSpec(promised, 2, []));
-                return (1819u, wave);
+                return (bossEg, wave);
             }
             var bossPool = monsters.Where(m => m.MonsterTier >= 5).OrderBy(m => m.MonsterTier).ThenBy(m => m.MonsterID).ToList();
             if (bossPool.Count == 0) bossPool = monsters.ToList();
             wave.Add(new GridFightMonsterSpec(bossPool[0].MonsterID, 2, []));
-            return (1819u, wave);
+            return (bossEg, wave);
         }
 
         var fallbackPool = monsters.Where(m => m.MonsterTier <= 2).ToList();
