@@ -28,6 +28,10 @@ public class HandlerGridFightEquipDressCsReq : Handler
             inst.EquipUniqueIdsByRoleUniqueId[roleUid] = equipList = new List<uint>();
         if (!equipList.Contains(equipUid)) equipList.Add(equipUid);
 
+        // 抓包：角色身上凑齐 2 件简易装备时服务器自动合成对应进阶装备
+        // 公式：basic 35020A + basic 35020B → advanced 35030(min)(max)，A/B ∈ [1..8]
+        var craftedAdvancedEquip = TryAutoMergeBasicsOnRole(inst, roleUid, equipList);
+
         uint pos = 0;
         foreach (var kv in inst.UniqueIdByPos)
             if (kv.Value == roleUid) { pos = kv.Key; break; }
@@ -47,10 +51,72 @@ public class HandlerGridFightEquipDressCsReq : Handler
         }
 
         var sync = new GridFightSyncUpdateResultScNotify();
+
+        // 先发合成事件（如果有），让客户端先看到 2 件简易消失 + 进阶出现
+        if (craftedAdvancedEquip != null)
+        {
+            var craftSec = new GridFightSyncResultData { GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpDgojihijlaf };
+            foreach (var removed in craftedAdvancedEquip.RemovedBasics)
+            {
+                var item = new GridFightGameItemSyncInfo();
+                item.GridFightEquipmentList.Add(removed);
+                craftSec.UpdateDynamicList.Add(new GridFightSyncData { RemoveGameItemInfo = item });
+            }
+            var addItem = new GridFightGameItemSyncInfo();
+            addItem.GridFightEquipmentList.Add(craftedAdvancedEquip.Added);
+            craftSec.UpdateDynamicList.Add(new GridFightSyncData { AddGameItemInfo = addItem });
+            sync.SyncResultDataList.Add(craftSec);
+        }
+
         var sec = new GridFightSyncResultData();
         sec.UpdateDynamicList.Add(new GridFightSyncData { UpdateRoleInfo = roleInfo });
         sync.SyncResultDataList.Add(sec);
         await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(sync));
+    }
+
+    private sealed class AutoMergeResult
+    {
+        public List<GridFightEquipmentInfo> RemovedBasics = new();
+        public GridFightEquipmentInfo Added = null!;
+    }
+
+    private static AutoMergeResult? TryAutoMergeBasicsOnRole(GridFightInstance inst, uint roleUid, List<uint> equipList)
+    {
+        // 找出角色当前装着的、最先穿戴的两件 Basic 装备
+        var basics = new List<GridFightEquipmentInfo>();
+        foreach (var uid in equipList)
+        {
+            var info = inst.FindEquipment(uid);
+            if (info == null) continue;
+            if (!GameData.GridFightEquipmentData.TryGetValue(info.GridFightEquipmentId, out var excel)) continue;
+            if (excel.EquipCategory != Enums.GridFight.GridFightEquipCategoryEnum.Basic) continue;
+            basics.Add(info);
+            if (basics.Count >= 2) break;
+        }
+        if (basics.Count < 2) return null;
+
+        var a = basics[0].GridFightEquipmentId;
+        var b = basics[1].GridFightEquipmentId;
+        // basic ID 形如 35020X，提取尾位
+        var ia = (int)(a % 10);
+        var ib = (int)(b % 10);
+        if (ia <= 0 || ib <= 0) return null;
+        var lo = Math.Min(ia, ib);
+        var hi = Math.Max(ia, ib);
+        var advancedId = (uint)(35030000 + lo * 100 + hi);
+        if (!GameData.GridFightEquipmentData.ContainsKey(advancedId)) return null;
+
+        // 状态：移除 2 件 basic，添加 advanced 并替换角色装备槽
+        var removedSnapshots = basics.Select(b2 => b2.Clone()).ToList();
+        foreach (var basic in basics)
+            inst.RemoveEquipmentByUniqueId(basic.UniqueId);
+        var added = inst.AddEquipment(advancedId, source: 5);
+
+        // 把合成结果挂到这个角色身上
+        equipList.RemoveAll(uid => basics.Any(b2 => b2.UniqueId == uid));
+        equipList.Add(added.UniqueId);
+
+        return new AutoMergeResult { RemovedBasics = removedSnapshots, Added = added };
     }
 }
 
