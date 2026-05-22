@@ -188,14 +188,28 @@ public class HandlerGridFightUseConsumableCsReq : Handler
         var sec = new GridFightSyncResultData { GridUpdateSrc = GridFightUpdateSrcType.LnpfefkjdhpNefkflkampo };
         sec.SyncEffectParamList.Add(itemId);
 
-        // 抓包：消耗品扣减用 removeGameItemInfo + itemStackCount=-1
-        var consumeRemoval = new GridFightGameItemSyncInfo();
-        consumeRemoval.UpdateGridFightConsumableList.Add(new GridFightConsumableUpdateInfo
+        // 抓包语义：
+        //   减到非 0 → updateGameItemInfo + itemStackCount=-1, num=新总数
+        //   减到 0   → removeGameItemInfo + itemStackCount=-1, 不带 num
+        //   IfConsume=false（如 350102 金扳手）→ 完全不发库存变化
+        if (consumable.IfConsume)
         {
-            ItemId = itemId,
-            ItemStackCount = -1
-        });
-        sec.UpdateDynamicList.Add(new GridFightSyncData { RemoveGameItemInfo = consumeRemoval });
+            var current = inst.Consumables.FirstOrDefault(c => c.ItemId == itemId);
+            var remaining = current == null ? 0u : (current.Num > 0 ? current.Num - 1 : 0u);
+
+            var payload = new GridFightGameItemSyncInfo();
+            var update = new GridFightConsumableUpdateInfo
+            {
+                ItemId = itemId,
+                ItemStackCount = -1
+            };
+            if (remaining > 0) update.Num = remaining;
+            payload.UpdateGridFightConsumableList.Add(update);
+
+            sec.UpdateDynamicList.Add(remaining > 0
+                ? new GridFightSyncData { UpdateGameItemInfo = payload }
+                : new GridFightSyncData { RemoveGameItemInfo = payload });
+        }
 
         var target = req.DisplayValue;
         switch (consumable.ConsumableRule)
@@ -211,7 +225,7 @@ public class HandlerGridFightUseConsumableCsReq : Handler
                 break;
         }
 
-        inst.TryConsumeConsumable(itemId);
+        if (consumable.IfConsume) inst.TryConsumeConsumable(itemId);
 
         sync.SyncResultDataList.Add(sec);
         sync.SyncResultDataList.Add(new GridFightSyncResultData());
@@ -349,14 +363,17 @@ public class HandlerGridFightUseOrbCsReq : Handler
 
             if (r.AddConsumableItemId.HasValue)
             {
+                // 与命令路径一致：首件 addGameItemInfo，叠加 updateGameItemInfo；num=新总数
                 var item = new GridFightGameItemSyncInfo();
                 item.UpdateGridFightConsumableList.Add(new GridFightConsumableUpdateInfo
                 {
                     ItemId = r.AddConsumableItemId.Value,
                     ItemStackCount = 1,
-                    Num = 1
+                    Num = r.AddConsumableNewTotal
                 });
-                sec.UpdateDynamicList.Add(new GridFightSyncData { AddGameItemInfo = item });
+                sec.UpdateDynamicList.Add(r.AddConsumableNewTotal <= 1
+                    ? new GridFightSyncData { AddGameItemInfo = item }
+                    : new GridFightSyncData { UpdateGameItemInfo = item });
             }
 
             if (r.GoldChanged)
