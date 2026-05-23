@@ -24,15 +24,15 @@ namespace March7thHoney.Proto {
     static BuyGoodsCsReqReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChNCdXlHb29kc0NzUmVxLnByb3RvIo4BCg1CdXlHb29kc0NzUmVxEhAKCGdv",
-            "b2RzX2lkGAUgASgNEiEKGWludGVyYWN0ZWRfcHJvcF9lbnRpdHlfaWQYBiAB",
-            "KA0SEQoJZ29vZHNfbnVtGAggASgNEg8KB2l0ZW1faWQYDSABKA0SEwoLTElJ",
-            "QkFFTUFIT0IYDiADKA0SDwoHc2hvcF9pZBgPIAEoDUIWqgITTWFyY2g3dGhI",
+            "ChNCdXlHb29kc0NzUmVxLnByb3RvIo4BCg1CdXlHb29kc0NzUmVxEhMKC0FM",
+            "SEJFS0tMSktLGAYgAygNEhAKCGdvb2RzX2lkGA4gASgNEg8KB2l0ZW1faWQY",
+            "ByABKA0SIQoZaW50ZXJhY3RlZF9wcm9wX2VudGl0eV9pZBgNIAEoDRIPCgdz",
+            "aG9wX2lkGAogASgNEhEKCWdvb2RzX251bRgJIAEoDUIWqgITTWFyY2g3dGhI",
             "b25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BuyGoodsCsReq), global::March7thHoney.Proto.BuyGoodsCsReq.Parser, new[]{ "GoodsId", "InteractedPropEntityId", "GoodsNum", "ItemId", "LIIBAEMAHOB", "ShopId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BuyGoodsCsReq), global::March7thHoney.Proto.BuyGoodsCsReq.Parser, new[]{ "ALHBEKKLJKK", "GoodsId", "ItemId", "InteractedPropEntityId", "ShopId", "GoodsNum" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,12 +74,12 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BuyGoodsCsReq(BuyGoodsCsReq other) : this() {
+      aLHBEKKLJKK_ = other.aLHBEKKLJKK_.Clone();
       goodsId_ = other.goodsId_;
-      interactedPropEntityId_ = other.interactedPropEntityId_;
-      goodsNum_ = other.goodsNum_;
       itemId_ = other.itemId_;
-      lIIBAEMAHOB_ = other.lIIBAEMAHOB_.Clone();
+      interactedPropEntityId_ = other.interactedPropEntityId_;
       shopId_ = other.shopId_;
+      goodsNum_ = other.goodsNum_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -89,8 +89,19 @@ namespace March7thHoney.Proto {
       return new BuyGoodsCsReq(this);
     }
 
+    /// <summary>Field number for the "ALHBEKKLJKK" field.</summary>
+    public const int ALHBEKKLJKKFieldNumber = 6;
+    private static readonly pb::FieldCodec<uint> _repeated_aLHBEKKLJKK_codec
+        = pb::FieldCodec.ForUInt32(50);
+    private readonly pbc::RepeatedField<uint> aLHBEKKLJKK_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> ALHBEKKLJKK {
+      get { return aLHBEKKLJKK_; }
+    }
+
     /// <summary>Field number for the "goods_id" field.</summary>
-    public const int GoodsIdFieldNumber = 5;
+    public const int GoodsIdFieldNumber = 14;
     private uint goodsId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -101,32 +112,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "interacted_prop_entity_id" field.</summary>
-    public const int InteractedPropEntityIdFieldNumber = 6;
-    private uint interactedPropEntityId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint InteractedPropEntityId {
-      get { return interactedPropEntityId_; }
-      set {
-        interactedPropEntityId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "goods_num" field.</summary>
-    public const int GoodsNumFieldNumber = 8;
-    private uint goodsNum_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint GoodsNum {
-      get { return goodsNum_; }
-      set {
-        goodsNum_ = value;
-      }
-    }
-
     /// <summary>Field number for the "item_id" field.</summary>
-    public const int ItemIdFieldNumber = 13;
+    public const int ItemIdFieldNumber = 7;
     private uint itemId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -137,19 +124,20 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "LIIBAEMAHOB" field.</summary>
-    public const int LIIBAEMAHOBFieldNumber = 14;
-    private static readonly pb::FieldCodec<uint> _repeated_lIIBAEMAHOB_codec
-        = pb::FieldCodec.ForUInt32(114);
-    private readonly pbc::RepeatedField<uint> lIIBAEMAHOB_ = new pbc::RepeatedField<uint>();
+    /// <summary>Field number for the "interacted_prop_entity_id" field.</summary>
+    public const int InteractedPropEntityIdFieldNumber = 13;
+    private uint interactedPropEntityId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> LIIBAEMAHOB {
-      get { return lIIBAEMAHOB_; }
+    public uint InteractedPropEntityId {
+      get { return interactedPropEntityId_; }
+      set {
+        interactedPropEntityId_ = value;
+      }
     }
 
     /// <summary>Field number for the "shop_id" field.</summary>
-    public const int ShopIdFieldNumber = 15;
+    public const int ShopIdFieldNumber = 10;
     private uint shopId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -157,6 +145,18 @@ namespace March7thHoney.Proto {
       get { return shopId_; }
       set {
         shopId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "goods_num" field.</summary>
+    public const int GoodsNumFieldNumber = 9;
+    private uint goodsNum_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint GoodsNum {
+      get { return goodsNum_; }
+      set {
+        goodsNum_ = value;
       }
     }
 
@@ -175,12 +175,12 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if(!aLHBEKKLJKK_.Equals(other.aLHBEKKLJKK_)) return false;
       if (GoodsId != other.GoodsId) return false;
-      if (InteractedPropEntityId != other.InteractedPropEntityId) return false;
-      if (GoodsNum != other.GoodsNum) return false;
       if (ItemId != other.ItemId) return false;
-      if(!lIIBAEMAHOB_.Equals(other.lIIBAEMAHOB_)) return false;
+      if (InteractedPropEntityId != other.InteractedPropEntityId) return false;
       if (ShopId != other.ShopId) return false;
+      if (GoodsNum != other.GoodsNum) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -188,12 +188,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      hash ^= aLHBEKKLJKK_.GetHashCode();
       if (GoodsId != 0) hash ^= GoodsId.GetHashCode();
-      if (InteractedPropEntityId != 0) hash ^= InteractedPropEntityId.GetHashCode();
-      if (GoodsNum != 0) hash ^= GoodsNum.GetHashCode();
       if (ItemId != 0) hash ^= ItemId.GetHashCode();
-      hash ^= lIIBAEMAHOB_.GetHashCode();
+      if (InteractedPropEntityId != 0) hash ^= InteractedPropEntityId.GetHashCode();
       if (ShopId != 0) hash ^= ShopId.GetHashCode();
+      if (GoodsNum != 0) hash ^= GoodsNum.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -212,26 +212,26 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (GoodsId != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(GoodsId);
-      }
-      if (InteractedPropEntityId != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(InteractedPropEntityId);
-      }
-      if (GoodsNum != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(GoodsNum);
-      }
+      aLHBEKKLJKK_.WriteTo(output, _repeated_aLHBEKKLJKK_codec);
       if (ItemId != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(56);
         output.WriteUInt32(ItemId);
       }
-      lIIBAEMAHOB_.WriteTo(output, _repeated_lIIBAEMAHOB_codec);
+      if (GoodsNum != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(GoodsNum);
+      }
       if (ShopId != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(80);
         output.WriteUInt32(ShopId);
+      }
+      if (InteractedPropEntityId != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(InteractedPropEntityId);
+      }
+      if (GoodsId != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(GoodsId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -243,26 +243,26 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (GoodsId != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(GoodsId);
-      }
-      if (InteractedPropEntityId != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(InteractedPropEntityId);
-      }
-      if (GoodsNum != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(GoodsNum);
-      }
+      aLHBEKKLJKK_.WriteTo(ref output, _repeated_aLHBEKKLJKK_codec);
       if (ItemId != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(56);
         output.WriteUInt32(ItemId);
       }
-      lIIBAEMAHOB_.WriteTo(ref output, _repeated_lIIBAEMAHOB_codec);
+      if (GoodsNum != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(GoodsNum);
+      }
       if (ShopId != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(80);
         output.WriteUInt32(ShopId);
+      }
+      if (InteractedPropEntityId != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(InteractedPropEntityId);
+      }
+      if (GoodsId != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(GoodsId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -274,21 +274,21 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      size += aLHBEKKLJKK_.CalculateSize(_repeated_aLHBEKKLJKK_codec);
       if (GoodsId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GoodsId);
-      }
-      if (InteractedPropEntityId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(InteractedPropEntityId);
-      }
-      if (GoodsNum != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GoodsNum);
       }
       if (ItemId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ItemId);
       }
-      size += lIIBAEMAHOB_.CalculateSize(_repeated_lIIBAEMAHOB_codec);
+      if (InteractedPropEntityId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(InteractedPropEntityId);
+      }
       if (ShopId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ShopId);
+      }
+      if (GoodsNum != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GoodsNum);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -302,21 +302,21 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      aLHBEKKLJKK_.Add(other.aLHBEKKLJKK_);
       if (other.GoodsId != 0) {
         GoodsId = other.GoodsId;
-      }
-      if (other.InteractedPropEntityId != 0) {
-        InteractedPropEntityId = other.InteractedPropEntityId;
-      }
-      if (other.GoodsNum != 0) {
-        GoodsNum = other.GoodsNum;
       }
       if (other.ItemId != 0) {
         ItemId = other.ItemId;
       }
-      lIIBAEMAHOB_.Add(other.lIIBAEMAHOB_);
+      if (other.InteractedPropEntityId != 0) {
+        InteractedPropEntityId = other.InteractedPropEntityId;
+      }
       if (other.ShopId != 0) {
         ShopId = other.ShopId;
+      }
+      if (other.GoodsNum != 0) {
+        GoodsNum = other.GoodsNum;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -337,29 +337,29 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 40: {
-            GoodsId = input.ReadUInt32();
-            break;
-          }
+          case 50:
           case 48: {
-            InteractedPropEntityId = input.ReadUInt32();
+            aLHBEKKLJKK_.AddEntriesFrom(input, _repeated_aLHBEKKLJKK_codec);
             break;
           }
-          case 64: {
-            GoodsNum = input.ReadUInt32();
-            break;
-          }
-          case 104: {
+          case 56: {
             ItemId = input.ReadUInt32();
             break;
           }
-          case 114:
-          case 112: {
-            lIIBAEMAHOB_.AddEntriesFrom(input, _repeated_lIIBAEMAHOB_codec);
+          case 72: {
+            GoodsNum = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 80: {
             ShopId = input.ReadUInt32();
+            break;
+          }
+          case 104: {
+            InteractedPropEntityId = input.ReadUInt32();
+            break;
+          }
+          case 112: {
+            GoodsId = input.ReadUInt32();
             break;
           }
         }
@@ -381,29 +381,29 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 40: {
-            GoodsId = input.ReadUInt32();
-            break;
-          }
+          case 50:
           case 48: {
-            InteractedPropEntityId = input.ReadUInt32();
+            aLHBEKKLJKK_.AddEntriesFrom(ref input, _repeated_aLHBEKKLJKK_codec);
             break;
           }
-          case 64: {
-            GoodsNum = input.ReadUInt32();
-            break;
-          }
-          case 104: {
+          case 56: {
             ItemId = input.ReadUInt32();
             break;
           }
-          case 114:
-          case 112: {
-            lIIBAEMAHOB_.AddEntriesFrom(ref input, _repeated_lIIBAEMAHOB_codec);
+          case 72: {
+            GoodsNum = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 80: {
             ShopId = input.ReadUInt32();
+            break;
+          }
+          case 104: {
+            InteractedPropEntityId = input.ReadUInt32();
+            break;
+          }
+          case 112: {
+            GoodsId = input.ReadUInt32();
             break;
           }
         }

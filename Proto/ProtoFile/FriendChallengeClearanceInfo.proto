@@ -2,18 +2,18 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
+import "BBBIAPEHABA.proto";
 import "ChallengeBossStatistics.proto";
 import "ChallengeStatistics.proto";
 import "ChallengeStoryStatistics.proto";
 
 message FriendChallengeClearanceInfo {
-    uint32 group_id = 3;
-    uint32 HCHCOAPJLMG = 4;
-    oneof HIACNHNLCGL {
-        ChallengeBossStatistics challenge_boss = 1055;
-        ChallengeStoryStatistics challenge_story = 1513;
-        ChallengeStatistics challenge_default = 1929;
+    BBBIAPEHABA MEGBIPBAFBP = 4;
+    uint32 LMPPDGOFOMF = 15;
+    uint32 group_id = 6;
+    oneof EDKOHAAMONH {
+        ChallengeStatistics challenge_default = 94;
+        ChallengeStoryStatistics challenge_story = 77;
+        ChallengeBossStatistics challenge_boss = 25;
     }
 }

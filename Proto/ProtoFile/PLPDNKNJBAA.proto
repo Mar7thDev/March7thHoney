@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "BMGHLHHJEGE.proto";
+import "MOFKNBAKKDI.proto";
+import "OHABCOEGDEH.proto";
+
+message PLPDNKNJBAA {
+    MOFKNBAKKDI HOCBDMPEMDH = 5;
+    repeated BMGHLHHJEGE ENDPGFBABBB = 14;
+    repeated uint32 KCENCAAPMLK = 9;
+    repeated OHABCOEGDEH HBGPLDACACI = 7;
+    uint32 CINEILEIEJK = 1;
+    uint32 NEDCJCBPEJM = 13;
+}

@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "ABIPCNKGFNI.proto";
+import "JBNGCJJDLHL.proto";
 
 message GetRechargeGiftInfoScRsp {
-    uint32 retcode = 1;
-    repeated ABIPCNKGFNI FEKLJCAOGII = 14;
+    repeated JBNGCJJDLHL OFIHOCCHNCN = 8;
+    uint32 retcode = 3;
 }

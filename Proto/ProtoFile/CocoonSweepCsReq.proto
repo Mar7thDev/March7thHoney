@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message CocoonSweepCsReq {
-    uint32 cocoon_id = 4;
-    uint32 world_level = 12;
+    uint32 cocoon_id = 13;
+    uint32 world_level = 5;
 }

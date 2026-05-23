@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "KJAGLIIDBGP.proto";
+import "DFGAIOOGPPA.proto";
 
 message RogueMagicEnableTalentScRsp {
+    DFGAIOOGPPA IHJKLHGMKBI = 4;
     uint32 retcode = 6;
-    KJAGLIIDBGP CLLGHDCNPOI = 12;
 }

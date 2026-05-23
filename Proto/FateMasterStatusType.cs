@@ -25,9 +25,9 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChpGYXRlTWFzdGVyU3RhdHVzVHlwZS5wcm90byqKAQoURmF0ZU1hc3RlclN0",
-            "YXR1c1R5cGUSGwoXS0dIT0NBUEhMREdfUENQREhFTFBLRU0QABIbChdLR0hP",
-            "Q0FQSExER19CTkpNUENIRklOQRABEhsKF0tHSE9DQVBITERHX0NDSkNGTUlB",
-            "RkNNEAISGwoXS0dIT0NBUEhMREdfUENCRk5OSkxPS0MQA0IWqgITTWFyY2g3",
+            "YXR1c1R5cGUSGwoXS05HTE5NS05HSkRfTkxDREdJUEdGREoQABIbChdLTkdM",
+            "Tk1LTkdKRF9MQ05KSE9LTE1QThABEhsKF0tOR0xOTUtOR0pEX0pKQkVQS0xP",
+            "TENQEAISGwoXS05HTE5NS05HSkRfUEVCTlBLT0NBRE4QA0IWqgITTWFyY2g3",
             "dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -38,10 +38,10 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum FateMasterStatusType {
-    [pbr::OriginalName("KGHOCAPHLDG_PCPDHELPKEM")] KghocaphldgPcpdhelpkem = 0,
-    [pbr::OriginalName("KGHOCAPHLDG_BNJMPCHFINA")] KghocaphldgBnjmpchfina = 1,
-    [pbr::OriginalName("KGHOCAPHLDG_CCJCFMIAFCM")] KghocaphldgCcjcfmiafcm = 2,
-    [pbr::OriginalName("KGHOCAPHLDG_PCBFNNJLOKC")] KghocaphldgPcbfnnjlokc = 3,
+    [pbr::OriginalName("KNGLNMKNGJD_NLCDGIPGFDJ")] KnglnmkngjdNlcdgipgfdj = 0,
+    [pbr::OriginalName("KNGLNMKNGJD_LCNJHOKLMPN")] KnglnmkngjdLcnjhoklmpn = 1,
+    [pbr::OriginalName("KNGLNMKNGJD_JJBEPKLOLCP")] KnglnmkngjdJjbepklolcp = 2,
+    [pbr::OriginalName("KNGLNMKNGJD_PEBNPKOCADN")] KnglnmkngjdPebnpkocadn = 3,
   }
 
   #endregion

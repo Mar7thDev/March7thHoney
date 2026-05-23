@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "HDHPAHIFEPM.proto";
+
+message PLAGFACLPDL {
+    HDHPAHIFEPM MHKLPAMDKBN = 13;
+    uint32 item_id = 10;
+    uint32 FDKPCNBCGEG = 2;
+}

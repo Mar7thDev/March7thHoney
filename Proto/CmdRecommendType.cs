@@ -24,12 +24,12 @@ namespace March7thHoney.Proto {
     static CmdRecommendTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChZDbWRSZWNvbW1lbmRUeXBlLnByb3RvKr0BChBDbWRSZWNvbW1lbmRUeXBl",
-            "EhsKF0tFSEpNT09NQkJBX1BDUERIRUxQS0VNEAASIAobQ21kR2V0QmlnRGF0",
-            "YVJlY29tbWVuZENzUmVxEOUSEiMKHkNtZEdldEJpZ0RhdGFBbGxSZWNvbW1l",
-            "bmRTY1JzcBDzEhIgChtDbWRHZXRCaWdEYXRhUmVjb21tZW5kU2NSc3AQ4RIS",
-            "IwoeQ21kR2V0QmlnRGF0YUFsbFJlY29tbWVuZENzUmVxEI8TQhaqAhNNYXJj",
-            "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ChZDbWRSZWNvbW1lbmRUeXBlLnByb3RvKqcBChBDbWRSZWNvbW1lbmRUeXBl",
+            "EhsKF0FQRElOS0hCSEdDX05MQ0RHSVBHRkRKEAASHAoXQVBESU5LSEJIR0Nf",
+            "REZJRUhCT0FKREcQ8xISHAoXQVBESU5LSEJIR0NfQ0VDQ05NRkpFUEIQjRMS",
+            "HAoXQVBESU5LSEJIR0NfRERITFBJQ0JOTE4Q/RISHAoXQVBESU5LSEJIR0Nf",
+            "Q01OQklOQklMRE8Q6RJCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
+            "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdRecommendType), }, null, null));
@@ -39,11 +39,11 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdRecommendType {
-    [pbr::OriginalName("KEHJMOOMBBA_PCPDHELPKEM")] KehjmoombbaPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdGetBigDataRecommendCsReq")] CmdGetBigDataRecommendCsReq = 2405,
-    [pbr::OriginalName("CmdGetBigDataAllRecommendScRsp")] CmdGetBigDataAllRecommendScRsp = 2419,
-    [pbr::OriginalName("CmdGetBigDataRecommendScRsp")] CmdGetBigDataRecommendScRsp = 2401,
-    [pbr::OriginalName("CmdGetBigDataAllRecommendCsReq")] CmdGetBigDataAllRecommendCsReq = 2447,
+    [pbr::OriginalName("APDINKHBHGC_NLCDGIPGFDJ")] ApdinkhbhgcNlcdgipgfdj = 0,
+    [pbr::OriginalName("APDINKHBHGC_DFIEHBOAJDG")] ApdinkhbhgcDfiehboajdg = 2419,
+    [pbr::OriginalName("APDINKHBHGC_CECCNMFJEPB")] ApdinkhbhgcCeccnmfjepb = 2445,
+    [pbr::OriginalName("APDINKHBHGC_DDHLPICBNLN")] ApdinkhbhgcDdhlpicbnln = 2429,
+    [pbr::OriginalName("APDINKHBHGC_CMNBINBILDO")] ApdinkhbhgcCmnbinbildo = 2409,
   }
 
   #endregion

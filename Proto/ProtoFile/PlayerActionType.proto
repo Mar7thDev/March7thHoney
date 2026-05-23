@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum PlayerActionType {
     PlayerActionType_PlayerActionNone = 0;
     PlayerActionType_PlayerActionRegister = 1;
@@ -254,6 +252,11 @@ enum PlayerActionType {
     PlayerActionType_PlayerActionChallengeBossPhaseEndBeforeBattle = 2224;
     PlayerActionType_PlayerActionChallengeRecommendLineup = 2225;
     PlayerActionType_PlayerActionChallengeStoryFeverBattleEnd = 2226;
+    PlayerActionType_PlayerActionChallengeTierceRecommendLineup = 2281;
+    PlayerActionType_PlayerActionChallengeTierceStart = 2282;
+    PlayerActionType_PlayerActionChallengeTierceBattleEnd = 2283;
+    PlayerActionType_PlayerActionChallengeTierceStageSettle = 2284;
+    PlayerActionType_PlayerActionChallengeTierceGradeReset = 2285;
     PlayerActionType_PlayerActionTeamInfoChange = 2301;
     PlayerActionType_PlayerActionChangeCurrentAvatar = 2302;
     PlayerActionType_PlayerActionCreateVirtualTeam = 2303;
@@ -484,10 +487,12 @@ enum PlayerActionType {
     PlayerActionType_PlayerActionPlayerReturnBpExpExtra = 4408;
     PlayerActionType_PlayerActionPlayerReturnHcoinExtra = 4409;
     PlayerActionType_PlayerActionPlayerReturnCustomRelic = 4410;
+    PlayerActionType_PlayerActionPlayerReturnAssistChange = 4421;
     PlayerActionType_PlayerActionRogueChallengeActivityStart = 4411;
     PlayerActionType_PlayerActionRogueChallengeActivityFinish = 4412;
     PlayerActionType_PlayerActionRogueChallengeActivitySave = 4413;
     PlayerActionType_PlayerActionPlayerReturnLoginMail = 4431;
+    PlayerActionType_PlayerActionPlayerReturnExtraHcoinProgressChange = 4432;
     PlayerActionType_PlayerActionAetherDivideUsePassiveSkillItem = 4450;
     PlayerActionType_PlayerActionAetherDivideClearPassiveSkill = 4451;
     PlayerActionType_PlayerActionAetherDivideFinishChallenge = 4452;
@@ -1104,6 +1109,7 @@ enum PlayerActionType {
     PlayerActionType_PlayerActionGridFightFavoriteArchive = 7290;
     PlayerActionType_PlayerActionGridFightFormationEdit = 7291;
     PlayerActionType_PlayerActionGridFightModifierUpdate = 7292;
+    PlayerActionType_PlayerActionGridFightFormationUgcUpdate = 7293;
     PlayerActionType_PlayerActionLocalLegendBattleBegin = 7361;
     PlayerActionType_PlayerActionLocalLegendBattleEnd = 7362;
     PlayerActionType_PlayerActionDiceCombatBuyShopGood = 7351;
@@ -1207,4 +1213,26 @@ enum PlayerActionType {
     PlayerActionType_PlayerActionRelicPresetPlanSave = 7581;
     PlayerActionType_PlayerActionRelicPresetPlanDelete = 7582;
     PlayerActionType_PlayerActionRelicPresetPlanModifyName = 7583;
+    PlayerActionType_PlayerActionPixAirUnlockPlane = 7611;
+    PlayerActionType_PlayerActionPixAirStageStart = 7612;
+    PlayerActionType_PlayerActionPixAirBattleGen = 7613;
+    PlayerActionType_PlayerActionPixAirBattleEnd = 7614;
+    PlayerActionType_PlayerActionPixAirLootEquipSelect = 7615;
+    PlayerActionType_PlayerActionPixAirBuyEquip = 7616;
+    PlayerActionType_PlayerActionPixAirRefreshShop = 7617;
+    PlayerActionType_PlayerActionPixAirNodeSelectContent = 7618;
+    PlayerActionType_PlayerActionPixAirGrantReward = 7619;
+    PlayerActionType_PlayerActionPixAirEvent = 7620;
+    PlayerActionType_PlayerActionPixAirNewEquip = 7621;
+    PlayerActionType_PlayerActionPixAirSellEquip = 7622;
+    PlayerActionType_PlayerActionPixAirEquipUpgrade = 7623;
+    PlayerActionType_PlayerActionPixAirEquipEnchant = 7624;
+    PlayerActionType_PlayerActionPixAirCoinChange = 7625;
+    PlayerActionType_PlayerActionPixAirStageSettle = 7630;
+    PlayerActionType_PlayerActionExpeditionBattleGameStart = 7631;
+    PlayerActionType_PlayerActionExpeditionBattleGameEnd = 7632;
+    PlayerActionType_PlayerActionChenLingFesLevelStart = 7641;
+    PlayerActionType_PlayerActionChenLingFesBusinessDayEnd = 7642;
+    PlayerActionType_PlayerActionChenLingFesPhaseSettle = 7643;
+    PlayerActionType_PlayerActionChenLingFesLevelSettle = 7644;
 }

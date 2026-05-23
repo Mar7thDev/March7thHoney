@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChxGYXRlU2hvcExvY2tHb29kc0NzUmVxLnByb3RvIisKFkZhdGVTaG9wTG9j",
-            "a0dvb2RzQ3NSZXESEQoJaXNfbG9ja2VkGAYgASgIQhaqAhNNYXJjaDd0aEhv",
+            "a0dvb2RzQ3NSZXESEQoJaXNfbG9ja2VkGAEgASgIQhaqAhNNYXJjaDd0aEhv",
             "bmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -83,7 +83,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "is_locked" field.</summary>
-    public const int IsLockedFieldNumber = 6;
+    public const int IsLockedFieldNumber = 1;
     private bool isLocked_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -137,7 +137,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (IsLocked != false) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(8);
         output.WriteBool(IsLocked);
       }
       if (_unknownFields != null) {
@@ -151,7 +151,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (IsLocked != false) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(8);
         output.WriteBool(IsLocked);
       }
       if (_unknownFields != null) {
@@ -201,7 +201,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 48: {
+          case 8: {
             IsLocked = input.ReadBool();
             break;
           }
@@ -224,7 +224,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 48: {
+          case 8: {
             IsLocked = input.ReadBool();
             break;
           }

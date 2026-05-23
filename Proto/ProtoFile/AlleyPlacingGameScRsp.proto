@@ -2,15 +2,13 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message AlleyPlacingGameScRsp {
-    uint32 GKOAHBKEDHL = 1;
-    uint32 retcode = 3;
-    uint32 HGIFEKEFCAN = 5;
-    uint32 AHNPMGLOIEH = 6;
-    uint32 KHEBCOPEGKC = 10;
-    uint32 MABFDBCDCDN = 11;
-    uint32 event_id = 13;
-    uint32 LDLOJJGNJMJ = 14;
+    uint32 LFMHGMJELEE = 8;
+    uint32 retcode = 13;
+    uint32 AJBEOCIEPKP = 10;
+    uint32 JKBINMNFPKK = 3;
+    uint32 BIJPMOBEIJC = 7;
+    uint32 CIBNBDLMEIC = 14;
+    uint32 event_id = 6;
+    uint32 ABHOECNLLGE = 9;
 }

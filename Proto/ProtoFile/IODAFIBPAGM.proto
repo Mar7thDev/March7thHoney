@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "JOMEGNGJKJK.proto";
+
+message IODAFIBPAGM {
+    repeated JOMEGNGJKJK JNGNGMJCAAI = 6;
+    uint32 map_id = 9;
+    uint32 cost_time = 14;
+}

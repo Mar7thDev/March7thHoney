@@ -24,12 +24,13 @@ namespace March7thHoney.Proto {
     static RelicPresetPlanSourceTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Ch9SZWxpY1ByZXNldFBsYW5Tb3VyY2VUeXBlLnByb3RvKqwBChlSZWxpY1By",
-            "ZXNldFBsYW5Tb3VyY2VUeXBlEhsKF0tISU1BUEhLRExJX1BDUERIRUxQS0VN",
-            "EAASGwoXS0hJTUFQSEtETElfRkxGTENFTEZBUEkQARIbChdLSElNQVBIS0RM",
-            "SV9PTkpHRUFBSkRMTRACEhsKF0tISU1BUEhLRExJX0tPQktPQUlETE5GEAMS",
-            "GwoXS0hJTUFQSEtETElfR0JDS0dPSUdHSEsQBEIWqgITTWFyY2g3dGhIb25l",
-            "eS5Qcm90b2IGcHJvdG8z"));
+            "Ch9SZWxpY1ByZXNldFBsYW5Tb3VyY2VUeXBlLnByb3RvKuMBChlSZWxpY1By",
+            "ZXNldFBsYW5Tb3VyY2VUeXBlEhsKF0hOQkdNT0lIT0FOX05MQ0RHSVBHRkRK",
+            "EAASGwoXSE5CR01PSUhPQU5fQkRORERNQk9OTkoQARIbChdITkJHTU9JSE9B",
+            "Tl9ETEJMTkFLS05LShACEhsKF0hOQkdNT0lIT0FOX09ERkFNSUJISUdFEAMS",
+            "GwoXSE5CR01PSUhPQU5fTElLT1BHTkhCUFAQBBIbChdITkJHTU9JSE9BTl9D",
+            "UEhNRUhEQ0ZCRhAFEhgKFEhOQkdNT0lIT0FOX3BsYXRmb3JtEAZCFqoCE01h",
+            "cmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.RelicPresetPlanSourceType), }, null, null));
@@ -39,11 +40,13 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum RelicPresetPlanSourceType {
-    [pbr::OriginalName("KHIMAPHKDLI_PCPDHELPKEM")] KhimaphkdliPcpdhelpkem = 0,
-    [pbr::OriginalName("KHIMAPHKDLI_FLFLCELFAPI")] KhimaphkdliFlflcelfapi = 1,
-    [pbr::OriginalName("KHIMAPHKDLI_ONJGEAAJDLM")] KhimaphkdliOnjgeaajdlm = 2,
-    [pbr::OriginalName("KHIMAPHKDLI_KOBKOAIDLNF")] KhimaphkdliKobkoaidlnf = 3,
-    [pbr::OriginalName("KHIMAPHKDLI_GBCKGOIGGHK")] KhimaphkdliGbckgoigghk = 4,
+    [pbr::OriginalName("HNBGMOIHOAN_NLCDGIPGFDJ")] HnbgmoihoanNlcdgipgfdj = 0,
+    [pbr::OriginalName("HNBGMOIHOAN_BDNDDMBONNJ")] HnbgmoihoanBdnddmbonnj = 1,
+    [pbr::OriginalName("HNBGMOIHOAN_DLBLNAKKNKJ")] HnbgmoihoanDlblnakknkj = 2,
+    [pbr::OriginalName("HNBGMOIHOAN_ODFAMIBHIGE")] HnbgmoihoanOdfamibhige = 3,
+    [pbr::OriginalName("HNBGMOIHOAN_LIKOPGNHBPP")] HnbgmoihoanLikopgnhbpp = 4,
+    [pbr::OriginalName("HNBGMOIHOAN_CPHMEHDCFBF")] HnbgmoihoanCphmehdcfbf = 5,
+    [pbr::OriginalName("HNBGMOIHOAN_platform")] HnbgmoihoanPlatform = 6,
   }
 
   #endregion

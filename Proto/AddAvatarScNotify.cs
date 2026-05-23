@@ -26,13 +26,13 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChdBZGRBdmF0YXJTY05vdGlmeS5wcm90bxoXQWRkQXZhdGFyU3JjU3RhdGUu",
             "cHJvdG8aDkl0ZW1MaXN0LnByb3RvIncKEUFkZEF2YXRhclNjTm90aWZ5EhkK",
-            "BnJld2FyZBgBIAEoCzIJLkl0ZW1MaXN0Eh8KA3NyYxgGIAEoDjISLkFkZEF2",
-            "YXRhclNyY1N0YXRlEg4KBmlzX25ldxgHIAEoCBIWCg5iYXNlX2F2YXRhcl9p",
-            "ZBgMIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "BnJld2FyZBgNIAEoCzIJLkl0ZW1MaXN0EhYKDmJhc2VfYXZhdGFyX2lkGAIg",
+            "ASgNEh8KA3NyYxgJIAEoDjISLkFkZEF2YXRhclNyY1N0YXRlEg4KBmlzX25l",
+            "dxgPIAEoCEIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.AddAvatarSrcStateReflection.Descriptor, global::March7thHoney.Proto.ItemListReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AddAvatarScNotify), global::March7thHoney.Proto.AddAvatarScNotify.Parser, new[]{ "Reward", "Src", "IsNew", "BaseAvatarId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AddAvatarScNotify), global::March7thHoney.Proto.AddAvatarScNotify.Parser, new[]{ "Reward", "BaseAvatarId", "Src", "IsNew" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,9 +75,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public AddAvatarScNotify(AddAvatarScNotify other) : this() {
       reward_ = other.reward_ != null ? other.reward_.Clone() : null;
+      baseAvatarId_ = other.baseAvatarId_;
       src_ = other.src_;
       isNew_ = other.isNew_;
-      baseAvatarId_ = other.baseAvatarId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -88,7 +88,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "reward" field.</summary>
-    public const int RewardFieldNumber = 1;
+    public const int RewardFieldNumber = 13;
     private global::March7thHoney.Proto.ItemList reward_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -99,8 +99,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "base_avatar_id" field.</summary>
+    public const int BaseAvatarIdFieldNumber = 2;
+    private uint baseAvatarId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint BaseAvatarId {
+      get { return baseAvatarId_; }
+      set {
+        baseAvatarId_ = value;
+      }
+    }
+
     /// <summary>Field number for the "src" field.</summary>
-    public const int SrcFieldNumber = 6;
+    public const int SrcFieldNumber = 9;
     private global::March7thHoney.Proto.AddAvatarSrcState src_ = global::March7thHoney.Proto.AddAvatarSrcState.AddAvatarSrcNone;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -112,7 +124,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "is_new" field.</summary>
-    public const int IsNewFieldNumber = 7;
+    public const int IsNewFieldNumber = 15;
     private bool isNew_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -120,18 +132,6 @@ namespace March7thHoney.Proto {
       get { return isNew_; }
       set {
         isNew_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "base_avatar_id" field.</summary>
-    public const int BaseAvatarIdFieldNumber = 12;
-    private uint baseAvatarId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint BaseAvatarId {
-      get { return baseAvatarId_; }
-      set {
-        baseAvatarId_ = value;
       }
     }
 
@@ -151,9 +151,9 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (!object.Equals(Reward, other.Reward)) return false;
+      if (BaseAvatarId != other.BaseAvatarId) return false;
       if (Src != other.Src) return false;
       if (IsNew != other.IsNew) return false;
-      if (BaseAvatarId != other.BaseAvatarId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -162,9 +162,9 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (reward_ != null) hash ^= Reward.GetHashCode();
+      if (BaseAvatarId != 0) hash ^= BaseAvatarId.GetHashCode();
       if (Src != global::March7thHoney.Proto.AddAvatarSrcState.AddAvatarSrcNone) hash ^= Src.GetHashCode();
       if (IsNew != false) hash ^= IsNew.GetHashCode();
-      if (BaseAvatarId != 0) hash ^= BaseAvatarId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -183,21 +183,21 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (reward_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Reward);
+      if (BaseAvatarId != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(BaseAvatarId);
       }
       if (Src != global::March7thHoney.Proto.AddAvatarSrcState.AddAvatarSrcNone) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(72);
         output.WriteEnum((int) Src);
       }
-      if (IsNew != false) {
-        output.WriteRawTag(56);
-        output.WriteBool(IsNew);
+      if (reward_ != null) {
+        output.WriteRawTag(106);
+        output.WriteMessage(Reward);
       }
-      if (BaseAvatarId != 0) {
-        output.WriteRawTag(96);
-        output.WriteUInt32(BaseAvatarId);
+      if (IsNew != false) {
+        output.WriteRawTag(120);
+        output.WriteBool(IsNew);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -209,21 +209,21 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (reward_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Reward);
+      if (BaseAvatarId != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(BaseAvatarId);
       }
       if (Src != global::March7thHoney.Proto.AddAvatarSrcState.AddAvatarSrcNone) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(72);
         output.WriteEnum((int) Src);
       }
-      if (IsNew != false) {
-        output.WriteRawTag(56);
-        output.WriteBool(IsNew);
+      if (reward_ != null) {
+        output.WriteRawTag(106);
+        output.WriteMessage(Reward);
       }
-      if (BaseAvatarId != 0) {
-        output.WriteRawTag(96);
-        output.WriteUInt32(BaseAvatarId);
+      if (IsNew != false) {
+        output.WriteRawTag(120);
+        output.WriteBool(IsNew);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -238,14 +238,14 @@ namespace March7thHoney.Proto {
       if (reward_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Reward);
       }
+      if (BaseAvatarId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BaseAvatarId);
+      }
       if (Src != global::March7thHoney.Proto.AddAvatarSrcState.AddAvatarSrcNone) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Src);
       }
       if (IsNew != false) {
         size += 1 + 1;
-      }
-      if (BaseAvatarId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BaseAvatarId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -265,14 +265,14 @@ namespace March7thHoney.Proto {
         }
         Reward.MergeFrom(other.Reward);
       }
+      if (other.BaseAvatarId != 0) {
+        BaseAvatarId = other.BaseAvatarId;
+      }
       if (other.Src != global::March7thHoney.Proto.AddAvatarSrcState.AddAvatarSrcNone) {
         Src = other.Src;
       }
       if (other.IsNew != false) {
         IsNew = other.IsNew;
-      }
-      if (other.BaseAvatarId != 0) {
-        BaseAvatarId = other.BaseAvatarId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -293,23 +293,23 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
+          case 16: {
+            BaseAvatarId = input.ReadUInt32();
+            break;
+          }
+          case 72: {
+            Src = (global::March7thHoney.Proto.AddAvatarSrcState) input.ReadEnum();
+            break;
+          }
+          case 106: {
             if (reward_ == null) {
               Reward = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(Reward);
             break;
           }
-          case 48: {
-            Src = (global::March7thHoney.Proto.AddAvatarSrcState) input.ReadEnum();
-            break;
-          }
-          case 56: {
+          case 120: {
             IsNew = input.ReadBool();
-            break;
-          }
-          case 96: {
-            BaseAvatarId = input.ReadUInt32();
             break;
           }
         }
@@ -331,23 +331,23 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
+          case 16: {
+            BaseAvatarId = input.ReadUInt32();
+            break;
+          }
+          case 72: {
+            Src = (global::March7thHoney.Proto.AddAvatarSrcState) input.ReadEnum();
+            break;
+          }
+          case 106: {
             if (reward_ == null) {
               Reward = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(Reward);
             break;
           }
-          case 48: {
-            Src = (global::March7thHoney.Proto.AddAvatarSrcState) input.ReadEnum();
-            break;
-          }
-          case 56: {
+          case 120: {
             IsNew = input.ReadBool();
-            break;
-          }
-          case 96: {
-            BaseAvatarId = input.ReadUInt32();
             break;
           }
         }

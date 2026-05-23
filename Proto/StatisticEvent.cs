@@ -26,13 +26,13 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChRTdGF0aXN0aWNFdmVudC5wcm90bxoeQmF0dGxlU3RhdGljdGljRXZlbnRU",
             "eXBlLnByb3RvImUKDlN0YXRpc3RpY0V2ZW50EicKBHR5cGUYASABKA4yGS5C",
-            "YXR0bGVTdGF0aWN0aWNFdmVudFR5cGUSEwoLUElDRUdNQ0NITUUYAiABKA0S",
+            "YXR0bGVTdGF0aWN0aWNFdmVudFR5cGUSEwoLTE1NREhHQ0lIQkwYAiABKA0S",
             "FQoNZGlzcGxheV92YWx1ZRgDIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90",
             "b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.BattleStaticticEventTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StatisticEvent), global::March7thHoney.Proto.StatisticEvent.Parser, new[]{ "Type", "PICEGMCCHME", "DisplayValue" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StatisticEvent), global::March7thHoney.Proto.StatisticEvent.Parser, new[]{ "Type", "LMMDHGCIHBL", "DisplayValue" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,7 +75,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public StatisticEvent(StatisticEvent other) : this() {
       type_ = other.type_;
-      pICEGMCCHME_ = other.pICEGMCCHME_;
+      lMMDHGCIHBL_ = other.lMMDHGCIHBL_;
       displayValue_ = other.displayValue_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -98,15 +98,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "PICEGMCCHME" field.</summary>
-    public const int PICEGMCCHMEFieldNumber = 2;
-    private uint pICEGMCCHME_;
+    /// <summary>Field number for the "LMMDHGCIHBL" field.</summary>
+    public const int LMMDHGCIHBLFieldNumber = 2;
+    private uint lMMDHGCIHBL_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PICEGMCCHME {
-      get { return pICEGMCCHME_; }
+    public uint LMMDHGCIHBL {
+      get { return lMMDHGCIHBL_; }
       set {
-        pICEGMCCHME_ = value;
+        lMMDHGCIHBL_ = value;
       }
     }
 
@@ -138,7 +138,7 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (Type != other.Type) return false;
-      if (PICEGMCCHME != other.PICEGMCCHME) return false;
+      if (LMMDHGCIHBL != other.LMMDHGCIHBL) return false;
       if (DisplayValue != other.DisplayValue) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -148,7 +148,7 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (Type != global::March7thHoney.Proto.BattleStaticticEventType.BattleStaticticEventNone) hash ^= Type.GetHashCode();
-      if (PICEGMCCHME != 0) hash ^= PICEGMCCHME.GetHashCode();
+      if (LMMDHGCIHBL != 0) hash ^= LMMDHGCIHBL.GetHashCode();
       if (DisplayValue != 0) hash ^= DisplayValue.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -172,9 +172,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(8);
         output.WriteEnum((int) Type);
       }
-      if (PICEGMCCHME != 0) {
+      if (LMMDHGCIHBL != 0) {
         output.WriteRawTag(16);
-        output.WriteUInt32(PICEGMCCHME);
+        output.WriteUInt32(LMMDHGCIHBL);
       }
       if (DisplayValue != 0) {
         output.WriteRawTag(24);
@@ -194,9 +194,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(8);
         output.WriteEnum((int) Type);
       }
-      if (PICEGMCCHME != 0) {
+      if (LMMDHGCIHBL != 0) {
         output.WriteRawTag(16);
-        output.WriteUInt32(PICEGMCCHME);
+        output.WriteUInt32(LMMDHGCIHBL);
       }
       if (DisplayValue != 0) {
         output.WriteRawTag(24);
@@ -215,8 +215,8 @@ namespace March7thHoney.Proto {
       if (Type != global::March7thHoney.Proto.BattleStaticticEventType.BattleStaticticEventNone) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
       }
-      if (PICEGMCCHME != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PICEGMCCHME);
+      if (LMMDHGCIHBL != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LMMDHGCIHBL);
       }
       if (DisplayValue != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DisplayValue);
@@ -236,8 +236,8 @@ namespace March7thHoney.Proto {
       if (other.Type != global::March7thHoney.Proto.BattleStaticticEventType.BattleStaticticEventNone) {
         Type = other.Type;
       }
-      if (other.PICEGMCCHME != 0) {
-        PICEGMCCHME = other.PICEGMCCHME;
+      if (other.LMMDHGCIHBL != 0) {
+        LMMDHGCIHBL = other.LMMDHGCIHBL;
       }
       if (other.DisplayValue != 0) {
         DisplayValue = other.DisplayValue;
@@ -266,7 +266,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 16: {
-            PICEGMCCHME = input.ReadUInt32();
+            LMMDHGCIHBL = input.ReadUInt32();
             break;
           }
           case 24: {
@@ -297,7 +297,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 16: {
-            PICEGMCCHME = input.ReadUInt32();
+            LMMDHGCIHBL = input.ReadUInt32();
             break;
           }
           case 24: {

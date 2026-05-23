@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "ChargerInfo.proto";
 import "RotaterEnergyInfo.proto";
 
 message InteractChargerScRsp {
-    ChargerInfo charger_info = 8;
-    RotaterEnergyInfo energy_info = 10;
-    uint32 retcode = 15;
+    RotaterEnergyInfo energy_info = 12;
+    ChargerInfo charger_info = 14;
+    uint32 retcode = 9;
 }

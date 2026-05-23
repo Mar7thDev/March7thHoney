@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "Ch1TeW5jQXBwbHlGcmllbmRTY05vdGlmeS5wcm90bxoVRnJpZW5kQXBwbHlJ",
             "bmZvLnByb3RvIkYKF1N5bmNBcHBseUZyaWVuZFNjTm90aWZ5EisKEWZyaWVu",
-            "ZF9hcHBseV9pbmZvGAQgASgLMhAuRnJpZW5kQXBwbHlJbmZvQhaqAhNNYXJj",
+            "ZF9hcHBseV9pbmZvGAsgASgLMhAuRnJpZW5kQXBwbHlJbmZvQhaqAhNNYXJj",
             "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.FriendApplyInfoReflection.Descriptor, },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "friend_apply_info" field.</summary>
-    public const int FriendApplyInfoFieldNumber = 4;
+    public const int FriendApplyInfoFieldNumber = 11;
     private global::March7thHoney.Proto.FriendApplyInfo friendApplyInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -138,7 +138,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (friendApplyInfo_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(90);
         output.WriteMessage(FriendApplyInfo);
       }
       if (_unknownFields != null) {
@@ -152,7 +152,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (friendApplyInfo_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(90);
         output.WriteMessage(FriendApplyInfo);
       }
       if (_unknownFields != null) {
@@ -205,7 +205,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 34: {
+          case 90: {
             if (friendApplyInfo_ == null) {
               FriendApplyInfo = new global::March7thHoney.Proto.FriendApplyInfo();
             }
@@ -231,7 +231,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 34: {
+          case 90: {
             if (friendApplyInfo_ == null) {
               FriendApplyInfo = new global::March7thHoney.Proto.FriendApplyInfo();
             }

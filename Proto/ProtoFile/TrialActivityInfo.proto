@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message TrialActivityInfo {
-    bool taken_reward = 2;
-    uint32 stage_id = 9;
+    bool taken_reward = 6;
+    uint32 stage_id = 13;
 }

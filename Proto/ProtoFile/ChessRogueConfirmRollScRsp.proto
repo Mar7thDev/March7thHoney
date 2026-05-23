@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "DFAOIALEBOH.proto";
+import "KFACLOGFNJF.proto";
 
 message ChessRogueConfirmRollScRsp {
-    DFAOIALEBOH PJABKDBFPIM = 7;
-    uint32 retcode = 13;
+    KFACLOGFNJF POHEPEEFBOA = 11;
+    uint32 retcode = 8;
 }

@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message VideoKeyInfo {
-    uint64 video_key = 3;
-    uint32 id = 6;
+    uint64 video_key = 5;
+    uint32 id = 13;
 }

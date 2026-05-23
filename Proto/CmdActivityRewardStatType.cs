@@ -24,14 +24,13 @@ namespace March7thHoney.Proto {
     static CmdActivityRewardStatTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Ch9DbWRBY3Rpdml0eVJld2FyZFN0YXRUeXBlLnByb3RvKqQCChlDbWRBY3Rp",
-            "dml0eVJld2FyZFN0YXRUeXBlEhsKF0dNR0dESUxFS0JOX0lIQktLSkdORE9G",
-            "EAASJwoiQ21kR2V0QWN0aXZpdHlSZXdhcmRDb3VudERhdGFTY1JzcBCaRxIf",
-            "ChpDbWRHZXRBY3Rpdml0eUhvdERhdGFDc1JlcRCfRxIfChpDbWRHZXRBY3Rp",
-            "dml0eUhvdERhdGFTY1JzcBCgRxInCiJDbWRHZXRBY3Rpdml0eVJld2FyZENv",
-            "dW50RGF0YUNzUmVxEJtHEioKJUNtZEdldEFsbEFjdGl2aXR5UmV3YXJkQ291",
-            "bnREYXRhU2NSc3AQnUcSKgolQ21kR2V0QWxsQWN0aXZpdHlSZXdhcmRDb3Vu",
-            "dERhdGFDc1JlcRCXR0IWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "Ch9DbWRBY3Rpdml0eVJld2FyZFN0YXRUeXBlLnByb3RvKuwBChlDbWRBY3Rp",
+            "dml0eVJld2FyZFN0YXRUeXBlEhsKF0tGQ01DUElMTEtFX0hCUEVERENPSkRC",
+            "EAASHAoXS0ZDTUNQSUxMS0VfS0xITExPQ05QQkIQnkcSHAoXS0ZDTUNQSUxM",
+            "S0VfUEZLTklIQ0NPQ1AQmEcSHAoXS0ZDTUNQSUxMS0VfSVBKRkpJSEdORU8Q",
+            "mkcSHAoXS0ZDTUNQSUxMS0VfTkJOT01CT0hGT0oQoEcSHAoXS0ZDTUNQSUxM",
+            "S0VfSE1IQUxNRktFSVAQn0cSHAoXS0ZDTUNQSUxMS0VfTUxHTklMT0JLR0oQ",
+            "l0dCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdActivityRewardStatType), }, null, null));
@@ -41,13 +40,13 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdActivityRewardStatType {
-    [pbr::OriginalName("GMGGDILEKBN_IHBKKJGNDOF")] GmggdilekbnIhbkkjgndof = 0,
-    [pbr::OriginalName("CmdGetActivityRewardCountDataScRsp")] CmdGetActivityRewardCountDataScRsp = 9114,
-    [pbr::OriginalName("CmdGetActivityHotDataCsReq")] CmdGetActivityHotDataCsReq = 9119,
-    [pbr::OriginalName("CmdGetActivityHotDataScRsp")] CmdGetActivityHotDataScRsp = 9120,
-    [pbr::OriginalName("CmdGetActivityRewardCountDataCsReq")] CmdGetActivityRewardCountDataCsReq = 9115,
-    [pbr::OriginalName("CmdGetAllActivityRewardCountDataScRsp")] CmdGetAllActivityRewardCountDataScRsp = 9117,
-    [pbr::OriginalName("CmdGetAllActivityRewardCountDataCsReq")] CmdGetAllActivityRewardCountDataCsReq = 9111,
+    [pbr::OriginalName("KFCMCPILLKE_HBPEDDCOJDB")] KfcmcpillkeHbpeddcojdb = 0,
+    [pbr::OriginalName("KFCMCPILLKE_KLHLLOCNPBB")] KfcmcpillkeKlhllocnpbb = 9118,
+    [pbr::OriginalName("KFCMCPILLKE_PFKNIHCCOCP")] KfcmcpillkePfknihccocp = 9112,
+    [pbr::OriginalName("KFCMCPILLKE_IPJFJIHGNEO")] KfcmcpillkeIpjfjihgneo = 9114,
+    [pbr::OriginalName("KFCMCPILLKE_NBNOMBOHFOJ")] KfcmcpillkeNbnombohfoj = 9120,
+    [pbr::OriginalName("KFCMCPILLKE_HMHALMFKEIP")] KfcmcpillkeHmhalmfkeip = 9119,
+    [pbr::OriginalName("KFCMCPILLKE_MLGNILOBKGJ")] KfcmcpillkeMlgnilobkgj = 9111,
   }
 
   #endregion

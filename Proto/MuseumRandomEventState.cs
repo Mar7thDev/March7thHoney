@@ -25,9 +25,9 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChxNdXNldW1SYW5kb21FdmVudFN0YXRlLnByb3RvKowBChZNdXNldW1SYW5k",
-            "b21FdmVudFN0YXRlEhsKF0pLRUtORERCRE1DX1BDUERIRUxQS0VNEAASGwoX",
-            "SktFS05EREJETUNfRERMUEdOSEFEQ0oQARIbChdKS0VLTkREQkRNQ19IUEpF",
-            "QkZGSEpOUBACEhsKF0pLRUtORERCRE1DX0tMSERDT1BQTE5HEANCFqoCE01h",
+            "b21FdmVudFN0YXRlEhsKF05MQUVEUE5CSEJQX05MQ0RHSVBHRkRKEAASGwoX",
+            "TkxBRURQTkJIQlBfTlBBRk1FQk5GT0IQARIbChdOTEFFRFBOQkhCUF9MT09B",
+            "S05IREJMTBACEhsKF05MQUVEUE5CSEJQX0NJSEZHSkRDSElBEANCFqoCE01h",
             "cmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -38,10 +38,10 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum MuseumRandomEventState {
-    [pbr::OriginalName("JKEKNDDBDMC_PCPDHELPKEM")] JkeknddbdmcPcpdhelpkem = 0,
-    [pbr::OriginalName("JKEKNDDBDMC_DDLPGNHADCJ")] JkeknddbdmcDdlpgnhadcj = 1,
-    [pbr::OriginalName("JKEKNDDBDMC_HPJEBFFHJNP")] JkeknddbdmcHpjebffhjnp = 2,
-    [pbr::OriginalName("JKEKNDDBDMC_KLHDCOPPLNG")] JkeknddbdmcKlhdcopplng = 3,
+    [pbr::OriginalName("NLAEDPNBHBP_NLCDGIPGFDJ")] NlaedpnbhbpNlcdgipgfdj = 0,
+    [pbr::OriginalName("NLAEDPNBHBP_NPAFMEBNFOB")] NlaedpnbhbpNpafmebnfob = 1,
+    [pbr::OriginalName("NLAEDPNBHBP_LOOAKNHDBLL")] NlaedpnbhbpLooaknhdbll = 2,
+    [pbr::OriginalName("NLAEDPNBHBP_CIHFGJDCHIA")] NlaedpnbhbpCihfgjdchia = 3,
   }
 
   #endregion

@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "GMONEHJIKMA.proto";
+import "DPJCBHKGFOK.proto";
 
 message RelicBoxRegularScNotify {
-    GMONEHJIKMA KKHBAPABFJC = 1;
+    DPJCBHKGFOK AHNPPGMFOKN = 12;
 }

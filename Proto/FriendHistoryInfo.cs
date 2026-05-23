@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChdGcmllbmRIaXN0b3J5SW5mby5wcm90byJBChFGcmllbmRIaXN0b3J5SW5m",
-            "bxIUCgxjb250YWN0X3NpZGUYCiABKA0SFgoObGFzdF9zZW5kX3RpbWUYDSAB",
+            "bxIUCgxjb250YWN0X3NpZGUYBCABKA0SFgoObGFzdF9zZW5kX3RpbWUYBSAB",
             "KANCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "contact_side" field.</summary>
-    public const int ContactSideFieldNumber = 10;
+    public const int ContactSideFieldNumber = 4;
     private uint contactSide_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "last_send_time" field.</summary>
-    public const int LastSendTimeFieldNumber = 13;
+    public const int LastSendTimeFieldNumber = 5;
     private long lastSendTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (ContactSide != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(32);
         output.WriteUInt32(ContactSide);
       }
       if (LastSendTime != 0L) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(40);
         output.WriteInt64(LastSendTime);
       }
       if (_unknownFields != null) {
@@ -170,11 +170,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (ContactSide != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(32);
         output.WriteUInt32(ContactSide);
       }
       if (LastSendTime != 0L) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(40);
         output.WriteInt64(LastSendTime);
       }
       if (_unknownFields != null) {
@@ -230,11 +230,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 80: {
+          case 32: {
             ContactSide = input.ReadUInt32();
             break;
           }
-          case 104: {
+          case 40: {
             LastSendTime = input.ReadInt64();
             break;
           }
@@ -257,11 +257,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 80: {
+          case 32: {
             ContactSide = input.ReadUInt32();
             break;
           }
-          case 104: {
+          case 40: {
             LastSendTime = input.ReadInt64();
             break;
           }

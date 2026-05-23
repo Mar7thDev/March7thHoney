@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdReplayType {
-    EDFKEEKMFIB_PCPDHELPKEM = 0;
-    CmdGetReplayTokenCsReq = 3591;
-    CmdAHCAHFFNHLD = 3595;
-    EDFKEEKMFIB_MLJMDFDNOOE = 3594;
-    CmdEKGAMNCMOEJ = 3510;
+    GLHDKOHHDDK_NLCDGIPGFDJ = 0;
+    GLHDKOHHDDK_OENOMLJLADC = 3580;
+    GLHDKOHHDDK_IDABMGHDHJH = 3573;
+    GLHDKOHHDDK_OINMFGJKBFP = 3527;
+    GLHDKOHHDDK_CMGJOLOLINK = 3503;
 }

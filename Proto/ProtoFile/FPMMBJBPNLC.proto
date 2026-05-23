@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "BBOMFKLAJLO.proto";
+import "ItemList.proto";
+
+message FPMMBJBPNLC {
+    uint32 IPAOBKONIFL = 8;
+    oneof BNJPPHJNKHF {
+        ItemList NMJGHEACCMC = 3;
+        BBOMFKLAJLO MMLJADJNKIA = 4;
+    }
+}

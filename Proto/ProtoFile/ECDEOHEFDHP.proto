@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message ECDEOHEFDHP {
+    uint32 BLIFOAEFHIB = 11;
+    uint32 stage_type = 3;
+}

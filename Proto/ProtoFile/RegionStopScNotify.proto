@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message RegionStopScNotify {
+    int64 stop_begin_time = 9;
+    int64 stop_end_time = 14;
+}

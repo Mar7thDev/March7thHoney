@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "FDLGMIIOACH.proto";
+
+message LEIJJPBKBKG {
+    FDLGMIIOACH MPGPEOFGDCN = 15;
+    uint32 DHJANOFGDNP = 14;
+}

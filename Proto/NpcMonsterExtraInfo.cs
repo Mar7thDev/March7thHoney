@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChlOcGNNb25zdGVyRXh0cmFJbmZvLnByb3RvGhlOcGNNb25zdGVyUm9ndWVJ",
             "bmZvLnByb3RvIkQKE05wY01vbnN0ZXJFeHRyYUluZm8SLQoPcm9ndWVfZ2Ft",
-            "ZV9pbmZvGAcgASgLMhQuTnBjTW9uc3RlclJvZ3VlSW5mb0IWqgITTWFyY2g3",
+            "ZV9pbmZvGAYgASgLMhQuTnBjTW9uc3RlclJvZ3VlSW5mb0IWqgITTWFyY2g3",
             "dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.NpcMonsterRogueInfoReflection.Descriptor, },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "rogue_game_info" field.</summary>
-    public const int RogueGameInfoFieldNumber = 7;
+    public const int RogueGameInfoFieldNumber = 6;
     private global::March7thHoney.Proto.NpcMonsterRogueInfo rogueGameInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -138,7 +138,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (rogueGameInfo_ != null) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(50);
         output.WriteMessage(RogueGameInfo);
       }
       if (_unknownFields != null) {
@@ -152,7 +152,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (rogueGameInfo_ != null) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(50);
         output.WriteMessage(RogueGameInfo);
       }
       if (_unknownFields != null) {
@@ -205,7 +205,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 58: {
+          case 50: {
             if (rogueGameInfo_ == null) {
               RogueGameInfo = new global::March7thHoney.Proto.NpcMonsterRogueInfo();
             }
@@ -231,7 +231,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 58: {
+          case 50: {
             if (rogueGameInfo_ == null) {
               RogueGameInfo = new global::March7thHoney.Proto.NpcMonsterRogueInfo();
             }

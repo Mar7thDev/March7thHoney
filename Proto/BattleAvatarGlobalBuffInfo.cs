@@ -26,12 +26,12 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiBCYXR0bGVBdmF0YXJHbG9iYWxCdWZmSW5mby5wcm90byJaChpCYXR0bGVB",
             "dmF0YXJHbG9iYWxCdWZmSW5mbxIRCglhdmF0YXJfaWQYASABKA0SFAoMbWF6",
-            "ZV9idWZmX2lkGAIgASgNEhMKC0lMQk1GQUtGREtJGAMgASgNQhaqAhNNYXJj",
+            "ZV9idWZmX2lkGAIgASgNEhMKC0RMTUJDQ0NQQ0tKGAMgASgNQhaqAhNNYXJj",
             "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BattleAvatarGlobalBuffInfo), global::March7thHoney.Proto.BattleAvatarGlobalBuffInfo.Parser, new[]{ "AvatarId", "MazeBuffId", "ILBMFAKFDKI" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BattleAvatarGlobalBuffInfo), global::March7thHoney.Proto.BattleAvatarGlobalBuffInfo.Parser, new[]{ "AvatarId", "MazeBuffId", "DLMBCCCPCKJ" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,7 +75,7 @@ namespace March7thHoney.Proto {
     public BattleAvatarGlobalBuffInfo(BattleAvatarGlobalBuffInfo other) : this() {
       avatarId_ = other.avatarId_;
       mazeBuffId_ = other.mazeBuffId_;
-      iLBMFAKFDKI_ = other.iLBMFAKFDKI_;
+      dLMBCCCPCKJ_ = other.dLMBCCCPCKJ_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -109,15 +109,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "ILBMFAKFDKI" field.</summary>
-    public const int ILBMFAKFDKIFieldNumber = 3;
-    private uint iLBMFAKFDKI_;
+    /// <summary>Field number for the "DLMBCCCPCKJ" field.</summary>
+    public const int DLMBCCCPCKJFieldNumber = 3;
+    private uint dLMBCCCPCKJ_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint ILBMFAKFDKI {
-      get { return iLBMFAKFDKI_; }
+    public uint DLMBCCCPCKJ {
+      get { return dLMBCCCPCKJ_; }
       set {
-        iLBMFAKFDKI_ = value;
+        dLMBCCCPCKJ_ = value;
       }
     }
 
@@ -138,7 +138,7 @@ namespace March7thHoney.Proto {
       }
       if (AvatarId != other.AvatarId) return false;
       if (MazeBuffId != other.MazeBuffId) return false;
-      if (ILBMFAKFDKI != other.ILBMFAKFDKI) return false;
+      if (DLMBCCCPCKJ != other.DLMBCCCPCKJ) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -148,7 +148,7 @@ namespace March7thHoney.Proto {
       int hash = 1;
       if (AvatarId != 0) hash ^= AvatarId.GetHashCode();
       if (MazeBuffId != 0) hash ^= MazeBuffId.GetHashCode();
-      if (ILBMFAKFDKI != 0) hash ^= ILBMFAKFDKI.GetHashCode();
+      if (DLMBCCCPCKJ != 0) hash ^= DLMBCCCPCKJ.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -175,9 +175,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(16);
         output.WriteUInt32(MazeBuffId);
       }
-      if (ILBMFAKFDKI != 0) {
+      if (DLMBCCCPCKJ != 0) {
         output.WriteRawTag(24);
-        output.WriteUInt32(ILBMFAKFDKI);
+        output.WriteUInt32(DLMBCCCPCKJ);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -197,9 +197,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(16);
         output.WriteUInt32(MazeBuffId);
       }
-      if (ILBMFAKFDKI != 0) {
+      if (DLMBCCCPCKJ != 0) {
         output.WriteRawTag(24);
-        output.WriteUInt32(ILBMFAKFDKI);
+        output.WriteUInt32(DLMBCCCPCKJ);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -217,8 +217,8 @@ namespace March7thHoney.Proto {
       if (MazeBuffId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MazeBuffId);
       }
-      if (ILBMFAKFDKI != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ILBMFAKFDKI);
+      if (DLMBCCCPCKJ != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DLMBCCCPCKJ);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -238,8 +238,8 @@ namespace March7thHoney.Proto {
       if (other.MazeBuffId != 0) {
         MazeBuffId = other.MazeBuffId;
       }
-      if (other.ILBMFAKFDKI != 0) {
-        ILBMFAKFDKI = other.ILBMFAKFDKI;
+      if (other.DLMBCCCPCKJ != 0) {
+        DLMBCCCPCKJ = other.DLMBCCCPCKJ;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -269,7 +269,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 24: {
-            ILBMFAKFDKI = input.ReadUInt32();
+            DLMBCCCPCKJ = input.ReadUInt32();
             break;
           }
         }
@@ -300,7 +300,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 24: {
-            ILBMFAKFDKI = input.ReadUInt32();
+            DLMBCCCPCKJ = input.ReadUInt32();
             break;
           }
         }

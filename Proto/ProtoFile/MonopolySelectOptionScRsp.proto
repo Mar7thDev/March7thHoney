@@ -2,15 +2,13 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "BLIJEKKOIJH.proto";
-import "NPLALEFPIEE.proto";
+import "DFKABDLJMJO.proto";
+import "HKNBLADLAAE.proto";
 
 message MonopolySelectOptionScRsp {
-    uint32 retcode = 1;
-    BLIJEKKOIJH GGLDOGIHFLG = 2;
-    uint32 AMADFJNHMFF = 11;
-    uint32 event_id = 13;
-    repeated NPLALEFPIEE JBLLICOOCAK = 14;
+    NEMIDPFEJFL MOMEIFPICLE = 6;
+    repeated HKNBLADLAAE DMCKDIGKHLB = 8;
+    uint32 retcode = 9;
+    uint32 event_id = 1;
+    uint32 HAFOKMHCGFM = 3;
 }

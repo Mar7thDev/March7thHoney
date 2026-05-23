@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "JOLAHHGIFHA.proto";
+import "PlayerSimpleInfo.proto";
+
+message JBJNJPAOCDA {
+    PlayerSimpleInfo AJIPBLCIONL = 9;
+    JOLAHHGIFHA NJDCPMENIFG = 13;
+    uint32 summoned_pet_id = 8;
+    bool OJPDDAOJJKC = 1;
+    int64 AIMNJIMDIKM = 4;
+    uint32 uid = 10;
+}

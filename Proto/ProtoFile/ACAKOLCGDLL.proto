@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "NOHPJFOGFLM.proto";
+
+message ACAKOLCGDLL {
+    repeated NOHPJFOGFLM NMJIOGGNLEO = 15;
+    bool GPPHKPEHKIM = 8;
+    uint32 NPGFNBPFMKI = 9;
+    uint32 KKCKMCDGCGK = 10;
+    uint32 MDIIJKBHBBI = 11;
+}

@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message PixAirStartStageCsReq {
+    uint32 plane_id = 10;
+    bool EMMGHDLIPOH = 13;
+    uint32 stage_id = 15;
+    uint32 ALJNIHNLNMA = 9;
+}

@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum MFPDAKOIOED {
+    MFPDAKOIOED_KCOCMMIACMB = 0;
+    MFPDAKOIOED_FLMPFOFPAGB = 1;
+}

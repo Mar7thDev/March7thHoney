@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "MotionInfo.proto";
 import "SceneActorInfo.proto";
 import "SceneNpcInfo.proto";
@@ -12,15 +10,15 @@ import "ScenePropInfo.proto";
 import "SceneSummonUnitInfo.proto";
 
 message SceneEntityInfo {
-    uint32 inst_id = 4;
-    MotionInfo motion = 12;
-    uint32 group_id = 13;
-    uint32 entity_id = 14;
+    MotionInfo motion = 13;
+    uint32 inst_id = 2;
+    uint32 entity_id = 10;
+    uint32 group_id = 11;
     oneof entity {
-        SceneActorInfo actor = 1;
-        ScenePropInfo prop = 3;
-        SceneNpcInfo npc = 8;
-        SceneNpcMonsterInfo npc_monster = 9;
-        SceneSummonUnitInfo summon_unit = 11;
+        SceneActorInfo actor = 12;
+        SceneNpcMonsterInfo npc_monster = 5;
+        SceneNpcInfo npc = 1;
+        ScenePropInfo prop = 14;
+        SceneSummonUnitInfo summon_unit = 15;
     }
 }

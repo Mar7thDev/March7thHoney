@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "FBNGHMHHHLL.proto";
+import "IGKKILFFNJK.proto";
+
+message FFOGFOBHDEK {
+    repeated IGKKILFFNJK DAOOOBLJOLB = 13;
+    repeated FBNGHMHHHLL grid_fight_trait_info = 12;
+}

@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "ONKDAPOKGAC.proto";
+
+message CJNDCNIJBEI {
+    repeated uint32 finished_target_list = 6;
+    repeated ONKDAPOKGAC avatar_list = 4;
+}

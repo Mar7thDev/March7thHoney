@@ -24,19 +24,18 @@ namespace March7thHoney.Proto {
     static CmdTalkEventTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChZDbWRUYWxrRXZlbnRUeXBlLnByb3RvKosEChBDbWRUYWxrRXZlbnRUeXBl",
-            "EhsKF0tQREZFTVBLTUFEX0NDSU5MQUFDREFMEAASLAonQ21kRmluaXNoRmly",
-            "c3RUYWxrQnlQZXJmb3JtYW5jZU5wY0NzUmVxEP4QEh8KGkNtZEZpbmlzaEZp",
-            "cnN0VGFsa05wY1NjUnNwEJYREhMKDkNtZEtCRUVKT0VIT05PEPMQEh8KGkNt",
-            "ZEdldFRhbGtFdmVudFJld2FyZENzUmVxEJIREhwKF0NtZEdldEZpcnN0VGFs",
-            "a05wY0NzUmVxEMIQEhMKDkNtZENIS05JS1BFUEFNEM4QEh8KGkNtZEZpbmlz",
-            "aEZpcnN0VGFsa05wY0NzUmVxEL0QEiwKJ0NtZEZpbmlzaEZpcnN0VGFsa0J5",
-            "UGVyZm9ybWFuY2VOcGNTY1JzcBDZEBIeChlDbWRHZXROcGNUYWtlblJld2Fy",
-            "ZFNjUnNwEL4QEhsKFkNtZFRha2VUYWxrUmV3YXJkU2NSc3AQkxESIgodQ21k",
-            "R2V0UmVjZWl2ZWRUYWxrRXZlbnRzQ3NSZXEQjxESKQokQ21kR2V0Rmlyc3RU",
-            "YWxrQnlQZXJmb3JtYW5jZU5wY0NzUmVxENsQEhwKF0NtZEdldEZpcnN0VGFs",
-            "a05wY1NjUnNwEMYQEikKJENtZEdldEZpcnN0VGFsa0J5UGVyZm9ybWFuY2VO",
-            "cGNTY1JzcBC1EEIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChZDbWRUYWxrRXZlbnRUeXBlLnByb3RvKtMDChBDbWRUYWxrRXZlbnRUeXBl",
+            "EhsKF0xBR09CS0VDRURCX01OUEdGTFBCRExLEAASHAoXTEFHT0JLRUNFREJf",
+            "Q0dEQ0tJQ0FFSUwQhBESHAoXTEFHT0JLRUNFREJfUEJFUExNR0xISEoQzxAS",
+            "HAoXTEFHT0JLRUNFREJfQkVDSkxCTFBOSEcQixESHAoXTEFHT0JLRUNFREJf",
+            "SE5DSEVLSENETEgQ6hASHAoXTEFHT0JLRUNFREJfUEVCR01PREFBSkUQvhAS",
+            "HAoXTEFHT0JLRUNFREJfRVBFQ05GSU9MT1AQwBASHAoXTEFHT0JLRUNFREJf",
+            "Q1BOTkVETkxNQ0cQtxASHAoXTEFHT0JLRUNFREJfQU5JRk1QSkJMS0UQ0RAS",
+            "HAoXTEFHT0JLRUNFREJfTUpPT0xJT0xLQkkQwRASHAoXTEFHT0JLRUNFREJf",
+            "TlBDQUtGRE5KRUQQ2BASHAoXTEFHT0JLRUNFREJfSUpIS0pCSkxKQ0gQhxES",
+            "HAoXTEFHT0JLRUNFREJfSVBBRkZLQ0dDSVAQwxASHAoXTEFHT0JLRUNFREJf",
+            "Q0dFS1BOQk1ES04Q/RASHAoXTEFHT0JLRUNFREJfQUdCQkVMSExPTU4QhRFC",
+            "FqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdTalkEventType), }, null, null));
@@ -46,21 +45,21 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdTalkEventType {
-    [pbr::OriginalName("KPDFEMPKMAD_CCINLAACDAL")] KpdfempkmadCcinlaacdal = 0,
-    [pbr::OriginalName("CmdFinishFirstTalkByPerformanceNpcCsReq")] CmdFinishFirstTalkByPerformanceNpcCsReq = 2174,
-    [pbr::OriginalName("CmdFinishFirstTalkNpcScRsp")] CmdFinishFirstTalkNpcScRsp = 2198,
-    [pbr::OriginalName("CmdKBEEJOEHONO")] CmdKbeejoehono = 2163,
-    [pbr::OriginalName("CmdGetTalkEventRewardCsReq")] CmdGetTalkEventRewardCsReq = 2194,
-    [pbr::OriginalName("CmdGetFirstTalkNpcCsReq")] CmdGetFirstTalkNpcCsReq = 2114,
-    [pbr::OriginalName("CmdCHKNIKPEPAM")] CmdChknikpepam = 2126,
-    [pbr::OriginalName("CmdFinishFirstTalkNpcCsReq")] CmdFinishFirstTalkNpcCsReq = 2109,
-    [pbr::OriginalName("CmdFinishFirstTalkByPerformanceNpcScRsp")] CmdFinishFirstTalkByPerformanceNpcScRsp = 2137,
-    [pbr::OriginalName("CmdGetNpcTakenRewardScRsp")] CmdGetNpcTakenRewardScRsp = 2110,
-    [pbr::OriginalName("CmdTakeTalkRewardScRsp")] CmdTakeTalkRewardScRsp = 2195,
-    [pbr::OriginalName("CmdGetReceivedTalkEventsCsReq")] CmdGetReceivedTalkEventsCsReq = 2191,
-    [pbr::OriginalName("CmdGetFirstTalkByPerformanceNpcCsReq")] CmdGetFirstTalkByPerformanceNpcCsReq = 2139,
-    [pbr::OriginalName("CmdGetFirstTalkNpcScRsp")] CmdGetFirstTalkNpcScRsp = 2118,
-    [pbr::OriginalName("CmdGetFirstTalkByPerformanceNpcScRsp")] CmdGetFirstTalkByPerformanceNpcScRsp = 2101,
+    [pbr::OriginalName("LAGOBKECEDB_MNPGFLPBDLK")] LagobkecedbMnpgflpbdlk = 0,
+    [pbr::OriginalName("LAGOBKECEDB_CGDCKICAEIL")] LagobkecedbCgdckicaeil = 2180,
+    [pbr::OriginalName("LAGOBKECEDB_PBEPLMGLHHJ")] LagobkecedbPbeplmglhhj = 2127,
+    [pbr::OriginalName("LAGOBKECEDB_BECJLBLPNHG")] LagobkecedbBecjlblpnhg = 2187,
+    [pbr::OriginalName("LAGOBKECEDB_HNCHEKHCDLH")] LagobkecedbHnchekhcdlh = 2154,
+    [pbr::OriginalName("LAGOBKECEDB_PEBGMODAAJE")] LagobkecedbPebgmodaaje = 2110,
+    [pbr::OriginalName("LAGOBKECEDB_EPECNFIOLOP")] LagobkecedbEpecnfiolop = 2112,
+    [pbr::OriginalName("LAGOBKECEDB_CPNNEDNLMCG")] LagobkecedbCpnnednlmcg = 2103,
+    [pbr::OriginalName("LAGOBKECEDB_ANIFMPJBLKE")] LagobkecedbAnifmpjblke = 2129,
+    [pbr::OriginalName("LAGOBKECEDB_MJOOLIOLKBI")] LagobkecedbMjooliolkbi = 2113,
+    [pbr::OriginalName("LAGOBKECEDB_NPCAKFDNJED")] LagobkecedbNpcakfdnjed = 2136,
+    [pbr::OriginalName("LAGOBKECEDB_IJHKJBJLJCH")] LagobkecedbIjhkjbjljch = 2183,
+    [pbr::OriginalName("LAGOBKECEDB_IPAFFKCGCIP")] LagobkecedbIpaffkcgcip = 2115,
+    [pbr::OriginalName("LAGOBKECEDB_CGEKPNBMDKN")] LagobkecedbCgekpnbmdkn = 2173,
+    [pbr::OriginalName("LAGOBKECEDB_AGBBELHLOMN")] LagobkecedbAgbbelhlomn = 2181,
   }
 
   #endregion

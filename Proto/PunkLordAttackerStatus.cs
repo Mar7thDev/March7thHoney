@@ -25,9 +25,9 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChxQdW5rTG9yZEF0dGFja2VyU3RhdHVzLnByb3RvKowBChZQdW5rTG9yZEF0",
-            "dGFja2VyU3RhdHVzEhsKF0lIREhGS0pIQUFIX1BDUERIRUxQS0VNEAASGwoX",
-            "SUhESEZLSkhBQUhfQklJT0tKSE5CUE4QARIbChdJSERIRktKSEFBSF9HSERJ",
-            "TE1NSEVDQhACEhsKF0lIREhGS0pIQUFIX0NCRURDRURNSkhBEANCFqoCE01h",
+            "dGFja2VyU3RhdHVzEhsKF1BGSVBFSUdETExLX05MQ0RHSVBHRkRKEAASGwoX",
+            "UEZJUEVJR0RMTEtfQ0NBTEdOQ05GTUUQARIbChdQRklQRUlHRExMS19NT0tO",
+            "REtKRkxESBACEhsKF1BGSVBFSUdETExLX0hLTERLTUpNR0FIEANCFqoCE01h",
             "cmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -38,10 +38,10 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum PunkLordAttackerStatus {
-    [pbr::OriginalName("IHDHFKJHAAH_PCPDHELPKEM")] IhdhfkjhaahPcpdhelpkem = 0,
-    [pbr::OriginalName("IHDHFKJHAAH_BIIOKJHNBPN")] IhdhfkjhaahBiiokjhnbpn = 1,
-    [pbr::OriginalName("IHDHFKJHAAH_GHDILMMHECB")] IhdhfkjhaahGhdilmmhecb = 2,
-    [pbr::OriginalName("IHDHFKJHAAH_CBEDCEDMJHA")] IhdhfkjhaahCbedcedmjha = 3,
+    [pbr::OriginalName("PFIPEIGDLLK_NLCDGIPGFDJ")] PfipeigdllkNlcdgipgfdj = 0,
+    [pbr::OriginalName("PFIPEIGDLLK_CCALGNCNFME")] PfipeigdllkCcalgncnfme = 1,
+    [pbr::OriginalName("PFIPEIGDLLK_MOKNDKJFLDH")] PfipeigdllkMokndkjfldh = 2,
+    [pbr::OriginalName("PFIPEIGDLLK_HKLDKMJMGAH")] PfipeigdllkHkldkmjmgah = 3,
   }
 
   #endregion

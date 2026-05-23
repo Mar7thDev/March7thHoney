@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChpTZXRQZXJzb25hbENhcmRTY1JzcC5wcm90byJJChRTZXRQZXJzb25hbENh",
-            "cmRTY1JzcBIgChhjdXJyZW50X3BlcnNvbmFsX2NhcmRfaWQYCiABKA0SDwoH",
-            "cmV0Y29kZRgNIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "cmRTY1JzcBIPCgdyZXRjb2RlGAUgASgNEiAKGGN1cnJlbnRfcGVyc29uYWxf",
+            "Y2FyZF9pZBgDIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetPersonalCardScRsp), global::March7thHoney.Proto.SetPersonalCardScRsp.Parser, new[]{ "CurrentPersonalCardId", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetPersonalCardScRsp), global::March7thHoney.Proto.SetPersonalCardScRsp.Parser, new[]{ "Retcode", "CurrentPersonalCardId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SetPersonalCardScRsp(SetPersonalCardScRsp other) : this() {
-      currentPersonalCardId_ = other.currentPersonalCardId_;
       retcode_ = other.retcode_;
+      currentPersonalCardId_ = other.currentPersonalCardId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,20 +83,8 @@ namespace March7thHoney.Proto {
       return new SetPersonalCardScRsp(this);
     }
 
-    /// <summary>Field number for the "current_personal_card_id" field.</summary>
-    public const int CurrentPersonalCardIdFieldNumber = 10;
-    private uint currentPersonalCardId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CurrentPersonalCardId {
-      get { return currentPersonalCardId_; }
-      set {
-        currentPersonalCardId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 13;
+    public const int RetcodeFieldNumber = 5;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -104,6 +92,18 @@ namespace March7thHoney.Proto {
       get { return retcode_; }
       set {
         retcode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "current_personal_card_id" field.</summary>
+    public const int CurrentPersonalCardIdFieldNumber = 3;
+    private uint currentPersonalCardId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint CurrentPersonalCardId {
+      get { return currentPersonalCardId_; }
+      set {
+        currentPersonalCardId_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (CurrentPersonalCardId != other.CurrentPersonalCardId) return false;
       if (Retcode != other.Retcode) return false;
+      if (CurrentPersonalCardId != other.CurrentPersonalCardId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (CurrentPersonalCardId != 0) hash ^= CurrentPersonalCardId.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (CurrentPersonalCardId != 0) hash ^= CurrentPersonalCardId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (CurrentPersonalCardId != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(24);
         output.WriteUInt32(CurrentPersonalCardId);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(40);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -170,11 +170,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (CurrentPersonalCardId != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(24);
         output.WriteUInt32(CurrentPersonalCardId);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(40);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (CurrentPersonalCardId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurrentPersonalCardId);
-      }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      }
+      if (CurrentPersonalCardId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurrentPersonalCardId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.CurrentPersonalCardId != 0) {
-        CurrentPersonalCardId = other.CurrentPersonalCardId;
-      }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
+      }
+      if (other.CurrentPersonalCardId != 0) {
+        CurrentPersonalCardId = other.CurrentPersonalCardId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,11 +230,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 80: {
+          case 24: {
             CurrentPersonalCardId = input.ReadUInt32();
             break;
           }
-          case 104: {
+          case 40: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -257,11 +257,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 80: {
+          case 24: {
             CurrentPersonalCardId = input.ReadUInt32();
             break;
           }
-          case 104: {
+          case 40: {
             Retcode = input.ReadUInt32();
             break;
           }

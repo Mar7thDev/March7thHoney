@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message GetPreAvatarActivityListScRsp {
-    uint32 retcode = 1;
-    repeated uint32 FMKJKGAJKKJ = 5;
+    repeated uint32 DDMEHPDHPLM = 1;
+    uint32 retcode = 14;
 }

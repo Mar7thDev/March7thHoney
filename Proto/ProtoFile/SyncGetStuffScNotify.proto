@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "GetStuffType.proto";
 
 message SyncGetStuffScNotify {
-    GetStuffType JFGKAMKHHEF = 13;
-    uint32 GKFEGIBGEGI = 15;
+    GetStuffType BAPBMHCHCIC = 3;
+    uint32 CEAMLKCMMGD = 9;
 }

@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChxNb25vcG9seUNsaWNrQ2VsbFNjUnNwLnByb3RvIk4KFk1vbm9wb2x5Q2xp",
-            "Y2tDZWxsU2NSc3ASDgoGbWFwX2lkGAMgASgNEhMKC0VJSUFHQUJBRkVDGAYg",
-            "ASgNEg8KB3JldGNvZGUYByABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
+            "Y2tDZWxsU2NSc3ASDgoGbWFwX2lkGAkgASgNEg8KB3JldGNvZGUYASABKA0S",
+            "EwoLSUhBT01MRVBIT00YDCABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
             "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MonopolyClickCellScRsp), global::March7thHoney.Proto.MonopolyClickCellScRsp.Parser, new[]{ "MapId", "EIIAGABAFEC", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MonopolyClickCellScRsp), global::March7thHoney.Proto.MonopolyClickCellScRsp.Parser, new[]{ "MapId", "Retcode", "IHAOMLEPHOM" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,8 +74,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MonopolyClickCellScRsp(MonopolyClickCellScRsp other) : this() {
       mapId_ = other.mapId_;
-      eIIAGABAFEC_ = other.eIIAGABAFEC_;
       retcode_ = other.retcode_;
+      iHAOMLEPHOM_ = other.iHAOMLEPHOM_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,7 +86,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "map_id" field.</summary>
-    public const int MapIdFieldNumber = 3;
+    public const int MapIdFieldNumber = 9;
     private uint mapId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,20 +97,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "EIIAGABAFEC" field.</summary>
-    public const int EIIAGABAFECFieldNumber = 6;
-    private uint eIIAGABAFEC_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint EIIAGABAFEC {
-      get { return eIIAGABAFEC_; }
-      set {
-        eIIAGABAFEC_ = value;
-      }
-    }
-
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 7;
+    public const int RetcodeFieldNumber = 1;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -118,6 +106,18 @@ namespace March7thHoney.Proto {
       get { return retcode_; }
       set {
         retcode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "IHAOMLEPHOM" field.</summary>
+    public const int IHAOMLEPHOMFieldNumber = 12;
+    private uint iHAOMLEPHOM_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint IHAOMLEPHOM {
+      get { return iHAOMLEPHOM_; }
+      set {
+        iHAOMLEPHOM_ = value;
       }
     }
 
@@ -137,8 +137,8 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (MapId != other.MapId) return false;
-      if (EIIAGABAFEC != other.EIIAGABAFEC) return false;
       if (Retcode != other.Retcode) return false;
+      if (IHAOMLEPHOM != other.IHAOMLEPHOM) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -147,8 +147,8 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (MapId != 0) hash ^= MapId.GetHashCode();
-      if (EIIAGABAFEC != 0) hash ^= EIIAGABAFEC.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (IHAOMLEPHOM != 0) hash ^= IHAOMLEPHOM.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -167,17 +167,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (Retcode != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Retcode);
+      }
       if (MapId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(72);
         output.WriteUInt32(MapId);
       }
-      if (EIIAGABAFEC != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(EIIAGABAFEC);
-      }
-      if (Retcode != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(Retcode);
+      if (IHAOMLEPHOM != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(IHAOMLEPHOM);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -189,17 +189,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Retcode != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Retcode);
+      }
       if (MapId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(72);
         output.WriteUInt32(MapId);
       }
-      if (EIIAGABAFEC != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(EIIAGABAFEC);
-      }
-      if (Retcode != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(Retcode);
+      if (IHAOMLEPHOM != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(IHAOMLEPHOM);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -214,11 +214,11 @@ namespace March7thHoney.Proto {
       if (MapId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MapId);
       }
-      if (EIIAGABAFEC != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EIIAGABAFEC);
-      }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      }
+      if (IHAOMLEPHOM != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(IHAOMLEPHOM);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -235,11 +235,11 @@ namespace March7thHoney.Proto {
       if (other.MapId != 0) {
         MapId = other.MapId;
       }
-      if (other.EIIAGABAFEC != 0) {
-        EIIAGABAFEC = other.EIIAGABAFEC;
-      }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
+      }
+      if (other.IHAOMLEPHOM != 0) {
+        IHAOMLEPHOM = other.IHAOMLEPHOM;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -260,16 +260,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
+          case 8: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 72: {
             MapId = input.ReadUInt32();
             break;
           }
-          case 48: {
-            EIIAGABAFEC = input.ReadUInt32();
-            break;
-          }
-          case 56: {
-            Retcode = input.ReadUInt32();
+          case 96: {
+            IHAOMLEPHOM = input.ReadUInt32();
             break;
           }
         }
@@ -291,16 +291,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
+          case 8: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 72: {
             MapId = input.ReadUInt32();
             break;
           }
-          case 48: {
-            EIIAGABAFEC = input.ReadUInt32();
-            break;
-          }
-          case 56: {
-            Retcode = input.ReadUInt32();
+          case 96: {
+            IHAOMLEPHOM = input.ReadUInt32();
             break;
           }
         }

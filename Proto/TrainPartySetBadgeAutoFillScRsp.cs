@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiVUcmFpblBhcnR5U2V0QmFkZ2VBdXRvRmlsbFNjUnNwLnByb3RvIkcKH1Ry",
-            "YWluUGFydHlTZXRCYWRnZUF1dG9GaWxsU2NSc3ASEwoLQUVMTUJQTERGR0oY",
-            "BSABKAgSDwoHcmV0Y29kZRgOIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90",
+            "YWluUGFydHlTZXRCYWRnZUF1dG9GaWxsU2NSc3ASEwoLUEVMSkFDQU5BRkgY",
+            "BSABKAgSDwoHcmV0Y29kZRgBIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90",
             "b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TrainPartySetBadgeAutoFillScRsp), global::March7thHoney.Proto.TrainPartySetBadgeAutoFillScRsp.Parser, new[]{ "AELMBPLDFGJ", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TrainPartySetBadgeAutoFillScRsp), global::March7thHoney.Proto.TrainPartySetBadgeAutoFillScRsp.Parser, new[]{ "PELJACANAFH", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,7 +73,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public TrainPartySetBadgeAutoFillScRsp(TrainPartySetBadgeAutoFillScRsp other) : this() {
-      aELMBPLDFGJ_ = other.aELMBPLDFGJ_;
+      pELJACANAFH_ = other.pELJACANAFH_;
       retcode_ = other.retcode_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -84,20 +84,20 @@ namespace March7thHoney.Proto {
       return new TrainPartySetBadgeAutoFillScRsp(this);
     }
 
-    /// <summary>Field number for the "AELMBPLDFGJ" field.</summary>
-    public const int AELMBPLDFGJFieldNumber = 5;
-    private bool aELMBPLDFGJ_;
+    /// <summary>Field number for the "PELJACANAFH" field.</summary>
+    public const int PELJACANAFHFieldNumber = 5;
+    private bool pELJACANAFH_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool AELMBPLDFGJ {
-      get { return aELMBPLDFGJ_; }
+    public bool PELJACANAFH {
+      get { return pELJACANAFH_; }
       set {
-        aELMBPLDFGJ_ = value;
+        pELJACANAFH_ = value;
       }
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 14;
+    public const int RetcodeFieldNumber = 1;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -123,7 +123,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (AELMBPLDFGJ != other.AELMBPLDFGJ) return false;
+      if (PELJACANAFH != other.PELJACANAFH) return false;
       if (Retcode != other.Retcode) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -132,7 +132,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (AELMBPLDFGJ != false) hash ^= AELMBPLDFGJ.GetHashCode();
+      if (PELJACANAFH != false) hash ^= PELJACANAFH.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -152,13 +152,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (AELMBPLDFGJ != false) {
-        output.WriteRawTag(40);
-        output.WriteBool(AELMBPLDFGJ);
-      }
       if (Retcode != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(8);
         output.WriteUInt32(Retcode);
+      }
+      if (PELJACANAFH != false) {
+        output.WriteRawTag(40);
+        output.WriteBool(PELJACANAFH);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,13 +170,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (AELMBPLDFGJ != false) {
-        output.WriteRawTag(40);
-        output.WriteBool(AELMBPLDFGJ);
-      }
       if (Retcode != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(8);
         output.WriteUInt32(Retcode);
+      }
+      if (PELJACANAFH != false) {
+        output.WriteRawTag(40);
+        output.WriteBool(PELJACANAFH);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -188,7 +188,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (AELMBPLDFGJ != false) {
+      if (PELJACANAFH != false) {
         size += 1 + 1;
       }
       if (Retcode != 0) {
@@ -206,8 +206,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.AELMBPLDFGJ != false) {
-        AELMBPLDFGJ = other.AELMBPLDFGJ;
+      if (other.PELJACANAFH != false) {
+        PELJACANAFH = other.PELJACANAFH;
       }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
@@ -231,12 +231,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 40: {
-            AELMBPLDFGJ = input.ReadBool();
+          case 8: {
+            Retcode = input.ReadUInt32();
             break;
           }
-          case 112: {
-            Retcode = input.ReadUInt32();
+          case 40: {
+            PELJACANAFH = input.ReadBool();
             break;
           }
         }
@@ -258,12 +258,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 40: {
-            AELMBPLDFGJ = input.ReadBool();
+          case 8: {
+            Retcode = input.ReadUInt32();
             break;
           }
-          case 112: {
-            Retcode = input.ReadUInt32();
+          case 40: {
+            PELJACANAFH = input.ReadBool();
             break;
           }
         }

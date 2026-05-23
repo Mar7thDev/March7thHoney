@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "IEMKPMMJLLE.proto";
+import "AGKONMPOJKP.proto";
 
 message BuyRogueShopMiracleScRsp {
-    uint32 retcode = 7;
-    IEMKPMMJLLE FEILNIKNPCB = 11;
+    AGKONMPOJKP DNPCCFFFBHN = 10;
+    uint32 retcode = 8;
 }

@@ -25,15 +25,15 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch1HZXREYWlseUFjdGl2ZUluZm9TY1JzcC5wcm90bxoXRGFpbHlBY3Rpdml0",
-            "eUluZm8ucHJvdG8inwEKF0dldERhaWx5QWN0aXZlSW5mb1NjUnNwEg8KB3Jl",
-            "dGNvZGUYAiABKA0SMwoXZGFpbHlfYWN0aXZlX2xldmVsX2xpc3QYCSADKAsy",
-            "Ei5EYWlseUFjdGl2aXR5SW5mbxIiChpkYWlseV9hY3RpdmVfcXVlc3RfaWRf",
-            "bGlzdBgKIAMoDRIaChJkYWlseV9hY3RpdmVfcG9pbnQYDiABKA1CFqoCE01h",
+            "eUluZm8ucHJvdG8inwEKF0dldERhaWx5QWN0aXZlSW5mb1NjUnNwEjMKF2Rh",
+            "aWx5X2FjdGl2ZV9sZXZlbF9saXN0GAcgAygLMhIuRGFpbHlBY3Rpdml0eUlu",
+            "Zm8SIgoaZGFpbHlfYWN0aXZlX3F1ZXN0X2lkX2xpc3QYAyADKA0SDwoHcmV0",
+            "Y29kZRgEIAEoDRIaChJkYWlseV9hY3RpdmVfcG9pbnQYDiABKA1CFqoCE01h",
             "cmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.DailyActivityInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetDailyActiveInfoScRsp), global::March7thHoney.Proto.GetDailyActiveInfoScRsp.Parser, new[]{ "Retcode", "DailyActiveLevelList", "DailyActiveQuestIdList", "DailyActivePoint" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetDailyActiveInfoScRsp), global::March7thHoney.Proto.GetDailyActiveInfoScRsp.Parser, new[]{ "DailyActiveLevelList", "DailyActiveQuestIdList", "Retcode", "DailyActivePoint" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,9 +75,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetDailyActiveInfoScRsp(GetDailyActiveInfoScRsp other) : this() {
-      retcode_ = other.retcode_;
       dailyActiveLevelList_ = other.dailyActiveLevelList_.Clone();
       dailyActiveQuestIdList_ = other.dailyActiveQuestIdList_.Clone();
+      retcode_ = other.retcode_;
       dailyActivePoint_ = other.dailyActivePoint_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -88,22 +88,10 @@ namespace March7thHoney.Proto {
       return new GetDailyActiveInfoScRsp(this);
     }
 
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 2;
-    private uint retcode_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
-      set {
-        retcode_ = value;
-      }
-    }
-
     /// <summary>Field number for the "daily_active_level_list" field.</summary>
-    public const int DailyActiveLevelListFieldNumber = 9;
+    public const int DailyActiveLevelListFieldNumber = 7;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.DailyActivityInfo> _repeated_dailyActiveLevelList_codec
-        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.DailyActivityInfo.Parser);
+        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.DailyActivityInfo.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.DailyActivityInfo> dailyActiveLevelList_ = new pbc::RepeatedField<global::March7thHoney.Proto.DailyActivityInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -112,14 +100,26 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "daily_active_quest_id_list" field.</summary>
-    public const int DailyActiveQuestIdListFieldNumber = 10;
+    public const int DailyActiveQuestIdListFieldNumber = 3;
     private static readonly pb::FieldCodec<uint> _repeated_dailyActiveQuestIdList_codec
-        = pb::FieldCodec.ForUInt32(82);
+        = pb::FieldCodec.ForUInt32(26);
     private readonly pbc::RepeatedField<uint> dailyActiveQuestIdList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<uint> DailyActiveQuestIdList {
       get { return dailyActiveQuestIdList_; }
+    }
+
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 4;
+    private uint retcode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Retcode {
+      get { return retcode_; }
+      set {
+        retcode_ = value;
+      }
     }
 
     /// <summary>Field number for the "daily_active_point" field.</summary>
@@ -149,9 +149,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Retcode != other.Retcode) return false;
       if(!dailyActiveLevelList_.Equals(other.dailyActiveLevelList_)) return false;
       if(!dailyActiveQuestIdList_.Equals(other.dailyActiveQuestIdList_)) return false;
+      if (Retcode != other.Retcode) return false;
       if (DailyActivePoint != other.DailyActivePoint) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -160,9 +160,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       hash ^= dailyActiveLevelList_.GetHashCode();
       hash ^= dailyActiveQuestIdList_.GetHashCode();
+      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (DailyActivePoint != 0) hash ^= DailyActivePoint.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -182,12 +182,12 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      dailyActiveQuestIdList_.WriteTo(output, _repeated_dailyActiveQuestIdList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(32);
         output.WriteUInt32(Retcode);
       }
       dailyActiveLevelList_.WriteTo(output, _repeated_dailyActiveLevelList_codec);
-      dailyActiveQuestIdList_.WriteTo(output, _repeated_dailyActiveQuestIdList_codec);
       if (DailyActivePoint != 0) {
         output.WriteRawTag(112);
         output.WriteUInt32(DailyActivePoint);
@@ -202,12 +202,12 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      dailyActiveQuestIdList_.WriteTo(ref output, _repeated_dailyActiveQuestIdList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(32);
         output.WriteUInt32(Retcode);
       }
       dailyActiveLevelList_.WriteTo(ref output, _repeated_dailyActiveLevelList_codec);
-      dailyActiveQuestIdList_.WriteTo(ref output, _repeated_dailyActiveQuestIdList_codec);
       if (DailyActivePoint != 0) {
         output.WriteRawTag(112);
         output.WriteUInt32(DailyActivePoint);
@@ -222,11 +222,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      size += dailyActiveLevelList_.CalculateSize(_repeated_dailyActiveLevelList_codec);
+      size += dailyActiveQuestIdList_.CalculateSize(_repeated_dailyActiveQuestIdList_codec);
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
-      size += dailyActiveLevelList_.CalculateSize(_repeated_dailyActiveLevelList_codec);
-      size += dailyActiveQuestIdList_.CalculateSize(_repeated_dailyActiveQuestIdList_codec);
       if (DailyActivePoint != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DailyActivePoint);
       }
@@ -242,11 +242,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      dailyActiveLevelList_.Add(other.dailyActiveLevelList_);
+      dailyActiveQuestIdList_.Add(other.dailyActiveQuestIdList_);
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
-      dailyActiveLevelList_.Add(other.dailyActiveLevelList_);
-      dailyActiveQuestIdList_.Add(other.dailyActiveQuestIdList_);
       if (other.DailyActivePoint != 0) {
         DailyActivePoint = other.DailyActivePoint;
       }
@@ -269,17 +269,17 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
+          case 26:
+          case 24: {
+            dailyActiveQuestIdList_.AddEntriesFrom(input, _repeated_dailyActiveQuestIdList_codec);
+            break;
+          }
+          case 32: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 74: {
+          case 58: {
             dailyActiveLevelList_.AddEntriesFrom(input, _repeated_dailyActiveLevelList_codec);
-            break;
-          }
-          case 82:
-          case 80: {
-            dailyActiveQuestIdList_.AddEntriesFrom(input, _repeated_dailyActiveQuestIdList_codec);
             break;
           }
           case 112: {
@@ -305,17 +305,17 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
+          case 26:
+          case 24: {
+            dailyActiveQuestIdList_.AddEntriesFrom(ref input, _repeated_dailyActiveQuestIdList_codec);
+            break;
+          }
+          case 32: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 74: {
+          case 58: {
             dailyActiveLevelList_.AddEntriesFrom(ref input, _repeated_dailyActiveLevelList_codec);
-            break;
-          }
-          case 82:
-          case 80: {
-            dailyActiveQuestIdList_.AddEntriesFrom(ref input, _repeated_dailyActiveQuestIdList_codec);
             break;
           }
           case 112: {

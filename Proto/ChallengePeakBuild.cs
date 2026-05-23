@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChhDaGFsbGVuZ2VQZWFrQnVpbGQucHJvdG8aEEVxdWlwUmVsaWMucHJvdG8i",
-            "jwEKEkNoYWxsZW5nZVBlYWtCdWlsZBIbChNlcXVpcG1lbnRfdW5pcXVlX2lk",
-            "GAQgASgNEh8KCnJlbGljX2xpc3QYBSADKAsyCy5FcXVpcFJlbGljEhMKC2F2",
-            "YXRhcl90eXBlGAYgASgNEhMKC0NCSEtGT0VPTUZGGAwgASgNEhEKCWF2YXRh",
-            "cl9pZBgNIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "egoSQ2hhbGxlbmdlUGVha0J1aWxkEh8KCnJlbGljX2xpc3QYDiADKAsyCy5F",
+            "cXVpcFJlbGljEhMKC01ET0pORU5HQ0ZFGAggASgNEhEKCWF2YXRhcl9pZBgG",
+            "IAEoDRIbChNlcXVpcG1lbnRfdW5pcXVlX2lkGAsgASgNQhaqAhNNYXJjaDd0",
+            "aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.EquipRelicReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakBuild), global::March7thHoney.Proto.ChallengePeakBuild.Parser, new[]{ "EquipmentUniqueId", "RelicList", "AvatarType", "CBHKFOEOMFF", "AvatarId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakBuild), global::March7thHoney.Proto.ChallengePeakBuild.Parser, new[]{ "RelicList", "MDOJNENGCFE", "AvatarId", "EquipmentUniqueId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,11 +74,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ChallengePeakBuild(ChallengePeakBuild other) : this() {
-      equipmentUniqueId_ = other.equipmentUniqueId_;
       relicList_ = other.relicList_.Clone();
-      avatarType_ = other.avatarType_;
-      cBHKFOEOMFF_ = other.cBHKFOEOMFF_;
+      mDOJNENGCFE_ = other.mDOJNENGCFE_;
       avatarId_ = other.avatarId_;
+      equipmentUniqueId_ = other.equipmentUniqueId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -88,22 +87,10 @@ namespace March7thHoney.Proto {
       return new ChallengePeakBuild(this);
     }
 
-    /// <summary>Field number for the "equipment_unique_id" field.</summary>
-    public const int EquipmentUniqueIdFieldNumber = 4;
-    private uint equipmentUniqueId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint EquipmentUniqueId {
-      get { return equipmentUniqueId_; }
-      set {
-        equipmentUniqueId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "relic_list" field.</summary>
-    public const int RelicListFieldNumber = 5;
+    public const int RelicListFieldNumber = 14;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.EquipRelic> _repeated_relicList_codec
-        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.EquipRelic.Parser);
+        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.EquipRelic.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.EquipRelic> relicList_ = new pbc::RepeatedField<global::March7thHoney.Proto.EquipRelic>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -111,32 +98,20 @@ namespace March7thHoney.Proto {
       get { return relicList_; }
     }
 
-    /// <summary>Field number for the "avatar_type" field.</summary>
-    public const int AvatarTypeFieldNumber = 6;
-    private uint avatarType_;
+    /// <summary>Field number for the "MDOJNENGCFE" field.</summary>
+    public const int MDOJNENGCFEFieldNumber = 8;
+    private uint mDOJNENGCFE_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint AvatarType {
-      get { return avatarType_; }
+    public uint MDOJNENGCFE {
+      get { return mDOJNENGCFE_; }
       set {
-        avatarType_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "CBHKFOEOMFF" field.</summary>
-    public const int CBHKFOEOMFFFieldNumber = 12;
-    private uint cBHKFOEOMFF_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CBHKFOEOMFF {
-      get { return cBHKFOEOMFF_; }
-      set {
-        cBHKFOEOMFF_ = value;
+        mDOJNENGCFE_ = value;
       }
     }
 
     /// <summary>Field number for the "avatar_id" field.</summary>
-    public const int AvatarIdFieldNumber = 13;
+    public const int AvatarIdFieldNumber = 6;
     private uint avatarId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -144,6 +119,18 @@ namespace March7thHoney.Proto {
       get { return avatarId_; }
       set {
         avatarId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "equipment_unique_id" field.</summary>
+    public const int EquipmentUniqueIdFieldNumber = 11;
+    private uint equipmentUniqueId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint EquipmentUniqueId {
+      get { return equipmentUniqueId_; }
+      set {
+        equipmentUniqueId_ = value;
       }
     }
 
@@ -162,11 +149,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (EquipmentUniqueId != other.EquipmentUniqueId) return false;
       if(!relicList_.Equals(other.relicList_)) return false;
-      if (AvatarType != other.AvatarType) return false;
-      if (CBHKFOEOMFF != other.CBHKFOEOMFF) return false;
+      if (MDOJNENGCFE != other.MDOJNENGCFE) return false;
       if (AvatarId != other.AvatarId) return false;
+      if (EquipmentUniqueId != other.EquipmentUniqueId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -174,11 +160,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (EquipmentUniqueId != 0) hash ^= EquipmentUniqueId.GetHashCode();
       hash ^= relicList_.GetHashCode();
-      if (AvatarType != 0) hash ^= AvatarType.GetHashCode();
-      if (CBHKFOEOMFF != 0) hash ^= CBHKFOEOMFF.GetHashCode();
+      if (MDOJNENGCFE != 0) hash ^= MDOJNENGCFE.GetHashCode();
       if (AvatarId != 0) hash ^= AvatarId.GetHashCode();
+      if (EquipmentUniqueId != 0) hash ^= EquipmentUniqueId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -197,23 +182,19 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (AvatarId != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(AvatarId);
+      }
+      if (MDOJNENGCFE != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(MDOJNENGCFE);
+      }
       if (EquipmentUniqueId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(88);
         output.WriteUInt32(EquipmentUniqueId);
       }
       relicList_.WriteTo(output, _repeated_relicList_codec);
-      if (AvatarType != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(AvatarType);
-      }
-      if (CBHKFOEOMFF != 0) {
-        output.WriteRawTag(96);
-        output.WriteUInt32(CBHKFOEOMFF);
-      }
-      if (AvatarId != 0) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(AvatarId);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -224,23 +205,19 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (AvatarId != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(AvatarId);
+      }
+      if (MDOJNENGCFE != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(MDOJNENGCFE);
+      }
       if (EquipmentUniqueId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(88);
         output.WriteUInt32(EquipmentUniqueId);
       }
       relicList_.WriteTo(ref output, _repeated_relicList_codec);
-      if (AvatarType != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(AvatarType);
-      }
-      if (CBHKFOEOMFF != 0) {
-        output.WriteRawTag(96);
-        output.WriteUInt32(CBHKFOEOMFF);
-      }
-      if (AvatarId != 0) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(AvatarId);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -251,18 +228,15 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (EquipmentUniqueId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EquipmentUniqueId);
-      }
       size += relicList_.CalculateSize(_repeated_relicList_codec);
-      if (AvatarType != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarType);
-      }
-      if (CBHKFOEOMFF != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CBHKFOEOMFF);
+      if (MDOJNENGCFE != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MDOJNENGCFE);
       }
       if (AvatarId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarId);
+      }
+      if (EquipmentUniqueId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EquipmentUniqueId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -276,18 +250,15 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.EquipmentUniqueId != 0) {
-        EquipmentUniqueId = other.EquipmentUniqueId;
-      }
       relicList_.Add(other.relicList_);
-      if (other.AvatarType != 0) {
-        AvatarType = other.AvatarType;
-      }
-      if (other.CBHKFOEOMFF != 0) {
-        CBHKFOEOMFF = other.CBHKFOEOMFF;
+      if (other.MDOJNENGCFE != 0) {
+        MDOJNENGCFE = other.MDOJNENGCFE;
       }
       if (other.AvatarId != 0) {
         AvatarId = other.AvatarId;
+      }
+      if (other.EquipmentUniqueId != 0) {
+        EquipmentUniqueId = other.EquipmentUniqueId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -308,24 +279,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
+          case 48: {
+            AvatarId = input.ReadUInt32();
+            break;
+          }
+          case 64: {
+            MDOJNENGCFE = input.ReadUInt32();
+            break;
+          }
+          case 88: {
             EquipmentUniqueId = input.ReadUInt32();
             break;
           }
-          case 42: {
+          case 114: {
             relicList_.AddEntriesFrom(input, _repeated_relicList_codec);
-            break;
-          }
-          case 48: {
-            AvatarType = input.ReadUInt32();
-            break;
-          }
-          case 96: {
-            CBHKFOEOMFF = input.ReadUInt32();
-            break;
-          }
-          case 104: {
-            AvatarId = input.ReadUInt32();
             break;
           }
         }
@@ -347,24 +314,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
+          case 48: {
+            AvatarId = input.ReadUInt32();
+            break;
+          }
+          case 64: {
+            MDOJNENGCFE = input.ReadUInt32();
+            break;
+          }
+          case 88: {
             EquipmentUniqueId = input.ReadUInt32();
             break;
           }
-          case 42: {
+          case 114: {
             relicList_.AddEntriesFrom(ref input, _repeated_relicList_codec);
-            break;
-          }
-          case 48: {
-            AvatarType = input.ReadUInt32();
-            break;
-          }
-          case 96: {
-            CBHKFOEOMFF = input.ReadUInt32();
-            break;
-          }
-          case 104: {
-            AvatarId = input.ReadUInt32();
             break;
           }
         }

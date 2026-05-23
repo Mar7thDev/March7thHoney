@@ -48,16 +48,5 @@ public class SwitchHandComponent(PlayerInstance player) : BasePlayerComponent(pl
         return (Retcode.RetSucc, info);
     }
 
-    public (Retcode, SwitchHandInfo?) UpdateHandInfo(GODHDEIPDJL info)
-    {
-        var dbInfo = GetHandInfo((int)info.ConfigId).Item2;
-        if (dbInfo == null) return (Retcode.RetInteractConfigNotExist, null);
-
-        dbInfo.Pos = info.PLFAOCPBBCP.Pos.ToPosition();
-        dbInfo.Rot = info.PLFAOCPBBCP.Rot.ToPosition();
-        dbInfo.State = info.JLMJFEDNBMF;
-        dbInfo.ByteValue = info.MHINKADJCCG.ToByteArray();
-
-        return (Retcode.RetSucc, dbInfo);
-    }
+    // TODO 4.3: GODHDEIPDJL 在 4.3 中已消失或更名，SwitchHand 更新接口暂停
 }

@@ -2,14 +2,12 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message MonopolyGetDailyInitItemScRsp {
-    uint32 JBONHGNNCLE = 3;
+    uint32 AEDFGDEAOBD = 12;
     uint32 retcode = 5;
-    uint32 CPFBCBKFLFM = 6;
-    uint32 JEHGFEJCIFF = 7;
-    int64 CILPIJNOIAG = 11;
-    uint32 EOAAJMDCHID = 12;
-    uint32 FJBDCNAKIFM = 13;
+    uint32 MKEDABICJPH = 7;
+    uint32 PKLPCBACEMA = 15;
+    int64 DJMLHBFEMBE = 6;
+    uint32 AJDOFHNCOLP = 11;
+    uint32 FOFGDAJJPEM = 10;
 }

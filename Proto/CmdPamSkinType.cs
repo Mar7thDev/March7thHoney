@@ -24,12 +24,12 @@ namespace March7thHoney.Proto {
     static CmdPamSkinTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChRDbWRQYW1Ta2luVHlwZS5wcm90byq+AQoOQ21kUGFtU2tpblR5cGUSGwoX",
-            "S0NEQk9OS1BMUENfUENQREhFTFBLRU0QABIaChVDbWRTZWxlY3RQYW1Ta2lu",
-            "Q3NSZXEQuj8SGwoWQ21kR2V0UGFtU2tpbkRhdGFTY1JzcBDMPxIaChVDbWRT",
-            "ZWxlY3RQYW1Ta2luU2NSc3AQwj8SGwoWQ21kR2V0UGFtU2tpbkRhdGFDc1Jl",
-            "cRC5PxIdChhDbWRVbmxvY2tQYW1Ta2luU2NOb3RpZnkQxz9CFqoCE01hcmNo",
-            "N3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ChRDbWRQYW1Ta2luVHlwZS5wcm90byrDAQoOQ21kUGFtU2tpblR5cGUSGwoX",
+            "TElLTURLQUxOTklfTkxDREdJUEdGREoQABIcChdMSUtNREtBTE5OSV9KQkdL",
+            "SEJESEZERBC+PxIcChdMSUtNREtBTE5OSV9OSk1CT0lNSUtPRBDIPxIcChdM",
+            "SUtNREtBTE5OSV9BQ0RHSEhETUNBTBDMPxIcChdMSUtNREtBTE5OSV9CRUdF",
+            "RVBMQUFQTBC6PxIcChdMSUtNREtBTE5OSV9BRFBJRkVGS0NBRBDKP0IWqgIT",
+            "TWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdPamSkinType), }, null, null));
@@ -39,12 +39,12 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdPamSkinType {
-    [pbr::OriginalName("KCDBONKPLPC_PCPDHELPKEM")] KcdbonkplpcPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdSelectPamSkinCsReq")] CmdSelectPamSkinCsReq = 8122,
-    [pbr::OriginalName("CmdGetPamSkinDataScRsp")] CmdGetPamSkinDataScRsp = 8140,
-    [pbr::OriginalName("CmdSelectPamSkinScRsp")] CmdSelectPamSkinScRsp = 8130,
-    [pbr::OriginalName("CmdGetPamSkinDataCsReq")] CmdGetPamSkinDataCsReq = 8121,
-    [pbr::OriginalName("CmdUnlockPamSkinScNotify")] CmdUnlockPamSkinScNotify = 8135,
+    [pbr::OriginalName("LIKMDKALNNI_NLCDGIPGFDJ")] LikmdkalnniNlcdgipgfdj = 0,
+    [pbr::OriginalName("LIKMDKALNNI_JBGKHBDHFDD")] LikmdkalnniJbgkhbdhfdd = 8126,
+    [pbr::OriginalName("LIKMDKALNNI_NJMBOIMIKOD")] LikmdkalnniNjmboimikod = 8136,
+    [pbr::OriginalName("LIKMDKALNNI_ACDGHHDMCAL")] LikmdkalnniAcdghhdmcal = 8140,
+    [pbr::OriginalName("LIKMDKALNNI_BEGEEPLAAPL")] LikmdkalnniBegeeplaapl = 8122,
+    [pbr::OriginalName("LIKMDKALNNI_ADPIFEFKCAD")] LikmdkalnniAdpifefkcad = 8138,
   }
 
   #endregion

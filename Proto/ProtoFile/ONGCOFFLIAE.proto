@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "OGGELMMFPKP.proto";
+
+message ONGCOFFLIAE {
+    repeated OGGELMMFPKP PPCKLBHFCCA = 9;
+    uint32 IGEHHFIGBAI = 11;
+    uint32 DDCLCNPONOH = 10;
+    bool is_win = 7;
+    uint32 GDIMKFNECOK = 3;
+}

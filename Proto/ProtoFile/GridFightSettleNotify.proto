@@ -2,18 +2,16 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "GridFightFinishInfo.proto";
+import "OEDHMAHDECC.proto";
 
 message GridFightSettleNotify {
-    uint32 IIGMOIGOELB = 3;
-    uint32 PGMJPLLNIAK = 5;
-    uint32 EDKIICIKJKL = 6;
-    uint32 EDIGFNFPBKA = 7;
-    uint32 BHLDAEKNMCD = 9;
-    uint32 OHOPKAAKOGF = 12;
-    uint32 CAMLDAJJKBO = 32;
-    GridFightFinishInfo EDKJMPACHNJ = 214;
-    uint32 HIFNCPPJFEN = 668;
+    OEDHMAHDECC BFLLJJBHLDF = 731;
+    uint32 CGKNDIJMOCJ = 611;
+    uint32 NMCKJPEMACM = 14;
+    uint32 MNNKKEPCPPL = 1673;
+    uint32 FLHOPMMEGAI = 5;
+    uint32 GEBGGMAGDJB = 10;
+    uint32 EDHKHJAPMKA = 12;
+    uint32 KEJGCDOGEDD = 13;
+    uint32 CDANKDNACJP = 3;
 }

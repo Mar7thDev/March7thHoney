@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch9SZXBvcnRSZWxpY0JveEFjdGlvbkNzUmVxLnByb3RvIjAKGVJlcG9ydFJl",
-            "bGljQm94QWN0aW9uQ3NSZXESEwoLQ0VESVBFR0JOREgYBSABKA1CFqoCE01h",
+            "bGljQm94QWN0aW9uQ3NSZXESEwoLS0NHTEtGS0hQSUMYCyABKA1CFqoCE01h",
             "cmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ReportRelicBoxActionCsReq), global::March7thHoney.Proto.ReportRelicBoxActionCsReq.Parser, new[]{ "CEDIPEGBNDH" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ReportRelicBoxActionCsReq), global::March7thHoney.Proto.ReportRelicBoxActionCsReq.Parser, new[]{ "KCGLKFKHPIC" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,7 +72,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ReportRelicBoxActionCsReq(ReportRelicBoxActionCsReq other) : this() {
-      cEDIPEGBNDH_ = other.cEDIPEGBNDH_;
+      kCGLKFKHPIC_ = other.kCGLKFKHPIC_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -82,15 +82,15 @@ namespace March7thHoney.Proto {
       return new ReportRelicBoxActionCsReq(this);
     }
 
-    /// <summary>Field number for the "CEDIPEGBNDH" field.</summary>
-    public const int CEDIPEGBNDHFieldNumber = 5;
-    private uint cEDIPEGBNDH_;
+    /// <summary>Field number for the "KCGLKFKHPIC" field.</summary>
+    public const int KCGLKFKHPICFieldNumber = 11;
+    private uint kCGLKFKHPIC_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CEDIPEGBNDH {
-      get { return cEDIPEGBNDH_; }
+    public uint KCGLKFKHPIC {
+      get { return kCGLKFKHPIC_; }
       set {
-        cEDIPEGBNDH_ = value;
+        kCGLKFKHPIC_ = value;
       }
     }
 
@@ -109,7 +109,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (CEDIPEGBNDH != other.CEDIPEGBNDH) return false;
+      if (KCGLKFKHPIC != other.KCGLKFKHPIC) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -117,7 +117,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (CEDIPEGBNDH != 0) hash ^= CEDIPEGBNDH.GetHashCode();
+      if (KCGLKFKHPIC != 0) hash ^= KCGLKFKHPIC.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (CEDIPEGBNDH != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(CEDIPEGBNDH);
+      if (KCGLKFKHPIC != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(KCGLKFKHPIC);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -150,9 +150,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (CEDIPEGBNDH != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(CEDIPEGBNDH);
+      if (KCGLKFKHPIC != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(KCGLKFKHPIC);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -164,8 +164,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (CEDIPEGBNDH != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CEDIPEGBNDH);
+      if (KCGLKFKHPIC != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(KCGLKFKHPIC);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -179,8 +179,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.CEDIPEGBNDH != 0) {
-        CEDIPEGBNDH = other.CEDIPEGBNDH;
+      if (other.KCGLKFKHPIC != 0) {
+        KCGLKFKHPIC = other.KCGLKFKHPIC;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -201,8 +201,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 40: {
-            CEDIPEGBNDH = input.ReadUInt32();
+          case 88: {
+            KCGLKFKHPIC = input.ReadUInt32();
             break;
           }
         }
@@ -224,8 +224,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 40: {
-            CEDIPEGBNDH = input.ReadUInt32();
+          case 88: {
+            KCGLKFKHPIC = input.ReadUInt32();
             break;
           }
         }

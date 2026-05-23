@@ -2,19 +2,17 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "DGKNDMAHMAP.proto";
-import "EKOIHOMFMDE.proto";
-import "EOKOFFPBJME.proto";
-import "OOLHNFNKOHN.proto";
+import "AFEDHCKDDFA.proto";
+import "BNJAIHINJIK.proto";
+import "GEFEDOAOKNO.proto";
+import "LKFFMLJMGOB.proto";
 
 message HipplenAgendaResultScNotify {
+    LKFFMLJMGOB FEJPEALIKHE = 8;
+    GEFEDOAOKNO JMKHOIMEFFM = 15;
     repeated uint32 grid_fight_trait_info = 1;
-    DGKNDMAHMAP JPFBGFIHDDH = 3;
-    bool AEPDGDLMPMD = 8;
-    repeated uint32 FCCEHOLHFOC = 9;
-    EOKOFFPBJME KBNLIPOGOLE = 10;
-    repeated EKOIHOMFMDE CLKAILDCPJC = 12;
-    OOLHNFNKOHN ACJHGLGHEAH = 14;
+    repeated uint32 GPDEDJIHMGB = 7;
+    BNJAIHINJIK HIGHKDBJNIM = 2;
+    repeated AFEDHCKDDFA NEMFNENACNB = 13;
+    bool CPFFAGAHJMH = 14;
 }

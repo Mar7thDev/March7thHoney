@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "BCCONKJHDJL.proto";
+
+message ALIMNHEENPP {
+    repeated BCCONKJHDJL IEBNOGOOEMO = 2;
+    uint32 role_star = 1;
+}

@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "ACCMEOICEOD.proto";
+import "GANGPHPGFCL.proto";
+import "GIDEDMOPFKF.proto";
+import "KGMCLFHAJNJ.proto";
+import "LAAMIAJFOMC.proto";
+import "LHNCMINFONJ.proto";
+import "NCKOKDHNJDC.proto";
+
+message BEEFLEJAOCN {
+    repeated LAAMIAJFOMC CFFCNEDGCJJ = 5;
+    KGMCLFHAJNJ boss_info = 15;
+    GANGPHPGFCL COEBCNGCNOO = 12;
+    repeated GIDEDMOPFKF grid_fight_portal_buff_list = 3;
+    ACCMEOICEOD LHEBNOLNJHE = 1;
+    NCKOKDHNJDC IMPNAHBCADN = 10;
+    repeated LHNCMINFONJ HEKMEJLMGFF = 8;
+    uint32 section_id = 4;
+    uint32 DCAHJELNJNP = 13;
+    uint32 EMOHLJHPOPC = 9;
+}

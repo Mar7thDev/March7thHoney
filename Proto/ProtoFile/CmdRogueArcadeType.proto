@@ -2,16 +2,14 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdRogueArcadeType {
-    JEJMOKKEGLI_PCPDHELPKEM = 0;
-    CmdRogueArcadeGetInfoScRsp = 7677;
-    CmdRogueArcadeRestartCsReq = 7681;
-    CmdRogueArcadeGetInfoCsReq = 7651;
-    CmdRogueArcadeStartCsReq = 7687;
-    CmdRogueArcadeRestartScRsp = 7698;
-    CmdRogueArcadeLeaveScRsp = 7655;
-    CmdRogueArcadeStartScRsp = 7668;
-    CmdRogueArcadeLeaveCsReq = 7657;
+    NNHBAOKEBJI_NLCDGIPGFDJ = 0;
+    NNHBAOKEBJI_GFECMCBCMDM = 7658;
+    NNHBAOKEBJI_OCEMBBBNAGJ = 7657;
+    NNHBAOKEBJI_OCKANPAJIMJ = 7653;
+    NNHBAOKEBJI_PJDFLECDOAA = 7671;
+    NNHBAOKEBJI_DCHBPOBFJJK = 7684;
+    NNHBAOKEBJI_FNAMLLEMAOK = 7673;
+    NNHBAOKEBJI_IFPCDBMEIAK = 7690;
+    NNHBAOKEBJI_ENDFCJDJHEJ = 7691;
 }

@@ -25,15 +25,15 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChJPZmZlcmluZ0luZm8ucHJvdG8aE09mZmVyaW5nU3RhdGUucHJvdG8iqwEK",
-            "DE9mZmVyaW5nSW5mbxIRCgl0b3RhbF9leHAYASABKA0SFgoOb2ZmZXJpbmdf",
-            "bGV2ZWwYBCABKA0SIAoYaGFzX3Rha2VuX3Jld2FyZF9pZF9saXN0GAYgAygN",
-            "EhMKC29mZmVyaW5nX2lkGAcgASgNEhEKCWxldmVsX2V4cBgMIAEoDRImCg5v",
-            "ZmZlcmluZ19zdGF0ZRgOIAEoDjIOLk9mZmVyaW5nU3RhdGVCFqoCE01hcmNo",
+            "DE9mZmVyaW5nSW5mbxIgChhoYXNfdGFrZW5fcmV3YXJkX2lkX2xpc3QYBSAD",
+            "KA0SEQoJbGV2ZWxfZXhwGAYgASgNEiYKDm9mZmVyaW5nX3N0YXRlGAQgASgO",
+            "Mg4uT2ZmZXJpbmdTdGF0ZRITCgtvZmZlcmluZ19pZBgBIAEoDRIRCgl0b3Rh",
+            "bF9leHAYDiABKA0SFgoOb2ZmZXJpbmdfbGV2ZWwYDSABKA1CFqoCE01hcmNo",
             "N3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.OfferingStateReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.OfferingInfo), global::March7thHoney.Proto.OfferingInfo.Parser, new[]{ "TotalExp", "OfferingLevel", "HasTakenRewardIdList", "OfferingId", "LevelExp", "OfferingState" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.OfferingInfo), global::March7thHoney.Proto.OfferingInfo.Parser, new[]{ "HasTakenRewardIdList", "LevelExp", "OfferingState", "OfferingId", "TotalExp", "OfferingLevel" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,12 +75,12 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public OfferingInfo(OfferingInfo other) : this() {
-      totalExp_ = other.totalExp_;
-      offeringLevel_ = other.offeringLevel_;
       hasTakenRewardIdList_ = other.hasTakenRewardIdList_.Clone();
-      offeringId_ = other.offeringId_;
       levelExp_ = other.levelExp_;
       offeringState_ = other.offeringState_;
+      offeringId_ = other.offeringId_;
+      totalExp_ = other.totalExp_;
+      offeringLevel_ = other.offeringLevel_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -90,34 +90,10 @@ namespace March7thHoney.Proto {
       return new OfferingInfo(this);
     }
 
-    /// <summary>Field number for the "total_exp" field.</summary>
-    public const int TotalExpFieldNumber = 1;
-    private uint totalExp_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint TotalExp {
-      get { return totalExp_; }
-      set {
-        totalExp_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "offering_level" field.</summary>
-    public const int OfferingLevelFieldNumber = 4;
-    private uint offeringLevel_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint OfferingLevel {
-      get { return offeringLevel_; }
-      set {
-        offeringLevel_ = value;
-      }
-    }
-
     /// <summary>Field number for the "has_taken_reward_id_list" field.</summary>
-    public const int HasTakenRewardIdListFieldNumber = 6;
+    public const int HasTakenRewardIdListFieldNumber = 5;
     private static readonly pb::FieldCodec<uint> _repeated_hasTakenRewardIdList_codec
-        = pb::FieldCodec.ForUInt32(50);
+        = pb::FieldCodec.ForUInt32(42);
     private readonly pbc::RepeatedField<uint> hasTakenRewardIdList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -125,20 +101,8 @@ namespace March7thHoney.Proto {
       get { return hasTakenRewardIdList_; }
     }
 
-    /// <summary>Field number for the "offering_id" field.</summary>
-    public const int OfferingIdFieldNumber = 7;
-    private uint offeringId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint OfferingId {
-      get { return offeringId_; }
-      set {
-        offeringId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "level_exp" field.</summary>
-    public const int LevelExpFieldNumber = 12;
+    public const int LevelExpFieldNumber = 6;
     private uint levelExp_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -150,7 +114,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "offering_state" field.</summary>
-    public const int OfferingStateFieldNumber = 14;
+    public const int OfferingStateFieldNumber = 4;
     private global::March7thHoney.Proto.OfferingState offeringState_ = global::March7thHoney.Proto.OfferingState.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -158,6 +122,42 @@ namespace March7thHoney.Proto {
       get { return offeringState_; }
       set {
         offeringState_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "offering_id" field.</summary>
+    public const int OfferingIdFieldNumber = 1;
+    private uint offeringId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint OfferingId {
+      get { return offeringId_; }
+      set {
+        offeringId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "total_exp" field.</summary>
+    public const int TotalExpFieldNumber = 14;
+    private uint totalExp_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint TotalExp {
+      get { return totalExp_; }
+      set {
+        totalExp_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "offering_level" field.</summary>
+    public const int OfferingLevelFieldNumber = 13;
+    private uint offeringLevel_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint OfferingLevel {
+      get { return offeringLevel_; }
+      set {
+        offeringLevel_ = value;
       }
     }
 
@@ -176,12 +176,12 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (TotalExp != other.TotalExp) return false;
-      if (OfferingLevel != other.OfferingLevel) return false;
       if(!hasTakenRewardIdList_.Equals(other.hasTakenRewardIdList_)) return false;
-      if (OfferingId != other.OfferingId) return false;
       if (LevelExp != other.LevelExp) return false;
       if (OfferingState != other.OfferingState) return false;
+      if (OfferingId != other.OfferingId) return false;
+      if (TotalExp != other.TotalExp) return false;
+      if (OfferingLevel != other.OfferingLevel) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -189,12 +189,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (TotalExp != 0) hash ^= TotalExp.GetHashCode();
-      if (OfferingLevel != 0) hash ^= OfferingLevel.GetHashCode();
       hash ^= hasTakenRewardIdList_.GetHashCode();
-      if (OfferingId != 0) hash ^= OfferingId.GetHashCode();
       if (LevelExp != 0) hash ^= LevelExp.GetHashCode();
       if (OfferingState != global::March7thHoney.Proto.OfferingState.None) hash ^= OfferingState.GetHashCode();
+      if (OfferingId != 0) hash ^= OfferingId.GetHashCode();
+      if (TotalExp != 0) hash ^= TotalExp.GetHashCode();
+      if (OfferingLevel != 0) hash ^= OfferingLevel.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -213,26 +213,26 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (TotalExp != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(TotalExp);
-      }
-      if (OfferingLevel != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(OfferingLevel);
-      }
-      hasTakenRewardIdList_.WriteTo(output, _repeated_hasTakenRewardIdList_codec);
       if (OfferingId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(8);
         output.WriteUInt32(OfferingId);
       }
+      if (OfferingState != global::March7thHoney.Proto.OfferingState.None) {
+        output.WriteRawTag(32);
+        output.WriteEnum((int) OfferingState);
+      }
+      hasTakenRewardIdList_.WriteTo(output, _repeated_hasTakenRewardIdList_codec);
       if (LevelExp != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(48);
         output.WriteUInt32(LevelExp);
       }
-      if (OfferingState != global::March7thHoney.Proto.OfferingState.None) {
+      if (OfferingLevel != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(OfferingLevel);
+      }
+      if (TotalExp != 0) {
         output.WriteRawTag(112);
-        output.WriteEnum((int) OfferingState);
+        output.WriteUInt32(TotalExp);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -244,26 +244,26 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (TotalExp != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(TotalExp);
-      }
-      if (OfferingLevel != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(OfferingLevel);
-      }
-      hasTakenRewardIdList_.WriteTo(ref output, _repeated_hasTakenRewardIdList_codec);
       if (OfferingId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(8);
         output.WriteUInt32(OfferingId);
       }
+      if (OfferingState != global::March7thHoney.Proto.OfferingState.None) {
+        output.WriteRawTag(32);
+        output.WriteEnum((int) OfferingState);
+      }
+      hasTakenRewardIdList_.WriteTo(ref output, _repeated_hasTakenRewardIdList_codec);
       if (LevelExp != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(48);
         output.WriteUInt32(LevelExp);
       }
-      if (OfferingState != global::March7thHoney.Proto.OfferingState.None) {
+      if (OfferingLevel != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(OfferingLevel);
+      }
+      if (TotalExp != 0) {
         output.WriteRawTag(112);
-        output.WriteEnum((int) OfferingState);
+        output.WriteUInt32(TotalExp);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -275,21 +275,21 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (TotalExp != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TotalExp);
-      }
-      if (OfferingLevel != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(OfferingLevel);
-      }
       size += hasTakenRewardIdList_.CalculateSize(_repeated_hasTakenRewardIdList_codec);
-      if (OfferingId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(OfferingId);
-      }
       if (LevelExp != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LevelExp);
       }
       if (OfferingState != global::March7thHoney.Proto.OfferingState.None) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) OfferingState);
+      }
+      if (OfferingId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(OfferingId);
+      }
+      if (TotalExp != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TotalExp);
+      }
+      if (OfferingLevel != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(OfferingLevel);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -303,21 +303,21 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.TotalExp != 0) {
-        TotalExp = other.TotalExp;
-      }
-      if (other.OfferingLevel != 0) {
-        OfferingLevel = other.OfferingLevel;
-      }
       hasTakenRewardIdList_.Add(other.hasTakenRewardIdList_);
-      if (other.OfferingId != 0) {
-        OfferingId = other.OfferingId;
-      }
       if (other.LevelExp != 0) {
         LevelExp = other.LevelExp;
       }
       if (other.OfferingState != global::March7thHoney.Proto.OfferingState.None) {
         OfferingState = other.OfferingState;
+      }
+      if (other.OfferingId != 0) {
+        OfferingId = other.OfferingId;
+      }
+      if (other.TotalExp != 0) {
+        TotalExp = other.TotalExp;
+      }
+      if (other.OfferingLevel != 0) {
+        OfferingLevel = other.OfferingLevel;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -339,28 +339,28 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            TotalExp = input.ReadUInt32();
-            break;
-          }
-          case 32: {
-            OfferingLevel = input.ReadUInt32();
-            break;
-          }
-          case 50:
-          case 48: {
-            hasTakenRewardIdList_.AddEntriesFrom(input, _repeated_hasTakenRewardIdList_codec);
-            break;
-          }
-          case 56: {
             OfferingId = input.ReadUInt32();
             break;
           }
-          case 96: {
+          case 32: {
+            OfferingState = (global::March7thHoney.Proto.OfferingState) input.ReadEnum();
+            break;
+          }
+          case 42:
+          case 40: {
+            hasTakenRewardIdList_.AddEntriesFrom(input, _repeated_hasTakenRewardIdList_codec);
+            break;
+          }
+          case 48: {
             LevelExp = input.ReadUInt32();
             break;
           }
+          case 104: {
+            OfferingLevel = input.ReadUInt32();
+            break;
+          }
           case 112: {
-            OfferingState = (global::March7thHoney.Proto.OfferingState) input.ReadEnum();
+            TotalExp = input.ReadUInt32();
             break;
           }
         }
@@ -383,28 +383,28 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            TotalExp = input.ReadUInt32();
-            break;
-          }
-          case 32: {
-            OfferingLevel = input.ReadUInt32();
-            break;
-          }
-          case 50:
-          case 48: {
-            hasTakenRewardIdList_.AddEntriesFrom(ref input, _repeated_hasTakenRewardIdList_codec);
-            break;
-          }
-          case 56: {
             OfferingId = input.ReadUInt32();
             break;
           }
-          case 96: {
+          case 32: {
+            OfferingState = (global::March7thHoney.Proto.OfferingState) input.ReadEnum();
+            break;
+          }
+          case 42:
+          case 40: {
+            hasTakenRewardIdList_.AddEntriesFrom(ref input, _repeated_hasTakenRewardIdList_codec);
+            break;
+          }
+          case 48: {
             LevelExp = input.ReadUInt32();
             break;
           }
+          case 104: {
+            OfferingLevel = input.ReadUInt32();
+            break;
+          }
           case 112: {
-            OfferingState = (global::March7thHoney.Proto.OfferingState) input.ReadEnum();
+            TotalExp = input.ReadUInt32();
             break;
           }
         }

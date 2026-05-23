@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message StaminaInfoScNotify {
-    int64 next_recover_time = 4;
-    uint32 stamina = 6;
-    int64 DLDIPAHPKOF = 7;
-    uint32 reserve_stamina = 8;
+    uint32 reserve_stamina = 11;
+    uint32 stamina = 5;
+    int64 next_recover_time = 1;
+    int64 EHJCPBJNEOO = 3;
 }

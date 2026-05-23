@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static CmdParkourTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChRDbWRQYXJrb3VyVHlwZS5wcm90byqrAgoOQ21kUGFya291clR5cGUSGwoX",
-            "UENIRU9BSUJFS0tfUENQREhFTFBLRU0QABIiCh1DbWRQYXJrb3VyR2V0UmFu",
-            "a2luZ0luZm9Dc1JlcRC+QRIbChZDbWRQYXJrb3VyR2V0RGF0YVNjUnNwENBB",
-            "Eh4KGUNtZFBhcmtvdXJTdGFydExldmVsU2NSc3AQxEESHAoXQ21kUGFya291",
-            "ckVuZExldmVsU2NSc3AQzUESGwoWQ21kUGFya291ckdldERhdGFDc1JlcRC9",
-            "QRIeChlDbWRQYXJrb3VyU3RhcnRMZXZlbENzUmVxEMtBEhwKF0NtZFBhcmtv",
-            "dXJFbmRMZXZlbENzUmVxEMpBEiIKHUNtZFBhcmtvdXJHZXRSYW5raW5nSW5m",
-            "b1NjUnNwEMZBQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ChRDbWRQYXJrb3VyVHlwZS5wcm90byqdAgoOQ21kUGFya291clR5cGUSGwoX",
+            "S0NMREZNTkVDSkJfTkxDREdJUEdGREoQABIcChdLQ0xERk1ORUNKQl9HTUJL",
+            "R0ZPSU9QSRDOQRIcChdLQ0xERk1ORUNKQl9QR0lCSEtDQUVBSxDIQRIcChdL",
+            "Q0xERk1ORUNKQl9BR09LS0JBS0VCQRDKQRIcChdLQ0xERk1ORUNKQl9FSU5G",
+            "UEJIQUpGShDPQRIcChdLQ0xERk1ORUNKQl9HQUpPSkhDTk5NTxC+QRIcChdL",
+            "Q0xERk1ORUNKQl9BREhFTktMSEJLRRDCQRIcChdLQ0xERk1ORUNKQl9JQ0pD",
+            "T0JEUE5HTxDQQRIcChdLQ0xERk1ORUNKQl9HTU9ETE9LQUhMQRDMQUIWqgIT",
+            "TWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdParkourType), }, null, null));
@@ -41,15 +41,15 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdParkourType {
-    [pbr::OriginalName("PCHEOAIBEKK_PCPDHELPKEM")] PcheoaibekkPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdParkourGetRankingInfoCsReq")] CmdParkourGetRankingInfoCsReq = 8382,
-    [pbr::OriginalName("CmdParkourGetDataScRsp")] CmdParkourGetDataScRsp = 8400,
-    [pbr::OriginalName("CmdParkourStartLevelScRsp")] CmdParkourStartLevelScRsp = 8388,
-    [pbr::OriginalName("CmdParkourEndLevelScRsp")] CmdParkourEndLevelScRsp = 8397,
-    [pbr::OriginalName("CmdParkourGetDataCsReq")] CmdParkourGetDataCsReq = 8381,
-    [pbr::OriginalName("CmdParkourStartLevelCsReq")] CmdParkourStartLevelCsReq = 8395,
-    [pbr::OriginalName("CmdParkourEndLevelCsReq")] CmdParkourEndLevelCsReq = 8394,
-    [pbr::OriginalName("CmdParkourGetRankingInfoScRsp")] CmdParkourGetRankingInfoScRsp = 8390,
+    [pbr::OriginalName("KCLDFMNECJB_NLCDGIPGFDJ")] KcldfmnecjbNlcdgipgfdj = 0,
+    [pbr::OriginalName("KCLDFMNECJB_GMBKGFOIOPI")] KcldfmnecjbGmbkgfoiopi = 8398,
+    [pbr::OriginalName("KCLDFMNECJB_PGIBHKCAEAK")] KcldfmnecjbPgibhkcaeak = 8392,
+    [pbr::OriginalName("KCLDFMNECJB_AGOKKBAKEBA")] KcldfmnecjbAgokkbakeba = 8394,
+    [pbr::OriginalName("KCLDFMNECJB_EINFPBHAJFJ")] KcldfmnecjbEinfpbhajfj = 8399,
+    [pbr::OriginalName("KCLDFMNECJB_GAJOJHCNNMO")] KcldfmnecjbGajojhcnnmo = 8382,
+    [pbr::OriginalName("KCLDFMNECJB_ADHENKLHBKE")] KcldfmnecjbAdhenklhbke = 8386,
+    [pbr::OriginalName("KCLDFMNECJB_ICJCOBDPNGO")] KcldfmnecjbIcjcobdpngo = 8400,
+    [pbr::OriginalName("KCLDFMNECJB_GMODLOKAHLA")] KcldfmnecjbGmodlokahla = 8396,
   }
 
   #endregion

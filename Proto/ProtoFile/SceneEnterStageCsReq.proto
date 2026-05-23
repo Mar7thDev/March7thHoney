@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "RebattleType.proto";
 
 message SceneEnterStageCsReq {
-    uint32 event_id = 4;
-    RebattleType MGABMCBOHMK = 6;
-    bool FDBGOJCKLBH = 8;
+    bool KCDMHBJKNMK = 13;
+    RebattleType NKDAAAGPCDB = 12;
+    uint32 event_id = 3;
 }

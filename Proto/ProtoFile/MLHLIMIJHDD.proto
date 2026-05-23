@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message MLHLIMIJHDD {
+    uint32 LALGADHLMCB = 15;
+    uint32 HBONKLEOEEI = 9;
+    uint32 pos_index = 7;
+    uint32 count = 6;
+}

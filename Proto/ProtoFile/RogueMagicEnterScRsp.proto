@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "AHOLOHCLLKD.proto";
-import "JKAIDKIGEGP.proto";
+import "EEILAINOLPO.proto";
+import "GCBCKOKEAJH.proto";
 
 message RogueMagicEnterScRsp {
-    AHOLOHCLLKD HHDLEADBJGN = 2;
-    JKAIDKIGEGP AFLJJJFCBIN = 3;
+    EEILAINOLPO IDCMACCPCBH = 10;
+    GCBCKOKEAJH PHGJIJELKDB = 9;
     uint32 retcode = 13;
 }

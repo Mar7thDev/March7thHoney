@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message FiveDimFluteDataChangeNotify {
-    repeated uint32 OHGFEGDFKNG = 1;
-    repeated uint32 EPPHGOBAFMP = 12;
+    repeated uint32 AOBGMMAIMHJ = 7;
+    repeated uint32 NFOBNDJIEPL = 1;
 }

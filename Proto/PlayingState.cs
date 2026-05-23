@@ -30,8 +30,8 @@ namespace March7thHoney.Proto {
             "X05PVVMQAxIcChhQTEFZSU5HX0NIQUxMRU5HRV9NRU1PUlkQBBIbChdQTEFZ",
             "SU5HX0NIQUxMRU5HRV9TVE9SWRAFEhoKFlBMQVlJTkdfQ0hBTExFTkdFX0JP",
             "U1MQBhIXChNQTEFZSU5HX1JPR1VFX1RPVVJOEAcSFwoTUExBWUlOR19ST0dV",
-            "RV9NQUdJQxAIEhoKFlBMQVlJTkdfQ0hBTExFTkdFX1BFQUsQCRIbChdMR0dF",
-            "TE5FTkRBT19PS0dBSEdCS0ZEShAKQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
+            "RV9NQUdJQxAIEhoKFlBMQVlJTkdfQ0hBTExFTkdFX1BFQUsQCRIbChdESUhK",
+            "SUxORUNBRF9PQUlMRlBPT0JNShAKQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
             "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -52,7 +52,7 @@ namespace March7thHoney.Proto {
     [pbr::OriginalName("PLAYING_ROGUE_TOURN")] PlayingRogueTourn = 7,
     [pbr::OriginalName("PLAYING_ROGUE_MAGIC")] PlayingRogueMagic = 8,
     [pbr::OriginalName("PLAYING_CHALLENGE_PEAK")] PlayingChallengePeak = 9,
-    [pbr::OriginalName("LGGELNENDAO_OKGAHGBKFDJ")] LggelnendaoOkgahgbkfdj = 10,
+    [pbr::OriginalName("DIHJILNECAD_OAILFPOOBMJ")] DihjilnecadOailfpoobmj = 10,
   }
 
   #endregion

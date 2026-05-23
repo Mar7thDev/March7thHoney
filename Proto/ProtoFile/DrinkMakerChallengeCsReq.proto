@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "CIGKBDIGGOI.proto";
+import "DFJPGILAAON.proto";
 
 message DrinkMakerChallengeCsReq {
-    CIGKBDIGGOI IHDMLHFAEKH = 5;
-    uint32 challenge_id = 13;
+    DFJPGILAAON AGCBLNPHFCI = 11;
+    uint32 challenge_id = 14;
 }

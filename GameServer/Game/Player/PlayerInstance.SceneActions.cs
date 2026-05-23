@@ -359,17 +359,7 @@ public partial class PlayerInstance
             return;
         }
 
-        // Challenge planes have both "lobby/selection" entrances and "in-battle" entrances.
-        // Only block entering challenge planes when we're trying to enter an actual challenge stage without an instance.
-        if (plane.PlaneType == PlaneTypeEnum.Challenge && ChallengeManager!.ChallengeInstance == null &&
-            entryId is not GameConstants.CHALLENGE_ENTRANCE and
-                not GameConstants.CHALLENGE_BOSS_ENTRANCE and
-                not GameConstants.CHALLENGE_PEAK_ENTRANCE and
-                not GameConstants.CHALLENGE_STORY_ENTRANCE)
-        {
-            await EnterScene(100000103, 0, sendPacket);
-            return;
-        }
+        // TODO 4.3: ChallengeManager 暂停，Challenge plane 进入校验暂停
 
         // TODO: Sanify check
         Data.Pos = pos;

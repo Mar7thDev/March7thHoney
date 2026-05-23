@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChZBc3Npc3RTaW1wbGVJbmZvLnByb3RvIloKEEFzc2lzdFNpbXBsZUluZm8S",
-            "CwoDcG9zGAIgASgNEhEKCWF2YXRhcl9pZBgDIAEoDRIXCg9kcmVzc2VkX3Nr",
-            "aW5faWQYCSABKA0SDQoFbGV2ZWwYDyABKA1CFqoCE01hcmNoN3RoSG9uZXku",
+            "CwoDcG9zGAcgASgNEhEKCWF2YXRhcl9pZBgLIAEoDRINCgVsZXZlbBgPIAEo",
+            "DRIXCg9kcmVzc2VkX3NraW5faWQYDiABKA1CFqoCE01hcmNoN3RoSG9uZXku",
             "UHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AssistSimpleInfo), global::March7thHoney.Proto.AssistSimpleInfo.Parser, new[]{ "Pos", "AvatarId", "DressedSkinId", "Level" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AssistSimpleInfo), global::March7thHoney.Proto.AssistSimpleInfo.Parser, new[]{ "Pos", "AvatarId", "Level", "DressedSkinId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,8 +75,8 @@ namespace March7thHoney.Proto {
     public AssistSimpleInfo(AssistSimpleInfo other) : this() {
       pos_ = other.pos_;
       avatarId_ = other.avatarId_;
-      dressedSkinId_ = other.dressedSkinId_;
       level_ = other.level_;
+      dressedSkinId_ = other.dressedSkinId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -87,7 +87,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "pos" field.</summary>
-    public const int PosFieldNumber = 2;
+    public const int PosFieldNumber = 7;
     private uint pos_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -99,7 +99,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "avatar_id" field.</summary>
-    public const int AvatarIdFieldNumber = 3;
+    public const int AvatarIdFieldNumber = 11;
     private uint avatarId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -107,18 +107,6 @@ namespace March7thHoney.Proto {
       get { return avatarId_; }
       set {
         avatarId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "dressed_skin_id" field.</summary>
-    public const int DressedSkinIdFieldNumber = 9;
-    private uint dressedSkinId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint DressedSkinId {
-      get { return dressedSkinId_; }
-      set {
-        dressedSkinId_ = value;
       }
     }
 
@@ -131,6 +119,18 @@ namespace March7thHoney.Proto {
       get { return level_; }
       set {
         level_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "dressed_skin_id" field.</summary>
+    public const int DressedSkinIdFieldNumber = 14;
+    private uint dressedSkinId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint DressedSkinId {
+      get { return dressedSkinId_; }
+      set {
+        dressedSkinId_ = value;
       }
     }
 
@@ -151,8 +151,8 @@ namespace March7thHoney.Proto {
       }
       if (Pos != other.Pos) return false;
       if (AvatarId != other.AvatarId) return false;
-      if (DressedSkinId != other.DressedSkinId) return false;
       if (Level != other.Level) return false;
+      if (DressedSkinId != other.DressedSkinId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -162,8 +162,8 @@ namespace March7thHoney.Proto {
       int hash = 1;
       if (Pos != 0) hash ^= Pos.GetHashCode();
       if (AvatarId != 0) hash ^= AvatarId.GetHashCode();
-      if (DressedSkinId != 0) hash ^= DressedSkinId.GetHashCode();
       if (Level != 0) hash ^= Level.GetHashCode();
+      if (DressedSkinId != 0) hash ^= DressedSkinId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -183,15 +183,15 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Pos != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(56);
         output.WriteUInt32(Pos);
       }
       if (AvatarId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(88);
         output.WriteUInt32(AvatarId);
       }
       if (DressedSkinId != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(112);
         output.WriteUInt32(DressedSkinId);
       }
       if (Level != 0) {
@@ -209,15 +209,15 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Pos != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(56);
         output.WriteUInt32(Pos);
       }
       if (AvatarId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(88);
         output.WriteUInt32(AvatarId);
       }
       if (DressedSkinId != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(112);
         output.WriteUInt32(DressedSkinId);
       }
       if (Level != 0) {
@@ -240,11 +240,11 @@ namespace March7thHoney.Proto {
       if (AvatarId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarId);
       }
-      if (DressedSkinId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DressedSkinId);
-      }
       if (Level != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
+      }
+      if (DressedSkinId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DressedSkinId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -264,11 +264,11 @@ namespace March7thHoney.Proto {
       if (other.AvatarId != 0) {
         AvatarId = other.AvatarId;
       }
-      if (other.DressedSkinId != 0) {
-        DressedSkinId = other.DressedSkinId;
-      }
       if (other.Level != 0) {
         Level = other.Level;
+      }
+      if (other.DressedSkinId != 0) {
+        DressedSkinId = other.DressedSkinId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -289,15 +289,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
+          case 56: {
             Pos = input.ReadUInt32();
             break;
           }
-          case 24: {
+          case 88: {
             AvatarId = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 112: {
             DressedSkinId = input.ReadUInt32();
             break;
           }
@@ -324,15 +324,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
+          case 56: {
             Pos = input.ReadUInt32();
             break;
           }
-          case 24: {
+          case 88: {
             AvatarId = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 112: {
             DressedSkinId = input.ReadUInt32();
             break;
           }

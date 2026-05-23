@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message AetherDivideTainerInfoScNotify {
-    uint32 CFCFCEBNAEF = 12;
+    uint32 FOCACJHLKDB = 6;
 }

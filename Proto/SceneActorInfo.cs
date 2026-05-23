@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChRTY2VuZUFjdG9ySW5mby5wcm90bxoQQXZhdGFyVHlwZS5wcm90byJqCg5T",
-            "Y2VuZUFjdG9ySW5mbxIRCgltYXBfbGF5ZXIYBCABKA0SCwoDdWlkGAcgASgN",
-            "EhYKDmJhc2VfYXZhdGFyX2lkGA4gASgNEiAKC2F2YXRhcl90eXBlGA8gASgO",
+            "Y2VuZUFjdG9ySW5mbxILCgN1aWQYCCABKA0SFgoOYmFzZV9hdmF0YXJfaWQY",
+            "DCABKA0SEQoJbWFwX2xheWVyGA4gASgNEiAKC2F2YXRhcl90eXBlGAQgASgO",
             "MgsuQXZhdGFyVHlwZUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.AvatarTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneActorInfo), global::March7thHoney.Proto.SceneActorInfo.Parser, new[]{ "MapLayer", "Uid", "BaseAvatarId", "AvatarType" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneActorInfo), global::March7thHoney.Proto.SceneActorInfo.Parser, new[]{ "Uid", "BaseAvatarId", "MapLayer", "AvatarType" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,9 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SceneActorInfo(SceneActorInfo other) : this() {
-      mapLayer_ = other.mapLayer_;
       uid_ = other.uid_;
       baseAvatarId_ = other.baseAvatarId_;
+      mapLayer_ = other.mapLayer_;
       avatarType_ = other.avatarType_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -86,20 +86,8 @@ namespace March7thHoney.Proto {
       return new SceneActorInfo(this);
     }
 
-    /// <summary>Field number for the "map_layer" field.</summary>
-    public const int MapLayerFieldNumber = 4;
-    private uint mapLayer_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint MapLayer {
-      get { return mapLayer_; }
-      set {
-        mapLayer_ = value;
-      }
-    }
-
     /// <summary>Field number for the "uid" field.</summary>
-    public const int UidFieldNumber = 7;
+    public const int UidFieldNumber = 8;
     private uint uid_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -111,7 +99,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "base_avatar_id" field.</summary>
-    public const int BaseAvatarIdFieldNumber = 14;
+    public const int BaseAvatarIdFieldNumber = 12;
     private uint baseAvatarId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -122,8 +110,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "map_layer" field.</summary>
+    public const int MapLayerFieldNumber = 14;
+    private uint mapLayer_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint MapLayer {
+      get { return mapLayer_; }
+      set {
+        mapLayer_ = value;
+      }
+    }
+
     /// <summary>Field number for the "avatar_type" field.</summary>
-    public const int AvatarTypeFieldNumber = 15;
+    public const int AvatarTypeFieldNumber = 4;
     private global::March7thHoney.Proto.AvatarType avatarType_ = global::March7thHoney.Proto.AvatarType.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -149,9 +149,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (MapLayer != other.MapLayer) return false;
       if (Uid != other.Uid) return false;
       if (BaseAvatarId != other.BaseAvatarId) return false;
+      if (MapLayer != other.MapLayer) return false;
       if (AvatarType != other.AvatarType) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -160,9 +160,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (MapLayer != 0) hash ^= MapLayer.GetHashCode();
       if (Uid != 0) hash ^= Uid.GetHashCode();
       if (BaseAvatarId != 0) hash ^= BaseAvatarId.GetHashCode();
+      if (MapLayer != 0) hash ^= MapLayer.GetHashCode();
       if (AvatarType != global::March7thHoney.Proto.AvatarType.None) hash ^= AvatarType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -182,21 +182,21 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (MapLayer != 0) {
+      if (AvatarType != global::March7thHoney.Proto.AvatarType.None) {
         output.WriteRawTag(32);
-        output.WriteUInt32(MapLayer);
+        output.WriteEnum((int) AvatarType);
       }
       if (Uid != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(64);
         output.WriteUInt32(Uid);
       }
       if (BaseAvatarId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(96);
         output.WriteUInt32(BaseAvatarId);
       }
-      if (AvatarType != global::March7thHoney.Proto.AvatarType.None) {
-        output.WriteRawTag(120);
-        output.WriteEnum((int) AvatarType);
+      if (MapLayer != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(MapLayer);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -208,21 +208,21 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (MapLayer != 0) {
+      if (AvatarType != global::March7thHoney.Proto.AvatarType.None) {
         output.WriteRawTag(32);
-        output.WriteUInt32(MapLayer);
+        output.WriteEnum((int) AvatarType);
       }
       if (Uid != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(64);
         output.WriteUInt32(Uid);
       }
       if (BaseAvatarId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(96);
         output.WriteUInt32(BaseAvatarId);
       }
-      if (AvatarType != global::March7thHoney.Proto.AvatarType.None) {
-        output.WriteRawTag(120);
-        output.WriteEnum((int) AvatarType);
+      if (MapLayer != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(MapLayer);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -234,14 +234,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (MapLayer != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MapLayer);
-      }
       if (Uid != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Uid);
       }
       if (BaseAvatarId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BaseAvatarId);
+      }
+      if (MapLayer != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MapLayer);
       }
       if (AvatarType != global::March7thHoney.Proto.AvatarType.None) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) AvatarType);
@@ -258,14 +258,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.MapLayer != 0) {
-        MapLayer = other.MapLayer;
-      }
       if (other.Uid != 0) {
         Uid = other.Uid;
       }
       if (other.BaseAvatarId != 0) {
         BaseAvatarId = other.BaseAvatarId;
+      }
+      if (other.MapLayer != 0) {
+        MapLayer = other.MapLayer;
       }
       if (other.AvatarType != global::March7thHoney.Proto.AvatarType.None) {
         AvatarType = other.AvatarType;
@@ -290,19 +290,19 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 32: {
-            MapLayer = input.ReadUInt32();
+            AvatarType = (global::March7thHoney.Proto.AvatarType) input.ReadEnum();
             break;
           }
-          case 56: {
+          case 64: {
             Uid = input.ReadUInt32();
             break;
           }
-          case 112: {
+          case 96: {
             BaseAvatarId = input.ReadUInt32();
             break;
           }
-          case 120: {
-            AvatarType = (global::March7thHoney.Proto.AvatarType) input.ReadEnum();
+          case 112: {
+            MapLayer = input.ReadUInt32();
             break;
           }
         }
@@ -325,19 +325,19 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 32: {
-            MapLayer = input.ReadUInt32();
+            AvatarType = (global::March7thHoney.Proto.AvatarType) input.ReadEnum();
             break;
           }
-          case 56: {
+          case 64: {
             Uid = input.ReadUInt32();
             break;
           }
-          case 112: {
+          case 96: {
             BaseAvatarId = input.ReadUInt32();
             break;
           }
-          case 120: {
-            AvatarType = (global::March7thHoney.Proto.AvatarType) input.ReadEnum();
+          case 112: {
+            MapLayer = input.ReadUInt32();
             break;
           }
         }

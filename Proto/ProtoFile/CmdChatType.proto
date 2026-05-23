@@ -2,24 +2,22 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdChatType {
-    HDCAHBFBODO_PCPDHELPKEM = 0;
-    CmdGetChatEmojiListScRsp = 3926;
-    CmdGetPrivateChatHistoryCsReq = 3914;
-    CmdGetPrivateChatHistoryScRsp = 3918;
-    CmdGetChatEmojiListCsReq = 3963;
-    CmdHABEIPJGPNJ = 3995;
-    CmdMarkChatEmojiScRsp = 3901;
-    CmdRevcMsgScNotify = 3994;
-    CmdGetLoginChatInfoScRsp = 3938;
-    CmdGetLoginChatInfoCsReq = 3904;
-    CmdBatchMarkChatEmojiCsReq = 3974;
-    CmdSendMsgScRsp = 3910;
-    CmdBatchMarkChatEmojiScRsp = 3937;
-    CmdGetChatFriendHistoryCsReq = 3909;
-    CmdSendMsgCsReq = 3991;
-    CmdGetChatFriendHistoryScRsp = 3998;
-    CmdMarkChatEmojiCsReq = 3939;
+    FAKGHKIKHAP_NLCDGIPGFDJ = 0;
+    FAKGHKIKHAP_IDDAOKOGBLH = 3942;
+    FAKGHKIKHAP_MNFHLEPEKJK = 3973;
+    FAKGHKIKHAP_GFFEPIMMIMP = 3981;
+    FAKGHKIKHAP_GPGPNBKBFHJ = 3912;
+    FAKGHKIKHAP_IFFHJNLJHKJ = 3913;
+    FAKGHKIKHAP_PEKJALMHPBI = 3980;
+    FAKGHKIKHAP_KLLEAKMDKKB = 3910;
+    FAKGHKIKHAP_OMGGNOBKEOD = 3987;
+    FAKGHKIKHAP_KKAIBLABMNO = 3936;
+    FAKGHKIKHAP_GFIFMJFAEJN = 3954;
+    FAKGHKIKHAP_CEGHENGKHFK = 3909;
+    FAKGHKIKHAP_AHFODNLGILO = 3929;
+    FAKGHKIKHAP_JEDNJMDDHHM = 3927;
+    FAKGHKIKHAP_BHBEJBBHAON = 3915;
+    FAKGHKIKHAP_KFOAFFPIMNF = 3983;
+    FAKGHKIKHAP_PFLBJLOHCLJ = 3903;
 }

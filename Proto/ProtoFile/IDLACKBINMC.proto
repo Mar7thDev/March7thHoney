@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message IDLACKBINMC {
+    string title = 1;
+    string JFCEOOODIBN = 2;
+}

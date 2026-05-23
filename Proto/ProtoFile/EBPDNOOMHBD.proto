@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "IBHHJPCIOIC.proto";
+import "JIEAANCEIJP.proto";
+import "PAPJEPAJPCJ.proto";
+
+message EBPDNOOMHBD {
+    string BDGLPMHPEKD = 2;
+    IBHHJPCIOIC COBOAEBCMCO = 9;
+    repeated JIEAANCEIJP JJOGEHPDOKH = 1;
+    string debug_extra_info = 3;
+    repeated PAPJEPAJPCJ ADAILGDCPNH = 4;
+    uint32 floor_id = 6;
+    uint32 PBIGECFCHEN = 8;
+    uint32 ABDBLDPCJCJ = 7;
+    uint32 plane_id = 5;
+    uint32 IOHJEHHHPCL = 10;
+}

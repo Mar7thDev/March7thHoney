@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum CBOLBANEANO {
+    CBOLBANEANO_NLCDGIPGFDJ = 0;
+    CBOLBANEANO_AKJBECPHIJK = 1;
+    CBOLBANEANO_MPFMLHDKKEL = 2;
+}

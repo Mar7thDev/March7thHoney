@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "KCEHEAGEDAA.proto";
+import "GIPBHLBFDAH.proto";
 
 message ClockParkFinishScriptScNotify {
-    KCEHEAGEDAA finish_info = 15;
+    GIPBHLBFDAH NLEOMLNOKCC = 7;
 }

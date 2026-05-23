@@ -2,14 +2,12 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message UpdateGroupPropertyScRsp {
-    uint32 group_id = 2;
+    string HMELFPDPCFC = 4;
+    uint32 retcode = 2;
+    uint32 group_id = 10;
+    int32 KHBBNDBJAFK = 7;
+    uint32 floor_id = 9;
     uint32 dimension_id = 3;
-    int32 ELKOCIJNABK = 5;
-    uint32 floor_id = 6;
-    uint32 retcode = 8;
-    string ELNCJFFJFIH = 10;
-    int32 FNAODNGJAMM = 12;
+    int32 DHPDILNLIPC = 11;
 }

@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum GameplayCounterUpdateReason {
     GAMEPLAY_COUNTER_UPDATE_REASON_NONE = 0;
     GAMEPLAY_COUNTER_UPDATE_REASON_ACTIVATE = 1;

@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message ONAEGKCMPNN {
+    uint32 retcode = 15;
+    bool EBAFPOLLJIA = 14;
+}

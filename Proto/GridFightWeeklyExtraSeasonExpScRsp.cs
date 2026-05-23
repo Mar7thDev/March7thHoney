@@ -24,14 +24,13 @@ namespace March7thHoney.Proto {
     static GridFightWeeklyExtraSeasonExpScRspReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CihHcmlkRmlnaHRXZWVrbHlFeHRyYVNlYXNvbkV4cFNjUnNwLnByb3RvIkEK",
-            "IkdyaWRGaWdodFdlZWtseUV4dHJhU2Vhc29uRXhwU2NSc3ASGwoTY3VyX3Rh",
-            "a2VuX2V4dHJhX2V4cBgPIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IG",
-            "cHJvdG8z"));
+            "CihHcmlkRmlnaHRXZWVrbHlFeHRyYVNlYXNvbkV4cFNjUnNwLnByb3RvIjkK",
+            "IkdyaWRGaWdodFdlZWtseUV4dHJhU2Vhc29uRXhwU2NSc3ASEwoLQUNET0lH",
+            "Q0JHRUIYCyABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightWeeklyExtraSeasonExpScRsp), global::March7thHoney.Proto.GridFightWeeklyExtraSeasonExpScRsp.Parser, new[]{ "CurTakenExtraExp" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightWeeklyExtraSeasonExpScRsp), global::March7thHoney.Proto.GridFightWeeklyExtraSeasonExpScRsp.Parser, new[]{ "ACDOIGCBGEB" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,7 +72,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GridFightWeeklyExtraSeasonExpScRsp(GridFightWeeklyExtraSeasonExpScRsp other) : this() {
-      curTakenExtraExp_ = other.curTakenExtraExp_;
+      aCDOIGCBGEB_ = other.aCDOIGCBGEB_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,15 +82,15 @@ namespace March7thHoney.Proto {
       return new GridFightWeeklyExtraSeasonExpScRsp(this);
     }
 
-    /// <summary>Field number for the "cur_taken_extra_exp" field.</summary>
-    public const int CurTakenExtraExpFieldNumber = 15;
-    private uint curTakenExtraExp_;
+    /// <summary>Field number for the "ACDOIGCBGEB" field.</summary>
+    public const int ACDOIGCBGEBFieldNumber = 11;
+    private uint aCDOIGCBGEB_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CurTakenExtraExp {
-      get { return curTakenExtraExp_; }
+    public uint ACDOIGCBGEB {
+      get { return aCDOIGCBGEB_; }
       set {
-        curTakenExtraExp_ = value;
+        aCDOIGCBGEB_ = value;
       }
     }
 
@@ -110,7 +109,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (CurTakenExtraExp != other.CurTakenExtraExp) return false;
+      if (ACDOIGCBGEB != other.ACDOIGCBGEB) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -118,7 +117,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (CurTakenExtraExp != 0) hash ^= CurTakenExtraExp.GetHashCode();
+      if (ACDOIGCBGEB != 0) hash ^= ACDOIGCBGEB.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -137,9 +136,9 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (CurTakenExtraExp != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(CurTakenExtraExp);
+      if (ACDOIGCBGEB != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(ACDOIGCBGEB);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -151,9 +150,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (CurTakenExtraExp != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(CurTakenExtraExp);
+      if (ACDOIGCBGEB != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(ACDOIGCBGEB);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -165,8 +164,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (CurTakenExtraExp != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurTakenExtraExp);
+      if (ACDOIGCBGEB != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ACDOIGCBGEB);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -180,8 +179,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.CurTakenExtraExp != 0) {
-        CurTakenExtraExp = other.CurTakenExtraExp;
+      if (other.ACDOIGCBGEB != 0) {
+        ACDOIGCBGEB = other.ACDOIGCBGEB;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -202,8 +201,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 120: {
-            CurTakenExtraExp = input.ReadUInt32();
+          case 88: {
+            ACDOIGCBGEB = input.ReadUInt32();
             break;
           }
         }
@@ -225,8 +224,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 120: {
-            CurTakenExtraExp = input.ReadUInt32();
+          case 88: {
+            ACDOIGCBGEB = input.ReadUInt32();
             break;
           }
         }

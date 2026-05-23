@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdRndOptionType {
-    EDOOKEJHPAD_PCPDHELPKEM = 0;
-    CmdDailyFirstMeetPamCsReq = 3494;
-    CmdGetRndOptionCsReq = 3491;
-    CmdEEAMBMDGIHF = 3410;
-    CmdCBEFFNAFPEL = 3495;
+    LHHIKPLMLGH_NLCDGIPGFDJ = 0;
+    LHHIKPLMLGH_FHMBJGCBBPF = 3473;
+    LHHIKPLMLGH_IFMEJPJJELN = 3427;
+    LHHIKPLMLGH_AKEKFNOPPLF = 3403;
+    LHHIKPLMLGH_BKAOLMEOLFJ = 3480;
 }

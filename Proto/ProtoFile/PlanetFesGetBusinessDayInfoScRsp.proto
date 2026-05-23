@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "PBGMKNEGOPK.proto";
+import "PLPDNKNJBAA.proto";
 
 message PlanetFesGetBusinessDayInfoScRsp {
-    int64 ALIGEFKMMGH = 1;
-    uint32 retcode = 12;
-    PBGMKNEGOPK OADEJOMKKPF = 14;
+    PLPDNKNJBAA BOLCNGAKAMG = 13;
+    int64 NACEMPJFKAH = 7;
+    uint32 retcode = 10;
 }

@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum IIAOGEIADGA {
+    IIAOGEIADGA_NLCDGIPGFDJ = 0;
+    IIAOGEIADGA_JHHAJDKPLJH = 1;
+    IIAOGEIADGA_LOOAKNHDBLL = 2;
+    IIAOGEIADGA_CIHFGJDCHIA = 3;
+}

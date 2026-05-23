@@ -2,17 +2,15 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message AnnounceData {
-    string emergency_text = 2;
-    int64 begin_time = 3;
-    uint32 MPPDNHNPFEN = 4;
-    uint32 config_id = 5;
-    int64 end_time = 6;
-    string AEDGENKIEPB = 8;
-    uint32 banner_frequency = 11;
-    string banner_text = 13;
-    bool has_recommand = 14;
-    bool LHLEAGCJPFC = 15;
+    string banner_text = 10;
+    string DEEENNMMJBA = 9;
+    string emergency_text = 14;
+    int64 end_time = 13;
+    uint32 DNHBBJBHFNA = 7;
+    bool has_recommand = 1;
+    bool BBEBEKFGMAD = 6;
+    int64 begin_time = 8;
+    uint32 config_id = 2;
+    uint32 banner_frequency = 4;
 }

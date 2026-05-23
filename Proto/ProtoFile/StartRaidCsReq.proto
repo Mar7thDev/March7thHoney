@@ -2,15 +2,13 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "EEBPHJCNBFO.proto";
+import "AvatarIdentifier.proto";
 
 message StartRaidCsReq {
-    repeated EEBPHJCNBFO BDBJKKOJODC = 2;
-    uint32 is_save = 3;
-    uint32 prop_entity_id = 4;
-    uint32 world_level = 8;
-    uint32 raid_id = 9;
-    repeated uint32 avatar_list = 11;
+    repeated AvatarIdentifier NIMDEPFJJNI = 9;
+    repeated uint32 avatar_list = 4;
+    uint32 raid_id = 15;
+    uint32 world_level = 11;
+    uint32 is_save = 5;
+    uint32 prop_entity_id = 6;
 }

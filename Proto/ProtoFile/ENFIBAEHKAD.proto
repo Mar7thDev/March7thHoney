@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum ENFIBAEHKAD {
+    ENFIBAEHKAD_AMOLBLFOEPC = 0;
+    ENFIBAEHKAD_FGDCNHHAFOM = 1;
+    ENFIBAEHKAD_PEBFGLKGJMN = 2;
+    ENFIBAEHKAD_IDDIKOOKEOM = 3;
+}

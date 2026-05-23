@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "MFPDAKOIOED.proto";
+
+message SocialPlayPreCheckEnterRoomCsReq {
+    uint32 teleport_id = 13;
+    uint32 entry_id = 3;
+    MFPDAKOIOED GJNMHILINHC = 8;
+}

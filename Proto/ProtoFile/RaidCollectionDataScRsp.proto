@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "ALEOILCIFIN.proto";
+import "BOPOBHGDIKN.proto";
 
 message RaidCollectionDataScRsp {
-    repeated ALEOILCIFIN challenge_list = 8;
-    uint32 retcode = 13;
+    repeated BOPOBHGDIKN challenge_list = 7;
+    uint32 retcode = 2;
 }

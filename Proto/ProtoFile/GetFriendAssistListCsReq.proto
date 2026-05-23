@@ -2,14 +2,12 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "IPGFCGHIIKN.proto";
+import "PIDAHABFLBL.proto";
 
 message GetFriendAssistListCsReq {
-    repeated uint32 IPMGLMJFGNP = 1;
-    IPGFCGHIIKN NJAAPGJANCI = 2;
-    uint32 target_side = 7;
-    bool ICHENOJECAP = 13;
-    repeated uint32 NLEEIBAPFAA = 14;
+    repeated uint32 EEJGCFBJKAK = 9;
+    repeated uint32 HHFPJHMEIJK = 2;
+    uint32 target_side = 5;
+    PIDAHABFLBL HFOLAOIKOLB = 10;
+    bool DDNKHDIKAEL = 6;
 }

@@ -11,8 +11,8 @@ public class PacketGetAvatarDataScRsp : BasePacket
     {
         var proto = new GetAvatarDataScRsp
         {
-            IsGetAll = true,
-            PlayerOutfitData = player.Data.ToPlayerOutfitProto()
+            // TODO 4.3: PlayerOutfitData 在 4.3 中被砍
+            IsGetAll = true
         };
 
         player.PlayerUnlockData!.Skins.Values.ToList().ForEach(skin =>

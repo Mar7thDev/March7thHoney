@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "JLLIDDIBOHI.proto";
-import "LMIINHHKLNL.proto";
+import "CDCCPHILOCC.proto";
+import "FGFGINEFBBK.proto";
 
 message GetKilledPunkLordMonsterDataScRsp {
-    repeated JLLIDDIBOHI LKFKKGNACNP = 6;
-    repeated LMIINHHKLNL GPBKIHALINB = 8;
-    uint32 retcode = 9;
+    repeated FGFGINEFBBK CPPDAIMLDGB = 4;
+    repeated CDCCPHILOCC BLLLCPONFBE = 10;
+    uint32 retcode = 6;
 }

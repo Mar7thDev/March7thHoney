@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdFightDiceCombatType {
-    MOIJFMEGOGC_PCPDHELPKEM = 0;
+    FKFINHPOMMA_NLCDGIPGFDJ = 0;
 }

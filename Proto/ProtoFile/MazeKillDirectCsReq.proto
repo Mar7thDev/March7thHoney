@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "EBKOLHJIOFN.proto";
+import "FDJADOEAOLE.proto";
 
 message MazeKillDirectCsReq {
     repeated uint32 entity_list = 4;
-    uint32 GJKGPDHNKHE = 8;
-    EBKOLHJIOFN ALFHNEHOBJA = 9;
+    uint32 FABPLNCIGPK = 8;
+    FDJADOEAOLE NFMKOFNEKLA = 14;
 }

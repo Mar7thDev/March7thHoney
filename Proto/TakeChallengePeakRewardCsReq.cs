@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiJUYWtlQ2hhbGxlbmdlUGVha1Jld2FyZENzUmVxLnByb3RvImcKHFRha2VD",
-            "aGFsbGVuZ2VQZWFrUmV3YXJkQ3NSZXESFQoNcGVha19ncm91cF9pZBgEIAEo",
-            "DRIdChVub3JtYWxfcmV3YXJkX2lkX2xpc3QYBiADKA0SEQoJcmV3YXJkX2lk",
-            "GAkgAygNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "aGFsbGVuZ2VQZWFrUmV3YXJkQ3NSZXESHQoVbm9ybWFsX3Jld2FyZF9pZF9s",
+            "aXN0GAogAygNEhEKCXJld2FyZF9pZBgIIAMoDRIVCg1wZWFrX2dyb3VwX2lk",
+            "GAUgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TakeChallengePeakRewardCsReq), global::March7thHoney.Proto.TakeChallengePeakRewardCsReq.Parser, new[]{ "PeakGroupId", "NormalRewardIdList", "RewardId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TakeChallengePeakRewardCsReq), global::March7thHoney.Proto.TakeChallengePeakRewardCsReq.Parser, new[]{ "NormalRewardIdList", "RewardId", "PeakGroupId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,9 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public TakeChallengePeakRewardCsReq(TakeChallengePeakRewardCsReq other) : this() {
-      peakGroupId_ = other.peakGroupId_;
       normalRewardIdList_ = other.normalRewardIdList_.Clone();
       rewardId_ = other.rewardId_.Clone();
+      peakGroupId_ = other.peakGroupId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,22 +85,10 @@ namespace March7thHoney.Proto {
       return new TakeChallengePeakRewardCsReq(this);
     }
 
-    /// <summary>Field number for the "peak_group_id" field.</summary>
-    public const int PeakGroupIdFieldNumber = 4;
-    private uint peakGroupId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PeakGroupId {
-      get { return peakGroupId_; }
-      set {
-        peakGroupId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "normal_reward_id_list" field.</summary>
-    public const int NormalRewardIdListFieldNumber = 6;
+    public const int NormalRewardIdListFieldNumber = 10;
     private static readonly pb::FieldCodec<uint> _repeated_normalRewardIdList_codec
-        = pb::FieldCodec.ForUInt32(50);
+        = pb::FieldCodec.ForUInt32(82);
     private readonly pbc::RepeatedField<uint> normalRewardIdList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -109,14 +97,26 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "reward_id" field.</summary>
-    public const int RewardIdFieldNumber = 9;
+    public const int RewardIdFieldNumber = 8;
     private static readonly pb::FieldCodec<uint> _repeated_rewardId_codec
-        = pb::FieldCodec.ForUInt32(74);
+        = pb::FieldCodec.ForUInt32(66);
     private readonly pbc::RepeatedField<uint> rewardId_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<uint> RewardId {
       get { return rewardId_; }
+    }
+
+    /// <summary>Field number for the "peak_group_id" field.</summary>
+    public const int PeakGroupIdFieldNumber = 5;
+    private uint peakGroupId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint PeakGroupId {
+      get { return peakGroupId_; }
+      set {
+        peakGroupId_ = value;
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -134,9 +134,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (PeakGroupId != other.PeakGroupId) return false;
       if(!normalRewardIdList_.Equals(other.normalRewardIdList_)) return false;
       if(!rewardId_.Equals(other.rewardId_)) return false;
+      if (PeakGroupId != other.PeakGroupId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -144,9 +144,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (PeakGroupId != 0) hash ^= PeakGroupId.GetHashCode();
       hash ^= normalRewardIdList_.GetHashCode();
       hash ^= rewardId_.GetHashCode();
+      if (PeakGroupId != 0) hash ^= PeakGroupId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -166,11 +166,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (PeakGroupId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(40);
         output.WriteUInt32(PeakGroupId);
       }
-      normalRewardIdList_.WriteTo(output, _repeated_normalRewardIdList_codec);
       rewardId_.WriteTo(output, _repeated_rewardId_codec);
+      normalRewardIdList_.WriteTo(output, _repeated_normalRewardIdList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -182,11 +182,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (PeakGroupId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(40);
         output.WriteUInt32(PeakGroupId);
       }
-      normalRewardIdList_.WriteTo(ref output, _repeated_normalRewardIdList_codec);
       rewardId_.WriteTo(ref output, _repeated_rewardId_codec);
+      normalRewardIdList_.WriteTo(ref output, _repeated_normalRewardIdList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -197,11 +197,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      size += normalRewardIdList_.CalculateSize(_repeated_normalRewardIdList_codec);
+      size += rewardId_.CalculateSize(_repeated_rewardId_codec);
       if (PeakGroupId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PeakGroupId);
       }
-      size += normalRewardIdList_.CalculateSize(_repeated_normalRewardIdList_codec);
-      size += rewardId_.CalculateSize(_repeated_rewardId_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -214,11 +214,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      normalRewardIdList_.Add(other.normalRewardIdList_);
+      rewardId_.Add(other.rewardId_);
       if (other.PeakGroupId != 0) {
         PeakGroupId = other.PeakGroupId;
       }
-      normalRewardIdList_.Add(other.normalRewardIdList_);
-      rewardId_.Add(other.rewardId_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -238,18 +238,18 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
+          case 40: {
             PeakGroupId = input.ReadUInt32();
             break;
           }
-          case 50:
-          case 48: {
-            normalRewardIdList_.AddEntriesFrom(input, _repeated_normalRewardIdList_codec);
+          case 66:
+          case 64: {
+            rewardId_.AddEntriesFrom(input, _repeated_rewardId_codec);
             break;
           }
-          case 74:
-          case 72: {
-            rewardId_.AddEntriesFrom(input, _repeated_rewardId_codec);
+          case 82:
+          case 80: {
+            normalRewardIdList_.AddEntriesFrom(input, _repeated_normalRewardIdList_codec);
             break;
           }
         }
@@ -271,18 +271,18 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
+          case 40: {
             PeakGroupId = input.ReadUInt32();
             break;
           }
-          case 50:
-          case 48: {
-            normalRewardIdList_.AddEntriesFrom(ref input, _repeated_normalRewardIdList_codec);
+          case 66:
+          case 64: {
+            rewardId_.AddEntriesFrom(ref input, _repeated_rewardId_codec);
             break;
           }
-          case 74:
-          case 72: {
-            rewardId_.AddEntriesFrom(ref input, _repeated_rewardId_codec);
+          case 82:
+          case 80: {
+            normalRewardIdList_.AddEntriesFrom(ref input, _repeated_normalRewardIdList_codec);
             break;
           }
         }

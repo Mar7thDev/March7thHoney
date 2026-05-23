@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "ALGJOMFCLKL.proto";
+import "FAICNBKIELL.proto";
 
 message RogueTournGetSettleInfoScRsp {
-    uint32 retcode = 4;
-    ALGJOMFCLKL EDKJMPACHNJ = 6;
+    FAICNBKIELL BFLLJJBHLDF = 15;
+    uint32 retcode = 12;
 }

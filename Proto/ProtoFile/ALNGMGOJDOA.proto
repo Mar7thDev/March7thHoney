@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "HPIEHAMDJAP.proto";
+import "MLHLIMIJHDD.proto";
+
+message ALNGMGOJDOA {
+    map<uint32, uint32> GMONIMLFKFC = 10;
+    repeated HPIEHAMDJAP MJNNNJPDKDI = 12;
+    map<uint32, uint32> AEOMEFEMBJI = 7;
+    repeated MLHLIMIJHDD DBINCLPHEFN = 1;
+}

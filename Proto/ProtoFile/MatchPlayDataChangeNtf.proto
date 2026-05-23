@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "BPJDOEMBNMD.proto";
+import "PNEGDOHOLDN.proto";
 
 message MatchPlayDataChangeNtf {
-    BPJDOEMBNMD PAAGKBFNHKK = 10;
+    PNEGDOHOLDN KMCDHFGJFNJ = 13;
 }

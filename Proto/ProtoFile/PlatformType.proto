@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum PlatformType {
     EDITOR = 0;
     IOS = 1;

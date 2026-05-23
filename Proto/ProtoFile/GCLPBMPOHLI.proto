@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message GCLPBMPOHLI {
+    uint32 panel_id = 4;
+    uint32 JMGPFEGLCGG = 8;
+    uint32 FAOAGKPPNGN = 10;
+    uint32 LFOHEBCNMDP = 15;
+}

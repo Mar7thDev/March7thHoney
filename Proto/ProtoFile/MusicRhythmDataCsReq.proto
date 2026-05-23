@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message MusicRhythmDataCsReq {
-    uint32 player_data = 4;
+    uint32 player_data = 7;
 }

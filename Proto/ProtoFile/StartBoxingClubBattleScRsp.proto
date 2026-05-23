@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "SceneBattleInfo.proto";
 
 message StartBoxingClubBattleScRsp {
-    SceneBattleInfo battle_info = 1;
-    uint32 challenge_id = 2;
-    uint32 retcode = 13;
+    SceneBattleInfo battle_info = 15;
+    uint32 challenge_id = 6;
+    uint32 retcode = 11;
 }

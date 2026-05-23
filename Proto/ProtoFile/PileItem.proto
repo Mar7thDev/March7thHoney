@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message PileItem {
-    uint32 item_id = 2;
-    uint32 item_num = 5;
+    uint32 item_num = 11;
+    uint32 item_id = 3;
 }

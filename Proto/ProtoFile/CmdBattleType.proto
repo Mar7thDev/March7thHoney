@@ -2,22 +2,21 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdBattleType {
-    JHHEBHOKOEK_PCPDHELPKEM = 0;
-    CmdPVEBattleResultScRsp = 110;
-    CmdSyncClientResVersionCsReq = 109;
-    CmdPDNPICPECAC = 195;
-    CmdQuitBattleScNotify = 163;
-    JHHEBHOKOEK_KAPOBGDLHGC = 126;
-    CmdServerSimulateBattleFinishScNotify = 101;
-    CmdRebattleByClientCsNotify = 137;
-    CmdBattleLogReportScRsp = 139;
-    CmdQuitBattleCsReq = 194;
-    CmdGetCurBattleInfoScRsp = 118;
-    CmdGetCurBattleInfoCsReq = 114;
-    CmdReBattleAfterBattleLoseCsNotify = 174;
-    CmdPVEBattleResultCsReq = 191;
-    CmdSyncClientResVersionScRsp = 198;
+    EJCOIDCJDHM_NLCDGIPGFDJ = 0;
+    EJCOIDCJDHM_NPMINAPIGNJ = 127;
+    EJCOIDCJDHM_KNLBHKNCDLF = 103;
+    EJCOIDCJDHM_OFJPHHNKJMG = 181;
+    EJCOIDCJDHM_AHLFKNGOMGJ = 154;
+    EJCOIDCJDHM_KGEMPCLBNPH = 180;
+    EJCOIDCJDHM_LKMHOLIBOEJ = 183;
+    EJCOIDCJDHM_BEEMPBJJDKB = 109;
+    EJCOIDCJDHM_LNEEPJNLDAI = 110;
+    EJCOIDCJDHM_CJGIDPPDCJB = 173;
+    EJCOIDCJDHM_HIGJCMJDIEO = 112;
+    EJCOIDCJDHM_FMFLBPOKJDB = 136;
+    EJCOIDCJDHM_NAOMMJCLMOI = 187;
+    EJCOIDCJDHM_JFBOMFNODNL = 115;
+    EJCOIDCJDHM_ELJAMCIOLCM = 113;
+    EJCOIDCJDHM_IBLJELNACOF = 129;
 }

@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdStoryLineType {
-    AHJHAMOKMKH_PCPDHELPKEM = 0;
-    CmdStoryLineTrialAvatarChangeScNotify = 6209;
-    CmdStoryLineInfoScNotify = 6294;
-    CmdChangeStoryLineFinishScNotify = 6218;
-    CmdEDIHEAFLFAO = 6210;
-    CmdGetStoryLineInfoCsReq = 6291;
+    ALMBGGJDJBJ_NLCDGIPGFDJ = 0;
+    ALMBGGJDJBJ_GGCEHNECGME = 6203;
+    ALMBGGJDJBJ_ENFDDEPECJC = 6273;
+    ALMBGGJDJBJ_DFIHCMLNFNH = 6280;
+    ALMBGGJDJBJ_CLJOALCHHGE = 6213;
+    ALMBGGJDJBJ_KOPAFCJLIKC = 6215;
 }

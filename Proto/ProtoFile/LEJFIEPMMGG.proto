@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "CBDMGEGELFM.proto";
+
+message LEJFIEPMMGG {
+    repeated CBDMGEGELFM IFJIHNBDNGN = 15;
+    uint32 KAHMGPGPOII = 8;
+    bool HNLJIPAOEGB = 6;
+}

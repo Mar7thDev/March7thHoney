@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChtHZXRNaXNzaW9uU3RhdHVzQ3NSZXEucHJvdG8iUgoVR2V0TWlzc2lvblN0",
-            "YXR1c0NzUmVxEhwKFG1haW5fbWlzc2lvbl9pZF9saXN0GAUgAygNEhsKE3N1",
-            "Yl9taXNzaW9uX2lkX2xpc3QYDSADKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJv",
+            "YXR1c0NzUmVxEhsKE3N1Yl9taXNzaW9uX2lkX2xpc3QYCyADKA0SHAoUbWFp",
+            "bl9taXNzaW9uX2lkX2xpc3QYASADKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJv",
             "dG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetMissionStatusCsReq), global::March7thHoney.Proto.GetMissionStatusCsReq.Parser, new[]{ "MainMissionIdList", "SubMissionIdList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetMissionStatusCsReq), global::March7thHoney.Proto.GetMissionStatusCsReq.Parser, new[]{ "SubMissionIdList", "MainMissionIdList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetMissionStatusCsReq(GetMissionStatusCsReq other) : this() {
-      mainMissionIdList_ = other.mainMissionIdList_.Clone();
       subMissionIdList_ = other.subMissionIdList_.Clone();
+      mainMissionIdList_ = other.mainMissionIdList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,26 +84,26 @@ namespace March7thHoney.Proto {
       return new GetMissionStatusCsReq(this);
     }
 
-    /// <summary>Field number for the "main_mission_id_list" field.</summary>
-    public const int MainMissionIdListFieldNumber = 5;
-    private static readonly pb::FieldCodec<uint> _repeated_mainMissionIdList_codec
-        = pb::FieldCodec.ForUInt32(42);
-    private readonly pbc::RepeatedField<uint> mainMissionIdList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> MainMissionIdList {
-      get { return mainMissionIdList_; }
-    }
-
     /// <summary>Field number for the "sub_mission_id_list" field.</summary>
-    public const int SubMissionIdListFieldNumber = 13;
+    public const int SubMissionIdListFieldNumber = 11;
     private static readonly pb::FieldCodec<uint> _repeated_subMissionIdList_codec
-        = pb::FieldCodec.ForUInt32(106);
+        = pb::FieldCodec.ForUInt32(90);
     private readonly pbc::RepeatedField<uint> subMissionIdList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<uint> SubMissionIdList {
       get { return subMissionIdList_; }
+    }
+
+    /// <summary>Field number for the "main_mission_id_list" field.</summary>
+    public const int MainMissionIdListFieldNumber = 1;
+    private static readonly pb::FieldCodec<uint> _repeated_mainMissionIdList_codec
+        = pb::FieldCodec.ForUInt32(10);
+    private readonly pbc::RepeatedField<uint> mainMissionIdList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> MainMissionIdList {
+      get { return mainMissionIdList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -121,8 +121,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!mainMissionIdList_.Equals(other.mainMissionIdList_)) return false;
       if(!subMissionIdList_.Equals(other.subMissionIdList_)) return false;
+      if(!mainMissionIdList_.Equals(other.mainMissionIdList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -130,8 +130,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= mainMissionIdList_.GetHashCode();
       hash ^= subMissionIdList_.GetHashCode();
+      hash ^= mainMissionIdList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -174,8 +174,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += mainMissionIdList_.CalculateSize(_repeated_mainMissionIdList_codec);
       size += subMissionIdList_.CalculateSize(_repeated_subMissionIdList_codec);
+      size += mainMissionIdList_.CalculateSize(_repeated_mainMissionIdList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -188,8 +188,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      mainMissionIdList_.Add(other.mainMissionIdList_);
       subMissionIdList_.Add(other.subMissionIdList_);
+      mainMissionIdList_.Add(other.mainMissionIdList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -209,13 +209,13 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 42:
-          case 40: {
+          case 10:
+          case 8: {
             mainMissionIdList_.AddEntriesFrom(input, _repeated_mainMissionIdList_codec);
             break;
           }
-          case 106:
-          case 104: {
+          case 90:
+          case 88: {
             subMissionIdList_.AddEntriesFrom(input, _repeated_subMissionIdList_codec);
             break;
           }
@@ -238,13 +238,13 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 42:
-          case 40: {
+          case 10:
+          case 8: {
             mainMissionIdList_.AddEntriesFrom(ref input, _repeated_mainMissionIdList_codec);
             break;
           }
-          case 106:
-          case 104: {
+          case 90:
+          case 88: {
             subMissionIdList_.AddEntriesFrom(ref input, _repeated_subMissionIdList_codec);
             break;
           }

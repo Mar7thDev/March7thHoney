@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message LeaveChallengeTierceScRsp {
+    uint32 retcode = 4;
+}

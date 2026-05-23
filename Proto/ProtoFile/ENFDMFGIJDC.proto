@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "LIKNJLCIAGI.proto";
+
+message ENFDMFGIJDC {
+    LIKNJLCIAGI MAKKJMNDDDN = 3;
+    LIKNJLCIAGI EBCLHMBBAEH = 7;
+    uint32 config_id = 10;
+    uint32 MOBCPDJGEFK = 14;
+    uint32 ELFFJOOPKJJ = 1;
+    int32 AEKJCKODEFP = 11;
+    int32 NGICBOPFBJF = 2;
+    uint32 interact_id = 15;
+    int32 MFPJBEAFFLG = 12;
+}

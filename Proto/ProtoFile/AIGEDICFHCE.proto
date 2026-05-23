@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message AIGEDICFHCE {
+    bool is_win = 2;
+    uint32 IMGLLIBJAPC = 10;
+}

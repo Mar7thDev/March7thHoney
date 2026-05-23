@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum DICEONDKEFF {
+    DICEONDKEFF_NLCDGIPGFDJ = 0;
+    DICEONDKEFF_ICFONCMFNLG = 1;
+    DICEONDKEFF_KDDIPFACJAJ = 2;
+}

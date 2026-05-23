@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "ACFLKPFDHIM.proto";
+import "FHCEIOHLADG.proto";
+
+message KFMKBMJPEIC {
+    repeated uint32 IHCDDIPNJKO = 2;
+    map<uint32, uint32> BANBECDCDHG = 4;
+    repeated FHCEIOHLADG POJGKJENENA = 5;
+    repeated ACFLKPFDHIM grid_fight_equipment_list = 3;
+    uint32 DNNCAGJIOAP = 1;
+}

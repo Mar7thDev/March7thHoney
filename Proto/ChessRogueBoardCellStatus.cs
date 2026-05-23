@@ -25,9 +25,9 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch9DaGVzc1JvZ3VlQm9hcmRDZWxsU3RhdHVzLnByb3RvKo8BChlDaGVzc1Jv",
-            "Z3VlQm9hcmRDZWxsU3RhdHVzEhsKF0dCSUtDSlBHTEJLX0dIR0FQT0FLR0FC",
-            "EAASGwoXR0JJS0NKUEdMQktfSEdOR0FETklMRkMQARIbChdHQklLQ0pQR0xC",
-            "S19IUEpFQkZGSEpOUBACEhsKF0dCSUtDSlBHTEJLX0tMSERDT1BQTE5HEANC",
+            "Z3VlQm9hcmRDZWxsU3RhdHVzEhsKF0dPQktISEFFSUFGX0JQT0NPSEZJQU9I",
+            "EAASGwoXR09CS0hIQUVJQUZfRUFQRkpISkhJRksQARIbChdHT0JLSEhBRUlB",
+            "Rl9MT09BS05IREJMTBACEhsKF0dPQktISEFFSUFGX0NJSEZHSkRDSElBEANC",
             "FqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -38,10 +38,10 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum ChessRogueBoardCellStatus {
-    [pbr::OriginalName("GBIKCJPGLBK_GHGAPOAKGAB")] GbikcjpglbkGhgapoakgab = 0,
-    [pbr::OriginalName("GBIKCJPGLBK_HGNGADNILFC")] GbikcjpglbkHgngadnilfc = 1,
-    [pbr::OriginalName("GBIKCJPGLBK_HPJEBFFHJNP")] GbikcjpglbkHpjebffhjnp = 2,
-    [pbr::OriginalName("GBIKCJPGLBK_KLHDCOPPLNG")] GbikcjpglbkKlhdcopplng = 3,
+    [pbr::OriginalName("GOBKHHAEIAF_BPOCOHFIAOH")] GobkhhaeiafBpocohfiaoh = 0,
+    [pbr::OriginalName("GOBKHHAEIAF_EAPFJHJHIFK")] GobkhhaeiafEapfjhjhifk = 1,
+    [pbr::OriginalName("GOBKHHAEIAF_LOOAKNHDBLL")] GobkhhaeiafLooaknhdbll = 2,
+    [pbr::OriginalName("GOBKHHAEIAF_CIHFGJDCHIA")] GobkhhaeiafCihfgjdchia = 3,
   }
 
   #endregion

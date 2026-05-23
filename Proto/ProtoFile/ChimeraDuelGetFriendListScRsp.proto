@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "MPPHIOJNKGB.proto";
+
+message ChimeraDuelGetFriendListScRsp {
+    repeated MPPHIOJNKGB friend_list = 2;
+    uint32 retcode = 15;
+}

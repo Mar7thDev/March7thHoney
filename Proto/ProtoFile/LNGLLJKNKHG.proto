@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "IPGIJFNAFLC.proto";
+
+message LNGLLJKNKHG {
+    IPGIJFNAFLC IHBOHKKCGCP = 9;
+    uint32 EAFFACCBAAA = 13;
+    uint32 retcode = 5;
+    bool BDCNNNNLLHJ = 12;
+}

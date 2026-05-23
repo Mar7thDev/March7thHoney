@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "PGECGKEKFNC.proto";
+
+message FLFHACPLDJE {
+    oneof OFJBCEDFLKL {
+        PGECGKEKFNC BDPIMPJOJBK = 4;
+        uint32 gold = 7;
+    }
+}

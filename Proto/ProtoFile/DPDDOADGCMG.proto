@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "LPHCHEJEMPD.proto";
+
+message DPDDOADGCMG {
+    repeated LPHCHEJEMPD BFCGOELLNIP = 15;
+    uint32 NAOKGNGBHAO = 2;
+}

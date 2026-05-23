@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "FHEGNOPNICH.proto";
+import "LineupInfo.proto";
+import "SceneInfo.proto";
+
+message LHKAOPAPJEK {
+    SceneInfo scene = 7;
+    LineupInfo lineup = 10;
+    FHEGNOPNICH JNKLNLKHGBB = 15;
+}

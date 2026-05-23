@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "FMNKKAMOHEE.proto";
+import "NDLNIKCCALK.proto";
+
+message CKPOBLIFMGN {
+    NDLNIKCCALK MGBNEAHCDMA = 4;
+    FMNKKAMOHEE MHFHLBHFIBC = 13;
+}

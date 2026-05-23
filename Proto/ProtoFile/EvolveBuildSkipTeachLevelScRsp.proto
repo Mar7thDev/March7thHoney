@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message EvolveBuildSkipTeachLevelScRsp {
-    uint32 retcode = 4;
-    uint32 level_id = 10;
+    uint32 retcode = 11;
+    uint32 level_id = 15;
 }

@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiBTdGFydFBhcnRpYWxDaGFsbGVuZ2VDc1JlcS5wcm90byJaChpTdGFydFBh",
-            "cnRpYWxDaGFsbGVuZ2VDc1JlcRIPCgdidWZmX2lkGAQgASgNEhUKDWlzX2Zp",
-            "cnN0X2hhbGYYBSABKAgSFAoMY2hhbGxlbmdlX2lkGAsgASgNQhaqAhNNYXJj",
+            "cnRpYWxDaGFsbGVuZ2VDc1JlcRIVCg1pc19maXJzdF9oYWxmGAwgASgIEhQK",
+            "DGNoYWxsZW5nZV9pZBgKIAEoDRIPCgdidWZmX2lkGAMgASgNQhaqAhNNYXJj",
             "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartPartialChallengeCsReq), global::March7thHoney.Proto.StartPartialChallengeCsReq.Parser, new[]{ "BuffId", "IsFirstHalf", "ChallengeId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartPartialChallengeCsReq), global::March7thHoney.Proto.StartPartialChallengeCsReq.Parser, new[]{ "IsFirstHalf", "ChallengeId", "BuffId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,9 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public StartPartialChallengeCsReq(StartPartialChallengeCsReq other) : this() {
-      buffId_ = other.buffId_;
       isFirstHalf_ = other.isFirstHalf_;
       challengeId_ = other.challengeId_;
+      buffId_ = other.buffId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,20 +85,8 @@ namespace March7thHoney.Proto {
       return new StartPartialChallengeCsReq(this);
     }
 
-    /// <summary>Field number for the "buff_id" field.</summary>
-    public const int BuffIdFieldNumber = 4;
-    private uint buffId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint BuffId {
-      get { return buffId_; }
-      set {
-        buffId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "is_first_half" field.</summary>
-    public const int IsFirstHalfFieldNumber = 5;
+    public const int IsFirstHalfFieldNumber = 12;
     private bool isFirstHalf_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,7 +98,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "challenge_id" field.</summary>
-    public const int ChallengeIdFieldNumber = 11;
+    public const int ChallengeIdFieldNumber = 10;
     private uint challengeId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -118,6 +106,18 @@ namespace March7thHoney.Proto {
       get { return challengeId_; }
       set {
         challengeId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "buff_id" field.</summary>
+    public const int BuffIdFieldNumber = 3;
+    private uint buffId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint BuffId {
+      get { return buffId_; }
+      set {
+        buffId_ = value;
       }
     }
 
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (BuffId != other.BuffId) return false;
       if (IsFirstHalf != other.IsFirstHalf) return false;
       if (ChallengeId != other.ChallengeId) return false;
+      if (BuffId != other.BuffId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -146,9 +146,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (BuffId != 0) hash ^= BuffId.GetHashCode();
       if (IsFirstHalf != false) hash ^= IsFirstHalf.GetHashCode();
       if (ChallengeId != 0) hash ^= ChallengeId.GetHashCode();
+      if (BuffId != 0) hash ^= BuffId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -168,16 +168,16 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (BuffId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(24);
         output.WriteUInt32(BuffId);
       }
-      if (IsFirstHalf != false) {
-        output.WriteRawTag(40);
-        output.WriteBool(IsFirstHalf);
-      }
       if (ChallengeId != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(80);
         output.WriteUInt32(ChallengeId);
+      }
+      if (IsFirstHalf != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(IsFirstHalf);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -190,16 +190,16 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (BuffId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(24);
         output.WriteUInt32(BuffId);
       }
-      if (IsFirstHalf != false) {
-        output.WriteRawTag(40);
-        output.WriteBool(IsFirstHalf);
-      }
       if (ChallengeId != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(80);
         output.WriteUInt32(ChallengeId);
+      }
+      if (IsFirstHalf != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(IsFirstHalf);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -211,14 +211,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (BuffId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BuffId);
-      }
       if (IsFirstHalf != false) {
         size += 1 + 1;
       }
       if (ChallengeId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ChallengeId);
+      }
+      if (BuffId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BuffId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -232,14 +232,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.BuffId != 0) {
-        BuffId = other.BuffId;
-      }
       if (other.IsFirstHalf != false) {
         IsFirstHalf = other.IsFirstHalf;
       }
       if (other.ChallengeId != 0) {
         ChallengeId = other.ChallengeId;
+      }
+      if (other.BuffId != 0) {
+        BuffId = other.BuffId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -260,16 +260,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
+          case 24: {
             BuffId = input.ReadUInt32();
             break;
           }
-          case 40: {
-            IsFirstHalf = input.ReadBool();
+          case 80: {
+            ChallengeId = input.ReadUInt32();
             break;
           }
-          case 88: {
-            ChallengeId = input.ReadUInt32();
+          case 96: {
+            IsFirstHalf = input.ReadBool();
             break;
           }
         }
@@ -291,16 +291,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
+          case 24: {
             BuffId = input.ReadUInt32();
             break;
           }
-          case 40: {
-            IsFirstHalf = input.ReadBool();
+          case 80: {
+            ChallengeId = input.ReadUInt32();
             break;
           }
-          case 88: {
-            ChallengeId = input.ReadUInt32();
+          case 96: {
+            IsFirstHalf = input.ReadBool();
             break;
           }
         }

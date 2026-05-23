@@ -24,12 +24,12 @@ namespace March7thHoney.Proto {
     static QuitRogueScRspReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChRRdWl0Um9ndWVTY1JzcC5wcm90bxoRSlBGR0hDUEdIR08ucHJvdG8iSAoO",
-            "UXVpdFJvZ3VlU2NSc3ASJQoPcm9ndWVfZ2FtZV9pbmZvGAUgASgLMgwuSlBG",
-            "R0hDUEdIR08SDwoHcmV0Y29kZRgPIAEoDUIWqgITTWFyY2g3dGhIb25leS5Q",
+            "ChRRdWl0Um9ndWVTY1JzcC5wcm90bxoRQUdFSEdCS09CRUYucHJvdG8iSAoO",
+            "UXVpdFJvZ3VlU2NSc3ASJQoPcm9ndWVfZ2FtZV9pbmZvGAogASgLMgwuQUdF",
+            "SEdCS09CRUYSDwoHcmV0Y29kZRgLIAEoDUIWqgITTWFyY2g3dGhIb25leS5Q",
             "cm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.JPFGHCPGHGOReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.AGEHGBKOBEFReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.QuitRogueScRsp), global::March7thHoney.Proto.QuitRogueScRsp.Parser, new[]{ "RogueGameInfo", "Retcode" }, null, null, null, null)
           }));
@@ -85,11 +85,11 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "rogue_game_info" field.</summary>
-    public const int RogueGameInfoFieldNumber = 5;
-    private global::March7thHoney.Proto.JPFGHCPGHGO rogueGameInfo_;
+    public const int RogueGameInfoFieldNumber = 10;
+    private global::March7thHoney.Proto.AGEHGBKOBEF rogueGameInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.JPFGHCPGHGO RogueGameInfo {
+    public global::March7thHoney.Proto.AGEHGBKOBEF RogueGameInfo {
       get { return rogueGameInfo_; }
       set {
         rogueGameInfo_ = value;
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 15;
+    public const int RetcodeFieldNumber = 11;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -153,11 +153,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (rogueGameInfo_ != null) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(82);
         output.WriteMessage(RogueGameInfo);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(88);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -171,11 +171,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (rogueGameInfo_ != null) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(82);
         output.WriteMessage(RogueGameInfo);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(88);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -208,7 +208,7 @@ namespace March7thHoney.Proto {
       }
       if (other.rogueGameInfo_ != null) {
         if (rogueGameInfo_ == null) {
-          RogueGameInfo = new global::March7thHoney.Proto.JPFGHCPGHGO();
+          RogueGameInfo = new global::March7thHoney.Proto.AGEHGBKOBEF();
         }
         RogueGameInfo.MergeFrom(other.RogueGameInfo);
       }
@@ -234,14 +234,14 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 42: {
+          case 82: {
             if (rogueGameInfo_ == null) {
-              RogueGameInfo = new global::March7thHoney.Proto.JPFGHCPGHGO();
+              RogueGameInfo = new global::March7thHoney.Proto.AGEHGBKOBEF();
             }
             input.ReadMessage(RogueGameInfo);
             break;
           }
-          case 120: {
+          case 88: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -264,14 +264,14 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 42: {
+          case 82: {
             if (rogueGameInfo_ == null) {
-              RogueGameInfo = new global::March7thHoney.Proto.JPFGHCPGHGO();
+              RogueGameInfo = new global::March7thHoney.Proto.AGEHGBKOBEF();
             }
             input.ReadMessage(RogueGameInfo);
             break;
           }
-          case 120: {
+          case 88: {
             Retcode = input.ReadUInt32();
             break;
           }

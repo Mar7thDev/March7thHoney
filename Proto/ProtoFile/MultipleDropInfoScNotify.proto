@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "DMINLLDNNDL.proto";
+import "NGLOBFBCGBB.proto";
 
 message MultipleDropInfoScNotify {
-    repeated DMINLLDNNDL DFEOOEHFAAC = 6;
+    repeated NGLOBFBCGBB MOPAGKNEMOD = 5;
 }

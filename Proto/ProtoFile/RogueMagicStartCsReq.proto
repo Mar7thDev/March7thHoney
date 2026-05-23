@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message RogueMagicStartCsReq {
-    uint32 NGDKLBHDAGG = 1;
-    uint32 area_id = 4;
-    repeated uint32 OJAHMNANINL = 12;
-    repeated uint32 base_avatar_id_list = 14;
+    repeated uint32 OCEGEKKFLAL = 4;
+    repeated uint32 NOEPBNMJFGL = 11;
+    uint32 IEOFONJHFDJ = 3;
+    uint32 area_id = 9;
 }

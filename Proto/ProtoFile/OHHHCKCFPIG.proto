@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "JHBOOCGAKCM.proto";
+
+message OHHHCKCFPIG {
+    repeated uint32 DPOKBJGLKNN = 15;
+    repeated JHBOOCGAKCM ELANIEEANDI = 10;
+}

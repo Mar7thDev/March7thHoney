@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum NIMFANHLFNJ {
+    NIMFANHLFNJ_FAAFEKOFGBL = 0;
+    NIMFANHLFNJ_AMCJDDIPLJN = 1;
+    NIMFANHLFNJ_BNNNGLNGCHL = 2;
+    NIMFANHLFNJ_DIBHICHMJFE = 3;
+    NIMFANHLFNJ_LKDDACHPOAM = 4;
+}

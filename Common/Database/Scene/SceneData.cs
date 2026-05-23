@@ -82,21 +82,7 @@ public class SwitchHandInfo
     public uint State { get; set; } = 101;
     public byte[] ByteValue { get; set; } = [];
 
-    public GODHDEIPDJL ToProto()
-    {
-        return new GODHDEIPDJL
-        {
-            ConfigId = (uint)ConfigId,
-            MHINKADJCCG = ByteString.CopyFrom(ByteValue),
-            AMBLLFLFKHC = (uint)CoinNum,
-            PLFAOCPBBCP = new MotionInfo
-            {
-                Pos = Pos.ToProto(),
-                Rot = Rot.ToProto()
-            },
-            JLMJFEDNBMF = State
-        };
-    }
+    // TODO 4.3: GODHDEIPDJL 在 4.3 中已消失或更名，SwitchHand 暂时移除
 }
 
 public class ScenePropData

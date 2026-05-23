@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChtOcGNEaWFsb2d1ZUV2ZW50UGFyYW0ucHJvdG8iSAoVTnBjRGlhbG9ndWVF",
-            "dmVudFBhcmFtEg4KBmFyZ19pZBgJIAEoDRIfChdyb2d1ZV9kaWFsb2d1ZV9l",
-            "dmVudF9pZBgLIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "dmVudFBhcmFtEg4KBmFyZ19pZBgDIAEoDRIfChdyb2d1ZV9kaWFsb2d1ZV9l",
+            "dmVudF9pZBgBIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "arg_id" field.</summary>
-    public const int ArgIdFieldNumber = 9;
+    public const int ArgIdFieldNumber = 3;
     private uint argId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "rogue_dialogue_event_id" field.</summary>
-    public const int RogueDialogueEventIdFieldNumber = 11;
+    public const int RogueDialogueEventIdFieldNumber = 1;
     private uint rogueDialogueEventId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (ArgId != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(ArgId);
-      }
       if (RogueDialogueEventId != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(8);
         output.WriteUInt32(RogueDialogueEventId);
+      }
+      if (ArgId != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(ArgId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (ArgId != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(ArgId);
-      }
       if (RogueDialogueEventId != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(8);
         output.WriteUInt32(RogueDialogueEventId);
+      }
+      if (ArgId != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(ArgId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 72: {
-            ArgId = input.ReadUInt32();
+          case 8: {
+            RogueDialogueEventId = input.ReadUInt32();
             break;
           }
-          case 88: {
-            RogueDialogueEventId = input.ReadUInt32();
+          case 24: {
+            ArgId = input.ReadUInt32();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 72: {
-            ArgId = input.ReadUInt32();
+          case 8: {
+            RogueDialogueEventId = input.ReadUInt32();
             break;
           }
-          case 88: {
-            RogueDialogueEventId = input.ReadUInt32();
+          case 24: {
+            ArgId = input.ReadUInt32();
             break;
           }
         }

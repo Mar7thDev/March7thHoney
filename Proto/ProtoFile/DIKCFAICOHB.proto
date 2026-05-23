@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum DIKCFAICOHB {
+    DIKCFAICOHB_EJDLGGAGBEA = 0;
+    DIKCFAICOHB_PINPGFJKDPH = 1;
+    DIKCFAICOHB_EMPKDJGKDBI = 2;
+    DIKCFAICOHB_AOIOAKGHGHG = 3;
+    DIKCFAICOHB_ECEHHJJGFED = 4;
+    DIKCFAICOHB_GHBHAPNLJEJ = 5;
+}

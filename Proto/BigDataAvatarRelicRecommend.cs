@@ -24,20 +24,20 @@ namespace March7thHoney.Proto {
     static BigDataAvatarRelicRecommendReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CiFCaWdEYXRhQXZhdGFyUmVsaWNSZWNvbW1lbmQucHJvdG8aEUJLT0RMRE9G",
-            "TU1KLnByb3RvGhFGTkJKUE1HTUpEUC5wcm90byK6AgobQmlnRGF0YUF2YXRh",
-            "clJlbGljUmVjb21tZW5kEhEKCWF2YXRhcl9pZBgBIAEoDRIkCg5vdXRlcl9z",
-            "ZXRfbGlzdBgCIAMoCzIMLkZOQkpQTUdNSkRQEi8KGXNwaGVyZV9tYWluX3By",
-            "b3BlcnR5X2xpc3QYBCADKAsyDC5CS09ETERPRk1NShItChdyb3BlX21haW5f",
-            "cHJvcGVydHlfbGlzdBgHIAMoCzIMLkJLT0RMRE9GTU1KEiQKDmlubmVyX3Nl",
-            "dF9saXN0GAkgAygLMgwuRk5CSlBNR01KRFASLQoXZm9vdF9tYWluX3Byb3Bl",
-            "cnR5X2xpc3QYDSADKAsyDC5CS09ETERPRk1NShItChdib2R5X21haW5fcHJv",
-            "cGVydHlfbGlzdBgPIAMoCzIMLkJLT0RMRE9GTU1KQhaqAhNNYXJjaDd0aEhv",
+            "CiFCaWdEYXRhQXZhdGFyUmVsaWNSZWNvbW1lbmQucHJvdG8aEUJQRkRGT0pP",
+            "RU1JLnByb3RvGhFKQkdQTFBDQ0RCSi5wcm90byK6AgobQmlnRGF0YUF2YXRh",
+            "clJlbGljUmVjb21tZW5kEiQKDm91dGVyX3NldF9saXN0GAsgAygLMgwuSkJH",
+            "UExQQ0NEQkoSLQoXYm9keV9tYWluX3Byb3BlcnR5X2xpc3QYBSADKAsyDC5C",
+            "UEZERk9KT0VNSRItChdyb3BlX21haW5fcHJvcGVydHlfbGlzdBgMIAMoCzIM",
+            "LkJQRkRGT0pPRU1JEiQKDmlubmVyX3NldF9saXN0GAYgAygLMgwuSkJHUExQ",
+            "Q0NEQkoSLwoZc3BoZXJlX21haW5fcHJvcGVydHlfbGlzdBgKIAMoCzIMLkJQ",
+            "RkRGT0pPRU1JEi0KF2Zvb3RfbWFpbl9wcm9wZXJ0eV9saXN0GA8gAygLMgwu",
+            "QlBGREZPSk9FTUkSEQoJYXZhdGFyX2lkGA4gASgNQhaqAhNNYXJjaDd0aEhv",
             "bmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.BKODLDOFMMJReflection.Descriptor, global::March7thHoney.Proto.FNBJPMGMJDPReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.BPFDFOJOEMIReflection.Descriptor, global::March7thHoney.Proto.JBGPLPCCDBJReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BigDataAvatarRelicRecommend), global::March7thHoney.Proto.BigDataAvatarRelicRecommend.Parser, new[]{ "AvatarId", "OuterSetList", "SphereMainPropertyList", "RopeMainPropertyList", "InnerSetList", "FootMainPropertyList", "BodyMainPropertyList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BigDataAvatarRelicRecommend), global::March7thHoney.Proto.BigDataAvatarRelicRecommend.Parser, new[]{ "OuterSetList", "BodyMainPropertyList", "RopeMainPropertyList", "InnerSetList", "SphereMainPropertyList", "FootMainPropertyList", "AvatarId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -79,13 +79,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BigDataAvatarRelicRecommend(BigDataAvatarRelicRecommend other) : this() {
-      avatarId_ = other.avatarId_;
       outerSetList_ = other.outerSetList_.Clone();
-      sphereMainPropertyList_ = other.sphereMainPropertyList_.Clone();
+      bodyMainPropertyList_ = other.bodyMainPropertyList_.Clone();
       ropeMainPropertyList_ = other.ropeMainPropertyList_.Clone();
       innerSetList_ = other.innerSetList_.Clone();
+      sphereMainPropertyList_ = other.sphereMainPropertyList_.Clone();
       footMainPropertyList_ = other.footMainPropertyList_.Clone();
-      bodyMainPropertyList_ = other.bodyMainPropertyList_.Clone();
+      avatarId_ = other.avatarId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -95,8 +95,74 @@ namespace March7thHoney.Proto {
       return new BigDataAvatarRelicRecommend(this);
     }
 
+    /// <summary>Field number for the "outer_set_list" field.</summary>
+    public const int OuterSetListFieldNumber = 11;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.JBGPLPCCDBJ> _repeated_outerSetList_codec
+        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.JBGPLPCCDBJ.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.JBGPLPCCDBJ> outerSetList_ = new pbc::RepeatedField<global::March7thHoney.Proto.JBGPLPCCDBJ>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.JBGPLPCCDBJ> OuterSetList {
+      get { return outerSetList_; }
+    }
+
+    /// <summary>Field number for the "body_main_property_list" field.</summary>
+    public const int BodyMainPropertyListFieldNumber = 5;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BPFDFOJOEMI> _repeated_bodyMainPropertyList_codec
+        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.BPFDFOJOEMI.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BPFDFOJOEMI> bodyMainPropertyList_ = new pbc::RepeatedField<global::March7thHoney.Proto.BPFDFOJOEMI>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.BPFDFOJOEMI> BodyMainPropertyList {
+      get { return bodyMainPropertyList_; }
+    }
+
+    /// <summary>Field number for the "rope_main_property_list" field.</summary>
+    public const int RopeMainPropertyListFieldNumber = 12;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BPFDFOJOEMI> _repeated_ropeMainPropertyList_codec
+        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.BPFDFOJOEMI.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BPFDFOJOEMI> ropeMainPropertyList_ = new pbc::RepeatedField<global::March7thHoney.Proto.BPFDFOJOEMI>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.BPFDFOJOEMI> RopeMainPropertyList {
+      get { return ropeMainPropertyList_; }
+    }
+
+    /// <summary>Field number for the "inner_set_list" field.</summary>
+    public const int InnerSetListFieldNumber = 6;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.JBGPLPCCDBJ> _repeated_innerSetList_codec
+        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.JBGPLPCCDBJ.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.JBGPLPCCDBJ> innerSetList_ = new pbc::RepeatedField<global::March7thHoney.Proto.JBGPLPCCDBJ>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.JBGPLPCCDBJ> InnerSetList {
+      get { return innerSetList_; }
+    }
+
+    /// <summary>Field number for the "sphere_main_property_list" field.</summary>
+    public const int SphereMainPropertyListFieldNumber = 10;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BPFDFOJOEMI> _repeated_sphereMainPropertyList_codec
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.BPFDFOJOEMI.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BPFDFOJOEMI> sphereMainPropertyList_ = new pbc::RepeatedField<global::March7thHoney.Proto.BPFDFOJOEMI>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.BPFDFOJOEMI> SphereMainPropertyList {
+      get { return sphereMainPropertyList_; }
+    }
+
+    /// <summary>Field number for the "foot_main_property_list" field.</summary>
+    public const int FootMainPropertyListFieldNumber = 15;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BPFDFOJOEMI> _repeated_footMainPropertyList_codec
+        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.BPFDFOJOEMI.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BPFDFOJOEMI> footMainPropertyList_ = new pbc::RepeatedField<global::March7thHoney.Proto.BPFDFOJOEMI>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.BPFDFOJOEMI> FootMainPropertyList {
+      get { return footMainPropertyList_; }
+    }
+
     /// <summary>Field number for the "avatar_id" field.</summary>
-    public const int AvatarIdFieldNumber = 1;
+    public const int AvatarIdFieldNumber = 14;
     private uint avatarId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -105,72 +171,6 @@ namespace March7thHoney.Proto {
       set {
         avatarId_ = value;
       }
-    }
-
-    /// <summary>Field number for the "outer_set_list" field.</summary>
-    public const int OuterSetListFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.FNBJPMGMJDP> _repeated_outerSetList_codec
-        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.FNBJPMGMJDP.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.FNBJPMGMJDP> outerSetList_ = new pbc::RepeatedField<global::March7thHoney.Proto.FNBJPMGMJDP>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.FNBJPMGMJDP> OuterSetList {
-      get { return outerSetList_; }
-    }
-
-    /// <summary>Field number for the "sphere_main_property_list" field.</summary>
-    public const int SphereMainPropertyListFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BKODLDOFMMJ> _repeated_sphereMainPropertyList_codec
-        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.BKODLDOFMMJ.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BKODLDOFMMJ> sphereMainPropertyList_ = new pbc::RepeatedField<global::March7thHoney.Proto.BKODLDOFMMJ>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.BKODLDOFMMJ> SphereMainPropertyList {
-      get { return sphereMainPropertyList_; }
-    }
-
-    /// <summary>Field number for the "rope_main_property_list" field.</summary>
-    public const int RopeMainPropertyListFieldNumber = 7;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BKODLDOFMMJ> _repeated_ropeMainPropertyList_codec
-        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.BKODLDOFMMJ.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BKODLDOFMMJ> ropeMainPropertyList_ = new pbc::RepeatedField<global::March7thHoney.Proto.BKODLDOFMMJ>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.BKODLDOFMMJ> RopeMainPropertyList {
-      get { return ropeMainPropertyList_; }
-    }
-
-    /// <summary>Field number for the "inner_set_list" field.</summary>
-    public const int InnerSetListFieldNumber = 9;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.FNBJPMGMJDP> _repeated_innerSetList_codec
-        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.FNBJPMGMJDP.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.FNBJPMGMJDP> innerSetList_ = new pbc::RepeatedField<global::March7thHoney.Proto.FNBJPMGMJDP>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.FNBJPMGMJDP> InnerSetList {
-      get { return innerSetList_; }
-    }
-
-    /// <summary>Field number for the "foot_main_property_list" field.</summary>
-    public const int FootMainPropertyListFieldNumber = 13;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BKODLDOFMMJ> _repeated_footMainPropertyList_codec
-        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.BKODLDOFMMJ.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BKODLDOFMMJ> footMainPropertyList_ = new pbc::RepeatedField<global::March7thHoney.Proto.BKODLDOFMMJ>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.BKODLDOFMMJ> FootMainPropertyList {
-      get { return footMainPropertyList_; }
-    }
-
-    /// <summary>Field number for the "body_main_property_list" field.</summary>
-    public const int BodyMainPropertyListFieldNumber = 15;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BKODLDOFMMJ> _repeated_bodyMainPropertyList_codec
-        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.BKODLDOFMMJ.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BKODLDOFMMJ> bodyMainPropertyList_ = new pbc::RepeatedField<global::March7thHoney.Proto.BKODLDOFMMJ>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.BKODLDOFMMJ> BodyMainPropertyList {
-      get { return bodyMainPropertyList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -188,13 +188,13 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (AvatarId != other.AvatarId) return false;
       if(!outerSetList_.Equals(other.outerSetList_)) return false;
-      if(!sphereMainPropertyList_.Equals(other.sphereMainPropertyList_)) return false;
+      if(!bodyMainPropertyList_.Equals(other.bodyMainPropertyList_)) return false;
       if(!ropeMainPropertyList_.Equals(other.ropeMainPropertyList_)) return false;
       if(!innerSetList_.Equals(other.innerSetList_)) return false;
+      if(!sphereMainPropertyList_.Equals(other.sphereMainPropertyList_)) return false;
       if(!footMainPropertyList_.Equals(other.footMainPropertyList_)) return false;
-      if(!bodyMainPropertyList_.Equals(other.bodyMainPropertyList_)) return false;
+      if (AvatarId != other.AvatarId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -202,13 +202,13 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (AvatarId != 0) hash ^= AvatarId.GetHashCode();
       hash ^= outerSetList_.GetHashCode();
-      hash ^= sphereMainPropertyList_.GetHashCode();
+      hash ^= bodyMainPropertyList_.GetHashCode();
       hash ^= ropeMainPropertyList_.GetHashCode();
       hash ^= innerSetList_.GetHashCode();
+      hash ^= sphereMainPropertyList_.GetHashCode();
       hash ^= footMainPropertyList_.GetHashCode();
-      hash ^= bodyMainPropertyList_.GetHashCode();
+      if (AvatarId != 0) hash ^= AvatarId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -227,16 +227,16 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      bodyMainPropertyList_.WriteTo(output, _repeated_bodyMainPropertyList_codec);
+      innerSetList_.WriteTo(output, _repeated_innerSetList_codec);
+      sphereMainPropertyList_.WriteTo(output, _repeated_sphereMainPropertyList_codec);
+      outerSetList_.WriteTo(output, _repeated_outerSetList_codec);
+      ropeMainPropertyList_.WriteTo(output, _repeated_ropeMainPropertyList_codec);
       if (AvatarId != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(112);
         output.WriteUInt32(AvatarId);
       }
-      outerSetList_.WriteTo(output, _repeated_outerSetList_codec);
-      sphereMainPropertyList_.WriteTo(output, _repeated_sphereMainPropertyList_codec);
-      ropeMainPropertyList_.WriteTo(output, _repeated_ropeMainPropertyList_codec);
-      innerSetList_.WriteTo(output, _repeated_innerSetList_codec);
       footMainPropertyList_.WriteTo(output, _repeated_footMainPropertyList_codec);
-      bodyMainPropertyList_.WriteTo(output, _repeated_bodyMainPropertyList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -247,16 +247,16 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      bodyMainPropertyList_.WriteTo(ref output, _repeated_bodyMainPropertyList_codec);
+      innerSetList_.WriteTo(ref output, _repeated_innerSetList_codec);
+      sphereMainPropertyList_.WriteTo(ref output, _repeated_sphereMainPropertyList_codec);
+      outerSetList_.WriteTo(ref output, _repeated_outerSetList_codec);
+      ropeMainPropertyList_.WriteTo(ref output, _repeated_ropeMainPropertyList_codec);
       if (AvatarId != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(112);
         output.WriteUInt32(AvatarId);
       }
-      outerSetList_.WriteTo(ref output, _repeated_outerSetList_codec);
-      sphereMainPropertyList_.WriteTo(ref output, _repeated_sphereMainPropertyList_codec);
-      ropeMainPropertyList_.WriteTo(ref output, _repeated_ropeMainPropertyList_codec);
-      innerSetList_.WriteTo(ref output, _repeated_innerSetList_codec);
       footMainPropertyList_.WriteTo(ref output, _repeated_footMainPropertyList_codec);
-      bodyMainPropertyList_.WriteTo(ref output, _repeated_bodyMainPropertyList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -267,15 +267,15 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      size += outerSetList_.CalculateSize(_repeated_outerSetList_codec);
+      size += bodyMainPropertyList_.CalculateSize(_repeated_bodyMainPropertyList_codec);
+      size += ropeMainPropertyList_.CalculateSize(_repeated_ropeMainPropertyList_codec);
+      size += innerSetList_.CalculateSize(_repeated_innerSetList_codec);
+      size += sphereMainPropertyList_.CalculateSize(_repeated_sphereMainPropertyList_codec);
+      size += footMainPropertyList_.CalculateSize(_repeated_footMainPropertyList_codec);
       if (AvatarId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarId);
       }
-      size += outerSetList_.CalculateSize(_repeated_outerSetList_codec);
-      size += sphereMainPropertyList_.CalculateSize(_repeated_sphereMainPropertyList_codec);
-      size += ropeMainPropertyList_.CalculateSize(_repeated_ropeMainPropertyList_codec);
-      size += innerSetList_.CalculateSize(_repeated_innerSetList_codec);
-      size += footMainPropertyList_.CalculateSize(_repeated_footMainPropertyList_codec);
-      size += bodyMainPropertyList_.CalculateSize(_repeated_bodyMainPropertyList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -288,15 +288,15 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      outerSetList_.Add(other.outerSetList_);
+      bodyMainPropertyList_.Add(other.bodyMainPropertyList_);
+      ropeMainPropertyList_.Add(other.ropeMainPropertyList_);
+      innerSetList_.Add(other.innerSetList_);
+      sphereMainPropertyList_.Add(other.sphereMainPropertyList_);
+      footMainPropertyList_.Add(other.footMainPropertyList_);
       if (other.AvatarId != 0) {
         AvatarId = other.AvatarId;
       }
-      outerSetList_.Add(other.outerSetList_);
-      sphereMainPropertyList_.Add(other.sphereMainPropertyList_);
-      ropeMainPropertyList_.Add(other.ropeMainPropertyList_);
-      innerSetList_.Add(other.innerSetList_);
-      footMainPropertyList_.Add(other.footMainPropertyList_);
-      bodyMainPropertyList_.Add(other.bodyMainPropertyList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -316,32 +316,32 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            AvatarId = input.ReadUInt32();
+          case 42: {
+            bodyMainPropertyList_.AddEntriesFrom(input, _repeated_bodyMainPropertyList_codec);
             break;
           }
-          case 18: {
-            outerSetList_.AddEntriesFrom(input, _repeated_outerSetList_codec);
-            break;
-          }
-          case 34: {
-            sphereMainPropertyList_.AddEntriesFrom(input, _repeated_sphereMainPropertyList_codec);
-            break;
-          }
-          case 58: {
-            ropeMainPropertyList_.AddEntriesFrom(input, _repeated_ropeMainPropertyList_codec);
-            break;
-          }
-          case 74: {
+          case 50: {
             innerSetList_.AddEntriesFrom(input, _repeated_innerSetList_codec);
             break;
           }
-          case 106: {
-            footMainPropertyList_.AddEntriesFrom(input, _repeated_footMainPropertyList_codec);
+          case 82: {
+            sphereMainPropertyList_.AddEntriesFrom(input, _repeated_sphereMainPropertyList_codec);
+            break;
+          }
+          case 90: {
+            outerSetList_.AddEntriesFrom(input, _repeated_outerSetList_codec);
+            break;
+          }
+          case 98: {
+            ropeMainPropertyList_.AddEntriesFrom(input, _repeated_ropeMainPropertyList_codec);
+            break;
+          }
+          case 112: {
+            AvatarId = input.ReadUInt32();
             break;
           }
           case 122: {
-            bodyMainPropertyList_.AddEntriesFrom(input, _repeated_bodyMainPropertyList_codec);
+            footMainPropertyList_.AddEntriesFrom(input, _repeated_footMainPropertyList_codec);
             break;
           }
         }
@@ -363,32 +363,32 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            AvatarId = input.ReadUInt32();
+          case 42: {
+            bodyMainPropertyList_.AddEntriesFrom(ref input, _repeated_bodyMainPropertyList_codec);
             break;
           }
-          case 18: {
-            outerSetList_.AddEntriesFrom(ref input, _repeated_outerSetList_codec);
-            break;
-          }
-          case 34: {
-            sphereMainPropertyList_.AddEntriesFrom(ref input, _repeated_sphereMainPropertyList_codec);
-            break;
-          }
-          case 58: {
-            ropeMainPropertyList_.AddEntriesFrom(ref input, _repeated_ropeMainPropertyList_codec);
-            break;
-          }
-          case 74: {
+          case 50: {
             innerSetList_.AddEntriesFrom(ref input, _repeated_innerSetList_codec);
             break;
           }
-          case 106: {
-            footMainPropertyList_.AddEntriesFrom(ref input, _repeated_footMainPropertyList_codec);
+          case 82: {
+            sphereMainPropertyList_.AddEntriesFrom(ref input, _repeated_sphereMainPropertyList_codec);
+            break;
+          }
+          case 90: {
+            outerSetList_.AddEntriesFrom(ref input, _repeated_outerSetList_codec);
+            break;
+          }
+          case 98: {
+            ropeMainPropertyList_.AddEntriesFrom(ref input, _repeated_ropeMainPropertyList_codec);
+            break;
+          }
+          case 112: {
+            AvatarId = input.ReadUInt32();
             break;
           }
           case 122: {
-            bodyMainPropertyList_.AddEntriesFrom(ref input, _repeated_bodyMainPropertyList_codec);
+            footMainPropertyList_.AddEntriesFrom(ref input, _repeated_footMainPropertyList_codec);
             break;
           }
         }

@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum HDIOKENOFNJ {
+    HDIOKENOFNJ_EEGFMMCGCNH = 0;
+    HDIOKENOFNJ_GOBLPKACBAE = 1;
+    HDIOKENOFNJ_AHEJBANCCEK = 2;
+    HDIOKENOFNJ_KBBPMFKGFCP = 3;
+}

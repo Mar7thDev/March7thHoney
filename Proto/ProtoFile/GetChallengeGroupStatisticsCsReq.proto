@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message GetChallengeGroupStatisticsCsReq {
-    uint32 group_id = 12;
+    uint32 group_id = 2;
 }

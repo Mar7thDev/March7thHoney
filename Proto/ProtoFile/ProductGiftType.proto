@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum ProductGiftType {
     PRODUCT_GIFT_NONE = 0;
     PRODUCT_GIFT_COIN = 1;
@@ -29,4 +27,6 @@ enum ProductGiftType {
     PRODUCT_GIFT_FTC_NORMAL_GACHA_TICKET_10 = 21;
     PRODUCT_GIFT_TICKET_10 = 22;
     EJEBHIIKAJF_DBIADNGNFMD = 23;
+    ProductGiftType_OOLBPMEJANG = 24;
+    ProductGiftType_NKJADAFIFIK = 25;
 }

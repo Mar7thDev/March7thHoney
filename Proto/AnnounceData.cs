@@ -24,17 +24,17 @@ namespace March7thHoney.Proto {
     static AnnounceDataReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChJBbm5vdW5jZURhdGEucHJvdG8i5AEKDEFubm91bmNlRGF0YRIWCg5lbWVy",
-            "Z2VuY3lfdGV4dBgCIAEoCRISCgpiZWdpbl90aW1lGAMgASgDEhMKC01QUERO",
-            "SE5QRkVOGAQgASgNEhEKCWNvbmZpZ19pZBgFIAEoDRIQCghlbmRfdGltZRgG",
-            "IAEoAxITCgtBRURHRU5LSUVQQhgIIAEoCRIYChBiYW5uZXJfZnJlcXVlbmN5",
-            "GAsgASgNEhMKC2Jhbm5lcl90ZXh0GA0gASgJEhUKDWhhc19yZWNvbW1hbmQY",
-            "DiABKAgSEwoLTEhMRUFHQ0pQRkMYDyABKAhCFqoCE01hcmNoN3RoSG9uZXku",
+            "ChJBbm5vdW5jZURhdGEucHJvdG8i5AEKDEFubm91bmNlRGF0YRITCgtiYW5u",
+            "ZXJfdGV4dBgKIAEoCRITCgtERUVFTk5NTUpCQRgJIAEoCRIWCg5lbWVyZ2Vu",
+            "Y3lfdGV4dBgOIAEoCRIQCghlbmRfdGltZRgNIAEoAxITCgtETkhCQkpCSEZO",
+            "QRgHIAEoDRIVCg1oYXNfcmVjb21tYW5kGAEgASgIEhMKC0JCRUJFS0ZHTUFE",
+            "GAYgASgIEhIKCmJlZ2luX3RpbWUYCCABKAMSEQoJY29uZmlnX2lkGAIgASgN",
+            "EhgKEGJhbm5lcl9mcmVxdWVuY3kYBCABKA1CFqoCE01hcmNoN3RoSG9uZXku",
             "UHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AnnounceData), global::March7thHoney.Proto.AnnounceData.Parser, new[]{ "EmergencyText", "BeginTime", "MPPDNHNPFEN", "ConfigId", "EndTime", "AEDGENKIEPB", "BannerFrequency", "BannerText", "HasRecommand", "LHLEAGCJPFC" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AnnounceData), global::March7thHoney.Proto.AnnounceData.Parser, new[]{ "BannerText", "DEEENNMMJBA", "EmergencyText", "EndTime", "DNHBBJBHFNA", "HasRecommand", "BBEBEKFGMAD", "BeginTime", "ConfigId", "BannerFrequency" }, null, null, null, null)
           }));
     }
     #endregion
@@ -76,16 +76,16 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public AnnounceData(AnnounceData other) : this() {
-      emergencyText_ = other.emergencyText_;
-      beginTime_ = other.beginTime_;
-      mPPDNHNPFEN_ = other.mPPDNHNPFEN_;
-      configId_ = other.configId_;
-      endTime_ = other.endTime_;
-      aEDGENKIEPB_ = other.aEDGENKIEPB_;
-      bannerFrequency_ = other.bannerFrequency_;
       bannerText_ = other.bannerText_;
+      dEEENNMMJBA_ = other.dEEENNMMJBA_;
+      emergencyText_ = other.emergencyText_;
+      endTime_ = other.endTime_;
+      dNHBBJBHFNA_ = other.dNHBBJBHFNA_;
       hasRecommand_ = other.hasRecommand_;
-      lHLEAGCJPFC_ = other.lHLEAGCJPFC_;
+      bBEBEKFGMAD_ = other.bBEBEKFGMAD_;
+      beginTime_ = other.beginTime_;
+      configId_ = other.configId_;
+      bannerFrequency_ = other.bannerFrequency_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -95,92 +95,8 @@ namespace March7thHoney.Proto {
       return new AnnounceData(this);
     }
 
-    /// <summary>Field number for the "emergency_text" field.</summary>
-    public const int EmergencyTextFieldNumber = 2;
-    private string emergencyText_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string EmergencyText {
-      get { return emergencyText_; }
-      set {
-        emergencyText_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "begin_time" field.</summary>
-    public const int BeginTimeFieldNumber = 3;
-    private long beginTime_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long BeginTime {
-      get { return beginTime_; }
-      set {
-        beginTime_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "MPPDNHNPFEN" field.</summary>
-    public const int MPPDNHNPFENFieldNumber = 4;
-    private uint mPPDNHNPFEN_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint MPPDNHNPFEN {
-      get { return mPPDNHNPFEN_; }
-      set {
-        mPPDNHNPFEN_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "config_id" field.</summary>
-    public const int ConfigIdFieldNumber = 5;
-    private uint configId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint ConfigId {
-      get { return configId_; }
-      set {
-        configId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "end_time" field.</summary>
-    public const int EndTimeFieldNumber = 6;
-    private long endTime_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long EndTime {
-      get { return endTime_; }
-      set {
-        endTime_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "AEDGENKIEPB" field.</summary>
-    public const int AEDGENKIEPBFieldNumber = 8;
-    private string aEDGENKIEPB_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string AEDGENKIEPB {
-      get { return aEDGENKIEPB_; }
-      set {
-        aEDGENKIEPB_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "banner_frequency" field.</summary>
-    public const int BannerFrequencyFieldNumber = 11;
-    private uint bannerFrequency_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint BannerFrequency {
-      get { return bannerFrequency_; }
-      set {
-        bannerFrequency_ = value;
-      }
-    }
-
     /// <summary>Field number for the "banner_text" field.</summary>
-    public const int BannerTextFieldNumber = 13;
+    public const int BannerTextFieldNumber = 10;
     private string bannerText_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -191,8 +107,56 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "DEEENNMMJBA" field.</summary>
+    public const int DEEENNMMJBAFieldNumber = 9;
+    private string dEEENNMMJBA_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string DEEENNMMJBA {
+      get { return dEEENNMMJBA_; }
+      set {
+        dEEENNMMJBA_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "emergency_text" field.</summary>
+    public const int EmergencyTextFieldNumber = 14;
+    private string emergencyText_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string EmergencyText {
+      get { return emergencyText_; }
+      set {
+        emergencyText_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "end_time" field.</summary>
+    public const int EndTimeFieldNumber = 13;
+    private long endTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long EndTime {
+      get { return endTime_; }
+      set {
+        endTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "DNHBBJBHFNA" field.</summary>
+    public const int DNHBBJBHFNAFieldNumber = 7;
+    private uint dNHBBJBHFNA_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint DNHBBJBHFNA {
+      get { return dNHBBJBHFNA_; }
+      set {
+        dNHBBJBHFNA_ = value;
+      }
+    }
+
     /// <summary>Field number for the "has_recommand" field.</summary>
-    public const int HasRecommandFieldNumber = 14;
+    public const int HasRecommandFieldNumber = 1;
     private bool hasRecommand_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -203,15 +167,51 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "LHLEAGCJPFC" field.</summary>
-    public const int LHLEAGCJPFCFieldNumber = 15;
-    private bool lHLEAGCJPFC_;
+    /// <summary>Field number for the "BBEBEKFGMAD" field.</summary>
+    public const int BBEBEKFGMADFieldNumber = 6;
+    private bool bBEBEKFGMAD_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool LHLEAGCJPFC {
-      get { return lHLEAGCJPFC_; }
+    public bool BBEBEKFGMAD {
+      get { return bBEBEKFGMAD_; }
       set {
-        lHLEAGCJPFC_ = value;
+        bBEBEKFGMAD_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "begin_time" field.</summary>
+    public const int BeginTimeFieldNumber = 8;
+    private long beginTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long BeginTime {
+      get { return beginTime_; }
+      set {
+        beginTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "config_id" field.</summary>
+    public const int ConfigIdFieldNumber = 2;
+    private uint configId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint ConfigId {
+      get { return configId_; }
+      set {
+        configId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "banner_frequency" field.</summary>
+    public const int BannerFrequencyFieldNumber = 4;
+    private uint bannerFrequency_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint BannerFrequency {
+      get { return bannerFrequency_; }
+      set {
+        bannerFrequency_ = value;
       }
     }
 
@@ -230,16 +230,16 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (EmergencyText != other.EmergencyText) return false;
-      if (BeginTime != other.BeginTime) return false;
-      if (MPPDNHNPFEN != other.MPPDNHNPFEN) return false;
-      if (ConfigId != other.ConfigId) return false;
-      if (EndTime != other.EndTime) return false;
-      if (AEDGENKIEPB != other.AEDGENKIEPB) return false;
-      if (BannerFrequency != other.BannerFrequency) return false;
       if (BannerText != other.BannerText) return false;
+      if (DEEENNMMJBA != other.DEEENNMMJBA) return false;
+      if (EmergencyText != other.EmergencyText) return false;
+      if (EndTime != other.EndTime) return false;
+      if (DNHBBJBHFNA != other.DNHBBJBHFNA) return false;
       if (HasRecommand != other.HasRecommand) return false;
-      if (LHLEAGCJPFC != other.LHLEAGCJPFC) return false;
+      if (BBEBEKFGMAD != other.BBEBEKFGMAD) return false;
+      if (BeginTime != other.BeginTime) return false;
+      if (ConfigId != other.ConfigId) return false;
+      if (BannerFrequency != other.BannerFrequency) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -247,16 +247,16 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (EmergencyText.Length != 0) hash ^= EmergencyText.GetHashCode();
-      if (BeginTime != 0L) hash ^= BeginTime.GetHashCode();
-      if (MPPDNHNPFEN != 0) hash ^= MPPDNHNPFEN.GetHashCode();
-      if (ConfigId != 0) hash ^= ConfigId.GetHashCode();
-      if (EndTime != 0L) hash ^= EndTime.GetHashCode();
-      if (AEDGENKIEPB.Length != 0) hash ^= AEDGENKIEPB.GetHashCode();
-      if (BannerFrequency != 0) hash ^= BannerFrequency.GetHashCode();
       if (BannerText.Length != 0) hash ^= BannerText.GetHashCode();
+      if (DEEENNMMJBA.Length != 0) hash ^= DEEENNMMJBA.GetHashCode();
+      if (EmergencyText.Length != 0) hash ^= EmergencyText.GetHashCode();
+      if (EndTime != 0L) hash ^= EndTime.GetHashCode();
+      if (DNHBBJBHFNA != 0) hash ^= DNHBBJBHFNA.GetHashCode();
       if (HasRecommand != false) hash ^= HasRecommand.GetHashCode();
-      if (LHLEAGCJPFC != false) hash ^= LHLEAGCJPFC.GetHashCode();
+      if (BBEBEKFGMAD != false) hash ^= BBEBEKFGMAD.GetHashCode();
+      if (BeginTime != 0L) hash ^= BeginTime.GetHashCode();
+      if (ConfigId != 0) hash ^= ConfigId.GetHashCode();
+      if (BannerFrequency != 0) hash ^= BannerFrequency.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -275,45 +275,45 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (EmergencyText.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(EmergencyText);
-      }
-      if (BeginTime != 0L) {
-        output.WriteRawTag(24);
-        output.WriteInt64(BeginTime);
-      }
-      if (MPPDNHNPFEN != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(MPPDNHNPFEN);
-      }
-      if (ConfigId != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(ConfigId);
-      }
-      if (EndTime != 0L) {
-        output.WriteRawTag(48);
-        output.WriteInt64(EndTime);
-      }
-      if (AEDGENKIEPB.Length != 0) {
-        output.WriteRawTag(66);
-        output.WriteString(AEDGENKIEPB);
-      }
-      if (BannerFrequency != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(BannerFrequency);
-      }
-      if (BannerText.Length != 0) {
-        output.WriteRawTag(106);
-        output.WriteString(BannerText);
-      }
       if (HasRecommand != false) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(8);
         output.WriteBool(HasRecommand);
       }
-      if (LHLEAGCJPFC != false) {
-        output.WriteRawTag(120);
-        output.WriteBool(LHLEAGCJPFC);
+      if (ConfigId != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(ConfigId);
+      }
+      if (BannerFrequency != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(BannerFrequency);
+      }
+      if (BBEBEKFGMAD != false) {
+        output.WriteRawTag(48);
+        output.WriteBool(BBEBEKFGMAD);
+      }
+      if (DNHBBJBHFNA != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(DNHBBJBHFNA);
+      }
+      if (BeginTime != 0L) {
+        output.WriteRawTag(64);
+        output.WriteInt64(BeginTime);
+      }
+      if (DEEENNMMJBA.Length != 0) {
+        output.WriteRawTag(74);
+        output.WriteString(DEEENNMMJBA);
+      }
+      if (BannerText.Length != 0) {
+        output.WriteRawTag(82);
+        output.WriteString(BannerText);
+      }
+      if (EndTime != 0L) {
+        output.WriteRawTag(104);
+        output.WriteInt64(EndTime);
+      }
+      if (EmergencyText.Length != 0) {
+        output.WriteRawTag(114);
+        output.WriteString(EmergencyText);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -325,45 +325,45 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (EmergencyText.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(EmergencyText);
-      }
-      if (BeginTime != 0L) {
-        output.WriteRawTag(24);
-        output.WriteInt64(BeginTime);
-      }
-      if (MPPDNHNPFEN != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(MPPDNHNPFEN);
-      }
-      if (ConfigId != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(ConfigId);
-      }
-      if (EndTime != 0L) {
-        output.WriteRawTag(48);
-        output.WriteInt64(EndTime);
-      }
-      if (AEDGENKIEPB.Length != 0) {
-        output.WriteRawTag(66);
-        output.WriteString(AEDGENKIEPB);
-      }
-      if (BannerFrequency != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(BannerFrequency);
-      }
-      if (BannerText.Length != 0) {
-        output.WriteRawTag(106);
-        output.WriteString(BannerText);
-      }
       if (HasRecommand != false) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(8);
         output.WriteBool(HasRecommand);
       }
-      if (LHLEAGCJPFC != false) {
-        output.WriteRawTag(120);
-        output.WriteBool(LHLEAGCJPFC);
+      if (ConfigId != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(ConfigId);
+      }
+      if (BannerFrequency != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(BannerFrequency);
+      }
+      if (BBEBEKFGMAD != false) {
+        output.WriteRawTag(48);
+        output.WriteBool(BBEBEKFGMAD);
+      }
+      if (DNHBBJBHFNA != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(DNHBBJBHFNA);
+      }
+      if (BeginTime != 0L) {
+        output.WriteRawTag(64);
+        output.WriteInt64(BeginTime);
+      }
+      if (DEEENNMMJBA.Length != 0) {
+        output.WriteRawTag(74);
+        output.WriteString(DEEENNMMJBA);
+      }
+      if (BannerText.Length != 0) {
+        output.WriteRawTag(82);
+        output.WriteString(BannerText);
+      }
+      if (EndTime != 0L) {
+        output.WriteRawTag(104);
+        output.WriteInt64(EndTime);
+      }
+      if (EmergencyText.Length != 0) {
+        output.WriteRawTag(114);
+        output.WriteString(EmergencyText);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -375,35 +375,35 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (BannerText.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(BannerText);
+      }
+      if (DEEENNMMJBA.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(DEEENNMMJBA);
+      }
       if (EmergencyText.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(EmergencyText);
-      }
-      if (BeginTime != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(BeginTime);
-      }
-      if (MPPDNHNPFEN != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MPPDNHNPFEN);
-      }
-      if (ConfigId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ConfigId);
       }
       if (EndTime != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(EndTime);
       }
-      if (AEDGENKIEPB.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(AEDGENKIEPB);
-      }
-      if (BannerFrequency != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BannerFrequency);
-      }
-      if (BannerText.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(BannerText);
+      if (DNHBBJBHFNA != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DNHBBJBHFNA);
       }
       if (HasRecommand != false) {
         size += 1 + 1;
       }
-      if (LHLEAGCJPFC != false) {
+      if (BBEBEKFGMAD != false) {
         size += 1 + 1;
+      }
+      if (BeginTime != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(BeginTime);
+      }
+      if (ConfigId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ConfigId);
+      }
+      if (BannerFrequency != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BannerFrequency);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -417,35 +417,35 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.BannerText.Length != 0) {
+        BannerText = other.BannerText;
+      }
+      if (other.DEEENNMMJBA.Length != 0) {
+        DEEENNMMJBA = other.DEEENNMMJBA;
+      }
       if (other.EmergencyText.Length != 0) {
         EmergencyText = other.EmergencyText;
-      }
-      if (other.BeginTime != 0L) {
-        BeginTime = other.BeginTime;
-      }
-      if (other.MPPDNHNPFEN != 0) {
-        MPPDNHNPFEN = other.MPPDNHNPFEN;
-      }
-      if (other.ConfigId != 0) {
-        ConfigId = other.ConfigId;
       }
       if (other.EndTime != 0L) {
         EndTime = other.EndTime;
       }
-      if (other.AEDGENKIEPB.Length != 0) {
-        AEDGENKIEPB = other.AEDGENKIEPB;
-      }
-      if (other.BannerFrequency != 0) {
-        BannerFrequency = other.BannerFrequency;
-      }
-      if (other.BannerText.Length != 0) {
-        BannerText = other.BannerText;
+      if (other.DNHBBJBHFNA != 0) {
+        DNHBBJBHFNA = other.DNHBBJBHFNA;
       }
       if (other.HasRecommand != false) {
         HasRecommand = other.HasRecommand;
       }
-      if (other.LHLEAGCJPFC != false) {
-        LHLEAGCJPFC = other.LHLEAGCJPFC;
+      if (other.BBEBEKFGMAD != false) {
+        BBEBEKFGMAD = other.BBEBEKFGMAD;
+      }
+      if (other.BeginTime != 0L) {
+        BeginTime = other.BeginTime;
+      }
+      if (other.ConfigId != 0) {
+        ConfigId = other.ConfigId;
+      }
+      if (other.BannerFrequency != 0) {
+        BannerFrequency = other.BannerFrequency;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -466,44 +466,44 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 18: {
-            EmergencyText = input.ReadString();
-            break;
-          }
-          case 24: {
-            BeginTime = input.ReadInt64();
-            break;
-          }
-          case 32: {
-            MPPDNHNPFEN = input.ReadUInt32();
-            break;
-          }
-          case 40: {
-            ConfigId = input.ReadUInt32();
-            break;
-          }
-          case 48: {
-            EndTime = input.ReadInt64();
-            break;
-          }
-          case 66: {
-            AEDGENKIEPB = input.ReadString();
-            break;
-          }
-          case 88: {
-            BannerFrequency = input.ReadUInt32();
-            break;
-          }
-          case 106: {
-            BannerText = input.ReadString();
-            break;
-          }
-          case 112: {
+          case 8: {
             HasRecommand = input.ReadBool();
             break;
           }
-          case 120: {
-            LHLEAGCJPFC = input.ReadBool();
+          case 16: {
+            ConfigId = input.ReadUInt32();
+            break;
+          }
+          case 32: {
+            BannerFrequency = input.ReadUInt32();
+            break;
+          }
+          case 48: {
+            BBEBEKFGMAD = input.ReadBool();
+            break;
+          }
+          case 56: {
+            DNHBBJBHFNA = input.ReadUInt32();
+            break;
+          }
+          case 64: {
+            BeginTime = input.ReadInt64();
+            break;
+          }
+          case 74: {
+            DEEENNMMJBA = input.ReadString();
+            break;
+          }
+          case 82: {
+            BannerText = input.ReadString();
+            break;
+          }
+          case 104: {
+            EndTime = input.ReadInt64();
+            break;
+          }
+          case 114: {
+            EmergencyText = input.ReadString();
             break;
           }
         }
@@ -525,44 +525,44 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 18: {
-            EmergencyText = input.ReadString();
-            break;
-          }
-          case 24: {
-            BeginTime = input.ReadInt64();
-            break;
-          }
-          case 32: {
-            MPPDNHNPFEN = input.ReadUInt32();
-            break;
-          }
-          case 40: {
-            ConfigId = input.ReadUInt32();
-            break;
-          }
-          case 48: {
-            EndTime = input.ReadInt64();
-            break;
-          }
-          case 66: {
-            AEDGENKIEPB = input.ReadString();
-            break;
-          }
-          case 88: {
-            BannerFrequency = input.ReadUInt32();
-            break;
-          }
-          case 106: {
-            BannerText = input.ReadString();
-            break;
-          }
-          case 112: {
+          case 8: {
             HasRecommand = input.ReadBool();
             break;
           }
-          case 120: {
-            LHLEAGCJPFC = input.ReadBool();
+          case 16: {
+            ConfigId = input.ReadUInt32();
+            break;
+          }
+          case 32: {
+            BannerFrequency = input.ReadUInt32();
+            break;
+          }
+          case 48: {
+            BBEBEKFGMAD = input.ReadBool();
+            break;
+          }
+          case 56: {
+            DNHBBJBHFNA = input.ReadUInt32();
+            break;
+          }
+          case 64: {
+            BeginTime = input.ReadInt64();
+            break;
+          }
+          case 74: {
+            DEEENNMMJBA = input.ReadString();
+            break;
+          }
+          case 82: {
+            BannerText = input.ReadString();
+            break;
+          }
+          case 104: {
+            EndTime = input.ReadInt64();
+            break;
+          }
+          case 114: {
+            EmergencyText = input.ReadString();
             break;
           }
         }

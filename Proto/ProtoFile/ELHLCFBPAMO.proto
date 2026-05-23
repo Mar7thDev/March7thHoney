@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message ELHLCFBPAMO {
+    repeated uint32 FJIKMHCJMKH = 2;
+    uint32 LLICIMBCNPF = 6;
+    uint32 level = 5;
+}

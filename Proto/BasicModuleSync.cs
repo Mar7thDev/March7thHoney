@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChVCYXNpY01vZHVsZVN5bmMucHJvdG8iNwoPQmFzaWNNb2R1bGVTeW5jEhMK",
-            "C0xQTEVCSktERUlDGAsgASgNEg8KB3N0YW1pbmEYDSABKA1CFqoCE01hcmNo",
+            "C0RMT0RBS09IRk9QGAIgASgNEg8KB3N0YW1pbmEYDCABKA1CFqoCE01hcmNo",
             "N3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BasicModuleSync), global::March7thHoney.Proto.BasicModuleSync.Parser, new[]{ "LPLEBJKDEIC", "Stamina" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BasicModuleSync), global::March7thHoney.Proto.BasicModuleSync.Parser, new[]{ "DLODAKOHFOP", "Stamina" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,7 +72,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BasicModuleSync(BasicModuleSync other) : this() {
-      lPLEBJKDEIC_ = other.lPLEBJKDEIC_;
+      dLODAKOHFOP_ = other.dLODAKOHFOP_;
       stamina_ = other.stamina_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -83,20 +83,20 @@ namespace March7thHoney.Proto {
       return new BasicModuleSync(this);
     }
 
-    /// <summary>Field number for the "LPLEBJKDEIC" field.</summary>
-    public const int LPLEBJKDEICFieldNumber = 11;
-    private uint lPLEBJKDEIC_;
+    /// <summary>Field number for the "DLODAKOHFOP" field.</summary>
+    public const int DLODAKOHFOPFieldNumber = 2;
+    private uint dLODAKOHFOP_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint LPLEBJKDEIC {
-      get { return lPLEBJKDEIC_; }
+    public uint DLODAKOHFOP {
+      get { return dLODAKOHFOP_; }
       set {
-        lPLEBJKDEIC_ = value;
+        dLODAKOHFOP_ = value;
       }
     }
 
     /// <summary>Field number for the "stamina" field.</summary>
-    public const int StaminaFieldNumber = 13;
+    public const int StaminaFieldNumber = 12;
     private uint stamina_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -122,7 +122,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (LPLEBJKDEIC != other.LPLEBJKDEIC) return false;
+      if (DLODAKOHFOP != other.DLODAKOHFOP) return false;
       if (Stamina != other.Stamina) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -131,7 +131,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (LPLEBJKDEIC != 0) hash ^= LPLEBJKDEIC.GetHashCode();
+      if (DLODAKOHFOP != 0) hash ^= DLODAKOHFOP.GetHashCode();
       if (Stamina != 0) hash ^= Stamina.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -151,12 +151,12 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (LPLEBJKDEIC != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(LPLEBJKDEIC);
+      if (DLODAKOHFOP != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(DLODAKOHFOP);
       }
       if (Stamina != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(96);
         output.WriteUInt32(Stamina);
       }
       if (_unknownFields != null) {
@@ -169,12 +169,12 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (LPLEBJKDEIC != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(LPLEBJKDEIC);
+      if (DLODAKOHFOP != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(DLODAKOHFOP);
       }
       if (Stamina != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(96);
         output.WriteUInt32(Stamina);
       }
       if (_unknownFields != null) {
@@ -187,8 +187,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (LPLEBJKDEIC != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LPLEBJKDEIC);
+      if (DLODAKOHFOP != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DLODAKOHFOP);
       }
       if (Stamina != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Stamina);
@@ -205,8 +205,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.LPLEBJKDEIC != 0) {
-        LPLEBJKDEIC = other.LPLEBJKDEIC;
+      if (other.DLODAKOHFOP != 0) {
+        DLODAKOHFOP = other.DLODAKOHFOP;
       }
       if (other.Stamina != 0) {
         Stamina = other.Stamina;
@@ -230,11 +230,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 88: {
-            LPLEBJKDEIC = input.ReadUInt32();
+          case 16: {
+            DLODAKOHFOP = input.ReadUInt32();
             break;
           }
-          case 104: {
+          case 96: {
             Stamina = input.ReadUInt32();
             break;
           }
@@ -257,11 +257,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 88: {
-            LPLEBJKDEIC = input.ReadUInt32();
+          case 16: {
+            DLODAKOHFOP = input.ReadUInt32();
             break;
           }
-          case 104: {
+          case 96: {
             Stamina = input.ReadUInt32();
             break;
           }

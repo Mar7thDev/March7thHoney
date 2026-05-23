@@ -2,16 +2,14 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "AANCGOFCJJL.proto";
+import "GMFMPPKAEHE.proto";
 import "LineupInfo.proto";
 import "SceneInfo.proto";
 
 message RaidKickByServer {
-    SceneInfo scene = 2;
-    uint32 raid_id = 3;
-    LineupInfo lineup = 4;
-    AANCGOFCJJL reason = 11;
-    uint32 world_level = 14;
+    LineupInfo lineup = 13;
+    SceneInfo scene = 3;
+    uint32 world_level = 5;
+    uint32 raid_id = 10;
+    GMFMPPKAEHE reason = 12;
 }

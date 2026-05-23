@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "BMHIHBHECKD.proto";
+
+message PIMFFPGEPIO {
+    repeated uint32 JALHKMEOOPN = 8;
+    repeated string OKFMBDEECCH = 11;
+    BMHIHBHECKD type = 4;
+}

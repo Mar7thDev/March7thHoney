@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "CHCHAJIANIM.proto";
+import "CLFABOEKMJI.proto";
+import "GridFightGameInfo.proto";
+import "HKDACEAEDDE.proto";
+
+message MPIMAEMCEFH {
+    CHCHAJIANIM FMIGOKIDKJL = 2;
+    HKDACEAEDDE CAAGABEPPPE = 8;
+    repeated GridFightGameInfo NAGDJGMMCBE = 1;
+    CLFABOEKMJI JLDDDLDNFEF = 12;
+    uint32 unique_id = 4;
+    uint32 LJNGPCKPJLF = 5;
+    uint32 division_id = 6;
+    bool is_overlock = 13;
+}

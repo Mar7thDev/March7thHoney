@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "PlayerOutfitInfo.proto";
+import "CJLCPMDGIBO.proto";
 
 message SetPlayerOutfitCsReq {
-    PlayerOutfitInfo PlayerOutfitData = 2;
+    CJLCPMDGIBO DHKFCDAGHDM = 5;
 }

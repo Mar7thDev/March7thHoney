@@ -13,7 +13,8 @@ public class HandlerPlayerLogoutCsReq : Handler
         var uid = connection.Player?.Uid.ToString() ?? "<none>";
         _logger.Info($"Player logout requested. remote={connection.RemoteEndPoint} uid={uid}");
 
-        await March7thHoneyListener.SendDisconnectPacket(connection, 5);
+        // TODO 4.3: KCP 时代的 SendDisconnectPacket（控制帧）在 TCP 下不再需要，
+        // 直接关闭 socket 让客户端感知断连。
         await Task.Delay(50);
         connection.Stop();
     }

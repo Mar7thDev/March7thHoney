@@ -2,23 +2,21 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "DOAICPAMNDN.proto";
-import "EFBDKEHLCDF.proto";
-import "HKJADKLIBEH.proto";
-import "MAGFKFCMLJM.proto";
-import "ONAMJANOBOM.proto";
+import "AHHMLENLDEF.proto";
+import "DJKACFOFFAH.proto";
+import "HLNFNACOFFF.proto";
+import "KDBJBEJPGOO.proto";
+import "OLBKADIKIGL.proto";
 
 message TrainPartyHandlePendingActionScRsp {
-    MAGFKFCMLJM OFCKHGLINAG = 1;
-    uint32 retcode = 6;
-    uint32 queue_position = 11;
-    bool KEJOPPIDNPP = 14;
-    oneof PNKPCPFBHAA {
-        DOAICPAMNDN DCCFHPBBKMD = 723;
-        HKJADKLIBEH MDKNHBDNBPP = 1271;
-        ONAMJANOBOM BNIHEKOJMND = 1357;
-        EFBDKEHLCDF LOOFPCPJPHN = 1836;
+    HLNFNACOFFF CBFPJAJAKGI = 3;
+    uint32 retcode = 13;
+    bool HMNAOPOKLGE = 14;
+    uint32 queue_position = 15;
+    oneof KILBFAAFDPD {
+        OLBKADIKIGL EEBFCLFOBPG = 304;
+        KDBJBEJPGOO OMLNCJEGJAC = 1830;
+        AHHMLENLDEF BHMJDNEOBNK = 393;
+        DJKACFOFFAH IGMEPOBLFFB = 1905;
     }
 }

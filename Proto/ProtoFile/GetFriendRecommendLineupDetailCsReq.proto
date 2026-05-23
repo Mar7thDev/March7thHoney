@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "NFKEJJIHOCJ.proto";
+import "JFNJKAPPNOF.proto";
 
 message GetFriendRecommendLineupDetailCsReq {
-    NFKEJJIHOCJ type = 7;
-    uint32 key = 9;
-    uint32 uid = 11;
+    JFNJKAPPNOF type = 6;
+    uint32 key = 4;
+    uint32 uid = 9;
 }

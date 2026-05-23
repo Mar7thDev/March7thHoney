@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiFCaWdEYXRhUmVjb21tZW5kUmVsaWNBdmF0YXIucHJvdG8aGlJlY29tZW5k",
             "ZWRBdmF0YXJJbmZvLnByb3RvIloKG0JpZ0RhdGFSZWNvbW1lbmRSZWxpY0F2",
-            "YXRhchI7ChxyZWNvbW1lbmRlZF9hdmF0YXJfaW5mb19saXN0GAMgAygLMhUu",
+            "YXRhchI7ChxyZWNvbW1lbmRlZF9hdmF0YXJfaW5mb19saXN0GA4gAygLMhUu",
             "UmVjb21lbmRlZEF2YXRhckluZm9CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
             "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
@@ -85,9 +85,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "recommended_avatar_info_list" field.</summary>
-    public const int RecommendedAvatarInfoListFieldNumber = 3;
+    public const int RecommendedAvatarInfoListFieldNumber = 14;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.RecomendedAvatarInfo> _repeated_recommendedAvatarInfoList_codec
-        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.RecomendedAvatarInfo.Parser);
+        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.RecomendedAvatarInfo.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.RecomendedAvatarInfo> recommendedAvatarInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.RecomendedAvatarInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -192,7 +192,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 26: {
+          case 114: {
             recommendedAvatarInfoList_.AddEntriesFrom(input, _repeated_recommendedAvatarInfoList_codec);
             break;
           }
@@ -215,7 +215,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 26: {
+          case 114: {
             recommendedAvatarInfoList_.AddEntriesFrom(ref input, _repeated_recommendedAvatarInfoList_codec);
             break;
           }

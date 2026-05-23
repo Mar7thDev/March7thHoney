@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "EECJMIOAFFG.proto";
+import "GABKFNAJIDD.proto";
 
 message AddRelicFilterPlanScRsp {
-    EECJMIOAFFG relic_plan = 6;
-    uint32 retcode = 13;
+    GABKFNAJIDD relic_plan = 11;
+    uint32 retcode = 12;
 }

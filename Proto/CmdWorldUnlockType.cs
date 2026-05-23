@@ -24,10 +24,10 @@ namespace March7thHoney.Proto {
     static CmdWorldUnlockTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChhDbWRXb3JsZFVubG9ja1R5cGUucHJvdG8qZQoSQ21kV29ybGRVbmxvY2tU",
-            "eXBlEhsKF0pFTUVORktET0pNX1BDUERIRUxQS0VNEAASGAoTQ21kV29ybGRV",
-            "bmxvY2tTY1JzcBDLOxIYChNDbWRXb3JsZFVubG9ja0NzUmVxEMo7QhaqAhNN",
-            "YXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ChhDbWRXb3JsZFVubG9ja1R5cGUucHJvdG8qbQoSQ21kV29ybGRVbmxvY2tU",
+            "eXBlEhsKF0xMSEtNUENMR09OX05MQ0RHSVBHRkRKEAASHAoXTExIS01QQ0xH",
+            "T05fR0NQQ0FHR0dOT0gQyjsSHAoXTExIS01QQ0xHT05fS0pMTkRGQ01FT0gQ",
+            "yztCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdWorldUnlockType), }, null, null));
@@ -37,9 +37,9 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdWorldUnlockType {
-    [pbr::OriginalName("JEMENFKDOJM_PCPDHELPKEM")] JemenfkdojmPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdWorldUnlockScRsp")] CmdWorldUnlockScRsp = 7627,
-    [pbr::OriginalName("CmdWorldUnlockCsReq")] CmdWorldUnlockCsReq = 7626,
+    [pbr::OriginalName("LLHKMPCLGON_NLCDGIPGFDJ")] LlhkmpclgonNlcdgipgfdj = 0,
+    [pbr::OriginalName("LLHKMPCLGON_GCPCAGGGNOH")] LlhkmpclgonGcpcagggnoh = 7626,
+    [pbr::OriginalName("LLHKMPCLGON_KJLNDFCMEOH")] LlhkmpclgonKjlndfcmeoh = 7627,
   }
 
   #endregion

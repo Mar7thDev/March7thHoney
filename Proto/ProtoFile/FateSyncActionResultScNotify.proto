@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "KNFLEFIFKMN.proto";
+import "DDLHODCINBI.proto";
 
 message FateSyncActionResultScNotify {
-    repeated KNFLEFIFKMN ANIADNFEMAH = 15;
+    repeated DDLHODCINBI CLGGKLNPLCK = 10;
 }

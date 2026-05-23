@@ -2,14 +2,12 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdFantasticStoryActivityType {
-    PGEKJIEDHHD_PCPDHELPKEM = 0;
-    CmdFantasticStoryActivityBattleEndScNotify = 4918;
-    CmdEnterActivityFantasticStoryCsReq = 4995;
-    CmdNDKKAGKCFGH = 4994;
-    CmdEnterFantasticStoryActivityStageScRsp = 4914;
-    CmdGetFantasticStoryActivityDataScRsp = 4910;
-    CmdGetFantasticStoryActivityDataCsReq = 4991;
+    GJALOMOKFKK_NLCDGIPGFDJ = 0;
+    GJALOMOKFKK_BLHBGPFPFGP = 4973;
+    GJALOMOKFKK_KMIIDAOKIAL = 4927;
+    GJALOMOKFKK_PIEIKABLBGP = 4913;
+    GJALOMOKFKK_ILFALHDGNGL = 4903;
+    GJALOMOKFKK_FBJCPGAIKEA = 4936;
+    GJALOMOKFKK_KFNLNJMBIEL = 4980;
 }

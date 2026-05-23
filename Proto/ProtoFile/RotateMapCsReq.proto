@@ -2,14 +2,12 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "MotionInfo.proto";
 import "RotateMapInfo.proto";
 
 message RotateMapCsReq {
-    MotionInfo motion = 2;
-    uint32 group_id = 4;
-    RotateMapInfo AMMJECHPGPE = 6;
-    uint32 PBOLMBLKDND = 14;
+    RotateMapInfo COOOMDKGODF = 5;
+    MotionInfo motion = 12;
+    uint32 PCCCKLNCLHB = 10;
+    uint32 group_id = 13;
 }

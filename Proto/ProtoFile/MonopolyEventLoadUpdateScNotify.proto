@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "AAHBECICOEN.proto";
+import "EIDFCGLODFB.proto";
 
 message MonopolyEventLoadUpdateScNotify {
-    repeated AAHBECICOEN LCPIODCLNHL = 3;
-    repeated AAHBECICOEN PGIHGNOLIOI = 7;
+    repeated EIDFCGLODFB DGBEOGGJLOO = 8;
+    repeated EIDFCGLODFB EGDNFKHLKKE = 1;
 }

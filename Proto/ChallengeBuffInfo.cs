@@ -26,14 +26,14 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChdDaGFsbGVuZ2VCdWZmSW5mby5wcm90bxobQ2hhbGxlbmdlQm9zc0J1ZmZJ",
             "bmZvLnByb3RvGhxDaGFsbGVuZ2VTdG9yeUJ1ZmZJbmZvLnByb3RvIn4KEUNo",
-            "YWxsZW5nZUJ1ZmZJbmZvEi0KCnN0b3J5X2luZm8YAiABKAsyFy5DaGFsbGVu",
-            "Z2VTdG9yeUJ1ZmZJbmZvSAASKwoJYm9zc19pbmZvGAggASgLMhYuQ2hhbGxl",
-            "bmdlQm9zc0J1ZmZJbmZvSABCDQoLQlBJSEZBSkNMT0NCFqoCE01hcmNoN3Ro",
+            "YWxsZW5nZUJ1ZmZJbmZvEi0KCnN0b3J5X2luZm8YCiABKAsyFy5DaGFsbGVu",
+            "Z2VTdG9yeUJ1ZmZJbmZvSAASKwoJYm9zc19pbmZvGA4gASgLMhYuQ2hhbGxl",
+            "bmdlQm9zc0J1ZmZJbmZvSABCDQoLS0tOQk9BQ05DT05CFqoCE01hcmNoN3Ro",
             "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChallengeBossBuffInfoReflection.Descriptor, global::March7thHoney.Proto.ChallengeStoryBuffInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengeBuffInfo), global::March7thHoney.Proto.ChallengeBuffInfo.Parser, new[]{ "StoryInfo", "BossInfo" }, new[]{ "BPIHFAJCLOC" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengeBuffInfo), global::March7thHoney.Proto.ChallengeBuffInfo.Parser, new[]{ "StoryInfo", "BossInfo" }, new[]{ "KKNBOACNCON" }, null, null, null)
           }));
     }
     #endregion
@@ -75,11 +75,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ChallengeBuffInfo(ChallengeBuffInfo other) : this() {
-      switch (other.BPIHFAJCLOCCase) {
-        case BPIHFAJCLOCOneofCase.StoryInfo:
+      switch (other.KKNBOACNCONCase) {
+        case KKNBOACNCONOneofCase.StoryInfo:
           StoryInfo = other.StoryInfo.Clone();
           break;
-        case BPIHFAJCLOCOneofCase.BossInfo:
+        case KKNBOACNCONOneofCase.BossInfo:
           BossInfo = other.BossInfo.Clone();
           break;
       }
@@ -94,48 +94,48 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "story_info" field.</summary>
-    public const int StoryInfoFieldNumber = 2;
+    public const int StoryInfoFieldNumber = 10;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.ChallengeStoryBuffInfo StoryInfo {
-      get { return bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.StoryInfo ? (global::March7thHoney.Proto.ChallengeStoryBuffInfo) bPIHFAJCLOC_ : null; }
+      get { return kKNBOACNCONCase_ == KKNBOACNCONOneofCase.StoryInfo ? (global::March7thHoney.Proto.ChallengeStoryBuffInfo) kKNBOACNCON_ : null; }
       set {
-        bPIHFAJCLOC_ = value;
-        bPIHFAJCLOCCase_ = value == null ? BPIHFAJCLOCOneofCase.None : BPIHFAJCLOCOneofCase.StoryInfo;
+        kKNBOACNCON_ = value;
+        kKNBOACNCONCase_ = value == null ? KKNBOACNCONOneofCase.None : KKNBOACNCONOneofCase.StoryInfo;
       }
     }
 
     /// <summary>Field number for the "boss_info" field.</summary>
-    public const int BossInfoFieldNumber = 8;
+    public const int BossInfoFieldNumber = 14;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.ChallengeBossBuffInfo BossInfo {
-      get { return bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.BossInfo ? (global::March7thHoney.Proto.ChallengeBossBuffInfo) bPIHFAJCLOC_ : null; }
+      get { return kKNBOACNCONCase_ == KKNBOACNCONOneofCase.BossInfo ? (global::March7thHoney.Proto.ChallengeBossBuffInfo) kKNBOACNCON_ : null; }
       set {
-        bPIHFAJCLOC_ = value;
-        bPIHFAJCLOCCase_ = value == null ? BPIHFAJCLOCOneofCase.None : BPIHFAJCLOCOneofCase.BossInfo;
+        kKNBOACNCON_ = value;
+        kKNBOACNCONCase_ = value == null ? KKNBOACNCONOneofCase.None : KKNBOACNCONOneofCase.BossInfo;
       }
     }
 
-    private object bPIHFAJCLOC_;
-    /// <summary>Enum of possible cases for the "BPIHFAJCLOC" oneof.</summary>
-    public enum BPIHFAJCLOCOneofCase {
+    private object kKNBOACNCON_;
+    /// <summary>Enum of possible cases for the "KKNBOACNCON" oneof.</summary>
+    public enum KKNBOACNCONOneofCase {
       None = 0,
-      StoryInfo = 2,
-      BossInfo = 8,
+      StoryInfo = 10,
+      BossInfo = 14,
     }
-    private BPIHFAJCLOCOneofCase bPIHFAJCLOCCase_ = BPIHFAJCLOCOneofCase.None;
+    private KKNBOACNCONOneofCase kKNBOACNCONCase_ = KKNBOACNCONOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public BPIHFAJCLOCOneofCase BPIHFAJCLOCCase {
-      get { return bPIHFAJCLOCCase_; }
+    public KKNBOACNCONOneofCase KKNBOACNCONCase {
+      get { return kKNBOACNCONCase_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearBPIHFAJCLOC() {
-      bPIHFAJCLOCCase_ = BPIHFAJCLOCOneofCase.None;
-      bPIHFAJCLOC_ = null;
+    public void ClearKKNBOACNCON() {
+      kKNBOACNCONCase_ = KKNBOACNCONOneofCase.None;
+      kKNBOACNCON_ = null;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -155,7 +155,7 @@ namespace March7thHoney.Proto {
       }
       if (!object.Equals(StoryInfo, other.StoryInfo)) return false;
       if (!object.Equals(BossInfo, other.BossInfo)) return false;
-      if (BPIHFAJCLOCCase != other.BPIHFAJCLOCCase) return false;
+      if (KKNBOACNCONCase != other.KKNBOACNCONCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -163,9 +163,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.StoryInfo) hash ^= StoryInfo.GetHashCode();
-      if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.BossInfo) hash ^= BossInfo.GetHashCode();
-      hash ^= (int) bPIHFAJCLOCCase_;
+      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.StoryInfo) hash ^= StoryInfo.GetHashCode();
+      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.BossInfo) hash ^= BossInfo.GetHashCode();
+      hash ^= (int) kKNBOACNCONCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -184,12 +184,12 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.StoryInfo) {
-        output.WriteRawTag(18);
+      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.StoryInfo) {
+        output.WriteRawTag(82);
         output.WriteMessage(StoryInfo);
       }
-      if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.BossInfo) {
-        output.WriteRawTag(66);
+      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.BossInfo) {
+        output.WriteRawTag(114);
         output.WriteMessage(BossInfo);
       }
       if (_unknownFields != null) {
@@ -202,12 +202,12 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.StoryInfo) {
-        output.WriteRawTag(18);
+      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.StoryInfo) {
+        output.WriteRawTag(82);
         output.WriteMessage(StoryInfo);
       }
-      if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.BossInfo) {
-        output.WriteRawTag(66);
+      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.BossInfo) {
+        output.WriteRawTag(114);
         output.WriteMessage(BossInfo);
       }
       if (_unknownFields != null) {
@@ -220,10 +220,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.StoryInfo) {
+      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.StoryInfo) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(StoryInfo);
       }
-      if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.BossInfo) {
+      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.BossInfo) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(BossInfo);
       }
       if (_unknownFields != null) {
@@ -238,14 +238,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      switch (other.BPIHFAJCLOCCase) {
-        case BPIHFAJCLOCOneofCase.StoryInfo:
+      switch (other.KKNBOACNCONCase) {
+        case KKNBOACNCONOneofCase.StoryInfo:
           if (StoryInfo == null) {
             StoryInfo = new global::March7thHoney.Proto.ChallengeStoryBuffInfo();
           }
           StoryInfo.MergeFrom(other.StoryInfo);
           break;
-        case BPIHFAJCLOCOneofCase.BossInfo:
+        case KKNBOACNCONOneofCase.BossInfo:
           if (BossInfo == null) {
             BossInfo = new global::March7thHoney.Proto.ChallengeBossBuffInfo();
           }
@@ -272,18 +272,18 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 18: {
+          case 82: {
             global::March7thHoney.Proto.ChallengeStoryBuffInfo subBuilder = new global::March7thHoney.Proto.ChallengeStoryBuffInfo();
-            if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.StoryInfo) {
+            if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.StoryInfo) {
               subBuilder.MergeFrom(StoryInfo);
             }
             input.ReadMessage(subBuilder);
             StoryInfo = subBuilder;
             break;
           }
-          case 66: {
+          case 114: {
             global::March7thHoney.Proto.ChallengeBossBuffInfo subBuilder = new global::March7thHoney.Proto.ChallengeBossBuffInfo();
-            if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.BossInfo) {
+            if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.BossInfo) {
               subBuilder.MergeFrom(BossInfo);
             }
             input.ReadMessage(subBuilder);
@@ -309,18 +309,18 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 18: {
+          case 82: {
             global::March7thHoney.Proto.ChallengeStoryBuffInfo subBuilder = new global::March7thHoney.Proto.ChallengeStoryBuffInfo();
-            if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.StoryInfo) {
+            if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.StoryInfo) {
               subBuilder.MergeFrom(StoryInfo);
             }
             input.ReadMessage(subBuilder);
             StoryInfo = subBuilder;
             break;
           }
-          case 66: {
+          case 114: {
             global::March7thHoney.Proto.ChallengeBossBuffInfo subBuilder = new global::March7thHoney.Proto.ChallengeBossBuffInfo();
-            if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.BossInfo) {
+            if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.BossInfo) {
               subBuilder.MergeFrom(BossInfo);
             }
             input.ReadMessage(subBuilder);

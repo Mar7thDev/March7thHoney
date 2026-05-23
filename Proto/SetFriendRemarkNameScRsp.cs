@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch5TZXRGcmllbmRSZW1hcmtOYW1lU2NSc3AucHJvdG8iTQoYU2V0RnJpZW5k",
-            "UmVtYXJrTmFtZVNjUnNwEgsKA3VpZBgCIAEoDRITCgtyZW1hcmtfbmFtZRgL",
-            "IAEoCRIPCgdyZXRjb2RlGA0gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
+            "UmVtYXJrTmFtZVNjUnNwEhMKC3JlbWFya19uYW1lGAYgASgJEg8KB3JldGNv",
+            "ZGUYByABKA0SCwoDdWlkGAIgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
             "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetFriendRemarkNameScRsp), global::March7thHoney.Proto.SetFriendRemarkNameScRsp.Parser, new[]{ "Uid", "RemarkName", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetFriendRemarkNameScRsp), global::March7thHoney.Proto.SetFriendRemarkNameScRsp.Parser, new[]{ "RemarkName", "Retcode", "Uid" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,9 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SetFriendRemarkNameScRsp(SetFriendRemarkNameScRsp other) : this() {
-      uid_ = other.uid_;
       remarkName_ = other.remarkName_;
       retcode_ = other.retcode_;
+      uid_ = other.uid_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,20 +85,8 @@ namespace March7thHoney.Proto {
       return new SetFriendRemarkNameScRsp(this);
     }
 
-    /// <summary>Field number for the "uid" field.</summary>
-    public const int UidFieldNumber = 2;
-    private uint uid_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Uid {
-      get { return uid_; }
-      set {
-        uid_ = value;
-      }
-    }
-
     /// <summary>Field number for the "remark_name" field.</summary>
-    public const int RemarkNameFieldNumber = 11;
+    public const int RemarkNameFieldNumber = 6;
     private string remarkName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,7 +98,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 13;
+    public const int RetcodeFieldNumber = 7;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -118,6 +106,18 @@ namespace March7thHoney.Proto {
       get { return retcode_; }
       set {
         retcode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "uid" field.</summary>
+    public const int UidFieldNumber = 2;
+    private uint uid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Uid {
+      get { return uid_; }
+      set {
+        uid_ = value;
       }
     }
 
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Uid != other.Uid) return false;
       if (RemarkName != other.RemarkName) return false;
       if (Retcode != other.Retcode) return false;
+      if (Uid != other.Uid) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -146,9 +146,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Uid != 0) hash ^= Uid.GetHashCode();
       if (RemarkName.Length != 0) hash ^= RemarkName.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (Uid != 0) hash ^= Uid.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -172,11 +172,11 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(Uid);
       }
       if (RemarkName.Length != 0) {
-        output.WriteRawTag(90);
+        output.WriteRawTag(50);
         output.WriteString(RemarkName);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(56);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -194,11 +194,11 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(Uid);
       }
       if (RemarkName.Length != 0) {
-        output.WriteRawTag(90);
+        output.WriteRawTag(50);
         output.WriteString(RemarkName);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(56);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -211,14 +211,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Uid != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Uid);
-      }
       if (RemarkName.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(RemarkName);
       }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      }
+      if (Uid != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Uid);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -232,14 +232,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.Uid != 0) {
-        Uid = other.Uid;
-      }
       if (other.RemarkName.Length != 0) {
         RemarkName = other.RemarkName;
       }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
+      }
+      if (other.Uid != 0) {
+        Uid = other.Uid;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -264,11 +264,11 @@ namespace March7thHoney.Proto {
             Uid = input.ReadUInt32();
             break;
           }
-          case 90: {
+          case 50: {
             RemarkName = input.ReadString();
             break;
           }
-          case 104: {
+          case 56: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -295,11 +295,11 @@ namespace March7thHoney.Proto {
             Uid = input.ReadUInt32();
             break;
           }
-          case 90: {
+          case 50: {
             RemarkName = input.ReadString();
             break;
           }
-          case 104: {
+          case 56: {
             Retcode = input.ReadUInt32();
             break;
           }

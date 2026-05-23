@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message SetIsDisplayAvatarInfoScRsp {
+    uint32 retcode = 12;
+    bool is_display = 13;
+}

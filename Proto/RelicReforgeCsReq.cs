@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChdSZWxpY1JlZm9yZ2VDc1JlcS5wcm90byJQChFSZWxpY1JlZm9yZ2VDc1Jl",
-            "cRIiChpyZWZvcmdlX2Jsb2NrX3N1Yl9hZmZpeF9pZBgGIAEoDRIXCg9yZWxp",
-            "Y191bmlxdWVfaWQYDyABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
+            "cRIiChpyZWZvcmdlX2Jsb2NrX3N1Yl9hZmZpeF9pZBgDIAEoDRIXCg9yZWxp",
+            "Y191bmlxdWVfaWQYASABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
             "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "reforge_block_sub_affix_id" field.</summary>
-    public const int ReforgeBlockSubAffixIdFieldNumber = 6;
+    public const int ReforgeBlockSubAffixIdFieldNumber = 3;
     private uint reforgeBlockSubAffixId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "relic_unique_id" field.</summary>
-    public const int RelicUniqueIdFieldNumber = 15;
+    public const int RelicUniqueIdFieldNumber = 1;
     private uint relicUniqueId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,13 +152,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (ReforgeBlockSubAffixId != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(ReforgeBlockSubAffixId);
-      }
       if (RelicUniqueId != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(8);
         output.WriteUInt32(RelicUniqueId);
+      }
+      if (ReforgeBlockSubAffixId != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(ReforgeBlockSubAffixId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,13 +170,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (ReforgeBlockSubAffixId != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(ReforgeBlockSubAffixId);
-      }
       if (RelicUniqueId != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(8);
         output.WriteUInt32(RelicUniqueId);
+      }
+      if (ReforgeBlockSubAffixId != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(ReforgeBlockSubAffixId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -231,12 +231,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 48: {
-            ReforgeBlockSubAffixId = input.ReadUInt32();
+          case 8: {
+            RelicUniqueId = input.ReadUInt32();
             break;
           }
-          case 120: {
-            RelicUniqueId = input.ReadUInt32();
+          case 24: {
+            ReforgeBlockSubAffixId = input.ReadUInt32();
             break;
           }
         }
@@ -258,12 +258,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 48: {
-            ReforgeBlockSubAffixId = input.ReadUInt32();
+          case 8: {
+            RelicUniqueId = input.ReadUInt32();
             break;
           }
-          case 120: {
-            RelicUniqueId = input.ReadUInt32();
+          case 24: {
+            ReforgeBlockSubAffixId = input.ReadUInt32();
             break;
           }
         }

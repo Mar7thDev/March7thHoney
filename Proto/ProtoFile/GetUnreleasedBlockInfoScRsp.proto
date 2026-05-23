@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message GetUnreleasedBlockInfoScRsp {
-    int64 DDBFEEIGPJI = 3;
-    repeated uint32 GOMNGAADJLM = 5;
-    repeated uint32 FLFPOJFLHOD = 8;
-    uint32 retcode = 9;
+    repeated uint32 KNKGIENCLJJ = 1;
+    repeated uint32 NJIIPBHBEDK = 7;
+    uint32 retcode = 14;
+    int64 GCMOKMIEHDB = 6;
 }

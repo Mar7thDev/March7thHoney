@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message GetAssistListCsReq {
-    bool KJJNOKFKMCP = 10;
-    bool ICHENOJECAP = 12;
+    bool LKBAENBKJCE = 10;
+    bool DDNKHDIKAEL = 13;
 }

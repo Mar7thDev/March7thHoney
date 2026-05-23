@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "NAJFNKIEEDM.proto";
+import "NMACHAFCGNI.proto";
+
+message PixAirGetDataScRsp {
+    repeated uint32 OPOJIGCHGDO = 6;
+    NMACHAFCGNI IEIGEDABKAD = 1;
+    repeated uint32 PGMIJBOGIKN = 4;
+    NAJFNKIEEDM JCOBJAMPOAL = 8;
+    uint32 retcode = 9;
+    uint32 score_id = 13;
+}

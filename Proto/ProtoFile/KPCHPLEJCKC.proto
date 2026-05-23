@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message KPCHPLEJCKC {
+    uint32 LALGADHLMCB = 10;
+    uint32 pos_index = 12;
+    uint32 count = 4;
+    uint32 HBONKLEOEEI = 7;
+}

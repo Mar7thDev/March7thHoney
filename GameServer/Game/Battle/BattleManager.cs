@@ -3,8 +3,7 @@ using March7thHoney.Data.Excel;
 using March7thHoney.Database.Avatar;
 using March7thHoney.Database.Inventory;
 using March7thHoney.GameServer.Game.Player;
-using March7thHoney.GameServer.Game.GridFight;
-using March7thHoney.GameServer.Game.GridFight.Battle;
+// TODO 4.3: GridFight 模块暂停编译
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
 using March7thHoney.GameServer.Server.Packet.Send.Battle;
@@ -135,7 +134,7 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
             battleInstance.AvatarInfo = avatarList;
 
             // call battle start
-            Player.ChallengeManager!.ChallengeInstance?.OnBattleStart(battleInstance);
+            // TODO 4.3: ChallengeManager 暂停（旧 ChallengeInstance OnBattleStart）
             Player.QuestManager!.OnBattleStart(battleInstance);
 
             Player.BattleInstance = battleInstance;
@@ -186,7 +185,7 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
         battleInstance.AvatarInfo = avatarList;
 
         // call battle start
-        Player.ChallengeManager!.ChallengeInstance?.OnBattleStart(battleInstance);
+        // TODO 4.3: ChallengeManager 暂停
         Player.QuestManager!.OnBattleStart(battleInstance);
 
         Player.BattleInstance = battleInstance;
@@ -305,7 +304,7 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
         };
 
         // call battle start
-        Player.ChallengeManager!.ChallengeInstance?.OnBattleStart(battleInstance);
+        // TODO 4.3: ChallengeManager 暂停
         Player.QuestManager!.OnBattleStart(battleInstance);
 
         Player.BattleInstance = battleInstance;
@@ -313,12 +312,7 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
         return (Retcode.RetSucc, battleInstance);
     }
 
-    public BattleInstance? StartGridFightBattle(object inst)
-    {
-        if (inst is not GridFightInstance gridFightInstance)
-            return null;
-        return GridFightBattleModule.StartBattle(Player, gridFightInstance);
-    }
+    // TODO 4.3: StartGridFightBattle 暂停（GridFight 模块未编译）
 
     public async ValueTask EndBattle(PVEBattleResultCsReq req)
     {
@@ -413,11 +407,7 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
 
         Player.BattleInstance = null;
 
-        if (Player.GridFightManager?.GridFightInstance != null)
-        {
-            // GridFight flow handles its own result notify / progression.
-            await Player.GridFightManager.GridFightInstance.EndBattle(battle, req);
-        }
+        // TODO 4.3: GridFightManager 分支暂停
 
         battle.OnBattleEnd += Player.MissionManager!.OnBattleFinish;
         await battle.TriggerOnBattleEnd();

@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "DFKGECLBCDK.proto";
 import "GridFightEquipTrackSource.proto";
+import "HLHHLIGPNOM.proto";
 
 message GridFightUpdateEquipTrackCsReq {
-    repeated DFKGECLBCDK BEPEKLPAHMC = 3;
-    GridFightEquipTrackSource source = 15;
+    repeated HLHHLIGPNOM DKEIDONNDCJ = 15;
+    GridFightEquipTrackSource source = 14;
 }

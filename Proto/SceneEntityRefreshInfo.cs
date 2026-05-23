@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChxTY2VuZUVudGl0eVJlZnJlc2hJbmZvLnByb3RvGhVTY2VuZUVudGl0eUlu",
-            "Zm8ucHJvdG8igAEKFlNjZW5lRW50aXR5UmVmcmVzaEluZm8SFQoLSEJJRURB",
-            "SkZFTE8YBCABKA1IABIXCg1kZWxldGVfZW50aXR5GAwgASgNSAASJgoKYWRk",
-            "X2VudGl0eRgOIAEoCzIQLlNjZW5lRW50aXR5SW5mb0gAQg4KDHJlZnJlc2hf",
+            "Zm8ucHJvdG8igAEKFlNjZW5lRW50aXR5UmVmcmVzaEluZm8SJgoKYWRkX2Vu",
+            "dGl0eRgNIAEoCzIQLlNjZW5lRW50aXR5SW5mb0gAEhcKDWRlbGV0ZV9lbnRp",
+            "dHkYCyABKA1IABIVCgtCRUVBTkFEQUhQTBgOIAEoDUgAQg4KDHJlZnJlc2hf",
             "dHlwZUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.SceneEntityInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneEntityRefreshInfo), global::March7thHoney.Proto.SceneEntityRefreshInfo.Parser, new[]{ "HBIEDAJFELO", "DeleteEntity", "AddEntity" }, new[]{ "RefreshType" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneEntityRefreshInfo), global::March7thHoney.Proto.SceneEntityRefreshInfo.Parser, new[]{ "AddEntity", "DeleteEntity", "BEEANADAHPL" }, new[]{ "RefreshType" }, null, null, null)
           }));
     }
     #endregion
@@ -75,14 +75,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SceneEntityRefreshInfo(SceneEntityRefreshInfo other) : this() {
       switch (other.RefreshTypeCase) {
-        case RefreshTypeOneofCase.HBIEDAJFELO:
-          HBIEDAJFELO = other.HBIEDAJFELO;
+        case RefreshTypeOneofCase.AddEntity:
+          AddEntity = other.AddEntity.Clone();
           break;
         case RefreshTypeOneofCase.DeleteEntity:
           DeleteEntity = other.DeleteEntity;
           break;
-        case RefreshTypeOneofCase.AddEntity:
-          AddEntity = other.AddEntity.Clone();
+        case RefreshTypeOneofCase.BEEANADAHPL:
+          BEEANADAHPL = other.BEEANADAHPL;
           break;
       }
 
@@ -95,34 +95,20 @@ namespace March7thHoney.Proto {
       return new SceneEntityRefreshInfo(this);
     }
 
-    /// <summary>Field number for the "HBIEDAJFELO" field.</summary>
-    public const int HBIEDAJFELOFieldNumber = 4;
+    /// <summary>Field number for the "add_entity" field.</summary>
+    public const int AddEntityFieldNumber = 13;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint HBIEDAJFELO {
-      get { return HasHBIEDAJFELO ? (uint) refreshType_ : 0; }
+    public global::March7thHoney.Proto.SceneEntityInfo AddEntity {
+      get { return refreshTypeCase_ == RefreshTypeOneofCase.AddEntity ? (global::March7thHoney.Proto.SceneEntityInfo) refreshType_ : null; }
       set {
         refreshType_ = value;
-        refreshTypeCase_ = RefreshTypeOneofCase.HBIEDAJFELO;
-      }
-    }
-    /// <summary>Gets whether the "HBIEDAJFELO" field is set</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasHBIEDAJFELO {
-      get { return refreshTypeCase_ == RefreshTypeOneofCase.HBIEDAJFELO; }
-    }
-    /// <summary> Clears the value of the oneof if it's currently set to "HBIEDAJFELO" </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearHBIEDAJFELO() {
-      if (HasHBIEDAJFELO) {
-        ClearRefreshType();
+        refreshTypeCase_ = value == null ? RefreshTypeOneofCase.None : RefreshTypeOneofCase.AddEntity;
       }
     }
 
     /// <summary>Field number for the "delete_entity" field.</summary>
-    public const int DeleteEntityFieldNumber = 12;
+    public const int DeleteEntityFieldNumber = 11;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint DeleteEntity {
@@ -147,15 +133,29 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "add_entity" field.</summary>
-    public const int AddEntityFieldNumber = 14;
+    /// <summary>Field number for the "BEEANADAHPL" field.</summary>
+    public const int BEEANADAHPLFieldNumber = 14;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.SceneEntityInfo AddEntity {
-      get { return refreshTypeCase_ == RefreshTypeOneofCase.AddEntity ? (global::March7thHoney.Proto.SceneEntityInfo) refreshType_ : null; }
+    public uint BEEANADAHPL {
+      get { return HasBEEANADAHPL ? (uint) refreshType_ : 0; }
       set {
         refreshType_ = value;
-        refreshTypeCase_ = value == null ? RefreshTypeOneofCase.None : RefreshTypeOneofCase.AddEntity;
+        refreshTypeCase_ = RefreshTypeOneofCase.BEEANADAHPL;
+      }
+    }
+    /// <summary>Gets whether the "BEEANADAHPL" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasBEEANADAHPL {
+      get { return refreshTypeCase_ == RefreshTypeOneofCase.BEEANADAHPL; }
+    }
+    /// <summary> Clears the value of the oneof if it's currently set to "BEEANADAHPL" </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearBEEANADAHPL() {
+      if (HasBEEANADAHPL) {
+        ClearRefreshType();
       }
     }
 
@@ -163,9 +163,9 @@ namespace March7thHoney.Proto {
     /// <summary>Enum of possible cases for the "refresh_type" oneof.</summary>
     public enum RefreshTypeOneofCase {
       None = 0,
-      HBIEDAJFELO = 4,
-      DeleteEntity = 12,
-      AddEntity = 14,
+      AddEntity = 13,
+      DeleteEntity = 11,
+      BEEANADAHPL = 14,
     }
     private RefreshTypeOneofCase refreshTypeCase_ = RefreshTypeOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -196,9 +196,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (HBIEDAJFELO != other.HBIEDAJFELO) return false;
-      if (DeleteEntity != other.DeleteEntity) return false;
       if (!object.Equals(AddEntity, other.AddEntity)) return false;
+      if (DeleteEntity != other.DeleteEntity) return false;
+      if (BEEANADAHPL != other.BEEANADAHPL) return false;
       if (RefreshTypeCase != other.RefreshTypeCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -207,9 +207,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (HasHBIEDAJFELO) hash ^= HBIEDAJFELO.GetHashCode();
-      if (HasDeleteEntity) hash ^= DeleteEntity.GetHashCode();
       if (refreshTypeCase_ == RefreshTypeOneofCase.AddEntity) hash ^= AddEntity.GetHashCode();
+      if (HasDeleteEntity) hash ^= DeleteEntity.GetHashCode();
+      if (HasBEEANADAHPL) hash ^= BEEANADAHPL.GetHashCode();
       hash ^= (int) refreshTypeCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -229,17 +229,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (HasHBIEDAJFELO) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(HBIEDAJFELO);
-      }
       if (HasDeleteEntity) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(88);
         output.WriteUInt32(DeleteEntity);
       }
       if (refreshTypeCase_ == RefreshTypeOneofCase.AddEntity) {
-        output.WriteRawTag(114);
+        output.WriteRawTag(106);
         output.WriteMessage(AddEntity);
+      }
+      if (HasBEEANADAHPL) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(BEEANADAHPL);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -251,17 +251,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (HasHBIEDAJFELO) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(HBIEDAJFELO);
-      }
       if (HasDeleteEntity) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(88);
         output.WriteUInt32(DeleteEntity);
       }
       if (refreshTypeCase_ == RefreshTypeOneofCase.AddEntity) {
-        output.WriteRawTag(114);
+        output.WriteRawTag(106);
         output.WriteMessage(AddEntity);
+      }
+      if (HasBEEANADAHPL) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(BEEANADAHPL);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -273,14 +273,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (HasHBIEDAJFELO) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(HBIEDAJFELO);
+      if (refreshTypeCase_ == RefreshTypeOneofCase.AddEntity) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(AddEntity);
       }
       if (HasDeleteEntity) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DeleteEntity);
       }
-      if (refreshTypeCase_ == RefreshTypeOneofCase.AddEntity) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(AddEntity);
+      if (HasBEEANADAHPL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BEEANADAHPL);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -295,17 +295,17 @@ namespace March7thHoney.Proto {
         return;
       }
       switch (other.RefreshTypeCase) {
-        case RefreshTypeOneofCase.HBIEDAJFELO:
-          HBIEDAJFELO = other.HBIEDAJFELO;
-          break;
-        case RefreshTypeOneofCase.DeleteEntity:
-          DeleteEntity = other.DeleteEntity;
-          break;
         case RefreshTypeOneofCase.AddEntity:
           if (AddEntity == null) {
             AddEntity = new global::March7thHoney.Proto.SceneEntityInfo();
           }
           AddEntity.MergeFrom(other.AddEntity);
+          break;
+        case RefreshTypeOneofCase.DeleteEntity:
+          DeleteEntity = other.DeleteEntity;
+          break;
+        case RefreshTypeOneofCase.BEEANADAHPL:
+          BEEANADAHPL = other.BEEANADAHPL;
           break;
       }
 
@@ -328,21 +328,21 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
-            HBIEDAJFELO = input.ReadUInt32();
-            break;
-          }
-          case 96: {
+          case 88: {
             DeleteEntity = input.ReadUInt32();
             break;
           }
-          case 114: {
+          case 106: {
             global::March7thHoney.Proto.SceneEntityInfo subBuilder = new global::March7thHoney.Proto.SceneEntityInfo();
             if (refreshTypeCase_ == RefreshTypeOneofCase.AddEntity) {
               subBuilder.MergeFrom(AddEntity);
             }
             input.ReadMessage(subBuilder);
             AddEntity = subBuilder;
+            break;
+          }
+          case 112: {
+            BEEANADAHPL = input.ReadUInt32();
             break;
           }
         }
@@ -364,21 +364,21 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
-            HBIEDAJFELO = input.ReadUInt32();
-            break;
-          }
-          case 96: {
+          case 88: {
             DeleteEntity = input.ReadUInt32();
             break;
           }
-          case 114: {
+          case 106: {
             global::March7thHoney.Proto.SceneEntityInfo subBuilder = new global::March7thHoney.Proto.SceneEntityInfo();
             if (refreshTypeCase_ == RefreshTypeOneofCase.AddEntity) {
               subBuilder.MergeFrom(AddEntity);
             }
             input.ReadMessage(subBuilder);
             AddEntity = subBuilder;
+            break;
+          }
+          case 112: {
+            BEEANADAHPL = input.ReadUInt32();
             break;
           }
         }

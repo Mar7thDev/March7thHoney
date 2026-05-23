@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message GOCBELPFLHO {
+    string OMCBHEFBEIO = 14;
+    uint32 PMDNFENHOBE = 16;
+    uint32 MJKFODFJGKO = 12;
+    uint32 IMPOOGJHDMF = 7;
+    uint32 authkey_ver = 2;
+    uint32 EKBJCBFIIEP = 5;
+    uint32 FCFKGLPCPOP = 3;
+    uint64 DGAFIHGCAPC = 9;
+    uint32 BMGBBEMHLIG = 4;
+    uint32 DLAIECHBNPP = 1;
+    uint32 LMFFKMPOMGD = 6;
+    uint32 JPKIHONCCNN = 8;
+    uint64 LLIOEMOBFGD = 17;
+    uint32 NLGHMPMHMEF = 13;
+    uint32 id = 11;
+    uint32 IGKOLFOCNOD = 15;
+    uint32 MLOMBDFHLMN = 10;
+}

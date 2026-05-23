@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "CKODNPNBOEN.proto";
+import "FDNOPLPDLFC.proto";
+
+message NINLEFEPGCC {
+    FDNOPLPDLFC ADHHMELLEHA = 11;
+    FDNOPLPDLFC KNMNGCBMNMJ = 12;
+    CKODNPNBOEN IDBGCLFLCGE = 9;
+    CKODNPNBOEN COGGJELNFCN = 8;
+    uint32 GLHKJMBKKPI = 2;
+    uint32 FDAOAJKBJKM = 7;
+    uint64 room_id = 1;
+    uint32 OOJGMIMJAGC = 4;
+    uint32 KFEMJMKMGIJ = 13;
+    uint32 cost_time = 14;
+    uint32 GAENFKKAKOI = 3;
+    uint32 attack_type = 10;
+    uint32 HJPBAJEPAGE = 6;
+    bool CJNHAILKEPN = 5;
+}

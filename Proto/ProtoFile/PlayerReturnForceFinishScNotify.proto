@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "KKNDEDPDFFL.proto";
+import "IBKDHOIDKJA.proto";
 
 message PlayerReturnForceFinishScNotify {
-    KKNDEDPDFFL CAAFBGGIBKH = 13;
+    IBKDHOIDKJA NAJPHJOFGBB = 8;
 }

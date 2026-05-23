@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "LBPLJCHEJOK.proto";
+
+message JMJEIBGACMD {
+    LBPLJCHEJOK status = 13;
+    uint32 CNFGOHFPLGO = 15;
+    uint32 ECPDJMMOGCI = 3;
+}

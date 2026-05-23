@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "LAEHICCBBFN.proto";
+
+message HDDLALFAMKO {
+    repeated uint32 LPBBJFFNACA = 10;
+    LAEHICCBBFN KDJACPBDHAE = 3;
+}

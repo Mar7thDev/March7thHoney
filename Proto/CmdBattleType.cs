@@ -24,18 +24,19 @@ namespace March7thHoney.Proto {
     static CmdBattleTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChNDbWRCYXR0bGVUeXBlLnByb3RvKuMDCg1DbWRCYXR0bGVUeXBlEhsKF0pI",
-            "SEVCSE9LT0VLX1BDUERIRUxQS0VNEAASGwoXQ21kUFZFQmF0dGxlUmVzdWx0",
-            "U2NSc3AQbhIgChxDbWRTeW5jQ2xpZW50UmVzVmVyc2lvbkNzUmVxEG0SEwoO",
-            "Q21kUEROUElDUEVDQUMQwwESGgoVQ21kUXVpdEJhdHRsZVNjTm90aWZ5EKMB",
-            "EhsKF0pISEVCSE9LT0VLX0tBUE9CR0RMSEdDEH4SKQolQ21kU2VydmVyU2lt",
-            "dWxhdGVCYXR0bGVGaW5pc2hTY05vdGlmeRBlEiAKG0NtZFJlYmF0dGxlQnlD",
-            "bGllbnRDc05vdGlmeRCJARIcChdDbWRCYXR0bGVMb2dSZXBvcnRTY1JzcBCL",
-            "ARIXChJDbWRRdWl0QmF0dGxlQ3NSZXEQwgESHAoYQ21kR2V0Q3VyQmF0dGxl",
-            "SW5mb1NjUnNwEHYSHAoYQ21kR2V0Q3VyQmF0dGxlSW5mb0NzUmVxEHISJwoi",
-            "Q21kUmVCYXR0bGVBZnRlckJhdHRsZUxvc2VDc05vdGlmeRCuARIcChdDbWRQ",
-            "VkVCYXR0bGVSZXN1bHRDc1JlcRC/ARIhChxDbWRTeW5jQ2xpZW50UmVzVmVy",
-            "c2lvblNjUnNwEMYBQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ChNDbWRCYXR0bGVUeXBlLnByb3RvKucDCg1DbWRCYXR0bGVUeXBlEhsKF0VK",
+            "Q09JRENKREhNX05MQ0RHSVBHRkRKEAASGwoXRUpDT0lEQ0pESE1fTlBNSU5B",
+            "UElHTkoQfxIbChdFSkNPSURDSkRITV9LTkxCSEtOQ0RMRhBnEhwKF0VKQ09J",
+            "RENKREhNX09GSlBISE5LSk1HELUBEhwKF0VKQ09JRENKREhNX0FITEZLTkdP",
+            "TUdKEJoBEhwKF0VKQ09JRENKREhNX0tHRU1QQ0xCTlBIELQBEhwKF0VKQ09J",
+            "RENKREhNX0xLTUhPTElCT0VKELcBEhsKF0VKQ09JRENKREhNX0JFRU1QQkpK",
+            "REtCEG0SGwoXRUpDT0lEQ0pESE1fTE5FRVBKTkxEQUkQbhIcChdFSkNPSURD",
+            "SkRITV9DSkdJRFBQRENKQhCtARIbChdFSkNPSURDSkRITV9ISUdKQ01KRElF",
+            "TxBwEhwKF0VKQ09JRENKREhNX0ZNRkxCUE9LSkRCEIgBEhwKF0VKQ09JRENK",
+            "REhNX05BT01NSkNMTU9JELsBEhsKF0VKQ09JRENKREhNX0pGQk9NRk5PRE5M",
+            "EHMSGwoXRUpDT0lEQ0pESE1fRUxKQU1DSU9MQ00QcRIcChdFSkNPSURDSkRI",
+            "TV9JQkxKRUxOQUNPRhCBAUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJv",
+            "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdBattleType), }, null, null));
@@ -45,21 +46,22 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdBattleType {
-    [pbr::OriginalName("JHHEBHOKOEK_PCPDHELPKEM")] JhhebhokoekPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdPVEBattleResultScRsp")] CmdPvebattleResultScRsp = 110,
-    [pbr::OriginalName("CmdSyncClientResVersionCsReq")] CmdSyncClientResVersionCsReq = 109,
-    [pbr::OriginalName("CmdPDNPICPECAC")] CmdPdnpicpecac = 195,
-    [pbr::OriginalName("CmdQuitBattleScNotify")] CmdQuitBattleScNotify = 163,
-    [pbr::OriginalName("JHHEBHOKOEK_KAPOBGDLHGC")] JhhebhokoekKapobgdlhgc = 126,
-    [pbr::OriginalName("CmdServerSimulateBattleFinishScNotify")] CmdServerSimulateBattleFinishScNotify = 101,
-    [pbr::OriginalName("CmdRebattleByClientCsNotify")] CmdRebattleByClientCsNotify = 137,
-    [pbr::OriginalName("CmdBattleLogReportScRsp")] CmdBattleLogReportScRsp = 139,
-    [pbr::OriginalName("CmdQuitBattleCsReq")] CmdQuitBattleCsReq = 194,
-    [pbr::OriginalName("CmdGetCurBattleInfoScRsp")] CmdGetCurBattleInfoScRsp = 118,
-    [pbr::OriginalName("CmdGetCurBattleInfoCsReq")] CmdGetCurBattleInfoCsReq = 114,
-    [pbr::OriginalName("CmdReBattleAfterBattleLoseCsNotify")] CmdReBattleAfterBattleLoseCsNotify = 174,
-    [pbr::OriginalName("CmdPVEBattleResultCsReq")] CmdPvebattleResultCsReq = 191,
-    [pbr::OriginalName("CmdSyncClientResVersionScRsp")] CmdSyncClientResVersionScRsp = 198,
+    [pbr::OriginalName("EJCOIDCJDHM_NLCDGIPGFDJ")] EjcoidcjdhmNlcdgipgfdj = 0,
+    [pbr::OriginalName("EJCOIDCJDHM_NPMINAPIGNJ")] EjcoidcjdhmNpminapignj = 127,
+    [pbr::OriginalName("EJCOIDCJDHM_KNLBHKNCDLF")] EjcoidcjdhmKnlbhkncdlf = 103,
+    [pbr::OriginalName("EJCOIDCJDHM_OFJPHHNKJMG")] EjcoidcjdhmOfjphhnkjmg = 181,
+    [pbr::OriginalName("EJCOIDCJDHM_AHLFKNGOMGJ")] EjcoidcjdhmAhlfkngomgj = 154,
+    [pbr::OriginalName("EJCOIDCJDHM_KGEMPCLBNPH")] EjcoidcjdhmKgempclbnph = 180,
+    [pbr::OriginalName("EJCOIDCJDHM_LKMHOLIBOEJ")] EjcoidcjdhmLkmholiboej = 183,
+    [pbr::OriginalName("EJCOIDCJDHM_BEEMPBJJDKB")] EjcoidcjdhmBeempbjjdkb = 109,
+    [pbr::OriginalName("EJCOIDCJDHM_LNEEPJNLDAI")] EjcoidcjdhmLneepjnldai = 110,
+    [pbr::OriginalName("EJCOIDCJDHM_CJGIDPPDCJB")] EjcoidcjdhmCjgidppdcjb = 173,
+    [pbr::OriginalName("EJCOIDCJDHM_HIGJCMJDIEO")] EjcoidcjdhmHigjcmjdieo = 112,
+    [pbr::OriginalName("EJCOIDCJDHM_FMFLBPOKJDB")] EjcoidcjdhmFmflbpokjdb = 136,
+    [pbr::OriginalName("EJCOIDCJDHM_NAOMMJCLMOI")] EjcoidcjdhmNaommjclmoi = 187,
+    [pbr::OriginalName("EJCOIDCJDHM_JFBOMFNODNL")] EjcoidcjdhmJfbomfnodnl = 115,
+    [pbr::OriginalName("EJCOIDCJDHM_ELJAMCIOLCM")] EjcoidcjdhmEljamciolcm = 113,
+    [pbr::OriginalName("EJCOIDCJDHM_IBLJELNACOF")] EjcoidcjdhmIbljelnacof = 129,
   }
 
   #endregion

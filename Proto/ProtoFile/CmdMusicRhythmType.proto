@@ -2,20 +2,18 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdMusicRhythmType {
-    NEMEAFLEOHK_PCPDHELPKEM = 0;
-    CmdMusicRhythmDataScRsp = 7588;
-    CmdMusicRhythmStartLevelScRsp = 7589;
-    CmdMusicRhythmFinishLevelScRsp = 7571;
-    CmdMusicRhythmUnlockSongSfxScNotify = 7595;
-    CmdMusicRhythmFinishLevelCsReq = 7573;
-    CmdMusicRhythmStartLevelCsReq = 7574;
-    CmdMusicRhythmUnlockTrackScNotify = 7578;
-    CmdMusicRhythmSaveSongConfigDataCsReq = 7594;
-    CmdMusicRhythmSaveSongConfigDataScRsp = 7600;
-    CmdMusicRhythmDataCsReq = 7572;
-    CmdHDCOOFAHMHJ = 7597;
-    CmdDMEJHILMKAH = 7585;
+    PHAPALJNLBE_NLCDGIPGFDJ = 0;
+    PHAPALJNLBE_PJFKKFFGNJO = 7600;
+    PHAPALJNLBE_LJFKOLLPGKP = 7574;
+    PHAPALJNLBE_LHHIDMNPKGM = 7591;
+    PHAPALJNLBE_KDBOPFPFGNF = 7578;
+    PHAPALJNLBE_PGGPINKJPJA = 7596;
+    PHAPALJNLBE_IMBKCHOMGBP = 7587;
+    PHAPALJNLBE_PHBPMCMMCGJ = 7581;
+    PHAPALJNLBE_APKIMNNBLIE = 7598;
+    PHAPALJNLBE_GFPOONKNKPD = 7582;
+    PHAPALJNLBE_BHGAAEBOBOO = 7589;
+    PHAPALJNLBE_HJMPAGJEBOI = 7588;
+    PHAPALJNLBE_LKFCANNCJPC = 7592;
 }

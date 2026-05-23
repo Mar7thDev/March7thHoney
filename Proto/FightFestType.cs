@@ -24,11 +24,11 @@ namespace March7thHoney.Proto {
     static FightFestTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChNGaWdodEZlc3RUeXBlLnByb3RvKqABCg1GaWdodEZlc3RUeXBlEhsKF01I",
-            "S0VBRkFQTUZQX1BDUERIRUxQS0VNEAASGwoXTUhLRUFGQVBNRlBfUEVPQUNO",
-            "UEtNRFAQARIbChdNSEtFQUZBUE1GUF9GQU1NTElOR0xEQRACEhsKF01IS0VB",
-            "RkFQTUZQX09QQ0dOSk1HSkRFEAMSGwoXTUhLRUFGQVBNRlBfRU5ETktLT0lC",
-            "SEUQBEIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChNGaWdodEZlc3RUeXBlLnByb3RvKp0BCg1GaWdodEZlc3RUeXBlEhsKF09H",
+            "T0pMQk5KS0NOX05MQ0RHSVBHRkRKEAASGwoXT0dPSkxCTkpLQ05fSUJBQURO",
+            "SU5GQ0cQARIYChRPR09KTEJOSktDTl9zY29yZV9pZBACEhsKF09HT0pMQk5K",
+            "S0NOX09DRExQRERNQ0xQEAMSGwoXT0dPSkxCTkpLQ05fSE5HQkZHQUxMQkkQ",
+            "BEIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.FightFestType), }, null, null));
@@ -38,11 +38,11 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum FightFestType {
-    [pbr::OriginalName("MHKEAFAPMFP_PCPDHELPKEM")] MhkeafapmfpPcpdhelpkem = 0,
-    [pbr::OriginalName("MHKEAFAPMFP_PEOACNPKMDP")] MhkeafapmfpPeoacnpkmdp = 1,
-    [pbr::OriginalName("MHKEAFAPMFP_FAMMLINGLDA")] MhkeafapmfpFammlinglda = 2,
-    [pbr::OriginalName("MHKEAFAPMFP_OPCGNJMGJDE")] MhkeafapmfpOpcgnjmgjde = 3,
-    [pbr::OriginalName("MHKEAFAPMFP_ENDNKKOIBHE")] MhkeafapmfpEndnkkoibhe = 4,
+    [pbr::OriginalName("OGOJLBNJKCN_NLCDGIPGFDJ")] OgojlbnjkcnNlcdgipgfdj = 0,
+    [pbr::OriginalName("OGOJLBNJKCN_IBAADNINFCG")] OgojlbnjkcnIbaadninfcg = 1,
+    [pbr::OriginalName("OGOJLBNJKCN_score_id")] OgojlbnjkcnScoreId = 2,
+    [pbr::OriginalName("OGOJLBNJKCN_OCDLPDDMCLP")] OgojlbnjkcnOcdlpddmclp = 3,
+    [pbr::OriginalName("OGOJLBNJKCN_HNGBFGALLBI")] OgojlbnjkcnHngbfgallbi = 4,
   }
 
   #endregion

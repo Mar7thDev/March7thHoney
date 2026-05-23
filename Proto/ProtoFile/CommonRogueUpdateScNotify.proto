@@ -2,16 +2,14 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "BFHNCFDGCLG.proto";
-import "LHOEMCHFOFA.proto";
-import "NFIKPFBPOMF.proto";
+import "AHLALEEJOEG.proto";
+import "CDDEIPOBBCN.proto";
+import "KPIHDPGDMKB.proto";
 
 message CommonRogueUpdateScNotify {
-    oneof KLBJNNJBOAC {
-        BFHNCFDGCLG FCAPBPHLNCJ = 4;
-        NFIKPFBPOMF BLALLLNKHAC = 6;
-        LHOEMCHFOFA JNKMJMABPMP = 14;
+    oneof NOKMOIHLGBN {
+        KPIHDPGDMKB BMGOLFNGHGH = 14;
+        AHLALEEJOEG BBEKBJPHEJK = 9;
+        CDDEIPOBBCN MECOEFEJANE = 5;
     }
 }

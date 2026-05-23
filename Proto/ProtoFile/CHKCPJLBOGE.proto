@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "FHCEIOHLADG.proto";
+
+message CHKCPJLBOGE {
+    repeated FHCEIOHLADG POJGKJENENA = 10;
+    map<uint32, uint32> BANBECDCDHG = 11;
+    uint32 DNNCAGJIOAP = 1;
+}

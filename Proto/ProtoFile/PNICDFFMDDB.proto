@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message PNICDFFMDDB {
+    uint32 entity_id = 15;
+    bool ADGCOJLMGAH = 3;
+}

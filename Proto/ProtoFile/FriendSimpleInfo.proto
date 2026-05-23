@@ -2,17 +2,15 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "PHNHEEOLADL.proto";
+import "PAEFDELFKJK.proto";
 import "PlayerSimpleInfo.proto";
 import "PlayingState.proto";
 
 message FriendSimpleInfo {
-    PlayerSimpleInfo player_info = 1;
-    string remark_name = 7;
-    bool is_marked = 9;
-    PlayingState playing_state = 11;
-    int64 create_time = 12;
-    PHNHEEOLADL FCKDHFFMECC = 14;
+    string remark_name = 1;
+    PAEFDELFKJK MBOIHJLIJDG = 8;
+    PlayerSimpleInfo player_info = 3;
+    int64 create_time = 5;
+    PlayingState playing_state = 13;
+    bool is_marked = 14;
 }

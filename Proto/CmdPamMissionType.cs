@@ -24,11 +24,11 @@ namespace March7thHoney.Proto {
     static CmdPamMissionTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChdDbWRQYW1NaXNzaW9uVHlwZS5wcm90byqSAQoRQ21kUGFtTWlzc2lvblR5",
-            "cGUSGwoXUEJNRElEUEFOT0lfUENQREhFTFBLRU0QABITCg5DbWRPTExOS1BI",
-            "TUVQSBCqHxIkCh9DbWRTeW5jQWNjZXB0ZWRQYW1NaXNzaW9uTm90aWZ5EP4f",
-            "EiUKIENtZEFjY2VwdGVkUGFtTWlzc2lvbkV4cGlyZUNzUmVxEPsfQhaqAhNN",
-            "YXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ChdDbWRQYW1NaXNzaW9uVHlwZS5wcm90byqKAQoRQ21kUGFtTWlzc2lvblR5",
+            "cGUSGwoXS01HTklHR0hNQk1fTkxDREdJUEdGREoQABIcChdLTUdOSUdHSE1C",
+            "TV9HT0ZNREVESEVOQRCjHxIcChdLTUdOSUdHSE1CTV9ITkhDT01ESkdKSRDp",
+            "HxIcChdLTUdOSUdHSE1CTV9NQ0tFTEZBTlBQSRDwH0IWqgITTWFyY2g3dGhI",
+            "b25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdPamMissionType), }, null, null));
@@ -38,10 +38,10 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdPamMissionType {
-    [pbr::OriginalName("PBMDIDPANOI_PCPDHELPKEM")] PbmdidpanoiPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdOLLNKPHMEPH")] CmdOllnkphmeph = 4010,
-    [pbr::OriginalName("CmdSyncAcceptedPamMissionNotify")] CmdSyncAcceptedPamMissionNotify = 4094,
-    [pbr::OriginalName("CmdAcceptedPamMissionExpireCsReq")] CmdAcceptedPamMissionExpireCsReq = 4091,
+    [pbr::OriginalName("KMGNIGGHMBM_NLCDGIPGFDJ")] KmgnigghmbmNlcdgipgfdj = 0,
+    [pbr::OriginalName("KMGNIGGHMBM_GOFMDEDHENA")] KmgnigghmbmGofmdedhena = 4003,
+    [pbr::OriginalName("KMGNIGGHMBM_HNHCOMDJGJI")] KmgnigghmbmHnhcomdjgji = 4073,
+    [pbr::OriginalName("KMGNIGGHMBM_MCKELFANPPI")] KmgnigghmbmMckelfanppi = 4080,
   }
 
   #endregion

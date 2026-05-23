@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "HAJAOGGPCJC.proto";
+import "KPNHGDGLICN.proto";
 
 message FateStartCsReq {
-    repeated HAJAOGGPCJC avatar_list = 1;
-    uint32 area_id = 9;
-    uint32 difficulty_level = 15;
+    repeated KPNHGDGLICN avatar_list = 10;
+    uint32 difficulty_level = 12;
+    uint32 area_id = 15;
 }

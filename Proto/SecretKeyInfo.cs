@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChNTZWNyZXRLZXlJbmZvLnByb3RvGhNTZWNyZXRLZXlUeXBlLnByb3RvIkEK",
-            "DVNlY3JldEtleUluZm8SEgoKc2VjcmV0X2tleRgNIAEoCRIcCgR0eXBlGA8g",
+            "DVNlY3JldEtleUluZm8SEgoKc2VjcmV0X2tleRgBIAEoCRIcCgR0eXBlGA8g",
             "ASgOMg4uU2VjcmV0S2V5VHlwZUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IG",
             "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "secret_key" field.</summary>
-    public const int SecretKeyFieldNumber = 13;
+    public const int SecretKeyFieldNumber = 1;
     private string secretKey_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -153,7 +153,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (SecretKey.Length != 0) {
-        output.WriteRawTag(106);
+        output.WriteRawTag(10);
         output.WriteString(SecretKey);
       }
       if (Type != global::March7thHoney.Proto.SecretKeyType.SecretKeyNone) {
@@ -171,7 +171,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (SecretKey.Length != 0) {
-        output.WriteRawTag(106);
+        output.WriteRawTag(10);
         output.WriteString(SecretKey);
       }
       if (Type != global::March7thHoney.Proto.SecretKeyType.SecretKeyNone) {
@@ -231,7 +231,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 106: {
+          case 10: {
             SecretKey = input.ReadString();
             break;
           }
@@ -258,7 +258,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 106: {
+          case 10: {
             SecretKey = input.ReadString();
             break;
           }

@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum BattleEndStatus {
     BATTLE_END_NONE = 0;
     BATTLE_END_WIN = 1;

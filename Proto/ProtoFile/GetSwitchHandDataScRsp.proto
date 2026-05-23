@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "GODHDEIPDJL.proto";
+import "ENHOPAHGCMA.proto";
 
 message GetSwitchHandDataScRsp {
-    uint32 FPBJIFLGIMK = 4;
-    repeated GODHDEIPDJL LFNIPECKNDH = 8;
-    uint32 AINLIAIGOJF = 13;
-    uint32 retcode = 15;
+    repeated ENHOPAHGCMA BEADAHPGGAF = 4;
+    uint32 retcode = 1;
+    uint32 MHKAPGBGFNO = 5;
+    uint32 EBNGHIMCAPK = 12;
 }

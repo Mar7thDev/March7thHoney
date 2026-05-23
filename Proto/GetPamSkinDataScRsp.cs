@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChlHZXRQYW1Ta2luRGF0YVNjUnNwLnByb3RvIlIKE0dldFBhbVNraW5EYXRh",
-            "U2NSc3ASEAoIY3VyX3NraW4YAiABKA0SGAoQdW5sb2NrX3NraW5fbGlzdBgF",
-            "IAMoDRIPCgdyZXRjb2RlGAwgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
+            "U2NSc3ASGAoQdW5sb2NrX3NraW5fbGlzdBgKIAMoDRIPCgdyZXRjb2RlGAgg",
+            "ASgNEhAKCGN1cl9za2luGAwgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
             "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetPamSkinDataScRsp), global::March7thHoney.Proto.GetPamSkinDataScRsp.Parser, new[]{ "CurSkin", "UnlockSkinList", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetPamSkinDataScRsp), global::March7thHoney.Proto.GetPamSkinDataScRsp.Parser, new[]{ "UnlockSkinList", "Retcode", "CurSkin" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,9 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetPamSkinDataScRsp(GetPamSkinDataScRsp other) : this() {
-      curSkin_ = other.curSkin_;
       unlockSkinList_ = other.unlockSkinList_.Clone();
       retcode_ = other.retcode_;
+      curSkin_ = other.curSkin_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,22 +85,10 @@ namespace March7thHoney.Proto {
       return new GetPamSkinDataScRsp(this);
     }
 
-    /// <summary>Field number for the "cur_skin" field.</summary>
-    public const int CurSkinFieldNumber = 2;
-    private uint curSkin_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CurSkin {
-      get { return curSkin_; }
-      set {
-        curSkin_ = value;
-      }
-    }
-
     /// <summary>Field number for the "unlock_skin_list" field.</summary>
-    public const int UnlockSkinListFieldNumber = 5;
+    public const int UnlockSkinListFieldNumber = 10;
     private static readonly pb::FieldCodec<uint> _repeated_unlockSkinList_codec
-        = pb::FieldCodec.ForUInt32(42);
+        = pb::FieldCodec.ForUInt32(82);
     private readonly pbc::RepeatedField<uint> unlockSkinList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -109,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 12;
+    public const int RetcodeFieldNumber = 8;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -117,6 +105,18 @@ namespace March7thHoney.Proto {
       get { return retcode_; }
       set {
         retcode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "cur_skin" field.</summary>
+    public const int CurSkinFieldNumber = 12;
+    private uint curSkin_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint CurSkin {
+      get { return curSkin_; }
+      set {
+        curSkin_ = value;
       }
     }
 
@@ -135,9 +135,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (CurSkin != other.CurSkin) return false;
       if(!unlockSkinList_.Equals(other.unlockSkinList_)) return false;
       if (Retcode != other.Retcode) return false;
+      if (CurSkin != other.CurSkin) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -145,9 +145,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (CurSkin != 0) hash ^= CurSkin.GetHashCode();
       hash ^= unlockSkinList_.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (CurSkin != 0) hash ^= CurSkin.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -166,14 +166,14 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (CurSkin != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(CurSkin);
+      if (Retcode != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(Retcode);
       }
       unlockSkinList_.WriteTo(output, _repeated_unlockSkinList_codec);
-      if (Retcode != 0) {
+      if (CurSkin != 0) {
         output.WriteRawTag(96);
-        output.WriteUInt32(Retcode);
+        output.WriteUInt32(CurSkin);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -185,14 +185,14 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (CurSkin != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(CurSkin);
+      if (Retcode != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(Retcode);
       }
       unlockSkinList_.WriteTo(ref output, _repeated_unlockSkinList_codec);
-      if (Retcode != 0) {
+      if (CurSkin != 0) {
         output.WriteRawTag(96);
-        output.WriteUInt32(Retcode);
+        output.WriteUInt32(CurSkin);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -204,12 +204,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (CurSkin != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurSkin);
-      }
       size += unlockSkinList_.CalculateSize(_repeated_unlockSkinList_codec);
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      }
+      if (CurSkin != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurSkin);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -223,12 +223,12 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.CurSkin != 0) {
-        CurSkin = other.CurSkin;
-      }
       unlockSkinList_.Add(other.unlockSkinList_);
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
+      }
+      if (other.CurSkin != 0) {
+        CurSkin = other.CurSkin;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -249,17 +249,17 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            CurSkin = input.ReadUInt32();
+          case 64: {
+            Retcode = input.ReadUInt32();
             break;
           }
-          case 42:
-          case 40: {
+          case 82:
+          case 80: {
             unlockSkinList_.AddEntriesFrom(input, _repeated_unlockSkinList_codec);
             break;
           }
           case 96: {
-            Retcode = input.ReadUInt32();
+            CurSkin = input.ReadUInt32();
             break;
           }
         }
@@ -281,17 +281,17 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            CurSkin = input.ReadUInt32();
+          case 64: {
+            Retcode = input.ReadUInt32();
             break;
           }
-          case 42:
-          case 40: {
+          case 82:
+          case 80: {
             unlockSkinList_.AddEntriesFrom(ref input, _repeated_unlockSkinList_codec);
             break;
           }
           case 96: {
-            Retcode = input.ReadUInt32();
+            CurSkin = input.ReadUInt32();
             break;
           }
         }

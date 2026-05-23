@@ -26,16 +26,16 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiNHcmlkRmlnaHRUcmFpdEVmZmVjdExldmVsSW5mby5wcm90bxoXR3JpZEZp",
             "Z2h0RHJvcEluZm8ucHJvdG8i8QEKHUdyaWRGaWdodFRyYWl0RWZmZWN0TGV2",
-            "ZWxJbmZvEh4KFnRyYWl0X2VmZmVjdF9sZXZlbF9leHAYASABKA0SXQoZdHJh",
-            "aXRfZWZmZWN0X2xldmVsX3Jld2FyZBgCIAMoCzI6LkdyaWRGaWdodFRyYWl0",
-            "RWZmZWN0TGV2ZWxJbmZvLlRyYWl0RWZmZWN0TGV2ZWxSZXdhcmRFbnRyeRpR",
+            "ZWxJbmZvEl0KGXRyYWl0X2VmZmVjdF9sZXZlbF9yZXdhcmQYAiADKAsyOi5H",
+            "cmlkRmlnaHRUcmFpdEVmZmVjdExldmVsSW5mby5UcmFpdEVmZmVjdExldmVs",
+            "UmV3YXJkRW50cnkSHgoWdHJhaXRfZWZmZWN0X2xldmVsX2V4cBgBIAEoDRpR",
             "ChtUcmFpdEVmZmVjdExldmVsUmV3YXJkRW50cnkSCwoDa2V5GAEgASgNEiEK",
             "BXZhbHVlGAIgASgLMhIuR3JpZEZpZ2h0RHJvcEluZm86AjgBQhaqAhNNYXJj",
             "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridFightDropInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightTraitEffectLevelInfo), global::March7thHoney.Proto.GridFightTraitEffectLevelInfo.Parser, new[]{ "TraitEffectLevelExp", "TraitEffectLevelReward" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightTraitEffectLevelInfo), global::March7thHoney.Proto.GridFightTraitEffectLevelInfo.Parser, new[]{ "TraitEffectLevelReward", "TraitEffectLevelExp" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -77,8 +77,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GridFightTraitEffectLevelInfo(GridFightTraitEffectLevelInfo other) : this() {
-      traitEffectLevelExp_ = other.traitEffectLevelExp_;
       traitEffectLevelReward_ = other.traitEffectLevelReward_.Clone();
+      traitEffectLevelExp_ = other.traitEffectLevelExp_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,6 +86,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GridFightTraitEffectLevelInfo Clone() {
       return new GridFightTraitEffectLevelInfo(this);
+    }
+
+    /// <summary>Field number for the "trait_effect_level_reward" field.</summary>
+    public const int TraitEffectLevelRewardFieldNumber = 2;
+    private static readonly pbc::MapField<uint, global::March7thHoney.Proto.GridFightDropInfo>.Codec _map_traitEffectLevelReward_codec
+        = new pbc::MapField<uint, global::March7thHoney.Proto.GridFightDropInfo>.Codec(pb::FieldCodec.ForUInt32(8, 0), pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.GridFightDropInfo.Parser), 18);
+    private readonly pbc::MapField<uint, global::March7thHoney.Proto.GridFightDropInfo> traitEffectLevelReward_ = new pbc::MapField<uint, global::March7thHoney.Proto.GridFightDropInfo>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::MapField<uint, global::March7thHoney.Proto.GridFightDropInfo> TraitEffectLevelReward {
+      get { return traitEffectLevelReward_; }
     }
 
     /// <summary>Field number for the "trait_effect_level_exp" field.</summary>
@@ -98,17 +109,6 @@ namespace March7thHoney.Proto {
       set {
         traitEffectLevelExp_ = value;
       }
-    }
-
-    /// <summary>Field number for the "trait_effect_level_reward" field.</summary>
-    public const int TraitEffectLevelRewardFieldNumber = 2;
-    private static readonly pbc::MapField<uint, global::March7thHoney.Proto.GridFightDropInfo>.Codec _map_traitEffectLevelReward_codec
-        = new pbc::MapField<uint, global::March7thHoney.Proto.GridFightDropInfo>.Codec(pb::FieldCodec.ForUInt32(8, 0), pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.GridFightDropInfo.Parser), 18);
-    private readonly pbc::MapField<uint, global::March7thHoney.Proto.GridFightDropInfo> traitEffectLevelReward_ = new pbc::MapField<uint, global::March7thHoney.Proto.GridFightDropInfo>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<uint, global::March7thHoney.Proto.GridFightDropInfo> TraitEffectLevelReward {
-      get { return traitEffectLevelReward_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -126,8 +126,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (TraitEffectLevelExp != other.TraitEffectLevelExp) return false;
       if (!TraitEffectLevelReward.Equals(other.TraitEffectLevelReward)) return false;
+      if (TraitEffectLevelExp != other.TraitEffectLevelExp) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -135,8 +135,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (TraitEffectLevelExp != 0) hash ^= TraitEffectLevelExp.GetHashCode();
       hash ^= TraitEffectLevelReward.GetHashCode();
+      if (TraitEffectLevelExp != 0) hash ^= TraitEffectLevelExp.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -185,10 +185,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      size += traitEffectLevelReward_.CalculateSize(_map_traitEffectLevelReward_codec);
       if (TraitEffectLevelExp != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TraitEffectLevelExp);
       }
-      size += traitEffectLevelReward_.CalculateSize(_map_traitEffectLevelReward_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -201,10 +201,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      traitEffectLevelReward_.MergeFrom(other.traitEffectLevelReward_);
       if (other.TraitEffectLevelExp != 0) {
         TraitEffectLevelExp = other.TraitEffectLevelExp;
       }
-      traitEffectLevelReward_.MergeFrom(other.traitEffectLevelReward_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 

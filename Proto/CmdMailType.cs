@@ -24,14 +24,15 @@ namespace March7thHoney.Proto {
     static CmdMailTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFDbWRNYWlsVHlwZS5wcm90byqNAgoLQ21kTWFpbFR5cGUSGwoXREhMRUhL",
-            "RUlNTU5fUENQREhFTFBLRU0QABIUCg9DbWRHZXRNYWlsQ3NSZXEQ+wYSGQoU",
-            "Q21kTWFya1JlYWRNYWlsQ3NSZXEQ/gYSHwoaQ21kVGFrZU1haWxBdHRhY2ht",
-            "ZW50U2NSc3AQggcSHwoaQ21kVGFrZU1haWxBdHRhY2htZW50Q3NSZXEQqQYS",
-            "FwoSQ21kTmV3TWFpbFNjTm90aWZ5EN8GEhQKD0NtZERlbE1haWxDc1JlcRCu",
-            "BhIUCg9DbWRHZXRNYWlsU2NSc3AQqgYSFAoPQ21kRGVsTWFpbFNjUnNwELIG",
-            "EhMKDkNtZExPSEdCTkFJQUlMEP8GQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
-            "YgZwcm90bzM="));
+            "ChFDbWRNYWlsVHlwZS5wcm90byq4AgoLQ21kTWFpbFR5cGUSGwoXQ0ZHRUJI",
+            "S0FFSEJfTkxDREdJUEdGREoQABIcChdDRkdFQkhLQUVIQl9OS0xFR0lHQk9G",
+            "RRDxBhIcChdDRkdFQkhLQUVIQl9FUE5LR0lCTUJPTRDEBhIcChdDRkdFQkhL",
+            "QUVIQl9HTE1BTE5MTlBQSRCqBhIcChdDRkdFQkhLQUVIQl9QR0FGQkZQT0pH",
+            "RhCjBhIcChdDRkdFQkhLQUVIQl9QQ0NCTERQS05LSBC7BhIcChdDRkdFQkhL",
+            "QUVIQl9CS1BCTEtFR09FTBDpBhIcChdDRkdFQkhLQUVIQl9LUE1LSUFMSUNO",
+            "QxDwBhIcChdDRkdFQkhLQUVIQl9QRUxNSUhEQ0ZJTBCvBhIcChdDRkdFQkhL",
+            "QUVIQl9GQ0xPTElOUExOSRCtBkIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IG",
+            "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdMailType), }, null, null));
@@ -41,16 +42,16 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdMailType {
-    [pbr::OriginalName("DHLEHKEIMMN_PCPDHELPKEM")] DhlehkeimmnPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdGetMailCsReq")] CmdGetMailCsReq = 891,
-    [pbr::OriginalName("CmdMarkReadMailCsReq")] CmdMarkReadMailCsReq = 894,
-    [pbr::OriginalName("CmdTakeMailAttachmentScRsp")] CmdTakeMailAttachmentScRsp = 898,
-    [pbr::OriginalName("CmdTakeMailAttachmentCsReq")] CmdTakeMailAttachmentCsReq = 809,
-    [pbr::OriginalName("CmdNewMailScNotify")] CmdNewMailScNotify = 863,
-    [pbr::OriginalName("CmdDelMailCsReq")] CmdDelMailCsReq = 814,
-    [pbr::OriginalName("CmdGetMailScRsp")] CmdGetMailScRsp = 810,
-    [pbr::OriginalName("CmdDelMailScRsp")] CmdDelMailScRsp = 818,
-    [pbr::OriginalName("CmdLOHGBNAIAIL")] CmdLohgbnaiail = 895,
+    [pbr::OriginalName("CFGEBHKAEHB_NLCDGIPGFDJ")] CfgebhkaehbNlcdgipgfdj = 0,
+    [pbr::OriginalName("CFGEBHKAEHB_NKLEGIGBOFE")] CfgebhkaehbNklegigbofe = 881,
+    [pbr::OriginalName("CFGEBHKAEHB_EPNKGIBMBOM")] CfgebhkaehbEpnkgibmbom = 836,
+    [pbr::OriginalName("CFGEBHKAEHB_GLMALNLNPPI")] CfgebhkaehbGlmalnlnppi = 810,
+    [pbr::OriginalName("CFGEBHKAEHB_PGAFBFPOJGF")] CfgebhkaehbPgafbfpojgf = 803,
+    [pbr::OriginalName("CFGEBHKAEHB_PCCBLDPKNKH")] CfgebhkaehbPccbldpknkh = 827,
+    [pbr::OriginalName("CFGEBHKAEHB_BKPBLKEGOEL")] CfgebhkaehbBkpblkegoel = 873,
+    [pbr::OriginalName("CFGEBHKAEHB_KPMKIALICNC")] CfgebhkaehbKpmkialicnc = 880,
+    [pbr::OriginalName("CFGEBHKAEHB_PELMIHDCFIL")] CfgebhkaehbPelmihdcfil = 815,
+    [pbr::OriginalName("CFGEBHKAEHB_FCLOLINPLNI")] CfgebhkaehbFclolinplni = 813,
   }
 
   #endregion

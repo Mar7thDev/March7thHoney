@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message SpaceZooDeleteCatScRsp {
-    repeated uint32 NIEHHDLEANM = 1;
+    repeated uint32 ANHNMANNAEP = 7;
     uint32 retcode = 12;
 }

@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiFNdXNpY1JoeXRobUZpbmlzaExldmVsQ3NSZXEucHJvdG8iVgobTXVzaWNS",
-            "aHl0aG1GaW5pc2hMZXZlbENzUmVxEhAKCHNjb3JlX2lkGAEgASgNEhIKCmZ1",
-            "bGxfY29tYm8YDCABKAgSEQoJcm9sZV9zdGFyGA8gASgNQhaqAhNNYXJjaDd0",
+            "aHl0aG1GaW5pc2hMZXZlbENzUmVxEhEKCXJvbGVfc3RhchgMIAEoDRIQCghz",
+            "Y29yZV9pZBgFIAEoDRISCgpmdWxsX2NvbWJvGAQgASgIQhaqAhNNYXJjaDd0",
             "aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MusicRhythmFinishLevelCsReq), global::March7thHoney.Proto.MusicRhythmFinishLevelCsReq.Parser, new[]{ "ScoreId", "FullCombo", "RoleStar" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MusicRhythmFinishLevelCsReq), global::March7thHoney.Proto.MusicRhythmFinishLevelCsReq.Parser, new[]{ "RoleStar", "ScoreId", "FullCombo" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,9 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MusicRhythmFinishLevelCsReq(MusicRhythmFinishLevelCsReq other) : this() {
+      roleStar_ = other.roleStar_;
       scoreId_ = other.scoreId_;
       fullCombo_ = other.fullCombo_;
-      roleStar_ = other.roleStar_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,8 +85,20 @@ namespace March7thHoney.Proto {
       return new MusicRhythmFinishLevelCsReq(this);
     }
 
+    /// <summary>Field number for the "role_star" field.</summary>
+    public const int RoleStarFieldNumber = 12;
+    private uint roleStar_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint RoleStar {
+      get { return roleStar_; }
+      set {
+        roleStar_ = value;
+      }
+    }
+
     /// <summary>Field number for the "score_id" field.</summary>
-    public const int ScoreIdFieldNumber = 1;
+    public const int ScoreIdFieldNumber = 5;
     private uint scoreId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,7 +110,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "full_combo" field.</summary>
-    public const int FullComboFieldNumber = 12;
+    public const int FullComboFieldNumber = 4;
     private bool fullCombo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -106,18 +118,6 @@ namespace March7thHoney.Proto {
       get { return fullCombo_; }
       set {
         fullCombo_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "role_star" field.</summary>
-    public const int RoleStarFieldNumber = 15;
-    private uint roleStar_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint RoleStar {
-      get { return roleStar_; }
-      set {
-        roleStar_ = value;
       }
     }
 
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (RoleStar != other.RoleStar) return false;
       if (ScoreId != other.ScoreId) return false;
       if (FullCombo != other.FullCombo) return false;
-      if (RoleStar != other.RoleStar) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -146,9 +146,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (RoleStar != 0) hash ^= RoleStar.GetHashCode();
       if (ScoreId != 0) hash ^= ScoreId.GetHashCode();
       if (FullCombo != false) hash ^= FullCombo.GetHashCode();
-      if (RoleStar != 0) hash ^= RoleStar.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -167,16 +167,16 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (ScoreId != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(ScoreId);
-      }
       if (FullCombo != false) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(32);
         output.WriteBool(FullCombo);
       }
+      if (ScoreId != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(ScoreId);
+      }
       if (RoleStar != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(96);
         output.WriteUInt32(RoleStar);
       }
       if (_unknownFields != null) {
@@ -189,16 +189,16 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (ScoreId != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(ScoreId);
-      }
       if (FullCombo != false) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(32);
         output.WriteBool(FullCombo);
       }
+      if (ScoreId != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(ScoreId);
+      }
       if (RoleStar != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(96);
         output.WriteUInt32(RoleStar);
       }
       if (_unknownFields != null) {
@@ -211,14 +211,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (RoleStar != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RoleStar);
+      }
       if (ScoreId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ScoreId);
       }
       if (FullCombo != false) {
         size += 1 + 1;
-      }
-      if (RoleStar != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RoleStar);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -232,14 +232,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.RoleStar != 0) {
+        RoleStar = other.RoleStar;
+      }
       if (other.ScoreId != 0) {
         ScoreId = other.ScoreId;
       }
       if (other.FullCombo != false) {
         FullCombo = other.FullCombo;
-      }
-      if (other.RoleStar != 0) {
-        RoleStar = other.RoleStar;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -260,15 +260,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
+          case 32: {
+            FullCombo = input.ReadBool();
+            break;
+          }
+          case 40: {
             ScoreId = input.ReadUInt32();
             break;
           }
           case 96: {
-            FullCombo = input.ReadBool();
-            break;
-          }
-          case 120: {
             RoleStar = input.ReadUInt32();
             break;
           }
@@ -291,15 +291,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
+          case 32: {
+            FullCombo = input.ReadBool();
+            break;
+          }
+          case 40: {
             ScoreId = input.ReadUInt32();
             break;
           }
           case 96: {
-            FullCombo = input.ReadBool();
-            break;
-          }
-          case 120: {
             RoleStar = input.ReadUInt32();
             break;
           }

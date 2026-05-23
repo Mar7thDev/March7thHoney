@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChhGYXJtU3RhZ2VHYWNoYUluZm8ucHJvdG8iTAoSRmFybVN0YWdlR2FjaGFJ",
             "bmZvEhAKCGdhY2hhX2lkGAQgASgNEhIKCmJlZ2luX3RpbWUYCCABKAMSEAoI",
-            "ZW5kX3RpbWUYCyABKANCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
+            "ZW5kX3RpbWUYBiABKANCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
             "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -110,7 +110,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "end_time" field.</summary>
-    public const int EndTimeFieldNumber = 11;
+    public const int EndTimeFieldNumber = 6;
     private long endTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -171,13 +171,13 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(32);
         output.WriteUInt32(GachaId);
       }
+      if (EndTime != 0L) {
+        output.WriteRawTag(48);
+        output.WriteInt64(EndTime);
+      }
       if (BeginTime != 0L) {
         output.WriteRawTag(64);
         output.WriteInt64(BeginTime);
-      }
-      if (EndTime != 0L) {
-        output.WriteRawTag(88);
-        output.WriteInt64(EndTime);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -193,13 +193,13 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(32);
         output.WriteUInt32(GachaId);
       }
+      if (EndTime != 0L) {
+        output.WriteRawTag(48);
+        output.WriteInt64(EndTime);
+      }
       if (BeginTime != 0L) {
         output.WriteRawTag(64);
         output.WriteInt64(BeginTime);
-      }
-      if (EndTime != 0L) {
-        output.WriteRawTag(88);
-        output.WriteInt64(EndTime);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -264,12 +264,12 @@ namespace March7thHoney.Proto {
             GachaId = input.ReadUInt32();
             break;
           }
-          case 64: {
-            BeginTime = input.ReadInt64();
+          case 48: {
+            EndTime = input.ReadInt64();
             break;
           }
-          case 88: {
-            EndTime = input.ReadInt64();
+          case 64: {
+            BeginTime = input.ReadInt64();
             break;
           }
         }
@@ -295,12 +295,12 @@ namespace March7thHoney.Proto {
             GachaId = input.ReadUInt32();
             break;
           }
-          case 64: {
-            BeginTime = input.ReadInt64();
+          case 48: {
+            EndTime = input.ReadInt64();
             break;
           }
-          case 88: {
-            EndTime = input.ReadInt64();
+          case 64: {
+            BeginTime = input.ReadInt64();
             break;
           }
         }

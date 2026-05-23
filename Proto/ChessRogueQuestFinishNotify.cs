@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiFDaGVzc1JvZ3VlUXVlc3RGaW5pc2hOb3RpZnkucHJvdG8iRAobQ2hlc3NS",
-            "b2d1ZVF1ZXN0RmluaXNoTm90aWZ5EhAKCHF1ZXN0X2lkGAcgASgNEhMKC09H",
-            "UElETFBISEdHGAkgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
+            "b2d1ZVF1ZXN0RmluaXNoTm90aWZ5EhMKC1BFR0tGUElLUEtQGAYgASgNEhAK",
+            "CHF1ZXN0X2lkGAIgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
             "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChessRogueQuestFinishNotify), global::March7thHoney.Proto.ChessRogueQuestFinishNotify.Parser, new[]{ "QuestId", "OGPIDLPHHGG" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChessRogueQuestFinishNotify), global::March7thHoney.Proto.ChessRogueQuestFinishNotify.Parser, new[]{ "PEGKFPIKPKP", "QuestId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ChessRogueQuestFinishNotify(ChessRogueQuestFinishNotify other) : this() {
+      pEGKFPIKPKP_ = other.pEGKFPIKPKP_;
       questId_ = other.questId_;
-      oGPIDLPHHGG_ = other.oGPIDLPHHGG_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,8 +84,20 @@ namespace March7thHoney.Proto {
       return new ChessRogueQuestFinishNotify(this);
     }
 
+    /// <summary>Field number for the "PEGKFPIKPKP" field.</summary>
+    public const int PEGKFPIKPKPFieldNumber = 6;
+    private uint pEGKFPIKPKP_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint PEGKFPIKPKP {
+      get { return pEGKFPIKPKP_; }
+      set {
+        pEGKFPIKPKP_ = value;
+      }
+    }
+
     /// <summary>Field number for the "quest_id" field.</summary>
-    public const int QuestIdFieldNumber = 7;
+    public const int QuestIdFieldNumber = 2;
     private uint questId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -93,18 +105,6 @@ namespace March7thHoney.Proto {
       get { return questId_; }
       set {
         questId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "OGPIDLPHHGG" field.</summary>
-    public const int OGPIDLPHHGGFieldNumber = 9;
-    private uint oGPIDLPHHGG_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint OGPIDLPHHGG {
-      get { return oGPIDLPHHGG_; }
-      set {
-        oGPIDLPHHGG_ = value;
       }
     }
 
@@ -123,8 +123,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (PEGKFPIKPKP != other.PEGKFPIKPKP) return false;
       if (QuestId != other.QuestId) return false;
-      if (OGPIDLPHHGG != other.OGPIDLPHHGG) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,8 +132,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (PEGKFPIKPKP != 0) hash ^= PEGKFPIKPKP.GetHashCode();
       if (QuestId != 0) hash ^= QuestId.GetHashCode();
-      if (OGPIDLPHHGG != 0) hash ^= OGPIDLPHHGG.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -153,12 +153,12 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (QuestId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(16);
         output.WriteUInt32(QuestId);
       }
-      if (OGPIDLPHHGG != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(OGPIDLPHHGG);
+      if (PEGKFPIKPKP != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(PEGKFPIKPKP);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -171,12 +171,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (QuestId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(16);
         output.WriteUInt32(QuestId);
       }
-      if (OGPIDLPHHGG != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(OGPIDLPHHGG);
+      if (PEGKFPIKPKP != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(PEGKFPIKPKP);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -188,11 +188,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (PEGKFPIKPKP != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PEGKFPIKPKP);
+      }
       if (QuestId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(QuestId);
-      }
-      if (OGPIDLPHHGG != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(OGPIDLPHHGG);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -206,11 +206,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.PEGKFPIKPKP != 0) {
+        PEGKFPIKPKP = other.PEGKFPIKPKP;
+      }
       if (other.QuestId != 0) {
         QuestId = other.QuestId;
-      }
-      if (other.OGPIDLPHHGG != 0) {
-        OGPIDLPHHGG = other.OGPIDLPHHGG;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -231,12 +231,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
+          case 16: {
             QuestId = input.ReadUInt32();
             break;
           }
-          case 72: {
-            OGPIDLPHHGG = input.ReadUInt32();
+          case 48: {
+            PEGKFPIKPKP = input.ReadUInt32();
             break;
           }
         }
@@ -258,12 +258,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
+          case 16: {
             QuestId = input.ReadUInt32();
             break;
           }
-          case 72: {
-            OGPIDLPHHGG = input.ReadUInt32();
+          case 48: {
+            PEGKFPIKPKP = input.ReadUInt32();
             break;
           }
         }

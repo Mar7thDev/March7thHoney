@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message LHHGCDLCJDA {
+    uint32 group_id = 9;
+    uint32 id = 6;
+    bool BIMDKNLMICG = 2;
+}

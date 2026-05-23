@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "ENIDJAFECBD.proto";
+
+message ELOFLNEAHPD {
+    repeated uint32 grid_fight_trait_info = 6;
+    repeated ENIDJAFECBD BPFJDLHFEKG = 11;
+}

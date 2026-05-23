@@ -2,22 +2,20 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "BCMMLADBEAM.proto";
+import "COCHLLCNDJF.proto";
 import "ChimeraRoundWorkEndReason.proto";
-import "FHCCCHJHHKL.proto";
-import "HAMEJPGCIJI.proto";
-import "PCAOLJLFPBA.proto";
+import "DEJGMBKPHEC.proto";
+import "GCFGCHAMNOL.proto";
+import "HFBJNFJHKPO.proto";
 
 message ChimeraFinishRoundCsReq {
-    ChimeraRoundWorkEndReason end_reason = 1;
-    HAMEJPGCIJI stt = 2;
-    repeated uint32 LNAOHDBGENO = 3;
-    bool PGEGMMBINID = 6;
-    FHCCCHJHHKL lineup = 10;
-    repeated PCAOLJLFPBA KMAFDFBJCJI = 11;
-    uint32 JHDKOBKNPDE = 12;
-    map<uint32, uint32> PKIPMNNDIPA = 13;
-    map<uint32, BCMMLADBEAM> KMOCHCFLDCM = 15;
+    repeated DEJGMBKPHEC FJLPLIGMPHB = 14;
+    repeated uint32 PKKGGLIGKKN = 3;
+    map<uint32, COCHLLCNDJF> DLFJEJINBBC = 2;
+    GCFGCHAMNOL lineup = 7;
+    HFBJNFJHKPO stt = 8;
+    map<uint32, uint32> JEJBODAGOIJ = 11;
+    ChimeraRoundWorkEndReason end_reason = 15;
+    bool DDNMDLBJPAM = 9;
+    uint32 EPJBFAEPFNI = 12;
 }

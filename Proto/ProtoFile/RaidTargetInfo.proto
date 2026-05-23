@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "GKHEHCOMHCM.proto";
+import "MJPGDJIGLKO.proto";
 
 message RaidTargetInfo {
-    GKHEHCOMHCM PDFLHJMCAHK = 1;
-    uint32 JKCGCAMIFIA = 2;
-    uint32 GFBIMFHJAHA = 15;
+    uint32 KKCKMCDGCGK = 13;
+    uint32 LCILPGIDEAC = 11;
+    MJPGDJIGLKO KCEEHIOCBPC = 6;
 }

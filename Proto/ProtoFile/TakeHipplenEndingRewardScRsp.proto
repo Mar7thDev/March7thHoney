@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "ItemList.proto";
 
 message TakeHipplenEndingRewardScRsp {
-    ItemList reward_list = 2;
-    uint32 DKPCDLDDONG = 13;
-    uint32 retcode = 14;
+    ItemList reward_list = 7;
+    uint32 retcode = 3;
+    uint32 BKFICFMMGIN = 15;
 }

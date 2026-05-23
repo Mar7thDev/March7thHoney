@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "Ch5DaGFuZ2VTY3JpcHRFbW90aW9uU2NSc3AucHJvdG8aGkhlYXJ0RGlhbEVt",
             "b3Rpb25UeXBlLnByb3RvImsKGENoYW5nZVNjcmlwdEVtb3Rpb25TY1JzcBIP",
-            "CgdyZXRjb2RlGAIgASgNEisKDGVtb3Rpb25fdHlwZRgJIAEoDjIVLkhlYXJ0",
-            "RGlhbEVtb3Rpb25UeXBlEhEKCXNjcmlwdF9pZBgOIAEoDUIWqgITTWFyY2g3",
+            "CgdyZXRjb2RlGA4gASgNEisKDGVtb3Rpb25fdHlwZRgKIAEoDjIVLkhlYXJ0",
+            "RGlhbEVtb3Rpb25UeXBlEhEKCXNjcmlwdF9pZBgFIAEoDUIWqgITTWFyY2g3",
             "dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.HeartDialEmotionTypeReflection.Descriptor, },
@@ -87,7 +87,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 2;
+    public const int RetcodeFieldNumber = 14;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -99,7 +99,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "emotion_type" field.</summary>
-    public const int EmotionTypeFieldNumber = 9;
+    public const int EmotionTypeFieldNumber = 10;
     private global::March7thHoney.Proto.HeartDialEmotionType emotionType_ = global::March7thHoney.Proto.HeartDialEmotionType.Peace;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -111,7 +111,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "script_id" field.</summary>
-    public const int ScriptIdFieldNumber = 14;
+    public const int ScriptIdFieldNumber = 5;
     private uint scriptId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -168,17 +168,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Retcode != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(Retcode);
+      if (ScriptId != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(ScriptId);
       }
       if (EmotionType != global::March7thHoney.Proto.HeartDialEmotionType.Peace) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(80);
         output.WriteEnum((int) EmotionType);
       }
-      if (ScriptId != 0) {
+      if (Retcode != 0) {
         output.WriteRawTag(112);
-        output.WriteUInt32(ScriptId);
+        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -190,17 +190,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Retcode != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(Retcode);
+      if (ScriptId != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(ScriptId);
       }
       if (EmotionType != global::March7thHoney.Proto.HeartDialEmotionType.Peace) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(80);
         output.WriteEnum((int) EmotionType);
       }
-      if (ScriptId != 0) {
+      if (Retcode != 0) {
         output.WriteRawTag(112);
-        output.WriteUInt32(ScriptId);
+        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -261,16 +261,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            Retcode = input.ReadUInt32();
+          case 40: {
+            ScriptId = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 80: {
             EmotionType = (global::March7thHoney.Proto.HeartDialEmotionType) input.ReadEnum();
             break;
           }
           case 112: {
-            ScriptId = input.ReadUInt32();
+            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -292,16 +292,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            Retcode = input.ReadUInt32();
+          case 40: {
+            ScriptId = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 80: {
             EmotionType = (global::March7thHoney.Proto.HeartDialEmotionType) input.ReadEnum();
             break;
           }
           case 112: {
-            ScriptId = input.ReadUInt32();
+            Retcode = input.ReadUInt32();
             break;
           }
         }

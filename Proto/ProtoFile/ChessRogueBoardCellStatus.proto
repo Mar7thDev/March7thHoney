@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum ChessRogueBoardCellStatus {
-    GBIKCJPGLBK_GHGAPOAKGAB = 0;
-    GBIKCJPGLBK_HGNGADNILFC = 1;
-    GBIKCJPGLBK_HPJEBFFHJNP = 2;
-    GBIKCJPGLBK_KLHDCOPPLNG = 3;
+    GOBKHHAEIAF_BPOCOHFIAOH = 0;
+    GOBKHHAEIAF_EAPFJHJHIFK = 1;
+    GOBKHHAEIAF_LOOAKNHDBLL = 2;
+    GOBKHHAEIAF_CIHFGJDCHIA = 3;
 }

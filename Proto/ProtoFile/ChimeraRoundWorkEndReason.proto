@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum ChimeraRoundWorkEndReason {
-    DJFFICEEBAA_ODCEOMJACME = 0;
-    DJFFICEEBAA_OHFGFBLBHEK = 1;
-    DJFFICEEBAA_CGLFGFHBEKB = 2;
-    DJFFICEEBAA_GGDKDLCPAJA = 3;
+    POCJMDKMABI_KMOKDKCLMLD = 0;
+    POCJMDKMABI_BKGPAKHJNKM = 1;
+    POCJMDKMABI_LJEMJMCLGDH = 2;
+    POCJMDKMABI_KLEKCFHLOGO = 3;
 }

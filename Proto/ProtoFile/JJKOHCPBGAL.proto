@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "BDEJGKKACMA.proto";
+import "FJJHCDGNDPD.proto";
+import "GIEPFAIPADI.proto";
+import "HNAOOMKGFCB.proto";
+
+message JJKOHCPBGAL {
+    HNAOOMKGFCB source = 3;
+    GIEPFAIPADI LHEOBNDKGHD = 14;
+    uint32 FLIEDGKFNOL = 10;
+    oneof BHNPKLCNDNG {
+        BDEJGKKACMA LLCOEPJFGPE = 337;
+        uint32 BNCCMEGJONF = 854;
+        FJJHCDGNDPD IAECKEDODEF = 1045;
+    }
+}

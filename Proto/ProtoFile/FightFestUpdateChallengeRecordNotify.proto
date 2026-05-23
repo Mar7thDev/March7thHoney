@@ -2,14 +2,12 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "PBOFIBLBPGJ.proto";
+import "BGLIMCBGLAJ.proto";
 
 message FightFestUpdateChallengeRecordNotify {
-    uint32 HEILKBJCAGB = 3;
-    PBOFIBLBPGJ LJMLNINDHEF = 4;
-    PBOFIBLBPGJ rank = 5;
-    uint32 challenge_id = 6;
-    uint32 turn_left = 12;
+    BGLIMCBGLAJ rank = 9;
+    uint32 DJFGDMIDEHJ = 7;
+    uint32 challenge_id = 4;
+    uint32 turn_left = 8;
+    BGLIMCBGLAJ HMBBBNKAILD = 1;
 }

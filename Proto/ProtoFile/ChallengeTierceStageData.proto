@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "BattleEndStatus.proto";
+import "BattleTarget.proto";
+import "GLLFJFJBIBC.proto";
+
+message ChallengeTierceStageData {
+    GLLFJFJBIBC lineup = 6;
+    repeated BattleTarget battle_target_list = 11;
+    uint32 INLLMKEDGLC = 8;
+    uint32 IBECKONIICF = 5;
+    uint32 score_id = 7;
+    uint32 stage_index = 10;
+    BattleEndStatus end_status = 12;
+}

@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message SpaceZooDeleteCatCsReq {
-    repeated uint32 KICIFPJACNF = 2;
+    repeated uint32 GBIEAFKKAPI = 2;
 }

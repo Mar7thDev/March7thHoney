@@ -25,11 +25,11 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChZCYXR0bGVNb2R1bGVUeXBlLnByb3RvKt0BChBCYXR0bGVNb2R1bGVUeXBl",
-            "EhsKF0lOSFBESExPSEhPX0hBSkRBS0ZJRU5NEAASGwoXSU5IUERITE9ISE9f",
-            "S0tITE1LSVBNRksQARIbChdJTkhQREhMT0hIT19MSEdPRExBQkVLSBACEhsK",
-            "F0lOSFBESExPSEhPX0xKT1BBUEFLSElQEAMSGwoXSU5IUERITE9ISE9fRk5K",
-            "SElPQ0pITE8QBBIbChdJTkhQREhMT0hIT19BRU5MUFBBRUFOSxAFEhsKF0lO",
-            "SFBESExPSEhPX0VETE9FQkVKRkhOEAZCFqoCE01hcmNoN3RoSG9uZXkuUHJv",
+            "EhsKF0pKTUZPQUJMT0NFX09IRE9ISEZBS01DEAASGwoXSkpNRk9BQkxPQ0Vf",
+            "RkRLQkVESU1DQkoQARIbChdKSk1GT0FCTE9DRV9CUENCSEtIREdNSBACEhsK",
+            "F0pKTUZPQUJMT0NFX0dFQUlFS1BHTkdEEAMSGwoXSkpNRk9BQkxPQ0VfRUtK",
+            "RkRGRUFOTkgQBBIbChdKSk1GT0FCTE9DRV9CSU9HRFBBTkNMQhAFEhsKF0pK",
+            "TUZPQUJMT0NFX0RQQUxJSElOUEZOEAZCFqoCE01hcmNoN3RoSG9uZXkuUHJv",
             "dG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -40,13 +40,13 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum BattleModuleType {
-    [pbr::OriginalName("INHPDHLOHHO_HAJDAKFIENM")] InhpdhlohhoHajdakfienm = 0,
-    [pbr::OriginalName("INHPDHLOHHO_KKHLMKIPMFK")] InhpdhlohhoKkhlmkipmfk = 1,
-    [pbr::OriginalName("INHPDHLOHHO_LHGODLABEKH")] InhpdhlohhoLhgodlabekh = 2,
-    [pbr::OriginalName("INHPDHLOHHO_LJOPAPAKHIP")] InhpdhlohhoLjopapakhip = 3,
-    [pbr::OriginalName("INHPDHLOHHO_FNJHIOCJHLO")] InhpdhlohhoFnjhiocjhlo = 4,
-    [pbr::OriginalName("INHPDHLOHHO_AENLPPAEANK")] InhpdhlohhoAenlppaeank = 5,
-    [pbr::OriginalName("INHPDHLOHHO_EDLOEBEJFHN")] InhpdhlohhoEdloebejfhn = 6,
+    [pbr::OriginalName("JJMFOABLOCE_OHDOHHFAKMC")] JjmfoabloceOhdohhfakmc = 0,
+    [pbr::OriginalName("JJMFOABLOCE_FDKBEDIMCBJ")] JjmfoabloceFdkbedimcbj = 1,
+    [pbr::OriginalName("JJMFOABLOCE_BPCBHKHDGMH")] JjmfoabloceBpcbhkhdgmh = 2,
+    [pbr::OriginalName("JJMFOABLOCE_GEAIEKPGNGD")] JjmfoabloceGeaiekpgngd = 3,
+    [pbr::OriginalName("JJMFOABLOCE_EKJFDFEANNH")] JjmfoabloceEkjfdfeannh = 4,
+    [pbr::OriginalName("JJMFOABLOCE_BIOGDPANCLB")] JjmfoabloceBiogdpanclb = 5,
+    [pbr::OriginalName("JJMFOABLOCE_DPALIHINPFN")] JjmfoabloceDpalihinpfn = 6,
   }
 
   #endregion

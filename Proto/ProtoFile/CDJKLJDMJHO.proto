@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "JBOBHIPHGPB.proto";
+
+message CDJKLJDMJHO {
+    JBOBHIPHGPB IAOBHCOOMJP = 10;
+    uint32 retcode = 11;
+}

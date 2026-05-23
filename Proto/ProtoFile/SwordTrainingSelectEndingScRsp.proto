@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message SwordTrainingSelectEndingScRsp {
-    uint32 retcode = 5;
-    uint32 AGMAHIIHJKM = 6;
+    uint32 PFOLEGLCLFE = 12;
+    uint32 retcode = 11;
 }

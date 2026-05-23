@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "JPFGHCPGHGO.proto";
+import "AGEHGBKOBEF.proto";
 
 message QuitRogueScRsp {
-    JPFGHCPGHGO rogue_game_info = 5;
-    uint32 retcode = 15;
+    AGEHGBKOBEF rogue_game_info = 10;
+    uint32 retcode = 11;
 }

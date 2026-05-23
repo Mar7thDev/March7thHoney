@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "SceneBattleInfo.proto";
 
 message RogueShopBeginBattleScRsp {
-    SceneBattleInfo DDHGCAFFFOP = 1;
-    uint32 retcode = 4;
+    SceneBattleInfo AEPNEDJPAGK = 4;
+    uint32 retcode = 13;
 }

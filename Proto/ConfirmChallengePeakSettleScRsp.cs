@@ -26,12 +26,12 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiVDb25maXJtQ2hhbGxlbmdlUGVha1NldHRsZVNjUnNwLnByb3RvIlgKH0Nv",
             "bmZpcm1DaGFsbGVuZ2VQZWFrU2V0dGxlU2NSc3ASDwoHcGVha19pZBgHIAEo",
-            "DRIPCgdyZXRjb2RlGAggASgNEhMKC0FCSE9MTkpOUEpNGAwgASgIQhaqAhNN",
+            "DRIPCgdyZXRjb2RlGAsgASgNEhMKC0lPQkNJTUlQRU9NGAggASgIQhaqAhNN",
             "YXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ConfirmChallengePeakSettleScRsp), global::March7thHoney.Proto.ConfirmChallengePeakSettleScRsp.Parser, new[]{ "PeakId", "Retcode", "ABHOLNJNPJM" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ConfirmChallengePeakSettleScRsp), global::March7thHoney.Proto.ConfirmChallengePeakSettleScRsp.Parser, new[]{ "PeakId", "Retcode", "IOBCIMIPEOM" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,7 +75,7 @@ namespace March7thHoney.Proto {
     public ConfirmChallengePeakSettleScRsp(ConfirmChallengePeakSettleScRsp other) : this() {
       peakId_ = other.peakId_;
       retcode_ = other.retcode_;
-      aBHOLNJNPJM_ = other.aBHOLNJNPJM_;
+      iOBCIMIPEOM_ = other.iOBCIMIPEOM_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -98,7 +98,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 8;
+    public const int RetcodeFieldNumber = 11;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -109,15 +109,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "ABHOLNJNPJM" field.</summary>
-    public const int ABHOLNJNPJMFieldNumber = 12;
-    private bool aBHOLNJNPJM_;
+    /// <summary>Field number for the "IOBCIMIPEOM" field.</summary>
+    public const int IOBCIMIPEOMFieldNumber = 8;
+    private bool iOBCIMIPEOM_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool ABHOLNJNPJM {
-      get { return aBHOLNJNPJM_; }
+    public bool IOBCIMIPEOM {
+      get { return iOBCIMIPEOM_; }
       set {
-        aBHOLNJNPJM_ = value;
+        iOBCIMIPEOM_ = value;
       }
     }
 
@@ -138,7 +138,7 @@ namespace March7thHoney.Proto {
       }
       if (PeakId != other.PeakId) return false;
       if (Retcode != other.Retcode) return false;
-      if (ABHOLNJNPJM != other.ABHOLNJNPJM) return false;
+      if (IOBCIMIPEOM != other.IOBCIMIPEOM) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -148,7 +148,7 @@ namespace March7thHoney.Proto {
       int hash = 1;
       if (PeakId != 0) hash ^= PeakId.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
-      if (ABHOLNJNPJM != false) hash ^= ABHOLNJNPJM.GetHashCode();
+      if (IOBCIMIPEOM != false) hash ^= IOBCIMIPEOM.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -171,13 +171,13 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(56);
         output.WriteUInt32(PeakId);
       }
-      if (Retcode != 0) {
+      if (IOBCIMIPEOM != false) {
         output.WriteRawTag(64);
-        output.WriteUInt32(Retcode);
+        output.WriteBool(IOBCIMIPEOM);
       }
-      if (ABHOLNJNPJM != false) {
-        output.WriteRawTag(96);
-        output.WriteBool(ABHOLNJNPJM);
+      if (Retcode != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -193,13 +193,13 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(56);
         output.WriteUInt32(PeakId);
       }
-      if (Retcode != 0) {
+      if (IOBCIMIPEOM != false) {
         output.WriteRawTag(64);
-        output.WriteUInt32(Retcode);
+        output.WriteBool(IOBCIMIPEOM);
       }
-      if (ABHOLNJNPJM != false) {
-        output.WriteRawTag(96);
-        output.WriteBool(ABHOLNJNPJM);
+      if (Retcode != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -217,7 +217,7 @@ namespace March7thHoney.Proto {
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
-      if (ABHOLNJNPJM != false) {
+      if (IOBCIMIPEOM != false) {
         size += 1 + 1;
       }
       if (_unknownFields != null) {
@@ -238,8 +238,8 @@ namespace March7thHoney.Proto {
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
-      if (other.ABHOLNJNPJM != false) {
-        ABHOLNJNPJM = other.ABHOLNJNPJM;
+      if (other.IOBCIMIPEOM != false) {
+        IOBCIMIPEOM = other.IOBCIMIPEOM;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -265,11 +265,11 @@ namespace March7thHoney.Proto {
             break;
           }
           case 64: {
-            Retcode = input.ReadUInt32();
+            IOBCIMIPEOM = input.ReadBool();
             break;
           }
-          case 96: {
-            ABHOLNJNPJM = input.ReadBool();
+          case 88: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -296,11 +296,11 @@ namespace March7thHoney.Proto {
             break;
           }
           case 64: {
-            Retcode = input.ReadUInt32();
+            IOBCIMIPEOM = input.ReadBool();
             break;
           }
-          case 96: {
-            ABHOLNJNPJM = input.ReadBool();
+          case 88: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }

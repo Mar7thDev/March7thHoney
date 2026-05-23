@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message GACKCPEPDAF {
+    uint32 config_id = 1;
+    uint64 MLMFNEBLNHP = 11;
+    uint32 HCBADDHNIDG = 7;
+    uint32 level = 2;
+}

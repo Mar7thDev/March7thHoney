@@ -2,21 +2,19 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "GachaCeiling.proto";
 
 message GachaInfo {
-    int64 end_time = 2;
-    int64 begin_time = 3;
-    repeated uint32 item_detail_list = 6;
-    uint32 gacha_id = 7;
-    uint32 PAPOKACIPPJ = 8;
-    repeated uint32 CBHAEFNAFLE = 9;
-    string detail_url = 10;
-    repeated uint32 prize_item_list = 11;
-    string history_url = 12;
-    uint32 FJIBOAGDNDG = 13;
-    uint32 OKFNNHNLBOO = 14;
-    GachaCeiling gacha_ceiling = 15;
+    repeated uint32 prize_item_list = 15;
+    string history_url = 13;
+    repeated uint32 item_detail_list = 14;
+    repeated uint32 ONIHOMCELJK = 6;
+    GachaCeiling gacha_ceiling = 9;
+    string detail_url = 5;
+    int64 end_time = 7;
+    uint32 GLLJFPENLHD = 12;
+    uint32 gacha_id = 4;
+    int64 begin_time = 10;
+    uint32 MMELNCHIDNC = 3;
+    uint32 NHBBHEMPJJM = 2;
 }

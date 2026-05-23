@@ -24,16 +24,16 @@ namespace March7thHoney.Proto {
     static StartRaidCsReqReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChRTdGFydFJhaWRDc1JlcS5wcm90bxoRRUVCUEhKQ05CRk8ucHJvdG8ilwEK",
-            "DlN0YXJ0UmFpZENzUmVxEiEKC0JEQkpLS09KT0RDGAIgAygLMgwuRUVCUEhK",
-            "Q05CRk8SDwoHaXNfc2F2ZRgDIAEoDRIWCg5wcm9wX2VudGl0eV9pZBgEIAEo",
-            "DRITCgt3b3JsZF9sZXZlbBgIIAEoDRIPCgdyYWlkX2lkGAkgASgNEhMKC2F2",
-            "YXRhcl9saXN0GAsgAygNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
-            "bzM="));
+            "ChRTdGFydFJhaWRDc1JlcS5wcm90bxoWQXZhdGFySWRlbnRpZmllci5wcm90",
+            "byKcAQoOU3RhcnRSYWlkQ3NSZXESJgoLTklNREVQRkpKTkkYCSADKAsyES5B",
+            "dmF0YXJJZGVudGlmaWVyEhMKC2F2YXRhcl9saXN0GAQgAygNEg8KB3JhaWRf",
+            "aWQYDyABKA0SEwoLd29ybGRfbGV2ZWwYCyABKA0SDwoHaXNfc2F2ZRgFIAEo",
+            "DRIWCg5wcm9wX2VudGl0eV9pZBgGIAEoDUIWqgITTWFyY2g3dGhIb25leS5Q",
+            "cm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.EEBPHJCNBFOReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.AvatarIdentifierReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartRaidCsReq), global::March7thHoney.Proto.StartRaidCsReq.Parser, new[]{ "BDBJKKOJODC", "IsSave", "PropEntityId", "WorldLevel", "RaidId", "AvatarList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartRaidCsReq), global::March7thHoney.Proto.StartRaidCsReq.Parser, new[]{ "NIMDEPFJJNI", "AvatarList", "RaidId", "WorldLevel", "IsSave", "PropEntityId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,12 +75,12 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public StartRaidCsReq(StartRaidCsReq other) : this() {
-      bDBJKKOJODC_ = other.bDBJKKOJODC_.Clone();
+      nIMDEPFJJNI_ = other.nIMDEPFJJNI_.Clone();
+      avatarList_ = other.avatarList_.Clone();
+      raidId_ = other.raidId_;
+      worldLevel_ = other.worldLevel_;
       isSave_ = other.isSave_;
       propEntityId_ = other.propEntityId_;
-      worldLevel_ = other.worldLevel_;
-      raidId_ = other.raidId_;
-      avatarList_ = other.avatarList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -90,19 +90,54 @@ namespace March7thHoney.Proto {
       return new StartRaidCsReq(this);
     }
 
-    /// <summary>Field number for the "BDBJKKOJODC" field.</summary>
-    public const int BDBJKKOJODCFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EEBPHJCNBFO> _repeated_bDBJKKOJODC_codec
-        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.EEBPHJCNBFO.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EEBPHJCNBFO> bDBJKKOJODC_ = new pbc::RepeatedField<global::March7thHoney.Proto.EEBPHJCNBFO>();
+    /// <summary>Field number for the "NIMDEPFJJNI" field.</summary>
+    public const int NIMDEPFJJNIFieldNumber = 9;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AvatarIdentifier> _repeated_nIMDEPFJJNI_codec
+        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.AvatarIdentifier.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AvatarIdentifier> nIMDEPFJJNI_ = new pbc::RepeatedField<global::March7thHoney.Proto.AvatarIdentifier>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.EEBPHJCNBFO> BDBJKKOJODC {
-      get { return bDBJKKOJODC_; }
+    public pbc::RepeatedField<global::March7thHoney.Proto.AvatarIdentifier> NIMDEPFJJNI {
+      get { return nIMDEPFJJNI_; }
+    }
+
+    /// <summary>Field number for the "avatar_list" field.</summary>
+    public const int AvatarListFieldNumber = 4;
+    private static readonly pb::FieldCodec<uint> _repeated_avatarList_codec
+        = pb::FieldCodec.ForUInt32(34);
+    private readonly pbc::RepeatedField<uint> avatarList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> AvatarList {
+      get { return avatarList_; }
+    }
+
+    /// <summary>Field number for the "raid_id" field.</summary>
+    public const int RaidIdFieldNumber = 15;
+    private uint raidId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint RaidId {
+      get { return raidId_; }
+      set {
+        raidId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "world_level" field.</summary>
+    public const int WorldLevelFieldNumber = 11;
+    private uint worldLevel_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint WorldLevel {
+      get { return worldLevel_; }
+      set {
+        worldLevel_ = value;
+      }
     }
 
     /// <summary>Field number for the "is_save" field.</summary>
-    public const int IsSaveFieldNumber = 3;
+    public const int IsSaveFieldNumber = 5;
     private uint isSave_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -114,7 +149,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "prop_entity_id" field.</summary>
-    public const int PropEntityIdFieldNumber = 4;
+    public const int PropEntityIdFieldNumber = 6;
     private uint propEntityId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -123,41 +158,6 @@ namespace March7thHoney.Proto {
       set {
         propEntityId_ = value;
       }
-    }
-
-    /// <summary>Field number for the "world_level" field.</summary>
-    public const int WorldLevelFieldNumber = 8;
-    private uint worldLevel_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint WorldLevel {
-      get { return worldLevel_; }
-      set {
-        worldLevel_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "raid_id" field.</summary>
-    public const int RaidIdFieldNumber = 9;
-    private uint raidId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint RaidId {
-      get { return raidId_; }
-      set {
-        raidId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "avatar_list" field.</summary>
-    public const int AvatarListFieldNumber = 11;
-    private static readonly pb::FieldCodec<uint> _repeated_avatarList_codec
-        = pb::FieldCodec.ForUInt32(90);
-    private readonly pbc::RepeatedField<uint> avatarList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> AvatarList {
-      get { return avatarList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -175,12 +175,12 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!bDBJKKOJODC_.Equals(other.bDBJKKOJODC_)) return false;
+      if(!nIMDEPFJJNI_.Equals(other.nIMDEPFJJNI_)) return false;
+      if(!avatarList_.Equals(other.avatarList_)) return false;
+      if (RaidId != other.RaidId) return false;
+      if (WorldLevel != other.WorldLevel) return false;
       if (IsSave != other.IsSave) return false;
       if (PropEntityId != other.PropEntityId) return false;
-      if (WorldLevel != other.WorldLevel) return false;
-      if (RaidId != other.RaidId) return false;
-      if(!avatarList_.Equals(other.avatarList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -188,12 +188,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= bDBJKKOJODC_.GetHashCode();
+      hash ^= nIMDEPFJJNI_.GetHashCode();
+      hash ^= avatarList_.GetHashCode();
+      if (RaidId != 0) hash ^= RaidId.GetHashCode();
+      if (WorldLevel != 0) hash ^= WorldLevel.GetHashCode();
       if (IsSave != 0) hash ^= IsSave.GetHashCode();
       if (PropEntityId != 0) hash ^= PropEntityId.GetHashCode();
-      if (WorldLevel != 0) hash ^= WorldLevel.GetHashCode();
-      if (RaidId != 0) hash ^= RaidId.GetHashCode();
-      hash ^= avatarList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -212,24 +212,24 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      bDBJKKOJODC_.WriteTo(output, _repeated_bDBJKKOJODC_codec);
+      avatarList_.WriteTo(output, _repeated_avatarList_codec);
       if (IsSave != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(40);
         output.WriteUInt32(IsSave);
       }
       if (PropEntityId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(48);
         output.WriteUInt32(PropEntityId);
       }
+      nIMDEPFJJNI_.WriteTo(output, _repeated_nIMDEPFJJNI_codec);
       if (WorldLevel != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(88);
         output.WriteUInt32(WorldLevel);
       }
       if (RaidId != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(120);
         output.WriteUInt32(RaidId);
       }
-      avatarList_.WriteTo(output, _repeated_avatarList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -240,24 +240,24 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      bDBJKKOJODC_.WriteTo(ref output, _repeated_bDBJKKOJODC_codec);
+      avatarList_.WriteTo(ref output, _repeated_avatarList_codec);
       if (IsSave != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(40);
         output.WriteUInt32(IsSave);
       }
       if (PropEntityId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(48);
         output.WriteUInt32(PropEntityId);
       }
+      nIMDEPFJJNI_.WriteTo(ref output, _repeated_nIMDEPFJJNI_codec);
       if (WorldLevel != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(88);
         output.WriteUInt32(WorldLevel);
       }
       if (RaidId != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(120);
         output.WriteUInt32(RaidId);
       }
-      avatarList_.WriteTo(ref output, _repeated_avatarList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -268,20 +268,20 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += bDBJKKOJODC_.CalculateSize(_repeated_bDBJKKOJODC_codec);
+      size += nIMDEPFJJNI_.CalculateSize(_repeated_nIMDEPFJJNI_codec);
+      size += avatarList_.CalculateSize(_repeated_avatarList_codec);
+      if (RaidId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RaidId);
+      }
+      if (WorldLevel != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(WorldLevel);
+      }
       if (IsSave != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(IsSave);
       }
       if (PropEntityId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PropEntityId);
       }
-      if (WorldLevel != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(WorldLevel);
-      }
-      if (RaidId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RaidId);
-      }
-      size += avatarList_.CalculateSize(_repeated_avatarList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -294,20 +294,20 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      bDBJKKOJODC_.Add(other.bDBJKKOJODC_);
+      nIMDEPFJJNI_.Add(other.nIMDEPFJJNI_);
+      avatarList_.Add(other.avatarList_);
+      if (other.RaidId != 0) {
+        RaidId = other.RaidId;
+      }
+      if (other.WorldLevel != 0) {
+        WorldLevel = other.WorldLevel;
+      }
       if (other.IsSave != 0) {
         IsSave = other.IsSave;
       }
       if (other.PropEntityId != 0) {
         PropEntityId = other.PropEntityId;
       }
-      if (other.WorldLevel != 0) {
-        WorldLevel = other.WorldLevel;
-      }
-      if (other.RaidId != 0) {
-        RaidId = other.RaidId;
-      }
-      avatarList_.Add(other.avatarList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -327,29 +327,29 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 18: {
-            bDBJKKOJODC_.AddEntriesFrom(input, _repeated_bDBJKKOJODC_codec);
+          case 34:
+          case 32: {
+            avatarList_.AddEntriesFrom(input, _repeated_avatarList_codec);
             break;
           }
-          case 24: {
+          case 40: {
             IsSave = input.ReadUInt32();
             break;
           }
-          case 32: {
+          case 48: {
             PropEntityId = input.ReadUInt32();
             break;
           }
-          case 64: {
+          case 74: {
+            nIMDEPFJJNI_.AddEntriesFrom(input, _repeated_nIMDEPFJJNI_codec);
+            break;
+          }
+          case 88: {
             WorldLevel = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 120: {
             RaidId = input.ReadUInt32();
-            break;
-          }
-          case 90:
-          case 88: {
-            avatarList_.AddEntriesFrom(input, _repeated_avatarList_codec);
             break;
           }
         }
@@ -371,29 +371,29 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 18: {
-            bDBJKKOJODC_.AddEntriesFrom(ref input, _repeated_bDBJKKOJODC_codec);
+          case 34:
+          case 32: {
+            avatarList_.AddEntriesFrom(ref input, _repeated_avatarList_codec);
             break;
           }
-          case 24: {
+          case 40: {
             IsSave = input.ReadUInt32();
             break;
           }
-          case 32: {
+          case 48: {
             PropEntityId = input.ReadUInt32();
             break;
           }
-          case 64: {
+          case 74: {
+            nIMDEPFJJNI_.AddEntriesFrom(ref input, _repeated_nIMDEPFJJNI_codec);
+            break;
+          }
+          case 88: {
             WorldLevel = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 120: {
             RaidId = input.ReadUInt32();
-            break;
-          }
-          case 90:
-          case 88: {
-            avatarList_.AddEntriesFrom(ref input, _repeated_avatarList_codec);
             break;
           }
         }

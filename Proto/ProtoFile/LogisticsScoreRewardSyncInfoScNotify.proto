@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "JCCMGOOPHBO.proto";
+import "BOLCGIOGIBP.proto";
 
 message LogisticsScoreRewardSyncInfoScNotify {
-    repeated JCCMGOOPHBO OAIKIFEKFLG = 13;
+    repeated BOLCGIOGIBP ALOOPKCJFEA = 11;
 }

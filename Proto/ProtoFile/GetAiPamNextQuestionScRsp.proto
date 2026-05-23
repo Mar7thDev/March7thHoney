@@ -2,11 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "JDPPGCIEHKF.proto";
+import "FKNKNLGMACL.proto";
+import "NEKAOLPJKEE.proto";
 
 message GetAiPamNextQuestionScRsp {
-    uint32 retcode = 6;
-    repeated JDPPGCIEHKF KKCJMPLGKCL = 9;
+    repeated NEKAOLPJKEE KDOHKGKBFCH = 5;
+    uint32 retcode = 8;
+    FKNKNLGMACL BDPIMPJOJBK = 6;
 }

@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "NEFBECKCJIH.proto";
+
+message EHELNMGMENO {
+    repeated NEFBECKCJIH MALDOMHPILM = 2;
+}

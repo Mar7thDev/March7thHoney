@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum NBHFFADKNEI {
+    NBHFFADKNEI_DDOGJODJEOH = 0;
+    NBHFFADKNEI_KBHEKICIHOL = 1;
+    NBHFFADKNEI_ODHPKJJFLKL = 2;
+}

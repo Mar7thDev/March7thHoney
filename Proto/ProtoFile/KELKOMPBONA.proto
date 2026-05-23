@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "KPEPGHLKNFG.proto";
+
+message KELKOMPBONA {
+    uint32 exp = 12;
+    KPEPGHLKNFG status = 14;
+    uint32 unique_id = 13;
+    uint32 level = 15;
+    uint32 EBMJGPMHDMK = 4;
+    uint32 grid_fight_equipment_id = 3;
+    uint32 FGECDDFBFOJ = 10;
+    uint32 MBNBFBNKLGH = 11;
+    uint32 DIECMLHJCFE = 8;
+    uint32 index = 1;
+    uint32 DKHCOHKFKFA = 7;
+    int32 COJOIFPPCIJ = 5;
+    int32 hp = 6;
+}

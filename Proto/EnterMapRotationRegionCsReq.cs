@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiFFbnRlck1hcFJvdGF0aW9uUmVnaW9uQ3NSZXEucHJvdG8aEE1vdGlvbklu",
-            "Zm8ucHJvdG8iZAobRW50ZXJNYXBSb3RhdGlvblJlZ2lvbkNzUmVxEhMKC0pI",
-            "RExOQlBORUtHGAEgASgNEhMKC0JDUENCSE1GSUlOGAcgASgNEhsKBm1vdGlv",
-            "bhgPIAEoCzILLk1vdGlvbkluZm9CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
+            "Zm8ucHJvdG8iZAobRW50ZXJNYXBSb3RhdGlvblJlZ2lvbkNzUmVxEhsKBm1v",
+            "dGlvbhgLIAEoCzILLk1vdGlvbkluZm8SEwoLTEpIS05LRkxHREUYDyABKA0S",
+            "EwoLSlBQTUVLSkdKRkQYCSABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
             "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MotionInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EnterMapRotationRegionCsReq), global::March7thHoney.Proto.EnterMapRotationRegionCsReq.Parser, new[]{ "JHDLNBPNEKG", "BCPCBHMFIIN", "Motion" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EnterMapRotationRegionCsReq), global::March7thHoney.Proto.EnterMapRotationRegionCsReq.Parser, new[]{ "Motion", "LJHKNKFLGDE", "JPPMEKJGJFD" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,9 +74,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public EnterMapRotationRegionCsReq(EnterMapRotationRegionCsReq other) : this() {
-      jHDLNBPNEKG_ = other.jHDLNBPNEKG_;
-      bCPCBHMFIIN_ = other.bCPCBHMFIIN_;
       motion_ = other.motion_ != null ? other.motion_.Clone() : null;
+      lJHKNKFLGDE_ = other.lJHKNKFLGDE_;
+      jPPMEKJGJFD_ = other.jPPMEKJGJFD_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,32 +86,8 @@ namespace March7thHoney.Proto {
       return new EnterMapRotationRegionCsReq(this);
     }
 
-    /// <summary>Field number for the "JHDLNBPNEKG" field.</summary>
-    public const int JHDLNBPNEKGFieldNumber = 1;
-    private uint jHDLNBPNEKG_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint JHDLNBPNEKG {
-      get { return jHDLNBPNEKG_; }
-      set {
-        jHDLNBPNEKG_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "BCPCBHMFIIN" field.</summary>
-    public const int BCPCBHMFIINFieldNumber = 7;
-    private uint bCPCBHMFIIN_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint BCPCBHMFIIN {
-      get { return bCPCBHMFIIN_; }
-      set {
-        bCPCBHMFIIN_ = value;
-      }
-    }
-
     /// <summary>Field number for the "motion" field.</summary>
-    public const int MotionFieldNumber = 15;
+    public const int MotionFieldNumber = 11;
     private global::March7thHoney.Proto.MotionInfo motion_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -119,6 +95,30 @@ namespace March7thHoney.Proto {
       get { return motion_; }
       set {
         motion_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "LJHKNKFLGDE" field.</summary>
+    public const int LJHKNKFLGDEFieldNumber = 15;
+    private uint lJHKNKFLGDE_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint LJHKNKFLGDE {
+      get { return lJHKNKFLGDE_; }
+      set {
+        lJHKNKFLGDE_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "JPPMEKJGJFD" field.</summary>
+    public const int JPPMEKJGJFDFieldNumber = 9;
+    private uint jPPMEKJGJFD_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint JPPMEKJGJFD {
+      get { return jPPMEKJGJFD_; }
+      set {
+        jPPMEKJGJFD_ = value;
       }
     }
 
@@ -137,9 +137,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (JHDLNBPNEKG != other.JHDLNBPNEKG) return false;
-      if (BCPCBHMFIIN != other.BCPCBHMFIIN) return false;
       if (!object.Equals(Motion, other.Motion)) return false;
+      if (LJHKNKFLGDE != other.LJHKNKFLGDE) return false;
+      if (JPPMEKJGJFD != other.JPPMEKJGJFD) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -147,9 +147,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (JHDLNBPNEKG != 0) hash ^= JHDLNBPNEKG.GetHashCode();
-      if (BCPCBHMFIIN != 0) hash ^= BCPCBHMFIIN.GetHashCode();
       if (motion_ != null) hash ^= Motion.GetHashCode();
+      if (LJHKNKFLGDE != 0) hash ^= LJHKNKFLGDE.GetHashCode();
+      if (JPPMEKJGJFD != 0) hash ^= JPPMEKJGJFD.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -168,17 +168,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (JHDLNBPNEKG != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(JHDLNBPNEKG);
-      }
-      if (BCPCBHMFIIN != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(BCPCBHMFIIN);
+      if (JPPMEKJGJFD != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(JPPMEKJGJFD);
       }
       if (motion_ != null) {
-        output.WriteRawTag(122);
+        output.WriteRawTag(90);
         output.WriteMessage(Motion);
+      }
+      if (LJHKNKFLGDE != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(LJHKNKFLGDE);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -190,17 +190,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (JHDLNBPNEKG != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(JHDLNBPNEKG);
-      }
-      if (BCPCBHMFIIN != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(BCPCBHMFIIN);
+      if (JPPMEKJGJFD != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(JPPMEKJGJFD);
       }
       if (motion_ != null) {
-        output.WriteRawTag(122);
+        output.WriteRawTag(90);
         output.WriteMessage(Motion);
+      }
+      if (LJHKNKFLGDE != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(LJHKNKFLGDE);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -212,14 +212,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (JHDLNBPNEKG != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(JHDLNBPNEKG);
-      }
-      if (BCPCBHMFIIN != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BCPCBHMFIIN);
-      }
       if (motion_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Motion);
+      }
+      if (LJHKNKFLGDE != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LJHKNKFLGDE);
+      }
+      if (JPPMEKJGJFD != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(JPPMEKJGJFD);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -233,17 +233,17 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.JHDLNBPNEKG != 0) {
-        JHDLNBPNEKG = other.JHDLNBPNEKG;
-      }
-      if (other.BCPCBHMFIIN != 0) {
-        BCPCBHMFIIN = other.BCPCBHMFIIN;
-      }
       if (other.motion_ != null) {
         if (motion_ == null) {
           Motion = new global::March7thHoney.Proto.MotionInfo();
         }
         Motion.MergeFrom(other.Motion);
+      }
+      if (other.LJHKNKFLGDE != 0) {
+        LJHKNKFLGDE = other.LJHKNKFLGDE;
+      }
+      if (other.JPPMEKJGJFD != 0) {
+        JPPMEKJGJFD = other.JPPMEKJGJFD;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -264,19 +264,19 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            JHDLNBPNEKG = input.ReadUInt32();
+          case 72: {
+            JPPMEKJGJFD = input.ReadUInt32();
             break;
           }
-          case 56: {
-            BCPCBHMFIIN = input.ReadUInt32();
-            break;
-          }
-          case 122: {
+          case 90: {
             if (motion_ == null) {
               Motion = new global::March7thHoney.Proto.MotionInfo();
             }
             input.ReadMessage(Motion);
+            break;
+          }
+          case 120: {
+            LJHKNKFLGDE = input.ReadUInt32();
             break;
           }
         }
@@ -298,19 +298,19 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            JHDLNBPNEKG = input.ReadUInt32();
+          case 72: {
+            JPPMEKJGJFD = input.ReadUInt32();
             break;
           }
-          case 56: {
-            BCPCBHMFIIN = input.ReadUInt32();
-            break;
-          }
-          case 122: {
+          case 90: {
             if (motion_ == null) {
               Motion = new global::March7thHoney.Proto.MotionInfo();
             }
             input.ReadMessage(Motion);
+            break;
+          }
+          case 120: {
+            LJHKNKFLGDE = input.ReadUInt32();
             break;
           }
         }

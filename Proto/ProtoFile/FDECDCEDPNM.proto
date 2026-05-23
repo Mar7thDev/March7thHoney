@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message FDECDCEDPNM {
+    repeated uint32 ICCCHCCDKND = 13;
+    uint32 id = 4;
+    uint32 BGMFEHBEABC = 14;
+    bool is_new = 7;
+}

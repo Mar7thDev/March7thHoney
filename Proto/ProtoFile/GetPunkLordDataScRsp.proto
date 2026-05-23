@@ -2,15 +2,13 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message GetPunkLordDataScRsp {
-    uint32 retcode = 1;
-    uint32 MPICOHMFGOA = 2;
-    uint32 KFACMIDMBFF = 3;
-    repeated uint32 MOGBNJOHKLA = 4;
-    uint32 DBAKNBHLNJK = 6;
-    int64 EDANKPHGKKK = 8;
-    uint32 EJFEBCKDNNH = 12;
-    uint32 CLMONEEIEJE = 13;
+    repeated uint32 IEPPNGMCKJH = 6;
+    uint32 retcode = 2;
+    uint32 BPCOIOLGEMK = 8;
+    int64 NEOGLPEGBHE = 3;
+    uint32 GIIIFDGFJPG = 9;
+    uint32 MGBHJPPJHEA = 5;
+    uint32 KCBPBMOJOKJ = 11;
+    uint32 LCAFKPGBDOL = 1;
 }

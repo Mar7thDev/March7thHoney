@@ -2,22 +2,20 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "GCJAMHEGKGE.proto";
+import "IPIJFDIPNDE.proto";
+import "JMFPICAMLIG.proto";
 import "LobbyGridFightInfo.proto";
 import "LobbyMarbleInfo.proto";
 import "LobbyMarchInfo.proto";
-import "OIFJHEPAFOO.proto";
 
 message LobbyGameExtInfo {
-    repeated string BHILEPGIFNE = 1;
-    bool HMPCFJPJDOE = 2;
-    oneof JNJJJGBCEDG {
+    repeated string MLAFBFEBNHB = 1;
+    bool ELJECOAKNOF = 2;
+    oneof APEMJMHJHKD {
         LobbyMarchInfo lobby_march_info = 1001;
         LobbyMarbleInfo lobby_marble_info = 1002;
-        OIFJHEPAFOO NIFBKKNFKEG = 1003;
+        JMFPICAMLIG PHIBAOMGNOH = 1003;
         LobbyGridFightInfo lobby_grid_fight_info = 1004;
-        GCJAMHEGKGE PCFNJJCOJED = 1005;
+        IPIJFDIPNDE GOKJCFBPHCJ = 1005;
     }
 }

@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum ChestType {
     MAP_INFO_CHEST_TYPE_NONE = 0;
     MAP_INFO_CHEST_TYPE_NORMAL = 101;

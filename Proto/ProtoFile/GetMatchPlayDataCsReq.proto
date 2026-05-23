@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "FightGameMode.proto";
 
 message GetMatchPlayDataCsReq {
-    repeated FightGameMode BFBJKAALFHD = 8;
+    repeated FightGameMode LCCHAKBKAHL = 5;
 }

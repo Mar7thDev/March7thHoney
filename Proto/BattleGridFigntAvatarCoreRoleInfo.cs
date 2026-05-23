@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CidCYXR0bGVHcmlkRmlnbnRBdmF0YXJDb3JlUm9sZUluZm8ucHJvdG8iWAoh",
-            "QmF0dGxlR3JpZEZpZ250QXZhdGFyQ29yZVJvbGVJbmZvEh4KFmdyaWRfZmln",
-            "aHRfYXZhdGFyX2xpc3QYASADKA0SEwoLQ0JEQkZBTkpHUEIYAiADKA1CFqoC",
+            "QmF0dGxlR3JpZEZpZ250QXZhdGFyQ29yZVJvbGVJbmZvEhMKC0xLTkdLSkNG",
+            "RkJIGAIgAygNEh4KFmdyaWRfZmlnaHRfYXZhdGFyX2xpc3QYASADKA1CFqoC",
             "E01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BattleGridFigntAvatarCoreRoleInfo), global::March7thHoney.Proto.BattleGridFigntAvatarCoreRoleInfo.Parser, new[]{ "GridFightAvatarList", "CBDBFANJGPB" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BattleGridFigntAvatarCoreRoleInfo), global::March7thHoney.Proto.BattleGridFigntAvatarCoreRoleInfo.Parser, new[]{ "LKNGKJCFFBH", "GridFightAvatarList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BattleGridFigntAvatarCoreRoleInfo(BattleGridFigntAvatarCoreRoleInfo other) : this() {
+      lKNGKJCFFBH_ = other.lKNGKJCFFBH_.Clone();
       gridFightAvatarList_ = other.gridFightAvatarList_.Clone();
-      cBDBFANJGPB_ = other.cBDBFANJGPB_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -82,6 +82,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BattleGridFigntAvatarCoreRoleInfo Clone() {
       return new BattleGridFigntAvatarCoreRoleInfo(this);
+    }
+
+    /// <summary>Field number for the "LKNGKJCFFBH" field.</summary>
+    public const int LKNGKJCFFBHFieldNumber = 2;
+    private static readonly pb::FieldCodec<uint> _repeated_lKNGKJCFFBH_codec
+        = pb::FieldCodec.ForUInt32(18);
+    private readonly pbc::RepeatedField<uint> lKNGKJCFFBH_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> LKNGKJCFFBH {
+      get { return lKNGKJCFFBH_; }
     }
 
     /// <summary>Field number for the "grid_fight_avatar_list" field.</summary>
@@ -93,17 +104,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<uint> GridFightAvatarList {
       get { return gridFightAvatarList_; }
-    }
-
-    /// <summary>Field number for the "CBDBFANJGPB" field.</summary>
-    public const int CBDBFANJGPBFieldNumber = 2;
-    private static readonly pb::FieldCodec<uint> _repeated_cBDBFANJGPB_codec
-        = pb::FieldCodec.ForUInt32(18);
-    private readonly pbc::RepeatedField<uint> cBDBFANJGPB_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> CBDBFANJGPB {
-      get { return cBDBFANJGPB_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -121,8 +121,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if(!lKNGKJCFFBH_.Equals(other.lKNGKJCFFBH_)) return false;
       if(!gridFightAvatarList_.Equals(other.gridFightAvatarList_)) return false;
-      if(!cBDBFANJGPB_.Equals(other.cBDBFANJGPB_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -130,8 +130,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      hash ^= lKNGKJCFFBH_.GetHashCode();
       hash ^= gridFightAvatarList_.GetHashCode();
-      hash ^= cBDBFANJGPB_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -151,7 +151,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       gridFightAvatarList_.WriteTo(output, _repeated_gridFightAvatarList_codec);
-      cBDBFANJGPB_.WriteTo(output, _repeated_cBDBFANJGPB_codec);
+      lKNGKJCFFBH_.WriteTo(output, _repeated_lKNGKJCFFBH_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -163,7 +163,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       gridFightAvatarList_.WriteTo(ref output, _repeated_gridFightAvatarList_codec);
-      cBDBFANJGPB_.WriteTo(ref output, _repeated_cBDBFANJGPB_codec);
+      lKNGKJCFFBH_.WriteTo(ref output, _repeated_lKNGKJCFFBH_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -174,8 +174,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      size += lKNGKJCFFBH_.CalculateSize(_repeated_lKNGKJCFFBH_codec);
       size += gridFightAvatarList_.CalculateSize(_repeated_gridFightAvatarList_codec);
-      size += cBDBFANJGPB_.CalculateSize(_repeated_cBDBFANJGPB_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -188,8 +188,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      lKNGKJCFFBH_.Add(other.lKNGKJCFFBH_);
       gridFightAvatarList_.Add(other.gridFightAvatarList_);
-      cBDBFANJGPB_.Add(other.cBDBFANJGPB_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -216,7 +216,7 @@ namespace March7thHoney.Proto {
           }
           case 18:
           case 16: {
-            cBDBFANJGPB_.AddEntriesFrom(input, _repeated_cBDBFANJGPB_codec);
+            lKNGKJCFFBH_.AddEntriesFrom(input, _repeated_lKNGKJCFFBH_codec);
             break;
           }
         }
@@ -245,7 +245,7 @@ namespace March7thHoney.Proto {
           }
           case 18:
           case 16: {
-            cBDBFANJGPB_.AddEntriesFrom(ref input, _repeated_cBDBFANJGPB_codec);
+            lKNGKJCFFBH_.AddEntriesFrom(ref input, _repeated_lKNGKJCFFBH_codec);
             break;
           }
         }

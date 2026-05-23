@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "LobbyInteractType.proto";
 
 message LobbyInteractScNotify {
-    LobbyInteractType HGIAGJMHDOB = 4;
-    uint32 AONGOEAFKOC = 5;
+    uint32 CPOCELOLNHL = 1;
+    LobbyInteractType DNBKKDBFFAJ = 14;
 }

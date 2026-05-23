@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static FateStartCsReqReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChRGYXRlU3RhcnRDc1JlcS5wcm90bxoRSEFKQU9HR1BDSkMucHJvdG8iXgoO",
-            "RmF0ZVN0YXJ0Q3NSZXESIQoLYXZhdGFyX2xpc3QYASADKAsyDC5IQUpBT0dH",
-            "UENKQxIPCgdhcmVhX2lkGAkgASgNEhgKEGRpZmZpY3VsdHlfbGV2ZWwYDyAB",
+            "ChRGYXRlU3RhcnRDc1JlcS5wcm90bxoRS1BOSEdER0xJQ04ucHJvdG8iXgoO",
+            "RmF0ZVN0YXJ0Q3NSZXESIQoLYXZhdGFyX2xpc3QYCiADKAsyDC5LUE5IR0RH",
+            "TElDThIYChBkaWZmaWN1bHR5X2xldmVsGAwgASgNEg8KB2FyZWFfaWQYDyAB",
             "KA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.HAJAOGGPCJCReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.KPNHGDGLICNReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FateStartCsReq), global::March7thHoney.Proto.FateStartCsReq.Parser, new[]{ "AvatarList", "AreaId", "DifficultyLevel" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FateStartCsReq), global::March7thHoney.Proto.FateStartCsReq.Parser, new[]{ "AvatarList", "DifficultyLevel", "AreaId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,8 +74,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public FateStartCsReq(FateStartCsReq other) : this() {
       avatarList_ = other.avatarList_.Clone();
-      areaId_ = other.areaId_;
       difficultyLevel_ = other.difficultyLevel_;
+      areaId_ = other.areaId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,30 +86,18 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "avatar_list" field.</summary>
-    public const int AvatarListFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.HAJAOGGPCJC> _repeated_avatarList_codec
-        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.HAJAOGGPCJC.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.HAJAOGGPCJC> avatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.HAJAOGGPCJC>();
+    public const int AvatarListFieldNumber = 10;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.KPNHGDGLICN> _repeated_avatarList_codec
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.KPNHGDGLICN.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.KPNHGDGLICN> avatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.KPNHGDGLICN>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.HAJAOGGPCJC> AvatarList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.KPNHGDGLICN> AvatarList {
       get { return avatarList_; }
     }
 
-    /// <summary>Field number for the "area_id" field.</summary>
-    public const int AreaIdFieldNumber = 9;
-    private uint areaId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint AreaId {
-      get { return areaId_; }
-      set {
-        areaId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "difficulty_level" field.</summary>
-    public const int DifficultyLevelFieldNumber = 15;
+    public const int DifficultyLevelFieldNumber = 12;
     private uint difficultyLevel_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -117,6 +105,18 @@ namespace March7thHoney.Proto {
       get { return difficultyLevel_; }
       set {
         difficultyLevel_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "area_id" field.</summary>
+    public const int AreaIdFieldNumber = 15;
+    private uint areaId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint AreaId {
+      get { return areaId_; }
+      set {
+        areaId_ = value;
       }
     }
 
@@ -136,8 +136,8 @@ namespace March7thHoney.Proto {
         return true;
       }
       if(!avatarList_.Equals(other.avatarList_)) return false;
-      if (AreaId != other.AreaId) return false;
       if (DifficultyLevel != other.DifficultyLevel) return false;
+      if (AreaId != other.AreaId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -146,8 +146,8 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= avatarList_.GetHashCode();
-      if (AreaId != 0) hash ^= AreaId.GetHashCode();
       if (DifficultyLevel != 0) hash ^= DifficultyLevel.GetHashCode();
+      if (AreaId != 0) hash ^= AreaId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -167,13 +167,13 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       avatarList_.WriteTo(output, _repeated_avatarList_codec);
-      if (AreaId != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(AreaId);
-      }
       if (DifficultyLevel != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(96);
         output.WriteUInt32(DifficultyLevel);
+      }
+      if (AreaId != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(AreaId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -186,13 +186,13 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       avatarList_.WriteTo(ref output, _repeated_avatarList_codec);
-      if (AreaId != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(AreaId);
-      }
       if (DifficultyLevel != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(96);
         output.WriteUInt32(DifficultyLevel);
+      }
+      if (AreaId != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(AreaId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
     public int CalculateSize() {
       int size = 0;
       size += avatarList_.CalculateSize(_repeated_avatarList_codec);
-      if (AreaId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AreaId);
-      }
       if (DifficultyLevel != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DifficultyLevel);
+      }
+      if (AreaId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AreaId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -224,11 +224,11 @@ namespace March7thHoney.Proto {
         return;
       }
       avatarList_.Add(other.avatarList_);
-      if (other.AreaId != 0) {
-        AreaId = other.AreaId;
-      }
       if (other.DifficultyLevel != 0) {
         DifficultyLevel = other.DifficultyLevel;
+      }
+      if (other.AreaId != 0) {
+        AreaId = other.AreaId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -249,16 +249,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
+          case 82: {
             avatarList_.AddEntriesFrom(input, _repeated_avatarList_codec);
             break;
           }
-          case 72: {
-            AreaId = input.ReadUInt32();
+          case 96: {
+            DifficultyLevel = input.ReadUInt32();
             break;
           }
           case 120: {
-            DifficultyLevel = input.ReadUInt32();
+            AreaId = input.ReadUInt32();
             break;
           }
         }
@@ -280,16 +280,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
+          case 82: {
             avatarList_.AddEntriesFrom(ref input, _repeated_avatarList_codec);
             break;
           }
-          case 72: {
-            AreaId = input.ReadUInt32();
+          case 96: {
+            DifficultyLevel = input.ReadUInt32();
             break;
           }
           case 120: {
-            DifficultyLevel = input.ReadUInt32();
+            AreaId = input.ReadUInt32();
             break;
           }
         }

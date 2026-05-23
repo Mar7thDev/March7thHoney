@@ -4,7 +4,7 @@ using March7thHoney.Database.Challenge;
 using March7thHoney.Database.Friend;
 using March7thHoney.Database.Inventory;
 using March7thHoney.GameServer.Game.Challenge.Definitions;
-using March7thHoney.GameServer.Game.Challenge.Instances;
+// TODO 4.3: Challenge.Instances 暂停
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server.Packet.Send.Challenge;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;

@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChZEaXNwbGF5UmVsaWNJbmZvLnByb3RvGhBSZWxpY0FmZml4LnByb3RvIoUB",
-            "ChBEaXNwbGF5UmVsaWNJbmZvEg0KBWxldmVsGAIgASgNEgsKA2V4cBgDIAEo",
-            "DRIVCg1tYWluX2FmZml4X2lkGAUgASgNEgsKA3RpZBgHIAEoDRIjCg5zdWJf",
-            "YWZmaXhfbGlzdBgNIAMoCzILLlJlbGljQWZmaXgSDAoEdHlwZRgPIAEoDUIW",
+            "ChBEaXNwbGF5UmVsaWNJbmZvEiMKDnN1Yl9hZmZpeF9saXN0GAkgAygLMgsu",
+            "UmVsaWNBZmZpeBILCgNleHAYDCABKA0SFQoNbWFpbl9hZmZpeF9pZBgLIAEo",
+            "DRILCgN0aWQYBiABKA0SDAoEdHlwZRgFIAEoDRINCgVsZXZlbBgOIAEoDUIW",
             "qgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.RelicAffixReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DisplayRelicInfo), global::March7thHoney.Proto.DisplayRelicInfo.Parser, new[]{ "Level", "Exp", "MainAffixId", "Tid", "SubAffixList", "Type" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DisplayRelicInfo), global::March7thHoney.Proto.DisplayRelicInfo.Parser, new[]{ "SubAffixList", "Exp", "MainAffixId", "Tid", "Type", "Level" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,12 +74,12 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public DisplayRelicInfo(DisplayRelicInfo other) : this() {
-      level_ = other.level_;
+      subAffixList_ = other.subAffixList_.Clone();
       exp_ = other.exp_;
       mainAffixId_ = other.mainAffixId_;
       tid_ = other.tid_;
-      subAffixList_ = other.subAffixList_.Clone();
       type_ = other.type_;
+      level_ = other.level_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -89,20 +89,19 @@ namespace March7thHoney.Proto {
       return new DisplayRelicInfo(this);
     }
 
-    /// <summary>Field number for the "level" field.</summary>
-    public const int LevelFieldNumber = 2;
-    private uint level_;
+    /// <summary>Field number for the "sub_affix_list" field.</summary>
+    public const int SubAffixListFieldNumber = 9;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.RelicAffix> _repeated_subAffixList_codec
+        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.RelicAffix.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.RelicAffix> subAffixList_ = new pbc::RepeatedField<global::March7thHoney.Proto.RelicAffix>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Level {
-      get { return level_; }
-      set {
-        level_ = value;
-      }
+    public pbc::RepeatedField<global::March7thHoney.Proto.RelicAffix> SubAffixList {
+      get { return subAffixList_; }
     }
 
     /// <summary>Field number for the "exp" field.</summary>
-    public const int ExpFieldNumber = 3;
+    public const int ExpFieldNumber = 12;
     private uint exp_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -114,7 +113,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "main_affix_id" field.</summary>
-    public const int MainAffixIdFieldNumber = 5;
+    public const int MainAffixIdFieldNumber = 11;
     private uint mainAffixId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -126,7 +125,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "tid" field.</summary>
-    public const int TidFieldNumber = 7;
+    public const int TidFieldNumber = 6;
     private uint tid_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -137,19 +136,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "sub_affix_list" field.</summary>
-    public const int SubAffixListFieldNumber = 13;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.RelicAffix> _repeated_subAffixList_codec
-        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.RelicAffix.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.RelicAffix> subAffixList_ = new pbc::RepeatedField<global::March7thHoney.Proto.RelicAffix>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.RelicAffix> SubAffixList {
-      get { return subAffixList_; }
-    }
-
     /// <summary>Field number for the "type" field.</summary>
-    public const int TypeFieldNumber = 15;
+    public const int TypeFieldNumber = 5;
     private uint type_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -157,6 +145,18 @@ namespace March7thHoney.Proto {
       get { return type_; }
       set {
         type_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "level" field.</summary>
+    public const int LevelFieldNumber = 14;
+    private uint level_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Level {
+      get { return level_; }
+      set {
+        level_ = value;
       }
     }
 
@@ -175,12 +175,12 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Level != other.Level) return false;
+      if(!subAffixList_.Equals(other.subAffixList_)) return false;
       if (Exp != other.Exp) return false;
       if (MainAffixId != other.MainAffixId) return false;
       if (Tid != other.Tid) return false;
-      if(!subAffixList_.Equals(other.subAffixList_)) return false;
       if (Type != other.Type) return false;
+      if (Level != other.Level) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -188,12 +188,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Level != 0) hash ^= Level.GetHashCode();
+      hash ^= subAffixList_.GetHashCode();
       if (Exp != 0) hash ^= Exp.GetHashCode();
       if (MainAffixId != 0) hash ^= MainAffixId.GetHashCode();
       if (Tid != 0) hash ^= Tid.GetHashCode();
-      hash ^= subAffixList_.GetHashCode();
       if (Type != 0) hash ^= Type.GetHashCode();
+      if (Level != 0) hash ^= Level.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -212,26 +212,26 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Level != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(Level);
-      }
-      if (Exp != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(Exp);
-      }
-      if (MainAffixId != 0) {
+      if (Type != 0) {
         output.WriteRawTag(40);
-        output.WriteUInt32(MainAffixId);
+        output.WriteUInt32(Type);
       }
       if (Tid != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(48);
         output.WriteUInt32(Tid);
       }
       subAffixList_.WriteTo(output, _repeated_subAffixList_codec);
-      if (Type != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(Type);
+      if (MainAffixId != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(MainAffixId);
+      }
+      if (Exp != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(Exp);
+      }
+      if (Level != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(Level);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -243,26 +243,26 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Level != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(Level);
-      }
-      if (Exp != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(Exp);
-      }
-      if (MainAffixId != 0) {
+      if (Type != 0) {
         output.WriteRawTag(40);
-        output.WriteUInt32(MainAffixId);
+        output.WriteUInt32(Type);
       }
       if (Tid != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(48);
         output.WriteUInt32(Tid);
       }
       subAffixList_.WriteTo(ref output, _repeated_subAffixList_codec);
-      if (Type != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(Type);
+      if (MainAffixId != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(MainAffixId);
+      }
+      if (Exp != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(Exp);
+      }
+      if (Level != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(Level);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -274,9 +274,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Level != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
-      }
+      size += subAffixList_.CalculateSize(_repeated_subAffixList_codec);
       if (Exp != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Exp);
       }
@@ -286,9 +284,11 @@ namespace March7thHoney.Proto {
       if (Tid != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tid);
       }
-      size += subAffixList_.CalculateSize(_repeated_subAffixList_codec);
       if (Type != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Type);
+      }
+      if (Level != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -302,9 +302,7 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.Level != 0) {
-        Level = other.Level;
-      }
+      subAffixList_.Add(other.subAffixList_);
       if (other.Exp != 0) {
         Exp = other.Exp;
       }
@@ -314,9 +312,11 @@ namespace March7thHoney.Proto {
       if (other.Tid != 0) {
         Tid = other.Tid;
       }
-      subAffixList_.Add(other.subAffixList_);
       if (other.Type != 0) {
         Type = other.Type;
+      }
+      if (other.Level != 0) {
+        Level = other.Level;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -337,28 +337,28 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            Level = input.ReadUInt32();
-            break;
-          }
-          case 24: {
-            Exp = input.ReadUInt32();
-            break;
-          }
           case 40: {
-            MainAffixId = input.ReadUInt32();
+            Type = input.ReadUInt32();
             break;
           }
-          case 56: {
+          case 48: {
             Tid = input.ReadUInt32();
             break;
           }
-          case 106: {
+          case 74: {
             subAffixList_.AddEntriesFrom(input, _repeated_subAffixList_codec);
             break;
           }
-          case 120: {
-            Type = input.ReadUInt32();
+          case 88: {
+            MainAffixId = input.ReadUInt32();
+            break;
+          }
+          case 96: {
+            Exp = input.ReadUInt32();
+            break;
+          }
+          case 112: {
+            Level = input.ReadUInt32();
             break;
           }
         }
@@ -380,28 +380,28 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            Level = input.ReadUInt32();
-            break;
-          }
-          case 24: {
-            Exp = input.ReadUInt32();
-            break;
-          }
           case 40: {
-            MainAffixId = input.ReadUInt32();
+            Type = input.ReadUInt32();
             break;
           }
-          case 56: {
+          case 48: {
             Tid = input.ReadUInt32();
             break;
           }
-          case 106: {
+          case 74: {
             subAffixList_.AddEntriesFrom(ref input, _repeated_subAffixList_codec);
             break;
           }
-          case 120: {
-            Type = input.ReadUInt32();
+          case 88: {
+            MainAffixId = input.ReadUInt32();
+            break;
+          }
+          case 96: {
+            Exp = input.ReadUInt32();
+            break;
+          }
+          case 112: {
+            Level = input.ReadUInt32();
             break;
           }
         }

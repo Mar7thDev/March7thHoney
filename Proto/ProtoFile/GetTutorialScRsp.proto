@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "Tutorial.proto";
 
 message GetTutorialScRsp {
-    repeated Tutorial tutorial_list = 1;
-    uint32 retcode = 10;
+    repeated Tutorial tutorial_list = 2;
+    uint32 retcode = 4;
 }

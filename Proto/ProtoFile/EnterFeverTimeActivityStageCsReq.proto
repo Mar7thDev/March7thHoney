@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "HAJAOGGPCJC.proto";
+import "KPNHGDGLICN.proto";
 
 message EnterFeverTimeActivityStageCsReq {
-    repeated HAJAOGGPCJC avatar_list = 1;
-    uint32 MBNNAGEIAAH = 5;
-    uint32 id = 8;
-    uint32 GDBOODKLBMK = 13;
+    repeated KPNHGDGLICN avatar_list = 15;
+    uint32 CJHDABDKGHP = 11;
+    uint32 id = 6;
+    uint32 MFLAIMHFABP = 1;
 }

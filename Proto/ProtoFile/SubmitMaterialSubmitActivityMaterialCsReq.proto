@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message SubmitMaterialSubmitActivityMaterialCsReq {
-    uint32 KAPGHPNEOEK = 5;
+    uint32 LNOCOOCMNCI = 11;
 }

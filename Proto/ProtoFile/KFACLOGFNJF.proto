@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "BMCNDLNONMO.proto";
+import "ChessRogueDiceStatus.proto";
+import "ChessRogueDiceType.proto";
+import "HGCIAPKELAF.proto";
+import "LMNCBIDKHLF.proto";
+
+message KFACLOGFNJF {
+    repeated uint32 BDGMPDLBDGN = 887;
+    HGCIAPKELAF GMDKBGODBCB = 1035;
+    LMNCBIDKHLF BOPGHOPCFHF = 910;
+    BMCNDLNONMO OBLADGDFCCN = 505;
+    uint32 JDLKMDFFMGP = 3;
+    uint32 BMLMHPPLDDE = 5;
+    uint32 DGLIOIEKGNP = 12;
+    uint32 PJFAFGLNDGE = 7;
+    uint32 FLADMNIKGEI = 1;
+    ChessRogueDiceType CEBDDDJMJIJ = 2;
+    bool BGDHHJLICFA = 9;
+    bool IHCAMLMFAOH = 100;
+    uint32 DGHEPBKLKDP = 10;
+    uint32 EFDMLFGILKK = 15;
+    int32 CMDDPMHCALK = 1994;
+    ChessRogueDiceStatus OACDALINONI = 4;
+    uint32 ONCIOGBKPPI = 13;
+}

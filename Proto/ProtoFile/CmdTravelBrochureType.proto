@@ -2,28 +2,26 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdTravelBrochureType {
-    KHHBBCAJHHN_KBCMIMMJFDO = 0;
-    CmdTravelBrochureGetDataScRsp = 6410;
-    CmdTravelBrochureApplyPasterListScRsp = 6458;
-    CmdTravelBrochureGetDataCsReq = 6491;
-    CmdKEJIIOGIHJE = 6432;
-    CmdIHGIOEHHFAO = 6438;
-    CmdTravelBrochurePageResetCsReq = 6433;
-    CmdTravelBrochureSelectMessageCsReq = 6414;
-    CmdDPPJIOPGKJI = 6401;
-    CmdCKKAHFIDJLM = 6498;
-    CmdTravelBrochureSelectMessageScRsp = 6418;
-    CmdTravelBrochureUpdatePasterPosCsReq = 6439;
-    KHHBBCAJHHN_FDKELLDPDMB = 6409;
-    CmdTravelBrochureApplyPasterListCsReq = 6407;
-    CmdTravelBrochurePageResetScRsp = 6461;
-    CmdKGJCEOFKEHA = 6426;
-    CmdTravelBrochureSetCustomValueCsReq = 6404;
-    CmdTravelBrochureRemovePasterCsReq = 6463;
-    CmdAPHOLANKEPN = 6474;
-    CmdTravelBrochureSetPageDescStatusCsReq = 6472;
-    CmdTravelBrochurePageUnlockScNotify = 6494;
+    CJBNLBINFJJ_NFDNDMDGICK = 0;
+    CJBNLBINFJJ_BMCNHNBAMEG = 6442;
+    CJBNLBINFJJ_EPAJNBOJIDC = 6410;
+    CJBNLBINFJJ_EEMPLJMDILN = 6478;
+    CJBNLBINFJJ_MKAGOFKLIDL = 6436;
+    CJBNLBINFJJ_FDJFMFOABGH = 6429;
+    CJBNLBINFJJ_OIIPPCADMJL = 6438;
+    CJBNLBINFJJ_MMKKFKILNHC = 6476;
+    CJBNLBINFJJ_KMPFMCDOIFC = 6454;
+    CJBNLBINFJJ_KIAFALEPDON = 6473;
+    CJBNLBINFJJ_GFIPKGHIEFA = 6461;
+    CJBNLBINFJJ_EJAPHKDGPPF = 6471;
+    CJBNLBINFJJ_DBKBAPOPEPM = 6403;
+    CJBNLBINFJJ_MNDOCNOJJHJ = 6481;
+    CJBNLBINFJJ_ICGJCPFKPIM = 6487;
+    CJBNLBINFJJ_OHBJDDEGHFN = 6412;
+    CJBNLBINFJJ_FJDONLFJLLG = 6424;
+    CJBNLBINFJJ_JDEIAPOAHNN = 6480;
+    CJBNLBINFJJ_MJCHINMBDJC = 6413;
+    CJBNLBINFJJ_LEJLGAEDOEN = 6415;
+    CJBNLBINFJJ_NIBHBJGPMKG = 6409;
 }

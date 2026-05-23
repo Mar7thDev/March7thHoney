@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "MOHMAHDOBDO.proto";
+
+message IBHHJPCIOIC {
+    map<string, MOHMAHDOBDO> JKMHAJHIKIK = 2;
+    bytes AFMFNCGCNHI = 3;
+    bool ECLAGOJMMBO = 1;
+}

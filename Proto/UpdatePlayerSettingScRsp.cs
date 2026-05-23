@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch5VcGRhdGVQbGF5ZXJTZXR0aW5nU2NSc3AucHJvdG8aGVVwZGF0ZVBsYXll",
-            "clNldHRpbmcucHJvdG8iWQoYVXBkYXRlUGxheWVyU2V0dGluZ1NjUnNwEg8K",
-            "B3JldGNvZGUYAyABKA0SLAoOcGxheWVyX3NldHRpbmcYDCABKAsyFC5VcGRh",
-            "dGVQbGF5ZXJTZXR0aW5nQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
+            "clNldHRpbmcucHJvdG8iWQoYVXBkYXRlUGxheWVyU2V0dGluZ1NjUnNwEiwK",
+            "DnBsYXllcl9zZXR0aW5nGAkgASgLMhQuVXBkYXRlUGxheWVyU2V0dGluZxIP",
+            "CgdyZXRjb2RlGAggASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
             "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.UpdatePlayerSettingReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UpdatePlayerSettingScRsp), global::March7thHoney.Proto.UpdatePlayerSettingScRsp.Parser, new[]{ "Retcode", "PlayerSetting" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UpdatePlayerSettingScRsp), global::March7thHoney.Proto.UpdatePlayerSettingScRsp.Parser, new[]{ "PlayerSetting", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,8 +74,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public UpdatePlayerSettingScRsp(UpdatePlayerSettingScRsp other) : this() {
-      retcode_ = other.retcode_;
       playerSetting_ = other.playerSetting_ != null ? other.playerSetting_.Clone() : null;
+      retcode_ = other.retcode_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,20 +85,8 @@ namespace March7thHoney.Proto {
       return new UpdatePlayerSettingScRsp(this);
     }
 
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 3;
-    private uint retcode_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
-      set {
-        retcode_ = value;
-      }
-    }
-
     /// <summary>Field number for the "player_setting" field.</summary>
-    public const int PlayerSettingFieldNumber = 12;
+    public const int PlayerSettingFieldNumber = 9;
     private global::March7thHoney.Proto.UpdatePlayerSetting playerSetting_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -106,6 +94,18 @@ namespace March7thHoney.Proto {
       get { return playerSetting_; }
       set {
         playerSetting_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 8;
+    private uint retcode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Retcode {
+      get { return retcode_; }
+      set {
+        retcode_ = value;
       }
     }
 
@@ -124,8 +124,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Retcode != other.Retcode) return false;
       if (!object.Equals(PlayerSetting, other.PlayerSetting)) return false;
+      if (Retcode != other.Retcode) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -133,8 +133,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (playerSetting_ != null) hash ^= PlayerSetting.GetHashCode();
+      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -154,11 +154,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Retcode != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(64);
         output.WriteUInt32(Retcode);
       }
       if (playerSetting_ != null) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(74);
         output.WriteMessage(PlayerSetting);
       }
       if (_unknownFields != null) {
@@ -172,11 +172,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Retcode != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(64);
         output.WriteUInt32(Retcode);
       }
       if (playerSetting_ != null) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(74);
         output.WriteMessage(PlayerSetting);
       }
       if (_unknownFields != null) {
@@ -189,11 +189,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Retcode != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
-      }
       if (playerSetting_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(PlayerSetting);
+      }
+      if (Retcode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -207,14 +207,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
-      }
       if (other.playerSetting_ != null) {
         if (playerSetting_ == null) {
           PlayerSetting = new global::March7thHoney.Proto.UpdatePlayerSetting();
         }
         PlayerSetting.MergeFrom(other.PlayerSetting);
+      }
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -235,11 +235,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
+          case 64: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 98: {
+          case 74: {
             if (playerSetting_ == null) {
               PlayerSetting = new global::March7thHoney.Proto.UpdatePlayerSetting();
             }
@@ -265,11 +265,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
+          case 64: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 98: {
+          case 74: {
             if (playerSetting_ == null) {
               PlayerSetting = new global::March7thHoney.Proto.UpdatePlayerSetting();
             }

@@ -24,10 +24,10 @@ namespace March7thHoney.Proto {
     static RogueTalentStatusReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChdSb2d1ZVRhbGVudFN0YXR1cy5wcm90bypqChFSb2d1ZVRhbGVudFN0YXR1",
-            "cxIbChdKSElETEJISlBCSl9ES0xQQUFGRkxFRRAAEhsKF0pISURMQkhKUEJK",
-            "X05HTU1JQ09HREZQEAESGwoXSkhJRExCSEpQQkpfS1BBS0FLT0dEQ00QAkIW",
-            "qgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChdSb2d1ZVRhbGVudFN0YXR1cy5wcm90bypsChFSb2d1ZVRhbGVudFN0YXR1",
+            "cxIbChdQT05ITlBMTEtBQl9HQUpHQkJGRUxFTBAAEhsKF1BPTkhOUExMS0FC",
+            "X0JGQURGQUVMS0xKEAESHQoZUE9OSE5QTExLQUJfaGFzX3JlY29tbWFuZBAC",
+            "QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.RogueTalentStatus), }, null, null));
@@ -37,9 +37,9 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum RogueTalentStatus {
-    [pbr::OriginalName("JHIDLBHJPBJ_DKLPAAFFLEE")] JhidlbhjpbjDklpaafflee = 0,
-    [pbr::OriginalName("JHIDLBHJPBJ_NGMMICOGDFP")] JhidlbhjpbjNgmmicogdfp = 1,
-    [pbr::OriginalName("JHIDLBHJPBJ_KPAKAKOGDCM")] JhidlbhjpbjKpakakogdcm = 2,
+    [pbr::OriginalName("PONHNPLLKAB_GAJGBBFELEL")] PonhnpllkabGajgbbfelel = 0,
+    [pbr::OriginalName("PONHNPLLKAB_BFADFAELKLJ")] PonhnpllkabBfadfaelklj = 1,
+    [pbr::OriginalName("PONHNPLLKAB_has_recommand")] PonhnpllkabHasRecommand = 2,
   }
 
   #endregion

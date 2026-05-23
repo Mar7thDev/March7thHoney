@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChZTZXROaWNrbmFtZUNzUmVxLnByb3RvIjcKEFNldE5pY2tuYW1lQ3NSZXES",
-            "EAoIbmlja25hbWUYAyABKAkSEQoJaXNfbW9kaWZ5GAwgASgIQhaqAhNNYXJj",
+            "EAoIbmlja25hbWUYBiABKAkSEQoJaXNfbW9kaWZ5GA0gASgIQhaqAhNNYXJj",
             "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "nickname" field.</summary>
-    public const int NicknameFieldNumber = 3;
+    public const int NicknameFieldNumber = 6;
     private string nickname_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "is_modify" field.</summary>
-    public const int IsModifyFieldNumber = 12;
+    public const int IsModifyFieldNumber = 13;
     private bool isModify_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Nickname.Length != 0) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(50);
         output.WriteString(Nickname);
       }
       if (IsModify != false) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(104);
         output.WriteBool(IsModify);
       }
       if (_unknownFields != null) {
@@ -170,11 +170,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Nickname.Length != 0) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(50);
         output.WriteString(Nickname);
       }
       if (IsModify != false) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(104);
         output.WriteBool(IsModify);
       }
       if (_unknownFields != null) {
@@ -230,11 +230,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 26: {
+          case 50: {
             Nickname = input.ReadString();
             break;
           }
-          case 96: {
+          case 104: {
             IsModify = input.ReadBool();
             break;
           }
@@ -257,11 +257,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 26: {
+          case 50: {
             Nickname = input.ReadString();
             break;
           }
-          case 96: {
+          case 104: {
             IsModify = input.ReadBool();
             break;
           }

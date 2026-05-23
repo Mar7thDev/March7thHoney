@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "SpBarInfo.proto";
+
+message FFMOAGPPHGP {
+    SpBarInfo sp_bar = 6;
+    uint32 avatar_type = 9;
+    uint32 hp = 4;
+    uint32 avatar_id = 2;
+    uint32 KHJKDLNAMIP = 5;
+}

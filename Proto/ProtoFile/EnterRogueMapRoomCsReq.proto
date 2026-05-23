@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message EnterRogueMapRoomCsReq {
-    uint32 HCMJDMFNENE = 14;
     uint32 room_id = 15;
+    uint32 MAJKFIMPOOF = 7;
 }

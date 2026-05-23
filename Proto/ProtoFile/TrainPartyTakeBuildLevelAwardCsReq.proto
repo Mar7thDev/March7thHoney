@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message TrainPartyTakeBuildLevelAwardCsReq {
-    uint32 HBLOHOFKKKO = 15;
+    uint32 FPHFHCGNNGM = 4;
 }

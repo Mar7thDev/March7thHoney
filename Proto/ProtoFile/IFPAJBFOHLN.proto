@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message IFPAJBFOHLN {
+    uint32 DCAHJELNJNP = 4;
+    uint32 role_id = 12;
+    uint32 section_id = 10;
+}

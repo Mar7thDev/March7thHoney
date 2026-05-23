@@ -390,3 +390,6 @@ Config/Hotfix.json
 Research/AccountPlatNative_CN.dll
 Research/AccountPlatNative_OS.dll
 Research/AccountPlatNative_OS.dll.i64
+
+## test dir
+tmp/

@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message StarPerformanceRelayCsReq {
-    uint32 HFELBAKLHCA = 7;
-    uint32 performance_id = 13;
+    uint32 DNGFHOEACBI = 2;
+    uint32 performance_id = 10;
 }

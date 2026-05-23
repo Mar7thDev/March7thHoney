@@ -5,7 +5,7 @@ namespace March7thHoney.GameServer.Server.Packet.Send.Mission;
 
 public class PacketUpdateTrackMainMissionIdScRsp : BasePacket
 {
-    public PacketUpdateTrackMainMissionIdScRsp(int prev, int cur) : base(CmdIds.UpdateTrackMainMissionIdScRsp)
+    public PacketUpdateTrackMainMissionIdScRsp(int prev, int cur) : base(CmdIds.UpdateTrackMainMissionScRsp)
     {
         var proto = new UpdateTrackMainMissionScRsp
         {

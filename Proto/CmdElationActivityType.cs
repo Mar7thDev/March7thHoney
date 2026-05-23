@@ -24,13 +24,12 @@ namespace March7thHoney.Proto {
     static CmdElationActivityTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChxDbWRFbGF0aW9uQWN0aXZpdHlUeXBlLnByb3RvKvkBChZDbWRFbGF0aW9u",
-            "QWN0aXZpdHlUeXBlEhsKF0xNQUxCT0FQS09IX1BDUERIRUxQS0VNEAASKAoj",
-            "Q21kRWxhdGlvbkFjdGl2aXR5QmF0dGxlRW5kU2NOb3RpZnkQkUcSJgohQ21k",
-            "RW50ZXJFbGF0aW9uQWN0aXZpdHlTdGFnZVNjUnNwEJNHEiYKIUNtZEVudGVy",
-            "RWxhdGlvbkFjdGl2aXR5U3RhZ2VDc1JlcRCNRxIjCh5DbWRHZXRFbGF0aW9u",
-            "QWN0aXZpdHlEYXRhU2NSc3AQlkcSIwoeQ21kR2V0QWN0aXZpdHlFbGF0aW9u",
-            "RGF0YUNzUmVxEJVHQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ChxDbWRFbGF0aW9uQWN0aXZpdHlUeXBlLnByb3RvKssBChZDbWRFbGF0aW9u",
+            "QWN0aXZpdHlUeXBlEhsKF0dGT0NESEZNQkJDX05MQ0RHSVBHRkRKEAASHAoX",
+            "R0ZPQ0RIRk1CQkNfRkFHQ0RKTEhBQUUQlUcSHAoXR0ZPQ0RIRk1CQkNfQUVD",
+            "S0pGRkVMQkoQlkcSHAoXR0ZPQ0RIRk1CQkNfRUxOR0RNS0JISUUQkEcSHAoX",
+            "R0ZPQ0RIRk1CQkNfR01DSU1JTUpOS0MQjkcSHAoXR0ZPQ0RIRk1CQkNfTkxO",
+            "R0dBQkJFRUsQlEdCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdElationActivityType), }, null, null));
@@ -40,12 +39,12 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdElationActivityType {
-    [pbr::OriginalName("LMALBOAPKOH_PCPDHELPKEM")] LmalboapkohPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdElationActivityBattleEndScNotify")] CmdElationActivityBattleEndScNotify = 9105,
-    [pbr::OriginalName("CmdEnterElationActivityStageScRsp")] CmdEnterElationActivityStageScRsp = 9107,
-    [pbr::OriginalName("CmdEnterElationActivityStageCsReq")] CmdEnterElationActivityStageCsReq = 9101,
-    [pbr::OriginalName("CmdGetElationActivityDataScRsp")] CmdGetElationActivityDataScRsp = 9110,
-    [pbr::OriginalName("CmdGetActivityElationDataCsReq")] CmdGetActivityElationDataCsReq = 9109,
+    [pbr::OriginalName("GFOCDHFMBBC_NLCDGIPGFDJ")] GfocdhfmbbcNlcdgipgfdj = 0,
+    [pbr::OriginalName("GFOCDHFMBBC_FAGCDJLHAAE")] GfocdhfmbbcFagcdjlhaae = 9109,
+    [pbr::OriginalName("GFOCDHFMBBC_AECKJFFELBJ")] GfocdhfmbbcAeckjffelbj = 9110,
+    [pbr::OriginalName("GFOCDHFMBBC_ELNGDMKBHIE")] GfocdhfmbbcElngdmkbhie = 9104,
+    [pbr::OriginalName("GFOCDHFMBBC_GMCIMIMJNKC")] GfocdhfmbbcGmcimimjnkc = 9102,
+    [pbr::OriginalName("GFOCDHFMBBC_NLNGGABBEEK")] GfocdhfmbbcNlnggabbeek = 9108,
   }
 
   #endregion

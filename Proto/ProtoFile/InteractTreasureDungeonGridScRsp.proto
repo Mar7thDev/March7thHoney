@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "KPBGMOCCMLA.proto";
+import "PPONNIHFJAP.proto";
 
 message InteractTreasureDungeonGridScRsp {
-    KPBGMOCCMLA IKHJLMAKNCD = 3;
-    uint32 retcode = 14;
+    PPONNIHFJAP IMHNGDFGJJA = 3;
+    uint32 retcode = 6;
 }

@@ -2,14 +2,12 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "HLLCDBLCIPK.proto";
+import "GNMCIEPEBPK.proto";
 
 message PlanetFesAvatarLevelUpScRsp {
-    uint32 IHLLMLLNIFN = 1;
-    HLLCDBLCIPK reward = 3;
-    uint32 retcode = 5;
-    uint32 ODADJILOEKO = 9;
-    uint32 avatar_id = 15;
+    GNMCIEPEBPK reward = 2;
+    uint32 retcode = 14;
+    uint32 IGOOJKMPMDC = 3;
+    uint32 KPGNEABOECG = 9;
+    uint32 avatar_id = 11;
 }

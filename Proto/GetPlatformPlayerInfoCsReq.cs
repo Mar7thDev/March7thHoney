@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiBHZXRQbGF0Zm9ybVBsYXllckluZm9Dc1JlcS5wcm90bxoSUGxhdGZvcm1U",
-            "eXBlLnByb3RvIlIKGkdldFBsYXRmb3JtUGxheWVySW5mb0NzUmVxEhMKC1BC",
-            "SExIRlBJQUNQGAEgAygJEh8KCHBsYXRmb3JtGA4gASgOMg0uUGxhdGZvcm1U",
+            "eXBlLnByb3RvIlIKGkdldFBsYXRmb3JtUGxheWVySW5mb0NzUmVxEhMKC0VQ",
+            "SUJKQU1JSkZJGAYgAygJEh8KCHBsYXRmb3JtGAogASgOMg0uUGxhdGZvcm1U",
             "eXBlQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.PlatformTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetPlatformPlayerInfoCsReq), global::March7thHoney.Proto.GetPlatformPlayerInfoCsReq.Parser, new[]{ "PBHLHFPIACP", "Platform" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetPlatformPlayerInfoCsReq), global::March7thHoney.Proto.GetPlatformPlayerInfoCsReq.Parser, new[]{ "EPIBJAMIJFI", "Platform" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,7 +73,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetPlatformPlayerInfoCsReq(GetPlatformPlayerInfoCsReq other) : this() {
-      pBHLHFPIACP_ = other.pBHLHFPIACP_.Clone();
+      ePIBJAMIJFI_ = other.ePIBJAMIJFI_.Clone();
       platform_ = other.platform_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -84,19 +84,19 @@ namespace March7thHoney.Proto {
       return new GetPlatformPlayerInfoCsReq(this);
     }
 
-    /// <summary>Field number for the "PBHLHFPIACP" field.</summary>
-    public const int PBHLHFPIACPFieldNumber = 1;
-    private static readonly pb::FieldCodec<string> _repeated_pBHLHFPIACP_codec
-        = pb::FieldCodec.ForString(10);
-    private readonly pbc::RepeatedField<string> pBHLHFPIACP_ = new pbc::RepeatedField<string>();
+    /// <summary>Field number for the "EPIBJAMIJFI" field.</summary>
+    public const int EPIBJAMIJFIFieldNumber = 6;
+    private static readonly pb::FieldCodec<string> _repeated_ePIBJAMIJFI_codec
+        = pb::FieldCodec.ForString(50);
+    private readonly pbc::RepeatedField<string> ePIBJAMIJFI_ = new pbc::RepeatedField<string>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<string> PBHLHFPIACP {
-      get { return pBHLHFPIACP_; }
+    public pbc::RepeatedField<string> EPIBJAMIJFI {
+      get { return ePIBJAMIJFI_; }
     }
 
     /// <summary>Field number for the "platform" field.</summary>
-    public const int PlatformFieldNumber = 14;
+    public const int PlatformFieldNumber = 10;
     private global::March7thHoney.Proto.PlatformType platform_ = global::March7thHoney.Proto.PlatformType.Editor;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -122,7 +122,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!pBHLHFPIACP_.Equals(other.pBHLHFPIACP_)) return false;
+      if(!ePIBJAMIJFI_.Equals(other.ePIBJAMIJFI_)) return false;
       if (Platform != other.Platform) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -131,7 +131,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= pBHLHFPIACP_.GetHashCode();
+      hash ^= ePIBJAMIJFI_.GetHashCode();
       if (Platform != global::March7thHoney.Proto.PlatformType.Editor) hash ^= Platform.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -151,9 +151,9 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      pBHLHFPIACP_.WriteTo(output, _repeated_pBHLHFPIACP_codec);
+      ePIBJAMIJFI_.WriteTo(output, _repeated_ePIBJAMIJFI_codec);
       if (Platform != global::March7thHoney.Proto.PlatformType.Editor) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(80);
         output.WriteEnum((int) Platform);
       }
       if (_unknownFields != null) {
@@ -166,9 +166,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      pBHLHFPIACP_.WriteTo(ref output, _repeated_pBHLHFPIACP_codec);
+      ePIBJAMIJFI_.WriteTo(ref output, _repeated_ePIBJAMIJFI_codec);
       if (Platform != global::March7thHoney.Proto.PlatformType.Editor) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(80);
         output.WriteEnum((int) Platform);
       }
       if (_unknownFields != null) {
@@ -181,7 +181,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += pBHLHFPIACP_.CalculateSize(_repeated_pBHLHFPIACP_codec);
+      size += ePIBJAMIJFI_.CalculateSize(_repeated_ePIBJAMIJFI_codec);
       if (Platform != global::March7thHoney.Proto.PlatformType.Editor) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Platform);
       }
@@ -197,7 +197,7 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      pBHLHFPIACP_.Add(other.pBHLHFPIACP_);
+      ePIBJAMIJFI_.Add(other.ePIBJAMIJFI_);
       if (other.Platform != global::March7thHoney.Proto.PlatformType.Editor) {
         Platform = other.Platform;
       }
@@ -220,11 +220,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            pBHLHFPIACP_.AddEntriesFrom(input, _repeated_pBHLHFPIACP_codec);
+          case 50: {
+            ePIBJAMIJFI_.AddEntriesFrom(input, _repeated_ePIBJAMIJFI_codec);
             break;
           }
-          case 112: {
+          case 80: {
             Platform = (global::March7thHoney.Proto.PlatformType) input.ReadEnum();
             break;
           }
@@ -247,11 +247,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            pBHLHFPIACP_.AddEntriesFrom(ref input, _repeated_pBHLHFPIACP_codec);
+          case 50: {
+            ePIBJAMIJFI_.AddEntriesFrom(ref input, _repeated_ePIBJAMIJFI_codec);
             break;
           }
-          case 112: {
+          case 80: {
             Platform = (global::March7thHoney.Proto.PlatformType) input.ReadEnum();
             break;
           }

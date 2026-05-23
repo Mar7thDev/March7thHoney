@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum PunkLordShareType {
-    FOODOPDNDLK_PCPDHELPKEM = 0;
-    FOODOPDNDLK_DKCKDCLCPEL = 1;
-    FOODOPDNDLK_PNMCJHFNBOO = 2;
+    EOPODGPDKMO_NLCDGIPGFDJ = 0;
+    EOPODGPDKMO_ENFIEFPPCIC = 1;
+    EOPODGPDKMO_ACAOCKPIGPL = 2;
 }

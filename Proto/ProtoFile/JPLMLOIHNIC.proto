@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum JPLMLOIHNIC {
+    JPLMLOIHNIC_NLCDGIPGFDJ = 0;
+    JPLMLOIHNIC_PPANBKDPFFK = 1;
+    JPLMLOIHNIC_JPHLNOJLIAM = 2;
+}

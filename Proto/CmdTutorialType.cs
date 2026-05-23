@@ -24,17 +24,17 @@ namespace March7thHoney.Proto {
     static CmdTutorialTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChVDbWRUdXRvcmlhbFR5cGUucHJvdG8qnAMKD0NtZFR1dG9yaWFsVHlwZRIb",
-            "ChdGRU9GQUVFQk5QQV9QQ1BESEVMUEtFTRAAEiAKG0NtZFVubG9ja1R1dG9y",
-            "aWFsR3VpZGVTY1JzcBCiDRIdChhDbWRHZXRUdXRvcmlhbEd1aWRlQ3NSZXEQ",
-            "ng0SGAoTQ21kR2V0VHV0b3JpYWxDc1JlcRCbDRIgChtDbWRVbmxvY2tUdXRv",
-            "cmlhbEd1aWRlQ3NSZXEQyQwSHQoYQ21kR2V0VHV0b3JpYWxHdWlkZVNjUnNw",
-            "EJ8NEhsKFkNtZEZpbmlzaFR1dG9yaWFsU2NSc3AQ2gwSGAoTQ21kR2V0VHV0",
-            "b3JpYWxTY1JzcBDKDBIgChtDbWRGaW5pc2hUdXRvcmlhbEd1aWRlU2NSc3AQ",
-            "wQwSGwoWQ21kRmluaXNoVHV0b3JpYWxDc1JlcRD/DBIgChtDbWRGaW5pc2hU",
-            "dXRvcmlhbEd1aWRlQ3NSZXEQ5wwSGwoWQ21kVW5sb2NrVHV0b3JpYWxDc1Jl",
-            "cRDODBIbChZDbWRVbmxvY2tUdXRvcmlhbFNjUnNwENIMQhaqAhNNYXJjaDd0",
-            "aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ChVDbWRUdXRvcmlhbFR5cGUucHJvdG8qlgMKD0NtZFR1dG9yaWFsVHlwZRIb",
+            "ChdLQUFNQ0FMUElQRF9OTENER0lQR0ZEShAAEhwKF0tBQU1DQUxQSVBEX0dF",
+            "RERHRE5GTUxDEOQMEhwKF0tBQU1DQUxQSVBEX05HRkhBT09BQUdDEJENEhwK",
+            "F0tBQU1DQUxQSVBEX05GTkxPRkRNUElQEIkNEhwKF0tBQU1DQUxQSVBEX0JM",
+            "UEJOR0lGSUdOEM8MEhwKF0tBQU1DQUxQSVBEX0NPT1BJRUZDSk9DEMwMEhwK",
+            "F0tBQU1DQUxQSVBEX0JKS0tJRENCSElPEM0MEhwKF0tBQU1DQUxQSVBEX05L",
+            "Qk9ISFBLRE1FEMMMEhwKF0tBQU1DQUxQSVBEX0ZOQ0pEQUVMT0lIEJANEhwK",
+            "F0tBQU1DQUxQSVBEX0dNRE9DQURLT0VQEJcNEhwKF0tBQU1DQUxQSVBEX0NF",
+            "T0VCQ1BMTUZKEN0MEhwKF0tBQU1DQUxQSVBEX05JQUpJRUVKRlBLENsMEhwK",
+            "F0tBQU1DQUxQSVBEX0NLRkxIT0lJQUdQEMoMQhaqAhNNYXJjaDd0aEhvbmV5",
+            "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdTutorialType), }, null, null));
@@ -44,19 +44,19 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdTutorialType {
-    [pbr::OriginalName("FEOFAEEBNPA_PCPDHELPKEM")] FeofaeebnpaPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdUnlockTutorialGuideScRsp")] CmdUnlockTutorialGuideScRsp = 1698,
-    [pbr::OriginalName("CmdGetTutorialGuideCsReq")] CmdGetTutorialGuideCsReq = 1694,
-    [pbr::OriginalName("CmdGetTutorialCsReq")] CmdGetTutorialCsReq = 1691,
-    [pbr::OriginalName("CmdUnlockTutorialGuideCsReq")] CmdUnlockTutorialGuideCsReq = 1609,
-    [pbr::OriginalName("CmdGetTutorialGuideScRsp")] CmdGetTutorialGuideScRsp = 1695,
-    [pbr::OriginalName("CmdFinishTutorialScRsp")] CmdFinishTutorialScRsp = 1626,
-    [pbr::OriginalName("CmdGetTutorialScRsp")] CmdGetTutorialScRsp = 1610,
-    [pbr::OriginalName("CmdFinishTutorialGuideScRsp")] CmdFinishTutorialGuideScRsp = 1601,
-    [pbr::OriginalName("CmdFinishTutorialCsReq")] CmdFinishTutorialCsReq = 1663,
-    [pbr::OriginalName("CmdFinishTutorialGuideCsReq")] CmdFinishTutorialGuideCsReq = 1639,
-    [pbr::OriginalName("CmdUnlockTutorialCsReq")] CmdUnlockTutorialCsReq = 1614,
-    [pbr::OriginalName("CmdUnlockTutorialScRsp")] CmdUnlockTutorialScRsp = 1618,
+    [pbr::OriginalName("KAAMCALPIPD_NLCDGIPGFDJ")] KaamcalpipdNlcdgipgfdj = 0,
+    [pbr::OriginalName("KAAMCALPIPD_GEDDGDNFMLC")] KaamcalpipdGeddgdnfmlc = 1636,
+    [pbr::OriginalName("KAAMCALPIPD_NGFHAOOAAGC")] KaamcalpipdNgfhaooaagc = 1681,
+    [pbr::OriginalName("KAAMCALPIPD_NFNLOFDMPIP")] KaamcalpipdNfnlofdmpip = 1673,
+    [pbr::OriginalName("KAAMCALPIPD_BLPBNGIFIGN")] KaamcalpipdBlpbngifign = 1615,
+    [pbr::OriginalName("KAAMCALPIPD_COOPIEFCJOC")] KaamcalpipdCoopiefcjoc = 1612,
+    [pbr::OriginalName("KAAMCALPIPD_BJKKIDCBHIO")] KaamcalpipdBjkkidcbhio = 1613,
+    [pbr::OriginalName("KAAMCALPIPD_NKBOHHPKDME")] KaamcalpipdNkbohhpkdme = 1603,
+    [pbr::OriginalName("KAAMCALPIPD_FNCJDAELOIH")] KaamcalpipdFncjdaeloih = 1680,
+    [pbr::OriginalName("KAAMCALPIPD_GMDOCADKOEP")] KaamcalpipdGmdocadkoep = 1687,
+    [pbr::OriginalName("KAAMCALPIPD_CEOEBCPLMFJ")] KaamcalpipdCeoebcplmfj = 1629,
+    [pbr::OriginalName("KAAMCALPIPD_NIAJIEEJFPK")] KaamcalpipdNiajieejfpk = 1627,
+    [pbr::OriginalName("KAAMCALPIPD_CKFLHOIIAGP")] KaamcalpipdCkflhoiiagp = 1610,
   }
 
   #endregion

@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message LobbyInviteScRsp {
+    repeated uint32 uid_list = 12;
+    uint32 retcode = 15;
+}

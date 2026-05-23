@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdPlayerSyncType {
-    BJLOLIBBMLH_BCGNOEAOCOL = 0;
-    CmdPlayerSyncScNotify = 691;
+    OFHDDJMLOGG_LIDGOKIFPOJ = 0;
+    OFHDDJMLOGG_LMDPMECFOGM = 673;
 }

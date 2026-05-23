@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message HIHEHNIAGPF {
+    uint32 FBDENECLHIH = 3;
+    uint32 progress = 11;
+}

@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message CCGJDDBKIDE {
+    message OAKDCENFILP {
+        enum BBFEFIPJMEB {
+            BBFEFIPJMEB_OHDJNICJKLK = 0;
+            BBFEFIPJMEB_NCBOLDFDGNL = 1;
+            BBFEFIPJMEB_EKGPCJLBINA = 2;
+        }
+    }
+    CCGJDDBKIDE.OAKDCENFILP.BBFEFIPJMEB type = 5;
+    uint32 IMJBFLJPMJB = 13;
+}

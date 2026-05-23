@@ -25,9 +25,9 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch9DaGltZXJhUm91bmRXb3JrRW5kUmVhc29uLnByb3RvKo8BChlDaGltZXJh",
-            "Um91bmRXb3JrRW5kUmVhc29uEhsKF0RKRkZJQ0VFQkFBX09EQ0VPTUpBQ01F",
-            "EAASGwoXREpGRklDRUVCQUFfT0hGR0ZCTEJIRUsQARIbChdESkZGSUNFRUJB",
-            "QV9DR0xGR0ZIQkVLQhACEhsKF0RKRkZJQ0VFQkFBX0dHREtETENQQUpBEANC",
+            "Um91bmRXb3JrRW5kUmVhc29uEhsKF1BPQ0pNREtNQUJJX0tNT0tES0NMTUxE",
+            "EAASGwoXUE9DSk1ES01BQklfQktHUEFLSEpOS00QARIbChdQT0NKTURLTUFC",
+            "SV9MSkVNSk1DTEdESBACEhsKF1BPQ0pNREtNQUJJX0tMRUtDRkhMT0dPEANC",
             "FqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -38,10 +38,10 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum ChimeraRoundWorkEndReason {
-    [pbr::OriginalName("DJFFICEEBAA_ODCEOMJACME")] DjfficeebaaOdceomjacme = 0,
-    [pbr::OriginalName("DJFFICEEBAA_OHFGFBLBHEK")] DjfficeebaaOhfgfblbhek = 1,
-    [pbr::OriginalName("DJFFICEEBAA_CGLFGFHBEKB")] DjfficeebaaCglfgfhbekb = 2,
-    [pbr::OriginalName("DJFFICEEBAA_GGDKDLCPAJA")] DjfficeebaaGgdkdlcpaja = 3,
+    [pbr::OriginalName("POCJMDKMABI_KMOKDKCLMLD")] PocjmdkmabiKmokdkclmld = 0,
+    [pbr::OriginalName("POCJMDKMABI_BKGPAKHJNKM")] PocjmdkmabiBkgpakhjnkm = 1,
+    [pbr::OriginalName("POCJMDKMABI_LJEMJMCLGDH")] PocjmdkmabiLjemjmclgdh = 2,
+    [pbr::OriginalName("POCJMDKMABI_KLEKCFHLOGO")] PocjmdkmabiKlekcfhlogo = 3,
   }
 
   #endregion

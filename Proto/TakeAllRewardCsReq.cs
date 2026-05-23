@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChhUYWtlQWxsUmV3YXJkQ3NSZXEucHJvdG8aFE9wdGlvbmFsUmV3YXJkLnBy",
-            "b3RvIjoKElRha2VBbGxSZXdhcmRDc1JlcRIkCgtHR0JLT0ZLRUhORBgJIAMo",
+            "b3RvIjoKElRha2VBbGxSZXdhcmRDc1JlcRIkCgtFSUtLQUxBREVITRgDIAMo",
             "CzIPLk9wdGlvbmFsUmV3YXJkQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZw",
             "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.OptionalRewardReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TakeAllRewardCsReq), global::March7thHoney.Proto.TakeAllRewardCsReq.Parser, new[]{ "GGBKOFKEHND" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TakeAllRewardCsReq), global::March7thHoney.Proto.TakeAllRewardCsReq.Parser, new[]{ "EIKKALADEHM" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,7 +73,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public TakeAllRewardCsReq(TakeAllRewardCsReq other) : this() {
-      gGBKOFKEHND_ = other.gGBKOFKEHND_.Clone();
+      eIKKALADEHM_ = other.eIKKALADEHM_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,15 +83,15 @@ namespace March7thHoney.Proto {
       return new TakeAllRewardCsReq(this);
     }
 
-    /// <summary>Field number for the "GGBKOFKEHND" field.</summary>
-    public const int GGBKOFKEHNDFieldNumber = 9;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.OptionalReward> _repeated_gGBKOFKEHND_codec
-        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.OptionalReward.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.OptionalReward> gGBKOFKEHND_ = new pbc::RepeatedField<global::March7thHoney.Proto.OptionalReward>();
+    /// <summary>Field number for the "EIKKALADEHM" field.</summary>
+    public const int EIKKALADEHMFieldNumber = 3;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.OptionalReward> _repeated_eIKKALADEHM_codec
+        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.OptionalReward.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.OptionalReward> eIKKALADEHM_ = new pbc::RepeatedField<global::March7thHoney.Proto.OptionalReward>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.OptionalReward> GGBKOFKEHND {
-      get { return gGBKOFKEHND_; }
+    public pbc::RepeatedField<global::March7thHoney.Proto.OptionalReward> EIKKALADEHM {
+      get { return eIKKALADEHM_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -109,7 +109,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!gGBKOFKEHND_.Equals(other.gGBKOFKEHND_)) return false;
+      if(!eIKKALADEHM_.Equals(other.eIKKALADEHM_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -117,7 +117,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= gGBKOFKEHND_.GetHashCode();
+      hash ^= eIKKALADEHM_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -136,7 +136,7 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      gGBKOFKEHND_.WriteTo(output, _repeated_gGBKOFKEHND_codec);
+      eIKKALADEHM_.WriteTo(output, _repeated_eIKKALADEHM_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -147,7 +147,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      gGBKOFKEHND_.WriteTo(ref output, _repeated_gGBKOFKEHND_codec);
+      eIKKALADEHM_.WriteTo(ref output, _repeated_eIKKALADEHM_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -158,7 +158,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += gGBKOFKEHND_.CalculateSize(_repeated_gGBKOFKEHND_codec);
+      size += eIKKALADEHM_.CalculateSize(_repeated_eIKKALADEHM_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -171,7 +171,7 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      gGBKOFKEHND_.Add(other.gGBKOFKEHND_);
+      eIKKALADEHM_.Add(other.eIKKALADEHM_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -191,8 +191,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 74: {
-            gGBKOFKEHND_.AddEntriesFrom(input, _repeated_gGBKOFKEHND_codec);
+          case 26: {
+            eIKKALADEHM_.AddEntriesFrom(input, _repeated_eIKKALADEHM_codec);
             break;
           }
         }
@@ -214,8 +214,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 74: {
-            gGBKOFKEHND_.AddEntriesFrom(ref input, _repeated_gGBKOFKEHND_codec);
+          case 26: {
+            eIKKALADEHM_.AddEntriesFrom(ref input, _repeated_eIKKALADEHM_codec);
             break;
           }
         }

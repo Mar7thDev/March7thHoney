@@ -2,14 +2,12 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdBenefitActivityType {
-    DLJPALHAPPL_PCPDHELPKEM = 0;
-    CmdGetBenefitActivityInfo = 4857;
-    CmdCDFGBPOPNAL = 4888;
-    CmdJoinBenefitActivityCsReq = 4885;
-    CmdGetBenefitActivityInfoCsReq = 4863;
-    CmdTakeBenefitActivityRewardCsReq = 4880;
-    CmdTakeBenefitActivityRewardScRsp = 4877;
+    CCOCNFLIOGK_NLCDGIPGFDJ = 0;
+    CCOCNFLIOGK_GEBPBMHOAKE = 4894;
+    CCOCNFLIOGK_MKDHLCBNNGO = 4877;
+    CCOCNFLIOGK_IPAGACDDOFA = 4882;
+    CCOCNFLIOGK_PNDFJJKAFCI = 4857;
+    CCOCNFLIOGK_ECFPFPKMFFN = 4892;
+    CCOCNFLIOGK_CFBPOIPOLAL = 4873;
 }

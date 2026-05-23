@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message RogueTournReEnterRogueCocoonStageCsReq {
-    bool NBDHADPNGNH = 12;
+    bool FDEKKOKBDIC = 3;
 }

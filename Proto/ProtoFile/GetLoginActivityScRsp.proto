@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "LoginActivityData.proto";
 
 message GetLoginActivityScRsp {
-    repeated LoginActivityData login_activity_list = 9;
-    uint32 retcode = 15;
+    repeated LoginActivityData login_activity_list = 5;
+    uint32 retcode = 6;
 }

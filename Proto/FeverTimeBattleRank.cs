@@ -25,10 +25,10 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChlGZXZlclRpbWVCYXR0bGVSYW5rLnByb3RvKqYBChNGZXZlclRpbWVCYXR0",
-            "bGVSYW5rEhsKF0dLTkxHSUJDTENOX0lKTEpGUEtJRU9QEAASGwoXR0tOTEdJ",
-            "QkNMQ05fQUJNQk9NSlBNTkQQARIbChdHS05MR0lCQ0xDTl9FRkxKRERCQ0lG",
-            "RBACEhsKF0dLTkxHSUJDTENOX0NLT0RMREVQRVBHEAMSGwoXR0tOTEdJQkNM",
-            "Q05fRENQTkFJTElLRk0QBEIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJv",
+            "bGVSYW5rEhsKF05OTlBPSUpFTkpDX1BJQ0xJR0VBSkZOEAASGwoXTk5OUE9J",
+            "SkVOSkNfT0dQTk9ESEVOS04QARIbChdOTk5QT0lKRU5KQ19KUERCRExFRUhH",
+            "SxACEhsKF05OTlBPSUpFTkpDX0JNSE1NSU1PQUlKEAMSGwoXTk5OUE9JSkVO",
+            "SkNfRENHQVBOR0NDRUgQBEIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJv",
             "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -39,11 +39,11 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum FeverTimeBattleRank {
-    [pbr::OriginalName("GKNLGIBCLCN_IJLJFPKIEOP")] GknlgibclcnIjljfpkieop = 0,
-    [pbr::OriginalName("GKNLGIBCLCN_ABMBOMJPMND")] GknlgibclcnAbmbomjpmnd = 1,
-    [pbr::OriginalName("GKNLGIBCLCN_EFLJDDBCIFD")] GknlgibclcnEfljddbcifd = 2,
-    [pbr::OriginalName("GKNLGIBCLCN_CKODLDEPEPG")] GknlgibclcnCkodldepepg = 3,
-    [pbr::OriginalName("GKNLGIBCLCN_DCPNAILIKFM")] GknlgibclcnDcpnailikfm = 4,
+    [pbr::OriginalName("NNNPOIJENJC_PICLIGEAJFN")] NnnpoijenjcPicligeajfn = 0,
+    [pbr::OriginalName("NNNPOIJENJC_OGPNODHENKN")] NnnpoijenjcOgpnodhenkn = 1,
+    [pbr::OriginalName("NNNPOIJENJC_JPDBDLEEHGK")] NnnpoijenjcJpdbdleehgk = 2,
+    [pbr::OriginalName("NNNPOIJENJC_BMHMMIMOAIJ")] NnnpoijenjcBmhmmimoaij = 3,
+    [pbr::OriginalName("NNNPOIJENJC_DCGAPNGCCEH")] NnnpoijenjcDcgapngcceh = 4,
   }
 
   #endregion

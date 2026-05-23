@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message ClockParkUnlockTalentCsReq {
-    uint32 KFJEMIOJLPJ = 8;
+    uint32 CKHCLKOALKE = 11;
 }

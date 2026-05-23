@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "DMGDLEHEDFB.proto";
+import "GHBICGMEFPL.proto";
+
+message EquipAetherDividePassiveSkillScRsp {
+    GHBICGMEFPL IAGNGEGKDOL = 2;
+    DMGDLEHEDFB LCCMCPMCLFH = 6;
+    uint32 retcode = 12;
+}

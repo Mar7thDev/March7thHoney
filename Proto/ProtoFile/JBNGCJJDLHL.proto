@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "IJHPILBBHDI.proto";
+
+message JBNGCJJDLHL {
+    repeated IJHPILBBHDI CFNNMOCBBFM = 8;
+    uint32 gift_type = 5;
+    int64 end_time = 15;
+    int64 IFEPJHGNCOI = 10;
+}

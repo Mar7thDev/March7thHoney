@@ -25,17 +25,17 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cg9HYWNoYUluZm8ucHJvdG8aEkdhY2hhQ2VpbGluZy5wcm90byKZAgoJR2Fj",
-            "aGFJbmZvEhAKCGVuZF90aW1lGAIgASgDEhIKCmJlZ2luX3RpbWUYAyABKAMS",
-            "GAoQaXRlbV9kZXRhaWxfbGlzdBgGIAMoDRIQCghnYWNoYV9pZBgHIAEoDRIT",
-            "CgtQQVBPS0FDSVBQShgIIAEoDRITCgtDQkhBRUZOQUZMRRgJIAMoDRISCgpk",
-            "ZXRhaWxfdXJsGAogASgJEhcKD3ByaXplX2l0ZW1fbGlzdBgLIAMoDRITCgto",
-            "aXN0b3J5X3VybBgMIAEoCRITCgtGSklCT0FHRE5ERxgNIAEoDRITCgtPS0ZO",
-            "TkhOTEJPTxgOIAEoDRIkCg1nYWNoYV9jZWlsaW5nGA8gASgLMg0uR2FjaGFD",
-            "ZWlsaW5nQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "aGFJbmZvEhcKD3ByaXplX2l0ZW1fbGlzdBgPIAMoDRITCgtoaXN0b3J5X3Vy",
+            "bBgNIAEoCRIYChBpdGVtX2RldGFpbF9saXN0GA4gAygNEhMKC09OSUhPTUNF",
+            "TEpLGAYgAygNEiQKDWdhY2hhX2NlaWxpbmcYCSABKAsyDS5HYWNoYUNlaWxp",
+            "bmcSEgoKZGV0YWlsX3VybBgFIAEoCRIQCghlbmRfdGltZRgHIAEoAxITCgtH",
+            "TExKRlBFTkxIRBgMIAEoDRIQCghnYWNoYV9pZBgEIAEoDRISCgpiZWdpbl90",
+            "aW1lGAogASgDEhMKC01NRUxOQ0hJRE5DGAMgASgNEhMKC05IQkJIRU1QSkpN",
+            "GAIgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.GachaCeilingReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GachaInfo), global::March7thHoney.Proto.GachaInfo.Parser, new[]{ "EndTime", "BeginTime", "ItemDetailList", "GachaId", "PAPOKACIPPJ", "CBHAEFNAFLE", "DetailUrl", "PrizeItemList", "HistoryUrl", "FJIBOAGDNDG", "OKFNNHNLBOO", "GachaCeiling" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GachaInfo), global::March7thHoney.Proto.GachaInfo.Parser, new[]{ "PrizeItemList", "HistoryUrl", "ItemDetailList", "ONIHOMCELJK", "GachaCeiling", "DetailUrl", "EndTime", "GLLJFPENLHD", "GachaId", "BeginTime", "MMELNCHIDNC", "NHBBHEMPJJM" }, null, null, null, null)
           }));
     }
     #endregion
@@ -77,18 +77,18 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GachaInfo(GachaInfo other) : this() {
-      endTime_ = other.endTime_;
-      beginTime_ = other.beginTime_;
-      itemDetailList_ = other.itemDetailList_.Clone();
-      gachaId_ = other.gachaId_;
-      pAPOKACIPPJ_ = other.pAPOKACIPPJ_;
-      cBHAEFNAFLE_ = other.cBHAEFNAFLE_.Clone();
-      detailUrl_ = other.detailUrl_;
       prizeItemList_ = other.prizeItemList_.Clone();
       historyUrl_ = other.historyUrl_;
-      fJIBOAGDNDG_ = other.fJIBOAGDNDG_;
-      oKFNNHNLBOO_ = other.oKFNNHNLBOO_;
+      itemDetailList_ = other.itemDetailList_.Clone();
+      oNIHOMCELJK_ = other.oNIHOMCELJK_.Clone();
       gachaCeiling_ = other.gachaCeiling_ != null ? other.gachaCeiling_.Clone() : null;
+      detailUrl_ = other.detailUrl_;
+      endTime_ = other.endTime_;
+      gLLJFPENLHD_ = other.gLLJFPENLHD_;
+      gachaId_ = other.gachaId_;
+      beginTime_ = other.beginTime_;
+      mMELNCHIDNC_ = other.mMELNCHIDNC_;
+      nHBBHEMPJJM_ = other.nHBBHEMPJJM_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -98,92 +98,10 @@ namespace March7thHoney.Proto {
       return new GachaInfo(this);
     }
 
-    /// <summary>Field number for the "end_time" field.</summary>
-    public const int EndTimeFieldNumber = 2;
-    private long endTime_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long EndTime {
-      get { return endTime_; }
-      set {
-        endTime_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "begin_time" field.</summary>
-    public const int BeginTimeFieldNumber = 3;
-    private long beginTime_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long BeginTime {
-      get { return beginTime_; }
-      set {
-        beginTime_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "item_detail_list" field.</summary>
-    public const int ItemDetailListFieldNumber = 6;
-    private static readonly pb::FieldCodec<uint> _repeated_itemDetailList_codec
-        = pb::FieldCodec.ForUInt32(50);
-    private readonly pbc::RepeatedField<uint> itemDetailList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> ItemDetailList {
-      get { return itemDetailList_; }
-    }
-
-    /// <summary>Field number for the "gacha_id" field.</summary>
-    public const int GachaIdFieldNumber = 7;
-    private uint gachaId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint GachaId {
-      get { return gachaId_; }
-      set {
-        gachaId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "PAPOKACIPPJ" field.</summary>
-    public const int PAPOKACIPPJFieldNumber = 8;
-    private uint pAPOKACIPPJ_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PAPOKACIPPJ {
-      get { return pAPOKACIPPJ_; }
-      set {
-        pAPOKACIPPJ_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "CBHAEFNAFLE" field.</summary>
-    public const int CBHAEFNAFLEFieldNumber = 9;
-    private static readonly pb::FieldCodec<uint> _repeated_cBHAEFNAFLE_codec
-        = pb::FieldCodec.ForUInt32(74);
-    private readonly pbc::RepeatedField<uint> cBHAEFNAFLE_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> CBHAEFNAFLE {
-      get { return cBHAEFNAFLE_; }
-    }
-
-    /// <summary>Field number for the "detail_url" field.</summary>
-    public const int DetailUrlFieldNumber = 10;
-    private string detailUrl_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string DetailUrl {
-      get { return detailUrl_; }
-      set {
-        detailUrl_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
     /// <summary>Field number for the "prize_item_list" field.</summary>
-    public const int PrizeItemListFieldNumber = 11;
+    public const int PrizeItemListFieldNumber = 15;
     private static readonly pb::FieldCodec<uint> _repeated_prizeItemList_codec
-        = pb::FieldCodec.ForUInt32(90);
+        = pb::FieldCodec.ForUInt32(122);
     private readonly pbc::RepeatedField<uint> prizeItemList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -192,7 +110,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "history_url" field.</summary>
-    public const int HistoryUrlFieldNumber = 12;
+    public const int HistoryUrlFieldNumber = 13;
     private string historyUrl_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -203,32 +121,30 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "FJIBOAGDNDG" field.</summary>
-    public const int FJIBOAGDNDGFieldNumber = 13;
-    private uint fJIBOAGDNDG_;
+    /// <summary>Field number for the "item_detail_list" field.</summary>
+    public const int ItemDetailListFieldNumber = 14;
+    private static readonly pb::FieldCodec<uint> _repeated_itemDetailList_codec
+        = pb::FieldCodec.ForUInt32(114);
+    private readonly pbc::RepeatedField<uint> itemDetailList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint FJIBOAGDNDG {
-      get { return fJIBOAGDNDG_; }
-      set {
-        fJIBOAGDNDG_ = value;
-      }
+    public pbc::RepeatedField<uint> ItemDetailList {
+      get { return itemDetailList_; }
     }
 
-    /// <summary>Field number for the "OKFNNHNLBOO" field.</summary>
-    public const int OKFNNHNLBOOFieldNumber = 14;
-    private uint oKFNNHNLBOO_;
+    /// <summary>Field number for the "ONIHOMCELJK" field.</summary>
+    public const int ONIHOMCELJKFieldNumber = 6;
+    private static readonly pb::FieldCodec<uint> _repeated_oNIHOMCELJK_codec
+        = pb::FieldCodec.ForUInt32(50);
+    private readonly pbc::RepeatedField<uint> oNIHOMCELJK_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint OKFNNHNLBOO {
-      get { return oKFNNHNLBOO_; }
-      set {
-        oKFNNHNLBOO_ = value;
-      }
+    public pbc::RepeatedField<uint> ONIHOMCELJK {
+      get { return oNIHOMCELJK_; }
     }
 
     /// <summary>Field number for the "gacha_ceiling" field.</summary>
-    public const int GachaCeilingFieldNumber = 15;
+    public const int GachaCeilingFieldNumber = 9;
     private global::March7thHoney.Proto.GachaCeiling gachaCeiling_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -236,6 +152,90 @@ namespace March7thHoney.Proto {
       get { return gachaCeiling_; }
       set {
         gachaCeiling_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "detail_url" field.</summary>
+    public const int DetailUrlFieldNumber = 5;
+    private string detailUrl_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string DetailUrl {
+      get { return detailUrl_; }
+      set {
+        detailUrl_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "end_time" field.</summary>
+    public const int EndTimeFieldNumber = 7;
+    private long endTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long EndTime {
+      get { return endTime_; }
+      set {
+        endTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "GLLJFPENLHD" field.</summary>
+    public const int GLLJFPENLHDFieldNumber = 12;
+    private uint gLLJFPENLHD_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint GLLJFPENLHD {
+      get { return gLLJFPENLHD_; }
+      set {
+        gLLJFPENLHD_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "gacha_id" field.</summary>
+    public const int GachaIdFieldNumber = 4;
+    private uint gachaId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint GachaId {
+      get { return gachaId_; }
+      set {
+        gachaId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "begin_time" field.</summary>
+    public const int BeginTimeFieldNumber = 10;
+    private long beginTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long BeginTime {
+      get { return beginTime_; }
+      set {
+        beginTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "MMELNCHIDNC" field.</summary>
+    public const int MMELNCHIDNCFieldNumber = 3;
+    private uint mMELNCHIDNC_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint MMELNCHIDNC {
+      get { return mMELNCHIDNC_; }
+      set {
+        mMELNCHIDNC_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "NHBBHEMPJJM" field.</summary>
+    public const int NHBBHEMPJJMFieldNumber = 2;
+    private uint nHBBHEMPJJM_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint NHBBHEMPJJM {
+      get { return nHBBHEMPJJM_; }
+      set {
+        nHBBHEMPJJM_ = value;
       }
     }
 
@@ -254,18 +254,18 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (EndTime != other.EndTime) return false;
-      if (BeginTime != other.BeginTime) return false;
-      if(!itemDetailList_.Equals(other.itemDetailList_)) return false;
-      if (GachaId != other.GachaId) return false;
-      if (PAPOKACIPPJ != other.PAPOKACIPPJ) return false;
-      if(!cBHAEFNAFLE_.Equals(other.cBHAEFNAFLE_)) return false;
-      if (DetailUrl != other.DetailUrl) return false;
       if(!prizeItemList_.Equals(other.prizeItemList_)) return false;
       if (HistoryUrl != other.HistoryUrl) return false;
-      if (FJIBOAGDNDG != other.FJIBOAGDNDG) return false;
-      if (OKFNNHNLBOO != other.OKFNNHNLBOO) return false;
+      if(!itemDetailList_.Equals(other.itemDetailList_)) return false;
+      if(!oNIHOMCELJK_.Equals(other.oNIHOMCELJK_)) return false;
       if (!object.Equals(GachaCeiling, other.GachaCeiling)) return false;
+      if (DetailUrl != other.DetailUrl) return false;
+      if (EndTime != other.EndTime) return false;
+      if (GLLJFPENLHD != other.GLLJFPENLHD) return false;
+      if (GachaId != other.GachaId) return false;
+      if (BeginTime != other.BeginTime) return false;
+      if (MMELNCHIDNC != other.MMELNCHIDNC) return false;
+      if (NHBBHEMPJJM != other.NHBBHEMPJJM) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -273,18 +273,18 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (EndTime != 0L) hash ^= EndTime.GetHashCode();
-      if (BeginTime != 0L) hash ^= BeginTime.GetHashCode();
-      hash ^= itemDetailList_.GetHashCode();
-      if (GachaId != 0) hash ^= GachaId.GetHashCode();
-      if (PAPOKACIPPJ != 0) hash ^= PAPOKACIPPJ.GetHashCode();
-      hash ^= cBHAEFNAFLE_.GetHashCode();
-      if (DetailUrl.Length != 0) hash ^= DetailUrl.GetHashCode();
       hash ^= prizeItemList_.GetHashCode();
       if (HistoryUrl.Length != 0) hash ^= HistoryUrl.GetHashCode();
-      if (FJIBOAGDNDG != 0) hash ^= FJIBOAGDNDG.GetHashCode();
-      if (OKFNNHNLBOO != 0) hash ^= OKFNNHNLBOO.GetHashCode();
+      hash ^= itemDetailList_.GetHashCode();
+      hash ^= oNIHOMCELJK_.GetHashCode();
       if (gachaCeiling_ != null) hash ^= GachaCeiling.GetHashCode();
+      if (DetailUrl.Length != 0) hash ^= DetailUrl.GetHashCode();
+      if (EndTime != 0L) hash ^= EndTime.GetHashCode();
+      if (GLLJFPENLHD != 0) hash ^= GLLJFPENLHD.GetHashCode();
+      if (GachaId != 0) hash ^= GachaId.GetHashCode();
+      if (BeginTime != 0L) hash ^= BeginTime.GetHashCode();
+      if (MMELNCHIDNC != 0) hash ^= MMELNCHIDNC.GetHashCode();
+      if (NHBBHEMPJJM != 0) hash ^= NHBBHEMPJJM.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -303,45 +303,45 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (EndTime != 0L) {
+      if (NHBBHEMPJJM != 0) {
         output.WriteRawTag(16);
-        output.WriteInt64(EndTime);
+        output.WriteUInt32(NHBBHEMPJJM);
       }
-      if (BeginTime != 0L) {
+      if (MMELNCHIDNC != 0) {
         output.WriteRawTag(24);
-        output.WriteInt64(BeginTime);
+        output.WriteUInt32(MMELNCHIDNC);
       }
-      itemDetailList_.WriteTo(output, _repeated_itemDetailList_codec);
       if (GachaId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(32);
         output.WriteUInt32(GachaId);
       }
-      if (PAPOKACIPPJ != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(PAPOKACIPPJ);
-      }
-      cBHAEFNAFLE_.WriteTo(output, _repeated_cBHAEFNAFLE_codec);
       if (DetailUrl.Length != 0) {
-        output.WriteRawTag(82);
+        output.WriteRawTag(42);
         output.WriteString(DetailUrl);
       }
-      prizeItemList_.WriteTo(output, _repeated_prizeItemList_codec);
-      if (HistoryUrl.Length != 0) {
-        output.WriteRawTag(98);
-        output.WriteString(HistoryUrl);
-      }
-      if (FJIBOAGDNDG != 0) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(FJIBOAGDNDG);
-      }
-      if (OKFNNHNLBOO != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(OKFNNHNLBOO);
+      oNIHOMCELJK_.WriteTo(output, _repeated_oNIHOMCELJK_codec);
+      if (EndTime != 0L) {
+        output.WriteRawTag(56);
+        output.WriteInt64(EndTime);
       }
       if (gachaCeiling_ != null) {
-        output.WriteRawTag(122);
+        output.WriteRawTag(74);
         output.WriteMessage(GachaCeiling);
       }
+      if (BeginTime != 0L) {
+        output.WriteRawTag(80);
+        output.WriteInt64(BeginTime);
+      }
+      if (GLLJFPENLHD != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(GLLJFPENLHD);
+      }
+      if (HistoryUrl.Length != 0) {
+        output.WriteRawTag(106);
+        output.WriteString(HistoryUrl);
+      }
+      itemDetailList_.WriteTo(output, _repeated_itemDetailList_codec);
+      prizeItemList_.WriteTo(output, _repeated_prizeItemList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -352,45 +352,45 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (EndTime != 0L) {
+      if (NHBBHEMPJJM != 0) {
         output.WriteRawTag(16);
-        output.WriteInt64(EndTime);
+        output.WriteUInt32(NHBBHEMPJJM);
       }
-      if (BeginTime != 0L) {
+      if (MMELNCHIDNC != 0) {
         output.WriteRawTag(24);
-        output.WriteInt64(BeginTime);
+        output.WriteUInt32(MMELNCHIDNC);
       }
-      itemDetailList_.WriteTo(ref output, _repeated_itemDetailList_codec);
       if (GachaId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(32);
         output.WriteUInt32(GachaId);
       }
-      if (PAPOKACIPPJ != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(PAPOKACIPPJ);
-      }
-      cBHAEFNAFLE_.WriteTo(ref output, _repeated_cBHAEFNAFLE_codec);
       if (DetailUrl.Length != 0) {
-        output.WriteRawTag(82);
+        output.WriteRawTag(42);
         output.WriteString(DetailUrl);
       }
-      prizeItemList_.WriteTo(ref output, _repeated_prizeItemList_codec);
-      if (HistoryUrl.Length != 0) {
-        output.WriteRawTag(98);
-        output.WriteString(HistoryUrl);
-      }
-      if (FJIBOAGDNDG != 0) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(FJIBOAGDNDG);
-      }
-      if (OKFNNHNLBOO != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(OKFNNHNLBOO);
+      oNIHOMCELJK_.WriteTo(ref output, _repeated_oNIHOMCELJK_codec);
+      if (EndTime != 0L) {
+        output.WriteRawTag(56);
+        output.WriteInt64(EndTime);
       }
       if (gachaCeiling_ != null) {
-        output.WriteRawTag(122);
+        output.WriteRawTag(74);
         output.WriteMessage(GachaCeiling);
       }
+      if (BeginTime != 0L) {
+        output.WriteRawTag(80);
+        output.WriteInt64(BeginTime);
+      }
+      if (GLLJFPENLHD != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(GLLJFPENLHD);
+      }
+      if (HistoryUrl.Length != 0) {
+        output.WriteRawTag(106);
+        output.WriteString(HistoryUrl);
+      }
+      itemDetailList_.WriteTo(ref output, _repeated_itemDetailList_codec);
+      prizeItemList_.WriteTo(ref output, _repeated_prizeItemList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -401,35 +401,35 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (EndTime != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(EndTime);
-      }
-      if (BeginTime != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(BeginTime);
-      }
-      size += itemDetailList_.CalculateSize(_repeated_itemDetailList_codec);
-      if (GachaId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GachaId);
-      }
-      if (PAPOKACIPPJ != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PAPOKACIPPJ);
-      }
-      size += cBHAEFNAFLE_.CalculateSize(_repeated_cBHAEFNAFLE_codec);
-      if (DetailUrl.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(DetailUrl);
-      }
       size += prizeItemList_.CalculateSize(_repeated_prizeItemList_codec);
       if (HistoryUrl.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(HistoryUrl);
       }
-      if (FJIBOAGDNDG != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FJIBOAGDNDG);
-      }
-      if (OKFNNHNLBOO != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(OKFNNHNLBOO);
-      }
+      size += itemDetailList_.CalculateSize(_repeated_itemDetailList_codec);
+      size += oNIHOMCELJK_.CalculateSize(_repeated_oNIHOMCELJK_codec);
       if (gachaCeiling_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(GachaCeiling);
+      }
+      if (DetailUrl.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(DetailUrl);
+      }
+      if (EndTime != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(EndTime);
+      }
+      if (GLLJFPENLHD != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GLLJFPENLHD);
+      }
+      if (GachaId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GachaId);
+      }
+      if (BeginTime != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(BeginTime);
+      }
+      if (MMELNCHIDNC != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MMELNCHIDNC);
+      }
+      if (NHBBHEMPJJM != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(NHBBHEMPJJM);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -443,38 +443,38 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.EndTime != 0L) {
-        EndTime = other.EndTime;
-      }
-      if (other.BeginTime != 0L) {
-        BeginTime = other.BeginTime;
-      }
-      itemDetailList_.Add(other.itemDetailList_);
-      if (other.GachaId != 0) {
-        GachaId = other.GachaId;
-      }
-      if (other.PAPOKACIPPJ != 0) {
-        PAPOKACIPPJ = other.PAPOKACIPPJ;
-      }
-      cBHAEFNAFLE_.Add(other.cBHAEFNAFLE_);
-      if (other.DetailUrl.Length != 0) {
-        DetailUrl = other.DetailUrl;
-      }
       prizeItemList_.Add(other.prizeItemList_);
       if (other.HistoryUrl.Length != 0) {
         HistoryUrl = other.HistoryUrl;
       }
-      if (other.FJIBOAGDNDG != 0) {
-        FJIBOAGDNDG = other.FJIBOAGDNDG;
-      }
-      if (other.OKFNNHNLBOO != 0) {
-        OKFNNHNLBOO = other.OKFNNHNLBOO;
-      }
+      itemDetailList_.Add(other.itemDetailList_);
+      oNIHOMCELJK_.Add(other.oNIHOMCELJK_);
       if (other.gachaCeiling_ != null) {
         if (gachaCeiling_ == null) {
           GachaCeiling = new global::March7thHoney.Proto.GachaCeiling();
         }
         GachaCeiling.MergeFrom(other.GachaCeiling);
+      }
+      if (other.DetailUrl.Length != 0) {
+        DetailUrl = other.DetailUrl;
+      }
+      if (other.EndTime != 0L) {
+        EndTime = other.EndTime;
+      }
+      if (other.GLLJFPENLHD != 0) {
+        GLLJFPENLHD = other.GLLJFPENLHD;
+      }
+      if (other.GachaId != 0) {
+        GachaId = other.GachaId;
+      }
+      if (other.BeginTime != 0L) {
+        BeginTime = other.BeginTime;
+      }
+      if (other.MMELNCHIDNC != 0) {
+        MMELNCHIDNC = other.MMELNCHIDNC;
+      }
+      if (other.NHBBHEMPJJM != 0) {
+        NHBBHEMPJJM = other.NHBBHEMPJJM;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -496,57 +496,57 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 16: {
-            EndTime = input.ReadInt64();
+            NHBBHEMPJJM = input.ReadUInt32();
             break;
           }
           case 24: {
-            BeginTime = input.ReadInt64();
+            MMELNCHIDNC = input.ReadUInt32();
+            break;
+          }
+          case 32: {
+            GachaId = input.ReadUInt32();
+            break;
+          }
+          case 42: {
+            DetailUrl = input.ReadString();
             break;
           }
           case 50:
           case 48: {
-            itemDetailList_.AddEntriesFrom(input, _repeated_itemDetailList_codec);
+            oNIHOMCELJK_.AddEntriesFrom(input, _repeated_oNIHOMCELJK_codec);
             break;
           }
           case 56: {
-            GachaId = input.ReadUInt32();
+            EndTime = input.ReadInt64();
             break;
           }
-          case 64: {
-            PAPOKACIPPJ = input.ReadUInt32();
-            break;
-          }
-          case 74:
-          case 72: {
-            cBHAEFNAFLE_.AddEntriesFrom(input, _repeated_cBHAEFNAFLE_codec);
-            break;
-          }
-          case 82: {
-            DetailUrl = input.ReadString();
-            break;
-          }
-          case 90:
-          case 88: {
-            prizeItemList_.AddEntriesFrom(input, _repeated_prizeItemList_codec);
-            break;
-          }
-          case 98: {
-            HistoryUrl = input.ReadString();
-            break;
-          }
-          case 104: {
-            FJIBOAGDNDG = input.ReadUInt32();
-            break;
-          }
-          case 112: {
-            OKFNNHNLBOO = input.ReadUInt32();
-            break;
-          }
-          case 122: {
+          case 74: {
             if (gachaCeiling_ == null) {
               GachaCeiling = new global::March7thHoney.Proto.GachaCeiling();
             }
             input.ReadMessage(GachaCeiling);
+            break;
+          }
+          case 80: {
+            BeginTime = input.ReadInt64();
+            break;
+          }
+          case 96: {
+            GLLJFPENLHD = input.ReadUInt32();
+            break;
+          }
+          case 106: {
+            HistoryUrl = input.ReadString();
+            break;
+          }
+          case 114:
+          case 112: {
+            itemDetailList_.AddEntriesFrom(input, _repeated_itemDetailList_codec);
+            break;
+          }
+          case 122:
+          case 120: {
+            prizeItemList_.AddEntriesFrom(input, _repeated_prizeItemList_codec);
             break;
           }
         }
@@ -569,57 +569,57 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 16: {
-            EndTime = input.ReadInt64();
+            NHBBHEMPJJM = input.ReadUInt32();
             break;
           }
           case 24: {
-            BeginTime = input.ReadInt64();
+            MMELNCHIDNC = input.ReadUInt32();
+            break;
+          }
+          case 32: {
+            GachaId = input.ReadUInt32();
+            break;
+          }
+          case 42: {
+            DetailUrl = input.ReadString();
             break;
           }
           case 50:
           case 48: {
-            itemDetailList_.AddEntriesFrom(ref input, _repeated_itemDetailList_codec);
+            oNIHOMCELJK_.AddEntriesFrom(ref input, _repeated_oNIHOMCELJK_codec);
             break;
           }
           case 56: {
-            GachaId = input.ReadUInt32();
+            EndTime = input.ReadInt64();
             break;
           }
-          case 64: {
-            PAPOKACIPPJ = input.ReadUInt32();
-            break;
-          }
-          case 74:
-          case 72: {
-            cBHAEFNAFLE_.AddEntriesFrom(ref input, _repeated_cBHAEFNAFLE_codec);
-            break;
-          }
-          case 82: {
-            DetailUrl = input.ReadString();
-            break;
-          }
-          case 90:
-          case 88: {
-            prizeItemList_.AddEntriesFrom(ref input, _repeated_prizeItemList_codec);
-            break;
-          }
-          case 98: {
-            HistoryUrl = input.ReadString();
-            break;
-          }
-          case 104: {
-            FJIBOAGDNDG = input.ReadUInt32();
-            break;
-          }
-          case 112: {
-            OKFNNHNLBOO = input.ReadUInt32();
-            break;
-          }
-          case 122: {
+          case 74: {
             if (gachaCeiling_ == null) {
               GachaCeiling = new global::March7thHoney.Proto.GachaCeiling();
             }
             input.ReadMessage(GachaCeiling);
+            break;
+          }
+          case 80: {
+            BeginTime = input.ReadInt64();
+            break;
+          }
+          case 96: {
+            GLLJFPENLHD = input.ReadUInt32();
+            break;
+          }
+          case 106: {
+            HistoryUrl = input.ReadString();
+            break;
+          }
+          case 114:
+          case 112: {
+            itemDetailList_.AddEntriesFrom(ref input, _repeated_itemDetailList_codec);
+            break;
+          }
+          case 122:
+          case 120: {
+            prizeItemList_.AddEntriesFrom(ref input, _repeated_prizeItemList_codec);
             break;
           }
         }

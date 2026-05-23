@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message MonopolyBuyGoodsCsReq {
-    uint32 shop_id = 3;
-    uint32 goods_id = 9;
+    uint32 goods_id = 11;
+    uint32 shop_id = 6;
 }

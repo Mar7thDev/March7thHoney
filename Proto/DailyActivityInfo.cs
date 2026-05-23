@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChdEYWlseUFjdGl2aXR5SW5mby5wcm90byJpChFEYWlseUFjdGl2aXR5SW5m",
-            "bxINCgVsZXZlbBgFIAEoDRIUCgxpc19oYXNfdGFrZW4YBiABKAgSEwoLd29y",
-            "bGRfbGV2ZWwYByABKA0SGgoSZGFpbHlfYWN0aXZlX3BvaW50GAogASgNQhaq",
+            "bxINCgVsZXZlbBgJIAEoDRIUCgxpc19oYXNfdGFrZW4YDSABKAgSGgoSZGFp",
+            "bHlfYWN0aXZlX3BvaW50GAwgASgNEhMKC3dvcmxkX2xldmVsGAcgASgNQhaq",
             "AhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DailyActivityInfo), global::March7thHoney.Proto.DailyActivityInfo.Parser, new[]{ "Level", "IsHasTaken", "WorldLevel", "DailyActivePoint" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DailyActivityInfo), global::March7thHoney.Proto.DailyActivityInfo.Parser, new[]{ "Level", "IsHasTaken", "DailyActivePoint", "WorldLevel" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,8 +75,8 @@ namespace March7thHoney.Proto {
     public DailyActivityInfo(DailyActivityInfo other) : this() {
       level_ = other.level_;
       isHasTaken_ = other.isHasTaken_;
-      worldLevel_ = other.worldLevel_;
       dailyActivePoint_ = other.dailyActivePoint_;
+      worldLevel_ = other.worldLevel_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -87,7 +87,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "level" field.</summary>
-    public const int LevelFieldNumber = 5;
+    public const int LevelFieldNumber = 9;
     private uint level_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -99,7 +99,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "is_has_taken" field.</summary>
-    public const int IsHasTakenFieldNumber = 6;
+    public const int IsHasTakenFieldNumber = 13;
     private bool isHasTaken_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -107,6 +107,18 @@ namespace March7thHoney.Proto {
       get { return isHasTaken_; }
       set {
         isHasTaken_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "daily_active_point" field.</summary>
+    public const int DailyActivePointFieldNumber = 12;
+    private uint dailyActivePoint_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint DailyActivePoint {
+      get { return dailyActivePoint_; }
+      set {
+        dailyActivePoint_ = value;
       }
     }
 
@@ -119,18 +131,6 @@ namespace March7thHoney.Proto {
       get { return worldLevel_; }
       set {
         worldLevel_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "daily_active_point" field.</summary>
-    public const int DailyActivePointFieldNumber = 10;
-    private uint dailyActivePoint_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint DailyActivePoint {
-      get { return dailyActivePoint_; }
-      set {
-        dailyActivePoint_ = value;
       }
     }
 
@@ -151,8 +151,8 @@ namespace March7thHoney.Proto {
       }
       if (Level != other.Level) return false;
       if (IsHasTaken != other.IsHasTaken) return false;
-      if (WorldLevel != other.WorldLevel) return false;
       if (DailyActivePoint != other.DailyActivePoint) return false;
+      if (WorldLevel != other.WorldLevel) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -162,8 +162,8 @@ namespace March7thHoney.Proto {
       int hash = 1;
       if (Level != 0) hash ^= Level.GetHashCode();
       if (IsHasTaken != false) hash ^= IsHasTaken.GetHashCode();
-      if (WorldLevel != 0) hash ^= WorldLevel.GetHashCode();
       if (DailyActivePoint != 0) hash ^= DailyActivePoint.GetHashCode();
+      if (WorldLevel != 0) hash ^= WorldLevel.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -182,21 +182,21 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Level != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(Level);
-      }
-      if (IsHasTaken != false) {
-        output.WriteRawTag(48);
-        output.WriteBool(IsHasTaken);
-      }
       if (WorldLevel != 0) {
         output.WriteRawTag(56);
         output.WriteUInt32(WorldLevel);
       }
+      if (Level != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(Level);
+      }
       if (DailyActivePoint != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(96);
         output.WriteUInt32(DailyActivePoint);
+      }
+      if (IsHasTaken != false) {
+        output.WriteRawTag(104);
+        output.WriteBool(IsHasTaken);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -208,21 +208,21 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Level != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(Level);
-      }
-      if (IsHasTaken != false) {
-        output.WriteRawTag(48);
-        output.WriteBool(IsHasTaken);
-      }
       if (WorldLevel != 0) {
         output.WriteRawTag(56);
         output.WriteUInt32(WorldLevel);
       }
+      if (Level != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(Level);
+      }
       if (DailyActivePoint != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(96);
         output.WriteUInt32(DailyActivePoint);
+      }
+      if (IsHasTaken != false) {
+        output.WriteRawTag(104);
+        output.WriteBool(IsHasTaken);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -240,11 +240,11 @@ namespace March7thHoney.Proto {
       if (IsHasTaken != false) {
         size += 1 + 1;
       }
-      if (WorldLevel != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(WorldLevel);
-      }
       if (DailyActivePoint != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DailyActivePoint);
+      }
+      if (WorldLevel != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(WorldLevel);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -264,11 +264,11 @@ namespace March7thHoney.Proto {
       if (other.IsHasTaken != false) {
         IsHasTaken = other.IsHasTaken;
       }
-      if (other.WorldLevel != 0) {
-        WorldLevel = other.WorldLevel;
-      }
       if (other.DailyActivePoint != 0) {
         DailyActivePoint = other.DailyActivePoint;
+      }
+      if (other.WorldLevel != 0) {
+        WorldLevel = other.WorldLevel;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -289,20 +289,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 40: {
-            Level = input.ReadUInt32();
-            break;
-          }
-          case 48: {
-            IsHasTaken = input.ReadBool();
-            break;
-          }
           case 56: {
             WorldLevel = input.ReadUInt32();
             break;
           }
-          case 80: {
+          case 72: {
+            Level = input.ReadUInt32();
+            break;
+          }
+          case 96: {
             DailyActivePoint = input.ReadUInt32();
+            break;
+          }
+          case 104: {
+            IsHasTaken = input.ReadBool();
             break;
           }
         }
@@ -324,20 +324,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 40: {
-            Level = input.ReadUInt32();
-            break;
-          }
-          case 48: {
-            IsHasTaken = input.ReadBool();
-            break;
-          }
           case 56: {
             WorldLevel = input.ReadUInt32();
             break;
           }
-          case 80: {
+          case 72: {
+            Level = input.ReadUInt32();
+            break;
+          }
+          case 96: {
             DailyActivePoint = input.ReadUInt32();
+            break;
+          }
+          case 104: {
+            IsHasTaken = input.ReadBool();
             break;
           }
         }

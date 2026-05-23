@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "KIAKKNFLEPN.proto";
+
+message BICCMEPJMDO {
+    KIAKKNFLEPN GOOAMHHLHPJ = 12;
+    int32 LJDHGFECMHJ = 2;
+    int32 unique_id = 7;
+}

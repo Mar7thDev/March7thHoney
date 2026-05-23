@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "NMKNOLPFJDN.proto";
+
+message PGPHEKKPBLD {
+    uint32 DLFHABGGHFF = 5;
+    uint32 AFDNFCBCFBF = 1;
+    NMKNOLPFJDN AGLMEDOBMAL = 12;
+}

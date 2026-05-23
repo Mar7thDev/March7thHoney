@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "CDHOKMAAMFD.proto";
+import "OHCFIOOIKND.proto";
 
 message TarotBookFinishStoryScRsp {
-    CDHOKMAAMFD CPEMLIAGBKB = 11;
-    uint32 MAFMCIPAIKK = 12;
-    uint32 retcode = 15;
+    OHCFIOOIKND BBEMIGELGJC = 5;
+    uint32 LNAHJENGELA = 11;
+    uint32 retcode = 9;
 }

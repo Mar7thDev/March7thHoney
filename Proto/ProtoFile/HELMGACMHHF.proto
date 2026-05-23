@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum HELMGACMHHF {
+    HELMGACMHHF_PLCNMNGMFNN = 0;
+    HELMGACMHHF_COFAOIGAOIG = 1;
+    HELMGACMHHF_FKHFJIIFLIC = 2;
+    HELMGACMHHF_LHIICAMOFBI = 3;
+    HELMGACMHHF_KKKAIMANEBF = 4;
+}

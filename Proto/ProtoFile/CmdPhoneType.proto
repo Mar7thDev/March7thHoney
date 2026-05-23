@@ -2,19 +2,17 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdPhoneType {
-    DOGMPAAJNCF_PCPDHELPKEM = 0;
-    CmdSelectPhoneThemeCsReq = 5118;
-    CmdGetPhoneDataScRsp = 5110;
-    CmdUnlockChatBubbleScNotify = 5114;
-    CmdSelectPhoneCaseScRsp = 5126;
-    CmdUnlockPhoneThemeScNotify = 5198;
-    CmdSelectChatBubbleCsReq = 5194;
-    CmdUnlockPhoneCaseScNotify = 5139;
-    CmdGetPhoneDataCsReq = 5191;
-    CmdSelectPhoneCaseCsReq = 5163;
-    CmdSelectChatBubbleScRsp = 5195;
-    CmdSelectPhoneThemeScRsp = 5109;
+    JADIINBLALB_NLCDGIPGFDJ = 0;
+    JADIINBLALB_IMJKPOEDFDH = 5103;
+    JADIINBLALB_LBBFEOIBHGK = 5113;
+    JADIINBLALB_FMGAHJHKACP = 5127;
+    JADIINBLALB_HFCGJMALAFG = 5180;
+    JADIINBLALB_HAGCKNHKEOG = 5110;
+    JADIINBLALB_LEFONMLBIGB = 5187;
+    JADIINBLALB_INBLCJJGMKJ = 5173;
+    JADIINBLALB_INODKICNKCI = 5129;
+    JADIINBLALB_EHJLKMMHGFM = 5115;
+    JADIINBLALB_HBHECCOIPBC = 5136;
+    JADIINBLALB_GJHBHLCAFPG = 5181;
 }

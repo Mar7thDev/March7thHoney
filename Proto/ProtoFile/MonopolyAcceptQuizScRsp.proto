@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "JCADEHNDGLF.proto";
+import "JGKNADEDNHB.proto";
 
 message MonopolyAcceptQuizScRsp {
-    JCADEHNDGLF MNCFNIEHMKK = 4;
+    JGKNADEDNHB LOCHFJEECKL = 14;
     uint32 retcode = 6;
 }

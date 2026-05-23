@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message ChessRogueUpdateUnlockLevelScNotify {
-    repeated uint32 JHCMEALPDEB = 9;
+    repeated uint32 HKCDKHJCNDC = 11;
 }

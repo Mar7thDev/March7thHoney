@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChlGcmllbmRSZWNvbW1lbmRJbmZvLnByb3RvGhZQbGF5ZXJTaW1wbGVJbmZv",
-            "LnByb3RvIlEKE0ZyaWVuZFJlY29tbWVuZEluZm8SEgoKYXBwbHlfdGltZRgJ",
-            "IAEoCBImCgtwbGF5ZXJfaW5mbxgLIAEoCzIRLlBsYXllclNpbXBsZUluZm9C",
-            "FqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "LnByb3RvIlIKE0ZyaWVuZFJlY29tbWVuZEluZm8SJgoLcGxheWVyX2luZm8Y",
+            "ASABKAsyES5QbGF5ZXJTaW1wbGVJbmZvEhMKC0pJTkxBSExNRExOGA4gASgI",
+            "QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.PlayerSimpleInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FriendRecommendInfo), global::March7thHoney.Proto.FriendRecommendInfo.Parser, new[]{ "ApplyTime", "PlayerInfo" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FriendRecommendInfo), global::March7thHoney.Proto.FriendRecommendInfo.Parser, new[]{ "PlayerInfo", "JINLAHLMDLN" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public FriendRecommendInfo(FriendRecommendInfo other) : this() {
-      applyTime_ = other.applyTime_;
       playerInfo_ = other.playerInfo_ != null ? other.playerInfo_.Clone() : null;
+      jINLAHLMDLN_ = other.jINLAHLMDLN_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,20 +84,8 @@ namespace March7thHoney.Proto {
       return new FriendRecommendInfo(this);
     }
 
-    /// <summary>Field number for the "apply_time" field.</summary>
-    public const int ApplyTimeFieldNumber = 9;
-    private bool applyTime_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool ApplyTime {
-      get { return applyTime_; }
-      set {
-        applyTime_ = value;
-      }
-    }
-
     /// <summary>Field number for the "player_info" field.</summary>
-    public const int PlayerInfoFieldNumber = 11;
+    public const int PlayerInfoFieldNumber = 1;
     private global::March7thHoney.Proto.PlayerSimpleInfo playerInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -105,6 +93,18 @@ namespace March7thHoney.Proto {
       get { return playerInfo_; }
       set {
         playerInfo_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "JINLAHLMDLN" field.</summary>
+    public const int JINLAHLMDLNFieldNumber = 14;
+    private bool jINLAHLMDLN_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool JINLAHLMDLN {
+      get { return jINLAHLMDLN_; }
+      set {
+        jINLAHLMDLN_ = value;
       }
     }
 
@@ -123,8 +123,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (ApplyTime != other.ApplyTime) return false;
       if (!object.Equals(PlayerInfo, other.PlayerInfo)) return false;
+      if (JINLAHLMDLN != other.JINLAHLMDLN) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,8 +132,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (ApplyTime != false) hash ^= ApplyTime.GetHashCode();
       if (playerInfo_ != null) hash ^= PlayerInfo.GetHashCode();
+      if (JINLAHLMDLN != false) hash ^= JINLAHLMDLN.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,13 +152,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (ApplyTime != false) {
-        output.WriteRawTag(72);
-        output.WriteBool(ApplyTime);
-      }
       if (playerInfo_ != null) {
-        output.WriteRawTag(90);
+        output.WriteRawTag(10);
         output.WriteMessage(PlayerInfo);
+      }
+      if (JINLAHLMDLN != false) {
+        output.WriteRawTag(112);
+        output.WriteBool(JINLAHLMDLN);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,13 +170,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (ApplyTime != false) {
-        output.WriteRawTag(72);
-        output.WriteBool(ApplyTime);
-      }
       if (playerInfo_ != null) {
-        output.WriteRawTag(90);
+        output.WriteRawTag(10);
         output.WriteMessage(PlayerInfo);
+      }
+      if (JINLAHLMDLN != false) {
+        output.WriteRawTag(112);
+        output.WriteBool(JINLAHLMDLN);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -188,11 +188,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (ApplyTime != false) {
-        size += 1 + 1;
-      }
       if (playerInfo_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(PlayerInfo);
+      }
+      if (JINLAHLMDLN != false) {
+        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -206,14 +206,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.ApplyTime != false) {
-        ApplyTime = other.ApplyTime;
-      }
       if (other.playerInfo_ != null) {
         if (playerInfo_ == null) {
           PlayerInfo = new global::March7thHoney.Proto.PlayerSimpleInfo();
         }
         PlayerInfo.MergeFrom(other.PlayerInfo);
+      }
+      if (other.JINLAHLMDLN != false) {
+        JINLAHLMDLN = other.JINLAHLMDLN;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -234,15 +234,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 72: {
-            ApplyTime = input.ReadBool();
-            break;
-          }
-          case 90: {
+          case 10: {
             if (playerInfo_ == null) {
               PlayerInfo = new global::March7thHoney.Proto.PlayerSimpleInfo();
             }
             input.ReadMessage(PlayerInfo);
+            break;
+          }
+          case 112: {
+            JINLAHLMDLN = input.ReadBool();
             break;
           }
         }
@@ -264,15 +264,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 72: {
-            ApplyTime = input.ReadBool();
-            break;
-          }
-          case 90: {
+          case 10: {
             if (playerInfo_ == null) {
               PlayerInfo = new global::March7thHoney.Proto.PlayerSimpleInfo();
             }
             input.ReadMessage(PlayerInfo);
+            break;
+          }
+          case 112: {
+            JINLAHLMDLN = input.ReadBool();
             break;
           }
         }

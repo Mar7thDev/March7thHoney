@@ -24,10 +24,10 @@ namespace March7thHoney.Proto {
     static CmdPlotTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFDbWRQbG90VHlwZS5wcm90bypYCgtDbWRQbG90VHlwZRIbChdLRkZES0dN",
-            "S1BLTF9QQ1BESEVMUEtFTRAAEhcKEkNtZEZpbmlzaFBsb3RDc1JlcRCnCRIT",
-            "Cg5DbWRGRUZKSkZFTU1GRRDWCEIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IG",
-            "cHJvdG8z"));
+            "ChFDbWRQbG90VHlwZS5wcm90bypmCgtDbWRQbG90VHlwZRIbChdNRU5NS0pP",
+            "SUpCRV9OTENER0lQR0ZEShAAEhwKF01FTk1LSk9JSkJFX09DRUlHRU5CSEhH",
+            "EM8IEhwKF01FTk1LSk9JSkJFX0hMQkRKQ0NCTkpQEJUJQhaqAhNNYXJjaDd0",
+            "aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdPlotType), }, null, null));
@@ -37,9 +37,9 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdPlotType {
-    [pbr::OriginalName("KFFDKGMKPKL_PCPDHELPKEM")] KffdkgmkpklPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdFinishPlotCsReq")] CmdFinishPlotCsReq = 1191,
-    [pbr::OriginalName("CmdFEFJJFEMMFE")] CmdFefjjfemmfe = 1110,
+    [pbr::OriginalName("MENMKJOIJBE_NLCDGIPGFDJ")] MenmkjoijbeNlcdgipgfdj = 0,
+    [pbr::OriginalName("MENMKJOIJBE_OCEIGENBHHG")] MenmkjoijbeOceigenbhhg = 1103,
+    [pbr::OriginalName("MENMKJOIJBE_HLBDJCCBNJP")] MenmkjoijbeHlbdjccbnjp = 1173,
   }
 
   #endregion

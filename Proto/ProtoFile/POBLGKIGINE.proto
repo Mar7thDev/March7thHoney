@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "JBJNJPAOCDA.proto";
+import "PBMDEBCGNMD.proto";
+
+message POBLGKIGINE {
+    repeated JBJNJPAOCDA player_info = 2;
+    uint32 PLIDNBMCIJH = 15;
+    PBMDEBCGNMD LNMGOFCOMED = 1153;
+}

@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "ODONLHDAPKB.proto";
+import "NJHAGKGHKJJ.proto";
 
 message GetMonopolyDailyReportScRsp {
-    uint32 retcode = 7;
-    ODONLHDAPKB EOBENDPKFBO = 11;
+    NJHAGKGHKJJ OLAONLGLAJO = 6;
+    uint32 retcode = 3;
 }

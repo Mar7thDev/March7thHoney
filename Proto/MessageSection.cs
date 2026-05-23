@@ -25,15 +25,15 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChRNZXNzYWdlU2VjdGlvbi5wcm90bxoRTWVzc2FnZUl0ZW0ucHJvdG8aGk1l",
-            "c3NhZ2VTZWN0aW9uU3RhdHVzLnByb3RvIpcBCg5NZXNzYWdlU2VjdGlvbhIl",
-            "CgZzdGF0dXMYAiABKA4yFS5NZXNzYWdlU2VjdGlvblN0YXR1cxIZChFtZXNz",
-            "YWdlX2l0ZW1fbGlzdBgDIAMoDRIWCg5mcm96ZW5faXRlbV9pZBgHIAEoDRIf",
-            "CglpdGVtX2xpc3QYDCADKAsyDC5NZXNzYWdlSXRlbRIKCgJpZBgNIAEoDUIW",
+            "c3NhZ2VTZWN0aW9uU3RhdHVzLnByb3RvIpcBCg5NZXNzYWdlU2VjdGlvbhIZ",
+            "ChFtZXNzYWdlX2l0ZW1fbGlzdBgHIAMoDRIfCglpdGVtX2xpc3QYAyADKAsy",
+            "DC5NZXNzYWdlSXRlbRIWCg5mcm96ZW5faXRlbV9pZBgLIAEoDRIKCgJpZBgM",
+            "IAEoDRIlCgZzdGF0dXMYASABKA4yFS5NZXNzYWdlU2VjdGlvblN0YXR1c0IW",
             "qgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MessageItemReflection.Descriptor, global::March7thHoney.Proto.MessageSectionStatusReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MessageSection), global::March7thHoney.Proto.MessageSection.Parser, new[]{ "Status", "MessageItemList", "FrozenItemId", "ItemList", "Id" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MessageSection), global::March7thHoney.Proto.MessageSection.Parser, new[]{ "MessageItemList", "ItemList", "FrozenItemId", "Id", "Status" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,11 +75,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MessageSection(MessageSection other) : this() {
-      status_ = other.status_;
       messageItemList_ = other.messageItemList_.Clone();
-      frozenItemId_ = other.frozenItemId_;
       itemList_ = other.itemList_.Clone();
+      frozenItemId_ = other.frozenItemId_;
       id_ = other.id_;
+      status_ = other.status_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -89,22 +89,10 @@ namespace March7thHoney.Proto {
       return new MessageSection(this);
     }
 
-    /// <summary>Field number for the "status" field.</summary>
-    public const int StatusFieldNumber = 2;
-    private global::March7thHoney.Proto.MessageSectionStatus status_ = global::March7thHoney.Proto.MessageSectionStatus.MessageSectionNone;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.MessageSectionStatus Status {
-      get { return status_; }
-      set {
-        status_ = value;
-      }
-    }
-
     /// <summary>Field number for the "message_item_list" field.</summary>
-    public const int MessageItemListFieldNumber = 3;
+    public const int MessageItemListFieldNumber = 7;
     private static readonly pb::FieldCodec<uint> _repeated_messageItemList_codec
-        = pb::FieldCodec.ForUInt32(26);
+        = pb::FieldCodec.ForUInt32(58);
     private readonly pbc::RepeatedField<uint> messageItemList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -112,8 +100,19 @@ namespace March7thHoney.Proto {
       get { return messageItemList_; }
     }
 
+    /// <summary>Field number for the "item_list" field.</summary>
+    public const int ItemListFieldNumber = 3;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MessageItem> _repeated_itemList_codec
+        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.MessageItem.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MessageItem> itemList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MessageItem>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.MessageItem> ItemList {
+      get { return itemList_; }
+    }
+
     /// <summary>Field number for the "frozen_item_id" field.</summary>
-    public const int FrozenItemIdFieldNumber = 7;
+    public const int FrozenItemIdFieldNumber = 11;
     private uint frozenItemId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -124,19 +123,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "item_list" field.</summary>
-    public const int ItemListFieldNumber = 12;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MessageItem> _repeated_itemList_codec
-        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.MessageItem.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MessageItem> itemList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MessageItem>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.MessageItem> ItemList {
-      get { return itemList_; }
-    }
-
     /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 13;
+    public const int IdFieldNumber = 12;
     private uint id_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -144,6 +132,18 @@ namespace March7thHoney.Proto {
       get { return id_; }
       set {
         id_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "status" field.</summary>
+    public const int StatusFieldNumber = 1;
+    private global::March7thHoney.Proto.MessageSectionStatus status_ = global::March7thHoney.Proto.MessageSectionStatus.MessageSectionNone;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.MessageSectionStatus Status {
+      get { return status_; }
+      set {
+        status_ = value;
       }
     }
 
@@ -162,11 +162,11 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Status != other.Status) return false;
       if(!messageItemList_.Equals(other.messageItemList_)) return false;
-      if (FrozenItemId != other.FrozenItemId) return false;
       if(!itemList_.Equals(other.itemList_)) return false;
+      if (FrozenItemId != other.FrozenItemId) return false;
       if (Id != other.Id) return false;
+      if (Status != other.Status) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -174,11 +174,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Status != global::March7thHoney.Proto.MessageSectionStatus.MessageSectionNone) hash ^= Status.GetHashCode();
       hash ^= messageItemList_.GetHashCode();
-      if (FrozenItemId != 0) hash ^= FrozenItemId.GetHashCode();
       hash ^= itemList_.GetHashCode();
+      if (FrozenItemId != 0) hash ^= FrozenItemId.GetHashCode();
       if (Id != 0) hash ^= Id.GetHashCode();
+      if (Status != global::March7thHoney.Proto.MessageSectionStatus.MessageSectionNone) hash ^= Status.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -198,17 +198,17 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Status != global::March7thHoney.Proto.MessageSectionStatus.MessageSectionNone) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteEnum((int) Status);
       }
+      itemList_.WriteTo(output, _repeated_itemList_codec);
       messageItemList_.WriteTo(output, _repeated_messageItemList_codec);
       if (FrozenItemId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(88);
         output.WriteUInt32(FrozenItemId);
       }
-      itemList_.WriteTo(output, _repeated_itemList_codec);
       if (Id != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(96);
         output.WriteUInt32(Id);
       }
       if (_unknownFields != null) {
@@ -222,17 +222,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Status != global::March7thHoney.Proto.MessageSectionStatus.MessageSectionNone) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteEnum((int) Status);
       }
+      itemList_.WriteTo(ref output, _repeated_itemList_codec);
       messageItemList_.WriteTo(ref output, _repeated_messageItemList_codec);
       if (FrozenItemId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(88);
         output.WriteUInt32(FrozenItemId);
       }
-      itemList_.WriteTo(ref output, _repeated_itemList_codec);
       if (Id != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(96);
         output.WriteUInt32(Id);
       }
       if (_unknownFields != null) {
@@ -245,16 +245,16 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Status != global::March7thHoney.Proto.MessageSectionStatus.MessageSectionNone) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Status);
-      }
       size += messageItemList_.CalculateSize(_repeated_messageItemList_codec);
+      size += itemList_.CalculateSize(_repeated_itemList_codec);
       if (FrozenItemId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FrozenItemId);
       }
-      size += itemList_.CalculateSize(_repeated_itemList_codec);
       if (Id != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Id);
+      }
+      if (Status != global::March7thHoney.Proto.MessageSectionStatus.MessageSectionNone) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Status);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -268,16 +268,16 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.Status != global::March7thHoney.Proto.MessageSectionStatus.MessageSectionNone) {
-        Status = other.Status;
-      }
       messageItemList_.Add(other.messageItemList_);
+      itemList_.Add(other.itemList_);
       if (other.FrozenItemId != 0) {
         FrozenItemId = other.FrozenItemId;
       }
-      itemList_.Add(other.itemList_);
       if (other.Id != 0) {
         Id = other.Id;
+      }
+      if (other.Status != global::March7thHoney.Proto.MessageSectionStatus.MessageSectionNone) {
+        Status = other.Status;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -298,24 +298,24 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
+          case 8: {
             Status = (global::March7thHoney.Proto.MessageSectionStatus) input.ReadEnum();
             break;
           }
-          case 26:
-          case 24: {
-            messageItemList_.AddEntriesFrom(input, _repeated_messageItemList_codec);
-            break;
-          }
-          case 56: {
-            FrozenItemId = input.ReadUInt32();
-            break;
-          }
-          case 98: {
+          case 26: {
             itemList_.AddEntriesFrom(input, _repeated_itemList_codec);
             break;
           }
-          case 104: {
+          case 58:
+          case 56: {
+            messageItemList_.AddEntriesFrom(input, _repeated_messageItemList_codec);
+            break;
+          }
+          case 88: {
+            FrozenItemId = input.ReadUInt32();
+            break;
+          }
+          case 96: {
             Id = input.ReadUInt32();
             break;
           }
@@ -338,24 +338,24 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
+          case 8: {
             Status = (global::March7thHoney.Proto.MessageSectionStatus) input.ReadEnum();
             break;
           }
-          case 26:
-          case 24: {
-            messageItemList_.AddEntriesFrom(ref input, _repeated_messageItemList_codec);
-            break;
-          }
-          case 56: {
-            FrozenItemId = input.ReadUInt32();
-            break;
-          }
-          case 98: {
+          case 26: {
             itemList_.AddEntriesFrom(ref input, _repeated_itemList_codec);
             break;
           }
-          case 104: {
+          case 58:
+          case 56: {
+            messageItemList_.AddEntriesFrom(ref input, _repeated_messageItemList_codec);
+            break;
+          }
+          case 88: {
+            FrozenItemId = input.ReadUInt32();
+            break;
+          }
+          case 96: {
             Id = input.ReadUInt32();
             break;
           }

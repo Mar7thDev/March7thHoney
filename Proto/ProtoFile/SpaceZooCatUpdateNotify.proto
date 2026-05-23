@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "LKJMLPJEPGG.proto";
+import "DBLILHCLPPL.proto";
 
 message SpaceZooCatUpdateNotify {
-    bool DLAKELOEOOC = 4;
-    bool BFALLCGIPOG = 8;
-    repeated LKJMLPJEPGG DDLHPDBHGJD = 12;
+    repeated DBLILHCLPPL HMAIHHCBFKP = 12;
+    bool FHHCNGAGFCJ = 7;
+    bool HCGHLFAKIKI = 14;
 }

@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiBNaXNzaW9uQ3VzdG9tVmFsdWVTbmFwc2hvdC5wcm90byJDChpNaXNzaW9u",
-            "Q3VzdG9tVmFsdWVTbmFwc2hvdBIUCgxjdXN0b21fdmFsdWUYASABKA0SDwoH",
-            "bWN2X2tleRgCIAEoCUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "Q3VzdG9tVmFsdWVTbmFwc2hvdBIPCgdtY3Zfa2V5GAIgASgJEhQKDGN1c3Rv",
+            "bV92YWx1ZRgBIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MissionCustomValueSnapshot), global::March7thHoney.Proto.MissionCustomValueSnapshot.Parser, new[]{ "CustomValue", "McvKey" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MissionCustomValueSnapshot), global::March7thHoney.Proto.MissionCustomValueSnapshot.Parser, new[]{ "McvKey", "CustomValue" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MissionCustomValueSnapshot(MissionCustomValueSnapshot other) : this() {
-      customValue_ = other.customValue_;
       mcvKey_ = other.mcvKey_;
+      customValue_ = other.customValue_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -81,18 +81,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MissionCustomValueSnapshot Clone() {
       return new MissionCustomValueSnapshot(this);
-    }
-
-    /// <summary>Field number for the "custom_value" field.</summary>
-    public const int CustomValueFieldNumber = 1;
-    private uint customValue_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CustomValue {
-      get { return customValue_; }
-      set {
-        customValue_ = value;
-      }
     }
 
     /// <summary>Field number for the "mcv_key" field.</summary>
@@ -104,6 +92,18 @@ namespace March7thHoney.Proto {
       get { return mcvKey_; }
       set {
         mcvKey_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "custom_value" field.</summary>
+    public const int CustomValueFieldNumber = 1;
+    private uint customValue_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint CustomValue {
+      get { return customValue_; }
+      set {
+        customValue_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (CustomValue != other.CustomValue) return false;
       if (McvKey != other.McvKey) return false;
+      if (CustomValue != other.CustomValue) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (CustomValue != 0) hash ^= CustomValue.GetHashCode();
       if (McvKey.Length != 0) hash ^= McvKey.GetHashCode();
+      if (CustomValue != 0) hash ^= CustomValue.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (CustomValue != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CustomValue);
-      }
       if (McvKey.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(McvKey);
+      }
+      if (CustomValue != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CustomValue);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.CustomValue != 0) {
-        CustomValue = other.CustomValue;
-      }
       if (other.McvKey.Length != 0) {
         McvKey = other.McvKey;
+      }
+      if (other.CustomValue != 0) {
+        CustomValue = other.CustomValue;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }

@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChtTY2VuZU1vbnN0ZXJXYXZlUGFyYW0ucHJvdG8ifwoVU2NlbmVNb25zdGVy",
-            "V2F2ZVBhcmFtEhgKEGhhcmRfbGV2ZWxfZ3JvdXAYBSABKA0SEwoLQkRDQ0VG",
-            "SE1GSE8YByABKA0SEwoLZWxpdGVfZ3JvdXAYCiABKA0SDQoFbGV2ZWwYDiAB",
-            "KA0SEwoLT1BKQUZORUZKREMYDyABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJv",
+            "V2F2ZVBhcmFtEhgKEGhhcmRfbGV2ZWxfZ3JvdXAYByABKA0SEwoLSUVERUJG",
+            "Q0NLTkwYDSABKA0SDQoFbGV2ZWwYDyABKA0SEwoLQ1BISUlOS0lERUIYDCAB",
+            "KA0SEwoLZWxpdGVfZ3JvdXAYBiABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJv",
             "dG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneMonsterWaveParam), global::March7thHoney.Proto.SceneMonsterWaveParam.Parser, new[]{ "HardLevelGroup", "BDCCEFHMFHO", "EliteGroup", "Level", "OPJAFNEFJDC" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneMonsterWaveParam), global::March7thHoney.Proto.SceneMonsterWaveParam.Parser, new[]{ "HardLevelGroup", "IEDEBFCCKNL", "Level", "CPHIINKIDEB", "EliteGroup" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,10 +75,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SceneMonsterWaveParam(SceneMonsterWaveParam other) : this() {
       hardLevelGroup_ = other.hardLevelGroup_;
-      bDCCEFHMFHO_ = other.bDCCEFHMFHO_;
-      eliteGroup_ = other.eliteGroup_;
+      iEDEBFCCKNL_ = other.iEDEBFCCKNL_;
       level_ = other.level_;
-      oPJAFNEFJDC_ = other.oPJAFNEFJDC_;
+      cPHIINKIDEB_ = other.cPHIINKIDEB_;
+      eliteGroup_ = other.eliteGroup_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -89,7 +89,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "hard_level_group" field.</summary>
-    public const int HardLevelGroupFieldNumber = 5;
+    public const int HardLevelGroupFieldNumber = 7;
     private uint hardLevelGroup_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -100,32 +100,20 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "BDCCEFHMFHO" field.</summary>
-    public const int BDCCEFHMFHOFieldNumber = 7;
-    private uint bDCCEFHMFHO_;
+    /// <summary>Field number for the "IEDEBFCCKNL" field.</summary>
+    public const int IEDEBFCCKNLFieldNumber = 13;
+    private uint iEDEBFCCKNL_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint BDCCEFHMFHO {
-      get { return bDCCEFHMFHO_; }
+    public uint IEDEBFCCKNL {
+      get { return iEDEBFCCKNL_; }
       set {
-        bDCCEFHMFHO_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "elite_group" field.</summary>
-    public const int EliteGroupFieldNumber = 10;
-    private uint eliteGroup_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint EliteGroup {
-      get { return eliteGroup_; }
-      set {
-        eliteGroup_ = value;
+        iEDEBFCCKNL_ = value;
       }
     }
 
     /// <summary>Field number for the "level" field.</summary>
-    public const int LevelFieldNumber = 14;
+    public const int LevelFieldNumber = 15;
     private uint level_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -136,15 +124,27 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "OPJAFNEFJDC" field.</summary>
-    public const int OPJAFNEFJDCFieldNumber = 15;
-    private uint oPJAFNEFJDC_;
+    /// <summary>Field number for the "CPHIINKIDEB" field.</summary>
+    public const int CPHIINKIDEBFieldNumber = 12;
+    private uint cPHIINKIDEB_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint OPJAFNEFJDC {
-      get { return oPJAFNEFJDC_; }
+    public uint CPHIINKIDEB {
+      get { return cPHIINKIDEB_; }
       set {
-        oPJAFNEFJDC_ = value;
+        cPHIINKIDEB_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "elite_group" field.</summary>
+    public const int EliteGroupFieldNumber = 6;
+    private uint eliteGroup_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint EliteGroup {
+      get { return eliteGroup_; }
+      set {
+        eliteGroup_ = value;
       }
     }
 
@@ -164,10 +164,10 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (HardLevelGroup != other.HardLevelGroup) return false;
-      if (BDCCEFHMFHO != other.BDCCEFHMFHO) return false;
-      if (EliteGroup != other.EliteGroup) return false;
+      if (IEDEBFCCKNL != other.IEDEBFCCKNL) return false;
       if (Level != other.Level) return false;
-      if (OPJAFNEFJDC != other.OPJAFNEFJDC) return false;
+      if (CPHIINKIDEB != other.CPHIINKIDEB) return false;
+      if (EliteGroup != other.EliteGroup) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -176,10 +176,10 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (HardLevelGroup != 0) hash ^= HardLevelGroup.GetHashCode();
-      if (BDCCEFHMFHO != 0) hash ^= BDCCEFHMFHO.GetHashCode();
-      if (EliteGroup != 0) hash ^= EliteGroup.GetHashCode();
+      if (IEDEBFCCKNL != 0) hash ^= IEDEBFCCKNL.GetHashCode();
       if (Level != 0) hash ^= Level.GetHashCode();
-      if (OPJAFNEFJDC != 0) hash ^= OPJAFNEFJDC.GetHashCode();
+      if (CPHIINKIDEB != 0) hash ^= CPHIINKIDEB.GetHashCode();
+      if (EliteGroup != 0) hash ^= EliteGroup.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -198,25 +198,25 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (HardLevelGroup != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(HardLevelGroup);
-      }
-      if (BDCCEFHMFHO != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(BDCCEFHMFHO);
-      }
       if (EliteGroup != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(48);
         output.WriteUInt32(EliteGroup);
       }
-      if (Level != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(Level);
+      if (HardLevelGroup != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(HardLevelGroup);
       }
-      if (OPJAFNEFJDC != 0) {
+      if (CPHIINKIDEB != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(CPHIINKIDEB);
+      }
+      if (IEDEBFCCKNL != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(IEDEBFCCKNL);
+      }
+      if (Level != 0) {
         output.WriteRawTag(120);
-        output.WriteUInt32(OPJAFNEFJDC);
+        output.WriteUInt32(Level);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -228,25 +228,25 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (HardLevelGroup != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(HardLevelGroup);
-      }
-      if (BDCCEFHMFHO != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(BDCCEFHMFHO);
-      }
       if (EliteGroup != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(48);
         output.WriteUInt32(EliteGroup);
       }
-      if (Level != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(Level);
+      if (HardLevelGroup != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(HardLevelGroup);
       }
-      if (OPJAFNEFJDC != 0) {
+      if (CPHIINKIDEB != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(CPHIINKIDEB);
+      }
+      if (IEDEBFCCKNL != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(IEDEBFCCKNL);
+      }
+      if (Level != 0) {
         output.WriteRawTag(120);
-        output.WriteUInt32(OPJAFNEFJDC);
+        output.WriteUInt32(Level);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -261,17 +261,17 @@ namespace March7thHoney.Proto {
       if (HardLevelGroup != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(HardLevelGroup);
       }
-      if (BDCCEFHMFHO != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BDCCEFHMFHO);
-      }
-      if (EliteGroup != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EliteGroup);
+      if (IEDEBFCCKNL != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(IEDEBFCCKNL);
       }
       if (Level != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
       }
-      if (OPJAFNEFJDC != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(OPJAFNEFJDC);
+      if (CPHIINKIDEB != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CPHIINKIDEB);
+      }
+      if (EliteGroup != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EliteGroup);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -288,17 +288,17 @@ namespace March7thHoney.Proto {
       if (other.HardLevelGroup != 0) {
         HardLevelGroup = other.HardLevelGroup;
       }
-      if (other.BDCCEFHMFHO != 0) {
-        BDCCEFHMFHO = other.BDCCEFHMFHO;
-      }
-      if (other.EliteGroup != 0) {
-        EliteGroup = other.EliteGroup;
+      if (other.IEDEBFCCKNL != 0) {
+        IEDEBFCCKNL = other.IEDEBFCCKNL;
       }
       if (other.Level != 0) {
         Level = other.Level;
       }
-      if (other.OPJAFNEFJDC != 0) {
-        OPJAFNEFJDC = other.OPJAFNEFJDC;
+      if (other.CPHIINKIDEB != 0) {
+        CPHIINKIDEB = other.CPHIINKIDEB;
+      }
+      if (other.EliteGroup != 0) {
+        EliteGroup = other.EliteGroup;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -319,24 +319,24 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 40: {
-            HardLevelGroup = input.ReadUInt32();
-            break;
-          }
-          case 56: {
-            BDCCEFHMFHO = input.ReadUInt32();
-            break;
-          }
-          case 80: {
+          case 48: {
             EliteGroup = input.ReadUInt32();
             break;
           }
-          case 112: {
-            Level = input.ReadUInt32();
+          case 56: {
+            HardLevelGroup = input.ReadUInt32();
+            break;
+          }
+          case 96: {
+            CPHIINKIDEB = input.ReadUInt32();
+            break;
+          }
+          case 104: {
+            IEDEBFCCKNL = input.ReadUInt32();
             break;
           }
           case 120: {
-            OPJAFNEFJDC = input.ReadUInt32();
+            Level = input.ReadUInt32();
             break;
           }
         }
@@ -358,24 +358,24 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 40: {
-            HardLevelGroup = input.ReadUInt32();
-            break;
-          }
-          case 56: {
-            BDCCEFHMFHO = input.ReadUInt32();
-            break;
-          }
-          case 80: {
+          case 48: {
             EliteGroup = input.ReadUInt32();
             break;
           }
-          case 112: {
-            Level = input.ReadUInt32();
+          case 56: {
+            HardLevelGroup = input.ReadUInt32();
+            break;
+          }
+          case 96: {
+            CPHIINKIDEB = input.ReadUInt32();
+            break;
+          }
+          case 104: {
+            IEDEBFCCKNL = input.ReadUInt32();
             break;
           }
           case 120: {
-            OPJAFNEFJDC = input.ReadUInt32();
+            Level = input.ReadUInt32();
             break;
           }
         }

@@ -2,14 +2,12 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "EJCCHHAAGNH.proto";
-import "ILEJGEDBEKF.proto";
+import "DJEKEGMEHLK.proto";
+import "MANINNKMFHG.proto";
 
 message ChessRogueEnterCellScRsp {
-    uint32 EIIAGABAFEC = 4;
-    ILEJGEDBEKF LJMFGDFBLCK = 7;
-    uint32 retcode = 8;
-    EJCCHHAAGNH stage_info = 13;
+    DJEKEGMEHLK CIKPBGDIABO = 4;
+    MANINNKMFHG stage_info = 3;
+    uint32 IHAOMLEPHOM = 15;
+    uint32 retcode = 14;
 }

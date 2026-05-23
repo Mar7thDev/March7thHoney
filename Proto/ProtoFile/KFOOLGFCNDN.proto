@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "AALCHOPCBEM.proto";
+import "FIBKOLLMPMM.proto";
+import "GDDLBMCHIED.proto";
+import "GEEPIPMBGJD.proto";
+import "LJBOELCMGFK.proto";
+import "MLJEJCFJPLE.proto";
+
+message KFOOLGFCNDN {
+    oneof CNHEJLOEFAA {
+        AALCHOPCBEM EFBPPPNPBKH = 13;
+        FIBKOLLMPMM IFCFIPGIIME = 4;
+        LJBOELCMGFK OCIHLGBPALK = 15;
+        GDDLBMCHIED NNLBNIJJPAH = 1;
+        GEEPIPMBGJD DJBMEHBKNDF = 8;
+        MLJEJCFJPLE BAMNOFCJMPP = 12;
+    }
+}

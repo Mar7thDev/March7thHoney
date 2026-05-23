@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "ADHGIJPHLEB.proto";
+import "BCCONKJHDJL.proto";
+import "CPNCAPLOIHI.proto";
+import "FHKKPNDLLLO.proto";
+import "HFKKKFJHPHJ.proto";
+import "JPHFANMNHJP.proto";
+import "LFLENBDPNJN.proto";
+
+message MGMJOPHJCNL {
+    repeated FHKKPNDLLLO JHBJNKCJINO = 10;
+    map<string, uint32> POCKGKDFLKK = 16;
+    repeated BCCONKJHDJL ODMCMPIDJNH = 5;
+    repeated ADHGIJPHLEB MFOOECCEOBO = 3;
+    repeated HFKKKFJHPHJ LLOFONJOGCE = 4;
+    repeated CPNCAPLOIHI DOGMMGLBJIJ = 8;
+    repeated LFLENBDPNJN NELAKLKIDDK = 6;
+    repeated JPHFANMNHJP OPJPKFEFPKA = 15;
+    uint32 NBPFMFMKJHI = 2;
+    uint32 OAHFCPPIMLF = 9;
+    double FLFEAJFNPAP = 12;
+    double NDKJJIFIFNJ = 11;
+    uint32 HFLPDCJDIAC = 1;
+    uint32 FKMINAMFFAN = 14;
+    double COCOMFHNEHF = 13;
+}

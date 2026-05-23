@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChZEZXN0cm95SXRlbVNjUnNwLnByb3RvIjgKEERlc3Ryb3lJdGVtU2NSc3AS",
-            "DwoHcmV0Y29kZRgGIAEoDRITCgtQSUFGQ1BDRENERhgKIAEoDUIWqgITTWFy",
+            "DwoHcmV0Y29kZRgDIAEoDRITCgtBRE9JTU5CQUdLQxgNIAEoDUIWqgITTWFy",
             "Y2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DestroyItemScRsp), global::March7thHoney.Proto.DestroyItemScRsp.Parser, new[]{ "Retcode", "PIAFCPCDCDF" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DestroyItemScRsp), global::March7thHoney.Proto.DestroyItemScRsp.Parser, new[]{ "Retcode", "ADOIMNBAGKC" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,7 +73,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public DestroyItemScRsp(DestroyItemScRsp other) : this() {
       retcode_ = other.retcode_;
-      pIAFCPCDCDF_ = other.pIAFCPCDCDF_;
+      aDOIMNBAGKC_ = other.aDOIMNBAGKC_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 6;
+    public const int RetcodeFieldNumber = 3;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -95,15 +95,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "PIAFCPCDCDF" field.</summary>
-    public const int PIAFCPCDCDFFieldNumber = 10;
-    private uint pIAFCPCDCDF_;
+    /// <summary>Field number for the "ADOIMNBAGKC" field.</summary>
+    public const int ADOIMNBAGKCFieldNumber = 13;
+    private uint aDOIMNBAGKC_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PIAFCPCDCDF {
-      get { return pIAFCPCDCDF_; }
+    public uint ADOIMNBAGKC {
+      get { return aDOIMNBAGKC_; }
       set {
-        pIAFCPCDCDF_ = value;
+        aDOIMNBAGKC_ = value;
       }
     }
 
@@ -123,7 +123,7 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (Retcode != other.Retcode) return false;
-      if (PIAFCPCDCDF != other.PIAFCPCDCDF) return false;
+      if (ADOIMNBAGKC != other.ADOIMNBAGKC) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,7 +132,7 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
-      if (PIAFCPCDCDF != 0) hash ^= PIAFCPCDCDF.GetHashCode();
+      if (ADOIMNBAGKC != 0) hash ^= ADOIMNBAGKC.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,12 +152,12 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Retcode != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(24);
         output.WriteUInt32(Retcode);
       }
-      if (PIAFCPCDCDF != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(PIAFCPCDCDF);
+      if (ADOIMNBAGKC != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(ADOIMNBAGKC);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,12 +170,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Retcode != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(24);
         output.WriteUInt32(Retcode);
       }
-      if (PIAFCPCDCDF != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(PIAFCPCDCDF);
+      if (ADOIMNBAGKC != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(ADOIMNBAGKC);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -190,8 +190,8 @@ namespace March7thHoney.Proto {
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
-      if (PIAFCPCDCDF != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PIAFCPCDCDF);
+      if (ADOIMNBAGKC != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ADOIMNBAGKC);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -208,8 +208,8 @@ namespace March7thHoney.Proto {
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
-      if (other.PIAFCPCDCDF != 0) {
-        PIAFCPCDCDF = other.PIAFCPCDCDF;
+      if (other.ADOIMNBAGKC != 0) {
+        ADOIMNBAGKC = other.ADOIMNBAGKC;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 48: {
+          case 24: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 80: {
-            PIAFCPCDCDF = input.ReadUInt32();
+          case 104: {
+            ADOIMNBAGKC = input.ReadUInt32();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 48: {
+          case 24: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 80: {
-            PIAFCPCDCDF = input.ReadUInt32();
+          case 104: {
+            ADOIMNBAGKC = input.ReadUInt32();
             break;
           }
         }

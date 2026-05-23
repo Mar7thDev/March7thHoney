@@ -26,12 +26,12 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiFGZWF0dXJlU3dpdGNoQ2xvc2VkU2NOb3RpZnkucHJvdG8aF0ZlYXR1cmVT",
             "d2l0Y2hUeXBlLnByb3RvIkYKG0ZlYXR1cmVTd2l0Y2hDbG9zZWRTY05vdGlm",
-            "eRInCgtPRkRGS01MT0dLTxgEIAEoDjISLkZlYXR1cmVTd2l0Y2hUeXBlQhaq",
+            "eRInCgtGTUdMRUJDSUJIRxgEIAEoDjISLkZlYXR1cmVTd2l0Y2hUeXBlQhaq",
             "AhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.FeatureSwitchTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FeatureSwitchClosedScNotify), global::March7thHoney.Proto.FeatureSwitchClosedScNotify.Parser, new[]{ "OFDFKMLOGKO" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FeatureSwitchClosedScNotify), global::March7thHoney.Proto.FeatureSwitchClosedScNotify.Parser, new[]{ "FMGLEBCIBHG" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,7 +73,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public FeatureSwitchClosedScNotify(FeatureSwitchClosedScNotify other) : this() {
-      oFDFKMLOGKO_ = other.oFDFKMLOGKO_;
+      fMGLEBCIBHG_ = other.fMGLEBCIBHG_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,15 +83,15 @@ namespace March7thHoney.Proto {
       return new FeatureSwitchClosedScNotify(this);
     }
 
-    /// <summary>Field number for the "OFDFKMLOGKO" field.</summary>
-    public const int OFDFKMLOGKOFieldNumber = 4;
-    private global::March7thHoney.Proto.FeatureSwitchType oFDFKMLOGKO_ = global::March7thHoney.Proto.FeatureSwitchType.IgckijddjfjAhmckdaolne;
+    /// <summary>Field number for the "FMGLEBCIBHG" field.</summary>
+    public const int FMGLEBCIBHGFieldNumber = 4;
+    private global::March7thHoney.Proto.FeatureSwitchType fMGLEBCIBHG_ = global::March7thHoney.Proto.FeatureSwitchType.BlohgfcfeelOllfdoonpph;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.FeatureSwitchType OFDFKMLOGKO {
-      get { return oFDFKMLOGKO_; }
+    public global::March7thHoney.Proto.FeatureSwitchType FMGLEBCIBHG {
+      get { return fMGLEBCIBHG_; }
       set {
-        oFDFKMLOGKO_ = value;
+        fMGLEBCIBHG_ = value;
       }
     }
 
@@ -110,7 +110,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (OFDFKMLOGKO != other.OFDFKMLOGKO) return false;
+      if (FMGLEBCIBHG != other.FMGLEBCIBHG) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -118,7 +118,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (OFDFKMLOGKO != global::March7thHoney.Proto.FeatureSwitchType.IgckijddjfjAhmckdaolne) hash ^= OFDFKMLOGKO.GetHashCode();
+      if (FMGLEBCIBHG != global::March7thHoney.Proto.FeatureSwitchType.BlohgfcfeelOllfdoonpph) hash ^= FMGLEBCIBHG.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -137,9 +137,9 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (OFDFKMLOGKO != global::March7thHoney.Proto.FeatureSwitchType.IgckijddjfjAhmckdaolne) {
+      if (FMGLEBCIBHG != global::March7thHoney.Proto.FeatureSwitchType.BlohgfcfeelOllfdoonpph) {
         output.WriteRawTag(32);
-        output.WriteEnum((int) OFDFKMLOGKO);
+        output.WriteEnum((int) FMGLEBCIBHG);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -151,9 +151,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (OFDFKMLOGKO != global::March7thHoney.Proto.FeatureSwitchType.IgckijddjfjAhmckdaolne) {
+      if (FMGLEBCIBHG != global::March7thHoney.Proto.FeatureSwitchType.BlohgfcfeelOllfdoonpph) {
         output.WriteRawTag(32);
-        output.WriteEnum((int) OFDFKMLOGKO);
+        output.WriteEnum((int) FMGLEBCIBHG);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -165,8 +165,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (OFDFKMLOGKO != global::March7thHoney.Proto.FeatureSwitchType.IgckijddjfjAhmckdaolne) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) OFDFKMLOGKO);
+      if (FMGLEBCIBHG != global::March7thHoney.Proto.FeatureSwitchType.BlohgfcfeelOllfdoonpph) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) FMGLEBCIBHG);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -180,8 +180,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.OFDFKMLOGKO != global::March7thHoney.Proto.FeatureSwitchType.IgckijddjfjAhmckdaolne) {
-        OFDFKMLOGKO = other.OFDFKMLOGKO;
+      if (other.FMGLEBCIBHG != global::March7thHoney.Proto.FeatureSwitchType.BlohgfcfeelOllfdoonpph) {
+        FMGLEBCIBHG = other.FMGLEBCIBHG;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -203,7 +203,7 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 32: {
-            OFDFKMLOGKO = (global::March7thHoney.Proto.FeatureSwitchType) input.ReadEnum();
+            FMGLEBCIBHG = (global::March7thHoney.Proto.FeatureSwitchType) input.ReadEnum();
             break;
           }
         }
@@ -226,7 +226,7 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 32: {
-            OFDFKMLOGKO = (global::March7thHoney.Proto.FeatureSwitchType) input.ReadEnum();
+            FMGLEBCIBHG = (global::March7thHoney.Proto.FeatureSwitchType) input.ReadEnum();
             break;
           }
         }

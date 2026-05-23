@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "NHFOGDPBOHN.proto";
+import "ONFLANPGHHL.proto";
 
 message RelicSmartWearDeletePinRelicCsReq {
-    bool OPCPHICEOOF = 3;
-    uint32 avatar_id = 6;
-    repeated NHFOGDPBOHN DHCNMIAIBGF = 11;
+    repeated ONFLANPGHHL AIFAMIFGMCH = 4;
+    bool BEAJGCMPOED = 13;
+    uint32 avatar_id = 12;
 }

@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdPamMissionType {
-    PBMDIDPANOI_PCPDHELPKEM = 0;
-    CmdOLLNKPHMEPH = 4010;
-    CmdSyncAcceptedPamMissionNotify = 4094;
-    CmdAcceptedPamMissionExpireCsReq = 4091;
+    KMGNIGGHMBM_NLCDGIPGFDJ = 0;
+    KMGNIGGHMBM_GOFMDEDHENA = 4003;
+    KMGNIGGHMBM_HNHCOMDJGJI = 4073;
+    KMGNIGGHMBM_MCKELFANPPI = 4080;
 }

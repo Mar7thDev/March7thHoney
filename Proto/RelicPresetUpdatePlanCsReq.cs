@@ -24,15 +24,15 @@ namespace March7thHoney.Proto {
     static RelicPresetUpdatePlanCsReqReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CiBSZWxpY1ByZXNldFVwZGF0ZVBsYW5Dc1JlcS5wcm90bxoRRFBERExBT0JN",
-            "QkgucHJvdG8icgoaUmVsaWNQcmVzZXRVcGRhdGVQbGFuQ3NSZXESEQoJdW5p",
-            "cXVlX2lkGAogASgNEiIKCnJlbGljX2xpc3QYAyABKAsyDC5EUERETEFPQk1C",
-            "SEgAEg4KBG5hbWUYDiABKAlIAEINCgtCUElIRkFKQ0xPQ0IWqgITTWFyY2g3",
+            "CiBSZWxpY1ByZXNldFVwZGF0ZVBsYW5Dc1JlcS5wcm90bxoRSFBQT0lORkxF",
+            "UEoucHJvdG8icgoaUmVsaWNQcmVzZXRVcGRhdGVQbGFuQ3NSZXESEQoJdW5p",
+            "cXVlX2lkGAUgASgNEiIKCnJlbGljX2xpc3QYBiABKAsyDC5IUFBPSU5GTEVQ",
+            "SkgAEg4KBG5hbWUYASABKAlIAEINCgtLS05CT0FDTkNPTkIWqgITTWFyY2g3",
             "dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.DPDDLAOBMBHReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.HPPOINFLEPJReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RelicPresetUpdatePlanCsReq), global::March7thHoney.Proto.RelicPresetUpdatePlanCsReq.Parser, new[]{ "UniqueId", "RelicList", "Name" }, new[]{ "BPIHFAJCLOC" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RelicPresetUpdatePlanCsReq), global::March7thHoney.Proto.RelicPresetUpdatePlanCsReq.Parser, new[]{ "UniqueId", "RelicList", "Name" }, new[]{ "KKNBOACNCON" }, null, null, null)
           }));
     }
     #endregion
@@ -75,11 +75,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RelicPresetUpdatePlanCsReq(RelicPresetUpdatePlanCsReq other) : this() {
       uniqueId_ = other.uniqueId_;
-      switch (other.BPIHFAJCLOCCase) {
-        case BPIHFAJCLOCOneofCase.RelicList:
+      switch (other.KKNBOACNCONCase) {
+        case KKNBOACNCONOneofCase.RelicList:
           RelicList = other.RelicList.Clone();
           break;
-        case BPIHFAJCLOCOneofCase.Name:
+        case KKNBOACNCONOneofCase.Name:
           Name = other.Name;
           break;
       }
@@ -94,7 +94,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "unique_id" field.</summary>
-    public const int UniqueIdFieldNumber = 10;
+    public const int UniqueIdFieldNumber = 5;
     private uint uniqueId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -106,62 +106,62 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "relic_list" field.</summary>
-    public const int RelicListFieldNumber = 3;
+    public const int RelicListFieldNumber = 6;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.DPDDLAOBMBH RelicList {
-      get { return bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.RelicList ? (global::March7thHoney.Proto.DPDDLAOBMBH) bPIHFAJCLOC_ : null; }
+    public global::March7thHoney.Proto.HPPOINFLEPJ RelicList {
+      get { return kKNBOACNCONCase_ == KKNBOACNCONOneofCase.RelicList ? (global::March7thHoney.Proto.HPPOINFLEPJ) kKNBOACNCON_ : null; }
       set {
-        bPIHFAJCLOC_ = value;
-        bPIHFAJCLOCCase_ = value == null ? BPIHFAJCLOCOneofCase.None : BPIHFAJCLOCOneofCase.RelicList;
+        kKNBOACNCON_ = value;
+        kKNBOACNCONCase_ = value == null ? KKNBOACNCONOneofCase.None : KKNBOACNCONOneofCase.RelicList;
       }
     }
 
     /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 14;
+    public const int NameFieldNumber = 1;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Name {
-      get { return HasName ? (string) bPIHFAJCLOC_ : ""; }
+      get { return HasName ? (string) kKNBOACNCON_ : ""; }
       set {
-        bPIHFAJCLOC_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-        bPIHFAJCLOCCase_ = BPIHFAJCLOCOneofCase.Name;
+        kKNBOACNCON_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        kKNBOACNCONCase_ = KKNBOACNCONOneofCase.Name;
       }
     }
     /// <summary>Gets whether the "name" field is set</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool HasName {
-      get { return bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.Name; }
+      get { return kKNBOACNCONCase_ == KKNBOACNCONOneofCase.Name; }
     }
     /// <summary> Clears the value of the oneof if it's currently set to "name" </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void ClearName() {
       if (HasName) {
-        ClearBPIHFAJCLOC();
+        ClearKKNBOACNCON();
       }
     }
 
-    private object bPIHFAJCLOC_;
-    /// <summary>Enum of possible cases for the "BPIHFAJCLOC" oneof.</summary>
-    public enum BPIHFAJCLOCOneofCase {
+    private object kKNBOACNCON_;
+    /// <summary>Enum of possible cases for the "KKNBOACNCON" oneof.</summary>
+    public enum KKNBOACNCONOneofCase {
       None = 0,
-      RelicList = 3,
-      Name = 14,
+      RelicList = 6,
+      Name = 1,
     }
-    private BPIHFAJCLOCOneofCase bPIHFAJCLOCCase_ = BPIHFAJCLOCOneofCase.None;
+    private KKNBOACNCONOneofCase kKNBOACNCONCase_ = KKNBOACNCONOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public BPIHFAJCLOCOneofCase BPIHFAJCLOCCase {
-      get { return bPIHFAJCLOCCase_; }
+    public KKNBOACNCONOneofCase KKNBOACNCONCase {
+      get { return kKNBOACNCONCase_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearBPIHFAJCLOC() {
-      bPIHFAJCLOCCase_ = BPIHFAJCLOCOneofCase.None;
-      bPIHFAJCLOC_ = null;
+    public void ClearKKNBOACNCON() {
+      kKNBOACNCONCase_ = KKNBOACNCONOneofCase.None;
+      kKNBOACNCON_ = null;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -182,7 +182,7 @@ namespace March7thHoney.Proto {
       if (UniqueId != other.UniqueId) return false;
       if (!object.Equals(RelicList, other.RelicList)) return false;
       if (Name != other.Name) return false;
-      if (BPIHFAJCLOCCase != other.BPIHFAJCLOCCase) return false;
+      if (KKNBOACNCONCase != other.KKNBOACNCONCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -191,9 +191,9 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (UniqueId != 0) hash ^= UniqueId.GetHashCode();
-      if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.RelicList) hash ^= RelicList.GetHashCode();
+      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.RelicList) hash ^= RelicList.GetHashCode();
       if (HasName) hash ^= Name.GetHashCode();
-      hash ^= (int) bPIHFAJCLOCCase_;
+      hash ^= (int) kKNBOACNCONCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -212,17 +212,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.RelicList) {
-        output.WriteRawTag(26);
-        output.WriteMessage(RelicList);
+      if (HasName) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
       }
       if (UniqueId != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(40);
         output.WriteUInt32(UniqueId);
       }
-      if (HasName) {
-        output.WriteRawTag(114);
-        output.WriteString(Name);
+      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.RelicList) {
+        output.WriteRawTag(50);
+        output.WriteMessage(RelicList);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -234,17 +234,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.RelicList) {
-        output.WriteRawTag(26);
-        output.WriteMessage(RelicList);
+      if (HasName) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
       }
       if (UniqueId != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(40);
         output.WriteUInt32(UniqueId);
       }
-      if (HasName) {
-        output.WriteRawTag(114);
-        output.WriteString(Name);
+      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.RelicList) {
+        output.WriteRawTag(50);
+        output.WriteMessage(RelicList);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -259,7 +259,7 @@ namespace March7thHoney.Proto {
       if (UniqueId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(UniqueId);
       }
-      if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.RelicList) {
+      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.RelicList) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(RelicList);
       }
       if (HasName) {
@@ -280,14 +280,14 @@ namespace March7thHoney.Proto {
       if (other.UniqueId != 0) {
         UniqueId = other.UniqueId;
       }
-      switch (other.BPIHFAJCLOCCase) {
-        case BPIHFAJCLOCOneofCase.RelicList:
+      switch (other.KKNBOACNCONCase) {
+        case KKNBOACNCONOneofCase.RelicList:
           if (RelicList == null) {
-            RelicList = new global::March7thHoney.Proto.DPDDLAOBMBH();
+            RelicList = new global::March7thHoney.Proto.HPPOINFLEPJ();
           }
           RelicList.MergeFrom(other.RelicList);
           break;
-        case BPIHFAJCLOCOneofCase.Name:
+        case KKNBOACNCONOneofCase.Name:
           Name = other.Name;
           break;
       }
@@ -311,21 +311,21 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 26: {
-            global::March7thHoney.Proto.DPDDLAOBMBH subBuilder = new global::March7thHoney.Proto.DPDDLAOBMBH();
-            if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.RelicList) {
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 40: {
+            UniqueId = input.ReadUInt32();
+            break;
+          }
+          case 50: {
+            global::March7thHoney.Proto.HPPOINFLEPJ subBuilder = new global::March7thHoney.Proto.HPPOINFLEPJ();
+            if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.RelicList) {
               subBuilder.MergeFrom(RelicList);
             }
             input.ReadMessage(subBuilder);
             RelicList = subBuilder;
-            break;
-          }
-          case 80: {
-            UniqueId = input.ReadUInt32();
-            break;
-          }
-          case 114: {
-            Name = input.ReadString();
             break;
           }
         }
@@ -347,21 +347,21 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 26: {
-            global::March7thHoney.Proto.DPDDLAOBMBH subBuilder = new global::March7thHoney.Proto.DPDDLAOBMBH();
-            if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.RelicList) {
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 40: {
+            UniqueId = input.ReadUInt32();
+            break;
+          }
+          case 50: {
+            global::March7thHoney.Proto.HPPOINFLEPJ subBuilder = new global::March7thHoney.Proto.HPPOINFLEPJ();
+            if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.RelicList) {
               subBuilder.MergeFrom(RelicList);
             }
             input.ReadMessage(subBuilder);
             RelicList = subBuilder;
-            break;
-          }
-          case 80: {
-            UniqueId = input.ReadUInt32();
-            break;
-          }
-          case 114: {
-            Name = input.ReadString();
             break;
           }
         }

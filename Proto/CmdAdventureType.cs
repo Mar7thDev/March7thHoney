@@ -24,17 +24,17 @@ namespace March7thHoney.Proto {
     static CmdAdventureTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChZDbWRBZHZlbnR1cmVUeXBlLnByb3RvKqwDChBDbWRBZHZlbnR1cmVUeXBl",
-            "EhsKF0tFR0NIQ0lIS0RNX1BDUERIRUxQS0VNEAASHQoYQ21kRmFybUVsZW1l",
-            "bnRTd2VlcFNjUnNwEJUKEh0KGENtZEZhcm1FbGVtZW50U3dlZXBDc1JlcRC7",
-            "ChIcChdLRUdDSENJSEtETV9ET0ZNQUdPR0FOUBDvChIiCh1DbWRRdWlja1N0",
-            "YXJ0Q29jb29uU3RhZ2VDc1JlcRCiChITCg5DbWRHSUNERE5ER0pKTxCeChIi",
-            "Ch1DbWRRdWlja1N0YXJ0Q29jb29uU3RhZ2VTY1JzcBCmChIiCh1DbWRRdWlj",
-            "a1N0YXJ0RmFybUVsZW1lbnRTY1JzcBD2ChIYChNDbWRDb2Nvb25Td2VlcFNj",
-            "UnNwEK4KEhgKE0NtZENvY29vblN3ZWVwQ3NSZXEQ0woSIgodQ21kUXVpY2tT",
-            "dGFydEZhcm1FbGVtZW50Q3NSZXEQnQoSIgodQ21kR2V0RmFybVN0YWdlR2Fj",
-            "aGFJbmZvU2NSc3AQ8woSIgodQ21kR2V0RmFybVN0YWdlR2FjaGFJbmZvQ3NS",
-            "ZXEQ8gpCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ChZDbWRBZHZlbnR1cmVUeXBlLnByb3RvKpcDChBDbWRBZHZlbnR1cmVUeXBl",
+            "EhsKF1BDSEdFQk1LQkREX05MQ0RHSVBHRkRKEAASHAoXUENIR0VCTUtCRERf",
+            "Q0VOSEZPSUVES0sQuAoSHAoXUENIR0VCTUtCRERfTE5DREVBRkFBRkwQngoS",
+            "HAoXUENIR0VCTUtCRERfSENJRUVFUEpBSkUQ6woSHAoXUENIR0VCTUtCRERf",
+            "TkhNRkxPQklISksQ5AoSHAoXUENIR0VCTUtCRERfSktJSEZPR0VJQ0kQsQoS",
+            "HAoXUENIR0VCTUtCRERfUE5HREpMRURDS0YQoQoSHAoXUENIR0VCTUtCRERf",
+            "REZFS0dIRkxKSEoQrwoSHAoXUENIR0VCTUtCRERfR0hOTk9HUE1FTkQQ5QoS",
+            "HAoXUENIR0VCTUtCRERfQktGT0tKSEVIT00QowoSHAoXUENIR0VCTUtCRERf",
+            "Q0FISkFKSlBOTU4Q3QoSHAoXUENIR0VCTUtCRERfRU9DQk9OTEhBT0oQoAoS",
+            "HAoXUENIR0VCTUtCRERfTU5OT05HQUtMQkMQlwpCFqoCE01hcmNoN3RoSG9u",
+            "ZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdAdventureType), }, null, null));
@@ -44,19 +44,19 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdAdventureType {
-    [pbr::OriginalName("KEGCHCIHKDM_PCPDHELPKEM")] KegchcihkdmPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdFarmElementSweepScRsp")] CmdFarmElementSweepScRsp = 1301,
-    [pbr::OriginalName("CmdFarmElementSweepCsReq")] CmdFarmElementSweepCsReq = 1339,
-    [pbr::OriginalName("KEGCHCIHKDM_DOFMAGOGANP")] KegchcihkdmDofmagoganp = 1391,
-    [pbr::OriginalName("CmdQuickStartCocoonStageCsReq")] CmdQuickStartCocoonStageCsReq = 1314,
-    [pbr::OriginalName("CmdGICDDNDGJJO")] CmdGicddndgjjo = 1310,
-    [pbr::OriginalName("CmdQuickStartCocoonStageScRsp")] CmdQuickStartCocoonStageScRsp = 1318,
-    [pbr::OriginalName("CmdQuickStartFarmElementScRsp")] CmdQuickStartFarmElementScRsp = 1398,
-    [pbr::OriginalName("CmdCocoonSweepScRsp")] CmdCocoonSweepScRsp = 1326,
-    [pbr::OriginalName("CmdCocoonSweepCsReq")] CmdCocoonSweepCsReq = 1363,
-    [pbr::OriginalName("CmdQuickStartFarmElementCsReq")] CmdQuickStartFarmElementCsReq = 1309,
-    [pbr::OriginalName("CmdGetFarmStageGachaInfoScRsp")] CmdGetFarmStageGachaInfoScRsp = 1395,
-    [pbr::OriginalName("CmdGetFarmStageGachaInfoCsReq")] CmdGetFarmStageGachaInfoCsReq = 1394,
+    [pbr::OriginalName("PCHGEBMKBDD_NLCDGIPGFDJ")] PchgebmkbddNlcdgipgfdj = 0,
+    [pbr::OriginalName("PCHGEBMKBDD_CENHFOIEDKK")] PchgebmkbddCenhfoiedkk = 1336,
+    [pbr::OriginalName("PCHGEBMKBDD_LNCDEAFAAFL")] PchgebmkbddLncdeafaafl = 1310,
+    [pbr::OriginalName("PCHGEBMKBDD_HCIEEEPJAJE")] PchgebmkbddHcieeepjaje = 1387,
+    [pbr::OriginalName("PCHGEBMKBDD_NHMFLOBIHJK")] PchgebmkbddNhmflobihjk = 1380,
+    [pbr::OriginalName("PCHGEBMKBDD_JKIHFOGEICI")] PchgebmkbddJkihfogeici = 1329,
+    [pbr::OriginalName("PCHGEBMKBDD_PNGDJLEDCKF")] PchgebmkbddPngdjledckf = 1313,
+    [pbr::OriginalName("PCHGEBMKBDD_DFEKGHFLJHJ")] PchgebmkbddDfekghfljhj = 1327,
+    [pbr::OriginalName("PCHGEBMKBDD_GHNNOGPMEND")] PchgebmkbddGhnnogpmend = 1381,
+    [pbr::OriginalName("PCHGEBMKBDD_BKFOKJHEHOM")] PchgebmkbddBkfokjhehom = 1315,
+    [pbr::OriginalName("PCHGEBMKBDD_CAHJAJJPNMN")] PchgebmkbddCahjajjpnmn = 1373,
+    [pbr::OriginalName("PCHGEBMKBDD_EOCBONLHAOJ")] PchgebmkbddEocbonlhaoj = 1312,
+    [pbr::OriginalName("PCHGEBMKBDD_MNNONGAKLBC")] PchgebmkbddMnnongaklbc = 1303,
   }
 
   #endregion

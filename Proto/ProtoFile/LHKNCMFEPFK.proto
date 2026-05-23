@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "KOFMGCNIMIN.proto";
+
+message LHKNCMFEPFK {
+    KOFMGCNIMIN ANBKDJKHCBI = 7;
+    uint32 EGJIEAAEEBD = 5;
+    uint32 FDEECOEDJEB = 14;
+}

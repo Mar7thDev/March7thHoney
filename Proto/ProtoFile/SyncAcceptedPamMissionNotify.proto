@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message SyncAcceptedPamMissionNotify {
-    uint32 main_mission_id = 4;
-    uint64 NJMONGKLJJC = 6;
+    uint32 main_mission_id = 2;
+    uint64 KAMOPEEBOHJ = 4;
 }

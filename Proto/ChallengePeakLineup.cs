@@ -24,15 +24,13 @@ namespace March7thHoney.Proto {
     static ChallengePeakLineupReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChlDaGFsbGVuZ2VQZWFrTGluZXVwLnByb3RvGhFFRUJQSEpDTkJGTy5wcm90",
-            "byJmChNDaGFsbGVuZ2VQZWFrTGluZXVwEiEKC0ZNRkdPSkhDQ05MGAEgAygL",
-            "MgwuRUVCUEhKQ05CRk8SDwoHcGVha19pZBgDIAEoDRIbChNwZWFrX2F2YXRh",
-            "cl9pZF9saXN0GAwgAygNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
-            "bzM="));
+            "ChlDaGFsbGVuZ2VQZWFrTGluZXVwLnByb3RvIkMKE0NoYWxsZW5nZVBlYWtM",
+            "aW5ldXASGwoTcGVha19hdmF0YXJfaWRfbGlzdBgDIAMoDRIPCgdwZWFrX2lk",
+            "GAEgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.EEBPHJCNBFOReflection.Descriptor, },
+          new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakLineup), global::March7thHoney.Proto.ChallengePeakLineup.Parser, new[]{ "FMFGOJHCCNL", "PeakId", "PeakAvatarIdList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakLineup), global::March7thHoney.Proto.ChallengePeakLineup.Parser, new[]{ "PeakAvatarIdList", "PeakId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,9 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ChallengePeakLineup(ChallengePeakLineup other) : this() {
-      fMFGOJHCCNL_ = other.fMFGOJHCCNL_.Clone();
-      peakId_ = other.peakId_;
       peakAvatarIdList_ = other.peakAvatarIdList_.Clone();
+      peakId_ = other.peakId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,19 +83,19 @@ namespace March7thHoney.Proto {
       return new ChallengePeakLineup(this);
     }
 
-    /// <summary>Field number for the "FMFGOJHCCNL" field.</summary>
-    public const int FMFGOJHCCNLFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EEBPHJCNBFO> _repeated_fMFGOJHCCNL_codec
-        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.EEBPHJCNBFO.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EEBPHJCNBFO> fMFGOJHCCNL_ = new pbc::RepeatedField<global::March7thHoney.Proto.EEBPHJCNBFO>();
+    /// <summary>Field number for the "peak_avatar_id_list" field.</summary>
+    public const int PeakAvatarIdListFieldNumber = 3;
+    private static readonly pb::FieldCodec<uint> _repeated_peakAvatarIdList_codec
+        = pb::FieldCodec.ForUInt32(26);
+    private readonly pbc::RepeatedField<uint> peakAvatarIdList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.EEBPHJCNBFO> FMFGOJHCCNL {
-      get { return fMFGOJHCCNL_; }
+    public pbc::RepeatedField<uint> PeakAvatarIdList {
+      get { return peakAvatarIdList_; }
     }
 
     /// <summary>Field number for the "peak_id" field.</summary>
-    public const int PeakIdFieldNumber = 3;
+    public const int PeakIdFieldNumber = 1;
     private uint peakId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -107,17 +104,6 @@ namespace March7thHoney.Proto {
       set {
         peakId_ = value;
       }
-    }
-
-    /// <summary>Field number for the "peak_avatar_id_list" field.</summary>
-    public const int PeakAvatarIdListFieldNumber = 12;
-    private static readonly pb::FieldCodec<uint> _repeated_peakAvatarIdList_codec
-        = pb::FieldCodec.ForUInt32(98);
-    private readonly pbc::RepeatedField<uint> peakAvatarIdList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> PeakAvatarIdList {
-      get { return peakAvatarIdList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -135,9 +121,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!fMFGOJHCCNL_.Equals(other.fMFGOJHCCNL_)) return false;
-      if (PeakId != other.PeakId) return false;
       if(!peakAvatarIdList_.Equals(other.peakAvatarIdList_)) return false;
+      if (PeakId != other.PeakId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -145,9 +130,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= fMFGOJHCCNL_.GetHashCode();
-      if (PeakId != 0) hash ^= PeakId.GetHashCode();
       hash ^= peakAvatarIdList_.GetHashCode();
+      if (PeakId != 0) hash ^= PeakId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -166,9 +150,8 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      fMFGOJHCCNL_.WriteTo(output, _repeated_fMFGOJHCCNL_codec);
       if (PeakId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(8);
         output.WriteUInt32(PeakId);
       }
       peakAvatarIdList_.WriteTo(output, _repeated_peakAvatarIdList_codec);
@@ -182,9 +165,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      fMFGOJHCCNL_.WriteTo(ref output, _repeated_fMFGOJHCCNL_codec);
       if (PeakId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(8);
         output.WriteUInt32(PeakId);
       }
       peakAvatarIdList_.WriteTo(ref output, _repeated_peakAvatarIdList_codec);
@@ -198,11 +180,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += fMFGOJHCCNL_.CalculateSize(_repeated_fMFGOJHCCNL_codec);
+      size += peakAvatarIdList_.CalculateSize(_repeated_peakAvatarIdList_codec);
       if (PeakId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PeakId);
       }
-      size += peakAvatarIdList_.CalculateSize(_repeated_peakAvatarIdList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -215,11 +196,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      fMFGOJHCCNL_.Add(other.fMFGOJHCCNL_);
+      peakAvatarIdList_.Add(other.peakAvatarIdList_);
       if (other.PeakId != 0) {
         PeakId = other.PeakId;
       }
-      peakAvatarIdList_.Add(other.peakAvatarIdList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -239,16 +219,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            fMFGOJHCCNL_.AddEntriesFrom(input, _repeated_fMFGOJHCCNL_codec);
-            break;
-          }
-          case 24: {
+          case 8: {
             PeakId = input.ReadUInt32();
             break;
           }
-          case 98:
-          case 96: {
+          case 26:
+          case 24: {
             peakAvatarIdList_.AddEntriesFrom(input, _repeated_peakAvatarIdList_codec);
             break;
           }
@@ -271,16 +247,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            fMFGOJHCCNL_.AddEntriesFrom(ref input, _repeated_fMFGOJHCCNL_codec);
-            break;
-          }
-          case 24: {
+          case 8: {
             PeakId = input.ReadUInt32();
             break;
           }
-          case 98:
-          case 96: {
+          case 26:
+          case 24: {
             peakAvatarIdList_.AddEntriesFrom(ref input, _repeated_peakAvatarIdList_codec);
             break;
           }

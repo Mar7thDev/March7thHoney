@@ -24,15 +24,14 @@ namespace March7thHoney.Proto {
     static CmdFightFestTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChZDbWRGaWdodEZlc3RUeXBlLnByb3RvKsACChBDbWRGaWdodEZlc3RUeXBl",
-            "EhsKF0VJTU9PT0lMTUtDX1BDUERIRUxQS0VNEAASIgodQ21kRmlnaHRGZXN0",
-            "VW5sb2NrU2tpbGxOb3RpZnkQ+DgSGwoWQ21kU3RhcnRGaWdodEZlc3RTY1Jz",
-            "cBDtOBIsCidDbWRGaWdodEZlc3RVcGRhdGVDaGFsbGVuZ2VSZWNvcmROb3Rp",
-            "ZnkQ1zgSIgodQ21kRmlnaHRGZXN0U2NvcmVVcGRhdGVOb3RpZnkQ9TgSIQoc",
-            "Q21kRmlnaHRGZXN0VXBkYXRlQ29pbk5vdGlmeRDTOBIbChZDbWRTdGFydEZp",
-            "Z2h0RmVzdENzUmVxEPA4Eh0KGENtZEdldEZpZ2h0RmVzdERhdGFDc1JlcRDf",
-            "OBIdChhDbWRHZXRGaWdodEZlc3REYXRhU2NSc3AQ2ThCFqoCE01hcmNoN3Ro",
-            "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ChZDbWRGaWdodEZlc3RUeXBlLnByb3RvKp8CChBDbWRGaWdodEZlc3RUeXBl",
+            "EhsKF0ZMTEtIRE1IR0VKX05MQ0RHSVBHRkRKEAASHAoXRkxMS0hETUhHRUpf",
+            "Qk1FUEhNTkVPREcQ/jgSHAoXRkxMS0hETUhHRUpfTU5GREhHSURQRksQ/DgS",
+            "HAoXRkxMS0hETUhHRUpfTkpIUEpPRk1JUEkQ6TgSHAoXRkxMS0hETUhHRUpf",
+            "QUFKSEFIR05ET0YQ5TgSHAoXRkxMS0hETUhHRUpfQUFET09FRUlISUkQ/zgS",
+            "HAoXRkxMS0hETUhHRUpfSk5JQkhHT0pKTUQQ2TgSHAoXRkxMS0hETUhHRUpf",
+            "QU9GT01KTk1JSU0Q8jgSHAoXRkxMS0hETUhHRUpfTktEQ01FSk1JS08Q7ThC",
+            "FqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdFightFestType), }, null, null));
@@ -42,15 +41,15 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdFightFestType {
-    [pbr::OriginalName("EIMOOOILMKC_PCPDHELPKEM")] EimoooilmkcPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdFightFestUnlockSkillNotify")] CmdFightFestUnlockSkillNotify = 7288,
-    [pbr::OriginalName("CmdStartFightFestScRsp")] CmdStartFightFestScRsp = 7277,
-    [pbr::OriginalName("CmdFightFestUpdateChallengeRecordNotify")] CmdFightFestUpdateChallengeRecordNotify = 7255,
-    [pbr::OriginalName("CmdFightFestScoreUpdateNotify")] CmdFightFestScoreUpdateNotify = 7285,
-    [pbr::OriginalName("CmdFightFestUpdateCoinNotify")] CmdFightFestUpdateCoinNotify = 7251,
-    [pbr::OriginalName("CmdStartFightFestCsReq")] CmdStartFightFestCsReq = 7280,
-    [pbr::OriginalName("CmdGetFightFestDataCsReq")] CmdGetFightFestDataCsReq = 7263,
-    [pbr::OriginalName("CmdGetFightFestDataScRsp")] CmdGetFightFestDataScRsp = 7257,
+    [pbr::OriginalName("FLLKHDMHGEJ_NLCDGIPGFDJ")] FllkhdmhgejNlcdgipgfdj = 0,
+    [pbr::OriginalName("FLLKHDMHGEJ_BMEPHMNEODG")] FllkhdmhgejBmephmneodg = 7294,
+    [pbr::OriginalName("FLLKHDMHGEJ_MNFDHGIDPFK")] FllkhdmhgejMnfdhgidpfk = 7292,
+    [pbr::OriginalName("FLLKHDMHGEJ_NJHPJOFMIPI")] FllkhdmhgejNjhpjofmipi = 7273,
+    [pbr::OriginalName("FLLKHDMHGEJ_AAJHAHGNDOF")] FllkhdmhgejAajhahgndof = 7269,
+    [pbr::OriginalName("FLLKHDMHGEJ_AADOOEEIHII")] FllkhdmhgejAadooeeihii = 7295,
+    [pbr::OriginalName("FLLKHDMHGEJ_JNIBHGOJJMD")] FllkhdmhgejJnibhgojjmd = 7257,
+    [pbr::OriginalName("FLLKHDMHGEJ_AOFOMJNMIIM")] FllkhdmhgejAofomjnmiim = 7282,
+    [pbr::OriginalName("FLLKHDMHGEJ_NKDCMEJMIKO")] FllkhdmhgejNkdcmejmiko = 7277,
   }
 
   #endregion

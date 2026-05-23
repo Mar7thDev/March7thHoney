@@ -26,14 +26,14 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiFDaGFuZ2VQcm9wVGltZWxpbmVJbmZvQ3NSZXEucHJvdG8aFlByb3BUaW1l",
             "bGluZUluZm8ucHJvdG8imAEKG0NoYW5nZVByb3BUaW1lbGluZUluZm9Dc1Jl",
-            "cRIUCgxpc19jbG9zZV9tYXAYASABKAgSFgoOcHJvcF9lbnRpdHlfaWQYAyAB",
-            "KA0SDAoEdXVpZBgGIAEoBBIoCg10aW1lbGluZV9pbmZvGAsgASgLMhEuUHJv",
-            "cFRpbWVsaW5lSW5mbxITCgtpbnRlcmFjdF9pZBgPIAEoBEIWqgITTWFyY2g3",
+            "cRIoCg10aW1lbGluZV9pbmZvGAIgASgLMhEuUHJvcFRpbWVsaW5lSW5mbxIU",
+            "Cgxpc19jbG9zZV9tYXAYDSABKAgSFgoOcHJvcF9lbnRpdHlfaWQYCyABKA0S",
+            "DAoEdXVpZBgPIAEoBBITCgtpbnRlcmFjdF9pZBgBIAEoBEIWqgITTWFyY2g3",
             "dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.PropTimelineInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChangePropTimelineInfoCsReq), global::March7thHoney.Proto.ChangePropTimelineInfoCsReq.Parser, new[]{ "IsCloseMap", "PropEntityId", "Uuid", "TimelineInfo", "InteractId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChangePropTimelineInfoCsReq), global::March7thHoney.Proto.ChangePropTimelineInfoCsReq.Parser, new[]{ "TimelineInfo", "IsCloseMap", "PropEntityId", "Uuid", "InteractId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,10 +75,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ChangePropTimelineInfoCsReq(ChangePropTimelineInfoCsReq other) : this() {
+      timelineInfo_ = other.timelineInfo_ != null ? other.timelineInfo_.Clone() : null;
       isCloseMap_ = other.isCloseMap_;
       propEntityId_ = other.propEntityId_;
       uuid_ = other.uuid_;
-      timelineInfo_ = other.timelineInfo_ != null ? other.timelineInfo_.Clone() : null;
       interactId_ = other.interactId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -89,8 +89,20 @@ namespace March7thHoney.Proto {
       return new ChangePropTimelineInfoCsReq(this);
     }
 
+    /// <summary>Field number for the "timeline_info" field.</summary>
+    public const int TimelineInfoFieldNumber = 2;
+    private global::March7thHoney.Proto.PropTimelineInfo timelineInfo_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.PropTimelineInfo TimelineInfo {
+      get { return timelineInfo_; }
+      set {
+        timelineInfo_ = value;
+      }
+    }
+
     /// <summary>Field number for the "is_close_map" field.</summary>
-    public const int IsCloseMapFieldNumber = 1;
+    public const int IsCloseMapFieldNumber = 13;
     private bool isCloseMap_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -102,7 +114,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "prop_entity_id" field.</summary>
-    public const int PropEntityIdFieldNumber = 3;
+    public const int PropEntityIdFieldNumber = 11;
     private uint propEntityId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -114,7 +126,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "uuid" field.</summary>
-    public const int UuidFieldNumber = 6;
+    public const int UuidFieldNumber = 15;
     private ulong uuid_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -125,20 +137,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "timeline_info" field.</summary>
-    public const int TimelineInfoFieldNumber = 11;
-    private global::March7thHoney.Proto.PropTimelineInfo timelineInfo_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.PropTimelineInfo TimelineInfo {
-      get { return timelineInfo_; }
-      set {
-        timelineInfo_ = value;
-      }
-    }
-
     /// <summary>Field number for the "interact_id" field.</summary>
-    public const int InteractIdFieldNumber = 15;
+    public const int InteractIdFieldNumber = 1;
     private ulong interactId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -164,10 +164,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (!object.Equals(TimelineInfo, other.TimelineInfo)) return false;
       if (IsCloseMap != other.IsCloseMap) return false;
       if (PropEntityId != other.PropEntityId) return false;
       if (Uuid != other.Uuid) return false;
-      if (!object.Equals(TimelineInfo, other.TimelineInfo)) return false;
       if (InteractId != other.InteractId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -176,10 +176,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (timelineInfo_ != null) hash ^= TimelineInfo.GetHashCode();
       if (IsCloseMap != false) hash ^= IsCloseMap.GetHashCode();
       if (PropEntityId != 0) hash ^= PropEntityId.GetHashCode();
       if (Uuid != 0UL) hash ^= Uuid.GetHashCode();
-      if (timelineInfo_ != null) hash ^= TimelineInfo.GetHashCode();
       if (InteractId != 0UL) hash ^= InteractId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -199,25 +199,25 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (IsCloseMap != false) {
+      if (InteractId != 0UL) {
         output.WriteRawTag(8);
-        output.WriteBool(IsCloseMap);
-      }
-      if (PropEntityId != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(PropEntityId);
-      }
-      if (Uuid != 0UL) {
-        output.WriteRawTag(48);
-        output.WriteUInt64(Uuid);
+        output.WriteUInt64(InteractId);
       }
       if (timelineInfo_ != null) {
-        output.WriteRawTag(90);
+        output.WriteRawTag(18);
         output.WriteMessage(TimelineInfo);
       }
-      if (InteractId != 0UL) {
+      if (PropEntityId != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(PropEntityId);
+      }
+      if (IsCloseMap != false) {
+        output.WriteRawTag(104);
+        output.WriteBool(IsCloseMap);
+      }
+      if (Uuid != 0UL) {
         output.WriteRawTag(120);
-        output.WriteUInt64(InteractId);
+        output.WriteUInt64(Uuid);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -229,25 +229,25 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (IsCloseMap != false) {
+      if (InteractId != 0UL) {
         output.WriteRawTag(8);
-        output.WriteBool(IsCloseMap);
-      }
-      if (PropEntityId != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(PropEntityId);
-      }
-      if (Uuid != 0UL) {
-        output.WriteRawTag(48);
-        output.WriteUInt64(Uuid);
+        output.WriteUInt64(InteractId);
       }
       if (timelineInfo_ != null) {
-        output.WriteRawTag(90);
+        output.WriteRawTag(18);
         output.WriteMessage(TimelineInfo);
       }
-      if (InteractId != 0UL) {
+      if (PropEntityId != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(PropEntityId);
+      }
+      if (IsCloseMap != false) {
+        output.WriteRawTag(104);
+        output.WriteBool(IsCloseMap);
+      }
+      if (Uuid != 0UL) {
         output.WriteRawTag(120);
-        output.WriteUInt64(InteractId);
+        output.WriteUInt64(Uuid);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -259,6 +259,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (timelineInfo_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(TimelineInfo);
+      }
       if (IsCloseMap != false) {
         size += 1 + 1;
       }
@@ -267,9 +270,6 @@ namespace March7thHoney.Proto {
       }
       if (Uuid != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Uuid);
-      }
-      if (timelineInfo_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(TimelineInfo);
       }
       if (InteractId != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(InteractId);
@@ -286,6 +286,12 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.timelineInfo_ != null) {
+        if (timelineInfo_ == null) {
+          TimelineInfo = new global::March7thHoney.Proto.PropTimelineInfo();
+        }
+        TimelineInfo.MergeFrom(other.TimelineInfo);
+      }
       if (other.IsCloseMap != false) {
         IsCloseMap = other.IsCloseMap;
       }
@@ -294,12 +300,6 @@ namespace March7thHoney.Proto {
       }
       if (other.Uuid != 0UL) {
         Uuid = other.Uuid;
-      }
-      if (other.timelineInfo_ != null) {
-        if (timelineInfo_ == null) {
-          TimelineInfo = new global::March7thHoney.Proto.PropTimelineInfo();
-        }
-        TimelineInfo.MergeFrom(other.TimelineInfo);
       }
       if (other.InteractId != 0UL) {
         InteractId = other.InteractId;
@@ -324,26 +324,26 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            IsCloseMap = input.ReadBool();
+            InteractId = input.ReadUInt64();
             break;
           }
-          case 24: {
-            PropEntityId = input.ReadUInt32();
-            break;
-          }
-          case 48: {
-            Uuid = input.ReadUInt64();
-            break;
-          }
-          case 90: {
+          case 18: {
             if (timelineInfo_ == null) {
               TimelineInfo = new global::March7thHoney.Proto.PropTimelineInfo();
             }
             input.ReadMessage(TimelineInfo);
             break;
           }
+          case 88: {
+            PropEntityId = input.ReadUInt32();
+            break;
+          }
+          case 104: {
+            IsCloseMap = input.ReadBool();
+            break;
+          }
           case 120: {
-            InteractId = input.ReadUInt64();
+            Uuid = input.ReadUInt64();
             break;
           }
         }
@@ -366,26 +366,26 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            IsCloseMap = input.ReadBool();
+            InteractId = input.ReadUInt64();
             break;
           }
-          case 24: {
-            PropEntityId = input.ReadUInt32();
-            break;
-          }
-          case 48: {
-            Uuid = input.ReadUInt64();
-            break;
-          }
-          case 90: {
+          case 18: {
             if (timelineInfo_ == null) {
               TimelineInfo = new global::March7thHoney.Proto.PropTimelineInfo();
             }
             input.ReadMessage(TimelineInfo);
             break;
           }
+          case 88: {
+            PropEntityId = input.ReadUInt32();
+            break;
+          }
+          case 104: {
+            IsCloseMap = input.ReadBool();
+            break;
+          }
           case 120: {
-            InteractId = input.ReadUInt64();
+            Uuid = input.ReadUInt64();
             break;
           }
         }

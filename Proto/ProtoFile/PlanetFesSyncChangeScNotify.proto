@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "MMGMGMNENLE.proto";
+import "LEJNBBLNNDM.proto";
 
 message PlanetFesSyncChangeScNotify {
-    repeated MMGMGMNENLE CJFBLHNPHAK = 9;
+    repeated LEJNBBLNNDM DGNGMJMPFGK = 2;
 }

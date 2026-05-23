@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message BANELIGFLCO {
+    uint32 MFKHDANPCIC = 5;
+    uint32 CBILPMICEKC = 2;
+    uint32 level = 15;
+}

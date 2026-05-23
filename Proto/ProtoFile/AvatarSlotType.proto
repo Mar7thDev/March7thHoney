@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum AvatarSlotType {
     AVATAR_SLOT_1 = 0;
     AVATAR_SLOT_2 = 1;

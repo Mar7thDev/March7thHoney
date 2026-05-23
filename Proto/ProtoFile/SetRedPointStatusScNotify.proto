@@ -2,14 +2,12 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "FAJGLOFICEI.proto";
+import "LFCHHMGGMPC.proto";
 
 message SetRedPointStatusScNotify {
-    repeated FAJGLOFICEI APMCKODEGBK = 1;
-    uint32 JMIENBBMPAG = 3;
-    uint32 NFDAJHJDGOJ = 8;
-    uint32 content_id = 11;
-    uint32 uid = 14;
+    repeated LFCHHMGGMPC BKAKIJOACPO = 4;
+    uint32 content_id = 1;
+    uint32 CFKKNEHABHH = 5;
+    uint32 uid = 15;
+    uint32 BMFJFFBPADD = 2;
 }

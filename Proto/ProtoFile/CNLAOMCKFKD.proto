@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message CNLAOMCKFKD {
+    uint32 NDEBMEGNCKN = 6;
+    uint32 display_value = 15;
+    uint32 unique_id = 8;
+    uint32 GDNEHLEOMOM = 5;
+}

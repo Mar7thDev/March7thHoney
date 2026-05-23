@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message INHMDFDBGCL {
+    string CLNGFDPINDB = 5;
+    uint64 room_id = 1;
+    uint32 MPDHNFNCIEA = 2;
+    uint32 HJPBAJEPAGE = 4;
+    uint32 PJGILAADCPN = 3;
+}

@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "DPHNLKIPDGJ.proto";
+import "CJOCDGGCPCN.proto";
 
 message RogueTournWeekChallengeUpdateScNotify {
-    DPHNLKIPDGJ IANMKEGOGMG = 1;
+    CJOCDGGCPCN BFNHJIBDMOA = 10;
 }

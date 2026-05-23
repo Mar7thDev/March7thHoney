@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "HDHPAHIFEPM.proto";
+
+message LIJFHHMGBFE {
+    HDHPAHIFEPM HFOMPEEAPCG = 5;
+    HDHPAHIFEPM BBFOLEOPPPL = 9;
+    uint32 buff_id = 12;
+    int32 hp = 6;
+    float IDKONBFPBLH = 7;
+    int32 attack = 4;
+    uint32 level = 10;
+    int32 max_hp = 8;
+    bool AAMBGHEEACK = 3;
+    bool MKAKPEAHBDH = 2;
+    bool POLJHEKGGHN = 11;
+    bool BEACPKDMGGB = 13;
+    uint32 id = 1;
+    uint32 IHLFJOHEIME = 15;
+}

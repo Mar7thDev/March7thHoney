@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "DNLHKFILMLB.proto";
+import "GFHCKBHCNDF.proto";
+import "GHJBBHOOOBC.proto";
+import "LIJFHHMGBFE.proto";
+
+message MBDOBECHOJA {
+    repeated LIJFHHMGBFE NAJEIPKGACO = 2;
+    repeated LIJFHHMGBFE OCMEMBAKLMM = 11;
+    GFHCKBHCNDF DCCILJIBPNK = 3;
+    GHJBBHOOOBC CJJMDMOCPDJ = 1;
+    repeated uint32 KGHFCILHGJL = 6;
+    GHJBBHOOOBC OIBCHBJCHJE = 8;
+    uint32 FDKPCNBCGEG = 5;
+    bool EDLLEHPGFGD = 15;
+    uint32 FEJIKNIKONI = 7;
+    DNLHKFILMLB phase = 9;
+    float LMODIDJMJIH = 4;
+    uint32 LPEHHMHPCMG = 12;
+}

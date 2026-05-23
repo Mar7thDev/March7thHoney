@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "JBMDMFOCOAK.proto";
+import "KJMHIDMOBMB.proto";
+
+message DICEFIGKFCL {
+    repeated KJMHIDMOBMB KNEMNAEGKBF = 11;
+    JBMDMFOCOAK GJLDDMIIILF = 7;
+    uint32 BJFNMEJNKIK = 6;
+    uint32 HJDNNCOHPJH = 8;
+    uint32 BEBLGGDLADJ = 14;
+    uint32 LLGKEIPDDMB = 10;
+}

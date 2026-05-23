@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "AMOHFCEEBNK.proto";
+import "CABKLLAKHKO.proto";
+import "CBOLONJDHHL.proto";
+import "CGNGOLJKBMP.proto";
+import "NAMCKJLAFCN.proto";
+
+message PFLOIHLLMEE {
+    CGNGOLJKBMP AMEABNLMMGB = 4;
+    CBOLONJDHHL NDLIKNEKDLL = 14;
+    oneof KKNBOACNCON {
+        NAMCKJLAFCN FBHCKMGOCJJ = 403;
+        AMOHFCEEBNK HAJEGKBFFAF = 1763;
+        CABKLLAKHKO OPDEIFOCJEF = 832;
+    }
+}

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "LOHLENBEIEB.proto";
+
+message MOLCKKMNHAE {
+    repeated uint32 CGHHKKICJGG = 6;
+    repeated LOHLENBEIEB JIIJEBJMPNI = 3;
+    uint32 game_mode_type = 1;
+    uint32 MJBKNMJHOGP = 7;
+    uint32 AIAFEKGBFIF = 9;
+    uint32 OEANPIHCHHF = 4;
+}

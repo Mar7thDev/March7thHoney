@@ -2,19 +2,17 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "AFOECDHJPII.proto";
-import "BBCLLNPDIAH.proto";
-import "BCNJMGCEGAA.proto";
-import "MFLDHBJNEOO.proto";
-import "NCPCAIKAJGD.proto";
+import "ACAKOLCGDLL.proto";
+import "BAEDIBFGLDE.proto";
+import "ICABANFEIHJ.proto";
+import "IILBDJMKELG.proto";
+import "OMPLEKGNLBC.proto";
 
 message GetElfRestaurantDataScRsp {
-    uint32 retcode = 2;
-    AFOECDHJPII LIBKPMMGGLJ = 3;
-    BCNJMGCEGAA BNJBFPCDAFE = 7;
-    NCPCAIKAJGD OCGNOACLJAJ = 8;
-    BBCLLNPDIAH DCIDLIFMNLA = 11;
-    MFLDHBJNEOO KIIINGJLEHG = 12;
+    BAEDIBFGLDE OENLJGEBCGA = 8;
+    IILBDJMKELG MILCHKIIEJE = 4;
+    ACAKOLCGDLL IBHKOKEEMOI = 10;
+    ICABANFEIHJ AHCEIMGNBNM = 15;
+    OMPLEKGNLBC FFKCMKJFFCM = 13;
+    uint32 retcode = 12;
 }

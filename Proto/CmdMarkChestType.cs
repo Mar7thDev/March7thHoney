@@ -24,12 +24,12 @@ namespace March7thHoney.Proto {
     static CmdMarkChestTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChZDbWRNYXJrQ2hlc3RUeXBlLnByb3RvKsMBChBDbWRNYXJrQ2hlc3RUeXBl",
-            "EhsKF0VFQ0tISEZMQ0RGX1BDUERIRUxQS0VNEAASGQoUQ21kR2V0TWFya0No",
-            "ZXN0U2NSc3AQiEASHAoXQ21kVXBkYXRlTWFya0NoZXN0U2NSc3AQ/j8SGQoU",
-            "Q21kR2V0TWFya0NoZXN0Q3NSZXEQ9T8SHAoXQ21kVXBkYXRlTWFya0NoZXN0",
-            "Q3NSZXEQ9j8SIAobQ21kTWFya0NoZXN0Q2hhbmdlZFNjTm90aWZ5EINAQhaq",
-            "AhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ChZDbWRNYXJrQ2hlc3RUeXBlLnByb3RvKsUBChBDbWRNYXJrQ2hlc3RUeXBl",
+            "EhsKF0xDTktIREFPTUtNX05MQ0RHSVBHRkRKEAASHAoXTENOS0hEQU9NS01f",
+            "QUxOUE9DRkVOTkkQiEASHAoXTENOS0hEQU9NS01fTEtDTkpJTElNRksQhEAS",
+            "HAoXTENOS0hEQU9NS01fQk9LSEZJSUZOT0sQ9j8SHAoXTENOS0hEQU9NS01f",
+            "R0JLRkVQUE1ESkcQ+j8SHAoXTENOS0hEQU9NS01fTUNORk9DS0lQSkUQhkBC",
+            "FqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdMarkChestType), }, null, null));
@@ -39,12 +39,12 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdMarkChestType {
-    [pbr::OriginalName("EECKHHFLCDF_PCPDHELPKEM")] EeckhhflcdfPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdGetMarkChestScRsp")] CmdGetMarkChestScRsp = 8200,
-    [pbr::OriginalName("CmdUpdateMarkChestScRsp")] CmdUpdateMarkChestScRsp = 8190,
-    [pbr::OriginalName("CmdGetMarkChestCsReq")] CmdGetMarkChestCsReq = 8181,
-    [pbr::OriginalName("CmdUpdateMarkChestCsReq")] CmdUpdateMarkChestCsReq = 8182,
-    [pbr::OriginalName("CmdMarkChestChangedScNotify")] CmdMarkChestChangedScNotify = 8195,
+    [pbr::OriginalName("LCNKHDAOMKM_NLCDGIPGFDJ")] LcnkhdaomkmNlcdgipgfdj = 0,
+    [pbr::OriginalName("LCNKHDAOMKM_ALNPOCFENNI")] LcnkhdaomkmAlnpocfenni = 8200,
+    [pbr::OriginalName("LCNKHDAOMKM_LKCNJILIMFK")] LcnkhdaomkmLkcnjilimfk = 8196,
+    [pbr::OriginalName("LCNKHDAOMKM_BOKHFIIFNOK")] LcnkhdaomkmBokhfiifnok = 8182,
+    [pbr::OriginalName("LCNKHDAOMKM_GBKFEPPMDJG")] LcnkhdaomkmGbkfeppmdjg = 8186,
+    [pbr::OriginalName("LCNKHDAOMKM_MCNFOCKIPJE")] LcnkhdaomkmMcnfockipje = 8198,
   }
 
   #endregion

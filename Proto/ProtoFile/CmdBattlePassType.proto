@@ -2,15 +2,13 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdBattlePassType {
-    FGHAGLLOPGH_PCPDHELPKEM = 0;
-    CmdBattlePassInfoNotify = 3091;
-    CmdTakeBpRewardCsReq = 3095;
-    CmdTakeBpRewardScRsp = 3014;
-    CmdTakeAllRewardScRsp = 3063;
-    CmdTakeAllRewardCsReq = 3098;
-    CmdBuyBpLevelScRsp = 3009;
-    CmdBuyBpLevelCsReq = 3018;
+    JHHIAPCKHNP_NLCDGIPGFDJ = 0;
+    JHHIAPCKHNP_KFHAMKCADGC = 3015;
+    JHHIAPCKHNP_HFFOHGAKFGJ = 3036;
+    JHHIAPCKHNP_MIHEMCONFHP = 3010;
+    JHHIAPCKHNP_AGLKDJBDJIE = 3027;
+    JHHIAPCKHNP_KKMEJJDIHJA = 3073;
+    JHHIAPCKHNP_IHPLLMHHMAB = 3081;
+    JHHIAPCKHNP_ALNLCNAFKNH = 3013;
 }

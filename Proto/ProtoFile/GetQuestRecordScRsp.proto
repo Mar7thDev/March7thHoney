@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "JOHPGEDGJAD.proto";
+import "ECLGDFGGOFH.proto";
 
 message GetQuestRecordScRsp {
-    uint32 retcode = 5;
-    repeated JOHPGEDGJAD LEGNEHHPDEI = 12;
+    repeated ECLGDFGGOFH AOOFGCNFBPL = 6;
+    uint32 retcode = 4;
 }

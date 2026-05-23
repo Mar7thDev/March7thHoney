@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "JHHBIOJHEGL.proto";
+import "BDFGBPHEPDI.proto";
 
 message ReportRelicBoxActionScRsp {
-    uint32 retcode = 6;
-    JHHBIOJHEGL state = 9;
+    uint32 retcode = 5;
+    BDFGBPHEPDI state = 13;
 }

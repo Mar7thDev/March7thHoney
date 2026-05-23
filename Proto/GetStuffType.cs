@@ -24,12 +24,12 @@ namespace March7thHoney.Proto {
     static GetStuffTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChJHZXRTdHVmZlR5cGUucHJvdG8q2QEKDEdldFN0dWZmVHlwZRIbChdHQVBE",
-            "T1BGT0dFTl9CTEpFRUhGQ05DTxAAEhsKF0dBUERPUEZPR0VOX1BISkhORUlP",
-            "Q0pNEAESGwoXR0FQRE9QRk9HRU5fR0tQR0FFR1BETkwQAhIbChdHQVBET1BG",
-            "T0dFTl9MS0lLQkJGTlBORBADEhsKF0dBUERPUEZPR0VOX0JEQkVHTEFLT09H",
-            "EAQSGwoXR0FQRE9QRk9HRU5fSEFQUEJHT0ZBTEcQBRIbChdHQVBET1BGT0dF",
-            "Tl9KSktIQ0VLRE9GQxAGQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
+            "ChJHZXRTdHVmZlR5cGUucHJvdG8q2QEKDEdldFN0dWZmVHlwZRIbChdGSUxC",
+            "SkRBSlBBQV9BQURPSUVJRFBLQxAAEhsKF0ZJTEJKREFKUEFBX0tMRUFEQUFP",
+            "TkpJEAESGwoXRklMQkpEQUpQQUFfSklKRk9MRUxPSFAQAhIbChdGSUxCSkRB",
+            "SlBBQV9LQ01JUE9FQUtPTRADEhsKF0ZJTEJKREFKUEFBX01GQ0FIQ0NNQ0hB",
+            "EAQSGwoXRklMQkpEQUpQQUFfRENKRFBCSE5FRU4QBRIbChdGSUxCSkRBSlBB",
+            "QV9DQkVDTE9IUEdOShAGQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
             "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -40,13 +40,13 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum GetStuffType {
-    [pbr::OriginalName("GAPDOPFOGEN_BLJEEHFCNCO")] GapdopfogenBljeehfcnco = 0,
-    [pbr::OriginalName("GAPDOPFOGEN_PHJHNEIOCJM")] GapdopfogenPhjhneiocjm = 1,
-    [pbr::OriginalName("GAPDOPFOGEN_GKPGAEGPDNL")] GapdopfogenGkpgaegpdnl = 2,
-    [pbr::OriginalName("GAPDOPFOGEN_LKIKBBFNPND")] GapdopfogenLkikbbfnpnd = 3,
-    [pbr::OriginalName("GAPDOPFOGEN_BDBEGLAKOOG")] GapdopfogenBdbeglakoog = 4,
-    [pbr::OriginalName("GAPDOPFOGEN_HAPPBGOFALG")] GapdopfogenHappbgofalg = 5,
-    [pbr::OriginalName("GAPDOPFOGEN_JJKHCEKDOFC")] GapdopfogenJjkhcekdofc = 6,
+    [pbr::OriginalName("FILBJDAJPAA_AADOIEIDPKC")] FilbjdajpaaAadoieidpkc = 0,
+    [pbr::OriginalName("FILBJDAJPAA_KLEADAAONJI")] FilbjdajpaaKleadaaonji = 1,
+    [pbr::OriginalName("FILBJDAJPAA_JIJFOLELOHP")] FilbjdajpaaJijfolelohp = 2,
+    [pbr::OriginalName("FILBJDAJPAA_KCMIPOEAKOM")] FilbjdajpaaKcmipoeakom = 3,
+    [pbr::OriginalName("FILBJDAJPAA_MFCAHCCMCHA")] FilbjdajpaaMfcahccmcha = 4,
+    [pbr::OriginalName("FILBJDAJPAA_DCJDPBHNEEN")] FilbjdajpaaDcjdpbhneen = 5,
+    [pbr::OriginalName("FILBJDAJPAA_CBECLOHPGNJ")] FilbjdajpaaCbeclohpgnj = 6,
   }
 
   #endregion

@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message ActiveActivityData {
-    uint32 OKKJLFKLHBH = 2;
-    uint32 panel_id = 5;
-    uint32 id = 6;
-    repeated uint32 taken_star_rewards = 7;
-    uint32 PGDGGAPFPBN = 8;
-    uint32 ACLBMIEHBJE = 12;
+    repeated uint32 taken_star_rewards = 11;
+    uint32 id = 2;
+    uint32 DBIFEEDMAOF = 7;
+    uint32 FODLNKPNION = 10;
+    uint32 panel_id = 14;
+    uint32 CDMIKICANEP = 15;
 }

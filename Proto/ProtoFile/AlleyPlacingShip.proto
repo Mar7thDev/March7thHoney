@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "JMDDGOGNBEK.proto";
+import "CBBPDLPAIPL.proto";
 
 message AlleyPlacingShip {
-    repeated JMDDGOGNBEK goods_list = 1;
+    repeated CBBPDLPAIPL goods_list = 12;
     uint32 ship_id = 13;
 }

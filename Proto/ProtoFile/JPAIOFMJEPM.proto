@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message JPAIOFMJEPM {
+    uint32 BBHBAKJCGLC = 1;
+}

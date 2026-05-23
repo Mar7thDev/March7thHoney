@@ -25,10 +25,10 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiBUcmFpblBhcnR5TXRTa2lsbEJyaWVmVHlwZS5wcm90byqtAQoaVHJhaW5Q",
-            "YXJ0eU10U2tpbGxCcmllZlR5cGUSGwoXSEpCRktIR0FBSklfSElCT1BIT0hH",
-            "REwQABIbChdISkJGS0hHQUFKSV9JSEJPQ0ZJUEhJSRABEhsKF0hKQkZLSEdB",
-            "QUpJX0tFTUpDTktLQUZFEAISGwoXSEpCRktIR0FBSklfS01BSkJORkFBUEIQ",
-            "AxIbChdISkJGS0hHQUFKSV9JQkJBQ0xFREdGRxAEQhaqAhNNYXJjaDd0aEhv",
+            "YXJ0eU10U2tpbGxCcmllZlR5cGUSGwoXQU5NRUxPQ0JIR0tfT0RDSEFKSE5G",
+            "REYQABIbChdBTk1FTE9DQkhHS19FTkRCSENFTE5LTBABEhsKF0FOTUVMT0NC",
+            "SEdLX0FNRkxITEtHTEZMEAISGwoXQU5NRUxPQ0JIR0tfRUNQTUVETkVPR0UQ",
+            "AxIbChdBTk1FTE9DQkhHS19OSExOT0hEQ1BISBAEQhaqAhNNYXJjaDd0aEhv",
             "bmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -39,11 +39,11 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum TrainPartyMtSkillBriefType {
-    [pbr::OriginalName("HJBFKHGAAJI_HIBOPHOHGDL")] HjbfkhgaajiHibophohgdl = 0,
-    [pbr::OriginalName("HJBFKHGAAJI_IHBOCFIPHII")] HjbfkhgaajiIhbocfiphii = 1,
-    [pbr::OriginalName("HJBFKHGAAJI_KEMJCNKKAFE")] HjbfkhgaajiKemjcnkkafe = 2,
-    [pbr::OriginalName("HJBFKHGAAJI_KMAJBNFAAPB")] HjbfkhgaajiKmajbnfaapb = 3,
-    [pbr::OriginalName("HJBFKHGAAJI_IBBACLEDGFG")] HjbfkhgaajiIbbacledgfg = 4,
+    [pbr::OriginalName("ANMELOCBHGK_ODCHAJHNFDF")] AnmelocbhgkOdchajhnfdf = 0,
+    [pbr::OriginalName("ANMELOCBHGK_ENDBHCELNKL")] AnmelocbhgkEndbhcelnkl = 1,
+    [pbr::OriginalName("ANMELOCBHGK_AMFLHLKGLFL")] AnmelocbhgkAmflhlkglfl = 2,
+    [pbr::OriginalName("ANMELOCBHGK_ECPMEDNEOGE")] AnmelocbhgkEcpmedneoge = 3,
+    [pbr::OriginalName("ANMELOCBHGK_NHLNOHDCPHH")] AnmelocbhgkNhlnohdcphh = 4,
   }
 
   #endregion

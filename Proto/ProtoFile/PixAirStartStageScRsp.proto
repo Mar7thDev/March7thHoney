@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "HGNAHHFBMMN.proto";
+
+message PixAirStartStageScRsp {
+    HGNAHHFBMMN MFGMNKMKOON = 1;
+    uint32 retcode = 11;
+    bool EMMGHDLIPOH = 10;
+}

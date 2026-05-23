@@ -25,10 +25,10 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChhQbGFuZXRGZXNDdXN0b21LZXkucHJvdG8qpQEKElBsYW5ldEZlc0N1c3Rv",
-            "bUtleRIbChdPTk1LRFBDRUZKRV9QQ1BESEVMUEtFTRAAEhsKF09OTUtEUENF",
-            "RkpFX0hLTkhOSk9KR0JMEAESGwoXT05NS0RQQ0VGSkVfQUVLUEdMSkxPSE0Q",
-            "AhIbChdPTk1LRFBDRUZKRV9DQUxOQ0dJRkZDQhADEhsKF09OTUtEUENFRkpF",
-            "X01JR01MT0tFUEdMEARCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
+            "bUtleRIbChdGRUdKT0FQSU1DS19OTENER0lQR0ZEShAAEhsKF0ZFR0pPQVBJ",
+            "TUNLX0hIQkNEREhHRkVPEAESGwoXRkVHSk9BUElNQ0tfREhIT0dQRlBKR0wQ",
+            "AhIbChdGRUdKT0FQSU1DS19PQU5HTUVETE9CTBADEhsKF0ZFR0pPQVBJTUNL",
+            "X0NGT0xCTENBUEZCEARCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
             "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -39,11 +39,11 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum PlanetFesCustomKey {
-    [pbr::OriginalName("ONMKDPCEFJE_PCPDHELPKEM")] OnmkdpcefjePcpdhelpkem = 0,
-    [pbr::OriginalName("ONMKDPCEFJE_HKNHNJOJGBL")] OnmkdpcefjeHknhnjojgbl = 1,
-    [pbr::OriginalName("ONMKDPCEFJE_AEKPGLJLOHM")] OnmkdpcefjeAekpgljlohm = 2,
-    [pbr::OriginalName("ONMKDPCEFJE_CALNCGIFFCB")] OnmkdpcefjeCalncgiffcb = 3,
-    [pbr::OriginalName("ONMKDPCEFJE_MIGMLOKEPGL")] OnmkdpcefjeMigmlokepgl = 4,
+    [pbr::OriginalName("FEGJOAPIMCK_NLCDGIPGFDJ")] FegjoapimckNlcdgipgfdj = 0,
+    [pbr::OriginalName("FEGJOAPIMCK_HHBCDDHGFEO")] FegjoapimckHhbcddhgfeo = 1,
+    [pbr::OriginalName("FEGJOAPIMCK_DHHOGPFPJGL")] FegjoapimckDhhogpfpjgl = 2,
+    [pbr::OriginalName("FEGJOAPIMCK_OANGMEDLOBL")] FegjoapimckOangmedlobl = 3,
+    [pbr::OriginalName("FEGJOAPIMCK_CFOLBLCAPFB")] FegjoapimckCfolblcapfb = 4,
   }
 
   #endregion

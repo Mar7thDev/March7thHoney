@@ -25,18 +25,18 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ci1Sb2d1ZUFkdmVudHVyZVJvb21HYW1lcGxheVdvbGZHdW5UYXJnZXQucHJv",
-            "dG8aEUJIRU9LR0FLR01BLnByb3RvGhFLSURBTE1NRElFRi5wcm90bxoRTERI",
-            "T0tHTEZQS0YucHJvdG8aEU1IUE1BUEdLSUxFLnByb3RvItIBCidSb2d1ZUFk",
+            "dG8aEUZFSUpQRUpCRERILnByb3RvGhFGRU5GRUhDQ09DQS5wcm90bxoRSk1Q",
+            "TkdCQUlMQkcucHJvdG8aEU1OR05MT0NMTk9GLnByb3RvItIBCidSb2d1ZUFk",
             "dmVudHVyZVJvb21HYW1lcGxheVdvbGZHdW5UYXJnZXQSIwoLdGFyZ2V0X25v",
-            "bmUYASABKAsyDC5LSURBTE1NRElFRkgAEiYKDnRhcmdldF9ydWFubWVpGAcg",
-            "ASgLMgwuQkhFT0tHQUtHTUFIABIjCgt0YXJnZXRfY29pbhgMIAEoCzIMLkxE",
-            "SE9LR0xGUEtGSAASJgoOdGFyZ2V0X21pcmFjbGUYDyABKAsyDC5NSFBNQVBH",
-            "S0lMRUgAQg0KC3RhcmdldF9pbXBsQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
+            "bmUYDSABKAsyDC5NTkdOTE9DTE5PRkgAEiMKC3RhcmdldF9jb2luGAUgASgL",
+            "MgwuRkVJSlBFSkJEREhIABImCg50YXJnZXRfbWlyYWNsZRgDIAEoCzIMLkpN",
+            "UE5HQkFJTEJHSAASJgoOdGFyZ2V0X3J1YW5tZWkYDCABKAsyDC5GRU5GRUhD",
+            "Q09DQUgAQg0KC3RhcmdldF9pbXBsQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
             "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.BHEOKGAKGMAReflection.Descriptor, global::March7thHoney.Proto.KIDALMMDIEFReflection.Descriptor, global::March7thHoney.Proto.LDHOKGLFPKFReflection.Descriptor, global::March7thHoney.Proto.MHPMAPGKILEReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.FEIJPEJBDDHReflection.Descriptor, global::March7thHoney.Proto.FENFEHCCOCAReflection.Descriptor, global::March7thHoney.Proto.JMPNGBAILBGReflection.Descriptor, global::March7thHoney.Proto.MNGNLOCLNOFReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RogueAdventureRoomGameplayWolfGunTarget), global::March7thHoney.Proto.RogueAdventureRoomGameplayWolfGunTarget.Parser, new[]{ "TargetNone", "TargetRuanmei", "TargetCoin", "TargetMiracle" }, new[]{ "TargetImpl" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RogueAdventureRoomGameplayWolfGunTarget), global::March7thHoney.Proto.RogueAdventureRoomGameplayWolfGunTarget.Parser, new[]{ "TargetNone", "TargetCoin", "TargetMiracle", "TargetRuanmei" }, new[]{ "TargetImpl" }, null, null, null)
           }));
     }
     #endregion
@@ -82,14 +82,14 @@ namespace March7thHoney.Proto {
         case TargetImplOneofCase.TargetNone:
           TargetNone = other.TargetNone.Clone();
           break;
-        case TargetImplOneofCase.TargetRuanmei:
-          TargetRuanmei = other.TargetRuanmei.Clone();
-          break;
         case TargetImplOneofCase.TargetCoin:
           TargetCoin = other.TargetCoin.Clone();
           break;
         case TargetImplOneofCase.TargetMiracle:
           TargetMiracle = other.TargetMiracle.Clone();
+          break;
+        case TargetImplOneofCase.TargetRuanmei:
+          TargetRuanmei = other.TargetRuanmei.Clone();
           break;
       }
 
@@ -103,35 +103,23 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "target_none" field.</summary>
-    public const int TargetNoneFieldNumber = 1;
+    public const int TargetNoneFieldNumber = 13;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.KIDALMMDIEF TargetNone {
-      get { return targetImplCase_ == TargetImplOneofCase.TargetNone ? (global::March7thHoney.Proto.KIDALMMDIEF) targetImpl_ : null; }
+    public global::March7thHoney.Proto.MNGNLOCLNOF TargetNone {
+      get { return targetImplCase_ == TargetImplOneofCase.TargetNone ? (global::March7thHoney.Proto.MNGNLOCLNOF) targetImpl_ : null; }
       set {
         targetImpl_ = value;
         targetImplCase_ = value == null ? TargetImplOneofCase.None : TargetImplOneofCase.TargetNone;
       }
     }
 
-    /// <summary>Field number for the "target_ruanmei" field.</summary>
-    public const int TargetRuanmeiFieldNumber = 7;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.BHEOKGAKGMA TargetRuanmei {
-      get { return targetImplCase_ == TargetImplOneofCase.TargetRuanmei ? (global::March7thHoney.Proto.BHEOKGAKGMA) targetImpl_ : null; }
-      set {
-        targetImpl_ = value;
-        targetImplCase_ = value == null ? TargetImplOneofCase.None : TargetImplOneofCase.TargetRuanmei;
-      }
-    }
-
     /// <summary>Field number for the "target_coin" field.</summary>
-    public const int TargetCoinFieldNumber = 12;
+    public const int TargetCoinFieldNumber = 5;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.LDHOKGLFPKF TargetCoin {
-      get { return targetImplCase_ == TargetImplOneofCase.TargetCoin ? (global::March7thHoney.Proto.LDHOKGLFPKF) targetImpl_ : null; }
+    public global::March7thHoney.Proto.FEIJPEJBDDH TargetCoin {
+      get { return targetImplCase_ == TargetImplOneofCase.TargetCoin ? (global::March7thHoney.Proto.FEIJPEJBDDH) targetImpl_ : null; }
       set {
         targetImpl_ = value;
         targetImplCase_ = value == null ? TargetImplOneofCase.None : TargetImplOneofCase.TargetCoin;
@@ -139,14 +127,26 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "target_miracle" field.</summary>
-    public const int TargetMiracleFieldNumber = 15;
+    public const int TargetMiracleFieldNumber = 3;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.MHPMAPGKILE TargetMiracle {
-      get { return targetImplCase_ == TargetImplOneofCase.TargetMiracle ? (global::March7thHoney.Proto.MHPMAPGKILE) targetImpl_ : null; }
+    public global::March7thHoney.Proto.JMPNGBAILBG TargetMiracle {
+      get { return targetImplCase_ == TargetImplOneofCase.TargetMiracle ? (global::March7thHoney.Proto.JMPNGBAILBG) targetImpl_ : null; }
       set {
         targetImpl_ = value;
         targetImplCase_ = value == null ? TargetImplOneofCase.None : TargetImplOneofCase.TargetMiracle;
+      }
+    }
+
+    /// <summary>Field number for the "target_ruanmei" field.</summary>
+    public const int TargetRuanmeiFieldNumber = 12;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.FENFEHCCOCA TargetRuanmei {
+      get { return targetImplCase_ == TargetImplOneofCase.TargetRuanmei ? (global::March7thHoney.Proto.FENFEHCCOCA) targetImpl_ : null; }
+      set {
+        targetImpl_ = value;
+        targetImplCase_ = value == null ? TargetImplOneofCase.None : TargetImplOneofCase.TargetRuanmei;
       }
     }
 
@@ -154,10 +154,10 @@ namespace March7thHoney.Proto {
     /// <summary>Enum of possible cases for the "target_impl" oneof.</summary>
     public enum TargetImplOneofCase {
       None = 0,
-      TargetNone = 1,
-      TargetRuanmei = 7,
-      TargetCoin = 12,
-      TargetMiracle = 15,
+      TargetNone = 13,
+      TargetCoin = 5,
+      TargetMiracle = 3,
+      TargetRuanmei = 12,
     }
     private TargetImplOneofCase targetImplCase_ = TargetImplOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -189,9 +189,9 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (!object.Equals(TargetNone, other.TargetNone)) return false;
-      if (!object.Equals(TargetRuanmei, other.TargetRuanmei)) return false;
       if (!object.Equals(TargetCoin, other.TargetCoin)) return false;
       if (!object.Equals(TargetMiracle, other.TargetMiracle)) return false;
+      if (!object.Equals(TargetRuanmei, other.TargetRuanmei)) return false;
       if (TargetImplCase != other.TargetImplCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -201,9 +201,9 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (targetImplCase_ == TargetImplOneofCase.TargetNone) hash ^= TargetNone.GetHashCode();
-      if (targetImplCase_ == TargetImplOneofCase.TargetRuanmei) hash ^= TargetRuanmei.GetHashCode();
       if (targetImplCase_ == TargetImplOneofCase.TargetCoin) hash ^= TargetCoin.GetHashCode();
       if (targetImplCase_ == TargetImplOneofCase.TargetMiracle) hash ^= TargetMiracle.GetHashCode();
+      if (targetImplCase_ == TargetImplOneofCase.TargetRuanmei) hash ^= TargetRuanmei.GetHashCode();
       hash ^= (int) targetImplCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -223,21 +223,21 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (targetImplCase_ == TargetImplOneofCase.TargetNone) {
-        output.WriteRawTag(10);
-        output.WriteMessage(TargetNone);
-      }
-      if (targetImplCase_ == TargetImplOneofCase.TargetRuanmei) {
-        output.WriteRawTag(58);
-        output.WriteMessage(TargetRuanmei);
+      if (targetImplCase_ == TargetImplOneofCase.TargetMiracle) {
+        output.WriteRawTag(26);
+        output.WriteMessage(TargetMiracle);
       }
       if (targetImplCase_ == TargetImplOneofCase.TargetCoin) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(42);
         output.WriteMessage(TargetCoin);
       }
-      if (targetImplCase_ == TargetImplOneofCase.TargetMiracle) {
-        output.WriteRawTag(122);
-        output.WriteMessage(TargetMiracle);
+      if (targetImplCase_ == TargetImplOneofCase.TargetRuanmei) {
+        output.WriteRawTag(98);
+        output.WriteMessage(TargetRuanmei);
+      }
+      if (targetImplCase_ == TargetImplOneofCase.TargetNone) {
+        output.WriteRawTag(106);
+        output.WriteMessage(TargetNone);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -249,21 +249,21 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (targetImplCase_ == TargetImplOneofCase.TargetNone) {
-        output.WriteRawTag(10);
-        output.WriteMessage(TargetNone);
-      }
-      if (targetImplCase_ == TargetImplOneofCase.TargetRuanmei) {
-        output.WriteRawTag(58);
-        output.WriteMessage(TargetRuanmei);
+      if (targetImplCase_ == TargetImplOneofCase.TargetMiracle) {
+        output.WriteRawTag(26);
+        output.WriteMessage(TargetMiracle);
       }
       if (targetImplCase_ == TargetImplOneofCase.TargetCoin) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(42);
         output.WriteMessage(TargetCoin);
       }
-      if (targetImplCase_ == TargetImplOneofCase.TargetMiracle) {
-        output.WriteRawTag(122);
-        output.WriteMessage(TargetMiracle);
+      if (targetImplCase_ == TargetImplOneofCase.TargetRuanmei) {
+        output.WriteRawTag(98);
+        output.WriteMessage(TargetRuanmei);
+      }
+      if (targetImplCase_ == TargetImplOneofCase.TargetNone) {
+        output.WriteRawTag(106);
+        output.WriteMessage(TargetNone);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -278,14 +278,14 @@ namespace March7thHoney.Proto {
       if (targetImplCase_ == TargetImplOneofCase.TargetNone) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(TargetNone);
       }
-      if (targetImplCase_ == TargetImplOneofCase.TargetRuanmei) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(TargetRuanmei);
-      }
       if (targetImplCase_ == TargetImplOneofCase.TargetCoin) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(TargetCoin);
       }
       if (targetImplCase_ == TargetImplOneofCase.TargetMiracle) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(TargetMiracle);
+      }
+      if (targetImplCase_ == TargetImplOneofCase.TargetRuanmei) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(TargetRuanmei);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -302,27 +302,27 @@ namespace March7thHoney.Proto {
       switch (other.TargetImplCase) {
         case TargetImplOneofCase.TargetNone:
           if (TargetNone == null) {
-            TargetNone = new global::March7thHoney.Proto.KIDALMMDIEF();
+            TargetNone = new global::March7thHoney.Proto.MNGNLOCLNOF();
           }
           TargetNone.MergeFrom(other.TargetNone);
           break;
-        case TargetImplOneofCase.TargetRuanmei:
-          if (TargetRuanmei == null) {
-            TargetRuanmei = new global::March7thHoney.Proto.BHEOKGAKGMA();
-          }
-          TargetRuanmei.MergeFrom(other.TargetRuanmei);
-          break;
         case TargetImplOneofCase.TargetCoin:
           if (TargetCoin == null) {
-            TargetCoin = new global::March7thHoney.Proto.LDHOKGLFPKF();
+            TargetCoin = new global::March7thHoney.Proto.FEIJPEJBDDH();
           }
           TargetCoin.MergeFrom(other.TargetCoin);
           break;
         case TargetImplOneofCase.TargetMiracle:
           if (TargetMiracle == null) {
-            TargetMiracle = new global::March7thHoney.Proto.MHPMAPGKILE();
+            TargetMiracle = new global::March7thHoney.Proto.JMPNGBAILBG();
           }
           TargetMiracle.MergeFrom(other.TargetMiracle);
+          break;
+        case TargetImplOneofCase.TargetRuanmei:
+          if (TargetRuanmei == null) {
+            TargetRuanmei = new global::March7thHoney.Proto.FENFEHCCOCA();
+          }
+          TargetRuanmei.MergeFrom(other.TargetRuanmei);
           break;
       }
 
@@ -345,26 +345,17 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            global::March7thHoney.Proto.KIDALMMDIEF subBuilder = new global::March7thHoney.Proto.KIDALMMDIEF();
-            if (targetImplCase_ == TargetImplOneofCase.TargetNone) {
-              subBuilder.MergeFrom(TargetNone);
+          case 26: {
+            global::March7thHoney.Proto.JMPNGBAILBG subBuilder = new global::March7thHoney.Proto.JMPNGBAILBG();
+            if (targetImplCase_ == TargetImplOneofCase.TargetMiracle) {
+              subBuilder.MergeFrom(TargetMiracle);
             }
             input.ReadMessage(subBuilder);
-            TargetNone = subBuilder;
+            TargetMiracle = subBuilder;
             break;
           }
-          case 58: {
-            global::March7thHoney.Proto.BHEOKGAKGMA subBuilder = new global::March7thHoney.Proto.BHEOKGAKGMA();
-            if (targetImplCase_ == TargetImplOneofCase.TargetRuanmei) {
-              subBuilder.MergeFrom(TargetRuanmei);
-            }
-            input.ReadMessage(subBuilder);
-            TargetRuanmei = subBuilder;
-            break;
-          }
-          case 98: {
-            global::March7thHoney.Proto.LDHOKGLFPKF subBuilder = new global::March7thHoney.Proto.LDHOKGLFPKF();
+          case 42: {
+            global::March7thHoney.Proto.FEIJPEJBDDH subBuilder = new global::March7thHoney.Proto.FEIJPEJBDDH();
             if (targetImplCase_ == TargetImplOneofCase.TargetCoin) {
               subBuilder.MergeFrom(TargetCoin);
             }
@@ -372,13 +363,22 @@ namespace March7thHoney.Proto {
             TargetCoin = subBuilder;
             break;
           }
-          case 122: {
-            global::March7thHoney.Proto.MHPMAPGKILE subBuilder = new global::March7thHoney.Proto.MHPMAPGKILE();
-            if (targetImplCase_ == TargetImplOneofCase.TargetMiracle) {
-              subBuilder.MergeFrom(TargetMiracle);
+          case 98: {
+            global::March7thHoney.Proto.FENFEHCCOCA subBuilder = new global::March7thHoney.Proto.FENFEHCCOCA();
+            if (targetImplCase_ == TargetImplOneofCase.TargetRuanmei) {
+              subBuilder.MergeFrom(TargetRuanmei);
             }
             input.ReadMessage(subBuilder);
-            TargetMiracle = subBuilder;
+            TargetRuanmei = subBuilder;
+            break;
+          }
+          case 106: {
+            global::March7thHoney.Proto.MNGNLOCLNOF subBuilder = new global::March7thHoney.Proto.MNGNLOCLNOF();
+            if (targetImplCase_ == TargetImplOneofCase.TargetNone) {
+              subBuilder.MergeFrom(TargetNone);
+            }
+            input.ReadMessage(subBuilder);
+            TargetNone = subBuilder;
             break;
           }
         }
@@ -400,26 +400,17 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            global::March7thHoney.Proto.KIDALMMDIEF subBuilder = new global::March7thHoney.Proto.KIDALMMDIEF();
-            if (targetImplCase_ == TargetImplOneofCase.TargetNone) {
-              subBuilder.MergeFrom(TargetNone);
+          case 26: {
+            global::March7thHoney.Proto.JMPNGBAILBG subBuilder = new global::March7thHoney.Proto.JMPNGBAILBG();
+            if (targetImplCase_ == TargetImplOneofCase.TargetMiracle) {
+              subBuilder.MergeFrom(TargetMiracle);
             }
             input.ReadMessage(subBuilder);
-            TargetNone = subBuilder;
+            TargetMiracle = subBuilder;
             break;
           }
-          case 58: {
-            global::March7thHoney.Proto.BHEOKGAKGMA subBuilder = new global::March7thHoney.Proto.BHEOKGAKGMA();
-            if (targetImplCase_ == TargetImplOneofCase.TargetRuanmei) {
-              subBuilder.MergeFrom(TargetRuanmei);
-            }
-            input.ReadMessage(subBuilder);
-            TargetRuanmei = subBuilder;
-            break;
-          }
-          case 98: {
-            global::March7thHoney.Proto.LDHOKGLFPKF subBuilder = new global::March7thHoney.Proto.LDHOKGLFPKF();
+          case 42: {
+            global::March7thHoney.Proto.FEIJPEJBDDH subBuilder = new global::March7thHoney.Proto.FEIJPEJBDDH();
             if (targetImplCase_ == TargetImplOneofCase.TargetCoin) {
               subBuilder.MergeFrom(TargetCoin);
             }
@@ -427,13 +418,22 @@ namespace March7thHoney.Proto {
             TargetCoin = subBuilder;
             break;
           }
-          case 122: {
-            global::March7thHoney.Proto.MHPMAPGKILE subBuilder = new global::March7thHoney.Proto.MHPMAPGKILE();
-            if (targetImplCase_ == TargetImplOneofCase.TargetMiracle) {
-              subBuilder.MergeFrom(TargetMiracle);
+          case 98: {
+            global::March7thHoney.Proto.FENFEHCCOCA subBuilder = new global::March7thHoney.Proto.FENFEHCCOCA();
+            if (targetImplCase_ == TargetImplOneofCase.TargetRuanmei) {
+              subBuilder.MergeFrom(TargetRuanmei);
             }
             input.ReadMessage(subBuilder);
-            TargetMiracle = subBuilder;
+            TargetRuanmei = subBuilder;
+            break;
+          }
+          case 106: {
+            global::March7thHoney.Proto.MNGNLOCLNOF subBuilder = new global::March7thHoney.Proto.MNGNLOCLNOF();
+            if (targetImplCase_ == TargetImplOneofCase.TargetNone) {
+              subBuilder.MergeFrom(TargetNone);
+            }
+            input.ReadMessage(subBuilder);
+            TargetNone = subBuilder;
             break;
           }
         }

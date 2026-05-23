@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum ChatType {
     CHAT_TYPE_NONE = 0;
     CHAT_TYPE_PRIVATE = 1;

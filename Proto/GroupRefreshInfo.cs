@@ -24,19 +24,19 @@ namespace March7thHoney.Proto {
     static GroupRefreshInfoReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChZHcm91cFJlZnJlc2hJbmZvLnByb3RvGhFOTkhHT0JMTkNJRS5wcm90bxoa",
+            "ChZHcm91cFJlZnJlc2hJbmZvLnByb3RvGhFBS0VLQ0tESUhMQS5wcm90bxoa",
             "U2NlbmVFbnRpdHlHcm91cEluZm8ucHJvdG8aHFNjZW5lRW50aXR5UmVmcmVz",
             "aEluZm8ucHJvdG8aG1NjZW5lR3JvdXBSZWZyZXNoVHlwZS5wcm90byLaAQoQ",
-            "R3JvdXBSZWZyZXNoSW5mbxIjCgR1bmsxGAEgASgLMhUuU2NlbmVFbnRpdHlH",
-            "cm91cEluZm8SLAoMcmVmcmVzaF90eXBlGAggASgOMhYuU2NlbmVHcm91cFJl",
-            "ZnJlc2hUeXBlEhAKCGdyb3VwX2lkGAkgASgNEiEKC0RDTEFLQ0ZKQ1BKGAsg",
-            "AygLMgwuTk5IR09CTE5DSUUSLwoOcmVmcmVzaF9lbnRpdHkYDCADKAsyFy5T",
-            "Y2VuZUVudGl0eVJlZnJlc2hJbmZvEg0KBXN0YXRlGA0gASgNQhaqAhNNYXJj",
+            "R3JvdXBSZWZyZXNoSW5mbxIvCg5yZWZyZXNoX2VudGl0eRgLIAMoCzIXLlNj",
+            "ZW5lRW50aXR5UmVmcmVzaEluZm8SIwoEdW5rMRgGIAEoCzIVLlNjZW5lRW50",
+            "aXR5R3JvdXBJbmZvEiEKC0NETUtCQ0hMUEFCGAwgAygLMgwuQUtFS0NLRElI",
+            "TEESEAoIZ3JvdXBfaWQYDyABKA0SDQoFc3RhdGUYDiABKA0SLAoMcmVmcmVz",
+            "aF90eXBlGAQgASgOMhYuU2NlbmVHcm91cFJlZnJlc2hUeXBlQhaqAhNNYXJj",
             "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.NNHGOBLNCIEReflection.Descriptor, global::March7thHoney.Proto.SceneEntityGroupInfoReflection.Descriptor, global::March7thHoney.Proto.SceneEntityRefreshInfoReflection.Descriptor, global::March7thHoney.Proto.SceneGroupRefreshTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.AKEKCKDIHLAReflection.Descriptor, global::March7thHoney.Proto.SceneEntityGroupInfoReflection.Descriptor, global::March7thHoney.Proto.SceneEntityRefreshInfoReflection.Descriptor, global::March7thHoney.Proto.SceneGroupRefreshTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GroupRefreshInfo), global::March7thHoney.Proto.GroupRefreshInfo.Parser, new[]{ "Unk1", "RefreshType", "GroupId", "DCLAKCFJCPJ", "RefreshEntity", "State" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GroupRefreshInfo), global::March7thHoney.Proto.GroupRefreshInfo.Parser, new[]{ "RefreshEntity", "Unk1", "CDMKBCHLPAB", "GroupId", "State", "RefreshType" }, null, null, null, null)
           }));
     }
     #endregion
@@ -78,12 +78,12 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GroupRefreshInfo(GroupRefreshInfo other) : this() {
-      unk1_ = other.unk1_ != null ? other.unk1_.Clone() : null;
-      refreshType_ = other.refreshType_;
-      groupId_ = other.groupId_;
-      dCLAKCFJCPJ_ = other.dCLAKCFJCPJ_.Clone();
       refreshEntity_ = other.refreshEntity_.Clone();
+      unk1_ = other.unk1_ != null ? other.unk1_.Clone() : null;
+      cDMKBCHLPAB_ = other.cDMKBCHLPAB_.Clone();
+      groupId_ = other.groupId_;
       state_ = other.state_;
+      refreshType_ = other.refreshType_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -93,8 +93,19 @@ namespace March7thHoney.Proto {
       return new GroupRefreshInfo(this);
     }
 
+    /// <summary>Field number for the "refresh_entity" field.</summary>
+    public const int RefreshEntityFieldNumber = 11;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.SceneEntityRefreshInfo> _repeated_refreshEntity_codec
+        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.SceneEntityRefreshInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.SceneEntityRefreshInfo> refreshEntity_ = new pbc::RepeatedField<global::March7thHoney.Proto.SceneEntityRefreshInfo>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.SceneEntityRefreshInfo> RefreshEntity {
+      get { return refreshEntity_; }
+    }
+
     /// <summary>Field number for the "unk1" field.</summary>
-    public const int Unk1FieldNumber = 1;
+    public const int Unk1FieldNumber = 6;
     private global::March7thHoney.Proto.SceneEntityGroupInfo unk1_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -105,20 +116,19 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "refresh_type" field.</summary>
-    public const int RefreshTypeFieldNumber = 8;
-    private global::March7thHoney.Proto.SceneGroupRefreshType refreshType_ = global::March7thHoney.Proto.SceneGroupRefreshType.None;
+    /// <summary>Field number for the "CDMKBCHLPAB" field.</summary>
+    public const int CDMKBCHLPABFieldNumber = 12;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AKEKCKDIHLA> _repeated_cDMKBCHLPAB_codec
+        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.AKEKCKDIHLA.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AKEKCKDIHLA> cDMKBCHLPAB_ = new pbc::RepeatedField<global::March7thHoney.Proto.AKEKCKDIHLA>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.SceneGroupRefreshType RefreshType {
-      get { return refreshType_; }
-      set {
-        refreshType_ = value;
-      }
+    public pbc::RepeatedField<global::March7thHoney.Proto.AKEKCKDIHLA> CDMKBCHLPAB {
+      get { return cDMKBCHLPAB_; }
     }
 
     /// <summary>Field number for the "group_id" field.</summary>
-    public const int GroupIdFieldNumber = 9;
+    public const int GroupIdFieldNumber = 15;
     private uint groupId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -129,30 +139,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "DCLAKCFJCPJ" field.</summary>
-    public const int DCLAKCFJCPJFieldNumber = 11;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.NNHGOBLNCIE> _repeated_dCLAKCFJCPJ_codec
-        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.NNHGOBLNCIE.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.NNHGOBLNCIE> dCLAKCFJCPJ_ = new pbc::RepeatedField<global::March7thHoney.Proto.NNHGOBLNCIE>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.NNHGOBLNCIE> DCLAKCFJCPJ {
-      get { return dCLAKCFJCPJ_; }
-    }
-
-    /// <summary>Field number for the "refresh_entity" field.</summary>
-    public const int RefreshEntityFieldNumber = 12;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.SceneEntityRefreshInfo> _repeated_refreshEntity_codec
-        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.SceneEntityRefreshInfo.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.SceneEntityRefreshInfo> refreshEntity_ = new pbc::RepeatedField<global::March7thHoney.Proto.SceneEntityRefreshInfo>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.SceneEntityRefreshInfo> RefreshEntity {
-      get { return refreshEntity_; }
-    }
-
     /// <summary>Field number for the "state" field.</summary>
-    public const int StateFieldNumber = 13;
+    public const int StateFieldNumber = 14;
     private uint state_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -160,6 +148,18 @@ namespace March7thHoney.Proto {
       get { return state_; }
       set {
         state_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "refresh_type" field.</summary>
+    public const int RefreshTypeFieldNumber = 4;
+    private global::March7thHoney.Proto.SceneGroupRefreshType refreshType_ = global::March7thHoney.Proto.SceneGroupRefreshType.None;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.SceneGroupRefreshType RefreshType {
+      get { return refreshType_; }
+      set {
+        refreshType_ = value;
       }
     }
 
@@ -178,12 +178,12 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Unk1, other.Unk1)) return false;
-      if (RefreshType != other.RefreshType) return false;
-      if (GroupId != other.GroupId) return false;
-      if(!dCLAKCFJCPJ_.Equals(other.dCLAKCFJCPJ_)) return false;
       if(!refreshEntity_.Equals(other.refreshEntity_)) return false;
+      if (!object.Equals(Unk1, other.Unk1)) return false;
+      if(!cDMKBCHLPAB_.Equals(other.cDMKBCHLPAB_)) return false;
+      if (GroupId != other.GroupId) return false;
       if (State != other.State) return false;
+      if (RefreshType != other.RefreshType) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -191,12 +191,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (unk1_ != null) hash ^= Unk1.GetHashCode();
-      if (RefreshType != global::March7thHoney.Proto.SceneGroupRefreshType.None) hash ^= RefreshType.GetHashCode();
-      if (GroupId != 0) hash ^= GroupId.GetHashCode();
-      hash ^= dCLAKCFJCPJ_.GetHashCode();
       hash ^= refreshEntity_.GetHashCode();
+      if (unk1_ != null) hash ^= Unk1.GetHashCode();
+      hash ^= cDMKBCHLPAB_.GetHashCode();
+      if (GroupId != 0) hash ^= GroupId.GetHashCode();
       if (State != 0) hash ^= State.GetHashCode();
+      if (RefreshType != global::March7thHoney.Proto.SceneGroupRefreshType.None) hash ^= RefreshType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -215,23 +215,23 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (unk1_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Unk1);
-      }
       if (RefreshType != global::March7thHoney.Proto.SceneGroupRefreshType.None) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(32);
         output.WriteEnum((int) RefreshType);
       }
-      if (GroupId != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(GroupId);
+      if (unk1_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(Unk1);
       }
-      dCLAKCFJCPJ_.WriteTo(output, _repeated_dCLAKCFJCPJ_codec);
       refreshEntity_.WriteTo(output, _repeated_refreshEntity_codec);
+      cDMKBCHLPAB_.WriteTo(output, _repeated_cDMKBCHLPAB_codec);
       if (State != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(112);
         output.WriteUInt32(State);
+      }
+      if (GroupId != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(GroupId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -243,23 +243,23 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (unk1_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Unk1);
-      }
       if (RefreshType != global::March7thHoney.Proto.SceneGroupRefreshType.None) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(32);
         output.WriteEnum((int) RefreshType);
       }
-      if (GroupId != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(GroupId);
+      if (unk1_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(Unk1);
       }
-      dCLAKCFJCPJ_.WriteTo(ref output, _repeated_dCLAKCFJCPJ_codec);
       refreshEntity_.WriteTo(ref output, _repeated_refreshEntity_codec);
+      cDMKBCHLPAB_.WriteTo(ref output, _repeated_cDMKBCHLPAB_codec);
       if (State != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(112);
         output.WriteUInt32(State);
+      }
+      if (GroupId != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(GroupId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -271,19 +271,19 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      size += refreshEntity_.CalculateSize(_repeated_refreshEntity_codec);
       if (unk1_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Unk1);
       }
-      if (RefreshType != global::March7thHoney.Proto.SceneGroupRefreshType.None) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) RefreshType);
-      }
+      size += cDMKBCHLPAB_.CalculateSize(_repeated_cDMKBCHLPAB_codec);
       if (GroupId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GroupId);
       }
-      size += dCLAKCFJCPJ_.CalculateSize(_repeated_dCLAKCFJCPJ_codec);
-      size += refreshEntity_.CalculateSize(_repeated_refreshEntity_codec);
       if (State != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(State);
+      }
+      if (RefreshType != global::March7thHoney.Proto.SceneGroupRefreshType.None) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) RefreshType);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -297,22 +297,22 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      refreshEntity_.Add(other.refreshEntity_);
       if (other.unk1_ != null) {
         if (unk1_ == null) {
           Unk1 = new global::March7thHoney.Proto.SceneEntityGroupInfo();
         }
         Unk1.MergeFrom(other.Unk1);
       }
-      if (other.RefreshType != global::March7thHoney.Proto.SceneGroupRefreshType.None) {
-        RefreshType = other.RefreshType;
-      }
+      cDMKBCHLPAB_.Add(other.cDMKBCHLPAB_);
       if (other.GroupId != 0) {
         GroupId = other.GroupId;
       }
-      dCLAKCFJCPJ_.Add(other.dCLAKCFJCPJ_);
-      refreshEntity_.Add(other.refreshEntity_);
       if (other.State != 0) {
         State = other.State;
+      }
+      if (other.RefreshType != global::March7thHoney.Proto.SceneGroupRefreshType.None) {
+        RefreshType = other.RefreshType;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -333,31 +333,31 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
+          case 32: {
+            RefreshType = (global::March7thHoney.Proto.SceneGroupRefreshType) input.ReadEnum();
+            break;
+          }
+          case 50: {
             if (unk1_ == null) {
               Unk1 = new global::March7thHoney.Proto.SceneEntityGroupInfo();
             }
             input.ReadMessage(Unk1);
             break;
           }
-          case 64: {
-            RefreshType = (global::March7thHoney.Proto.SceneGroupRefreshType) input.ReadEnum();
-            break;
-          }
-          case 72: {
-            GroupId = input.ReadUInt32();
-            break;
-          }
           case 90: {
-            dCLAKCFJCPJ_.AddEntriesFrom(input, _repeated_dCLAKCFJCPJ_codec);
-            break;
-          }
-          case 98: {
             refreshEntity_.AddEntriesFrom(input, _repeated_refreshEntity_codec);
             break;
           }
-          case 104: {
+          case 98: {
+            cDMKBCHLPAB_.AddEntriesFrom(input, _repeated_cDMKBCHLPAB_codec);
+            break;
+          }
+          case 112: {
             State = input.ReadUInt32();
+            break;
+          }
+          case 120: {
+            GroupId = input.ReadUInt32();
             break;
           }
         }
@@ -379,31 +379,31 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
+          case 32: {
+            RefreshType = (global::March7thHoney.Proto.SceneGroupRefreshType) input.ReadEnum();
+            break;
+          }
+          case 50: {
             if (unk1_ == null) {
               Unk1 = new global::March7thHoney.Proto.SceneEntityGroupInfo();
             }
             input.ReadMessage(Unk1);
             break;
           }
-          case 64: {
-            RefreshType = (global::March7thHoney.Proto.SceneGroupRefreshType) input.ReadEnum();
-            break;
-          }
-          case 72: {
-            GroupId = input.ReadUInt32();
-            break;
-          }
           case 90: {
-            dCLAKCFJCPJ_.AddEntriesFrom(ref input, _repeated_dCLAKCFJCPJ_codec);
-            break;
-          }
-          case 98: {
             refreshEntity_.AddEntriesFrom(ref input, _repeated_refreshEntity_codec);
             break;
           }
-          case 104: {
+          case 98: {
+            cDMKBCHLPAB_.AddEntriesFrom(ref input, _repeated_cDMKBCHLPAB_codec);
+            break;
+          }
+          case 112: {
             State = input.ReadUInt32();
+            break;
+          }
+          case 120: {
+            GroupId = input.ReadUInt32();
             break;
           }
         }

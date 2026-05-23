@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "LMHOIMLGNGM.proto";
+import "AMKBFMCOIHK.proto";
 
 message DifficultyAdjustmentUpdateDataScRsp {
-    uint32 retcode = 2;
-    LMHOIMLGNGM data = 6;
-    repeated LMHOIMLGNGM content_package_list = 12;
+    AMKBFMCOIHK data = 1;
+    repeated AMKBFMCOIHK content_package_list = 15;
+    uint32 retcode = 10;
 }

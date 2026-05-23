@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "BDEKEIKAKML.proto";
+import "CABBOOKAODO.proto";
 
 message RelicSmartWearUpdatePinRelicCsReq {
-    BDEKEIKAKML DACMPJLJGBC = 1;
+    CABBOOKAODO DNNKBPBFPBK = 1;
 }

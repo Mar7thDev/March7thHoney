@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "DDJOEIBOELH.proto";
-import "NCBLOBPPIBD.proto";
+import "LCEDDGELBMJ.proto";
+import "PCBOLEAFMDN.proto";
 
 message ChimeraDuelGetDataScRsp {
-    NCBLOBPPIBD BAKKICKHFDG = 2;
-    uint32 retcode = 3;
-    DDJOEIBOELH OIAPHBBDPHL = 13;
+    PCBOLEAFMDN COFPFIDNONN = 9;
+    LCEDDGELBMJ CFDIKLBINHK = 14;
+    uint32 retcode = 12;
 }

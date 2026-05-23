@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "BHFAFMDHKKC.proto";
+import "AANLJBLOOFO.proto";
 
 message ChallengeBossStatistics {
-    BHFAFMDHKKC NCEGEKNLJCE = 9;
+    AANLJBLOOFO PPBHLLOJNEK = 5;
     uint32 record_id = 12;
 }

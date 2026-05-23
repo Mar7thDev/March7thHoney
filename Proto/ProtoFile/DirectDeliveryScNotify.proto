@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "ItemList.proto";
 
 message DirectDeliveryScNotify {
-    repeated ItemList HALFGLGLDLO = 1;
-    uint32 OECCPKANHMN = 9;
+    repeated ItemList DJOBNPIAEJP = 6;
+    uint32 HFHHKGFNGFC = 1;
 }

@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message EnteredSceneInfo {
-    uint32 plane_id = 7;
-    uint32 floor_id = 8;
+    uint32 floor_id = 4;
+    uint32 plane_id = 15;
 }

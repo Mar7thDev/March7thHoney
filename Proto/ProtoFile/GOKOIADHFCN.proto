@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message GOKOIADHFCN {
+    uint32 level = 14;
+    uint32 skill_id = 13;
+    uint32 HCBADDHNIDG = 3;
+}

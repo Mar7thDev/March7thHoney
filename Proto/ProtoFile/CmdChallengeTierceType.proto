@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum CmdChallengeTierceType {
+    CmdChallengeTierceTypeNone = 0;
+    CmdStartChallengeTierceNextStageCsReq = 8974;
+    CmdRestartChallengeTierceScRsp = 8998;
+    CmdSetChallengeTierceLineupCsReq = 8996;
+    CmdRestartChallengeTierceCsReq = 8992;
+    CmdChallengeTierceSyncNotify = 8973;
+    CmdStartChallengeTierceNextStageScRsp = 8987;
+    CmdGetChallengeTierceDataCsReq = 8980;
+    CmdSetChallengeTierceLineupScRsp = 8988;
+    CmdStartChallengeTierceScRsp = 8982;
+    CmdLeaveChallengeTierceCsReq = 9000;
+    CmdGetChallengeTierceControllerScRsp = 8977;
+    CmdGetChallengeTierceControllerCsReq = 8984;
+    CmdConfirmChallengeTierceStageSettleCsReq = 8978;
+    CmdLeaveChallengeTierceScRsp = 8989;
+    CmdStartChallengeTierceCsReq = 8991;
+    CmdConfirmChallengeTierceStageSettleScRsp = 8981;
+    CmdGetChallengeTierceDataScRsp = 8993;
+}

@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiRDaG9vc2VCb3hpbmdDbHViUmVzb25hbmNlQ3NSZXEucHJvdG8iSwoeQ2hv",
-            "b3NlQm94aW5nQ2x1YlJlc29uYW5jZUNzUmVxEhQKDGNoYWxsZW5nZV9pZBgK",
-            "IAEoDRITCgtOR0JBQ0lDQUFQTxgLIAEoDUIWqgITTWFyY2g3dGhIb25leS5Q",
+            "b3NlQm94aW5nQ2x1YlJlc29uYW5jZUNzUmVxEhQKDGNoYWxsZW5nZV9pZBgM",
+            "IAEoDRITCgtIT0RMS0JNS01DRhgLIAEoDUIWqgITTWFyY2g3dGhIb25leS5Q",
             "cm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChooseBoxingClubResonanceCsReq), global::March7thHoney.Proto.ChooseBoxingClubResonanceCsReq.Parser, new[]{ "ChallengeId", "NGBACICAAPO" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChooseBoxingClubResonanceCsReq), global::March7thHoney.Proto.ChooseBoxingClubResonanceCsReq.Parser, new[]{ "ChallengeId", "HODLKBMKMCF" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,7 +74,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ChooseBoxingClubResonanceCsReq(ChooseBoxingClubResonanceCsReq other) : this() {
       challengeId_ = other.challengeId_;
-      nGBACICAAPO_ = other.nGBACICAAPO_;
+      hODLKBMKMCF_ = other.hODLKBMKMCF_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "challenge_id" field.</summary>
-    public const int ChallengeIdFieldNumber = 10;
+    public const int ChallengeIdFieldNumber = 12;
     private uint challengeId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,15 +96,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "NGBACICAAPO" field.</summary>
-    public const int NGBACICAAPOFieldNumber = 11;
-    private uint nGBACICAAPO_;
+    /// <summary>Field number for the "HODLKBMKMCF" field.</summary>
+    public const int HODLKBMKMCFFieldNumber = 11;
+    private uint hODLKBMKMCF_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint NGBACICAAPO {
-      get { return nGBACICAAPO_; }
+    public uint HODLKBMKMCF {
+      get { return hODLKBMKMCF_; }
       set {
-        nGBACICAAPO_ = value;
+        hODLKBMKMCF_ = value;
       }
     }
 
@@ -124,7 +124,7 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (ChallengeId != other.ChallengeId) return false;
-      if (NGBACICAAPO != other.NGBACICAAPO) return false;
+      if (HODLKBMKMCF != other.HODLKBMKMCF) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -133,7 +133,7 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (ChallengeId != 0) hash ^= ChallengeId.GetHashCode();
-      if (NGBACICAAPO != 0) hash ^= NGBACICAAPO.GetHashCode();
+      if (HODLKBMKMCF != 0) hash ^= HODLKBMKMCF.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,13 +152,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (ChallengeId != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(ChallengeId);
-      }
-      if (NGBACICAAPO != 0) {
+      if (HODLKBMKMCF != 0) {
         output.WriteRawTag(88);
-        output.WriteUInt32(NGBACICAAPO);
+        output.WriteUInt32(HODLKBMKMCF);
+      }
+      if (ChallengeId != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(ChallengeId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,13 +170,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (ChallengeId != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(ChallengeId);
-      }
-      if (NGBACICAAPO != 0) {
+      if (HODLKBMKMCF != 0) {
         output.WriteRawTag(88);
-        output.WriteUInt32(NGBACICAAPO);
+        output.WriteUInt32(HODLKBMKMCF);
+      }
+      if (ChallengeId != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(ChallengeId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -191,8 +191,8 @@ namespace March7thHoney.Proto {
       if (ChallengeId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ChallengeId);
       }
-      if (NGBACICAAPO != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(NGBACICAAPO);
+      if (HODLKBMKMCF != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(HODLKBMKMCF);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -209,8 +209,8 @@ namespace March7thHoney.Proto {
       if (other.ChallengeId != 0) {
         ChallengeId = other.ChallengeId;
       }
-      if (other.NGBACICAAPO != 0) {
-        NGBACICAAPO = other.NGBACICAAPO;
+      if (other.HODLKBMKMCF != 0) {
+        HODLKBMKMCF = other.HODLKBMKMCF;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -231,12 +231,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 80: {
-            ChallengeId = input.ReadUInt32();
+          case 88: {
+            HODLKBMKMCF = input.ReadUInt32();
             break;
           }
-          case 88: {
-            NGBACICAAPO = input.ReadUInt32();
+          case 96: {
+            ChallengeId = input.ReadUInt32();
             break;
           }
         }
@@ -258,12 +258,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 80: {
-            ChallengeId = input.ReadUInt32();
+          case 88: {
+            HODLKBMKMCF = input.ReadUInt32();
             break;
           }
-          case 88: {
-            NGBACICAAPO = input.ReadUInt32();
+          case 96: {
+            ChallengeId = input.ReadUInt32();
             break;
           }
         }

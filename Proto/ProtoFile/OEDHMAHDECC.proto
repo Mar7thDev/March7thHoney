@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "CDEAABODKCP.proto";
+import "CLFABOEKMJI.proto";
+import "FBNGHMHHHLL.proto";
+import "FPHPFJLAJDK.proto";
+import "GGAKNLJJNEI.proto";
+import "GIDEDMOPFKF.proto";
+import "GLPCEKMKLGG.proto";
+import "GOCIGPCDKDJ.proto";
+import "IJDLENJJBHJ.proto";
+import "KGMCLFHAJNJ.proto";
+import "KINJHHBJNJP.proto";
+import "LAAMIAJFOMC.proto";
+import "NFIDNDFHJGN.proto";
+import "PEIJNEFOCHI.proto";
+import "PLFKMENCDMM.proto";
+import "PPGEBEBPMJC.proto";
+
+message OEDHMAHDECC {
+    repeated GGAKNLJJNEI grid_game_npc_list = 998;
+    repeated PLFKMENCDMM EEGPILJDLBG = 14;
+    KGMCLFHAJNJ boss_info = 720;
+    repeated uint32 HGAGKFEKBDA = 237;
+    repeated CDEAABODKCP grid_game_role_list = 1082;
+    repeated LAAMIAJFOMC CFFCNEDGCJJ = 602;
+    repeated GIDEDMOPFKF OAIGAGABCMK = 3;
+    repeated FPHPFJLAJDK KCOMPKMJCMC = 1989;
+    repeated KINJHHBJNJP APABPAFGCIA = 233;
+    repeated PPGEBEBPMJC sync_augment_info = 7;
+    CLFABOEKMJI JLDDDLDNFEF = 217;
+    GOCIGPCDKDJ NDLIKNEKDLL = 15;
+    repeated FBNGHMHHHLL grid_fight_trait_info = 9;
+    GLPCEKMKLGG PPJFPNMIFHL = 1607;
+    repeated IJDLENJJBHJ grid_fight_equipment_list = 566;
+    repeated NFIDNDFHJGN JFCHLABGFJO = 1287;
+    repeated uint32 MHLBIBGKIOB = 509;
+    uint32 LLJJCOOKANH = 2;
+    PEIJNEFOCHI reason = 1349;
+    bool DBODGPBOIHC = 1190;
+    bool is_overlock = 1371;
+    uint32 MBMJNEDIFFC = 99;
+    uint32 AKEGLJLCFPH = 1846;
+}

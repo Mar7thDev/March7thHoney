@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "OKCCLEEPELM.proto";
+
+message KBKLNECKDEN {
+    repeated OKCCLEEPELM AGKFAODICEA = 5;
+    OKCCLEEPELM EPOCLANFIAC = 8;
+    uint32 NKGGAOJLCMD = 12;
+    uint32 LGIPILAKIKB = 15;
+    uint32 EIALMEADLGF = 13;
+}

@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message HeliobusUnlockSkillScNotify {
-    uint32 JGKIBPDAEFE = 4;
-    uint32 skill_id = 14;
+    uint32 skill_id = 11;
+    uint32 ENGEPMPCJPC = 9;
 }

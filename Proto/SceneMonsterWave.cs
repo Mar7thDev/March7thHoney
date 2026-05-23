@@ -26,15 +26,15 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChZTY2VuZU1vbnN0ZXJXYXZlLnByb3RvGg5JdGVtTGlzdC5wcm90bxoSU2Nl",
             "bmVNb25zdGVyLnByb3RvGhtTY2VuZU1vbnN0ZXJXYXZlUGFyYW0ucHJvdG8i",
-            "twEKEFNjZW5lTW9uc3RlcldhdmUSFwoPYmF0dGxlX3N0YWdlX2lkGAMgASgN",
-            "EiMKDG1vbnN0ZXJfbGlzdBgGIAMoCzINLlNjZW5lTW9uc3RlchIeCgtQSUJM",
-            "SkxCQ0tKTBgJIAMoCzIJLkl0ZW1MaXN0Ei0KDW1vbnN0ZXJfcGFyYW0YDCAB",
-            "KAsyFi5TY2VuZU1vbnN0ZXJXYXZlUGFyYW0SFgoOYmF0dGxlX3dhdmVfaWQY",
-            "DiABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "twEKEFNjZW5lTW9uc3RlcldhdmUSHgoLTk1HSUFCSElKSkIYBCADKAsyCS5J",
+            "dGVtTGlzdBIjCgxtb25zdGVyX2xpc3QYByADKAsyDS5TY2VuZU1vbnN0ZXIS",
+            "LQoNbW9uc3Rlcl9wYXJhbRgLIAEoCzIWLlNjZW5lTW9uc3RlcldhdmVQYXJh",
+            "bRIWCg5iYXR0bGVfd2F2ZV9pZBgOIAEoDRIXCg9iYXR0bGVfc3RhZ2VfaWQY",
+            "AiABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemListReflection.Descriptor, global::March7thHoney.Proto.SceneMonsterReflection.Descriptor, global::March7thHoney.Proto.SceneMonsterWaveParamReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneMonsterWave), global::March7thHoney.Proto.SceneMonsterWave.Parser, new[]{ "BattleStageId", "MonsterList", "PIBLJLBCKJL", "MonsterParam", "BattleWaveId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneMonsterWave), global::March7thHoney.Proto.SceneMonsterWave.Parser, new[]{ "NMGIABHIJJB", "MonsterList", "MonsterParam", "BattleWaveId", "BattleStageId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -76,11 +76,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SceneMonsterWave(SceneMonsterWave other) : this() {
-      battleStageId_ = other.battleStageId_;
+      nMGIABHIJJB_ = other.nMGIABHIJJB_.Clone();
       monsterList_ = other.monsterList_.Clone();
-      pIBLJLBCKJL_ = other.pIBLJLBCKJL_.Clone();
       monsterParam_ = other.monsterParam_ != null ? other.monsterParam_.Clone() : null;
       battleWaveId_ = other.battleWaveId_;
+      battleStageId_ = other.battleStageId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -90,22 +90,21 @@ namespace March7thHoney.Proto {
       return new SceneMonsterWave(this);
     }
 
-    /// <summary>Field number for the "battle_stage_id" field.</summary>
-    public const int BattleStageIdFieldNumber = 3;
-    private uint battleStageId_;
+    /// <summary>Field number for the "NMGIABHIJJB" field.</summary>
+    public const int NMGIABHIJJBFieldNumber = 4;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ItemList> _repeated_nMGIABHIJJB_codec
+        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.ItemList.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ItemList> nMGIABHIJJB_ = new pbc::RepeatedField<global::March7thHoney.Proto.ItemList>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint BattleStageId {
-      get { return battleStageId_; }
-      set {
-        battleStageId_ = value;
-      }
+    public pbc::RepeatedField<global::March7thHoney.Proto.ItemList> NMGIABHIJJB {
+      get { return nMGIABHIJJB_; }
     }
 
     /// <summary>Field number for the "monster_list" field.</summary>
-    public const int MonsterListFieldNumber = 6;
+    public const int MonsterListFieldNumber = 7;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.SceneMonster> _repeated_monsterList_codec
-        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.SceneMonster.Parser);
+        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.SceneMonster.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.SceneMonster> monsterList_ = new pbc::RepeatedField<global::March7thHoney.Proto.SceneMonster>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -113,19 +112,8 @@ namespace March7thHoney.Proto {
       get { return monsterList_; }
     }
 
-    /// <summary>Field number for the "PIBLJLBCKJL" field.</summary>
-    public const int PIBLJLBCKJLFieldNumber = 9;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ItemList> _repeated_pIBLJLBCKJL_codec
-        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.ItemList.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ItemList> pIBLJLBCKJL_ = new pbc::RepeatedField<global::March7thHoney.Proto.ItemList>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.ItemList> PIBLJLBCKJL {
-      get { return pIBLJLBCKJL_; }
-    }
-
     /// <summary>Field number for the "monster_param" field.</summary>
-    public const int MonsterParamFieldNumber = 12;
+    public const int MonsterParamFieldNumber = 11;
     private global::March7thHoney.Proto.SceneMonsterWaveParam monsterParam_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -148,6 +136,18 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "battle_stage_id" field.</summary>
+    public const int BattleStageIdFieldNumber = 2;
+    private uint battleStageId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint BattleStageId {
+      get { return battleStageId_; }
+      set {
+        battleStageId_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -163,11 +163,11 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (BattleStageId != other.BattleStageId) return false;
+      if(!nMGIABHIJJB_.Equals(other.nMGIABHIJJB_)) return false;
       if(!monsterList_.Equals(other.monsterList_)) return false;
-      if(!pIBLJLBCKJL_.Equals(other.pIBLJLBCKJL_)) return false;
       if (!object.Equals(MonsterParam, other.MonsterParam)) return false;
       if (BattleWaveId != other.BattleWaveId) return false;
+      if (BattleStageId != other.BattleStageId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -175,11 +175,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (BattleStageId != 0) hash ^= BattleStageId.GetHashCode();
+      hash ^= nMGIABHIJJB_.GetHashCode();
       hash ^= monsterList_.GetHashCode();
-      hash ^= pIBLJLBCKJL_.GetHashCode();
       if (monsterParam_ != null) hash ^= MonsterParam.GetHashCode();
       if (BattleWaveId != 0) hash ^= BattleWaveId.GetHashCode();
+      if (BattleStageId != 0) hash ^= BattleStageId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -199,13 +199,13 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (BattleStageId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteUInt32(BattleStageId);
       }
+      nMGIABHIJJB_.WriteTo(output, _repeated_nMGIABHIJJB_codec);
       monsterList_.WriteTo(output, _repeated_monsterList_codec);
-      pIBLJLBCKJL_.WriteTo(output, _repeated_pIBLJLBCKJL_codec);
       if (monsterParam_ != null) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(90);
         output.WriteMessage(MonsterParam);
       }
       if (BattleWaveId != 0) {
@@ -223,13 +223,13 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (BattleStageId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteUInt32(BattleStageId);
       }
+      nMGIABHIJJB_.WriteTo(ref output, _repeated_nMGIABHIJJB_codec);
       monsterList_.WriteTo(ref output, _repeated_monsterList_codec);
-      pIBLJLBCKJL_.WriteTo(ref output, _repeated_pIBLJLBCKJL_codec);
       if (monsterParam_ != null) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(90);
         output.WriteMessage(MonsterParam);
       }
       if (BattleWaveId != 0) {
@@ -246,16 +246,16 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (BattleStageId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BattleStageId);
-      }
+      size += nMGIABHIJJB_.CalculateSize(_repeated_nMGIABHIJJB_codec);
       size += monsterList_.CalculateSize(_repeated_monsterList_codec);
-      size += pIBLJLBCKJL_.CalculateSize(_repeated_pIBLJLBCKJL_codec);
       if (monsterParam_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(MonsterParam);
       }
       if (BattleWaveId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BattleWaveId);
+      }
+      if (BattleStageId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BattleStageId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -269,11 +269,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.BattleStageId != 0) {
-        BattleStageId = other.BattleStageId;
-      }
+      nMGIABHIJJB_.Add(other.nMGIABHIJJB_);
       monsterList_.Add(other.monsterList_);
-      pIBLJLBCKJL_.Add(other.pIBLJLBCKJL_);
       if (other.monsterParam_ != null) {
         if (monsterParam_ == null) {
           MonsterParam = new global::March7thHoney.Proto.SceneMonsterWaveParam();
@@ -282,6 +279,9 @@ namespace March7thHoney.Proto {
       }
       if (other.BattleWaveId != 0) {
         BattleWaveId = other.BattleWaveId;
+      }
+      if (other.BattleStageId != 0) {
+        BattleStageId = other.BattleStageId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -302,19 +302,19 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
+          case 16: {
             BattleStageId = input.ReadUInt32();
             break;
           }
-          case 50: {
+          case 34: {
+            nMGIABHIJJB_.AddEntriesFrom(input, _repeated_nMGIABHIJJB_codec);
+            break;
+          }
+          case 58: {
             monsterList_.AddEntriesFrom(input, _repeated_monsterList_codec);
             break;
           }
-          case 74: {
-            pIBLJLBCKJL_.AddEntriesFrom(input, _repeated_pIBLJLBCKJL_codec);
-            break;
-          }
-          case 98: {
+          case 90: {
             if (monsterParam_ == null) {
               MonsterParam = new global::March7thHoney.Proto.SceneMonsterWaveParam();
             }
@@ -344,19 +344,19 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
+          case 16: {
             BattleStageId = input.ReadUInt32();
             break;
           }
-          case 50: {
+          case 34: {
+            nMGIABHIJJB_.AddEntriesFrom(ref input, _repeated_nMGIABHIJJB_codec);
+            break;
+          }
+          case 58: {
             monsterList_.AddEntriesFrom(ref input, _repeated_monsterList_codec);
             break;
           }
-          case 74: {
-            pIBLJLBCKJL_.AddEntriesFrom(ref input, _repeated_pIBLJLBCKJL_codec);
-            break;
-          }
-          case 98: {
+          case 90: {
             if (monsterParam_ == null) {
               MonsterParam = new global::March7thHoney.Proto.SceneMonsterWaveParam();
             }

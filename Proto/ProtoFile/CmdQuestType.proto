@@ -2,21 +2,19 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdQuestType {
-    OHPJMMPOJEN_PCPDHELPKEM = 0;
-    CmdTakeQuestOptionalRewardScRsp = 974;
-    CmdTakeQuestRewardCsReq = 994;
-    CmdCmdFinishQuestCsReq = 926;
-    CmdGGAMPJLONGD = 939;
-    CmdGetQuestRecordCsReq = 909;
-    CmdTakeQuestRewardScRsp = 995;
-    CmdGetQuestDataScRsp = 910;
-    CmdGetQuestRecordScRsp = 998;
-    CmdQuestRecordScNotify = 963;
-    CmdTakeQuestOptionalRewardCsReq = 901;
-    CmdPJBEBLNJANM = 938;
-    CmdGetQuestDataCsReq = 991;
-    OHPJMMPOJEN_FGOGDHLLOBF = 904;
+    HNJJNHPFBGO_NLCDGIPGFDJ = 0;
+    HNJJNHPFBGO_EEHHGFOMFAD = 910;
+    HNJJNHPFBGO_BMAEEOHLFLO = 987;
+    HNJJNHPFBGO_MNGGMLBGPOO = 927;
+    HNJJNHPFBGO_HMHBBKILIFK = 973;
+    HNJJNHPFBGO_OKMJKNLLHKP = 915;
+    HNJJNHPFBGO_CFHHFHMGAGL = 929;
+    HNJJNHPFBGO_IKABMLMGLHN = 912;
+    HNJJNHPFBGO_OIHECCNGJKO = 980;
+    HNJJNHPFBGO_OJKCEKKDLEL = 909;
+    HNJJNHPFBGO_POAMGCLPCAF = 981;
+    HNJJNHPFBGO_CCMMJODPCJB = 903;
+    HNJJNHPFBGO_JIJBFNKJHIJ = 954;
+    HNJJNHPFBGO_PJEHEOLCFCF = 942;
 }

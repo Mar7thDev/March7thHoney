@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "FHCIIMGMIML.proto";
+import "GHFEKEGEFAC.proto";
+import "LABMFHEEPBI.proto";
+
+message BAEDIBFGLDE {
+    repeated GHFEKEGEFAC JJHMEHGELNO = 3;
+    LABMFHEEPBI AJFHKPNGPDB = 13;
+    repeated FHCIIMGMIML DLCGPENPMNK = 5;
+}

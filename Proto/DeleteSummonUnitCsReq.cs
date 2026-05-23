@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChtEZWxldGVTdW1tb25Vbml0Q3NSZXEucHJvdG8iRAoVRGVsZXRlU3VtbW9u",
-            "VW5pdENzUmVxEhMKC2ludGVyYWN0X2lkGAYgASgEEhYKDmVudGl0eV9pZF9s",
-            "aXN0GAkgAygNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "VW5pdENzUmVxEhYKDmVudGl0eV9pZF9saXN0GAMgAygNEhMKC2ludGVyYWN0",
+            "X2lkGAQgASgEQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DeleteSummonUnitCsReq), global::March7thHoney.Proto.DeleteSummonUnitCsReq.Parser, new[]{ "InteractId", "EntityIdList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DeleteSummonUnitCsReq), global::March7thHoney.Proto.DeleteSummonUnitCsReq.Parser, new[]{ "EntityIdList", "InteractId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public DeleteSummonUnitCsReq(DeleteSummonUnitCsReq other) : this() {
-      interactId_ = other.interactId_;
       entityIdList_ = other.entityIdList_.Clone();
+      interactId_ = other.interactId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,8 +83,19 @@ namespace March7thHoney.Proto {
       return new DeleteSummonUnitCsReq(this);
     }
 
+    /// <summary>Field number for the "entity_id_list" field.</summary>
+    public const int EntityIdListFieldNumber = 3;
+    private static readonly pb::FieldCodec<uint> _repeated_entityIdList_codec
+        = pb::FieldCodec.ForUInt32(26);
+    private readonly pbc::RepeatedField<uint> entityIdList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> EntityIdList {
+      get { return entityIdList_; }
+    }
+
     /// <summary>Field number for the "interact_id" field.</summary>
-    public const int InteractIdFieldNumber = 6;
+    public const int InteractIdFieldNumber = 4;
     private ulong interactId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -93,17 +104,6 @@ namespace March7thHoney.Proto {
       set {
         interactId_ = value;
       }
-    }
-
-    /// <summary>Field number for the "entity_id_list" field.</summary>
-    public const int EntityIdListFieldNumber = 9;
-    private static readonly pb::FieldCodec<uint> _repeated_entityIdList_codec
-        = pb::FieldCodec.ForUInt32(74);
-    private readonly pbc::RepeatedField<uint> entityIdList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> EntityIdList {
-      get { return entityIdList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -121,8 +121,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (InteractId != other.InteractId) return false;
       if(!entityIdList_.Equals(other.entityIdList_)) return false;
+      if (InteractId != other.InteractId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -130,8 +130,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (InteractId != 0UL) hash ^= InteractId.GetHashCode();
       hash ^= entityIdList_.GetHashCode();
+      if (InteractId != 0UL) hash ^= InteractId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -150,11 +150,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      entityIdList_.WriteTo(output, _repeated_entityIdList_codec);
       if (InteractId != 0UL) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(32);
         output.WriteUInt64(InteractId);
       }
-      entityIdList_.WriteTo(output, _repeated_entityIdList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -165,11 +165,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      entityIdList_.WriteTo(ref output, _repeated_entityIdList_codec);
       if (InteractId != 0UL) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(32);
         output.WriteUInt64(InteractId);
       }
-      entityIdList_.WriteTo(ref output, _repeated_entityIdList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -180,10 +180,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      size += entityIdList_.CalculateSize(_repeated_entityIdList_codec);
       if (InteractId != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(InteractId);
       }
-      size += entityIdList_.CalculateSize(_repeated_entityIdList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -196,10 +196,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      entityIdList_.Add(other.entityIdList_);
       if (other.InteractId != 0UL) {
         InteractId = other.InteractId;
       }
-      entityIdList_.Add(other.entityIdList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -219,13 +219,13 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 48: {
-            InteractId = input.ReadUInt64();
+          case 26:
+          case 24: {
+            entityIdList_.AddEntriesFrom(input, _repeated_entityIdList_codec);
             break;
           }
-          case 74:
-          case 72: {
-            entityIdList_.AddEntriesFrom(input, _repeated_entityIdList_codec);
+          case 32: {
+            InteractId = input.ReadUInt64();
             break;
           }
         }
@@ -247,13 +247,13 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 48: {
-            InteractId = input.ReadUInt64();
+          case 26:
+          case 24: {
+            entityIdList_.AddEntriesFrom(ref input, _repeated_entityIdList_codec);
             break;
           }
-          case 74:
-          case 72: {
-            entityIdList_.AddEntriesFrom(ref input, _repeated_entityIdList_codec);
+          case 32: {
+            InteractId = input.ReadUInt64();
             break;
           }
         }

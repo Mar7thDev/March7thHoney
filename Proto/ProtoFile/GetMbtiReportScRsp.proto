@@ -2,18 +2,16 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "FCJOLMLMKBA.proto";
-import "NPLALEFPIEE.proto";
+import "EDGEHPFOKBH.proto";
+import "HKNBLADLAAE.proto";
 
 message GetMbtiReportScRsp {
-    repeated NPLALEFPIEE JBLLICOOCAK = 3;
-    int32 EHMEFABLODD = 4;
-    uint32 retcode = 5;
-    uint32 progress = 6;
-    repeated FCJOLMLMKBA HNLDLOOAPMI = 7;
-    bool HHPALHMBLFK = 8;
-    int32 PMAGOBNHJJD = 12;
-    bool is_taken_reward = 13;
+    repeated EDGEHPFOKBH BLINEMKKEOG = 8;
+    repeated HKNBLADLAAE DMCKDIGKHLB = 1;
+    int32 KHMNANHKINB = 2;
+    bool is_taken_reward = 11;
+    bool JMFNGFKBIFL = 4;
+    uint32 progress = 14;
+    uint32 retcode = 3;
+    int32 CJBLDKJDLOJ = 15;
 }

@@ -2,35 +2,33 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdFateType {
-    NAAOMIGPMHE_PCPDHELPKEM = 0;
-    CmdFateStartCsReq = 5980;
-    CmdFateShopLockGoodsScRsp = 5953;
-    CmdFateSyncActionResultScNotify = 5999;
-    CmdFateBattleStartScRsp = 5988;
-    CmdFateStartScRsp = 5977;
-    CmdFateSettleScNotify = 5958;
-    CmdFateChangeLineupCsReq = 5955;
-    CmdFateShopRefreshGoodsScRsp = 5995;
-    CmdFateShopRefreshGoodsCsReq = 5968;
-    CmdFateBattleStartCsReq = 5985;
-    CmdFateTakeExpRewardScRsp = 5959;
-    CmdFateSyncPendingActionScNotify = 5965;
-    CmdFateShopBuyGoodsCsReq = 5997;
-    CmdFateChangeLineupScRsp = 5951;
-    CmdFateTakeExpRewardCsReq = 5983;
-    CmdFateShopLockGoodsCsReq = 5986;
-    CmdFateQueryCsReq = 5963;
-    CmdFateQueryScRsp = 5957;
-    CmdFateShopSellBuffCsReq = 5952;
-    CmdFateShopBuyGoodsScRsp = 5969;
-    CmdFateShopLeaveCsReq = 6000;
-    CmdFateHouguSelectReq = 5981;
-    CmdFateShopLeaveScRsp = 5966;
-    CmdFateShopSellBuffScRsp = 5994;
-    CmdEPEIBOMNEGI = 5956;
-    CmdFateHandlePendingActionScRsp = 5971;
-    CmdJFDABMJMDLD = 5976;
+    DFNJFJBGLLP_NLCDGIPGFDJ = 0;
+    DFNJFJBGLLP_NBNMIKIPJFO = 5969;
+    DFNJFJBGLLP_IIAMLFCAJIG = 5970;
+    DFNJFJBGLLP_EPNMIDLFDMC = 5982;
+    DFNJFJBGLLP_FFHODBHJOOG = 5971;
+    DFNJFJBGLLP_MPIGNDBLJFI = 6000;
+    DFNJFJBGLLP_FJHIIPNCPIF = 5962;
+    DFNJFJBGLLP_LBFKENLIPEE = 5999;
+    DFNJFJBGLLP_KIFCMDBPMMC = 5988;
+    DFNJFJBGLLP_INOIKBOMPAE = 5993;
+    DFNJFJBGLLP_DGENLMAKJNJ = 5995;
+    DFNJFJBGLLP_PKENEFGHEAH = 5979;
+    DFNJFJBGLLP_OOKDKODAGNI = 5984;
+    DFNJFJBGLLP_FKFCAKBEJFD = 5968;
+    DFNJFJBGLLP_IFJOOAFEEBM = 5973;
+    DFNJFJBGLLP_NBGDNAIKIML = 5959;
+    DFNJFJBGLLP_JMCOPJFOHMP = 5956;
+    DFNJFJBGLLP_CBBDCEMACJM = 5953;
+    DFNJFJBGLLP_IIMFKFNANNC = 5991;
+    DFNJFJBGLLP_HPAHOBDOPNF = 5964;
+    DFNJFJBGLLP_NDJIBELNJBD = 5977;
+    DFNJFJBGLLP_AKBFJMFLJNI = 5955;
+    DFNJFJBGLLP_IFNCEEAMCFH = 5990;
+    DFNJFJBGLLP_GENBOAENHOJ = 5966;
+    DFNJFJBGLLP_KPJCBCAKJDJ = 5958;
+    DFNJFJBGLLP_MMDMGJJMIPI = 5992;
+    DFNJFJBGLLP_MJEDNEIFKDF = 5994;
+    DFNJFJBGLLP_DCFHEOKKIAP = 5957;
 }

@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message ChooseBoxingClubResonanceCsReq {
-    uint32 challenge_id = 10;
-    uint32 NGBACICAAPO = 11;
+    uint32 challenge_id = 12;
+    uint32 HODLKBMKMCF = 11;
 }

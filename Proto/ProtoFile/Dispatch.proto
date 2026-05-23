@@ -2,14 +2,12 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "RegionInfo.proto";
 
 message Dispatch {
-    uint32 retcode = 1;
-    string msg = 2;
+    string FMPGOLIBHBD = 5;
     string top_sever_region_name = 3;
     repeated RegionInfo region_list = 4;
-    string FKCEHMPIAGG = 5;
+    string msg = 2;
+    uint32 retcode = 1;
 }

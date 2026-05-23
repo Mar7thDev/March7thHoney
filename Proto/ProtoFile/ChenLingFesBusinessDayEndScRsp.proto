@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "DMHADFNOIGP.proto";
+import "MOJFFDOILBN.proto";
+
+message ChenLingFesBusinessDayEndScRsp {
+    string FGGCAOAPGPA = 1;
+    uint32 retcode = 12;
+    uint32 LFKDANGNJIM = 3;
+    oneof FBLHECDEHEF {
+        DMHADFNOIGP EHIHHFMGNHH = 13;
+        MOJFFDOILBN GAAHAOGLNPJ = 8;
+    }
+}

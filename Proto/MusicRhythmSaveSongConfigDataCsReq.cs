@@ -26,12 +26,12 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CihNdXNpY1JoeXRobVNhdmVTb25nQ29uZmlnRGF0YUNzUmVxLnByb3RvGhZN",
             "dXNpY1JoeXRobUdyb3VwLnByb3RvIkwKIk11c2ljUmh5dGhtU2F2ZVNvbmdD",
-            "b25maWdEYXRhQ3NSZXESJgoLQkFKRUlBTElCQk0YDiABKAsyES5NdXNpY1Jo",
+            "b25maWdEYXRhQ3NSZXESJgoLQkVOQUZOSExDRU8YBiABKAsyES5NdXNpY1Jo",
             "eXRobUdyb3VwQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MusicRhythmGroupReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MusicRhythmSaveSongConfigDataCsReq), global::March7thHoney.Proto.MusicRhythmSaveSongConfigDataCsReq.Parser, new[]{ "BAJEIALIBBM" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MusicRhythmSaveSongConfigDataCsReq), global::March7thHoney.Proto.MusicRhythmSaveSongConfigDataCsReq.Parser, new[]{ "BENAFNHLCEO" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,7 +73,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MusicRhythmSaveSongConfigDataCsReq(MusicRhythmSaveSongConfigDataCsReq other) : this() {
-      bAJEIALIBBM_ = other.bAJEIALIBBM_ != null ? other.bAJEIALIBBM_.Clone() : null;
+      bENAFNHLCEO_ = other.bENAFNHLCEO_ != null ? other.bENAFNHLCEO_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,15 +83,15 @@ namespace March7thHoney.Proto {
       return new MusicRhythmSaveSongConfigDataCsReq(this);
     }
 
-    /// <summary>Field number for the "BAJEIALIBBM" field.</summary>
-    public const int BAJEIALIBBMFieldNumber = 14;
-    private global::March7thHoney.Proto.MusicRhythmGroup bAJEIALIBBM_;
+    /// <summary>Field number for the "BENAFNHLCEO" field.</summary>
+    public const int BENAFNHLCEOFieldNumber = 6;
+    private global::March7thHoney.Proto.MusicRhythmGroup bENAFNHLCEO_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.MusicRhythmGroup BAJEIALIBBM {
-      get { return bAJEIALIBBM_; }
+    public global::March7thHoney.Proto.MusicRhythmGroup BENAFNHLCEO {
+      get { return bENAFNHLCEO_; }
       set {
-        bAJEIALIBBM_ = value;
+        bENAFNHLCEO_ = value;
       }
     }
 
@@ -110,7 +110,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(BAJEIALIBBM, other.BAJEIALIBBM)) return false;
+      if (!object.Equals(BENAFNHLCEO, other.BENAFNHLCEO)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -118,7 +118,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (bAJEIALIBBM_ != null) hash ^= BAJEIALIBBM.GetHashCode();
+      if (bENAFNHLCEO_ != null) hash ^= BENAFNHLCEO.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -137,9 +137,9 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (bAJEIALIBBM_ != null) {
-        output.WriteRawTag(114);
-        output.WriteMessage(BAJEIALIBBM);
+      if (bENAFNHLCEO_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(BENAFNHLCEO);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -151,9 +151,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (bAJEIALIBBM_ != null) {
-        output.WriteRawTag(114);
-        output.WriteMessage(BAJEIALIBBM);
+      if (bENAFNHLCEO_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(BENAFNHLCEO);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -165,8 +165,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (bAJEIALIBBM_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(BAJEIALIBBM);
+      if (bENAFNHLCEO_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(BENAFNHLCEO);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -180,11 +180,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.bAJEIALIBBM_ != null) {
-        if (bAJEIALIBBM_ == null) {
-          BAJEIALIBBM = new global::March7thHoney.Proto.MusicRhythmGroup();
+      if (other.bENAFNHLCEO_ != null) {
+        if (bENAFNHLCEO_ == null) {
+          BENAFNHLCEO = new global::March7thHoney.Proto.MusicRhythmGroup();
         }
-        BAJEIALIBBM.MergeFrom(other.BAJEIALIBBM);
+        BENAFNHLCEO.MergeFrom(other.BENAFNHLCEO);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 114: {
-            if (bAJEIALIBBM_ == null) {
-              BAJEIALIBBM = new global::March7thHoney.Proto.MusicRhythmGroup();
+          case 50: {
+            if (bENAFNHLCEO_ == null) {
+              BENAFNHLCEO = new global::March7thHoney.Proto.MusicRhythmGroup();
             }
-            input.ReadMessage(BAJEIALIBBM);
+            input.ReadMessage(BENAFNHLCEO);
             break;
           }
         }
@@ -231,11 +231,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 114: {
-            if (bAJEIALIBBM_ == null) {
-              BAJEIALIBBM = new global::March7thHoney.Proto.MusicRhythmGroup();
+          case 50: {
+            if (bENAFNHLCEO_ == null) {
+              BENAFNHLCEO = new global::March7thHoney.Proto.MusicRhythmGroup();
             }
-            input.ReadMessage(BAJEIALIBBM);
+            input.ReadMessage(BENAFNHLCEO);
             break;
           }
         }

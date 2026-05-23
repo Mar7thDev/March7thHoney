@@ -2,22 +2,20 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "CNNMMNKCIHP.proto";
-import "DPABAKNJAHM.proto";
-import "GLOIKLNHBLN.proto";
-import "NOMNEHCNGLH.proto";
+import "ABEBEOKFKFF.proto";
+import "IJJFBFPCBCI.proto";
+import "OHFECKKADEK.proto";
+import "OIHEIIDJOLI.proto";
 
 message ParkourEndLevelCsReq {
-    uint32 CIDMHHICBJJ = 2;
-    repeated DPABAKNJAHM JACOBCLKOOD = 4;
-    uint32 HHPFNDBGIIO = 5;
-    uint32 level_id = 6;
-    uint32 time = 7;
-    uint32 JFHKACLKHHC = 8;
-    GLOIKLNHBLN HKCOFDINJIN = 12;
-    uint32 rank = 13;
-    NOMNEHCNGLH end_reason = 14;
-    repeated CNNMMNKCIHP IIMGCHFFNLK = 15;
+    OIHEIIDJOLI PKMAFFMMMAE = 11;
+    repeated IJJFBFPCBCI FENPLCNDKBJ = 3;
+    repeated ABEBEOKFKFF IDLJKFOKBJD = 1;
+    uint32 rank = 8;
+    uint32 level_id = 4;
+    uint32 CNHMBFIHLPC = 5;
+    OHFECKKADEK end_reason = 9;
+    uint32 KMGMFCJIAPI = 13;
+    uint32 time = 6;
+    uint32 CEKKJHBNEOD = 15;
 }

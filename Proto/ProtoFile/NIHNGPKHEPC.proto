@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "GMBMNFLMKPI.proto";
+import "HGEAOCGDCHD.proto";
+import "JJOBHGFOGHP.proto";
+
+message NIHNGPKHEPC {
+    repeated uint32 ONHDKLIMLNM = 9;
+    string ANIBGAAIAHF = 1237;
+    string GBGOBPOOPGO = 215;
+    GMBMNFLMKPI GAJGBBFELEL = 1502;
+    HGEAOCGDCHD BHJFJEEGGMC = 1059;
+    repeated uint32 JCMCCGHFIAN = 1091;
+    repeated JJOBHGFOGHP MIIDIMOCPEB = 15;
+    repeated uint32 FMEOHKHGMJM = 589;
+    uint32 PPKKHHNEOHB = 1;
+    uint32 grid_fight_lineup_hp = 13;
+    uint32 NDAINFLOLPJ = 12;
+    uint32 JLOCMDIDPCI = 6;
+    uint32 MICEOJBAKGN = 4;
+    uint32 gold = 8;
+    uint32 BEPMODICONA = 14;
+    uint32 AFFCFLFIFPH = 5;
+    uint32 KNFOCCPOJEA = 10;
+    uint32 grid_fight_cur_level_exp = 2;
+    uint32 EHNJDIDABHD = 3;
+    uint32 GDAKCOICIDA = 11;
+}

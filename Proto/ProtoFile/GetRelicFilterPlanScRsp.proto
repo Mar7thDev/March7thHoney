@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "EECJMIOAFFG.proto";
+import "GABKFNAJIDD.proto";
 
 message GetRelicFilterPlanScRsp {
-    repeated EECJMIOAFFG GGBAILCKHMH = 4;
-    uint32 retcode = 14;
+    repeated GABKFNAJIDD JCKBEEKBPHF = 4;
+    uint32 retcode = 11;
 }

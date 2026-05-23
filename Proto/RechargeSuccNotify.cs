@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChhSZWNoYXJnZVN1Y2NOb3RpZnkucHJvdG8aDkl0ZW1MaXN0LnByb3RvInwK",
-            "ElJlY2hhcmdlU3VjY05vdGlmeRISCgpwcmljZV90aWVyGAMgASgJEiAKGG1v",
-            "bnRoX2NhcmRfb3V0X2RhdGVfdGltZRgEIAEoBBISCgpwcm9kdWN0X2lkGAgg",
-            "ASgJEhwKCWl0ZW1fbGlzdBgMIAEoCzIJLkl0ZW1MaXN0QhaqAhNNYXJjaDd0",
+            "ElJlY2hhcmdlU3VjY05vdGlmeRIcCglpdGVtX2xpc3QYCSABKAsyCS5JdGVt",
+            "TGlzdBISCgpwcmljZV90aWVyGAogASgJEhIKCnByb2R1Y3RfaWQYDCABKAkS",
+            "IAoYbW9udGhfY2FyZF9vdXRfZGF0ZV90aW1lGAcgASgEQhaqAhNNYXJjaDd0",
             "aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemListReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RechargeSuccNotify), global::March7thHoney.Proto.RechargeSuccNotify.Parser, new[]{ "PriceTier", "MonthCardOutDateTime", "ProductId", "ItemList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RechargeSuccNotify), global::March7thHoney.Proto.RechargeSuccNotify.Parser, new[]{ "ItemList", "PriceTier", "ProductId", "MonthCardOutDateTime" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,10 +74,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RechargeSuccNotify(RechargeSuccNotify other) : this() {
-      priceTier_ = other.priceTier_;
-      monthCardOutDateTime_ = other.monthCardOutDateTime_;
-      productId_ = other.productId_;
       itemList_ = other.itemList_ != null ? other.itemList_.Clone() : null;
+      priceTier_ = other.priceTier_;
+      productId_ = other.productId_;
+      monthCardOutDateTime_ = other.monthCardOutDateTime_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -87,8 +87,20 @@ namespace March7thHoney.Proto {
       return new RechargeSuccNotify(this);
     }
 
+    /// <summary>Field number for the "item_list" field.</summary>
+    public const int ItemListFieldNumber = 9;
+    private global::March7thHoney.Proto.ItemList itemList_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.ItemList ItemList {
+      get { return itemList_; }
+      set {
+        itemList_ = value;
+      }
+    }
+
     /// <summary>Field number for the "price_tier" field.</summary>
-    public const int PriceTierFieldNumber = 3;
+    public const int PriceTierFieldNumber = 10;
     private string priceTier_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -99,20 +111,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "month_card_out_date_time" field.</summary>
-    public const int MonthCardOutDateTimeFieldNumber = 4;
-    private ulong monthCardOutDateTime_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ulong MonthCardOutDateTime {
-      get { return monthCardOutDateTime_; }
-      set {
-        monthCardOutDateTime_ = value;
-      }
-    }
-
     /// <summary>Field number for the "product_id" field.</summary>
-    public const int ProductIdFieldNumber = 8;
+    public const int ProductIdFieldNumber = 12;
     private string productId_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -123,15 +123,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "item_list" field.</summary>
-    public const int ItemListFieldNumber = 12;
-    private global::March7thHoney.Proto.ItemList itemList_;
+    /// <summary>Field number for the "month_card_out_date_time" field.</summary>
+    public const int MonthCardOutDateTimeFieldNumber = 7;
+    private ulong monthCardOutDateTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.ItemList ItemList {
-      get { return itemList_; }
+    public ulong MonthCardOutDateTime {
+      get { return monthCardOutDateTime_; }
       set {
-        itemList_ = value;
+        monthCardOutDateTime_ = value;
       }
     }
 
@@ -150,10 +150,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (PriceTier != other.PriceTier) return false;
-      if (MonthCardOutDateTime != other.MonthCardOutDateTime) return false;
-      if (ProductId != other.ProductId) return false;
       if (!object.Equals(ItemList, other.ItemList)) return false;
+      if (PriceTier != other.PriceTier) return false;
+      if (ProductId != other.ProductId) return false;
+      if (MonthCardOutDateTime != other.MonthCardOutDateTime) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -161,10 +161,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (PriceTier.Length != 0) hash ^= PriceTier.GetHashCode();
-      if (MonthCardOutDateTime != 0UL) hash ^= MonthCardOutDateTime.GetHashCode();
-      if (ProductId.Length != 0) hash ^= ProductId.GetHashCode();
       if (itemList_ != null) hash ^= ItemList.GetHashCode();
+      if (PriceTier.Length != 0) hash ^= PriceTier.GetHashCode();
+      if (ProductId.Length != 0) hash ^= ProductId.GetHashCode();
+      if (MonthCardOutDateTime != 0UL) hash ^= MonthCardOutDateTime.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -183,21 +183,21 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (PriceTier.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteString(PriceTier);
-      }
       if (MonthCardOutDateTime != 0UL) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(56);
         output.WriteUInt64(MonthCardOutDateTime);
       }
-      if (ProductId.Length != 0) {
-        output.WriteRawTag(66);
-        output.WriteString(ProductId);
-      }
       if (itemList_ != null) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(74);
         output.WriteMessage(ItemList);
+      }
+      if (PriceTier.Length != 0) {
+        output.WriteRawTag(82);
+        output.WriteString(PriceTier);
+      }
+      if (ProductId.Length != 0) {
+        output.WriteRawTag(98);
+        output.WriteString(ProductId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -209,21 +209,21 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (PriceTier.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteString(PriceTier);
-      }
       if (MonthCardOutDateTime != 0UL) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(56);
         output.WriteUInt64(MonthCardOutDateTime);
       }
-      if (ProductId.Length != 0) {
-        output.WriteRawTag(66);
-        output.WriteString(ProductId);
-      }
       if (itemList_ != null) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(74);
         output.WriteMessage(ItemList);
+      }
+      if (PriceTier.Length != 0) {
+        output.WriteRawTag(82);
+        output.WriteString(PriceTier);
+      }
+      if (ProductId.Length != 0) {
+        output.WriteRawTag(98);
+        output.WriteString(ProductId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -235,17 +235,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (itemList_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ItemList);
+      }
       if (PriceTier.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(PriceTier);
-      }
-      if (MonthCardOutDateTime != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(MonthCardOutDateTime);
       }
       if (ProductId.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(ProductId);
       }
-      if (itemList_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ItemList);
+      if (MonthCardOutDateTime != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(MonthCardOutDateTime);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -259,20 +259,20 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.PriceTier.Length != 0) {
-        PriceTier = other.PriceTier;
-      }
-      if (other.MonthCardOutDateTime != 0UL) {
-        MonthCardOutDateTime = other.MonthCardOutDateTime;
-      }
-      if (other.ProductId.Length != 0) {
-        ProductId = other.ProductId;
-      }
       if (other.itemList_ != null) {
         if (itemList_ == null) {
           ItemList = new global::March7thHoney.Proto.ItemList();
         }
         ItemList.MergeFrom(other.ItemList);
+      }
+      if (other.PriceTier.Length != 0) {
+        PriceTier = other.PriceTier;
+      }
+      if (other.ProductId.Length != 0) {
+        ProductId = other.ProductId;
+      }
+      if (other.MonthCardOutDateTime != 0UL) {
+        MonthCardOutDateTime = other.MonthCardOutDateTime;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -293,23 +293,23 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 26: {
-            PriceTier = input.ReadString();
-            break;
-          }
-          case 32: {
+          case 56: {
             MonthCardOutDateTime = input.ReadUInt64();
             break;
           }
-          case 66: {
-            ProductId = input.ReadString();
-            break;
-          }
-          case 98: {
+          case 74: {
             if (itemList_ == null) {
               ItemList = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(ItemList);
+            break;
+          }
+          case 82: {
+            PriceTier = input.ReadString();
+            break;
+          }
+          case 98: {
+            ProductId = input.ReadString();
             break;
           }
         }
@@ -331,23 +331,23 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 26: {
-            PriceTier = input.ReadString();
-            break;
-          }
-          case 32: {
+          case 56: {
             MonthCardOutDateTime = input.ReadUInt64();
             break;
           }
-          case 66: {
-            ProductId = input.ReadString();
-            break;
-          }
-          case 98: {
+          case 74: {
             if (itemList_ == null) {
               ItemList = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(ItemList);
+            break;
+          }
+          case 82: {
+            PriceTier = input.ReadString();
+            break;
+          }
+          case 98: {
+            ProductId = input.ReadString();
             break;
           }
         }

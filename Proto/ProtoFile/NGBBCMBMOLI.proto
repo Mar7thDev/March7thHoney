@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message NGBBCMBMOLI {
+    bool GGPIFKGAPPB = 3;
+    bool AOOEIHOPALH = 4;
+    bool CLFMFEHJKEJ = 2;
+    bool LIEKGCNNIHA = 5;
+    uint32 avatar_id = 1;
+}

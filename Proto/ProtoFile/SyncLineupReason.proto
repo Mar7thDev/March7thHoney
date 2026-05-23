@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum SyncLineupReason {
     SYNC_REASON_NONE = 0;
     SYNC_REASON_MP_ADD = 1;

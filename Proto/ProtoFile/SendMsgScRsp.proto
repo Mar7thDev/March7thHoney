@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message SendMsgScRsp {
-    uint64 end_time = 2;
-    uint32 retcode = 7;
+    uint64 end_time = 1;
+    uint32 retcode = 8;
 }

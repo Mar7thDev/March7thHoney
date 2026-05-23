@@ -2,27 +2,25 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdDiceCombatType {
-    JPBCLHJEFMK_PCPDHELPKEM = 0;
-    CmdModifyAvatarDiceRsp = 9263;
-    CmdDiceCombatUpgradeAvatarCsReq = 9289;
-    CmdGetDiceCombatSystemDataReq = 9267;
-    CmdEJEAJOAAEMB = 9282;
-    CmdDiceCombatMainPageRollDiceCsReq = 9261;
-    CmdDiceCombatBuyShopGoodReq = 9290;
-    CmdBuyShopGoodScRsp = 9266;
-    CmdAIPEMEEDHAK = 9288;
-    CmdDiceCombatFinishPveStageCsReq = 9262;
-    CmdLAOOIHPKMOO = 9264;
-    CmdGetSystemDataRsp = 9275;
-    CmdDiceCombatModifyAvatarDiceCsReq = 9268;
-    CmdGetDiceCombatShopDataReq = 9273;
-    CmdUpgradeAvatarRsp = 9276;
-    CmdGetShopDataScRsp = 9277;
-    CmdFinishPveStageScRsp = 9265;
-    CmdAddItemRsp = 9278;
-    CmdV2FinishPveStageCsReq = 9298;
-    CmdV2FinishPveStageScRsp = 9280;
+    PMDFMAIHPGL_NLCDGIPGFDJ = 0;
+    PMDFMAIHPGL_FKPMIOIMJIN = 9263;
+    PMDFMAIHPGL_AGEOJALCOOC = 9275;
+    PMDFMAIHPGL_JBBGAEIBIML = 9264;
+    PMDFMAIHPGL_LEEAGKMABHA = 9266;
+    PMDFMAIHPGL_DACGJALMPOI = 9292;
+    PMDFMAIHPGL_IBMBBIKGBMA = 9268;
+    PMDFMAIHPGL_MOFOKOBAPGO = 9273;
+    PMDFMAIHPGL_JNPCPMEDCML = 9274;
+    PMDFMAIHPGL_NPANIDLBFNM = 9299;
+    PMDFMAIHPGL_FNPAAMBPLKH = 9288;
+    PMDFMAIHPGL_OBHIIPGCBOC = 9294;
+    PMDFMAIHPGL_BDLAEOIMDMF = 9287;
+    PMDFMAIHPGL_ODEGHHDHEOJ = 9276;
+    PMDFMAIHPGL_FFGHFAIAKJC = 9265;
+    PMDFMAIHPGL_HCJAMGHDCEE = 9293;
+    PMDFMAIHPGL_LDDOHEMDKDH = 9272;
+    PMDFMAIHPGL_PDHNBGCCHGE = 9279;
+    PMDFMAIHPGL_CKHPINAGMPA = 9280;
+    PMDFMAIHPGL_MGAJDOGBDJI = 9269;
 }

@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "DFAOIALEBOH.proto";
+import "KFACLOGFNJF.proto";
 
 message ChessRogueUpdateDiceInfoScNotify {
-    DFAOIALEBOH PJABKDBFPIM = 1;
+    KFACLOGFNJF POHEPEEFBOA = 3;
 }

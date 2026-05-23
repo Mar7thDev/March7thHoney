@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch9TaGFyZVB1bmtMb3JkTW9uc3RlclNjUnNwLnByb3RvGhdQdW5rTG9yZFNo",
-            "YXJlVHlwZS5wcm90byJ1ChlTaGFyZVB1bmtMb3JkTW9uc3RlclNjUnNwEhIK",
-            "Cm1vbnN0ZXJfaWQYBCABKA0SJgoKc2hhcmVfdHlwZRgGIAEoDjISLlB1bmtM",
-            "b3JkU2hhcmVUeXBlEg8KB3JldGNvZGUYCSABKA0SCwoDdWlkGA0gASgNQhaq",
+            "YXJlVHlwZS5wcm90byJ1ChlTaGFyZVB1bmtMb3JkTW9uc3RlclNjUnNwEg8K",
+            "B3JldGNvZGUYDCABKA0SJgoKc2hhcmVfdHlwZRgCIAEoDjISLlB1bmtMb3Jk",
+            "U2hhcmVUeXBlEhIKCm1vbnN0ZXJfaWQYCSABKA0SCwoDdWlkGAUgASgNQhaq",
             "AhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.PunkLordShareTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SharePunkLordMonsterScRsp), global::March7thHoney.Proto.SharePunkLordMonsterScRsp.Parser, new[]{ "MonsterId", "ShareType", "Retcode", "Uid" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SharePunkLordMonsterScRsp), global::March7thHoney.Proto.SharePunkLordMonsterScRsp.Parser, new[]{ "Retcode", "ShareType", "MonsterId", "Uid" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,9 +74,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SharePunkLordMonsterScRsp(SharePunkLordMonsterScRsp other) : this() {
-      monsterId_ = other.monsterId_;
-      shareType_ = other.shareType_;
       retcode_ = other.retcode_;
+      shareType_ = other.shareType_;
+      monsterId_ = other.monsterId_;
       uid_ = other.uid_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -87,32 +87,8 @@ namespace March7thHoney.Proto {
       return new SharePunkLordMonsterScRsp(this);
     }
 
-    /// <summary>Field number for the "monster_id" field.</summary>
-    public const int MonsterIdFieldNumber = 4;
-    private uint monsterId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint MonsterId {
-      get { return monsterId_; }
-      set {
-        monsterId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "share_type" field.</summary>
-    public const int ShareTypeFieldNumber = 6;
-    private global::March7thHoney.Proto.PunkLordShareType shareType_ = global::March7thHoney.Proto.PunkLordShareType.FoodopdndlkPcpdhelpkem;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.PunkLordShareType ShareType {
-      get { return shareType_; }
-      set {
-        shareType_ = value;
-      }
-    }
-
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 9;
+    public const int RetcodeFieldNumber = 12;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -123,8 +99,32 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "share_type" field.</summary>
+    public const int ShareTypeFieldNumber = 2;
+    private global::March7thHoney.Proto.PunkLordShareType shareType_ = global::March7thHoney.Proto.PunkLordShareType.EopodgpdkmoNlcdgipgfdj;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.PunkLordShareType ShareType {
+      get { return shareType_; }
+      set {
+        shareType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "monster_id" field.</summary>
+    public const int MonsterIdFieldNumber = 9;
+    private uint monsterId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint MonsterId {
+      get { return monsterId_; }
+      set {
+        monsterId_ = value;
+      }
+    }
+
     /// <summary>Field number for the "uid" field.</summary>
-    public const int UidFieldNumber = 13;
+    public const int UidFieldNumber = 5;
     private uint uid_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -150,9 +150,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (MonsterId != other.MonsterId) return false;
-      if (ShareType != other.ShareType) return false;
       if (Retcode != other.Retcode) return false;
+      if (ShareType != other.ShareType) return false;
+      if (MonsterId != other.MonsterId) return false;
       if (Uid != other.Uid) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -161,9 +161,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (MonsterId != 0) hash ^= MonsterId.GetHashCode();
-      if (ShareType != global::March7thHoney.Proto.PunkLordShareType.FoodopdndlkPcpdhelpkem) hash ^= ShareType.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (ShareType != global::March7thHoney.Proto.PunkLordShareType.EopodgpdkmoNlcdgipgfdj) hash ^= ShareType.GetHashCode();
+      if (MonsterId != 0) hash ^= MonsterId.GetHashCode();
       if (Uid != 0) hash ^= Uid.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -183,21 +183,21 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (MonsterId != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(MonsterId);
-      }
-      if (ShareType != global::March7thHoney.Proto.PunkLordShareType.FoodopdndlkPcpdhelpkem) {
-        output.WriteRawTag(48);
+      if (ShareType != global::March7thHoney.Proto.PunkLordShareType.EopodgpdkmoNlcdgipgfdj) {
+        output.WriteRawTag(16);
         output.WriteEnum((int) ShareType);
       }
-      if (Retcode != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(Retcode);
-      }
       if (Uid != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(40);
         output.WriteUInt32(Uid);
+      }
+      if (MonsterId != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(MonsterId);
+      }
+      if (Retcode != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -209,21 +209,21 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (MonsterId != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(MonsterId);
-      }
-      if (ShareType != global::March7thHoney.Proto.PunkLordShareType.FoodopdndlkPcpdhelpkem) {
-        output.WriteRawTag(48);
+      if (ShareType != global::March7thHoney.Proto.PunkLordShareType.EopodgpdkmoNlcdgipgfdj) {
+        output.WriteRawTag(16);
         output.WriteEnum((int) ShareType);
       }
-      if (Retcode != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(Retcode);
-      }
       if (Uid != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(40);
         output.WriteUInt32(Uid);
+      }
+      if (MonsterId != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(MonsterId);
+      }
+      if (Retcode != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -235,14 +235,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (MonsterId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MonsterId);
-      }
-      if (ShareType != global::March7thHoney.Proto.PunkLordShareType.FoodopdndlkPcpdhelpkem) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ShareType);
-      }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      }
+      if (ShareType != global::March7thHoney.Proto.PunkLordShareType.EopodgpdkmoNlcdgipgfdj) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ShareType);
+      }
+      if (MonsterId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MonsterId);
       }
       if (Uid != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Uid);
@@ -259,14 +259,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.MonsterId != 0) {
-        MonsterId = other.MonsterId;
-      }
-      if (other.ShareType != global::March7thHoney.Proto.PunkLordShareType.FoodopdndlkPcpdhelpkem) {
-        ShareType = other.ShareType;
-      }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
+      }
+      if (other.ShareType != global::March7thHoney.Proto.PunkLordShareType.EopodgpdkmoNlcdgipgfdj) {
+        ShareType = other.ShareType;
+      }
+      if (other.MonsterId != 0) {
+        MonsterId = other.MonsterId;
       }
       if (other.Uid != 0) {
         Uid = other.Uid;
@@ -290,20 +290,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
-            MonsterId = input.ReadUInt32();
-            break;
-          }
-          case 48: {
+          case 16: {
             ShareType = (global::March7thHoney.Proto.PunkLordShareType) input.ReadEnum();
             break;
           }
-          case 72: {
-            Retcode = input.ReadUInt32();
+          case 40: {
+            Uid = input.ReadUInt32();
             break;
           }
-          case 104: {
-            Uid = input.ReadUInt32();
+          case 72: {
+            MonsterId = input.ReadUInt32();
+            break;
+          }
+          case 96: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -325,20 +325,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
-            MonsterId = input.ReadUInt32();
-            break;
-          }
-          case 48: {
+          case 16: {
             ShareType = (global::March7thHoney.Proto.PunkLordShareType) input.ReadEnum();
             break;
           }
-          case 72: {
-            Retcode = input.ReadUInt32();
+          case 40: {
+            Uid = input.ReadUInt32();
             break;
           }
-          case 104: {
-            Uid = input.ReadUInt32();
+          case 72: {
+            MonsterId = input.ReadUInt32();
+            break;
+          }
+          case 96: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }
