@@ -325,7 +325,15 @@ public class EntryPoint
 
         // generate the handbook
         if (ConfigManager.Config.ServerOption.ServerConfig.RunGateway)
-            new Task(HandbookGenerator.GenerateAll).Start();
+        {
+            var handbookThread = new Thread(HandbookGenerator.GenerateAll)
+            {
+                IsBackground = true,
+                Name = "HandbookGenerator",
+                Priority = ThreadPriority.Lowest
+            };
+            handbookThread.Start();
+        }
 
         if (!DatabaseHelper.LoadAllData)
         {
