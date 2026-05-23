@@ -23,6 +23,8 @@ public static class HandbookGenerator
         if (!directory.Exists)
             return;
 
+        Dictionary<BigInteger, string>? sharedFallback = null;
+
         foreach (var langFile in directory.GetFiles())
         {
             if (langFile.Extension != ".json") continue;
@@ -38,7 +40,7 @@ public static class HandbookGenerator
                     continue; // Skip if handbook is newer than its input sources
             }
 
-            Generate(lang);
+            Generate(lang, ref sharedFallback);
         }
 
         Logger.GetByClassName()
@@ -46,6 +48,12 @@ public static class HandbookGenerator
     }
 
     public static void Generate(string lang)
+    {
+        Dictionary<BigInteger, string>? fallback = null;
+        Generate(lang, ref fallback);
+    }
+
+    private static void Generate(string lang, ref Dictionary<BigInteger, string>? sharedFallback)
     {
         var config = ConfigManager.Config;
         var handbookLang = lang == "CN" ? "CHS" : lang;
@@ -67,8 +75,9 @@ public static class HandbookGenerator
         }
 
         var textMap = JsonConvert.DeserializeObject<Dictionary<BigInteger, string>>(File.ReadAllText(textMapPath));
-        var fallbackTextMap =
+        sharedFallback ??=
             JsonConvert.DeserializeObject<Dictionary<BigInteger, string>>(File.ReadAllText(fallbackTextMapPath));
+        var fallbackTextMap = sharedFallback;
 
         if (textMap == null || fallbackTextMap == null)
         {
