@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "EJLGEOKIJKH.proto";
+import "LMLNNHKJEIP.proto";
+
+message GFHCKBHCNDF {
+    repeated uint32 PCJGJAEHCND = 9;
+    repeated LMLNNHKJEIP DFLEOIGPLNM = 1281;
+    repeated uint32 NFPLNBKIFCF = 4;
+    uint32 level_id = 12;
+    EJLGEOKIJKH DOJGFCKAGKB = 13;
+    uint32 DDPBFAENJJN = 15;
+    uint32 GNAMNBDIEKG = 1;
+    uint32 IHPLBMKACIP = 10;
+    uint32 OIBCHBJCHJE = 11;
+    uint32 FKDFHHLLDEB = 2;
+    bool FDBNNLFJGPD = 14;
+    bool AIJJAKIFABF = 8;
+    uint32 CJJMDMOCPDJ = 5;
+    uint32 DNOLEOMJHLH = 7;
+    EJLGEOKIJKH MBNNIKFMLDG = 3;
+    uint32 FHDBCDEPBAK = 6;
+}

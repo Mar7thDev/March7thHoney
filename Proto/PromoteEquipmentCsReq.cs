@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChtQcm9tb3RlRXF1aXBtZW50Q3NSZXEucHJvdG8aEkl0ZW1Db3N0RGF0YS5w",
-            "cm90byJWChVQcm9tb3RlRXF1aXBtZW50Q3NSZXESIAoJY29zdF9kYXRhGAUg",
-            "ASgLMg0uSXRlbUNvc3REYXRhEhsKE2VxdWlwbWVudF91bmlxdWVfaWQYDSAB",
+            "cm90byJWChVQcm9tb3RlRXF1aXBtZW50Q3NSZXESIAoJY29zdF9kYXRhGA4g",
+            "ASgLMg0uSXRlbUNvc3REYXRhEhsKE2VxdWlwbWVudF91bmlxdWVfaWQYBSAB",
             "KA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemCostDataReflection.Descriptor, },
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "cost_data" field.</summary>
-    public const int CostDataFieldNumber = 5;
+    public const int CostDataFieldNumber = 14;
     private global::March7thHoney.Proto.ItemCostData costData_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "equipment_unique_id" field.</summary>
-    public const int EquipmentUniqueIdFieldNumber = 13;
+    public const int EquipmentUniqueIdFieldNumber = 5;
     private uint equipmentUniqueId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,13 +152,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (costData_ != null) {
-        output.WriteRawTag(42);
-        output.WriteMessage(CostData);
-      }
       if (EquipmentUniqueId != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(40);
         output.WriteUInt32(EquipmentUniqueId);
+      }
+      if (costData_ != null) {
+        output.WriteRawTag(114);
+        output.WriteMessage(CostData);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,13 +170,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (costData_ != null) {
-        output.WriteRawTag(42);
-        output.WriteMessage(CostData);
-      }
       if (EquipmentUniqueId != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(40);
         output.WriteUInt32(EquipmentUniqueId);
+      }
+      if (costData_ != null) {
+        output.WriteRawTag(114);
+        output.WriteMessage(CostData);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -234,15 +234,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 42: {
+          case 40: {
+            EquipmentUniqueId = input.ReadUInt32();
+            break;
+          }
+          case 114: {
             if (costData_ == null) {
               CostData = new global::March7thHoney.Proto.ItemCostData();
             }
             input.ReadMessage(CostData);
-            break;
-          }
-          case 104: {
-            EquipmentUniqueId = input.ReadUInt32();
             break;
           }
         }
@@ -264,15 +264,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 42: {
+          case 40: {
+            EquipmentUniqueId = input.ReadUInt32();
+            break;
+          }
+          case 114: {
             if (costData_ == null) {
               CostData = new global::March7thHoney.Proto.ItemCostData();
             }
             input.ReadMessage(CostData);
-            break;
-          }
-          case 104: {
-            EquipmentUniqueId = input.ReadUInt32();
             break;
           }
         }

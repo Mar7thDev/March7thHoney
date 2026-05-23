@@ -2,19 +2,17 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "BigDataRecommendAvatarRelic.proto";
 import "BigDataRecommendRelicAvatar.proto";
 import "BigDataRecommendType.proto";
-import "EBJDMKPDCNK.proto";
+import "GNBBDMBNNDJ.proto";
 
 message GetBigDataAllRecommendScRsp {
-    BigDataRecommendType big_data_recommend_type = 2;
-    uint32 retcode = 5;
-    oneof recommend_type {
-        BigDataRecommendRelicAvatar relic_avatar = 4;
-        EBJDMKPDCNK GIJOGKBMDIP = 13;
-        BigDataRecommendAvatarRelic avatar_relic = 15;
+    BigDataRecommendType big_data_recommend_type = 13;
+    uint32 retcode = 3;
+    oneof OODKOEILJCD {
+        BigDataRecommendRelicAvatar relic_avatar = 8;
+        BigDataRecommendAvatarRelic avatar_relic = 1;
+        GNBBDMBNNDJ KHCMLINMGEN = 4;
     }
 }

@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "EMHALJPDDBL.proto";
+import "JBOBHIPHGPB.proto";
 
 message GetChenLingGameBoyDataScRsp {
-    EMHALJPDDBL MAONHDCCHPE = 7;
-    uint32 retcode = 15;
+    JBOBHIPHGPB IAOBHCOOMJP = 8;
+    uint32 retcode = 13;
 }

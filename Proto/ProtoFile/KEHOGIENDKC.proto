@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "MMLAPDEBFJM.proto";
+
+message KEHOGIENDKC {
+    MMLAPDEBFJM authkey_ver = 9;
+    uint32 AIBJEFAPGMN = 5;
+    uint32 DACCGMCONBP = 6;
+}

@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum CFMDKNCDDAL {
+    CFMDKNCDDAL_NADPFMGBHDJ = 0;
+    CFMDKNCDDAL_GGGLNCBOICD = 1;
+}

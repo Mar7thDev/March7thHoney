@@ -2,37 +2,35 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "BattleAvatar.proto";
 import "BattleBuff.proto";
 import "BattleEventBattleInfo.proto";
 import "BattleGridFightSpecialBattleInfo.proto";
 import "BattleRogueMagicInfo.proto";
 import "BattleTargetList.proto";
-import "CAKGOGMEJOF.proto";
-import "KCGPMNNKIKN.proto";
-import "MLDEDCCOHBF.proto";
-import "OGEOMDJIAGI.proto";
+import "EDCFKACPFNB.proto";
+import "KIAICMELIMM.proto";
+import "OJCBOMCCPDB.proto";
+import "PKPFAHEBJIO.proto";
 import "SceneMonsterWave.proto";
 
 message SceneBattleInfo {
-    uint32 battle_id = 1;
-    uint32 stage_id = 2;
-    bool EODHMOBOENG = 3;
-    repeated SceneMonsterWave monster_wave_list = 4;
-    uint32 world_level = 6;
-    uint32 logic_random_seed = 8;
-    repeated BattleAvatar battle_avatar_list = 9;
-    repeated BattleBuff buff_list = 13;
-    uint32 rounds_limit = 14;
-    uint32 monster_wave_length = 15;
-    repeated BattleEventBattleInfo battle_event = 234;
-    CAKGOGMEJOF IAJDCJIAHFP = 508;
-    BattleRogueMagicInfo battle_rogue_magic_info = 558;
-    map<uint32, BattleTargetList> battle_target_info = 761;
-    KCGPMNNKIKN GDAGHIJADOD = 838;
-    MLDEDCCOHBF OBOFOCPCBPK = 1383;
-    BattleGridFightSpecialBattleInfo FMCJPPILPLL = 1654;
-    OGEOMDJIAGI AFCMOOFGBPK = 1831;
+    BattleRogueMagicInfo battle_rogue_magic_info = 1707;
+    KIAICMELIMM DFABBGKGDEI = 773;
+    PKPFAHEBJIO LDPLAOHNLAP = 574;
+    OJCBOMCCPDB EIGMKOJOEEI = 1817;
+    repeated BattleEventBattleInfo battle_event = 471;
+    repeated BattleAvatar battle_avatar_list = 12;
+    map<uint32, BattleTargetList> battle_target_info = 502;
+    BattleGridFightSpecialBattleInfo PMCEKILFBIO = 411;
+    repeated BattleBuff buff_list = 2;
+    EDCFKACPFNB FGOAKDCBIOE = 141;
+    repeated SceneMonsterWave monster_wave_list = 10;
+    bool IMEKCMNFLDI = 13;
+    uint32 rounds_limit = 8;
+    uint32 stage_id = 7;
+    uint32 world_level = 9;
+    uint32 monster_wave_length = 5;
+    uint32 battle_id = 3;
+    uint32 logic_random_seed = 11;
 }

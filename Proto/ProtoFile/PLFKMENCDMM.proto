@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message PLFKMENCDMM {
+    repeated uint32 grid_fight_equipment_list = 9;
+    uint32 role_id = 5;
+    double total_damage = 1;
+    uint32 role_star = 6;
+    bool DIGNECHKINI = 15;
+    bool OGIBPMBELKC = 13;
+}

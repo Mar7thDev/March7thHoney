@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch1HZXRWaWRlb1ZlcnNpb25LZXlTY1JzcC5wcm90bxoSVmlkZW9LZXlJbmZv",
-            "LnByb3RvIosBChdHZXRWaWRlb1ZlcnNpb25LZXlTY1JzcBIPCgdyZXRjb2Rl",
-            "GAUgASgNEjMKHGFjdGl2aXR5X3ZpZGVvX2tleV9pbmZvX2xpc3QYBiADKAsy",
-            "DS5WaWRlb0tleUluZm8SKgoTdmlkZW9fa2V5X2luZm9fbGlzdBgIIAMoCzIN",
-            "LlZpZGVvS2V5SW5mb0IWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "LnByb3RvIosBChdHZXRWaWRlb1ZlcnNpb25LZXlTY1JzcBIzChxhY3Rpdml0",
+            "eV92aWRlb19rZXlfaW5mb19saXN0GAYgAygLMg0uVmlkZW9LZXlJbmZvEioK",
+            "E3ZpZGVvX2tleV9pbmZvX2xpc3QYCCADKAsyDS5WaWRlb0tleUluZm8SDwoH",
+            "cmV0Y29kZRgLIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.VideoKeyInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetVideoVersionKeyScRsp), global::March7thHoney.Proto.GetVideoVersionKeyScRsp.Parser, new[]{ "Retcode", "ActivityVideoKeyInfoList", "VideoKeyInfoList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetVideoVersionKeyScRsp), global::March7thHoney.Proto.GetVideoVersionKeyScRsp.Parser, new[]{ "ActivityVideoKeyInfoList", "VideoKeyInfoList", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,9 +74,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetVideoVersionKeyScRsp(GetVideoVersionKeyScRsp other) : this() {
-      retcode_ = other.retcode_;
       activityVideoKeyInfoList_ = other.activityVideoKeyInfoList_.Clone();
       videoKeyInfoList_ = other.videoKeyInfoList_.Clone();
+      retcode_ = other.retcode_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,18 +84,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetVideoVersionKeyScRsp Clone() {
       return new GetVideoVersionKeyScRsp(this);
-    }
-
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 5;
-    private uint retcode_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
-      set {
-        retcode_ = value;
-      }
     }
 
     /// <summary>Field number for the "activity_video_key_info_list" field.</summary>
@@ -120,6 +108,18 @@ namespace March7thHoney.Proto {
       get { return videoKeyInfoList_; }
     }
 
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 11;
+    private uint retcode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Retcode {
+      get { return retcode_; }
+      set {
+        retcode_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -135,9 +135,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Retcode != other.Retcode) return false;
       if(!activityVideoKeyInfoList_.Equals(other.activityVideoKeyInfoList_)) return false;
       if(!videoKeyInfoList_.Equals(other.videoKeyInfoList_)) return false;
+      if (Retcode != other.Retcode) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -145,9 +145,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       hash ^= activityVideoKeyInfoList_.GetHashCode();
       hash ^= videoKeyInfoList_.GetHashCode();
+      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -166,12 +166,12 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Retcode != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(Retcode);
-      }
       activityVideoKeyInfoList_.WriteTo(output, _repeated_activityVideoKeyInfoList_codec);
       videoKeyInfoList_.WriteTo(output, _repeated_videoKeyInfoList_codec);
+      if (Retcode != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(Retcode);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -182,12 +182,12 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Retcode != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(Retcode);
-      }
       activityVideoKeyInfoList_.WriteTo(ref output, _repeated_activityVideoKeyInfoList_codec);
       videoKeyInfoList_.WriteTo(ref output, _repeated_videoKeyInfoList_codec);
+      if (Retcode != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(Retcode);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -198,11 +198,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      size += activityVideoKeyInfoList_.CalculateSize(_repeated_activityVideoKeyInfoList_codec);
+      size += videoKeyInfoList_.CalculateSize(_repeated_videoKeyInfoList_codec);
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
-      size += activityVideoKeyInfoList_.CalculateSize(_repeated_activityVideoKeyInfoList_codec);
-      size += videoKeyInfoList_.CalculateSize(_repeated_videoKeyInfoList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -215,11 +215,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      activityVideoKeyInfoList_.Add(other.activityVideoKeyInfoList_);
+      videoKeyInfoList_.Add(other.videoKeyInfoList_);
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
-      activityVideoKeyInfoList_.Add(other.activityVideoKeyInfoList_);
-      videoKeyInfoList_.Add(other.videoKeyInfoList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -239,16 +239,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 40: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
           case 50: {
             activityVideoKeyInfoList_.AddEntriesFrom(input, _repeated_activityVideoKeyInfoList_codec);
             break;
           }
           case 66: {
             videoKeyInfoList_.AddEntriesFrom(input, _repeated_videoKeyInfoList_codec);
+            break;
+          }
+          case 88: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -270,16 +270,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 40: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
           case 50: {
             activityVideoKeyInfoList_.AddEntriesFrom(ref input, _repeated_activityVideoKeyInfoList_codec);
             break;
           }
           case 66: {
             videoKeyInfoList_.AddEntriesFrom(ref input, _repeated_videoKeyInfoList_codec);
+            break;
+          }
+          case 88: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }

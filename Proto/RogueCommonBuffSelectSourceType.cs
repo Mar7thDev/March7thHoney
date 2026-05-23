@@ -25,10 +25,10 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiVSb2d1ZUNvbW1vbkJ1ZmZTZWxlY3RTb3VyY2VUeXBlLnByb3RvKrIBCh9S",
-            "b2d1ZUNvbW1vbkJ1ZmZTZWxlY3RTb3VyY2VUeXBlEhsKF01BRlBPTklETUxE",
-            "X1BDUERIRUxQS0VNEAASGwoXTUFGUE9OSURNTERfSExJREdETE5GSE0QARIb",
-            "ChdNQUZQT05JRE1MRF9FR0ZCR0pHSUVLTRACEhsKF01BRlBPTklETUxEX05Q",
-            "RENPSkNBSFBFEAMSGwoXTUFGUE9OSURNTERfR0FMR0ZJT01PSU8QBEIWqgIT",
+            "b2d1ZUNvbW1vbkJ1ZmZTZWxlY3RTb3VyY2VUeXBlEhsKF0NMTkVDQk9NSE1O",
+            "X05MQ0RHSVBHRkRKEAASGwoXQ0xORUNCT01ITU5fT0hGR0NNRU5GREgQARIb",
+            "ChdDTE5FQ0JPTUhNTl9CR0RHSUlPS0hHRhACEhsKF0NMTkVDQk9NSE1OX01D",
+            "R0dFQUFIQlBEEAMSGwoXQ0xORUNCT01ITU5fRU1BTEJBTEFOTEgQBEIWqgIT",
             "TWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -39,11 +39,11 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum RogueCommonBuffSelectSourceType {
-    [pbr::OriginalName("MAFPONIDMLD_PCPDHELPKEM")] MafponidmldPcpdhelpkem = 0,
-    [pbr::OriginalName("MAFPONIDMLD_HLIDGDLNFHM")] MafponidmldHlidgdlnfhm = 1,
-    [pbr::OriginalName("MAFPONIDMLD_EGFBGJGIEKM")] MafponidmldEgfbgjgiekm = 2,
-    [pbr::OriginalName("MAFPONIDMLD_NPDCOJCAHPE")] MafponidmldNpdcojcahpe = 3,
-    [pbr::OriginalName("MAFPONIDMLD_GALGFIOMOIO")] MafponidmldGalgfiomoio = 4,
+    [pbr::OriginalName("CLNECBOMHMN_NLCDGIPGFDJ")] ClnecbomhmnNlcdgipgfdj = 0,
+    [pbr::OriginalName("CLNECBOMHMN_OHFGCMENFDH")] ClnecbomhmnOhfgcmenfdh = 1,
+    [pbr::OriginalName("CLNECBOMHMN_BGDGIIOKHGF")] ClnecbomhmnBgdgiiokhgf = 2,
+    [pbr::OriginalName("CLNECBOMHMN_MCGGEAAHBPD")] ClnecbomhmnMcggeaahbpd = 3,
+    [pbr::OriginalName("CLNECBOMHMN_EMALBALANLH")] ClnecbomhmnEmalbalanlh = 4,
   }
 
   #endregion

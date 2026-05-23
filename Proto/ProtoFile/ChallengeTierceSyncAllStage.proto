@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "ChallengeTierceRecord.proto";
+import "ChallengeTierceReward.proto";
+import "ChallengeTierceStageData.proto";
+
+message ChallengeTierceSyncAllStage {
+    repeated uint32 finished_target_list = 131;
+    repeated ChallengeTierceReward DJOBNPIAEJP = 5;
+    ChallengeTierceRecord EGEHLOPFELK = 2;
+    repeated ChallengeTierceStageData GBMBAHHDONN = 12;
+    bool is_passed = 464;
+    uint32 challenge_id = 3;
+}

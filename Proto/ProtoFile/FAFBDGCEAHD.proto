@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message FAFBDGCEAHD {
+    uint32 trait_id = 11;
+    uint32 AFKKLDMAEDJ = 15;
+}

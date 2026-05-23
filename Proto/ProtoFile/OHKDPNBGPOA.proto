@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message OHKDPNBGPOA {
+    bool MAKOLELFLFH = 4;
+    bool GNFDDPEMMFN = 9;
+    bool DCJECFMMIBC = 6;
+    bool IOJEAOCOBBF = 5;
+    bool PFBHGAHAFMD = 14;
+}

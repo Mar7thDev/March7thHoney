@@ -24,10 +24,10 @@ namespace March7thHoney.Proto {
     static BpRewardTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChJCcFJld2FyZFR5cGUucHJvdG8qnwEKDEJwUmV3YXJkVHlwZRIbChdGQUFK",
-            "S0NBQ0dDRF9PRUpDRUNCQ0hMQxAAEhsKF0ZBQUpLQ0FDR0NEX0ZPT0hEQUJI",
-            "REtNEAESGwoXRkFBSktDQUNHQ0RfR0lJTUJFT1BERkIQAhIbChdGQUFKS0NB",
-            "Q0dDRF9QQk9NR09LQU5KRBADEhsKF0ZBQUpLQ0FDR0NEX0pGTUJORU1JREZL",
+            "ChJCcFJld2FyZFR5cGUucHJvdG8qnwEKDEJwUmV3YXJkVHlwZRIbChdGREtM",
+            "T0lMQUpIRV9FSURLS0dMUEZHTxAAEhsKF0ZES0xPSUxBSkhFX0dCT01OS09O",
+            "Q1BMEAESGwoXRkRLTE9JTEFKSEVfQ1BHQk1CQlBLUEcQAhIbChdGREtMT0lM",
+            "QUpIRV9FTktORUhBQ01GShADEhsKF0ZES0xPSUxBSkhFX0NLUFBKQkFLR0hM",
             "EARCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -38,11 +38,11 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum BpRewardType {
-    [pbr::OriginalName("FAAJKCACGCD_OEJCECBCHLC")] FaajkcacgcdOejcecbchlc = 0,
-    [pbr::OriginalName("FAAJKCACGCD_FOOHDABHDKM")] FaajkcacgcdFoohdabhdkm = 1,
-    [pbr::OriginalName("FAAJKCACGCD_GIIMBEOPDFB")] FaajkcacgcdGiimbeopdfb = 2,
-    [pbr::OriginalName("FAAJKCACGCD_PBOMGOKANJD")] FaajkcacgcdPbomgokanjd = 3,
-    [pbr::OriginalName("FAAJKCACGCD_JFMBNEMIDFK")] FaajkcacgcdJfmbnemidfk = 4,
+    [pbr::OriginalName("FDKLOILAJHE_EIDKKGLPFGO")] FdkloilajheEidkkglpfgo = 0,
+    [pbr::OriginalName("FDKLOILAJHE_GBOMNKONCPL")] FdkloilajheGbomnkoncpl = 1,
+    [pbr::OriginalName("FDKLOILAJHE_CPGBMBBPKPG")] FdkloilajheCpgbmbbpkpg = 2,
+    [pbr::OriginalName("FDKLOILAJHE_ENKNEHACMFJ")] FdkloilajheEnknehacmfj = 3,
+    [pbr::OriginalName("FDKLOILAJHE_CKPPJBAKGHL")] FdkloilajheCkppjbakghl = 4,
   }
 
   #endregion

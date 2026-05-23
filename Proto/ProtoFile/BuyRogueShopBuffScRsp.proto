@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "PHMBJKMKMDK.proto";
+import "DAENHKENJHK.proto";
 
 message BuyRogueShopBuffScRsp {
-    PHMBJKMKMDK HKGKNEKKJHB = 4;
-    uint32 retcode = 12;
+    DAENHKENJHK HABJHGPFGEB = 3;
+    uint32 retcode = 2;
 }

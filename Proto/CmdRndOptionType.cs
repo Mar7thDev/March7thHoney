@@ -24,11 +24,12 @@ namespace March7thHoney.Proto {
     static CmdRndOptionTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChZDbWRSbmRPcHRpb25UeXBlLnByb3RvKpQBChBDbWRSbmRPcHRpb25UeXBl",
-            "EhsKF0VET09LRUpIUEFEX1BDUERIRUxQS0VNEAASHgoZQ21kRGFpbHlGaXJz",
-            "dE1lZXRQYW1Dc1JlcRCmGxIZChRDbWRHZXRSbmRPcHRpb25Dc1JlcRCjGxIT",
-            "Cg5DbWRFRUFNQk1ER0lIRhDSGhITCg5DbWRDQkVGRk5BRlBFTBCnG0IWqgIT",
-            "TWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChZDbWRSbmRPcHRpb25UeXBlLnByb3RvKqcBChBDbWRSbmRPcHRpb25UeXBl",
+            "EhsKF0xISElLUExNTEdIX05MQ0RHSVBHRkRKEAASHAoXTEhISUtQTE1MR0hf",
+            "RkhNQkpHQ0JCUEYQkRsSHAoXTEhISUtQTE1MR0hfSUZNRUpQSkpFTE4Q4xoS",
+            "HAoXTEhISUtQTE1MR0hfQUtFS0ZOT1BQTEYQyxoSHAoXTEhISUtQTE1MR0hf",
+            "QktBT0xNRU9MRkoQmBtCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
+            "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdRndOptionType), }, null, null));
@@ -38,11 +39,11 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdRndOptionType {
-    [pbr::OriginalName("EDOOKEJHPAD_PCPDHELPKEM")] EdookejhpadPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdDailyFirstMeetPamCsReq")] CmdDailyFirstMeetPamCsReq = 3494,
-    [pbr::OriginalName("CmdGetRndOptionCsReq")] CmdGetRndOptionCsReq = 3491,
-    [pbr::OriginalName("CmdEEAMBMDGIHF")] CmdEeambmdgihf = 3410,
-    [pbr::OriginalName("CmdCBEFFNAFPEL")] CmdCbeffnafpel = 3495,
+    [pbr::OriginalName("LHHIKPLMLGH_NLCDGIPGFDJ")] LhhikplmlghNlcdgipgfdj = 0,
+    [pbr::OriginalName("LHHIKPLMLGH_FHMBJGCBBPF")] LhhikplmlghFhmbjgcbbpf = 3473,
+    [pbr::OriginalName("LHHIKPLMLGH_IFMEJPJJELN")] LhhikplmlghIfmejpjjeln = 3427,
+    [pbr::OriginalName("LHHIKPLMLGH_AKEKFNOPPLF")] LhhikplmlghAkekfnopplf = 3403,
+    [pbr::OriginalName("LHHIKPLMLGH_BKAOLMEOLFJ")] LhhikplmlghBkaolmeolfj = 3480,
   }
 
   #endregion

@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "MHJNBBPBLBO.proto";
+import "AKLDICEFCIL.proto";
 
 message MatchBoxingClubOpponentCsReq {
-    repeated uint32 avatar_list = 2;
-    uint32 challenge_id = 4;
-    repeated MHJNBBPBLBO IDOIDDEHIJG = 6;
+    repeated uint32 avatar_list = 8;
+    repeated AKLDICEFCIL OOJOMKDMBBM = 4;
+    uint32 challenge_id = 15;
 }

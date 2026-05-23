@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "DiceCombatAvatar.proto";
 
 message UpgradeAvatarRsp {
-    DiceCombatAvatar OJCBGGOEEIE = 4;
-    uint32 retcode = 10;
+    DiceCombatAvatar MLFLPFMLKNF = 6;
+    uint32 retcode = 14;
 }

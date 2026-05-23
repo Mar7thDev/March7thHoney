@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum OHFECKKADEK {
+    OHFECKKADEK_NLCDGIPGFDJ = 0;
+    OHFECKKADEK_CIHFGJDCHIA = 1;
+    OHFECKKADEK_INCLHHDFCEL = 2;
+}

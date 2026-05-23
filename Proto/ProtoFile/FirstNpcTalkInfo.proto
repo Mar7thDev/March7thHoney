@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message FirstNpcTalkInfo {
-    uint32 npc_id = 12;
-    bool is_meet = 13;
+    bool is_meet = 2;
+    uint32 npc_id = 4;
 }

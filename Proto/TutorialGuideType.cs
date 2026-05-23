@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChdUdXRvcmlhbEd1aWRlVHlwZS5wcm90bypNChFUdXRvcmlhbEd1aWRlVHlw",
-            "ZRIbChdGR0tMUE1DSkJBQ19OTk1CQUhDQ0tKQRAAEhsKF0ZHS0xQTUNKQkFD",
-            "X0lQS09IUEZJQU9JEAFCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
+            "ZRIbChdBT0NDRUJHTlBKQV9HSU5GQ0dERERPTRAAEhsKF0FPQ0NFQkdOUEpB",
+            "X0pMT0FGQkFHRkhHEAFCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
             "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -37,8 +37,8 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum TutorialGuideType {
-    [pbr::OriginalName("FGKLPMCJBAC_NNMBAHCCKJA")] FgklpmcjbacNnmbahcckja = 0,
-    [pbr::OriginalName("FGKLPMCJBAC_IPKOHPFIAOI")] FgklpmcjbacIpkohpfiaoi = 1,
+    [pbr::OriginalName("AOCCEBGNPJA_GINFCGDDDOM")] AoccebgnpjaGinfcgdddom = 0,
+    [pbr::OriginalName("AOCCEBGNPJA_JLOAFBAGFHG")] AoccebgnpjaJloafbagfhg = 1,
   }
 
   #endregion

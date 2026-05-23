@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum BGLIMCBGLAJ {
+    BGLIMCBGLAJ_PICLIGEAJFN = 0;
+    BGLIMCBGLAJ_OGPNODHENKN = 1;
+    BGLIMCBGLAJ_JPDBDLEEHGK = 2;
+    BGLIMCBGLAJ_BMHMMIMOAIJ = 3;
+    BGLIMCBGLAJ_DCGAPNGCCEH = 4;
+}

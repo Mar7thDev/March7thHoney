@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message BADOONPCDLO {
+    bool AJGOLAKNGPA = 5;
+    uint32 time = 2;
+    uint32 level_id = 3;
+}

@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "BDEKEIKAKML.proto";
+import "CABBOOKAODO.proto";
 
 message RelicSmartWearUpdatePinRelicScNotify {
-    repeated BDEKEIKAKML BKDEIHEKGIC = 4;
-    repeated BDEKEIKAKML NAEIPMIIIEC = 5;
+    repeated CABBOOKAODO PLNCNCNIPKN = 12;
+    repeated CABBOOKAODO ANCHGOGNLFP = 6;
     uint32 relic_unique_id = 9;
 }

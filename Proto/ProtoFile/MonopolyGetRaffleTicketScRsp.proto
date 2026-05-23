@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "PNDOKOLEPLC.proto";
+import "DDHIEONLIIL.proto";
 
 message MonopolyGetRaffleTicketScRsp {
-    uint32 retcode = 5;
-    uint32 MBMICCJEBJB = 10;
-    repeated PNDOKOLEPLC ELNFNMJMAIL = 13;
+    repeated DDHIEONLIIL HDLPEKIMAJB = 8;
+    uint32 retcode = 7;
+    uint32 GACKJLBPKGD = 13;
 }

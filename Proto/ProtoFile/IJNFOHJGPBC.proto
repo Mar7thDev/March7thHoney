@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "IDCBNMFDICO.proto";
+import "ODNBCBEINNC.proto";
+
+message IJNFOHJGPBC {
+    repeated ODNBCBEINNC JEHEILKKDEF = 7;
+    uint32 MDAIAMFJNHM = 4;
+    IDCBNMFDICO status = 14;
+    uint32 JOJCPKNIJOH = 1;
+    uint32 BIKLAFLEIOC = 10;
+}

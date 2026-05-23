@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message VirtualLineupDestroyNotify {
-    uint32 plane_id = 13;
+    uint32 plane_id = 4;
 }

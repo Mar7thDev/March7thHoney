@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "RelicPresetPlanSourceType.proto";
+
+message PFCKBFLDHNI {
+    repeated uint32 relic_ids = 7;
+    string name = 9;
+    uint32 unique_id = 5;
+    uint32 avatar_id = 1;
+    RelicPresetPlanSourceType NFMKOFNEKLA = 11;
+}

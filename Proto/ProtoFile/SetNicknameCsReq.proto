@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message SetNicknameCsReq {
-    string nickname = 3;
-    bool is_modify = 12;
+    string nickname = 6;
+    bool is_modify = 13;
 }

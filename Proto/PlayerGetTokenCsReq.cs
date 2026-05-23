@@ -24,16 +24,16 @@ namespace March7thHoney.Proto {
     static PlayerGetTokenCsReqReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChlQbGF5ZXJHZXRUb2tlbkNzUmVxLnByb3RvIscBChNQbGF5ZXJHZXRUb2tl",
-            "bkNzUmVxEhMKC2FjY291bnRfdWlkGAIgASgJEhcKD2FjY291bnRfaXBfcG9y",
-            "dBgDIAEoDRISCgphY2NvdW50X2lwGAQgASgNEhMKC0VGS0NNRklKR0lKGAUg",
-            "ASgNEhgKEGFjY291bnRfdWlkX2VycjEYBiABKAkSDQoFdG9rZW4YByABKAkS",
-            "CwoDdWlkGAggASgNEhAKCHBsYXRmb3JtGAogASgNEhEKCXNpZ25fdHlwZRgP",
-            "IAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChlQbGF5ZXJHZXRUb2tlbkNzUmVxLnByb3RvIsIBChNQbGF5ZXJHZXRUb2tl",
+            "bkNzUmVxEhMKC2FjY291bnRfdWlkGAwgASgJEg0KBXRva2VuGAQgASgJEhMK",
+            "C0ROQURJSUNGTUVFGAggASgJEhAKCHBsYXRmb3JtGA0gASgNEhIKCmFjY291",
+            "bnRfaXAYASABKA0SEQoJc2lnbl90eXBlGAcgASgNEhMKC0RKQ05IQ0dGSEtG",
+            "GAIgASgNEgsKA3VpZBgDIAEoDRIXCg9hY2NvdW50X2lwX3BvcnQYCiABKA1C",
+            "FqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlayerGetTokenCsReq), global::March7thHoney.Proto.PlayerGetTokenCsReq.Parser, new[]{ "AccountUid", "AccountIpPort", "AccountIp", "EFKCMFIJGIJ", "AccountUidErr1", "Token", "Uid", "Platform", "SignType" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlayerGetTokenCsReq), global::March7thHoney.Proto.PlayerGetTokenCsReq.Parser, new[]{ "AccountUid", "Token", "DNADIICFMEE", "Platform", "AccountIp", "SignType", "DJCNHCGFHKF", "Uid", "AccountIpPort" }, null, null, null, null)
           }));
     }
     #endregion
@@ -76,14 +76,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PlayerGetTokenCsReq(PlayerGetTokenCsReq other) : this() {
       accountUid_ = other.accountUid_;
-      accountIpPort_ = other.accountIpPort_;
-      accountIp_ = other.accountIp_;
-      eFKCMFIJGIJ_ = other.eFKCMFIJGIJ_;
-      accountUidErr1_ = other.accountUidErr1_;
       token_ = other.token_;
-      uid_ = other.uid_;
+      dNADIICFMEE_ = other.dNADIICFMEE_;
       platform_ = other.platform_;
+      accountIp_ = other.accountIp_;
       signType_ = other.signType_;
+      dJCNHCGFHKF_ = other.dJCNHCGFHKF_;
+      uid_ = other.uid_;
+      accountIpPort_ = other.accountIpPort_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -94,11 +94,8 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "account_uid" field.</summary>
-    public const int AccountUidFieldNumber = 2;
+    public const int AccountUidFieldNumber = 12;
     private string accountUid_ = "";
-    /// <summary>
-    /// token
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string AccountUid {
@@ -108,63 +105,9 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "account_ip_port" field.</summary>
-    public const int AccountIpPortFieldNumber = 3;
-    private uint accountIpPort_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint AccountIpPort {
-      get { return accountIpPort_; }
-      set {
-        accountIpPort_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "account_ip" field.</summary>
-    public const int AccountIpFieldNumber = 4;
-    private uint accountIp_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint AccountIp {
-      get { return accountIp_; }
-      set {
-        accountIp_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "EFKCMFIJGIJ" field.</summary>
-    public const int EFKCMFIJGIJFieldNumber = 5;
-    private uint eFKCMFIJGIJ_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint EFKCMFIJGIJ {
-      get { return eFKCMFIJGIJ_; }
-      set {
-        eFKCMFIJGIJ_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "account_uid_err1" field.</summary>
-    public const int AccountUidErr1FieldNumber = 6;
-    private string accountUidErr1_ = "";
-    /// <summary>
-    /// account_uid
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string AccountUidErr1 {
-      get { return accountUidErr1_; }
-      set {
-        accountUidErr1_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
     /// <summary>Field number for the "token" field.</summary>
-    public const int TokenFieldNumber = 7;
+    public const int TokenFieldNumber = 4;
     private string token_ = "";
-    /// <summary>
-    /// EFLAEANKACM
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Token {
@@ -174,20 +117,20 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "uid" field.</summary>
-    public const int UidFieldNumber = 8;
-    private uint uid_;
+    /// <summary>Field number for the "DNADIICFMEE" field.</summary>
+    public const int DNADIICFMEEFieldNumber = 8;
+    private string dNADIICFMEE_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Uid {
-      get { return uid_; }
+    public string DNADIICFMEE {
+      get { return dNADIICFMEE_; }
       set {
-        uid_ = value;
+        dNADIICFMEE_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
     /// <summary>Field number for the "platform" field.</summary>
-    public const int PlatformFieldNumber = 10;
+    public const int PlatformFieldNumber = 13;
     private uint platform_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -198,8 +141,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "account_ip" field.</summary>
+    public const int AccountIpFieldNumber = 1;
+    private uint accountIp_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint AccountIp {
+      get { return accountIp_; }
+      set {
+        accountIp_ = value;
+      }
+    }
+
     /// <summary>Field number for the "sign_type" field.</summary>
-    public const int SignTypeFieldNumber = 15;
+    public const int SignTypeFieldNumber = 7;
     private uint signType_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -207,6 +162,42 @@ namespace March7thHoney.Proto {
       get { return signType_; }
       set {
         signType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "DJCNHCGFHKF" field.</summary>
+    public const int DJCNHCGFHKFFieldNumber = 2;
+    private uint dJCNHCGFHKF_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint DJCNHCGFHKF {
+      get { return dJCNHCGFHKF_; }
+      set {
+        dJCNHCGFHKF_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "uid" field.</summary>
+    public const int UidFieldNumber = 3;
+    private uint uid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Uid {
+      get { return uid_; }
+      set {
+        uid_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "account_ip_port" field.</summary>
+    public const int AccountIpPortFieldNumber = 10;
+    private uint accountIpPort_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint AccountIpPort {
+      get { return accountIpPort_; }
+      set {
+        accountIpPort_ = value;
       }
     }
 
@@ -226,14 +217,14 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (AccountUid != other.AccountUid) return false;
-      if (AccountIpPort != other.AccountIpPort) return false;
-      if (AccountIp != other.AccountIp) return false;
-      if (EFKCMFIJGIJ != other.EFKCMFIJGIJ) return false;
-      if (AccountUidErr1 != other.AccountUidErr1) return false;
       if (Token != other.Token) return false;
-      if (Uid != other.Uid) return false;
+      if (DNADIICFMEE != other.DNADIICFMEE) return false;
       if (Platform != other.Platform) return false;
+      if (AccountIp != other.AccountIp) return false;
       if (SignType != other.SignType) return false;
+      if (DJCNHCGFHKF != other.DJCNHCGFHKF) return false;
+      if (Uid != other.Uid) return false;
+      if (AccountIpPort != other.AccountIpPort) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -242,14 +233,14 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (AccountUid.Length != 0) hash ^= AccountUid.GetHashCode();
-      if (AccountIpPort != 0) hash ^= AccountIpPort.GetHashCode();
-      if (AccountIp != 0) hash ^= AccountIp.GetHashCode();
-      if (EFKCMFIJGIJ != 0) hash ^= EFKCMFIJGIJ.GetHashCode();
-      if (AccountUidErr1.Length != 0) hash ^= AccountUidErr1.GetHashCode();
       if (Token.Length != 0) hash ^= Token.GetHashCode();
-      if (Uid != 0) hash ^= Uid.GetHashCode();
+      if (DNADIICFMEE.Length != 0) hash ^= DNADIICFMEE.GetHashCode();
       if (Platform != 0) hash ^= Platform.GetHashCode();
+      if (AccountIp != 0) hash ^= AccountIp.GetHashCode();
       if (SignType != 0) hash ^= SignType.GetHashCode();
+      if (DJCNHCGFHKF != 0) hash ^= DJCNHCGFHKF.GetHashCode();
+      if (Uid != 0) hash ^= Uid.GetHashCode();
+      if (AccountIpPort != 0) hash ^= AccountIpPort.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -268,41 +259,41 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (AccountUid.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(AccountUid);
-      }
-      if (AccountIpPort != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(AccountIpPort);
-      }
       if (AccountIp != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(8);
         output.WriteUInt32(AccountIp);
       }
-      if (EFKCMFIJGIJ != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(EFKCMFIJGIJ);
-      }
-      if (AccountUidErr1.Length != 0) {
-        output.WriteRawTag(50);
-        output.WriteString(AccountUidErr1);
-      }
-      if (Token.Length != 0) {
-        output.WriteRawTag(58);
-        output.WriteString(Token);
+      if (DJCNHCGFHKF != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(DJCNHCGFHKF);
       }
       if (Uid != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(24);
         output.WriteUInt32(Uid);
       }
-      if (Platform != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(Platform);
+      if (Token.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Token);
       }
       if (SignType != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(56);
         output.WriteUInt32(SignType);
+      }
+      if (DNADIICFMEE.Length != 0) {
+        output.WriteRawTag(66);
+        output.WriteString(DNADIICFMEE);
+      }
+      if (AccountIpPort != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(AccountIpPort);
+      }
+      if (AccountUid.Length != 0) {
+        output.WriteRawTag(98);
+        output.WriteString(AccountUid);
+      }
+      if (Platform != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(Platform);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -314,41 +305,41 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (AccountUid.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(AccountUid);
-      }
-      if (AccountIpPort != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(AccountIpPort);
-      }
       if (AccountIp != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(8);
         output.WriteUInt32(AccountIp);
       }
-      if (EFKCMFIJGIJ != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(EFKCMFIJGIJ);
-      }
-      if (AccountUidErr1.Length != 0) {
-        output.WriteRawTag(50);
-        output.WriteString(AccountUidErr1);
-      }
-      if (Token.Length != 0) {
-        output.WriteRawTag(58);
-        output.WriteString(Token);
+      if (DJCNHCGFHKF != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(DJCNHCGFHKF);
       }
       if (Uid != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(24);
         output.WriteUInt32(Uid);
       }
-      if (Platform != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(Platform);
+      if (Token.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Token);
       }
       if (SignType != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(56);
         output.WriteUInt32(SignType);
+      }
+      if (DNADIICFMEE.Length != 0) {
+        output.WriteRawTag(66);
+        output.WriteString(DNADIICFMEE);
+      }
+      if (AccountIpPort != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(AccountIpPort);
+      }
+      if (AccountUid.Length != 0) {
+        output.WriteRawTag(98);
+        output.WriteString(AccountUid);
+      }
+      if (Platform != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(Platform);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -363,29 +354,29 @@ namespace March7thHoney.Proto {
       if (AccountUid.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(AccountUid);
       }
-      if (AccountIpPort != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AccountIpPort);
-      }
-      if (AccountIp != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AccountIp);
-      }
-      if (EFKCMFIJGIJ != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EFKCMFIJGIJ);
-      }
-      if (AccountUidErr1.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(AccountUidErr1);
-      }
       if (Token.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Token);
       }
-      if (Uid != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Uid);
+      if (DNADIICFMEE.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(DNADIICFMEE);
       }
       if (Platform != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Platform);
       }
+      if (AccountIp != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AccountIp);
+      }
       if (SignType != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SignType);
+      }
+      if (DJCNHCGFHKF != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DJCNHCGFHKF);
+      }
+      if (Uid != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Uid);
+      }
+      if (AccountIpPort != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AccountIpPort);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -402,29 +393,29 @@ namespace March7thHoney.Proto {
       if (other.AccountUid.Length != 0) {
         AccountUid = other.AccountUid;
       }
-      if (other.AccountIpPort != 0) {
-        AccountIpPort = other.AccountIpPort;
-      }
-      if (other.AccountIp != 0) {
-        AccountIp = other.AccountIp;
-      }
-      if (other.EFKCMFIJGIJ != 0) {
-        EFKCMFIJGIJ = other.EFKCMFIJGIJ;
-      }
-      if (other.AccountUidErr1.Length != 0) {
-        AccountUidErr1 = other.AccountUidErr1;
-      }
       if (other.Token.Length != 0) {
         Token = other.Token;
       }
-      if (other.Uid != 0) {
-        Uid = other.Uid;
+      if (other.DNADIICFMEE.Length != 0) {
+        DNADIICFMEE = other.DNADIICFMEE;
       }
       if (other.Platform != 0) {
         Platform = other.Platform;
       }
+      if (other.AccountIp != 0) {
+        AccountIp = other.AccountIp;
+      }
       if (other.SignType != 0) {
         SignType = other.SignType;
+      }
+      if (other.DJCNHCGFHKF != 0) {
+        DJCNHCGFHKF = other.DJCNHCGFHKF;
+      }
+      if (other.Uid != 0) {
+        Uid = other.Uid;
+      }
+      if (other.AccountIpPort != 0) {
+        AccountIpPort = other.AccountIpPort;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -445,40 +436,40 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 18: {
-            AccountUid = input.ReadString();
-            break;
-          }
-          case 24: {
-            AccountIpPort = input.ReadUInt32();
-            break;
-          }
-          case 32: {
+          case 8: {
             AccountIp = input.ReadUInt32();
             break;
           }
-          case 40: {
-            EFKCMFIJGIJ = input.ReadUInt32();
+          case 16: {
+            DJCNHCGFHKF = input.ReadUInt32();
             break;
           }
-          case 50: {
-            AccountUidErr1 = input.ReadString();
-            break;
-          }
-          case 58: {
-            Token = input.ReadString();
-            break;
-          }
-          case 64: {
+          case 24: {
             Uid = input.ReadUInt32();
             break;
           }
-          case 80: {
-            Platform = input.ReadUInt32();
+          case 34: {
+            Token = input.ReadString();
             break;
           }
-          case 120: {
+          case 56: {
             SignType = input.ReadUInt32();
+            break;
+          }
+          case 66: {
+            DNADIICFMEE = input.ReadString();
+            break;
+          }
+          case 80: {
+            AccountIpPort = input.ReadUInt32();
+            break;
+          }
+          case 98: {
+            AccountUid = input.ReadString();
+            break;
+          }
+          case 104: {
+            Platform = input.ReadUInt32();
             break;
           }
         }
@@ -500,40 +491,40 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 18: {
-            AccountUid = input.ReadString();
-            break;
-          }
-          case 24: {
-            AccountIpPort = input.ReadUInt32();
-            break;
-          }
-          case 32: {
+          case 8: {
             AccountIp = input.ReadUInt32();
             break;
           }
-          case 40: {
-            EFKCMFIJGIJ = input.ReadUInt32();
+          case 16: {
+            DJCNHCGFHKF = input.ReadUInt32();
             break;
           }
-          case 50: {
-            AccountUidErr1 = input.ReadString();
-            break;
-          }
-          case 58: {
-            Token = input.ReadString();
-            break;
-          }
-          case 64: {
+          case 24: {
             Uid = input.ReadUInt32();
             break;
           }
-          case 80: {
-            Platform = input.ReadUInt32();
+          case 34: {
+            Token = input.ReadString();
             break;
           }
-          case 120: {
+          case 56: {
             SignType = input.ReadUInt32();
+            break;
+          }
+          case 66: {
+            DNADIICFMEE = input.ReadString();
+            break;
+          }
+          case 80: {
+            AccountIpPort = input.ReadUInt32();
+            break;
+          }
+          case 98: {
+            AccountUid = input.ReadString();
+            break;
+          }
+          case 104: {
+            Platform = input.ReadUInt32();
             break;
           }
         }

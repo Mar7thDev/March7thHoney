@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum FKNGOGLNKIG {
+    FKNGOGLNKIG_NLCDGIPGFDJ = 0;
+    FKNGOGLNKIG_EHNIPLNEEDI = 1;
+    FKNGOGLNKIG_PMKMEAAGKAP = 2;
+    FKNGOGLNKIG_MNBAGHPEFBC = 3;
+}

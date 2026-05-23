@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message JIBBEEAIDIC {
+    repeated uint32 OPAEGCBNACJ = 11;
+    uint32 OGGEKFLBGLB = 2;
+    uint32 EGDEKFJJNEP = 13;
+    bool DCLPLNFINDL = 14;
+    uint32 JPPAGGPJOMO = 8;
+}

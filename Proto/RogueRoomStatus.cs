@@ -25,10 +25,10 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChVSb2d1ZVJvb21TdGF0dXMucHJvdG8qogEKD1JvZ3VlUm9vbVN0YXR1cxIb",
-            "ChdMSUJER01NT0lMSV9QQ1BESEVMUEtFTRAAEhsKF0xJQkRHTU1PSUxJX0RL",
-            "TFBBQUZGTEVFEAESGwoXTElCREdNTU9JTElfTkdNTUlDT0dERlAQAhIbChdM",
-            "SUJER01NT0lMSV9MQUVJRENQS0xDRBADEhsKF0xJQkRHTU1PSUxJX0tMSERD",
-            "T1BQTE5HEARCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ChdLRk5JRk9KUEZDQl9OTENER0lQR0ZEShAAEhsKF0tGTklGT0pQRkNCX0dB",
+            "SkdCQkZFTEVMEAESGwoXS0ZOSUZPSlBGQ0JfQkZBREZBRUxLTEoQAhIbChdL",
+            "Rk5JRk9KUEZDQl9KREFHRkhFUE1IRhADEhsKF0tGTklGT0pQRkNCX0NJSEZH",
+            "SkRDSElBEARCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.RogueRoomStatus), }, null, null));
@@ -38,11 +38,11 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum RogueRoomStatus {
-    [pbr::OriginalName("LIBDGMMOILI_PCPDHELPKEM")] LibdgmmoiliPcpdhelpkem = 0,
-    [pbr::OriginalName("LIBDGMMOILI_DKLPAAFFLEE")] LibdgmmoiliDklpaafflee = 1,
-    [pbr::OriginalName("LIBDGMMOILI_NGMMICOGDFP")] LibdgmmoiliNgmmicogdfp = 2,
-    [pbr::OriginalName("LIBDGMMOILI_LAEIDCPKLCD")] LibdgmmoiliLaeidcpklcd = 3,
-    [pbr::OriginalName("LIBDGMMOILI_KLHDCOPPLNG")] LibdgmmoiliKlhdcopplng = 4,
+    [pbr::OriginalName("KFNIFOJPFCB_NLCDGIPGFDJ")] KfnifojpfcbNlcdgipgfdj = 0,
+    [pbr::OriginalName("KFNIFOJPFCB_GAJGBBFELEL")] KfnifojpfcbGajgbbfelel = 1,
+    [pbr::OriginalName("KFNIFOJPFCB_BFADFAELKLJ")] KfnifojpfcbBfadfaelklj = 2,
+    [pbr::OriginalName("KFNIFOJPFCB_JDAGFHEPMHF")] KfnifojpfcbJdagfhepmhf = 3,
+    [pbr::OriginalName("KFNIFOJPFCB_CIHFGJDCHIA")] KfnifojpfcbCihfgjdchia = 4,
   }
 
   #endregion

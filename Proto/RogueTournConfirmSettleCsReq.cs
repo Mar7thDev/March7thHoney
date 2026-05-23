@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiJSb2d1ZVRvdXJuQ29uZmlybVNldHRsZUNzUmVxLnByb3RvIlIKHFJvZ3Vl",
-            "VG91cm5Db25maXJtU2V0dGxlQ3NSZXESDwoHYXJlYV9pZBgEIAEoDRIMCgRu",
-            "YW1lGAcgASgJEhMKC0tLR0lFRU5DT0lDGA0gASgNQhaqAhNNYXJjaDd0aEhv",
+            "VG91cm5Db25maXJtU2V0dGxlQ3NSZXESDAoEbmFtZRgEIAEoCRITCgtOUEhB",
+            "SkVLQ0JLRhgCIAEoDRIPCgdhcmVhX2lkGAwgASgNQhaqAhNNYXJjaDd0aEhv",
             "bmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RogueTournConfirmSettleCsReq), global::March7thHoney.Proto.RogueTournConfirmSettleCsReq.Parser, new[]{ "AreaId", "Name", "KKGIEENCOIC" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RogueTournConfirmSettleCsReq), global::March7thHoney.Proto.RogueTournConfirmSettleCsReq.Parser, new[]{ "Name", "NPHAJEKCBKF", "AreaId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,9 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RogueTournConfirmSettleCsReq(RogueTournConfirmSettleCsReq other) : this() {
-      areaId_ = other.areaId_;
       name_ = other.name_;
-      kKGIEENCOIC_ = other.kKGIEENCOIC_;
+      nPHAJEKCBKF_ = other.nPHAJEKCBKF_;
+      areaId_ = other.areaId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,20 +85,8 @@ namespace March7thHoney.Proto {
       return new RogueTournConfirmSettleCsReq(this);
     }
 
-    /// <summary>Field number for the "area_id" field.</summary>
-    public const int AreaIdFieldNumber = 4;
-    private uint areaId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint AreaId {
-      get { return areaId_; }
-      set {
-        areaId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 7;
+    public const int NameFieldNumber = 4;
     private string name_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -109,15 +97,27 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "KKGIEENCOIC" field.</summary>
-    public const int KKGIEENCOICFieldNumber = 13;
-    private uint kKGIEENCOIC_;
+    /// <summary>Field number for the "NPHAJEKCBKF" field.</summary>
+    public const int NPHAJEKCBKFFieldNumber = 2;
+    private uint nPHAJEKCBKF_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint KKGIEENCOIC {
-      get { return kKGIEENCOIC_; }
+    public uint NPHAJEKCBKF {
+      get { return nPHAJEKCBKF_; }
       set {
-        kKGIEENCOIC_ = value;
+        nPHAJEKCBKF_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "area_id" field.</summary>
+    public const int AreaIdFieldNumber = 12;
+    private uint areaId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint AreaId {
+      get { return areaId_; }
+      set {
+        areaId_ = value;
       }
     }
 
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (AreaId != other.AreaId) return false;
       if (Name != other.Name) return false;
-      if (KKGIEENCOIC != other.KKGIEENCOIC) return false;
+      if (NPHAJEKCBKF != other.NPHAJEKCBKF) return false;
+      if (AreaId != other.AreaId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -146,9 +146,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (AreaId != 0) hash ^= AreaId.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
-      if (KKGIEENCOIC != 0) hash ^= KKGIEENCOIC.GetHashCode();
+      if (NPHAJEKCBKF != 0) hash ^= NPHAJEKCBKF.GetHashCode();
+      if (AreaId != 0) hash ^= AreaId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -167,17 +167,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (AreaId != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(AreaId);
+      if (NPHAJEKCBKF != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(NPHAJEKCBKF);
       }
       if (Name.Length != 0) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(34);
         output.WriteString(Name);
       }
-      if (KKGIEENCOIC != 0) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(KKGIEENCOIC);
+      if (AreaId != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(AreaId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -189,17 +189,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (AreaId != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(AreaId);
+      if (NPHAJEKCBKF != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(NPHAJEKCBKF);
       }
       if (Name.Length != 0) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(34);
         output.WriteString(Name);
       }
-      if (KKGIEENCOIC != 0) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(KKGIEENCOIC);
+      if (AreaId != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(AreaId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -211,14 +211,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (AreaId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AreaId);
-      }
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
       }
-      if (KKGIEENCOIC != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(KKGIEENCOIC);
+      if (NPHAJEKCBKF != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(NPHAJEKCBKF);
+      }
+      if (AreaId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AreaId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -232,14 +232,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.AreaId != 0) {
-        AreaId = other.AreaId;
-      }
       if (other.Name.Length != 0) {
         Name = other.Name;
       }
-      if (other.KKGIEENCOIC != 0) {
-        KKGIEENCOIC = other.KKGIEENCOIC;
+      if (other.NPHAJEKCBKF != 0) {
+        NPHAJEKCBKF = other.NPHAJEKCBKF;
+      }
+      if (other.AreaId != 0) {
+        AreaId = other.AreaId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -260,16 +260,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
-            AreaId = input.ReadUInt32();
+          case 16: {
+            NPHAJEKCBKF = input.ReadUInt32();
             break;
           }
-          case 58: {
+          case 34: {
             Name = input.ReadString();
             break;
           }
-          case 104: {
-            KKGIEENCOIC = input.ReadUInt32();
+          case 96: {
+            AreaId = input.ReadUInt32();
             break;
           }
         }
@@ -291,16 +291,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
-            AreaId = input.ReadUInt32();
+          case 16: {
+            NPHAJEKCBKF = input.ReadUInt32();
             break;
           }
-          case 58: {
+          case 34: {
             Name = input.ReadString();
             break;
           }
-          case 104: {
-            KKGIEENCOIC = input.ReadUInt32();
+          case 96: {
+            AreaId = input.ReadUInt32();
             break;
           }
         }

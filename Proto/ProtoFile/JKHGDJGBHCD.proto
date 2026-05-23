@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "FNIDNGOGAFF.proto";
+import "HDDBFAIFCGK.proto";
+import "KJAMNAOLOLL.proto";
+import "LGGGHFDBCFN.proto";
+import "PBLBAAMLNLH.proto";
+
+message JKHGDJGBHCD {
+    repeated uint32 KBMHPOBLMKH = 6;
+    repeated uint32 BEBLBBEEIGH = 8;
+    repeated PBLBAAMLNLH JLADELFEHNO = 13;
+    repeated KJAMNAOLOLL LFEGDDMBLEE = 1;
+    repeated FNIDNGOGAFF LBBGCNIJMJC = 10;
+    repeated LGGGHFDBCFN JEFNJEJFPGK = 12;
+    repeated HDDBFAIFCGK IDMHGCAIBNK = 15;
+    repeated uint32 BIGCHMJEPKE = 3;
+    uint32 retcode = 9;
+    uint32 JDGKFGONCJI = 2;
+    bool HIHOBEPGLEJ = 4;
+}

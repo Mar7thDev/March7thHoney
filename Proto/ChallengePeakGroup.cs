@@ -25,19 +25,19 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChhDaGFsbGVuZ2VQZWFrR3JvdXAucHJvdG8aE0NoYWxsZW5nZVBlYWsucHJv",
-            "dG8aF0NoYWxsZW5nZVBlYWtCb3NzLnByb3RvGhFGQ1BFS0tFRUtGSS5wcm90",
+            "dG8aF0NoYWxsZW5nZVBlYWtCb3NzLnByb3RvGhFKRkJGRklBT1BDQy5wcm90",
             "bxoVV2FpdENvbmZpcm1EYXRhLnByb3RvIqgCChJDaGFsbGVuZ2VQZWFrR3Jv",
-            "dXASFQoNcGVha19ncm91cF9pZBgCIAEoDRIWCg5jb3VudF9vZl9wZWFrcxgD",
-            "IAEoDRIrChF3YWl0X2NvbmZpcm1fZGF0YRgEIAEoCzIQLldhaXRDb25maXJt",
-            "RGF0YRIlCglwZWFrX2Jvc3MYBSABKAsyEi5DaGFsbGVuZ2VQZWFrQm9zcxId",
-            "CgVwZWFrcxgGIAMoCzIOLkNoYWxsZW5nZVBlYWsSGQoRZGlzYWJsZV9oYXJk",
-            "X21vZGUYCiABKAgSIQoLUExKTFBPSEpIRUUYCyABKAsyDC5GQ1BFS0tFRUtG",
-            "SRIaChJ0YWtlbl9zdGFyX3Jld2FyZHMYDSADKA0SFgoOb2J0YWluZWRfc3Rh",
-            "cnMYDiABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "dXASJQoJcGVha19ib3NzGAIgASgLMhIuQ2hhbGxlbmdlUGVha0Jvc3MSIQoL",
+            "UEFQRENDS1BFUEsYAyABKAsyDC5KRkJGRklBT1BDQxIrChF3YWl0X2NvbmZp",
+            "cm1fZGF0YRgOIAEoCzIQLldhaXRDb25maXJtRGF0YRIaChJ0YWtlbl9zdGFy",
+            "X3Jld2FyZHMYByADKA0SHQoFcGVha3MYBSADKAsyDi5DaGFsbGVuZ2VQZWFr",
+            "EhUKDXBlYWtfZ3JvdXBfaWQYDCABKA0SFgoOY291bnRfb2ZfcGVha3MYCSAB",
+            "KA0SGQoRZGlzYWJsZV9oYXJkX21vZGUYDSABKAgSFgoOb2J0YWluZWRfc3Rh",
+            "cnMYBCABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChallengePeakReflection.Descriptor, global::March7thHoney.Proto.ChallengePeakBossReflection.Descriptor, global::March7thHoney.Proto.FCPEKKEEKFIReflection.Descriptor, global::March7thHoney.Proto.WaitConfirmDataReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChallengePeakReflection.Descriptor, global::March7thHoney.Proto.ChallengePeakBossReflection.Descriptor, global::March7thHoney.Proto.JFBFFIAOPCCReflection.Descriptor, global::March7thHoney.Proto.WaitConfirmDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakGroup), global::March7thHoney.Proto.ChallengePeakGroup.Parser, new[]{ "PeakGroupId", "CountOfPeaks", "WaitConfirmData", "PeakBoss", "Peaks", "DisableHardMode", "PLJLPOHJHEE", "TakenStarRewards", "ObtainedStars" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakGroup), global::March7thHoney.Proto.ChallengePeakGroup.Parser, new[]{ "PeakBoss", "PAPDCCKPEPK", "WaitConfirmData", "TakenStarRewards", "Peaks", "PeakGroupId", "CountOfPeaks", "DisableHardMode", "ObtainedStars" }, null, null, null, null)
           }));
     }
     #endregion
@@ -79,14 +79,14 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ChallengePeakGroup(ChallengePeakGroup other) : this() {
+      peakBoss_ = other.peakBoss_ != null ? other.peakBoss_.Clone() : null;
+      pAPDCCKPEPK_ = other.pAPDCCKPEPK_ != null ? other.pAPDCCKPEPK_.Clone() : null;
+      waitConfirmData_ = other.waitConfirmData_ != null ? other.waitConfirmData_.Clone() : null;
+      takenStarRewards_ = other.takenStarRewards_.Clone();
+      peaks_ = other.peaks_.Clone();
       peakGroupId_ = other.peakGroupId_;
       countOfPeaks_ = other.countOfPeaks_;
-      waitConfirmData_ = other.waitConfirmData_ != null ? other.waitConfirmData_.Clone() : null;
-      peakBoss_ = other.peakBoss_ != null ? other.peakBoss_.Clone() : null;
-      peaks_ = other.peaks_.Clone();
       disableHardMode_ = other.disableHardMode_;
-      pLJLPOHJHEE_ = other.pLJLPOHJHEE_ != null ? other.pLJLPOHJHEE_.Clone() : null;
-      takenStarRewards_ = other.takenStarRewards_.Clone();
       obtainedStars_ = other.obtainedStars_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -97,8 +97,66 @@ namespace March7thHoney.Proto {
       return new ChallengePeakGroup(this);
     }
 
+    /// <summary>Field number for the "peak_boss" field.</summary>
+    public const int PeakBossFieldNumber = 2;
+    private global::March7thHoney.Proto.ChallengePeakBoss peakBoss_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.ChallengePeakBoss PeakBoss {
+      get { return peakBoss_; }
+      set {
+        peakBoss_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "PAPDCCKPEPK" field.</summary>
+    public const int PAPDCCKPEPKFieldNumber = 3;
+    private global::March7thHoney.Proto.JFBFFIAOPCC pAPDCCKPEPK_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.JFBFFIAOPCC PAPDCCKPEPK {
+      get { return pAPDCCKPEPK_; }
+      set {
+        pAPDCCKPEPK_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "wait_confirm_data" field.</summary>
+    public const int WaitConfirmDataFieldNumber = 14;
+    private global::March7thHoney.Proto.WaitConfirmData waitConfirmData_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.WaitConfirmData WaitConfirmData {
+      get { return waitConfirmData_; }
+      set {
+        waitConfirmData_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "taken_star_rewards" field.</summary>
+    public const int TakenStarRewardsFieldNumber = 7;
+    private static readonly pb::FieldCodec<uint> _repeated_takenStarRewards_codec
+        = pb::FieldCodec.ForUInt32(58);
+    private readonly pbc::RepeatedField<uint> takenStarRewards_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> TakenStarRewards {
+      get { return takenStarRewards_; }
+    }
+
+    /// <summary>Field number for the "peaks" field.</summary>
+    public const int PeaksFieldNumber = 5;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChallengePeak> _repeated_peaks_codec
+        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.ChallengePeak.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeak> peaks_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeak>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeak> Peaks {
+      get { return peaks_; }
+    }
+
     /// <summary>Field number for the "peak_group_id" field.</summary>
-    public const int PeakGroupIdFieldNumber = 2;
+    public const int PeakGroupIdFieldNumber = 12;
     private uint peakGroupId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,7 +168,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "count_of_peaks" field.</summary>
-    public const int CountOfPeaksFieldNumber = 3;
+    public const int CountOfPeaksFieldNumber = 9;
     private uint countOfPeaks_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -121,43 +179,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "wait_confirm_data" field.</summary>
-    public const int WaitConfirmDataFieldNumber = 4;
-    private global::March7thHoney.Proto.WaitConfirmData waitConfirmData_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.WaitConfirmData WaitConfirmData {
-      get { return waitConfirmData_; }
-      set {
-        waitConfirmData_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "peak_boss" field.</summary>
-    public const int PeakBossFieldNumber = 5;
-    private global::March7thHoney.Proto.ChallengePeakBoss peakBoss_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.ChallengePeakBoss PeakBoss {
-      get { return peakBoss_; }
-      set {
-        peakBoss_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "peaks" field.</summary>
-    public const int PeaksFieldNumber = 6;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChallengePeak> _repeated_peaks_codec
-        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.ChallengePeak.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeak> peaks_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeak>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeak> Peaks {
-      get { return peaks_; }
-    }
-
     /// <summary>Field number for the "disable_hard_mode" field.</summary>
-    public const int DisableHardModeFieldNumber = 10;
+    public const int DisableHardModeFieldNumber = 13;
     private bool disableHardMode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -168,31 +191,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "PLJLPOHJHEE" field.</summary>
-    public const int PLJLPOHJHEEFieldNumber = 11;
-    private global::March7thHoney.Proto.FCPEKKEEKFI pLJLPOHJHEE_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.FCPEKKEEKFI PLJLPOHJHEE {
-      get { return pLJLPOHJHEE_; }
-      set {
-        pLJLPOHJHEE_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "taken_star_rewards" field.</summary>
-    public const int TakenStarRewardsFieldNumber = 13;
-    private static readonly pb::FieldCodec<uint> _repeated_takenStarRewards_codec
-        = pb::FieldCodec.ForUInt32(106);
-    private readonly pbc::RepeatedField<uint> takenStarRewards_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> TakenStarRewards {
-      get { return takenStarRewards_; }
-    }
-
     /// <summary>Field number for the "obtained_stars" field.</summary>
-    public const int ObtainedStarsFieldNumber = 14;
+    public const int ObtainedStarsFieldNumber = 4;
     private uint obtainedStars_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -218,14 +218,14 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (!object.Equals(PeakBoss, other.PeakBoss)) return false;
+      if (!object.Equals(PAPDCCKPEPK, other.PAPDCCKPEPK)) return false;
+      if (!object.Equals(WaitConfirmData, other.WaitConfirmData)) return false;
+      if(!takenStarRewards_.Equals(other.takenStarRewards_)) return false;
+      if(!peaks_.Equals(other.peaks_)) return false;
       if (PeakGroupId != other.PeakGroupId) return false;
       if (CountOfPeaks != other.CountOfPeaks) return false;
-      if (!object.Equals(WaitConfirmData, other.WaitConfirmData)) return false;
-      if (!object.Equals(PeakBoss, other.PeakBoss)) return false;
-      if(!peaks_.Equals(other.peaks_)) return false;
       if (DisableHardMode != other.DisableHardMode) return false;
-      if (!object.Equals(PLJLPOHJHEE, other.PLJLPOHJHEE)) return false;
-      if(!takenStarRewards_.Equals(other.takenStarRewards_)) return false;
       if (ObtainedStars != other.ObtainedStars) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -234,14 +234,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (peakBoss_ != null) hash ^= PeakBoss.GetHashCode();
+      if (pAPDCCKPEPK_ != null) hash ^= PAPDCCKPEPK.GetHashCode();
+      if (waitConfirmData_ != null) hash ^= WaitConfirmData.GetHashCode();
+      hash ^= takenStarRewards_.GetHashCode();
+      hash ^= peaks_.GetHashCode();
       if (PeakGroupId != 0) hash ^= PeakGroupId.GetHashCode();
       if (CountOfPeaks != 0) hash ^= CountOfPeaks.GetHashCode();
-      if (waitConfirmData_ != null) hash ^= WaitConfirmData.GetHashCode();
-      if (peakBoss_ != null) hash ^= PeakBoss.GetHashCode();
-      hash ^= peaks_.GetHashCode();
       if (DisableHardMode != false) hash ^= DisableHardMode.GetHashCode();
-      if (pLJLPOHJHEE_ != null) hash ^= PLJLPOHJHEE.GetHashCode();
-      hash ^= takenStarRewards_.GetHashCode();
       if (ObtainedStars != 0) hash ^= ObtainedStars.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -261,35 +261,35 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (PeakGroupId != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(PeakGroupId);
-      }
-      if (CountOfPeaks != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(CountOfPeaks);
-      }
-      if (waitConfirmData_ != null) {
-        output.WriteRawTag(34);
-        output.WriteMessage(WaitConfirmData);
-      }
       if (peakBoss_ != null) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(18);
         output.WriteMessage(PeakBoss);
       }
+      if (pAPDCCKPEPK_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(PAPDCCKPEPK);
+      }
+      if (ObtainedStars != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(ObtainedStars);
+      }
       peaks_.WriteTo(output, _repeated_peaks_codec);
+      takenStarRewards_.WriteTo(output, _repeated_takenStarRewards_codec);
+      if (CountOfPeaks != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(CountOfPeaks);
+      }
+      if (PeakGroupId != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(PeakGroupId);
+      }
       if (DisableHardMode != false) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(104);
         output.WriteBool(DisableHardMode);
       }
-      if (pLJLPOHJHEE_ != null) {
-        output.WriteRawTag(90);
-        output.WriteMessage(PLJLPOHJHEE);
-      }
-      takenStarRewards_.WriteTo(output, _repeated_takenStarRewards_codec);
-      if (ObtainedStars != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(ObtainedStars);
+      if (waitConfirmData_ != null) {
+        output.WriteRawTag(114);
+        output.WriteMessage(WaitConfirmData);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -301,35 +301,35 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (PeakGroupId != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(PeakGroupId);
-      }
-      if (CountOfPeaks != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(CountOfPeaks);
-      }
-      if (waitConfirmData_ != null) {
-        output.WriteRawTag(34);
-        output.WriteMessage(WaitConfirmData);
-      }
       if (peakBoss_ != null) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(18);
         output.WriteMessage(PeakBoss);
       }
+      if (pAPDCCKPEPK_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(PAPDCCKPEPK);
+      }
+      if (ObtainedStars != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(ObtainedStars);
+      }
       peaks_.WriteTo(ref output, _repeated_peaks_codec);
+      takenStarRewards_.WriteTo(ref output, _repeated_takenStarRewards_codec);
+      if (CountOfPeaks != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(CountOfPeaks);
+      }
+      if (PeakGroupId != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(PeakGroupId);
+      }
       if (DisableHardMode != false) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(104);
         output.WriteBool(DisableHardMode);
       }
-      if (pLJLPOHJHEE_ != null) {
-        output.WriteRawTag(90);
-        output.WriteMessage(PLJLPOHJHEE);
-      }
-      takenStarRewards_.WriteTo(ref output, _repeated_takenStarRewards_codec);
-      if (ObtainedStars != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(ObtainedStars);
+      if (waitConfirmData_ != null) {
+        output.WriteRawTag(114);
+        output.WriteMessage(WaitConfirmData);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -341,26 +341,26 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (peakBoss_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(PeakBoss);
+      }
+      if (pAPDCCKPEPK_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(PAPDCCKPEPK);
+      }
+      if (waitConfirmData_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(WaitConfirmData);
+      }
+      size += takenStarRewards_.CalculateSize(_repeated_takenStarRewards_codec);
+      size += peaks_.CalculateSize(_repeated_peaks_codec);
       if (PeakGroupId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PeakGroupId);
       }
       if (CountOfPeaks != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CountOfPeaks);
       }
-      if (waitConfirmData_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(WaitConfirmData);
-      }
-      if (peakBoss_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(PeakBoss);
-      }
-      size += peaks_.CalculateSize(_repeated_peaks_codec);
       if (DisableHardMode != false) {
         size += 1 + 1;
       }
-      if (pLJLPOHJHEE_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(PLJLPOHJHEE);
-      }
-      size += takenStarRewards_.CalculateSize(_repeated_takenStarRewards_codec);
       if (ObtainedStars != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ObtainedStars);
       }
@@ -376,11 +376,17 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.PeakGroupId != 0) {
-        PeakGroupId = other.PeakGroupId;
+      if (other.peakBoss_ != null) {
+        if (peakBoss_ == null) {
+          PeakBoss = new global::March7thHoney.Proto.ChallengePeakBoss();
+        }
+        PeakBoss.MergeFrom(other.PeakBoss);
       }
-      if (other.CountOfPeaks != 0) {
-        CountOfPeaks = other.CountOfPeaks;
+      if (other.pAPDCCKPEPK_ != null) {
+        if (pAPDCCKPEPK_ == null) {
+          PAPDCCKPEPK = new global::March7thHoney.Proto.JFBFFIAOPCC();
+        }
+        PAPDCCKPEPK.MergeFrom(other.PAPDCCKPEPK);
       }
       if (other.waitConfirmData_ != null) {
         if (waitConfirmData_ == null) {
@@ -388,23 +394,17 @@ namespace March7thHoney.Proto {
         }
         WaitConfirmData.MergeFrom(other.WaitConfirmData);
       }
-      if (other.peakBoss_ != null) {
-        if (peakBoss_ == null) {
-          PeakBoss = new global::March7thHoney.Proto.ChallengePeakBoss();
-        }
-        PeakBoss.MergeFrom(other.PeakBoss);
-      }
+      takenStarRewards_.Add(other.takenStarRewards_);
       peaks_.Add(other.peaks_);
+      if (other.PeakGroupId != 0) {
+        PeakGroupId = other.PeakGroupId;
+      }
+      if (other.CountOfPeaks != 0) {
+        CountOfPeaks = other.CountOfPeaks;
+      }
       if (other.DisableHardMode != false) {
         DisableHardMode = other.DisableHardMode;
       }
-      if (other.pLJLPOHJHEE_ != null) {
-        if (pLJLPOHJHEE_ == null) {
-          PLJLPOHJHEE = new global::March7thHoney.Proto.FCPEKKEEKFI();
-        }
-        PLJLPOHJHEE.MergeFrom(other.PLJLPOHJHEE);
-      }
-      takenStarRewards_.Add(other.takenStarRewards_);
       if (other.ObtainedStars != 0) {
         ObtainedStars = other.ObtainedStars;
       }
@@ -427,50 +427,50 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            PeakGroupId = input.ReadUInt32();
-            break;
-          }
-          case 24: {
-            CountOfPeaks = input.ReadUInt32();
-            break;
-          }
-          case 34: {
-            if (waitConfirmData_ == null) {
-              WaitConfirmData = new global::March7thHoney.Proto.WaitConfirmData();
-            }
-            input.ReadMessage(WaitConfirmData);
-            break;
-          }
-          case 42: {
+          case 18: {
             if (peakBoss_ == null) {
               PeakBoss = new global::March7thHoney.Proto.ChallengePeakBoss();
             }
             input.ReadMessage(PeakBoss);
             break;
           }
-          case 50: {
+          case 26: {
+            if (pAPDCCKPEPK_ == null) {
+              PAPDCCKPEPK = new global::March7thHoney.Proto.JFBFFIAOPCC();
+            }
+            input.ReadMessage(PAPDCCKPEPK);
+            break;
+          }
+          case 32: {
+            ObtainedStars = input.ReadUInt32();
+            break;
+          }
+          case 42: {
             peaks_.AddEntriesFrom(input, _repeated_peaks_codec);
             break;
           }
-          case 80: {
-            DisableHardMode = input.ReadBool();
-            break;
-          }
-          case 90: {
-            if (pLJLPOHJHEE_ == null) {
-              PLJLPOHJHEE = new global::March7thHoney.Proto.FCPEKKEEKFI();
-            }
-            input.ReadMessage(PLJLPOHJHEE);
-            break;
-          }
-          case 106:
-          case 104: {
+          case 58:
+          case 56: {
             takenStarRewards_.AddEntriesFrom(input, _repeated_takenStarRewards_codec);
             break;
           }
-          case 112: {
-            ObtainedStars = input.ReadUInt32();
+          case 72: {
+            CountOfPeaks = input.ReadUInt32();
+            break;
+          }
+          case 96: {
+            PeakGroupId = input.ReadUInt32();
+            break;
+          }
+          case 104: {
+            DisableHardMode = input.ReadBool();
+            break;
+          }
+          case 114: {
+            if (waitConfirmData_ == null) {
+              WaitConfirmData = new global::March7thHoney.Proto.WaitConfirmData();
+            }
+            input.ReadMessage(WaitConfirmData);
             break;
           }
         }
@@ -492,50 +492,50 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            PeakGroupId = input.ReadUInt32();
-            break;
-          }
-          case 24: {
-            CountOfPeaks = input.ReadUInt32();
-            break;
-          }
-          case 34: {
-            if (waitConfirmData_ == null) {
-              WaitConfirmData = new global::March7thHoney.Proto.WaitConfirmData();
-            }
-            input.ReadMessage(WaitConfirmData);
-            break;
-          }
-          case 42: {
+          case 18: {
             if (peakBoss_ == null) {
               PeakBoss = new global::March7thHoney.Proto.ChallengePeakBoss();
             }
             input.ReadMessage(PeakBoss);
             break;
           }
-          case 50: {
+          case 26: {
+            if (pAPDCCKPEPK_ == null) {
+              PAPDCCKPEPK = new global::March7thHoney.Proto.JFBFFIAOPCC();
+            }
+            input.ReadMessage(PAPDCCKPEPK);
+            break;
+          }
+          case 32: {
+            ObtainedStars = input.ReadUInt32();
+            break;
+          }
+          case 42: {
             peaks_.AddEntriesFrom(ref input, _repeated_peaks_codec);
             break;
           }
-          case 80: {
-            DisableHardMode = input.ReadBool();
-            break;
-          }
-          case 90: {
-            if (pLJLPOHJHEE_ == null) {
-              PLJLPOHJHEE = new global::March7thHoney.Proto.FCPEKKEEKFI();
-            }
-            input.ReadMessage(PLJLPOHJHEE);
-            break;
-          }
-          case 106:
-          case 104: {
+          case 58:
+          case 56: {
             takenStarRewards_.AddEntriesFrom(ref input, _repeated_takenStarRewards_codec);
             break;
           }
-          case 112: {
-            ObtainedStars = input.ReadUInt32();
+          case 72: {
+            CountOfPeaks = input.ReadUInt32();
+            break;
+          }
+          case 96: {
+            PeakGroupId = input.ReadUInt32();
+            break;
+          }
+          case 104: {
+            DisableHardMode = input.ReadBool();
+            break;
+          }
+          case 114: {
+            if (waitConfirmData_ == null) {
+              WaitConfirmData = new global::March7thHoney.Proto.WaitConfirmData();
+            }
+            input.ReadMessage(WaitConfirmData);
             break;
           }
         }

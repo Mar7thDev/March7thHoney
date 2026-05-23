@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "KPBGMOCCMLA.proto";
+import "PPONNIHFJAP.proto";
 
 message TreasureDungeonDataScNotify {
-    KPBGMOCCMLA IKHJLMAKNCD = 13;
+    PPONNIHFJAP IMHNGDFGJJA = 2;
 }

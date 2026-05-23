@@ -25,24 +25,24 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChZQbGF5ZXJTaW1wbGVJbmZvLnByb3RvGhZBc3Npc3RTaW1wbGVJbmZvLnBy",
-            "b3RvGhhGcmllbmRPbmxpbmVTdGF0dXMucHJvdG8aE0hlYWRGcmFtZUluZm8u",
-            "cHJvdG8aElBsYXRmb3JtVHlwZS5wcm90bxoWUGxheWVyT3V0Zml0SW5mby5w",
-            "cm90byLaAwoQUGxheWVyU2ltcGxlSW5mbxIQCghuaWNrbmFtZRgBIAEoCRIR",
-            "CglzaWduYXR1cmUYAiABKAkSFQoNcGxhdGZvcm1fdXVpZBgDIAEoCRItChJw",
-            "bGF5ZXJfb3V0Zml0X2RhdGEYBCABKAsyES5QbGF5ZXJPdXRmaXRJbmZvEgsK",
-            "A3VpZBgFIAEoDRIVCg1wbGF0Zm9ybV9uaWNrGAYgASgJEh8KCHBsYXRmb3Jt",
-            "GAcgASgOMg0uUGxhdGZvcm1UeXBlEhUKDXBlcnNvbmFsX2NhcmQYCCABKA0S",
-            "GAoQbGFzdF9hY3RpdmVfdGltZRgJIAEoAxIqCg1vbmxpbmVfc3RhdHVzGAog",
-            "ASgOMhMuRnJpZW5kT25saW5lU3RhdHVzEhYKDmNoYXRfYnViYmxlX2lkGAsg",
-            "ASgNEhEKCWhlYWRfaWNvbhgMIAEoDRIRCglpc19iYW5uZWQYDSABKAgSDQoF",
-            "bGV2ZWwYDiABKA0SMgoXYXNzaXN0X3NpbXBsZV9pbmZvX2xpc3QYDyADKAsy",
-            "ES5Bc3Npc3RTaW1wbGVJbmZvEicKD2hlYWRfZnJhbWVfaW5mbxhpIAEoCzIO",
-            "LkhlYWRGcmFtZUluZm8SDwoGZ2VuZGVyGPsKIAEoDUIWqgITTWFyY2g3dGhI",
-            "b25leS5Qcm90b2IGcHJvdG8z"));
+            "b3RvGhFDSkxDUE1ER0lCTy5wcm90bxoYRnJpZW5kT25saW5lU3RhdHVzLnBy",
+            "b3RvGhNIZWFkRnJhbWVJbmZvLnByb3RvGhJQbGF0Zm9ybVR5cGUucHJvdG8i",
+            "6wMKEFBsYXllclNpbXBsZUluZm8SMgoXYXNzaXN0X3NpbXBsZV9pbmZvX2xp",
+            "c3QYBiADKAsyES5Bc3Npc3RTaW1wbGVJbmZvEhEKCXNpZ25hdHVyZRgFIAEo",
+            "CRIoCg9oZWFkX2ZyYW1lX2luZm8YmQggASgLMg4uSGVhZEZyYW1lSW5mbxIo",
+            "ChJwbGF5ZXJfb3V0Zml0X2RhdGEYASABKAsyDC5DSkxDUE1ER0lCTxIVCg1w",
+            "bGF0Zm9ybV9uaWNrGAMgASgJEhAKCG5pY2tuYW1lGAggASgJEhUKDXBsYXRm",
+            "b3JtX3V1aWQYDyABKAkSDQoFbGV2ZWwYCSABKA0SGAoQbGFzdF9hY3RpdmVf",
+            "dGltZRgNIAEoAxIOCgZnZW5kZXIYcyABKA0SKgoNb25saW5lX3N0YXR1cxgK",
+            "IAEoDjITLkZyaWVuZE9ubGluZVN0YXR1cxILCgN1aWQYByABKA0SFQoNcGVy",
+            "c29uYWxfY2FyZBgLIAEoDRIfCghwbGF0Zm9ybRgOIAEoDjINLlBsYXRmb3Jt",
+            "VHlwZRIWCg5jaGF0X2J1YmJsZV9pZBgEIAEoDRIRCgloZWFkX2ljb24YAiAB",
+            "KA0SEQoJaXNfYmFubmVkGAwgASgIEhQKC3VwZGF0ZV90aW1lGJ0GIAEoA0IW",
+            "qgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.AssistSimpleInfoReflection.Descriptor, global::March7thHoney.Proto.FriendOnlineStatusReflection.Descriptor, global::March7thHoney.Proto.HeadFrameInfoReflection.Descriptor, global::March7thHoney.Proto.PlatformTypeReflection.Descriptor, global::March7thHoney.Proto.PlayerOutfitInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.AssistSimpleInfoReflection.Descriptor, global::March7thHoney.Proto.CJLCPMDGIBOReflection.Descriptor, global::March7thHoney.Proto.FriendOnlineStatusReflection.Descriptor, global::March7thHoney.Proto.HeadFrameInfoReflection.Descriptor, global::March7thHoney.Proto.PlatformTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlayerSimpleInfo), global::March7thHoney.Proto.PlayerSimpleInfo.Parser, new[]{ "Nickname", "Signature", "PlatformUuid", "PlayerOutfitData", "Uid", "PlatformNick", "Platform", "PersonalCard", "LastActiveTime", "OnlineStatus", "ChatBubbleId", "HeadIcon", "IsBanned", "Level", "AssistSimpleInfoList", "HeadFrameInfo", "Gender" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlayerSimpleInfo), global::March7thHoney.Proto.PlayerSimpleInfo.Parser, new[]{ "AssistSimpleInfoList", "Signature", "HeadFrameInfo", "PlayerOutfitData", "PlatformNick", "Nickname", "PlatformUuid", "Level", "LastActiveTime", "Gender", "OnlineStatus", "Uid", "PersonalCard", "Platform", "ChatBubbleId", "HeadIcon", "IsBanned", "UpdateTime" }, null, null, null, null)
           }));
     }
     #endregion
@@ -84,23 +84,24 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PlayerSimpleInfo(PlayerSimpleInfo other) : this() {
-      nickname_ = other.nickname_;
+      assistSimpleInfoList_ = other.assistSimpleInfoList_.Clone();
       signature_ = other.signature_;
-      platformUuid_ = other.platformUuid_;
+      headFrameInfo_ = other.headFrameInfo_ != null ? other.headFrameInfo_.Clone() : null;
       playerOutfitData_ = other.playerOutfitData_ != null ? other.playerOutfitData_.Clone() : null;
-      uid_ = other.uid_;
       platformNick_ = other.platformNick_;
-      platform_ = other.platform_;
-      personalCard_ = other.personalCard_;
+      nickname_ = other.nickname_;
+      platformUuid_ = other.platformUuid_;
+      level_ = other.level_;
       lastActiveTime_ = other.lastActiveTime_;
+      gender_ = other.gender_;
       onlineStatus_ = other.onlineStatus_;
+      uid_ = other.uid_;
+      personalCard_ = other.personalCard_;
+      platform_ = other.platform_;
       chatBubbleId_ = other.chatBubbleId_;
       headIcon_ = other.headIcon_;
       isBanned_ = other.isBanned_;
-      level_ = other.level_;
-      assistSimpleInfoList_ = other.assistSimpleInfoList_.Clone();
-      headFrameInfo_ = other.headFrameInfo_ != null ? other.headFrameInfo_.Clone() : null;
-      gender_ = other.gender_;
+      updateTime_ = other.updateTime_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -110,20 +111,19 @@ namespace March7thHoney.Proto {
       return new PlayerSimpleInfo(this);
     }
 
-    /// <summary>Field number for the "nickname" field.</summary>
-    public const int NicknameFieldNumber = 1;
-    private string nickname_ = "";
+    /// <summary>Field number for the "assist_simple_info_list" field.</summary>
+    public const int AssistSimpleInfoListFieldNumber = 6;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AssistSimpleInfo> _repeated_assistSimpleInfoList_codec
+        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.AssistSimpleInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AssistSimpleInfo> assistSimpleInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.AssistSimpleInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Nickname {
-      get { return nickname_; }
-      set {
-        nickname_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
+    public pbc::RepeatedField<global::March7thHoney.Proto.AssistSimpleInfo> AssistSimpleInfoList {
+      get { return assistSimpleInfoList_; }
     }
 
     /// <summary>Field number for the "signature" field.</summary>
-    public const int SignatureFieldNumber = 2;
+    public const int SignatureFieldNumber = 5;
     private string signature_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -134,44 +134,32 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "platform_uuid" field.</summary>
-    public const int PlatformUuidFieldNumber = 3;
-    private string platformUuid_ = "";
+    /// <summary>Field number for the "head_frame_info" field.</summary>
+    public const int HeadFrameInfoFieldNumber = 1049;
+    private global::March7thHoney.Proto.HeadFrameInfo headFrameInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string PlatformUuid {
-      get { return platformUuid_; }
+    public global::March7thHoney.Proto.HeadFrameInfo HeadFrameInfo {
+      get { return headFrameInfo_; }
       set {
-        platformUuid_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        headFrameInfo_ = value;
       }
     }
 
     /// <summary>Field number for the "player_outfit_data" field.</summary>
-    public const int PlayerOutfitDataFieldNumber = 4;
-    private global::March7thHoney.Proto.PlayerOutfitInfo playerOutfitData_;
+    public const int PlayerOutfitDataFieldNumber = 1;
+    private global::March7thHoney.Proto.CJLCPMDGIBO playerOutfitData_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.PlayerOutfitInfo PlayerOutfitData {
+    public global::March7thHoney.Proto.CJLCPMDGIBO PlayerOutfitData {
       get { return playerOutfitData_; }
       set {
         playerOutfitData_ = value;
       }
     }
 
-    /// <summary>Field number for the "uid" field.</summary>
-    public const int UidFieldNumber = 5;
-    private uint uid_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Uid {
-      get { return uid_; }
-      set {
-        uid_ = value;
-      }
-    }
-
     /// <summary>Field number for the "platform_nick" field.</summary>
-    public const int PlatformNickFieldNumber = 6;
+    public const int PlatformNickFieldNumber = 3;
     private string platformNick_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -182,32 +170,44 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "platform" field.</summary>
-    public const int PlatformFieldNumber = 7;
-    private global::March7thHoney.Proto.PlatformType platform_ = global::March7thHoney.Proto.PlatformType.Editor;
+    /// <summary>Field number for the "nickname" field.</summary>
+    public const int NicknameFieldNumber = 8;
+    private string nickname_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.PlatformType Platform {
-      get { return platform_; }
+    public string Nickname {
+      get { return nickname_; }
       set {
-        platform_ = value;
+        nickname_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
-    /// <summary>Field number for the "personal_card" field.</summary>
-    public const int PersonalCardFieldNumber = 8;
-    private uint personalCard_;
+    /// <summary>Field number for the "platform_uuid" field.</summary>
+    public const int PlatformUuidFieldNumber = 15;
+    private string platformUuid_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PersonalCard {
-      get { return personalCard_; }
+    public string PlatformUuid {
+      get { return platformUuid_; }
       set {
-        personalCard_ = value;
+        platformUuid_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "level" field.</summary>
+    public const int LevelFieldNumber = 9;
+    private uint level_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Level {
+      get { return level_; }
+      set {
+        level_ = value;
       }
     }
 
     /// <summary>Field number for the "last_active_time" field.</summary>
-    public const int LastActiveTimeFieldNumber = 9;
+    public const int LastActiveTimeFieldNumber = 13;
     private long lastActiveTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -215,6 +215,18 @@ namespace March7thHoney.Proto {
       get { return lastActiveTime_; }
       set {
         lastActiveTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "gender" field.</summary>
+    public const int GenderFieldNumber = 115;
+    private uint gender_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Gender {
+      get { return gender_; }
+      set {
+        gender_ = value;
       }
     }
 
@@ -230,8 +242,44 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "uid" field.</summary>
+    public const int UidFieldNumber = 7;
+    private uint uid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Uid {
+      get { return uid_; }
+      set {
+        uid_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "personal_card" field.</summary>
+    public const int PersonalCardFieldNumber = 11;
+    private uint personalCard_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint PersonalCard {
+      get { return personalCard_; }
+      set {
+        personalCard_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "platform" field.</summary>
+    public const int PlatformFieldNumber = 14;
+    private global::March7thHoney.Proto.PlatformType platform_ = global::March7thHoney.Proto.PlatformType.Editor;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.PlatformType Platform {
+      get { return platform_; }
+      set {
+        platform_ = value;
+      }
+    }
+
     /// <summary>Field number for the "chat_bubble_id" field.</summary>
-    public const int ChatBubbleIdFieldNumber = 11;
+    public const int ChatBubbleIdFieldNumber = 4;
     private uint chatBubbleId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -243,7 +291,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "head_icon" field.</summary>
-    public const int HeadIconFieldNumber = 12;
+    public const int HeadIconFieldNumber = 2;
     private uint headIcon_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -255,7 +303,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "is_banned" field.</summary>
-    public const int IsBannedFieldNumber = 13;
+    public const int IsBannedFieldNumber = 12;
     private bool isBanned_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -266,50 +314,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "level" field.</summary>
-    public const int LevelFieldNumber = 14;
-    private uint level_;
+    /// <summary>Field number for the "update_time" field.</summary>
+    public const int UpdateTimeFieldNumber = 797;
+    private long updateTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Level {
-      get { return level_; }
+    public long UpdateTime {
+      get { return updateTime_; }
       set {
-        level_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "assist_simple_info_list" field.</summary>
-    public const int AssistSimpleInfoListFieldNumber = 15;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AssistSimpleInfo> _repeated_assistSimpleInfoList_codec
-        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.AssistSimpleInfo.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AssistSimpleInfo> assistSimpleInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.AssistSimpleInfo>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.AssistSimpleInfo> AssistSimpleInfoList {
-      get { return assistSimpleInfoList_; }
-    }
-
-    /// <summary>Field number for the "head_frame_info" field.</summary>
-    public const int HeadFrameInfoFieldNumber = 105;
-    private global::March7thHoney.Proto.HeadFrameInfo headFrameInfo_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.HeadFrameInfo HeadFrameInfo {
-      get { return headFrameInfo_; }
-      set {
-        headFrameInfo_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "gender" field.</summary>
-    public const int GenderFieldNumber = 1403;
-    private uint gender_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Gender {
-      get { return gender_; }
-      set {
-        gender_ = value;
+        updateTime_ = value;
       }
     }
 
@@ -328,23 +341,24 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Nickname != other.Nickname) return false;
+      if(!assistSimpleInfoList_.Equals(other.assistSimpleInfoList_)) return false;
       if (Signature != other.Signature) return false;
-      if (PlatformUuid != other.PlatformUuid) return false;
+      if (!object.Equals(HeadFrameInfo, other.HeadFrameInfo)) return false;
       if (!object.Equals(PlayerOutfitData, other.PlayerOutfitData)) return false;
-      if (Uid != other.Uid) return false;
       if (PlatformNick != other.PlatformNick) return false;
-      if (Platform != other.Platform) return false;
-      if (PersonalCard != other.PersonalCard) return false;
+      if (Nickname != other.Nickname) return false;
+      if (PlatformUuid != other.PlatformUuid) return false;
+      if (Level != other.Level) return false;
       if (LastActiveTime != other.LastActiveTime) return false;
+      if (Gender != other.Gender) return false;
       if (OnlineStatus != other.OnlineStatus) return false;
+      if (Uid != other.Uid) return false;
+      if (PersonalCard != other.PersonalCard) return false;
+      if (Platform != other.Platform) return false;
       if (ChatBubbleId != other.ChatBubbleId) return false;
       if (HeadIcon != other.HeadIcon) return false;
       if (IsBanned != other.IsBanned) return false;
-      if (Level != other.Level) return false;
-      if(!assistSimpleInfoList_.Equals(other.assistSimpleInfoList_)) return false;
-      if (!object.Equals(HeadFrameInfo, other.HeadFrameInfo)) return false;
-      if (Gender != other.Gender) return false;
+      if (UpdateTime != other.UpdateTime) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -352,23 +366,24 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Nickname.Length != 0) hash ^= Nickname.GetHashCode();
+      hash ^= assistSimpleInfoList_.GetHashCode();
       if (Signature.Length != 0) hash ^= Signature.GetHashCode();
-      if (PlatformUuid.Length != 0) hash ^= PlatformUuid.GetHashCode();
+      if (headFrameInfo_ != null) hash ^= HeadFrameInfo.GetHashCode();
       if (playerOutfitData_ != null) hash ^= PlayerOutfitData.GetHashCode();
-      if (Uid != 0) hash ^= Uid.GetHashCode();
       if (PlatformNick.Length != 0) hash ^= PlatformNick.GetHashCode();
-      if (Platform != global::March7thHoney.Proto.PlatformType.Editor) hash ^= Platform.GetHashCode();
-      if (PersonalCard != 0) hash ^= PersonalCard.GetHashCode();
+      if (Nickname.Length != 0) hash ^= Nickname.GetHashCode();
+      if (PlatformUuid.Length != 0) hash ^= PlatformUuid.GetHashCode();
+      if (Level != 0) hash ^= Level.GetHashCode();
       if (LastActiveTime != 0L) hash ^= LastActiveTime.GetHashCode();
+      if (Gender != 0) hash ^= Gender.GetHashCode();
       if (OnlineStatus != global::March7thHoney.Proto.FriendOnlineStatus.Offline) hash ^= OnlineStatus.GetHashCode();
+      if (Uid != 0) hash ^= Uid.GetHashCode();
+      if (PersonalCard != 0) hash ^= PersonalCard.GetHashCode();
+      if (Platform != global::March7thHoney.Proto.PlatformType.Editor) hash ^= Platform.GetHashCode();
       if (ChatBubbleId != 0) hash ^= ChatBubbleId.GetHashCode();
       if (HeadIcon != 0) hash ^= HeadIcon.GetHashCode();
       if (IsBanned != false) hash ^= IsBanned.GetHashCode();
-      if (Level != 0) hash ^= Level.GetHashCode();
-      hash ^= assistSimpleInfoList_.GetHashCode();
-      if (headFrameInfo_ != null) hash ^= HeadFrameInfo.GetHashCode();
-      if (Gender != 0) hash ^= Gender.GetHashCode();
+      if (UpdateTime != 0L) hash ^= UpdateTime.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -387,70 +402,74 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Nickname.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(Nickname);
-      }
-      if (Signature.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(Signature);
-      }
-      if (PlatformUuid.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteString(PlatformUuid);
-      }
       if (playerOutfitData_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(10);
         output.WriteMessage(PlayerOutfitData);
       }
-      if (Uid != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(Uid);
+      if (HeadIcon != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(HeadIcon);
       }
       if (PlatformNick.Length != 0) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(26);
         output.WriteString(PlatformNick);
       }
-      if (Platform != global::March7thHoney.Proto.PlatformType.Editor) {
+      if (ChatBubbleId != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(ChatBubbleId);
+      }
+      if (Signature.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(Signature);
+      }
+      assistSimpleInfoList_.WriteTo(output, _repeated_assistSimpleInfoList_codec);
+      if (Uid != 0) {
         output.WriteRawTag(56);
-        output.WriteEnum((int) Platform);
+        output.WriteUInt32(Uid);
       }
-      if (PersonalCard != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(PersonalCard);
+      if (Nickname.Length != 0) {
+        output.WriteRawTag(66);
+        output.WriteString(Nickname);
       }
-      if (LastActiveTime != 0L) {
+      if (Level != 0) {
         output.WriteRawTag(72);
-        output.WriteInt64(LastActiveTime);
+        output.WriteUInt32(Level);
       }
       if (OnlineStatus != global::March7thHoney.Proto.FriendOnlineStatus.Offline) {
         output.WriteRawTag(80);
         output.WriteEnum((int) OnlineStatus);
       }
-      if (ChatBubbleId != 0) {
+      if (PersonalCard != 0) {
         output.WriteRawTag(88);
-        output.WriteUInt32(ChatBubbleId);
-      }
-      if (HeadIcon != 0) {
-        output.WriteRawTag(96);
-        output.WriteUInt32(HeadIcon);
+        output.WriteUInt32(PersonalCard);
       }
       if (IsBanned != false) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(96);
         output.WriteBool(IsBanned);
       }
-      if (Level != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(Level);
+      if (LastActiveTime != 0L) {
+        output.WriteRawTag(104);
+        output.WriteInt64(LastActiveTime);
       }
-      assistSimpleInfoList_.WriteTo(output, _repeated_assistSimpleInfoList_codec);
-      if (headFrameInfo_ != null) {
-        output.WriteRawTag(202, 6);
-        output.WriteMessage(HeadFrameInfo);
+      if (Platform != global::March7thHoney.Proto.PlatformType.Editor) {
+        output.WriteRawTag(112);
+        output.WriteEnum((int) Platform);
+      }
+      if (PlatformUuid.Length != 0) {
+        output.WriteRawTag(122);
+        output.WriteString(PlatformUuid);
       }
       if (Gender != 0) {
-        output.WriteRawTag(216, 87);
+        output.WriteRawTag(152, 7);
         output.WriteUInt32(Gender);
+      }
+      if (UpdateTime != 0L) {
+        output.WriteRawTag(232, 49);
+        output.WriteInt64(UpdateTime);
+      }
+      if (headFrameInfo_ != null) {
+        output.WriteRawTag(202, 65);
+        output.WriteMessage(HeadFrameInfo);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -462,70 +481,74 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Nickname.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(Nickname);
-      }
-      if (Signature.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(Signature);
-      }
-      if (PlatformUuid.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteString(PlatformUuid);
-      }
       if (playerOutfitData_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(10);
         output.WriteMessage(PlayerOutfitData);
       }
-      if (Uid != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(Uid);
+      if (HeadIcon != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(HeadIcon);
       }
       if (PlatformNick.Length != 0) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(26);
         output.WriteString(PlatformNick);
       }
-      if (Platform != global::March7thHoney.Proto.PlatformType.Editor) {
+      if (ChatBubbleId != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(ChatBubbleId);
+      }
+      if (Signature.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(Signature);
+      }
+      assistSimpleInfoList_.WriteTo(ref output, _repeated_assistSimpleInfoList_codec);
+      if (Uid != 0) {
         output.WriteRawTag(56);
-        output.WriteEnum((int) Platform);
+        output.WriteUInt32(Uid);
       }
-      if (PersonalCard != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(PersonalCard);
+      if (Nickname.Length != 0) {
+        output.WriteRawTag(66);
+        output.WriteString(Nickname);
       }
-      if (LastActiveTime != 0L) {
+      if (Level != 0) {
         output.WriteRawTag(72);
-        output.WriteInt64(LastActiveTime);
+        output.WriteUInt32(Level);
       }
       if (OnlineStatus != global::March7thHoney.Proto.FriendOnlineStatus.Offline) {
         output.WriteRawTag(80);
         output.WriteEnum((int) OnlineStatus);
       }
-      if (ChatBubbleId != 0) {
+      if (PersonalCard != 0) {
         output.WriteRawTag(88);
-        output.WriteUInt32(ChatBubbleId);
-      }
-      if (HeadIcon != 0) {
-        output.WriteRawTag(96);
-        output.WriteUInt32(HeadIcon);
+        output.WriteUInt32(PersonalCard);
       }
       if (IsBanned != false) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(96);
         output.WriteBool(IsBanned);
       }
-      if (Level != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(Level);
+      if (LastActiveTime != 0L) {
+        output.WriteRawTag(104);
+        output.WriteInt64(LastActiveTime);
       }
-      assistSimpleInfoList_.WriteTo(ref output, _repeated_assistSimpleInfoList_codec);
-      if (headFrameInfo_ != null) {
-        output.WriteRawTag(202, 6);
-        output.WriteMessage(HeadFrameInfo);
+      if (Platform != global::March7thHoney.Proto.PlatformType.Editor) {
+        output.WriteRawTag(112);
+        output.WriteEnum((int) Platform);
+      }
+      if (PlatformUuid.Length != 0) {
+        output.WriteRawTag(122);
+        output.WriteString(PlatformUuid);
       }
       if (Gender != 0) {
-        output.WriteRawTag(216, 87);
+        output.WriteRawTag(152, 7);
         output.WriteUInt32(Gender);
+      }
+      if (UpdateTime != 0L) {
+        output.WriteRawTag(232, 49);
+        output.WriteInt64(UpdateTime);
+      }
+      if (headFrameInfo_ != null) {
+        output.WriteRawTag(202, 65);
+        output.WriteMessage(HeadFrameInfo);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -537,35 +560,45 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Nickname.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Nickname);
-      }
+      size += assistSimpleInfoList_.CalculateSize(_repeated_assistSimpleInfoList_codec);
       if (Signature.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Signature);
       }
-      if (PlatformUuid.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(PlatformUuid);
+      if (headFrameInfo_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(HeadFrameInfo);
       }
       if (playerOutfitData_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(PlayerOutfitData);
       }
-      if (Uid != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Uid);
-      }
       if (PlatformNick.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(PlatformNick);
       }
-      if (Platform != global::March7thHoney.Proto.PlatformType.Editor) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Platform);
+      if (Nickname.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Nickname);
       }
-      if (PersonalCard != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PersonalCard);
+      if (PlatformUuid.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(PlatformUuid);
+      }
+      if (Level != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
       }
       if (LastActiveTime != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(LastActiveTime);
       }
+      if (Gender != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(Gender);
+      }
       if (OnlineStatus != global::March7thHoney.Proto.FriendOnlineStatus.Offline) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) OnlineStatus);
+      }
+      if (Uid != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Uid);
+      }
+      if (PersonalCard != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PersonalCard);
+      }
+      if (Platform != global::March7thHoney.Proto.PlatformType.Editor) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Platform);
       }
       if (ChatBubbleId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ChatBubbleId);
@@ -576,15 +609,8 @@ namespace March7thHoney.Proto {
       if (IsBanned != false) {
         size += 1 + 1;
       }
-      if (Level != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
-      }
-      size += assistSimpleInfoList_.CalculateSize(_repeated_assistSimpleInfoList_codec);
-      if (headFrameInfo_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(HeadFrameInfo);
-      }
-      if (Gender != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(Gender);
+      if (UpdateTime != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(UpdateTime);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -598,38 +624,51 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.Nickname.Length != 0) {
-        Nickname = other.Nickname;
-      }
+      assistSimpleInfoList_.Add(other.assistSimpleInfoList_);
       if (other.Signature.Length != 0) {
         Signature = other.Signature;
       }
-      if (other.PlatformUuid.Length != 0) {
-        PlatformUuid = other.PlatformUuid;
+      if (other.headFrameInfo_ != null) {
+        if (headFrameInfo_ == null) {
+          HeadFrameInfo = new global::March7thHoney.Proto.HeadFrameInfo();
+        }
+        HeadFrameInfo.MergeFrom(other.HeadFrameInfo);
       }
       if (other.playerOutfitData_ != null) {
         if (playerOutfitData_ == null) {
-          PlayerOutfitData = new global::March7thHoney.Proto.PlayerOutfitInfo();
+          PlayerOutfitData = new global::March7thHoney.Proto.CJLCPMDGIBO();
         }
         PlayerOutfitData.MergeFrom(other.PlayerOutfitData);
-      }
-      if (other.Uid != 0) {
-        Uid = other.Uid;
       }
       if (other.PlatformNick.Length != 0) {
         PlatformNick = other.PlatformNick;
       }
-      if (other.Platform != global::March7thHoney.Proto.PlatformType.Editor) {
-        Platform = other.Platform;
+      if (other.Nickname.Length != 0) {
+        Nickname = other.Nickname;
       }
-      if (other.PersonalCard != 0) {
-        PersonalCard = other.PersonalCard;
+      if (other.PlatformUuid.Length != 0) {
+        PlatformUuid = other.PlatformUuid;
+      }
+      if (other.Level != 0) {
+        Level = other.Level;
       }
       if (other.LastActiveTime != 0L) {
         LastActiveTime = other.LastActiveTime;
       }
+      if (other.Gender != 0) {
+        Gender = other.Gender;
+      }
       if (other.OnlineStatus != global::March7thHoney.Proto.FriendOnlineStatus.Offline) {
         OnlineStatus = other.OnlineStatus;
+      }
+      if (other.Uid != 0) {
+        Uid = other.Uid;
+      }
+      if (other.PersonalCard != 0) {
+        PersonalCard = other.PersonalCard;
+      }
+      if (other.Platform != global::March7thHoney.Proto.PlatformType.Editor) {
+        Platform = other.Platform;
       }
       if (other.ChatBubbleId != 0) {
         ChatBubbleId = other.ChatBubbleId;
@@ -640,18 +679,8 @@ namespace March7thHoney.Proto {
       if (other.IsBanned != false) {
         IsBanned = other.IsBanned;
       }
-      if (other.Level != 0) {
-        Level = other.Level;
-      }
-      assistSimpleInfoList_.Add(other.assistSimpleInfoList_);
-      if (other.headFrameInfo_ != null) {
-        if (headFrameInfo_ == null) {
-          HeadFrameInfo = new global::March7thHoney.Proto.HeadFrameInfo();
-        }
-        HeadFrameInfo.MergeFrom(other.HeadFrameInfo);
-      }
-      if (other.Gender != 0) {
-        Gender = other.Gender;
+      if (other.UpdateTime != 0L) {
+        UpdateTime = other.UpdateTime;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -673,42 +702,42 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            Nickname = input.ReadString();
-            break;
-          }
-          case 18: {
-            Signature = input.ReadString();
-            break;
-          }
-          case 26: {
-            PlatformUuid = input.ReadString();
-            break;
-          }
-          case 34: {
             if (playerOutfitData_ == null) {
-              PlayerOutfitData = new global::March7thHoney.Proto.PlayerOutfitInfo();
+              PlayerOutfitData = new global::March7thHoney.Proto.CJLCPMDGIBO();
             }
             input.ReadMessage(PlayerOutfitData);
             break;
           }
-          case 40: {
-            Uid = input.ReadUInt32();
+          case 16: {
+            HeadIcon = input.ReadUInt32();
             break;
           }
-          case 50: {
+          case 26: {
             PlatformNick = input.ReadString();
             break;
           }
-          case 56: {
-            Platform = (global::March7thHoney.Proto.PlatformType) input.ReadEnum();
+          case 32: {
+            ChatBubbleId = input.ReadUInt32();
             break;
           }
-          case 64: {
-            PersonalCard = input.ReadUInt32();
+          case 42: {
+            Signature = input.ReadString();
+            break;
+          }
+          case 50: {
+            assistSimpleInfoList_.AddEntriesFrom(input, _repeated_assistSimpleInfoList_codec);
+            break;
+          }
+          case 56: {
+            Uid = input.ReadUInt32();
+            break;
+          }
+          case 66: {
+            Nickname = input.ReadString();
             break;
           }
           case 72: {
-            LastActiveTime = input.ReadInt64();
+            Level = input.ReadUInt32();
             break;
           }
           case 80: {
@@ -716,34 +745,38 @@ namespace March7thHoney.Proto {
             break;
           }
           case 88: {
-            ChatBubbleId = input.ReadUInt32();
+            PersonalCard = input.ReadUInt32();
             break;
           }
           case 96: {
-            HeadIcon = input.ReadUInt32();
-            break;
-          }
-          case 104: {
             IsBanned = input.ReadBool();
             break;
           }
+          case 104: {
+            LastActiveTime = input.ReadInt64();
+            break;
+          }
           case 112: {
-            Level = input.ReadUInt32();
+            Platform = (global::March7thHoney.Proto.PlatformType) input.ReadEnum();
             break;
           }
           case 122: {
-            assistSimpleInfoList_.AddEntriesFrom(input, _repeated_assistSimpleInfoList_codec);
+            PlatformUuid = input.ReadString();
             break;
           }
-          case 842: {
+          case 920: {
+            Gender = input.ReadUInt32();
+            break;
+          }
+          case 6376: {
+            UpdateTime = input.ReadInt64();
+            break;
+          }
+          case 8394: {
             if (headFrameInfo_ == null) {
               HeadFrameInfo = new global::March7thHoney.Proto.HeadFrameInfo();
             }
             input.ReadMessage(HeadFrameInfo);
-            break;
-          }
-          case 11224: {
-            Gender = input.ReadUInt32();
             break;
           }
         }
@@ -766,42 +799,42 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            Nickname = input.ReadString();
-            break;
-          }
-          case 18: {
-            Signature = input.ReadString();
-            break;
-          }
-          case 26: {
-            PlatformUuid = input.ReadString();
-            break;
-          }
-          case 34: {
             if (playerOutfitData_ == null) {
-              PlayerOutfitData = new global::March7thHoney.Proto.PlayerOutfitInfo();
+              PlayerOutfitData = new global::March7thHoney.Proto.CJLCPMDGIBO();
             }
             input.ReadMessage(PlayerOutfitData);
             break;
           }
-          case 40: {
-            Uid = input.ReadUInt32();
+          case 16: {
+            HeadIcon = input.ReadUInt32();
             break;
           }
-          case 50: {
+          case 26: {
             PlatformNick = input.ReadString();
             break;
           }
-          case 56: {
-            Platform = (global::March7thHoney.Proto.PlatformType) input.ReadEnum();
+          case 32: {
+            ChatBubbleId = input.ReadUInt32();
             break;
           }
-          case 64: {
-            PersonalCard = input.ReadUInt32();
+          case 42: {
+            Signature = input.ReadString();
+            break;
+          }
+          case 50: {
+            assistSimpleInfoList_.AddEntriesFrom(ref input, _repeated_assistSimpleInfoList_codec);
+            break;
+          }
+          case 56: {
+            Uid = input.ReadUInt32();
+            break;
+          }
+          case 66: {
+            Nickname = input.ReadString();
             break;
           }
           case 72: {
-            LastActiveTime = input.ReadInt64();
+            Level = input.ReadUInt32();
             break;
           }
           case 80: {
@@ -809,34 +842,38 @@ namespace March7thHoney.Proto {
             break;
           }
           case 88: {
-            ChatBubbleId = input.ReadUInt32();
+            PersonalCard = input.ReadUInt32();
             break;
           }
           case 96: {
-            HeadIcon = input.ReadUInt32();
-            break;
-          }
-          case 104: {
             IsBanned = input.ReadBool();
             break;
           }
+          case 104: {
+            LastActiveTime = input.ReadInt64();
+            break;
+          }
           case 112: {
-            Level = input.ReadUInt32();
+            Platform = (global::March7thHoney.Proto.PlatformType) input.ReadEnum();
             break;
           }
           case 122: {
-            assistSimpleInfoList_.AddEntriesFrom(ref input, _repeated_assistSimpleInfoList_codec);
+            PlatformUuid = input.ReadString();
             break;
           }
-          case 842: {
+          case 920: {
+            Gender = input.ReadUInt32();
+            break;
+          }
+          case 6376: {
+            UpdateTime = input.ReadInt64();
+            break;
+          }
+          case 8394: {
             if (headFrameInfo_ == null) {
               HeadFrameInfo = new global::March7thHoney.Proto.HeadFrameInfo();
             }
             input.ReadMessage(HeadFrameInfo);
-            break;
-          }
-          case 11224: {
-            Gender = input.ReadUInt32();
             break;
           }
         }

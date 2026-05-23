@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "BCKBEMGGGIF.proto";
+import "DGLBOFKGGLL.proto";
+import "PLICOOFLBIB.proto";
+
+message DLCJPINDIAC {
+    uint32 PPOAGPGEAFH = 9;
+    uint32 uid = 8;
+    oneof KKNBOACNCON {
+        DGLBOFKGGLL BJKBADEMEOE = 10;
+        PLICOOFLBIB KCICNNFJEAC = 5;
+        BCKBEMGGGIF LENBIENEFIB = 7;
+    }
+}

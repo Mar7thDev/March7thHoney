@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message IGJLLHMJKPC {
+    uint32 gacha_random = 8;
+    bool IMKGOKGKDPH = 10;
+}

@@ -24,12 +24,12 @@ namespace March7thHoney.Proto {
     static BatchRankUpEquipmentCsReqReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Ch9CYXRjaFJhbmtVcEVxdWlwbWVudENzUmVxLnByb3RvGhFLQ0NGTk1PSU1B",
-            "UC5wcm90byI+ChlCYXRjaFJhbmtVcEVxdWlwbWVudENzUmVxEiEKC3N3aXRj",
-            "aF9saXN0GAIgAygLMgwuS0NDRk5NT0lNQVBCFqoCE01hcmNoN3RoSG9uZXku",
+            "Ch9CYXRjaFJhbmtVcEVxdWlwbWVudENzUmVxLnByb3RvGhFGQk5CRUlLQUJH",
+            "RS5wcm90byI+ChlCYXRjaFJhbmtVcEVxdWlwbWVudENzUmVxEiEKC3N3aXRj",
+            "aF9saXN0GA0gAygLMgwuRkJOQkVJS0FCR0VCFqoCE01hcmNoN3RoSG9uZXku",
             "UHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.KCCFNMOIMAPReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.FBNBEIKABGEReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BatchRankUpEquipmentCsReq), global::March7thHoney.Proto.BatchRankUpEquipmentCsReq.Parser, new[]{ "SwitchList" }, null, null, null, null)
           }));
@@ -84,13 +84,13 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "switch_list" field.</summary>
-    public const int SwitchListFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.KCCFNMOIMAP> _repeated_switchList_codec
-        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.KCCFNMOIMAP.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.KCCFNMOIMAP> switchList_ = new pbc::RepeatedField<global::March7thHoney.Proto.KCCFNMOIMAP>();
+    public const int SwitchListFieldNumber = 13;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.FBNBEIKABGE> _repeated_switchList_codec
+        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.FBNBEIKABGE.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.FBNBEIKABGE> switchList_ = new pbc::RepeatedField<global::March7thHoney.Proto.FBNBEIKABGE>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.KCCFNMOIMAP> SwitchList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.FBNBEIKABGE> SwitchList {
       get { return switchList_; }
     }
 
@@ -191,7 +191,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 18: {
+          case 106: {
             switchList_.AddEntriesFrom(input, _repeated_switchList_codec);
             break;
           }
@@ -214,7 +214,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 18: {
+          case 106: {
             switchList_.AddEntriesFrom(ref input, _repeated_switchList_codec);
             break;
           }

@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "IHLLBHLEGMD.proto";
+import "DEDKIIFNECM.proto";
 
 message TravelBrochureApplyPasterListCsReq {
-    repeated IHLLBHLEGMD MLFNLIBCBMO = 13;
-    uint32 HBCJPCMJPHE = 15;
+    repeated DEDKIIFNECM GMLEOJCLCFB = 13;
+    uint32 DCIJEFMACME = 11;
 }

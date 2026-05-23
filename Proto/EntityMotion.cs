@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChJFbnRpdHlNb3Rpb24ucHJvdG8aEE1vdGlvbkluZm8ucHJvdG8iZgoMRW50",
-            "aXR5TW90aW9uEhMKC0FHTkhOQUlPUERGGAMgASgIEhsKBm1vdGlvbhgEIAEo",
-            "CzILLk1vdGlvbkluZm8SEQoJbWFwX2xheWVyGAogASgNEhEKCWVudGl0eV9p",
-            "ZBgMIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "aXR5TW90aW9uEhsKBm1vdGlvbhgFIAEoCzILLk1vdGlvbkluZm8SEQoJZW50",
+            "aXR5X2lkGAogASgNEhMKC0ZKT0VPRURMTkVEGAsgASgIEhEKCW1hcF9sYXll",
+            "chgDIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MotionInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EntityMotion), global::March7thHoney.Proto.EntityMotion.Parser, new[]{ "AGNHNAIOPDF", "Motion", "MapLayer", "EntityId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EntityMotion), global::March7thHoney.Proto.EntityMotion.Parser, new[]{ "Motion", "EntityId", "FJOEOEDLNED", "MapLayer" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,10 +73,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public EntityMotion(EntityMotion other) : this() {
-      aGNHNAIOPDF_ = other.aGNHNAIOPDF_;
       motion_ = other.motion_ != null ? other.motion_.Clone() : null;
-      mapLayer_ = other.mapLayer_;
       entityId_ = other.entityId_;
+      fJOEOEDLNED_ = other.fJOEOEDLNED_;
+      mapLayer_ = other.mapLayer_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,20 +86,8 @@ namespace March7thHoney.Proto {
       return new EntityMotion(this);
     }
 
-    /// <summary>Field number for the "AGNHNAIOPDF" field.</summary>
-    public const int AGNHNAIOPDFFieldNumber = 3;
-    private bool aGNHNAIOPDF_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool AGNHNAIOPDF {
-      get { return aGNHNAIOPDF_; }
-      set {
-        aGNHNAIOPDF_ = value;
-      }
-    }
-
     /// <summary>Field number for the "motion" field.</summary>
-    public const int MotionFieldNumber = 4;
+    public const int MotionFieldNumber = 5;
     private global::March7thHoney.Proto.MotionInfo motion_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,20 +98,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "map_layer" field.</summary>
-    public const int MapLayerFieldNumber = 10;
-    private uint mapLayer_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint MapLayer {
-      get { return mapLayer_; }
-      set {
-        mapLayer_ = value;
-      }
-    }
-
     /// <summary>Field number for the "entity_id" field.</summary>
-    public const int EntityIdFieldNumber = 12;
+    public const int EntityIdFieldNumber = 10;
     private uint entityId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -131,6 +107,30 @@ namespace March7thHoney.Proto {
       get { return entityId_; }
       set {
         entityId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "FJOEOEDLNED" field.</summary>
+    public const int FJOEOEDLNEDFieldNumber = 11;
+    private bool fJOEOEDLNED_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool FJOEOEDLNED {
+      get { return fJOEOEDLNED_; }
+      set {
+        fJOEOEDLNED_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "map_layer" field.</summary>
+    public const int MapLayerFieldNumber = 3;
+    private uint mapLayer_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint MapLayer {
+      get { return mapLayer_; }
+      set {
+        mapLayer_ = value;
       }
     }
 
@@ -149,10 +149,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (AGNHNAIOPDF != other.AGNHNAIOPDF) return false;
       if (!object.Equals(Motion, other.Motion)) return false;
-      if (MapLayer != other.MapLayer) return false;
       if (EntityId != other.EntityId) return false;
+      if (FJOEOEDLNED != other.FJOEOEDLNED) return false;
+      if (MapLayer != other.MapLayer) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -160,10 +160,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (AGNHNAIOPDF != false) hash ^= AGNHNAIOPDF.GetHashCode();
       if (motion_ != null) hash ^= Motion.GetHashCode();
-      if (MapLayer != 0) hash ^= MapLayer.GetHashCode();
       if (EntityId != 0) hash ^= EntityId.GetHashCode();
+      if (FJOEOEDLNED != false) hash ^= FJOEOEDLNED.GetHashCode();
+      if (MapLayer != 0) hash ^= MapLayer.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -182,21 +182,21 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (AGNHNAIOPDF != false) {
-        output.WriteRawTag(24);
-        output.WriteBool(AGNHNAIOPDF);
-      }
-      if (motion_ != null) {
-        output.WriteRawTag(34);
-        output.WriteMessage(Motion);
-      }
       if (MapLayer != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(24);
         output.WriteUInt32(MapLayer);
       }
+      if (motion_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(Motion);
+      }
       if (EntityId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(80);
         output.WriteUInt32(EntityId);
+      }
+      if (FJOEOEDLNED != false) {
+        output.WriteRawTag(88);
+        output.WriteBool(FJOEOEDLNED);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -208,21 +208,21 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (AGNHNAIOPDF != false) {
-        output.WriteRawTag(24);
-        output.WriteBool(AGNHNAIOPDF);
-      }
-      if (motion_ != null) {
-        output.WriteRawTag(34);
-        output.WriteMessage(Motion);
-      }
       if (MapLayer != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(24);
         output.WriteUInt32(MapLayer);
       }
+      if (motion_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(Motion);
+      }
       if (EntityId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(80);
         output.WriteUInt32(EntityId);
+      }
+      if (FJOEOEDLNED != false) {
+        output.WriteRawTag(88);
+        output.WriteBool(FJOEOEDLNED);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -234,17 +234,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (AGNHNAIOPDF != false) {
-        size += 1 + 1;
-      }
       if (motion_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Motion);
       }
-      if (MapLayer != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MapLayer);
-      }
       if (EntityId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EntityId);
+      }
+      if (FJOEOEDLNED != false) {
+        size += 1 + 1;
+      }
+      if (MapLayer != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MapLayer);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -258,20 +258,20 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.AGNHNAIOPDF != false) {
-        AGNHNAIOPDF = other.AGNHNAIOPDF;
-      }
       if (other.motion_ != null) {
         if (motion_ == null) {
           Motion = new global::March7thHoney.Proto.MotionInfo();
         }
         Motion.MergeFrom(other.Motion);
       }
-      if (other.MapLayer != 0) {
-        MapLayer = other.MapLayer;
-      }
       if (other.EntityId != 0) {
         EntityId = other.EntityId;
+      }
+      if (other.FJOEOEDLNED != false) {
+        FJOEOEDLNED = other.FJOEOEDLNED;
+      }
+      if (other.MapLayer != 0) {
+        MapLayer = other.MapLayer;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -293,10 +293,10 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 24: {
-            AGNHNAIOPDF = input.ReadBool();
+            MapLayer = input.ReadUInt32();
             break;
           }
-          case 34: {
+          case 42: {
             if (motion_ == null) {
               Motion = new global::March7thHoney.Proto.MotionInfo();
             }
@@ -304,11 +304,11 @@ namespace March7thHoney.Proto {
             break;
           }
           case 80: {
-            MapLayer = input.ReadUInt32();
+            EntityId = input.ReadUInt32();
             break;
           }
-          case 96: {
-            EntityId = input.ReadUInt32();
+          case 88: {
+            FJOEOEDLNED = input.ReadBool();
             break;
           }
         }
@@ -331,10 +331,10 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 24: {
-            AGNHNAIOPDF = input.ReadBool();
+            MapLayer = input.ReadUInt32();
             break;
           }
-          case 34: {
+          case 42: {
             if (motion_ == null) {
               Motion = new global::March7thHoney.Proto.MotionInfo();
             }
@@ -342,11 +342,11 @@ namespace March7thHoney.Proto {
             break;
           }
           case 80: {
-            MapLayer = input.ReadUInt32();
+            EntityId = input.ReadUInt32();
             break;
           }
-          case 96: {
-            EntityId = input.ReadUInt32();
+          case 88: {
+            FJOEOEDLNED = input.ReadBool();
             break;
           }
         }

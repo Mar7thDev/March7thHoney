@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "PBLBAAMLNLH.proto";
+
+message MAGMMMINOAJ {
+    PBLBAAMLNLH AMFEFIDDMDA = 11;
+    uint32 retcode = 3;
+}

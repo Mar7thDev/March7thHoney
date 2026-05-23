@@ -26,13 +26,13 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChtHZXRTZWNyZXRLZXlJbmZvU2NSc3AucHJvdG8aE1NlY3JldEtleUluZm8u",
             "cHJvdG8iYQoVR2V0U2VjcmV0S2V5SW5mb1NjUnNwEiMKC3NlY3JldF9pbmZv",
-            "GAIgAygLMg4uU2VjcmV0S2V5SW5mbxIPCgdyZXRjb2RlGAwgASgNEhIKCnNl",
-            "Y3JldF9yc3AYDiABKAxCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
+            "GAggAygLMg4uU2VjcmV0S2V5SW5mbxISCgpzZWNyZXRfcnNwGA8gASgMEg8K",
+            "B3JldGNvZGUYCSABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
             "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.SecretKeyInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetSecretKeyInfoScRsp), global::March7thHoney.Proto.GetSecretKeyInfoScRsp.Parser, new[]{ "SecretInfo", "Retcode", "SecretRsp" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetSecretKeyInfoScRsp), global::March7thHoney.Proto.GetSecretKeyInfoScRsp.Parser, new[]{ "SecretInfo", "SecretRsp", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,8 +75,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetSecretKeyInfoScRsp(GetSecretKeyInfoScRsp other) : this() {
       secretInfo_ = other.secretInfo_.Clone();
-      retcode_ = other.retcode_;
       secretRsp_ = other.secretRsp_;
+      retcode_ = other.retcode_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -87,9 +87,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "secret_info" field.</summary>
-    public const int SecretInfoFieldNumber = 2;
+    public const int SecretInfoFieldNumber = 8;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.SecretKeyInfo> _repeated_secretInfo_codec
-        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.SecretKeyInfo.Parser);
+        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.SecretKeyInfo.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.SecretKeyInfo> secretInfo_ = new pbc::RepeatedField<global::March7thHoney.Proto.SecretKeyInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,20 +97,8 @@ namespace March7thHoney.Proto {
       get { return secretInfo_; }
     }
 
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 12;
-    private uint retcode_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
-      set {
-        retcode_ = value;
-      }
-    }
-
     /// <summary>Field number for the "secret_rsp" field.</summary>
-    public const int SecretRspFieldNumber = 14;
+    public const int SecretRspFieldNumber = 15;
     private pb::ByteString secretRsp_ = pb::ByteString.Empty;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -118,6 +106,18 @@ namespace March7thHoney.Proto {
       get { return secretRsp_; }
       set {
         secretRsp_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 9;
+    private uint retcode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Retcode {
+      get { return retcode_; }
+      set {
+        retcode_ = value;
       }
     }
 
@@ -137,8 +137,8 @@ namespace March7thHoney.Proto {
         return true;
       }
       if(!secretInfo_.Equals(other.secretInfo_)) return false;
-      if (Retcode != other.Retcode) return false;
       if (SecretRsp != other.SecretRsp) return false;
+      if (Retcode != other.Retcode) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -147,8 +147,8 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= secretInfo_.GetHashCode();
-      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (SecretRsp.Length != 0) hash ^= SecretRsp.GetHashCode();
+      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -169,11 +169,11 @@ namespace March7thHoney.Proto {
     #else
       secretInfo_.WriteTo(output, _repeated_secretInfo_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(72);
         output.WriteUInt32(Retcode);
       }
       if (SecretRsp.Length != 0) {
-        output.WriteRawTag(114);
+        output.WriteRawTag(122);
         output.WriteBytes(SecretRsp);
       }
       if (_unknownFields != null) {
@@ -188,11 +188,11 @@ namespace March7thHoney.Proto {
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       secretInfo_.WriteTo(ref output, _repeated_secretInfo_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(72);
         output.WriteUInt32(Retcode);
       }
       if (SecretRsp.Length != 0) {
-        output.WriteRawTag(114);
+        output.WriteRawTag(122);
         output.WriteBytes(SecretRsp);
       }
       if (_unknownFields != null) {
@@ -206,11 +206,11 @@ namespace March7thHoney.Proto {
     public int CalculateSize() {
       int size = 0;
       size += secretInfo_.CalculateSize(_repeated_secretInfo_codec);
-      if (Retcode != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
-      }
       if (SecretRsp.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(SecretRsp);
+      }
+      if (Retcode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -225,11 +225,11 @@ namespace March7thHoney.Proto {
         return;
       }
       secretInfo_.Add(other.secretInfo_);
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
-      }
       if (other.SecretRsp.Length != 0) {
         SecretRsp = other.SecretRsp;
+      }
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -250,15 +250,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 18: {
+          case 66: {
             secretInfo_.AddEntriesFrom(input, _repeated_secretInfo_codec);
             break;
           }
-          case 96: {
+          case 72: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 114: {
+          case 122: {
             SecretRsp = input.ReadBytes();
             break;
           }
@@ -281,15 +281,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 18: {
+          case 66: {
             secretInfo_.AddEntriesFrom(ref input, _repeated_secretInfo_codec);
             break;
           }
-          case 96: {
+          case 72: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 114: {
+          case 122: {
             SecretRsp = input.ReadBytes();
             break;
           }

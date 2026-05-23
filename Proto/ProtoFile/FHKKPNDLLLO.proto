@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message FHKKPNDLLLO {
+    uint32 portal_buff_id = 1;
+}

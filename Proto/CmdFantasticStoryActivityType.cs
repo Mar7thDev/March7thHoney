@@ -24,15 +24,13 @@ namespace March7thHoney.Proto {
     static CmdFantasticStoryActivityTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CiNDbWRGYW50YXN0aWNTdG9yeUFjdGl2aXR5VHlwZS5wcm90byqzAgodQ21k",
-            "RmFudGFzdGljU3RvcnlBY3Rpdml0eVR5cGUSGwoXUEdFS0pJRURISERfUENQ",
-            "REhFTFBLRU0QABIvCipDbWRGYW50YXN0aWNTdG9yeUFjdGl2aXR5QmF0dGxl",
-            "RW5kU2NOb3RpZnkQtiYSKAojQ21kRW50ZXJBY3Rpdml0eUZhbnRhc3RpY1N0",
-            "b3J5Q3NSZXEQgycSEwoOQ21kTkRLS0FHS0NGR0gQgicSLQooQ21kRW50ZXJG",
-            "YW50YXN0aWNTdG9yeUFjdGl2aXR5U3RhZ2VTY1JzcBCyJhIqCiVDbWRHZXRG",
-            "YW50YXN0aWNTdG9yeUFjdGl2aXR5RGF0YVNjUnNwEK4mEioKJUNtZEdldEZh",
-            "bnRhc3RpY1N0b3J5QWN0aXZpdHlEYXRhQ3NSZXEQ/yZCFqoCE01hcmNoN3Ro",
-            "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "CiNDbWRGYW50YXN0aWNTdG9yeUFjdGl2aXR5VHlwZS5wcm90byrwAQodQ21k",
+            "RmFudGFzdGljU3RvcnlBY3Rpdml0eVR5cGUSGwoXR0pBTE9NT0tGS0tfTkxD",
+            "REdJUEdGREoQABIcChdHSkFMT01PS0ZLS19CTEhCR1BGUEZHUBDtJhIcChdH",
+            "SkFMT01PS0ZLS19LTUlJREFPS0lBTBC/JhIcChdHSkFMT01PS0ZLS19QSUVJ",
+            "S0FCTEJHUBCxJhIcChdHSkFMT01PS0ZLS19JTEZBTEhER05HTBCnJhIcChdH",
+            "SkFMT01PS0ZLS19GQkpDUEdBSUtFQRDIJhIcChdHSkFMT01PS0ZLS19LRk5M",
+            "TkpNQklFTBD0JkIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdFantasticStoryActivityType), }, null, null));
@@ -42,13 +40,13 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdFantasticStoryActivityType {
-    [pbr::OriginalName("PGEKJIEDHHD_PCPDHELPKEM")] PgekjiedhhdPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdFantasticStoryActivityBattleEndScNotify")] CmdFantasticStoryActivityBattleEndScNotify = 4918,
-    [pbr::OriginalName("CmdEnterActivityFantasticStoryCsReq")] CmdEnterActivityFantasticStoryCsReq = 4995,
-    [pbr::OriginalName("CmdNDKKAGKCFGH")] CmdNdkkagkcfgh = 4994,
-    [pbr::OriginalName("CmdEnterFantasticStoryActivityStageScRsp")] CmdEnterFantasticStoryActivityStageScRsp = 4914,
-    [pbr::OriginalName("CmdGetFantasticStoryActivityDataScRsp")] CmdGetFantasticStoryActivityDataScRsp = 4910,
-    [pbr::OriginalName("CmdGetFantasticStoryActivityDataCsReq")] CmdGetFantasticStoryActivityDataCsReq = 4991,
+    [pbr::OriginalName("GJALOMOKFKK_NLCDGIPGFDJ")] GjalomokfkkNlcdgipgfdj = 0,
+    [pbr::OriginalName("GJALOMOKFKK_BLHBGPFPFGP")] GjalomokfkkBlhbgpfpfgp = 4973,
+    [pbr::OriginalName("GJALOMOKFKK_KMIIDAOKIAL")] GjalomokfkkKmiidaokial = 4927,
+    [pbr::OriginalName("GJALOMOKFKK_PIEIKABLBGP")] GjalomokfkkPieikablbgp = 4913,
+    [pbr::OriginalName("GJALOMOKFKK_ILFALHDGNGL")] GjalomokfkkIlfalhdgngl = 4903,
+    [pbr::OriginalName("GJALOMOKFKK_FBJCPGAIKEA")] GjalomokfkkFbjcpgaikea = 4936,
+    [pbr::OriginalName("GJALOMOKFKK_KFNLNJMBIEL")] GjalomokfkkKfnlnjmbiel = 4980,
   }
 
   #endregion

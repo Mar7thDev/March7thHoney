@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "IDFCGGMMFFA.proto";
-import "KGDIMPEOGOL.proto";
+import "GDHLDNFLOOF.proto";
+import "IOJJCDAPLAJ.proto";
 
 message ChessRogueUpdateLevelBaseInfoScNotify {
-    IDFCGGMMFFA reason = 5;
-    KGDIMPEOGOL LHJEJEPGKFH = 12;
+    IOJJCDAPLAJ reason = 5;
+    GDHLDNFLOOF GKDCPNLOLNF = 15;
 }

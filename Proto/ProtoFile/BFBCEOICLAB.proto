@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "ANNFOAGBJBP.proto";
+import "EMFDLPNOGOH.proto";
+import "ENJDEFHFKPI.proto";
+import "IBGFKJMMICI.proto";
+import "JFKAOMCJIKK.proto";
+import "JIMNPPNNHEL.proto";
+import "KAOPGJBGEBF.proto";
+import "KCLHMJHIDOB.proto";
+import "KLMNGOJKEIN.proto";
+import "NBBHDPCPHNN.proto";
+import "PJFDAOKIKOJ.proto";
+
+message BFBCEOICLAB {
+    PJFDAOKIKOJ CCOPDLOKAAE = 10;
+    ENJDEFHFKPI IEMEKMDDIOI = 6;
+    repeated KAOPGJBGEBF LNNGKPAJKLP = 13;
+    NBBHDPCPHNN MHALEIHFKLG = 12;
+    KCLHMJHIDOB LMLDELGBJOO = 1;
+    JIMNPPNNHEL EFLLPHLDBPC = 5;
+    ANNFOAGBJBP CMCBGGKLBCF = 1749;
+    repeated KLMNGOJKEIN FELMAMPGMAE = 4;
+    JFKAOMCJIKK FMIGOKIDKJL = 15;
+    IBGFKJMMICI GODPEHNPPCO = 1316;
+    uint32 difficulty_level = 2;
+    EMFDLPNOGOH status = 7;
+    uint32 GBMBGHAPDMG = 11;
+    uint32 area_id = 14;
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "MBPDIPLJMKN.proto";
+
+message DDAMEHEPOBD {
+    repeated MBPDIPLJMKN CKJAKKNOHEK = 7;
+    uint32 LCLPEJHEAID = 13;
+    uint32 pos_index = 15;
+    uint32 unique_id = 9;
+}

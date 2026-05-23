@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch5Ecmlua01ha2VyQ2hhbGxlbmdlU2NSc3AucHJvdG8aDkl0ZW1MaXN0LnBy",
-            "b3RvInEKGERyaW5rTWFrZXJDaGFsbGVuZ2VTY1JzcBIPCgdyZXRjb2RlGAMg",
-            "ASgNEhkKBnJld2FyZBgIIAEoCzIJLkl0ZW1MaXN0EhMKC0RBSUtOS0FMS0NN",
-            "GAwgASgIEhQKDGNoYWxsZW5nZV9pZBgPIAEoDUIWqgITTWFyY2g3dGhIb25l",
+            "b3RvInEKGERyaW5rTWFrZXJDaGFsbGVuZ2VTY1JzcBIZCgZyZXdhcmQYCSAB",
+            "KAsyCS5JdGVtTGlzdBIPCgdyZXRjb2RlGAQgASgNEhMKC0tHS0VKQUtLTERQ",
+            "GAEgASgIEhQKDGNoYWxsZW5nZV9pZBgLIAEoDUIWqgITTWFyY2g3dGhIb25l",
             "eS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemListReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DrinkMakerChallengeScRsp), global::March7thHoney.Proto.DrinkMakerChallengeScRsp.Parser, new[]{ "Retcode", "Reward", "DAIKNKALKCM", "ChallengeId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DrinkMakerChallengeScRsp), global::March7thHoney.Proto.DrinkMakerChallengeScRsp.Parser, new[]{ "Reward", "Retcode", "KGKEJAKKLDP", "ChallengeId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,9 +74,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public DrinkMakerChallengeScRsp(DrinkMakerChallengeScRsp other) : this() {
-      retcode_ = other.retcode_;
       reward_ = other.reward_ != null ? other.reward_.Clone() : null;
-      dAIKNKALKCM_ = other.dAIKNKALKCM_;
+      retcode_ = other.retcode_;
+      kGKEJAKKLDP_ = other.kGKEJAKKLDP_;
       challengeId_ = other.challengeId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -87,20 +87,8 @@ namespace March7thHoney.Proto {
       return new DrinkMakerChallengeScRsp(this);
     }
 
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 3;
-    private uint retcode_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
-      set {
-        retcode_ = value;
-      }
-    }
-
     /// <summary>Field number for the "reward" field.</summary>
-    public const int RewardFieldNumber = 8;
+    public const int RewardFieldNumber = 9;
     private global::March7thHoney.Proto.ItemList reward_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -111,20 +99,32 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "DAIKNKALKCM" field.</summary>
-    public const int DAIKNKALKCMFieldNumber = 12;
-    private bool dAIKNKALKCM_;
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 4;
+    private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool DAIKNKALKCM {
-      get { return dAIKNKALKCM_; }
+    public uint Retcode {
+      get { return retcode_; }
       set {
-        dAIKNKALKCM_ = value;
+        retcode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "KGKEJAKKLDP" field.</summary>
+    public const int KGKEJAKKLDPFieldNumber = 1;
+    private bool kGKEJAKKLDP_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool KGKEJAKKLDP {
+      get { return kGKEJAKKLDP_; }
+      set {
+        kGKEJAKKLDP_ = value;
       }
     }
 
     /// <summary>Field number for the "challenge_id" field.</summary>
-    public const int ChallengeIdFieldNumber = 15;
+    public const int ChallengeIdFieldNumber = 11;
     private uint challengeId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -150,9 +150,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Retcode != other.Retcode) return false;
       if (!object.Equals(Reward, other.Reward)) return false;
-      if (DAIKNKALKCM != other.DAIKNKALKCM) return false;
+      if (Retcode != other.Retcode) return false;
+      if (KGKEJAKKLDP != other.KGKEJAKKLDP) return false;
       if (ChallengeId != other.ChallengeId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -161,9 +161,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (reward_ != null) hash ^= Reward.GetHashCode();
-      if (DAIKNKALKCM != false) hash ^= DAIKNKALKCM.GetHashCode();
+      if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (KGKEJAKKLDP != false) hash ^= KGKEJAKKLDP.GetHashCode();
       if (ChallengeId != 0) hash ^= ChallengeId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -183,20 +183,20 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (KGKEJAKKLDP != false) {
+        output.WriteRawTag(8);
+        output.WriteBool(KGKEJAKKLDP);
+      }
       if (Retcode != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(32);
         output.WriteUInt32(Retcode);
       }
       if (reward_ != null) {
-        output.WriteRawTag(66);
+        output.WriteRawTag(74);
         output.WriteMessage(Reward);
       }
-      if (DAIKNKALKCM != false) {
-        output.WriteRawTag(96);
-        output.WriteBool(DAIKNKALKCM);
-      }
       if (ChallengeId != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(88);
         output.WriteUInt32(ChallengeId);
       }
       if (_unknownFields != null) {
@@ -209,20 +209,20 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (KGKEJAKKLDP != false) {
+        output.WriteRawTag(8);
+        output.WriteBool(KGKEJAKKLDP);
+      }
       if (Retcode != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(32);
         output.WriteUInt32(Retcode);
       }
       if (reward_ != null) {
-        output.WriteRawTag(66);
+        output.WriteRawTag(74);
         output.WriteMessage(Reward);
       }
-      if (DAIKNKALKCM != false) {
-        output.WriteRawTag(96);
-        output.WriteBool(DAIKNKALKCM);
-      }
       if (ChallengeId != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(88);
         output.WriteUInt32(ChallengeId);
       }
       if (_unknownFields != null) {
@@ -235,13 +235,13 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Retcode != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
-      }
       if (reward_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Reward);
       }
-      if (DAIKNKALKCM != false) {
+      if (Retcode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      }
+      if (KGKEJAKKLDP != false) {
         size += 1 + 1;
       }
       if (ChallengeId != 0) {
@@ -259,17 +259,17 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
-      }
       if (other.reward_ != null) {
         if (reward_ == null) {
           Reward = new global::March7thHoney.Proto.ItemList();
         }
         Reward.MergeFrom(other.Reward);
       }
-      if (other.DAIKNKALKCM != false) {
-        DAIKNKALKCM = other.DAIKNKALKCM;
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
+      }
+      if (other.KGKEJAKKLDP != false) {
+        KGKEJAKKLDP = other.KGKEJAKKLDP;
       }
       if (other.ChallengeId != 0) {
         ChallengeId = other.ChallengeId;
@@ -293,22 +293,22 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
+          case 8: {
+            KGKEJAKKLDP = input.ReadBool();
+            break;
+          }
+          case 32: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 66: {
+          case 74: {
             if (reward_ == null) {
               Reward = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(Reward);
             break;
           }
-          case 96: {
-            DAIKNKALKCM = input.ReadBool();
-            break;
-          }
-          case 120: {
+          case 88: {
             ChallengeId = input.ReadUInt32();
             break;
           }
@@ -331,22 +331,22 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
+          case 8: {
+            KGKEJAKKLDP = input.ReadBool();
+            break;
+          }
+          case 32: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 66: {
+          case 74: {
             if (reward_ == null) {
               Reward = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(Reward);
             break;
           }
-          case 96: {
-            DAIKNKALKCM = input.ReadBool();
-            break;
-          }
-          case 120: {
+          case 88: {
             ChallengeId = input.ReadUInt32();
             break;
           }

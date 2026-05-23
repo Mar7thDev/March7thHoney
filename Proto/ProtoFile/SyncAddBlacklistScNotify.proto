@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message SyncAddBlacklistScNotify {
-    uint32 uid = 8;
+    uint32 uid = 2;
 }

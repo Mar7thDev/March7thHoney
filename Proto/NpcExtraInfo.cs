@@ -24,16 +24,16 @@ namespace March7thHoney.Proto {
     static NpcExtraInfoReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChJOcGNFeHRyYUluZm8ucHJvdG8aEUVCRkJQSElBRE1JLnByb3RvGhFORUFP",
-            "QkZKT01DRi5wcm90bxoWTnBjUm9ndWVHYW1lSW5mby5wcm90byKVAQoMTnBj",
-            "RXh0cmFJbmZvEiMKC0pBQ0RBRENITkZMGAMgASgLMgwuRUJGQlBISUFETUlI",
-            "ABIjCgtGUENPTU5BT0FCRBgLIAEoCzIMLk5FQU9CRkpPTUNGSAASLAoPcm9n",
-            "dWVfZ2FtZV9pbmZvGA8gASgLMhEuTnBjUm9ndWVHYW1lSW5mb0gAQg0KC0JQ",
-            "SUhGQUpDTE9DQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ChJOcGNFeHRyYUluZm8ucHJvdG8aEU1IR0FPTENET05LLnByb3RvGhZOcGNS",
+            "b2d1ZUdhbWVJbmZvLnByb3RvGhFQQUdPSENKR09MQy5wcm90byKVAQoMTnBj",
+            "RXh0cmFJbmZvEiwKD3JvZ3VlX2dhbWVfaW5mbxgHIAEoCzIRLk5wY1JvZ3Vl",
+            "R2FtZUluZm9IABIjCgtNQkxGRklLR01PUBgOIAEoCzIMLlBBR09IQ0pHT0xD",
+            "SAASIwoLREtQRkhMQkZGSEkYBCABKAsyDC5NSEdBT0xDRE9OS0gAQg0KC0tL",
+            "TkJPQUNOQ09OQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.EBFBPHIADMIReflection.Descriptor, global::March7thHoney.Proto.NEAOBFJOMCFReflection.Descriptor, global::March7thHoney.Proto.NpcRogueGameInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.MHGAOLCDONKReflection.Descriptor, global::March7thHoney.Proto.NpcRogueGameInfoReflection.Descriptor, global::March7thHoney.Proto.PAGOHCJGOLCReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NpcExtraInfo), global::March7thHoney.Proto.NpcExtraInfo.Parser, new[]{ "JACDADCHNFL", "FPCOMNAOABD", "RogueGameInfo" }, new[]{ "BPIHFAJCLOC" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NpcExtraInfo), global::March7thHoney.Proto.NpcExtraInfo.Parser, new[]{ "RogueGameInfo", "MBLFFIKGMOP", "DKPFHLBFFHI" }, new[]{ "KKNBOACNCON" }, null, null, null)
           }));
     }
     #endregion
@@ -75,15 +75,15 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public NpcExtraInfo(NpcExtraInfo other) : this() {
-      switch (other.BPIHFAJCLOCCase) {
-        case BPIHFAJCLOCOneofCase.JACDADCHNFL:
-          JACDADCHNFL = other.JACDADCHNFL.Clone();
-          break;
-        case BPIHFAJCLOCOneofCase.FPCOMNAOABD:
-          FPCOMNAOABD = other.FPCOMNAOABD.Clone();
-          break;
-        case BPIHFAJCLOCOneofCase.RogueGameInfo:
+      switch (other.KKNBOACNCONCase) {
+        case KKNBOACNCONOneofCase.RogueGameInfo:
           RogueGameInfo = other.RogueGameInfo.Clone();
+          break;
+        case KKNBOACNCONOneofCase.MBLFFIKGMOP:
+          MBLFFIKGMOP = other.MBLFFIKGMOP.Clone();
+          break;
+        case KKNBOACNCONOneofCase.DKPFHLBFFHI:
+          DKPFHLBFFHI = other.DKPFHLBFFHI.Clone();
           break;
       }
 
@@ -96,62 +96,62 @@ namespace March7thHoney.Proto {
       return new NpcExtraInfo(this);
     }
 
-    /// <summary>Field number for the "JACDADCHNFL" field.</summary>
-    public const int JACDADCHNFLFieldNumber = 3;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.EBFBPHIADMI JACDADCHNFL {
-      get { return bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.JACDADCHNFL ? (global::March7thHoney.Proto.EBFBPHIADMI) bPIHFAJCLOC_ : null; }
-      set {
-        bPIHFAJCLOC_ = value;
-        bPIHFAJCLOCCase_ = value == null ? BPIHFAJCLOCOneofCase.None : BPIHFAJCLOCOneofCase.JACDADCHNFL;
-      }
-    }
-
-    /// <summary>Field number for the "FPCOMNAOABD" field.</summary>
-    public const int FPCOMNAOABDFieldNumber = 11;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.NEAOBFJOMCF FPCOMNAOABD {
-      get { return bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.FPCOMNAOABD ? (global::March7thHoney.Proto.NEAOBFJOMCF) bPIHFAJCLOC_ : null; }
-      set {
-        bPIHFAJCLOC_ = value;
-        bPIHFAJCLOCCase_ = value == null ? BPIHFAJCLOCOneofCase.None : BPIHFAJCLOCOneofCase.FPCOMNAOABD;
-      }
-    }
-
     /// <summary>Field number for the "rogue_game_info" field.</summary>
-    public const int RogueGameInfoFieldNumber = 15;
+    public const int RogueGameInfoFieldNumber = 7;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.NpcRogueGameInfo RogueGameInfo {
-      get { return bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.RogueGameInfo ? (global::March7thHoney.Proto.NpcRogueGameInfo) bPIHFAJCLOC_ : null; }
+      get { return kKNBOACNCONCase_ == KKNBOACNCONOneofCase.RogueGameInfo ? (global::March7thHoney.Proto.NpcRogueGameInfo) kKNBOACNCON_ : null; }
       set {
-        bPIHFAJCLOC_ = value;
-        bPIHFAJCLOCCase_ = value == null ? BPIHFAJCLOCOneofCase.None : BPIHFAJCLOCOneofCase.RogueGameInfo;
+        kKNBOACNCON_ = value;
+        kKNBOACNCONCase_ = value == null ? KKNBOACNCONOneofCase.None : KKNBOACNCONOneofCase.RogueGameInfo;
       }
     }
 
-    private object bPIHFAJCLOC_;
-    /// <summary>Enum of possible cases for the "BPIHFAJCLOC" oneof.</summary>
-    public enum BPIHFAJCLOCOneofCase {
-      None = 0,
-      JACDADCHNFL = 3,
-      FPCOMNAOABD = 11,
-      RogueGameInfo = 15,
-    }
-    private BPIHFAJCLOCOneofCase bPIHFAJCLOCCase_ = BPIHFAJCLOCOneofCase.None;
+    /// <summary>Field number for the "MBLFFIKGMOP" field.</summary>
+    public const int MBLFFIKGMOPFieldNumber = 14;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public BPIHFAJCLOCOneofCase BPIHFAJCLOCCase {
-      get { return bPIHFAJCLOCCase_; }
+    public global::March7thHoney.Proto.PAGOHCJGOLC MBLFFIKGMOP {
+      get { return kKNBOACNCONCase_ == KKNBOACNCONOneofCase.MBLFFIKGMOP ? (global::March7thHoney.Proto.PAGOHCJGOLC) kKNBOACNCON_ : null; }
+      set {
+        kKNBOACNCON_ = value;
+        kKNBOACNCONCase_ = value == null ? KKNBOACNCONOneofCase.None : KKNBOACNCONOneofCase.MBLFFIKGMOP;
+      }
+    }
+
+    /// <summary>Field number for the "DKPFHLBFFHI" field.</summary>
+    public const int DKPFHLBFFHIFieldNumber = 4;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.MHGAOLCDONK DKPFHLBFFHI {
+      get { return kKNBOACNCONCase_ == KKNBOACNCONOneofCase.DKPFHLBFFHI ? (global::March7thHoney.Proto.MHGAOLCDONK) kKNBOACNCON_ : null; }
+      set {
+        kKNBOACNCON_ = value;
+        kKNBOACNCONCase_ = value == null ? KKNBOACNCONOneofCase.None : KKNBOACNCONOneofCase.DKPFHLBFFHI;
+      }
+    }
+
+    private object kKNBOACNCON_;
+    /// <summary>Enum of possible cases for the "KKNBOACNCON" oneof.</summary>
+    public enum KKNBOACNCONOneofCase {
+      None = 0,
+      RogueGameInfo = 7,
+      MBLFFIKGMOP = 14,
+      DKPFHLBFFHI = 4,
+    }
+    private KKNBOACNCONOneofCase kKNBOACNCONCase_ = KKNBOACNCONOneofCase.None;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public KKNBOACNCONOneofCase KKNBOACNCONCase {
+      get { return kKNBOACNCONCase_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearBPIHFAJCLOC() {
-      bPIHFAJCLOCCase_ = BPIHFAJCLOCOneofCase.None;
-      bPIHFAJCLOC_ = null;
+    public void ClearKKNBOACNCON() {
+      kKNBOACNCONCase_ = KKNBOACNCONOneofCase.None;
+      kKNBOACNCON_ = null;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -169,10 +169,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(JACDADCHNFL, other.JACDADCHNFL)) return false;
-      if (!object.Equals(FPCOMNAOABD, other.FPCOMNAOABD)) return false;
       if (!object.Equals(RogueGameInfo, other.RogueGameInfo)) return false;
-      if (BPIHFAJCLOCCase != other.BPIHFAJCLOCCase) return false;
+      if (!object.Equals(MBLFFIKGMOP, other.MBLFFIKGMOP)) return false;
+      if (!object.Equals(DKPFHLBFFHI, other.DKPFHLBFFHI)) return false;
+      if (KKNBOACNCONCase != other.KKNBOACNCONCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -180,10 +180,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.JACDADCHNFL) hash ^= JACDADCHNFL.GetHashCode();
-      if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.FPCOMNAOABD) hash ^= FPCOMNAOABD.GetHashCode();
-      if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.RogueGameInfo) hash ^= RogueGameInfo.GetHashCode();
-      hash ^= (int) bPIHFAJCLOCCase_;
+      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.RogueGameInfo) hash ^= RogueGameInfo.GetHashCode();
+      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.MBLFFIKGMOP) hash ^= MBLFFIKGMOP.GetHashCode();
+      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.DKPFHLBFFHI) hash ^= DKPFHLBFFHI.GetHashCode();
+      hash ^= (int) kKNBOACNCONCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -202,17 +202,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.JACDADCHNFL) {
-        output.WriteRawTag(26);
-        output.WriteMessage(JACDADCHNFL);
+      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.DKPFHLBFFHI) {
+        output.WriteRawTag(34);
+        output.WriteMessage(DKPFHLBFFHI);
       }
-      if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.FPCOMNAOABD) {
-        output.WriteRawTag(90);
-        output.WriteMessage(FPCOMNAOABD);
-      }
-      if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.RogueGameInfo) {
-        output.WriteRawTag(122);
+      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.RogueGameInfo) {
+        output.WriteRawTag(58);
         output.WriteMessage(RogueGameInfo);
+      }
+      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.MBLFFIKGMOP) {
+        output.WriteRawTag(114);
+        output.WriteMessage(MBLFFIKGMOP);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -224,17 +224,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.JACDADCHNFL) {
-        output.WriteRawTag(26);
-        output.WriteMessage(JACDADCHNFL);
+      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.DKPFHLBFFHI) {
+        output.WriteRawTag(34);
+        output.WriteMessage(DKPFHLBFFHI);
       }
-      if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.FPCOMNAOABD) {
-        output.WriteRawTag(90);
-        output.WriteMessage(FPCOMNAOABD);
-      }
-      if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.RogueGameInfo) {
-        output.WriteRawTag(122);
+      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.RogueGameInfo) {
+        output.WriteRawTag(58);
         output.WriteMessage(RogueGameInfo);
+      }
+      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.MBLFFIKGMOP) {
+        output.WriteRawTag(114);
+        output.WriteMessage(MBLFFIKGMOP);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -246,14 +246,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.JACDADCHNFL) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(JACDADCHNFL);
-      }
-      if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.FPCOMNAOABD) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(FPCOMNAOABD);
-      }
-      if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.RogueGameInfo) {
+      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.RogueGameInfo) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(RogueGameInfo);
+      }
+      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.MBLFFIKGMOP) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(MBLFFIKGMOP);
+      }
+      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.DKPFHLBFFHI) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(DKPFHLBFFHI);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -267,24 +267,24 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      switch (other.BPIHFAJCLOCCase) {
-        case BPIHFAJCLOCOneofCase.JACDADCHNFL:
-          if (JACDADCHNFL == null) {
-            JACDADCHNFL = new global::March7thHoney.Proto.EBFBPHIADMI();
-          }
-          JACDADCHNFL.MergeFrom(other.JACDADCHNFL);
-          break;
-        case BPIHFAJCLOCOneofCase.FPCOMNAOABD:
-          if (FPCOMNAOABD == null) {
-            FPCOMNAOABD = new global::March7thHoney.Proto.NEAOBFJOMCF();
-          }
-          FPCOMNAOABD.MergeFrom(other.FPCOMNAOABD);
-          break;
-        case BPIHFAJCLOCOneofCase.RogueGameInfo:
+      switch (other.KKNBOACNCONCase) {
+        case KKNBOACNCONOneofCase.RogueGameInfo:
           if (RogueGameInfo == null) {
             RogueGameInfo = new global::March7thHoney.Proto.NpcRogueGameInfo();
           }
           RogueGameInfo.MergeFrom(other.RogueGameInfo);
+          break;
+        case KKNBOACNCONOneofCase.MBLFFIKGMOP:
+          if (MBLFFIKGMOP == null) {
+            MBLFFIKGMOP = new global::March7thHoney.Proto.PAGOHCJGOLC();
+          }
+          MBLFFIKGMOP.MergeFrom(other.MBLFFIKGMOP);
+          break;
+        case KKNBOACNCONOneofCase.DKPFHLBFFHI:
+          if (DKPFHLBFFHI == null) {
+            DKPFHLBFFHI = new global::March7thHoney.Proto.MHGAOLCDONK();
+          }
+          DKPFHLBFFHI.MergeFrom(other.DKPFHLBFFHI);
           break;
       }
 
@@ -307,31 +307,31 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 26: {
-            global::March7thHoney.Proto.EBFBPHIADMI subBuilder = new global::March7thHoney.Proto.EBFBPHIADMI();
-            if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.JACDADCHNFL) {
-              subBuilder.MergeFrom(JACDADCHNFL);
+          case 34: {
+            global::March7thHoney.Proto.MHGAOLCDONK subBuilder = new global::March7thHoney.Proto.MHGAOLCDONK();
+            if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.DKPFHLBFFHI) {
+              subBuilder.MergeFrom(DKPFHLBFFHI);
             }
             input.ReadMessage(subBuilder);
-            JACDADCHNFL = subBuilder;
+            DKPFHLBFFHI = subBuilder;
             break;
           }
-          case 90: {
-            global::March7thHoney.Proto.NEAOBFJOMCF subBuilder = new global::March7thHoney.Proto.NEAOBFJOMCF();
-            if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.FPCOMNAOABD) {
-              subBuilder.MergeFrom(FPCOMNAOABD);
-            }
-            input.ReadMessage(subBuilder);
-            FPCOMNAOABD = subBuilder;
-            break;
-          }
-          case 122: {
+          case 58: {
             global::March7thHoney.Proto.NpcRogueGameInfo subBuilder = new global::March7thHoney.Proto.NpcRogueGameInfo();
-            if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.RogueGameInfo) {
+            if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.RogueGameInfo) {
               subBuilder.MergeFrom(RogueGameInfo);
             }
             input.ReadMessage(subBuilder);
             RogueGameInfo = subBuilder;
+            break;
+          }
+          case 114: {
+            global::March7thHoney.Proto.PAGOHCJGOLC subBuilder = new global::March7thHoney.Proto.PAGOHCJGOLC();
+            if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.MBLFFIKGMOP) {
+              subBuilder.MergeFrom(MBLFFIKGMOP);
+            }
+            input.ReadMessage(subBuilder);
+            MBLFFIKGMOP = subBuilder;
             break;
           }
         }
@@ -353,31 +353,31 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 26: {
-            global::March7thHoney.Proto.EBFBPHIADMI subBuilder = new global::March7thHoney.Proto.EBFBPHIADMI();
-            if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.JACDADCHNFL) {
-              subBuilder.MergeFrom(JACDADCHNFL);
+          case 34: {
+            global::March7thHoney.Proto.MHGAOLCDONK subBuilder = new global::March7thHoney.Proto.MHGAOLCDONK();
+            if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.DKPFHLBFFHI) {
+              subBuilder.MergeFrom(DKPFHLBFFHI);
             }
             input.ReadMessage(subBuilder);
-            JACDADCHNFL = subBuilder;
+            DKPFHLBFFHI = subBuilder;
             break;
           }
-          case 90: {
-            global::March7thHoney.Proto.NEAOBFJOMCF subBuilder = new global::March7thHoney.Proto.NEAOBFJOMCF();
-            if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.FPCOMNAOABD) {
-              subBuilder.MergeFrom(FPCOMNAOABD);
-            }
-            input.ReadMessage(subBuilder);
-            FPCOMNAOABD = subBuilder;
-            break;
-          }
-          case 122: {
+          case 58: {
             global::March7thHoney.Proto.NpcRogueGameInfo subBuilder = new global::March7thHoney.Proto.NpcRogueGameInfo();
-            if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.RogueGameInfo) {
+            if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.RogueGameInfo) {
               subBuilder.MergeFrom(RogueGameInfo);
             }
             input.ReadMessage(subBuilder);
             RogueGameInfo = subBuilder;
+            break;
+          }
+          case 114: {
+            global::March7thHoney.Proto.PAGOHCJGOLC subBuilder = new global::March7thHoney.Proto.PAGOHCJGOLC();
+            if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.MBLFFIKGMOP) {
+              subBuilder.MergeFrom(MBLFFIKGMOP);
+            }
+            input.ReadMessage(subBuilder);
+            MBLFFIKGMOP = subBuilder;
             break;
           }
         }

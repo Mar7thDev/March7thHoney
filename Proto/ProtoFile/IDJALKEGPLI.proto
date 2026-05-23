@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "APAMFCKFHLL.proto";
+
+message IDJALKEGPLI {
+    repeated APAMFCKFHLL DCJDCPMKEPN = 12;
+    uint32 plane_id = 4;
+}

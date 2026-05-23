@@ -2,40 +2,38 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "COKHGIMNLEK.proto";
-import "DNJFGOLLCCB.proto";
+import "CMCJFJEBBCO.proto";
 import "LanguageType.proto";
+import "MEPHKJFAJPP.proto";
 import "PlatformType.proto";
 
 message PlayerLoginCsReq {
-    string MCKPMFDFBGP = 1;
-    uint64 login_random = 2;
-    string GGDPMLCODPH = 3;
-    string KILCHABDDLC = 4;
-    string IBDEALLKDAM = 5;
-    PlatformType platform = 6;
-    string HFFGCAGBNLO = 7;
-    LanguageType BNPGKDAEJPB = 8;
-    uint32 client_res_version = 9;
-    uint32 IPICOGJIBAE = 10;
-    string rogue_get_info = 11;
-    string LJIMJGAHMKM = 12;
-    string JBCNGGAGFCD = 13;
-    string ENECPEOGEKG = 14;
-    string signature = 15;
-    DNJFGOLLCCB HEJKBACFHBG = 42;
-    string GNODLEJAOJP = 84;
-    string CABLACHJKID = 189;
-    string CJCFGAMHMCG = 273;
-    bool MMFJFMPNJMN = 386;
-    uint32 PEKKCPFGCCL = 416;
-    uint32 EFKCMFIJGIJ = 437;
-    string ICJIGHOMDNL = 729;
-    bool JMFANJEHDMG = 765;
-    COKHGIMNLEK ABFNMCHIIFI = 809;
-    uint32 NCHFFCBPIFB = 878;
-    string HBIDCAFOPMG = 1132;
-    string BLEGPLIACMK = 1248;
+    string NIBMFCFBHEP = 12;
+    string signature = 8;
+    string JHOKMNLHBMA = 6;
+    string IDIFIEPMLKA = 707;
+    string BJCIBNBGBMP = 3;
+    string GDMJPJCKBBE = 5;
+    string LFLCDNGALME = 14;
+    string JKGAKDALFPE = 1751;
+    string LPBHJODECNE = 1448;
+    string DJONELMIFEE = 1332;
+    string MGNLIGIKKPP = 45;
+    string BAOGDOFPPLN = 2;
+    string IJKOMIKFKEK = 1716;
+    string IHMJHLLCLDE = 11;
+    string LDCIBPHDAKI = 15;
+    string BDGDPMALNIF = 4;
+    CMCJFJEBBCO EONDGECNAIH = 1329;
+    MEPHKJFAJPP HNPMEDIEJFC = 638;
+    PlatformType platform = 13;
+    uint32 KPFGILOFIDI = 654;
+    uint32 FKFFBEMEIEP = 382;
+    LanguageType HOFEMNAIIHB = 9;
+    bool ACJKHHBJKHE = 1731;
+    bool MENBLJOGJMH = 1865;
+    uint32 DJCNHCGFHKF = 435;
+    uint32 JMMHHFLEEPG = 7;
+    uint32 client_res_version = 1;
+    uint64 login_random = 10;
 }

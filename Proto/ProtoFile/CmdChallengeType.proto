@@ -2,29 +2,27 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdChallengeType {
-    BNLGJBKKKBK_PCPDHELPKEM = 0;
-    CmdChallengeSettleNotify = 1709;
-    CmdGetChallengeGroupStatisticsCsReq = 1772;
-    CmdLeaveChallengeCsReq = 1714;
-    CmdGetChallengeCsReq = 1791;
-    CmdStartPartialChallengeScRsp = 1761;
-    CmdGetChallengeGroupStatisticsScRsp = 1732;
-    CmdTakeChallengeRewardScRsp = 1738;
-    CmdTakeChallengeRewardCsReq = 1704;
-    CmdStartChallengeScRsp = 1795;
-    CmdGetCurChallengeScRsp = 1739;
-    CmdEnterChallengeNextPhaseCsReq = 1800;
-    CmdGetCurChallengeCsReq = 1726;
-    CmdEnterChallengeNextPhaseScRsp = 1789;
-    CmdLeaveChallengeScRsp = 1718;
-    CmdStartChallengeCsReq = 1794;
-    CmdRestartChallengePhaseScRsp = 1744;
-    CmdChallengeBossPhaseSettleNotify = 1796;
-    CmdPartialChallengeCsReq = 1733;
-    CmdGetChallengeScRsp = 1710;
-    CmdRestartChallengePhaseCsReq = 1758;
-    CmdChallengeLineupNotify = 1701;
+    GBMDCPMJIAB_NLCDGIPGFDJ = 0;
+    GBMDCPMJIAB_PDLCBOHHENN = 1727;
+    GBMDCPMJIAB_HDECPMFFAHF = 1703;
+    GBMDCPMJIAB_CHLNPBMKMJN = 1712;
+    GBMDCPMJIAB_GNBFHPKMEGH = 1724;
+    GBMDCPMJIAB_GAJEHKDIKFC = 1761;
+    GBMDCPMJIAB_GOICGNDCAEH = 1736;
+    GBMDCPMJIAB_PJBIBICDCJP = 1742;
+    GBMDCPMJIAB_JDGPAOKCAKC = 1778;
+    GBMDCPMJIAB_JMBOIAFGJAE = 1776;
+    GBMDCPMJIAB_GAAGCJEHIKK = 1752;
+    GBMDCPMJIAB_JDCJCNOEHCO = 1780;
+    GBMDCPMJIAB_PJELPLKLPDD = 1715;
+    GBMDCPMJIAB_NDJMHKLLKII = 1738;
+    GBMDCPMJIAB_DMKIMHCCKLI = 1713;
+    GBMDCPMJIAB_DKHIENJKDKM = 1729;
+    GBMDCPMJIAB_NMOFHKHCJKG = 1759;
+    GBMDCPMJIAB_DDKKLDFAACA = 1787;
+    GBMDCPMJIAB_PGPFCCJAHDF = 1773;
+    GBMDCPMJIAB_PMMCKMAONAM = 1748;
+    GBMDCPMJIAB_DLAOMOLCFNI = 1709;
+    GBMDCPMJIAB_MAPJJIIBCAA = 1774;
 }

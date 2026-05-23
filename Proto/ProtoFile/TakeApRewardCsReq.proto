@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message TakeApRewardCsReq {
-    uint32 level = 14;
+    uint32 level = 10;
 }

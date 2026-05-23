@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "IPMLDNLACFO.proto";
+
+message EKPBGMKJGDL {
+    IPMLDNLACFO HLBCFJLLKBL = 6;
+    uint32 BEMDNEMABCC = 2;
+    uint32 avatar_id = 8;
+    uint32 MGBCAPIIKLM = 5;
+}

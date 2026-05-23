@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message TrainPartyUseCardCsReq {
-    uint32 GDFPBHMMFEA = 4;
+    uint32 FGIHKKKOGJD = 12;
 }

@@ -1,6 +1,6 @@
 using March7thHoney.Command;
 using March7thHoney.GameServer.Game.Battle;
-using March7thHoney.GameServer.Game.Challenge.Definitions;
+// TODO 4.3: Challenge.Definitions 暂停
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
@@ -56,15 +56,7 @@ public static class PluginEvent
         OnPlayerQuitBattle?.Invoke(player, result);
     }
 
-    public static void InvokeOnPlayerEnterChallenge(PlayerInstance player, BaseChallengeInstance challenge)
-    {
-        OnPlayerEnterChallenge?.Invoke(player, challenge);
-    }
-
-    public static void InvokeOnPlayerQuitChallenge(PlayerInstance player, BaseChallengeInstance? challenge)
-    {
-        OnPlayerQuitChallenge?.Invoke(player, challenge);
-    }
+    // TODO 4.3: OnPlayerEnterChallenge / OnPlayerQuitChallenge 依赖 BaseChallengeInstance（已暂停）
 
     public static void InvokeOnPlayerSyncLineup(PlayerInstance player, LineupInfo? lineup)
     {
@@ -96,9 +88,7 @@ public static class PluginEvent
 
     public delegate void OnPlayerQuitBattleHandler(PlayerInstance player, PVEBattleResultCsReq result);
 
-    public delegate void OnPlayerEnterChallengeHandler(PlayerInstance player, BaseChallengeInstance challenge);
-
-    public delegate void OnPlayerQuitChallengeHandler(PlayerInstance player, BaseChallengeInstance? challenge);
+    // TODO 4.3: OnPlayerEnterChallengeHandler / OnPlayerQuitChallengeHandler 暂停
 
     public delegate void OnPlayerSyncLineupHandler(PlayerInstance player, LineupInfo? lineup);
 
@@ -116,9 +106,9 @@ public static class PluginEvent
     public static event OnPlayerInteractHandler? OnPlayerInteract;
     public static event OnPlayerLoadSceneHandler? OnPlayerLoadScene;
     public static event OnPlayerEnterBattleHandler? OnPlayerEnterBattle;
-    public static event OnPlayerEnterChallengeHandler? OnPlayerEnterChallenge;
+    // TODO 4.3: OnPlayerEnterChallenge event 暂停
     public static event OnPlayerQuitBattleHandler? OnPlayerQuitBattle;
-    public static event OnPlayerQuitChallengeHandler? OnPlayerQuitChallenge;
+    // TODO 4.3: OnPlayerQuitChallenge event 暂停
     public static event OnPlayerSyncLineupHandler? OnPlayerSyncLineup;
     public static event OnPlayerUseCommandHandler? OnPlayerUseCommand;
 

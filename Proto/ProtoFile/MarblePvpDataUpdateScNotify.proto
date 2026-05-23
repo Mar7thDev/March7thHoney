@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message MarblePvpDataUpdateScNotify {
-    int32 score_id = 7;
+    int32 score_id = 14;
 }

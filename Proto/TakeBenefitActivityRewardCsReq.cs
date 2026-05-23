@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static TakeBenefitActivityRewardCsReqReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CiRUYWtlQmVuZWZpdEFjdGl2aXR5UmV3YXJkQ3NSZXEucHJvdG8aEUlJSktJ",
-            "TEZKRU5MLnByb3RvIlgKHlRha2VCZW5lZml0QWN0aXZpdHlSZXdhcmRDc1Jl",
-            "cRITCgtGSEZNTk9HQU1IQRgBIAEoCBIhCgtzd2l0Y2hfbGlzdBgDIAMoCzIM",
-            "LklJSktJTEZKRU5MQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "CiRUYWtlQmVuZWZpdEFjdGl2aXR5UmV3YXJkQ3NSZXEucHJvdG8aEU9LS0VK",
+            "SFBMTUxBLnByb3RvIlgKHlRha2VCZW5lZml0QWN0aXZpdHlSZXdhcmRDc1Jl",
+            "cRIhCgtzd2l0Y2hfbGlzdBgBIAMoCzIMLk9LS0VKSFBMTUxBEhMKC0xKRUdQ",
+            "SUpHTUxHGA8gASgIQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.IIJKILFJENLReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.OKKEJHPLMLAReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TakeBenefitActivityRewardCsReq), global::March7thHoney.Proto.TakeBenefitActivityRewardCsReq.Parser, new[]{ "FHFMNOGAMHA", "SwitchList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TakeBenefitActivityRewardCsReq), global::March7thHoney.Proto.TakeBenefitActivityRewardCsReq.Parser, new[]{ "SwitchList", "LJEGPIJGMLG" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public TakeBenefitActivityRewardCsReq(TakeBenefitActivityRewardCsReq other) : this() {
-      fHFMNOGAMHA_ = other.fHFMNOGAMHA_;
       switchList_ = other.switchList_.Clone();
+      lJEGPIJGMLG_ = other.lJEGPIJGMLG_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,27 +84,27 @@ namespace March7thHoney.Proto {
       return new TakeBenefitActivityRewardCsReq(this);
     }
 
-    /// <summary>Field number for the "FHFMNOGAMHA" field.</summary>
-    public const int FHFMNOGAMHAFieldNumber = 1;
-    private bool fHFMNOGAMHA_;
+    /// <summary>Field number for the "switch_list" field.</summary>
+    public const int SwitchListFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.OKKEJHPLMLA> _repeated_switchList_codec
+        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.OKKEJHPLMLA.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.OKKEJHPLMLA> switchList_ = new pbc::RepeatedField<global::March7thHoney.Proto.OKKEJHPLMLA>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool FHFMNOGAMHA {
-      get { return fHFMNOGAMHA_; }
-      set {
-        fHFMNOGAMHA_ = value;
-      }
+    public pbc::RepeatedField<global::March7thHoney.Proto.OKKEJHPLMLA> SwitchList {
+      get { return switchList_; }
     }
 
-    /// <summary>Field number for the "switch_list" field.</summary>
-    public const int SwitchListFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.IIJKILFJENL> _repeated_switchList_codec
-        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.IIJKILFJENL.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.IIJKILFJENL> switchList_ = new pbc::RepeatedField<global::March7thHoney.Proto.IIJKILFJENL>();
+    /// <summary>Field number for the "LJEGPIJGMLG" field.</summary>
+    public const int LJEGPIJGMLGFieldNumber = 15;
+    private bool lJEGPIJGMLG_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.IIJKILFJENL> SwitchList {
-      get { return switchList_; }
+    public bool LJEGPIJGMLG {
+      get { return lJEGPIJGMLG_; }
+      set {
+        lJEGPIJGMLG_ = value;
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (FHFMNOGAMHA != other.FHFMNOGAMHA) return false;
       if(!switchList_.Equals(other.switchList_)) return false;
+      if (LJEGPIJGMLG != other.LJEGPIJGMLG) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (FHFMNOGAMHA != false) hash ^= FHFMNOGAMHA.GetHashCode();
       hash ^= switchList_.GetHashCode();
+      if (LJEGPIJGMLG != false) hash ^= LJEGPIJGMLG.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -151,11 +151,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (FHFMNOGAMHA != false) {
-        output.WriteRawTag(8);
-        output.WriteBool(FHFMNOGAMHA);
-      }
       switchList_.WriteTo(output, _repeated_switchList_codec);
+      if (LJEGPIJGMLG != false) {
+        output.WriteRawTag(120);
+        output.WriteBool(LJEGPIJGMLG);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -166,11 +166,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (FHFMNOGAMHA != false) {
-        output.WriteRawTag(8);
-        output.WriteBool(FHFMNOGAMHA);
-      }
       switchList_.WriteTo(ref output, _repeated_switchList_codec);
+      if (LJEGPIJGMLG != false) {
+        output.WriteRawTag(120);
+        output.WriteBool(LJEGPIJGMLG);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -181,10 +181,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (FHFMNOGAMHA != false) {
+      size += switchList_.CalculateSize(_repeated_switchList_codec);
+      if (LJEGPIJGMLG != false) {
         size += 1 + 1;
       }
-      size += switchList_.CalculateSize(_repeated_switchList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -197,10 +197,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.FHFMNOGAMHA != false) {
-        FHFMNOGAMHA = other.FHFMNOGAMHA;
-      }
       switchList_.Add(other.switchList_);
+      if (other.LJEGPIJGMLG != false) {
+        LJEGPIJGMLG = other.LJEGPIJGMLG;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -220,12 +220,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            FHFMNOGAMHA = input.ReadBool();
+          case 10: {
+            switchList_.AddEntriesFrom(input, _repeated_switchList_codec);
             break;
           }
-          case 26: {
-            switchList_.AddEntriesFrom(input, _repeated_switchList_codec);
+          case 120: {
+            LJEGPIJGMLG = input.ReadBool();
             break;
           }
         }
@@ -247,12 +247,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            FHFMNOGAMHA = input.ReadBool();
+          case 10: {
+            switchList_.AddEntriesFrom(ref input, _repeated_switchList_codec);
             break;
           }
-          case 26: {
-            switchList_.AddEntriesFrom(ref input, _repeated_switchList_codec);
+          case 120: {
+            LJEGPIJGMLG = input.ReadBool();
             break;
           }
         }

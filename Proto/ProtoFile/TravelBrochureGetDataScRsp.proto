@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "PBPIOFGODHC.proto";
+import "KJMKOJEHMII.proto";
 
 message TravelBrochureGetDataScRsp {
-    map<uint32, PBPIOFGODHC> LNDBNIHAICB = 3;
-    uint32 retcode = 13;
-    uint32 custom_value = 14;
-    map<uint32, uint32> CIBCCOJLLIA = 15;
+    map<uint32, KJMKOJEHMII> HJNJNFIBMEL = 8;
+    map<uint32, uint32> NNIDCBOKHFK = 6;
+    uint32 retcode = 10;
+    uint32 custom_value = 12;
 }

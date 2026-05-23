@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message JPEBEDHMNLA {
+    uint32 level = 13;
+    uint32 CCBIIDDBFGK = 2;
+    uint32 unique_id = 1;
+    uint32 pos_index = 9;
+    uint32 grid_fight_equipment_id = 6;
+}

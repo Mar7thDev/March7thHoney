@@ -24,22 +24,24 @@ namespace March7thHoney.Proto {
     static UpdatePlayerSettingReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChlVcGRhdGVQbGF5ZXJTZXR0aW5nLnByb3RvGhFORUNHTUNHRkFOTi5wcm90",
-            "bxoRT0VFRUFFSkJFTkIucHJvdG8itgMKE1VwZGF0ZVBsYXllclNldHRpbmcS",
-            "FQoLQ0NOR0hCQURIQkwYAiABKAhIABIVCgtDSENORUROQ0lEShgEIAEoCEgA",
-            "EhUKC0NPSUdPQ0pIQk9QGAUgASgISAASFQoLUEZKTUVFQ0dKTU0YCCABKAhI",
-            "ABIVCgtOSExLRkJPQkRPTRgJIAEoCEgAEhUKC0ZJSk5BUE5JQ0pGGAogASgI",
-            "SAASIwoLRUhLTE5QQ01NSEUYCyABKAsyDC5PRUVFQUVKQkVOQkgAEhUKC0NQ",
-            "T0dES0FMR09NGA0gASgISAASFQoLTUZDUERKR0dDTU8YDiABKAhIABIVCgtM",
-            "UEVQSUROSkRFTRgPIAEoCEgAEhYKC0JNRUhGTUROS0xFGIwCIAEoCEgAEhYK",
-            "C0JLRENGQkRNTklKGMoDIAEoCEgAEhYKC0tGQkxIQ0NHRVBPGNoEIAEoCEgA",
-            "EhYKC0xFTktJRUJJSUhQGO4EIAEoCEgAEiQKC0hHSEZFQ09NSk5BGPkHIAEo",
-            "CzIMLk5FQ0dNQ0dGQU5OSAASFgoLRUpER05MRU9CQ04Y0AogASgISABCDQoL",
-            "TU9OUEdOQk9IRkNCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ChlVcGRhdGVQbGF5ZXJTZXR0aW5nLnByb3RvGhFBUEFNRkNLRkhMTC5wcm90",
+            "bxoRSlBHQUNLUExHQ0QucHJvdG8aEVBOT0xMSUFLR0RCLnByb3RvItwDChNV",
+            "cGRhdGVQbGF5ZXJTZXR0aW5nEhUKC0FBQ09FSENGTkRCGAEgASgISAASFQoL",
+            "REdDTkhNSUhGSkIYDiABKAhIABIVCgtGREhFUENLTENBTRgJIAEoCEgAEhUK",
+            "C0RDSkVDRk1NSUJDGAIgASgISAASFQoLSU9KRUFPQ09CQkYYDyABKAhIABIV",
+            "CgtQRkJIR0FIQUZNRBgDIAEoCEgAEhUKC0dORkREUEVNTUZOGAUgASgISAAS",
+            "FQoLTUFLT0xFTEZMRkgYBiABKAhIABIVCgtOSkFLT01ETUZKRBgEIAEoCEgA",
+            "EiMKC09KUEFPRElIQUpFGAggASgLMgwuUE5PTExJQUtHREJIABIWCgtCT01H",
+            "Tk1ET0dMTRjwAiABKAhIABIWCgtCQkVFQkJJREpIRRjRBCABKAhIABIWCgtI",
+            "R1BGRkdLTlBGQhiQBCABKAhIABIWCgtMTkdISUpHRkRLUBi5DiABKAhIABIW",
+            "CgtHT0tGTkdGRk1PQhivBiABKAhIABIkCgtDTUZDT09FRUVDQhjrBCABKAsy",
+            "DC5KUEdBQ0tQTEdDREgAEiQKC0VHTE9JRkRJRFBLGLYBIAEoCzIMLkFQQU1G",
+            "Q0tGSExMSABCDQoLQktBR0xNRk5LS0FCFqoCE01hcmNoN3RoSG9uZXkuUHJv",
+            "dG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.NECGMCGFANNReflection.Descriptor, global::March7thHoney.Proto.OEEEAEJBENBReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.APAMFCKFHLLReflection.Descriptor, global::March7thHoney.Proto.JPGACKPLGCDReflection.Descriptor, global::March7thHoney.Proto.PNOLLIAKGDBReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UpdatePlayerSetting), global::March7thHoney.Proto.UpdatePlayerSetting.Parser, new[]{ "CCNGHBADHBL", "CHCNEDNCIDJ", "COIGOCJHBOP", "PFJMEECGJMM", "NHLKFBOBDOM", "FIJNAPNICJF", "EHKLNPCMMHE", "CPOGDKALGOM", "MFCPDJGGCMO", "LPEPIDNJDEM", "BMEHFMDNKLE", "BKDCFBDMNIJ", "KFBLHCCGEPO", "LENKIEBIIHP", "HGHFECOMJNA", "EJDGNLEOBCN" }, new[]{ "MONPGNBOHFC" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UpdatePlayerSetting), global::March7thHoney.Proto.UpdatePlayerSetting.Parser, new[]{ "AACOEHCFNDB", "DGCNHMIHFJB", "FDHEPCKLCAM", "DCJECFMMIBC", "IOJEAOCOBBF", "PFBHGAHAFMD", "GNFDDPEMMFN", "MAKOLELFLFH", "NJAKOMDMFJD", "OJPAODIHAJE", "BOMGNMDOGLM", "BBEEBBIDJHE", "HGPFFGKNPFB", "LNGHIJGFDKP", "GOKFNGFFMOB", "CMFCOOEEECB", "EGLOIFDIDPK" }, new[]{ "BKAGLMFNKKA" }, null, null, null)
           }));
     }
     #endregion
@@ -81,54 +83,57 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public UpdatePlayerSetting(UpdatePlayerSetting other) : this() {
-      switch (other.MONPGNBOHFCCase) {
-        case MONPGNBOHFCOneofCase.CCNGHBADHBL:
-          CCNGHBADHBL = other.CCNGHBADHBL;
+      switch (other.BKAGLMFNKKACase) {
+        case BKAGLMFNKKAOneofCase.AACOEHCFNDB:
+          AACOEHCFNDB = other.AACOEHCFNDB;
           break;
-        case MONPGNBOHFCOneofCase.CHCNEDNCIDJ:
-          CHCNEDNCIDJ = other.CHCNEDNCIDJ;
+        case BKAGLMFNKKAOneofCase.DGCNHMIHFJB:
+          DGCNHMIHFJB = other.DGCNHMIHFJB;
           break;
-        case MONPGNBOHFCOneofCase.COIGOCJHBOP:
-          COIGOCJHBOP = other.COIGOCJHBOP;
+        case BKAGLMFNKKAOneofCase.FDHEPCKLCAM:
+          FDHEPCKLCAM = other.FDHEPCKLCAM;
           break;
-        case MONPGNBOHFCOneofCase.PFJMEECGJMM:
-          PFJMEECGJMM = other.PFJMEECGJMM;
+        case BKAGLMFNKKAOneofCase.DCJECFMMIBC:
+          DCJECFMMIBC = other.DCJECFMMIBC;
           break;
-        case MONPGNBOHFCOneofCase.NHLKFBOBDOM:
-          NHLKFBOBDOM = other.NHLKFBOBDOM;
+        case BKAGLMFNKKAOneofCase.IOJEAOCOBBF:
+          IOJEAOCOBBF = other.IOJEAOCOBBF;
           break;
-        case MONPGNBOHFCOneofCase.FIJNAPNICJF:
-          FIJNAPNICJF = other.FIJNAPNICJF;
+        case BKAGLMFNKKAOneofCase.PFBHGAHAFMD:
+          PFBHGAHAFMD = other.PFBHGAHAFMD;
           break;
-        case MONPGNBOHFCOneofCase.EHKLNPCMMHE:
-          EHKLNPCMMHE = other.EHKLNPCMMHE.Clone();
+        case BKAGLMFNKKAOneofCase.GNFDDPEMMFN:
+          GNFDDPEMMFN = other.GNFDDPEMMFN;
           break;
-        case MONPGNBOHFCOneofCase.CPOGDKALGOM:
-          CPOGDKALGOM = other.CPOGDKALGOM;
+        case BKAGLMFNKKAOneofCase.MAKOLELFLFH:
+          MAKOLELFLFH = other.MAKOLELFLFH;
           break;
-        case MONPGNBOHFCOneofCase.MFCPDJGGCMO:
-          MFCPDJGGCMO = other.MFCPDJGGCMO;
+        case BKAGLMFNKKAOneofCase.NJAKOMDMFJD:
+          NJAKOMDMFJD = other.NJAKOMDMFJD;
           break;
-        case MONPGNBOHFCOneofCase.LPEPIDNJDEM:
-          LPEPIDNJDEM = other.LPEPIDNJDEM;
+        case BKAGLMFNKKAOneofCase.OJPAODIHAJE:
+          OJPAODIHAJE = other.OJPAODIHAJE.Clone();
           break;
-        case MONPGNBOHFCOneofCase.BMEHFMDNKLE:
-          BMEHFMDNKLE = other.BMEHFMDNKLE;
+        case BKAGLMFNKKAOneofCase.BOMGNMDOGLM:
+          BOMGNMDOGLM = other.BOMGNMDOGLM;
           break;
-        case MONPGNBOHFCOneofCase.BKDCFBDMNIJ:
-          BKDCFBDMNIJ = other.BKDCFBDMNIJ;
+        case BKAGLMFNKKAOneofCase.BBEEBBIDJHE:
+          BBEEBBIDJHE = other.BBEEBBIDJHE;
           break;
-        case MONPGNBOHFCOneofCase.KFBLHCCGEPO:
-          KFBLHCCGEPO = other.KFBLHCCGEPO;
+        case BKAGLMFNKKAOneofCase.HGPFFGKNPFB:
+          HGPFFGKNPFB = other.HGPFFGKNPFB;
           break;
-        case MONPGNBOHFCOneofCase.LENKIEBIIHP:
-          LENKIEBIIHP = other.LENKIEBIIHP;
+        case BKAGLMFNKKAOneofCase.LNGHIJGFDKP:
+          LNGHIJGFDKP = other.LNGHIJGFDKP;
           break;
-        case MONPGNBOHFCOneofCase.HGHFECOMJNA:
-          HGHFECOMJNA = other.HGHFECOMJNA.Clone();
+        case BKAGLMFNKKAOneofCase.GOKFNGFFMOB:
+          GOKFNGFFMOB = other.GOKFNGFFMOB;
           break;
-        case MONPGNBOHFCOneofCase.EJDGNLEOBCN:
-          EJDGNLEOBCN = other.EJDGNLEOBCN;
+        case BKAGLMFNKKAOneofCase.CMFCOOEEECB:
+          CMFCOOEEECB = other.CMFCOOEEECB.Clone();
+          break;
+        case BKAGLMFNKKAOneofCase.EGLOIFDIDPK:
+          EGLOIFDIDPK = other.EGLOIFDIDPK.Clone();
           break;
       }
 
@@ -141,427 +146,440 @@ namespace March7thHoney.Proto {
       return new UpdatePlayerSetting(this);
     }
 
-    /// <summary>Field number for the "CCNGHBADHBL" field.</summary>
-    public const int CCNGHBADHBLFieldNumber = 2;
+    /// <summary>Field number for the "AACOEHCFNDB" field.</summary>
+    public const int AACOEHCFNDBFieldNumber = 1;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool CCNGHBADHBL {
-      get { return HasCCNGHBADHBL ? (bool) mONPGNBOHFC_ : false; }
+    public bool AACOEHCFNDB {
+      get { return HasAACOEHCFNDB ? (bool) bKAGLMFNKKA_ : false; }
       set {
-        mONPGNBOHFC_ = value;
-        mONPGNBOHFCCase_ = MONPGNBOHFCOneofCase.CCNGHBADHBL;
+        bKAGLMFNKKA_ = value;
+        bKAGLMFNKKACase_ = BKAGLMFNKKAOneofCase.AACOEHCFNDB;
       }
     }
-    /// <summary>Gets whether the "CCNGHBADHBL" field is set</summary>
+    /// <summary>Gets whether the "AACOEHCFNDB" field is set</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasCCNGHBADHBL {
-      get { return mONPGNBOHFCCase_ == MONPGNBOHFCOneofCase.CCNGHBADHBL; }
+    public bool HasAACOEHCFNDB {
+      get { return bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.AACOEHCFNDB; }
     }
-    /// <summary> Clears the value of the oneof if it's currently set to "CCNGHBADHBL" </summary>
+    /// <summary> Clears the value of the oneof if it's currently set to "AACOEHCFNDB" </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearCCNGHBADHBL() {
-      if (HasCCNGHBADHBL) {
-        ClearMONPGNBOHFC();
+    public void ClearAACOEHCFNDB() {
+      if (HasAACOEHCFNDB) {
+        ClearBKAGLMFNKKA();
       }
     }
 
-    /// <summary>Field number for the "CHCNEDNCIDJ" field.</summary>
-    public const int CHCNEDNCIDJFieldNumber = 4;
+    /// <summary>Field number for the "DGCNHMIHFJB" field.</summary>
+    public const int DGCNHMIHFJBFieldNumber = 14;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool CHCNEDNCIDJ {
-      get { return HasCHCNEDNCIDJ ? (bool) mONPGNBOHFC_ : false; }
+    public bool DGCNHMIHFJB {
+      get { return HasDGCNHMIHFJB ? (bool) bKAGLMFNKKA_ : false; }
       set {
-        mONPGNBOHFC_ = value;
-        mONPGNBOHFCCase_ = MONPGNBOHFCOneofCase.CHCNEDNCIDJ;
+        bKAGLMFNKKA_ = value;
+        bKAGLMFNKKACase_ = BKAGLMFNKKAOneofCase.DGCNHMIHFJB;
       }
     }
-    /// <summary>Gets whether the "CHCNEDNCIDJ" field is set</summary>
+    /// <summary>Gets whether the "DGCNHMIHFJB" field is set</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasCHCNEDNCIDJ {
-      get { return mONPGNBOHFCCase_ == MONPGNBOHFCOneofCase.CHCNEDNCIDJ; }
+    public bool HasDGCNHMIHFJB {
+      get { return bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.DGCNHMIHFJB; }
     }
-    /// <summary> Clears the value of the oneof if it's currently set to "CHCNEDNCIDJ" </summary>
+    /// <summary> Clears the value of the oneof if it's currently set to "DGCNHMIHFJB" </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearCHCNEDNCIDJ() {
-      if (HasCHCNEDNCIDJ) {
-        ClearMONPGNBOHFC();
+    public void ClearDGCNHMIHFJB() {
+      if (HasDGCNHMIHFJB) {
+        ClearBKAGLMFNKKA();
       }
     }
 
-    /// <summary>Field number for the "COIGOCJHBOP" field.</summary>
-    public const int COIGOCJHBOPFieldNumber = 5;
+    /// <summary>Field number for the "FDHEPCKLCAM" field.</summary>
+    public const int FDHEPCKLCAMFieldNumber = 9;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool COIGOCJHBOP {
-      get { return HasCOIGOCJHBOP ? (bool) mONPGNBOHFC_ : false; }
+    public bool FDHEPCKLCAM {
+      get { return HasFDHEPCKLCAM ? (bool) bKAGLMFNKKA_ : false; }
       set {
-        mONPGNBOHFC_ = value;
-        mONPGNBOHFCCase_ = MONPGNBOHFCOneofCase.COIGOCJHBOP;
+        bKAGLMFNKKA_ = value;
+        bKAGLMFNKKACase_ = BKAGLMFNKKAOneofCase.FDHEPCKLCAM;
       }
     }
-    /// <summary>Gets whether the "COIGOCJHBOP" field is set</summary>
+    /// <summary>Gets whether the "FDHEPCKLCAM" field is set</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasCOIGOCJHBOP {
-      get { return mONPGNBOHFCCase_ == MONPGNBOHFCOneofCase.COIGOCJHBOP; }
+    public bool HasFDHEPCKLCAM {
+      get { return bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.FDHEPCKLCAM; }
     }
-    /// <summary> Clears the value of the oneof if it's currently set to "COIGOCJHBOP" </summary>
+    /// <summary> Clears the value of the oneof if it's currently set to "FDHEPCKLCAM" </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearCOIGOCJHBOP() {
-      if (HasCOIGOCJHBOP) {
-        ClearMONPGNBOHFC();
+    public void ClearFDHEPCKLCAM() {
+      if (HasFDHEPCKLCAM) {
+        ClearBKAGLMFNKKA();
       }
     }
 
-    /// <summary>Field number for the "PFJMEECGJMM" field.</summary>
-    public const int PFJMEECGJMMFieldNumber = 8;
+    /// <summary>Field number for the "DCJECFMMIBC" field.</summary>
+    public const int DCJECFMMIBCFieldNumber = 2;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool PFJMEECGJMM {
-      get { return HasPFJMEECGJMM ? (bool) mONPGNBOHFC_ : false; }
+    public bool DCJECFMMIBC {
+      get { return HasDCJECFMMIBC ? (bool) bKAGLMFNKKA_ : false; }
       set {
-        mONPGNBOHFC_ = value;
-        mONPGNBOHFCCase_ = MONPGNBOHFCOneofCase.PFJMEECGJMM;
+        bKAGLMFNKKA_ = value;
+        bKAGLMFNKKACase_ = BKAGLMFNKKAOneofCase.DCJECFMMIBC;
       }
     }
-    /// <summary>Gets whether the "PFJMEECGJMM" field is set</summary>
+    /// <summary>Gets whether the "DCJECFMMIBC" field is set</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasPFJMEECGJMM {
-      get { return mONPGNBOHFCCase_ == MONPGNBOHFCOneofCase.PFJMEECGJMM; }
+    public bool HasDCJECFMMIBC {
+      get { return bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.DCJECFMMIBC; }
     }
-    /// <summary> Clears the value of the oneof if it's currently set to "PFJMEECGJMM" </summary>
+    /// <summary> Clears the value of the oneof if it's currently set to "DCJECFMMIBC" </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearPFJMEECGJMM() {
-      if (HasPFJMEECGJMM) {
-        ClearMONPGNBOHFC();
+    public void ClearDCJECFMMIBC() {
+      if (HasDCJECFMMIBC) {
+        ClearBKAGLMFNKKA();
       }
     }
 
-    /// <summary>Field number for the "NHLKFBOBDOM" field.</summary>
-    public const int NHLKFBOBDOMFieldNumber = 9;
+    /// <summary>Field number for the "IOJEAOCOBBF" field.</summary>
+    public const int IOJEAOCOBBFFieldNumber = 15;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool NHLKFBOBDOM {
-      get { return HasNHLKFBOBDOM ? (bool) mONPGNBOHFC_ : false; }
+    public bool IOJEAOCOBBF {
+      get { return HasIOJEAOCOBBF ? (bool) bKAGLMFNKKA_ : false; }
       set {
-        mONPGNBOHFC_ = value;
-        mONPGNBOHFCCase_ = MONPGNBOHFCOneofCase.NHLKFBOBDOM;
+        bKAGLMFNKKA_ = value;
+        bKAGLMFNKKACase_ = BKAGLMFNKKAOneofCase.IOJEAOCOBBF;
       }
     }
-    /// <summary>Gets whether the "NHLKFBOBDOM" field is set</summary>
+    /// <summary>Gets whether the "IOJEAOCOBBF" field is set</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasNHLKFBOBDOM {
-      get { return mONPGNBOHFCCase_ == MONPGNBOHFCOneofCase.NHLKFBOBDOM; }
+    public bool HasIOJEAOCOBBF {
+      get { return bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.IOJEAOCOBBF; }
     }
-    /// <summary> Clears the value of the oneof if it's currently set to "NHLKFBOBDOM" </summary>
+    /// <summary> Clears the value of the oneof if it's currently set to "IOJEAOCOBBF" </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearNHLKFBOBDOM() {
-      if (HasNHLKFBOBDOM) {
-        ClearMONPGNBOHFC();
+    public void ClearIOJEAOCOBBF() {
+      if (HasIOJEAOCOBBF) {
+        ClearBKAGLMFNKKA();
       }
     }
 
-    /// <summary>Field number for the "FIJNAPNICJF" field.</summary>
-    public const int FIJNAPNICJFFieldNumber = 10;
+    /// <summary>Field number for the "PFBHGAHAFMD" field.</summary>
+    public const int PFBHGAHAFMDFieldNumber = 3;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool FIJNAPNICJF {
-      get { return HasFIJNAPNICJF ? (bool) mONPGNBOHFC_ : false; }
+    public bool PFBHGAHAFMD {
+      get { return HasPFBHGAHAFMD ? (bool) bKAGLMFNKKA_ : false; }
       set {
-        mONPGNBOHFC_ = value;
-        mONPGNBOHFCCase_ = MONPGNBOHFCOneofCase.FIJNAPNICJF;
+        bKAGLMFNKKA_ = value;
+        bKAGLMFNKKACase_ = BKAGLMFNKKAOneofCase.PFBHGAHAFMD;
       }
     }
-    /// <summary>Gets whether the "FIJNAPNICJF" field is set</summary>
+    /// <summary>Gets whether the "PFBHGAHAFMD" field is set</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasFIJNAPNICJF {
-      get { return mONPGNBOHFCCase_ == MONPGNBOHFCOneofCase.FIJNAPNICJF; }
+    public bool HasPFBHGAHAFMD {
+      get { return bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.PFBHGAHAFMD; }
     }
-    /// <summary> Clears the value of the oneof if it's currently set to "FIJNAPNICJF" </summary>
+    /// <summary> Clears the value of the oneof if it's currently set to "PFBHGAHAFMD" </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearFIJNAPNICJF() {
-      if (HasFIJNAPNICJF) {
-        ClearMONPGNBOHFC();
+    public void ClearPFBHGAHAFMD() {
+      if (HasPFBHGAHAFMD) {
+        ClearBKAGLMFNKKA();
       }
     }
 
-    /// <summary>Field number for the "EHKLNPCMMHE" field.</summary>
-    public const int EHKLNPCMMHEFieldNumber = 11;
+    /// <summary>Field number for the "GNFDDPEMMFN" field.</summary>
+    public const int GNFDDPEMMFNFieldNumber = 5;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.OEEEAEJBENB EHKLNPCMMHE {
-      get { return mONPGNBOHFCCase_ == MONPGNBOHFCOneofCase.EHKLNPCMMHE ? (global::March7thHoney.Proto.OEEEAEJBENB) mONPGNBOHFC_ : null; }
+    public bool GNFDDPEMMFN {
+      get { return HasGNFDDPEMMFN ? (bool) bKAGLMFNKKA_ : false; }
       set {
-        mONPGNBOHFC_ = value;
-        mONPGNBOHFCCase_ = value == null ? MONPGNBOHFCOneofCase.None : MONPGNBOHFCOneofCase.EHKLNPCMMHE;
+        bKAGLMFNKKA_ = value;
+        bKAGLMFNKKACase_ = BKAGLMFNKKAOneofCase.GNFDDPEMMFN;
+      }
+    }
+    /// <summary>Gets whether the "GNFDDPEMMFN" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasGNFDDPEMMFN {
+      get { return bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.GNFDDPEMMFN; }
+    }
+    /// <summary> Clears the value of the oneof if it's currently set to "GNFDDPEMMFN" </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearGNFDDPEMMFN() {
+      if (HasGNFDDPEMMFN) {
+        ClearBKAGLMFNKKA();
       }
     }
 
-    /// <summary>Field number for the "CPOGDKALGOM" field.</summary>
-    public const int CPOGDKALGOMFieldNumber = 13;
+    /// <summary>Field number for the "MAKOLELFLFH" field.</summary>
+    public const int MAKOLELFLFHFieldNumber = 6;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool CPOGDKALGOM {
-      get { return HasCPOGDKALGOM ? (bool) mONPGNBOHFC_ : false; }
+    public bool MAKOLELFLFH {
+      get { return HasMAKOLELFLFH ? (bool) bKAGLMFNKKA_ : false; }
       set {
-        mONPGNBOHFC_ = value;
-        mONPGNBOHFCCase_ = MONPGNBOHFCOneofCase.CPOGDKALGOM;
+        bKAGLMFNKKA_ = value;
+        bKAGLMFNKKACase_ = BKAGLMFNKKAOneofCase.MAKOLELFLFH;
       }
     }
-    /// <summary>Gets whether the "CPOGDKALGOM" field is set</summary>
+    /// <summary>Gets whether the "MAKOLELFLFH" field is set</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasCPOGDKALGOM {
-      get { return mONPGNBOHFCCase_ == MONPGNBOHFCOneofCase.CPOGDKALGOM; }
+    public bool HasMAKOLELFLFH {
+      get { return bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.MAKOLELFLFH; }
     }
-    /// <summary> Clears the value of the oneof if it's currently set to "CPOGDKALGOM" </summary>
+    /// <summary> Clears the value of the oneof if it's currently set to "MAKOLELFLFH" </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearCPOGDKALGOM() {
-      if (HasCPOGDKALGOM) {
-        ClearMONPGNBOHFC();
+    public void ClearMAKOLELFLFH() {
+      if (HasMAKOLELFLFH) {
+        ClearBKAGLMFNKKA();
       }
     }
 
-    /// <summary>Field number for the "MFCPDJGGCMO" field.</summary>
-    public const int MFCPDJGGCMOFieldNumber = 14;
+    /// <summary>Field number for the "NJAKOMDMFJD" field.</summary>
+    public const int NJAKOMDMFJDFieldNumber = 4;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool MFCPDJGGCMO {
-      get { return HasMFCPDJGGCMO ? (bool) mONPGNBOHFC_ : false; }
+    public bool NJAKOMDMFJD {
+      get { return HasNJAKOMDMFJD ? (bool) bKAGLMFNKKA_ : false; }
       set {
-        mONPGNBOHFC_ = value;
-        mONPGNBOHFCCase_ = MONPGNBOHFCOneofCase.MFCPDJGGCMO;
+        bKAGLMFNKKA_ = value;
+        bKAGLMFNKKACase_ = BKAGLMFNKKAOneofCase.NJAKOMDMFJD;
       }
     }
-    /// <summary>Gets whether the "MFCPDJGGCMO" field is set</summary>
+    /// <summary>Gets whether the "NJAKOMDMFJD" field is set</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasMFCPDJGGCMO {
-      get { return mONPGNBOHFCCase_ == MONPGNBOHFCOneofCase.MFCPDJGGCMO; }
+    public bool HasNJAKOMDMFJD {
+      get { return bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.NJAKOMDMFJD; }
     }
-    /// <summary> Clears the value of the oneof if it's currently set to "MFCPDJGGCMO" </summary>
+    /// <summary> Clears the value of the oneof if it's currently set to "NJAKOMDMFJD" </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearMFCPDJGGCMO() {
-      if (HasMFCPDJGGCMO) {
-        ClearMONPGNBOHFC();
+    public void ClearNJAKOMDMFJD() {
+      if (HasNJAKOMDMFJD) {
+        ClearBKAGLMFNKKA();
       }
     }
 
-    /// <summary>Field number for the "LPEPIDNJDEM" field.</summary>
-    public const int LPEPIDNJDEMFieldNumber = 15;
+    /// <summary>Field number for the "OJPAODIHAJE" field.</summary>
+    public const int OJPAODIHAJEFieldNumber = 8;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool LPEPIDNJDEM {
-      get { return HasLPEPIDNJDEM ? (bool) mONPGNBOHFC_ : false; }
+    public global::March7thHoney.Proto.PNOLLIAKGDB OJPAODIHAJE {
+      get { return bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.OJPAODIHAJE ? (global::March7thHoney.Proto.PNOLLIAKGDB) bKAGLMFNKKA_ : null; }
       set {
-        mONPGNBOHFC_ = value;
-        mONPGNBOHFCCase_ = MONPGNBOHFCOneofCase.LPEPIDNJDEM;
-      }
-    }
-    /// <summary>Gets whether the "LPEPIDNJDEM" field is set</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasLPEPIDNJDEM {
-      get { return mONPGNBOHFCCase_ == MONPGNBOHFCOneofCase.LPEPIDNJDEM; }
-    }
-    /// <summary> Clears the value of the oneof if it's currently set to "LPEPIDNJDEM" </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearLPEPIDNJDEM() {
-      if (HasLPEPIDNJDEM) {
-        ClearMONPGNBOHFC();
+        bKAGLMFNKKA_ = value;
+        bKAGLMFNKKACase_ = value == null ? BKAGLMFNKKAOneofCase.None : BKAGLMFNKKAOneofCase.OJPAODIHAJE;
       }
     }
 
-    /// <summary>Field number for the "BMEHFMDNKLE" field.</summary>
-    public const int BMEHFMDNKLEFieldNumber = 268;
+    /// <summary>Field number for the "BOMGNMDOGLM" field.</summary>
+    public const int BOMGNMDOGLMFieldNumber = 368;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool BMEHFMDNKLE {
-      get { return HasBMEHFMDNKLE ? (bool) mONPGNBOHFC_ : false; }
+    public bool BOMGNMDOGLM {
+      get { return HasBOMGNMDOGLM ? (bool) bKAGLMFNKKA_ : false; }
       set {
-        mONPGNBOHFC_ = value;
-        mONPGNBOHFCCase_ = MONPGNBOHFCOneofCase.BMEHFMDNKLE;
+        bKAGLMFNKKA_ = value;
+        bKAGLMFNKKACase_ = BKAGLMFNKKAOneofCase.BOMGNMDOGLM;
       }
     }
-    /// <summary>Gets whether the "BMEHFMDNKLE" field is set</summary>
+    /// <summary>Gets whether the "BOMGNMDOGLM" field is set</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasBMEHFMDNKLE {
-      get { return mONPGNBOHFCCase_ == MONPGNBOHFCOneofCase.BMEHFMDNKLE; }
+    public bool HasBOMGNMDOGLM {
+      get { return bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.BOMGNMDOGLM; }
     }
-    /// <summary> Clears the value of the oneof if it's currently set to "BMEHFMDNKLE" </summary>
+    /// <summary> Clears the value of the oneof if it's currently set to "BOMGNMDOGLM" </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearBMEHFMDNKLE() {
-      if (HasBMEHFMDNKLE) {
-        ClearMONPGNBOHFC();
+    public void ClearBOMGNMDOGLM() {
+      if (HasBOMGNMDOGLM) {
+        ClearBKAGLMFNKKA();
       }
     }
 
-    /// <summary>Field number for the "BKDCFBDMNIJ" field.</summary>
-    public const int BKDCFBDMNIJFieldNumber = 458;
+    /// <summary>Field number for the "BBEEBBIDJHE" field.</summary>
+    public const int BBEEBBIDJHEFieldNumber = 593;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool BKDCFBDMNIJ {
-      get { return HasBKDCFBDMNIJ ? (bool) mONPGNBOHFC_ : false; }
+    public bool BBEEBBIDJHE {
+      get { return HasBBEEBBIDJHE ? (bool) bKAGLMFNKKA_ : false; }
       set {
-        mONPGNBOHFC_ = value;
-        mONPGNBOHFCCase_ = MONPGNBOHFCOneofCase.BKDCFBDMNIJ;
+        bKAGLMFNKKA_ = value;
+        bKAGLMFNKKACase_ = BKAGLMFNKKAOneofCase.BBEEBBIDJHE;
       }
     }
-    /// <summary>Gets whether the "BKDCFBDMNIJ" field is set</summary>
+    /// <summary>Gets whether the "BBEEBBIDJHE" field is set</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasBKDCFBDMNIJ {
-      get { return mONPGNBOHFCCase_ == MONPGNBOHFCOneofCase.BKDCFBDMNIJ; }
+    public bool HasBBEEBBIDJHE {
+      get { return bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.BBEEBBIDJHE; }
     }
-    /// <summary> Clears the value of the oneof if it's currently set to "BKDCFBDMNIJ" </summary>
+    /// <summary> Clears the value of the oneof if it's currently set to "BBEEBBIDJHE" </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearBKDCFBDMNIJ() {
-      if (HasBKDCFBDMNIJ) {
-        ClearMONPGNBOHFC();
+    public void ClearBBEEBBIDJHE() {
+      if (HasBBEEBBIDJHE) {
+        ClearBKAGLMFNKKA();
       }
     }
 
-    /// <summary>Field number for the "KFBLHCCGEPO" field.</summary>
-    public const int KFBLHCCGEPOFieldNumber = 602;
+    /// <summary>Field number for the "HGPFFGKNPFB" field.</summary>
+    public const int HGPFFGKNPFBFieldNumber = 528;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool KFBLHCCGEPO {
-      get { return HasKFBLHCCGEPO ? (bool) mONPGNBOHFC_ : false; }
+    public bool HGPFFGKNPFB {
+      get { return HasHGPFFGKNPFB ? (bool) bKAGLMFNKKA_ : false; }
       set {
-        mONPGNBOHFC_ = value;
-        mONPGNBOHFCCase_ = MONPGNBOHFCOneofCase.KFBLHCCGEPO;
+        bKAGLMFNKKA_ = value;
+        bKAGLMFNKKACase_ = BKAGLMFNKKAOneofCase.HGPFFGKNPFB;
       }
     }
-    /// <summary>Gets whether the "KFBLHCCGEPO" field is set</summary>
+    /// <summary>Gets whether the "HGPFFGKNPFB" field is set</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasKFBLHCCGEPO {
-      get { return mONPGNBOHFCCase_ == MONPGNBOHFCOneofCase.KFBLHCCGEPO; }
+    public bool HasHGPFFGKNPFB {
+      get { return bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.HGPFFGKNPFB; }
     }
-    /// <summary> Clears the value of the oneof if it's currently set to "KFBLHCCGEPO" </summary>
+    /// <summary> Clears the value of the oneof if it's currently set to "HGPFFGKNPFB" </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearKFBLHCCGEPO() {
-      if (HasKFBLHCCGEPO) {
-        ClearMONPGNBOHFC();
+    public void ClearHGPFFGKNPFB() {
+      if (HasHGPFFGKNPFB) {
+        ClearBKAGLMFNKKA();
       }
     }
 
-    /// <summary>Field number for the "LENKIEBIIHP" field.</summary>
-    public const int LENKIEBIIHPFieldNumber = 622;
+    /// <summary>Field number for the "LNGHIJGFDKP" field.</summary>
+    public const int LNGHIJGFDKPFieldNumber = 1849;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool LENKIEBIIHP {
-      get { return HasLENKIEBIIHP ? (bool) mONPGNBOHFC_ : false; }
+    public bool LNGHIJGFDKP {
+      get { return HasLNGHIJGFDKP ? (bool) bKAGLMFNKKA_ : false; }
       set {
-        mONPGNBOHFC_ = value;
-        mONPGNBOHFCCase_ = MONPGNBOHFCOneofCase.LENKIEBIIHP;
+        bKAGLMFNKKA_ = value;
+        bKAGLMFNKKACase_ = BKAGLMFNKKAOneofCase.LNGHIJGFDKP;
       }
     }
-    /// <summary>Gets whether the "LENKIEBIIHP" field is set</summary>
+    /// <summary>Gets whether the "LNGHIJGFDKP" field is set</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasLENKIEBIIHP {
-      get { return mONPGNBOHFCCase_ == MONPGNBOHFCOneofCase.LENKIEBIIHP; }
+    public bool HasLNGHIJGFDKP {
+      get { return bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.LNGHIJGFDKP; }
     }
-    /// <summary> Clears the value of the oneof if it's currently set to "LENKIEBIIHP" </summary>
+    /// <summary> Clears the value of the oneof if it's currently set to "LNGHIJGFDKP" </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearLENKIEBIIHP() {
-      if (HasLENKIEBIIHP) {
-        ClearMONPGNBOHFC();
+    public void ClearLNGHIJGFDKP() {
+      if (HasLNGHIJGFDKP) {
+        ClearBKAGLMFNKKA();
       }
     }
 
-    /// <summary>Field number for the "HGHFECOMJNA" field.</summary>
-    public const int HGHFECOMJNAFieldNumber = 1017;
+    /// <summary>Field number for the "GOKFNGFFMOB" field.</summary>
+    public const int GOKFNGFFMOBFieldNumber = 815;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.NECGMCGFANN HGHFECOMJNA {
-      get { return mONPGNBOHFCCase_ == MONPGNBOHFCOneofCase.HGHFECOMJNA ? (global::March7thHoney.Proto.NECGMCGFANN) mONPGNBOHFC_ : null; }
+    public bool GOKFNGFFMOB {
+      get { return HasGOKFNGFFMOB ? (bool) bKAGLMFNKKA_ : false; }
       set {
-        mONPGNBOHFC_ = value;
-        mONPGNBOHFCCase_ = value == null ? MONPGNBOHFCOneofCase.None : MONPGNBOHFCOneofCase.HGHFECOMJNA;
+        bKAGLMFNKKA_ = value;
+        bKAGLMFNKKACase_ = BKAGLMFNKKAOneofCase.GOKFNGFFMOB;
+      }
+    }
+    /// <summary>Gets whether the "GOKFNGFFMOB" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasGOKFNGFFMOB {
+      get { return bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.GOKFNGFFMOB; }
+    }
+    /// <summary> Clears the value of the oneof if it's currently set to "GOKFNGFFMOB" </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearGOKFNGFFMOB() {
+      if (HasGOKFNGFFMOB) {
+        ClearBKAGLMFNKKA();
       }
     }
 
-    /// <summary>Field number for the "EJDGNLEOBCN" field.</summary>
-    public const int EJDGNLEOBCNFieldNumber = 1360;
+    /// <summary>Field number for the "CMFCOOEEECB" field.</summary>
+    public const int CMFCOOEEECBFieldNumber = 619;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool EJDGNLEOBCN {
-      get { return HasEJDGNLEOBCN ? (bool) mONPGNBOHFC_ : false; }
+    public global::March7thHoney.Proto.JPGACKPLGCD CMFCOOEEECB {
+      get { return bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.CMFCOOEEECB ? (global::March7thHoney.Proto.JPGACKPLGCD) bKAGLMFNKKA_ : null; }
       set {
-        mONPGNBOHFC_ = value;
-        mONPGNBOHFCCase_ = MONPGNBOHFCOneofCase.EJDGNLEOBCN;
-      }
-    }
-    /// <summary>Gets whether the "EJDGNLEOBCN" field is set</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasEJDGNLEOBCN {
-      get { return mONPGNBOHFCCase_ == MONPGNBOHFCOneofCase.EJDGNLEOBCN; }
-    }
-    /// <summary> Clears the value of the oneof if it's currently set to "EJDGNLEOBCN" </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearEJDGNLEOBCN() {
-      if (HasEJDGNLEOBCN) {
-        ClearMONPGNBOHFC();
+        bKAGLMFNKKA_ = value;
+        bKAGLMFNKKACase_ = value == null ? BKAGLMFNKKAOneofCase.None : BKAGLMFNKKAOneofCase.CMFCOOEEECB;
       }
     }
 
-    private object mONPGNBOHFC_;
-    /// <summary>Enum of possible cases for the "MONPGNBOHFC" oneof.</summary>
-    public enum MONPGNBOHFCOneofCase {
+    /// <summary>Field number for the "EGLOIFDIDPK" field.</summary>
+    public const int EGLOIFDIDPKFieldNumber = 182;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.APAMFCKFHLL EGLOIFDIDPK {
+      get { return bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.EGLOIFDIDPK ? (global::March7thHoney.Proto.APAMFCKFHLL) bKAGLMFNKKA_ : null; }
+      set {
+        bKAGLMFNKKA_ = value;
+        bKAGLMFNKKACase_ = value == null ? BKAGLMFNKKAOneofCase.None : BKAGLMFNKKAOneofCase.EGLOIFDIDPK;
+      }
+    }
+
+    private object bKAGLMFNKKA_;
+    /// <summary>Enum of possible cases for the "BKAGLMFNKKA" oneof.</summary>
+    public enum BKAGLMFNKKAOneofCase {
       None = 0,
-      CCNGHBADHBL = 2,
-      CHCNEDNCIDJ = 4,
-      COIGOCJHBOP = 5,
-      PFJMEECGJMM = 8,
-      NHLKFBOBDOM = 9,
-      FIJNAPNICJF = 10,
-      EHKLNPCMMHE = 11,
-      CPOGDKALGOM = 13,
-      MFCPDJGGCMO = 14,
-      LPEPIDNJDEM = 15,
-      BMEHFMDNKLE = 268,
-      BKDCFBDMNIJ = 458,
-      KFBLHCCGEPO = 602,
-      LENKIEBIIHP = 622,
-      HGHFECOMJNA = 1017,
-      EJDGNLEOBCN = 1360,
+      AACOEHCFNDB = 1,
+      DGCNHMIHFJB = 14,
+      FDHEPCKLCAM = 9,
+      DCJECFMMIBC = 2,
+      IOJEAOCOBBF = 15,
+      PFBHGAHAFMD = 3,
+      GNFDDPEMMFN = 5,
+      MAKOLELFLFH = 6,
+      NJAKOMDMFJD = 4,
+      OJPAODIHAJE = 8,
+      BOMGNMDOGLM = 368,
+      BBEEBBIDJHE = 593,
+      HGPFFGKNPFB = 528,
+      LNGHIJGFDKP = 1849,
+      GOKFNGFFMOB = 815,
+      CMFCOOEEECB = 619,
+      EGLOIFDIDPK = 182,
     }
-    private MONPGNBOHFCOneofCase mONPGNBOHFCCase_ = MONPGNBOHFCOneofCase.None;
+    private BKAGLMFNKKAOneofCase bKAGLMFNKKACase_ = BKAGLMFNKKAOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public MONPGNBOHFCOneofCase MONPGNBOHFCCase {
-      get { return mONPGNBOHFCCase_; }
+    public BKAGLMFNKKAOneofCase BKAGLMFNKKACase {
+      get { return bKAGLMFNKKACase_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearMONPGNBOHFC() {
-      mONPGNBOHFCCase_ = MONPGNBOHFCOneofCase.None;
-      mONPGNBOHFC_ = null;
+    public void ClearBKAGLMFNKKA() {
+      bKAGLMFNKKACase_ = BKAGLMFNKKAOneofCase.None;
+      bKAGLMFNKKA_ = null;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -579,23 +597,24 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (CCNGHBADHBL != other.CCNGHBADHBL) return false;
-      if (CHCNEDNCIDJ != other.CHCNEDNCIDJ) return false;
-      if (COIGOCJHBOP != other.COIGOCJHBOP) return false;
-      if (PFJMEECGJMM != other.PFJMEECGJMM) return false;
-      if (NHLKFBOBDOM != other.NHLKFBOBDOM) return false;
-      if (FIJNAPNICJF != other.FIJNAPNICJF) return false;
-      if (!object.Equals(EHKLNPCMMHE, other.EHKLNPCMMHE)) return false;
-      if (CPOGDKALGOM != other.CPOGDKALGOM) return false;
-      if (MFCPDJGGCMO != other.MFCPDJGGCMO) return false;
-      if (LPEPIDNJDEM != other.LPEPIDNJDEM) return false;
-      if (BMEHFMDNKLE != other.BMEHFMDNKLE) return false;
-      if (BKDCFBDMNIJ != other.BKDCFBDMNIJ) return false;
-      if (KFBLHCCGEPO != other.KFBLHCCGEPO) return false;
-      if (LENKIEBIIHP != other.LENKIEBIIHP) return false;
-      if (!object.Equals(HGHFECOMJNA, other.HGHFECOMJNA)) return false;
-      if (EJDGNLEOBCN != other.EJDGNLEOBCN) return false;
-      if (MONPGNBOHFCCase != other.MONPGNBOHFCCase) return false;
+      if (AACOEHCFNDB != other.AACOEHCFNDB) return false;
+      if (DGCNHMIHFJB != other.DGCNHMIHFJB) return false;
+      if (FDHEPCKLCAM != other.FDHEPCKLCAM) return false;
+      if (DCJECFMMIBC != other.DCJECFMMIBC) return false;
+      if (IOJEAOCOBBF != other.IOJEAOCOBBF) return false;
+      if (PFBHGAHAFMD != other.PFBHGAHAFMD) return false;
+      if (GNFDDPEMMFN != other.GNFDDPEMMFN) return false;
+      if (MAKOLELFLFH != other.MAKOLELFLFH) return false;
+      if (NJAKOMDMFJD != other.NJAKOMDMFJD) return false;
+      if (!object.Equals(OJPAODIHAJE, other.OJPAODIHAJE)) return false;
+      if (BOMGNMDOGLM != other.BOMGNMDOGLM) return false;
+      if (BBEEBBIDJHE != other.BBEEBBIDJHE) return false;
+      if (HGPFFGKNPFB != other.HGPFFGKNPFB) return false;
+      if (LNGHIJGFDKP != other.LNGHIJGFDKP) return false;
+      if (GOKFNGFFMOB != other.GOKFNGFFMOB) return false;
+      if (!object.Equals(CMFCOOEEECB, other.CMFCOOEEECB)) return false;
+      if (!object.Equals(EGLOIFDIDPK, other.EGLOIFDIDPK)) return false;
+      if (BKAGLMFNKKACase != other.BKAGLMFNKKACase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -603,23 +622,24 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (HasCCNGHBADHBL) hash ^= CCNGHBADHBL.GetHashCode();
-      if (HasCHCNEDNCIDJ) hash ^= CHCNEDNCIDJ.GetHashCode();
-      if (HasCOIGOCJHBOP) hash ^= COIGOCJHBOP.GetHashCode();
-      if (HasPFJMEECGJMM) hash ^= PFJMEECGJMM.GetHashCode();
-      if (HasNHLKFBOBDOM) hash ^= NHLKFBOBDOM.GetHashCode();
-      if (HasFIJNAPNICJF) hash ^= FIJNAPNICJF.GetHashCode();
-      if (mONPGNBOHFCCase_ == MONPGNBOHFCOneofCase.EHKLNPCMMHE) hash ^= EHKLNPCMMHE.GetHashCode();
-      if (HasCPOGDKALGOM) hash ^= CPOGDKALGOM.GetHashCode();
-      if (HasMFCPDJGGCMO) hash ^= MFCPDJGGCMO.GetHashCode();
-      if (HasLPEPIDNJDEM) hash ^= LPEPIDNJDEM.GetHashCode();
-      if (HasBMEHFMDNKLE) hash ^= BMEHFMDNKLE.GetHashCode();
-      if (HasBKDCFBDMNIJ) hash ^= BKDCFBDMNIJ.GetHashCode();
-      if (HasKFBLHCCGEPO) hash ^= KFBLHCCGEPO.GetHashCode();
-      if (HasLENKIEBIIHP) hash ^= LENKIEBIIHP.GetHashCode();
-      if (mONPGNBOHFCCase_ == MONPGNBOHFCOneofCase.HGHFECOMJNA) hash ^= HGHFECOMJNA.GetHashCode();
-      if (HasEJDGNLEOBCN) hash ^= EJDGNLEOBCN.GetHashCode();
-      hash ^= (int) mONPGNBOHFCCase_;
+      if (HasAACOEHCFNDB) hash ^= AACOEHCFNDB.GetHashCode();
+      if (HasDGCNHMIHFJB) hash ^= DGCNHMIHFJB.GetHashCode();
+      if (HasFDHEPCKLCAM) hash ^= FDHEPCKLCAM.GetHashCode();
+      if (HasDCJECFMMIBC) hash ^= DCJECFMMIBC.GetHashCode();
+      if (HasIOJEAOCOBBF) hash ^= IOJEAOCOBBF.GetHashCode();
+      if (HasPFBHGAHAFMD) hash ^= PFBHGAHAFMD.GetHashCode();
+      if (HasGNFDDPEMMFN) hash ^= GNFDDPEMMFN.GetHashCode();
+      if (HasMAKOLELFLFH) hash ^= MAKOLELFLFH.GetHashCode();
+      if (HasNJAKOMDMFJD) hash ^= NJAKOMDMFJD.GetHashCode();
+      if (bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.OJPAODIHAJE) hash ^= OJPAODIHAJE.GetHashCode();
+      if (HasBOMGNMDOGLM) hash ^= BOMGNMDOGLM.GetHashCode();
+      if (HasBBEEBBIDJHE) hash ^= BBEEBBIDJHE.GetHashCode();
+      if (HasHGPFFGKNPFB) hash ^= HGPFFGKNPFB.GetHashCode();
+      if (HasLNGHIJGFDKP) hash ^= LNGHIJGFDKP.GetHashCode();
+      if (HasGOKFNGFFMOB) hash ^= GOKFNGFFMOB.GetHashCode();
+      if (bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.CMFCOOEEECB) hash ^= CMFCOOEEECB.GetHashCode();
+      if (bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.EGLOIFDIDPK) hash ^= EGLOIFDIDPK.GetHashCode();
+      hash ^= (int) bKAGLMFNKKACase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -638,69 +658,73 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (HasCCNGHBADHBL) {
+      if (HasAACOEHCFNDB) {
+        output.WriteRawTag(8);
+        output.WriteBool(AACOEHCFNDB);
+      }
+      if (HasDCJECFMMIBC) {
         output.WriteRawTag(16);
-        output.WriteBool(CCNGHBADHBL);
+        output.WriteBool(DCJECFMMIBC);
       }
-      if (HasCHCNEDNCIDJ) {
+      if (HasPFBHGAHAFMD) {
+        output.WriteRawTag(24);
+        output.WriteBool(PFBHGAHAFMD);
+      }
+      if (HasNJAKOMDMFJD) {
         output.WriteRawTag(32);
-        output.WriteBool(CHCNEDNCIDJ);
+        output.WriteBool(NJAKOMDMFJD);
       }
-      if (HasCOIGOCJHBOP) {
+      if (HasGNFDDPEMMFN) {
         output.WriteRawTag(40);
-        output.WriteBool(COIGOCJHBOP);
+        output.WriteBool(GNFDDPEMMFN);
       }
-      if (HasPFJMEECGJMM) {
-        output.WriteRawTag(64);
-        output.WriteBool(PFJMEECGJMM);
+      if (HasMAKOLELFLFH) {
+        output.WriteRawTag(48);
+        output.WriteBool(MAKOLELFLFH);
       }
-      if (HasNHLKFBOBDOM) {
+      if (bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.OJPAODIHAJE) {
+        output.WriteRawTag(66);
+        output.WriteMessage(OJPAODIHAJE);
+      }
+      if (HasFDHEPCKLCAM) {
         output.WriteRawTag(72);
-        output.WriteBool(NHLKFBOBDOM);
+        output.WriteBool(FDHEPCKLCAM);
       }
-      if (HasFIJNAPNICJF) {
-        output.WriteRawTag(80);
-        output.WriteBool(FIJNAPNICJF);
-      }
-      if (mONPGNBOHFCCase_ == MONPGNBOHFCOneofCase.EHKLNPCMMHE) {
-        output.WriteRawTag(90);
-        output.WriteMessage(EHKLNPCMMHE);
-      }
-      if (HasCPOGDKALGOM) {
-        output.WriteRawTag(104);
-        output.WriteBool(CPOGDKALGOM);
-      }
-      if (HasMFCPDJGGCMO) {
+      if (HasDGCNHMIHFJB) {
         output.WriteRawTag(112);
-        output.WriteBool(MFCPDJGGCMO);
+        output.WriteBool(DGCNHMIHFJB);
       }
-      if (HasLPEPIDNJDEM) {
+      if (HasIOJEAOCOBBF) {
         output.WriteRawTag(120);
-        output.WriteBool(LPEPIDNJDEM);
+        output.WriteBool(IOJEAOCOBBF);
       }
-      if (HasBMEHFMDNKLE) {
-        output.WriteRawTag(224, 16);
-        output.WriteBool(BMEHFMDNKLE);
+      if (bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.EGLOIFDIDPK) {
+        output.WriteRawTag(178, 11);
+        output.WriteMessage(EGLOIFDIDPK);
       }
-      if (HasBKDCFBDMNIJ) {
-        output.WriteRawTag(208, 28);
-        output.WriteBool(BKDCFBDMNIJ);
+      if (HasBOMGNMDOGLM) {
+        output.WriteRawTag(128, 23);
+        output.WriteBool(BOMGNMDOGLM);
       }
-      if (HasKFBLHCCGEPO) {
-        output.WriteRawTag(208, 37);
-        output.WriteBool(KFBLHCCGEPO);
+      if (HasHGPFFGKNPFB) {
+        output.WriteRawTag(128, 33);
+        output.WriteBool(HGPFFGKNPFB);
       }
-      if (HasLENKIEBIIHP) {
-        output.WriteRawTag(240, 38);
-        output.WriteBool(LENKIEBIIHP);
+      if (HasBBEEBBIDJHE) {
+        output.WriteRawTag(136, 37);
+        output.WriteBool(BBEEBBIDJHE);
       }
-      if (mONPGNBOHFCCase_ == MONPGNBOHFCOneofCase.HGHFECOMJNA) {
-        output.WriteRawTag(202, 63);
-        output.WriteMessage(HGHFECOMJNA);
+      if (bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.CMFCOOEEECB) {
+        output.WriteRawTag(218, 38);
+        output.WriteMessage(CMFCOOEEECB);
       }
-      if (HasEJDGNLEOBCN) {
-        output.WriteRawTag(128, 85);
-        output.WriteBool(EJDGNLEOBCN);
+      if (HasGOKFNGFFMOB) {
+        output.WriteRawTag(248, 50);
+        output.WriteBool(GOKFNGFFMOB);
+      }
+      if (HasLNGHIJGFDKP) {
+        output.WriteRawTag(200, 115);
+        output.WriteBool(LNGHIJGFDKP);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -712,69 +736,73 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (HasCCNGHBADHBL) {
+      if (HasAACOEHCFNDB) {
+        output.WriteRawTag(8);
+        output.WriteBool(AACOEHCFNDB);
+      }
+      if (HasDCJECFMMIBC) {
         output.WriteRawTag(16);
-        output.WriteBool(CCNGHBADHBL);
+        output.WriteBool(DCJECFMMIBC);
       }
-      if (HasCHCNEDNCIDJ) {
+      if (HasPFBHGAHAFMD) {
+        output.WriteRawTag(24);
+        output.WriteBool(PFBHGAHAFMD);
+      }
+      if (HasNJAKOMDMFJD) {
         output.WriteRawTag(32);
-        output.WriteBool(CHCNEDNCIDJ);
+        output.WriteBool(NJAKOMDMFJD);
       }
-      if (HasCOIGOCJHBOP) {
+      if (HasGNFDDPEMMFN) {
         output.WriteRawTag(40);
-        output.WriteBool(COIGOCJHBOP);
+        output.WriteBool(GNFDDPEMMFN);
       }
-      if (HasPFJMEECGJMM) {
-        output.WriteRawTag(64);
-        output.WriteBool(PFJMEECGJMM);
+      if (HasMAKOLELFLFH) {
+        output.WriteRawTag(48);
+        output.WriteBool(MAKOLELFLFH);
       }
-      if (HasNHLKFBOBDOM) {
+      if (bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.OJPAODIHAJE) {
+        output.WriteRawTag(66);
+        output.WriteMessage(OJPAODIHAJE);
+      }
+      if (HasFDHEPCKLCAM) {
         output.WriteRawTag(72);
-        output.WriteBool(NHLKFBOBDOM);
+        output.WriteBool(FDHEPCKLCAM);
       }
-      if (HasFIJNAPNICJF) {
-        output.WriteRawTag(80);
-        output.WriteBool(FIJNAPNICJF);
-      }
-      if (mONPGNBOHFCCase_ == MONPGNBOHFCOneofCase.EHKLNPCMMHE) {
-        output.WriteRawTag(90);
-        output.WriteMessage(EHKLNPCMMHE);
-      }
-      if (HasCPOGDKALGOM) {
-        output.WriteRawTag(104);
-        output.WriteBool(CPOGDKALGOM);
-      }
-      if (HasMFCPDJGGCMO) {
+      if (HasDGCNHMIHFJB) {
         output.WriteRawTag(112);
-        output.WriteBool(MFCPDJGGCMO);
+        output.WriteBool(DGCNHMIHFJB);
       }
-      if (HasLPEPIDNJDEM) {
+      if (HasIOJEAOCOBBF) {
         output.WriteRawTag(120);
-        output.WriteBool(LPEPIDNJDEM);
+        output.WriteBool(IOJEAOCOBBF);
       }
-      if (HasBMEHFMDNKLE) {
-        output.WriteRawTag(224, 16);
-        output.WriteBool(BMEHFMDNKLE);
+      if (bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.EGLOIFDIDPK) {
+        output.WriteRawTag(178, 11);
+        output.WriteMessage(EGLOIFDIDPK);
       }
-      if (HasBKDCFBDMNIJ) {
-        output.WriteRawTag(208, 28);
-        output.WriteBool(BKDCFBDMNIJ);
+      if (HasBOMGNMDOGLM) {
+        output.WriteRawTag(128, 23);
+        output.WriteBool(BOMGNMDOGLM);
       }
-      if (HasKFBLHCCGEPO) {
-        output.WriteRawTag(208, 37);
-        output.WriteBool(KFBLHCCGEPO);
+      if (HasHGPFFGKNPFB) {
+        output.WriteRawTag(128, 33);
+        output.WriteBool(HGPFFGKNPFB);
       }
-      if (HasLENKIEBIIHP) {
-        output.WriteRawTag(240, 38);
-        output.WriteBool(LENKIEBIIHP);
+      if (HasBBEEBBIDJHE) {
+        output.WriteRawTag(136, 37);
+        output.WriteBool(BBEEBBIDJHE);
       }
-      if (mONPGNBOHFCCase_ == MONPGNBOHFCOneofCase.HGHFECOMJNA) {
-        output.WriteRawTag(202, 63);
-        output.WriteMessage(HGHFECOMJNA);
+      if (bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.CMFCOOEEECB) {
+        output.WriteRawTag(218, 38);
+        output.WriteMessage(CMFCOOEEECB);
       }
-      if (HasEJDGNLEOBCN) {
-        output.WriteRawTag(128, 85);
-        output.WriteBool(EJDGNLEOBCN);
+      if (HasGOKFNGFFMOB) {
+        output.WriteRawTag(248, 50);
+        output.WriteBool(GOKFNGFFMOB);
+      }
+      if (HasLNGHIJGFDKP) {
+        output.WriteRawTag(200, 115);
+        output.WriteBool(LNGHIJGFDKP);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -786,53 +814,56 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (HasCCNGHBADHBL) {
+      if (HasAACOEHCFNDB) {
         size += 1 + 1;
       }
-      if (HasCHCNEDNCIDJ) {
+      if (HasDGCNHMIHFJB) {
         size += 1 + 1;
       }
-      if (HasCOIGOCJHBOP) {
+      if (HasFDHEPCKLCAM) {
         size += 1 + 1;
       }
-      if (HasPFJMEECGJMM) {
+      if (HasDCJECFMMIBC) {
         size += 1 + 1;
       }
-      if (HasNHLKFBOBDOM) {
+      if (HasIOJEAOCOBBF) {
         size += 1 + 1;
       }
-      if (HasFIJNAPNICJF) {
+      if (HasPFBHGAHAFMD) {
         size += 1 + 1;
       }
-      if (mONPGNBOHFCCase_ == MONPGNBOHFCOneofCase.EHKLNPCMMHE) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(EHKLNPCMMHE);
-      }
-      if (HasCPOGDKALGOM) {
+      if (HasGNFDDPEMMFN) {
         size += 1 + 1;
       }
-      if (HasMFCPDJGGCMO) {
+      if (HasMAKOLELFLFH) {
         size += 1 + 1;
       }
-      if (HasLPEPIDNJDEM) {
+      if (HasNJAKOMDMFJD) {
         size += 1 + 1;
       }
-      if (HasBMEHFMDNKLE) {
+      if (bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.OJPAODIHAJE) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(OJPAODIHAJE);
+      }
+      if (HasBOMGNMDOGLM) {
         size += 2 + 1;
       }
-      if (HasBKDCFBDMNIJ) {
+      if (HasBBEEBBIDJHE) {
         size += 2 + 1;
       }
-      if (HasKFBLHCCGEPO) {
+      if (HasHGPFFGKNPFB) {
         size += 2 + 1;
       }
-      if (HasLENKIEBIIHP) {
+      if (HasLNGHIJGFDKP) {
         size += 2 + 1;
       }
-      if (mONPGNBOHFCCase_ == MONPGNBOHFCOneofCase.HGHFECOMJNA) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(HGHFECOMJNA);
-      }
-      if (HasEJDGNLEOBCN) {
+      if (HasGOKFNGFFMOB) {
         size += 2 + 1;
+      }
+      if (bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.CMFCOOEEECB) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(CMFCOOEEECB);
+      }
+      if (bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.EGLOIFDIDPK) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(EGLOIFDIDPK);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -846,60 +877,66 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      switch (other.MONPGNBOHFCCase) {
-        case MONPGNBOHFCOneofCase.CCNGHBADHBL:
-          CCNGHBADHBL = other.CCNGHBADHBL;
+      switch (other.BKAGLMFNKKACase) {
+        case BKAGLMFNKKAOneofCase.AACOEHCFNDB:
+          AACOEHCFNDB = other.AACOEHCFNDB;
           break;
-        case MONPGNBOHFCOneofCase.CHCNEDNCIDJ:
-          CHCNEDNCIDJ = other.CHCNEDNCIDJ;
+        case BKAGLMFNKKAOneofCase.DGCNHMIHFJB:
+          DGCNHMIHFJB = other.DGCNHMIHFJB;
           break;
-        case MONPGNBOHFCOneofCase.COIGOCJHBOP:
-          COIGOCJHBOP = other.COIGOCJHBOP;
+        case BKAGLMFNKKAOneofCase.FDHEPCKLCAM:
+          FDHEPCKLCAM = other.FDHEPCKLCAM;
           break;
-        case MONPGNBOHFCOneofCase.PFJMEECGJMM:
-          PFJMEECGJMM = other.PFJMEECGJMM;
+        case BKAGLMFNKKAOneofCase.DCJECFMMIBC:
+          DCJECFMMIBC = other.DCJECFMMIBC;
           break;
-        case MONPGNBOHFCOneofCase.NHLKFBOBDOM:
-          NHLKFBOBDOM = other.NHLKFBOBDOM;
+        case BKAGLMFNKKAOneofCase.IOJEAOCOBBF:
+          IOJEAOCOBBF = other.IOJEAOCOBBF;
           break;
-        case MONPGNBOHFCOneofCase.FIJNAPNICJF:
-          FIJNAPNICJF = other.FIJNAPNICJF;
+        case BKAGLMFNKKAOneofCase.PFBHGAHAFMD:
+          PFBHGAHAFMD = other.PFBHGAHAFMD;
           break;
-        case MONPGNBOHFCOneofCase.EHKLNPCMMHE:
-          if (EHKLNPCMMHE == null) {
-            EHKLNPCMMHE = new global::March7thHoney.Proto.OEEEAEJBENB();
+        case BKAGLMFNKKAOneofCase.GNFDDPEMMFN:
+          GNFDDPEMMFN = other.GNFDDPEMMFN;
+          break;
+        case BKAGLMFNKKAOneofCase.MAKOLELFLFH:
+          MAKOLELFLFH = other.MAKOLELFLFH;
+          break;
+        case BKAGLMFNKKAOneofCase.NJAKOMDMFJD:
+          NJAKOMDMFJD = other.NJAKOMDMFJD;
+          break;
+        case BKAGLMFNKKAOneofCase.OJPAODIHAJE:
+          if (OJPAODIHAJE == null) {
+            OJPAODIHAJE = new global::March7thHoney.Proto.PNOLLIAKGDB();
           }
-          EHKLNPCMMHE.MergeFrom(other.EHKLNPCMMHE);
+          OJPAODIHAJE.MergeFrom(other.OJPAODIHAJE);
           break;
-        case MONPGNBOHFCOneofCase.CPOGDKALGOM:
-          CPOGDKALGOM = other.CPOGDKALGOM;
+        case BKAGLMFNKKAOneofCase.BOMGNMDOGLM:
+          BOMGNMDOGLM = other.BOMGNMDOGLM;
           break;
-        case MONPGNBOHFCOneofCase.MFCPDJGGCMO:
-          MFCPDJGGCMO = other.MFCPDJGGCMO;
+        case BKAGLMFNKKAOneofCase.BBEEBBIDJHE:
+          BBEEBBIDJHE = other.BBEEBBIDJHE;
           break;
-        case MONPGNBOHFCOneofCase.LPEPIDNJDEM:
-          LPEPIDNJDEM = other.LPEPIDNJDEM;
+        case BKAGLMFNKKAOneofCase.HGPFFGKNPFB:
+          HGPFFGKNPFB = other.HGPFFGKNPFB;
           break;
-        case MONPGNBOHFCOneofCase.BMEHFMDNKLE:
-          BMEHFMDNKLE = other.BMEHFMDNKLE;
+        case BKAGLMFNKKAOneofCase.LNGHIJGFDKP:
+          LNGHIJGFDKP = other.LNGHIJGFDKP;
           break;
-        case MONPGNBOHFCOneofCase.BKDCFBDMNIJ:
-          BKDCFBDMNIJ = other.BKDCFBDMNIJ;
+        case BKAGLMFNKKAOneofCase.GOKFNGFFMOB:
+          GOKFNGFFMOB = other.GOKFNGFFMOB;
           break;
-        case MONPGNBOHFCOneofCase.KFBLHCCGEPO:
-          KFBLHCCGEPO = other.KFBLHCCGEPO;
-          break;
-        case MONPGNBOHFCOneofCase.LENKIEBIIHP:
-          LENKIEBIIHP = other.LENKIEBIIHP;
-          break;
-        case MONPGNBOHFCOneofCase.HGHFECOMJNA:
-          if (HGHFECOMJNA == null) {
-            HGHFECOMJNA = new global::March7thHoney.Proto.NECGMCGFANN();
+        case BKAGLMFNKKAOneofCase.CMFCOOEEECB:
+          if (CMFCOOEEECB == null) {
+            CMFCOOEEECB = new global::March7thHoney.Proto.JPGACKPLGCD();
           }
-          HGHFECOMJNA.MergeFrom(other.HGHFECOMJNA);
+          CMFCOOEEECB.MergeFrom(other.CMFCOOEEECB);
           break;
-        case MONPGNBOHFCOneofCase.EJDGNLEOBCN:
-          EJDGNLEOBCN = other.EJDGNLEOBCN;
+        case BKAGLMFNKKAOneofCase.EGLOIFDIDPK:
+          if (EGLOIFDIDPK == null) {
+            EGLOIFDIDPK = new global::March7thHoney.Proto.APAMFCKFHLL();
+          }
+          EGLOIFDIDPK.MergeFrom(other.EGLOIFDIDPK);
           break;
       }
 
@@ -922,78 +959,87 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
+          case 8: {
+            AACOEHCFNDB = input.ReadBool();
+            break;
+          }
           case 16: {
-            CCNGHBADHBL = input.ReadBool();
+            DCJECFMMIBC = input.ReadBool();
+            break;
+          }
+          case 24: {
+            PFBHGAHAFMD = input.ReadBool();
             break;
           }
           case 32: {
-            CHCNEDNCIDJ = input.ReadBool();
+            NJAKOMDMFJD = input.ReadBool();
             break;
           }
           case 40: {
-            COIGOCJHBOP = input.ReadBool();
+            GNFDDPEMMFN = input.ReadBool();
             break;
           }
-          case 64: {
-            PFJMEECGJMM = input.ReadBool();
+          case 48: {
+            MAKOLELFLFH = input.ReadBool();
+            break;
+          }
+          case 66: {
+            global::March7thHoney.Proto.PNOLLIAKGDB subBuilder = new global::March7thHoney.Proto.PNOLLIAKGDB();
+            if (bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.OJPAODIHAJE) {
+              subBuilder.MergeFrom(OJPAODIHAJE);
+            }
+            input.ReadMessage(subBuilder);
+            OJPAODIHAJE = subBuilder;
             break;
           }
           case 72: {
-            NHLKFBOBDOM = input.ReadBool();
-            break;
-          }
-          case 80: {
-            FIJNAPNICJF = input.ReadBool();
-            break;
-          }
-          case 90: {
-            global::March7thHoney.Proto.OEEEAEJBENB subBuilder = new global::March7thHoney.Proto.OEEEAEJBENB();
-            if (mONPGNBOHFCCase_ == MONPGNBOHFCOneofCase.EHKLNPCMMHE) {
-              subBuilder.MergeFrom(EHKLNPCMMHE);
-            }
-            input.ReadMessage(subBuilder);
-            EHKLNPCMMHE = subBuilder;
-            break;
-          }
-          case 104: {
-            CPOGDKALGOM = input.ReadBool();
+            FDHEPCKLCAM = input.ReadBool();
             break;
           }
           case 112: {
-            MFCPDJGGCMO = input.ReadBool();
+            DGCNHMIHFJB = input.ReadBool();
             break;
           }
           case 120: {
-            LPEPIDNJDEM = input.ReadBool();
+            IOJEAOCOBBF = input.ReadBool();
             break;
           }
-          case 2144: {
-            BMEHFMDNKLE = input.ReadBool();
-            break;
-          }
-          case 3664: {
-            BKDCFBDMNIJ = input.ReadBool();
-            break;
-          }
-          case 4816: {
-            KFBLHCCGEPO = input.ReadBool();
-            break;
-          }
-          case 4976: {
-            LENKIEBIIHP = input.ReadBool();
-            break;
-          }
-          case 8138: {
-            global::March7thHoney.Proto.NECGMCGFANN subBuilder = new global::March7thHoney.Proto.NECGMCGFANN();
-            if (mONPGNBOHFCCase_ == MONPGNBOHFCOneofCase.HGHFECOMJNA) {
-              subBuilder.MergeFrom(HGHFECOMJNA);
+          case 1458: {
+            global::March7thHoney.Proto.APAMFCKFHLL subBuilder = new global::March7thHoney.Proto.APAMFCKFHLL();
+            if (bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.EGLOIFDIDPK) {
+              subBuilder.MergeFrom(EGLOIFDIDPK);
             }
             input.ReadMessage(subBuilder);
-            HGHFECOMJNA = subBuilder;
+            EGLOIFDIDPK = subBuilder;
             break;
           }
-          case 10880: {
-            EJDGNLEOBCN = input.ReadBool();
+          case 2944: {
+            BOMGNMDOGLM = input.ReadBool();
+            break;
+          }
+          case 4224: {
+            HGPFFGKNPFB = input.ReadBool();
+            break;
+          }
+          case 4744: {
+            BBEEBBIDJHE = input.ReadBool();
+            break;
+          }
+          case 4954: {
+            global::March7thHoney.Proto.JPGACKPLGCD subBuilder = new global::March7thHoney.Proto.JPGACKPLGCD();
+            if (bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.CMFCOOEEECB) {
+              subBuilder.MergeFrom(CMFCOOEEECB);
+            }
+            input.ReadMessage(subBuilder);
+            CMFCOOEEECB = subBuilder;
+            break;
+          }
+          case 6520: {
+            GOKFNGFFMOB = input.ReadBool();
+            break;
+          }
+          case 14792: {
+            LNGHIJGFDKP = input.ReadBool();
             break;
           }
         }
@@ -1015,78 +1061,87 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
+          case 8: {
+            AACOEHCFNDB = input.ReadBool();
+            break;
+          }
           case 16: {
-            CCNGHBADHBL = input.ReadBool();
+            DCJECFMMIBC = input.ReadBool();
+            break;
+          }
+          case 24: {
+            PFBHGAHAFMD = input.ReadBool();
             break;
           }
           case 32: {
-            CHCNEDNCIDJ = input.ReadBool();
+            NJAKOMDMFJD = input.ReadBool();
             break;
           }
           case 40: {
-            COIGOCJHBOP = input.ReadBool();
+            GNFDDPEMMFN = input.ReadBool();
             break;
           }
-          case 64: {
-            PFJMEECGJMM = input.ReadBool();
+          case 48: {
+            MAKOLELFLFH = input.ReadBool();
+            break;
+          }
+          case 66: {
+            global::March7thHoney.Proto.PNOLLIAKGDB subBuilder = new global::March7thHoney.Proto.PNOLLIAKGDB();
+            if (bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.OJPAODIHAJE) {
+              subBuilder.MergeFrom(OJPAODIHAJE);
+            }
+            input.ReadMessage(subBuilder);
+            OJPAODIHAJE = subBuilder;
             break;
           }
           case 72: {
-            NHLKFBOBDOM = input.ReadBool();
-            break;
-          }
-          case 80: {
-            FIJNAPNICJF = input.ReadBool();
-            break;
-          }
-          case 90: {
-            global::March7thHoney.Proto.OEEEAEJBENB subBuilder = new global::March7thHoney.Proto.OEEEAEJBENB();
-            if (mONPGNBOHFCCase_ == MONPGNBOHFCOneofCase.EHKLNPCMMHE) {
-              subBuilder.MergeFrom(EHKLNPCMMHE);
-            }
-            input.ReadMessage(subBuilder);
-            EHKLNPCMMHE = subBuilder;
-            break;
-          }
-          case 104: {
-            CPOGDKALGOM = input.ReadBool();
+            FDHEPCKLCAM = input.ReadBool();
             break;
           }
           case 112: {
-            MFCPDJGGCMO = input.ReadBool();
+            DGCNHMIHFJB = input.ReadBool();
             break;
           }
           case 120: {
-            LPEPIDNJDEM = input.ReadBool();
+            IOJEAOCOBBF = input.ReadBool();
             break;
           }
-          case 2144: {
-            BMEHFMDNKLE = input.ReadBool();
-            break;
-          }
-          case 3664: {
-            BKDCFBDMNIJ = input.ReadBool();
-            break;
-          }
-          case 4816: {
-            KFBLHCCGEPO = input.ReadBool();
-            break;
-          }
-          case 4976: {
-            LENKIEBIIHP = input.ReadBool();
-            break;
-          }
-          case 8138: {
-            global::March7thHoney.Proto.NECGMCGFANN subBuilder = new global::March7thHoney.Proto.NECGMCGFANN();
-            if (mONPGNBOHFCCase_ == MONPGNBOHFCOneofCase.HGHFECOMJNA) {
-              subBuilder.MergeFrom(HGHFECOMJNA);
+          case 1458: {
+            global::March7thHoney.Proto.APAMFCKFHLL subBuilder = new global::March7thHoney.Proto.APAMFCKFHLL();
+            if (bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.EGLOIFDIDPK) {
+              subBuilder.MergeFrom(EGLOIFDIDPK);
             }
             input.ReadMessage(subBuilder);
-            HGHFECOMJNA = subBuilder;
+            EGLOIFDIDPK = subBuilder;
             break;
           }
-          case 10880: {
-            EJDGNLEOBCN = input.ReadBool();
+          case 2944: {
+            BOMGNMDOGLM = input.ReadBool();
+            break;
+          }
+          case 4224: {
+            HGPFFGKNPFB = input.ReadBool();
+            break;
+          }
+          case 4744: {
+            BBEEBBIDJHE = input.ReadBool();
+            break;
+          }
+          case 4954: {
+            global::March7thHoney.Proto.JPGACKPLGCD subBuilder = new global::March7thHoney.Proto.JPGACKPLGCD();
+            if (bKAGLMFNKKACase_ == BKAGLMFNKKAOneofCase.CMFCOOEEECB) {
+              subBuilder.MergeFrom(CMFCOOEEECB);
+            }
+            input.ReadMessage(subBuilder);
+            CMFCOOEEECB = subBuilder;
+            break;
+          }
+          case 6520: {
+            GOKFNGFFMOB = input.ReadBool();
+            break;
+          }
+          case 14792: {
+            LNGHIJGFDKP = input.ReadBool();
             break;
           }
         }

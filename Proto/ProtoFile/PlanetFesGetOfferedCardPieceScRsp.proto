@@ -2,16 +2,14 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "FBBMDFDOEEF.proto";
-import "HBMNFGPKECH.proto";
+import "FMKMEFMOJGJ.proto";
+import "IEDPDDJAAIH.proto";
 
 message PlanetFesGetOfferedCardPieceScRsp {
-    int64 CAOBLDAJOHK = 3;
-    uint32 retcode = 7;
-    bool JFHMCDFDABI = 8;
-    uint64 PHALKDHHPPB = 9;
-    repeated FBBMDFDOEEF CGOMCPEBBIA = 11;
-    repeated HBMNFGPKECH CLFPBNGKLAA = 12;
+    repeated IEDPDDJAAIH CBPKFDJMGBH = 5;
+    repeated FMKMEFMOJGJ EOMINOCGLJF = 10;
+    uint64 CBMBOBNCKMO = 13;
+    int64 MAFLGLLOKBB = 2;
+    uint32 retcode = 9;
+    bool FOGGEJIIJCM = 7;
 }

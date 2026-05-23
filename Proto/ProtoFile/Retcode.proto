@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum Retcode {
     RET_SUCC = 0;
     RET_FAIL = 1;

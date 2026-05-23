@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChxIZWxpb2J1c1N0YXJ0UmFpZENzUmVxLnByb3RvIo4BChZIZWxpb2J1c1N0",
-            "YXJ0UmFpZENzUmVxEg8KB3JhaWRfaWQYBiABKA0SFgoOcHJvcF9lbnRpdHlf",
-            "aWQYCSABKA0SDwoHaXNfc2F2ZRgLIAEoCBIQCghza2lsbF9pZBgNIAEoDRIT",
-            "CgtQS0JBRUJESEZETBgOIAEoDRITCgthdmF0YXJfbGlzdBgPIAMoDUIWqgIT",
+            "YXJ0UmFpZENzUmVxEhMKC2F2YXRhcl9saXN0GAIgAygNEhMKC0ROT0FFUERQ",
+            "SEtLGAcgASgNEhAKCHNraWxsX2lkGAEgASgNEg8KB3JhaWRfaWQYDiABKA0S",
+            "DwoHaXNfc2F2ZRgJIAEoCBIWCg5wcm9wX2VudGl0eV9pZBgEIAEoDUIWqgIT",
             "TWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HeliobusStartRaidCsReq), global::March7thHoney.Proto.HeliobusStartRaidCsReq.Parser, new[]{ "RaidId", "PropEntityId", "IsSave", "SkillId", "PKBAEBDHFDL", "AvatarList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HeliobusStartRaidCsReq), global::March7thHoney.Proto.HeliobusStartRaidCsReq.Parser, new[]{ "AvatarList", "DNOAEPDPHKK", "SkillId", "RaidId", "IsSave", "PropEntityId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,12 +74,12 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public HeliobusStartRaidCsReq(HeliobusStartRaidCsReq other) : this() {
-      raidId_ = other.raidId_;
-      propEntityId_ = other.propEntityId_;
-      isSave_ = other.isSave_;
-      skillId_ = other.skillId_;
-      pKBAEBDHFDL_ = other.pKBAEBDHFDL_;
       avatarList_ = other.avatarList_.Clone();
+      dNOAEPDPHKK_ = other.dNOAEPDPHKK_;
+      skillId_ = other.skillId_;
+      raidId_ = other.raidId_;
+      isSave_ = other.isSave_;
+      propEntityId_ = other.propEntityId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -89,44 +89,31 @@ namespace March7thHoney.Proto {
       return new HeliobusStartRaidCsReq(this);
     }
 
-    /// <summary>Field number for the "raid_id" field.</summary>
-    public const int RaidIdFieldNumber = 6;
-    private uint raidId_;
+    /// <summary>Field number for the "avatar_list" field.</summary>
+    public const int AvatarListFieldNumber = 2;
+    private static readonly pb::FieldCodec<uint> _repeated_avatarList_codec
+        = pb::FieldCodec.ForUInt32(18);
+    private readonly pbc::RepeatedField<uint> avatarList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint RaidId {
-      get { return raidId_; }
-      set {
-        raidId_ = value;
-      }
+    public pbc::RepeatedField<uint> AvatarList {
+      get { return avatarList_; }
     }
 
-    /// <summary>Field number for the "prop_entity_id" field.</summary>
-    public const int PropEntityIdFieldNumber = 9;
-    private uint propEntityId_;
+    /// <summary>Field number for the "DNOAEPDPHKK" field.</summary>
+    public const int DNOAEPDPHKKFieldNumber = 7;
+    private uint dNOAEPDPHKK_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PropEntityId {
-      get { return propEntityId_; }
+    public uint DNOAEPDPHKK {
+      get { return dNOAEPDPHKK_; }
       set {
-        propEntityId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "is_save" field.</summary>
-    public const int IsSaveFieldNumber = 11;
-    private bool isSave_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IsSave {
-      get { return isSave_; }
-      set {
-        isSave_ = value;
+        dNOAEPDPHKK_ = value;
       }
     }
 
     /// <summary>Field number for the "skill_id" field.</summary>
-    public const int SkillIdFieldNumber = 13;
+    public const int SkillIdFieldNumber = 1;
     private uint skillId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -137,27 +124,40 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "PKBAEBDHFDL" field.</summary>
-    public const int PKBAEBDHFDLFieldNumber = 14;
-    private uint pKBAEBDHFDL_;
+    /// <summary>Field number for the "raid_id" field.</summary>
+    public const int RaidIdFieldNumber = 14;
+    private uint raidId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PKBAEBDHFDL {
-      get { return pKBAEBDHFDL_; }
+    public uint RaidId {
+      get { return raidId_; }
       set {
-        pKBAEBDHFDL_ = value;
+        raidId_ = value;
       }
     }
 
-    /// <summary>Field number for the "avatar_list" field.</summary>
-    public const int AvatarListFieldNumber = 15;
-    private static readonly pb::FieldCodec<uint> _repeated_avatarList_codec
-        = pb::FieldCodec.ForUInt32(122);
-    private readonly pbc::RepeatedField<uint> avatarList_ = new pbc::RepeatedField<uint>();
+    /// <summary>Field number for the "is_save" field.</summary>
+    public const int IsSaveFieldNumber = 9;
+    private bool isSave_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> AvatarList {
-      get { return avatarList_; }
+    public bool IsSave {
+      get { return isSave_; }
+      set {
+        isSave_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "prop_entity_id" field.</summary>
+    public const int PropEntityIdFieldNumber = 4;
+    private uint propEntityId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint PropEntityId {
+      get { return propEntityId_; }
+      set {
+        propEntityId_ = value;
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -175,12 +175,12 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (RaidId != other.RaidId) return false;
-      if (PropEntityId != other.PropEntityId) return false;
-      if (IsSave != other.IsSave) return false;
-      if (SkillId != other.SkillId) return false;
-      if (PKBAEBDHFDL != other.PKBAEBDHFDL) return false;
       if(!avatarList_.Equals(other.avatarList_)) return false;
+      if (DNOAEPDPHKK != other.DNOAEPDPHKK) return false;
+      if (SkillId != other.SkillId) return false;
+      if (RaidId != other.RaidId) return false;
+      if (IsSave != other.IsSave) return false;
+      if (PropEntityId != other.PropEntityId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -188,12 +188,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (RaidId != 0) hash ^= RaidId.GetHashCode();
-      if (PropEntityId != 0) hash ^= PropEntityId.GetHashCode();
-      if (IsSave != false) hash ^= IsSave.GetHashCode();
-      if (SkillId != 0) hash ^= SkillId.GetHashCode();
-      if (PKBAEBDHFDL != 0) hash ^= PKBAEBDHFDL.GetHashCode();
       hash ^= avatarList_.GetHashCode();
+      if (DNOAEPDPHKK != 0) hash ^= DNOAEPDPHKK.GetHashCode();
+      if (SkillId != 0) hash ^= SkillId.GetHashCode();
+      if (RaidId != 0) hash ^= RaidId.GetHashCode();
+      if (IsSave != false) hash ^= IsSave.GetHashCode();
+      if (PropEntityId != 0) hash ^= PropEntityId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -212,27 +212,27 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (RaidId != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(RaidId);
-      }
-      if (PropEntityId != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(PropEntityId);
-      }
-      if (IsSave != false) {
-        output.WriteRawTag(88);
-        output.WriteBool(IsSave);
-      }
       if (SkillId != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(8);
         output.WriteUInt32(SkillId);
       }
-      if (PKBAEBDHFDL != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(PKBAEBDHFDL);
-      }
       avatarList_.WriteTo(output, _repeated_avatarList_codec);
+      if (PropEntityId != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(PropEntityId);
+      }
+      if (DNOAEPDPHKK != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(DNOAEPDPHKK);
+      }
+      if (IsSave != false) {
+        output.WriteRawTag(72);
+        output.WriteBool(IsSave);
+      }
+      if (RaidId != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(RaidId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -243,27 +243,27 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (RaidId != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(RaidId);
-      }
-      if (PropEntityId != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(PropEntityId);
-      }
-      if (IsSave != false) {
-        output.WriteRawTag(88);
-        output.WriteBool(IsSave);
-      }
       if (SkillId != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(8);
         output.WriteUInt32(SkillId);
       }
-      if (PKBAEBDHFDL != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(PKBAEBDHFDL);
-      }
       avatarList_.WriteTo(ref output, _repeated_avatarList_codec);
+      if (PropEntityId != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(PropEntityId);
+      }
+      if (DNOAEPDPHKK != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(DNOAEPDPHKK);
+      }
+      if (IsSave != false) {
+        output.WriteRawTag(72);
+        output.WriteBool(IsSave);
+      }
+      if (RaidId != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(RaidId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -274,22 +274,22 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (RaidId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RaidId);
-      }
-      if (PropEntityId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PropEntityId);
-      }
-      if (IsSave != false) {
-        size += 1 + 1;
+      size += avatarList_.CalculateSize(_repeated_avatarList_codec);
+      if (DNOAEPDPHKK != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DNOAEPDPHKK);
       }
       if (SkillId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SkillId);
       }
-      if (PKBAEBDHFDL != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PKBAEBDHFDL);
+      if (RaidId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RaidId);
       }
-      size += avatarList_.CalculateSize(_repeated_avatarList_codec);
+      if (IsSave != false) {
+        size += 1 + 1;
+      }
+      if (PropEntityId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PropEntityId);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -302,22 +302,22 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.RaidId != 0) {
-        RaidId = other.RaidId;
-      }
-      if (other.PropEntityId != 0) {
-        PropEntityId = other.PropEntityId;
-      }
-      if (other.IsSave != false) {
-        IsSave = other.IsSave;
+      avatarList_.Add(other.avatarList_);
+      if (other.DNOAEPDPHKK != 0) {
+        DNOAEPDPHKK = other.DNOAEPDPHKK;
       }
       if (other.SkillId != 0) {
         SkillId = other.SkillId;
       }
-      if (other.PKBAEBDHFDL != 0) {
-        PKBAEBDHFDL = other.PKBAEBDHFDL;
+      if (other.RaidId != 0) {
+        RaidId = other.RaidId;
       }
-      avatarList_.Add(other.avatarList_);
+      if (other.IsSave != false) {
+        IsSave = other.IsSave;
+      }
+      if (other.PropEntityId != 0) {
+        PropEntityId = other.PropEntityId;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -337,29 +337,29 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 48: {
-            RaidId = input.ReadUInt32();
-            break;
-          }
-          case 72: {
-            PropEntityId = input.ReadUInt32();
-            break;
-          }
-          case 88: {
-            IsSave = input.ReadBool();
-            break;
-          }
-          case 104: {
+          case 8: {
             SkillId = input.ReadUInt32();
             break;
           }
-          case 112: {
-            PKBAEBDHFDL = input.ReadUInt32();
+          case 18:
+          case 16: {
+            avatarList_.AddEntriesFrom(input, _repeated_avatarList_codec);
             break;
           }
-          case 122:
-          case 120: {
-            avatarList_.AddEntriesFrom(input, _repeated_avatarList_codec);
+          case 32: {
+            PropEntityId = input.ReadUInt32();
+            break;
+          }
+          case 56: {
+            DNOAEPDPHKK = input.ReadUInt32();
+            break;
+          }
+          case 72: {
+            IsSave = input.ReadBool();
+            break;
+          }
+          case 112: {
+            RaidId = input.ReadUInt32();
             break;
           }
         }
@@ -381,29 +381,29 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 48: {
-            RaidId = input.ReadUInt32();
-            break;
-          }
-          case 72: {
-            PropEntityId = input.ReadUInt32();
-            break;
-          }
-          case 88: {
-            IsSave = input.ReadBool();
-            break;
-          }
-          case 104: {
+          case 8: {
             SkillId = input.ReadUInt32();
             break;
           }
-          case 112: {
-            PKBAEBDHFDL = input.ReadUInt32();
+          case 18:
+          case 16: {
+            avatarList_.AddEntriesFrom(ref input, _repeated_avatarList_codec);
             break;
           }
-          case 122:
-          case 120: {
-            avatarList_.AddEntriesFrom(ref input, _repeated_avatarList_codec);
+          case 32: {
+            PropEntityId = input.ReadUInt32();
+            break;
+          }
+          case 56: {
+            DNOAEPDPHKK = input.ReadUInt32();
+            break;
+          }
+          case 72: {
+            IsSave = input.ReadBool();
+            break;
+          }
+          case 112: {
+            RaidId = input.ReadUInt32();
             break;
           }
         }

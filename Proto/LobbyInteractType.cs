@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChdMb2JieUludGVyYWN0VHlwZS5wcm90bypNChFMb2JieUludGVyYWN0VHlw",
-            "ZRIbChdKQlBER0RHQUVLTF9QQ1BESEVMUEtFTRAAEhsKF0pCUERHREdBRUtM",
-            "X0JFTEpIS0lPSUtCEAFCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
+            "ZRIbChdPRFBKRU9HRElLRl9OTENER0lQR0ZEShAAEhsKF09EUEpFT0dESUtG",
+            "X0RQTUtGSktLS0tBEAFCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
             "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -37,8 +37,8 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum LobbyInteractType {
-    [pbr::OriginalName("JBPDGDGAEKL_PCPDHELPKEM")] JbpdgdgaeklPcpdhelpkem = 0,
-    [pbr::OriginalName("JBPDGDGAEKL_BELJHKIOIKB")] JbpdgdgaeklBeljhkioikb = 1,
+    [pbr::OriginalName("ODPJEOGDIKF_NLCDGIPGFDJ")] OdpjeogdikfNlcdgipgfdj = 0,
+    [pbr::OriginalName("ODPJEOGDIKF_DPMKFJKKKKA")] OdpjeogdikfDpmkfjkkkka = 1,
   }
 
   #endregion

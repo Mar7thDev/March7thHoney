@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message CIFCAIEDOLK {
+    uint32 EGDEKFJJNEP = 9;
+    bool DCLPLNFINDL = 7;
+    uint32 JPPAGGPJOMO = 14;
+}

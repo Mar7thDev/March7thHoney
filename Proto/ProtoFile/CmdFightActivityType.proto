@@ -2,15 +2,13 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdFightActivityType {
-    NACBOEPEICM_PCPDHELPKEM = 0;
-    CmdTakeFightActivityRewardScRsp = 3609;
-    CmdTakeFightActivityRewardCsReq = 3618;
-    CmdGetFightActivityDataCsReq = 3691;
-    CmdGetFightActivityDataScRsp = 3610;
-    CmdEnterFightActivityStageCsReq = 3695;
-    CmdEnterFightActivityStageScRsp = 3614;
-    CmdFightActivityDataChangeScNotify = 3694;
+    EJNCEADPKFE_NLCDGIPGFDJ = 0;
+    EJNCEADPKFE_HFBELGKADLF = 3636;
+    EJNCEADPKFE_NEBCECBJEGP = 3673;
+    EJNCEADPKFE_KOPFLKEHKEF = 3680;
+    EJNCEADPKFE_CFFKPLMCNJI = 3613;
+    EJNCEADPKFE_FCLKICJNKBC = 3615;
+    EJNCEADPKFE_IDPBIJOAHAC = 3603;
+    EJNCEADPKFE_IJBOBOFLEAE = 3627;
 }

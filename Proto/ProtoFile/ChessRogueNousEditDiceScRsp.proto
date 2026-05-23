@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "GLENEKHDKLJ.proto";
+import "HGCIAPKELAF.proto";
 
 message ChessRogueNousEditDiceScRsp {
-    uint32 retcode = 14;
-    GLENEKHDKLJ BDJDBMICKKP = 15;
+    HGCIAPKELAF IOCCACNJIGD = 11;
+    uint32 retcode = 12;
 }

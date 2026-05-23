@@ -8,7 +8,7 @@ public class PacketFinishedMissionScNotify : BasePacket
     public PacketFinishedMissionScNotify(IEnumerable<int> missionIds) : base(CmdIds.FinishedMissionScNotify)
     {
         var proto = new FinishedMissionScNotify();
-        proto.FinishedMissionId.AddRange(missionIds
+        proto.FinishedMainMissionIdList.AddRange(missionIds
             .Where(x => x > 0)
             .Select(x => (uint)x)
             .Distinct());

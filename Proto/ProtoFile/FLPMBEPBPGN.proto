@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "LMKECAPDMAC.proto";
+
+message FLPMBEPBPGN {
+    repeated LMKECAPDMAC APHGAEAPLJF = 13;
+}

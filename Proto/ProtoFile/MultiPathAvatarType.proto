@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum MultiPathAvatarType {
     MultiPathAvatarTypeNone = 0;
     Mar_7thKnightType = 1001;

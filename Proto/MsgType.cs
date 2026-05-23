@@ -24,13 +24,14 @@ namespace March7thHoney.Proto {
     static MsgTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg1Nc2dUeXBlLnByb3RvKvoBCgdNc2dUeXBlEhEKDU1TR19UWVBFX05PTkUQ",
+            "Cg1Nc2dUeXBlLnByb3RvKpQCCgdNc2dUeXBlEhEKDU1TR19UWVBFX05PTkUQ",
             "ABIYChRNU0dfVFlQRV9DVVNUT01fVEVYVBABEhIKDk1TR19UWVBFX0VNT0pJ",
             "EAISEwoPTVNHX1RZUEVfSU5WSVRFEAMSFwoTTVNHX1RZUEVfUExBTkVUX0ZF",
             "UxAEEhgKFE1TR19UWVBFX0FDSUVMTU9MRUxCEAUSGAoUTVNHX1RZUEVfQkdE",
             "TUxHRE1ESUYQBhIYChRNU0dfVFlQRV9NR0xQTE9QRUNHShAHEhgKFE1TR19U",
-            "WVBFX1BQR0JGTU9HQUhDEAgSGAoUTVNHX1RZUEVfQkFFS0hPSExMS0oQCUIW",
-            "qgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "WVBFX1BQR0JGTU9HQUhDEAgSGAoUTVNHX1RZUEVfQkFFS0hPSExMS0oQCRIY",
+            "ChRNU0dfVFlQRV9NSklFQUJNQkVEUBAKQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
+            "b3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.MsgType), }, null, null));
@@ -50,6 +51,7 @@ namespace March7thHoney.Proto {
     [pbr::OriginalName("MSG_TYPE_MGLPLOPECGJ")] Mglplopecgj = 7,
     [pbr::OriginalName("MSG_TYPE_PPGBFMOGAHC")] Ppgbfmogahc = 8,
     [pbr::OriginalName("MSG_TYPE_BAEKHOHLLKJ")] Baekhohllkj = 9,
+    [pbr::OriginalName("MSG_TYPE_MJIEABMBEDP")] Mjieabmbedp = 10,
   }
 
   #endregion

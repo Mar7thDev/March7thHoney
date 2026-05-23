@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "NHHJAONHDDG.proto";
+
+message LPHCHEJEMPD {
+    NHHJAONHDDG state = 14;
+    uint32 rank = 4;
+    uint32 score_id = 6;
+    uint32 DHJANOFGDNP = 2;
+}

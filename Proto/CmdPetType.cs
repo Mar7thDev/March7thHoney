@@ -24,12 +24,13 @@ namespace March7thHoney.Proto {
     static CmdPetTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChBDbWRQZXRUeXBlLnByb3RvKtABCgpDbWRQZXRUeXBlEhsKF0FNUExOQkJJ",
-            "QkpIX1BDUERIRUxQS0VNEAASFgoRQ21kUmVjYWxsUGV0U2NSc3AQuDsSFwoS",
-            "Q21kR2V0UGV0RGF0YVNjUnNwELQ7EhYKEUNtZFN1bW1vblBldENzUmVxELI7",
-            "EhcKEkNtZEdldFBldERhdGFDc1JlcRCxOxIWChFDbWRTdW1tb25QZXRTY1Jz",
-            "cBC+OxITCg5DbWRGTE5NQ01OSkdITxC6OxIWChFDbWRSZWNhbGxQZXRDc1Jl",
-            "cRCzO0IWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChBDbWRQZXRUeXBlLnByb3RvKvsBCgpDbWRQZXRUeXBlEhsKF01BTU1EQURO",
+            "R0xQX05MQ0RHSVBHRkRKEAASHAoXTUFNTURBRE5HTFBfQkNLSUJGSE1HT0YQ",
+            "szsSHAoXTUFNTURBRE5HTFBfTkRCRERCSUNIUFAQuDsSHAoXTUFNTURBRE5H",
+            "TFBfSE9GRkRLQkVOS0UQuzsSHAoXTUFNTURBRE5HTFBfQkNKRUNHTEJGTUQQ",
+            "vjsSHAoXTUFNTURBRE5HTFBfS0xOUENOSEdCT0wQwTsSHAoXTUFNTURBRE5H",
+            "TFBfS0hITUVGQ0RNSUYQsjsSHAoXTUFNTURBRE5HTFBfTEtJS0lPRUZKRUMQ",
+            "xztCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdPetType), }, null, null));
@@ -39,14 +40,14 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdPetType {
-    [pbr::OriginalName("AMPLNBBIBJH_PCPDHELPKEM")] AmplnbbibjhPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdRecallPetScRsp")] CmdRecallPetScRsp = 7608,
-    [pbr::OriginalName("CmdGetPetDataScRsp")] CmdGetPetDataScRsp = 7604,
-    [pbr::OriginalName("CmdSummonPetCsReq")] CmdSummonPetCsReq = 7602,
-    [pbr::OriginalName("CmdGetPetDataCsReq")] CmdGetPetDataCsReq = 7601,
-    [pbr::OriginalName("CmdSummonPetScRsp")] CmdSummonPetScRsp = 7614,
-    [pbr::OriginalName("CmdFLNMCMNJGHO")] CmdFlnmcmnjgho = 7610,
-    [pbr::OriginalName("CmdRecallPetCsReq")] CmdRecallPetCsReq = 7603,
+    [pbr::OriginalName("MAMMDADNGLP_NLCDGIPGFDJ")] MammdadnglpNlcdgipgfdj = 0,
+    [pbr::OriginalName("MAMMDADNGLP_BCKIBFHMGOF")] MammdadnglpBckibfhmgof = 7603,
+    [pbr::OriginalName("MAMMDADNGLP_NDBDDBICHPP")] MammdadnglpNdbddbichpp = 7608,
+    [pbr::OriginalName("MAMMDADNGLP_HOFFDKBENKE")] MammdadnglpHoffdkbenke = 7611,
+    [pbr::OriginalName("MAMMDADNGLP_BCJECGLBFMD")] MammdadnglpBcjecglbfmd = 7614,
+    [pbr::OriginalName("MAMMDADNGLP_KLNPCNHGBOL")] MammdadnglpKlnpcnhgbol = 7617,
+    [pbr::OriginalName("MAMMDADNGLP_KHHMEFCDMIF")] MammdadnglpKhhmefcdmif = 7602,
+    [pbr::OriginalName("MAMMDADNGLP_LKIKIOEFJEC")] MammdadnglpLkikioefjec = 7623,
   }
 
   #endregion

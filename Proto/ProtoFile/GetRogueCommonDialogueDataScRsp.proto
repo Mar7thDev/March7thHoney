@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "JIBMJCBNDKK.proto";
+import "HFEOGNAMHCG.proto";
 
 message GetRogueCommonDialogueDataScRsp {
-    repeated JIBMJCBNDKK JOKAEEMJLMK = 4;
-    uint32 retcode = 6;
+    repeated HFEOGNAMHCG HJOKMCCPOLL = 1;
+    uint32 retcode = 15;
 }

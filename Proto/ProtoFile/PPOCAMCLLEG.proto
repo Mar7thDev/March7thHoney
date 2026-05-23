@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum PPOCAMCLLEG {
+    PPOCAMCLLEG_HMCKMBAGNJA = 0;
+    PPOCAMCLLEG_DJBOLOGMBGG = 1;
+}

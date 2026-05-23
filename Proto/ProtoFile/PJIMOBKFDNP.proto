@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum PJIMOBKFDNP {
+    PJIMOBKFDNP_OPIIMBHECNJ = 0;
+    PJIMOBKFDNP_FIKAGKIKFIJ = 1;
+    PJIMOBKFDNP_NDBNMMJCAIC = 2;
+}

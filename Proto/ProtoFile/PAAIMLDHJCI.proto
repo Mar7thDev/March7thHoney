@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message PAAIMLDHJCI {
+    uint32 max_score = 7;
+    uint32 KKNGIFOJLGJ = 8;
+    uint32 NELOAKJAABI = 11;
+}

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "OPOCANGAEHJ.proto";
+
+message PGIEBMKMECE {
+    repeated float CDMKBCHLPAB = 1;
+    OPOCANGAEHJ IBLECIJAGBK = 13;
+    uint32 OMFGAABELHE = 4;
+    uint32 score_id = 9;
+    uint32 LJDHGFECMHJ = 11;
+}

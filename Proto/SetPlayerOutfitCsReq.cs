@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static SetPlayerOutfitCsReqReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChpTZXRQbGF5ZXJPdXRmaXRDc1JlcS5wcm90bxoWUGxheWVyT3V0Zml0SW5m",
-            "by5wcm90byJDChRTZXRQbGF5ZXJPdXRmaXRDc1JlcRIrChBQbGF5ZXJPdXRm",
-            "aXREYXRhGAIgASgLMhEuUGxheWVyT3V0Zml0SW5mb0IWqgITTWFyY2g3dGhI",
-            "b25leS5Qcm90b2IGcHJvdG8z"));
+            "ChpTZXRQbGF5ZXJPdXRmaXRDc1JlcS5wcm90bxoRQ0pMQ1BNREdJQk8ucHJv",
+            "dG8iOQoUU2V0UGxheWVyT3V0Zml0Q3NSZXESIQoLREhLRkNEQUdIRE0YBSAB",
+            "KAsyDC5DSkxDUE1ER0lCT0IWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJv",
+            "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.PlayerOutfitInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.CJLCPMDGIBOReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetPlayerOutfitCsReq), global::March7thHoney.Proto.SetPlayerOutfitCsReq.Parser, new[]{ "PlayerOutfitData" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetPlayerOutfitCsReq), global::March7thHoney.Proto.SetPlayerOutfitCsReq.Parser, new[]{ "DHKFCDAGHDM" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,7 +73,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SetPlayerOutfitCsReq(SetPlayerOutfitCsReq other) : this() {
-      playerOutfitData_ = other.playerOutfitData_ != null ? other.playerOutfitData_.Clone() : null;
+      dHKFCDAGHDM_ = other.dHKFCDAGHDM_ != null ? other.dHKFCDAGHDM_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,15 +83,15 @@ namespace March7thHoney.Proto {
       return new SetPlayerOutfitCsReq(this);
     }
 
-    /// <summary>Field number for the "PlayerOutfitData" field.</summary>
-    public const int PlayerOutfitDataFieldNumber = 2;
-    private global::March7thHoney.Proto.PlayerOutfitInfo playerOutfitData_;
+    /// <summary>Field number for the "DHKFCDAGHDM" field.</summary>
+    public const int DHKFCDAGHDMFieldNumber = 5;
+    private global::March7thHoney.Proto.CJLCPMDGIBO dHKFCDAGHDM_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.PlayerOutfitInfo PlayerOutfitData {
-      get { return playerOutfitData_; }
+    public global::March7thHoney.Proto.CJLCPMDGIBO DHKFCDAGHDM {
+      get { return dHKFCDAGHDM_; }
       set {
-        playerOutfitData_ = value;
+        dHKFCDAGHDM_ = value;
       }
     }
 
@@ -110,7 +110,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(PlayerOutfitData, other.PlayerOutfitData)) return false;
+      if (!object.Equals(DHKFCDAGHDM, other.DHKFCDAGHDM)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -118,7 +118,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (playerOutfitData_ != null) hash ^= PlayerOutfitData.GetHashCode();
+      if (dHKFCDAGHDM_ != null) hash ^= DHKFCDAGHDM.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -137,9 +137,9 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (playerOutfitData_ != null) {
-        output.WriteRawTag(18);
-        output.WriteMessage(PlayerOutfitData);
+      if (dHKFCDAGHDM_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(DHKFCDAGHDM);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -151,9 +151,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (playerOutfitData_ != null) {
-        output.WriteRawTag(18);
-        output.WriteMessage(PlayerOutfitData);
+      if (dHKFCDAGHDM_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(DHKFCDAGHDM);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -165,8 +165,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (playerOutfitData_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(PlayerOutfitData);
+      if (dHKFCDAGHDM_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(DHKFCDAGHDM);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -180,11 +180,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.playerOutfitData_ != null) {
-        if (playerOutfitData_ == null) {
-          PlayerOutfitData = new global::March7thHoney.Proto.PlayerOutfitInfo();
+      if (other.dHKFCDAGHDM_ != null) {
+        if (dHKFCDAGHDM_ == null) {
+          DHKFCDAGHDM = new global::March7thHoney.Proto.CJLCPMDGIBO();
         }
-        PlayerOutfitData.MergeFrom(other.PlayerOutfitData);
+        DHKFCDAGHDM.MergeFrom(other.DHKFCDAGHDM);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 18: {
-            if (playerOutfitData_ == null) {
-              PlayerOutfitData = new global::March7thHoney.Proto.PlayerOutfitInfo();
+          case 42: {
+            if (dHKFCDAGHDM_ == null) {
+              DHKFCDAGHDM = new global::March7thHoney.Proto.CJLCPMDGIBO();
             }
-            input.ReadMessage(PlayerOutfitData);
+            input.ReadMessage(DHKFCDAGHDM);
             break;
           }
         }
@@ -231,11 +231,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 18: {
-            if (playerOutfitData_ == null) {
-              PlayerOutfitData = new global::March7thHoney.Proto.PlayerOutfitInfo();
+          case 42: {
+            if (dHKFCDAGHDM_ == null) {
+              DHKFCDAGHDM = new global::March7thHoney.Proto.CJLCPMDGIBO();
             }
-            input.ReadMessage(PlayerOutfitData);
+            input.ReadMessage(DHKFCDAGHDM);
             break;
           }
         }

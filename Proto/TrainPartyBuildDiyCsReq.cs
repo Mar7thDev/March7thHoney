@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch1UcmFpblBhcnR5QnVpbGREaXlDc1JlcS5wcm90byJtChdUcmFpblBhcnR5",
-            "QnVpbGREaXlDc1JlcRIUCgxkaWNlX3Nsb3RfaWQYAiABKA0SDwoHYXJlYV9p",
-            "ZBgKIAEoDRIWCg5kaXlfZHluYW1pY19pZBgLIAEoDRITCgtBRkdOTERJTUJH",
-            "QhgMIAEoCEIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "QnVpbGREaXlDc1JlcRIUCgxkaWNlX3Nsb3RfaWQYBCABKA0SFgoOZGl5X2R5",
+            "bmFtaWNfaWQYCSABKA0SDwoHYXJlYV9pZBgCIAEoDRITCgtCS0NOQUFNR0hL",
+            "ShgBIAEoCEIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TrainPartyBuildDiyCsReq), global::March7thHoney.Proto.TrainPartyBuildDiyCsReq.Parser, new[]{ "DiceSlotId", "AreaId", "DiyDynamicId", "AFGNLDIMBGB" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TrainPartyBuildDiyCsReq), global::March7thHoney.Proto.TrainPartyBuildDiyCsReq.Parser, new[]{ "DiceSlotId", "DiyDynamicId", "AreaId", "BKCNAAMGHKJ" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,9 +74,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public TrainPartyBuildDiyCsReq(TrainPartyBuildDiyCsReq other) : this() {
       diceSlotId_ = other.diceSlotId_;
-      areaId_ = other.areaId_;
       diyDynamicId_ = other.diyDynamicId_;
-      aFGNLDIMBGB_ = other.aFGNLDIMBGB_;
+      areaId_ = other.areaId_;
+      bKCNAAMGHKJ_ = other.bKCNAAMGHKJ_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -87,7 +87,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "dice_slot_id" field.</summary>
-    public const int DiceSlotIdFieldNumber = 2;
+    public const int DiceSlotIdFieldNumber = 4;
     private uint diceSlotId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,20 +98,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "area_id" field.</summary>
-    public const int AreaIdFieldNumber = 10;
-    private uint areaId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint AreaId {
-      get { return areaId_; }
-      set {
-        areaId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "diy_dynamic_id" field.</summary>
-    public const int DiyDynamicIdFieldNumber = 11;
+    public const int DiyDynamicIdFieldNumber = 9;
     private uint diyDynamicId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -122,15 +110,27 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "AFGNLDIMBGB" field.</summary>
-    public const int AFGNLDIMBGBFieldNumber = 12;
-    private bool aFGNLDIMBGB_;
+    /// <summary>Field number for the "area_id" field.</summary>
+    public const int AreaIdFieldNumber = 2;
+    private uint areaId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool AFGNLDIMBGB {
-      get { return aFGNLDIMBGB_; }
+    public uint AreaId {
+      get { return areaId_; }
       set {
-        aFGNLDIMBGB_ = value;
+        areaId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "BKCNAAMGHKJ" field.</summary>
+    public const int BKCNAAMGHKJFieldNumber = 1;
+    private bool bKCNAAMGHKJ_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool BKCNAAMGHKJ {
+      get { return bKCNAAMGHKJ_; }
+      set {
+        bKCNAAMGHKJ_ = value;
       }
     }
 
@@ -150,9 +150,9 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (DiceSlotId != other.DiceSlotId) return false;
-      if (AreaId != other.AreaId) return false;
       if (DiyDynamicId != other.DiyDynamicId) return false;
-      if (AFGNLDIMBGB != other.AFGNLDIMBGB) return false;
+      if (AreaId != other.AreaId) return false;
+      if (BKCNAAMGHKJ != other.BKCNAAMGHKJ) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -161,9 +161,9 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (DiceSlotId != 0) hash ^= DiceSlotId.GetHashCode();
-      if (AreaId != 0) hash ^= AreaId.GetHashCode();
       if (DiyDynamicId != 0) hash ^= DiyDynamicId.GetHashCode();
-      if (AFGNLDIMBGB != false) hash ^= AFGNLDIMBGB.GetHashCode();
+      if (AreaId != 0) hash ^= AreaId.GetHashCode();
+      if (BKCNAAMGHKJ != false) hash ^= BKCNAAMGHKJ.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -182,21 +182,21 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (DiceSlotId != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(DiceSlotId);
+      if (BKCNAAMGHKJ != false) {
+        output.WriteRawTag(8);
+        output.WriteBool(BKCNAAMGHKJ);
       }
       if (AreaId != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(16);
         output.WriteUInt32(AreaId);
       }
-      if (DiyDynamicId != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(DiyDynamicId);
+      if (DiceSlotId != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(DiceSlotId);
       }
-      if (AFGNLDIMBGB != false) {
-        output.WriteRawTag(96);
-        output.WriteBool(AFGNLDIMBGB);
+      if (DiyDynamicId != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(DiyDynamicId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -208,21 +208,21 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (DiceSlotId != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(DiceSlotId);
+      if (BKCNAAMGHKJ != false) {
+        output.WriteRawTag(8);
+        output.WriteBool(BKCNAAMGHKJ);
       }
       if (AreaId != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(16);
         output.WriteUInt32(AreaId);
       }
-      if (DiyDynamicId != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(DiyDynamicId);
+      if (DiceSlotId != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(DiceSlotId);
       }
-      if (AFGNLDIMBGB != false) {
-        output.WriteRawTag(96);
-        output.WriteBool(AFGNLDIMBGB);
+      if (DiyDynamicId != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(DiyDynamicId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -237,13 +237,13 @@ namespace March7thHoney.Proto {
       if (DiceSlotId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DiceSlotId);
       }
-      if (AreaId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AreaId);
-      }
       if (DiyDynamicId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DiyDynamicId);
       }
-      if (AFGNLDIMBGB != false) {
+      if (AreaId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AreaId);
+      }
+      if (BKCNAAMGHKJ != false) {
         size += 1 + 1;
       }
       if (_unknownFields != null) {
@@ -261,14 +261,14 @@ namespace March7thHoney.Proto {
       if (other.DiceSlotId != 0) {
         DiceSlotId = other.DiceSlotId;
       }
-      if (other.AreaId != 0) {
-        AreaId = other.AreaId;
-      }
       if (other.DiyDynamicId != 0) {
         DiyDynamicId = other.DiyDynamicId;
       }
-      if (other.AFGNLDIMBGB != false) {
-        AFGNLDIMBGB = other.AFGNLDIMBGB;
+      if (other.AreaId != 0) {
+        AreaId = other.AreaId;
+      }
+      if (other.BKCNAAMGHKJ != false) {
+        BKCNAAMGHKJ = other.BKCNAAMGHKJ;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -289,20 +289,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            DiceSlotId = input.ReadUInt32();
+          case 8: {
+            BKCNAAMGHKJ = input.ReadBool();
             break;
           }
-          case 80: {
+          case 16: {
             AreaId = input.ReadUInt32();
             break;
           }
-          case 88: {
-            DiyDynamicId = input.ReadUInt32();
+          case 32: {
+            DiceSlotId = input.ReadUInt32();
             break;
           }
-          case 96: {
-            AFGNLDIMBGB = input.ReadBool();
+          case 72: {
+            DiyDynamicId = input.ReadUInt32();
             break;
           }
         }
@@ -324,20 +324,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            DiceSlotId = input.ReadUInt32();
+          case 8: {
+            BKCNAAMGHKJ = input.ReadBool();
             break;
           }
-          case 80: {
+          case 16: {
             AreaId = input.ReadUInt32();
             break;
           }
-          case 88: {
-            DiyDynamicId = input.ReadUInt32();
+          case 32: {
+            DiceSlotId = input.ReadUInt32();
             break;
           }
-          case 96: {
-            AFGNLDIMBGB = input.ReadBool();
+          case 72: {
+            DiyDynamicId = input.ReadUInt32();
             break;
           }
         }

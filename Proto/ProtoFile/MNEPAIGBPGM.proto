@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "SceneInfo.proto";
+
+message MNEPAIGBPGM {
+    SceneInfo scene = 10;
+    uint32 retcode = 14;
+}

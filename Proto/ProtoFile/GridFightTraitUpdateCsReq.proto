@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "AFPJPEABFKH.proto";
+import "GPCFHMLMDHC.proto";
+
+message GridFightTraitUpdateCsReq {
+    uint32 trait_id = 14;
+    uint32 effect_id = 12;
+    oneof NEBNJDMFELO {
+        GPCFHMLMDHC FFBEPFLBHPL = 40;
+        AFPJPEABFKH JLCLHAKNMLL = 1902;
+    }
+}

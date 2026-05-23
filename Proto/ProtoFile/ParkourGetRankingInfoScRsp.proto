@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "AFDBEFKBBFM.proto";
+import "COIMBCBMNIE.proto";
 
 message ParkourGetRankingInfoScRsp {
-    repeated AFDBEFKBBFM DEHBAPFMBMB = 2;
-    AFDBEFKBBFM IMDCEFEGIPB = 4;
-    uint32 retcode = 6;
+    repeated COIMBCBMNIE JNMFKJHCOEG = 10;
+    COIMBCBMNIE LGFNFABAAGA = 5;
+    uint32 retcode = 7;
 }

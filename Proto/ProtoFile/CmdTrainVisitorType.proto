@@ -2,20 +2,18 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdTrainVisitorType {
-    PGGMPMKFDLD_PCPDHELPKEM = 0;
-    CmdNewSupplementVisitorCsReq = 3739;
-    CmdTrainVisitorRewardSendNotify = 3718;
-    CmdTrainVisitorBehaviorFinishScRsp = 3710;
-    CmdTrainVisitorBehaviorFinishCsReq = 3791;
-    CmdGetTrainVisitorRegisterCsReq = 3709;
-    CmdTrainRefreshTimeNotify = 3714;
-    CmdPCGDKHGILEE = 3701;
-    CmdTakeTrainVisitorBehaviorRewardScRsp = 3726;
-    CmdLJPMCOJPLDE = 3795;
-    PGGMPMKFDLD_DNPHJPKEKFM = 3794;
-    CmdTakeTrainVisitorBehaviorRewardCsReq = 3763;
-    CmdGetTrainVisitorRegisterScRsp = 3798;
+    PBNHNKPGIPL_NLCDGIPGFDJ = 0;
+    PBNHNKPGIPL_AOCEPAIFAHA = 3713;
+    PBNHNKPGIPL_GGFOFBFAEIN = 3780;
+    PBNHNKPGIPL_GJBHPGPAGKJ = 3712;
+    PBNHNKPGIPL_MAKJBADEJCO = 3736;
+    PBNHNKPGIPL_PJIHOAHLMND = 3703;
+    PBNHNKPGIPL_HNMLJJGBIKK = 3781;
+    PBNHNKPGIPL_HOLBGJCNMJP = 3715;
+    PBNHNKPGIPL_AMDHGJKALDO = 3727;
+    PBNHNKPGIPL_NPDGBECOIIE = 3710;
+    PBNHNKPGIPL_CCDCHACIAOE = 3773;
+    PBNHNKPGIPL_PJMKLBEMCBG = 3729;
+    PBNHNKPGIPL_EMEHHFLFMKG = 3787;
 }

@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "HHIAOANDGAL.proto";
+import "MNKGDKAIELH.proto";
 
 message GetTrainVisitorRegisterScRsp {
-    uint32 retcode = 11;
-    repeated HHIAOANDGAL LLDAFKHFECA = 12;
-    repeated uint32 GLBPLJPPJPA = 13;
+    repeated uint32 BLKHPCPALDN = 2;
+    repeated MNKGDKAIELH NEDBIFJPBDJ = 6;
+    uint32 retcode = 7;
 }

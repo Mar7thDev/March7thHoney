@@ -26,13 +26,13 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChpJbnRlcmFjdENoYXJnZXJTY1JzcC5wcm90bxoRQ2hhcmdlckluZm8ucHJv",
             "dG8aF1JvdGF0ZXJFbmVyZ3lJbmZvLnByb3RvInQKFEludGVyYWN0Q2hhcmdl",
-            "clNjUnNwEiIKDGNoYXJnZXJfaW5mbxgIIAEoCzIMLkNoYXJnZXJJbmZvEicK",
-            "C2VuZXJneV9pbmZvGAogASgLMhIuUm90YXRlckVuZXJneUluZm8SDwoHcmV0",
-            "Y29kZRgPIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "clNjUnNwEicKC2VuZXJneV9pbmZvGAwgASgLMhIuUm90YXRlckVuZXJneUlu",
+            "Zm8SIgoMY2hhcmdlcl9pbmZvGA4gASgLMgwuQ2hhcmdlckluZm8SDwoHcmV0",
+            "Y29kZRgJIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChargerInfoReflection.Descriptor, global::March7thHoney.Proto.RotaterEnergyInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.InteractChargerScRsp), global::March7thHoney.Proto.InteractChargerScRsp.Parser, new[]{ "ChargerInfo", "EnergyInfo", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.InteractChargerScRsp), global::March7thHoney.Proto.InteractChargerScRsp.Parser, new[]{ "EnergyInfo", "ChargerInfo", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,8 +74,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public InteractChargerScRsp(InteractChargerScRsp other) : this() {
-      chargerInfo_ = other.chargerInfo_ != null ? other.chargerInfo_.Clone() : null;
       energyInfo_ = other.energyInfo_ != null ? other.energyInfo_.Clone() : null;
+      chargerInfo_ = other.chargerInfo_ != null ? other.chargerInfo_.Clone() : null;
       retcode_ = other.retcode_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -86,20 +86,8 @@ namespace March7thHoney.Proto {
       return new InteractChargerScRsp(this);
     }
 
-    /// <summary>Field number for the "charger_info" field.</summary>
-    public const int ChargerInfoFieldNumber = 8;
-    private global::March7thHoney.Proto.ChargerInfo chargerInfo_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.ChargerInfo ChargerInfo {
-      get { return chargerInfo_; }
-      set {
-        chargerInfo_ = value;
-      }
-    }
-
     /// <summary>Field number for the "energy_info" field.</summary>
-    public const int EnergyInfoFieldNumber = 10;
+    public const int EnergyInfoFieldNumber = 12;
     private global::March7thHoney.Proto.RotaterEnergyInfo energyInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,8 +98,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "charger_info" field.</summary>
+    public const int ChargerInfoFieldNumber = 14;
+    private global::March7thHoney.Proto.ChargerInfo chargerInfo_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.ChargerInfo ChargerInfo {
+      get { return chargerInfo_; }
+      set {
+        chargerInfo_ = value;
+      }
+    }
+
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 15;
+    public const int RetcodeFieldNumber = 9;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -137,8 +137,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(ChargerInfo, other.ChargerInfo)) return false;
       if (!object.Equals(EnergyInfo, other.EnergyInfo)) return false;
+      if (!object.Equals(ChargerInfo, other.ChargerInfo)) return false;
       if (Retcode != other.Retcode) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -147,8 +147,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (chargerInfo_ != null) hash ^= ChargerInfo.GetHashCode();
       if (energyInfo_ != null) hash ^= EnergyInfo.GetHashCode();
+      if (chargerInfo_ != null) hash ^= ChargerInfo.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -168,17 +168,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (chargerInfo_ != null) {
-        output.WriteRawTag(66);
-        output.WriteMessage(ChargerInfo);
+      if (Retcode != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(Retcode);
       }
       if (energyInfo_ != null) {
-        output.WriteRawTag(82);
+        output.WriteRawTag(98);
         output.WriteMessage(EnergyInfo);
       }
-      if (Retcode != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(Retcode);
+      if (chargerInfo_ != null) {
+        output.WriteRawTag(114);
+        output.WriteMessage(ChargerInfo);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -190,17 +190,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (chargerInfo_ != null) {
-        output.WriteRawTag(66);
-        output.WriteMessage(ChargerInfo);
+      if (Retcode != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(Retcode);
       }
       if (energyInfo_ != null) {
-        output.WriteRawTag(82);
+        output.WriteRawTag(98);
         output.WriteMessage(EnergyInfo);
       }
-      if (Retcode != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(Retcode);
+      if (chargerInfo_ != null) {
+        output.WriteRawTag(114);
+        output.WriteMessage(ChargerInfo);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -212,11 +212,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (chargerInfo_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ChargerInfo);
-      }
       if (energyInfo_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(EnergyInfo);
+      }
+      if (chargerInfo_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ChargerInfo);
       }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
@@ -233,17 +233,17 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.chargerInfo_ != null) {
-        if (chargerInfo_ == null) {
-          ChargerInfo = new global::March7thHoney.Proto.ChargerInfo();
-        }
-        ChargerInfo.MergeFrom(other.ChargerInfo);
-      }
       if (other.energyInfo_ != null) {
         if (energyInfo_ == null) {
           EnergyInfo = new global::March7thHoney.Proto.RotaterEnergyInfo();
         }
         EnergyInfo.MergeFrom(other.EnergyInfo);
+      }
+      if (other.chargerInfo_ != null) {
+        if (chargerInfo_ == null) {
+          ChargerInfo = new global::March7thHoney.Proto.ChargerInfo();
+        }
+        ChargerInfo.MergeFrom(other.ChargerInfo);
       }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
@@ -267,22 +267,22 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 66: {
-            if (chargerInfo_ == null) {
-              ChargerInfo = new global::March7thHoney.Proto.ChargerInfo();
-            }
-            input.ReadMessage(ChargerInfo);
+          case 72: {
+            Retcode = input.ReadUInt32();
             break;
           }
-          case 82: {
+          case 98: {
             if (energyInfo_ == null) {
               EnergyInfo = new global::March7thHoney.Proto.RotaterEnergyInfo();
             }
             input.ReadMessage(EnergyInfo);
             break;
           }
-          case 120: {
-            Retcode = input.ReadUInt32();
+          case 114: {
+            if (chargerInfo_ == null) {
+              ChargerInfo = new global::March7thHoney.Proto.ChargerInfo();
+            }
+            input.ReadMessage(ChargerInfo);
             break;
           }
         }
@@ -304,22 +304,22 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 66: {
-            if (chargerInfo_ == null) {
-              ChargerInfo = new global::March7thHoney.Proto.ChargerInfo();
-            }
-            input.ReadMessage(ChargerInfo);
+          case 72: {
+            Retcode = input.ReadUInt32();
             break;
           }
-          case 82: {
+          case 98: {
             if (energyInfo_ == null) {
               EnergyInfo = new global::March7thHoney.Proto.RotaterEnergyInfo();
             }
             input.ReadMessage(EnergyInfo);
             break;
           }
-          case 120: {
-            Retcode = input.ReadUInt32();
+          case 114: {
+            if (chargerInfo_ == null) {
+              ChargerInfo = new global::March7thHoney.Proto.ChargerInfo();
+            }
+            input.ReadMessage(ChargerInfo);
             break;
           }
         }

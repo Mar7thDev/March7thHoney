@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message DynamicValues {
-    string key = 7;
-    float value = 14;
+    string key = 14;
+    float value = 11;
 }

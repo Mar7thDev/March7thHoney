@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum BEAIKEEANDP {
+    BEAIKEEANDP_NLCDGIPGFDJ = 0;
+    BEAIKEEANDP_NKDECDGECFL = 1;
+    BEAIKEEANDP_LONKNKFDPII = 2;
+}

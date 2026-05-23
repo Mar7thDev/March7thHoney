@@ -24,15 +24,14 @@ namespace March7thHoney.Proto {
     static CmdFightActivityTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChpDbWRGaWdodEFjdGl2aXR5VHlwZS5wcm90byq6AgoUQ21kRmlnaHRBY3Rp",
-            "dml0eVR5cGUSGwoXTkFDQk9FUEVJQ01fUENQREhFTFBLRU0QABIkCh9DbWRU",
-            "YWtlRmlnaHRBY3Rpdml0eVJld2FyZFNjUnNwEJkcEiQKH0NtZFRha2VGaWdo",
-            "dEFjdGl2aXR5UmV3YXJkQ3NSZXEQohwSIQocQ21kR2V0RmlnaHRBY3Rpdml0",
-            "eURhdGFDc1JlcRDrHBIhChxDbWRHZXRGaWdodEFjdGl2aXR5RGF0YVNjUnNw",
-            "EJocEiQKH0NtZEVudGVyRmlnaHRBY3Rpdml0eVN0YWdlQ3NSZXEQ7xwSJAof",
-            "Q21kRW50ZXJGaWdodEFjdGl2aXR5U3RhZ2VTY1JzcBCeHBInCiJDbWRGaWdo",
-            "dEFjdGl2aXR5RGF0YUNoYW5nZVNjTm90aWZ5EO4cQhaqAhNNYXJjaDd0aEhv",
-            "bmV5LlByb3RvYgZwcm90bzM="));
+            "ChpDbWRGaWdodEFjdGl2aXR5VHlwZS5wcm90byqFAgoUQ21kRmlnaHRBY3Rp",
+            "dml0eVR5cGUSGwoXRUpOQ0VBRFBLRkVfTkxDREdJUEdGREoQABIcChdFSk5D",
+            "RUFEUEtGRV9IRkJFTEdLQURMRhC0HBIcChdFSk5DRUFEUEtGRV9ORUJDRUNC",
+            "SkVHUBDZHBIcChdFSk5DRUFEUEtGRV9LT1BGTEtFSEtFRhDgHBIcChdFSk5D",
+            "RUFEUEtGRV9DRkZLUExNQ05KSRCdHBIcChdFSk5DRUFEUEtGRV9GQ0xLSUNK",
+            "TktCQxCfHBIcChdFSk5DRUFEUEtGRV9JRFBCSUpPQUhBQxCTHBIcChdFSk5D",
+            "RUFEUEtGRV9JSkJPQk9GTEVBRRCrHEIWqgITTWFyY2g3dGhIb25leS5Qcm90",
+            "b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdFightActivityType), }, null, null));
@@ -42,14 +41,14 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdFightActivityType {
-    [pbr::OriginalName("NACBOEPEICM_PCPDHELPKEM")] NacboepeicmPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdTakeFightActivityRewardScRsp")] CmdTakeFightActivityRewardScRsp = 3609,
-    [pbr::OriginalName("CmdTakeFightActivityRewardCsReq")] CmdTakeFightActivityRewardCsReq = 3618,
-    [pbr::OriginalName("CmdGetFightActivityDataCsReq")] CmdGetFightActivityDataCsReq = 3691,
-    [pbr::OriginalName("CmdGetFightActivityDataScRsp")] CmdGetFightActivityDataScRsp = 3610,
-    [pbr::OriginalName("CmdEnterFightActivityStageCsReq")] CmdEnterFightActivityStageCsReq = 3695,
-    [pbr::OriginalName("CmdEnterFightActivityStageScRsp")] CmdEnterFightActivityStageScRsp = 3614,
-    [pbr::OriginalName("CmdFightActivityDataChangeScNotify")] CmdFightActivityDataChangeScNotify = 3694,
+    [pbr::OriginalName("EJNCEADPKFE_NLCDGIPGFDJ")] EjnceadpkfeNlcdgipgfdj = 0,
+    [pbr::OriginalName("EJNCEADPKFE_HFBELGKADLF")] EjnceadpkfeHfbelgkadlf = 3636,
+    [pbr::OriginalName("EJNCEADPKFE_NEBCECBJEGP")] EjnceadpkfeNebcecbjegp = 3673,
+    [pbr::OriginalName("EJNCEADPKFE_KOPFLKEHKEF")] EjnceadpkfeKopflkehkef = 3680,
+    [pbr::OriginalName("EJNCEADPKFE_CFFKPLMCNJI")] EjnceadpkfeCffkplmcnji = 3613,
+    [pbr::OriginalName("EJNCEADPKFE_FCLKICJNKBC")] EjnceadpkfeFclkicjnkbc = 3615,
+    [pbr::OriginalName("EJNCEADPKFE_IDPBIJOAHAC")] EjnceadpkfeIdpbijoahac = 3603,
+    [pbr::OriginalName("EJNCEADPKFE_IJBOBOFLEAE")] EjnceadpkfeIjbobofleae = 3627,
   }
 
   #endregion

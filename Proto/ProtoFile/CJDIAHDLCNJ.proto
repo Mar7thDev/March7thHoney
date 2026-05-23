@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "GOFFDNPBHIK.proto";
+
+message CJDIAHDLCNJ {
+    repeated GOFFDNPBHIK avatar_list = 6;
+    string replay_name = 5;
+    uint32 uid = 1;
+    uint32 EJGIOGKKIKH = 7;
+    uint32 PBIBDJIJAGL = 2;
+    uint32 BJKBGOALNHA = 8;
+    uint32 KENLJIJJEJL = 9;
+    uint32 BCKOLCNHCCM = 4;
+    bool EGGFCGLPDMM = 3;
+}

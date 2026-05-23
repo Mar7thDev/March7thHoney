@@ -2,14 +2,12 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "ILNEBPJCGHB.proto";
+import "DOIBLFFDHDG.proto";
 
 message EnterFightActivityStageCsReq {
-    repeated uint32 avatar_list = 3;
+    repeated DOIBLFFDHDG MACCJKCGGII = 7;
     repeated uint32 item_list = 8;
-    uint32 group_id = 11;
-    repeated ILNEBPJCGHB FDHJCBNAICB = 14;
-    uint32 INOMFFAIEOA = 15;
+    repeated uint32 avatar_list = 12;
+    uint32 group_id = 9;
+    uint32 DBKHHCGGKNN = 15;
 }

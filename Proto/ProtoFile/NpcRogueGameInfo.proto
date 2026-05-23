@@ -2,14 +2,12 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message NpcRogueGameInfo {
-    bool IINHPJNHGAH = 1;
-    bool DHILGBCKPCL = 2;
-    uint32 JBEILMFIIGM = 3;
-    uint32 HOHANPJNANA = 6;
-    bool KIGLLJKDDNE = 10;
-    map<uint32, uint32> FOEJFEMLPPC = 13;
-    uint32 AHKFFCIEPDG = 14;
+    map<uint32, uint32> LDPAJKIEPIP = 1;
+    uint32 MJBKNMJHOGP = 15;
+    uint32 OEANPIHCHHF = 9;
+    uint32 AIAFEKGBFIF = 6;
+    bool NLAFLKPLPFE = 2;
+    bool DJEPGKBMICM = 12;
+    bool FKKMLJNKHDH = 8;
 }

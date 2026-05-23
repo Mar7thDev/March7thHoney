@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "CBOLONJDHHL.proto";
+import "CPPENGOOHGN.proto";
+import "FKEDPCMLIFE.proto";
+import "FPNDOBPMNED.proto";
+import "JEIKFFFGONB.proto";
+import "KDHAIFIOKDN.proto";
+import "NHLBNBBDHMI.proto";
+import "PLBAMNCLBHB.proto";
+
+message GCBCKOKEAJH {
+    PLBAMNCLBHB DDLADFJMEEC = 5;
+    FPNDOBPMNED MEEJDFNHBDI = 6;
+    FKEDPCMLIFE item_value = 14;
+    CPPENGOOHGN DCFILENMPCC = 1;
+    NHLBNBBDHMI ANBKDJKHCBI = 8;
+    CBOLONJDHHL basic_info = 10;
+    KDHAIFIOKDN level = 2;
+    JEIKFFFGONB lineup = 12;
+}

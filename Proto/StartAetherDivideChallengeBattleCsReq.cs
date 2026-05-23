@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CitTdGFydEFldGhlckRpdmlkZUNoYWxsZW5nZUJhdHRsZUNzUmVxLnByb3Rv",
-            "IlIKJVN0YXJ0QWV0aGVyRGl2aWRlQ2hhbGxlbmdlQmF0dGxlQ3NSZXESFAoM",
-            "Y2hhbGxlbmdlX2lkGAwgASgNEhMKC0ZOQ0lOR0ZETFBBGA4gASgNQhaqAhNN",
+            "IlIKJVN0YXJ0QWV0aGVyRGl2aWRlQ2hhbGxlbmdlQmF0dGxlQ3NSZXESEwoL",
+            "RkRLRklPTE1QSEEYCSABKA0SFAoMY2hhbGxlbmdlX2lkGAYgASgNQhaqAhNN",
             "YXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartAetherDivideChallengeBattleCsReq), global::March7thHoney.Proto.StartAetherDivideChallengeBattleCsReq.Parser, new[]{ "ChallengeId", "FNCINGFDLPA" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartAetherDivideChallengeBattleCsReq), global::March7thHoney.Proto.StartAetherDivideChallengeBattleCsReq.Parser, new[]{ "FDKFIOLMPHA", "ChallengeId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public StartAetherDivideChallengeBattleCsReq(StartAetherDivideChallengeBattleCsReq other) : this() {
+      fDKFIOLMPHA_ = other.fDKFIOLMPHA_;
       challengeId_ = other.challengeId_;
-      fNCINGFDLPA_ = other.fNCINGFDLPA_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,8 +84,20 @@ namespace March7thHoney.Proto {
       return new StartAetherDivideChallengeBattleCsReq(this);
     }
 
+    /// <summary>Field number for the "FDKFIOLMPHA" field.</summary>
+    public const int FDKFIOLMPHAFieldNumber = 9;
+    private uint fDKFIOLMPHA_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint FDKFIOLMPHA {
+      get { return fDKFIOLMPHA_; }
+      set {
+        fDKFIOLMPHA_ = value;
+      }
+    }
+
     /// <summary>Field number for the "challenge_id" field.</summary>
-    public const int ChallengeIdFieldNumber = 12;
+    public const int ChallengeIdFieldNumber = 6;
     private uint challengeId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -93,18 +105,6 @@ namespace March7thHoney.Proto {
       get { return challengeId_; }
       set {
         challengeId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "FNCINGFDLPA" field.</summary>
-    public const int FNCINGFDLPAFieldNumber = 14;
-    private uint fNCINGFDLPA_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint FNCINGFDLPA {
-      get { return fNCINGFDLPA_; }
-      set {
-        fNCINGFDLPA_ = value;
       }
     }
 
@@ -123,8 +123,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (FDKFIOLMPHA != other.FDKFIOLMPHA) return false;
       if (ChallengeId != other.ChallengeId) return false;
-      if (FNCINGFDLPA != other.FNCINGFDLPA) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,8 +132,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (FDKFIOLMPHA != 0) hash ^= FDKFIOLMPHA.GetHashCode();
       if (ChallengeId != 0) hash ^= ChallengeId.GetHashCode();
-      if (FNCINGFDLPA != 0) hash ^= FNCINGFDLPA.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -153,12 +153,12 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (ChallengeId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(48);
         output.WriteUInt32(ChallengeId);
       }
-      if (FNCINGFDLPA != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(FNCINGFDLPA);
+      if (FDKFIOLMPHA != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(FDKFIOLMPHA);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -171,12 +171,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (ChallengeId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(48);
         output.WriteUInt32(ChallengeId);
       }
-      if (FNCINGFDLPA != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(FNCINGFDLPA);
+      if (FDKFIOLMPHA != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(FDKFIOLMPHA);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -188,11 +188,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (FDKFIOLMPHA != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FDKFIOLMPHA);
+      }
       if (ChallengeId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ChallengeId);
-      }
-      if (FNCINGFDLPA != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FNCINGFDLPA);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -206,11 +206,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.FDKFIOLMPHA != 0) {
+        FDKFIOLMPHA = other.FDKFIOLMPHA;
+      }
       if (other.ChallengeId != 0) {
         ChallengeId = other.ChallengeId;
-      }
-      if (other.FNCINGFDLPA != 0) {
-        FNCINGFDLPA = other.FNCINGFDLPA;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -231,12 +231,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 96: {
+          case 48: {
             ChallengeId = input.ReadUInt32();
             break;
           }
-          case 112: {
-            FNCINGFDLPA = input.ReadUInt32();
+          case 72: {
+            FDKFIOLMPHA = input.ReadUInt32();
             break;
           }
         }
@@ -258,12 +258,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 96: {
+          case 48: {
             ChallengeId = input.ReadUInt32();
             break;
           }
-          case 112: {
-            FNCINGFDLPA = input.ReadUInt32();
+          case 72: {
+            FDKFIOLMPHA = input.ReadUInt32();
             break;
           }
         }

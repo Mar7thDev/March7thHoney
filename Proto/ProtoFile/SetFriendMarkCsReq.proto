@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message SetFriendMarkCsReq {
-    uint32 reason = 3;
-    bool KBNKNAHGPHG = 7;
-    uint32 uid = 8;
+    bool BIJJOJNJHDO = 13;
+    uint32 uid = 6;
+    uint32 reason = 5;
 }

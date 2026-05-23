@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "CHAGFKJEIMI.proto";
+
+message CBNNMKNBLDI {
+    repeated CHAGFKJEIMI CDMKBCHLPAB = 4;
+    uint32 rarity = 2;
+    uint32 grid_fight_equipment_id = 15;
+    bool DFKJCMCDMEI = 8;
+    uint32 level = 9;
+}

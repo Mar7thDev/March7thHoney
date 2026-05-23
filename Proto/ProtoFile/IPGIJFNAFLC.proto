@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "DLBGONGJBNC.proto";
+import "GMGABLBKJMC.proto";
+import "LAJGLHCCNED.proto";
+import "MNOOMFIAFPF.proto";
+import "NHHJAONHDDG.proto";
+
+message IPGIJFNAFLC {
+    repeated GMGABLBKJMC buff_list = 10;
+    LAJGLHCCNED JDFPKAMFHAP = 7;
+    repeated DLBGONGJBNC item_list = 4;
+    repeated MNOOMFIAFPF op_list = 11;
+    repeated uint32 MNCPGDNOIAM = 6;
+    uint32 cur_hp = 1;
+    uint32 energy_info = 3;
+    uint32 score_id = 2;
+    NHHJAONHDDG LHNIIOHNIFL = 9;
+    uint32 IGDOFKLAILH = 14;
+    uint32 FHEFKOGAMHK = 5;
+    uint32 DJJODJAAIGA = 12;
+    uint32 LIKMIMCFPKC = 8;
+    uint32 JJJBLAJDEDC = 15;
+}

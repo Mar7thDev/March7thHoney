@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message AiPamResponseFeedbackCommentCsReq {
-    uint32 HELHPDMDLBO = 7;
-    string MPCOLHBJPBP = 12;
+    string IMNOJNCGGNI = 4;
+    uint32 OLLBLNAGMPC = 12;
 }

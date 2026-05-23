@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "EraFlipperDataList.proto";
+import "KKFMGCNDHGH.proto";
 
 message ResetEraFlipperDataScRsp {
-    EraFlipperDataList data = 4;
-    uint32 retcode = 10;
-    bool OIPLJJIODIL = 13;
+    KKFMGCNDHGH data = 14;
+    bool CJEILDIOIOE = 6;
+    uint32 retcode = 3;
 }

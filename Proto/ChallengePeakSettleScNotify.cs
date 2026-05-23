@@ -26,18 +26,18 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiFDaGFsbGVuZ2VQZWFrU2V0dGxlU2NOb3RpZnkucHJvdG8aHkNoYWxsZW5n",
             "ZVBlYWtSZXdhcmRHcm91cC5wcm90byLJAgobQ2hhbGxlbmdlUGVha1NldHRs",
-            "ZVNjTm90aWZ5EhwKFGhhcmRfbW9kZV9oYXNfcGFzc2VkGAIgASgIEhsKE2lz",
-            "X3VubG9ja19lYXN5X2Jvc3MYAyABKAgSHAoUZmluaXNoZWRfdGFyZ2V0X2xp",
-            "c3QYBSADKA0SDwoHcGVha19pZBgGIAEoDRIRCgl0dXJuX2xlZnQYByABKA0S",
-            "HQoVaXNfYm9zc190YXJnZXRfYmV0dGVyGAggASgIEhMKC2N5Y2xlc191c2Vk",
-            "GAogASgNEhcKD2lzX3dhaXRfY29uZmlybRgLIAEoCBIOCgZpc193aW4YDSAB",
-            "KAgSOQoWcGVha19yZXdhcmRfZ3JvdXBfbGlzdBgOIAMoCzIZLkNoYWxsZW5n",
-            "ZVBlYWtSZXdhcmRHcm91cBIVCg1pc19maXJzdF9wYXNzGA8gASgIQhaqAhNN",
+            "ZVNjTm90aWZ5EhwKFGZpbmlzaGVkX3RhcmdldF9saXN0GAIgAygNEjkKFnBl",
+            "YWtfcmV3YXJkX2dyb3VwX2xpc3QYDyADKAsyGS5DaGFsbGVuZ2VQZWFrUmV3",
+            "YXJkR3JvdXASGwoTaXNfdW5sb2NrX2Vhc3lfYm9zcxgMIAEoCBIcChRoYXJk",
+            "X21vZGVfaGFzX3Bhc3NlZBgKIAEoCBIdChVpc19ib3NzX3RhcmdldF9iZXR0",
+            "ZXIYBiABKAgSFwoPaXNfd2FpdF9jb25maXJtGAggASgIEhEKCXR1cm5fbGVm",
+            "dBgOIAEoDRITCgtjeWNsZXNfdXNlZBgLIAEoDRIVCg1pc19maXJzdF9wYXNz",
+            "GAkgASgIEg4KBmlzX3dpbhgEIAEoCBIPCgdwZWFrX2lkGAUgASgNQhaqAhNN",
             "YXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChallengePeakRewardGroupReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakSettleScNotify), global::March7thHoney.Proto.ChallengePeakSettleScNotify.Parser, new[]{ "HardModeHasPassed", "IsUnlockEasyBoss", "FinishedTargetList", "PeakId", "TurnLeft", "IsBossTargetBetter", "CyclesUsed", "IsWaitConfirm", "IsWin", "PeakRewardGroupList", "IsFirstPass" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakSettleScNotify), global::March7thHoney.Proto.ChallengePeakSettleScNotify.Parser, new[]{ "FinishedTargetList", "PeakRewardGroupList", "IsUnlockEasyBoss", "HardModeHasPassed", "IsBossTargetBetter", "IsWaitConfirm", "TurnLeft", "CyclesUsed", "IsFirstPass", "IsWin", "PeakId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -79,17 +79,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ChallengePeakSettleScNotify(ChallengePeakSettleScNotify other) : this() {
-      hardModeHasPassed_ = other.hardModeHasPassed_;
-      isUnlockEasyBoss_ = other.isUnlockEasyBoss_;
       finishedTargetList_ = other.finishedTargetList_.Clone();
-      peakId_ = other.peakId_;
-      turnLeft_ = other.turnLeft_;
-      isBossTargetBetter_ = other.isBossTargetBetter_;
-      cyclesUsed_ = other.cyclesUsed_;
-      isWaitConfirm_ = other.isWaitConfirm_;
-      isWin_ = other.isWin_;
       peakRewardGroupList_ = other.peakRewardGroupList_.Clone();
+      isUnlockEasyBoss_ = other.isUnlockEasyBoss_;
+      hardModeHasPassed_ = other.hardModeHasPassed_;
+      isBossTargetBetter_ = other.isBossTargetBetter_;
+      isWaitConfirm_ = other.isWaitConfirm_;
+      turnLeft_ = other.turnLeft_;
+      cyclesUsed_ = other.cyclesUsed_;
       isFirstPass_ = other.isFirstPass_;
+      isWin_ = other.isWin_;
+      peakId_ = other.peakId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -99,20 +99,30 @@ namespace March7thHoney.Proto {
       return new ChallengePeakSettleScNotify(this);
     }
 
-    /// <summary>Field number for the "hard_mode_has_passed" field.</summary>
-    public const int HardModeHasPassedFieldNumber = 2;
-    private bool hardModeHasPassed_;
+    /// <summary>Field number for the "finished_target_list" field.</summary>
+    public const int FinishedTargetListFieldNumber = 2;
+    private static readonly pb::FieldCodec<uint> _repeated_finishedTargetList_codec
+        = pb::FieldCodec.ForUInt32(18);
+    private readonly pbc::RepeatedField<uint> finishedTargetList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HardModeHasPassed {
-      get { return hardModeHasPassed_; }
-      set {
-        hardModeHasPassed_ = value;
-      }
+    public pbc::RepeatedField<uint> FinishedTargetList {
+      get { return finishedTargetList_; }
+    }
+
+    /// <summary>Field number for the "peak_reward_group_list" field.</summary>
+    public const int PeakRewardGroupListFieldNumber = 15;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChallengePeakRewardGroup> _repeated_peakRewardGroupList_codec
+        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.ChallengePeakRewardGroup.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakRewardGroup> peakRewardGroupList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakRewardGroup>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakRewardGroup> PeakRewardGroupList {
+      get { return peakRewardGroupList_; }
     }
 
     /// <summary>Field number for the "is_unlock_easy_boss" field.</summary>
-    public const int IsUnlockEasyBossFieldNumber = 3;
+    public const int IsUnlockEasyBossFieldNumber = 12;
     private bool isUnlockEasyBoss_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -123,43 +133,20 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "finished_target_list" field.</summary>
-    public const int FinishedTargetListFieldNumber = 5;
-    private static readonly pb::FieldCodec<uint> _repeated_finishedTargetList_codec
-        = pb::FieldCodec.ForUInt32(42);
-    private readonly pbc::RepeatedField<uint> finishedTargetList_ = new pbc::RepeatedField<uint>();
+    /// <summary>Field number for the "hard_mode_has_passed" field.</summary>
+    public const int HardModeHasPassedFieldNumber = 10;
+    private bool hardModeHasPassed_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> FinishedTargetList {
-      get { return finishedTargetList_; }
-    }
-
-    /// <summary>Field number for the "peak_id" field.</summary>
-    public const int PeakIdFieldNumber = 6;
-    private uint peakId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PeakId {
-      get { return peakId_; }
+    public bool HardModeHasPassed {
+      get { return hardModeHasPassed_; }
       set {
-        peakId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "turn_left" field.</summary>
-    public const int TurnLeftFieldNumber = 7;
-    private uint turnLeft_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint TurnLeft {
-      get { return turnLeft_; }
-      set {
-        turnLeft_ = value;
+        hardModeHasPassed_ = value;
       }
     }
 
     /// <summary>Field number for the "is_boss_target_better" field.</summary>
-    public const int IsBossTargetBetterFieldNumber = 8;
+    public const int IsBossTargetBetterFieldNumber = 6;
     private bool isBossTargetBetter_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -170,20 +157,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "cycles_used" field.</summary>
-    public const int CyclesUsedFieldNumber = 10;
-    private uint cyclesUsed_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CyclesUsed {
-      get { return cyclesUsed_; }
-      set {
-        cyclesUsed_ = value;
-      }
-    }
-
     /// <summary>Field number for the "is_wait_confirm" field.</summary>
-    public const int IsWaitConfirmFieldNumber = 11;
+    public const int IsWaitConfirmFieldNumber = 8;
     private bool isWaitConfirm_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -194,8 +169,44 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "turn_left" field.</summary>
+    public const int TurnLeftFieldNumber = 14;
+    private uint turnLeft_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint TurnLeft {
+      get { return turnLeft_; }
+      set {
+        turnLeft_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "cycles_used" field.</summary>
+    public const int CyclesUsedFieldNumber = 11;
+    private uint cyclesUsed_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint CyclesUsed {
+      get { return cyclesUsed_; }
+      set {
+        cyclesUsed_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "is_first_pass" field.</summary>
+    public const int IsFirstPassFieldNumber = 9;
+    private bool isFirstPass_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IsFirstPass {
+      get { return isFirstPass_; }
+      set {
+        isFirstPass_ = value;
+      }
+    }
+
     /// <summary>Field number for the "is_win" field.</summary>
-    public const int IsWinFieldNumber = 13;
+    public const int IsWinFieldNumber = 4;
     private bool isWin_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -206,26 +217,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "peak_reward_group_list" field.</summary>
-    public const int PeakRewardGroupListFieldNumber = 14;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChallengePeakRewardGroup> _repeated_peakRewardGroupList_codec
-        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.ChallengePeakRewardGroup.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakRewardGroup> peakRewardGroupList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakRewardGroup>();
+    /// <summary>Field number for the "peak_id" field.</summary>
+    public const int PeakIdFieldNumber = 5;
+    private uint peakId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakRewardGroup> PeakRewardGroupList {
-      get { return peakRewardGroupList_; }
-    }
-
-    /// <summary>Field number for the "is_first_pass" field.</summary>
-    public const int IsFirstPassFieldNumber = 15;
-    private bool isFirstPass_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IsFirstPass {
-      get { return isFirstPass_; }
+    public uint PeakId {
+      get { return peakId_; }
       set {
-        isFirstPass_ = value;
+        peakId_ = value;
       }
     }
 
@@ -244,17 +244,17 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (HardModeHasPassed != other.HardModeHasPassed) return false;
-      if (IsUnlockEasyBoss != other.IsUnlockEasyBoss) return false;
       if(!finishedTargetList_.Equals(other.finishedTargetList_)) return false;
-      if (PeakId != other.PeakId) return false;
-      if (TurnLeft != other.TurnLeft) return false;
-      if (IsBossTargetBetter != other.IsBossTargetBetter) return false;
-      if (CyclesUsed != other.CyclesUsed) return false;
-      if (IsWaitConfirm != other.IsWaitConfirm) return false;
-      if (IsWin != other.IsWin) return false;
       if(!peakRewardGroupList_.Equals(other.peakRewardGroupList_)) return false;
+      if (IsUnlockEasyBoss != other.IsUnlockEasyBoss) return false;
+      if (HardModeHasPassed != other.HardModeHasPassed) return false;
+      if (IsBossTargetBetter != other.IsBossTargetBetter) return false;
+      if (IsWaitConfirm != other.IsWaitConfirm) return false;
+      if (TurnLeft != other.TurnLeft) return false;
+      if (CyclesUsed != other.CyclesUsed) return false;
       if (IsFirstPass != other.IsFirstPass) return false;
+      if (IsWin != other.IsWin) return false;
+      if (PeakId != other.PeakId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -262,17 +262,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (HardModeHasPassed != false) hash ^= HardModeHasPassed.GetHashCode();
-      if (IsUnlockEasyBoss != false) hash ^= IsUnlockEasyBoss.GetHashCode();
       hash ^= finishedTargetList_.GetHashCode();
-      if (PeakId != 0) hash ^= PeakId.GetHashCode();
-      if (TurnLeft != 0) hash ^= TurnLeft.GetHashCode();
-      if (IsBossTargetBetter != false) hash ^= IsBossTargetBetter.GetHashCode();
-      if (CyclesUsed != 0) hash ^= CyclesUsed.GetHashCode();
-      if (IsWaitConfirm != false) hash ^= IsWaitConfirm.GetHashCode();
-      if (IsWin != false) hash ^= IsWin.GetHashCode();
       hash ^= peakRewardGroupList_.GetHashCode();
+      if (IsUnlockEasyBoss != false) hash ^= IsUnlockEasyBoss.GetHashCode();
+      if (HardModeHasPassed != false) hash ^= HardModeHasPassed.GetHashCode();
+      if (IsBossTargetBetter != false) hash ^= IsBossTargetBetter.GetHashCode();
+      if (IsWaitConfirm != false) hash ^= IsWaitConfirm.GetHashCode();
+      if (TurnLeft != 0) hash ^= TurnLeft.GetHashCode();
+      if (CyclesUsed != 0) hash ^= CyclesUsed.GetHashCode();
       if (IsFirstPass != false) hash ^= IsFirstPass.GetHashCode();
+      if (IsWin != false) hash ^= IsWin.GetHashCode();
+      if (PeakId != 0) hash ^= PeakId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -291,44 +291,44 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (HardModeHasPassed != false) {
-        output.WriteRawTag(16);
-        output.WriteBool(HardModeHasPassed);
-      }
-      if (IsUnlockEasyBoss != false) {
-        output.WriteRawTag(24);
-        output.WriteBool(IsUnlockEasyBoss);
-      }
       finishedTargetList_.WriteTo(output, _repeated_finishedTargetList_codec);
-      if (PeakId != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(PeakId);
-      }
-      if (TurnLeft != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(TurnLeft);
-      }
-      if (IsBossTargetBetter != false) {
-        output.WriteRawTag(64);
-        output.WriteBool(IsBossTargetBetter);
-      }
-      if (CyclesUsed != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(CyclesUsed);
-      }
-      if (IsWaitConfirm != false) {
-        output.WriteRawTag(88);
-        output.WriteBool(IsWaitConfirm);
-      }
       if (IsWin != false) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(32);
         output.WriteBool(IsWin);
       }
-      peakRewardGroupList_.WriteTo(output, _repeated_peakRewardGroupList_codec);
+      if (PeakId != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(PeakId);
+      }
+      if (IsBossTargetBetter != false) {
+        output.WriteRawTag(48);
+        output.WriteBool(IsBossTargetBetter);
+      }
+      if (IsWaitConfirm != false) {
+        output.WriteRawTag(64);
+        output.WriteBool(IsWaitConfirm);
+      }
       if (IsFirstPass != false) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(72);
         output.WriteBool(IsFirstPass);
       }
+      if (HardModeHasPassed != false) {
+        output.WriteRawTag(80);
+        output.WriteBool(HardModeHasPassed);
+      }
+      if (CyclesUsed != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(CyclesUsed);
+      }
+      if (IsUnlockEasyBoss != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(IsUnlockEasyBoss);
+      }
+      if (TurnLeft != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(TurnLeft);
+      }
+      peakRewardGroupList_.WriteTo(output, _repeated_peakRewardGroupList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -339,44 +339,44 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (HardModeHasPassed != false) {
-        output.WriteRawTag(16);
-        output.WriteBool(HardModeHasPassed);
-      }
-      if (IsUnlockEasyBoss != false) {
-        output.WriteRawTag(24);
-        output.WriteBool(IsUnlockEasyBoss);
-      }
       finishedTargetList_.WriteTo(ref output, _repeated_finishedTargetList_codec);
-      if (PeakId != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(PeakId);
-      }
-      if (TurnLeft != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(TurnLeft);
-      }
-      if (IsBossTargetBetter != false) {
-        output.WriteRawTag(64);
-        output.WriteBool(IsBossTargetBetter);
-      }
-      if (CyclesUsed != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(CyclesUsed);
-      }
-      if (IsWaitConfirm != false) {
-        output.WriteRawTag(88);
-        output.WriteBool(IsWaitConfirm);
-      }
       if (IsWin != false) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(32);
         output.WriteBool(IsWin);
       }
-      peakRewardGroupList_.WriteTo(ref output, _repeated_peakRewardGroupList_codec);
+      if (PeakId != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(PeakId);
+      }
+      if (IsBossTargetBetter != false) {
+        output.WriteRawTag(48);
+        output.WriteBool(IsBossTargetBetter);
+      }
+      if (IsWaitConfirm != false) {
+        output.WriteRawTag(64);
+        output.WriteBool(IsWaitConfirm);
+      }
       if (IsFirstPass != false) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(72);
         output.WriteBool(IsFirstPass);
       }
+      if (HardModeHasPassed != false) {
+        output.WriteRawTag(80);
+        output.WriteBool(HardModeHasPassed);
+      }
+      if (CyclesUsed != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(CyclesUsed);
+      }
+      if (IsUnlockEasyBoss != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(IsUnlockEasyBoss);
+      }
+      if (TurnLeft != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(TurnLeft);
+      }
+      peakRewardGroupList_.WriteTo(ref output, _repeated_peakRewardGroupList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -387,34 +387,34 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (HardModeHasPassed != false) {
-        size += 1 + 1;
-      }
+      size += finishedTargetList_.CalculateSize(_repeated_finishedTargetList_codec);
+      size += peakRewardGroupList_.CalculateSize(_repeated_peakRewardGroupList_codec);
       if (IsUnlockEasyBoss != false) {
         size += 1 + 1;
       }
-      size += finishedTargetList_.CalculateSize(_repeated_finishedTargetList_codec);
-      if (PeakId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PeakId);
-      }
-      if (TurnLeft != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TurnLeft);
+      if (HardModeHasPassed != false) {
+        size += 1 + 1;
       }
       if (IsBossTargetBetter != false) {
         size += 1 + 1;
       }
+      if (IsWaitConfirm != false) {
+        size += 1 + 1;
+      }
+      if (TurnLeft != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TurnLeft);
+      }
       if (CyclesUsed != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CyclesUsed);
       }
-      if (IsWaitConfirm != false) {
+      if (IsFirstPass != false) {
         size += 1 + 1;
       }
       if (IsWin != false) {
         size += 1 + 1;
       }
-      size += peakRewardGroupList_.CalculateSize(_repeated_peakRewardGroupList_codec);
-      if (IsFirstPass != false) {
-        size += 1 + 1;
+      if (PeakId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PeakId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -428,34 +428,34 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.HardModeHasPassed != false) {
-        HardModeHasPassed = other.HardModeHasPassed;
-      }
+      finishedTargetList_.Add(other.finishedTargetList_);
+      peakRewardGroupList_.Add(other.peakRewardGroupList_);
       if (other.IsUnlockEasyBoss != false) {
         IsUnlockEasyBoss = other.IsUnlockEasyBoss;
       }
-      finishedTargetList_.Add(other.finishedTargetList_);
-      if (other.PeakId != 0) {
-        PeakId = other.PeakId;
-      }
-      if (other.TurnLeft != 0) {
-        TurnLeft = other.TurnLeft;
+      if (other.HardModeHasPassed != false) {
+        HardModeHasPassed = other.HardModeHasPassed;
       }
       if (other.IsBossTargetBetter != false) {
         IsBossTargetBetter = other.IsBossTargetBetter;
       }
+      if (other.IsWaitConfirm != false) {
+        IsWaitConfirm = other.IsWaitConfirm;
+      }
+      if (other.TurnLeft != 0) {
+        TurnLeft = other.TurnLeft;
+      }
       if (other.CyclesUsed != 0) {
         CyclesUsed = other.CyclesUsed;
       }
-      if (other.IsWaitConfirm != false) {
-        IsWaitConfirm = other.IsWaitConfirm;
+      if (other.IsFirstPass != false) {
+        IsFirstPass = other.IsFirstPass;
       }
       if (other.IsWin != false) {
         IsWin = other.IsWin;
       }
-      peakRewardGroupList_.Add(other.peakRewardGroupList_);
-      if (other.IsFirstPass != false) {
-        IsFirstPass = other.IsFirstPass;
+      if (other.PeakId != 0) {
+        PeakId = other.PeakId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -476,49 +476,49 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
+          case 18:
           case 16: {
-            HardModeHasPassed = input.ReadBool();
-            break;
-          }
-          case 24: {
-            IsUnlockEasyBoss = input.ReadBool();
-            break;
-          }
-          case 42:
-          case 40: {
             finishedTargetList_.AddEntriesFrom(input, _repeated_finishedTargetList_codec);
             break;
           }
-          case 48: {
-            PeakId = input.ReadUInt32();
-            break;
-          }
-          case 56: {
-            TurnLeft = input.ReadUInt32();
-            break;
-          }
-          case 64: {
-            IsBossTargetBetter = input.ReadBool();
-            break;
-          }
-          case 80: {
-            CyclesUsed = input.ReadUInt32();
-            break;
-          }
-          case 88: {
-            IsWaitConfirm = input.ReadBool();
-            break;
-          }
-          case 104: {
+          case 32: {
             IsWin = input.ReadBool();
             break;
           }
-          case 114: {
-            peakRewardGroupList_.AddEntriesFrom(input, _repeated_peakRewardGroupList_codec);
+          case 40: {
+            PeakId = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 48: {
+            IsBossTargetBetter = input.ReadBool();
+            break;
+          }
+          case 64: {
+            IsWaitConfirm = input.ReadBool();
+            break;
+          }
+          case 72: {
             IsFirstPass = input.ReadBool();
+            break;
+          }
+          case 80: {
+            HardModeHasPassed = input.ReadBool();
+            break;
+          }
+          case 88: {
+            CyclesUsed = input.ReadUInt32();
+            break;
+          }
+          case 96: {
+            IsUnlockEasyBoss = input.ReadBool();
+            break;
+          }
+          case 112: {
+            TurnLeft = input.ReadUInt32();
+            break;
+          }
+          case 122: {
+            peakRewardGroupList_.AddEntriesFrom(input, _repeated_peakRewardGroupList_codec);
             break;
           }
         }
@@ -540,49 +540,49 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
+          case 18:
           case 16: {
-            HardModeHasPassed = input.ReadBool();
-            break;
-          }
-          case 24: {
-            IsUnlockEasyBoss = input.ReadBool();
-            break;
-          }
-          case 42:
-          case 40: {
             finishedTargetList_.AddEntriesFrom(ref input, _repeated_finishedTargetList_codec);
             break;
           }
-          case 48: {
-            PeakId = input.ReadUInt32();
-            break;
-          }
-          case 56: {
-            TurnLeft = input.ReadUInt32();
-            break;
-          }
-          case 64: {
-            IsBossTargetBetter = input.ReadBool();
-            break;
-          }
-          case 80: {
-            CyclesUsed = input.ReadUInt32();
-            break;
-          }
-          case 88: {
-            IsWaitConfirm = input.ReadBool();
-            break;
-          }
-          case 104: {
+          case 32: {
             IsWin = input.ReadBool();
             break;
           }
-          case 114: {
-            peakRewardGroupList_.AddEntriesFrom(ref input, _repeated_peakRewardGroupList_codec);
+          case 40: {
+            PeakId = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 48: {
+            IsBossTargetBetter = input.ReadBool();
+            break;
+          }
+          case 64: {
+            IsWaitConfirm = input.ReadBool();
+            break;
+          }
+          case 72: {
             IsFirstPass = input.ReadBool();
+            break;
+          }
+          case 80: {
+            HardModeHasPassed = input.ReadBool();
+            break;
+          }
+          case 88: {
+            CyclesUsed = input.ReadUInt32();
+            break;
+          }
+          case 96: {
+            IsUnlockEasyBoss = input.ReadBool();
+            break;
+          }
+          case 112: {
+            TurnLeft = input.ReadUInt32();
+            break;
+          }
+          case 122: {
+            peakRewardGroupList_.AddEntriesFrom(ref input, _repeated_peakRewardGroupList_codec);
             break;
           }
         }

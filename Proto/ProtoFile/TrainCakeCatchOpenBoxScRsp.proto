@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "NPLEDHFMFDM.proto";
+import "IKAHKMNCFDN.proto";
 
 message TrainCakeCatchOpenBoxScRsp {
-    repeated NPLEDHFMFDM AFEJACMLOLH = 6;
-    int64 DHLGCEGONIB = 12;
+    repeated IKAHKMNCFDN BJPHDKEBOBK = 10;
+    int64 CMHKFNFKGOI = 7;
     uint32 retcode = 15;
 }

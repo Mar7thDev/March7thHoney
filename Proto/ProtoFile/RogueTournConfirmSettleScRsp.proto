@@ -2,16 +2,14 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "BFEIPELFCDF.proto";
 import "ItemList.proto";
-import "OJKAHCEKDGN.proto";
+import "JGAMMPGMCNI.proto";
+import "MJMGOBMOPDL.proto";
 
 message RogueTournConfirmSettleScRsp {
-    ItemList FNKEBOFAHME = 1;
-    ItemList MNADHGINDPI = 3;
-    OJKAHCEKDGN GFMNOMPDIND = 4;
-    BFEIPELFCDF AFLJJJFCBIN = 6;
-    uint32 retcode = 8;
+    ItemList AELJFOPMDJG = 13;
+    MJMGOBMOPDL BLPDBPHMCGA = 12;
+    JGAMMPGMCNI IDCMACCPCBH = 5;
+    ItemList IIOMCJPCFML = 14;
+    uint32 retcode = 3;
 }

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "KFMHMJLPHOG.proto";
+
+message NNCEFFFGNEN {
+    repeated uint32 switch_list = 15;
+    uint32 group_id = 14;
+    uint32 FDEAKDCDGML = 4;
+    uint32 panel_id = 7;
+    KFMHMJLPHOG BICLKAPMFGP = 3;
+}

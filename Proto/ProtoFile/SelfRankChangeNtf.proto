@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "EFBIHJHMICB.proto";
+import "DLCJPINDIAC.proto";
 import "FightGameMode.proto";
 
 message SelfRankChangeNtf {
-    FightGameMode PLOBMBFPNFK = 1;
-    repeated EFBIHJHMICB CPBGLNGOCBA = 14;
+    repeated DLCJPINDIAC MLPHLIHFGKG = 9;
+    FightGameMode GJNMHILINHC = 11;
 }

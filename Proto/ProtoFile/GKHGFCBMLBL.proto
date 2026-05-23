@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "ItemList.proto";
+import "KCOEJJKGNIG.proto";
+import "PHINPOJOJGD.proto";
+
+message GKHGFCBMLBL {
+    ItemList LHPNJLBPACA = 7;
+    KCOEJJKGNIG record_info = 9;
+    PHINPOJOJGD FGOBDCENKOB = 14;
+    bool is_win = 1;
+    uint32 MHPHDCFKMLF = 12;
+    uint32 GEBGGMAGDJB = 11;
+    uint32 GHCBFCIGIBF = 8;
+    uint32 area_id = 1096;
+    uint32 score_id = 4;
+    uint32 HEOMALBNJLL = 714;
+    uint32 GMIIMAHLIJF = 10;
+}

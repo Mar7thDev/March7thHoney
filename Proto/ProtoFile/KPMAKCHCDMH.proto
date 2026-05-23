@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message KPMAKCHCDMH {
+    uint32 LNOCOOCMNCI = 3;
+    uint32 panel_id = 4;
+    bool BAONIPOKCPL = 14;
+    bool is_taken_reward = 10;
+}

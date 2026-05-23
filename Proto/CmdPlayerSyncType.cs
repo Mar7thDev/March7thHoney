@@ -24,9 +24,10 @@ namespace March7thHoney.Proto {
     static CmdPlayerSyncTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChdDbWRQbGF5ZXJTeW5jVHlwZS5wcm90bypMChFDbWRQbGF5ZXJTeW5jVHlw",
-            "ZRIbChdCSkxPTElCQk1MSF9CQ0dOT0VBT0NPTBAAEhoKFUNtZFBsYXllclN5",
-            "bmNTY05vdGlmeRCzBUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChdDbWRQbGF5ZXJTeW5jVHlwZS5wcm90bypOChFDbWRQbGF5ZXJTeW5jVHlw",
+            "ZRIbChdPRkhEREpNTE9HR19MSURHT0tJRlBPShAAEhwKF09GSERESk1MT0dH",
+            "X0xNRFBNRUNGT0dNEKEFQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
+            "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdPlayerSyncType), }, null, null));
@@ -36,8 +37,8 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdPlayerSyncType {
-    [pbr::OriginalName("BJLOLIBBMLH_BCGNOEAOCOL")] BjlolibbmlhBcgnoeaocol = 0,
-    [pbr::OriginalName("CmdPlayerSyncScNotify")] CmdPlayerSyncScNotify = 691,
+    [pbr::OriginalName("OFHDDJMLOGG_LIDGOKIFPOJ")] OfhddjmloggLidgokifpoj = 0,
+    [pbr::OriginalName("OFHDDJMLOGG_LMDPMECFOGM")] OfhddjmloggLmdpmecfogm = 673,
   }
 
   #endregion

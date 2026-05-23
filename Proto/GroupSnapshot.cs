@@ -26,17 +26,17 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChNHcm91cFNuYXBzaG90LnByb3RvGhpBY3RpdmVNQ1ZLZXlTbmFwc2hvdC5w",
             "cm90bxoURW50aXR5U25hcHNob3QucHJvdG8imwIKDUdyb3VwU25hcHNob3QS",
-            "EAoIZ3JvdXBfaWQYASABKA0SEwoLZ3JvdXBfc3RhdGUYAiABKA0SJAoLZW50",
-            "aXR5X2xpc3QYAyADKAsyDy5FbnRpdHlTbmFwc2hvdBI1Cgxwcm9wZXJ0eV9t",
-            "YXAYBCADKAsyHy5Hcm91cFNuYXBzaG90LlByb3BlcnR5TWFwRW50cnkSHgoW",
-            "YWN0aXZlX3N1Ym1pc3Npb25fbGlzdBgFIAMoDRIyChNhY3RpdmVfbWN2X2tl",
-            "eV9saXN0GAYgAygLMhUuQWN0aXZlTUNWS2V5U25hcHNob3QaMgoQUHJvcGVy",
+            "HgoWYWN0aXZlX3N1Ym1pc3Npb25fbGlzdBgFIAMoDRIyChNhY3RpdmVfbWN2",
+            "X2tleV9saXN0GAYgAygLMhUuQWN0aXZlTUNWS2V5U25hcHNob3QSNQoMcHJv",
+            "cGVydHlfbWFwGAQgAygLMh8uR3JvdXBTbmFwc2hvdC5Qcm9wZXJ0eU1hcEVu",
+            "dHJ5EiQKC2VudGl0eV9saXN0GAMgAygLMg8uRW50aXR5U25hcHNob3QSEAoI",
+            "Z3JvdXBfaWQYASABKA0SEwoLZ3JvdXBfc3RhdGUYAiABKA0aMgoQUHJvcGVy",
             "dHlNYXBFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAU6AjgBQhaq",
             "AhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ActiveMCVKeySnapshotReflection.Descriptor, global::March7thHoney.Proto.EntitySnapshotReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GroupSnapshot), global::March7thHoney.Proto.GroupSnapshot.Parser, new[]{ "GroupId", "GroupState", "EntityList", "PropertyMap", "ActiveSubmissionList", "ActiveMcvKeyList" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GroupSnapshot), global::March7thHoney.Proto.GroupSnapshot.Parser, new[]{ "ActiveSubmissionList", "ActiveMcvKeyList", "PropertyMap", "EntityList", "GroupId", "GroupState" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -78,12 +78,12 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GroupSnapshot(GroupSnapshot other) : this() {
-      groupId_ = other.groupId_;
-      groupState_ = other.groupState_;
-      entityList_ = other.entityList_.Clone();
-      propertyMap_ = other.propertyMap_.Clone();
       activeSubmissionList_ = other.activeSubmissionList_.Clone();
       activeMcvKeyList_ = other.activeMcvKeyList_.Clone();
+      propertyMap_ = other.propertyMap_.Clone();
+      entityList_ = other.entityList_.Clone();
+      groupId_ = other.groupId_;
+      groupState_ = other.groupState_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -91,6 +91,50 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GroupSnapshot Clone() {
       return new GroupSnapshot(this);
+    }
+
+    /// <summary>Field number for the "active_submission_list" field.</summary>
+    public const int ActiveSubmissionListFieldNumber = 5;
+    private static readonly pb::FieldCodec<uint> _repeated_activeSubmissionList_codec
+        = pb::FieldCodec.ForUInt32(42);
+    private readonly pbc::RepeatedField<uint> activeSubmissionList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> ActiveSubmissionList {
+      get { return activeSubmissionList_; }
+    }
+
+    /// <summary>Field number for the "active_mcv_key_list" field.</summary>
+    public const int ActiveMcvKeyListFieldNumber = 6;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ActiveMCVKeySnapshot> _repeated_activeMcvKeyList_codec
+        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.ActiveMCVKeySnapshot.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ActiveMCVKeySnapshot> activeMcvKeyList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ActiveMCVKeySnapshot>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.ActiveMCVKeySnapshot> ActiveMcvKeyList {
+      get { return activeMcvKeyList_; }
+    }
+
+    /// <summary>Field number for the "property_map" field.</summary>
+    public const int PropertyMapFieldNumber = 4;
+    private static readonly pbc::MapField<string, int>.Codec _map_propertyMap_codec
+        = new pbc::MapField<string, int>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForInt32(16, 0), 34);
+    private readonly pbc::MapField<string, int> propertyMap_ = new pbc::MapField<string, int>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::MapField<string, int> PropertyMap {
+      get { return propertyMap_; }
+    }
+
+    /// <summary>Field number for the "entity_list" field.</summary>
+    public const int EntityListFieldNumber = 3;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EntitySnapshot> _repeated_entityList_codec
+        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.EntitySnapshot.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EntitySnapshot> entityList_ = new pbc::RepeatedField<global::March7thHoney.Proto.EntitySnapshot>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.EntitySnapshot> EntityList {
+      get { return entityList_; }
     }
 
     /// <summary>Field number for the "group_id" field.</summary>
@@ -117,50 +161,6 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "entity_list" field.</summary>
-    public const int EntityListFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EntitySnapshot> _repeated_entityList_codec
-        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.EntitySnapshot.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EntitySnapshot> entityList_ = new pbc::RepeatedField<global::March7thHoney.Proto.EntitySnapshot>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.EntitySnapshot> EntityList {
-      get { return entityList_; }
-    }
-
-    /// <summary>Field number for the "property_map" field.</summary>
-    public const int PropertyMapFieldNumber = 4;
-    private static readonly pbc::MapField<string, int>.Codec _map_propertyMap_codec
-        = new pbc::MapField<string, int>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForInt32(16, 0), 34);
-    private readonly pbc::MapField<string, int> propertyMap_ = new pbc::MapField<string, int>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<string, int> PropertyMap {
-      get { return propertyMap_; }
-    }
-
-    /// <summary>Field number for the "active_submission_list" field.</summary>
-    public const int ActiveSubmissionListFieldNumber = 5;
-    private static readonly pb::FieldCodec<uint> _repeated_activeSubmissionList_codec
-        = pb::FieldCodec.ForUInt32(42);
-    private readonly pbc::RepeatedField<uint> activeSubmissionList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> ActiveSubmissionList {
-      get { return activeSubmissionList_; }
-    }
-
-    /// <summary>Field number for the "active_mcv_key_list" field.</summary>
-    public const int ActiveMcvKeyListFieldNumber = 6;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ActiveMCVKeySnapshot> _repeated_activeMcvKeyList_codec
-        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.ActiveMCVKeySnapshot.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ActiveMCVKeySnapshot> activeMcvKeyList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ActiveMCVKeySnapshot>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.ActiveMCVKeySnapshot> ActiveMcvKeyList {
-      get { return activeMcvKeyList_; }
-    }
-
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -176,12 +176,12 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (GroupId != other.GroupId) return false;
-      if (GroupState != other.GroupState) return false;
-      if(!entityList_.Equals(other.entityList_)) return false;
-      if (!PropertyMap.Equals(other.PropertyMap)) return false;
       if(!activeSubmissionList_.Equals(other.activeSubmissionList_)) return false;
       if(!activeMcvKeyList_.Equals(other.activeMcvKeyList_)) return false;
+      if (!PropertyMap.Equals(other.PropertyMap)) return false;
+      if(!entityList_.Equals(other.entityList_)) return false;
+      if (GroupId != other.GroupId) return false;
+      if (GroupState != other.GroupState) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -189,12 +189,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (GroupId != 0) hash ^= GroupId.GetHashCode();
-      if (GroupState != 0) hash ^= GroupState.GetHashCode();
-      hash ^= entityList_.GetHashCode();
-      hash ^= PropertyMap.GetHashCode();
       hash ^= activeSubmissionList_.GetHashCode();
       hash ^= activeMcvKeyList_.GetHashCode();
+      hash ^= PropertyMap.GetHashCode();
+      hash ^= entityList_.GetHashCode();
+      if (GroupId != 0) hash ^= GroupId.GetHashCode();
+      if (GroupState != 0) hash ^= GroupState.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -257,16 +257,16 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      size += activeSubmissionList_.CalculateSize(_repeated_activeSubmissionList_codec);
+      size += activeMcvKeyList_.CalculateSize(_repeated_activeMcvKeyList_codec);
+      size += propertyMap_.CalculateSize(_map_propertyMap_codec);
+      size += entityList_.CalculateSize(_repeated_entityList_codec);
       if (GroupId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GroupId);
       }
       if (GroupState != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GroupState);
       }
-      size += entityList_.CalculateSize(_repeated_entityList_codec);
-      size += propertyMap_.CalculateSize(_map_propertyMap_codec);
-      size += activeSubmissionList_.CalculateSize(_repeated_activeSubmissionList_codec);
-      size += activeMcvKeyList_.CalculateSize(_repeated_activeMcvKeyList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -279,16 +279,16 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      activeSubmissionList_.Add(other.activeSubmissionList_);
+      activeMcvKeyList_.Add(other.activeMcvKeyList_);
+      propertyMap_.MergeFrom(other.propertyMap_);
+      entityList_.Add(other.entityList_);
       if (other.GroupId != 0) {
         GroupId = other.GroupId;
       }
       if (other.GroupState != 0) {
         GroupState = other.GroupState;
       }
-      entityList_.Add(other.entityList_);
-      propertyMap_.MergeFrom(other.propertyMap_);
-      activeSubmissionList_.Add(other.activeSubmissionList_);
-      activeMcvKeyList_.Add(other.activeMcvKeyList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 

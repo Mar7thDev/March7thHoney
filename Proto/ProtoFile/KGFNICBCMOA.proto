@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "PPGEBEBPMJC.proto";
+
+message KGFNICBCMOA {
+    repeated PPGEBEBPMJC sync_augment_info = 8;
+}

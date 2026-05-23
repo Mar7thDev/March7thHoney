@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "AetherDivideBattleInfo.proto";
 
 message StartAetherDivideChallengeBattleScRsp {
-    AetherDivideBattleInfo battle_info = 3;
-    uint32 retcode = 8;
+    AetherDivideBattleInfo battle_info = 13;
+    uint32 retcode = 6;
 }

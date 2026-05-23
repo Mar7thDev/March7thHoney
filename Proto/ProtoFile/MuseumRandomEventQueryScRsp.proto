@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "KNNODAPAKJA.proto";
+import "CDNPKGOKEPK.proto";
 
 message MuseumRandomEventQueryScRsp {
-    KNNODAPAKJA LJMFGDFBLCK = 4;
-    uint32 retcode = 8;
+    CDNPKGOKEPK CIKPBGDIABO = 13;
+    uint32 retcode = 12;
 }

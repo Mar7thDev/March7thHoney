@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message RogueMagicSetAutoDressInMagicUnitCsReq {
-    bool KMPPNOFBNPM = 14;
+    bool GBEMCAHPBKP = 11;
 }

@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChVTY2VuZUlkZW50aWZpZXIucHJvdG8aElRlbGVwb3J0SW5mby5wcm90byJ6",
-            "Cg9TY2VuZUlkZW50aWZpZXISEAoIZmxvb3JfaWQYAiABKA0SGgoSZ2FtZV9z",
-            "dG9yeV9saW5lX2lkGAYgASgNEhIKCmNvbnRlbnRfaWQYDiABKA0SJQoNdGVs",
-            "ZXBvcnRfaW5mbxjVDCABKAsyDS5UZWxlcG9ydEluZm9CFqoCE01hcmNoN3Ro",
+            "Cg9TY2VuZUlkZW50aWZpZXISGgoSZ2FtZV9zdG9yeV9saW5lX2lkGAggASgN",
+            "EhAKCGZsb29yX2lkGAMgASgNEhIKCmNvbnRlbnRfaWQYBCABKA0SJQoNdGVs",
+            "ZXBvcnRfaW5mbxjRBiABKAsyDS5UZWxlcG9ydEluZm9CFqoCE01hcmNoN3Ro",
             "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.TeleportInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneIdentifier), global::March7thHoney.Proto.SceneIdentifier.Parser, new[]{ "FloorId", "GameStoryLineId", "ContentId", "TeleportInfo" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneIdentifier), global::March7thHoney.Proto.SceneIdentifier.Parser, new[]{ "GameStoryLineId", "FloorId", "ContentId", "TeleportInfo" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,8 +74,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SceneIdentifier(SceneIdentifier other) : this() {
-      floorId_ = other.floorId_;
       gameStoryLineId_ = other.gameStoryLineId_;
+      floorId_ = other.floorId_;
       contentId_ = other.contentId_;
       teleportInfo_ = other.teleportInfo_ != null ? other.teleportInfo_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -87,20 +87,8 @@ namespace March7thHoney.Proto {
       return new SceneIdentifier(this);
     }
 
-    /// <summary>Field number for the "floor_id" field.</summary>
-    public const int FloorIdFieldNumber = 2;
-    private uint floorId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint FloorId {
-      get { return floorId_; }
-      set {
-        floorId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "game_story_line_id" field.</summary>
-    public const int GameStoryLineIdFieldNumber = 6;
+    public const int GameStoryLineIdFieldNumber = 8;
     private uint gameStoryLineId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -111,8 +99,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "floor_id" field.</summary>
+    public const int FloorIdFieldNumber = 3;
+    private uint floorId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint FloorId {
+      get { return floorId_; }
+      set {
+        floorId_ = value;
+      }
+    }
+
     /// <summary>Field number for the "content_id" field.</summary>
-    public const int ContentIdFieldNumber = 14;
+    public const int ContentIdFieldNumber = 4;
     private uint contentId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -124,7 +124,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "teleport_info" field.</summary>
-    public const int TeleportInfoFieldNumber = 1621;
+    public const int TeleportInfoFieldNumber = 849;
     private global::March7thHoney.Proto.TeleportInfo teleportInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -150,8 +150,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (FloorId != other.FloorId) return false;
       if (GameStoryLineId != other.GameStoryLineId) return false;
+      if (FloorId != other.FloorId) return false;
       if (ContentId != other.ContentId) return false;
       if (!object.Equals(TeleportInfo, other.TeleportInfo)) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -161,8 +161,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (FloorId != 0) hash ^= FloorId.GetHashCode();
       if (GameStoryLineId != 0) hash ^= GameStoryLineId.GetHashCode();
+      if (FloorId != 0) hash ^= FloorId.GetHashCode();
       if (ContentId != 0) hash ^= ContentId.GetHashCode();
       if (teleportInfo_ != null) hash ^= TeleportInfo.GetHashCode();
       if (_unknownFields != null) {
@@ -184,19 +184,19 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (FloorId != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(24);
         output.WriteUInt32(FloorId);
       }
-      if (GameStoryLineId != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(GameStoryLineId);
-      }
       if (ContentId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(32);
         output.WriteUInt32(ContentId);
       }
+      if (GameStoryLineId != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(GameStoryLineId);
+      }
       if (teleportInfo_ != null) {
-        output.WriteRawTag(170, 101);
+        output.WriteRawTag(138, 53);
         output.WriteMessage(TeleportInfo);
       }
       if (_unknownFields != null) {
@@ -210,19 +210,19 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (FloorId != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(24);
         output.WriteUInt32(FloorId);
       }
-      if (GameStoryLineId != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(GameStoryLineId);
-      }
       if (ContentId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(32);
         output.WriteUInt32(ContentId);
       }
+      if (GameStoryLineId != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(GameStoryLineId);
+      }
       if (teleportInfo_ != null) {
-        output.WriteRawTag(170, 101);
+        output.WriteRawTag(138, 53);
         output.WriteMessage(TeleportInfo);
       }
       if (_unknownFields != null) {
@@ -235,11 +235,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (FloorId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FloorId);
-      }
       if (GameStoryLineId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GameStoryLineId);
+      }
+      if (FloorId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FloorId);
       }
       if (ContentId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ContentId);
@@ -259,11 +259,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.FloorId != 0) {
-        FloorId = other.FloorId;
-      }
       if (other.GameStoryLineId != 0) {
         GameStoryLineId = other.GameStoryLineId;
+      }
+      if (other.FloorId != 0) {
+        FloorId = other.FloorId;
       }
       if (other.ContentId != 0) {
         ContentId = other.ContentId;
@@ -293,19 +293,19 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
+          case 24: {
             FloorId = input.ReadUInt32();
             break;
           }
-          case 48: {
-            GameStoryLineId = input.ReadUInt32();
-            break;
-          }
-          case 112: {
+          case 32: {
             ContentId = input.ReadUInt32();
             break;
           }
-          case 12970: {
+          case 64: {
+            GameStoryLineId = input.ReadUInt32();
+            break;
+          }
+          case 6794: {
             if (teleportInfo_ == null) {
               TeleportInfo = new global::March7thHoney.Proto.TeleportInfo();
             }
@@ -331,19 +331,19 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
+          case 24: {
             FloorId = input.ReadUInt32();
             break;
           }
-          case 48: {
-            GameStoryLineId = input.ReadUInt32();
-            break;
-          }
-          case 112: {
+          case 32: {
             ContentId = input.ReadUInt32();
             break;
           }
-          case 12970: {
+          case 64: {
+            GameStoryLineId = input.ReadUInt32();
+            break;
+          }
+          case 6794: {
             if (teleportInfo_ == null) {
               TeleportInfo = new global::March7thHoney.Proto.TeleportInfo();
             }

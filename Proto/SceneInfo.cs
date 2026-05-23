@@ -24,37 +24,37 @@ namespace March7thHoney.Proto {
     static SceneInfoReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg9TY2VuZUluZm8ucHJvdG8aDkJ1ZmZJbmZvLnByb3RvGhRDdXN0b21TYXZl",
-            "RGF0YS5wcm90bxoRRFBOREpJR0FDRkoucHJvdG8aEUlBSEhMSU9MQ0RCLnBy",
-            "b3RvGh5NaXNzaW9uU3RhdHVzQnlTY2VuZUluZm8ucHJvdG8aEU5CQ09PTExF",
-            "T0lELnByb3RvGhpTY2VuZUVudGl0eUdyb3VwSW5mby5wcm90bxoVU2NlbmVF",
+            "Cg9TY2VuZUluZm8ucHJvdG8aEUJFTE5MT0pBRkNNLnByb3RvGg5CdWZmSW5m",
+            "by5wcm90bxoUQ3VzdG9tU2F2ZURhdGEucHJvdG8aEUhHTkJQQU5FQ0FMLnBy",
+            "b3RvGhFISUVLTEhQSU5ITC5wcm90bxoeTWlzc2lvblN0YXR1c0J5U2NlbmVJ",
+            "bmZvLnByb3RvGhpTY2VuZUVudGl0eUdyb3VwSW5mby5wcm90bxoVU2NlbmVF",
             "bnRpdHlJbmZvLnByb3RvGhVTY2VuZUdyb3VwU3RhdGUucHJvdG8aFVNjZW5l",
-            "SWRlbnRpZmllci5wcm90byKoBwoJU2NlbmVJbmZvEhYKDmdhbWVfbW9kZV90",
-            "eXBlGAEgASgNEiEKC05IT0ZNSE1CS0dLGAMgAygLMgwuTkJDT09MTEVPSUQS",
-            "GgoSY2xpZW50X3Bvc192ZXJzaW9uGAQgASgNEhAKCHBsYW5lX2lkGAUgASgN",
-            "EjAKC0tISE9QTkpKQUJIGAYgAygLMhsuU2NlbmVJbmZvLktISE9QTkpKQUJI",
-            "RW50cnkSKQoQY3VzdG9tX2RhdGFfbGlzdBgHIAMoCzIPLkN1c3RvbVNhdmVE",
-            "YXRhEiUKC2VudGl0eV9saXN0GAkgAygLMhAuU2NlbmVFbnRpdHlJbmZvEhAK",
-            "CGZsb29yX2lkGAogASgNEicKFHNjZW5lX2J1ZmZfaW5mb19saXN0GAsgAygL",
-            "MgkuQnVmZkluZm8SEAoIZW50cnlfaWQYDCABKA0SGAoQbGVhZGVyX2VudGl0",
-            "eV9pZBgNIAEoDRIcChRsaWdodGVuX3NlY3Rpb25fbGlzdBgOIAMoDRIQCgh3",
-            "b3JsZF9pZBgPIAEoDRIVCgxkaW1lbnNpb25faWQYkwQgASgNEhsKEmdhbWVf",
-            "c3RvcnlfbGluZV9pZBjaBCABKA0SOQoQZmxvb3Jfc2F2ZWRfZGF0YRioBSAD",
-            "KAsyHi5TY2VuZUluZm8uRmxvb3JTYXZlZERhdGFFbnRyeRIbChJvcGVuZWRf",
-            "Y2hlc3RzX2xpc3QYzwUgAygNEhMKCmNvbnRlbnRfaWQY2gcgASgNEjEKEWVu",
-            "dGl0eV9ncm91cF9saXN0GIEJIAMoCzIVLlNjZW5lRW50aXR5R3JvdXBJbmZv",
-            "EiIKC09DS05LQ0NJSkFJGLkKIAEoCzIMLkRQTkRKSUdBQ0ZKEjYKEnNjZW5l",
-            "X21pc3Npb25faW5mbxiBDCABKAsyGS5NaXNzaW9uU3RhdHVzQnlTY2VuZUlu",
-            "Zm8SKwoQZ3JvdXBfc3RhdGVfbGlzdBiRDCADKAsyEC5TY2VuZUdyb3VwU3Rh",
-            "dGUSFAoLaW50ZXJhY3RfaWQY0A0gASgEEisKEHNjZW5lX2lkZW50aWZpZXIY",
-            "mw8gASgLMhAuU2NlbmVJZGVudGlmaWVyGkAKEEtISE9QTkpKQUJIRW50cnkS",
-            "CwoDa2V5GAEgASgNEhsKBXZhbHVlGAIgASgLMgwuSUFISExJT0xDREI6AjgB",
-            "GjUKE0Zsb29yU2F2ZWREYXRhRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVl",
-            "GAIgASgFOgI4AUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "SWRlbnRpZmllci5wcm90byKoBwoJU2NlbmVJbmZvEisKEGdyb3VwX3N0YXRl",
+            "X2xpc3QYhQogAygLMhAuU2NlbmVHcm91cFN0YXRlEikKEGN1c3RvbV9kYXRh",
+            "X2xpc3QYBCADKAsyDy5DdXN0b21TYXZlRGF0YRI5ChBmbG9vcl9zYXZlZF9k",
+            "YXRhGN0JIAMoCzIeLlNjZW5lSW5mby5GbG9vclNhdmVkRGF0YUVudHJ5EiUK",
+            "C2VudGl0eV9saXN0GAIgAygLMhAuU2NlbmVFbnRpdHlJbmZvEjYKEnNjZW5l",
+            "X21pc3Npb25faW5mbxikBiABKAsyGS5NaXNzaW9uU3RhdHVzQnlTY2VuZUlu",
+            "Zm8SIgoLRk9KSkdKUElNQkwY+gggASgLMgwuQkVMTkxPSkFGQ00SMQoRZW50",
+            "aXR5X2dyb3VwX2xpc3QY/gggAygLMhUuU2NlbmVFbnRpdHlHcm91cEluZm8S",
+            "IQoLQ1BJS0ZHUENPQ0UYCiADKAsyDC5IR05CUEFORUNBTBIbChJvcGVuZWRf",
+            "Y2hlc3RzX2xpc3QYvgIgAygNEhwKFGxpZ2h0ZW5fc2VjdGlvbl9saXN0GA8g",
+            "AygNEisKEHNjZW5lX2lkZW50aWZpZXIY8Q0gASgLMhAuU2NlbmVJZGVudGlm",
+            "aWVyEicKFHNjZW5lX2J1ZmZfaW5mb19saXN0GA4gAygLMgkuQnVmZkluZm8S",
+            "MAoLQklLQkZHUEZBQUMYAyADKAsyGy5TY2VuZUluZm8uQklLQkZHUEZBQUNF",
+            "bnRyeRIQCghwbGFuZV9pZBgBIAEoDRIVCgxkaW1lbnNpb25faWQYywUgASgN",
+            "EhoKEmNsaWVudF9wb3NfdmVyc2lvbhgLIAEoDRIQCghmbG9vcl9pZBgJIAEo",
+            "DRIQCghlbnRyeV9pZBgFIAEoDRIQCgh3b3JsZF9pZBgGIAEoDRITCgpjb250",
+            "ZW50X2lkGK0FIAEoDRIWCg5nYW1lX21vZGVfdHlwZRgIIAEoDRIbChJnYW1l",
+            "X3N0b3J5X2xpbmVfaWQYhQsgASgNEhgKEGxlYWRlcl9lbnRpdHlfaWQYByAB",
+            "KA0SFAoLaW50ZXJhY3RfaWQYjQcgASgEGjUKE0Zsb29yU2F2ZWREYXRhRW50",
+            "cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgFOgI4ARpAChBCSUtCRkdQ",
+            "RkFBQ0VudHJ5EgsKA2tleRgBIAEoDRIbCgV2YWx1ZRgCIAEoCzIMLkhJRUtM",
+            "SFBJTkhMOgI4AUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.BuffInfoReflection.Descriptor, global::March7thHoney.Proto.CustomSaveDataReflection.Descriptor, global::March7thHoney.Proto.DPNDJIGACFJReflection.Descriptor, global::March7thHoney.Proto.IAHHLIOLCDBReflection.Descriptor, global::March7thHoney.Proto.MissionStatusBySceneInfoReflection.Descriptor, global::March7thHoney.Proto.NBCOOLLEOIDReflection.Descriptor, global::March7thHoney.Proto.SceneEntityGroupInfoReflection.Descriptor, global::March7thHoney.Proto.SceneEntityInfoReflection.Descriptor, global::March7thHoney.Proto.SceneGroupStateReflection.Descriptor, global::March7thHoney.Proto.SceneIdentifierReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.BELNLOJAFCMReflection.Descriptor, global::March7thHoney.Proto.BuffInfoReflection.Descriptor, global::March7thHoney.Proto.CustomSaveDataReflection.Descriptor, global::March7thHoney.Proto.HGNBPANECALReflection.Descriptor, global::March7thHoney.Proto.HIEKLHPINHLReflection.Descriptor, global::March7thHoney.Proto.MissionStatusBySceneInfoReflection.Descriptor, global::March7thHoney.Proto.SceneEntityGroupInfoReflection.Descriptor, global::March7thHoney.Proto.SceneEntityInfoReflection.Descriptor, global::March7thHoney.Proto.SceneGroupStateReflection.Descriptor, global::March7thHoney.Proto.SceneIdentifierReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneInfo), global::March7thHoney.Proto.SceneInfo.Parser, new[]{ "GameModeType", "NHOFMHMBKGK", "ClientPosVersion", "PlaneId", "KHHOPNJJABH", "CustomDataList", "EntityList", "FloorId", "SceneBuffInfoList", "EntryId", "LeaderEntityId", "LightenSectionList", "WorldId", "DimensionId", "GameStoryLineId", "FloorSavedData", "OpenedChestsList", "ContentId", "EntityGroupList", "OCKNKCCIJAI", "SceneMissionInfo", "GroupStateList", "InteractId", "SceneIdentifier" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneInfo), global::March7thHoney.Proto.SceneInfo.Parser, new[]{ "GroupStateList", "CustomDataList", "FloorSavedData", "EntityList", "SceneMissionInfo", "FOJJGJPIMBL", "EntityGroupList", "CPIKFGPCOCE", "OpenedChestsList", "LightenSectionList", "SceneIdentifier", "SceneBuffInfoList", "BIKBFGPFAAC", "PlaneId", "DimensionId", "ClientPosVersion", "FloorId", "EntryId", "WorldId", "ContentId", "GameModeType", "GameStoryLineId", "LeaderEntityId", "InteractId" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, })
           }));
     }
     #endregion
@@ -96,30 +96,30 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SceneInfo(SceneInfo other) : this() {
-      gameModeType_ = other.gameModeType_;
-      nHOFMHMBKGK_ = other.nHOFMHMBKGK_.Clone();
-      clientPosVersion_ = other.clientPosVersion_;
-      planeId_ = other.planeId_;
-      kHHOPNJJABH_ = other.kHHOPNJJABH_.Clone();
-      customDataList_ = other.customDataList_.Clone();
-      entityList_ = other.entityList_.Clone();
-      floorId_ = other.floorId_;
-      sceneBuffInfoList_ = other.sceneBuffInfoList_.Clone();
-      entryId_ = other.entryId_;
-      leaderEntityId_ = other.leaderEntityId_;
-      lightenSectionList_ = other.lightenSectionList_.Clone();
-      worldId_ = other.worldId_;
-      dimensionId_ = other.dimensionId_;
-      gameStoryLineId_ = other.gameStoryLineId_;
-      floorSavedData_ = other.floorSavedData_.Clone();
-      openedChestsList_ = other.openedChestsList_.Clone();
-      contentId_ = other.contentId_;
-      entityGroupList_ = other.entityGroupList_.Clone();
-      oCKNKCCIJAI_ = other.oCKNKCCIJAI_ != null ? other.oCKNKCCIJAI_.Clone() : null;
-      sceneMissionInfo_ = other.sceneMissionInfo_ != null ? other.sceneMissionInfo_.Clone() : null;
       groupStateList_ = other.groupStateList_.Clone();
-      interactId_ = other.interactId_;
+      customDataList_ = other.customDataList_.Clone();
+      floorSavedData_ = other.floorSavedData_.Clone();
+      entityList_ = other.entityList_.Clone();
+      sceneMissionInfo_ = other.sceneMissionInfo_ != null ? other.sceneMissionInfo_.Clone() : null;
+      fOJJGJPIMBL_ = other.fOJJGJPIMBL_ != null ? other.fOJJGJPIMBL_.Clone() : null;
+      entityGroupList_ = other.entityGroupList_.Clone();
+      cPIKFGPCOCE_ = other.cPIKFGPCOCE_.Clone();
+      openedChestsList_ = other.openedChestsList_.Clone();
+      lightenSectionList_ = other.lightenSectionList_.Clone();
       sceneIdentifier_ = other.sceneIdentifier_ != null ? other.sceneIdentifier_.Clone() : null;
+      sceneBuffInfoList_ = other.sceneBuffInfoList_.Clone();
+      bIKBFGPFAAC_ = other.bIKBFGPFAAC_.Clone();
+      planeId_ = other.planeId_;
+      dimensionId_ = other.dimensionId_;
+      clientPosVersion_ = other.clientPosVersion_;
+      floorId_ = other.floorId_;
+      entryId_ = other.entryId_;
+      worldId_ = other.worldId_;
+      contentId_ = other.contentId_;
+      gameModeType_ = other.gameModeType_;
+      gameStoryLineId_ = other.gameStoryLineId_;
+      leaderEntityId_ = other.leaderEntityId_;
+      interactId_ = other.interactId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -129,68 +129,21 @@ namespace March7thHoney.Proto {
       return new SceneInfo(this);
     }
 
-    /// <summary>Field number for the "game_mode_type" field.</summary>
-    public const int GameModeTypeFieldNumber = 1;
-    private uint gameModeType_;
+    /// <summary>Field number for the "group_state_list" field.</summary>
+    public const int GroupStateListFieldNumber = 1285;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.SceneGroupState> _repeated_groupStateList_codec
+        = pb::FieldCodec.ForMessage(10282, global::March7thHoney.Proto.SceneGroupState.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.SceneGroupState> groupStateList_ = new pbc::RepeatedField<global::March7thHoney.Proto.SceneGroupState>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint GameModeType {
-      get { return gameModeType_; }
-      set {
-        gameModeType_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "NHOFMHMBKGK" field.</summary>
-    public const int NHOFMHMBKGKFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.NBCOOLLEOID> _repeated_nHOFMHMBKGK_codec
-        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.NBCOOLLEOID.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.NBCOOLLEOID> nHOFMHMBKGK_ = new pbc::RepeatedField<global::March7thHoney.Proto.NBCOOLLEOID>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.NBCOOLLEOID> NHOFMHMBKGK {
-      get { return nHOFMHMBKGK_; }
-    }
-
-    /// <summary>Field number for the "client_pos_version" field.</summary>
-    public const int ClientPosVersionFieldNumber = 4;
-    private uint clientPosVersion_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint ClientPosVersion {
-      get { return clientPosVersion_; }
-      set {
-        clientPosVersion_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "plane_id" field.</summary>
-    public const int PlaneIdFieldNumber = 5;
-    private uint planeId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PlaneId {
-      get { return planeId_; }
-      set {
-        planeId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "KHHOPNJJABH" field.</summary>
-    public const int KHHOPNJJABHFieldNumber = 6;
-    private static readonly pbc::MapField<uint, global::March7thHoney.Proto.IAHHLIOLCDB>.Codec _map_kHHOPNJJABH_codec
-        = new pbc::MapField<uint, global::March7thHoney.Proto.IAHHLIOLCDB>.Codec(pb::FieldCodec.ForUInt32(8, 0), pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.IAHHLIOLCDB.Parser), 50);
-    private readonly pbc::MapField<uint, global::March7thHoney.Proto.IAHHLIOLCDB> kHHOPNJJABH_ = new pbc::MapField<uint, global::March7thHoney.Proto.IAHHLIOLCDB>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<uint, global::March7thHoney.Proto.IAHHLIOLCDB> KHHOPNJJABH {
-      get { return kHHOPNJJABH_; }
+    public pbc::RepeatedField<global::March7thHoney.Proto.SceneGroupState> GroupStateList {
+      get { return groupStateList_; }
     }
 
     /// <summary>Field number for the "custom_data_list" field.</summary>
-    public const int CustomDataListFieldNumber = 7;
+    public const int CustomDataListFieldNumber = 4;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.CustomSaveData> _repeated_customDataList_codec
-        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.CustomSaveData.Parser);
+        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.CustomSaveData.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.CustomSaveData> customDataList_ = new pbc::RepeatedField<global::March7thHoney.Proto.CustomSaveData>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -198,115 +151,10 @@ namespace March7thHoney.Proto {
       get { return customDataList_; }
     }
 
-    /// <summary>Field number for the "entity_list" field.</summary>
-    public const int EntityListFieldNumber = 9;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.SceneEntityInfo> _repeated_entityList_codec
-        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.SceneEntityInfo.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.SceneEntityInfo> entityList_ = new pbc::RepeatedField<global::March7thHoney.Proto.SceneEntityInfo>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.SceneEntityInfo> EntityList {
-      get { return entityList_; }
-    }
-
-    /// <summary>Field number for the "floor_id" field.</summary>
-    public const int FloorIdFieldNumber = 10;
-    private uint floorId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint FloorId {
-      get { return floorId_; }
-      set {
-        floorId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "scene_buff_info_list" field.</summary>
-    public const int SceneBuffInfoListFieldNumber = 11;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BuffInfo> _repeated_sceneBuffInfoList_codec
-        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.BuffInfo.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BuffInfo> sceneBuffInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.BuffInfo>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.BuffInfo> SceneBuffInfoList {
-      get { return sceneBuffInfoList_; }
-    }
-
-    /// <summary>Field number for the "entry_id" field.</summary>
-    public const int EntryIdFieldNumber = 12;
-    private uint entryId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint EntryId {
-      get { return entryId_; }
-      set {
-        entryId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "leader_entity_id" field.</summary>
-    public const int LeaderEntityIdFieldNumber = 13;
-    private uint leaderEntityId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint LeaderEntityId {
-      get { return leaderEntityId_; }
-      set {
-        leaderEntityId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "lighten_section_list" field.</summary>
-    public const int LightenSectionListFieldNumber = 14;
-    private static readonly pb::FieldCodec<uint> _repeated_lightenSectionList_codec
-        = pb::FieldCodec.ForUInt32(114);
-    private readonly pbc::RepeatedField<uint> lightenSectionList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> LightenSectionList {
-      get { return lightenSectionList_; }
-    }
-
-    /// <summary>Field number for the "world_id" field.</summary>
-    public const int WorldIdFieldNumber = 15;
-    private uint worldId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint WorldId {
-      get { return worldId_; }
-      set {
-        worldId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "dimension_id" field.</summary>
-    public const int DimensionIdFieldNumber = 531;
-    private uint dimensionId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint DimensionId {
-      get { return dimensionId_; }
-      set {
-        dimensionId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "game_story_line_id" field.</summary>
-    public const int GameStoryLineIdFieldNumber = 602;
-    private uint gameStoryLineId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint GameStoryLineId {
-      get { return gameStoryLineId_; }
-      set {
-        gameStoryLineId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "floor_saved_data" field.</summary>
-    public const int FloorSavedDataFieldNumber = 680;
+    public const int FloorSavedDataFieldNumber = 1245;
     private static readonly pbc::MapField<string, int>.Codec _map_floorSavedData_codec
-        = new pbc::MapField<string, int>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForInt32(16, 0), 5442);
+        = new pbc::MapField<string, int>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForInt32(16, 0), 9962);
     private readonly pbc::MapField<string, int> floorSavedData_ = new pbc::MapField<string, int>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -314,54 +162,19 @@ namespace March7thHoney.Proto {
       get { return floorSavedData_; }
     }
 
-    /// <summary>Field number for the "opened_chests_list" field.</summary>
-    public const int OpenedChestsListFieldNumber = 719;
-    private static readonly pb::FieldCodec<uint> _repeated_openedChestsList_codec
-        = pb::FieldCodec.ForUInt32(5754);
-    private readonly pbc::RepeatedField<uint> openedChestsList_ = new pbc::RepeatedField<uint>();
+    /// <summary>Field number for the "entity_list" field.</summary>
+    public const int EntityListFieldNumber = 2;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.SceneEntityInfo> _repeated_entityList_codec
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.SceneEntityInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.SceneEntityInfo> entityList_ = new pbc::RepeatedField<global::March7thHoney.Proto.SceneEntityInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> OpenedChestsList {
-      get { return openedChestsList_; }
-    }
-
-    /// <summary>Field number for the "content_id" field.</summary>
-    public const int ContentIdFieldNumber = 986;
-    private uint contentId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint ContentId {
-      get { return contentId_; }
-      set {
-        contentId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "entity_group_list" field.</summary>
-    public const int EntityGroupListFieldNumber = 1153;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.SceneEntityGroupInfo> _repeated_entityGroupList_codec
-        = pb::FieldCodec.ForMessage(9226, global::March7thHoney.Proto.SceneEntityGroupInfo.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.SceneEntityGroupInfo> entityGroupList_ = new pbc::RepeatedField<global::March7thHoney.Proto.SceneEntityGroupInfo>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.SceneEntityGroupInfo> EntityGroupList {
-      get { return entityGroupList_; }
-    }
-
-    /// <summary>Field number for the "OCKNKCCIJAI" field.</summary>
-    public const int OCKNKCCIJAIFieldNumber = 1337;
-    private global::March7thHoney.Proto.DPNDJIGACFJ oCKNKCCIJAI_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.DPNDJIGACFJ OCKNKCCIJAI {
-      get { return oCKNKCCIJAI_; }
-      set {
-        oCKNKCCIJAI_ = value;
-      }
+    public pbc::RepeatedField<global::March7thHoney.Proto.SceneEntityInfo> EntityList {
+      get { return entityList_; }
     }
 
     /// <summary>Field number for the "scene_mission_info" field.</summary>
-    public const int SceneMissionInfoFieldNumber = 1537;
+    public const int SceneMissionInfoFieldNumber = 804;
     private global::March7thHoney.Proto.MissionStatusBySceneInfo sceneMissionInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -372,31 +185,64 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "group_state_list" field.</summary>
-    public const int GroupStateListFieldNumber = 1553;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.SceneGroupState> _repeated_groupStateList_codec
-        = pb::FieldCodec.ForMessage(12426, global::March7thHoney.Proto.SceneGroupState.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.SceneGroupState> groupStateList_ = new pbc::RepeatedField<global::March7thHoney.Proto.SceneGroupState>();
+    /// <summary>Field number for the "FOJJGJPIMBL" field.</summary>
+    public const int FOJJGJPIMBLFieldNumber = 1146;
+    private global::March7thHoney.Proto.BELNLOJAFCM fOJJGJPIMBL_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.SceneGroupState> GroupStateList {
-      get { return groupStateList_; }
-    }
-
-    /// <summary>Field number for the "interact_id" field.</summary>
-    public const int InteractIdFieldNumber = 1744;
-    private ulong interactId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ulong InteractId {
-      get { return interactId_; }
+    public global::March7thHoney.Proto.BELNLOJAFCM FOJJGJPIMBL {
+      get { return fOJJGJPIMBL_; }
       set {
-        interactId_ = value;
+        fOJJGJPIMBL_ = value;
       }
     }
 
+    /// <summary>Field number for the "entity_group_list" field.</summary>
+    public const int EntityGroupListFieldNumber = 1150;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.SceneEntityGroupInfo> _repeated_entityGroupList_codec
+        = pb::FieldCodec.ForMessage(9202, global::March7thHoney.Proto.SceneEntityGroupInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.SceneEntityGroupInfo> entityGroupList_ = new pbc::RepeatedField<global::March7thHoney.Proto.SceneEntityGroupInfo>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.SceneEntityGroupInfo> EntityGroupList {
+      get { return entityGroupList_; }
+    }
+
+    /// <summary>Field number for the "CPIKFGPCOCE" field.</summary>
+    public const int CPIKFGPCOCEFieldNumber = 10;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.HGNBPANECAL> _repeated_cPIKFGPCOCE_codec
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.HGNBPANECAL.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.HGNBPANECAL> cPIKFGPCOCE_ = new pbc::RepeatedField<global::March7thHoney.Proto.HGNBPANECAL>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.HGNBPANECAL> CPIKFGPCOCE {
+      get { return cPIKFGPCOCE_; }
+    }
+
+    /// <summary>Field number for the "opened_chests_list" field.</summary>
+    public const int OpenedChestsListFieldNumber = 318;
+    private static readonly pb::FieldCodec<uint> _repeated_openedChestsList_codec
+        = pb::FieldCodec.ForUInt32(2546);
+    private readonly pbc::RepeatedField<uint> openedChestsList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> OpenedChestsList {
+      get { return openedChestsList_; }
+    }
+
+    /// <summary>Field number for the "lighten_section_list" field.</summary>
+    public const int LightenSectionListFieldNumber = 15;
+    private static readonly pb::FieldCodec<uint> _repeated_lightenSectionList_codec
+        = pb::FieldCodec.ForUInt32(122);
+    private readonly pbc::RepeatedField<uint> lightenSectionList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> LightenSectionList {
+      get { return lightenSectionList_; }
+    }
+
     /// <summary>Field number for the "scene_identifier" field.</summary>
-    public const int SceneIdentifierFieldNumber = 1947;
+    public const int SceneIdentifierFieldNumber = 1777;
     private global::March7thHoney.Proto.SceneIdentifier sceneIdentifier_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -404,6 +250,160 @@ namespace March7thHoney.Proto {
       get { return sceneIdentifier_; }
       set {
         sceneIdentifier_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "scene_buff_info_list" field.</summary>
+    public const int SceneBuffInfoListFieldNumber = 14;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BuffInfo> _repeated_sceneBuffInfoList_codec
+        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.BuffInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BuffInfo> sceneBuffInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.BuffInfo>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.BuffInfo> SceneBuffInfoList {
+      get { return sceneBuffInfoList_; }
+    }
+
+    /// <summary>Field number for the "BIKBFGPFAAC" field.</summary>
+    public const int BIKBFGPFAACFieldNumber = 3;
+    private static readonly pbc::MapField<uint, global::March7thHoney.Proto.HIEKLHPINHL>.Codec _map_bIKBFGPFAAC_codec
+        = new pbc::MapField<uint, global::March7thHoney.Proto.HIEKLHPINHL>.Codec(pb::FieldCodec.ForUInt32(8, 0), pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.HIEKLHPINHL.Parser), 26);
+    private readonly pbc::MapField<uint, global::March7thHoney.Proto.HIEKLHPINHL> bIKBFGPFAAC_ = new pbc::MapField<uint, global::March7thHoney.Proto.HIEKLHPINHL>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::MapField<uint, global::March7thHoney.Proto.HIEKLHPINHL> BIKBFGPFAAC {
+      get { return bIKBFGPFAAC_; }
+    }
+
+    /// <summary>Field number for the "plane_id" field.</summary>
+    public const int PlaneIdFieldNumber = 1;
+    private uint planeId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint PlaneId {
+      get { return planeId_; }
+      set {
+        planeId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "dimension_id" field.</summary>
+    public const int DimensionIdFieldNumber = 715;
+    private uint dimensionId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint DimensionId {
+      get { return dimensionId_; }
+      set {
+        dimensionId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "client_pos_version" field.</summary>
+    public const int ClientPosVersionFieldNumber = 11;
+    private uint clientPosVersion_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint ClientPosVersion {
+      get { return clientPosVersion_; }
+      set {
+        clientPosVersion_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "floor_id" field.</summary>
+    public const int FloorIdFieldNumber = 9;
+    private uint floorId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint FloorId {
+      get { return floorId_; }
+      set {
+        floorId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "entry_id" field.</summary>
+    public const int EntryIdFieldNumber = 5;
+    private uint entryId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint EntryId {
+      get { return entryId_; }
+      set {
+        entryId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "world_id" field.</summary>
+    public const int WorldIdFieldNumber = 6;
+    private uint worldId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint WorldId {
+      get { return worldId_; }
+      set {
+        worldId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "content_id" field.</summary>
+    public const int ContentIdFieldNumber = 685;
+    private uint contentId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint ContentId {
+      get { return contentId_; }
+      set {
+        contentId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "game_mode_type" field.</summary>
+    public const int GameModeTypeFieldNumber = 8;
+    private uint gameModeType_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint GameModeType {
+      get { return gameModeType_; }
+      set {
+        gameModeType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "game_story_line_id" field.</summary>
+    public const int GameStoryLineIdFieldNumber = 1413;
+    private uint gameStoryLineId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint GameStoryLineId {
+      get { return gameStoryLineId_; }
+      set {
+        gameStoryLineId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "leader_entity_id" field.</summary>
+    public const int LeaderEntityIdFieldNumber = 7;
+    private uint leaderEntityId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint LeaderEntityId {
+      get { return leaderEntityId_; }
+      set {
+        leaderEntityId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "interact_id" field.</summary>
+    public const int InteractIdFieldNumber = 909;
+    private ulong interactId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong InteractId {
+      get { return interactId_; }
+      set {
+        interactId_ = value;
       }
     }
 
@@ -422,30 +422,30 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (GameModeType != other.GameModeType) return false;
-      if(!nHOFMHMBKGK_.Equals(other.nHOFMHMBKGK_)) return false;
-      if (ClientPosVersion != other.ClientPosVersion) return false;
-      if (PlaneId != other.PlaneId) return false;
-      if (!KHHOPNJJABH.Equals(other.KHHOPNJJABH)) return false;
-      if(!customDataList_.Equals(other.customDataList_)) return false;
-      if(!entityList_.Equals(other.entityList_)) return false;
-      if (FloorId != other.FloorId) return false;
-      if(!sceneBuffInfoList_.Equals(other.sceneBuffInfoList_)) return false;
-      if (EntryId != other.EntryId) return false;
-      if (LeaderEntityId != other.LeaderEntityId) return false;
-      if(!lightenSectionList_.Equals(other.lightenSectionList_)) return false;
-      if (WorldId != other.WorldId) return false;
-      if (DimensionId != other.DimensionId) return false;
-      if (GameStoryLineId != other.GameStoryLineId) return false;
-      if (!FloorSavedData.Equals(other.FloorSavedData)) return false;
-      if(!openedChestsList_.Equals(other.openedChestsList_)) return false;
-      if (ContentId != other.ContentId) return false;
-      if(!entityGroupList_.Equals(other.entityGroupList_)) return false;
-      if (!object.Equals(OCKNKCCIJAI, other.OCKNKCCIJAI)) return false;
-      if (!object.Equals(SceneMissionInfo, other.SceneMissionInfo)) return false;
       if(!groupStateList_.Equals(other.groupStateList_)) return false;
-      if (InteractId != other.InteractId) return false;
+      if(!customDataList_.Equals(other.customDataList_)) return false;
+      if (!FloorSavedData.Equals(other.FloorSavedData)) return false;
+      if(!entityList_.Equals(other.entityList_)) return false;
+      if (!object.Equals(SceneMissionInfo, other.SceneMissionInfo)) return false;
+      if (!object.Equals(FOJJGJPIMBL, other.FOJJGJPIMBL)) return false;
+      if(!entityGroupList_.Equals(other.entityGroupList_)) return false;
+      if(!cPIKFGPCOCE_.Equals(other.cPIKFGPCOCE_)) return false;
+      if(!openedChestsList_.Equals(other.openedChestsList_)) return false;
+      if(!lightenSectionList_.Equals(other.lightenSectionList_)) return false;
       if (!object.Equals(SceneIdentifier, other.SceneIdentifier)) return false;
+      if(!sceneBuffInfoList_.Equals(other.sceneBuffInfoList_)) return false;
+      if (!BIKBFGPFAAC.Equals(other.BIKBFGPFAAC)) return false;
+      if (PlaneId != other.PlaneId) return false;
+      if (DimensionId != other.DimensionId) return false;
+      if (ClientPosVersion != other.ClientPosVersion) return false;
+      if (FloorId != other.FloorId) return false;
+      if (EntryId != other.EntryId) return false;
+      if (WorldId != other.WorldId) return false;
+      if (ContentId != other.ContentId) return false;
+      if (GameModeType != other.GameModeType) return false;
+      if (GameStoryLineId != other.GameStoryLineId) return false;
+      if (LeaderEntityId != other.LeaderEntityId) return false;
+      if (InteractId != other.InteractId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -453,30 +453,30 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (GameModeType != 0) hash ^= GameModeType.GetHashCode();
-      hash ^= nHOFMHMBKGK_.GetHashCode();
-      if (ClientPosVersion != 0) hash ^= ClientPosVersion.GetHashCode();
-      if (PlaneId != 0) hash ^= PlaneId.GetHashCode();
-      hash ^= KHHOPNJJABH.GetHashCode();
-      hash ^= customDataList_.GetHashCode();
-      hash ^= entityList_.GetHashCode();
-      if (FloorId != 0) hash ^= FloorId.GetHashCode();
-      hash ^= sceneBuffInfoList_.GetHashCode();
-      if (EntryId != 0) hash ^= EntryId.GetHashCode();
-      if (LeaderEntityId != 0) hash ^= LeaderEntityId.GetHashCode();
-      hash ^= lightenSectionList_.GetHashCode();
-      if (WorldId != 0) hash ^= WorldId.GetHashCode();
-      if (DimensionId != 0) hash ^= DimensionId.GetHashCode();
-      if (GameStoryLineId != 0) hash ^= GameStoryLineId.GetHashCode();
-      hash ^= FloorSavedData.GetHashCode();
-      hash ^= openedChestsList_.GetHashCode();
-      if (ContentId != 0) hash ^= ContentId.GetHashCode();
-      hash ^= entityGroupList_.GetHashCode();
-      if (oCKNKCCIJAI_ != null) hash ^= OCKNKCCIJAI.GetHashCode();
-      if (sceneMissionInfo_ != null) hash ^= SceneMissionInfo.GetHashCode();
       hash ^= groupStateList_.GetHashCode();
-      if (InteractId != 0UL) hash ^= InteractId.GetHashCode();
+      hash ^= customDataList_.GetHashCode();
+      hash ^= FloorSavedData.GetHashCode();
+      hash ^= entityList_.GetHashCode();
+      if (sceneMissionInfo_ != null) hash ^= SceneMissionInfo.GetHashCode();
+      if (fOJJGJPIMBL_ != null) hash ^= FOJJGJPIMBL.GetHashCode();
+      hash ^= entityGroupList_.GetHashCode();
+      hash ^= cPIKFGPCOCE_.GetHashCode();
+      hash ^= openedChestsList_.GetHashCode();
+      hash ^= lightenSectionList_.GetHashCode();
       if (sceneIdentifier_ != null) hash ^= SceneIdentifier.GetHashCode();
+      hash ^= sceneBuffInfoList_.GetHashCode();
+      hash ^= BIKBFGPFAAC.GetHashCode();
+      if (PlaneId != 0) hash ^= PlaneId.GetHashCode();
+      if (DimensionId != 0) hash ^= DimensionId.GetHashCode();
+      if (ClientPosVersion != 0) hash ^= ClientPosVersion.GetHashCode();
+      if (FloorId != 0) hash ^= FloorId.GetHashCode();
+      if (EntryId != 0) hash ^= EntryId.GetHashCode();
+      if (WorldId != 0) hash ^= WorldId.GetHashCode();
+      if (ContentId != 0) hash ^= ContentId.GetHashCode();
+      if (GameModeType != 0) hash ^= GameModeType.GetHashCode();
+      if (GameStoryLineId != 0) hash ^= GameStoryLineId.GetHashCode();
+      if (LeaderEntityId != 0) hash ^= LeaderEntityId.GetHashCode();
+      if (InteractId != 0UL) hash ^= InteractId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -495,70 +495,70 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (GameModeType != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(GameModeType);
-      }
-      nHOFMHMBKGK_.WriteTo(output, _repeated_nHOFMHMBKGK_codec);
-      if (ClientPosVersion != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(ClientPosVersion);
-      }
       if (PlaneId != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(8);
         output.WriteUInt32(PlaneId);
       }
-      kHHOPNJJABH_.WriteTo(output, _map_kHHOPNJJABH_codec);
-      customDataList_.WriteTo(output, _repeated_customDataList_codec);
       entityList_.WriteTo(output, _repeated_entityList_codec);
-      if (FloorId != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(FloorId);
-      }
-      sceneBuffInfoList_.WriteTo(output, _repeated_sceneBuffInfoList_codec);
+      bIKBFGPFAAC_.WriteTo(output, _map_bIKBFGPFAAC_codec);
+      customDataList_.WriteTo(output, _repeated_customDataList_codec);
       if (EntryId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(40);
         output.WriteUInt32(EntryId);
       }
-      if (LeaderEntityId != 0) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(LeaderEntityId);
-      }
-      lightenSectionList_.WriteTo(output, _repeated_lightenSectionList_codec);
       if (WorldId != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(48);
         output.WriteUInt32(WorldId);
       }
-      if (DimensionId != 0) {
-        output.WriteRawTag(152, 33);
-        output.WriteUInt32(DimensionId);
+      if (LeaderEntityId != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(LeaderEntityId);
       }
-      if (GameStoryLineId != 0) {
-        output.WriteRawTag(208, 37);
-        output.WriteUInt32(GameStoryLineId);
+      if (GameModeType != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(GameModeType);
       }
-      floorSavedData_.WriteTo(output, _map_floorSavedData_codec);
+      if (FloorId != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(FloorId);
+      }
+      cPIKFGPCOCE_.WriteTo(output, _repeated_cPIKFGPCOCE_codec);
+      if (ClientPosVersion != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(ClientPosVersion);
+      }
+      sceneBuffInfoList_.WriteTo(output, _repeated_sceneBuffInfoList_codec);
+      lightenSectionList_.WriteTo(output, _repeated_lightenSectionList_codec);
       openedChestsList_.WriteTo(output, _repeated_openedChestsList_codec);
       if (ContentId != 0) {
-        output.WriteRawTag(208, 61);
+        output.WriteRawTag(232, 42);
         output.WriteUInt32(ContentId);
       }
-      entityGroupList_.WriteTo(output, _repeated_entityGroupList_codec);
-      if (oCKNKCCIJAI_ != null) {
-        output.WriteRawTag(202, 83);
-        output.WriteMessage(OCKNKCCIJAI);
+      if (DimensionId != 0) {
+        output.WriteRawTag(216, 44);
+        output.WriteUInt32(DimensionId);
       }
       if (sceneMissionInfo_ != null) {
-        output.WriteRawTag(138, 96);
+        output.WriteRawTag(162, 50);
         output.WriteMessage(SceneMissionInfo);
       }
-      groupStateList_.WriteTo(output, _repeated_groupStateList_codec);
       if (InteractId != 0UL) {
-        output.WriteRawTag(128, 109);
+        output.WriteRawTag(232, 56);
         output.WriteUInt64(InteractId);
       }
+      if (fOJJGJPIMBL_ != null) {
+        output.WriteRawTag(210, 71);
+        output.WriteMessage(FOJJGJPIMBL);
+      }
+      entityGroupList_.WriteTo(output, _repeated_entityGroupList_codec);
+      floorSavedData_.WriteTo(output, _map_floorSavedData_codec);
+      groupStateList_.WriteTo(output, _repeated_groupStateList_codec);
+      if (GameStoryLineId != 0) {
+        output.WriteRawTag(168, 88);
+        output.WriteUInt32(GameStoryLineId);
+      }
       if (sceneIdentifier_ != null) {
-        output.WriteRawTag(218, 121);
+        output.WriteRawTag(138, 111);
         output.WriteMessage(SceneIdentifier);
       }
       if (_unknownFields != null) {
@@ -571,70 +571,70 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (GameModeType != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(GameModeType);
-      }
-      nHOFMHMBKGK_.WriteTo(ref output, _repeated_nHOFMHMBKGK_codec);
-      if (ClientPosVersion != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(ClientPosVersion);
-      }
       if (PlaneId != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(8);
         output.WriteUInt32(PlaneId);
       }
-      kHHOPNJJABH_.WriteTo(ref output, _map_kHHOPNJJABH_codec);
-      customDataList_.WriteTo(ref output, _repeated_customDataList_codec);
       entityList_.WriteTo(ref output, _repeated_entityList_codec);
-      if (FloorId != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(FloorId);
-      }
-      sceneBuffInfoList_.WriteTo(ref output, _repeated_sceneBuffInfoList_codec);
+      bIKBFGPFAAC_.WriteTo(ref output, _map_bIKBFGPFAAC_codec);
+      customDataList_.WriteTo(ref output, _repeated_customDataList_codec);
       if (EntryId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(40);
         output.WriteUInt32(EntryId);
       }
-      if (LeaderEntityId != 0) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(LeaderEntityId);
-      }
-      lightenSectionList_.WriteTo(ref output, _repeated_lightenSectionList_codec);
       if (WorldId != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(48);
         output.WriteUInt32(WorldId);
       }
-      if (DimensionId != 0) {
-        output.WriteRawTag(152, 33);
-        output.WriteUInt32(DimensionId);
+      if (LeaderEntityId != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(LeaderEntityId);
       }
-      if (GameStoryLineId != 0) {
-        output.WriteRawTag(208, 37);
-        output.WriteUInt32(GameStoryLineId);
+      if (GameModeType != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(GameModeType);
       }
-      floorSavedData_.WriteTo(ref output, _map_floorSavedData_codec);
+      if (FloorId != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(FloorId);
+      }
+      cPIKFGPCOCE_.WriteTo(ref output, _repeated_cPIKFGPCOCE_codec);
+      if (ClientPosVersion != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(ClientPosVersion);
+      }
+      sceneBuffInfoList_.WriteTo(ref output, _repeated_sceneBuffInfoList_codec);
+      lightenSectionList_.WriteTo(ref output, _repeated_lightenSectionList_codec);
       openedChestsList_.WriteTo(ref output, _repeated_openedChestsList_codec);
       if (ContentId != 0) {
-        output.WriteRawTag(208, 61);
+        output.WriteRawTag(232, 42);
         output.WriteUInt32(ContentId);
       }
-      entityGroupList_.WriteTo(ref output, _repeated_entityGroupList_codec);
-      if (oCKNKCCIJAI_ != null) {
-        output.WriteRawTag(202, 83);
-        output.WriteMessage(OCKNKCCIJAI);
+      if (DimensionId != 0) {
+        output.WriteRawTag(216, 44);
+        output.WriteUInt32(DimensionId);
       }
       if (sceneMissionInfo_ != null) {
-        output.WriteRawTag(138, 96);
+        output.WriteRawTag(162, 50);
         output.WriteMessage(SceneMissionInfo);
       }
-      groupStateList_.WriteTo(ref output, _repeated_groupStateList_codec);
       if (InteractId != 0UL) {
-        output.WriteRawTag(128, 109);
+        output.WriteRawTag(232, 56);
         output.WriteUInt64(InteractId);
       }
+      if (fOJJGJPIMBL_ != null) {
+        output.WriteRawTag(210, 71);
+        output.WriteMessage(FOJJGJPIMBL);
+      }
+      entityGroupList_.WriteTo(ref output, _repeated_entityGroupList_codec);
+      floorSavedData_.WriteTo(ref output, _map_floorSavedData_codec);
+      groupStateList_.WriteTo(ref output, _repeated_groupStateList_codec);
+      if (GameStoryLineId != 0) {
+        output.WriteRawTag(168, 88);
+        output.WriteUInt32(GameStoryLineId);
+      }
       if (sceneIdentifier_ != null) {
-        output.WriteRawTag(218, 121);
+        output.WriteRawTag(138, 111);
         output.WriteMessage(SceneIdentifier);
       }
       if (_unknownFields != null) {
@@ -647,57 +647,57 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (GameModeType != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GameModeType);
-      }
-      size += nHOFMHMBKGK_.CalculateSize(_repeated_nHOFMHMBKGK_codec);
-      if (ClientPosVersion != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ClientPosVersion);
-      }
-      if (PlaneId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PlaneId);
-      }
-      size += kHHOPNJJABH_.CalculateSize(_map_kHHOPNJJABH_codec);
+      size += groupStateList_.CalculateSize(_repeated_groupStateList_codec);
       size += customDataList_.CalculateSize(_repeated_customDataList_codec);
+      size += floorSavedData_.CalculateSize(_map_floorSavedData_codec);
       size += entityList_.CalculateSize(_repeated_entityList_codec);
-      if (FloorId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FloorId);
+      if (sceneMissionInfo_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(SceneMissionInfo);
+      }
+      if (fOJJGJPIMBL_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(FOJJGJPIMBL);
+      }
+      size += entityGroupList_.CalculateSize(_repeated_entityGroupList_codec);
+      size += cPIKFGPCOCE_.CalculateSize(_repeated_cPIKFGPCOCE_codec);
+      size += openedChestsList_.CalculateSize(_repeated_openedChestsList_codec);
+      size += lightenSectionList_.CalculateSize(_repeated_lightenSectionList_codec);
+      if (sceneIdentifier_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(SceneIdentifier);
       }
       size += sceneBuffInfoList_.CalculateSize(_repeated_sceneBuffInfoList_codec);
-      if (EntryId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EntryId);
-      }
-      if (LeaderEntityId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LeaderEntityId);
-      }
-      size += lightenSectionList_.CalculateSize(_repeated_lightenSectionList_codec);
-      if (WorldId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(WorldId);
+      size += bIKBFGPFAAC_.CalculateSize(_map_bIKBFGPFAAC_codec);
+      if (PlaneId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PlaneId);
       }
       if (DimensionId != 0) {
         size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DimensionId);
       }
-      if (GameStoryLineId != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(GameStoryLineId);
+      if (ClientPosVersion != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ClientPosVersion);
       }
-      size += floorSavedData_.CalculateSize(_map_floorSavedData_codec);
-      size += openedChestsList_.CalculateSize(_repeated_openedChestsList_codec);
+      if (FloorId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FloorId);
+      }
+      if (EntryId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EntryId);
+      }
+      if (WorldId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(WorldId);
+      }
       if (ContentId != 0) {
         size += 2 + pb::CodedOutputStream.ComputeUInt32Size(ContentId);
       }
-      size += entityGroupList_.CalculateSize(_repeated_entityGroupList_codec);
-      if (oCKNKCCIJAI_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(OCKNKCCIJAI);
+      if (GameModeType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GameModeType);
       }
-      if (sceneMissionInfo_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(SceneMissionInfo);
+      if (GameStoryLineId != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(GameStoryLineId);
       }
-      size += groupStateList_.CalculateSize(_repeated_groupStateList_codec);
+      if (LeaderEntityId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LeaderEntityId);
+      }
       if (InteractId != 0UL) {
         size += 2 + pb::CodedOutputStream.ComputeUInt64Size(InteractId);
-      }
-      if (sceneIdentifier_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(SceneIdentifier);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -711,66 +711,66 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.GameModeType != 0) {
-        GameModeType = other.GameModeType;
-      }
-      nHOFMHMBKGK_.Add(other.nHOFMHMBKGK_);
-      if (other.ClientPosVersion != 0) {
-        ClientPosVersion = other.ClientPosVersion;
-      }
-      if (other.PlaneId != 0) {
-        PlaneId = other.PlaneId;
-      }
-      kHHOPNJJABH_.MergeFrom(other.kHHOPNJJABH_);
+      groupStateList_.Add(other.groupStateList_);
       customDataList_.Add(other.customDataList_);
-      entityList_.Add(other.entityList_);
-      if (other.FloorId != 0) {
-        FloorId = other.FloorId;
-      }
-      sceneBuffInfoList_.Add(other.sceneBuffInfoList_);
-      if (other.EntryId != 0) {
-        EntryId = other.EntryId;
-      }
-      if (other.LeaderEntityId != 0) {
-        LeaderEntityId = other.LeaderEntityId;
-      }
-      lightenSectionList_.Add(other.lightenSectionList_);
-      if (other.WorldId != 0) {
-        WorldId = other.WorldId;
-      }
-      if (other.DimensionId != 0) {
-        DimensionId = other.DimensionId;
-      }
-      if (other.GameStoryLineId != 0) {
-        GameStoryLineId = other.GameStoryLineId;
-      }
       floorSavedData_.MergeFrom(other.floorSavedData_);
-      openedChestsList_.Add(other.openedChestsList_);
-      if (other.ContentId != 0) {
-        ContentId = other.ContentId;
-      }
-      entityGroupList_.Add(other.entityGroupList_);
-      if (other.oCKNKCCIJAI_ != null) {
-        if (oCKNKCCIJAI_ == null) {
-          OCKNKCCIJAI = new global::March7thHoney.Proto.DPNDJIGACFJ();
-        }
-        OCKNKCCIJAI.MergeFrom(other.OCKNKCCIJAI);
-      }
+      entityList_.Add(other.entityList_);
       if (other.sceneMissionInfo_ != null) {
         if (sceneMissionInfo_ == null) {
           SceneMissionInfo = new global::March7thHoney.Proto.MissionStatusBySceneInfo();
         }
         SceneMissionInfo.MergeFrom(other.SceneMissionInfo);
       }
-      groupStateList_.Add(other.groupStateList_);
-      if (other.InteractId != 0UL) {
-        InteractId = other.InteractId;
+      if (other.fOJJGJPIMBL_ != null) {
+        if (fOJJGJPIMBL_ == null) {
+          FOJJGJPIMBL = new global::March7thHoney.Proto.BELNLOJAFCM();
+        }
+        FOJJGJPIMBL.MergeFrom(other.FOJJGJPIMBL);
       }
+      entityGroupList_.Add(other.entityGroupList_);
+      cPIKFGPCOCE_.Add(other.cPIKFGPCOCE_);
+      openedChestsList_.Add(other.openedChestsList_);
+      lightenSectionList_.Add(other.lightenSectionList_);
       if (other.sceneIdentifier_ != null) {
         if (sceneIdentifier_ == null) {
           SceneIdentifier = new global::March7thHoney.Proto.SceneIdentifier();
         }
         SceneIdentifier.MergeFrom(other.SceneIdentifier);
+      }
+      sceneBuffInfoList_.Add(other.sceneBuffInfoList_);
+      bIKBFGPFAAC_.MergeFrom(other.bIKBFGPFAAC_);
+      if (other.PlaneId != 0) {
+        PlaneId = other.PlaneId;
+      }
+      if (other.DimensionId != 0) {
+        DimensionId = other.DimensionId;
+      }
+      if (other.ClientPosVersion != 0) {
+        ClientPosVersion = other.ClientPosVersion;
+      }
+      if (other.FloorId != 0) {
+        FloorId = other.FloorId;
+      }
+      if (other.EntryId != 0) {
+        EntryId = other.EntryId;
+      }
+      if (other.WorldId != 0) {
+        WorldId = other.WorldId;
+      }
+      if (other.ContentId != 0) {
+        ContentId = other.ContentId;
+      }
+      if (other.GameModeType != 0) {
+        GameModeType = other.GameModeType;
+      }
+      if (other.GameStoryLineId != 0) {
+        GameStoryLineId = other.GameStoryLineId;
+      }
+      if (other.LeaderEntityId != 0) {
+        LeaderEntityId = other.LeaderEntityId;
+      }
+      if (other.InteractId != 0UL) {
+        InteractId = other.InteractId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -792,106 +792,106 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            GameModeType = input.ReadUInt32();
-            break;
-          }
-          case 26: {
-            nHOFMHMBKGK_.AddEntriesFrom(input, _repeated_nHOFMHMBKGK_codec);
-            break;
-          }
-          case 32: {
-            ClientPosVersion = input.ReadUInt32();
-            break;
-          }
-          case 40: {
             PlaneId = input.ReadUInt32();
             break;
           }
-          case 50: {
-            kHHOPNJJABH_.AddEntriesFrom(input, _map_kHHOPNJJABH_codec);
-            break;
-          }
-          case 58: {
-            customDataList_.AddEntriesFrom(input, _repeated_customDataList_codec);
-            break;
-          }
-          case 74: {
+          case 18: {
             entityList_.AddEntriesFrom(input, _repeated_entityList_codec);
             break;
           }
-          case 80: {
-            FloorId = input.ReadUInt32();
+          case 26: {
+            bIKBFGPFAAC_.AddEntriesFrom(input, _map_bIKBFGPFAAC_codec);
             break;
           }
-          case 90: {
-            sceneBuffInfoList_.AddEntriesFrom(input, _repeated_sceneBuffInfoList_codec);
+          case 34: {
+            customDataList_.AddEntriesFrom(input, _repeated_customDataList_codec);
             break;
           }
-          case 96: {
+          case 40: {
             EntryId = input.ReadUInt32();
             break;
           }
-          case 104: {
-            LeaderEntityId = input.ReadUInt32();
-            break;
-          }
-          case 114:
-          case 112: {
-            lightenSectionList_.AddEntriesFrom(input, _repeated_lightenSectionList_codec);
-            break;
-          }
-          case 120: {
+          case 48: {
             WorldId = input.ReadUInt32();
             break;
           }
-          case 4248: {
-            DimensionId = input.ReadUInt32();
+          case 56: {
+            LeaderEntityId = input.ReadUInt32();
             break;
           }
-          case 4816: {
-            GameStoryLineId = input.ReadUInt32();
+          case 64: {
+            GameModeType = input.ReadUInt32();
             break;
           }
-          case 5442: {
-            floorSavedData_.AddEntriesFrom(input, _map_floorSavedData_codec);
+          case 72: {
+            FloorId = input.ReadUInt32();
             break;
           }
-          case 5754:
-          case 5752: {
+          case 82: {
+            cPIKFGPCOCE_.AddEntriesFrom(input, _repeated_cPIKFGPCOCE_codec);
+            break;
+          }
+          case 88: {
+            ClientPosVersion = input.ReadUInt32();
+            break;
+          }
+          case 114: {
+            sceneBuffInfoList_.AddEntriesFrom(input, _repeated_sceneBuffInfoList_codec);
+            break;
+          }
+          case 122:
+          case 120: {
+            lightenSectionList_.AddEntriesFrom(input, _repeated_lightenSectionList_codec);
+            break;
+          }
+          case 2546:
+          case 2544: {
             openedChestsList_.AddEntriesFrom(input, _repeated_openedChestsList_codec);
             break;
           }
-          case 7888: {
+          case 5480: {
             ContentId = input.ReadUInt32();
             break;
           }
-          case 9226: {
-            entityGroupList_.AddEntriesFrom(input, _repeated_entityGroupList_codec);
+          case 5720: {
+            DimensionId = input.ReadUInt32();
             break;
           }
-          case 10698: {
-            if (oCKNKCCIJAI_ == null) {
-              OCKNKCCIJAI = new global::March7thHoney.Proto.DPNDJIGACFJ();
-            }
-            input.ReadMessage(OCKNKCCIJAI);
-            break;
-          }
-          case 12298: {
+          case 6434: {
             if (sceneMissionInfo_ == null) {
               SceneMissionInfo = new global::March7thHoney.Proto.MissionStatusBySceneInfo();
             }
             input.ReadMessage(SceneMissionInfo);
             break;
           }
-          case 12426: {
-            groupStateList_.AddEntriesFrom(input, _repeated_groupStateList_codec);
-            break;
-          }
-          case 13952: {
+          case 7272: {
             InteractId = input.ReadUInt64();
             break;
           }
-          case 15578: {
+          case 9170: {
+            if (fOJJGJPIMBL_ == null) {
+              FOJJGJPIMBL = new global::March7thHoney.Proto.BELNLOJAFCM();
+            }
+            input.ReadMessage(FOJJGJPIMBL);
+            break;
+          }
+          case 9202: {
+            entityGroupList_.AddEntriesFrom(input, _repeated_entityGroupList_codec);
+            break;
+          }
+          case 9962: {
+            floorSavedData_.AddEntriesFrom(input, _map_floorSavedData_codec);
+            break;
+          }
+          case 10282: {
+            groupStateList_.AddEntriesFrom(input, _repeated_groupStateList_codec);
+            break;
+          }
+          case 11304: {
+            GameStoryLineId = input.ReadUInt32();
+            break;
+          }
+          case 14218: {
             if (sceneIdentifier_ == null) {
               SceneIdentifier = new global::March7thHoney.Proto.SceneIdentifier();
             }
@@ -918,106 +918,106 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            GameModeType = input.ReadUInt32();
-            break;
-          }
-          case 26: {
-            nHOFMHMBKGK_.AddEntriesFrom(ref input, _repeated_nHOFMHMBKGK_codec);
-            break;
-          }
-          case 32: {
-            ClientPosVersion = input.ReadUInt32();
-            break;
-          }
-          case 40: {
             PlaneId = input.ReadUInt32();
             break;
           }
-          case 50: {
-            kHHOPNJJABH_.AddEntriesFrom(ref input, _map_kHHOPNJJABH_codec);
-            break;
-          }
-          case 58: {
-            customDataList_.AddEntriesFrom(ref input, _repeated_customDataList_codec);
-            break;
-          }
-          case 74: {
+          case 18: {
             entityList_.AddEntriesFrom(ref input, _repeated_entityList_codec);
             break;
           }
-          case 80: {
-            FloorId = input.ReadUInt32();
+          case 26: {
+            bIKBFGPFAAC_.AddEntriesFrom(ref input, _map_bIKBFGPFAAC_codec);
             break;
           }
-          case 90: {
-            sceneBuffInfoList_.AddEntriesFrom(ref input, _repeated_sceneBuffInfoList_codec);
+          case 34: {
+            customDataList_.AddEntriesFrom(ref input, _repeated_customDataList_codec);
             break;
           }
-          case 96: {
+          case 40: {
             EntryId = input.ReadUInt32();
             break;
           }
-          case 104: {
-            LeaderEntityId = input.ReadUInt32();
-            break;
-          }
-          case 114:
-          case 112: {
-            lightenSectionList_.AddEntriesFrom(ref input, _repeated_lightenSectionList_codec);
-            break;
-          }
-          case 120: {
+          case 48: {
             WorldId = input.ReadUInt32();
             break;
           }
-          case 4248: {
-            DimensionId = input.ReadUInt32();
+          case 56: {
+            LeaderEntityId = input.ReadUInt32();
             break;
           }
-          case 4816: {
-            GameStoryLineId = input.ReadUInt32();
+          case 64: {
+            GameModeType = input.ReadUInt32();
             break;
           }
-          case 5442: {
-            floorSavedData_.AddEntriesFrom(ref input, _map_floorSavedData_codec);
+          case 72: {
+            FloorId = input.ReadUInt32();
             break;
           }
-          case 5754:
-          case 5752: {
+          case 82: {
+            cPIKFGPCOCE_.AddEntriesFrom(ref input, _repeated_cPIKFGPCOCE_codec);
+            break;
+          }
+          case 88: {
+            ClientPosVersion = input.ReadUInt32();
+            break;
+          }
+          case 114: {
+            sceneBuffInfoList_.AddEntriesFrom(ref input, _repeated_sceneBuffInfoList_codec);
+            break;
+          }
+          case 122:
+          case 120: {
+            lightenSectionList_.AddEntriesFrom(ref input, _repeated_lightenSectionList_codec);
+            break;
+          }
+          case 2546:
+          case 2544: {
             openedChestsList_.AddEntriesFrom(ref input, _repeated_openedChestsList_codec);
             break;
           }
-          case 7888: {
+          case 5480: {
             ContentId = input.ReadUInt32();
             break;
           }
-          case 9226: {
-            entityGroupList_.AddEntriesFrom(ref input, _repeated_entityGroupList_codec);
+          case 5720: {
+            DimensionId = input.ReadUInt32();
             break;
           }
-          case 10698: {
-            if (oCKNKCCIJAI_ == null) {
-              OCKNKCCIJAI = new global::March7thHoney.Proto.DPNDJIGACFJ();
-            }
-            input.ReadMessage(OCKNKCCIJAI);
-            break;
-          }
-          case 12298: {
+          case 6434: {
             if (sceneMissionInfo_ == null) {
               SceneMissionInfo = new global::March7thHoney.Proto.MissionStatusBySceneInfo();
             }
             input.ReadMessage(SceneMissionInfo);
             break;
           }
-          case 12426: {
-            groupStateList_.AddEntriesFrom(ref input, _repeated_groupStateList_codec);
-            break;
-          }
-          case 13952: {
+          case 7272: {
             InteractId = input.ReadUInt64();
             break;
           }
-          case 15578: {
+          case 9170: {
+            if (fOJJGJPIMBL_ == null) {
+              FOJJGJPIMBL = new global::March7thHoney.Proto.BELNLOJAFCM();
+            }
+            input.ReadMessage(FOJJGJPIMBL);
+            break;
+          }
+          case 9202: {
+            entityGroupList_.AddEntriesFrom(ref input, _repeated_entityGroupList_codec);
+            break;
+          }
+          case 9962: {
+            floorSavedData_.AddEntriesFrom(ref input, _map_floorSavedData_codec);
+            break;
+          }
+          case 10282: {
+            groupStateList_.AddEntriesFrom(ref input, _repeated_groupStateList_codec);
+            break;
+          }
+          case 11304: {
+            GameStoryLineId = input.ReadUInt32();
+            break;
+          }
+          case 14218: {
             if (sceneIdentifier_ == null) {
               SceneIdentifier = new global::March7thHoney.Proto.SceneIdentifier();
             }

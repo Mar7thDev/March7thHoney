@@ -24,14 +24,13 @@ namespace March7thHoney.Proto {
     static CmdMultipleDropTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChlDbWRNdWx0aXBsZURyb3BUeXBlLnByb3RvKo4CChNDbWRNdWx0aXBsZURy",
-            "b3BUeXBlEhsKF0ZMUFBOSkdFTUZOX1BDUERIRUxQS0VNEAASIAobQ21kTXVs",
-            "dGlwbGVEcm9wSW5mb1NjTm90aWZ5ENYkEh4KGUNtZE11bHRpcGxlRHJvcElu",
-            "Zm9Ob3RpZnkQiiQSIAobQ21kR2V0TXVsdGlwbGVEcm9wSW5mb0NzUmVxENMk",
-            "EikKJENtZEdldFBsYXllclJldHVybk11bHRpRHJvcEluZm9TY1JzcBCGJBIp",
-            "CiRDbWRHZXRQbGF5ZXJSZXR1cm5NdWx0aURyb3BJbmZvQ3NSZXEQ1yQSIAob",
-            "Q21kR2V0TXVsdGlwbGVEcm9wSW5mb1NjUnNwEIIkQhaqAhNNYXJjaDd0aEhv",
-            "bmV5LlByb3RvYgZwcm90bzM="));
+            "ChlDbWRNdWx0aXBsZURyb3BUeXBlLnByb3RvKuYBChNDbWRNdWx0aXBsZURy",
+            "b3BUeXBlEhsKF0FDSU1GR0ZOUERGX05MQ0RHSVBHRkRKEAASHAoXQUNJTUZH",
+            "Rk5QREZfRkVLQk1OSFBJSEgQnCQSHAoXQUNJTUZHRk5QREZfRUtFTUdLT1BI",
+            "RlAQkyQSHAoXQUNJTUZHRk5QREZfS0JKQkRBT1BIR0cQhSQSHAoXQUNJTUZH",
+            "Rk5QREZfTlBLTUJBT0FQTEQQwSQSHAoXQUNJTUZHRk5QREZfRE9JQ05FSU9E",
+            "REgQ+yMSHAoXQUNJTUZHRk5QREZfSUVLRUhFR0JFS0YQyCRCFqoCE01hcmNo",
+            "N3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdMultipleDropType), }, null, null));
@@ -41,13 +40,13 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdMultipleDropType {
-    [pbr::OriginalName("FLPPNJGEMFN_PCPDHELPKEM")] FlppnjgemfnPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdMultipleDropInfoScNotify")] CmdMultipleDropInfoScNotify = 4694,
-    [pbr::OriginalName("CmdMultipleDropInfoNotify")] CmdMultipleDropInfoNotify = 4618,
-    [pbr::OriginalName("CmdGetMultipleDropInfoCsReq")] CmdGetMultipleDropInfoCsReq = 4691,
-    [pbr::OriginalName("CmdGetPlayerReturnMultiDropInfoScRsp")] CmdGetPlayerReturnMultiDropInfoScRsp = 4614,
-    [pbr::OriginalName("CmdGetPlayerReturnMultiDropInfoCsReq")] CmdGetPlayerReturnMultiDropInfoCsReq = 4695,
-    [pbr::OriginalName("CmdGetMultipleDropInfoScRsp")] CmdGetMultipleDropInfoScRsp = 4610,
+    [pbr::OriginalName("ACIMFGFNPDF_NLCDGIPGFDJ")] AcimfgfnpdfNlcdgipgfdj = 0,
+    [pbr::OriginalName("ACIMFGFNPDF_FEKBMNHPIHH")] AcimfgfnpdfFekbmnhpihh = 4636,
+    [pbr::OriginalName("ACIMFGFNPDF_EKEMGKOPHFP")] AcimfgfnpdfEkemgkophfp = 4627,
+    [pbr::OriginalName("ACIMFGFNPDF_KBJBDAOPHGG")] AcimfgfnpdfKbjbdaophgg = 4613,
+    [pbr::OriginalName("ACIMFGFNPDF_NPKMBAOAPLD")] AcimfgfnpdfNpkmbaoapld = 4673,
+    [pbr::OriginalName("ACIMFGFNPDF_DOICNEIODDH")] AcimfgfnpdfDoicneioddh = 4603,
+    [pbr::OriginalName("ACIMFGFNPDF_IEKEHEGBEKF")] AcimfgfnpdfIekehegbekf = 4680,
   }
 
   #endregion

@@ -24,13 +24,14 @@ namespace March7thHoney.Proto {
     static CmdBattlePassTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChdDbWRCYXR0bGVQYXNzVHlwZS5wcm90byruAQoRQ21kQmF0dGxlUGFzc1R5",
-            "cGUSGwoXRkdIQUdMTE9QR0hfUENQREhFTFBLRU0QABIcChdDbWRCYXR0bGVQ",
-            "YXNzSW5mb05vdGlmeRCTGBIZChRDbWRUYWtlQnBSZXdhcmRDc1JlcRCXGBIZ",
-            "ChRDbWRUYWtlQnBSZXdhcmRTY1JzcBDGFxIaChVDbWRUYWtlQWxsUmV3YXJk",
-            "U2NSc3AQ9xcSGgoVQ21kVGFrZUFsbFJld2FyZENzUmVxEJoYEhcKEkNtZEJ1",
-            "eUJwTGV2ZWxTY1JzcBDBFxIXChJDbWRCdXlCcExldmVsQ3NSZXEQyhdCFqoC",
-            "E01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ChdDbWRCYXR0bGVQYXNzVHlwZS5wcm90byqCAgoRQ21kQmF0dGxlUGFzc1R5",
+            "cGUSGwoXSkhISUFQQ0tITlBfTkxDREdJUEdGREoQABIcChdKSEhJQVBDS0hO",
+            "UF9LRkhBTUtDQURHQxDHFxIcChdKSEhJQVBDS0hOUF9IRkZPSEdBS0ZHShDc",
+            "FxIcChdKSEhJQVBDS0hOUF9NSUhFTUNPTkZIUBDCFxIcChdKSEhJQVBDS0hO",
+            "UF9BR0xLREpCREpJRRDTFxIcChdKSEhJQVBDS0hOUF9LS01FSkpESUhKQRCB",
+            "GBIcChdKSEhJQVBDS0hOUF9JSFBMTE1ISE1BQhCJGBIcChdKSEhJQVBDS0hO",
+            "UF9BTE5MQ05BRktOSBDFF0IWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJv",
+            "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdBattlePassType), }, null, null));
@@ -40,14 +41,14 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdBattlePassType {
-    [pbr::OriginalName("FGHAGLLOPGH_PCPDHELPKEM")] FghagllopghPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdBattlePassInfoNotify")] CmdBattlePassInfoNotify = 3091,
-    [pbr::OriginalName("CmdTakeBpRewardCsReq")] CmdTakeBpRewardCsReq = 3095,
-    [pbr::OriginalName("CmdTakeBpRewardScRsp")] CmdTakeBpRewardScRsp = 3014,
-    [pbr::OriginalName("CmdTakeAllRewardScRsp")] CmdTakeAllRewardScRsp = 3063,
-    [pbr::OriginalName("CmdTakeAllRewardCsReq")] CmdTakeAllRewardCsReq = 3098,
-    [pbr::OriginalName("CmdBuyBpLevelScRsp")] CmdBuyBpLevelScRsp = 3009,
-    [pbr::OriginalName("CmdBuyBpLevelCsReq")] CmdBuyBpLevelCsReq = 3018,
+    [pbr::OriginalName("JHHIAPCKHNP_NLCDGIPGFDJ")] JhhiapckhnpNlcdgipgfdj = 0,
+    [pbr::OriginalName("JHHIAPCKHNP_KFHAMKCADGC")] JhhiapckhnpKfhamkcadgc = 3015,
+    [pbr::OriginalName("JHHIAPCKHNP_HFFOHGAKFGJ")] JhhiapckhnpHffohgakfgj = 3036,
+    [pbr::OriginalName("JHHIAPCKHNP_MIHEMCONFHP")] JhhiapckhnpMihemconfhp = 3010,
+    [pbr::OriginalName("JHHIAPCKHNP_AGLKDJBDJIE")] JhhiapckhnpAglkdjbdjie = 3027,
+    [pbr::OriginalName("JHHIAPCKHNP_KKMEJJDIHJA")] JhhiapckhnpKkmejjdihja = 3073,
+    [pbr::OriginalName("JHHIAPCKHNP_IHPLLMHHMAB")] JhhiapckhnpIhpllmhhmab = 3081,
+    [pbr::OriginalName("JHHIAPCKHNP_ALNLCNAFKNH")] JhhiapckhnpAlnlcnafknh = 3013,
   }
 
   #endregion

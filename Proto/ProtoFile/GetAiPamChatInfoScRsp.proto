@@ -2,16 +2,14 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "MDOJCCMLKHP.proto";
+import "FAIFDBLLGKK.proto";
 
 message GetAiPamChatInfoScRsp {
-    uint32 retcode = 1;
-    string AIPBFEOFNDO = 3;
-    bool HEFLHCHDDMG = 6;
-    bool MNDAIAGPOEI = 9;
-    repeated MDOJCCMLKHP FILFNMKCCNN = 11;
-    uint32 ECIAGLJNPMM = 12;
-    bool EKBMIOCOLIC = 13;
+    repeated FAIFDBLLGKK BJLHDBPPILI = 6;
+    string ACFENKABBKK = 15;
+    bool AGANFJKBFMA = 12;
+    bool LOCNGFLCENG = 8;
+    bool OKCIPPLKGCD = 5;
+    uint32 JKIHICLOPKM = 1;
+    uint32 retcode = 4;
 }

@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum ContentPackageStatus {
     ContentPackageStatus_None = 0;
     ContentPackageStatus_Init = 1;

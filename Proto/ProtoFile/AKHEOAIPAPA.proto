@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "GLBAOKOHKCF.proto";
+import "JLPEICPFLMC.proto";
+
+message AKHEOAIPAPA {
+    JLPEICPFLMC source = 13;
+    double CPLFBOBLFMC = 4;
+    uint32 unique_id = 1;
+    GLBAOKOHKCF GOKKLNBMLCA = 5;
+    double OJMOBAEEMAP = 8;
+}

@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "PlayerSimpleInfo.proto";
 
 message FriendRecommendInfo {
-    bool apply_time = 9;
-    PlayerSimpleInfo player_info = 11;
+    PlayerSimpleInfo player_info = 1;
+    bool JINLAHLMDLN = 14;
 }

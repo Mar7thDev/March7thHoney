@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "APMHDGPDGNP.proto";
-import "BEBEOMBMDFB.proto";
+import "KIKEAJJLAMH.proto";
+import "PFLOIHLLMEE.proto";
 
 message RogueTournQueryScRsp {
-    uint32 retcode = 1;
-    BEBEOMBMDFB rogue_get_info = 7;
-    APMHDGPDGNP HHDLEADBJGN = 13;
+    KIKEAJJLAMH LFLCDNGALME = 6;
+    PFLOIHLLMEE PHGJIJELKDB = 3;
+    uint32 retcode = 4;
 }

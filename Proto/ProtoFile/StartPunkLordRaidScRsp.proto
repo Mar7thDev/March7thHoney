@@ -2,16 +2,14 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "CIKJHLMOOIK.proto";
-import "FNJJCIGJIKC.proto";
+import "GEGLJDELBHA.proto";
+import "JEIAEAEGEBJ.proto";
 
 message StartPunkLordRaidScRsp {
-    CIKJHLMOOIK FFCDPHMJJKG = 4;
+    GEGLJDELBHA scene = 5;
+    repeated uint32 FNMGMNABAJG = 2;
+    JEIAEAEGEBJ ONICJOAOEMA = 15;
     uint32 retcode = 6;
-    int64 KGJJCABAHOG = 8;
-    repeated uint32 GDBIIMNJLBA = 9;
-    bool GEALJOJCJFN = 12;
-    FNJJCIGJIKC scene = 15;
+    bool IDMPMEOCJIK = 4;
+    int64 PEAMKPJKIEL = 14;
 }

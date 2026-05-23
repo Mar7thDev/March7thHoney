@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static GetAuthkeyCsReqReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChVHZXRBdXRoa2V5Q3NSZXEucHJvdG8iTQoPR2V0QXV0aGtleUNzUmVxEhMK",
-            "C2F1dGhrZXlfdmVyGAMgASgNEhEKCXNpZ25fdHlwZRgHIAEoDRISCgphdXRo",
-            "X2FwcGlkGA8gASgJQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ChVHZXRBdXRoa2V5Q3NSZXEucHJvdG8iTQoPR2V0QXV0aGtleUNzUmVxEhIK",
+            "CmF1dGhfYXBwaWQYDiABKAkSEwoLYXV0aGtleV92ZXIYCiABKA0SEQoJc2ln",
+            "bl90eXBlGAwgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetAuthkeyCsReq), global::March7thHoney.Proto.GetAuthkeyCsReq.Parser, new[]{ "AuthkeyVer", "SignType", "AuthAppid" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetAuthkeyCsReq), global::March7thHoney.Proto.GetAuthkeyCsReq.Parser, new[]{ "AuthAppid", "AuthkeyVer", "SignType" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,9 +72,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetAuthkeyCsReq(GetAuthkeyCsReq other) : this() {
+      authAppid_ = other.authAppid_;
       authkeyVer_ = other.authkeyVer_;
       signType_ = other.signType_;
-      authAppid_ = other.authAppid_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,8 +84,20 @@ namespace March7thHoney.Proto {
       return new GetAuthkeyCsReq(this);
     }
 
+    /// <summary>Field number for the "auth_appid" field.</summary>
+    public const int AuthAppidFieldNumber = 14;
+    private string authAppid_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string AuthAppid {
+      get { return authAppid_; }
+      set {
+        authAppid_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "authkey_ver" field.</summary>
-    public const int AuthkeyVerFieldNumber = 3;
+    public const int AuthkeyVerFieldNumber = 10;
     private uint authkeyVer_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +109,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "sign_type" field.</summary>
-    public const int SignTypeFieldNumber = 7;
+    public const int SignTypeFieldNumber = 12;
     private uint signType_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -105,18 +117,6 @@ namespace March7thHoney.Proto {
       get { return signType_; }
       set {
         signType_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "auth_appid" field.</summary>
-    public const int AuthAppidFieldNumber = 15;
-    private string authAppid_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string AuthAppid {
-      get { return authAppid_; }
-      set {
-        authAppid_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -135,9 +135,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (AuthAppid != other.AuthAppid) return false;
       if (AuthkeyVer != other.AuthkeyVer) return false;
       if (SignType != other.SignType) return false;
-      if (AuthAppid != other.AuthAppid) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -145,9 +145,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (AuthAppid.Length != 0) hash ^= AuthAppid.GetHashCode();
       if (AuthkeyVer != 0) hash ^= AuthkeyVer.GetHashCode();
       if (SignType != 0) hash ^= SignType.GetHashCode();
-      if (AuthAppid.Length != 0) hash ^= AuthAppid.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -167,15 +167,15 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (AuthkeyVer != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(80);
         output.WriteUInt32(AuthkeyVer);
       }
       if (SignType != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(96);
         output.WriteUInt32(SignType);
       }
       if (AuthAppid.Length != 0) {
-        output.WriteRawTag(122);
+        output.WriteRawTag(114);
         output.WriteString(AuthAppid);
       }
       if (_unknownFields != null) {
@@ -189,15 +189,15 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (AuthkeyVer != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(80);
         output.WriteUInt32(AuthkeyVer);
       }
       if (SignType != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(96);
         output.WriteUInt32(SignType);
       }
       if (AuthAppid.Length != 0) {
-        output.WriteRawTag(122);
+        output.WriteRawTag(114);
         output.WriteString(AuthAppid);
       }
       if (_unknownFields != null) {
@@ -210,14 +210,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (AuthAppid.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(AuthAppid);
+      }
       if (AuthkeyVer != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AuthkeyVer);
       }
       if (SignType != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SignType);
-      }
-      if (AuthAppid.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(AuthAppid);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -231,14 +231,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.AuthAppid.Length != 0) {
+        AuthAppid = other.AuthAppid;
+      }
       if (other.AuthkeyVer != 0) {
         AuthkeyVer = other.AuthkeyVer;
       }
       if (other.SignType != 0) {
         SignType = other.SignType;
-      }
-      if (other.AuthAppid.Length != 0) {
-        AuthAppid = other.AuthAppid;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -259,15 +259,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
+          case 80: {
             AuthkeyVer = input.ReadUInt32();
             break;
           }
-          case 56: {
+          case 96: {
             SignType = input.ReadUInt32();
             break;
           }
-          case 122: {
+          case 114: {
             AuthAppid = input.ReadString();
             break;
           }
@@ -290,15 +290,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
+          case 80: {
             AuthkeyVer = input.ReadUInt32();
             break;
           }
-          case 56: {
+          case 96: {
             SignType = input.ReadUInt32();
             break;
           }
-          case 122: {
+          case 114: {
             AuthAppid = input.ReadString();
             break;
           }

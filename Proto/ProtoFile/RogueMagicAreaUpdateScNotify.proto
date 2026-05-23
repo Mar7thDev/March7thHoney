@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "MAGHEFEELAB.proto";
+import "IFCNLKPPPHK.proto";
 
 message RogueMagicAreaUpdateScNotify {
-    repeated MAGHEFEELAB BFHJHAKFBIG = 5;
+    repeated IFCNLKPPPHK DANNIDIPFAL = 3;
 }

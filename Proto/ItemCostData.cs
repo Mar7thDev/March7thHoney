@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChJJdGVtQ29zdERhdGEucHJvdG8aDkl0ZW1Db3N0LnByb3RvIiwKDEl0ZW1D",
-            "b3N0RGF0YRIcCglpdGVtX2xpc3QYDiADKAsyCS5JdGVtQ29zdEIWqgITTWFy",
+            "b3N0RGF0YRIcCglpdGVtX2xpc3QYCiADKAsyCS5JdGVtQ29zdEIWqgITTWFy",
             "Y2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemCostReflection.Descriptor, },
@@ -83,9 +83,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "item_list" field.</summary>
-    public const int ItemListFieldNumber = 14;
+    public const int ItemListFieldNumber = 10;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.ItemCost> _repeated_itemList_codec
-        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.ItemCost.Parser);
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.ItemCost.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.ItemCost> itemList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ItemCost>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -190,7 +190,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 114: {
+          case 82: {
             itemList_.AddEntriesFrom(input, _repeated_itemList_codec);
             break;
           }
@@ -213,7 +213,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 114: {
+          case 82: {
             itemList_.AddEntriesFrom(ref input, _repeated_itemList_codec);
             break;
           }

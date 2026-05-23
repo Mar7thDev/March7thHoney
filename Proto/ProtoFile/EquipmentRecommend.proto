@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "JEFIKHKJFCM.proto";
+import "BMMHJIFCGNO.proto";
 
 message EquipmentRecommend {
-    repeated JEFIKHKJFCM equipment_list = 2;
+    repeated BMMHJIFCGNO equipment_list = 3;
 }

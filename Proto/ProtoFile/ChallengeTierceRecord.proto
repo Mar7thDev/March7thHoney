@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message ChallengeTierceRecord {
+    uint32 record_score = 5;
+    uint32 used_cycle_count = 1;
+}

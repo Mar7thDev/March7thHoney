@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum Gender {
     GenderNone = 0;
     GenderMan = 1;

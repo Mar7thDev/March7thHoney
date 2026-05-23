@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "EDOIEMCFFCA.proto";
+import "HNKAOFDGLIE.proto";
+
+message AGEHGBKOBEF {
+    EDOIEMCFFCA LFLCDNGALME = 1472;
+    HNKAOFDGLIE CFDIKLBINHK = 874;
+}

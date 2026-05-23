@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "SceneInfo.proto";
 
 message EnterAdventureScRsp {
-    SceneInfo scene = 6;
-    uint32 retcode = 15;
+    SceneInfo scene = 8;
+    uint32 retcode = 3;
 }

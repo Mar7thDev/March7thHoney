@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message KCMJJLJCHHP {
+    int64 NACEMPJFKAH = 8;
+    bool CANDCMOCAFH = 14;
+    bool has_passed = 11;
+    uint32 NEDCJCBPEJM = 6;
+    uint32 CINEILEIEJK = 4;
+    uint32 DDOIGECMKKA = 10;
+}

@@ -2,30 +2,29 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdAiPamType {
-    JCIOGLMGOPM_FEAOLFOCPPJ = 0;
-    CmdAiPamResponseFeedbackScRsp = 9518;
-    CmdGetAiPamChatInfoScRsp = 9502;
-    CmdUpdateAiPamSettingsScRsp = 9531;
-    CmdGetAiPamNextQuestionScRsp = 9505;
-    CmdTriggerAiPamSpeakCsReq = 9503;
-    CmdTriggerAiPamSpeakScRsp = 9550;
-    CmdIPPACOOGLPK = 9506;
-    CmdGetAiPamChatHistoryScRsp = 9535;
-    CmdGetAiPamChatHistoryCsReq = 9527;
-    CmdAiPamResponseFeedbackCommentCsReq = 9545;
-    CmdUpdateAiPamSettingsCsReq = 9516;
-    CmdAiPamMotionScNotify = 9521;
-    CmdRecvAiPamChatEventScNotify = 9530;
-    CmdAIKHMIAMBIF = 9526;
-    CmdGetAiPamChatInfoCsReq = 9519;
-    CmdAiPamResponseFeedbackCsReq = 9544;
-    CmdCGPFNCNAMOP = 9549;
-    CmdAiPamSendMsgScRsp = 9507;
-    CmdIMHLIHAOCPE = 9515;
-    CmdAiPamResponseFeedbackCommentScRsp = 9536;
-    CmdGetAiPamNextQuestionCsReq = 9538;
-    CmdAiPamTeamExplainCsReq = 9513;
+    LEJBAOJGJGI_JCDCNPPCNEO = 0;
+    LEJBAOJGJGI_OIOAFEBBBEO = 9534;
+    LEJBAOJGJGI_PBIOABBHAEB = 9503;
+    LEJBAOJGJGI_GBKNIBBBFPC = 9538;
+    LEJBAOJGJGI_PFFAMBOFBBJ = 9506;
+    LEJBAOJGJGI_HCNDIBIMJKD = 9540;
+    LEJBAOJGJGI_MBBJIAEDAJE = 9512;
+    LEJBAOJGJGI_HNHAGJILKKK = 9544;
+    LEJBAOJGJGI_AGIIMECPICG = 9505;
+    LEJBAOJGJGI_KGFDHFDLCFK = 9508;
+    LEJBAOJGJGI_DLMKJGFEODH = 9523;
+    LEJBAOJGJGI_GGCFEOOGKPE = 9518;
+    LEJBAOJGJGI_PEKIMAEMLIE = 9543;
+    LEJBAOJGJGI_GAPOPLLDADD = 9521;
+    LEJBAOJGJGI_POJHIMEHMND = 9549;
+    LEJBAOJGJGI_JPCOGBHEADP = 9527;
+    LEJBAOJGJGI_EFAJNIOONGI = 9516;
+    LEJBAOJGJGI_EDODALOPJCN = 9532;
+    LEJBAOJGJGI_JPPDFDFBCBP = 9507;
+    LEJBAOJGJGI_OIJHPHDNJFD = 9541;
+    LEJBAOJGJGI_CDNBFMIEEMH = 9542;
+    LEJBAOJGJGI_KNELEAPPBNG = 9519;
+    LEJBAOJGJGI_FELMPMLLIGC = 9520;
+    LEJBAOJGJGI_KCBFHGALGPM = 9529;
 }

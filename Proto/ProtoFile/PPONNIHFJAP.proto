@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "ENGHACADBKI.proto";
+import "FFMOAGPPHGP.proto";
+import "IHBMPCIIGJD.proto";
+import "JDLIPNFGEID.proto";
+import "JGNNOJEEBLP.proto";
+import "NPPFFMBNGBP.proto";
+
+message PPONNIHFJAP {
+    repeated FFMOAGPPHGP PBNEHHOBBFC = 357;
+    repeated IHBMPCIIGJD IEDKELDFHLP = 6;
+    repeated JGNNOJEEBLP buff_list = 1090;
+    repeated NPPFFMBNGBP item_list = 818;
+    repeated FFMOAGPPHGP avatar_list = 372;
+    repeated JDLIPNFGEID FDOILGLIFIB = 591;
+    repeated ENGHACADBKI HFLOPHNBKGN = 8;
+    uint32 map_id = 4;
+    uint32 HCEGFNHMMOD = 762;
+    uint32 HADFMHCMLEL = 13;
+    uint32 MIAFMBHCMOG = 14;
+    uint32 EICEKDBENKM = 2;
+    uint32 KJNKBKLCGHJ = 10;
+    bool NBNPGEAMFJP = 1120;
+    bool IGJCGAGHDPP = 318;
+    bool MNEIFMEDFGC = 646;
+    uint32 DIPLENNGJII = 9;
+    uint32 FLLPJKHOLPA = 5;
+}

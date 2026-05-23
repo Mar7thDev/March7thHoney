@@ -2,17 +2,15 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "BuffInfo.proto";
 import "SceneEntityBuffChangeType.proto";
 
 message EntityBuffChangeInfo {
-    uint32 entity_id = 3;
-    uint32 cast_entity_id = 4;
-    SceneEntityBuffChangeType reason = 12;
-    oneof BPIHFAJCLOC {
-        BuffInfo buff_change_info = 11;
-        uint32 remove_buff_id = 14;
+    SceneEntityBuffChangeType reason = 3;
+    uint32 cast_entity_id = 10;
+    uint32 entity_id = 2;
+    oneof KKNBOACNCON {
+        BuffInfo buff_change_info = 4;
+        uint32 remove_buff_id = 7;
     }
 }

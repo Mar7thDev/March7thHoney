@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "EPKGFJDJMHM.proto";
+import "OBEBKODGODB.proto";
+
+message LEJNBBLNNDM {
+    OBEBKODGODB source = 4;
+    EPKGFJDJMHM BBEHHCHKMNL = 12;
+}

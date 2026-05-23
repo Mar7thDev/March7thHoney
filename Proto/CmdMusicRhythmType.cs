@@ -24,18 +24,17 @@ namespace March7thHoney.Proto {
     static CmdMusicRhythmTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChhDbWRNdXNpY1JoeXRobVR5cGUucHJvdG8q0wMKEkNtZE11c2ljUmh5dGht",
-            "VHlwZRIbChdORU1FQUZMRU9IS19QQ1BESEVMUEtFTRAAEhwKF0NtZE11c2lj",
-            "Umh5dGhtRGF0YVNjUnNwEKQ7EiIKHUNtZE11c2ljUmh5dGhtU3RhcnRMZXZl",
-            "bFNjUnNwEKU7EiMKHkNtZE11c2ljUmh5dGhtRmluaXNoTGV2ZWxTY1JzcBCT",
-            "OxIoCiNDbWRNdXNpY1JoeXRobVVubG9ja1NvbmdTZnhTY05vdGlmeRCrOxIj",
-            "Ch5DbWRNdXNpY1JoeXRobUZpbmlzaExldmVsQ3NSZXEQlTsSIgodQ21kTXVz",
-            "aWNSaHl0aG1TdGFydExldmVsQ3NSZXEQljsSJgohQ21kTXVzaWNSaHl0aG1V",
-            "bmxvY2tUcmFja1NjTm90aWZ5EJo7EioKJUNtZE11c2ljUmh5dGhtU2F2ZVNv",
-            "bmdDb25maWdEYXRhQ3NSZXEQqjsSKgolQ21kTXVzaWNSaHl0aG1TYXZlU29u",
-            "Z0NvbmZpZ0RhdGFTY1JzcBCwOxIcChdDbWRNdXNpY1JoeXRobURhdGFDc1Jl",
-            "cRCUOxITCg5DbWRIRENPT0ZBSE1IShCtOxITCg5DbWRETUVKSElMTUtBSBCh",
-            "O0IWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChhDbWRNdXNpY1JoeXRobVR5cGUucHJvdG8qmQMKEkNtZE11c2ljUmh5dGht",
+            "VHlwZRIbChdQSEFQQUxKTkxCRV9OTENER0lQR0ZEShAAEhwKF1BIQVBBTEpO",
+            "TEJFX1BKRktLRkZHTkpPELA7EhwKF1BIQVBBTEpOTEJFX0xKRktPTExQR0tQ",
+            "EJY7EhwKF1BIQVBBTEpOTEJFX0xISElETU5QS0dNEKc7EhwKF1BIQVBBTEpO",
+            "TEJFX0tEQk9QRlBGR05GEJo7EhwKF1BIQVBBTEpOTEJFX1BHR1BJTktKUEpB",
+            "EKw7EhwKF1BIQVBBTEpOTEJFX0lNQktDSE9NR0JQEKM7EhwKF1BIQVBBTEpO",
+            "TEJFX1BIQlBNQ01NQ0dKEJ07EhwKF1BIQVBBTEpOTEJFX0FQS0lNTk5CTElF",
+            "EK47EhwKF1BIQVBBTEpOTEJFX0dGUE9PTktOS1BEEJ47EhwKF1BIQVBBTEpO",
+            "TEJFX0JIR0FBRUJPQk9PEKU7EhwKF1BIQVBBTEpOTEJFX0hKTVBBR0pFQk9J",
+            "EKQ7EhwKF1BIQVBBTEpOTEJFX0xLRkNBTk5DSlBDEKg7QhaqAhNNYXJjaDd0",
+            "aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdMusicRhythmType), }, null, null));
@@ -45,19 +44,19 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdMusicRhythmType {
-    [pbr::OriginalName("NEMEAFLEOHK_PCPDHELPKEM")] NemeafleohkPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdMusicRhythmDataScRsp")] CmdMusicRhythmDataScRsp = 7588,
-    [pbr::OriginalName("CmdMusicRhythmStartLevelScRsp")] CmdMusicRhythmStartLevelScRsp = 7589,
-    [pbr::OriginalName("CmdMusicRhythmFinishLevelScRsp")] CmdMusicRhythmFinishLevelScRsp = 7571,
-    [pbr::OriginalName("CmdMusicRhythmUnlockSongSfxScNotify")] CmdMusicRhythmUnlockSongSfxScNotify = 7595,
-    [pbr::OriginalName("CmdMusicRhythmFinishLevelCsReq")] CmdMusicRhythmFinishLevelCsReq = 7573,
-    [pbr::OriginalName("CmdMusicRhythmStartLevelCsReq")] CmdMusicRhythmStartLevelCsReq = 7574,
-    [pbr::OriginalName("CmdMusicRhythmUnlockTrackScNotify")] CmdMusicRhythmUnlockTrackScNotify = 7578,
-    [pbr::OriginalName("CmdMusicRhythmSaveSongConfigDataCsReq")] CmdMusicRhythmSaveSongConfigDataCsReq = 7594,
-    [pbr::OriginalName("CmdMusicRhythmSaveSongConfigDataScRsp")] CmdMusicRhythmSaveSongConfigDataScRsp = 7600,
-    [pbr::OriginalName("CmdMusicRhythmDataCsReq")] CmdMusicRhythmDataCsReq = 7572,
-    [pbr::OriginalName("CmdHDCOOFAHMHJ")] CmdHdcoofahmhj = 7597,
-    [pbr::OriginalName("CmdDMEJHILMKAH")] CmdDmejhilmkah = 7585,
+    [pbr::OriginalName("PHAPALJNLBE_NLCDGIPGFDJ")] PhapaljnlbeNlcdgipgfdj = 0,
+    [pbr::OriginalName("PHAPALJNLBE_PJFKKFFGNJO")] PhapaljnlbePjfkkffgnjo = 7600,
+    [pbr::OriginalName("PHAPALJNLBE_LJFKOLLPGKP")] PhapaljnlbeLjfkollpgkp = 7574,
+    [pbr::OriginalName("PHAPALJNLBE_LHHIDMNPKGM")] PhapaljnlbeLhhidmnpkgm = 7591,
+    [pbr::OriginalName("PHAPALJNLBE_KDBOPFPFGNF")] PhapaljnlbeKdbopfpfgnf = 7578,
+    [pbr::OriginalName("PHAPALJNLBE_PGGPINKJPJA")] PhapaljnlbePggpinkjpja = 7596,
+    [pbr::OriginalName("PHAPALJNLBE_IMBKCHOMGBP")] PhapaljnlbeImbkchomgbp = 7587,
+    [pbr::OriginalName("PHAPALJNLBE_PHBPMCMMCGJ")] PhapaljnlbePhbpmcmmcgj = 7581,
+    [pbr::OriginalName("PHAPALJNLBE_APKIMNNBLIE")] PhapaljnlbeApkimnnblie = 7598,
+    [pbr::OriginalName("PHAPALJNLBE_GFPOONKNKPD")] PhapaljnlbeGfpoonknkpd = 7582,
+    [pbr::OriginalName("PHAPALJNLBE_BHGAAEBOBOO")] PhapaljnlbeBhgaaeboboo = 7589,
+    [pbr::OriginalName("PHAPALJNLBE_HJMPAGJEBOI")] PhapaljnlbeHjmpagjeboi = 7588,
+    [pbr::OriginalName("PHAPALJNLBE_LKFCANNCJPC")] PhapaljnlbeLkfcanncjpc = 7592,
   }
 
   #endregion

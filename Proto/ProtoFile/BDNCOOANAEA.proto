@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "GridFightEquipCraftSource.proto";
+
+message BDNCOOANAEA {
+    repeated uint32 EHDAKFEHPMF = 11;
+    GridFightEquipCraftSource source = 2;
+    uint32 JCNLCNFHHDG = 13;
+    uint32 NNFECNICMOD = 4;
+}

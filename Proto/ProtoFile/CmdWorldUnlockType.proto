@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdWorldUnlockType {
-    JEMENFKDOJM_PCPDHELPKEM = 0;
-    CmdWorldUnlockScRsp = 7627;
-    CmdWorldUnlockCsReq = 7626;
+    LLHKMPCLGON_NLCDGIPGFDJ = 0;
+    LLHKMPCLGON_GCPCAGGGNOH = 7626;
+    LLHKMPCLGON_KJLNDFCMEOH = 7627;
 }

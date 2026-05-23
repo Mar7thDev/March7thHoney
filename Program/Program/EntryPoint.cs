@@ -6,7 +6,7 @@ using March7thHoney.Database;
 using March7thHoney.Database.Avatar;
 using March7thHoney.Enums;
 using March7thHoney.GameServer.Command;
-using March7thHoney.GameServer.Game.Challenge.Definitions;
+// TODO 4.3: Challenge.Definitions 暂停
 using March7thHoney.GameServer.Plugin;
 using March7thHoney.GameServer.Server;
 using March7thHoney.GameServer.Server.Packet;
@@ -192,8 +192,8 @@ public class EntryPoint
         if (ConfigManager.Config.ServerOption.ServerConfig.RunGateway)
         {
             var handler =
-                new March7thHoneyListener.ConnectionCreatedHandler((conversation, remote) =>
-                    new Connection(conversation, remote));
+                new March7thHoneyListener.ConnectionCreatedHandler((client, remote, convId) =>
+                    new Connection(client, remote, convId));
             March7thHoneyListener.CreateConnection = handler;
             March7thHoneyListener.StartListener();
         }
@@ -301,17 +301,8 @@ public class EntryPoint
             foreach (var con in March7thHoneyListener.Connections.Values)
                 if ((con as Connection)!.Player != null && (con as Connection)!.Player!.Uid == uid)
                 {
-                    if ((con as Connection)!.Player!.ChallengeManager?.ChallengeInstance is
-                             BaseLegacyChallengeInstance inst)
-                    {
-                        status = PlayerStatusEnum.Challenge;
-
-                        if (inst.Config.StoryExcel != null)
-                            status = PlayerStatusEnum.ChallengeStory;
-                        else if (inst.Config.BossExcel != null)
-                            status = PlayerStatusEnum.ChallengeBoss;
-                    }
-                    else if ((con as Connection)!.Player!.RaidManager?.RaidData.CurRaidId != 0)
+                    // TODO 4.3: ChallengeManager 暂停
+                    if ((con as Connection)!.Player!.RaidManager?.RaidData.CurRaidId != 0)
                     {
                         status = PlayerStatusEnum.Raid;
                     }

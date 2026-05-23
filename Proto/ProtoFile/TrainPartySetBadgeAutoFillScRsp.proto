@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message TrainPartySetBadgeAutoFillScRsp {
-    bool AELMBPLDFGJ = 5;
-    uint32 retcode = 14;
+    bool PELJACANAFH = 5;
+    uint32 retcode = 1;
 }

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "AvatarType.proto";
+
+message HDHLHNEACHP {
+    bool ENEIHGDAPDA = 14;
+    AvatarType avatar_type = 4;
+    uint32 id = 2;
+    uint32 level = 7;
+}

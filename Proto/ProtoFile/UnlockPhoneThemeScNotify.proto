@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message UnlockPhoneThemeScNotify {
-    uint32 theme_id = 8;
+    uint32 theme_id = 14;
 }

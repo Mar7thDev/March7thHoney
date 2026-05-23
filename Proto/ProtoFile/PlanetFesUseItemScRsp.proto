@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "HLLCDBLCIPK.proto";
+import "GNMCIEPEBPK.proto";
 
 message PlanetFesUseItemScRsp {
-    HLLCDBLCIPK reward = 3;
-    uint32 retcode = 12;
+    GNMCIEPEBPK reward = 6;
+    uint32 retcode = 5;
 }

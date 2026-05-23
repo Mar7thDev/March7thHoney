@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message OJMPKMNINGK {
+    map<uint32, uint32> AAABHNMAENN = 5;
+    bool AALCCPJCBME = 3;
+    uint32 level = 2;
+    uint32 dice_slot_id = 4;
+    uint32 CFKKKPNKHEL = 1;
+}

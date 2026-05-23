@@ -2,23 +2,21 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdMultiplayerType {
-    MCMECKIBADN_PCPDHELPKEM = 0;
-    CmdMKLLLKLEEAP = 1063;
-    CmdGetMatchPlayDataCsReq = 1026;
-    CmdGetFriendRankingInfoRsp = 1037;
-    CmdGetFriendRankingInfoCsReq = 1074;
-    CmdFightGameStateCsReq = 1091;
-    CmdFCIANJKGMCH = 1098;
-    CmdPlayerGetFightGateCsReq = 1094;
-    CmdFightGiveUpCsReq = 1014;
-    CmdGetMatchPlayDataRsp = 1039;
-    CmdLOKAJGFMKAK = 1095;
-    CmdFightGameStateScRsp = 1010;
-    CmdSelfRankChangeNtf = 1004;
-    CmdMatchPlayDataChangeNtf = 1001;
-    CmdFightGameStartScNotify = 1009;
-    CmdDGEEILCMHHE = 1018;
+    EDCDMKFIOPH_NLCDGIPGFDJ = 0;
+    EDCDMKFIOPH_BNAPHIHJLBL = 1010;
+    EDCDMKFIOPH_JFACCEAOBDM = 1080;
+    EDCDMKFIOPH_DJGHCGCPHCD = 1036;
+    EDCDMKFIOPH_MMJDGCIPGKF = 1054;
+    EDCDMKFIOPH_DLCLAPFNCJG = 1012;
+    EDCDMKFIOPH_OMIAAIJAFKJ = 1083;
+    EDCDMKFIOPH_EBEILHDCJLP = 1073;
+    EDCDMKFIOPH_EOMMLHEPHAP = 1003;
+    EDCDMKFIOPH_IPNNIOLHMGC = 1015;
+    EDCDMKFIOPH_OAAFNIKLKJO = 1087;
+    EDCDMKFIOPH_MGJGKJAODIO = 1027;
+    EDCDMKFIOPH_KPJFFMGAIBC = 1013;
+    EDCDMKFIOPH_CHFKDJGAIEL = 1029;
+    EDCDMKFIOPH_IABBOIKMDLB = 1081;
+    EDCDMKFIOPH_DOAJCCEGGMO = 1009;
 }

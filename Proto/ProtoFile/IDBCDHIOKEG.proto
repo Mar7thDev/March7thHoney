@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "JIIEHEBIBMO.proto";
+
+message IDBCDHIOKEG {
+    JIIEHEBIBMO status = 8;
+    uint32 DNLIGEOFPEL = 9;
+    uint32 JLCAIKEFAPN = 10;
+}

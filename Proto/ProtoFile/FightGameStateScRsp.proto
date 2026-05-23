@@ -2,15 +2,13 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "ADHNJADIJAC.proto";
-import "IFCBCBLFALM.proto";
-import "JLGNKMBMPKL.proto";
+import "BFBHKJLJJBJ.proto";
+import "LMLNNHKJEIP.proto";
+import "OFFMCODMKDL.proto";
 
 message FightGameStateScRsp {
-    JLGNKMBMPKL POFOCMIHJIA = 9;
-    repeated ADHNJADIJAC BIEBFHECEPM = 11;
-    IFCBCBLFALM OPOGEMADLEI = 12;
-    uint32 retcode = 15;
+    repeated LMLNNHKJEIP DFLEOIGPLNM = 12;
+    OFFMCODMKDL EMIJCKENBKJ = 15;
+    BFBHKJLJJBJ KAEDKFOMADJ = 4;
+    uint32 retcode = 9;
 }

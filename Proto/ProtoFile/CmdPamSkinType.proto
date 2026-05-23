@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdPamSkinType {
-    KCDBONKPLPC_PCPDHELPKEM = 0;
-    CmdSelectPamSkinCsReq = 8122;
-    CmdGetPamSkinDataScRsp = 8140;
-    CmdSelectPamSkinScRsp = 8130;
-    CmdGetPamSkinDataCsReq = 8121;
-    CmdUnlockPamSkinScNotify = 8135;
+    LIKMDKALNNI_NLCDGIPGFDJ = 0;
+    LIKMDKALNNI_JBGKHBDHFDD = 8126;
+    LIKMDKALNNI_NJMBOIMIKOD = 8136;
+    LIKMDKALNNI_ACDGHHDMCAL = 8140;
+    LIKMDKALNNI_BEGEEPLAAPL = 8122;
+    LIKMDKALNNI_ADPIFEFKCAD = 8138;
 }

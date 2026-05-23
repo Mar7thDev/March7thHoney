@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch1HZXROcGNNZXNzYWdlR3JvdXBTY1JzcC5wcm90bxoSTWVzc2FnZUdyb3Vw",
-            "LnByb3RvIlUKF0dldE5wY01lc3NhZ2VHcm91cFNjUnNwEg8KB3JldGNvZGUY",
-            "ASABKA0SKQoSbWVzc2FnZV9ncm91cF9saXN0GAYgAygLMg0uTWVzc2FnZUdy",
-            "b3VwQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "LnByb3RvIlUKF0dldE5wY01lc3NhZ2VHcm91cFNjUnNwEikKEm1lc3NhZ2Vf",
+            "Z3JvdXBfbGlzdBgBIAMoCzINLk1lc3NhZ2VHcm91cBIPCgdyZXRjb2RlGA8g",
+            "ASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MessageGroupReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetNpcMessageGroupScRsp), global::March7thHoney.Proto.GetNpcMessageGroupScRsp.Parser, new[]{ "Retcode", "MessageGroupList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetNpcMessageGroupScRsp), global::March7thHoney.Proto.GetNpcMessageGroupScRsp.Parser, new[]{ "MessageGroupList", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetNpcMessageGroupScRsp(GetNpcMessageGroupScRsp other) : this() {
-      retcode_ = other.retcode_;
       messageGroupList_ = other.messageGroupList_.Clone();
+      retcode_ = other.retcode_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,8 +84,19 @@ namespace March7thHoney.Proto {
       return new GetNpcMessageGroupScRsp(this);
     }
 
+    /// <summary>Field number for the "message_group_list" field.</summary>
+    public const int MessageGroupListFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MessageGroup> _repeated_messageGroupList_codec
+        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.MessageGroup.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MessageGroup> messageGroupList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MessageGroup>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.MessageGroup> MessageGroupList {
+      get { return messageGroupList_; }
+    }
+
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 1;
+    public const int RetcodeFieldNumber = 15;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -94,17 +105,6 @@ namespace March7thHoney.Proto {
       set {
         retcode_ = value;
       }
-    }
-
-    /// <summary>Field number for the "message_group_list" field.</summary>
-    public const int MessageGroupListFieldNumber = 6;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MessageGroup> _repeated_messageGroupList_codec
-        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.MessageGroup.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MessageGroup> messageGroupList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MessageGroup>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.MessageGroup> MessageGroupList {
-      get { return messageGroupList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Retcode != other.Retcode) return false;
       if(!messageGroupList_.Equals(other.messageGroupList_)) return false;
+      if (Retcode != other.Retcode) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       hash ^= messageGroupList_.GetHashCode();
+      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -151,11 +151,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      messageGroupList_.WriteTo(output, _repeated_messageGroupList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(120);
         output.WriteUInt32(Retcode);
       }
-      messageGroupList_.WriteTo(output, _repeated_messageGroupList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -166,11 +166,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      messageGroupList_.WriteTo(ref output, _repeated_messageGroupList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(120);
         output.WriteUInt32(Retcode);
       }
-      messageGroupList_.WriteTo(ref output, _repeated_messageGroupList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -181,10 +181,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      size += messageGroupList_.CalculateSize(_repeated_messageGroupList_codec);
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
-      size += messageGroupList_.CalculateSize(_repeated_messageGroupList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -197,10 +197,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      messageGroupList_.Add(other.messageGroupList_);
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
-      messageGroupList_.Add(other.messageGroupList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -220,12 +220,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            Retcode = input.ReadUInt32();
+          case 10: {
+            messageGroupList_.AddEntriesFrom(input, _repeated_messageGroupList_codec);
             break;
           }
-          case 50: {
-            messageGroupList_.AddEntriesFrom(input, _repeated_messageGroupList_codec);
+          case 120: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -247,12 +247,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            Retcode = input.ReadUInt32();
+          case 10: {
+            messageGroupList_.AddEntriesFrom(ref input, _repeated_messageGroupList_codec);
             break;
           }
-          case 50: {
-            messageGroupList_.AddEntriesFrom(ref input, _repeated_messageGroupList_codec);
+          case 120: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }

@@ -2,18 +2,16 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdMarbleType {
-    JGIOJDGDAOD_PCPDHELPKEM = 0;
-    CmdMarbleGetDataScRsp = 8290;
-    CmdMarblePvpDataUpdateScNotify = 8287;
-    CmdMarbleGetDataCsReq = 8271;
-    CmdMarbleUpdateShownSealCsReq = 8277;
-    CmdMarbleShopBuyScRsp = 8278;
-    CmdMarbleUnlockSealScNotify = 8284;
-    CmdMarbleUpdateShownSealScRsp = 8289;
-    CmdPCPJKOHFECE = 8280;
-    CmdIFJDJKMMABL = 8272;
-    CmdMarbleShopBuyCsReq = 8285;
+    NIEBPPAPJOF_NLCDGIPGFDJ = 0;
+    NIEBPPAPJOF_DNPLCONGKND = 8281;
+    NIEBPPAPJOF_DDIOBKAADAL = 8282;
+    NIEBPPAPJOF_JGNPOCAFKON = 8276;
+    NIEBPPAPJOF_DLBEGMGIEPE = 8289;
+    NIEBPPAPJOF_CCJMIFLJFKC = 8274;
+    NIEBPPAPJOF_AGDKICBCICD = 8286;
+    NIEBPPAPJOF_DLJNJFOMAEG = 8288;
+    NIEBPPAPJOF_JHCDCIKNEEM = 8290;
+    NIEBPPAPJOF_DMECBJNLIJJ = 8284;
+    NIEBPPAPJOF_KHNPGEPLCLD = 8272;
 }

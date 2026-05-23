@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "OLPDNLJLFDL.proto";
+import "OOAJJMEGIFO.proto";
 
 message EnterSummonActivityStageCsReq {
-    uint32 INOMFFAIEOA = 1;
-    OLPDNLJLFDL ABJFJBECCDJ = 3;
-    uint32 group_id = 8;
-    repeated OLPDNLJLFDL avatar_list = 11;
+    OOAJJMEGIFO NLJCJIGLGHE = 2;
+    repeated OOAJJMEGIFO avatar_list = 7;
+    uint32 group_id = 3;
+    uint32 DBKHHCGGKNN = 9;
 }

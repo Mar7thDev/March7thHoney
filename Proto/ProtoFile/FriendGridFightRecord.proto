@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message FriendGridFightRecord {
-    uint32 division_id = 8;
+    uint32 division_id = 7;
 }

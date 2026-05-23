@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message MarkChatEmojiCsReq {
-    uint32 extra_id = 12;
-    bool is_remove_id = 14;
+    bool is_remove_id = 10;
+    uint32 extra_id = 5;
 }

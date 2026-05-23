@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "AABJNONNLML.proto";
+import "EDHOBLLOBNP.proto";
+import "HDLMAPACKNH.proto";
+import "LECPPIEIENH.proto";
+import "NPNAEPOKPNE.proto";
+import "PGEDFOBAEBC.proto";
+import "PGIEBMKMECE.proto";
+
+message ChenLingFesBusinessDayEndCsReq {
+    repeated LECPPIEIENH BAOPBDDEBKP = 5;
+    repeated PGEDFOBAEBC MNLCAOLGEMM = 10;
+    repeated NPNAEPOKPNE GOKMDCOJPHC = 1;
+    repeated PGIEBMKMECE MBFLDKEDBHN = 8;
+    repeated AABJNONNLML FBNBEMECJIJ = 2;
+    repeated EDHOBLLOBNP HDNGJJILDCE = 14;
+    repeated HDLMAPACKNH PJGODPMGMEO = 3;
+    uint32 COJGECEMCFN = 12;
+    uint32 DBHHIKAFMPP = 1828;
+    double FENKLBPKOAL = 15;
+    uint32 EJEOGKPEIBF = 9;
+    uint32 LFKDANGNJIM = 11;
+    uint32 CEHJOHCGOKE = 1240;
+    uint32 BMPABCGHPFG = 363;
+    uint32 DBODBBOMJAD = 7;
+    uint32 ELEKEHIMBDO = 4;
+    uint32 HPHHKJHGMPJ = 6;
+    uint32 OCLLAPEHDDH = 13;
+}

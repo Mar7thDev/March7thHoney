@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdStarFightType {
-    JHPDEBBIDMN_PCPDHELPKEM = 0;
-    CmdGetStarFightDataScRsp = 7170;
-    CmdStartStarFightLevelScRsp = 7167;
-    CmdStarFightDataChangeNotify = 7165;
-    CmdGetStarFightDataCsReq = 7169;
-    CmdStartStarFightLevelCsReq = 7161;
+    KLOMGBFFJII_NLCDGIPGFDJ = 0;
+    KLOMGBFFJII_PLEIMCMLAHB = 7169;
+    KLOMGBFFJII_FCIBBMDNOGM = 7168;
+    KLOMGBFFJII_FONHJMCBCBK = 7164;
+    KLOMGBFFJII_MEECLAKOPJD = 7162;
+    KLOMGBFFJII_GBNHCNHFGJH = 7170;
 }

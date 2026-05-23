@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum ReloginType {
     NO_KICK = 0;
     FORCE_KICK = 1;

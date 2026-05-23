@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message DEFFFLGJAEM {
+    uint32 DOOACEHOPEE = 10;
+    bool is_meet = 15;
+}

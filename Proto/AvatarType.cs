@@ -24,13 +24,14 @@ namespace March7thHoney.Proto {
     static AvatarTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChBBdmF0YXJUeXBlLnByb3RvKvYBCgpBdmF0YXJUeXBlEhQKEEFWQVRBUl9U",
+            "ChBBdmF0YXJUeXBlLnByb3RvKpICCgpBdmF0YXJUeXBlEhQKEEFWQVRBUl9U",
             "WVBFX05PTkUQABIVChFBVkFUQVJfVFJJQUxfVFlQRRABEhUKEUFWQVRBUl9M",
             "SU1JVF9UWVBFEAISFgoSQVZBVEFSX0ZPUk1BTF9UWVBFEAMSFgoSQVZBVEFS",
             "X0FTU0lTVF9UWVBFEAQSHQoZQVZBVEFSX0FFVEhFUl9ESVZJREVfVFlQRRAF",
             "EiEKHUFWQVRBUl9VUEdSQURFX0FWQUlMQUJMRV9UWVBFEAYSGgoWQVZBVEFS",
-            "X0dSSURfRklHSFRfVFlQRRAHEhYKEkFWQVRBUl9HTEpETkRNSUdJUBAIQhaq",
-            "AhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "X0dSSURfRklHSFRfVFlQRRAHEhYKEkFWQVRBUl9HTEpETkRNSUdJUBAIEhoK",
+            "FkF2YXRhclR5cGVfR1BNTktFT0FEUEkQCUIWqgITTWFyY2g3dGhIb25leS5Q",
+            "cm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.AvatarType), }, null, null));
@@ -49,6 +50,7 @@ namespace March7thHoney.Proto {
     [pbr::OriginalName("AVATAR_UPGRADE_AVAILABLE_TYPE")] AvatarUpgradeAvailableType = 6,
     [pbr::OriginalName("AVATAR_GRID_FIGHT_TYPE")] AvatarGridFightType = 7,
     [pbr::OriginalName("AVATAR_GLJDNDMIGIP")] AvatarGljdndmigip = 8,
+    [pbr::OriginalName("AvatarType_GPMNKEOADPI")] Gpmnkeoadpi = 9,
   }
 
   #endregion

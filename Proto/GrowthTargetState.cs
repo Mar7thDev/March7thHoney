@@ -24,12 +24,13 @@ namespace March7thHoney.Proto {
     static GrowthTargetStateReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChdHcm93dGhUYXJnZXRTdGF0ZS5wcm90byrBAQoRR3Jvd3RoVGFyZ2V0U3Rh",
-            "dGUSGwoXSERKS0dNTEFGTlBfQUFCSkZJS0JISksQABIbChdIREpLR01MQUZO",
-            "UF9ORE5LREZIRUhCQxABEhsKF0hESktHTUxBRk5QX0lQQkZBQUNJR0hOEAIS",
-            "GwoXSERKS0dNTEFGTlBfT09OSktDREdDS04QAxIbChdIREpLR01MQUZOUF9J",
-            "RUFKRUZBTEZMRxAEEhsKF0hESktHTUxBRk5QX05FR0dKT0dITUFLEAVCFqoC",
-            "E01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ChdHcm93dGhUYXJnZXRTdGF0ZS5wcm90byrlAQoRR3Jvd3RoVGFyZ2V0U3Rh",
+            "dGUSIQodR3Jvd3RoVGFyZ2V0U3RhdGVfTU1CREdQTUNKS0gQABIhCh1Hcm93",
+            "dGhUYXJnZXRTdGF0ZV9QREhQS1BPQ09ITRABEiEKHUdyb3d0aFRhcmdldFN0",
+            "YXRlX0NNQk1ETUJIRkVDEAISIQodR3Jvd3RoVGFyZ2V0U3RhdGVfREFMTk9J",
+            "REdCR0kQAxIhCh1Hcm93dGhUYXJnZXRTdGF0ZV9KRUFPQ0xPT0FNShAEEiEK",
+            "HUdyb3d0aFRhcmdldFN0YXRlX0ZDS0pMRUdESkhKEAVCFqoCE01hcmNoN3Ro",
+            "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.GrowthTargetState), }, null, null));
@@ -39,12 +40,12 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum GrowthTargetState {
-    [pbr::OriginalName("HDJKGMLAFNP_AABJFIKBHJK")] HdjkgmlafnpAabjfikbhjk = 0,
-    [pbr::OriginalName("HDJKGMLAFNP_NDNKDFHEHBC")] HdjkgmlafnpNdnkdfhehbc = 1,
-    [pbr::OriginalName("HDJKGMLAFNP_IPBFAACIGHN")] HdjkgmlafnpIpbfaacighn = 2,
-    [pbr::OriginalName("HDJKGMLAFNP_OONJKCDGCKN")] HdjkgmlafnpOonjkcdgckn = 3,
-    [pbr::OriginalName("HDJKGMLAFNP_IEAJEFALFLG")] HdjkgmlafnpIeajefalflg = 4,
-    [pbr::OriginalName("HDJKGMLAFNP_NEGGJOGHMAK")] HdjkgmlafnpNeggjoghmak = 5,
+    [pbr::OriginalName("GrowthTargetState_MMBDGPMCJKH")] Mmbdgpmcjkh = 0,
+    [pbr::OriginalName("GrowthTargetState_PDHPKPOCOHM")] Pdhpkpocohm = 1,
+    [pbr::OriginalName("GrowthTargetState_CMBMDMBHFEC")] Cmbmdmbhfec = 2,
+    [pbr::OriginalName("GrowthTargetState_DALNOIDGBGI")] Dalnoidgbgi = 3,
+    [pbr::OriginalName("GrowthTargetState_JEAOCLOOAMJ")] Jeaoclooamj = 4,
+    [pbr::OriginalName("GrowthTargetState_FCKJLEGDJHJ")] Fckjlegdjhj = 5,
   }
 
   #endregion

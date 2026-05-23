@@ -25,9 +25,9 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch1GaWdodE1hcmJsZUhwQ2hhbmdlVHlwZS5wcm90bypwChdGaWdodE1hcmJs",
-            "ZUhwQ2hhbmdlVHlwZRIbChdBR0hMSEFGSUFFSl9PUFBFT0VLTERDShAAEhsK",
-            "F0FHSExIQUZJQUVKX0NCSEdPTUhOTE1JEAESGwoXQUdITEhBRklBRUpfRE5P",
-            "T1BBTURBQ0MQAkIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ZUhwQ2hhbmdlVHlwZRIbChdMTUdFQ0dEQVBFTl9OTFBPR0hDSUVHThAAEhsK",
+            "F0xNR0VDR0RBUEVOX0JOT0hKTk1FT0JJEAESGwoXTE1HRUNHREFQRU5fQUxH",
+            "TEdJR0tET08QAkIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.FightMarbleHpChangeType), }, null, null));
@@ -37,9 +37,9 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum FightMarbleHpChangeType {
-    [pbr::OriginalName("AGHLHAFIAEJ_OPPEOEKLDCJ")] AghlhafiaejOppeoekldcj = 0,
-    [pbr::OriginalName("AGHLHAFIAEJ_CBHGOMHNLMI")] AghlhafiaejCbhgomhnlmi = 1,
-    [pbr::OriginalName("AGHLHAFIAEJ_DNOOPAMDACC")] AghlhafiaejDnoopamdacc = 2,
+    [pbr::OriginalName("LMGECGDAPEN_NLPOGHCIEGN")] LmgecgdapenNlpoghciegn = 0,
+    [pbr::OriginalName("LMGECGDAPEN_BNOHJNMEOBI")] LmgecgdapenBnohjnmeobi = 1,
+    [pbr::OriginalName("LMGECGDAPEN_ALGLGIGKDOO")] LmgecgdapenAlglgigkdoo = 2,
   }
 
   #endregion

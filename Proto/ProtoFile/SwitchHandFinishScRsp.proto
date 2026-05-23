@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "GODHDEIPDJL.proto";
+import "ENHOPAHGCMA.proto";
 
 message SwitchHandFinishScRsp {
-    GODHDEIPDJL OMHAENBIKCN = 9;
-    uint32 retcode = 10;
+    ENHOPAHGCMA BDEDDAHODII = 8;
+    uint32 retcode = 12;
 }

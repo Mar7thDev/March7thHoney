@@ -24,11 +24,11 @@ namespace March7thHoney.Proto {
     static CmdArchiveTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChRDbWRBcmNoaXZlVHlwZS5wcm90byqgAQoOQ21kQXJjaGl2ZVR5cGUSGwoX",
-            "Q0JMT0RFRUhGSkZfUENQREhFTFBLRU0QABIbChZDbWRHZXRBcmNoaXZlRGF0",
-            "YVNjUnNwEIYSEhMKDkNtZEdISUxJQ0hPRExOENsSEiIKHUNtZEdldFVwZGF0",
-            "ZWRBcmNoaXZlRGF0YUNzUmVxENoSEhsKFkNtZEdldEFyY2hpdmVEYXRhQ3NS",
-            "ZXEQ1xJCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ChRDbWRBcmNoaXZlVHlwZS5wcm90byqlAQoOQ21kQXJjaGl2ZVR5cGUSGwoX",
+            "TUZKREdNR0tNREpfTkxDREdJUEdGREoQABIcChdNRkpER01HS01ESl9JSEtJ",
+            "T09NRE1ORBDFEhIcChdNRkpER01HS01ESl9QRVBJQ0FQQ0RLRhCXEhIcChdN",
+            "RkpER01HS01ESl9ITkpLR0lCRk1JUBD/ERIcChdNRkpER01HS01ESl9CTUVC",
+            "SUFKRkFEQhDMEkIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdArchiveType), }, null, null));
@@ -38,11 +38,11 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdArchiveType {
-    [pbr::OriginalName("CBLODEEHFJF_PCPDHELPKEM")] CblodeehfjfPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdGetArchiveDataScRsp")] CmdGetArchiveDataScRsp = 2310,
-    [pbr::OriginalName("CmdGHILICHODLN")] CmdGhilichodln = 2395,
-    [pbr::OriginalName("CmdGetUpdatedArchiveDataCsReq")] CmdGetUpdatedArchiveDataCsReq = 2394,
-    [pbr::OriginalName("CmdGetArchiveDataCsReq")] CmdGetArchiveDataCsReq = 2391,
+    [pbr::OriginalName("MFJDGMGKMDJ_NLCDGIPGFDJ")] MfjdgmgkmdjNlcdgipgfdj = 0,
+    [pbr::OriginalName("MFJDGMGKMDJ_IHKIOOMDMND")] MfjdgmgkmdjIhkioomdmnd = 2373,
+    [pbr::OriginalName("MFJDGMGKMDJ_PEPICAPCDKF")] MfjdgmgkmdjPepicapcdkf = 2327,
+    [pbr::OriginalName("MFJDGMGKMDJ_HNJKGIBFMIP")] MfjdgmgkmdjHnjkgibfmip = 2303,
+    [pbr::OriginalName("MFJDGMGKMDJ_BMEBIAJFADB")] MfjdgmgkmdjBmebiajfadb = 2380,
   }
 
   #endregion

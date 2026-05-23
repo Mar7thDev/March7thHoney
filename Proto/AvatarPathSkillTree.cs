@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChlBdmF0YXJQYXRoU2tpbGxUcmVlLnByb3RvIjYKE0F2YXRhclBhdGhTa2ls",
-            "bFRyZWUSEAoIcG9pbnRfaWQYBiABKA0SDQoFbGV2ZWwYByABKA1CFqoCE01h",
+            "bFRyZWUSDQoFbGV2ZWwYAyABKA0SEAoIcG9pbnRfaWQYBSABKA1CFqoCE01h",
             "cmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AvatarPathSkillTree), global::March7thHoney.Proto.AvatarPathSkillTree.Parser, new[]{ "PointId", "Level" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AvatarPathSkillTree), global::March7thHoney.Proto.AvatarPathSkillTree.Parser, new[]{ "Level", "PointId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public AvatarPathSkillTree(AvatarPathSkillTree other) : this() {
-      pointId_ = other.pointId_;
       level_ = other.level_;
+      pointId_ = other.pointId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,20 +83,8 @@ namespace March7thHoney.Proto {
       return new AvatarPathSkillTree(this);
     }
 
-    /// <summary>Field number for the "point_id" field.</summary>
-    public const int PointIdFieldNumber = 6;
-    private uint pointId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PointId {
-      get { return pointId_; }
-      set {
-        pointId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "level" field.</summary>
-    public const int LevelFieldNumber = 7;
+    public const int LevelFieldNumber = 3;
     private uint level_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -104,6 +92,18 @@ namespace March7thHoney.Proto {
       get { return level_; }
       set {
         level_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "point_id" field.</summary>
+    public const int PointIdFieldNumber = 5;
+    private uint pointId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint PointId {
+      get { return pointId_; }
+      set {
+        pointId_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (PointId != other.PointId) return false;
       if (Level != other.Level) return false;
+      if (PointId != other.PointId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (PointId != 0) hash ^= PointId.GetHashCode();
       if (Level != 0) hash ^= Level.GetHashCode();
+      if (PointId != 0) hash ^= PointId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (PointId != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(PointId);
-      }
       if (Level != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(24);
         output.WriteUInt32(Level);
+      }
+      if (PointId != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(PointId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (PointId != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(PointId);
-      }
       if (Level != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(24);
         output.WriteUInt32(Level);
+      }
+      if (PointId != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(PointId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (PointId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PointId);
-      }
       if (Level != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
+      }
+      if (PointId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PointId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.PointId != 0) {
-        PointId = other.PointId;
-      }
       if (other.Level != 0) {
         Level = other.Level;
+      }
+      if (other.PointId != 0) {
+        PointId = other.PointId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 48: {
-            PointId = input.ReadUInt32();
+          case 24: {
+            Level = input.ReadUInt32();
             break;
           }
-          case 56: {
-            Level = input.ReadUInt32();
+          case 40: {
+            PointId = input.ReadUInt32();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 48: {
-            PointId = input.ReadUInt32();
+          case 24: {
+            Level = input.ReadUInt32();
             break;
           }
-          case 56: {
-            Level = input.ReadUInt32();
+          case 40: {
+            PointId = input.ReadUInt32();
             break;
           }
         }

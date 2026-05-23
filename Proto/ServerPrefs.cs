@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static ServerPrefsReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFTZXJ2ZXJQcmVmcy5wcm90byI0CgtTZXJ2ZXJQcmVmcxIXCg9zZXJ2ZXJf",
-            "cHJlZnNfaWQYCCABKA0SDAoEZGF0YRgKIAEoDEIWqgITTWFyY2g3dGhIb25l",
+            "ChFTZXJ2ZXJQcmVmcy5wcm90byI0CgtTZXJ2ZXJQcmVmcxIMCgRkYXRhGAog",
+            "ASgMEhcKD3NlcnZlcl9wcmVmc19pZBgFIAEoDUIWqgITTWFyY2g3dGhIb25l",
             "eS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ServerPrefs), global::March7thHoney.Proto.ServerPrefs.Parser, new[]{ "ServerPrefsId", "Data" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ServerPrefs), global::March7thHoney.Proto.ServerPrefs.Parser, new[]{ "Data", "ServerPrefsId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ServerPrefs(ServerPrefs other) : this() {
-      serverPrefsId_ = other.serverPrefsId_;
       data_ = other.data_;
+      serverPrefsId_ = other.serverPrefsId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -81,18 +81,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ServerPrefs Clone() {
       return new ServerPrefs(this);
-    }
-
-    /// <summary>Field number for the "server_prefs_id" field.</summary>
-    public const int ServerPrefsIdFieldNumber = 8;
-    private uint serverPrefsId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint ServerPrefsId {
-      get { return serverPrefsId_; }
-      set {
-        serverPrefsId_ = value;
-      }
     }
 
     /// <summary>Field number for the "data" field.</summary>
@@ -104,6 +92,18 @@ namespace March7thHoney.Proto {
       get { return data_; }
       set {
         data_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "server_prefs_id" field.</summary>
+    public const int ServerPrefsIdFieldNumber = 5;
+    private uint serverPrefsId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint ServerPrefsId {
+      get { return serverPrefsId_; }
+      set {
+        serverPrefsId_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (ServerPrefsId != other.ServerPrefsId) return false;
       if (Data != other.Data) return false;
+      if (ServerPrefsId != other.ServerPrefsId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (ServerPrefsId != 0) hash ^= ServerPrefsId.GetHashCode();
       if (Data.Length != 0) hash ^= Data.GetHashCode();
+      if (ServerPrefsId != 0) hash ^= ServerPrefsId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,7 +152,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (ServerPrefsId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(40);
         output.WriteUInt32(ServerPrefsId);
       }
       if (Data.Length != 0) {
@@ -170,7 +170,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (ServerPrefsId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(40);
         output.WriteUInt32(ServerPrefsId);
       }
       if (Data.Length != 0) {
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (ServerPrefsId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ServerPrefsId);
-      }
       if (Data.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(Data);
+      }
+      if (ServerPrefsId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ServerPrefsId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.ServerPrefsId != 0) {
-        ServerPrefsId = other.ServerPrefsId;
-      }
       if (other.Data.Length != 0) {
         Data = other.Data;
+      }
+      if (other.ServerPrefsId != 0) {
+        ServerPrefsId = other.ServerPrefsId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,7 +230,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 64: {
+          case 40: {
             ServerPrefsId = input.ReadUInt32();
             break;
           }
@@ -257,7 +257,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 64: {
+          case 40: {
             ServerPrefsId = input.ReadUInt32();
             break;
           }

@@ -1,18 +1,1 @@
-using March7thHoney.GameServer.Server.Packet.Send.ServerPrefs;
-using March7thHoney.Kcp;
-using March7thHoney.Proto;
-
-namespace March7thHoney.GameServer.Server.Packet.Recv.ServerPrefs;
-
-[Opcode(CmdIds.GetServerPrefsDataCsReq)]
-public class HandlerGetServerPrefsDataCsReq : Handler
-{
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
-    {
-        var req = GetServerPrefsDataCsReq.Parser.ParseFrom(data);
-
-        var info = connection.Player!.ServerPrefsData?.ServerPrefsDict.GetValueOrDefault((int)req.ServerPrefsId);
-
-        await connection.SendPacket(new PacketGetServerPrefsDataScRsp(info, req.ServerPrefsId));
-    }
-}
+// TODO 4.3: GetServerPrefsDataCsReq 在 4.3 cmdid 表中已无单独 Req（合并为 GetAllServerPrefsDataCsReq），handler 暂停

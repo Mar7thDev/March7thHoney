@@ -24,18 +24,15 @@ namespace March7thHoney.Proto {
     static CmdRogueEndlessTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChlDbWRSb2d1ZUVuZGxlc3NUeXBlLnByb3RvKt0DChNDbWRSb2d1ZUVuZGxl",
-            "c3NUeXBlEhsKF0dCSUVJSEFBRkZJX0lFTUlHSklLRUlKEAASLQooQ21kUm9n",
-            "dWVFbmRsZXNzQWN0aXZpdHlCYXR0bGVFbmRTY05vdGlmeRD1LhIwCitDbWRU",
-            "YWtlUm9ndWVFbmRsZXNzQWN0aXZpdHlQb2ludFJld2FyZFNjUnNwEPIuEisK",
-            "JkNtZEVudGVyUm9ndWVFbmRsZXNzQWN0aXZpdHlTdGFnZVNjUnNwEPcuEigK",
-            "I0NtZEdldFJvZ3VlRW5kbGVzc0FjdGl2aXR5RGF0YUNzUmVxEPkuEigKI0Nt",
-            "ZEdldFJvZ3VlRW5kbGVzc0FjdGl2aXR5RGF0YVNjUnNwEPouEjMKLkNtZFRh",
-            "a2VSb2d1ZUVuZGxlc3NBY3Rpdml0eUFsbEJvbnVzUmV3YXJkQ3NSZXEQ9i4S",
-            "MAorQ21kVGFrZVJvZ3VlRW5kbGVzc0FjdGl2aXR5UG9pbnRSZXdhcmRDc1Jl",
-            "cRD0LhIzCi5DbWRUYWtlUm9ndWVFbmRsZXNzQWN0aXZpdHlBbGxCb251c1Jl",
-            "d2FyZFNjUnNwEPMuEisKJkNtZEVudGVyUm9ndWVFbmRsZXNzQWN0aXZpdHlT",
-            "dGFnZUNzUmVxEPEuQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ChlDbWRSb2d1ZUVuZGxlc3NUeXBlLnByb3RvKsACChNDbWRSb2d1ZUVuZGxl",
+            "c3NUeXBlEhsKF0xCQURHTENHQU9HX01PTEpDRUZHUExMEAASHAoXTEJBREdM",
+            "Q0dBT0dfSERFTkVITk5JRksQ+i4SHAoXTEJBREdMQ0dBT0dfSExLTUdCSkhC",
+            "Rk4Q8S4SHAoXTEJBREdMQ0dBT0dfRVBOREtOREJQQUUQ9i4SHAoXTEJBREdM",
+            "Q0dBT0dfQUZKSEFOSEhIR0sQ9C4SHAoXTEJBREdMQ0dBT0dfQUhIRElCSkpP",
+            "QkgQ+S4SHAoXTEJBREdMQ0dBT0dfSE1DQ09FQUdESEgQ8i4SHAoXTEJBREdM",
+            "Q0dBT0dfS0dPS0JERkpDRk8Q9y4SHAoXTEJBREdMQ0dBT0dfS09NSEVNRURP",
+            "TFAQ+C4SHAoXTEJBREdMQ0dBT0dfUEVGSEFERktNQUoQ8y5CFqoCE01hcmNo",
+            "N3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdRogueEndlessType), }, null, null));
@@ -45,16 +42,16 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdRogueEndlessType {
-    [pbr::OriginalName("GBIEIHAAFFI_IEMIGJIKEIJ")] GbieihaaffiIemigjikeij = 0,
-    [pbr::OriginalName("CmdRogueEndlessActivityBattleEndScNotify")] CmdRogueEndlessActivityBattleEndScNotify = 6005,
-    [pbr::OriginalName("CmdTakeRogueEndlessActivityPointRewardScRsp")] CmdTakeRogueEndlessActivityPointRewardScRsp = 6002,
-    [pbr::OriginalName("CmdEnterRogueEndlessActivityStageScRsp")] CmdEnterRogueEndlessActivityStageScRsp = 6007,
-    [pbr::OriginalName("CmdGetRogueEndlessActivityDataCsReq")] CmdGetRogueEndlessActivityDataCsReq = 6009,
-    [pbr::OriginalName("CmdGetRogueEndlessActivityDataScRsp")] CmdGetRogueEndlessActivityDataScRsp = 6010,
-    [pbr::OriginalName("CmdTakeRogueEndlessActivityAllBonusRewardCsReq")] CmdTakeRogueEndlessActivityAllBonusRewardCsReq = 6006,
-    [pbr::OriginalName("CmdTakeRogueEndlessActivityPointRewardCsReq")] CmdTakeRogueEndlessActivityPointRewardCsReq = 6004,
-    [pbr::OriginalName("CmdTakeRogueEndlessActivityAllBonusRewardScRsp")] CmdTakeRogueEndlessActivityAllBonusRewardScRsp = 6003,
-    [pbr::OriginalName("CmdEnterRogueEndlessActivityStageCsReq")] CmdEnterRogueEndlessActivityStageCsReq = 6001,
+    [pbr::OriginalName("LBADGLCGAOG_MOLJCEFGPLL")] LbadglcgaogMoljcefgpll = 0,
+    [pbr::OriginalName("LBADGLCGAOG_HDENEHNNIFK")] LbadglcgaogHdenehnnifk = 6010,
+    [pbr::OriginalName("LBADGLCGAOG_HLKMGBJHBFN")] LbadglcgaogHlkmgbjhbfn = 6001,
+    [pbr::OriginalName("LBADGLCGAOG_EPNDKNDBPAE")] LbadglcgaogEpndkndbpae = 6006,
+    [pbr::OriginalName("LBADGLCGAOG_AFJHANHHHGK")] LbadglcgaogAfjhanhhhgk = 6004,
+    [pbr::OriginalName("LBADGLCGAOG_AHHDIBJJOBH")] LbadglcgaogAhhdibjjobh = 6009,
+    [pbr::OriginalName("LBADGLCGAOG_HMCCOEAGDHH")] LbadglcgaogHmccoeagdhh = 6002,
+    [pbr::OriginalName("LBADGLCGAOG_KGOKBDFJCFO")] LbadglcgaogKgokbdfjcfo = 6007,
+    [pbr::OriginalName("LBADGLCGAOG_KOMHEMEDOLP")] LbadglcgaogKomhemedolp = 6008,
+    [pbr::OriginalName("LBADGLCGAOG_PEFHADFKMAJ")] LbadglcgaogPefhadfkmaj = 6003,
   }
 
   #endregion

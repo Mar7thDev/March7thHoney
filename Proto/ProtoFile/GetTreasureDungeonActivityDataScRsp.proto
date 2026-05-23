@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "DOACEKEEKLJ.proto";
+import "DCMCLHJINBD.proto";
 
 message GetTreasureDungeonActivityDataScRsp {
-    uint32 retcode = 3;
-    repeated DOACEKEEKLJ BPCKFOJKCBK = 12;
+    repeated DCMCLHJINBD NFEJLHOCFMC = 1;
+    uint32 retcode = 15;
 }

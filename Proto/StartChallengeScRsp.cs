@@ -27,15 +27,15 @@ namespace March7thHoney.Proto {
             "ChlTdGFydENoYWxsZW5nZVNjUnNwLnByb3RvGhhDaGFsbGVuZ2VTdGFnZUlu",
             "Zm8ucHJvdG8aEkN1ckNoYWxsZW5nZS5wcm90bxoQTGluZXVwSW5mby5wcm90",
             "bxoPU2NlbmVJbmZvLnByb3RvIrIBChNTdGFydENoYWxsZW5nZVNjUnNwEicK",
-            "CnN0YWdlX2luZm8YAiABKAsyEy5DaGFsbGVuZ2VTdGFnZUluZm8SJAoNY3Vy",
-            "X2NoYWxsZW5nZRgDIAEoCzINLkN1ckNoYWxsZW5nZRIPCgdyZXRjb2RlGAkg",
-            "ASgNEiAKC2xpbmV1cF9saXN0GA0gAygLMgsuTGluZXVwSW5mbxIZCgVzY2Vu",
-            "ZRgPIAEoCzIKLlNjZW5lSW5mb0IWqgITTWFyY2g3dGhIb25leS5Qcm90b2IG",
+            "CnN0YWdlX2luZm8YBiABKAsyEy5DaGFsbGVuZ2VTdGFnZUluZm8SGQoFc2Nl",
+            "bmUYAiABKAsyCi5TY2VuZUluZm8SIAoLbGluZXVwX2xpc3QYDSADKAsyCy5M",
+            "aW5ldXBJbmZvEiQKDWN1cl9jaGFsbGVuZ2UYCiABKAsyDS5DdXJDaGFsbGVu",
+            "Z2USDwoHcmV0Y29kZRgPIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IG",
             "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChallengeStageInfoReflection.Descriptor, global::March7thHoney.Proto.CurChallengeReflection.Descriptor, global::March7thHoney.Proto.LineupInfoReflection.Descriptor, global::March7thHoney.Proto.SceneInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartChallengeScRsp), global::March7thHoney.Proto.StartChallengeScRsp.Parser, new[]{ "StageInfo", "CurChallenge", "Retcode", "LineupList", "Scene" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartChallengeScRsp), global::March7thHoney.Proto.StartChallengeScRsp.Parser, new[]{ "StageInfo", "Scene", "LineupList", "CurChallenge", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -78,10 +78,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public StartChallengeScRsp(StartChallengeScRsp other) : this() {
       stageInfo_ = other.stageInfo_ != null ? other.stageInfo_.Clone() : null;
+      scene_ = other.scene_ != null ? other.scene_.Clone() : null;
+      lineupList_ = other.lineupList_.Clone();
       curChallenge_ = other.curChallenge_ != null ? other.curChallenge_.Clone() : null;
       retcode_ = other.retcode_;
-      lineupList_ = other.lineupList_.Clone();
-      scene_ = other.scene_ != null ? other.scene_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -92,7 +92,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "stage_info" field.</summary>
-    public const int StageInfoFieldNumber = 2;
+    public const int StageInfoFieldNumber = 6;
     private global::March7thHoney.Proto.ChallengeStageInfo stageInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -103,27 +103,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "cur_challenge" field.</summary>
-    public const int CurChallengeFieldNumber = 3;
-    private global::March7thHoney.Proto.CurChallenge curChallenge_;
+    /// <summary>Field number for the "scene" field.</summary>
+    public const int SceneFieldNumber = 2;
+    private global::March7thHoney.Proto.SceneInfo scene_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.CurChallenge CurChallenge {
-      get { return curChallenge_; }
+    public global::March7thHoney.Proto.SceneInfo Scene {
+      get { return scene_; }
       set {
-        curChallenge_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 9;
-    private uint retcode_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
-      set {
-        retcode_ = value;
+        scene_ = value;
       }
     }
 
@@ -138,15 +126,27 @@ namespace March7thHoney.Proto {
       get { return lineupList_; }
     }
 
-    /// <summary>Field number for the "scene" field.</summary>
-    public const int SceneFieldNumber = 15;
-    private global::March7thHoney.Proto.SceneInfo scene_;
+    /// <summary>Field number for the "cur_challenge" field.</summary>
+    public const int CurChallengeFieldNumber = 10;
+    private global::March7thHoney.Proto.CurChallenge curChallenge_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.SceneInfo Scene {
-      get { return scene_; }
+    public global::March7thHoney.Proto.CurChallenge CurChallenge {
+      get { return curChallenge_; }
       set {
-        scene_ = value;
+        curChallenge_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 15;
+    private uint retcode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Retcode {
+      get { return retcode_; }
+      set {
+        retcode_ = value;
       }
     }
 
@@ -166,10 +166,10 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (!object.Equals(StageInfo, other.StageInfo)) return false;
+      if (!object.Equals(Scene, other.Scene)) return false;
+      if(!lineupList_.Equals(other.lineupList_)) return false;
       if (!object.Equals(CurChallenge, other.CurChallenge)) return false;
       if (Retcode != other.Retcode) return false;
-      if(!lineupList_.Equals(other.lineupList_)) return false;
-      if (!object.Equals(Scene, other.Scene)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -178,10 +178,10 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (stageInfo_ != null) hash ^= StageInfo.GetHashCode();
+      if (scene_ != null) hash ^= Scene.GetHashCode();
+      hash ^= lineupList_.GetHashCode();
       if (curChallenge_ != null) hash ^= CurChallenge.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
-      hash ^= lineupList_.GetHashCode();
-      if (scene_ != null) hash ^= Scene.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -200,22 +200,22 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (stageInfo_ != null) {
+      if (scene_ != null) {
         output.WriteRawTag(18);
+        output.WriteMessage(Scene);
+      }
+      if (stageInfo_ != null) {
+        output.WriteRawTag(50);
         output.WriteMessage(StageInfo);
       }
       if (curChallenge_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(82);
         output.WriteMessage(CurChallenge);
       }
-      if (Retcode != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(Retcode);
-      }
       lineupList_.WriteTo(output, _repeated_lineupList_codec);
-      if (scene_ != null) {
-        output.WriteRawTag(122);
-        output.WriteMessage(Scene);
+      if (Retcode != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -227,22 +227,22 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (stageInfo_ != null) {
+      if (scene_ != null) {
         output.WriteRawTag(18);
+        output.WriteMessage(Scene);
+      }
+      if (stageInfo_ != null) {
+        output.WriteRawTag(50);
         output.WriteMessage(StageInfo);
       }
       if (curChallenge_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(82);
         output.WriteMessage(CurChallenge);
       }
-      if (Retcode != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(Retcode);
-      }
       lineupList_.WriteTo(ref output, _repeated_lineupList_codec);
-      if (scene_ != null) {
-        output.WriteRawTag(122);
-        output.WriteMessage(Scene);
+      if (Retcode != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -257,15 +257,15 @@ namespace March7thHoney.Proto {
       if (stageInfo_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(StageInfo);
       }
+      if (scene_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Scene);
+      }
+      size += lineupList_.CalculateSize(_repeated_lineupList_codec);
       if (curChallenge_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(CurChallenge);
       }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
-      }
-      size += lineupList_.CalculateSize(_repeated_lineupList_codec);
-      if (scene_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Scene);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -285,6 +285,13 @@ namespace March7thHoney.Proto {
         }
         StageInfo.MergeFrom(other.StageInfo);
       }
+      if (other.scene_ != null) {
+        if (scene_ == null) {
+          Scene = new global::March7thHoney.Proto.SceneInfo();
+        }
+        Scene.MergeFrom(other.Scene);
+      }
+      lineupList_.Add(other.lineupList_);
       if (other.curChallenge_ != null) {
         if (curChallenge_ == null) {
           CurChallenge = new global::March7thHoney.Proto.CurChallenge();
@@ -293,13 +300,6 @@ namespace March7thHoney.Proto {
       }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
-      }
-      lineupList_.Add(other.lineupList_);
-      if (other.scene_ != null) {
-        if (scene_ == null) {
-          Scene = new global::March7thHoney.Proto.SceneInfo();
-        }
-        Scene.MergeFrom(other.Scene);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -321,32 +321,32 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 18: {
+            if (scene_ == null) {
+              Scene = new global::March7thHoney.Proto.SceneInfo();
+            }
+            input.ReadMessage(Scene);
+            break;
+          }
+          case 50: {
             if (stageInfo_ == null) {
               StageInfo = new global::March7thHoney.Proto.ChallengeStageInfo();
             }
             input.ReadMessage(StageInfo);
             break;
           }
-          case 26: {
+          case 82: {
             if (curChallenge_ == null) {
               CurChallenge = new global::March7thHoney.Proto.CurChallenge();
             }
             input.ReadMessage(CurChallenge);
             break;
           }
-          case 72: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
           case 106: {
             lineupList_.AddEntriesFrom(input, _repeated_lineupList_codec);
             break;
           }
-          case 122: {
-            if (scene_ == null) {
-              Scene = new global::March7thHoney.Proto.SceneInfo();
-            }
-            input.ReadMessage(Scene);
+          case 120: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -369,32 +369,32 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 18: {
+            if (scene_ == null) {
+              Scene = new global::March7thHoney.Proto.SceneInfo();
+            }
+            input.ReadMessage(Scene);
+            break;
+          }
+          case 50: {
             if (stageInfo_ == null) {
               StageInfo = new global::March7thHoney.Proto.ChallengeStageInfo();
             }
             input.ReadMessage(StageInfo);
             break;
           }
-          case 26: {
+          case 82: {
             if (curChallenge_ == null) {
               CurChallenge = new global::March7thHoney.Proto.CurChallenge();
             }
             input.ReadMessage(CurChallenge);
             break;
           }
-          case 72: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
           case 106: {
             lineupList_.AddEntriesFrom(ref input, _repeated_lineupList_codec);
             break;
           }
-          case 122: {
-            if (scene_ == null) {
-              Scene = new global::March7thHoney.Proto.SceneInfo();
-            }
-            input.ReadMessage(Scene);
+          case 120: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }

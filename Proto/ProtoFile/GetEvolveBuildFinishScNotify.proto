@@ -2,19 +2,17 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "CJLJDKLCNDA.proto";
-import "CPCMNIKFLCH.proto";
+import "IAPIIEJHLMP.proto";
+import "LDLCMMOPKNG.proto";
 
 message GetEvolveBuildFinishScNotify {
-    CJLJDKLCNDA MODDIBHCPPD = 1;
-    uint32 score_id = 3;
-    uint32 exp = 4;
-    CPCMNIKFLCH GHIMJDPPJOG = 5;
-    uint32 COLPBCECFOM = 6;
-    uint32 level_id = 10;
-    uint32 wave = 12;
-    uint32 item_value = 13;
-    bool JADBKBABANG = 14;
+    LDLCMMOPKNG OEIBHLMDJKA = 14;
+    uint32 level_id = 4;
+    IAPIIEJHLMP APKKKEIPJOG = 2;
+    bool NLMAFMCFHAL = 10;
+    uint32 ELKCOHLGGJN = 9;
+    uint32 score_id = 15;
+    uint32 item_value = 11;
+    uint32 wave = 8;
+    uint32 exp = 3;
 }

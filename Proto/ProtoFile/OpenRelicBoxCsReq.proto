@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "OMHAOBFKIKE.proto";
+import "HGABLJFOKDG.proto";
 
 message OpenRelicBoxCsReq {
-    OMHAOBFKIKE GPEAFAJGCPH = 6;
+    HGABLJFOKDG MCLLALGABAB = 10;
 }

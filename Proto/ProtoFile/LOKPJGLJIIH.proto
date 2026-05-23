@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "GPGLNCGCLLG.proto";
+import "LDEKBGAOMFJ.proto";
+import "OGHAIFPHMPE.proto";
+
+message LOKPJGLJIIH {
+    repeated LDEKBGAOMFJ MPACDDPOCLM = 13;
+    repeated GPGLNCGCLLG skill_info = 12;
+    repeated OGHAIFPHMPE DLGDKGGFCBF = 8;
+    repeated OGHAIFPHMPE IPAIBGOAGGN = 14;
+    repeated OGHAIFPHMPE FPAEBHJFEKK = 10;
+    repeated OGHAIFPHMPE EHNHHAFAKDP = 15;
+    uint32 rank = 9;
+    uint32 monster_battle_type = 1;
+    uint64 CKLCDAGMFKP = 2;
+    uint32 GNAMNBDIEKG = 4;
+    uint32 ILLEDJLNGNF = 11;
+    bool PMGEPADBKKK = 7;
+    uint32 NNKBNJKNDKC = 16;
+    uint32 level_id = 3;
+    uint32 JJFOLKFOOLI = 6;
+    uint32 AFPHLNMGPHK = 5;
+}

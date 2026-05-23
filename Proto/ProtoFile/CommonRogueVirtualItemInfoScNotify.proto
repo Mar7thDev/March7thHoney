@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "GMMAGELGJOL.proto";
+import "LKCDLJCKCJI.proto";
 
 message CommonRogueVirtualItemInfoScNotify {
-    repeated GMMAGELGJOL DPEPAHNJCLO = 14;
+    repeated LKCDLJCKCJI DMCINCJLMND = 7;
 }

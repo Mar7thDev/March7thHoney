@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message RogueTournEnableSeasonTalentCsReq {
-    uint32 KFJEMIOJLPJ = 4;
+    uint32 CKHCLKOALKE = 14;
 }

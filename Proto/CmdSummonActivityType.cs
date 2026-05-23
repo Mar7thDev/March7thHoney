@@ -24,13 +24,12 @@ namespace March7thHoney.Proto {
     static CmdSummonActivityTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChtDbWRTdW1tb25BY3Rpdml0eVR5cGUucHJvdG8q8wEKFUNtZFN1bW1vbkFj",
-            "dGl2aXR5VHlwZRIbChdKTkpJRkJDTU5FR19QQ1BESEVMUEtFTRAAEiIKHUNt",
-            "ZEdldFN1bW1vbkFjdGl2aXR5RGF0YUNzUmVxEJE7EicKIkNtZFN1bW1vbkFj",
-            "dGl2aXR5QmF0dGxlRW5kU2NOb3RpZnkQjTsSJQogQ21kRW50ZXJTdW1tb25B",
-            "Y3Rpdml0eVN0YWdlU2NSc3AQjzsSJQogQ21kRW50ZXJTdW1tb25BY3Rpdml0",
-            "eVN0YWdlQ3NSZXEQiTsSIgodQ21kR2V0U3VtbW9uQWN0aXZpdHlEYXRhU2NS",
-            "c3AQkjtCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ChtDbWRTdW1tb25BY3Rpdml0eVR5cGUucHJvdG8qygEKFUNtZFN1bW1vbkFj",
+            "dGl2aXR5VHlwZRIbChdGRUdNTUxFQktNQV9OTENER0lQR0ZEShAAEhwKF0ZF",
+            "R01NTEVCS01BX0NLQ0pPSEhMTERJEJI7EhwKF0ZFR01NTEVCS01BX0NQT05C",
+            "RkpHRVBNEJA7EhwKF0ZFR01NTEVCS01BX0JLSE9LSE5BSU1HEIw7EhwKF0ZF",
+            "R01NTEVCS01BX0ZISkRKREJBQ0tMEIo7EhwKF0ZFR01NTEVCS01BX0lNRUdF",
+            "RUJPR09DEJE7QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdSummonActivityType), }, null, null));
@@ -40,12 +39,12 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdSummonActivityType {
-    [pbr::OriginalName("JNJIFBCMNEG_PCPDHELPKEM")] JnjifbcmnegPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdGetSummonActivityDataCsReq")] CmdGetSummonActivityDataCsReq = 7569,
-    [pbr::OriginalName("CmdSummonActivityBattleEndScNotify")] CmdSummonActivityBattleEndScNotify = 7565,
-    [pbr::OriginalName("CmdEnterSummonActivityStageScRsp")] CmdEnterSummonActivityStageScRsp = 7567,
-    [pbr::OriginalName("CmdEnterSummonActivityStageCsReq")] CmdEnterSummonActivityStageCsReq = 7561,
-    [pbr::OriginalName("CmdGetSummonActivityDataScRsp")] CmdGetSummonActivityDataScRsp = 7570,
+    [pbr::OriginalName("FEGMMLEBKMA_NLCDGIPGFDJ")] FegmmlebkmaNlcdgipgfdj = 0,
+    [pbr::OriginalName("FEGMMLEBKMA_CKCJOHHLLDI")] FegmmlebkmaCkcjohhlldi = 7570,
+    [pbr::OriginalName("FEGMMLEBKMA_CPONBFJGEPM")] FegmmlebkmaCponbfjgepm = 7568,
+    [pbr::OriginalName("FEGMMLEBKMA_BKHOKHNAIMG")] FegmmlebkmaBkhokhnaimg = 7564,
+    [pbr::OriginalName("FEGMMLEBKMA_FHJDJDBACKL")] FegmmlebkmaFhjdjdbackl = 7562,
+    [pbr::OriginalName("FEGMMLEBKMA_IMEGEEBOGOC")] FegmmlebkmaImegeebogoc = 7569,
   }
 
   #endregion

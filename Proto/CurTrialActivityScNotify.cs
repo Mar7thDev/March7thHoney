@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch5DdXJUcmlhbEFjdGl2aXR5U2NOb3RpZnkucHJvdG8aGVRyaWFsQWN0aXZp",
-            "dHlTdGF0dXMucHJvdG8iWwoYQ3VyVHJpYWxBY3Rpdml0eVNjTm90aWZ5EiQK",
-            "BnN0YXR1cxgEIAEoDjIULlRyaWFsQWN0aXZpdHlTdGF0dXMSGQoRYWN0aXZp",
-            "dHlfc3RhZ2VfaWQYBSABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
+            "dHlTdGF0dXMucHJvdG8iWwoYQ3VyVHJpYWxBY3Rpdml0eVNjTm90aWZ5EhkK",
+            "EWFjdGl2aXR5X3N0YWdlX2lkGAUgASgNEiQKBnN0YXR1cxgPIAEoDjIULlRy",
+            "aWFsQWN0aXZpdHlTdGF0dXNCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
             "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.TrialActivityStatusReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.CurTrialActivityScNotify), global::March7thHoney.Proto.CurTrialActivityScNotify.Parser, new[]{ "Status", "ActivityStageId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.CurTrialActivityScNotify), global::March7thHoney.Proto.CurTrialActivityScNotify.Parser, new[]{ "ActivityStageId", "Status" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,8 +74,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public CurTrialActivityScNotify(CurTrialActivityScNotify other) : this() {
-      status_ = other.status_;
       activityStageId_ = other.activityStageId_;
+      status_ = other.status_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,18 +83,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public CurTrialActivityScNotify Clone() {
       return new CurTrialActivityScNotify(this);
-    }
-
-    /// <summary>Field number for the "status" field.</summary>
-    public const int StatusFieldNumber = 4;
-    private global::March7thHoney.Proto.TrialActivityStatus status_ = global::March7thHoney.Proto.TrialActivityStatus.None;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.TrialActivityStatus Status {
-      get { return status_; }
-      set {
-        status_ = value;
-      }
     }
 
     /// <summary>Field number for the "activity_stage_id" field.</summary>
@@ -106,6 +94,18 @@ namespace March7thHoney.Proto {
       get { return activityStageId_; }
       set {
         activityStageId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "status" field.</summary>
+    public const int StatusFieldNumber = 15;
+    private global::March7thHoney.Proto.TrialActivityStatus status_ = global::March7thHoney.Proto.TrialActivityStatus.None;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.TrialActivityStatus Status {
+      get { return status_; }
+      set {
+        status_ = value;
       }
     }
 
@@ -124,8 +124,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Status != other.Status) return false;
       if (ActivityStageId != other.ActivityStageId) return false;
+      if (Status != other.Status) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -133,8 +133,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Status != global::March7thHoney.Proto.TrialActivityStatus.None) hash ^= Status.GetHashCode();
       if (ActivityStageId != 0) hash ^= ActivityStageId.GetHashCode();
+      if (Status != global::March7thHoney.Proto.TrialActivityStatus.None) hash ^= Status.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -153,13 +153,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Status != global::March7thHoney.Proto.TrialActivityStatus.None) {
-        output.WriteRawTag(32);
-        output.WriteEnum((int) Status);
-      }
       if (ActivityStageId != 0) {
         output.WriteRawTag(40);
         output.WriteUInt32(ActivityStageId);
+      }
+      if (Status != global::March7thHoney.Proto.TrialActivityStatus.None) {
+        output.WriteRawTag(120);
+        output.WriteEnum((int) Status);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -171,13 +171,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Status != global::March7thHoney.Proto.TrialActivityStatus.None) {
-        output.WriteRawTag(32);
-        output.WriteEnum((int) Status);
-      }
       if (ActivityStageId != 0) {
         output.WriteRawTag(40);
         output.WriteUInt32(ActivityStageId);
+      }
+      if (Status != global::March7thHoney.Proto.TrialActivityStatus.None) {
+        output.WriteRawTag(120);
+        output.WriteEnum((int) Status);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -189,11 +189,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Status != global::March7thHoney.Proto.TrialActivityStatus.None) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Status);
-      }
       if (ActivityStageId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ActivityStageId);
+      }
+      if (Status != global::March7thHoney.Proto.TrialActivityStatus.None) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Status);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -207,11 +207,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.Status != global::March7thHoney.Proto.TrialActivityStatus.None) {
-        Status = other.Status;
-      }
       if (other.ActivityStageId != 0) {
         ActivityStageId = other.ActivityStageId;
+      }
+      if (other.Status != global::March7thHoney.Proto.TrialActivityStatus.None) {
+        Status = other.Status;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -232,12 +232,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
-            Status = (global::March7thHoney.Proto.TrialActivityStatus) input.ReadEnum();
-            break;
-          }
           case 40: {
             ActivityStageId = input.ReadUInt32();
+            break;
+          }
+          case 120: {
+            Status = (global::March7thHoney.Proto.TrialActivityStatus) input.ReadEnum();
             break;
           }
         }
@@ -259,12 +259,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
-            Status = (global::March7thHoney.Proto.TrialActivityStatus) input.ReadEnum();
-            break;
-          }
           case 40: {
             ActivityStageId = input.ReadUInt32();
+            break;
+          }
+          case 120: {
+            Status = (global::March7thHoney.Proto.TrialActivityStatus) input.ReadEnum();
             break;
           }
         }

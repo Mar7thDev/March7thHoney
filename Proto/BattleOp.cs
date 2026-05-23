@@ -24,16 +24,16 @@ namespace March7thHoney.Proto {
     static BattleOpReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg5CYXR0bGVPcC5wcm90byK5AQoIQmF0dGxlT3ASFAoMdHVybl9jb3VudGVy",
-            "GAEgASgNEg0KBXN0YXRlGAIgASgNEhgKEGFjdGlvbl9lbnRpdHlfaWQYAyAB",
-            "KA0SGAoQdGFyZ2V0X2VudGl0eV9pZBgEIAEoDRIPCgdvcF90eXBlGAUgASgN",
-            "EhMKC3NraWxsX2luZGV4GAYgASgNEhkKEW9wZXJhdGlvbl9jb3VudGVyGAcg",
-            "ASgNEhMKC05PUEtGQkxMQUpQGAggASgJQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
+            "Cg5CYXR0bGVPcC5wcm90byK5AQoIQmF0dGxlT3ASEwoLTE9NTElQT0xCS00Y",
+            "CCABKAkSDQoFc3RhdGUYAiABKA0SFAoMdHVybl9jb3VudGVyGAEgASgNEg8K",
+            "B29wX3R5cGUYBSABKA0SGAoQYWN0aW9uX2VudGl0eV9pZBgDIAEoDRIZChFv",
+            "cGVyYXRpb25fY291bnRlchgHIAEoDRITCgtza2lsbF9pbmRleBgGIAEoDRIY",
+            "ChB0YXJnZXRfZW50aXR5X2lkGAQgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
             "b3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BattleOp), global::March7thHoney.Proto.BattleOp.Parser, new[]{ "TurnCounter", "State", "ActionEntityId", "TargetEntityId", "OpType", "SkillIndex", "OperationCounter", "NOPKFBLLAJP" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BattleOp), global::March7thHoney.Proto.BattleOp.Parser, new[]{ "LOMLIPOLBKM", "State", "TurnCounter", "OpType", "ActionEntityId", "OperationCounter", "SkillIndex", "TargetEntityId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,14 +75,14 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BattleOp(BattleOp other) : this() {
-      turnCounter_ = other.turnCounter_;
+      lOMLIPOLBKM_ = other.lOMLIPOLBKM_;
       state_ = other.state_;
-      actionEntityId_ = other.actionEntityId_;
-      targetEntityId_ = other.targetEntityId_;
+      turnCounter_ = other.turnCounter_;
       opType_ = other.opType_;
-      skillIndex_ = other.skillIndex_;
+      actionEntityId_ = other.actionEntityId_;
       operationCounter_ = other.operationCounter_;
-      nOPKFBLLAJP_ = other.nOPKFBLLAJP_;
+      skillIndex_ = other.skillIndex_;
+      targetEntityId_ = other.targetEntityId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -92,15 +92,15 @@ namespace March7thHoney.Proto {
       return new BattleOp(this);
     }
 
-    /// <summary>Field number for the "turn_counter" field.</summary>
-    public const int TurnCounterFieldNumber = 1;
-    private uint turnCounter_;
+    /// <summary>Field number for the "LOMLIPOLBKM" field.</summary>
+    public const int LOMLIPOLBKMFieldNumber = 8;
+    private string lOMLIPOLBKM_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint TurnCounter {
-      get { return turnCounter_; }
+    public string LOMLIPOLBKM {
+      get { return lOMLIPOLBKM_; }
       set {
-        turnCounter_ = value;
+        lOMLIPOLBKM_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -116,27 +116,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "action_entity_id" field.</summary>
-    public const int ActionEntityIdFieldNumber = 3;
-    private uint actionEntityId_;
+    /// <summary>Field number for the "turn_counter" field.</summary>
+    public const int TurnCounterFieldNumber = 1;
+    private uint turnCounter_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint ActionEntityId {
-      get { return actionEntityId_; }
+    public uint TurnCounter {
+      get { return turnCounter_; }
       set {
-        actionEntityId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "target_entity_id" field.</summary>
-    public const int TargetEntityIdFieldNumber = 4;
-    private uint targetEntityId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint TargetEntityId {
-      get { return targetEntityId_; }
-      set {
-        targetEntityId_ = value;
+        turnCounter_ = value;
       }
     }
 
@@ -152,15 +140,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "skill_index" field.</summary>
-    public const int SkillIndexFieldNumber = 6;
-    private uint skillIndex_;
+    /// <summary>Field number for the "action_entity_id" field.</summary>
+    public const int ActionEntityIdFieldNumber = 3;
+    private uint actionEntityId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint SkillIndex {
-      get { return skillIndex_; }
+    public uint ActionEntityId {
+      get { return actionEntityId_; }
       set {
-        skillIndex_ = value;
+        actionEntityId_ = value;
       }
     }
 
@@ -176,15 +164,27 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "NOPKFBLLAJP" field.</summary>
-    public const int NOPKFBLLAJPFieldNumber = 8;
-    private string nOPKFBLLAJP_ = "";
+    /// <summary>Field number for the "skill_index" field.</summary>
+    public const int SkillIndexFieldNumber = 6;
+    private uint skillIndex_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string NOPKFBLLAJP {
-      get { return nOPKFBLLAJP_; }
+    public uint SkillIndex {
+      get { return skillIndex_; }
       set {
-        nOPKFBLLAJP_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        skillIndex_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "target_entity_id" field.</summary>
+    public const int TargetEntityIdFieldNumber = 4;
+    private uint targetEntityId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint TargetEntityId {
+      get { return targetEntityId_; }
+      set {
+        targetEntityId_ = value;
       }
     }
 
@@ -203,14 +203,14 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (TurnCounter != other.TurnCounter) return false;
+      if (LOMLIPOLBKM != other.LOMLIPOLBKM) return false;
       if (State != other.State) return false;
-      if (ActionEntityId != other.ActionEntityId) return false;
-      if (TargetEntityId != other.TargetEntityId) return false;
+      if (TurnCounter != other.TurnCounter) return false;
       if (OpType != other.OpType) return false;
-      if (SkillIndex != other.SkillIndex) return false;
+      if (ActionEntityId != other.ActionEntityId) return false;
       if (OperationCounter != other.OperationCounter) return false;
-      if (NOPKFBLLAJP != other.NOPKFBLLAJP) return false;
+      if (SkillIndex != other.SkillIndex) return false;
+      if (TargetEntityId != other.TargetEntityId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -218,14 +218,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (TurnCounter != 0) hash ^= TurnCounter.GetHashCode();
+      if (LOMLIPOLBKM.Length != 0) hash ^= LOMLIPOLBKM.GetHashCode();
       if (State != 0) hash ^= State.GetHashCode();
-      if (ActionEntityId != 0) hash ^= ActionEntityId.GetHashCode();
-      if (TargetEntityId != 0) hash ^= TargetEntityId.GetHashCode();
+      if (TurnCounter != 0) hash ^= TurnCounter.GetHashCode();
       if (OpType != 0) hash ^= OpType.GetHashCode();
-      if (SkillIndex != 0) hash ^= SkillIndex.GetHashCode();
+      if (ActionEntityId != 0) hash ^= ActionEntityId.GetHashCode();
       if (OperationCounter != 0) hash ^= OperationCounter.GetHashCode();
-      if (NOPKFBLLAJP.Length != 0) hash ^= NOPKFBLLAJP.GetHashCode();
+      if (SkillIndex != 0) hash ^= SkillIndex.GetHashCode();
+      if (TargetEntityId != 0) hash ^= TargetEntityId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -272,9 +272,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(56);
         output.WriteUInt32(OperationCounter);
       }
-      if (NOPKFBLLAJP.Length != 0) {
+      if (LOMLIPOLBKM.Length != 0) {
         output.WriteRawTag(66);
-        output.WriteString(NOPKFBLLAJP);
+        output.WriteString(LOMLIPOLBKM);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -314,9 +314,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(56);
         output.WriteUInt32(OperationCounter);
       }
-      if (NOPKFBLLAJP.Length != 0) {
+      if (LOMLIPOLBKM.Length != 0) {
         output.WriteRawTag(66);
-        output.WriteString(NOPKFBLLAJP);
+        output.WriteString(LOMLIPOLBKM);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -328,29 +328,29 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (TurnCounter != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TurnCounter);
+      if (LOMLIPOLBKM.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(LOMLIPOLBKM);
       }
       if (State != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(State);
       }
-      if (ActionEntityId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ActionEntityId);
-      }
-      if (TargetEntityId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TargetEntityId);
+      if (TurnCounter != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TurnCounter);
       }
       if (OpType != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(OpType);
       }
-      if (SkillIndex != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SkillIndex);
+      if (ActionEntityId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ActionEntityId);
       }
       if (OperationCounter != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(OperationCounter);
       }
-      if (NOPKFBLLAJP.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(NOPKFBLLAJP);
+      if (SkillIndex != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SkillIndex);
+      }
+      if (TargetEntityId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TargetEntityId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -364,29 +364,29 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.TurnCounter != 0) {
-        TurnCounter = other.TurnCounter;
+      if (other.LOMLIPOLBKM.Length != 0) {
+        LOMLIPOLBKM = other.LOMLIPOLBKM;
       }
       if (other.State != 0) {
         State = other.State;
       }
-      if (other.ActionEntityId != 0) {
-        ActionEntityId = other.ActionEntityId;
-      }
-      if (other.TargetEntityId != 0) {
-        TargetEntityId = other.TargetEntityId;
+      if (other.TurnCounter != 0) {
+        TurnCounter = other.TurnCounter;
       }
       if (other.OpType != 0) {
         OpType = other.OpType;
       }
-      if (other.SkillIndex != 0) {
-        SkillIndex = other.SkillIndex;
+      if (other.ActionEntityId != 0) {
+        ActionEntityId = other.ActionEntityId;
       }
       if (other.OperationCounter != 0) {
         OperationCounter = other.OperationCounter;
       }
-      if (other.NOPKFBLLAJP.Length != 0) {
-        NOPKFBLLAJP = other.NOPKFBLLAJP;
+      if (other.SkillIndex != 0) {
+        SkillIndex = other.SkillIndex;
+      }
+      if (other.TargetEntityId != 0) {
+        TargetEntityId = other.TargetEntityId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -436,7 +436,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 66: {
-            NOPKFBLLAJP = input.ReadString();
+            LOMLIPOLBKM = input.ReadString();
             break;
           }
         }
@@ -487,7 +487,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 66: {
-            NOPKFBLLAJP = input.ReadString();
+            LOMLIPOLBKM = input.ReadString();
             break;
           }
         }

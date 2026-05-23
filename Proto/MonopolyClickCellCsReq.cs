@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChxNb25vcG9seUNsaWNrQ2VsbENzUmVxLnByb3RvIj0KFk1vbm9wb2x5Q2xp",
-            "Y2tDZWxsQ3NSZXESEwoLRUlJQUdBQkFGRUMYCiABKA0SDgoGbWFwX2lkGAwg",
+            "Y2tDZWxsQ3NSZXESEwoLSUhBT01MRVBIT00YASABKA0SDgoGbWFwX2lkGAYg",
             "ASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MonopolyClickCellCsReq), global::March7thHoney.Proto.MonopolyClickCellCsReq.Parser, new[]{ "EIIAGABAFEC", "MapId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MonopolyClickCellCsReq), global::March7thHoney.Proto.MonopolyClickCellCsReq.Parser, new[]{ "IHAOMLEPHOM", "MapId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,7 +72,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MonopolyClickCellCsReq(MonopolyClickCellCsReq other) : this() {
-      eIIAGABAFEC_ = other.eIIAGABAFEC_;
+      iHAOMLEPHOM_ = other.iHAOMLEPHOM_;
       mapId_ = other.mapId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -83,20 +83,20 @@ namespace March7thHoney.Proto {
       return new MonopolyClickCellCsReq(this);
     }
 
-    /// <summary>Field number for the "EIIAGABAFEC" field.</summary>
-    public const int EIIAGABAFECFieldNumber = 10;
-    private uint eIIAGABAFEC_;
+    /// <summary>Field number for the "IHAOMLEPHOM" field.</summary>
+    public const int IHAOMLEPHOMFieldNumber = 1;
+    private uint iHAOMLEPHOM_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint EIIAGABAFEC {
-      get { return eIIAGABAFEC_; }
+    public uint IHAOMLEPHOM {
+      get { return iHAOMLEPHOM_; }
       set {
-        eIIAGABAFEC_ = value;
+        iHAOMLEPHOM_ = value;
       }
     }
 
     /// <summary>Field number for the "map_id" field.</summary>
-    public const int MapIdFieldNumber = 12;
+    public const int MapIdFieldNumber = 6;
     private uint mapId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -122,7 +122,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (EIIAGABAFEC != other.EIIAGABAFEC) return false;
+      if (IHAOMLEPHOM != other.IHAOMLEPHOM) return false;
       if (MapId != other.MapId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -131,7 +131,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (EIIAGABAFEC != 0) hash ^= EIIAGABAFEC.GetHashCode();
+      if (IHAOMLEPHOM != 0) hash ^= IHAOMLEPHOM.GetHashCode();
       if (MapId != 0) hash ^= MapId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -151,12 +151,12 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (EIIAGABAFEC != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(EIIAGABAFEC);
+      if (IHAOMLEPHOM != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(IHAOMLEPHOM);
       }
       if (MapId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(48);
         output.WriteUInt32(MapId);
       }
       if (_unknownFields != null) {
@@ -169,12 +169,12 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (EIIAGABAFEC != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(EIIAGABAFEC);
+      if (IHAOMLEPHOM != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(IHAOMLEPHOM);
       }
       if (MapId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(48);
         output.WriteUInt32(MapId);
       }
       if (_unknownFields != null) {
@@ -187,8 +187,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (EIIAGABAFEC != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EIIAGABAFEC);
+      if (IHAOMLEPHOM != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(IHAOMLEPHOM);
       }
       if (MapId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MapId);
@@ -205,8 +205,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.EIIAGABAFEC != 0) {
-        EIIAGABAFEC = other.EIIAGABAFEC;
+      if (other.IHAOMLEPHOM != 0) {
+        IHAOMLEPHOM = other.IHAOMLEPHOM;
       }
       if (other.MapId != 0) {
         MapId = other.MapId;
@@ -230,11 +230,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 80: {
-            EIIAGABAFEC = input.ReadUInt32();
+          case 8: {
+            IHAOMLEPHOM = input.ReadUInt32();
             break;
           }
-          case 96: {
+          case 48: {
             MapId = input.ReadUInt32();
             break;
           }
@@ -257,11 +257,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 80: {
-            EIIAGABAFEC = input.ReadUInt32();
+          case 8: {
+            IHAOMLEPHOM = input.ReadUInt32();
             break;
           }
-          case 96: {
+          case 48: {
             MapId = input.ReadUInt32();
             break;
           }

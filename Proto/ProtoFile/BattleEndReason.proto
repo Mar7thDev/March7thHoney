@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum BattleEndReason {
     BATTLE_END_REASON_NONE = 0;
     BATTLE_END_REASON_ALL_DIE = 1;

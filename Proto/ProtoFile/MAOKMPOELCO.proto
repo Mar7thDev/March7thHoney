@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "NHHMEPILLHL.proto";
+import "PKHKEEKIODC.proto";
+
+message MAOKMPOELCO {
+    PKHKEEKIODC BBEHHCHKMNL = 13;
+    uint32 queue_position = 15;
+    NHHMEPILLHL source = 12;
+}

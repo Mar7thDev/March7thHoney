@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChdUYWtlT2ZmUmVsaWNDc1JlcS5wcm90byI/ChFUYWtlT2ZmUmVsaWNDc1Jl",
-            "cRIXCg9yZWxpY190eXBlX2xpc3QYBCADKA0SEQoJYXZhdGFyX2lkGAYgASgN",
+            "cRIXCg9yZWxpY190eXBlX2xpc3QYCCADKA0SEQoJYXZhdGFyX2lkGA8gASgN",
             "QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,9 +84,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "relic_type_list" field.</summary>
-    public const int RelicTypeListFieldNumber = 4;
+    public const int RelicTypeListFieldNumber = 8;
     private static readonly pb::FieldCodec<uint> _repeated_relicTypeList_codec
-        = pb::FieldCodec.ForUInt32(34);
+        = pb::FieldCodec.ForUInt32(66);
     private readonly pbc::RepeatedField<uint> relicTypeList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -95,7 +95,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "avatar_id" field.</summary>
-    public const int AvatarIdFieldNumber = 6;
+    public const int AvatarIdFieldNumber = 15;
     private uint avatarId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,7 +152,7 @@ namespace March7thHoney.Proto {
     #else
       relicTypeList_.WriteTo(output, _repeated_relicTypeList_codec);
       if (AvatarId != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(120);
         output.WriteUInt32(AvatarId);
       }
       if (_unknownFields != null) {
@@ -167,7 +167,7 @@ namespace March7thHoney.Proto {
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       relicTypeList_.WriteTo(ref output, _repeated_relicTypeList_codec);
       if (AvatarId != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(120);
         output.WriteUInt32(AvatarId);
       }
       if (_unknownFields != null) {
@@ -219,12 +219,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 34:
-          case 32: {
+          case 66:
+          case 64: {
             relicTypeList_.AddEntriesFrom(input, _repeated_relicTypeList_codec);
             break;
           }
-          case 48: {
+          case 120: {
             AvatarId = input.ReadUInt32();
             break;
           }
@@ -247,12 +247,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 34:
-          case 32: {
+          case 66:
+          case 64: {
             relicTypeList_.AddEntriesFrom(ref input, _repeated_relicTypeList_codec);
             break;
           }
-          case 48: {
+          case 120: {
             AvatarId = input.ReadUInt32();
             break;
           }

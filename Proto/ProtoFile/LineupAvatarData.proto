@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "AvatarType.proto";
 
 message LineupAvatarData {
-    uint32 hp = 2;
-    uint32 id = 6;
-    AvatarType avatar_type = 9;
+    uint32 hp = 8;
+    AvatarType avatar_type = 1;
+    uint32 id = 5;
 }

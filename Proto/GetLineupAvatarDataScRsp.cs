@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "Ch5HZXRMaW5ldXBBdmF0YXJEYXRhU2NSc3AucHJvdG8aFkxpbmV1cEF2YXRh",
             "ckRhdGEucHJvdG8iWAoYR2V0TGluZXVwQXZhdGFyRGF0YVNjUnNwEisKEGF2",
-            "YXRhcl9kYXRhX2xpc3QYAyADKAsyES5MaW5ldXBBdmF0YXJEYXRhEg8KB3Jl",
-            "dGNvZGUYDiABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "YXRhcl9kYXRhX2xpc3QYBSADKAsyES5MaW5ldXBBdmF0YXJEYXRhEg8KB3Jl",
+            "dGNvZGUYASABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.LineupAvatarDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -85,9 +85,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "avatar_data_list" field.</summary>
-    public const int AvatarDataListFieldNumber = 3;
+    public const int AvatarDataListFieldNumber = 5;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.LineupAvatarData> _repeated_avatarDataList_codec
-        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.LineupAvatarData.Parser);
+        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.LineupAvatarData.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.LineupAvatarData> avatarDataList_ = new pbc::RepeatedField<global::March7thHoney.Proto.LineupAvatarData>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 14;
+    public const int RetcodeFieldNumber = 1;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -151,11 +151,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      avatarDataList_.WriteTo(output, _repeated_avatarDataList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(8);
         output.WriteUInt32(Retcode);
       }
+      avatarDataList_.WriteTo(output, _repeated_avatarDataList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -166,11 +166,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      avatarDataList_.WriteTo(ref output, _repeated_avatarDataList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(8);
         output.WriteUInt32(Retcode);
       }
+      avatarDataList_.WriteTo(ref output, _repeated_avatarDataList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -220,12 +220,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 26: {
-            avatarDataList_.AddEntriesFrom(input, _repeated_avatarDataList_codec);
+          case 8: {
+            Retcode = input.ReadUInt32();
             break;
           }
-          case 112: {
-            Retcode = input.ReadUInt32();
+          case 42: {
+            avatarDataList_.AddEntriesFrom(input, _repeated_avatarDataList_codec);
             break;
           }
         }
@@ -247,12 +247,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 26: {
-            avatarDataList_.AddEntriesFrom(ref input, _repeated_avatarDataList_codec);
+          case 8: {
+            Retcode = input.ReadUInt32();
             break;
           }
-          case 112: {
-            Retcode = input.ReadUInt32();
+          case 42: {
+            avatarDataList_.AddEntriesFrom(ref input, _repeated_avatarDataList_codec);
             break;
           }
         }

@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum LBPLJCHEJOK {
+    LBPLJCHEJOK_NDDPEJHPLHG = 0;
+    LBPLJCHEJOK_BMBGOIDDIJD = 1;
+    LBPLJCHEJOK_KJDPEEAPJOO = 2;
+}

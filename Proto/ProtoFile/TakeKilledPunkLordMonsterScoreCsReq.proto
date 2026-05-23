@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "JLLIDDIBOHI.proto";
+import "CDCCPHILOCC.proto";
 
 message TakeKilledPunkLordMonsterScoreCsReq {
-    JLLIDDIBOHI JIPALBLOPFI = 9;
-    bool MDNFLHMOLNB = 11;
+    CDCCPHILOCC KHOLBEGBFOM = 2;
+    bool LOMGNMFAPGE = 14;
 }

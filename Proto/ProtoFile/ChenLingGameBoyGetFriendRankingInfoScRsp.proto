@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "PCMHMCLACNK.proto";
+import "NBHDCJHGKCN.proto";
 
 message ChenLingGameBoyGetFriendRankingInfoScRsp {
-    repeated PCMHMCLACNK JPNALKEFHOH = 8;
-    bool KEPMJKGJLNJ = 12;
-    uint32 retcode = 13;
-    uint32 GPJHJOOIJJC = 15;
+    repeated NBHDCJHGKCN BEDHEKAGAPE = 4;
+    uint32 IJCJBDDGGJF = 2;
+    bool EBAFPOLLJIA = 11;
+    uint32 retcode = 9;
 }

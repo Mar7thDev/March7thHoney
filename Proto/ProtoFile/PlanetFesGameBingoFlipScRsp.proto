@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "HLLCDBLCIPK.proto";
+import "GNMCIEPEBPK.proto";
 
 message PlanetFesGameBingoFlipScRsp {
-    uint32 NBFLCNHFEFM = 3;
-    bool JKLFMOHICMO = 4;
-    HLLCDBLCIPK reward = 8;
-    uint32 retcode = 14;
+    GNMCIEPEBPK reward = 6;
+    uint32 retcode = 5;
+    bool BDEFAFFDBCC = 11;
+    uint32 LKFIGBGPEJB = 2;
 }

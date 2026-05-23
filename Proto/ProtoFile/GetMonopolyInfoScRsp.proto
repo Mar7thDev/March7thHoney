@@ -2,32 +2,30 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "CIFMFBBMIDG.proto";
-import "FFKCDBGNELO.proto";
-import "FIOJPNPLKNP.proto";
-import "GFNGJAJAJJH.proto";
-import "IMDPAIOOHMF.proto";
-import "IMKOOMMHAML.proto";
-import "JLLHMAHMCBF.proto";
-import "MDKPOAEEGJB.proto";
-import "NOJCNLNIBBH.proto";
-import "ODONLHDAPKB.proto";
-import "OHJFHJHFGBH.proto";
+import "BCDIFIIDPIA.proto";
+import "CCMCKOKEJNI.proto";
+import "DBPHHPGNMKC.proto";
+import "FIOENGOHOOJ.proto";
+import "FOOFAIFPOOI.proto";
+import "HDDLALFAMKO.proto";
+import "ILMFJKCGBCK.proto";
+import "INGKNDHECNF.proto";
+import "NJHAGKGHKJJ.proto";
+import "OCDBIMIBNCD.proto";
+import "PDNABFBLEPG.proto";
 
 message GetMonopolyInfoScRsp {
-    NOJCNLNIBBH OBOOODMPBBH = 1;
-    uint32 retcode = 2;
-    FIOJPNPLKNP MNHBJFMNNOF = 3;
-    repeated uint32 GMOKKMANOJD = 5;
-    CIFMFBBMIDG GHLEJOGAICJ = 6;
-    JLLHMAHMCBF FBACKLDDEBL = 7;
-    IMKOOMMHAML HKGKNEKKJHB = 8;
-    FFKCDBGNELO GGLDOGIHFLG = 9;
-    OHJFHJHFGBH FFCDOBMOCDO = 10;
-    MDKPOAEEGJB stt = 12;
-    ODONLHDAPKB EOBENDPKFBO = 13;
-    IMDPAIOOHMF AMMJECHPGPE = 14;
-    GFNGJAJAJJH EDHLMHHAHDD = 15;
+    repeated uint32 CANEJDOMAFA = 9;
+    INGKNDHECNF HABJHGPFGEB = 4;
+    DBPHHPGNMKC KKKMHNAPFCP = 8;
+    FOOFAIFPOOI PNJBEPAAEOF = 15;
+    FIOENGOHOOJ MOMEIFPICLE = 7;
+    CCMCKOKEJNI CICLCCFLALE = 13;
+    ILMFJKCGBCK COOOMDKGODF = 14;
+    OCDBIMIBNCD stt = 5;
+    HDDLALFAMKO GKMKAEEDCHP = 3;
+    PDNABFBLEPG OCHNMGMDHME = 6;
+    BCDIFIIDPIA MALPPHCEOGB = 10;
+    NJHAGKGHKJJ OLAONLGLAJO = 1;
+    uint32 retcode = 11;
 }

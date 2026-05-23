@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message ChessRogueUpdateAeonModifierValueScNotify {
-    int32 CGNOKHABCPP = 11;
-    uint32 LGHOOKMNMCL = 14;
+    uint32 AFEMBLFCCCH = 14;
+    int32 FJCIKNAKJOG = 8;
 }

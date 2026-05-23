@@ -2,30 +2,28 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdEvolveBuildType {
-    JDDDPNDFNIH_HOJEEPOEDHC = 0;
-    CmdEvolveBuildStartLevelScRsp = 7127;
-    CmdEvolveBuildSkipTeachLevelScRsp = 7109;
-    JDDDPNDFNIH_LFHECPEAEDC = 7147;
-    CmdEvolveBuildSkipTeachLevelCsReq = 7133;
-    CmdEvolveBuildStartStageCsReq = 7135;
-    CmdEvolveBuildShopAbilityDownCsReq = 7116;
-    CmdEvolveBuildShopAbilityUpCsReq = 7103;
-    CmdGetEvolveBuildShopAbilityResetScRsp = 7106;
-    CmdGetEvolveBuildShopAbilityDownScRsp = 7131;
-    CmdGetEvolveBuildCoinNotify = 7126;
-    CmdEvolveBuildStartLevelCsReq = 7130;
-    CmdGetEvolveBuildShopAbilityUpScRsp = 7150;
-    CmdEvolveBuildGiveupCsReq = 7105;
-    CmdGetEvolveBuildQueryInfoScRsp = 7107;
-    CmdGetEvolveBuildGiveupScRsp = 7101;
-    CmdEvolveBuildShopAbilityResetCsReq = 7115;
-    CmdEvolveBuildReRandomStageCsReq = 7144;
-    CmdGetEvolveBuildFinishScNotify = 7102;
-    CmdPCKNAJOFGLD = 7119;
-    CmdEvolveBuildQueryInfoCsReq = 7113;
-    CmdEvolveBuildStartStageScRsp = 7138;
-    CmdGetEvolveBuildReRandomStageScRsp = 7118;
+    HNJJAFEFDLN_MMNFGNKHNLL = 0;
+    HNJJAFEFDLN_GCEEDDJFMMM = 7129;
+    HNJJAFEFDLN_LLMKCJLLGHF = 7116;
+    HNJJAFEFDLN_OLBPAANOMIL = 7120;
+    HNJJAFEFDLN_EIABEJIFLPD = 7114;
+    HNJJAFEFDLN_ODFGMJAGDFG = 7142;
+    HNJJAFEFDLN_IBICJEBEBIP = 7118;
+    HNJJAFEFDLN_BPAIMHDFFGM = 7123;
+    HNJJAFEFDLN_DGFNLJCOOJF = 7132;
+    HNJJAFEFDLN_ABFAAMPGPBO = 7143;
+    HNJJAFEFDLN_NGMEIEOKLKL = 7127;
+    HNJJAFEFDLN_PHNILCNIMIP = 7108;
+    HNJJAFEFDLN_IOPECHNPHOP = 7109;
+    HNJJAFEFDLN_NIDODDOIADG = 7141;
+    HNJJAFEFDLN_KIAAEGICBAC = 7144;
+    HNJJAFEFDLN_NLKCFLJOOEM = 7145;
+    HNJJAFEFDLN_ALJOKNGKJAJ = 7107;
+    HNJJAFEFDLN_KOFBPKFFMHB = 7103;
+    HNJJAFEFDLN_CECFHNMNPFN = 7119;
+    HNJJAFEFDLN_FBCKOPPDFPM = 7138;
+    HNJJAFEFDLN_LOLKFEKLJAE = 7150;
+    HNJJAFEFDLN_KLIAHLIPIIE = 7134;
+    HNJJAFEFDLN_PGNGMFPKPKO = 7121;
 }

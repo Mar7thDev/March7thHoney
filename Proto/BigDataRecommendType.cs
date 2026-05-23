@@ -24,7 +24,7 @@ namespace March7thHoney.Proto {
     static BigDataRecommendTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChpCaWdEYXRhUmVjb21tZW5kVHlwZS5wcm90byq2AwoUQmlnRGF0YVJlY29t",
+            "ChpCaWdEYXRhUmVjb21tZW5kVHlwZS5wcm90byrfAwoUQmlnRGF0YVJlY29t",
             "bWVuZFR5cGUSIAocQklHX0RBVEFfUkVDT01NRU5EX1RZUEVfTk9ORRAAEiUK",
             "IUJJR19EQVRBX1JFQ09NTUVORF9UWVBFX0VRVUlQTUVOVBABEiYKIkJJR19E",
             "QVRBX1JFQ09NTUVORF9UWVBFX1JFTElDX1NVSVQQAhIoCiRCSUdfREFUQV9S",
@@ -34,8 +34,9 @@ namespace March7thHoney.Proto {
             "VFlQRV9DSEFMTEVOR0VfUEVBS19NT0IQBhIvCitCSUdfREFUQV9SRUNPTU1F",
             "TkRfVFlQRV9DSEFMTEVOR0VfUEVBS19CT1NTEAcSJQohQklHX0RBVEFfUkVD",
             "T01NRU5EX1RZUEVfQ0hBTExFTkdFEAgSJwojQklHX0RBVEFfUkVDT01NRU5E",
-            "X1RZUEVfSE1GRkJJQU5LQkYQCUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IG",
-            "cHJvdG8z"));
+            "X1RZUEVfSE1GRkJJQU5LQkYQCRInCiNCSUdfREFUQV9SRUNPTU1FTkRfVFlQ",
+            "RV9JR0RORU9FTEZLQxAKQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
+            "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.BigDataRecommendType), }, null, null));
@@ -55,6 +56,7 @@ namespace March7thHoney.Proto {
     [pbr::OriginalName("BIG_DATA_RECOMMEND_TYPE_CHALLENGE_PEAK_BOSS")] ChallengePeakBoss = 7,
     [pbr::OriginalName("BIG_DATA_RECOMMEND_TYPE_CHALLENGE")] Challenge = 8,
     [pbr::OriginalName("BIG_DATA_RECOMMEND_TYPE_HMFFBIANKBF")] Hmffbiankbf = 9,
+    [pbr::OriginalName("BIG_DATA_RECOMMEND_TYPE_IGDNEOELFKC")] Igdneoelfkc = 10,
   }
 
   #endregion

@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message PlanetFesDealAvatarEventOptionItemCsReq {
-    bool ICOGAHFFCLD = 2;
-    uint32 GLIONEELOJH = 4;
+    bool MLKBOBIEAPL = 10;
+    uint32 HLLIBEEKFII = 6;
 }

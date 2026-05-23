@@ -24,18 +24,16 @@ namespace March7thHoney.Proto {
     static CmdHeartdialTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChZDbWRIZWFydGRpYWxUeXBlLnByb3RvKrwDChBDbWRIZWFydGRpYWxUeXBl",
-            "EhsKF05JT0ZESUZBREVLX1BDUERIRUxQS0VNEAASHgoZQ21kU3VibWl0RW1v",
-            "dGlvbkl0ZW1Dc1JlcRCqMRIhChxDbWRIZWFydERpYWxUcmFjZVNjcmlwdENz",
-            "UmVxELYxEh4KGUNtZFN1Ym1pdEVtb3Rpb25JdGVtU2NSc3AQrjESJQogQ21k",
-            "SGVhcnREaWFsU2NyaXB0Q2hhbmdlU2NOb3RpZnkQ2zESHQoYQ21kR2V0SGVh",
-            "cnREaWFsSW5mb0NzUmVxEPcxEiEKHENtZEhlYXJ0RGlhbFRyYWNlU2NyaXB0",
-            "U2NSc3AQwzESIAobQ21kQ2hhbmdlU2NyaXB0RW1vdGlvbkNzUmVxEPoxEi0K",
-            "KENtZEZpbmlzaEVtb3Rpb25EaWFsb2d1ZVBlcmZvcm1hbmNlU2NSc3AQ/jES",
-            "IAobQ21kQ2hhbmdlU2NyaXB0RW1vdGlvblNjUnNwEPsxEi0KKENtZEZpbmlz",
-            "aEVtb3Rpb25EaWFsb2d1ZVBlcmZvcm1hbmNlQ3NSZXEQpTESHQoYQ21kR2V0",
-            "SGVhcnREaWFsSW5mb1NjUnNwEKYxQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
-            "YgZwcm90bzM="));
+            "ChZDbWRIZWFydGRpYWxUeXBlLnByb3RvKvkCChBDbWRIZWFydGRpYWxUeXBl",
+            "EhsKF0ZQR0lHQkFNRERQX05MQ0RHSVBHRkRKEAASHAoXRlBHSUdCQU1ERFBf",
+            "R0hGSE9HQ0pIS0UQtzESHAoXRlBHSUdCQU1ERFBfRkpQR0dOQUNHQUkQpjES",
+            "HAoXRlBHSUdCQU1ERFBfRkRNRFBPQk9NQU4QqTESHAoXRlBHSUdCQU1ERFBf",
+            "S0JCRUZFRU5FTU0QwDESHAoXRlBHSUdCQU1ERFBfRkxHQ0pBUEJNUFAQ5TES",
+            "HAoXRlBHSUdCQU1ERFBfRUZLR0ZIT0JLR0wQ7TESHAoXRlBHSUdCQU1ERFBf",
+            "QkhFRkhBUElKQVAQqzESHAoXRlBHSUdCQU1ERFBfS0lMRUFETENIS0sQ8zES",
+            "HAoXRlBHSUdCQU1ERFBfTFBIQ0tJQkRPR00Q7DESHAoXRlBHSUdCQU1ERFBf",
+            "Qk1HUEZNRURESUUQnzESHAoXRlBHSUdCQU1ERFBfT0lMREZHQkhNT0IQuTFC",
+            "FqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdHeartdialType), }, null, null));
@@ -45,18 +43,18 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdHeartdialType {
-    [pbr::OriginalName("NIOFDIFADEK_PCPDHELPKEM")] NiofdifadekPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdSubmitEmotionItemCsReq")] CmdSubmitEmotionItemCsReq = 6314,
-    [pbr::OriginalName("CmdHeartDialTraceScriptCsReq")] CmdHeartDialTraceScriptCsReq = 6326,
-    [pbr::OriginalName("CmdSubmitEmotionItemScRsp")] CmdSubmitEmotionItemScRsp = 6318,
-    [pbr::OriginalName("CmdHeartDialScriptChangeScNotify")] CmdHeartDialScriptChangeScNotify = 6363,
-    [pbr::OriginalName("CmdGetHeartDialInfoCsReq")] CmdGetHeartDialInfoCsReq = 6391,
-    [pbr::OriginalName("CmdHeartDialTraceScriptScRsp")] CmdHeartDialTraceScriptScRsp = 6339,
-    [pbr::OriginalName("CmdChangeScriptEmotionCsReq")] CmdChangeScriptEmotionCsReq = 6394,
-    [pbr::OriginalName("CmdFinishEmotionDialoguePerformanceScRsp")] CmdFinishEmotionDialoguePerformanceScRsp = 6398,
-    [pbr::OriginalName("CmdChangeScriptEmotionScRsp")] CmdChangeScriptEmotionScRsp = 6395,
-    [pbr::OriginalName("CmdFinishEmotionDialoguePerformanceCsReq")] CmdFinishEmotionDialoguePerformanceCsReq = 6309,
-    [pbr::OriginalName("CmdGetHeartDialInfoScRsp")] CmdGetHeartDialInfoScRsp = 6310,
+    [pbr::OriginalName("FPGIGBAMDDP_NLCDGIPGFDJ")] FpgigbamddpNlcdgipgfdj = 0,
+    [pbr::OriginalName("FPGIGBAMDDP_GHFHOGCJHKE")] FpgigbamddpGhfhogcjhke = 6327,
+    [pbr::OriginalName("FPGIGBAMDDP_FJPGGNACGAI")] FpgigbamddpFjpggnacgai = 6310,
+    [pbr::OriginalName("FPGIGBAMDDP_FDMDPOBOMAN")] FpgigbamddpFdmdpoboman = 6313,
+    [pbr::OriginalName("FPGIGBAMDDP_KBBEFEENEMM")] FpgigbamddpKbbefeenemm = 6336,
+    [pbr::OriginalName("FPGIGBAMDDP_FLGCJAPBMPP")] FpgigbamddpFlgcjapbmpp = 6373,
+    [pbr::OriginalName("FPGIGBAMDDP_EFKGFHOBKGL")] FpgigbamddpEfkgfhobkgl = 6381,
+    [pbr::OriginalName("FPGIGBAMDDP_BHEFHAPIJAP")] FpgigbamddpBhefhapijap = 6315,
+    [pbr::OriginalName("FPGIGBAMDDP_KILEADLCHKK")] FpgigbamddpKileadlchkk = 6387,
+    [pbr::OriginalName("FPGIGBAMDDP_LPHCKIBDOGM")] FpgigbamddpLphckibdogm = 6380,
+    [pbr::OriginalName("FPGIGBAMDDP_BMGPFMEDDIE")] FpgigbamddpBmgpfmeddie = 6303,
+    [pbr::OriginalName("FPGIGBAMDDP_OILDFGBHMOB")] FpgigbamddpOildfgbhmob = 6329,
   }
 
   #endregion

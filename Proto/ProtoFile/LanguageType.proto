@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum LanguageType {
     LANGUAGE_NONE = 0;
     LANGUAGE_SC = 1;

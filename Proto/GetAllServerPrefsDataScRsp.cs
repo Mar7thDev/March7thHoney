@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiBHZXRBbGxTZXJ2ZXJQcmVmc0RhdGFTY1JzcC5wcm90bxoRU2VydmVyUHJl",
-            "ZnMucHJvdG8iVgoaR2V0QWxsU2VydmVyUHJlZnNEYXRhU2NSc3ASDwoHcmV0",
-            "Y29kZRgDIAEoDRInChFzZXJ2ZXJfcHJlZnNfbGlzdBgKIAMoCzIMLlNlcnZl",
-            "clByZWZzQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ZnMucHJvdG8iVgoaR2V0QWxsU2VydmVyUHJlZnNEYXRhU2NSc3ASJwoRc2Vy",
+            "dmVyX3ByZWZzX2xpc3QYCSADKAsyDC5TZXJ2ZXJQcmVmcxIPCgdyZXRjb2Rl",
+            "GA8gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ServerPrefsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetAllServerPrefsDataScRsp), global::March7thHoney.Proto.GetAllServerPrefsDataScRsp.Parser, new[]{ "Retcode", "ServerPrefsList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetAllServerPrefsDataScRsp), global::March7thHoney.Proto.GetAllServerPrefsDataScRsp.Parser, new[]{ "ServerPrefsList", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetAllServerPrefsDataScRsp(GetAllServerPrefsDataScRsp other) : this() {
-      retcode_ = other.retcode_;
       serverPrefsList_ = other.serverPrefsList_.Clone();
+      retcode_ = other.retcode_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,8 +84,19 @@ namespace March7thHoney.Proto {
       return new GetAllServerPrefsDataScRsp(this);
     }
 
+    /// <summary>Field number for the "server_prefs_list" field.</summary>
+    public const int ServerPrefsListFieldNumber = 9;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ServerPrefs> _repeated_serverPrefsList_codec
+        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.ServerPrefs.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ServerPrefs> serverPrefsList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ServerPrefs>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.ServerPrefs> ServerPrefsList {
+      get { return serverPrefsList_; }
+    }
+
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 3;
+    public const int RetcodeFieldNumber = 15;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -94,17 +105,6 @@ namespace March7thHoney.Proto {
       set {
         retcode_ = value;
       }
-    }
-
-    /// <summary>Field number for the "server_prefs_list" field.</summary>
-    public const int ServerPrefsListFieldNumber = 10;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ServerPrefs> _repeated_serverPrefsList_codec
-        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.ServerPrefs.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ServerPrefs> serverPrefsList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ServerPrefs>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.ServerPrefs> ServerPrefsList {
-      get { return serverPrefsList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Retcode != other.Retcode) return false;
       if(!serverPrefsList_.Equals(other.serverPrefsList_)) return false;
+      if (Retcode != other.Retcode) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       hash ^= serverPrefsList_.GetHashCode();
+      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -151,11 +151,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      serverPrefsList_.WriteTo(output, _repeated_serverPrefsList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(120);
         output.WriteUInt32(Retcode);
       }
-      serverPrefsList_.WriteTo(output, _repeated_serverPrefsList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -166,11 +166,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      serverPrefsList_.WriteTo(ref output, _repeated_serverPrefsList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(120);
         output.WriteUInt32(Retcode);
       }
-      serverPrefsList_.WriteTo(ref output, _repeated_serverPrefsList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -181,10 +181,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      size += serverPrefsList_.CalculateSize(_repeated_serverPrefsList_codec);
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
-      size += serverPrefsList_.CalculateSize(_repeated_serverPrefsList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -197,10 +197,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      serverPrefsList_.Add(other.serverPrefsList_);
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
-      serverPrefsList_.Add(other.serverPrefsList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -220,12 +220,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
-            Retcode = input.ReadUInt32();
+          case 74: {
+            serverPrefsList_.AddEntriesFrom(input, _repeated_serverPrefsList_codec);
             break;
           }
-          case 82: {
-            serverPrefsList_.AddEntriesFrom(input, _repeated_serverPrefsList_codec);
+          case 120: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -247,12 +247,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
-            Retcode = input.ReadUInt32();
+          case 74: {
+            serverPrefsList_.AddEntriesFrom(ref input, _repeated_serverPrefsList_codec);
             break;
           }
-          case 82: {
-            serverPrefsList_.AddEntriesFrom(ref input, _repeated_serverPrefsList_codec);
+          case 120: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }

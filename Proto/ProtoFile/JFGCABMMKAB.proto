@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message JFGCABMMKAB {
+    uint32 KDNBADEGDNK = 9;
+    bool NDBGPGODBPH = 5;
+    uint32 EBDDDCBKPAC = 8;
+    uint32 CEOEOEBOLNN = 11;
+    uint32 group_id = 1;
+}

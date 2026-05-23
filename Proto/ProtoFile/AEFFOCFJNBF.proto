@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "ItemCostData.proto";
+
+message AEFFOCFJNBF {
+    ItemCostData cost_data = 2;
+    float CBJALFOLFIH = 13;
+    uint32 buff_id = 14;
+}

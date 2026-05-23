@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message SetHipplenOutfitCsReq {
-    uint32 FKEGMMKNHON = 14;
+    uint32 IMIBAAPJGEJ = 6;
 }

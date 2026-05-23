@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "NCFKHDIKCNI.proto";
+import "PlanetFesQuestState.proto";
+
+message JHACFFJIPHK {
+    uint32 DPCHGMMCKNN = 14;
+    uint32 quest_id = 6;
+    PlanetFesQuestState status = 3;
+    uint32 progress = 4;
+    oneof JCPHPAHKPDD {
+        uint32 MCNLMNOKAFF = 10;
+        NCFKHDIKCNI KNOCPAJCPJC = 2;
+    }
+}

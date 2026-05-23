@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "GAAMBBFPCHB.proto";
+import "ItemList.proto";
+
+message FECGDOJFDIM {
+    repeated uint32 NGKOFMBBGNL = 12;
+    GAAMBBFPCHB NFEDANFBIBE = 6;
+    ItemList reward = 10;
+    uint32 retcode = 9;
+}

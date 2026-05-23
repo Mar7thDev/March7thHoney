@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum MonsterBattleType {
     MONSTER_BATTLE_TYPE_NONE = 0;
     MONSTER_BATTLE_TYPE_TRIGGER_BATTLE = 1;

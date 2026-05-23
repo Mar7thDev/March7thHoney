@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiJUYWtlRmlnaHRBY3Rpdml0eVJld2FyZENzUmVxLnByb3RvIkUKHFRha2VG",
-            "aWdodEFjdGl2aXR5UmV3YXJkQ3NSZXESEAoIZ3JvdXBfaWQYByABKA0SEwoL",
-            "SU5PTUZGQUlFT0EYCCABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
+            "aWdodEFjdGl2aXR5UmV3YXJkQ3NSZXESEwoLREJLSEhDR0dLTk4YDyABKA0S",
+            "EAoIZ3JvdXBfaWQYByABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
             "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TakeFightActivityRewardCsReq), global::March7thHoney.Proto.TakeFightActivityRewardCsReq.Parser, new[]{ "GroupId", "INOMFFAIEOA" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TakeFightActivityRewardCsReq), global::March7thHoney.Proto.TakeFightActivityRewardCsReq.Parser, new[]{ "DBKHHCGGKNN", "GroupId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public TakeFightActivityRewardCsReq(TakeFightActivityRewardCsReq other) : this() {
+      dBKHHCGGKNN_ = other.dBKHHCGGKNN_;
       groupId_ = other.groupId_;
-      iNOMFFAIEOA_ = other.iNOMFFAIEOA_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -82,6 +82,18 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public TakeFightActivityRewardCsReq Clone() {
       return new TakeFightActivityRewardCsReq(this);
+    }
+
+    /// <summary>Field number for the "DBKHHCGGKNN" field.</summary>
+    public const int DBKHHCGGKNNFieldNumber = 15;
+    private uint dBKHHCGGKNN_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint DBKHHCGGKNN {
+      get { return dBKHHCGGKNN_; }
+      set {
+        dBKHHCGGKNN_ = value;
+      }
     }
 
     /// <summary>Field number for the "group_id" field.</summary>
@@ -93,18 +105,6 @@ namespace March7thHoney.Proto {
       get { return groupId_; }
       set {
         groupId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "INOMFFAIEOA" field.</summary>
-    public const int INOMFFAIEOAFieldNumber = 8;
-    private uint iNOMFFAIEOA_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint INOMFFAIEOA {
-      get { return iNOMFFAIEOA_; }
-      set {
-        iNOMFFAIEOA_ = value;
       }
     }
 
@@ -123,8 +123,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (DBKHHCGGKNN != other.DBKHHCGGKNN) return false;
       if (GroupId != other.GroupId) return false;
-      if (INOMFFAIEOA != other.INOMFFAIEOA) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,8 +132,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (DBKHHCGGKNN != 0) hash ^= DBKHHCGGKNN.GetHashCode();
       if (GroupId != 0) hash ^= GroupId.GetHashCode();
-      if (INOMFFAIEOA != 0) hash ^= INOMFFAIEOA.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -156,9 +156,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(56);
         output.WriteUInt32(GroupId);
       }
-      if (INOMFFAIEOA != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(INOMFFAIEOA);
+      if (DBKHHCGGKNN != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(DBKHHCGGKNN);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -174,9 +174,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(56);
         output.WriteUInt32(GroupId);
       }
-      if (INOMFFAIEOA != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(INOMFFAIEOA);
+      if (DBKHHCGGKNN != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(DBKHHCGGKNN);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -188,11 +188,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (DBKHHCGGKNN != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DBKHHCGGKNN);
+      }
       if (GroupId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GroupId);
-      }
-      if (INOMFFAIEOA != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(INOMFFAIEOA);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -206,11 +206,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.DBKHHCGGKNN != 0) {
+        DBKHHCGGKNN = other.DBKHHCGGKNN;
+      }
       if (other.GroupId != 0) {
         GroupId = other.GroupId;
-      }
-      if (other.INOMFFAIEOA != 0) {
-        INOMFFAIEOA = other.INOMFFAIEOA;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -235,8 +235,8 @@ namespace March7thHoney.Proto {
             GroupId = input.ReadUInt32();
             break;
           }
-          case 64: {
-            INOMFFAIEOA = input.ReadUInt32();
+          case 120: {
+            DBKHHCGGKNN = input.ReadUInt32();
             break;
           }
         }
@@ -262,8 +262,8 @@ namespace March7thHoney.Proto {
             GroupId = input.ReadUInt32();
             break;
           }
-          case 64: {
-            INOMFFAIEOA = input.ReadUInt32();
+          case 120: {
+            DBKHHCGGKNN = input.ReadUInt32();
             break;
           }
         }

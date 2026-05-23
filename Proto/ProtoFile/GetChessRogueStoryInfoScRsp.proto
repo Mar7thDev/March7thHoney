@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "ADMKICHLGBP.proto";
-import "LKCEBEDHNBJ.proto";
+import "CHHBLFHDFEK.proto";
+import "EPHFHKDJKMD.proto";
 
 message GetChessRogueStoryInfoScRsp {
-    repeated ADMKICHLGBP DOKHDOGAPKD = 1;
-    uint32 retcode = 3;
-    repeated LKCEBEDHNBJ OLHNBEPHHFG = 12;
+    repeated CHHBLFHDFEK FNKLMMACCMJ = 4;
+    repeated EPHFHKDJKMD POABJDELNGH = 12;
+    uint32 retcode = 8;
 }

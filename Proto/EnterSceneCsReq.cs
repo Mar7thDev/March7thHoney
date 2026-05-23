@@ -25,16 +25,16 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChVFbnRlclNjZW5lQ3NSZXEucHJvdG8aFVNjZW5lSWRlbnRpZmllci5wcm90",
-            "bxoMVmVjdG9yLnByb3RvIsIBCg9FbnRlclNjZW5lQ3NSZXESFAoMaXNfY2xv",
-            "c2VfbWFwGAIgASgIEhAKCGVudHJ5X2lkGAQgASgNEhMKC3RlbGVwb3J0X2lk",
-            "GAYgASgNEhMKC09NRktNR0tJSUtQGAggASgIEioKEHNjZW5lX2lkZW50aWZp",
-            "ZXIYCSABKAsyEC5TY2VuZUlkZW50aWZpZXISEwoLaW50ZXJhY3RfaWQYDCAB",
-            "KAQSHAoLQkxKTEJORlBIRkUYDSABKAsyBy5WZWN0b3JCFqoCE01hcmNoN3Ro",
+            "bxoMVmVjdG9yLnByb3RvIsIBCg9FbnRlclNjZW5lQ3NSZXESHAoLSURBQk9L",
+            "TEpPTEcYCCABKAsyBy5WZWN0b3ISKgoQc2NlbmVfaWRlbnRpZmllchgKIAEo",
+            "CzIQLlNjZW5lSWRlbnRpZmllchITCgtGQlBLT0ZPSU9MQxgJIAEoCBIUCgxp",
+            "c19jbG9zZV9tYXAYDCABKAgSEAoIZW50cnlfaWQYAiABKA0SEwoLaW50ZXJh",
+            "Y3RfaWQYAyABKAQSEwoLdGVsZXBvcnRfaWQYDyABKA1CFqoCE01hcmNoN3Ro",
             "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.SceneIdentifierReflection.Descriptor, global::March7thHoney.Proto.VectorReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EnterSceneCsReq), global::March7thHoney.Proto.EnterSceneCsReq.Parser, new[]{ "IsCloseMap", "EntryId", "TeleportId", "OMFKMGKIIKP", "SceneIdentifier", "InteractId", "BLJLBNFPHFE" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EnterSceneCsReq), global::March7thHoney.Proto.EnterSceneCsReq.Parser, new[]{ "IDABOKLJOLG", "SceneIdentifier", "FBPKOFOIOLC", "IsCloseMap", "EntryId", "InteractId", "TeleportId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -76,13 +76,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public EnterSceneCsReq(EnterSceneCsReq other) : this() {
+      iDABOKLJOLG_ = other.iDABOKLJOLG_ != null ? other.iDABOKLJOLG_.Clone() : null;
+      sceneIdentifier_ = other.sceneIdentifier_ != null ? other.sceneIdentifier_.Clone() : null;
+      fBPKOFOIOLC_ = other.fBPKOFOIOLC_;
       isCloseMap_ = other.isCloseMap_;
       entryId_ = other.entryId_;
-      teleportId_ = other.teleportId_;
-      oMFKMGKIIKP_ = other.oMFKMGKIIKP_;
-      sceneIdentifier_ = other.sceneIdentifier_ != null ? other.sceneIdentifier_.Clone() : null;
       interactId_ = other.interactId_;
-      bLJLBNFPHFE_ = other.bLJLBNFPHFE_ != null ? other.bLJLBNFPHFE_.Clone() : null;
+      teleportId_ = other.teleportId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -92,8 +92,44 @@ namespace March7thHoney.Proto {
       return new EnterSceneCsReq(this);
     }
 
+    /// <summary>Field number for the "IDABOKLJOLG" field.</summary>
+    public const int IDABOKLJOLGFieldNumber = 8;
+    private global::March7thHoney.Proto.Vector iDABOKLJOLG_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.Vector IDABOKLJOLG {
+      get { return iDABOKLJOLG_; }
+      set {
+        iDABOKLJOLG_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "scene_identifier" field.</summary>
+    public const int SceneIdentifierFieldNumber = 10;
+    private global::March7thHoney.Proto.SceneIdentifier sceneIdentifier_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.SceneIdentifier SceneIdentifier {
+      get { return sceneIdentifier_; }
+      set {
+        sceneIdentifier_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "FBPKOFOIOLC" field.</summary>
+    public const int FBPKOFOIOLCFieldNumber = 9;
+    private bool fBPKOFOIOLC_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool FBPKOFOIOLC {
+      get { return fBPKOFOIOLC_; }
+      set {
+        fBPKOFOIOLC_ = value;
+      }
+    }
+
     /// <summary>Field number for the "is_close_map" field.</summary>
-    public const int IsCloseMapFieldNumber = 2;
+    public const int IsCloseMapFieldNumber = 12;
     private bool isCloseMap_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -105,7 +141,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "entry_id" field.</summary>
-    public const int EntryIdFieldNumber = 4;
+    public const int EntryIdFieldNumber = 2;
     private uint entryId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -116,44 +152,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "teleport_id" field.</summary>
-    public const int TeleportIdFieldNumber = 6;
-    private uint teleportId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint TeleportId {
-      get { return teleportId_; }
-      set {
-        teleportId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "OMFKMGKIIKP" field.</summary>
-    public const int OMFKMGKIIKPFieldNumber = 8;
-    private bool oMFKMGKIIKP_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool OMFKMGKIIKP {
-      get { return oMFKMGKIIKP_; }
-      set {
-        oMFKMGKIIKP_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "scene_identifier" field.</summary>
-    public const int SceneIdentifierFieldNumber = 9;
-    private global::March7thHoney.Proto.SceneIdentifier sceneIdentifier_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.SceneIdentifier SceneIdentifier {
-      get { return sceneIdentifier_; }
-      set {
-        sceneIdentifier_ = value;
-      }
-    }
-
     /// <summary>Field number for the "interact_id" field.</summary>
-    public const int InteractIdFieldNumber = 12;
+    public const int InteractIdFieldNumber = 3;
     private ulong interactId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -164,15 +164,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "BLJLBNFPHFE" field.</summary>
-    public const int BLJLBNFPHFEFieldNumber = 13;
-    private global::March7thHoney.Proto.Vector bLJLBNFPHFE_;
+    /// <summary>Field number for the "teleport_id" field.</summary>
+    public const int TeleportIdFieldNumber = 15;
+    private uint teleportId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.Vector BLJLBNFPHFE {
-      get { return bLJLBNFPHFE_; }
+    public uint TeleportId {
+      get { return teleportId_; }
       set {
-        bLJLBNFPHFE_ = value;
+        teleportId_ = value;
       }
     }
 
@@ -191,13 +191,13 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (!object.Equals(IDABOKLJOLG, other.IDABOKLJOLG)) return false;
+      if (!object.Equals(SceneIdentifier, other.SceneIdentifier)) return false;
+      if (FBPKOFOIOLC != other.FBPKOFOIOLC) return false;
       if (IsCloseMap != other.IsCloseMap) return false;
       if (EntryId != other.EntryId) return false;
-      if (TeleportId != other.TeleportId) return false;
-      if (OMFKMGKIIKP != other.OMFKMGKIIKP) return false;
-      if (!object.Equals(SceneIdentifier, other.SceneIdentifier)) return false;
       if (InteractId != other.InteractId) return false;
-      if (!object.Equals(BLJLBNFPHFE, other.BLJLBNFPHFE)) return false;
+      if (TeleportId != other.TeleportId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -205,13 +205,13 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (iDABOKLJOLG_ != null) hash ^= IDABOKLJOLG.GetHashCode();
+      if (sceneIdentifier_ != null) hash ^= SceneIdentifier.GetHashCode();
+      if (FBPKOFOIOLC != false) hash ^= FBPKOFOIOLC.GetHashCode();
       if (IsCloseMap != false) hash ^= IsCloseMap.GetHashCode();
       if (EntryId != 0) hash ^= EntryId.GetHashCode();
-      if (TeleportId != 0) hash ^= TeleportId.GetHashCode();
-      if (OMFKMGKIIKP != false) hash ^= OMFKMGKIIKP.GetHashCode();
-      if (sceneIdentifier_ != null) hash ^= SceneIdentifier.GetHashCode();
       if (InteractId != 0UL) hash ^= InteractId.GetHashCode();
-      if (bLJLBNFPHFE_ != null) hash ^= BLJLBNFPHFE.GetHashCode();
+      if (TeleportId != 0) hash ^= TeleportId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -230,33 +230,33 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (IsCloseMap != false) {
-        output.WriteRawTag(16);
-        output.WriteBool(IsCloseMap);
-      }
       if (EntryId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(16);
         output.WriteUInt32(EntryId);
       }
-      if (TeleportId != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(TeleportId);
-      }
-      if (OMFKMGKIIKP != false) {
-        output.WriteRawTag(64);
-        output.WriteBool(OMFKMGKIIKP);
-      }
-      if (sceneIdentifier_ != null) {
-        output.WriteRawTag(74);
-        output.WriteMessage(SceneIdentifier);
-      }
       if (InteractId != 0UL) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(24);
         output.WriteUInt64(InteractId);
       }
-      if (bLJLBNFPHFE_ != null) {
-        output.WriteRawTag(106);
-        output.WriteMessage(BLJLBNFPHFE);
+      if (iDABOKLJOLG_ != null) {
+        output.WriteRawTag(66);
+        output.WriteMessage(IDABOKLJOLG);
+      }
+      if (FBPKOFOIOLC != false) {
+        output.WriteRawTag(72);
+        output.WriteBool(FBPKOFOIOLC);
+      }
+      if (sceneIdentifier_ != null) {
+        output.WriteRawTag(82);
+        output.WriteMessage(SceneIdentifier);
+      }
+      if (IsCloseMap != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(IsCloseMap);
+      }
+      if (TeleportId != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(TeleportId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -268,33 +268,33 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (IsCloseMap != false) {
-        output.WriteRawTag(16);
-        output.WriteBool(IsCloseMap);
-      }
       if (EntryId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(16);
         output.WriteUInt32(EntryId);
       }
-      if (TeleportId != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(TeleportId);
-      }
-      if (OMFKMGKIIKP != false) {
-        output.WriteRawTag(64);
-        output.WriteBool(OMFKMGKIIKP);
-      }
-      if (sceneIdentifier_ != null) {
-        output.WriteRawTag(74);
-        output.WriteMessage(SceneIdentifier);
-      }
       if (InteractId != 0UL) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(24);
         output.WriteUInt64(InteractId);
       }
-      if (bLJLBNFPHFE_ != null) {
-        output.WriteRawTag(106);
-        output.WriteMessage(BLJLBNFPHFE);
+      if (iDABOKLJOLG_ != null) {
+        output.WriteRawTag(66);
+        output.WriteMessage(IDABOKLJOLG);
+      }
+      if (FBPKOFOIOLC != false) {
+        output.WriteRawTag(72);
+        output.WriteBool(FBPKOFOIOLC);
+      }
+      if (sceneIdentifier_ != null) {
+        output.WriteRawTag(82);
+        output.WriteMessage(SceneIdentifier);
+      }
+      if (IsCloseMap != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(IsCloseMap);
+      }
+      if (TeleportId != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(TeleportId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -306,26 +306,26 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (iDABOKLJOLG_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(IDABOKLJOLG);
+      }
+      if (sceneIdentifier_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(SceneIdentifier);
+      }
+      if (FBPKOFOIOLC != false) {
+        size += 1 + 1;
+      }
       if (IsCloseMap != false) {
         size += 1 + 1;
       }
       if (EntryId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EntryId);
       }
-      if (TeleportId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TeleportId);
-      }
-      if (OMFKMGKIIKP != false) {
-        size += 1 + 1;
-      }
-      if (sceneIdentifier_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(SceneIdentifier);
-      }
       if (InteractId != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(InteractId);
       }
-      if (bLJLBNFPHFE_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(BLJLBNFPHFE);
+      if (TeleportId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TeleportId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -339,17 +339,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.IsCloseMap != false) {
-        IsCloseMap = other.IsCloseMap;
-      }
-      if (other.EntryId != 0) {
-        EntryId = other.EntryId;
-      }
-      if (other.TeleportId != 0) {
-        TeleportId = other.TeleportId;
-      }
-      if (other.OMFKMGKIIKP != false) {
-        OMFKMGKIIKP = other.OMFKMGKIIKP;
+      if (other.iDABOKLJOLG_ != null) {
+        if (iDABOKLJOLG_ == null) {
+          IDABOKLJOLG = new global::March7thHoney.Proto.Vector();
+        }
+        IDABOKLJOLG.MergeFrom(other.IDABOKLJOLG);
       }
       if (other.sceneIdentifier_ != null) {
         if (sceneIdentifier_ == null) {
@@ -357,14 +351,20 @@ namespace March7thHoney.Proto {
         }
         SceneIdentifier.MergeFrom(other.SceneIdentifier);
       }
+      if (other.FBPKOFOIOLC != false) {
+        FBPKOFOIOLC = other.FBPKOFOIOLC;
+      }
+      if (other.IsCloseMap != false) {
+        IsCloseMap = other.IsCloseMap;
+      }
+      if (other.EntryId != 0) {
+        EntryId = other.EntryId;
+      }
       if (other.InteractId != 0UL) {
         InteractId = other.InteractId;
       }
-      if (other.bLJLBNFPHFE_ != null) {
-        if (bLJLBNFPHFE_ == null) {
-          BLJLBNFPHFE = new global::March7thHoney.Proto.Vector();
-        }
-        BLJLBNFPHFE.MergeFrom(other.BLJLBNFPHFE);
+      if (other.TeleportId != 0) {
+        TeleportId = other.TeleportId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -386,22 +386,25 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 16: {
-            IsCloseMap = input.ReadBool();
-            break;
-          }
-          case 32: {
             EntryId = input.ReadUInt32();
             break;
           }
-          case 48: {
-            TeleportId = input.ReadUInt32();
+          case 24: {
+            InteractId = input.ReadUInt64();
             break;
           }
-          case 64: {
-            OMFKMGKIIKP = input.ReadBool();
+          case 66: {
+            if (iDABOKLJOLG_ == null) {
+              IDABOKLJOLG = new global::March7thHoney.Proto.Vector();
+            }
+            input.ReadMessage(IDABOKLJOLG);
             break;
           }
-          case 74: {
+          case 72: {
+            FBPKOFOIOLC = input.ReadBool();
+            break;
+          }
+          case 82: {
             if (sceneIdentifier_ == null) {
               SceneIdentifier = new global::March7thHoney.Proto.SceneIdentifier();
             }
@@ -409,14 +412,11 @@ namespace March7thHoney.Proto {
             break;
           }
           case 96: {
-            InteractId = input.ReadUInt64();
+            IsCloseMap = input.ReadBool();
             break;
           }
-          case 106: {
-            if (bLJLBNFPHFE_ == null) {
-              BLJLBNFPHFE = new global::March7thHoney.Proto.Vector();
-            }
-            input.ReadMessage(BLJLBNFPHFE);
+          case 120: {
+            TeleportId = input.ReadUInt32();
             break;
           }
         }
@@ -439,22 +439,25 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 16: {
-            IsCloseMap = input.ReadBool();
-            break;
-          }
-          case 32: {
             EntryId = input.ReadUInt32();
             break;
           }
-          case 48: {
-            TeleportId = input.ReadUInt32();
+          case 24: {
+            InteractId = input.ReadUInt64();
             break;
           }
-          case 64: {
-            OMFKMGKIIKP = input.ReadBool();
+          case 66: {
+            if (iDABOKLJOLG_ == null) {
+              IDABOKLJOLG = new global::March7thHoney.Proto.Vector();
+            }
+            input.ReadMessage(IDABOKLJOLG);
             break;
           }
-          case 74: {
+          case 72: {
+            FBPKOFOIOLC = input.ReadBool();
+            break;
+          }
+          case 82: {
             if (sceneIdentifier_ == null) {
               SceneIdentifier = new global::March7thHoney.Proto.SceneIdentifier();
             }
@@ -462,14 +465,11 @@ namespace March7thHoney.Proto {
             break;
           }
           case 96: {
-            InteractId = input.ReadUInt64();
+            IsCloseMap = input.ReadBool();
             break;
           }
-          case 106: {
-            if (bLJLBNFPHFE_ == null) {
-              BLJLBNFPHFE = new global::March7thHoney.Proto.Vector();
-            }
-            input.ReadMessage(BLJLBNFPHFE);
+          case 120: {
+            TeleportId = input.ReadUInt32();
             break;
           }
         }

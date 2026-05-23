@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message PIBEHFDDAAJ {
+    bool DHLLPOBKLIO = 3;
+    uint32 score_id = 7;
+}

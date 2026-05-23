@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "AJDFPFHBFJM.proto";
+import "CJPOMFIDLOA.proto";
+import "DFMGEJCCBPD.proto";
+import "DGILDLDMGEI.proto";
+import "EJEFKJGAKOO.proto";
+import "EPLJJNHCJIF.proto";
+import "FNNFHNKHIDD.proto";
+import "GIOLAAKLDED.proto";
+import "GKLDOELMEIN.proto";
+import "HMNMJKCHABE.proto";
+import "IDOJADMFGKF.proto";
+import "LAPOAFHDNCM.proto";
+import "LFONAPFHAOB.proto";
+import "NEMAKFJPGDF.proto";
+import "NIDJPBLNDLH.proto";
+import "NNFPCAPDENH.proto";
+import "OHAINOHGKCM.proto";
+import "PCCGPNAFMHP.proto";
+import "PDKGKIDCBKA.proto";
+
+message GridFightHandlePendingActionCsReq {
+    uint32 queue_position = 15;
+    oneof FGLIODAJFML {
+        LAPOAFHDNCM MFFCPLBNHCF = 1609;
+        EPLJJNHCJIF DCPHLHNLNKF = 1783;
+        CJPOMFIDLOA IBCHMBNIPLK = 1599;
+        GIOLAAKLDED DAJDBBEPMMA = 520;
+        GKLDOELMEIN PKHJLKNGCGH = 283;
+        OHAINOHGKCM BAKAKODKECM = 1177;
+        NIDJPBLNDLH JLPOPEAJHMF = 1097;
+        NNFPCAPDENH KEBDKGKEJDD = 471;
+        AJDFPFHBFJM NNDGEJFLGGF = 1950;
+        NEMAKFJPGDF LGNPHHBGKFH = 1883;
+        HMNMJKCHABE FIKAGBAEOAP = 1774;
+        DFMGEJCCBPD IACBCOBMGJB = 128;
+        PDKGKIDCBKA HOKCPPPLJIO = 1134;
+        DGILDLDMGEI EMMPHLKJAJN = 1306;
+        PCCGPNAFMHP HHNPEHMBDKD = 1548;
+        LFONAPFHAOB HHNHGJMOGDD = 219;
+        FNNFHNKHIDD CFDIPFKBFJB = 325;
+        IDOJADMFGKF NFBJINKLLLK = 871;
+        EJEFKJGAKOO LAJGNNBOLDG = 1089;
+    }
+}

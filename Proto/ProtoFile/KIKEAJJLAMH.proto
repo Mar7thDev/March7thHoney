@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "CJOCDGGCPCN.proto";
+import "DLEKOLHCNIE.proto";
+import "FJFBLHNFMOM.proto";
+import "HMGGOEHMIJO.proto";
+import "HMOECPBNAOK.proto";
+import "JGJEICAELEB.proto";
+import "JGMDJIENFFH.proto";
+import "KGPIEEKIEME.proto";
+import "MDLPIFCHFPJ.proto";
+import "MJMGOBMOPDL.proto";
+
+message KIKEAJJLAMH {
+    KGPIEEKIEME HANICMMHJGI = 6;
+    repeated MJMGOBMOPDL HLJOMIMOANL = 8;
+    JGJEICAELEB DMFPCFCHHKE = 2;
+    HMGGOEHMIJO HHFAAFOBKME = 13;
+    HMOECPBNAOK HAMKPLCBEBG = 4;
+    repeated FJFBLHNFMOM JJIEDDMALPE = 12;
+    CJOCDGGCPCN BFNHJIBDMOA = 14;
+    JGMDJIENFFH DLDCFHHFMID = 7;
+    MDLPIFCHFPJ DPABCOHLPLH = 1;
+    repeated DLEKOLHCNIE DANNIDIPFAL = 15;
+}

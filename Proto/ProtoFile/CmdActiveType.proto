@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdActiveType {
-    DOILPDPENLJ_PCPDHELPKEM = 0;
-    CmdGetActiveActivityDataScRsp = 9570;
-    CmdActiveActivityDataChangeScNotify = 9565;
-    CmdTakeActiveActivityRewardCsReq = 9552;
-    CmdGetActivityActiveDataCsReq = 9551;
-    CmdTakeActiveActivityRewardScRsp = 9560;
+    JGJCDABBNIJ_NLCDGIPGFDJ = 0;
+    JGJCDABBNIJ_HHHDNIMNPKN = 9552;
+    JGJCDABBNIJ_IHNCNPFIIBD = 9570;
+    JGJCDABBNIJ_AOIDPACHIMG = 9568;
+    JGJCDABBNIJ_ADHCFEAOLBE = 9556;
+    JGJCDABBNIJ_DPNIGHKMDGA = 9566;
 }

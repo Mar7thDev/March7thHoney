@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message MusicRhythmUnlockSongSfxScNotify {
-    repeated uint32 MPMCJPMMDMC = 2;
+    repeated uint32 PHCHFKMHDMA = 10;
 }

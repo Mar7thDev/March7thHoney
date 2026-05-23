@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "ExtraLineupType.proto";
 
 message ChallengeLineupNotify {
-    ExtraLineupType extra_lineup_type = 15;
+    ExtraLineupType extra_lineup_type = 5;
 }

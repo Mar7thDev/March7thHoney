@@ -2,15 +2,13 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "OCLEJLEFBFO.proto";
+import "PBIEFHKNAFA.proto";
 
 message GetReplayTokenCsReq {
-    string EBNFHHGKDKE = 1;
-    OCLEJLEFBFO replay_type = 2;
-    uint32 KALAGIBCNAO = 3;
-    string DFLMKCIKFOP = 4;
-    uint32 DAFEJIENABL = 12;
-    uint32 stage_id = 15;
+    string LMFFNNIGMMO = 8;
+    string GIMGDNJPPDJ = 13;
+    uint32 stage_id = 3;
+    PBIEFHKNAFA replay_type = 11;
+    uint32 KLIFGJOILEE = 7;
+    uint32 PBNIENNCNOP = 15;
 }

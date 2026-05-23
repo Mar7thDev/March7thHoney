@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "OAMHEIJBIKG.proto";
+import "PLOHACFCDKF.proto";
 
 message ElfRestaurantTakeVillagerRewardScRsp {
-    uint32 retcode = 3;
-    repeated OAMHEIJBIKG HALFGLGLDLO = 13;
+    repeated PLOHACFCDKF DJOBNPIAEJP = 1;
+    uint32 retcode = 11;
 }

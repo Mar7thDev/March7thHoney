@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "EPNCDFBAHEA.proto";
+import "ONHKODAFEMH.proto";
 
 message MainMissionCustomValue {
-    EPNCDFBAHEA custom_value_list = 5;
-    uint32 main_mission_id = 11;
+    ONHKODAFEMH custom_value_list = 7;
+    uint32 main_mission_id = 1;
 }

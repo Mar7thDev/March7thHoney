@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message HOLHBEOHEJD {
+    repeated uint64 FBEBNLOPIBL = 2;
+    uint32 interact_id = 1;
+}

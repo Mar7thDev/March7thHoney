@@ -2,17 +2,15 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "LNGJCJNKPKE.proto";
-import "NOMNEHCNGLH.proto";
+import "BADOONPCDLO.proto";
+import "OHFECKKADEK.proto";
 
 message ParkourEndLevelScRsp {
-    bool BCBOHFGDEMF = 4;
-    uint32 time = 5;
-    uint32 retcode = 8;
-    bool IDOPNCKAADO = 9;
-    LNGJCJNKPKE EFAADCIGMDK = 10;
-    uint32 level_id = 11;
-    NOMNEHCNGLH end_reason = 15;
+    BADOONPCDLO ENKCCEACJKL = 14;
+    OHFECKKADEK end_reason = 15;
+    bool ADJLGNBJAOC = 12;
+    bool AJGOLAKNGPA = 7;
+    uint32 time = 6;
+    uint32 retcode = 9;
+    uint32 level_id = 13;
 }

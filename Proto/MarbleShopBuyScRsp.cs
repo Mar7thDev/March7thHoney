@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChhNYXJibGVTaG9wQnV5U2NSc3AucHJvdG8iOgoSTWFyYmxlU2hvcEJ1eVNj",
-            "UnNwEhMKC05MT0lOTU9EQkxFGAQgAygNEg8KB3JldGNvZGUYDSABKA1CFqoC",
+            "UnNwEhMKC0VHQ0xMS0RISUFFGAUgAygNEg8KB3JldGNvZGUYCyABKA1CFqoC",
             "E01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MarbleShopBuyScRsp), global::March7thHoney.Proto.MarbleShopBuyScRsp.Parser, new[]{ "NLOINMODBLE", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MarbleShopBuyScRsp), global::March7thHoney.Proto.MarbleShopBuyScRsp.Parser, new[]{ "EGCLLKDHIAE", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,7 +72,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MarbleShopBuyScRsp(MarbleShopBuyScRsp other) : this() {
-      nLOINMODBLE_ = other.nLOINMODBLE_.Clone();
+      eGCLLKDHIAE_ = other.eGCLLKDHIAE_.Clone();
       retcode_ = other.retcode_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -83,19 +83,19 @@ namespace March7thHoney.Proto {
       return new MarbleShopBuyScRsp(this);
     }
 
-    /// <summary>Field number for the "NLOINMODBLE" field.</summary>
-    public const int NLOINMODBLEFieldNumber = 4;
-    private static readonly pb::FieldCodec<uint> _repeated_nLOINMODBLE_codec
-        = pb::FieldCodec.ForUInt32(34);
-    private readonly pbc::RepeatedField<uint> nLOINMODBLE_ = new pbc::RepeatedField<uint>();
+    /// <summary>Field number for the "EGCLLKDHIAE" field.</summary>
+    public const int EGCLLKDHIAEFieldNumber = 5;
+    private static readonly pb::FieldCodec<uint> _repeated_eGCLLKDHIAE_codec
+        = pb::FieldCodec.ForUInt32(42);
+    private readonly pbc::RepeatedField<uint> eGCLLKDHIAE_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> NLOINMODBLE {
-      get { return nLOINMODBLE_; }
+    public pbc::RepeatedField<uint> EGCLLKDHIAE {
+      get { return eGCLLKDHIAE_; }
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 13;
+    public const int RetcodeFieldNumber = 11;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -121,7 +121,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!nLOINMODBLE_.Equals(other.nLOINMODBLE_)) return false;
+      if(!eGCLLKDHIAE_.Equals(other.eGCLLKDHIAE_)) return false;
       if (Retcode != other.Retcode) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -130,7 +130,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= nLOINMODBLE_.GetHashCode();
+      hash ^= eGCLLKDHIAE_.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -150,9 +150,9 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      nLOINMODBLE_.WriteTo(output, _repeated_nLOINMODBLE_codec);
+      eGCLLKDHIAE_.WriteTo(output, _repeated_eGCLLKDHIAE_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(88);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -165,9 +165,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      nLOINMODBLE_.WriteTo(ref output, _repeated_nLOINMODBLE_codec);
+      eGCLLKDHIAE_.WriteTo(ref output, _repeated_eGCLLKDHIAE_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(88);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -180,7 +180,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += nLOINMODBLE_.CalculateSize(_repeated_nLOINMODBLE_codec);
+      size += eGCLLKDHIAE_.CalculateSize(_repeated_eGCLLKDHIAE_codec);
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
@@ -196,7 +196,7 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      nLOINMODBLE_.Add(other.nLOINMODBLE_);
+      eGCLLKDHIAE_.Add(other.eGCLLKDHIAE_);
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
@@ -219,12 +219,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 34:
-          case 32: {
-            nLOINMODBLE_.AddEntriesFrom(input, _repeated_nLOINMODBLE_codec);
+          case 42:
+          case 40: {
+            eGCLLKDHIAE_.AddEntriesFrom(input, _repeated_eGCLLKDHIAE_codec);
             break;
           }
-          case 104: {
+          case 88: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -247,12 +247,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 34:
-          case 32: {
-            nLOINMODBLE_.AddEntriesFrom(ref input, _repeated_nLOINMODBLE_codec);
+          case 42:
+          case 40: {
+            eGCLLKDHIAE_.AddEntriesFrom(ref input, _repeated_eGCLLKDHIAE_codec);
             break;
           }
-          case 104: {
+          case 88: {
             Retcode = input.ReadUInt32();
             break;
           }

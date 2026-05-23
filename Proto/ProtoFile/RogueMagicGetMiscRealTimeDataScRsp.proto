@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "HHAANBNCLHI.proto";
-import "IGJJFOKAHAP.proto";
+import "EJHDAJAGFIJ.proto";
+import "NOAKCDKAAFB.proto";
 
 message RogueMagicGetMiscRealTimeDataScRsp {
-    IGJJFOKAHAP NOCNEOMKFIO = 3;
-    uint32 retcode = 5;
-    HHAANBNCLHI KKLHGCJKPLJ = 9;
+    EJHDAJAGFIJ KDDGKLNGNEA = 1;
+    NOAKCDKAAFB BNLLEJPCIGD = 2;
+    uint32 retcode = 4;
 }

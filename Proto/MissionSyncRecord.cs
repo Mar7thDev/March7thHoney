@@ -24,15 +24,16 @@ namespace March7thHoney.Proto {
     static MissionSyncRecordReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChdNaXNzaW9uU3luY1JlY29yZC5wcm90byq1AgoRTWlzc2lvblN5bmNSZWNv",
-            "cmQSGwoXQUxHUENPT0JFRkZfQURQSkZNSkpBQk4QABIbChdBTEdQQ09PQkVG",
-            "Rl9LSEpDS0NERkVKTBABEhsKF0FMR1BDT09CRUZGX0ZNSUpQQlBPSEpEEAIS",
-            "GwoXQUxHUENPT0JFRkZfUE9HUE5OQkhNSU8QAxIbChdBTEdQQ09PQkVGRl9P",
-            "TU5GTEFJS0lCQxAEEhsKF0FMR1BDT09CRUZGX0VBSEJNT0ZKSUZJEAsSGwoX",
-            "QUxHUENPT0JFRkZfRkFFS0RDRVBQTk4QDBIbChdBTEdQQ09PQkVGRl9DREVI",
-            "REJJSUFBSBANEhsKF0FMR1BDT09CRUZGX0NHRURESUVDT0tBEA4SGwoXQUxH",
-            "UENPT0JFRkZfT01ISEZKTUhQT0IQD0IWqgITTWFyY2g3dGhIb25leS5Qcm90",
-            "b2IGcHJvdG8z"));
+            "ChdNaXNzaW9uU3luY1JlY29yZC5wcm90byrxAgoRTWlzc2lvblN5bmNSZWNv",
+            "cmQSIQodTWlzc2lvblN5bmNSZWNvcmRfRE9KRkNQS0FKRU4QABIhCh1NaXNz",
+            "aW9uU3luY1JlY29yZF9IUEJNUExGSUdETxABEiEKHU1pc3Npb25TeW5jUmVj",
+            "b3JkX0JCRktPSUtQSU9BEAISIQodTWlzc2lvblN5bmNSZWNvcmRfTFBKSlBH",
+            "SlBNS0EQAxIhCh1NaXNzaW9uU3luY1JlY29yZF9KQ0lIRk5NS0FLSxAEEiEK",
+            "HU1pc3Npb25TeW5jUmVjb3JkX0VHRElER0pFT0NHEAsSIQodTWlzc2lvblN5",
+            "bmNSZWNvcmRfSlBKT09QQkxMSE8QDBIhCh1NaXNzaW9uU3luY1JlY29yZF9F",
+            "QklOSkVBRUZPRRANEiEKHU1pc3Npb25TeW5jUmVjb3JkX0JKTENCSUdMQklN",
+            "EA4SIQodTWlzc2lvblN5bmNSZWNvcmRfS1BESEhBUElJR00QD0IWqgITTWFy",
+            "Y2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.MissionSyncRecord), }, null, null));
@@ -42,16 +43,16 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum MissionSyncRecord {
-    [pbr::OriginalName("ALGPCOOBEFF_ADPJFMJJABN")] AlgpcoobeffAdpjfmjjabn = 0,
-    [pbr::OriginalName("ALGPCOOBEFF_KHJCKCDFEJL")] AlgpcoobeffKhjckcdfejl = 1,
-    [pbr::OriginalName("ALGPCOOBEFF_FMIJPBPOHJD")] AlgpcoobeffFmijpbpohjd = 2,
-    [pbr::OriginalName("ALGPCOOBEFF_POGPNNBHMIO")] AlgpcoobeffPogpnnbhmio = 3,
-    [pbr::OriginalName("ALGPCOOBEFF_OMNFLAIKIBC")] AlgpcoobeffOmnflaikibc = 4,
-    [pbr::OriginalName("ALGPCOOBEFF_EAHBMOFJIFI")] AlgpcoobeffEahbmofjifi = 11,
-    [pbr::OriginalName("ALGPCOOBEFF_FAEKDCEPPNN")] AlgpcoobeffFaekdceppnn = 12,
-    [pbr::OriginalName("ALGPCOOBEFF_CDEHDBIIAAH")] AlgpcoobeffCdehdbiiaah = 13,
-    [pbr::OriginalName("ALGPCOOBEFF_CGEDDIECOKA")] AlgpcoobeffCgeddiecoka = 14,
-    [pbr::OriginalName("ALGPCOOBEFF_OMHHFJMHPOB")] AlgpcoobeffOmhhfjmhpob = 15,
+    [pbr::OriginalName("MissionSyncRecord_DOJFCPKAJEN")] Dojfcpkajen = 0,
+    [pbr::OriginalName("MissionSyncRecord_HPBMPLFIGDO")] Hpbmplfigdo = 1,
+    [pbr::OriginalName("MissionSyncRecord_BBFKOIKPIOA")] Bbfkoikpioa = 2,
+    [pbr::OriginalName("MissionSyncRecord_LPJJPGJPMKA")] Lpjjpgjpmka = 3,
+    [pbr::OriginalName("MissionSyncRecord_JCIHFNMKAKK")] Jcihfnmkakk = 4,
+    [pbr::OriginalName("MissionSyncRecord_EGDIDGJEOCG")] Egdidgjeocg = 11,
+    [pbr::OriginalName("MissionSyncRecord_JPJOOPBLLHO")] Jpjoopbllho = 12,
+    [pbr::OriginalName("MissionSyncRecord_EBINJEAEFOE")] Ebinjeaefoe = 13,
+    [pbr::OriginalName("MissionSyncRecord_BJLCBIGLBIM")] Bjlcbiglbim = 14,
+    [pbr::OriginalName("MissionSyncRecord_KPDHHAPIIGM")] Kpdhhapiigm = 15,
   }
 
   #endregion

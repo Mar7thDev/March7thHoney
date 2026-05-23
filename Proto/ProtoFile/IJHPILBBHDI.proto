@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message IJHPILBBHDI {
+    message BBIBCFCKPJH {
+        enum EGCFNCBLHJC {
+            EGCFNCBLHJC_EDHBOMMOKGM = 0;
+            EGCFNCBLHJC_ACBHGLIBJBG = 1;
+            EGCFNCBLHJC_LJLKNDIACEO = 2;
+        }
+    }
+    uint32 index = 9;
+    IJHPILBBHDI.BBIBCFCKPJH.EGCFNCBLHJC status = 4;
+}

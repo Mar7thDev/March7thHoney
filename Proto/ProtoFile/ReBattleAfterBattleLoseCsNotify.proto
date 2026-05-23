@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message ReBattleAfterBattleLoseCsNotify {
-    bool FDBGOJCKLBH = 5;
+    bool KCDMHBJKNMK = 2;
 }

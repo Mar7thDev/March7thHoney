@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "ActiveActivityData.proto";
 
 message GetActiveActivityDataScRsp {
-    repeated ActiveActivityData PIDLOGHHHDL = 1;
-    uint32 retcode = 10;
+    repeated ActiveActivityData HCLGPDFBDNP = 7;
+    uint32 retcode = 6;
 }

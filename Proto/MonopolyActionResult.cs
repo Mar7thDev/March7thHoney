@@ -24,17 +24,17 @@ namespace March7thHoney.Proto {
     static MonopolyActionResultReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChpNb25vcG9seUFjdGlvblJlc3VsdC5wcm90bxoRSkRNUEFBRUdNQ0QucHJv",
-            "dG8aEU5HQUVGUE5CREFELnByb3RvIsoBChRNb25vcG9seUFjdGlvblJlc3Vs",
-            "dBIcCgZkZXRhaWwYAiABKAsyDC5KRE1QQUFFR01DRBIhCgtzb3VyY2VfdHlw",
-            "ZRgDIAEoDjIMLk5HQUVGUE5CREFEEhUKDWNsaWNrX2NlbGxfaWQYByABKA0S",
-            "FwoPdHJpZ2dlcl9jZWxsX2lkGAggASgNEhMKC2VmZmVjdF90eXBlGAkgASgN",
-            "EhYKDnRyaWdnZXJfbWFwX2lkGAogASgNEhQKDGNsaWNrX21hcF9pZBgPIAEo",
+            "ChpNb25vcG9seUFjdGlvblJlc3VsdC5wcm90bxoRQkFLQUVMSU1JSkkucHJv",
+            "dG8aEUdQUEtJTURDUEJNLnByb3RvIsoBChRNb25vcG9seUFjdGlvblJlc3Vs",
+            "dBIcCgZkZXRhaWwYDyABKAsyDC5HUFBLSU1EQ1BCTRIhCgtzb3VyY2VfdHlw",
+            "ZRgNIAEoDjIMLkJBS0FFTElNSUpJEhcKD3RyaWdnZXJfY2VsbF9pZBgGIAEo",
+            "DRIVCg1jbGlja19jZWxsX2lkGAMgASgNEhMKC2VmZmVjdF90eXBlGAsgASgN",
+            "EhQKDGNsaWNrX21hcF9pZBgEIAEoDRIWCg50cmlnZ2VyX21hcF9pZBgMIAEo",
             "DUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.JDMPAAEGMCDReflection.Descriptor, global::March7thHoney.Proto.NGAEFPNBDADReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.BAKAELIMIJIReflection.Descriptor, global::March7thHoney.Proto.GPPKIMDCPBMReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MonopolyActionResult), global::March7thHoney.Proto.MonopolyActionResult.Parser, new[]{ "Detail", "SourceType", "ClickCellId", "TriggerCellId", "EffectType", "TriggerMapId", "ClickMapId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MonopolyActionResult), global::March7thHoney.Proto.MonopolyActionResult.Parser, new[]{ "Detail", "SourceType", "TriggerCellId", "ClickCellId", "EffectType", "ClickMapId", "TriggerMapId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -78,11 +78,11 @@ namespace March7thHoney.Proto {
     public MonopolyActionResult(MonopolyActionResult other) : this() {
       detail_ = other.detail_ != null ? other.detail_.Clone() : null;
       sourceType_ = other.sourceType_;
-      clickCellId_ = other.clickCellId_;
       triggerCellId_ = other.triggerCellId_;
+      clickCellId_ = other.clickCellId_;
       effectType_ = other.effectType_;
-      triggerMapId_ = other.triggerMapId_;
       clickMapId_ = other.clickMapId_;
+      triggerMapId_ = other.triggerMapId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -93,11 +93,11 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "detail" field.</summary>
-    public const int DetailFieldNumber = 2;
-    private global::March7thHoney.Proto.JDMPAAEGMCD detail_;
+    public const int DetailFieldNumber = 15;
+    private global::March7thHoney.Proto.GPPKIMDCPBM detail_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.JDMPAAEGMCD Detail {
+    public global::March7thHoney.Proto.GPPKIMDCPBM Detail {
       get { return detail_; }
       set {
         detail_ = value;
@@ -105,31 +105,19 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "source_type" field.</summary>
-    public const int SourceTypeFieldNumber = 3;
-    private global::March7thHoney.Proto.NGAEFPNBDAD sourceType_ = global::March7thHoney.Proto.NGAEFPNBDAD.Pcpdhelpkem;
+    public const int SourceTypeFieldNumber = 13;
+    private global::March7thHoney.Proto.BAKAELIMIJI sourceType_ = global::March7thHoney.Proto.BAKAELIMIJI.Nlcdgipgfdj;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.NGAEFPNBDAD SourceType {
+    public global::March7thHoney.Proto.BAKAELIMIJI SourceType {
       get { return sourceType_; }
       set {
         sourceType_ = value;
       }
     }
 
-    /// <summary>Field number for the "click_cell_id" field.</summary>
-    public const int ClickCellIdFieldNumber = 7;
-    private uint clickCellId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint ClickCellId {
-      get { return clickCellId_; }
-      set {
-        clickCellId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "trigger_cell_id" field.</summary>
-    public const int TriggerCellIdFieldNumber = 8;
+    public const int TriggerCellIdFieldNumber = 6;
     private uint triggerCellId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -140,8 +128,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "click_cell_id" field.</summary>
+    public const int ClickCellIdFieldNumber = 3;
+    private uint clickCellId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint ClickCellId {
+      get { return clickCellId_; }
+      set {
+        clickCellId_ = value;
+      }
+    }
+
     /// <summary>Field number for the "effect_type" field.</summary>
-    public const int EffectTypeFieldNumber = 9;
+    public const int EffectTypeFieldNumber = 11;
     private uint effectType_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,20 +152,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "trigger_map_id" field.</summary>
-    public const int TriggerMapIdFieldNumber = 10;
-    private uint triggerMapId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint TriggerMapId {
-      get { return triggerMapId_; }
-      set {
-        triggerMapId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "click_map_id" field.</summary>
-    public const int ClickMapIdFieldNumber = 15;
+    public const int ClickMapIdFieldNumber = 4;
     private uint clickMapId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -173,6 +161,18 @@ namespace March7thHoney.Proto {
       get { return clickMapId_; }
       set {
         clickMapId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "trigger_map_id" field.</summary>
+    public const int TriggerMapIdFieldNumber = 12;
+    private uint triggerMapId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint TriggerMapId {
+      get { return triggerMapId_; }
+      set {
+        triggerMapId_ = value;
       }
     }
 
@@ -193,11 +193,11 @@ namespace March7thHoney.Proto {
       }
       if (!object.Equals(Detail, other.Detail)) return false;
       if (SourceType != other.SourceType) return false;
-      if (ClickCellId != other.ClickCellId) return false;
       if (TriggerCellId != other.TriggerCellId) return false;
+      if (ClickCellId != other.ClickCellId) return false;
       if (EffectType != other.EffectType) return false;
-      if (TriggerMapId != other.TriggerMapId) return false;
       if (ClickMapId != other.ClickMapId) return false;
+      if (TriggerMapId != other.TriggerMapId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -206,12 +206,12 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (detail_ != null) hash ^= Detail.GetHashCode();
-      if (SourceType != global::March7thHoney.Proto.NGAEFPNBDAD.Pcpdhelpkem) hash ^= SourceType.GetHashCode();
-      if (ClickCellId != 0) hash ^= ClickCellId.GetHashCode();
+      if (SourceType != global::March7thHoney.Proto.BAKAELIMIJI.Nlcdgipgfdj) hash ^= SourceType.GetHashCode();
       if (TriggerCellId != 0) hash ^= TriggerCellId.GetHashCode();
+      if (ClickCellId != 0) hash ^= ClickCellId.GetHashCode();
       if (EffectType != 0) hash ^= EffectType.GetHashCode();
-      if (TriggerMapId != 0) hash ^= TriggerMapId.GetHashCode();
       if (ClickMapId != 0) hash ^= ClickMapId.GetHashCode();
+      if (TriggerMapId != 0) hash ^= TriggerMapId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -230,33 +230,33 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (detail_ != null) {
-        output.WriteRawTag(18);
-        output.WriteMessage(Detail);
-      }
-      if (SourceType != global::March7thHoney.Proto.NGAEFPNBDAD.Pcpdhelpkem) {
-        output.WriteRawTag(24);
-        output.WriteEnum((int) SourceType);
-      }
       if (ClickCellId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(24);
         output.WriteUInt32(ClickCellId);
       }
+      if (ClickMapId != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(ClickMapId);
+      }
       if (TriggerCellId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(48);
         output.WriteUInt32(TriggerCellId);
       }
       if (EffectType != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(88);
         output.WriteUInt32(EffectType);
       }
       if (TriggerMapId != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(96);
         output.WriteUInt32(TriggerMapId);
       }
-      if (ClickMapId != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(ClickMapId);
+      if (SourceType != global::March7thHoney.Proto.BAKAELIMIJI.Nlcdgipgfdj) {
+        output.WriteRawTag(104);
+        output.WriteEnum((int) SourceType);
+      }
+      if (detail_ != null) {
+        output.WriteRawTag(122);
+        output.WriteMessage(Detail);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -268,33 +268,33 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (detail_ != null) {
-        output.WriteRawTag(18);
-        output.WriteMessage(Detail);
-      }
-      if (SourceType != global::March7thHoney.Proto.NGAEFPNBDAD.Pcpdhelpkem) {
-        output.WriteRawTag(24);
-        output.WriteEnum((int) SourceType);
-      }
       if (ClickCellId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(24);
         output.WriteUInt32(ClickCellId);
       }
+      if (ClickMapId != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(ClickMapId);
+      }
       if (TriggerCellId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(48);
         output.WriteUInt32(TriggerCellId);
       }
       if (EffectType != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(88);
         output.WriteUInt32(EffectType);
       }
       if (TriggerMapId != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(96);
         output.WriteUInt32(TriggerMapId);
       }
-      if (ClickMapId != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(ClickMapId);
+      if (SourceType != global::March7thHoney.Proto.BAKAELIMIJI.Nlcdgipgfdj) {
+        output.WriteRawTag(104);
+        output.WriteEnum((int) SourceType);
+      }
+      if (detail_ != null) {
+        output.WriteRawTag(122);
+        output.WriteMessage(Detail);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -309,23 +309,23 @@ namespace March7thHoney.Proto {
       if (detail_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Detail);
       }
-      if (SourceType != global::March7thHoney.Proto.NGAEFPNBDAD.Pcpdhelpkem) {
+      if (SourceType != global::March7thHoney.Proto.BAKAELIMIJI.Nlcdgipgfdj) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) SourceType);
-      }
-      if (ClickCellId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ClickCellId);
       }
       if (TriggerCellId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TriggerCellId);
       }
+      if (ClickCellId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ClickCellId);
+      }
       if (EffectType != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EffectType);
       }
-      if (TriggerMapId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TriggerMapId);
-      }
       if (ClickMapId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ClickMapId);
+      }
+      if (TriggerMapId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TriggerMapId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -341,27 +341,27 @@ namespace March7thHoney.Proto {
       }
       if (other.detail_ != null) {
         if (detail_ == null) {
-          Detail = new global::March7thHoney.Proto.JDMPAAEGMCD();
+          Detail = new global::March7thHoney.Proto.GPPKIMDCPBM();
         }
         Detail.MergeFrom(other.Detail);
       }
-      if (other.SourceType != global::March7thHoney.Proto.NGAEFPNBDAD.Pcpdhelpkem) {
+      if (other.SourceType != global::March7thHoney.Proto.BAKAELIMIJI.Nlcdgipgfdj) {
         SourceType = other.SourceType;
-      }
-      if (other.ClickCellId != 0) {
-        ClickCellId = other.ClickCellId;
       }
       if (other.TriggerCellId != 0) {
         TriggerCellId = other.TriggerCellId;
       }
+      if (other.ClickCellId != 0) {
+        ClickCellId = other.ClickCellId;
+      }
       if (other.EffectType != 0) {
         EffectType = other.EffectType;
       }
-      if (other.TriggerMapId != 0) {
-        TriggerMapId = other.TriggerMapId;
-      }
       if (other.ClickMapId != 0) {
         ClickMapId = other.ClickMapId;
+      }
+      if (other.TriggerMapId != 0) {
+        TriggerMapId = other.TriggerMapId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -382,35 +382,35 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 18: {
-            if (detail_ == null) {
-              Detail = new global::March7thHoney.Proto.JDMPAAEGMCD();
-            }
-            input.ReadMessage(Detail);
-            break;
-          }
           case 24: {
-            SourceType = (global::March7thHoney.Proto.NGAEFPNBDAD) input.ReadEnum();
-            break;
-          }
-          case 56: {
             ClickCellId = input.ReadUInt32();
             break;
           }
-          case 64: {
+          case 32: {
+            ClickMapId = input.ReadUInt32();
+            break;
+          }
+          case 48: {
             TriggerCellId = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 88: {
             EffectType = input.ReadUInt32();
             break;
           }
-          case 80: {
+          case 96: {
             TriggerMapId = input.ReadUInt32();
             break;
           }
-          case 120: {
-            ClickMapId = input.ReadUInt32();
+          case 104: {
+            SourceType = (global::March7thHoney.Proto.BAKAELIMIJI) input.ReadEnum();
+            break;
+          }
+          case 122: {
+            if (detail_ == null) {
+              Detail = new global::March7thHoney.Proto.GPPKIMDCPBM();
+            }
+            input.ReadMessage(Detail);
             break;
           }
         }
@@ -432,35 +432,35 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 18: {
-            if (detail_ == null) {
-              Detail = new global::March7thHoney.Proto.JDMPAAEGMCD();
-            }
-            input.ReadMessage(Detail);
-            break;
-          }
           case 24: {
-            SourceType = (global::March7thHoney.Proto.NGAEFPNBDAD) input.ReadEnum();
-            break;
-          }
-          case 56: {
             ClickCellId = input.ReadUInt32();
             break;
           }
-          case 64: {
+          case 32: {
+            ClickMapId = input.ReadUInt32();
+            break;
+          }
+          case 48: {
             TriggerCellId = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 88: {
             EffectType = input.ReadUInt32();
             break;
           }
-          case 80: {
+          case 96: {
             TriggerMapId = input.ReadUInt32();
             break;
           }
-          case 120: {
-            ClickMapId = input.ReadUInt32();
+          case 104: {
+            SourceType = (global::March7thHoney.Proto.BAKAELIMIJI) input.ReadEnum();
+            break;
+          }
+          case 122: {
+            if (detail_ == null) {
+              Detail = new global::March7thHoney.Proto.GPPKIMDCPBM();
+            }
+            input.ReadMessage(Detail);
             break;
           }
         }

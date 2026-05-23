@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdClientCustomOpType {
-    ALPPHEHNPLE_BEENDIPKKNJ = 0;
-    CmdKOIPHJFENIN = 9839;
+    BHKGAKDOALP_GGKMFAFOINP = 0;
+    BHKGAKDOALP_HPLPMDEJOJK = 9839;
 }

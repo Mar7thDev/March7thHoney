@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChZTZXROaWNrbmFtZVNjUnNwLnByb3RvIkgKEFNldE5pY2tuYW1lU2NSc3AS",
-            "DwoHcmV0Y29kZRgBIAEoDRIQCghzZXRfdGltZRgFIAEoAxIRCglpc19tb2Rp",
-            "ZnkYDCABKAhCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "EQoJaXNfbW9kaWZ5GAggASgIEg8KB3JldGNvZGUYDSABKA0SEAoIc2V0X3Rp",
+            "bWUYDiABKANCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetNicknameScRsp), global::March7thHoney.Proto.SetNicknameScRsp.Parser, new[]{ "Retcode", "SetTime", "IsModify" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetNicknameScRsp), global::March7thHoney.Proto.SetNicknameScRsp.Parser, new[]{ "IsModify", "Retcode", "SetTime" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,9 +72,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SetNicknameScRsp(SetNicknameScRsp other) : this() {
+      isModify_ = other.isModify_;
       retcode_ = other.retcode_;
       setTime_ = other.setTime_;
-      isModify_ = other.isModify_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,8 +84,20 @@ namespace March7thHoney.Proto {
       return new SetNicknameScRsp(this);
     }
 
+    /// <summary>Field number for the "is_modify" field.</summary>
+    public const int IsModifyFieldNumber = 8;
+    private bool isModify_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IsModify {
+      get { return isModify_; }
+      set {
+        isModify_ = value;
+      }
+    }
+
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 1;
+    public const int RetcodeFieldNumber = 13;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +109,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "set_time" field.</summary>
-    public const int SetTimeFieldNumber = 5;
+    public const int SetTimeFieldNumber = 14;
     private long setTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -105,18 +117,6 @@ namespace March7thHoney.Proto {
       get { return setTime_; }
       set {
         setTime_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "is_modify" field.</summary>
-    public const int IsModifyFieldNumber = 12;
-    private bool isModify_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IsModify {
-      get { return isModify_; }
-      set {
-        isModify_ = value;
       }
     }
 
@@ -135,9 +135,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (IsModify != other.IsModify) return false;
       if (Retcode != other.Retcode) return false;
       if (SetTime != other.SetTime) return false;
-      if (IsModify != other.IsModify) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -145,9 +145,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (IsModify != false) hash ^= IsModify.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (SetTime != 0L) hash ^= SetTime.GetHashCode();
-      if (IsModify != false) hash ^= IsModify.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -166,17 +166,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (IsModify != false) {
+        output.WriteRawTag(64);
+        output.WriteBool(IsModify);
+      }
       if (Retcode != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(104);
         output.WriteUInt32(Retcode);
       }
       if (SetTime != 0L) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(112);
         output.WriteInt64(SetTime);
-      }
-      if (IsModify != false) {
-        output.WriteRawTag(96);
-        output.WriteBool(IsModify);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -188,17 +188,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (IsModify != false) {
+        output.WriteRawTag(64);
+        output.WriteBool(IsModify);
+      }
       if (Retcode != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(104);
         output.WriteUInt32(Retcode);
       }
       if (SetTime != 0L) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(112);
         output.WriteInt64(SetTime);
-      }
-      if (IsModify != false) {
-        output.WriteRawTag(96);
-        output.WriteBool(IsModify);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -210,14 +210,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (IsModify != false) {
+        size += 1 + 1;
+      }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
       if (SetTime != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(SetTime);
-      }
-      if (IsModify != false) {
-        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -231,14 +231,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.IsModify != false) {
+        IsModify = other.IsModify;
+      }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
       if (other.SetTime != 0L) {
         SetTime = other.SetTime;
-      }
-      if (other.IsModify != false) {
-        IsModify = other.IsModify;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -259,16 +259,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
+          case 64: {
+            IsModify = input.ReadBool();
+            break;
+          }
+          case 104: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 40: {
+          case 112: {
             SetTime = input.ReadInt64();
-            break;
-          }
-          case 96: {
-            IsModify = input.ReadBool();
             break;
           }
         }
@@ -290,16 +290,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
+          case 64: {
+            IsModify = input.ReadBool();
+            break;
+          }
+          case 104: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 40: {
+          case 112: {
             SetTime = input.ReadInt64();
-            break;
-          }
-          case 96: {
-            IsModify = input.ReadBool();
             break;
           }
         }

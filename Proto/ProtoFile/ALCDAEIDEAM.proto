@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "GAAMBBFPCHB.proto";
+
+message ALCDAEIDEAM {
+    GAAMBBFPCHB NFEDANFBIBE = 7;
+    uint32 retcode = 2;
+}

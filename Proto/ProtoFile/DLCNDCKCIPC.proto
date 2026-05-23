@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message DLCNDCKCIPC {
+    repeated uint32 AAFIFEGKACO = 1;
+    uint32 JGCCIMMEDIJ = 10;
+    bool HIFMFMBCODL = 12;
+    uint32 HGKBJIAAFPC = 5;
+}

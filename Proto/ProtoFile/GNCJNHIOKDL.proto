@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "APAMFCKFHLL.proto";
+
+message GNCJNHIOKDL {
+    uint32 CKHCLKOALKE = 15;
+    uint32 retcode = 3;
+    oneof PGNIENCDODA {
+        uint32 ECHFGJHHGOG = 11;
+        uint32 NDEDLLMEFBJ = 12;
+        APAMFCKFHLL CJKEIMBCMEP = 4;
+    }
+}

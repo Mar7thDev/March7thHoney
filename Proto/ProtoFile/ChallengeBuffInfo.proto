@@ -2,14 +2,12 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "ChallengeBossBuffInfo.proto";
 import "ChallengeStoryBuffInfo.proto";
 
 message ChallengeBuffInfo {
-    oneof BPIHFAJCLOC {
-        ChallengeStoryBuffInfo story_info = 2;
-        ChallengeBossBuffInfo boss_info = 8;
+    oneof KKNBOACNCON {
+        ChallengeStoryBuffInfo story_info = 10;
+        ChallengeBossBuffInfo boss_info = 14;
     }
 }

@@ -2,31 +2,29 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdHeliobusType {
-    MJNBDODPDOG_PCPDHELPKEM = 0;
-    CmdHeliobusSnsReadScRsp = 5895;
-    CmdHeliobusSnsPostCsReq = 5814;
-    CmdHeliobusEnterBattleCsReq = 5861;
-    CmdHeliobusSnsCommentCsReq = 5863;
-    CmdHeliobusSnsLikeCsReq = 5809;
-    MJNBDODPDOG_GFHGNNHOIKJ = 5838;
-    CmdHeliobusUnlockSkillScNotify = 5804;
-    CmdHeliobusSnsLikeScRsp = 5898;
-    CmdHeliobusInfoChangedScNotify = 5801;
-    CmdHeliobusSnsPostScRsp = 5818;
-    CmdHeliobusActivityDataScRsp = 5810;
-    CmdHeliobusSnsReadCsReq = 5894;
-    CmdHeliobusActivityDataCsReq = 5891;
-    CmdHeliobusSnsUpdateScNotify = 5839;
-    CmdHeliobusEnterBattleScRsp = 5807;
-    CmdHeliobusLineupUpdateScNotify = 5889;
-    CmdHeliobusChallengeUpdateScNotify = 5900;
-    CmdHeliobusUpgradeLevelCsReq = 5874;
-    CmdHeliobusStartRaidScRsp = 5844;
-    CmdHeliobusUpgradeLevelScRsp = 5837;
-    CmdHeliobusStartRaidCsReq = 5858;
-    CmdHeliobusSnsCommentScRsp = 5826;
-    CmdHeliobusSelectSkillScRsp = 5872;
+    AMJEMJIDNKF_NLCDGIPGFDJ = 0;
+    AMJEMJIDNKF_CGCJIHGPFOH = 5878;
+    AMJEMJIDNKF_CIDJCDGPHEM = 5881;
+    AMJEMJIDNKF_POHINPCHOPI = 5815;
+    AMJEMJIDNKF_OIJEDHGNDHJ = 5848;
+    AMJEMJIDNKF_FPFHEFOLKBL = 5824;
+    AMJEMJIDNKF_FLCMOEEGCLG = 5854;
+    AMJEMJIDNKF_FLPCDJFJHHM = 5842;
+    AMJEMJIDNKF_LIDFAKGOHFJ = 5810;
+    AMJEMJIDNKF_CMEANLKBHBG = 5836;
+    AMJEMJIDNKF_NBNKGLMCONC = 5887;
+    AMJEMJIDNKF_MALFAEGNBJA = 5813;
+    AMJEMJIDNKF_HEEIIIMDELI = 5809;
+    AMJEMJIDNKF_JPCJEAEMOHB = 5871;
+    AMJEMJIDNKF_EKHMFOAADMO = 5876;
+    AMJEMJIDNKF_PFDBDOAJFKB = 5880;
+    AMJEMJIDNKF_PBEMCKMOCEN = 5883;
+    AMJEMJIDNKF_NOJNFBNFIMM = 5827;
+    AMJEMJIDNKF_CPBMPMOKJGK = 5859;
+    AMJEMJIDNKF_HJMBAOPCCLA = 5812;
+    AMJEMJIDNKF_JIPEDONJHEI = 5852;
+    AMJEMJIDNKF_CMMLPAHGAOB = 5873;
+    AMJEMJIDNKF_PJJLOOJGMDD = 5829;
+    AMJEMJIDNKF_LLFHNEFLLHO = 5803;
 }

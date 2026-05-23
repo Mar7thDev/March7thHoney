@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static QuitLineupScRspReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChVRdWl0TGluZXVwU2NSc3AucHJvdG8idQoPUXVpdExpbmV1cFNjUnNwEhYK",
-            "DmJhc2VfYXZhdGFyX2lkGAUgASgNEhIKCmlzX3ZpcnR1YWwYByABKAgSEwoL",
-            "TEdGSUZKREdFS0IYCyABKAgSEAoIcGxhbmVfaWQYDCABKA0SDwoHcmV0Y29k",
-            "ZRgNIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChVRdWl0TGluZXVwU2NSc3AucHJvdG8idQoPUXVpdExpbmV1cFNjUnNwEhIK",
+            "CmlzX3ZpcnR1YWwYBiABKAgSEwoLTUZCSVBNQUNGQ0UYDiABKAgSFgoOYmFz",
+            "ZV9hdmF0YXJfaWQYDyABKA0SEAoIcGxhbmVfaWQYCyABKA0SDwoHcmV0Y29k",
+            "ZRgFIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.QuitLineupScRsp), global::March7thHoney.Proto.QuitLineupScRsp.Parser, new[]{ "BaseAvatarId", "IsVirtual", "LGFIFJDGEKB", "PlaneId", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.QuitLineupScRsp), global::March7thHoney.Proto.QuitLineupScRsp.Parser, new[]{ "IsVirtual", "MFBIPMACFCE", "BaseAvatarId", "PlaneId", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,9 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public QuitLineupScRsp(QuitLineupScRsp other) : this() {
-      baseAvatarId_ = other.baseAvatarId_;
       isVirtual_ = other.isVirtual_;
-      lGFIFJDGEKB_ = other.lGFIFJDGEKB_;
+      mFBIPMACFCE_ = other.mFBIPMACFCE_;
+      baseAvatarId_ = other.baseAvatarId_;
       planeId_ = other.planeId_;
       retcode_ = other.retcode_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -87,20 +87,8 @@ namespace March7thHoney.Proto {
       return new QuitLineupScRsp(this);
     }
 
-    /// <summary>Field number for the "base_avatar_id" field.</summary>
-    public const int BaseAvatarIdFieldNumber = 5;
-    private uint baseAvatarId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint BaseAvatarId {
-      get { return baseAvatarId_; }
-      set {
-        baseAvatarId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "is_virtual" field.</summary>
-    public const int IsVirtualFieldNumber = 7;
+    public const int IsVirtualFieldNumber = 6;
     private bool isVirtual_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -111,20 +99,32 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "LGFIFJDGEKB" field.</summary>
-    public const int LGFIFJDGEKBFieldNumber = 11;
-    private bool lGFIFJDGEKB_;
+    /// <summary>Field number for the "MFBIPMACFCE" field.</summary>
+    public const int MFBIPMACFCEFieldNumber = 14;
+    private bool mFBIPMACFCE_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool LGFIFJDGEKB {
-      get { return lGFIFJDGEKB_; }
+    public bool MFBIPMACFCE {
+      get { return mFBIPMACFCE_; }
       set {
-        lGFIFJDGEKB_ = value;
+        mFBIPMACFCE_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "base_avatar_id" field.</summary>
+    public const int BaseAvatarIdFieldNumber = 15;
+    private uint baseAvatarId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint BaseAvatarId {
+      get { return baseAvatarId_; }
+      set {
+        baseAvatarId_ = value;
       }
     }
 
     /// <summary>Field number for the "plane_id" field.</summary>
-    public const int PlaneIdFieldNumber = 12;
+    public const int PlaneIdFieldNumber = 11;
     private uint planeId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -136,7 +136,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 13;
+    public const int RetcodeFieldNumber = 5;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -162,9 +162,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (BaseAvatarId != other.BaseAvatarId) return false;
       if (IsVirtual != other.IsVirtual) return false;
-      if (LGFIFJDGEKB != other.LGFIFJDGEKB) return false;
+      if (MFBIPMACFCE != other.MFBIPMACFCE) return false;
+      if (BaseAvatarId != other.BaseAvatarId) return false;
       if (PlaneId != other.PlaneId) return false;
       if (Retcode != other.Retcode) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -174,9 +174,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (BaseAvatarId != 0) hash ^= BaseAvatarId.GetHashCode();
       if (IsVirtual != false) hash ^= IsVirtual.GetHashCode();
-      if (LGFIFJDGEKB != false) hash ^= LGFIFJDGEKB.GetHashCode();
+      if (MFBIPMACFCE != false) hash ^= MFBIPMACFCE.GetHashCode();
+      if (BaseAvatarId != 0) hash ^= BaseAvatarId.GetHashCode();
       if (PlaneId != 0) hash ^= PlaneId.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (_unknownFields != null) {
@@ -197,25 +197,25 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (BaseAvatarId != 0) {
+      if (Retcode != 0) {
         output.WriteRawTag(40);
-        output.WriteUInt32(BaseAvatarId);
+        output.WriteUInt32(Retcode);
       }
       if (IsVirtual != false) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(48);
         output.WriteBool(IsVirtual);
       }
-      if (LGFIFJDGEKB != false) {
-        output.WriteRawTag(88);
-        output.WriteBool(LGFIFJDGEKB);
-      }
       if (PlaneId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(88);
         output.WriteUInt32(PlaneId);
       }
-      if (Retcode != 0) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(Retcode);
+      if (MFBIPMACFCE != false) {
+        output.WriteRawTag(112);
+        output.WriteBool(MFBIPMACFCE);
+      }
+      if (BaseAvatarId != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(BaseAvatarId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -227,25 +227,25 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (BaseAvatarId != 0) {
+      if (Retcode != 0) {
         output.WriteRawTag(40);
-        output.WriteUInt32(BaseAvatarId);
+        output.WriteUInt32(Retcode);
       }
       if (IsVirtual != false) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(48);
         output.WriteBool(IsVirtual);
       }
-      if (LGFIFJDGEKB != false) {
-        output.WriteRawTag(88);
-        output.WriteBool(LGFIFJDGEKB);
-      }
       if (PlaneId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(88);
         output.WriteUInt32(PlaneId);
       }
-      if (Retcode != 0) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(Retcode);
+      if (MFBIPMACFCE != false) {
+        output.WriteRawTag(112);
+        output.WriteBool(MFBIPMACFCE);
+      }
+      if (BaseAvatarId != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(BaseAvatarId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -257,14 +257,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (BaseAvatarId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BaseAvatarId);
-      }
       if (IsVirtual != false) {
         size += 1 + 1;
       }
-      if (LGFIFJDGEKB != false) {
+      if (MFBIPMACFCE != false) {
         size += 1 + 1;
+      }
+      if (BaseAvatarId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BaseAvatarId);
       }
       if (PlaneId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PlaneId);
@@ -284,14 +284,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.BaseAvatarId != 0) {
-        BaseAvatarId = other.BaseAvatarId;
-      }
       if (other.IsVirtual != false) {
         IsVirtual = other.IsVirtual;
       }
-      if (other.LGFIFJDGEKB != false) {
-        LGFIFJDGEKB = other.LGFIFJDGEKB;
+      if (other.MFBIPMACFCE != false) {
+        MFBIPMACFCE = other.MFBIPMACFCE;
+      }
+      if (other.BaseAvatarId != 0) {
+        BaseAvatarId = other.BaseAvatarId;
       }
       if (other.PlaneId != 0) {
         PlaneId = other.PlaneId;
@@ -319,23 +319,23 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 40: {
-            BaseAvatarId = input.ReadUInt32();
+            Retcode = input.ReadUInt32();
             break;
           }
-          case 56: {
+          case 48: {
             IsVirtual = input.ReadBool();
             break;
           }
           case 88: {
-            LGFIFJDGEKB = input.ReadBool();
-            break;
-          }
-          case 96: {
             PlaneId = input.ReadUInt32();
             break;
           }
-          case 104: {
-            Retcode = input.ReadUInt32();
+          case 112: {
+            MFBIPMACFCE = input.ReadBool();
+            break;
+          }
+          case 120: {
+            BaseAvatarId = input.ReadUInt32();
             break;
           }
         }
@@ -358,23 +358,23 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 40: {
-            BaseAvatarId = input.ReadUInt32();
+            Retcode = input.ReadUInt32();
             break;
           }
-          case 56: {
+          case 48: {
             IsVirtual = input.ReadBool();
             break;
           }
           case 88: {
-            LGFIFJDGEKB = input.ReadBool();
-            break;
-          }
-          case 96: {
             PlaneId = input.ReadUInt32();
             break;
           }
-          case 104: {
-            Retcode = input.ReadUInt32();
+          case 112: {
+            MFBIPMACFCE = input.ReadBool();
+            break;
+          }
+          case 120: {
+            BaseAvatarId = input.ReadUInt32();
             break;
           }
         }

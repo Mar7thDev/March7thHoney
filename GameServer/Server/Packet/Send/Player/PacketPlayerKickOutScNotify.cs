@@ -9,16 +9,16 @@ public class PacketPlayerSqueezedScNotify : BasePacket
     {
         var proto = new PlayerSqueezedScNotify
         {
-            KickType = KickType.KickSqueezed
+            KickType =PlayerSqueezedScNotify.Types.KickType.KickSqueezed
         };
         SetData(proto);
     }
 
-    public PacketPlayerSqueezedScNotify(KickType type, BlackInfo? info = null) : base(CmdIds.PlayerSqueezedScNotify)
+    public PacketPlayerSqueezedScNotify(PlayerSqueezedScNotify.Types.KickType type, BlackInfo? info = null) : base(CmdIds.PlayerSqueezedScNotify)
     {
         var proto = new PlayerSqueezedScNotify
         {
-            KickType = type
+            KickType =type
         };
 
         if (info != null) proto.BlackInfo = info;

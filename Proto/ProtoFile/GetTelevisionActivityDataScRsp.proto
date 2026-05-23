@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "CKFHOLKJAGC.proto";
+import "PAAIMLDHJCI.proto";
 
 message GetTelevisionActivityDataScRsp {
-    uint32 retcode = 3;
-    repeated CKFHOLKJAGC JDJCJCABFML = 4;
+    repeated PAAIMLDHJCI AKDFABDHHIO = 8;
+    uint32 retcode = 7;
 }

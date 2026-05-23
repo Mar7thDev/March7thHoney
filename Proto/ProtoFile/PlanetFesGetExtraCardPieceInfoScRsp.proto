@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "PEHOCGJJMNF.proto";
+import "EPPIBFOLFKN.proto";
 
 message PlanetFesGetExtraCardPieceInfoScRsp {
-    PEHOCGJJMNF ADJEEIILGBO = 6;
-    uint32 retcode = 8;
+    EPPIBFOLFKN GIPNMPKNIFG = 15;
+    uint32 retcode = 7;
 }

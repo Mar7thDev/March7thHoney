@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdContentPackageType {
-    CGDHKGPIDLM_PCPDHELPKEM = 0;
-    CmdContentPackageSyncDataScNotify = 7530;
-    CmdContentPackageGetDataCsReq = 7513;
-    CmdContentPackageGetDataScRsp = 7507;
-    CmdContentPackageTransferScNotify = 7538;
+    PKKCLCNFPLE_NLCDGIPGFDJ = 0;
+    PKKCLCNFPLE_DAKANPJMLEA = 7507;
+    PKKCLCNFPLE_DODAJINHEGA = 7532;
+    PKKCLCNFPLE_OCFEICNOBPC = 7542;
+    PKKCLCNFPLE_LIGGAHEJBCM = 7527;
 }

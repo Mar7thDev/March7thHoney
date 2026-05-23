@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "FeatureSwitchType.proto";
+import "HBJLNKAFNAD.proto";
+
+message HDOKNMGIDMB {
+    repeated HBJLNKAFNAD BGNKLMIMBPI = 2;
+    FeatureSwitchType type = 1;
+    bool KPCPABKPAKL = 3;
+}

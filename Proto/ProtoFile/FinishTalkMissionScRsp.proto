@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "MissionCustomValue.proto";
 
 message FinishTalkMissionScRsp {
-    uint32 sub_mission_id = 2;
-    uint32 retcode = 4;
-    string talk_str = 9;
-    repeated MissionCustomValue custom_value_list = 10;
+    string talk_str = 3;
+    repeated MissionCustomValue custom_value_list = 9;
+    uint32 sub_mission_id = 15;
+    uint32 retcode = 1;
 }

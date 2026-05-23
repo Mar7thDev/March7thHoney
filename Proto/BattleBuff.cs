@@ -24,16 +24,16 @@ namespace March7thHoney.Proto {
     static BattleBuffReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChBCYXR0bGVCdWZmLnByb3RvItgBCgpCYXR0bGVCdWZmEgoKAmlkGAEgASgN",
-            "Eg0KBWxldmVsGAIgASgNEhMKC293bmVyX2luZGV4GAMgASgNEhEKCXdhdmVf",
-            "ZmxhZxgEIAEoDRIZChF0YXJnZXRfaW5kZXhfbGlzdBgFIAMoDRI2Cg5keW5h",
-            "bWljX3ZhbHVlcxgGIAMoCzIeLkJhdHRsZUJ1ZmYuRHluYW1pY1ZhbHVlc0Vu",
-            "dHJ5GjQKEkR5bmFtaWNWYWx1ZXNFbnRyeRILCgNrZXkYASABKAkSDQoFdmFs",
+            "ChBCYXR0bGVCdWZmLnByb3RvItgBCgpCYXR0bGVCdWZmEjYKDmR5bmFtaWNf",
+            "dmFsdWVzGAYgAygLMh4uQmF0dGxlQnVmZi5EeW5hbWljVmFsdWVzRW50cnkS",
+            "GQoRdGFyZ2V0X2luZGV4X2xpc3QYBSADKA0SCgoCaWQYASABKA0SDQoFbGV2",
+            "ZWwYAiABKA0SEwoLb3duZXJfaW5kZXgYAyABKA0SEQoJd2F2ZV9mbGFnGAQg",
+            "ASgNGjQKEkR5bmFtaWNWYWx1ZXNFbnRyeRILCgNrZXkYASABKAkSDQoFdmFs",
             "dWUYAiABKAI6AjgBQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BattleBuff), global::March7thHoney.Proto.BattleBuff.Parser, new[]{ "Id", "Level", "OwnerIndex", "WaveFlag", "TargetIndexList", "DynamicValues" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BattleBuff), global::March7thHoney.Proto.BattleBuff.Parser, new[]{ "DynamicValues", "TargetIndexList", "Id", "Level", "OwnerIndex", "WaveFlag" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -75,12 +75,12 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BattleBuff(BattleBuff other) : this() {
+      dynamicValues_ = other.dynamicValues_.Clone();
+      targetIndexList_ = other.targetIndexList_.Clone();
       id_ = other.id_;
       level_ = other.level_;
       ownerIndex_ = other.ownerIndex_;
       waveFlag_ = other.waveFlag_;
-      targetIndexList_ = other.targetIndexList_.Clone();
-      dynamicValues_ = other.dynamicValues_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -88,6 +88,28 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BattleBuff Clone() {
       return new BattleBuff(this);
+    }
+
+    /// <summary>Field number for the "dynamic_values" field.</summary>
+    public const int DynamicValuesFieldNumber = 6;
+    private static readonly pbc::MapField<string, float>.Codec _map_dynamicValues_codec
+        = new pbc::MapField<string, float>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForFloat(21, 0F), 50);
+    private readonly pbc::MapField<string, float> dynamicValues_ = new pbc::MapField<string, float>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::MapField<string, float> DynamicValues {
+      get { return dynamicValues_; }
+    }
+
+    /// <summary>Field number for the "target_index_list" field.</summary>
+    public const int TargetIndexListFieldNumber = 5;
+    private static readonly pb::FieldCodec<uint> _repeated_targetIndexList_codec
+        = pb::FieldCodec.ForUInt32(42);
+    private readonly pbc::RepeatedField<uint> targetIndexList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> TargetIndexList {
+      get { return targetIndexList_; }
     }
 
     /// <summary>Field number for the "id" field.</summary>
@@ -138,28 +160,6 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "target_index_list" field.</summary>
-    public const int TargetIndexListFieldNumber = 5;
-    private static readonly pb::FieldCodec<uint> _repeated_targetIndexList_codec
-        = pb::FieldCodec.ForUInt32(42);
-    private readonly pbc::RepeatedField<uint> targetIndexList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> TargetIndexList {
-      get { return targetIndexList_; }
-    }
-
-    /// <summary>Field number for the "dynamic_values" field.</summary>
-    public const int DynamicValuesFieldNumber = 6;
-    private static readonly pbc::MapField<string, float>.Codec _map_dynamicValues_codec
-        = new pbc::MapField<string, float>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForFloat(21, 0F), 50);
-    private readonly pbc::MapField<string, float> dynamicValues_ = new pbc::MapField<string, float>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<string, float> DynamicValues {
-      get { return dynamicValues_; }
-    }
-
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -175,12 +175,12 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (!DynamicValues.Equals(other.DynamicValues)) return false;
+      if(!targetIndexList_.Equals(other.targetIndexList_)) return false;
       if (Id != other.Id) return false;
       if (Level != other.Level) return false;
       if (OwnerIndex != other.OwnerIndex) return false;
       if (WaveFlag != other.WaveFlag) return false;
-      if(!targetIndexList_.Equals(other.targetIndexList_)) return false;
-      if (!DynamicValues.Equals(other.DynamicValues)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -188,12 +188,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      hash ^= DynamicValues.GetHashCode();
+      hash ^= targetIndexList_.GetHashCode();
       if (Id != 0) hash ^= Id.GetHashCode();
       if (Level != 0) hash ^= Level.GetHashCode();
       if (OwnerIndex != 0) hash ^= OwnerIndex.GetHashCode();
       if (WaveFlag != 0) hash ^= WaveFlag.GetHashCode();
-      hash ^= targetIndexList_.GetHashCode();
-      hash ^= DynamicValues.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -268,6 +268,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      size += dynamicValues_.CalculateSize(_map_dynamicValues_codec);
+      size += targetIndexList_.CalculateSize(_repeated_targetIndexList_codec);
       if (Id != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Id);
       }
@@ -280,8 +282,6 @@ namespace March7thHoney.Proto {
       if (WaveFlag != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(WaveFlag);
       }
-      size += targetIndexList_.CalculateSize(_repeated_targetIndexList_codec);
-      size += dynamicValues_.CalculateSize(_map_dynamicValues_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -294,6 +294,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      dynamicValues_.MergeFrom(other.dynamicValues_);
+      targetIndexList_.Add(other.targetIndexList_);
       if (other.Id != 0) {
         Id = other.Id;
       }
@@ -306,8 +308,6 @@ namespace March7thHoney.Proto {
       if (other.WaveFlag != 0) {
         WaveFlag = other.WaveFlag;
       }
-      targetIndexList_.Add(other.targetIndexList_);
-      dynamicValues_.MergeFrom(other.dynamicValues_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 

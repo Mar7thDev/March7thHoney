@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "GridFightUpdateSrcType.proto";
+import "KFNCAIHIHCM.proto";
+
+message ABPLALCHNFA {
+    repeated uint32 OOEOCGLLHFO = 9;
+    repeated KFNCAIHIHCM JKPJFKCBIEM = 1;
+    GridFightUpdateSrcType grid_update_src = 12;
+}

@@ -2,15 +2,13 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "FightGameMode.proto";
 import "LobbyGameExtInfo.proto";
-import "PBICJCPDLGD.proto";
+import "PJMGBLIFDFP.proto";
 
 message LobbyCreateCsReq {
-    LobbyGameExtInfo JHCJMKDDNNF = 1;
-    uint32 CHEODMKAHJM = 5;
-    FightGameMode PLOBMBFPNFK = 12;
-    PBICJCPDLGD POFOCMIHJIA = 13;
+    PJMGBLIFDFP EMIJCKENBKJ = 7;
+    LobbyGameExtInfo JIDKDPPPDPF = 15;
+    FightGameMode GJNMHILINHC = 13;
+    uint32 HDJFGMGAOOF = 3;
 }

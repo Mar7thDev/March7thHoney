@@ -24,14 +24,13 @@ namespace March7thHoney.Proto {
     static CmdFeverTimeActivityTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Ch5DbWRGZXZlclRpbWVBY3Rpdml0eVR5cGUucHJvdG8qhQIKGENtZEZldmVy",
-            "VGltZUFjdGl2aXR5VHlwZRIbChdBSUVMT0hCQ09QR19QQ1BESEVMUEtFTRAA",
-            "EioKJUNtZEZldmVyVGltZUFjdGl2aXR5QmF0dGxlRW5kU2NOb3RpZnkQ7zcS",
-            "KAojQ21kRW50ZXJGZXZlclRpbWVBY3Rpdml0eVN0YWdlU2NSc3AQ+DcSJQog",
-            "Q21kR2V0RmV2ZXJUaW1lQWN0aXZpdHlEYXRhU2NSc3AQ8zcSKAojQ21kRW50",
-            "ZXJGZXZlclRpbWVBY3Rpdml0eVN0YWdlQ3NSZXEQ9zcSJQogQ21kR2V0RmV2",
-            "ZXJUaW1lQWN0aXZpdHlEYXRhQ3NSZXEQ9TdCFqoCE01hcmNoN3RoSG9uZXku",
-            "UHJvdG9iBnByb3RvMw=="));
+            "Ch5DbWRGZXZlclRpbWVBY3Rpdml0eVR5cGUucHJvdG8qzQEKGENtZEZldmVy",
+            "VGltZUFjdGl2aXR5VHlwZRIbChdCSkpCSUpNTkRDQV9OTENER0lQR0ZEShAA",
+            "EhwKF0JKSkJJSk1ORENBX0pIT0xJQ0dGTk9CEPg3EhwKF0JKSkJJSk1ORENB",
+            "X05GREFJTEFFR0FBEPA3EhwKF0JKSkJJSk1ORENBX0tHRUpNRkJFSkdCEPc3",
+            "EhwKF0JKSkJJSk1ORENBX0ZORE9JT01DREJFEPI3EhwKF0JKSkJJSk1ORENB",
+            "X09BTUhGSE5CTkdLEPY3QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
+            "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdFeverTimeActivityType), }, null, null));
@@ -41,12 +40,12 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdFeverTimeActivityType {
-    [pbr::OriginalName("AIELOHBCOPG_PCPDHELPKEM")] AielohbcopgPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdFeverTimeActivityBattleEndScNotify")] CmdFeverTimeActivityBattleEndScNotify = 7151,
-    [pbr::OriginalName("CmdEnterFeverTimeActivityStageScRsp")] CmdEnterFeverTimeActivityStageScRsp = 7160,
-    [pbr::OriginalName("CmdGetFeverTimeActivityDataScRsp")] CmdGetFeverTimeActivityDataScRsp = 7155,
-    [pbr::OriginalName("CmdEnterFeverTimeActivityStageCsReq")] CmdEnterFeverTimeActivityStageCsReq = 7159,
-    [pbr::OriginalName("CmdGetFeverTimeActivityDataCsReq")] CmdGetFeverTimeActivityDataCsReq = 7157,
+    [pbr::OriginalName("BJJBIJMNDCA_NLCDGIPGFDJ")] BjjbijmndcaNlcdgipgfdj = 0,
+    [pbr::OriginalName("BJJBIJMNDCA_JHOLICGFNOB")] BjjbijmndcaJholicgfnob = 7160,
+    [pbr::OriginalName("BJJBIJMNDCA_NFDAILAEGAA")] BjjbijmndcaNfdailaegaa = 7152,
+    [pbr::OriginalName("BJJBIJMNDCA_KGEJMFBEJGB")] BjjbijmndcaKgejmfbejgb = 7159,
+    [pbr::OriginalName("BJJBIJMNDCA_FNDOIOMCDBE")] BjjbijmndcaFndoiomcdbe = 7154,
+    [pbr::OriginalName("BJJBIJMNDCA_OAMHFHNBNGK")] BjjbijmndcaOamhfhnbngk = 7158,
   }
 
   #endregion

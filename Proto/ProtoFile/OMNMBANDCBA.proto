@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "ItemCostData.proto";
+
+message OMNMBANDCBA {
+    map<uint32, bool> PILABDDEKII = 6;
+    ItemCostData cost_data = 2;
+    uint32 JFIGNBBLCIM = 14;
+    int32 LIAGGDDILGO = 12;
+}

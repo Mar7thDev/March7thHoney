@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cg9DaGVzdEluZm8ucHJvdG8aD0NoZXN0VHlwZS5wcm90byJSCglDaGVzdElu",
-            "Zm8SEQoJZXhpc3RfbnVtGAQgASgNEhIKCm9wZW5lZF9udW0YBSABKA0SHgoK",
-            "Y2hlc3RfdHlwZRgHIAEoDjIKLkNoZXN0VHlwZUIWqgITTWFyY2g3dGhIb25l",
+            "Zm8SEgoKb3BlbmVkX251bRgCIAEoDRIRCglleGlzdF9udW0YCiABKA0SHgoK",
+            "Y2hlc3RfdHlwZRgEIAEoDjIKLkNoZXN0VHlwZUIWqgITTWFyY2g3dGhIb25l",
             "eS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChestTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChestInfo), global::March7thHoney.Proto.ChestInfo.Parser, new[]{ "ExistNum", "OpenedNum", "ChestType" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChestInfo), global::March7thHoney.Proto.ChestInfo.Parser, new[]{ "OpenedNum", "ExistNum", "ChestType" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ChestInfo(ChestInfo other) : this() {
-      existNum_ = other.existNum_;
       openedNum_ = other.openedNum_;
+      existNum_ = other.existNum_;
       chestType_ = other.chestType_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -85,20 +85,8 @@ namespace March7thHoney.Proto {
       return new ChestInfo(this);
     }
 
-    /// <summary>Field number for the "exist_num" field.</summary>
-    public const int ExistNumFieldNumber = 4;
-    private uint existNum_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint ExistNum {
-      get { return existNum_; }
-      set {
-        existNum_ = value;
-      }
-    }
-
     /// <summary>Field number for the "opened_num" field.</summary>
-    public const int OpenedNumFieldNumber = 5;
+    public const int OpenedNumFieldNumber = 2;
     private uint openedNum_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -109,8 +97,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "exist_num" field.</summary>
+    public const int ExistNumFieldNumber = 10;
+    private uint existNum_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint ExistNum {
+      get { return existNum_; }
+      set {
+        existNum_ = value;
+      }
+    }
+
     /// <summary>Field number for the "chest_type" field.</summary>
-    public const int ChestTypeFieldNumber = 7;
+    public const int ChestTypeFieldNumber = 4;
     private global::March7thHoney.Proto.ChestType chestType_ = global::March7thHoney.Proto.ChestType.MapInfoChestTypeNone;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -136,8 +136,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (ExistNum != other.ExistNum) return false;
       if (OpenedNum != other.OpenedNum) return false;
+      if (ExistNum != other.ExistNum) return false;
       if (ChestType != other.ChestType) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -146,8 +146,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (ExistNum != 0) hash ^= ExistNum.GetHashCode();
       if (OpenedNum != 0) hash ^= OpenedNum.GetHashCode();
+      if (ExistNum != 0) hash ^= ExistNum.GetHashCode();
       if (ChestType != global::March7thHoney.Proto.ChestType.MapInfoChestTypeNone) hash ^= ChestType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -167,17 +167,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (ExistNum != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(ExistNum);
-      }
       if (OpenedNum != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(16);
         output.WriteUInt32(OpenedNum);
       }
       if (ChestType != global::March7thHoney.Proto.ChestType.MapInfoChestTypeNone) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(32);
         output.WriteEnum((int) ChestType);
+      }
+      if (ExistNum != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(ExistNum);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -189,17 +189,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (ExistNum != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(ExistNum);
-      }
       if (OpenedNum != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(16);
         output.WriteUInt32(OpenedNum);
       }
       if (ChestType != global::March7thHoney.Proto.ChestType.MapInfoChestTypeNone) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(32);
         output.WriteEnum((int) ChestType);
+      }
+      if (ExistNum != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(ExistNum);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -211,11 +211,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (ExistNum != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ExistNum);
-      }
       if (OpenedNum != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(OpenedNum);
+      }
+      if (ExistNum != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ExistNum);
       }
       if (ChestType != global::March7thHoney.Proto.ChestType.MapInfoChestTypeNone) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ChestType);
@@ -232,11 +232,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.ExistNum != 0) {
-        ExistNum = other.ExistNum;
-      }
       if (other.OpenedNum != 0) {
         OpenedNum = other.OpenedNum;
+      }
+      if (other.ExistNum != 0) {
+        ExistNum = other.ExistNum;
       }
       if (other.ChestType != global::March7thHoney.Proto.ChestType.MapInfoChestTypeNone) {
         ChestType = other.ChestType;
@@ -260,16 +260,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
-            ExistNum = input.ReadUInt32();
-            break;
-          }
-          case 40: {
+          case 16: {
             OpenedNum = input.ReadUInt32();
             break;
           }
-          case 56: {
+          case 32: {
             ChestType = (global::March7thHoney.Proto.ChestType) input.ReadEnum();
+            break;
+          }
+          case 80: {
+            ExistNum = input.ReadUInt32();
             break;
           }
         }
@@ -291,16 +291,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
-            ExistNum = input.ReadUInt32();
-            break;
-          }
-          case 40: {
+          case 16: {
             OpenedNum = input.ReadUInt32();
             break;
           }
-          case 56: {
+          case 32: {
             ChestType = (global::March7thHoney.Proto.ChestType) input.ReadEnum();
+            break;
+          }
+          case 80: {
+            ExistNum = input.ReadUInt32();
             break;
           }
         }

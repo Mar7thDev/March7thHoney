@@ -25,15 +25,15 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch1UYWtlTWFpbEF0dGFjaG1lbnRTY1JzcC5wcm90bxoOSXRlbUxpc3QucHJv",
-            "dG8aEUtFT0FJSEFDSEtHLnByb3RvIooBChdUYWtlTWFpbEF0dGFjaG1lbnRT",
-            "Y1JzcBIPCgdyZXRjb2RlGAEgASgNEiQKDmZhaWxfbWFpbF9saXN0GAYgAygL",
-            "MgwuS0VPQUlIQUNIS0cSHQoKYXR0YWNobWVudBgHIAEoCzIJLkl0ZW1MaXN0",
-            "EhkKEXN1Y2NfbWFpbF9pZF9saXN0GAogAygNQhaqAhNNYXJjaDd0aEhvbmV5",
+            "dG8aEUtOUE5BSFBITkpLLnByb3RvIooBChdUYWtlTWFpbEF0dGFjaG1lbnRT",
+            "Y1JzcBIkCg5mYWlsX21haWxfbGlzdBgJIAMoCzIMLktOUE5BSFBITkpLEhkK",
+            "EXN1Y2NfbWFpbF9pZF9saXN0GAEgAygNEh0KCmF0dGFjaG1lbnQYBiABKAsy",
+            "CS5JdGVtTGlzdBIPCgdyZXRjb2RlGAogASgNQhaqAhNNYXJjaDd0aEhvbmV5",
             "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemListReflection.Descriptor, global::March7thHoney.Proto.KEOAIHACHKGReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemListReflection.Descriptor, global::March7thHoney.Proto.KNPNAHPHNJKReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TakeMailAttachmentScRsp), global::March7thHoney.Proto.TakeMailAttachmentScRsp.Parser, new[]{ "Retcode", "FailMailList", "Attachment", "SuccMailIdList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TakeMailAttachmentScRsp), global::March7thHoney.Proto.TakeMailAttachmentScRsp.Parser, new[]{ "FailMailList", "SuccMailIdList", "Attachment", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,10 +75,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public TakeMailAttachmentScRsp(TakeMailAttachmentScRsp other) : this() {
-      retcode_ = other.retcode_;
       failMailList_ = other.failMailList_.Clone();
-      attachment_ = other.attachment_ != null ? other.attachment_.Clone() : null;
       succMailIdList_ = other.succMailIdList_.Clone();
+      attachment_ = other.attachment_ != null ? other.attachment_.Clone() : null;
+      retcode_ = other.retcode_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -88,31 +88,30 @@ namespace March7thHoney.Proto {
       return new TakeMailAttachmentScRsp(this);
     }
 
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 1;
-    private uint retcode_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
-      set {
-        retcode_ = value;
-      }
-    }
-
     /// <summary>Field number for the "fail_mail_list" field.</summary>
-    public const int FailMailListFieldNumber = 6;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.KEOAIHACHKG> _repeated_failMailList_codec
-        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.KEOAIHACHKG.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.KEOAIHACHKG> failMailList_ = new pbc::RepeatedField<global::March7thHoney.Proto.KEOAIHACHKG>();
+    public const int FailMailListFieldNumber = 9;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.KNPNAHPHNJK> _repeated_failMailList_codec
+        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.KNPNAHPHNJK.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.KNPNAHPHNJK> failMailList_ = new pbc::RepeatedField<global::March7thHoney.Proto.KNPNAHPHNJK>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.KEOAIHACHKG> FailMailList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.KNPNAHPHNJK> FailMailList {
       get { return failMailList_; }
     }
 
+    /// <summary>Field number for the "succ_mail_id_list" field.</summary>
+    public const int SuccMailIdListFieldNumber = 1;
+    private static readonly pb::FieldCodec<uint> _repeated_succMailIdList_codec
+        = pb::FieldCodec.ForUInt32(10);
+    private readonly pbc::RepeatedField<uint> succMailIdList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> SuccMailIdList {
+      get { return succMailIdList_; }
+    }
+
     /// <summary>Field number for the "attachment" field.</summary>
-    public const int AttachmentFieldNumber = 7;
+    public const int AttachmentFieldNumber = 6;
     private global::March7thHoney.Proto.ItemList attachment_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -123,15 +122,16 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "succ_mail_id_list" field.</summary>
-    public const int SuccMailIdListFieldNumber = 10;
-    private static readonly pb::FieldCodec<uint> _repeated_succMailIdList_codec
-        = pb::FieldCodec.ForUInt32(82);
-    private readonly pbc::RepeatedField<uint> succMailIdList_ = new pbc::RepeatedField<uint>();
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 10;
+    private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> SuccMailIdList {
-      get { return succMailIdList_; }
+    public uint Retcode {
+      get { return retcode_; }
+      set {
+        retcode_ = value;
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -149,10 +149,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Retcode != other.Retcode) return false;
       if(!failMailList_.Equals(other.failMailList_)) return false;
-      if (!object.Equals(Attachment, other.Attachment)) return false;
       if(!succMailIdList_.Equals(other.succMailIdList_)) return false;
+      if (!object.Equals(Attachment, other.Attachment)) return false;
+      if (Retcode != other.Retcode) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -160,10 +160,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       hash ^= failMailList_.GetHashCode();
-      if (attachment_ != null) hash ^= Attachment.GetHashCode();
       hash ^= succMailIdList_.GetHashCode();
+      if (attachment_ != null) hash ^= Attachment.GetHashCode();
+      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -182,16 +182,16 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Retcode != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(Retcode);
-      }
-      failMailList_.WriteTo(output, _repeated_failMailList_codec);
+      succMailIdList_.WriteTo(output, _repeated_succMailIdList_codec);
       if (attachment_ != null) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(50);
         output.WriteMessage(Attachment);
       }
-      succMailIdList_.WriteTo(output, _repeated_succMailIdList_codec);
+      failMailList_.WriteTo(output, _repeated_failMailList_codec);
+      if (Retcode != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(Retcode);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -202,16 +202,16 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Retcode != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(Retcode);
-      }
-      failMailList_.WriteTo(ref output, _repeated_failMailList_codec);
+      succMailIdList_.WriteTo(ref output, _repeated_succMailIdList_codec);
       if (attachment_ != null) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(50);
         output.WriteMessage(Attachment);
       }
-      succMailIdList_.WriteTo(ref output, _repeated_succMailIdList_codec);
+      failMailList_.WriteTo(ref output, _repeated_failMailList_codec);
+      if (Retcode != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(Retcode);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -222,14 +222,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Retcode != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
-      }
       size += failMailList_.CalculateSize(_repeated_failMailList_codec);
+      size += succMailIdList_.CalculateSize(_repeated_succMailIdList_codec);
       if (attachment_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Attachment);
       }
-      size += succMailIdList_.CalculateSize(_repeated_succMailIdList_codec);
+      if (Retcode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -242,17 +242,17 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
-      }
       failMailList_.Add(other.failMailList_);
+      succMailIdList_.Add(other.succMailIdList_);
       if (other.attachment_ != null) {
         if (attachment_ == null) {
           Attachment = new global::March7thHoney.Proto.ItemList();
         }
         Attachment.MergeFrom(other.Attachment);
       }
-      succMailIdList_.Add(other.succMailIdList_);
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -272,24 +272,24 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
+          case 10:
           case 8: {
-            Retcode = input.ReadUInt32();
+            succMailIdList_.AddEntriesFrom(input, _repeated_succMailIdList_codec);
             break;
           }
           case 50: {
-            failMailList_.AddEntriesFrom(input, _repeated_failMailList_codec);
-            break;
-          }
-          case 58: {
             if (attachment_ == null) {
               Attachment = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(Attachment);
             break;
           }
-          case 82:
+          case 74: {
+            failMailList_.AddEntriesFrom(input, _repeated_failMailList_codec);
+            break;
+          }
           case 80: {
-            succMailIdList_.AddEntriesFrom(input, _repeated_succMailIdList_codec);
+            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -311,24 +311,24 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
+          case 10:
           case 8: {
-            Retcode = input.ReadUInt32();
+            succMailIdList_.AddEntriesFrom(ref input, _repeated_succMailIdList_codec);
             break;
           }
           case 50: {
-            failMailList_.AddEntriesFrom(ref input, _repeated_failMailList_codec);
-            break;
-          }
-          case 58: {
             if (attachment_ == null) {
               Attachment = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(Attachment);
             break;
           }
-          case 82:
+          case 74: {
+            failMailList_.AddEntriesFrom(ref input, _repeated_failMailList_codec);
+            break;
+          }
           case 80: {
-            succMailIdList_.AddEntriesFrom(ref input, _repeated_succMailIdList_codec);
+            Retcode = input.ReadUInt32();
             break;
           }
         }

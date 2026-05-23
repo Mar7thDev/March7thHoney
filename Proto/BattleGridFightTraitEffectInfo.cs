@@ -26,20 +26,20 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiRCYXR0bGVHcmlkRmlnaHRUcmFpdEVmZmVjdEluZm8ucHJvdG8aJkJhdHRs",
             "ZUdyaWRGaWdodFRyYWl0Q29yZVJvbGVJbmZvLnByb3RvGidCYXR0bGVHcmlk",
-            "RmlnbnRBdmF0YXJDb3JlUm9sZUluZm8ucHJvdG8aEURGSkdQT0RBS0FNLnBy",
-            "b3RvGiNHcmlkRmlnaHRUcmFpdEVmZmVjdExldmVsSW5mby5wcm90byKoAgoe",
+            "RmlnbnRBdmF0YXJDb3JlUm9sZUluZm8ucHJvdG8aI0dyaWRGaWdodFRyYWl0",
+            "RWZmZWN0TGV2ZWxJbmZvLnByb3RvGhFLRk1LQk1KUEVJQy5wcm90byKoAgoe",
             "QmF0dGxlR3JpZEZpZ2h0VHJhaXRFZmZlY3RJbmZvEhEKCWVmZmVjdF9pZBgB",
             "IAEoDRI8Cg90cmFpdF9jb3JlX3JvbGUYZSABKAsyIS5CYXR0bGVHcmlkRmln",
             "aHRUcmFpdENvcmVSb2xlSW5mb0gAEj4KEGF2YXRhcl9jb3JlX2luZm8YZiAB",
             "KAsyIi5CYXR0bGVHcmlkRmlnbnRBdmF0YXJDb3JlUm9sZUluZm9IABJBChd0",
             "cmFpdF9lZmZlY3RfbGV2ZWxfaW5mbxhnIAEoCzIeLkdyaWRGaWdodFRyYWl0",
-            "RWZmZWN0TGV2ZWxJbmZvSAASIwoLSEFJTkpLTExMS0YYaCABKAsyDC5ERkpH",
-            "UE9EQUtBTUgAQg0KC0hEQUNDSUVJSkZPQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
+            "RWZmZWN0TGV2ZWxJbmZvSAASIwoLSkxDTEhBS05NTEwYaCABKAsyDC5LRk1L",
+            "Qk1KUEVJQ0gAQg0KC05FQk5KRE1GRUxPQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
             "b3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.BattleGridFightTraitCoreRoleInfoReflection.Descriptor, global::March7thHoney.Proto.BattleGridFigntAvatarCoreRoleInfoReflection.Descriptor, global::March7thHoney.Proto.DFJGPODAKAMReflection.Descriptor, global::March7thHoney.Proto.GridFightTraitEffectLevelInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.BattleGridFightTraitCoreRoleInfoReflection.Descriptor, global::March7thHoney.Proto.BattleGridFigntAvatarCoreRoleInfoReflection.Descriptor, global::March7thHoney.Proto.GridFightTraitEffectLevelInfoReflection.Descriptor, global::March7thHoney.Proto.KFMKBMJPEICReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BattleGridFightTraitEffectInfo), global::March7thHoney.Proto.BattleGridFightTraitEffectInfo.Parser, new[]{ "EffectId", "TraitCoreRole", "AvatarCoreInfo", "TraitEffectLevelInfo", "HAINJKLLLKF" }, new[]{ "HDACCIEIJFO" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BattleGridFightTraitEffectInfo), global::March7thHoney.Proto.BattleGridFightTraitEffectInfo.Parser, new[]{ "EffectId", "TraitCoreRole", "AvatarCoreInfo", "TraitEffectLevelInfo", "JLCLHAKNMLL" }, new[]{ "NEBNJDMFELO" }, null, null, null)
           }));
     }
     #endregion
@@ -82,18 +82,18 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BattleGridFightTraitEffectInfo(BattleGridFightTraitEffectInfo other) : this() {
       effectId_ = other.effectId_;
-      switch (other.HDACCIEIJFOCase) {
-        case HDACCIEIJFOOneofCase.TraitCoreRole:
+      switch (other.NEBNJDMFELOCase) {
+        case NEBNJDMFELOOneofCase.TraitCoreRole:
           TraitCoreRole = other.TraitCoreRole.Clone();
           break;
-        case HDACCIEIJFOOneofCase.AvatarCoreInfo:
+        case NEBNJDMFELOOneofCase.AvatarCoreInfo:
           AvatarCoreInfo = other.AvatarCoreInfo.Clone();
           break;
-        case HDACCIEIJFOOneofCase.TraitEffectLevelInfo:
+        case NEBNJDMFELOOneofCase.TraitEffectLevelInfo:
           TraitEffectLevelInfo = other.TraitEffectLevelInfo.Clone();
           break;
-        case HDACCIEIJFOOneofCase.HAINJKLLLKF:
-          HAINJKLLLKF = other.HAINJKLLLKF.Clone();
+        case NEBNJDMFELOOneofCase.JLCLHAKNMLL:
+          JLCLHAKNMLL = other.JLCLHAKNMLL.Clone();
           break;
       }
 
@@ -123,10 +123,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.BattleGridFightTraitCoreRoleInfo TraitCoreRole {
-      get { return hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.TraitCoreRole ? (global::March7thHoney.Proto.BattleGridFightTraitCoreRoleInfo) hDACCIEIJFO_ : null; }
+      get { return nEBNJDMFELOCase_ == NEBNJDMFELOOneofCase.TraitCoreRole ? (global::March7thHoney.Proto.BattleGridFightTraitCoreRoleInfo) nEBNJDMFELO_ : null; }
       set {
-        hDACCIEIJFO_ = value;
-        hDACCIEIJFOCase_ = value == null ? HDACCIEIJFOOneofCase.None : HDACCIEIJFOOneofCase.TraitCoreRole;
+        nEBNJDMFELO_ = value;
+        nEBNJDMFELOCase_ = value == null ? NEBNJDMFELOOneofCase.None : NEBNJDMFELOOneofCase.TraitCoreRole;
       }
     }
 
@@ -135,10 +135,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.BattleGridFigntAvatarCoreRoleInfo AvatarCoreInfo {
-      get { return hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.AvatarCoreInfo ? (global::March7thHoney.Proto.BattleGridFigntAvatarCoreRoleInfo) hDACCIEIJFO_ : null; }
+      get { return nEBNJDMFELOCase_ == NEBNJDMFELOOneofCase.AvatarCoreInfo ? (global::March7thHoney.Proto.BattleGridFigntAvatarCoreRoleInfo) nEBNJDMFELO_ : null; }
       set {
-        hDACCIEIJFO_ = value;
-        hDACCIEIJFOCase_ = value == null ? HDACCIEIJFOOneofCase.None : HDACCIEIJFOOneofCase.AvatarCoreInfo;
+        nEBNJDMFELO_ = value;
+        nEBNJDMFELOCase_ = value == null ? NEBNJDMFELOOneofCase.None : NEBNJDMFELOOneofCase.AvatarCoreInfo;
       }
     }
 
@@ -147,46 +147,46 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.GridFightTraitEffectLevelInfo TraitEffectLevelInfo {
-      get { return hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.TraitEffectLevelInfo ? (global::March7thHoney.Proto.GridFightTraitEffectLevelInfo) hDACCIEIJFO_ : null; }
+      get { return nEBNJDMFELOCase_ == NEBNJDMFELOOneofCase.TraitEffectLevelInfo ? (global::March7thHoney.Proto.GridFightTraitEffectLevelInfo) nEBNJDMFELO_ : null; }
       set {
-        hDACCIEIJFO_ = value;
-        hDACCIEIJFOCase_ = value == null ? HDACCIEIJFOOneofCase.None : HDACCIEIJFOOneofCase.TraitEffectLevelInfo;
+        nEBNJDMFELO_ = value;
+        nEBNJDMFELOCase_ = value == null ? NEBNJDMFELOOneofCase.None : NEBNJDMFELOOneofCase.TraitEffectLevelInfo;
       }
     }
 
-    /// <summary>Field number for the "HAINJKLLLKF" field.</summary>
-    public const int HAINJKLLLKFFieldNumber = 104;
+    /// <summary>Field number for the "JLCLHAKNMLL" field.</summary>
+    public const int JLCLHAKNMLLFieldNumber = 104;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.DFJGPODAKAM HAINJKLLLKF {
-      get { return hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.HAINJKLLLKF ? (global::March7thHoney.Proto.DFJGPODAKAM) hDACCIEIJFO_ : null; }
+    public global::March7thHoney.Proto.KFMKBMJPEIC JLCLHAKNMLL {
+      get { return nEBNJDMFELOCase_ == NEBNJDMFELOOneofCase.JLCLHAKNMLL ? (global::March7thHoney.Proto.KFMKBMJPEIC) nEBNJDMFELO_ : null; }
       set {
-        hDACCIEIJFO_ = value;
-        hDACCIEIJFOCase_ = value == null ? HDACCIEIJFOOneofCase.None : HDACCIEIJFOOneofCase.HAINJKLLLKF;
+        nEBNJDMFELO_ = value;
+        nEBNJDMFELOCase_ = value == null ? NEBNJDMFELOOneofCase.None : NEBNJDMFELOOneofCase.JLCLHAKNMLL;
       }
     }
 
-    private object hDACCIEIJFO_;
-    /// <summary>Enum of possible cases for the "HDACCIEIJFO" oneof.</summary>
-    public enum HDACCIEIJFOOneofCase {
+    private object nEBNJDMFELO_;
+    /// <summary>Enum of possible cases for the "NEBNJDMFELO" oneof.</summary>
+    public enum NEBNJDMFELOOneofCase {
       None = 0,
       TraitCoreRole = 101,
       AvatarCoreInfo = 102,
       TraitEffectLevelInfo = 103,
-      HAINJKLLLKF = 104,
+      JLCLHAKNMLL = 104,
     }
-    private HDACCIEIJFOOneofCase hDACCIEIJFOCase_ = HDACCIEIJFOOneofCase.None;
+    private NEBNJDMFELOOneofCase nEBNJDMFELOCase_ = NEBNJDMFELOOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public HDACCIEIJFOOneofCase HDACCIEIJFOCase {
-      get { return hDACCIEIJFOCase_; }
+    public NEBNJDMFELOOneofCase NEBNJDMFELOCase {
+      get { return nEBNJDMFELOCase_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearHDACCIEIJFO() {
-      hDACCIEIJFOCase_ = HDACCIEIJFOOneofCase.None;
-      hDACCIEIJFO_ = null;
+    public void ClearNEBNJDMFELO() {
+      nEBNJDMFELOCase_ = NEBNJDMFELOOneofCase.None;
+      nEBNJDMFELO_ = null;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -208,8 +208,8 @@ namespace March7thHoney.Proto {
       if (!object.Equals(TraitCoreRole, other.TraitCoreRole)) return false;
       if (!object.Equals(AvatarCoreInfo, other.AvatarCoreInfo)) return false;
       if (!object.Equals(TraitEffectLevelInfo, other.TraitEffectLevelInfo)) return false;
-      if (!object.Equals(HAINJKLLLKF, other.HAINJKLLLKF)) return false;
-      if (HDACCIEIJFOCase != other.HDACCIEIJFOCase) return false;
+      if (!object.Equals(JLCLHAKNMLL, other.JLCLHAKNMLL)) return false;
+      if (NEBNJDMFELOCase != other.NEBNJDMFELOCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -218,11 +218,11 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (EffectId != 0) hash ^= EffectId.GetHashCode();
-      if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.TraitCoreRole) hash ^= TraitCoreRole.GetHashCode();
-      if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.AvatarCoreInfo) hash ^= AvatarCoreInfo.GetHashCode();
-      if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.TraitEffectLevelInfo) hash ^= TraitEffectLevelInfo.GetHashCode();
-      if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.HAINJKLLLKF) hash ^= HAINJKLLLKF.GetHashCode();
-      hash ^= (int) hDACCIEIJFOCase_;
+      if (nEBNJDMFELOCase_ == NEBNJDMFELOOneofCase.TraitCoreRole) hash ^= TraitCoreRole.GetHashCode();
+      if (nEBNJDMFELOCase_ == NEBNJDMFELOOneofCase.AvatarCoreInfo) hash ^= AvatarCoreInfo.GetHashCode();
+      if (nEBNJDMFELOCase_ == NEBNJDMFELOOneofCase.TraitEffectLevelInfo) hash ^= TraitEffectLevelInfo.GetHashCode();
+      if (nEBNJDMFELOCase_ == NEBNJDMFELOOneofCase.JLCLHAKNMLL) hash ^= JLCLHAKNMLL.GetHashCode();
+      hash ^= (int) nEBNJDMFELOCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -245,21 +245,21 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(8);
         output.WriteUInt32(EffectId);
       }
-      if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.TraitCoreRole) {
+      if (nEBNJDMFELOCase_ == NEBNJDMFELOOneofCase.TraitCoreRole) {
         output.WriteRawTag(170, 6);
         output.WriteMessage(TraitCoreRole);
       }
-      if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.AvatarCoreInfo) {
+      if (nEBNJDMFELOCase_ == NEBNJDMFELOOneofCase.AvatarCoreInfo) {
         output.WriteRawTag(178, 6);
         output.WriteMessage(AvatarCoreInfo);
       }
-      if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.TraitEffectLevelInfo) {
+      if (nEBNJDMFELOCase_ == NEBNJDMFELOOneofCase.TraitEffectLevelInfo) {
         output.WriteRawTag(186, 6);
         output.WriteMessage(TraitEffectLevelInfo);
       }
-      if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.HAINJKLLLKF) {
+      if (nEBNJDMFELOCase_ == NEBNJDMFELOOneofCase.JLCLHAKNMLL) {
         output.WriteRawTag(194, 6);
-        output.WriteMessage(HAINJKLLLKF);
+        output.WriteMessage(JLCLHAKNMLL);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -275,21 +275,21 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(8);
         output.WriteUInt32(EffectId);
       }
-      if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.TraitCoreRole) {
+      if (nEBNJDMFELOCase_ == NEBNJDMFELOOneofCase.TraitCoreRole) {
         output.WriteRawTag(170, 6);
         output.WriteMessage(TraitCoreRole);
       }
-      if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.AvatarCoreInfo) {
+      if (nEBNJDMFELOCase_ == NEBNJDMFELOOneofCase.AvatarCoreInfo) {
         output.WriteRawTag(178, 6);
         output.WriteMessage(AvatarCoreInfo);
       }
-      if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.TraitEffectLevelInfo) {
+      if (nEBNJDMFELOCase_ == NEBNJDMFELOOneofCase.TraitEffectLevelInfo) {
         output.WriteRawTag(186, 6);
         output.WriteMessage(TraitEffectLevelInfo);
       }
-      if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.HAINJKLLLKF) {
+      if (nEBNJDMFELOCase_ == NEBNJDMFELOOneofCase.JLCLHAKNMLL) {
         output.WriteRawTag(194, 6);
-        output.WriteMessage(HAINJKLLLKF);
+        output.WriteMessage(JLCLHAKNMLL);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -304,17 +304,17 @@ namespace March7thHoney.Proto {
       if (EffectId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EffectId);
       }
-      if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.TraitCoreRole) {
+      if (nEBNJDMFELOCase_ == NEBNJDMFELOOneofCase.TraitCoreRole) {
         size += 2 + pb::CodedOutputStream.ComputeMessageSize(TraitCoreRole);
       }
-      if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.AvatarCoreInfo) {
+      if (nEBNJDMFELOCase_ == NEBNJDMFELOOneofCase.AvatarCoreInfo) {
         size += 2 + pb::CodedOutputStream.ComputeMessageSize(AvatarCoreInfo);
       }
-      if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.TraitEffectLevelInfo) {
+      if (nEBNJDMFELOCase_ == NEBNJDMFELOOneofCase.TraitEffectLevelInfo) {
         size += 2 + pb::CodedOutputStream.ComputeMessageSize(TraitEffectLevelInfo);
       }
-      if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.HAINJKLLLKF) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(HAINJKLLLKF);
+      if (nEBNJDMFELOCase_ == NEBNJDMFELOOneofCase.JLCLHAKNMLL) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(JLCLHAKNMLL);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -331,30 +331,30 @@ namespace March7thHoney.Proto {
       if (other.EffectId != 0) {
         EffectId = other.EffectId;
       }
-      switch (other.HDACCIEIJFOCase) {
-        case HDACCIEIJFOOneofCase.TraitCoreRole:
+      switch (other.NEBNJDMFELOCase) {
+        case NEBNJDMFELOOneofCase.TraitCoreRole:
           if (TraitCoreRole == null) {
             TraitCoreRole = new global::March7thHoney.Proto.BattleGridFightTraitCoreRoleInfo();
           }
           TraitCoreRole.MergeFrom(other.TraitCoreRole);
           break;
-        case HDACCIEIJFOOneofCase.AvatarCoreInfo:
+        case NEBNJDMFELOOneofCase.AvatarCoreInfo:
           if (AvatarCoreInfo == null) {
             AvatarCoreInfo = new global::March7thHoney.Proto.BattleGridFigntAvatarCoreRoleInfo();
           }
           AvatarCoreInfo.MergeFrom(other.AvatarCoreInfo);
           break;
-        case HDACCIEIJFOOneofCase.TraitEffectLevelInfo:
+        case NEBNJDMFELOOneofCase.TraitEffectLevelInfo:
           if (TraitEffectLevelInfo == null) {
             TraitEffectLevelInfo = new global::March7thHoney.Proto.GridFightTraitEffectLevelInfo();
           }
           TraitEffectLevelInfo.MergeFrom(other.TraitEffectLevelInfo);
           break;
-        case HDACCIEIJFOOneofCase.HAINJKLLLKF:
-          if (HAINJKLLLKF == null) {
-            HAINJKLLLKF = new global::March7thHoney.Proto.DFJGPODAKAM();
+        case NEBNJDMFELOOneofCase.JLCLHAKNMLL:
+          if (JLCLHAKNMLL == null) {
+            JLCLHAKNMLL = new global::March7thHoney.Proto.KFMKBMJPEIC();
           }
-          HAINJKLLLKF.MergeFrom(other.HAINJKLLLKF);
+          JLCLHAKNMLL.MergeFrom(other.JLCLHAKNMLL);
           break;
       }
 
@@ -383,7 +383,7 @@ namespace March7thHoney.Proto {
           }
           case 810: {
             global::March7thHoney.Proto.BattleGridFightTraitCoreRoleInfo subBuilder = new global::March7thHoney.Proto.BattleGridFightTraitCoreRoleInfo();
-            if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.TraitCoreRole) {
+            if (nEBNJDMFELOCase_ == NEBNJDMFELOOneofCase.TraitCoreRole) {
               subBuilder.MergeFrom(TraitCoreRole);
             }
             input.ReadMessage(subBuilder);
@@ -392,7 +392,7 @@ namespace March7thHoney.Proto {
           }
           case 818: {
             global::March7thHoney.Proto.BattleGridFigntAvatarCoreRoleInfo subBuilder = new global::March7thHoney.Proto.BattleGridFigntAvatarCoreRoleInfo();
-            if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.AvatarCoreInfo) {
+            if (nEBNJDMFELOCase_ == NEBNJDMFELOOneofCase.AvatarCoreInfo) {
               subBuilder.MergeFrom(AvatarCoreInfo);
             }
             input.ReadMessage(subBuilder);
@@ -401,7 +401,7 @@ namespace March7thHoney.Proto {
           }
           case 826: {
             global::March7thHoney.Proto.GridFightTraitEffectLevelInfo subBuilder = new global::March7thHoney.Proto.GridFightTraitEffectLevelInfo();
-            if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.TraitEffectLevelInfo) {
+            if (nEBNJDMFELOCase_ == NEBNJDMFELOOneofCase.TraitEffectLevelInfo) {
               subBuilder.MergeFrom(TraitEffectLevelInfo);
             }
             input.ReadMessage(subBuilder);
@@ -409,12 +409,12 @@ namespace March7thHoney.Proto {
             break;
           }
           case 834: {
-            global::March7thHoney.Proto.DFJGPODAKAM subBuilder = new global::March7thHoney.Proto.DFJGPODAKAM();
-            if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.HAINJKLLLKF) {
-              subBuilder.MergeFrom(HAINJKLLLKF);
+            global::March7thHoney.Proto.KFMKBMJPEIC subBuilder = new global::March7thHoney.Proto.KFMKBMJPEIC();
+            if (nEBNJDMFELOCase_ == NEBNJDMFELOOneofCase.JLCLHAKNMLL) {
+              subBuilder.MergeFrom(JLCLHAKNMLL);
             }
             input.ReadMessage(subBuilder);
-            HAINJKLLLKF = subBuilder;
+            JLCLHAKNMLL = subBuilder;
             break;
           }
         }
@@ -442,7 +442,7 @@ namespace March7thHoney.Proto {
           }
           case 810: {
             global::March7thHoney.Proto.BattleGridFightTraitCoreRoleInfo subBuilder = new global::March7thHoney.Proto.BattleGridFightTraitCoreRoleInfo();
-            if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.TraitCoreRole) {
+            if (nEBNJDMFELOCase_ == NEBNJDMFELOOneofCase.TraitCoreRole) {
               subBuilder.MergeFrom(TraitCoreRole);
             }
             input.ReadMessage(subBuilder);
@@ -451,7 +451,7 @@ namespace March7thHoney.Proto {
           }
           case 818: {
             global::March7thHoney.Proto.BattleGridFigntAvatarCoreRoleInfo subBuilder = new global::March7thHoney.Proto.BattleGridFigntAvatarCoreRoleInfo();
-            if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.AvatarCoreInfo) {
+            if (nEBNJDMFELOCase_ == NEBNJDMFELOOneofCase.AvatarCoreInfo) {
               subBuilder.MergeFrom(AvatarCoreInfo);
             }
             input.ReadMessage(subBuilder);
@@ -460,7 +460,7 @@ namespace March7thHoney.Proto {
           }
           case 826: {
             global::March7thHoney.Proto.GridFightTraitEffectLevelInfo subBuilder = new global::March7thHoney.Proto.GridFightTraitEffectLevelInfo();
-            if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.TraitEffectLevelInfo) {
+            if (nEBNJDMFELOCase_ == NEBNJDMFELOOneofCase.TraitEffectLevelInfo) {
               subBuilder.MergeFrom(TraitEffectLevelInfo);
             }
             input.ReadMessage(subBuilder);
@@ -468,12 +468,12 @@ namespace March7thHoney.Proto {
             break;
           }
           case 834: {
-            global::March7thHoney.Proto.DFJGPODAKAM subBuilder = new global::March7thHoney.Proto.DFJGPODAKAM();
-            if (hDACCIEIJFOCase_ == HDACCIEIJFOOneofCase.HAINJKLLLKF) {
-              subBuilder.MergeFrom(HAINJKLLLKF);
+            global::March7thHoney.Proto.KFMKBMJPEIC subBuilder = new global::March7thHoney.Proto.KFMKBMJPEIC();
+            if (nEBNJDMFELOCase_ == NEBNJDMFELOOneofCase.JLCLHAKNMLL) {
+              subBuilder.MergeFrom(JLCLHAKNMLL);
             }
             input.ReadMessage(subBuilder);
-            HAINJKLLLKF = subBuilder;
+            JLCLHAKNMLL = subBuilder;
             break;
           }
         }

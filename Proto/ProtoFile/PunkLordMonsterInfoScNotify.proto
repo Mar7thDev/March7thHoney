@@ -2,15 +2,13 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "INPBGNJMNKJ.proto";
-import "PHOCECJOBHH.proto";
+import "CJDIAHDLCNJ.proto";
+import "PAKHPLAHGBN.proto";
 import "PunkLordMonsterBasicInfo.proto";
 
 message PunkLordMonsterInfoScNotify {
-    INPBGNJMNKJ reason = 7;
-    PunkLordMonsterBasicInfo basic_info = 8;
-    PHOCECJOBHH FHPOILIMKII = 11;
-    repeated uint32 GDBIIMNJLBA = 12;
+    repeated uint32 FNMGMNABAJG = 12;
+    CJDIAHDLCNJ FDJHMFAGEOA = 7;
+    PunkLordMonsterBasicInfo basic_info = 13;
+    PAKHPLAHGBN reason = 1;
 }

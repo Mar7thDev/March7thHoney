@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdMarkChestType {
-    EECKHHFLCDF_PCPDHELPKEM = 0;
-    CmdGetMarkChestScRsp = 8200;
-    CmdUpdateMarkChestScRsp = 8190;
-    CmdGetMarkChestCsReq = 8181;
-    CmdUpdateMarkChestCsReq = 8182;
-    CmdMarkChestChangedScNotify = 8195;
+    LCNKHDAOMKM_NLCDGIPGFDJ = 0;
+    LCNKHDAOMKM_ALNPOCFENNI = 8200;
+    LCNKHDAOMKM_LKCNJILIMFK = 8196;
+    LCNKHDAOMKM_BOKHFIIFNOK = 8182;
+    LCNKHDAOMKM_GBKFEPPMDJG = 8186;
+    LCNKHDAOMKM_MCNFOCKIPJE = 8198;
 }

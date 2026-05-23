@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum PEIJNEFOCHI {
+    PEIJNEFOCHI_AIBAFPBKDJI = 0;
+    PEIJNEFOCHI_NOCIJDINKPJ = 1;
+    PEIJNEFOCHI_HIGMFLKHGNJ = 2;
+    PEIJNEFOCHI_JOJPGBCECLN = 3;
+    PEIJNEFOCHI_NBPPJEDAIFN = 4;
+}

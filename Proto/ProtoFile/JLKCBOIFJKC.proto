@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "MGBHKCMHDOK.proto";
+
+message JLKCBOIFJKC {
+    MGBHKCMHDOK ENPLACDLJGA = 2;
+    uint32 trait_id = 14;
+    bool JKMLJAIHDCD = 8;
+}

@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static SellItemCsReqReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChNTZWxsSXRlbUNzUmVxLnByb3RvGhJJdGVtQ29zdERhdGEucHJvdG8iRQoN",
-            "U2VsbEl0ZW1Dc1JlcRISCgpUb01hdGVyaWFsGAogASgIEiAKCWNvc3RfZGF0",
-            "YRgOIAEoCzINLkl0ZW1Db3N0RGF0YUIWqgITTWFyY2g3dGhIb25leS5Qcm90",
-            "b2IGcHJvdG8z"));
+            "ChNTZWxsSXRlbUNzUmVxLnByb3RvGhJJdGVtQ29zdERhdGEucHJvdG8iRgoN",
+            "U2VsbEl0ZW1Dc1JlcRIgCgljb3N0X2RhdGEYBSABKAsyDS5JdGVtQ29zdERh",
+            "dGESEwoLSE5MS0FFQktLQkwYCyABKAhCFqoCE01hcmNoN3RoSG9uZXkuUHJv",
+            "dG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemCostDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SellItemCsReq), global::March7thHoney.Proto.SellItemCsReq.Parser, new[]{ "ToMaterial", "CostData" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SellItemCsReq), global::March7thHoney.Proto.SellItemCsReq.Parser, new[]{ "CostData", "HNLKAEBKKBL" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SellItemCsReq(SellItemCsReq other) : this() {
-      toMaterial_ = other.toMaterial_;
       costData_ = other.costData_ != null ? other.costData_.Clone() : null;
+      hNLKAEBKKBL_ = other.hNLKAEBKKBL_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,20 +84,8 @@ namespace March7thHoney.Proto {
       return new SellItemCsReq(this);
     }
 
-    /// <summary>Field number for the "ToMaterial" field.</summary>
-    public const int ToMaterialFieldNumber = 10;
-    private bool toMaterial_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool ToMaterial {
-      get { return toMaterial_; }
-      set {
-        toMaterial_ = value;
-      }
-    }
-
     /// <summary>Field number for the "cost_data" field.</summary>
-    public const int CostDataFieldNumber = 14;
+    public const int CostDataFieldNumber = 5;
     private global::March7thHoney.Proto.ItemCostData costData_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -105,6 +93,18 @@ namespace March7thHoney.Proto {
       get { return costData_; }
       set {
         costData_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "HNLKAEBKKBL" field.</summary>
+    public const int HNLKAEBKKBLFieldNumber = 11;
+    private bool hNLKAEBKKBL_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HNLKAEBKKBL {
+      get { return hNLKAEBKKBL_; }
+      set {
+        hNLKAEBKKBL_ = value;
       }
     }
 
@@ -123,8 +123,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (ToMaterial != other.ToMaterial) return false;
       if (!object.Equals(CostData, other.CostData)) return false;
+      if (HNLKAEBKKBL != other.HNLKAEBKKBL) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,8 +132,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (ToMaterial != false) hash ^= ToMaterial.GetHashCode();
       if (costData_ != null) hash ^= CostData.GetHashCode();
+      if (HNLKAEBKKBL != false) hash ^= HNLKAEBKKBL.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,13 +152,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (ToMaterial != false) {
-        output.WriteRawTag(80);
-        output.WriteBool(ToMaterial);
-      }
       if (costData_ != null) {
-        output.WriteRawTag(114);
+        output.WriteRawTag(42);
         output.WriteMessage(CostData);
+      }
+      if (HNLKAEBKKBL != false) {
+        output.WriteRawTag(88);
+        output.WriteBool(HNLKAEBKKBL);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,13 +170,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (ToMaterial != false) {
-        output.WriteRawTag(80);
-        output.WriteBool(ToMaterial);
-      }
       if (costData_ != null) {
-        output.WriteRawTag(114);
+        output.WriteRawTag(42);
         output.WriteMessage(CostData);
+      }
+      if (HNLKAEBKKBL != false) {
+        output.WriteRawTag(88);
+        output.WriteBool(HNLKAEBKKBL);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -188,11 +188,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (ToMaterial != false) {
-        size += 1 + 1;
-      }
       if (costData_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(CostData);
+      }
+      if (HNLKAEBKKBL != false) {
+        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -206,14 +206,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.ToMaterial != false) {
-        ToMaterial = other.ToMaterial;
-      }
       if (other.costData_ != null) {
         if (costData_ == null) {
           CostData = new global::March7thHoney.Proto.ItemCostData();
         }
         CostData.MergeFrom(other.CostData);
+      }
+      if (other.HNLKAEBKKBL != false) {
+        HNLKAEBKKBL = other.HNLKAEBKKBL;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -234,15 +234,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 80: {
-            ToMaterial = input.ReadBool();
-            break;
-          }
-          case 114: {
+          case 42: {
             if (costData_ == null) {
               CostData = new global::March7thHoney.Proto.ItemCostData();
             }
             input.ReadMessage(CostData);
+            break;
+          }
+          case 88: {
+            HNLKAEBKKBL = input.ReadBool();
             break;
           }
         }
@@ -264,15 +264,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 80: {
-            ToMaterial = input.ReadBool();
-            break;
-          }
-          case 114: {
+          case 42: {
             if (costData_ == null) {
               CostData = new global::March7thHoney.Proto.ItemCostData();
             }
             input.ReadMessage(CostData);
+            break;
+          }
+          case 88: {
+            HNLKAEBKKBL = input.ReadBool();
             break;
           }
         }

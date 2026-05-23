@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum HeartDialEmotionType {
     HEART_DIAL_EMOTION_TYPE_PEACE = 0;
     HEART_DIAL_EMOTION_TYPE_ANGER = 1;

@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "BDEKEIKAKML.proto";
+import "CABBOOKAODO.proto";
 
 message RelicSmartWearUpdatePinRelicScRsp {
-    BDEKEIKAKML DACMPJLJGBC = 7;
-    uint32 retcode = 9;
+    CABBOOKAODO DNNKBPBFPBK = 11;
+    uint32 retcode = 3;
 }

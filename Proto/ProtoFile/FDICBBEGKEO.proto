@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum FDICBBEGKEO {
+    FDICBBEGKEO_NLCDGIPGFDJ = 0;
+    FDICBBEGKEO_EHNBEPDHBKC = 1;
+    FDICBBEGKEO_CBLMHGEJLMP = 2;
+    FDICBBEGKEO_NHEMIPGKGCJ = 3;
+}

@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "IIJKILFJENL.proto";
+import "OKKEJHPLMLA.proto";
 
 message TakeBenefitActivityRewardCsReq {
-    bool FHFMNOGAMHA = 1;
-    repeated IIJKILFJENL switch_list = 3;
+    repeated OKKEJHPLMLA switch_list = 1;
+    bool LJEGPIJGMLG = 15;
 }

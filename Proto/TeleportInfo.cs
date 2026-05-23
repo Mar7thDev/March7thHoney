@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChJUZWxlcG9ydEluZm8ucHJvdG8iMwoMVGVsZXBvcnRJbmZvEhMKC3RlbGVw",
-            "b3J0X2lkGAggASgNEg4KBnJlYXNvbhgJIAEoDUIWqgITTWFyY2g3dGhIb25l",
+            "b3J0X2lkGAwgASgNEg4KBnJlYXNvbhgFIAEoDUIWqgITTWFyY2g3dGhIb25l",
             "eS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "teleport_id" field.</summary>
-    public const int TeleportIdFieldNumber = 8;
+    public const int TeleportIdFieldNumber = 12;
     private uint teleportId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "reason" field.</summary>
-    public const int ReasonFieldNumber = 9;
+    public const int ReasonFieldNumber = 5;
     private uint reason_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (TeleportId != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(TeleportId);
-      }
       if (Reason != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(40);
         output.WriteUInt32(Reason);
+      }
+      if (TeleportId != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(TeleportId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (TeleportId != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(TeleportId);
-      }
       if (Reason != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(40);
         output.WriteUInt32(Reason);
+      }
+      if (TeleportId != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(TeleportId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 64: {
-            TeleportId = input.ReadUInt32();
+          case 40: {
+            Reason = input.ReadUInt32();
             break;
           }
-          case 72: {
-            Reason = input.ReadUInt32();
+          case 96: {
+            TeleportId = input.ReadUInt32();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 64: {
-            TeleportId = input.ReadUInt32();
+          case 40: {
+            Reason = input.ReadUInt32();
             break;
           }
-          case 72: {
-            Reason = input.ReadUInt32();
+          case 96: {
+            TeleportId = input.ReadUInt32();
             break;
           }
         }

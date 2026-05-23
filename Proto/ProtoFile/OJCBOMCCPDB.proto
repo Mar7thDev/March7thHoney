@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "BGLCGNCLHLJ.proto";
+import "BJGJBNJDLIK.proto";
+import "BattleAvatar.proto";
+import "KHFHMJEMBOF.proto";
+import "MIPDJDJLGPL.proto";
+import "MLCLJKDKCDG.proto";
+import "NIEGDAPHKGC.proto";
+import "PKDNDNABKII.proto";
+
+message OJCBOMCCPDB {
+    repeated BattleAvatar OPHONCKPNMG = 1;
+    repeated PKDNDNABKII grid_game_npc_list = 17;
+    repeated BJGJBNJDLIK grid_game_role_list = 8;
+    repeated KHFHMJEMBOF grid_fight_portal_buff_list = 14;
+    MIPDJDJLGPL IOCKDJCDMAH = 11;
+    repeated BGLCGNCLHLJ sync_augment_info = 10;
+    repeated MLCLJKDKCDG KCOMPKMJCMC = 18;
+    repeated NIEGDAPHKGC grid_fight_trait_info = 7;
+    map<string, uint32> POCKGKDFLKK = 20;
+    uint32 battle_wave_id = 2;
+    uint32 LODNFLMBIEH = 19;
+    uint32 IFIIOIIKJHO = 9;
+    uint32 LJNGPCKPJLF = 13;
+    uint32 NFBJINKLLLK = 21;
+    uint32 grid_fight_lineup_hp = 3;
+    uint32 HHEPCDMBJFI = 12;
+    bool is_overlock = 15;
+    bool MEHFNAEMMFE = 22;
+    uint32 EHNJDIDABHD = 4;
+    uint32 AACGBEBGDPE = 16;
+}

@@ -25,10 +25,10 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiFTd29yZFRyYWluaW5nRGFpbHlQaGFzZVR5cGUucHJvdG8qrgEKG1N3b3Jk",
-            "VHJhaW5pbmdEYWlseVBoYXNlVHlwZRIbChdNTUtKSktCT05FQV9QQ1BESEVM",
-            "UEtFTRAAEhsKF01NS0pKS0JPTkVBX0ZITktGSkZEQ0tPEAESGwoXTU1LSkpL",
-            "Qk9ORUFfT0RQREhQRE1BRkMQAhIbChdNTUtKSktCT05FQV9DUEFERktIS0RN",
-            "RBADEhsKF01NS0pKS0JPTkVBX0pOTFBGS0FMQ0lCEARCFqoCE01hcmNoN3Ro",
+            "VHJhaW5pbmdEYWlseVBoYXNlVHlwZRIbChdHRkVLT09OR0pCTF9OTENER0lQ",
+            "R0ZEShAAEhsKF0dGRUtPT05HSkJMX0pJTU1PSkhGT0tFEAESGwoXR0ZFS09P",
+            "TkdKQkxfSk1DSExKTEdQUEQQAhIbChdHRkVLT09OR0pCTF9PSERIQkZLSklL",
+            "TBADEhsKF0dGRUtPT05HSkJMX05QSkhQTElBTElOEARCFqoCE01hcmNoN3Ro",
             "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -39,11 +39,11 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum SwordTrainingDailyPhaseType {
-    [pbr::OriginalName("MMKJJKBONEA_PCPDHELPKEM")] MmkjjkboneaPcpdhelpkem = 0,
-    [pbr::OriginalName("MMKJJKBONEA_FHNKFJFDCKO")] MmkjjkboneaFhnkfjfdcko = 1,
-    [pbr::OriginalName("MMKJJKBONEA_ODPDHPDMAFC")] MmkjjkboneaOdpdhpdmafc = 2,
-    [pbr::OriginalName("MMKJJKBONEA_CPADFKHKDMD")] MmkjjkboneaCpadfkhkdmd = 3,
-    [pbr::OriginalName("MMKJJKBONEA_JNLPFKALCIB")] MmkjjkboneaJnlpfkalcib = 4,
+    [pbr::OriginalName("GFEKOONGJBL_NLCDGIPGFDJ")] GfekoongjblNlcdgipgfdj = 0,
+    [pbr::OriginalName("GFEKOONGJBL_JIMMOJHFOKE")] GfekoongjblJimmojhfoke = 1,
+    [pbr::OriginalName("GFEKOONGJBL_JMCHLJLGPPD")] GfekoongjblJmchljlgppd = 2,
+    [pbr::OriginalName("GFEKOONGJBL_OHDHBFKJIKL")] GfekoongjblOhdhbfkjikl = 3,
+    [pbr::OriginalName("GFEKOONGJBL_NPJHPLIALIN")] GfekoongjblNpjhplialin = 4,
   }
 
   #endregion

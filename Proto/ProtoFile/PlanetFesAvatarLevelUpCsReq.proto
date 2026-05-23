@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message PlanetFesAvatarLevelUpCsReq {
-    uint32 ODADJILOEKO = 3;
-    uint32 avatar_id = 4;
+    uint32 avatar_id = 9;
+    uint32 IGOOJKMPMDC = 7;
 }

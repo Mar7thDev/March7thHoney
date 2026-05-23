@@ -26,15 +26,15 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChpFbnRpdHlCdWZmQ2hhbmdlSW5mby5wcm90bxoOQnVmZkluZm8ucHJvdG8a",
             "H1NjZW5lRW50aXR5QnVmZkNoYW5nZVR5cGUucHJvdG8ivQEKFEVudGl0eUJ1",
-            "ZmZDaGFuZ2VJbmZvEhEKCWVudGl0eV9pZBgDIAEoDRIWCg5jYXN0X2VudGl0",
-            "eV9pZBgEIAEoDRIqCgZyZWFzb24YDCABKA4yGi5TY2VuZUVudGl0eUJ1ZmZD",
-            "aGFuZ2VUeXBlEiUKEGJ1ZmZfY2hhbmdlX2luZm8YCyABKAsyCS5CdWZmSW5m",
-            "b0gAEhgKDnJlbW92ZV9idWZmX2lkGA4gASgNSABCDQoLQlBJSEZBSkNMT0NC",
+            "ZmZDaGFuZ2VJbmZvEioKBnJlYXNvbhgDIAEoDjIaLlNjZW5lRW50aXR5QnVm",
+            "ZkNoYW5nZVR5cGUSFgoOY2FzdF9lbnRpdHlfaWQYCiABKA0SEQoJZW50aXR5",
+            "X2lkGAIgASgNEiUKEGJ1ZmZfY2hhbmdlX2luZm8YBCABKAsyCS5CdWZmSW5m",
+            "b0gAEhgKDnJlbW92ZV9idWZmX2lkGAcgASgNSABCDQoLS0tOQk9BQ05DT05C",
             "FqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.BuffInfoReflection.Descriptor, global::March7thHoney.Proto.SceneEntityBuffChangeTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EntityBuffChangeInfo), global::March7thHoney.Proto.EntityBuffChangeInfo.Parser, new[]{ "EntityId", "CastEntityId", "Reason", "BuffChangeInfo", "RemoveBuffId" }, new[]{ "BPIHFAJCLOC" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EntityBuffChangeInfo), global::March7thHoney.Proto.EntityBuffChangeInfo.Parser, new[]{ "Reason", "CastEntityId", "EntityId", "BuffChangeInfo", "RemoveBuffId" }, new[]{ "KKNBOACNCON" }, null, null, null)
           }));
     }
     #endregion
@@ -76,14 +76,14 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public EntityBuffChangeInfo(EntityBuffChangeInfo other) : this() {
-      entityId_ = other.entityId_;
-      castEntityId_ = other.castEntityId_;
       reason_ = other.reason_;
-      switch (other.BPIHFAJCLOCCase) {
-        case BPIHFAJCLOCOneofCase.BuffChangeInfo:
+      castEntityId_ = other.castEntityId_;
+      entityId_ = other.entityId_;
+      switch (other.KKNBOACNCONCase) {
+        case KKNBOACNCONOneofCase.BuffChangeInfo:
           BuffChangeInfo = other.BuffChangeInfo.Clone();
           break;
-        case BPIHFAJCLOCOneofCase.RemoveBuffId:
+        case KKNBOACNCONOneofCase.RemoveBuffId:
           RemoveBuffId = other.RemoveBuffId;
           break;
       }
@@ -97,32 +97,8 @@ namespace March7thHoney.Proto {
       return new EntityBuffChangeInfo(this);
     }
 
-    /// <summary>Field number for the "entity_id" field.</summary>
-    public const int EntityIdFieldNumber = 3;
-    private uint entityId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint EntityId {
-      get { return entityId_; }
-      set {
-        entityId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "cast_entity_id" field.</summary>
-    public const int CastEntityIdFieldNumber = 4;
-    private uint castEntityId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CastEntityId {
-      get { return castEntityId_; }
-      set {
-        castEntityId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "reason" field.</summary>
-    public const int ReasonFieldNumber = 12;
+    public const int ReasonFieldNumber = 3;
     private global::March7thHoney.Proto.SceneEntityBuffChangeType reason_ = global::March7thHoney.Proto.SceneEntityBuffChangeType.Default;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -133,63 +109,87 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "cast_entity_id" field.</summary>
+    public const int CastEntityIdFieldNumber = 10;
+    private uint castEntityId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint CastEntityId {
+      get { return castEntityId_; }
+      set {
+        castEntityId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "entity_id" field.</summary>
+    public const int EntityIdFieldNumber = 2;
+    private uint entityId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint EntityId {
+      get { return entityId_; }
+      set {
+        entityId_ = value;
+      }
+    }
+
     /// <summary>Field number for the "buff_change_info" field.</summary>
-    public const int BuffChangeInfoFieldNumber = 11;
+    public const int BuffChangeInfoFieldNumber = 4;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.BuffInfo BuffChangeInfo {
-      get { return bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.BuffChangeInfo ? (global::March7thHoney.Proto.BuffInfo) bPIHFAJCLOC_ : null; }
+      get { return kKNBOACNCONCase_ == KKNBOACNCONOneofCase.BuffChangeInfo ? (global::March7thHoney.Proto.BuffInfo) kKNBOACNCON_ : null; }
       set {
-        bPIHFAJCLOC_ = value;
-        bPIHFAJCLOCCase_ = value == null ? BPIHFAJCLOCOneofCase.None : BPIHFAJCLOCOneofCase.BuffChangeInfo;
+        kKNBOACNCON_ = value;
+        kKNBOACNCONCase_ = value == null ? KKNBOACNCONOneofCase.None : KKNBOACNCONOneofCase.BuffChangeInfo;
       }
     }
 
     /// <summary>Field number for the "remove_buff_id" field.</summary>
-    public const int RemoveBuffIdFieldNumber = 14;
+    public const int RemoveBuffIdFieldNumber = 7;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint RemoveBuffId {
-      get { return HasRemoveBuffId ? (uint) bPIHFAJCLOC_ : 0; }
+      get { return HasRemoveBuffId ? (uint) kKNBOACNCON_ : 0; }
       set {
-        bPIHFAJCLOC_ = value;
-        bPIHFAJCLOCCase_ = BPIHFAJCLOCOneofCase.RemoveBuffId;
+        kKNBOACNCON_ = value;
+        kKNBOACNCONCase_ = KKNBOACNCONOneofCase.RemoveBuffId;
       }
     }
     /// <summary>Gets whether the "remove_buff_id" field is set</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool HasRemoveBuffId {
-      get { return bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.RemoveBuffId; }
+      get { return kKNBOACNCONCase_ == KKNBOACNCONOneofCase.RemoveBuffId; }
     }
     /// <summary> Clears the value of the oneof if it's currently set to "remove_buff_id" </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void ClearRemoveBuffId() {
       if (HasRemoveBuffId) {
-        ClearBPIHFAJCLOC();
+        ClearKKNBOACNCON();
       }
     }
 
-    private object bPIHFAJCLOC_;
-    /// <summary>Enum of possible cases for the "BPIHFAJCLOC" oneof.</summary>
-    public enum BPIHFAJCLOCOneofCase {
+    private object kKNBOACNCON_;
+    /// <summary>Enum of possible cases for the "KKNBOACNCON" oneof.</summary>
+    public enum KKNBOACNCONOneofCase {
       None = 0,
-      BuffChangeInfo = 11,
-      RemoveBuffId = 14,
+      BuffChangeInfo = 4,
+      RemoveBuffId = 7,
     }
-    private BPIHFAJCLOCOneofCase bPIHFAJCLOCCase_ = BPIHFAJCLOCOneofCase.None;
+    private KKNBOACNCONOneofCase kKNBOACNCONCase_ = KKNBOACNCONOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public BPIHFAJCLOCOneofCase BPIHFAJCLOCCase {
-      get { return bPIHFAJCLOCCase_; }
+    public KKNBOACNCONOneofCase KKNBOACNCONCase {
+      get { return kKNBOACNCONCase_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearBPIHFAJCLOC() {
-      bPIHFAJCLOCCase_ = BPIHFAJCLOCOneofCase.None;
-      bPIHFAJCLOC_ = null;
+    public void ClearKKNBOACNCON() {
+      kKNBOACNCONCase_ = KKNBOACNCONOneofCase.None;
+      kKNBOACNCON_ = null;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -207,12 +207,12 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (EntityId != other.EntityId) return false;
-      if (CastEntityId != other.CastEntityId) return false;
       if (Reason != other.Reason) return false;
+      if (CastEntityId != other.CastEntityId) return false;
+      if (EntityId != other.EntityId) return false;
       if (!object.Equals(BuffChangeInfo, other.BuffChangeInfo)) return false;
       if (RemoveBuffId != other.RemoveBuffId) return false;
-      if (BPIHFAJCLOCCase != other.BPIHFAJCLOCCase) return false;
+      if (KKNBOACNCONCase != other.KKNBOACNCONCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -220,12 +220,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (EntityId != 0) hash ^= EntityId.GetHashCode();
-      if (CastEntityId != 0) hash ^= CastEntityId.GetHashCode();
       if (Reason != global::March7thHoney.Proto.SceneEntityBuffChangeType.Default) hash ^= Reason.GetHashCode();
-      if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.BuffChangeInfo) hash ^= BuffChangeInfo.GetHashCode();
+      if (CastEntityId != 0) hash ^= CastEntityId.GetHashCode();
+      if (EntityId != 0) hash ^= EntityId.GetHashCode();
+      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.BuffChangeInfo) hash ^= BuffChangeInfo.GetHashCode();
       if (HasRemoveBuffId) hash ^= RemoveBuffId.GetHashCode();
-      hash ^= (int) bPIHFAJCLOCCase_;
+      hash ^= (int) kKNBOACNCONCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -245,24 +245,24 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (EntityId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteUInt32(EntityId);
       }
-      if (CastEntityId != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(CastEntityId);
-      }
-      if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.BuffChangeInfo) {
-        output.WriteRawTag(90);
-        output.WriteMessage(BuffChangeInfo);
-      }
       if (Reason != global::March7thHoney.Proto.SceneEntityBuffChangeType.Default) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(24);
         output.WriteEnum((int) Reason);
       }
+      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.BuffChangeInfo) {
+        output.WriteRawTag(34);
+        output.WriteMessage(BuffChangeInfo);
+      }
       if (HasRemoveBuffId) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(56);
         output.WriteUInt32(RemoveBuffId);
+      }
+      if (CastEntityId != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(CastEntityId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -275,24 +275,24 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (EntityId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteUInt32(EntityId);
       }
-      if (CastEntityId != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(CastEntityId);
-      }
-      if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.BuffChangeInfo) {
-        output.WriteRawTag(90);
-        output.WriteMessage(BuffChangeInfo);
-      }
       if (Reason != global::March7thHoney.Proto.SceneEntityBuffChangeType.Default) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(24);
         output.WriteEnum((int) Reason);
       }
+      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.BuffChangeInfo) {
+        output.WriteRawTag(34);
+        output.WriteMessage(BuffChangeInfo);
+      }
       if (HasRemoveBuffId) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(56);
         output.WriteUInt32(RemoveBuffId);
+      }
+      if (CastEntityId != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(CastEntityId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -304,16 +304,16 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (EntityId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EntityId);
+      if (Reason != global::March7thHoney.Proto.SceneEntityBuffChangeType.Default) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Reason);
       }
       if (CastEntityId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CastEntityId);
       }
-      if (Reason != global::March7thHoney.Proto.SceneEntityBuffChangeType.Default) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Reason);
+      if (EntityId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EntityId);
       }
-      if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.BuffChangeInfo) {
+      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.BuffChangeInfo) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(BuffChangeInfo);
       }
       if (HasRemoveBuffId) {
@@ -331,23 +331,23 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.EntityId != 0) {
-        EntityId = other.EntityId;
+      if (other.Reason != global::March7thHoney.Proto.SceneEntityBuffChangeType.Default) {
+        Reason = other.Reason;
       }
       if (other.CastEntityId != 0) {
         CastEntityId = other.CastEntityId;
       }
-      if (other.Reason != global::March7thHoney.Proto.SceneEntityBuffChangeType.Default) {
-        Reason = other.Reason;
+      if (other.EntityId != 0) {
+        EntityId = other.EntityId;
       }
-      switch (other.BPIHFAJCLOCCase) {
-        case BPIHFAJCLOCOneofCase.BuffChangeInfo:
+      switch (other.KKNBOACNCONCase) {
+        case KKNBOACNCONOneofCase.BuffChangeInfo:
           if (BuffChangeInfo == null) {
             BuffChangeInfo = new global::March7thHoney.Proto.BuffInfo();
           }
           BuffChangeInfo.MergeFrom(other.BuffChangeInfo);
           break;
-        case BPIHFAJCLOCOneofCase.RemoveBuffId:
+        case KKNBOACNCONOneofCase.RemoveBuffId:
           RemoveBuffId = other.RemoveBuffId;
           break;
       }
@@ -371,29 +371,29 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
+          case 16: {
             EntityId = input.ReadUInt32();
             break;
           }
-          case 32: {
-            CastEntityId = input.ReadUInt32();
+          case 24: {
+            Reason = (global::March7thHoney.Proto.SceneEntityBuffChangeType) input.ReadEnum();
             break;
           }
-          case 90: {
+          case 34: {
             global::March7thHoney.Proto.BuffInfo subBuilder = new global::March7thHoney.Proto.BuffInfo();
-            if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.BuffChangeInfo) {
+            if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.BuffChangeInfo) {
               subBuilder.MergeFrom(BuffChangeInfo);
             }
             input.ReadMessage(subBuilder);
             BuffChangeInfo = subBuilder;
             break;
           }
-          case 96: {
-            Reason = (global::March7thHoney.Proto.SceneEntityBuffChangeType) input.ReadEnum();
+          case 56: {
+            RemoveBuffId = input.ReadUInt32();
             break;
           }
-          case 112: {
-            RemoveBuffId = input.ReadUInt32();
+          case 80: {
+            CastEntityId = input.ReadUInt32();
             break;
           }
         }
@@ -415,29 +415,29 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
+          case 16: {
             EntityId = input.ReadUInt32();
             break;
           }
-          case 32: {
-            CastEntityId = input.ReadUInt32();
+          case 24: {
+            Reason = (global::March7thHoney.Proto.SceneEntityBuffChangeType) input.ReadEnum();
             break;
           }
-          case 90: {
+          case 34: {
             global::March7thHoney.Proto.BuffInfo subBuilder = new global::March7thHoney.Proto.BuffInfo();
-            if (bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.BuffChangeInfo) {
+            if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.BuffChangeInfo) {
               subBuilder.MergeFrom(BuffChangeInfo);
             }
             input.ReadMessage(subBuilder);
             BuffChangeInfo = subBuilder;
             break;
           }
-          case 96: {
-            Reason = (global::March7thHoney.Proto.SceneEntityBuffChangeType) input.ReadEnum();
+          case 56: {
+            RemoveBuffId = input.ReadUInt32();
             break;
           }
-          case 112: {
-            RemoveBuffId = input.ReadUInt32();
+          case 80: {
+            CastEntityId = input.ReadUInt32();
             break;
           }
         }

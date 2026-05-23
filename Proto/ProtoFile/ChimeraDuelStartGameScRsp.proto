@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "DDJOEIBOELH.proto";
+import "LCEDDGELBMJ.proto";
 
 message ChimeraDuelStartGameScRsp {
-    uint32 retcode = 4;
-    DDJOEIBOELH OIAPHBBDPHL = 15;
+    LCEDDGELBMJ CFDIKLBINHK = 8;
+    uint32 retcode = 7;
 }

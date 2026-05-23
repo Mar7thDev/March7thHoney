@@ -24,12 +24,12 @@ namespace March7thHoney.Proto {
     static CmdContentPackageTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChtDbWRDb250ZW50UGFja2FnZVR5cGUucHJvdG8qzAEKFUNtZENvbnRlbnRQ",
-            "YWNrYWdlVHlwZRIbChdDR0RIS0dQSURMTV9QQ1BESEVMUEtFTRAAEiYKIUNt",
-            "ZENvbnRlbnRQYWNrYWdlU3luY0RhdGFTY05vdGlmeRDqOhIiCh1DbWRDb250",
-            "ZW50UGFja2FnZUdldERhdGFDc1JlcRDZOhIiCh1DbWRDb250ZW50UGFja2Fn",
-            "ZUdldERhdGFTY1JzcBDTOhImCiFDbWRDb250ZW50UGFja2FnZVRyYW5zZmVy",
-            "U2NOb3RpZnkQ8jpCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ChtDbWRDb250ZW50UGFja2FnZVR5cGUucHJvdG8qrAEKFUNtZENvbnRlbnRQ",
+            "YWNrYWdlVHlwZRIbChdQS0tDTENORlBMRV9OTENER0lQR0ZEShAAEhwKF1BL",
+            "S0NMQ05GUExFX0RBS0FOUEpNTEVBENM6EhwKF1BLS0NMQ05GUExFX0RPREFK",
+            "SU5IRUdBEOw6EhwKF1BLS0NMQ05GUExFX09DRkVJQ05PQlBDEPY6EhwKF1BL",
+            "S0NMQ05GUExFX0xJR0dBSEVKQkNNEOc6QhaqAhNNYXJjaDd0aEhvbmV5LlBy",
+            "b3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdContentPackageType), }, null, null));
@@ -39,11 +39,11 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdContentPackageType {
-    [pbr::OriginalName("CGDHKGPIDLM_PCPDHELPKEM")] CgdhkgpidlmPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdContentPackageSyncDataScNotify")] CmdContentPackageSyncDataScNotify = 7530,
-    [pbr::OriginalName("CmdContentPackageGetDataCsReq")] CmdContentPackageGetDataCsReq = 7513,
-    [pbr::OriginalName("CmdContentPackageGetDataScRsp")] CmdContentPackageGetDataScRsp = 7507,
-    [pbr::OriginalName("CmdContentPackageTransferScNotify")] CmdContentPackageTransferScNotify = 7538,
+    [pbr::OriginalName("PKKCLCNFPLE_NLCDGIPGFDJ")] PkkclcnfpleNlcdgipgfdj = 0,
+    [pbr::OriginalName("PKKCLCNFPLE_DAKANPJMLEA")] PkkclcnfpleDakanpjmlea = 7507,
+    [pbr::OriginalName("PKKCLCNFPLE_DODAJINHEGA")] PkkclcnfpleDodajinhega = 7532,
+    [pbr::OriginalName("PKKCLCNFPLE_OCFEICNOBPC")] PkkclcnfpleOcfeicnobpc = 7542,
+    [pbr::OriginalName("PKKCLCNFPLE_LIGGAHEJBCM")] PkkclcnfpleLiggahejbcm = 7527,
   }
 
   #endregion

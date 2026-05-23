@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "PLMAMHBLJKP.proto";
+
+message AGPKFBLGDIH {
+    repeated PLMAMHBLJKP KBGAPHFIPJF = 11;
+    uint32 trait_id = 4;
+}

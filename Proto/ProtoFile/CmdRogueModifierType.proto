@@ -2,14 +2,12 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdRogueModifierType {
-    LKOKNHLLOMF_PCPDHELPKEM = 0;
-    CmdRogueModifierUpdateNotify = 5398;
-    CmdRogueModifierAddNotify = 5394;
-    CmdRogueModifierSelectCellScRsp = 5314;
-    CmdRogueModifierDelNotify = 5363;
-    CmdRogueModifierSelectCellCsReq = 5395;
-    CmdRogueModifierStageStartNotify = 5326;
+    JKJGPOOLLKF_NLCDGIPGFDJ = 0;
+    JKJGPOOLLKF_EPPMKBDPDBM = 5327;
+    JKJGPOOLLKF_LHGHFLGEBBN = 5336;
+    JKJGPOOLLKF_KKEHIBPDIEF = 5310;
+    JKJGPOOLLKF_GALJIBIENIB = 5380;
+    JKJGPOOLLKF_ECBIHKFNGGM = 5387;
+    JKJGPOOLLKF_PLELMMJJOLM = 5381;
 }

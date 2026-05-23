@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message TakeOffSkillCoreCsReq {
+    uint32 slot = 5;
+    uint32 APGDJGPGGMO = 7;
+}

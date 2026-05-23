@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message ChimeraDuelShopLockCsReq {
-    bool is_locked = 15;
-    oneof BPIHFAJCLOC {
-        uint32 HCNKAJNKGFH = 8;
-        uint32 DEAKOOEBLJL = 13;
+    bool is_locked = 14;
+    oneof KKNBOACNCON {
+        uint32 NDJGKJMPPHJ = 6;
+        uint32 AGBAIFPNKII = 5;
     }
 }

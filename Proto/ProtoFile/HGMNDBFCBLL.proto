@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum HGMNDBFCBLL {
+    HGMNDBFCBLL_NLCDGIPGFDJ = 0;
+    HGMNDBFCBLL_CPJDKCDJFNA = 1;
+    HGMNDBFCBLL_APBCEPNOCKG = 2;
+}

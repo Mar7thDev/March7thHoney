@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message FPIBAIPJCMD {
+    uint32 star = 2;
+    bool DBPNANBMGFE = 13;
+    uint32 challenge_id = 3;
+}

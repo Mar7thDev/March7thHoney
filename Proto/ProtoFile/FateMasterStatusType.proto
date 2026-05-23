@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum FateMasterStatusType {
-    KGHOCAPHLDG_PCPDHELPKEM = 0;
-    KGHOCAPHLDG_BNJMPCHFINA = 1;
-    KGHOCAPHLDG_CCJCFMIAFCM = 2;
-    KGHOCAPHLDG_PCBFNNJLOKC = 3;
+    KNGLNMKNGJD_NLCDGIPGFDJ = 0;
+    KNGLNMKNGJD_LCNJHOKLMPN = 1;
+    KNGLNMKNGJD_JJBEPKLOLCP = 2;
+    KNGLNMKNGJD_PEBNPKOCADN = 3;
 }

@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message TarotBookUnlockInteractionCsReq {
-    repeated uint32 LEPJFHMCBGJ = 11;
+    repeated uint32 CLNOMEFFHKG = 7;
 }

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "ItemList.proto";
+
+message DCMHLOEGFBM {
+    ItemList item_list = 8;
+    uint32 HABHOAMCGLH = 13;
+    uint32 LCFDOPINEBO = 3;
+}

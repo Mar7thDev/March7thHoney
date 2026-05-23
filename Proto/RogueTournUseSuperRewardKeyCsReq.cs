@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiZSb2d1ZVRvdXJuVXNlU3VwZXJSZXdhcmRLZXlDc1JlcS5wcm90byJeCiBS",
             "b2d1ZVRvdXJuVXNlU3VwZXJSZXdhcmRLZXlDc1JlcRIYChBkaWZmaWN1bHR5",
-            "X2xldmVsGAEgASgNEg0KBWNvdW50GAwgASgNEhEKCWNvY29vbl9pZBgOIAEo",
+            "X2xldmVsGAsgASgNEg0KBWNvdW50GAUgASgNEhEKCWNvY29vbl9pZBgBIAEo",
             "DUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -86,7 +86,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "difficulty_level" field.</summary>
-    public const int DifficultyLevelFieldNumber = 1;
+    public const int DifficultyLevelFieldNumber = 11;
     private uint difficultyLevel_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,7 +98,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "count" field.</summary>
-    public const int CountFieldNumber = 12;
+    public const int CountFieldNumber = 5;
     private uint count_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,7 +110,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "cocoon_id" field.</summary>
-    public const int CocoonIdFieldNumber = 14;
+    public const int CocoonIdFieldNumber = 1;
     private uint cocoonId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -167,17 +167,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (DifficultyLevel != 0) {
+      if (CocoonId != 0) {
         output.WriteRawTag(8);
-        output.WriteUInt32(DifficultyLevel);
+        output.WriteUInt32(CocoonId);
       }
       if (Count != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(40);
         output.WriteUInt32(Count);
       }
-      if (CocoonId != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(CocoonId);
+      if (DifficultyLevel != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(DifficultyLevel);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -189,17 +189,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (DifficultyLevel != 0) {
+      if (CocoonId != 0) {
         output.WriteRawTag(8);
-        output.WriteUInt32(DifficultyLevel);
+        output.WriteUInt32(CocoonId);
       }
       if (Count != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(40);
         output.WriteUInt32(Count);
       }
-      if (CocoonId != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(CocoonId);
+      if (DifficultyLevel != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(DifficultyLevel);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -261,15 +261,15 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            DifficultyLevel = input.ReadUInt32();
+            CocoonId = input.ReadUInt32();
             break;
           }
-          case 96: {
+          case 40: {
             Count = input.ReadUInt32();
             break;
           }
-          case 112: {
-            CocoonId = input.ReadUInt32();
+          case 88: {
+            DifficultyLevel = input.ReadUInt32();
             break;
           }
         }
@@ -292,15 +292,15 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            DifficultyLevel = input.ReadUInt32();
+            CocoonId = input.ReadUInt32();
             break;
           }
-          case 96: {
+          case 40: {
             Count = input.ReadUInt32();
             break;
           }
-          case 112: {
-            CocoonId = input.ReadUInt32();
+          case 88: {
+            DifficultyLevel = input.ReadUInt32();
             break;
           }
         }

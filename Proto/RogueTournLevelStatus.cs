@@ -25,9 +25,9 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChtSb2d1ZVRvdXJuTGV2ZWxTdGF0dXMucHJvdG8qiwEKFVJvZ3VlVG91cm5M",
-            "ZXZlbFN0YXR1cxIbChdKUFBJRUtPQlBJSV9QQ1BESEVMUEtFTRAAEhsKF0pQ",
-            "UElFS09CUElJX0hQSkVCRkZISk5QEAESGwoXSlBQSUVLT0JQSUlfUE9PTEFH",
-            "SEdDTUcQAhIbChdKUFBJRUtPQlBJSV9FTUVETlBDQ05ESBADQhaqAhNNYXJj",
+            "ZXZlbFN0YXR1cxIbChdOSE1QR05IQkJMQ19OTENER0lQR0ZEShAAEhsKF05I",
+            "TVBHTkhCQkxDX0xPT0FLTkhEQkxMEAESGwoXTkhNUEdOSEJCTENfQ0NLUE5D",
+            "SUJER1AQAhIbChdOSE1QR05IQkJMQ19KS05QTUlNQkdNTBADQhaqAhNNYXJj",
             "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -38,10 +38,10 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum RogueTournLevelStatus {
-    [pbr::OriginalName("JPPIEKOBPII_PCPDHELPKEM")] JppiekobpiiPcpdhelpkem = 0,
-    [pbr::OriginalName("JPPIEKOBPII_HPJEBFFHJNP")] JppiekobpiiHpjebffhjnp = 1,
-    [pbr::OriginalName("JPPIEKOBPII_POOLAGHGCMG")] JppiekobpiiPoolaghgcmg = 2,
-    [pbr::OriginalName("JPPIEKOBPII_EMEDNPCCNDH")] JppiekobpiiEmednpccndh = 3,
+    [pbr::OriginalName("NHMPGNHBBLC_NLCDGIPGFDJ")] NhmpgnhbblcNlcdgipgfdj = 0,
+    [pbr::OriginalName("NHMPGNHBBLC_LOOAKNHDBLL")] NhmpgnhbblcLooaknhdbll = 1,
+    [pbr::OriginalName("NHMPGNHBBLC_CCKPNCIBDGP")] NhmpgnhbblcCckpncibdgp = 2,
+    [pbr::OriginalName("NHMPGNHBBLC_JKNPMIMBGML")] NhmpgnhbblcJknpmimbgml = 3,
   }
 
   #endregion

@@ -24,12 +24,12 @@ namespace March7thHoney.Proto {
     static EquipmentRecommendReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChhFcXVpcG1lbnRSZWNvbW1lbmQucHJvdG8aEUpFRklLSEtKRkNNLnByb3Rv",
-            "IjoKEkVxdWlwbWVudFJlY29tbWVuZBIkCg5lcXVpcG1lbnRfbGlzdBgCIAMo",
-            "CzIMLkpFRklLSEtKRkNNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
+            "ChhFcXVpcG1lbnRSZWNvbW1lbmQucHJvdG8aEUJNTUhKSUZDR05PLnByb3Rv",
+            "IjoKEkVxdWlwbWVudFJlY29tbWVuZBIkCg5lcXVpcG1lbnRfbGlzdBgDIAMo",
+            "CzIMLkJNTUhKSUZDR05PQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
             "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.JEFIKHKJFCMReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.BMMHJIFCGNOReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EquipmentRecommend), global::March7thHoney.Proto.EquipmentRecommend.Parser, new[]{ "EquipmentList" }, null, null, null, null)
           }));
@@ -84,13 +84,13 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "equipment_list" field.</summary>
-    public const int EquipmentListFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.JEFIKHKJFCM> _repeated_equipmentList_codec
-        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.JEFIKHKJFCM.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.JEFIKHKJFCM> equipmentList_ = new pbc::RepeatedField<global::March7thHoney.Proto.JEFIKHKJFCM>();
+    public const int EquipmentListFieldNumber = 3;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BMMHJIFCGNO> _repeated_equipmentList_codec
+        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.BMMHJIFCGNO.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BMMHJIFCGNO> equipmentList_ = new pbc::RepeatedField<global::March7thHoney.Proto.BMMHJIFCGNO>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.JEFIKHKJFCM> EquipmentList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.BMMHJIFCGNO> EquipmentList {
       get { return equipmentList_; }
     }
 
@@ -191,7 +191,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 18: {
+          case 26: {
             equipmentList_.AddEntriesFrom(input, _repeated_equipmentList_codec);
             break;
           }
@@ -214,7 +214,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 18: {
+          case 26: {
             equipmentList_.AddEntriesFrom(ref input, _repeated_equipmentList_codec);
             break;
           }

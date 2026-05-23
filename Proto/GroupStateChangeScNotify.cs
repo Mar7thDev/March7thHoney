@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "Ch5Hcm91cFN0YXRlQ2hhbmdlU2NOb3RpZnkucHJvdG8aFEdyb3VwU3RhdGVJ",
             "bmZvLnByb3RvIkUKGEdyb3VwU3RhdGVDaGFuZ2VTY05vdGlmeRIpChBncm91",
-            "cF9zdGF0ZV9pbmZvGAQgASgLMg8uR3JvdXBTdGF0ZUluZm9CFqoCE01hcmNo",
+            "cF9zdGF0ZV9pbmZvGAggASgLMg8uR3JvdXBTdGF0ZUluZm9CFqoCE01hcmNo",
             "N3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.GroupStateInfoReflection.Descriptor, },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "group_state_info" field.</summary>
-    public const int GroupStateInfoFieldNumber = 4;
+    public const int GroupStateInfoFieldNumber = 8;
     private global::March7thHoney.Proto.GroupStateInfo groupStateInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -138,7 +138,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (groupStateInfo_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(66);
         output.WriteMessage(GroupStateInfo);
       }
       if (_unknownFields != null) {
@@ -152,7 +152,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (groupStateInfo_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(66);
         output.WriteMessage(GroupStateInfo);
       }
       if (_unknownFields != null) {
@@ -205,7 +205,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 34: {
+          case 66: {
             if (groupStateInfo_ == null) {
               GroupStateInfo = new global::March7thHoney.Proto.GroupStateInfo();
             }
@@ -231,7 +231,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 34: {
+          case 66: {
             if (groupStateInfo_ == null) {
               GroupStateInfo = new global::March7thHoney.Proto.GroupStateInfo();
             }

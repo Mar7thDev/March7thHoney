@@ -2,18 +2,16 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "BJKJKGAGDAC.proto";
+import "EDEGAHHANMF.proto";
 
 message PlayerRecordInfo {
-    uint32 MMFGIPPNEEF = 3;
-    uint32 LCEEKBAJPHA = 4;
-    uint32 KEBOJOIBOKE = 6;
-    uint32 LBKCIEBGMAJ = 9;
-    BJKJKGAGDAC CEAKOOAOJLF = 10;
-    uint32 GPJGLLANPIF = 11;
-    uint32 KHDJDCELNPF = 12;
-    uint32 MIMIPDMIPNO = 13;
-    uint32 MPNIKBAFPEM = 14;
+    EDEGAHHANMF EOGGPDHKKBJ = 10;
+    uint32 JJKIKOBAJLF = 13;
+    uint32 PPFDDFAHLED = 2;
+    uint32 DIOIIFAHAKK = 3;
+    uint32 MIMECEAFDNK = 8;
+    uint32 MHOIJFEBAPA = 11;
+    uint32 KCBINJNIBNO = 5;
+    uint32 NECKJBHEKHE = 4;
+    uint32 ALGEOLGNFBL = 9;
 }

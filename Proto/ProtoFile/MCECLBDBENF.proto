@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "LBBNBAEKGCJ.proto";
+
+message MCECLBDBENF {
+    LBBNBAEKGCJ HJPBAJEPAGE = 2;
+    uint32 IMGDMDDKHDL = 10;
+}

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "DDAMEHEPOBD.proto";
+import "IJDLENJJBHJ.proto";
+import "LALKBPJANIH.proto";
+
+message CONONEALNOF {
+    repeated DDAMEHEPOBD PMEOPPDAMLM = 14;
+    repeated LALKBPJANIH IPMKOMEHBMP = 7;
+    repeated IJDLENJJBHJ grid_fight_equipment_list = 13;
+}

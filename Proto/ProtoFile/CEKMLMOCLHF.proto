@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "ItemList.proto";
+
+message CEKMLMOCLHF {
+    map<uint32, ItemList> JOCFFLKPNOL = 6;
+    ItemList KKDJMIMHNAE = 9;
+    uint32 IHAOMLEPHOM = 2;
+    uint32 LOPNADHJKBF = 15;
+}

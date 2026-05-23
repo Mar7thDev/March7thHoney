@@ -124,9 +124,8 @@ public class BannerConfig
             HistoryUrl = ""
         };
 
-        // Client uses this field for banner featured pool display.
-        // Keep all configured featured entries (some banners include the current 5-star here as well).
-        if (RateUpItems4.Count > 0) info.CBHAEFNAFLE.AddRange(RateUpItems4.Select(id => (uint)id));
+        // TODO 4.3: 4.2 的 CBHAEFNAFLE (repeated uint32) 在 4.3 tag=9 被替换为 GachaCeiling 子消息，
+        // 抽卡不在登录路径，banner featured pool 暂时不下发
 
         if (GachaType != GachaTypeEnum.Normal)
         {

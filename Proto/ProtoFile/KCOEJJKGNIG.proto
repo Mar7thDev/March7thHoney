@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "ABOFJEIMLLJ.proto";
+import "ALBLEFHHJIC.proto";
+
+message KCOEJJKGNIG {
+    repeated ABOFJEIMLLJ buff_list = 7;
+    repeated ALBLEFHHJIC avatar_list = 11;
+    repeated uint32 MAJGMMCOCIG = 5;
+}

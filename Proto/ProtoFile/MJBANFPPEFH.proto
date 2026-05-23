@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "ONHKODAFEMH.proto";
+
+message MJBANFPPEFH {
+    uint32 id = 3;
+    ONHKODAFEMH custom_value_list = 1481;
+}

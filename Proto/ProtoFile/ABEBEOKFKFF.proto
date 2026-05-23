@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "EJEGHJPAMPI.proto";
+
+message ABEBEOKFKFF {
+    EJEGHJPAMPI type = 13;
+    uint32 cnt = 11;
+}

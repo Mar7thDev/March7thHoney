@@ -1,13 +1,14 @@
 using System.Collections.Concurrent;
 using System.Net;
-using March7thHoney.Kcp.KcpSharp;
+using System.Net.Sockets;
 using March7thHoney.Util;
 
 namespace March7thHoney.Kcp;
 
+// TODO 4.3: 由 KCP/UDP 迁到 TCP。保留 March7thHoneyConnection 类名 + 主要接口
+// （ConversationId / SendPacket / Stop 等）以减少上层改动。
 public class March7thHoneyConnection
 {
-    public const int HANDSHAKE_SIZE = 20;
     public static readonly ConcurrentBag<int> BannedPackets = [];
     private static readonly Logger Logger = new("GameServer");
     public static readonly ConcurrentDictionary<int, string> LogMap = [];
@@ -19,17 +20,22 @@ public class March7thHoneyConnection
     ];
 
     protected readonly CancellationTokenSource CancelToken;
-    protected readonly KcpConversation Conversation;
+    protected readonly TcpClient TcpClient;
+    protected readonly NetworkStream Stream;
+    private readonly long _conversationId;
+    private readonly SemaphoreSlim _writeLock = new(1, 1);
     public readonly IPEndPoint RemoteEndPoint;
 
     public string DebugFile = "";
     public bool IsOnline = true;
     public StreamWriter? Writer;
 
-    public March7thHoneyConnection(KcpConversation conversation, IPEndPoint remote)
+    public March7thHoneyConnection(TcpClient client, IPEndPoint remote, long conversationId)
     {
-        Conversation = conversation;
+        TcpClient = client;
+        Stream = client.GetStream();
         RemoteEndPoint = remote;
+        _conversationId = conversationId;
         CancelToken = new CancellationTokenSource();
         if (ConfigManager.Config.GameServer.UsePacketEncryption) XorKey = Crypto.ClientSecretKey!.GetXorKey();
 
@@ -39,10 +45,9 @@ public class March7thHoneyConnection
     public byte[]? XorKey { get; set; }
     public ulong ClientSecretKeySeed { get; set; }
 
-    public long? ConversationId => Conversation.ConversationId;
+    public long? ConversationId => _conversationId;
 
     public SessionStateEnum State { get; set; } = SessionStateEnum.INACTIVE;
-    //public PlayerInstance? Player { get; set; }
 
     public virtual void Start()
     {
@@ -52,12 +57,32 @@ public class March7thHoneyConnection
 
     public virtual void Stop()
     {
-        //Player?.OnLogoutAsync();
-        //Listener.UnregisterConnection(this);
-        Conversation.Dispose();
         try
         {
             CancelToken.Cancel();
+        }
+        catch
+        {
+        }
+
+        try
+        {
+            Stream.Close();
+        }
+        catch
+        {
+        }
+
+        try
+        {
+            TcpClient.Close();
+        }
+        catch
+        {
+        }
+
+        try
+        {
             CancelToken.Dispose();
         }
         catch
@@ -106,7 +131,6 @@ public class March7thHoneyConnection
 
     private StreamWriter GetWriter()
     {
-        // Create the file if it doesn't exist
         var file = new FileInfo(DebugFile);
         if (!file.Exists)
         {
@@ -125,7 +149,16 @@ public class March7thHoneyConnection
             if (ConfigManager.Config.GameServer.UsePacketEncryption)
                 Crypto.Xor(packet, XorKey!);
 
-            _ = await Conversation.SendAsync(packet, CancelToken.Token);
+            await _writeLock.WaitAsync(CancelToken.Token);
+            try
+            {
+                await Stream.WriteAsync(packet, CancelToken.Token);
+                await Stream.FlushAsync(CancelToken.Token);
+            }
+            finally
+            {
+                _writeLock.Release();
+            }
         }
         catch
         {
@@ -135,17 +168,14 @@ public class March7thHoneyConnection
 
     public async Task SendPacket(BasePacket packet)
     {
-        // Test
         if (packet.CmdId <= 0)
         {
             Logger.Debug("Tried to send packet with missing cmd id!");
             return;
         }
 
-        // DO NOT REMOVE (unless we find a way to validate code before sending to client which I don't think we can)
         if (BannedPackets.Contains(packet.CmdId)) return;
         LogPacket("Send", packet.CmdId, packet.Data);
-        // Header
         var packetBytes = packet.BuildPacket();
 
         try
@@ -161,7 +191,6 @@ public class March7thHoneyConnection
         {
             await SendWatermarkLuaAsync();
         }
-
     }
 
     public async Task SendPacket(int cmdId)

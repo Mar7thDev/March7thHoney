@@ -25,9 +25,9 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChlQbGFuZXRGZXNRdWVzdFN0YXRlLnByb3RvKokBChNQbGFuZXRGZXNRdWVz",
-            "dFN0YXRlEhsKF0dLQkFNUEFHTkJFX0FMREdPR1BHTk1PEAASGwoXR0tCQU1Q",
-            "QUdOQkVfQklKUENIT0xEQ1AQARIbChdHS0JBTVBBR05CRV9HTUhKSkJLRE5N",
-            "ThACEhsKF0dLQkFNUEFHTkJFX0VGSUdJQ0pORUlNEANCFqoCE01hcmNoN3Ro",
+            "dFN0YXRlEhsKF0NOTEFFRENMSUNQX01EUEpDR0VNT0xHEAASGwoXQ05MQUVE",
+            "Q0xJQ1BfR0JKSUhGT0lHSEQQARIbChdDTkxBRURDTElDUF9CSUxLUE5MSkJG",
+            "QRACEhsKF0NOTEFFRENMSUNQX0NHSUlLQUhPSUtMEANCFqoCE01hcmNoN3Ro",
             "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -38,10 +38,10 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum PlanetFesQuestState {
-    [pbr::OriginalName("GKBAMPAGNBE_ALDGOGPGNMO")] GkbampagnbeAldgogpgnmo = 0,
-    [pbr::OriginalName("GKBAMPAGNBE_BIJPCHOLDCP")] GkbampagnbeBijpcholdcp = 1,
-    [pbr::OriginalName("GKBAMPAGNBE_GMHJJBKDNMN")] GkbampagnbeGmhjjbkdnmn = 2,
-    [pbr::OriginalName("GKBAMPAGNBE_EFIGICJNEIM")] GkbampagnbeEfigicjneim = 3,
+    [pbr::OriginalName("CNLAEDCLICP_MDPJCGEMOLG")] CnlaedclicpMdpjcgemolg = 0,
+    [pbr::OriginalName("CNLAEDCLICP_GBJIHFOIGHD")] CnlaedclicpGbjihfoighd = 1,
+    [pbr::OriginalName("CNLAEDCLICP_BILKPNLJBFA")] CnlaedclicpBilkpnljbfa = 2,
+    [pbr::OriginalName("CNLAEDCLICP_CGIIKAHOIKL")] CnlaedclicpCgiikahoikl = 3,
   }
 
   #endregion

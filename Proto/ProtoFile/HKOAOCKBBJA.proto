@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message HKOAOCKBBJA {
+    uint32 dice_slot_id = 6;
+}

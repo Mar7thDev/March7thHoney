@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "ENDOLEJCHKP.proto";
+import "KBONOPFLPDJ.proto";
 
 message ChallengeRaidNotify {
-    ENDOLEJCHKP OFLCHDECPDA = 15;
+    KBONOPFLPDJ GCBDMEPBNHN = 2;
 }

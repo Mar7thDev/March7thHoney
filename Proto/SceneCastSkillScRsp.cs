@@ -26,14 +26,14 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChlTY2VuZUNhc3RTa2lsbFNjUnNwLnByb3RvGhpIaXRNb25zdGVyQmF0dGxl",
             "SW5mby5wcm90bxoVU2NlbmVCYXR0bGVJbmZvLnByb3RvIpkBChNTY2VuZUNh",
-            "c3RTa2lsbFNjUnNwEiUKC2JhdHRsZV9pbmZvGAEgASgLMhAuU2NlbmVCYXR0",
-            "bGVJbmZvEjIKE21vbnN0ZXJfYmF0dGxlX2luZm8YAiADKAsyFS5IaXRNb25z",
-            "dGVyQmF0dGxlSW5mbxIWCg5jYXN0X2VudGl0eV9pZBgEIAEoDRIPCgdyZXRj",
-            "b2RlGAYgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "c3RTa2lsbFNjUnNwEjIKE21vbnN0ZXJfYmF0dGxlX2luZm8YDCADKAsyFS5I",
+            "aXRNb25zdGVyQmF0dGxlSW5mbxIlCgtiYXR0bGVfaW5mbxgJIAEoCzIQLlNj",
+            "ZW5lQmF0dGxlSW5mbxIWCg5jYXN0X2VudGl0eV9pZBgNIAEoDRIPCgdyZXRj",
+            "b2RlGAEgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.HitMonsterBattleInfoReflection.Descriptor, global::March7thHoney.Proto.SceneBattleInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneCastSkillScRsp), global::March7thHoney.Proto.SceneCastSkillScRsp.Parser, new[]{ "BattleInfo", "MonsterBattleInfo", "CastEntityId", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneCastSkillScRsp), global::March7thHoney.Proto.SceneCastSkillScRsp.Parser, new[]{ "MonsterBattleInfo", "BattleInfo", "CastEntityId", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,8 +75,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SceneCastSkillScRsp(SceneCastSkillScRsp other) : this() {
-      battleInfo_ = other.battleInfo_ != null ? other.battleInfo_.Clone() : null;
       monsterBattleInfo_ = other.monsterBattleInfo_.Clone();
+      battleInfo_ = other.battleInfo_ != null ? other.battleInfo_.Clone() : null;
       castEntityId_ = other.castEntityId_;
       retcode_ = other.retcode_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -88,8 +88,19 @@ namespace March7thHoney.Proto {
       return new SceneCastSkillScRsp(this);
     }
 
+    /// <summary>Field number for the "monster_battle_info" field.</summary>
+    public const int MonsterBattleInfoFieldNumber = 12;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.HitMonsterBattleInfo> _repeated_monsterBattleInfo_codec
+        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.HitMonsterBattleInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.HitMonsterBattleInfo> monsterBattleInfo_ = new pbc::RepeatedField<global::March7thHoney.Proto.HitMonsterBattleInfo>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.HitMonsterBattleInfo> MonsterBattleInfo {
+      get { return monsterBattleInfo_; }
+    }
+
     /// <summary>Field number for the "battle_info" field.</summary>
-    public const int BattleInfoFieldNumber = 1;
+    public const int BattleInfoFieldNumber = 9;
     private global::March7thHoney.Proto.SceneBattleInfo battleInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -100,19 +111,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "monster_battle_info" field.</summary>
-    public const int MonsterBattleInfoFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.HitMonsterBattleInfo> _repeated_monsterBattleInfo_codec
-        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.HitMonsterBattleInfo.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.HitMonsterBattleInfo> monsterBattleInfo_ = new pbc::RepeatedField<global::March7thHoney.Proto.HitMonsterBattleInfo>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.HitMonsterBattleInfo> MonsterBattleInfo {
-      get { return monsterBattleInfo_; }
-    }
-
     /// <summary>Field number for the "cast_entity_id" field.</summary>
-    public const int CastEntityIdFieldNumber = 4;
+    public const int CastEntityIdFieldNumber = 13;
     private uint castEntityId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -124,7 +124,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 6;
+    public const int RetcodeFieldNumber = 1;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -150,8 +150,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(BattleInfo, other.BattleInfo)) return false;
       if(!monsterBattleInfo_.Equals(other.monsterBattleInfo_)) return false;
+      if (!object.Equals(BattleInfo, other.BattleInfo)) return false;
       if (CastEntityId != other.CastEntityId) return false;
       if (Retcode != other.Retcode) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -161,8 +161,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (battleInfo_ != null) hash ^= BattleInfo.GetHashCode();
       hash ^= monsterBattleInfo_.GetHashCode();
+      if (battleInfo_ != null) hash ^= BattleInfo.GetHashCode();
       if (CastEntityId != 0) hash ^= CastEntityId.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (_unknownFields != null) {
@@ -183,18 +183,18 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (Retcode != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Retcode);
+      }
       if (battleInfo_ != null) {
-        output.WriteRawTag(10);
+        output.WriteRawTag(74);
         output.WriteMessage(BattleInfo);
       }
       monsterBattleInfo_.WriteTo(output, _repeated_monsterBattleInfo_codec);
       if (CastEntityId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(104);
         output.WriteUInt32(CastEntityId);
-      }
-      if (Retcode != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -206,18 +206,18 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Retcode != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Retcode);
+      }
       if (battleInfo_ != null) {
-        output.WriteRawTag(10);
+        output.WriteRawTag(74);
         output.WriteMessage(BattleInfo);
       }
       monsterBattleInfo_.WriteTo(ref output, _repeated_monsterBattleInfo_codec);
       if (CastEntityId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(104);
         output.WriteUInt32(CastEntityId);
-      }
-      if (Retcode != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -229,10 +229,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      size += monsterBattleInfo_.CalculateSize(_repeated_monsterBattleInfo_codec);
       if (battleInfo_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(BattleInfo);
       }
-      size += monsterBattleInfo_.CalculateSize(_repeated_monsterBattleInfo_codec);
       if (CastEntityId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CastEntityId);
       }
@@ -251,13 +251,13 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      monsterBattleInfo_.Add(other.monsterBattleInfo_);
       if (other.battleInfo_ != null) {
         if (battleInfo_ == null) {
           BattleInfo = new global::March7thHoney.Proto.SceneBattleInfo();
         }
         BattleInfo.MergeFrom(other.BattleInfo);
       }
-      monsterBattleInfo_.Add(other.monsterBattleInfo_);
       if (other.CastEntityId != 0) {
         CastEntityId = other.CastEntityId;
       }
@@ -283,23 +283,23 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
+          case 8: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 74: {
             if (battleInfo_ == null) {
               BattleInfo = new global::March7thHoney.Proto.SceneBattleInfo();
             }
             input.ReadMessage(BattleInfo);
             break;
           }
-          case 18: {
+          case 98: {
             monsterBattleInfo_.AddEntriesFrom(input, _repeated_monsterBattleInfo_codec);
             break;
           }
-          case 32: {
+          case 104: {
             CastEntityId = input.ReadUInt32();
-            break;
-          }
-          case 48: {
-            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -321,23 +321,23 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
+          case 8: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 74: {
             if (battleInfo_ == null) {
               BattleInfo = new global::March7thHoney.Proto.SceneBattleInfo();
             }
             input.ReadMessage(BattleInfo);
             break;
           }
-          case 18: {
+          case 98: {
             monsterBattleInfo_.AddEntriesFrom(ref input, _repeated_monsterBattleInfo_codec);
             break;
           }
-          case 32: {
+          case 104: {
             CastEntityId = input.ReadUInt32();
-            break;
-          }
-          case 48: {
-            Retcode = input.ReadUInt32();
             break;
           }
         }

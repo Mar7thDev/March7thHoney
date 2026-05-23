@@ -24,10 +24,10 @@ namespace March7thHoney.Proto {
     static CmdClientCustomOpTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChtDbWRDbGllbnRDdXN0b21PcFR5cGUucHJvdG8qSQoVQ21kQ2xpZW50Q3Vz",
-            "dG9tT3BUeXBlEhsKF0FMUFBIRUhOUExFX0JFRU5ESVBLS05KEAASEwoOQ21k",
-            "S09JUEhKRkVOSU4Q70xCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
-            "Mw=="));
+            "ChtDbWRDbGllbnRDdXN0b21PcFR5cGUucHJvdG8qUgoVQ21kQ2xpZW50Q3Vz",
+            "dG9tT3BUeXBlEhsKF0JIS0dBS0RPQUxQX0dHS01GQUZPSU5QEAASHAoXQkhL",
+            "R0FLRE9BTFBfSFBMUE1ERUpPSksQ70xCFqoCE01hcmNoN3RoSG9uZXkuUHJv",
+            "dG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdClientCustomOpType), }, null, null));
@@ -37,8 +37,8 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdClientCustomOpType {
-    [pbr::OriginalName("ALPPHEHNPLE_BEENDIPKKNJ")] AlpphehnpleBeendipkknj = 0,
-    [pbr::OriginalName("CmdKOIPHJFENIN")] CmdKoiphjfenin = 9839,
+    [pbr::OriginalName("BHKGAKDOALP_GGKMFAFOINP")] BhkgakdoalpGgkmfafoinp = 0,
+    [pbr::OriginalName("BHKGAKDOALP_HPLPMDEJOJK")] BhkgakdoalpHplpmdejojk = 9839,
   }
 
   #endregion

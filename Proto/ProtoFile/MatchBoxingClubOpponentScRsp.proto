@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "OOMINGEFPAF.proto";
+import "CIEEKOEECHB.proto";
 
 message MatchBoxingClubOpponentScRsp {
-    uint32 retcode = 4;
-    OOMINGEFPAF OPCGNJMGJDE = 6;
+    CIEEKOEECHB OCDLPDDMCLP = 3;
+    uint32 retcode = 13;
 }

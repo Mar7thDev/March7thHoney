@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "ChatMessageData.proto";
 
 message GetAiPamChatHistoryScRsp {
-    uint32 retcode = 6;
-    uint32 target_side = 7;
-    repeated ChatMessageData BAPMDIEFDOJ = 11;
+    repeated ChatMessageData JPCMGNGNONJ = 14;
+    uint32 target_side = 8;
+    uint32 retcode = 10;
 }

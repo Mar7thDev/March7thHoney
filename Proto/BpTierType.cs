@@ -24,10 +24,10 @@ namespace March7thHoney.Proto {
     static BpTierTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChBCcFRpZXJUeXBlLnByb3RvKoABCgpCcFRpZXJUeXBlEhsKF0FOTU1PUENI",
-            "SkRJX1BDUERIRUxQS0VNEAASGwoXQU5NTU9QQ0hKRElfTEJMQkNMSUZHTkUQ",
-            "ARIbChdBTk1NT1BDSEpESV9HSUxGSE5JREtGRhACEhsKF0FOTU1PUENISkRJ",
-            "X0RHTkVGRklMT01KEANCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
+            "ChBCcFRpZXJUeXBlLnByb3RvKoABCgpCcFRpZXJUeXBlEhsKF0ZNR0ZLSUtC",
+            "SEtOX05MQ0RHSVBHRkRKEAASGwoXRk1HRktJS0JIS05fTERDR05HRFBHQU0Q",
+            "ARIbChdGTUdGS0lLQkhLTl9GRU5NR0xNUE1GRhACEhsKF0ZNR0ZLSUtCSEtO",
+            "X0FKREVPUEVKR0VDEANCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
             "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -38,10 +38,10 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum BpTierType {
-    [pbr::OriginalName("ANMMOPCHJDI_PCPDHELPKEM")] AnmmopchjdiPcpdhelpkem = 0,
-    [pbr::OriginalName("ANMMOPCHJDI_LBLBCLIFGNE")] AnmmopchjdiLblbclifgne = 1,
-    [pbr::OriginalName("ANMMOPCHJDI_GILFHNIDKFF")] AnmmopchjdiGilfhnidkff = 2,
-    [pbr::OriginalName("ANMMOPCHJDI_DGNEFFILOMJ")] AnmmopchjdiDgneffilomj = 3,
+    [pbr::OriginalName("FMGFKIKBHKN_NLCDGIPGFDJ")] FmgfkikbhknNlcdgipgfdj = 0,
+    [pbr::OriginalName("FMGFKIKBHKN_LDCGNGDPGAM")] FmgfkikbhknLdcgngdpgam = 1,
+    [pbr::OriginalName("FMGFKIKBHKN_FENMGLMPMFF")] FmgfkikbhknFenmglmpmff = 2,
+    [pbr::OriginalName("FMGFKIKBHKN_AJDEOPEJGEC")] FmgfkikbhknAjdeopejgec = 3,
   }
 
   #endregion

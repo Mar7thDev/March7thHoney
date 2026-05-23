@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch1TZXRHYWNoYURlY2lkZUl0ZW1Dc1JlcS5wcm90byJVChdTZXRHYWNoYURl",
-            "Y2lkZUl0ZW1Dc1JlcRIQCghnYWNoYV9pZBgCIAEoDRITCgtNQk9FRkxBSExF",
-            "TRgEIAEoDRITCgtER09NSERNSkhFSxgMIAMoDUIWqgITTWFyY2g3dGhIb25l",
+            "Y2lkZUl0ZW1Dc1JlcRITCgtPSk5FRkJKSENDSxgIIAMoDRIQCghnYWNoYV9p",
+            "ZBgCIAEoDRITCgtHRkFOQkhBRUtPSxgDIAEoDUIWqgITTWFyY2g3dGhIb25l",
             "eS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetGachaDecideItemCsReq), global::March7thHoney.Proto.SetGachaDecideItemCsReq.Parser, new[]{ "GachaId", "MBOEFLAHLEM", "DGOMHDMJHEK" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetGachaDecideItemCsReq), global::March7thHoney.Proto.SetGachaDecideItemCsReq.Parser, new[]{ "OJNEFBJHCCK", "GachaId", "GFANBHAEKOK" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,9 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SetGachaDecideItemCsReq(SetGachaDecideItemCsReq other) : this() {
+      oJNEFBJHCCK_ = other.oJNEFBJHCCK_.Clone();
       gachaId_ = other.gachaId_;
-      mBOEFLAHLEM_ = other.mBOEFLAHLEM_;
-      dGOMHDMJHEK_ = other.dGOMHDMJHEK_.Clone();
+      gFANBHAEKOK_ = other.gFANBHAEKOK_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,6 +83,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SetGachaDecideItemCsReq Clone() {
       return new SetGachaDecideItemCsReq(this);
+    }
+
+    /// <summary>Field number for the "OJNEFBJHCCK" field.</summary>
+    public const int OJNEFBJHCCKFieldNumber = 8;
+    private static readonly pb::FieldCodec<uint> _repeated_oJNEFBJHCCK_codec
+        = pb::FieldCodec.ForUInt32(66);
+    private readonly pbc::RepeatedField<uint> oJNEFBJHCCK_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> OJNEFBJHCCK {
+      get { return oJNEFBJHCCK_; }
     }
 
     /// <summary>Field number for the "gacha_id" field.</summary>
@@ -97,27 +108,16 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "MBOEFLAHLEM" field.</summary>
-    public const int MBOEFLAHLEMFieldNumber = 4;
-    private uint mBOEFLAHLEM_;
+    /// <summary>Field number for the "GFANBHAEKOK" field.</summary>
+    public const int GFANBHAEKOKFieldNumber = 3;
+    private uint gFANBHAEKOK_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint MBOEFLAHLEM {
-      get { return mBOEFLAHLEM_; }
+    public uint GFANBHAEKOK {
+      get { return gFANBHAEKOK_; }
       set {
-        mBOEFLAHLEM_ = value;
+        gFANBHAEKOK_ = value;
       }
-    }
-
-    /// <summary>Field number for the "DGOMHDMJHEK" field.</summary>
-    public const int DGOMHDMJHEKFieldNumber = 12;
-    private static readonly pb::FieldCodec<uint> _repeated_dGOMHDMJHEK_codec
-        = pb::FieldCodec.ForUInt32(98);
-    private readonly pbc::RepeatedField<uint> dGOMHDMJHEK_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> DGOMHDMJHEK {
-      get { return dGOMHDMJHEK_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -135,9 +135,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if(!oJNEFBJHCCK_.Equals(other.oJNEFBJHCCK_)) return false;
       if (GachaId != other.GachaId) return false;
-      if (MBOEFLAHLEM != other.MBOEFLAHLEM) return false;
-      if(!dGOMHDMJHEK_.Equals(other.dGOMHDMJHEK_)) return false;
+      if (GFANBHAEKOK != other.GFANBHAEKOK) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -145,9 +145,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      hash ^= oJNEFBJHCCK_.GetHashCode();
       if (GachaId != 0) hash ^= GachaId.GetHashCode();
-      if (MBOEFLAHLEM != 0) hash ^= MBOEFLAHLEM.GetHashCode();
-      hash ^= dGOMHDMJHEK_.GetHashCode();
+      if (GFANBHAEKOK != 0) hash ^= GFANBHAEKOK.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -170,11 +170,11 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(16);
         output.WriteUInt32(GachaId);
       }
-      if (MBOEFLAHLEM != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(MBOEFLAHLEM);
+      if (GFANBHAEKOK != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(GFANBHAEKOK);
       }
-      dGOMHDMJHEK_.WriteTo(output, _repeated_dGOMHDMJHEK_codec);
+      oJNEFBJHCCK_.WriteTo(output, _repeated_oJNEFBJHCCK_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -189,11 +189,11 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(16);
         output.WriteUInt32(GachaId);
       }
-      if (MBOEFLAHLEM != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(MBOEFLAHLEM);
+      if (GFANBHAEKOK != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(GFANBHAEKOK);
       }
-      dGOMHDMJHEK_.WriteTo(ref output, _repeated_dGOMHDMJHEK_codec);
+      oJNEFBJHCCK_.WriteTo(ref output, _repeated_oJNEFBJHCCK_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -204,13 +204,13 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      size += oJNEFBJHCCK_.CalculateSize(_repeated_oJNEFBJHCCK_codec);
       if (GachaId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GachaId);
       }
-      if (MBOEFLAHLEM != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MBOEFLAHLEM);
+      if (GFANBHAEKOK != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GFANBHAEKOK);
       }
-      size += dGOMHDMJHEK_.CalculateSize(_repeated_dGOMHDMJHEK_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -223,13 +223,13 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      oJNEFBJHCCK_.Add(other.oJNEFBJHCCK_);
       if (other.GachaId != 0) {
         GachaId = other.GachaId;
       }
-      if (other.MBOEFLAHLEM != 0) {
-        MBOEFLAHLEM = other.MBOEFLAHLEM;
+      if (other.GFANBHAEKOK != 0) {
+        GFANBHAEKOK = other.GFANBHAEKOK;
       }
-      dGOMHDMJHEK_.Add(other.dGOMHDMJHEK_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -253,13 +253,13 @@ namespace March7thHoney.Proto {
             GachaId = input.ReadUInt32();
             break;
           }
-          case 32: {
-            MBOEFLAHLEM = input.ReadUInt32();
+          case 24: {
+            GFANBHAEKOK = input.ReadUInt32();
             break;
           }
-          case 98:
-          case 96: {
-            dGOMHDMJHEK_.AddEntriesFrom(input, _repeated_dGOMHDMJHEK_codec);
+          case 66:
+          case 64: {
+            oJNEFBJHCCK_.AddEntriesFrom(input, _repeated_oJNEFBJHCCK_codec);
             break;
           }
         }
@@ -285,13 +285,13 @@ namespace March7thHoney.Proto {
             GachaId = input.ReadUInt32();
             break;
           }
-          case 32: {
-            MBOEFLAHLEM = input.ReadUInt32();
+          case 24: {
+            GFANBHAEKOK = input.ReadUInt32();
             break;
           }
-          case 98:
-          case 96: {
-            dGOMHDMJHEK_.AddEntriesFrom(ref input, _repeated_dGOMHDMJHEK_codec);
+          case 66:
+          case 64: {
+            oJNEFBJHCCK_.AddEntriesFrom(ref input, _repeated_oJNEFBJHCCK_codec);
             break;
           }
         }

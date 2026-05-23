@@ -24,16 +24,16 @@ namespace March7thHoney.Proto {
     static CmdPhoneTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChJDbWRQaG9uZVR5cGUucHJvdG8q/gIKDENtZFBob25lVHlwZRIbChdET0dN",
-            "UEFBSk5DRl9QQ1BESEVMUEtFTRAAEh0KGENtZFNlbGVjdFBob25lVGhlbWVD",
-            "c1JlcRD+JxIZChRDbWRHZXRQaG9uZURhdGFTY1JzcBD2JxIgChtDbWRVbmxv",
-            "Y2tDaGF0QnViYmxlU2NOb3RpZnkQ+icSHAoXQ21kU2VsZWN0UGhvbmVDYXNl",
-            "U2NSc3AQhigSIAobQ21kVW5sb2NrUGhvbmVUaGVtZVNjTm90aWZ5EM4oEh0K",
-            "GENtZFNlbGVjdENoYXRCdWJibGVDc1JlcRDKKBIfChpDbWRVbmxvY2tQaG9u",
-            "ZUNhc2VTY05vdGlmeRCTKBIZChRDbWRHZXRQaG9uZURhdGFDc1JlcRDHKBIc",
-            "ChdDbWRTZWxlY3RQaG9uZUNhc2VDc1JlcRCrKBIdChhDbWRTZWxlY3RDaGF0",
-            "QnViYmxlU2NSc3AQyygSHQoYQ21kU2VsZWN0UGhvbmVUaGVtZVNjUnNwEPUn",
-            "QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ChJDbWRQaG9uZVR5cGUucHJvdG8q9QIKDENtZFBob25lVHlwZRIbChdKQURJ",
+            "SU5CTEFMQl9OTENER0lQR0ZEShAAEhwKF0pBRElJTkJMQUxCX0lNSktQT0VE",
+            "RkRIEO8nEhwKF0pBRElJTkJMQUxCX0xCQkZFT0lCSEdLEPknEhwKF0pBRElJ",
+            "TkJMQUxCX0ZNR0FISkhLQUNQEIcoEhwKF0pBRElJTkJMQUxCX0hGQ0dKTUFM",
+            "QUZHELwoEhwKF0pBRElJTkJMQUxCX0hBR0NLTkhLRU9HEPYnEhwKF0pBRElJ",
+            "TkJMQUxCX0xFRk9OTUxCSUdCEMMoEhwKF0pBRElJTkJMQUxCX0lOQkxDSkpH",
+            "TUtKELUoEhwKF0pBRElJTkJMQUxCX0lOT0RLSUNOS0NJEIkoEhwKF0pBRElJ",
+            "TkJMQUxCX0VISkxLTU1IR0ZNEPsnEhwKF0pBRElJTkJMQUxCX0hCSEVDQ09J",
+            "UEJDEJAoEhwKF0pBRElJTkJMQUxCX0dKSEJITENBRlBHEL0oQhaqAhNNYXJj",
+            "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdPhoneType), }, null, null));
@@ -43,18 +43,18 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdPhoneType {
-    [pbr::OriginalName("DOGMPAAJNCF_PCPDHELPKEM")] DogmpaajncfPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdSelectPhoneThemeCsReq")] CmdSelectPhoneThemeCsReq = 5118,
-    [pbr::OriginalName("CmdGetPhoneDataScRsp")] CmdGetPhoneDataScRsp = 5110,
-    [pbr::OriginalName("CmdUnlockChatBubbleScNotify")] CmdUnlockChatBubbleScNotify = 5114,
-    [pbr::OriginalName("CmdSelectPhoneCaseScRsp")] CmdSelectPhoneCaseScRsp = 5126,
-    [pbr::OriginalName("CmdUnlockPhoneThemeScNotify")] CmdUnlockPhoneThemeScNotify = 5198,
-    [pbr::OriginalName("CmdSelectChatBubbleCsReq")] CmdSelectChatBubbleCsReq = 5194,
-    [pbr::OriginalName("CmdUnlockPhoneCaseScNotify")] CmdUnlockPhoneCaseScNotify = 5139,
-    [pbr::OriginalName("CmdGetPhoneDataCsReq")] CmdGetPhoneDataCsReq = 5191,
-    [pbr::OriginalName("CmdSelectPhoneCaseCsReq")] CmdSelectPhoneCaseCsReq = 5163,
-    [pbr::OriginalName("CmdSelectChatBubbleScRsp")] CmdSelectChatBubbleScRsp = 5195,
-    [pbr::OriginalName("CmdSelectPhoneThemeScRsp")] CmdSelectPhoneThemeScRsp = 5109,
+    [pbr::OriginalName("JADIINBLALB_NLCDGIPGFDJ")] JadiinblalbNlcdgipgfdj = 0,
+    [pbr::OriginalName("JADIINBLALB_IMJKPOEDFDH")] JadiinblalbImjkpoedfdh = 5103,
+    [pbr::OriginalName("JADIINBLALB_LBBFEOIBHGK")] JadiinblalbLbbfeoibhgk = 5113,
+    [pbr::OriginalName("JADIINBLALB_FMGAHJHKACP")] JadiinblalbFmgahjhkacp = 5127,
+    [pbr::OriginalName("JADIINBLALB_HFCGJMALAFG")] JadiinblalbHfcgjmalafg = 5180,
+    [pbr::OriginalName("JADIINBLALB_HAGCKNHKEOG")] JadiinblalbHagcknhkeog = 5110,
+    [pbr::OriginalName("JADIINBLALB_LEFONMLBIGB")] JadiinblalbLefonmlbigb = 5187,
+    [pbr::OriginalName("JADIINBLALB_INBLCJJGMKJ")] JadiinblalbInblcjjgmkj = 5173,
+    [pbr::OriginalName("JADIINBLALB_INODKICNKCI")] JadiinblalbInodkicnkci = 5129,
+    [pbr::OriginalName("JADIINBLALB_EHJLKMMHGFM")] JadiinblalbEhjlkmmhgfm = 5115,
+    [pbr::OriginalName("JADIINBLALB_HBHECCOIPBC")] JadiinblalbHbheccoipbc = 5136,
+    [pbr::OriginalName("JADIINBLALB_GJHBHLCAFPG")] JadiinblalbGjhbhlcafpg = 5181,
   }
 
   #endregion

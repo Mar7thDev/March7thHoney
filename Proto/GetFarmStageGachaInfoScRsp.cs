@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiBHZXRGYXJtU3RhZ2VHYWNoYUluZm9TY1JzcC5wcm90bxoYRmFybVN0YWdl",
             "R2FjaGFJbmZvLnByb3RvImYKGkdldEZhcm1TdGFnZUdhY2hhSW5mb1NjUnNw",
-            "EjcKGmZhcm1fc3RhZ2VfZ2FjaGFfaW5mb19saXN0GAMgAygLMhMuRmFybVN0",
-            "YWdlR2FjaGFJbmZvEg8KB3JldGNvZGUYCSABKA1CFqoCE01hcmNoN3RoSG9u",
+            "EjcKGmZhcm1fc3RhZ2VfZ2FjaGFfaW5mb19saXN0GA8gAygLMhMuRmFybVN0",
+            "YWdlR2FjaGFJbmZvEg8KB3JldGNvZGUYAyABKA1CFqoCE01hcmNoN3RoSG9u",
             "ZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.FarmStageGachaInfoReflection.Descriptor, },
@@ -86,9 +86,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "farm_stage_gacha_info_list" field.</summary>
-    public const int FarmStageGachaInfoListFieldNumber = 3;
+    public const int FarmStageGachaInfoListFieldNumber = 15;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.FarmStageGachaInfo> _repeated_farmStageGachaInfoList_codec
-        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.FarmStageGachaInfo.Parser);
+        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.FarmStageGachaInfo.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.FarmStageGachaInfo> farmStageGachaInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.FarmStageGachaInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 9;
+    public const int RetcodeFieldNumber = 3;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      farmStageGachaInfoList_.WriteTo(output, _repeated_farmStageGachaInfoList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(24);
         output.WriteUInt32(Retcode);
       }
+      farmStageGachaInfoList_.WriteTo(output, _repeated_farmStageGachaInfoList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -167,11 +167,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      farmStageGachaInfoList_.WriteTo(ref output, _repeated_farmStageGachaInfoList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(24);
         output.WriteUInt32(Retcode);
       }
+      farmStageGachaInfoList_.WriteTo(ref output, _repeated_farmStageGachaInfoList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -221,12 +221,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 26: {
-            farmStageGachaInfoList_.AddEntriesFrom(input, _repeated_farmStageGachaInfoList_codec);
+          case 24: {
+            Retcode = input.ReadUInt32();
             break;
           }
-          case 72: {
-            Retcode = input.ReadUInt32();
+          case 122: {
+            farmStageGachaInfoList_.AddEntriesFrom(input, _repeated_farmStageGachaInfoList_codec);
             break;
           }
         }
@@ -248,12 +248,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 26: {
-            farmStageGachaInfoList_.AddEntriesFrom(ref input, _repeated_farmStageGachaInfoList_codec);
+          case 24: {
+            Retcode = input.ReadUInt32();
             break;
           }
-          case 72: {
-            Retcode = input.ReadUInt32();
+          case 122: {
+            farmStageGachaInfoList_.AddEntriesFrom(ref input, _repeated_farmStageGachaInfoList_codec);
             break;
           }
         }

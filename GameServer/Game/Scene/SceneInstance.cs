@@ -7,7 +7,7 @@ using March7thHoney.Enums.Mission;
 using March7thHoney.Enums.Scene;
 using March7thHoney.GameServer.Game.Activity.Loaders;
 using March7thHoney.GameServer.Game.Battle;
-using March7thHoney.GameServer.Game.Challenge;
+// TODO 4.3: Challenge 模块暂停
 using March7thHoney.GameServer.Game.Mission;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene.Component;
@@ -104,11 +104,7 @@ public class SceneInstance
             }
         };
 
-        if (Player.TrainCakeCatchManager?.GetSceneTeleportRoomOwnerUid() is { } roomOwnerUid)
-            sceneInfo.SceneIdentifier.TeleportInfo = new TeleportInfo
-            {
-                TeleportId = roomOwnerUid
-            };
+        // TODO 4.3: TrainCakeCatchManager 暂停，社交传送暂不下发
 
         var playerGroupInfo = new SceneEntityGroupInfo(); // avatar group
         foreach (var avatar in AvatarInfo)
@@ -144,7 +140,7 @@ public class SceneInstance
                 groups.Add(new SceneEntityGroupInfo
                 {
                     GroupId = (uint)entity.Value.GroupId,
-                    OPLJDFOOMGF = { resProperty },
+                    BANBECDCDHG = { resProperty },
                     State = 1
                 });
             }
@@ -167,7 +163,7 @@ public class SceneInstance
                 groups.Add(new SceneEntityGroupInfo
                 {
                     GroupId = (uint)groupId,
-                    OPLJDFOOMGF = { resProperty },
+                    BANBECDCDHG = { resProperty },
                     State = 1
                 });
             }
@@ -271,7 +267,8 @@ public class SceneInstance
                 EntityLoader = new SceneEntityLoader(this);
                 break;
             case PlaneTypeEnum.Challenge:
-                EntityLoader = new ChallengeEntityLoader(this, Player);
+                // TODO 4.3: ChallengeEntityLoader 暂停，回落到默认 SceneEntityLoader
+                EntityLoader = new SceneEntityLoader(this);
                 break;
             case PlaneTypeEnum.TrialActivity:
                 EntityLoader = new TrialActivityEntityLoader(this, Player);

@@ -24,14 +24,13 @@ namespace March7thHoney.Proto {
     static CmdOfferingTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChVDbWRPZmZlcmluZ1R5cGUucHJvdG8qjAIKD0NtZE9mZmVyaW5nVHlwZRIb",
-            "ChdFQkhHR01CQ0JJQV9QQ1BESEVMUEtFTRAAEh8KGkNtZFN1Ym1pdE9mZmVy",
-            "aW5nSXRlbVNjUnNwEJI2Eh8KGkNtZFRha2VPZmZlcmluZ1Jld2FyZFNjUnNw",
-            "EJA2EhwKF0NtZEdldE9mZmVyaW5nSW5mb1NjUnNwEJw2EhwKF0NtZE9mZmVy",
-            "aW5nSW5mb1NjTm90aWZ5EJY2EhwKF0NtZEdldE9mZmVyaW5nSW5mb0NzUmVx",
-            "EIk2Eh8KGkNtZFRha2VPZmZlcmluZ1Jld2FyZENzUmVxEJc2Eh8KGkNtZFN1",
-            "Ym1pdE9mZmVyaW5nSXRlbUNzUmVxEIo2QhaqAhNNYXJjaDd0aEhvbmV5LlBy",
-            "b3RvYgZwcm90bzM="));
+            "ChVDbWRPZmZlcmluZ1R5cGUucHJvdG8qgAIKD0NtZE9mZmVyaW5nVHlwZRIb",
+            "ChdMSVBPTlBCR09QTl9OTENER0lQR0ZEShAAEhwKF0xJUE9OUEJHT1BOX0FO",
+            "RUVLQ0dPQU1DEJg2EhwKF0xJUE9OUEJHT1BOX0ZMUElISkxNQ0RNEJw2EhwK",
+            "F0xJUE9OUEJHT1BOX0FCRUhESEpDRElMEJs2EhwKF0xJUE9OUEJHT1BOX0ZF",
+            "RkRBQ0pDRklMEIo2EhwKF0xJUE9OUEJHT1BOX0hNTkRLRktDR05MEJo2EhwK",
+            "F0xJUE9OUEJHT1BOX0hHS0VMSUZLRkRQEI42EhwKF0xJUE9OUEJHT1BOX0ZL",
+            "TEtLRENMR0VOEJQ2QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdOfferingType), }, null, null));
@@ -41,14 +40,14 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdOfferingType {
-    [pbr::OriginalName("EBHGGMBCBIA_PCPDHELPKEM")] EbhggmbcbiaPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdSubmitOfferingItemScRsp")] CmdSubmitOfferingItemScRsp = 6930,
-    [pbr::OriginalName("CmdTakeOfferingRewardScRsp")] CmdTakeOfferingRewardScRsp = 6928,
-    [pbr::OriginalName("CmdGetOfferingInfoScRsp")] CmdGetOfferingInfoScRsp = 6940,
-    [pbr::OriginalName("CmdOfferingInfoScNotify")] CmdOfferingInfoScNotify = 6934,
-    [pbr::OriginalName("CmdGetOfferingInfoCsReq")] CmdGetOfferingInfoCsReq = 6921,
-    [pbr::OriginalName("CmdTakeOfferingRewardCsReq")] CmdTakeOfferingRewardCsReq = 6935,
-    [pbr::OriginalName("CmdSubmitOfferingItemCsReq")] CmdSubmitOfferingItemCsReq = 6922,
+    [pbr::OriginalName("LIPONPBGOPN_NLCDGIPGFDJ")] LiponpbgopnNlcdgipgfdj = 0,
+    [pbr::OriginalName("LIPONPBGOPN_ANEEKCGOAMC")] LiponpbgopnAneekcgoamc = 6936,
+    [pbr::OriginalName("LIPONPBGOPN_FLPIHJLMCDM")] LiponpbgopnFlpihjlmcdm = 6940,
+    [pbr::OriginalName("LIPONPBGOPN_ABEHDHJCDIL")] LiponpbgopnAbehdhjcdil = 6939,
+    [pbr::OriginalName("LIPONPBGOPN_FEFDACJCFIL")] LiponpbgopnFefdacjcfil = 6922,
+    [pbr::OriginalName("LIPONPBGOPN_HMNDKFKCGNL")] LiponpbgopnHmndkfkcgnl = 6938,
+    [pbr::OriginalName("LIPONPBGOPN_HGKELIFKFDP")] LiponpbgopnHgkelifkfdp = 6926,
+    [pbr::OriginalName("LIPONPBGOPN_FKLKKDCLGEN")] LiponpbgopnFklkkdclgen = 6932,
   }
 
   #endregion

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "CIGLIFFIIDC.proto";
+import "LobbyGameExtInfo.proto";
+import "MOHAGOFLGAP.proto";
+
+message LMLNNHKJEIP {
+    MOHAGOFLGAP basic_info = 1;
+    LobbyGameExtInfo stage_info = 3;
+    CIGLIFFIIDC GBBCBJCACIN = 2;
+}

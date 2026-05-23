@@ -2,17 +2,15 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "ADHNJADIJAC.proto";
 import "FightGameMode.proto";
-import "PBICJCPDLGD.proto";
+import "LMLNNHKJEIP.proto";
+import "PJMGBLIFDFP.proto";
 
 message LobbyCreateScRsp {
-    uint32 CHEODMKAHJM = 1;
-    PBICJCPDLGD POFOCMIHJIA = 5;
-    FightGameMode PLOBMBFPNFK = 6;
-    uint64 room_id = 7;
-    uint32 retcode = 9;
-    repeated ADHNJADIJAC BIEBFHECEPM = 14;
+    repeated LMLNNHKJEIP DFLEOIGPLNM = 1;
+    PJMGBLIFDFP EMIJCKENBKJ = 6;
+    uint32 HDJFGMGAOOF = 8;
+    FightGameMode GJNMHILINHC = 3;
+    uint32 retcode = 11;
+    uint64 room_id = 4;
 }

@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "JCFDCEKLBFH.proto";
+import "JDAIOFEPGCC.proto";
 
 message FateShopRefreshGoodsScRsp {
-    bool EBKLPKNANLN = 2;
-    repeated JCFDCEKLBFH shop_goods_list = 11;
-    uint32 retcode = 13;
+    repeated JDAIOFEPGCC OGDKJPDFFAI = 13;
+    uint32 retcode = 10;
+    bool PNMNPFGCFBJ = 4;
 }

@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message RogueMagicStoryInfoUpdateScNotify {
-    uint32 KHMPDBNFKHB = 13;
+    uint32 BNHAIKILAJK = 15;
 }

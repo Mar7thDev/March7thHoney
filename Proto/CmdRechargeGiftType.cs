@@ -24,16 +24,15 @@ namespace March7thHoney.Proto {
     static CmdRechargeGiftTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChlDbWRSZWNoYXJnZUdpZnRUeXBlLnByb3RvKoMDChNDbWRSZWNoYXJnZUdp",
-            "ZnRUeXBlEhsKF0ZLS0RMS0pEUEFMX1BDUERIRUxQS0VNEAASJwoiQ21kU3lu",
-            "Y1JlY2hhcmdlQmVuZWZpdEluZm9TY05vdGlmeRC2QRImCiFDbWRUYWtlUmVj",
-            "aGFyZ2VCZW5lZml0UmV3YXJkQ3NSZXEQuUESIwoeQ21kVGFrZVJlY2hhcmdl",
-            "R2lmdFJld2FyZFNjUnNwELJBEiMKHkNtZEdldFJlY2hhcmdlQmVuZWZpdElu",
-            "Zm9TY1JzcBCwQRIgChtDbWRHZXRSZWNoYXJnZUdpZnRJbmZvU2NSc3AQvEES",
-            "IwoeQ21kR2V0UmVjaGFyZ2VCZW5lZml0SW5mb0NzUmVxELdBEiAKG0NtZEdl",
-            "dFJlY2hhcmdlR2lmdEluZm9Dc1JlcRCpQRImCiFDbWRUYWtlUmVjaGFyZ2VC",
-            "ZW5lZml0UmV3YXJkU2NSc3AQr0ESIwoeQ21kVGFrZVJlY2hhcmdlR2lmdFJl",
-            "d2FyZENzUmVxEKpBQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ChlDbWRSZWNoYXJnZUdpZnRUeXBlLnByb3RvKsACChNDbWRSZWNoYXJnZUdp",
+            "ZnRUeXBlEhsKF09PQ0lNSkVEQ0hLX05MQ0RHSVBHRkRKEAASHAoXT09DSU1K",
+            "RURDSEtfTUZOQUhITU1HTksQuEESHAoXT09DSU1KRURDSEtfRE9JTU9NTURF",
+            "R0oQtkESHAoXT09DSU1KRURDSEtfR0xBTUlIREhIQ0MQqkESHAoXT09DSU1K",
+            "RURDSEtfRk5DTEFQRktMQ0kQu0ESHAoXT09DSU1KRURDSEtfTEJET09MRE5M",
+            "SUUQrEESHAoXT09DSU1KRURDSEtfS0ZLQ0xISk5OSFAQukESHAoXT09DSU1K",
+            "RURDSEtfSURQQkNIQ0hJRk4QvEESHAoXT09DSU1KRURDSEtfTkhEQ0RCREdH",
+            "RkoQtEESHAoXT09DSU1KRURDSEtfRElBRUhOTk1BT00QrkFCFqoCE01hcmNo",
+            "N3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdRechargeGiftType), }, null, null));
@@ -43,16 +42,16 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdRechargeGiftType {
-    [pbr::OriginalName("FKKDLKJDPAL_PCPDHELPKEM")] FkkdlkjdpalPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdSyncRechargeBenefitInfoScNotify")] CmdSyncRechargeBenefitInfoScNotify = 8374,
-    [pbr::OriginalName("CmdTakeRechargeBenefitRewardCsReq")] CmdTakeRechargeBenefitRewardCsReq = 8377,
-    [pbr::OriginalName("CmdTakeRechargeGiftRewardScRsp")] CmdTakeRechargeGiftRewardScRsp = 8370,
-    [pbr::OriginalName("CmdGetRechargeBenefitInfoScRsp")] CmdGetRechargeBenefitInfoScRsp = 8368,
-    [pbr::OriginalName("CmdGetRechargeGiftInfoScRsp")] CmdGetRechargeGiftInfoScRsp = 8380,
-    [pbr::OriginalName("CmdGetRechargeBenefitInfoCsReq")] CmdGetRechargeBenefitInfoCsReq = 8375,
-    [pbr::OriginalName("CmdGetRechargeGiftInfoCsReq")] CmdGetRechargeGiftInfoCsReq = 8361,
-    [pbr::OriginalName("CmdTakeRechargeBenefitRewardScRsp")] CmdTakeRechargeBenefitRewardScRsp = 8367,
-    [pbr::OriginalName("CmdTakeRechargeGiftRewardCsReq")] CmdTakeRechargeGiftRewardCsReq = 8362,
+    [pbr::OriginalName("OOCIMJEDCHK_NLCDGIPGFDJ")] OocimjedchkNlcdgipgfdj = 0,
+    [pbr::OriginalName("OOCIMJEDCHK_MFNAHHMMGNK")] OocimjedchkMfnahhmmgnk = 8376,
+    [pbr::OriginalName("OOCIMJEDCHK_DOIMOMMDEGJ")] OocimjedchkDoimommdegj = 8374,
+    [pbr::OriginalName("OOCIMJEDCHK_GLAMIHDHHCC")] OocimjedchkGlamihdhhcc = 8362,
+    [pbr::OriginalName("OOCIMJEDCHK_FNCLAPFKLCI")] OocimjedchkFnclapfklci = 8379,
+    [pbr::OriginalName("OOCIMJEDCHK_LBDOOLDNLIE")] OocimjedchkLbdooldnlie = 8364,
+    [pbr::OriginalName("OOCIMJEDCHK_KFKCLHJNNHP")] OocimjedchkKfkclhjnnhp = 8378,
+    [pbr::OriginalName("OOCIMJEDCHK_IDPBCHCHIFN")] OocimjedchkIdpbchchifn = 8380,
+    [pbr::OriginalName("OOCIMJEDCHK_NHDCDBDGGFJ")] OocimjedchkNhdcdbdggfj = 8372,
+    [pbr::OriginalName("OOCIMJEDCHK_DIAEHNNMAOM")] OocimjedchkDiaehnnmaom = 8366,
   }
 
   #endregion

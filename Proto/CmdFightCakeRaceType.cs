@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChpDbWRGaWdodENha2VSYWNlVHlwZS5wcm90byozChRDbWRGaWdodENha2VS",
-            "YWNlVHlwZRIbChdBS1BFRkVQTENGQV9QQ1BESEVMUEtFTRAAQhaqAhNNYXJj",
+            "YWNlVHlwZRIbChdBSENNRFBMTUlEQV9OTENER0lQR0ZEShAAQhaqAhNNYXJj",
             "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -36,7 +36,7 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdFightCakeRaceType {
-    [pbr::OriginalName("AKPEFEPLCFA_PCPDHELPKEM")] AkpefeplcfaPcpdhelpkem = 0,
+    [pbr::OriginalName("AHCMDPLMIDA_NLCDGIPGFDJ")] AhcmdplmidaNlcdgipgfdj = 0,
   }
 
   #endregion

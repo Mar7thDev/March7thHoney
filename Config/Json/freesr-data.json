@@ -3745,7 +3745,10 @@
 			"promotion": 6,
 			"sp_value": 0,
 			"sp_max": 100,
-			"techniques": [],
+			"techniques": [
+				140701,
+				140703
+			],
 			"enhanced_id": 0
 		},
 		"1408": {
@@ -4421,12 +4424,12 @@
 		"1507": {
 			"avatar_id": 1507,
 			"data": {
-				"rank": 0,
+				"rank": 6,
 				"skills": {
-					"1507001": 1,
-					"1507002": 1,
-					"1507003": 1,
-					"1507004": 1,
+					"1507001": 6,
+					"1507002": 10,
+					"1507003": 10,
+					"1507004": 10,
 					"1507007": 1,
 					"1507101": 1,
 					"1507102": 1,
@@ -4443,10 +4446,10 @@
 					"1507210": 1
 				},
 				"skills_by_anchor_type": {
-					"1": 1,
-					"2": 1,
-					"3": 1,
-					"4": 1,
+					"1": 6,
+					"2": 10,
+					"3": 10,
+					"4": 10,
 					"5": 1,
 					"6": 1,
 					"7": 1,
@@ -4466,7 +4469,7 @@
 			"level": 80,
 			"promotion": 6,
 			"sp_max": 80,
-			"sp_value": 0,
+			"sp_value": 80,
 			"techniques": [
 				150701
 			]
@@ -8777,7 +8780,7 @@
 		},
 		{
 			"internal_uid": 281,
-			"equip_avatar": 0,
+			"equip_avatar": 1507,
 			"level": 15,
 			"main_affix_id": 1,
 			"relic_id": 61221,
@@ -13757,7 +13760,7 @@
 		},
 		{
 			"internal_uid": 518,
-			"equip_avatar": 0,
+			"equip_avatar": 1507,
 			"level": 15,
 			"main_affix_id": 1,
 			"relic_id": 61222,
@@ -13937,7 +13940,7 @@
 		},
 		{
 			"internal_uid": 524,
-			"equip_avatar": 0,
+			"equip_avatar": 1507,
 			"level": 15,
 			"main_affix_id": 4,
 			"relic_id": 61203,
@@ -13967,7 +13970,7 @@
 		},
 		{
 			"internal_uid": 525,
-			"equip_avatar": 0,
+			"equip_avatar": 1507,
 			"level": 15,
 			"main_affix_id": 2,
 			"relic_id": 61204,
@@ -14537,7 +14540,7 @@
 		},
 		{
 			"internal_uid": 544,
-			"equip_avatar": 0,
+			"equip_avatar": 1507,
 			"level": 15,
 			"main_affix_id": 2,
 			"relic_id": 63176,
@@ -15887,7 +15890,7 @@
 		},
 		{
 			"internal_uid": 590,
-			"equip_avatar": 0,
+			"equip_avatar": 1507,
 			"level": 15,
 			"main_affix_id": 1,
 			"relic_id": 63175,
@@ -44538,17 +44541,49 @@
 			"level": 80,
 			"promotion": 6,
 			"rank": 5
+		},
+		{
+			"equip_avatar": 1507,
+			"internal_uid": 140,
+			"item_id": 23059,
+			"level": 80,
+			"promotion": 6,
+			"rank": 5
 		}
 	],
 	"battle_config": {
 		"battle_type": "DEFAULT",
 		"cycle_count": 0,
-		"stage_id": 30503022,
+		"stage_id": 30506022,
 		"path_resonance_id": 0,
 		"monsters": [
 			[
 				{
-					"monster_id": 3025016,
+					"monster_id": 5012100,
+					"amount": 1,
+					"level": 120
+				},
+				{
+					"monster_id": 3003020,
+					"amount": 1,
+					"level": 120
+				},
+				{
+					"monster_id": 5012100,
+					"amount": 1,
+					"level": 120
+				}
+			],
+			[
+				{
+					"monster_id": 5023010,
+					"amount": 1,
+					"level": 120
+				}
+			],
+			[
+				{
+					"monster_id": 5024010,
 					"amount": 1,
 					"level": 120
 				}
@@ -44557,22 +44592,18 @@
 		"blessings": [
 			{
 				"level": 1,
-				"id": 3033029
+				"id": 3033057
 			},
 			{
 				"level": 1,
-				"id": 3033040
+				"id": 3033042
 			},
 			{
 				"level": 1,
-				"id": 3033036
-			},
-			{
-				"level": 1,
-				"id": 3033032
+				"id": 3033055
 			}
 		],
 		"custom_stats": []
 	},
-	"key": "db-4"
+	"key": "db-9"
 }

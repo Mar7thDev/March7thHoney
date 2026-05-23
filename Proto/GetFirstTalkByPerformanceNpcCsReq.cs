@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CidHZXRGaXJzdFRhbGtCeVBlcmZvcm1hbmNlTnBjQ3NSZXEucHJvdG8iQAoh",
             "R2V0Rmlyc3RUYWxrQnlQZXJmb3JtYW5jZU5wY0NzUmVxEhsKE3BlcmZvcm1h",
-            "bmNlX2lkX2xpc3QYCiADKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
+            "bmNlX2lkX2xpc3QYCSADKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
             "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,9 +84,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "performance_id_list" field.</summary>
-    public const int PerformanceIdListFieldNumber = 10;
+    public const int PerformanceIdListFieldNumber = 9;
     private static readonly pb::FieldCodec<uint> _repeated_performanceIdList_codec
-        = pb::FieldCodec.ForUInt32(82);
+        = pb::FieldCodec.ForUInt32(74);
     private readonly pbc::RepeatedField<uint> performanceIdList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -191,8 +191,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 82:
-          case 80: {
+          case 74:
+          case 72: {
             performanceIdList_.AddEntriesFrom(input, _repeated_performanceIdList_codec);
             break;
           }
@@ -215,8 +215,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 82:
-          case 80: {
+          case 74:
+          case 72: {
             performanceIdList_.AddEntriesFrom(ref input, _repeated_performanceIdList_codec);
             break;
           }

@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cg5JdGVtTGlzdC5wcm90bxoKSXRlbS5wcm90byIkCghJdGVtTGlzdBIYCglp",
-            "dGVtX2xpc3QYASADKAsyBS5JdGVtQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
+            "dGVtX2xpc3QYByADKAsyBS5JdGVtQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
             "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemReflection.Descriptor, },
@@ -83,9 +83,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "item_list" field.</summary>
-    public const int ItemList_FieldNumber = 1;
+    public const int ItemList_FieldNumber = 7;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.Item> _repeated_itemList_codec
-        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.Item.Parser);
+        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.Item.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.Item> itemList_ = new pbc::RepeatedField<global::March7thHoney.Proto.Item>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -190,7 +190,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
+          case 58: {
             itemList_.AddEntriesFrom(input, _repeated_itemList_codec);
             break;
           }
@@ -213,7 +213,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
+          case 58: {
             itemList_.AddEntriesFrom(ref input, _repeated_itemList_codec);
             break;
           }

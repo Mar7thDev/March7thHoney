@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message RogueShopBeginBattleCsReq {
-    uint32 interacted_prop_entity_id = 7;
+    uint32 interacted_prop_entity_id = 12;
 }

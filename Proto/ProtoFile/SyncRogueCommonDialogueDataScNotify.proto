@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "JIBMJCBNDKK.proto";
+import "HFEOGNAMHCG.proto";
 
 message SyncRogueCommonDialogueDataScNotify {
-    repeated JIBMJCBNDKK JOKAEEMJLMK = 12;
+    repeated HFEOGNAMHCG HJOKMCCPOLL = 13;
 }

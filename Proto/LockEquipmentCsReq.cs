@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static LockEquipmentCsReqReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChhMb2NrRXF1aXBtZW50Q3NSZXEucHJvdG8iQAoSTG9ja0VxdWlwbWVudENz",
-            "UmVxEhEKCWlzX2xvY2tlZBgEIAEoCBIXCg9FcXVpcG1lbnRJZExpc3QYDSAD",
-            "KA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ChhMb2NrRXF1aXBtZW50Q3NSZXEucHJvdG8iPAoSTG9ja0VxdWlwbWVudENz",
+            "UmVxEhMKC0xEQk1CUEJHRkhLGAUgAygNEhEKCWlzX2xvY2tlZBgOIAEoCEIW",
+            "qgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LockEquipmentCsReq), global::March7thHoney.Proto.LockEquipmentCsReq.Parser, new[]{ "IsLocked", "EquipmentIdList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LockEquipmentCsReq), global::March7thHoney.Proto.LockEquipmentCsReq.Parser, new[]{ "LDBMBPBGFHK", "IsLocked" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public LockEquipmentCsReq(LockEquipmentCsReq other) : this() {
+      lDBMBPBGFHK_ = other.lDBMBPBGFHK_.Clone();
       isLocked_ = other.isLocked_;
-      equipmentIdList_ = other.equipmentIdList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,8 +83,19 @@ namespace March7thHoney.Proto {
       return new LockEquipmentCsReq(this);
     }
 
+    /// <summary>Field number for the "LDBMBPBGFHK" field.</summary>
+    public const int LDBMBPBGFHKFieldNumber = 5;
+    private static readonly pb::FieldCodec<uint> _repeated_lDBMBPBGFHK_codec
+        = pb::FieldCodec.ForUInt32(42);
+    private readonly pbc::RepeatedField<uint> lDBMBPBGFHK_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> LDBMBPBGFHK {
+      get { return lDBMBPBGFHK_; }
+    }
+
     /// <summary>Field number for the "is_locked" field.</summary>
-    public const int IsLockedFieldNumber = 4;
+    public const int IsLockedFieldNumber = 14;
     private bool isLocked_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -93,17 +104,6 @@ namespace March7thHoney.Proto {
       set {
         isLocked_ = value;
       }
-    }
-
-    /// <summary>Field number for the "EquipmentIdList" field.</summary>
-    public const int EquipmentIdListFieldNumber = 13;
-    private static readonly pb::FieldCodec<uint> _repeated_equipmentIdList_codec
-        = pb::FieldCodec.ForUInt32(106);
-    private readonly pbc::RepeatedField<uint> equipmentIdList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> EquipmentIdList {
-      get { return equipmentIdList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -121,8 +121,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if(!lDBMBPBGFHK_.Equals(other.lDBMBPBGFHK_)) return false;
       if (IsLocked != other.IsLocked) return false;
-      if(!equipmentIdList_.Equals(other.equipmentIdList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -130,8 +130,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      hash ^= lDBMBPBGFHK_.GetHashCode();
       if (IsLocked != false) hash ^= IsLocked.GetHashCode();
-      hash ^= equipmentIdList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -150,11 +150,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      lDBMBPBGFHK_.WriteTo(output, _repeated_lDBMBPBGFHK_codec);
       if (IsLocked != false) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(112);
         output.WriteBool(IsLocked);
       }
-      equipmentIdList_.WriteTo(output, _repeated_equipmentIdList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -165,11 +165,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      lDBMBPBGFHK_.WriteTo(ref output, _repeated_lDBMBPBGFHK_codec);
       if (IsLocked != false) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(112);
         output.WriteBool(IsLocked);
       }
-      equipmentIdList_.WriteTo(ref output, _repeated_equipmentIdList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -180,10 +180,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      size += lDBMBPBGFHK_.CalculateSize(_repeated_lDBMBPBGFHK_codec);
       if (IsLocked != false) {
         size += 1 + 1;
       }
-      size += equipmentIdList_.CalculateSize(_repeated_equipmentIdList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -196,10 +196,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      lDBMBPBGFHK_.Add(other.lDBMBPBGFHK_);
       if (other.IsLocked != false) {
         IsLocked = other.IsLocked;
       }
-      equipmentIdList_.Add(other.equipmentIdList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -219,13 +219,13 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
-            IsLocked = input.ReadBool();
+          case 42:
+          case 40: {
+            lDBMBPBGFHK_.AddEntriesFrom(input, _repeated_lDBMBPBGFHK_codec);
             break;
           }
-          case 106:
-          case 104: {
-            equipmentIdList_.AddEntriesFrom(input, _repeated_equipmentIdList_codec);
+          case 112: {
+            IsLocked = input.ReadBool();
             break;
           }
         }
@@ -247,13 +247,13 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
-            IsLocked = input.ReadBool();
+          case 42:
+          case 40: {
+            lDBMBPBGFHK_.AddEntriesFrom(ref input, _repeated_lDBMBPBGFHK_codec);
             break;
           }
-          case 106:
-          case 104: {
-            equipmentIdList_.AddEntriesFrom(ref input, _repeated_equipmentIdList_codec);
+          case 112: {
+            IsLocked = input.ReadBool();
             break;
           }
         }

@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static CmdExpeditionTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChdDbWRFeHBlZGl0aW9uVHlwZS5wcm90byqpAgoRQ21kRXhwZWRpdGlvblR5",
-            "cGUSGwoXRkpLTURHTkRJTE9fUENQREhFTFBLRU0QABIlCiBDbWRBY2NlcHRN",
-            "dWx0aXBsZUV4cGVkaXRpb25Dc1JlcRDHExIlCiBDbWRBY2NlcHRNdWx0aXBs",
-            "ZUV4cGVkaXRpb25TY1JzcBD2ExIpCiRDbWRUYWtlTXVsdGlwbGVFeHBlZGl0",
-            "aW9uUmV3YXJkQ3NSZXEQ1BMSHgoZQ21kR2V0RXhwZWRpdGlvbkRhdGFDc1Jl",
-            "cRDRExIpCiRDbWRUYWtlTXVsdGlwbGVFeHBlZGl0aW9uUmV3YXJkU2NSc3AQ",
-            "4xMSEwoOQ21kR0FKTURORUtQT1AQ8xMSHgoZQ21kR2V0RXhwZWRpdGlvbkRh",
-            "dGFTY1JzcBDLE0IWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChdDbWRFeHBlZGl0aW9uVHlwZS5wcm90byqCAgoRQ21kRXhwZWRpdGlvblR5",
+            "cGUSGwoXT0tQQ09CQ01PRkZfTkxDREdJUEdGREoQABIcChdPS1BDT0JDTU9G",
+            "Rl9ERkpETkxORktMRxDNExIcChdPS1BDT0JDTU9GRl9DSEVQS0FERU5KTBDu",
+            "ExIcChdPS1BDT0JDTU9GRl9DQ01ORkdIRENETxDHExIcChdPS1BDT0JDTU9G",
+            "Rl9LRE5ITEtFT0hIQRDkExIcChdPS1BDT0JDTU9GRl9FQ0hGQUVERUZMRxDM",
+            "ExIcChdPS1BDT0JDTU9GRl9NS0JOUEZHR0FOQxDYExIcChdPS1BDT0JDTU9G",
+            "Rl9PTENIR0lOQUVJRxDqE0IWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJv",
+            "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdExpeditionType), }, null, null));
@@ -41,14 +41,14 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdExpeditionType {
-    [pbr::OriginalName("FJKMDGNDILO_PCPDHELPKEM")] FjkmdgndiloPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdAcceptMultipleExpeditionCsReq")] CmdAcceptMultipleExpeditionCsReq = 2503,
-    [pbr::OriginalName("CmdAcceptMultipleExpeditionScRsp")] CmdAcceptMultipleExpeditionScRsp = 2550,
-    [pbr::OriginalName("CmdTakeMultipleExpeditionRewardCsReq")] CmdTakeMultipleExpeditionRewardCsReq = 2516,
-    [pbr::OriginalName("CmdGetExpeditionDataCsReq")] CmdGetExpeditionDataCsReq = 2513,
-    [pbr::OriginalName("CmdTakeMultipleExpeditionRewardScRsp")] CmdTakeMultipleExpeditionRewardScRsp = 2531,
-    [pbr::OriginalName("CmdGAJMDNEKPOP")] CmdGajmdnekpop = 2547,
-    [pbr::OriginalName("CmdGetExpeditionDataScRsp")] CmdGetExpeditionDataScRsp = 2507,
+    [pbr::OriginalName("OKPCOBCMOFF_NLCDGIPGFDJ")] OkpcobcmoffNlcdgipgfdj = 0,
+    [pbr::OriginalName("OKPCOBCMOFF_DFJDNLNFKLG")] OkpcobcmoffDfjdnlnfklg = 2509,
+    [pbr::OriginalName("OKPCOBCMOFF_CHEPKADENJL")] OkpcobcmoffChepkadenjl = 2542,
+    [pbr::OriginalName("OKPCOBCMOFF_CCMNFGHDCDO")] OkpcobcmoffCcmnfghdcdo = 2503,
+    [pbr::OriginalName("OKPCOBCMOFF_KDNHLKEOHHA")] OkpcobcmoffKdnhlkeohha = 2532,
+    [pbr::OriginalName("OKPCOBCMOFF_ECHFAEDEFLG")] OkpcobcmoffEchfaedeflg = 2508,
+    [pbr::OriginalName("OKPCOBCMOFF_MKBNPFGGANC")] OkpcobcmoffMkbnpfgganc = 2520,
+    [pbr::OriginalName("OKPCOBCMOFF_OLCHGINAEIG")] OkpcobcmoffOlchginaeig = 2538,
   }
 
   #endregion

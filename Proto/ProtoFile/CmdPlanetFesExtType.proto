@@ -2,26 +2,24 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdPlanetFesExtType {
-    AIAMJBEHMMC_PCPDHELPKEM = 0;
-    CmdPlanetFesGetExtraCardPieceInfoCsReq = 8303;
-    CmdPlanetFesGetExtraCardPieceInfoScRsp = 8297;
-    CmdPlanetFesApplyCardPieceScRsp = 8291;
-    CmdPlanetFesGiveCardPieceScRsp = 8335;
-    CmdPlanetFesHandleCardPieceApplyCsReq = 8337;
-    CmdPlanetFesLargeBonusInteractScRsp = 8293;
-    CmdPlanetFesApplyCardPieceCsReq = 8295;
-    CmdPlanetFesChangeCardPieceApplyPermissionCsReq = 8325;
-    CmdPlanetFesGetOfferedCardPieceScRsp = 8334;
-    CmdPlanetFesGetOfferedCardPieceCsReq = 8292;
-    CmdPlanetFesGetFriendCardPieceScRsp = 8317;
-    CmdHCJKEDJPGHB = 8306;
-    CmdPlanetFesEnterNextBusinessDayCsReq = 8340;
-    CmdPlanetFesGetFriendCardPieceCsReq = 8320;
-    CmdPlanetFesChangeCardPieceApplyPermissionScRsp = 8328;
-    CmdPlanetFesGiveCardPieceCsReq = 8308;
-    CmdPlanetFesLargeBonusInteractCsReq = 8326;
-    CmdPlanetFesHandleCardPieceApplyScRsp = 8309;
+    FINKPKBICHJ_NLCDGIPGFDJ = 0;
+    FINKPKBICHJ_IIDKHMCKJOE = 8313;
+    FINKPKBICHJ_EJMGBFBCBGB = 8299;
+    FINKPKBICHJ_OPNFLKEKCPJ = 8309;
+    FINKPKBICHJ_GIDHIGAJBKH = 8335;
+    FINKPKBICHJ_KJCFACGAADE = 8319;
+    FINKPKBICHJ_MNDHGELMIFN = 8311;
+    FINKPKBICHJ_GEJPJANNNMB = 8322;
+    FINKPKBICHJ_OBCFGEAIGAN = 8293;
+    FINKPKBICHJ_GEGKJDDPFAM = 8297;
+    FINKPKBICHJ_NENAKHJIKFP = 8324;
+    FINKPKBICHJ_MDEAKEPLECG = 8330;
+    FINKPKBICHJ_HEIDCFGIGFA = 8328;
+    FINKPKBICHJ_EIEEIHMKDHF = 8317;
+    FINKPKBICHJ_IBEEAPKNNOO = 8295;
+    FINKPKBICHJ_KPFDKHBIHMI = 8334;
+    FINKPKBICHJ_CEMGNGMKDNK = 8332;
+    FINKPKBICHJ_KDLCECCBFMO = 8333;
+    FINKPKBICHJ_OJOPKFIPKOA = 8298;
 }

@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum BMHIHBHECKD {
+    BMHIHBHECKD_NLCDGIPGFDJ = 0;
+    BMHIHBHECKD_AONEONHEHNA = 1;
+    BMHIHBHECKD_NGCHDKKBACD = 2;
+    BMHIHBHECKD_LHCCHLAIAIN = 3;
+}

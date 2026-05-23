@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message HDKEPPDIDIH {
+    repeated uint32 EJDDMNAODEN = 2;
+    repeated uint32 JNDBCDAIIDD = 5;
+    double damage = 4;
+    double OELDAKBOPJA = 7;
+    int32 AFPKBFAPOAH = 6;
+    uint32 wave = 9;
+    uint32 source = 3;
+    uint32 enhanced_id = 10;
+    uint32 avatar_id = 1;
+    uint32 CNGEOGOMPOP = 8;
+}

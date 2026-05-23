@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "PlayerChallengePeakRecordBossData.proto";
+import "PlayerChallengePeakRecordMobData.proto";
+
+message DBFHOCOBPMK {
+    repeated PlayerChallengePeakRecordMobData HDCHFBKDCEB = 12;
+    PlayerChallengePeakRecordBossData CDFFIGJLGMM = 7;
+    uint32 group_id = 13;
+}

@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message DMLACLLDCCE {
+    uint32 MNCFOGJECMF = 10;
+    uint32 GNAHDKMEDEP = 4;
+    uint32 AJAFEEAOBLC = 8;
+    int32 CBPGJAFAHFC = 14;
+}

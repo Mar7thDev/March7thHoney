@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "CKODNPNBOEN.proto";
+import "HLMNDLOMPKP.proto";
+
+message KKOKOAJBHFN {
+    CKODNPNBOEN COGGJELNFCN = 9;
+    repeated uint32 MHBEHHMJHOM = 8;
+    HLMNDLOMPKP CDHIEPDFEIB = 13;
+    CKODNPNBOEN IDBGCLFLCGE = 10;
+    HLMNDLOMPKP OLIIDBMFHCH = 12;
+    uint64 room_id = 1;
+    bool CJNHAILKEPN = 5;
+    uint32 GAENFKKAKOI = 3;
+    uint32 JCHFCNFHCMM = 11;
+    uint32 GLHKJMBKKPI = 2;
+    uint32 OOJGMIMJAGC = 4;
+    uint32 MMNJJHDBJCI = 7;
+    uint32 cost_time = 15;
+    uint32 MPHFJHCDEEG = 14;
+    uint32 monster_battle_type = 6;
+}

@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch5DaGltZXJhRHVlbFNob3BMb2NrQ3NSZXEucHJvdG8iagoYQ2hpbWVyYUR1",
-            "ZWxTaG9wTG9ja0NzUmVxEhEKCWlzX2xvY2tlZBgPIAEoCBIVCgtIQ05LQUpO",
-            "S0dGSBgIIAEoDUgAEhUKC0RFQUtPT0VCTEpMGA0gASgNSABCDQoLQlBJSEZB",
-            "SkNMT0NCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ZWxTaG9wTG9ja0NzUmVxEhEKCWlzX2xvY2tlZBgOIAEoCBIVCgtOREpHS0pN",
+            "UFBIShgGIAEoDUgAEhUKC0FHQkFJRlBOS0lJGAUgASgNSABCDQoLS0tOQk9B",
+            "Q05DT05CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChimeraDuelShopLockCsReq), global::March7thHoney.Proto.ChimeraDuelShopLockCsReq.Parser, new[]{ "IsLocked", "HCNKAJNKGFH", "DEAKOOEBLJL" }, new[]{ "BPIHFAJCLOC" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChimeraDuelShopLockCsReq), global::March7thHoney.Proto.ChimeraDuelShopLockCsReq.Parser, new[]{ "IsLocked", "NDJGKJMPPHJ", "AGBAIFPNKII" }, new[]{ "KKNBOACNCON" }, null, null, null)
           }));
     }
     #endregion
@@ -74,12 +74,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ChimeraDuelShopLockCsReq(ChimeraDuelShopLockCsReq other) : this() {
       isLocked_ = other.isLocked_;
-      switch (other.BPIHFAJCLOCCase) {
-        case BPIHFAJCLOCOneofCase.HCNKAJNKGFH:
-          HCNKAJNKGFH = other.HCNKAJNKGFH;
+      switch (other.KKNBOACNCONCase) {
+        case KKNBOACNCONOneofCase.NDJGKJMPPHJ:
+          NDJGKJMPPHJ = other.NDJGKJMPPHJ;
           break;
-        case BPIHFAJCLOCOneofCase.DEAKOOEBLJL:
-          DEAKOOEBLJL = other.DEAKOOEBLJL;
+        case KKNBOACNCONOneofCase.AGBAIFPNKII:
+          AGBAIFPNKII = other.AGBAIFPNKII;
           break;
       }
 
@@ -93,7 +93,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "is_locked" field.</summary>
-    public const int IsLockedFieldNumber = 15;
+    public const int IsLockedFieldNumber = 14;
     private bool isLocked_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -104,77 +104,77 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "HCNKAJNKGFH" field.</summary>
-    public const int HCNKAJNKGFHFieldNumber = 8;
+    /// <summary>Field number for the "NDJGKJMPPHJ" field.</summary>
+    public const int NDJGKJMPPHJFieldNumber = 6;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint HCNKAJNKGFH {
-      get { return HasHCNKAJNKGFH ? (uint) bPIHFAJCLOC_ : 0; }
+    public uint NDJGKJMPPHJ {
+      get { return HasNDJGKJMPPHJ ? (uint) kKNBOACNCON_ : 0; }
       set {
-        bPIHFAJCLOC_ = value;
-        bPIHFAJCLOCCase_ = BPIHFAJCLOCOneofCase.HCNKAJNKGFH;
+        kKNBOACNCON_ = value;
+        kKNBOACNCONCase_ = KKNBOACNCONOneofCase.NDJGKJMPPHJ;
       }
     }
-    /// <summary>Gets whether the "HCNKAJNKGFH" field is set</summary>
+    /// <summary>Gets whether the "NDJGKJMPPHJ" field is set</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasHCNKAJNKGFH {
-      get { return bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.HCNKAJNKGFH; }
+    public bool HasNDJGKJMPPHJ {
+      get { return kKNBOACNCONCase_ == KKNBOACNCONOneofCase.NDJGKJMPPHJ; }
     }
-    /// <summary> Clears the value of the oneof if it's currently set to "HCNKAJNKGFH" </summary>
+    /// <summary> Clears the value of the oneof if it's currently set to "NDJGKJMPPHJ" </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearHCNKAJNKGFH() {
-      if (HasHCNKAJNKGFH) {
-        ClearBPIHFAJCLOC();
+    public void ClearNDJGKJMPPHJ() {
+      if (HasNDJGKJMPPHJ) {
+        ClearKKNBOACNCON();
       }
     }
 
-    /// <summary>Field number for the "DEAKOOEBLJL" field.</summary>
-    public const int DEAKOOEBLJLFieldNumber = 13;
+    /// <summary>Field number for the "AGBAIFPNKII" field.</summary>
+    public const int AGBAIFPNKIIFieldNumber = 5;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint DEAKOOEBLJL {
-      get { return HasDEAKOOEBLJL ? (uint) bPIHFAJCLOC_ : 0; }
+    public uint AGBAIFPNKII {
+      get { return HasAGBAIFPNKII ? (uint) kKNBOACNCON_ : 0; }
       set {
-        bPIHFAJCLOC_ = value;
-        bPIHFAJCLOCCase_ = BPIHFAJCLOCOneofCase.DEAKOOEBLJL;
+        kKNBOACNCON_ = value;
+        kKNBOACNCONCase_ = KKNBOACNCONOneofCase.AGBAIFPNKII;
       }
     }
-    /// <summary>Gets whether the "DEAKOOEBLJL" field is set</summary>
+    /// <summary>Gets whether the "AGBAIFPNKII" field is set</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasDEAKOOEBLJL {
-      get { return bPIHFAJCLOCCase_ == BPIHFAJCLOCOneofCase.DEAKOOEBLJL; }
+    public bool HasAGBAIFPNKII {
+      get { return kKNBOACNCONCase_ == KKNBOACNCONOneofCase.AGBAIFPNKII; }
     }
-    /// <summary> Clears the value of the oneof if it's currently set to "DEAKOOEBLJL" </summary>
+    /// <summary> Clears the value of the oneof if it's currently set to "AGBAIFPNKII" </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearDEAKOOEBLJL() {
-      if (HasDEAKOOEBLJL) {
-        ClearBPIHFAJCLOC();
+    public void ClearAGBAIFPNKII() {
+      if (HasAGBAIFPNKII) {
+        ClearKKNBOACNCON();
       }
     }
 
-    private object bPIHFAJCLOC_;
-    /// <summary>Enum of possible cases for the "BPIHFAJCLOC" oneof.</summary>
-    public enum BPIHFAJCLOCOneofCase {
+    private object kKNBOACNCON_;
+    /// <summary>Enum of possible cases for the "KKNBOACNCON" oneof.</summary>
+    public enum KKNBOACNCONOneofCase {
       None = 0,
-      HCNKAJNKGFH = 8,
-      DEAKOOEBLJL = 13,
+      NDJGKJMPPHJ = 6,
+      AGBAIFPNKII = 5,
     }
-    private BPIHFAJCLOCOneofCase bPIHFAJCLOCCase_ = BPIHFAJCLOCOneofCase.None;
+    private KKNBOACNCONOneofCase kKNBOACNCONCase_ = KKNBOACNCONOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public BPIHFAJCLOCOneofCase BPIHFAJCLOCCase {
-      get { return bPIHFAJCLOCCase_; }
+    public KKNBOACNCONOneofCase KKNBOACNCONCase {
+      get { return kKNBOACNCONCase_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearBPIHFAJCLOC() {
-      bPIHFAJCLOCCase_ = BPIHFAJCLOCOneofCase.None;
-      bPIHFAJCLOC_ = null;
+    public void ClearKKNBOACNCON() {
+      kKNBOACNCONCase_ = KKNBOACNCONOneofCase.None;
+      kKNBOACNCON_ = null;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -193,9 +193,9 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (IsLocked != other.IsLocked) return false;
-      if (HCNKAJNKGFH != other.HCNKAJNKGFH) return false;
-      if (DEAKOOEBLJL != other.DEAKOOEBLJL) return false;
-      if (BPIHFAJCLOCCase != other.BPIHFAJCLOCCase) return false;
+      if (NDJGKJMPPHJ != other.NDJGKJMPPHJ) return false;
+      if (AGBAIFPNKII != other.AGBAIFPNKII) return false;
+      if (KKNBOACNCONCase != other.KKNBOACNCONCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -204,9 +204,9 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (IsLocked != false) hash ^= IsLocked.GetHashCode();
-      if (HasHCNKAJNKGFH) hash ^= HCNKAJNKGFH.GetHashCode();
-      if (HasDEAKOOEBLJL) hash ^= DEAKOOEBLJL.GetHashCode();
-      hash ^= (int) bPIHFAJCLOCCase_;
+      if (HasNDJGKJMPPHJ) hash ^= NDJGKJMPPHJ.GetHashCode();
+      if (HasAGBAIFPNKII) hash ^= AGBAIFPNKII.GetHashCode();
+      hash ^= (int) kKNBOACNCONCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -225,16 +225,16 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (HasHCNKAJNKGFH) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(HCNKAJNKGFH);
+      if (HasAGBAIFPNKII) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(AGBAIFPNKII);
       }
-      if (HasDEAKOOEBLJL) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(DEAKOOEBLJL);
+      if (HasNDJGKJMPPHJ) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(NDJGKJMPPHJ);
       }
       if (IsLocked != false) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(112);
         output.WriteBool(IsLocked);
       }
       if (_unknownFields != null) {
@@ -247,16 +247,16 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (HasHCNKAJNKGFH) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(HCNKAJNKGFH);
+      if (HasAGBAIFPNKII) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(AGBAIFPNKII);
       }
-      if (HasDEAKOOEBLJL) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(DEAKOOEBLJL);
+      if (HasNDJGKJMPPHJ) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(NDJGKJMPPHJ);
       }
       if (IsLocked != false) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(112);
         output.WriteBool(IsLocked);
       }
       if (_unknownFields != null) {
@@ -272,11 +272,11 @@ namespace March7thHoney.Proto {
       if (IsLocked != false) {
         size += 1 + 1;
       }
-      if (HasHCNKAJNKGFH) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(HCNKAJNKGFH);
+      if (HasNDJGKJMPPHJ) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(NDJGKJMPPHJ);
       }
-      if (HasDEAKOOEBLJL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DEAKOOEBLJL);
+      if (HasAGBAIFPNKII) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AGBAIFPNKII);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -293,12 +293,12 @@ namespace March7thHoney.Proto {
       if (other.IsLocked != false) {
         IsLocked = other.IsLocked;
       }
-      switch (other.BPIHFAJCLOCCase) {
-        case BPIHFAJCLOCOneofCase.HCNKAJNKGFH:
-          HCNKAJNKGFH = other.HCNKAJNKGFH;
+      switch (other.KKNBOACNCONCase) {
+        case KKNBOACNCONOneofCase.NDJGKJMPPHJ:
+          NDJGKJMPPHJ = other.NDJGKJMPPHJ;
           break;
-        case BPIHFAJCLOCOneofCase.DEAKOOEBLJL:
-          DEAKOOEBLJL = other.DEAKOOEBLJL;
+        case KKNBOACNCONOneofCase.AGBAIFPNKII:
+          AGBAIFPNKII = other.AGBAIFPNKII;
           break;
       }
 
@@ -321,15 +321,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 64: {
-            HCNKAJNKGFH = input.ReadUInt32();
+          case 40: {
+            AGBAIFPNKII = input.ReadUInt32();
             break;
           }
-          case 104: {
-            DEAKOOEBLJL = input.ReadUInt32();
+          case 48: {
+            NDJGKJMPPHJ = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 112: {
             IsLocked = input.ReadBool();
             break;
           }
@@ -352,15 +352,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 64: {
-            HCNKAJNKGFH = input.ReadUInt32();
+          case 40: {
+            AGBAIFPNKII = input.ReadUInt32();
             break;
           }
-          case 104: {
-            DEAKOOEBLJL = input.ReadUInt32();
+          case 48: {
+            NDJGKJMPPHJ = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 112: {
             IsLocked = input.ReadBool();
             break;
           }

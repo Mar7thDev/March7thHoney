@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "ItemList.proto";
+import "KFACLOGFNJF.proto";
+
+message LDFEKAEEJIN {
+    KFACLOGFNJF POHEPEEFBOA = 10;
+    ItemList AFBMHHAELEO = 11;
+    uint32 retcode = 12;
+}

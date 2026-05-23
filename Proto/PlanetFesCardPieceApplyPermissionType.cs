@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CitQbGFuZXRGZXNDYXJkUGllY2VBcHBseVBlcm1pc3Npb25UeXBlLnByb3Rv",
             "Kn4KJVBsYW5ldEZlc0NhcmRQaWVjZUFwcGx5UGVybWlzc2lvblR5cGUSGwoX",
-            "UFBKUEpLUEpITUdfTktBREZDTUVLR04QABIbChdQUEpQSktQSkhNR19QTUpN",
-            "RUZER09IQxABEhsKF1BQSlBKS1BKSE1HX0hMUEZCTUJES1BQEAJCFqoCE01h",
+            "Qk9LTURNRURBSE5fT0FQQUhPTU1DR08QABIbChdCT0tNRE1FREFITl9HT0pM",
+            "RFBDQU1ITRABEhsKF0JPS01ETUVEQUhOX01LQUFISVBPSkJKEAJCFqoCE01h",
             "cmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -38,9 +38,9 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum PlanetFesCardPieceApplyPermissionType {
-    [pbr::OriginalName("PPJPJKPJHMG_NKADFCMEKGN")] PpjpjkpjhmgNkadfcmekgn = 0,
-    [pbr::OriginalName("PPJPJKPJHMG_PMJMEFDGOHC")] PpjpjkpjhmgPmjmefdgohc = 1,
-    [pbr::OriginalName("PPJPJKPJHMG_HLPFBMBDKPP")] PpjpjkpjhmgHlpfbmbdkpp = 2,
+    [pbr::OriginalName("BOKMDMEDAHN_OAPAHOMMCGO")] BokmdmedahnOapahommcgo = 0,
+    [pbr::OriginalName("BOKMDMEDAHN_GOJLDPCAMHM")] BokmdmedahnGojldpcamhm = 1,
+    [pbr::OriginalName("BOKMDMEDAHN_MKAAHIPOJBJ")] BokmdmedahnMkaahipojbj = 2,
   }
 
   #endregion

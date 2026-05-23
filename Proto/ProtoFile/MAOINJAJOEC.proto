@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "NCFKHDIKCNI.proto";
+
+message MAOINJAJOEC {
+    NCFKHDIKCNI gold = 6;
+    uint32 PPOAGPGEAFH = 15;
+    uint32 JKAGCGKCHJG = 11;
+    uint32 EMJPFPHBKMG = 13;
+    uint32 LBICJMAMFGN = 2;
+    uint32 uid = 8;
+    uint32 LFKDANGNJIM = 14;
+}

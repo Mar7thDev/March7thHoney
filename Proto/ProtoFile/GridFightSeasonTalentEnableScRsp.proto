@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message GridFightSeasonTalentEnableScRsp {
-    uint32 KFJEMIOJLPJ = 11;
-    uint32 retcode = 13;
+    uint32 retcode = 11;
+    uint32 CKHCLKOALKE = 13;
 }

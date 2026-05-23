@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "FLGMGNEOFBH.proto";
+import "IJDLENJJBHJ.proto";
+
+message AOFOEOIJEHF {
+    repeated FLGMGNEOFBH PFMDKHIDDLB = 13;
+    repeated IJDLENJJBHJ grid_fight_equipment_list = 11;
+}

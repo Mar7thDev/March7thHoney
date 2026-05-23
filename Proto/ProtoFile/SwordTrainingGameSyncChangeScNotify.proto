@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "AOOLDKDFOBO.proto";
+import "GIJKCHKMPJG.proto";
 
 message SwordTrainingGameSyncChangeScNotify {
-    repeated AOOLDKDFOBO CJFBLHNPHAK = 7;
+    repeated GIJKCHKMPJG DGNGMJMPFGK = 11;
 }

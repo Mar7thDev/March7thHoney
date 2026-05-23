@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "BLODLKIBCIE.proto";
+
+message BGOMIHEFHPA {
+    repeated BLODLKIBCIE GEFLCFHPNJH = 9;
+    uint32 DNNCAGJIOAP = 15;
+    uint32 GAIJNEMFDBP = 5;
+    uint32 CBGODLHCLPK = 12;
+    uint32 MDAIPFLCNAJ = 1;
+    bool KGEJAOIMOBK = 8;
+    bool BNBCGFOBIPH = 7;
+    uint32 HGBLLINAMLN = 13;
+}

@@ -2,17 +2,15 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "JFACONIBFHM.proto";
-import "LIOLPIJOMBI.proto";
-import "OOLHNFNKOHN.proto";
+import "BNJAIHINJIK.proto";
+import "ELOFLNEAHPD.proto";
+import "FEDNIHCAHGP.proto";
 
 message GetHipplenDataScRsp {
-    OOLHNFNKOHN ACJHGLGHEAH = 1;
-    LIOLPIJOMBI CEAJNLLIBFP = 4;
-    uint32 IPOEIGADLJN = 7;
-    uint32 retcode = 9;
-    bool MPPJLFIDMLB = 10;
-    JFACONIBFHM IBHLKGIEPLG = 14;
+    FEDNIHCAHGP KJDEEJNBLHK = 8;
+    ELOFLNEAHPD ACOLLHOFKGL = 14;
+    BNJAIHINJIK HIGHKDBJNIM = 2;
+    uint32 retcode = 3;
+    bool HPKECDINMCE = 5;
+    uint32 JFLAEGMBMAK = 7;
 }

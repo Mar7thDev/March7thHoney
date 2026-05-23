@@ -26,18 +26,18 @@ namespace March7thHoney.Proto {
           string.Concat(
             "Ch1EaXNwbGF5QXZhdGFyRGV0YWlsSW5mby5wcm90bxoVQXZhdGFyU2tpbGxU",
             "cmVlLnByb3RvGhpEaXNwbGF5RXF1aXBtZW50SW5mby5wcm90bxoWRGlzcGxh",
-            "eVJlbGljSW5mby5wcm90byKfAgoXRGlzcGxheUF2YXRhckRldGFpbEluZm8S",
-            "FwoPZHJlc3NlZF9za2luX2lkGAEgASgNEgwKBHJhbmsYAiABKA0SCwoDcG9z",
-            "GAUgASgNEg0KBWxldmVsGAcgASgNEgsKA2V4cBgIIAEoDRITCgtlbmhhbmNl",
-            "ZF9pZBgJIAEoDRIoCg5za2lsbHRyZWVfbGlzdBgLIAMoCzIQLkF2YXRhclNr",
-            "aWxsVHJlZRIoCgllcXVpcG1lbnQYDCABKAsyFS5EaXNwbGF5RXF1aXBtZW50",
-            "SW5mbxIlCgpyZWxpY19saXN0GA0gAygLMhEuRGlzcGxheVJlbGljSW5mbxIR",
-            "CglhdmF0YXJfaWQYDiABKA0SEQoJcHJvbW90aW9uGA8gASgNQhaqAhNNYXJj",
-            "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "eVJlbGljSW5mby5wcm90byK0AgoXRGlzcGxheUF2YXRhckRldGFpbEluZm8S",
+            "KAoJZXF1aXBtZW50GAUgASgLMhUuRGlzcGxheUVxdWlwbWVudEluZm8SKAoO",
+            "c2tpbGx0cmVlX2xpc3QYCCADKAsyEC5BdmF0YXJTa2lsbFRyZWUSJQoKcmVs",
+            "aWNfbGlzdBgBIAMoCzIRLkRpc3BsYXlSZWxpY0luZm8SCwoDcG9zGAMgASgN",
+            "EgwKBHJhbmsYBCABKA0SEwoLYXZhdGFyX3R5cGUYCyABKA0SCwoDZXhwGA8g",
+            "ASgNEhEKCWF2YXRhcl9pZBgOIAEoDRITCgtlbmhhbmNlZF9pZBgJIAEoDRIN",
+            "CgVsZXZlbBgGIAEoDRIXCg9kcmVzc2VkX3NraW5faWQYByABKA0SEQoJcHJv",
+            "bW90aW9uGAIgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.AvatarSkillTreeReflection.Descriptor, global::March7thHoney.Proto.DisplayEquipmentInfoReflection.Descriptor, global::March7thHoney.Proto.DisplayRelicInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DisplayAvatarDetailInfo), global::March7thHoney.Proto.DisplayAvatarDetailInfo.Parser, new[]{ "DressedSkinId", "Rank", "Pos", "Level", "Exp", "EnhancedId", "SkilltreeList", "Equipment", "RelicList", "AvatarId", "Promotion" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DisplayAvatarDetailInfo), global::March7thHoney.Proto.DisplayAvatarDetailInfo.Parser, new[]{ "Equipment", "SkilltreeList", "RelicList", "Pos", "Rank", "AvatarType", "Exp", "AvatarId", "EnhancedId", "Level", "DressedSkinId", "Promotion" }, null, null, null, null)
           }));
     }
     #endregion
@@ -79,16 +79,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public DisplayAvatarDetailInfo(DisplayAvatarDetailInfo other) : this() {
-      dressedSkinId_ = other.dressedSkinId_;
-      rank_ = other.rank_;
-      pos_ = other.pos_;
-      level_ = other.level_;
-      exp_ = other.exp_;
-      enhancedId_ = other.enhancedId_;
-      skilltreeList_ = other.skilltreeList_.Clone();
       equipment_ = other.equipment_ != null ? other.equipment_.Clone() : null;
+      skilltreeList_ = other.skilltreeList_.Clone();
       relicList_ = other.relicList_.Clone();
+      pos_ = other.pos_;
+      rank_ = other.rank_;
+      avatarType_ = other.avatarType_;
+      exp_ = other.exp_;
       avatarId_ = other.avatarId_;
+      enhancedId_ = other.enhancedId_;
+      level_ = other.level_;
+      dressedSkinId_ = other.dressedSkinId_;
       promotion_ = other.promotion_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -99,32 +100,42 @@ namespace March7thHoney.Proto {
       return new DisplayAvatarDetailInfo(this);
     }
 
-    /// <summary>Field number for the "dressed_skin_id" field.</summary>
-    public const int DressedSkinIdFieldNumber = 1;
-    private uint dressedSkinId_;
+    /// <summary>Field number for the "equipment" field.</summary>
+    public const int EquipmentFieldNumber = 5;
+    private global::March7thHoney.Proto.DisplayEquipmentInfo equipment_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint DressedSkinId {
-      get { return dressedSkinId_; }
+    public global::March7thHoney.Proto.DisplayEquipmentInfo Equipment {
+      get { return equipment_; }
       set {
-        dressedSkinId_ = value;
+        equipment_ = value;
       }
     }
 
-    /// <summary>Field number for the "rank" field.</summary>
-    public const int RankFieldNumber = 2;
-    private uint rank_;
+    /// <summary>Field number for the "skilltree_list" field.</summary>
+    public const int SkilltreeListFieldNumber = 8;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AvatarSkillTree> _repeated_skilltreeList_codec
+        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.AvatarSkillTree.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AvatarSkillTree> skilltreeList_ = new pbc::RepeatedField<global::March7thHoney.Proto.AvatarSkillTree>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Rank {
-      get { return rank_; }
-      set {
-        rank_ = value;
-      }
+    public pbc::RepeatedField<global::March7thHoney.Proto.AvatarSkillTree> SkilltreeList {
+      get { return skilltreeList_; }
+    }
+
+    /// <summary>Field number for the "relic_list" field.</summary>
+    public const int RelicListFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.DisplayRelicInfo> _repeated_relicList_codec
+        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.DisplayRelicInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.DisplayRelicInfo> relicList_ = new pbc::RepeatedField<global::March7thHoney.Proto.DisplayRelicInfo>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.DisplayRelicInfo> RelicList {
+      get { return relicList_; }
     }
 
     /// <summary>Field number for the "pos" field.</summary>
-    public const int PosFieldNumber = 5;
+    public const int PosFieldNumber = 3;
     private uint pos_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -135,20 +146,32 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "level" field.</summary>
-    public const int LevelFieldNumber = 7;
-    private uint level_;
+    /// <summary>Field number for the "rank" field.</summary>
+    public const int RankFieldNumber = 4;
+    private uint rank_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Level {
-      get { return level_; }
+    public uint Rank {
+      get { return rank_; }
       set {
-        level_ = value;
+        rank_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "avatar_type" field.</summary>
+    public const int AvatarTypeFieldNumber = 11;
+    private uint avatarType_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint AvatarType {
+      get { return avatarType_; }
+      set {
+        avatarType_ = value;
       }
     }
 
     /// <summary>Field number for the "exp" field.</summary>
-    public const int ExpFieldNumber = 8;
+    public const int ExpFieldNumber = 15;
     private uint exp_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -156,6 +179,18 @@ namespace March7thHoney.Proto {
       get { return exp_; }
       set {
         exp_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "avatar_id" field.</summary>
+    public const int AvatarIdFieldNumber = 14;
+    private uint avatarId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint AvatarId {
+      get { return avatarId_; }
+      set {
+        avatarId_ = value;
       }
     }
 
@@ -171,54 +206,32 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "skilltree_list" field.</summary>
-    public const int SkilltreeListFieldNumber = 11;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AvatarSkillTree> _repeated_skilltreeList_codec
-        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.AvatarSkillTree.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AvatarSkillTree> skilltreeList_ = new pbc::RepeatedField<global::March7thHoney.Proto.AvatarSkillTree>();
+    /// <summary>Field number for the "level" field.</summary>
+    public const int LevelFieldNumber = 6;
+    private uint level_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.AvatarSkillTree> SkilltreeList {
-      get { return skilltreeList_; }
-    }
-
-    /// <summary>Field number for the "equipment" field.</summary>
-    public const int EquipmentFieldNumber = 12;
-    private global::March7thHoney.Proto.DisplayEquipmentInfo equipment_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.DisplayEquipmentInfo Equipment {
-      get { return equipment_; }
+    public uint Level {
+      get { return level_; }
       set {
-        equipment_ = value;
+        level_ = value;
       }
     }
 
-    /// <summary>Field number for the "relic_list" field.</summary>
-    public const int RelicListFieldNumber = 13;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.DisplayRelicInfo> _repeated_relicList_codec
-        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.DisplayRelicInfo.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.DisplayRelicInfo> relicList_ = new pbc::RepeatedField<global::March7thHoney.Proto.DisplayRelicInfo>();
+    /// <summary>Field number for the "dressed_skin_id" field.</summary>
+    public const int DressedSkinIdFieldNumber = 7;
+    private uint dressedSkinId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.DisplayRelicInfo> RelicList {
-      get { return relicList_; }
-    }
-
-    /// <summary>Field number for the "avatar_id" field.</summary>
-    public const int AvatarIdFieldNumber = 14;
-    private uint avatarId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint AvatarId {
-      get { return avatarId_; }
+    public uint DressedSkinId {
+      get { return dressedSkinId_; }
       set {
-        avatarId_ = value;
+        dressedSkinId_ = value;
       }
     }
 
     /// <summary>Field number for the "promotion" field.</summary>
-    public const int PromotionFieldNumber = 15;
+    public const int PromotionFieldNumber = 2;
     private uint promotion_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -244,16 +257,17 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (DressedSkinId != other.DressedSkinId) return false;
-      if (Rank != other.Rank) return false;
-      if (Pos != other.Pos) return false;
-      if (Level != other.Level) return false;
-      if (Exp != other.Exp) return false;
-      if (EnhancedId != other.EnhancedId) return false;
-      if(!skilltreeList_.Equals(other.skilltreeList_)) return false;
       if (!object.Equals(Equipment, other.Equipment)) return false;
+      if(!skilltreeList_.Equals(other.skilltreeList_)) return false;
       if(!relicList_.Equals(other.relicList_)) return false;
+      if (Pos != other.Pos) return false;
+      if (Rank != other.Rank) return false;
+      if (AvatarType != other.AvatarType) return false;
+      if (Exp != other.Exp) return false;
       if (AvatarId != other.AvatarId) return false;
+      if (EnhancedId != other.EnhancedId) return false;
+      if (Level != other.Level) return false;
+      if (DressedSkinId != other.DressedSkinId) return false;
       if (Promotion != other.Promotion) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -262,16 +276,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (DressedSkinId != 0) hash ^= DressedSkinId.GetHashCode();
-      if (Rank != 0) hash ^= Rank.GetHashCode();
-      if (Pos != 0) hash ^= Pos.GetHashCode();
-      if (Level != 0) hash ^= Level.GetHashCode();
-      if (Exp != 0) hash ^= Exp.GetHashCode();
-      if (EnhancedId != 0) hash ^= EnhancedId.GetHashCode();
-      hash ^= skilltreeList_.GetHashCode();
       if (equipment_ != null) hash ^= Equipment.GetHashCode();
+      hash ^= skilltreeList_.GetHashCode();
       hash ^= relicList_.GetHashCode();
+      if (Pos != 0) hash ^= Pos.GetHashCode();
+      if (Rank != 0) hash ^= Rank.GetHashCode();
+      if (AvatarType != 0) hash ^= AvatarType.GetHashCode();
+      if (Exp != 0) hash ^= Exp.GetHashCode();
       if (AvatarId != 0) hash ^= AvatarId.GetHashCode();
+      if (EnhancedId != 0) hash ^= EnhancedId.GetHashCode();
+      if (Level != 0) hash ^= Level.GetHashCode();
+      if (DressedSkinId != 0) hash ^= DressedSkinId.GetHashCode();
       if (Promotion != 0) hash ^= Promotion.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -291,43 +306,47 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (DressedSkinId != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(DressedSkinId);
-      }
-      if (Rank != 0) {
+      relicList_.WriteTo(output, _repeated_relicList_codec);
+      if (Promotion != 0) {
         output.WriteRawTag(16);
-        output.WriteUInt32(Rank);
+        output.WriteUInt32(Promotion);
       }
       if (Pos != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(24);
         output.WriteUInt32(Pos);
       }
+      if (Rank != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(Rank);
+      }
+      if (equipment_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(Equipment);
+      }
       if (Level != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(48);
         output.WriteUInt32(Level);
       }
-      if (Exp != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(Exp);
+      if (DressedSkinId != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(DressedSkinId);
       }
+      skilltreeList_.WriteTo(output, _repeated_skilltreeList_codec);
       if (EnhancedId != 0) {
         output.WriteRawTag(72);
         output.WriteUInt32(EnhancedId);
       }
-      skilltreeList_.WriteTo(output, _repeated_skilltreeList_codec);
-      if (equipment_ != null) {
-        output.WriteRawTag(98);
-        output.WriteMessage(Equipment);
+      if (AvatarType != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(AvatarType);
       }
-      relicList_.WriteTo(output, _repeated_relicList_codec);
       if (AvatarId != 0) {
         output.WriteRawTag(112);
         output.WriteUInt32(AvatarId);
       }
-      if (Promotion != 0) {
+      if (Exp != 0) {
         output.WriteRawTag(120);
-        output.WriteUInt32(Promotion);
+        output.WriteUInt32(Exp);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -339,43 +358,47 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (DressedSkinId != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(DressedSkinId);
-      }
-      if (Rank != 0) {
+      relicList_.WriteTo(ref output, _repeated_relicList_codec);
+      if (Promotion != 0) {
         output.WriteRawTag(16);
-        output.WriteUInt32(Rank);
+        output.WriteUInt32(Promotion);
       }
       if (Pos != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(24);
         output.WriteUInt32(Pos);
       }
+      if (Rank != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(Rank);
+      }
+      if (equipment_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(Equipment);
+      }
       if (Level != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(48);
         output.WriteUInt32(Level);
       }
-      if (Exp != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(Exp);
+      if (DressedSkinId != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(DressedSkinId);
       }
+      skilltreeList_.WriteTo(ref output, _repeated_skilltreeList_codec);
       if (EnhancedId != 0) {
         output.WriteRawTag(72);
         output.WriteUInt32(EnhancedId);
       }
-      skilltreeList_.WriteTo(ref output, _repeated_skilltreeList_codec);
-      if (equipment_ != null) {
-        output.WriteRawTag(98);
-        output.WriteMessage(Equipment);
+      if (AvatarType != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(AvatarType);
       }
-      relicList_.WriteTo(ref output, _repeated_relicList_codec);
       if (AvatarId != 0) {
         output.WriteRawTag(112);
         output.WriteUInt32(AvatarId);
       }
-      if (Promotion != 0) {
+      if (Exp != 0) {
         output.WriteRawTag(120);
-        output.WriteUInt32(Promotion);
+        output.WriteUInt32(Exp);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -387,31 +410,34 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (DressedSkinId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DressedSkinId);
+      if (equipment_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Equipment);
+      }
+      size += skilltreeList_.CalculateSize(_repeated_skilltreeList_codec);
+      size += relicList_.CalculateSize(_repeated_relicList_codec);
+      if (Pos != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Pos);
       }
       if (Rank != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Rank);
       }
-      if (Pos != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Pos);
-      }
-      if (Level != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
+      if (AvatarType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarType);
       }
       if (Exp != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Exp);
       }
+      if (AvatarId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarId);
+      }
       if (EnhancedId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EnhancedId);
       }
-      size += skilltreeList_.CalculateSize(_repeated_skilltreeList_codec);
-      if (equipment_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Equipment);
+      if (Level != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
       }
-      size += relicList_.CalculateSize(_repeated_relicList_codec);
-      if (AvatarId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarId);
+      if (DressedSkinId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DressedSkinId);
       }
       if (Promotion != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Promotion);
@@ -428,34 +454,37 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.DressedSkinId != 0) {
-        DressedSkinId = other.DressedSkinId;
-      }
-      if (other.Rank != 0) {
-        Rank = other.Rank;
-      }
-      if (other.Pos != 0) {
-        Pos = other.Pos;
-      }
-      if (other.Level != 0) {
-        Level = other.Level;
-      }
-      if (other.Exp != 0) {
-        Exp = other.Exp;
-      }
-      if (other.EnhancedId != 0) {
-        EnhancedId = other.EnhancedId;
-      }
-      skilltreeList_.Add(other.skilltreeList_);
       if (other.equipment_ != null) {
         if (equipment_ == null) {
           Equipment = new global::March7thHoney.Proto.DisplayEquipmentInfo();
         }
         Equipment.MergeFrom(other.Equipment);
       }
+      skilltreeList_.Add(other.skilltreeList_);
       relicList_.Add(other.relicList_);
+      if (other.Pos != 0) {
+        Pos = other.Pos;
+      }
+      if (other.Rank != 0) {
+        Rank = other.Rank;
+      }
+      if (other.AvatarType != 0) {
+        AvatarType = other.AvatarType;
+      }
+      if (other.Exp != 0) {
+        Exp = other.Exp;
+      }
       if (other.AvatarId != 0) {
         AvatarId = other.AvatarId;
+      }
+      if (other.EnhancedId != 0) {
+        EnhancedId = other.EnhancedId;
+      }
+      if (other.Level != 0) {
+        Level = other.Level;
+      }
+      if (other.DressedSkinId != 0) {
+        DressedSkinId = other.DressedSkinId;
       }
       if (other.Promotion != 0) {
         Promotion = other.Promotion;
@@ -479,43 +508,47 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            DressedSkinId = input.ReadUInt32();
+          case 10: {
+            relicList_.AddEntriesFrom(input, _repeated_relicList_codec);
             break;
           }
           case 16: {
-            Rank = input.ReadUInt32();
+            Promotion = input.ReadUInt32();
             break;
           }
-          case 40: {
+          case 24: {
             Pos = input.ReadUInt32();
             break;
           }
-          case 56: {
-            Level = input.ReadUInt32();
+          case 32: {
+            Rank = input.ReadUInt32();
             break;
           }
-          case 64: {
-            Exp = input.ReadUInt32();
-            break;
-          }
-          case 72: {
-            EnhancedId = input.ReadUInt32();
-            break;
-          }
-          case 90: {
-            skilltreeList_.AddEntriesFrom(input, _repeated_skilltreeList_codec);
-            break;
-          }
-          case 98: {
+          case 42: {
             if (equipment_ == null) {
               Equipment = new global::March7thHoney.Proto.DisplayEquipmentInfo();
             }
             input.ReadMessage(Equipment);
             break;
           }
-          case 106: {
-            relicList_.AddEntriesFrom(input, _repeated_relicList_codec);
+          case 48: {
+            Level = input.ReadUInt32();
+            break;
+          }
+          case 56: {
+            DressedSkinId = input.ReadUInt32();
+            break;
+          }
+          case 66: {
+            skilltreeList_.AddEntriesFrom(input, _repeated_skilltreeList_codec);
+            break;
+          }
+          case 72: {
+            EnhancedId = input.ReadUInt32();
+            break;
+          }
+          case 88: {
+            AvatarType = input.ReadUInt32();
             break;
           }
           case 112: {
@@ -523,7 +556,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 120: {
-            Promotion = input.ReadUInt32();
+            Exp = input.ReadUInt32();
             break;
           }
         }
@@ -545,43 +578,47 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            DressedSkinId = input.ReadUInt32();
+          case 10: {
+            relicList_.AddEntriesFrom(ref input, _repeated_relicList_codec);
             break;
           }
           case 16: {
-            Rank = input.ReadUInt32();
+            Promotion = input.ReadUInt32();
             break;
           }
-          case 40: {
+          case 24: {
             Pos = input.ReadUInt32();
             break;
           }
-          case 56: {
-            Level = input.ReadUInt32();
+          case 32: {
+            Rank = input.ReadUInt32();
             break;
           }
-          case 64: {
-            Exp = input.ReadUInt32();
-            break;
-          }
-          case 72: {
-            EnhancedId = input.ReadUInt32();
-            break;
-          }
-          case 90: {
-            skilltreeList_.AddEntriesFrom(ref input, _repeated_skilltreeList_codec);
-            break;
-          }
-          case 98: {
+          case 42: {
             if (equipment_ == null) {
               Equipment = new global::March7thHoney.Proto.DisplayEquipmentInfo();
             }
             input.ReadMessage(Equipment);
             break;
           }
-          case 106: {
-            relicList_.AddEntriesFrom(ref input, _repeated_relicList_codec);
+          case 48: {
+            Level = input.ReadUInt32();
+            break;
+          }
+          case 56: {
+            DressedSkinId = input.ReadUInt32();
+            break;
+          }
+          case 66: {
+            skilltreeList_.AddEntriesFrom(ref input, _repeated_skilltreeList_codec);
+            break;
+          }
+          case 72: {
+            EnhancedId = input.ReadUInt32();
+            break;
+          }
+          case 88: {
+            AvatarType = input.ReadUInt32();
             break;
           }
           case 112: {
@@ -589,7 +626,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 120: {
-            Promotion = input.ReadUInt32();
+            Exp = input.ReadUInt32();
             break;
           }
         }

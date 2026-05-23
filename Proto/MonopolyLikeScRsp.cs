@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChdNb25vcG9seUxpa2VTY1JzcC5wcm90bxoOSXRlbUxpc3QucHJvdG8iWQoR",
-            "TW9ub3BvbHlMaWtlU2NSc3ASHgoLcmV3YXJkX2xpc3QYBCABKAsyCS5JdGVt",
-            "TGlzdBITCgt0ZWxlcG9ydF9pZBgLIAEoDRIPCgdyZXRjb2RlGA0gASgNQhaq",
+            "TW9ub3BvbHlMaWtlU2NSc3ASHgoLcmV3YXJkX2xpc3QYAyABKAsyCS5JdGVt",
+            "TGlzdBITCgt0ZWxlcG9ydF9pZBgBIAEoDRIPCgdyZXRjb2RlGAQgASgNQhaq",
             "AhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemListReflection.Descriptor, },
@@ -86,7 +86,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "reward_list" field.</summary>
-    public const int RewardListFieldNumber = 4;
+    public const int RewardListFieldNumber = 3;
     private global::March7thHoney.Proto.ItemList rewardList_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,7 +98,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "teleport_id" field.</summary>
-    public const int TeleportIdFieldNumber = 11;
+    public const int TeleportIdFieldNumber = 1;
     private uint teleportId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,7 +110,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 13;
+    public const int RetcodeFieldNumber = 4;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -167,16 +167,16 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (rewardList_ != null) {
-        output.WriteRawTag(34);
-        output.WriteMessage(RewardList);
-      }
       if (TeleportId != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(8);
         output.WriteUInt32(TeleportId);
       }
+      if (rewardList_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(RewardList);
+      }
       if (Retcode != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(32);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -189,16 +189,16 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (rewardList_ != null) {
-        output.WriteRawTag(34);
-        output.WriteMessage(RewardList);
-      }
       if (TeleportId != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(8);
         output.WriteUInt32(TeleportId);
       }
+      if (rewardList_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(RewardList);
+      }
       if (Retcode != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(32);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -263,18 +263,18 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 34: {
+          case 8: {
+            TeleportId = input.ReadUInt32();
+            break;
+          }
+          case 26: {
             if (rewardList_ == null) {
               RewardList = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(RewardList);
             break;
           }
-          case 88: {
-            TeleportId = input.ReadUInt32();
-            break;
-          }
-          case 104: {
+          case 32: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -297,18 +297,18 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 34: {
+          case 8: {
+            TeleportId = input.ReadUInt32();
+            break;
+          }
+          case 26: {
             if (rewardList_ == null) {
               RewardList = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(RewardList);
             break;
           }
-          case 88: {
-            TeleportId = input.ReadUInt32();
-            break;
-          }
-          case 104: {
+          case 32: {
             Retcode = input.ReadUInt32();
             break;
           }

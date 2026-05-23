@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum IFFKDFPJECM {
+    IFFKDFPJECM_KFDDOBPEJMF = 0;
+    IFFKDFPJECM_DOJNFGNKFGP = 1;
+    IFFKDFPJECM_BBCFLEDLBBB = 2;
+    IFFKDFPJECM_GOIMMOHGCIH = 3;
+    IFFKDFPJECM_ADJOCBGIJHP = 4;
+}

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "AFKJKLJJLKN.proto";
+import "GHAJMKCEEPJ.proto";
+
+message FateHandlePendingActionCsReq {
+    uint32 queue_position = 4;
+    oneof DMNECEKOLAJ {
+        AFKJKLJJLKN HNPBCGILAJP = 15;
+        GHAJMKCEEPJ NPBKAADBHHC = 11;
+    }
+}

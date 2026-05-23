@@ -2,24 +2,22 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdBoxingClubType {
-    NCGDADBFAOA_PCPDHELPKEM = 0;
-    CmdGiveUpBoxingClubChallengeCsReq = 4209;
-    CmdChooseBoxingClubStageOptionalBuffScRsp = 4238;
-    CmdGetBoxingClubInfoScRsp = 4210;
-    CmdGiveUpBoxingClubChallengeScRsp = 4298;
-    CmdMatchBoxingClubOpponentScRsp = 4295;
-    CmdStartBoxingClubBattleScRsp = 4218;
-    CmdChooseBoxingClubResonanceScRsp = 4201;
-    CmdGetBoxingClubInfoCsReq = 4291;
-    CmdBoxingClubChallengeUpdateScNotify = 4226;
-    CmdChooseBoxingClubResonanceCsReq = 4239;
-    CmdMatchBoxingClubOpponentCsReq = 4294;
-    CmdStartBoxingClubBattleCsReq = 4214;
-    CmdSetBoxingClubResonanceLineupCsReq = 4274;
-    CmdChooseBoxingClubStageOptionalBuffCsReq = 4204;
-    CmdBoxingClubRewardScNotify = 4263;
-    CmdSetBoxingClubResonanceScRsp = 4237;
+    AJLDFPKOBED_NLCDGIPGFDJ = 0;
+    AJLDFPKOBED_NBPNCHLHDGL = 4209;
+    AJLDFPKOBED_COEFCHBAPGA = 4229;
+    AJLDFPKOBED_PFOKACPCAHO = 4227;
+    AJLDFPKOBED_BJFCBEOBELF = 4287;
+    AJLDFPKOBED_KHLIFCABOPK = 4213;
+    AJLDFPKOBED_IIBDDINNJNE = 4254;
+    AJLDFPKOBED_MPBAFICCDLL = 4210;
+    AJLDFPKOBED_HLJDFNPEJGC = 4236;
+    AJLDFPKOBED_EADICDFCBMF = 4212;
+    AJLDFPKOBED_NICBGBEGGCE = 4281;
+    AJLDFPKOBED_HFMFLEMKODD = 4283;
+    AJLDFPKOBED_BMGEGHLMKBO = 4280;
+    AJLDFPKOBED_GMDCKJBMMFL = 4203;
+    AJLDFPKOBED_HCBGMOCOICN = 4242;
+    AJLDFPKOBED_GNABKJICADA = 4215;
+    AJLDFPKOBED_MDHJKEOCMEM = 4273;
 }

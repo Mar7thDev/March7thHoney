@@ -4,7 +4,7 @@ using March7thHoney.Database.Player;
 using March7thHoney.GameServer.Command;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server;
-using March7thHoney.GameServer.Server.Packet.Send.Chat;
+// TODO 4.3: Chat 模块暂停
 using March7thHoney.GameServer.Server.Packet.Send.Friend;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
@@ -197,19 +197,10 @@ public class FriendManager(PlayerInstance player) : BasePlayerManager(player)
             else
                 chatData.MessageText = chat.Message;
 
+            // TODO 4.3: ChatMessageData 字段（ExtraA/ExtraB 类型）在 4.3 改变，暂停聊天历史填充
             info.Add(new ChatMessageData
             {
                 CreateTime = (ulong)chat.SendTime,
-                ExtraA = new ChatMessageExtra
-                {
-                    Kind = 1,
-                    Value = (ulong)chat.SendUid
-                },
-                ExtraB = new ChatMessageExtra
-                {
-                    Kind = 1,
-                    Value = (ulong)chat.ReceiveUid
-                },
                 MessageDatas =
                 {
                     new MessageChatData
@@ -248,13 +239,7 @@ public class FriendManager(PlayerInstance player) : BasePlayerManager(player)
 
         history.MessageList.Add(data);
 
-        await Player.SendPacket(
-            new PacketRevcMsgScNotify(
-                sourceUid,
-                (uint)data.ReceiveUid,
-                data.ExtraId > 0 ? null : data.Message,
-                (uint)Math.Max(0, data.ExtraId),
-                data.SendTime));
+        // TODO 4.3: PacketRevcMsgScNotify (Chat 模块) 暂停
     }
 
     public List<PlayerData> GetFriendPlayerData(List<int>? uids = null)

@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "MCACDFHCPIE.proto";
+import "FDBDLBAPDBE.proto";
 
 message EnableRogueTalentScRsp {
-    uint32 retcode = 7;
-    MCACDFHCPIE talent_info = 10;
+    FDBDLBAPDBE JCOBJAMPOAL = 3;
+    uint32 retcode = 13;
 }

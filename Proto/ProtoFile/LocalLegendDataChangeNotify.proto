@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "MMPJHLJHMNP.proto";
+import "JJEFLBCLBFN.proto";
 
 message LocalLegendDataChangeNotify {
-    MMPJHLJHMNP level_data = 14;
+    JJEFLBCLBFN level_data = 1;
 }

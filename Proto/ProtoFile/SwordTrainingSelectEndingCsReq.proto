@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message SwordTrainingSelectEndingCsReq {
-    uint32 AGMAHIIHJKM = 8;
+    uint32 PFOLEGLCLFE = 1;
 }

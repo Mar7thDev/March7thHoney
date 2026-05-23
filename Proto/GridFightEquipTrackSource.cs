@@ -25,9 +25,9 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch9HcmlkRmlnaHRFcXVpcFRyYWNrU291cmNlLnByb3RvKo8BChlHcmlkRmln",
-            "aHRFcXVpcFRyYWNrU291cmNlEhsKF0hOS0tOREhMT0dOX0hMTk1NTUtIRUVN",
-            "EAASGwoXSE5LS05ESExPR05fSkZDQUFCUE5BR0cQARIbChdITktLTkRITE9H",
-            "Tl9LTUpDT1BJQU5DRxACEhsKF0hOS0tOREhMT0dOX0hIRkNOTENDR0hOEANC",
+            "aHRFcXVpcFRyYWNrU291cmNlEhsKF0lITUpITEdLTEhQX0ZBSE1CT0RFTE1Q",
+            "EAASGwoXSUhNSkhMR0tMSFBfQUlCRk1MSEFET0cQARIbChdJSE1KSExHS0xI",
+            "UF9BSkdLTUpHS05ORRACEhsKF0lITUpITEdLTEhQX0dFTUhGRkZLSEFQEANC",
             "FqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -38,10 +38,10 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum GridFightEquipTrackSource {
-    [pbr::OriginalName("HNKKNDHLOGN_HLNMMMKHEEM")] HnkkndhlognHlnmmmkheem = 0,
-    [pbr::OriginalName("HNKKNDHLOGN_JFCAABPNAGG")] HnkkndhlognJfcaabpnagg = 1,
-    [pbr::OriginalName("HNKKNDHLOGN_KMJCOPIANCG")] HnkkndhlognKmjcopiancg = 2,
-    [pbr::OriginalName("HNKKNDHLOGN_HHFCNLCCGHN")] HnkkndhlognHhfcnlccghn = 3,
+    [pbr::OriginalName("IHMJHLGKLHP_FAHMBODELMP")] IhmjhlgklhpFahmbodelmp = 0,
+    [pbr::OriginalName("IHMJHLGKLHP_AIBFMLHADOG")] IhmjhlgklhpAibfmlhadog = 1,
+    [pbr::OriginalName("IHMJHLGKLHP_AJGKMJGKNNE")] IhmjhlgklhpAjgkmjgknne = 2,
+    [pbr::OriginalName("IHMJHLGKLHP_GEMHFFFKHAP")] IhmjhlgklhpGemhfffkhap = 3,
   }
 
   #endregion

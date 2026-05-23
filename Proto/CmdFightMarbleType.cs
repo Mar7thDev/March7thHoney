@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChhDbWRGaWdodE1hcmJsZVR5cGUucHJvdG8qMQoSQ21kRmlnaHRNYXJibGVU",
-            "eXBlEhsKF0RHTUlITUZOT01CX1BDUERIRUxQS0VNEABCFqoCE01hcmNoN3Ro",
+            "eXBlEhsKF0NNQ0xNQklPRE5HX05MQ0RHSVBHRkRKEABCFqoCE01hcmNoN3Ro",
             "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -36,7 +36,7 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdFightMarbleType {
-    [pbr::OriginalName("DGMIHMFNOMB_PCPDHELPKEM")] DgmihmfnombPcpdhelpkem = 0,
+    [pbr::OriginalName("CMCLMBIODNG_NLCDGIPGFDJ")] CmclmbiodngNlcdgipgfdj = 0,
   }
 
   #endregion

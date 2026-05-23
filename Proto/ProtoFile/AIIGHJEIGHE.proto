@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "ChallengeLineupList.proto";
+
+message AIIGHJEIGHE {
+    ChallengeLineupList lineup = 2;
+    uint32 stage_index = 1;
+    uint32 buff_id = 3;
+}

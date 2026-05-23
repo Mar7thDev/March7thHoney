@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message ChimeraDuelStartGameCsReq {
-    uint32 OFFIDMEJBGI = 14;
+    uint32 IPINHNFCIOE = 13;
 }

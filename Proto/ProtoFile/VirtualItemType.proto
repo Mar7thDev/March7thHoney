@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum VirtualItemType {
     VIRTUAL_ITEM_NONE = 0;
     VIRTUAL_ITEM_HCOIN = 1;

@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum RogueTournLevelStatus {
-    JPPIEKOBPII_PCPDHELPKEM = 0;
-    JPPIEKOBPII_HPJEBFFHJNP = 1;
-    JPPIEKOBPII_POOLAGHGCMG = 2;
-    JPPIEKOBPII_EMEDNPCCNDH = 3;
+    NHMPGNHBBLC_NLCDGIPGFDJ = 0;
+    NHMPGNHBBLC_LOOAKNHDBLL = 1;
+    NHMPGNHBBLC_CCKPNCIBDGP = 2;
+    NHMPGNHBBLC_JKNPMIMBGML = 3;
 }

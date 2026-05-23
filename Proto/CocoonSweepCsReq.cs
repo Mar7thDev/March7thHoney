@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChZDb2Nvb25Td2VlcENzUmVxLnByb3RvIjoKEENvY29vblN3ZWVwQ3NSZXES",
-            "EQoJY29jb29uX2lkGAQgASgNEhMKC3dvcmxkX2xldmVsGAwgASgNQhaqAhNN",
+            "EQoJY29jb29uX2lkGA0gASgNEhMKC3dvcmxkX2xldmVsGAUgASgNQhaqAhNN",
             "YXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "cocoon_id" field.</summary>
-    public const int CocoonIdFieldNumber = 4;
+    public const int CocoonIdFieldNumber = 13;
     private uint cocoonId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "world_level" field.</summary>
-    public const int WorldLevelFieldNumber = 12;
+    public const int WorldLevelFieldNumber = 5;
     private uint worldLevel_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (CocoonId != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(CocoonId);
-      }
       if (WorldLevel != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(40);
         output.WriteUInt32(WorldLevel);
+      }
+      if (CocoonId != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(CocoonId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (CocoonId != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(CocoonId);
-      }
       if (WorldLevel != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(40);
         output.WriteUInt32(WorldLevel);
+      }
+      if (CocoonId != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(CocoonId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
-            CocoonId = input.ReadUInt32();
+          case 40: {
+            WorldLevel = input.ReadUInt32();
             break;
           }
-          case 96: {
-            WorldLevel = input.ReadUInt32();
+          case 104: {
+            CocoonId = input.ReadUInt32();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
-            CocoonId = input.ReadUInt32();
+          case 40: {
+            WorldLevel = input.ReadUInt32();
             break;
           }
-          case 96: {
-            WorldLevel = input.ReadUInt32();
+          case 104: {
+            CocoonId = input.ReadUInt32();
             break;
           }
         }

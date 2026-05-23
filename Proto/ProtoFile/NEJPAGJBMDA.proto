@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "FEGKCMBHHJP.proto";
+import "HJDCJNOFBHH.proto";
+
+message NEJPAGJBMDA {
+    uint32 FGFFLBHLKDF = 8;
+    bool OGNBANANFCC = 12;
+    oneof MOKOADHEBBA {
+        HJDCJNOFBHH AOLFPJFJPEO = 2;
+        FEGKCMBHHJP NGALCDKBGBK = 1;
+    }
+}

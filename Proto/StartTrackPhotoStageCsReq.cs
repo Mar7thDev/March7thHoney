@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch9TdGFydFRyYWNrUGhvdG9TdGFnZUNzUmVxLnByb3RvIkIKGVN0YXJ0VHJh",
-            "Y2tQaG90b1N0YWdlQ3NSZXESEAoIc3RhZ2VfaWQYBiABKA0SEwoLTENIQUhF",
-            "Q0pQT0kYDCABKAhCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "Y2tQaG90b1N0YWdlQ3NSZXESEwoLTENQUE5EUEtIUEgYCyABKAgSEAoIc3Rh",
+            "Z2VfaWQYASABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartTrackPhotoStageCsReq), global::March7thHoney.Proto.StartTrackPhotoStageCsReq.Parser, new[]{ "StageId", "LCHAHECJPOI" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartTrackPhotoStageCsReq), global::March7thHoney.Proto.StartTrackPhotoStageCsReq.Parser, new[]{ "LCPPNDPKHPH", "StageId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public StartTrackPhotoStageCsReq(StartTrackPhotoStageCsReq other) : this() {
+      lCPPNDPKHPH_ = other.lCPPNDPKHPH_;
       stageId_ = other.stageId_;
-      lCHAHECJPOI_ = other.lCHAHECJPOI_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,8 +83,20 @@ namespace March7thHoney.Proto {
       return new StartTrackPhotoStageCsReq(this);
     }
 
+    /// <summary>Field number for the "LCPPNDPKHPH" field.</summary>
+    public const int LCPPNDPKHPHFieldNumber = 11;
+    private bool lCPPNDPKHPH_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool LCPPNDPKHPH {
+      get { return lCPPNDPKHPH_; }
+      set {
+        lCPPNDPKHPH_ = value;
+      }
+    }
+
     /// <summary>Field number for the "stage_id" field.</summary>
-    public const int StageIdFieldNumber = 6;
+    public const int StageIdFieldNumber = 1;
     private uint stageId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -92,18 +104,6 @@ namespace March7thHoney.Proto {
       get { return stageId_; }
       set {
         stageId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "LCHAHECJPOI" field.</summary>
-    public const int LCHAHECJPOIFieldNumber = 12;
-    private bool lCHAHECJPOI_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool LCHAHECJPOI {
-      get { return lCHAHECJPOI_; }
-      set {
-        lCHAHECJPOI_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (LCPPNDPKHPH != other.LCPPNDPKHPH) return false;
       if (StageId != other.StageId) return false;
-      if (LCHAHECJPOI != other.LCHAHECJPOI) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (LCPPNDPKHPH != false) hash ^= LCPPNDPKHPH.GetHashCode();
       if (StageId != 0) hash ^= StageId.GetHashCode();
-      if (LCHAHECJPOI != false) hash ^= LCHAHECJPOI.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,12 +152,12 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (StageId != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(8);
         output.WriteUInt32(StageId);
       }
-      if (LCHAHECJPOI != false) {
-        output.WriteRawTag(96);
-        output.WriteBool(LCHAHECJPOI);
+      if (LCPPNDPKHPH != false) {
+        output.WriteRawTag(88);
+        output.WriteBool(LCPPNDPKHPH);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,12 +170,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (StageId != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(8);
         output.WriteUInt32(StageId);
       }
-      if (LCHAHECJPOI != false) {
-        output.WriteRawTag(96);
-        output.WriteBool(LCHAHECJPOI);
+      if (LCPPNDPKHPH != false) {
+        output.WriteRawTag(88);
+        output.WriteBool(LCPPNDPKHPH);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (LCPPNDPKHPH != false) {
+        size += 1 + 1;
+      }
       if (StageId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(StageId);
-      }
-      if (LCHAHECJPOI != false) {
-        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.LCPPNDPKHPH != false) {
+        LCPPNDPKHPH = other.LCPPNDPKHPH;
+      }
       if (other.StageId != 0) {
         StageId = other.StageId;
-      }
-      if (other.LCHAHECJPOI != false) {
-        LCHAHECJPOI = other.LCHAHECJPOI;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 48: {
+          case 8: {
             StageId = input.ReadUInt32();
             break;
           }
-          case 96: {
-            LCHAHECJPOI = input.ReadBool();
+          case 88: {
+            LCPPNDPKHPH = input.ReadBool();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 48: {
+          case 8: {
             StageId = input.ReadUInt32();
             break;
           }
-          case 96: {
-            LCHAHECJPOI = input.ReadBool();
+          case 88: {
+            LCPPNDPKHPH = input.ReadBool();
             break;
           }
         }

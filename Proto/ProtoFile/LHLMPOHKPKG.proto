@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "KEEPBBDICFN.proto";
+
+message LHLMPOHKPKG {
+    uint32 section_id = 3;
+    uint32 DCAHJELNJNP = 12;
+    uint32 CJCCMAACJDB = 4;
+    KEEPBBDICFN GFCEGEPFCDB = 527;
+}

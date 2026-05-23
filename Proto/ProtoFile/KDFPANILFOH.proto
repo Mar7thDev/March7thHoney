@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "MotionInfo.proto";
+import "Vector.proto";
+
+message KDFPANILFOH {
+    repeated Vector PAOEJKABFEP = 8;
+    MotionInfo motion = 12;
+    uint32 CHCOPKAKBNO = 2;
+    bool KEKFKKANACK = 9;
+}

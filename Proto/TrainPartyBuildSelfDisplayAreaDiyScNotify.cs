@@ -27,7 +27,7 @@ namespace March7thHoney.Proto {
             "Ci9UcmFpblBhcnR5QnVpbGRTZWxmRGlzcGxheUFyZWFEaXlTY05vdGlmeS5w",
             "cm90bxoUVHJhaW5QYXJ0eUluZm8ucHJvdG8iVgopVHJhaW5QYXJ0eUJ1aWxk",
             "U2VsZkRpc3BsYXlBcmVhRGl5U2NOb3RpZnkSKQoQdHJhaW5fcGFydHlfZGF0",
-            "YRgMIAEoCzIPLlRyYWluUGFydHlJbmZvQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
+            "YRgNIAEoCzIPLlRyYWluUGFydHlJbmZvQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
             "b3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.TrainPartyInfoReflection.Descriptor, },
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "train_party_data" field.</summary>
-    public const int TrainPartyDataFieldNumber = 12;
+    public const int TrainPartyDataFieldNumber = 13;
     private global::March7thHoney.Proto.TrainPartyInfo trainPartyData_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -139,7 +139,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (trainPartyData_ != null) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(106);
         output.WriteMessage(TrainPartyData);
       }
       if (_unknownFields != null) {
@@ -153,7 +153,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (trainPartyData_ != null) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(106);
         output.WriteMessage(TrainPartyData);
       }
       if (_unknownFields != null) {
@@ -206,7 +206,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 98: {
+          case 106: {
             if (trainPartyData_ == null) {
               TrainPartyData = new global::March7thHoney.Proto.TrainPartyInfo();
             }
@@ -232,7 +232,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 98: {
+          case 106: {
             if (trainPartyData_ == null) {
               TrainPartyData = new global::March7thHoney.Proto.TrainPartyInfo();
             }

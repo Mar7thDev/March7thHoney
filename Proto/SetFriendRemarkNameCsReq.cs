@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch5TZXRGcmllbmRSZW1hcmtOYW1lQ3NSZXEucHJvdG8iTAoYU2V0RnJpZW5k",
-            "UmVtYXJrTmFtZUNzUmVxEhMKC3JlbWFya19uYW1lGAQgASgJEg4KBnJlYXNv",
-            "bhgFIAEoDRILCgN1aWQYCyABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
+            "UmVtYXJrTmFtZUNzUmVxEhMKC3JlbWFya19uYW1lGAogASgJEg4KBnJlYXNv",
+            "bhgFIAEoDRILCgN1aWQYDyABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
             "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -86,7 +86,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "remark_name" field.</summary>
-    public const int RemarkNameFieldNumber = 4;
+    public const int RemarkNameFieldNumber = 10;
     private string remarkName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,7 +110,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "uid" field.</summary>
-    public const int UidFieldNumber = 11;
+    public const int UidFieldNumber = 15;
     private uint uid_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -167,16 +167,16 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (RemarkName.Length != 0) {
-        output.WriteRawTag(34);
-        output.WriteString(RemarkName);
-      }
       if (Reason != 0) {
         output.WriteRawTag(40);
         output.WriteUInt32(Reason);
       }
+      if (RemarkName.Length != 0) {
+        output.WriteRawTag(82);
+        output.WriteString(RemarkName);
+      }
       if (Uid != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(120);
         output.WriteUInt32(Uid);
       }
       if (_unknownFields != null) {
@@ -189,16 +189,16 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (RemarkName.Length != 0) {
-        output.WriteRawTag(34);
-        output.WriteString(RemarkName);
-      }
       if (Reason != 0) {
         output.WriteRawTag(40);
         output.WriteUInt32(Reason);
       }
+      if (RemarkName.Length != 0) {
+        output.WriteRawTag(82);
+        output.WriteString(RemarkName);
+      }
       if (Uid != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(120);
         output.WriteUInt32(Uid);
       }
       if (_unknownFields != null) {
@@ -260,15 +260,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 34: {
-            RemarkName = input.ReadString();
-            break;
-          }
           case 40: {
             Reason = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 82: {
+            RemarkName = input.ReadString();
+            break;
+          }
+          case 120: {
             Uid = input.ReadUInt32();
             break;
           }
@@ -291,15 +291,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 34: {
-            RemarkName = input.ReadString();
-            break;
-          }
           case 40: {
             Reason = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 82: {
+            RemarkName = input.ReadString();
+            break;
+          }
+          case 120: {
             Uid = input.ReadUInt32();
             break;
           }

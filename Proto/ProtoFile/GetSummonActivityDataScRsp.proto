@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "LGIIDENKPIG.proto";
+import "ILHFAFGOJAC.proto";
 
 message GetSummonActivityDataScRsp {
-    repeated LGIIDENKPIG KLDLFEKDHOC = 2;
-    uint32 retcode = 11;
+    repeated ILHFAFGOJAC IDLCLMMAIHP = 2;
+    uint32 retcode = 12;
 }

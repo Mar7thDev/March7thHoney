@@ -2,23 +2,21 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdPlayerBoardType {
-    DBCNIANFMLC_PCPDHELPKEM = 0;
-    CmdSetAssistAvatarCsReq = 2801;
-    CmdSetDisplayAvatarCsReq = 2814;
-    CmdSetPersonalCardCSReq = 2837;
-    CmdSetIsOHOMDMEJLFKReq = 2809;
-    CmdSetSignatureScRsp = 2839;
-    DBCNIANFMLC_POLCOOOBBPP = 2863;
-    CmdSetHeadIconCsReq = 2894;
-    CmdGetPlayerBoardDataScRsp = 2810;
-    CmdSetDisplayAvatarScRsp = 2818;
-    CmdSetHeadIconScRsp = 2895;
-    CmdSetIsOHOMDMEJLFKScRsp = 2898;
-    CmdGetPlayerBoardDataCsReq = 2891;
-    CmdSetSignatureCsReq = 2826;
-    CmdSetAssistAvatarScRsp = 2874;
-    CmdSetPersonalCardScRsp = 2804;
+    BBNLGADEMFF_NLCDGIPGFDJ = 0;
+    BBNLGADEMFF_KNMANNGOJMB = 2829;
+    BBNLGADEMFF_EHBCEBFNELG = 2812;
+    BBNLGADEMFF_LIGDBJLBELO = 2827;
+    BBNLGADEMFF_KGEBCMGBFHA = 2813;
+    BBNLGADEMFF_FKEMPFFFGJN = 2880;
+    BBNLGADEMFF_IBHDNDNHKNA = 2887;
+    BBNLGADEMFF_EIJOEKHOHIL = 2881;
+    BBNLGADEMFF_KDHFKPICLGC = 2809;
+    BBNLGADEMFF_GCDFLAPFNIH = 2815;
+    BBNLGADEMFF_PEAMMOOHPCH = 2873;
+    BBNLGADEMFF_PLBEIOFLLOG = 2836;
+    BBNLGADEMFF_MEHNAENLPAJ = 2803;
+    BBNLGADEMFF_OJKCPGJLCDI = 2810;
+    BBNLGADEMFF_DBMDNBBECIK = 2883;
+    BBNLGADEMFF_BOEAOJFIPOO = 2854;
 }

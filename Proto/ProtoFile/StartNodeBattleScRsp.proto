@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "GKDEKJKOIJN.proto";
+import "APAMFCKFHLL.proto";
 
 message StartNodeBattleScRsp {
-    uint32 GIHHBJMAGOC = 5;
-    repeated GKDEKJKOIJN OICEJIMEONG = 7;
-    uint32 retcode = 13;
+    repeated APAMFCKFHLL ENCINPIHHDF = 14;
+    uint32 retcode = 9;
+    uint32 PGIEEGCGCDI = 7;
 }

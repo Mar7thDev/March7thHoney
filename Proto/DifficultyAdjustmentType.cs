@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch5EaWZmaWN1bHR5QWRqdXN0bWVudFR5cGUucHJvdG8qVAoYRGlmZmljdWx0",
-            "eUFkanVzdG1lbnRUeXBlEhsKF05KQUFFT0ZJQ01MX0NHS0VJQUlQQUVLEAAS",
-            "GwoXTkpBQUVPRklDTUxfQVBIQ0FDUEpNT0YQAUIWqgITTWFyY2g3dGhIb25l",
+            "eUFkanVzdG1lbnRUeXBlEhsKF0pORUNQTU1GRUtQX0FBTkhDRUdIQ0ZBEAAS",
+            "GwoXSk5FQ1BNTUZFS1BfQUVERE9OUExPRkoQAUIWqgITTWFyY2g3dGhIb25l",
             "eS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -37,8 +37,8 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum DifficultyAdjustmentType {
-    [pbr::OriginalName("NJAAEOFICML_CGKEIAIPAEK")] NjaaeoficmlCgkeiaipaek = 0,
-    [pbr::OriginalName("NJAAEOFICML_APHCACPJMOF")] NjaaeoficmlAphcacpjmof = 1,
+    [pbr::OriginalName("JNECPMMFEKP_AANHCEGHCFA")] JnecpmmfekpAanhceghcfa = 0,
+    [pbr::OriginalName("JNECPMMFEKP_AEDDONPLOFJ")] JnecpmmfekpAeddonplofj = 1,
   }
 
   #endregion

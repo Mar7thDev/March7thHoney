@@ -25,9 +25,9 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChVSb2d1ZUFyZWFTdGF0dXMucHJvdG8qhQEKD1JvZ3VlQXJlYVN0YXR1cxIb",
-            "ChdGRFBPQVBMQkZLQ19ES0xQQUFGRkxFRRAAEhsKF0ZEUE9BUExCRktDX05H",
-            "TU1JQ09HREZQEAESGwoXRkRQT0FQTEJGS0NfT05NSUJCRU1HSk8QAhIbChdG",
-            "RFBPQVBMQkZLQ19DTFBITUFKSklMQRADQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
+            "ChdITlBIS0NDSUNQTV9HQUpHQkJGRUxFTBAAEhsKF0hOUEhLQ0NJQ1BNX0JG",
+            "QURGQUVMS0xKEAESGwoXSE5QSEtDQ0lDUE1fTUtIRk1NQ0tBRUkQAhIbChdI",
+            "TlBIS0NDSUNQTV9QREtMRE1OQUpCTxADQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
             "b3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -38,10 +38,10 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum RogueAreaStatus {
-    [pbr::OriginalName("FDPOAPLBFKC_DKLPAAFFLEE")] FdpoaplbfkcDklpaafflee = 0,
-    [pbr::OriginalName("FDPOAPLBFKC_NGMMICOGDFP")] FdpoaplbfkcNgmmicogdfp = 1,
-    [pbr::OriginalName("FDPOAPLBFKC_ONMIBBEMGJO")] FdpoaplbfkcOnmibbemgjo = 2,
-    [pbr::OriginalName("FDPOAPLBFKC_CLPHMAJJILA")] FdpoaplbfkcClphmajjila = 3,
+    [pbr::OriginalName("HNPHKCCICPM_GAJGBBFELEL")] HnphkccicpmGajgbbfelel = 0,
+    [pbr::OriginalName("HNPHKCCICPM_BFADFAELKLJ")] HnphkccicpmBfadfaelklj = 1,
+    [pbr::OriginalName("HNPHKCCICPM_MKHFMMCKAEI")] HnphkccicpmMkhfmmckaei = 2,
+    [pbr::OriginalName("HNPHKCCICPM_PDKLDMNAJBO")] HnphkccicpmPdkldmnajbo = 3,
   }
 
   #endregion

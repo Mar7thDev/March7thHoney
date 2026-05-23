@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "ContentPackageStatus.proto";
 
 message ContentPackageInfo {
-    uint32 content_id = 1;
-    ContentPackageStatus status = 15;
+    uint32 content_id = 12;
+    ContentPackageStatus status = 14;
 }

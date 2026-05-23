@@ -3,7 +3,7 @@ using March7thHoney.Data.Excel;
 using March7thHoney.Database.Challenge;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Database.Lineup;
-using March7thHoney.GameServer.Game.Challenge.Instances;
+// TODO 4.3: Challenge.Instances 暂停
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server.Packet.Send.ChallengePeak;
 using March7thHoney.Proto;
@@ -222,75 +222,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         await Player.SendPacket(new PacketChallengePeakGroupDataUpdateScNotify(GetChallengePeakInfo(groupId)));
     }
 
-    public async ValueTask SaveHistory(ChallengePeakInstance inst, List<uint> targetIds)
-    {
-        if (inst.Config.BossExcel != null)
-        {
-            // is hard
-            var isHard = inst.Data.Peak.IsHard;
-            var levelId = ((int)inst.Data.Peak.CurrentPeakLevelId << 2) | (isHard ? 1 : 0);
-
-            // get old data
-            if (Player.ChallengeManager!.ChallengeData.PeakBossLevelDatas.TryGetValue(levelId, out var oldData) &&
-                oldData.FinishedTargetList.Count > targetIds.Count && oldData.RoundCnt < inst.Data.Peak.RoundCnt)
-                // better data already exists, do not overwrite
-                return;
-
-            // Save boss data
-            var data = new ChallengePeakBossLevelData
-            {
-                LevelId = (int)inst.Data.Peak.CurrentPeakLevelId,
-                IsHard = isHard,
-                BaseAvatarList = Player.LineupManager!.GetCurLineup()?.BaseAvatars?.Select(x => (uint)x.BaseAvatarId)
-                    .ToList() ?? [],
-                RoundCnt = inst.Data.Peak.RoundCnt,
-                BuffId = inst.Data.Peak.Buffs.FirstOrDefault(),
-                FinishedTargetList = targetIds,
-                PeakStar = (uint)targetIds.Count
-            };
-
-            Player.ChallengeManager!.ChallengeData.PeakBossLevelDatas[levelId] = data;
-
-            // set head frame
-            if (isHard)
-            {
-                await Player.SetPlayerHeadFrameId(GameConstants.CHALLENGE_PEAK_ULTRA_FRAME_ID, long.MaxValue);
-            }
-            else
-            {
-                var targetFrameId = data.PeakStar + 226000;
-                if (Player.Data.HeadFrame.HeadFrameId < targetFrameId)
-                    await Player.SetPlayerHeadFrameId(targetFrameId, long.MaxValue);
-            }
-        }
-        else
-        {
-            // Save level data
-            var levelId = (int)inst.Data.Peak.CurrentPeakLevelId;
-
-            // get old data
-            if (Player.ChallengeManager!.ChallengeData.PeakLevelDatas.TryGetValue(levelId, out var oldData) &&
-                oldData.FinishedTargetList.Count > targetIds.Count && oldData.RoundCnt < inst.Data.Peak.RoundCnt)
-                // better data already exists, do not overwrite
-                return;
-
-            var data = new ChallengePeakLevelData
-            {
-                LevelId = levelId,
-                BaseAvatarList = Player.LineupManager!.GetCurLineup()?.BaseAvatars?.Select(x => (uint)x.BaseAvatarId)
-                    .ToList() ?? [],
-                RoundCnt = inst.Data.Peak.RoundCnt,
-                FinishedTargetList = targetIds,
-                PeakStar = (uint)targetIds.Count
-            };
-
-            Player.ChallengeManager!.ChallengeData.PeakLevelDatas[levelId] = data;
-        }
-
-        await Player.SendPacket(
-            new PacketChallengePeakGroupDataUpdateScNotify(
-                GetChallengePeakInfo((int)inst.Data.Peak.CurrentPeakGroupId)));
-    }
+    // TODO 4.3: SaveHistory 依赖 ChallengePeakInstance（已暂停），整个方法停用
 
     public async ValueTask StartChallenge(int levelId, uint buffId, List<int> avatarIdList)
     {

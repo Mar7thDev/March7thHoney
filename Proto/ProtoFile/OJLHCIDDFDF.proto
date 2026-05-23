@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "IPGIJFNAFLC.proto";
+import "OKIPFIENKIF.proto";
+
+message OJLHCIDDFDF {
+    OKIPFIENKIF PBAPICNDIDN = 13;
+    IPGIJFNAFLC LLCPOHADBKB = 3;
+}

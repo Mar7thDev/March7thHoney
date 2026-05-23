@@ -2,14 +2,12 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "HLLCDBLCIPK.proto";
-import "JIPACDEJKJC.proto";
+import "GNMCIEPEBPK.proto";
+import "OJHHACMHFKA.proto";
 
 message PlanetFesBonusEventInteractScRsp {
-    uint32 PHKAHAHLDAE = 2;
-    JIPACDEJKJC DIHECIIKELE = 7;
-    HLLCDBLCIPK reward = 8;
-    uint32 retcode = 14;
+    GNMCIEPEBPK reward = 5;
+    OJHHACMHFKA GLOAGDBEKDP = 13;
+    uint32 LAOACNPDOLD = 9;
+    uint32 retcode = 11;
 }

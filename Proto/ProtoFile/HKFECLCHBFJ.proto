@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "CDEAABODKCP.proto";
+import "DDAMEHEPOBD.proto";
+import "FPHPFJLAJDK.proto";
+import "GGAKNLJJNEI.proto";
+
+message HKFECLCHBFJ {
+    repeated CDEAABODKCP grid_game_role_list = 15;
+    repeated uint32 PLEIPHJGFIE = 12;
+    repeated GGAKNLJJNEI grid_game_npc_list = 8;
+    repeated DDAMEHEPOBD PMEOPPDAMLM = 6;
+    repeated FPHPFJLAJDK KCOMPKMJCMC = 2;
+}

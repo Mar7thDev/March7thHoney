@@ -2,19 +2,17 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "BJOBDIHNLPK.proto";
-import "BOCNCJANBOM.proto";
-import "CDAAOJFMALO.proto";
-import "HLJLGPIFMJD.proto";
+import "CKPNGMLENFA.proto";
+import "MDOIMCNFDLC.proto";
+import "MOCNDOCEOJM.proto";
+import "PFAIANENDEE.proto";
 
 message TrainPartyHandlePendingActionCsReq {
-    uint32 queue_position = 6;
-    oneof PNKPCPFBHAA {
-        HLJLGPIFMJD MBOGNPKAMIF = 86;
-        BJOBDIHNLPK NJCHJPPFAJO = 1078;
-        CDAAOJFMALO DJGAPFPHFII = 1185;
-        BOCNCJANBOM HBKGJOAPOKB = 1601;
+    uint32 queue_position = 3;
+    oneof KILBFAAFDPD {
+        MDOIMCNFDLC KLONPDNKBJF = 2023;
+        PFAIANENDEE LGBJDFHBIND = 779;
+        CKPNGMLENFA NELLGPKHIKE = 145;
+        MOCNDOCEOJM NMEFKABDHAN = 885;
     }
 }
