@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "OHJFHJHFGBH.proto";
+import "CCMCKOKEJNI.proto";
 
 message MonopolyConditionUpdateScNotify {
-    OHJFHJHFGBH FFCDOBMOCDO = 14;
+    CCMCKOKEJNI CICLCCFLALE = 8;
 }

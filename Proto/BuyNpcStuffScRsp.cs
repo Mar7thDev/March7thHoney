@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChZCdXlOcGNTdHVmZlNjUnNwLnByb3RvIjgKEEJ1eU5wY1N0dWZmU2NSc3AS",
-            "DwoHcmV0Y29kZRgDIAEoDRITCgtHS0ZFR0lCR0VHSRgFIAEoDUIWqgITTWFy",
+            "DwoHcmV0Y29kZRgBIAEoDRITCgtDRUFNTEtDTU1HRBgIIAEoDUIWqgITTWFy",
             "Y2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BuyNpcStuffScRsp), global::March7thHoney.Proto.BuyNpcStuffScRsp.Parser, new[]{ "Retcode", "GKFEGIBGEGI" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BuyNpcStuffScRsp), global::March7thHoney.Proto.BuyNpcStuffScRsp.Parser, new[]{ "Retcode", "CEAMLKCMMGD" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,7 +73,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BuyNpcStuffScRsp(BuyNpcStuffScRsp other) : this() {
       retcode_ = other.retcode_;
-      gKFEGIBGEGI_ = other.gKFEGIBGEGI_;
+      cEAMLKCMMGD_ = other.cEAMLKCMMGD_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 3;
+    public const int RetcodeFieldNumber = 1;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -95,15 +95,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "GKFEGIBGEGI" field.</summary>
-    public const int GKFEGIBGEGIFieldNumber = 5;
-    private uint gKFEGIBGEGI_;
+    /// <summary>Field number for the "CEAMLKCMMGD" field.</summary>
+    public const int CEAMLKCMMGDFieldNumber = 8;
+    private uint cEAMLKCMMGD_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint GKFEGIBGEGI {
-      get { return gKFEGIBGEGI_; }
+    public uint CEAMLKCMMGD {
+      get { return cEAMLKCMMGD_; }
       set {
-        gKFEGIBGEGI_ = value;
+        cEAMLKCMMGD_ = value;
       }
     }
 
@@ -123,7 +123,7 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (Retcode != other.Retcode) return false;
-      if (GKFEGIBGEGI != other.GKFEGIBGEGI) return false;
+      if (CEAMLKCMMGD != other.CEAMLKCMMGD) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,7 +132,7 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
-      if (GKFEGIBGEGI != 0) hash ^= GKFEGIBGEGI.GetHashCode();
+      if (CEAMLKCMMGD != 0) hash ^= CEAMLKCMMGD.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,12 +152,12 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Retcode != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(8);
         output.WriteUInt32(Retcode);
       }
-      if (GKFEGIBGEGI != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(GKFEGIBGEGI);
+      if (CEAMLKCMMGD != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(CEAMLKCMMGD);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,12 +170,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Retcode != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(8);
         output.WriteUInt32(Retcode);
       }
-      if (GKFEGIBGEGI != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(GKFEGIBGEGI);
+      if (CEAMLKCMMGD != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(CEAMLKCMMGD);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -190,8 +190,8 @@ namespace March7thHoney.Proto {
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
-      if (GKFEGIBGEGI != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GKFEGIBGEGI);
+      if (CEAMLKCMMGD != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CEAMLKCMMGD);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -208,8 +208,8 @@ namespace March7thHoney.Proto {
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
-      if (other.GKFEGIBGEGI != 0) {
-        GKFEGIBGEGI = other.GKFEGIBGEGI;
+      if (other.CEAMLKCMMGD != 0) {
+        CEAMLKCMMGD = other.CEAMLKCMMGD;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
+          case 8: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 40: {
-            GKFEGIBGEGI = input.ReadUInt32();
+          case 64: {
+            CEAMLKCMMGD = input.ReadUInt32();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
+          case 8: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 40: {
-            GKFEGIBGEGI = input.ReadUInt32();
+          case 64: {
+            CEAMLKCMMGD = input.ReadUInt32();
             break;
           }
         }

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "KCKJILIMNFF.proto";
+
+message ONFLANPGHHL {
+    repeated uint32 inside_relic_list = 14;
+    repeated uint32 outside_relic_list = 2;
+    KCKJILIMNFF ALAEIBDIGHM = 6;
+}

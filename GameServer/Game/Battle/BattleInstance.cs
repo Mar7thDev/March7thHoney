@@ -5,8 +5,7 @@ using March7thHoney.Database.Avatar;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Enums.Avatar;
 using March7thHoney.GameServer.Game.Calyx;
-using March7thHoney.GameServer.Game.GridFight;
-using March7thHoney.GameServer.Game.GridFight.Battle;
+// TODO 4.3: GridFight 模块暂停编译
 using March7thHoney.GameServer.Game.Lineup;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene;
@@ -87,7 +86,7 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
     public BattleCollegeConfigExcel? CollegeConfigExcel { get; set; }
     public PVEBattleResultCsReq? BattleResult { get; set; }
     public bool IsTournRogue { get; set; }
-    public GridFightInstance? GridFightContext { get; set; }
+    // TODO 4.3: GridFightInstance 暂停编译
     public CalyxOverrideContext? CalyxOverride { get; set; }
 
     public delegate ValueTask OnBattleEndDelegate(BattleInstance battle, PVEBattleResultCsReq req);
@@ -281,18 +280,11 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
             }
         }
 
-        List<AvatarLineupData> avatars;
-        if (GridFightContext != null)
-        {
-            avatars = GridFightBattleProtoBuilder.HandleProto(this, GridFightContext, proto);
-        }
-        else
-        {
-            avatars = GetBattleAvatars();
-            foreach (var avatar in avatars)
-                proto.BattleAvatarList.Add(avatar.AvatarInfo.ToBattleProto(
-                    new PlayerDataCollection(Player.Data, Player.InventoryManager!.Data, Lineup), avatar.AvatarType));
-        }
+        // TODO 4.3: GridFightContext 分支暂停，统一走默认路径
+        List<AvatarLineupData> avatars = GetBattleAvatars();
+        foreach (var avatar in avatars)
+            proto.BattleAvatarList.Add(avatar.AvatarInfo.ToBattleProto(
+                new PlayerDataCollection(Player.Data, Player.InventoryManager!.Data, Lineup), avatar.AvatarType));
 
         System.Threading.Tasks.Task.Run(async () =>
         {

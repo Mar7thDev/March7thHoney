@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdLocalLegendType {
-    FOAKFHBIJLN_PCPDHELPKEM = 0;
-    CmdStartLocalLegendLevelCsReq = 6577;
-    CmdGetLocalLegendDataCsReq = 6576;
-    CmdLocalLegendDataChangeNotify = 6578;
-    CmdEnterLocalLegendLevelScRsp = 6589;
-    CmdGetLocalLegendDataScRsp = 6579;
+    EGHHBKBLDMM_NLCDGIPGFDJ = 0;
+    EGHHBKBLDMM_MFGKBIAKPOA = 6586;
+    EGHHBKBLDMM_BABPGAHNGIC = 6577;
+    EGHHBKBLDMM_OGEDJJNHBIP = 6592;
+    EGHHBKBLDMM_LPMAMNPJPCE = 6589;
+    EGHHBKBLDMM_PBOPJOANNFH = 6583;
 }

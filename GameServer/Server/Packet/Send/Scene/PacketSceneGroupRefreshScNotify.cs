@@ -102,13 +102,8 @@ public class PacketSceneGroupRefreshScNotify : BasePacket
                 RefreshType = SceneGroupRefreshType.Loaded
             };
 
-            foreach (var data in dataList)
-                group.DCLAKCFJCPJ.Add(new NNHGOBLNCIE
-                {
-                    ELKOCIJNABK = data.NewValue,
-                    FNAODNGJAMM = data.OldValue,
-                    ELNCJFFJFIH = data.PropertyName
-                });
+            // TODO 4.3: GroupRefreshInfo 字段重命名 (DCLAKCFJCPJ/NNHGOBLNCIE)，登录路径不依赖，暂停下发
+            _ = dataList;
 
             proto.GroupRefreshList.Add(group);
         }

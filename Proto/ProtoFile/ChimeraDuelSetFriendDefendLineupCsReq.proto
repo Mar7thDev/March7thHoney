@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message ChimeraDuelSetFriendDefendLineupCsReq {
-    uint32 slot = 15;
+    uint32 slot = 10;
 }

@@ -24,10 +24,10 @@ namespace March7thHoney.Proto {
     static RogueStatusReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFSb2d1ZVN0YXR1cy5wcm90byqeAQoLUm9ndWVTdGF0dXMSGwoXSkJGTUhH",
-            "S05FR0xfUENQREhFTFBLRU0QABIbChdKQkZNSEdLTkVHTF9OTUJDRElMREdO",
-            "SxABEhsKF0pCRk1IR0tORUdMX09QTkFERktCR05OEAISGwoXSkJGTUhHS05F",
-            "R0xfT0VLRkxHRUZHUFAQAxIbChdKQkZNSEdLTkVHTF9LTEhEQ09QUExORxAE",
+            "ChFSb2d1ZVN0YXR1cy5wcm90byqeAQoLUm9ndWVTdGF0dXMSGwoXTk9HS09K",
+            "Q0FGQUVfTkxDREdJUEdGREoQABIbChdOT0dLT0pDQUZBRV9CTU9PR0JOUEVB",
+            "QRABEhsKF05PR0tPSkNBRkFFX0lHR0pFSkFIUElKEAISGwoXTk9HS09KQ0FG",
+            "QUVfQ0JGSEVOS0FNS08QAxIbChdOT0dLT0pDQUZBRV9DSUhGR0pEQ0hJQRAE",
             "QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -38,11 +38,11 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum RogueStatus {
-    [pbr::OriginalName("JBFMHGKNEGL_PCPDHELPKEM")] JbfmhgkneglPcpdhelpkem = 0,
-    [pbr::OriginalName("JBFMHGKNEGL_NMBCDILDGNK")] JbfmhgkneglNmbcdildgnk = 1,
-    [pbr::OriginalName("JBFMHGKNEGL_OPNADFKBGNN")] JbfmhgkneglOpnadfkbgnn = 2,
-    [pbr::OriginalName("JBFMHGKNEGL_OEKFLGEFGPP")] JbfmhgkneglOekflgefgpp = 3,
-    [pbr::OriginalName("JBFMHGKNEGL_KLHDCOPPLNG")] JbfmhgkneglKlhdcopplng = 4,
+    [pbr::OriginalName("NOGKOJCAFAE_NLCDGIPGFDJ")] NogkojcafaeNlcdgipgfdj = 0,
+    [pbr::OriginalName("NOGKOJCAFAE_BMOOGBNPEAA")] NogkojcafaeBmoogbnpeaa = 1,
+    [pbr::OriginalName("NOGKOJCAFAE_IGGJEJAHPIJ")] NogkojcafaeIggjejahpij = 2,
+    [pbr::OriginalName("NOGKOJCAFAE_CBFHENKAMKO")] NogkojcafaeCbfhenkamko = 3,
+    [pbr::OriginalName("NOGKOJCAFAE_CIHFGJDCHIA")] NogkojcafaeCihfgjdchia = 4,
   }
 
   #endregion

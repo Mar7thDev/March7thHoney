@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "FightGameMode.proto";
 
 message GetCrossInfoScRsp {
-    FightGameMode PLOBMBFPNFK = 3;
-    uint64 room_id = 4;
     uint32 retcode = 8;
-    uint64 EIFFDNNBGMC = 14;
+    FightGameMode GJNMHILINHC = 2;
+    uint64 FGNFDGAKKAP = 9;
+    uint64 room_id = 15;
 }

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "AHCLMAGAHPN.proto";
+import "BLPHONLBNBO.proto";
+
+message DGHPIDMDOJM {
+    string uuid = 8;
+    BLPHONLBNBO OEIBHLMDJKA = 9;
+    AHCLMAGAHPN PPJFMBIGIGB = 5;
+    uint32 GABODFDMPMM = 7;
+    uint32 CPFCMKLCMFG = 15;
+}

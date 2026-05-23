@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "JCCMGOOPHBO.proto";
+import "BOLCGIOGIBP.proto";
 
 message LogisticsGameScRsp {
-    uint32 event_id = 1;
-    uint32 retcode = 3;
-    repeated JCCMGOOPHBO OAIKIFEKFLG = 7;
-    bool CLPNBFOKJLJ = 12;
+    repeated BOLCGIOGIBP ALOOPKCJFEA = 9;
+    uint32 retcode = 14;
+    uint32 event_id = 2;
+    bool CNCJKGEDEII = 4;
 }

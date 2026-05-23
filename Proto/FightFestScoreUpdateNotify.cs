@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiBGaWdodEZlc3RTY29yZVVwZGF0ZU5vdGlmeS5wcm90byJDChpGaWdodEZl",
-            "c3RTY29yZVVwZGF0ZU5vdGlmeRITCgtMTElBUEJJTExMTRgNIAEoDRIQCghz",
-            "Y29yZV9pZBgOIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "c3RTY29yZVVwZGF0ZU5vdGlmeRITCgtKT0ROTUZFRlBGRBgIIAEoDRIQCghz",
+            "Y29yZV9pZBgCIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FightFestScoreUpdateNotify), global::March7thHoney.Proto.FightFestScoreUpdateNotify.Parser, new[]{ "LLIAPBILLLM", "ScoreId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FightFestScoreUpdateNotify), global::March7thHoney.Proto.FightFestScoreUpdateNotify.Parser, new[]{ "JODNMFEFPFD", "ScoreId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,7 +72,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public FightFestScoreUpdateNotify(FightFestScoreUpdateNotify other) : this() {
-      lLIAPBILLLM_ = other.lLIAPBILLLM_;
+      jODNMFEFPFD_ = other.jODNMFEFPFD_;
       scoreId_ = other.scoreId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -83,20 +83,20 @@ namespace March7thHoney.Proto {
       return new FightFestScoreUpdateNotify(this);
     }
 
-    /// <summary>Field number for the "LLIAPBILLLM" field.</summary>
-    public const int LLIAPBILLLMFieldNumber = 13;
-    private uint lLIAPBILLLM_;
+    /// <summary>Field number for the "JODNMFEFPFD" field.</summary>
+    public const int JODNMFEFPFDFieldNumber = 8;
+    private uint jODNMFEFPFD_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint LLIAPBILLLM {
-      get { return lLIAPBILLLM_; }
+    public uint JODNMFEFPFD {
+      get { return jODNMFEFPFD_; }
       set {
-        lLIAPBILLLM_ = value;
+        jODNMFEFPFD_ = value;
       }
     }
 
     /// <summary>Field number for the "score_id" field.</summary>
-    public const int ScoreIdFieldNumber = 14;
+    public const int ScoreIdFieldNumber = 2;
     private uint scoreId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -122,7 +122,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (LLIAPBILLLM != other.LLIAPBILLLM) return false;
+      if (JODNMFEFPFD != other.JODNMFEFPFD) return false;
       if (ScoreId != other.ScoreId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -131,7 +131,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (LLIAPBILLLM != 0) hash ^= LLIAPBILLLM.GetHashCode();
+      if (JODNMFEFPFD != 0) hash ^= JODNMFEFPFD.GetHashCode();
       if (ScoreId != 0) hash ^= ScoreId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (LLIAPBILLLM != 0) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(LLIAPBILLLM);
-      }
       if (ScoreId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(16);
         output.WriteUInt32(ScoreId);
+      }
+      if (JODNMFEFPFD != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(JODNMFEFPFD);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (LLIAPBILLLM != 0) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(LLIAPBILLLM);
-      }
       if (ScoreId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(16);
         output.WriteUInt32(ScoreId);
+      }
+      if (JODNMFEFPFD != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(JODNMFEFPFD);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -187,8 +187,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (LLIAPBILLLM != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LLIAPBILLLM);
+      if (JODNMFEFPFD != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(JODNMFEFPFD);
       }
       if (ScoreId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ScoreId);
@@ -205,8 +205,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.LLIAPBILLLM != 0) {
-        LLIAPBILLLM = other.LLIAPBILLLM;
+      if (other.JODNMFEFPFD != 0) {
+        JODNMFEFPFD = other.JODNMFEFPFD;
       }
       if (other.ScoreId != 0) {
         ScoreId = other.ScoreId;
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 104: {
-            LLIAPBILLLM = input.ReadUInt32();
+          case 16: {
+            ScoreId = input.ReadUInt32();
             break;
           }
-          case 112: {
-            ScoreId = input.ReadUInt32();
+          case 64: {
+            JODNMFEFPFD = input.ReadUInt32();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 104: {
-            LLIAPBILLLM = input.ReadUInt32();
+          case 16: {
+            ScoreId = input.ReadUInt32();
             break;
           }
-          case 112: {
-            ScoreId = input.ReadUInt32();
+          case 64: {
+            JODNMFEFPFD = input.ReadUInt32();
             break;
           }
         }

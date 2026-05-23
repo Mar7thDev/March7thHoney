@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "OJKAHCEKDGN.proto";
+import "MJMGOBMOPDL.proto";
 
 message RogueTournGetAllArchiveScRsp {
-    repeated OJKAHCEKDGN KGKIDDOPHEO = 2;
-    uint32 retcode = 8;
+    repeated MJMGOBMOPDL MCGGPONOCKC = 14;
+    uint32 retcode = 5;
 }

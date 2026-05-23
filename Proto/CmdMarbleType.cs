@@ -24,15 +24,15 @@ namespace March7thHoney.Proto {
     static CmdMarbleTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChNDbWRNYXJibGVUeXBlLnByb3RvKtUCCg1DbWRNYXJibGVUeXBlEhsKF0pH",
-            "SU9KREdEQU9EX1BDUERIRUxQS0VNEAASGgoVQ21kTWFyYmxlR2V0RGF0YVNj",
-            "UnNwEOJAEiMKHkNtZE1hcmJsZVB2cERhdGFVcGRhdGVTY05vdGlmeRDfQBIa",
-            "ChVDbWRNYXJibGVHZXREYXRhQ3NSZXEQz0ASIgodQ21kTWFyYmxlVXBkYXRl",
-            "U2hvd25TZWFsQ3NSZXEQ1UASGgoVQ21kTWFyYmxlU2hvcEJ1eVNjUnNwENZA",
-            "EiAKG0NtZE1hcmJsZVVubG9ja1NlYWxTY05vdGlmeRDcQBIiCh1DbWRNYXJi",
-            "bGVVcGRhdGVTaG93blNlYWxTY1JzcBDhQBITCg5DbWRQQ1BKS09IRkVDRRDY",
-            "QBITCg5DbWRJRkpESktNTUFCTBDQQBIaChVDbWRNYXJibGVTaG9wQnV5Q3NS",
-            "ZXEQ3UBCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ChNDbWRNYXJibGVUeXBlLnByb3RvKtgCCg1DbWRNYXJibGVUeXBlEhsKF05J",
+            "RUJQUEFQSk9GX05MQ0RHSVBHRkRKEAASHAoXTklFQlBQQVBKT0ZfRE5QTENP",
+            "TkdLTkQQ2UASHAoXTklFQlBQQVBKT0ZfRERJT0JLQUFEQUwQ2kASHAoXTklF",
+            "QlBQQVBKT0ZfSkdOUE9DQUZLT04Q1EASHAoXTklFQlBQQVBKT0ZfRExCRUdN",
+            "R0lFUEUQ4UASHAoXTklFQlBQQVBKT0ZfQ0NKTUlGTEpGS0MQ0kASHAoXTklF",
+            "QlBQQVBKT0ZfQUdES0lDQkNJQ0QQ3kASHAoXTklFQlBQQVBKT0ZfRExKTkpG",
+            "T01BRUcQ4EASHAoXTklFQlBQQVBKT0ZfSkhDRENJS05FRU0Q4kASHAoXTklF",
+            "QlBQQVBKT0ZfRE1FQ0JKTkxJSkoQ3EASHAoXTklFQlBQQVBKT0ZfS0hOUEdF",
+            "UExDTEQQ0EBCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdMarbleType), }, null, null));
@@ -42,17 +42,17 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdMarbleType {
-    [pbr::OriginalName("JGIOJDGDAOD_PCPDHELPKEM")] JgiojdgdaodPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdMarbleGetDataScRsp")] CmdMarbleGetDataScRsp = 8290,
-    [pbr::OriginalName("CmdMarblePvpDataUpdateScNotify")] CmdMarblePvpDataUpdateScNotify = 8287,
-    [pbr::OriginalName("CmdMarbleGetDataCsReq")] CmdMarbleGetDataCsReq = 8271,
-    [pbr::OriginalName("CmdMarbleUpdateShownSealCsReq")] CmdMarbleUpdateShownSealCsReq = 8277,
-    [pbr::OriginalName("CmdMarbleShopBuyScRsp")] CmdMarbleShopBuyScRsp = 8278,
-    [pbr::OriginalName("CmdMarbleUnlockSealScNotify")] CmdMarbleUnlockSealScNotify = 8284,
-    [pbr::OriginalName("CmdMarbleUpdateShownSealScRsp")] CmdMarbleUpdateShownSealScRsp = 8289,
-    [pbr::OriginalName("CmdPCPJKOHFECE")] CmdPcpjkohfece = 8280,
-    [pbr::OriginalName("CmdIFJDJKMMABL")] CmdIfjdjkmmabl = 8272,
-    [pbr::OriginalName("CmdMarbleShopBuyCsReq")] CmdMarbleShopBuyCsReq = 8285,
+    [pbr::OriginalName("NIEBPPAPJOF_NLCDGIPGFDJ")] NiebppapjofNlcdgipgfdj = 0,
+    [pbr::OriginalName("NIEBPPAPJOF_DNPLCONGKND")] NiebppapjofDnplcongknd = 8281,
+    [pbr::OriginalName("NIEBPPAPJOF_DDIOBKAADAL")] NiebppapjofDdiobkaadal = 8282,
+    [pbr::OriginalName("NIEBPPAPJOF_JGNPOCAFKON")] NiebppapjofJgnpocafkon = 8276,
+    [pbr::OriginalName("NIEBPPAPJOF_DLBEGMGIEPE")] NiebppapjofDlbegmgiepe = 8289,
+    [pbr::OriginalName("NIEBPPAPJOF_CCJMIFLJFKC")] NiebppapjofCcjmifljfkc = 8274,
+    [pbr::OriginalName("NIEBPPAPJOF_AGDKICBCICD")] NiebppapjofAgdkicbcicd = 8286,
+    [pbr::OriginalName("NIEBPPAPJOF_DLJNJFOMAEG")] NiebppapjofDljnjfomaeg = 8288,
+    [pbr::OriginalName("NIEBPPAPJOF_JHCDCIKNEEM")] NiebppapjofJhcdcikneem = 8290,
+    [pbr::OriginalName("NIEBPPAPJOF_DMECBJNLIJJ")] NiebppapjofDmecbjnlijj = 8284,
+    [pbr::OriginalName("NIEBPPAPJOF_KHNPGEPLCLD")] NiebppapjofKhnpgeplcld = 8272,
   }
 
   #endregion

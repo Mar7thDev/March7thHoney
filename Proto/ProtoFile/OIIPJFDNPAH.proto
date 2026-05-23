@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "AreaDynamicInfo.proto";
+import "CLLBJDEJFNF.proto";
+import "POFNNGOCEOK.proto";
+
+message OIIPJFDNPAH {
+    repeated AreaDynamicInfo GOEJIMNENDC = 6;
+    repeated CLLBJDEJFNF OFOKOHGPEDO = 3;
+    repeated POFNNGOCEOK POLMJFIKNHN = 10;
+}

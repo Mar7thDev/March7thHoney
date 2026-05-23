@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChhDb250ZW50UGFja2FnZURhdGEucHJvdG8aGENvbnRlbnRQYWNrYWdlSW5m",
-            "by5wcm90byJfChJDb250ZW50UGFja2FnZURhdGESFgoOY3VyX2NvbnRlbnRf",
-            "aWQYDSABKA0SMQoUY29udGVudF9wYWNrYWdlX2xpc3QYDiADKAsyEy5Db250",
-            "ZW50UGFja2FnZUluZm9CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
+            "by5wcm90byJfChJDb250ZW50UGFja2FnZURhdGESMQoUY29udGVudF9wYWNr",
+            "YWdlX2xpc3QYAiADKAsyEy5Db250ZW50UGFja2FnZUluZm8SFgoOY3VyX2Nv",
+            "bnRlbnRfaWQYDCABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
             "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ContentPackageInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ContentPackageData), global::March7thHoney.Proto.ContentPackageData.Parser, new[]{ "CurContentId", "ContentPackageList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ContentPackageData), global::March7thHoney.Proto.ContentPackageData.Parser, new[]{ "ContentPackageList", "CurContentId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,8 +74,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ContentPackageData(ContentPackageData other) : this() {
-      curContentId_ = other.curContentId_;
       contentPackageList_ = other.contentPackageList_.Clone();
+      curContentId_ = other.curContentId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,8 +85,19 @@ namespace March7thHoney.Proto {
       return new ContentPackageData(this);
     }
 
+    /// <summary>Field number for the "content_package_list" field.</summary>
+    public const int ContentPackageListFieldNumber = 2;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ContentPackageInfo> _repeated_contentPackageList_codec
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.ContentPackageInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ContentPackageInfo> contentPackageList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ContentPackageInfo>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.ContentPackageInfo> ContentPackageList {
+      get { return contentPackageList_; }
+    }
+
     /// <summary>Field number for the "cur_content_id" field.</summary>
-    public const int CurContentIdFieldNumber = 13;
+    public const int CurContentIdFieldNumber = 12;
     private uint curContentId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -95,17 +106,6 @@ namespace March7thHoney.Proto {
       set {
         curContentId_ = value;
       }
-    }
-
-    /// <summary>Field number for the "content_package_list" field.</summary>
-    public const int ContentPackageListFieldNumber = 14;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ContentPackageInfo> _repeated_contentPackageList_codec
-        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.ContentPackageInfo.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ContentPackageInfo> contentPackageList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ContentPackageInfo>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.ContentPackageInfo> ContentPackageList {
-      get { return contentPackageList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -123,8 +123,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (CurContentId != other.CurContentId) return false;
       if(!contentPackageList_.Equals(other.contentPackageList_)) return false;
+      if (CurContentId != other.CurContentId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,8 +132,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (CurContentId != 0) hash ^= CurContentId.GetHashCode();
       hash ^= contentPackageList_.GetHashCode();
+      if (CurContentId != 0) hash ^= CurContentId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      contentPackageList_.WriteTo(output, _repeated_contentPackageList_codec);
       if (CurContentId != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(96);
         output.WriteUInt32(CurContentId);
       }
-      contentPackageList_.WriteTo(output, _repeated_contentPackageList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -167,11 +167,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      contentPackageList_.WriteTo(ref output, _repeated_contentPackageList_codec);
       if (CurContentId != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(96);
         output.WriteUInt32(CurContentId);
       }
-      contentPackageList_.WriteTo(ref output, _repeated_contentPackageList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -182,10 +182,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      size += contentPackageList_.CalculateSize(_repeated_contentPackageList_codec);
       if (CurContentId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurContentId);
       }
-      size += contentPackageList_.CalculateSize(_repeated_contentPackageList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -198,10 +198,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      contentPackageList_.Add(other.contentPackageList_);
       if (other.CurContentId != 0) {
         CurContentId = other.CurContentId;
       }
-      contentPackageList_.Add(other.contentPackageList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -221,12 +221,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 104: {
-            CurContentId = input.ReadUInt32();
+          case 18: {
+            contentPackageList_.AddEntriesFrom(input, _repeated_contentPackageList_codec);
             break;
           }
-          case 114: {
-            contentPackageList_.AddEntriesFrom(input, _repeated_contentPackageList_codec);
+          case 96: {
+            CurContentId = input.ReadUInt32();
             break;
           }
         }
@@ -248,12 +248,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 104: {
-            CurContentId = input.ReadUInt32();
+          case 18: {
+            contentPackageList_.AddEntriesFrom(ref input, _repeated_contentPackageList_codec);
             break;
           }
-          case 114: {
-            contentPackageList_.AddEntriesFrom(ref input, _repeated_contentPackageList_codec);
+          case 96: {
+            CurContentId = input.ReadUInt32();
             break;
           }
         }

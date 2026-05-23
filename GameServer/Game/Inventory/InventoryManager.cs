@@ -9,7 +9,7 @@ using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Server.Packet.Send.Avatar;
 using March7thHoney.GameServer.Server.Packet.Send.Lineup;
-using March7thHoney.GameServer.Server.Packet.Send.Phone;
+// TODO 4.3: Phone 模块暂停
 using March7thHoney.GameServer.Server.Packet.Send.Player;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
@@ -90,7 +90,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
                         {
                             Player.PlayerUnlockData!.ChatBubbles.Add(itemId);
                             DatabaseHelper.ToSaveUidList.Add(Player.Uid);
-                            await Player.SendPacket(new PacketUnlockChatBubbleScNotify(itemId));
+                            // TODO 4.3: PacketUnlockChatBubbleScNotify (Phone 模块) 暂停
                         }
                         break;
                     case ItemSubTypeEnum.PhoneTheme:
@@ -98,7 +98,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
                         {
                             Player.PlayerUnlockData!.PhoneThemes.Add(itemId);
                             DatabaseHelper.ToSaveUidList.Add(Player.Uid);
-                            await Player.SendPacket(new PacketUnlockPhoneThemeScNotify(itemId));
+                            // TODO 4.3: PacketUnlockPhoneThemeScNotify (Phone 模块) 暂停
                         }
                         break;
                     case ItemSubTypeEnum.PersonalCard:
@@ -113,7 +113,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
                         {
                             Player.PlayerUnlockData!.PhoneCases.Add(itemId);
                             DatabaseHelper.ToSaveUidList.Add(Player.Uid);
-                            await Player.SendPacket(new PacketUnlockPhoneCaseScNotify(itemId));
+                            // TODO 4.3: PacketUnlockPhoneCaseScNotify (Phone 模块) 暂停
                         }
                         break;
                     case ItemSubTypeEnum.PlayerOutfit:

@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "ALGJOMFCLKL.proto";
-import "BFEIPELFCDF.proto";
+import "FAICNBKIELL.proto";
+import "JGAMMPGMCNI.proto";
 
 message RogueTournBattleFailSettleInfoScNotify {
-    ALGJOMFCLKL EDKJMPACHNJ = 4;
-    BFEIPELFCDF AFLJJJFCBIN = 6;
+    FAICNBKIELL BFLLJJBHLDF = 2;
+    JGAMMPGMCNI IDCMACCPCBH = 11;
 }

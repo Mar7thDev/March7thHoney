@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "AFFIMBGBMBJ.proto";
+import "FFEEHEBBLCI.proto";
 
 message SyncMuseumRandomEventStartScNotify {
-    AFFIMBGBMBJ LJMFGDFBLCK = 5;
+    FFEEHEBBLCI CIKPBGDIABO = 11;
 }

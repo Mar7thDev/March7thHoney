@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message LIONJNJEBBF {
+    uint32 level = 5;
+    uint32 id = 12;
+}

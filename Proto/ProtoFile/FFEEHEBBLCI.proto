@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "MuseumRandomEventState.proto";
+
+message FFEEHEBBLCI {
+    repeated uint32 DAHOMKDLEGI = 14;
+    uint32 PKDANDJFAON = 11;
+    MuseumRandomEventState state = 5;
+    uint32 JJBKGGDAGIM = 12;
+    uint32 OMILGFHKGBC = 9;
+    uint32 JGPIOFGPBGE = 6;
+    uint32 event_id = 10;
+}

@@ -25,10 +25,10 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiBMaW1hb05ld3NPZmZpY2VTdXJ2ZXlTdGF0ZS5wcm90byqtAQoaTGltYW9O",
-            "ZXdzT2ZmaWNlU3VydmV5U3RhdGUSGwoXS01QSUhIQkxPQUJfUENQREhFTFBL",
-            "RU0QABIbChdLTVBJSEhCTE9BQl9JSEFPS0xHT0tDSBABEhsKF0tNUElISEJM",
-            "T0FCX09QTkFERktCR05OEAISGwoXS01QSUhIQkxPQUJfRkZMQ0hMUE9GTk0Q",
-            "AxIbChdLTVBJSEhCTE9BQl9QT09MQUdIR0NNRxAEQhaqAhNNYXJjaDd0aEhv",
+            "ZXdzT2ZmaWNlU3VydmV5U3RhdGUSGwoXTk1DQktNQkRJTExfTkxDREdJUEdG",
+            "REoQABIbChdOTUNCS01CRElMTF9QUEJQR0hERENPTBABEhsKF05NQ0JLTUJE",
+            "SUxMX0lHR0pFSkFIUElKEAISGwoXTk1DQktNQkRJTExfQkJORUhER1BHR0gQ",
+            "AxIbChdOTUNCS01CRElMTF9DQ0tQTkNJQkRHUBAEQhaqAhNNYXJjaDd0aEhv",
             "bmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -39,11 +39,11 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum LimaoNewsOfficeSurveyState {
-    [pbr::OriginalName("KMPIHHBLOAB_PCPDHELPKEM")] KmpihhbloabPcpdhelpkem = 0,
-    [pbr::OriginalName("KMPIHHBLOAB_IHAOKLGOKCH")] KmpihhbloabIhaoklgokch = 1,
-    [pbr::OriginalName("KMPIHHBLOAB_OPNADFKBGNN")] KmpihhbloabOpnadfkbgnn = 2,
-    [pbr::OriginalName("KMPIHHBLOAB_FFLCHLPOFNM")] KmpihhbloabFflchlpofnm = 3,
-    [pbr::OriginalName("KMPIHHBLOAB_POOLAGHGCMG")] KmpihhbloabPoolaghgcmg = 4,
+    [pbr::OriginalName("NMCBKMBDILL_NLCDGIPGFDJ")] NmcbkmbdillNlcdgipgfdj = 0,
+    [pbr::OriginalName("NMCBKMBDILL_PPBPGHDDCOL")] NmcbkmbdillPpbpghddcol = 1,
+    [pbr::OriginalName("NMCBKMBDILL_IGGJEJAHPIJ")] NmcbkmbdillIggjejahpij = 2,
+    [pbr::OriginalName("NMCBKMBDILL_BBNEHDGPGGH")] NmcbkmbdillBbnehdgpggh = 3,
+    [pbr::OriginalName("NMCBKMBDILL_CCKPNCIBDGP")] NmcbkmbdillCckpncibdgp = 4,
   }
 
   #endregion

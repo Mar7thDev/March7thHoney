@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum BigDataRecommendType {
     BIG_DATA_RECOMMEND_TYPE_NONE = 0;
     BIG_DATA_RECOMMEND_TYPE_EQUIPMENT = 1;
@@ -15,4 +13,5 @@ enum BigDataRecommendType {
     BIG_DATA_RECOMMEND_TYPE_CHALLENGE_PEAK_BOSS = 7;
     BIG_DATA_RECOMMEND_TYPE_CHALLENGE = 8;
     BIG_DATA_RECOMMEND_TYPE_HMFFBIANKBF = 9;
+    BIG_DATA_RECOMMEND_TYPE_IGDNEOELFKC = 10;
 }

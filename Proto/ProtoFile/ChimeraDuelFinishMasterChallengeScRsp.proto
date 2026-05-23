@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message ChimeraDuelFinishMasterChallengeScRsp {
-    uint32 OFFIDMEJBGI = 6;
-    uint32 retcode = 11;
+    uint32 IPINHNFCIOE = 3;
+    uint32 retcode = 13;
 }

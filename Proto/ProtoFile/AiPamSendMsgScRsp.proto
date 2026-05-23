@@ -2,8 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
+import "FKNKNLGMACL.proto";
 
 message AiPamSendMsgScRsp {
-    uint32 retcode = 11;
+    FKNKNLGMACL BDPIMPJOJBK = 5;
+    uint32 retcode = 6;
 }

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "NLAPCKJBJNB.proto";
+
+message CKOKAGGLKHG {
+    repeated NLAPCKJBJNB avatar_list = 2;
+    uint32 HFLPDCJDIAC = 1;
+    double FBNBPPHOGLI = 3;
+}

@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "OOKCIAEIPON.proto";
+import "GAOBHBLFPEC.proto";
 
 message SyncRogueVirtualItemInfoScNotify {
-    OOKCIAEIPON LHNCGDKFAGM = 2;
+    GAOBHBLFPEC NIKDPODBIEF = 5;
 }

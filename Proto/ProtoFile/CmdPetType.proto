@@ -2,15 +2,13 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdPetType {
-    AMPLNBBIBJH_PCPDHELPKEM = 0;
-    CmdRecallPetScRsp = 7608;
-    CmdGetPetDataScRsp = 7604;
-    CmdSummonPetCsReq = 7602;
-    CmdGetPetDataCsReq = 7601;
-    CmdSummonPetScRsp = 7614;
-    CmdFLNMCMNJGHO = 7610;
-    CmdRecallPetCsReq = 7603;
+    MAMMDADNGLP_NLCDGIPGFDJ = 0;
+    MAMMDADNGLP_BCKIBFHMGOF = 7603;
+    MAMMDADNGLP_NDBDDBICHPP = 7608;
+    MAMMDADNGLP_HOFFDKBENKE = 7611;
+    MAMMDADNGLP_BCJECGLBFMD = 7614;
+    MAMMDADNGLP_KLNPCNHGBOL = 7617;
+    MAMMDADNGLP_KHHMEFCDMIF = 7602;
+    MAMMDADNGLP_LKIKIOEFJEC = 7623;
 }

@@ -24,17 +24,17 @@ namespace March7thHoney.Proto {
     static CmdMessageTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChRDbWRNZXNzYWdlVHlwZS5wcm90byqhAwoOQ21kTWVzc2FnZVR5cGUSGwoX",
-            "UEhMTU1PSlBLSEFfUENQREhFTFBLRU0QABIZChRDbWRGaW5pc2hJdGVtSWRT",
-            "Y1JzcBCeFRIeChlDbWRHZXRNaXNzaW9uTWVzc2FnZVNjUnNwEI0VEiMKHkNt",
-            "ZEZpbmlzaFBlcmZvcm1TZWN0aW9uSWRTY1JzcBCmFRIcChdDbWRGaW5pc2hT",
-            "ZWN0aW9uSWRTY1JzcBDuFRIcChdDbWRGaW5pc2hTZWN0aW9uSWRDc1JlcRCV",
-            "FRIZChRDbWRGaW5pc2hJdGVtSWRDc1JlcRCaFRIjCh5DbWRGaW5pc2hQZXJm",
-            "b3JtU2VjdGlvbklkQ3NSZXEQyxUSGQoUQ21kR2V0TnBjU3RhdHVzQ3NSZXEQ",
-            "6hUSHgoZQ21kR2V0TWlzc2lvbk1lc3NhZ2VDc1JlcRCzFRIfChpDbWRHZXRO",
-            "cGNNZXNzYWdlR3JvdXBDc1JlcRDnFRIfChpDbWRHZXROcGNNZXNzYWdlR3Jv",
-            "dXBTY1JzcBCWFRIZChRDbWRHZXROcGNTdGF0dXNTY1JzcBDrFUIWqgITTWFy",
-            "Y2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChRDbWRNZXNzYWdlVHlwZS5wcm90byqVAwoOQ21kTWVzc2FnZVR5cGUSGwoX",
+            "QkRJTU9HRUpBRkdfTkxDREdJUEdGREoQABIcChdCRElNT0dFSkFGR19PQktO",
+            "REVBT0xQRhCwFRIcChdCRElNT0dFSkFGR19MRE5MQ05GSVBDShCpFRIcChdC",
+            "RElNT0dFSkFGR19QSkJCREhCTkZPQxDVFRIcChdCRElNT0dFSkFGR19LREFH",
+            "SkdCSEpGQxCYFRIcChdCRElNT0dFSkFGR19JRExPRk5QREFNRhDdFRIcChdC",
+            "RElNT0dFSkFGR19CT01GTlBHQ0lFRxDcFRIcChdCRElNT0dFSkFGR19ES0tN",
+            "TE9JUE9JSBCbFRIcChdCRElNT0dFSkFGR19CQkdORk1HSkJJQxDjFRIcChdC",
+            "RElNT0dFSkFGR19JSkRLSkpCSkVNThCPFRIcChdCRElNT0dFSkFGR19GUElF",
+            "UEpNS0dHQhCWFRIcChdCRElNT0dFSkFGR19DSEhIQklIRE5OSxCZFRIcChdC",
+            "RElNT0dFSkFGR19JRkRBRUVNR0VLQhCnFUIWqgITTWFyY2g3dGhIb25leS5Q",
+            "cm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdMessageType), }, null, null));
@@ -44,19 +44,19 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdMessageType {
-    [pbr::OriginalName("PHLMMOJPKHA_PCPDHELPKEM")] PhlmmojpkhaPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdFinishItemIdScRsp")] CmdFinishItemIdScRsp = 2718,
-    [pbr::OriginalName("CmdGetMissionMessageScRsp")] CmdGetMissionMessageScRsp = 2701,
-    [pbr::OriginalName("CmdFinishPerformSectionIdScRsp")] CmdFinishPerformSectionIdScRsp = 2726,
-    [pbr::OriginalName("CmdFinishSectionIdScRsp")] CmdFinishSectionIdScRsp = 2798,
-    [pbr::OriginalName("CmdFinishSectionIdCsReq")] CmdFinishSectionIdCsReq = 2709,
-    [pbr::OriginalName("CmdFinishItemIdCsReq")] CmdFinishItemIdCsReq = 2714,
-    [pbr::OriginalName("CmdFinishPerformSectionIdCsReq")] CmdFinishPerformSectionIdCsReq = 2763,
-    [pbr::OriginalName("CmdGetNpcStatusCsReq")] CmdGetNpcStatusCsReq = 2794,
-    [pbr::OriginalName("CmdGetMissionMessageCsReq")] CmdGetMissionMessageCsReq = 2739,
-    [pbr::OriginalName("CmdGetNpcMessageGroupCsReq")] CmdGetNpcMessageGroupCsReq = 2791,
-    [pbr::OriginalName("CmdGetNpcMessageGroupScRsp")] CmdGetNpcMessageGroupScRsp = 2710,
-    [pbr::OriginalName("CmdGetNpcStatusScRsp")] CmdGetNpcStatusScRsp = 2795,
+    [pbr::OriginalName("BDIMOGEJAFG_NLCDGIPGFDJ")] BdimogejafgNlcdgipgfdj = 0,
+    [pbr::OriginalName("BDIMOGEJAFG_OBKNDEAOLPF")] BdimogejafgObkndeaolpf = 2736,
+    [pbr::OriginalName("BDIMOGEJAFG_LDNLCNFIPCJ")] BdimogejafgLdnlcnfipcj = 2729,
+    [pbr::OriginalName("BDIMOGEJAFG_PJBBDHBNFOC")] BdimogejafgPjbbdhbnfoc = 2773,
+    [pbr::OriginalName("BDIMOGEJAFG_KDAGJGBHJFC")] BdimogejafgKdagjgbhjfc = 2712,
+    [pbr::OriginalName("BDIMOGEJAFG_IDLOFNPDAMF")] BdimogejafgIdlofnpdamf = 2781,
+    [pbr::OriginalName("BDIMOGEJAFG_BOMFNPGCIEG")] BdimogejafgBomfnpgcieg = 2780,
+    [pbr::OriginalName("BDIMOGEJAFG_DKKMLOIPOIH")] BdimogejafgDkkmloipoih = 2715,
+    [pbr::OriginalName("BDIMOGEJAFG_BBGNFMGJBIC")] BdimogejafgBbgnfmgjbic = 2787,
+    [pbr::OriginalName("BDIMOGEJAFG_IJDKJJBJEMN")] BdimogejafgIjdkjjbjemn = 2703,
+    [pbr::OriginalName("BDIMOGEJAFG_FPIEPJMKGGB")] BdimogejafgFpiepjmkggb = 2710,
+    [pbr::OriginalName("BDIMOGEJAFG_CHHHBIHDNNK")] BdimogejafgChhhbihdnnk = 2713,
+    [pbr::OriginalName("BDIMOGEJAFG_IFDAEEMGEKB")] BdimogejafgIfdaeemgekb = 2727,
   }
 
   #endregion

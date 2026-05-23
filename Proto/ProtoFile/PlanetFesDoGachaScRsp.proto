@@ -2,18 +2,16 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "EIKLOCHPNBM.proto";
-import "FBBMDFDOEEF.proto";
-import "FFBDADKFPBF.proto";
+import "FMKMEFMOJGJ.proto";
+import "NDPJHJOAOJE.proto";
+import "NGHCOJCMJOK.proto";
 
 message PlanetFesDoGachaScRsp {
-    uint32 retcode = 4;
+    repeated FMKMEFMOJGJ LGPDNIGJEKP = 7;
     uint32 gacha_id = 11;
-    repeated FBBMDFDOEEF JIGIBLLFPKF = 14;
-    oneof FNJJNAOCOII {
-        FFBDADKFPBF MAHHENHIHDK = 1;
-        EIKLOCHPNBM BBMGOFHLEAK = 9;
+    uint32 retcode = 14;
+    oneof BNJPPHJNKHF {
+        NGHCOJCMJOK EHLPJELJJOO = 6;
+        NDPJHJOAOJE FFBDKNIHNEL = 8;
     }
 }

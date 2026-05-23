@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "RotaterData.proto";
 import "RotaterEnergyInfo.proto";
 
 message DeployRotatorScRsp {
-    RotaterData rotater_data = 3;
-    RotaterEnergyInfo energy_info = 13;
-    uint32 retcode = 15;
+    RotaterData rotater_data = 14;
+    RotaterEnergyInfo energy_info = 1;
+    uint32 retcode = 7;
 }

@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message RogueTournGetArchiveRepositoryScRsp {
-    repeated uint32 DAAJNLDNPMB = 4;
-    repeated uint32 NAOKLDFDGNE = 6;
-    uint32 retcode = 12;
+    repeated uint32 PBPIOEKJJPF = 6;
+    repeated uint32 BDNFDHJBAME = 11;
+    uint32 retcode = 4;
 }

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "NJMOAGDJKFH.proto";
+import "PGGMPDIMLAE.proto";
+
+message IFCNLKPPPHK {
+    repeated uint32 PBJLMCGIBND = 11;
+    NJMOAGDJKFH record_info = 2;
+    PGGMPDIMLAE COEBCNGCNOO = 5;
+    uint32 MNFIBMHGAFM = 15;
+    bool is_taken_reward = 9;
+    bool FJKHIFDJMDB = 1;
+    bool GNACLLNFHFD = 12;
+    uint32 area_id = 3;
+}

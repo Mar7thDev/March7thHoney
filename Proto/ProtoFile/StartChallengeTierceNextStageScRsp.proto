@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "ChallengeTierceChallengeInfo.proto";
+import "SceneInfo.proto";
+
+message StartChallengeTierceNextStageScRsp {
+    SceneInfo scene = 15;
+    ChallengeTierceChallengeInfo challenge_tierce_info = 7;
+    uint32 retcode = 5;
+}

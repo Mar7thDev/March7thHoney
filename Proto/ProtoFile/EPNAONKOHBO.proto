@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message EPNAONKOHBO {
+    string KBKOGLCAEKG = 1;
+    uint32 count = 2;
+    double total_damage = 3;
+}

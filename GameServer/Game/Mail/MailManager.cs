@@ -6,7 +6,7 @@ using March7thHoney.Database.Mail;
 using March7thHoney.Enums.Item;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server.Packet.Send.Avatar;
-using March7thHoney.GameServer.Server.Packet.Send.Mail;
+// TODO 4.3: Mail packet 暂停
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
 using March7thHoney.Proto;
 using March7thHoney.Util;
@@ -58,7 +58,7 @@ public class MailManager(PlayerInstance player) : BasePlayerManager(player)
         MailData.MailList.Add(mail);
         DatabaseHelper.ToSaveUidList.Add(Player.Uid);
 
-        await Player.SendPacket(new PacketNewMailScNotify(mail.MailID));
+        // TODO 4.3: PacketNewMailScNotify (Mail 模块) 暂停
     }
 
     public async ValueTask SendMail(string sender, string title, string content, int templateId,
@@ -82,7 +82,7 @@ public class MailManager(PlayerInstance player) : BasePlayerManager(player)
         MailData.MailList.Add(mail);
         DatabaseHelper.ToSaveUidList.Add(Player.Uid);
 
-        await Player.SendPacket(new PacketNewMailScNotify(mail.MailID));
+        // TODO 4.3: PacketNewMailScNotify (Mail 模块) 暂停
     }
 
     public List<ClientMail> ToMailProto()

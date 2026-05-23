@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "DEJGMBKPHEC.proto";
+import "GCFGCHAMNOL.proto";
+
+message JHICHKBDMIC {
+    GCFGCHAMNOL lineup = 6;
+    repeated DEJGMBKPHEC FJLPLIGMPHB = 9;
+    uint32 FHCKFMDKPPO = 14;
+    uint32 DCOONCCIKGL = 8;
+}

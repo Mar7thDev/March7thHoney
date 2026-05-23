@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChZNdXNpY1JoeXRobUdyb3VwLnByb3RvIm8KEE11c2ljUmh5dGhtR3JvdXAS",
-            "FgoObXVzaWNfZ3JvdXBfaWQYAyABKA0SEwoLRklDQ1BFTUxNTk4YByADKA0S",
-            "EwoLTkNJSUlJQUJGRFAYCCADKA0SGQoRbXVzaWNfZ3JvdXBfcGhhc2UYDSAB",
+            "EwoLQkJJTkZESE1HSUkYASADKA0SEwoLRU9ITU5DQk9BTEMYCSADKA0SGQoR",
+            "bXVzaWNfZ3JvdXBfcGhhc2UYCyABKA0SFgoObXVzaWNfZ3JvdXBfaWQYDCAB",
             "KA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MusicRhythmGroup), global::March7thHoney.Proto.MusicRhythmGroup.Parser, new[]{ "MusicGroupId", "FICCPEMLMNN", "NCIIIIABFDP", "MusicGroupPhase" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MusicRhythmGroup), global::March7thHoney.Proto.MusicRhythmGroup.Parser, new[]{ "BBINFDHMGII", "EOHMNCBOALC", "MusicGroupPhase", "MusicGroupId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,10 +73,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MusicRhythmGroup(MusicRhythmGroup other) : this() {
-      musicGroupId_ = other.musicGroupId_;
-      fICCPEMLMNN_ = other.fICCPEMLMNN_.Clone();
-      nCIIIIABFDP_ = other.nCIIIIABFDP_.Clone();
+      bBINFDHMGII_ = other.bBINFDHMGII_.Clone();
+      eOHMNCBOALC_ = other.eOHMNCBOALC_.Clone();
       musicGroupPhase_ = other.musicGroupPhase_;
+      musicGroupId_ = other.musicGroupId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,42 +86,30 @@ namespace March7thHoney.Proto {
       return new MusicRhythmGroup(this);
     }
 
-    /// <summary>Field number for the "music_group_id" field.</summary>
-    public const int MusicGroupIdFieldNumber = 3;
-    private uint musicGroupId_;
+    /// <summary>Field number for the "BBINFDHMGII" field.</summary>
+    public const int BBINFDHMGIIFieldNumber = 1;
+    private static readonly pb::FieldCodec<uint> _repeated_bBINFDHMGII_codec
+        = pb::FieldCodec.ForUInt32(10);
+    private readonly pbc::RepeatedField<uint> bBINFDHMGII_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint MusicGroupId {
-      get { return musicGroupId_; }
-      set {
-        musicGroupId_ = value;
-      }
+    public pbc::RepeatedField<uint> BBINFDHMGII {
+      get { return bBINFDHMGII_; }
     }
 
-    /// <summary>Field number for the "FICCPEMLMNN" field.</summary>
-    public const int FICCPEMLMNNFieldNumber = 7;
-    private static readonly pb::FieldCodec<uint> _repeated_fICCPEMLMNN_codec
-        = pb::FieldCodec.ForUInt32(58);
-    private readonly pbc::RepeatedField<uint> fICCPEMLMNN_ = new pbc::RepeatedField<uint>();
+    /// <summary>Field number for the "EOHMNCBOALC" field.</summary>
+    public const int EOHMNCBOALCFieldNumber = 9;
+    private static readonly pb::FieldCodec<uint> _repeated_eOHMNCBOALC_codec
+        = pb::FieldCodec.ForUInt32(74);
+    private readonly pbc::RepeatedField<uint> eOHMNCBOALC_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> FICCPEMLMNN {
-      get { return fICCPEMLMNN_; }
-    }
-
-    /// <summary>Field number for the "NCIIIIABFDP" field.</summary>
-    public const int NCIIIIABFDPFieldNumber = 8;
-    private static readonly pb::FieldCodec<uint> _repeated_nCIIIIABFDP_codec
-        = pb::FieldCodec.ForUInt32(66);
-    private readonly pbc::RepeatedField<uint> nCIIIIABFDP_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> NCIIIIABFDP {
-      get { return nCIIIIABFDP_; }
+    public pbc::RepeatedField<uint> EOHMNCBOALC {
+      get { return eOHMNCBOALC_; }
     }
 
     /// <summary>Field number for the "music_group_phase" field.</summary>
-    public const int MusicGroupPhaseFieldNumber = 13;
+    public const int MusicGroupPhaseFieldNumber = 11;
     private uint musicGroupPhase_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -129,6 +117,18 @@ namespace March7thHoney.Proto {
       get { return musicGroupPhase_; }
       set {
         musicGroupPhase_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "music_group_id" field.</summary>
+    public const int MusicGroupIdFieldNumber = 12;
+    private uint musicGroupId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint MusicGroupId {
+      get { return musicGroupId_; }
+      set {
+        musicGroupId_ = value;
       }
     }
 
@@ -147,10 +147,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (MusicGroupId != other.MusicGroupId) return false;
-      if(!fICCPEMLMNN_.Equals(other.fICCPEMLMNN_)) return false;
-      if(!nCIIIIABFDP_.Equals(other.nCIIIIABFDP_)) return false;
+      if(!bBINFDHMGII_.Equals(other.bBINFDHMGII_)) return false;
+      if(!eOHMNCBOALC_.Equals(other.eOHMNCBOALC_)) return false;
       if (MusicGroupPhase != other.MusicGroupPhase) return false;
+      if (MusicGroupId != other.MusicGroupId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -158,10 +158,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (MusicGroupId != 0) hash ^= MusicGroupId.GetHashCode();
-      hash ^= fICCPEMLMNN_.GetHashCode();
-      hash ^= nCIIIIABFDP_.GetHashCode();
+      hash ^= bBINFDHMGII_.GetHashCode();
+      hash ^= eOHMNCBOALC_.GetHashCode();
       if (MusicGroupPhase != 0) hash ^= MusicGroupPhase.GetHashCode();
+      if (MusicGroupId != 0) hash ^= MusicGroupId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -180,15 +180,15 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (MusicGroupId != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(MusicGroupId);
-      }
-      fICCPEMLMNN_.WriteTo(output, _repeated_fICCPEMLMNN_codec);
-      nCIIIIABFDP_.WriteTo(output, _repeated_nCIIIIABFDP_codec);
+      bBINFDHMGII_.WriteTo(output, _repeated_bBINFDHMGII_codec);
+      eOHMNCBOALC_.WriteTo(output, _repeated_eOHMNCBOALC_codec);
       if (MusicGroupPhase != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(88);
         output.WriteUInt32(MusicGroupPhase);
+      }
+      if (MusicGroupId != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(MusicGroupId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -200,15 +200,15 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (MusicGroupId != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(MusicGroupId);
-      }
-      fICCPEMLMNN_.WriteTo(ref output, _repeated_fICCPEMLMNN_codec);
-      nCIIIIABFDP_.WriteTo(ref output, _repeated_nCIIIIABFDP_codec);
+      bBINFDHMGII_.WriteTo(ref output, _repeated_bBINFDHMGII_codec);
+      eOHMNCBOALC_.WriteTo(ref output, _repeated_eOHMNCBOALC_codec);
       if (MusicGroupPhase != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(88);
         output.WriteUInt32(MusicGroupPhase);
+      }
+      if (MusicGroupId != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(MusicGroupId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -220,13 +220,13 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (MusicGroupId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MusicGroupId);
-      }
-      size += fICCPEMLMNN_.CalculateSize(_repeated_fICCPEMLMNN_codec);
-      size += nCIIIIABFDP_.CalculateSize(_repeated_nCIIIIABFDP_codec);
+      size += bBINFDHMGII_.CalculateSize(_repeated_bBINFDHMGII_codec);
+      size += eOHMNCBOALC_.CalculateSize(_repeated_eOHMNCBOALC_codec);
       if (MusicGroupPhase != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MusicGroupPhase);
+      }
+      if (MusicGroupId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MusicGroupId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -240,13 +240,13 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.MusicGroupId != 0) {
-        MusicGroupId = other.MusicGroupId;
-      }
-      fICCPEMLMNN_.Add(other.fICCPEMLMNN_);
-      nCIIIIABFDP_.Add(other.nCIIIIABFDP_);
+      bBINFDHMGII_.Add(other.bBINFDHMGII_);
+      eOHMNCBOALC_.Add(other.eOHMNCBOALC_);
       if (other.MusicGroupPhase != 0) {
         MusicGroupPhase = other.MusicGroupPhase;
+      }
+      if (other.MusicGroupId != 0) {
+        MusicGroupId = other.MusicGroupId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -267,22 +267,22 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
-            MusicGroupId = input.ReadUInt32();
+          case 10:
+          case 8: {
+            bBINFDHMGII_.AddEntriesFrom(input, _repeated_bBINFDHMGII_codec);
             break;
           }
-          case 58:
-          case 56: {
-            fICCPEMLMNN_.AddEntriesFrom(input, _repeated_fICCPEMLMNN_codec);
+          case 74:
+          case 72: {
+            eOHMNCBOALC_.AddEntriesFrom(input, _repeated_eOHMNCBOALC_codec);
             break;
           }
-          case 66:
-          case 64: {
-            nCIIIIABFDP_.AddEntriesFrom(input, _repeated_nCIIIIABFDP_codec);
-            break;
-          }
-          case 104: {
+          case 88: {
             MusicGroupPhase = input.ReadUInt32();
+            break;
+          }
+          case 96: {
+            MusicGroupId = input.ReadUInt32();
             break;
           }
         }
@@ -304,22 +304,22 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
-            MusicGroupId = input.ReadUInt32();
+          case 10:
+          case 8: {
+            bBINFDHMGII_.AddEntriesFrom(ref input, _repeated_bBINFDHMGII_codec);
             break;
           }
-          case 58:
-          case 56: {
-            fICCPEMLMNN_.AddEntriesFrom(ref input, _repeated_fICCPEMLMNN_codec);
+          case 74:
+          case 72: {
+            eOHMNCBOALC_.AddEntriesFrom(ref input, _repeated_eOHMNCBOALC_codec);
             break;
           }
-          case 66:
-          case 64: {
-            nCIIIIABFDP_.AddEntriesFrom(ref input, _repeated_nCIIIIABFDP_codec);
-            break;
-          }
-          case 104: {
+          case 88: {
             MusicGroupPhase = input.ReadUInt32();
+            break;
+          }
+          case 96: {
+            MusicGroupId = input.ReadUInt32();
             break;
           }
         }

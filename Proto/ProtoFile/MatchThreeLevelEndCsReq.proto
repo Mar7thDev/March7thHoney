@@ -2,14 +2,12 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message MatchThreeLevelEndCsReq {
-    uint32 NLOCDHMLGJH = 5;
-    map<uint32, uint32> KIBGNJNADDH = 7;
-    string uuid = 8;
-    repeated uint32 FDDOFFFPALC = 10;
-    uint32 BOFOOKJCJGG = 12;
-    uint32 level_id = 13;
-    uint32 DPCFBDCEKJL = 14;
+    repeated uint32 HEEOPAFHBCL = 15;
+    string uuid = 9;
+    map<uint32, uint32> GMONIMLFKFC = 3;
+    uint32 level_id = 5;
+    uint32 LALGADHLMCB = 6;
+    uint32 HBONKLEOEEI = 8;
+    uint32 KKHPKMAHDMK = 11;
 }

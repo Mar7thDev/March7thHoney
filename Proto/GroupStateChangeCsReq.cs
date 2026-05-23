@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChtHcm91cFN0YXRlQ2hhbmdlQ3NSZXEucHJvdG8aFEdyb3VwU3RhdGVJbmZv",
-            "LnByb3RvIlcKFUdyb3VwU3RhdGVDaGFuZ2VDc1JlcRITCgtpbnRlcmFjdF9p",
-            "ZBgBIAEoBBIpChBncm91cF9zdGF0ZV9pbmZvGAsgASgLMg8uR3JvdXBTdGF0",
-            "ZUluZm9CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "LnByb3RvIlcKFUdyb3VwU3RhdGVDaGFuZ2VDc1JlcRIpChBncm91cF9zdGF0",
+            "ZV9pbmZvGA0gASgLMg8uR3JvdXBTdGF0ZUluZm8SEwoLaW50ZXJhY3RfaWQY",
+            "ByABKARCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.GroupStateInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GroupStateChangeCsReq), global::March7thHoney.Proto.GroupStateChangeCsReq.Parser, new[]{ "InteractId", "GroupStateInfo" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GroupStateChangeCsReq), global::March7thHoney.Proto.GroupStateChangeCsReq.Parser, new[]{ "GroupStateInfo", "InteractId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GroupStateChangeCsReq(GroupStateChangeCsReq other) : this() {
-      interactId_ = other.interactId_;
       groupStateInfo_ = other.groupStateInfo_ != null ? other.groupStateInfo_.Clone() : null;
+      interactId_ = other.interactId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,20 +84,8 @@ namespace March7thHoney.Proto {
       return new GroupStateChangeCsReq(this);
     }
 
-    /// <summary>Field number for the "interact_id" field.</summary>
-    public const int InteractIdFieldNumber = 1;
-    private ulong interactId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ulong InteractId {
-      get { return interactId_; }
-      set {
-        interactId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "group_state_info" field.</summary>
-    public const int GroupStateInfoFieldNumber = 11;
+    public const int GroupStateInfoFieldNumber = 13;
     private global::March7thHoney.Proto.GroupStateInfo groupStateInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -105,6 +93,18 @@ namespace March7thHoney.Proto {
       get { return groupStateInfo_; }
       set {
         groupStateInfo_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "interact_id" field.</summary>
+    public const int InteractIdFieldNumber = 7;
+    private ulong interactId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong InteractId {
+      get { return interactId_; }
+      set {
+        interactId_ = value;
       }
     }
 
@@ -123,8 +123,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (InteractId != other.InteractId) return false;
       if (!object.Equals(GroupStateInfo, other.GroupStateInfo)) return false;
+      if (InteractId != other.InteractId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,8 +132,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (InteractId != 0UL) hash ^= InteractId.GetHashCode();
       if (groupStateInfo_ != null) hash ^= GroupStateInfo.GetHashCode();
+      if (InteractId != 0UL) hash ^= InteractId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -153,11 +153,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (InteractId != 0UL) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(56);
         output.WriteUInt64(InteractId);
       }
       if (groupStateInfo_ != null) {
-        output.WriteRawTag(90);
+        output.WriteRawTag(106);
         output.WriteMessage(GroupStateInfo);
       }
       if (_unknownFields != null) {
@@ -171,11 +171,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (InteractId != 0UL) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(56);
         output.WriteUInt64(InteractId);
       }
       if (groupStateInfo_ != null) {
-        output.WriteRawTag(90);
+        output.WriteRawTag(106);
         output.WriteMessage(GroupStateInfo);
       }
       if (_unknownFields != null) {
@@ -188,11 +188,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (InteractId != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(InteractId);
-      }
       if (groupStateInfo_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(GroupStateInfo);
+      }
+      if (InteractId != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(InteractId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -206,14 +206,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.InteractId != 0UL) {
-        InteractId = other.InteractId;
-      }
       if (other.groupStateInfo_ != null) {
         if (groupStateInfo_ == null) {
           GroupStateInfo = new global::March7thHoney.Proto.GroupStateInfo();
         }
         GroupStateInfo.MergeFrom(other.GroupStateInfo);
+      }
+      if (other.InteractId != 0UL) {
+        InteractId = other.InteractId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -234,11 +234,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
+          case 56: {
             InteractId = input.ReadUInt64();
             break;
           }
-          case 90: {
+          case 106: {
             if (groupStateInfo_ == null) {
               GroupStateInfo = new global::March7thHoney.Proto.GroupStateInfo();
             }
@@ -264,11 +264,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
+          case 56: {
             InteractId = input.ReadUInt64();
             break;
           }
-          case 90: {
+          case 106: {
             if (groupStateInfo_ == null) {
               GroupStateInfo = new global::March7thHoney.Proto.GroupStateInfo();
             }

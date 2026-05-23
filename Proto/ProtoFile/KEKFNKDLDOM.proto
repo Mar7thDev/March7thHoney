@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "EAFHBODFEKM.proto";
+import "IBCDDGKNICG.proto";
+
+message KEKFNKDLDOM {
+    oneof JNLIJAABGFF {
+        IBCDDGKNICG ICKNLCPNHCD = 798;
+        EAFHBODFEKM LOMPGELJCLM = 1826;
+    }
+}

@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChVFbnRlclNjZW5lU2NSc3AucHJvdG8aFVNjZW5lSWRlbnRpZmllci5wcm90",
-            "byJ5Cg9FbnRlclNjZW5lU2NSc3ASKgoQc2NlbmVfaWRlbnRpZmllchgCIAEo",
-            "CzIQLlNjZW5lSWRlbnRpZmllchIPCgdyZXRjb2RlGAogASgNEhQKDGlzX2Ns",
-            "b3NlX21hcBgNIAEoCBITCgtpc19vdmVyX21hcBgOIAEoCEIWqgITTWFyY2g3",
+            "byJ5Cg9FbnRlclNjZW5lU2NSc3ASKgoQc2NlbmVfaWRlbnRpZmllchgLIAEo",
+            "CzIQLlNjZW5lSWRlbnRpZmllchIPCgdyZXRjb2RlGAogASgNEhMKC2lzX292",
+            "ZXJfbWFwGAQgASgIEhQKDGlzX2Nsb3NlX21hcBgHIAEoCEIWqgITTWFyY2g3",
             "dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.SceneIdentifierReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EnterSceneScRsp), global::March7thHoney.Proto.EnterSceneScRsp.Parser, new[]{ "SceneIdentifier", "Retcode", "IsCloseMap", "IsOverMap" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EnterSceneScRsp), global::March7thHoney.Proto.EnterSceneScRsp.Parser, new[]{ "SceneIdentifier", "Retcode", "IsOverMap", "IsCloseMap" }, null, null, null, null)
           }));
     }
     #endregion
@@ -76,8 +76,8 @@ namespace March7thHoney.Proto {
     public EnterSceneScRsp(EnterSceneScRsp other) : this() {
       sceneIdentifier_ = other.sceneIdentifier_ != null ? other.sceneIdentifier_.Clone() : null;
       retcode_ = other.retcode_;
-      isCloseMap_ = other.isCloseMap_;
       isOverMap_ = other.isOverMap_;
+      isCloseMap_ = other.isCloseMap_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -88,7 +88,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "scene_identifier" field.</summary>
-    public const int SceneIdentifierFieldNumber = 2;
+    public const int SceneIdentifierFieldNumber = 11;
     private global::March7thHoney.Proto.SceneIdentifier sceneIdentifier_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -111,20 +111,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "is_close_map" field.</summary>
-    public const int IsCloseMapFieldNumber = 13;
-    private bool isCloseMap_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IsCloseMap {
-      get { return isCloseMap_; }
-      set {
-        isCloseMap_ = value;
-      }
-    }
-
     /// <summary>Field number for the "is_over_map" field.</summary>
-    public const int IsOverMapFieldNumber = 14;
+    public const int IsOverMapFieldNumber = 4;
     private bool isOverMap_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -132,6 +120,18 @@ namespace March7thHoney.Proto {
       get { return isOverMap_; }
       set {
         isOverMap_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "is_close_map" field.</summary>
+    public const int IsCloseMapFieldNumber = 7;
+    private bool isCloseMap_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IsCloseMap {
+      get { return isCloseMap_; }
+      set {
+        isCloseMap_ = value;
       }
     }
 
@@ -152,8 +152,8 @@ namespace March7thHoney.Proto {
       }
       if (!object.Equals(SceneIdentifier, other.SceneIdentifier)) return false;
       if (Retcode != other.Retcode) return false;
-      if (IsCloseMap != other.IsCloseMap) return false;
       if (IsOverMap != other.IsOverMap) return false;
+      if (IsCloseMap != other.IsCloseMap) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -163,8 +163,8 @@ namespace March7thHoney.Proto {
       int hash = 1;
       if (sceneIdentifier_ != null) hash ^= SceneIdentifier.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
-      if (IsCloseMap != false) hash ^= IsCloseMap.GetHashCode();
       if (IsOverMap != false) hash ^= IsOverMap.GetHashCode();
+      if (IsCloseMap != false) hash ^= IsCloseMap.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -183,21 +183,21 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (sceneIdentifier_ != null) {
-        output.WriteRawTag(18);
-        output.WriteMessage(SceneIdentifier);
+      if (IsOverMap != false) {
+        output.WriteRawTag(32);
+        output.WriteBool(IsOverMap);
+      }
+      if (IsCloseMap != false) {
+        output.WriteRawTag(56);
+        output.WriteBool(IsCloseMap);
       }
       if (Retcode != 0) {
         output.WriteRawTag(80);
         output.WriteUInt32(Retcode);
       }
-      if (IsCloseMap != false) {
-        output.WriteRawTag(104);
-        output.WriteBool(IsCloseMap);
-      }
-      if (IsOverMap != false) {
-        output.WriteRawTag(112);
-        output.WriteBool(IsOverMap);
+      if (sceneIdentifier_ != null) {
+        output.WriteRawTag(90);
+        output.WriteMessage(SceneIdentifier);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -209,21 +209,21 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (sceneIdentifier_ != null) {
-        output.WriteRawTag(18);
-        output.WriteMessage(SceneIdentifier);
+      if (IsOverMap != false) {
+        output.WriteRawTag(32);
+        output.WriteBool(IsOverMap);
+      }
+      if (IsCloseMap != false) {
+        output.WriteRawTag(56);
+        output.WriteBool(IsCloseMap);
       }
       if (Retcode != 0) {
         output.WriteRawTag(80);
         output.WriteUInt32(Retcode);
       }
-      if (IsCloseMap != false) {
-        output.WriteRawTag(104);
-        output.WriteBool(IsCloseMap);
-      }
-      if (IsOverMap != false) {
-        output.WriteRawTag(112);
-        output.WriteBool(IsOverMap);
+      if (sceneIdentifier_ != null) {
+        output.WriteRawTag(90);
+        output.WriteMessage(SceneIdentifier);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -241,10 +241,10 @@ namespace March7thHoney.Proto {
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
-      if (IsCloseMap != false) {
+      if (IsOverMap != false) {
         size += 1 + 1;
       }
-      if (IsOverMap != false) {
+      if (IsCloseMap != false) {
         size += 1 + 1;
       }
       if (_unknownFields != null) {
@@ -268,11 +268,11 @@ namespace March7thHoney.Proto {
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
-      if (other.IsCloseMap != false) {
-        IsCloseMap = other.IsCloseMap;
-      }
       if (other.IsOverMap != false) {
         IsOverMap = other.IsOverMap;
+      }
+      if (other.IsCloseMap != false) {
+        IsCloseMap = other.IsCloseMap;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -293,23 +293,23 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 18: {
-            if (sceneIdentifier_ == null) {
-              SceneIdentifier = new global::March7thHoney.Proto.SceneIdentifier();
-            }
-            input.ReadMessage(SceneIdentifier);
+          case 32: {
+            IsOverMap = input.ReadBool();
+            break;
+          }
+          case 56: {
+            IsCloseMap = input.ReadBool();
             break;
           }
           case 80: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 104: {
-            IsCloseMap = input.ReadBool();
-            break;
-          }
-          case 112: {
-            IsOverMap = input.ReadBool();
+          case 90: {
+            if (sceneIdentifier_ == null) {
+              SceneIdentifier = new global::March7thHoney.Proto.SceneIdentifier();
+            }
+            input.ReadMessage(SceneIdentifier);
             break;
           }
         }
@@ -331,23 +331,23 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 18: {
-            if (sceneIdentifier_ == null) {
-              SceneIdentifier = new global::March7thHoney.Proto.SceneIdentifier();
-            }
-            input.ReadMessage(SceneIdentifier);
+          case 32: {
+            IsOverMap = input.ReadBool();
+            break;
+          }
+          case 56: {
+            IsCloseMap = input.ReadBool();
             break;
           }
           case 80: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 104: {
-            IsCloseMap = input.ReadBool();
-            break;
-          }
-          case 112: {
-            IsOverMap = input.ReadBool();
+          case 90: {
+            if (sceneIdentifier_ == null) {
+              SceneIdentifier = new global::March7thHoney.Proto.SceneIdentifier();
+            }
+            input.ReadMessage(SceneIdentifier);
             break;
           }
         }

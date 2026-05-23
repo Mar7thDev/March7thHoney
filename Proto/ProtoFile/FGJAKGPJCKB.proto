@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "PNHBCBIDFBE.proto";
+
+message FGJAKGPJCKB {
+    repeated PNHBCBIDFBE JDGMEHCPGLL = 3;
+    uint32 score_id = 8;
+    int32 MHAHLJPLCII = 2;
+    uint32 NICBADCOCBA = 9;
+    uint32 rank = 15;
+    uint32 KMFAPDJCKLF = 14;
+    int32 ELPDAJBOFEE = 10;
+}

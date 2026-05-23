@@ -25,15 +25,15 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiFSZWZyZXNoVHJpZ2dlckJ5Q2xpZW50Q3NSZXEucHJvdG8aEE1vdGlvbklu",
-            "Zm8ucHJvdG8iqAEKG1JlZnJlc2hUcmlnZ2VyQnlDbGllbnRDc1JlcRITCgtp",
-            "bnRlcmFjdF9pZBgBIAEoBBIeChZ0cmlnZ2VyX3RhcmdldF9pZF9saXN0GAIg",
-            "AygNEhQKDHRyaWdnZXJfbmFtZRgFIAEoCRIZChF0cmlnZ2VyX2VudGl0eV9p",
-            "ZBgHIAEoDRIjCg50cmlnZ2VyX21vdGlvbhgNIAEoCzILLk1vdGlvbkluZm9C",
+            "Zm8ucHJvdG8iqAEKG1JlZnJlc2hUcmlnZ2VyQnlDbGllbnRDc1JlcRIeChZ0",
+            "cmlnZ2VyX3RhcmdldF9pZF9saXN0GAYgAygNEhQKDHRyaWdnZXJfbmFtZRgL",
+            "IAEoCRIjCg50cmlnZ2VyX21vdGlvbhgPIAEoCzILLk1vdGlvbkluZm8SEwoL",
+            "aW50ZXJhY3RfaWQYASABKAQSGQoRdHJpZ2dlcl9lbnRpdHlfaWQYDiABKA1C",
             "FqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MotionInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RefreshTriggerByClientCsReq), global::March7thHoney.Proto.RefreshTriggerByClientCsReq.Parser, new[]{ "InteractId", "TriggerTargetIdList", "TriggerName", "TriggerEntityId", "TriggerMotion" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RefreshTriggerByClientCsReq), global::March7thHoney.Proto.RefreshTriggerByClientCsReq.Parser, new[]{ "TriggerTargetIdList", "TriggerName", "TriggerMotion", "InteractId", "TriggerEntityId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,11 +75,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RefreshTriggerByClientCsReq(RefreshTriggerByClientCsReq other) : this() {
-      interactId_ = other.interactId_;
       triggerTargetIdList_ = other.triggerTargetIdList_.Clone();
       triggerName_ = other.triggerName_;
-      triggerEntityId_ = other.triggerEntityId_;
       triggerMotion_ = other.triggerMotion_ != null ? other.triggerMotion_.Clone() : null;
+      interactId_ = other.interactId_;
+      triggerEntityId_ = other.triggerEntityId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -87,6 +87,41 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RefreshTriggerByClientCsReq Clone() {
       return new RefreshTriggerByClientCsReq(this);
+    }
+
+    /// <summary>Field number for the "trigger_target_id_list" field.</summary>
+    public const int TriggerTargetIdListFieldNumber = 6;
+    private static readonly pb::FieldCodec<uint> _repeated_triggerTargetIdList_codec
+        = pb::FieldCodec.ForUInt32(50);
+    private readonly pbc::RepeatedField<uint> triggerTargetIdList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> TriggerTargetIdList {
+      get { return triggerTargetIdList_; }
+    }
+
+    /// <summary>Field number for the "trigger_name" field.</summary>
+    public const int TriggerNameFieldNumber = 11;
+    private string triggerName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string TriggerName {
+      get { return triggerName_; }
+      set {
+        triggerName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "trigger_motion" field.</summary>
+    public const int TriggerMotionFieldNumber = 15;
+    private global::March7thHoney.Proto.MotionInfo triggerMotion_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.MotionInfo TriggerMotion {
+      get { return triggerMotion_; }
+      set {
+        triggerMotion_ = value;
+      }
     }
 
     /// <summary>Field number for the "interact_id" field.</summary>
@@ -101,31 +136,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "trigger_target_id_list" field.</summary>
-    public const int TriggerTargetIdListFieldNumber = 2;
-    private static readonly pb::FieldCodec<uint> _repeated_triggerTargetIdList_codec
-        = pb::FieldCodec.ForUInt32(18);
-    private readonly pbc::RepeatedField<uint> triggerTargetIdList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> TriggerTargetIdList {
-      get { return triggerTargetIdList_; }
-    }
-
-    /// <summary>Field number for the "trigger_name" field.</summary>
-    public const int TriggerNameFieldNumber = 5;
-    private string triggerName_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string TriggerName {
-      get { return triggerName_; }
-      set {
-        triggerName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
     /// <summary>Field number for the "trigger_entity_id" field.</summary>
-    public const int TriggerEntityIdFieldNumber = 7;
+    public const int TriggerEntityIdFieldNumber = 14;
     private uint triggerEntityId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -133,18 +145,6 @@ namespace March7thHoney.Proto {
       get { return triggerEntityId_; }
       set {
         triggerEntityId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "trigger_motion" field.</summary>
-    public const int TriggerMotionFieldNumber = 13;
-    private global::March7thHoney.Proto.MotionInfo triggerMotion_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.MotionInfo TriggerMotion {
-      get { return triggerMotion_; }
-      set {
-        triggerMotion_ = value;
       }
     }
 
@@ -163,11 +163,11 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (InteractId != other.InteractId) return false;
       if(!triggerTargetIdList_.Equals(other.triggerTargetIdList_)) return false;
       if (TriggerName != other.TriggerName) return false;
-      if (TriggerEntityId != other.TriggerEntityId) return false;
       if (!object.Equals(TriggerMotion, other.TriggerMotion)) return false;
+      if (InteractId != other.InteractId) return false;
+      if (TriggerEntityId != other.TriggerEntityId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -175,11 +175,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (InteractId != 0UL) hash ^= InteractId.GetHashCode();
       hash ^= triggerTargetIdList_.GetHashCode();
       if (TriggerName.Length != 0) hash ^= TriggerName.GetHashCode();
-      if (TriggerEntityId != 0) hash ^= TriggerEntityId.GetHashCode();
       if (triggerMotion_ != null) hash ^= TriggerMotion.GetHashCode();
+      if (InteractId != 0UL) hash ^= InteractId.GetHashCode();
+      if (TriggerEntityId != 0) hash ^= TriggerEntityId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -204,15 +204,15 @@ namespace March7thHoney.Proto {
       }
       triggerTargetIdList_.WriteTo(output, _repeated_triggerTargetIdList_codec);
       if (TriggerName.Length != 0) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(90);
         output.WriteString(TriggerName);
       }
       if (TriggerEntityId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(112);
         output.WriteUInt32(TriggerEntityId);
       }
       if (triggerMotion_ != null) {
-        output.WriteRawTag(106);
+        output.WriteRawTag(122);
         output.WriteMessage(TriggerMotion);
       }
       if (_unknownFields != null) {
@@ -231,15 +231,15 @@ namespace March7thHoney.Proto {
       }
       triggerTargetIdList_.WriteTo(ref output, _repeated_triggerTargetIdList_codec);
       if (TriggerName.Length != 0) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(90);
         output.WriteString(TriggerName);
       }
       if (TriggerEntityId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(112);
         output.WriteUInt32(TriggerEntityId);
       }
       if (triggerMotion_ != null) {
-        output.WriteRawTag(106);
+        output.WriteRawTag(122);
         output.WriteMessage(TriggerMotion);
       }
       if (_unknownFields != null) {
@@ -252,18 +252,18 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (InteractId != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(InteractId);
-      }
       size += triggerTargetIdList_.CalculateSize(_repeated_triggerTargetIdList_codec);
       if (TriggerName.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(TriggerName);
       }
-      if (TriggerEntityId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TriggerEntityId);
-      }
       if (triggerMotion_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(TriggerMotion);
+      }
+      if (InteractId != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(InteractId);
+      }
+      if (TriggerEntityId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TriggerEntityId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -277,21 +277,21 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.InteractId != 0UL) {
-        InteractId = other.InteractId;
-      }
       triggerTargetIdList_.Add(other.triggerTargetIdList_);
       if (other.TriggerName.Length != 0) {
         TriggerName = other.TriggerName;
-      }
-      if (other.TriggerEntityId != 0) {
-        TriggerEntityId = other.TriggerEntityId;
       }
       if (other.triggerMotion_ != null) {
         if (triggerMotion_ == null) {
           TriggerMotion = new global::March7thHoney.Proto.MotionInfo();
         }
         TriggerMotion.MergeFrom(other.TriggerMotion);
+      }
+      if (other.InteractId != 0UL) {
+        InteractId = other.InteractId;
+      }
+      if (other.TriggerEntityId != 0) {
+        TriggerEntityId = other.TriggerEntityId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -316,20 +316,20 @@ namespace March7thHoney.Proto {
             InteractId = input.ReadUInt64();
             break;
           }
-          case 18:
-          case 16: {
+          case 50:
+          case 48: {
             triggerTargetIdList_.AddEntriesFrom(input, _repeated_triggerTargetIdList_codec);
             break;
           }
-          case 42: {
+          case 90: {
             TriggerName = input.ReadString();
             break;
           }
-          case 56: {
+          case 112: {
             TriggerEntityId = input.ReadUInt32();
             break;
           }
-          case 106: {
+          case 122: {
             if (triggerMotion_ == null) {
               TriggerMotion = new global::March7thHoney.Proto.MotionInfo();
             }
@@ -359,20 +359,20 @@ namespace March7thHoney.Proto {
             InteractId = input.ReadUInt64();
             break;
           }
-          case 18:
-          case 16: {
+          case 50:
+          case 48: {
             triggerTargetIdList_.AddEntriesFrom(ref input, _repeated_triggerTargetIdList_codec);
             break;
           }
-          case 42: {
+          case 90: {
             TriggerName = input.ReadString();
             break;
           }
-          case 56: {
+          case 112: {
             TriggerEntityId = input.ReadUInt32();
             break;
           }
-          case 106: {
+          case 122: {
             if (triggerMotion_ == null) {
               TriggerMotion = new global::March7thHoney.Proto.MotionInfo();
             }

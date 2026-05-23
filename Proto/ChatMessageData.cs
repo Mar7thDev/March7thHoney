@@ -24,17 +24,16 @@ namespace March7thHoney.Proto {
     static ChatMessageDataReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChVDaGF0TWVzc2FnZURhdGEucHJvdG8aFU1lc3NhZ2VDaGF0RGF0YS5wcm90",
-            "bxoQU291cmNlRGF0YS5wcm90bxoWQ2hhdE1lc3NhZ2VFeHRyYS5wcm90byK4",
-            "AQoPQ2hhdE1lc3NhZ2VEYXRhEhMKC2NyZWF0ZV90aW1lGAQgASgEEh8KClNv",
-            "dXJjZURhdGEYCCABKAsyCy5Tb3VyY2VEYXRhEicKDW1lc3NhZ2VfZGF0YXMY",
-            "CSADKAsyEC5NZXNzYWdlQ2hhdERhdGESIgoHZXh0cmFfYRgKIAEoCzIRLkNo",
-            "YXRNZXNzYWdlRXh0cmESIgoHZXh0cmFfYhgLIAEoCzIRLkNoYXRNZXNzYWdl",
-            "RXh0cmFCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ChVDaGF0TWVzc2FnZURhdGEucHJvdG8aEUVLTkFCS0xQRUVMLnByb3RvGhVN",
+            "ZXNzYWdlQ2hhdERhdGEucHJvdG8ilQEKD0NoYXRNZXNzYWdlRGF0YRIhCgtD",
+            "S0hQRkZFTk9CRRgKIAEoCzIMLkVLTkFCS0xQRUVMEiEKC0JLT0FMS0hETE9C",
+            "GAsgASgLMgwuRUtOQUJLTFBFRUwSJwoNbWVzc2FnZV9kYXRhcxgJIAMoCzIQ",
+            "Lk1lc3NhZ2VDaGF0RGF0YRITCgtjcmVhdGVfdGltZRgEIAEoBEIWqgITTWFy",
+            "Y2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.MessageChatDataReflection.Descriptor, global::March7thHoney.Proto.SourceDataReflection.Descriptor, global::March7thHoney.Proto.ChatMessageExtraReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.EKNABKLPEELReflection.Descriptor, global::March7thHoney.Proto.MessageChatDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChatMessageData), global::March7thHoney.Proto.ChatMessageData.Parser, new[]{ "CreateTime", "SourceData", "MessageDatas", "ExtraA", "ExtraB" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChatMessageData), global::March7thHoney.Proto.ChatMessageData.Parser, new[]{ "CKHPFFENOBE", "BKOALKHDLOB", "MessageDatas", "CreateTime" }, null, null, null, null)
           }));
     }
     #endregion
@@ -76,11 +75,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ChatMessageData(ChatMessageData other) : this() {
-      createTime_ = other.createTime_;
-      sourceData_ = other.sourceData_ != null ? other.sourceData_.Clone() : null;
+      cKHPFFENOBE_ = other.cKHPFFENOBE_ != null ? other.cKHPFFENOBE_.Clone() : null;
+      bKOALKHDLOB_ = other.bKOALKHDLOB_ != null ? other.bKOALKHDLOB_.Clone() : null;
       messageDatas_ = other.messageDatas_.Clone();
-      extraA_ = other.extraA_ != null ? other.extraA_.Clone() : null;
-      extraB_ = other.extraB_ != null ? other.extraB_.Clone() : null;
+      createTime_ = other.createTime_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -90,27 +88,27 @@ namespace March7thHoney.Proto {
       return new ChatMessageData(this);
     }
 
-    /// <summary>Field number for the "create_time" field.</summary>
-    public const int CreateTimeFieldNumber = 4;
-    private ulong createTime_;
+    /// <summary>Field number for the "CKHPFFENOBE" field.</summary>
+    public const int CKHPFFENOBEFieldNumber = 10;
+    private global::March7thHoney.Proto.EKNABKLPEEL cKHPFFENOBE_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ulong CreateTime {
-      get { return createTime_; }
+    public global::March7thHoney.Proto.EKNABKLPEEL CKHPFFENOBE {
+      get { return cKHPFFENOBE_; }
       set {
-        createTime_ = value;
+        cKHPFFENOBE_ = value;
       }
     }
 
-    /// <summary>Field number for the "SourceData" field.</summary>
-    public const int SourceDataFieldNumber = 8;
-    private global::March7thHoney.Proto.SourceData sourceData_;
+    /// <summary>Field number for the "BKOALKHDLOB" field.</summary>
+    public const int BKOALKHDLOBFieldNumber = 11;
+    private global::March7thHoney.Proto.EKNABKLPEEL bKOALKHDLOB_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.SourceData SourceData {
-      get { return sourceData_; }
+    public global::March7thHoney.Proto.EKNABKLPEEL BKOALKHDLOB {
+      get { return bKOALKHDLOB_; }
       set {
-        sourceData_ = value;
+        bKOALKHDLOB_ = value;
       }
     }
 
@@ -125,27 +123,15 @@ namespace March7thHoney.Proto {
       get { return messageDatas_; }
     }
 
-    /// <summary>Field number for the "extra_a" field.</summary>
-    public const int ExtraAFieldNumber = 10;
-    private global::March7thHoney.Proto.ChatMessageExtra extraA_;
+    /// <summary>Field number for the "create_time" field.</summary>
+    public const int CreateTimeFieldNumber = 4;
+    private ulong createTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.ChatMessageExtra ExtraA {
-      get { return extraA_; }
+    public ulong CreateTime {
+      get { return createTime_; }
       set {
-        extraA_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "extra_b" field.</summary>
-    public const int ExtraBFieldNumber = 11;
-    private global::March7thHoney.Proto.ChatMessageExtra extraB_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.ChatMessageExtra ExtraB {
-      get { return extraB_; }
-      set {
-        extraB_ = value;
+        createTime_ = value;
       }
     }
 
@@ -164,11 +150,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (CreateTime != other.CreateTime) return false;
-      if (!object.Equals(SourceData, other.SourceData)) return false;
+      if (!object.Equals(CKHPFFENOBE, other.CKHPFFENOBE)) return false;
+      if (!object.Equals(BKOALKHDLOB, other.BKOALKHDLOB)) return false;
       if(!messageDatas_.Equals(other.messageDatas_)) return false;
-      if (!object.Equals(ExtraA, other.ExtraA)) return false;
-      if (!object.Equals(ExtraB, other.ExtraB)) return false;
+      if (CreateTime != other.CreateTime) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -176,11 +161,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (CreateTime != 0UL) hash ^= CreateTime.GetHashCode();
-      if (sourceData_ != null) hash ^= SourceData.GetHashCode();
+      if (cKHPFFENOBE_ != null) hash ^= CKHPFFENOBE.GetHashCode();
+      if (bKOALKHDLOB_ != null) hash ^= BKOALKHDLOB.GetHashCode();
       hash ^= messageDatas_.GetHashCode();
-      if (extraA_ != null) hash ^= ExtraA.GetHashCode();
-      if (extraB_ != null) hash ^= ExtraB.GetHashCode();
+      if (CreateTime != 0UL) hash ^= CreateTime.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -203,18 +187,14 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(32);
         output.WriteUInt64(CreateTime);
       }
-      if (sourceData_ != null) {
-        output.WriteRawTag(66);
-        output.WriteMessage(SourceData);
-      }
       messageDatas_.WriteTo(output, _repeated_messageDatas_codec);
-      if (extraA_ != null) {
+      if (cKHPFFENOBE_ != null) {
         output.WriteRawTag(82);
-        output.WriteMessage(ExtraA);
+        output.WriteMessage(CKHPFFENOBE);
       }
-      if (extraB_ != null) {
+      if (bKOALKHDLOB_ != null) {
         output.WriteRawTag(90);
-        output.WriteMessage(ExtraB);
+        output.WriteMessage(BKOALKHDLOB);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -230,18 +210,14 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(32);
         output.WriteUInt64(CreateTime);
       }
-      if (sourceData_ != null) {
-        output.WriteRawTag(66);
-        output.WriteMessage(SourceData);
-      }
       messageDatas_.WriteTo(ref output, _repeated_messageDatas_codec);
-      if (extraA_ != null) {
+      if (cKHPFFENOBE_ != null) {
         output.WriteRawTag(82);
-        output.WriteMessage(ExtraA);
+        output.WriteMessage(CKHPFFENOBE);
       }
-      if (extraB_ != null) {
+      if (bKOALKHDLOB_ != null) {
         output.WriteRawTag(90);
-        output.WriteMessage(ExtraB);
+        output.WriteMessage(BKOALKHDLOB);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -253,18 +229,15 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (CreateTime != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(CreateTime);
+      if (cKHPFFENOBE_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(CKHPFFENOBE);
       }
-      if (sourceData_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(SourceData);
+      if (bKOALKHDLOB_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(BKOALKHDLOB);
       }
       size += messageDatas_.CalculateSize(_repeated_messageDatas_codec);
-      if (extraA_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ExtraA);
-      }
-      if (extraB_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ExtraB);
+      if (CreateTime != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(CreateTime);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -278,27 +251,21 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.CreateTime != 0UL) {
-        CreateTime = other.CreateTime;
-      }
-      if (other.sourceData_ != null) {
-        if (sourceData_ == null) {
-          SourceData = new global::March7thHoney.Proto.SourceData();
+      if (other.cKHPFFENOBE_ != null) {
+        if (cKHPFFENOBE_ == null) {
+          CKHPFFENOBE = new global::March7thHoney.Proto.EKNABKLPEEL();
         }
-        SourceData.MergeFrom(other.SourceData);
+        CKHPFFENOBE.MergeFrom(other.CKHPFFENOBE);
+      }
+      if (other.bKOALKHDLOB_ != null) {
+        if (bKOALKHDLOB_ == null) {
+          BKOALKHDLOB = new global::March7thHoney.Proto.EKNABKLPEEL();
+        }
+        BKOALKHDLOB.MergeFrom(other.BKOALKHDLOB);
       }
       messageDatas_.Add(other.messageDatas_);
-      if (other.extraA_ != null) {
-        if (extraA_ == null) {
-          ExtraA = new global::March7thHoney.Proto.ChatMessageExtra();
-        }
-        ExtraA.MergeFrom(other.ExtraA);
-      }
-      if (other.extraB_ != null) {
-        if (extraB_ == null) {
-          ExtraB = new global::March7thHoney.Proto.ChatMessageExtra();
-        }
-        ExtraB.MergeFrom(other.ExtraB);
+      if (other.CreateTime != 0UL) {
+        CreateTime = other.CreateTime;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -323,29 +290,22 @@ namespace March7thHoney.Proto {
             CreateTime = input.ReadUInt64();
             break;
           }
-          case 66: {
-            if (sourceData_ == null) {
-              SourceData = new global::March7thHoney.Proto.SourceData();
-            }
-            input.ReadMessage(SourceData);
-            break;
-          }
           case 74: {
             messageDatas_.AddEntriesFrom(input, _repeated_messageDatas_codec);
             break;
           }
           case 82: {
-            if (extraA_ == null) {
-              ExtraA = new global::March7thHoney.Proto.ChatMessageExtra();
+            if (cKHPFFENOBE_ == null) {
+              CKHPFFENOBE = new global::March7thHoney.Proto.EKNABKLPEEL();
             }
-            input.ReadMessage(ExtraA);
+            input.ReadMessage(CKHPFFENOBE);
             break;
           }
           case 90: {
-            if (extraB_ == null) {
-              ExtraB = new global::March7thHoney.Proto.ChatMessageExtra();
+            if (bKOALKHDLOB_ == null) {
+              BKOALKHDLOB = new global::March7thHoney.Proto.EKNABKLPEEL();
             }
-            input.ReadMessage(ExtraB);
+            input.ReadMessage(BKOALKHDLOB);
             break;
           }
         }
@@ -371,29 +331,22 @@ namespace March7thHoney.Proto {
             CreateTime = input.ReadUInt64();
             break;
           }
-          case 66: {
-            if (sourceData_ == null) {
-              SourceData = new global::March7thHoney.Proto.SourceData();
-            }
-            input.ReadMessage(SourceData);
-            break;
-          }
           case 74: {
             messageDatas_.AddEntriesFrom(ref input, _repeated_messageDatas_codec);
             break;
           }
           case 82: {
-            if (extraA_ == null) {
-              ExtraA = new global::March7thHoney.Proto.ChatMessageExtra();
+            if (cKHPFFENOBE_ == null) {
+              CKHPFFENOBE = new global::March7thHoney.Proto.EKNABKLPEEL();
             }
-            input.ReadMessage(ExtraA);
+            input.ReadMessage(CKHPFFENOBE);
             break;
           }
           case 90: {
-            if (extraB_ == null) {
-              ExtraB = new global::March7thHoney.Proto.ChatMessageExtra();
+            if (bKOALKHDLOB_ == null) {
+              BKOALKHDLOB = new global::March7thHoney.Proto.EKNABKLPEEL();
             }
-            input.ReadMessage(ExtraB);
+            input.ReadMessage(BKOALKHDLOB);
             break;
           }
         }

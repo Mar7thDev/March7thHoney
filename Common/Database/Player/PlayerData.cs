@@ -102,7 +102,6 @@ public class PlayerData : BaseDatabaseDataHelper
             ChatBubbleId = (uint)ChatBubble,
             PersonalCard = (uint)PersonalCard,
             HeadFrameInfo = HeadFrame.ToProto(),
-            PlayerOutfitData = ToPlayerOutfitProto(),
             Gender = (uint)CurrentGender
         };
 
@@ -182,13 +181,13 @@ public class PlayerData : BaseDatabaseDataHelper
 
         info.RecordInfo = new PlayerRecordInfo
         {
-            MMFGIPPNEEF = (uint)avatarInfo.FormalAvatars.Count,
-            LCEEKBAJPHA = (uint)inventoryInfo.EquipmentItems.Select(x => x.ItemId).ToHashSet().Count,
-            KEBOJOIBOKE = (uint)inventoryInfo.RelicItems.Count,
-            LBKCIEBGMAJ = (uint)GameData.AchievementDataData.Values.Select(x => x.QuestID).ToHashSet()
+            DIOIIFAHAKK = (uint)avatarInfo.FormalAvatars.Count,
+            NECKJBHEKHE = (uint)inventoryInfo.EquipmentItems.Select(x => x.ItemId).ToHashSet().Count,
+            KCBINJNIBNO = (uint)inventoryInfo.RelicItems.Count,
+            ALGEOLGNFBL = (uint)GameData.AchievementDataData.Values.Select(x => x.QuestID).ToHashSet()
                 .Count(x => questInfo.Quests.GetValueOrDefault(x)?.QuestStatus is QuestStatus.QuestFinish
                     or QuestStatus.QuestClose), // count finished achievements
-            GPJGLLANPIF = (uint)GameData.BackGroundMusicData.Count
+            MHOIJFEBAPA = (uint)GameData.BackGroundMusicData.Count
         };
 
         var pos = 0;
@@ -208,12 +207,7 @@ public class PlayerData : BaseDatabaseDataHelper
         return info;
     }
 
-    public PlayerOutfitInfo ToPlayerOutfitProto()
-    {
-        var info = new PlayerOutfitInfo();
-        info.PlayerOutfitList.AddRange(PlayerOutfitList.Select(x => (uint)x));
-        return info;
-    }
+    // TODO 4.3: PlayerOutfitInfo 在 4.3 中被砍掉，所有调用点暂时移除
 }
 
 public class PlayerHeadFrameInfo
@@ -243,11 +237,9 @@ public class PrivacySettingsPb
     {
         return new PlayerSettingInfo
         {
-            COIGOCJHBOP = DisplayChallengeLineup,
-            CHCNEDNCIDJ = DisplayActiveState,
-            LPEPIDNJDEM = DisplayRecentlyState,
-            BKDCFBDMNIJ = DisplayBattleRecord,
-            PFJMEECGJMM = DisplayCollection
+            // TODO 4.3: PlayerSettingInfo 字段在 4.3 重排，DisplayActiveState/RecentlyState/BattleRecord 暂未映射
+            GNFDDPEMMFN = DisplayChallengeLineup,
+            FDHEPCKLCAM = DisplayCollection
         };
     }
 }

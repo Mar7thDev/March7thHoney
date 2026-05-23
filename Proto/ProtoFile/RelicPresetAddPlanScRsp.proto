@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "PFCKBFLDHNI.proto";
+
+message RelicPresetAddPlanScRsp {
+    PFCKBFLDHNI relic_plan = 8;
+    uint32 retcode = 12;
+}

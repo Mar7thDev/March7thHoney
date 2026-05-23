@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "JLPEICPFLMC.proto";
+
+message AFDJNEOHCLB {
+    JLPEICPFLMC source = 10;
+    uint32 OCJCOOLMCGD = 6;
+    uint32 progress = 13;
+}

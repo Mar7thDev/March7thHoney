@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChhDaGVzc1JvZ3VlRGljZVR5cGUucHJvdG8qTgoSQ2hlc3NSb2d1ZURpY2VU",
-            "eXBlEhsKF0hCQ09LRElKTUJLX0lDSkxHSExPS0ZHEAASGwoXSEJDT0tESUpN",
-            "QktfT0hHR0NLTExMRVAQAUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJv",
+            "eXBlEhsKF0hKQ09MTU5QS0JLX0lISEpCR1BQQUNEEAASGwoXSEpDT0xNTlBL",
+            "QktfQktDQ09HTlBQR0gQAUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJv",
             "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -37,8 +37,8 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum ChessRogueDiceType {
-    [pbr::OriginalName("HBCOKDIJMBK_ICJLGHLOKFG")] HbcokdijmbkIcjlghlokfg = 0,
-    [pbr::OriginalName("HBCOKDIJMBK_OHGGCKLLLEP")] HbcokdijmbkOhggcklllep = 1,
+    [pbr::OriginalName("HJCOLMNPKBK_IHHJBGPPACD")] HjcolmnpkbkIhhjbgppacd = 0,
+    [pbr::OriginalName("HJCOLMNPKBK_BKCCOGNPPGH")] HjcolmnpkbkBkccognppgh = 1,
   }
 
   #endregion

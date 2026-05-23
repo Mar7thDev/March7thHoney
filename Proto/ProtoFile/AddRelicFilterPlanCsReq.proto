@@ -2,15 +2,13 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "FOFBDBJBEJE.proto";
-import "OBOKDHDOKAD.proto";
+import "BNAILMNNGIF.proto";
+import "KJDLIPEIAAK.proto";
 
 message AddRelicFilterPlanCsReq {
-    bool is_marked = 4;
-    string name = 5;
-    OBOKDHDOKAD HMIHLDPMPOM = 6;
-    FOFBDBJBEJE JHHHONJIKGL = 8;
-    uint32 BHPLKHAMBIG = 9;
+    KJDLIPEIAAK MJPKBIGCFOM = 3;
+    BNAILMNNGIF LJKNDCIOOCG = 15;
+    string name = 1;
+    bool is_marked = 14;
+    uint32 GFEENEDNJGF = 13;
 }

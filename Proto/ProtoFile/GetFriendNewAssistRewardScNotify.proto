@@ -2,7 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message GetFriendNewAssistRewardScNotify {
+    uint32 FANDKFADKKM = 9;
 }

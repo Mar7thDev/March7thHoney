@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "AKCFLPEANJB.proto";
+import "OOLJJHMLHBH.proto";
 
 message RogueTournSaveBuildRefCsReq {
-    uint32 KKGIEENCOIC = 9;
-    string name = 13;
-    AKCFLPEANJB EOGACILLEBO = 14;
+    string name = 10;
+    OOLJJHMLHBH MPOEFPFPEND = 11;
+    uint32 NPHAJEKCBKF = 6;
 }

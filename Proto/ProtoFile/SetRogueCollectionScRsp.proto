@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "EPLGMCCNALG.proto";
-import "MMPOOBGAEKE.proto";
+import "JMJEIBGACMD.proto";
+import "NPAJHGDEIDJ.proto";
 
 message SetRogueCollectionScRsp {
-    repeated MMPOOBGAEKE IBNNOAJMAKE = 1;
-    repeated EPLGMCCNALG LNINOMPEBOB = 8;
-    uint32 retcode = 15;
+    repeated NPAJHGDEIDJ DPIKOCFILGP = 9;
+    repeated JMJEIBGACMD CEPDOBEIEFG = 14;
+    uint32 retcode = 11;
 }

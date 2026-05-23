@@ -2,15 +2,13 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "FCLDNHOHPII.proto";
-import "FMEMPPNNKJH.proto";
+import "BDOEDOEBFAJ.proto";
+import "FDDNKPJEMJE.proto";
 
 message ChenLingGetDataScRsp {
-    uint32 JJABPPDILOK = 6;
-    FMEMPPNNKJH POGCGMLPEON = 7;
-    FCLDNHOHPII IKKMNDMELLN = 12;
-    repeated uint32 DOAIHFIFFNO = 13;
-    uint32 retcode = 14;
+    FDDNKPJEMJE DJOLGKGKCHE = 12;
+    repeated uint32 IMNNAENHBMA = 9;
+    BDOEDOEBFAJ KFAIGIIPLOF = 6;
+    uint32 GDHOLMIBAEA = 1;
+    uint32 retcode = 13;
 }

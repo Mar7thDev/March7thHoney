@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum KDNCOBMFFEB {
+    KDNCOBMFFEB_NLCDGIPGFDJ = 0;
+    KDNCOBMFFEB_BDOEMDGHHEP = 1;
+    KDNCOBMFFEB_stop_desc = 2;
+    KDNCOBMFFEB_LMJCPMFPHLK = 3;
+    KDNCOBMFFEB_FHDMHKOMEFO = 4;
+    KDNCOBMFFEB_FCKIHKAIIIJ = 5;
+}

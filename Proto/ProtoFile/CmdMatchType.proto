@@ -2,15 +2,13 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdMatchType {
-    PCGFLPCNCLM_PCPDHELPKEM = 0;
-    CmdGetCrossInfoCsReq = 7338;
-    CmdCancelMatchCsReq = 7330;
-    CmdStartMatchCsReq = 7313;
-    CmdAAHCMMKMENA = 7307;
-    CmdJOLDJBKMHGA = 7327;
-    CmdGetCrossInfoScRsp = 7305;
-    CmdJOEPJJKIPJC = 7335;
+    OJCIGGAFGPN_NLCDGIPGFDJ = 0;
+    OJCIGGAFGPN_OBHHEJONGKJ = 7342;
+    OJCIGGAFGPN_PFNIJFANCIE = 7319;
+    OJCIGGAFGPN_BNLDENNEOIP = 7344;
+    OJCIGGAFGPN_JFMFEFGAIBK = 7332;
+    OJCIGGAFGPN_HNAJMPLBNLF = 7323;
+    OJCIGGAFGPN_AMBKBNMKIGP = 7327;
+    OJCIGGAFGPN_KMDMCLGPIBC = 7307;
 }

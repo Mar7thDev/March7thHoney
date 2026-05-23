@@ -123,6 +123,9 @@ public class WatermarkConfig
 
 public class AuthOption
 {
+    // Cultivation 模式开关：true 时跳过 RSA 密码解密与密码校验，
+    // 用于客户端 patch 不可用或 RVA 未适配时的兜底登录。
+    public bool SkipPasswordValidation { get; set; } = false;
     public int MinimumPasswordLength { get; set; } = 8;
     public int PasswordHashIterations { get; set; } = 600000;
     public int DispatchTokenExpireMinutes { get; set; } = 43200;

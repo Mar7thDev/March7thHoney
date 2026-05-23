@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message GetMailCsReq {
-    uint32 FHGKLJEHIGA = 1;
-    uint32 DDLPGNHADCJ = 6;
+    uint32 NPAFMEBNFOB = 13;
+    uint32 HFKFNFKIEON = 2;
 }

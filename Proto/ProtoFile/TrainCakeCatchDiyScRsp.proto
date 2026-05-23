@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "FOFNOBHLKGO.proto";
+import "BFAKMCIJFCB.proto";
 
 message TrainCakeCatchDiyScRsp {
-    FOFNOBHLKGO PEOECDDANNP = 6;
-    uint32 retcode = 7;
+    BFAKMCIJFCB NLJBJMDPBGN = 13;
+    uint32 retcode = 11;
 }

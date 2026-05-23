@@ -24,8 +24,8 @@ namespace March7thHoney.Proto {
     static NpcStatusReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg9OcGNTdGF0dXMucHJvdG8iLgoJTnBjU3RhdHVzEg4KBm5wY19pZBgEIAEo",
-            "DRIRCglpc19maW5pc2gYDyABKAhCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
+            "Cg9OcGNTdGF0dXMucHJvdG8iLgoJTnBjU3RhdHVzEg4KBm5wY19pZBgIIAEo",
+            "DRIRCglpc19maW5pc2gYDCABKAhCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
             "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "npc_id" field.</summary>
-    public const int NpcIdFieldNumber = 4;
+    public const int NpcIdFieldNumber = 8;
     private uint npcId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "is_finish" field.</summary>
-    public const int IsFinishFieldNumber = 15;
+    public const int IsFinishFieldNumber = 12;
     private bool isFinish_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (NpcId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(64);
         output.WriteUInt32(NpcId);
       }
       if (IsFinish != false) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(96);
         output.WriteBool(IsFinish);
       }
       if (_unknownFields != null) {
@@ -170,11 +170,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (NpcId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(64);
         output.WriteUInt32(NpcId);
       }
       if (IsFinish != false) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(96);
         output.WriteBool(IsFinish);
       }
       if (_unknownFields != null) {
@@ -230,11 +230,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
+          case 64: {
             NpcId = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 96: {
             IsFinish = input.ReadBool();
             break;
           }
@@ -257,11 +257,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
+          case 64: {
             NpcId = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 96: {
             IsFinish = input.ReadBool();
             break;
           }

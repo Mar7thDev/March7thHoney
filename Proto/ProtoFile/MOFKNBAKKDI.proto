@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "NCFKHDIKCNI.proto";
+import "OJHHACMHFKA.proto";
+
+message MOFKNBAKKDI {
+    NCFKHDIKCNI FDGKBOIEHBD = 12;
+    repeated OJHHACMHFKA CKACALMICBH = 14;
+    map<uint32, uint32> FLKNHFMNDCE = 8;
+    bool CANDCMOCAFH = 3;
+    bool has_passed = 10;
+    uint32 LFKDANGNJIM = 9;
+    int64 IFEPJHGNCOI = 11;
+}

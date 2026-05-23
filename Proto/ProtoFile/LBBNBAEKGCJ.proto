@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "IEALCLFLDMP.proto";
+import "KLNGFBHIADA.proto";
+
+message LBBNBAEKGCJ {
+    uint32 AFPHLNMGPHK = 162;
+    oneof KKNBOACNCON {
+        IEALCLFLDMP NMIJKPKNPLE = 2;
+        KLNGFBHIADA FKPDOHGKJJK = 13;
+    }
+}

@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "DHKCDCCHLHP.proto";
+import "BCAJNMLLIED.proto";
 import "ItemList.proto";
 
 message TakeRechargeBenefitRewardScRsp {
-    ItemList reward = 4;
-    uint32 retcode = 6;
-    DHKCDCCHLHP FIFHCICHDOH = 10;
+    BCAJNMLLIED KLCGBJIEMPO = 1;
+    ItemList reward = 7;
+    uint32 retcode = 11;
 }

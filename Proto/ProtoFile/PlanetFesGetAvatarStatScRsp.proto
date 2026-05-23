@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "CNLIKADPCBH.proto";
+import "GLECNCOBKCJ.proto";
 
 message PlanetFesGetAvatarStatScRsp {
-    uint32 retcode = 5;
-    repeated CNLIKADPCBH MMNOLIMBPCA = 8;
+    repeated GLECNCOBKCJ FIHPPANOOFL = 15;
+    uint32 retcode = 8;
 }

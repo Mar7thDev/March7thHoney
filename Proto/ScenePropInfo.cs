@@ -25,15 +25,15 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChNTY2VuZVByb3BJbmZvLnByb3RvGhNQcm9wRXh0cmFJbmZvLnByb3RvIqEB",
-            "Cg1TY2VuZVByb3BJbmZvEhQKDGxpZmVfdGltZV9tcxgBIAEoDRISCgpwcm9w",
-            "X3N0YXRlGAIgASgNEhkKEXRyaWdnZXJfbmFtZV9saXN0GAYgAygJEiIKCmV4",
-            "dHJhX2luZm8YCSABKAsyDi5Qcm9wRXh0cmFJbmZvEhYKDmNyZWF0ZV90aW1l",
-            "X21zGAwgASgEEg8KB3Byb3BfaWQYDyABKA1CFqoCE01hcmNoN3RoSG9uZXku",
+            "Cg1TY2VuZVByb3BJbmZvEhkKEXRyaWdnZXJfbmFtZV9saXN0GA8gAygJEiIK",
+            "CmV4dHJhX2luZm8YByABKAsyDi5Qcm9wRXh0cmFJbmZvEhQKDGxpZmVfdGlt",
+            "ZV9tcxgOIAEoDRIPCgdwcm9wX2lkGAMgASgNEhYKDmNyZWF0ZV90aW1lX21z",
+            "GAggASgEEhIKCnByb3Bfc3RhdGUYASABKA1CFqoCE01hcmNoN3RoSG9uZXku",
             "UHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.PropExtraInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ScenePropInfo), global::March7thHoney.Proto.ScenePropInfo.Parser, new[]{ "LifeTimeMs", "PropState", "TriggerNameList", "ExtraInfo", "CreateTimeMs", "PropId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ScenePropInfo), global::March7thHoney.Proto.ScenePropInfo.Parser, new[]{ "TriggerNameList", "ExtraInfo", "LifeTimeMs", "PropId", "CreateTimeMs", "PropState" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,12 +75,12 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ScenePropInfo(ScenePropInfo other) : this() {
-      lifeTimeMs_ = other.lifeTimeMs_;
-      propState_ = other.propState_;
       triggerNameList_ = other.triggerNameList_.Clone();
       extraInfo_ = other.extraInfo_ != null ? other.extraInfo_.Clone() : null;
-      createTimeMs_ = other.createTimeMs_;
+      lifeTimeMs_ = other.lifeTimeMs_;
       propId_ = other.propId_;
+      createTimeMs_ = other.createTimeMs_;
+      propState_ = other.propState_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -90,34 +90,10 @@ namespace March7thHoney.Proto {
       return new ScenePropInfo(this);
     }
 
-    /// <summary>Field number for the "life_time_ms" field.</summary>
-    public const int LifeTimeMsFieldNumber = 1;
-    private uint lifeTimeMs_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint LifeTimeMs {
-      get { return lifeTimeMs_; }
-      set {
-        lifeTimeMs_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "prop_state" field.</summary>
-    public const int PropStateFieldNumber = 2;
-    private uint propState_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PropState {
-      get { return propState_; }
-      set {
-        propState_ = value;
-      }
-    }
-
     /// <summary>Field number for the "trigger_name_list" field.</summary>
-    public const int TriggerNameListFieldNumber = 6;
+    public const int TriggerNameListFieldNumber = 15;
     private static readonly pb::FieldCodec<string> _repeated_triggerNameList_codec
-        = pb::FieldCodec.ForString(50);
+        = pb::FieldCodec.ForString(122);
     private readonly pbc::RepeatedField<string> triggerNameList_ = new pbc::RepeatedField<string>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -126,7 +102,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "extra_info" field.</summary>
-    public const int ExtraInfoFieldNumber = 9;
+    public const int ExtraInfoFieldNumber = 7;
     private global::March7thHoney.Proto.PropExtraInfo extraInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -137,8 +113,32 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "life_time_ms" field.</summary>
+    public const int LifeTimeMsFieldNumber = 14;
+    private uint lifeTimeMs_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint LifeTimeMs {
+      get { return lifeTimeMs_; }
+      set {
+        lifeTimeMs_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "prop_id" field.</summary>
+    public const int PropIdFieldNumber = 3;
+    private uint propId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint PropId {
+      get { return propId_; }
+      set {
+        propId_ = value;
+      }
+    }
+
     /// <summary>Field number for the "create_time_ms" field.</summary>
-    public const int CreateTimeMsFieldNumber = 12;
+    public const int CreateTimeMsFieldNumber = 8;
     private ulong createTimeMs_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -149,15 +149,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "prop_id" field.</summary>
-    public const int PropIdFieldNumber = 15;
-    private uint propId_;
+    /// <summary>Field number for the "prop_state" field.</summary>
+    public const int PropStateFieldNumber = 1;
+    private uint propState_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PropId {
-      get { return propId_; }
+    public uint PropState {
+      get { return propState_; }
       set {
-        propId_ = value;
+        propState_ = value;
       }
     }
 
@@ -176,12 +176,12 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (LifeTimeMs != other.LifeTimeMs) return false;
-      if (PropState != other.PropState) return false;
       if(!triggerNameList_.Equals(other.triggerNameList_)) return false;
       if (!object.Equals(ExtraInfo, other.ExtraInfo)) return false;
-      if (CreateTimeMs != other.CreateTimeMs) return false;
+      if (LifeTimeMs != other.LifeTimeMs) return false;
       if (PropId != other.PropId) return false;
+      if (CreateTimeMs != other.CreateTimeMs) return false;
+      if (PropState != other.PropState) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -189,12 +189,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (LifeTimeMs != 0) hash ^= LifeTimeMs.GetHashCode();
-      if (PropState != 0) hash ^= PropState.GetHashCode();
       hash ^= triggerNameList_.GetHashCode();
       if (extraInfo_ != null) hash ^= ExtraInfo.GetHashCode();
-      if (CreateTimeMs != 0UL) hash ^= CreateTimeMs.GetHashCode();
+      if (LifeTimeMs != 0) hash ^= LifeTimeMs.GetHashCode();
       if (PropId != 0) hash ^= PropId.GetHashCode();
+      if (CreateTimeMs != 0UL) hash ^= CreateTimeMs.GetHashCode();
+      if (PropState != 0) hash ^= PropState.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -213,27 +213,27 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (LifeTimeMs != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(LifeTimeMs);
-      }
       if (PropState != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteUInt32(PropState);
       }
-      triggerNameList_.WriteTo(output, _repeated_triggerNameList_codec);
+      if (PropId != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(PropId);
+      }
       if (extraInfo_ != null) {
-        output.WriteRawTag(74);
+        output.WriteRawTag(58);
         output.WriteMessage(ExtraInfo);
       }
       if (CreateTimeMs != 0UL) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(64);
         output.WriteUInt64(CreateTimeMs);
       }
-      if (PropId != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(PropId);
+      if (LifeTimeMs != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(LifeTimeMs);
       }
+      triggerNameList_.WriteTo(output, _repeated_triggerNameList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -244,27 +244,27 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (LifeTimeMs != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(LifeTimeMs);
-      }
       if (PropState != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteUInt32(PropState);
       }
-      triggerNameList_.WriteTo(ref output, _repeated_triggerNameList_codec);
+      if (PropId != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(PropId);
+      }
       if (extraInfo_ != null) {
-        output.WriteRawTag(74);
+        output.WriteRawTag(58);
         output.WriteMessage(ExtraInfo);
       }
       if (CreateTimeMs != 0UL) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(64);
         output.WriteUInt64(CreateTimeMs);
       }
-      if (PropId != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(PropId);
+      if (LifeTimeMs != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(LifeTimeMs);
       }
+      triggerNameList_.WriteTo(ref output, _repeated_triggerNameList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -275,21 +275,21 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (LifeTimeMs != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LifeTimeMs);
-      }
-      if (PropState != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PropState);
-      }
       size += triggerNameList_.CalculateSize(_repeated_triggerNameList_codec);
       if (extraInfo_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(ExtraInfo);
       }
-      if (CreateTimeMs != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(CreateTimeMs);
+      if (LifeTimeMs != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LifeTimeMs);
       }
       if (PropId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PropId);
+      }
+      if (CreateTimeMs != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(CreateTimeMs);
+      }
+      if (PropState != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PropState);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -303,12 +303,6 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.LifeTimeMs != 0) {
-        LifeTimeMs = other.LifeTimeMs;
-      }
-      if (other.PropState != 0) {
-        PropState = other.PropState;
-      }
       triggerNameList_.Add(other.triggerNameList_);
       if (other.extraInfo_ != null) {
         if (extraInfo_ == null) {
@@ -316,11 +310,17 @@ namespace March7thHoney.Proto {
         }
         ExtraInfo.MergeFrom(other.ExtraInfo);
       }
-      if (other.CreateTimeMs != 0UL) {
-        CreateTimeMs = other.CreateTimeMs;
+      if (other.LifeTimeMs != 0) {
+        LifeTimeMs = other.LifeTimeMs;
       }
       if (other.PropId != 0) {
         PropId = other.PropId;
+      }
+      if (other.CreateTimeMs != 0UL) {
+        CreateTimeMs = other.CreateTimeMs;
+      }
+      if (other.PropState != 0) {
+        PropState = other.PropState;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -342,30 +342,30 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            LifeTimeMs = input.ReadUInt32();
-            break;
-          }
-          case 16: {
             PropState = input.ReadUInt32();
             break;
           }
-          case 50: {
-            triggerNameList_.AddEntriesFrom(input, _repeated_triggerNameList_codec);
+          case 24: {
+            PropId = input.ReadUInt32();
             break;
           }
-          case 74: {
+          case 58: {
             if (extraInfo_ == null) {
               ExtraInfo = new global::March7thHoney.Proto.PropExtraInfo();
             }
             input.ReadMessage(ExtraInfo);
             break;
           }
-          case 96: {
+          case 64: {
             CreateTimeMs = input.ReadUInt64();
             break;
           }
-          case 120: {
-            PropId = input.ReadUInt32();
+          case 112: {
+            LifeTimeMs = input.ReadUInt32();
+            break;
+          }
+          case 122: {
+            triggerNameList_.AddEntriesFrom(input, _repeated_triggerNameList_codec);
             break;
           }
         }
@@ -388,30 +388,30 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            LifeTimeMs = input.ReadUInt32();
-            break;
-          }
-          case 16: {
             PropState = input.ReadUInt32();
             break;
           }
-          case 50: {
-            triggerNameList_.AddEntriesFrom(ref input, _repeated_triggerNameList_codec);
+          case 24: {
+            PropId = input.ReadUInt32();
             break;
           }
-          case 74: {
+          case 58: {
             if (extraInfo_ == null) {
               ExtraInfo = new global::March7thHoney.Proto.PropExtraInfo();
             }
             input.ReadMessage(ExtraInfo);
             break;
           }
-          case 96: {
+          case 64: {
             CreateTimeMs = input.ReadUInt64();
             break;
           }
-          case 120: {
-            PropId = input.ReadUInt32();
+          case 112: {
+            LifeTimeMs = input.ReadUInt32();
+            break;
+          }
+          case 122: {
+            triggerNameList_.AddEntriesFrom(ref input, _repeated_triggerNameList_codec);
             break;
           }
         }

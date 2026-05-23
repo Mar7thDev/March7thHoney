@@ -24,14 +24,13 @@ namespace March7thHoney.Proto {
     static CmdTelevisionActivityTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Ch9DbWRUZWxldmlzaW9uQWN0aXZpdHlUeXBlLnByb3RvKqACChlDbWRUZWxl",
-            "dmlzaW9uQWN0aXZpdHlUeXBlEhsKF0NQS0FKRkpKUEVEX1BDUERIRUxQS0VN",
-            "EAASJgohQ21kR2V0VGVsZXZpc2lvbkFjdGl2aXR5RGF0YVNjUnNwEMQ2EikK",
-            "JENtZEVudGVyVGVsZXZpc2lvbkFjdGl2aXR5U3RhZ2VDc1JlcRC6NhImCiFD",
-            "bWRHZXRUZWxldmlzaW9uQWN0aXZpdHlEYXRhQ3NSZXEQsTYSEwoOQ21kTUFH",
-            "UEtBUEhGTUoQsjYSKQokQ21kRW50ZXJUZWxldmlzaW9uQWN0aXZpdHlTdGFn",
-            "ZVNjUnNwEL82EisKJkNtZFRlbGV2aXNpb25BY3Rpdml0eUJhdHRsZUVuZFNj",
-            "Tm90aWZ5ELg2QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "Ch9DbWRUZWxldmlzaW9uQWN0aXZpdHlUeXBlLnByb3RvKuwBChlDbWRUZWxl",
+            "dmlzaW9uQWN0aXZpdHlUeXBlEhsKF0VEQUFPS0RBRUlGX05MQ0RHSVBHRkRK",
+            "EAASHAoXRURBQU9LREFFSUZfT0RIR0NNS0tLQ04QwzYSHAoXRURBQU9LREFF",
+            "SUZfS0VCQlBNQk5BT0wQsjYSHAoXRURBQU9LREFFSUZfRUxDQ09BSUtOSUcQ",
+            "wjYSHAoXRURBQU9LREFFSUZfTEZGRkRLSUhCUFAQwDYSHAoXRURBQU9LREFF",
+            "SUZfUFBCS0dQTUhBR0kQtjYSHAoXRURBQU9LREFFSUZfSEZGR09BTUpIRUQQ",
+            "xDZCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdTelevisionActivityType), }, null, null));
@@ -41,13 +40,13 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdTelevisionActivityType {
-    [pbr::OriginalName("CPKAJFJJPED_PCPDHELPKEM")] CpkajfjjpedPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdGetTelevisionActivityDataScRsp")] CmdGetTelevisionActivityDataScRsp = 6980,
-    [pbr::OriginalName("CmdEnterTelevisionActivityStageCsReq")] CmdEnterTelevisionActivityStageCsReq = 6970,
-    [pbr::OriginalName("CmdGetTelevisionActivityDataCsReq")] CmdGetTelevisionActivityDataCsReq = 6961,
-    [pbr::OriginalName("CmdMAGPKAPHFMJ")] CmdMagpkaphfmj = 6962,
-    [pbr::OriginalName("CmdEnterTelevisionActivityStageScRsp")] CmdEnterTelevisionActivityStageScRsp = 6975,
-    [pbr::OriginalName("CmdTelevisionActivityBattleEndScNotify")] CmdTelevisionActivityBattleEndScNotify = 6968,
+    [pbr::OriginalName("EDAAOKDAEIF_NLCDGIPGFDJ")] EdaaokdaeifNlcdgipgfdj = 0,
+    [pbr::OriginalName("EDAAOKDAEIF_ODHGCMKKKCN")] EdaaokdaeifOdhgcmkkkcn = 6979,
+    [pbr::OriginalName("EDAAOKDAEIF_KEBBPMBNAOL")] EdaaokdaeifKebbpmbnaol = 6962,
+    [pbr::OriginalName("EDAAOKDAEIF_ELCCOAIKNIG")] EdaaokdaeifElccoaiknig = 6978,
+    [pbr::OriginalName("EDAAOKDAEIF_LFFFDKIHBPP")] EdaaokdaeifLfffdkihbpp = 6976,
+    [pbr::OriginalName("EDAAOKDAEIF_PPBKGPMHAGI")] EdaaokdaeifPpbkgpmhagi = 6966,
+    [pbr::OriginalName("EDAAOKDAEIF_HFFGOAMJHED")] EdaaokdaeifHffgoamjhed = 6980,
   }
 
   #endregion

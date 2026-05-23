@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "APDPAECJPIH.proto";
+import "MLJIILDNDPL.proto";
 
 message GridFightGetArchiveCsReq {
-    APDPAECJPIH type = 8;
+    MLJIILDNDPL type = 2;
 }

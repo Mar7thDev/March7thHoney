@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message UpdateGameFormation {
+    string MILBDIPBJGP = 11;
+    string KFPMJKCOJAJ = 14;
+    string name = 2;
+    bytes JLFIAFKGCOJ = 12;
+    uint32 dice_slot_id = 5;
+    bool KLLEKHPJGLE = 15;
+}

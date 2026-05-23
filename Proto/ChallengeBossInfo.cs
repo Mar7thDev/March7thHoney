@@ -24,28 +24,29 @@ namespace March7thHoney.Proto {
     static ChallengeBossInfoReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChdDaGFsbGVuZ2VCb3NzSW5mby5wcm90bxoiQ2hhbGxlbmdlQm9zc0F2YXRh",
-            "clJlbGljSW5mby5wcm90bxogQ2hhbGxlbmdlQm9zc0VxdWlwbWVudEluZm8u",
-            "cHJvdG8aIUNoYWxsZW5nZUJvc3NTaW5nbGVOb2RlSW5mby5wcm90bxoRRUVC",
-            "UEhKQ05CRk8ucHJvdG8i6wQKEUNoYWxsZW5nZUJvc3NJbmZvEjEKC3NlY29u",
-            "ZF9ub2RlGAIgASgLMhwuQ2hhbGxlbmdlQm9zc1NpbmdsZU5vZGVJbmZvEiEK",
-            "C0FCTkRGS0ZJS0NJGAQgAygLMgwuRUVCUEhKQ05CRk8SUwoaY2hhbGxlbmdl",
-            "X2F2YXRhcl9yZWxpY19tYXAYBSADKAsyLy5DaGFsbGVuZ2VCb3NzSW5mby5D",
-            "aGFsbGVuZ2VBdmF0YXJSZWxpY01hcEVudHJ5EhQKDGZpcnN0X2xpbmV1cBgG",
-            "IAMoDRJbCh5jaGFsbGVuZ2VfYXZhdGFyX2VxdWlwbWVudF9tYXAYByADKAsy",
-            "My5DaGFsbGVuZ2VCb3NzSW5mby5DaGFsbGVuZ2VBdmF0YXJFcXVpcG1lbnRN",
-            "YXBFbnRyeRIhCgtCS05LTEVPQ0pOTxgKIAMoCzIMLkVFQlBISkNOQkZPEjAK",
-            "CmZpcnN0X25vZGUYCyABKAsyHC5DaGFsbGVuZ2VCb3NzU2luZ2xlTm9kZUlu",
-            "Zm8SFQoNc2Vjb25kX2xpbmV1cBgNIAMoDRIMCgR1bmsxGA8gASgIGl0KHENo",
-            "YWxsZW5nZUF2YXRhclJlbGljTWFwRW50cnkSCwoDa2V5GAEgASgNEiwKBXZh",
-            "bHVlGAIgASgLMh0uQ2hhbGxlbmdlQm9zc0F2YXRhclJlbGljSW5mbzoCOAEa",
-            "XwogQ2hhbGxlbmdlQXZhdGFyRXF1aXBtZW50TWFwRW50cnkSCwoDa2V5GAEg",
-            "ASgNEioKBXZhbHVlGAIgASgLMhsuQ2hhbGxlbmdlQm9zc0VxdWlwbWVudElu",
-            "Zm86AjgBQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ChdDaGFsbGVuZ2VCb3NzSW5mby5wcm90bxoWQXZhdGFySWRlbnRpZmllci5w",
+            "cm90bxoiQ2hhbGxlbmdlQm9zc0F2YXRhclJlbGljSW5mby5wcm90bxogQ2hh",
+            "bGxlbmdlQm9zc0VxdWlwbWVudEluZm8ucHJvdG8aIUNoYWxsZW5nZUJvc3NT",
+            "aW5nbGVOb2RlSW5mby5wcm90byL1BAoRQ2hhbGxlbmdlQm9zc0luZm8SMQoL",
+            "c2Vjb25kX25vZGUYAyABKAsyHC5DaGFsbGVuZ2VCb3NzU2luZ2xlTm9kZUlu",
+            "Zm8SUwoaY2hhbGxlbmdlX2F2YXRhcl9yZWxpY19tYXAYDiADKAsyLy5DaGFs",
+            "bGVuZ2VCb3NzSW5mby5DaGFsbGVuZ2VBdmF0YXJSZWxpY01hcEVudHJ5EhQK",
+            "DGZpcnN0X2xpbmV1cBgCIAMoDRImCgtCS05LTEVPQ0pOTxgKIAMoCzIRLkF2",
+            "YXRhcklkZW50aWZpZXISMAoKZmlyc3Rfbm9kZRgPIAEoCzIcLkNoYWxsZW5n",
+            "ZUJvc3NTaW5nbGVOb2RlSW5mbxJbCh5jaGFsbGVuZ2VfYXZhdGFyX2VxdWlw",
+            "bWVudF9tYXAYByADKAsyMy5DaGFsbGVuZ2VCb3NzSW5mby5DaGFsbGVuZ2VB",
+            "dmF0YXJFcXVpcG1lbnRNYXBFbnRyeRImCgtBQk5ERktGSUtDSRgGIAMoCzIR",
+            "LkF2YXRhcklkZW50aWZpZXISFQoNc2Vjb25kX2xpbmV1cBgMIAMoDRIMCgR1",
+            "bmsxGAEgASgIGl0KHENoYWxsZW5nZUF2YXRhclJlbGljTWFwRW50cnkSCwoD",
+            "a2V5GAEgASgNEiwKBXZhbHVlGAIgASgLMh0uQ2hhbGxlbmdlQm9zc0F2YXRh",
+            "clJlbGljSW5mbzoCOAEaXwogQ2hhbGxlbmdlQXZhdGFyRXF1aXBtZW50TWFw",
+            "RW50cnkSCwoDa2V5GAEgASgNEioKBXZhbHVlGAIgASgLMhsuQ2hhbGxlbmdl",
+            "Qm9zc0VxdWlwbWVudEluZm86AjgBQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
+            "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChallengeBossAvatarRelicInfoReflection.Descriptor, global::March7thHoney.Proto.ChallengeBossEquipmentInfoReflection.Descriptor, global::March7thHoney.Proto.ChallengeBossSingleNodeInfoReflection.Descriptor, global::March7thHoney.Proto.EEBPHJCNBFOReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.AvatarIdentifierReflection.Descriptor, global::March7thHoney.Proto.ChallengeBossAvatarRelicInfoReflection.Descriptor, global::March7thHoney.Proto.ChallengeBossEquipmentInfoReflection.Descriptor, global::March7thHoney.Proto.ChallengeBossSingleNodeInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengeBossInfo), global::March7thHoney.Proto.ChallengeBossInfo.Parser, new[]{ "SecondNode", "ABNDFKFIKCI", "ChallengeAvatarRelicMap", "FirstLineup", "ChallengeAvatarEquipmentMap", "BKNKLEOCJNO", "FirstNode", "SecondLineup", "Unk1" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengeBossInfo), global::March7thHoney.Proto.ChallengeBossInfo.Parser, new[]{ "SecondNode", "ChallengeAvatarRelicMap", "FirstLineup", "BKNKLEOCJNO", "FirstNode", "ChallengeAvatarEquipmentMap", "ABNDFKFIKCI", "SecondLineup", "Unk1" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, })
           }));
     }
     #endregion
@@ -88,12 +89,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ChallengeBossInfo(ChallengeBossInfo other) : this() {
       secondNode_ = other.secondNode_ != null ? other.secondNode_.Clone() : null;
-      aBNDFKFIKCI_ = other.aBNDFKFIKCI_.Clone();
       challengeAvatarRelicMap_ = other.challengeAvatarRelicMap_.Clone();
       firstLineup_ = other.firstLineup_.Clone();
-      challengeAvatarEquipmentMap_ = other.challengeAvatarEquipmentMap_.Clone();
       bKNKLEOCJNO_ = other.bKNKLEOCJNO_.Clone();
       firstNode_ = other.firstNode_ != null ? other.firstNode_.Clone() : null;
+      challengeAvatarEquipmentMap_ = other.challengeAvatarEquipmentMap_.Clone();
+      aBNDFKFIKCI_ = other.aBNDFKFIKCI_.Clone();
       secondLineup_ = other.secondLineup_.Clone();
       unk1_ = other.unk1_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -106,7 +107,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "second_node" field.</summary>
-    public const int SecondNodeFieldNumber = 2;
+    public const int SecondNodeFieldNumber = 3;
     private global::March7thHoney.Proto.ChallengeBossSingleNodeInfo secondNode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -117,21 +118,10 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "ABNDFKFIKCI" field.</summary>
-    public const int ABNDFKFIKCIFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EEBPHJCNBFO> _repeated_aBNDFKFIKCI_codec
-        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.EEBPHJCNBFO.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EEBPHJCNBFO> aBNDFKFIKCI_ = new pbc::RepeatedField<global::March7thHoney.Proto.EEBPHJCNBFO>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.EEBPHJCNBFO> ABNDFKFIKCI {
-      get { return aBNDFKFIKCI_; }
-    }
-
     /// <summary>Field number for the "challenge_avatar_relic_map" field.</summary>
-    public const int ChallengeAvatarRelicMapFieldNumber = 5;
+    public const int ChallengeAvatarRelicMapFieldNumber = 14;
     private static readonly pbc::MapField<uint, global::March7thHoney.Proto.ChallengeBossAvatarRelicInfo>.Codec _map_challengeAvatarRelicMap_codec
-        = new pbc::MapField<uint, global::March7thHoney.Proto.ChallengeBossAvatarRelicInfo>.Codec(pb::FieldCodec.ForUInt32(8, 0), pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.ChallengeBossAvatarRelicInfo.Parser), 42);
+        = new pbc::MapField<uint, global::March7thHoney.Proto.ChallengeBossAvatarRelicInfo>.Codec(pb::FieldCodec.ForUInt32(8, 0), pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.ChallengeBossAvatarRelicInfo.Parser), 114);
     private readonly pbc::MapField<uint, global::March7thHoney.Proto.ChallengeBossAvatarRelicInfo> challengeAvatarRelicMap_ = new pbc::MapField<uint, global::March7thHoney.Proto.ChallengeBossAvatarRelicInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -140,14 +130,37 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "first_lineup" field.</summary>
-    public const int FirstLineupFieldNumber = 6;
+    public const int FirstLineupFieldNumber = 2;
     private static readonly pb::FieldCodec<uint> _repeated_firstLineup_codec
-        = pb::FieldCodec.ForUInt32(50);
+        = pb::FieldCodec.ForUInt32(18);
     private readonly pbc::RepeatedField<uint> firstLineup_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<uint> FirstLineup {
       get { return firstLineup_; }
+    }
+
+    /// <summary>Field number for the "BKNKLEOCJNO" field.</summary>
+    public const int BKNKLEOCJNOFieldNumber = 10;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AvatarIdentifier> _repeated_bKNKLEOCJNO_codec
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.AvatarIdentifier.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AvatarIdentifier> bKNKLEOCJNO_ = new pbc::RepeatedField<global::March7thHoney.Proto.AvatarIdentifier>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.AvatarIdentifier> BKNKLEOCJNO {
+      get { return bKNKLEOCJNO_; }
+    }
+
+    /// <summary>Field number for the "first_node" field.</summary>
+    public const int FirstNodeFieldNumber = 15;
+    private global::March7thHoney.Proto.ChallengeBossSingleNodeInfo firstNode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.ChallengeBossSingleNodeInfo FirstNode {
+      get { return firstNode_; }
+      set {
+        firstNode_ = value;
+      }
     }
 
     /// <summary>Field number for the "challenge_avatar_equipment_map" field.</summary>
@@ -161,33 +174,21 @@ namespace March7thHoney.Proto {
       get { return challengeAvatarEquipmentMap_; }
     }
 
-    /// <summary>Field number for the "BKNKLEOCJNO" field.</summary>
-    public const int BKNKLEOCJNOFieldNumber = 10;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EEBPHJCNBFO> _repeated_bKNKLEOCJNO_codec
-        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.EEBPHJCNBFO.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EEBPHJCNBFO> bKNKLEOCJNO_ = new pbc::RepeatedField<global::March7thHoney.Proto.EEBPHJCNBFO>();
+    /// <summary>Field number for the "ABNDFKFIKCI" field.</summary>
+    public const int ABNDFKFIKCIFieldNumber = 6;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AvatarIdentifier> _repeated_aBNDFKFIKCI_codec
+        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.AvatarIdentifier.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AvatarIdentifier> aBNDFKFIKCI_ = new pbc::RepeatedField<global::March7thHoney.Proto.AvatarIdentifier>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.EEBPHJCNBFO> BKNKLEOCJNO {
-      get { return bKNKLEOCJNO_; }
-    }
-
-    /// <summary>Field number for the "first_node" field.</summary>
-    public const int FirstNodeFieldNumber = 11;
-    private global::March7thHoney.Proto.ChallengeBossSingleNodeInfo firstNode_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.ChallengeBossSingleNodeInfo FirstNode {
-      get { return firstNode_; }
-      set {
-        firstNode_ = value;
-      }
+    public pbc::RepeatedField<global::March7thHoney.Proto.AvatarIdentifier> ABNDFKFIKCI {
+      get { return aBNDFKFIKCI_; }
     }
 
     /// <summary>Field number for the "second_lineup" field.</summary>
-    public const int SecondLineupFieldNumber = 13;
+    public const int SecondLineupFieldNumber = 12;
     private static readonly pb::FieldCodec<uint> _repeated_secondLineup_codec
-        = pb::FieldCodec.ForUInt32(106);
+        = pb::FieldCodec.ForUInt32(98);
     private readonly pbc::RepeatedField<uint> secondLineup_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -196,7 +197,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "unk1" field.</summary>
-    public const int Unk1FieldNumber = 15;
+    public const int Unk1FieldNumber = 1;
     private bool unk1_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -223,12 +224,12 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (!object.Equals(SecondNode, other.SecondNode)) return false;
-      if(!aBNDFKFIKCI_.Equals(other.aBNDFKFIKCI_)) return false;
       if (!ChallengeAvatarRelicMap.Equals(other.ChallengeAvatarRelicMap)) return false;
       if(!firstLineup_.Equals(other.firstLineup_)) return false;
-      if (!ChallengeAvatarEquipmentMap.Equals(other.ChallengeAvatarEquipmentMap)) return false;
       if(!bKNKLEOCJNO_.Equals(other.bKNKLEOCJNO_)) return false;
       if (!object.Equals(FirstNode, other.FirstNode)) return false;
+      if (!ChallengeAvatarEquipmentMap.Equals(other.ChallengeAvatarEquipmentMap)) return false;
+      if(!aBNDFKFIKCI_.Equals(other.aBNDFKFIKCI_)) return false;
       if(!secondLineup_.Equals(other.secondLineup_)) return false;
       if (Unk1 != other.Unk1) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -239,12 +240,12 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (secondNode_ != null) hash ^= SecondNode.GetHashCode();
-      hash ^= aBNDFKFIKCI_.GetHashCode();
       hash ^= ChallengeAvatarRelicMap.GetHashCode();
       hash ^= firstLineup_.GetHashCode();
-      hash ^= ChallengeAvatarEquipmentMap.GetHashCode();
       hash ^= bKNKLEOCJNO_.GetHashCode();
       if (firstNode_ != null) hash ^= FirstNode.GetHashCode();
+      hash ^= ChallengeAvatarEquipmentMap.GetHashCode();
+      hash ^= aBNDFKFIKCI_.GetHashCode();
       hash ^= secondLineup_.GetHashCode();
       if (Unk1 != false) hash ^= Unk1.GetHashCode();
       if (_unknownFields != null) {
@@ -265,23 +266,23 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (Unk1 != false) {
+        output.WriteRawTag(8);
+        output.WriteBool(Unk1);
+      }
+      firstLineup_.WriteTo(output, _repeated_firstLineup_codec);
       if (secondNode_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(26);
         output.WriteMessage(SecondNode);
       }
       aBNDFKFIKCI_.WriteTo(output, _repeated_aBNDFKFIKCI_codec);
-      challengeAvatarRelicMap_.WriteTo(output, _map_challengeAvatarRelicMap_codec);
-      firstLineup_.WriteTo(output, _repeated_firstLineup_codec);
       challengeAvatarEquipmentMap_.WriteTo(output, _map_challengeAvatarEquipmentMap_codec);
       bKNKLEOCJNO_.WriteTo(output, _repeated_bKNKLEOCJNO_codec);
-      if (firstNode_ != null) {
-        output.WriteRawTag(90);
-        output.WriteMessage(FirstNode);
-      }
       secondLineup_.WriteTo(output, _repeated_secondLineup_codec);
-      if (Unk1 != false) {
-        output.WriteRawTag(120);
-        output.WriteBool(Unk1);
+      challengeAvatarRelicMap_.WriteTo(output, _map_challengeAvatarRelicMap_codec);
+      if (firstNode_ != null) {
+        output.WriteRawTag(122);
+        output.WriteMessage(FirstNode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -293,23 +294,23 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Unk1 != false) {
+        output.WriteRawTag(8);
+        output.WriteBool(Unk1);
+      }
+      firstLineup_.WriteTo(ref output, _repeated_firstLineup_codec);
       if (secondNode_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(26);
         output.WriteMessage(SecondNode);
       }
       aBNDFKFIKCI_.WriteTo(ref output, _repeated_aBNDFKFIKCI_codec);
-      challengeAvatarRelicMap_.WriteTo(ref output, _map_challengeAvatarRelicMap_codec);
-      firstLineup_.WriteTo(ref output, _repeated_firstLineup_codec);
       challengeAvatarEquipmentMap_.WriteTo(ref output, _map_challengeAvatarEquipmentMap_codec);
       bKNKLEOCJNO_.WriteTo(ref output, _repeated_bKNKLEOCJNO_codec);
-      if (firstNode_ != null) {
-        output.WriteRawTag(90);
-        output.WriteMessage(FirstNode);
-      }
       secondLineup_.WriteTo(ref output, _repeated_secondLineup_codec);
-      if (Unk1 != false) {
-        output.WriteRawTag(120);
-        output.WriteBool(Unk1);
+      challengeAvatarRelicMap_.WriteTo(ref output, _map_challengeAvatarRelicMap_codec);
+      if (firstNode_ != null) {
+        output.WriteRawTag(122);
+        output.WriteMessage(FirstNode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -324,14 +325,14 @@ namespace March7thHoney.Proto {
       if (secondNode_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(SecondNode);
       }
-      size += aBNDFKFIKCI_.CalculateSize(_repeated_aBNDFKFIKCI_codec);
       size += challengeAvatarRelicMap_.CalculateSize(_map_challengeAvatarRelicMap_codec);
       size += firstLineup_.CalculateSize(_repeated_firstLineup_codec);
-      size += challengeAvatarEquipmentMap_.CalculateSize(_map_challengeAvatarEquipmentMap_codec);
       size += bKNKLEOCJNO_.CalculateSize(_repeated_bKNKLEOCJNO_codec);
       if (firstNode_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(FirstNode);
       }
+      size += challengeAvatarEquipmentMap_.CalculateSize(_map_challengeAvatarEquipmentMap_codec);
+      size += aBNDFKFIKCI_.CalculateSize(_repeated_aBNDFKFIKCI_codec);
       size += secondLineup_.CalculateSize(_repeated_secondLineup_codec);
       if (Unk1 != false) {
         size += 1 + 1;
@@ -354,10 +355,8 @@ namespace March7thHoney.Proto {
         }
         SecondNode.MergeFrom(other.SecondNode);
       }
-      aBNDFKFIKCI_.Add(other.aBNDFKFIKCI_);
       challengeAvatarRelicMap_.MergeFrom(other.challengeAvatarRelicMap_);
       firstLineup_.Add(other.firstLineup_);
-      challengeAvatarEquipmentMap_.MergeFrom(other.challengeAvatarEquipmentMap_);
       bKNKLEOCJNO_.Add(other.bKNKLEOCJNO_);
       if (other.firstNode_ != null) {
         if (firstNode_ == null) {
@@ -365,6 +364,8 @@ namespace March7thHoney.Proto {
         }
         FirstNode.MergeFrom(other.FirstNode);
       }
+      challengeAvatarEquipmentMap_.MergeFrom(other.challengeAvatarEquipmentMap_);
+      aBNDFKFIKCI_.Add(other.aBNDFKFIKCI_);
       secondLineup_.Add(other.secondLineup_);
       if (other.Unk1 != false) {
         Unk1 = other.Unk1;
@@ -388,24 +389,24 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 18: {
+          case 8: {
+            Unk1 = input.ReadBool();
+            break;
+          }
+          case 18:
+          case 16: {
+            firstLineup_.AddEntriesFrom(input, _repeated_firstLineup_codec);
+            break;
+          }
+          case 26: {
             if (secondNode_ == null) {
               SecondNode = new global::March7thHoney.Proto.ChallengeBossSingleNodeInfo();
             }
             input.ReadMessage(SecondNode);
             break;
           }
-          case 34: {
+          case 50: {
             aBNDFKFIKCI_.AddEntriesFrom(input, _repeated_aBNDFKFIKCI_codec);
-            break;
-          }
-          case 42: {
-            challengeAvatarRelicMap_.AddEntriesFrom(input, _map_challengeAvatarRelicMap_codec);
-            break;
-          }
-          case 50:
-          case 48: {
-            firstLineup_.AddEntriesFrom(input, _repeated_firstLineup_codec);
             break;
           }
           case 58: {
@@ -416,20 +417,20 @@ namespace March7thHoney.Proto {
             bKNKLEOCJNO_.AddEntriesFrom(input, _repeated_bKNKLEOCJNO_codec);
             break;
           }
-          case 90: {
+          case 98:
+          case 96: {
+            secondLineup_.AddEntriesFrom(input, _repeated_secondLineup_codec);
+            break;
+          }
+          case 114: {
+            challengeAvatarRelicMap_.AddEntriesFrom(input, _map_challengeAvatarRelicMap_codec);
+            break;
+          }
+          case 122: {
             if (firstNode_ == null) {
               FirstNode = new global::March7thHoney.Proto.ChallengeBossSingleNodeInfo();
             }
             input.ReadMessage(FirstNode);
-            break;
-          }
-          case 106:
-          case 104: {
-            secondLineup_.AddEntriesFrom(input, _repeated_secondLineup_codec);
-            break;
-          }
-          case 120: {
-            Unk1 = input.ReadBool();
             break;
           }
         }
@@ -451,24 +452,24 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 18: {
+          case 8: {
+            Unk1 = input.ReadBool();
+            break;
+          }
+          case 18:
+          case 16: {
+            firstLineup_.AddEntriesFrom(ref input, _repeated_firstLineup_codec);
+            break;
+          }
+          case 26: {
             if (secondNode_ == null) {
               SecondNode = new global::March7thHoney.Proto.ChallengeBossSingleNodeInfo();
             }
             input.ReadMessage(SecondNode);
             break;
           }
-          case 34: {
+          case 50: {
             aBNDFKFIKCI_.AddEntriesFrom(ref input, _repeated_aBNDFKFIKCI_codec);
-            break;
-          }
-          case 42: {
-            challengeAvatarRelicMap_.AddEntriesFrom(ref input, _map_challengeAvatarRelicMap_codec);
-            break;
-          }
-          case 50:
-          case 48: {
-            firstLineup_.AddEntriesFrom(ref input, _repeated_firstLineup_codec);
             break;
           }
           case 58: {
@@ -479,20 +480,20 @@ namespace March7thHoney.Proto {
             bKNKLEOCJNO_.AddEntriesFrom(ref input, _repeated_bKNKLEOCJNO_codec);
             break;
           }
-          case 90: {
+          case 98:
+          case 96: {
+            secondLineup_.AddEntriesFrom(ref input, _repeated_secondLineup_codec);
+            break;
+          }
+          case 114: {
+            challengeAvatarRelicMap_.AddEntriesFrom(ref input, _map_challengeAvatarRelicMap_codec);
+            break;
+          }
+          case 122: {
             if (firstNode_ == null) {
               FirstNode = new global::March7thHoney.Proto.ChallengeBossSingleNodeInfo();
             }
             input.ReadMessage(FirstNode);
-            break;
-          }
-          case 106:
-          case 104: {
-            secondLineup_.AddEntriesFrom(ref input, _repeated_secondLineup_codec);
-            break;
-          }
-          case 120: {
-            Unk1 = input.ReadBool();
             break;
           }
         }

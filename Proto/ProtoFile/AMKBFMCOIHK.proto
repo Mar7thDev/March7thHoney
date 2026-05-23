@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "CGOGDJKALMH.proto";
+import "DifficultyAdjustmentType.proto";
+
+message AMKBFMCOIHK {
+    uint32 id = 10;
+    CGOGDJKALMH NFMKOFNEKLA = 12;
+    DifficultyAdjustmentType ANJMFPKJHOH = 1;
+}

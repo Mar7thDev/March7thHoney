@@ -25,11 +25,11 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch9DaGVzc1JvZ3VlQ2VsbFNwZWNpYWxUeXBlLnByb3RvKskBChlDaGVzc1Jv",
-            "Z3VlQ2VsbFNwZWNpYWxUeXBlEhsKF1BLRkVHQ0hHQ0VFX1BDUERIRUxQS0VN",
-            "EAASGwoXUEtGRUdDSEdDRUVfQkdJQlBEUE5GQkMQARIbChdQS0ZFR0NIR0NF",
-            "RV9DRkdBTEFKT05DUBACEhsKF1BLRkVHQ0hHQ0VFX0hBR0NMS0NLR0pEEAMS",
-            "GwoXUEtGRUdDSEdDRUVfS0JIR0FKQ05OQk0QBBIbChdQS0ZFR0NIR0NFRV9Q",
-            "QU1NRENQR0FNRRAFQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "Z3VlQ2VsbFNwZWNpYWxUeXBlEhsKF1BIQUhQSVBQTURGX05MQ0RHSVBHRkRK",
+            "EAASGwoXUEhBSFBJUFBNREZfQUJHRUtQSkhISUEQARIbChdQSEFIUElQUE1E",
+            "Rl9FSERGRU1NRkhERxACEhsKF1BIQUhQSVBQTURGX0tDQUlGS01LSEZKEAMS",
+            "GwoXUEhBSFBJUFBNREZfQ01GTktES0tHR0kQBBIbChdQSEFIUElQUE1ERl9N",
+            "T1BKS0hFSU5BTBAFQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.ChessRogueCellSpecialType), }, null, null));
@@ -39,12 +39,12 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum ChessRogueCellSpecialType {
-    [pbr::OriginalName("PKFEGCHGCEE_PCPDHELPKEM")] PkfegchgceePcpdhelpkem = 0,
-    [pbr::OriginalName("PKFEGCHGCEE_BGIBPDPNFBC")] PkfegchgceeBgibpdpnfbc = 1,
-    [pbr::OriginalName("PKFEGCHGCEE_CFGALAJONCP")] PkfegchgceeCfgalajoncp = 2,
-    [pbr::OriginalName("PKFEGCHGCEE_HAGCLKCKGJD")] PkfegchgceeHagclkckgjd = 3,
-    [pbr::OriginalName("PKFEGCHGCEE_KBHGAJCNNBM")] PkfegchgceeKbhgajcnnbm = 4,
-    [pbr::OriginalName("PKFEGCHGCEE_PAMMDCPGAME")] PkfegchgceePammdcpgame = 5,
+    [pbr::OriginalName("PHAHPIPPMDF_NLCDGIPGFDJ")] PhahpippmdfNlcdgipgfdj = 0,
+    [pbr::OriginalName("PHAHPIPPMDF_ABGEKPJHHIA")] PhahpippmdfAbgekpjhhia = 1,
+    [pbr::OriginalName("PHAHPIPPMDF_EHDFEMMFHDG")] PhahpippmdfEhdfemmfhdg = 2,
+    [pbr::OriginalName("PHAHPIPPMDF_KCAIFKMKHFJ")] PhahpippmdfKcaifkmkhfj = 3,
+    [pbr::OriginalName("PHAHPIPPMDF_CMFNKDKKGGI")] PhahpippmdfCmfnkdkkggi = 4,
+    [pbr::OriginalName("PHAHPIPPMDF_MOPJKHEINAL")] PhahpippmdfMopjkheinal = 5,
   }
 
   #endregion

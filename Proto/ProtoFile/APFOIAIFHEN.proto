@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message APFOIAIFHEN {
+    repeated uint32 GPAFMICJLPL = 1;
+    map<uint32, uint32> EHJLIMMAJOI = 2;
+}

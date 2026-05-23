@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "HOBCIOKKNKH.proto";
+import "EBPBMFBFEJA.proto";
 
 message ChimeraDuelEndGameScRsp {
-    uint32 retcode = 3;
-    HOBCIOKKNKH CKIMOELPOAB = 8;
+    EBPBMFBFEJA CECFDNCDBEI = 5;
+    uint32 retcode = 9;
 }

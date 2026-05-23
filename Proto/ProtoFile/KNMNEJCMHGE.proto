@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message KNMNEJCMHGE {
+    int32 MNLINFEODPJ = 1;
+    float GMPKBKLGDMA = 9;
+}

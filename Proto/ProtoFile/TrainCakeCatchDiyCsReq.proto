@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "FOFNOBHLKGO.proto";
+import "BFAKMCIJFCB.proto";
 
 message TrainCakeCatchDiyCsReq {
-    FOFNOBHLKGO PEOECDDANNP = 3;
+    BFAKMCIJFCB NLJBJMDPBGN = 10;
 }

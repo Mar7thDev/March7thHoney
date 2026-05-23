@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message GetRogueShopFormulaInfoCsReq {
-    bool NOKNNMPMGGN = 6;
-    uint32 interacted_prop_entity_id = 13;
+    uint32 interacted_prop_entity_id = 8;
+    bool LJBCDJNNBJH = 3;
 }

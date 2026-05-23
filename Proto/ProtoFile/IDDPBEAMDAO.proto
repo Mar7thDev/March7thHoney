@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum IDDPBEAMDAO {
+    IDDPBEAMDAO_IIOCEDFJPNH = 0;
+    IDDPBEAMDAO_NBFHCJMNHAG = 1;
+    IDDPBEAMDAO_DHHHKOJBKCJ = 2;
+}

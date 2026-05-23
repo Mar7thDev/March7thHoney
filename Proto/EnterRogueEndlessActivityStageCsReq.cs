@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CilFbnRlclJvZ3VlRW5kbGVzc0FjdGl2aXR5U3RhZ2VDc1JlcS5wcm90bxoR",
-            "RkNJTUNIREVQUEoucHJvdG8iXQojRW50ZXJSb2d1ZUVuZGxlc3NBY3Rpdml0",
-            "eVN0YWdlQ3NSZXESEwoLUEpNQkpCTUJLQ0UYAyABKA0SIQoLYXZhdGFyX2xp",
-            "c3QYDyADKAsyDC5GQ0lNQ0hERVBQSkIWqgITTWFyY2g3dGhIb25leS5Qcm90",
+            "Q0FFRkJHQUZLSEQucHJvdG8iXQojRW50ZXJSb2d1ZUVuZGxlc3NBY3Rpdml0",
+            "eVN0YWdlQ3NSZXESIQoLYXZhdGFyX2xpc3QYDSADKAsyDC5DQUVGQkdBRktI",
+            "RBITCgtNUE1NQ1BNTkxJRBgHIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90",
             "b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.FCIMCHDEPPJReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.CAEFBGAFKHDReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EnterRogueEndlessActivityStageCsReq), global::March7thHoney.Proto.EnterRogueEndlessActivityStageCsReq.Parser, new[]{ "PJMBJBMBKCE", "AvatarList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EnterRogueEndlessActivityStageCsReq), global::March7thHoney.Proto.EnterRogueEndlessActivityStageCsReq.Parser, new[]{ "AvatarList", "MPMMCPMNLID" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,8 +74,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public EnterRogueEndlessActivityStageCsReq(EnterRogueEndlessActivityStageCsReq other) : this() {
-      pJMBJBMBKCE_ = other.pJMBJBMBKCE_;
       avatarList_ = other.avatarList_.Clone();
+      mPMMCPMNLID_ = other.mPMMCPMNLID_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,27 +85,27 @@ namespace March7thHoney.Proto {
       return new EnterRogueEndlessActivityStageCsReq(this);
     }
 
-    /// <summary>Field number for the "PJMBJBMBKCE" field.</summary>
-    public const int PJMBJBMBKCEFieldNumber = 3;
-    private uint pJMBJBMBKCE_;
+    /// <summary>Field number for the "avatar_list" field.</summary>
+    public const int AvatarListFieldNumber = 13;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.CAEFBGAFKHD> _repeated_avatarList_codec
+        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.CAEFBGAFKHD.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.CAEFBGAFKHD> avatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.CAEFBGAFKHD>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PJMBJBMBKCE {
-      get { return pJMBJBMBKCE_; }
-      set {
-        pJMBJBMBKCE_ = value;
-      }
+    public pbc::RepeatedField<global::March7thHoney.Proto.CAEFBGAFKHD> AvatarList {
+      get { return avatarList_; }
     }
 
-    /// <summary>Field number for the "avatar_list" field.</summary>
-    public const int AvatarListFieldNumber = 15;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.FCIMCHDEPPJ> _repeated_avatarList_codec
-        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.FCIMCHDEPPJ.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.FCIMCHDEPPJ> avatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.FCIMCHDEPPJ>();
+    /// <summary>Field number for the "MPMMCPMNLID" field.</summary>
+    public const int MPMMCPMNLIDFieldNumber = 7;
+    private uint mPMMCPMNLID_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.FCIMCHDEPPJ> AvatarList {
-      get { return avatarList_; }
+    public uint MPMMCPMNLID {
+      get { return mPMMCPMNLID_; }
+      set {
+        mPMMCPMNLID_ = value;
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -123,8 +123,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (PJMBJBMBKCE != other.PJMBJBMBKCE) return false;
       if(!avatarList_.Equals(other.avatarList_)) return false;
+      if (MPMMCPMNLID != other.MPMMCPMNLID) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,8 +132,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (PJMBJBMBKCE != 0) hash ^= PJMBJBMBKCE.GetHashCode();
       hash ^= avatarList_.GetHashCode();
+      if (MPMMCPMNLID != 0) hash ^= MPMMCPMNLID.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,9 +152,9 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (PJMBJBMBKCE != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(PJMBJBMBKCE);
+      if (MPMMCPMNLID != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(MPMMCPMNLID);
       }
       avatarList_.WriteTo(output, _repeated_avatarList_codec);
       if (_unknownFields != null) {
@@ -167,9 +167,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (PJMBJBMBKCE != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(PJMBJBMBKCE);
+      if (MPMMCPMNLID != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(MPMMCPMNLID);
       }
       avatarList_.WriteTo(ref output, _repeated_avatarList_codec);
       if (_unknownFields != null) {
@@ -182,10 +182,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (PJMBJBMBKCE != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PJMBJBMBKCE);
-      }
       size += avatarList_.CalculateSize(_repeated_avatarList_codec);
+      if (MPMMCPMNLID != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MPMMCPMNLID);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -198,10 +198,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.PJMBJBMBKCE != 0) {
-        PJMBJBMBKCE = other.PJMBJBMBKCE;
-      }
       avatarList_.Add(other.avatarList_);
+      if (other.MPMMCPMNLID != 0) {
+        MPMMCPMNLID = other.MPMMCPMNLID;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -221,11 +221,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
-            PJMBJBMBKCE = input.ReadUInt32();
+          case 56: {
+            MPMMCPMNLID = input.ReadUInt32();
             break;
           }
-          case 122: {
+          case 106: {
             avatarList_.AddEntriesFrom(input, _repeated_avatarList_codec);
             break;
           }
@@ -248,11 +248,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
-            PJMBJBMBKCE = input.ReadUInt32();
+          case 56: {
+            MPMMCPMNLID = input.ReadUInt32();
             break;
           }
-          case 122: {
+          case 106: {
             avatarList_.AddEntriesFrom(ref input, _repeated_avatarList_codec);
             break;
           }

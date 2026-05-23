@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChpHZXRFbnRlcmVkU2NlbmVTY1JzcC5wcm90bxoWRW50ZXJlZFNjZW5lSW5m",
             "by5wcm90byJbChRHZXRFbnRlcmVkU2NlbmVTY1JzcBIyChdlbnRlcmVkX3Nj",
-            "ZW5lX2luZm9fbGlzdBgFIAMoCzIRLkVudGVyZWRTY2VuZUluZm8SDwoHcmV0",
+            "ZW5lX2luZm9fbGlzdBgIIAMoCzIRLkVudGVyZWRTY2VuZUluZm8SDwoHcmV0",
             "Y29kZRgHIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.EnteredSceneInfoReflection.Descriptor, },
@@ -85,9 +85,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "entered_scene_info_list" field.</summary>
-    public const int EnteredSceneInfoListFieldNumber = 5;
+    public const int EnteredSceneInfoListFieldNumber = 8;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.EnteredSceneInfo> _repeated_enteredSceneInfoList_codec
-        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.EnteredSceneInfo.Parser);
+        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.EnteredSceneInfo.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.EnteredSceneInfo> enteredSceneInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.EnteredSceneInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -151,11 +151,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      enteredSceneInfoList_.WriteTo(output, _repeated_enteredSceneInfoList_codec);
       if (Retcode != 0) {
         output.WriteRawTag(56);
         output.WriteUInt32(Retcode);
       }
+      enteredSceneInfoList_.WriteTo(output, _repeated_enteredSceneInfoList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -166,11 +166,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      enteredSceneInfoList_.WriteTo(ref output, _repeated_enteredSceneInfoList_codec);
       if (Retcode != 0) {
         output.WriteRawTag(56);
         output.WriteUInt32(Retcode);
       }
+      enteredSceneInfoList_.WriteTo(ref output, _repeated_enteredSceneInfoList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -220,12 +220,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 42: {
-            enteredSceneInfoList_.AddEntriesFrom(input, _repeated_enteredSceneInfoList_codec);
-            break;
-          }
           case 56: {
             Retcode = input.ReadUInt32();
+            break;
+          }
+          case 66: {
+            enteredSceneInfoList_.AddEntriesFrom(input, _repeated_enteredSceneInfoList_codec);
             break;
           }
         }
@@ -247,12 +247,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 42: {
-            enteredSceneInfoList_.AddEntriesFrom(ref input, _repeated_enteredSceneInfoList_codec);
-            break;
-          }
           case 56: {
             Retcode = input.ReadUInt32();
+            break;
+          }
+          case 66: {
+            enteredSceneInfoList_.AddEntriesFrom(ref input, _repeated_enteredSceneInfoList_codec);
             break;
           }
         }

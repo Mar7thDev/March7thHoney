@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static TrainRefreshTimeNotifyReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChxUcmFpblJlZnJlc2hUaW1lTm90aWZ5LnByb3RvIjQKFlRyYWluUmVmcmVz",
-            "aFRpbWVOb3RpZnkSGgoSdHJhaW5fcmVmcmVzaF90aW1lGAMgASgEQhaqAhNN",
-            "YXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ChxUcmFpblJlZnJlc2hUaW1lTm90aWZ5LnByb3RvIi0KFlRyYWluUmVmcmVz",
+            "aFRpbWVOb3RpZnkSEwoLSUFNS05GS0NMQ0gYAiABKARCFqoCE01hcmNoN3Ro",
+            "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TrainRefreshTimeNotify), global::March7thHoney.Proto.TrainRefreshTimeNotify.Parser, new[]{ "TrainRefreshTime" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TrainRefreshTimeNotify), global::March7thHoney.Proto.TrainRefreshTimeNotify.Parser, new[]{ "IAMKNFKCLCH" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,7 +72,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public TrainRefreshTimeNotify(TrainRefreshTimeNotify other) : this() {
-      trainRefreshTime_ = other.trainRefreshTime_;
+      iAMKNFKCLCH_ = other.iAMKNFKCLCH_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -82,15 +82,15 @@ namespace March7thHoney.Proto {
       return new TrainRefreshTimeNotify(this);
     }
 
-    /// <summary>Field number for the "train_refresh_time" field.</summary>
-    public const int TrainRefreshTimeFieldNumber = 3;
-    private ulong trainRefreshTime_;
+    /// <summary>Field number for the "IAMKNFKCLCH" field.</summary>
+    public const int IAMKNFKCLCHFieldNumber = 2;
+    private ulong iAMKNFKCLCH_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ulong TrainRefreshTime {
-      get { return trainRefreshTime_; }
+    public ulong IAMKNFKCLCH {
+      get { return iAMKNFKCLCH_; }
       set {
-        trainRefreshTime_ = value;
+        iAMKNFKCLCH_ = value;
       }
     }
 
@@ -109,7 +109,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (TrainRefreshTime != other.TrainRefreshTime) return false;
+      if (IAMKNFKCLCH != other.IAMKNFKCLCH) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -117,7 +117,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (TrainRefreshTime != 0UL) hash ^= TrainRefreshTime.GetHashCode();
+      if (IAMKNFKCLCH != 0UL) hash ^= IAMKNFKCLCH.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (TrainRefreshTime != 0UL) {
-        output.WriteRawTag(24);
-        output.WriteUInt64(TrainRefreshTime);
+      if (IAMKNFKCLCH != 0UL) {
+        output.WriteRawTag(16);
+        output.WriteUInt64(IAMKNFKCLCH);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -150,9 +150,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (TrainRefreshTime != 0UL) {
-        output.WriteRawTag(24);
-        output.WriteUInt64(TrainRefreshTime);
+      if (IAMKNFKCLCH != 0UL) {
+        output.WriteRawTag(16);
+        output.WriteUInt64(IAMKNFKCLCH);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -164,8 +164,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (TrainRefreshTime != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(TrainRefreshTime);
+      if (IAMKNFKCLCH != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(IAMKNFKCLCH);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -179,8 +179,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.TrainRefreshTime != 0UL) {
-        TrainRefreshTime = other.TrainRefreshTime;
+      if (other.IAMKNFKCLCH != 0UL) {
+        IAMKNFKCLCH = other.IAMKNFKCLCH;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -201,8 +201,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
-            TrainRefreshTime = input.ReadUInt64();
+          case 16: {
+            IAMKNFKCLCH = input.ReadUInt64();
             break;
           }
         }
@@ -224,8 +224,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
-            TrainRefreshTime = input.ReadUInt64();
+          case 16: {
+            IAMKNFKCLCH = input.ReadUInt64();
             break;
           }
         }

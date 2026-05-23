@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message PDNOJMFCDDG {
+    repeated uint32 NOEPBNMJFGL = 12;
+    repeated uint32 unfinished_story_line_id_list = 11;
+    uint32 interacted_prop_entity_id = 3;
+}

@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiVHZXRGcmllbmRSZWNvbW1lbmRMaXN0SW5mb1NjUnNwLnByb3RvGhlGcmll",
             "bmRSZWNvbW1lbmRJbmZvLnByb3RvImcKH0dldEZyaWVuZFJlY29tbWVuZExp",
-            "c3RJbmZvU2NSc3ASMwoVZnJpZW5kX3JlY29tbWVuZF9saXN0GAQgAygLMhQu",
-            "RnJpZW5kUmVjb21tZW5kSW5mbxIPCgdyZXRjb2RlGAsgASgNQhaqAhNNYXJj",
+            "c3RJbmZvU2NSc3ASMwoVZnJpZW5kX3JlY29tbWVuZF9saXN0GAEgAygLMhQu",
+            "RnJpZW5kUmVjb21tZW5kSW5mbxIPCgdyZXRjb2RlGAIgASgNQhaqAhNNYXJj",
             "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.FriendRecommendInfoReflection.Descriptor, },
@@ -86,9 +86,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "friend_recommend_list" field.</summary>
-    public const int FriendRecommendListFieldNumber = 4;
+    public const int FriendRecommendListFieldNumber = 1;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.FriendRecommendInfo> _repeated_friendRecommendList_codec
-        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.FriendRecommendInfo.Parser);
+        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.FriendRecommendInfo.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.FriendRecommendInfo> friendRecommendList_ = new pbc::RepeatedField<global::March7thHoney.Proto.FriendRecommendInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 11;
+    public const int RetcodeFieldNumber = 2;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -154,7 +154,7 @@ namespace March7thHoney.Proto {
     #else
       friendRecommendList_.WriteTo(output, _repeated_friendRecommendList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(16);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -169,7 +169,7 @@ namespace March7thHoney.Proto {
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       friendRecommendList_.WriteTo(ref output, _repeated_friendRecommendList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(16);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -221,11 +221,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 34: {
+          case 10: {
             friendRecommendList_.AddEntriesFrom(input, _repeated_friendRecommendList_codec);
             break;
           }
-          case 88: {
+          case 16: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -248,11 +248,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 34: {
+          case 10: {
             friendRecommendList_.AddEntriesFrom(ref input, _repeated_friendRecommendList_codec);
             break;
           }
-          case 88: {
+          case 16: {
             Retcode = input.ReadUInt32();
             break;
           }

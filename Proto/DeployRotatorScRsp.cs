@@ -26,9 +26,9 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChhEZXBsb3lSb3RhdG9yU2NSc3AucHJvdG8aEVJvdGF0ZXJEYXRhLnByb3Rv",
             "GhdSb3RhdGVyRW5lcmd5SW5mby5wcm90byJyChJEZXBsb3lSb3RhdG9yU2NS",
-            "c3ASIgoMcm90YXRlcl9kYXRhGAMgASgLMgwuUm90YXRlckRhdGESJwoLZW5l",
-            "cmd5X2luZm8YDSABKAsyEi5Sb3RhdGVyRW5lcmd5SW5mbxIPCgdyZXRjb2Rl",
-            "GA8gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "c3ASIgoMcm90YXRlcl9kYXRhGA4gASgLMgwuUm90YXRlckRhdGESJwoLZW5l",
+            "cmd5X2luZm8YASABKAsyEi5Sb3RhdGVyRW5lcmd5SW5mbxIPCgdyZXRjb2Rl",
+            "GAcgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.RotaterDataReflection.Descriptor, global::March7thHoney.Proto.RotaterEnergyInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -87,7 +87,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "rotater_data" field.</summary>
-    public const int RotaterDataFieldNumber = 3;
+    public const int RotaterDataFieldNumber = 14;
     private global::March7thHoney.Proto.RotaterData rotaterData_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -99,7 +99,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "energy_info" field.</summary>
-    public const int EnergyInfoFieldNumber = 13;
+    public const int EnergyInfoFieldNumber = 1;
     private global::March7thHoney.Proto.RotaterEnergyInfo energyInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -111,7 +111,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 15;
+    public const int RetcodeFieldNumber = 7;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -168,17 +168,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (rotaterData_ != null) {
-        output.WriteRawTag(26);
-        output.WriteMessage(RotaterData);
-      }
       if (energyInfo_ != null) {
-        output.WriteRawTag(106);
+        output.WriteRawTag(10);
         output.WriteMessage(EnergyInfo);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(56);
         output.WriteUInt32(Retcode);
+      }
+      if (rotaterData_ != null) {
+        output.WriteRawTag(114);
+        output.WriteMessage(RotaterData);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -190,17 +190,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (rotaterData_ != null) {
-        output.WriteRawTag(26);
-        output.WriteMessage(RotaterData);
-      }
       if (energyInfo_ != null) {
-        output.WriteRawTag(106);
+        output.WriteRawTag(10);
         output.WriteMessage(EnergyInfo);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(56);
         output.WriteUInt32(Retcode);
+      }
+      if (rotaterData_ != null) {
+        output.WriteRawTag(114);
+        output.WriteMessage(RotaterData);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -267,22 +267,22 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 26: {
-            if (rotaterData_ == null) {
-              RotaterData = new global::March7thHoney.Proto.RotaterData();
-            }
-            input.ReadMessage(RotaterData);
-            break;
-          }
-          case 106: {
+          case 10: {
             if (energyInfo_ == null) {
               EnergyInfo = new global::March7thHoney.Proto.RotaterEnergyInfo();
             }
             input.ReadMessage(EnergyInfo);
             break;
           }
-          case 120: {
+          case 56: {
             Retcode = input.ReadUInt32();
+            break;
+          }
+          case 114: {
+            if (rotaterData_ == null) {
+              RotaterData = new global::March7thHoney.Proto.RotaterData();
+            }
+            input.ReadMessage(RotaterData);
             break;
           }
         }
@@ -304,22 +304,22 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 26: {
-            if (rotaterData_ == null) {
-              RotaterData = new global::March7thHoney.Proto.RotaterData();
-            }
-            input.ReadMessage(RotaterData);
-            break;
-          }
-          case 106: {
+          case 10: {
             if (energyInfo_ == null) {
               EnergyInfo = new global::March7thHoney.Proto.RotaterEnergyInfo();
             }
             input.ReadMessage(EnergyInfo);
             break;
           }
-          case 120: {
+          case 56: {
             Retcode = input.ReadUInt32();
+            break;
+          }
+          case 114: {
+            if (rotaterData_ == null) {
+              RotaterData = new global::March7thHoney.Proto.RotaterData();
+            }
+            input.ReadMessage(RotaterData);
             break;
           }
         }

@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message UpdateCustomInfoCsReq {
+    oneof MMCGBGDJIPN {
+        string title = 2;
+        uint32 AJIMPLLIFIE = 8;
+    }
+}

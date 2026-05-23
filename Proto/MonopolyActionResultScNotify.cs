@@ -26,12 +26,12 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiJNb25vcG9seUFjdGlvblJlc3VsdFNjTm90aWZ5LnByb3RvGhpNb25vcG9s",
             "eUFjdGlvblJlc3VsdC5wcm90byJKChxNb25vcG9seUFjdGlvblJlc3VsdFNj",
-            "Tm90aWZ5EioKC01NQUFITUVDR09FGAUgAygLMhUuTW9ub3BvbHlBY3Rpb25S",
+            "Tm90aWZ5EioKC0JLR1BHSU5DSEpJGAUgAygLMhUuTW9ub3BvbHlBY3Rpb25S",
             "ZXN1bHRCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MonopolyActionResultReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MonopolyActionResultScNotify), global::March7thHoney.Proto.MonopolyActionResultScNotify.Parser, new[]{ "MMAAHMECGOE" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MonopolyActionResultScNotify), global::March7thHoney.Proto.MonopolyActionResultScNotify.Parser, new[]{ "BKGPGINCHJI" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,7 +73,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MonopolyActionResultScNotify(MonopolyActionResultScNotify other) : this() {
-      mMAAHMECGOE_ = other.mMAAHMECGOE_.Clone();
+      bKGPGINCHJI_ = other.bKGPGINCHJI_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,15 +83,15 @@ namespace March7thHoney.Proto {
       return new MonopolyActionResultScNotify(this);
     }
 
-    /// <summary>Field number for the "MMAAHMECGOE" field.</summary>
-    public const int MMAAHMECGOEFieldNumber = 5;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MonopolyActionResult> _repeated_mMAAHMECGOE_codec
+    /// <summary>Field number for the "BKGPGINCHJI" field.</summary>
+    public const int BKGPGINCHJIFieldNumber = 5;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MonopolyActionResult> _repeated_bKGPGINCHJI_codec
         = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.MonopolyActionResult.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MonopolyActionResult> mMAAHMECGOE_ = new pbc::RepeatedField<global::March7thHoney.Proto.MonopolyActionResult>();
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MonopolyActionResult> bKGPGINCHJI_ = new pbc::RepeatedField<global::March7thHoney.Proto.MonopolyActionResult>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.MonopolyActionResult> MMAAHMECGOE {
-      get { return mMAAHMECGOE_; }
+    public pbc::RepeatedField<global::March7thHoney.Proto.MonopolyActionResult> BKGPGINCHJI {
+      get { return bKGPGINCHJI_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -109,7 +109,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!mMAAHMECGOE_.Equals(other.mMAAHMECGOE_)) return false;
+      if(!bKGPGINCHJI_.Equals(other.bKGPGINCHJI_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -117,7 +117,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= mMAAHMECGOE_.GetHashCode();
+      hash ^= bKGPGINCHJI_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -136,7 +136,7 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      mMAAHMECGOE_.WriteTo(output, _repeated_mMAAHMECGOE_codec);
+      bKGPGINCHJI_.WriteTo(output, _repeated_bKGPGINCHJI_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -147,7 +147,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      mMAAHMECGOE_.WriteTo(ref output, _repeated_mMAAHMECGOE_codec);
+      bKGPGINCHJI_.WriteTo(ref output, _repeated_bKGPGINCHJI_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -158,7 +158,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += mMAAHMECGOE_.CalculateSize(_repeated_mMAAHMECGOE_codec);
+      size += bKGPGINCHJI_.CalculateSize(_repeated_bKGPGINCHJI_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -171,7 +171,7 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      mMAAHMECGOE_.Add(other.mMAAHMECGOE_);
+      bKGPGINCHJI_.Add(other.bKGPGINCHJI_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -192,7 +192,7 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 42: {
-            mMAAHMECGOE_.AddEntriesFrom(input, _repeated_mMAAHMECGOE_codec);
+            bKGPGINCHJI_.AddEntriesFrom(input, _repeated_bKGPGINCHJI_codec);
             break;
           }
         }
@@ -215,7 +215,7 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 42: {
-            mMAAHMECGOE_.AddEntriesFrom(ref input, _repeated_mMAAHMECGOE_codec);
+            bKGPGINCHJI_.AddEntriesFrom(ref input, _repeated_bKGPGINCHJI_codec);
             break;
           }
         }

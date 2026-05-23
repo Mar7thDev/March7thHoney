@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "BigDataAvatarRelicRecommend.proto";
 
 message BigDataRecommendAvatarRelic {
-    repeated BigDataAvatarRelicRecommend recomended_relic_info_list = 12;
+    repeated BigDataAvatarRelicRecommend recomended_relic_info_list = 13;
 }

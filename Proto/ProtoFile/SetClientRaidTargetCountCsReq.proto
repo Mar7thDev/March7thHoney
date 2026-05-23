@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message SetClientRaidTargetCountCsReq {
-    uint32 progress = 3;
-    uint32 HJJMOOHHKMH = 14;
+    uint32 KJKGHIEKNID = 6;
+    uint32 progress = 12;
 }

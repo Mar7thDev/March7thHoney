@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "GCHPNHBDCDO.proto";
+import "EDJKFOBBDJF.proto";
 
 message GetEvolveBuildCoinNotify {
-    uint32 item_value = 1;
-    GCHPNHBDCDO EGLCKGKECAJ = 13;
+    EDJKFOBBDJF HFPEJIDDDJG = 15;
+    uint32 item_value = 11;
 }

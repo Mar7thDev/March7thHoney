@@ -24,15 +24,15 @@ namespace March7thHoney.Proto {
     static FloorCustomValueSnapshotReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Ch5GbG9vckN1c3RvbVZhbHVlU25hcHNob3QucHJvdG8aEUJMTERLQUJHS0xG",
-            "LnByb3RvInoKGEZsb29yQ3VzdG9tVmFsdWVTbmFwc2hvdBIMCgRuYW1lGAEg",
-            "ASgJEhoKBHR5cGUYAiABKA4yDC5CTExES0FCR0tMRhIQCghib29sX3ZhbBgD",
-            "IAEoCBIRCglmbG9hdF92YWwYBCABKAISDwoHc3RyX3ZhbBgFIAEoCUIWqgIT",
+            "Ch5GbG9vckN1c3RvbVZhbHVlU25hcHNob3QucHJvdG8aEUVHTU9FTUNJSU5P",
+            "LnByb3RvInoKGEZsb29yQ3VzdG9tVmFsdWVTbmFwc2hvdBIPCgdzdHJfdmFs",
+            "GAUgASgJEgwKBG5hbWUYASABKAkSEQoJZmxvYXRfdmFsGAQgASgCEhoKBHR5",
+            "cGUYAiABKA4yDC5FR01PRU1DSUlOTxIQCghib29sX3ZhbBgDIAEoCEIWqgIT",
             "TWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.BLLDKABGKLFReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.EGMOEMCIINOReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FloorCustomValueSnapshot), global::March7thHoney.Proto.FloorCustomValueSnapshot.Parser, new[]{ "Name", "Type", "BoolVal", "FloatVal", "StrVal" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FloorCustomValueSnapshot), global::March7thHoney.Proto.FloorCustomValueSnapshot.Parser, new[]{ "StrVal", "Name", "FloatVal", "Type", "BoolVal" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,11 +74,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public FloorCustomValueSnapshot(FloorCustomValueSnapshot other) : this() {
+      strVal_ = other.strVal_;
       name_ = other.name_;
+      floatVal_ = other.floatVal_;
       type_ = other.type_;
       boolVal_ = other.boolVal_;
-      floatVal_ = other.floatVal_;
-      strVal_ = other.strVal_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,6 +86,18 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public FloorCustomValueSnapshot Clone() {
       return new FloorCustomValueSnapshot(this);
+    }
+
+    /// <summary>Field number for the "str_val" field.</summary>
+    public const int StrValFieldNumber = 5;
+    private string strVal_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string StrVal {
+      get { return strVal_; }
+      set {
+        strVal_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
     }
 
     /// <summary>Field number for the "name" field.</summary>
@@ -100,12 +112,24 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "type" field.</summary>
-    public const int TypeFieldNumber = 2;
-    private global::March7thHoney.Proto.BLLDKABGKLF type_ = global::March7thHoney.Proto.BLLDKABGKLF.Pleacpiidin;
+    /// <summary>Field number for the "float_val" field.</summary>
+    public const int FloatValFieldNumber = 4;
+    private float floatVal_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.BLLDKABGKLF Type {
+    public float FloatVal {
+      get { return floatVal_; }
+      set {
+        floatVal_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "type" field.</summary>
+    public const int TypeFieldNumber = 2;
+    private global::March7thHoney.Proto.EGMOEMCIINO type_ = global::March7thHoney.Proto.EGMOEMCIINO.Akacjkibjmc;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.EGMOEMCIINO Type {
       get { return type_; }
       set {
         type_ = value;
@@ -124,30 +148,6 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "float_val" field.</summary>
-    public const int FloatValFieldNumber = 4;
-    private float floatVal_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public float FloatVal {
-      get { return floatVal_; }
-      set {
-        floatVal_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "str_val" field.</summary>
-    public const int StrValFieldNumber = 5;
-    private string strVal_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string StrVal {
-      get { return strVal_; }
-      set {
-        strVal_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -163,11 +163,11 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (StrVal != other.StrVal) return false;
       if (Name != other.Name) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(FloatVal, other.FloatVal)) return false;
       if (Type != other.Type) return false;
       if (BoolVal != other.BoolVal) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(FloatVal, other.FloatVal)) return false;
-      if (StrVal != other.StrVal) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -175,11 +175,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Name.Length != 0) hash ^= Name.GetHashCode();
-      if (Type != global::March7thHoney.Proto.BLLDKABGKLF.Pleacpiidin) hash ^= Type.GetHashCode();
-      if (BoolVal != false) hash ^= BoolVal.GetHashCode();
-      if (FloatVal != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(FloatVal);
       if (StrVal.Length != 0) hash ^= StrVal.GetHashCode();
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (FloatVal != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(FloatVal);
+      if (Type != global::March7thHoney.Proto.EGMOEMCIINO.Akacjkibjmc) hash ^= Type.GetHashCode();
+      if (BoolVal != false) hash ^= BoolVal.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -202,7 +202,7 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(10);
         output.WriteString(Name);
       }
-      if (Type != global::March7thHoney.Proto.BLLDKABGKLF.Pleacpiidin) {
+      if (Type != global::March7thHoney.Proto.EGMOEMCIINO.Akacjkibjmc) {
         output.WriteRawTag(16);
         output.WriteEnum((int) Type);
       }
@@ -232,7 +232,7 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(10);
         output.WriteString(Name);
       }
-      if (Type != global::March7thHoney.Proto.BLLDKABGKLF.Pleacpiidin) {
+      if (Type != global::March7thHoney.Proto.EGMOEMCIINO.Akacjkibjmc) {
         output.WriteRawTag(16);
         output.WriteEnum((int) Type);
       }
@@ -258,20 +258,20 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (StrVal.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(StrVal);
+      }
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
-      }
-      if (Type != global::March7thHoney.Proto.BLLDKABGKLF.Pleacpiidin) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
-      }
-      if (BoolVal != false) {
-        size += 1 + 1;
       }
       if (FloatVal != 0F) {
         size += 1 + 4;
       }
-      if (StrVal.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(StrVal);
+      if (Type != global::March7thHoney.Proto.EGMOEMCIINO.Akacjkibjmc) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
+      }
+      if (BoolVal != false) {
+        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -285,20 +285,20 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.StrVal.Length != 0) {
+        StrVal = other.StrVal;
+      }
       if (other.Name.Length != 0) {
         Name = other.Name;
-      }
-      if (other.Type != global::March7thHoney.Proto.BLLDKABGKLF.Pleacpiidin) {
-        Type = other.Type;
-      }
-      if (other.BoolVal != false) {
-        BoolVal = other.BoolVal;
       }
       if (other.FloatVal != 0F) {
         FloatVal = other.FloatVal;
       }
-      if (other.StrVal.Length != 0) {
-        StrVal = other.StrVal;
+      if (other.Type != global::March7thHoney.Proto.EGMOEMCIINO.Akacjkibjmc) {
+        Type = other.Type;
+      }
+      if (other.BoolVal != false) {
+        BoolVal = other.BoolVal;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -324,7 +324,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 16: {
-            Type = (global::March7thHoney.Proto.BLLDKABGKLF) input.ReadEnum();
+            Type = (global::March7thHoney.Proto.EGMOEMCIINO) input.ReadEnum();
             break;
           }
           case 24: {
@@ -363,7 +363,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 16: {
-            Type = (global::March7thHoney.Proto.BLLDKABGKLF) input.ReadEnum();
+            Type = (global::March7thHoney.Proto.EGMOEMCIINO) input.ReadEnum();
             break;
           }
           case 24: {

@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "NHFMHLCGJAH.proto";
+import "IKHLECEJHPO.proto";
 
 message GetFiveDimMiniGameDataScRsp {
-    repeated NHFMHLCGJAH content_package_list = 4;
-    uint32 retcode = 12;
+    repeated IKHLECEJHPO content_package_list = 2;
+    uint32 retcode = 9;
 }

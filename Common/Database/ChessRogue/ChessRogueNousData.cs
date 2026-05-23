@@ -16,11 +16,5 @@ public class ChessRogueNousDiceData
     public int AreaId { get; set; }
     public int DifficultyLevel { get; set; }
 
-    public DFAOIALEBOH ToProto()
-    {
-        return new DFAOIALEBOH
-        {
-            FBMDOIAKCNB = (uint)BranchId
-        };
-    }
+    // TODO 4.3: DFAOIALEBOH 在 4.3 已消失或更名，棋盘大冒险不在登录路径，暂时移除
 }

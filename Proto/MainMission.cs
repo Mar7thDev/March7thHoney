@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFNYWluTWlzc2lvbi5wcm90bxoYTWlzc2lvbkN1c3RvbVZhbHVlLnByb3Rv",
-            "GhNNaXNzaW9uU3RhdHVzLnByb3RvImkKC01haW5NaXNzaW9uEgoKAmlkGAIg",
-            "ASgNEh4KBnN0YXR1cxgFIAEoDjIOLk1pc3Npb25TdGF0dXMSLgoRY3VzdG9t",
-            "X3ZhbHVlX2xpc3QYDCADKAsyEy5NaXNzaW9uQ3VzdG9tVmFsdWVCFqoCE01h",
+            "GhNNaXNzaW9uU3RhdHVzLnByb3RvImkKC01haW5NaXNzaW9uEi4KEWN1c3Rv",
+            "bV92YWx1ZV9saXN0GAIgAygLMhMuTWlzc2lvbkN1c3RvbVZhbHVlEh4KBnN0",
+            "YXR1cxgOIAEoDjIOLk1pc3Npb25TdGF0dXMSCgoCaWQYASABKA1CFqoCE01h",
             "cmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MissionCustomValueReflection.Descriptor, global::March7thHoney.Proto.MissionStatusReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MainMission), global::March7thHoney.Proto.MainMission.Parser, new[]{ "Id", "Status", "CustomValueList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MainMission), global::March7thHoney.Proto.MainMission.Parser, new[]{ "CustomValueList", "Status", "Id" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,9 +74,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MainMission(MainMission other) : this() {
-      id_ = other.id_;
-      status_ = other.status_;
       customValueList_ = other.customValueList_.Clone();
+      status_ = other.status_;
+      id_ = other.id_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,20 +86,19 @@ namespace March7thHoney.Proto {
       return new MainMission(this);
     }
 
-    /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 2;
-    private uint id_;
+    /// <summary>Field number for the "custom_value_list" field.</summary>
+    public const int CustomValueListFieldNumber = 2;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MissionCustomValue> _repeated_customValueList_codec
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.MissionCustomValue.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MissionCustomValue> customValueList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MissionCustomValue>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Id {
-      get { return id_; }
-      set {
-        id_ = value;
-      }
+    public pbc::RepeatedField<global::March7thHoney.Proto.MissionCustomValue> CustomValueList {
+      get { return customValueList_; }
     }
 
     /// <summary>Field number for the "status" field.</summary>
-    public const int StatusFieldNumber = 5;
+    public const int StatusFieldNumber = 14;
     private global::March7thHoney.Proto.MissionStatus status_ = global::March7thHoney.Proto.MissionStatus.MissionNone;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,15 +109,16 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "custom_value_list" field.</summary>
-    public const int CustomValueListFieldNumber = 12;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MissionCustomValue> _repeated_customValueList_codec
-        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.MissionCustomValue.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MissionCustomValue> customValueList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MissionCustomValue>();
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private uint id_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.MissionCustomValue> CustomValueList {
-      get { return customValueList_; }
+    public uint Id {
+      get { return id_; }
+      set {
+        id_ = value;
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Id != other.Id) return false;
-      if (Status != other.Status) return false;
       if(!customValueList_.Equals(other.customValueList_)) return false;
+      if (Status != other.Status) return false;
+      if (Id != other.Id) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -146,9 +146,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Id != 0) hash ^= Id.GetHashCode();
-      if (Status != global::March7thHoney.Proto.MissionStatus.MissionNone) hash ^= Status.GetHashCode();
       hash ^= customValueList_.GetHashCode();
+      if (Status != global::March7thHoney.Proto.MissionStatus.MissionNone) hash ^= Status.GetHashCode();
+      if (Id != 0) hash ^= Id.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -168,14 +168,14 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Id != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteUInt32(Id);
       }
+      customValueList_.WriteTo(output, _repeated_customValueList_codec);
       if (Status != global::March7thHoney.Proto.MissionStatus.MissionNone) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(112);
         output.WriteEnum((int) Status);
       }
-      customValueList_.WriteTo(output, _repeated_customValueList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -187,14 +187,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Id != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteUInt32(Id);
       }
+      customValueList_.WriteTo(ref output, _repeated_customValueList_codec);
       if (Status != global::March7thHoney.Proto.MissionStatus.MissionNone) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(112);
         output.WriteEnum((int) Status);
       }
-      customValueList_.WriteTo(ref output, _repeated_customValueList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -205,13 +205,13 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Id != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Id);
-      }
+      size += customValueList_.CalculateSize(_repeated_customValueList_codec);
       if (Status != global::March7thHoney.Proto.MissionStatus.MissionNone) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Status);
       }
-      size += customValueList_.CalculateSize(_repeated_customValueList_codec);
+      if (Id != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Id);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -224,13 +224,13 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.Id != 0) {
-        Id = other.Id;
-      }
+      customValueList_.Add(other.customValueList_);
       if (other.Status != global::March7thHoney.Proto.MissionStatus.MissionNone) {
         Status = other.Status;
       }
-      customValueList_.Add(other.customValueList_);
+      if (other.Id != 0) {
+        Id = other.Id;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -250,16 +250,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
+          case 8: {
             Id = input.ReadUInt32();
             break;
           }
-          case 40: {
-            Status = (global::March7thHoney.Proto.MissionStatus) input.ReadEnum();
+          case 18: {
+            customValueList_.AddEntriesFrom(input, _repeated_customValueList_codec);
             break;
           }
-          case 98: {
-            customValueList_.AddEntriesFrom(input, _repeated_customValueList_codec);
+          case 112: {
+            Status = (global::March7thHoney.Proto.MissionStatus) input.ReadEnum();
             break;
           }
         }
@@ -281,16 +281,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
+          case 8: {
             Id = input.ReadUInt32();
             break;
           }
-          case 40: {
-            Status = (global::March7thHoney.Proto.MissionStatus) input.ReadEnum();
+          case 18: {
+            customValueList_.AddEntriesFrom(ref input, _repeated_customValueList_codec);
             break;
           }
-          case 98: {
-            customValueList_.AddEntriesFrom(ref input, _repeated_customValueList_codec);
+          case 112: {
+            Status = (global::March7thHoney.Proto.MissionStatus) input.ReadEnum();
             break;
           }
         }

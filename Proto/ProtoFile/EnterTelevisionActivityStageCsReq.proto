@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "NOJCIEGKAOB.proto";
+import "CBIKIIMGKHH.proto";
 
 message EnterTelevisionActivityStageCsReq {
     repeated uint32 buff_list = 1;
-    uint32 DEBMOGCGMLI = 8;
-    repeated NOJCIEGKAOB avatar_list = 10;
+    repeated CBIKIIMGKHH avatar_list = 4;
+    uint32 KKNGIFOJLGJ = 12;
 }

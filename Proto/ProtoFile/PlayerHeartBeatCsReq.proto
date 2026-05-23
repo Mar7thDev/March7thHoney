@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "DODELEAICGI.proto";
+import "LFKKOMBKJIP.proto";
 
 message PlayerHeartBeatCsReq {
-    uint64 client_time_ms = 3;
-    uint32 KKCDCIJHJFA = 9;
-    DODELEAICGI sc_data = 11;
+    LFKKOMBKJIP sc_data = 7;
+    uint32 EOHFCODKKMD = 12;
+    uint64 client_time_ms = 1;
 }

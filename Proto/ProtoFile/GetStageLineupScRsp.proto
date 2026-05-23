@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "LBKHJOIJNKI.proto";
+import "ECDEOHEFDHP.proto";
 
 message GetStageLineupScRsp {
-    uint32 retcode = 2;
-    repeated LBKHJOIJNKI LPNLADKMAFO = 12;
+    repeated ECDEOHEFDHP stage_info_list = 12;
+    uint32 retcode = 3;
 }

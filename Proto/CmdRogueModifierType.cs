@@ -24,14 +24,13 @@ namespace March7thHoney.Proto {
     static CmdRogueModifierTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChpDbWRSb2d1ZU1vZGlmaWVyVHlwZS5wcm90byqJAgoUQ21kUm9ndWVNb2Rp",
-            "ZmllclR5cGUSGwoXTEtPS05ITExPTUZfUENQREhFTFBLRU0QABIhChxDbWRS",
-            "b2d1ZU1vZGlmaWVyVXBkYXRlTm90aWZ5EJYqEh4KGUNtZFJvZ3VlTW9kaWZp",
-            "ZXJBZGROb3RpZnkQkioSJAofQ21kUm9ndWVNb2RpZmllclNlbGVjdENlbGxT",
-            "Y1JzcBDCKRIeChlDbWRSb2d1ZU1vZGlmaWVyRGVsTm90aWZ5EPMpEiQKH0Nt",
-            "ZFJvZ3VlTW9kaWZpZXJTZWxlY3RDZWxsQ3NSZXEQkyoSJQogQ21kUm9ndWVN",
-            "b2RpZmllclN0YWdlU3RhcnROb3RpZnkQzilCFqoCE01hcmNoN3RoSG9uZXku",
-            "UHJvdG9iBnByb3RvMw=="));
+            "ChpDbWRSb2d1ZU1vZGlmaWVyVHlwZS5wcm90byrnAQoUQ21kUm9ndWVNb2Rp",
+            "ZmllclR5cGUSGwoXSktKR1BPT0xMS0ZfTkxDREdJUEdGREoQABIcChdKS0pH",
+            "UE9PTExLRl9FUFBNS0JEUERCTRDPKRIcChdKS0pHUE9PTExLRl9MSEdIRkxH",
+            "RUJCThDYKRIcChdKS0pHUE9PTExLRl9LS0VISUJQRElFRhC+KRIcChdKS0pH",
+            "UE9PTExLRl9HQUxKSUJJRU5JQhCEKhIcChdKS0pHUE9PTExLRl9FQ0JJSEtG",
+            "TkdHTRCLKhIcChdKS0pHUE9PTExLRl9QTEVMTU1KSk9MTRCFKkIWqgITTWFy",
+            "Y2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdRogueModifierType), }, null, null));
@@ -41,13 +40,13 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdRogueModifierType {
-    [pbr::OriginalName("LKOKNHLLOMF_PCPDHELPKEM")] LkoknhllomfPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdRogueModifierUpdateNotify")] CmdRogueModifierUpdateNotify = 5398,
-    [pbr::OriginalName("CmdRogueModifierAddNotify")] CmdRogueModifierAddNotify = 5394,
-    [pbr::OriginalName("CmdRogueModifierSelectCellScRsp")] CmdRogueModifierSelectCellScRsp = 5314,
-    [pbr::OriginalName("CmdRogueModifierDelNotify")] CmdRogueModifierDelNotify = 5363,
-    [pbr::OriginalName("CmdRogueModifierSelectCellCsReq")] CmdRogueModifierSelectCellCsReq = 5395,
-    [pbr::OriginalName("CmdRogueModifierStageStartNotify")] CmdRogueModifierStageStartNotify = 5326,
+    [pbr::OriginalName("JKJGPOOLLKF_NLCDGIPGFDJ")] JkjgpoollkfNlcdgipgfdj = 0,
+    [pbr::OriginalName("JKJGPOOLLKF_EPPMKBDPDBM")] JkjgpoollkfEppmkbdpdbm = 5327,
+    [pbr::OriginalName("JKJGPOOLLKF_LHGHFLGEBBN")] JkjgpoollkfLhghflgebbn = 5336,
+    [pbr::OriginalName("JKJGPOOLLKF_KKEHIBPDIEF")] JkjgpoollkfKkehibpdief = 5310,
+    [pbr::OriginalName("JKJGPOOLLKF_GALJIBIENIB")] JkjgpoollkfGaljibienib = 5380,
+    [pbr::OriginalName("JKJGPOOLLKF_ECBIHKFNGGM")] JkjgpoollkfEcbihkfnggm = 5387,
+    [pbr::OriginalName("JKJGPOOLLKF_PLELMMJJOLM")] JkjgpoollkfPlelmmjjolm = 5381,
   }
 
   #endregion

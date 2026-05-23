@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum DMHHPOIEMFE {
+    DMHHPOIEMFE_LKGAOBCCPIM = 0;
+    DMHHPOIEMFE_BBFOHNLCKNF = 1;
+    DMHHPOIEMFE_OPKIJLMKLNL = 2;
+}

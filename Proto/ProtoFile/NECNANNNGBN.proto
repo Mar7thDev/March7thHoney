@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message NECNANNNGBN {
+    uint32 DCDOELCPOHB = 9;
+    uint32 DOHLBHLLAFO = 8;
+}

@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message DelMailScRsp {
-    repeated uint32 id_list = 1;
+    repeated uint32 id_list = 14;
     uint32 retcode = 8;
 }

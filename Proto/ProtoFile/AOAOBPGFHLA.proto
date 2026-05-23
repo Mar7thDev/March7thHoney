@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "JAONELJJAFK.proto";
+
+message AOAOBPGFHLA {
+    JAONELJJAFK ELOGOFFIJBB = 3;
+    repeated JAONELJJAFK sub_affix_list = 4;
+    uint32 compose_relic_id = 1;
+    uint32 relic_type = 2;
+}

@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChpTZWxlY3RQaG9uZUNhc2VTY1JzcC5wcm90byJUChRTZWxlY3RQaG9uZUNh",
-            "c2VTY1JzcBIPCgdyZXRjb2RlGAMgASgNEhMKC0dNSE9FQUJIS0lHGAQgASgN",
-            "EhYKDmN1cl9waG9uZV9jYXNlGAogASgNQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
+            "c2VTY1JzcBIPCgdyZXRjb2RlGAwgASgNEhYKDmN1cl9waG9uZV9jYXNlGAkg",
+            "ASgNEhMKC05BTVBIS1BJT0JBGA8gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
             "b3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SelectPhoneCaseScRsp), global::March7thHoney.Proto.SelectPhoneCaseScRsp.Parser, new[]{ "Retcode", "GMHOEABHKIG", "CurPhoneCase" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SelectPhoneCaseScRsp), global::March7thHoney.Proto.SelectPhoneCaseScRsp.Parser, new[]{ "Retcode", "CurPhoneCase", "NAMPHKPIOBA" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,8 +74,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SelectPhoneCaseScRsp(SelectPhoneCaseScRsp other) : this() {
       retcode_ = other.retcode_;
-      gMHOEABHKIG_ = other.gMHOEABHKIG_;
       curPhoneCase_ = other.curPhoneCase_;
+      nAMPHKPIOBA_ = other.nAMPHKPIOBA_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,7 +86,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 3;
+    public const int RetcodeFieldNumber = 12;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,20 +97,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "GMHOEABHKIG" field.</summary>
-    public const int GMHOEABHKIGFieldNumber = 4;
-    private uint gMHOEABHKIG_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint GMHOEABHKIG {
-      get { return gMHOEABHKIG_; }
-      set {
-        gMHOEABHKIG_ = value;
-      }
-    }
-
     /// <summary>Field number for the "cur_phone_case" field.</summary>
-    public const int CurPhoneCaseFieldNumber = 10;
+    public const int CurPhoneCaseFieldNumber = 9;
     private uint curPhoneCase_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -118,6 +106,18 @@ namespace March7thHoney.Proto {
       get { return curPhoneCase_; }
       set {
         curPhoneCase_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "NAMPHKPIOBA" field.</summary>
+    public const int NAMPHKPIOBAFieldNumber = 15;
+    private uint nAMPHKPIOBA_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint NAMPHKPIOBA {
+      get { return nAMPHKPIOBA_; }
+      set {
+        nAMPHKPIOBA_ = value;
       }
     }
 
@@ -137,8 +137,8 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (Retcode != other.Retcode) return false;
-      if (GMHOEABHKIG != other.GMHOEABHKIG) return false;
       if (CurPhoneCase != other.CurPhoneCase) return false;
+      if (NAMPHKPIOBA != other.NAMPHKPIOBA) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -147,8 +147,8 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
-      if (GMHOEABHKIG != 0) hash ^= GMHOEABHKIG.GetHashCode();
       if (CurPhoneCase != 0) hash ^= CurPhoneCase.GetHashCode();
+      if (NAMPHKPIOBA != 0) hash ^= NAMPHKPIOBA.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -167,17 +167,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (CurPhoneCase != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(CurPhoneCase);
+      }
       if (Retcode != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(96);
         output.WriteUInt32(Retcode);
       }
-      if (GMHOEABHKIG != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(GMHOEABHKIG);
-      }
-      if (CurPhoneCase != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(CurPhoneCase);
+      if (NAMPHKPIOBA != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(NAMPHKPIOBA);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -189,17 +189,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (CurPhoneCase != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(CurPhoneCase);
+      }
       if (Retcode != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(96);
         output.WriteUInt32(Retcode);
       }
-      if (GMHOEABHKIG != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(GMHOEABHKIG);
-      }
-      if (CurPhoneCase != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(CurPhoneCase);
+      if (NAMPHKPIOBA != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(NAMPHKPIOBA);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -214,11 +214,11 @@ namespace March7thHoney.Proto {
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
-      if (GMHOEABHKIG != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GMHOEABHKIG);
-      }
       if (CurPhoneCase != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurPhoneCase);
+      }
+      if (NAMPHKPIOBA != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(NAMPHKPIOBA);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -235,11 +235,11 @@ namespace March7thHoney.Proto {
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
-      if (other.GMHOEABHKIG != 0) {
-        GMHOEABHKIG = other.GMHOEABHKIG;
-      }
       if (other.CurPhoneCase != 0) {
         CurPhoneCase = other.CurPhoneCase;
+      }
+      if (other.NAMPHKPIOBA != 0) {
+        NAMPHKPIOBA = other.NAMPHKPIOBA;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -260,16 +260,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
+          case 72: {
+            CurPhoneCase = input.ReadUInt32();
+            break;
+          }
+          case 96: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 32: {
-            GMHOEABHKIG = input.ReadUInt32();
-            break;
-          }
-          case 80: {
-            CurPhoneCase = input.ReadUInt32();
+          case 120: {
+            NAMPHKPIOBA = input.ReadUInt32();
             break;
           }
         }
@@ -291,16 +291,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
+          case 72: {
+            CurPhoneCase = input.ReadUInt32();
+            break;
+          }
+          case 96: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 32: {
-            GMHOEABHKIG = input.ReadUInt32();
-            break;
-          }
-          case 80: {
-            CurPhoneCase = input.ReadUInt32();
+          case 120: {
+            NAMPHKPIOBA = input.ReadUInt32();
             break;
           }
         }

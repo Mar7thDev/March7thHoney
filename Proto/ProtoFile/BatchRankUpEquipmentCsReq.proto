@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "KCCFNMOIMAP.proto";
+import "FBNBEIKABGE.proto";
 
 message BatchRankUpEquipmentCsReq {
-    repeated KCCFNMOIMAP switch_list = 2;
+    repeated FBNBEIKABGE switch_list = 13;
 }

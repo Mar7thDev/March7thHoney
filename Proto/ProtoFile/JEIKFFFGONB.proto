@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "DINGDGLKHIP.proto";
+import "ItemCostData.proto";
+
+message JEIKFFFGONB {
+    ItemCostData LNIEFKBMIPD = 14;
+    repeated DINGDGLKHIP BHBPKKKNABO = 9;
+}

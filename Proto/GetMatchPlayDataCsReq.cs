@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChtHZXRNYXRjaFBsYXlEYXRhQ3NSZXEucHJvdG8aE0ZpZ2h0R2FtZU1vZGUu",
-            "cHJvdG8iPAoVR2V0TWF0Y2hQbGF5RGF0YUNzUmVxEiMKC0JGQkpLQUFMRkhE",
-            "GAggAygOMg4uRmlnaHRHYW1lTW9kZUIWqgITTWFyY2g3dGhIb25leS5Qcm90",
+            "cHJvdG8iPAoVR2V0TWF0Y2hQbGF5RGF0YUNzUmVxEiMKC0xDQ0hBS0JLQUhM",
+            "GAUgAygOMg4uRmlnaHRHYW1lTW9kZUIWqgITTWFyY2g3dGhIb25leS5Qcm90",
             "b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.FightGameModeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetMatchPlayDataCsReq), global::March7thHoney.Proto.GetMatchPlayDataCsReq.Parser, new[]{ "BFBJKAALFHD" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetMatchPlayDataCsReq), global::March7thHoney.Proto.GetMatchPlayDataCsReq.Parser, new[]{ "LCCHAKBKAHL" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,7 +73,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetMatchPlayDataCsReq(GetMatchPlayDataCsReq other) : this() {
-      bFBJKAALFHD_ = other.bFBJKAALFHD_.Clone();
+      lCCHAKBKAHL_ = other.lCCHAKBKAHL_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,15 +83,15 @@ namespace March7thHoney.Proto {
       return new GetMatchPlayDataCsReq(this);
     }
 
-    /// <summary>Field number for the "BFBJKAALFHD" field.</summary>
-    public const int BFBJKAALFHDFieldNumber = 8;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.FightGameMode> _repeated_bFBJKAALFHD_codec
-        = pb::FieldCodec.ForEnum(66, x => (int) x, x => (global::March7thHoney.Proto.FightGameMode) x);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.FightGameMode> bFBJKAALFHD_ = new pbc::RepeatedField<global::March7thHoney.Proto.FightGameMode>();
+    /// <summary>Field number for the "LCCHAKBKAHL" field.</summary>
+    public const int LCCHAKBKAHLFieldNumber = 5;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.FightGameMode> _repeated_lCCHAKBKAHL_codec
+        = pb::FieldCodec.ForEnum(42, x => (int) x, x => (global::March7thHoney.Proto.FightGameMode) x);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.FightGameMode> lCCHAKBKAHL_ = new pbc::RepeatedField<global::March7thHoney.Proto.FightGameMode>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.FightGameMode> BFBJKAALFHD {
-      get { return bFBJKAALFHD_; }
+    public pbc::RepeatedField<global::March7thHoney.Proto.FightGameMode> LCCHAKBKAHL {
+      get { return lCCHAKBKAHL_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -109,7 +109,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!bFBJKAALFHD_.Equals(other.bFBJKAALFHD_)) return false;
+      if(!lCCHAKBKAHL_.Equals(other.lCCHAKBKAHL_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -117,7 +117,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= bFBJKAALFHD_.GetHashCode();
+      hash ^= lCCHAKBKAHL_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -136,7 +136,7 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      bFBJKAALFHD_.WriteTo(output, _repeated_bFBJKAALFHD_codec);
+      lCCHAKBKAHL_.WriteTo(output, _repeated_lCCHAKBKAHL_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -147,7 +147,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      bFBJKAALFHD_.WriteTo(ref output, _repeated_bFBJKAALFHD_codec);
+      lCCHAKBKAHL_.WriteTo(ref output, _repeated_lCCHAKBKAHL_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -158,7 +158,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += bFBJKAALFHD_.CalculateSize(_repeated_bFBJKAALFHD_codec);
+      size += lCCHAKBKAHL_.CalculateSize(_repeated_lCCHAKBKAHL_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -171,7 +171,7 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      bFBJKAALFHD_.Add(other.bFBJKAALFHD_);
+      lCCHAKBKAHL_.Add(other.lCCHAKBKAHL_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -191,9 +191,9 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 66:
-          case 64: {
-            bFBJKAALFHD_.AddEntriesFrom(input, _repeated_bFBJKAALFHD_codec);
+          case 42:
+          case 40: {
+            lCCHAKBKAHL_.AddEntriesFrom(input, _repeated_lCCHAKBKAHL_codec);
             break;
           }
         }
@@ -215,9 +215,9 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 66:
-          case 64: {
-            bFBJKAALFHD_.AddEntriesFrom(ref input, _repeated_bFBJKAALFHD_codec);
+          case 42:
+          case 40: {
+            lCCHAKBKAHL_.AddEntriesFrom(ref input, _repeated_lCCHAKBKAHL_codec);
             break;
           }
         }

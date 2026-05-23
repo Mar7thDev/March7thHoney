@@ -2,33 +2,31 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "ANDMLIEGPKE.proto";
+import "BKGPJOBNMKJ.proto";
 import "Equipment.proto";
-import "JLAEDKMBGEK.proto";
 import "Material.proto";
-import "PFFDAFJLNOO.proto";
+import "NLLLAAEJOBP.proto";
+import "OCKCHBDFGNL.proto";
 import "PileItem.proto";
 import "Relic.proto";
 import "TurnFoodSwitch.proto";
 import "WaitDelResource.proto";
 
 message GetBagScRsp {
-    repeated Equipment equipment_list = 1;
-    repeated JLAEDKMBGEK MKKDFNDEGAB = 2;
-    uint32 IFNAOGAKHPN = 3;
-    repeated WaitDelResource wait_del_resource_list = 4;
-    repeated TurnFoodSwitch MAODNHNHLIJ = 5;
-    repeated PileItem HGHIIKNLJKH = 6;
-    repeated Material CBANAKKOMOF = 7;
-    repeated uint32 DBPDPHIMBDJ = 8;
-    repeated JLAEDKMBGEK GHGKCFIFMBB = 9;
-    repeated uint32 FGEKLBMLHEK = 10;
-    uint32 retcode = 11;
-    repeated Relic relic_list = 12;
-    repeated ANDMLIEGPKE OKGCGMCMPJJ = 13;
-    repeated uint32 IKEAFGCPECK = 14;
-    repeated Material material_list = 15;
-    repeated PFFDAFJLNOO PEFMKLKKCFJ = 417;
+    repeated TurnFoodSwitch EOJBFLHBNMB = 5;
+    repeated uint32 CAMEGAGKPGL = 14;
+    repeated BKGPJOBNMKJ NAJFMIIFIEC = 12;
+    repeated Material material_list = 4;
+    repeated OCKCHBDFGNL FFEGBHJLBNH = 10;
+    repeated Relic relic_list = 3;
+    repeated NLLLAAEJOBP EPBGLFHEFJJ = 959;
+    repeated uint32 HGGGFLABDLB = 6;
+    repeated PileItem PLBLHEKEIJO = 8;
+    repeated WaitDelResource wait_del_resource_list = 13;
+    repeated Equipment equipment_list = 9;
+    repeated uint32 KOFNOJCMEFA = 7;
+    repeated Material DNGBGGNKEHO = 2;
+    repeated BKGPJOBNMKJ CNDODPICGHI = 11;
+    uint32 PHIGPIGFPHD = 15;
+    uint32 retcode = 1;
 }

@@ -2,28 +2,26 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "AGLBGFLKIME.proto";
-import "HDKIAHMLICD.proto";
-import "JIONEBIHOIP.proto";
-import "LACLGMFHPFG.proto";
-import "LKLHKLMEPCM.proto";
-import "MGBHHILKGGD.proto";
-import "PHIEHJMGGMH.proto";
+import "APKENKIDMGC.proto";
+import "BGFLAKMOIGC.proto";
+import "EBBOJACNHEC.proto";
+import "HLFAKEOBFAB.proto";
+import "NBDKNCJGOMN.proto";
+import "ONNEJIPGHCK.proto";
+import "PGLLFCMEFKG.proto";
 import "PropRogueInfo.proto";
 import "PropTimelineInfo.proto";
 
 message PropExtraInfo {
     PropTimelineInfo timeline_info = 12;
-    oneof BPIHFAJCLOC {
-        LACLGMFHPFG PBDJILOJFMH = 1;
-        PHIEHJMGGMH EILNNHINJHN = 2;
-        PropRogueInfo rogue_game_info = 4;
-        MGBHHILKGGD GAJKEDLKGML = 5;
-        LKLHKLMEPCM AHEAFMNNBJH = 6;
-        HDKIAHMLICD IMPBELJGDJH = 7;
-        JIONEBIHOIP LKGJCKMJFGL = 10;
-        AGLBGFLKIME IAFMCFJPJOA = 14;
+    oneof KKNBOACNCON {
+        PropRogueInfo rogue_game_info = 11;
+        HLFAKEOBFAB AEFMMOHKCHJ = 14;
+        BGFLAKMOIGC OGLJIOJBIEN = 4;
+        EBBOJACNHEC ADNHHAELLNC = 5;
+        APKENKIDMGC ACJPMKHJLDB = 15;
+        NBDKNCJGOMN OEMHOKEMBKM = 8;
+        ONNEJIPGHCK MFCPLGHHPNP = 6;
+        PGLLFCMEFKG IDMAELPELLA = 10;
     }
 }

@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message ChenLingStartStageCsReq {
-    uint32 stage_id = 2;
-    uint32 MHIFFAMMAGI = 15;
+    uint32 stage_id = 7;
+    uint32 NKDDBPGDAEE = 4;
 }

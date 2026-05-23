@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message ChessRogueUpdateDicePassiveAccumulateValueScNotify {
-    int32 LBLLFABKGGL = 12;
+    int32 CGPHGIBCNOH = 14;
 }

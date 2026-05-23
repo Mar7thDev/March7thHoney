@@ -2,26 +2,24 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdDrinkMakerType {
-    GEBLECMFGGA_PCPDHELPKEM = 0;
-    CmdGetDrinkMakerDayEndScNotify = 6987;
-    CmdMakeDrinkScRsp = 6990;
-    CmdMakeMissionDrinkCsReq = 6994;
-    CmdDrinkMakerCheersGetDataScRsp = 6983;
-    CmdGetDrinkMakerDataScRsp = 7000;
-    CmdDrinkMakerCheersMakeDrinkScRsp = 6993;
-    CmdDrinkMakerChallengeCsReq = 6999;
-    CmdGetDrinkMakerDataCsReq = 6981;
-    CmdMakeMissionDrinkScRsp = 6997;
-    CmdDrinkMakerCheersEnterNextGroupScRsp = 6992;
-    CmdEndDrinkMakerSequenceCsReq = 6995;
-    CmdDrinkMakerChallengeScRsp = 6991;
-    CmdMakeDrinkCsReq = 6982;
-    CmdDrinkMakerCheersMakeDrinkCsReq = 6989;
-    CmdDrinkMakerUpdateTipsNotify = 6998;
-    CmdEndDrinkMakerSequenceScRsp = 6988;
-    CmdDrinkMakerCheersGetDataCsReq = 6984;
-    CmdDrinkMakerCheersEnterNextGroupCsReq = 6985;
+    JNAFGAGPCIK_NLCDGIPGFDJ = 0;
+    JNAFGAGPCIK_NCOFHDEBFKH = 6982;
+    JNAFGAGPCIK_DBBDJPFFMKM = 6995;
+    JNAFGAGPCIK_CKODBEHMHOP = 6998;
+    JNAFGAGPCIK_IPGGMCODDCC = 6986;
+    JNAFGAGPCIK_IIIDJDDMOFC = 6992;
+    JNAFGAGPCIK_BPIIAFKAKNI = 6999;
+    JNAFGAGPCIK_IJPLBNDJDMC = 6996;
+    JNAFGAGPCIK_CFJHIDOLDCG = 6997;
+    JNAFGAGPCIK_LAEMBCJFOJI = 6990;
+    JNAFGAGPCIK_FEFCMCDBCKH = 6983;
+    JNAFGAGPCIK_NGIDPGJIHCK = 6988;
+    JNAFGAGPCIK_GEKJANLCEIO = 6993;
+    JNAFGAGPCIK_POHPJJOBDCG = 6984;
+    JNAFGAGPCIK_JHGMLJEIMAF = 7000;
+    JNAFGAGPCIK_CAIJNLBLKKH = 6981;
+    JNAFGAGPCIK_BKFKHDKNENO = 6994;
+    JNAFGAGPCIK_AFOIANIMBPC = 6991;
+    JNAFGAGPCIK_IOMLEHMMOGL = 6987;
 }

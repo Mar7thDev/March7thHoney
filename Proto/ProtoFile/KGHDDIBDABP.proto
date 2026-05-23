@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message KGHDDIBDABP {
+    uint32 grid_fight_equipment_id = 8;
+    uint32 FGECDDFBFOJ = 11;
+    uint32 NDJGKJMPPHJ = 6;
+    bool AALCCPJCBME = 13;
+    uint32 IPAOBKONIFL = 12;
+}

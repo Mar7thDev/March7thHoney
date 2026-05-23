@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "PNCNGIAMLCA.proto";
+
+message MPPHIOJNKGB {
+    PNCNGIAMLCA lineup = 6;
+    uint32 score_id = 14;
+    uint32 uid = 9;
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "ItemCostData.proto";
+
+message FLDKOELBPGA {
+    ItemCostData OICGFNGNLOE = 3;
+    uint32 KDMNGCLJDOM = 4;
+    uint32 item_id = 5;
+    bool DOFNEAPHMKH = 7;
+}

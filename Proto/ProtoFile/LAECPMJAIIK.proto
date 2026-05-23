@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message LAECPMJAIIK {
+    uint32 retcode = 3;
+}

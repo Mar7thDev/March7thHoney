@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "OKIBFKOOEKJ.proto";
+import "HLOADNFIOOO.proto";
 
 message GetEvolveBuildReRandomStageScRsp {
-    uint32 retcode = 5;
-    OKIBFKOOEKJ CEHBMIIGMFC = 11;
+    HLOADNFIOOO GMBPFFIABHJ = 15;
+    uint32 retcode = 13;
 }

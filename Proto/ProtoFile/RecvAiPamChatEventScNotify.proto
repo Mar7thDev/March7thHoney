@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "MDOJCCMLKHP.proto";
+import "FAIFDBLLGKK.proto";
 
 message RecvAiPamChatEventScNotify {
-    MDOJCCMLKHP GLNJOAHBBKK = 3;
+    FAIFDBLLGKK OOOACLEFDGM = 14;
 }

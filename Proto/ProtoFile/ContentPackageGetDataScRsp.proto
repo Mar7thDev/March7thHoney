@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "ContentPackageData.proto";
 
 message ContentPackageGetDataScRsp {
-    ContentPackageData data = 3;
-    uint32 retcode = 14;
+    ContentPackageData data = 6;
+    uint32 retcode = 1;
 }

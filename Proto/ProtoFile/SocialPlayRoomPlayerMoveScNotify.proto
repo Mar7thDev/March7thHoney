@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "CCKCCKHEFFB.proto";
+import "MHNNEFBOPIE.proto";
 
 message SocialPlayRoomPlayerMoveScNotify {
-    uint32 MFBDMLPDEOE = 8;
-    CCKCCKHEFFB FIPIDGKPFHA = 12;
-    uint32 NCFHGIBCEBG = 13;
+    MHNNEFBOPIE JENKGODEIOM = 8;
+    uint32 PLIDNBMCIJH = 2;
+    uint32 IKDEIJCEDIO = 10;
 }

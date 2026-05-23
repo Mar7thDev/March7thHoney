@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "FGGCEKHFPLH.proto";
+
+message GCFDJCPFOGG {
+    repeated uint32 FIBFIKOBDPG = 14;
+    repeated uint32 JJOBBOHHOMG = 6;
+    map<uint32, uint32> DLBOJCCDCFI = 15;
+    map<uint32, FGGCEKHFPLH> DALPAKHCKLI = 9;
+    repeated uint32 DJJKDGEFOIP = 2;
+    repeated uint32 HPLNHIFHBMA = 3;
+    uint32 OFHBPNGDEGO = 5;
+}

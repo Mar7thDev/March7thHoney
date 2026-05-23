@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message UnlockTeleportNotify {
-    uint32 entry_id = 3;
-    uint32 teleport_id = 6;
+    uint32 teleport_id = 9;
+    uint32 entry_id = 8;
 }

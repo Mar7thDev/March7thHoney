@@ -2,21 +2,19 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "DGKNDMAHMAP.proto";
-import "EKOIHOMFMDE.proto";
-import "EOKOFFPBJME.proto";
-import "IAMLOJCIKIH.proto";
-import "OECPLDABABL.proto";
+import "AFEDHCKDDFA.proto";
+import "ANHJKLLEKKB.proto";
+import "DMLACLLDCCE.proto";
+import "GEFEDOAOKNO.proto";
+import "LKFFMLJMGOB.proto";
 
 message SettleHipplenWorkScRsp {
-    DGKNDMAHMAP LJJAJGFIGNM = 3;
-    repeated IAMLOJCIKIH GHPINELGNNE = 7;
-    repeated EKOIHOMFMDE CLKAILDCPJC = 12;
-    uint32 retcode = 15;
-    oneof NPBHJGIEDHL {
-        EOKOFFPBJME EDGOIAODJLH = 2;
-        OECPLDABABL BJGDFMJDJMH = 14;
+    GEFEDOAOKNO IPDLBJHAJOO = 6;
+    repeated AFEDHCKDDFA NEMFNENACNB = 4;
+    repeated ANHJKLLEKKB BNIFMIPPIMA = 13;
+    uint32 retcode = 11;
+    oneof MEJDDIPIEKK {
+        DMLACLLDCCE HBGCOIAGDIG = 3;
+        LKFFMLJMGOB LONKNKFDPII = 15;
     }
 }

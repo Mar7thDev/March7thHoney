@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "Item.proto";
 
 message ItemList {
-    repeated Item item_list = 1;
+    repeated Item item_list = 7;
 }

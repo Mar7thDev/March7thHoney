@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message GetSwitchHandDataCsReq {
+    uint32 config_id = 8;
+}

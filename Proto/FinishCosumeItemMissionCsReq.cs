@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiJGaW5pc2hDb3N1bWVJdGVtTWlzc2lvbkNzUmVxLnByb3RvGg5JdGVtTGlz",
-            "dC5wcm90byJUChxGaW5pc2hDb3N1bWVJdGVtTWlzc2lvbkNzUmVxEhYKDnN1",
-            "Yl9taXNzaW9uX2lkGAQgASgNEhwKCWl0ZW1fbGlzdBgNIAEoCzIJLkl0ZW1M",
-            "aXN0QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "dC5wcm90byJUChxGaW5pc2hDb3N1bWVJdGVtTWlzc2lvbkNzUmVxEhwKCWl0",
+            "ZW1fbGlzdBgNIAEoCzIJLkl0ZW1MaXN0EhYKDnN1Yl9taXNzaW9uX2lkGAUg",
+            "ASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemListReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FinishCosumeItemMissionCsReq), global::March7thHoney.Proto.FinishCosumeItemMissionCsReq.Parser, new[]{ "SubMissionId", "ItemList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FinishCosumeItemMissionCsReq), global::March7thHoney.Proto.FinishCosumeItemMissionCsReq.Parser, new[]{ "ItemList", "SubMissionId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public FinishCosumeItemMissionCsReq(FinishCosumeItemMissionCsReq other) : this() {
-      subMissionId_ = other.subMissionId_;
       itemList_ = other.itemList_ != null ? other.itemList_.Clone() : null;
+      subMissionId_ = other.subMissionId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -82,18 +82,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public FinishCosumeItemMissionCsReq Clone() {
       return new FinishCosumeItemMissionCsReq(this);
-    }
-
-    /// <summary>Field number for the "sub_mission_id" field.</summary>
-    public const int SubMissionIdFieldNumber = 4;
-    private uint subMissionId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint SubMissionId {
-      get { return subMissionId_; }
-      set {
-        subMissionId_ = value;
-      }
     }
 
     /// <summary>Field number for the "item_list" field.</summary>
@@ -105,6 +93,18 @@ namespace March7thHoney.Proto {
       get { return itemList_; }
       set {
         itemList_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "sub_mission_id" field.</summary>
+    public const int SubMissionIdFieldNumber = 5;
+    private uint subMissionId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint SubMissionId {
+      get { return subMissionId_; }
+      set {
+        subMissionId_ = value;
       }
     }
 
@@ -123,8 +123,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (SubMissionId != other.SubMissionId) return false;
       if (!object.Equals(ItemList, other.ItemList)) return false;
+      if (SubMissionId != other.SubMissionId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,8 +132,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (SubMissionId != 0) hash ^= SubMissionId.GetHashCode();
       if (itemList_ != null) hash ^= ItemList.GetHashCode();
+      if (SubMissionId != 0) hash ^= SubMissionId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -153,7 +153,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (SubMissionId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(40);
         output.WriteUInt32(SubMissionId);
       }
       if (itemList_ != null) {
@@ -171,7 +171,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (SubMissionId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(40);
         output.WriteUInt32(SubMissionId);
       }
       if (itemList_ != null) {
@@ -188,11 +188,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (SubMissionId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SubMissionId);
-      }
       if (itemList_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(ItemList);
+      }
+      if (SubMissionId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SubMissionId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -206,14 +206,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.SubMissionId != 0) {
-        SubMissionId = other.SubMissionId;
-      }
       if (other.itemList_ != null) {
         if (itemList_ == null) {
           ItemList = new global::March7thHoney.Proto.ItemList();
         }
         ItemList.MergeFrom(other.ItemList);
+      }
+      if (other.SubMissionId != 0) {
+        SubMissionId = other.SubMissionId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -234,7 +234,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
+          case 40: {
             SubMissionId = input.ReadUInt32();
             break;
           }
@@ -264,7 +264,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
+          case 40: {
             SubMissionId = input.ReadUInt32();
             break;
           }

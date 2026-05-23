@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChpVcGRhdGVNYXJrQ2hlc3RDc1JlcS5wcm90bxoTTWFya0NoZXN0SW5mby5w",
-            "cm90byJvChRVcGRhdGVNYXJrQ2hlc3RDc1JlcRIYChB0cmlnZ2VyX3BhcmFt",
-            "X2lkGAEgASgNEg8KB2Z1bmNfaWQYAiABKA0SLAoUbWFya19jaGVzdF9pbmZv",
-            "X2xpc3QYCiADKAsyDi5NYXJrQ2hlc3RJbmZvQhaqAhNNYXJjaDd0aEhvbmV5",
+            "cm90byJvChRVcGRhdGVNYXJrQ2hlc3RDc1JlcRIsChRtYXJrX2NoZXN0X2lu",
+            "Zm9fbGlzdBgFIAMoCzIOLk1hcmtDaGVzdEluZm8SDwoHZnVuY19pZBgOIAEo",
+            "DRIYChB0cmlnZ2VyX3BhcmFtX2lkGAcgASgNQhaqAhNNYXJjaDd0aEhvbmV5",
             "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MarkChestInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UpdateMarkChestCsReq), global::March7thHoney.Proto.UpdateMarkChestCsReq.Parser, new[]{ "TriggerParamId", "FuncId", "MarkChestInfoList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UpdateMarkChestCsReq), global::March7thHoney.Proto.UpdateMarkChestCsReq.Parser, new[]{ "MarkChestInfoList", "FuncId", "TriggerParamId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,9 +74,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public UpdateMarkChestCsReq(UpdateMarkChestCsReq other) : this() {
-      triggerParamId_ = other.triggerParamId_;
-      funcId_ = other.funcId_;
       markChestInfoList_ = other.markChestInfoList_.Clone();
+      funcId_ = other.funcId_;
+      triggerParamId_ = other.triggerParamId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,20 +86,19 @@ namespace March7thHoney.Proto {
       return new UpdateMarkChestCsReq(this);
     }
 
-    /// <summary>Field number for the "trigger_param_id" field.</summary>
-    public const int TriggerParamIdFieldNumber = 1;
-    private uint triggerParamId_;
+    /// <summary>Field number for the "mark_chest_info_list" field.</summary>
+    public const int MarkChestInfoListFieldNumber = 5;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MarkChestInfo> _repeated_markChestInfoList_codec
+        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.MarkChestInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MarkChestInfo> markChestInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MarkChestInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint TriggerParamId {
-      get { return triggerParamId_; }
-      set {
-        triggerParamId_ = value;
-      }
+    public pbc::RepeatedField<global::March7thHoney.Proto.MarkChestInfo> MarkChestInfoList {
+      get { return markChestInfoList_; }
     }
 
     /// <summary>Field number for the "func_id" field.</summary>
-    public const int FuncIdFieldNumber = 2;
+    public const int FuncIdFieldNumber = 14;
     private uint funcId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,15 +109,16 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "mark_chest_info_list" field.</summary>
-    public const int MarkChestInfoListFieldNumber = 10;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MarkChestInfo> _repeated_markChestInfoList_codec
-        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.MarkChestInfo.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MarkChestInfo> markChestInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MarkChestInfo>();
+    /// <summary>Field number for the "trigger_param_id" field.</summary>
+    public const int TriggerParamIdFieldNumber = 7;
+    private uint triggerParamId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.MarkChestInfo> MarkChestInfoList {
-      get { return markChestInfoList_; }
+    public uint TriggerParamId {
+      get { return triggerParamId_; }
+      set {
+        triggerParamId_ = value;
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (TriggerParamId != other.TriggerParamId) return false;
-      if (FuncId != other.FuncId) return false;
       if(!markChestInfoList_.Equals(other.markChestInfoList_)) return false;
+      if (FuncId != other.FuncId) return false;
+      if (TriggerParamId != other.TriggerParamId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -146,9 +146,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (TriggerParamId != 0) hash ^= TriggerParamId.GetHashCode();
-      if (FuncId != 0) hash ^= FuncId.GetHashCode();
       hash ^= markChestInfoList_.GetHashCode();
+      if (FuncId != 0) hash ^= FuncId.GetHashCode();
+      if (TriggerParamId != 0) hash ^= TriggerParamId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -167,15 +167,15 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      markChestInfoList_.WriteTo(output, _repeated_markChestInfoList_codec);
       if (TriggerParamId != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(56);
         output.WriteUInt32(TriggerParamId);
       }
       if (FuncId != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(112);
         output.WriteUInt32(FuncId);
       }
-      markChestInfoList_.WriteTo(output, _repeated_markChestInfoList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -186,15 +186,15 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      markChestInfoList_.WriteTo(ref output, _repeated_markChestInfoList_codec);
       if (TriggerParamId != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(56);
         output.WriteUInt32(TriggerParamId);
       }
       if (FuncId != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(112);
         output.WriteUInt32(FuncId);
       }
-      markChestInfoList_.WriteTo(ref output, _repeated_markChestInfoList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -205,13 +205,13 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (TriggerParamId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TriggerParamId);
-      }
+      size += markChestInfoList_.CalculateSize(_repeated_markChestInfoList_codec);
       if (FuncId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FuncId);
       }
-      size += markChestInfoList_.CalculateSize(_repeated_markChestInfoList_codec);
+      if (TriggerParamId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TriggerParamId);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -224,13 +224,13 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.TriggerParamId != 0) {
-        TriggerParamId = other.TriggerParamId;
-      }
+      markChestInfoList_.Add(other.markChestInfoList_);
       if (other.FuncId != 0) {
         FuncId = other.FuncId;
       }
-      markChestInfoList_.Add(other.markChestInfoList_);
+      if (other.TriggerParamId != 0) {
+        TriggerParamId = other.TriggerParamId;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -250,16 +250,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
+          case 42: {
+            markChestInfoList_.AddEntriesFrom(input, _repeated_markChestInfoList_codec);
+            break;
+          }
+          case 56: {
             TriggerParamId = input.ReadUInt32();
             break;
           }
-          case 16: {
+          case 112: {
             FuncId = input.ReadUInt32();
-            break;
-          }
-          case 82: {
-            markChestInfoList_.AddEntriesFrom(input, _repeated_markChestInfoList_codec);
             break;
           }
         }
@@ -281,16 +281,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
+          case 42: {
+            markChestInfoList_.AddEntriesFrom(ref input, _repeated_markChestInfoList_codec);
+            break;
+          }
+          case 56: {
             TriggerParamId = input.ReadUInt32();
             break;
           }
-          case 16: {
+          case 112: {
             FuncId = input.ReadUInt32();
-            break;
-          }
-          case 82: {
-            markChestInfoList_.AddEntriesFrom(ref input, _repeated_markChestInfoList_codec);
             break;
           }
         }

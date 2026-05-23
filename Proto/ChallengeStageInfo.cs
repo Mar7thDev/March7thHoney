@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChhDaGFsbGVuZ2VTdGFnZUluZm8ucHJvdG8aF0NoYWxsZW5nZUJvc3NJbmZv",
-            "LnByb3RvIjsKEkNoYWxsZW5nZVN0YWdlSW5mbxIlCglib3NzX2luZm8YCyAB",
+            "LnByb3RvIjsKEkNoYWxsZW5nZVN0YWdlSW5mbxIlCglib3NzX2luZm8YASAB",
             "KAsyEi5DaGFsbGVuZ2VCb3NzSW5mb0IWqgITTWFyY2g3dGhIb25leS5Qcm90",
             "b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "boss_info" field.</summary>
-    public const int BossInfoFieldNumber = 11;
+    public const int BossInfoFieldNumber = 1;
     private global::March7thHoney.Proto.ChallengeBossInfo bossInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -138,7 +138,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (bossInfo_ != null) {
-        output.WriteRawTag(90);
+        output.WriteRawTag(10);
         output.WriteMessage(BossInfo);
       }
       if (_unknownFields != null) {
@@ -152,7 +152,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (bossInfo_ != null) {
-        output.WriteRawTag(90);
+        output.WriteRawTag(10);
         output.WriteMessage(BossInfo);
       }
       if (_unknownFields != null) {
@@ -205,7 +205,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 90: {
+          case 10: {
             if (bossInfo_ == null) {
               BossInfo = new global::March7thHoney.Proto.ChallengeBossInfo();
             }
@@ -231,7 +231,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 90: {
+          case 10: {
             if (bossInfo_ == null) {
               BossInfo = new global::March7thHoney.Proto.ChallengeBossInfo();
             }

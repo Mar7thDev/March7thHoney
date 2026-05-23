@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "EAKBDLAEKHJ.proto";
+import "JFGCABMMKAB.proto";
 
 message GetStarFightDataScRsp {
-    uint32 retcode = 5;
-    repeated EAKBDLAEKHJ BBFKAGEBKAL = 12;
+    repeated JFGCABMMKAB JJIDNKDKMLE = 9;
+    uint32 retcode = 12;
 }

@@ -26,12 +26,12 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CixDaG9vc2VCb3hpbmdDbHViU3RhZ2VPcHRpb25hbEJ1ZmZDc1JlcS5wcm90",
             "byJTCiZDaG9vc2VCb3hpbmdDbHViU3RhZ2VPcHRpb25hbEJ1ZmZDc1JlcRIU",
-            "CgxjaGFsbGVuZ2VfaWQYAyABKA0SEwoLT09QR0ZFQU5QQUUYDyABKA1CFqoC",
+            "CgxjaGFsbGVuZ2VfaWQYBCABKA0SEwoLTUZLQU9IS1BJUEUYDiABKA1CFqoC",
             "E01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChooseBoxingClubStageOptionalBuffCsReq), global::March7thHoney.Proto.ChooseBoxingClubStageOptionalBuffCsReq.Parser, new[]{ "ChallengeId", "OOPGFEANPAE" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChooseBoxingClubStageOptionalBuffCsReq), global::March7thHoney.Proto.ChooseBoxingClubStageOptionalBuffCsReq.Parser, new[]{ "ChallengeId", "MFKAOHKPIPE" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,7 +74,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ChooseBoxingClubStageOptionalBuffCsReq(ChooseBoxingClubStageOptionalBuffCsReq other) : this() {
       challengeId_ = other.challengeId_;
-      oOPGFEANPAE_ = other.oOPGFEANPAE_;
+      mFKAOHKPIPE_ = other.mFKAOHKPIPE_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "challenge_id" field.</summary>
-    public const int ChallengeIdFieldNumber = 3;
+    public const int ChallengeIdFieldNumber = 4;
     private uint challengeId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,15 +96,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "OOPGFEANPAE" field.</summary>
-    public const int OOPGFEANPAEFieldNumber = 15;
-    private uint oOPGFEANPAE_;
+    /// <summary>Field number for the "MFKAOHKPIPE" field.</summary>
+    public const int MFKAOHKPIPEFieldNumber = 14;
+    private uint mFKAOHKPIPE_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint OOPGFEANPAE {
-      get { return oOPGFEANPAE_; }
+    public uint MFKAOHKPIPE {
+      get { return mFKAOHKPIPE_; }
       set {
-        oOPGFEANPAE_ = value;
+        mFKAOHKPIPE_ = value;
       }
     }
 
@@ -124,7 +124,7 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (ChallengeId != other.ChallengeId) return false;
-      if (OOPGFEANPAE != other.OOPGFEANPAE) return false;
+      if (MFKAOHKPIPE != other.MFKAOHKPIPE) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -133,7 +133,7 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (ChallengeId != 0) hash ^= ChallengeId.GetHashCode();
-      if (OOPGFEANPAE != 0) hash ^= OOPGFEANPAE.GetHashCode();
+      if (MFKAOHKPIPE != 0) hash ^= MFKAOHKPIPE.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -153,12 +153,12 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (ChallengeId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(32);
         output.WriteUInt32(ChallengeId);
       }
-      if (OOPGFEANPAE != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(OOPGFEANPAE);
+      if (MFKAOHKPIPE != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(MFKAOHKPIPE);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -171,12 +171,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (ChallengeId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(32);
         output.WriteUInt32(ChallengeId);
       }
-      if (OOPGFEANPAE != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(OOPGFEANPAE);
+      if (MFKAOHKPIPE != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(MFKAOHKPIPE);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -191,8 +191,8 @@ namespace March7thHoney.Proto {
       if (ChallengeId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ChallengeId);
       }
-      if (OOPGFEANPAE != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(OOPGFEANPAE);
+      if (MFKAOHKPIPE != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MFKAOHKPIPE);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -209,8 +209,8 @@ namespace March7thHoney.Proto {
       if (other.ChallengeId != 0) {
         ChallengeId = other.ChallengeId;
       }
-      if (other.OOPGFEANPAE != 0) {
-        OOPGFEANPAE = other.OOPGFEANPAE;
+      if (other.MFKAOHKPIPE != 0) {
+        MFKAOHKPIPE = other.MFKAOHKPIPE;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -231,12 +231,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
+          case 32: {
             ChallengeId = input.ReadUInt32();
             break;
           }
-          case 120: {
-            OOPGFEANPAE = input.ReadUInt32();
+          case 112: {
+            MFKAOHKPIPE = input.ReadUInt32();
             break;
           }
         }
@@ -258,12 +258,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
+          case 32: {
             ChallengeId = input.ReadUInt32();
             break;
           }
-          case 120: {
-            OOPGFEANPAE = input.ReadUInt32();
+          case 112: {
+            MFKAOHKPIPE = input.ReadUInt32();
             break;
           }
         }

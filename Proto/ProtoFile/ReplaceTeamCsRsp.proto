@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "GKDEKJKOIJN.proto";
+import "APAMFCKFHLL.proto";
 
 message ReplaceTeamCsRsp {
-    uint32 retcode = 3;
-    repeated GKDEKJKOIJN OICEJIMEONG = 8;
+    repeated APAMFCKFHLL ENCINPIHHDF = 14;
+    uint32 retcode = 6;
 }

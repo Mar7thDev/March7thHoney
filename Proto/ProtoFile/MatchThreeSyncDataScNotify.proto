@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "MJMPDGNFIKN.proto";
+import "ALNGMGOJDOA.proto";
 
 message MatchThreeSyncDataScNotify {
-    MJMPDGNFIKN DCFGOFNBLCM = 3;
+    ALNGMGOJDOA GJFKKFFJDAH = 12;
 }

@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static AreaDynamicInfoReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChVBcmVhRHluYW1pY0luZm8ucHJvdG8iPwoPQXJlYUR5bmFtaWNJbmZvEhYK",
-            "DmRpeV9keW5hbWljX2lkGAogASgNEhQKDGRpY2Vfc2xvdF9pZBgLIAEoDUIW",
+            "ChVBcmVhRHluYW1pY0luZm8ucHJvdG8iPwoPQXJlYUR5bmFtaWNJbmZvEhQK",
+            "DGRpY2Vfc2xvdF9pZBgLIAEoDRIWCg5kaXlfZHluYW1pY19pZBgKIAEoDUIW",
             "qgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AreaDynamicInfo), global::March7thHoney.Proto.AreaDynamicInfo.Parser, new[]{ "DiyDynamicId", "DiceSlotId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AreaDynamicInfo), global::March7thHoney.Proto.AreaDynamicInfo.Parser, new[]{ "DiceSlotId", "DiyDynamicId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public AreaDynamicInfo(AreaDynamicInfo other) : this() {
-      diyDynamicId_ = other.diyDynamicId_;
       diceSlotId_ = other.diceSlotId_;
+      diyDynamicId_ = other.diyDynamicId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -81,18 +81,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public AreaDynamicInfo Clone() {
       return new AreaDynamicInfo(this);
-    }
-
-    /// <summary>Field number for the "diy_dynamic_id" field.</summary>
-    public const int DiyDynamicIdFieldNumber = 10;
-    private uint diyDynamicId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint DiyDynamicId {
-      get { return diyDynamicId_; }
-      set {
-        diyDynamicId_ = value;
-      }
     }
 
     /// <summary>Field number for the "dice_slot_id" field.</summary>
@@ -104,6 +92,18 @@ namespace March7thHoney.Proto {
       get { return diceSlotId_; }
       set {
         diceSlotId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "diy_dynamic_id" field.</summary>
+    public const int DiyDynamicIdFieldNumber = 10;
+    private uint diyDynamicId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint DiyDynamicId {
+      get { return diyDynamicId_; }
+      set {
+        diyDynamicId_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (DiyDynamicId != other.DiyDynamicId) return false;
       if (DiceSlotId != other.DiceSlotId) return false;
+      if (DiyDynamicId != other.DiyDynamicId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (DiyDynamicId != 0) hash ^= DiyDynamicId.GetHashCode();
       if (DiceSlotId != 0) hash ^= DiceSlotId.GetHashCode();
+      if (DiyDynamicId != 0) hash ^= DiyDynamicId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (DiyDynamicId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DiyDynamicId);
-      }
       if (DiceSlotId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DiceSlotId);
+      }
+      if (DiyDynamicId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DiyDynamicId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.DiyDynamicId != 0) {
-        DiyDynamicId = other.DiyDynamicId;
-      }
       if (other.DiceSlotId != 0) {
         DiceSlotId = other.DiceSlotId;
+      }
+      if (other.DiyDynamicId != 0) {
+        DiyDynamicId = other.DiyDynamicId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }

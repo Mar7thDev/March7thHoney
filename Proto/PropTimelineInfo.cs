@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChZQcm9wVGltZWxpbmVJbmZvLnByb3RvIkwKEFByb3BUaW1lbGluZUluZm8S",
-            "GwoTdGltZWxpbmVfYm9vbF92YWx1ZRgDIAEoCBIbChN0aW1lbGluZV9ieXRl",
-            "X3ZhbHVlGAwgASgMQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "GwoTdGltZWxpbmVfYnl0ZV92YWx1ZRgIIAEoDBIbChN0aW1lbGluZV9ib29s",
+            "X3ZhbHVlGAIgASgIQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PropTimelineInfo), global::March7thHoney.Proto.PropTimelineInfo.Parser, new[]{ "TimelineBoolValue", "TimelineByteValue" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PropTimelineInfo), global::March7thHoney.Proto.PropTimelineInfo.Parser, new[]{ "TimelineByteValue", "TimelineBoolValue" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PropTimelineInfo(PropTimelineInfo other) : this() {
-      timelineBoolValue_ = other.timelineBoolValue_;
       timelineByteValue_ = other.timelineByteValue_;
+      timelineBoolValue_ = other.timelineBoolValue_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,20 +83,8 @@ namespace March7thHoney.Proto {
       return new PropTimelineInfo(this);
     }
 
-    /// <summary>Field number for the "timeline_bool_value" field.</summary>
-    public const int TimelineBoolValueFieldNumber = 3;
-    private bool timelineBoolValue_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool TimelineBoolValue {
-      get { return timelineBoolValue_; }
-      set {
-        timelineBoolValue_ = value;
-      }
-    }
-
     /// <summary>Field number for the "timeline_byte_value" field.</summary>
-    public const int TimelineByteValueFieldNumber = 12;
+    public const int TimelineByteValueFieldNumber = 8;
     private pb::ByteString timelineByteValue_ = pb::ByteString.Empty;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -104,6 +92,18 @@ namespace March7thHoney.Proto {
       get { return timelineByteValue_; }
       set {
         timelineByteValue_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "timeline_bool_value" field.</summary>
+    public const int TimelineBoolValueFieldNumber = 2;
+    private bool timelineBoolValue_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool TimelineBoolValue {
+      get { return timelineBoolValue_; }
+      set {
+        timelineBoolValue_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (TimelineBoolValue != other.TimelineBoolValue) return false;
       if (TimelineByteValue != other.TimelineByteValue) return false;
+      if (TimelineBoolValue != other.TimelineBoolValue) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (TimelineBoolValue != false) hash ^= TimelineBoolValue.GetHashCode();
       if (TimelineByteValue.Length != 0) hash ^= TimelineByteValue.GetHashCode();
+      if (TimelineBoolValue != false) hash ^= TimelineBoolValue.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (TimelineBoolValue != false) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteBool(TimelineBoolValue);
       }
       if (TimelineByteValue.Length != 0) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(66);
         output.WriteBytes(TimelineByteValue);
       }
       if (_unknownFields != null) {
@@ -170,11 +170,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (TimelineBoolValue != false) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteBool(TimelineBoolValue);
       }
       if (TimelineByteValue.Length != 0) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(66);
         output.WriteBytes(TimelineByteValue);
       }
       if (_unknownFields != null) {
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (TimelineBoolValue != false) {
-        size += 1 + 1;
-      }
       if (TimelineByteValue.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(TimelineByteValue);
+      }
+      if (TimelineBoolValue != false) {
+        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.TimelineBoolValue != false) {
-        TimelineBoolValue = other.TimelineBoolValue;
-      }
       if (other.TimelineByteValue.Length != 0) {
         TimelineByteValue = other.TimelineByteValue;
+      }
+      if (other.TimelineBoolValue != false) {
+        TimelineBoolValue = other.TimelineBoolValue;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,11 +230,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
+          case 16: {
             TimelineBoolValue = input.ReadBool();
             break;
           }
-          case 98: {
+          case 66: {
             TimelineByteValue = input.ReadBytes();
             break;
           }
@@ -257,11 +257,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
+          case 16: {
             TimelineBoolValue = input.ReadBool();
             break;
           }
-          case 98: {
+          case 66: {
             TimelineByteValue = input.ReadBytes();
             break;
           }

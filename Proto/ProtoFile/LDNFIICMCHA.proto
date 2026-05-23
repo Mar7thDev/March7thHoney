@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "AKHEOAIPAPA.proto";
+import "GACKCPEPDAF.proto";
+
+message LDNFIICMCHA {
+    repeated AKHEOAIPAPA DIILKEEGLOJ = 4;
+    repeated GACKCPEPDAF KAJOFKIEKNH = 10;
+    uint32 HCBADDHNIDG = 9;
+    uint32 level = 12;
+    uint64 KNDHHAJMBGB = 7;
+    bool DBODGPBOIHC = 8;
+    uint64 IEPAPOPIFHH = 6;
+}

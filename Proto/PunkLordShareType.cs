@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChdQdW5rTG9yZFNoYXJlVHlwZS5wcm90bypqChFQdW5rTG9yZFNoYXJlVHlw",
-            "ZRIbChdGT09ET1BETkRMS19QQ1BESEVMUEtFTRAAEhsKF0ZPT0RPUERORExL",
-            "X0RLQ0tEQ0xDUEVMEAESGwoXRk9PRE9QRE5ETEtfUE5NQ0pIRk5CT08QAkIW",
+            "ZRIbChdFT1BPREdQREtNT19OTENER0lQR0ZEShAAEhsKF0VPUE9ER1BES01P",
+            "X0VORklFRlBQQ0lDEAESGwoXRU9QT0RHUERLTU9fQUNBT0NLUElHUEwQAkIW",
             "qgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -37,9 +37,9 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum PunkLordShareType {
-    [pbr::OriginalName("FOODOPDNDLK_PCPDHELPKEM")] FoodopdndlkPcpdhelpkem = 0,
-    [pbr::OriginalName("FOODOPDNDLK_DKCKDCLCPEL")] FoodopdndlkDkckdclcpel = 1,
-    [pbr::OriginalName("FOODOPDNDLK_PNMCJHFNBOO")] FoodopdndlkPnmcjhfnboo = 2,
+    [pbr::OriginalName("EOPODGPDKMO_NLCDGIPGFDJ")] EopodgpdkmoNlcdgipgfdj = 0,
+    [pbr::OriginalName("EOPODGPDKMO_ENFIEFPPCIC")] EopodgpdkmoEnfiefppcic = 1,
+    [pbr::OriginalName("EOPODGPDKMO_ACAOCKPIGPL")] EopodgpdkmoAcaockpigpl = 2,
   }
 
   #endregion

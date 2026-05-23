@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message NOLLHKIMDOC {
+    repeated uint32 IJMHPOEPILG = 12;
+    uint32 JOADLJIDGND = 13;
+    int64 GLDGCHLDMJE = 1;
+}

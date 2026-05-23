@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "APAMFCKFHLL.proto";
+import "BMOIPALHBJN.proto";
+import "FFKHFDJFAGM.proto";
+import "IDJALKEGPLI.proto";
+import "LHJDEOLKHKB.proto";
+
+message HGNAHHFBMMN {
+    string FPPECOIAHEP = 10;
+    repeated APAMFCKFHLL switch_list = 8;
+    LHJDEOLKHKB JGEMNOLFNIE = 1;
+    FFKHFDJFAGM FMIGOKIDKJL = 7;
+    BMOIPALHBJN NGNJHMEOHBD = 12;
+    IDJALKEGPLI NDLIKNEKDLL = 4;
+    uint32 PAEAKCCACOP = 15;
+    uint32 MFPOKNMFNGM = 13;
+    uint32 ALJNIHNLNMA = 9;
+    uint32 AJHDCEGIGMC = 3;
+    uint32 stage_id = 2;
+    uint32 GJLDDMIIILF = 6;
+}

@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message ChessRogueNousDiceSurfaceUnlockNotify {
-    uint32 DIAAMODKAMO = 15;
+    uint32 HBKEEBKFBFI = 13;
 }

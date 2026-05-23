@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "BHMEPBAGOFF.proto";
+import "LMLNNHKJEIP.proto";
+
+message LLFIKHHPJEB {
+    BHMEPBAGOFF data = 14;
+    repeated LMLNNHKJEIP DFLEOIGPLNM = 15;
+    uint32 retcode = 2;
+}

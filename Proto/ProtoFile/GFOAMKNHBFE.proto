@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "FHNAEJBKINH.proto";
+
+message GFOAMKNHBFE {
+    map<uint32, FHNAEJBKINH> BANBCCBOEBJ = 8;
+    uint32 panel_id = 14;
+    uint32 FDEAKDCDGML = 6;
+}

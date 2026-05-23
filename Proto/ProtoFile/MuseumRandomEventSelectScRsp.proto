@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message MuseumRandomEventSelectScRsp {
-    uint32 event_id = 2;
-    uint32 retcode = 10;
-    uint32 ILHABFJKEGD = 12;
+    uint32 JGPIOFGPBGE = 10;
+    uint32 event_id = 12;
+    uint32 retcode = 1;
 }

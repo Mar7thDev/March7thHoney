@@ -21,12 +21,5 @@ public class BaseRogueBuffExcel : ExcelResource
         return MazeBuffID * 100 + MazeBuffLevel;
     }
 
-    public HJGFDIKDIHO ToProto()
-    {
-        return new HJGFDIKDIHO
-        {
-            BuffId = (uint)MazeBuffID,
-            EBMHDHJKBKC = (uint)MazeBuffLevel
-        };
-    }
+    // TODO 4.3: HJGFDIKDIHO 在 4.3 中已消失或更名，RogueBuff 不在登录路径，暂时移除
 }

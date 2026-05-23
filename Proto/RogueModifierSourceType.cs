@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch1Sb2d1ZU1vZGlmaWVyU291cmNlVHlwZS5wcm90byrYAgoXUm9ndWVNb2Rp",
-            "ZmllclNvdXJjZVR5cGUSGwoXS0lFTExCS09BTE9fQ0hPRE5NT0hMUE4QABIb",
-            "ChdLSUVMTEJLT0FMT19JSUxKRkpITUJJTxABEhsKF0tJRUxMQktPQUxPX0JG",
-            "SENHRUNMQ0dPEAISGwoXS0lFTExCS09BTE9fSENPQUdBUEpLQUkQAxIbChdL",
-            "SUVMTEJLT0FMT19FRU9LR05CREZBRRAEEhsKF0tJRUxMQktPQUxPX0pPQUpI",
-            "SkNCSURFEAUSGwoXS0lFTExCS09BTE9fSFBDSktQQURPUEkQBhIbChdLSUVM",
-            "TEJLT0FMT19KREtDS0ZJQktPQRAHEhsKF0tJRUxMQktPQUxPX0lOS0xLUENI",
-            "TEhJEAgSGwoXS0lFTExCS09BTE9fSElLTENMUEpNREsQCRIbChdLSUVMTEJL",
-            "T0FMT19CQ05NRE1IRUxOQxAKQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZw",
+            "ZmllclNvdXJjZVR5cGUSGwoXQU1FSUtBR0RJRkNfUEJHT0FPR0NQTEEQABIb",
+            "ChdBTUVJS0FHRElGQ19PTEtCTUdMQ0VOTBABEhsKF0FNRUlLQUdESUZDX0FM",
+            "UEZHSU5FS0lMEAISGwoXQU1FSUtBR0RJRkNfTk5EQ0lOSkxCUEkQAxIbChdB",
+            "TUVJS0FHRElGQ19NQVBLQk1BSEJLRRAEEhsKF0FNRUlLQUdESUZDX0RNR0ZF",
+            "T0JFQUZEEAUSGwoXQU1FSUtBR0RJRkNfQkNQT01DR01GRksQBhIbChdBTUVJ",
+            "S0FHRElGQ19MRkFIRkxKTUZOSxAHEhsKF0FNRUlLQUdESUZDX05PQU1FTU1G",
+            "R0tQEAgSGwoXQU1FSUtBR0RJRkNfSEtPQUhFS0NKQUUQCRIbChdBTUVJS0FH",
+            "RElGQ19JSEdETEFKQUpNQRAKQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZw",
             "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -43,17 +43,17 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum RogueModifierSourceType {
-    [pbr::OriginalName("KIELLBKOALO_CHODNMOHLPN")] KiellbkoaloChodnmohlpn = 0,
-    [pbr::OriginalName("KIELLBKOALO_IILJFJHMBIO")] KiellbkoaloIiljfjhmbio = 1,
-    [pbr::OriginalName("KIELLBKOALO_BFHCGECLCGO")] KiellbkoaloBfhcgeclcgo = 2,
-    [pbr::OriginalName("KIELLBKOALO_HCOAGAPJKAI")] KiellbkoaloHcoagapjkai = 3,
-    [pbr::OriginalName("KIELLBKOALO_EEOKGNBDFAE")] KiellbkoaloEeokgnbdfae = 4,
-    [pbr::OriginalName("KIELLBKOALO_JOAJHJCBIDE")] KiellbkoaloJoajhjcbide = 5,
-    [pbr::OriginalName("KIELLBKOALO_HPCJKPADOPI")] KiellbkoaloHpcjkpadopi = 6,
-    [pbr::OriginalName("KIELLBKOALO_JDKCKFIBKOA")] KiellbkoaloJdkckfibkoa = 7,
-    [pbr::OriginalName("KIELLBKOALO_INKLKPCHLHI")] KiellbkoaloInklkpchlhi = 8,
-    [pbr::OriginalName("KIELLBKOALO_HIKLCLPJMDK")] KiellbkoaloHiklclpjmdk = 9,
-    [pbr::OriginalName("KIELLBKOALO_BCNMDMHELNC")] KiellbkoaloBcnmdmhelnc = 10,
+    [pbr::OriginalName("AMEIKAGDIFC_PBGOAOGCPLA")] AmeikagdifcPbgoaogcpla = 0,
+    [pbr::OriginalName("AMEIKAGDIFC_OLKBMGLCENL")] AmeikagdifcOlkbmglcenl = 1,
+    [pbr::OriginalName("AMEIKAGDIFC_ALPFGINEKIL")] AmeikagdifcAlpfginekil = 2,
+    [pbr::OriginalName("AMEIKAGDIFC_NNDCINJLBPI")] AmeikagdifcNndcinjlbpi = 3,
+    [pbr::OriginalName("AMEIKAGDIFC_MAPKBMAHBKE")] AmeikagdifcMapkbmahbke = 4,
+    [pbr::OriginalName("AMEIKAGDIFC_DMGFEOBEAFD")] AmeikagdifcDmgfeobeafd = 5,
+    [pbr::OriginalName("AMEIKAGDIFC_BCPOMCGMFFK")] AmeikagdifcBcpomcgmffk = 6,
+    [pbr::OriginalName("AMEIKAGDIFC_LFAHFLJMFNK")] AmeikagdifcLfahfljmfnk = 7,
+    [pbr::OriginalName("AMEIKAGDIFC_NOAMEMMFGKP")] AmeikagdifcNoamemmfgkp = 8,
+    [pbr::OriginalName("AMEIKAGDIFC_HKOAHEKCJAE")] AmeikagdifcHkoahekcjae = 9,
+    [pbr::OriginalName("AMEIKAGDIFC_IHGDLAJAJMA")] AmeikagdifcIhgdlajajma = 10,
   }
 
   #endregion

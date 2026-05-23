@@ -2,19 +2,17 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "DMNDJBPGEKG.proto";
-import "LKJMLPJEPGG.proto";
+import "DBLILHCLPPL.proto";
+import "GFFFJCEHBEB.proto";
 
 message SpaceZooDataScRsp {
-    uint32 retcode = 6;
-    repeated DMNDJBPGEKG NOJFAFFNBED = 7;
-    repeated uint32 NOAGECCEEKN = 8;
-    repeated uint32 HLCJEFOJAHK = 10;
-    repeated uint32 EFOCFECKNKJ = 11;
-    uint32 MDAMGMKLLKE = 12;
-    repeated uint32 DKECFINBDNK = 13;
-    repeated uint32 JKLGAPGHBHP = 14;
-    repeated LKJMLPJEPGG DNIGGEEFBFN = 15;
+    repeated uint32 MDFEBNNOKLG = 5;
+    repeated uint32 ENGEBGICPPB = 12;
+    repeated uint32 FIBMJBJMCKK = 15;
+    repeated uint32 GLMMHALPEAG = 3;
+    repeated uint32 JGCNAGNOFBP = 6;
+    repeated DBLILHCLPPL NFIGGHNNJAP = 7;
+    repeated GFFFJCEHBEB JAPFGEAIACA = 8;
+    uint32 retcode = 13;
+    uint32 OAIMAFOHLHC = 10;
 }

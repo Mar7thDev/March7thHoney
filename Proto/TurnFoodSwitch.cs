@@ -24,10 +24,10 @@ namespace March7thHoney.Proto {
     static TurnFoodSwitchReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChRUdXJuRm9vZFN3aXRjaC5wcm90bypnCg5UdXJuRm9vZFN3aXRjaBIbChdI",
-            "SU5ES09ET0JBQV9QQ1BESEVMUEtFTRAAEhsKF0hJTkRLT0RPQkFBX0tFQlBH",
-            "Rk1PQ0REEAESGwoXSElOREtPRE9CQUFfRU1MQ0ZPRUlBSE0QAkIWqgITTWFy",
-            "Y2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChRUdXJuRm9vZFN3aXRjaC5wcm90bypiCg5UdXJuRm9vZFN3aXRjaBIbChdG",
+            "SExFS0tOREJCRV9OTENER0lQR0ZEShAAEhYKEkZITEVLS05EQkJFX2F0dGFj",
+            "axABEhsKF0ZITEVLS05EQkJFX0ZKTE9HTkZFQ0hJEAJCFqoCE01hcmNoN3Ro",
+            "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.TurnFoodSwitch), }, null, null));
@@ -37,9 +37,9 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum TurnFoodSwitch {
-    [pbr::OriginalName("HINDKODOBAA_PCPDHELPKEM")] HindkodobaaPcpdhelpkem = 0,
-    [pbr::OriginalName("HINDKODOBAA_KEBPGFMOCDD")] HindkodobaaKebpgfmocdd = 1,
-    [pbr::OriginalName("HINDKODOBAA_EMLCFOEIAHM")] HindkodobaaEmlcfoeiahm = 2,
+    [pbr::OriginalName("FHLEKKNDBBE_NLCDGIPGFDJ")] FhlekkndbbeNlcdgipgfdj = 0,
+    [pbr::OriginalName("FHLEKKNDBBE_attack")] FhlekkndbbeAttack = 1,
+    [pbr::OriginalName("FHLEKKNDBBE_FJLOGNFECHI")] FhlekkndbbeFjlognfechi = 2,
   }
 
   #endregion

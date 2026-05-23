@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
+import "GLMGJFEEJHD.proto";
 import "ItemList.proto";
-import "KHCHPPLOFJN.proto";
 
 message MonopolyGameSettleScNotify {
-    ItemList JEILIIABKLG = 10;
-    KHCHPPLOFJN BMKAEFAKNFJ = 14;
-    ItemList item_list = 15;
+    ItemList NGADCEHJHBE = 14;
+    GLMGJFEEJHD AJGOEJHKOKE = 12;
+    ItemList item_list = 10;
 }

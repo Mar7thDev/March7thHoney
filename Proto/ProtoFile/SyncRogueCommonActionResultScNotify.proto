@@ -2,15 +2,13 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "DPFOHPLLOIJ.proto";
-import "FMFMGICMPCA.proto";
-import "MOEOOOMLGCG.proto";
+import "ACMKPNMKOKH.proto";
+import "DICEONDKEFF.proto";
+import "MAOKMPOELCO.proto";
 
 message SyncRogueCommonActionResultScNotify {
-    uint32 LOIDOGEENOB = 7;
-    repeated DPFOHPLLOIJ BEAEJDOGDBG = 10;
-    repeated MOEOOOMLGCG ANIADNFEMAH = 11;
-    FMFMGICMPCA HCPAHPCOEKK = 14;
+    repeated MAOKMPOELCO CLGGKLNPLCK = 11;
+    repeated ACMKPNMKOKH KCLBFINDGNA = 8;
+    DICEONDKEFF BEBEEMKOBNN = 10;
+    uint32 DLOJFEEHLIJ = 1;
 }

@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "FDBDLBAPDBE.proto";
+
+message KGPIEEKIEME {
+    FDBDLBAPDBE JCOBJAMPOAL = 12;
+    uint32 OFNIDAECPCJ = 9;
+}

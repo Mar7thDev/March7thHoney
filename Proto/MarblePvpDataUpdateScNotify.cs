@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiFNYXJibGVQdnBEYXRhVXBkYXRlU2NOb3RpZnkucHJvdG8iLwobTWFyYmxl",
-            "UHZwRGF0YVVwZGF0ZVNjTm90aWZ5EhAKCHNjb3JlX2lkGAcgASgFQhaqAhNN",
+            "UHZwRGF0YVVwZGF0ZVNjTm90aWZ5EhAKCHNjb3JlX2lkGA4gASgFQhaqAhNN",
             "YXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -83,7 +83,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "score_id" field.</summary>
-    public const int ScoreIdFieldNumber = 7;
+    public const int ScoreIdFieldNumber = 14;
     private int scoreId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -137,7 +137,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (ScoreId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(112);
         output.WriteInt32(ScoreId);
       }
       if (_unknownFields != null) {
@@ -151,7 +151,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (ScoreId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(112);
         output.WriteInt32(ScoreId);
       }
       if (_unknownFields != null) {
@@ -201,7 +201,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
+          case 112: {
             ScoreId = input.ReadInt32();
             break;
           }
@@ -224,7 +224,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
+          case 112: {
             ScoreId = input.ReadInt32();
             break;
           }

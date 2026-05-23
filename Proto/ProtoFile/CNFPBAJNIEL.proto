@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message CNFPBAJNIEL {
+    uint32 JBEEKBJMIIA = 1;
+    uint32 area_id = 5;
+}

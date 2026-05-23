@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "APAMFCKFHLL.proto";
+
+message ReplaceTeamCsCsReq {
+    repeated APAMFCKFHLL ENCINPIHHDF = 8;
+    uint32 MNKCHCLGNOM = 4;
+}

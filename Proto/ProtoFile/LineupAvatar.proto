@@ -2,16 +2,14 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "AvatarType.proto";
 import "SpBarInfo.proto";
 
 message LineupAvatar {
-    uint32 slot = 4;
-    uint32 id = 6;
-    uint32 hp = 9;
-    uint32 satiety = 11;
-    AvatarType avatar_type = 12;
-    SpBarInfo sp_bar = 15;
+    SpBarInfo sp_bar = 12;
+    AvatarType avatar_type = 4;
+    uint32 slot = 8;
+    uint32 hp = 13;
+    uint32 id = 2;
+    uint32 satiety = 9;
 }

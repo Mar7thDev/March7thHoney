@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "BIKNPJPLDAO.proto";
+import "JDGNMIDMACL.proto";
+
+message FOMCONFODHH {
+    BIKNPJPLDAO HNMLBLGGOLB = 8;
+    JDGNMIDMACL GBJEALNCMJC = 4;
+}

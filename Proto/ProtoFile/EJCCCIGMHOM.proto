@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "GCECAGOELDP.proto";
+import "HIJCLODMBPO.proto";
+
+message EJCCCIGMHOM {
+    HIJCLODMBPO GJFKKFFJDAH = 4;
+    repeated uint32 NKHIIMHCLCD = 14;
+    GCECAGOELDP BDIBPIMAPOC = 13;
+    repeated uint32 GMGOHBLFMAN = 2;
+}

@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message PlanetFesDoGachaCsReq {
-    uint32 gacha_count = 5;
-    uint32 gacha_id = 10;
-    uint32 simulate_magic = 14;
+    uint32 gacha_count = 6;
+    uint32 gacha_id = 2;
+    uint32 simulate_magic = 12;
 }

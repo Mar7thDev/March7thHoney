@@ -2,30 +2,28 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "FHCCCHJHHKL.proto";
-import "GHJIFOHJOEM.proto";
-import "LEHNHDLEMHL.proto";
-import "LHEDJAIOHOE.proto";
+import "GADFFIFFNHM.proto";
+import "GCFGCHAMNOL.proto";
+import "HDIOKENOFNJ.proto";
+import "ONNMLLIEENI.proto";
 
 message GetDataScRsp {
-    uint32 retcode = 1;
-    uint32 BMGAKKNAKFD = 2;
-    uint32 NJDBIEMAOAA = 3;
-    repeated uint32 GCENJMPLHMC = 4;
-    uint32 PKHBAMILIOI = 5;
-    GHJIFOHJOEM LEGMOJLDECH = 6;
-    repeated LHEDJAIOHOE HMABMKKKHNB = 7;
-    uint32 BBOJLIEALDB = 8;
-    uint32 HFJJJKEBMEP = 9;
-    uint32 BCLLCBDEPEP = 10;
-    FHCCCHJHHKL lineup = 11;
-    uint32 JIICJOKLNLG = 13;
-    uint32 FHHMACHPMGA = 14;
-    repeated LEHNHDLEMHL IJGALCOFLLA = 15;
-    uint32 ACJJCPCPFDN = 596;
-    uint32 NKBDDIDFPNE = 639;
-    uint32 NCBPOOCCCAN = 927;
-    uint32 PBAFFLDBALE = 1347;
+    repeated ONNMLLIEENI CMBJOLCGMAI = 8;
+    GCFGCHAMNOL lineup = 4;
+    repeated uint32 ICBIMKIEOEP = 11;
+    repeated GADFFIFFNHM JCOAGOJEAPB = 5;
+    uint32 FBNEKMPIAKD = 14;
+    HDIOKENOFNJ HFPGDCJMNIK = 12;
+    uint32 ENMLPFBMPNI = 1970;
+    uint32 JIDBIMNMLJP = 1;
+    uint32 PIGPKIDNMDH = 10;
+    uint32 IOMEILDMBNE = 3;
+    uint32 CJLBLDFGELH = 7;
+    uint32 GGPKMPBBENP = 1497;
+    uint32 NMPCJAOIOHJ = 105;
+    uint32 IMCGJPMBPPJ = 6;
+    uint32 retcode = 15;
+    uint32 KCCACINBEEA = 1812;
+    uint32 MMFKMEGECOI = 9;
+    uint32 HCENDLKKHOC = 2;
 }

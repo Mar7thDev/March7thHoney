@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message GetRndOptionScRsp {
+    repeated uint32 EFLOILNLFIC = 6;
+    uint32 retcode = 11;
+}

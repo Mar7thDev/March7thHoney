@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message MarbleUnlockSealScNotify {
-    repeated uint32 NLOINMODBLE = 13;
+    repeated uint32 EGCLLKDHIAE = 2;
 }

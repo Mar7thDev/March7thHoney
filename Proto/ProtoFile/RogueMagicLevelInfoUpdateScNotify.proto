@@ -2,17 +2,15 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "LBMLLJHFEHB.proto";
-import "OFHPKJDHOMF.proto";
-import "OJEJCHBHCJL.proto";
+import "GPEPGKCPBPB.proto";
+import "JAMINGBJHBK.proto";
+import "PFKHKAMBHBN.proto";
 
 message RogueMagicLevelInfoUpdateScNotify {
-    uint32 KEDIMMAGFBO = 1;
-    uint32 NLMMFJOPBFC = 6;
-    LBMLLJHFEHB status = 8;
-    OFHPKJDHOMF reason = 11;
-    uint32 APMIAKDPHJL = 13;
-    repeated OJEJCHBHCJL FHLJEHDHJLI = 14;
+    repeated GPEPGKCPBPB NNFFPJOLDHK = 2;
+    JAMINGBJHBK reason = 8;
+    PFKHKAMBHBN status = 4;
+    uint32 JDPHADIIAPE = 5;
+    uint32 BJHMFOAGMBF = 7;
+    uint32 JJLEDNENPJK = 15;
 }

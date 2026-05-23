@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message AiPamMotionScNotify {
-    repeated string BDJACHGHCHF = 6;
+    repeated string BLCCBDPODFM = 15;
 }

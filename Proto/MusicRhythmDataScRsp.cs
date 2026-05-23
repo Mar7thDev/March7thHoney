@@ -26,17 +26,17 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChpNdXNpY1JoeXRobURhdGFTY1JzcC5wcm90bxoWTXVzaWNSaHl0aG1Hcm91",
             "cC5wcm90bxoWTXVzaWNSaHl0aG1MZXZlbC5wcm90byKJAgoUTXVzaWNSaHl0",
-            "aG1EYXRhU2NSc3ASKgoPbGV2ZWxfZGF0YV9saXN0GAEgAygLMhEuTXVzaWNS",
-            "aHl0aG1MZXZlbBIZChF1bmxvY2tfcGhhc2VfbGlzdBgDIAMoDRIRCglzaG93",
-            "X2hpbnQYBSABKAgSGQoRdW5sb2NrX3RyYWNrX2xpc3QYBiADKA0SJgoLbXVz",
-            "aWNfZ3JvdXAYCCADKAsyES5NdXNpY1JoeXRobUdyb3VwEg8KB3JldGNvZGUY",
-            "CiABKA0SFAoMY3VyX2xldmVsX2lkGAsgASgNEhgKEHVubG9ja19zb25nX2xp",
-            "c3QYDCADKA0SEwoLY3VyX3NvbmdfaWQYDiABKA1CFqoCE01hcmNoN3RoSG9u",
+            "aG1EYXRhU2NSc3ASGQoRdW5sb2NrX3RyYWNrX2xpc3QYDCADKA0SKgoPbGV2",
+            "ZWxfZGF0YV9saXN0GAogAygLMhEuTXVzaWNSaHl0aG1MZXZlbBIZChF1bmxv",
+            "Y2tfcGhhc2VfbGlzdBgJIAMoDRImCgttdXNpY19ncm91cBgNIAMoCzIRLk11",
+            "c2ljUmh5dGhtR3JvdXASGAoQdW5sb2NrX3NvbmdfbGlzdBgCIAMoDRITCgtj",
+            "dXJfc29uZ19pZBgOIAEoDRIRCglzaG93X2hpbnQYDyABKAgSFAoMY3VyX2xl",
+            "dmVsX2lkGAMgASgNEg8KB3JldGNvZGUYBCABKA1CFqoCE01hcmNoN3RoSG9u",
             "ZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MusicRhythmGroupReflection.Descriptor, global::March7thHoney.Proto.MusicRhythmLevelReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MusicRhythmDataScRsp), global::March7thHoney.Proto.MusicRhythmDataScRsp.Parser, new[]{ "LevelDataList", "UnlockPhaseList", "ShowHint", "UnlockTrackList", "MusicGroup", "Retcode", "CurLevelId", "UnlockSongList", "CurSongId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MusicRhythmDataScRsp), global::March7thHoney.Proto.MusicRhythmDataScRsp.Parser, new[]{ "UnlockTrackList", "LevelDataList", "UnlockPhaseList", "MusicGroup", "UnlockSongList", "CurSongId", "ShowHint", "CurLevelId", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -78,15 +78,15 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MusicRhythmDataScRsp(MusicRhythmDataScRsp other) : this() {
+      unlockTrackList_ = other.unlockTrackList_.Clone();
       levelDataList_ = other.levelDataList_.Clone();
       unlockPhaseList_ = other.unlockPhaseList_.Clone();
-      showHint_ = other.showHint_;
-      unlockTrackList_ = other.unlockTrackList_.Clone();
       musicGroup_ = other.musicGroup_.Clone();
-      retcode_ = other.retcode_;
-      curLevelId_ = other.curLevelId_;
       unlockSongList_ = other.unlockSongList_.Clone();
       curSongId_ = other.curSongId_;
+      showHint_ = other.showHint_;
+      curLevelId_ = other.curLevelId_;
+      retcode_ = other.retcode_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -96,10 +96,21 @@ namespace March7thHoney.Proto {
       return new MusicRhythmDataScRsp(this);
     }
 
+    /// <summary>Field number for the "unlock_track_list" field.</summary>
+    public const int UnlockTrackListFieldNumber = 12;
+    private static readonly pb::FieldCodec<uint> _repeated_unlockTrackList_codec
+        = pb::FieldCodec.ForUInt32(98);
+    private readonly pbc::RepeatedField<uint> unlockTrackList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> UnlockTrackList {
+      get { return unlockTrackList_; }
+    }
+
     /// <summary>Field number for the "level_data_list" field.</summary>
-    public const int LevelDataListFieldNumber = 1;
+    public const int LevelDataListFieldNumber = 10;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.MusicRhythmLevel> _repeated_levelDataList_codec
-        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.MusicRhythmLevel.Parser);
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.MusicRhythmLevel.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.MusicRhythmLevel> levelDataList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MusicRhythmLevel>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -108,9 +119,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "unlock_phase_list" field.</summary>
-    public const int UnlockPhaseListFieldNumber = 3;
+    public const int UnlockPhaseListFieldNumber = 9;
     private static readonly pb::FieldCodec<uint> _repeated_unlockPhaseList_codec
-        = pb::FieldCodec.ForUInt32(26);
+        = pb::FieldCodec.ForUInt32(74);
     private readonly pbc::RepeatedField<uint> unlockPhaseList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -118,33 +129,10 @@ namespace March7thHoney.Proto {
       get { return unlockPhaseList_; }
     }
 
-    /// <summary>Field number for the "show_hint" field.</summary>
-    public const int ShowHintFieldNumber = 5;
-    private bool showHint_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool ShowHint {
-      get { return showHint_; }
-      set {
-        showHint_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "unlock_track_list" field.</summary>
-    public const int UnlockTrackListFieldNumber = 6;
-    private static readonly pb::FieldCodec<uint> _repeated_unlockTrackList_codec
-        = pb::FieldCodec.ForUInt32(50);
-    private readonly pbc::RepeatedField<uint> unlockTrackList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> UnlockTrackList {
-      get { return unlockTrackList_; }
-    }
-
     /// <summary>Field number for the "music_group" field.</summary>
-    public const int MusicGroupFieldNumber = 8;
+    public const int MusicGroupFieldNumber = 13;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.MusicRhythmGroup> _repeated_musicGroup_codec
-        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.MusicRhythmGroup.Parser);
+        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.MusicRhythmGroup.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.MusicRhythmGroup> musicGroup_ = new pbc::RepeatedField<global::March7thHoney.Proto.MusicRhythmGroup>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,34 +140,10 @@ namespace March7thHoney.Proto {
       get { return musicGroup_; }
     }
 
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 10;
-    private uint retcode_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
-      set {
-        retcode_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "cur_level_id" field.</summary>
-    public const int CurLevelIdFieldNumber = 11;
-    private uint curLevelId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CurLevelId {
-      get { return curLevelId_; }
-      set {
-        curLevelId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "unlock_song_list" field.</summary>
-    public const int UnlockSongListFieldNumber = 12;
+    public const int UnlockSongListFieldNumber = 2;
     private static readonly pb::FieldCodec<uint> _repeated_unlockSongList_codec
-        = pb::FieldCodec.ForUInt32(98);
+        = pb::FieldCodec.ForUInt32(18);
     private readonly pbc::RepeatedField<uint> unlockSongList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -199,6 +163,42 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "show_hint" field.</summary>
+    public const int ShowHintFieldNumber = 15;
+    private bool showHint_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool ShowHint {
+      get { return showHint_; }
+      set {
+        showHint_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "cur_level_id" field.</summary>
+    public const int CurLevelIdFieldNumber = 3;
+    private uint curLevelId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint CurLevelId {
+      get { return curLevelId_; }
+      set {
+        curLevelId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 4;
+    private uint retcode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Retcode {
+      get { return retcode_; }
+      set {
+        retcode_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -214,15 +214,15 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if(!unlockTrackList_.Equals(other.unlockTrackList_)) return false;
       if(!levelDataList_.Equals(other.levelDataList_)) return false;
       if(!unlockPhaseList_.Equals(other.unlockPhaseList_)) return false;
-      if (ShowHint != other.ShowHint) return false;
-      if(!unlockTrackList_.Equals(other.unlockTrackList_)) return false;
       if(!musicGroup_.Equals(other.musicGroup_)) return false;
-      if (Retcode != other.Retcode) return false;
-      if (CurLevelId != other.CurLevelId) return false;
       if(!unlockSongList_.Equals(other.unlockSongList_)) return false;
       if (CurSongId != other.CurSongId) return false;
+      if (ShowHint != other.ShowHint) return false;
+      if (CurLevelId != other.CurLevelId) return false;
+      if (Retcode != other.Retcode) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -230,15 +230,15 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      hash ^= unlockTrackList_.GetHashCode();
       hash ^= levelDataList_.GetHashCode();
       hash ^= unlockPhaseList_.GetHashCode();
-      if (ShowHint != false) hash ^= ShowHint.GetHashCode();
-      hash ^= unlockTrackList_.GetHashCode();
       hash ^= musicGroup_.GetHashCode();
-      if (Retcode != 0) hash ^= Retcode.GetHashCode();
-      if (CurLevelId != 0) hash ^= CurLevelId.GetHashCode();
       hash ^= unlockSongList_.GetHashCode();
       if (CurSongId != 0) hash ^= CurSongId.GetHashCode();
+      if (ShowHint != false) hash ^= ShowHint.GetHashCode();
+      if (CurLevelId != 0) hash ^= CurLevelId.GetHashCode();
+      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -257,26 +257,26 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      levelDataList_.WriteTo(output, _repeated_levelDataList_codec);
-      unlockPhaseList_.WriteTo(output, _repeated_unlockPhaseList_codec);
-      if (ShowHint != false) {
-        output.WriteRawTag(40);
-        output.WriteBool(ShowHint);
-      }
-      unlockTrackList_.WriteTo(output, _repeated_unlockTrackList_codec);
-      musicGroup_.WriteTo(output, _repeated_musicGroup_codec);
-      if (Retcode != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(Retcode);
-      }
+      unlockSongList_.WriteTo(output, _repeated_unlockSongList_codec);
       if (CurLevelId != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(24);
         output.WriteUInt32(CurLevelId);
       }
-      unlockSongList_.WriteTo(output, _repeated_unlockSongList_codec);
+      if (Retcode != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(Retcode);
+      }
+      unlockPhaseList_.WriteTo(output, _repeated_unlockPhaseList_codec);
+      levelDataList_.WriteTo(output, _repeated_levelDataList_codec);
+      unlockTrackList_.WriteTo(output, _repeated_unlockTrackList_codec);
+      musicGroup_.WriteTo(output, _repeated_musicGroup_codec);
       if (CurSongId != 0) {
         output.WriteRawTag(112);
         output.WriteUInt32(CurSongId);
+      }
+      if (ShowHint != false) {
+        output.WriteRawTag(120);
+        output.WriteBool(ShowHint);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -288,26 +288,26 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      levelDataList_.WriteTo(ref output, _repeated_levelDataList_codec);
-      unlockPhaseList_.WriteTo(ref output, _repeated_unlockPhaseList_codec);
-      if (ShowHint != false) {
-        output.WriteRawTag(40);
-        output.WriteBool(ShowHint);
-      }
-      unlockTrackList_.WriteTo(ref output, _repeated_unlockTrackList_codec);
-      musicGroup_.WriteTo(ref output, _repeated_musicGroup_codec);
-      if (Retcode != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(Retcode);
-      }
+      unlockSongList_.WriteTo(ref output, _repeated_unlockSongList_codec);
       if (CurLevelId != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(24);
         output.WriteUInt32(CurLevelId);
       }
-      unlockSongList_.WriteTo(ref output, _repeated_unlockSongList_codec);
+      if (Retcode != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(Retcode);
+      }
+      unlockPhaseList_.WriteTo(ref output, _repeated_unlockPhaseList_codec);
+      levelDataList_.WriteTo(ref output, _repeated_levelDataList_codec);
+      unlockTrackList_.WriteTo(ref output, _repeated_unlockTrackList_codec);
+      musicGroup_.WriteTo(ref output, _repeated_musicGroup_codec);
       if (CurSongId != 0) {
         output.WriteRawTag(112);
         output.WriteUInt32(CurSongId);
+      }
+      if (ShowHint != false) {
+        output.WriteRawTag(120);
+        output.WriteBool(ShowHint);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -319,22 +319,22 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      size += unlockTrackList_.CalculateSize(_repeated_unlockTrackList_codec);
       size += levelDataList_.CalculateSize(_repeated_levelDataList_codec);
       size += unlockPhaseList_.CalculateSize(_repeated_unlockPhaseList_codec);
+      size += musicGroup_.CalculateSize(_repeated_musicGroup_codec);
+      size += unlockSongList_.CalculateSize(_repeated_unlockSongList_codec);
+      if (CurSongId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurSongId);
+      }
       if (ShowHint != false) {
         size += 1 + 1;
-      }
-      size += unlockTrackList_.CalculateSize(_repeated_unlockTrackList_codec);
-      size += musicGroup_.CalculateSize(_repeated_musicGroup_codec);
-      if (Retcode != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
       if (CurLevelId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurLevelId);
       }
-      size += unlockSongList_.CalculateSize(_repeated_unlockSongList_codec);
-      if (CurSongId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurSongId);
+      if (Retcode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -348,22 +348,22 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      unlockTrackList_.Add(other.unlockTrackList_);
       levelDataList_.Add(other.levelDataList_);
       unlockPhaseList_.Add(other.unlockPhaseList_);
+      musicGroup_.Add(other.musicGroup_);
+      unlockSongList_.Add(other.unlockSongList_);
+      if (other.CurSongId != 0) {
+        CurSongId = other.CurSongId;
+      }
       if (other.ShowHint != false) {
         ShowHint = other.ShowHint;
-      }
-      unlockTrackList_.Add(other.unlockTrackList_);
-      musicGroup_.Add(other.musicGroup_);
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
       }
       if (other.CurLevelId != 0) {
         CurLevelId = other.CurLevelId;
       }
-      unlockSongList_.Add(other.unlockSongList_);
-      if (other.CurSongId != 0) {
-        CurSongId = other.CurSongId;
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -384,43 +384,43 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            levelDataList_.AddEntriesFrom(input, _repeated_levelDataList_codec);
+          case 18:
+          case 16: {
+            unlockSongList_.AddEntriesFrom(input, _repeated_unlockSongList_codec);
             break;
           }
-          case 26:
           case 24: {
-            unlockPhaseList_.AddEntriesFrom(input, _repeated_unlockPhaseList_codec);
+            CurLevelId = input.ReadUInt32();
             break;
           }
-          case 40: {
-            ShowHint = input.ReadBool();
-            break;
-          }
-          case 50:
-          case 48: {
-            unlockTrackList_.AddEntriesFrom(input, _repeated_unlockTrackList_codec);
-            break;
-          }
-          case 66: {
-            musicGroup_.AddEntriesFrom(input, _repeated_musicGroup_codec);
-            break;
-          }
-          case 80: {
+          case 32: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 88: {
-            CurLevelId = input.ReadUInt32();
+          case 74:
+          case 72: {
+            unlockPhaseList_.AddEntriesFrom(input, _repeated_unlockPhaseList_codec);
+            break;
+          }
+          case 82: {
+            levelDataList_.AddEntriesFrom(input, _repeated_levelDataList_codec);
             break;
           }
           case 98:
           case 96: {
-            unlockSongList_.AddEntriesFrom(input, _repeated_unlockSongList_codec);
+            unlockTrackList_.AddEntriesFrom(input, _repeated_unlockTrackList_codec);
+            break;
+          }
+          case 106: {
+            musicGroup_.AddEntriesFrom(input, _repeated_musicGroup_codec);
             break;
           }
           case 112: {
             CurSongId = input.ReadUInt32();
+            break;
+          }
+          case 120: {
+            ShowHint = input.ReadBool();
             break;
           }
         }
@@ -442,43 +442,43 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            levelDataList_.AddEntriesFrom(ref input, _repeated_levelDataList_codec);
+          case 18:
+          case 16: {
+            unlockSongList_.AddEntriesFrom(ref input, _repeated_unlockSongList_codec);
             break;
           }
-          case 26:
           case 24: {
-            unlockPhaseList_.AddEntriesFrom(ref input, _repeated_unlockPhaseList_codec);
+            CurLevelId = input.ReadUInt32();
             break;
           }
-          case 40: {
-            ShowHint = input.ReadBool();
-            break;
-          }
-          case 50:
-          case 48: {
-            unlockTrackList_.AddEntriesFrom(ref input, _repeated_unlockTrackList_codec);
-            break;
-          }
-          case 66: {
-            musicGroup_.AddEntriesFrom(ref input, _repeated_musicGroup_codec);
-            break;
-          }
-          case 80: {
+          case 32: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 88: {
-            CurLevelId = input.ReadUInt32();
+          case 74:
+          case 72: {
+            unlockPhaseList_.AddEntriesFrom(ref input, _repeated_unlockPhaseList_codec);
+            break;
+          }
+          case 82: {
+            levelDataList_.AddEntriesFrom(ref input, _repeated_levelDataList_codec);
             break;
           }
           case 98:
           case 96: {
-            unlockSongList_.AddEntriesFrom(ref input, _repeated_unlockSongList_codec);
+            unlockTrackList_.AddEntriesFrom(ref input, _repeated_unlockTrackList_codec);
+            break;
+          }
+          case 106: {
+            musicGroup_.AddEntriesFrom(ref input, _repeated_musicGroup_codec);
             break;
           }
           case 112: {
             CurSongId = input.ReadUInt32();
+            break;
+          }
+          case 120: {
+            ShowHint = input.ReadBool();
             break;
           }
         }

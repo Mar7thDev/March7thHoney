@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum MLJIILDNDPL {
+    MLJIILDNDPL_LAHJFEFDOBC = 0;
+    MLJIILDNDPL_NJOBADDLBGK = 1;
+    MLJIILDNDPL_FAGECPGMPEH = 2;
+}

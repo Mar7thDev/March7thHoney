@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "MBCCBIAMIJP.proto";
+import "PNICDFFMDDB.proto";
 
 message SettleTrackPhotoStageScRsp {
-    uint32 score_id = 2;
-    uint32 retcode = 5;
-    repeated MBCCBIAMIJP AJDKCBFCNLG = 13;
-    uint32 stage_id = 15;
+    repeated PNICDFFMDDB PIGLHELGMIJ = 4;
+    uint32 stage_id = 11;
+    uint32 retcode = 13;
+    uint32 score_id = 14;
 }

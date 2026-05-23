@@ -2,23 +2,21 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
+import "APAMFCKFHLL.proto";
 import "Avatar.proto";
 import "AvatarPathData.proto";
-import "GKDEKJKOIJN.proto";
-import "GrowthTartgetFuncType.proto";
-import "PlayerOutfitInfo.proto";
+import "CFMDKNCDDAL.proto";
+import "CJLCPMDGIBO.proto";
 
 message GetAvatarDataScRsp {
-    PlayerOutfitInfo PlayerOutfitData = 1;
-    repeated GKDEKJKOIJN MMEKFJDMILJ = 3;
-    repeated GrowthTartgetFuncType CurAvatarPath = 4;
-    repeated uint32 skin_list = 6;
-    bool is_get_all = 7;
+    repeated uint32 basic_type_id_list = 10;
+    repeated Avatar avatar_list = 6;
+    repeated CFMDKNCDDAL PILOAFIMCGK = 1;
+    repeated uint32 skin_list = 12;
+    CJLCPMDGIBO DHKFCDAGHDM = 14;
+    repeated AvatarPathData avatar_path_data_info_list = 9;
+    repeated APAMFCKFHLL JBFBEOLOHJN = 13;
+    bool is_get_all = 3;
     uint32 retcode = 8;
-    repeated uint32 basic_type_id_list = 11;
-    repeated AvatarPathData avatar_path_data_info_list = 12;
-    repeated Avatar avatar_list = 14;
-    uint32 MMOPCKLPHIO = 15;
+    uint32 JFAADMONJNF = 7;
 }

@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message FantasticStoryActivityBattleEndScNotify {
-    uint32 CEIMNDJFDJD = 2;
-    uint32 JHGANJGBALI = 3;
-    uint32 battle_id = 7;
+    uint32 OFHBPNGDEGO = 13;
+    uint32 battle_id = 6;
+    uint32 FHBNGHINHOG = 11;
 }

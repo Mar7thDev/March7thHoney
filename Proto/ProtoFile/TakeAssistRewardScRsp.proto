@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "ItemList.proto";
-import "MBICBKAFGIK.proto";
+import "KAODLPJMEFE.proto";
 
 message TakeAssistRewardScRsp {
-    uint32 retcode = 6;
-    repeated MBICBKAFGIK CADPJMANPCA = 9;
-    ItemList reward = 10;
+    ItemList reward = 2;
+    repeated KAODLPJMEFE OILHLECGBCH = 13;
+    uint32 retcode = 9;
 }

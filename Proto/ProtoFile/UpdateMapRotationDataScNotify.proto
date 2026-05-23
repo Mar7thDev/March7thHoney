@@ -2,19 +2,17 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "ChargerInfo.proto";
 import "RotateMapInfo.proto";
 import "RotaterData.proto";
 import "RotaterEnergyInfo.proto";
 
 message UpdateMapRotationDataScNotify {
-    uint32 BCPCBHMFIIN = 2;
-    repeated ChargerInfo GPKABIBKJHF = 4;
-    bool DIMOGLIMLBD = 5;
-    int32 JHDLNBPNEKG = 8;
-    RotateMapInfo AMMJECHPGPE = 12;
-    repeated RotaterData DJHDDOFHMCF = 14;
-    RotaterEnergyInfo energy_info = 15;
+    repeated RotaterData CEDGGDFMILP = 12;
+    RotateMapInfo COOOMDKGODF = 9;
+    RotaterEnergyInfo energy_info = 11;
+    repeated ChargerInfo EGAGKNADAHJ = 14;
+    int32 LJHKNKFLGDE = 13;
+    uint32 JPPMEKJGJFD = 4;
+    bool BHABAIFPOOA = 1;
 }

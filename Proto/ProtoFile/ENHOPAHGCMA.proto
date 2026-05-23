@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "MotionInfo.proto";
+
+message ENHOPAHGCMA {
+    bytes DNOBAJNIGAC = 1;
+    MotionInfo IFPFJIIFALA = 7;
+    uint32 LNGJODEPCDN = 9;
+    uint32 EKHEAFBKDFP = 5;
+    uint32 config_id = 4;
+}

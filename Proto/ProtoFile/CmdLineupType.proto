@@ -2,34 +2,34 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdLineupType {
-    KEACHFCCAOI_PCPDHELPKEM = 0;
-    CmdChangeLineupLeaderScRsp = 704;
-    CmdSetLineupNameScRsp = 733;
-    CmdQuitLineupScRsp = 798;
-    CmdChangeLineupLeaderCsReq = 737;
-    CmdExtraLineupDestroyNotify = 789;
-    CmdGetLineupAvatarDataCsReq = 701;
-    CmdGetAllLineupDataCsReq = 761;
-    CmdVirtualLineupTrialAvatarChangeScNotify = 796;
-    CmdReplaceLineupScRsp = 800;
-    CmdGetCurLineupDataScRsp = 795;
-    CmdJoinLineupScRsp = 718;
-    CmdAJJAAMNDGEH = 710;
-    CmdSwitchLineupIndexCsReq = 738;
-    CmdSwitchLineupIndexScRsp = 772;
-    CmdJoinLineupCsReq = 714;
-    CmdGetCurLineupDataCsReq = 794;
-    CmdGetAllLineupDataScRsp = 707;
-    CmdBCNOGENAHJJ = 726;
-    CmdVirtualLineupDestroyNotify = 758;
-    CmdSwapLineupCsReq = 763;
-    KEACHFCCAOI_NNMMNMDJELK = 791;
-    CmdGetLineupAvatarDataScRsp = 774;
-    CmdReplaceLineupCsReq = 744;
-    CmdSyncLineupNotify = 739;
-    CmdQuitLineupCsReq = 709;
-    CmdSetLineupNameCsReq = 732;
+    MLPGOBNCBOF_NLCDGIPGFDJ = 0;
+    MLPGOBNCBOF_FANJALKAECH = 742;
+    MLPGOBNCBOF_HDNPMAKCOMN = 792;
+    MLPGOBNCBOF_JNKEBKDKMHC = 773;
+    MLPGOBNCBOF_PMPKOFODFKJ = 703;
+    MLPGOBNCBOF_PIPPAFPPOHP = 724;
+    MLPGOBNCBOF_NIPEBOCBIOA = 771;
+    MLPGOBNCBOF_LFOBDPHHBAI = 713;
+    MLPGOBNCBOF_NLANMPBIJFL = 754;
+    MLPGOBNCBOF_ENDLHCIMJFO = 783;
+    MLPGOBNCBOF_AODLKPDHHPI = 727;
+    MLPGOBNCBOF_BPDMAOANCKF = 710;
+    MLPGOBNCBOF_MGPDKLGIJEA = 712;
+    MLPGOBNCBOF_DBIKDBFBFMN = 781;
+    MLPGOBNCBOF_IIEDDHGHELF = 709;
+    MLPGOBNCBOF_KEHBLKLNKAP = 752;
+    MLPGOBNCBOF_CJFAGCEPOBK = 729;
+    MLPGOBNCBOF_JKPNOKOEDBH = 780;
+    MLPGOBNCBOF_PEHANDOLJKL = 774;
+    MLPGOBNCBOF_AENJJKEDIMO = 759;
+    MLPGOBNCBOF_JHBHFAODNFG = 715;
+    MLPGOBNCBOF_FKNLHEEOHGC = 776;
+    MLPGOBNCBOF_OAHDNBNPMLG = 778;
+    MLPGOBNCBOF_EIJDLMFMFGO = 738;
+    MLPGOBNCBOF_MMPOIAMJMPH = 766;
+    MLPGOBNCBOF_OAKBPNPAMPC = 787;
+    MLPGOBNCBOF_EIDDCEADMMC = 748;
+    MLPGOBNCBOF_CEGAJPBOEBO = 761;
+    MLPGOBNCBOF_IOGEJCKEJNA = 736;
 }

@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message RogueTournTakeExpRewardCsReq {
-    uint32 FPFIHHBNBAN = 3;
-    repeated uint32 PBBHJEFLBCB = 14;
+    repeated uint32 HBGAFAFFFAO = 10;
+    uint32 FABMHMFNMDB = 11;
 }

@@ -2,22 +2,20 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdTalkEventType {
-    KPDFEMPKMAD_CCINLAACDAL = 0;
-    CmdFinishFirstTalkByPerformanceNpcCsReq = 2174;
-    CmdFinishFirstTalkNpcScRsp = 2198;
-    CmdKBEEJOEHONO = 2163;
-    CmdGetTalkEventRewardCsReq = 2194;
-    CmdGetFirstTalkNpcCsReq = 2114;
-    CmdCHKNIKPEPAM = 2126;
-    CmdFinishFirstTalkNpcCsReq = 2109;
-    CmdFinishFirstTalkByPerformanceNpcScRsp = 2137;
-    CmdGetNpcTakenRewardScRsp = 2110;
-    CmdTakeTalkRewardScRsp = 2195;
-    CmdGetReceivedTalkEventsCsReq = 2191;
-    CmdGetFirstTalkByPerformanceNpcCsReq = 2139;
-    CmdGetFirstTalkNpcScRsp = 2118;
-    CmdGetFirstTalkByPerformanceNpcScRsp = 2101;
+    LAGOBKECEDB_MNPGFLPBDLK = 0;
+    LAGOBKECEDB_CGDCKICAEIL = 2180;
+    LAGOBKECEDB_PBEPLMGLHHJ = 2127;
+    LAGOBKECEDB_BECJLBLPNHG = 2187;
+    LAGOBKECEDB_HNCHEKHCDLH = 2154;
+    LAGOBKECEDB_PEBGMODAAJE = 2110;
+    LAGOBKECEDB_EPECNFIOLOP = 2112;
+    LAGOBKECEDB_CPNNEDNLMCG = 2103;
+    LAGOBKECEDB_ANIFMPJBLKE = 2129;
+    LAGOBKECEDB_MJOOLIOLKBI = 2113;
+    LAGOBKECEDB_NPCAKFDNJED = 2136;
+    LAGOBKECEDB_IJHKJBJLJCH = 2183;
+    LAGOBKECEDB_IPAFFKCGCIP = 2115;
+    LAGOBKECEDB_CGEKPNBMDKN = 2173;
+    LAGOBKECEDB_AGBBELHLOMN = 2181;
 }

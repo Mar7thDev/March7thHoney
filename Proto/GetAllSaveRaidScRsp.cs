@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChlHZXRBbGxTYXZlUmFpZFNjUnNwLnByb3RvGg5SYWlkRGF0YS5wcm90byJJ",
-            "ChNHZXRBbGxTYXZlUmFpZFNjUnNwEiEKDnJhaWRfZGF0YV9saXN0GAYgAygL",
-            "MgkuUmFpZERhdGESDwoHcmV0Y29kZRgHIAEoDUIWqgITTWFyY2g3dGhIb25l",
+            "ChNHZXRBbGxTYXZlUmFpZFNjUnNwEiEKDnJhaWRfZGF0YV9saXN0GA4gAygL",
+            "MgkuUmFpZERhdGESDwoHcmV0Y29kZRgKIAEoDUIWqgITTWFyY2g3dGhIb25l",
             "eS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.RaidDataReflection.Descriptor, },
@@ -85,9 +85,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "raid_data_list" field.</summary>
-    public const int RaidDataListFieldNumber = 6;
+    public const int RaidDataListFieldNumber = 14;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.RaidData> _repeated_raidDataList_codec
-        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.RaidData.Parser);
+        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.RaidData.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.RaidData> raidDataList_ = new pbc::RepeatedField<global::March7thHoney.Proto.RaidData>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 7;
+    public const int RetcodeFieldNumber = 10;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -151,11 +151,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      raidDataList_.WriteTo(output, _repeated_raidDataList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(80);
         output.WriteUInt32(Retcode);
       }
+      raidDataList_.WriteTo(output, _repeated_raidDataList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -166,11 +166,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      raidDataList_.WriteTo(ref output, _repeated_raidDataList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(80);
         output.WriteUInt32(Retcode);
       }
+      raidDataList_.WriteTo(ref output, _repeated_raidDataList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -220,12 +220,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 50: {
-            raidDataList_.AddEntriesFrom(input, _repeated_raidDataList_codec);
+          case 80: {
+            Retcode = input.ReadUInt32();
             break;
           }
-          case 56: {
-            Retcode = input.ReadUInt32();
+          case 114: {
+            raidDataList_.AddEntriesFrom(input, _repeated_raidDataList_codec);
             break;
           }
         }
@@ -247,12 +247,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 50: {
-            raidDataList_.AddEntriesFrom(ref input, _repeated_raidDataList_codec);
+          case 80: {
+            Retcode = input.ReadUInt32();
             break;
           }
-          case 56: {
-            Retcode = input.ReadUInt32();
+          case 114: {
+            raidDataList_.AddEntriesFrom(ref input, _repeated_raidDataList_codec);
             break;
           }
         }

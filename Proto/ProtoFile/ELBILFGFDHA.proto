@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message ELBILFGFDHA {
+    uint32 unique_id = 8;
+    uint32 GPIGNHPKFFB = 9;
+    uint32 passenger_id = 6;
+}

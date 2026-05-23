@@ -24,13 +24,12 @@ namespace March7thHoney.Proto {
     static CmdStarFightTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChZDbWRTdGFyRmlnaHRUeXBlLnByb3RvKtQBChBDbWRTdGFyRmlnaHRUeXBl",
-            "EhsKF0pIUERFQkJJRE1OX1BDUERIRUxQS0VNEAASHQoYQ21kR2V0U3RhckZp",
-            "Z2h0RGF0YVNjUnNwEII4EiAKG0NtZFN0YXJ0U3RhckZpZ2h0TGV2ZWxTY1Jz",
-            "cBD/NxIhChxDbWRTdGFyRmlnaHREYXRhQ2hhbmdlTm90aWZ5EP03Eh0KGENt",
-            "ZEdldFN0YXJGaWdodERhdGFDc1JlcRCBOBIgChtDbWRTdGFydFN0YXJGaWdo",
-            "dExldmVsQ3NSZXEQ+TdCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
-            "Mw=="));
+            "ChZDbWRTdGFyRmlnaHRUeXBlLnByb3RvKsUBChBDbWRTdGFyRmlnaHRUeXBl",
+            "EhsKF0tMT01HQkZGSklJX05MQ0RHSVBHRkRKEAASHAoXS0xPTUdCRkZKSUlf",
+            "UExFSU1DTUxBSEIQgTgSHAoXS0xPTUdCRkZKSUlfRkNJQkJNRE5PR00QgDgS",
+            "HAoXS0xPTUdCRkZKSUlfRk9OSEpNQ0JDQksQ/DcSHAoXS0xPTUdCRkZKSUlf",
+            "TUVFQ0xBS09QSkQQ+jcSHAoXS0xPTUdCRkZKSUlfR0JOSENOSEZHSkgQgjhC",
+            "FqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdStarFightType), }, null, null));
@@ -40,12 +39,12 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdStarFightType {
-    [pbr::OriginalName("JHPDEBBIDMN_PCPDHELPKEM")] JhpdebbidmnPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdGetStarFightDataScRsp")] CmdGetStarFightDataScRsp = 7170,
-    [pbr::OriginalName("CmdStartStarFightLevelScRsp")] CmdStartStarFightLevelScRsp = 7167,
-    [pbr::OriginalName("CmdStarFightDataChangeNotify")] CmdStarFightDataChangeNotify = 7165,
-    [pbr::OriginalName("CmdGetStarFightDataCsReq")] CmdGetStarFightDataCsReq = 7169,
-    [pbr::OriginalName("CmdStartStarFightLevelCsReq")] CmdStartStarFightLevelCsReq = 7161,
+    [pbr::OriginalName("KLOMGBFFJII_NLCDGIPGFDJ")] KlomgbffjiiNlcdgipgfdj = 0,
+    [pbr::OriginalName("KLOMGBFFJII_PLEIMCMLAHB")] KlomgbffjiiPleimcmlahb = 7169,
+    [pbr::OriginalName("KLOMGBFFJII_FCIBBMDNOGM")] KlomgbffjiiFcibbmdnogm = 7168,
+    [pbr::OriginalName("KLOMGBFFJII_FONHJMCBCBK")] KlomgbffjiiFonhjmcbcbk = 7164,
+    [pbr::OriginalName("KLOMGBFFJII_MEECLAKOPJD")] KlomgbffjiiMeeclakopjd = 7162,
+    [pbr::OriginalName("KLOMGBFFJII_GBNHCNHFGJH")] KlomgbffjiiGbnhcnhfgjh = 7170,
   }
 
   #endregion

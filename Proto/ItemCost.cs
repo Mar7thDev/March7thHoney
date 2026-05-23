@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cg5JdGVtQ29zdC5wcm90bxoOUGlsZUl0ZW0ucHJvdG8ibAoISXRlbUNvc3QS",
-            "HQoTZXF1aXBtZW50X3VuaXF1ZV9pZBgIIAEoDUgAEh4KCXBpbGVfaXRlbRgL",
-            "IAEoCzIJLlBpbGVJdGVtSAASGQoPcmVsaWNfdW5pcXVlX2lkGA0gASgNSABC",
+            "HgoJcGlsZV9pdGVtGAQgASgLMgkuUGlsZUl0ZW1IABIdChNlcXVpcG1lbnRf",
+            "dW5pcXVlX2lkGAUgASgNSAASGQoPcmVsaWNfdW5pcXVlX2lkGAcgASgNSABC",
             "BgoEaXRlbUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.PileItemReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ItemCost), global::March7thHoney.Proto.ItemCost.Parser, new[]{ "EquipmentUniqueId", "PileItem", "RelicUniqueId" }, new[]{ "Item" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ItemCost), global::March7thHoney.Proto.ItemCost.Parser, new[]{ "PileItem", "EquipmentUniqueId", "RelicUniqueId" }, new[]{ "Item" }, null, null, null)
           }));
     }
     #endregion
@@ -74,11 +74,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ItemCost(ItemCost other) : this() {
       switch (other.ItemCase) {
-        case ItemOneofCase.EquipmentUniqueId:
-          EquipmentUniqueId = other.EquipmentUniqueId;
-          break;
         case ItemOneofCase.PileItem:
           PileItem = other.PileItem.Clone();
+          break;
+        case ItemOneofCase.EquipmentUniqueId:
+          EquipmentUniqueId = other.EquipmentUniqueId;
           break;
         case ItemOneofCase.RelicUniqueId:
           RelicUniqueId = other.RelicUniqueId;
@@ -94,8 +94,20 @@ namespace March7thHoney.Proto {
       return new ItemCost(this);
     }
 
+    /// <summary>Field number for the "pile_item" field.</summary>
+    public const int PileItemFieldNumber = 4;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.PileItem PileItem {
+      get { return itemCase_ == ItemOneofCase.PileItem ? (global::March7thHoney.Proto.PileItem) item_ : null; }
+      set {
+        item_ = value;
+        itemCase_ = value == null ? ItemOneofCase.None : ItemOneofCase.PileItem;
+      }
+    }
+
     /// <summary>Field number for the "equipment_unique_id" field.</summary>
-    public const int EquipmentUniqueIdFieldNumber = 8;
+    public const int EquipmentUniqueIdFieldNumber = 5;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint EquipmentUniqueId {
@@ -120,20 +132,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "pile_item" field.</summary>
-    public const int PileItemFieldNumber = 11;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.PileItem PileItem {
-      get { return itemCase_ == ItemOneofCase.PileItem ? (global::March7thHoney.Proto.PileItem) item_ : null; }
-      set {
-        item_ = value;
-        itemCase_ = value == null ? ItemOneofCase.None : ItemOneofCase.PileItem;
-      }
-    }
-
     /// <summary>Field number for the "relic_unique_id" field.</summary>
-    public const int RelicUniqueIdFieldNumber = 13;
+    public const int RelicUniqueIdFieldNumber = 7;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint RelicUniqueId {
@@ -162,9 +162,9 @@ namespace March7thHoney.Proto {
     /// <summary>Enum of possible cases for the "item" oneof.</summary>
     public enum ItemOneofCase {
       None = 0,
-      EquipmentUniqueId = 8,
-      PileItem = 11,
-      RelicUniqueId = 13,
+      PileItem = 4,
+      EquipmentUniqueId = 5,
+      RelicUniqueId = 7,
     }
     private ItemOneofCase itemCase_ = ItemOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -195,8 +195,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (EquipmentUniqueId != other.EquipmentUniqueId) return false;
       if (!object.Equals(PileItem, other.PileItem)) return false;
+      if (EquipmentUniqueId != other.EquipmentUniqueId) return false;
       if (RelicUniqueId != other.RelicUniqueId) return false;
       if (ItemCase != other.ItemCase) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -206,8 +206,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (HasEquipmentUniqueId) hash ^= EquipmentUniqueId.GetHashCode();
       if (itemCase_ == ItemOneofCase.PileItem) hash ^= PileItem.GetHashCode();
+      if (HasEquipmentUniqueId) hash ^= EquipmentUniqueId.GetHashCode();
       if (HasRelicUniqueId) hash ^= RelicUniqueId.GetHashCode();
       hash ^= (int) itemCase_;
       if (_unknownFields != null) {
@@ -228,16 +228,16 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (HasEquipmentUniqueId) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(EquipmentUniqueId);
-      }
       if (itemCase_ == ItemOneofCase.PileItem) {
-        output.WriteRawTag(90);
+        output.WriteRawTag(34);
         output.WriteMessage(PileItem);
       }
+      if (HasEquipmentUniqueId) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(EquipmentUniqueId);
+      }
       if (HasRelicUniqueId) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(56);
         output.WriteUInt32(RelicUniqueId);
       }
       if (_unknownFields != null) {
@@ -250,16 +250,16 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (HasEquipmentUniqueId) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(EquipmentUniqueId);
-      }
       if (itemCase_ == ItemOneofCase.PileItem) {
-        output.WriteRawTag(90);
+        output.WriteRawTag(34);
         output.WriteMessage(PileItem);
       }
+      if (HasEquipmentUniqueId) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(EquipmentUniqueId);
+      }
       if (HasRelicUniqueId) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(56);
         output.WriteUInt32(RelicUniqueId);
       }
       if (_unknownFields != null) {
@@ -272,11 +272,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (HasEquipmentUniqueId) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EquipmentUniqueId);
-      }
       if (itemCase_ == ItemOneofCase.PileItem) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(PileItem);
+      }
+      if (HasEquipmentUniqueId) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EquipmentUniqueId);
       }
       if (HasRelicUniqueId) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RelicUniqueId);
@@ -294,14 +294,14 @@ namespace March7thHoney.Proto {
         return;
       }
       switch (other.ItemCase) {
-        case ItemOneofCase.EquipmentUniqueId:
-          EquipmentUniqueId = other.EquipmentUniqueId;
-          break;
         case ItemOneofCase.PileItem:
           if (PileItem == null) {
             PileItem = new global::March7thHoney.Proto.PileItem();
           }
           PileItem.MergeFrom(other.PileItem);
+          break;
+        case ItemOneofCase.EquipmentUniqueId:
+          EquipmentUniqueId = other.EquipmentUniqueId;
           break;
         case ItemOneofCase.RelicUniqueId:
           RelicUniqueId = other.RelicUniqueId;
@@ -327,11 +327,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 64: {
-            EquipmentUniqueId = input.ReadUInt32();
-            break;
-          }
-          case 90: {
+          case 34: {
             global::March7thHoney.Proto.PileItem subBuilder = new global::March7thHoney.Proto.PileItem();
             if (itemCase_ == ItemOneofCase.PileItem) {
               subBuilder.MergeFrom(PileItem);
@@ -340,7 +336,11 @@ namespace March7thHoney.Proto {
             PileItem = subBuilder;
             break;
           }
-          case 104: {
+          case 40: {
+            EquipmentUniqueId = input.ReadUInt32();
+            break;
+          }
+          case 56: {
             RelicUniqueId = input.ReadUInt32();
             break;
           }
@@ -363,11 +363,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 64: {
-            EquipmentUniqueId = input.ReadUInt32();
-            break;
-          }
-          case 90: {
+          case 34: {
             global::March7thHoney.Proto.PileItem subBuilder = new global::March7thHoney.Proto.PileItem();
             if (itemCase_ == ItemOneofCase.PileItem) {
               subBuilder.MergeFrom(PileItem);
@@ -376,7 +372,11 @@ namespace March7thHoney.Proto {
             PileItem = subBuilder;
             break;
           }
-          case 104: {
+          case 40: {
+            EquipmentUniqueId = input.ReadUInt32();
+            break;
+          }
+          case 56: {
             RelicUniqueId = input.ReadUInt32();
             break;
           }

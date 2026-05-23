@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "ItemList.proto";
 import "TutorialGuide.proto";
 
 message FinishTutorialGuideScRsp {
-    ItemList reward = 1;
-    TutorialGuide tutorial_guide = 7;
-    uint32 retcode = 10;
+    TutorialGuide tutorial_guide = 11;
+    ItemList reward = 8;
+    uint32 retcode = 5;
 }

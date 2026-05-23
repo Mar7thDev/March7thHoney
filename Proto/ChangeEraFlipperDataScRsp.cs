@@ -24,12 +24,12 @@ namespace March7thHoney.Proto {
     static ChangeEraFlipperDataScRspReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Ch9DaGFuZ2VFcmFGbGlwcGVyRGF0YVNjUnNwLnByb3RvGhhFcmFGbGlwcGVy",
-            "RGF0YUxpc3QucHJvdG8iTwoZQ2hhbmdlRXJhRmxpcHBlckRhdGFTY1JzcBIh",
-            "CgRkYXRhGAUgASgLMhMuRXJhRmxpcHBlckRhdGFMaXN0Eg8KB3JldGNvZGUY",
-            "CSABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "Ch9DaGFuZ2VFcmFGbGlwcGVyRGF0YVNjUnNwLnByb3RvGhFLS0ZNR0NOREhH",
+            "SC5wcm90byJIChlDaGFuZ2VFcmFGbGlwcGVyRGF0YVNjUnNwEhoKBGRhdGEY",
+            "CyABKAsyDC5LS0ZNR0NOREhHSBIPCgdyZXRjb2RlGA0gASgNQhaqAhNNYXJj",
+            "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.EraFlipperDataListReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.KKFMGCNDHGHReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChangeEraFlipperDataScRsp), global::March7thHoney.Proto.ChangeEraFlipperDataScRsp.Parser, new[]{ "Data", "Retcode" }, null, null, null, null)
           }));
@@ -85,11 +85,11 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "data" field.</summary>
-    public const int DataFieldNumber = 5;
-    private global::March7thHoney.Proto.EraFlipperDataList data_;
+    public const int DataFieldNumber = 11;
+    private global::March7thHoney.Proto.KKFMGCNDHGH data_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.EraFlipperDataList Data {
+    public global::March7thHoney.Proto.KKFMGCNDHGH Data {
       get { return data_; }
       set {
         data_ = value;
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 9;
+    public const int RetcodeFieldNumber = 13;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -153,11 +153,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (data_ != null) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(90);
         output.WriteMessage(Data);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(104);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -171,11 +171,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (data_ != null) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(90);
         output.WriteMessage(Data);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(104);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -208,7 +208,7 @@ namespace March7thHoney.Proto {
       }
       if (other.data_ != null) {
         if (data_ == null) {
-          Data = new global::March7thHoney.Proto.EraFlipperDataList();
+          Data = new global::March7thHoney.Proto.KKFMGCNDHGH();
         }
         Data.MergeFrom(other.Data);
       }
@@ -234,14 +234,14 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 42: {
+          case 90: {
             if (data_ == null) {
-              Data = new global::March7thHoney.Proto.EraFlipperDataList();
+              Data = new global::March7thHoney.Proto.KKFMGCNDHGH();
             }
             input.ReadMessage(Data);
             break;
           }
-          case 72: {
+          case 104: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -264,14 +264,14 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 42: {
+          case 90: {
             if (data_ == null) {
-              Data = new global::March7thHoney.Proto.EraFlipperDataList();
+              Data = new global::March7thHoney.Proto.KKFMGCNDHGH();
             }
             input.ReadMessage(Data);
             break;
           }
-          case 72: {
+          case 104: {
             Retcode = input.ReadUInt32();
             break;
           }

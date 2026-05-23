@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChtVcGRhdGVDdXN0b21JbmZvU2NSc3AucHJvdG8iXwoVVXBkYXRlQ3VzdG9t",
-            "SW5mb1NjUnNwEg8KB3JldGNvZGUYAiABKA0SDwoFdGl0bGUYBSABKAlIABIV",
-            "CgtGQ09LT0dOT0dDQRgLIAEoDUgAQg0KC05MUFBQQ0hHR1BGQhaqAhNNYXJj",
+            "SW5mb1NjUnNwEg8KB3JldGNvZGUYCyABKA0SDwoFdGl0bGUYDSABKAlIABIV",
+            "CgtBSklNUExMSUZJRRgPIAEoDUgAQg0KC01NQ0dCR0RKSVBOQhaqAhNNYXJj",
             "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UpdateCustomInfoScRsp), global::March7thHoney.Proto.UpdateCustomInfoScRsp.Parser, new[]{ "Retcode", "Title", "FCOKOGNOGCA" }, new[]{ "NLPPPCHGGPF" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UpdateCustomInfoScRsp), global::March7thHoney.Proto.UpdateCustomInfoScRsp.Parser, new[]{ "Retcode", "Title", "AJIMPLLIFIE" }, new[]{ "MMCGBGDJIPN" }, null, null, null)
           }));
     }
     #endregion
@@ -74,12 +74,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public UpdateCustomInfoScRsp(UpdateCustomInfoScRsp other) : this() {
       retcode_ = other.retcode_;
-      switch (other.NLPPPCHGGPFCase) {
-        case NLPPPCHGGPFOneofCase.Title:
+      switch (other.MMCGBGDJIPNCase) {
+        case MMCGBGDJIPNOneofCase.Title:
           Title = other.Title;
           break;
-        case NLPPPCHGGPFOneofCase.FCOKOGNOGCA:
-          FCOKOGNOGCA = other.FCOKOGNOGCA;
+        case MMCGBGDJIPNOneofCase.AJIMPLLIFIE:
+          AJIMPLLIFIE = other.AJIMPLLIFIE;
           break;
       }
 
@@ -93,7 +93,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 2;
+    public const int RetcodeFieldNumber = 11;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -105,76 +105,76 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "title" field.</summary>
-    public const int TitleFieldNumber = 5;
+    public const int TitleFieldNumber = 13;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Title {
-      get { return HasTitle ? (string) nLPPPCHGGPF_ : ""; }
+      get { return HasTitle ? (string) mMCGBGDJIPN_ : ""; }
       set {
-        nLPPPCHGGPF_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-        nLPPPCHGGPFCase_ = NLPPPCHGGPFOneofCase.Title;
+        mMCGBGDJIPN_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        mMCGBGDJIPNCase_ = MMCGBGDJIPNOneofCase.Title;
       }
     }
     /// <summary>Gets whether the "title" field is set</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool HasTitle {
-      get { return nLPPPCHGGPFCase_ == NLPPPCHGGPFOneofCase.Title; }
+      get { return mMCGBGDJIPNCase_ == MMCGBGDJIPNOneofCase.Title; }
     }
     /// <summary> Clears the value of the oneof if it's currently set to "title" </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void ClearTitle() {
       if (HasTitle) {
-        ClearNLPPPCHGGPF();
+        ClearMMCGBGDJIPN();
       }
     }
 
-    /// <summary>Field number for the "FCOKOGNOGCA" field.</summary>
-    public const int FCOKOGNOGCAFieldNumber = 11;
+    /// <summary>Field number for the "AJIMPLLIFIE" field.</summary>
+    public const int AJIMPLLIFIEFieldNumber = 15;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint FCOKOGNOGCA {
-      get { return HasFCOKOGNOGCA ? (uint) nLPPPCHGGPF_ : 0; }
+    public uint AJIMPLLIFIE {
+      get { return HasAJIMPLLIFIE ? (uint) mMCGBGDJIPN_ : 0; }
       set {
-        nLPPPCHGGPF_ = value;
-        nLPPPCHGGPFCase_ = NLPPPCHGGPFOneofCase.FCOKOGNOGCA;
+        mMCGBGDJIPN_ = value;
+        mMCGBGDJIPNCase_ = MMCGBGDJIPNOneofCase.AJIMPLLIFIE;
       }
     }
-    /// <summary>Gets whether the "FCOKOGNOGCA" field is set</summary>
+    /// <summary>Gets whether the "AJIMPLLIFIE" field is set</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasFCOKOGNOGCA {
-      get { return nLPPPCHGGPFCase_ == NLPPPCHGGPFOneofCase.FCOKOGNOGCA; }
+    public bool HasAJIMPLLIFIE {
+      get { return mMCGBGDJIPNCase_ == MMCGBGDJIPNOneofCase.AJIMPLLIFIE; }
     }
-    /// <summary> Clears the value of the oneof if it's currently set to "FCOKOGNOGCA" </summary>
+    /// <summary> Clears the value of the oneof if it's currently set to "AJIMPLLIFIE" </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearFCOKOGNOGCA() {
-      if (HasFCOKOGNOGCA) {
-        ClearNLPPPCHGGPF();
+    public void ClearAJIMPLLIFIE() {
+      if (HasAJIMPLLIFIE) {
+        ClearMMCGBGDJIPN();
       }
     }
 
-    private object nLPPPCHGGPF_;
-    /// <summary>Enum of possible cases for the "NLPPPCHGGPF" oneof.</summary>
-    public enum NLPPPCHGGPFOneofCase {
+    private object mMCGBGDJIPN_;
+    /// <summary>Enum of possible cases for the "MMCGBGDJIPN" oneof.</summary>
+    public enum MMCGBGDJIPNOneofCase {
       None = 0,
-      Title = 5,
-      FCOKOGNOGCA = 11,
+      Title = 13,
+      AJIMPLLIFIE = 15,
     }
-    private NLPPPCHGGPFOneofCase nLPPPCHGGPFCase_ = NLPPPCHGGPFOneofCase.None;
+    private MMCGBGDJIPNOneofCase mMCGBGDJIPNCase_ = MMCGBGDJIPNOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public NLPPPCHGGPFOneofCase NLPPPCHGGPFCase {
-      get { return nLPPPCHGGPFCase_; }
+    public MMCGBGDJIPNOneofCase MMCGBGDJIPNCase {
+      get { return mMCGBGDJIPNCase_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearNLPPPCHGGPF() {
-      nLPPPCHGGPFCase_ = NLPPPCHGGPFOneofCase.None;
-      nLPPPCHGGPF_ = null;
+    public void ClearMMCGBGDJIPN() {
+      mMCGBGDJIPNCase_ = MMCGBGDJIPNOneofCase.None;
+      mMCGBGDJIPN_ = null;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -194,8 +194,8 @@ namespace March7thHoney.Proto {
       }
       if (Retcode != other.Retcode) return false;
       if (Title != other.Title) return false;
-      if (FCOKOGNOGCA != other.FCOKOGNOGCA) return false;
-      if (NLPPPCHGGPFCase != other.NLPPPCHGGPFCase) return false;
+      if (AJIMPLLIFIE != other.AJIMPLLIFIE) return false;
+      if (MMCGBGDJIPNCase != other.MMCGBGDJIPNCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -205,8 +205,8 @@ namespace March7thHoney.Proto {
       int hash = 1;
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (HasTitle) hash ^= Title.GetHashCode();
-      if (HasFCOKOGNOGCA) hash ^= FCOKOGNOGCA.GetHashCode();
-      hash ^= (int) nLPPPCHGGPFCase_;
+      if (HasAJIMPLLIFIE) hash ^= AJIMPLLIFIE.GetHashCode();
+      hash ^= (int) mMCGBGDJIPNCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -226,16 +226,16 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Retcode != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(88);
         output.WriteUInt32(Retcode);
       }
       if (HasTitle) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(106);
         output.WriteString(Title);
       }
-      if (HasFCOKOGNOGCA) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(FCOKOGNOGCA);
+      if (HasAJIMPLLIFIE) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(AJIMPLLIFIE);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -248,16 +248,16 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Retcode != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(88);
         output.WriteUInt32(Retcode);
       }
       if (HasTitle) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(106);
         output.WriteString(Title);
       }
-      if (HasFCOKOGNOGCA) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(FCOKOGNOGCA);
+      if (HasAJIMPLLIFIE) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(AJIMPLLIFIE);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -275,8 +275,8 @@ namespace March7thHoney.Proto {
       if (HasTitle) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Title);
       }
-      if (HasFCOKOGNOGCA) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FCOKOGNOGCA);
+      if (HasAJIMPLLIFIE) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AJIMPLLIFIE);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -293,12 +293,12 @@ namespace March7thHoney.Proto {
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
-      switch (other.NLPPPCHGGPFCase) {
-        case NLPPPCHGGPFOneofCase.Title:
+      switch (other.MMCGBGDJIPNCase) {
+        case MMCGBGDJIPNOneofCase.Title:
           Title = other.Title;
           break;
-        case NLPPPCHGGPFOneofCase.FCOKOGNOGCA:
-          FCOKOGNOGCA = other.FCOKOGNOGCA;
+        case MMCGBGDJIPNOneofCase.AJIMPLLIFIE:
+          AJIMPLLIFIE = other.AJIMPLLIFIE;
           break;
       }
 
@@ -321,16 +321,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
+          case 88: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 42: {
+          case 106: {
             Title = input.ReadString();
             break;
           }
-          case 88: {
-            FCOKOGNOGCA = input.ReadUInt32();
+          case 120: {
+            AJIMPLLIFIE = input.ReadUInt32();
             break;
           }
         }
@@ -352,16 +352,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
+          case 88: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 42: {
+          case 106: {
             Title = input.ReadString();
             break;
           }
-          case 88: {
-            FCOKOGNOGCA = input.ReadUInt32();
+          case 120: {
+            AJIMPLLIFIE = input.ReadUInt32();
             break;
           }
         }

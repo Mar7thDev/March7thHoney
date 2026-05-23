@@ -1,6 +1,8 @@
 using System.Buffers;
+using System.Buffers.Binary;
 using System.Globalization;
 using System.Net;
+using System.Net.Sockets;
 using System.Reflection;
 using March7thHoney.Configuration;
 using March7thHoney.Data.Custom;
@@ -8,7 +10,6 @@ using March7thHoney.Enums.Server;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server.Packet;
 using March7thHoney.Kcp;
-using March7thHoney.Kcp.KcpSharp;
 using March7thHoney.Proto;
 using March7thHoney.Util;
 using Google.Protobuf;
@@ -16,7 +17,8 @@ using Google.Protobuf.Reflection;
 
 namespace March7thHoney.GameServer.Server;
 
-public class Connection(KcpConversation conversation, IPEndPoint remote) : March7thHoneyConnection(conversation, remote)
+public class Connection(TcpClient client, IPEndPoint remote, long conversationId)
+    : March7thHoneyConnection(client, remote, conversationId)
 {
     private static readonly Logger Logger = new("GameServer");
 
@@ -42,7 +44,7 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
     {
         if (!IsOnline) return;
 
-        Player?.TrainCakeCatchManager?.LeaveSocialPlayRoom();
+        // TODO 4.3: TrainCakeCatchManager 暂停
         Player?.OnLogoutAsync();
         March7thHoneyListener.UnregisterConnection(this);
         base.Stop();
@@ -158,53 +160,75 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
         return s.Replace("\\", "\\\\").Replace("\"", "\\\"").Replace("\n", "\\n").Replace("\r", "");
     }
 
+    // 4.3 TCP packet 帧格式：
+    //   [head_magic u32 BE = 0x9D74C714]
+    //   [cmd_id u16 BE]
+    //   [head_len u16 BE]
+    //   [body_len u32 BE]
+    //   [head bytes...]
+    //   [body bytes...]
+    //   [tail_magic u32 BE = 0xD7A152C8]
     protected async Task ReceiveLoop()
     {
+        var headerBuf = new byte[12];
+        var tailBuf = new byte[4];
         try
         {
             while (!CancelToken.IsCancellationRequested)
             {
-                KcpConversationReceiveResult result;
                 try
                 {
-                    // WaitToReceiveAsync call completes when there is at least one message is received or the transport is closed.
-                    result = await Conversation.WaitToReceiveAsync(CancelToken.Token);
+                    await ReadExactlyAsync(headerBuf, 12);
                 }
-                catch (OperationCanceledException) when (CancelToken.IsCancellationRequested)
+                catch (EndOfStreamException) { break; }
+                catch (OperationCanceledException) when (CancelToken.IsCancellationRequested) { break; }
+                catch (ObjectDisposedException) { break; }
+                catch (IOException) { break; }
+
+                var magic1 = BinaryPrimitives.ReadUInt32BigEndian(headerBuf.AsSpan(0, 4));
+                if (magic1 != 0x9D74C714)
                 {
-                    break;
-                }
-                catch (ObjectDisposedException)
-                {
+                    Logger.Error($"Bad head magic: got 0x{magic1:X8}, expect 0x9D74C714");
                     break;
                 }
 
-                if (result.TransportClosed)
+                var opcode = BinaryPrimitives.ReadUInt16BigEndian(headerBuf.AsSpan(4, 2));
+                int headerLength = BinaryPrimitives.ReadUInt16BigEndian(headerBuf.AsSpan(6, 2));
+                var payloadLength = BinaryPrimitives.ReadUInt32BigEndian(headerBuf.AsSpan(8, 4));
+                if (payloadLength > 0xFFFFFF)
                 {
-                    Logger.Debug("Connection was closed");
+                    Logger.Error($"Payload too big: {payloadLength}");
                     break;
                 }
 
-                var buffer = ArrayPool<byte>.Shared.Rent(result.BytesReceived);
+                var header = headerLength > 0 ? new byte[headerLength] : [];
+                var payload = payloadLength > 0 ? new byte[payloadLength] : [];
+
                 try
                 {
-                    // TryReceive should not return false here, unless the transport is closed.
-                    // So we don't need to check for result.TransportClosed.
-                    if (!Conversation.TryReceive(buffer, out result))
-                    {
-                        Logger.Error("Failed to receive packet");
-                        break;
-                    }
+                    if (headerLength > 0) await ReadExactlyAsync(header, headerLength);
+                    if (payloadLength > 0) await ReadExactlyAsync(payload, (int)payloadLength);
+                    await ReadExactlyAsync(tailBuf, 4);
+                }
+                catch (EndOfStreamException) { break; }
+                catch (OperationCanceledException) when (CancelToken.IsCancellationRequested) { break; }
+                catch (IOException) { break; }
 
-                    await ProcessMessageAsync(buffer.AsMemory(0, result.BytesReceived));
+                var magic2 = BinaryPrimitives.ReadUInt32BigEndian(tailBuf);
+                if (magic2 != 0xD7A152C8)
+                {
+                    Logger.Error($"Bad tail magic: got 0x{magic2:X8}, expect 0xD7A152C8");
+                    break;
+                }
+
+                try
+                {
+                    LogPacket("Recv", opcode, payload);
+                    await HandlePacket(opcode, header, payload);
                 }
                 catch (Exception ex)
                 {
-                    Logger.Error("Packet parse error", ex);
-                }
-                finally
-                {
-                    ArrayPool<byte>.Shared.Return(buffer);
+                    Logger.Error("Handler error", ex);
                 }
             }
         }
@@ -216,44 +240,14 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
         Stop();
     }
 
-    // DO THE PROCESSING OF THE GAME PACKET
-    private async Task ProcessMessageAsync(Memory<byte> data)
+    private async Task ReadExactlyAsync(byte[] buffer, int count)
     {
-        var gamePacket = data.ToArray();
-        if (ConfigManager.Config.GameServer.UsePacketEncryption)
-            Crypto.Xor(gamePacket, XorKey!);
-
-        await using MemoryStream ms = new(gamePacket);
-        using BinaryReader br = new(ms);
-
-        // Handle
-        try
+        var read = 0;
+        while (read < count)
         {
-            while (br.BaseStream.Position < br.BaseStream.Length)
-            {
-                // Length
-                if (br.BaseStream.Length - br.BaseStream.Position < 12) return;
-                // Packet sanity check
-                var magic1 = br.ReadUInt32BE();
-                if (magic1 != 0x9D74C714)
-                {
-                    Logger.Error($"Bad Data Package Received: got 0x{magic1:X}, expect 0x9D74C714");
-                    return; // Bad packet
-                }
-
-                // Data
-                var opcode = br.ReadUInt16BE();
-                var headerLength = br.ReadUInt16BE();
-                var payloadLength = br.ReadUInt32BE();
-                var header = br.ReadBytes(headerLength);
-                var payload = br.ReadBytes((int)payloadLength);
-                LogPacket("Recv", opcode, payload);
-                await HandlePacket(opcode, header, payload);
-            }
-        }
-        catch (Exception e)
-        {
-            Logger.Error(e.Message, e);
+            var n = await Stream.ReadAsync(buffer.AsMemory(read, count - read), CancelToken.Token);
+            if (n == 0) throw new EndOfStreamException();
+            read += n;
         }
     }
 

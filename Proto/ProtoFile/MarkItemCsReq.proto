@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message MarkItemCsReq {
-    bool EKLCFBIPGGO = 9;
-    uint32 item_id = 13;
+    bool ABDJKPCGDHO = 6;
+    uint32 item_id = 5;
 }

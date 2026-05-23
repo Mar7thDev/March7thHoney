@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "IDJALKEGPLI.proto";
+
+message NMACHAFCGNI {
+    IDJALKEGPLI NDLIKNEKDLL = 13;
+    uint32 MFPOKNMFNGM = 2;
+    uint32 stage_id = 11;
+}

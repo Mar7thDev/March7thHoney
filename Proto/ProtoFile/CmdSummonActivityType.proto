@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdSummonActivityType {
-    JNJIFBCMNEG_PCPDHELPKEM = 0;
-    CmdGetSummonActivityDataCsReq = 7569;
-    CmdSummonActivityBattleEndScNotify = 7565;
-    CmdEnterSummonActivityStageScRsp = 7567;
-    CmdEnterSummonActivityStageCsReq = 7561;
-    CmdGetSummonActivityDataScRsp = 7570;
+    FEGMMLEBKMA_NLCDGIPGFDJ = 0;
+    FEGMMLEBKMA_CKCJOHHLLDI = 7570;
+    FEGMMLEBKMA_CPONBFJGEPM = 7568;
+    FEGMMLEBKMA_BKHOKHNAIMG = 7564;
+    FEGMMLEBKMA_FHJDJDBACKL = 7562;
+    FEGMMLEBKMA_IMEGEEBOGOC = 7569;
 }

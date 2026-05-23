@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "AvatarType.proto";
+
+message ONKDAPOKGAC {
+    uint32 level = 3;
+    AvatarType avatar_type = 1;
+    uint32 index = 4;
+    uint32 id = 2;
+    uint32 MDOJNENGCFE = 5;
+}

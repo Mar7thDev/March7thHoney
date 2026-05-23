@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "HAJAOGGPCJC.proto";
+import "KPNHGDGLICN.proto";
 
 message FateChangeLineupCsReq {
-    repeated HAJAOGGPCJC avatar_list = 10;
+    repeated KPNHGDGLICN avatar_list = 15;
 }

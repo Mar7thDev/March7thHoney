@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum CDABMABJFII {
+    CDABMABJFII_NLCDGIPGFDJ = 0;
+    CDABMABJFII_FEHEGGCOKJH = 2;
+    CDABMABJFII_GGMPEGMEHPD = 4;
+    CDABMABJFII_MGBCAPIIKLM = 5;
+    CDABMABJFII_DILIGFNLNKE = 6;
+    CDABMABJFII_BOJIEINFLFF = 7;
+}

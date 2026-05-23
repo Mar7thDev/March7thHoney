@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static GridFightUpdatePosCsReqReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Ch1HcmlkRmlnaHRVcGRhdGVQb3NDc1JlcS5wcm90bxoWR3JpZEZpZ2h0UG9z",
-            "SW5mby5wcm90byJOChdHcmlkRmlnaHRVcGRhdGVQb3NDc1JlcRIzChhncmlk",
-            "X2ZpZ2h0X3Bvc19pbmZvX2xpc3QYCiADKAsyES5HcmlkRmlnaHRQb3NJbmZv",
-            "QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "Ch1HcmlkRmlnaHRVcGRhdGVQb3NDc1JlcS5wcm90bxoRTUhFR01IS0hBQUQu",
+            "cHJvdG8iPAoXR3JpZEZpZ2h0VXBkYXRlUG9zQ3NSZXESIQoLQUFLREhNSENN",
+            "TFAYBSADKAsyDC5NSEVHTUhLSEFBREIWqgITTWFyY2g3dGhIb25leS5Qcm90",
+            "b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridFightPosInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.MHEGMHKHAADReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightUpdatePosCsReq), global::March7thHoney.Proto.GridFightUpdatePosCsReq.Parser, new[]{ "GridFightPosInfoList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightUpdatePosCsReq), global::March7thHoney.Proto.GridFightUpdatePosCsReq.Parser, new[]{ "AAKDHMHCMLP" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,7 +73,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GridFightUpdatePosCsReq(GridFightUpdatePosCsReq other) : this() {
-      gridFightPosInfoList_ = other.gridFightPosInfoList_.Clone();
+      aAKDHMHCMLP_ = other.aAKDHMHCMLP_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,15 +83,15 @@ namespace March7thHoney.Proto {
       return new GridFightUpdatePosCsReq(this);
     }
 
-    /// <summary>Field number for the "grid_fight_pos_info_list" field.</summary>
-    public const int GridFightPosInfoListFieldNumber = 10;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GridFightPosInfo> _repeated_gridFightPosInfoList_codec
-        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.GridFightPosInfo.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GridFightPosInfo> gridFightPosInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GridFightPosInfo>();
+    /// <summary>Field number for the "AAKDHMHCMLP" field.</summary>
+    public const int AAKDHMHCMLPFieldNumber = 5;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MHEGMHKHAAD> _repeated_aAKDHMHCMLP_codec
+        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.MHEGMHKHAAD.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MHEGMHKHAAD> aAKDHMHCMLP_ = new pbc::RepeatedField<global::March7thHoney.Proto.MHEGMHKHAAD>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.GridFightPosInfo> GridFightPosInfoList {
-      get { return gridFightPosInfoList_; }
+    public pbc::RepeatedField<global::March7thHoney.Proto.MHEGMHKHAAD> AAKDHMHCMLP {
+      get { return aAKDHMHCMLP_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -109,7 +109,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!gridFightPosInfoList_.Equals(other.gridFightPosInfoList_)) return false;
+      if(!aAKDHMHCMLP_.Equals(other.aAKDHMHCMLP_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -117,7 +117,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= gridFightPosInfoList_.GetHashCode();
+      hash ^= aAKDHMHCMLP_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -136,7 +136,7 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      gridFightPosInfoList_.WriteTo(output, _repeated_gridFightPosInfoList_codec);
+      aAKDHMHCMLP_.WriteTo(output, _repeated_aAKDHMHCMLP_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -147,7 +147,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      gridFightPosInfoList_.WriteTo(ref output, _repeated_gridFightPosInfoList_codec);
+      aAKDHMHCMLP_.WriteTo(ref output, _repeated_aAKDHMHCMLP_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -158,7 +158,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += gridFightPosInfoList_.CalculateSize(_repeated_gridFightPosInfoList_codec);
+      size += aAKDHMHCMLP_.CalculateSize(_repeated_aAKDHMHCMLP_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -171,7 +171,7 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      gridFightPosInfoList_.Add(other.gridFightPosInfoList_);
+      aAKDHMHCMLP_.Add(other.aAKDHMHCMLP_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -191,8 +191,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 82: {
-            gridFightPosInfoList_.AddEntriesFrom(input, _repeated_gridFightPosInfoList_codec);
+          case 42: {
+            aAKDHMHCMLP_.AddEntriesFrom(input, _repeated_aAKDHMHCMLP_codec);
             break;
           }
         }
@@ -214,8 +214,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 82: {
-            gridFightPosInfoList_.AddEntriesFrom(ref input, _repeated_gridFightPosInfoList_codec);
+          case 42: {
+            aAKDHMHCMLP_.AddEntriesFrom(ref input, _repeated_aAKDHMHCMLP_codec);
             break;
           }
         }

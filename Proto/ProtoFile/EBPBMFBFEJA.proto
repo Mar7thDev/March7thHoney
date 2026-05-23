@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "LCEDDGELBMJ.proto";
+import "NEBJABOEDND.proto";
+
+message EBPBMFBFEJA {
+    NEBJABOEDND AAIMONALOPD = 7;
+    LCEDDGELBMJ CFDIKLBINHK = 10;
+    bool ENFKEAEGPBJ = 6;
+    uint32 FGLEKNDHMKN = 3;
+}

@@ -24,14 +24,16 @@ namespace March7thHoney.Proto {
     static CmdRelicPresetTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChhDbWRSZWxpY1ByZXNldFR5cGUucHJvdG8qpAIKEkNtZFJlbGljUHJlc2V0",
-            "VHlwZRIbChdMQkpJQVBETU9BSF9QQ1BESEVMUEtFTRAAEhMKDkNtZEdCRkdB",
-            "QkhGQkNOEPpMEh8KGkNtZFJlbGljUHJlc2V0QWRkUGxhbkNzUmVxEPJMEhMK",
-            "DkNtZEFPR0hLREdFRkdBEIRNEiIKHUNtZFJlbGljUHJlc2V0RGVsZXRlUGxh",
-            "bkNzUmVxEP9MEhMKDkNtZEFJT0RNRU5DUEtBEPdMEh8KGkNtZFJlbGljUHJl",
-            "c2V0R2V0UGxhbkNzUmVxEPFMEiIKHUNtZFJlbGljUHJlc2V0VXBkYXRlUGxh",
-            "bkNzUmVxEP5MEhMKDkNtZE9HTUREREZETkpQEIFNEhMKDkNtZEhMUE1ET1BI",
-            "Tk9HEPhMQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ChhDbWRSZWxpY1ByZXNldFR5cGUucHJvdG8q3QIKEkNtZFJlbGljUHJlc2V0",
+            "VHlwZRIbChdJSEZQSElQSERDRV9OTENER0lQR0ZEShAAEhwKF0lIRlBISVBI",
+            "RENFX09ESEJDTklMRE9LEPJMEhwKF0lIRlBISVBIRENFX0hPQ0dNQkxCTUJE",
+            "EIRNEhwKF0lIRlBISVBIRENFX0JKR0tMRk1MTUFGEPtMEhwKF0lIRlBISVBI",
+            "RENFX0ZKUE9FRUNNTEZNEIBNEhwKF0lIRlBISVBIRENFX1BLTEZDSkJDT0xF",
+            "EPRMEhwKF0lIRlBISVBIRENFX0FMUEZHQ01QTkFLEPZMEhwKF0lIRlBISVBI",
+            "RENFX0ZQRU1IRUFESk1GEP5MEhwKF0lIRlBISVBIRENFX0NITUVNTEhMQ01B",
+            "EINNEhwKF0lIRlBISVBIRENFX0NJR0ZQR05LQ0JPEPxMEhwKF0lIRlBISVBI",
+            "RENFX0VNT0FPRUlNRERNEIJNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZw",
+            "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdRelicPresetType), }, null, null));
@@ -41,16 +43,17 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdRelicPresetType {
-    [pbr::OriginalName("LBJIAPDMOAH_PCPDHELPKEM")] LbjiapdmoahPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdGBFGABHFBCN")] CmdGbfgabhfbcn = 9850,
-    [pbr::OriginalName("CmdRelicPresetAddPlanCsReq")] CmdRelicPresetAddPlanCsReq = 9842,
-    [pbr::OriginalName("CmdRelicPresetGetPlanScRsp")] CmdRelicPresetGetPlanScRsp = 9860,
-    [pbr::OriginalName("CmdRelicPresetDeletePlanCsReq")] CmdRelicPresetDeletePlanCsReq = 9855,
-    [pbr::OriginalName("CmdAIODMENCPKA")] CmdAiodmencpka = 9847,
-    [pbr::OriginalName("CmdRelicPresetGetPlanCsReq")] CmdRelicPresetGetPlanCsReq = 9841,
-    [pbr::OriginalName("CmdRelicPresetUpdatePlanCsReq")] CmdRelicPresetUpdatePlanCsReq = 9854,
-    [pbr::OriginalName("CmdOGMDDDFDNJP")] CmdOgmdddfdnjp = 9857,
-    [pbr::OriginalName("CmdHLPMDOPHNOG")] CmdHlpmdophnog = 9848,
+    [pbr::OriginalName("IHFPHIPHDCE_NLCDGIPGFDJ")] IhfphiphdceNlcdgipgfdj = 0,
+    [pbr::OriginalName("IHFPHIPHDCE_ODHBCNILDOK")] IhfphiphdceOdhbcnildok = 9842,
+    [pbr::OriginalName("IHFPHIPHDCE_HOCGMBLBMBD")] IhfphiphdceHocgmblbmbd = 9860,
+    [pbr::OriginalName("IHFPHIPHDCE_BJGKLFMLMAF")] IhfphiphdceBjgklfmlmaf = 9851,
+    [pbr::OriginalName("IHFPHIPHDCE_FJPOEECMLFM")] IhfphiphdceFjpoeecmlfm = 9856,
+    [pbr::OriginalName("IHFPHIPHDCE_PKLFCJBCOLE")] IhfphiphdcePklfcjbcole = 9844,
+    [pbr::OriginalName("IHFPHIPHDCE_ALPFGCMPNAK")] IhfphiphdceAlpfgcmpnak = 9846,
+    [pbr::OriginalName("IHFPHIPHDCE_FPEMHEADJMF")] IhfphiphdceFpemheadjmf = 9854,
+    [pbr::OriginalName("IHFPHIPHDCE_CHMEMLHLCMA")] IhfphiphdceChmemlhlcma = 9859,
+    [pbr::OriginalName("IHFPHIPHDCE_CIGFPGNKCBO")] IhfphiphdceCigfpgnkcbo = 9852,
+    [pbr::OriginalName("IHFPHIPHDCE_EMOAOEIMDDM")] IhfphiphdceEmoaoeimddm = 9858,
   }
 
   #endregion

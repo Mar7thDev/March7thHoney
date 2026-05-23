@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "JLIFGIMBMBD.proto";
+import "JLPEICPFLMC.proto";
+
+message HGCIPBFBNKO {
+    JLPEICPFLMC source = 4;
+    uint32 config_id = 10;
+    uint64 unique_id = 15;
+    JLIFGIMBMBD AENBOONOFLC = 6;
+}

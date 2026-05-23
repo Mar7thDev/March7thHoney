@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "HLGALKACKLJ.proto";
+import "KGPIEEKIEME.proto";
 
 message RogueTournEnableSeasonTalentScRsp {
-    HLGALKACKLJ BNAJPPKFFBD = 7;
-    uint32 retcode = 9;
+    KGPIEEKIEME HANICMMHJGI = 11;
+    uint32 retcode = 7;
 }

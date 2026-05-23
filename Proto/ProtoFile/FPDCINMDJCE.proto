@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "CJNDCNIJBEI.proto";
+import "ChallengePeakBossFriendLineupRecommendation.proto";
+import "FriendChallengeLineup.proto";
+import "MJMGDLJAJCM.proto";
+import "OFFMDBMMNFM.proto";
+import "OJJJDPNOKHG.proto";
+import "PlayerSimpleInfo.proto";
+
+message FPDCINMDJCE {
+    string remark_name = 14;
+    PlayerSimpleInfo player_info = 10;
+    oneof KJFEKHDEBIK {
+        FriendChallengeLineup NHMOPCHJEHN = 12;
+        CJNDCNIJBEI BNAFKMMLGFE = 4;
+        MJMGDLJAJCM LMHIOKFMDNE = 13;
+        ChallengePeakBossFriendLineupRecommendation KCNAHJCMNJI = 9;
+        OJJJDPNOKHG NHKCFOALAPD = 8;
+        OFFMDBMMNFM KPPDEMBPEDO = 771;
+    }
+}

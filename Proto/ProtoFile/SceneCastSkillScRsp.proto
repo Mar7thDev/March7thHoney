@@ -2,14 +2,12 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "HitMonsterBattleInfo.proto";
 import "SceneBattleInfo.proto";
 
 message SceneCastSkillScRsp {
-    SceneBattleInfo battle_info = 1;
-    repeated HitMonsterBattleInfo monster_battle_info = 2;
-    uint32 cast_entity_id = 4;
-    uint32 retcode = 6;
+    repeated HitMonsterBattleInfo monster_battle_info = 12;
+    SceneBattleInfo battle_info = 9;
+    uint32 cast_entity_id = 13;
+    uint32 retcode = 1;
 }

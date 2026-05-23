@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "ECJNAIOLKJD.proto";
+import "MDLPIFCHFPJ.proto";
 
 message RogueTournResetPermanentTalentScRsp {
+    MDLPIFCHFPJ DPABCOHLPLH = 2;
     uint32 retcode = 5;
-    ECJNAIOLKJD FMKEFGJMCHA = 6;
 }

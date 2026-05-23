@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "BNAILMNNGIF.proto";
+import "KJDLIPEIAAK.proto";
+
+message GABKFNAJIDD {
+    BNAILMNNGIF LJKNDCIOOCG = 15;
+    KJDLIPEIAAK MJPKBIGCFOM = 6;
+    string name = 1;
+    uint32 NPHAJEKCBKF = 9;
+    bool is_marked = 14;
+    uint32 GFEENEDNJGF = 2;
+    int64 BNCALAMGIOC = 10;
+}

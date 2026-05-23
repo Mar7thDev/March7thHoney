@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChhDb250ZW50UGFja2FnZUluZm8ucHJvdG8aGkNvbnRlbnRQYWNrYWdlU3Rh",
             "dHVzLnByb3RvIk8KEkNvbnRlbnRQYWNrYWdlSW5mbxISCgpjb250ZW50X2lk",
-            "GAEgASgNEiUKBnN0YXR1cxgPIAEoDjIVLkNvbnRlbnRQYWNrYWdlU3RhdHVz",
+            "GAwgASgNEiUKBnN0YXR1cxgOIAEoDjIVLkNvbnRlbnRQYWNrYWdlU3RhdHVz",
             "QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ContentPackageStatusReflection.Descriptor, },
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "content_id" field.</summary>
-    public const int ContentIdFieldNumber = 1;
+    public const int ContentIdFieldNumber = 12;
     private uint contentId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "status" field.</summary>
-    public const int StatusFieldNumber = 15;
+    public const int StatusFieldNumber = 14;
     private global::March7thHoney.Proto.ContentPackageStatus status_ = global::March7thHoney.Proto.ContentPackageStatus.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -153,11 +153,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (ContentId != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(96);
         output.WriteUInt32(ContentId);
       }
       if (Status != global::March7thHoney.Proto.ContentPackageStatus.None) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(112);
         output.WriteEnum((int) Status);
       }
       if (_unknownFields != null) {
@@ -171,11 +171,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (ContentId != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(96);
         output.WriteUInt32(ContentId);
       }
       if (Status != global::March7thHoney.Proto.ContentPackageStatus.None) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(112);
         output.WriteEnum((int) Status);
       }
       if (_unknownFields != null) {
@@ -231,11 +231,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
+          case 96: {
             ContentId = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 112: {
             Status = (global::March7thHoney.Proto.ContentPackageStatus) input.ReadEnum();
             break;
           }
@@ -258,11 +258,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
+          case 96: {
             ContentId = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 112: {
             Status = (global::March7thHoney.Proto.ContentPackageStatus) input.ReadEnum();
             break;
           }

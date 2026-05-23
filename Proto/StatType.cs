@@ -24,10 +24,10 @@ namespace March7thHoney.Proto {
     static StatTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg5TdGF0VHlwZS5wcm90byp+CghTdGF0VHlwZRIbChdQT0hESUJBTkdFRl9Q",
-            "Q1BESEVMUEtFTRAAEhsKF1BPSERJQkFOR0VGX0dOUE5NR1BDSkREEAESGwoX",
-            "UE9IRElCQU5HRUZfTEpNSUNFTEVIQUwQAhIbChdQT0hESUJBTkdFRl9MRExG",
-            "RkpQT0VQSxADQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "Cg5TdGF0VHlwZS5wcm90byp+CghTdGF0VHlwZRIbChdHT1BIR0lISURQUF9O",
+            "TENER0lQR0ZEShAAEhsKF0dPUEhHSUhJRFBQX0lOSk9NS0NJQlBJEAESGwoX",
+            "R09QSEdJSElEUFBfR01LTklJSE1DQk8QAhIbChdHT1BIR0lISURQUF9ITk1M",
+            "RUNCRUdQQhADQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.StatType), }, null, null));
@@ -37,10 +37,10 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum StatType {
-    [pbr::OriginalName("POHDIBANGEF_PCPDHELPKEM")] PohdibangefPcpdhelpkem = 0,
-    [pbr::OriginalName("POHDIBANGEF_GNPNMGPCJDD")] PohdibangefGnpnmgpcjdd = 1,
-    [pbr::OriginalName("POHDIBANGEF_LJMICELEHAL")] PohdibangefLjmicelehal = 2,
-    [pbr::OriginalName("POHDIBANGEF_LDLFFJPOEPK")] PohdibangefLdlffjpoepk = 3,
+    [pbr::OriginalName("GOPHGIHIDPP_NLCDGIPGFDJ")] GophgihidppNlcdgipgfdj = 0,
+    [pbr::OriginalName("GOPHGIHIDPP_INJOMKCIBPI")] GophgihidppInjomkcibpi = 1,
+    [pbr::OriginalName("GOPHGIHIDPP_GMKNIIHMCBO")] GophgihidppGmkniihmcbo = 2,
+    [pbr::OriginalName("GOPHGIHIDPP_HNMLECBEGPB")] GophgihidppHnmlecbegpb = 3,
   }
 
   #endregion

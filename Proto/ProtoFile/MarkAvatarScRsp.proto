@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message MarkAvatarScRsp {
-    uint32 avatar_id = 9;
-    bool is_marked = 10;
-    uint32 retcode = 11;
+    uint32 retcode = 15;
+    bool is_marked = 8;
+    uint32 avatar_id = 6;
 }

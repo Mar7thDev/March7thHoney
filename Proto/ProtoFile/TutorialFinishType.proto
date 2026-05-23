@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum TutorialFinishType {
-    GCPJLENDFIC_PCPDHELPKEM = 0;
-    GCPJLENDFIC_GKOBBAEJNNC = 1;
-    GCPJLENDFIC_IFGDHKNGCDI = 2;
+    CEBJAAAIPDA_NLCDGIPGFDJ = 0;
+    CEBJAAAIPDA_CNPNACJBHJG = 1;
+    CEBJAAAIPDA_NNAIDJINDHO = 2;
 }

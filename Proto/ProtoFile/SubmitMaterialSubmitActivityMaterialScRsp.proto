@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "HBPFFKNNLBC.proto";
+import "KPMAKCHCDMH.proto";
 
 message SubmitMaterialSubmitActivityMaterialScRsp {
-    uint32 retcode = 5;
-    HBPFFKNNLBC DMMOFCCMKPE = 11;
+    KPMAKCHCDMH MEAEIKFLBPJ = 10;
+    uint32 retcode = 3;
 }

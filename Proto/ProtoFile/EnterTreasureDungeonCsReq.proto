@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "FNGPALCMBKK.proto";
+import "IOKGDDDHHPD.proto";
 
 message EnterTreasureDungeonCsReq {
-    repeated FNGPALCMBKK avatar_list = 2;
-    uint32 target_side = 3;
+    repeated IOKGDDDHHPD avatar_list = 15;
+    uint32 EICEKDBENKM = 2;
 }

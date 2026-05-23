@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "LMBHDCFPPLL.proto";
+import "EINKHFKDCCD.proto";
 
 message SwordTrainingRestoreGameScRsp {
-    uint32 retcode = 3;
-    LMBHDCFPPLL BMKAEFAKNFJ = 7;
+    EINKHFKDCCD AJGOEJHKOKE = 5;
+    uint32 retcode = 11;
 }

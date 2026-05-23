@@ -7,7 +7,7 @@ using March7thHoney.Proto;
 
 namespace March7thHoney.GameServer.Server.Packet.Recv.Avatar;
 
-[Opcode(CmdIds.UnlockSkilltreeCsReq)]
+[Opcode(CmdIds.UnlockSkillTreeCsReq)]
 public class HandlerUnlockSkilltreeCsReq : Handler
 {
     public override async Task OnHandle(Connection connection, byte[] header, byte[] data)

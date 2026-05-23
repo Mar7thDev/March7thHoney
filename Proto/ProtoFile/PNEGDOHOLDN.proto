@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "ECOAKLBOLDA.proto";
+import "FightGameMode.proto";
+import "JCNLJNELKEO.proto";
+import "PJLEILDLONN.proto";
+
+message PNEGDOHOLDN {
+    FightGameMode GJNMHILINHC = 14;
+    uint32 panel_id = 4;
+    oneof AELHFLGJMJN {
+        PJLEILDLONN ODLONPLECJB = 13;
+        ECOAKLBOLDA OCGCLKAHGBK = 5;
+        JCNLJNELKEO ICNFMLIAAKE = 3;
+    }
+}

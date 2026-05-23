@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "FDGKFJFICDN.proto";
+import "HOMMPJIOPGI.proto";
+
+message IDJIAGLCAPE {
+    repeated FDGKFJFICDN OJBMGEJCILM = 3;
+    repeated HOMMPJIOPGI DCMAHKHAFEH = 2;
+    uint32 IPCFGIEFBKH = 1;
+}

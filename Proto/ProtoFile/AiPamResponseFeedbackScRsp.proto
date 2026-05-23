@@ -2,10 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
+import "FKNKNLGMACL.proto";
 
 message AiPamResponseFeedbackScRsp {
-    bool FFGICGLDLKE = 3;
-    uint32 retcode = 7;
-    bool DHEKDAGJBJB = 13;
+    bool NMMJBGFDNAI = 2;
+    bool IAJAOMAKAHA = 10;
+    uint32 retcode = 13;
+    FKNKNLGMACL BDPIMPJOJBK = 8;
 }

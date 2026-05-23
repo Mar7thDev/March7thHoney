@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiFHZXRFbGF0aW9uQWN0aXZpdHlEYXRhU2NSc3AucHJvdG8aHkVsYXRpb25B",
             "Y3Rpdml0eUxldmVsRGF0YS5wcm90byJiChtHZXRFbGF0aW9uQWN0aXZpdHlE",
-            "YXRhU2NSc3ASMgoPbGV2ZWxfZGF0YV9saXN0GAYgAygLMhkuRWxhdGlvbkFj",
-            "dGl2aXR5TGV2ZWxEYXRhEg8KB3JldGNvZGUYCiABKA1CFqoCE01hcmNoN3Ro",
+            "YXRhU2NSc3ASMgoPbGV2ZWxfZGF0YV9saXN0GA0gAygLMhkuRWxhdGlvbkFj",
+            "dGl2aXR5TGV2ZWxEYXRhEg8KB3JldGNvZGUYASABKA1CFqoCE01hcmNoN3Ro",
             "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ElationActivityLevelDataReflection.Descriptor, },
@@ -86,9 +86,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "level_data_list" field.</summary>
-    public const int LevelDataListFieldNumber = 6;
+    public const int LevelDataListFieldNumber = 13;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.ElationActivityLevelData> _repeated_levelDataList_codec
-        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.ElationActivityLevelData.Parser);
+        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.ElationActivityLevelData.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.ElationActivityLevelData> levelDataList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ElationActivityLevelData>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 10;
+    public const int RetcodeFieldNumber = 1;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      levelDataList_.WriteTo(output, _repeated_levelDataList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(8);
         output.WriteUInt32(Retcode);
       }
+      levelDataList_.WriteTo(output, _repeated_levelDataList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -167,11 +167,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      levelDataList_.WriteTo(ref output, _repeated_levelDataList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(8);
         output.WriteUInt32(Retcode);
       }
+      levelDataList_.WriteTo(ref output, _repeated_levelDataList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -221,12 +221,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 50: {
-            levelDataList_.AddEntriesFrom(input, _repeated_levelDataList_codec);
+          case 8: {
+            Retcode = input.ReadUInt32();
             break;
           }
-          case 80: {
-            Retcode = input.ReadUInt32();
+          case 106: {
+            levelDataList_.AddEntriesFrom(input, _repeated_levelDataList_codec);
             break;
           }
         }
@@ -248,12 +248,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 50: {
-            levelDataList_.AddEntriesFrom(ref input, _repeated_levelDataList_codec);
+          case 8: {
+            Retcode = input.ReadUInt32();
             break;
           }
-          case 80: {
-            Retcode = input.ReadUInt32();
+          case 106: {
+            levelDataList_.AddEntriesFrom(ref input, _repeated_levelDataList_codec);
             break;
           }
         }

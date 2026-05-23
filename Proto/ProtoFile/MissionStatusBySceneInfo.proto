@@ -2,15 +2,13 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "MainMissionCustomValue.proto";
 import "Mission.proto";
 
 message MissionStatusBySceneInfo {
-    repeated uint32 disabled_main_mission_id_list = 1;
-    repeated Mission sub_mission_status_list = 2;
-    repeated MainMissionCustomValue NEDJGJNLIPF = 4;
-    repeated uint32 unfinished_main_mission_id_list = 9;
-    repeated uint32 finished_main_mission_id_list = 13;
+    repeated Mission sub_mission_status_list = 10;
+    repeated uint32 finished_main_mission_id_list = 5;
+    repeated uint32 disabled_main_mission_id_list = 7;
+    repeated MainMissionCustomValue JLMGBADJBKN = 8;
+    repeated uint32 unfinished_main_mission_id_list = 3;
 }

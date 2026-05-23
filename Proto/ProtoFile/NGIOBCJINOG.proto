@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message NGIOBCJINOG {
+    uint32 EPLJKOLIPCI = 15;
+    uint32 item_id = 12;
+    int32 APHMBADNMPH = 14;
+    uint64 unique_id = 6;
+    int32 KNKFPENAPBF = 7;
+    uint32 NMELCPIOKNO = 2;
+}

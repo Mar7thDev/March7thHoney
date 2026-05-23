@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cg5SYWlkRGF0YS5wcm90bxoUUmFpZFRhcmdldEluZm8ucHJvdG8iWwoIUmFp",
-            "ZERhdGESEwoLd29ybGRfbGV2ZWwYBiABKA0SDwoHcmFpZF9pZBgHIAEoDRIp",
-            "ChByYWlkX3RhcmdldF9pbmZvGA8gAygLMg8uUmFpZFRhcmdldEluZm9CFqoC",
+            "ZERhdGESKQoQcmFpZF90YXJnZXRfaW5mbxgDIAMoCzIPLlJhaWRUYXJnZXRJ",
+            "bmZvEg8KB3JhaWRfaWQYASABKA0SEwoLd29ybGRfbGV2ZWwYDyABKA1CFqoC",
             "E01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.RaidTargetInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RaidData), global::March7thHoney.Proto.RaidData.Parser, new[]{ "WorldLevel", "RaidId", "RaidTargetInfo" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RaidData), global::March7thHoney.Proto.RaidData.Parser, new[]{ "RaidTargetInfo", "RaidId", "WorldLevel" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,9 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RaidData(RaidData other) : this() {
-      worldLevel_ = other.worldLevel_;
-      raidId_ = other.raidId_;
       raidTargetInfo_ = other.raidTargetInfo_.Clone();
+      raidId_ = other.raidId_;
+      worldLevel_ = other.worldLevel_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,20 +85,19 @@ namespace March7thHoney.Proto {
       return new RaidData(this);
     }
 
-    /// <summary>Field number for the "world_level" field.</summary>
-    public const int WorldLevelFieldNumber = 6;
-    private uint worldLevel_;
+    /// <summary>Field number for the "raid_target_info" field.</summary>
+    public const int RaidTargetInfoFieldNumber = 3;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.RaidTargetInfo> _repeated_raidTargetInfo_codec
+        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.RaidTargetInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.RaidTargetInfo> raidTargetInfo_ = new pbc::RepeatedField<global::March7thHoney.Proto.RaidTargetInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint WorldLevel {
-      get { return worldLevel_; }
-      set {
-        worldLevel_ = value;
-      }
+    public pbc::RepeatedField<global::March7thHoney.Proto.RaidTargetInfo> RaidTargetInfo {
+      get { return raidTargetInfo_; }
     }
 
     /// <summary>Field number for the "raid_id" field.</summary>
-    public const int RaidIdFieldNumber = 7;
+    public const int RaidIdFieldNumber = 1;
     private uint raidId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -109,15 +108,16 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "raid_target_info" field.</summary>
-    public const int RaidTargetInfoFieldNumber = 15;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.RaidTargetInfo> _repeated_raidTargetInfo_codec
-        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.RaidTargetInfo.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.RaidTargetInfo> raidTargetInfo_ = new pbc::RepeatedField<global::March7thHoney.Proto.RaidTargetInfo>();
+    /// <summary>Field number for the "world_level" field.</summary>
+    public const int WorldLevelFieldNumber = 15;
+    private uint worldLevel_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.RaidTargetInfo> RaidTargetInfo {
-      get { return raidTargetInfo_; }
+    public uint WorldLevel {
+      get { return worldLevel_; }
+      set {
+        worldLevel_ = value;
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -135,9 +135,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (WorldLevel != other.WorldLevel) return false;
-      if (RaidId != other.RaidId) return false;
       if(!raidTargetInfo_.Equals(other.raidTargetInfo_)) return false;
+      if (RaidId != other.RaidId) return false;
+      if (WorldLevel != other.WorldLevel) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -145,9 +145,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (WorldLevel != 0) hash ^= WorldLevel.GetHashCode();
-      if (RaidId != 0) hash ^= RaidId.GetHashCode();
       hash ^= raidTargetInfo_.GetHashCode();
+      if (RaidId != 0) hash ^= RaidId.GetHashCode();
+      if (WorldLevel != 0) hash ^= WorldLevel.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -166,15 +166,15 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (WorldLevel != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(WorldLevel);
-      }
       if (RaidId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(8);
         output.WriteUInt32(RaidId);
       }
       raidTargetInfo_.WriteTo(output, _repeated_raidTargetInfo_codec);
+      if (WorldLevel != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(WorldLevel);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -185,15 +185,15 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (WorldLevel != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(WorldLevel);
-      }
       if (RaidId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(8);
         output.WriteUInt32(RaidId);
       }
       raidTargetInfo_.WriteTo(ref output, _repeated_raidTargetInfo_codec);
+      if (WorldLevel != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(WorldLevel);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -204,13 +204,13 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (WorldLevel != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(WorldLevel);
-      }
+      size += raidTargetInfo_.CalculateSize(_repeated_raidTargetInfo_codec);
       if (RaidId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RaidId);
       }
-      size += raidTargetInfo_.CalculateSize(_repeated_raidTargetInfo_codec);
+      if (WorldLevel != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(WorldLevel);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -223,13 +223,13 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.WorldLevel != 0) {
-        WorldLevel = other.WorldLevel;
-      }
+      raidTargetInfo_.Add(other.raidTargetInfo_);
       if (other.RaidId != 0) {
         RaidId = other.RaidId;
       }
-      raidTargetInfo_.Add(other.raidTargetInfo_);
+      if (other.WorldLevel != 0) {
+        WorldLevel = other.WorldLevel;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -249,16 +249,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 48: {
-            WorldLevel = input.ReadUInt32();
-            break;
-          }
-          case 56: {
+          case 8: {
             RaidId = input.ReadUInt32();
             break;
           }
-          case 122: {
+          case 26: {
             raidTargetInfo_.AddEntriesFrom(input, _repeated_raidTargetInfo_codec);
+            break;
+          }
+          case 120: {
+            WorldLevel = input.ReadUInt32();
             break;
           }
         }
@@ -280,16 +280,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 48: {
-            WorldLevel = input.ReadUInt32();
-            break;
-          }
-          case 56: {
+          case 8: {
             RaidId = input.ReadUInt32();
             break;
           }
-          case 122: {
+          case 26: {
             raidTargetInfo_.AddEntriesFrom(ref input, _repeated_raidTargetInfo_codec);
+            break;
+          }
+          case 120: {
+            WorldLevel = input.ReadUInt32();
             break;
           }
         }

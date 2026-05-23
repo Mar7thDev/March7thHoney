@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum JDGNMIDMACL {
+    JDGNMIDMACL_GAIFBJCKGPA = 0;
+    JDGNMIDMACL_KGPGDEMEAND = 1;
+    JDGNMIDMACL_BPKLGJOBOMA = 2;
+    JDGNMIDMACL_IAAOAHFDFLC = 3;
+}

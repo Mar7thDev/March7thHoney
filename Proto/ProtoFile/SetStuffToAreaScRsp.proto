@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "JFFONIDPNDA.proto";
+import "GBAEPOLFFMG.proto";
 
 message SetStuffToAreaScRsp {
-    uint32 retcode = 1;
-    uint32 PEGELNHGMJA = 2;
-    uint32 GKFEGIBGEGI = 5;
-    JFFONIDPNDA pos = 8;
+    uint32 CEAMLKCMMGD = 15;
+    uint32 retcode = 3;
+    GBAEPOLFFMG pos_index = 8;
+    uint32 PIKEPJNDJPE = 4;
 }

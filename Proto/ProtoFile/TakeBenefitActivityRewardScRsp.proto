@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "DOMOEOOHLJA.proto";
 import "ItemList.proto";
+import "OIEAMBAGHBK.proto";
 
 message TakeBenefitActivityRewardScRsp {
-    repeated DOMOEOOHLJA switch_list = 2;
-    ItemList DBMFJIIOFOI = 13;
-    uint32 retcode = 15;
+    ItemList JJOKIIKIHNL = 8;
+    repeated OIEAMBAGHBK switch_list = 15;
+    uint32 retcode = 12;
 }

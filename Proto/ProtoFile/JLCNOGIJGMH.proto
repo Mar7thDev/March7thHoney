@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "APAMFCKFHLL.proto";
+import "ItemList.proto";
+import "JDGNMIDMACL.proto";
+
+message JLCNOGIJGMH {
+    repeated APAMFCKFHLL IBLOFDAGDCE = 7;
+    ItemList BPIOEKHMAIC = 14;
+    ItemList DHPPLPJOMNB = 11;
+    repeated APAMFCKFHLL IOFKDDFNDGC = 15;
+    ItemList reward = 12;
+    repeated APAMFCKFHLL HPCKMFMNOBG = 9;
+    uint64 JEAEFMHIIAC = 8;
+    JDGNMIDMACL GBJEALNCMJC = 13;
+    uint32 retcode = 3;
+}

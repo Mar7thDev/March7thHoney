@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message RogueTournEnterLayerCsReq {
-    uint32 MNMAFKLOJCC = 2;
-    uint32 APMIAKDPHJL = 8;
+    uint32 KHBLMAOPLLN = 9;
+    uint32 BJHMFOAGMBF = 4;
 }

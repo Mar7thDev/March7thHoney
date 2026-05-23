@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch1HZXROcGNNZXNzYWdlR3JvdXBDc1JlcS5wcm90byIyChdHZXROcGNNZXNz",
-            "YWdlR3JvdXBDc1JlcRIXCg9jb250YWN0X2lkX2xpc3QYCyADKA1CFqoCE01h",
+            "YWdlR3JvdXBDc1JlcRIXCg9jb250YWN0X2lkX2xpc3QYDiADKA1CFqoCE01h",
             "cmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -83,9 +83,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "contact_id_list" field.</summary>
-    public const int ContactIdListFieldNumber = 11;
+    public const int ContactIdListFieldNumber = 14;
     private static readonly pb::FieldCodec<uint> _repeated_contactIdList_codec
-        = pb::FieldCodec.ForUInt32(90);
+        = pb::FieldCodec.ForUInt32(114);
     private readonly pbc::RepeatedField<uint> contactIdList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -190,8 +190,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 90:
-          case 88: {
+          case 114:
+          case 112: {
             contactIdList_.AddEntriesFrom(input, _repeated_contactIdList_codec);
             break;
           }
@@ -214,8 +214,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 90:
-          case 88: {
+          case 114:
+          case 112: {
             contactIdList_.AddEntriesFrom(ref input, _repeated_contactIdList_codec);
             break;
           }

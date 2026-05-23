@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum MuseumRandomEventState {
-    JKEKNDDBDMC_PCPDHELPKEM = 0;
-    JKEKNDDBDMC_DDLPGNHADCJ = 1;
-    JKEKNDDBDMC_HPJEBFFHJNP = 2;
-    JKEKNDDBDMC_KLHDCOPPLNG = 3;
+    NLAEDPNBHBP_NLCDGIPGFDJ = 0;
+    NLAEDPNBHBP_NPAFMEBNFOB = 1;
+    NLAEDPNBHBP_LOOAKNHDBLL = 2;
+    NLAEDPNBHBP_CIHFGJDCHIA = 3;
 }

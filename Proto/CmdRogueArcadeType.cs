@@ -24,15 +24,14 @@ namespace March7thHoney.Proto {
     static CmdRogueArcadeTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChhDbWRSb2d1ZUFyY2FkZVR5cGUucHJvdG8qsQIKEkNtZFJvZ3VlQXJjYWRl",
-            "VHlwZRIbChdKRUpNT0tLRUdMSV9QQ1BESEVMUEtFTRAAEh8KGkNtZFJvZ3Vl",
-            "QXJjYWRlR2V0SW5mb1NjUnNwEP07Eh8KGkNtZFJvZ3VlQXJjYWRlUmVzdGFy",
-            "dENzUmVxEIE8Eh8KGkNtZFJvZ3VlQXJjYWRlR2V0SW5mb0NzUmVxEOM7Eh0K",
-            "GENtZFJvZ3VlQXJjYWRlU3RhcnRDc1JlcRCHPBIfChpDbWRSb2d1ZUFyY2Fk",
-            "ZVJlc3RhcnRTY1JzcBCSPBIdChhDbWRSb2d1ZUFyY2FkZUxlYXZlU2NSc3AQ",
-            "5zsSHQoYQ21kUm9ndWVBcmNhZGVTdGFydFNjUnNwEPQ7Eh0KGENtZFJvZ3Vl",
-            "QXJjYWRlTGVhdmVDc1JlcRDpO0IWqgITTWFyY2g3dGhIb25leS5Qcm90b2IG",
-            "cHJvdG8z"));
+            "ChhDbWRSb2d1ZUFyY2FkZVR5cGUucHJvdG8qoQIKEkNtZFJvZ3VlQXJjYWRl",
+            "VHlwZRIbChdOTkhCQU9LRUJKSV9OTENER0lQR0ZEShAAEhwKF05OSEJBT0tF",
+            "QkpJX0dGRUNNQ0JDTURNEOo7EhwKF05OSEJBT0tFQkpJX09DRU1CQkJOQUdK",
+            "EOk7EhwKF05OSEJBT0tFQkpJX09DS0FOUEFKSU1KEOU7EhwKF05OSEJBT0tF",
+            "QkpJX1BKREZMRUNET0FBEPc7EhwKF05OSEJBT0tFQkpJX0RDSEJQT0JGSkpL",
+            "EIQ8EhwKF05OSEJBT0tFQkpJX0ZOQU1MTEVNQU9LEPk7EhwKF05OSEJBT0tF",
+            "QkpJX0lGUENEQk1FSUFLEIo8EhwKF05OSEJBT0tFQkpJX0VOREZDSkRKSEVK",
+            "EIs8QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdRogueArcadeType), }, null, null));
@@ -42,15 +41,15 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdRogueArcadeType {
-    [pbr::OriginalName("JEJMOKKEGLI_PCPDHELPKEM")] JejmokkegliPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdRogueArcadeGetInfoScRsp")] CmdRogueArcadeGetInfoScRsp = 7677,
-    [pbr::OriginalName("CmdRogueArcadeRestartCsReq")] CmdRogueArcadeRestartCsReq = 7681,
-    [pbr::OriginalName("CmdRogueArcadeGetInfoCsReq")] CmdRogueArcadeGetInfoCsReq = 7651,
-    [pbr::OriginalName("CmdRogueArcadeStartCsReq")] CmdRogueArcadeStartCsReq = 7687,
-    [pbr::OriginalName("CmdRogueArcadeRestartScRsp")] CmdRogueArcadeRestartScRsp = 7698,
-    [pbr::OriginalName("CmdRogueArcadeLeaveScRsp")] CmdRogueArcadeLeaveScRsp = 7655,
-    [pbr::OriginalName("CmdRogueArcadeStartScRsp")] CmdRogueArcadeStartScRsp = 7668,
-    [pbr::OriginalName("CmdRogueArcadeLeaveCsReq")] CmdRogueArcadeLeaveCsReq = 7657,
+    [pbr::OriginalName("NNHBAOKEBJI_NLCDGIPGFDJ")] NnhbaokebjiNlcdgipgfdj = 0,
+    [pbr::OriginalName("NNHBAOKEBJI_GFECMCBCMDM")] NnhbaokebjiGfecmcbcmdm = 7658,
+    [pbr::OriginalName("NNHBAOKEBJI_OCEMBBBNAGJ")] NnhbaokebjiOcembbbnagj = 7657,
+    [pbr::OriginalName("NNHBAOKEBJI_OCKANPAJIMJ")] NnhbaokebjiOckanpajimj = 7653,
+    [pbr::OriginalName("NNHBAOKEBJI_PJDFLECDOAA")] NnhbaokebjiPjdflecdoaa = 7671,
+    [pbr::OriginalName("NNHBAOKEBJI_DCHBPOBFJJK")] NnhbaokebjiDchbpobfjjk = 7684,
+    [pbr::OriginalName("NNHBAOKEBJI_FNAMLLEMAOK")] NnhbaokebjiFnamllemaok = 7673,
+    [pbr::OriginalName("NNHBAOKEBJI_IFPCDBMEIAK")] NnhbaokebjiIfpcdbmeiak = 7690,
+    [pbr::OriginalName("NNHBAOKEBJI_ENDFCJDJHEJ")] NnhbaokebjiEndfcjdjhej = 7691,
   }
 
   #endregion

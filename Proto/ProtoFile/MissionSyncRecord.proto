@@ -2,17 +2,15 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum MissionSyncRecord {
-    ALGPCOOBEFF_ADPJFMJJABN = 0;
-    ALGPCOOBEFF_KHJCKCDFEJL = 1;
-    ALGPCOOBEFF_FMIJPBPOHJD = 2;
-    ALGPCOOBEFF_POGPNNBHMIO = 3;
-    ALGPCOOBEFF_OMNFLAIKIBC = 4;
-    ALGPCOOBEFF_EAHBMOFJIFI = 11;
-    ALGPCOOBEFF_FAEKDCEPPNN = 12;
-    ALGPCOOBEFF_CDEHDBIIAAH = 13;
-    ALGPCOOBEFF_CGEDDIECOKA = 14;
-    ALGPCOOBEFF_OMHHFJMHPOB = 15;
+    MissionSyncRecord_DOJFCPKAJEN = 0;
+    MissionSyncRecord_HPBMPLFIGDO = 1;
+    MissionSyncRecord_BBFKOIKPIOA = 2;
+    MissionSyncRecord_LPJJPGJPMKA = 3;
+    MissionSyncRecord_JCIHFNMKAKK = 4;
+    MissionSyncRecord_EGDIDGJEOCG = 11;
+    MissionSyncRecord_JPJOOPBLLHO = 12;
+    MissionSyncRecord_EBINJEAEFOE = 13;
+    MissionSyncRecord_BJLCBIGLBIM = 14;
+    MissionSyncRecord_KPDHHAPIIGM = 15;
 }

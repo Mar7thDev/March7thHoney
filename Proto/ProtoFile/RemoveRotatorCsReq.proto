@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "RotaterData.proto";
 
 message RemoveRotatorCsReq {
-    RotaterData rotater_data = 13;
+    RotaterData rotater_data = 12;
 }

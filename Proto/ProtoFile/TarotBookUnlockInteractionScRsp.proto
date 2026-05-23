@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message TarotBookUnlockInteractionScRsp {
-    repeated uint32 LEPJFHMCBGJ = 3;
-    uint32 retcode = 15;
+    repeated uint32 CLNOMEFFHKG = 15;
+    uint32 retcode = 14;
 }

@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiJHZXRMZXZlbFJld2FyZFRha2VuTGlzdFNjUnNwLnByb3RvIlAKHEdldExl",
             "dmVsUmV3YXJkVGFrZW5MaXN0U2NSc3ASHwoXbGV2ZWxfcmV3YXJkX3Rha2Vu",
-            "X2xpc3QYAyADKA0SDwoHcmV0Y29kZRgOIAEoDUIWqgITTWFyY2g3dGhIb25l",
+            "X2xpc3QYAiADKA0SDwoHcmV0Y29kZRgOIAEoDUIWqgITTWFyY2g3dGhIb25l",
             "eS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -85,9 +85,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "level_reward_taken_list" field.</summary>
-    public const int LevelRewardTakenListFieldNumber = 3;
+    public const int LevelRewardTakenListFieldNumber = 2;
     private static readonly pb::FieldCodec<uint> _repeated_levelRewardTakenList_codec
-        = pb::FieldCodec.ForUInt32(26);
+        = pb::FieldCodec.ForUInt32(18);
     private readonly pbc::RepeatedField<uint> levelRewardTakenList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -220,8 +220,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 26:
-          case 24: {
+          case 18:
+          case 16: {
             levelRewardTakenList_.AddEntriesFrom(input, _repeated_levelRewardTakenList_codec);
             break;
           }
@@ -248,8 +248,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 26:
-          case 24: {
+          case 18:
+          case 16: {
             levelRewardTakenList_.AddEntriesFrom(ref input, _repeated_levelRewardTakenList_codec);
             break;
           }

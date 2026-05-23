@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "DLFOGJGCCGP.proto";
+import "BGOMIHEFHPA.proto";
 
 message HeliobusSnsUpdateScNotify {
-    repeated DLFOGJGCCGP HPKHBLEJBIJ = 5;
+    repeated BGOMIHEFHPA KGKLBGOADCE = 14;
 }

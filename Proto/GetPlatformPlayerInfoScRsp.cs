@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiBHZXRQbGF0Zm9ybVBsYXllckluZm9TY1JzcC5wcm90bxoWUGxheWVyU2lt",
-            "cGxlSW5mby5wcm90byJfChpHZXRQbGF0Zm9ybVBsYXllckluZm9TY1JzcBIP",
-            "CgdyZXRjb2RlGAYgASgNEjAKFWZyaWVuZF9yZWNvbW1lbmRfbGlzdBgOIAMo",
-            "CzIRLlBsYXllclNpbXBsZUluZm9CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
+            "cGxlSW5mby5wcm90byJfChpHZXRQbGF0Zm9ybVBsYXllckluZm9TY1JzcBIw",
+            "ChVmcmllbmRfcmVjb21tZW5kX2xpc3QYBSADKAsyES5QbGF5ZXJTaW1wbGVJ",
+            "bmZvEg8KB3JldGNvZGUYCyABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
             "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.PlayerSimpleInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetPlatformPlayerInfoScRsp), global::March7thHoney.Proto.GetPlatformPlayerInfoScRsp.Parser, new[]{ "Retcode", "FriendRecommendList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetPlatformPlayerInfoScRsp), global::March7thHoney.Proto.GetPlatformPlayerInfoScRsp.Parser, new[]{ "FriendRecommendList", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,8 +74,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetPlatformPlayerInfoScRsp(GetPlatformPlayerInfoScRsp other) : this() {
-      retcode_ = other.retcode_;
       friendRecommendList_ = other.friendRecommendList_.Clone();
+      retcode_ = other.retcode_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,8 +85,19 @@ namespace March7thHoney.Proto {
       return new GetPlatformPlayerInfoScRsp(this);
     }
 
+    /// <summary>Field number for the "friend_recommend_list" field.</summary>
+    public const int FriendRecommendListFieldNumber = 5;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.PlayerSimpleInfo> _repeated_friendRecommendList_codec
+        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.PlayerSimpleInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.PlayerSimpleInfo> friendRecommendList_ = new pbc::RepeatedField<global::March7thHoney.Proto.PlayerSimpleInfo>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.PlayerSimpleInfo> FriendRecommendList {
+      get { return friendRecommendList_; }
+    }
+
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 6;
+    public const int RetcodeFieldNumber = 11;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -95,17 +106,6 @@ namespace March7thHoney.Proto {
       set {
         retcode_ = value;
       }
-    }
-
-    /// <summary>Field number for the "friend_recommend_list" field.</summary>
-    public const int FriendRecommendListFieldNumber = 14;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.PlayerSimpleInfo> _repeated_friendRecommendList_codec
-        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.PlayerSimpleInfo.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.PlayerSimpleInfo> friendRecommendList_ = new pbc::RepeatedField<global::March7thHoney.Proto.PlayerSimpleInfo>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.PlayerSimpleInfo> FriendRecommendList {
-      get { return friendRecommendList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -123,8 +123,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Retcode != other.Retcode) return false;
       if(!friendRecommendList_.Equals(other.friendRecommendList_)) return false;
+      if (Retcode != other.Retcode) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,8 +132,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       hash ^= friendRecommendList_.GetHashCode();
+      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      friendRecommendList_.WriteTo(output, _repeated_friendRecommendList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(88);
         output.WriteUInt32(Retcode);
       }
-      friendRecommendList_.WriteTo(output, _repeated_friendRecommendList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -167,11 +167,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      friendRecommendList_.WriteTo(ref output, _repeated_friendRecommendList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(88);
         output.WriteUInt32(Retcode);
       }
-      friendRecommendList_.WriteTo(ref output, _repeated_friendRecommendList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -182,10 +182,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      size += friendRecommendList_.CalculateSize(_repeated_friendRecommendList_codec);
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
-      size += friendRecommendList_.CalculateSize(_repeated_friendRecommendList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -198,10 +198,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      friendRecommendList_.Add(other.friendRecommendList_);
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
-      friendRecommendList_.Add(other.friendRecommendList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -221,12 +221,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 48: {
-            Retcode = input.ReadUInt32();
+          case 42: {
+            friendRecommendList_.AddEntriesFrom(input, _repeated_friendRecommendList_codec);
             break;
           }
-          case 114: {
-            friendRecommendList_.AddEntriesFrom(input, _repeated_friendRecommendList_codec);
+          case 88: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -248,12 +248,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 48: {
-            Retcode = input.ReadUInt32();
+          case 42: {
+            friendRecommendList_.AddEntriesFrom(ref input, _repeated_friendRecommendList_codec);
             break;
           }
-          case 114: {
-            friendRecommendList_.AddEntriesFrom(ref input, _repeated_friendRecommendList_codec);
+          case 88: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }

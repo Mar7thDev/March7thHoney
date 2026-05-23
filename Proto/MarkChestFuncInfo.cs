@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChdNYXJrQ2hlc3RGdW5jSW5mby5wcm90bxoTTWFya0NoZXN0SW5mby5wcm90",
             "byJlChFNYXJrQ2hlc3RGdW5jSW5mbxIsChRtYXJrX2NoZXN0X2luZm9fbGlz",
-            "dBgDIAMoCzIOLk1hcmtDaGVzdEluZm8SDwoHZnVuY19pZBgHIAEoDRIRCglt",
-            "YXJrX3RpbWUYCCABKANCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
+            "dBgMIAMoCzIOLk1hcmtDaGVzdEluZm8SDwoHZnVuY19pZBgLIAEoDRIRCglt",
+            "YXJrX3RpbWUYBCABKANCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
             "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MarkChestInfoReflection.Descriptor, },
@@ -87,9 +87,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "mark_chest_info_list" field.</summary>
-    public const int MarkChestInfoListFieldNumber = 3;
+    public const int MarkChestInfoListFieldNumber = 12;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.MarkChestInfo> _repeated_markChestInfoList_codec
-        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.MarkChestInfo.Parser);
+        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.MarkChestInfo.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.MarkChestInfo> markChestInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MarkChestInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,7 +98,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "func_id" field.</summary>
-    public const int FuncIdFieldNumber = 7;
+    public const int FuncIdFieldNumber = 11;
     private uint funcId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,7 +110,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "mark_time" field.</summary>
-    public const int MarkTimeFieldNumber = 8;
+    public const int MarkTimeFieldNumber = 4;
     private long markTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -167,15 +167,15 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      markChestInfoList_.WriteTo(output, _repeated_markChestInfoList_codec);
-      if (FuncId != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(FuncId);
-      }
       if (MarkTime != 0L) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(32);
         output.WriteInt64(MarkTime);
       }
+      if (FuncId != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(FuncId);
+      }
+      markChestInfoList_.WriteTo(output, _repeated_markChestInfoList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -186,15 +186,15 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      markChestInfoList_.WriteTo(ref output, _repeated_markChestInfoList_codec);
-      if (FuncId != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(FuncId);
-      }
       if (MarkTime != 0L) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(32);
         output.WriteInt64(MarkTime);
       }
+      if (FuncId != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(FuncId);
+      }
+      markChestInfoList_.WriteTo(ref output, _repeated_markChestInfoList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -250,16 +250,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 26: {
-            markChestInfoList_.AddEntriesFrom(input, _repeated_markChestInfoList_codec);
+          case 32: {
+            MarkTime = input.ReadInt64();
             break;
           }
-          case 56: {
+          case 88: {
             FuncId = input.ReadUInt32();
             break;
           }
-          case 64: {
-            MarkTime = input.ReadInt64();
+          case 98: {
+            markChestInfoList_.AddEntriesFrom(input, _repeated_markChestInfoList_codec);
             break;
           }
         }
@@ -281,16 +281,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 26: {
-            markChestInfoList_.AddEntriesFrom(ref input, _repeated_markChestInfoList_codec);
+          case 32: {
+            MarkTime = input.ReadInt64();
             break;
           }
-          case 56: {
+          case 88: {
             FuncId = input.ReadUInt32();
             break;
           }
-          case 64: {
-            MarkTime = input.ReadInt64();
+          case 98: {
+            markChestInfoList_.AddEntriesFrom(ref input, _repeated_markChestInfoList_codec);
             break;
           }
         }

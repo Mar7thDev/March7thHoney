@@ -24,17 +24,17 @@ namespace March7thHoney.Proto {
     static CmdQuestTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChJDbWRRdWVzdFR5cGUucHJvdG8qpQMKDENtZFF1ZXN0VHlwZRIbChdPSFBK",
-            "TU1QT0pFTl9QQ1BESEVMUEtFTRAAEiQKH0NtZFRha2VRdWVzdE9wdGlvbmFs",
-            "UmV3YXJkU2NSc3AQzgcSHAoXQ21kVGFrZVF1ZXN0UmV3YXJkQ3NSZXEQ4gcS",
-            "GwoWQ21kQ21kRmluaXNoUXVlc3RDc1JlcRCeBxITCg5DbWRHR0FNUEpMT05H",
-            "RBCrBxIbChZDbWRHZXRRdWVzdFJlY29yZENzUmVxEI0HEhwKF0NtZFRha2VR",
-            "dWVzdFJld2FyZFNjUnNwEOMHEhkKFENtZEdldFF1ZXN0RGF0YVNjUnNwEI4H",
-            "EhsKFkNtZEdldFF1ZXN0UmVjb3JkU2NSc3AQ5gcSGwoWQ21kUXVlc3RSZWNv",
-            "cmRTY05vdGlmeRDDBxIkCh9DbWRUYWtlUXVlc3RPcHRpb25hbFJld2FyZENz",
-            "UmVxEIUHEhMKDkNtZFBKQkVCTE5KQU5NEKoHEhkKFENtZEdldFF1ZXN0RGF0",
-            "YUNzUmVxEN8HEhwKF09IUEpNTVBPSkVOX0ZHT0dESExMT0JGEIgHQhaqAhNN",
-            "YXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ChJDbWRRdWVzdFR5cGUucHJvdG8qsQMKDENtZFF1ZXN0VHlwZRIbChdITkpK",
+            "TkhQRkJHT19OTENER0lQR0ZEShAAEhwKF0hOSkpOSFBGQkdPX0VFSEhHRk9N",
+            "RkFEEI4HEhwKF0hOSkpOSFBGQkdPX0JNQUVFT0hMRkxPENsHEhwKF0hOSkpO",
+            "SFBGQkdPX01OR0dNTEJHUE9PEJ8HEhwKF0hOSkpOSFBGQkdPX0hNSEJCS0lM",
+            "SUZLEM0HEhwKF0hOSkpOSFBGQkdPX09LTUpLTkxMSEtQEJMHEhwKF0hOSkpO",
+            "SFBGQkdPX0NGSEhGSE1HQUdMEKEHEhwKF0hOSkpOSFBGQkdPX0lLQUJNTE1H",
+            "TEhOEJAHEhwKF0hOSkpOSFBGQkdPX09JSEVDQ05HSktPENQHEhwKF0hOSkpO",
+            "SFBGQkdPX09KS0NFS0tETEVMEI0HEhwKF0hOSkpOSFBGQkdPX1BPQU1HQ0xQ",
+            "Q0FGENUHEhwKF0hOSkpOSFBGQkdPX0NDTU1KT0RQQ0pCEIcHEhwKF0hOSkpO",
+            "SFBGQkdPX0pJSkJGTktKSElKELoHEhwKF0hOSkpOSFBGQkdPX1BKRUhFT0xD",
+            "RkNGEK4HQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdQuestType), }, null, null));
@@ -44,20 +44,20 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdQuestType {
-    [pbr::OriginalName("OHPJMMPOJEN_PCPDHELPKEM")] OhpjmmpojenPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdTakeQuestOptionalRewardScRsp")] CmdTakeQuestOptionalRewardScRsp = 974,
-    [pbr::OriginalName("CmdTakeQuestRewardCsReq")] CmdTakeQuestRewardCsReq = 994,
-    [pbr::OriginalName("CmdCmdFinishQuestCsReq")] CmdCmdFinishQuestCsReq = 926,
-    [pbr::OriginalName("CmdGGAMPJLONGD")] CmdGgampjlongd = 939,
-    [pbr::OriginalName("CmdGetQuestRecordCsReq")] CmdGetQuestRecordCsReq = 909,
-    [pbr::OriginalName("CmdTakeQuestRewardScRsp")] CmdTakeQuestRewardScRsp = 995,
-    [pbr::OriginalName("CmdGetQuestDataScRsp")] CmdGetQuestDataScRsp = 910,
-    [pbr::OriginalName("CmdGetQuestRecordScRsp")] CmdGetQuestRecordScRsp = 998,
-    [pbr::OriginalName("CmdQuestRecordScNotify")] CmdQuestRecordScNotify = 963,
-    [pbr::OriginalName("CmdTakeQuestOptionalRewardCsReq")] CmdTakeQuestOptionalRewardCsReq = 901,
-    [pbr::OriginalName("CmdPJBEBLNJANM")] CmdPjbeblnjanm = 938,
-    [pbr::OriginalName("CmdGetQuestDataCsReq")] CmdGetQuestDataCsReq = 991,
-    [pbr::OriginalName("OHPJMMPOJEN_FGOGDHLLOBF")] OhpjmmpojenFgogdhllobf = 904,
+    [pbr::OriginalName("HNJJNHPFBGO_NLCDGIPGFDJ")] HnjjnhpfbgoNlcdgipgfdj = 0,
+    [pbr::OriginalName("HNJJNHPFBGO_EEHHGFOMFAD")] HnjjnhpfbgoEehhgfomfad = 910,
+    [pbr::OriginalName("HNJJNHPFBGO_BMAEEOHLFLO")] HnjjnhpfbgoBmaeeohlflo = 987,
+    [pbr::OriginalName("HNJJNHPFBGO_MNGGMLBGPOO")] HnjjnhpfbgoMnggmlbgpoo = 927,
+    [pbr::OriginalName("HNJJNHPFBGO_HMHBBKILIFK")] HnjjnhpfbgoHmhbbkilifk = 973,
+    [pbr::OriginalName("HNJJNHPFBGO_OKMJKNLLHKP")] HnjjnhpfbgoOkmjknllhkp = 915,
+    [pbr::OriginalName("HNJJNHPFBGO_CFHHFHMGAGL")] HnjjnhpfbgoCfhhfhmgagl = 929,
+    [pbr::OriginalName("HNJJNHPFBGO_IKABMLMGLHN")] HnjjnhpfbgoIkabmlmglhn = 912,
+    [pbr::OriginalName("HNJJNHPFBGO_OIHECCNGJKO")] HnjjnhpfbgoOiheccngjko = 980,
+    [pbr::OriginalName("HNJJNHPFBGO_OJKCEKKDLEL")] HnjjnhpfbgoOjkcekkdlel = 909,
+    [pbr::OriginalName("HNJJNHPFBGO_POAMGCLPCAF")] HnjjnhpfbgoPoamgclpcaf = 981,
+    [pbr::OriginalName("HNJJNHPFBGO_CCMMJODPCJB")] HnjjnhpfbgoCcmmjodpcjb = 903,
+    [pbr::OriginalName("HNJJNHPFBGO_JIJBFNKJHIJ")] HnjjnhpfbgoJijbfnkjhij = 954,
+    [pbr::OriginalName("HNJJNHPFBGO_PJEHEOLCFCF")] HnjjnhpfbgoPjeheolcfcf = 942,
   }
 
   #endregion

@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "Ch5TZXRBdmF0YXJFbmhhbmNlZElkQ3NSZXEucHJvdG8iQgoYU2V0QXZhdGFy",
             "RW5oYW5jZWRJZENzUmVxEhMKC2VuaGFuY2VkX2lkGAEgASgNEhEKCWF2YXRh",
-            "cl9pZBgEIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "cl9pZBgLIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "avatar_id" field.</summary>
-    public const int AvatarIdFieldNumber = 4;
+    public const int AvatarIdFieldNumber = 11;
     private uint avatarId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -156,7 +156,7 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(EnhancedId);
       }
       if (AvatarId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(88);
         output.WriteUInt32(AvatarId);
       }
       if (_unknownFields != null) {
@@ -174,7 +174,7 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(EnhancedId);
       }
       if (AvatarId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(88);
         output.WriteUInt32(AvatarId);
       }
       if (_unknownFields != null) {
@@ -234,7 +234,7 @@ namespace March7thHoney.Proto {
             EnhancedId = input.ReadUInt32();
             break;
           }
-          case 32: {
+          case 88: {
             AvatarId = input.ReadUInt32();
             break;
           }
@@ -261,7 +261,7 @@ namespace March7thHoney.Proto {
             EnhancedId = input.ReadUInt32();
             break;
           }
-          case 32: {
+          case 88: {
             AvatarId = input.ReadUInt32();
             break;
           }

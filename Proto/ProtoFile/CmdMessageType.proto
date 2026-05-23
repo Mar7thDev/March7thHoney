@@ -2,20 +2,18 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdMessageType {
-    PHLMMOJPKHA_PCPDHELPKEM = 0;
-    CmdFinishItemIdScRsp = 2718;
-    CmdGetMissionMessageScRsp = 2701;
-    CmdFinishPerformSectionIdScRsp = 2726;
-    CmdFinishSectionIdScRsp = 2798;
-    CmdFinishSectionIdCsReq = 2709;
-    CmdFinishItemIdCsReq = 2714;
-    CmdFinishPerformSectionIdCsReq = 2763;
-    CmdGetNpcStatusCsReq = 2794;
-    CmdGetMissionMessageCsReq = 2739;
-    CmdGetNpcMessageGroupCsReq = 2791;
-    CmdGetNpcMessageGroupScRsp = 2710;
-    CmdGetNpcStatusScRsp = 2795;
+    BDIMOGEJAFG_NLCDGIPGFDJ = 0;
+    BDIMOGEJAFG_OBKNDEAOLPF = 2736;
+    BDIMOGEJAFG_LDNLCNFIPCJ = 2729;
+    BDIMOGEJAFG_PJBBDHBNFOC = 2773;
+    BDIMOGEJAFG_KDAGJGBHJFC = 2712;
+    BDIMOGEJAFG_IDLOFNPDAMF = 2781;
+    BDIMOGEJAFG_BOMFNPGCIEG = 2780;
+    BDIMOGEJAFG_DKKMLOIPOIH = 2715;
+    BDIMOGEJAFG_BBGNFMGJBIC = 2787;
+    BDIMOGEJAFG_IJDKJJBJEMN = 2703;
+    BDIMOGEJAFG_FPIEPJMKGGB = 2710;
+    BDIMOGEJAFG_CHHHBIHDNNK = 2713;
+    BDIMOGEJAFG_IFDAEEMGEKB = 2727;
 }

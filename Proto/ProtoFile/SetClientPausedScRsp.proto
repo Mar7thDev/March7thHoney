@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message SetClientPausedScRsp {
-    bool paused = 6;
-    uint32 retcode = 10;
+    uint32 retcode = 2;
+    bool paused = 15;
 }

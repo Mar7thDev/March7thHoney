@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch9TY2VuZUNhc3RTa2lsbENvc3RNcENzUmVxLnByb3RvImcKGVNjZW5lQ2Fz",
-            "dFNraWxsQ29zdE1wQ3NSZXESHQoVYXR0YWNrZWRfYnlfZW50aXR5X2lkGAgg",
-            "ASgNEhMKC3NraWxsX2luZGV4GAkgASgNEhYKDmNhc3RfZW50aXR5X2lkGA8g",
+            "dFNraWxsQ29zdE1wQ3NSZXESFgoOY2FzdF9lbnRpdHlfaWQYByABKA0SHQoV",
+            "YXR0YWNrZWRfYnlfZW50aXR5X2lkGAkgASgNEhMKC3NraWxsX2luZGV4GAsg",
             "ASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneCastSkillCostMpCsReq), global::March7thHoney.Proto.SceneCastSkillCostMpCsReq.Parser, new[]{ "AttackedByEntityId", "SkillIndex", "CastEntityId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneCastSkillCostMpCsReq), global::March7thHoney.Proto.SceneCastSkillCostMpCsReq.Parser, new[]{ "CastEntityId", "AttackedByEntityId", "SkillIndex" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,9 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SceneCastSkillCostMpCsReq(SceneCastSkillCostMpCsReq other) : this() {
+      castEntityId_ = other.castEntityId_;
       attackedByEntityId_ = other.attackedByEntityId_;
       skillIndex_ = other.skillIndex_;
-      castEntityId_ = other.castEntityId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,8 +85,20 @@ namespace March7thHoney.Proto {
       return new SceneCastSkillCostMpCsReq(this);
     }
 
+    /// <summary>Field number for the "cast_entity_id" field.</summary>
+    public const int CastEntityIdFieldNumber = 7;
+    private uint castEntityId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint CastEntityId {
+      get { return castEntityId_; }
+      set {
+        castEntityId_ = value;
+      }
+    }
+
     /// <summary>Field number for the "attacked_by_entity_id" field.</summary>
-    public const int AttackedByEntityIdFieldNumber = 8;
+    public const int AttackedByEntityIdFieldNumber = 9;
     private uint attackedByEntityId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,7 +110,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "skill_index" field.</summary>
-    public const int SkillIndexFieldNumber = 9;
+    public const int SkillIndexFieldNumber = 11;
     private uint skillIndex_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -106,18 +118,6 @@ namespace March7thHoney.Proto {
       get { return skillIndex_; }
       set {
         skillIndex_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "cast_entity_id" field.</summary>
-    public const int CastEntityIdFieldNumber = 15;
-    private uint castEntityId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CastEntityId {
-      get { return castEntityId_; }
-      set {
-        castEntityId_ = value;
       }
     }
 
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (CastEntityId != other.CastEntityId) return false;
       if (AttackedByEntityId != other.AttackedByEntityId) return false;
       if (SkillIndex != other.SkillIndex) return false;
-      if (CastEntityId != other.CastEntityId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -146,9 +146,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (CastEntityId != 0) hash ^= CastEntityId.GetHashCode();
       if (AttackedByEntityId != 0) hash ^= AttackedByEntityId.GetHashCode();
       if (SkillIndex != 0) hash ^= SkillIndex.GetHashCode();
-      if (CastEntityId != 0) hash ^= CastEntityId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -167,17 +167,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (CastEntityId != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(CastEntityId);
+      }
       if (AttackedByEntityId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(72);
         output.WriteUInt32(AttackedByEntityId);
       }
       if (SkillIndex != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(88);
         output.WriteUInt32(SkillIndex);
-      }
-      if (CastEntityId != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(CastEntityId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -189,17 +189,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (CastEntityId != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(CastEntityId);
+      }
       if (AttackedByEntityId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(72);
         output.WriteUInt32(AttackedByEntityId);
       }
       if (SkillIndex != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(88);
         output.WriteUInt32(SkillIndex);
-      }
-      if (CastEntityId != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(CastEntityId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -211,14 +211,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (CastEntityId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CastEntityId);
+      }
       if (AttackedByEntityId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AttackedByEntityId);
       }
       if (SkillIndex != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SkillIndex);
-      }
-      if (CastEntityId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CastEntityId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -232,14 +232,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.CastEntityId != 0) {
+        CastEntityId = other.CastEntityId;
+      }
       if (other.AttackedByEntityId != 0) {
         AttackedByEntityId = other.AttackedByEntityId;
       }
       if (other.SkillIndex != 0) {
         SkillIndex = other.SkillIndex;
-      }
-      if (other.CastEntityId != 0) {
-        CastEntityId = other.CastEntityId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -260,16 +260,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 64: {
-            AttackedByEntityId = input.ReadUInt32();
+          case 56: {
+            CastEntityId = input.ReadUInt32();
             break;
           }
           case 72: {
-            SkillIndex = input.ReadUInt32();
+            AttackedByEntityId = input.ReadUInt32();
             break;
           }
-          case 120: {
-            CastEntityId = input.ReadUInt32();
+          case 88: {
+            SkillIndex = input.ReadUInt32();
             break;
           }
         }
@@ -291,16 +291,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 64: {
-            AttackedByEntityId = input.ReadUInt32();
+          case 56: {
+            CastEntityId = input.ReadUInt32();
             break;
           }
           case 72: {
-            SkillIndex = input.ReadUInt32();
+            AttackedByEntityId = input.ReadUInt32();
             break;
           }
-          case 120: {
-            CastEntityId = input.ReadUInt32();
+          case 88: {
+            SkillIndex = input.ReadUInt32();
             break;
           }
         }

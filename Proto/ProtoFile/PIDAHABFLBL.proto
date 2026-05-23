@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum PIDAHABFLBL {
+    PIDAHABFLBL_ONGOHDOKEIE = 0;
+    PIDAHABFLBL_FJBENKPGBPP = 1;
+    PIDAHABFLBL_IBNPGEDFIMO = 2;
+}

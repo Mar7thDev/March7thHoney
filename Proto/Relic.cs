@@ -25,18 +25,18 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CgtSZWxpYy5wcm90bxoQUmVsaWNBZmZpeC5wcm90byK3AgoFUmVsaWMSKwoW",
-            "cmVmb3JnZV9zdWJfYWZmaXhfbGlzdBgBIAMoCzILLlJlbGljQWZmaXgSFAoM",
-            "aXNfZGlzY2FyZGVkGAIgASgIEiMKDnN1Yl9hZmZpeF9saXN0GAMgAygLMgsu",
-            "UmVsaWNBZmZpeBIgCgtFQkVPRUNKTUJLThgEIAMoCzILLlJlbGljQWZmaXgS",
-            "FwoPZHJlc3NfYXZhdGFyX2lkGAUgASgNEhQKDGlzX3Byb3RlY3RlZBgGIAEo",
-            "CBINCgVsZXZlbBgHIAEoDRILCgN0aWQYCCABKA0SFQoNbWFpbl9hZmZpeF9p",
-            "ZBgJIAEoDRIRCgl1bmlxdWVfaWQYCiABKA0SIgoacmVmb3JnZV9ibG9ja19z",
-            "dWJfYWZmaXhfaWQYDCABKA0SCwoDZXhwGA0gASgNQhaqAhNNYXJjaDd0aEhv",
+            "cmVmb3JnZV9zdWJfYWZmaXhfbGlzdBgKIAMoCzILLlJlbGljQWZmaXgSIAoL",
+            "SEdOUExJQk5ISEcYAiADKAsyCy5SZWxpY0FmZml4EiMKDnN1Yl9hZmZpeF9s",
+            "aXN0GA4gAygLMgsuUmVsaWNBZmZpeBILCgN0aWQYAyABKA0SEQoJdW5pcXVl",
+            "X2lkGA8gASgNEhQKDGlzX3Byb3RlY3RlZBgJIAEoCBIUCgxpc19kaXNjYXJk",
+            "ZWQYDCABKAgSFwoPZHJlc3NfYXZhdGFyX2lkGAYgASgNEhUKDW1haW5fYWZm",
+            "aXhfaWQYDSABKA0SIgoacmVmb3JnZV9ibG9ja19zdWJfYWZmaXhfaWQYCCAB",
+            "KA0SDQoFbGV2ZWwYByABKA0SCwoDZXhwGAEgASgNQhaqAhNNYXJjaDd0aEhv",
             "bmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.RelicAffixReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.Relic), global::March7thHoney.Proto.Relic.Parser, new[]{ "ReforgeSubAffixList", "IsDiscarded", "SubAffixList", "EBEOECJMBKN", "DressAvatarId", "IsProtected", "Level", "Tid", "MainAffixId", "UniqueId", "ReforgeBlockSubAffixId", "Exp" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.Relic), global::March7thHoney.Proto.Relic.Parser, new[]{ "ReforgeSubAffixList", "HGNPLIBNHHG", "SubAffixList", "Tid", "UniqueId", "IsProtected", "IsDiscarded", "DressAvatarId", "MainAffixId", "ReforgeBlockSubAffixId", "Level", "Exp" }, null, null, null, null)
           }));
     }
     #endregion
@@ -79,16 +79,16 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Relic(Relic other) : this() {
       reforgeSubAffixList_ = other.reforgeSubAffixList_.Clone();
-      isDiscarded_ = other.isDiscarded_;
+      hGNPLIBNHHG_ = other.hGNPLIBNHHG_.Clone();
       subAffixList_ = other.subAffixList_.Clone();
-      eBEOECJMBKN_ = other.eBEOECJMBKN_.Clone();
-      dressAvatarId_ = other.dressAvatarId_;
-      isProtected_ = other.isProtected_;
-      level_ = other.level_;
       tid_ = other.tid_;
-      mainAffixId_ = other.mainAffixId_;
       uniqueId_ = other.uniqueId_;
+      isProtected_ = other.isProtected_;
+      isDiscarded_ = other.isDiscarded_;
+      dressAvatarId_ = other.dressAvatarId_;
+      mainAffixId_ = other.mainAffixId_;
       reforgeBlockSubAffixId_ = other.reforgeBlockSubAffixId_;
+      level_ = other.level_;
       exp_ = other.exp_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -100,9 +100,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "reforge_sub_affix_list" field.</summary>
-    public const int ReforgeSubAffixListFieldNumber = 1;
+    public const int ReforgeSubAffixListFieldNumber = 10;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.RelicAffix> _repeated_reforgeSubAffixList_codec
-        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.RelicAffix.Parser);
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.RelicAffix.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.RelicAffix> reforgeSubAffixList_ = new pbc::RepeatedField<global::March7thHoney.Proto.RelicAffix>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,8 +110,66 @@ namespace March7thHoney.Proto {
       get { return reforgeSubAffixList_; }
     }
 
+    /// <summary>Field number for the "HGNPLIBNHHG" field.</summary>
+    public const int HGNPLIBNHHGFieldNumber = 2;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.RelicAffix> _repeated_hGNPLIBNHHG_codec
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.RelicAffix.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.RelicAffix> hGNPLIBNHHG_ = new pbc::RepeatedField<global::March7thHoney.Proto.RelicAffix>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.RelicAffix> HGNPLIBNHHG {
+      get { return hGNPLIBNHHG_; }
+    }
+
+    /// <summary>Field number for the "sub_affix_list" field.</summary>
+    public const int SubAffixListFieldNumber = 14;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.RelicAffix> _repeated_subAffixList_codec
+        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.RelicAffix.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.RelicAffix> subAffixList_ = new pbc::RepeatedField<global::March7thHoney.Proto.RelicAffix>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.RelicAffix> SubAffixList {
+      get { return subAffixList_; }
+    }
+
+    /// <summary>Field number for the "tid" field.</summary>
+    public const int TidFieldNumber = 3;
+    private uint tid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Tid {
+      get { return tid_; }
+      set {
+        tid_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "unique_id" field.</summary>
+    public const int UniqueIdFieldNumber = 15;
+    private uint uniqueId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint UniqueId {
+      get { return uniqueId_; }
+      set {
+        uniqueId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "is_protected" field.</summary>
+    public const int IsProtectedFieldNumber = 9;
+    private bool isProtected_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IsProtected {
+      get { return isProtected_; }
+      set {
+        isProtected_ = value;
+      }
+    }
+
     /// <summary>Field number for the "is_discarded" field.</summary>
-    public const int IsDiscardedFieldNumber = 2;
+    public const int IsDiscardedFieldNumber = 12;
     private bool isDiscarded_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -122,30 +180,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "sub_affix_list" field.</summary>
-    public const int SubAffixListFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.RelicAffix> _repeated_subAffixList_codec
-        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.RelicAffix.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.RelicAffix> subAffixList_ = new pbc::RepeatedField<global::March7thHoney.Proto.RelicAffix>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.RelicAffix> SubAffixList {
-      get { return subAffixList_; }
-    }
-
-    /// <summary>Field number for the "EBEOECJMBKN" field.</summary>
-    public const int EBEOECJMBKNFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.RelicAffix> _repeated_eBEOECJMBKN_codec
-        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.RelicAffix.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.RelicAffix> eBEOECJMBKN_ = new pbc::RepeatedField<global::March7thHoney.Proto.RelicAffix>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.RelicAffix> EBEOECJMBKN {
-      get { return eBEOECJMBKN_; }
-    }
-
     /// <summary>Field number for the "dress_avatar_id" field.</summary>
-    public const int DressAvatarIdFieldNumber = 5;
+    public const int DressAvatarIdFieldNumber = 6;
     private uint dressAvatarId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -156,15 +192,27 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "is_protected" field.</summary>
-    public const int IsProtectedFieldNumber = 6;
-    private bool isProtected_;
+    /// <summary>Field number for the "main_affix_id" field.</summary>
+    public const int MainAffixIdFieldNumber = 13;
+    private uint mainAffixId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IsProtected {
-      get { return isProtected_; }
+    public uint MainAffixId {
+      get { return mainAffixId_; }
       set {
-        isProtected_ = value;
+        mainAffixId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "reforge_block_sub_affix_id" field.</summary>
+    public const int ReforgeBlockSubAffixIdFieldNumber = 8;
+    private uint reforgeBlockSubAffixId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint ReforgeBlockSubAffixId {
+      get { return reforgeBlockSubAffixId_; }
+      set {
+        reforgeBlockSubAffixId_ = value;
       }
     }
 
@@ -180,56 +228,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "tid" field.</summary>
-    public const int TidFieldNumber = 8;
-    private uint tid_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Tid {
-      get { return tid_; }
-      set {
-        tid_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "main_affix_id" field.</summary>
-    public const int MainAffixIdFieldNumber = 9;
-    private uint mainAffixId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint MainAffixId {
-      get { return mainAffixId_; }
-      set {
-        mainAffixId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "unique_id" field.</summary>
-    public const int UniqueIdFieldNumber = 10;
-    private uint uniqueId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint UniqueId {
-      get { return uniqueId_; }
-      set {
-        uniqueId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "reforge_block_sub_affix_id" field.</summary>
-    public const int ReforgeBlockSubAffixIdFieldNumber = 12;
-    private uint reforgeBlockSubAffixId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint ReforgeBlockSubAffixId {
-      get { return reforgeBlockSubAffixId_; }
-      set {
-        reforgeBlockSubAffixId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "exp" field.</summary>
-    public const int ExpFieldNumber = 13;
+    public const int ExpFieldNumber = 1;
     private uint exp_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -256,16 +256,16 @@ namespace March7thHoney.Proto {
         return true;
       }
       if(!reforgeSubAffixList_.Equals(other.reforgeSubAffixList_)) return false;
-      if (IsDiscarded != other.IsDiscarded) return false;
+      if(!hGNPLIBNHHG_.Equals(other.hGNPLIBNHHG_)) return false;
       if(!subAffixList_.Equals(other.subAffixList_)) return false;
-      if(!eBEOECJMBKN_.Equals(other.eBEOECJMBKN_)) return false;
-      if (DressAvatarId != other.DressAvatarId) return false;
-      if (IsProtected != other.IsProtected) return false;
-      if (Level != other.Level) return false;
       if (Tid != other.Tid) return false;
-      if (MainAffixId != other.MainAffixId) return false;
       if (UniqueId != other.UniqueId) return false;
+      if (IsProtected != other.IsProtected) return false;
+      if (IsDiscarded != other.IsDiscarded) return false;
+      if (DressAvatarId != other.DressAvatarId) return false;
+      if (MainAffixId != other.MainAffixId) return false;
       if (ReforgeBlockSubAffixId != other.ReforgeBlockSubAffixId) return false;
+      if (Level != other.Level) return false;
       if (Exp != other.Exp) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -275,16 +275,16 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= reforgeSubAffixList_.GetHashCode();
-      if (IsDiscarded != false) hash ^= IsDiscarded.GetHashCode();
+      hash ^= hGNPLIBNHHG_.GetHashCode();
       hash ^= subAffixList_.GetHashCode();
-      hash ^= eBEOECJMBKN_.GetHashCode();
-      if (DressAvatarId != 0) hash ^= DressAvatarId.GetHashCode();
-      if (IsProtected != false) hash ^= IsProtected.GetHashCode();
-      if (Level != 0) hash ^= Level.GetHashCode();
       if (Tid != 0) hash ^= Tid.GetHashCode();
-      if (MainAffixId != 0) hash ^= MainAffixId.GetHashCode();
       if (UniqueId != 0) hash ^= UniqueId.GetHashCode();
+      if (IsProtected != false) hash ^= IsProtected.GetHashCode();
+      if (IsDiscarded != false) hash ^= IsDiscarded.GetHashCode();
+      if (DressAvatarId != 0) hash ^= DressAvatarId.GetHashCode();
+      if (MainAffixId != 0) hash ^= MainAffixId.GetHashCode();
       if (ReforgeBlockSubAffixId != 0) hash ^= ReforgeBlockSubAffixId.GetHashCode();
+      if (Level != 0) hash ^= Level.GetHashCode();
       if (Exp != 0) hash ^= Exp.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -304,44 +304,44 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      reforgeSubAffixList_.WriteTo(output, _repeated_reforgeSubAffixList_codec);
-      if (IsDiscarded != false) {
-        output.WriteRawTag(16);
-        output.WriteBool(IsDiscarded);
+      if (Exp != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Exp);
       }
-      subAffixList_.WriteTo(output, _repeated_subAffixList_codec);
-      eBEOECJMBKN_.WriteTo(output, _repeated_eBEOECJMBKN_codec);
+      hGNPLIBNHHG_.WriteTo(output, _repeated_hGNPLIBNHHG_codec);
+      if (Tid != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(Tid);
+      }
       if (DressAvatarId != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(DressAvatarId);
-      }
-      if (IsProtected != false) {
         output.WriteRawTag(48);
-        output.WriteBool(IsProtected);
+        output.WriteUInt32(DressAvatarId);
       }
       if (Level != 0) {
         output.WriteRawTag(56);
         output.WriteUInt32(Level);
       }
-      if (Tid != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(Tid);
-      }
-      if (MainAffixId != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(MainAffixId);
-      }
-      if (UniqueId != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(UniqueId);
-      }
       if (ReforgeBlockSubAffixId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(64);
         output.WriteUInt32(ReforgeBlockSubAffixId);
       }
-      if (Exp != 0) {
+      if (IsProtected != false) {
+        output.WriteRawTag(72);
+        output.WriteBool(IsProtected);
+      }
+      reforgeSubAffixList_.WriteTo(output, _repeated_reforgeSubAffixList_codec);
+      if (IsDiscarded != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(IsDiscarded);
+      }
+      if (MainAffixId != 0) {
         output.WriteRawTag(104);
-        output.WriteUInt32(Exp);
+        output.WriteUInt32(MainAffixId);
+      }
+      subAffixList_.WriteTo(output, _repeated_subAffixList_codec);
+      if (UniqueId != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(UniqueId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -353,44 +353,44 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      reforgeSubAffixList_.WriteTo(ref output, _repeated_reforgeSubAffixList_codec);
-      if (IsDiscarded != false) {
-        output.WriteRawTag(16);
-        output.WriteBool(IsDiscarded);
+      if (Exp != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Exp);
       }
-      subAffixList_.WriteTo(ref output, _repeated_subAffixList_codec);
-      eBEOECJMBKN_.WriteTo(ref output, _repeated_eBEOECJMBKN_codec);
+      hGNPLIBNHHG_.WriteTo(ref output, _repeated_hGNPLIBNHHG_codec);
+      if (Tid != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(Tid);
+      }
       if (DressAvatarId != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(DressAvatarId);
-      }
-      if (IsProtected != false) {
         output.WriteRawTag(48);
-        output.WriteBool(IsProtected);
+        output.WriteUInt32(DressAvatarId);
       }
       if (Level != 0) {
         output.WriteRawTag(56);
         output.WriteUInt32(Level);
       }
-      if (Tid != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(Tid);
-      }
-      if (MainAffixId != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(MainAffixId);
-      }
-      if (UniqueId != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(UniqueId);
-      }
       if (ReforgeBlockSubAffixId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(64);
         output.WriteUInt32(ReforgeBlockSubAffixId);
       }
-      if (Exp != 0) {
+      if (IsProtected != false) {
+        output.WriteRawTag(72);
+        output.WriteBool(IsProtected);
+      }
+      reforgeSubAffixList_.WriteTo(ref output, _repeated_reforgeSubAffixList_codec);
+      if (IsDiscarded != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(IsDiscarded);
+      }
+      if (MainAffixId != 0) {
         output.WriteRawTag(104);
-        output.WriteUInt32(Exp);
+        output.WriteUInt32(MainAffixId);
+      }
+      subAffixList_.WriteTo(ref output, _repeated_subAffixList_codec);
+      if (UniqueId != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(UniqueId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -403,31 +403,31 @@ namespace March7thHoney.Proto {
     public int CalculateSize() {
       int size = 0;
       size += reforgeSubAffixList_.CalculateSize(_repeated_reforgeSubAffixList_codec);
-      if (IsDiscarded != false) {
-        size += 1 + 1;
-      }
+      size += hGNPLIBNHHG_.CalculateSize(_repeated_hGNPLIBNHHG_codec);
       size += subAffixList_.CalculateSize(_repeated_subAffixList_codec);
-      size += eBEOECJMBKN_.CalculateSize(_repeated_eBEOECJMBKN_codec);
-      if (DressAvatarId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DressAvatarId);
-      }
-      if (IsProtected != false) {
-        size += 1 + 1;
-      }
-      if (Level != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
-      }
       if (Tid != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tid);
-      }
-      if (MainAffixId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MainAffixId);
       }
       if (UniqueId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(UniqueId);
       }
+      if (IsProtected != false) {
+        size += 1 + 1;
+      }
+      if (IsDiscarded != false) {
+        size += 1 + 1;
+      }
+      if (DressAvatarId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DressAvatarId);
+      }
+      if (MainAffixId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MainAffixId);
+      }
       if (ReforgeBlockSubAffixId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ReforgeBlockSubAffixId);
+      }
+      if (Level != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
       }
       if (Exp != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Exp);
@@ -445,31 +445,31 @@ namespace March7thHoney.Proto {
         return;
       }
       reforgeSubAffixList_.Add(other.reforgeSubAffixList_);
-      if (other.IsDiscarded != false) {
-        IsDiscarded = other.IsDiscarded;
-      }
+      hGNPLIBNHHG_.Add(other.hGNPLIBNHHG_);
       subAffixList_.Add(other.subAffixList_);
-      eBEOECJMBKN_.Add(other.eBEOECJMBKN_);
-      if (other.DressAvatarId != 0) {
-        DressAvatarId = other.DressAvatarId;
-      }
-      if (other.IsProtected != false) {
-        IsProtected = other.IsProtected;
-      }
-      if (other.Level != 0) {
-        Level = other.Level;
-      }
       if (other.Tid != 0) {
         Tid = other.Tid;
-      }
-      if (other.MainAffixId != 0) {
-        MainAffixId = other.MainAffixId;
       }
       if (other.UniqueId != 0) {
         UniqueId = other.UniqueId;
       }
+      if (other.IsProtected != false) {
+        IsProtected = other.IsProtected;
+      }
+      if (other.IsDiscarded != false) {
+        IsDiscarded = other.IsDiscarded;
+      }
+      if (other.DressAvatarId != 0) {
+        DressAvatarId = other.DressAvatarId;
+      }
+      if (other.MainAffixId != 0) {
+        MainAffixId = other.MainAffixId;
+      }
       if (other.ReforgeBlockSubAffixId != 0) {
         ReforgeBlockSubAffixId = other.ReforgeBlockSubAffixId;
+      }
+      if (other.Level != 0) {
+        Level = other.Level;
       }
       if (other.Exp != 0) {
         Exp = other.Exp;
@@ -493,28 +493,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            reforgeSubAffixList_.AddEntriesFrom(input, _repeated_reforgeSubAffixList_codec);
+          case 8: {
+            Exp = input.ReadUInt32();
             break;
           }
-          case 16: {
-            IsDiscarded = input.ReadBool();
+          case 18: {
+            hGNPLIBNHHG_.AddEntriesFrom(input, _repeated_hGNPLIBNHHG_codec);
             break;
           }
-          case 26: {
-            subAffixList_.AddEntriesFrom(input, _repeated_subAffixList_codec);
-            break;
-          }
-          case 34: {
-            eBEOECJMBKN_.AddEntriesFrom(input, _repeated_eBEOECJMBKN_codec);
-            break;
-          }
-          case 40: {
-            DressAvatarId = input.ReadUInt32();
+          case 24: {
+            Tid = input.ReadUInt32();
             break;
           }
           case 48: {
-            IsProtected = input.ReadBool();
+            DressAvatarId = input.ReadUInt32();
             break;
           }
           case 56: {
@@ -522,23 +514,31 @@ namespace March7thHoney.Proto {
             break;
           }
           case 64: {
-            Tid = input.ReadUInt32();
-            break;
-          }
-          case 72: {
-            MainAffixId = input.ReadUInt32();
-            break;
-          }
-          case 80: {
-            UniqueId = input.ReadUInt32();
-            break;
-          }
-          case 96: {
             ReforgeBlockSubAffixId = input.ReadUInt32();
             break;
           }
+          case 72: {
+            IsProtected = input.ReadBool();
+            break;
+          }
+          case 82: {
+            reforgeSubAffixList_.AddEntriesFrom(input, _repeated_reforgeSubAffixList_codec);
+            break;
+          }
+          case 96: {
+            IsDiscarded = input.ReadBool();
+            break;
+          }
           case 104: {
-            Exp = input.ReadUInt32();
+            MainAffixId = input.ReadUInt32();
+            break;
+          }
+          case 114: {
+            subAffixList_.AddEntriesFrom(input, _repeated_subAffixList_codec);
+            break;
+          }
+          case 120: {
+            UniqueId = input.ReadUInt32();
             break;
           }
         }
@@ -560,28 +560,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            reforgeSubAffixList_.AddEntriesFrom(ref input, _repeated_reforgeSubAffixList_codec);
+          case 8: {
+            Exp = input.ReadUInt32();
             break;
           }
-          case 16: {
-            IsDiscarded = input.ReadBool();
+          case 18: {
+            hGNPLIBNHHG_.AddEntriesFrom(ref input, _repeated_hGNPLIBNHHG_codec);
             break;
           }
-          case 26: {
-            subAffixList_.AddEntriesFrom(ref input, _repeated_subAffixList_codec);
-            break;
-          }
-          case 34: {
-            eBEOECJMBKN_.AddEntriesFrom(ref input, _repeated_eBEOECJMBKN_codec);
-            break;
-          }
-          case 40: {
-            DressAvatarId = input.ReadUInt32();
+          case 24: {
+            Tid = input.ReadUInt32();
             break;
           }
           case 48: {
-            IsProtected = input.ReadBool();
+            DressAvatarId = input.ReadUInt32();
             break;
           }
           case 56: {
@@ -589,23 +581,31 @@ namespace March7thHoney.Proto {
             break;
           }
           case 64: {
-            Tid = input.ReadUInt32();
-            break;
-          }
-          case 72: {
-            MainAffixId = input.ReadUInt32();
-            break;
-          }
-          case 80: {
-            UniqueId = input.ReadUInt32();
-            break;
-          }
-          case 96: {
             ReforgeBlockSubAffixId = input.ReadUInt32();
             break;
           }
+          case 72: {
+            IsProtected = input.ReadBool();
+            break;
+          }
+          case 82: {
+            reforgeSubAffixList_.AddEntriesFrom(ref input, _repeated_reforgeSubAffixList_codec);
+            break;
+          }
+          case 96: {
+            IsDiscarded = input.ReadBool();
+            break;
+          }
           case 104: {
-            Exp = input.ReadUInt32();
+            MainAffixId = input.ReadUInt32();
+            break;
+          }
+          case 114: {
+            subAffixList_.AddEntriesFrom(ref input, _repeated_subAffixList_codec);
+            break;
+          }
+          case 120: {
+            UniqueId = input.ReadUInt32();
             break;
           }
         }

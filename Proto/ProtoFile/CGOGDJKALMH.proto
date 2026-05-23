@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum CGOGDJKALMH {
+    CGOGDJKALMH_FHFJLAIAGEH = 0;
+    CGOGDJKALMH_FMDDNENDJOJ = 1;
+    CGOGDJKALMH_JIBJFDIJCNM = 2;
+}

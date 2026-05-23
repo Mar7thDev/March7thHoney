@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static MaterialReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg5NYXRlcmlhbC5wcm90byI5CghNYXRlcmlhbBILCgN0aWQYCyABKA0SCwoD",
-            "bnVtGAwgASgNEhMKC2V4cGlyZV90aW1lGA0gASgEQhaqAhNNYXJjaDd0aEhv",
+            "Cg5NYXRlcmlhbC5wcm90byI5CghNYXRlcmlhbBILCgNudW0YBSABKA0SCwoD",
+            "dGlkGAYgASgNEhMKC2V4cGlyZV90aW1lGA0gASgEQhaqAhNNYXJjaDd0aEhv",
             "bmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.Material), global::March7thHoney.Proto.Material.Parser, new[]{ "Tid", "Num", "ExpireTime" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.Material), global::March7thHoney.Proto.Material.Parser, new[]{ "Num", "Tid", "ExpireTime" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Material(Material other) : this() {
-      tid_ = other.tid_;
       num_ = other.num_;
+      tid_ = other.tid_;
       expireTime_ = other.expireTime_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -84,20 +84,8 @@ namespace March7thHoney.Proto {
       return new Material(this);
     }
 
-    /// <summary>Field number for the "tid" field.</summary>
-    public const int TidFieldNumber = 11;
-    private uint tid_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Tid {
-      get { return tid_; }
-      set {
-        tid_ = value;
-      }
-    }
-
     /// <summary>Field number for the "num" field.</summary>
-    public const int NumFieldNumber = 12;
+    public const int NumFieldNumber = 5;
     private uint num_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -105,6 +93,18 @@ namespace March7thHoney.Proto {
       get { return num_; }
       set {
         num_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tid" field.</summary>
+    public const int TidFieldNumber = 6;
+    private uint tid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Tid {
+      get { return tid_; }
+      set {
+        tid_ = value;
       }
     }
 
@@ -135,8 +135,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Tid != other.Tid) return false;
       if (Num != other.Num) return false;
+      if (Tid != other.Tid) return false;
       if (ExpireTime != other.ExpireTime) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -145,8 +145,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Tid != 0) hash ^= Tid.GetHashCode();
       if (Num != 0) hash ^= Num.GetHashCode();
+      if (Tid != 0) hash ^= Tid.GetHashCode();
       if (ExpireTime != 0UL) hash ^= ExpireTime.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -166,13 +166,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Tid != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(Tid);
-      }
       if (Num != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(40);
         output.WriteUInt32(Num);
+      }
+      if (Tid != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(Tid);
       }
       if (ExpireTime != 0UL) {
         output.WriteRawTag(104);
@@ -188,13 +188,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Tid != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(Tid);
-      }
       if (Num != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(40);
         output.WriteUInt32(Num);
+      }
+      if (Tid != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(Tid);
       }
       if (ExpireTime != 0UL) {
         output.WriteRawTag(104);
@@ -210,11 +210,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Tid != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tid);
-      }
       if (Num != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Num);
+      }
+      if (Tid != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tid);
       }
       if (ExpireTime != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(ExpireTime);
@@ -231,11 +231,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.Tid != 0) {
-        Tid = other.Tid;
-      }
       if (other.Num != 0) {
         Num = other.Num;
+      }
+      if (other.Tid != 0) {
+        Tid = other.Tid;
       }
       if (other.ExpireTime != 0UL) {
         ExpireTime = other.ExpireTime;
@@ -259,12 +259,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 88: {
-            Tid = input.ReadUInt32();
+          case 40: {
+            Num = input.ReadUInt32();
             break;
           }
-          case 96: {
-            Num = input.ReadUInt32();
+          case 48: {
+            Tid = input.ReadUInt32();
             break;
           }
           case 104: {
@@ -290,12 +290,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 88: {
-            Tid = input.ReadUInt32();
+          case 40: {
+            Num = input.ReadUInt32();
             break;
           }
-          case 96: {
-            Num = input.ReadUInt32();
+          case 48: {
+            Tid = input.ReadUInt32();
             break;
           }
           case 104: {

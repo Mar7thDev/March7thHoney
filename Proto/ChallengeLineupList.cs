@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChlDaGFsbGVuZ2VMaW5ldXBMaXN0LnByb3RvGhlDaGFsbGVuZ2VBdmF0YXJJ",
             "bmZvLnByb3RvIkAKE0NoYWxsZW5nZUxpbmV1cExpc3QSKQoLYXZhdGFyX2xp",
-            "c3QYDyADKAsyFC5DaGFsbGVuZ2VBdmF0YXJJbmZvQhaqAhNNYXJjaDd0aEhv",
+            "c3QYASADKAsyFC5DaGFsbGVuZ2VBdmF0YXJJbmZvQhaqAhNNYXJjaDd0aEhv",
             "bmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChallengeAvatarInfoReflection.Descriptor, },
@@ -84,9 +84,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "avatar_list" field.</summary>
-    public const int AvatarListFieldNumber = 15;
+    public const int AvatarListFieldNumber = 1;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChallengeAvatarInfo> _repeated_avatarList_codec
-        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.ChallengeAvatarInfo.Parser);
+        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.ChallengeAvatarInfo.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChallengeAvatarInfo> avatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChallengeAvatarInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -191,7 +191,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 122: {
+          case 10: {
             avatarList_.AddEntriesFrom(input, _repeated_avatarList_codec);
             break;
           }
@@ -214,7 +214,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 122: {
+          case 10: {
             avatarList_.AddEntriesFrom(ref input, _repeated_avatarList_codec);
             break;
           }

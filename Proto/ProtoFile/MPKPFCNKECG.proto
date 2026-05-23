@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "AMDJAFAHKEL.proto";
+import "BICCMEPJMDO.proto";
+import "ENFDMFGIJDC.proto";
+
+message MPKPFCNKECG {
+    AMDJAFAHKEL KOLGNPBHCCD = 15;
+    repeated BICCMEPJMDO CBHMLANHMAB = 4;
+    repeated ENFDMFGIJDC HMAIHHCBFKP = 5;
+    repeated AMDJAFAHKEL GIMOGCAADEH = 2;
+    repeated AMDJAFAHKEL JCFCMNODNPA = 9;
+}

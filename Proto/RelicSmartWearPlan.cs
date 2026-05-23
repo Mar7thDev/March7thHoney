@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChhSZWxpY1NtYXJ0V2VhclBsYW4ucHJvdG8icQoSUmVsaWNTbWFydFdlYXJQ",
-            "bGFuEhEKCWF2YXRhcl9pZBgHIAEoDRIaChJvdXRzaWRlX3JlbGljX2xpc3QY",
-            "CSADKA0SGQoRaW5zaWRlX3JlbGljX2xpc3QYDSADKA0SEQoJdW5pcXVlX2lk",
-            "GA4gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "bGFuEhkKEWluc2lkZV9yZWxpY19saXN0GAEgAygNEhoKEm91dHNpZGVfcmVs",
+            "aWNfbGlzdBgKIAMoDRIRCglhdmF0YXJfaWQYDSABKA0SEQoJdW5pcXVlX2lk",
+            "GA8gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RelicSmartWearPlan), global::March7thHoney.Proto.RelicSmartWearPlan.Parser, new[]{ "AvatarId", "OutsideRelicList", "InsideRelicList", "UniqueId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RelicSmartWearPlan), global::March7thHoney.Proto.RelicSmartWearPlan.Parser, new[]{ "InsideRelicList", "OutsideRelicList", "AvatarId", "UniqueId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,9 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RelicSmartWearPlan(RelicSmartWearPlan other) : this() {
-      avatarId_ = other.avatarId_;
-      outsideRelicList_ = other.outsideRelicList_.Clone();
       insideRelicList_ = other.insideRelicList_.Clone();
+      outsideRelicList_ = other.outsideRelicList_.Clone();
+      avatarId_ = other.avatarId_;
       uniqueId_ = other.uniqueId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -86,8 +86,30 @@ namespace March7thHoney.Proto {
       return new RelicSmartWearPlan(this);
     }
 
+    /// <summary>Field number for the "inside_relic_list" field.</summary>
+    public const int InsideRelicListFieldNumber = 1;
+    private static readonly pb::FieldCodec<uint> _repeated_insideRelicList_codec
+        = pb::FieldCodec.ForUInt32(10);
+    private readonly pbc::RepeatedField<uint> insideRelicList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> InsideRelicList {
+      get { return insideRelicList_; }
+    }
+
+    /// <summary>Field number for the "outside_relic_list" field.</summary>
+    public const int OutsideRelicListFieldNumber = 10;
+    private static readonly pb::FieldCodec<uint> _repeated_outsideRelicList_codec
+        = pb::FieldCodec.ForUInt32(82);
+    private readonly pbc::RepeatedField<uint> outsideRelicList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> OutsideRelicList {
+      get { return outsideRelicList_; }
+    }
+
     /// <summary>Field number for the "avatar_id" field.</summary>
-    public const int AvatarIdFieldNumber = 7;
+    public const int AvatarIdFieldNumber = 13;
     private uint avatarId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,30 +120,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "outside_relic_list" field.</summary>
-    public const int OutsideRelicListFieldNumber = 9;
-    private static readonly pb::FieldCodec<uint> _repeated_outsideRelicList_codec
-        = pb::FieldCodec.ForUInt32(74);
-    private readonly pbc::RepeatedField<uint> outsideRelicList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> OutsideRelicList {
-      get { return outsideRelicList_; }
-    }
-
-    /// <summary>Field number for the "inside_relic_list" field.</summary>
-    public const int InsideRelicListFieldNumber = 13;
-    private static readonly pb::FieldCodec<uint> _repeated_insideRelicList_codec
-        = pb::FieldCodec.ForUInt32(106);
-    private readonly pbc::RepeatedField<uint> insideRelicList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> InsideRelicList {
-      get { return insideRelicList_; }
-    }
-
     /// <summary>Field number for the "unique_id" field.</summary>
-    public const int UniqueIdFieldNumber = 14;
+    public const int UniqueIdFieldNumber = 15;
     private uint uniqueId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -147,9 +147,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (AvatarId != other.AvatarId) return false;
-      if(!outsideRelicList_.Equals(other.outsideRelicList_)) return false;
       if(!insideRelicList_.Equals(other.insideRelicList_)) return false;
+      if(!outsideRelicList_.Equals(other.outsideRelicList_)) return false;
+      if (AvatarId != other.AvatarId) return false;
       if (UniqueId != other.UniqueId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -158,9 +158,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (AvatarId != 0) hash ^= AvatarId.GetHashCode();
-      hash ^= outsideRelicList_.GetHashCode();
       hash ^= insideRelicList_.GetHashCode();
+      hash ^= outsideRelicList_.GetHashCode();
+      if (AvatarId != 0) hash ^= AvatarId.GetHashCode();
       if (UniqueId != 0) hash ^= UniqueId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -180,14 +180,14 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      insideRelicList_.WriteTo(output, _repeated_insideRelicList_codec);
+      outsideRelicList_.WriteTo(output, _repeated_outsideRelicList_codec);
       if (AvatarId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(104);
         output.WriteUInt32(AvatarId);
       }
-      outsideRelicList_.WriteTo(output, _repeated_outsideRelicList_codec);
-      insideRelicList_.WriteTo(output, _repeated_insideRelicList_codec);
       if (UniqueId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(120);
         output.WriteUInt32(UniqueId);
       }
       if (_unknownFields != null) {
@@ -200,14 +200,14 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      insideRelicList_.WriteTo(ref output, _repeated_insideRelicList_codec);
+      outsideRelicList_.WriteTo(ref output, _repeated_outsideRelicList_codec);
       if (AvatarId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(104);
         output.WriteUInt32(AvatarId);
       }
-      outsideRelicList_.WriteTo(ref output, _repeated_outsideRelicList_codec);
-      insideRelicList_.WriteTo(ref output, _repeated_insideRelicList_codec);
       if (UniqueId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(120);
         output.WriteUInt32(UniqueId);
       }
       if (_unknownFields != null) {
@@ -220,11 +220,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      size += insideRelicList_.CalculateSize(_repeated_insideRelicList_codec);
+      size += outsideRelicList_.CalculateSize(_repeated_outsideRelicList_codec);
       if (AvatarId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarId);
       }
-      size += outsideRelicList_.CalculateSize(_repeated_outsideRelicList_codec);
-      size += insideRelicList_.CalculateSize(_repeated_insideRelicList_codec);
       if (UniqueId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(UniqueId);
       }
@@ -240,11 +240,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      insideRelicList_.Add(other.insideRelicList_);
+      outsideRelicList_.Add(other.outsideRelicList_);
       if (other.AvatarId != 0) {
         AvatarId = other.AvatarId;
       }
-      outsideRelicList_.Add(other.outsideRelicList_);
-      insideRelicList_.Add(other.insideRelicList_);
       if (other.UniqueId != 0) {
         UniqueId = other.UniqueId;
       }
@@ -267,21 +267,21 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
-            AvatarId = input.ReadUInt32();
-            break;
-          }
-          case 74:
-          case 72: {
-            outsideRelicList_.AddEntriesFrom(input, _repeated_outsideRelicList_codec);
-            break;
-          }
-          case 106:
-          case 104: {
+          case 10:
+          case 8: {
             insideRelicList_.AddEntriesFrom(input, _repeated_insideRelicList_codec);
             break;
           }
-          case 112: {
+          case 82:
+          case 80: {
+            outsideRelicList_.AddEntriesFrom(input, _repeated_outsideRelicList_codec);
+            break;
+          }
+          case 104: {
+            AvatarId = input.ReadUInt32();
+            break;
+          }
+          case 120: {
             UniqueId = input.ReadUInt32();
             break;
           }
@@ -304,21 +304,21 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
-            AvatarId = input.ReadUInt32();
-            break;
-          }
-          case 74:
-          case 72: {
-            outsideRelicList_.AddEntriesFrom(ref input, _repeated_outsideRelicList_codec);
-            break;
-          }
-          case 106:
-          case 104: {
+          case 10:
+          case 8: {
             insideRelicList_.AddEntriesFrom(ref input, _repeated_insideRelicList_codec);
             break;
           }
-          case 112: {
+          case 82:
+          case 80: {
+            outsideRelicList_.AddEntriesFrom(ref input, _repeated_outsideRelicList_codec);
+            break;
+          }
+          case 104: {
+            AvatarId = input.ReadUInt32();
+            break;
+          }
+          case 120: {
             UniqueId = input.ReadUInt32();
             break;
           }

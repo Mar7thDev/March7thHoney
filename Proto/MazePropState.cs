@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChNNYXplUHJvcFN0YXRlLnByb3RvGhNQcm9wRXh0cmFJbmZvLnByb3RvImcK",
-            "DU1hemVQcm9wU3RhdGUSEQoJY29uZmlnX2lkGAggASgNEiIKCmV4dHJhX2lu",
-            "Zm8YCSABKAsyDi5Qcm9wRXh0cmFJbmZvEg0KBXN0YXRlGAsgASgNEhAKCGdy",
-            "b3VwX2lkGA0gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "DU1hemVQcm9wU3RhdGUSIgoKZXh0cmFfaW5mbxgGIAEoCzIOLlByb3BFeHRy",
+            "YUluZm8SEQoJY29uZmlnX2lkGAggASgNEg0KBXN0YXRlGAUgASgNEhAKCGdy",
+            "b3VwX2lkGAkgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.PropExtraInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MazePropState), global::March7thHoney.Proto.MazePropState.Parser, new[]{ "ConfigId", "ExtraInfo", "State", "GroupId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MazePropState), global::March7thHoney.Proto.MazePropState.Parser, new[]{ "ExtraInfo", "ConfigId", "State", "GroupId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MazePropState(MazePropState other) : this() {
-      configId_ = other.configId_;
       extraInfo_ = other.extraInfo_ != null ? other.extraInfo_.Clone() : null;
+      configId_ = other.configId_;
       state_ = other.state_;
       groupId_ = other.groupId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -84,6 +84,18 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MazePropState Clone() {
       return new MazePropState(this);
+    }
+
+    /// <summary>Field number for the "extra_info" field.</summary>
+    public const int ExtraInfoFieldNumber = 6;
+    private global::March7thHoney.Proto.PropExtraInfo extraInfo_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.PropExtraInfo ExtraInfo {
+      get { return extraInfo_; }
+      set {
+        extraInfo_ = value;
+      }
     }
 
     /// <summary>Field number for the "config_id" field.</summary>
@@ -98,20 +110,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "extra_info" field.</summary>
-    public const int ExtraInfoFieldNumber = 9;
-    private global::March7thHoney.Proto.PropExtraInfo extraInfo_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.PropExtraInfo ExtraInfo {
-      get { return extraInfo_; }
-      set {
-        extraInfo_ = value;
-      }
-    }
-
     /// <summary>Field number for the "state" field.</summary>
-    public const int StateFieldNumber = 11;
+    public const int StateFieldNumber = 5;
     private uint state_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -123,7 +123,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "group_id" field.</summary>
-    public const int GroupIdFieldNumber = 13;
+    public const int GroupIdFieldNumber = 9;
     private uint groupId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -149,8 +149,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (ConfigId != other.ConfigId) return false;
       if (!object.Equals(ExtraInfo, other.ExtraInfo)) return false;
+      if (ConfigId != other.ConfigId) return false;
       if (State != other.State) return false;
       if (GroupId != other.GroupId) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -160,8 +160,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (ConfigId != 0) hash ^= ConfigId.GetHashCode();
       if (extraInfo_ != null) hash ^= ExtraInfo.GetHashCode();
+      if (ConfigId != 0) hash ^= ConfigId.GetHashCode();
       if (State != 0) hash ^= State.GetHashCode();
       if (GroupId != 0) hash ^= GroupId.GetHashCode();
       if (_unknownFields != null) {
@@ -182,20 +182,20 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (State != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(State);
+      }
+      if (extraInfo_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(ExtraInfo);
+      }
       if (ConfigId != 0) {
         output.WriteRawTag(64);
         output.WriteUInt32(ConfigId);
       }
-      if (extraInfo_ != null) {
-        output.WriteRawTag(74);
-        output.WriteMessage(ExtraInfo);
-      }
-      if (State != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(State);
-      }
       if (GroupId != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(72);
         output.WriteUInt32(GroupId);
       }
       if (_unknownFields != null) {
@@ -208,20 +208,20 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (State != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(State);
+      }
+      if (extraInfo_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(ExtraInfo);
+      }
       if (ConfigId != 0) {
         output.WriteRawTag(64);
         output.WriteUInt32(ConfigId);
       }
-      if (extraInfo_ != null) {
-        output.WriteRawTag(74);
-        output.WriteMessage(ExtraInfo);
-      }
-      if (State != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(State);
-      }
       if (GroupId != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(72);
         output.WriteUInt32(GroupId);
       }
       if (_unknownFields != null) {
@@ -234,11 +234,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (ConfigId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ConfigId);
-      }
       if (extraInfo_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(ExtraInfo);
+      }
+      if (ConfigId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ConfigId);
       }
       if (State != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(State);
@@ -258,14 +258,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.ConfigId != 0) {
-        ConfigId = other.ConfigId;
-      }
       if (other.extraInfo_ != null) {
         if (extraInfo_ == null) {
           ExtraInfo = new global::March7thHoney.Proto.PropExtraInfo();
         }
         ExtraInfo.MergeFrom(other.ExtraInfo);
+      }
+      if (other.ConfigId != 0) {
+        ConfigId = other.ConfigId;
       }
       if (other.State != 0) {
         State = other.State;
@@ -292,22 +292,22 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 64: {
-            ConfigId = input.ReadUInt32();
+          case 40: {
+            State = input.ReadUInt32();
             break;
           }
-          case 74: {
+          case 50: {
             if (extraInfo_ == null) {
               ExtraInfo = new global::March7thHoney.Proto.PropExtraInfo();
             }
             input.ReadMessage(ExtraInfo);
             break;
           }
-          case 88: {
-            State = input.ReadUInt32();
+          case 64: {
+            ConfigId = input.ReadUInt32();
             break;
           }
-          case 104: {
+          case 72: {
             GroupId = input.ReadUInt32();
             break;
           }
@@ -330,22 +330,22 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 64: {
-            ConfigId = input.ReadUInt32();
+          case 40: {
+            State = input.ReadUInt32();
             break;
           }
-          case 74: {
+          case 50: {
             if (extraInfo_ == null) {
               ExtraInfo = new global::March7thHoney.Proto.PropExtraInfo();
             }
             input.ReadMessage(ExtraInfo);
             break;
           }
-          case 88: {
-            State = input.ReadUInt32();
+          case 64: {
+            ConfigId = input.ReadUInt32();
             break;
           }
-          case 104: {
+          case 72: {
             GroupId = input.ReadUInt32();
             break;
           }

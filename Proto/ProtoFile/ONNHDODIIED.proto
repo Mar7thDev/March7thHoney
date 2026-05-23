@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "HGMNDBFCBLL.proto";
+
+message ONNHDODIIED {
+    HGMNDBFCBLL DLFHABGGHFF = 1;
+}

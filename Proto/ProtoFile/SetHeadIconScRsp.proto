@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message SetHeadIconScRsp {
-    uint32 retcode = 1;
-    uint32 current_head_icon_id = 14;
+    uint32 retcode = 9;
+    uint32 current_head_icon_id = 12;
 }

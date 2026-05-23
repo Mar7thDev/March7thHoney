@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "RogueStatus.proto";
 
 message SyncRogueStatusScNotify {
-    bool CGNNKGAAHIO = 11;
-    RogueStatus status = 14;
+    bool AOBCKABCHGO = 11;
+    RogueStatus status = 7;
 }

@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message HeliobusSnsLikeCsReq {
-    uint32 CDKEDFPEFIJ = 11;
+    uint32 CBGODLHCLPK = 8;
 }

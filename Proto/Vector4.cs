@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static Vector4Reflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg1WZWN0b3I0LnByb3RvIjUKB1ZlY3RvcjQSCQoBeBgCIAEoAhIJCgF5GAcg",
-            "ASgCEgkKAXcYDCABKAISCQoBehgNIAEoAkIWqgITTWFyY2g3dGhIb25leS5Q",
+            "Cg1WZWN0b3I0LnByb3RvIjUKB1ZlY3RvcjQSCQoBehgFIAEoAhIJCgF3GA8g",
+            "ASgCEgkKAXgYASABKAISCQoBeRgNIAEoAkIWqgITTWFyY2g3dGhIb25leS5Q",
             "cm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.Vector4), global::March7thHoney.Proto.Vector4.Parser, new[]{ "X", "Y", "W", "Z" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.Vector4), global::March7thHoney.Proto.Vector4.Parser, new[]{ "Z", "W", "X", "Y" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,10 +72,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Vector4(Vector4 other) : this() {
+      z_ = other.z_;
+      w_ = other.w_;
       x_ = other.x_;
       y_ = other.y_;
-      w_ = other.w_;
-      z_ = other.z_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,8 +85,32 @@ namespace March7thHoney.Proto {
       return new Vector4(this);
     }
 
+    /// <summary>Field number for the "z" field.</summary>
+    public const int ZFieldNumber = 5;
+    private float z_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float Z {
+      get { return z_; }
+      set {
+        z_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "w" field.</summary>
+    public const int WFieldNumber = 15;
+    private float w_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float W {
+      get { return w_; }
+      set {
+        w_ = value;
+      }
+    }
+
     /// <summary>Field number for the "x" field.</summary>
-    public const int XFieldNumber = 2;
+    public const int XFieldNumber = 1;
     private float x_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,7 +122,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "y" field.</summary>
-    public const int YFieldNumber = 7;
+    public const int YFieldNumber = 13;
     private float y_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -106,30 +130,6 @@ namespace March7thHoney.Proto {
       get { return y_; }
       set {
         y_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "w" field.</summary>
-    public const int WFieldNumber = 12;
-    private float w_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public float W {
-      get { return w_; }
-      set {
-        w_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "z" field.</summary>
-    public const int ZFieldNumber = 13;
-    private float z_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public float Z {
-      get { return z_; }
-      set {
-        z_ = value;
       }
     }
 
@@ -148,10 +148,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Z, other.Z)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(W, other.W)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(X, other.X)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Y, other.Y)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(W, other.W)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Z, other.Z)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -159,10 +159,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (Z != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Z);
+      if (W != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(W);
       if (X != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(X);
       if (Y != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Y);
-      if (W != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(W);
-      if (Z != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Z);
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -182,20 +182,20 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (X != 0F) {
-        output.WriteRawTag(21);
+        output.WriteRawTag(13);
         output.WriteFloat(X);
       }
+      if (Z != 0F) {
+        output.WriteRawTag(45);
+        output.WriteFloat(Z);
+      }
       if (Y != 0F) {
-        output.WriteRawTag(61);
+        output.WriteRawTag(109);
         output.WriteFloat(Y);
       }
       if (W != 0F) {
-        output.WriteRawTag(101);
+        output.WriteRawTag(125);
         output.WriteFloat(W);
-      }
-      if (Z != 0F) {
-        output.WriteRawTag(109);
-        output.WriteFloat(Z);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -208,20 +208,20 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (X != 0F) {
-        output.WriteRawTag(21);
+        output.WriteRawTag(13);
         output.WriteFloat(X);
       }
+      if (Z != 0F) {
+        output.WriteRawTag(45);
+        output.WriteFloat(Z);
+      }
       if (Y != 0F) {
-        output.WriteRawTag(61);
+        output.WriteRawTag(109);
         output.WriteFloat(Y);
       }
       if (W != 0F) {
-        output.WriteRawTag(101);
+        output.WriteRawTag(125);
         output.WriteFloat(W);
-      }
-      if (Z != 0F) {
-        output.WriteRawTag(109);
-        output.WriteFloat(Z);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -233,16 +233,16 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (X != 0F) {
-        size += 1 + 4;
-      }
-      if (Y != 0F) {
+      if (Z != 0F) {
         size += 1 + 4;
       }
       if (W != 0F) {
         size += 1 + 4;
       }
-      if (Z != 0F) {
+      if (X != 0F) {
+        size += 1 + 4;
+      }
+      if (Y != 0F) {
         size += 1 + 4;
       }
       if (_unknownFields != null) {
@@ -257,17 +257,17 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.Z != 0F) {
+        Z = other.Z;
+      }
+      if (other.W != 0F) {
+        W = other.W;
+      }
       if (other.X != 0F) {
         X = other.X;
       }
       if (other.Y != 0F) {
         Y = other.Y;
-      }
-      if (other.W != 0F) {
-        W = other.W;
-      }
-      if (other.Z != 0F) {
-        Z = other.Z;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -288,20 +288,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 21: {
+          case 13: {
             X = input.ReadFloat();
             break;
           }
-          case 61: {
-            Y = input.ReadFloat();
-            break;
-          }
-          case 101: {
-            W = input.ReadFloat();
+          case 45: {
+            Z = input.ReadFloat();
             break;
           }
           case 109: {
-            Z = input.ReadFloat();
+            Y = input.ReadFloat();
+            break;
+          }
+          case 125: {
+            W = input.ReadFloat();
             break;
           }
         }
@@ -323,20 +323,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 21: {
+          case 13: {
             X = input.ReadFloat();
             break;
           }
-          case 61: {
-            Y = input.ReadFloat();
-            break;
-          }
-          case 101: {
-            W = input.ReadFloat();
+          case 45: {
+            Z = input.ReadFloat();
             break;
           }
           case 109: {
-            Z = input.ReadFloat();
+            Y = input.ReadFloat();
+            break;
+          }
+          case 125: {
+            W = input.ReadFloat();
             break;
           }
         }

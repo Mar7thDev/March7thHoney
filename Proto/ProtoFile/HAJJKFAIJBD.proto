@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "NKGAIPKINJE.proto";
+
+message HAJJKFAIJBD {
+    NKGAIPKINJE NLFCABFPJHD = 15;
+    bool BHPCOAPAGMA = 1;
+    oneof PIEPADODEDD {
+        uint32 ELGOLPLGFKJ = 8;
+        bool DAJHCEKHNBH = 10;
+    }
+}

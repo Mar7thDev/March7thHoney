@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiJTeW5jQWNjZXB0ZWRQYW1NaXNzaW9uTm90aWZ5LnByb3RvIkwKHFN5bmNB",
-            "Y2NlcHRlZFBhbU1pc3Npb25Ob3RpZnkSFwoPbWFpbl9taXNzaW9uX2lkGAQg",
-            "ASgNEhMKC05KTU9OR0tMSkpDGAYgASgEQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
+            "Y2NlcHRlZFBhbU1pc3Npb25Ob3RpZnkSFwoPbWFpbl9taXNzaW9uX2lkGAIg",
+            "ASgNEhMKC0tBTU9QRUVCT0hKGAQgASgEQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
             "b3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SyncAcceptedPamMissionNotify), global::March7thHoney.Proto.SyncAcceptedPamMissionNotify.Parser, new[]{ "MainMissionId", "NJMONGKLJJC" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SyncAcceptedPamMissionNotify), global::March7thHoney.Proto.SyncAcceptedPamMissionNotify.Parser, new[]{ "MainMissionId", "KAMOPEEBOHJ" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,7 +74,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SyncAcceptedPamMissionNotify(SyncAcceptedPamMissionNotify other) : this() {
       mainMissionId_ = other.mainMissionId_;
-      nJMONGKLJJC_ = other.nJMONGKLJJC_;
+      kAMOPEEBOHJ_ = other.kAMOPEEBOHJ_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "main_mission_id" field.</summary>
-    public const int MainMissionIdFieldNumber = 4;
+    public const int MainMissionIdFieldNumber = 2;
     private uint mainMissionId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,15 +96,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "NJMONGKLJJC" field.</summary>
-    public const int NJMONGKLJJCFieldNumber = 6;
-    private ulong nJMONGKLJJC_;
+    /// <summary>Field number for the "KAMOPEEBOHJ" field.</summary>
+    public const int KAMOPEEBOHJFieldNumber = 4;
+    private ulong kAMOPEEBOHJ_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ulong NJMONGKLJJC {
-      get { return nJMONGKLJJC_; }
+    public ulong KAMOPEEBOHJ {
+      get { return kAMOPEEBOHJ_; }
       set {
-        nJMONGKLJJC_ = value;
+        kAMOPEEBOHJ_ = value;
       }
     }
 
@@ -124,7 +124,7 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (MainMissionId != other.MainMissionId) return false;
-      if (NJMONGKLJJC != other.NJMONGKLJJC) return false;
+      if (KAMOPEEBOHJ != other.KAMOPEEBOHJ) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -133,7 +133,7 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (MainMissionId != 0) hash ^= MainMissionId.GetHashCode();
-      if (NJMONGKLJJC != 0UL) hash ^= NJMONGKLJJC.GetHashCode();
+      if (KAMOPEEBOHJ != 0UL) hash ^= KAMOPEEBOHJ.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -153,12 +153,12 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (MainMissionId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(16);
         output.WriteUInt32(MainMissionId);
       }
-      if (NJMONGKLJJC != 0UL) {
-        output.WriteRawTag(48);
-        output.WriteUInt64(NJMONGKLJJC);
+      if (KAMOPEEBOHJ != 0UL) {
+        output.WriteRawTag(32);
+        output.WriteUInt64(KAMOPEEBOHJ);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -171,12 +171,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (MainMissionId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(16);
         output.WriteUInt32(MainMissionId);
       }
-      if (NJMONGKLJJC != 0UL) {
-        output.WriteRawTag(48);
-        output.WriteUInt64(NJMONGKLJJC);
+      if (KAMOPEEBOHJ != 0UL) {
+        output.WriteRawTag(32);
+        output.WriteUInt64(KAMOPEEBOHJ);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -191,8 +191,8 @@ namespace March7thHoney.Proto {
       if (MainMissionId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MainMissionId);
       }
-      if (NJMONGKLJJC != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(NJMONGKLJJC);
+      if (KAMOPEEBOHJ != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(KAMOPEEBOHJ);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -209,8 +209,8 @@ namespace March7thHoney.Proto {
       if (other.MainMissionId != 0) {
         MainMissionId = other.MainMissionId;
       }
-      if (other.NJMONGKLJJC != 0UL) {
-        NJMONGKLJJC = other.NJMONGKLJJC;
+      if (other.KAMOPEEBOHJ != 0UL) {
+        KAMOPEEBOHJ = other.KAMOPEEBOHJ;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -231,12 +231,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
+          case 16: {
             MainMissionId = input.ReadUInt32();
             break;
           }
-          case 48: {
-            NJMONGKLJJC = input.ReadUInt64();
+          case 32: {
+            KAMOPEEBOHJ = input.ReadUInt64();
             break;
           }
         }
@@ -258,12 +258,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
+          case 16: {
             MainMissionId = input.ReadUInt32();
             break;
           }
-          case 48: {
-            NJMONGKLJJC = input.ReadUInt64();
+          case 32: {
+            KAMOPEEBOHJ = input.ReadUInt64();
             break;
           }
         }

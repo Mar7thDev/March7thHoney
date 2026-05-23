@@ -2,17 +2,15 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "BHMJAJGOJPM.proto";
+import "EEILAINOLPO.proto";
+import "FKFOIDMNDFG.proto";
+import "GPHMAJPGGEK.proto";
 import "ItemList.proto";
-import "JKAIDKIGEGP.proto";
-import "OJFDEKIPPJF.proto";
 
 message RogueMagicSettleScRsp {
-    uint32 retcode = 1;
-    OJFDEKIPPJF MJPEJPMACFG = 6;
-    ItemList FNKEBOFAHME = 7;
-    JKAIDKIGEGP AFLJJJFCBIN = 11;
-    BHMJAJGOJPM EDKJMPACHNJ = 13;
+    EEILAINOLPO IDCMACCPCBH = 7;
+    GPHMAJPGGEK IEHPMHOFBNJ = 11;
+    FKFOIDMNDFG BFLLJJBHLDF = 14;
+    ItemList IIOMCJPCFML = 9;
+    uint32 retcode = 4;
 }

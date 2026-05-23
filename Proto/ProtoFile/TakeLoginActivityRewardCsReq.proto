@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message TakeLoginActivityRewardCsReq {
-    uint32 take_days = 3;
-    uint32 id = 14;
+    uint32 id = 7;
+    uint32 take_days = 14;
 }

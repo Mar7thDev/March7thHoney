@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message PNGGKFFJILG {
+    repeated uint32 HEPCHHCHHPF = 6;
+    uint32 HJPBAJEPAGE = 3;
+    uint32 type = 4;
+    int32 KCCJCGFKCCC = 7;
+    uint32 reason = 5;
+    uint32 FOJGIEEHHNG = 8;
+    uint32 MPDHNFNCIEA = 2;
+    uint64 room_id = 1;
+}

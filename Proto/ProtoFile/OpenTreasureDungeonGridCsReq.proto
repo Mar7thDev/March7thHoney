@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message OpenTreasureDungeonGridCsReq {
-    uint32 CJOPNFDBJHD = 5;
-    uint32 target_side = 10;
+    uint32 GDNEHLEOMOM = 11;
+    uint32 EICEKDBENKM = 7;
 }

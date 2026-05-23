@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "LHCOHLJIAII.proto";
+import "NBNLDHBELLO.proto";
+
+message CNOAPAMNDOA {
+    repeated LHCOHLJIAII KGOEHKJIONM = 5;
+    repeated NBNLDHBELLO LFJLNAHJNBE = 12;
+    uint32 retcode = 15;
+}

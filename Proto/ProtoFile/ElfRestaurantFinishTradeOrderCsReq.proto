@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message ElfRestaurantFinishTradeOrderCsReq {
-    uint32 IIMKIFDKJHO = 12;
+    uint32 BFADNHJAJBJ = 9;
 }

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum GPEEFAOIBNB {
+    GPEEFAOIBNB_GJGOFBPCEEH = 0;
+    GPEEFAOIBNB_IJFLEOHOOAJ = 1;
+    GPEEFAOIBNB_LOHCFNPCIFG = 2;
+    GPEEFAOIBNB_PDIINEANOMF = 3;
+    GPEEFAOIBNB_GMIGKCMGLAL = 4;
+}

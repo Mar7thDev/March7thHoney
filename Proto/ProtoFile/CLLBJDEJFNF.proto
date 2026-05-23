@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message CLLBJDEJFNF {
+    message OOIDNDCPEAF {
+        enum DAHCIBCIIAD {
+            DAHCIBCIIAD_MNEIHEIGLPO = 0;
+            DAHCIBCIIAD_BPILLPJGGGB = 1;
+            DAHCIBCIIAD_ANHFOPPEFAL = 2;
+            DAHCIBCIIAD_LEEOOMLKANM = 3;
+            DAHCIBCIIAD_HJOMKLAGMCM = 4;
+        }
+    }
+    uint32 id = 6;
+    uint32 type = 11;
+    uint32 slot = 14;
+}

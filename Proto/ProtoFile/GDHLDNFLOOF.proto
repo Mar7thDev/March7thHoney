@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum GDHLDNFLOOF {
+    GDHLDNFLOOF_ADHGHGEFMLG = 0;
+    GDHLDNFLOOF_BHOGGJNMHPK = 1;
+    GDHLDNFLOOF_HDMDBOMJDDI = 2;
+    GDHLDNFLOOF_IGDHFMCJMIL = 3;
+    GDHLDNFLOOF_EMJFLBCFONO = 4;
+    GDHLDNFLOOF_EHMMIFPLLHM = 5;
+}

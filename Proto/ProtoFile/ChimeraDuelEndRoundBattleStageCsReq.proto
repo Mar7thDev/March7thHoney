@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "DCIFPICPJMK.proto";
-import "HHBEDPMHNDK.proto";
+import "DIIKFKNEHHG.proto";
+import "IDGMALDABBE.proto";
 
 message ChimeraDuelEndRoundBattleStageCsReq {
-    DCIFPICPJMK KGEBJNHOLCN = 7;
-    HHBEDPMHNDK stt = 9;
-    uint32 NAIMOPOHJKP = 12;
+    IDGMALDABBE stt = 12;
+    uint32 MILMHPODLBB = 14;
+    DIIKFKNEHHG NONPIMDDJNN = 5;
 }

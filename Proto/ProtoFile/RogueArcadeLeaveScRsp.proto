@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "KEEDJBIEJOF.proto";
+import "GCPGBPNGOFF.proto";
 
 message RogueArcadeLeaveScRsp {
-    KEEDJBIEJOF AFLJJJFCBIN = 8;
-    uint32 retcode = 13;
+    GCPGBPNGOFF IDCMACCPCBH = 8;
+    uint32 retcode = 10;
 }

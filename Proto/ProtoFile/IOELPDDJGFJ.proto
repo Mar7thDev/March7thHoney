@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "AFDJNEOHCLB.proto";
+import "AJNJDDFGFJL.proto";
+import "BFGNNODONFI.proto";
+import "BNHBDMIDFCL.proto";
+import "DFFLMEMFPLM.proto";
+import "EJDPLLIJDNK.proto";
+import "EJKNEDLPMIB.proto";
+import "EOKKHLOIBIM.proto";
+import "FDDNKPJEMJE.proto";
+import "FJJPDJAEJHC.proto";
+import "GICMOLJPLGF.proto";
+import "HDLLFBKGBEG.proto";
+import "HGCIPBFBNKO.proto";
+import "IIEKKGNJJMC.proto";
+import "JKLKCKNBHCI.proto";
+import "JLPEICPFLMC.proto";
+import "KHGFCNNCOGA.proto";
+import "KHLAFMBONNK.proto";
+import "LCKBHJBKHNH.proto";
+import "LEGNLMENMJK.proto";
+import "LGFBMEACHPI.proto";
+import "MBLJIEELMKN.proto";
+import "NEEAHLMKAAB.proto";
+import "NGHEPMFILPE.proto";
+
+message IOELPDDJGFJ {
+    JLPEICPFLMC source = 1954;
+    oneof MMCGBGDJIPN {
+        GICMOLJPLGF PJDHBMOIPPO = 13;
+        LCKBHJBKHNH CCHBNLOBPGE = 5;
+        uint32 cur_hp = 10;
+        uint32 rogue_money = 14;
+        LEGNLMENMJK AGHANKEAODD = 12;
+        uint32 MGKMLJHMNMO = 11;
+        AJNJDDFGFJL GDFFAICHLDJ = 15;
+        IIEKKGNJJMC BECPNBEFHGC = 2;
+        HDLLFBKGBEG LDFLJJPAKAP = 1;
+        EJKNEDLPMIB PBNOFEFIDFI = 7;
+        NEEAHLMKAAB IAOIFAADLLC = 9;
+        DFFLMEMFPLM HOEGFMPDBHH = 4;
+        FJJPDJAEJHC HLHBOGKHEEO = 3;
+        HGCIPBFBNKO ANHDPPOAOGL = 657;
+        uint64 ELMMNHBECNI = 255;
+        FDDNKPJEMJE DJOLGKGKCHE = 122;
+        uint32 GCBDADCOBAE = 1424;
+        uint32 FOJHBIMCLGC = 421;
+        NGHEPMFILPE CNCKEHMNJGD = 1994;
+        KHGFCNNCOGA BJPEEGIFAEA = 1307;
+        AFDJNEOHCLB OFCPKKMEFKE = 446;
+        LGFBMEACHPI NAPDGGDENBM = 1524;
+        BNHBDMIDFCL FMIGOKIDKJL = 981;
+        uint32 PMFBIGLPJJA = 1398;
+        EJDPLLIJDNK ONAJPGNNLEN = 1423;
+        uint32 GDHOLMIBAEA = 1846;
+        EOKKHLOIBIM KNANINELANC = 625;
+        KHLAFMBONNK BEOAPFIBDLB = 1911;
+        JKLKCKNBHCI ADEJOKOIBHC = 852;
+        BFGNNODONFI PJMJAPKJINA = 121;
+        MBLJIEELMKN GHICOBOPHOL = 1179;
+    }
+}

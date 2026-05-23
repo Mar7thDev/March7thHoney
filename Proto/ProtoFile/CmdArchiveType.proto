@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdArchiveType {
-    CBLODEEHFJF_PCPDHELPKEM = 0;
-    CmdGetArchiveDataScRsp = 2310;
-    CmdGHILICHODLN = 2395;
-    CmdGetUpdatedArchiveDataCsReq = 2394;
-    CmdGetArchiveDataCsReq = 2391;
+    MFJDGMGKMDJ_NLCDGIPGFDJ = 0;
+    MFJDGMGKMDJ_IHKIOOMDMND = 2373;
+    MFJDGMGKMDJ_PEPICAPCDKF = 2327;
+    MFJDGMGKMDJ_HNJKGIBFMIP = 2303;
+    MFJDGMGKMDJ_BMEBIAJFADB = 2380;
 }

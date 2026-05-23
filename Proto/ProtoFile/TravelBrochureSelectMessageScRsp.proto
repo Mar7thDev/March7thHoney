@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "ItemList.proto";
-import "PBPIOFGODHC.proto";
+import "KJMKOJEHMII.proto";
 
 message TravelBrochureSelectMessageScRsp {
+    KJMKOJEHMII EDLLNJIEFBO = 11;
     ItemList reward = 1;
-    uint32 retcode = 2;
-    PBPIOFGODHC MHMDIDKNCIH = 9;
+    uint32 retcode = 9;
 }

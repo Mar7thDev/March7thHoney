@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChJTZW5kTXNnQ3NSZXEucHJvdG8aDkNoYXRUeXBlLnByb3RvGhVNZXNzYWdl",
             "Q2hhdERhdGEucHJvdG8iagoMU2VuZE1zZ0NzUmVxEicKDW1lc3NhZ2VfZGF0",
-            "YXMYCCABKAsyEC5NZXNzYWdlQ2hhdERhdGESEwoLdGFyZ2V0X2xpc3QYCSAD",
-            "KA0SHAoJY2hhdF90eXBlGA0gASgOMgkuQ2hhdFR5cGVCFqoCE01hcmNoN3Ro",
+            "YXMYBiABKAsyEC5NZXNzYWdlQ2hhdERhdGESEwoLdGFyZ2V0X2xpc3QYAyAD",
+            "KA0SHAoJY2hhdF90eXBlGAUgASgOMgkuQ2hhdFR5cGVCFqoCE01hcmNoN3Ro",
             "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChatTypeReflection.Descriptor, global::March7thHoney.Proto.MessageChatDataReflection.Descriptor, },
@@ -87,7 +87,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "message_datas" field.</summary>
-    public const int MessageDatasFieldNumber = 8;
+    public const int MessageDatasFieldNumber = 6;
     private global::March7thHoney.Proto.MessageChatData messageDatas_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -99,9 +99,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "target_list" field.</summary>
-    public const int TargetListFieldNumber = 9;
+    public const int TargetListFieldNumber = 3;
     private static readonly pb::FieldCodec<uint> _repeated_targetList_codec
-        = pb::FieldCodec.ForUInt32(74);
+        = pb::FieldCodec.ForUInt32(26);
     private readonly pbc::RepeatedField<uint> targetList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,7 +110,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "chat_type" field.</summary>
-    public const int ChatTypeFieldNumber = 13;
+    public const int ChatTypeFieldNumber = 5;
     private global::March7thHoney.Proto.ChatType chatType_ = global::March7thHoney.Proto.ChatType.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -167,14 +167,14 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (messageDatas_ != null) {
-        output.WriteRawTag(66);
-        output.WriteMessage(MessageDatas);
-      }
       targetList_.WriteTo(output, _repeated_targetList_codec);
       if (ChatType != global::March7thHoney.Proto.ChatType.None) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(40);
         output.WriteEnum((int) ChatType);
+      }
+      if (messageDatas_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(MessageDatas);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -186,14 +186,14 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (messageDatas_ != null) {
-        output.WriteRawTag(66);
-        output.WriteMessage(MessageDatas);
-      }
       targetList_.WriteTo(ref output, _repeated_targetList_codec);
       if (ChatType != global::March7thHoney.Proto.ChatType.None) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(40);
         output.WriteEnum((int) ChatType);
+      }
+      if (messageDatas_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(MessageDatas);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -253,20 +253,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 66: {
+          case 26:
+          case 24: {
+            targetList_.AddEntriesFrom(input, _repeated_targetList_codec);
+            break;
+          }
+          case 40: {
+            ChatType = (global::March7thHoney.Proto.ChatType) input.ReadEnum();
+            break;
+          }
+          case 50: {
             if (messageDatas_ == null) {
               MessageDatas = new global::March7thHoney.Proto.MessageChatData();
             }
             input.ReadMessage(MessageDatas);
-            break;
-          }
-          case 74:
-          case 72: {
-            targetList_.AddEntriesFrom(input, _repeated_targetList_codec);
-            break;
-          }
-          case 104: {
-            ChatType = (global::March7thHoney.Proto.ChatType) input.ReadEnum();
             break;
           }
         }
@@ -288,20 +288,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 66: {
+          case 26:
+          case 24: {
+            targetList_.AddEntriesFrom(ref input, _repeated_targetList_codec);
+            break;
+          }
+          case 40: {
+            ChatType = (global::March7thHoney.Proto.ChatType) input.ReadEnum();
+            break;
+          }
+          case 50: {
             if (messageDatas_ == null) {
               MessageDatas = new global::March7thHoney.Proto.MessageChatData();
             }
             input.ReadMessage(MessageDatas);
-            break;
-          }
-          case 74:
-          case 72: {
-            targetList_.AddEntriesFrom(ref input, _repeated_targetList_codec);
-            break;
-          }
-          case 104: {
-            ChatType = (global::March7thHoney.Proto.ChatType) input.ReadEnum();
             break;
           }
         }

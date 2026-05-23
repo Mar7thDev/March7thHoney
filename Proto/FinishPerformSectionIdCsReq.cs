@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiFGaW5pc2hQZXJmb3JtU2VjdGlvbklkQ3NSZXEucHJvdG8aEU1lc3NhZ2VJ",
             "dGVtLnByb3RvIlIKG0ZpbmlzaFBlcmZvcm1TZWN0aW9uSWRDc1JlcRIfCglp",
-            "dGVtX2xpc3QYCSADKAsyDC5NZXNzYWdlSXRlbRISCgpzZWN0aW9uX2lkGAwg",
+            "dGVtX2xpc3QYDCADKAsyDC5NZXNzYWdlSXRlbRISCgpzZWN0aW9uX2lkGAYg",
             "ASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MessageItemReflection.Descriptor, },
@@ -85,9 +85,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "item_list" field.</summary>
-    public const int ItemListFieldNumber = 9;
+    public const int ItemListFieldNumber = 12;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.MessageItem> _repeated_itemList_codec
-        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.MessageItem.Parser);
+        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.MessageItem.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.MessageItem> itemList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MessageItem>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "section_id" field.</summary>
-    public const int SectionIdFieldNumber = 12;
+    public const int SectionIdFieldNumber = 6;
     private uint sectionId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -151,11 +151,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      itemList_.WriteTo(output, _repeated_itemList_codec);
       if (SectionId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(48);
         output.WriteUInt32(SectionId);
       }
+      itemList_.WriteTo(output, _repeated_itemList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -166,11 +166,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      itemList_.WriteTo(ref output, _repeated_itemList_codec);
       if (SectionId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(48);
         output.WriteUInt32(SectionId);
       }
+      itemList_.WriteTo(ref output, _repeated_itemList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -220,12 +220,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 74: {
-            itemList_.AddEntriesFrom(input, _repeated_itemList_codec);
+          case 48: {
+            SectionId = input.ReadUInt32();
             break;
           }
-          case 96: {
-            SectionId = input.ReadUInt32();
+          case 98: {
+            itemList_.AddEntriesFrom(input, _repeated_itemList_codec);
             break;
           }
         }
@@ -247,12 +247,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 74: {
-            itemList_.AddEntriesFrom(ref input, _repeated_itemList_codec);
+          case 48: {
+            SectionId = input.ReadUInt32();
             break;
           }
-          case 96: {
-            SectionId = input.ReadUInt32();
+          case 98: {
+            itemList_.AddEntriesFrom(ref input, _repeated_itemList_codec);
             break;
           }
         }

@@ -26,9 +26,9 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CidTdGFydEFldGhlckRpdmlkZVNjZW5lQmF0dGxlU2NSc3AucHJvdG8aHEFl",
             "dGhlckRpdmlkZUJhdHRsZUluZm8ucHJvdG8iegohU3RhcnRBZXRoZXJEaXZp",
-            "ZGVTY2VuZUJhdHRsZVNjUnNwEiwKC2JhdHRsZV9pbmZvGAYgASgLMhcuQWV0",
-            "aGVyRGl2aWRlQmF0dGxlSW5mbxIPCgdyZXRjb2RlGAggASgNEhYKDmNhc3Rf",
-            "ZW50aXR5X2lkGAogASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
+            "ZGVTY2VuZUJhdHRsZVNjUnNwEiwKC2JhdHRsZV9pbmZvGAsgASgLMhcuQWV0",
+            "aGVyRGl2aWRlQmF0dGxlSW5mbxIPCgdyZXRjb2RlGAwgASgNEhYKDmNhc3Rf",
+            "ZW50aXR5X2lkGA4gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
             "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.AetherDivideBattleInfoReflection.Descriptor, },
@@ -88,7 +88,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "battle_info" field.</summary>
-    public const int BattleInfoFieldNumber = 6;
+    public const int BattleInfoFieldNumber = 11;
     private global::March7thHoney.Proto.AetherDivideBattleInfo battleInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -100,7 +100,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 8;
+    public const int RetcodeFieldNumber = 12;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -112,7 +112,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "cast_entity_id" field.</summary>
-    public const int CastEntityIdFieldNumber = 10;
+    public const int CastEntityIdFieldNumber = 14;
     private uint castEntityId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -170,15 +170,15 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (battleInfo_ != null) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(90);
         output.WriteMessage(BattleInfo);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(96);
         output.WriteUInt32(Retcode);
       }
       if (CastEntityId != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(112);
         output.WriteUInt32(CastEntityId);
       }
       if (_unknownFields != null) {
@@ -192,15 +192,15 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (battleInfo_ != null) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(90);
         output.WriteMessage(BattleInfo);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(96);
         output.WriteUInt32(Retcode);
       }
       if (CastEntityId != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(112);
         output.WriteUInt32(CastEntityId);
       }
       if (_unknownFields != null) {
@@ -265,18 +265,18 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 50: {
+          case 90: {
             if (battleInfo_ == null) {
               BattleInfo = new global::March7thHoney.Proto.AetherDivideBattleInfo();
             }
             input.ReadMessage(BattleInfo);
             break;
           }
-          case 64: {
+          case 96: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 80: {
+          case 112: {
             CastEntityId = input.ReadUInt32();
             break;
           }
@@ -299,18 +299,18 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 50: {
+          case 90: {
             if (battleInfo_ == null) {
               BattleInfo = new global::March7thHoney.Proto.AetherDivideBattleInfo();
             }
             input.ReadMessage(BattleInfo);
             break;
           }
-          case 64: {
+          case 96: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 80: {
+          case 112: {
             CastEntityId = input.ReadUInt32();
             break;
           }

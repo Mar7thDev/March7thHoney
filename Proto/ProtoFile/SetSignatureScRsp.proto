@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message SetSignatureScRsp {
-    uint32 retcode = 5;
-    string signature = 15;
+    string signature = 14;
+    uint32 retcode = 6;
 }

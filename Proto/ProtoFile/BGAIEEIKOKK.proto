@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message BGAIEEIKOKK {
+    uint32 record_score = 1;
+    bool has_passed = 9;
+    uint32 MHIJJHMGHFN = 4;
+    uint32 level_id = 5;
+}

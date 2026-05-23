@@ -2,22 +2,20 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "DLFOGJGCCGP.proto";
-import "FJCDAKICFKA.proto";
-import "HeliobusChallengeData.proto";
+import "BGOMIHEFHPA.proto";
+import "FPIBAIPJCMD.proto";
 import "HeliobusChallengeLineup.proto";
+import "ONBLLGHELOB.proto";
 
 message HeliobusActivityDataScRsp {
-    repeated HeliobusChallengeLineup CHGNKDNFNLF = 1;
-    uint32 IMBOKGFIACA = 2;
-    uint32 level = 3;
-    uint32 retcode = 4;
-    uint32 phase = 5;
-    uint32 DKOGNOKOPKG = 9;
-    repeated HeliobusChallengeData challenge_list = 10;
-    uint32 GCDLCPMFLMH = 11;
-    FJCDAKICFKA skill_info = 12;
-    repeated DLFOGJGCCGP LPMIHBLOIAK = 15;
+    ONBLLGHELOB skill_info = 15;
+    repeated FPIBAIPJCMD challenge_list = 12;
+    repeated HeliobusChallengeLineup DJKMBPEFCKL = 6;
+    repeated BGOMIHEFHPA AAHPCIOOLHB = 5;
+    uint32 level = 11;
+    uint32 IMGDMDDKHDL = 10;
+    uint32 OMMNAFNIKPH = 13;
+    uint32 phase = 9;
+    uint32 AFMLOAPAAPM = 2;
+    uint32 retcode = 14;
 }

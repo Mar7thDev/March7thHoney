@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message LEGBKMIIJOA {
+    double FJDFOPNAFPP = 1;
+    uint32 GCIFCLINGFN = 8;
+    uint32 avatar_id = 12;
+    uint32 ECPMGBGLLNN = 2;
+    uint32 DIIDBKIJEAF = 7;
+    uint32 JNPBAOOALEH = 3;
+    bool JMCMPFPDEHG = 11;
+    bool MEHPJMPDNNA = 6;
+    uint32 JGLNALONLDO = 4;
+}

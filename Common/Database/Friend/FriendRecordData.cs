@@ -38,16 +38,7 @@ public class FriendDevelopmentInfoPb
     public long Time { get; set; } = Extensions.GetUnixSec();
     public Dictionary<string, uint> Params { get; set; } = [];
 
-    public OHNPAFLKHNA ToProto()
-    {
-        var proto = new OHNPAFLKHNA
-        {
-            Time = Time,
-            FKGPLPGKDHN = DevelopmentType
-        };
-        proto.AvatarId = Params.GetValueOrDefault("AvatarId", 0u);
-        return proto;
-    }
+    // TODO 4.3: OHNPAFLKHNA 在 4.3 中已消失或更名，好友发展信息不在登录路径，暂时移除
 }
 
 public class ChallengeGroupStatisticsPb

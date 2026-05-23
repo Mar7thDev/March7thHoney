@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message MissionCustomValue {
-    uint32 custom_value = 4;
-    string DLCLDIAOIMK = 14;
+    string BGDFHBAANLB = 5;
     uint32 index = 15;
+    uint32 custom_value = 6;
 }

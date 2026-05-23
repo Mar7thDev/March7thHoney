@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "GANDCEDCLDL.proto";
+import "GHCDMMNHNHO.proto";
+
+message AFGMNFFBBIG {
+    repeated GHCDMMNHNHO OFHCHNKEFMD = 3;
+    repeated GANDCEDCLDL JNFCFEIAABH = 5;
+    uint32 PNJEGPAFNCI = 4;
+    uint32 monster_id = 2;
+    uint32 BKPDKFLDLDD = 1;
+}

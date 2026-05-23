@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "GGNKDLAHAGH.proto";
+import "KMJNPEMPNMC.proto";
+
+message GMBMNFLMKPI {
+    GGNKDLAHAGH LMICDNNABNM = 4;
+    KMJNPEMPNMC IBCPAKJAPFF = 5;
+}

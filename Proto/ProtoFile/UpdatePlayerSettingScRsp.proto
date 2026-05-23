@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "UpdatePlayerSetting.proto";
 
 message UpdatePlayerSettingScRsp {
-    uint32 retcode = 3;
-    UpdatePlayerSetting player_setting = 12;
+    UpdatePlayerSetting player_setting = 9;
+    uint32 retcode = 8;
 }

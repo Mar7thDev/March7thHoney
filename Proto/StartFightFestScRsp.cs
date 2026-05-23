@@ -26,14 +26,14 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChlTdGFydEZpZ2h0RmVzdFNjUnNwLnByb3RvGhNGaWdodEZlc3RUeXBlLnBy",
             "b3RvGhVTY2VuZUJhdHRsZUluZm8ucHJvdG8iiQEKE1N0YXJ0RmlnaHRGZXN0",
-            "U2NSc3ASJQoLYmF0dGxlX2luZm8YBiABKAsyEC5TY2VuZUJhdHRsZUluZm8S",
-            "CgoCaWQYCCABKA0SHAoEdHlwZRgJIAEoDjIOLkZpZ2h0RmVzdFR5cGUSDwoH",
-            "cmV0Y29kZRgLIAEoDRIQCghldmVudF9pZBgOIAEoDUIWqgITTWFyY2g3dGhI",
+            "U2NSc3ASJQoLYmF0dGxlX2luZm8YAyABKAsyEC5TY2VuZUJhdHRsZUluZm8S",
+            "DwoHcmV0Y29kZRgIIAEoDRIQCghldmVudF9pZBgEIAEoDRIKCgJpZBgNIAEo",
+            "DRIcCgR0eXBlGAcgASgOMg4uRmlnaHRGZXN0VHlwZUIWqgITTWFyY2g3dGhI",
             "b25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.FightFestTypeReflection.Descriptor, global::March7thHoney.Proto.SceneBattleInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartFightFestScRsp), global::March7thHoney.Proto.StartFightFestScRsp.Parser, new[]{ "BattleInfo", "Id", "Type", "Retcode", "EventId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartFightFestScRsp), global::March7thHoney.Proto.StartFightFestScRsp.Parser, new[]{ "BattleInfo", "Retcode", "EventId", "Id", "Type" }, null, null, null, null)
           }));
     }
     #endregion
@@ -76,10 +76,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public StartFightFestScRsp(StartFightFestScRsp other) : this() {
       battleInfo_ = other.battleInfo_ != null ? other.battleInfo_.Clone() : null;
-      id_ = other.id_;
-      type_ = other.type_;
       retcode_ = other.retcode_;
       eventId_ = other.eventId_;
+      id_ = other.id_;
+      type_ = other.type_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -90,7 +90,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "battle_info" field.</summary>
-    public const int BattleInfoFieldNumber = 6;
+    public const int BattleInfoFieldNumber = 3;
     private global::March7thHoney.Proto.SceneBattleInfo battleInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -101,32 +101,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 8;
-    private uint id_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Id {
-      get { return id_; }
-      set {
-        id_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "type" field.</summary>
-    public const int TypeFieldNumber = 9;
-    private global::March7thHoney.Proto.FightFestType type_ = global::March7thHoney.Proto.FightFestType.MhkeafapmfpPcpdhelpkem;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.FightFestType Type {
-      get { return type_; }
-      set {
-        type_ = value;
-      }
-    }
-
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 11;
+    public const int RetcodeFieldNumber = 8;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -138,7 +114,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "event_id" field.</summary>
-    public const int EventIdFieldNumber = 14;
+    public const int EventIdFieldNumber = 4;
     private uint eventId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -146,6 +122,30 @@ namespace March7thHoney.Proto {
       get { return eventId_; }
       set {
         eventId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 13;
+    private uint id_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Id {
+      get { return id_; }
+      set {
+        id_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "type" field.</summary>
+    public const int TypeFieldNumber = 7;
+    private global::March7thHoney.Proto.FightFestType type_ = global::March7thHoney.Proto.FightFestType.OgojlbnjkcnNlcdgipgfdj;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.FightFestType Type {
+      get { return type_; }
+      set {
+        type_ = value;
       }
     }
 
@@ -165,10 +165,10 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (!object.Equals(BattleInfo, other.BattleInfo)) return false;
-      if (Id != other.Id) return false;
-      if (Type != other.Type) return false;
       if (Retcode != other.Retcode) return false;
       if (EventId != other.EventId) return false;
+      if (Id != other.Id) return false;
+      if (Type != other.Type) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -177,10 +177,10 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (battleInfo_ != null) hash ^= BattleInfo.GetHashCode();
-      if (Id != 0) hash ^= Id.GetHashCode();
-      if (Type != global::March7thHoney.Proto.FightFestType.MhkeafapmfpPcpdhelpkem) hash ^= Type.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (EventId != 0) hash ^= EventId.GetHashCode();
+      if (Id != 0) hash ^= Id.GetHashCode();
+      if (Type != global::March7thHoney.Proto.FightFestType.OgojlbnjkcnNlcdgipgfdj) hash ^= Type.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -200,24 +200,24 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (battleInfo_ != null) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(26);
         output.WriteMessage(BattleInfo);
       }
-      if (Id != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(Id);
+      if (EventId != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(EventId);
       }
-      if (Type != global::March7thHoney.Proto.FightFestType.MhkeafapmfpPcpdhelpkem) {
-        output.WriteRawTag(72);
+      if (Type != global::March7thHoney.Proto.FightFestType.OgojlbnjkcnNlcdgipgfdj) {
+        output.WriteRawTag(56);
         output.WriteEnum((int) Type);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(64);
         output.WriteUInt32(Retcode);
       }
-      if (EventId != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(EventId);
+      if (Id != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(Id);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -230,24 +230,24 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (battleInfo_ != null) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(26);
         output.WriteMessage(BattleInfo);
       }
-      if (Id != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(Id);
+      if (EventId != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(EventId);
       }
-      if (Type != global::March7thHoney.Proto.FightFestType.MhkeafapmfpPcpdhelpkem) {
-        output.WriteRawTag(72);
+      if (Type != global::March7thHoney.Proto.FightFestType.OgojlbnjkcnNlcdgipgfdj) {
+        output.WriteRawTag(56);
         output.WriteEnum((int) Type);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(64);
         output.WriteUInt32(Retcode);
       }
-      if (EventId != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(EventId);
+      if (Id != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(Id);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -262,17 +262,17 @@ namespace March7thHoney.Proto {
       if (battleInfo_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(BattleInfo);
       }
-      if (Id != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Id);
-      }
-      if (Type != global::March7thHoney.Proto.FightFestType.MhkeafapmfpPcpdhelpkem) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
-      }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
       if (EventId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EventId);
+      }
+      if (Id != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Id);
+      }
+      if (Type != global::March7thHoney.Proto.FightFestType.OgojlbnjkcnNlcdgipgfdj) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -292,17 +292,17 @@ namespace March7thHoney.Proto {
         }
         BattleInfo.MergeFrom(other.BattleInfo);
       }
-      if (other.Id != 0) {
-        Id = other.Id;
-      }
-      if (other.Type != global::March7thHoney.Proto.FightFestType.MhkeafapmfpPcpdhelpkem) {
-        Type = other.Type;
-      }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
       if (other.EventId != 0) {
         EventId = other.EventId;
+      }
+      if (other.Id != 0) {
+        Id = other.Id;
+      }
+      if (other.Type != global::March7thHoney.Proto.FightFestType.OgojlbnjkcnNlcdgipgfdj) {
+        Type = other.Type;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -323,27 +323,27 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 50: {
+          case 26: {
             if (battleInfo_ == null) {
               BattleInfo = new global::March7thHoney.Proto.SceneBattleInfo();
             }
             input.ReadMessage(BattleInfo);
             break;
           }
-          case 64: {
-            Id = input.ReadUInt32();
+          case 32: {
+            EventId = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 56: {
             Type = (global::March7thHoney.Proto.FightFestType) input.ReadEnum();
             break;
           }
-          case 88: {
+          case 64: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 112: {
-            EventId = input.ReadUInt32();
+          case 104: {
+            Id = input.ReadUInt32();
             break;
           }
         }
@@ -365,27 +365,27 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 50: {
+          case 26: {
             if (battleInfo_ == null) {
               BattleInfo = new global::March7thHoney.Proto.SceneBattleInfo();
             }
             input.ReadMessage(BattleInfo);
             break;
           }
-          case 64: {
-            Id = input.ReadUInt32();
+          case 32: {
+            EventId = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 56: {
             Type = (global::March7thHoney.Proto.FightFestType) input.ReadEnum();
             break;
           }
-          case 88: {
+          case 64: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 112: {
-            EventId = input.ReadUInt32();
+          case 104: {
+            Id = input.ReadUInt32();
             break;
           }
         }

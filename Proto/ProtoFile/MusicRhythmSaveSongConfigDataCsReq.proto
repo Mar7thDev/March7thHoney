@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "MusicRhythmGroup.proto";
 
 message MusicRhythmSaveSongConfigDataCsReq {
-    MusicRhythmGroup BAJEIALIBBM = 14;
+    MusicRhythmGroup BENAFNHLCEO = 6;
 }

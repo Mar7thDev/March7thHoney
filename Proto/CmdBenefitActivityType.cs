@@ -24,14 +24,13 @@ namespace March7thHoney.Proto {
     static CmdBenefitActivityTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChxDbWRCZW5lZml0QWN0aXZpdHlUeXBlLnByb3RvKoECChZDbWRCZW5lZml0",
-            "QWN0aXZpdHlUeXBlEhsKF0RMSlBBTEhBUFBMX1BDUERIRUxQS0VNEAASHgoZ",
-            "Q21kR2V0QmVuZWZpdEFjdGl2aXR5SW5mbxD5JRITCg5DbWRDREZHQlBPUE5B",
-            "TBCYJhIgChtDbWRKb2luQmVuZWZpdEFjdGl2aXR5Q3NSZXEQlSYSIwoeQ21k",
-            "R2V0QmVuZWZpdEFjdGl2aXR5SW5mb0NzUmVxEP8lEiYKIUNtZFRha2VCZW5l",
-            "Zml0QWN0aXZpdHlSZXdhcmRDc1JlcRCQJhImCiFDbWRUYWtlQmVuZWZpdEFj",
-            "dGl2aXR5UmV3YXJkU2NSc3AQjSZCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
-            "BnByb3RvMw=="));
+            "ChxDbWRCZW5lZml0QWN0aXZpdHlUeXBlLnByb3RvKukBChZDbWRCZW5lZml0",
+            "QWN0aXZpdHlUeXBlEhsKF0NDT0NORkxJT0dLX05MQ0RHSVBHRkRKEAASHAoX",
+            "Q0NPQ05GTElPR0tfR0VCUEJNSE9BS0UQniYSHAoXQ0NPQ05GTElPR0tfTUtE",
+            "SExDQk5OR08QjSYSHAoXQ0NPQ05GTElPR0tfSVBBR0FDRERPRkEQkiYSHAoX",
+            "Q0NPQ05GTElPR0tfUE5ERkpKS0FGQ0kQ+SUSHAoXQ0NPQ05GTElPR0tfRUNG",
+            "UEZQS01GRk4QnCYSHAoXQ0NPQ05GTElPR0tfQ0ZCUE9JUE9MQUwQiSZCFqoC",
+            "E01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdBenefitActivityType), }, null, null));
@@ -41,13 +40,13 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdBenefitActivityType {
-    [pbr::OriginalName("DLJPALHAPPL_PCPDHELPKEM")] DljpalhapplPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdGetBenefitActivityInfo")] CmdGetBenefitActivityInfo = 4857,
-    [pbr::OriginalName("CmdCDFGBPOPNAL")] CmdCdfgbpopnal = 4888,
-    [pbr::OriginalName("CmdJoinBenefitActivityCsReq")] CmdJoinBenefitActivityCsReq = 4885,
-    [pbr::OriginalName("CmdGetBenefitActivityInfoCsReq")] CmdGetBenefitActivityInfoCsReq = 4863,
-    [pbr::OriginalName("CmdTakeBenefitActivityRewardCsReq")] CmdTakeBenefitActivityRewardCsReq = 4880,
-    [pbr::OriginalName("CmdTakeBenefitActivityRewardScRsp")] CmdTakeBenefitActivityRewardScRsp = 4877,
+    [pbr::OriginalName("CCOCNFLIOGK_NLCDGIPGFDJ")] CcocnfliogkNlcdgipgfdj = 0,
+    [pbr::OriginalName("CCOCNFLIOGK_GEBPBMHOAKE")] CcocnfliogkGebpbmhoake = 4894,
+    [pbr::OriginalName("CCOCNFLIOGK_MKDHLCBNNGO")] CcocnfliogkMkdhlcbnngo = 4877,
+    [pbr::OriginalName("CCOCNFLIOGK_IPAGACDDOFA")] CcocnfliogkIpagacddofa = 4882,
+    [pbr::OriginalName("CCOCNFLIOGK_PNDFJJKAFCI")] CcocnfliogkPndfjjkafci = 4857,
+    [pbr::OriginalName("CCOCNFLIOGK_ECFPFPKMFFN")] CcocnfliogkEcfpfpkmffn = 4892,
+    [pbr::OriginalName("CCOCNFLIOGK_CFBPOIPOLAL")] CcocnfliogkCfbpoipolal = 4873,
   }
 
   #endregion

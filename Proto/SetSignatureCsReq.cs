@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChdTZXRTaWduYXR1cmVDc1JlcS5wcm90byImChFTZXRTaWduYXR1cmVDc1Jl",
-            "cRIRCglzaWduYXR1cmUYDSABKAlCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
+            "cRIRCglzaWduYXR1cmUYDyABKAlCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
             "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -83,7 +83,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "signature" field.</summary>
-    public const int SignatureFieldNumber = 13;
+    public const int SignatureFieldNumber = 15;
     private string signature_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -137,7 +137,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Signature.Length != 0) {
-        output.WriteRawTag(106);
+        output.WriteRawTag(122);
         output.WriteString(Signature);
       }
       if (_unknownFields != null) {
@@ -151,7 +151,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Signature.Length != 0) {
-        output.WriteRawTag(106);
+        output.WriteRawTag(122);
         output.WriteString(Signature);
       }
       if (_unknownFields != null) {
@@ -201,7 +201,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 106: {
+          case 122: {
             Signature = input.ReadString();
             break;
           }
@@ -224,7 +224,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 106: {
+          case 122: {
             Signature = input.ReadString();
             break;
           }

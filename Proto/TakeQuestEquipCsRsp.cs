@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static TakeQuestEquipCsRspReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChlUYWtlUXVlc3RFcXVpcENzUnNwLnByb3RvIksKE1Rha2VRdWVzdEVxdWlw",
-            "Q3NSc3ASDwoHcmV0Y29kZRgBIAEoDRIRCglEaXNjYXJkZWQYBCABKAgSEAoI",
-            "cXVlc3RfaWQYDCABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
-            "Mw=="));
+            "ChlUYWtlUXVlc3RFcXVpcENzUnNwLnByb3RvIk0KE1Rha2VRdWVzdEVxdWlw",
+            "Q3NSc3ASEAoIcXVlc3RfaWQYCSABKA0SEwoLREtQQ0FJR1BITk8YBiABKAgS",
+            "DwoHcmV0Y29kZRgFIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJv",
+            "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TakeQuestEquipCsRsp), global::March7thHoney.Proto.TakeQuestEquipCsRsp.Parser, new[]{ "Retcode", "Discarded", "QuestId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TakeQuestEquipCsRsp), global::March7thHoney.Proto.TakeQuestEquipCsRsp.Parser, new[]{ "QuestId", "DKPCAIGPHNO", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,9 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public TakeQuestEquipCsRsp(TakeQuestEquipCsRsp other) : this() {
-      retcode_ = other.retcode_;
-      discarded_ = other.discarded_;
       questId_ = other.questId_;
+      dKPCAIGPHNO_ = other.dKPCAIGPHNO_;
+      retcode_ = other.retcode_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,32 +85,8 @@ namespace March7thHoney.Proto {
       return new TakeQuestEquipCsRsp(this);
     }
 
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 1;
-    private uint retcode_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
-      set {
-        retcode_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "Discarded" field.</summary>
-    public const int DiscardedFieldNumber = 4;
-    private bool discarded_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Discarded {
-      get { return discarded_; }
-      set {
-        discarded_ = value;
-      }
-    }
-
     /// <summary>Field number for the "quest_id" field.</summary>
-    public const int QuestIdFieldNumber = 12;
+    public const int QuestIdFieldNumber = 9;
     private uint questId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -118,6 +94,30 @@ namespace March7thHoney.Proto {
       get { return questId_; }
       set {
         questId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "DKPCAIGPHNO" field.</summary>
+    public const int DKPCAIGPHNOFieldNumber = 6;
+    private bool dKPCAIGPHNO_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool DKPCAIGPHNO {
+      get { return dKPCAIGPHNO_; }
+      set {
+        dKPCAIGPHNO_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 5;
+    private uint retcode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Retcode {
+      get { return retcode_; }
+      set {
+        retcode_ = value;
       }
     }
 
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Retcode != other.Retcode) return false;
-      if (Discarded != other.Discarded) return false;
       if (QuestId != other.QuestId) return false;
+      if (DKPCAIGPHNO != other.DKPCAIGPHNO) return false;
+      if (Retcode != other.Retcode) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -146,9 +146,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Retcode != 0) hash ^= Retcode.GetHashCode();
-      if (Discarded != false) hash ^= Discarded.GetHashCode();
       if (QuestId != 0) hash ^= QuestId.GetHashCode();
+      if (DKPCAIGPHNO != false) hash ^= DKPCAIGPHNO.GetHashCode();
+      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -168,15 +168,15 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Retcode != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(40);
         output.WriteUInt32(Retcode);
       }
-      if (Discarded != false) {
-        output.WriteRawTag(32);
-        output.WriteBool(Discarded);
+      if (DKPCAIGPHNO != false) {
+        output.WriteRawTag(48);
+        output.WriteBool(DKPCAIGPHNO);
       }
       if (QuestId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(72);
         output.WriteUInt32(QuestId);
       }
       if (_unknownFields != null) {
@@ -190,15 +190,15 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Retcode != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(40);
         output.WriteUInt32(Retcode);
       }
-      if (Discarded != false) {
-        output.WriteRawTag(32);
-        output.WriteBool(Discarded);
+      if (DKPCAIGPHNO != false) {
+        output.WriteRawTag(48);
+        output.WriteBool(DKPCAIGPHNO);
       }
       if (QuestId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(72);
         output.WriteUInt32(QuestId);
       }
       if (_unknownFields != null) {
@@ -211,14 +211,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Retcode != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
-      }
-      if (Discarded != false) {
-        size += 1 + 1;
-      }
       if (QuestId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(QuestId);
+      }
+      if (DKPCAIGPHNO != false) {
+        size += 1 + 1;
+      }
+      if (Retcode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -232,14 +232,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
-      }
-      if (other.Discarded != false) {
-        Discarded = other.Discarded;
-      }
       if (other.QuestId != 0) {
         QuestId = other.QuestId;
+      }
+      if (other.DKPCAIGPHNO != false) {
+        DKPCAIGPHNO = other.DKPCAIGPHNO;
+      }
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -260,15 +260,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
+          case 40: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 32: {
-            Discarded = input.ReadBool();
+          case 48: {
+            DKPCAIGPHNO = input.ReadBool();
             break;
           }
-          case 96: {
+          case 72: {
             QuestId = input.ReadUInt32();
             break;
           }
@@ -291,15 +291,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
+          case 40: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 32: {
-            Discarded = input.ReadBool();
+          case 48: {
+            DKPCAIGPHNO = input.ReadBool();
             break;
           }
-          case 96: {
+          case 72: {
             QuestId = input.ReadUInt32();
             break;
           }

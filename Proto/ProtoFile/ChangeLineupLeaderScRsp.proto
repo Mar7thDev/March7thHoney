@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message ChangeLineupLeaderScRsp {
-    uint32 slot = 13;
-    uint32 retcode = 14;
+    uint32 retcode = 10;
+    uint32 slot = 8;
 }

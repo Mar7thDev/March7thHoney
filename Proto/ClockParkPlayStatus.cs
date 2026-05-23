@@ -25,9 +25,9 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChlDbG9ja1BhcmtQbGF5U3RhdHVzLnByb3RvKokBChNDbG9ja1BhcmtQbGF5",
-            "U3RhdHVzEhsKF0ZPR0ZCUE9ESUROX0VDRkFPTUxEREdMEAASGwoXRk9HRkJQ",
-            "T0RJRE5fTkxKSkRQRkRETkcQARIbChdGT0dGQlBPRElETl9DUEtJS0pCR09M",
-            "QhACEhsKF0ZPR0ZCUE9ESUROX0NDSUhDQkFHSU1IEAVCFqoCE01hcmNoN3Ro",
+            "U3RhdHVzEhsKF0FDS05PQUFJTVBDX05GQUxQRURGS0NMEAASGwoXQUNLTk9B",
+            "QUlNUENfS0hCSExHSlBHUEcQARIbChdBQ0tOT0FBSU1QQ19NT0JCRVBGRENF",
+            "TRACEhsKF0FDS05PQUFJTVBDX01OS0VER0pMSExFEAVCFqoCE01hcmNoN3Ro",
             "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -38,10 +38,10 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum ClockParkPlayStatus {
-    [pbr::OriginalName("FOGFBPODIDN_ECFAOMLDDGL")] FogfbpodidnEcfaomlddgl = 0,
-    [pbr::OriginalName("FOGFBPODIDN_NLJJDPFDDNG")] FogfbpodidnNljjdpfddng = 1,
-    [pbr::OriginalName("FOGFBPODIDN_CPKIKJBGOLB")] FogfbpodidnCpkikjbgolb = 2,
-    [pbr::OriginalName("FOGFBPODIDN_CCIHCBAGIMH")] FogfbpodidnCcihcbagimh = 5,
+    [pbr::OriginalName("ACKNOAAIMPC_NFALPEDFKCL")] AcknoaaimpcNfalpedfkcl = 0,
+    [pbr::OriginalName("ACKNOAAIMPC_KHBHLGJPGPG")] AcknoaaimpcKhbhlgjpgpg = 1,
+    [pbr::OriginalName("ACKNOAAIMPC_MOBBEPFDCEM")] AcknoaaimpcMobbepfdcem = 2,
+    [pbr::OriginalName("ACKNOAAIMPC_MNKEDGJLHLE")] AcknoaaimpcMnkedgjlhle = 5,
   }
 
   #endregion

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "PlayerSimpleInfo.proto";
+
+message HHJLCGGEHPB {
+    PlayerSimpleInfo CILGIDDHODG = 1;
+    uint32 PLPPPCEPBDO = 7;
+    int64 NPAIFCLAPNH = 13;
+    int64 KFACPOBAAGM = 11;
+}

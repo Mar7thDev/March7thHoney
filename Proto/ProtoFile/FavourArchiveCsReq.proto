@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message FavourArchiveCsReq {
-    bool PDLBECHDJBL = 4;
-    uint32 AJMBOLHDGHK = 12;
+    uint32 BAAGDILLLME = 9;
+    bool IECKKCHJMLP = 1;
 }

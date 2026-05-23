@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "GLNJKGOGKKL.proto";
+
+message EAFHBODFEKM {
+    oneof GBGKEJPFEIL {
+        bool CNMAFMEKADJ = 476;
+        GLNJKGOGKKL BDHBFFEOPFG = 987;
+        GLNJKGOGKKL DLDGBIBHDKM = 18;
+    }
+}

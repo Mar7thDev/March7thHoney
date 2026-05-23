@@ -38,7 +38,7 @@ public class PacketPlayerSyncScNotify : BasePacket
     public PacketPlayerSyncScNotify(IEnumerable<uint> delEquipmentIds) : base(CmdIds.PlayerSyncScNotify)
     {
         var proto = new PlayerSyncScNotify();
-        proto.CJEFCMACJLG.Add(delEquipmentIds);
+        proto.DelEquipmentList.Add(delEquipmentIds);
         SetData(proto);
     }
 
@@ -46,7 +46,7 @@ public class PacketPlayerSyncScNotify : BasePacket
     {
         var proto = new PlayerSyncScNotify();
         AddItemToProto(item, proto);
-        proto.CJEFCMACJLG.Add(delEquipmentIds);
+        proto.DelEquipmentList.Add(delEquipmentIds);
         SetData(proto);
     }
 
@@ -131,15 +131,7 @@ public class PacketPlayerSyncScNotify : BasePacket
         SetData(proto);
     }
 
-    public PacketPlayerSyncScNotify(PlayerOutfitInfo playerOutfitData) : base(CmdIds.PlayerSyncScNotify)
-    {
-        var proto = new PlayerSyncScNotify
-        {
-            PlayerOutfitData = playerOutfitData
-        };
-
-        SetData(proto);
-    }
+    // TODO 4.3: PlayerOutfitInfo / PlayerOutfitData 在 4.3 中已被砍掉，构造函数暂停
 
     public PacketPlayerSyncScNotify(MessageGroupData? groupData, MessageSectionData? sectionData) : base(
         CmdIds.PlayerSyncScNotify)
@@ -193,7 +185,7 @@ public class PacketPlayerSyncScNotify : BasePacket
                 if (item.Count > 0)
                     notify.EquipmentList.Add(item.ToEquipmentProto());
                 else
-                    notify.CJEFCMACJLG.Add((uint)item.UniqueId);
+                    notify.DelEquipmentList.Add((uint)item.UniqueId);
                 break;
             case ItemMainTypeEnum.Relic:
                 if (item.Count > 0)

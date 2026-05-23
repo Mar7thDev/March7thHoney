@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message LFOCLBEMIEM {
+    uint32 ELPODIAAGEK = 3;
+    uint32 section_id = 15;
+    uint32 CJCCMAACJDB = 12;
+    uint32 DCAHJELNJNP = 6;
+}

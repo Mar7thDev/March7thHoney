@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message MatchThreeV2BattleItemLevelUpCsReq {
-    uint32 PANFIPHAGPB = 10;
-    uint32 ODADJILOEKO = 13;
+    uint32 FMEHKPKHGJA = 11;
+    uint32 IGOOJKMPMDC = 2;
 }

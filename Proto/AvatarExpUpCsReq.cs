@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChZBdmF0YXJFeHBVcENzUmVxLnByb3RvGhJJdGVtQ29zdERhdGEucHJvdG8i",
-            "TAoQQXZhdGFyRXhwVXBDc1JlcRIWCg5iYXNlX2F2YXRhcl9pZBgDIAEoDRIg",
-            "CglpdGVtX2Nvc3QYCSABKAsyDS5JdGVtQ29zdERhdGFCFqoCE01hcmNoN3Ro",
+            "TAoQQXZhdGFyRXhwVXBDc1JlcRIgCglpdGVtX2Nvc3QYDSABKAsyDS5JdGVt",
+            "Q29zdERhdGESFgoOYmFzZV9hdmF0YXJfaWQYByABKA1CFqoCE01hcmNoN3Ro",
             "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemCostDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AvatarExpUpCsReq), global::March7thHoney.Proto.AvatarExpUpCsReq.Parser, new[]{ "BaseAvatarId", "ItemCost" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AvatarExpUpCsReq), global::March7thHoney.Proto.AvatarExpUpCsReq.Parser, new[]{ "ItemCost", "BaseAvatarId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public AvatarExpUpCsReq(AvatarExpUpCsReq other) : this() {
-      baseAvatarId_ = other.baseAvatarId_;
       itemCost_ = other.itemCost_ != null ? other.itemCost_.Clone() : null;
+      baseAvatarId_ = other.baseAvatarId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,20 +84,8 @@ namespace March7thHoney.Proto {
       return new AvatarExpUpCsReq(this);
     }
 
-    /// <summary>Field number for the "base_avatar_id" field.</summary>
-    public const int BaseAvatarIdFieldNumber = 3;
-    private uint baseAvatarId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint BaseAvatarId {
-      get { return baseAvatarId_; }
-      set {
-        baseAvatarId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "item_cost" field.</summary>
-    public const int ItemCostFieldNumber = 9;
+    public const int ItemCostFieldNumber = 13;
     private global::March7thHoney.Proto.ItemCostData itemCost_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -105,6 +93,18 @@ namespace March7thHoney.Proto {
       get { return itemCost_; }
       set {
         itemCost_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "base_avatar_id" field.</summary>
+    public const int BaseAvatarIdFieldNumber = 7;
+    private uint baseAvatarId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint BaseAvatarId {
+      get { return baseAvatarId_; }
+      set {
+        baseAvatarId_ = value;
       }
     }
 
@@ -123,8 +123,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (BaseAvatarId != other.BaseAvatarId) return false;
       if (!object.Equals(ItemCost, other.ItemCost)) return false;
+      if (BaseAvatarId != other.BaseAvatarId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,8 +132,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (BaseAvatarId != 0) hash ^= BaseAvatarId.GetHashCode();
       if (itemCost_ != null) hash ^= ItemCost.GetHashCode();
+      if (BaseAvatarId != 0) hash ^= BaseAvatarId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -153,11 +153,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (BaseAvatarId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(56);
         output.WriteUInt32(BaseAvatarId);
       }
       if (itemCost_ != null) {
-        output.WriteRawTag(74);
+        output.WriteRawTag(106);
         output.WriteMessage(ItemCost);
       }
       if (_unknownFields != null) {
@@ -171,11 +171,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (BaseAvatarId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(56);
         output.WriteUInt32(BaseAvatarId);
       }
       if (itemCost_ != null) {
-        output.WriteRawTag(74);
+        output.WriteRawTag(106);
         output.WriteMessage(ItemCost);
       }
       if (_unknownFields != null) {
@@ -188,11 +188,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (BaseAvatarId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BaseAvatarId);
-      }
       if (itemCost_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(ItemCost);
+      }
+      if (BaseAvatarId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BaseAvatarId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -206,14 +206,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.BaseAvatarId != 0) {
-        BaseAvatarId = other.BaseAvatarId;
-      }
       if (other.itemCost_ != null) {
         if (itemCost_ == null) {
           ItemCost = new global::March7thHoney.Proto.ItemCostData();
         }
         ItemCost.MergeFrom(other.ItemCost);
+      }
+      if (other.BaseAvatarId != 0) {
+        BaseAvatarId = other.BaseAvatarId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -234,11 +234,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
+          case 56: {
             BaseAvatarId = input.ReadUInt32();
             break;
           }
-          case 74: {
+          case 106: {
             if (itemCost_ == null) {
               ItemCost = new global::March7thHoney.Proto.ItemCostData();
             }
@@ -264,11 +264,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
+          case 56: {
             BaseAvatarId = input.ReadUInt32();
             break;
           }
-          case 74: {
+          case 106: {
             if (itemCost_ == null) {
               ItemCost = new global::March7thHoney.Proto.ItemCostData();
             }

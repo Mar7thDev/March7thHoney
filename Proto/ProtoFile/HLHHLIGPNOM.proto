@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "GridFightEquipTrackSource.proto";
+
+message HLHHLIGPNOM {
+    repeated uint32 grid_fight_item_list = 5;
+    repeated uint32 MCJMHBIECMN = 13;
+    uint32 NALMBOOCCIN = 11;
+    GridFightEquipTrackSource source = 15;
+    bool BJDOINAHDLN = 7;
+    uint32 BGFFICLCKHE = 14;
+}

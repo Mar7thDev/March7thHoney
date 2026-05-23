@@ -25,10 +25,10 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChhUcmFpblZpc2l0b3JTdGF0dXMucHJvdG8qpQEKElRyYWluVmlzaXRvclN0",
-            "YXR1cxIbChdKRFBKSE1IT01MRl9QQ1BESEVMUEtFTRAAEhsKF0pEUEpITUhP",
-            "TUxGX0tFSUJDUEFORUdBEAESGwoXSkRQSkhNSE9NTEZfQ0pOQkNOTkFDTkoQ",
-            "AhIbChdKRFBKSE1IT01MRl9BQ05OR0pITExKRBADEhsKF0pEUEpITUhPTUxG",
-            "X0VBQ0NHR0xER0VMEARCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
+            "YXR1cxIbChdMRE1DQ0ZQQVBPTF9OTENER0lQR0ZEShAAEhsKF0xETUNDRlBB",
+            "UE9MX0tQSkdESExFTklQEAESGwoXTERNQ0NGUEFQT0xfUEdBQUNMQ0tGRk8Q",
+            "AhIbChdMRE1DQ0ZQQVBPTF9GQkFFRkNFUEhISRADEhsKF0xETUNDRlBBUE9M",
+            "X0hLTUpHR1BLR0lNEARCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
             "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -39,11 +39,11 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum TrainVisitorStatus {
-    [pbr::OriginalName("JDPJHMHOMLF_PCPDHELPKEM")] JdpjhmhomlfPcpdhelpkem = 0,
-    [pbr::OriginalName("JDPJHMHOMLF_KEIBCPANEGA")] JdpjhmhomlfKeibcpanega = 1,
-    [pbr::OriginalName("JDPJHMHOMLF_CJNBCNNACNJ")] JdpjhmhomlfCjnbcnnacnj = 2,
-    [pbr::OriginalName("JDPJHMHOMLF_ACNNGJHLLJD")] JdpjhmhomlfAcnngjhlljd = 3,
-    [pbr::OriginalName("JDPJHMHOMLF_EACCGGLDGEL")] JdpjhmhomlfEaccggldgel = 4,
+    [pbr::OriginalName("LDMCCFPAPOL_NLCDGIPGFDJ")] LdmccfpapolNlcdgipgfdj = 0,
+    [pbr::OriginalName("LDMCCFPAPOL_KPJGDHLENIP")] LdmccfpapolKpjgdhlenip = 1,
+    [pbr::OriginalName("LDMCCFPAPOL_PGAACLCKFFO")] LdmccfpapolPgaaclckffo = 2,
+    [pbr::OriginalName("LDMCCFPAPOL_FBAEFCEPHHI")] LdmccfpapolFbaefcephhi = 3,
+    [pbr::OriginalName("LDMCCFPAPOL_HKMJGGPKGIM")] LdmccfpapolHkmjggpkgim = 4,
   }
 
   #endregion

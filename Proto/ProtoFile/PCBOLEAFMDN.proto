@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "MAFDLBFIJMB.proto";
+import "NEBJABOEDND.proto";
+
+message PCBOLEAFMDN {
+    repeated uint32 HAKLMIAENCF = 15;
+    repeated MAFDLBFIJMB GNJGPFDKLBH = 3;
+    repeated uint32 FOLMLBOLGEM = 9;
+    repeated uint32 PGGOOINMOLF = 10;
+    NEBJABOEDND AAIMONALOPD = 13;
+    uint32 FGLEKNDHMKN = 6;
+    uint32 DEFHFAGLMLC = 5;
+    uint32 CIFFLEBCFGK = 1;
+    uint32 NGBAKCIGBMN = 11;
+}

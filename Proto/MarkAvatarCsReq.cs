@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChVNYXJrQXZhdGFyQ3NSZXEucHJvdG8iNwoPTWFya0F2YXRhckNzUmVxEhEK",
-            "CWlzX21hcmtlZBgBIAEoCBIRCglhdmF0YXJfaWQYCSABKA1CFqoCE01hcmNo",
+            "CWF2YXRhcl9pZBgDIAEoDRIRCglpc19tYXJrZWQYByABKAhCFqoCE01hcmNo",
             "N3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MarkAvatarCsReq), global::March7thHoney.Proto.MarkAvatarCsReq.Parser, new[]{ "IsMarked", "AvatarId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MarkAvatarCsReq), global::March7thHoney.Proto.MarkAvatarCsReq.Parser, new[]{ "AvatarId", "IsMarked" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MarkAvatarCsReq(MarkAvatarCsReq other) : this() {
-      isMarked_ = other.isMarked_;
       avatarId_ = other.avatarId_;
+      isMarked_ = other.isMarked_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,20 +83,8 @@ namespace March7thHoney.Proto {
       return new MarkAvatarCsReq(this);
     }
 
-    /// <summary>Field number for the "is_marked" field.</summary>
-    public const int IsMarkedFieldNumber = 1;
-    private bool isMarked_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IsMarked {
-      get { return isMarked_; }
-      set {
-        isMarked_ = value;
-      }
-    }
-
     /// <summary>Field number for the "avatar_id" field.</summary>
-    public const int AvatarIdFieldNumber = 9;
+    public const int AvatarIdFieldNumber = 3;
     private uint avatarId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -104,6 +92,18 @@ namespace March7thHoney.Proto {
       get { return avatarId_; }
       set {
         avatarId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "is_marked" field.</summary>
+    public const int IsMarkedFieldNumber = 7;
+    private bool isMarked_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IsMarked {
+      get { return isMarked_; }
+      set {
+        isMarked_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (IsMarked != other.IsMarked) return false;
       if (AvatarId != other.AvatarId) return false;
+      if (IsMarked != other.IsMarked) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (IsMarked != false) hash ^= IsMarked.GetHashCode();
       if (AvatarId != 0) hash ^= AvatarId.GetHashCode();
+      if (IsMarked != false) hash ^= IsMarked.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (IsMarked != false) {
-        output.WriteRawTag(8);
-        output.WriteBool(IsMarked);
-      }
       if (AvatarId != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(24);
         output.WriteUInt32(AvatarId);
+      }
+      if (IsMarked != false) {
+        output.WriteRawTag(56);
+        output.WriteBool(IsMarked);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (IsMarked != false) {
-        output.WriteRawTag(8);
-        output.WriteBool(IsMarked);
-      }
       if (AvatarId != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(24);
         output.WriteUInt32(AvatarId);
+      }
+      if (IsMarked != false) {
+        output.WriteRawTag(56);
+        output.WriteBool(IsMarked);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (IsMarked != false) {
-        size += 1 + 1;
-      }
       if (AvatarId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarId);
+      }
+      if (IsMarked != false) {
+        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.IsMarked != false) {
-        IsMarked = other.IsMarked;
-      }
       if (other.AvatarId != 0) {
         AvatarId = other.AvatarId;
+      }
+      if (other.IsMarked != false) {
+        IsMarked = other.IsMarked;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            IsMarked = input.ReadBool();
+          case 24: {
+            AvatarId = input.ReadUInt32();
             break;
           }
-          case 72: {
-            AvatarId = input.ReadUInt32();
+          case 56: {
+            IsMarked = input.ReadBool();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            IsMarked = input.ReadBool();
+          case 24: {
+            AvatarId = input.ReadUInt32();
             break;
           }
-          case 72: {
-            AvatarId = input.ReadUInt32();
+          case 56: {
+            IsMarked = input.ReadBool();
             break;
           }
         }

@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch1UYWtlT2ZmZXJpbmdSZXdhcmRDc1JlcS5wcm90byJxChdUYWtlT2ZmZXJp",
-            "bmdSZXdhcmRDc1JlcRIhChlpbnRlcmFjdGVkX3Byb3BfZW50aXR5X2lkGAcg",
-            "ASgNEh4KFnRha2VfcmV3YXJkX2xldmVsX2xpc3QYDCADKA0SEwoLb2ZmZXJp",
-            "bmdfaWQYDyABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "bmdSZXdhcmRDc1JlcRIeChZ0YWtlX3Jld2FyZF9sZXZlbF9saXN0GAsgAygN",
+            "EhMKC29mZmVyaW5nX2lkGAcgASgNEiEKGWludGVyYWN0ZWRfcHJvcF9lbnRp",
+            "dHlfaWQYBiABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TakeOfferingRewardCsReq), global::March7thHoney.Proto.TakeOfferingRewardCsReq.Parser, new[]{ "InteractedPropEntityId", "TakeRewardLevelList", "OfferingId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TakeOfferingRewardCsReq), global::March7thHoney.Proto.TakeOfferingRewardCsReq.Parser, new[]{ "TakeRewardLevelList", "OfferingId", "InteractedPropEntityId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,9 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public TakeOfferingRewardCsReq(TakeOfferingRewardCsReq other) : this() {
-      interactedPropEntityId_ = other.interactedPropEntityId_;
       takeRewardLevelList_ = other.takeRewardLevelList_.Clone();
       offeringId_ = other.offeringId_;
+      interactedPropEntityId_ = other.interactedPropEntityId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,22 +85,10 @@ namespace March7thHoney.Proto {
       return new TakeOfferingRewardCsReq(this);
     }
 
-    /// <summary>Field number for the "interacted_prop_entity_id" field.</summary>
-    public const int InteractedPropEntityIdFieldNumber = 7;
-    private uint interactedPropEntityId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint InteractedPropEntityId {
-      get { return interactedPropEntityId_; }
-      set {
-        interactedPropEntityId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "take_reward_level_list" field.</summary>
-    public const int TakeRewardLevelListFieldNumber = 12;
+    public const int TakeRewardLevelListFieldNumber = 11;
     private static readonly pb::FieldCodec<uint> _repeated_takeRewardLevelList_codec
-        = pb::FieldCodec.ForUInt32(98);
+        = pb::FieldCodec.ForUInt32(90);
     private readonly pbc::RepeatedField<uint> takeRewardLevelList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -109,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "offering_id" field.</summary>
-    public const int OfferingIdFieldNumber = 15;
+    public const int OfferingIdFieldNumber = 7;
     private uint offeringId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -117,6 +105,18 @@ namespace March7thHoney.Proto {
       get { return offeringId_; }
       set {
         offeringId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "interacted_prop_entity_id" field.</summary>
+    public const int InteractedPropEntityIdFieldNumber = 6;
+    private uint interactedPropEntityId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint InteractedPropEntityId {
+      get { return interactedPropEntityId_; }
+      set {
+        interactedPropEntityId_ = value;
       }
     }
 
@@ -135,9 +135,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (InteractedPropEntityId != other.InteractedPropEntityId) return false;
       if(!takeRewardLevelList_.Equals(other.takeRewardLevelList_)) return false;
       if (OfferingId != other.OfferingId) return false;
+      if (InteractedPropEntityId != other.InteractedPropEntityId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -145,9 +145,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (InteractedPropEntityId != 0) hash ^= InteractedPropEntityId.GetHashCode();
       hash ^= takeRewardLevelList_.GetHashCode();
       if (OfferingId != 0) hash ^= OfferingId.GetHashCode();
+      if (InteractedPropEntityId != 0) hash ^= InteractedPropEntityId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -167,14 +167,14 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (InteractedPropEntityId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(48);
         output.WriteUInt32(InteractedPropEntityId);
       }
-      takeRewardLevelList_.WriteTo(output, _repeated_takeRewardLevelList_codec);
       if (OfferingId != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(56);
         output.WriteUInt32(OfferingId);
       }
+      takeRewardLevelList_.WriteTo(output, _repeated_takeRewardLevelList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -186,14 +186,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (InteractedPropEntityId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(48);
         output.WriteUInt32(InteractedPropEntityId);
       }
-      takeRewardLevelList_.WriteTo(ref output, _repeated_takeRewardLevelList_codec);
       if (OfferingId != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(56);
         output.WriteUInt32(OfferingId);
       }
+      takeRewardLevelList_.WriteTo(ref output, _repeated_takeRewardLevelList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -204,12 +204,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (InteractedPropEntityId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(InteractedPropEntityId);
-      }
       size += takeRewardLevelList_.CalculateSize(_repeated_takeRewardLevelList_codec);
       if (OfferingId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(OfferingId);
+      }
+      if (InteractedPropEntityId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(InteractedPropEntityId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -223,12 +223,12 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.InteractedPropEntityId != 0) {
-        InteractedPropEntityId = other.InteractedPropEntityId;
-      }
       takeRewardLevelList_.Add(other.takeRewardLevelList_);
       if (other.OfferingId != 0) {
         OfferingId = other.OfferingId;
+      }
+      if (other.InteractedPropEntityId != 0) {
+        InteractedPropEntityId = other.InteractedPropEntityId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -249,17 +249,17 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
+          case 48: {
             InteractedPropEntityId = input.ReadUInt32();
             break;
           }
-          case 98:
-          case 96: {
-            takeRewardLevelList_.AddEntriesFrom(input, _repeated_takeRewardLevelList_codec);
+          case 56: {
+            OfferingId = input.ReadUInt32();
             break;
           }
-          case 120: {
-            OfferingId = input.ReadUInt32();
+          case 90:
+          case 88: {
+            takeRewardLevelList_.AddEntriesFrom(input, _repeated_takeRewardLevelList_codec);
             break;
           }
         }
@@ -281,17 +281,17 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
+          case 48: {
             InteractedPropEntityId = input.ReadUInt32();
             break;
           }
-          case 98:
-          case 96: {
-            takeRewardLevelList_.AddEntriesFrom(ref input, _repeated_takeRewardLevelList_codec);
+          case 56: {
+            OfferingId = input.ReadUInt32();
             break;
           }
-          case 120: {
-            OfferingId = input.ReadUInt32();
+          case 90:
+          case 88: {
+            takeRewardLevelList_.AddEntriesFrom(ref input, _repeated_takeRewardLevelList_codec);
             break;
           }
         }

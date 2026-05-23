@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message SetClientPausedCsReq {
-    bool paused = 10;
+    bool paused = 12;
 }

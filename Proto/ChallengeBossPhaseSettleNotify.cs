@@ -25,17 +25,18 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiRDaGFsbGVuZ2VCb3NzUGhhc2VTZXR0bGVOb3RpZnkucHJvdG8aEkJhdHRs",
-            "ZVRhcmdldC5wcm90byL4AQoeQ2hhbGxlbmdlQm9zc1BoYXNlU2V0dGxlTm90",
-            "aWZ5EhEKCWlzX3Jld2FyZBgBIAEoCBIMCgRzdGFyGAMgASgNEhYKDmlzX3Nl",
-            "Y29uZF9oYWxmGAQgASgIEg0KBXBoYXNlGAYgASgNEhQKDGNoYWxsZW5nZV9p",
-            "ZBgHIAEoDRIRCglwYWdlX3R5cGUYCCABKA0SEQoJc2NvcmVfdHdvGAogASgN",
-            "EikKEmJhdHRsZV90YXJnZXRfbGlzdBgLIAMoCzINLkJhdHRsZVRhcmdldBIO",
-            "CgZpc193aW4YDSABKAgSFwoPY2hhbGxlbmdlX3Njb3JlGA8gASgNQhaqAhNN",
-            "YXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ZVRhcmdldC5wcm90byKNAgoeQ2hhbGxlbmdlQm9zc1BoYXNlU2V0dGxlTm90",
+            "aWZ5EikKEmJhdHRsZV90YXJnZXRfbGlzdBgBIAMoCzINLkJhdHRsZVRhcmdl",
+            "dBITCgtBR0FFUEROSFBKQxgKIAEoCBIOCgZpc193aW4YBiABKAgSFgoOaXNf",
+            "c2Vjb25kX2hhbGYYAiABKAgSEQoJaXNfcmV3YXJkGAcgASgIEhEKCXBhZ2Vf",
+            "dHlwZRgMIAEoDRINCgVwaGFzZRgEIAEoDRIXCg9jaGFsbGVuZ2Vfc2NvcmUY",
+            "BSABKA0SEQoJc2NvcmVfdHdvGAsgASgNEhQKDGNoYWxsZW5nZV9pZBgDIAEo",
+            "DRIMCgRzdGFyGA4gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
+            "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.BattleTargetReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengeBossPhaseSettleNotify), global::March7thHoney.Proto.ChallengeBossPhaseSettleNotify.Parser, new[]{ "IsReward", "Star", "IsSecondHalf", "Phase", "ChallengeId", "PageType", "ScoreTwo", "BattleTargetList", "IsWin", "ChallengeScore" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengeBossPhaseSettleNotify), global::March7thHoney.Proto.ChallengeBossPhaseSettleNotify.Parser, new[]{ "BattleTargetList", "AGAEPDNHPJC", "IsWin", "IsSecondHalf", "IsReward", "PageType", "Phase", "ChallengeScore", "ScoreTwo", "ChallengeId", "Star" }, null, null, null, null)
           }));
     }
     #endregion
@@ -77,16 +78,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ChallengeBossPhaseSettleNotify(ChallengeBossPhaseSettleNotify other) : this() {
-      isReward_ = other.isReward_;
-      star_ = other.star_;
-      isSecondHalf_ = other.isSecondHalf_;
-      phase_ = other.phase_;
-      challengeId_ = other.challengeId_;
-      pageType_ = other.pageType_;
-      scoreTwo_ = other.scoreTwo_;
       battleTargetList_ = other.battleTargetList_.Clone();
+      aGAEPDNHPJC_ = other.aGAEPDNHPJC_;
       isWin_ = other.isWin_;
+      isSecondHalf_ = other.isSecondHalf_;
+      isReward_ = other.isReward_;
+      pageType_ = other.pageType_;
+      phase_ = other.phase_;
       challengeScore_ = other.challengeScore_;
+      scoreTwo_ = other.scoreTwo_;
+      challengeId_ = other.challengeId_;
+      star_ = other.star_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -96,94 +98,10 @@ namespace March7thHoney.Proto {
       return new ChallengeBossPhaseSettleNotify(this);
     }
 
-    /// <summary>Field number for the "is_reward" field.</summary>
-    public const int IsRewardFieldNumber = 1;
-    private bool isReward_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IsReward {
-      get { return isReward_; }
-      set {
-        isReward_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "star" field.</summary>
-    public const int StarFieldNumber = 3;
-    private uint star_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Star {
-      get { return star_; }
-      set {
-        star_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "is_second_half" field.</summary>
-    public const int IsSecondHalfFieldNumber = 4;
-    private bool isSecondHalf_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IsSecondHalf {
-      get { return isSecondHalf_; }
-      set {
-        isSecondHalf_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "phase" field.</summary>
-    public const int PhaseFieldNumber = 6;
-    private uint phase_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Phase {
-      get { return phase_; }
-      set {
-        phase_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "challenge_id" field.</summary>
-    public const int ChallengeIdFieldNumber = 7;
-    private uint challengeId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint ChallengeId {
-      get { return challengeId_; }
-      set {
-        challengeId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "page_type" field.</summary>
-    public const int PageTypeFieldNumber = 8;
-    private uint pageType_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PageType {
-      get { return pageType_; }
-      set {
-        pageType_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "score_two" field.</summary>
-    public const int ScoreTwoFieldNumber = 10;
-    private uint scoreTwo_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint ScoreTwo {
-      get { return scoreTwo_; }
-      set {
-        scoreTwo_ = value;
-      }
-    }
-
     /// <summary>Field number for the "battle_target_list" field.</summary>
-    public const int BattleTargetListFieldNumber = 11;
+    public const int BattleTargetListFieldNumber = 1;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.BattleTarget> _repeated_battleTargetList_codec
-        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.BattleTarget.Parser);
+        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.BattleTarget.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.BattleTarget> battleTargetList_ = new pbc::RepeatedField<global::March7thHoney.Proto.BattleTarget>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -191,8 +109,20 @@ namespace March7thHoney.Proto {
       get { return battleTargetList_; }
     }
 
+    /// <summary>Field number for the "AGAEPDNHPJC" field.</summary>
+    public const int AGAEPDNHPJCFieldNumber = 10;
+    private bool aGAEPDNHPJC_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool AGAEPDNHPJC {
+      get { return aGAEPDNHPJC_; }
+      set {
+        aGAEPDNHPJC_ = value;
+      }
+    }
+
     /// <summary>Field number for the "is_win" field.</summary>
-    public const int IsWinFieldNumber = 13;
+    public const int IsWinFieldNumber = 6;
     private bool isWin_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -203,8 +133,56 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "is_second_half" field.</summary>
+    public const int IsSecondHalfFieldNumber = 2;
+    private bool isSecondHalf_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IsSecondHalf {
+      get { return isSecondHalf_; }
+      set {
+        isSecondHalf_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "is_reward" field.</summary>
+    public const int IsRewardFieldNumber = 7;
+    private bool isReward_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IsReward {
+      get { return isReward_; }
+      set {
+        isReward_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "page_type" field.</summary>
+    public const int PageTypeFieldNumber = 12;
+    private uint pageType_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint PageType {
+      get { return pageType_; }
+      set {
+        pageType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "phase" field.</summary>
+    public const int PhaseFieldNumber = 4;
+    private uint phase_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Phase {
+      get { return phase_; }
+      set {
+        phase_ = value;
+      }
+    }
+
     /// <summary>Field number for the "challenge_score" field.</summary>
-    public const int ChallengeScoreFieldNumber = 15;
+    public const int ChallengeScoreFieldNumber = 5;
     private uint challengeScore_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -212,6 +190,42 @@ namespace March7thHoney.Proto {
       get { return challengeScore_; }
       set {
         challengeScore_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "score_two" field.</summary>
+    public const int ScoreTwoFieldNumber = 11;
+    private uint scoreTwo_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint ScoreTwo {
+      get { return scoreTwo_; }
+      set {
+        scoreTwo_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "challenge_id" field.</summary>
+    public const int ChallengeIdFieldNumber = 3;
+    private uint challengeId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint ChallengeId {
+      get { return challengeId_; }
+      set {
+        challengeId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "star" field.</summary>
+    public const int StarFieldNumber = 14;
+    private uint star_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Star {
+      get { return star_; }
+      set {
+        star_ = value;
       }
     }
 
@@ -230,16 +244,17 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (IsReward != other.IsReward) return false;
-      if (Star != other.Star) return false;
-      if (IsSecondHalf != other.IsSecondHalf) return false;
-      if (Phase != other.Phase) return false;
-      if (ChallengeId != other.ChallengeId) return false;
-      if (PageType != other.PageType) return false;
-      if (ScoreTwo != other.ScoreTwo) return false;
       if(!battleTargetList_.Equals(other.battleTargetList_)) return false;
+      if (AGAEPDNHPJC != other.AGAEPDNHPJC) return false;
       if (IsWin != other.IsWin) return false;
+      if (IsSecondHalf != other.IsSecondHalf) return false;
+      if (IsReward != other.IsReward) return false;
+      if (PageType != other.PageType) return false;
+      if (Phase != other.Phase) return false;
       if (ChallengeScore != other.ChallengeScore) return false;
+      if (ScoreTwo != other.ScoreTwo) return false;
+      if (ChallengeId != other.ChallengeId) return false;
+      if (Star != other.Star) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -247,16 +262,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (IsReward != false) hash ^= IsReward.GetHashCode();
-      if (Star != 0) hash ^= Star.GetHashCode();
-      if (IsSecondHalf != false) hash ^= IsSecondHalf.GetHashCode();
-      if (Phase != 0) hash ^= Phase.GetHashCode();
-      if (ChallengeId != 0) hash ^= ChallengeId.GetHashCode();
-      if (PageType != 0) hash ^= PageType.GetHashCode();
-      if (ScoreTwo != 0) hash ^= ScoreTwo.GetHashCode();
       hash ^= battleTargetList_.GetHashCode();
+      if (AGAEPDNHPJC != false) hash ^= AGAEPDNHPJC.GetHashCode();
       if (IsWin != false) hash ^= IsWin.GetHashCode();
+      if (IsSecondHalf != false) hash ^= IsSecondHalf.GetHashCode();
+      if (IsReward != false) hash ^= IsReward.GetHashCode();
+      if (PageType != 0) hash ^= PageType.GetHashCode();
+      if (Phase != 0) hash ^= Phase.GetHashCode();
       if (ChallengeScore != 0) hash ^= ChallengeScore.GetHashCode();
+      if (ScoreTwo != 0) hash ^= ScoreTwo.GetHashCode();
+      if (ChallengeId != 0) hash ^= ChallengeId.GetHashCode();
+      if (Star != 0) hash ^= Star.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -275,42 +291,46 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (IsReward != false) {
-        output.WriteRawTag(8);
-        output.WriteBool(IsReward);
-      }
-      if (Star != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(Star);
-      }
+      battleTargetList_.WriteTo(output, _repeated_battleTargetList_codec);
       if (IsSecondHalf != false) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(16);
         output.WriteBool(IsSecondHalf);
       }
-      if (Phase != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(Phase);
-      }
       if (ChallengeId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(24);
         output.WriteUInt32(ChallengeId);
       }
-      if (PageType != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(PageType);
-      }
-      if (ScoreTwo != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(ScoreTwo);
-      }
-      battleTargetList_.WriteTo(output, _repeated_battleTargetList_codec);
-      if (IsWin != false) {
-        output.WriteRawTag(104);
-        output.WriteBool(IsWin);
+      if (Phase != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(Phase);
       }
       if (ChallengeScore != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(40);
         output.WriteUInt32(ChallengeScore);
+      }
+      if (IsWin != false) {
+        output.WriteRawTag(48);
+        output.WriteBool(IsWin);
+      }
+      if (IsReward != false) {
+        output.WriteRawTag(56);
+        output.WriteBool(IsReward);
+      }
+      if (AGAEPDNHPJC != false) {
+        output.WriteRawTag(80);
+        output.WriteBool(AGAEPDNHPJC);
+      }
+      if (ScoreTwo != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(ScoreTwo);
+      }
+      if (PageType != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(PageType);
+      }
+      if (Star != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(Star);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -322,42 +342,46 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (IsReward != false) {
-        output.WriteRawTag(8);
-        output.WriteBool(IsReward);
-      }
-      if (Star != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(Star);
-      }
+      battleTargetList_.WriteTo(ref output, _repeated_battleTargetList_codec);
       if (IsSecondHalf != false) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(16);
         output.WriteBool(IsSecondHalf);
       }
-      if (Phase != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(Phase);
-      }
       if (ChallengeId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(24);
         output.WriteUInt32(ChallengeId);
       }
-      if (PageType != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(PageType);
-      }
-      if (ScoreTwo != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(ScoreTwo);
-      }
-      battleTargetList_.WriteTo(ref output, _repeated_battleTargetList_codec);
-      if (IsWin != false) {
-        output.WriteRawTag(104);
-        output.WriteBool(IsWin);
+      if (Phase != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(Phase);
       }
       if (ChallengeScore != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(40);
         output.WriteUInt32(ChallengeScore);
+      }
+      if (IsWin != false) {
+        output.WriteRawTag(48);
+        output.WriteBool(IsWin);
+      }
+      if (IsReward != false) {
+        output.WriteRawTag(56);
+        output.WriteBool(IsReward);
+      }
+      if (AGAEPDNHPJC != false) {
+        output.WriteRawTag(80);
+        output.WriteBool(AGAEPDNHPJC);
+      }
+      if (ScoreTwo != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(ScoreTwo);
+      }
+      if (PageType != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(PageType);
+      }
+      if (Star != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(Star);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -369,33 +393,36 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (IsReward != false) {
+      size += battleTargetList_.CalculateSize(_repeated_battleTargetList_codec);
+      if (AGAEPDNHPJC != false) {
         size += 1 + 1;
       }
-      if (Star != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Star);
+      if (IsWin != false) {
+        size += 1 + 1;
       }
       if (IsSecondHalf != false) {
         size += 1 + 1;
       }
-      if (Phase != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Phase);
-      }
-      if (ChallengeId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ChallengeId);
+      if (IsReward != false) {
+        size += 1 + 1;
       }
       if (PageType != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PageType);
       }
-      if (ScoreTwo != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ScoreTwo);
-      }
-      size += battleTargetList_.CalculateSize(_repeated_battleTargetList_codec);
-      if (IsWin != false) {
-        size += 1 + 1;
+      if (Phase != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Phase);
       }
       if (ChallengeScore != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ChallengeScore);
+      }
+      if (ScoreTwo != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ScoreTwo);
+      }
+      if (ChallengeId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ChallengeId);
+      }
+      if (Star != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Star);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -409,33 +436,36 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.IsReward != false) {
-        IsReward = other.IsReward;
+      battleTargetList_.Add(other.battleTargetList_);
+      if (other.AGAEPDNHPJC != false) {
+        AGAEPDNHPJC = other.AGAEPDNHPJC;
       }
-      if (other.Star != 0) {
-        Star = other.Star;
+      if (other.IsWin != false) {
+        IsWin = other.IsWin;
       }
       if (other.IsSecondHalf != false) {
         IsSecondHalf = other.IsSecondHalf;
       }
-      if (other.Phase != 0) {
-        Phase = other.Phase;
-      }
-      if (other.ChallengeId != 0) {
-        ChallengeId = other.ChallengeId;
+      if (other.IsReward != false) {
+        IsReward = other.IsReward;
       }
       if (other.PageType != 0) {
         PageType = other.PageType;
       }
-      if (other.ScoreTwo != 0) {
-        ScoreTwo = other.ScoreTwo;
-      }
-      battleTargetList_.Add(other.battleTargetList_);
-      if (other.IsWin != false) {
-        IsWin = other.IsWin;
+      if (other.Phase != 0) {
+        Phase = other.Phase;
       }
       if (other.ChallengeScore != 0) {
         ChallengeScore = other.ChallengeScore;
+      }
+      if (other.ScoreTwo != 0) {
+        ScoreTwo = other.ScoreTwo;
+      }
+      if (other.ChallengeId != 0) {
+        ChallengeId = other.ChallengeId;
+      }
+      if (other.Star != 0) {
+        Star = other.Star;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -456,44 +486,48 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            IsReward = input.ReadBool();
-            break;
-          }
-          case 24: {
-            Star = input.ReadUInt32();
-            break;
-          }
-          case 32: {
-            IsSecondHalf = input.ReadBool();
-            break;
-          }
-          case 48: {
-            Phase = input.ReadUInt32();
-            break;
-          }
-          case 56: {
-            ChallengeId = input.ReadUInt32();
-            break;
-          }
-          case 64: {
-            PageType = input.ReadUInt32();
-            break;
-          }
-          case 80: {
-            ScoreTwo = input.ReadUInt32();
-            break;
-          }
-          case 90: {
+          case 10: {
             battleTargetList_.AddEntriesFrom(input, _repeated_battleTargetList_codec);
             break;
           }
-          case 104: {
+          case 16: {
+            IsSecondHalf = input.ReadBool();
+            break;
+          }
+          case 24: {
+            ChallengeId = input.ReadUInt32();
+            break;
+          }
+          case 32: {
+            Phase = input.ReadUInt32();
+            break;
+          }
+          case 40: {
+            ChallengeScore = input.ReadUInt32();
+            break;
+          }
+          case 48: {
             IsWin = input.ReadBool();
             break;
           }
-          case 120: {
-            ChallengeScore = input.ReadUInt32();
+          case 56: {
+            IsReward = input.ReadBool();
+            break;
+          }
+          case 80: {
+            AGAEPDNHPJC = input.ReadBool();
+            break;
+          }
+          case 88: {
+            ScoreTwo = input.ReadUInt32();
+            break;
+          }
+          case 96: {
+            PageType = input.ReadUInt32();
+            break;
+          }
+          case 112: {
+            Star = input.ReadUInt32();
             break;
           }
         }
@@ -515,44 +549,48 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            IsReward = input.ReadBool();
-            break;
-          }
-          case 24: {
-            Star = input.ReadUInt32();
-            break;
-          }
-          case 32: {
-            IsSecondHalf = input.ReadBool();
-            break;
-          }
-          case 48: {
-            Phase = input.ReadUInt32();
-            break;
-          }
-          case 56: {
-            ChallengeId = input.ReadUInt32();
-            break;
-          }
-          case 64: {
-            PageType = input.ReadUInt32();
-            break;
-          }
-          case 80: {
-            ScoreTwo = input.ReadUInt32();
-            break;
-          }
-          case 90: {
+          case 10: {
             battleTargetList_.AddEntriesFrom(ref input, _repeated_battleTargetList_codec);
             break;
           }
-          case 104: {
+          case 16: {
+            IsSecondHalf = input.ReadBool();
+            break;
+          }
+          case 24: {
+            ChallengeId = input.ReadUInt32();
+            break;
+          }
+          case 32: {
+            Phase = input.ReadUInt32();
+            break;
+          }
+          case 40: {
+            ChallengeScore = input.ReadUInt32();
+            break;
+          }
+          case 48: {
             IsWin = input.ReadBool();
             break;
           }
-          case 120: {
-            ChallengeScore = input.ReadUInt32();
+          case 56: {
+            IsReward = input.ReadBool();
+            break;
+          }
+          case 80: {
+            AGAEPDNHPJC = input.ReadBool();
+            break;
+          }
+          case 88: {
+            ScoreTwo = input.ReadUInt32();
+            break;
+          }
+          case 96: {
+            PageType = input.ReadUInt32();
+            break;
+          }
+          case 112: {
+            Star = input.ReadUInt32();
             break;
           }
         }

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum ABLCCPHIOMI {
+    ABLCCPHIOMI_KFIKMPOPBFD = 0;
+    ABLCCPHIOMI_MCOJHEKMHIL = 1;
+    ABLCCPHIOMI_GJGNJHPOFOL = 2;
+    ABLCCPHIOMI_JONELAAFDEA = 3;
+    ABLCCPHIOMI_DMBKGPBNBPO = 4;
+    ABLCCPHIOMI_NGBOPLGBCNK = 5;
+}

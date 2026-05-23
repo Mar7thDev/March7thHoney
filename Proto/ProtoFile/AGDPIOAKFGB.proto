@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message AGDPIOAKFGB {
+    uint32 retcode = 5;
+    uint32 teleport_id = 13;
+}

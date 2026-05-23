@@ -2,24 +2,22 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdClockParkType {
-    EKDEGMMHODO_PCPDHELPKEM = 0;
-    CmdClockParkHandleWaitOperationScRsp = 7244;
-    CmdBEDFGPIFGED = 7250;
-    CmdClockParkFinishScriptScNotify = 7249;
-    CmdClockParkGetInfoCsReq = 7213;
-    CmdClockParkGetOngoingScriptInfoCsReq = 7247;
-    CmdClockParkUnlockTalentCsReq = 7235;
-    CmdNAJGIPIGCDH = 7221;
-    CmdClockParkStartScriptScRsp = 7201;
-    CmdClockParkUnlockTalentScRsp = 7238;
-    CmdClockParkQuitScriptCsReq = 7218;
-    CmdClockParkHandleWaitPlaceDiceOperationCsReq = 7202;
-    CmdClockParkGetInfoScRsp = 7207;
-    CmdClockParkStartScriptCsReq = 7205;
-    CmdClockParkGetOngoingScriptInfoScRsp = 7219;
-    CmdAPBJOBNPBAN = 7245;
-    CmdClockParkUseBuffCsReq = 7231;
+    GFGOAJBEDFI_NLCDGIPGFDJ = 0;
+    GFGOAJBEDFI_PKEJFOABIAJ = 7221;
+    GFGOAJBEDFI_JHAGPKMNFDM = 7206;
+    GFGOAJBEDFI_KBGOAJMIPEM = 7203;
+    GFGOAJBEDFI_JBMFMMDAGFC = 7229;
+    GFGOAJBEDFI_ANPBFBHIOHP = 7212;
+    GFGOAJBEDFI_PEKHIMIDGHC = 7232;
+    GFGOAJBEDFI_AIJFMFPCEBC = 7243;
+    GFGOAJBEDFI_OCPBPLEDJHC = 7234;
+    GFGOAJBEDFI_LHKAECJBBOA = 7227;
+    GFGOAJBEDFI_KMFFIKDAFPB = 7244;
+    GFGOAJBEDFI_ELJOBIFOHLL = 7242;
+    GFGOAJBEDFI_AACKJFICGPM = 7240;
+    GFGOAJBEDFI_HKDKPALAJJA = 7220;
+    GFGOAJBEDFI_IHJAOBAACLB = 7219;
+    GFGOAJBEDFI_OLEAKJNJDDC = 7209;
+    GFGOAJBEDFI_AEHGAMKDECH = 7245;
 }

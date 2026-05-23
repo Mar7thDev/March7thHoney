@@ -24,13 +24,12 @@ namespace March7thHoney.Proto {
     static CmdActiveTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChNDbWRBY3RpdmVUeXBlLnByb3RvKuwBCg1DbWRBY3RpdmVUeXBlEhsKF0RP",
-            "SUxQRFBFTkxKX1BDUERIRUxQS0VNEAASIgodQ21kR2V0QWN0aXZlQWN0aXZp",
-            "dHlEYXRhU2NSc3AQ4koSKAojQ21kQWN0aXZlQWN0aXZpdHlEYXRhQ2hhbmdl",
-            "U2NOb3RpZnkQ3UoSJQogQ21kVGFrZUFjdGl2ZUFjdGl2aXR5UmV3YXJkQ3NS",
-            "ZXEQ0EoSIgodQ21kR2V0QWN0aXZpdHlBY3RpdmVEYXRhQ3NSZXEQz0oSJQog",
-            "Q21kVGFrZUFjdGl2ZUFjdGl2aXR5UmV3YXJkU2NSc3AQ2EpCFqoCE01hcmNo",
-            "N3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ChNDbWRBY3RpdmVUeXBlLnByb3RvKsIBCg1DbWRBY3RpdmVUeXBlEhsKF0pH",
+            "SkNEQUJCTklKX05MQ0RHSVBHRkRKEAASHAoXSkdKQ0RBQkJOSUpfSEhIRE5J",
+            "TU5QS04Q0EoSHAoXSkdKQ0RBQkJOSUpfSUhOQ05QRklJQkQQ4koSHAoXSkdK",
+            "Q0RBQkJOSUpfQU9JRFBBQ0hJTUcQ4EoSHAoXSkdKQ0RBQkJOSUpfQURIQ0ZF",
+            "QU9MQkUQ1EoSHAoXSkdKQ0RBQkJOSUpfRFBOSUdIS01ER0EQ3kpCFqoCE01h",
+            "cmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdActiveType), }, null, null));
@@ -40,12 +39,12 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdActiveType {
-    [pbr::OriginalName("DOILPDPENLJ_PCPDHELPKEM")] DoilpdpenljPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdGetActiveActivityDataScRsp")] CmdGetActiveActivityDataScRsp = 9570,
-    [pbr::OriginalName("CmdActiveActivityDataChangeScNotify")] CmdActiveActivityDataChangeScNotify = 9565,
-    [pbr::OriginalName("CmdTakeActiveActivityRewardCsReq")] CmdTakeActiveActivityRewardCsReq = 9552,
-    [pbr::OriginalName("CmdGetActivityActiveDataCsReq")] CmdGetActivityActiveDataCsReq = 9551,
-    [pbr::OriginalName("CmdTakeActiveActivityRewardScRsp")] CmdTakeActiveActivityRewardScRsp = 9560,
+    [pbr::OriginalName("JGJCDABBNIJ_NLCDGIPGFDJ")] JgjcdabbnijNlcdgipgfdj = 0,
+    [pbr::OriginalName("JGJCDABBNIJ_HHHDNIMNPKN")] JgjcdabbnijHhhdnimnpkn = 9552,
+    [pbr::OriginalName("JGJCDABBNIJ_IHNCNPFIIBD")] JgjcdabbnijIhncnpfiibd = 9570,
+    [pbr::OriginalName("JGJCDABBNIJ_AOIDPACHIMG")] JgjcdabbnijAoidpachimg = 9568,
+    [pbr::OriginalName("JGJCDABBNIJ_ADHCFEAOLBE")] JgjcdabbnijAdhcfeaolbe = 9556,
+    [pbr::OriginalName("JGJCDABBNIJ_DPNIGHKMDGA")] JgjcdabbnijDpnighkmdga = 9566,
   }
 
   #endregion

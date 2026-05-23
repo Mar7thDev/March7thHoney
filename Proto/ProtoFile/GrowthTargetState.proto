@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum GrowthTargetState {
-    HDJKGMLAFNP_AABJFIKBHJK = 0;
-    HDJKGMLAFNP_NDNKDFHEHBC = 1;
-    HDJKGMLAFNP_IPBFAACIGHN = 2;
-    HDJKGMLAFNP_OONJKCDGCKN = 3;
-    HDJKGMLAFNP_IEAJEFALFLG = 4;
-    HDJKGMLAFNP_NEGGJOGHMAK = 5;
+    GrowthTargetState_MMBDGPMCJKH = 0;
+    GrowthTargetState_PDHPKPOCOHM = 1;
+    GrowthTargetState_CMBMDMBHFEC = 2;
+    GrowthTargetState_DALNOIDGBGI = 3;
+    GrowthTargetState_JEAOCLOOAMJ = 4;
+    GrowthTargetState_FCKJLEGDJHJ = 5;
 }

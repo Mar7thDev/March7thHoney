@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static LeaveRaidScRspReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChRMZWF2ZVJhaWRTY1JzcC5wcm90byJHCg5MZWF2ZVJhaWRTY1JzcBITCgt3",
-            "b3JsZF9sZXZlbBgDIAEoDRIPCgdyYWlkX2lkGAggASgNEg8KB3JldGNvZGUY",
-            "DiABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ChRMZWF2ZVJhaWRTY1JzcC5wcm90byJHCg5MZWF2ZVJhaWRTY1JzcBIPCgdy",
+            "ZXRjb2RlGAkgASgNEg8KB3JhaWRfaWQYBiABKA0SEwoLd29ybGRfbGV2ZWwY",
+            "AiABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LeaveRaidScRsp), global::March7thHoney.Proto.LeaveRaidScRsp.Parser, new[]{ "WorldLevel", "RaidId", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LeaveRaidScRsp), global::March7thHoney.Proto.LeaveRaidScRsp.Parser, new[]{ "Retcode", "RaidId", "WorldLevel" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,9 +72,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public LeaveRaidScRsp(LeaveRaidScRsp other) : this() {
-      worldLevel_ = other.worldLevel_;
-      raidId_ = other.raidId_;
       retcode_ = other.retcode_;
+      raidId_ = other.raidId_;
+      worldLevel_ = other.worldLevel_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,20 +84,20 @@ namespace March7thHoney.Proto {
       return new LeaveRaidScRsp(this);
     }
 
-    /// <summary>Field number for the "world_level" field.</summary>
-    public const int WorldLevelFieldNumber = 3;
-    private uint worldLevel_;
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 9;
+    private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint WorldLevel {
-      get { return worldLevel_; }
+    public uint Retcode {
+      get { return retcode_; }
       set {
-        worldLevel_ = value;
+        retcode_ = value;
       }
     }
 
     /// <summary>Field number for the "raid_id" field.</summary>
-    public const int RaidIdFieldNumber = 8;
+    public const int RaidIdFieldNumber = 6;
     private uint raidId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -108,15 +108,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 14;
-    private uint retcode_;
+    /// <summary>Field number for the "world_level" field.</summary>
+    public const int WorldLevelFieldNumber = 2;
+    private uint worldLevel_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
+    public uint WorldLevel {
+      get { return worldLevel_; }
       set {
-        retcode_ = value;
+        worldLevel_ = value;
       }
     }
 
@@ -135,9 +135,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (WorldLevel != other.WorldLevel) return false;
-      if (RaidId != other.RaidId) return false;
       if (Retcode != other.Retcode) return false;
+      if (RaidId != other.RaidId) return false;
+      if (WorldLevel != other.WorldLevel) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -145,9 +145,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (WorldLevel != 0) hash ^= WorldLevel.GetHashCode();
-      if (RaidId != 0) hash ^= RaidId.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (RaidId != 0) hash ^= RaidId.GetHashCode();
+      if (WorldLevel != 0) hash ^= WorldLevel.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -167,15 +167,15 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (WorldLevel != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteUInt32(WorldLevel);
       }
       if (RaidId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(48);
         output.WriteUInt32(RaidId);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(72);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -189,15 +189,15 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (WorldLevel != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteUInt32(WorldLevel);
       }
       if (RaidId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(48);
         output.WriteUInt32(RaidId);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(72);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -210,14 +210,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (WorldLevel != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(WorldLevel);
+      if (Retcode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
       if (RaidId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RaidId);
       }
-      if (Retcode != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      if (WorldLevel != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(WorldLevel);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -231,14 +231,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.WorldLevel != 0) {
-        WorldLevel = other.WorldLevel;
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
       }
       if (other.RaidId != 0) {
         RaidId = other.RaidId;
       }
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
+      if (other.WorldLevel != 0) {
+        WorldLevel = other.WorldLevel;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -259,15 +259,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
+          case 16: {
             WorldLevel = input.ReadUInt32();
             break;
           }
-          case 64: {
+          case 48: {
             RaidId = input.ReadUInt32();
             break;
           }
-          case 112: {
+          case 72: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -290,15 +290,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
+          case 16: {
             WorldLevel = input.ReadUInt32();
             break;
           }
-          case 64: {
+          case 48: {
             RaidId = input.ReadUInt32();
             break;
           }
-          case 112: {
+          case 72: {
             Retcode = input.ReadUInt32();
             break;
           }

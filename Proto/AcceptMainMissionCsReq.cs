@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChxBY2NlcHRNYWluTWlzc2lvbkNzUmVxLnByb3RvIjEKFkFjY2VwdE1haW5N",
-            "aXNzaW9uQ3NSZXESFwoPbWFpbl9taXNzaW9uX2lkGAwgASgNQhaqAhNNYXJj",
+            "aXNzaW9uQ3NSZXESFwoPbWFpbl9taXNzaW9uX2lkGAcgASgNQhaqAhNNYXJj",
             "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -83,7 +83,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "main_mission_id" field.</summary>
-    public const int MainMissionIdFieldNumber = 12;
+    public const int MainMissionIdFieldNumber = 7;
     private uint mainMissionId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -137,7 +137,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (MainMissionId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(56);
         output.WriteUInt32(MainMissionId);
       }
       if (_unknownFields != null) {
@@ -151,7 +151,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (MainMissionId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(56);
         output.WriteUInt32(MainMissionId);
       }
       if (_unknownFields != null) {
@@ -201,7 +201,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 96: {
+          case 56: {
             MainMissionId = input.ReadUInt32();
             break;
           }
@@ -224,7 +224,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 96: {
+          case 56: {
             MainMissionId = input.ReadUInt32();
             break;
           }

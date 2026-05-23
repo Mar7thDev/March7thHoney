@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChdIYW5kbGVGcmllbmRDc1JlcS5wcm90byIzChFIYW5kbGVGcmllbmRDc1Jl",
-            "cRIRCglpc19hY2NlcHQYCCABKAgSCwoDdWlkGAwgASgNQhaqAhNNYXJjaDd0",
+            "cRILCgN1aWQYBiABKA0SEQoJaXNfYWNjZXB0GAcgASgIQhaqAhNNYXJjaDd0",
             "aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HandleFriendCsReq), global::March7thHoney.Proto.HandleFriendCsReq.Parser, new[]{ "IsAccept", "Uid" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HandleFriendCsReq), global::March7thHoney.Proto.HandleFriendCsReq.Parser, new[]{ "Uid", "IsAccept" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public HandleFriendCsReq(HandleFriendCsReq other) : this() {
-      isAccept_ = other.isAccept_;
       uid_ = other.uid_;
+      isAccept_ = other.isAccept_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,20 +83,8 @@ namespace March7thHoney.Proto {
       return new HandleFriendCsReq(this);
     }
 
-    /// <summary>Field number for the "is_accept" field.</summary>
-    public const int IsAcceptFieldNumber = 8;
-    private bool isAccept_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IsAccept {
-      get { return isAccept_; }
-      set {
-        isAccept_ = value;
-      }
-    }
-
     /// <summary>Field number for the "uid" field.</summary>
-    public const int UidFieldNumber = 12;
+    public const int UidFieldNumber = 6;
     private uint uid_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -104,6 +92,18 @@ namespace March7thHoney.Proto {
       get { return uid_; }
       set {
         uid_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "is_accept" field.</summary>
+    public const int IsAcceptFieldNumber = 7;
+    private bool isAccept_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IsAccept {
+      get { return isAccept_; }
+      set {
+        isAccept_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (IsAccept != other.IsAccept) return false;
       if (Uid != other.Uid) return false;
+      if (IsAccept != other.IsAccept) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (IsAccept != false) hash ^= IsAccept.GetHashCode();
       if (Uid != 0) hash ^= Uid.GetHashCode();
+      if (IsAccept != false) hash ^= IsAccept.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (IsAccept != false) {
-        output.WriteRawTag(64);
-        output.WriteBool(IsAccept);
-      }
       if (Uid != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(48);
         output.WriteUInt32(Uid);
+      }
+      if (IsAccept != false) {
+        output.WriteRawTag(56);
+        output.WriteBool(IsAccept);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (IsAccept != false) {
-        output.WriteRawTag(64);
-        output.WriteBool(IsAccept);
-      }
       if (Uid != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(48);
         output.WriteUInt32(Uid);
+      }
+      if (IsAccept != false) {
+        output.WriteRawTag(56);
+        output.WriteBool(IsAccept);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (IsAccept != false) {
-        size += 1 + 1;
-      }
       if (Uid != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Uid);
+      }
+      if (IsAccept != false) {
+        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.IsAccept != false) {
-        IsAccept = other.IsAccept;
-      }
       if (other.Uid != 0) {
         Uid = other.Uid;
+      }
+      if (other.IsAccept != false) {
+        IsAccept = other.IsAccept;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 64: {
-            IsAccept = input.ReadBool();
+          case 48: {
+            Uid = input.ReadUInt32();
             break;
           }
-          case 96: {
-            Uid = input.ReadUInt32();
+          case 56: {
+            IsAccept = input.ReadBool();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 64: {
-            IsAccept = input.ReadBool();
+          case 48: {
+            Uid = input.ReadUInt32();
             break;
           }
-          case 96: {
-            Uid = input.ReadUInt32();
+          case 56: {
+            IsAccept = input.ReadBool();
             break;
           }
         }

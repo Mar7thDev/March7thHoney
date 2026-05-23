@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChpVcGdyYWRlVGVhbVNsb3RDc1JzcC5wcm90byJLChRVcGdyYWRlVGVhbVNs",
-            "b3RDc1JzcBIPCgdyZXRjb2RlGAQgASgNEg0KBWxldmVsGAYgASgNEhMKC0pO",
-            "R0hNT1BFS0pPGAcgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
+            "b3RDc1JzcBIPCgdyZXRjb2RlGAQgASgNEg0KBWxldmVsGA8gASgNEhMKC0pJ",
+            "R09PQUVGRFBQGA0gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
             "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UpgradeTeamSlotCsRsp), global::March7thHoney.Proto.UpgradeTeamSlotCsRsp.Parser, new[]{ "Retcode", "Level", "JNGHMOPEKJO" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UpgradeTeamSlotCsRsp), global::March7thHoney.Proto.UpgradeTeamSlotCsRsp.Parser, new[]{ "Retcode", "Level", "JIGOOAEFDPP" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,7 +75,7 @@ namespace March7thHoney.Proto {
     public UpgradeTeamSlotCsRsp(UpgradeTeamSlotCsRsp other) : this() {
       retcode_ = other.retcode_;
       level_ = other.level_;
-      jNGHMOPEKJO_ = other.jNGHMOPEKJO_;
+      jIGOOAEFDPP_ = other.jIGOOAEFDPP_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -98,7 +98,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "level" field.</summary>
-    public const int LevelFieldNumber = 6;
+    public const int LevelFieldNumber = 15;
     private uint level_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -109,15 +109,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "JNGHMOPEKJO" field.</summary>
-    public const int JNGHMOPEKJOFieldNumber = 7;
-    private uint jNGHMOPEKJO_;
+    /// <summary>Field number for the "JIGOOAEFDPP" field.</summary>
+    public const int JIGOOAEFDPPFieldNumber = 13;
+    private uint jIGOOAEFDPP_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint JNGHMOPEKJO {
-      get { return jNGHMOPEKJO_; }
+    public uint JIGOOAEFDPP {
+      get { return jIGOOAEFDPP_; }
       set {
-        jNGHMOPEKJO_ = value;
+        jIGOOAEFDPP_ = value;
       }
     }
 
@@ -138,7 +138,7 @@ namespace March7thHoney.Proto {
       }
       if (Retcode != other.Retcode) return false;
       if (Level != other.Level) return false;
-      if (JNGHMOPEKJO != other.JNGHMOPEKJO) return false;
+      if (JIGOOAEFDPP != other.JIGOOAEFDPP) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -148,7 +148,7 @@ namespace March7thHoney.Proto {
       int hash = 1;
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (Level != 0) hash ^= Level.GetHashCode();
-      if (JNGHMOPEKJO != 0) hash ^= JNGHMOPEKJO.GetHashCode();
+      if (JIGOOAEFDPP != 0) hash ^= JIGOOAEFDPP.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -171,13 +171,13 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(32);
         output.WriteUInt32(Retcode);
       }
-      if (Level != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(Level);
+      if (JIGOOAEFDPP != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(JIGOOAEFDPP);
       }
-      if (JNGHMOPEKJO != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(JNGHMOPEKJO);
+      if (Level != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(Level);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -193,13 +193,13 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(32);
         output.WriteUInt32(Retcode);
       }
-      if (Level != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(Level);
+      if (JIGOOAEFDPP != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(JIGOOAEFDPP);
       }
-      if (JNGHMOPEKJO != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(JNGHMOPEKJO);
+      if (Level != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(Level);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -217,8 +217,8 @@ namespace March7thHoney.Proto {
       if (Level != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
       }
-      if (JNGHMOPEKJO != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(JNGHMOPEKJO);
+      if (JIGOOAEFDPP != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(JIGOOAEFDPP);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -238,8 +238,8 @@ namespace March7thHoney.Proto {
       if (other.Level != 0) {
         Level = other.Level;
       }
-      if (other.JNGHMOPEKJO != 0) {
-        JNGHMOPEKJO = other.JNGHMOPEKJO;
+      if (other.JIGOOAEFDPP != 0) {
+        JIGOOAEFDPP = other.JIGOOAEFDPP;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -264,12 +264,12 @@ namespace March7thHoney.Proto {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 48: {
-            Level = input.ReadUInt32();
+          case 104: {
+            JIGOOAEFDPP = input.ReadUInt32();
             break;
           }
-          case 56: {
-            JNGHMOPEKJO = input.ReadUInt32();
+          case 120: {
+            Level = input.ReadUInt32();
             break;
           }
         }
@@ -295,12 +295,12 @@ namespace March7thHoney.Proto {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 48: {
-            Level = input.ReadUInt32();
+          case 104: {
+            JIGOOAEFDPP = input.ReadUInt32();
             break;
           }
-          case 56: {
-            JNGHMOPEKJO = input.ReadUInt32();
+          case 120: {
+            Level = input.ReadUInt32();
             break;
           }
         }

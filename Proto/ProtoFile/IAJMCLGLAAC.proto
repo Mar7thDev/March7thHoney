@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "FHHGBMIEBOE.proto";
+
+message IAJMCLGLAAC {
+    repeated FHHGBMIEBOE friend_recommend_list = 4;
+    uint32 DPHAJPEADAF = 9;
+    uint32 PHOKGKFBHJF = 1;
+    uint32 PHHMKHNPJJK = 6;
+}

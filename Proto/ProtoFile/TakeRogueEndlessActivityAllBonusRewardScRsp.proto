@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "ItemList.proto";
 
 message TakeRogueEndlessActivityAllBonusRewardScRsp {
-    repeated uint32 MOGBNJOHKLA = 3;
-    ItemList reward = 5;
-    uint32 NAGLJDCLGGB = 7;
-    uint32 retcode = 13;
+    repeated uint32 IEPPNGMCKJH = 6;
+    ItemList reward = 1;
+    uint32 CHIAFOOAIBK = 10;
+    uint32 retcode = 3;
 }

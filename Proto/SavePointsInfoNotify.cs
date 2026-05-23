@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChpTYXZlUG9pbnRzSW5mb05vdGlmeS5wcm90byJBChRTYXZlUG9pbnRzSW5m",
-            "b05vdGlmeRIUCgxyZWZyZXNoX3RpbWUYBCABKAMSEwoLdmFsaWRfdGltZXMY",
-            "DiABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "b05vdGlmeRIUCgxyZWZyZXNoX3RpbWUYByABKAMSEwoLdmFsaWRfdGltZXMY",
+            "DCABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "refresh_time" field.</summary>
-    public const int RefreshTimeFieldNumber = 4;
+    public const int RefreshTimeFieldNumber = 7;
     private long refreshTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "valid_times" field.</summary>
-    public const int ValidTimesFieldNumber = 14;
+    public const int ValidTimesFieldNumber = 12;
     private uint validTimes_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (RefreshTime != 0L) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(56);
         output.WriteInt64(RefreshTime);
       }
       if (ValidTimes != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(96);
         output.WriteUInt32(ValidTimes);
       }
       if (_unknownFields != null) {
@@ -170,11 +170,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (RefreshTime != 0L) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(56);
         output.WriteInt64(RefreshTime);
       }
       if (ValidTimes != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(96);
         output.WriteUInt32(ValidTimes);
       }
       if (_unknownFields != null) {
@@ -230,11 +230,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
+          case 56: {
             RefreshTime = input.ReadInt64();
             break;
           }
-          case 112: {
+          case 96: {
             ValidTimes = input.ReadUInt32();
             break;
           }
@@ -257,11 +257,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
+          case 56: {
             RefreshTime = input.ReadInt64();
             break;
           }
-          case 112: {
+          case 96: {
             ValidTimes = input.ReadUInt32();
             break;
           }

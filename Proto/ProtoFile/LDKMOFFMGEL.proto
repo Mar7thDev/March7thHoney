@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message LDKMOFFMGEL {
+    uint32 type = 10;
+    uint32 LPOLPDBELON = 14;
+    uint32 slot = 6;
+}

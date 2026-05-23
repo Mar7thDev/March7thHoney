@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum EnterSceneReason {
     ENTER_SCENE_REASON_NONE = 0;
     ENTER_SCENE_REASON_CHALLENGE_TIMEOUT = 1;

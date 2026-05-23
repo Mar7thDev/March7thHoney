@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum TutorialGuideType {
-    FGKLPMCJBAC_NNMBAHCCKJA = 0;
-    FGKLPMCJBAC_IPKOHPFIAOI = 1;
+    AOCCEBGNPJA_GINFCGDDDOM = 0;
+    AOCCEBGNPJA_JLOAFBAGFHG = 1;
 }

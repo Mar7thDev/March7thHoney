@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum EBFCKNGIMJC {
+    EBFCKNGIMJC_LKPJFHAKFCE = 0;
+    EBFCKNGIMJC_GHKAJGCHALB = 1;
+    EBFCKNGIMJC_HKOPBCOIJHH = 2;
+}

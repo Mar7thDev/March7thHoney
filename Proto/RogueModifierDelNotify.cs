@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChxSb2d1ZU1vZGlmaWVyRGVsTm90aWZ5LnByb3RvIi0KFlJvZ3VlTW9kaWZp",
-            "ZXJEZWxOb3RpZnkSEwoLUElNTkVFRkRBR0UYAiABKARCFqoCE01hcmNoN3Ro",
+            "ZXJEZWxOb3RpZnkSEwoLRkNITENBTkpJR0wYCSABKARCFqoCE01hcmNoN3Ro",
             "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RogueModifierDelNotify), global::March7thHoney.Proto.RogueModifierDelNotify.Parser, new[]{ "PIMNEEFDAGE" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RogueModifierDelNotify), global::March7thHoney.Proto.RogueModifierDelNotify.Parser, new[]{ "FCHLCANJIGL" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,7 +72,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RogueModifierDelNotify(RogueModifierDelNotify other) : this() {
-      pIMNEEFDAGE_ = other.pIMNEEFDAGE_;
+      fCHLCANJIGL_ = other.fCHLCANJIGL_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -82,15 +82,15 @@ namespace March7thHoney.Proto {
       return new RogueModifierDelNotify(this);
     }
 
-    /// <summary>Field number for the "PIMNEEFDAGE" field.</summary>
-    public const int PIMNEEFDAGEFieldNumber = 2;
-    private ulong pIMNEEFDAGE_;
+    /// <summary>Field number for the "FCHLCANJIGL" field.</summary>
+    public const int FCHLCANJIGLFieldNumber = 9;
+    private ulong fCHLCANJIGL_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ulong PIMNEEFDAGE {
-      get { return pIMNEEFDAGE_; }
+    public ulong FCHLCANJIGL {
+      get { return fCHLCANJIGL_; }
       set {
-        pIMNEEFDAGE_ = value;
+        fCHLCANJIGL_ = value;
       }
     }
 
@@ -109,7 +109,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (PIMNEEFDAGE != other.PIMNEEFDAGE) return false;
+      if (FCHLCANJIGL != other.FCHLCANJIGL) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -117,7 +117,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (PIMNEEFDAGE != 0UL) hash ^= PIMNEEFDAGE.GetHashCode();
+      if (FCHLCANJIGL != 0UL) hash ^= FCHLCANJIGL.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (PIMNEEFDAGE != 0UL) {
-        output.WriteRawTag(16);
-        output.WriteUInt64(PIMNEEFDAGE);
+      if (FCHLCANJIGL != 0UL) {
+        output.WriteRawTag(72);
+        output.WriteUInt64(FCHLCANJIGL);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -150,9 +150,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (PIMNEEFDAGE != 0UL) {
-        output.WriteRawTag(16);
-        output.WriteUInt64(PIMNEEFDAGE);
+      if (FCHLCANJIGL != 0UL) {
+        output.WriteRawTag(72);
+        output.WriteUInt64(FCHLCANJIGL);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -164,8 +164,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (PIMNEEFDAGE != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(PIMNEEFDAGE);
+      if (FCHLCANJIGL != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(FCHLCANJIGL);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -179,8 +179,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.PIMNEEFDAGE != 0UL) {
-        PIMNEEFDAGE = other.PIMNEEFDAGE;
+      if (other.FCHLCANJIGL != 0UL) {
+        FCHLCANJIGL = other.FCHLCANJIGL;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -201,8 +201,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            PIMNEEFDAGE = input.ReadUInt64();
+          case 72: {
+            FCHLCANJIGL = input.ReadUInt64();
             break;
           }
         }
@@ -224,8 +224,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            PIMNEEFDAGE = input.ReadUInt64();
+          case 72: {
+            FCHLCANJIGL = input.ReadUInt64();
             break;
           }
         }

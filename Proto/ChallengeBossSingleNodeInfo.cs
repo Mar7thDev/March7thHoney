@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiFDaGFsbGVuZ2VCb3NzU2luZ2xlTm9kZUluZm8ucHJvdG8iZgobQ2hhbGxl",
-            "bmdlQm9zc1NpbmdsZU5vZGVJbmZvEhEKCW1heF9zY29yZRgDIAEoDRIOCgZp",
-            "c193aW4YBCABKAgSEwoLSkJKT0RFSEFESkIYByABKAgSDwoHYnVmZl9pZBgI",
-            "IAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "bmdlQm9zc1NpbmdsZU5vZGVJbmZvEhEKCW1heF9zY29yZRgLIAEoDRIPCgdi",
+            "dWZmX2lkGAQgASgNEg4KBmlzX3dpbhgFIAEoCBITCgtNQkhDSlBPTkpPTRgP",
+            "IAEoCEIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengeBossSingleNodeInfo), global::March7thHoney.Proto.ChallengeBossSingleNodeInfo.Parser, new[]{ "MaxScore", "IsWin", "JBJODEHADJB", "BuffId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengeBossSingleNodeInfo), global::March7thHoney.Proto.ChallengeBossSingleNodeInfo.Parser, new[]{ "MaxScore", "BuffId", "IsWin", "MBHCJPONJOM" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,9 +74,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ChallengeBossSingleNodeInfo(ChallengeBossSingleNodeInfo other) : this() {
       maxScore_ = other.maxScore_;
-      isWin_ = other.isWin_;
-      jBJODEHADJB_ = other.jBJODEHADJB_;
       buffId_ = other.buffId_;
+      isWin_ = other.isWin_;
+      mBHCJPONJOM_ = other.mBHCJPONJOM_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -87,7 +87,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "max_score" field.</summary>
-    public const int MaxScoreFieldNumber = 3;
+    public const int MaxScoreFieldNumber = 11;
     private uint maxScore_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,8 +98,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "buff_id" field.</summary>
+    public const int BuffIdFieldNumber = 4;
+    private uint buffId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint BuffId {
+      get { return buffId_; }
+      set {
+        buffId_ = value;
+      }
+    }
+
     /// <summary>Field number for the "is_win" field.</summary>
-    public const int IsWinFieldNumber = 4;
+    public const int IsWinFieldNumber = 5;
     private bool isWin_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,27 +122,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "JBJODEHADJB" field.</summary>
-    public const int JBJODEHADJBFieldNumber = 7;
-    private bool jBJODEHADJB_;
+    /// <summary>Field number for the "MBHCJPONJOM" field.</summary>
+    public const int MBHCJPONJOMFieldNumber = 15;
+    private bool mBHCJPONJOM_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool JBJODEHADJB {
-      get { return jBJODEHADJB_; }
+    public bool MBHCJPONJOM {
+      get { return mBHCJPONJOM_; }
       set {
-        jBJODEHADJB_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "buff_id" field.</summary>
-    public const int BuffIdFieldNumber = 8;
-    private uint buffId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint BuffId {
-      get { return buffId_; }
-      set {
-        buffId_ = value;
+        mBHCJPONJOM_ = value;
       }
     }
 
@@ -150,9 +150,9 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (MaxScore != other.MaxScore) return false;
-      if (IsWin != other.IsWin) return false;
-      if (JBJODEHADJB != other.JBJODEHADJB) return false;
       if (BuffId != other.BuffId) return false;
+      if (IsWin != other.IsWin) return false;
+      if (MBHCJPONJOM != other.MBHCJPONJOM) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -161,9 +161,9 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (MaxScore != 0) hash ^= MaxScore.GetHashCode();
-      if (IsWin != false) hash ^= IsWin.GetHashCode();
-      if (JBJODEHADJB != false) hash ^= JBJODEHADJB.GetHashCode();
       if (BuffId != 0) hash ^= BuffId.GetHashCode();
+      if (IsWin != false) hash ^= IsWin.GetHashCode();
+      if (MBHCJPONJOM != false) hash ^= MBHCJPONJOM.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -182,21 +182,21 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (MaxScore != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(MaxScore);
+      if (BuffId != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(BuffId);
       }
       if (IsWin != false) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(40);
         output.WriteBool(IsWin);
       }
-      if (JBJODEHADJB != false) {
-        output.WriteRawTag(56);
-        output.WriteBool(JBJODEHADJB);
+      if (MaxScore != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(MaxScore);
       }
-      if (BuffId != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(BuffId);
+      if (MBHCJPONJOM != false) {
+        output.WriteRawTag(120);
+        output.WriteBool(MBHCJPONJOM);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -208,21 +208,21 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (MaxScore != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(MaxScore);
+      if (BuffId != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(BuffId);
       }
       if (IsWin != false) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(40);
         output.WriteBool(IsWin);
       }
-      if (JBJODEHADJB != false) {
-        output.WriteRawTag(56);
-        output.WriteBool(JBJODEHADJB);
+      if (MaxScore != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(MaxScore);
       }
-      if (BuffId != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(BuffId);
+      if (MBHCJPONJOM != false) {
+        output.WriteRawTag(120);
+        output.WriteBool(MBHCJPONJOM);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -237,14 +237,14 @@ namespace March7thHoney.Proto {
       if (MaxScore != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MaxScore);
       }
+      if (BuffId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BuffId);
+      }
       if (IsWin != false) {
         size += 1 + 1;
       }
-      if (JBJODEHADJB != false) {
+      if (MBHCJPONJOM != false) {
         size += 1 + 1;
-      }
-      if (BuffId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BuffId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -261,14 +261,14 @@ namespace March7thHoney.Proto {
       if (other.MaxScore != 0) {
         MaxScore = other.MaxScore;
       }
+      if (other.BuffId != 0) {
+        BuffId = other.BuffId;
+      }
       if (other.IsWin != false) {
         IsWin = other.IsWin;
       }
-      if (other.JBJODEHADJB != false) {
-        JBJODEHADJB = other.JBJODEHADJB;
-      }
-      if (other.BuffId != 0) {
-        BuffId = other.BuffId;
+      if (other.MBHCJPONJOM != false) {
+        MBHCJPONJOM = other.MBHCJPONJOM;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -289,20 +289,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
-            MaxScore = input.ReadUInt32();
+          case 32: {
+            BuffId = input.ReadUInt32();
             break;
           }
-          case 32: {
+          case 40: {
             IsWin = input.ReadBool();
             break;
           }
-          case 56: {
-            JBJODEHADJB = input.ReadBool();
+          case 88: {
+            MaxScore = input.ReadUInt32();
             break;
           }
-          case 64: {
-            BuffId = input.ReadUInt32();
+          case 120: {
+            MBHCJPONJOM = input.ReadBool();
             break;
           }
         }
@@ -324,20 +324,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
-            MaxScore = input.ReadUInt32();
+          case 32: {
+            BuffId = input.ReadUInt32();
             break;
           }
-          case 32: {
+          case 40: {
             IsWin = input.ReadBool();
             break;
           }
-          case 56: {
-            JBJODEHADJB = input.ReadBool();
+          case 88: {
+            MaxScore = input.ReadUInt32();
             break;
           }
-          case 64: {
-            BuffId = input.ReadUInt32();
+          case 120: {
+            MBHCJPONJOM = input.ReadBool();
             break;
           }
         }

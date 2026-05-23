@@ -2,17 +2,15 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "JDMPAAEGMCD.proto";
-import "NGAEFPNBDAD.proto";
+import "BAKAELIMIJI.proto";
+import "GPPKIMDCPBM.proto";
 
 message MonopolyActionResult {
-    JDMPAAEGMCD detail = 2;
-    NGAEFPNBDAD source_type = 3;
-    uint32 click_cell_id = 7;
-    uint32 trigger_cell_id = 8;
-    uint32 effect_type = 9;
-    uint32 trigger_map_id = 10;
-    uint32 click_map_id = 15;
+    GPPKIMDCPBM detail = 15;
+    BAKAELIMIJI source_type = 13;
+    uint32 trigger_cell_id = 6;
+    uint32 click_cell_id = 3;
+    uint32 effect_type = 11;
+    uint32 click_map_id = 4;
+    uint32 trigger_map_id = 12;
 }

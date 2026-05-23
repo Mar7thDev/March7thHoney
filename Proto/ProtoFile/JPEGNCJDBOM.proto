@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message JPEGNCJDBOM {
+    uint32 BLLLEIGDMOI = 12;
+    uint32 AHAPDFNPICG = 8;
+    uint32 AFHMLGFILFN = 6;
+}

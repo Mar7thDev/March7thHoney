@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "HDDBJIKNEPF.proto";
+import "DKFJLHHDFKO.proto";
 
 message RogueTournReviveAvatarCsReq {
-    uint32 interacted_prop_entity_id = 2;
-    repeated HDDBJIKNEPF avatar_list = 11;
+    repeated DKFJLHHDFKO avatar_list = 13;
+    uint32 interacted_prop_entity_id = 11;
 }

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "GEPAFBJBGBH.proto";
+
+message JPGKBLDLADF {
+    oneof MNLCHEJKDHO {
+        uint32 AOKPCNJJBAO = 5;
+        GEPAFBJBGBH KBBOAJPMNCN = 2;
+        uint32 CEPEHNEOIOH = 6;
+    }
+}

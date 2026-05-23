@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiFVcGRhdGVUcmFja01haW5NaXNzaW9uU2NSc3AucHJvdG8iZwobVXBkYXRl",
             "VHJhY2tNYWluTWlzc2lvblNjUnNwEh0KFXByZXZfdHJhY2tfbWlzc2lvbl9p",
-            "ZBgEIAEoDRIPCgdyZXRjb2RlGAkgASgNEhgKEHRyYWNrX21pc3Npb25faWQY",
-            "DSABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ZBgDIAEoDRIPCgdyZXRjb2RlGA4gASgNEhgKEHRyYWNrX21pc3Npb25faWQY",
+            "BiABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -86,7 +86,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "prev_track_mission_id" field.</summary>
-    public const int PrevTrackMissionIdFieldNumber = 4;
+    public const int PrevTrackMissionIdFieldNumber = 3;
     private uint prevTrackMissionId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,7 +98,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 9;
+    public const int RetcodeFieldNumber = 14;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,7 +110,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "track_mission_id" field.</summary>
-    public const int TrackMissionIdFieldNumber = 13;
+    public const int TrackMissionIdFieldNumber = 6;
     private uint trackMissionId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -168,16 +168,16 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (PrevTrackMissionId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(24);
         output.WriteUInt32(PrevTrackMissionId);
       }
-      if (Retcode != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(Retcode);
-      }
       if (TrackMissionId != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(48);
         output.WriteUInt32(TrackMissionId);
+      }
+      if (Retcode != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -190,16 +190,16 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (PrevTrackMissionId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(24);
         output.WriteUInt32(PrevTrackMissionId);
       }
-      if (Retcode != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(Retcode);
-      }
       if (TrackMissionId != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(48);
         output.WriteUInt32(TrackMissionId);
+      }
+      if (Retcode != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -260,16 +260,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
+          case 24: {
             PrevTrackMissionId = input.ReadUInt32();
             break;
           }
-          case 72: {
-            Retcode = input.ReadUInt32();
+          case 48: {
+            TrackMissionId = input.ReadUInt32();
             break;
           }
-          case 104: {
-            TrackMissionId = input.ReadUInt32();
+          case 112: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -291,16 +291,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
+          case 24: {
             PrevTrackMissionId = input.ReadUInt32();
             break;
           }
-          case 72: {
-            Retcode = input.ReadUInt32();
+          case 48: {
+            TrackMissionId = input.ReadUInt32();
             break;
           }
-          case 104: {
-            TrackMissionId = input.ReadUInt32();
+          case 112: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }

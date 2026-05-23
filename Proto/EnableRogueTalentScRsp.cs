@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static EnableRogueTalentScRspReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChxFbmFibGVSb2d1ZVRhbGVudFNjUnNwLnByb3RvGhFNQ0FDREZIQ1BJRS5w",
-            "cm90byJMChZFbmFibGVSb2d1ZVRhbGVudFNjUnNwEg8KB3JldGNvZGUYByAB",
-            "KA0SIQoLdGFsZW50X2luZm8YCiABKAsyDC5NQ0FDREZIQ1BJRUIWqgITTWFy",
+            "ChxFbmFibGVSb2d1ZVRhbGVudFNjUnNwLnByb3RvGhFGREJETEJBUERCRS5w",
+            "cm90byJMChZFbmFibGVSb2d1ZVRhbGVudFNjUnNwEiEKC0pDT0JKQU1QT0FM",
+            "GAMgASgLMgwuRkRCRExCQVBEQkUSDwoHcmV0Y29kZRgNIAEoDUIWqgITTWFy",
             "Y2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.MCACDFHCPIEReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.FDBDLBAPDBEReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EnableRogueTalentScRsp), global::March7thHoney.Proto.EnableRogueTalentScRsp.Parser, new[]{ "Retcode", "TalentInfo" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EnableRogueTalentScRsp), global::March7thHoney.Proto.EnableRogueTalentScRsp.Parser, new[]{ "JCOBJAMPOAL", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public EnableRogueTalentScRsp(EnableRogueTalentScRsp other) : this() {
+      jCOBJAMPOAL_ = other.jCOBJAMPOAL_ != null ? other.jCOBJAMPOAL_.Clone() : null;
       retcode_ = other.retcode_;
-      talentInfo_ = other.talentInfo_ != null ? other.talentInfo_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,8 +84,20 @@ namespace March7thHoney.Proto {
       return new EnableRogueTalentScRsp(this);
     }
 
+    /// <summary>Field number for the "JCOBJAMPOAL" field.</summary>
+    public const int JCOBJAMPOALFieldNumber = 3;
+    private global::March7thHoney.Proto.FDBDLBAPDBE jCOBJAMPOAL_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.FDBDLBAPDBE JCOBJAMPOAL {
+      get { return jCOBJAMPOAL_; }
+      set {
+        jCOBJAMPOAL_ = value;
+      }
+    }
+
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 7;
+    public const int RetcodeFieldNumber = 13;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -93,18 +105,6 @@ namespace March7thHoney.Proto {
       get { return retcode_; }
       set {
         retcode_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "talent_info" field.</summary>
-    public const int TalentInfoFieldNumber = 10;
-    private global::March7thHoney.Proto.MCACDFHCPIE talentInfo_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.MCACDFHCPIE TalentInfo {
-      get { return talentInfo_; }
-      set {
-        talentInfo_ = value;
       }
     }
 
@@ -123,8 +123,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (!object.Equals(JCOBJAMPOAL, other.JCOBJAMPOAL)) return false;
       if (Retcode != other.Retcode) return false;
-      if (!object.Equals(TalentInfo, other.TalentInfo)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,8 +132,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (jCOBJAMPOAL_ != null) hash ^= JCOBJAMPOAL.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
-      if (talentInfo_ != null) hash ^= TalentInfo.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,13 +152,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Retcode != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(Retcode);
+      if (jCOBJAMPOAL_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(JCOBJAMPOAL);
       }
-      if (talentInfo_ != null) {
-        output.WriteRawTag(82);
-        output.WriteMessage(TalentInfo);
+      if (Retcode != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,13 +170,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Retcode != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(Retcode);
+      if (jCOBJAMPOAL_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(JCOBJAMPOAL);
       }
-      if (talentInfo_ != null) {
-        output.WriteRawTag(82);
-        output.WriteMessage(TalentInfo);
+      if (Retcode != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -188,11 +188,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (jCOBJAMPOAL_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(JCOBJAMPOAL);
+      }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
-      }
-      if (talentInfo_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(TalentInfo);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -206,14 +206,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.jCOBJAMPOAL_ != null) {
+        if (jCOBJAMPOAL_ == null) {
+          JCOBJAMPOAL = new global::March7thHoney.Proto.FDBDLBAPDBE();
+        }
+        JCOBJAMPOAL.MergeFrom(other.JCOBJAMPOAL);
+      }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
-      }
-      if (other.talentInfo_ != null) {
-        if (talentInfo_ == null) {
-          TalentInfo = new global::March7thHoney.Proto.MCACDFHCPIE();
-        }
-        TalentInfo.MergeFrom(other.TalentInfo);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -234,15 +234,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
-            Retcode = input.ReadUInt32();
+          case 26: {
+            if (jCOBJAMPOAL_ == null) {
+              JCOBJAMPOAL = new global::March7thHoney.Proto.FDBDLBAPDBE();
+            }
+            input.ReadMessage(JCOBJAMPOAL);
             break;
           }
-          case 82: {
-            if (talentInfo_ == null) {
-              TalentInfo = new global::March7thHoney.Proto.MCACDFHCPIE();
-            }
-            input.ReadMessage(TalentInfo);
+          case 104: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -264,15 +264,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
-            Retcode = input.ReadUInt32();
+          case 26: {
+            if (jCOBJAMPOAL_ == null) {
+              JCOBJAMPOAL = new global::March7thHoney.Proto.FDBDLBAPDBE();
+            }
+            input.ReadMessage(JCOBJAMPOAL);
             break;
           }
-          case 82: {
-            if (talentInfo_ == null) {
-              TalentInfo = new global::March7thHoney.Proto.MCACDFHCPIE();
-            }
-            input.ReadMessage(TalentInfo);
+          case 104: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }

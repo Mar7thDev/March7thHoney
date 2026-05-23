@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message TrainVisitorBehaviorFinishCsReq {
-    uint32 visitor_id = 13;
+    uint32 DOOACEHOPEE = 13;
 }

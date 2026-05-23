@@ -24,17 +24,17 @@ namespace March7thHoney.Proto {
     static AvatarReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CgxBdmF0YXIucHJvdG8i6gEKBkF2YXRhchIcChRmaXJzdF9tZXRfdGltZV9z",
-            "dGFtcBgCIAEoBBIRCglwcm9tb3Rpb24YAyABKA0SEQoJaXNfbWFya2VkGAUg",
-            "ASgIEg0KBWxldmVsGAggASgNEhYKDmJhc2VfYXZhdGFyX2lkGAkgASgNEicK",
-            "H2hhc190YWtlbl9wcm9tb3Rpb25fcmV3YXJkX2xpc3QYDCADKA0SIgoaY3Vy",
-            "X211bHRpX3BhdGhfYXZhdGFyX3R5cGUYDSABKA0SCwoDZXhwGA4gASgNEhsK",
-            "E2VxdWlwbWVudF91bmlxdWVfaWQYDyABKA1CFqoCE01hcmNoN3RoSG9uZXku",
+            "CgxBdmF0YXIucHJvdG8i6gEKBkF2YXRhchInCh9oYXNfdGFrZW5fcHJvbW90",
+            "aW9uX3Jld2FyZF9saXN0GAggAygNEhsKE2VxdWlwbWVudF91bmlxdWVfaWQY",
+            "ASABKA0SFgoOYmFzZV9hdmF0YXJfaWQYByABKA0SCwoDZXhwGAwgASgNEhEK",
+            "CWlzX21hcmtlZBgLIAEoCBINCgVsZXZlbBgNIAEoDRIiChpjdXJfbXVsdGlf",
+            "cGF0aF9hdmF0YXJfdHlwZRgFIAEoDRIRCglwcm9tb3Rpb24YAiABKA0SHAoU",
+            "Zmlyc3RfbWV0X3RpbWVfc3RhbXAYCiABKARCFqoCE01hcmNoN3RoSG9uZXku",
             "UHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.Avatar), global::March7thHoney.Proto.Avatar.Parser, new[]{ "FirstMetTimeStamp", "Promotion", "IsMarked", "Level", "BaseAvatarId", "HasTakenPromotionRewardList", "CurMultiPathAvatarType", "Exp", "EquipmentUniqueId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.Avatar), global::March7thHoney.Proto.Avatar.Parser, new[]{ "HasTakenPromotionRewardList", "EquipmentUniqueId", "BaseAvatarId", "Exp", "IsMarked", "Level", "CurMultiPathAvatarType", "Promotion", "FirstMetTimeStamp" }, null, null, null, null)
           }));
     }
     #endregion
@@ -76,15 +76,15 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Avatar(Avatar other) : this() {
-      firstMetTimeStamp_ = other.firstMetTimeStamp_;
-      promotion_ = other.promotion_;
+      hasTakenPromotionRewardList_ = other.hasTakenPromotionRewardList_.Clone();
+      equipmentUniqueId_ = other.equipmentUniqueId_;
+      baseAvatarId_ = other.baseAvatarId_;
+      exp_ = other.exp_;
       isMarked_ = other.isMarked_;
       level_ = other.level_;
-      baseAvatarId_ = other.baseAvatarId_;
-      hasTakenPromotionRewardList_ = other.hasTakenPromotionRewardList_.Clone();
       curMultiPathAvatarType_ = other.curMultiPathAvatarType_;
-      exp_ = other.exp_;
-      equipmentUniqueId_ = other.equipmentUniqueId_;
+      promotion_ = other.promotion_;
+      firstMetTimeStamp_ = other.firstMetTimeStamp_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -94,32 +94,55 @@ namespace March7thHoney.Proto {
       return new Avatar(this);
     }
 
-    /// <summary>Field number for the "first_met_time_stamp" field.</summary>
-    public const int FirstMetTimeStampFieldNumber = 2;
-    private ulong firstMetTimeStamp_;
+    /// <summary>Field number for the "has_taken_promotion_reward_list" field.</summary>
+    public const int HasTakenPromotionRewardListFieldNumber = 8;
+    private static readonly pb::FieldCodec<uint> _repeated_hasTakenPromotionRewardList_codec
+        = pb::FieldCodec.ForUInt32(66);
+    private readonly pbc::RepeatedField<uint> hasTakenPromotionRewardList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ulong FirstMetTimeStamp {
-      get { return firstMetTimeStamp_; }
+    public pbc::RepeatedField<uint> HasTakenPromotionRewardList {
+      get { return hasTakenPromotionRewardList_; }
+    }
+
+    /// <summary>Field number for the "equipment_unique_id" field.</summary>
+    public const int EquipmentUniqueIdFieldNumber = 1;
+    private uint equipmentUniqueId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint EquipmentUniqueId {
+      get { return equipmentUniqueId_; }
       set {
-        firstMetTimeStamp_ = value;
+        equipmentUniqueId_ = value;
       }
     }
 
-    /// <summary>Field number for the "promotion" field.</summary>
-    public const int PromotionFieldNumber = 3;
-    private uint promotion_;
+    /// <summary>Field number for the "base_avatar_id" field.</summary>
+    public const int BaseAvatarIdFieldNumber = 7;
+    private uint baseAvatarId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Promotion {
-      get { return promotion_; }
+    public uint BaseAvatarId {
+      get { return baseAvatarId_; }
       set {
-        promotion_ = value;
+        baseAvatarId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "exp" field.</summary>
+    public const int ExpFieldNumber = 12;
+    private uint exp_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Exp {
+      get { return exp_; }
+      set {
+        exp_ = value;
       }
     }
 
     /// <summary>Field number for the "is_marked" field.</summary>
-    public const int IsMarkedFieldNumber = 5;
+    public const int IsMarkedFieldNumber = 11;
     private bool isMarked_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -131,7 +154,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "level" field.</summary>
-    public const int LevelFieldNumber = 8;
+    public const int LevelFieldNumber = 13;
     private uint level_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -142,31 +165,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "base_avatar_id" field.</summary>
-    public const int BaseAvatarIdFieldNumber = 9;
-    private uint baseAvatarId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint BaseAvatarId {
-      get { return baseAvatarId_; }
-      set {
-        baseAvatarId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "has_taken_promotion_reward_list" field.</summary>
-    public const int HasTakenPromotionRewardListFieldNumber = 12;
-    private static readonly pb::FieldCodec<uint> _repeated_hasTakenPromotionRewardList_codec
-        = pb::FieldCodec.ForUInt32(98);
-    private readonly pbc::RepeatedField<uint> hasTakenPromotionRewardList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> HasTakenPromotionRewardList {
-      get { return hasTakenPromotionRewardList_; }
-    }
-
     /// <summary>Field number for the "cur_multi_path_avatar_type" field.</summary>
-    public const int CurMultiPathAvatarTypeFieldNumber = 13;
+    public const int CurMultiPathAvatarTypeFieldNumber = 5;
     private uint curMultiPathAvatarType_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -177,27 +177,27 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "exp" field.</summary>
-    public const int ExpFieldNumber = 14;
-    private uint exp_;
+    /// <summary>Field number for the "promotion" field.</summary>
+    public const int PromotionFieldNumber = 2;
+    private uint promotion_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Exp {
-      get { return exp_; }
+    public uint Promotion {
+      get { return promotion_; }
       set {
-        exp_ = value;
+        promotion_ = value;
       }
     }
 
-    /// <summary>Field number for the "equipment_unique_id" field.</summary>
-    public const int EquipmentUniqueIdFieldNumber = 15;
-    private uint equipmentUniqueId_;
+    /// <summary>Field number for the "first_met_time_stamp" field.</summary>
+    public const int FirstMetTimeStampFieldNumber = 10;
+    private ulong firstMetTimeStamp_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint EquipmentUniqueId {
-      get { return equipmentUniqueId_; }
+    public ulong FirstMetTimeStamp {
+      get { return firstMetTimeStamp_; }
       set {
-        equipmentUniqueId_ = value;
+        firstMetTimeStamp_ = value;
       }
     }
 
@@ -216,15 +216,15 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (FirstMetTimeStamp != other.FirstMetTimeStamp) return false;
-      if (Promotion != other.Promotion) return false;
+      if(!hasTakenPromotionRewardList_.Equals(other.hasTakenPromotionRewardList_)) return false;
+      if (EquipmentUniqueId != other.EquipmentUniqueId) return false;
+      if (BaseAvatarId != other.BaseAvatarId) return false;
+      if (Exp != other.Exp) return false;
       if (IsMarked != other.IsMarked) return false;
       if (Level != other.Level) return false;
-      if (BaseAvatarId != other.BaseAvatarId) return false;
-      if(!hasTakenPromotionRewardList_.Equals(other.hasTakenPromotionRewardList_)) return false;
       if (CurMultiPathAvatarType != other.CurMultiPathAvatarType) return false;
-      if (Exp != other.Exp) return false;
-      if (EquipmentUniqueId != other.EquipmentUniqueId) return false;
+      if (Promotion != other.Promotion) return false;
+      if (FirstMetTimeStamp != other.FirstMetTimeStamp) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -232,15 +232,15 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (FirstMetTimeStamp != 0UL) hash ^= FirstMetTimeStamp.GetHashCode();
-      if (Promotion != 0) hash ^= Promotion.GetHashCode();
+      hash ^= hasTakenPromotionRewardList_.GetHashCode();
+      if (EquipmentUniqueId != 0) hash ^= EquipmentUniqueId.GetHashCode();
+      if (BaseAvatarId != 0) hash ^= BaseAvatarId.GetHashCode();
+      if (Exp != 0) hash ^= Exp.GetHashCode();
       if (IsMarked != false) hash ^= IsMarked.GetHashCode();
       if (Level != 0) hash ^= Level.GetHashCode();
-      if (BaseAvatarId != 0) hash ^= BaseAvatarId.GetHashCode();
-      hash ^= hasTakenPromotionRewardList_.GetHashCode();
       if (CurMultiPathAvatarType != 0) hash ^= CurMultiPathAvatarType.GetHashCode();
-      if (Exp != 0) hash ^= Exp.GetHashCode();
-      if (EquipmentUniqueId != 0) hash ^= EquipmentUniqueId.GetHashCode();
+      if (Promotion != 0) hash ^= Promotion.GetHashCode();
+      if (FirstMetTimeStamp != 0UL) hash ^= FirstMetTimeStamp.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -259,38 +259,38 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (FirstMetTimeStamp != 0UL) {
-        output.WriteRawTag(16);
-        output.WriteUInt64(FirstMetTimeStamp);
+      if (EquipmentUniqueId != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(EquipmentUniqueId);
       }
       if (Promotion != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteUInt32(Promotion);
       }
-      if (IsMarked != false) {
+      if (CurMultiPathAvatarType != 0) {
         output.WriteRawTag(40);
-        output.WriteBool(IsMarked);
-      }
-      if (Level != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(Level);
+        output.WriteUInt32(CurMultiPathAvatarType);
       }
       if (BaseAvatarId != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(56);
         output.WriteUInt32(BaseAvatarId);
       }
       hasTakenPromotionRewardList_.WriteTo(output, _repeated_hasTakenPromotionRewardList_codec);
-      if (CurMultiPathAvatarType != 0) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(CurMultiPathAvatarType);
+      if (FirstMetTimeStamp != 0UL) {
+        output.WriteRawTag(80);
+        output.WriteUInt64(FirstMetTimeStamp);
+      }
+      if (IsMarked != false) {
+        output.WriteRawTag(88);
+        output.WriteBool(IsMarked);
       }
       if (Exp != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(96);
         output.WriteUInt32(Exp);
       }
-      if (EquipmentUniqueId != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(EquipmentUniqueId);
+      if (Level != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(Level);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -302,38 +302,38 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (FirstMetTimeStamp != 0UL) {
-        output.WriteRawTag(16);
-        output.WriteUInt64(FirstMetTimeStamp);
+      if (EquipmentUniqueId != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(EquipmentUniqueId);
       }
       if (Promotion != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteUInt32(Promotion);
       }
-      if (IsMarked != false) {
+      if (CurMultiPathAvatarType != 0) {
         output.WriteRawTag(40);
-        output.WriteBool(IsMarked);
-      }
-      if (Level != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(Level);
+        output.WriteUInt32(CurMultiPathAvatarType);
       }
       if (BaseAvatarId != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(56);
         output.WriteUInt32(BaseAvatarId);
       }
       hasTakenPromotionRewardList_.WriteTo(ref output, _repeated_hasTakenPromotionRewardList_codec);
-      if (CurMultiPathAvatarType != 0) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(CurMultiPathAvatarType);
+      if (FirstMetTimeStamp != 0UL) {
+        output.WriteRawTag(80);
+        output.WriteUInt64(FirstMetTimeStamp);
+      }
+      if (IsMarked != false) {
+        output.WriteRawTag(88);
+        output.WriteBool(IsMarked);
       }
       if (Exp != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(96);
         output.WriteUInt32(Exp);
       }
-      if (EquipmentUniqueId != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(EquipmentUniqueId);
+      if (Level != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(Level);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -345,11 +345,15 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (FirstMetTimeStamp != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(FirstMetTimeStamp);
+      size += hasTakenPromotionRewardList_.CalculateSize(_repeated_hasTakenPromotionRewardList_codec);
+      if (EquipmentUniqueId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EquipmentUniqueId);
       }
-      if (Promotion != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Promotion);
+      if (BaseAvatarId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BaseAvatarId);
+      }
+      if (Exp != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Exp);
       }
       if (IsMarked != false) {
         size += 1 + 1;
@@ -357,18 +361,14 @@ namespace March7thHoney.Proto {
       if (Level != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
       }
-      if (BaseAvatarId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BaseAvatarId);
-      }
-      size += hasTakenPromotionRewardList_.CalculateSize(_repeated_hasTakenPromotionRewardList_codec);
       if (CurMultiPathAvatarType != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurMultiPathAvatarType);
       }
-      if (Exp != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Exp);
+      if (Promotion != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Promotion);
       }
-      if (EquipmentUniqueId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EquipmentUniqueId);
+      if (FirstMetTimeStamp != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(FirstMetTimeStamp);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -382,11 +382,15 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.FirstMetTimeStamp != 0UL) {
-        FirstMetTimeStamp = other.FirstMetTimeStamp;
+      hasTakenPromotionRewardList_.Add(other.hasTakenPromotionRewardList_);
+      if (other.EquipmentUniqueId != 0) {
+        EquipmentUniqueId = other.EquipmentUniqueId;
       }
-      if (other.Promotion != 0) {
-        Promotion = other.Promotion;
+      if (other.BaseAvatarId != 0) {
+        BaseAvatarId = other.BaseAvatarId;
+      }
+      if (other.Exp != 0) {
+        Exp = other.Exp;
       }
       if (other.IsMarked != false) {
         IsMarked = other.IsMarked;
@@ -394,18 +398,14 @@ namespace March7thHoney.Proto {
       if (other.Level != 0) {
         Level = other.Level;
       }
-      if (other.BaseAvatarId != 0) {
-        BaseAvatarId = other.BaseAvatarId;
-      }
-      hasTakenPromotionRewardList_.Add(other.hasTakenPromotionRewardList_);
       if (other.CurMultiPathAvatarType != 0) {
         CurMultiPathAvatarType = other.CurMultiPathAvatarType;
       }
-      if (other.Exp != 0) {
-        Exp = other.Exp;
+      if (other.Promotion != 0) {
+        Promotion = other.Promotion;
       }
-      if (other.EquipmentUniqueId != 0) {
-        EquipmentUniqueId = other.EquipmentUniqueId;
+      if (other.FirstMetTimeStamp != 0UL) {
+        FirstMetTimeStamp = other.FirstMetTimeStamp;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -426,41 +426,41 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            FirstMetTimeStamp = input.ReadUInt64();
+          case 8: {
+            EquipmentUniqueId = input.ReadUInt32();
             break;
           }
-          case 24: {
+          case 16: {
             Promotion = input.ReadUInt32();
             break;
           }
           case 40: {
-            IsMarked = input.ReadBool();
-            break;
-          }
-          case 64: {
-            Level = input.ReadUInt32();
-            break;
-          }
-          case 72: {
-            BaseAvatarId = input.ReadUInt32();
-            break;
-          }
-          case 98:
-          case 96: {
-            hasTakenPromotionRewardList_.AddEntriesFrom(input, _repeated_hasTakenPromotionRewardList_codec);
-            break;
-          }
-          case 104: {
             CurMultiPathAvatarType = input.ReadUInt32();
             break;
           }
-          case 112: {
+          case 56: {
+            BaseAvatarId = input.ReadUInt32();
+            break;
+          }
+          case 66:
+          case 64: {
+            hasTakenPromotionRewardList_.AddEntriesFrom(input, _repeated_hasTakenPromotionRewardList_codec);
+            break;
+          }
+          case 80: {
+            FirstMetTimeStamp = input.ReadUInt64();
+            break;
+          }
+          case 88: {
+            IsMarked = input.ReadBool();
+            break;
+          }
+          case 96: {
             Exp = input.ReadUInt32();
             break;
           }
-          case 120: {
-            EquipmentUniqueId = input.ReadUInt32();
+          case 104: {
+            Level = input.ReadUInt32();
             break;
           }
         }
@@ -482,41 +482,41 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            FirstMetTimeStamp = input.ReadUInt64();
+          case 8: {
+            EquipmentUniqueId = input.ReadUInt32();
             break;
           }
-          case 24: {
+          case 16: {
             Promotion = input.ReadUInt32();
             break;
           }
           case 40: {
-            IsMarked = input.ReadBool();
-            break;
-          }
-          case 64: {
-            Level = input.ReadUInt32();
-            break;
-          }
-          case 72: {
-            BaseAvatarId = input.ReadUInt32();
-            break;
-          }
-          case 98:
-          case 96: {
-            hasTakenPromotionRewardList_.AddEntriesFrom(ref input, _repeated_hasTakenPromotionRewardList_codec);
-            break;
-          }
-          case 104: {
             CurMultiPathAvatarType = input.ReadUInt32();
             break;
           }
-          case 112: {
+          case 56: {
+            BaseAvatarId = input.ReadUInt32();
+            break;
+          }
+          case 66:
+          case 64: {
+            hasTakenPromotionRewardList_.AddEntriesFrom(ref input, _repeated_hasTakenPromotionRewardList_codec);
+            break;
+          }
+          case 80: {
+            FirstMetTimeStamp = input.ReadUInt64();
+            break;
+          }
+          case 88: {
+            IsMarked = input.ReadBool();
+            break;
+          }
+          case 96: {
             Exp = input.ReadUInt32();
             break;
           }
-          case 120: {
-            EquipmentUniqueId = input.ReadUInt32();
+          case 104: {
+            Level = input.ReadUInt32();
             break;
           }
         }

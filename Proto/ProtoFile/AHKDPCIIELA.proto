@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message AHKDPCIIELA {
+    uint32 role_star = 2;
+    uint32 IMDKLKONINF = 14;
+    uint32 monster_id = 3;
+    uint32 LOGHLGKIFEN = 11;
+}

@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "MGFEMHKICND.proto";
+import "JBHLNAHOJOH.proto";
 
 message CakeRaceGetFriendRankingInfoListScRsp {
-    uint32 retcode = 7;
-    repeated uint32 HFJNDOAIDOP = 12;
-    repeated MGFEMHKICND CPBGLNGOCBA = 14;
+    repeated uint32 LPBBJFFNACA = 4;
+    repeated JBHLNAHOJOH MLPHLIHFGKG = 15;
+    uint32 retcode = 14;
 }

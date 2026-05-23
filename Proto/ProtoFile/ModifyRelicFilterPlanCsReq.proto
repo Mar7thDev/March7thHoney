@@ -2,16 +2,14 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "FOFBDBJBEJE.proto";
-import "OBOKDHDOKAD.proto";
+import "BNAILMNNGIF.proto";
+import "KJDLIPEIAAK.proto";
 
 message ModifyRelicFilterPlanCsReq {
-    uint32 KKGIEENCOIC = 6;
-    oneof BPIHFAJCLOC {
-        OBOKDHDOKAD HMIHLDPMPOM = 1;
-        FOFBDBJBEJE JHHHONJIKGL = 14;
-        string name = 15;
+    uint32 NPHAJEKCBKF = 14;
+    oneof KKNBOACNCON {
+        string name = 7;
+        KJDLIPEIAAK MJPKBIGCFOM = 15;
+        BNAILMNNGIF LJKNDCIOOCG = 10;
     }
 }

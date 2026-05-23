@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message SelectChessRogueSubStoryCsReq {
-    uint32 FOMNFHJCDOC = 3;
-    uint32 IENBKIAGPBA = 7;
-    uint32 EKEFMNPFOGO = 12;
-    uint32 rogue_dialogue_event_id = 13;
+    uint32 rogue_dialogue_event_id = 7;
+    uint32 HONCDMKPBEG = 13;
+    uint32 ECKDPIPMBOC = 4;
+    uint32 JGCCIMMEDIJ = 9;
 }

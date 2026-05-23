@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "ItemList.proto";
+
+message GIPBHLBFDAH {
+    ItemList reward = 11;
+    uint32 NGBJMEHDKHN = 8;
+    uint32 DCAHJELNJNP = 1;
+    uint32 script_id = 4;
+    bool HGPKMHFPMBJ = 3;
+    bool DMNEACGEHEC = 2;
+    uint32 progress = 6;
+}

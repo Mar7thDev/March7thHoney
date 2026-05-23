@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChpVbmxvY2tUZWxlcG9ydE5vdGlmeS5wcm90byI9ChRVbmxvY2tUZWxlcG9y",
-            "dE5vdGlmeRIQCghlbnRyeV9pZBgDIAEoDRITCgt0ZWxlcG9ydF9pZBgGIAEo",
+            "dE5vdGlmeRITCgt0ZWxlcG9ydF9pZBgJIAEoDRIQCghlbnRyeV9pZBgIIAEo",
             "DUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UnlockTeleportNotify), global::March7thHoney.Proto.UnlockTeleportNotify.Parser, new[]{ "EntryId", "TeleportId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UnlockTeleportNotify), global::March7thHoney.Proto.UnlockTeleportNotify.Parser, new[]{ "TeleportId", "EntryId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public UnlockTeleportNotify(UnlockTeleportNotify other) : this() {
-      entryId_ = other.entryId_;
       teleportId_ = other.teleportId_;
+      entryId_ = other.entryId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,20 +83,8 @@ namespace March7thHoney.Proto {
       return new UnlockTeleportNotify(this);
     }
 
-    /// <summary>Field number for the "entry_id" field.</summary>
-    public const int EntryIdFieldNumber = 3;
-    private uint entryId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint EntryId {
-      get { return entryId_; }
-      set {
-        entryId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "teleport_id" field.</summary>
-    public const int TeleportIdFieldNumber = 6;
+    public const int TeleportIdFieldNumber = 9;
     private uint teleportId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -104,6 +92,18 @@ namespace March7thHoney.Proto {
       get { return teleportId_; }
       set {
         teleportId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "entry_id" field.</summary>
+    public const int EntryIdFieldNumber = 8;
+    private uint entryId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint EntryId {
+      get { return entryId_; }
+      set {
+        entryId_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (EntryId != other.EntryId) return false;
       if (TeleportId != other.TeleportId) return false;
+      if (EntryId != other.EntryId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (EntryId != 0) hash ^= EntryId.GetHashCode();
       if (TeleportId != 0) hash ^= TeleportId.GetHashCode();
+      if (EntryId != 0) hash ^= EntryId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (EntryId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(64);
         output.WriteUInt32(EntryId);
       }
       if (TeleportId != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(72);
         output.WriteUInt32(TeleportId);
       }
       if (_unknownFields != null) {
@@ -170,11 +170,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (EntryId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(64);
         output.WriteUInt32(EntryId);
       }
       if (TeleportId != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(72);
         output.WriteUInt32(TeleportId);
       }
       if (_unknownFields != null) {
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (EntryId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EntryId);
-      }
       if (TeleportId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TeleportId);
+      }
+      if (EntryId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EntryId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.EntryId != 0) {
-        EntryId = other.EntryId;
-      }
       if (other.TeleportId != 0) {
         TeleportId = other.TeleportId;
+      }
+      if (other.EntryId != 0) {
+        EntryId = other.EntryId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,11 +230,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
+          case 64: {
             EntryId = input.ReadUInt32();
             break;
           }
-          case 48: {
+          case 72: {
             TeleportId = input.ReadUInt32();
             break;
           }
@@ -257,11 +257,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
+          case 64: {
             EntryId = input.ReadUInt32();
             break;
           }
-          case 48: {
+          case 72: {
             TeleportId = input.ReadUInt32();
             break;
           }

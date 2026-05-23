@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "AEBCLFBDHPE.proto";
+import "JBMJOIPJPLH.proto";
 
 message GetFeverTimeActivityDataScRsp {
-    uint32 retcode = 8;
-    repeated AEBCLFBDHPE PCDIFDGCDOK = 12;
+    repeated JBMJOIPJPLH GNDEFEAEDNJ = 7;
+    uint32 retcode = 6;
 }

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "IDBCDHIOKEG.proto";
+
+message AIOCPFLCNLB {
+    repeated IDBCDHIOKEG FOOMIPJJKOG = 2;
+    uint32 progress = 7;
+    uint32 area_id = 12;
+    uint32 GKENFCLLLJC = 10;
+}

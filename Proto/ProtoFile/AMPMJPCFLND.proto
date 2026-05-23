@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "TurnFoodSwitch.proto";
+
+message AMPMJPCFLND {
+    TurnFoodSwitch KLAJGAKAFCP = 2;
+    bool FEBKMOCOJLE = 13;
+}

@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "GBAEPOLFFMG.proto";
+
+message BAEFMEJJIBI {
+    uint32 CEAMLKCMMGD = 14;
+    GBAEPOLFFMG pos_index = 15;
+}

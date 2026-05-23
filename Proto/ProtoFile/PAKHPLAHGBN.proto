@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum PAKHPLAHGBN {
+    PAKHPLAHGBN_NLCDGIPGFDJ = 0;
+    PAKHPLAHGBN_FIOLLIOEAJC = 1;
+    PAKHPLAHGBN_CJMELLLIEDE = 2;
+    PAKHPLAHGBN_COGCFDFAKON = 3;
+}

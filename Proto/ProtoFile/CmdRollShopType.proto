@@ -2,14 +2,12 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdRollShopType {
-    MNCIAAAFPKK_PCPDHELPKEM = 0;
-    CmdGetRollShopInfoCsReq = 6901;
-    CmdDoGachaInRollShopCsReq = 6902;
-    CmdGetRollShopInfoScRsp = 6920;
-    CmdDoGachaInRollShopScRsp = 6910;
-    CmdTakeRollShopRewardScRsp = 6908;
-    CmdTakeRollShopRewardCsReq = 6915;
+    OHCMLBPONOB_NLCDGIPGFDJ = 0;
+    OHCMLBPONOB_JLMAAPILPFM = 6906;
+    OHCMLBPONOB_FNHGIIEDMOL = 6902;
+    OHCMLBPONOB_OAOLKAMEEJA = 6916;
+    OHCMLBPONOB_IHMMENKJJGC = 6918;
+    OHCMLBPONOB_EOKAIKAJHOP = 6919;
+    OHCMLBPONOB_MGKPBJDFEFH = 6920;
 }

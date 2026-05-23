@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static CmdShopTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFDbWRTaG9wVHlwZS5wcm90byrgAQoLQ21kU2hvcFR5cGUSGwoXRk1PSkNG",
-            "TVBDTkFfUENQREhFTFBLRU0QABITCg5DbWRFRkxHTE9LTkJLUBDuCxIcChdD",
-            "bWRDaXR5U2hvcEluZm9TY05vdGlmeRDlCxIVChBDbWRCdXlHb29kc0NzUmVx",
-            "ELoMEh8KGkNtZFRha2VDaXR5U2hvcFJld2FyZENzUmVxEOoLEhUKEENtZEJ1",
-            "eUdvb2RzU2NSc3AQuwwSGAoTQ21kR2V0U2hvcExpc3RTY1JzcBDmCxIYChND",
-            "bWRHZXRTaG9wTGlzdENzUmVxELcMQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
-            "YgZwcm90bzM="));
+            "ChFDbWRTaG9wVHlwZS5wcm90byr8AQoLQ21kU2hvcFR5cGUSGwoXTEhLQ0VB",
+            "SERNREZfTkxDREdJUEdGREoQABIcChdMSEtDRUFIRE1ERl9PR09HTENLS0NF",
+            "SxDpCxIcChdMSEtDRUFIRE1ERl9CRUJDSUlQRE9FSxD3CxIcChdMSEtDRUFI",
+            "RE1ERl9MSERHT0dEQk5GSBDrCxIcChdMSEtDRUFIRE1ERl9BRExFQUZBQUZL",
+            "QhCADBIcChdMSEtDRUFIRE1ERl9DSElHSEhLSkhISBClDBIcChdMSEtDRUFI",
+            "RE1ERl9MT0ZEUEtIQ0hFQRCsDBIcChdMSEtDRUFIRE1ERl9ISkVETFBMRklL",
+            "TBDfC0IWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdShopType), }, null, null));
@@ -40,14 +40,14 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdShopType {
-    [pbr::OriginalName("FMOJCFMPCNA_PCPDHELPKEM")] FmojcfmpcnaPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdEFLGLOKNBKP")] CmdEflgloknbkp = 1518,
-    [pbr::OriginalName("CmdCityShopInfoScNotify")] CmdCityShopInfoScNotify = 1509,
-    [pbr::OriginalName("CmdBuyGoodsCsReq")] CmdBuyGoodsCsReq = 1594,
-    [pbr::OriginalName("CmdTakeCityShopRewardCsReq")] CmdTakeCityShopRewardCsReq = 1514,
-    [pbr::OriginalName("CmdBuyGoodsScRsp")] CmdBuyGoodsScRsp = 1595,
-    [pbr::OriginalName("CmdGetShopListScRsp")] CmdGetShopListScRsp = 1510,
-    [pbr::OriginalName("CmdGetShopListCsReq")] CmdGetShopListCsReq = 1591,
+    [pbr::OriginalName("LHKCEAHDMDF_NLCDGIPGFDJ")] LhkceahdmdfNlcdgipgfdj = 0,
+    [pbr::OriginalName("LHKCEAHDMDF_OGOGLCKKCEK")] LhkceahdmdfOgoglckkcek = 1513,
+    [pbr::OriginalName("LHKCEAHDMDF_BEBCIIPDOEK")] LhkceahdmdfBebciipdoek = 1527,
+    [pbr::OriginalName("LHKCEAHDMDF_LHDGOGDBNFH")] LhkceahdmdfLhdgogdbnfh = 1515,
+    [pbr::OriginalName("LHKCEAHDMDF_ADLEAFAAFKB")] LhkceahdmdfAdleafaafkb = 1536,
+    [pbr::OriginalName("LHKCEAHDMDF_CHIGHHKJHHH")] LhkceahdmdfChighhkjhhh = 1573,
+    [pbr::OriginalName("LHKCEAHDMDF_LOFDPKHCHEA")] LhkceahdmdfLofdpkhchea = 1580,
+    [pbr::OriginalName("LHKCEAHDMDF_HJEDLPLFIKL")] LhkceahdmdfHjedlplfikl = 1503,
   }
 
   #endregion

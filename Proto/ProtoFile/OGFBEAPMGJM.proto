@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message OGFBEAPMGJM {
+    string JHIHMEPGDIK = 4;
+    uint32 PAIPJMKCCEH = 5;
+    uint32 MFOFNOPEBEN = 9;
+    uint32 retcode = 6;
+}

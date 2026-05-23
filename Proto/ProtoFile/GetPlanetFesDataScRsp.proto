@@ -2,33 +2,31 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "BCHDPKABMNO.proto";
-import "BKNPGKNIOMG.proto";
-import "EONNKCKPDKI.proto";
-import "GKDEKJKOIJN.proto";
-import "GKMGHIBOOFE.proto";
-import "IPBGEGBFFHK.proto";
-import "IPNPJJPPCCC.proto";
-import "JBMMIPAGDCE.proto";
-import "LLAGEIKJBJA.proto";
-import "NOAMCBLCAMH.proto";
-import "OGACFIPDECD.proto";
-import "OHLCKLEKPIN.proto";
+import "APAMFCKFHLL.proto";
+import "BAGAOALHAJI.proto";
+import "BLDIHADJKJF.proto";
+import "CHBCJNLOLMB.proto";
+import "JMBNHAFHIHM.proto";
+import "KCMJJLJCHHP.proto";
+import "KNECKDAOKOA.proto";
+import "NOLLHKIMDOC.proto";
+import "OBEHBNOCLMM.proto";
+import "PHCPOIHAPGP.proto";
+import "PLOFKJDKEPN.proto";
+import "PPAIELAKIJD.proto";
 
 message GetPlanetFesDataScRsp {
-    uint32 retcode = 1;
-    EONNKCKPDKI KKCLNDFBPHB = 2;
-    OHLCKLEKPIN EFIMNEGGKMH = 3;
-    BKNPGKNIOMG OPELALIBCIL = 4;
-    repeated GKDEKJKOIJN custom_value_list = 6;
-    IPBGEGBFFHK FKEHOGMGLJF = 7;
-    GKMGHIBOOFE NOLBPBMHOKA = 8;
-    NOAMCBLCAMH GOFFALBLHHN = 9;
-    OGACFIPDECD PEABLDFCMIC = 10;
-    IPNPJJPPCCC skill_info = 11;
-    LLAGEIKJBJA OBOOODMPBBH = 12;
-    BCHDPKABMNO FCAPBPHLNCJ = 14;
-    JBMMIPAGDCE MODDIBHCPPD = 15;
+    OBEHBNOCLMM LCPEDLCOMFE = 14;
+    BAGAOALHAJI skill_info = 10;
+    CHBCJNLOLMB OPJLJOPBGOJ = 11;
+    NOLLHKIMDOC CCFGCCMEFCI = 4;
+    KCMJJLJCHHP NJFGGOOMGCD = 15;
+    repeated APAMFCKFHLL custom_value_list = 2;
+    JMBNHAFHIHM IEKDOJDPMEB = 9;
+    KNECKDAOKOA OCHNMGMDHME = 7;
+    BLDIHADJKJF OEIBHLMDJKA = 3;
+    PHCPOIHAPGP COGGJELNFCN = 1;
+    PLOFKJDKEPN FEOONKKLCHA = 13;
+    PPAIELAKIJD BBEKBJPHEJK = 12;
+    uint32 retcode = 5;
 }

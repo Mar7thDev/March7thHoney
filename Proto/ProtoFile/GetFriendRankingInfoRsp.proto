@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "EFBIHJHMICB.proto";
+import "DLCJPINDIAC.proto";
 import "FightGameMode.proto";
 
 message GetFriendRankingInfoRsp {
-    uint32 retcode = 13;
-    FightGameMode PLOBMBFPNFK = 14;
-    repeated EFBIHJHMICB CPBGLNGOCBA = 15;
+    repeated DLCJPINDIAC MLPHLIHFGKG = 7;
+    FightGameMode GJNMHILINHC = 13;
+    uint32 retcode = 10;
 }

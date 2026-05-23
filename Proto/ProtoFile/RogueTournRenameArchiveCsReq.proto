@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message RogueTournRenameArchiveCsReq {
-    string name = 5;
-    uint32 KKGIEENCOIC = 13;
+    string name = 7;
+    uint32 NPHAJEKCBKF = 6;
 }

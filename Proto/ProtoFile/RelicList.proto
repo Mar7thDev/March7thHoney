@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message RelicList {
-    uint32 set_id = 9;
-    uint32 type = 12;
+    uint32 set_id = 15;
+    uint32 type = 3;
 }

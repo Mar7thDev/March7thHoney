@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "DKFJLHHDFKO.proto";
+import "HMGGOEHMIJO.proto";
+import "LGCPLLJLHFF.proto";
+import "PFLOIHLLMEE.proto";
+
+message MJMGOBMOPDL {
+    PFLOIHLLMEE PHGJIJELKDB = 9;
+    string name = 3;
+    HMGGOEHMIJO HHFAAFOBKME = 5;
+    repeated DKFJLHHDFKO avatar_list = 7;
+    LGCPLLJLHFF data = 13;
+    int64 time = 6;
+    uint32 NPHAJEKCBKF = 14;
+    int64 end_time = 11;
+}

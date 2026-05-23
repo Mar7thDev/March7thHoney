@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message SwordTrainingResumeGameCsReq {
-    uint32 game_story_line_id = 13;
+    uint32 game_story_line_id = 10;
 }

@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "MCPPIEJEBEF.proto";
+import "MNCBEDBDDHL.proto";
 
 message PlayBackGroundMusicCsReq {
-    MCPPIEJEBEF DMGCIDGKPFF = 10;
+    MNCBEDBDDHL IKJNIKIGFLF = 2;
 }

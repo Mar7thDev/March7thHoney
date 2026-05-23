@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch1TY2VuZUVudGl0eU1vdmVTY05vdGlmeS5wcm90bxoQTW90aW9uSW5mby5w",
-            "cm90byJ3ChdTY2VuZUVudGl0eU1vdmVTY05vdGlmeRIbCgZtb3Rpb24YBCAB",
-            "KAsyCy5Nb3Rpb25JbmZvEhAKCGVudHJ5X2lkGAUgASgNEhEKCWVudGl0eV9p",
-            "ZBgNIAEoDRIaChJjbGllbnRfcG9zX3ZlcnNpb24YDyABKA1CFqoCE01hcmNo",
+            "cm90byJ3ChdTY2VuZUVudGl0eU1vdmVTY05vdGlmeRIbCgZtb3Rpb24YBSAB",
+            "KAsyCy5Nb3Rpb25JbmZvEhEKCWVudGl0eV9pZBgNIAEoDRIaChJjbGllbnRf",
+            "cG9zX3ZlcnNpb24YASABKA0SEAoIZW50cnlfaWQYDCABKA1CFqoCE01hcmNo",
             "N3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MotionInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneEntityMoveScNotify), global::March7thHoney.Proto.SceneEntityMoveScNotify.Parser, new[]{ "Motion", "EntryId", "EntityId", "ClientPosVersion" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneEntityMoveScNotify), global::March7thHoney.Proto.SceneEntityMoveScNotify.Parser, new[]{ "Motion", "EntityId", "ClientPosVersion", "EntryId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,9 +75,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SceneEntityMoveScNotify(SceneEntityMoveScNotify other) : this() {
       motion_ = other.motion_ != null ? other.motion_.Clone() : null;
-      entryId_ = other.entryId_;
       entityId_ = other.entityId_;
       clientPosVersion_ = other.clientPosVersion_;
+      entryId_ = other.entryId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -88,7 +88,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "motion" field.</summary>
-    public const int MotionFieldNumber = 4;
+    public const int MotionFieldNumber = 5;
     private global::March7thHoney.Proto.MotionInfo motion_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,18 +96,6 @@ namespace March7thHoney.Proto {
       get { return motion_; }
       set {
         motion_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "entry_id" field.</summary>
-    public const int EntryIdFieldNumber = 5;
-    private uint entryId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint EntryId {
-      get { return entryId_; }
-      set {
-        entryId_ = value;
       }
     }
 
@@ -124,7 +112,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "client_pos_version" field.</summary>
-    public const int ClientPosVersionFieldNumber = 15;
+    public const int ClientPosVersionFieldNumber = 1;
     private uint clientPosVersion_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -132,6 +120,18 @@ namespace March7thHoney.Proto {
       get { return clientPosVersion_; }
       set {
         clientPosVersion_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "entry_id" field.</summary>
+    public const int EntryIdFieldNumber = 12;
+    private uint entryId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint EntryId {
+      get { return entryId_; }
+      set {
+        entryId_ = value;
       }
     }
 
@@ -151,9 +151,9 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (!object.Equals(Motion, other.Motion)) return false;
-      if (EntryId != other.EntryId) return false;
       if (EntityId != other.EntityId) return false;
       if (ClientPosVersion != other.ClientPosVersion) return false;
+      if (EntryId != other.EntryId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -162,9 +162,9 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (motion_ != null) hash ^= Motion.GetHashCode();
-      if (EntryId != 0) hash ^= EntryId.GetHashCode();
       if (EntityId != 0) hash ^= EntityId.GetHashCode();
       if (ClientPosVersion != 0) hash ^= ClientPosVersion.GetHashCode();
+      if (EntryId != 0) hash ^= EntryId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -183,21 +183,21 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (ClientPosVersion != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(ClientPosVersion);
+      }
       if (motion_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(42);
         output.WriteMessage(Motion);
       }
       if (EntryId != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(96);
         output.WriteUInt32(EntryId);
       }
       if (EntityId != 0) {
         output.WriteRawTag(104);
         output.WriteUInt32(EntityId);
-      }
-      if (ClientPosVersion != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(ClientPosVersion);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -209,21 +209,21 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (ClientPosVersion != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(ClientPosVersion);
+      }
       if (motion_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(42);
         output.WriteMessage(Motion);
       }
       if (EntryId != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(96);
         output.WriteUInt32(EntryId);
       }
       if (EntityId != 0) {
         output.WriteRawTag(104);
         output.WriteUInt32(EntityId);
-      }
-      if (ClientPosVersion != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(ClientPosVersion);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -238,14 +238,14 @@ namespace March7thHoney.Proto {
       if (motion_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Motion);
       }
-      if (EntryId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EntryId);
-      }
       if (EntityId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EntityId);
       }
       if (ClientPosVersion != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ClientPosVersion);
+      }
+      if (EntryId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EntryId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -265,14 +265,14 @@ namespace March7thHoney.Proto {
         }
         Motion.MergeFrom(other.Motion);
       }
-      if (other.EntryId != 0) {
-        EntryId = other.EntryId;
-      }
       if (other.EntityId != 0) {
         EntityId = other.EntityId;
       }
       if (other.ClientPosVersion != 0) {
         ClientPosVersion = other.ClientPosVersion;
+      }
+      if (other.EntryId != 0) {
+        EntryId = other.EntryId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -293,23 +293,23 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 34: {
+          case 8: {
+            ClientPosVersion = input.ReadUInt32();
+            break;
+          }
+          case 42: {
             if (motion_ == null) {
               Motion = new global::March7thHoney.Proto.MotionInfo();
             }
             input.ReadMessage(Motion);
             break;
           }
-          case 40: {
+          case 96: {
             EntryId = input.ReadUInt32();
             break;
           }
           case 104: {
             EntityId = input.ReadUInt32();
-            break;
-          }
-          case 120: {
-            ClientPosVersion = input.ReadUInt32();
             break;
           }
         }
@@ -331,23 +331,23 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 34: {
+          case 8: {
+            ClientPosVersion = input.ReadUInt32();
+            break;
+          }
+          case 42: {
             if (motion_ == null) {
               Motion = new global::March7thHoney.Proto.MotionInfo();
             }
             input.ReadMessage(Motion);
             break;
           }
-          case 40: {
+          case 96: {
             EntryId = input.ReadUInt32();
             break;
           }
           case 104: {
             EntityId = input.ReadUInt32();
-            break;
-          }
-          case 120: {
-            ClientPosVersion = input.ReadUInt32();
             break;
           }
         }

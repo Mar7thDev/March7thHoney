@@ -2,14 +2,12 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
+import "CFMDKNCDDAL.proto";
 import "GrowthTargetState.proto";
-import "GrowthTartgetFuncType.proto";
 
 message SetGrowthTargetAvatarCsReq {
-    uint32 KNCJPJFMPAJ = 1;
-    repeated GrowthTartgetFuncType DHAIJLJCJAF = 4;
-    uint32 avatar_id = 9;
-    GrowthTargetState source = 14;
+    repeated CFMDKNCDDAL FLINDJJJFLB = 2;
+    uint32 avatar_id = 4;
+    uint32 FCACACLEJNM = 9;
+    GrowthTargetState source = 6;
 }

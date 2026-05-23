@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static GetAuthkeyScRspReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChVHZXRBdXRoa2V5U2NSc3AucHJvdG8ibwoPR2V0QXV0aGtleVNjUnNwEg8K",
-            "B3JldGNvZGUYASABKA0SEgoKYXV0aF9hcHBpZBgEIAEoCRIRCglzaWduX3R5",
-            "cGUYByABKA0SDwoHYXV0aGtleRgKIAEoCRITCgthdXRoa2V5X3ZlchgOIAEo",
+            "ChVHZXRBdXRoa2V5U2NSc3AucHJvdG8ibwoPR2V0QXV0aGtleVNjUnNwEhIK",
+            "CmF1dGhfYXBwaWQYASABKAkSDwoHYXV0aGtleRgMIAEoCRITCgthdXRoa2V5",
+            "X3ZlchgIIAEoDRIPCgdyZXRjb2RlGAUgASgNEhEKCXNpZ25fdHlwZRgJIAEo",
             "DUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetAuthkeyScRsp), global::March7thHoney.Proto.GetAuthkeyScRsp.Parser, new[]{ "Retcode", "AuthAppid", "SignType", "Authkey", "AuthkeyVer" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetAuthkeyScRsp), global::March7thHoney.Proto.GetAuthkeyScRsp.Parser, new[]{ "AuthAppid", "Authkey", "AuthkeyVer", "Retcode", "SignType" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,11 +73,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetAuthkeyScRsp(GetAuthkeyScRsp other) : this() {
-      retcode_ = other.retcode_;
       authAppid_ = other.authAppid_;
-      signType_ = other.signType_;
       authkey_ = other.authkey_;
       authkeyVer_ = other.authkeyVer_;
+      retcode_ = other.retcode_;
+      signType_ = other.signType_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -87,20 +87,8 @@ namespace March7thHoney.Proto {
       return new GetAuthkeyScRsp(this);
     }
 
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 1;
-    private uint retcode_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
-      set {
-        retcode_ = value;
-      }
-    }
-
     /// <summary>Field number for the "auth_appid" field.</summary>
-    public const int AuthAppidFieldNumber = 4;
+    public const int AuthAppidFieldNumber = 1;
     private string authAppid_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -111,20 +99,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "sign_type" field.</summary>
-    public const int SignTypeFieldNumber = 7;
-    private uint signType_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint SignType {
-      get { return signType_; }
-      set {
-        signType_ = value;
-      }
-    }
-
     /// <summary>Field number for the "authkey" field.</summary>
-    public const int AuthkeyFieldNumber = 10;
+    public const int AuthkeyFieldNumber = 12;
     private string authkey_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -136,7 +112,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "authkey_ver" field.</summary>
-    public const int AuthkeyVerFieldNumber = 14;
+    public const int AuthkeyVerFieldNumber = 8;
     private uint authkeyVer_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -144,6 +120,30 @@ namespace March7thHoney.Proto {
       get { return authkeyVer_; }
       set {
         authkeyVer_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 5;
+    private uint retcode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Retcode {
+      get { return retcode_; }
+      set {
+        retcode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "sign_type" field.</summary>
+    public const int SignTypeFieldNumber = 9;
+    private uint signType_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint SignType {
+      get { return signType_; }
+      set {
+        signType_ = value;
       }
     }
 
@@ -162,11 +162,11 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Retcode != other.Retcode) return false;
       if (AuthAppid != other.AuthAppid) return false;
-      if (SignType != other.SignType) return false;
       if (Authkey != other.Authkey) return false;
       if (AuthkeyVer != other.AuthkeyVer) return false;
+      if (Retcode != other.Retcode) return false;
+      if (SignType != other.SignType) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -174,11 +174,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (AuthAppid.Length != 0) hash ^= AuthAppid.GetHashCode();
-      if (SignType != 0) hash ^= SignType.GetHashCode();
       if (Authkey.Length != 0) hash ^= Authkey.GetHashCode();
       if (AuthkeyVer != 0) hash ^= AuthkeyVer.GetHashCode();
+      if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (SignType != 0) hash ^= SignType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -197,25 +197,25 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Retcode != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(Retcode);
-      }
       if (AuthAppid.Length != 0) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(10);
         output.WriteString(AuthAppid);
       }
+      if (Retcode != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(Retcode);
+      }
+      if (AuthkeyVer != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(AuthkeyVer);
+      }
       if (SignType != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(72);
         output.WriteUInt32(SignType);
       }
       if (Authkey.Length != 0) {
-        output.WriteRawTag(82);
+        output.WriteRawTag(98);
         output.WriteString(Authkey);
-      }
-      if (AuthkeyVer != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(AuthkeyVer);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -227,25 +227,25 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Retcode != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(Retcode);
-      }
       if (AuthAppid.Length != 0) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(10);
         output.WriteString(AuthAppid);
       }
+      if (Retcode != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(Retcode);
+      }
+      if (AuthkeyVer != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(AuthkeyVer);
+      }
       if (SignType != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(72);
         output.WriteUInt32(SignType);
       }
       if (Authkey.Length != 0) {
-        output.WriteRawTag(82);
+        output.WriteRawTag(98);
         output.WriteString(Authkey);
-      }
-      if (AuthkeyVer != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(AuthkeyVer);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -257,20 +257,20 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Retcode != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
-      }
       if (AuthAppid.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(AuthAppid);
-      }
-      if (SignType != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SignType);
       }
       if (Authkey.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Authkey);
       }
       if (AuthkeyVer != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AuthkeyVer);
+      }
+      if (Retcode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      }
+      if (SignType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SignType);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -284,20 +284,20 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
-      }
       if (other.AuthAppid.Length != 0) {
         AuthAppid = other.AuthAppid;
-      }
-      if (other.SignType != 0) {
-        SignType = other.SignType;
       }
       if (other.Authkey.Length != 0) {
         Authkey = other.Authkey;
       }
       if (other.AuthkeyVer != 0) {
         AuthkeyVer = other.AuthkeyVer;
+      }
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
+      }
+      if (other.SignType != 0) {
+        SignType = other.SignType;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -318,24 +318,24 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 34: {
+          case 10: {
             AuthAppid = input.ReadString();
             break;
           }
-          case 56: {
+          case 40: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 64: {
+            AuthkeyVer = input.ReadUInt32();
+            break;
+          }
+          case 72: {
             SignType = input.ReadUInt32();
             break;
           }
-          case 82: {
+          case 98: {
             Authkey = input.ReadString();
-            break;
-          }
-          case 112: {
-            AuthkeyVer = input.ReadUInt32();
             break;
           }
         }
@@ -357,24 +357,24 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 34: {
+          case 10: {
             AuthAppid = input.ReadString();
             break;
           }
-          case 56: {
+          case 40: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 64: {
+            AuthkeyVer = input.ReadUInt32();
+            break;
+          }
+          case 72: {
             SignType = input.ReadUInt32();
             break;
           }
-          case 82: {
+          case 98: {
             Authkey = input.ReadString();
-            break;
-          }
-          case 112: {
-            AuthkeyVer = input.ReadUInt32();
             break;
           }
         }

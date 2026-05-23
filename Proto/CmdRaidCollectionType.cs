@@ -24,13 +24,12 @@ namespace March7thHoney.Proto {
     static CmdRaidCollectionTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChtDbWRSYWlkQ29sbGVjdGlvblR5cGUucHJvdG8q3wEKFUNtZFJhaWRDb2xs",
-            "ZWN0aW9uVHlwZRIbChdNQlBQSUlFQkJESl9QQ1BESEVMUEtFTRAAEhMKDkNt",
-            "ZEZCS01MQkFGS0ZMEJ42EigKI0NtZFJhaWRDb2xsZWN0aW9uRW50ZXJOZXh0",
-            "UmFpZFNjUnNwEKs2EigKI0NtZFJhaWRDb2xsZWN0aW9uRW50ZXJOZXh0UmFp",
-            "ZENzUmVxEKY2Eh8KGkNtZFJhaWRDb2xsZWN0aW9uRGF0YVNjUnNwELA2Eh8K",
-            "GkNtZFJhaWRDb2xsZWN0aW9uRGF0YUNzUmVxEJ02QhaqAhNNYXJjaDd0aEhv",
-            "bmV5LlByb3RvYgZwcm90bzM="));
+            "ChtDbWRSYWlkQ29sbGVjdGlvblR5cGUucHJvdG8qygEKFUNtZFJhaWRDb2xs",
+            "ZWN0aW9uVHlwZRIbChdPTk5EQ09ETE1HRF9OTENER0lQR0ZEShAAEhwKF09O",
+            "TkRDT0RMTUdEX0hJS0lCRkNJS0JBELA2EhwKF09OTkRDT0RMTUdEX0xORkhN",
+            "R0tCTkVPEK42EhwKF09OTkRDT0RMTUdEX0JJSEJHUFBLQ05MEKI2EhwKF09O",
+            "TkRDT0RMTUdEX0JOQUZNTUtNRUxFEJ42EhwKF09OTkRDT0RMTUdEX0tLQkJP",
+            "SUZESURBEKw2QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdRaidCollectionType), }, null, null));
@@ -40,12 +39,12 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdRaidCollectionType {
-    [pbr::OriginalName("MBPPIIEBBDJ_PCPDHELPKEM")] MbppiiebbdjPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdFBKMLBAFKFL")] CmdFbkmlbafkfl = 6942,
-    [pbr::OriginalName("CmdRaidCollectionEnterNextRaidScRsp")] CmdRaidCollectionEnterNextRaidScRsp = 6955,
-    [pbr::OriginalName("CmdRaidCollectionEnterNextRaidCsReq")] CmdRaidCollectionEnterNextRaidCsReq = 6950,
-    [pbr::OriginalName("CmdRaidCollectionDataScRsp")] CmdRaidCollectionDataScRsp = 6960,
-    [pbr::OriginalName("CmdRaidCollectionDataCsReq")] CmdRaidCollectionDataCsReq = 6941,
+    [pbr::OriginalName("ONNDCODLMGD_NLCDGIPGFDJ")] OnndcodlmgdNlcdgipgfdj = 0,
+    [pbr::OriginalName("ONNDCODLMGD_HIKIBFCIKBA")] OnndcodlmgdHikibfcikba = 6960,
+    [pbr::OriginalName("ONNDCODLMGD_LNFHMGKBNEO")] OnndcodlmgdLnfhmgkbneo = 6958,
+    [pbr::OriginalName("ONNDCODLMGD_BIHBGPPKCNL")] OnndcodlmgdBihbgppkcnl = 6946,
+    [pbr::OriginalName("ONNDCODLMGD_BNAFMMKMELE")] OnndcodlmgdBnafmmkmele = 6942,
+    [pbr::OriginalName("ONNDCODLMGD_KKBBOIFDIDA")] OnndcodlmgdKkbboifdida = 6956,
   }
 
   #endregion

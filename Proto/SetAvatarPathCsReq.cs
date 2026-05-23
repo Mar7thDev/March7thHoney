@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChhTZXRBdmF0YXJQYXRoQ3NSZXEucHJvdG8aGU11bHRpUGF0aEF2YXRhclR5",
-            "cGUucHJvdG8iPQoSU2V0QXZhdGFyUGF0aENzUmVxEicKCWF2YXRhcl9pZBgM",
+            "cGUucHJvdG8iPQoSU2V0QXZhdGFyUGF0aENzUmVxEicKCWF2YXRhcl9pZBgG",
             "IAEoDjIULk11bHRpUGF0aEF2YXRhclR5cGVCFqoCE01hcmNoN3RoSG9uZXku",
             "UHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "avatar_id" field.</summary>
-    public const int AvatarIdFieldNumber = 12;
+    public const int AvatarIdFieldNumber = 6;
     private global::March7thHoney.Proto.MultiPathAvatarType avatarId_ = global::March7thHoney.Proto.MultiPathAvatarType.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -138,7 +138,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (AvatarId != global::March7thHoney.Proto.MultiPathAvatarType.None) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(48);
         output.WriteEnum((int) AvatarId);
       }
       if (_unknownFields != null) {
@@ -152,7 +152,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (AvatarId != global::March7thHoney.Proto.MultiPathAvatarType.None) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(48);
         output.WriteEnum((int) AvatarId);
       }
       if (_unknownFields != null) {
@@ -202,7 +202,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 96: {
+          case 48: {
             AvatarId = (global::March7thHoney.Proto.MultiPathAvatarType) input.ReadEnum();
             break;
           }
@@ -225,7 +225,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 96: {
+          case 48: {
             AvatarId = (global::March7thHoney.Proto.MultiPathAvatarType) input.ReadEnum();
             break;
           }

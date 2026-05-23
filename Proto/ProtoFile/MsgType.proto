@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum MsgType {
     MSG_TYPE_NONE = 0;
     MSG_TYPE_CUSTOM_TEXT = 1;
@@ -15,4 +13,5 @@ enum MsgType {
     MSG_TYPE_MGLPLOPECGJ = 7;
     MSG_TYPE_PPGBFMOGAHC = 8;
     MSG_TYPE_BAEKHOHLLKJ = 9;
+    MSG_TYPE_MJIEABMBEDP = 10;
 }

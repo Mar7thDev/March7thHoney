@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "GKFGIMIBBHF.proto";
+import "RogueTalentStatus.proto";
+
+message OKPIPFKONMG {
+    repeated GKFGIMIBBHF LDHIJAHNEGK = 12;
+    RogueTalentStatus status = 15;
+    uint32 CKHCLKOALKE = 1;
+}

@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "CCBKGJGNDCL.proto";
+import "IODAFIBPAGM.proto";
 
 message LogisticsGameCsReq {
-    bool CLPNBFOKJLJ = 1;
-    repeated CCBKGJGNDCL KDKBNMEJLFP = 8;
+    repeated IODAFIBPAGM MDNBOBFGKFN = 15;
+    bool CNCJKGEDEII = 9;
 }

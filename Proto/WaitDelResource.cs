@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChVXYWl0RGVsUmVzb3VyY2UucHJvdG8iKwoPV2FpdERlbFJlc291cmNlEgsK",
-            "A251bRgIIAEoDRILCgN0aWQYCSABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJv",
+            "A251bRgIIAEoDRILCgN0aWQYCiABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJv",
             "dG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "tid" field.</summary>
-    public const int TidFieldNumber = 9;
+    public const int TidFieldNumber = 10;
     private uint tid_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -156,7 +156,7 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(Num);
       }
       if (Tid != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(80);
         output.WriteUInt32(Tid);
       }
       if (_unknownFields != null) {
@@ -174,7 +174,7 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(Num);
       }
       if (Tid != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(80);
         output.WriteUInt32(Tid);
       }
       if (_unknownFields != null) {
@@ -234,7 +234,7 @@ namespace March7thHoney.Proto {
             Num = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 80: {
             Tid = input.ReadUInt32();
             break;
           }
@@ -261,7 +261,7 @@ namespace March7thHoney.Proto {
             Num = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 80: {
             Tid = input.ReadUInt32();
             break;
           }

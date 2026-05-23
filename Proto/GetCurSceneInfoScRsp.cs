@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChpHZXRDdXJTY2VuZUluZm9TY1JzcC5wcm90bxoPU2NlbmVJbmZvLnByb3Rv",
-            "IkIKFEdldEN1clNjZW5lSW5mb1NjUnNwEhkKBXNjZW5lGAMgASgLMgouU2Nl",
-            "bmVJbmZvEg8KB3JldGNvZGUYByABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJv",
+            "IkIKFEdldEN1clNjZW5lSW5mb1NjUnNwEhkKBXNjZW5lGAYgASgLMgouU2Nl",
+            "bmVJbmZvEg8KB3JldGNvZGUYCyABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJv",
             "dG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.SceneInfoReflection.Descriptor, },
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "scene" field.</summary>
-    public const int SceneFieldNumber = 3;
+    public const int SceneFieldNumber = 6;
     private global::March7thHoney.Proto.SceneInfo scene_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 7;
+    public const int RetcodeFieldNumber = 11;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -153,11 +153,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (scene_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(50);
         output.WriteMessage(Scene);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(88);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -171,11 +171,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (scene_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(50);
         output.WriteMessage(Scene);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(88);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -234,14 +234,14 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 26: {
+          case 50: {
             if (scene_ == null) {
               Scene = new global::March7thHoney.Proto.SceneInfo();
             }
             input.ReadMessage(Scene);
             break;
           }
-          case 56: {
+          case 88: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -264,14 +264,14 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 26: {
+          case 50: {
             if (scene_ == null) {
               Scene = new global::March7thHoney.Proto.SceneInfo();
             }
             input.ReadMessage(Scene);
             break;
           }
-          case 56: {
+          case 88: {
             Retcode = input.ReadUInt32();
             break;
           }

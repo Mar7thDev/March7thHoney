@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "EMJCPFCMOMK.proto";
+import "ICDBHMEPNDB.proto";
+
+message CakeRaceUpdatePveCsReq {
+    uint32 LOPNADHJKBF = 13;
+    uint32 OPNGHDENCAB = 11;
+    oneof FGIMLNIJINE {
+        ICDBHMEPNDB BOEJNBKDJLM = 5;
+        uint32 BCFPLAPCFPL = 1;
+        bool MAGPAGCHOHP = 2;
+        EMJCPFCMOMK KMOLBEGKLNI = 9;
+        bool PIKEOHHECCA = 14;
+    }
+}

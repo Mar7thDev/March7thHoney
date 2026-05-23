@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChRTZXRHZW5kZXJDc1JlcS5wcm90bxoMR2VuZGVyLnByb3RvIikKDlNldEdl",
-            "bmRlckNzUmVxEhcKBmdlbmRlchgFIAEoDjIHLkdlbmRlckIWqgITTWFyY2g3",
+            "bmRlckNzUmVxEhcKBmdlbmRlchgBIAEoDjIHLkdlbmRlckIWqgITTWFyY2g3",
             "dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.GenderReflection.Descriptor, },
@@ -83,7 +83,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "gender" field.</summary>
-    public const int GenderFieldNumber = 5;
+    public const int GenderFieldNumber = 1;
     private global::March7thHoney.Proto.Gender gender_ = global::March7thHoney.Proto.Gender.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -137,7 +137,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Gender != global::March7thHoney.Proto.Gender.None) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(8);
         output.WriteEnum((int) Gender);
       }
       if (_unknownFields != null) {
@@ -151,7 +151,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Gender != global::March7thHoney.Proto.Gender.None) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(8);
         output.WriteEnum((int) Gender);
       }
       if (_unknownFields != null) {
@@ -201,7 +201,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 40: {
+          case 8: {
             Gender = (global::March7thHoney.Proto.Gender) input.ReadEnum();
             break;
           }
@@ -224,7 +224,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 40: {
+          case 8: {
             Gender = (global::March7thHoney.Proto.Gender) input.ReadEnum();
             break;
           }

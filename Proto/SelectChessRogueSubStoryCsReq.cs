@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiNTZWxlY3RDaGVzc1JvZ3VlU3ViU3RvcnlDc1JlcS5wcm90byJ/Ch1TZWxl",
-            "Y3RDaGVzc1JvZ3VlU3ViU3RvcnlDc1JlcRITCgtGT01ORkhKQ0RPQxgDIAEo",
-            "DRITCgtJRU5CS0lBR1BCQRgHIAEoDRITCgtFS0VGTU5QRk9HTxgMIAEoDRIf",
-            "Chdyb2d1ZV9kaWFsb2d1ZV9ldmVudF9pZBgNIAEoDUIWqgITTWFyY2g3dGhI",
+            "Y3RDaGVzc1JvZ3VlU3ViU3RvcnlDc1JlcRIfChdyb2d1ZV9kaWFsb2d1ZV9l",
+            "dmVudF9pZBgHIAEoDRITCgtIT05DRE1LUEJFRxgNIAEoDRITCgtFQ0tEUElQ",
+            "TUJPQxgEIAEoDRITCgtKR0NDSU1NRURJShgJIAEoDUIWqgITTWFyY2g3dGhI",
             "b25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SelectChessRogueSubStoryCsReq), global::March7thHoney.Proto.SelectChessRogueSubStoryCsReq.Parser, new[]{ "FOMNFHJCDOC", "IENBKIAGPBA", "EKEFMNPFOGO", "RogueDialogueEventId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SelectChessRogueSubStoryCsReq), global::March7thHoney.Proto.SelectChessRogueSubStoryCsReq.Parser, new[]{ "RogueDialogueEventId", "HONCDMKPBEG", "ECKDPIPMBOC", "JGCCIMMEDIJ" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,10 +74,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SelectChessRogueSubStoryCsReq(SelectChessRogueSubStoryCsReq other) : this() {
-      fOMNFHJCDOC_ = other.fOMNFHJCDOC_;
-      iENBKIAGPBA_ = other.iENBKIAGPBA_;
-      eKEFMNPFOGO_ = other.eKEFMNPFOGO_;
       rogueDialogueEventId_ = other.rogueDialogueEventId_;
+      hONCDMKPBEG_ = other.hONCDMKPBEG_;
+      eCKDPIPMBOC_ = other.eCKDPIPMBOC_;
+      jGCCIMMEDIJ_ = other.jGCCIMMEDIJ_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -87,44 +87,8 @@ namespace March7thHoney.Proto {
       return new SelectChessRogueSubStoryCsReq(this);
     }
 
-    /// <summary>Field number for the "FOMNFHJCDOC" field.</summary>
-    public const int FOMNFHJCDOCFieldNumber = 3;
-    private uint fOMNFHJCDOC_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint FOMNFHJCDOC {
-      get { return fOMNFHJCDOC_; }
-      set {
-        fOMNFHJCDOC_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "IENBKIAGPBA" field.</summary>
-    public const int IENBKIAGPBAFieldNumber = 7;
-    private uint iENBKIAGPBA_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint IENBKIAGPBA {
-      get { return iENBKIAGPBA_; }
-      set {
-        iENBKIAGPBA_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "EKEFMNPFOGO" field.</summary>
-    public const int EKEFMNPFOGOFieldNumber = 12;
-    private uint eKEFMNPFOGO_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint EKEFMNPFOGO {
-      get { return eKEFMNPFOGO_; }
-      set {
-        eKEFMNPFOGO_ = value;
-      }
-    }
-
     /// <summary>Field number for the "rogue_dialogue_event_id" field.</summary>
-    public const int RogueDialogueEventIdFieldNumber = 13;
+    public const int RogueDialogueEventIdFieldNumber = 7;
     private uint rogueDialogueEventId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -132,6 +96,42 @@ namespace March7thHoney.Proto {
       get { return rogueDialogueEventId_; }
       set {
         rogueDialogueEventId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "HONCDMKPBEG" field.</summary>
+    public const int HONCDMKPBEGFieldNumber = 13;
+    private uint hONCDMKPBEG_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint HONCDMKPBEG {
+      get { return hONCDMKPBEG_; }
+      set {
+        hONCDMKPBEG_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "ECKDPIPMBOC" field.</summary>
+    public const int ECKDPIPMBOCFieldNumber = 4;
+    private uint eCKDPIPMBOC_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint ECKDPIPMBOC {
+      get { return eCKDPIPMBOC_; }
+      set {
+        eCKDPIPMBOC_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "JGCCIMMEDIJ" field.</summary>
+    public const int JGCCIMMEDIJFieldNumber = 9;
+    private uint jGCCIMMEDIJ_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint JGCCIMMEDIJ {
+      get { return jGCCIMMEDIJ_; }
+      set {
+        jGCCIMMEDIJ_ = value;
       }
     }
 
@@ -150,10 +150,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (FOMNFHJCDOC != other.FOMNFHJCDOC) return false;
-      if (IENBKIAGPBA != other.IENBKIAGPBA) return false;
-      if (EKEFMNPFOGO != other.EKEFMNPFOGO) return false;
       if (RogueDialogueEventId != other.RogueDialogueEventId) return false;
+      if (HONCDMKPBEG != other.HONCDMKPBEG) return false;
+      if (ECKDPIPMBOC != other.ECKDPIPMBOC) return false;
+      if (JGCCIMMEDIJ != other.JGCCIMMEDIJ) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -161,10 +161,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (FOMNFHJCDOC != 0) hash ^= FOMNFHJCDOC.GetHashCode();
-      if (IENBKIAGPBA != 0) hash ^= IENBKIAGPBA.GetHashCode();
-      if (EKEFMNPFOGO != 0) hash ^= EKEFMNPFOGO.GetHashCode();
       if (RogueDialogueEventId != 0) hash ^= RogueDialogueEventId.GetHashCode();
+      if (HONCDMKPBEG != 0) hash ^= HONCDMKPBEG.GetHashCode();
+      if (ECKDPIPMBOC != 0) hash ^= ECKDPIPMBOC.GetHashCode();
+      if (JGCCIMMEDIJ != 0) hash ^= JGCCIMMEDIJ.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -183,21 +183,21 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (FOMNFHJCDOC != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(FOMNFHJCDOC);
-      }
-      if (IENBKIAGPBA != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(IENBKIAGPBA);
-      }
-      if (EKEFMNPFOGO != 0) {
-        output.WriteRawTag(96);
-        output.WriteUInt32(EKEFMNPFOGO);
+      if (ECKDPIPMBOC != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(ECKDPIPMBOC);
       }
       if (RogueDialogueEventId != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(56);
         output.WriteUInt32(RogueDialogueEventId);
+      }
+      if (JGCCIMMEDIJ != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(JGCCIMMEDIJ);
+      }
+      if (HONCDMKPBEG != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(HONCDMKPBEG);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -209,21 +209,21 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (FOMNFHJCDOC != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(FOMNFHJCDOC);
-      }
-      if (IENBKIAGPBA != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(IENBKIAGPBA);
-      }
-      if (EKEFMNPFOGO != 0) {
-        output.WriteRawTag(96);
-        output.WriteUInt32(EKEFMNPFOGO);
+      if (ECKDPIPMBOC != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(ECKDPIPMBOC);
       }
       if (RogueDialogueEventId != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(56);
         output.WriteUInt32(RogueDialogueEventId);
+      }
+      if (JGCCIMMEDIJ != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(JGCCIMMEDIJ);
+      }
+      if (HONCDMKPBEG != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(HONCDMKPBEG);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -235,17 +235,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (FOMNFHJCDOC != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FOMNFHJCDOC);
-      }
-      if (IENBKIAGPBA != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(IENBKIAGPBA);
-      }
-      if (EKEFMNPFOGO != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EKEFMNPFOGO);
-      }
       if (RogueDialogueEventId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RogueDialogueEventId);
+      }
+      if (HONCDMKPBEG != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(HONCDMKPBEG);
+      }
+      if (ECKDPIPMBOC != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ECKDPIPMBOC);
+      }
+      if (JGCCIMMEDIJ != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(JGCCIMMEDIJ);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -259,17 +259,17 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.FOMNFHJCDOC != 0) {
-        FOMNFHJCDOC = other.FOMNFHJCDOC;
-      }
-      if (other.IENBKIAGPBA != 0) {
-        IENBKIAGPBA = other.IENBKIAGPBA;
-      }
-      if (other.EKEFMNPFOGO != 0) {
-        EKEFMNPFOGO = other.EKEFMNPFOGO;
-      }
       if (other.RogueDialogueEventId != 0) {
         RogueDialogueEventId = other.RogueDialogueEventId;
+      }
+      if (other.HONCDMKPBEG != 0) {
+        HONCDMKPBEG = other.HONCDMKPBEG;
+      }
+      if (other.ECKDPIPMBOC != 0) {
+        ECKDPIPMBOC = other.ECKDPIPMBOC;
+      }
+      if (other.JGCCIMMEDIJ != 0) {
+        JGCCIMMEDIJ = other.JGCCIMMEDIJ;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -290,20 +290,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
-            FOMNFHJCDOC = input.ReadUInt32();
+          case 32: {
+            ECKDPIPMBOC = input.ReadUInt32();
             break;
           }
           case 56: {
-            IENBKIAGPBA = input.ReadUInt32();
+            RogueDialogueEventId = input.ReadUInt32();
             break;
           }
-          case 96: {
-            EKEFMNPFOGO = input.ReadUInt32();
+          case 72: {
+            JGCCIMMEDIJ = input.ReadUInt32();
             break;
           }
           case 104: {
-            RogueDialogueEventId = input.ReadUInt32();
+            HONCDMKPBEG = input.ReadUInt32();
             break;
           }
         }
@@ -325,20 +325,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
-            FOMNFHJCDOC = input.ReadUInt32();
+          case 32: {
+            ECKDPIPMBOC = input.ReadUInt32();
             break;
           }
           case 56: {
-            IENBKIAGPBA = input.ReadUInt32();
+            RogueDialogueEventId = input.ReadUInt32();
             break;
           }
-          case 96: {
-            EKEFMNPFOGO = input.ReadUInt32();
+          case 72: {
+            JGCCIMMEDIJ = input.ReadUInt32();
             break;
           }
           case 104: {
-            RogueDialogueEventId = input.ReadUInt32();
+            HONCDMKPBEG = input.ReadUInt32();
             break;
           }
         }

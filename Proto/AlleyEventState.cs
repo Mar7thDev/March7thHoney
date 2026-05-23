@@ -25,9 +25,9 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChVBbGxleUV2ZW50U3RhdGUucHJvdG8qhQEKD0FsbGV5RXZlbnRTdGF0ZRIb",
-            "ChdIRUJBR0hMRUVDSF9NRkRQTEFPRUtGRRAAEhsKF0hFQkFHSExFRUNIX0dL",
-            "Qk9ESkZBSkNFEAESGwoXSEVCQUdITEVFQ0hfRE9JQlBGTk9KRkoQAhIbChdI",
-            "RUJBR0hMRUVDSF9EQUZBRERJRU5JSBADQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
+            "ChdBSk9DQ09BSUZJRl9OQVBNRkZETUxFSxAAEhsKF0FKT0NDT0FJRklGX0VN",
+            "SkRLQkpGRkhGEAESGwoXQUpPQ0NPQUlGSUZfTU9NSEVFUElMSk8QAhIbChdB",
+            "Sk9DQ09BSUZJRl9IREdQRUVJSklKUBADQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
             "b3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -38,10 +38,10 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum AlleyEventState {
-    [pbr::OriginalName("HEBAGHLEECH_MFDPLAOEKFE")] HebaghleechMfdplaoekfe = 0,
-    [pbr::OriginalName("HEBAGHLEECH_GKBODJFAJCE")] HebaghleechGkbodjfajce = 1,
-    [pbr::OriginalName("HEBAGHLEECH_DOIBPFNOJFJ")] HebaghleechDoibpfnojfj = 2,
-    [pbr::OriginalName("HEBAGHLEECH_DAFADDIENIH")] HebaghleechDafaddienih = 3,
+    [pbr::OriginalName("AJOCCOAIFIF_NAPMFFDMLEK")] AjoccoaififNapmffdmlek = 0,
+    [pbr::OriginalName("AJOCCOAIFIF_EMJDKBJFFHF")] AjoccoaififEmjdkbjffhf = 1,
+    [pbr::OriginalName("AJOCCOAIFIF_MOMHEEPILJO")] AjoccoaififMomheepiljo = 2,
+    [pbr::OriginalName("AJOCCOAIFIF_HDGPEEIJIJP")] AjoccoaififHdgpeeijijp = 3,
   }
 
   #endregion

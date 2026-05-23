@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "AGLNLHOBDKI.proto";
+import "MIGPNAOGHEP.proto";
 
 message SetRogueCollectionCsReq {
-    repeated uint32 HJNAAMBAJME = 1;
-    repeated AGLNLHOBDKI PFJFFEFEBAN = 5;
-    repeated uint32 BCIIJGGJKHB = 11;
+    repeated uint32 NPICFPDAPAF = 14;
+    repeated MIGPNAOGHEP NEKJDKDAMKF = 3;
+    repeated uint32 MFMPDDCGGMN = 5;
 }

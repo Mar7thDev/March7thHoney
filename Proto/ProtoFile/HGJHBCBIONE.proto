@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "GJJEOANEDDO.proto";
+import "OJHHACMHFKA.proto";
+
+message HGJHBCBIONE {
+    OJHHACMHFKA GLOAGDBEKDP = 6;
+    GJJEOANEDDO GMKICMIMAAB = 11;
+}

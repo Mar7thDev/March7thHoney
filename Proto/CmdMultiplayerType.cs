@@ -24,18 +24,19 @@ namespace March7thHoney.Proto {
     static CmdMultiplayerTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChhDbWRNdWx0aXBsYXllclR5cGUucHJvdG8q1QMKEkNtZE11bHRpcGxheWVy",
-            "VHlwZRIbChdNQ01FQ0tJQkFETl9QQ1BESEVMUEtFTRAAEhMKDkNtZE1LTExM",
-            "S0xFRUFQEKcIEh0KGENtZEdldE1hdGNoUGxheURhdGFDc1JlcRCCCBIfChpD",
-            "bWRHZXRGcmllbmRSYW5raW5nSW5mb1JzcBCNCBIhChxDbWRHZXRGcmllbmRS",
-            "YW5raW5nSW5mb0NzUmVxELIIEhsKFkNtZEZpZ2h0R2FtZVN0YXRlQ3NSZXEQ",
-            "wwgSEwoOQ21kRkNJQU5KS0dNQ0gQyggSHwoaQ21kUGxheWVyR2V0RmlnaHRH",
-            "YXRlQ3NSZXEQxggSGAoTQ21kRmlnaHRHaXZlVXBDc1JlcRD2BxIbChZDbWRH",
-            "ZXRNYXRjaFBsYXlEYXRhUnNwEI8IEhMKDkNtZExPS0FKR0ZNS0FLEMcIEhsK",
-            "FkNtZEZpZ2h0R2FtZVN0YXRlU2NSc3AQ8gcSGQoUQ21kU2VsZlJhbmtDaGFu",
-            "Z2VOdGYQ7AcSHgoZQ21kTWF0Y2hQbGF5RGF0YUNoYW5nZU50ZhDpBxIeChlD",
-            "bWRGaWdodEdhbWVTdGFydFNjTm90aWZ5EPEHEhMKDkNtZERHRUVJTENNSEhF",
-            "EPoHQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ChhDbWRNdWx0aXBsYXllclR5cGUucHJvdG8q8wMKEkNtZE11bHRpcGxheWVy",
+            "VHlwZRIbChdFRENETUtGSU9QSF9OTENER0lQR0ZEShAAEhwKF0VEQ0RNS0ZJ",
+            "T1BIX0JOQVBISUhKTEJMEPIHEhwKF0VEQ0RNS0ZJT1BIX0pGQUNDRUFPQkRN",
+            "ELgIEhwKF0VEQ0RNS0ZJT1BIX0RKR0hDR0NQSENEEIwIEhwKF0VEQ0RNS0ZJ",
+            "T1BIX01NSkRHQ0lQR0tGEJ4IEhwKF0VEQ0RNS0ZJT1BIX0RMQ0xBUEZOQ0pH",
+            "EPQHEhwKF0VEQ0RNS0ZJT1BIX09NSUFBSUpBRktKELsIEhwKF0VEQ0RNS0ZJ",
+            "T1BIX0VCRUlMSERDSkxQELEIEhwKF0VEQ0RNS0ZJT1BIX0VPTU1MSEVQSEFQ",
+            "EOsHEhwKF0VEQ0RNS0ZJT1BIX0lQTk5JT0xITUdDEPcHEhwKF0VEQ0RNS0ZJ",
+            "T1BIX09BQUZOSUtMS0pPEL8IEhwKF0VEQ0RNS0ZJT1BIX01HSkdLSkFPRElP",
+            "EIMIEhwKF0VEQ0RNS0ZJT1BIX0tQSkZGTUdBSUJDEPUHEhwKF0VEQ0RNS0ZJ",
+            "T1BIX0NIRktESkdBSUVMEIUIEhwKF0VEQ0RNS0ZJT1BIX0lBQkJPSUtNRExC",
+            "ELkIEhwKF0VEQ0RNS0ZJT1BIX0RPQUpDQ0VHR01PEPEHQhaqAhNNYXJjaDd0",
+            "aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdMultiplayerType), }, null, null));
@@ -45,22 +46,22 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdMultiplayerType {
-    [pbr::OriginalName("MCMECKIBADN_PCPDHELPKEM")] McmeckibadnPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdMKLLLKLEEAP")] CmdMklllkleeap = 1063,
-    [pbr::OriginalName("CmdGetMatchPlayDataCsReq")] CmdGetMatchPlayDataCsReq = 1026,
-    [pbr::OriginalName("CmdGetFriendRankingInfoRsp")] CmdGetFriendRankingInfoRsp = 1037,
-    [pbr::OriginalName("CmdGetFriendRankingInfoCsReq")] CmdGetFriendRankingInfoCsReq = 1074,
-    [pbr::OriginalName("CmdFightGameStateCsReq")] CmdFightGameStateCsReq = 1091,
-    [pbr::OriginalName("CmdFCIANJKGMCH")] CmdFcianjkgmch = 1098,
-    [pbr::OriginalName("CmdPlayerGetFightGateCsReq")] CmdPlayerGetFightGateCsReq = 1094,
-    [pbr::OriginalName("CmdFightGiveUpCsReq")] CmdFightGiveUpCsReq = 1014,
-    [pbr::OriginalName("CmdGetMatchPlayDataRsp")] CmdGetMatchPlayDataRsp = 1039,
-    [pbr::OriginalName("CmdLOKAJGFMKAK")] CmdLokajgfmkak = 1095,
-    [pbr::OriginalName("CmdFightGameStateScRsp")] CmdFightGameStateScRsp = 1010,
-    [pbr::OriginalName("CmdSelfRankChangeNtf")] CmdSelfRankChangeNtf = 1004,
-    [pbr::OriginalName("CmdMatchPlayDataChangeNtf")] CmdMatchPlayDataChangeNtf = 1001,
-    [pbr::OriginalName("CmdFightGameStartScNotify")] CmdFightGameStartScNotify = 1009,
-    [pbr::OriginalName("CmdDGEEILCMHHE")] CmdDgeeilcmhhe = 1018,
+    [pbr::OriginalName("EDCDMKFIOPH_NLCDGIPGFDJ")] EdcdmkfiophNlcdgipgfdj = 0,
+    [pbr::OriginalName("EDCDMKFIOPH_BNAPHIHJLBL")] EdcdmkfiophBnaphihjlbl = 1010,
+    [pbr::OriginalName("EDCDMKFIOPH_JFACCEAOBDM")] EdcdmkfiophJfacceaobdm = 1080,
+    [pbr::OriginalName("EDCDMKFIOPH_DJGHCGCPHCD")] EdcdmkfiophDjghcgcphcd = 1036,
+    [pbr::OriginalName("EDCDMKFIOPH_MMJDGCIPGKF")] EdcdmkfiophMmjdgcipgkf = 1054,
+    [pbr::OriginalName("EDCDMKFIOPH_DLCLAPFNCJG")] EdcdmkfiophDlclapfncjg = 1012,
+    [pbr::OriginalName("EDCDMKFIOPH_OMIAAIJAFKJ")] EdcdmkfiophOmiaaijafkj = 1083,
+    [pbr::OriginalName("EDCDMKFIOPH_EBEILHDCJLP")] EdcdmkfiophEbeilhdcjlp = 1073,
+    [pbr::OriginalName("EDCDMKFIOPH_EOMMLHEPHAP")] EdcdmkfiophEommlhephap = 1003,
+    [pbr::OriginalName("EDCDMKFIOPH_IPNNIOLHMGC")] EdcdmkfiophIpnniolhmgc = 1015,
+    [pbr::OriginalName("EDCDMKFIOPH_OAAFNIKLKJO")] EdcdmkfiophOaafniklkjo = 1087,
+    [pbr::OriginalName("EDCDMKFIOPH_MGJGKJAODIO")] EdcdmkfiophMgjgkjaodio = 1027,
+    [pbr::OriginalName("EDCDMKFIOPH_KPJFFMGAIBC")] EdcdmkfiophKpjffmgaibc = 1013,
+    [pbr::OriginalName("EDCDMKFIOPH_CHFKDJGAIEL")] EdcdmkfiophChfkdjgaiel = 1029,
+    [pbr::OriginalName("EDCDMKFIOPH_IABBOIKMDLB")] EdcdmkfiophIabboikmdlb = 1081,
+    [pbr::OriginalName("EDCDMKFIOPH_DOAJCCEGGMO")] EdcdmkfiophDoajcceggmo = 1009,
   }
 
   #endregion

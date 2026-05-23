@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message FIIJNPBFJBG {
+    map<string, uint32> POCKGKDFLKK = 15;
+    uint32 IFLJPNDPDOA = 4;
+}

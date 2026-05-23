@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "LIDNPDNPPAI.proto";
+import "IFBJJJOBGHB.proto";
 
 message GetTrackPhotoActivityDataScRsp {
-    uint32 retcode = 1;
-    repeated LIDNPDNPPAI EGLCHHGAMFC = 3;
+    repeated IFBJJJOBGHB PEDCKGNNPAJ = 8;
+    uint32 retcode = 13;
 }

@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum PlayingState {
     PLAYING_STATE_NONE = 0;
     PLAYING_ROGUE_COSMOS = 1;
@@ -15,5 +13,5 @@ enum PlayingState {
     PLAYING_ROGUE_TOURN = 7;
     PLAYING_ROGUE_MAGIC = 8;
     PLAYING_CHALLENGE_PEAK = 9;
-    LGGELNENDAO_OKGAHGBKFDJ = 10;
+    DIHJILNECAD_OAILFPOOBMJ = 10;
 }

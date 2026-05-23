@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "NHDGNBKBNDB.proto";
+
+message GLLDHGHJLOA {
+    repeated NHDGNBKBNDB BCGOAIPKGIK = 11;
+    repeated uint32 AJFJLCKPNAM = 10;
+    string nickname = 13;
+    uint32 head_icon = 4;
+    uint32 uid = 12;
+    uint32 rank = 5;
+    uint32 KIMKENNLHEH = 7;
+    uint32 hp = 8;
+    uint32 IPINHNFCIOE = 9;
+}

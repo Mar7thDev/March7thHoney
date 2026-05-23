@@ -2,28 +2,26 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "CHDLBDDHKDJ.proto";
-import "CIKDDLMJLEN.proto";
-import "ECLEPFKJFLC.proto";
-import "JNOCGFDGHEB.proto";
-import "MEBBEGGFJMI.proto";
-import "MMLBJFHEAKL.proto";
-import "OIJJJKLMFNO.proto";
-import "PEKNOBDHAKO.proto";
+import "ECCKHOLLPPC.proto";
+import "GCBHOIJLBFL.proto";
+import "HCKADDLIGEB.proto";
+import "IDLACKBINMC.proto";
+import "IGCHDHFMPBJ.proto";
+import "NDDOMFBJMKE.proto";
+import "OPLFDAGPBEI.proto";
+import "PELDIEOMMDM.proto";
 
 message ChatData {
     oneof extend_type {
-        CIKDDLMJLEN EPKIJKOHNKC = 101;
-        MMLBJFHEAKL MOELBPPIPDC = 102;
+        ECCKHOLLPPC NPBOINAPJJE = 101;
+        NDDOMFBJMKE IBJBFODFIMN = 102;
         string message_text = 103;
         uint32 extra_id = 104;
-        PEKNOBDHAKO IMOLBGOCNEI = 105;
-        MEBBEGGFJMI BAEABLOBEGI = 106;
-        OIJJJKLMFNO DLBNMNCPEEH = 107;
-        ECLEPFKJFLC MPGEJDAEOGJ = 108;
-        CHDLBDDHKDJ CMFDCKANPGD = 109;
-        JNOCGFDGHEB LEGOJPMNCLL = 110;
+        GCBHOIJLBFL IALHIFELMGE = 105;
+        IDLACKBINMC ADBNPHDPPIH = 106;
+        IGCHDHFMPBJ LPLCDCIFOOK = 107;
+        PELDIEOMMDM NLHJFKGNAMB = 108;
+        OPLFDAGPBEI BCLPAMNPHNP = 109;
+        HCKADDLIGEB HJADNIAAMGJ = 110;
     }
 }

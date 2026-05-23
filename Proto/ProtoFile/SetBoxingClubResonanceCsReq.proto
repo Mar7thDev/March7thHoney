@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "AKLDICEFCIL.proto";
+
+message SetBoxingClubResonanceCsReq {
+    repeated AKLDICEFCIL OOJOMKDMBBM = 4;
+    uint32 challenge_id = 3;
+}

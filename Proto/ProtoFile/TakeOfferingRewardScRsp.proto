@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "ItemList.proto";
 import "OfferingInfo.proto";
 
 message TakeOfferingRewardScRsp {
-    uint32 retcode = 2;
-    ItemList reward = 5;
-    OfferingInfo offering_info = 8;
+    ItemList reward = 1;
+    OfferingInfo offering_info = 15;
+    uint32 retcode = 12;
 }

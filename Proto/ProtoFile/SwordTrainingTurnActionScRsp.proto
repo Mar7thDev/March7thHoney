@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message SwordTrainingTurnActionScRsp {
-    uint32 retcode = 3;
-    repeated uint32 ACBIMOGNKAJ = 5;
+    repeated uint32 CCPADEMEHBA = 14;
+    uint32 retcode = 6;
 }

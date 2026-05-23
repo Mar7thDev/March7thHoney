@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiVHZXRGcmllbmRSZWNvbW1lbmRMaXN0SW5mb0NzUmVxLnByb3RvIjYKH0dl",
-            "dEZyaWVuZFJlY29tbWVuZExpc3RJbmZvQ3NSZXESEwoLSUNIRU5PSkVDQVAY",
-            "CyABKAhCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "dEZyaWVuZFJlY29tbWVuZExpc3RJbmZvQ3NSZXESEwoLREROS0hESUtBRUwY",
+            "BCABKAhCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetFriendRecommendListInfoCsReq), global::March7thHoney.Proto.GetFriendRecommendListInfoCsReq.Parser, new[]{ "ICHENOJECAP" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetFriendRecommendListInfoCsReq), global::March7thHoney.Proto.GetFriendRecommendListInfoCsReq.Parser, new[]{ "DDNKHDIKAEL" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,7 +72,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetFriendRecommendListInfoCsReq(GetFriendRecommendListInfoCsReq other) : this() {
-      iCHENOJECAP_ = other.iCHENOJECAP_;
+      dDNKHDIKAEL_ = other.dDNKHDIKAEL_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -82,15 +82,15 @@ namespace March7thHoney.Proto {
       return new GetFriendRecommendListInfoCsReq(this);
     }
 
-    /// <summary>Field number for the "ICHENOJECAP" field.</summary>
-    public const int ICHENOJECAPFieldNumber = 11;
-    private bool iCHENOJECAP_;
+    /// <summary>Field number for the "DDNKHDIKAEL" field.</summary>
+    public const int DDNKHDIKAELFieldNumber = 4;
+    private bool dDNKHDIKAEL_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool ICHENOJECAP {
-      get { return iCHENOJECAP_; }
+    public bool DDNKHDIKAEL {
+      get { return dDNKHDIKAEL_; }
       set {
-        iCHENOJECAP_ = value;
+        dDNKHDIKAEL_ = value;
       }
     }
 
@@ -109,7 +109,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (ICHENOJECAP != other.ICHENOJECAP) return false;
+      if (DDNKHDIKAEL != other.DDNKHDIKAEL) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -117,7 +117,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (ICHENOJECAP != false) hash ^= ICHENOJECAP.GetHashCode();
+      if (DDNKHDIKAEL != false) hash ^= DDNKHDIKAEL.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (ICHENOJECAP != false) {
-        output.WriteRawTag(88);
-        output.WriteBool(ICHENOJECAP);
+      if (DDNKHDIKAEL != false) {
+        output.WriteRawTag(32);
+        output.WriteBool(DDNKHDIKAEL);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -150,9 +150,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (ICHENOJECAP != false) {
-        output.WriteRawTag(88);
-        output.WriteBool(ICHENOJECAP);
+      if (DDNKHDIKAEL != false) {
+        output.WriteRawTag(32);
+        output.WriteBool(DDNKHDIKAEL);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -164,7 +164,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (ICHENOJECAP != false) {
+      if (DDNKHDIKAEL != false) {
         size += 1 + 1;
       }
       if (_unknownFields != null) {
@@ -179,8 +179,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.ICHENOJECAP != false) {
-        ICHENOJECAP = other.ICHENOJECAP;
+      if (other.DDNKHDIKAEL != false) {
+        DDNKHDIKAEL = other.DDNKHDIKAEL;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -201,8 +201,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 88: {
-            ICHENOJECAP = input.ReadBool();
+          case 32: {
+            DDNKHDIKAEL = input.ReadBool();
             break;
           }
         }
@@ -224,8 +224,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 88: {
-            ICHENOJECAP = input.ReadBool();
+          case 32: {
+            DDNKHDIKAEL = input.ReadBool();
             break;
           }
         }

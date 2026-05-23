@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
+import "CFCPOEDPPKB.proto";
 import "ItemList.proto";
-import "PLHBBMEMDBG.proto";
 
 message TrainVisitorRewardSendNotify {
-    uint32 visitor_id = 6;
-    PLHBBMEMDBG type = 10;
-    ItemList reward = 13;
+    ItemList reward = 11;
+    uint32 DOOACEHOPEE = 10;
+    CFCPOEDPPKB type = 1;
 }

@@ -25,9 +25,9 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChVNb3ZpZVJhY2luZ1R5cGUucHJvdG8qhQEKD01vdmllUmFjaW5nVHlwZRIb",
-            "ChdQS0hJQ0xFSEpLTF9ITktESFBLQ0dFTxAAEhsKF1BLSElDTEVISktMX0VC",
-            "QUJIT0FPREZGEAESGwoXUEtISUNMRUhKS0xfSEhGSUJFTk5FQkgQAhIbChdQ",
-            "S0hJQ0xFSEpLTF9LSURJS0tKTkpOShADQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
+            "ChdLS0JOS0VLRFBGTV9CSUZMR0xGT0JCTRAAEhsKF0tLQk5LRUtEUEZNX0RO",
+            "S0hMR1BKTkpPEAESGwoXS0tCTktFS0RQRk1fRlBHRU9ORUtJUEQQAhIbChdL",
+            "S0JOS0VLRFBGTV9DR01MR0hJQ05QThADQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
             "b3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -38,10 +38,10 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum MovieRacingType {
-    [pbr::OriginalName("PKHICLEHJKL_HNKDHPKCGEO")] PkhiclehjklHnkdhpkcgeo = 0,
-    [pbr::OriginalName("PKHICLEHJKL_EBABHOAODFF")] PkhiclehjklEbabhoaodff = 1,
-    [pbr::OriginalName("PKHICLEHJKL_HHFIBENNEBH")] PkhiclehjklHhfibennebh = 2,
-    [pbr::OriginalName("PKHICLEHJKL_KIDIKKJNJNJ")] PkhiclehjklKidikkjnjnj = 3,
+    [pbr::OriginalName("KKBNKEKDPFM_BIFLGLFOBBM")] KkbnkekdpfmBiflglfobbm = 0,
+    [pbr::OriginalName("KKBNKEKDPFM_DNKHLGPJNJO")] KkbnkekdpfmDnkhlgpjnjo = 1,
+    [pbr::OriginalName("KKBNKEKDPFM_FPGEONEKIPD")] KkbnkekdpfmFpgeonekipd = 2,
+    [pbr::OriginalName("KKBNKEKDPFM_CGMLGHICNPN")] KkbnkekdpfmCgmlghicnpn = 3,
   }
 
   #endregion

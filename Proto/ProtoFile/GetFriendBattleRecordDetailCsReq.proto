@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message GetFriendBattleRecordDetailCsReq {
-    uint32 uid = 4;
+    uint32 uid = 9;
 }

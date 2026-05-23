@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChNUdXRvcmlhbEd1aWRlLnByb3RvGhdUdXRvcmlhbEd1aWRlVHlwZS5wcm90",
             "bxoUVHV0b3JpYWxTdGF0dXMucHJvdG8iXgoNVHV0b3JpYWxHdWlkZRIfCgZz",
-            "dGF0dXMYCSABKA4yDy5UdXRvcmlhbFN0YXR1cxIgCgR0eXBlGAwgASgOMhIu",
-            "VHV0b3JpYWxHdWlkZVR5cGUSCgoCaWQYDSABKA1CFqoCE01hcmNoN3RoSG9u",
+            "dGF0dXMYBSABKA4yDy5UdXRvcmlhbFN0YXR1cxIgCgR0eXBlGAggASgOMhIu",
+            "VHV0b3JpYWxHdWlkZVR5cGUSCgoCaWQYAiABKA1CFqoCE01hcmNoN3RoSG9u",
             "ZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.TutorialGuideTypeReflection.Descriptor, global::March7thHoney.Proto.TutorialStatusReflection.Descriptor, },
@@ -87,7 +87,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "status" field.</summary>
-    public const int StatusFieldNumber = 9;
+    public const int StatusFieldNumber = 5;
     private global::March7thHoney.Proto.TutorialStatus status_ = global::March7thHoney.Proto.TutorialStatus.TutorialNone;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -99,8 +99,8 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "type" field.</summary>
-    public const int TypeFieldNumber = 12;
-    private global::March7thHoney.Proto.TutorialGuideType type_ = global::March7thHoney.Proto.TutorialGuideType.FgklpmcjbacNnmbahcckja;
+    public const int TypeFieldNumber = 8;
+    private global::March7thHoney.Proto.TutorialGuideType type_ = global::March7thHoney.Proto.TutorialGuideType.AoccebgnpjaGinfcgdddom;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.TutorialGuideType Type {
@@ -111,7 +111,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 13;
+    public const int IdFieldNumber = 2;
     private uint id_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -148,7 +148,7 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (Status != global::March7thHoney.Proto.TutorialStatus.TutorialNone) hash ^= Status.GetHashCode();
-      if (Type != global::March7thHoney.Proto.TutorialGuideType.FgklpmcjbacNnmbahcckja) hash ^= Type.GetHashCode();
+      if (Type != global::March7thHoney.Proto.TutorialGuideType.AoccebgnpjaGinfcgdddom) hash ^= Type.GetHashCode();
       if (Id != 0) hash ^= Id.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -168,17 +168,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (Id != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(Id);
+      }
       if (Status != global::March7thHoney.Proto.TutorialStatus.TutorialNone) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(40);
         output.WriteEnum((int) Status);
       }
-      if (Type != global::March7thHoney.Proto.TutorialGuideType.FgklpmcjbacNnmbahcckja) {
-        output.WriteRawTag(96);
+      if (Type != global::March7thHoney.Proto.TutorialGuideType.AoccebgnpjaGinfcgdddom) {
+        output.WriteRawTag(64);
         output.WriteEnum((int) Type);
-      }
-      if (Id != 0) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(Id);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -190,17 +190,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Id != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(Id);
+      }
       if (Status != global::March7thHoney.Proto.TutorialStatus.TutorialNone) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(40);
         output.WriteEnum((int) Status);
       }
-      if (Type != global::March7thHoney.Proto.TutorialGuideType.FgklpmcjbacNnmbahcckja) {
-        output.WriteRawTag(96);
+      if (Type != global::March7thHoney.Proto.TutorialGuideType.AoccebgnpjaGinfcgdddom) {
+        output.WriteRawTag(64);
         output.WriteEnum((int) Type);
-      }
-      if (Id != 0) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(Id);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -215,7 +215,7 @@ namespace March7thHoney.Proto {
       if (Status != global::March7thHoney.Proto.TutorialStatus.TutorialNone) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Status);
       }
-      if (Type != global::March7thHoney.Proto.TutorialGuideType.FgklpmcjbacNnmbahcckja) {
+      if (Type != global::March7thHoney.Proto.TutorialGuideType.AoccebgnpjaGinfcgdddom) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
       }
       if (Id != 0) {
@@ -236,7 +236,7 @@ namespace March7thHoney.Proto {
       if (other.Status != global::March7thHoney.Proto.TutorialStatus.TutorialNone) {
         Status = other.Status;
       }
-      if (other.Type != global::March7thHoney.Proto.TutorialGuideType.FgklpmcjbacNnmbahcckja) {
+      if (other.Type != global::March7thHoney.Proto.TutorialGuideType.AoccebgnpjaGinfcgdddom) {
         Type = other.Type;
       }
       if (other.Id != 0) {
@@ -261,16 +261,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 72: {
+          case 16: {
+            Id = input.ReadUInt32();
+            break;
+          }
+          case 40: {
             Status = (global::March7thHoney.Proto.TutorialStatus) input.ReadEnum();
             break;
           }
-          case 96: {
+          case 64: {
             Type = (global::March7thHoney.Proto.TutorialGuideType) input.ReadEnum();
-            break;
-          }
-          case 104: {
-            Id = input.ReadUInt32();
             break;
           }
         }
@@ -292,16 +292,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 72: {
+          case 16: {
+            Id = input.ReadUInt32();
+            break;
+          }
+          case 40: {
             Status = (global::March7thHoney.Proto.TutorialStatus) input.ReadEnum();
             break;
           }
-          case 96: {
+          case 64: {
             Type = (global::March7thHoney.Proto.TutorialGuideType) input.ReadEnum();
-            break;
-          }
-          case 104: {
-            Id = input.ReadUInt32();
             break;
           }
         }

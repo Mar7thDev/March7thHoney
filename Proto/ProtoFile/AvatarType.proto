@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum AvatarType {
     AVATAR_TYPE_NONE = 0;
     AVATAR_TRIAL_TYPE = 1;
@@ -14,4 +12,5 @@ enum AvatarType {
     AVATAR_UPGRADE_AVAILABLE_TYPE = 6;
     AVATAR_GRID_FIGHT_TYPE = 7;
     AVATAR_GLJDNDMIGIP = 8;
+    AvatarType_GPMNKEOADPI = 9;
 }

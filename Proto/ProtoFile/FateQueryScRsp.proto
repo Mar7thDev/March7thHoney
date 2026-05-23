@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "KDJIDJBBHHE.proto";
-import "MFMEMDJKDAF.proto";
+import "BFBCEOICLAB.proto";
+import "EJCCCIGMHOM.proto";
 
 message FateQueryScRsp {
-    uint32 retcode = 6;
-    MFMEMDJKDAF rogue_get_info = 8;
-    KDJIDJBBHHE MODDIBHCPPD = 11;
+    EJCCCIGMHOM LFLCDNGALME = 4;
+    BFBCEOICLAB OEIBHLMDJKA = 9;
+    uint32 retcode = 5;
 }

@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "FCIMCHDEPPJ.proto";
+import "CAEFBGAFKHD.proto";
 
 message EnterRogueEndlessActivityStageCsReq {
-    uint32 PJMBJBMBKCE = 3;
-    repeated FCIMCHDEPPJ avatar_list = 15;
+    repeated CAEFBGAFKHD avatar_list = 13;
+    uint32 MPMMCPMNLID = 7;
 }

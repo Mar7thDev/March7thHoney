@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChtHZXRTdG9yeUxpbmVJbmZvU2NSc3AucHJvdG8iiAEKFUdldFN0b3J5TGlu",
-            "ZUluZm9TY1JzcBIlCh11bmZpbmlzaGVkX3N0b3J5X2xpbmVfaWRfbGlzdBgG",
-            "IAMoDRIPCgdyZXRjb2RlGAcgASgNEhwKFHRyaWFsX2F2YXRhcl9pZF9saXN0",
-            "GAggAygNEhkKEWN1cl9zdG9yeV9saW5lX2lkGAwgASgNQhaqAhNNYXJjaDd0",
+            "ZUluZm9TY1JzcBIcChR0cmlhbF9hdmF0YXJfaWRfbGlzdBgBIAMoDRIlCh11",
+            "bmZpbmlzaGVkX3N0b3J5X2xpbmVfaWRfbGlzdBgNIAMoDRIPCgdyZXRjb2Rl",
+            "GAwgASgNEhkKEWN1cl9zdG9yeV9saW5lX2lkGAIgASgNQhaqAhNNYXJjaDd0",
             "aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetStoryLineInfoScRsp), global::March7thHoney.Proto.GetStoryLineInfoScRsp.Parser, new[]{ "UnfinishedStoryLineIdList", "Retcode", "TrialAvatarIdList", "CurStoryLineId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetStoryLineInfoScRsp), global::March7thHoney.Proto.GetStoryLineInfoScRsp.Parser, new[]{ "TrialAvatarIdList", "UnfinishedStoryLineIdList", "Retcode", "CurStoryLineId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,9 +74,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetStoryLineInfoScRsp(GetStoryLineInfoScRsp other) : this() {
+      trialAvatarIdList_ = other.trialAvatarIdList_.Clone();
       unfinishedStoryLineIdList_ = other.unfinishedStoryLineIdList_.Clone();
       retcode_ = other.retcode_;
-      trialAvatarIdList_ = other.trialAvatarIdList_.Clone();
       curStoryLineId_ = other.curStoryLineId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -87,10 +87,21 @@ namespace March7thHoney.Proto {
       return new GetStoryLineInfoScRsp(this);
     }
 
+    /// <summary>Field number for the "trial_avatar_id_list" field.</summary>
+    public const int TrialAvatarIdListFieldNumber = 1;
+    private static readonly pb::FieldCodec<uint> _repeated_trialAvatarIdList_codec
+        = pb::FieldCodec.ForUInt32(10);
+    private readonly pbc::RepeatedField<uint> trialAvatarIdList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> TrialAvatarIdList {
+      get { return trialAvatarIdList_; }
+    }
+
     /// <summary>Field number for the "unfinished_story_line_id_list" field.</summary>
-    public const int UnfinishedStoryLineIdListFieldNumber = 6;
+    public const int UnfinishedStoryLineIdListFieldNumber = 13;
     private static readonly pb::FieldCodec<uint> _repeated_unfinishedStoryLineIdList_codec
-        = pb::FieldCodec.ForUInt32(50);
+        = pb::FieldCodec.ForUInt32(106);
     private readonly pbc::RepeatedField<uint> unfinishedStoryLineIdList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -99,7 +110,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 7;
+    public const int RetcodeFieldNumber = 12;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,19 +121,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "trial_avatar_id_list" field.</summary>
-    public const int TrialAvatarIdListFieldNumber = 8;
-    private static readonly pb::FieldCodec<uint> _repeated_trialAvatarIdList_codec
-        = pb::FieldCodec.ForUInt32(66);
-    private readonly pbc::RepeatedField<uint> trialAvatarIdList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> TrialAvatarIdList {
-      get { return trialAvatarIdList_; }
-    }
-
     /// <summary>Field number for the "cur_story_line_id" field.</summary>
-    public const int CurStoryLineIdFieldNumber = 12;
+    public const int CurStoryLineIdFieldNumber = 2;
     private uint curStoryLineId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -148,9 +148,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if(!trialAvatarIdList_.Equals(other.trialAvatarIdList_)) return false;
       if(!unfinishedStoryLineIdList_.Equals(other.unfinishedStoryLineIdList_)) return false;
       if (Retcode != other.Retcode) return false;
-      if(!trialAvatarIdList_.Equals(other.trialAvatarIdList_)) return false;
       if (CurStoryLineId != other.CurStoryLineId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -159,9 +159,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      hash ^= trialAvatarIdList_.GetHashCode();
       hash ^= unfinishedStoryLineIdList_.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
-      hash ^= trialAvatarIdList_.GetHashCode();
       if (CurStoryLineId != 0) hash ^= CurStoryLineId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -181,16 +181,16 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      unfinishedStoryLineIdList_.WriteTo(output, _repeated_unfinishedStoryLineIdList_codec);
-      if (Retcode != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(Retcode);
-      }
       trialAvatarIdList_.WriteTo(output, _repeated_trialAvatarIdList_codec);
       if (CurStoryLineId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(16);
         output.WriteUInt32(CurStoryLineId);
       }
+      if (Retcode != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(Retcode);
+      }
+      unfinishedStoryLineIdList_.WriteTo(output, _repeated_unfinishedStoryLineIdList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -201,16 +201,16 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      unfinishedStoryLineIdList_.WriteTo(ref output, _repeated_unfinishedStoryLineIdList_codec);
-      if (Retcode != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(Retcode);
-      }
       trialAvatarIdList_.WriteTo(ref output, _repeated_trialAvatarIdList_codec);
       if (CurStoryLineId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(16);
         output.WriteUInt32(CurStoryLineId);
       }
+      if (Retcode != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(Retcode);
+      }
+      unfinishedStoryLineIdList_.WriteTo(ref output, _repeated_unfinishedStoryLineIdList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -221,11 +221,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      size += trialAvatarIdList_.CalculateSize(_repeated_trialAvatarIdList_codec);
       size += unfinishedStoryLineIdList_.CalculateSize(_repeated_unfinishedStoryLineIdList_codec);
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
-      size += trialAvatarIdList_.CalculateSize(_repeated_trialAvatarIdList_codec);
       if (CurStoryLineId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurStoryLineId);
       }
@@ -241,11 +241,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      trialAvatarIdList_.Add(other.trialAvatarIdList_);
       unfinishedStoryLineIdList_.Add(other.unfinishedStoryLineIdList_);
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
-      trialAvatarIdList_.Add(other.trialAvatarIdList_);
       if (other.CurStoryLineId != 0) {
         CurStoryLineId = other.CurStoryLineId;
       }
@@ -268,22 +268,22 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 50:
-          case 48: {
-            unfinishedStoryLineIdList_.AddEntriesFrom(input, _repeated_unfinishedStoryLineIdList_codec);
-            break;
-          }
-          case 56: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 66:
-          case 64: {
+          case 10:
+          case 8: {
             trialAvatarIdList_.AddEntriesFrom(input, _repeated_trialAvatarIdList_codec);
             break;
           }
-          case 96: {
+          case 16: {
             CurStoryLineId = input.ReadUInt32();
+            break;
+          }
+          case 96: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 106:
+          case 104: {
+            unfinishedStoryLineIdList_.AddEntriesFrom(input, _repeated_unfinishedStoryLineIdList_codec);
             break;
           }
         }
@@ -305,22 +305,22 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 50:
-          case 48: {
-            unfinishedStoryLineIdList_.AddEntriesFrom(ref input, _repeated_unfinishedStoryLineIdList_codec);
-            break;
-          }
-          case 56: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 66:
-          case 64: {
+          case 10:
+          case 8: {
             trialAvatarIdList_.AddEntriesFrom(ref input, _repeated_trialAvatarIdList_codec);
             break;
           }
-          case 96: {
+          case 16: {
             CurStoryLineId = input.ReadUInt32();
+            break;
+          }
+          case 96: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 106:
+          case 104: {
+            unfinishedStoryLineIdList_.AddEntriesFrom(ref input, _repeated_unfinishedStoryLineIdList_codec);
             break;
           }
         }

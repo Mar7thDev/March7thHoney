@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "IIMHLPBEDDH.proto";
+import "LOBFOKCKPKB.proto";
+import "OBINJKCBALC.proto";
+
+message ClockParkUseBuffScRsp {
+    OBINJKCBALC HABJHGPFGEB = 2;
+    uint32 JGPHDBDHKKO = 7;
+    uint32 script_id = 4;
+    uint32 retcode = 9;
+    oneof BAHFDOOAGPP {
+        IIMHLPBEDDH CENIOBBIJMF = 181;
+        LOBFOKCKPKB JOFJEIFLGBP = 1259;
+    }
+}

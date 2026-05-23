@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "BenefitData.proto";
+
+message GetBenefitActivityInfoScRsp {
+    repeated BenefitData HNFFFDEGOEB = 8;
+    uint32 retcode = 4;
+    bool GHHLLCEMAOP = 7;
+}

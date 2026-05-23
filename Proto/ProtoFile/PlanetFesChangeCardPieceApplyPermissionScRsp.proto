@@ -2,9 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message PlanetFesChangeCardPieceApplyPermissionScRsp {
-    uint32 retcode = 13;
-    uint32 FLIFCIPEPLO = 15;
+    uint32 HAAHAGAPDKC = 5;
+    uint32 retcode = 6;
 }

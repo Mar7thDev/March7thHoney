@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "CIKJHLMOOIK.proto";
+import "JEIAEAEGEBJ.proto";
 
 message SummonPunkLordMonsterScRsp {
-    CIKJHLMOOIK FFCDPHMJJKG = 12;
-    uint32 retcode = 13;
+    JEIAEAEGEBJ ONICJOAOEMA = 7;
+    uint32 retcode = 9;
 }

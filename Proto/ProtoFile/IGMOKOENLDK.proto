@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message IGMOKOENLDK {
+    double attack = 2;
+    double left_hp = 6;
+    double OFMLLDLAOCC = 4;
+    double speed = 5;
+    double defence = 3;
+    double GENCOBDFKLA = 7;
+    double max_hp = 1;
+}

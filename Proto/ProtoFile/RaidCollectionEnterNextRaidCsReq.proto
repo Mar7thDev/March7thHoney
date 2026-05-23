@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message RaidCollectionEnterNextRaidCsReq {
-    repeated uint32 avatar_list = 3;
-    uint32 raid_id = 4;
-    uint32 is_save = 6;
-    uint32 world_level = 12;
+    repeated uint32 avatar_list = 7;
+    uint32 is_save = 3;
+    uint32 world_level = 1;
+    uint32 raid_id = 13;
 }

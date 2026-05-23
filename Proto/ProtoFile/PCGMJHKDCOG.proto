@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "APAMFCKFHLL.proto";
+import "CBNNMKNBLDI.proto";
+
+message PCGMJHKDCOG {
+    repeated CBNNMKNBLDI KIDBGNPHGBI = 3;
+    repeated APAMFCKFHLL IHJJKABIEPC = 8;
+    repeated CBNNMKNBLDI grid_fight_equipment_list = 5;
+    repeated uint32 OILPEBPLDBG = 7;
+}

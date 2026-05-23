@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message GetFiveDimFluteDataScRsp {
-    uint32 retcode = 1;
-    repeated uint32 OHGFEGDFKNG = 5;
-    repeated uint32 EPPHGOBAFMP = 15;
+    repeated uint32 NFOBNDJIEPL = 12;
+    repeated uint32 AOBGMMAIMHJ = 13;
+    uint32 retcode = 15;
 }

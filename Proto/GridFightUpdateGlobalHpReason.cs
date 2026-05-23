@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiNHcmlkRmlnaHRVcGRhdGVHbG9iYWxIcFJlYXNvbi5wcm90byqlAgodR3Jp",
-            "ZEZpZ2h0VXBkYXRlR2xvYmFsSHBSZWFzb24SGwoXQkFLR0dQTkhOTkVfQUpC",
-            "TUFETkRJR0gQABIbChdCQUtHR1BOSE5ORV9BSElLT05GRUJNShABEhsKF0JB",
-            "S0dHUE5ITk5FX0lLSExJTEhBSU9MEAISGwoXQkFLR0dQTkhOTkVfUE9OSUNK",
-            "SkFCRUsQAxIbChdCQUtHR1BOSE5ORV9HUERISUJBRkRDRxAEEhsKF0JBS0dH",
-            "UE5ITk5FX0dGSU1OQ0NGS0lLEGUSGwoXQkFLR0dQTkhOTkVfQkNHUE9MSE9I",
-            "S0YQZhIbChdCQUtHR1BOSE5ORV9EQUhOQ0lES0ZDUBBnEhwKF0JBS0dHUE5I",
-            "Tk5FX0RDS0dEQURQSkxIEMkBQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZw",
+            "ZEZpZ2h0VXBkYXRlR2xvYmFsSHBSZWFzb24SGwoXREZJSklCS0JFSkxfSUhO",
+            "REpPTENLREkQABIbChdERklKSUJLQkVKTF9GREtDUEhNTUZDRBABEhsKF0RG",
+            "SUpJQktCRUpMX0lFR0VIQUtERUhBEAISGwoXREZJSklCS0JFSkxfS0VPUElD",
+            "R01HUEkQAxIbChdERklKSUJLQkVKTF9BQU1IS0ZQQ0ZQTxAEEhsKF0RGSUpJ",
+            "QktCRUpMX0xHQ0NOSE9CTUFQEGUSGwoXREZJSklCS0JFSkxfSEJHUFBFSEdJ",
+            "TlAQZhIbChdERklKSUJLQkVKTF9DSkRQSUhGRUNOShBnEhwKF0RGSUpJQktC",
+            "RUpMX0FFS1BCSENMSkFOEMkBQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZw",
             "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -42,15 +42,15 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum GridFightUpdateGlobalHpReason {
-    [pbr::OriginalName("BAKGGPNHNNE_AJBMADNDIGH")] BakggpnhnneAjbmadndigh = 0,
-    [pbr::OriginalName("BAKGGPNHNNE_AHIKONFEBMJ")] BakggpnhnneAhikonfebmj = 1,
-    [pbr::OriginalName("BAKGGPNHNNE_IKHLILHAIOL")] BakggpnhnneIkhlilhaiol = 2,
-    [pbr::OriginalName("BAKGGPNHNNE_PONICJJABEK")] BakggpnhnnePonicjjabek = 3,
-    [pbr::OriginalName("BAKGGPNHNNE_GPDHIBAFDCG")] BakggpnhnneGpdhibafdcg = 4,
-    [pbr::OriginalName("BAKGGPNHNNE_GFIMNCCFKIK")] BakggpnhnneGfimnccfkik = 101,
-    [pbr::OriginalName("BAKGGPNHNNE_BCGPOLHOHKF")] BakggpnhnneBcgpolhohkf = 102,
-    [pbr::OriginalName("BAKGGPNHNNE_DAHNCIDKFCP")] BakggpnhnneDahncidkfcp = 103,
-    [pbr::OriginalName("BAKGGPNHNNE_DCKGDADPJLH")] BakggpnhnneDckgdadpjlh = 201,
+    [pbr::OriginalName("DFIJIBKBEJL_IHNDJOLCKDI")] DfijibkbejlIhndjolckdi = 0,
+    [pbr::OriginalName("DFIJIBKBEJL_FDKCPHMMFCD")] DfijibkbejlFdkcphmmfcd = 1,
+    [pbr::OriginalName("DFIJIBKBEJL_IEGEHAKDEHA")] DfijibkbejlIegehakdeha = 2,
+    [pbr::OriginalName("DFIJIBKBEJL_KEOPICGMGPI")] DfijibkbejlKeopicgmgpi = 3,
+    [pbr::OriginalName("DFIJIBKBEJL_AAMHKFPCFPO")] DfijibkbejlAamhkfpcfpo = 4,
+    [pbr::OriginalName("DFIJIBKBEJL_LGCCNHOBMAP")] DfijibkbejlLgccnhobmap = 101,
+    [pbr::OriginalName("DFIJIBKBEJL_HBGPPEHGINP")] DfijibkbejlHbgppehginp = 102,
+    [pbr::OriginalName("DFIJIBKBEJL_CJDPIHFECNJ")] DfijibkbejlCjdpihfecnj = 103,
+    [pbr::OriginalName("DFIJIBKBEJL_AEKPBHCLJAN")] DfijibkbejlAekpbhcljan = 201,
   }
 
   #endregion

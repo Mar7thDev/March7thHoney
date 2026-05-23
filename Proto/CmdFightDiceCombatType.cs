@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChxDbWRGaWdodERpY2VDb21iYXRUeXBlLnByb3RvKjUKFkNtZEZpZ2h0RGlj",
-            "ZUNvbWJhdFR5cGUSGwoXTU9JSkZNRUdPR0NfUENQREhFTFBLRU0QAEIWqgIT",
+            "ZUNvbWJhdFR5cGUSGwoXRktGSU5IUE9NTUFfTkxDREdJUEdGREoQAEIWqgIT",
             "TWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -36,7 +36,7 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdFightDiceCombatType {
-    [pbr::OriginalName("MOIJFMEGOGC_PCPDHELPKEM")] MoijfmegogcPcpdhelpkem = 0,
+    [pbr::OriginalName("FKFINHPOMMA_NLCDGIPGFDJ")] FkfinhpommaNlcdgipgfdj = 0,
   }
 
   #endregion

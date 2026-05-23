@@ -2,16 +2,14 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdFightFestType {
-    EIMOOOILMKC_PCPDHELPKEM = 0;
-    CmdFightFestUnlockSkillNotify = 7288;
-    CmdStartFightFestScRsp = 7277;
-    CmdFightFestUpdateChallengeRecordNotify = 7255;
-    CmdFightFestScoreUpdateNotify = 7285;
-    CmdFightFestUpdateCoinNotify = 7251;
-    CmdStartFightFestCsReq = 7280;
-    CmdGetFightFestDataCsReq = 7263;
-    CmdGetFightFestDataScRsp = 7257;
+    FLLKHDMHGEJ_NLCDGIPGFDJ = 0;
+    FLLKHDMHGEJ_BMEPHMNEODG = 7294;
+    FLLKHDMHGEJ_MNFDHGIDPFK = 7292;
+    FLLKHDMHGEJ_NJHPJOFMIPI = 7273;
+    FLLKHDMHGEJ_AAJHAHGNDOF = 7269;
+    FLLKHDMHGEJ_AADOOEEIHII = 7295;
+    FLLKHDMHGEJ_JNIBHGOJJMD = 7257;
+    FLLKHDMHGEJ_AOFOMJNMIIM = 7282;
+    FLLKHDMHGEJ_NKDCMEJMIKO = 7277;
 }

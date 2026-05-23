@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "FateMasterStatusType.proto";
+import "JOGCCINEHFJ.proto";
+
+message GKJEMHKOMJC {
+    repeated JOGCCINEHFJ CFFCNEDGCJJ = 5;
+    uint32 rank = 2;
+    int32 max_hp = 4;
+    uint32 avatar_id = 6;
+    int32 hp = 11;
+    FateMasterStatusType status = 7;
+}

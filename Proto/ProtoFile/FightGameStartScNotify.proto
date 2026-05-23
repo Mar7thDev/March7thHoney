@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "ADHNJADIJAC.proto";
-import "IFCBCBLFALM.proto";
+import "BFBHKJLJJBJ.proto";
+import "LMLNNHKJEIP.proto";
 
 message FightGameStartScNotify {
-    IFCBCBLFALM OPOGEMADLEI = 2;
-    repeated ADHNJADIJAC BIEBFHECEPM = 6;
+    BFBHKJLJJBJ KAEDKFOMADJ = 12;
+    repeated LMLNNHKJEIP DFLEOIGPLNM = 1;
 }

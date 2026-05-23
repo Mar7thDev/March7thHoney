@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "RelicAffix.proto";
+
+message PNGBDDIBCDD {
+    repeated RelicAffix sub_affix_list = 1;
+    uint32 level = 11;
+    uint32 tid = 8;
+    uint32 main_affix_id = 4;
+    uint32 type = 13;
+    uint32 exp = 10;
+}

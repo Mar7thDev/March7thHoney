@@ -2,23 +2,21 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 import "AssistMonsterEntityInfo.proto";
 import "DynamicValues.proto";
 import "MotionInfo.proto";
 import "SkillExtraTag.proto";
 
 message SceneCastSkillCsReq {
-    repeated uint32 hit_target_entity_id_list = 1;
-    uint32 attacked_by_entity_id = 2;
-    repeated AssistMonsterEntityInfo assist_monster_entity_info = 3;
-    string maze_ability_str = 4;
-    uint32 cast_entity_id = 5;
-    uint32 JJABNMFLKKI = 6;
-    MotionInfo target_motion = 7;
-    uint32 skill_index = 8;
-    repeated uint32 assist_monster_entity_id_list = 9;
+    repeated AssistMonsterEntityInfo assist_monster_entity_info = 10;
     repeated DynamicValues dynamic_values = 13;
-    repeated SkillExtraTag skill_extra_tags = 14;
+    repeated SkillExtraTag skill_extra_tags = 2;
+    string maze_ability_str = 7;
+    repeated uint32 hit_target_entity_id_list = 11;
+    MotionInfo target_motion = 1;
+    repeated uint32 assist_monster_entity_id_list = 6;
+    uint32 KCFABNFPOPN = 12;
+    uint32 attacked_by_entity_id = 3;
+    uint32 skill_index = 9;
+    uint32 cast_entity_id = 8;
 }

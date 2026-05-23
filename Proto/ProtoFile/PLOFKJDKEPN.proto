@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "JHACFFJIPHK.proto";
+import "PCONBOGEDFD.proto";
+
+message PLOFKJDKEPN {
+    repeated JHACFFJIPHK quest_list = 8;
+    PCONBOGEDFD DFBGAOAJLIC = 4;
+}

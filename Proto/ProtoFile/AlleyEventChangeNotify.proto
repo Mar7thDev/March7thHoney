@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "DCMJCNOKKNN.proto";
+import "CEKIFBMPEFH.proto";
 
 message AlleyEventChangeNotify {
-    DCMJCNOKKNN GLNJOAHBBKK = 7;
-    uint32 NDOPMMAMMOD = 9;
+    CEKIFBMPEFH OOOACLEFDGM = 10;
+    uint32 KHANHNFACLN = 5;
 }

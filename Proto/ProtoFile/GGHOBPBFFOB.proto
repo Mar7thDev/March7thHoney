@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "KDFPANILFOH.proto";
+import "Vector.proto";
+
+message GGHOBPBFFOB {
+    repeated Vector PAOEJKABFEP = 13;
+    KDFPANILFOH BBEMIGELGJC = 11;
+    string uuid = 8;
+    uint32 CHCOPKAKBNO = 2;
+    uint32 id = 4;
+    bool KEKFKKANACK = 14;
+}

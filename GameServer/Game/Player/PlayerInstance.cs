@@ -11,11 +11,10 @@ using March7thHoney.GameServer.Game.Activity;
 using March7thHoney.GameServer.Game.Avatar;
 using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.Calyx;
-using March7thHoney.GameServer.Game.Challenge;
-using March7thHoney.GameServer.Game.ChallengePeak;
+// TODO 4.3: Challenge / ChallengePeak 模块暂停
 using March7thHoney.GameServer.Game.Expedition;
 using March7thHoney.GameServer.Game.Friend;
-using March7thHoney.GameServer.Game.GridFight;
+// TODO 4.3: GridFight (货币战争) 模块暂停编译，等待 proto 重整
 using March7thHoney.GameServer.Game.Gacha;
 using March7thHoney.GameServer.Game.Inventory;
 using March7thHoney.GameServer.Game.Lineup;
@@ -29,8 +28,7 @@ using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Shop;
 using March7thHoney.GameServer.Game.Sync.Player;
 using March7thHoney.GameServer.Game.Task;
-using March7thHoney.GameServer.Game.TrainCakeCatch;
-using March7thHoney.GameServer.Game.TrainParty;
+// TODO 4.3: TrainCakeCatch / TrainParty 暂停编译
 using March7thHoney.GameServer.Server;
 using March7thHoney.GameServer.Server.Packet.Send.Player;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
@@ -80,8 +78,7 @@ public partial class PlayerInstance(PlayerData data)
     #region Activity Managers
 
     public ActivityManager? ActivityManager { get; private set; }
-    public TrainPartyManager? TrainPartyManager { get; private set; }
-    public TrainCakeCatchManager? TrainCakeCatchManager { get; private set; }
+    // TODO 4.3: TrainPartyManager / TrainCakeCatchManager 暂停编译
 
     #endregion
 
@@ -89,9 +86,7 @@ public partial class PlayerInstance(PlayerData data)
 
     public MailManager? MailManager { get; private set; }
     public FriendManager? FriendManager { get; private set; }
-    public ChallengeManager? ChallengeManager { get; private set; }
-    public ChallengePeakManager? ChallengePeakManager { get; private set; }
-    public GridFightManager? GridFightManager { get; private set; }
+    // TODO 4.3: Challenge / ChallengePeak / GridFight Manager 暂停编译
     public ExpeditionManager? ExpeditionManager { get; private set; }
 
     #endregion
@@ -195,16 +190,12 @@ public partial class PlayerInstance(PlayerData data)
         MailManager = new MailManager(this);
         FriendManager = new FriendManager(this);
         ShopService = new ShopService(this);
-        ChallengeManager = new ChallengeManager(this);
-        ChallengePeakManager = new ChallengePeakManager(this);
-        GridFightManager = new GridFightManager(this);
+        // TODO 4.3: ChallengeManager / ChallengePeakManager / GridFightManager / TrainPartyManager / TrainCakeCatchManager 暂停初始化
         ExpeditionManager = new ExpeditionManager(this);
         TaskManager = new TaskManager(this);
         RaidManager = new RaidManager(this);
         StoryLineManager = new StoryLineManager(this);
         QuestManager = new QuestManager(this);
-        TrainPartyManager = new TrainPartyManager(this);
-        TrainCakeCatchManager = new TrainCakeCatchManager(this);
         OfferingManager = new OfferingManager(this);
 
         PlayerUnlockData = InitializeDatabase<PlayerUnlockData>();
@@ -280,7 +271,7 @@ public partial class PlayerInstance(PlayerData data)
     {
         await SendPacket(new PacketStaminaInfoScNotify(this));
 
-        ChallengeManager?.ResurrectInstance();
+        // TODO 4.3: ChallengeManager?.ResurrectInstance() 暂停
         if (StoryLineManager != null)
             await StoryLineManager.OnLogin();
 
@@ -290,8 +281,8 @@ public partial class PlayerInstance(PlayerData data)
         if (LineupManager!.GetCurLineup() != null) // null -> ignore(new player)
         {
             if (LineupManager!.GetCurLineup()!.IsExtraLineup() &&
-                RaidManager!.RaidData.CurRaidId == 0 && StoryLineManager!.StoryLineData.CurStoryLineId == 0 &&
-                ChallengeManager!.ChallengeInstance == null) // do not use extra lineup when login
+                RaidManager!.RaidData.CurRaidId == 0 && StoryLineManager!.StoryLineData.CurStoryLineId == 0
+                /* TODO 4.3: ChallengeManager!.ChallengeInstance == null */) // do not use extra lineup when login
             {
                 LineupManager!.SetExtraLineup(ExtraLineupType.LineupNone, []);
                 if (LineupManager!.GetCurLineup()!.IsExtraLineup()) await LineupManager!.SetCurLineup(0);

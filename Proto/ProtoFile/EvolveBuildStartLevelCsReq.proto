@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "HHIPKINNCAP.proto";
-import "MOEDGOHOALP.proto";
+import "DKPHAFPGDLO.proto";
+import "EHPLFHLNMIF.proto";
 
 message EvolveBuildStartLevelCsReq {
-    HHIPKINNCAP EDDJGNNOCAG = 6;
-    uint32 level_id = 9;
-    repeated MOEDGOHOALP avatar_list = 12;
+    repeated EHPLFHLNMIF avatar_list = 10;
+    DKPHAFPGDLO NENJBDBJNFI = 11;
+    uint32 level_id = 5;
 }

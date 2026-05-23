@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message KEPIEGKPFIJ {
+    uint32 MOADBALHMFD = 12;
+}

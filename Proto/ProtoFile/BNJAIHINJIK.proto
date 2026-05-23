@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "GEFEDOAOKNO.proto";
+import "HINIJKGDDBI.proto";
+import "PJOHABIOPPI.proto";
+
+message BNJAIHINJIK {
+    GEFEDOAOKNO IPDLBJHAJOO = 13;
+    HINIJKGDDBI FBECMPGLPKK = 6;
+    PJOHABIOPPI GMMPIDODKKD = 1;
+    uint32 ODPELJAIPHL = 14;
+    uint32 GNAHDKMEDEP = 3;
+    uint32 OBGKOOAPCEM = 4;
+}

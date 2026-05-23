@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static HeliobusSnsCommentScRspReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Ch1IZWxpb2J1c1Nuc0NvbW1lbnRTY1JzcC5wcm90bxoRRExGT0dKR0NDR1Au",
-            "cHJvdG8iTQoXSGVsaW9idXNTbnNDb21tZW50U2NSc3ASDwoHcmV0Y29kZRgJ",
-            "IAEoDRIhCgtJR0lQQUtFTEpGRBgOIAEoCzIMLkRMRk9HSkdDQ0dQQhaqAhNN",
+            "Ch1IZWxpb2J1c1Nuc0NvbW1lbnRTY1JzcC5wcm90bxoRQkdPTUlIRUZIUEEu",
+            "cHJvdG8iTQoXSGVsaW9idXNTbnNDb21tZW50U2NSc3ASIQoLQU1GRUZJRERN",
+            "REEYCyABKAsyDC5CR09NSUhFRkhQQRIPCgdyZXRjb2RlGAIgASgNQhaqAhNN",
             "YXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.DLFOGJGCCGPReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.BGOMIHEFHPAReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HeliobusSnsCommentScRsp), global::March7thHoney.Proto.HeliobusSnsCommentScRsp.Parser, new[]{ "Retcode", "IGIPAKELJFD" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HeliobusSnsCommentScRsp), global::March7thHoney.Proto.HeliobusSnsCommentScRsp.Parser, new[]{ "AMFEFIDDMDA", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public HeliobusSnsCommentScRsp(HeliobusSnsCommentScRsp other) : this() {
+      aMFEFIDDMDA_ = other.aMFEFIDDMDA_ != null ? other.aMFEFIDDMDA_.Clone() : null;
       retcode_ = other.retcode_;
-      iGIPAKELJFD_ = other.iGIPAKELJFD_ != null ? other.iGIPAKELJFD_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,8 +84,20 @@ namespace March7thHoney.Proto {
       return new HeliobusSnsCommentScRsp(this);
     }
 
+    /// <summary>Field number for the "AMFEFIDDMDA" field.</summary>
+    public const int AMFEFIDDMDAFieldNumber = 11;
+    private global::March7thHoney.Proto.BGOMIHEFHPA aMFEFIDDMDA_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.BGOMIHEFHPA AMFEFIDDMDA {
+      get { return aMFEFIDDMDA_; }
+      set {
+        aMFEFIDDMDA_ = value;
+      }
+    }
+
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 9;
+    public const int RetcodeFieldNumber = 2;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -93,18 +105,6 @@ namespace March7thHoney.Proto {
       get { return retcode_; }
       set {
         retcode_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "IGIPAKELJFD" field.</summary>
-    public const int IGIPAKELJFDFieldNumber = 14;
-    private global::March7thHoney.Proto.DLFOGJGCCGP iGIPAKELJFD_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.DLFOGJGCCGP IGIPAKELJFD {
-      get { return iGIPAKELJFD_; }
-      set {
-        iGIPAKELJFD_ = value;
       }
     }
 
@@ -123,8 +123,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (!object.Equals(AMFEFIDDMDA, other.AMFEFIDDMDA)) return false;
       if (Retcode != other.Retcode) return false;
-      if (!object.Equals(IGIPAKELJFD, other.IGIPAKELJFD)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,8 +132,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (aMFEFIDDMDA_ != null) hash ^= AMFEFIDDMDA.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
-      if (iGIPAKELJFD_ != null) hash ^= IGIPAKELJFD.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -153,12 +153,12 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Retcode != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(16);
         output.WriteUInt32(Retcode);
       }
-      if (iGIPAKELJFD_ != null) {
-        output.WriteRawTag(114);
-        output.WriteMessage(IGIPAKELJFD);
+      if (aMFEFIDDMDA_ != null) {
+        output.WriteRawTag(90);
+        output.WriteMessage(AMFEFIDDMDA);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -171,12 +171,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Retcode != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(16);
         output.WriteUInt32(Retcode);
       }
-      if (iGIPAKELJFD_ != null) {
-        output.WriteRawTag(114);
-        output.WriteMessage(IGIPAKELJFD);
+      if (aMFEFIDDMDA_ != null) {
+        output.WriteRawTag(90);
+        output.WriteMessage(AMFEFIDDMDA);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -188,11 +188,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (aMFEFIDDMDA_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(AMFEFIDDMDA);
+      }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
-      }
-      if (iGIPAKELJFD_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(IGIPAKELJFD);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -206,14 +206,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.aMFEFIDDMDA_ != null) {
+        if (aMFEFIDDMDA_ == null) {
+          AMFEFIDDMDA = new global::March7thHoney.Proto.BGOMIHEFHPA();
+        }
+        AMFEFIDDMDA.MergeFrom(other.AMFEFIDDMDA);
+      }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
-      }
-      if (other.iGIPAKELJFD_ != null) {
-        if (iGIPAKELJFD_ == null) {
-          IGIPAKELJFD = new global::March7thHoney.Proto.DLFOGJGCCGP();
-        }
-        IGIPAKELJFD.MergeFrom(other.IGIPAKELJFD);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -234,15 +234,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 72: {
+          case 16: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 114: {
-            if (iGIPAKELJFD_ == null) {
-              IGIPAKELJFD = new global::March7thHoney.Proto.DLFOGJGCCGP();
+          case 90: {
+            if (aMFEFIDDMDA_ == null) {
+              AMFEFIDDMDA = new global::March7thHoney.Proto.BGOMIHEFHPA();
             }
-            input.ReadMessage(IGIPAKELJFD);
+            input.ReadMessage(AMFEFIDDMDA);
             break;
           }
         }
@@ -264,15 +264,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 72: {
+          case 16: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 114: {
-            if (iGIPAKELJFD_ == null) {
-              IGIPAKELJFD = new global::March7thHoney.Proto.DLFOGJGCCGP();
+          case 90: {
+            if (aMFEFIDDMDA_ == null) {
+              AMFEFIDDMDA = new global::March7thHoney.Proto.BGOMIHEFHPA();
             }
-            input.ReadMessage(IGIPAKELJFD);
+            input.ReadMessage(AMFEFIDDMDA);
             break;
           }
         }

@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "DNLKMHLAPHC.proto";
+import "MMBBHFNJILI.proto";
+
+message NJMOAGDJKFH {
+    repeated uint32 avatar_id_list = 1970;
+    repeated DNLKMHLAPHC MALDOMHPILM = 201;
+    repeated MMBBHFNJILI HIILDALHIMD = 1831;
+    repeated uint32 BGAFHIOEHFH = 275;
+    uint32 MHPCIABALPI = 4;
+    uint32 NNNCEIGNIIA = 1;
+    uint32 GEJEANJFCMI = 12;
+    uint32 MEDAAELFEMN = 3;
+    uint32 LKHAIEIDAJL = 8;
+    uint32 NBMNPGKEIIH = 14;
+    uint32 ADIFLCNAABJ = 2;
+    uint32 JJLEDNENPJK = 10;
+    uint32 EJJGHJMCFPH = 15;
+}

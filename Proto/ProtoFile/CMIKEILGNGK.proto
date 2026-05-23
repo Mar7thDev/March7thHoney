@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message CMIKEILGNGK {
+    uint32 GCAHKLNGFCK = 1;
+    uint32 level = 2;
+    double total_damage = 3;
+}

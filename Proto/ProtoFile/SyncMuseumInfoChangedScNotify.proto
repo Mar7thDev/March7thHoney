@@ -2,25 +2,23 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "DBHPNLHPCMD.proto";
-import "FKMKIGFJODF.proto";
-import "FOKOPECFCOP.proto";
-import "KNNODAPAKJA.proto";
+import "CDNPKGOKEPK.proto";
+import "FCCDKHNGIPH.proto";
+import "FEHHKDIIENA.proto";
+import "KPCNNOGGIDO.proto";
 
 message SyncMuseumInfoChangedScNotify {
-    uint32 ANBEHCINFLD = 1;
-    uint32 ABIJHKNBGHJ = 2;
-    uint32 level = 3;
-    uint32 exp = 4;
-    repeated FKMKIGFJODF BODAPOLFADF = 5;
-    KNNODAPAKJA OKMGHNCGPOL = 6;
-    DBHPNLHPCMD GPEAFAJGCPH = 7;
-    repeated uint32 CKDACHPJLJD = 9;
-    repeated uint32 AAOKFFGNBNE = 10;
-    uint32 cur_fund = 12;
-    uint32 DJFLHFMJPCD = 13;
-    repeated FOKOPECFCOP area_list = 14;
-    uint32 NOGABDKMAGB = 15;
+    CDNPKGOKEPK PKJCHLDHKBL = 6;
+    repeated FCCDKHNGIPH area_list = 15;
+    repeated uint32 BILNKFBKOBC = 3;
+    repeated uint32 ONJEOMGPGLJ = 10;
+    repeated FEHHKDIIENA DHIOHIOPCGP = 8;
+    KPCNNOGGIDO MCLLALGABAB = 9;
+    uint32 level = 12;
+    uint32 exp = 13;
+    uint32 KAADGPOLIEN = 14;
+    uint32 ONCBJHBKBLB = 7;
+    uint32 NEHFEBHDGIK = 2;
+    uint32 EKGPINKBLED = 5;
+    uint32 cur_fund = 11;
 }

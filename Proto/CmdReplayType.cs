@@ -24,11 +24,11 @@ namespace March7thHoney.Proto {
     static CmdReplayTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChNDbWRSZXBsYXlUeXBlLnByb3RvKpEBCg1DbWRSZXBsYXlUeXBlEhsKF0VE",
-            "RktFRUtNRklCX1BDUERIRUxQS0VNEAASGwoWQ21kR2V0UmVwbGF5VG9rZW5D",
-            "c1JlcRCHHBITCg5DbWRBSENBSEZGTkhMRBCLHBIcChdFREZLRUVLTUZJQl9N",
-            "TEpNREZETk9PRRCKHBITCg5DbWRFS0dBTU5DTU9FShC2G0IWqgITTWFyY2g3",
-            "dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChNDbWRSZXBsYXlUeXBlLnByb3RvKqQBCg1DbWRSZXBsYXlUeXBlEhsKF0dM",
+            "SERLT0hIRERLX05MQ0RHSVBHRkRKEAASHAoXR0xIREtPSEhEREtfT0VOT01M",
+            "SkxBREMQ/BsSHAoXR0xIREtPSEhEREtfSURBQk1HSERISkgQ9RsSHAoXR0xI",
+            "REtPSEhEREtfT0lOTUZHSktCRlAQxxsSHAoXR0xIREtPSEhEREtfQ01HSk9M",
+            "T0xJTksQrxtCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdReplayType), }, null, null));
@@ -38,11 +38,11 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdReplayType {
-    [pbr::OriginalName("EDFKEEKMFIB_PCPDHELPKEM")] EdfkeekmfibPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdGetReplayTokenCsReq")] CmdGetReplayTokenCsReq = 3591,
-    [pbr::OriginalName("CmdAHCAHFFNHLD")] CmdAhcahffnhld = 3595,
-    [pbr::OriginalName("EDFKEEKMFIB_MLJMDFDNOOE")] EdfkeekmfibMljmdfdnooe = 3594,
-    [pbr::OriginalName("CmdEKGAMNCMOEJ")] CmdEkgamncmoej = 3510,
+    [pbr::OriginalName("GLHDKOHHDDK_NLCDGIPGFDJ")] GlhdkohhddkNlcdgipgfdj = 0,
+    [pbr::OriginalName("GLHDKOHHDDK_OENOMLJLADC")] GlhdkohhddkOenomljladc = 3580,
+    [pbr::OriginalName("GLHDKOHHDDK_IDABMGHDHJH")] GlhdkohhddkIdabmghdhjh = 3573,
+    [pbr::OriginalName("GLHDKOHHDDK_OINMFGJKBFP")] GlhdkohhddkOinmfgjkbfp = 3527,
+    [pbr::OriginalName("GLHDKOHHDDK_CMGJOLOLINK")] GlhdkohhddkCmgjololink = 3503,
   }
 
   #endregion

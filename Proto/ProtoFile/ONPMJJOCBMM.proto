@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message ONPMJJOCBMM {
+    uint32 retcode = 5;
+    uint32 LNGJODEPCDN = 8;
+}

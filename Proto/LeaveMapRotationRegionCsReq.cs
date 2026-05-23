@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiFMZWF2ZU1hcFJvdGF0aW9uUmVnaW9uQ3NSZXEucHJvdG8aEE1vdGlvbklu",
             "Zm8ucHJvdG8iOgobTGVhdmVNYXBSb3RhdGlvblJlZ2lvbkNzUmVxEhsKBm1v",
-            "dGlvbhgBIAEoCzILLk1vdGlvbkluZm9CFqoCE01hcmNoN3RoSG9uZXkuUHJv",
+            "dGlvbhgKIAEoCzILLk1vdGlvbkluZm9CFqoCE01hcmNoN3RoSG9uZXkuUHJv",
             "dG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MotionInfoReflection.Descriptor, },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "motion" field.</summary>
-    public const int MotionFieldNumber = 1;
+    public const int MotionFieldNumber = 10;
     private global::March7thHoney.Proto.MotionInfo motion_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -138,7 +138,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (motion_ != null) {
-        output.WriteRawTag(10);
+        output.WriteRawTag(82);
         output.WriteMessage(Motion);
       }
       if (_unknownFields != null) {
@@ -152,7 +152,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (motion_ != null) {
-        output.WriteRawTag(10);
+        output.WriteRawTag(82);
         output.WriteMessage(Motion);
       }
       if (_unknownFields != null) {
@@ -205,7 +205,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
+          case 82: {
             if (motion_ == null) {
               Motion = new global::March7thHoney.Proto.MotionInfo();
             }
@@ -231,7 +231,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
+          case 82: {
             if (motion_ == null) {
               Motion = new global::March7thHoney.Proto.MotionInfo();
             }

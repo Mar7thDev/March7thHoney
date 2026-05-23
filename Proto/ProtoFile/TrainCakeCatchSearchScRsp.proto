@@ -2,15 +2,13 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "LGGABHPGPDD.proto";
-import "PKILNDNCAMI.proto";
+import "JOFHMCJPBCE.proto";
+import "PJFIMFJPMCN.proto";
 
 message TrainCakeCatchSearchScRsp {
-    uint32 retcode = 1;
-    repeated uint32 OMFCGLJDFPD = 6;
-    PKILNDNCAMI BLEDIOOJPNL = 12;
-    uint32 HCJPDNDOHAM = 13;
-    repeated LGGABHPGPDD KALIBGCODNF = 14;
+    JOFHMCJPBCE NIELDCLPOLA = 10;
+    repeated PJFIMFJPMCN CEMFBJPOLNP = 3;
+    repeated uint32 GINENNKGDMG = 4;
+    uint32 retcode = 7;
+    uint32 PCPDHEIEJFO = 1;
 }

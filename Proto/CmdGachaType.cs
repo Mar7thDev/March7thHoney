@@ -24,16 +24,16 @@ namespace March7thHoney.Proto {
     static CmdGachaTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChJDbWRHYWNoYVR5cGUucHJvdG8q6gIKDENtZEdhY2hhVHlwZRIbChdMQ0lP",
-            "UEFGSU9JSl9QQ1BESEVMUEtFTRAAEhwKF0NtZEV4Y2hhbmdlR2FjaGFDZWls",
-            "aW5nEM4PEhQKD0NtZERvR2FjaGFTY1JzcBDLDxIcChdDbWRHZXRHYWNoYUNl",
-            "aWxpbmdTY1JzcBD+DhIZChRDbWRHZXRHYWNoYUluZm9Dc1JlcRDHDxIcChdM",
-            "Q0lPUEFGSU9JSl9BSkRLR0pNTkdLQRCTDxIfChpDbWRTZXRHYWNoYURlY2lk",
-            "ZUl0ZW1Dc1JlcRCrDxIUCg9DbWREb0dhY2hhQ3NSZXEQyg8SIQocQ21kRXhj",
-            "aGFuZ2VHYWNoYUNlaWxpbmdDc1JlcRD1DhIfChpDbWRTZXRHYWNoYURlY2lk",
-            "ZUl0ZW1TY1JzcBCGDxIcChdDbWRHZXRHYWNoYUNlaWxpbmdDc1JlcRD6DhIZ",
-            "ChRDbWRHZXRHYWNoYUluZm9TY1JzcBD2DkIWqgITTWFyY2g3dGhIb25leS5Q",
-            "cm90b2IGcHJvdG8z"));
+            "ChJDbWRHYWNoYVR5cGUucHJvdG8q9QIKDENtZEdhY2hhVHlwZRIbChdMREFE",
+            "RkpFT0ZHTF9OTENER0lQR0ZEShAAEhwKF0xEQURGSkVPRkdMX1BMTURBRE5N",
+            "QUVGEMMPEhwKF0xEQURGSkVPRkdMX0VHSkRORUtKQ0JGEIcPEhwKF0xEQURG",
+            "SkVPRkdMX0ZNSkJJQkxHTVBFEPsOEhwKF0xEQURGSkVPRkdMX0pQQ0ZGTk5P",
+            "SU5PEL0PEhwKF0xEQURGSkVPRkdMX0xORVBLQUlPQUtCEPYOEhwKF0xEQURG",
+            "SkVPRkdMX0xNSExNSEhBRERFEO8OEhwKF0xEQURGSkVPRkdMX05JR0pNQ0tE",
+            "QkpMEPkOEhwKF0xEQURGSkVPRkdMX0FQUEhJQUFPR0pKEJAPEhwKF0xEQURG",
+            "SkVPRkdMX1BQUElKQ01FQUtIELUPEhwKF0xEQURGSkVPRkdMX0lGQUFNQUVL",
+            "SE1BELwPEhwKF0xEQURGSkVPRkdMX1BEQ0lJRkNDQkVIEIkPQhaqAhNNYXJj",
+            "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdGachaType), }, null, null));
@@ -43,18 +43,18 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdGachaType {
-    [pbr::OriginalName("LCIOPAFIOIJ_PCPDHELPKEM")] LciopafioijPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdExchangeGachaCeiling")] CmdExchangeGachaCeiling = 1998,
-    [pbr::OriginalName("CmdDoGachaScRsp")] CmdDoGachaScRsp = 1995,
-    [pbr::OriginalName("CmdGetGachaCeilingScRsp")] CmdGetGachaCeilingScRsp = 1918,
-    [pbr::OriginalName("CmdGetGachaInfoCsReq")] CmdGetGachaInfoCsReq = 1991,
-    [pbr::OriginalName("LCIOPAFIOIJ_AJDKGJMNGKA")] LciopafioijAjdkgjmngka = 1939,
-    [pbr::OriginalName("CmdSetGachaDecideItemCsReq")] CmdSetGachaDecideItemCsReq = 1963,
-    [pbr::OriginalName("CmdDoGachaCsReq")] CmdDoGachaCsReq = 1994,
-    [pbr::OriginalName("CmdExchangeGachaCeilingCsReq")] CmdExchangeGachaCeilingCsReq = 1909,
-    [pbr::OriginalName("CmdSetGachaDecideItemScRsp")] CmdSetGachaDecideItemScRsp = 1926,
-    [pbr::OriginalName("CmdGetGachaCeilingCsReq")] CmdGetGachaCeilingCsReq = 1914,
-    [pbr::OriginalName("CmdGetGachaInfoScRsp")] CmdGetGachaInfoScRsp = 1910,
+    [pbr::OriginalName("LDADFJEOFGL_NLCDGIPGFDJ")] LdadfjeofglNlcdgipgfdj = 0,
+    [pbr::OriginalName("LDADFJEOFGL_PLMDADNMAEF")] LdadfjeofglPlmdadnmaef = 1987,
+    [pbr::OriginalName("LDADFJEOFGL_EGJDNEKJCBF")] LdadfjeofglEgjdnekjcbf = 1927,
+    [pbr::OriginalName("LDADFJEOFGL_FMJBIBLGMPE")] LdadfjeofglFmjbiblgmpe = 1915,
+    [pbr::OriginalName("LDADFJEOFGL_JPCFFNNOINO")] LdadfjeofglJpcffnnoino = 1981,
+    [pbr::OriginalName("LDADFJEOFGL_LNEPKAIOAKB")] LdadfjeofglLnepkaioakb = 1910,
+    [pbr::OriginalName("LDADFJEOFGL_LMHLMHHADDE")] LdadfjeofglLmhlmhhadde = 1903,
+    [pbr::OriginalName("LDADFJEOFGL_NIGJMCKDBJL")] LdadfjeofglNigjmckdbjl = 1913,
+    [pbr::OriginalName("LDADFJEOFGL_APPHIAAOGJJ")] LdadfjeofglApphiaaogjj = 1936,
+    [pbr::OriginalName("LDADFJEOFGL_PPPIJCMEAKH")] LdadfjeofglPppijcmeakh = 1973,
+    [pbr::OriginalName("LDADFJEOFGL_IFAAMAEKHMA")] LdadfjeofglIfaamaekhma = 1980,
+    [pbr::OriginalName("LDADFJEOFGL_PDCIIFCCBEH")] LdadfjeofglPdciifccbeh = 1929,
   }
 
   #endregion

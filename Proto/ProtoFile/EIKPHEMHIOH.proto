@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "ChallengeLineupList.proto";
+
+message EIKPHEMHIOH {
+    repeated ChallengeLineupList lineup_list = 8;
+    uint32 level = 3;
+    uint32 score_id = 14;
+    uint32 buff_two = 2;
+    uint32 buff_one = 13;
+    uint32 EEJCPNAEKLJ = 6;
+}

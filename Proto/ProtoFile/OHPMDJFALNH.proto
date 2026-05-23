@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message OHPMDJFALNH {
+    uint32 content_id = 14;
+}

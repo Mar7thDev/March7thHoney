@@ -2,13 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
-import "CIGKBDIGGOI.proto";
+import "DFJPGILAAON.proto";
 
 message MakeMissionDrinkScRsp {
-    bool is_save = 5;
-    bool DAIKNKALKCM = 7;
-    CIGKBDIGGOI DKGODNAMBHH = 11;
-    uint32 retcode = 14;
+    DFJPGILAAON LMOGDPMLKFH = 8;
+    bool is_save = 14;
+    bool KGKEJAKKLDP = 6;
+    uint32 retcode = 2;
 }

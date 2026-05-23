@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static CmdRollShopTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChVDbWRSb2xsU2hvcFR5cGUucHJvdG8q7AEKD0NtZFJvbGxTaG9wVHlwZRIb",
-            "ChdNTkNJQUFBRlBLS19QQ1BESEVMUEtFTRAAEhwKF0NtZEdldFJvbGxTaG9w",
-            "SW5mb0NzUmVxEPU1Eh4KGUNtZERvR2FjaGFJblJvbGxTaG9wQ3NSZXEQ9jUS",
-            "HAoXQ21kR2V0Um9sbFNob3BJbmZvU2NSc3AQiDYSHgoZQ21kRG9HYWNoYUlu",
-            "Um9sbFNob3BTY1JzcBD+NRIfChpDbWRUYWtlUm9sbFNob3BSZXdhcmRTY1Jz",
-            "cBD8NRIfChpDbWRUYWtlUm9sbFNob3BSZXdhcmRDc1JlcRCDNkIWqgITTWFy",
-            "Y2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChVDbWRSb2xsU2hvcFR5cGUucHJvdG8q4gEKD0NtZFJvbGxTaG9wVHlwZRIb",
+            "ChdPSENNTEJQT05PQl9OTENER0lQR0ZEShAAEhwKF09IQ01MQlBPTk9CX0pM",
+            "TUFBUElMUEZNEPo1EhwKF09IQ01MQlBPTk9CX0ZOSEdJSUVETU9MEPY1EhwK",
+            "F09IQ01MQlBPTk9CX09BT0xLQU1FRUpBEIQ2EhwKF09IQ01MQlBPTk9CX0lI",
+            "TU1FTktKSkdDEIY2EhwKF09IQ01MQlBPTk9CX0VPS0FJS0FKSE9QEIc2EhwK",
+            "F09IQ01MQlBPTk9CX01HS1BCSkRGRUZIEIg2QhaqAhNNYXJjaDd0aEhvbmV5",
+            "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdRollShopType), }, null, null));
@@ -40,13 +40,13 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdRollShopType {
-    [pbr::OriginalName("MNCIAAAFPKK_PCPDHELPKEM")] MnciaaafpkkPcpdhelpkem = 0,
-    [pbr::OriginalName("CmdGetRollShopInfoCsReq")] CmdGetRollShopInfoCsReq = 6901,
-    [pbr::OriginalName("CmdDoGachaInRollShopCsReq")] CmdDoGachaInRollShopCsReq = 6902,
-    [pbr::OriginalName("CmdGetRollShopInfoScRsp")] CmdGetRollShopInfoScRsp = 6920,
-    [pbr::OriginalName("CmdDoGachaInRollShopScRsp")] CmdDoGachaInRollShopScRsp = 6910,
-    [pbr::OriginalName("CmdTakeRollShopRewardScRsp")] CmdTakeRollShopRewardScRsp = 6908,
-    [pbr::OriginalName("CmdTakeRollShopRewardCsReq")] CmdTakeRollShopRewardCsReq = 6915,
+    [pbr::OriginalName("OHCMLBPONOB_NLCDGIPGFDJ")] OhcmlbponobNlcdgipgfdj = 0,
+    [pbr::OriginalName("OHCMLBPONOB_JLMAAPILPFM")] OhcmlbponobJlmaapilpfm = 6906,
+    [pbr::OriginalName("OHCMLBPONOB_FNHGIIEDMOL")] OhcmlbponobFnhgiiedmol = 6902,
+    [pbr::OriginalName("OHCMLBPONOB_OAOLKAMEEJA")] OhcmlbponobOaolkameeja = 6916,
+    [pbr::OriginalName("OHCMLBPONOB_IHMMENKJJGC")] OhcmlbponobIhmmenkjjgc = 6918,
+    [pbr::OriginalName("OHCMLBPONOB_EOKAIKAJHOP")] OhcmlbponobEokaikajhop = 6919,
+    [pbr::OriginalName("OHCMLBPONOB_MGKPBJDFEFH")] OhcmlbponobMgkpbjdfefh = 6920,
   }
 
   #endregion

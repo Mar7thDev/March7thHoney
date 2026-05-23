@@ -24,19 +24,19 @@ namespace March7thHoney.Proto {
     static GetHeartDialInfoScRspReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChtHZXRIZWFydERpYWxJbmZvU2NSc3AucHJvdG8aG0hlYXJ0RGlhbERpYWxv",
-            "Z3VlSW5mby5wcm90bxoZSGVhcnREaWFsU2NyaXB0SW5mby5wcm90bxobSGVh",
-            "cnREaWFsVW5sb2NrU3RhdHVzLnByb3RvGhFQSUNJTElJRktCRS5wcm90byLe",
-            "AQoVR2V0SGVhcnREaWFsSW5mb1NjUnNwEiEKC09PR0pBS0lQRkRKGAEgAygL",
-            "MgwuUElDSUxJSUZLQkUSLQoNdW5sb2NrX3N0YXR1cxgCIAEoDjIWLkhlYXJ0",
-            "RGlhbFVubG9ja1N0YXR1cxIuChBzY3JpcHRfaW5mb19saXN0GAMgAygLMhQu",
-            "SGVhcnREaWFsU2NyaXB0SW5mbxIPCgdyZXRjb2RlGAUgASgNEjIKEmRpYWxv",
-            "Z3VlX2luZm9fbGlzdBgIIAMoCzIWLkhlYXJ0RGlhbERpYWxvZ3VlSW5mb0IW",
+            "ChtHZXRIZWFydERpYWxJbmZvU2NSc3AucHJvdG8aEUVBSkVNTk5ORUJNLnBy",
+            "b3RvGhtIZWFydERpYWxEaWFsb2d1ZUluZm8ucHJvdG8aGUhlYXJ0RGlhbFNj",
+            "cmlwdEluZm8ucHJvdG8aG0hlYXJ0RGlhbFVubG9ja1N0YXR1cy5wcm90byLe",
+            "AQoVR2V0SGVhcnREaWFsSW5mb1NjUnNwEi4KEHNjcmlwdF9pbmZvX2xpc3QY",
+            "ByADKAsyFC5IZWFydERpYWxTY3JpcHRJbmZvEiEKC0VCTE1OTEJCRk5MGAYg",
+            "AygLMgwuRUFKRU1OTk5FQk0SMgoSZGlhbG9ndWVfaW5mb19saXN0GAMgAygL",
+            "MhYuSGVhcnREaWFsRGlhbG9ndWVJbmZvEi0KDXVubG9ja19zdGF0dXMYDiAB",
+            "KA4yFi5IZWFydERpYWxVbmxvY2tTdGF0dXMSDwoHcmV0Y29kZRgPIAEoDUIW",
             "qgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.HeartDialDialogueInfoReflection.Descriptor, global::March7thHoney.Proto.HeartDialScriptInfoReflection.Descriptor, global::March7thHoney.Proto.HeartDialUnlockStatusReflection.Descriptor, global::March7thHoney.Proto.PICILIIFKBEReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.EAJEMNNNEBMReflection.Descriptor, global::March7thHoney.Proto.HeartDialDialogueInfoReflection.Descriptor, global::March7thHoney.Proto.HeartDialScriptInfoReflection.Descriptor, global::March7thHoney.Proto.HeartDialUnlockStatusReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetHeartDialInfoScRsp), global::March7thHoney.Proto.GetHeartDialInfoScRsp.Parser, new[]{ "OOGJAKIPFDJ", "UnlockStatus", "ScriptInfoList", "Retcode", "DialogueInfoList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetHeartDialInfoScRsp), global::March7thHoney.Proto.GetHeartDialInfoScRsp.Parser, new[]{ "ScriptInfoList", "EBLMNLBBFNL", "DialogueInfoList", "UnlockStatus", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -78,11 +78,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetHeartDialInfoScRsp(GetHeartDialInfoScRsp other) : this() {
-      oOGJAKIPFDJ_ = other.oOGJAKIPFDJ_.Clone();
-      unlockStatus_ = other.unlockStatus_;
       scriptInfoList_ = other.scriptInfoList_.Clone();
-      retcode_ = other.retcode_;
+      eBLMNLBBFNL_ = other.eBLMNLBBFNL_.Clone();
       dialogueInfoList_ = other.dialogueInfoList_.Clone();
+      unlockStatus_ = other.unlockStatus_;
+      retcode_ = other.retcode_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -92,19 +92,41 @@ namespace March7thHoney.Proto {
       return new GetHeartDialInfoScRsp(this);
     }
 
-    /// <summary>Field number for the "OOGJAKIPFDJ" field.</summary>
-    public const int OOGJAKIPFDJFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.PICILIIFKBE> _repeated_oOGJAKIPFDJ_codec
-        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.PICILIIFKBE.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.PICILIIFKBE> oOGJAKIPFDJ_ = new pbc::RepeatedField<global::March7thHoney.Proto.PICILIIFKBE>();
+    /// <summary>Field number for the "script_info_list" field.</summary>
+    public const int ScriptInfoListFieldNumber = 7;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.HeartDialScriptInfo> _repeated_scriptInfoList_codec
+        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.HeartDialScriptInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.HeartDialScriptInfo> scriptInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.HeartDialScriptInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.PICILIIFKBE> OOGJAKIPFDJ {
-      get { return oOGJAKIPFDJ_; }
+    public pbc::RepeatedField<global::March7thHoney.Proto.HeartDialScriptInfo> ScriptInfoList {
+      get { return scriptInfoList_; }
+    }
+
+    /// <summary>Field number for the "EBLMNLBBFNL" field.</summary>
+    public const int EBLMNLBBFNLFieldNumber = 6;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EAJEMNNNEBM> _repeated_eBLMNLBBFNL_codec
+        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.EAJEMNNNEBM.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EAJEMNNNEBM> eBLMNLBBFNL_ = new pbc::RepeatedField<global::March7thHoney.Proto.EAJEMNNNEBM>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.EAJEMNNNEBM> EBLMNLBBFNL {
+      get { return eBLMNLBBFNL_; }
+    }
+
+    /// <summary>Field number for the "dialogue_info_list" field.</summary>
+    public const int DialogueInfoListFieldNumber = 3;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.HeartDialDialogueInfo> _repeated_dialogueInfoList_codec
+        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.HeartDialDialogueInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.HeartDialDialogueInfo> dialogueInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.HeartDialDialogueInfo>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.HeartDialDialogueInfo> DialogueInfoList {
+      get { return dialogueInfoList_; }
     }
 
     /// <summary>Field number for the "unlock_status" field.</summary>
-    public const int UnlockStatusFieldNumber = 2;
+    public const int UnlockStatusFieldNumber = 14;
     private global::March7thHoney.Proto.HeartDialUnlockStatus unlockStatus_ = global::March7thHoney.Proto.HeartDialUnlockStatus.Lock;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -115,19 +137,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "script_info_list" field.</summary>
-    public const int ScriptInfoListFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.HeartDialScriptInfo> _repeated_scriptInfoList_codec
-        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.HeartDialScriptInfo.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.HeartDialScriptInfo> scriptInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.HeartDialScriptInfo>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.HeartDialScriptInfo> ScriptInfoList {
-      get { return scriptInfoList_; }
-    }
-
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 5;
+    public const int RetcodeFieldNumber = 15;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -136,17 +147,6 @@ namespace March7thHoney.Proto {
       set {
         retcode_ = value;
       }
-    }
-
-    /// <summary>Field number for the "dialogue_info_list" field.</summary>
-    public const int DialogueInfoListFieldNumber = 8;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.HeartDialDialogueInfo> _repeated_dialogueInfoList_codec
-        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.HeartDialDialogueInfo.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.HeartDialDialogueInfo> dialogueInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.HeartDialDialogueInfo>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.HeartDialDialogueInfo> DialogueInfoList {
-      get { return dialogueInfoList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -164,11 +164,11 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!oOGJAKIPFDJ_.Equals(other.oOGJAKIPFDJ_)) return false;
-      if (UnlockStatus != other.UnlockStatus) return false;
       if(!scriptInfoList_.Equals(other.scriptInfoList_)) return false;
-      if (Retcode != other.Retcode) return false;
+      if(!eBLMNLBBFNL_.Equals(other.eBLMNLBBFNL_)) return false;
       if(!dialogueInfoList_.Equals(other.dialogueInfoList_)) return false;
+      if (UnlockStatus != other.UnlockStatus) return false;
+      if (Retcode != other.Retcode) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -176,11 +176,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= oOGJAKIPFDJ_.GetHashCode();
-      if (UnlockStatus != global::March7thHoney.Proto.HeartDialUnlockStatus.Lock) hash ^= UnlockStatus.GetHashCode();
       hash ^= scriptInfoList_.GetHashCode();
-      if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      hash ^= eBLMNLBBFNL_.GetHashCode();
       hash ^= dialogueInfoList_.GetHashCode();
+      if (UnlockStatus != global::March7thHoney.Proto.HeartDialUnlockStatus.Lock) hash ^= UnlockStatus.GetHashCode();
+      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -199,17 +199,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      oOGJAKIPFDJ_.WriteTo(output, _repeated_oOGJAKIPFDJ_codec);
+      dialogueInfoList_.WriteTo(output, _repeated_dialogueInfoList_codec);
+      eBLMNLBBFNL_.WriteTo(output, _repeated_eBLMNLBBFNL_codec);
+      scriptInfoList_.WriteTo(output, _repeated_scriptInfoList_codec);
       if (UnlockStatus != global::March7thHoney.Proto.HeartDialUnlockStatus.Lock) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(112);
         output.WriteEnum((int) UnlockStatus);
       }
-      scriptInfoList_.WriteTo(output, _repeated_scriptInfoList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(120);
         output.WriteUInt32(Retcode);
       }
-      dialogueInfoList_.WriteTo(output, _repeated_dialogueInfoList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -220,17 +220,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      oOGJAKIPFDJ_.WriteTo(ref output, _repeated_oOGJAKIPFDJ_codec);
+      dialogueInfoList_.WriteTo(ref output, _repeated_dialogueInfoList_codec);
+      eBLMNLBBFNL_.WriteTo(ref output, _repeated_eBLMNLBBFNL_codec);
+      scriptInfoList_.WriteTo(ref output, _repeated_scriptInfoList_codec);
       if (UnlockStatus != global::March7thHoney.Proto.HeartDialUnlockStatus.Lock) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(112);
         output.WriteEnum((int) UnlockStatus);
       }
-      scriptInfoList_.WriteTo(ref output, _repeated_scriptInfoList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(120);
         output.WriteUInt32(Retcode);
       }
-      dialogueInfoList_.WriteTo(ref output, _repeated_dialogueInfoList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -241,15 +241,15 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += oOGJAKIPFDJ_.CalculateSize(_repeated_oOGJAKIPFDJ_codec);
+      size += scriptInfoList_.CalculateSize(_repeated_scriptInfoList_codec);
+      size += eBLMNLBBFNL_.CalculateSize(_repeated_eBLMNLBBFNL_codec);
+      size += dialogueInfoList_.CalculateSize(_repeated_dialogueInfoList_codec);
       if (UnlockStatus != global::March7thHoney.Proto.HeartDialUnlockStatus.Lock) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) UnlockStatus);
       }
-      size += scriptInfoList_.CalculateSize(_repeated_scriptInfoList_codec);
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
-      size += dialogueInfoList_.CalculateSize(_repeated_dialogueInfoList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -262,15 +262,15 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      oOGJAKIPFDJ_.Add(other.oOGJAKIPFDJ_);
+      scriptInfoList_.Add(other.scriptInfoList_);
+      eBLMNLBBFNL_.Add(other.eBLMNLBBFNL_);
+      dialogueInfoList_.Add(other.dialogueInfoList_);
       if (other.UnlockStatus != global::March7thHoney.Proto.HeartDialUnlockStatus.Lock) {
         UnlockStatus = other.UnlockStatus;
       }
-      scriptInfoList_.Add(other.scriptInfoList_);
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
-      dialogueInfoList_.Add(other.dialogueInfoList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -290,24 +290,24 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            oOGJAKIPFDJ_.AddEntriesFrom(input, _repeated_oOGJAKIPFDJ_codec);
-            break;
-          }
-          case 16: {
-            UnlockStatus = (global::March7thHoney.Proto.HeartDialUnlockStatus) input.ReadEnum();
-            break;
-          }
           case 26: {
+            dialogueInfoList_.AddEntriesFrom(input, _repeated_dialogueInfoList_codec);
+            break;
+          }
+          case 50: {
+            eBLMNLBBFNL_.AddEntriesFrom(input, _repeated_eBLMNLBBFNL_codec);
+            break;
+          }
+          case 58: {
             scriptInfoList_.AddEntriesFrom(input, _repeated_scriptInfoList_codec);
             break;
           }
-          case 40: {
-            Retcode = input.ReadUInt32();
+          case 112: {
+            UnlockStatus = (global::March7thHoney.Proto.HeartDialUnlockStatus) input.ReadEnum();
             break;
           }
-          case 66: {
-            dialogueInfoList_.AddEntriesFrom(input, _repeated_dialogueInfoList_codec);
+          case 120: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -329,24 +329,24 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            oOGJAKIPFDJ_.AddEntriesFrom(ref input, _repeated_oOGJAKIPFDJ_codec);
-            break;
-          }
-          case 16: {
-            UnlockStatus = (global::March7thHoney.Proto.HeartDialUnlockStatus) input.ReadEnum();
-            break;
-          }
           case 26: {
+            dialogueInfoList_.AddEntriesFrom(ref input, _repeated_dialogueInfoList_codec);
+            break;
+          }
+          case 50: {
+            eBLMNLBBFNL_.AddEntriesFrom(ref input, _repeated_eBLMNLBBFNL_codec);
+            break;
+          }
+          case 58: {
             scriptInfoList_.AddEntriesFrom(ref input, _repeated_scriptInfoList_codec);
             break;
           }
-          case 40: {
-            Retcode = input.ReadUInt32();
+          case 112: {
+            UnlockStatus = (global::March7thHoney.Proto.HeartDialUnlockStatus) input.ReadEnum();
             break;
           }
-          case 66: {
-            dialogueInfoList_.AddEntriesFrom(ref input, _repeated_dialogueInfoList_codec);
+          case 120: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }

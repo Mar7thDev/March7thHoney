@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message OEPAMDEPFLJ {
+    uint32 dialogue_id = 4;
+}

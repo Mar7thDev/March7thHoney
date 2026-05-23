@@ -2,10 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 enum CmdPlotType {
-    KFFDKGMKPKL_PCPDHELPKEM = 0;
-    CmdFinishPlotCsReq = 1191;
-    CmdFEFJJFEMMFE = 1110;
+    MENMKJOIJBE_NLCDGIPGFDJ = 0;
+    MENMKJOIJBE_OCEIGENBHHG = 1103;
+    MENMKJOIJBE_HLBDJCCBNJP = 1173;
 }

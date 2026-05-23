@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch5VcGRhdGVBaVBhbVNldHRpbmdzU2NSc3AucHJvdG8iQAoYVXBkYXRlQWlQ",
-            "YW1TZXR0aW5nc1NjUnNwEg8KB3JldGNvZGUYBSABKA0SEwoLRUtCTUlPQ09M",
-            "SUMYDyABKAhCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "YW1TZXR0aW5nc1NjUnNwEhMKC0xPQ05HRkxDRU5HGA0gASgIEg8KB3JldGNv",
+            "ZGUYBSABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UpdateAiPamSettingsScRsp), global::March7thHoney.Proto.UpdateAiPamSettingsScRsp.Parser, new[]{ "Retcode", "EKBMIOCOLIC" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UpdateAiPamSettingsScRsp), global::March7thHoney.Proto.UpdateAiPamSettingsScRsp.Parser, new[]{ "LOCNGFLCENG", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public UpdateAiPamSettingsScRsp(UpdateAiPamSettingsScRsp other) : this() {
+      lOCNGFLCENG_ = other.lOCNGFLCENG_;
       retcode_ = other.retcode_;
-      eKBMIOCOLIC_ = other.eKBMIOCOLIC_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -81,6 +81,18 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public UpdateAiPamSettingsScRsp Clone() {
       return new UpdateAiPamSettingsScRsp(this);
+    }
+
+    /// <summary>Field number for the "LOCNGFLCENG" field.</summary>
+    public const int LOCNGFLCENGFieldNumber = 13;
+    private bool lOCNGFLCENG_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool LOCNGFLCENG {
+      get { return lOCNGFLCENG_; }
+      set {
+        lOCNGFLCENG_ = value;
+      }
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
@@ -92,18 +104,6 @@ namespace March7thHoney.Proto {
       get { return retcode_; }
       set {
         retcode_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "EKBMIOCOLIC" field.</summary>
-    public const int EKBMIOCOLICFieldNumber = 15;
-    private bool eKBMIOCOLIC_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool EKBMIOCOLIC {
-      get { return eKBMIOCOLIC_; }
-      set {
-        eKBMIOCOLIC_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (LOCNGFLCENG != other.LOCNGFLCENG) return false;
       if (Retcode != other.Retcode) return false;
-      if (EKBMIOCOLIC != other.EKBMIOCOLIC) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (LOCNGFLCENG != false) hash ^= LOCNGFLCENG.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
-      if (EKBMIOCOLIC != false) hash ^= EKBMIOCOLIC.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -155,9 +155,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(40);
         output.WriteUInt32(Retcode);
       }
-      if (EKBMIOCOLIC != false) {
-        output.WriteRawTag(120);
-        output.WriteBool(EKBMIOCOLIC);
+      if (LOCNGFLCENG != false) {
+        output.WriteRawTag(104);
+        output.WriteBool(LOCNGFLCENG);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -173,9 +173,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(40);
         output.WriteUInt32(Retcode);
       }
-      if (EKBMIOCOLIC != false) {
-        output.WriteRawTag(120);
-        output.WriteBool(EKBMIOCOLIC);
+      if (LOCNGFLCENG != false) {
+        output.WriteRawTag(104);
+        output.WriteBool(LOCNGFLCENG);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (LOCNGFLCENG != false) {
+        size += 1 + 1;
+      }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
-      }
-      if (EKBMIOCOLIC != false) {
-        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.LOCNGFLCENG != false) {
+        LOCNGFLCENG = other.LOCNGFLCENG;
+      }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
-      }
-      if (other.EKBMIOCOLIC != false) {
-        EKBMIOCOLIC = other.EKBMIOCOLIC;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -234,8 +234,8 @@ namespace March7thHoney.Proto {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 120: {
-            EKBMIOCOLIC = input.ReadBool();
+          case 104: {
+            LOCNGFLCENG = input.ReadBool();
             break;
           }
         }
@@ -261,8 +261,8 @@ namespace March7thHoney.Proto {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 120: {
-            EKBMIOCOLIC = input.ReadBool();
+          case 104: {
+            LOCNGFLCENG = input.ReadBool();
             break;
           }
         }

@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message DAMNNJKJOMM {
+    repeated uint32 first_lineup = 1;
+    repeated uint32 second_lineup = 2;
+    uint32 DLCJLOIMKOJ = 4;
+    uint32 DHMEBODOJMI = 3;
+}

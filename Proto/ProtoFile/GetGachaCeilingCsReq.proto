@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-
-
 message GetGachaCeilingCsReq {
-    uint32 gacha_type = 9;
+    uint32 gacha_type = 6;
 }
