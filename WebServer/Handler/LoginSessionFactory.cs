@@ -66,9 +66,7 @@ internal static class LoginSessionFactory
                 }
             }
         }
-        else if (!autoCreateUser
-                 && !ConfigManager.Config.ServerOption.Auth.SkipPasswordValidation
-                 && !canonicalAccount.VerifyPassword(normalizedPassword))
+        else if (!autoCreateUser && !canonicalAccount.VerifyPassword(normalizedPassword))
         {
             return false;
         }

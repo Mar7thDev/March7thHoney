@@ -324,10 +324,9 @@ public class DispatchRoutes : ControllerBase
     public JsonResult Login([FromBody] LoginReqJson req)
     {
         Debug($"shield login: account={req.account} is_crypto={req.is_crypto}");
-        var skipPwd = Config.ServerOption.Auth.SkipPasswordValidation;
-        var useRsa = Config.WebSecurity.EnableRsaLoginDecrypt && req.is_crypto && !skipPwd;
+        var useRsa = Config.WebSecurity.EnableRsaLoginDecrypt && req.is_crypto;
         var (account, password, decryptFailed) = LoginCryptoHelper.TryDecryptCredentialsStrict(req.account, req.password, useRsa);
-        if (decryptFailed && !skipPwd)
+        if (decryptFailed)
             return new JsonResult(LoginResJson.Error(-202, "Invalid login data"));
         var identityKeys = LoginIdentityContextFactory.Build(Request, req.device, req.device_id, req.device_fp);
         return new UsernameLoginHandler().HandleShieldLogin(account, password, identityKeys);
@@ -338,9 +337,8 @@ public class DispatchRoutes : ControllerBase
     public JsonResult PassportLogin([FromBody] PassportLoginReqJson req)
     {
         Debug($"appLoginByPassword: account={req.account}");
-        var skipPwd = Config.ServerOption.Auth.SkipPasswordValidation;
-        var useRsa = Config.WebSecurity.EnableRsaLoginDecrypt && !skipPwd;
-        var (account, password) = LoginCryptoHelper.TryDecryptCredentials(req.account, req.password, useRsa);
+        var (account, password) =
+            LoginCryptoHelper.TryDecryptCredentials(req.account, req.password, Config.WebSecurity.EnableRsaLoginDecrypt);
         var identityKeys = LoginIdentityContextFactory.Build(Request, req.device, req.device_id, req.device_fp);
         return new UsernameLoginHandler().HandlePassportLogin(account, password, identityKeys);
     }
@@ -368,9 +366,8 @@ public class DispatchRoutes : ControllerBase
     public ContentResult LegacyPassportLogin([FromBody] PassportLoginReqJson req)
     {
         Debug($"ma loginByPassword: account={req.account}");
-        var skipPwd = Config.ServerOption.Auth.SkipPasswordValidation;
-        var useRsa = Config.WebSecurity.EnableRsaLoginDecrypt && !skipPwd;
-        var (account, password) = LoginCryptoHelper.TryDecryptCredentials(req.account, req.password, useRsa);
+        var (account, password) =
+            LoginCryptoHelper.TryDecryptCredentials(req.account, req.password, Config.WebSecurity.EnableRsaLoginDecrypt);
         var identityKeys = LoginIdentityContextFactory.Build(Request, req.device, req.device_id, req.device_fp);
         return new UsernameLoginHandler().HandleLegacyPassportLogin(account, password, identityKeys);
     }
