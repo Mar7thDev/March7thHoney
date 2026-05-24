@@ -44554,36 +44554,29 @@
 	"battle_config": {
 		"battle_type": "DEFAULT",
 		"cycle_count": 0,
-		"stage_id": 30506022,
+		"stage_id": 30507022,
 		"path_resonance_id": 0,
 		"monsters": [
 			[
 				{
-					"monster_id": 5012100,
+					"monster_id": 5013040,
 					"amount": 1,
 					"level": 120
 				},
 				{
-					"monster_id": 3003020,
+					"monster_id": 4053020,
 					"amount": 1,
 					"level": 120
 				},
 				{
-					"monster_id": 5012100,
+					"monster_id": 5012010,
 					"amount": 1,
 					"level": 120
 				}
 			],
 			[
 				{
-					"monster_id": 5023010,
-					"amount": 1,
-					"level": 120
-				}
-			],
-			[
-				{
-					"monster_id": 5024010,
+					"monster_id": 802501003,
 					"amount": 1,
 					"level": 120
 				}
@@ -44592,15 +44585,15 @@
 		"blessings": [
 			{
 				"level": 1,
-				"id": 3033057
+				"id": 3033059
 			},
 			{
 				"level": 1,
-				"id": 3033042
+				"id": 3033064
 			},
 			{
 				"level": 1,
-				"id": 3033055
+				"id": 3033062
 			}
 		],
 		"custom_stats": []
