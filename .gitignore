@@ -379,6 +379,7 @@ Config.json
 
 # Local AI assistant config
 CLAUDE.md
+.claude/
 
 # Local SQLite databases
 Config/Database/
@@ -393,3 +394,7 @@ Research/AccountPlatNative_OS.dll.i64
 
 ## test dir
 tmp/
+
+## lua
+Lua/
+
