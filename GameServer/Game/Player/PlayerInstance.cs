@@ -11,7 +11,8 @@ using March7thHoney.GameServer.Game.Activity;
 using March7thHoney.GameServer.Game.Avatar;
 using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.Calyx;
-// TODO 4.3: Challenge / ChallengePeak 模块暂停
+using March7thHoney.GameServer.Game.Challenge;
+using March7thHoney.GameServer.Game.ChallengePeak;
 using March7thHoney.GameServer.Game.Expedition;
 using March7thHoney.GameServer.Game.Friend;
 // TODO 4.3: GridFight (货币战争) 模块暂停编译，等待 proto 重整
@@ -86,7 +87,9 @@ public partial class PlayerInstance(PlayerData data)
 
     public MailManager? MailManager { get; private set; }
     public FriendManager? FriendManager { get; private set; }
-    // TODO 4.3: Challenge / ChallengePeak / GridFight Manager 暂停编译
+    public ChallengeManager? ChallengeManager { get; private set; }
+    public ChallengePeakManager? ChallengePeakManager { get; private set; }
+    // TODO 4.3: GridFight Manager 暂停编译
     public ExpeditionManager? ExpeditionManager { get; private set; }
 
     #endregion
@@ -190,7 +193,9 @@ public partial class PlayerInstance(PlayerData data)
         MailManager = new MailManager(this);
         FriendManager = new FriendManager(this);
         ShopService = new ShopService(this);
-        // TODO 4.3: ChallengeManager / ChallengePeakManager / GridFightManager / TrainPartyManager / TrainCakeCatchManager 暂停初始化
+        ChallengeManager = new ChallengeManager(this);
+        ChallengePeakManager = new ChallengePeakManager(this);
+        // TODO 4.3: GridFightManager / TrainPartyManager / TrainCakeCatchManager 暂停初始化
         ExpeditionManager = new ExpeditionManager(this);
         TaskManager = new TaskManager(this);
         RaidManager = new RaidManager(this);

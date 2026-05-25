@@ -23,16 +23,16 @@ public class PacketGetChallengeGroupStatisticsScRsp : BasePacket
                 proto.ChallengeStory = new ChallengeStoryStatistics
                 {
                     RecordId = top.RecordId,
-                    NCEGEKNLJCE = new PLJJECPCMJD
+                    PPBHLLOJNEK = new EIKPHEMHIOH
                     {
                         Level = top.Level,
-                        ABJGNBJMJJG = top.Stars,
+                        EEJCPNAEKLJ = top.Stars,
                         BuffOne = top.BuffOne,
                         BuffTwo = top.BuffTwo,
                         ScoreId = top.Score
                     }
                 };
-                AddLineups(proto.ChallengeStory.NCEGEKNLJCE.LineupList, top.Lineups);
+                AddLineups(proto.ChallengeStory.PPBHLLOJNEK.LineupList, top.Lineups);
             }
             else if (data.MemoryGroupStatistics != null && data.MemoryGroupStatistics.Count > 0)
             {
@@ -40,14 +40,14 @@ public class PacketGetChallengeGroupStatisticsScRsp : BasePacket
                 proto.ChallengeDefault = new ChallengeStatistics
                 {
                     RecordId = top.RecordId,
-                    NCEGEKNLJCE = new FPDKBGJKPFF
+                    PPBHLLOJNEK = new ADKJKMKBFDC
                     {
                         Level = top.Level,
-                        ABJGNBJMJJG = top.Stars,
+                        EEJCPNAEKLJ = top.Stars,
                         RoundCount = top.RoundCount
                     }
                 };
-                AddLineups(proto.ChallengeDefault.NCEGEKNLJCE.LineupList, top.Lineups);
+                AddLineups(proto.ChallengeDefault.PPBHLLOJNEK.LineupList, top.Lineups);
             }
             else if (data.BossGroupStatistics != null && data.BossGroupStatistics.Count > 0)
             {
@@ -55,16 +55,16 @@ public class PacketGetChallengeGroupStatisticsScRsp : BasePacket
                 proto.ChallengeBoss = new ChallengeBossStatistics
                 {
                     RecordId = top.RecordId,
-                    NCEGEKNLJCE = new BHFAFMDHKKC
+                    PPBHLLOJNEK = new AANLJBLOOFO
                     {
                         Level = top.Level,
-                        ABJGNBJMJJG = top.Stars,
+                        EEJCPNAEKLJ = top.Stars,
                         BuffOne = top.BuffOne,
                         BuffTwo = top.BuffTwo,
                         ScoreId = top.Score
                     }
                 };
-                AddLineups(proto.ChallengeBoss.NCEGEKNLJCE.LineupList, top.Lineups);
+                AddLineups(proto.ChallengeBoss.PPBHLLOJNEK.LineupList, top.Lineups);
             }
         }
 

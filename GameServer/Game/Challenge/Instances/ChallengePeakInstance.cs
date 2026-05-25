@@ -126,7 +126,7 @@ public class ChallengePeakInstance(PlayerInstance player, ChallengeDataPb data) 
                     // add development
                     Player.FriendRecordData!.AddAndRemoveOld(new FriendDevelopmentInfoPb
                     {
-                        DevelopmentType = DevelopmentType.KghodpfjgliMjfldkhkdab,
+                        DevelopmentType = DevelopmentType.KmjkpklcpnmBeehiffkoih,
                         Params = { { "PeakLevelId", (uint)Config.ID } }
                     });
                 }
