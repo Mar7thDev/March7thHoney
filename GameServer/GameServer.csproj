@@ -47,8 +47,6 @@
     <Compile Remove="Server\Packet\Send\Gacha\**\*.cs" />
     <Compile Remove="Server\Packet\Recv\Expedition\**\*.cs" />
     <Compile Remove="Server\Packet\Send\Expedition\**\*.cs" />
-    <Compile Remove="Game\Challenge\**\*.cs" />
-    <Compile Remove="Game\ChallengePeak\**\*.cs" />
     <Compile Remove="Server\Packet\Recv\Item\HandlerSellItemCsReq.cs" />
     <Compile Remove="Server\Packet\Recv\Item\HandlerLockEquipmentCsReq.cs" />
     <Compile Remove="Server\Packet\Recv\Item\HandlerDiscardRelicCsReq.cs" />
@@ -65,10 +63,6 @@
     <Compile Remove="Server\Packet\Send\Friend\PacketGetFriendLoginInfoScRsp.cs" />
     <Compile Remove="Server\Packet\Recv\Friend\HandlerGetFriendLoginInfoCsReq.cs" />
     <Compile Remove="Server\Packet\Recv\Player\HandlerQueryProductInfoCsReq.cs" />
-    <Compile Remove="Server\Packet\Recv\Challenge\**\*.cs" />
-    <Compile Remove="Server\Packet\Send\Challenge\**\*.cs" />
-    <Compile Remove="Server\Packet\Recv\ChallengePeak\**\*.cs" />
-    <Compile Remove="Server\Packet\Send\ChallengePeak\**\*.cs" />
   </ItemGroup>
 
   <ItemGroup>
