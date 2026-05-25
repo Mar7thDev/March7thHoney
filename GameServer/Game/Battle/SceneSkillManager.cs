@@ -6,6 +6,7 @@ using March7thHoney.GameServer.Game.Drop;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
+using March7thHoney.GameServer.Game.Task.AvatarTask;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
 using March7thHoney.Proto;
 
@@ -50,22 +51,34 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
                 : new SkillResultData(Retcode.RetSceneEntityNotExist);
         // get ability file
         var abilities = GetAbilityConfig(attackEntity);
+
+        // Fallback path for avatars whose ConfigAdventureAbility/LocalPlayer/<Name>_00_Ability.json
+        // hasn't been dumped from the client yet (e.g. brand-new 4.3 characters before dim picks them up).
+        // We can't run the ability's OnStart task chain without that file, but the cast itself can still
+        // resolve: trigger battle when assist monsters were reported by the client, and let the
+        // downstream maze-buff backfill (below) bind the avatar's SkillMaze maze buffs. No avatar / monster
+        // id is hard-coded — selection is purely data-driven from req.AssistMonster* and entity types.
+        AbilityLevelResult res;
         if (abilities == null || abilities.AbilityList.Count < 1)
-            return new SkillResultData(Retcode.RetMazeNoAbility);
-
-        var abilityName = !string.IsNullOrEmpty(req.MazeAbilityStr) ? req.MazeAbilityStr :
-            req.SkillIndex == 0 ? "NormalAtk01" : "MazeSkill";
-        var targetAbility = abilities.AbilityList.Find(x => x.Name.Contains(abilityName));
-        if (targetAbility == null)
         {
-            targetAbility = abilities.AbilityList.FirstOrDefault();
-            if (targetAbility == null)
-                return new SkillResultData(Retcode.RetMazeNoAbility);
+            res = await BuildAbilitylessCast(attackEntity, targetEntities, req);
         }
+        else
+        {
+            var abilityName = !string.IsNullOrEmpty(req.MazeAbilityStr) ? req.MazeAbilityStr :
+                req.SkillIndex == 0 ? "NormalAtk01" : "MazeSkill";
+            var targetAbility = abilities.AbilityList.Find(x => x.Name.Contains(abilityName));
+            if (targetAbility == null)
+            {
+                targetAbility = abilities.AbilityList.FirstOrDefault();
+                if (targetAbility == null)
+                    return new SkillResultData(Retcode.RetMazeNoAbility);
+            }
 
-        // execute ability
-        var res = await Player.TaskManager!.AbilityLevelTask.TriggerTasks(abilities, targetAbility.OnStart,
-            attackEntity, targetEntities, req);
+            // execute ability
+            res = await Player.TaskManager!.AbilityLevelTask.TriggerTasks(abilities, targetAbility.OnStart,
+                attackEntity, targetEntities, req);
+        }
 
         // check if avatar execute
         if (attackEntity is AvatarSceneInfo) await Player.SceneInstance!.OnUseSkill(req);
@@ -210,6 +223,36 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
                 ItemId = itemId,
                 Count = count
             });
+    }
+
+    // Fallback for avatars missing an AdventureAbility JSON: mirror the minimal contract that
+    // AbilityLevelTask.AdventureTriggerAttack would have produced — open-world battle is triggered
+    // when the client reported assist monsters (普攻命中怪), and HitMonsterInstance entries are
+    // emitted for every reported entity so the client knows which ones to roll into the battle.
+    // No avatar / monster / entity id is hard-coded: selection is purely from req + entity types.
+    private async ValueTask<AbilityLevelResult> BuildAbilitylessCast(
+        BaseGameEntity attackEntity,
+        List<BaseGameEntity> targetEntities,
+        SceneCastSkillCsReq req)
+    {
+        if (targetEntities.Count == 0)
+            return new AbilityLevelResult();
+
+        var battleInfos = new List<HitMonsterInstance>();
+        foreach (var entity in targetEntities)
+        {
+            var type = entity is EntityMonster { IsAlive: false }
+                ? MonsterBattleType.DirectDieSkipBattle
+                : MonsterBattleType.TriggerBattle;
+            battleInfos.Add(new HitMonsterInstance(entity.EntityId, type));
+        }
+
+        var hasLiveMonster = targetEntities.OfType<EntityMonster>().Any(x => x.IsAlive);
+        BattleInstance? instance = null;
+        if (hasLiveMonster)
+            instance = await Player.BattleManager!.StartBattle(attackEntity, targetEntities, req.SkillIndex == 1);
+
+        return new AbilityLevelResult(instance, battleInfos);
     }
 
     private AdventureAbilityConfigListInfo? GetAbilityConfig(BaseGameEntity entity)
