@@ -1,3 +1,4 @@
+using March7thHoney.Data;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Proto;
 using SqlSugar;
@@ -49,11 +50,35 @@ public class MailAttachmentInfo
 {
     public List<ItemData> Items { get; set; } = [];
 
+    public bool HasValidItems()
+    {
+        return Items.Any(IsValidAttachmentItem);
+    }
+
+    public List<ItemData> GetValidItems()
+    {
+        return Items.Where(IsValidAttachmentItem).ToList();
+    }
+
+    public static bool CanStoreConfiguredAttachmentItem(int itemId, int count)
+    {
+        return itemId > 0 &&
+               count > 0 &&
+               (GameData.ItemConfigData.Count == 0 || GameData.ItemConfigData.ContainsKey(itemId));
+    }
+
+    public static bool IsValidAttachmentItem(ItemData item)
+    {
+        return item.ItemId > 0 &&
+               item.Count > 0 &&
+               GameData.ItemConfigData.ContainsKey(item.ItemId);
+    }
+
     public ItemList ToProto()
     {
         return new ItemList
         {
-            ItemList_ = { Items.Select(x => x.ToProto()).ToList() }
+            ItemList_ = { GetValidItems().Select(x => x.ToProto()).ToList() }
         };
     }
 }
