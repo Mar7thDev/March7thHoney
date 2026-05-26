@@ -90,6 +90,7 @@ public static class GameData
     #region Challenge
 
     public static Dictionary<int, ChallengeConfigExcel> ChallengeConfigData { get; private set; } = [];
+    public static Dictionary<int, ChallengeMazeTierceConfigExcel> ChallengeMazeTierceConfigData { get; private set; } = [];
     public static Dictionary<int, ChallengeTargetExcel> ChallengeTargetData { get; private set; } = [];
     public static Dictionary<int, ChallengeGroupExcel> ChallengeGroupData { get; private set; } = [];
 
