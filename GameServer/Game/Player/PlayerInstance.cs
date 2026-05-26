@@ -89,6 +89,7 @@ public partial class PlayerInstance(PlayerData data)
     public FriendManager? FriendManager { get; private set; }
     public ChallengeManager? ChallengeManager { get; private set; }
     public ChallengePeakManager? ChallengePeakManager { get; private set; }
+    public ChallengeTierceManager? ChallengeTierceManager { get; private set; }
     // TODO 4.3: GridFight Manager 暂停编译
     public ExpeditionManager? ExpeditionManager { get; private set; }
 
@@ -195,6 +196,7 @@ public partial class PlayerInstance(PlayerData data)
         ShopService = new ShopService(this);
         ChallengeManager = new ChallengeManager(this);
         ChallengePeakManager = new ChallengePeakManager(this);
+        ChallengeTierceManager = new ChallengeTierceManager(this);
         // TODO 4.3: GridFightManager / TrainPartyManager / TrainCakeCatchManager 暂停初始化
         ExpeditionManager = new ExpeditionManager(this);
         TaskManager = new TaskManager(this);
@@ -277,6 +279,7 @@ public partial class PlayerInstance(PlayerData data)
         await SendPacket(new PacketStaminaInfoScNotify(this));
 
         ChallengeManager?.ResurrectInstance();
+        ChallengeTierceManager?.ResurrectInstance();
         if (StoryLineManager != null)
             await StoryLineManager.OnLogin();
 

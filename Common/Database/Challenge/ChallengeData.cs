@@ -19,10 +19,26 @@ public class ChallengeData : BaseDatabaseDataHelper
     [SugarColumn(IsJson = true)]
     public Dictionary<int, ChallengePeakBossLevelData> PeakBossLevelDatas { get; set; } = new();
 
+    [SugarColumn(IsNullable = true)] public string? TierceInstance { get; set; }
+
+    [SugarColumn(IsJson = true)]
+    public Dictionary<int, ChallengeTierceHistoryData> TierceHistory { get; set; } = new();
+
     public void Delete(int challengeId)
     {
         History.Remove(challengeId);
     }
+}
+
+public class ChallengeTierceHistoryData
+{
+    public int ChallengeId { get; set; }
+    public bool IsPassed { get; set; }
+    public uint Stars { get; set; }
+    public List<uint> FinishedTargetList { get; set; } = [];
+    public List<List<uint>> StageLineups { get; set; } = [];
+    public List<uint> StageBuffIds { get; set; } = [];
+    public uint UsedCycleCount { get; set; }
 }
 
 public class ChallengePeakLevelData
