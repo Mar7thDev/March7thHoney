@@ -162,23 +162,23 @@
       "stages": {
         "701": {
           "npc_monster_id": 5023020,
-          "map_entrance_id": 3014201,
-          "maze_group_id": 7
+          "map_entrance_id": 3000204,
+          "maze_group_id": 4
         },
         "702": {
           "npc_monster_id": 5014020,
-          "map_entrance_id": 3014201,
-          "maze_group_id": 7
+          "map_entrance_id": 3000204,
+          "maze_group_id": 4
         },
         "703": {
           "npc_monster_id": 4014020,
-          "map_entrance_id": 3014201,
-          "maze_group_id": 7
+          "map_entrance_id": 3000204,
+          "maze_group_id": 4
         },
         "704": {
           "npc_monster_id": 8025010,
-          "map_entrance_id": 3014201,
-          "maze_group_id": 8
+          "map_entrance_id": 3000204,
+          "maze_group_id": 4
         }
       }
     }
