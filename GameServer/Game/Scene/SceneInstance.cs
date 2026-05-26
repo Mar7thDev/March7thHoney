@@ -7,7 +7,7 @@ using March7thHoney.Enums.Mission;
 using March7thHoney.Enums.Scene;
 using March7thHoney.GameServer.Game.Activity.Loaders;
 using March7thHoney.GameServer.Game.Battle;
-// TODO 4.3: Challenge 模块暂停
+using March7thHoney.GameServer.Game.Challenge;
 using March7thHoney.GameServer.Game.Mission;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene.Component;
@@ -116,7 +116,13 @@ public class SceneInstance
             sceneInfo.LeaderEntityId = (uint)LeaderEntityId;
         }
 
-        foreach (var summonUnit in SummonUnit.Values) playerGroupInfo.EntityList.Add(summonUnit.ToProto());
+        // 4.3 client refuses SummonUnit entities inside Challenge-type scenes
+        // (ChallengePeak / Challenge endgame) — it stops processing
+        // EnterSceneByServerScNotify and the player gets stuck at the loading
+        // step. ExtraMpCount (e.g. Phainon's +3 max sp) is a separate ability
+        // action on LineupData, so skipping dispatch here does not affect it.
+        if (Excel.PlaneType != PlaneTypeEnum.Challenge)
+            foreach (var summonUnit in SummonUnit.Values) playerGroupInfo.EntityList.Add(summonUnit.ToProto());
 
         sceneInfo.EntityGroupList.Add(playerGroupInfo);
 
@@ -267,8 +273,7 @@ public class SceneInstance
                 EntityLoader = new SceneEntityLoader(this);
                 break;
             case PlaneTypeEnum.Challenge:
-                // TODO 4.3: ChallengeEntityLoader 暂停，回落到默认 SceneEntityLoader
-                EntityLoader = new SceneEntityLoader(this);
+                EntityLoader = new ChallengeEntityLoader(this, Player);
                 break;
             case PlaneTypeEnum.TrialActivity:
                 EntityLoader = new TrialActivityEntityLoader(this, Player);
