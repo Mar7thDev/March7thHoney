@@ -249,7 +249,7 @@ public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
             ChallengeInstance = proto.ChallengeTypeCase switch
             {
                 ChallengeDataPb.ChallengeTypeOneofCase.Memory => new ChallengeMemoryInstance(Player, proto),
-                ChallengeDataPb.ChallengeTypeOneofCase.Peak => null,
+                ChallengeDataPb.ChallengeTypeOneofCase.Peak => new ChallengePeakInstance(Player, proto),
                 ChallengeDataPb.ChallengeTypeOneofCase.Story => new ChallengeStoryInstance(Player, proto),
                 ChallengeDataPb.ChallengeTypeOneofCase.Boss => new ChallengeBossInstance(Player, proto),
                 _ => null
