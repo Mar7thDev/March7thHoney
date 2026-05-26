@@ -19,6 +19,7 @@ public class ChallengeTierceInstance : BaseChallengeInstance
 
     public uint ChallengeId => (uint)Config.ID;
     public uint CurStageIndex { get; set; }
+    public bool IsSingleStage { get; set; }
     public int RoundsLeftPool { get; set; }
     public uint DeadAvatarNum { get; set; }
     public bool IsPassed { get; set; }
@@ -126,7 +127,18 @@ public class ChallengeTierceInstance : BaseChallengeInstance
         };
         ResultList.Add(stageData);
 
-        if (CurStageIndex < 2)
+        if (IsSingleStage)
+        {
+            // Single-stage replay — emit a single-stage settle and leave the instance in place
+            // so the client can choose Restart or Leave from the result UI.
+            IsPassed = true;
+            FinishedTargetList.Clear();
+            foreach (var tid in Config.ChallengeTargetID) FinishedTargetList.Add((uint)tid);
+            if (Config.ChallengeTierceTargetID != 0) FinishedTargetList.Add((uint)Config.ChallengeTierceTargetID);
+            await Player.SendPacket(PacketChallengeTierceSyncNotify.ForSingleStage(this, stageData));
+            Player.ChallengeTierceManager!.SaveInstance();
+        }
+        else if (CurStageIndex < 2)
         {
             // Intermediate node — wait for client to confirm via StartChallengeTierceNextStageCsReq.
             await Player.SendPacket(PacketChallengeTierceSyncNotify.ForSingleStage(this, stageData));

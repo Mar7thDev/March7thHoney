@@ -12,7 +12,12 @@ public class HandlerStartChallengeTierceCsReq : Handler
         var req = StartChallengeTierceCsReq.Parser.ParseFrom(data);
         var player = connection.Player!;
 
-        var ok = await player.ChallengeTierceManager!.StartChallenge(req.ChallengeId, req.StageInfoList);
+        bool ok;
+        if (req.IsSingleStage)
+            ok = await player.ChallengeTierceManager!.StartSingleStage(req.ChallengeId, req.StageIndex);
+        else
+            ok = await player.ChallengeTierceManager!.StartChallenge(req.ChallengeId, req.StageInfoList);
+
         if (!ok)
         {
             await connection.SendPacket(new PacketStartChallengeTierceScRsp((uint)Retcode.RetChallengeNotExist));

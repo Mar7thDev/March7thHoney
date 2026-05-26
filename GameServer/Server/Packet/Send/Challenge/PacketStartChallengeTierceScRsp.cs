@@ -18,7 +18,8 @@ public class PacketStartChallengeTierceScRsp : BasePacket
         var info = new ChallengeTierceChallengeInfo
         {
             ChallengeId = inst.ChallengeId,
-            StageIndex = inst.CurStageIndex
+            StageIndex = inst.CurStageIndex,
+            IsSingleStage = inst.IsSingleStage
         };
 
         foreach (var type in new[] { ExtraLineupType.LineupChallenge, ExtraLineupType.LineupChallenge2, ExtraLineupType.LineupChallenge3 })

@@ -125,6 +125,63 @@ public class ChallengeTierceManager(PlayerInstance player) : BasePlayerManager(p
         return true;
     }
 
+    public async ValueTask<bool> StartSingleStage(uint challengeId, uint stageIndex)
+    {
+        if (stageIndex > 2) return false;
+        if (!ResolveNodes((int)challengeId, out var tierceConf, out var preConf)) return false;
+        if (!ChallengeData.TierceHistory.TryGetValue((int)challengeId, out var history)) return false;
+        if (history.StageLineups.Count < 3) return false;
+
+        var lineupTypes = new[] { ExtraLineupType.LineupChallenge, ExtraLineupType.LineupChallenge2, ExtraLineupType.LineupChallenge3 };
+        var snapshot = new List<List<uint>>();
+        for (var i = 0; i < 3; i++)
+        {
+            var avatarIds = history.StageLineups[i].Select(x => (int)x).ToList();
+            Player.LineupManager!.SetExtraLineup(lineupTypes[i], avatarIds);
+
+            var teamLineup = Player.LineupManager.GetExtraLineup(lineupTypes[i]);
+            if (teamLineup != null)
+            {
+                var avatars = Player.LineupManager.GetAvatarsFromTeam((int)lineupTypes[i] + 10);
+                foreach (var avatar in avatars)
+                {
+                    avatar.AvatarInfo.SetCurHp(10000, true);
+                    avatar.AvatarInfo.SetCurSp(5000, true);
+                }
+                teamLineup.Mp = Player.LineupManager.GetMaxMp();
+            }
+            snapshot.Add(history.StageLineups[i].ToList());
+        }
+
+        var instance = new ChallengeTierceInstance(Player, tierceConf, preConf)
+        {
+            CurStageIndex = stageIndex,
+            IsSingleStage = true,
+            RoundsLeftPool = tierceConf.ChallengeCountDown,
+            SavedMp = 0,
+            StartPos = Player.Data.Pos!,
+            StartRot = Player.Data.Rot!
+        };
+        instance.StageLineupSnapshot.AddRange(snapshot);
+        instance.StageBuffIds.AddRange(history.StageBuffIds.Count == 3 ? history.StageBuffIds : new List<uint> { 0u, 0u, 0u });
+
+        CurrentInstance = instance;
+        Player.ChallengeManager!.ChallengeInstance = instance;
+
+        await Player.LineupManager!.SetExtraLineup(instance.GetCurrentExtraLineupType(), false);
+        await Player.EnterScene(tierceConf.MapEntranceID, 0, false);
+
+        if (Player.SceneInstance != null)
+            Player.SceneInstance.LeaveEntryId = GameConstants.CHALLENGE_ENTRANCE;
+
+        instance.SavedMp = Player.LineupManager.GetCurLineup()?.Mp ?? 0;
+        instance.StartPos = Player.Data.Pos!;
+        instance.StartRot = Player.Data.Rot!;
+
+        SaveInstance();
+        return true;
+    }
+
     public async ValueTask Leave()
     {
         ClearInstance();
@@ -135,7 +192,10 @@ public class ChallengeTierceManager(PlayerInstance player) : BasePlayerManager(p
     public async ValueTask<bool> Restart()
     {
         if (CurrentInstance == null) return false;
+
         var challengeId = CurrentInstance.ChallengeId;
+        var isSingleStage = CurrentInstance.IsSingleStage;
+        var stageIndex = CurrentInstance.CurStageIndex;
         var lineupSnapshot = CurrentInstance.StageLineupSnapshot
             .Select(list => new ChallengeTierceStageLineupInfo
             {
@@ -147,6 +207,9 @@ public class ChallengeTierceManager(PlayerInstance player) : BasePlayerManager(p
             lineupSnapshot[i].BuffId = buffSnapshot[i];
 
         ClearInstance();
+
+        if (isSingleStage)
+            return await StartSingleStage(challengeId, stageIndex);
         return await StartChallenge(challengeId, lineupSnapshot);
     }
 
@@ -157,6 +220,7 @@ public class ChallengeTierceManager(PlayerInstance player) : BasePlayerManager(p
         {
             ChallengeId = CurrentInstance.ChallengeId,
             CurStageIndex = CurrentInstance.CurStageIndex,
+            IsSingleStage = CurrentInstance.IsSingleStage,
             RoundsLeftPool = CurrentInstance.RoundsLeftPool,
             DeadAvatarNum = CurrentInstance.DeadAvatarNum,
             SavedMp = CurrentInstance.SavedMp,
@@ -206,6 +270,7 @@ public class ChallengeTierceManager(PlayerInstance player) : BasePlayerManager(p
         var instance = new ChallengeTierceInstance(Player, tierceConf, preConf)
         {
             CurStageIndex = snap.CurStageIndex,
+            IsSingleStage = snap.IsSingleStage,
             RoundsLeftPool = snap.RoundsLeftPool,
             DeadAvatarNum = snap.DeadAvatarNum,
             SavedMp = snap.SavedMp,
@@ -303,6 +368,7 @@ public class ChallengeTierceManager(PlayerInstance player) : BasePlayerManager(p
     {
         public uint ChallengeId { get; set; }
         public uint CurStageIndex { get; set; }
+        public bool IsSingleStage { get; set; }
         public int RoundsLeftPool { get; set; }
         public uint DeadAvatarNum { get; set; }
         public int SavedMp { get; set; }
