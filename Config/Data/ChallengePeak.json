@@ -158,25 +158,25 @@
     },
     {
       "group_id": 7,
-      "npc_monster_id_default": 5013040,
+      "npc_monster_id_default": 8025010,
       "stages": {
         "701": {
-          "npc_monster_id": 5012090,
+          "npc_monster_id": 5023020,
           "map_entrance_id": 3014201,
           "maze_group_id": 7
         },
         "702": {
-          "npc_monster_id": 5012010,
+          "npc_monster_id": 5014020,
           "map_entrance_id": 3014201,
           "maze_group_id": 7
         },
         "703": {
-          "npc_monster_id": 5013050,
+          "npc_monster_id": 4014020,
           "map_entrance_id": 3014201,
           "maze_group_id": 7
         },
         "704": {
-          "npc_monster_id": 5013040,
+          "npc_monster_id": 8025010,
           "map_entrance_id": 3014201,
           "maze_group_id": 8
         }
