@@ -134,7 +134,7 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
             battleInstance.AvatarInfo = avatarList;
 
             // call battle start
-            // TODO 4.3: ChallengeManager 暂停（旧 ChallengeInstance OnBattleStart）
+            Player.ChallengeManager!.ChallengeInstance?.OnBattleStart(battleInstance);
             Player.QuestManager!.OnBattleStart(battleInstance);
 
             Player.BattleInstance = battleInstance;
@@ -185,7 +185,7 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
         battleInstance.AvatarInfo = avatarList;
 
         // call battle start
-        // TODO 4.3: ChallengeManager 暂停
+        Player.ChallengeManager!.ChallengeInstance?.OnBattleStart(battleInstance);
         Player.QuestManager!.OnBattleStart(battleInstance);
 
         Player.BattleInstance = battleInstance;
@@ -304,7 +304,7 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
         };
 
         // call battle start
-        // TODO 4.3: ChallengeManager 暂停
+        Player.ChallengeManager!.ChallengeInstance?.OnBattleStart(battleInstance);
         Player.QuestManager!.OnBattleStart(battleInstance);
 
         Player.BattleInstance = battleInstance;
