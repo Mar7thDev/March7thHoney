@@ -139,6 +139,7 @@ public class CommandTextEN
     public DebugTextEN Debug { get; } = new();
     public RemoveTextEN Remove { get; } = new();
     public WindyTextEN Windy { get; } = new();
+    public HtlTextEN Htl { get; } = new();
 }
 
 #endregion
@@ -676,6 +677,28 @@ public class WindyTextEN
     public string Usage => "Usage: /windy <lua path relative to the Lua folder>";
     public string Loaded => "Read BYTECODE from Lua script: {0}";
     public string ReadError => "Error reading Lua script: {0}";
+}
+
+/// <summary>
+///     path: Game.Command.Htl
+/// </summary>
+public class HtlTextEN
+{
+    public string Desc => "Developer-only HoyoToonLua controls.";
+    public string Usage =>
+        "Usage: /htl enable|pause|restore|toggle <script|all>\n" +
+        "Usage: /htl hotkey <script|all> <key>\n" +
+        "Usage: /htl skill <character> <skill> <level|All> [param] <value>\n" +
+        "Usage: /htl memosprite <character> <skill> <level|All> [param] <value>\n" +
+        "Usage: /htl talent <character> <point> <level|All> [param] <value>\n" +
+        "Usage: /htl talentstat <character> <point> <level|All> [stat] <value>\n" +
+        "Usage: /htl con <character> <con|rankId> <param> <value>\n" +
+        "Usage: /htl stat <character> <promotion|All> <stat> <value>\n" +
+        "Usage: /htl popup <message>\n" +
+        "Usage: /htl reload";
+    public string Sent => "HTL command sent: {0}";
+    public string ScriptNotFound => "HTL script not found: {0}";
+    public string ReadError => "Error reading HTL script: {0}";
 }
 
 #endregion

@@ -33,6 +33,7 @@ public static class CommandPermissions
     public const string UnlockAll = "command.unlockall";
     public const string Unstuck = "command.unstuck";
     public const string Windy = "command.windy";
+    public const string Htl = "command.htl";
 
     public const string Player = "command.player";
     public const string Inventory = "command.inventory";
@@ -138,6 +139,7 @@ public static class CommandPermissions
             UnlockAll,
             Unstuck,
             Windy,
+            Htl,
             Player,
             Inventory,
             Progress,

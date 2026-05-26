@@ -50,6 +50,7 @@ public static class CommandRoles
             [
                 RoleReferencePrefix + Administrator,
                 CommandPermissions.Windy,
+                CommandPermissions.Htl,
                 CommandPermissions.Debug,
                 CommandPermissions.Clear
             ]

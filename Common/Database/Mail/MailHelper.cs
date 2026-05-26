@@ -29,7 +29,7 @@ public static class MailHelper
             Attachment = new MailAttachmentInfo
             {
                 Items = config.Items
-                    .Where(item => item.ItemId > 0 && item.Count > 0)
+                    .Where(item => MailAttachmentInfo.CanStoreConfiguredAttachmentItem(item.ItemId, item.Count))
                     .Select(item => new ItemData
                     {
                         ItemId = item.ItemId,
