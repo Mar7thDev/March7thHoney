@@ -359,9 +359,16 @@ public partial class PlayerInstance
             return;
         }
 
-        // TODO 4.3: ChallengeManager 暂停，Challenge plane 进入校验暂停
+        if (plane.PlaneType == PlaneTypeEnum.Challenge && ChallengeManager!.ChallengeInstance == null &&
+            entryId is not GameConstants.CHALLENGE_ENTRANCE and
+                not GameConstants.CHALLENGE_BOSS_ENTRANCE and
+                not GameConstants.CHALLENGE_PEAK_ENTRANCE and
+                not GameConstants.CHALLENGE_STORY_ENTRANCE)
+        {
+            await EnterScene(GameConstants.CHALLENGE_ENTRANCE, 0, sendPacket);
+            return;
+        }
 
-        // TODO: Sanify check
         Data.Pos = pos;
         Data.Rot = rot;
         var notSendMove = true;

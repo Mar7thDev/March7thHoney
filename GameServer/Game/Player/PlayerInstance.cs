@@ -276,7 +276,7 @@ public partial class PlayerInstance(PlayerData data)
     {
         await SendPacket(new PacketStaminaInfoScNotify(this));
 
-        // TODO 4.3: ChallengeManager?.ResurrectInstance() 暂停
+        ChallengeManager?.ResurrectInstance();
         if (StoryLineManager != null)
             await StoryLineManager.OnLogin();
 
@@ -286,8 +286,8 @@ public partial class PlayerInstance(PlayerData data)
         if (LineupManager!.GetCurLineup() != null) // null -> ignore(new player)
         {
             if (LineupManager!.GetCurLineup()!.IsExtraLineup() &&
-                RaidManager!.RaidData.CurRaidId == 0 && StoryLineManager!.StoryLineData.CurStoryLineId == 0
-                /* TODO 4.3: ChallengeManager!.ChallengeInstance == null */) // do not use extra lineup when login
+                RaidManager!.RaidData.CurRaidId == 0 && StoryLineManager!.StoryLineData.CurStoryLineId == 0 &&
+                ChallengeManager!.ChallengeInstance == null) // do not use extra lineup when login
             {
                 LineupManager!.SetExtraLineup(ExtraLineupType.LineupNone, []);
                 if (LineupManager!.GetCurLineup()!.IsExtraLineup()) await LineupManager!.SetCurLineup(0);
