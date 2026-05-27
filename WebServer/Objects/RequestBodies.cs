@@ -47,6 +47,13 @@ public class PassportTokenVerifyReqJson
     }
 }
 
+public class PassportSTokenVerifyReqJson
+{
+    public string mid { get; set; } = "";
+    public string stoken { get; set; } = "";
+    public bool refresh { get; set; }
+}
+
 public class RegisterReqJson
 {
     public string? account { get; set; }

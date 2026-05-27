@@ -380,6 +380,40 @@ public class DispatchRoutes : ControllerBase
         return new TokenLoginHandler().HandlePassportVerify(req.mid!, req.token.token!, req.refresh, identityKeys);
     }
 
+    [HttpPost("/hkrpg_global/account/ma-passport/token/verifySToken")]
+    [HttpPost("/{gameKey}/account/ma-passport/token/verifySToken")]
+    public ContentResult PassportSTokenVerify([FromBody] PassportSTokenVerifyReqJson? req)
+    {
+        req ??= new PassportSTokenVerifyReqJson();
+        var mid = req.mid ?? string.Empty;
+        var stoken = req.stoken ?? string.Empty;
+        var identityKeys = LoginIdentityContextFactory.Build(Request);
+        return new TokenLoginHandler().HandlePassportVerify(mid, stoken, req.refresh, identityKeys);
+    }
+
+    [HttpGet("/hkrpg_global/account/ma-passport/api/getConfig")]
+    [HttpPost("/hkrpg_global/account/ma-passport/api/getConfig")]
+    [HttpGet("/{gameKey}/account/ma-passport/api/getConfig")]
+    [HttpPost("/{gameKey}/account/ma-passport/api/getConfig")]
+    public ContentResult PassportGetConfig()
+    {
+        return new ContentResult
+        {
+            Content = JsonConvert.SerializeObject(new
+            {
+                retcode = 0,
+                message = "OK",
+                data = new
+                {
+                    enable_email_captcha = false,
+                    disable_mmt = false,
+                    enable_ps_bind_account = false
+                }
+            }),
+            ContentType = "application/json"
+        };
+    }
+
     [HttpGet("/hkrpg_global/combo/granter/api/getConfig")]
     [HttpGet("/{gameKey}/combo/granter/api/getConfig")]
     public ContentResult GetConfig()
