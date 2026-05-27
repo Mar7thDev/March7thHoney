@@ -131,16 +131,17 @@ public class ChallengeTierceInstance : BaseChallengeInstance
         {
             // Single-stage replay — emit a single-stage settle and leave the instance in place
             // so the client can choose Restart or Leave from the result UI.
-            IsPassed = true;
             FinishedTargetList.Clear();
             foreach (var tid in Config.ChallengeTargetID) FinishedTargetList.Add((uint)tid);
             if (Config.ChallengeTierceTargetID != 0) FinishedTargetList.Add((uint)Config.ChallengeTierceTargetID);
+            Player.ChallengeTierceManager!.RecordStageClear(this, CurStageIndex);
             await Player.SendPacket(PacketChallengeTierceSyncNotify.ForSingleStage(this, stageData));
             Player.ChallengeTierceManager!.SaveInstance();
         }
         else if (CurStageIndex < 2)
         {
             // Intermediate node — wait for client to confirm via StartChallengeTierceNextStageCsReq.
+            Player.ChallengeTierceManager!.RecordStageClear(this, CurStageIndex);
             await Player.SendPacket(PacketChallengeTierceSyncNotify.ForSingleStage(this, stageData));
             Player.ChallengeTierceManager!.SaveInstance();
         }
@@ -152,9 +153,8 @@ public class ChallengeTierceInstance : BaseChallengeInstance
             foreach (var tid in Config.ChallengeTargetID) FinishedTargetList.Add((uint)tid);
             if (Config.ChallengeTierceTargetID != 0) FinishedTargetList.Add((uint)Config.ChallengeTierceTargetID);
 
+            Player.ChallengeTierceManager!.RecordStageClear(this, CurStageIndex);
             await Player.SendPacket(PacketChallengeTierceSyncNotify.ForAllStage(this));
-
-            Player.ChallengeTierceManager!.SaveHistory(this);
             Player.ChallengeTierceManager.ClearInstance();
         }
     }
