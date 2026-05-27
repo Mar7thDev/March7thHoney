@@ -9,9 +9,8 @@ public class HandlerSetChallengeTierceLineupCsReq : Handler
 {
     public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
     {
-        // Client preconfigures per-node lineups via the editing UI, but the actual roster is also
-        // forwarded inside StartChallengeTierceCsReq.stage_info_list. We accept and acknowledge here
-        // so the editing UI stays responsive; no state mutation is needed for the gameplay loop.
+        var req = SetChallengeTierceLineupCsReq.Parser.ParseFrom(data);
+        connection.Player!.ChallengeTierceManager!.PersistEditorLineups(req.ChallengeId, req.StageInfoList);
         await connection.SendPacket(new PacketSetChallengeTierceLineupScRsp());
     }
 }
