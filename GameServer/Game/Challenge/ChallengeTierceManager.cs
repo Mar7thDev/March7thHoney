@@ -83,7 +83,7 @@ public class ChallengeTierceManager(PlayerInstance player) : BasePlayerManager(p
 
         // After scene is built we can set leave entry so client's "退出挑战" works.
         if (Player.SceneInstance != null)
-            Player.SceneInstance.LeaveEntryId = GameConstants.CHALLENGE_ENTRANCE;
+            Player.SceneInstance.LeaveEntryId = GetLobbyEntryId(preConf);
 
         instance.SavedMp = Player.LineupManager.GetCurLineup()?.Mp ?? 0;
         instance.StartPos = Player.Data.Pos!;
@@ -119,7 +119,7 @@ public class ChallengeTierceManager(PlayerInstance player) : BasePlayerManager(p
         await Player.EnterScene(entranceId, 0, true);
 
         if (Player.SceneInstance != null)
-            Player.SceneInstance.LeaveEntryId = GameConstants.CHALLENGE_ENTRANCE;
+            Player.SceneInstance.LeaveEntryId = GetLobbyEntryId(CurrentInstance.PreConfig);
 
         CurrentInstance.StartPos = Player.Data.Pos!;
         CurrentInstance.StartRot = Player.Data.Rot!;
@@ -211,7 +211,7 @@ public class ChallengeTierceManager(PlayerInstance player) : BasePlayerManager(p
         await Player.EnterScene(tierceConf.MapEntranceID, 0, false);
 
         if (Player.SceneInstance != null)
-            Player.SceneInstance.LeaveEntryId = GameConstants.CHALLENGE_ENTRANCE;
+            Player.SceneInstance.LeaveEntryId = GetLobbyEntryId(preConf);
 
         instance.SavedMp = Player.LineupManager.GetCurLineup()?.Mp ?? 0;
         instance.StartPos = Player.Data.Pos!;
@@ -223,9 +223,17 @@ public class ChallengeTierceManager(PlayerInstance player) : BasePlayerManager(p
 
     public async ValueTask Leave()
     {
+        int entry;
+        if (CurrentInstance != null)
+            entry = GetLobbyEntryId(CurrentInstance.PreConfig);
+        else if (Player.SceneInstance is { LeaveEntryId: var leave } && leave != 0)
+            entry = leave;
+        else
+            entry = GameConstants.CHALLENGE_ENTRANCE;
+
         ClearInstance();
         await Player.LineupManager!.SetExtraLineup(ExtraLineupType.LineupNone);
-        await Player.EnterScene(GameConstants.CHALLENGE_ENTRANCE, 0, true);
+        await Player.EnterScene(entry, 0, true);
     }
 
     public async ValueTask<bool> Restart()
@@ -271,7 +279,8 @@ public class ChallengeTierceManager(PlayerInstance player) : BasePlayerManager(p
             StartRotZ = CurrentInstance.StartRot.Z,
             StageEndStatuses = CurrentInstance.ResultList.Select(r => (int)r.EndStatus).ToList(),
             StageLineupSnapshot = CurrentInstance.StageLineupSnapshot.Select(l => l.ToList()).ToList(),
-            StageBuffIds = CurrentInstance.StageBuffIds.ToList()
+            StageBuffIds = CurrentInstance.StageBuffIds.ToList(),
+            StageScores = CurrentInstance.StageScores.ToList()
         };
         ChallengeData.TierceInstance = JsonConvert.SerializeObject(snap);
     }
@@ -318,6 +327,8 @@ public class ChallengeTierceManager(PlayerInstance player) : BasePlayerManager(p
         };
         instance.StageLineupSnapshot.AddRange(snap.StageLineupSnapshot);
         instance.StageBuffIds.AddRange(snap.StageBuffIds);
+        for (var i = 0; i < 3 && i < snap.StageScores.Count; i++)
+            instance.StageScores[i] = snap.StageScores[i];
         for (var i = 0; i < snap.StageEndStatuses.Count; i++)
         {
             instance.ResultList.Add(new ChallengeTierceStageData
@@ -455,6 +466,13 @@ public class ChallengeTierceManager(PlayerInstance player) : BasePlayerManager(p
         return data;
     }
 
+    private static int GetLobbyEntryId(ChallengeConfigExcel preConfig)
+    {
+        if (preConfig.IsStory()) return GameConstants.CHALLENGE_STORY_ENTRANCE;
+        if (preConfig.IsBoss()) return GameConstants.CHALLENGE_BOSS_ENTRANCE;
+        return GameConstants.CHALLENGE_ENTRANCE;
+    }
+
     private static bool ResolveNodes(int challengeId, out ChallengeMazeTierceConfigExcel tierceConf,
         out ChallengeConfigExcel preConf)
     {
@@ -484,5 +502,6 @@ public class ChallengeTierceManager(PlayerInstance player) : BasePlayerManager(p
         public List<int> StageEndStatuses { get; set; } = [];
         public List<List<uint>> StageLineupSnapshot { get; set; } = [];
         public List<uint> StageBuffIds { get; set; } = [];
+        public List<int> StageScores { get; set; } = [];
     }
 }

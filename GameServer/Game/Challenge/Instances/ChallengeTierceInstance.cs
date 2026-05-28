@@ -34,6 +34,13 @@ public class ChallengeTierceInstance : BaseChallengeInstance
     public List<List<uint>> StageLineupSnapshot { get; } = [];
     public List<uint> StageBuffIds { get; } = [];
 
+    // Per-stage score for PF Tierce (MOC keeps these zero).
+    public List<int> StageScores { get; } = [0, 0, 0];
+    public int GetTotalScore() => StageScores.Sum();
+
+    public bool IsStoryMode => PreConfig.IsStory();
+    public bool IsBossMode => PreConfig.IsBoss();
+
     public ChallengeTierceInstance(PlayerInstance player, ChallengeMazeTierceConfigExcel config,
         ChallengeConfigExcel preConfig)
         : base(player, new ChallengeDataPb())
@@ -77,7 +84,20 @@ public class ChallengeTierceInstance : BaseChallengeInstance
     {
         base.OnBattleStart(battle);
 
-        battle.RoundLimit = RoundsLeftPool;
+        if (IsStoryMode)
+        {
+            // PF Tierce uses a per-node turn limit (PreConfig.ChallengeCountDown comes from
+            // ChallengeStoryMazeExtra.TurnLimit) and the FantasticStory score container.
+            battle.RoundLimit = PreConfig.ChallengeCountDown;
+            battle.AddBattleTarget(1, 10003, GetTotalScore());
+            if (PreConfig.StoryExcel?.BattleTargetID != null)
+                foreach (var id in PreConfig.StoryExcel.BattleTargetID)
+                    battle.AddBattleTarget(5, id, GetTotalScore());
+        }
+        else
+        {
+            battle.RoundLimit = RoundsLeftPool;
+        }
 
         if (PreConfig.MazeBuffID != 0)
             battle.Buffs.Add(new MazeBuff(PreConfig.MazeBuffID, 1, -1) { WaveFlag = -1 });
@@ -92,7 +112,16 @@ public class ChallengeTierceInstance : BaseChallengeInstance
                     if (avatar.CurrentHp <= 0)
                         DeadAvatarNum++;
 
-                RoundsLeftPool = (int)Math.Max(RoundsLeftPool - req.Stt.RoundCnt, 0L);
+                if (IsStoryMode)
+                {
+                    var stageScore = (int)req.Stt.ChallengeScore - GetTotalScore();
+                    if (stageScore < 0) stageScore = 0;
+                    StageScores[(int)CurStageIndex] = stageScore;
+                }
+                else
+                {
+                    RoundsLeftPool = (int)Math.Max(RoundsLeftPool - req.Stt.RoundCnt, 0L);
+                }
                 SavedMp = Player.LineupManager!.GetCurLineup()!.Mp;
 
                 long monsters = Player.SceneInstance!.Entities.Values.OfType<EntityMonster>().Count();
@@ -123,7 +152,8 @@ public class ChallengeTierceInstance : BaseChallengeInstance
         var stageData = new ChallengeTierceStageData
         {
             EndStatus = BattleEndStatus.BattleEndWin,
-            StageIndex = CurStageIndex
+            StageIndex = CurStageIndex,
+            ScoreId = IsStoryMode ? (uint)StageScores[(int)CurStageIndex] : 0u
         };
         ResultList.Add(stageData);
 
