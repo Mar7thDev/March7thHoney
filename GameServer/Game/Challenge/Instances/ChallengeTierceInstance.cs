@@ -219,10 +219,37 @@ public class ChallengeTierceInstance : BaseChallengeInstance
 
         if (IsSingleStage)
         {
-            // Single-stage replay — emit a single-stage settle and leave the instance in place
-            // so the client can choose Restart or Leave from the result UI.
+            // Single-stage replay. Captured packets show node 0/1 single-replays use
+            // SingleStage settle, but a node 3 single-replay uses the AllStage settle so
+            // the client renders Restart + Leave instead of "前往节点 X".
             Player.ChallengeTierceManager!.RecordStageClear(this, CurStageIndex);
-            await Player.SendPacket(PacketChallengeTierceSyncNotify.ForSingleStage(this, stageData));
+            if (CurStageIndex == 2)
+            {
+                // AllStage settle has to carry three stage results for the client to
+                // render Restart/Leave instead of "前往节点 X"; this is unconditional
+                // even if the player has never cleared the other two nodes (matches the
+                // captured behaviour of node 3 single-replay).
+                Player.ChallengeTierceManager!.ChallengeData.TierceHistory
+                    .TryGetValue((int)ChallengeId, out var history);
+                var existing = ResultList.ToDictionary(r => r.StageIndex, r => r);
+                for (uint i = 0; i < 3; i++)
+                {
+                    if (existing.ContainsKey(i)) continue;
+                    ResultList.Add(new ChallengeTierceStageData
+                    {
+                        EndStatus = BattleEndStatus.BattleEndWin,
+                        StageIndex = i,
+                        ScoreId = (history != null && i < history.StageScores.Count) ? history.StageScores[(int)i] : 0u
+                    });
+                }
+                ResultList.Sort((a, b) => a.StageIndex.CompareTo(b.StageIndex));
+                IsPassed = true;
+                await Player.SendPacket(PacketChallengeTierceSyncNotify.ForAllStage(this));
+            }
+            else
+            {
+                await Player.SendPacket(PacketChallengeTierceSyncNotify.ForSingleStage(this, stageData));
+            }
             Player.ChallengeTierceManager!.SaveInstance();
         }
         else if (CurStageIndex < 2)
