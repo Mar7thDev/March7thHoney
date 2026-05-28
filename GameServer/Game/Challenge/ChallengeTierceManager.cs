@@ -78,8 +78,8 @@ public class ChallengeTierceManager(PlayerInstance player) : BasePlayerManager(p
         // Switch to the first lineup before entering scene so EntityLoader sees the right roster.
         await Player.LineupManager!.SetExtraLineup(ExtraLineupType.LineupChallenge, false);
 
-        // Enter the pre-battle scene.
-        await Player.EnterScene(tierceConf.MapEntranceID, 0, false);
+        // Enter the pre-battle scene for node 1 — AS has a different floor per node, MOC/PF share one.
+        await Player.EnterScene(GetEntranceForStage(instance, 0), 0, false);
 
         // After scene is built we can set leave entry so client's "退出挑战" works.
         if (Player.SceneInstance != null)
@@ -114,8 +114,8 @@ public class ChallengeTierceManager(PlayerInstance player) : BasePlayerManager(p
 
         await Player.LineupManager.SetExtraLineup(lineupType, false);
 
-        // Re-enter the same map entrance — Scene/EntityLoader rebuilds and pulls the new node's monster group.
-        var entranceId = CurrentInstance.Config.MapEntranceID;
+        // Enter the next node's entrance — AS jumps to a new floor here; MOC/PF stay on the same floor.
+        var entranceId = GetEntranceForStage(CurrentInstance, CurrentInstance.CurStageIndex);
         await Player.EnterScene(entranceId, 0, true);
 
         if (Player.SceneInstance != null)
@@ -208,7 +208,7 @@ public class ChallengeTierceManager(PlayerInstance player) : BasePlayerManager(p
         Player.ChallengeManager!.ChallengeInstance = instance;
 
         await Player.LineupManager!.SetExtraLineup(instance.GetCurrentExtraLineupType(), false);
-        await Player.EnterScene(tierceConf.MapEntranceID, 0, false);
+        await Player.EnterScene(GetEntranceForStage(instance, stageIndex), 0, false);
 
         if (Player.SceneInstance != null)
             Player.SceneInstance.LeaveEntryId = GetLobbyEntryId(preConf);
@@ -476,6 +476,18 @@ public class ChallengeTierceManager(PlayerInstance player) : BasePlayerManager(p
         if (preConfig.IsStory()) return GameConstants.CHALLENGE_STORY_ENTRANCE;
         if (preConfig.IsBoss()) return GameConstants.CHALLENGE_BOSS_ENTRANCE;
         return GameConstants.CHALLENGE_ENTRANCE;
+    }
+
+    private static int GetEntranceForStage(ChallengeTierceInstance inst, uint stageIndex)
+    {
+        return stageIndex switch
+        {
+            0 => inst.PreConfig.MapEntranceID,
+            1 => inst.PreConfig.MapEntranceID2 != 0
+                ? inst.PreConfig.MapEntranceID2
+                : inst.PreConfig.MapEntranceID,
+            _ => inst.Config.MapEntranceID,
+        };
     }
 
     private static bool ResolveNodes(int challengeId, out ChallengeMazeTierceConfigExcel tierceConf,
