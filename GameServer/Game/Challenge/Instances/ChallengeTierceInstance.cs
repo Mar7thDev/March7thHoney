@@ -34,12 +34,21 @@ public class ChallengeTierceInstance : BaseChallengeInstance
     public List<List<uint>> StageLineupSnapshot { get; } = [];
     public List<uint> StageBuffIds { get; } = [];
 
-    // Per-stage score for PF Tierce (MOC keeps these zero).
+    // Per-stage score for PF/AS Tierce (MOC keeps these zero).
     public List<int> StageScores { get; } = [0, 0, 0];
     public int GetTotalScore() => StageScores.Sum();
 
+    // AS final settle reports only the final node's score, PF/MOC use the sum.
+    public int GetRecordScore() => IsBossMode
+        ? (StageScores.Count > 2 ? StageScores[2] : 0)
+        : GetTotalScore();
+
     public bool IsStoryMode => PreConfig.IsStory();
     public bool IsBossMode => PreConfig.IsBoss();
+
+    // Set by ChallengeEntityLoader before it calls GetStageMonsters / LoadMonster, because the
+    // EntityLoader runs inside SceneInstance's ctor — Player.SceneInstance hasn't been assigned yet.
+    public March7thHoney.GameServer.Game.Scene.SceneInstance? ActiveScene { get; set; }
 
     public ChallengeTierceInstance(PlayerInstance player, ChallengeMazeTierceConfigExcel config,
         ChallengeConfigExcel preConfig)
@@ -52,12 +61,33 @@ public class ChallengeTierceInstance : BaseChallengeInstance
 
     public override Dictionary<int, List<ChallengeConfigExcel.ChallengeMonsterInfo>> GetStageMonsters()
     {
-        return CurStageIndex switch
+        if (CurStageIndex == 0) return PreConfig.ChallengeMonsters1;
+        if (CurStageIndex == 1) return PreConfig.ChallengeMonsters2;
+
+        // Node 3 reads from Tierce config. Some Tierce entries (e.g. AS 30185 → MazeGroupID=6)
+        // declare a group that the actual floor doesn't expose — the boss spot lives in a
+        // different group on disk. Fallback: scan the floor for any group containing the
+        // configured monster spot (by ConfigList[0]) and remap the dictionary key. This stays
+        // version-agnostic since the lookup is driven entirely by the Excel ConfigList.
+        var declared = Config.MazeGroupID;
+        var floor = ActiveScene?.FloorInfo ?? Player.SceneInstance?.FloorInfo;
+        if (floor != null && Config.ChallengeMonsters.TryGetValue(declared, out var monsters)
+            && !floor.Groups.ContainsKey(declared) && monsters.Count > 0)
         {
-            0 => PreConfig.ChallengeMonsters1,
-            1 => PreConfig.ChallengeMonsters2,
-            _ => Config.ChallengeMonsters
-        };
+            var anchorConfigId = monsters[0].ConfigId;
+            foreach (var (gid, group) in floor.Groups)
+            {
+                if (group.MonsterList != null && group.MonsterList.Any(m => m.ID == anchorConfigId))
+                {
+                    return new Dictionary<int, List<ChallengeConfigExcel.ChallengeMonsterInfo>>
+                    {
+                        [gid] = monsters
+                    };
+                }
+            }
+        }
+
+        return Config.ChallengeMonsters;
     }
 
     public int GetCurrentMazeGroupId()
@@ -94,6 +124,13 @@ public class ChallengeTierceInstance : BaseChallengeInstance
                 foreach (var id in PreConfig.StoryExcel.BattleTargetID)
                     battle.AddBattleTarget(5, id, GetTotalScore());
         }
+        else if (IsBossMode)
+        {
+            // AS Tierce: same recipe as ChallengeBossInstance.OnBattleStart — no round limit
+            // (fight runs until all bosses are down) and a fixed pair of type-1 score targets.
+            battle.AddBattleTarget(1, 90004, 0);
+            battle.AddBattleTarget(1, 90005, 0);
+        }
         else
         {
             battle.RoundLimit = RoundsLeftPool;
@@ -101,6 +138,11 @@ public class ChallengeTierceInstance : BaseChallengeInstance
 
         if (PreConfig.MazeBuffID != 0)
             battle.Buffs.Add(new MazeBuff(PreConfig.MazeBuffID, 1, -1) { WaveFlag = -1 });
+
+        // Per-node buff the player picked in the editor (StageBuffIds[CurStageIndex] comes from
+        // StartChallengeTierceCsReq.stageInfoList[i].buffId).
+        if (CurStageIndex < StageBuffIds.Count && StageBuffIds[(int)CurStageIndex] != 0)
+            battle.Buffs.Add(new MazeBuff((int)StageBuffIds[(int)CurStageIndex], 1, -1) { WaveFlag = -1 });
     }
 
     public override async ValueTask OnBattleEnd(BattleInstance battle, PVEBattleResultCsReq req)
@@ -118,6 +160,14 @@ public class ChallengeTierceInstance : BaseChallengeInstance
                     if (stageScore < 0) stageScore = 0;
                     StageScores[(int)CurStageIndex] = stageScore;
                 }
+                else if (IsBossMode)
+                {
+                    var stageScore = 0;
+                    if (req.Stt.BattleTargetInfo.TryGetValue(1, out var targets))
+                        foreach (var t in targets.BattleTargetList_)
+                            stageScore += (int)t.Progress;
+                    StageScores[(int)CurStageIndex] = stageScore;
+                }
                 else
                 {
                     RoundsLeftPool = (int)Math.Max(RoundsLeftPool - req.Stt.RoundCnt, 0L);
@@ -125,7 +175,7 @@ public class ChallengeTierceInstance : BaseChallengeInstance
                 SavedMp = Player.LineupManager!.GetCurLineup()!.Mp;
 
                 long monsters = Player.SceneInstance!.Entities.Values.OfType<EntityMonster>().Count();
-                if (monsters == 0) await OnStageCleared();
+                if (monsters == 0) await OnStageCleared(req);
                 break;
 
             case BattleEndStatus.BattleEndQuit:
@@ -147,23 +197,30 @@ public class ChallengeTierceInstance : BaseChallengeInstance
         }
     }
 
-    private async ValueTask OnStageCleared()
+    private async ValueTask OnStageCleared(PVEBattleResultCsReq req)
     {
         var stageData = new ChallengeTierceStageData
         {
             EndStatus = BattleEndStatus.BattleEndWin,
             StageIndex = CurStageIndex,
-            ScoreId = IsStoryMode ? (uint)StageScores[(int)CurStageIndex] : 0u
+            ScoreId = (uint)Math.Max(0, StageScores[(int)CurStageIndex])
         };
+        // Echo back the battle's target progress so the client renders per-node detail
+        // ("对首领造成总伤害量 X%" etc.) — for AS that's the type-1 targets, for PF the type-5 list.
+        if (req.Stt.BattleTargetInfo.TryGetValue(IsStoryMode ? 5u : 1u, out var targets))
+            stageData.BattleTargetList.AddRange(targets.BattleTargetList_);
         ResultList.Add(stageData);
+
+        // FinishedTargetList stays stable across all three nodes — client uses it for the
+        // overall progress chips. Captured packets show this list duplicated on every sync.
+        FinishedTargetList.Clear();
+        foreach (var tid in Config.ChallengeTargetID) FinishedTargetList.Add((uint)tid);
+        if (Config.ChallengeTierceTargetID != 0) FinishedTargetList.Add((uint)Config.ChallengeTierceTargetID);
 
         if (IsSingleStage)
         {
             // Single-stage replay — emit a single-stage settle and leave the instance in place
             // so the client can choose Restart or Leave from the result UI.
-            FinishedTargetList.Clear();
-            foreach (var tid in Config.ChallengeTargetID) FinishedTargetList.Add((uint)tid);
-            if (Config.ChallengeTierceTargetID != 0) FinishedTargetList.Add((uint)Config.ChallengeTierceTargetID);
             Player.ChallengeTierceManager!.RecordStageClear(this, CurStageIndex);
             await Player.SendPacket(PacketChallengeTierceSyncNotify.ForSingleStage(this, stageData));
             Player.ChallengeTierceManager!.SaveInstance();
@@ -179,10 +236,6 @@ public class ChallengeTierceInstance : BaseChallengeInstance
         {
             // Final node cleared — settle the whole challenge.
             IsPassed = true;
-            FinishedTargetList.Clear();
-            foreach (var tid in Config.ChallengeTargetID) FinishedTargetList.Add((uint)tid);
-            if (Config.ChallengeTierceTargetID != 0) FinishedTargetList.Add((uint)Config.ChallengeTierceTargetID);
-
             Player.ChallengeTierceManager!.RecordStageClear(this, CurStageIndex);
             await Player.SendPacket(PacketChallengeTierceSyncNotify.ForAllStage(this));
             Player.ChallengeTierceManager.ClearInstance();

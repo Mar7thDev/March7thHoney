@@ -20,6 +20,10 @@ public class ChallengeEntityLoader(SceneInstance scene, PlayerInstance player) :
         // Get challenge instance
         if (Player.ChallengeManager!.ChallengeInstance == null) return;
         var instance = Player.ChallengeManager.ChallengeInstance;
+        // Tierce needs the current Scene to fall back when its declared MazeGroupID is missing
+        // from the floor. SceneInstance's ctor runs LoadEntity before Player.SceneInstance is
+        // assigned, so we hand the scene through here.
+        if (instance is Instances.ChallengeTierceInstance tierce) tierce.ActiveScene = Scene;
         LoadGroups.SafeAddRange(Scene.FloorInfo!.Groups.Keys.ToList());
 
         // Setup first stage
