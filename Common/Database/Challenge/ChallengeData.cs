@@ -36,11 +36,14 @@ public class ChallengeTierceHistoryData
     public bool IsPassed { get; set; }
     public uint Stars { get; set; }
     public List<uint> FinishedTargetList { get; set; } = [];
-    public List<List<uint>> StageLineups { get; set; } = [[], [], []];
-    public List<uint> StageBuffIds { get; set; } = [0u, 0u, 0u];
-    public List<bool> StageCleared { get; set; } = [false, false, false];
-    public List<uint> StageScores { get; set; } = [0u, 0u, 0u];
+    // Per-stage slots are initialised lazily by the manager (NormaliseSlots) to avoid
+    // Newtonsoft.Json appending deserialised entries onto a non-empty default list.
+    public List<List<uint>> StageLineups { get; set; } = [];
+    public List<uint> StageBuffIds { get; set; } = [];
+    public List<bool> StageCleared { get; set; } = [];
+    public List<uint> StageScores { get; set; } = [];
     public uint UsedCycleCount { get; set; }
+    public uint RecordScore { get; set; }
 }
 
 public class ChallengePeakLevelData
