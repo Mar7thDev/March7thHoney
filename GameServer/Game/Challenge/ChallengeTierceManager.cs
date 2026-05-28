@@ -382,12 +382,15 @@ public class ChallengeTierceManager(PlayerInstance player) : BasePlayerManager(p
         while (history.StageLineups.Count < 3) history.StageLineups.Add([]);
         while (history.StageBuffIds.Count < 3) history.StageBuffIds.Add(0u);
         while (history.StageCleared.Count < 3) history.StageCleared.Add(false);
+        while (history.StageScores.Count < 3) history.StageScores.Add(0u);
 
         history.StageCleared[(int)stageIndex] = true;
         if (stageIndex < inst.StageLineupSnapshot.Count)
             history.StageLineups[(int)stageIndex] = inst.StageLineupSnapshot[(int)stageIndex].ToList();
         if (stageIndex < inst.StageBuffIds.Count)
             history.StageBuffIds[(int)stageIndex] = inst.StageBuffIds[(int)stageIndex];
+        if (stageIndex < inst.StageScores.Count)
+            history.StageScores[(int)stageIndex] = (uint)Math.Max(0, inst.StageScores[(int)stageIndex]);
 
         if (history.StageCleared.All(c => c))
             history.IsPassed = true;
@@ -445,11 +448,12 @@ public class ChallengeTierceManager(PlayerInstance player) : BasePlayerManager(p
         // single-stage replays the player has run after. Otherwise honour per-stage flags.
         if (h.IsPassed)
         {
-            for (uint i = 0; i < 3; i++)
+            for (var i = 0; i < 3; i++)
                 data.ResultList.Add(new ChallengeTierceStageData
                 {
                     EndStatus = BattleEndStatus.BattleEndWin,
-                    StageIndex = i
+                    StageIndex = (uint)i,
+                    ScoreId = i < h.StageScores.Count ? h.StageScores[i] : 0u
                 });
         }
         else
@@ -459,7 +463,8 @@ public class ChallengeTierceManager(PlayerInstance player) : BasePlayerManager(p
                     data.ResultList.Add(new ChallengeTierceStageData
                     {
                         EndStatus = BattleEndStatus.BattleEndWin,
-                        StageIndex = (uint)i
+                        StageIndex = (uint)i,
+                        ScoreId = i < h.StageScores.Count ? h.StageScores[i] : 0u
                     });
         }
 

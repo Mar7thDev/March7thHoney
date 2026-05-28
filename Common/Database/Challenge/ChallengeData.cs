@@ -39,6 +39,7 @@ public class ChallengeTierceHistoryData
     public List<List<uint>> StageLineups { get; set; } = [[], [], []];
     public List<uint> StageBuffIds { get; set; } = [0u, 0u, 0u];
     public List<bool> StageCleared { get; set; } = [false, false, false];
+    public List<uint> StageScores { get; set; } = [0u, 0u, 0u];
     public uint UsedCycleCount { get; set; }
 }
 
