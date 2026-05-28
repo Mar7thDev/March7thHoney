@@ -352,10 +352,7 @@ public class ChallengeTierceManager(PlayerInstance player) : BasePlayerManager(p
             history = new ChallengeTierceHistoryData { ChallengeId = (int)challengeId };
             ChallengeData.TierceHistory[(int)challengeId] = history;
         }
-
-        while (history.StageLineups.Count < 3) history.StageLineups.Add([]);
-        while (history.StageBuffIds.Count < 3) history.StageBuffIds.Add(0u);
-        while (history.StageCleared.Count < 3) history.StageCleared.Add(false);
+        NormaliseSlots(history);
 
         for (var i = 0; i < stageInfoList.Count && i < 3; i++)
         {
@@ -378,11 +375,7 @@ public class ChallengeTierceManager(PlayerInstance player) : BasePlayerManager(p
             history = new ChallengeTierceHistoryData { ChallengeId = (int)inst.ChallengeId };
             ChallengeData.TierceHistory[(int)inst.ChallengeId] = history;
         }
-
-        while (history.StageLineups.Count < 3) history.StageLineups.Add([]);
-        while (history.StageBuffIds.Count < 3) history.StageBuffIds.Add(0u);
-        while (history.StageCleared.Count < 3) history.StageCleared.Add(false);
-        while (history.StageScores.Count < 3) history.StageScores.Add(0u);
+        NormaliseSlots(history);
 
         history.StageCleared[(int)stageIndex] = true;
         if (stageIndex < inst.StageLineupSnapshot.Count)
@@ -401,7 +394,28 @@ public class ChallengeTierceManager(PlayerInstance player) : BasePlayerManager(p
             history.Stars = (uint)inst.FinishedTargetList.Count;
             history.FinishedTargetList = inst.FinishedTargetList.ToList();
             history.UsedCycleCount = (uint)Math.Max(0, inst.Config.ChallengeCountDown - inst.RoundsLeftPool);
+            history.RecordScore = (uint)Math.Max(0, inst.GetRecordScore());
         }
+    }
+
+    // Re-shape slot lists to exactly 3 entries. Newtonsoft.Json deserialisation appends to a
+    // non-empty default list, so legacy DB rows can come back with 6 entries (3 default + 3
+    // real). We collapse those by taking the last three values, preserving the real data.
+    private static void NormaliseSlots(ChallengeTierceHistoryData h)
+    {
+        h.StageLineups = NormaliseList(h.StageLineups, () => new List<uint>());
+        h.StageBuffIds = NormaliseList(h.StageBuffIds, () => 0u);
+        h.StageCleared = NormaliseList(h.StageCleared, () => false);
+        h.StageScores = NormaliseList(h.StageScores, () => 0u);
+    }
+
+    private static List<T> NormaliseList<T>(List<T> src, Func<T> defaultFactory)
+    {
+        if (src.Count == 3) return src;
+        if (src.Count > 3) return src.GetRange(src.Count - 3, 3);
+        var list = new List<T>(src);
+        while (list.Count < 3) list.Add(defaultFactory());
+        return list;
     }
 
     public List<ChallengeTierceData> BuildHistorySnapshots()
@@ -419,11 +433,16 @@ public class ChallengeTierceManager(PlayerInstance player) : BasePlayerManager(p
 
     private static ChallengeTierceData BuildHistorySnapshot(ChallengeTierceHistoryData h)
     {
+        NormaliseSlots(h);
         var data = new ChallengeTierceData
         {
             ChallengeId = (uint)h.ChallengeId,
             IsPassed = h.IsPassed,
-            Record = new ChallengeTierceRecord { UsedCycleCount = h.UsedCycleCount }
+            Record = new ChallengeTierceRecord
+            {
+                UsedCycleCount = h.UsedCycleCount,
+                RecordScore = h.RecordScore
+            }
         };
         data.FinishedTargetList.AddRange(h.FinishedTargetList);
 
