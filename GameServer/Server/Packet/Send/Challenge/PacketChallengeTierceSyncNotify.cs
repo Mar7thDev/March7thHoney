@@ -34,7 +34,8 @@ public class PacketChallengeTierceSyncNotify : BasePacket
             IsPassed = inst.IsPassed,
             EGEHLOPFELK = new ChallengeTierceRecord
             {
-                UsedCycleCount = (uint)Math.Max(0, inst.Config.ChallengeCountDown - inst.RoundsLeftPool)
+                UsedCycleCount = (uint)Math.Max(0, inst.Config.ChallengeCountDown - inst.RoundsLeftPool),
+                RecordScore = (uint)inst.GetTotalScore()
             }
         };
         foreach (var t in inst.FinishedTargetList) all.FinishedTargetList.Add(t);
