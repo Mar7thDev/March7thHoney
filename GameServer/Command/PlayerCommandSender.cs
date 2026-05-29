@@ -2,7 +2,7 @@ using March7thHoney.Command;
 using March7thHoney.Database;
 using March7thHoney.Database.Account;
 using March7thHoney.GameServer.Game.Player;
-// TODO 4.3: Chat 模块暂停
+using March7thHoney.GameServer.Server.Packet.Send.Chat;
 using March7thHoney.Util;
 
 namespace March7thHoney.GameServer.Command;
@@ -13,10 +13,12 @@ public class PlayerCommandSender(PlayerInstance player) : ICommandSender
 
     public async ValueTask SendMsg(string msg)
     {
-        var sendTime = Extensions.GetUnixSec();
-        // TODO 4.3: PacketRevcMsgScNotify (Chat 模块) 暂停
-        _ = sendTime;
-        _ = msg;
+        await Player.SendPacket(new PacketRevcMsgScNotify(
+            (uint)ConfigManager.Config.ServerOption.ServerProfile.Uid,
+            (uint)Player.Uid,
+            msg.Replace("\n", "    "),
+            0,
+            Extensions.GetUnixSec()));
     }
 
     public bool HasPermission(string permission)
