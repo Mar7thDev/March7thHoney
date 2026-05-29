@@ -33,8 +33,6 @@
     <!-- 以下模块也不在登录路径，4.3 proto 字段大量变更，整体排除 -->
     <Compile Remove="Server\Packet\Recv\Mail\**\*.cs" />
     <Compile Remove="Server\Packet\Send\Mail\**\*.cs" />
-    <Compile Remove="Server\Packet\Recv\Chat\**\*.cs" />
-    <Compile Remove="Server\Packet\Send\Chat\**\*.cs" />
     <Compile Remove="Server\Packet\Recv\JukeBox\**\*.cs" />
     <Compile Remove="Server\Packet\Send\JukeBox\**\*.cs" />
     <Compile Remove="Server\Packet\Recv\Pet\**\*.cs" />
