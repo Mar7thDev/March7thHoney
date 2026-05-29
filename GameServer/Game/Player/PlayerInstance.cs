@@ -280,6 +280,11 @@ public partial class PlayerInstance(PlayerData data)
 
         ChallengeManager?.ResurrectInstance();
         ChallengeTierceManager?.ResurrectInstance();
+
+        // 星启模式 (Tierce): scene restores on relogin but the client UI never re-attaches.
+        // For Tierce only, drop the in-progress run and respawn at the matching mode lobby.
+        var tierceLobbyEntry = ChallengeTierceManager?.ConsumeReloginRedirect();
+
         if (StoryLineManager != null)
             await StoryLineManager.OnLogin();
 
@@ -332,7 +337,10 @@ public partial class PlayerInstance(PlayerData data)
             }
         }
 
-        await LoadScene(Data.PlaneId, Data.FloorId, Data.EntryId, Data.Pos!, Data.Rot!, false);
+        if (tierceLobbyEntry is { } lobbyEntry)
+            await EnterScene(lobbyEntry, 0, false);
+        else
+            await LoadScene(Data.PlaneId, Data.FloorId, Data.EntryId, Data.Pos!, Data.Rot!, false);
         if (SceneInstance == null) await EnterScene(2000101, 0, false);
 
         InvokeOnPlayerLogin(this);
