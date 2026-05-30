@@ -31,11 +31,32 @@ public class ComboTokenGranterHandler
             return new JsonResult(res);
         }
 
+        var autoCreateUser = ConfigManager.Config.ServerOption.AutoCreateUser;
         var account = AccountData.GetAccountByUid(uid);
+
+        // The OS client validates username/password against the real HoYoverse shield
+        // endpoint (not proxied), so only the combo login reaches us, carrying the real
+        // account uid. When auto-create is enabled, bind a local account to that uid
+        // (mirroring the shield-login AutoCreateUser path) and trust the combo login
+        // instead of validating a token this server never issued.
+        if (account == null && autoCreateUser)
+        {
+            try
+            {
+                AccountHelper.CreateAccount($"uid{uid}", $"{uid}@autocreate.local", null, uid);
+                account = AccountData.GetAccountByUid(uid);
+                Logger.Info($"Combo login auto-created account for uid={uid}");
+            }
+            catch (Exception ex)
+            {
+                Logger.Warn($"Combo login auto-create failed. uid={uid}: {ex.Message}");
+            }
+        }
+
         if (account == null)
         {
             Logger.Warn(
-                $"Combo login cache validation failed. uid={uid} token_len={tokenData.token?.Length ?? 0} account_exists={account != null}");
+                $"Combo login cache validation failed. uid={uid} token_len={tokenData.token?.Length ?? 0} account_exists=False");
             res.retcode = -201;
             res.message = "Game account cache information error";
             return new JsonResult(res);
@@ -43,7 +64,7 @@ public class ComboTokenGranterHandler
 
         var isDispatchToken = account.ValidateDispatchToken(tokenData.token);
         var isComboToken = account.ValidateComboToken(tokenData.token);
-        if (!isDispatchToken && !isComboToken)
+        if (!autoCreateUser && !isDispatchToken && !isComboToken)
         {
             Logger.Warn(
                 $"Combo login cache validation failed. uid={uid} token_len={tokenData.token?.Length ?? 0} account_exists=True");
@@ -65,7 +86,7 @@ public class ComboTokenGranterHandler
 
         account.AddKnownIdentityKeys(identityKeys);
         Logger.Info(
-            $"Combo login cache validated. uid={uid} token_type={(isDispatchToken ? "dispatch" : "combo")} token_len={tokenData.token?.Length ?? 0}");
+            $"Combo login validated. uid={uid} token_type={(isDispatchToken ? "dispatch" : isComboToken ? "combo" : "trusted")} token_len={tokenData.token?.Length ?? 0}");
         res.message = "OK";
         res.data = new ComboTokenResJson.LoginData(account.Uid.ToString(), account.GenerateComboToken());
         return new JsonResult(res);
