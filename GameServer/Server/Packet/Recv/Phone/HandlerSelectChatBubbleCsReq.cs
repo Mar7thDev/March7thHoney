@@ -14,6 +14,6 @@ public class HandlerSelectChatBubbleCsReq : Handler
         connection.Player!.Data.ChatBubble = (int)req.BubbleId;
 
         await connection.SendPacket(new PacketSelectChatBubbleScRsp(req.BubbleId));
-        await connection.Player.TrainCakeCatchManager!.BroadcastPlayerStateAsync();
+        // TODO 4.3: TrainCakeCatch 小游戏暂停编译，不再向其大厅广播玩家状态变更
     }
 }

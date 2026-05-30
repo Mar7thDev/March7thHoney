@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message LockEquipmentCsReq {
-    repeated uint32 LDBMBPBGFHK = 5;
+    repeated uint32 equipment_id_list = 5;
     bool is_locked = 14;
 }

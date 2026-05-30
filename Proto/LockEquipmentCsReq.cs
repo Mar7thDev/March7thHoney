@@ -30,7 +30,7 @@ namespace March7thHoney.Proto {
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LockEquipmentCsReq), global::March7thHoney.Proto.LockEquipmentCsReq.Parser, new[]{ "LDBMBPBGFHK", "IsLocked" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LockEquipmentCsReq), global::March7thHoney.Proto.LockEquipmentCsReq.Parser, new[]{ "EquipmentIdList", "IsLocked" }, null, null, null, null)
           }));
     }
     #endregion
@@ -83,14 +83,14 @@ namespace March7thHoney.Proto {
       return new LockEquipmentCsReq(this);
     }
 
-    /// <summary>Field number for the "LDBMBPBGFHK" field.</summary>
-    public const int LDBMBPBGFHKFieldNumber = 5;
+    /// <summary>Field number for the "EquipmentIdList" field.</summary>
+    public const int EquipmentIdListFieldNumber = 5;
     private static readonly pb::FieldCodec<uint> _repeated_lDBMBPBGFHK_codec
         = pb::FieldCodec.ForUInt32(42);
     private readonly pbc::RepeatedField<uint> lDBMBPBGFHK_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> LDBMBPBGFHK {
+    public pbc::RepeatedField<uint> EquipmentIdList {
       get { return lDBMBPBGFHK_; }
     }
 

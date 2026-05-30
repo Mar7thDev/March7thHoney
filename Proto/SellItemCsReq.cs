@@ -31,7 +31,7 @@ namespace March7thHoney.Proto {
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemCostDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SellItemCsReq), global::March7thHoney.Proto.SellItemCsReq.Parser, new[]{ "CostData", "HNLKAEBKKBL" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SellItemCsReq), global::March7thHoney.Proto.SellItemCsReq.Parser, new[]{ "CostData", "ToMaterial" }, null, null, null, null)
           }));
     }
     #endregion
@@ -96,12 +96,12 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "HNLKAEBKKBL" field.</summary>
-    public const int HNLKAEBKKBLFieldNumber = 11;
+    /// <summary>Field number for the "ToMaterial" field.</summary>
+    public const int ToMaterialFieldNumber = 11;
     private bool hNLKAEBKKBL_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HNLKAEBKKBL {
+    public bool ToMaterial {
       get { return hNLKAEBKKBL_; }
       set {
         hNLKAEBKKBL_ = value;
@@ -124,7 +124,7 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (!object.Equals(CostData, other.CostData)) return false;
-      if (HNLKAEBKKBL != other.HNLKAEBKKBL) return false;
+      if (ToMaterial != other.ToMaterial) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -133,7 +133,7 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (costData_ != null) hash ^= CostData.GetHashCode();
-      if (HNLKAEBKKBL != false) hash ^= HNLKAEBKKBL.GetHashCode();
+      if (ToMaterial != false) hash ^= ToMaterial.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -156,9 +156,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(42);
         output.WriteMessage(CostData);
       }
-      if (HNLKAEBKKBL != false) {
+      if (ToMaterial != false) {
         output.WriteRawTag(88);
-        output.WriteBool(HNLKAEBKKBL);
+        output.WriteBool(ToMaterial);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -174,9 +174,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(42);
         output.WriteMessage(CostData);
       }
-      if (HNLKAEBKKBL != false) {
+      if (ToMaterial != false) {
         output.WriteRawTag(88);
-        output.WriteBool(HNLKAEBKKBL);
+        output.WriteBool(ToMaterial);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -191,7 +191,7 @@ namespace March7thHoney.Proto {
       if (costData_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(CostData);
       }
-      if (HNLKAEBKKBL != false) {
+      if (ToMaterial != false) {
         size += 1 + 1;
       }
       if (_unknownFields != null) {
@@ -212,8 +212,8 @@ namespace March7thHoney.Proto {
         }
         CostData.MergeFrom(other.CostData);
       }
-      if (other.HNLKAEBKKBL != false) {
-        HNLKAEBKKBL = other.HNLKAEBKKBL;
+      if (other.ToMaterial != false) {
+        ToMaterial = other.ToMaterial;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -242,7 +242,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 88: {
-            HNLKAEBKKBL = input.ReadBool();
+            ToMaterial = input.ReadBool();
             break;
           }
         }
@@ -272,7 +272,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 88: {
-            HNLKAEBKKBL = input.ReadBool();
+            ToMaterial = input.ReadBool();
             break;
           }
         }

@@ -10,9 +10,11 @@ public class PacketTakeMultipleExpeditionRewardScRsp : BasePacket
     public PacketTakeMultipleExpeditionRewardScRsp(PlayerInstance player, Retcode retcode, List<ItemData>? rewards = null)
         : base(CmdIds.TakeMultipleExpeditionRewardScRsp)
     {
+        // 4.3: KAMBBFDEBAM -> BJMGDBCHEAN (refresh time), HALFGLGLDLO -> DJOBNPIAEJP (reward lists),
+        //      ANMHKDANNDL -> NPCMKBNJABA (expedition ids)
         var proto = new TakeMultipleExpeditionRewardScRsp
         {
-            KAMBBFDEBAM = player.ExpeditionManager!.GetRefreshTime(),
+            BJMGDBCHEAN = player.ExpeditionManager!.GetRefreshTime(),
             Retcode = (uint)retcode
         };
 
@@ -20,10 +22,10 @@ public class PacketTakeMultipleExpeditionRewardScRsp : BasePacket
         {
             var itemList = new ItemList();
             itemList.ItemList_.Add(rewards.Select(x => x.ToProto()));
-            proto.HALFGLGLDLO.Add(itemList);
+            proto.DJOBNPIAEJP.Add(itemList);
         }
 
-        proto.ANMHKDANNDL.Add(player.ExpeditionManager!.GetActiveExpeditionInfo().Select(x => x.Id));
+        proto.NPCMKBNJABA.Add(player.ExpeditionManager!.GetActiveExpeditionInfo().Select(x => x.Id));
 
         SetData(proto);
     }
