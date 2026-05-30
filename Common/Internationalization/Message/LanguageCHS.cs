@@ -139,6 +139,7 @@ public class CommandTextCHS
     public DebugTextCHS Debug { get; } = new();
     public RemoveTextCHS Remove { get; } = new();
     public WindyTextCHS Windy { get; } = new();
+    public HtlTextCHS Htl { get; } = new();
 }
 
 #endregion
@@ -676,6 +677,28 @@ public class WindyTextCHS
     public string Usage => "用法：/windy <相对于 Lua 文件夹的 lua 路径>";
     public string Loaded => "已从 Lua 脚本读取 BYTECODE：{0}";
     public string ReadError => "读取 Lua 脚本失败：{0}";
+}
+
+/// <summary>
+///     path: Game.Command.Htl
+/// </summary>
+public class HtlTextCHS
+{
+    public string Desc => "开发者专用 HoyoToonLua 控制命令。";
+    public string Usage =>
+        "用法：/htl enable|pause|restore|toggle <脚本|all>\n" +
+        "用法：/htl hotkey <脚本|all> <按键>\n" +
+        "用法：/htl skill <角色> <技能> <等级|All> [参数] <值>\n" +
+        "用法：/htl memosprite <角色> <技能> <等级|All> [参数] <值>\n" +
+        "用法：/htl talent <角色> <点位> <等级|All> [参数] <值>\n" +
+        "用法：/htl talentstat <角色> <点位> <等级|All> [属性] <值>\n" +
+        "用法：/htl con <角色> <星魂|RankID> <参数> <值>\n" +
+        "用法：/htl stat <角色> <晋阶|All> <属性> <值>\n" +
+        "用法：/htl popup <消息>\n" +
+        "用法：/htl reload";
+    public string Sent => "HTL 命令已发送：{0}";
+    public string ScriptNotFound => "未找到 HTL 脚本：{0}";
+    public string ReadError => "读取 HTL 脚本失败：{0}";
 }
 
 #endregion
