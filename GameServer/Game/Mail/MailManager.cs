@@ -30,7 +30,7 @@ public class MailManager(PlayerInstance player) : BasePlayerManager(player)
     public List<uint> GetMailIdsWithAttachments()
     {
         return MailData.MailList
-            .Where(mail => mail.Attachment.Items.Count > 0)
+            .Where(mail => mail.Attachment.HasValidItems())
             .Select(mail => (uint)mail.MailID)
             .ToList();
     }
@@ -116,16 +116,10 @@ public class MailManager(PlayerInstance player) : BasePlayerManager(player)
                 continue;
             }
 
-            if (mail.Attachment.Items.Count == 0)
+            var validItems = mail.Attachment.GetValidItems();
+            if (validItems.Count == 0)
             {
                 result.FailedMails.Add(new TakeMailAttachmentFailInfo(mailId, Retcode.RetMailNoMailTakeAttachment));
-                continue;
-            }
-
-            if (mail.Attachment.Items.Any(item =>
-                    item.ItemId <= 0 || item.Count <= 0 || !GameData.ItemConfigData.ContainsKey(item.ItemId)))
-            {
-                result.FailedMails.Add(new TakeMailAttachmentFailInfo(mailId, Retcode.RetMailAttachementInvalid));
                 continue;
             }
 
@@ -134,7 +128,7 @@ public class MailManager(PlayerInstance player) : BasePlayerManager(player)
             var avatars = new List<FormalAvatarInfo>();
             var newAvatarIds = new List<int>();
 
-            foreach (var item in mail.Attachment.Items)
+            foreach (var item in validItems)
             {
                 if (await GrantAttachmentItem(item, attachmentItems, syncItems, avatars, newAvatarIds))
                     continue;
