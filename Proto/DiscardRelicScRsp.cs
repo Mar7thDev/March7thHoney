@@ -32,7 +32,7 @@ namespace March7thHoney.Proto {
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.RelicDiscardTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DiscardRelicScRsp), global::March7thHoney.Proto.DiscardRelicScRsp.Parser, new[]{ "RelicIds", "IFEEJKMACHF", "DKPCAIGPHNO", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DiscardRelicScRsp), global::March7thHoney.Proto.DiscardRelicScRsp.Parser, new[]{ "RelicIds", "IFEEJKMACHF", "Discarded", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -110,12 +110,12 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "DKPCAIGPHNO" field.</summary>
-    public const int DKPCAIGPHNOFieldNumber = 9;
+    /// <summary>Field number for the "Discarded" field.</summary>
+    public const int DiscardedFieldNumber = 9;
     private bool dKPCAIGPHNO_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool DKPCAIGPHNO {
+    public bool Discarded {
       get { return dKPCAIGPHNO_; }
       set {
         dKPCAIGPHNO_ = value;
@@ -151,7 +151,7 @@ namespace March7thHoney.Proto {
       }
       if(!relicIds_.Equals(other.relicIds_)) return false;
       if (IFEEJKMACHF != other.IFEEJKMACHF) return false;
-      if (DKPCAIGPHNO != other.DKPCAIGPHNO) return false;
+      if (Discarded != other.Discarded) return false;
       if (Retcode != other.Retcode) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -162,7 +162,7 @@ namespace March7thHoney.Proto {
       int hash = 1;
       hash ^= relicIds_.GetHashCode();
       if (IFEEJKMACHF != global::March7thHoney.Proto.RelicDiscardType.PjhkiideoogIcfoncmfnlg) hash ^= IFEEJKMACHF.GetHashCode();
-      if (DKPCAIGPHNO != false) hash ^= DKPCAIGPHNO.GetHashCode();
+      if (Discarded != false) hash ^= Discarded.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -186,9 +186,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(16);
         output.WriteEnum((int) IFEEJKMACHF);
       }
-      if (DKPCAIGPHNO != false) {
+      if (Discarded != false) {
         output.WriteRawTag(72);
-        output.WriteBool(DKPCAIGPHNO);
+        output.WriteBool(Discarded);
       }
       if (Retcode != 0) {
         output.WriteRawTag(80);
@@ -209,9 +209,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(16);
         output.WriteEnum((int) IFEEJKMACHF);
       }
-      if (DKPCAIGPHNO != false) {
+      if (Discarded != false) {
         output.WriteRawTag(72);
-        output.WriteBool(DKPCAIGPHNO);
+        output.WriteBool(Discarded);
       }
       if (Retcode != 0) {
         output.WriteRawTag(80);
@@ -232,7 +232,7 @@ namespace March7thHoney.Proto {
       if (IFEEJKMACHF != global::March7thHoney.Proto.RelicDiscardType.PjhkiideoogIcfoncmfnlg) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) IFEEJKMACHF);
       }
-      if (DKPCAIGPHNO != false) {
+      if (Discarded != false) {
         size += 1 + 1;
       }
       if (Retcode != 0) {
@@ -254,8 +254,8 @@ namespace March7thHoney.Proto {
       if (other.IFEEJKMACHF != global::March7thHoney.Proto.RelicDiscardType.PjhkiideoogIcfoncmfnlg) {
         IFEEJKMACHF = other.IFEEJKMACHF;
       }
-      if (other.DKPCAIGPHNO != false) {
-        DKPCAIGPHNO = other.DKPCAIGPHNO;
+      if (other.Discarded != false) {
+        Discarded = other.Discarded;
       }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
@@ -284,7 +284,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 72: {
-            DKPCAIGPHNO = input.ReadBool();
+            Discarded = input.ReadBool();
             break;
           }
           case 80: {
@@ -320,7 +320,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 72: {
-            DKPCAIGPHNO = input.ReadBool();
+            Discarded = input.ReadBool();
             break;
           }
           case 80: {

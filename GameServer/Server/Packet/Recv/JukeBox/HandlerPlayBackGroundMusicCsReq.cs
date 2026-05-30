@@ -10,7 +10,8 @@ public class HandlerPlayBackGroundMusicCsReq : Handler
     public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
     {
         var req = PlayBackGroundMusicCsReq.Parser.ParseFrom(data);
-        var musicId = req.DMGCIDGKPFF?.LEKGBMCOJDB?.Id ?? 0;
+        // 4.3: DMGCIDGKPFF -> IKJNIKIGFLF, LEKGBMCOJDB -> JKNLCEEDAHJ
+        var musicId = req.IKJNIKIGFLF?.JKNLCEEDAHJ?.Id ?? 0;
 
         connection.Player!.Data.CurrentBgm = (int)musicId;
 

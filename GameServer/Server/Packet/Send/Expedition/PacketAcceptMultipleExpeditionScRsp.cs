@@ -11,7 +11,7 @@ public class PacketAcceptMultipleExpeditionScRsp : BasePacket
     {
         var proto = new AcceptMultipleExpeditionScRsp
         {
-            KAMBBFDEBAM = player.ExpeditionManager!.GetRefreshTime()
+            BJMGDBCHEAN = player.ExpeditionManager!.GetRefreshTime() // 4.3: KAMBBFDEBAM -> BJMGDBCHEAN
         };
 
         proto.AcceptMultiExpedition.Add(accepted);

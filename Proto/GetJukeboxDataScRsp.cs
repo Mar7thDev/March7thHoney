@@ -30,9 +30,9 @@ namespace March7thHoney.Proto {
             "TE1QGAogAygLMgwuTEhIR0NETENKREESDwoHcmV0Y29kZRgGIAEoDUIWqgIT",
             "TWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.LHHGCDLCJDAReflection.Descriptor, global::March7thHoney.Proto.MNCBEDBDDHLReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.MusicDataReflection.Descriptor, global::March7thHoney.Proto.MNCBEDBDDHLReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetJukeboxDataScRsp), global::March7thHoney.Proto.GetJukeboxDataScRsp.Parser, new[]{ "GFFOBALDBPM", "IOKAJIBHLMP", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetJukeboxDataScRsp), global::March7thHoney.Proto.GetJukeboxDataScRsp.Parser, new[]{ "GFFOBALDBPM", "UnlockedMusicList", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -98,14 +98,14 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "IOKAJIBHLMP" field.</summary>
-    public const int IOKAJIBHLMPFieldNumber = 10;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.LHHGCDLCJDA> _repeated_iOKAJIBHLMP_codec
-        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.LHHGCDLCJDA.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.LHHGCDLCJDA> iOKAJIBHLMP_ = new pbc::RepeatedField<global::March7thHoney.Proto.LHHGCDLCJDA>();
+    /// <summary>Field number for the "UnlockedMusicList" field.</summary>
+    public const int UnlockedMusicListFieldNumber = 10;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MusicData> _repeated_iOKAJIBHLMP_codec
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.MusicData.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MusicData> iOKAJIBHLMP_ = new pbc::RepeatedField<global::March7thHoney.Proto.MusicData>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.LHHGCDLCJDA> IOKAJIBHLMP {
+    public pbc::RepeatedField<global::March7thHoney.Proto.MusicData> UnlockedMusicList {
       get { return iOKAJIBHLMP_; }
     }
 

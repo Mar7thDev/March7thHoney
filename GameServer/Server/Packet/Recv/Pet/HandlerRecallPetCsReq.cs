@@ -14,6 +14,6 @@ public class HandlerRecallPetCsReq : Handler
         connection.Player!.Data.Pet = 0;
 
         await connection.SendPacket(new PacketRecallPetScRsp(req.SummonedPetId));
-        await connection.Player.TrainCakeCatchManager!.BroadcastPlayerStateAsync();
+        // TODO 4.3: TrainCakeCatch 小游戏暂停编译，不再向其大厅广播玩家状态变更
     }
 }

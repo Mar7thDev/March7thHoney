@@ -14,10 +14,11 @@ public class PacketQueryProductInfoScRsp : BasePacket
 {
     public PacketQueryProductInfoScRsp(PlayerData? playerData) : base(CmdIds.QueryProductInfoScRsp)
     {
+        // 4.3: QueryProductInfoScRsp 混淆名变更 BAMOOGPNJEH->BFFHEKCGLMA, IFKKKLCFOBK->BEBFNDIGKFK(tag10 不变)
         var proto = new QueryProductInfoScRsp
         {
-            BAMOOGPNJEH = 5,
-            IFKKKLCFOBK = 5,
+            BFFHEKCGLMA = 5,
+            BEBFNDIGKFK = 5,
             MonthCardOutDateTime = playerData == null ? 0 : (ulong)MonthCardService.GetMonthCardOutDateTime(playerData)
         };
 
@@ -35,11 +36,14 @@ public class PacketQueryProductInfoScRsp : BasePacket
             var giftType = ParseGiftType(item.GiftType);
             if (!enableMonthCard && giftType == ProductGiftType.ProductGiftMonthCard) continue;
 
+            // 4.3: Product 三个 uint 字段混淆名变更，proto 与 .proto 定义均无可读名，按 tag 升序尽力对应。
+            //   配置中仅 JCJGHCOEOOJ 有非零值(奖励数量)，故映射到 CLDELMPNAPB；另两者恒为 0。
+            //   (config 字段名保持不变以匹配 JSON key)
             products.Add(new Product
             {
-                JCJGHCOEOOJ = item.JCJGHCOEOOJ,
-                MEMNCJLKAEE = item.MEMNCJLKAEE,
-                EEFHEBKHKAB = item.EEFHEBKHKAB,
+                CLDELMPNAPB = item.JCJGHCOEOOJ,
+                EMIHEDNKBCA = item.MEMNCJLKAEE,
+                ENCDABOOIKJ = item.EEFHEBKHKAB,
                 BeginTime = item.BeginTime,
                 EndTime = item.EndTime,
                 GiftType = giftType,

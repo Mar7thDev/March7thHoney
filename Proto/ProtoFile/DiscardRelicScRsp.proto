@@ -7,6 +7,6 @@ import "RelicDiscardType.proto";
 message DiscardRelicScRsp {
     repeated uint32 relic_ids = 12;
     RelicDiscardType IFEEJKMACHF = 2;
-    bool DKPCAIGPHNO = 9;
+    bool discarded = 9;
     uint32 retcode = 10;
 }

@@ -9,11 +9,15 @@ public class PacketGetJukeboxDataScRsp : BasePacket
 {
     public PacketGetJukeboxDataScRsp(PlayerInstance player) : base(CmdIds.GetJukeboxDataScRsp)
     {
+        // 4.3: JukeBox proto 混淆名变更（仍混淆的部分保留新名）
+        //   JILKOPINLDC -> GFFOBALDBPM (now-playing wrapper, type MCPPIEJEBEF -> MNCBEDBDDHL)
+        //   LEKGBMCOJDB -> JKNLCEEDAHJ (type NKLAFFLJCHG -> KHADHDLCNOI)
+        //   UnlockedMusicList / MusicData / IsPlayed 已恢复可读名 (proto 端已改回)
         var proto = new GetJukeboxDataScRsp
         {
-            JILKOPINLDC = new MCPPIEJEBEF
+            GFFOBALDBPM = new MNCBEDBDDHL
             {
-                LEKGBMCOJDB = new NKLAFFLJCHG
+                JKNLCEEDAHJ = new KHADHDLCNOI
                 {
                     Id = (uint)player.Data.CurrentBgm
                 }

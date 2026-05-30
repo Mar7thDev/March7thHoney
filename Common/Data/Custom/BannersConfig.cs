@@ -80,11 +80,11 @@ public class BannerConfig
             info.EndTime = EndTime;
         }
 
-        if (GachaType == GachaTypeEnum.Newbie && gachaPullLimit > 0)
-        {
-            info.FJIBOAGDNDG = (uint)Math.Clamp(gachaPullCount, 0, gachaPullLimit);
-            info.OKFNNHNLBOO = (uint)gachaPullLimit;
-        }
+        // TODO 4.3: 4.2 的新手池抽数/上限字段 FJIBOAGDNDG(tag13)/OKFNNHNLBOO(tag14) 在 4.3
+        // proto 整体重排后已无对应 tag，且剩余混淆字段语义不明，暂不下发新手池进度计数。
+        // 抽卡不在登录路径，不影响主流程。
+        _ = gachaPullCount;
+        _ = gachaPullLimit;
 
         if (GachaId == 1001)
         {
