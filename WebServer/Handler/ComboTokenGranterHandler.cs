@@ -35,21 +35,29 @@ public class ComboTokenGranterHandler
         var account = AccountData.GetAccountByUid(uid);
 
         // The OS client validates username/password against the real HoYoverse shield
-        // endpoint (not proxied), so only the combo login reaches us, carrying the real
-        // account uid. When auto-create is enabled, bind a local account to that uid
-        // (mirroring the shield-login AutoCreateUser path) and trust the combo login
-        // instead of validating a token this server never issued.
+        // endpoint (not proxied), so only the combo login reaches us, carrying the player's
+        // real account uid. When auto-create is enabled, map that real uid to a LOCAL
+        // account with a normal local uid (so the real uid is never exposed in-game) and
+        // trust the combo login instead of validating a token this server never issued.
+        // This branch only runs when no account exists for the incoming uid, so the normal
+        // flow on every platform (shield login proxied -> account already exists) is
+        // unaffected and keeps using its own uid unchanged.
         if (account == null && autoCreateUser)
         {
-            try
+            var externalKey = $"os_{uid}";
+            account = AccountData.GetAccountByUserName(externalKey);
+            if (account == null)
             {
-                AccountHelper.CreateAccount($"uid{uid}", $"{uid}@autocreate.local", null, uid);
-                account = AccountData.GetAccountByUid(uid);
-                Logger.Info($"Combo login auto-created account for uid={uid}");
-            }
-            catch (Exception ex)
-            {
-                Logger.Warn($"Combo login auto-create failed. uid={uid}: {ex.Message}");
+                try
+                {
+                    AccountHelper.CreateAccount(externalKey, $"{externalKey}@autocreate.local", null, 0);
+                    account = AccountData.GetAccountByUserName(externalKey);
+                    Logger.Info($"Combo login mapped external uid={uid} -> local uid={account?.Uid}");
+                }
+                catch (Exception ex)
+                {
+                    Logger.Warn($"Combo login auto-create failed. external_uid={uid}: {ex.Message}");
+                }
             }
         }
 
