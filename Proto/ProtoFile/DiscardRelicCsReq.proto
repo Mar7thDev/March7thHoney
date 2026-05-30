@@ -7,6 +7,6 @@ import "RelicDiscardType.proto";
 message DiscardRelicCsReq {
     repeated uint32 relic_ids = 8;
     uint64 KDGCPMGOPPJ = 14;
-    bool DKPCAIGPHNO = 4;
+    bool discarded = 4;
     RelicDiscardType IFEEJKMACHF = 9;
 }

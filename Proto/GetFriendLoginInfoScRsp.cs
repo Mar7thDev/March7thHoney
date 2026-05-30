@@ -32,7 +32,7 @@ namespace March7thHoney.Proto {
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetFriendLoginInfoScRsp), global::March7thHoney.Proto.GetFriendLoginInfoScRsp.Parser, new[]{ "OMFOMBGFHPA", "KCGCEPPMOKM", "BHEICCGPBLG", "EHBJFGPDPJF", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetFriendLoginInfoScRsp), global::March7thHoney.Proto.GetFriendLoginInfoScRsp.Parser, new[]{ "FriendUidList", "KCGCEPPMOKM", "BHEICCGPBLG", "EHBJFGPDPJF", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -88,14 +88,14 @@ namespace March7thHoney.Proto {
       return new GetFriendLoginInfoScRsp(this);
     }
 
-    /// <summary>Field number for the "OMFOMBGFHPA" field.</summary>
-    public const int OMFOMBGFHPAFieldNumber = 9;
+    /// <summary>Field number for the "FriendUidList" field.</summary>
+    public const int FriendUidListFieldNumber = 9;
     private static readonly pb::FieldCodec<uint> _repeated_oMFOMBGFHPA_codec
         = pb::FieldCodec.ForUInt32(74);
     private readonly pbc::RepeatedField<uint> oMFOMBGFHPA_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> OMFOMBGFHPA {
+    public pbc::RepeatedField<uint> FriendUidList {
       get { return oMFOMBGFHPA_; }
     }
 

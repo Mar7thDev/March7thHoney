@@ -6,5 +6,5 @@ import "ItemCostData.proto";
 
 message SellItemCsReq {
     ItemCostData cost_data = 5;
-    bool HNLKAEBKKBL = 11;
+    bool to_material = 11;
 }

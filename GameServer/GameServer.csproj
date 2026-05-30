@@ -16,7 +16,9 @@
 	  <Content Include="March7thHoney.ico" />
   </ItemGroup>
 
-  <!-- TODO 4.3: 小游戏模块 (货币战争/骰子战斗/火车蛋糕/火车派对) 不在登录路径，proto 大量变更，暂时排除编译 -->
+  <!-- TODO 4.3: 仅小游戏模块 (货币战争/骰子战斗/火车蛋糕/火车派对) 仍因 proto 大量变更暂时排除编译。
+       其余模块 (Mail/JukeBox/Pet/Phone/PlayerBoard/Gacha/Expedition/Item/Friend/RechargeGift/Player 等)
+       已在 4.3 适配混淆名变更后恢复编译。 -->
   <ItemGroup>
     <Compile Remove="Game\GridFight\**\*.cs" />
     <Compile Remove="Server\Packet\Recv\GridFight\**\*.cs" />
@@ -30,37 +32,6 @@
     <Compile Remove="Server\Packet\Recv\TrainParty\**\*.cs" />
     <Compile Remove="Server\Packet\Send\TrainParty\**\*.cs" />
     <Compile Remove="Game\TrainParty\**\*.cs" />
-    <!-- 以下模块也不在登录路径，4.3 proto 字段大量变更，整体排除 -->
-    <Compile Remove="Server\Packet\Recv\Mail\**\*.cs" />
-    <Compile Remove="Server\Packet\Send\Mail\**\*.cs" />
-    <Compile Remove="Server\Packet\Recv\JukeBox\**\*.cs" />
-    <Compile Remove="Server\Packet\Send\JukeBox\**\*.cs" />
-    <Compile Remove="Server\Packet\Recv\Pet\**\*.cs" />
-    <Compile Remove="Server\Packet\Send\Pet\**\*.cs" />
-    <Compile Remove="Server\Packet\Recv\Phone\**\*.cs" />
-    <Compile Remove="Server\Packet\Send\Phone\**\*.cs" />
-    <Compile Remove="Server\Packet\Recv\PlayerBoard\**\*.cs" />
-    <Compile Remove="Server\Packet\Send\PlayerBoard\**\*.cs" />
-    <Compile Remove="Server\Packet\Recv\Gacha\**\*.cs" />
-    <Compile Remove="Server\Packet\Send\Gacha\**\*.cs" />
-    <Compile Remove="Server\Packet\Recv\Expedition\**\*.cs" />
-    <Compile Remove="Server\Packet\Send\Expedition\**\*.cs" />
-    <Compile Remove="Server\Packet\Recv\Item\HandlerSellItemCsReq.cs" />
-    <Compile Remove="Server\Packet\Recv\Item\HandlerLockEquipmentCsReq.cs" />
-    <Compile Remove="Server\Packet\Recv\Item\HandlerDiscardRelicCsReq.cs" />
-    <Compile Remove="Server\Packet\Recv\Friend\HandlerSetFriendMarkCsReq.cs" />
-    <Compile Remove="Game\Mission\FinishType\Handler\MissionHandlerBattleChallenge.cs" />
-    <Compile Remove="Game\Mission\FinishType\Handler\MissionHandlerBattleWinWithCustomValue.cs" />
-    <Compile Remove="Server\Packet\Recv\RechargeGift\**\*.cs" />
-    <Compile Remove="Server\Packet\Send\RechargeGift\**\*.cs" />
-    <Compile Remove="Server\Packet\Send\Item\PacketDiscardRecliScRsp.cs" />
-    <Compile Remove="Server\Packet\Send\Item\PacketSellItemScRsp.cs" />
-    <Compile Remove="Server\Packet\Send\Item\PacketLockEquipmentScRsp.cs" />
-    <Compile Remove="Server\Packet\Send\Player\PacketQueryProductInfoScRsp.cs" />
-    <Compile Remove="Server\Packet\Send\Friend\PacketSetFriendMarkScRsp.cs" />
-    <Compile Remove="Server\Packet\Send\Friend\PacketGetFriendLoginInfoScRsp.cs" />
-    <Compile Remove="Server\Packet\Recv\Friend\HandlerGetFriendLoginInfoCsReq.cs" />
-    <Compile Remove="Server\Packet\Recv\Player\HandlerQueryProductInfoCsReq.cs" />
   </ItemGroup>
 
   <ItemGroup>

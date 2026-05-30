@@ -30,7 +30,7 @@ namespace March7thHoney.Proto {
             "Q0pEQRIPCgdyZXRjb2RlGAcgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
             "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.LHHGCDLCJDAReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.MusicDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UnlockBackGroundMusicScRsp), global::March7thHoney.Proto.UnlockBackGroundMusicScRsp.Parser, new[]{ "BPFGBEBPEDP", "IOKAJIBHLMP", "Retcode" }, null, null, null, null)
           }));
@@ -99,12 +99,12 @@ namespace March7thHoney.Proto {
 
     /// <summary>Field number for the "IOKAJIBHLMP" field.</summary>
     public const int IOKAJIBHLMPFieldNumber = 11;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.LHHGCDLCJDA> _repeated_iOKAJIBHLMP_codec
-        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.LHHGCDLCJDA.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.LHHGCDLCJDA> iOKAJIBHLMP_ = new pbc::RepeatedField<global::March7thHoney.Proto.LHHGCDLCJDA>();
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MusicData> _repeated_iOKAJIBHLMP_codec
+        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.MusicData.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MusicData> iOKAJIBHLMP_ = new pbc::RepeatedField<global::March7thHoney.Proto.MusicData>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.LHHGCDLCJDA> IOKAJIBHLMP {
+    public pbc::RepeatedField<global::March7thHoney.Proto.MusicData> IOKAJIBHLMP {
       get { return iOKAJIBHLMP_; }
     }
 

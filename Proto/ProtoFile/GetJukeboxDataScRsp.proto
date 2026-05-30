@@ -2,11 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-import "LHHGCDLCJDA.proto";
+import "MusicData.proto";
 import "MNCBEDBDDHL.proto";
 
 message GetJukeboxDataScRsp {
     MNCBEDBDDHL GFFOBALDBPM = 9;
-    repeated LHHGCDLCJDA IOKAJIBHLMP = 10;
+    repeated MusicData unlocked_music_list = 10;
     uint32 retcode = 6;
 }

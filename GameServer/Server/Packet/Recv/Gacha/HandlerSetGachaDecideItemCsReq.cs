@@ -11,13 +11,14 @@ public class HandlerSetGachaDecideItemCsReq : Handler
     {
         var req = SetGachaDecideItemCsReq.Parser.ParseFrom(data);
         var manager = connection.Player!.GachaManager!;
-        var retcode = manager.SetCharacterEventNonFeaturedPool((int)req.GachaId, (int)req.MBOEFLAHLEM,
-            req.DGOMHDMJHEK);
+        // 4.3: MBOEFLAHLEM -> GFANBHAEKOK (decide item type), DGOMHDMJHEK -> OJNEFBJHCCK (selected items)
+        var retcode = manager.SetCharacterEventNonFeaturedPool((int)req.GachaId, (int)req.GFANBHAEKOK,
+            req.OJNEFBJHCCK);
         var savedOrder = retcode == Retcode.RetSucc
             ? manager.GetCharacterEventNonFeaturedPool().Select(id => (uint)id).ToList()
-            : req.DGOMHDMJHEK.ToList();
+            : req.OJNEFBJHCCK.ToList();
 
-        await connection.SendPacket(new PacketSetGachaDecideItemScRsp(req.GachaId, req.MBOEFLAHLEM, savedOrder,
+        await connection.SendPacket(new PacketSetGachaDecideItemScRsp(req.GachaId, req.GFANBHAEKOK, savedOrder,
             retcode));
     }
 }

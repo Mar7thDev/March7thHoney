@@ -317,12 +317,8 @@ public class GachaManager : BasePlayerManager
             GachaId = (uint)bannerId,
             GachaNum = (uint)times
         };
-        if (banner.GachaType == GachaTypeEnum.Newbie)
-        {
-            proto.FJIBOAGDNDG = (uint)Math.Clamp(GachaData.GetPityState(GachaPityFamilyEnum.Newbie).TotalPulls, 0,
-                NewbieGachaLimit);
-            proto.OKFNNHNLBOO = NewbieGachaLimit;
-        }
+        // TODO 4.3: 4.2 的 DoGachaScRsp 新手池抽数/上限字段 (FJIBOAGDNDG/OKFNNHNLBOO) 在 4.3
+        // proto 重排后无法可靠对应，暂不下发新手池进度计数 (pity 状态仍持久化于 GachaData)。
         proto.GachaItemList.AddRange(gachaItems);
 
         return proto;
@@ -348,12 +344,8 @@ public class GachaManager : BasePlayerManager
                 newbieLimit));
         }
 
-        proto.NMBAAOBBJMI.Add(new OEIEJHBCOOM
-        {
-            PAPOKACIPPJ = (uint)GetFirstAvatarUpGachaId(),
-            MBOEFLAHLEM = (uint)GachaData.CharacterEventDecideItemType,
-            DGOMHDMJHEK = { GetCharacterEventNonFeaturedPool().Select(id => (uint)id) }
-        });
+        // TODO 4.3: 4.2 的角色活动 decide-item / featured pool 下发结构 (NMBAAOBBJMI / OEIEJHBCOOM)
+        // 在 4.3 GetGachaInfoScRsp 重排后无对应字段，暂不下发自选池信息。
 
         return proto;
     }

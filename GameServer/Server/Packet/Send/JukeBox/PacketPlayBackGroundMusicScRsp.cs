@@ -7,11 +7,12 @@ public class PacketPlayBackGroundMusicScRsp : BasePacket
 {
     public PacketPlayBackGroundMusicScRsp(uint musicId) : base(CmdIds.PlayBackGroundMusicScRsp)
     {
+        // 4.3: JukeBox proto 混淆名变更 (同 GetJukeboxDataScRsp)
         var proto = new PlayBackGroundMusicScRsp
         {
-            JILKOPINLDC = new MCPPIEJEBEF
+            GFFOBALDBPM = new MNCBEDBDDHL
             {
-                LEKGBMCOJDB = new NKLAFFLJCHG
+                JKNLCEEDAHJ = new KHADHDLCNOI
                 {
                     Id = musicId
                 }

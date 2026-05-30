@@ -14,10 +14,10 @@ public class PacketTakeMailAttachmentScRsp : BasePacket
             SuccMailIdList = { result.SuccessMailIds },
             FailMailList =
             {
-                result.FailedMails.Select(mail => new KEOAIHACHKG
+                result.FailedMails.Select(mail => new KNPNAHPHNJK
                 {
                     ItemId = mail.MailId,
-                    LPCPBEIHFMK = (uint)mail.Retcode
+                    IODBGABPNOP = (uint)mail.Retcode
                 })
             }
         };
