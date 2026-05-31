@@ -43,13 +43,6 @@ internal class QueryGatewayHandler
 
         gateServer.Unk1 = true;
         gateServer.Unk2 = true;
-        gateServer.Unk3 = true;
-        gateServer.Unk4 = true;
-        gateServer.Unk5 = true;
-        gateServer.Unk6 = true;
-        gateServer.Unk7 = true;
-        gateServer.Unk8 = true;
-        gateServer.Unk9 = true;
         gateServer.MdkResVersion = "0";
         gateServer.IfixVersion = "0";
         if (ConfigManager.Config.GameServer.UsePacketEncryption)
