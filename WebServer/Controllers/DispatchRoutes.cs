@@ -281,6 +281,7 @@ public class DispatchRoutes : ControllerBase
     [HttpPost("/{gameKey}/account/ma-passport/api/webRegisterByPassword")]
     public async Task<JsonResult> Register([FromBody] RegisterReqJson? req)
     {
+        if (AuthRateLimiter.TryReject(HttpContext, out var limited)) return limited;
         req ??= new RegisterReqJson();
         Debug($"register: username={req.username ?? req.account} email={req.email}");
         return await new RegistrationHandler().Handle(req, Request);
@@ -291,6 +292,7 @@ public class DispatchRoutes : ControllerBase
     [HttpPost("/{gameKey}/account/email/send-verification")]
     public async Task<JsonResult> SendVerificationEmail([FromBody] SendVerificationEmailReqJson? req)
     {
+        if (AuthRateLimiter.TryReject(HttpContext, out var limited)) return limited;
         req ??= new SendVerificationEmailReqJson();
         return await new AccountRecoveryHandler().SendVerificationEmail(req, Request);
     }
@@ -306,6 +308,7 @@ public class DispatchRoutes : ControllerBase
     [HttpPost("/{gameKey}/account/password/forgot")]
     public async Task<JsonResult> ForgotPassword([FromBody] ForgotPasswordReqJson? req)
     {
+        if (AuthRateLimiter.TryReject(HttpContext, out var limited)) return limited;
         req ??= new ForgotPasswordReqJson();
         return await new AccountRecoveryHandler().ForgotPassword(req, Request);
     }
@@ -315,6 +318,7 @@ public class DispatchRoutes : ControllerBase
     [HttpPost("/{gameKey}/account/password/reset")]
     public JsonResult ResetPassword([FromBody] ResetPasswordReqJson? req)
     {
+        if (AuthRateLimiter.TryReject(HttpContext, out var limited)) return limited;
         req ??= new ResetPasswordReqJson();
         return new AccountRecoveryHandler().ResetPassword(req);
     }
