@@ -8780,7 +8780,7 @@
 		},
 		{
 			"internal_uid": 281,
-			"equip_avatar": 1507,
+			"equip_avatar": 0,
 			"level": 15,
 			"main_affix_id": 1,
 			"relic_id": 61221,
@@ -13760,7 +13760,7 @@
 		},
 		{
 			"internal_uid": 518,
-			"equip_avatar": 1507,
+			"equip_avatar": 0,
 			"level": 15,
 			"main_affix_id": 1,
 			"relic_id": 61222,
@@ -13940,7 +13940,7 @@
 		},
 		{
 			"internal_uid": 524,
-			"equip_avatar": 1507,
+			"equip_avatar": 0,
 			"level": 15,
 			"main_affix_id": 4,
 			"relic_id": 61203,
@@ -13970,7 +13970,7 @@
 		},
 		{
 			"internal_uid": 525,
-			"equip_avatar": 1507,
+			"equip_avatar": 0,
 			"level": 15,
 			"main_affix_id": 2,
 			"relic_id": 61204,
@@ -43427,6 +43427,156 @@
 			"relic_id": 63086,
 			"main_affix_id": 2,
 			"relic_set_id": 308
+		},
+		{
+			"equip_avatar": 1507,
+			"internal_uid": 1523,
+			"level": 15,
+			"sub_affixes": [
+				{
+					"sub_affix_id": 8,
+					"count": 2,
+					"step": 0
+				},
+				{
+					"sub_affix_id": 6,
+					"count": 4,
+					"step": 5
+				},
+				{
+					"sub_affix_id": 10,
+					"count": 1,
+					"step": 1
+				},
+				{
+					"sub_affix_id": 12,
+					"count": 1,
+					"step": 1
+				}
+			],
+			"relic_id": 61321,
+			"main_affix_id": 1,
+			"relic_set_id": 132
+		},
+		{
+			"equip_avatar": 0,
+			"internal_uid": 1524,
+			"level": 15,
+			"sub_affixes": [
+				{
+					"sub_affix_id": 8,
+					"count": 2,
+					"step": 1
+				},
+				{
+					"sub_affix_id": 10,
+					"count": 1,
+					"step": 2
+				},
+				{
+					"sub_affix_id": 12,
+					"count": 3,
+					"step": 3
+				},
+				{
+					"sub_affix_id": 11,
+					"count": 2,
+					"step": 3
+				}
+			],
+			"relic_id": 61311,
+			"main_affix_id": 1,
+			"relic_set_id": 131
+		},
+		{
+			"equip_avatar": 1507,
+			"internal_uid": 1525,
+			"level": 15,
+			"sub_affixes": [
+				{
+					"sub_affix_id": 12,
+					"count": 2,
+					"step": 2
+				},
+				{
+					"sub_affix_id": 10,
+					"count": 2,
+					"step": 4
+				},
+				{
+					"sub_affix_id": 5,
+					"count": 2,
+					"step": 1
+				},
+				{
+					"sub_affix_id": 1,
+					"count": 3,
+					"step": 2
+				}
+			],
+			"relic_id": 61312,
+			"main_affix_id": 1,
+			"relic_set_id": 131
+		},
+		{
+			"equip_avatar": 1507,
+			"internal_uid": 1526,
+			"level": 15,
+			"sub_affixes": [
+				{
+					"sub_affix_id": 4,
+					"count": 4,
+					"step": 5
+				},
+				{
+					"sub_affix_id": 6,
+					"count": 2,
+					"step": 1
+				},
+				{
+					"sub_affix_id": 2,
+					"count": 2,
+					"step": 3
+				},
+				{
+					"sub_affix_id": 1,
+					"count": 1,
+					"step": 0
+				}
+			],
+			"relic_id": 61313,
+			"main_affix_id": 4,
+			"relic_set_id": 131
+		},
+		{
+			"equip_avatar": 1507,
+			"internal_uid": 1527,
+			"level": 15,
+			"sub_affixes": [
+				{
+					"sub_affix_id": 5,
+					"count": 4,
+					"step": 4
+				},
+				{
+					"sub_affix_id": 12,
+					"count": 3,
+					"step": 2
+				},
+				{
+					"sub_affix_id": 7,
+					"count": 1,
+					"step": 1
+				},
+				{
+					"sub_affix_id": 2,
+					"count": 1,
+					"step": 1
+				}
+			],
+			"relic_id": 61324,
+			"main_affix_id": 1,
+			"relic_set_id": 132
 		}
 	],
 	"lightcones": [
@@ -44552,48 +44702,35 @@
 		}
 	],
 	"battle_config": {
-		"battle_type": "DEFAULT",
-		"cycle_count": 0,
-		"stage_id": 30507022,
+		"battle_type": "MOC",
+		"cycle_count": 30,
+		"stage_id": 30123123,
 		"path_resonance_id": 0,
 		"monsters": [
 			[
 				{
 					"monster_id": 5013040,
 					"amount": 1,
-					"level": 120
+					"level": 95
 				},
 				{
-					"monster_id": 4053020,
+					"monster_id": 5013010,
 					"amount": 1,
-					"level": 120
-				},
-				{
-					"monster_id": 5012010,
-					"amount": 1,
-					"level": 120
+					"level": 95
 				}
 			],
 			[
 				{
-					"monster_id": 802501003,
+					"monster_id": 5014010,
 					"amount": 1,
-					"level": 120
+					"level": 95
 				}
 			]
 		],
 		"blessings": [
 			{
 				"level": 1,
-				"id": 3033059
-			},
-			{
-				"level": 1,
-				"id": 3033064
-			},
-			{
-				"level": 1,
-				"id": 3033062
+				"id": 3030146
 			}
 		],
 		"custom_stats": []
