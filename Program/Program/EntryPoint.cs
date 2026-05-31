@@ -192,8 +192,8 @@ public class EntryPoint
         if (ConfigManager.Config.ServerOption.ServerConfig.RunGateway)
         {
             var handler =
-                new March7thHoneyListener.ConnectionCreatedHandler((client, remote, convId) =>
-                    new Connection(client, remote, convId));
+                new March7thHoneyListener.ConnectionCreatedHandler((conversation, remote) =>
+                    new Connection(conversation, remote));
             March7thHoneyListener.CreateConnection = handler;
             March7thHoneyListener.StartListener();
         }
