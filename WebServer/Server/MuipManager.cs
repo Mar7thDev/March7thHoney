@@ -181,6 +181,11 @@ public static class MuipManager
                 totalMemory = GetTotalMemoryLinux();
                 availableMemory = GetAvailableMemoryLinux();
             }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                totalMemory = GetTotalMemoryMacOS();
+                availableMemory = GetAvailableMemoryMacOS();
+            }
 
             var result = new Dictionary<int, PlayerData>();
             var sync = Task.Run(() => OnGetServerInformation?.Invoke(result));
@@ -425,7 +430,8 @@ public static class MuipManager
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             return GetCpuUsageLinux();
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) return GetCpuUsageWindows();
-        throw new NotSupportedException("Unsupported OS platform");
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)) return GetCpuUsageMacOS();
+        return 0;
     }
 
     private static float GetCpuUsageLinux()
@@ -456,7 +462,8 @@ public static class MuipManager
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             return GetCpuDetailsLinux();
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) return GetCpuDetailsWindows();
-        throw new NotSupportedException("Unsupported OS platform");
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)) return GetCpuDetailsMacOS();
+        return ("Unknown", Environment.ProcessorCount, 0f);
     }
 
     private static (string ModelName, int Cores, float Frequency) GetCpuDetailsLinux()
@@ -502,7 +509,9 @@ public static class MuipManager
             return GetWindowsVersion();
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             return GetLinuxVersion();
-        throw new PlatformNotSupportedException("This method only supports Windows and Linux.");
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            return GetMacOSVersion();
+        return RuntimeInformation.OSDescription;
     }
 
     private static string GetWindowsVersion()
@@ -529,6 +538,89 @@ public static class MuipManager
         }
 
         return version;
+    }
+
+    private static string RunCommand(string fileName, string arguments)
+    {
+        try
+        {
+            using var process = Process.Start(new ProcessStartInfo
+            {
+                FileName = fileName,
+                Arguments = arguments,
+                RedirectStandardOutput = true,
+                UseShellExecute = false,
+                CreateNoWindow = true
+            });
+            if (process == null) return string.Empty;
+            var output = process.StandardOutput.ReadToEnd();
+            process.WaitForExit(3000);
+            return output.Trim();
+        }
+        catch
+        {
+            return string.Empty;
+        }
+    }
+
+    private static float GetTotalMemoryMacOS()
+    {
+        return ulong.TryParse(RunCommand("/usr/sbin/sysctl", "-n hw.memsize"), out var bytes)
+            ? bytes / 1024f / 1024f
+            : 0;
+    }
+
+    private static float GetAvailableMemoryMacOS()
+    {
+        var pageSize = long.TryParse(RunCommand("/usr/sbin/sysctl", "-n hw.pagesize"), out var ps) ? ps : 4096;
+        long freePages = 0;
+        foreach (var line in RunCommand("/usr/bin/vm_stat", string.Empty).Split('\n'))
+        {
+            if (!line.StartsWith("Pages free:") && !line.StartsWith("Pages inactive:") &&
+                !line.StartsWith("Pages speculative:")) continue;
+
+            var digits = string.Empty;
+            foreach (var ch in line)
+                if (char.IsDigit(ch))
+                    digits += ch;
+            if (long.TryParse(digits, out var pages)) freePages += pages;
+        }
+
+        return freePages * pageSize / 1024f / 1024f;
+    }
+
+    private static float GetCpuUsageMacOS()
+    {
+        var output = RunCommand("/bin/sh", "-c \"top -l 2 -n 0 | grep 'CPU usage' | tail -1\"");
+        var idleIndex = output.IndexOf("% idle", StringComparison.OrdinalIgnoreCase);
+        if (idleIndex <= 0) return 0;
+
+        var segment = output[..idleIndex];
+        var lastSpace = segment.LastIndexOf(' ');
+        return lastSpace >= 0 && float.TryParse(segment[(lastSpace + 1)..], out var idle) ? 100 - idle : 0;
+    }
+
+    private static (string ModelName, int Cores, float Frequency) GetCpuDetailsMacOS()
+    {
+        var modelName = RunCommand("/usr/sbin/sysctl", "-n machdep.cpu.brand_string");
+        if (string.IsNullOrEmpty(modelName)) modelName = "Apple Silicon";
+        var cores = int.TryParse(RunCommand("/usr/sbin/sysctl", "-n hw.physicalcpu"), out var c)
+            ? c
+            : Environment.ProcessorCount;
+        // hw.cpufrequency is unavailable on Apple Silicon and reports 0 there
+        var frequency = long.TryParse(RunCommand("/usr/sbin/sysctl", "-n hw.cpufrequency"), out var f)
+            ? f / 1_000_000_000f
+            : 0f;
+        return (modelName, cores, frequency);
+    }
+
+    private static string GetMacOSVersion()
+    {
+        var name = RunCommand("/usr/bin/sw_vers", "-productName");
+        var version = RunCommand("/usr/bin/sw_vers", "-productVersion");
+        var build = RunCommand("/usr/bin/sw_vers", "-buildVersion");
+        var combined = $"{name} {version} ({build})".Trim();
+        return string.IsNullOrWhiteSpace(name) ? RuntimeInformation.OSDescription : combined;
     }
 
     #endregion
