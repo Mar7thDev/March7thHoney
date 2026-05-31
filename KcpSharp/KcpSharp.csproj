@@ -17,11 +17,6 @@
     <ProjectReference Include="..\Common\Common.csproj" />
   </ItemGroup>
 
-  <!-- TODO 4.3: 4.3 客户端用 TCP，内部 KCP 库已弃用，整目录排除编译 -->
-  <ItemGroup>
-    <Compile Remove="KcpSharp\**\*.cs" />
-  </ItemGroup>
-
 </Project>
 
 
