@@ -3,6 +3,7 @@ using March7thHoney.GameServer.Game.Calyx;
 using March7thHoney.GameServer.Server;
 using March7thHoney.Internationalization;
 using March7thHoney.Kcp;
+using March7thHoney.Util;
 using Microsoft.AspNetCore.Mvc;
 using System.Text;
 using System.Text.Json;
@@ -44,6 +45,17 @@ namespace March7thHoney.WebServer.Controllers
                     {
                         StatusCode = 400,
                         Content = "uid not found on server",
+                        ContentType = "text/plain"
+                    };
+                }
+
+                if (ConfigManager.Config.WebSecurity.EnableRsaLoginDecrypt &&
+                    (string.IsNullOrEmpty(password) || !acc.VerifyPassword(password)))
+                {
+                    return new ContentResult()
+                    {
+                        StatusCode = 401,
+                        Content = "Invalid password for this uid.",
                         ContentType = "text/plain"
                     };
                 }
