@@ -202,6 +202,20 @@ public static class AdminPageScripts
         }
       }
 
+      async function handleToggleRegistration() {
+        const current = Boolean((state.overview?.server || {}).registration_enabled);
+        const next = !current;
+        try {
+          setMessage(els.statusMessage, "Updating registration...", "");
+          await api("/admin/api/registration", { method: "POST", body: JSON.stringify({ enabled: next }) });
+          await loadOverview({ force: true });
+          renderOverview();
+          setMessage(els.statusMessage, next ? "Registration enabled." : "Registration disabled.", "good");
+        } catch (error) {
+          setMessage(els.statusMessage, getErrorMessage(error), "bad");
+        }
+      }
+
       async function loadAccounts(options = {}) {
         if (!state.accountsLoaded || options.force) {
           const data = await api("/admin/api/accounts");
@@ -229,6 +243,7 @@ public static class AdminPageScripts
         const data = state.overview || {};
         const stats = data.stats || {};
         const server = data.server || {};
+        const registrationEnabled = Boolean(server.registration_enabled);
         const onlinePlayers = data.online_players || [];
         const attention = data.attention || [];
         const roleBreakdown = data.role_breakdown || [];
@@ -285,6 +300,11 @@ public static class AdminPageScripts
                 ${detailRow("Uptime", formatDuration(server.uptime_seconds || 0))}
                 ${detailRow("Memory", `${formatNumber(server.process_memory_mb || 0)} MB`)}
                 ${detailRow("Server time", formatUnix(server.server_time))}
+                <div class="inline-actions">
+                  <span class="muted" style="min-width: 135px;">Registration</span>
+                  <span class="chip ${registrationEnabled ? "good" : "bad"}">${registrationEnabled ? "Enabled" : "Disabled"}</span>
+                  <button id="toggle-registration-button" class="button ${registrationEnabled ? "danger" : "success"}" type="button">${registrationEnabled ? "Disable" : "Enable"}</button>
+                </div>
               </div>
             </section>
           </div>
@@ -331,6 +351,11 @@ public static class AdminPageScripts
             </section>
           </div>
         `;
+
+        const toggleRegistrationButton = document.getElementById("toggle-registration-button");
+        if (toggleRegistrationButton) {
+          toggleRegistrationButton.addEventListener("click", handleToggleRegistration);
+        }
       }
 
       function renderAccountsModule() {

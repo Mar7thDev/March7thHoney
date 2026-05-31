@@ -112,7 +112,8 @@ public class AdminRoutes : ControllerBase
                 uptime_seconds = Math.Max(0,
                     (long)(DateTime.Now - process.StartTime).TotalSeconds),
                 process_memory_mb = Math.Round(process.WorkingSet64 / 1024d / 1024d, 1),
-                server_time = Extensions.GetUnixSec()
+                server_time = Extensions.GetUnixSec(),
+                registration_enabled = ConfigManager.Config.ServerOption.Auth.EnableRegistration
             },
             online_players = onlinePlayers,
             role_breakdown = accounts
@@ -136,6 +137,22 @@ public class AdminRoutes : ControllerBase
                 })
                 .Take(8)
                 .ToList()
+        });
+    }
+
+    [HttpPost("/admin/api/registration")]
+    public JsonResult SetRegistration([FromBody] AdminRegistrationRequest? request)
+    {
+        if (!IsAuthorized(out var unauthorized))
+            return unauthorized;
+
+        request ??= new AdminRegistrationRequest();
+        ConfigManager.Config.ServerOption.Auth.EnableRegistration = request.enabled;
+        ConfigManager.SaveConfig();
+
+        return Success(new
+        {
+            registration_enabled = ConfigManager.Config.ServerOption.Auth.EnableRegistration
         });
     }
 
@@ -703,6 +720,11 @@ public class AdminRoutes : ControllerBase
     {
         public string? command { get; set; }
         public int? target_uid { get; set; }
+    }
+
+    public class AdminRegistrationRequest
+    {
+        public bool enabled { get; set; }
     }
 
     private readonly record struct AccountSummary(

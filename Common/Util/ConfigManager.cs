@@ -24,6 +24,12 @@ public static class ConfigManager
         LoadHotfixData();
     }
 
+    public static void SaveConfig()
+    {
+        if (IsPublicMode) return;
+        SaveData(Config, ConfigFilePath);
+    }
+
     private static void LoadConfigData()
     {
         var file = new FileInfo(ConfigFilePath);
