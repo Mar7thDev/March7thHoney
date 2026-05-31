@@ -83,11 +83,22 @@ namespace March7thHoney.Util
                 length += GetWidth(PrefixContent);
             }
 
-            if (Console.GetCursorPosition().Left > 0)
-                Console.SetCursorPosition(0, Console.CursorTop);
+            if (OperatingSystem.IsWindows())
+            {
+                if (Console.GetCursorPosition().Left > 0)
+                    Console.SetCursorPosition(0, Console.CursorTop);
 
-            Console.Write(input + new string(' ', Math.Max(0, Console.BufferWidth - length)));
-            Console.SetCursorPosition(length, Console.CursorTop);
+                Console.Write(input + new string(' ', Math.Max(0, Console.BufferWidth - length)));
+                Console.SetCursorPosition(length, Console.CursorTop);
+            }
+            else
+            {
+                // On Unix, Console.GetCursorPosition()/CursorTop query the terminal by reading
+                // stdin, which deadlocks against the console input reader when other threads log.
+                // Redraw with ANSI escapes (stdout only): go to column 0, write, erase to EOL.
+                Console.Write("\r" + input + "\u001b[K");
+            }
+
             CursorIndex = length - GetWidth(PrefixContent);
         }
 
@@ -106,9 +117,18 @@ namespace March7thHoney.Util
 
                 if (shouldRestorePrompt)
                 {
-                    Console.SetCursorPosition(0, Console.CursorTop);
-                    Console.Write(new string(' ', Console.BufferWidth));
-                    Console.SetCursorPosition(0, Console.CursorTop);
+                    if (OperatingSystem.IsWindows())
+                    {
+                        Console.SetCursorPosition(0, Console.CursorTop);
+                        Console.Write(new string(' ', Console.BufferWidth));
+                        Console.SetCursorPosition(0, Console.CursorTop);
+                    }
+                    else
+                    {
+                        // Unix: clear the line with ANSI (stdout only) instead of querying the
+                        // cursor via stdin, which deadlocks against the console input reader.
+                        Console.Write("\r\u001b[2K");
+                    }
                 }
 
                 colorWriter();
