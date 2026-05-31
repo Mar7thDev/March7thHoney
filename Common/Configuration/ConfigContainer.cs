@@ -136,6 +136,15 @@ public class AuthOption
     public int EmailVerificationTokenExpireMinutes { get; set; } = 1440;
     public int PasswordResetTokenExpireMinutes { get; set; } = 60;
     public EmailOption Email { get; set; } = new();
+    public AntiAbuseOption AntiAbuse { get; set; } = new();
+}
+
+public class AntiAbuseOption
+{
+    public bool RateLimitEnabled { get; set; } = true;
+    public int RateLimitMaxRequests { get; set; } = 10;
+    public int RateLimitWindowSeconds { get; set; } = 60;
+    public int RateLimitBlockSeconds { get; set; } = 900;
 }
 
 public class EmailOption
