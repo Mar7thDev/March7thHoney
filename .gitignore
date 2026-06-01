@@ -388,7 +388,7 @@ Config/Database/
 Dockerfile
 .dockerignore
 docker-compose*.yml
-docker-deploy.sh
+docker-*.sh
 deploy/
 .env
 .env.*
