@@ -306,15 +306,9 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
             switch (state)
             {
                 case SessionStateEnum.WAITING_FOR_TOKEN when opcode != CmdIds.PlayerGetTokenCsReq:
-                    return;
                 case SessionStateEnum.WAITING_FOR_LOGIN when opcode != CmdIds.PlayerLoginCsReq:
-                    return;
                 case SessionStateEnum.ACTIVE
                     when opcode == CmdIds.PlayerGetTokenCsReq || opcode == CmdIds.PlayerLoginCsReq:
-                    return;
-                case SessionStateEnum.ACTIVE:
-                    break;
-                default:
                     return;
             }
 
