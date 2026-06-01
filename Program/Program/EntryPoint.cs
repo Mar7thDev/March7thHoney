@@ -162,9 +162,15 @@ public class EntryPoint
         // Initialize the database
         try
         {
-            _ = Task.Run(DatabaseHelper.Initialize); // do not wait
+            var databaseInitTask = Task.Run(DatabaseHelper.Initialize);
 
-            while (!DatabaseHelper.LoadAccount) Thread.Sleep(100);
+            while (!DatabaseHelper.LoadAccount)
+            {
+                if (databaseInitTask.IsFaulted)
+                    databaseInitTask.GetAwaiter().GetResult();
+
+                Thread.Sleep(100);
+            }
 
             Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItem",
                 I18NManager.Translate("Word.DatabaseAccount")));
