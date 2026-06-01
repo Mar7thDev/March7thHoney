@@ -145,6 +145,17 @@ public class AntiAbuseOption
     public int RateLimitMaxRequests { get; set; } = 10;
     public int RateLimitWindowSeconds { get; set; } = 60;
     public int RateLimitBlockSeconds { get; set; } = 900;
+    public bool LimitRegistrationPerIdentity { get; set; } = true;
+    public string RegistrationIdentityMode { get; set; } = "DeviceOrIp";
+    public bool RequireRegistrationIdentity { get; set; } = false;
+    public bool LoginRateLimitEnabled { get; set; } = true;
+    public int LoginRateLimitMaxRequests { get; set; } = 8;
+    public int LoginRateLimitWindowSeconds { get; set; } = 900;
+    public int LoginRateLimitBlockSeconds { get; set; } = 900;
+    public bool EmailRateLimitEnabled { get; set; } = true;
+    public int EmailRateLimitMaxRequests { get; set; } = 3;
+    public int EmailRateLimitWindowSeconds { get; set; } = 3600;
+    public int EmailRateLimitBlockSeconds { get; set; } = 900;
 }
 
 public class EmailOption

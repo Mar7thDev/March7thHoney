@@ -133,6 +133,48 @@ public static class AccountBanHelper
         return false;
     }
 
+    public static bool TryFindAccountByIdentityKeys(IEnumerable<string>? identityKeys, string? mode,
+        out AccountData account)
+    {
+        account = default!;
+        var currentKeys = NormalizeIdentityKeys(identityKeys).ToHashSet(StringComparer.Ordinal);
+        if (currentKeys.Count == 0)
+            return false;
+
+        var currentDeviceKeys = currentKeys.Where(IsDeviceIdentityKey).ToHashSet(StringComparer.Ordinal);
+        var currentIpKeys = currentKeys.Where(IsIpIdentityKey).ToHashSet(StringComparer.Ordinal);
+        var normalizedMode = string.IsNullOrWhiteSpace(mode) ? "DeviceOrIp" : mode.Trim();
+
+        var accounts = DatabaseHelper.GetAllInstanceFromMap<AccountData>() ??
+                       DatabaseHelper.GetAllInstance<AccountData>() ?? [];
+        foreach (var candidate in accounts.GroupBy(candidate => candidate.Uid).Select(group => group.First()))
+        {
+            var knownKeys = ParseIdentityKeys(candidate.KnownIdentityKeys);
+            if (knownKeys.Count == 0)
+                continue;
+
+            var knownDeviceKeys = knownKeys.Where(IsDeviceIdentityKey).ToHashSet(StringComparer.Ordinal);
+            var knownIpKeys = knownKeys.Where(IsIpIdentityKey).ToHashSet(StringComparer.Ordinal);
+            var matched = normalizedMode switch
+            {
+                "DeviceOnly" => currentDeviceKeys.Count > 0 && knownDeviceKeys.Any(currentDeviceKeys.Contains),
+                "DeviceAndIp" => currentDeviceKeys.Count > 0 &&
+                                 currentIpKeys.Count > 0 &&
+                                 knownDeviceKeys.Any(currentDeviceKeys.Contains) &&
+                                 knownIpKeys.Any(currentIpKeys.Contains),
+                _ => knownKeys.Any(currentKeys.Contains)
+            };
+
+            if (!matched)
+                continue;
+
+            account = candidate;
+            return true;
+        }
+
+        return false;
+    }
+
     public static string FormatDuration(long totalSeconds)
     {
         totalSeconds = Math.Max(0, totalSeconds);
@@ -170,9 +212,19 @@ public static class AccountBanHelper
 
     private static bool IsIdentityKey(string? key)
     {
+        return IsDeviceIdentityKey(key) || IsIpIdentityKey(key);
+    }
+
+    private static bool IsDeviceIdentityKey(string? key)
+    {
         return !string.IsNullOrWhiteSpace(key) &&
-               (key.StartsWith("device:", StringComparison.Ordinal) ||
-                key.StartsWith("ip:", StringComparison.Ordinal));
+               key.StartsWith("device:", StringComparison.Ordinal);
+    }
+
+    private static bool IsIpIdentityKey(string? key)
+    {
+        return !string.IsNullOrWhiteSpace(key) &&
+               key.StartsWith("ip:", StringComparison.Ordinal);
     }
 
     private static string? NormalizeDeviceValue(string? value)

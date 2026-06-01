@@ -69,7 +69,8 @@ public class CommandHtl : ICommand
             await SendInline(arg, luaRoot,
                 "local HTL = _G.HoyoToonLua\n" +
                 "if HTL ~= nil then HTL.Popup(" + ToLuaString(message) + ", { color = \"blue\" }) end\n",
-                "popup");
+                "popup",
+                minimalBoot: true);
             return;
         }
 
@@ -167,7 +168,7 @@ public class CommandHtl : ICommand
     {
         try
         {
-            var bundledText = Encoding.UTF8.GetString(await HoyoToonLuaPayloadBuilder.BuildAsync(luaRoot, relativePath));
+            var bundledText = Encoding.UTF8.GetString(await HoyoToonLuaPayloadBuilder.BuildScriptAsync(luaRoot, relativePath));
             var fileInfo = new FileInfo(filePath);
             var scriptToken = string.Join("|",
                 relativePath.Replace("\\", "/"),
@@ -195,10 +196,11 @@ public class CommandHtl : ICommand
         }
     }
 
-    private static async ValueTask SendInline(CommandArg arg, string luaRoot, string lua, string label)
+    private static async ValueTask SendInline(CommandArg arg, string luaRoot, string lua, string label,
+        bool minimalBoot = false)
     {
         var fileBytes = await HoyoToonLuaPayloadBuilder.BuildInlineAsync(luaRoot, "Auto/Htl/inline.lua",
-            "--#hoyotoonlua\n" + lua);
+            "--#hoyotoonlua\n" + lua, minimalBoot);
         await arg.Target!.SendPacket(new HandshakePacket(fileBytes));
         await arg.SendMsg(I18NManager.Translate("Game.Command.Htl.Sent", label));
     }
@@ -223,11 +225,21 @@ public class CommandHtl : ICommand
             case "skillspneed":
             case "setskillspneed":
                 return TryBuildSkillNeedWrite(args, "HTL.SetSPNeed", "SP need", out lua, out label);
+            case "spbase":
+            case "setspbase":
+            case "skillspbase":
+            case "setskillspbase":
+                return TryBuildSkillNeedWrite(args, "HTL.SetSPBase", "SP base", out lua, out label);
             case "bpneed":
             case "setbpneed":
             case "skillbpneed":
             case "setskillbpneed":
                 return TryBuildSkillNeedWrite(args, "HTL.SetBPNeed", "BP need", out lua, out label);
+            case "bpadd":
+            case "setbpadd":
+            case "skillbpadd":
+            case "setskillbpadd":
+                return TryBuildSkillNeedWrite(args, "HTL.SetBPAdd", "BP add", out lua, out label);
             case "avatarspneed":
             case "setavatarspneed":
             case "characterspneed":

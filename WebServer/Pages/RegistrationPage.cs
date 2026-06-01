@@ -285,6 +285,39 @@ public static class RegistrationPage
       message.className = kind ? `message ${kind}` : "message";
     }
 
+    function getOrCreateDeviceId() {
+      const key = "march7thhoney.registration.device_id";
+      try {
+        const existing = window.localStorage.getItem(key);
+        if (existing) return existing;
+
+        const generated = window.crypto?.randomUUID
+          ? window.crypto.randomUUID()
+          : `${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
+        window.localStorage.setItem(key, generated);
+        return generated;
+      } catch {
+        return "";
+      }
+    }
+
+    function getDeviceFingerprint() {
+      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+      const size = window.screen
+        ? `${window.screen.width}x${window.screen.height}x${window.screen.colorDepth}`
+        : "";
+
+      return JSON.stringify({
+        userAgent: navigator.userAgent || "",
+        language: navigator.language || "",
+        platform: navigator.platform || "",
+        timezone,
+        size,
+        cores: navigator.hardwareConcurrency || 0,
+        touch: navigator.maxTouchPoints || 0
+      });
+    }
+
     form.addEventListener("submit", async event => {
       event.preventDefault();
       result.style.display = "none";
@@ -330,7 +363,9 @@ public static class RegistrationPage
             username,
             email,
             password,
-            confirm_password: confirmPassword
+            confirm_password: confirmPassword,
+            device_id: getOrCreateDeviceId(),
+            device_fp: getDeviceFingerprint()
           })
         });
 

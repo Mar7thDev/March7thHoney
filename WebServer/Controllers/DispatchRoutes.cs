@@ -125,6 +125,15 @@ public class DispatchRoutes : ControllerBase
         return $"{req.Scheme}://{host}{req.PathBase}".TrimEnd('/');
     }
 
+    private static string? FirstNonEmpty(params string?[] values)
+    {
+        foreach (var value in values)
+            if (!string.IsNullOrWhiteSpace(value))
+                return value;
+
+        return null;
+    }
+
     [HttpPost("/account/risky/api/check")]
     public ContentResult RiskyCheck()
     {
@@ -281,7 +290,6 @@ public class DispatchRoutes : ControllerBase
     [HttpPost("/{gameKey}/account/ma-passport/api/webRegisterByPassword")]
     public async Task<JsonResult> Register([FromBody] RegisterReqJson? req)
     {
-        if (AuthRateLimiter.TryReject(HttpContext, out var limited)) return limited;
         req ??= new RegisterReqJson();
         Debug($"register: username={req.username ?? req.account} email={req.email}");
         return await new RegistrationHandler().Handle(req, Request);
@@ -292,8 +300,14 @@ public class DispatchRoutes : ControllerBase
     [HttpPost("/{gameKey}/account/email/send-verification")]
     public async Task<JsonResult> SendVerificationEmail([FromBody] SendVerificationEmailReqJson? req)
     {
-        if (AuthRateLimiter.TryReject(HttpContext, out var limited)) return limited;
         req ??= new SendVerificationEmailReqJson();
+        var identityKeys = LoginIdentityContextFactory.Build(Request);
+        if (AuthRateLimiter.TryReject(HttpContext, AuthRateLimitAction.Email, identityKeys,
+                FirstNonEmpty(req.account, req.username, req.email), out var limited))
+        {
+            return limited;
+        }
+
         return await new AccountRecoveryHandler().SendVerificationEmail(req, Request);
     }
 
@@ -308,8 +322,14 @@ public class DispatchRoutes : ControllerBase
     [HttpPost("/{gameKey}/account/password/forgot")]
     public async Task<JsonResult> ForgotPassword([FromBody] ForgotPasswordReqJson? req)
     {
-        if (AuthRateLimiter.TryReject(HttpContext, out var limited)) return limited;
         req ??= new ForgotPasswordReqJson();
+        var identityKeys = LoginIdentityContextFactory.Build(Request);
+        if (AuthRateLimiter.TryReject(HttpContext, AuthRateLimitAction.Email, identityKeys,
+                FirstNonEmpty(req.account, req.username, req.email), out var limited))
+        {
+            return limited;
+        }
+
         return await new AccountRecoveryHandler().ForgotPassword(req, Request);
     }
 
@@ -318,8 +338,11 @@ public class DispatchRoutes : ControllerBase
     [HttpPost("/{gameKey}/account/password/reset")]
     public JsonResult ResetPassword([FromBody] ResetPasswordReqJson? req)
     {
-        if (AuthRateLimiter.TryReject(HttpContext, out var limited)) return limited;
         req ??= new ResetPasswordReqJson();
+        var identityKeys = LoginIdentityContextFactory.Build(Request);
+        if (AuthRateLimiter.TryReject(HttpContext, AuthRateLimitAction.Email, identityKeys, req.uid, out var limited))
+            return limited;
+
         return new AccountRecoveryHandler().ResetPassword(req);
     }
 
@@ -333,6 +356,9 @@ public class DispatchRoutes : ControllerBase
         if (decryptFailed)
             return new JsonResult(LoginResJson.Error(-202, "Invalid login data"));
         var identityKeys = LoginIdentityContextFactory.Build(Request, req.device, req.device_id, req.device_fp);
+        if (AuthRateLimiter.TryReject(HttpContext, AuthRateLimitAction.Login, identityKeys, account, out var limited))
+            return limited;
+
         return new UsernameLoginHandler().HandleShieldLogin(account, password, identityKeys);
     }
 
@@ -344,6 +370,9 @@ public class DispatchRoutes : ControllerBase
         var (account, password) =
             LoginCryptoHelper.TryDecryptCredentials(req.account, req.password, Config.WebSecurity.EnableRsaLoginDecrypt);
         var identityKeys = LoginIdentityContextFactory.Build(Request, req.device, req.device_id, req.device_fp);
+        if (AuthRateLimiter.TryReject(HttpContext, AuthRateLimitAction.Login, identityKeys, account, out var limited))
+            return limited;
+
         return new UsernameLoginHandler().HandlePassportLogin(account, password, identityKeys);
     }
 
@@ -373,6 +402,9 @@ public class DispatchRoutes : ControllerBase
         var (account, password) =
             LoginCryptoHelper.TryDecryptCredentials(req.account, req.password, Config.WebSecurity.EnableRsaLoginDecrypt);
         var identityKeys = LoginIdentityContextFactory.Build(Request, req.device, req.device_id, req.device_fp);
+        if (AuthRateLimiter.TryReject(HttpContext, AuthRateLimitAction.Login, identityKeys, account, out var limited))
+            return AuthRateLimiter.ToContentResult(limited);
+
         return new UsernameLoginHandler().HandleLegacyPassportLogin(account, password, identityKeys);
     }
 

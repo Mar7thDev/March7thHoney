@@ -33,6 +33,7 @@ public class ComboTokenGranterHandler
 
         var autoCreateUser = ConfigManager.Config.ServerOption.AutoCreateUser;
         var account = AccountData.GetAccountByUid(uid);
+        var trustedExternalComboLogin = false;
 
         // The OS client validates username/password against the real HoYoverse shield
         // endpoint (not proxied), so only the combo login reaches us, carrying the player's
@@ -44,6 +45,7 @@ public class ComboTokenGranterHandler
         // unaffected and keeps using its own uid unchanged.
         if (account == null && autoCreateUser)
         {
+            trustedExternalComboLogin = true;
             var externalKey = $"os_{uid}";
             account = AccountData.GetAccountByUserName(externalKey);
             if (account == null)
@@ -72,7 +74,7 @@ public class ComboTokenGranterHandler
 
         var isDispatchToken = account.ValidateDispatchToken(tokenData.token);
         var isComboToken = account.ValidateComboToken(tokenData.token);
-        if (!autoCreateUser && !isDispatchToken && !isComboToken)
+        if (!trustedExternalComboLogin && !isDispatchToken && !isComboToken)
         {
             Logger.Warn(
                 $"Combo login cache validation failed. uid={uid} token_len={tokenData.token?.Length ?? 0} account_exists=True");
