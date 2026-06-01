@@ -303,20 +303,19 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
             // Handle
             // Make sure session is ready for packets
             var state = State;
-            switch (opcode)
+            switch (state)
             {
-                case CmdIds.PlayerGetTokenCsReq:
-                {
-                    if (state != SessionStateEnum.WAITING_FOR_TOKEN) return;
-                    goto default;
-                }
-                case CmdIds.PlayerLoginCsReq:
-                {
-                    if (state != SessionStateEnum.WAITING_FOR_LOGIN) return;
-                    goto default;
-                }
-                default:
+                case SessionStateEnum.WAITING_FOR_TOKEN when opcode != CmdIds.PlayerGetTokenCsReq:
+                    return;
+                case SessionStateEnum.WAITING_FOR_LOGIN when opcode != CmdIds.PlayerLoginCsReq:
+                    return;
+                case SessionStateEnum.ACTIVE
+                    when opcode == CmdIds.PlayerGetTokenCsReq || opcode == CmdIds.PlayerLoginCsReq:
+                    return;
+                case SessionStateEnum.ACTIVE:
                     break;
+                default:
+                    return;
             }
 
             try

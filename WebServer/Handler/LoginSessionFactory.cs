@@ -22,6 +22,7 @@ internal static class LoginSessionFactory
         session = default;
         failure = LoginFailure.InvalidCredentials();
         var autoCreateUser = ConfigManager.Config.ServerOption.AutoCreateUser;
+        var createdByAutoCreate = false;
 
         var normalizedAccount = (account ?? string.Empty).Trim();
         var normalizedPassword = password ?? string.Empty;
@@ -36,6 +37,7 @@ internal static class LoginSessionFactory
                 var autoEmail = BuildAutoCreateEmail(normalizedAccount);
                 AccountHelper.CreateAccount(normalizedAccount, autoEmail, normalizedPassword, 0);
                 accountData = AccountData.GetAccountByLoginIdentifier(normalizedAccount);
+                createdByAutoCreate = true;
             }
             catch (Exception ex)
             {
@@ -50,23 +52,32 @@ internal static class LoginSessionFactory
         var canonicalAccount = AccountData.GetAccountByUid(accountData.Uid) ?? accountData;
         if (!canonicalAccount.HasPassword())
         {
-            if (!autoCreateUser && !CanAuthenticate(canonicalAccount, identityKeys, out failure))
+            if (autoCreateUser && !createdByAutoCreate)
+            {
+                if (canonicalAccount.GetBanStatus().IsActive)
+                    canonicalAccount.AddKnownIdentityKeys(identityKeys);
+
+                if (!CanAuthenticate(canonicalAccount, identityKeys, out failure))
+                    return false;
+
+                failure = LoginFailure.InvalidCredentials();
+                return false;
+            }
+
+            if (!CanAuthenticate(canonicalAccount, identityKeys, out failure))
                 return false;
 
-            if (!autoCreateUser)
+            try
             {
-                try
-                {
-                    AccountHelper.SetPassword(canonicalAccount, normalizedPassword);
-                }
-                catch (Exception ex)
-                {
-                    failure = new LoginFailure(-201, ex.Message);
-                    return false;
-                }
+                AccountHelper.SetPassword(canonicalAccount, normalizedPassword);
+            }
+            catch (Exception ex)
+            {
+                failure = new LoginFailure(-201, ex.Message);
+                return false;
             }
         }
-        else if (!autoCreateUser && !canonicalAccount.VerifyPassword(normalizedPassword))
+        else if (!canonicalAccount.VerifyPassword(normalizedPassword))
         {
             return false;
         }
@@ -74,7 +85,7 @@ internal static class LoginSessionFactory
         if (canonicalAccount.GetBanStatus().IsActive)
             canonicalAccount.AddKnownIdentityKeys(identityKeys);
 
-        if (!autoCreateUser && !CanAuthenticate(canonicalAccount, identityKeys, out failure))
+        if (!CanAuthenticate(canonicalAccount, identityKeys, out failure))
             return false;
 
         var username = canonicalAccount.Username ?? normalizedAccount;

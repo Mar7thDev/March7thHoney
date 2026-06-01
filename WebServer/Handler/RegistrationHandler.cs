@@ -13,13 +13,26 @@ public class RegistrationHandler
             return Error("Registration is disabled");
 
         var identityKeys = LoginIdentityContextFactory.Build(request, req.device, req.device_id, req.device_fp);
-        if (AccountBanHelper.TryFindActiveBanByIdentityKeys(identityKeys, null, out var banStatus))
-            return Error(banStatus.FormatLoginMessage(), -203);
-
+        var antiAbuse = ConfigManager.Config.ServerOption.Auth.AntiAbuse;
         var username = ResolveUsername(req);
         var email = ResolveEmail(req);
         var password = req.password ?? string.Empty;
         var confirmation = req.confirm_password ?? req.confirmPassword ?? req.confirm;
+
+        if (AuthRateLimiter.TryReject(request.HttpContext, AuthRateLimitAction.Registration, identityKeys,
+                string.IsNullOrWhiteSpace(username) ? email : username, out var limited))
+        {
+            return limited;
+        }
+
+        if (AccountBanHelper.TryFindActiveBanByIdentityKeys(identityKeys, null, out var banStatus))
+            return Error(banStatus.FormatLoginMessage(), -203);
+
+        if (antiAbuse.RequireRegistrationIdentity &&
+            !identityKeys.Any(key => key.StartsWith("device:", StringComparison.Ordinal)))
+        {
+            return Error("Registration is not available for this browser or network");
+        }
 
         if (string.IsNullOrWhiteSpace(username))
             return Error("Username cannot be empty");
@@ -29,6 +42,12 @@ public class RegistrationHandler
 
         if (!string.IsNullOrEmpty(confirmation) && !string.Equals(password, confirmation, StringComparison.Ordinal))
             return Error("Passwords do not match");
+
+        if (antiAbuse.LimitRegistrationPerIdentity &&
+            AccountBanHelper.TryFindAccountByIdentityKeys(identityKeys, antiAbuse.RegistrationIdentityMode, out _))
+        {
+            return Error("Registration is not available for this device or network");
+        }
 
         if (AccountData.GetAccountByUserName(username) != null)
             return Error("Username already exists");

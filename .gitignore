@@ -384,6 +384,15 @@ CLAUDE.md
 # Local SQLite databases
 Config/Database/
 
+# Local Docker deployment
+Dockerfile
+.dockerignore
+docker-compose*.yml
+docker-deploy.sh
+deploy/
+.env
+.env.*
+
 # Local GM handbook output
 GM Handbook/
 *.db

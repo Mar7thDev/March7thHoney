@@ -5,13 +5,15 @@ namespace March7thHoney.Kcp;
 
 public class HandshakePacket : BasePacket
 {
+    private static long VersionCounter = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+
     public HandshakePacket(byte[] data) : base(CmdIds.ClientDownloadDataScNotify)
     {
         var downloadData = new ClientDownloadData
         {
             Data = ByteString.CopyFrom(data),
-            Version = 81,
-            Time = (long)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds
+            Version = unchecked((uint)System.Threading.Interlocked.Increment(ref VersionCounter)),
+            Time = DateTimeOffset.UtcNow.ToUnixTimeSeconds()
         };
         var notify = new ClientDownloadDataScNotify
         {
