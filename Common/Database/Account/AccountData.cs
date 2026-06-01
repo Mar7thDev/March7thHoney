@@ -23,9 +23,11 @@ public class AccountData : BaseDatabaseDataHelper
     public int PasswordIterations { get; set; }
 
     [SugarColumn(IsNullable = true)] public string? ComboToken { get; set; }
+    [SugarColumn(IsNullable = true)] public string? ComboTokenHash { get; set; }
     public long ComboTokenExpireAt { get; set; }
 
     [SugarColumn(IsNullable = true)] public string? DispatchToken { get; set; }
+    [SugarColumn(IsNullable = true)] public string? DispatchTokenHash { get; set; }
     public long DispatchTokenExpireAt { get; set; }
 
     [SugarColumn(IsNullable = true)]
@@ -319,38 +321,44 @@ public class AccountData : BaseDatabaseDataHelper
     public void ClearLoginTokens(bool persist = true)
     {
         DispatchToken = null;
+        DispatchTokenHash = null;
         DispatchTokenExpireAt = 0;
         ComboToken = null;
+        ComboTokenHash = null;
         ComboTokenExpireAt = 0;
         if (persist) PersistAuthState();
     }
 
     public string GenerateDispatchToken()
     {
-        DispatchToken = AuthSecurity.GenerateSessionToken();
+        var token = AuthSecurity.GenerateSessionToken();
+        DispatchToken = null;
+        DispatchTokenHash = AuthSecurity.HashToken(token);
         DispatchTokenExpireAt = Extensions.GetUnixSec() +
                                 Math.Max(ConfigManager.Config.ServerOption.Auth.DispatchTokenExpireMinutes, 1) * 60L;
         PersistAuthState();
-        return DispatchToken;
+        return token;
     }
 
     public string GenerateComboToken()
     {
-        ComboToken = AuthSecurity.GenerateSessionToken();
+        var token = AuthSecurity.GenerateSessionToken();
+        ComboToken = null;
+        ComboTokenHash = AuthSecurity.HashToken(token);
         ComboTokenExpireAt = Extensions.GetUnixSec() +
                              Math.Max(ConfigManager.Config.ServerOption.Auth.ComboTokenExpireMinutes, 1) * 60L;
         PersistAuthState();
-        return ComboToken;
+        return token;
     }
 
     public bool ValidateDispatchToken(string? token)
     {
-        return ValidateToken(token, DispatchToken, DispatchTokenExpireAt);
+        return ValidateLoginToken(token, isDispatchToken: true);
     }
 
     public bool ValidateComboToken(string? token)
     {
-        return ValidateToken(token, ComboToken, ComboTokenExpireAt);
+        return ValidateLoginToken(token, isDispatchToken: false);
     }
 
     public bool ValidateGameToken(string? token)
@@ -358,16 +366,56 @@ public class AccountData : BaseDatabaseDataHelper
         return ValidateDispatchToken(token) || ValidateComboToken(token);
     }
 
-    private static bool ValidateToken(string? providedToken, string? storedToken, long expireAt)
+    private bool ValidateLoginToken(string? providedToken, bool isDispatchToken)
     {
+        var storedTokenHash = isDispatchToken ? DispatchTokenHash : ComboTokenHash;
+        var storedToken = isDispatchToken ? DispatchToken : ComboToken;
+        var expireAt = isDispatchToken ? DispatchTokenExpireAt : ComboTokenExpireAt;
         if (string.IsNullOrWhiteSpace(providedToken) ||
-            string.IsNullOrWhiteSpace(storedToken) ||
             expireAt <= Extensions.GetUnixSec())
         {
             return false;
         }
 
-        return string.Equals(storedToken, providedToken, StringComparison.Ordinal);
+        if (!string.IsNullOrWhiteSpace(storedTokenHash))
+        {
+            var valid = AuthSecurity.VerifyToken(providedToken, storedTokenHash);
+            if (valid && !string.IsNullOrWhiteSpace(storedToken))
+            {
+                ClearLegacyLoginToken(isDispatchToken);
+                PersistAuthState();
+            }
+
+            return valid;
+        }
+
+        if (string.IsNullOrWhiteSpace(storedToken) ||
+            !string.Equals(storedToken, providedToken, StringComparison.Ordinal))
+        {
+            return false;
+        }
+
+        if (isDispatchToken)
+        {
+            DispatchTokenHash = AuthSecurity.HashToken(providedToken);
+            DispatchToken = null;
+        }
+        else
+        {
+            ComboTokenHash = AuthSecurity.HashToken(providedToken);
+            ComboToken = null;
+        }
+
+        PersistAuthState();
+        return true;
+    }
+
+    private void ClearLegacyLoginToken(bool isDispatchToken)
+    {
+        if (isDispatchToken)
+            DispatchToken = null;
+        else
+            ComboToken = null;
     }
 
     private static bool ValidateActionToken(string? providedToken, string? storedTokenHash, long expireAt)
