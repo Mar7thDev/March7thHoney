@@ -4474,6 +4474,165 @@
 				150701
 			]
 		},
+		"1508": {
+			"avatar_id": 1508,
+			"data": {
+				"rank": 0,
+				"skills": {
+					"1508001": 6,
+					"1508002": 10,
+					"1508003": 10,
+					"1508004": 10,
+					"1508007": 1,
+					"1508101": 1,
+					"1508102": 1,
+					"1508103": 1,
+					"1508201": 1,
+					"1508202": 1,
+					"1508203": 1,
+					"1508204": 1,
+					"1508205": 1,
+					"1508206": 1,
+					"1508207": 1,
+					"1508208": 1,
+					"1508209": 1,
+					"1508210": 1
+				},
+				"skills_by_anchor_type": {
+					"1": 6,
+					"2": 10,
+					"3": 10,
+					"4": 10,
+					"5": 1,
+					"6": 1,
+					"7": 1,
+					"8": 1,
+					"9": 1,
+					"10": 1,
+					"11": 1,
+					"12": 1,
+					"13": 1,
+					"14": 1,
+					"15": 1,
+					"16": 1,
+					"17": 1,
+					"18": 1
+				}
+			},
+			"level": 80,
+			"promotion": 6,
+			"sp_max": 160,
+			"sp_value": 80,
+			"techniques": [
+				150801
+			]
+		},
+		"1509": {
+			"avatar_id": 1509,
+			"data": {
+				"rank": 6,
+				"skills": {
+					"1509001": 6,
+					"1509002": 10,
+					"1509003": 10,
+					"1509004": 10,
+					"1509007": 1,
+					"1509101": 1,
+					"1509102": 1,
+					"1509103": 1,
+					"1509201": 1,
+					"1509202": 1,
+					"1509203": 1,
+					"1509204": 1,
+					"1509205": 1,
+					"1509206": 1,
+					"1509207": 1,
+					"1509208": 1,
+					"1509209": 1,
+					"1509210": 1
+				},
+				"skills_by_anchor_type": {
+					"1": 6,
+					"2": 10,
+					"3": 10,
+					"4": 10,
+					"5": 1,
+					"6": 1,
+					"7": 1,
+					"8": 1,
+					"9": 1,
+					"10": 1,
+					"11": 1,
+					"12": 1,
+					"13": 1,
+					"14": 1,
+					"15": 1,
+					"16": 1,
+					"17": 1,
+					"18": 1
+				}
+			},
+			"level": 80,
+			"promotion": 6,
+			"sp_max": 600,
+			"sp_value": 300,
+			"techniques": [
+				150901
+			]
+		},
+		"1510": {
+			"avatar_id": 1510,
+			"data": {
+				"rank": 6,
+				"skills": {
+					"1510001": 6,
+					"1510002": 10,
+					"1510003": 10,
+					"1510004": 10,
+					"1510007": 1,
+					"1510101": 1,
+					"1510102": 1,
+					"1510103": 1,
+					"1510201": 1,
+					"1510202": 1,
+					"1510203": 1,
+					"1510204": 1,
+					"1510205": 1,
+					"1510206": 1,
+					"1510207": 1,
+					"1510208": 1,
+					"1510209": 1,
+					"1510210": 1
+				},
+				"skills_by_anchor_type": {
+					"1": 6,
+					"2": 10,
+					"3": 10,
+					"4": 10,
+					"5": 1,
+					"6": 1,
+					"7": 1,
+					"8": 1,
+					"9": 1,
+					"10": 1,
+					"11": 1,
+					"12": 1,
+					"13": 1,
+					"14": 1,
+					"15": 1,
+					"16": 1,
+					"17": 1,
+					"18": 1
+				}
+			},
+			"level": 80,
+			"promotion": 6,
+			"sp_max": 140,
+			"sp_value": 70,
+			"techniques": [
+				151001
+			]
+		},
 		"8001": {
 			"avatar_id": 8001,
 			"data": {
@@ -8990,7 +9149,7 @@
 		},
 		{
 			"internal_uid": 294,
-			"equip_avatar": 0,
+			"equip_avatar": 1509,
 			"level": 15,
 			"main_affix_id": 1,
 			"relic_id": 61191,
@@ -10490,7 +10649,7 @@
 		},
 		{
 			"internal_uid": 380,
-			"equip_avatar": 0,
+			"equip_avatar": 1509,
 			"level": 15,
 			"main_affix_id": 2,
 			"relic_id": 61084,
@@ -11300,7 +11459,7 @@
 		},
 		{
 			"internal_uid": 433,
-			"equip_avatar": 0,
+			"equip_avatar": 1509,
 			"level": 15,
 			"main_affix_id": 4,
 			"relic_id": 61083,
@@ -11900,7 +12059,7 @@
 		},
 		{
 			"internal_uid": 454,
-			"equip_avatar": 0,
+			"equip_avatar": 1509,
 			"level": 15,
 			"main_affix_id": 1,
 			"relic_id": 61102,
@@ -42709,7 +42868,7 @@
 			"relic_set_id": 130
 		},
 		{
-			"equip_avatar": 0,
+			"equip_avatar": 1508,
 			"internal_uid": 1499,
 			"level": 15,
 			"sub_affixes": [
@@ -42859,7 +43018,7 @@
 			"relic_set_id": 130
 		},
 		{
-			"equip_avatar": 0,
+			"equip_avatar": 1508,
 			"internal_uid": 1504,
 			"level": 15,
 			"sub_affixes": [
@@ -43039,7 +43198,7 @@
 			"relic_set_id": 130
 		},
 		{
-			"equip_avatar": 0,
+			"equip_avatar": 1508,
 			"internal_uid": 1510,
 			"level": 15,
 			"sub_affixes": [
@@ -43159,7 +43318,7 @@
 			"relic_set_id": 130
 		},
 		{
-			"equip_avatar": 0,
+			"equip_avatar": 1508,
 			"internal_uid": 1514,
 			"level": 15,
 			"sub_affixes": [
@@ -43577,6 +43736,306 @@
 			"relic_id": 61324,
 			"main_affix_id": 1,
 			"relic_set_id": 132
+		},
+		{
+			"equip_avatar": 1510,
+			"internal_uid": 1528,
+			"level": 15,
+			"sub_affixes": [
+				{
+					"sub_affix_id": 12,
+					"count": 2,
+					"step": 1
+				},
+				{
+					"sub_affix_id": 9,
+					"count": 1,
+					"step": 0
+				},
+				{
+					"sub_affix_id": 6,
+					"count": 3,
+					"step": 2
+				},
+				{
+					"count": 2,
+					"step": 2,
+					"sub_affix_id": 8
+				}
+			],
+			"relic_id": 61311,
+			"main_affix_id": 1,
+			"relic_set_id": 131
+		},
+		{
+			"equip_avatar": 1510,
+			"internal_uid": 1529,
+			"level": 15,
+			"sub_affixes": [
+				{
+					"count": 3,
+					"step": 1,
+					"sub_affix_id": 8
+				},
+				{
+					"sub_affix_id": 11,
+					"count": 2,
+					"step": 4
+				},
+				{
+					"sub_affix_id": 9,
+					"count": 1,
+					"step": 1
+				},
+				{
+					"sub_affix_id": 12,
+					"count": 2,
+					"step": 1
+				}
+			],
+			"relic_id": 61312,
+			"main_affix_id": 1,
+			"relic_set_id": 131
+		},
+		{
+			"equip_avatar": 1510,
+			"internal_uid": 1530,
+			"level": 15,
+			"sub_affixes": [
+				{
+					"sub_affix_id": 4,
+					"count": 4,
+					"step": 5
+				},
+				{
+					"sub_affix_id": 6,
+					"count": 2,
+					"step": 1
+				},
+				{
+					"sub_affix_id": 2,
+					"count": 2,
+					"step": 3
+				},
+				{
+					"sub_affix_id": 1,
+					"count": 1,
+					"step": 0
+				}
+			],
+			"relic_id": 61313,
+			"main_affix_id": 4,
+			"relic_set_id": 131
+		},
+		{
+			"equip_avatar": 1510,
+			"internal_uid": 1531,
+			"level": 15,
+			"sub_affixes": [
+				{
+					"count": 3,
+					"step": 3,
+					"sub_affix_id": 11
+				},
+				{
+					"count": 3,
+					"step": 1,
+					"sub_affix_id": 10
+				},
+				{
+					"count": 1,
+					"step": 0,
+					"sub_affix_id": 9
+				},
+				{
+					"count": 2,
+					"step": 0,
+					"sub_affix_id": 2
+				}
+			],
+			"relic_id": 61314,
+			"main_affix_id": 2,
+			"relic_set_id": 131
+		},
+		{
+			"equip_avatar": 1510,
+			"internal_uid": 1532,
+			"level": 15,
+			"sub_affixes": [
+				{
+					"sub_affix_id": 6,
+					"count": 3,
+					"step": 4
+				},
+				{
+					"sub_affix_id": 9,
+					"count": 2,
+					"step": 2
+				},
+				{
+					"count": 2,
+					"step": 4,
+					"sub_affix_id": 8
+				},
+				{
+					"sub_affix_id": 4,
+					"count": 2,
+					"step": 3
+				}
+			],
+			"relic_id": 63276,
+			"main_affix_id": 4,
+			"relic_set_id": 327
+		},
+		{
+			"equip_avatar": 1510,
+			"internal_uid": 1533,
+			"level": 15,
+			"sub_affixes": [
+				{
+					"sub_affix_id": 8,
+					"count": 2,
+					"step": 0
+				},
+				{
+					"sub_affix_id": 4,
+					"count": 1,
+					"step": 0
+				},
+				{
+					"sub_affix_id": 11,
+					"count": 1,
+					"step": 0
+				},
+				{
+					"sub_affix_id": 12,
+					"count": 4,
+					"step": 5
+				}
+			],
+			"relic_id": 63275,
+			"main_affix_id": 9,
+			"relic_set_id": 327
+		},
+		{
+			"equip_avatar": 1509,
+			"internal_uid": 1534,
+			"level": 15,
+			"sub_affixes": [
+				{
+					"sub_affix_id": 12,
+					"count": 3,
+					"step": 4
+				},
+				{
+					"sub_affix_id": 7,
+					"count": 3,
+					"step": 3
+				},
+				{
+					"sub_affix_id": 4,
+					"count": 1,
+					"step": 1
+				},
+				{
+					"sub_affix_id": 1,
+					"count": 2,
+					"step": 3
+				}
+			],
+			"relic_id": 63285,
+			"main_affix_id": 2,
+			"relic_set_id": 328
+		},
+		{
+			"equip_avatar": 1509,
+			"internal_uid": 1535,
+			"level": 15,
+			"sub_affixes": [
+				{
+					"sub_affix_id": 7,
+					"count": 1,
+					"step": 1
+				},
+				{
+					"sub_affix_id": 12,
+					"count": 3,
+					"step": 1
+				},
+				{
+					"sub_affix_id": 10,
+					"count": 3,
+					"step": 3
+				},
+				{
+					"sub_affix_id": 11,
+					"count": 1,
+					"step": 1
+				}
+			],
+			"relic_id": 63286,
+			"main_affix_id": 2,
+			"relic_set_id": 328
+		},
+		{
+			"equip_avatar": 1508,
+			"internal_uid": 1536,
+			"level": 15,
+			"sub_affixes": [
+				{
+					"sub_affix_id": 12,
+					"count": 3,
+					"step": 4
+				},
+				{
+					"sub_affix_id": 7,
+					"count": 3,
+					"step": 3
+				},
+				{
+					"sub_affix_id": 4,
+					"count": 1,
+					"step": 1
+				},
+				{
+					"sub_affix_id": 1,
+					"count": 2,
+					"step": 3
+				}
+			],
+			"relic_id": 63285,
+			"main_affix_id": 2,
+			"relic_set_id": 328
+		},
+		{
+			"equip_avatar": 1508,
+			"internal_uid": 1537,
+			"level": 15,
+			"sub_affixes": [
+				{
+					"sub_affix_id": 7,
+					"count": 1,
+					"step": 1
+				},
+				{
+					"sub_affix_id": 12,
+					"count": 3,
+					"step": 1
+				},
+				{
+					"sub_affix_id": 10,
+					"count": 3,
+					"step": 3
+				},
+				{
+					"sub_affix_id": 11,
+					"count": 1,
+					"step": 1
+				}
+			],
+			"relic_id": 63286,
+			"main_affix_id": 2,
+			"relic_set_id": 328
 		}
 	],
 	"lightcones": [
@@ -44696,6 +45155,30 @@
 			"equip_avatar": 1507,
 			"internal_uid": 140,
 			"item_id": 23059,
+			"level": 80,
+			"promotion": 6,
+			"rank": 5
+		},
+		{
+			"equip_avatar": 1510,
+			"internal_uid": 141,
+			"item_id": 23060,
+			"level": 80,
+			"promotion": 6,
+			"rank": 5
+		},
+		{
+			"equip_avatar": 1509,
+			"internal_uid": 142,
+			"item_id": 23062,
+			"level": 80,
+			"promotion": 6,
+			"rank": 5
+		},
+		{
+			"equip_avatar": 1508,
+			"internal_uid": 143,
+			"item_id": 23061,
 			"level": 80,
 			"promotion": 6,
 			"rank": 5
