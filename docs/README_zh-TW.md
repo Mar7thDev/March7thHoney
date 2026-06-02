@@ -2,7 +2,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet&logoColor=white" alt=".NET 10" />
-  <img src="https://img.shields.io/badge/平台-Windows%20%7C%20Linux-2ea44f" alt="Platform" />
+  <img src="https://img.shields.io/badge/平台-Windows%20%7C%20Linux%20%7C%20macOS-2ea44f" alt="Platform" />
   <img src="https://img.shields.io/badge/狀態-持續開發-f39c12" alt="Status" />
   <img src="https://img.shields.io/badge/授權-GPLv3-blue" alt="License" />
 </p>
@@ -71,7 +71,7 @@ March7thHoney 是一個基於 .NET 10 的伺服器專案。
 
 - .NET SDK 10
 - Git
-- Windows 或 Linux（`x64` / `arm64`）
+- Windows、Linux 或 macOS（`x64` / `arm64`）
 
 ## 快速啟動
 

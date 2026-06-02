@@ -2,7 +2,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet&logoColor=white" alt=".NET 10" />
-  <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Linux-2ea44f" alt="Platform" />
+  <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-2ea44f" alt="Platform" />
   <img src="https://img.shields.io/badge/Status-Active%20Development-f39c12" alt="Status" />
   <img src="https://img.shields.io/badge/License-GPLv3-blue" alt="License" />
 </p>
@@ -74,7 +74,7 @@ Detailed implementation progress: [Gameplay Implementation Tree](docs/GameplayIm
 
 - .NET SDK 10
 - Git
-- Windows or Linux (`x64` / `arm64`)
+- Windows, Linux, or macOS (`x64` / `arm64`)
 
 ## Quick Start
 
