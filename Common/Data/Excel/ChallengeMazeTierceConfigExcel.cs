@@ -2,25 +2,28 @@ using Newtonsoft.Json;
 
 namespace March7thHoney.Data.Excel;
 
-[ResourceEntity("ChallengeMazeTierceConfig.json")]
+// dim 4.3 PROD ships tierce as three obfuscated-key files (one per endgame mode),
+// it has no plain ChallengeMazeTierceConfig.json. Keys below are remapped to dim's
+// obfuscated names, value-aligned against the prior rr-sourced plain file.
+[ResourceEntity("ChallengeMazeTierce.json,ChallengeStoryMazeTierce.json,ChallengeBossMazeTierce.json", true)]
 public class ChallengeMazeTierceConfigExcel : ExcelResource
 {
-    public int ID { get; set; }
-    public int PreChallengeMazeID { get; set; }
-    public int MapEntranceID { get; set; }
-    public int MazeGroupID { get; set; }
+    [JsonProperty("PHFMCACHFIJ")] public int ID { get; set; }
+    [JsonProperty("DLCKKJFMJOB")] public int PreChallengeMazeID { get; set; }
+    [JsonProperty("EMNJGCPDIFF")] public int MapEntranceID { get; set; }
+    [JsonProperty("PHOIICMCGIH")] public int MazeGroupID { get; set; }
 
-    public List<int> ConfigList { get; set; } = [];
-    public List<int> NpcMonsterIDList { get; set; } = [];
-    public List<int> EventIDList { get; set; } = [];
-    public List<string> DamageType { get; set; } = [];
+    [JsonProperty("MLMEGBLDFKE")] public List<int> ConfigList { get; set; } = [];
+    [JsonProperty("JEBMBCLBIOI")] public List<int> NpcMonsterIDList { get; set; } = [];
+    [JsonProperty("HFIAAGAKFMD")] public List<int> EventIDList { get; set; } = [];
+    [JsonProperty("LOJCIDLKPKG")] public List<string> DamageType { get; set; } = [];
 
     [JsonProperty("GNOOAGPBNLD")]
     public int ChallengeCountDown { get; set; }
 
-    public List<int> ChallengeTargetID { get; set; } = [];
-    public int ChallengeTierceTargetID { get; set; }
-    public int RewardID { get; set; }
+    [JsonProperty("OGEOMCGNNMP")] public List<int> ChallengeTargetID { get; set; } = [];
+    [JsonProperty("GNGENMHNLAH")] public int ChallengeTierceTargetID { get; set; }
+    [JsonProperty("IMCMJHAMMKK")] public int RewardID { get; set; }
 
     [JsonIgnore]
     public Dictionary<int, List<ChallengeConfigExcel.ChallengeMonsterInfo>> ChallengeMonsters { get; } = new();
