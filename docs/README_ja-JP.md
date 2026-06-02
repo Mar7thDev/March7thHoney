@@ -2,7 +2,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet&logoColor=white" alt=".NET 10" />
-  <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Linux-2ea44f" alt="Platform" />
+  <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-2ea44f" alt="Platform" />
   <img src="https://img.shields.io/badge/Status-Active%20Development-f39c12" alt="Status" />
   <img src="https://img.shields.io/badge/License-GPLv3-blue" alt="License" />
 </p>
@@ -71,7 +71,7 @@ March7thHoneyは、.NET 10をベースとしたサーバープロジェクトで
 
 - .NET SDK 10
 - Git
-- Windows または Linux（`x64` / `arm64`）
+- Windows、Linux または macOS（`x64` / `arm64`）
 
 ## クイックスタート
 
