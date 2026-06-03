@@ -238,6 +238,16 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
         if (targetEntities.Count == 0)
             return new AbilityLevelResult();
 
+        // A projectile/field technique that runs out its lifetime (chains / persistent
+        // field, e.g. Gilgamesh) reports SCENE_CAST_SKILL_PROJECTILE_LIFETIME_FINISH and must
+        // NOT start an open-world battle: the client predicts a summon, not combat, and
+        // rejects an unexpected battle with "技能使用失败". An attack that actually connected
+        // (normal atk, or an attack technique like Himeko) reports only ..._HIT and still
+        // engages. Splitting on this client tag keeps attack vs summon techniques correct
+        // without an ability JSON and without hard-coding any avatar id.
+        if (req.SkillExtraTags.Contains(SkillExtraTag.SceneCastSkillProjectileLifetimeFinish))
+            return new AbilityLevelResult();
+
         var battleInfos = new List<HitMonsterInstance>();
         foreach (var entity in targetEntities)
         {
