@@ -108,6 +108,19 @@ public class CalyxOverrideManager(PlayerInstance player) : BasePlayerManager(pla
             foreach (var list in config.ChallengeMonsters2.Values)
                 foreach (var m in list) Map(m.EventId);
         }
+
+        // 4.4 PF/AS Tierce stages live in ChallengeMazeTierce* (EventIDList = direct stage ids),
+        // classified by PreChallengeMazeID -> parent ChallengeConfig (Story/Boss). The eventId->
+        // planeEvent walk above never reaches them, so map them explicitly or calyx loses the
+        // PF/AS score header for any Tierce stage (e.g. 4.4 AS 420494).
+        foreach (var tierce in GameData.ChallengeMazeTierceConfigData.Values)
+        {
+            if (!GameData.ChallengeConfigData.TryGetValue(tierce.PreChallengeMazeID, out var preConfig))
+                continue;
+            foreach (var stageId in tierce.EventIDList)
+                if (stageId > 0) idx.TryAdd(stageId, preConfig);
+        }
+
         _stageToChallenge = idx;
         return idx;
     }
