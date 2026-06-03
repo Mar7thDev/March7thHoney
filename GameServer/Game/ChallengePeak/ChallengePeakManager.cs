@@ -25,7 +25,11 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
     {
         var proto = new ChallengePeakGroup
         {
-            PeakGroupId = (uint)groupId
+            PeakGroupId = (uint)groupId,
+            // Captured cleared accounts always carry this flag; the client uses it to free the
+            // boss difficulty toggle (普通 / 绝境) from the "clear all 3 knights first" gate.
+            // Private-server convenience: keep both difficulties selectable regardless of progress.
+            DisableHardMode = true
         };
 
         var data = GameData.ChallengePeakGroupConfigData.GetValueOrDefault(groupId);
