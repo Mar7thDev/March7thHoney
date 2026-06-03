@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message RecallPetScRsp {
-    uint32 select_pet_id = 11;
-    uint32 retcode = 7;
+    uint32 retcode = 4;
     uint32 cur_pet_id = 8;
+    uint32 select_pet_id = 14;
 }

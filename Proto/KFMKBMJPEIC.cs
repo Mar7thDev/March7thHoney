@@ -24,18 +24,19 @@ namespace March7thHoney.Proto {
     static KFMKBMJPEICReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFLRk1LQk1KUEVJQy5wcm90bxoRQUNGTEtQRkRISU0ucHJvdG8aEUZIQ0VJ",
-            "T0hMQURHLnByb3RvIvMBCgtLRk1LQk1KUEVJQxITCgtJSENERElQTkpLTxgC",
-            "IAMoDRIyCgtCQU5CRUNEQ0RIRxgEIAMoCzIdLktGTUtCTUpQRUlDLkJBTkJF",
-            "Q0RDREhHRW50cnkSIQoLUE9KR0tKRU5FTkEYBSADKAsyDC5GSENFSU9ITEFE",
-            "RxIvChlncmlkX2ZpZ2h0X2VxdWlwbWVudF9saXN0GAMgAygLMgwuQUNGTEtQ",
-            "RkRISU0SEwoLRE5OQ0FHSklPQVAYASABKA0aMgoQQkFOQkVDRENESEdFbnRy",
-            "eRILCgNrZXkYASABKA0SDQoFdmFsdWUYAiABKA06AjgBQhaqAhNNYXJjaDd0",
-            "aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ChFLRk1LQk1KUEVJQy5wcm90bxoeQmF0dGxlR3JpZEZpZ2h0RXF1aXBJbmZv",
+            "LnByb3RvGhFGSENFSU9ITEFERy5wcm90byKAAgoLS0ZNS0JNSlBFSUMSEwoL",
+            "RE5OQ0FHSklPQVAYASABKA0SEwoLSUhDRERJUE5KS08YAiADKA0SPAoZZ3Jp",
+            "ZF9maWdodF9lcXVpcG1lbnRfbGlzdBgDIAMoCzIZLkJhdHRsZUdyaWRGaWdo",
+            "dEVxdWlwSW5mbxIyCgtCQU5CRUNEQ0RIRxgEIAMoCzIdLktGTUtCTUpQRUlD",
+            "LkJBTkJFQ0RDREhHRW50cnkSIQoLUE9KR0tKRU5FTkEYBSADKAsyDC5GSENF",
+            "SU9ITEFERxoyChBCQU5CRUNEQ0RIR0VudHJ5EgsKA2tleRgBIAEoDRINCgV2",
+            "YWx1ZRgCIAEoDToCOAFCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
+            "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ACFLKPFDHIMReflection.Descriptor, global::March7thHoney.Proto.FHCEIOHLADGReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.BattleGridFightEquipInfoReflection.Descriptor, global::March7thHoney.Proto.FHCEIOHLADGReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.KFMKBMJPEIC), global::March7thHoney.Proto.KFMKBMJPEIC.Parser, new[]{ "IHCDDIPNJKO", "BANBECDCDHG", "POJGKJENENA", "GridFightEquipmentList", "DNNCAGJIOAP" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.KFMKBMJPEIC), global::March7thHoney.Proto.KFMKBMJPEIC.Parser, new[]{ "DNNCAGJIOAP", "IHCDDIPNJKO", "GridFightEquipmentList", "BANBECDCDHG", "POJGKJENENA" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -77,11 +78,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public KFMKBMJPEIC(KFMKBMJPEIC other) : this() {
+      dNNCAGJIOAP_ = other.dNNCAGJIOAP_;
       iHCDDIPNJKO_ = other.iHCDDIPNJKO_.Clone();
+      gridFightEquipmentList_ = other.gridFightEquipmentList_.Clone();
       bANBECDCDHG_ = other.bANBECDCDHG_.Clone();
       pOJGKJENENA_ = other.pOJGKJENENA_.Clone();
-      gridFightEquipmentList_ = other.gridFightEquipmentList_.Clone();
-      dNNCAGJIOAP_ = other.dNNCAGJIOAP_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -89,6 +90,18 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public KFMKBMJPEIC Clone() {
       return new KFMKBMJPEIC(this);
+    }
+
+    /// <summary>Field number for the "DNNCAGJIOAP" field.</summary>
+    public const int DNNCAGJIOAPFieldNumber = 1;
+    private uint dNNCAGJIOAP_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint DNNCAGJIOAP {
+      get { return dNNCAGJIOAP_; }
+      set {
+        dNNCAGJIOAP_ = value;
+      }
     }
 
     /// <summary>Field number for the "IHCDDIPNJKO" field.</summary>
@@ -100,6 +113,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<uint> IHCDDIPNJKO {
       get { return iHCDDIPNJKO_; }
+    }
+
+    /// <summary>Field number for the "grid_fight_equipment_list" field.</summary>
+    public const int GridFightEquipmentListFieldNumber = 3;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BattleGridFightEquipInfo> _repeated_gridFightEquipmentList_codec
+        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.BattleGridFightEquipInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BattleGridFightEquipInfo> gridFightEquipmentList_ = new pbc::RepeatedField<global::March7thHoney.Proto.BattleGridFightEquipInfo>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.BattleGridFightEquipInfo> GridFightEquipmentList {
+      get { return gridFightEquipmentList_; }
     }
 
     /// <summary>Field number for the "BANBECDCDHG" field.</summary>
@@ -124,29 +148,6 @@ namespace March7thHoney.Proto {
       get { return pOJGKJENENA_; }
     }
 
-    /// <summary>Field number for the "grid_fight_equipment_list" field.</summary>
-    public const int GridFightEquipmentListFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ACFLKPFDHIM> _repeated_gridFightEquipmentList_codec
-        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.ACFLKPFDHIM.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ACFLKPFDHIM> gridFightEquipmentList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ACFLKPFDHIM>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.ACFLKPFDHIM> GridFightEquipmentList {
-      get { return gridFightEquipmentList_; }
-    }
-
-    /// <summary>Field number for the "DNNCAGJIOAP" field.</summary>
-    public const int DNNCAGJIOAPFieldNumber = 1;
-    private uint dNNCAGJIOAP_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint DNNCAGJIOAP {
-      get { return dNNCAGJIOAP_; }
-      set {
-        dNNCAGJIOAP_ = value;
-      }
-    }
-
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -162,11 +163,11 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (DNNCAGJIOAP != other.DNNCAGJIOAP) return false;
       if(!iHCDDIPNJKO_.Equals(other.iHCDDIPNJKO_)) return false;
+      if(!gridFightEquipmentList_.Equals(other.gridFightEquipmentList_)) return false;
       if (!BANBECDCDHG.Equals(other.BANBECDCDHG)) return false;
       if(!pOJGKJENENA_.Equals(other.pOJGKJENENA_)) return false;
-      if(!gridFightEquipmentList_.Equals(other.gridFightEquipmentList_)) return false;
-      if (DNNCAGJIOAP != other.DNNCAGJIOAP) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -174,11 +175,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (DNNCAGJIOAP != 0) hash ^= DNNCAGJIOAP.GetHashCode();
       hash ^= iHCDDIPNJKO_.GetHashCode();
+      hash ^= gridFightEquipmentList_.GetHashCode();
       hash ^= BANBECDCDHG.GetHashCode();
       hash ^= pOJGKJENENA_.GetHashCode();
-      hash ^= gridFightEquipmentList_.GetHashCode();
-      if (DNNCAGJIOAP != 0) hash ^= DNNCAGJIOAP.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -233,13 +234,13 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += iHCDDIPNJKO_.CalculateSize(_repeated_iHCDDIPNJKO_codec);
-      size += bANBECDCDHG_.CalculateSize(_map_bANBECDCDHG_codec);
-      size += pOJGKJENENA_.CalculateSize(_repeated_pOJGKJENENA_codec);
-      size += gridFightEquipmentList_.CalculateSize(_repeated_gridFightEquipmentList_codec);
       if (DNNCAGJIOAP != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DNNCAGJIOAP);
       }
+      size += iHCDDIPNJKO_.CalculateSize(_repeated_iHCDDIPNJKO_codec);
+      size += gridFightEquipmentList_.CalculateSize(_repeated_gridFightEquipmentList_codec);
+      size += bANBECDCDHG_.CalculateSize(_map_bANBECDCDHG_codec);
+      size += pOJGKJENENA_.CalculateSize(_repeated_pOJGKJENENA_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -252,13 +253,13 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      iHCDDIPNJKO_.Add(other.iHCDDIPNJKO_);
-      bANBECDCDHG_.MergeFrom(other.bANBECDCDHG_);
-      pOJGKJENENA_.Add(other.pOJGKJENENA_);
-      gridFightEquipmentList_.Add(other.gridFightEquipmentList_);
       if (other.DNNCAGJIOAP != 0) {
         DNNCAGJIOAP = other.DNNCAGJIOAP;
       }
+      iHCDDIPNJKO_.Add(other.iHCDDIPNJKO_);
+      gridFightEquipmentList_.Add(other.gridFightEquipmentList_);
+      bANBECDCDHG_.MergeFrom(other.bANBECDCDHG_);
+      pOJGKJENENA_.Add(other.pOJGKJENENA_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 

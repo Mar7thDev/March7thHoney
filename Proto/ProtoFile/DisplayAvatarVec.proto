@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "DisplayAvatarData.proto";
 
 message DisplayAvatarVec {
-    repeated DisplayAvatarData display_avatar_list = 3;
-    bool is_display = 14;
+    bool is_display = 8;
+    repeated DisplayAvatarData display_avatar_list = 12;
 }

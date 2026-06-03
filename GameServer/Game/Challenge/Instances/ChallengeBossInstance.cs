@@ -126,7 +126,7 @@ public class ChallengeBossInstance(PlayerInstance player, ChallengeDataPb data)
         {
             var avatar = Player.AvatarManager?.GetFormalAvatar(lineupAvatar.BaseAvatarId);
             if (avatar == null) continue;
-            proto.BossInfo.FirstLineup.Add((uint)avatar.AvatarId);
+            proto.BossInfo.AvatarLineupFirst.Add(new AvatarIdentifier { Id = (uint)avatar.AvatarId });
             var equip = Player.InventoryManager?.GetItem(0, avatar.GetCurPathInfo().EquipId,
                 ItemMainTypeEnum.Equipment);
             if (equip != null)
@@ -150,7 +150,7 @@ public class ChallengeBossInstance(PlayerInstance player, ChallengeDataPb data)
         {
             var avatar = Player.AvatarManager?.GetFormalAvatar(lineupAvatar.BaseAvatarId);
             if (avatar == null) continue;
-            proto.BossInfo.SecondLineup.Add((uint)avatar.AvatarId);
+            proto.BossInfo.AvatarLineupSecond.Add(new AvatarIdentifier { Id = (uint)avatar.AvatarId });
             var equip = Player.InventoryManager?.GetItem(0, avatar.GetCurPathInfo().EquipId,
                 ItemMainTypeEnum.Equipment);
             if (equip != null)

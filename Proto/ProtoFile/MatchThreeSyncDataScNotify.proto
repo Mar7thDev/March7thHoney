@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ALNGMGOJDOA.proto";
 
 message MatchThreeSyncDataScNotify {
-    ALNGMGOJDOA GJFKKFFJDAH = 12;
+    ALNGMGOJDOA GJFKKFFJDAH = 6;
 }

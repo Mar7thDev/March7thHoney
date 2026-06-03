@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static IAABDBBJHOLReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFJQUFCREJCSkhPTC5wcm90byJMCgtJQUFCREJCSkhPTBITCgtMSk5HUENL",
-            "UEpMRhgHIAEoDRITCgtpc19vdmVybG9jaxgCIAEoCBITCgtkaXZpc2lvbl9p",
-            "ZBgKIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChFJQUFCREJCSkhPTC5wcm90byJMCgtJQUFCREJCSkhPTBITCgtpc19vdmVy",
+            "bG9jaxgBIAEoCBITCgtMSk5HUENLUEpMRhgHIAEoDRITCgtkaXZpc2lvbl9p",
+            "ZBgOIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.IAABDBBJHOL), global::March7thHoney.Proto.IAABDBBJHOL.Parser, new[]{ "LJNGPCKPJLF", "IsOverlock", "DivisionId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.IAABDBBJHOL), global::March7thHoney.Proto.IAABDBBJHOL.Parser, new[]{ "IsOverlock", "LJNGPCKPJLF", "DivisionId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public IAABDBBJHOL(IAABDBBJHOL other) : this() {
-      lJNGPCKPJLF_ = other.lJNGPCKPJLF_;
       isOverlock_ = other.isOverlock_;
+      lJNGPCKPJLF_ = other.lJNGPCKPJLF_;
       divisionId_ = other.divisionId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -82,6 +82,18 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public IAABDBBJHOL Clone() {
       return new IAABDBBJHOL(this);
+    }
+
+    /// <summary>Field number for the "is_overlock" field.</summary>
+    public const int IsOverlockFieldNumber = 1;
+    private bool isOverlock_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IsOverlock {
+      get { return isOverlock_; }
+      set {
+        isOverlock_ = value;
+      }
     }
 
     /// <summary>Field number for the "LJNGPCKPJLF" field.</summary>
@@ -96,20 +108,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "is_overlock" field.</summary>
-    public const int IsOverlockFieldNumber = 2;
-    private bool isOverlock_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IsOverlock {
-      get { return isOverlock_; }
-      set {
-        isOverlock_ = value;
-      }
-    }
-
     /// <summary>Field number for the "division_id" field.</summary>
-    public const int DivisionIdFieldNumber = 10;
+    public const int DivisionIdFieldNumber = 14;
     private uint divisionId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -135,8 +135,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (LJNGPCKPJLF != other.LJNGPCKPJLF) return false;
       if (IsOverlock != other.IsOverlock) return false;
+      if (LJNGPCKPJLF != other.LJNGPCKPJLF) return false;
       if (DivisionId != other.DivisionId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -145,8 +145,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (LJNGPCKPJLF != 0) hash ^= LJNGPCKPJLF.GetHashCode();
       if (IsOverlock != false) hash ^= IsOverlock.GetHashCode();
+      if (LJNGPCKPJLF != 0) hash ^= LJNGPCKPJLF.GetHashCode();
       if (DivisionId != 0) hash ^= DivisionId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -167,7 +167,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (IsOverlock != false) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteBool(IsOverlock);
       }
       if (LJNGPCKPJLF != 0) {
@@ -175,7 +175,7 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(LJNGPCKPJLF);
       }
       if (DivisionId != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(112);
         output.WriteUInt32(DivisionId);
       }
       if (_unknownFields != null) {
@@ -189,7 +189,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (IsOverlock != false) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteBool(IsOverlock);
       }
       if (LJNGPCKPJLF != 0) {
@@ -197,7 +197,7 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(LJNGPCKPJLF);
       }
       if (DivisionId != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(112);
         output.WriteUInt32(DivisionId);
       }
       if (_unknownFields != null) {
@@ -210,11 +210,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (LJNGPCKPJLF != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LJNGPCKPJLF);
-      }
       if (IsOverlock != false) {
         size += 1 + 1;
+      }
+      if (LJNGPCKPJLF != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LJNGPCKPJLF);
       }
       if (DivisionId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DivisionId);
@@ -231,11 +231,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.LJNGPCKPJLF != 0) {
-        LJNGPCKPJLF = other.LJNGPCKPJLF;
-      }
       if (other.IsOverlock != false) {
         IsOverlock = other.IsOverlock;
+      }
+      if (other.LJNGPCKPJLF != 0) {
+        LJNGPCKPJLF = other.LJNGPCKPJLF;
       }
       if (other.DivisionId != 0) {
         DivisionId = other.DivisionId;
@@ -259,7 +259,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
+          case 8: {
             IsOverlock = input.ReadBool();
             break;
           }
@@ -267,7 +267,7 @@ namespace March7thHoney.Proto {
             LJNGPCKPJLF = input.ReadUInt32();
             break;
           }
-          case 80: {
+          case 112: {
             DivisionId = input.ReadUInt32();
             break;
           }
@@ -290,7 +290,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
+          case 8: {
             IsOverlock = input.ReadBool();
             break;
           }
@@ -298,7 +298,7 @@ namespace March7thHoney.Proto {
             LJNGPCKPJLF = input.ReadUInt32();
             break;
           }
-          case 80: {
+          case 112: {
             DivisionId = input.ReadUInt32();
             break;
           }

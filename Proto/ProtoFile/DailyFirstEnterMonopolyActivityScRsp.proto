@@ -5,9 +5,9 @@ option csharp_namespace = "March7thHoney.Proto";
 import "NJHAGKGHKJJ.proto";
 
 message DailyFirstEnterMonopolyActivityScRsp {
-    NJHAGKGHKJJ OLAONLGLAJO = 11;
-    uint32 ICPAPCAJFKK = 7;
-    uint32 retcode = 1;
-    bool GLEJFCIOMKC = 6;
-    int64 DJMLHBFEMBE = 3;
+    uint32 ICPAPCAJFKK = 2;
+    bool GLEJFCIOMKC = 4;
+    int64 DJMLHBFEMBE = 7;
+    uint32 retcode = 13;
+    NJHAGKGHKJJ OLAONLGLAJO = 15;
 }

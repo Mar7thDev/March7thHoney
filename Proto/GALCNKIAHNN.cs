@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static GALCNKIAHNNReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFHQUxDTktJQUhOTi5wcm90byI3CgtHQUxDTktJQUhOThITCgtOTEdOTkRJ",
-            "RkdHRhgKIAEoDRITCgtERENMQ05QT05PSBgLIAEoDUIWqgITTWFyY2g3dGhI",
-            "b25leS5Qcm90b2IGcHJvdG8z"));
+            "ChFHQUxDTktJQUhOTi5wcm90byI0CgtHQUxDTktJQUhOThITCgtOTEdOTkRJ",
+            "RkdHRhgBIAEoDRIQCghhZGRfY29pbhgDIAEoDUIWqgITTWFyY2g3dGhIb25l",
+            "eS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GALCNKIAHNN), global::March7thHoney.Proto.GALCNKIAHNN.Parser, new[]{ "NLGNNDIFGGF", "DDCLCNPONOH" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GALCNKIAHNN), global::March7thHoney.Proto.GALCNKIAHNN.Parser, new[]{ "NLGNNDIFGGF", "AddCoin" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,7 +73,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GALCNKIAHNN(GALCNKIAHNN other) : this() {
       nLGNNDIFGGF_ = other.nLGNNDIFGGF_;
-      dDCLCNPONOH_ = other.dDCLCNPONOH_;
+      addCoin_ = other.addCoin_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "NLGNNDIFGGF" field.</summary>
-    public const int NLGNNDIFGGFFieldNumber = 10;
+    public const int NLGNNDIFGGFFieldNumber = 1;
     private uint nLGNNDIFGGF_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -95,15 +95,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "DDCLCNPONOH" field.</summary>
-    public const int DDCLCNPONOHFieldNumber = 11;
-    private uint dDCLCNPONOH_;
+    /// <summary>Field number for the "add_coin" field.</summary>
+    public const int AddCoinFieldNumber = 3;
+    private uint addCoin_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint DDCLCNPONOH {
-      get { return dDCLCNPONOH_; }
+    public uint AddCoin {
+      get { return addCoin_; }
       set {
-        dDCLCNPONOH_ = value;
+        addCoin_ = value;
       }
     }
 
@@ -123,7 +123,7 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (NLGNNDIFGGF != other.NLGNNDIFGGF) return false;
-      if (DDCLCNPONOH != other.DDCLCNPONOH) return false;
+      if (AddCoin != other.AddCoin) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,7 +132,7 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (NLGNNDIFGGF != 0) hash ^= NLGNNDIFGGF.GetHashCode();
-      if (DDCLCNPONOH != 0) hash ^= DDCLCNPONOH.GetHashCode();
+      if (AddCoin != 0) hash ^= AddCoin.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,12 +152,12 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (NLGNNDIFGGF != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(8);
         output.WriteUInt32(NLGNNDIFGGF);
       }
-      if (DDCLCNPONOH != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(DDCLCNPONOH);
+      if (AddCoin != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(AddCoin);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,12 +170,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (NLGNNDIFGGF != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(8);
         output.WriteUInt32(NLGNNDIFGGF);
       }
-      if (DDCLCNPONOH != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(DDCLCNPONOH);
+      if (AddCoin != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(AddCoin);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -190,8 +190,8 @@ namespace March7thHoney.Proto {
       if (NLGNNDIFGGF != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(NLGNNDIFGGF);
       }
-      if (DDCLCNPONOH != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DDCLCNPONOH);
+      if (AddCoin != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AddCoin);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -208,8 +208,8 @@ namespace March7thHoney.Proto {
       if (other.NLGNNDIFGGF != 0) {
         NLGNNDIFGGF = other.NLGNNDIFGGF;
       }
-      if (other.DDCLCNPONOH != 0) {
-        DDCLCNPONOH = other.DDCLCNPONOH;
+      if (other.AddCoin != 0) {
+        AddCoin = other.AddCoin;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 80: {
+          case 8: {
             NLGNNDIFGGF = input.ReadUInt32();
             break;
           }
-          case 88: {
-            DDCLCNPONOH = input.ReadUInt32();
+          case 24: {
+            AddCoin = input.ReadUInt32();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 80: {
+          case 8: {
             NLGNNDIFGGF = input.ReadUInt32();
             break;
           }
-          case 88: {
-            DDCLCNPONOH = input.ReadUInt32();
+          case 24: {
+            AddCoin = input.ReadUInt32();
             break;
           }
         }

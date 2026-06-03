@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChVFeHBVcFJlbGljQ3NSZXEucHJvdG8aEkl0ZW1Db3N0RGF0YS5wcm90byJM",
-            "Cg9FeHBVcFJlbGljQ3NSZXESIAoJY29zdF9kYXRhGAMgASgLMg0uSXRlbUNv",
-            "c3REYXRhEhcKD3JlbGljX3VuaXF1ZV9pZBgIIAEoDUIWqgITTWFyY2g3dGhI",
+            "Cg9FeHBVcFJlbGljQ3NSZXESIAoJY29zdF9kYXRhGAUgASgLMg0uSXRlbUNv",
+            "c3REYXRhEhcKD3JlbGljX3VuaXF1ZV9pZBgNIAEoDUIWqgITTWFyY2g3dGhI",
             "b25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemCostDataReflection.Descriptor, },
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "cost_data" field.</summary>
-    public const int CostDataFieldNumber = 3;
+    public const int CostDataFieldNumber = 5;
     private global::March7thHoney.Proto.ItemCostData costData_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "relic_unique_id" field.</summary>
-    public const int RelicUniqueIdFieldNumber = 8;
+    public const int RelicUniqueIdFieldNumber = 13;
     private uint relicUniqueId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -153,11 +153,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (costData_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(42);
         output.WriteMessage(CostData);
       }
       if (RelicUniqueId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(104);
         output.WriteUInt32(RelicUniqueId);
       }
       if (_unknownFields != null) {
@@ -171,11 +171,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (costData_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(42);
         output.WriteMessage(CostData);
       }
       if (RelicUniqueId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(104);
         output.WriteUInt32(RelicUniqueId);
       }
       if (_unknownFields != null) {
@@ -234,14 +234,14 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 26: {
+          case 42: {
             if (costData_ == null) {
               CostData = new global::March7thHoney.Proto.ItemCostData();
             }
             input.ReadMessage(CostData);
             break;
           }
-          case 64: {
+          case 104: {
             RelicUniqueId = input.ReadUInt32();
             break;
           }
@@ -264,14 +264,14 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 26: {
+          case 42: {
             if (costData_ == null) {
               CostData = new global::March7thHoney.Proto.ItemCostData();
             }
             input.ReadMessage(CostData);
             break;
           }
-          case 64: {
+          case 104: {
             RelicUniqueId = input.ReadUInt32();
             break;
           }

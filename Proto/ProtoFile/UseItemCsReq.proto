@@ -5,10 +5,10 @@ option csharp_namespace = "March7thHoney.Proto";
 import "AvatarType.proto";
 
 message UseItemCsReq {
+    uint32 use_item_id = 1;
+    uint32 use_item_count = 2;
+    AvatarType KANPPCMBJHG = 4;
     bool DGEKFCHEAPO = 5;
-    uint32 use_item_id = 6;
-    uint32 base_avatar_id = 8;
-    AvatarType KANPPCMBJHG = 7;
-    uint32 optional_reward_id = 10;
-    uint32 use_item_count = 15;
+    uint32 optional_reward_id = 9;
+    uint32 base_avatar_id = 12;
 }

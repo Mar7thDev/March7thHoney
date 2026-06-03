@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-import "GBKOBPDKFOA.proto";
-
-message PLGJMCKPHML {
-    repeated GBKOBPDKFOA item_list = 15;
-}

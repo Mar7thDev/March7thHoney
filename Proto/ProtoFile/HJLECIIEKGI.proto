@@ -4,15 +4,13 @@ option csharp_namespace = "March7thHoney.Proto";
 
 import "AMEJEFBKPCH.proto";
 import "JEBGFIJPAPG.proto";
-import "LKIOMEBIICO.proto";
 import "OGAFHKMJELA.proto";
 
 message HJLECIIEKGI {
-    uint32 queue_position = 5;
+    uint32 queue_position = 13;
     oneof FGLIODAJFML {
-        AMEJEFBKPCH KLONPDNKBJF = 1477;
-        LKIOMEBIICO OPLCAIDOCJI = 1935;
-        OGAFHKMJELA AKDJGIJMHPJ = 1554;
-        JEBGFIJPAPG LGBJDFHBIND = 1811;
+        AMEJEFBKPCH KLONPDNKBJF = 628;
+        OGAFHKMJELA AKDJGIJMHPJ = 668;
+        JEBGFIJPAPG LGBJDFHBIND = 1733;
     }
 }

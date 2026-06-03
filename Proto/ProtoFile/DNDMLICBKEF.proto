@@ -5,9 +5,9 @@ option csharp_namespace = "March7thHoney.Proto";
 import "PAIJCBOKIFO.proto";
 
 message DNDMLICBKEF {
-    repeated PAIJCBOKIFO LLNICHDDIAN = 5;
-    uint32 map_id = 10;
-    uint32 area_id = 6;
-    uint32 HPKMGKPPELC = 2;
-    uint32 ANHDBMOPGDC = 3;
+    uint32 ANHDBMOPGDC = 7;
+    uint32 HPKMGKPPELC = 11;
+    repeated PAIJCBOKIFO LLNICHDDIAN = 12;
+    uint32 area_id = 13;
+    uint32 map_id = 15;
 }

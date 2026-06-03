@@ -5,10 +5,10 @@ option csharp_namespace = "March7thHoney.Proto";
 import "HPPOINFLEPJ.proto";
 
 message RelicPresetUpdatePlanScRsp {
-    uint32 unique_id = 3;
-    uint32 retcode = 1;
+    uint32 retcode = 3;
+    uint32 unique_id = 6;
     oneof KKNBOACNCON {
-        HPPOINFLEPJ relic_list = 14;
-        string name = 4;
+        HPPOINFLEPJ relic_list = 15;
+        string name = 9;
     }
 }

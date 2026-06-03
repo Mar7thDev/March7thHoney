@@ -24,12 +24,12 @@ namespace March7thHoney.Proto {
     static PLHPJCKDEDIReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFQTEhQSkNLREVESS5wcm90byIiCgtQTEhQSkNLREVESRITCgtwbGF5ZXJf",
-            "ZGF0YRgNIAEoBUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChFQTEhQSkNLREVESS5wcm90byINCgtQTEhQSkNLREVESUIWqgITTWFyY2g3",
+            "dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PLHPJCKDEDI), global::March7thHoney.Proto.PLHPJCKDEDI.Parser, new[]{ "PlayerData" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PLHPJCKDEDI), global::March7thHoney.Proto.PLHPJCKDEDI.Parser, null, null, null, null, null)
           }));
     }
     #endregion
@@ -71,7 +71,6 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PLHPJCKDEDI(PLHPJCKDEDI other) : this() {
-      playerData_ = other.playerData_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -79,18 +78,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PLHPJCKDEDI Clone() {
       return new PLHPJCKDEDI(this);
-    }
-
-    /// <summary>Field number for the "player_data" field.</summary>
-    public const int PlayerDataFieldNumber = 13;
-    private int playerData_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int PlayerData {
-      get { return playerData_; }
-      set {
-        playerData_ = value;
-      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -108,7 +95,6 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (PlayerData != other.PlayerData) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -116,7 +102,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (PlayerData != 0) hash ^= PlayerData.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -135,10 +120,6 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (PlayerData != 0) {
-        output.WriteRawTag(104);
-        output.WriteInt32(PlayerData);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -149,10 +130,6 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (PlayerData != 0) {
-        output.WriteRawTag(104);
-        output.WriteInt32(PlayerData);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -163,9 +140,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (PlayerData != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PlayerData);
-      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -177,9 +151,6 @@ namespace March7thHoney.Proto {
     public void MergeFrom(PLHPJCKDEDI other) {
       if (other == null) {
         return;
-      }
-      if (other.PlayerData != 0) {
-        PlayerData = other.PlayerData;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -200,10 +171,6 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 104: {
-            PlayerData = input.ReadInt32();
-            break;
-          }
         }
       }
     #endif
@@ -223,10 +190,6 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 104: {
-            PlayerData = input.ReadInt32();
-            break;
-          }
         }
       }
     }

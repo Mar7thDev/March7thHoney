@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message CakeRaceStartPveScRsp {
-    uint32 LOPNADHJKBF = 9;
-    uint32 retcode = 6;
+    uint32 retcode = 2;
+    uint32 LOPNADHJKBF = 11;
 }

@@ -6,6 +6,6 @@ import "LGFLGGDMAGD.proto";
 import "MOOGIHHBHFG.proto";
 
 message ICABANFEIHJ {
-    repeated LGFLGGDMAGD NILEKCAGIMK = 10;
     repeated MOOGIHHBHFG LCJFDCHINHL = 5;
+    repeated LGFLGGDMAGD NILEKCAGIMK = 13;
 }

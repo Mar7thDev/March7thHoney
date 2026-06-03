@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "EIDFCGLODFB.proto";
 
 message MonopolyCellUpdateNotify {
-    EIDFCGLODFB GOPFOJLIFKN = 8;
+    EIDFCGLODFB GOPFOJLIFKN = 6;
 }

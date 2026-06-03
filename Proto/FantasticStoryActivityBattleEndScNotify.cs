@@ -26,13 +26,13 @@ namespace March7thHoney.Proto {
           string.Concat(
             "Ci1GYW50YXN0aWNTdG9yeUFjdGl2aXR5QmF0dGxlRW5kU2NOb3RpZnkucHJv",
             "dG8iZgonRmFudGFzdGljU3RvcnlBY3Rpdml0eUJhdHRsZUVuZFNjTm90aWZ5",
-            "EhMKC09GSEJQTkdERUdPGA0gASgNEhEKCWJhdHRsZV9pZBgGIAEoDRITCgtG",
-            "SEJOR0hJTkhPRxgLIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJv",
+            "EhEKCWJhdHRsZV9pZBgDIAEoDRITCgtGSEJOR0hJTkhPRxgIIAEoDRITCgtP",
+            "RkhCUE5HREVHTxgKIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJv",
             "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FantasticStoryActivityBattleEndScNotify), global::March7thHoney.Proto.FantasticStoryActivityBattleEndScNotify.Parser, new[]{ "OFHBPNGDEGO", "BattleId", "FHBNGHINHOG" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FantasticStoryActivityBattleEndScNotify), global::March7thHoney.Proto.FantasticStoryActivityBattleEndScNotify.Parser, new[]{ "BattleId", "FHBNGHINHOG", "OFHBPNGDEGO" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,9 +74,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public FantasticStoryActivityBattleEndScNotify(FantasticStoryActivityBattleEndScNotify other) : this() {
-      oFHBPNGDEGO_ = other.oFHBPNGDEGO_;
       battleId_ = other.battleId_;
       fHBNGHINHOG_ = other.fHBNGHINHOG_;
+      oFHBPNGDEGO_ = other.oFHBPNGDEGO_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,20 +86,8 @@ namespace March7thHoney.Proto {
       return new FantasticStoryActivityBattleEndScNotify(this);
     }
 
-    /// <summary>Field number for the "OFHBPNGDEGO" field.</summary>
-    public const int OFHBPNGDEGOFieldNumber = 13;
-    private uint oFHBPNGDEGO_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint OFHBPNGDEGO {
-      get { return oFHBPNGDEGO_; }
-      set {
-        oFHBPNGDEGO_ = value;
-      }
-    }
-
     /// <summary>Field number for the "battle_id" field.</summary>
-    public const int BattleIdFieldNumber = 6;
+    public const int BattleIdFieldNumber = 3;
     private uint battleId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -111,7 +99,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "FHBNGHINHOG" field.</summary>
-    public const int FHBNGHINHOGFieldNumber = 11;
+    public const int FHBNGHINHOGFieldNumber = 8;
     private uint fHBNGHINHOG_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -119,6 +107,18 @@ namespace March7thHoney.Proto {
       get { return fHBNGHINHOG_; }
       set {
         fHBNGHINHOG_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "OFHBPNGDEGO" field.</summary>
+    public const int OFHBPNGDEGOFieldNumber = 10;
+    private uint oFHBPNGDEGO_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint OFHBPNGDEGO {
+      get { return oFHBPNGDEGO_; }
+      set {
+        oFHBPNGDEGO_ = value;
       }
     }
 
@@ -137,9 +137,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (OFHBPNGDEGO != other.OFHBPNGDEGO) return false;
       if (BattleId != other.BattleId) return false;
       if (FHBNGHINHOG != other.FHBNGHINHOG) return false;
+      if (OFHBPNGDEGO != other.OFHBPNGDEGO) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -147,9 +147,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (OFHBPNGDEGO != 0) hash ^= OFHBPNGDEGO.GetHashCode();
       if (BattleId != 0) hash ^= BattleId.GetHashCode();
       if (FHBNGHINHOG != 0) hash ^= FHBNGHINHOG.GetHashCode();
+      if (OFHBPNGDEGO != 0) hash ^= OFHBPNGDEGO.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -169,15 +169,15 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (BattleId != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(24);
         output.WriteUInt32(BattleId);
       }
       if (FHBNGHINHOG != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(64);
         output.WriteUInt32(FHBNGHINHOG);
       }
       if (OFHBPNGDEGO != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(80);
         output.WriteUInt32(OFHBPNGDEGO);
       }
       if (_unknownFields != null) {
@@ -191,15 +191,15 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (BattleId != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(24);
         output.WriteUInt32(BattleId);
       }
       if (FHBNGHINHOG != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(64);
         output.WriteUInt32(FHBNGHINHOG);
       }
       if (OFHBPNGDEGO != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(80);
         output.WriteUInt32(OFHBPNGDEGO);
       }
       if (_unknownFields != null) {
@@ -212,14 +212,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (OFHBPNGDEGO != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(OFHBPNGDEGO);
-      }
       if (BattleId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BattleId);
       }
       if (FHBNGHINHOG != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FHBNGHINHOG);
+      }
+      if (OFHBPNGDEGO != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(OFHBPNGDEGO);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -233,14 +233,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.OFHBPNGDEGO != 0) {
-        OFHBPNGDEGO = other.OFHBPNGDEGO;
-      }
       if (other.BattleId != 0) {
         BattleId = other.BattleId;
       }
       if (other.FHBNGHINHOG != 0) {
         FHBNGHINHOG = other.FHBNGHINHOG;
+      }
+      if (other.OFHBPNGDEGO != 0) {
+        OFHBPNGDEGO = other.OFHBPNGDEGO;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -261,15 +261,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 48: {
+          case 24: {
             BattleId = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 64: {
             FHBNGHINHOG = input.ReadUInt32();
             break;
           }
-          case 104: {
+          case 80: {
             OFHBPNGDEGO = input.ReadUInt32();
             break;
           }
@@ -292,15 +292,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 48: {
+          case 24: {
             BattleId = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 64: {
             FHBNGHINHOG = input.ReadUInt32();
             break;
           }
-          case 104: {
+          case 80: {
             OFHBPNGDEGO = input.ReadUInt32();
             break;
           }

@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ChimeraDuelChangeLineupScRsp {
-    repeated uint32 AJFJLCKPNAM = 11;
-    uint32 retcode = 14;
+    uint32 retcode = 2;
+    repeated uint32 AJFJLCKPNAM = 5;
 }

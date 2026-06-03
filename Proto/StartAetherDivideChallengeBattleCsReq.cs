@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CitTdGFydEFldGhlckRpdmlkZUNoYWxsZW5nZUJhdHRsZUNzUmVxLnByb3Rv",
             "IlIKJVN0YXJ0QWV0aGVyRGl2aWRlQ2hhbGxlbmdlQmF0dGxlQ3NSZXESEwoL",
-            "RkRLRklPTE1QSEEYCSABKA0SFAoMY2hhbGxlbmdlX2lkGAYgASgNQhaqAhNN",
+            "RkRLRklPTE1QSEEYBiABKA0SFAoMY2hhbGxlbmdlX2lkGA8gASgNQhaqAhNN",
             "YXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "FDKFIOLMPHA" field.</summary>
-    public const int FDKFIOLMPHAFieldNumber = 9;
+    public const int FDKFIOLMPHAFieldNumber = 6;
     private uint fDKFIOLMPHA_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "challenge_id" field.</summary>
-    public const int ChallengeIdFieldNumber = 6;
+    public const int ChallengeIdFieldNumber = 15;
     private uint challengeId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,13 +152,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (ChallengeId != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(ChallengeId);
-      }
       if (FDKFIOLMPHA != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(48);
         output.WriteUInt32(FDKFIOLMPHA);
+      }
+      if (ChallengeId != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(ChallengeId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,13 +170,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (ChallengeId != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(ChallengeId);
-      }
       if (FDKFIOLMPHA != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(48);
         output.WriteUInt32(FDKFIOLMPHA);
+      }
+      if (ChallengeId != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(ChallengeId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -232,11 +232,11 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 48: {
-            ChallengeId = input.ReadUInt32();
+            FDKFIOLMPHA = input.ReadUInt32();
             break;
           }
-          case 72: {
-            FDKFIOLMPHA = input.ReadUInt32();
+          case 120: {
+            ChallengeId = input.ReadUInt32();
             break;
           }
         }
@@ -259,11 +259,11 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 48: {
-            ChallengeId = input.ReadUInt32();
+            FDKFIOLMPHA = input.ReadUInt32();
             break;
           }
-          case 72: {
-            FDKFIOLMPHA = input.ReadUInt32();
+          case 120: {
+            ChallengeId = input.ReadUInt32();
             break;
           }
         }

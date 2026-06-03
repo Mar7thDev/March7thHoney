@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "BOLCGIOGIBP.proto";
 
 message LogisticsScoreRewardSyncInfoScNotify {
-    repeated BOLCGIOGIBP ALOOPKCJFEA = 11;
+    repeated BOLCGIOGIBP ALOOPKCJFEA = 5;
 }

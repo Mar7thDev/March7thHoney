@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "FAICNBKIELL.proto";
 
 message RogueTournGetSettleInfoScRsp {
-    FAICNBKIELL BFLLJJBHLDF = 15;
-    uint32 retcode = 12;
+    uint32 retcode = 5;
+    FAICNBKIELL BFLLJJBHLDF = 9;
 }

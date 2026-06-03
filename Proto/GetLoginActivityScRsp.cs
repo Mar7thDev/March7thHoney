@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChtHZXRMb2dpbkFjdGl2aXR5U2NSc3AucHJvdG8aF0xvZ2luQWN0aXZpdHlE",
             "YXRhLnByb3RvIlkKFUdldExvZ2luQWN0aXZpdHlTY1JzcBIvChNsb2dpbl9h",
-            "Y3Rpdml0eV9saXN0GAUgAygLMhIuTG9naW5BY3Rpdml0eURhdGESDwoHcmV0",
-            "Y29kZRgGIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "Y3Rpdml0eV9saXN0GAsgAygLMhIuTG9naW5BY3Rpdml0eURhdGESDwoHcmV0",
+            "Y29kZRgPIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.LoginActivityDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -85,9 +85,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "login_activity_list" field.</summary>
-    public const int LoginActivityListFieldNumber = 5;
+    public const int LoginActivityListFieldNumber = 11;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.LoginActivityData> _repeated_loginActivityList_codec
-        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.LoginActivityData.Parser);
+        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.LoginActivityData.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.LoginActivityData> loginActivityList_ = new pbc::RepeatedField<global::March7thHoney.Proto.LoginActivityData>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 6;
+    public const int RetcodeFieldNumber = 15;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -153,7 +153,7 @@ namespace March7thHoney.Proto {
     #else
       loginActivityList_.WriteTo(output, _repeated_loginActivityList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(120);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -168,7 +168,7 @@ namespace March7thHoney.Proto {
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       loginActivityList_.WriteTo(ref output, _repeated_loginActivityList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(120);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -220,11 +220,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 42: {
+          case 90: {
             loginActivityList_.AddEntriesFrom(input, _repeated_loginActivityList_codec);
             break;
           }
-          case 48: {
+          case 120: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -247,11 +247,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 42: {
+          case 90: {
             loginActivityList_.AddEntriesFrom(ref input, _repeated_loginActivityList_codec);
             break;
           }
-          case 48: {
+          case 120: {
             Retcode = input.ReadUInt32();
             break;
           }

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "PMPCIBGILIE.proto";
+
+message FAHGFCIJHFK {
+    uint32 round_cnt = 1;
+    uint32 FHPMEIECKLG = 2;
+    uint32 HOIOBLJHJHJ = 3;
+    uint32 total_bp_cost = 4;
+    double total_damage = 5;
+    double total_damage_taken = 6;
+    double total_hp_recover = 7;
+    double total_shield_taken = 8;
+    repeated PMPCIBGILIE INBNCAKGDPJ = 9;
+}

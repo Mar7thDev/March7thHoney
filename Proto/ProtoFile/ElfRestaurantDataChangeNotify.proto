@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "HGMJFBCFJFN.proto";
 
 message ElfRestaurantDataChangeNotify {
-    repeated HGMJFBCFJFN DGNGMJMPFGK = 2;
+    repeated HGMJFBCFJFN DGNGMJMPFGK = 13;
 }

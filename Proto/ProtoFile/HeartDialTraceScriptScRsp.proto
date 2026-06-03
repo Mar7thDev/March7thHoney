@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "EAJEMNNNEBM.proto";
 
 message HeartDialTraceScriptScRsp {
-    EAJEMNNNEBM NDPMEMLJGCK = 12;
-    uint32 retcode = 4;
+    EAJEMNNNEBM NDPMEMLJGCK = 3;
+    uint32 retcode = 7;
 }

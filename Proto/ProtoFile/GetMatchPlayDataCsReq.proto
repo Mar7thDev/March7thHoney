@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "FightGameMode.proto";
 
 message GetMatchPlayDataCsReq {
-    repeated FightGameMode LCCHAKBKAHL = 5;
+    repeated FightGameMode LCCHAKBKAHL = 15;
 }

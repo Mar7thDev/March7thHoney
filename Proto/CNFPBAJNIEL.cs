@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static CNFPBAJNIELReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFDTkZQQkFKTklFTC5wcm90byIzCgtDTkZQQkFKTklFTBITCgtKQkVFS0JK",
-            "TUlJQRgBIAEoDRIPCgdhcmVhX2lkGAUgASgNQhaqAhNNYXJjaDd0aEhvbmV5",
+            "ChFDTkZQQkFKTklFTC5wcm90byIzCgtDTkZQQkFKTklFTBIPCgdhcmVhX2lk",
+            "GAUgASgNEhMKC0pCRUVLQkpNSUlBGA0gASgNQhaqAhNNYXJjaDd0aEhvbmV5",
             "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.CNFPBAJNIEL), global::March7thHoney.Proto.CNFPBAJNIEL.Parser, new[]{ "JBEEKBJMIIA", "AreaId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.CNFPBAJNIEL), global::March7thHoney.Proto.CNFPBAJNIEL.Parser, new[]{ "AreaId", "JBEEKBJMIIA" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public CNFPBAJNIEL(CNFPBAJNIEL other) : this() {
-      jBEEKBJMIIA_ = other.jBEEKBJMIIA_;
       areaId_ = other.areaId_;
+      jBEEKBJMIIA_ = other.jBEEKBJMIIA_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -81,18 +81,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public CNFPBAJNIEL Clone() {
       return new CNFPBAJNIEL(this);
-    }
-
-    /// <summary>Field number for the "JBEEKBJMIIA" field.</summary>
-    public const int JBEEKBJMIIAFieldNumber = 1;
-    private uint jBEEKBJMIIA_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint JBEEKBJMIIA {
-      get { return jBEEKBJMIIA_; }
-      set {
-        jBEEKBJMIIA_ = value;
-      }
     }
 
     /// <summary>Field number for the "area_id" field.</summary>
@@ -104,6 +92,18 @@ namespace March7thHoney.Proto {
       get { return areaId_; }
       set {
         areaId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "JBEEKBJMIIA" field.</summary>
+    public const int JBEEKBJMIIAFieldNumber = 13;
+    private uint jBEEKBJMIIA_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint JBEEKBJMIIA {
+      get { return jBEEKBJMIIA_; }
+      set {
+        jBEEKBJMIIA_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (JBEEKBJMIIA != other.JBEEKBJMIIA) return false;
       if (AreaId != other.AreaId) return false;
+      if (JBEEKBJMIIA != other.JBEEKBJMIIA) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (JBEEKBJMIIA != 0) hash ^= JBEEKBJMIIA.GetHashCode();
       if (AreaId != 0) hash ^= AreaId.GetHashCode();
+      if (JBEEKBJMIIA != 0) hash ^= JBEEKBJMIIA.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (JBEEKBJMIIA != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(JBEEKBJMIIA);
-      }
       if (AreaId != 0) {
         output.WriteRawTag(40);
         output.WriteUInt32(AreaId);
+      }
+      if (JBEEKBJMIIA != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(JBEEKBJMIIA);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (JBEEKBJMIIA != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(JBEEKBJMIIA);
-      }
       if (AreaId != 0) {
         output.WriteRawTag(40);
         output.WriteUInt32(AreaId);
+      }
+      if (JBEEKBJMIIA != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(JBEEKBJMIIA);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (JBEEKBJMIIA != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(JBEEKBJMIIA);
-      }
       if (AreaId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AreaId);
+      }
+      if (JBEEKBJMIIA != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(JBEEKBJMIIA);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.JBEEKBJMIIA != 0) {
-        JBEEKBJMIIA = other.JBEEKBJMIIA;
-      }
       if (other.AreaId != 0) {
         AreaId = other.AreaId;
+      }
+      if (other.JBEEKBJMIIA != 0) {
+        JBEEKBJMIIA = other.JBEEKBJMIIA;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            JBEEKBJMIIA = input.ReadUInt32();
-            break;
-          }
           case 40: {
             AreaId = input.ReadUInt32();
+            break;
+          }
+          case 104: {
+            JBEEKBJMIIA = input.ReadUInt32();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            JBEEKBJMIIA = input.ReadUInt32();
-            break;
-          }
           case 40: {
             AreaId = input.ReadUInt32();
+            break;
+          }
+          case 104: {
+            JBEEKBJMIIA = input.ReadUInt32();
             break;
           }
         }

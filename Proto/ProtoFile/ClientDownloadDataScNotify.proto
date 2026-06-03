@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ClientDownloadData.proto";
 
 message ClientDownloadDataScNotify {
-    ClientDownloadData download_data = 12;
+    ClientDownloadData download_data = 14;
 }

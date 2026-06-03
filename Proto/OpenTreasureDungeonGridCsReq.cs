@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiJPcGVuVHJlYXN1cmVEdW5nZW9uR3JpZENzUmVxLnByb3RvIkgKHE9wZW5U",
-            "cmVhc3VyZUR1bmdlb25HcmlkQ3NSZXESEwoLR0RORUhMRU9NT00YCyABKA0S",
-            "EwoLRUlDRUtEQkVOS00YByABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
+            "cmVhc3VyZUR1bmdlb25HcmlkQ3NSZXESEwoLR0RORUhMRU9NT00YAyABKA0S",
+            "EwoLRUlDRUtEQkVOS00YCiABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
             "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "GDNEHLEOMOM" field.</summary>
-    public const int GDNEHLEOMOMFieldNumber = 11;
+    public const int GDNEHLEOMOMFieldNumber = 3;
     private uint gDNEHLEOMOM_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "EICEKDBENKM" field.</summary>
-    public const int EICEKDBENKMFieldNumber = 7;
+    public const int EICEKDBENKMFieldNumber = 10;
     private uint eICEKDBENKM_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,13 +152,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (EICEKDBENKM != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(EICEKDBENKM);
-      }
       if (GDNEHLEOMOM != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(24);
         output.WriteUInt32(GDNEHLEOMOM);
+      }
+      if (EICEKDBENKM != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(EICEKDBENKM);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,13 +170,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (EICEKDBENKM != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(EICEKDBENKM);
-      }
       if (GDNEHLEOMOM != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(24);
         output.WriteUInt32(GDNEHLEOMOM);
+      }
+      if (EICEKDBENKM != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(EICEKDBENKM);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -231,12 +231,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
-            EICEKDBENKM = input.ReadUInt32();
+          case 24: {
+            GDNEHLEOMOM = input.ReadUInt32();
             break;
           }
-          case 88: {
-            GDNEHLEOMOM = input.ReadUInt32();
+          case 80: {
+            EICEKDBENKM = input.ReadUInt32();
             break;
           }
         }
@@ -258,12 +258,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
-            EICEKDBENKM = input.ReadUInt32();
+          case 24: {
+            GDNEHLEOMOM = input.ReadUInt32();
             break;
           }
-          case 88: {
-            GDNEHLEOMOM = input.ReadUInt32();
+          case 80: {
+            EICEKDBENKM = input.ReadUInt32();
             break;
           }
         }

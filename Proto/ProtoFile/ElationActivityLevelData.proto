@@ -3,9 +3,9 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ElationActivityLevelData {
-    uint32 BOEINFJIILE = 8;
-    uint32 FFGFINDLMCF = 2;
-    uint32 CHPCJIBGKFK = 14;
-    bool is_perfect = 6;
-    uint32 level_id = 11;
+    bool is_perfect = 5;
+    uint32 level_id = 7;
+    uint32 BOEINFJIILE = 10;
+    uint32 CHPCJIBGKFK = 12;
+    uint32 FFGFINDLMCF = 14;
 }

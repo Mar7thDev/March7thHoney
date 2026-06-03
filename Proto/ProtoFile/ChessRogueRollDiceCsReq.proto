@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ChessRogueRollDiceCsReq {
-    uint32 MMNMIFAAHOF = 13;
+    uint32 MMNMIFAAHOF = 14;
 }

@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "PFPPACPMFDJ.proto";
 
 message DFFLMEMFPLM {
-    PFPPACPMFDJ DJNOLLDHPHJ = 4;
-    uint32 BFCNALJDHMP = 14;
+    uint32 BFCNALJDHMP = 12;
+    PFPPACPMFDJ DJNOLLDHPHJ = 15;
 }

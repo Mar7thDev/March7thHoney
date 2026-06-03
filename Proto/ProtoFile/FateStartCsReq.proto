@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "KPNHGDGLICN.proto";
 
 message FateStartCsReq {
-    repeated KPNHGDGLICN avatar_list = 10;
-    uint32 difficulty_level = 12;
-    uint32 area_id = 15;
+    uint32 area_id = 6;
+    repeated KPNHGDGLICN avatar_list = 14;
+    uint32 difficulty = 15;
 }

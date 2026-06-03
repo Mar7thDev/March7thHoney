@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message EGPAICFKHOK {
-    repeated uint32 verify_step_id_list = 6;
-    uint32 area_id = 12;
-}

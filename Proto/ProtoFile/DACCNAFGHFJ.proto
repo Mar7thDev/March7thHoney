@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "KCLHMJHIDOB.proto";
 
 message DACCNAFGHFJ {
-    KCLHMJHIDOB AKGJOPBLPNE = 15;
+    KCLHMJHIDOB AKGJOPBLPNE = 6;
 }

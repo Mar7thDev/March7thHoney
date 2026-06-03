@@ -5,9 +5,9 @@ option csharp_namespace = "March7thHoney.Proto";
 import "DKPHAFPGDLO.proto";
 
 message HOMMPJIOPGI {
-    repeated DKPHAFPGDLO CBLOAJFJKKI = 4;
-    uint32 score_id = 2;
     uint32 wave = 1;
+    uint32 score_id = 2;
     uint32 GMKFBAMNDEA = 3;
-    float PNJEGPAFNCI = 5;
+    repeated DKPHAFPGDLO CBLOAJFJKKI = 4;
+    float delay = 5;
 }

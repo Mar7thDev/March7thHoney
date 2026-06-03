@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message NGLOBFBCGBB {
-    uint32 CLLFACKFNBO = 10;
-    uint32 id = 5;
+    uint32 id = 4;
+    uint32 CLLFACKFNBO = 11;
 }

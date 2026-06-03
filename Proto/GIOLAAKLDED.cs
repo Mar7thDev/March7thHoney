@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFHSU9MQUFLTERFRC5wcm90byIhCgtHSU9MQUFLTERFRBISCgphdWdtZW50",
-            "X2lkGAMgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "X2lkGA8gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -82,7 +82,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "augment_id" field.</summary>
-    public const int AugmentIdFieldNumber = 3;
+    public const int AugmentIdFieldNumber = 15;
     private uint augmentId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -136,7 +136,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (AugmentId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(120);
         output.WriteUInt32(AugmentId);
       }
       if (_unknownFields != null) {
@@ -150,7 +150,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (AugmentId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(120);
         output.WriteUInt32(AugmentId);
       }
       if (_unknownFields != null) {
@@ -200,7 +200,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
+          case 120: {
             AugmentId = input.ReadUInt32();
             break;
           }
@@ -223,7 +223,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
+          case 120: {
             AugmentId = input.ReadUInt32();
             break;
           }

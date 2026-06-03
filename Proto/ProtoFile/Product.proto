@@ -5,13 +5,13 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ProductGiftType.proto";
 
 message Product {
-    string price_tier = 6;
-    string product_id = 11;
-    int64 begin_time = 4;
-    int64 end_time = 3;
-    uint32 ENCDABOOIKJ = 13;
-    bool double_reward = 2;
-    uint32 EMIHEDNKBCA = 10;
-    ProductGiftType gift_type = 15;
-    uint32 CLDELMPNAPB = 7;
+    uint32 ENCDABOOIKJ = 1;
+    int64 end_time = 2;
+    uint32 CLDELMPNAPB = 3;
+    string price_tier = 4;
+    int64 begin_time = 5;
+    string product_id = 7;
+    bool double_reward = 8;
+    ProductGiftType gift_type = 10;
+    uint32 EMIHEDNKBCA = 15;
 }

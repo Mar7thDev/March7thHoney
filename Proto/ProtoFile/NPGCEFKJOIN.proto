@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message NPGCEFKJOIN {
-    bool IOBJFEJFLJP = 5;
-    uint32 COPALFLACHO = 10;
+    uint32 tech_id = 5;
+    bool active = 9;
 }

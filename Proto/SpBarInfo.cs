@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static SpBarInfoReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg9TcEJhckluZm8ucHJvdG8iKwoJU3BCYXJJbmZvEg4KBm1heF9zcBgCIAEo",
-            "DRIOCgZjdXJfc3AYASABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
+            "Cg9TcEJhckluZm8ucHJvdG8iKwoJU3BCYXJJbmZvEg4KBmN1cl9zcBgBIAEo",
+            "DRIOCgZtYXhfc3AYAiABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
             "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SpBarInfo), global::March7thHoney.Proto.SpBarInfo.Parser, new[]{ "MaxSp", "CurSp" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SpBarInfo), global::March7thHoney.Proto.SpBarInfo.Parser, new[]{ "CurSp", "MaxSp" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SpBarInfo(SpBarInfo other) : this() {
-      maxSp_ = other.maxSp_;
       curSp_ = other.curSp_;
+      maxSp_ = other.maxSp_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -81,18 +81,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SpBarInfo Clone() {
       return new SpBarInfo(this);
-    }
-
-    /// <summary>Field number for the "max_sp" field.</summary>
-    public const int MaxSpFieldNumber = 2;
-    private uint maxSp_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint MaxSp {
-      get { return maxSp_; }
-      set {
-        maxSp_ = value;
-      }
     }
 
     /// <summary>Field number for the "cur_sp" field.</summary>
@@ -104,6 +92,18 @@ namespace March7thHoney.Proto {
       get { return curSp_; }
       set {
         curSp_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "max_sp" field.</summary>
+    public const int MaxSpFieldNumber = 2;
+    private uint maxSp_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint MaxSp {
+      get { return maxSp_; }
+      set {
+        maxSp_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (MaxSp != other.MaxSp) return false;
       if (CurSp != other.CurSp) return false;
+      if (MaxSp != other.MaxSp) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (MaxSp != 0) hash ^= MaxSp.GetHashCode();
       if (CurSp != 0) hash ^= CurSp.GetHashCode();
+      if (MaxSp != 0) hash ^= MaxSp.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (MaxSp != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MaxSp);
-      }
       if (CurSp != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurSp);
+      }
+      if (MaxSp != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MaxSp);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.MaxSp != 0) {
-        MaxSp = other.MaxSp;
-      }
       if (other.CurSp != 0) {
         CurSp = other.CurSp;
+      }
+      if (other.MaxSp != 0) {
+        MaxSp = other.MaxSp;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }

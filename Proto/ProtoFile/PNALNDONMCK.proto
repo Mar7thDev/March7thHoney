@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "OCEAHPDAPFC.proto";
 
 message PNALNDONMCK {
-    repeated OCEAHPDAPFC DGNGMJMPFGK = 9;
+    repeated OCEAHPDAPFC DGNGMJMPFGK = 15;
 }

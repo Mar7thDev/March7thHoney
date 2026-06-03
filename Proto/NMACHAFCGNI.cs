@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static NMACHAFCGNIReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFOTUFDSEFGQ0dOSS5wcm90bxoRSURKQUxLRUdQTEkucHJvdG8iVwoLTk1B",
-            "Q0hBRkNHTkkSIQoLTkRMSUtORUtETEwYDSABKAsyDC5JREpBTEtFR1BMSRIT",
-            "CgtNRlBPS05NRk5HTRgCIAEoDRIQCghzdGFnZV9pZBgLIAEoDUIWqgITTWFy",
-            "Y2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChFOTUFDSEFGQ0dOSS5wcm90bxoRSURKQUxLRUdQTEkucHJvdG8iZgoLTk1B",
+            "Q0hBRkNHTkkSEwoLQUxKTklITkxOTUEYASABKA0SGwoFYmFzaWMYByABKAsy",
+            "DC5JREpBTEtFR1BMSRITCgtNRlBPS05NRk5HTRgIIAEoDRIQCghzdGFnZV9p",
+            "ZBgKIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.IDJALKEGPLIReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NMACHAFCGNI), global::March7thHoney.Proto.NMACHAFCGNI.Parser, new[]{ "NDLIKNEKDLL", "MFPOKNMFNGM", "StageId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NMACHAFCGNI), global::March7thHoney.Proto.NMACHAFCGNI.Parser, new[]{ "ALJNIHNLNMA", "Basic", "MFPOKNMFNGM", "StageId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,7 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public NMACHAFCGNI(NMACHAFCGNI other) : this() {
-      nDLIKNEKDLL_ = other.nDLIKNEKDLL_ != null ? other.nDLIKNEKDLL_.Clone() : null;
+      aLJNIHNLNMA_ = other.aLJNIHNLNMA_;
+      basic_ = other.basic_ != null ? other.basic_.Clone() : null;
       mFPOKNMFNGM_ = other.mFPOKNMFNGM_;
       stageId_ = other.stageId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -85,20 +86,32 @@ namespace March7thHoney.Proto {
       return new NMACHAFCGNI(this);
     }
 
-    /// <summary>Field number for the "NDLIKNEKDLL" field.</summary>
-    public const int NDLIKNEKDLLFieldNumber = 13;
-    private global::March7thHoney.Proto.IDJALKEGPLI nDLIKNEKDLL_;
+    /// <summary>Field number for the "ALJNIHNLNMA" field.</summary>
+    public const int ALJNIHNLNMAFieldNumber = 1;
+    private uint aLJNIHNLNMA_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.IDJALKEGPLI NDLIKNEKDLL {
-      get { return nDLIKNEKDLL_; }
+    public uint ALJNIHNLNMA {
+      get { return aLJNIHNLNMA_; }
       set {
-        nDLIKNEKDLL_ = value;
+        aLJNIHNLNMA_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "basic" field.</summary>
+    public const int BasicFieldNumber = 7;
+    private global::March7thHoney.Proto.IDJALKEGPLI basic_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.IDJALKEGPLI Basic {
+      get { return basic_; }
+      set {
+        basic_ = value;
       }
     }
 
     /// <summary>Field number for the "MFPOKNMFNGM" field.</summary>
-    public const int MFPOKNMFNGMFieldNumber = 2;
+    public const int MFPOKNMFNGMFieldNumber = 8;
     private uint mFPOKNMFNGM_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,7 +123,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "stage_id" field.</summary>
-    public const int StageIdFieldNumber = 11;
+    public const int StageIdFieldNumber = 10;
     private uint stageId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -136,7 +149,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(NDLIKNEKDLL, other.NDLIKNEKDLL)) return false;
+      if (ALJNIHNLNMA != other.ALJNIHNLNMA) return false;
+      if (!object.Equals(Basic, other.Basic)) return false;
       if (MFPOKNMFNGM != other.MFPOKNMFNGM) return false;
       if (StageId != other.StageId) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -146,7 +160,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (nDLIKNEKDLL_ != null) hash ^= NDLIKNEKDLL.GetHashCode();
+      if (ALJNIHNLNMA != 0) hash ^= ALJNIHNLNMA.GetHashCode();
+      if (basic_ != null) hash ^= Basic.GetHashCode();
       if (MFPOKNMFNGM != 0) hash ^= MFPOKNMFNGM.GetHashCode();
       if (StageId != 0) hash ^= StageId.GetHashCode();
       if (_unknownFields != null) {
@@ -167,17 +182,21 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (ALJNIHNLNMA != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(ALJNIHNLNMA);
+      }
+      if (basic_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(Basic);
+      }
       if (MFPOKNMFNGM != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(64);
         output.WriteUInt32(MFPOKNMFNGM);
       }
       if (StageId != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(80);
         output.WriteUInt32(StageId);
-      }
-      if (nDLIKNEKDLL_ != null) {
-        output.WriteRawTag(106);
-        output.WriteMessage(NDLIKNEKDLL);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -189,17 +208,21 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (ALJNIHNLNMA != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(ALJNIHNLNMA);
+      }
+      if (basic_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(Basic);
+      }
       if (MFPOKNMFNGM != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(64);
         output.WriteUInt32(MFPOKNMFNGM);
       }
       if (StageId != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(80);
         output.WriteUInt32(StageId);
-      }
-      if (nDLIKNEKDLL_ != null) {
-        output.WriteRawTag(106);
-        output.WriteMessage(NDLIKNEKDLL);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -211,8 +234,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (nDLIKNEKDLL_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(NDLIKNEKDLL);
+      if (ALJNIHNLNMA != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ALJNIHNLNMA);
+      }
+      if (basic_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Basic);
       }
       if (MFPOKNMFNGM != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MFPOKNMFNGM);
@@ -232,11 +258,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.nDLIKNEKDLL_ != null) {
-        if (nDLIKNEKDLL_ == null) {
-          NDLIKNEKDLL = new global::March7thHoney.Proto.IDJALKEGPLI();
+      if (other.ALJNIHNLNMA != 0) {
+        ALJNIHNLNMA = other.ALJNIHNLNMA;
+      }
+      if (other.basic_ != null) {
+        if (basic_ == null) {
+          Basic = new global::March7thHoney.Proto.IDJALKEGPLI();
         }
-        NDLIKNEKDLL.MergeFrom(other.NDLIKNEKDLL);
+        Basic.MergeFrom(other.Basic);
       }
       if (other.MFPOKNMFNGM != 0) {
         MFPOKNMFNGM = other.MFPOKNMFNGM;
@@ -263,19 +292,23 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
+          case 8: {
+            ALJNIHNLNMA = input.ReadUInt32();
+            break;
+          }
+          case 58: {
+            if (basic_ == null) {
+              Basic = new global::March7thHoney.Proto.IDJALKEGPLI();
+            }
+            input.ReadMessage(Basic);
+            break;
+          }
+          case 64: {
             MFPOKNMFNGM = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 80: {
             StageId = input.ReadUInt32();
-            break;
-          }
-          case 106: {
-            if (nDLIKNEKDLL_ == null) {
-              NDLIKNEKDLL = new global::March7thHoney.Proto.IDJALKEGPLI();
-            }
-            input.ReadMessage(NDLIKNEKDLL);
             break;
           }
         }
@@ -297,19 +330,23 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
+          case 8: {
+            ALJNIHNLNMA = input.ReadUInt32();
+            break;
+          }
+          case 58: {
+            if (basic_ == null) {
+              Basic = new global::March7thHoney.Proto.IDJALKEGPLI();
+            }
+            input.ReadMessage(Basic);
+            break;
+          }
+          case 64: {
             MFPOKNMFNGM = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 80: {
             StageId = input.ReadUInt32();
-            break;
-          }
-          case 106: {
-            if (nDLIKNEKDLL_ == null) {
-              NDLIKNEKDLL = new global::March7thHoney.Proto.IDJALKEGPLI();
-            }
-            input.ReadMessage(NDLIKNEKDLL);
             break;
           }
         }

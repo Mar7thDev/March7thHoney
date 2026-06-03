@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ContentPackageData.proto";
 
 message ContentPackageSyncDataScNotify {
-    ContentPackageData data = 13;
+    ContentPackageData data = 2;
 }

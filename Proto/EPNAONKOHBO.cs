@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static EPNAONKOHBOReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFFUE5BT05LT0hCTy5wcm90byJHCgtFUE5BT05LT0hCTxITCgtLQktPR0xD",
-            "QUVLRxgBIAEoCRINCgVjb3VudBgCIAEoDRIUCgx0b3RhbF9kYW1hZ2UYAyAB",
-            "KAFCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ChFFUE5BT05LT0hCTy5wcm90byJICgtFUE5BT05LT0hCTxIUCgxhYmlsaXR5",
+            "X25hbWUYASABKAkSDQoFY291bnQYAiABKA0SFAoMdG90YWxfZGFtYWdlGAMg",
+            "ASgBQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EPNAONKOHBO), global::March7thHoney.Proto.EPNAONKOHBO.Parser, new[]{ "KBKOGLCAEKG", "Count", "TotalDamage" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EPNAONKOHBO), global::March7thHoney.Proto.EPNAONKOHBO.Parser, new[]{ "AbilityName", "Count", "TotalDamage" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,7 +72,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public EPNAONKOHBO(EPNAONKOHBO other) : this() {
-      kBKOGLCAEKG_ = other.kBKOGLCAEKG_;
+      abilityName_ = other.abilityName_;
       count_ = other.count_;
       totalDamage_ = other.totalDamage_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -84,15 +84,15 @@ namespace March7thHoney.Proto {
       return new EPNAONKOHBO(this);
     }
 
-    /// <summary>Field number for the "KBKOGLCAEKG" field.</summary>
-    public const int KBKOGLCAEKGFieldNumber = 1;
-    private string kBKOGLCAEKG_ = "";
+    /// <summary>Field number for the "ability_name" field.</summary>
+    public const int AbilityNameFieldNumber = 1;
+    private string abilityName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string KBKOGLCAEKG {
-      get { return kBKOGLCAEKG_; }
+    public string AbilityName {
+      get { return abilityName_; }
       set {
-        kBKOGLCAEKG_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        abilityName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -135,7 +135,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (KBKOGLCAEKG != other.KBKOGLCAEKG) return false;
+      if (AbilityName != other.AbilityName) return false;
       if (Count != other.Count) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(TotalDamage, other.TotalDamage)) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -145,7 +145,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (KBKOGLCAEKG.Length != 0) hash ^= KBKOGLCAEKG.GetHashCode();
+      if (AbilityName.Length != 0) hash ^= AbilityName.GetHashCode();
       if (Count != 0) hash ^= Count.GetHashCode();
       if (TotalDamage != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(TotalDamage);
       if (_unknownFields != null) {
@@ -166,9 +166,9 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (KBKOGLCAEKG.Length != 0) {
+      if (AbilityName.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(KBKOGLCAEKG);
+        output.WriteString(AbilityName);
       }
       if (Count != 0) {
         output.WriteRawTag(16);
@@ -188,9 +188,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (KBKOGLCAEKG.Length != 0) {
+      if (AbilityName.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(KBKOGLCAEKG);
+        output.WriteString(AbilityName);
       }
       if (Count != 0) {
         output.WriteRawTag(16);
@@ -210,8 +210,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (KBKOGLCAEKG.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(KBKOGLCAEKG);
+      if (AbilityName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(AbilityName);
       }
       if (Count != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Count);
@@ -231,8 +231,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.KBKOGLCAEKG.Length != 0) {
-        KBKOGLCAEKG = other.KBKOGLCAEKG;
+      if (other.AbilityName.Length != 0) {
+        AbilityName = other.AbilityName;
       }
       if (other.Count != 0) {
         Count = other.Count;
@@ -260,7 +260,7 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            KBKOGLCAEKG = input.ReadString();
+            AbilityName = input.ReadString();
             break;
           }
           case 16: {
@@ -291,7 +291,7 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            KBKOGLCAEKG = input.ReadString();
+            AbilityName = input.ReadString();
             break;
           }
           case 16: {

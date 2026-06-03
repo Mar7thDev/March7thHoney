@@ -3,13 +3,10 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 import "HOLHBEOHEJD.proto";
-import "IOMPILNAEEO.proto";
 
 message JIEAANCEIJP {
-    repeated HOLHBEOHEJD HNIMJFPACHC = 4;
-    repeated IOMPILNAEEO OHEFIEEFPFK = 5;
-    uint32 IJGOAPIDJKP = 3;
-    uint32 AMCPMEAOJJK = 6;
     uint32 turn_counter = 1;
-    uint32 KAPJNJDCACL = 2;
+    uint32 random_counter = 2;
+    repeated HOLHBEOHEJD snapshot_list = 4;
+    uint32 AMCPMEAOJJK = 6;
 }

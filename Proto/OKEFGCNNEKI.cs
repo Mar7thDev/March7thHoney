@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFPS0VGR0NOTkVLSS5wcm90bxoMVmVjdG9yLnByb3RvIlIKC09LRUZHQ05O",
-            "RUtJEhwKC0dHRENESkRCQ0NOGAMgASgLMgcuVmVjdG9yEiUKHWFzc2lzdF9t",
-            "b25zdGVyX2VudGl0eV9pZF9saXN0GAsgAygNQhaqAhNNYXJjaDd0aEhvbmV5",
+            "RUtJEiUKHWFzc2lzdF9tb25zdGVyX2VudGl0eV9pZF9saXN0GAogAygNEhwK",
+            "C0dHRENESkRCQ0NOGA8gASgLMgcuVmVjdG9yQhaqAhNNYXJjaDd0aEhvbmV5",
             "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.VectorReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.OKEFGCNNEKI), global::March7thHoney.Proto.OKEFGCNNEKI.Parser, new[]{ "GGDCDJDBCCN", "AssistMonsterEntityIdList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.OKEFGCNNEKI), global::March7thHoney.Proto.OKEFGCNNEKI.Parser, new[]{ "AssistMonsterEntityIdList", "GGDCDJDBCCN" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public OKEFGCNNEKI(OKEFGCNNEKI other) : this() {
-      gGDCDJDBCCN_ = other.gGDCDJDBCCN_ != null ? other.gGDCDJDBCCN_.Clone() : null;
       assistMonsterEntityIdList_ = other.assistMonsterEntityIdList_.Clone();
+      gGDCDJDBCCN_ = other.gGDCDJDBCCN_ != null ? other.gGDCDJDBCCN_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,8 +84,19 @@ namespace March7thHoney.Proto {
       return new OKEFGCNNEKI(this);
     }
 
+    /// <summary>Field number for the "assist_monster_entity_id_list" field.</summary>
+    public const int AssistMonsterEntityIdListFieldNumber = 10;
+    private static readonly pb::FieldCodec<uint> _repeated_assistMonsterEntityIdList_codec
+        = pb::FieldCodec.ForUInt32(82);
+    private readonly pbc::RepeatedField<uint> assistMonsterEntityIdList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> AssistMonsterEntityIdList {
+      get { return assistMonsterEntityIdList_; }
+    }
+
     /// <summary>Field number for the "GGDCDJDBCCN" field.</summary>
-    public const int GGDCDJDBCCNFieldNumber = 3;
+    public const int GGDCDJDBCCNFieldNumber = 15;
     private global::March7thHoney.Proto.Vector gGDCDJDBCCN_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -94,17 +105,6 @@ namespace March7thHoney.Proto {
       set {
         gGDCDJDBCCN_ = value;
       }
-    }
-
-    /// <summary>Field number for the "assist_monster_entity_id_list" field.</summary>
-    public const int AssistMonsterEntityIdListFieldNumber = 11;
-    private static readonly pb::FieldCodec<uint> _repeated_assistMonsterEntityIdList_codec
-        = pb::FieldCodec.ForUInt32(90);
-    private readonly pbc::RepeatedField<uint> assistMonsterEntityIdList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> AssistMonsterEntityIdList {
-      get { return assistMonsterEntityIdList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(GGDCDJDBCCN, other.GGDCDJDBCCN)) return false;
       if(!assistMonsterEntityIdList_.Equals(other.assistMonsterEntityIdList_)) return false;
+      if (!object.Equals(GGDCDJDBCCN, other.GGDCDJDBCCN)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (gGDCDJDBCCN_ != null) hash ^= GGDCDJDBCCN.GetHashCode();
       hash ^= assistMonsterEntityIdList_.GetHashCode();
+      if (gGDCDJDBCCN_ != null) hash ^= GGDCDJDBCCN.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -151,11 +151,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      assistMonsterEntityIdList_.WriteTo(output, _repeated_assistMonsterEntityIdList_codec);
       if (gGDCDJDBCCN_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(122);
         output.WriteMessage(GGDCDJDBCCN);
       }
-      assistMonsterEntityIdList_.WriteTo(output, _repeated_assistMonsterEntityIdList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -166,11 +166,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      assistMonsterEntityIdList_.WriteTo(ref output, _repeated_assistMonsterEntityIdList_codec);
       if (gGDCDJDBCCN_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(122);
         output.WriteMessage(GGDCDJDBCCN);
       }
-      assistMonsterEntityIdList_.WriteTo(ref output, _repeated_assistMonsterEntityIdList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -181,10 +181,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      size += assistMonsterEntityIdList_.CalculateSize(_repeated_assistMonsterEntityIdList_codec);
       if (gGDCDJDBCCN_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(GGDCDJDBCCN);
       }
-      size += assistMonsterEntityIdList_.CalculateSize(_repeated_assistMonsterEntityIdList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -197,13 +197,13 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      assistMonsterEntityIdList_.Add(other.assistMonsterEntityIdList_);
       if (other.gGDCDJDBCCN_ != null) {
         if (gGDCDJDBCCN_ == null) {
           GGDCDJDBCCN = new global::March7thHoney.Proto.Vector();
         }
         GGDCDJDBCCN.MergeFrom(other.GGDCDJDBCCN);
       }
-      assistMonsterEntityIdList_.Add(other.assistMonsterEntityIdList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -223,16 +223,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 26: {
+          case 82:
+          case 80: {
+            assistMonsterEntityIdList_.AddEntriesFrom(input, _repeated_assistMonsterEntityIdList_codec);
+            break;
+          }
+          case 122: {
             if (gGDCDJDBCCN_ == null) {
               GGDCDJDBCCN = new global::March7thHoney.Proto.Vector();
             }
             input.ReadMessage(GGDCDJDBCCN);
-            break;
-          }
-          case 90:
-          case 88: {
-            assistMonsterEntityIdList_.AddEntriesFrom(input, _repeated_assistMonsterEntityIdList_codec);
             break;
           }
         }
@@ -254,16 +254,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 26: {
+          case 82:
+          case 80: {
+            assistMonsterEntityIdList_.AddEntriesFrom(ref input, _repeated_assistMonsterEntityIdList_codec);
+            break;
+          }
+          case 122: {
             if (gGDCDJDBCCN_ == null) {
               GGDCDJDBCCN = new global::March7thHoney.Proto.Vector();
             }
             input.ReadMessage(GGDCDJDBCCN);
-            break;
-          }
-          case 90:
-          case 88: {
-            assistMonsterEntityIdList_.AddEntriesFrom(ref input, _repeated_assistMonsterEntityIdList_codec);
             break;
           }
         }

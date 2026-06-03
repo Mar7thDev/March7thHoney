@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message InteractTreasureDungeonGridCsReq {
-    uint32 GDNEHLEOMOM = 12;
-    uint32 display_value = 11;
-    uint32 EICEKDBENKM = 9;
+    uint32 GDNEHLEOMOM = 2;
+    uint32 param = 7;
+    uint32 EICEKDBENKM = 13;
 }

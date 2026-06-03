@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "NpcMonsterRogueInfo.proto";
 
 message NpcMonsterExtraInfo {
-    NpcMonsterRogueInfo rogue_game_info = 6;
+    NpcMonsterRogueInfo rogue_game_info = 1;
 }

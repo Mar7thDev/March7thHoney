@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemList.proto";
 
 message CAIHACOKAJO {
-    ItemList ELMCGFMGILI = 4;
-    repeated uint32 AEGPLACJFIO = 8;
-    uint32 ODOBGIEGGEO = 9;
+    repeated uint32 AEGPLACJFIO = 2;
+    uint32 ODOBGIEGGEO = 5;
+    ItemList ELMCGFMGILI = 6;
 }

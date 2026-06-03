@@ -6,6 +6,6 @@ import "FightGameMode.proto";
 import "LobbyGameExtInfo.proto";
 
 message StartMatchCsReq {
-    LobbyGameExtInfo JIDKDPPPDPF = 8;
-    FightGameMode GJNMHILINHC = 1;
+    FightGameMode GJNMHILINHC = 4;
+    LobbyGameExtInfo JIDKDPPPDPF = 11;
 }

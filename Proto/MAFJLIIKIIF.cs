@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFNQUZKTElJS0lJRi5wcm90bxoRS0xNTkdPSktFSU4ucHJvdG8iMAoLTUFG",
-            "SkxJSUtJSUYSIQoLTUFJQkFPQU9HSUQYByABKAsyDC5LTE1OR09KS0VJTkIW",
+            "SkxJSUtJSUYSIQoLTUFJQkFPQU9HSUQYCSABKAsyDC5LTE1OR09KS0VJTkIW",
             "qgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.KLMNGOJKEINReflection.Descriptor, },
@@ -83,7 +83,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "MAIBAOAOGID" field.</summary>
-    public const int MAIBAOAOGIDFieldNumber = 7;
+    public const int MAIBAOAOGIDFieldNumber = 9;
     private global::March7thHoney.Proto.KLMNGOJKEIN mAIBAOAOGID_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -137,7 +137,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (mAIBAOAOGID_ != null) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(74);
         output.WriteMessage(MAIBAOAOGID);
       }
       if (_unknownFields != null) {
@@ -151,7 +151,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (mAIBAOAOGID_ != null) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(74);
         output.WriteMessage(MAIBAOAOGID);
       }
       if (_unknownFields != null) {
@@ -204,7 +204,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 58: {
+          case 74: {
             if (mAIBAOAOGID_ == null) {
               MAIBAOAOGID = new global::March7thHoney.Proto.KLMNGOJKEIN();
             }
@@ -230,7 +230,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 58: {
+          case 74: {
             if (mAIBAOAOGID_ == null) {
               MAIBAOAOGID = new global::March7thHoney.Proto.KLMNGOJKEIN();
             }

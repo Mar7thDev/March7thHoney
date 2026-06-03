@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "GIPBHLBFDAH.proto";
 
 message ClockParkFinishScriptScNotify {
-    GIPBHLBFDAH NLEOMLNOKCC = 7;
+    GIPBHLBFDAH NLEOMLNOKCC = 9;
 }

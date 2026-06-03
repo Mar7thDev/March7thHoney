@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message EMLDLBKPEFD {
-    repeated uint32 GGIGDJPFBBP = 9;
-    bool NPPKABBJCMI = 4;
+    repeated uint32 GGIGDJPFBBP = 5;
+    bool NPPKABBJCMI = 14;
 }

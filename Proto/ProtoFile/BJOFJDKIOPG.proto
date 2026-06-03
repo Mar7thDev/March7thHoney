@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "LGOKJFKMCBE.proto";
 
 message BJOFJDKIOPG {
-    repeated LGOKJFKMCBE EGHJFEIMHBB = 4;
-    uint32 IBHKMLKHKJB = 2;
     uint32 OEBAIDCOPLC = 1;
+    uint32 IBHKMLKHKJB = 2;
     uint32 JBFEPAFJNCL = 3;
+    repeated LGOKJFKMCBE EGHJFEIMHBB = 4;
 }

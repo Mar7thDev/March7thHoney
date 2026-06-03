@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "TrackMainMissionUpdateReasonId.proto";
 
 message UpdateTrackMainMissionCsReq {
-    TrackMainMissionUpdateReasonId POPNCNIBNMJ = 11;
-    uint32 track_mission_id = 4;
-    uint32 JFONDEBDIOO = 7;
+    uint32 track_mission_id = 8;
+    uint32 JFONDEBDIOO = 10;
+    TrackMainMissionUpdateReasonId POPNCNIBNMJ = 15;
 }

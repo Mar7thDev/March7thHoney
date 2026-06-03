@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message HBONEFMPKKO {
-    uint32 progress = 2;
-    uint32 MMFGAJNCAOA = 5;
+    uint32 MMFGAJNCAOA = 2;
+    uint32 progress = 10;
 }

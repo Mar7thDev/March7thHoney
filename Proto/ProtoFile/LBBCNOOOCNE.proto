@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "DNLKMHLAPHC.proto";
 
 message LBBCNOOOCNE {
-    DNLKMHLAPHC LANFFLCLGAH = 1;
+    DNLKMHLAPHC LANFFLCLGAH = 6;
 }

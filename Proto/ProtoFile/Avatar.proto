@@ -3,13 +3,13 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message Avatar {
-    repeated uint32 has_taken_promotion_reward_list = 8;
-    uint32 equipment_unique_id = 1;
-    uint32 base_avatar_id = 7;
-    uint32 exp = 12;
-    bool is_marked = 11;
-    uint32 level = 13;
-    uint32 cur_multi_path_avatar_type = 5;
-    uint32 promotion = 2;
-    uint64 first_met_time_stamp = 10;
+    uint32 promotion = 1;
+    uint32 cur_multi_path_avatar_type = 2;
+    uint32 level = 6;
+    bool is_marked = 8;
+    uint32 base_avatar_id = 10;
+    repeated uint32 has_taken_promotion_reward_list = 11;
+    uint32 equipment_unique_id = 13;
+    uint64 first_met_time_stamp = 14;
+    uint32 exp = 15;
 }

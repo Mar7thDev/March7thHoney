@@ -24,17 +24,17 @@ namespace March7thHoney.Proto {
     static CJOCEJLPADKReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFDSk9DRUpMUEFESy5wcm90bxoRT0dIQUlGUEhNUEUucHJvdG8i5AEKC0NK",
-            "T0NFSkxQQURLEiEKC0JKT0RKTkZHTUNCGAUgAygLMgwuT0dIQUlGUEhNUEUS",
-            "IQoLQUxISU9OSUNMQ00YCCADKAsyDC5PR0hBSUZQSE1QRRITCgtHTkFNTkJE",
-            "SUVLRxgEIAEoDRIMCgRyYW5rGAYgASgNEhMKC0lMTEVESkxOR05GGAkgASgN",
-            "EhMKC0NLTENEQUdNRktQGAIgASgEEhsKE21vbnN0ZXJfYmF0dGxlX3R5cGUY",
-            "ASABKA0SEAoIbGV2ZWxfaWQYAyABKA0SEwoLR0FFTkZLS0FLT0kYByABKARC",
-            "FqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ChFDSk9DRUpMUEFESy5wcm90bxoRT0dIQUlGUEhNUEUucHJvdG8i4QEKC0NK",
+            "T0NFSkxQQURLEhsKE21vbnN0ZXJfYmF0dGxlX3R5cGUYASABKA0SEAoIcm9v",
+            "bV91aWQYAiABKAQSEAoIbGV2ZWxfaWQYAyABKA0SEwoLR05BTU5CRElFS0cY",
+            "BCABKA0SIQoLQkpPREpORkdNQ0IYBSADKAsyDC5PR0hBSUZQSE1QRRIMCgRy",
+            "YW5rGAYgASgNEhMKC0dBRU5GS0tBS09JGAcgASgEEiEKC0FMSElPTklDTENN",
+            "GAggAygLMgwuT0dIQUlGUEhNUEUSEwoLSUxMRURKTE5HTkYYCSABKA1CFqoC",
+            "E01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.OGHAIFPHMPEReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.CJOCEJLPADK), global::March7thHoney.Proto.CJOCEJLPADK.Parser, new[]{ "BJODJNFGMCB", "ALHIONICLCM", "GNAMNBDIEKG", "Rank", "ILLEDJLNGNF", "CKLCDAGMFKP", "MonsterBattleType", "LevelId", "GAENFKKAKOI" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.CJOCEJLPADK), global::March7thHoney.Proto.CJOCEJLPADK.Parser, new[]{ "MonsterBattleType", "RoomUid", "LevelId", "GNAMNBDIEKG", "BJODJNFGMCB", "Rank", "GAENFKKAKOI", "ALHIONICLCM", "ILLEDJLNGNF" }, null, null, null, null)
           }));
     }
     #endregion
@@ -76,15 +76,15 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public CJOCEJLPADK(CJOCEJLPADK other) : this() {
-      bJODJNFGMCB_ = other.bJODJNFGMCB_.Clone();
-      aLHIONICLCM_ = other.aLHIONICLCM_.Clone();
-      gNAMNBDIEKG_ = other.gNAMNBDIEKG_;
-      rank_ = other.rank_;
-      iLLEDJLNGNF_ = other.iLLEDJLNGNF_;
-      cKLCDAGMFKP_ = other.cKLCDAGMFKP_;
       monsterBattleType_ = other.monsterBattleType_;
+      roomUid_ = other.roomUid_;
       levelId_ = other.levelId_;
+      gNAMNBDIEKG_ = other.gNAMNBDIEKG_;
+      bJODJNFGMCB_ = other.bJODJNFGMCB_.Clone();
+      rank_ = other.rank_;
       gAENFKKAKOI_ = other.gAENFKKAKOI_;
+      aLHIONICLCM_ = other.aLHIONICLCM_.Clone();
+      iLLEDJLNGNF_ = other.iLLEDJLNGNF_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -92,76 +92,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public CJOCEJLPADK Clone() {
       return new CJOCEJLPADK(this);
-    }
-
-    /// <summary>Field number for the "BJODJNFGMCB" field.</summary>
-    public const int BJODJNFGMCBFieldNumber = 5;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.OGHAIFPHMPE> _repeated_bJODJNFGMCB_codec
-        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.OGHAIFPHMPE.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.OGHAIFPHMPE> bJODJNFGMCB_ = new pbc::RepeatedField<global::March7thHoney.Proto.OGHAIFPHMPE>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.OGHAIFPHMPE> BJODJNFGMCB {
-      get { return bJODJNFGMCB_; }
-    }
-
-    /// <summary>Field number for the "ALHIONICLCM" field.</summary>
-    public const int ALHIONICLCMFieldNumber = 8;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.OGHAIFPHMPE> _repeated_aLHIONICLCM_codec
-        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.OGHAIFPHMPE.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.OGHAIFPHMPE> aLHIONICLCM_ = new pbc::RepeatedField<global::March7thHoney.Proto.OGHAIFPHMPE>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.OGHAIFPHMPE> ALHIONICLCM {
-      get { return aLHIONICLCM_; }
-    }
-
-    /// <summary>Field number for the "GNAMNBDIEKG" field.</summary>
-    public const int GNAMNBDIEKGFieldNumber = 4;
-    private uint gNAMNBDIEKG_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint GNAMNBDIEKG {
-      get { return gNAMNBDIEKG_; }
-      set {
-        gNAMNBDIEKG_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "rank" field.</summary>
-    public const int RankFieldNumber = 6;
-    private uint rank_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Rank {
-      get { return rank_; }
-      set {
-        rank_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "ILLEDJLNGNF" field.</summary>
-    public const int ILLEDJLNGNFFieldNumber = 9;
-    private uint iLLEDJLNGNF_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint ILLEDJLNGNF {
-      get { return iLLEDJLNGNF_; }
-      set {
-        iLLEDJLNGNF_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "CKLCDAGMFKP" field.</summary>
-    public const int CKLCDAGMFKPFieldNumber = 2;
-    private ulong cKLCDAGMFKP_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ulong CKLCDAGMFKP {
-      get { return cKLCDAGMFKP_; }
-      set {
-        cKLCDAGMFKP_ = value;
-      }
     }
 
     /// <summary>Field number for the "monster_battle_type" field.</summary>
@@ -173,6 +103,18 @@ namespace March7thHoney.Proto {
       get { return monsterBattleType_; }
       set {
         monsterBattleType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "room_uid" field.</summary>
+    public const int RoomUidFieldNumber = 2;
+    private ulong roomUid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong RoomUid {
+      get { return roomUid_; }
+      set {
+        roomUid_ = value;
       }
     }
 
@@ -188,6 +130,41 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "GNAMNBDIEKG" field.</summary>
+    public const int GNAMNBDIEKGFieldNumber = 4;
+    private uint gNAMNBDIEKG_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint GNAMNBDIEKG {
+      get { return gNAMNBDIEKG_; }
+      set {
+        gNAMNBDIEKG_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "BJODJNFGMCB" field.</summary>
+    public const int BJODJNFGMCBFieldNumber = 5;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.OGHAIFPHMPE> _repeated_bJODJNFGMCB_codec
+        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.OGHAIFPHMPE.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.OGHAIFPHMPE> bJODJNFGMCB_ = new pbc::RepeatedField<global::March7thHoney.Proto.OGHAIFPHMPE>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.OGHAIFPHMPE> BJODJNFGMCB {
+      get { return bJODJNFGMCB_; }
+    }
+
+    /// <summary>Field number for the "rank" field.</summary>
+    public const int RankFieldNumber = 6;
+    private uint rank_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Rank {
+      get { return rank_; }
+      set {
+        rank_ = value;
+      }
+    }
+
     /// <summary>Field number for the "GAENFKKAKOI" field.</summary>
     public const int GAENFKKAKOIFieldNumber = 7;
     private ulong gAENFKKAKOI_;
@@ -197,6 +174,29 @@ namespace March7thHoney.Proto {
       get { return gAENFKKAKOI_; }
       set {
         gAENFKKAKOI_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "ALHIONICLCM" field.</summary>
+    public const int ALHIONICLCMFieldNumber = 8;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.OGHAIFPHMPE> _repeated_aLHIONICLCM_codec
+        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.OGHAIFPHMPE.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.OGHAIFPHMPE> aLHIONICLCM_ = new pbc::RepeatedField<global::March7thHoney.Proto.OGHAIFPHMPE>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.OGHAIFPHMPE> ALHIONICLCM {
+      get { return aLHIONICLCM_; }
+    }
+
+    /// <summary>Field number for the "ILLEDJLNGNF" field.</summary>
+    public const int ILLEDJLNGNFFieldNumber = 9;
+    private uint iLLEDJLNGNF_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint ILLEDJLNGNF {
+      get { return iLLEDJLNGNF_; }
+      set {
+        iLLEDJLNGNF_ = value;
       }
     }
 
@@ -215,15 +215,15 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!bJODJNFGMCB_.Equals(other.bJODJNFGMCB_)) return false;
-      if(!aLHIONICLCM_.Equals(other.aLHIONICLCM_)) return false;
-      if (GNAMNBDIEKG != other.GNAMNBDIEKG) return false;
-      if (Rank != other.Rank) return false;
-      if (ILLEDJLNGNF != other.ILLEDJLNGNF) return false;
-      if (CKLCDAGMFKP != other.CKLCDAGMFKP) return false;
       if (MonsterBattleType != other.MonsterBattleType) return false;
+      if (RoomUid != other.RoomUid) return false;
       if (LevelId != other.LevelId) return false;
+      if (GNAMNBDIEKG != other.GNAMNBDIEKG) return false;
+      if(!bJODJNFGMCB_.Equals(other.bJODJNFGMCB_)) return false;
+      if (Rank != other.Rank) return false;
       if (GAENFKKAKOI != other.GAENFKKAKOI) return false;
+      if(!aLHIONICLCM_.Equals(other.aLHIONICLCM_)) return false;
+      if (ILLEDJLNGNF != other.ILLEDJLNGNF) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -231,15 +231,15 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= bJODJNFGMCB_.GetHashCode();
-      hash ^= aLHIONICLCM_.GetHashCode();
-      if (GNAMNBDIEKG != 0) hash ^= GNAMNBDIEKG.GetHashCode();
-      if (Rank != 0) hash ^= Rank.GetHashCode();
-      if (ILLEDJLNGNF != 0) hash ^= ILLEDJLNGNF.GetHashCode();
-      if (CKLCDAGMFKP != 0UL) hash ^= CKLCDAGMFKP.GetHashCode();
       if (MonsterBattleType != 0) hash ^= MonsterBattleType.GetHashCode();
+      if (RoomUid != 0UL) hash ^= RoomUid.GetHashCode();
       if (LevelId != 0) hash ^= LevelId.GetHashCode();
+      if (GNAMNBDIEKG != 0) hash ^= GNAMNBDIEKG.GetHashCode();
+      hash ^= bJODJNFGMCB_.GetHashCode();
+      if (Rank != 0) hash ^= Rank.GetHashCode();
       if (GAENFKKAKOI != 0UL) hash ^= GAENFKKAKOI.GetHashCode();
+      hash ^= aLHIONICLCM_.GetHashCode();
+      if (ILLEDJLNGNF != 0) hash ^= ILLEDJLNGNF.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -262,9 +262,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(8);
         output.WriteUInt32(MonsterBattleType);
       }
-      if (CKLCDAGMFKP != 0UL) {
+      if (RoomUid != 0UL) {
         output.WriteRawTag(16);
-        output.WriteUInt64(CKLCDAGMFKP);
+        output.WriteUInt64(RoomUid);
       }
       if (LevelId != 0) {
         output.WriteRawTag(24);
@@ -302,9 +302,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(8);
         output.WriteUInt32(MonsterBattleType);
       }
-      if (CKLCDAGMFKP != 0UL) {
+      if (RoomUid != 0UL) {
         output.WriteRawTag(16);
-        output.WriteUInt64(CKLCDAGMFKP);
+        output.WriteUInt64(RoomUid);
       }
       if (LevelId != 0) {
         output.WriteRawTag(24);
@@ -338,28 +338,28 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += bJODJNFGMCB_.CalculateSize(_repeated_bJODJNFGMCB_codec);
-      size += aLHIONICLCM_.CalculateSize(_repeated_aLHIONICLCM_codec);
-      if (GNAMNBDIEKG != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GNAMNBDIEKG);
-      }
-      if (Rank != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Rank);
-      }
-      if (ILLEDJLNGNF != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ILLEDJLNGNF);
-      }
-      if (CKLCDAGMFKP != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(CKLCDAGMFKP);
-      }
       if (MonsterBattleType != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MonsterBattleType);
+      }
+      if (RoomUid != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(RoomUid);
       }
       if (LevelId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LevelId);
       }
+      if (GNAMNBDIEKG != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GNAMNBDIEKG);
+      }
+      size += bJODJNFGMCB_.CalculateSize(_repeated_bJODJNFGMCB_codec);
+      if (Rank != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Rank);
+      }
       if (GAENFKKAKOI != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(GAENFKKAKOI);
+      }
+      size += aLHIONICLCM_.CalculateSize(_repeated_aLHIONICLCM_codec);
+      if (ILLEDJLNGNF != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ILLEDJLNGNF);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -373,28 +373,28 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      bJODJNFGMCB_.Add(other.bJODJNFGMCB_);
-      aLHIONICLCM_.Add(other.aLHIONICLCM_);
-      if (other.GNAMNBDIEKG != 0) {
-        GNAMNBDIEKG = other.GNAMNBDIEKG;
-      }
-      if (other.Rank != 0) {
-        Rank = other.Rank;
-      }
-      if (other.ILLEDJLNGNF != 0) {
-        ILLEDJLNGNF = other.ILLEDJLNGNF;
-      }
-      if (other.CKLCDAGMFKP != 0UL) {
-        CKLCDAGMFKP = other.CKLCDAGMFKP;
-      }
       if (other.MonsterBattleType != 0) {
         MonsterBattleType = other.MonsterBattleType;
+      }
+      if (other.RoomUid != 0UL) {
+        RoomUid = other.RoomUid;
       }
       if (other.LevelId != 0) {
         LevelId = other.LevelId;
       }
+      if (other.GNAMNBDIEKG != 0) {
+        GNAMNBDIEKG = other.GNAMNBDIEKG;
+      }
+      bJODJNFGMCB_.Add(other.bJODJNFGMCB_);
+      if (other.Rank != 0) {
+        Rank = other.Rank;
+      }
       if (other.GAENFKKAKOI != 0UL) {
         GAENFKKAKOI = other.GAENFKKAKOI;
+      }
+      aLHIONICLCM_.Add(other.aLHIONICLCM_);
+      if (other.ILLEDJLNGNF != 0) {
+        ILLEDJLNGNF = other.ILLEDJLNGNF;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -420,7 +420,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 16: {
-            CKLCDAGMFKP = input.ReadUInt64();
+            RoomUid = input.ReadUInt64();
             break;
           }
           case 24: {
@@ -475,7 +475,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 16: {
-            CKLCDAGMFKP = input.ReadUInt64();
+            RoomUid = input.ReadUInt64();
             break;
           }
           case 24: {

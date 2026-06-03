@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "CAEFBGAFKHD.proto";
 
 message EnterRogueEndlessActivityStageCsReq {
-    repeated CAEFBGAFKHD avatar_list = 13;
-    uint32 MPMMCPMNLID = 7;
+    repeated CAEFBGAFKHD avatar_list = 11;
+    uint32 MPMMCPMNLID = 15;
 }

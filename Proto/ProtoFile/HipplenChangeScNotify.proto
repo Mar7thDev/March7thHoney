@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "HGDHJFGCEJF.proto";
 
 message HipplenChangeScNotify {
-    repeated HGDHJFGCEJF DGNGMJMPFGK = 13;
+    repeated HGDHJFGCEJF DGNGMJMPFGK = 5;
 }

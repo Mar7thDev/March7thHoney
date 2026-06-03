@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFGQ0VFSE5PSkFBTi5wcm90bxoSSXRlbUNvc3REYXRhLnByb3RvIkIKC0ZD",
-            "RUVITk9KQUFOEiIKC0ZLTUZIQUFKTU1GGAMgASgLMg0uSXRlbUNvc3REYXRh",
-            "Eg8KB3JldGNvZGUYCiABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
+            "RUVITk9KQUFOEiIKC0ZLTUZIQUFKTU1GGAUgASgLMg0uSXRlbUNvc3REYXRh",
+            "Eg8KB3JldGNvZGUYByABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
             "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemCostDataReflection.Descriptor, },
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "FKMFHAAJMMF" field.</summary>
-    public const int FKMFHAAJMMFFieldNumber = 3;
+    public const int FKMFHAAJMMFFieldNumber = 5;
     private global::March7thHoney.Proto.ItemCostData fKMFHAAJMMF_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 10;
+    public const int RetcodeFieldNumber = 7;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -153,11 +153,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (fKMFHAAJMMF_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(42);
         output.WriteMessage(FKMFHAAJMMF);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(56);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -171,11 +171,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (fKMFHAAJMMF_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(42);
         output.WriteMessage(FKMFHAAJMMF);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(56);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -234,14 +234,14 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 26: {
+          case 42: {
             if (fKMFHAAJMMF_ == null) {
               FKMFHAAJMMF = new global::March7thHoney.Proto.ItemCostData();
             }
             input.ReadMessage(FKMFHAAJMMF);
             break;
           }
-          case 80: {
+          case 56: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -264,14 +264,14 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 26: {
+          case 42: {
             if (fKMFHAAJMMF_ == null) {
               FKMFHAAJMMF = new global::March7thHoney.Proto.ItemCostData();
             }
             input.ReadMessage(FKMFHAAJMMF);
             break;
           }
-          case 80: {
+          case 56: {
             Retcode = input.ReadUInt32();
             break;
           }

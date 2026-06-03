@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GetPrivateChatHistoryCsReq {
-    uint32 contact_side = 1;
-    uint32 target_side = 14;
+    uint32 target_side = 8;
+    uint32 contact_side = 14;
 }

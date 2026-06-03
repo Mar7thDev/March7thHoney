@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "DKFJLHHDFKO.proto";
 
 message RogueTournStartCsReq {
-    repeated DKFJLHHDFKO avatar_list = 2;
-    uint32 area_id = 12;
-    bool KENPENNAGLG = 10;
+    uint32 area_id = 1;
     bool EJDMOENBHDP = 5;
+    bool KENPENNAGLG = 11;
+    repeated DKFJLHHDFKO avatar_list = 13;
 }

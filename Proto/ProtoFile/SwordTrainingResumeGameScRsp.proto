@@ -6,5 +6,5 @@ import "EINKHFKDCCD.proto";
 
 message SwordTrainingResumeGameScRsp {
     EINKHFKDCCD AJGOEJHKOKE = 4;
-    uint32 retcode = 12;
+    uint32 retcode = 9;
 }

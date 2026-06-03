@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "BPONKBLGNNL.proto";
 
 message AACJBNFGABA {
-    repeated BPONKBLGNNL EMAGFIBLNCJ = 11;
+    repeated BPONKBLGNNL EMAGFIBLNCJ = 6;
 }

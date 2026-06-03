@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "MKGHJJCPBLP.proto";
 
 message DKOPOIIBDGJ {
-    map<uint32, MKGHJJCPBLP> MBDBADFENPL = 1;
+    map<uint32, MKGHJJCPBLP> MBDBADFENPL = 15;
 }

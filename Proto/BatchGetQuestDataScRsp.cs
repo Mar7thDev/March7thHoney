@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChxCYXRjaEdldFF1ZXN0RGF0YVNjUnNwLnByb3RvGgtRdWVzdC5wcm90byJF",
-            "ChZCYXRjaEdldFF1ZXN0RGF0YVNjUnNwEhoKCnF1ZXN0X2xpc3QYDSADKAsy",
-            "Bi5RdWVzdBIPCgdyZXRjb2RlGAQgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
+            "ChZCYXRjaEdldFF1ZXN0RGF0YVNjUnNwEg8KB3JldGNvZGUYAyABKA0SGgoK",
+            "cXVlc3RfbGlzdBgKIAMoCzIGLlF1ZXN0QhaqAhNNYXJjaDd0aEhvbmV5LlBy",
             "b3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.QuestReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BatchGetQuestDataScRsp), global::March7thHoney.Proto.BatchGetQuestDataScRsp.Parser, new[]{ "QuestList", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BatchGetQuestDataScRsp), global::March7thHoney.Proto.BatchGetQuestDataScRsp.Parser, new[]{ "Retcode", "QuestList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BatchGetQuestDataScRsp(BatchGetQuestDataScRsp other) : this() {
-      questList_ = other.questList_.Clone();
       retcode_ = other.retcode_;
+      questList_ = other.questList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,19 +84,8 @@ namespace March7thHoney.Proto {
       return new BatchGetQuestDataScRsp(this);
     }
 
-    /// <summary>Field number for the "quest_list" field.</summary>
-    public const int QuestListFieldNumber = 13;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.Quest> _repeated_questList_codec
-        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.Quest.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.Quest> questList_ = new pbc::RepeatedField<global::March7thHoney.Proto.Quest>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.Quest> QuestList {
-      get { return questList_; }
-    }
-
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 4;
+    public const int RetcodeFieldNumber = 3;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -105,6 +94,17 @@ namespace March7thHoney.Proto {
       set {
         retcode_ = value;
       }
+    }
+
+    /// <summary>Field number for the "quest_list" field.</summary>
+    public const int QuestListFieldNumber = 10;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.Quest> _repeated_questList_codec
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.Quest.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.Quest> questList_ = new pbc::RepeatedField<global::March7thHoney.Proto.Quest>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.Quest> QuestList {
+      get { return questList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!questList_.Equals(other.questList_)) return false;
       if (Retcode != other.Retcode) return false;
+      if(!questList_.Equals(other.questList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= questList_.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      hash ^= questList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,7 +152,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Retcode != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(24);
         output.WriteUInt32(Retcode);
       }
       questList_.WriteTo(output, _repeated_questList_codec);
@@ -167,7 +167,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Retcode != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(24);
         output.WriteUInt32(Retcode);
       }
       questList_.WriteTo(ref output, _repeated_questList_codec);
@@ -181,10 +181,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += questList_.CalculateSize(_repeated_questList_codec);
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
+      size += questList_.CalculateSize(_repeated_questList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -197,10 +197,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      questList_.Add(other.questList_);
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
+      questList_.Add(other.questList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -220,11 +220,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
+          case 24: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 106: {
+          case 82: {
             questList_.AddEntriesFrom(input, _repeated_questList_codec);
             break;
           }
@@ -247,11 +247,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
+          case 24: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 106: {
+          case 82: {
             questList_.AddEntriesFrom(ref input, _repeated_questList_codec);
             break;
           }

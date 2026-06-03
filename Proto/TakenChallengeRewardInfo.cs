@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch5UYWtlbkNoYWxsZW5nZVJld2FyZEluZm8ucHJvdG8aDkl0ZW1MaXN0LnBy",
-            "b3RvIkkKGFRha2VuQ2hhbGxlbmdlUmV3YXJkSW5mbxIZCgZyZXdhcmQYDyAB",
-            "KAsyCS5JdGVtTGlzdBISCgpzdGFyX2NvdW50GA0gASgNQhaqAhNNYXJjaDd0",
+            "b3RvIkkKGFRha2VuQ2hhbGxlbmdlUmV3YXJkSW5mbxIZCgZyZXdhcmQYBCAB",
+            "KAsyCS5JdGVtTGlzdBISCgpzdGFyX2NvdW50GAUgASgNQhaqAhNNYXJjaDd0",
             "aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemListReflection.Descriptor, },
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "reward" field.</summary>
-    public const int RewardFieldNumber = 15;
+    public const int RewardFieldNumber = 4;
     private global::March7thHoney.Proto.ItemList reward_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "star_count" field.</summary>
-    public const int StarCountFieldNumber = 13;
+    public const int StarCountFieldNumber = 5;
     private uint starCount_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,13 +152,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (StarCount != 0) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(StarCount);
-      }
       if (reward_ != null) {
-        output.WriteRawTag(122);
+        output.WriteRawTag(34);
         output.WriteMessage(Reward);
+      }
+      if (StarCount != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(StarCount);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,13 +170,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (StarCount != 0) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(StarCount);
-      }
       if (reward_ != null) {
-        output.WriteRawTag(122);
+        output.WriteRawTag(34);
         output.WriteMessage(Reward);
+      }
+      if (StarCount != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(StarCount);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -234,15 +234,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 104: {
-            StarCount = input.ReadUInt32();
-            break;
-          }
-          case 122: {
+          case 34: {
             if (reward_ == null) {
               Reward = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(Reward);
+            break;
+          }
+          case 40: {
+            StarCount = input.ReadUInt32();
             break;
           }
         }
@@ -264,15 +264,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 104: {
-            StarCount = input.ReadUInt32();
-            break;
-          }
-          case 122: {
+          case 34: {
             if (reward_ == null) {
               Reward = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(Reward);
+            break;
+          }
+          case 40: {
+            StarCount = input.ReadUInt32();
             break;
           }
         }

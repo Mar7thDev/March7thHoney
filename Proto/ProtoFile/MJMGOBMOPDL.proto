@@ -8,12 +8,12 @@ import "LGCPLLJLHFF.proto";
 import "PFLOIHLLMEE.proto";
 
 message MJMGOBMOPDL {
-    PFLOIHLLMEE PHGJIJELKDB = 9;
-    string name = 3;
-    HMGGOEHMIJO HHFAAFOBKME = 5;
-    repeated DKFJLHHDFKO avatar_list = 7;
-    LGCPLLJLHFF data = 13;
+    repeated DKFJLHHDFKO avatar_list = 3;
+    string name = 5;
     int64 time = 6;
-    uint32 NPHAJEKCBKF = 14;
-    int64 end_time = 11;
+    int64 end_time = 9;
+    uint32 NPHAJEKCBKF = 11;
+    LGCPLLJLHFF data = 12;
+    PFLOIHLLMEE PHGJIJELKDB = 13;
+    HMGGOEHMIJO HHFAAFOBKME = 14;
 }

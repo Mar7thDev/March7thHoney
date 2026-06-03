@@ -3,10 +3,10 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message KJMHIDMOBMB {
-    repeated uint32 IKLJBAJBOPG = 10;
-    uint64 JBIDLKCBBCF = 9;
-    uint32 OAJGKOOFNBL = 8;
-    uint32 LGGDEGPEAFL = 5;
-    bool CNHCHIPIIDD = 13;
-    uint32 CGDNMDDIHKA = 7;
+    uint64 battle_power = 1;
+    uint32 chapter_index = 4;
+    uint32 captain_num = 5;
+    uint32 OAJGKOOFNBL = 11;
+    bool is_final_act_finished = 12;
+    repeated uint32 IKLJBAJBOPG = 14;
 }

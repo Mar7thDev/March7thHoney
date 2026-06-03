@@ -2,9 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-import "PHINPOJOJGD.proto";
-
 message CDOKCLHEDBO {
-    PHINPOJOJGD EGGJFCELHNK = 12;
-    uint32 retcode = 5;
+    uint32 retcode = 15;
 }

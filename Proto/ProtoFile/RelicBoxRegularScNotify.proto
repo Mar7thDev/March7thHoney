@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "DPJCBHKGFOK.proto";
 
 message RelicBoxRegularScNotify {
-    DPJCBHKGFOK AHNPPGMFOKN = 12;
+    DPJCBHKGFOK AHNPPGMFOKN = 14;
 }

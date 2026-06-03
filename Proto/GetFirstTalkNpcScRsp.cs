@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChpHZXRGaXJzdFRhbGtOcGNTY1JzcC5wcm90bxoWRmlyc3ROcGNUYWxrSW5m",
             "by5wcm90byJYChRHZXRGaXJzdFRhbGtOcGNTY1JzcBIvChRucGNfbWVldF9z",
-            "dGF0dXNfbGlzdBgJIAMoCzIRLkZpcnN0TnBjVGFsa0luZm8SDwoHcmV0Y29k",
-            "ZRgPIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "dGF0dXNfbGlzdBgBIAMoCzIRLkZpcnN0TnBjVGFsa0luZm8SDwoHcmV0Y29k",
+            "ZRgJIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.FirstNpcTalkInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -85,9 +85,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "npc_meet_status_list" field.</summary>
-    public const int NpcMeetStatusListFieldNumber = 9;
+    public const int NpcMeetStatusListFieldNumber = 1;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.FirstNpcTalkInfo> _repeated_npcMeetStatusList_codec
-        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.FirstNpcTalkInfo.Parser);
+        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.FirstNpcTalkInfo.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.FirstNpcTalkInfo> npcMeetStatusList_ = new pbc::RepeatedField<global::March7thHoney.Proto.FirstNpcTalkInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 15;
+    public const int RetcodeFieldNumber = 9;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -153,7 +153,7 @@ namespace March7thHoney.Proto {
     #else
       npcMeetStatusList_.WriteTo(output, _repeated_npcMeetStatusList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(72);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -168,7 +168,7 @@ namespace March7thHoney.Proto {
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       npcMeetStatusList_.WriteTo(ref output, _repeated_npcMeetStatusList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(72);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -220,11 +220,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 74: {
+          case 10: {
             npcMeetStatusList_.AddEntriesFrom(input, _repeated_npcMeetStatusList_codec);
             break;
           }
-          case 120: {
+          case 72: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -247,11 +247,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 74: {
+          case 10: {
             npcMeetStatusList_.AddEntriesFrom(ref input, _repeated_npcMeetStatusList_codec);
             break;
           }
-          case 120: {
+          case 72: {
             Retcode = input.ReadUInt32();
             break;
           }

@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFFQUNDT0pMT1BKTC5wcm90bxoRQ0VMTENDS0pJR0wucHJvdG8iMAoLRUFD",
-            "Q09KTE9QSkwSIQoLQ0RBTUtCR0xOS08YBCADKAsyDC5DRUxMQ0NLSklHTEIW",
+            "Q09KTE9QSkwSIQoLQ0RBTUtCR0xOS08YDyADKAsyDC5DRUxMQ0NLSklHTEIW",
             "qgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CELLCCKJIGLReflection.Descriptor, },
@@ -83,9 +83,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "CDAMKBGLNKO" field.</summary>
-    public const int CDAMKBGLNKOFieldNumber = 4;
+    public const int CDAMKBGLNKOFieldNumber = 15;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.CELLCCKJIGL> _repeated_cDAMKBGLNKO_codec
-        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.CELLCCKJIGL.Parser);
+        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.CELLCCKJIGL.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.CELLCCKJIGL> cDAMKBGLNKO_ = new pbc::RepeatedField<global::March7thHoney.Proto.CELLCCKJIGL>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -190,7 +190,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 34: {
+          case 122: {
             cDAMKBGLNKO_.AddEntriesFrom(input, _repeated_cDAMKBGLNKO_codec);
             break;
           }
@@ -213,7 +213,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 34: {
+          case 122: {
             cDAMKBGLNKO_.AddEntriesFrom(ref input, _repeated_cDAMKBGLNKO_codec);
             break;
           }

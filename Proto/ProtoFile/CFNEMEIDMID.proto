@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message CFNEMEIDMID {
-    uint32 area_id = 14;
-    uint32 HOLPMKOHACH = 2;
+    uint32 area_id = 2;
+    uint32 HOLPMKOHACH = 9;
 }

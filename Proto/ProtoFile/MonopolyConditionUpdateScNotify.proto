@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "CCMCKOKEJNI.proto";
 
 message MonopolyConditionUpdateScNotify {
-    CCMCKOKEJNI CICLCCFLALE = 8;
+    CCMCKOKEJNI CICLCCFLALE = 4;
 }

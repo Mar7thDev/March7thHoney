@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static BDEOLCNPBPPReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFCREVPTENOUEJQUC5wcm90byImCgtCREVPTENOUEJQUBILCgNjbnQYDyAB",
-            "KA0SCgoCaWQYByABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
+            "ChFCREVPTENOUEJQUC5wcm90byImCgtCREVPTENOUEJQUBIKCgJpZBgIIAEo",
+            "DRILCgNjbnQYDCABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
             "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BDEOLCNPBPP), global::March7thHoney.Proto.BDEOLCNPBPP.Parser, new[]{ "Cnt", "Id" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BDEOLCNPBPP), global::March7thHoney.Proto.BDEOLCNPBPP.Parser, new[]{ "Id", "Cnt" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BDEOLCNPBPP(BDEOLCNPBPP other) : this() {
-      cnt_ = other.cnt_;
       id_ = other.id_;
+      cnt_ = other.cnt_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,20 +83,8 @@ namespace March7thHoney.Proto {
       return new BDEOLCNPBPP(this);
     }
 
-    /// <summary>Field number for the "cnt" field.</summary>
-    public const int CntFieldNumber = 15;
-    private uint cnt_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Cnt {
-      get { return cnt_; }
-      set {
-        cnt_ = value;
-      }
-    }
-
     /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 7;
+    public const int IdFieldNumber = 8;
     private uint id_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -104,6 +92,18 @@ namespace March7thHoney.Proto {
       get { return id_; }
       set {
         id_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "cnt" field.</summary>
+    public const int CntFieldNumber = 12;
+    private uint cnt_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Cnt {
+      get { return cnt_; }
+      set {
+        cnt_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Cnt != other.Cnt) return false;
       if (Id != other.Id) return false;
+      if (Cnt != other.Cnt) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Cnt != 0) hash ^= Cnt.GetHashCode();
       if (Id != 0) hash ^= Id.GetHashCode();
+      if (Cnt != 0) hash ^= Cnt.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Id != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(64);
         output.WriteUInt32(Id);
       }
       if (Cnt != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(96);
         output.WriteUInt32(Cnt);
       }
       if (_unknownFields != null) {
@@ -170,11 +170,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Id != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(64);
         output.WriteUInt32(Id);
       }
       if (Cnt != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(96);
         output.WriteUInt32(Cnt);
       }
       if (_unknownFields != null) {
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Cnt != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Cnt);
-      }
       if (Id != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Id);
+      }
+      if (Cnt != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Cnt);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.Cnt != 0) {
-        Cnt = other.Cnt;
-      }
       if (other.Id != 0) {
         Id = other.Id;
+      }
+      if (other.Cnt != 0) {
+        Cnt = other.Cnt;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,11 +230,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
+          case 64: {
             Id = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 96: {
             Cnt = input.ReadUInt32();
             break;
           }
@@ -257,11 +257,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
+          case 64: {
             Id = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 96: {
             Cnt = input.ReadUInt32();
             break;
           }

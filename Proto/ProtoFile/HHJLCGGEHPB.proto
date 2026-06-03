@@ -6,7 +6,6 @@ import "PlayerSimpleInfo.proto";
 
 message HHJLCGGEHPB {
     PlayerSimpleInfo CILGIDDHODG = 1;
-    uint32 PLPPPCEPBDO = 7;
-    int64 NPAIFCLAPNH = 13;
-    int64 KFACPOBAAGM = 11;
+    uint32 PLPPPCEPBDO = 4;
+    int64 KFACPOBAAGM = 13;
 }

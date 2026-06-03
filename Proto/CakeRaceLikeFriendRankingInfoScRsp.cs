@@ -26,13 +26,13 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CihDYWtlUmFjZUxpa2VGcmllbmRSYW5raW5nSW5mb1NjUnNwLnByb3RvGg5J",
             "dGVtTGlzdC5wcm90byJ/CiJDYWtlUmFjZUxpa2VGcmllbmRSYW5raW5nSW5m",
-            "b1NjUnNwEh4KC3Jld2FyZF9saXN0GA8gASgLMgkuSXRlbUxpc3QSEwoLTFBC",
-            "QkpGRk5BQ0EYDSADKA0SDwoHcmV0Y29kZRgOIAEoDRITCgt0ZWxlcG9ydF9p",
-            "ZBgJIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "b1NjUnNwEg8KB3JldGNvZGUYAiABKA0SHgoLcmV3YXJkX2xpc3QYCSABKAsy",
+            "CS5JdGVtTGlzdBITCgt0ZWxlcG9ydF9pZBgMIAEoDRITCgtMUEJCSkZGTkFD",
+            "QRgNIAMoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemListReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.CakeRaceLikeFriendRankingInfoScRsp), global::March7thHoney.Proto.CakeRaceLikeFriendRankingInfoScRsp.Parser, new[]{ "RewardList", "LPBBJFFNACA", "Retcode", "TeleportId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.CakeRaceLikeFriendRankingInfoScRsp), global::March7thHoney.Proto.CakeRaceLikeFriendRankingInfoScRsp.Parser, new[]{ "Retcode", "RewardList", "TeleportId", "LPBBJFFNACA" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,10 +74,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public CakeRaceLikeFriendRankingInfoScRsp(CakeRaceLikeFriendRankingInfoScRsp other) : this() {
-      rewardList_ = other.rewardList_ != null ? other.rewardList_.Clone() : null;
-      lPBBJFFNACA_ = other.lPBBJFFNACA_.Clone();
       retcode_ = other.retcode_;
+      rewardList_ = other.rewardList_ != null ? other.rewardList_.Clone() : null;
       teleportId_ = other.teleportId_;
+      lPBBJFFNACA_ = other.lPBBJFFNACA_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -87,8 +87,20 @@ namespace March7thHoney.Proto {
       return new CakeRaceLikeFriendRankingInfoScRsp(this);
     }
 
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 2;
+    private uint retcode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Retcode {
+      get { return retcode_; }
+      set {
+        retcode_ = value;
+      }
+    }
+
     /// <summary>Field number for the "reward_list" field.</summary>
-    public const int RewardListFieldNumber = 15;
+    public const int RewardListFieldNumber = 9;
     private global::March7thHoney.Proto.ItemList rewardList_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,6 +108,18 @@ namespace March7thHoney.Proto {
       get { return rewardList_; }
       set {
         rewardList_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "teleport_id" field.</summary>
+    public const int TeleportIdFieldNumber = 12;
+    private uint teleportId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint TeleportId {
+      get { return teleportId_; }
+      set {
+        teleportId_ = value;
       }
     }
 
@@ -108,30 +132,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<uint> LPBBJFFNACA {
       get { return lPBBJFFNACA_; }
-    }
-
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 14;
-    private uint retcode_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
-      set {
-        retcode_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "teleport_id" field.</summary>
-    public const int TeleportIdFieldNumber = 9;
-    private uint teleportId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint TeleportId {
-      get { return teleportId_; }
-      set {
-        teleportId_ = value;
-      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -149,10 +149,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(RewardList, other.RewardList)) return false;
-      if(!lPBBJFFNACA_.Equals(other.lPBBJFFNACA_)) return false;
       if (Retcode != other.Retcode) return false;
+      if (!object.Equals(RewardList, other.RewardList)) return false;
       if (TeleportId != other.TeleportId) return false;
+      if(!lPBBJFFNACA_.Equals(other.lPBBJFFNACA_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -160,10 +160,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (rewardList_ != null) hash ^= RewardList.GetHashCode();
-      hash ^= lPBBJFFNACA_.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (rewardList_ != null) hash ^= RewardList.GetHashCode();
       if (TeleportId != 0) hash ^= TeleportId.GetHashCode();
+      hash ^= lPBBJFFNACA_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -182,19 +182,19 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (TeleportId != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(TeleportId);
-      }
-      lPBBJFFNACA_.WriteTo(output, _repeated_lPBBJFFNACA_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(16);
         output.WriteUInt32(Retcode);
       }
       if (rewardList_ != null) {
-        output.WriteRawTag(122);
+        output.WriteRawTag(74);
         output.WriteMessage(RewardList);
       }
+      if (TeleportId != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(TeleportId);
+      }
+      lPBBJFFNACA_.WriteTo(output, _repeated_lPBBJFFNACA_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -205,19 +205,19 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (TeleportId != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(TeleportId);
-      }
-      lPBBJFFNACA_.WriteTo(ref output, _repeated_lPBBJFFNACA_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(16);
         output.WriteUInt32(Retcode);
       }
       if (rewardList_ != null) {
-        output.WriteRawTag(122);
+        output.WriteRawTag(74);
         output.WriteMessage(RewardList);
       }
+      if (TeleportId != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(TeleportId);
+      }
+      lPBBJFFNACA_.WriteTo(ref output, _repeated_lPBBJFFNACA_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -228,16 +228,16 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (rewardList_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(RewardList);
-      }
-      size += lPBBJFFNACA_.CalculateSize(_repeated_lPBBJFFNACA_codec);
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      }
+      if (rewardList_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(RewardList);
       }
       if (TeleportId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TeleportId);
       }
+      size += lPBBJFFNACA_.CalculateSize(_repeated_lPBBJFFNACA_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -250,19 +250,19 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
+      }
       if (other.rewardList_ != null) {
         if (rewardList_ == null) {
           RewardList = new global::March7thHoney.Proto.ItemList();
         }
         RewardList.MergeFrom(other.RewardList);
       }
-      lPBBJFFNACA_.Add(other.lPBBJFFNACA_);
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
-      }
       if (other.TeleportId != 0) {
         TeleportId = other.TeleportId;
       }
+      lPBBJFFNACA_.Add(other.lPBBJFFNACA_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -282,24 +282,24 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 72: {
+          case 16: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 74: {
+            if (rewardList_ == null) {
+              RewardList = new global::March7thHoney.Proto.ItemList();
+            }
+            input.ReadMessage(RewardList);
+            break;
+          }
+          case 96: {
             TeleportId = input.ReadUInt32();
             break;
           }
           case 106:
           case 104: {
             lPBBJFFNACA_.AddEntriesFrom(input, _repeated_lPBBJFFNACA_codec);
-            break;
-          }
-          case 112: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 122: {
-            if (rewardList_ == null) {
-              RewardList = new global::March7thHoney.Proto.ItemList();
-            }
-            input.ReadMessage(RewardList);
             break;
           }
         }
@@ -321,24 +321,24 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 72: {
+          case 16: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 74: {
+            if (rewardList_ == null) {
+              RewardList = new global::March7thHoney.Proto.ItemList();
+            }
+            input.ReadMessage(RewardList);
+            break;
+          }
+          case 96: {
             TeleportId = input.ReadUInt32();
             break;
           }
           case 106:
           case 104: {
             lPBBJFFNACA_.AddEntriesFrom(ref input, _repeated_lPBBJFFNACA_codec);
-            break;
-          }
-          case 112: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 122: {
-            if (rewardList_ == null) {
-              RewardList = new global::March7thHoney.Proto.ItemList();
-            }
-            input.ReadMessage(RewardList);
             break;
           }
         }

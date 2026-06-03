@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message AetherDivideRefreshEndlessScRsp {
-    uint32 JAOAHONIBJI = 13;
-    uint32 retcode = 1;
+    uint32 JAOAHONIBJI = 6;
+    uint32 retcode = 11;
 }

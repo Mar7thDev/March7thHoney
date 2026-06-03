@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFNQ0RCSkhPQ0dISS5wcm90byI0CgtNQ0RCSkhPQ0dISRIQCgh0cmFpdF9p",
-            "ZBgBIAEoDRITCgtCSkRPSU5BSERMThgEIAEoCEIWqgITTWFyY2g3dGhIb25l",
+            "ZBgJIAEoDRITCgtCSkRPSU5BSERMThgLIAEoCEIWqgITTWFyY2g3dGhIb25l",
             "eS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "trait_id" field.</summary>
-    public const int TraitIdFieldNumber = 1;
+    public const int TraitIdFieldNumber = 9;
     private uint traitId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "BJDOINAHDLN" field.</summary>
-    public const int BJDOINAHDLNFieldNumber = 4;
+    public const int BJDOINAHDLNFieldNumber = 11;
     private bool bJDOINAHDLN_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (TraitId != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(72);
         output.WriteUInt32(TraitId);
       }
       if (BJDOINAHDLN != false) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(88);
         output.WriteBool(BJDOINAHDLN);
       }
       if (_unknownFields != null) {
@@ -170,11 +170,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (TraitId != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(72);
         output.WriteUInt32(TraitId);
       }
       if (BJDOINAHDLN != false) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(88);
         output.WriteBool(BJDOINAHDLN);
       }
       if (_unknownFields != null) {
@@ -230,11 +230,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
+          case 72: {
             TraitId = input.ReadUInt32();
             break;
           }
-          case 32: {
+          case 88: {
             BJDOINAHDLN = input.ReadBool();
             break;
           }
@@ -257,11 +257,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
+          case 72: {
             TraitId = input.ReadUInt32();
             break;
           }
-          case 32: {
+          case 88: {
             BJDOINAHDLN = input.ReadBool();
             break;
           }

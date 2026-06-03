@@ -2,10 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-import "BHBAILHMCOI.proto";
-import "LHLMPOHKPKG.proto";
+import "GridFightDamageSttInfo.proto";
+import "GridFightSectionRecordInfo.proto";
 
 message GANGPHPGFCL {
-    repeated LHLMPOHKPKG FNJNKKMNKIM = 10;
-    BHBAILHMCOI NKBIDLBLONC = 2;
+    repeated GridFightSectionRecordInfo FNJNKKMNKIM = 3;
+    GridFightDamageSttInfo NKBIDLBLONC = 6;
 }

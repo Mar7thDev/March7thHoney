@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CilHZXRGcmllbmRSZWNvbW1lbmRMaW5ldXBEZXRhaWxDc1JlcS5wcm90bxoR",
             "SkZOSktBUFBOT0YucHJvdG8iWwojR2V0RnJpZW5kUmVjb21tZW5kTGluZXVw",
-            "RGV0YWlsQ3NSZXESGgoEdHlwZRgGIAEoDjIMLkpGTkpLQVBQTk9GEgsKA2tl",
-            "eRgEIAEoDRILCgN1aWQYCSABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
+            "RGV0YWlsQ3NSZXESGgoEdHlwZRgCIAEoDjIMLkpGTkpLQVBQTk9GEgsKA2tl",
+            "eRgEIAEoDRILCgN1aWQYByABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
             "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.JFNJKAPPNOFReflection.Descriptor, },
@@ -87,7 +87,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "type" field.</summary>
-    public const int TypeFieldNumber = 6;
+    public const int TypeFieldNumber = 2;
     private global::March7thHoney.Proto.JFNJKAPPNOF type_ = global::March7thHoney.Proto.JFNJKAPPNOF.Nlcdgipgfdj;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -111,7 +111,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "uid" field.</summary>
-    public const int UidFieldNumber = 9;
+    public const int UidFieldNumber = 7;
     private uint uid_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -168,16 +168,16 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (Type != global::March7thHoney.Proto.JFNJKAPPNOF.Nlcdgipgfdj) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) Type);
+      }
       if (Key != 0) {
         output.WriteRawTag(32);
         output.WriteUInt32(Key);
       }
-      if (Type != global::March7thHoney.Proto.JFNJKAPPNOF.Nlcdgipgfdj) {
-        output.WriteRawTag(48);
-        output.WriteEnum((int) Type);
-      }
       if (Uid != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(56);
         output.WriteUInt32(Uid);
       }
       if (_unknownFields != null) {
@@ -190,16 +190,16 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Type != global::March7thHoney.Proto.JFNJKAPPNOF.Nlcdgipgfdj) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) Type);
+      }
       if (Key != 0) {
         output.WriteRawTag(32);
         output.WriteUInt32(Key);
       }
-      if (Type != global::March7thHoney.Proto.JFNJKAPPNOF.Nlcdgipgfdj) {
-        output.WriteRawTag(48);
-        output.WriteEnum((int) Type);
-      }
       if (Uid != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(56);
         output.WriteUInt32(Uid);
       }
       if (_unknownFields != null) {
@@ -261,15 +261,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
+          case 16: {
+            Type = (global::March7thHoney.Proto.JFNJKAPPNOF) input.ReadEnum();
+            break;
+          }
           case 32: {
             Key = input.ReadUInt32();
             break;
           }
-          case 48: {
-            Type = (global::March7thHoney.Proto.JFNJKAPPNOF) input.ReadEnum();
-            break;
-          }
-          case 72: {
+          case 56: {
             Uid = input.ReadUInt32();
             break;
           }
@@ -292,15 +292,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
+          case 16: {
+            Type = (global::March7thHoney.Proto.JFNJKAPPNOF) input.ReadEnum();
+            break;
+          }
           case 32: {
             Key = input.ReadUInt32();
             break;
           }
-          case 48: {
-            Type = (global::March7thHoney.Proto.JFNJKAPPNOF) input.ReadEnum();
-            break;
-          }
-          case 72: {
+          case 56: {
             Uid = input.ReadUInt32();
             break;
           }

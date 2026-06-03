@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "GachaCeiling.proto";
 
 message GetGachaCeilingScRsp {
-    GachaCeiling gacha_ceiling = 3;
-    uint32 gacha_type = 12;
-    uint32 retcode = 5;
+    uint32 retcode = 2;
+    GachaCeiling gacha_ceiling = 5;
+    uint32 gacha_type = 13;
 }

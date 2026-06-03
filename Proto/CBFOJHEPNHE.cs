@@ -24,16 +24,16 @@ namespace March7thHoney.Proto {
     static CBFOJHEPNHEReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFDQkZPSkhFUE5IRS5wcm90bxoVQmF0dGxlRW5kU3RhdHVzLnByb3RvIr8B",
-            "CgtDQkZPSkhFUE5IRRITCgtJTUNKRkdJUElGSRgEIAEoDRITCgtCTUFIT0dL",
-            "TVBEShgJIAEoDRIQCghzdGFnZV9pZBgBIAEoDRIkCgplbmRfc3RhdHVzGAgg",
-            "ASgOMhAuQmF0dGxlRW5kU3RhdHVzEhAKCHNjb3JlX2lkGAUgASgNEhEKCW1h",
-            "eF9zY29yZRgPIAEoDRIUCgx0b3RhbF9kYW1hZ2UYByABKA0SEwoLQkpLQkdP",
-            "QUxOSEEYDCABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ChFDQkZPSkhFUE5IRS5wcm90bxoVQmF0dGxlRW5kU3RhdHVzLnByb3RvIsAB",
+            "CgtDQkZPSkhFUE5IRRIkCgplbmRfc3RhdHVzGAMgASgOMhAuQmF0dGxlRW5k",
+            "U3RhdHVzEhQKDGRhbWFnZV9zY29yZRgEIAEoDRIQCghzdGFnZV9pZBgFIAEo",
+            "DRIQCghzY29yZV9pZBgGIAEoDRITCgtJTUNKRkdJUElGSRgHIAEoDRITCgtC",
+            "TUFIT0dLTVBEShgJIAEoDRIRCgltYXhfc2NvcmUYDSABKA0SFAoMdG90YWxf",
+            "ZGFtYWdlGA8gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.BattleEndStatusReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.CBFOJHEPNHE), global::March7thHoney.Proto.CBFOJHEPNHE.Parser, new[]{ "IMCJFGIPIFI", "BMAHOGKMPDJ", "StageId", "EndStatus", "ScoreId", "MaxScore", "TotalDamage", "BJKBGOALNHA" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.CBFOJHEPNHE), global::March7thHoney.Proto.CBFOJHEPNHE.Parser, new[]{ "EndStatus", "DamageScore", "StageId", "ScoreId", "IMCJFGIPIFI", "BMAHOGKMPDJ", "MaxScore", "TotalDamage" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,14 +75,14 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public CBFOJHEPNHE(CBFOJHEPNHE other) : this() {
+      endStatus_ = other.endStatus_;
+      damageScore_ = other.damageScore_;
+      stageId_ = other.stageId_;
+      scoreId_ = other.scoreId_;
       iMCJFGIPIFI_ = other.iMCJFGIPIFI_;
       bMAHOGKMPDJ_ = other.bMAHOGKMPDJ_;
-      stageId_ = other.stageId_;
-      endStatus_ = other.endStatus_;
-      scoreId_ = other.scoreId_;
       maxScore_ = other.maxScore_;
       totalDamage_ = other.totalDamage_;
-      bJKBGOALNHA_ = other.bJKBGOALNHA_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -92,8 +92,56 @@ namespace March7thHoney.Proto {
       return new CBFOJHEPNHE(this);
     }
 
+    /// <summary>Field number for the "end_status" field.</summary>
+    public const int EndStatusFieldNumber = 3;
+    private global::March7thHoney.Proto.BattleEndStatus endStatus_ = global::March7thHoney.Proto.BattleEndStatus.BattleEndNone;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.BattleEndStatus EndStatus {
+      get { return endStatus_; }
+      set {
+        endStatus_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "damage_score" field.</summary>
+    public const int DamageScoreFieldNumber = 4;
+    private uint damageScore_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint DamageScore {
+      get { return damageScore_; }
+      set {
+        damageScore_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "stage_id" field.</summary>
+    public const int StageIdFieldNumber = 5;
+    private uint stageId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint StageId {
+      get { return stageId_; }
+      set {
+        stageId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "score_id" field.</summary>
+    public const int ScoreIdFieldNumber = 6;
+    private uint scoreId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint ScoreId {
+      get { return scoreId_; }
+      set {
+        scoreId_ = value;
+      }
+    }
+
     /// <summary>Field number for the "IMCJFGIPIFI" field.</summary>
-    public const int IMCJFGIPIFIFieldNumber = 4;
+    public const int IMCJFGIPIFIFieldNumber = 7;
     private uint iMCJFGIPIFI_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -116,44 +164,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "stage_id" field.</summary>
-    public const int StageIdFieldNumber = 1;
-    private uint stageId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint StageId {
-      get { return stageId_; }
-      set {
-        stageId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "end_status" field.</summary>
-    public const int EndStatusFieldNumber = 8;
-    private global::March7thHoney.Proto.BattleEndStatus endStatus_ = global::March7thHoney.Proto.BattleEndStatus.BattleEndNone;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.BattleEndStatus EndStatus {
-      get { return endStatus_; }
-      set {
-        endStatus_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "score_id" field.</summary>
-    public const int ScoreIdFieldNumber = 5;
-    private uint scoreId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint ScoreId {
-      get { return scoreId_; }
-      set {
-        scoreId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "max_score" field.</summary>
-    public const int MaxScoreFieldNumber = 15;
+    public const int MaxScoreFieldNumber = 13;
     private uint maxScore_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -165,7 +177,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "total_damage" field.</summary>
-    public const int TotalDamageFieldNumber = 7;
+    public const int TotalDamageFieldNumber = 15;
     private uint totalDamage_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -173,18 +185,6 @@ namespace March7thHoney.Proto {
       get { return totalDamage_; }
       set {
         totalDamage_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "BJKBGOALNHA" field.</summary>
-    public const int BJKBGOALNHAFieldNumber = 12;
-    private uint bJKBGOALNHA_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint BJKBGOALNHA {
-      get { return bJKBGOALNHA_; }
-      set {
-        bJKBGOALNHA_ = value;
       }
     }
 
@@ -203,14 +203,14 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (EndStatus != other.EndStatus) return false;
+      if (DamageScore != other.DamageScore) return false;
+      if (StageId != other.StageId) return false;
+      if (ScoreId != other.ScoreId) return false;
       if (IMCJFGIPIFI != other.IMCJFGIPIFI) return false;
       if (BMAHOGKMPDJ != other.BMAHOGKMPDJ) return false;
-      if (StageId != other.StageId) return false;
-      if (EndStatus != other.EndStatus) return false;
-      if (ScoreId != other.ScoreId) return false;
       if (MaxScore != other.MaxScore) return false;
       if (TotalDamage != other.TotalDamage) return false;
-      if (BJKBGOALNHA != other.BJKBGOALNHA) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -218,14 +218,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (EndStatus != global::March7thHoney.Proto.BattleEndStatus.BattleEndNone) hash ^= EndStatus.GetHashCode();
+      if (DamageScore != 0) hash ^= DamageScore.GetHashCode();
+      if (StageId != 0) hash ^= StageId.GetHashCode();
+      if (ScoreId != 0) hash ^= ScoreId.GetHashCode();
       if (IMCJFGIPIFI != 0) hash ^= IMCJFGIPIFI.GetHashCode();
       if (BMAHOGKMPDJ != 0) hash ^= BMAHOGKMPDJ.GetHashCode();
-      if (StageId != 0) hash ^= StageId.GetHashCode();
-      if (EndStatus != global::March7thHoney.Proto.BattleEndStatus.BattleEndNone) hash ^= EndStatus.GetHashCode();
-      if (ScoreId != 0) hash ^= ScoreId.GetHashCode();
       if (MaxScore != 0) hash ^= MaxScore.GetHashCode();
       if (TotalDamage != 0) hash ^= TotalDamage.GetHashCode();
-      if (BJKBGOALNHA != 0) hash ^= BJKBGOALNHA.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -244,37 +244,37 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (EndStatus != global::March7thHoney.Proto.BattleEndStatus.BattleEndNone) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) EndStatus);
+      }
+      if (DamageScore != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(DamageScore);
+      }
       if (StageId != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(40);
         output.WriteUInt32(StageId);
       }
-      if (IMCJFGIPIFI != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(IMCJFGIPIFI);
-      }
       if (ScoreId != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(48);
         output.WriteUInt32(ScoreId);
       }
-      if (TotalDamage != 0) {
+      if (IMCJFGIPIFI != 0) {
         output.WriteRawTag(56);
-        output.WriteUInt32(TotalDamage);
-      }
-      if (EndStatus != global::March7thHoney.Proto.BattleEndStatus.BattleEndNone) {
-        output.WriteRawTag(64);
-        output.WriteEnum((int) EndStatus);
+        output.WriteUInt32(IMCJFGIPIFI);
       }
       if (BMAHOGKMPDJ != 0) {
         output.WriteRawTag(72);
         output.WriteUInt32(BMAHOGKMPDJ);
       }
-      if (BJKBGOALNHA != 0) {
-        output.WriteRawTag(96);
-        output.WriteUInt32(BJKBGOALNHA);
-      }
       if (MaxScore != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(104);
         output.WriteUInt32(MaxScore);
+      }
+      if (TotalDamage != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(TotalDamage);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -286,37 +286,37 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (EndStatus != global::March7thHoney.Proto.BattleEndStatus.BattleEndNone) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) EndStatus);
+      }
+      if (DamageScore != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(DamageScore);
+      }
       if (StageId != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(40);
         output.WriteUInt32(StageId);
       }
-      if (IMCJFGIPIFI != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(IMCJFGIPIFI);
-      }
       if (ScoreId != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(48);
         output.WriteUInt32(ScoreId);
       }
-      if (TotalDamage != 0) {
+      if (IMCJFGIPIFI != 0) {
         output.WriteRawTag(56);
-        output.WriteUInt32(TotalDamage);
-      }
-      if (EndStatus != global::March7thHoney.Proto.BattleEndStatus.BattleEndNone) {
-        output.WriteRawTag(64);
-        output.WriteEnum((int) EndStatus);
+        output.WriteUInt32(IMCJFGIPIFI);
       }
       if (BMAHOGKMPDJ != 0) {
         output.WriteRawTag(72);
         output.WriteUInt32(BMAHOGKMPDJ);
       }
-      if (BJKBGOALNHA != 0) {
-        output.WriteRawTag(96);
-        output.WriteUInt32(BJKBGOALNHA);
-      }
       if (MaxScore != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(104);
         output.WriteUInt32(MaxScore);
+      }
+      if (TotalDamage != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(TotalDamage);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -328,29 +328,29 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (EndStatus != global::March7thHoney.Proto.BattleEndStatus.BattleEndNone) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) EndStatus);
+      }
+      if (DamageScore != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DamageScore);
+      }
+      if (StageId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(StageId);
+      }
+      if (ScoreId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ScoreId);
+      }
       if (IMCJFGIPIFI != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(IMCJFGIPIFI);
       }
       if (BMAHOGKMPDJ != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BMAHOGKMPDJ);
       }
-      if (StageId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(StageId);
-      }
-      if (EndStatus != global::March7thHoney.Proto.BattleEndStatus.BattleEndNone) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) EndStatus);
-      }
-      if (ScoreId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ScoreId);
-      }
       if (MaxScore != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MaxScore);
       }
       if (TotalDamage != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TotalDamage);
-      }
-      if (BJKBGOALNHA != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BJKBGOALNHA);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -364,29 +364,29 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.EndStatus != global::March7thHoney.Proto.BattleEndStatus.BattleEndNone) {
+        EndStatus = other.EndStatus;
+      }
+      if (other.DamageScore != 0) {
+        DamageScore = other.DamageScore;
+      }
+      if (other.StageId != 0) {
+        StageId = other.StageId;
+      }
+      if (other.ScoreId != 0) {
+        ScoreId = other.ScoreId;
+      }
       if (other.IMCJFGIPIFI != 0) {
         IMCJFGIPIFI = other.IMCJFGIPIFI;
       }
       if (other.BMAHOGKMPDJ != 0) {
         BMAHOGKMPDJ = other.BMAHOGKMPDJ;
       }
-      if (other.StageId != 0) {
-        StageId = other.StageId;
-      }
-      if (other.EndStatus != global::March7thHoney.Proto.BattleEndStatus.BattleEndNone) {
-        EndStatus = other.EndStatus;
-      }
-      if (other.ScoreId != 0) {
-        ScoreId = other.ScoreId;
-      }
       if (other.MaxScore != 0) {
         MaxScore = other.MaxScore;
       }
       if (other.TotalDamage != 0) {
         TotalDamage = other.TotalDamage;
-      }
-      if (other.BJKBGOALNHA != 0) {
-        BJKBGOALNHA = other.BJKBGOALNHA;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -407,36 +407,36 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            StageId = input.ReadUInt32();
+          case 24: {
+            EndStatus = (global::March7thHoney.Proto.BattleEndStatus) input.ReadEnum();
             break;
           }
           case 32: {
-            IMCJFGIPIFI = input.ReadUInt32();
+            DamageScore = input.ReadUInt32();
             break;
           }
           case 40: {
+            StageId = input.ReadUInt32();
+            break;
+          }
+          case 48: {
             ScoreId = input.ReadUInt32();
             break;
           }
           case 56: {
-            TotalDamage = input.ReadUInt32();
-            break;
-          }
-          case 64: {
-            EndStatus = (global::March7thHoney.Proto.BattleEndStatus) input.ReadEnum();
+            IMCJFGIPIFI = input.ReadUInt32();
             break;
           }
           case 72: {
             BMAHOGKMPDJ = input.ReadUInt32();
             break;
           }
-          case 96: {
-            BJKBGOALNHA = input.ReadUInt32();
+          case 104: {
+            MaxScore = input.ReadUInt32();
             break;
           }
           case 120: {
-            MaxScore = input.ReadUInt32();
+            TotalDamage = input.ReadUInt32();
             break;
           }
         }
@@ -458,36 +458,36 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            StageId = input.ReadUInt32();
+          case 24: {
+            EndStatus = (global::March7thHoney.Proto.BattleEndStatus) input.ReadEnum();
             break;
           }
           case 32: {
-            IMCJFGIPIFI = input.ReadUInt32();
+            DamageScore = input.ReadUInt32();
             break;
           }
           case 40: {
+            StageId = input.ReadUInt32();
+            break;
+          }
+          case 48: {
             ScoreId = input.ReadUInt32();
             break;
           }
           case 56: {
-            TotalDamage = input.ReadUInt32();
-            break;
-          }
-          case 64: {
-            EndStatus = (global::March7thHoney.Proto.BattleEndStatus) input.ReadEnum();
+            IMCJFGIPIFI = input.ReadUInt32();
             break;
           }
           case 72: {
             BMAHOGKMPDJ = input.ReadUInt32();
             break;
           }
-          case 96: {
-            BJKBGOALNHA = input.ReadUInt32();
+          case 104: {
+            MaxScore = input.ReadUInt32();
             break;
           }
           case 120: {
-            MaxScore = input.ReadUInt32();
+            TotalDamage = input.ReadUInt32();
             break;
           }
         }

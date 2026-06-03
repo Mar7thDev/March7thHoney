@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFDTUtNT0lHQU5ITi5wcm90byI0CgtDTUtNT0lHQU5IThITCgtGUEpNS0RO",
-            "REVOSxgDIAEoDRIQCghzdGFnZV9pZBgMIAEoDUIWqgITTWFyY2g3dGhIb25l",
+            "REVOSxgCIAEoDRIQCghzdGFnZV9pZBgMIAEoDUIWqgITTWFyY2g3dGhIb25l",
             "eS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "FPJMKDNDENK" field.</summary>
-    public const int FPJMKDNDENKFieldNumber = 3;
+    public const int FPJMKDNDENKFieldNumber = 2;
     private uint fPJMKDNDENK_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,7 +152,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (FPJMKDNDENK != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteUInt32(FPJMKDNDENK);
       }
       if (StageId != 0) {
@@ -170,7 +170,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (FPJMKDNDENK != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteUInt32(FPJMKDNDENK);
       }
       if (StageId != 0) {
@@ -230,7 +230,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
+          case 16: {
             FPJMKDNDENK = input.ReadUInt32();
             break;
           }
@@ -257,7 +257,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
+          case 16: {
             FPJMKDNDENK = input.ReadUInt32();
             break;
           }

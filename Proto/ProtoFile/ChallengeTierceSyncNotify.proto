@@ -2,18 +2,18 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
+import "ChallengeTierceMedal.proto";
+import "ChallengeTiercePendingStageSettle.proto";
+import "ChallengeTierceStageClear.proto";
 import "ChallengeTierceSyncAllStage.proto";
 import "ChallengeTierceSyncSingleStage.proto";
-import "FBAMAFLOBGA.proto";
-import "FLIPNFHAMPO.proto";
-import "PEOKJEOOOJD.proto";
 
 message ChallengeTierceSyncNotify {
     oneof MMCGBGDJIPN {
-        ChallengeTierceSyncSingleStage IANBCDJPDJF = 6;
-        ChallengeTierceSyncAllStage DFNNKENBOEN = 7;
-        FBAMAFLOBGA IBFHHKHNEFL = 12;
-        PEOKJEOOOJD IIHFEDLHOPI = 10;
-        FLIPNFHAMPO HNHCFJJNJCE = 14;
+        ChallengeTierceSyncSingleStage IANBCDJPDJF = 1;
+        ChallengeTierceSyncAllStage DFNNKENBOEN = 12;
+        ChallengeTierceStageClear IBFHHKHNEFL = 4;
+        ChallengeTiercePendingStageSettle IIHFEDLHOPI = 14;
+        ChallengeTierceMedal HNHCFJJNJCE = 5;
     }
 }

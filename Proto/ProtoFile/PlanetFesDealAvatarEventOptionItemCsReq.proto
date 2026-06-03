@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message PlanetFesDealAvatarEventOptionItemCsReq {
-    bool MLKBOBIEAPL = 10;
-    uint32 HLLIBEEKFII = 6;
+    bool MLKBOBIEAPL = 6;
+    uint32 HLLIBEEKFII = 13;
 }

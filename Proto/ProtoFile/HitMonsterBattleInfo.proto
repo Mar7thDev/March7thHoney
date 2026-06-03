@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "MonsterBattleType.proto";
 
 message HitMonsterBattleInfo {
-    MonsterBattleType monster_battle_type = 1;
-    uint32 target_monster_entity_id = 4;
+    uint32 target_monster_entity_id = 1;
+    MonsterBattleType monster_battle_type = 14;
 }

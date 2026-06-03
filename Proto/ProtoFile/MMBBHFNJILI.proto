@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "OKCCLEEPELM.proto";
 
 message MMBBHFNJILI {
-    OKCCLEEPELM OJEANDPABHC = 6;
-    uint32 unique_id = 8;
+    uint32 unique_id = 6;
+    OKCCLEEPELM OJEANDPABHC = 13;
 }

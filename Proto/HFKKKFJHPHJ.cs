@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static HFKKKFJHPHJReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFIRktLS0ZKSFBISi5wcm90byJGCgtIRktLS0ZKSFBIShIOCgZkYW1hZ2UY",
-            "AyABKAESEwoLS0lOS01IRUFBTlAYBCABKAESEgoKYXVnbWVudF9pZBgBIAEo",
-            "DUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChFIRktLS0ZKSFBISi5wcm90byJGCgtIRktLS0ZKSFBIShISCgphdWdtZW50",
+            "X2lkGAEgASgNEg4KBmRhbWFnZRgDIAEoARITCgtLSU5LTUhFQUFOUBgEIAEo",
+            "AUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HFKKKFJHPHJ), global::March7thHoney.Proto.HFKKKFJHPHJ.Parser, new[]{ "Damage", "KINKMHEAANP", "AugmentId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HFKKKFJHPHJ), global::March7thHoney.Proto.HFKKKFJHPHJ.Parser, new[]{ "AugmentId", "Damage", "KINKMHEAANP" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,9 +72,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public HFKKKFJHPHJ(HFKKKFJHPHJ other) : this() {
+      augmentId_ = other.augmentId_;
       damage_ = other.damage_;
       kINKMHEAANP_ = other.kINKMHEAANP_;
-      augmentId_ = other.augmentId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -82,6 +82,18 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public HFKKKFJHPHJ Clone() {
       return new HFKKKFJHPHJ(this);
+    }
+
+    /// <summary>Field number for the "augment_id" field.</summary>
+    public const int AugmentIdFieldNumber = 1;
+    private uint augmentId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint AugmentId {
+      get { return augmentId_; }
+      set {
+        augmentId_ = value;
+      }
     }
 
     /// <summary>Field number for the "damage" field.</summary>
@@ -108,18 +120,6 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "augment_id" field.</summary>
-    public const int AugmentIdFieldNumber = 1;
-    private uint augmentId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint AugmentId {
-      get { return augmentId_; }
-      set {
-        augmentId_ = value;
-      }
-    }
-
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -135,9 +135,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (AugmentId != other.AugmentId) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Damage, other.Damage)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(KINKMHEAANP, other.KINKMHEAANP)) return false;
-      if (AugmentId != other.AugmentId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -145,9 +145,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (AugmentId != 0) hash ^= AugmentId.GetHashCode();
       if (Damage != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Damage);
       if (KINKMHEAANP != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(KINKMHEAANP);
-      if (AugmentId != 0) hash ^= AugmentId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -210,14 +210,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (AugmentId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AugmentId);
+      }
       if (Damage != 0D) {
         size += 1 + 8;
       }
       if (KINKMHEAANP != 0D) {
         size += 1 + 8;
-      }
-      if (AugmentId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AugmentId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -231,14 +231,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.AugmentId != 0) {
+        AugmentId = other.AugmentId;
+      }
       if (other.Damage != 0D) {
         Damage = other.Damage;
       }
       if (other.KINKMHEAANP != 0D) {
         KINKMHEAANP = other.KINKMHEAANP;
-      }
-      if (other.AugmentId != 0) {
-        AugmentId = other.AugmentId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }

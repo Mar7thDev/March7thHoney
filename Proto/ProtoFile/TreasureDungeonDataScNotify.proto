@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "PPONNIHFJAP.proto";
 
 message TreasureDungeonDataScNotify {
-    PPONNIHFJAP IMHNGDFGJJA = 2;
+    PPONNIHFJAP IMHNGDFGJJA = 5;
 }

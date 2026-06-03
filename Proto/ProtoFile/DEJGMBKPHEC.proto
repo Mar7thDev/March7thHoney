@@ -3,12 +3,12 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message DEJGMBKPHEC {
-    uint32 index = 8;
-    uint32 DIECMLHJCFE = 7;
-    uint32 DKHCOHKFKFA = 13;
-    uint32 EBMJGPMHDMK = 14;
-    int32 hp = 11;
     uint32 MBNBFBNKLGH = 1;
+    int32 attack = 3;
     uint32 FGECDDFBFOJ = 6;
-    int32 attack = 2;
+    uint32 index = 7;
+    uint32 DIECMLHJCFE = 10;
+    uint32 DKHCOHKFKFA = 11;
+    int32 hp = 12;
+    uint32 EBMJGPMHDMK = 14;
 }

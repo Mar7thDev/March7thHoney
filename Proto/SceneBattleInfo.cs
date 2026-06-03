@@ -28,30 +28,33 @@ namespace March7thHoney.Proto {
             "QmF0dGxlQnVmZi5wcm90bxobQmF0dGxlRXZlbnRCYXR0bGVJbmZvLnByb3Rv",
             "GiZCYXR0bGVHcmlkRmlnaHRTcGVjaWFsQmF0dGxlSW5mby5wcm90bxoaQmF0",
             "dGxlUm9ndWVNYWdpY0luZm8ucHJvdG8aFkJhdHRsZVRhcmdldExpc3QucHJv",
-            "dG8aEUVEQ0ZLQUNQRk5CLnByb3RvGhFLSUFJQ01FTElNTS5wcm90bxoRT0pD",
-            "Qk9NQ0NQREIucHJvdG8aEVBLUEZBSEVCSklPLnByb3RvGhZTY2VuZU1vbnN0",
-            "ZXJXYXZlLnByb3RvIukFCg9TY2VuZUJhdHRsZUluZm8SNwoXYmF0dGxlX3Jv",
-            "Z3VlX21hZ2ljX2luZm8Yqw0gASgLMhUuQmF0dGxlUm9ndWVNYWdpY0luZm8S",
-            "IgoLREZBQkJHS0dERUkYhQYgASgLMgwuS0lBSUNNRUxJTU0SIgoLTERQTEFP",
-            "SE5MQVAYvgQgASgLMgwuUEtQRkFIRUJKSU8SIgoLRUlHTUtPSk9FRUkYmQ4g",
-            "ASgLMgwuT0pDQk9NQ0NQREISLQoMYmF0dGxlX2V2ZW50GNcDIAMoCzIWLkJh",
-            "dHRsZUV2ZW50QmF0dGxlSW5mbxIpChJiYXR0bGVfYXZhdGFyX2xpc3QYDCAD",
-            "KAsyDS5CYXR0bGVBdmF0YXISQwoSYmF0dGxlX3RhcmdldF9pbmZvGPYDIAMo",
-            "CzImLlNjZW5lQmF0dGxlSW5mby5CYXR0bGVUYXJnZXRJbmZvRW50cnkSNwoL",
-            "UE1DRUtJTEZCSU8YmwMgASgLMiEuQmF0dGxlR3JpZEZpZ2h0U3BlY2lhbEJh",
-            "dHRsZUluZm8SHgoJYnVmZl9saXN0GAIgAygLMgsuQmF0dGxlQnVmZhIiCgtG",
-            "R09BS0RDQklPRRiNASABKAsyDC5FRENGS0FDUEZOQhIsChFtb25zdGVyX3dh",
-            "dmVfbGlzdBgKIAMoCzIRLlNjZW5lTW9uc3RlcldhdmUSEwoLSU1FS0NNTkZM",
-            "REkYDSABKAgSFAoMcm91bmRzX2xpbWl0GAggASgNEhAKCHN0YWdlX2lkGAcg",
-            "ASgNEhMKC3dvcmxkX2xldmVsGAkgASgNEhsKE21vbnN0ZXJfd2F2ZV9sZW5n",
-            "dGgYBSABKA0SEQoJYmF0dGxlX2lkGAMgASgNEhkKEWxvZ2ljX3JhbmRvbV9z",
-            "ZWVkGAsgASgNGkoKFUJhdHRsZVRhcmdldEluZm9FbnRyeRILCgNrZXkYASAB",
-            "KA0SIAoFdmFsdWUYAiABKAsyES5CYXR0bGVUYXJnZXRMaXN0OgI4AUIWqgIT",
-            "TWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "dG8aEUVEQ0ZLQUNQRk5CLnByb3RvGhFHTElCR0tHR0VKTC5wcm90bxoTR3Jp",
+            "ZEZpZ2h0SW5mby5wcm90bxoRS0lBSUNNRUxJTU0ucHJvdG8aEVBLUEZBSEVC",
+            "SklPLnByb3RvGhZTY2VuZU1vbnN0ZXJXYXZlLnByb3RvItIGCg9TY2VuZUJh",
+            "dHRsZUluZm8SEAoIc3RhZ2VfaWQYASABKA0SHgoJYnVmZl9saXN0GAIgAygL",
+            "MgsuQmF0dGxlQnVmZhITCgt3b3JsZF9sZXZlbBgEIAEoDRIZChFsb2dpY19y",
+            "YW5kb21fc2VlZBgFIAEoDRIpChJiYXR0bGVfYXZhdGFyX2xpc3QYByADKAsy",
+            "DS5CYXR0bGVBdmF0YXISGwoTbW9uc3Rlcl93YXZlX2xlbmd0aBgJIAEoDRIs",
+            "ChFtb25zdGVyX3dhdmVfbGlzdBgKIAMoCzIRLlNjZW5lTW9uc3RlcldhdmUS",
+            "FgoOZW5jcnlwdF9yZXN1bHQYDCABKAgSEQoJYmF0dGxlX2lkGA4gASgNEhQK",
+            "DHJvdW5kc19saW1pdBgPIAEoDRJEChhiYXR0bGVfZXZvbHZlX2J1aWxkX2Rh",
+            "dGEYvAEgASgLMiEuQmF0dGxlR3JpZEZpZ2h0U3BlY2lhbEJhdHRsZUluZm8S",
+            "LwoWYmF0dGxlX2dyaWRfZmlnaHRfZGF0YRitAiABKAsyDi5HcmlkRmlnaHRJ",
+            "bmZvEi0KFmJhdHRsZV9hY3Rpb25fZXZlbnRfaWQY0gMgASgLMgwuRURDRktB",
+            "Q1BGTkISJwoQYmF0dGxlX2ZhdGVfZGF0YRj2AyABKAsyDC5QS1BGQUhFQkpJ",
+            "TxIrChRiYXR0bGVfZmF0ZV9yaW5fZGF0YRidCCABKAsyDC5HTElCR0tHR0VK",
+            "TBIxChpiYXR0bGVfc3dvcmRfdHJhaW5pbmdfZGF0YRiTCyABKAsyDC5LSUFJ",
+            "Q01FTElNTRItCgxiYXR0bGVfZXZlbnQYnQwgAygLMhYuQmF0dGxlRXZlbnRC",
+            "YXR0bGVJbmZvEkMKEmJhdHRsZV90YXJnZXRfaW5mbxiwDSADKAsyJi5TY2Vu",
+            "ZUJhdHRsZUluZm8uQmF0dGxlVGFyZ2V0SW5mb0VudHJ5EjcKF2JhdHRsZV9y",
+            "b2d1ZV9tYWdpY19pbmZvGJMPIAEoCzIVLkJhdHRsZVJvZ3VlTWFnaWNJbmZv",
+            "GkoKFUJhdHRsZVRhcmdldEluZm9FbnRyeRILCgNrZXkYASABKA0SIAoFdmFs",
+            "dWUYAiABKAsyES5CYXR0bGVUYXJnZXRMaXN0OgI4AUIWqgITTWFyY2g3dGhI",
+            "b25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.BattleAvatarReflection.Descriptor, global::March7thHoney.Proto.BattleBuffReflection.Descriptor, global::March7thHoney.Proto.BattleEventBattleInfoReflection.Descriptor, global::March7thHoney.Proto.BattleGridFightSpecialBattleInfoReflection.Descriptor, global::March7thHoney.Proto.BattleRogueMagicInfoReflection.Descriptor, global::March7thHoney.Proto.BattleTargetListReflection.Descriptor, global::March7thHoney.Proto.EDCFKACPFNBReflection.Descriptor, global::March7thHoney.Proto.KIAICMELIMMReflection.Descriptor, global::March7thHoney.Proto.OJCBOMCCPDBReflection.Descriptor, global::March7thHoney.Proto.PKPFAHEBJIOReflection.Descriptor, global::March7thHoney.Proto.SceneMonsterWaveReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.BattleAvatarReflection.Descriptor, global::March7thHoney.Proto.BattleBuffReflection.Descriptor, global::March7thHoney.Proto.BattleEventBattleInfoReflection.Descriptor, global::March7thHoney.Proto.BattleGridFightSpecialBattleInfoReflection.Descriptor, global::March7thHoney.Proto.BattleRogueMagicInfoReflection.Descriptor, global::March7thHoney.Proto.BattleTargetListReflection.Descriptor, global::March7thHoney.Proto.EDCFKACPFNBReflection.Descriptor, global::March7thHoney.Proto.GLIBGKGGEJLReflection.Descriptor, global::March7thHoney.Proto.GridFightInfoReflection.Descriptor, global::March7thHoney.Proto.KIAICMELIMMReflection.Descriptor, global::March7thHoney.Proto.PKPFAHEBJIOReflection.Descriptor, global::March7thHoney.Proto.SceneMonsterWaveReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneBattleInfo), global::March7thHoney.Proto.SceneBattleInfo.Parser, new[]{ "BattleRogueMagicInfo", "DFABBGKGDEI", "LDPLAOHNLAP", "EIGMKOJOEEI", "BattleEvent", "BattleAvatarList", "BattleTargetInfo", "PMCEKILFBIO", "BuffList", "FGOAKDCBIOE", "MonsterWaveList", "IMEKCMNFLDI", "RoundsLimit", "StageId", "WorldLevel", "MonsterWaveLength", "BattleId", "LogicRandomSeed" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneBattleInfo), global::March7thHoney.Proto.SceneBattleInfo.Parser, new[]{ "StageId", "BuffList", "WorldLevel", "LogicRandomSeed", "BattleAvatarList", "MonsterWaveLength", "MonsterWaveList", "EncryptResult", "BattleId", "RoundsLimit", "BattleEvolveBuildData", "BattleGridFightData", "BattleActionEventId", "BattleFateData", "BattleFateRinData", "BattleSwordTrainingData", "BattleEvent", "BattleTargetInfo", "BattleRogueMagicInfo" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -93,24 +96,25 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SceneBattleInfo(SceneBattleInfo other) : this() {
-      battleRogueMagicInfo_ = other.battleRogueMagicInfo_ != null ? other.battleRogueMagicInfo_.Clone() : null;
-      dFABBGKGDEI_ = other.dFABBGKGDEI_ != null ? other.dFABBGKGDEI_.Clone() : null;
-      lDPLAOHNLAP_ = other.lDPLAOHNLAP_ != null ? other.lDPLAOHNLAP_.Clone() : null;
-      eIGMKOJOEEI_ = other.eIGMKOJOEEI_ != null ? other.eIGMKOJOEEI_.Clone() : null;
-      battleEvent_ = other.battleEvent_.Clone();
-      battleAvatarList_ = other.battleAvatarList_.Clone();
-      battleTargetInfo_ = other.battleTargetInfo_.Clone();
-      pMCEKILFBIO_ = other.pMCEKILFBIO_ != null ? other.pMCEKILFBIO_.Clone() : null;
-      buffList_ = other.buffList_.Clone();
-      fGOAKDCBIOE_ = other.fGOAKDCBIOE_ != null ? other.fGOAKDCBIOE_.Clone() : null;
-      monsterWaveList_ = other.monsterWaveList_.Clone();
-      iMEKCMNFLDI_ = other.iMEKCMNFLDI_;
-      roundsLimit_ = other.roundsLimit_;
       stageId_ = other.stageId_;
+      buffList_ = other.buffList_.Clone();
       worldLevel_ = other.worldLevel_;
-      monsterWaveLength_ = other.monsterWaveLength_;
-      battleId_ = other.battleId_;
       logicRandomSeed_ = other.logicRandomSeed_;
+      battleAvatarList_ = other.battleAvatarList_.Clone();
+      monsterWaveLength_ = other.monsterWaveLength_;
+      monsterWaveList_ = other.monsterWaveList_.Clone();
+      encryptResult_ = other.encryptResult_;
+      battleId_ = other.battleId_;
+      roundsLimit_ = other.roundsLimit_;
+      battleEvolveBuildData_ = other.battleEvolveBuildData_ != null ? other.battleEvolveBuildData_.Clone() : null;
+      battleGridFightData_ = other.battleGridFightData_ != null ? other.battleGridFightData_.Clone() : null;
+      battleActionEventId_ = other.battleActionEventId_ != null ? other.battleActionEventId_.Clone() : null;
+      battleFateData_ = other.battleFateData_ != null ? other.battleFateData_.Clone() : null;
+      battleFateRinData_ = other.battleFateRinData_ != null ? other.battleFateRinData_.Clone() : null;
+      battleSwordTrainingData_ = other.battleSwordTrainingData_ != null ? other.battleSwordTrainingData_.Clone() : null;
+      battleEvent_ = other.battleEvent_.Clone();
+      battleTargetInfo_ = other.battleTargetInfo_.Clone();
+      battleRogueMagicInfo_ = other.battleRogueMagicInfo_ != null ? other.battleRogueMagicInfo_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -120,96 +124,15 @@ namespace March7thHoney.Proto {
       return new SceneBattleInfo(this);
     }
 
-    /// <summary>Field number for the "battle_rogue_magic_info" field.</summary>
-    public const int BattleRogueMagicInfoFieldNumber = 1707;
-    private global::March7thHoney.Proto.BattleRogueMagicInfo battleRogueMagicInfo_;
+    /// <summary>Field number for the "stage_id" field.</summary>
+    public const int StageIdFieldNumber = 1;
+    private uint stageId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.BattleRogueMagicInfo BattleRogueMagicInfo {
-      get { return battleRogueMagicInfo_; }
+    public uint StageId {
+      get { return stageId_; }
       set {
-        battleRogueMagicInfo_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DFABBGKGDEI" field.</summary>
-    public const int DFABBGKGDEIFieldNumber = 773;
-    private global::March7thHoney.Proto.KIAICMELIMM dFABBGKGDEI_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.KIAICMELIMM DFABBGKGDEI {
-      get { return dFABBGKGDEI_; }
-      set {
-        dFABBGKGDEI_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "LDPLAOHNLAP" field.</summary>
-    public const int LDPLAOHNLAPFieldNumber = 574;
-    private global::March7thHoney.Proto.PKPFAHEBJIO lDPLAOHNLAP_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.PKPFAHEBJIO LDPLAOHNLAP {
-      get { return lDPLAOHNLAP_; }
-      set {
-        lDPLAOHNLAP_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "EIGMKOJOEEI" field.</summary>
-    public const int EIGMKOJOEEIFieldNumber = 1817;
-    private global::March7thHoney.Proto.OJCBOMCCPDB eIGMKOJOEEI_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.OJCBOMCCPDB EIGMKOJOEEI {
-      get { return eIGMKOJOEEI_; }
-      set {
-        eIGMKOJOEEI_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "battle_event" field.</summary>
-    public const int BattleEventFieldNumber = 471;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BattleEventBattleInfo> _repeated_battleEvent_codec
-        = pb::FieldCodec.ForMessage(3770, global::March7thHoney.Proto.BattleEventBattleInfo.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BattleEventBattleInfo> battleEvent_ = new pbc::RepeatedField<global::March7thHoney.Proto.BattleEventBattleInfo>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.BattleEventBattleInfo> BattleEvent {
-      get { return battleEvent_; }
-    }
-
-    /// <summary>Field number for the "battle_avatar_list" field.</summary>
-    public const int BattleAvatarListFieldNumber = 12;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BattleAvatar> _repeated_battleAvatarList_codec
-        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.BattleAvatar.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BattleAvatar> battleAvatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.BattleAvatar>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.BattleAvatar> BattleAvatarList {
-      get { return battleAvatarList_; }
-    }
-
-    /// <summary>Field number for the "battle_target_info" field.</summary>
-    public const int BattleTargetInfoFieldNumber = 502;
-    private static readonly pbc::MapField<uint, global::March7thHoney.Proto.BattleTargetList>.Codec _map_battleTargetInfo_codec
-        = new pbc::MapField<uint, global::March7thHoney.Proto.BattleTargetList>.Codec(pb::FieldCodec.ForUInt32(8, 0), pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.BattleTargetList.Parser), 4018);
-    private readonly pbc::MapField<uint, global::March7thHoney.Proto.BattleTargetList> battleTargetInfo_ = new pbc::MapField<uint, global::March7thHoney.Proto.BattleTargetList>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<uint, global::March7thHoney.Proto.BattleTargetList> BattleTargetInfo {
-      get { return battleTargetInfo_; }
-    }
-
-    /// <summary>Field number for the "PMCEKILFBIO" field.</summary>
-    public const int PMCEKILFBIOFieldNumber = 411;
-    private global::March7thHoney.Proto.BattleGridFightSpecialBattleInfo pMCEKILFBIO_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.BattleGridFightSpecialBattleInfo PMCEKILFBIO {
-      get { return pMCEKILFBIO_; }
-      set {
-        pMCEKILFBIO_ = value;
+        stageId_ = value;
       }
     }
 
@@ -224,15 +147,50 @@ namespace March7thHoney.Proto {
       get { return buffList_; }
     }
 
-    /// <summary>Field number for the "FGOAKDCBIOE" field.</summary>
-    public const int FGOAKDCBIOEFieldNumber = 141;
-    private global::March7thHoney.Proto.EDCFKACPFNB fGOAKDCBIOE_;
+    /// <summary>Field number for the "world_level" field.</summary>
+    public const int WorldLevelFieldNumber = 4;
+    private uint worldLevel_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.EDCFKACPFNB FGOAKDCBIOE {
-      get { return fGOAKDCBIOE_; }
+    public uint WorldLevel {
+      get { return worldLevel_; }
       set {
-        fGOAKDCBIOE_ = value;
+        worldLevel_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "logic_random_seed" field.</summary>
+    public const int LogicRandomSeedFieldNumber = 5;
+    private uint logicRandomSeed_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint LogicRandomSeed {
+      get { return logicRandomSeed_; }
+      set {
+        logicRandomSeed_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "battle_avatar_list" field.</summary>
+    public const int BattleAvatarListFieldNumber = 7;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BattleAvatar> _repeated_battleAvatarList_codec
+        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.BattleAvatar.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BattleAvatar> battleAvatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.BattleAvatar>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.BattleAvatar> BattleAvatarList {
+      get { return battleAvatarList_; }
+    }
+
+    /// <summary>Field number for the "monster_wave_length" field.</summary>
+    public const int MonsterWaveLengthFieldNumber = 9;
+    private uint monsterWaveLength_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint MonsterWaveLength {
+      get { return monsterWaveLength_; }
+      set {
+        monsterWaveLength_ = value;
       }
     }
 
@@ -247,68 +205,20 @@ namespace March7thHoney.Proto {
       get { return monsterWaveList_; }
     }
 
-    /// <summary>Field number for the "IMEKCMNFLDI" field.</summary>
-    public const int IMEKCMNFLDIFieldNumber = 13;
-    private bool iMEKCMNFLDI_;
+    /// <summary>Field number for the "encrypt_result" field.</summary>
+    public const int EncryptResultFieldNumber = 12;
+    private bool encryptResult_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IMEKCMNFLDI {
-      get { return iMEKCMNFLDI_; }
+    public bool EncryptResult {
+      get { return encryptResult_; }
       set {
-        iMEKCMNFLDI_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "rounds_limit" field.</summary>
-    public const int RoundsLimitFieldNumber = 8;
-    private uint roundsLimit_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint RoundsLimit {
-      get { return roundsLimit_; }
-      set {
-        roundsLimit_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "stage_id" field.</summary>
-    public const int StageIdFieldNumber = 7;
-    private uint stageId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint StageId {
-      get { return stageId_; }
-      set {
-        stageId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "world_level" field.</summary>
-    public const int WorldLevelFieldNumber = 9;
-    private uint worldLevel_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint WorldLevel {
-      get { return worldLevel_; }
-      set {
-        worldLevel_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "monster_wave_length" field.</summary>
-    public const int MonsterWaveLengthFieldNumber = 5;
-    private uint monsterWaveLength_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint MonsterWaveLength {
-      get { return monsterWaveLength_; }
-      set {
-        monsterWaveLength_ = value;
+        encryptResult_ = value;
       }
     }
 
     /// <summary>Field number for the "battle_id" field.</summary>
-    public const int BattleIdFieldNumber = 3;
+    public const int BattleIdFieldNumber = 14;
     private uint battleId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -319,15 +229,121 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "logic_random_seed" field.</summary>
-    public const int LogicRandomSeedFieldNumber = 11;
-    private uint logicRandomSeed_;
+    /// <summary>Field number for the "rounds_limit" field.</summary>
+    public const int RoundsLimitFieldNumber = 15;
+    private uint roundsLimit_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint LogicRandomSeed {
-      get { return logicRandomSeed_; }
+    public uint RoundsLimit {
+      get { return roundsLimit_; }
       set {
-        logicRandomSeed_ = value;
+        roundsLimit_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "battle_evolve_build_data" field.</summary>
+    public const int BattleEvolveBuildDataFieldNumber = 188;
+    private global::March7thHoney.Proto.BattleGridFightSpecialBattleInfo battleEvolveBuildData_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.BattleGridFightSpecialBattleInfo BattleEvolveBuildData {
+      get { return battleEvolveBuildData_; }
+      set {
+        battleEvolveBuildData_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "battle_grid_fight_data" field.</summary>
+    public const int BattleGridFightDataFieldNumber = 301;
+    private global::March7thHoney.Proto.GridFightInfo battleGridFightData_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.GridFightInfo BattleGridFightData {
+      get { return battleGridFightData_; }
+      set {
+        battleGridFightData_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "battle_action_event_id" field.</summary>
+    public const int BattleActionEventIdFieldNumber = 466;
+    private global::March7thHoney.Proto.EDCFKACPFNB battleActionEventId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.EDCFKACPFNB BattleActionEventId {
+      get { return battleActionEventId_; }
+      set {
+        battleActionEventId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "battle_fate_data" field.</summary>
+    public const int BattleFateDataFieldNumber = 502;
+    private global::March7thHoney.Proto.PKPFAHEBJIO battleFateData_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.PKPFAHEBJIO BattleFateData {
+      get { return battleFateData_; }
+      set {
+        battleFateData_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "battle_fate_rin_data" field.</summary>
+    public const int BattleFateRinDataFieldNumber = 1053;
+    private global::March7thHoney.Proto.GLIBGKGGEJL battleFateRinData_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.GLIBGKGGEJL BattleFateRinData {
+      get { return battleFateRinData_; }
+      set {
+        battleFateRinData_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "battle_sword_training_data" field.</summary>
+    public const int BattleSwordTrainingDataFieldNumber = 1427;
+    private global::March7thHoney.Proto.KIAICMELIMM battleSwordTrainingData_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.KIAICMELIMM BattleSwordTrainingData {
+      get { return battleSwordTrainingData_; }
+      set {
+        battleSwordTrainingData_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "battle_event" field.</summary>
+    public const int BattleEventFieldNumber = 1565;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BattleEventBattleInfo> _repeated_battleEvent_codec
+        = pb::FieldCodec.ForMessage(12522, global::March7thHoney.Proto.BattleEventBattleInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BattleEventBattleInfo> battleEvent_ = new pbc::RepeatedField<global::March7thHoney.Proto.BattleEventBattleInfo>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.BattleEventBattleInfo> BattleEvent {
+      get { return battleEvent_; }
+    }
+
+    /// <summary>Field number for the "battle_target_info" field.</summary>
+    public const int BattleTargetInfoFieldNumber = 1712;
+    private static readonly pbc::MapField<uint, global::March7thHoney.Proto.BattleTargetList>.Codec _map_battleTargetInfo_codec
+        = new pbc::MapField<uint, global::March7thHoney.Proto.BattleTargetList>.Codec(pb::FieldCodec.ForUInt32(8, 0), pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.BattleTargetList.Parser), 13698);
+    private readonly pbc::MapField<uint, global::March7thHoney.Proto.BattleTargetList> battleTargetInfo_ = new pbc::MapField<uint, global::March7thHoney.Proto.BattleTargetList>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::MapField<uint, global::March7thHoney.Proto.BattleTargetList> BattleTargetInfo {
+      get { return battleTargetInfo_; }
+    }
+
+    /// <summary>Field number for the "battle_rogue_magic_info" field.</summary>
+    public const int BattleRogueMagicInfoFieldNumber = 1939;
+    private global::March7thHoney.Proto.BattleRogueMagicInfo battleRogueMagicInfo_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.BattleRogueMagicInfo BattleRogueMagicInfo {
+      get { return battleRogueMagicInfo_; }
+      set {
+        battleRogueMagicInfo_ = value;
       }
     }
 
@@ -346,24 +362,25 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(BattleRogueMagicInfo, other.BattleRogueMagicInfo)) return false;
-      if (!object.Equals(DFABBGKGDEI, other.DFABBGKGDEI)) return false;
-      if (!object.Equals(LDPLAOHNLAP, other.LDPLAOHNLAP)) return false;
-      if (!object.Equals(EIGMKOJOEEI, other.EIGMKOJOEEI)) return false;
-      if(!battleEvent_.Equals(other.battleEvent_)) return false;
-      if(!battleAvatarList_.Equals(other.battleAvatarList_)) return false;
-      if (!BattleTargetInfo.Equals(other.BattleTargetInfo)) return false;
-      if (!object.Equals(PMCEKILFBIO, other.PMCEKILFBIO)) return false;
-      if(!buffList_.Equals(other.buffList_)) return false;
-      if (!object.Equals(FGOAKDCBIOE, other.FGOAKDCBIOE)) return false;
-      if(!monsterWaveList_.Equals(other.monsterWaveList_)) return false;
-      if (IMEKCMNFLDI != other.IMEKCMNFLDI) return false;
-      if (RoundsLimit != other.RoundsLimit) return false;
       if (StageId != other.StageId) return false;
+      if(!buffList_.Equals(other.buffList_)) return false;
       if (WorldLevel != other.WorldLevel) return false;
-      if (MonsterWaveLength != other.MonsterWaveLength) return false;
-      if (BattleId != other.BattleId) return false;
       if (LogicRandomSeed != other.LogicRandomSeed) return false;
+      if(!battleAvatarList_.Equals(other.battleAvatarList_)) return false;
+      if (MonsterWaveLength != other.MonsterWaveLength) return false;
+      if(!monsterWaveList_.Equals(other.monsterWaveList_)) return false;
+      if (EncryptResult != other.EncryptResult) return false;
+      if (BattleId != other.BattleId) return false;
+      if (RoundsLimit != other.RoundsLimit) return false;
+      if (!object.Equals(BattleEvolveBuildData, other.BattleEvolveBuildData)) return false;
+      if (!object.Equals(BattleGridFightData, other.BattleGridFightData)) return false;
+      if (!object.Equals(BattleActionEventId, other.BattleActionEventId)) return false;
+      if (!object.Equals(BattleFateData, other.BattleFateData)) return false;
+      if (!object.Equals(BattleFateRinData, other.BattleFateRinData)) return false;
+      if (!object.Equals(BattleSwordTrainingData, other.BattleSwordTrainingData)) return false;
+      if(!battleEvent_.Equals(other.battleEvent_)) return false;
+      if (!BattleTargetInfo.Equals(other.BattleTargetInfo)) return false;
+      if (!object.Equals(BattleRogueMagicInfo, other.BattleRogueMagicInfo)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -371,24 +388,25 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (battleRogueMagicInfo_ != null) hash ^= BattleRogueMagicInfo.GetHashCode();
-      if (dFABBGKGDEI_ != null) hash ^= DFABBGKGDEI.GetHashCode();
-      if (lDPLAOHNLAP_ != null) hash ^= LDPLAOHNLAP.GetHashCode();
-      if (eIGMKOJOEEI_ != null) hash ^= EIGMKOJOEEI.GetHashCode();
-      hash ^= battleEvent_.GetHashCode();
-      hash ^= battleAvatarList_.GetHashCode();
-      hash ^= BattleTargetInfo.GetHashCode();
-      if (pMCEKILFBIO_ != null) hash ^= PMCEKILFBIO.GetHashCode();
-      hash ^= buffList_.GetHashCode();
-      if (fGOAKDCBIOE_ != null) hash ^= FGOAKDCBIOE.GetHashCode();
-      hash ^= monsterWaveList_.GetHashCode();
-      if (IMEKCMNFLDI != false) hash ^= IMEKCMNFLDI.GetHashCode();
-      if (RoundsLimit != 0) hash ^= RoundsLimit.GetHashCode();
       if (StageId != 0) hash ^= StageId.GetHashCode();
+      hash ^= buffList_.GetHashCode();
       if (WorldLevel != 0) hash ^= WorldLevel.GetHashCode();
-      if (MonsterWaveLength != 0) hash ^= MonsterWaveLength.GetHashCode();
-      if (BattleId != 0) hash ^= BattleId.GetHashCode();
       if (LogicRandomSeed != 0) hash ^= LogicRandomSeed.GetHashCode();
+      hash ^= battleAvatarList_.GetHashCode();
+      if (MonsterWaveLength != 0) hash ^= MonsterWaveLength.GetHashCode();
+      hash ^= monsterWaveList_.GetHashCode();
+      if (EncryptResult != false) hash ^= EncryptResult.GetHashCode();
+      if (BattleId != 0) hash ^= BattleId.GetHashCode();
+      if (RoundsLimit != 0) hash ^= RoundsLimit.GetHashCode();
+      if (battleEvolveBuildData_ != null) hash ^= BattleEvolveBuildData.GetHashCode();
+      if (battleGridFightData_ != null) hash ^= BattleGridFightData.GetHashCode();
+      if (battleActionEventId_ != null) hash ^= BattleActionEventId.GetHashCode();
+      if (battleFateData_ != null) hash ^= BattleFateData.GetHashCode();
+      if (battleFateRinData_ != null) hash ^= BattleFateRinData.GetHashCode();
+      if (battleSwordTrainingData_ != null) hash ^= BattleSwordTrainingData.GetHashCode();
+      hash ^= battleEvent_.GetHashCode();
+      hash ^= BattleTargetInfo.GetHashCode();
+      if (battleRogueMagicInfo_ != null) hash ^= BattleRogueMagicInfo.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -407,62 +425,66 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      buffList_.WriteTo(output, _repeated_buffList_codec);
-      if (BattleId != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(BattleId);
-      }
-      if (MonsterWaveLength != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(MonsterWaveLength);
-      }
       if (StageId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(8);
         output.WriteUInt32(StageId);
       }
-      if (RoundsLimit != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(RoundsLimit);
-      }
+      buffList_.WriteTo(output, _repeated_buffList_codec);
       if (WorldLevel != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(32);
         output.WriteUInt32(WorldLevel);
       }
-      monsterWaveList_.WriteTo(output, _repeated_monsterWaveList_codec);
       if (LogicRandomSeed != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(40);
         output.WriteUInt32(LogicRandomSeed);
       }
       battleAvatarList_.WriteTo(output, _repeated_battleAvatarList_codec);
-      if (IMEKCMNFLDI != false) {
-        output.WriteRawTag(104);
-        output.WriteBool(IMEKCMNFLDI);
+      if (MonsterWaveLength != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(MonsterWaveLength);
       }
-      if (fGOAKDCBIOE_ != null) {
-        output.WriteRawTag(234, 8);
-        output.WriteMessage(FGOAKDCBIOE);
+      monsterWaveList_.WriteTo(output, _repeated_monsterWaveList_codec);
+      if (EncryptResult != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(EncryptResult);
       }
-      if (pMCEKILFBIO_ != null) {
-        output.WriteRawTag(218, 25);
-        output.WriteMessage(PMCEKILFBIO);
+      if (BattleId != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(BattleId);
+      }
+      if (RoundsLimit != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(RoundsLimit);
+      }
+      if (battleEvolveBuildData_ != null) {
+        output.WriteRawTag(226, 11);
+        output.WriteMessage(BattleEvolveBuildData);
+      }
+      if (battleGridFightData_ != null) {
+        output.WriteRawTag(234, 18);
+        output.WriteMessage(BattleGridFightData);
+      }
+      if (battleActionEventId_ != null) {
+        output.WriteRawTag(146, 29);
+        output.WriteMessage(BattleActionEventId);
+      }
+      if (battleFateData_ != null) {
+        output.WriteRawTag(178, 31);
+        output.WriteMessage(BattleFateData);
+      }
+      if (battleFateRinData_ != null) {
+        output.WriteRawTag(234, 65);
+        output.WriteMessage(BattleFateRinData);
+      }
+      if (battleSwordTrainingData_ != null) {
+        output.WriteRawTag(154, 89);
+        output.WriteMessage(BattleSwordTrainingData);
       }
       battleEvent_.WriteTo(output, _repeated_battleEvent_codec);
       battleTargetInfo_.WriteTo(output, _map_battleTargetInfo_codec);
-      if (lDPLAOHNLAP_ != null) {
-        output.WriteRawTag(242, 35);
-        output.WriteMessage(LDPLAOHNLAP);
-      }
-      if (dFABBGKGDEI_ != null) {
-        output.WriteRawTag(170, 48);
-        output.WriteMessage(DFABBGKGDEI);
-      }
       if (battleRogueMagicInfo_ != null) {
-        output.WriteRawTag(218, 106);
+        output.WriteRawTag(154, 121);
         output.WriteMessage(BattleRogueMagicInfo);
-      }
-      if (eIGMKOJOEEI_ != null) {
-        output.WriteRawTag(202, 113);
-        output.WriteMessage(EIGMKOJOEEI);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -474,62 +496,66 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      buffList_.WriteTo(ref output, _repeated_buffList_codec);
-      if (BattleId != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(BattleId);
-      }
-      if (MonsterWaveLength != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(MonsterWaveLength);
-      }
       if (StageId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(8);
         output.WriteUInt32(StageId);
       }
-      if (RoundsLimit != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(RoundsLimit);
-      }
+      buffList_.WriteTo(ref output, _repeated_buffList_codec);
       if (WorldLevel != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(32);
         output.WriteUInt32(WorldLevel);
       }
-      monsterWaveList_.WriteTo(ref output, _repeated_monsterWaveList_codec);
       if (LogicRandomSeed != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(40);
         output.WriteUInt32(LogicRandomSeed);
       }
       battleAvatarList_.WriteTo(ref output, _repeated_battleAvatarList_codec);
-      if (IMEKCMNFLDI != false) {
-        output.WriteRawTag(104);
-        output.WriteBool(IMEKCMNFLDI);
+      if (MonsterWaveLength != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(MonsterWaveLength);
       }
-      if (fGOAKDCBIOE_ != null) {
-        output.WriteRawTag(234, 8);
-        output.WriteMessage(FGOAKDCBIOE);
+      monsterWaveList_.WriteTo(ref output, _repeated_monsterWaveList_codec);
+      if (EncryptResult != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(EncryptResult);
       }
-      if (pMCEKILFBIO_ != null) {
-        output.WriteRawTag(218, 25);
-        output.WriteMessage(PMCEKILFBIO);
+      if (BattleId != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(BattleId);
+      }
+      if (RoundsLimit != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(RoundsLimit);
+      }
+      if (battleEvolveBuildData_ != null) {
+        output.WriteRawTag(226, 11);
+        output.WriteMessage(BattleEvolveBuildData);
+      }
+      if (battleGridFightData_ != null) {
+        output.WriteRawTag(234, 18);
+        output.WriteMessage(BattleGridFightData);
+      }
+      if (battleActionEventId_ != null) {
+        output.WriteRawTag(146, 29);
+        output.WriteMessage(BattleActionEventId);
+      }
+      if (battleFateData_ != null) {
+        output.WriteRawTag(178, 31);
+        output.WriteMessage(BattleFateData);
+      }
+      if (battleFateRinData_ != null) {
+        output.WriteRawTag(234, 65);
+        output.WriteMessage(BattleFateRinData);
+      }
+      if (battleSwordTrainingData_ != null) {
+        output.WriteRawTag(154, 89);
+        output.WriteMessage(BattleSwordTrainingData);
       }
       battleEvent_.WriteTo(ref output, _repeated_battleEvent_codec);
       battleTargetInfo_.WriteTo(ref output, _map_battleTargetInfo_codec);
-      if (lDPLAOHNLAP_ != null) {
-        output.WriteRawTag(242, 35);
-        output.WriteMessage(LDPLAOHNLAP);
-      }
-      if (dFABBGKGDEI_ != null) {
-        output.WriteRawTag(170, 48);
-        output.WriteMessage(DFABBGKGDEI);
-      }
       if (battleRogueMagicInfo_ != null) {
-        output.WriteRawTag(218, 106);
+        output.WriteRawTag(154, 121);
         output.WriteMessage(BattleRogueMagicInfo);
-      }
-      if (eIGMKOJOEEI_ != null) {
-        output.WriteRawTag(202, 113);
-        output.WriteMessage(EIGMKOJOEEI);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -541,49 +567,52 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (battleRogueMagicInfo_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(BattleRogueMagicInfo);
-      }
-      if (dFABBGKGDEI_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(DFABBGKGDEI);
-      }
-      if (lDPLAOHNLAP_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(LDPLAOHNLAP);
-      }
-      if (eIGMKOJOEEI_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(EIGMKOJOEEI);
-      }
-      size += battleEvent_.CalculateSize(_repeated_battleEvent_codec);
-      size += battleAvatarList_.CalculateSize(_repeated_battleAvatarList_codec);
-      size += battleTargetInfo_.CalculateSize(_map_battleTargetInfo_codec);
-      if (pMCEKILFBIO_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(PMCEKILFBIO);
-      }
-      size += buffList_.CalculateSize(_repeated_buffList_codec);
-      if (fGOAKDCBIOE_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(FGOAKDCBIOE);
-      }
-      size += monsterWaveList_.CalculateSize(_repeated_monsterWaveList_codec);
-      if (IMEKCMNFLDI != false) {
-        size += 1 + 1;
-      }
-      if (RoundsLimit != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RoundsLimit);
-      }
       if (StageId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(StageId);
       }
+      size += buffList_.CalculateSize(_repeated_buffList_codec);
       if (WorldLevel != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(WorldLevel);
       }
+      if (LogicRandomSeed != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LogicRandomSeed);
+      }
+      size += battleAvatarList_.CalculateSize(_repeated_battleAvatarList_codec);
       if (MonsterWaveLength != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MonsterWaveLength);
+      }
+      size += monsterWaveList_.CalculateSize(_repeated_monsterWaveList_codec);
+      if (EncryptResult != false) {
+        size += 1 + 1;
       }
       if (BattleId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BattleId);
       }
-      if (LogicRandomSeed != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LogicRandomSeed);
+      if (RoundsLimit != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RoundsLimit);
+      }
+      if (battleEvolveBuildData_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(BattleEvolveBuildData);
+      }
+      if (battleGridFightData_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(BattleGridFightData);
+      }
+      if (battleActionEventId_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(BattleActionEventId);
+      }
+      if (battleFateData_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(BattleFateData);
+      }
+      if (battleFateRinData_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(BattleFateRinData);
+      }
+      if (battleSwordTrainingData_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(BattleSwordTrainingData);
+      }
+      size += battleEvent_.CalculateSize(_repeated_battleEvent_codec);
+      size += battleTargetInfo_.CalculateSize(_map_battleTargetInfo_codec);
+      if (battleRogueMagicInfo_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(BattleRogueMagicInfo);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -597,67 +626,73 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.StageId != 0) {
+        StageId = other.StageId;
+      }
+      buffList_.Add(other.buffList_);
+      if (other.WorldLevel != 0) {
+        WorldLevel = other.WorldLevel;
+      }
+      if (other.LogicRandomSeed != 0) {
+        LogicRandomSeed = other.LogicRandomSeed;
+      }
+      battleAvatarList_.Add(other.battleAvatarList_);
+      if (other.MonsterWaveLength != 0) {
+        MonsterWaveLength = other.MonsterWaveLength;
+      }
+      monsterWaveList_.Add(other.monsterWaveList_);
+      if (other.EncryptResult != false) {
+        EncryptResult = other.EncryptResult;
+      }
+      if (other.BattleId != 0) {
+        BattleId = other.BattleId;
+      }
+      if (other.RoundsLimit != 0) {
+        RoundsLimit = other.RoundsLimit;
+      }
+      if (other.battleEvolveBuildData_ != null) {
+        if (battleEvolveBuildData_ == null) {
+          BattleEvolveBuildData = new global::March7thHoney.Proto.BattleGridFightSpecialBattleInfo();
+        }
+        BattleEvolveBuildData.MergeFrom(other.BattleEvolveBuildData);
+      }
+      if (other.battleGridFightData_ != null) {
+        if (battleGridFightData_ == null) {
+          BattleGridFightData = new global::March7thHoney.Proto.GridFightInfo();
+        }
+        BattleGridFightData.MergeFrom(other.BattleGridFightData);
+      }
+      if (other.battleActionEventId_ != null) {
+        if (battleActionEventId_ == null) {
+          BattleActionEventId = new global::March7thHoney.Proto.EDCFKACPFNB();
+        }
+        BattleActionEventId.MergeFrom(other.BattleActionEventId);
+      }
+      if (other.battleFateData_ != null) {
+        if (battleFateData_ == null) {
+          BattleFateData = new global::March7thHoney.Proto.PKPFAHEBJIO();
+        }
+        BattleFateData.MergeFrom(other.BattleFateData);
+      }
+      if (other.battleFateRinData_ != null) {
+        if (battleFateRinData_ == null) {
+          BattleFateRinData = new global::March7thHoney.Proto.GLIBGKGGEJL();
+        }
+        BattleFateRinData.MergeFrom(other.BattleFateRinData);
+      }
+      if (other.battleSwordTrainingData_ != null) {
+        if (battleSwordTrainingData_ == null) {
+          BattleSwordTrainingData = new global::March7thHoney.Proto.KIAICMELIMM();
+        }
+        BattleSwordTrainingData.MergeFrom(other.BattleSwordTrainingData);
+      }
+      battleEvent_.Add(other.battleEvent_);
+      battleTargetInfo_.MergeFrom(other.battleTargetInfo_);
       if (other.battleRogueMagicInfo_ != null) {
         if (battleRogueMagicInfo_ == null) {
           BattleRogueMagicInfo = new global::March7thHoney.Proto.BattleRogueMagicInfo();
         }
         BattleRogueMagicInfo.MergeFrom(other.BattleRogueMagicInfo);
-      }
-      if (other.dFABBGKGDEI_ != null) {
-        if (dFABBGKGDEI_ == null) {
-          DFABBGKGDEI = new global::March7thHoney.Proto.KIAICMELIMM();
-        }
-        DFABBGKGDEI.MergeFrom(other.DFABBGKGDEI);
-      }
-      if (other.lDPLAOHNLAP_ != null) {
-        if (lDPLAOHNLAP_ == null) {
-          LDPLAOHNLAP = new global::March7thHoney.Proto.PKPFAHEBJIO();
-        }
-        LDPLAOHNLAP.MergeFrom(other.LDPLAOHNLAP);
-      }
-      if (other.eIGMKOJOEEI_ != null) {
-        if (eIGMKOJOEEI_ == null) {
-          EIGMKOJOEEI = new global::March7thHoney.Proto.OJCBOMCCPDB();
-        }
-        EIGMKOJOEEI.MergeFrom(other.EIGMKOJOEEI);
-      }
-      battleEvent_.Add(other.battleEvent_);
-      battleAvatarList_.Add(other.battleAvatarList_);
-      battleTargetInfo_.MergeFrom(other.battleTargetInfo_);
-      if (other.pMCEKILFBIO_ != null) {
-        if (pMCEKILFBIO_ == null) {
-          PMCEKILFBIO = new global::March7thHoney.Proto.BattleGridFightSpecialBattleInfo();
-        }
-        PMCEKILFBIO.MergeFrom(other.PMCEKILFBIO);
-      }
-      buffList_.Add(other.buffList_);
-      if (other.fGOAKDCBIOE_ != null) {
-        if (fGOAKDCBIOE_ == null) {
-          FGOAKDCBIOE = new global::March7thHoney.Proto.EDCFKACPFNB();
-        }
-        FGOAKDCBIOE.MergeFrom(other.FGOAKDCBIOE);
-      }
-      monsterWaveList_.Add(other.monsterWaveList_);
-      if (other.IMEKCMNFLDI != false) {
-        IMEKCMNFLDI = other.IMEKCMNFLDI;
-      }
-      if (other.RoundsLimit != 0) {
-        RoundsLimit = other.RoundsLimit;
-      }
-      if (other.StageId != 0) {
-        StageId = other.StageId;
-      }
-      if (other.WorldLevel != 0) {
-        WorldLevel = other.WorldLevel;
-      }
-      if (other.MonsterWaveLength != 0) {
-        MonsterWaveLength = other.MonsterWaveLength;
-      }
-      if (other.BattleId != 0) {
-        BattleId = other.BattleId;
-      }
-      if (other.LogicRandomSeed != 0) {
-        LogicRandomSeed = other.LogicRandomSeed;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -678,94 +713,101 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
+          case 8: {
+            StageId = input.ReadUInt32();
+            break;
+          }
           case 18: {
             buffList_.AddEntriesFrom(input, _repeated_buffList_codec);
             break;
           }
-          case 24: {
-            BattleId = input.ReadUInt32();
+          case 32: {
+            WorldLevel = input.ReadUInt32();
             break;
           }
           case 40: {
-            MonsterWaveLength = input.ReadUInt32();
+            LogicRandomSeed = input.ReadUInt32();
             break;
           }
-          case 56: {
-            StageId = input.ReadUInt32();
-            break;
-          }
-          case 64: {
-            RoundsLimit = input.ReadUInt32();
+          case 58: {
+            battleAvatarList_.AddEntriesFrom(input, _repeated_battleAvatarList_codec);
             break;
           }
           case 72: {
-            WorldLevel = input.ReadUInt32();
+            MonsterWaveLength = input.ReadUInt32();
             break;
           }
           case 82: {
             monsterWaveList_.AddEntriesFrom(input, _repeated_monsterWaveList_codec);
             break;
           }
-          case 88: {
-            LogicRandomSeed = input.ReadUInt32();
+          case 96: {
+            EncryptResult = input.ReadBool();
             break;
           }
-          case 98: {
-            battleAvatarList_.AddEntriesFrom(input, _repeated_battleAvatarList_codec);
+          case 112: {
+            BattleId = input.ReadUInt32();
             break;
           }
-          case 104: {
-            IMEKCMNFLDI = input.ReadBool();
+          case 120: {
+            RoundsLimit = input.ReadUInt32();
             break;
           }
-          case 1130: {
-            if (fGOAKDCBIOE_ == null) {
-              FGOAKDCBIOE = new global::March7thHoney.Proto.EDCFKACPFNB();
+          case 1506: {
+            if (battleEvolveBuildData_ == null) {
+              BattleEvolveBuildData = new global::March7thHoney.Proto.BattleGridFightSpecialBattleInfo();
             }
-            input.ReadMessage(FGOAKDCBIOE);
+            input.ReadMessage(BattleEvolveBuildData);
             break;
           }
-          case 3290: {
-            if (pMCEKILFBIO_ == null) {
-              PMCEKILFBIO = new global::March7thHoney.Proto.BattleGridFightSpecialBattleInfo();
+          case 2410: {
+            if (battleGridFightData_ == null) {
+              BattleGridFightData = new global::March7thHoney.Proto.GridFightInfo();
             }
-            input.ReadMessage(PMCEKILFBIO);
+            input.ReadMessage(BattleGridFightData);
             break;
           }
-          case 3770: {
-            battleEvent_.AddEntriesFrom(input, _repeated_battleEvent_codec);
+          case 3730: {
+            if (battleActionEventId_ == null) {
+              BattleActionEventId = new global::March7thHoney.Proto.EDCFKACPFNB();
+            }
+            input.ReadMessage(BattleActionEventId);
             break;
           }
           case 4018: {
+            if (battleFateData_ == null) {
+              BattleFateData = new global::March7thHoney.Proto.PKPFAHEBJIO();
+            }
+            input.ReadMessage(BattleFateData);
+            break;
+          }
+          case 8426: {
+            if (battleFateRinData_ == null) {
+              BattleFateRinData = new global::March7thHoney.Proto.GLIBGKGGEJL();
+            }
+            input.ReadMessage(BattleFateRinData);
+            break;
+          }
+          case 11418: {
+            if (battleSwordTrainingData_ == null) {
+              BattleSwordTrainingData = new global::March7thHoney.Proto.KIAICMELIMM();
+            }
+            input.ReadMessage(BattleSwordTrainingData);
+            break;
+          }
+          case 12522: {
+            battleEvent_.AddEntriesFrom(input, _repeated_battleEvent_codec);
+            break;
+          }
+          case 13698: {
             battleTargetInfo_.AddEntriesFrom(input, _map_battleTargetInfo_codec);
             break;
           }
-          case 4594: {
-            if (lDPLAOHNLAP_ == null) {
-              LDPLAOHNLAP = new global::March7thHoney.Proto.PKPFAHEBJIO();
-            }
-            input.ReadMessage(LDPLAOHNLAP);
-            break;
-          }
-          case 6186: {
-            if (dFABBGKGDEI_ == null) {
-              DFABBGKGDEI = new global::March7thHoney.Proto.KIAICMELIMM();
-            }
-            input.ReadMessage(DFABBGKGDEI);
-            break;
-          }
-          case 13658: {
+          case 15514: {
             if (battleRogueMagicInfo_ == null) {
               BattleRogueMagicInfo = new global::March7thHoney.Proto.BattleRogueMagicInfo();
             }
             input.ReadMessage(BattleRogueMagicInfo);
-            break;
-          }
-          case 14538: {
-            if (eIGMKOJOEEI_ == null) {
-              EIGMKOJOEEI = new global::March7thHoney.Proto.OJCBOMCCPDB();
-            }
-            input.ReadMessage(EIGMKOJOEEI);
             break;
           }
         }
@@ -787,94 +829,101 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
+          case 8: {
+            StageId = input.ReadUInt32();
+            break;
+          }
           case 18: {
             buffList_.AddEntriesFrom(ref input, _repeated_buffList_codec);
             break;
           }
-          case 24: {
-            BattleId = input.ReadUInt32();
+          case 32: {
+            WorldLevel = input.ReadUInt32();
             break;
           }
           case 40: {
-            MonsterWaveLength = input.ReadUInt32();
+            LogicRandomSeed = input.ReadUInt32();
             break;
           }
-          case 56: {
-            StageId = input.ReadUInt32();
-            break;
-          }
-          case 64: {
-            RoundsLimit = input.ReadUInt32();
+          case 58: {
+            battleAvatarList_.AddEntriesFrom(ref input, _repeated_battleAvatarList_codec);
             break;
           }
           case 72: {
-            WorldLevel = input.ReadUInt32();
+            MonsterWaveLength = input.ReadUInt32();
             break;
           }
           case 82: {
             monsterWaveList_.AddEntriesFrom(ref input, _repeated_monsterWaveList_codec);
             break;
           }
-          case 88: {
-            LogicRandomSeed = input.ReadUInt32();
+          case 96: {
+            EncryptResult = input.ReadBool();
             break;
           }
-          case 98: {
-            battleAvatarList_.AddEntriesFrom(ref input, _repeated_battleAvatarList_codec);
+          case 112: {
+            BattleId = input.ReadUInt32();
             break;
           }
-          case 104: {
-            IMEKCMNFLDI = input.ReadBool();
+          case 120: {
+            RoundsLimit = input.ReadUInt32();
             break;
           }
-          case 1130: {
-            if (fGOAKDCBIOE_ == null) {
-              FGOAKDCBIOE = new global::March7thHoney.Proto.EDCFKACPFNB();
+          case 1506: {
+            if (battleEvolveBuildData_ == null) {
+              BattleEvolveBuildData = new global::March7thHoney.Proto.BattleGridFightSpecialBattleInfo();
             }
-            input.ReadMessage(FGOAKDCBIOE);
+            input.ReadMessage(BattleEvolveBuildData);
             break;
           }
-          case 3290: {
-            if (pMCEKILFBIO_ == null) {
-              PMCEKILFBIO = new global::March7thHoney.Proto.BattleGridFightSpecialBattleInfo();
+          case 2410: {
+            if (battleGridFightData_ == null) {
+              BattleGridFightData = new global::March7thHoney.Proto.GridFightInfo();
             }
-            input.ReadMessage(PMCEKILFBIO);
+            input.ReadMessage(BattleGridFightData);
             break;
           }
-          case 3770: {
-            battleEvent_.AddEntriesFrom(ref input, _repeated_battleEvent_codec);
+          case 3730: {
+            if (battleActionEventId_ == null) {
+              BattleActionEventId = new global::March7thHoney.Proto.EDCFKACPFNB();
+            }
+            input.ReadMessage(BattleActionEventId);
             break;
           }
           case 4018: {
+            if (battleFateData_ == null) {
+              BattleFateData = new global::March7thHoney.Proto.PKPFAHEBJIO();
+            }
+            input.ReadMessage(BattleFateData);
+            break;
+          }
+          case 8426: {
+            if (battleFateRinData_ == null) {
+              BattleFateRinData = new global::March7thHoney.Proto.GLIBGKGGEJL();
+            }
+            input.ReadMessage(BattleFateRinData);
+            break;
+          }
+          case 11418: {
+            if (battleSwordTrainingData_ == null) {
+              BattleSwordTrainingData = new global::March7thHoney.Proto.KIAICMELIMM();
+            }
+            input.ReadMessage(BattleSwordTrainingData);
+            break;
+          }
+          case 12522: {
+            battleEvent_.AddEntriesFrom(ref input, _repeated_battleEvent_codec);
+            break;
+          }
+          case 13698: {
             battleTargetInfo_.AddEntriesFrom(ref input, _map_battleTargetInfo_codec);
             break;
           }
-          case 4594: {
-            if (lDPLAOHNLAP_ == null) {
-              LDPLAOHNLAP = new global::March7thHoney.Proto.PKPFAHEBJIO();
-            }
-            input.ReadMessage(LDPLAOHNLAP);
-            break;
-          }
-          case 6186: {
-            if (dFABBGKGDEI_ == null) {
-              DFABBGKGDEI = new global::March7thHoney.Proto.KIAICMELIMM();
-            }
-            input.ReadMessage(DFABBGKGDEI);
-            break;
-          }
-          case 13658: {
+          case 15514: {
             if (battleRogueMagicInfo_ == null) {
               BattleRogueMagicInfo = new global::March7thHoney.Proto.BattleRogueMagicInfo();
             }
             input.ReadMessage(BattleRogueMagicInfo);
-            break;
-          }
-          case 14538: {
-            if (eIGMKOJOEEI_ == null) {
-              EIGMKOJOEEI = new global::March7thHoney.Proto.OJCBOMCCPDB();
-            }
-            input.ReadMessage(EIGMKOJOEEI);
             break;
           }
         }

@@ -7,10 +7,10 @@ import "RaidStatus.proto";
 import "RaidTargetInfo.proto";
 
 message RaidInfoNotify {
-    ItemList item_list = 1;
-    repeated RaidTargetInfo raid_target_info = 11;
-    uint64 raid_finish_time = 9;
-    uint32 world_level = 2;
-    uint32 raid_id = 5;
-    RaidStatus status = 12;
+    uint64 raid_finish_time = 1;
+    uint32 world_level = 7;
+    repeated RaidTargetInfo raid_target_info = 8;
+    RaidStatus status = 11;
+    uint32 raid_id = 13;
+    ItemList item_list = 15;
 }

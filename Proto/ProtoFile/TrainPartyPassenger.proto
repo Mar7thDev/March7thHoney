@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message TrainPartyPassenger {
-    repeated uint32 GHPFANGEMAN = 14;
-    uint32 passenger_id = 5;
-    bool JGDNJOFHCNC = 4;
-    uint32 record_id = 15;
+    uint32 record_id = 1;
+    bool JGDNJOFHCNC = 2;
+    uint32 passenger_id = 8;
+    repeated uint32 GHPFANGEMAN = 12;
 }

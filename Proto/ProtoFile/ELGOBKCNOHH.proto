@@ -5,9 +5,9 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemCostData.proto";
 
 message ELGOBKCNOHH {
-    ItemCostData cost_data = 14;
-    ItemCostData KINNMAGDDJJ = 12;
-    bool GCIHGKCJOGB = 6;
-    bool BELPGDAGFIH = 15;
-    uint32 LJCEOGPOGBE = 7;
+    ItemCostData cost_data = 3;
+    uint32 LJCEOGPOGBE = 5;
+    bool BELPGDAGFIH = 8;
+    ItemCostData KINNMAGDDJJ = 9;
+    bool GCIHGKCJOGB = 15;
 }

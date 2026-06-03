@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message JHBOOCGAKCM {
-    uint32 LDMHLKGILOD = 8;
-    uint32 FFKDFODDBDN = 4;
+    uint32 LDMHLKGILOD = 7;
+    uint32 FFKDFODDBDN = 14;
 }

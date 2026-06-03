@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemList.proto";
 
 message DirectDeliveryScNotify {
-    repeated ItemList DJOBNPIAEJP = 6;
-    uint32 HFHHKGFNGFC = 1;
+    uint32 HFHHKGFNGFC = 2;
+    repeated ItemList DJOBNPIAEJP = 13;
 }

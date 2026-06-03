@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message BDJLHJDPEEK {
-    repeated uint32 FJIKMHCJMKH = 9;
-    uint32 unique_id = 13;
-    uint32 LLICIMBCNPF = 2;
-    uint32 level = 6;
+    uint32 level = 2;
+    uint32 composition_type = 5;
+    repeated uint32 attribute_list = 11;
+    uint32 unique_id = 14;
 }

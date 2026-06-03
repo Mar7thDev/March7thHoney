@@ -28,9 +28,9 @@ namespace March7thHoney.Proto {
             "dG8aEUZFSUpQRUpCRERILnByb3RvGhFGRU5GRUhDQ09DQS5wcm90bxoRSk1Q",
             "TkdCQUlMQkcucHJvdG8aEU1OR05MT0NMTk9GLnByb3RvItIBCidSb2d1ZUFk",
             "dmVudHVyZVJvb21HYW1lcGxheVdvbGZHdW5UYXJnZXQSIwoLdGFyZ2V0X25v",
-            "bmUYDSABKAsyDC5NTkdOTE9DTE5PRkgAEiMKC3RhcmdldF9jb2luGAUgASgL",
-            "MgwuRkVJSlBFSkJEREhIABImCg50YXJnZXRfbWlyYWNsZRgDIAEoCzIMLkpN",
-            "UE5HQkFJTEJHSAASJgoOdGFyZ2V0X3J1YW5tZWkYDCABKAsyDC5GRU5GRUhD",
+            "bmUYDyABKAsyDC5NTkdOTE9DTE5PRkgAEiMKC3RhcmdldF9jb2luGAwgASgL",
+            "MgwuRkVJSlBFSkJEREhIABImCg50YXJnZXRfbWlyYWNsZRgGIAEoCzIMLkpN",
+            "UE5HQkFJTEJHSAASJgoOdGFyZ2V0X3J1YW5tZWkYBSABKAsyDC5GRU5GRUhD",
             "Q09DQUgAQg0KC3RhcmdldF9pbXBsQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
             "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
@@ -103,7 +103,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "target_none" field.</summary>
-    public const int TargetNoneFieldNumber = 13;
+    public const int TargetNoneFieldNumber = 15;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.MNGNLOCLNOF TargetNone {
@@ -115,7 +115,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "target_coin" field.</summary>
-    public const int TargetCoinFieldNumber = 5;
+    public const int TargetCoinFieldNumber = 12;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.FEIJPEJBDDH TargetCoin {
@@ -127,7 +127,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "target_miracle" field.</summary>
-    public const int TargetMiracleFieldNumber = 3;
+    public const int TargetMiracleFieldNumber = 6;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.JMPNGBAILBG TargetMiracle {
@@ -139,7 +139,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "target_ruanmei" field.</summary>
-    public const int TargetRuanmeiFieldNumber = 12;
+    public const int TargetRuanmeiFieldNumber = 5;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.FENFEHCCOCA TargetRuanmei {
@@ -154,10 +154,10 @@ namespace March7thHoney.Proto {
     /// <summary>Enum of possible cases for the "target_impl" oneof.</summary>
     public enum TargetImplOneofCase {
       None = 0,
-      TargetNone = 13,
-      TargetCoin = 5,
-      TargetMiracle = 3,
-      TargetRuanmei = 12,
+      TargetNone = 15,
+      TargetCoin = 12,
+      TargetMiracle = 6,
+      TargetRuanmei = 5,
     }
     private TargetImplOneofCase targetImplCase_ = TargetImplOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -223,20 +223,20 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (targetImplCase_ == TargetImplOneofCase.TargetRuanmei) {
+        output.WriteRawTag(42);
+        output.WriteMessage(TargetRuanmei);
+      }
       if (targetImplCase_ == TargetImplOneofCase.TargetMiracle) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(50);
         output.WriteMessage(TargetMiracle);
       }
       if (targetImplCase_ == TargetImplOneofCase.TargetCoin) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(98);
         output.WriteMessage(TargetCoin);
       }
-      if (targetImplCase_ == TargetImplOneofCase.TargetRuanmei) {
-        output.WriteRawTag(98);
-        output.WriteMessage(TargetRuanmei);
-      }
       if (targetImplCase_ == TargetImplOneofCase.TargetNone) {
-        output.WriteRawTag(106);
+        output.WriteRawTag(122);
         output.WriteMessage(TargetNone);
       }
       if (_unknownFields != null) {
@@ -249,20 +249,20 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (targetImplCase_ == TargetImplOneofCase.TargetRuanmei) {
+        output.WriteRawTag(42);
+        output.WriteMessage(TargetRuanmei);
+      }
       if (targetImplCase_ == TargetImplOneofCase.TargetMiracle) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(50);
         output.WriteMessage(TargetMiracle);
       }
       if (targetImplCase_ == TargetImplOneofCase.TargetCoin) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(98);
         output.WriteMessage(TargetCoin);
       }
-      if (targetImplCase_ == TargetImplOneofCase.TargetRuanmei) {
-        output.WriteRawTag(98);
-        output.WriteMessage(TargetRuanmei);
-      }
       if (targetImplCase_ == TargetImplOneofCase.TargetNone) {
-        output.WriteRawTag(106);
+        output.WriteRawTag(122);
         output.WriteMessage(TargetNone);
       }
       if (_unknownFields != null) {
@@ -345,25 +345,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 26: {
-            global::March7thHoney.Proto.JMPNGBAILBG subBuilder = new global::March7thHoney.Proto.JMPNGBAILBG();
-            if (targetImplCase_ == TargetImplOneofCase.TargetMiracle) {
-              subBuilder.MergeFrom(TargetMiracle);
-            }
-            input.ReadMessage(subBuilder);
-            TargetMiracle = subBuilder;
-            break;
-          }
           case 42: {
-            global::March7thHoney.Proto.FEIJPEJBDDH subBuilder = new global::March7thHoney.Proto.FEIJPEJBDDH();
-            if (targetImplCase_ == TargetImplOneofCase.TargetCoin) {
-              subBuilder.MergeFrom(TargetCoin);
-            }
-            input.ReadMessage(subBuilder);
-            TargetCoin = subBuilder;
-            break;
-          }
-          case 98: {
             global::March7thHoney.Proto.FENFEHCCOCA subBuilder = new global::March7thHoney.Proto.FENFEHCCOCA();
             if (targetImplCase_ == TargetImplOneofCase.TargetRuanmei) {
               subBuilder.MergeFrom(TargetRuanmei);
@@ -372,7 +354,25 @@ namespace March7thHoney.Proto {
             TargetRuanmei = subBuilder;
             break;
           }
-          case 106: {
+          case 50: {
+            global::March7thHoney.Proto.JMPNGBAILBG subBuilder = new global::March7thHoney.Proto.JMPNGBAILBG();
+            if (targetImplCase_ == TargetImplOneofCase.TargetMiracle) {
+              subBuilder.MergeFrom(TargetMiracle);
+            }
+            input.ReadMessage(subBuilder);
+            TargetMiracle = subBuilder;
+            break;
+          }
+          case 98: {
+            global::March7thHoney.Proto.FEIJPEJBDDH subBuilder = new global::March7thHoney.Proto.FEIJPEJBDDH();
+            if (targetImplCase_ == TargetImplOneofCase.TargetCoin) {
+              subBuilder.MergeFrom(TargetCoin);
+            }
+            input.ReadMessage(subBuilder);
+            TargetCoin = subBuilder;
+            break;
+          }
+          case 122: {
             global::March7thHoney.Proto.MNGNLOCLNOF subBuilder = new global::March7thHoney.Proto.MNGNLOCLNOF();
             if (targetImplCase_ == TargetImplOneofCase.TargetNone) {
               subBuilder.MergeFrom(TargetNone);
@@ -400,25 +400,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 26: {
-            global::March7thHoney.Proto.JMPNGBAILBG subBuilder = new global::March7thHoney.Proto.JMPNGBAILBG();
-            if (targetImplCase_ == TargetImplOneofCase.TargetMiracle) {
-              subBuilder.MergeFrom(TargetMiracle);
-            }
-            input.ReadMessage(subBuilder);
-            TargetMiracle = subBuilder;
-            break;
-          }
           case 42: {
-            global::March7thHoney.Proto.FEIJPEJBDDH subBuilder = new global::March7thHoney.Proto.FEIJPEJBDDH();
-            if (targetImplCase_ == TargetImplOneofCase.TargetCoin) {
-              subBuilder.MergeFrom(TargetCoin);
-            }
-            input.ReadMessage(subBuilder);
-            TargetCoin = subBuilder;
-            break;
-          }
-          case 98: {
             global::March7thHoney.Proto.FENFEHCCOCA subBuilder = new global::March7thHoney.Proto.FENFEHCCOCA();
             if (targetImplCase_ == TargetImplOneofCase.TargetRuanmei) {
               subBuilder.MergeFrom(TargetRuanmei);
@@ -427,7 +409,25 @@ namespace March7thHoney.Proto {
             TargetRuanmei = subBuilder;
             break;
           }
-          case 106: {
+          case 50: {
+            global::March7thHoney.Proto.JMPNGBAILBG subBuilder = new global::March7thHoney.Proto.JMPNGBAILBG();
+            if (targetImplCase_ == TargetImplOneofCase.TargetMiracle) {
+              subBuilder.MergeFrom(TargetMiracle);
+            }
+            input.ReadMessage(subBuilder);
+            TargetMiracle = subBuilder;
+            break;
+          }
+          case 98: {
+            global::March7thHoney.Proto.FEIJPEJBDDH subBuilder = new global::March7thHoney.Proto.FEIJPEJBDDH();
+            if (targetImplCase_ == TargetImplOneofCase.TargetCoin) {
+              subBuilder.MergeFrom(TargetCoin);
+            }
+            input.ReadMessage(subBuilder);
+            TargetCoin = subBuilder;
+            break;
+          }
+          case 122: {
             global::March7thHoney.Proto.MNGNLOCLNOF subBuilder = new global::March7thHoney.Proto.MNGNLOCLNOF();
             if (targetImplCase_ == TargetImplOneofCase.TargetNone) {
               subBuilder.MergeFrom(TargetNone);

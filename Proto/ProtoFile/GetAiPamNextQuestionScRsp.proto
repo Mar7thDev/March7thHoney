@@ -6,7 +6,7 @@ import "FKNKNLGMACL.proto";
 import "NEKAOLPJKEE.proto";
 
 message GetAiPamNextQuestionScRsp {
-    repeated NEKAOLPJKEE KDOHKGKBFCH = 5;
-    uint32 retcode = 8;
-    FKNKNLGMACL BDPIMPJOJBK = 6;
+    uint32 retcode = 4;
+    repeated NEKAOLPJKEE KDOHKGKBFCH = 9;
+    FKNKNLGMACL role = 12;
 }

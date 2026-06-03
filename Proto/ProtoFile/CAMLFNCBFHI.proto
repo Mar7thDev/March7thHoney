@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message CAMLFNCBFHI {
-    repeated uint32 avatar_id_list = 3;
+    repeated uint32 avatar_id_list = 6;
 }

@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiBQbGFuZXRGZXNTa2lsbExldmVsVXBDc1JlcS5wcm90byJDChpQbGFuZXRG",
-            "ZXNTa2lsbExldmVsVXBDc1JlcRIQCghza2lsbF9pZBgPIAEoDRITCgtJR09P",
-            "SktNUE1EQxgHIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ZXNTa2lsbExldmVsVXBDc1JlcRITCgtJR09PSktNUE1EQxgNIAEoDRIQCghz",
+            "a2lsbF9pZBgPIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlanetFesSkillLevelUpCsReq), global::March7thHoney.Proto.PlanetFesSkillLevelUpCsReq.Parser, new[]{ "SkillId", "IGOOJKMPMDC" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlanetFesSkillLevelUpCsReq), global::March7thHoney.Proto.PlanetFesSkillLevelUpCsReq.Parser, new[]{ "IGOOJKMPMDC", "SkillId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PlanetFesSkillLevelUpCsReq(PlanetFesSkillLevelUpCsReq other) : this() {
-      skillId_ = other.skillId_;
       iGOOJKMPMDC_ = other.iGOOJKMPMDC_;
+      skillId_ = other.skillId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -81,6 +81,18 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PlanetFesSkillLevelUpCsReq Clone() {
       return new PlanetFesSkillLevelUpCsReq(this);
+    }
+
+    /// <summary>Field number for the "IGOOJKMPMDC" field.</summary>
+    public const int IGOOJKMPMDCFieldNumber = 13;
+    private uint iGOOJKMPMDC_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint IGOOJKMPMDC {
+      get { return iGOOJKMPMDC_; }
+      set {
+        iGOOJKMPMDC_ = value;
+      }
     }
 
     /// <summary>Field number for the "skill_id" field.</summary>
@@ -92,18 +104,6 @@ namespace March7thHoney.Proto {
       get { return skillId_; }
       set {
         skillId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "IGOOJKMPMDC" field.</summary>
-    public const int IGOOJKMPMDCFieldNumber = 7;
-    private uint iGOOJKMPMDC_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint IGOOJKMPMDC {
-      get { return iGOOJKMPMDC_; }
-      set {
-        iGOOJKMPMDC_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (SkillId != other.SkillId) return false;
       if (IGOOJKMPMDC != other.IGOOJKMPMDC) return false;
+      if (SkillId != other.SkillId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (SkillId != 0) hash ^= SkillId.GetHashCode();
       if (IGOOJKMPMDC != 0) hash ^= IGOOJKMPMDC.GetHashCode();
+      if (SkillId != 0) hash ^= SkillId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,7 +152,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (IGOOJKMPMDC != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(104);
         output.WriteUInt32(IGOOJKMPMDC);
       }
       if (SkillId != 0) {
@@ -170,7 +170,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (IGOOJKMPMDC != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(104);
         output.WriteUInt32(IGOOJKMPMDC);
       }
       if (SkillId != 0) {
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (SkillId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SkillId);
-      }
       if (IGOOJKMPMDC != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(IGOOJKMPMDC);
+      }
+      if (SkillId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SkillId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.SkillId != 0) {
-        SkillId = other.SkillId;
-      }
       if (other.IGOOJKMPMDC != 0) {
         IGOOJKMPMDC = other.IGOOJKMPMDC;
+      }
+      if (other.SkillId != 0) {
+        SkillId = other.SkillId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,7 +230,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
+          case 104: {
             IGOOJKMPMDC = input.ReadUInt32();
             break;
           }
@@ -257,7 +257,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
+          case 104: {
             IGOOJKMPMDC = input.ReadUInt32();
             break;
           }

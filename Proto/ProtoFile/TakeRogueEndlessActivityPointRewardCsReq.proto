@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message TakeRogueEndlessActivityPointRewardCsReq {
-    uint32 level = 14;
-    bool LEFJBFMDEGK = 10;
+    bool LEFJBFMDEGK = 2;
+    uint32 level = 4;
 }

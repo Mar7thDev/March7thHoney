@@ -5,9 +5,9 @@ option csharp_namespace = "March7thHoney.Proto";
 import "Product.proto";
 
 message QueryProductInfoScRsp {
-    repeated Product product_list = 3;
-    uint32 BFFHEKCGLMA = 6;
-    uint32 BEBFNDIGKFK = 10;
-    uint32 retcode = 13;
-    uint64 month_card_out_date_time = 9;
+    repeated Product product_list = 4;
+    uint32 BFFHEKCGLMA = 5;
+    uint32 BEBFNDIGKFK = 6;
+    uint64 month_card_out_date_time = 7;
+    uint32 retcode = 14;
 }

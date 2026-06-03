@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message BLICCEHIOLH {
-    map<uint32, uint32> LBEIHAOKHAD = 9;
-    uint32 max_num = 1;
-    uint32 cur_num = 15;
+    uint32 cur_num = 3;
+    uint32 max_num = 4;
+    map<uint32, uint32> LBEIHAOKHAD = 11;
 }

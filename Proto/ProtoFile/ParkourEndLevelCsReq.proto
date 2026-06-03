@@ -8,14 +8,14 @@ import "OHFECKKADEK.proto";
 import "OIHEIIDJOLI.proto";
 
 message ParkourEndLevelCsReq {
-    OIHEIIDJOLI PKMAFFMMMAE = 11;
-    repeated IJJFBFPCBCI FENPLCNDKBJ = 3;
-    repeated ABEBEOKFKFF IDLJKFOKBJD = 1;
-    uint32 rank = 8;
-    uint32 level_id = 4;
-    uint32 CNHMBFIHLPC = 5;
-    OHFECKKADEK end_reason = 9;
-    uint32 KMGMFCJIAPI = 13;
-    uint32 time = 6;
-    uint32 CEKKJHBNEOD = 15;
+    uint32 time = 1;
+    OHFECKKADEK end_reason = 2;
+    uint32 total_time = 3;
+    uint32 KMGMFCJIAPI = 4;
+    uint32 rank = 5;
+    OIHEIIDJOLI PKMAFFMMMAE = 6;
+    uint32 CEKKJHBNEOD = 7;
+    uint32 level_id = 12;
+    repeated ABEBEOKFKFF IDLJKFOKBJD = 14;
+    repeated IJJFBFPCBCI FENPLCNDKBJ = 15;
 }

@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ACNKOPCGKDD {
-    uint32 FAGLNMDFOME = 4;
-    uint32 level_id = 6;
-    uint32 max_score = 11;
+    uint32 max_score = 7;
+    uint32 FAGLNMDFOME = 8;
+    uint32 level_id = 14;
 }

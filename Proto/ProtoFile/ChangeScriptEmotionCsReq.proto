@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "HeartDialEmotionType.proto";
 
 message ChangeScriptEmotionCsReq {
-    HeartDialEmotionType target_emotion_type = 4;
-    uint32 script_id = 2;
-    uint32 BLKFCFGMMBD = 1;
+    HeartDialEmotionType target_emotion_type = 3;
+    uint32 BLKFCFGMMBD = 8;
+    uint32 script_id = 15;
 }

@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "LKCDLJCKCJI.proto";
 
 message CommonRogueVirtualItemInfoScNotify {
-    repeated LKCDLJCKCJI DMCINCJLMND = 7;
+    repeated LKCDLJCKCJI DMCINCJLMND = 15;
 }

@@ -8,8 +8,8 @@ import "IKAHKMNCFDN.proto";
 message JPAOIPLDKHB {
     repeated IKAHKMNCFDN BJPHDKEBOBK = 1;
     BFAKMCIJFCB NLJBJMDPBGN = 2;
-    uint32 HBKEPFKDAMI = 5;
-    uint32 GAEKEFEKCBD = 6;
     int64 DBIKJPDBMOE = 3;
     int64 CMHKFNFKGOI = 4;
+    uint32 HBKEPFKDAMI = 5;
+    uint32 GAEKEFEKCBD = 6;
 }

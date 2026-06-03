@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message DrinkMakerCheersEnterNextGroupScRsp {
-    uint32 OLKJPIIKCKP = 6;
-    uint32 retcode = 5;
+    uint32 retcode = 1;
+    uint32 OLKJPIIKCKP = 9;
 }

@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "IBKDHOIDKJA.proto";
 
 message PlayerReturnForceFinishScNotify {
-    IBKDHOIDKJA NAJPHJOFGBB = 8;
+    IBKDHOIDKJA NAJPHJOFGBB = 3;
 }

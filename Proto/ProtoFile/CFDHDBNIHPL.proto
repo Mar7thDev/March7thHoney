@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message CFDHDBNIHPL {
-    repeated uint32 NGIJFAEONCK = 2;
     double GNHLKBINIEF = 1;
+    repeated uint32 NGIJFAEONCK = 2;
 }

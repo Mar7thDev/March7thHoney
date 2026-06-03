@@ -4,10 +4,10 @@ option csharp_namespace = "March7thHoney.Proto";
 
 message NpcRogueGameInfo {
     map<uint32, uint32> LDPAJKIEPIP = 1;
-    uint32 MJBKNMJHOGP = 15;
-    uint32 OEANPIHCHHF = 9;
-    uint32 AIAFEKGBFIF = 6;
-    bool NLAFLKPLPFE = 2;
-    bool DJEPGKBMICM = 12;
-    bool FKKMLJNKHDH = 8;
+    bool DJEPGKBMICM = 2;
+    uint32 AIAFEKGBFIF = 4;
+    uint32 MJBKNMJHOGP = 7;
+    uint32 OEANPIHCHHF = 11;
+    bool FKKMLJNKHDH = 12;
+    bool NLAFLKPLPFE = 14;
 }

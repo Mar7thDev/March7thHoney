@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "EDJKFOBBDJF.proto";
 
 message GetEvolveBuildShopAbilityResetCsReq {
-    EDJKFOBBDJF HFPEJIDDDJG = 7;
+    EDJKFOBBDJF HFPEJIDDDJG = 15;
 }

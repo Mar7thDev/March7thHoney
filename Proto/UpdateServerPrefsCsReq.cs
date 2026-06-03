@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChxVcGRhdGVTZXJ2ZXJQcmVmc0NzUmVxLnByb3RvGhFTZXJ2ZXJQcmVmcy5w",
             "cm90byI8ChZVcGRhdGVTZXJ2ZXJQcmVmc0NzUmVxEiIKDHNlcnZlcl9wcmVm",
-            "cxgIIAEoCzIMLlNlcnZlclByZWZzQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
+            "cxgEIAEoCzIMLlNlcnZlclByZWZzQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
             "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ServerPrefsReflection.Descriptor, },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "server_prefs" field.</summary>
-    public const int ServerPrefsFieldNumber = 8;
+    public const int ServerPrefsFieldNumber = 4;
     private global::March7thHoney.Proto.ServerPrefs serverPrefs_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -138,7 +138,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (serverPrefs_ != null) {
-        output.WriteRawTag(66);
+        output.WriteRawTag(34);
         output.WriteMessage(ServerPrefs);
       }
       if (_unknownFields != null) {
@@ -152,7 +152,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (serverPrefs_ != null) {
-        output.WriteRawTag(66);
+        output.WriteRawTag(34);
         output.WriteMessage(ServerPrefs);
       }
       if (_unknownFields != null) {
@@ -205,7 +205,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 66: {
+          case 34: {
             if (serverPrefs_ == null) {
               ServerPrefs = new global::March7thHoney.Proto.ServerPrefs();
             }
@@ -231,7 +231,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 66: {
+          case 34: {
             if (serverPrefs_ == null) {
               ServerPrefs = new global::March7thHoney.Proto.ServerPrefs();
             }

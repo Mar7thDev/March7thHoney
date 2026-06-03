@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "CBDMGEGELFM.proto";
 
 message LEJFIEPMMGG {
-    repeated CBDMGEGELFM IFJIHNBDNGN = 15;
-    uint32 KAHMGPGPOII = 8;
-    bool HNLJIPAOEGB = 6;
+    repeated CBDMGEGELFM IFJIHNBDNGN = 4;
+    uint32 KAHMGPGPOII = 11;
+    bool is_activated = 12;
 }

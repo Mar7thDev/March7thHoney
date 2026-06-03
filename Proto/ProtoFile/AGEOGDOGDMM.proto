@@ -3,8 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message AGEOGDOGDMM {
-    uint32 HMPGJCAIPDL = 5;
     uint32 rogue_money = 13;
-    uint32 OMJHLDAKCBC = 6;
-    uint32 DGEPIKMIHCA = 10;
 }

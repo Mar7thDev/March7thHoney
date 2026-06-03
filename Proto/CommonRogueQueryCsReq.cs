@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static CommonRogueQueryCsReqReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChtDb21tb25Sb2d1ZVF1ZXJ5Q3NSZXEucHJvdG8iLAoVQ29tbW9uUm9ndWVR",
-            "dWVyeUNzUmVxEhMKC0RJTkFMSUdMSUJCGAUgAygNQhaqAhNNYXJjaDd0aEhv",
-            "bmV5LlByb3RvYgZwcm90bzM="));
+            "ChtDb21tb25Sb2d1ZVF1ZXJ5Q3NSZXEucHJvdG8iKwoVQ29tbW9uUm9ndWVR",
+            "dWVyeUNzUmVxEhIKCnF1ZXJ5X2xpc3QYBiADKA1CFqoCE01hcmNoN3RoSG9u",
+            "ZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.CommonRogueQueryCsReq), global::March7thHoney.Proto.CommonRogueQueryCsReq.Parser, new[]{ "DINALIGLIBB" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.CommonRogueQueryCsReq), global::March7thHoney.Proto.CommonRogueQueryCsReq.Parser, new[]{ "QueryList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,7 +72,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public CommonRogueQueryCsReq(CommonRogueQueryCsReq other) : this() {
-      dINALIGLIBB_ = other.dINALIGLIBB_.Clone();
+      queryList_ = other.queryList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -82,15 +82,15 @@ namespace March7thHoney.Proto {
       return new CommonRogueQueryCsReq(this);
     }
 
-    /// <summary>Field number for the "DINALIGLIBB" field.</summary>
-    public const int DINALIGLIBBFieldNumber = 5;
-    private static readonly pb::FieldCodec<uint> _repeated_dINALIGLIBB_codec
-        = pb::FieldCodec.ForUInt32(42);
-    private readonly pbc::RepeatedField<uint> dINALIGLIBB_ = new pbc::RepeatedField<uint>();
+    /// <summary>Field number for the "query_list" field.</summary>
+    public const int QueryListFieldNumber = 6;
+    private static readonly pb::FieldCodec<uint> _repeated_queryList_codec
+        = pb::FieldCodec.ForUInt32(50);
+    private readonly pbc::RepeatedField<uint> queryList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> DINALIGLIBB {
-      get { return dINALIGLIBB_; }
+    public pbc::RepeatedField<uint> QueryList {
+      get { return queryList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -108,7 +108,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!dINALIGLIBB_.Equals(other.dINALIGLIBB_)) return false;
+      if(!queryList_.Equals(other.queryList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -116,7 +116,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= dINALIGLIBB_.GetHashCode();
+      hash ^= queryList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -135,7 +135,7 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      dINALIGLIBB_.WriteTo(output, _repeated_dINALIGLIBB_codec);
+      queryList_.WriteTo(output, _repeated_queryList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -146,7 +146,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      dINALIGLIBB_.WriteTo(ref output, _repeated_dINALIGLIBB_codec);
+      queryList_.WriteTo(ref output, _repeated_queryList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -157,7 +157,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += dINALIGLIBB_.CalculateSize(_repeated_dINALIGLIBB_codec);
+      size += queryList_.CalculateSize(_repeated_queryList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -170,7 +170,7 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      dINALIGLIBB_.Add(other.dINALIGLIBB_);
+      queryList_.Add(other.queryList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -190,9 +190,9 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 42:
-          case 40: {
-            dINALIGLIBB_.AddEntriesFrom(input, _repeated_dINALIGLIBB_codec);
+          case 50:
+          case 48: {
+            queryList_.AddEntriesFrom(input, _repeated_queryList_codec);
             break;
           }
         }
@@ -214,9 +214,9 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 42:
-          case 40: {
-            dINALIGLIBB_.AddEntriesFrom(ref input, _repeated_dINALIGLIBB_codec);
+          case 50:
+          case 48: {
+            queryList_.AddEntriesFrom(ref input, _repeated_queryList_codec);
             break;
           }
         }

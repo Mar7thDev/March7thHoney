@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "MultiPathAvatarType.proto";
 
 message SetGenderScRsp {
-    uint32 retcode = 10;
-    MultiPathAvatarType cur_avatar_path = 4;
+    MultiPathAvatarType cur_avatar_path = 8;
+    uint32 retcode = 12;
 }

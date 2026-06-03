@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "FightGameMode.proto";
 
 message GetFriendRankingInfoCsReq {
-    FightGameMode GJNMHILINHC = 14;
+    FightGameMode GJNMHILINHC = 15;
 }

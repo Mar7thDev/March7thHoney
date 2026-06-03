@@ -6,7 +6,7 @@ import "LHLBGJLFFKK.proto";
 import "MDJAPHPOABA.proto";
 
 message AMEJEFBKPCH {
-    repeated MDJAPHPOABA KFNMIEMBJGD = 9;
-    uint32 event_id = 8;
-    LHLBGJLFFKK LAOACNPDOLD = 13;
+    uint32 event_id = 4;
+    repeated MDJAPHPOABA KFNMIEMBJGD = 12;
+    LHLBGJLFFKK event_type = 13;
 }

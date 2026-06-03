@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "GCJCLFOLBPP.proto";
+import "KDANACKPJIP.proto";
+
+message NCBOENDMDIC {
+    repeated GCJCLFOLBPP LDEJLFKJBCL = 2;
+    uint32 retcode = 3;
+    uint32 level = 6;
+    repeated uint32 HINFJMIMBIN = 8;
+    uint32 ILLHHMHBJCG = 9;
+    uint32 NFAOAGIFKEG = 12;
+    repeated uint32 PDABDEJBPEL = 13;
+    repeated KDANACKPJIP HBDMBLAPEMH = 14;
+}

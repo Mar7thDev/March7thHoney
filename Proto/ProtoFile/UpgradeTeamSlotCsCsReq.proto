@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message UpgradeTeamSlotCsCsReq {
+    uint32 JIGOOAEFDPP = 8;
     uint32 level = 13;
-    uint32 JIGOOAEFDPP = 7;
 }

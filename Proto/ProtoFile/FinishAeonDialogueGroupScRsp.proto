@@ -6,7 +6,7 @@ import "FLCPJJMHAGO.proto";
 import "ItemList.proto";
 
 message FinishAeonDialogueGroupScRsp {
-    ItemList reward = 11;
-    FLCPJJMHAGO AEFMMOHKCHJ = 2;
-    uint32 retcode = 6;
+    uint32 retcode = 1;
+    ItemList reward = 3;
+    FLCPJJMHAGO AEFMMOHKCHJ = 15;
 }

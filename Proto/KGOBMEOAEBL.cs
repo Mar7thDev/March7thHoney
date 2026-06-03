@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFLR09CTUVPQUVCTC5wcm90byIiCgtLR09CTUVPQUVCTBITCgtPTkRDT0VC",
-            "TkFQShgHIAEoCEIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "TkFQShgFIAEoCEIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -82,7 +82,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "ONDCOEBNAPJ" field.</summary>
-    public const int ONDCOEBNAPJFieldNumber = 7;
+    public const int ONDCOEBNAPJFieldNumber = 5;
     private bool oNDCOEBNAPJ_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -136,7 +136,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (ONDCOEBNAPJ != false) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(40);
         output.WriteBool(ONDCOEBNAPJ);
       }
       if (_unknownFields != null) {
@@ -150,7 +150,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (ONDCOEBNAPJ != false) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(40);
         output.WriteBool(ONDCOEBNAPJ);
       }
       if (_unknownFields != null) {
@@ -200,7 +200,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
+          case 40: {
             ONDCOEBNAPJ = input.ReadBool();
             break;
           }
@@ -223,7 +223,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
+          case 40: {
             ONDCOEBNAPJ = input.ReadBool();
             break;
           }

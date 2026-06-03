@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message CMKMOIGANHN {
-    uint32 FPJMKDNDENK = 3;
+    uint32 FPJMKDNDENK = 2;
     uint32 stage_id = 12;
 }

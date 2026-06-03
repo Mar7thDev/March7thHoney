@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChlHZXRBbGxTYXZlUmFpZFNjUnNwLnByb3RvGg5SYWlkRGF0YS5wcm90byJJ",
-            "ChNHZXRBbGxTYXZlUmFpZFNjUnNwEiEKDnJhaWRfZGF0YV9saXN0GA4gAygL",
-            "MgkuUmFpZERhdGESDwoHcmV0Y29kZRgKIAEoDUIWqgITTWFyY2g3dGhIb25l",
+            "ChNHZXRBbGxTYXZlUmFpZFNjUnNwEg8KB3JldGNvZGUYCiABKA0SIQoOcmFp",
+            "ZF9kYXRhX2xpc3QYDyADKAsyCS5SYWlkRGF0YUIWqgITTWFyY2g3dGhIb25l",
             "eS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.RaidDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetAllSaveRaidScRsp), global::March7thHoney.Proto.GetAllSaveRaidScRsp.Parser, new[]{ "RaidDataList", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetAllSaveRaidScRsp), global::March7thHoney.Proto.GetAllSaveRaidScRsp.Parser, new[]{ "Retcode", "RaidDataList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetAllSaveRaidScRsp(GetAllSaveRaidScRsp other) : this() {
-      raidDataList_ = other.raidDataList_.Clone();
       retcode_ = other.retcode_;
+      raidDataList_ = other.raidDataList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -82,17 +82,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetAllSaveRaidScRsp Clone() {
       return new GetAllSaveRaidScRsp(this);
-    }
-
-    /// <summary>Field number for the "raid_data_list" field.</summary>
-    public const int RaidDataListFieldNumber = 14;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.RaidData> _repeated_raidDataList_codec
-        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.RaidData.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.RaidData> raidDataList_ = new pbc::RepeatedField<global::March7thHoney.Proto.RaidData>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.RaidData> RaidDataList {
-      get { return raidDataList_; }
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
@@ -105,6 +94,17 @@ namespace March7thHoney.Proto {
       set {
         retcode_ = value;
       }
+    }
+
+    /// <summary>Field number for the "raid_data_list" field.</summary>
+    public const int RaidDataListFieldNumber = 15;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.RaidData> _repeated_raidDataList_codec
+        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.RaidData.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.RaidData> raidDataList_ = new pbc::RepeatedField<global::March7thHoney.Proto.RaidData>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.RaidData> RaidDataList {
+      get { return raidDataList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!raidDataList_.Equals(other.raidDataList_)) return false;
       if (Retcode != other.Retcode) return false;
+      if(!raidDataList_.Equals(other.raidDataList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= raidDataList_.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      hash ^= raidDataList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -181,10 +181,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += raidDataList_.CalculateSize(_repeated_raidDataList_codec);
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
+      size += raidDataList_.CalculateSize(_repeated_raidDataList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -197,10 +197,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      raidDataList_.Add(other.raidDataList_);
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
+      raidDataList_.Add(other.raidDataList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -224,7 +224,7 @@ namespace March7thHoney.Proto {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 114: {
+          case 122: {
             raidDataList_.AddEntriesFrom(input, _repeated_raidDataList_codec);
             break;
           }
@@ -251,7 +251,7 @@ namespace March7thHoney.Proto {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 114: {
+          case 122: {
             raidDataList_.AddEntriesFrom(ref input, _repeated_raidDataList_codec);
             break;
           }

@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message FDJCIHMFOMC {
-    string EGCPAOEAGLF = 7;
-    string PEOODHOAJMP = 4;
-    uint32 retcode = 14;
+    uint32 retcode = 7;
+    string EGCPAOEAGLF = 8;
+    string PEOODHOAJMP = 10;
 }

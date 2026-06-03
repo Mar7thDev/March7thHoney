@@ -6,7 +6,7 @@ import "BMJHAHOLEGH.proto";
 import "GCLPBMPOHLI.proto";
 
 message GetPlayerReturnMultiDropInfoScRsp {
-    GCLPBMPOHLI HDLIGGEMOKM = 2;
-    repeated BMJHAHOLEGH FAFFFJGJHHC = 15;
-    uint32 retcode = 8;
+    uint32 retcode = 2;
+    repeated BMJHAHOLEGH FAFFFJGJHHC = 9;
+    GCLPBMPOHLI HDLIGGEMOKM = 15;
 }

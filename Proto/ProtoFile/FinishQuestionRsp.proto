@@ -3,9 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message FinishQuestionRsp {
-    bool DJNDDEBIMGA = 2;
-    uint32 CJAINJMLDFC = 6;
-    uint32 JMBGMIPLLJI = 9;
-    uint32 PDICFEGEPNM = 3;
-    uint32 retcode = 4;
+    uint32 retcode = 2;
 }

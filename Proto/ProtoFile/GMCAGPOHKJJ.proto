@@ -5,7 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "GAKJMHLEJMD.proto";
 
 message GMCAGPOHKJJ {
-    GAKJMHLEJMD KEDNGHIEOBB = 1;
-    uint32 DKFPMCPMPJH = 9;
-    uint32 retcode = 12;
+    uint32 retcode = 3;
+    GAKJMHLEJMD KEDNGHIEOBB = 11;
 }

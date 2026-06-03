@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static NBNLDHBELLOReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFOQk5MREhCRUxMTy5wcm90byIzCgtOQk5MREhCRUxMTxITCgtBUEFLQ0JG",
-            "TUNBQhgEIAEoDRIPCgdyb2xlX2lkGAMgASgNQhaqAhNNYXJjaDd0aEhvbmV5",
-            "LlByb3RvYgZwcm90bzM="));
+            "ChFOQk5MREhCRUxMTy5wcm90byIuCgtOQk5MREhCRUxMTxIPCgdyb2xlX2lk",
+            "GAEgASgNEg4KBndlaWdodBgKIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90",
+            "b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NBNLDHBELLO), global::March7thHoney.Proto.NBNLDHBELLO.Parser, new[]{ "APAKCBFMCAB", "RoleId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NBNLDHBELLO), global::March7thHoney.Proto.NBNLDHBELLO.Parser, new[]{ "RoleId", "Weight" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public NBNLDHBELLO(NBNLDHBELLO other) : this() {
-      aPAKCBFMCAB_ = other.aPAKCBFMCAB_;
       roleId_ = other.roleId_;
+      weight_ = other.weight_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,20 +83,8 @@ namespace March7thHoney.Proto {
       return new NBNLDHBELLO(this);
     }
 
-    /// <summary>Field number for the "APAKCBFMCAB" field.</summary>
-    public const int APAKCBFMCABFieldNumber = 4;
-    private uint aPAKCBFMCAB_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint APAKCBFMCAB {
-      get { return aPAKCBFMCAB_; }
-      set {
-        aPAKCBFMCAB_ = value;
-      }
-    }
-
     /// <summary>Field number for the "role_id" field.</summary>
-    public const int RoleIdFieldNumber = 3;
+    public const int RoleIdFieldNumber = 1;
     private uint roleId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -104,6 +92,18 @@ namespace March7thHoney.Proto {
       get { return roleId_; }
       set {
         roleId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "weight" field.</summary>
+    public const int WeightFieldNumber = 10;
+    private uint weight_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Weight {
+      get { return weight_; }
+      set {
+        weight_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (APAKCBFMCAB != other.APAKCBFMCAB) return false;
       if (RoleId != other.RoleId) return false;
+      if (Weight != other.Weight) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (APAKCBFMCAB != 0) hash ^= APAKCBFMCAB.GetHashCode();
       if (RoleId != 0) hash ^= RoleId.GetHashCode();
+      if (Weight != 0) hash ^= Weight.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,12 +152,12 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (RoleId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(8);
         output.WriteUInt32(RoleId);
       }
-      if (APAKCBFMCAB != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(APAKCBFMCAB);
+      if (Weight != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(Weight);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,12 +170,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (RoleId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(8);
         output.WriteUInt32(RoleId);
       }
-      if (APAKCBFMCAB != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(APAKCBFMCAB);
+      if (Weight != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(Weight);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (APAKCBFMCAB != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(APAKCBFMCAB);
-      }
       if (RoleId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RoleId);
+      }
+      if (Weight != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Weight);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.APAKCBFMCAB != 0) {
-        APAKCBFMCAB = other.APAKCBFMCAB;
-      }
       if (other.RoleId != 0) {
         RoleId = other.RoleId;
+      }
+      if (other.Weight != 0) {
+        Weight = other.Weight;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
+          case 8: {
             RoleId = input.ReadUInt32();
             break;
           }
-          case 32: {
-            APAKCBFMCAB = input.ReadUInt32();
+          case 80: {
+            Weight = input.ReadUInt32();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
+          case 8: {
             RoleId = input.ReadUInt32();
             break;
           }
-          case 32: {
-            APAKCBFMCAB = input.ReadUInt32();
+          case 80: {
+            Weight = input.ReadUInt32();
             break;
           }
         }

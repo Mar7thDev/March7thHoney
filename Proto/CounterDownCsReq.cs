@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChZDb3VudGVyRG93bkNzUmVxLnByb3RvIjwKEENvdW50ZXJEb3duQ3NSZXES",
-            "EwoLREdHQ0ZES0pEUE8YByABKA0SEwoLQklLQUxPR01NREEYDyABKA1CFqoC",
+            "EwoLREdHQ0ZES0pEUE8YDCABKA0SEwoLQklLQUxPR01NREEYDiABKA1CFqoC",
             "E01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "DGGCFDKJDPO" field.</summary>
-    public const int DGGCFDKJDPOFieldNumber = 7;
+    public const int DGGCFDKJDPOFieldNumber = 12;
     private uint dGGCFDKJDPO_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "BIKALOGMMDA" field.</summary>
-    public const int BIKALOGMMDAFieldNumber = 15;
+    public const int BIKALOGMMDAFieldNumber = 14;
     private uint bIKALOGMMDA_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (DGGCFDKJDPO != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(96);
         output.WriteUInt32(DGGCFDKJDPO);
       }
       if (BIKALOGMMDA != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(112);
         output.WriteUInt32(BIKALOGMMDA);
       }
       if (_unknownFields != null) {
@@ -170,11 +170,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (DGGCFDKJDPO != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(96);
         output.WriteUInt32(DGGCFDKJDPO);
       }
       if (BIKALOGMMDA != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(112);
         output.WriteUInt32(BIKALOGMMDA);
       }
       if (_unknownFields != null) {
@@ -230,11 +230,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
+          case 96: {
             DGGCFDKJDPO = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 112: {
             BIKALOGMMDA = input.ReadUInt32();
             break;
           }
@@ -257,11 +257,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
+          case 96: {
             DGGCFDKJDPO = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 112: {
             BIKALOGMMDA = input.ReadUInt32();
             break;
           }

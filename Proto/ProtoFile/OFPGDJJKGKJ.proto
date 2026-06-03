@@ -3,9 +3,9 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message OFPGDJJKGKJ {
-    repeated uint32 MJMJOMDLOHI = 9;
-    uint32 event_id = 3;
-    uint32 JMBGMIPLLJI = 10;
-    uint32 IJJFAPBJMOD = 6;
-    uint32 GKKNMDDNOJF = 5;
+    uint32 IJJFAPBJMOD = 1;
+    repeated uint32 MJMJOMDLOHI = 4;
+    uint32 JMBGMIPLLJI = 6;
+    uint32 GKKNMDDNOJF = 9;
+    uint32 event_id = 11;
 }

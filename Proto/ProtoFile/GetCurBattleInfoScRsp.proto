@@ -7,9 +7,9 @@ import "BattleEndStatus.proto";
 import "SceneBattleInfo.proto";
 
 message GetCurBattleInfoScRsp {
-    AetherDivideBattleInfo HIDIEJALFIE = 3;
-    SceneBattleInfo battle_info = 5;
-    BattleEndStatus last_end_status = 6;
+    AetherDivideBattleInfo HIDIEJALFIE = 2;
     uint32 KDJGDHKJAGE = 7;
-    uint32 retcode = 14;
+    BattleEndStatus last_end_status = 8;
+    uint32 retcode = 10;
+    SceneBattleInfo battle_info = 12;
 }

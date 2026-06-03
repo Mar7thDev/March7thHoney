@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static LFKKOMBKJIPReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFMRktLT01CS0pJUC5wcm90byIxCgtMRktLT01CS0pJUBINCgV2YWx1ZRgC",
-            "IAEoCRITCgtOSEFMSlBET05DUBgBIAEoCUIWqgITTWFyY2g3dGhIb25leS5Q",
-            "cm90b2IGcHJvdG8z"));
+            "ChFMRktLT01CS0pJUC5wcm90byIpCgtMRktLT01CS0pJUBILCgN0YWcYASAB",
+            "KAkSDQoFdmFsdWUYAiABKAlCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
+            "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LFKKOMBKJIP), global::March7thHoney.Proto.LFKKOMBKJIP.Parser, new[]{ "Value", "NHALJPDONCP" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LFKKOMBKJIP), global::March7thHoney.Proto.LFKKOMBKJIP.Parser, new[]{ "Tag", "Value" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public LFKKOMBKJIP(LFKKOMBKJIP other) : this() {
+      tag_ = other.tag_;
       value_ = other.value_;
-      nHALJPDONCP_ = other.nHALJPDONCP_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -81,6 +81,18 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public LFKKOMBKJIP Clone() {
       return new LFKKOMBKJIP(this);
+    }
+
+    /// <summary>Field number for the "tag" field.</summary>
+    public const int TagFieldNumber = 1;
+    private string tag_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Tag {
+      get { return tag_; }
+      set {
+        tag_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
     }
 
     /// <summary>Field number for the "value" field.</summary>
@@ -92,18 +104,6 @@ namespace March7thHoney.Proto {
       get { return value_; }
       set {
         value_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "NHALJPDONCP" field.</summary>
-    public const int NHALJPDONCPFieldNumber = 1;
-    private string nHALJPDONCP_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string NHALJPDONCP {
-      get { return nHALJPDONCP_; }
-      set {
-        nHALJPDONCP_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (Tag != other.Tag) return false;
       if (Value != other.Value) return false;
-      if (NHALJPDONCP != other.NHALJPDONCP) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (Tag.Length != 0) hash ^= Tag.GetHashCode();
       if (Value.Length != 0) hash ^= Value.GetHashCode();
-      if (NHALJPDONCP.Length != 0) hash ^= NHALJPDONCP.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -151,9 +151,9 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (NHALJPDONCP.Length != 0) {
+      if (Tag.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(NHALJPDONCP);
+        output.WriteString(Tag);
       }
       if (Value.Length != 0) {
         output.WriteRawTag(18);
@@ -169,9 +169,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (NHALJPDONCP.Length != 0) {
+      if (Tag.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(NHALJPDONCP);
+        output.WriteString(Tag);
       }
       if (Value.Length != 0) {
         output.WriteRawTag(18);
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (Tag.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Tag);
+      }
       if (Value.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Value);
-      }
-      if (NHALJPDONCP.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(NHALJPDONCP);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.Tag.Length != 0) {
+        Tag = other.Tag;
+      }
       if (other.Value.Length != 0) {
         Value = other.Value;
-      }
-      if (other.NHALJPDONCP.Length != 0) {
-        NHALJPDONCP = other.NHALJPDONCP;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -231,7 +231,7 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            NHALJPDONCP = input.ReadString();
+            Tag = input.ReadString();
             break;
           }
           case 18: {
@@ -258,7 +258,7 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            NHALJPDONCP = input.ReadString();
+            Tag = input.ReadString();
             break;
           }
           case 18: {

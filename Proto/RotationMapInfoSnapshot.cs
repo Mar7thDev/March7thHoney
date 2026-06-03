@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch1Sb3RhdGlvbk1hcEluZm9TbmFwc2hvdC5wcm90bxoUVmVjdG9yU25hcHNo",
-            "b3QucHJvdG8iXQoXUm90YXRpb25NYXBJbmZvU25hcHNob3QSIAoHbWFwX3Jv",
-            "dBgCIAEoCzIPLlZlY3RvclNuYXBzaG90EiAKB21hcF9wb3MYASABKAsyDy5W",
+            "b3QucHJvdG8iXQoXUm90YXRpb25NYXBJbmZvU25hcHNob3QSIAoHbWFwX3Bv",
+            "cxgBIAEoCzIPLlZlY3RvclNuYXBzaG90EiAKB21hcF9yb3QYAiABKAsyDy5W",
             "ZWN0b3JTbmFwc2hvdEIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.VectorSnapshotReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RotationMapInfoSnapshot), global::March7thHoney.Proto.RotationMapInfoSnapshot.Parser, new[]{ "MapRot", "MapPos" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RotationMapInfoSnapshot), global::March7thHoney.Proto.RotationMapInfoSnapshot.Parser, new[]{ "MapPos", "MapRot" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RotationMapInfoSnapshot(RotationMapInfoSnapshot other) : this() {
-      mapRot_ = other.mapRot_ != null ? other.mapRot_.Clone() : null;
       mapPos_ = other.mapPos_ != null ? other.mapPos_.Clone() : null;
+      mapRot_ = other.mapRot_ != null ? other.mapRot_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -82,18 +82,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RotationMapInfoSnapshot Clone() {
       return new RotationMapInfoSnapshot(this);
-    }
-
-    /// <summary>Field number for the "map_rot" field.</summary>
-    public const int MapRotFieldNumber = 2;
-    private global::March7thHoney.Proto.VectorSnapshot mapRot_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.VectorSnapshot MapRot {
-      get { return mapRot_; }
-      set {
-        mapRot_ = value;
-      }
     }
 
     /// <summary>Field number for the "map_pos" field.</summary>
@@ -105,6 +93,18 @@ namespace March7thHoney.Proto {
       get { return mapPos_; }
       set {
         mapPos_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "map_rot" field.</summary>
+    public const int MapRotFieldNumber = 2;
+    private global::March7thHoney.Proto.VectorSnapshot mapRot_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.VectorSnapshot MapRot {
+      get { return mapRot_; }
+      set {
+        mapRot_ = value;
       }
     }
 
@@ -123,8 +123,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(MapRot, other.MapRot)) return false;
       if (!object.Equals(MapPos, other.MapPos)) return false;
+      if (!object.Equals(MapRot, other.MapRot)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,8 +132,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (mapRot_ != null) hash ^= MapRot.GetHashCode();
       if (mapPos_ != null) hash ^= MapPos.GetHashCode();
+      if (mapRot_ != null) hash ^= MapRot.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -188,11 +188,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (mapRot_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(MapRot);
-      }
       if (mapPos_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(MapPos);
+      }
+      if (mapRot_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(MapRot);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -206,17 +206,17 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.mapRot_ != null) {
-        if (mapRot_ == null) {
-          MapRot = new global::March7thHoney.Proto.VectorSnapshot();
-        }
-        MapRot.MergeFrom(other.MapRot);
-      }
       if (other.mapPos_ != null) {
         if (mapPos_ == null) {
           MapPos = new global::March7thHoney.Proto.VectorSnapshot();
         }
         MapPos.MergeFrom(other.MapPos);
+      }
+      if (other.mapRot_ != null) {
+        if (mapRot_ == null) {
+          MapRot = new global::March7thHoney.Proto.VectorSnapshot();
+        }
+        MapRot.MergeFrom(other.MapRot);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }

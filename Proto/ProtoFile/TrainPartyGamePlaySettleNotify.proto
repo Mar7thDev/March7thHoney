@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "TrainPartyPassengerInfo.proto";
 
 message TrainPartyGamePlaySettleNotify {
-    TrainPartyPassengerInfo ENBJCMPCMLK = 5;
-    repeated uint32 CEJPCMHEEMN = 12;
+    TrainPartyPassengerInfo ENBJCMPCMLK = 3;
     uint32 unlock_area_num = 6;
-    uint32 record_id = 1;
+    repeated uint32 CEJPCMHEEMN = 10;
+    uint32 record_id = 12;
 }

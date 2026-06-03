@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static CKODNPNBOENReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFDS09ETlBOQk9FTi5wcm90byJLCgtDS09ETlBOQk9FThITCgtHSFBCQkhP",
-            "Qk1KThgCIAEoDRIRCglhdmF0YXJfaWQYASABKA0SFAoMYXZhdGFyX2xldmVs",
+            "ChFDS09ETlBOQk9FTi5wcm90byJLCgtDS09ETlBOQk9FThIRCglhdmF0YXJf",
+            "aWQYASABKA0SEwoLR0hQQkJIT0JNSk4YAiABKA0SFAoMYXZhdGFyX2xldmVs",
             "GAMgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.CKODNPNBOEN), global::March7thHoney.Proto.CKODNPNBOEN.Parser, new[]{ "GHPBBHOBMJN", "AvatarId", "AvatarLevel" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.CKODNPNBOEN), global::March7thHoney.Proto.CKODNPNBOEN.Parser, new[]{ "AvatarId", "GHPBBHOBMJN", "AvatarLevel" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public CKODNPNBOEN(CKODNPNBOEN other) : this() {
-      gHPBBHOBMJN_ = other.gHPBBHOBMJN_;
       avatarId_ = other.avatarId_;
+      gHPBBHOBMJN_ = other.gHPBBHOBMJN_;
       avatarLevel_ = other.avatarLevel_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -82,18 +82,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public CKODNPNBOEN Clone() {
       return new CKODNPNBOEN(this);
-    }
-
-    /// <summary>Field number for the "GHPBBHOBMJN" field.</summary>
-    public const int GHPBBHOBMJNFieldNumber = 2;
-    private uint gHPBBHOBMJN_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint GHPBBHOBMJN {
-      get { return gHPBBHOBMJN_; }
-      set {
-        gHPBBHOBMJN_ = value;
-      }
     }
 
     /// <summary>Field number for the "avatar_id" field.</summary>
@@ -105,6 +93,18 @@ namespace March7thHoney.Proto {
       get { return avatarId_; }
       set {
         avatarId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "GHPBBHOBMJN" field.</summary>
+    public const int GHPBBHOBMJNFieldNumber = 2;
+    private uint gHPBBHOBMJN_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint GHPBBHOBMJN {
+      get { return gHPBBHOBMJN_; }
+      set {
+        gHPBBHOBMJN_ = value;
       }
     }
 
@@ -135,8 +135,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (GHPBBHOBMJN != other.GHPBBHOBMJN) return false;
       if (AvatarId != other.AvatarId) return false;
+      if (GHPBBHOBMJN != other.GHPBBHOBMJN) return false;
       if (AvatarLevel != other.AvatarLevel) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -145,8 +145,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (GHPBBHOBMJN != 0) hash ^= GHPBBHOBMJN.GetHashCode();
       if (AvatarId != 0) hash ^= AvatarId.GetHashCode();
+      if (GHPBBHOBMJN != 0) hash ^= GHPBBHOBMJN.GetHashCode();
       if (AvatarLevel != 0) hash ^= AvatarLevel.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -210,11 +210,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (GHPBBHOBMJN != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GHPBBHOBMJN);
-      }
       if (AvatarId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarId);
+      }
+      if (GHPBBHOBMJN != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GHPBBHOBMJN);
       }
       if (AvatarLevel != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarLevel);
@@ -231,11 +231,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.GHPBBHOBMJN != 0) {
-        GHPBBHOBMJN = other.GHPBBHOBMJN;
-      }
       if (other.AvatarId != 0) {
         AvatarId = other.AvatarId;
+      }
+      if (other.GHPBBHOBMJN != 0) {
+        GHPBBHOBMJN = other.GHPBBHOBMJN;
       }
       if (other.AvatarLevel != 0) {
         AvatarLevel = other.AvatarLevel;

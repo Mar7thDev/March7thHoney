@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFCREdHRUhHTEZBQy5wcm90bxogVHJhaW5QYXJ0eU10U2tpbGxCcmllZlR5",
-            "cGUucHJvdG8iZQoLQkRHR0VIR0xGQUMSEAoIc2tpbGxfaWQYDCABKA0SEwoL",
-            "S0xLQUlGRURMTksYDyABKA0SLwoKc2tpbGxfdHlwZRgGIAEoDjIbLlRyYWlu",
-            "UGFydHlNdFNraWxsQnJpZWZUeXBlQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
+            "cGUucHJvdG8iZQoLQkRHR0VIR0xGQUMSLwoKc2tpbGxfdHlwZRgGIAEoDjIb",
+            "LlRyYWluUGFydHlNdFNraWxsQnJpZWZUeXBlEhMKC0tMS0FJRkVETE5LGAwg",
+            "ASgNEhAKCHNraWxsX2lkGA8gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
             "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.TrainPartyMtSkillBriefTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BDGGEHGLFAC), global::March7thHoney.Proto.BDGGEHGLFAC.Parser, new[]{ "SkillId", "KLKAIFEDLNK", "SkillType" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BDGGEHGLFAC), global::March7thHoney.Proto.BDGGEHGLFAC.Parser, new[]{ "SkillType", "KLKAIFEDLNK", "SkillId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,9 +74,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BDGGEHGLFAC(BDGGEHGLFAC other) : this() {
-      skillId_ = other.skillId_;
-      kLKAIFEDLNK_ = other.kLKAIFEDLNK_;
       skillType_ = other.skillType_;
+      kLKAIFEDLNK_ = other.kLKAIFEDLNK_;
+      skillId_ = other.skillId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,30 +84,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BDGGEHGLFAC Clone() {
       return new BDGGEHGLFAC(this);
-    }
-
-    /// <summary>Field number for the "skill_id" field.</summary>
-    public const int SkillIdFieldNumber = 12;
-    private uint skillId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint SkillId {
-      get { return skillId_; }
-      set {
-        skillId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "KLKAIFEDLNK" field.</summary>
-    public const int KLKAIFEDLNKFieldNumber = 15;
-    private uint kLKAIFEDLNK_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint KLKAIFEDLNK {
-      get { return kLKAIFEDLNK_; }
-      set {
-        kLKAIFEDLNK_ = value;
-      }
     }
 
     /// <summary>Field number for the "skill_type" field.</summary>
@@ -119,6 +95,30 @@ namespace March7thHoney.Proto {
       get { return skillType_; }
       set {
         skillType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "KLKAIFEDLNK" field.</summary>
+    public const int KLKAIFEDLNKFieldNumber = 12;
+    private uint kLKAIFEDLNK_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint KLKAIFEDLNK {
+      get { return kLKAIFEDLNK_; }
+      set {
+        kLKAIFEDLNK_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "skill_id" field.</summary>
+    public const int SkillIdFieldNumber = 15;
+    private uint skillId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint SkillId {
+      get { return skillId_; }
+      set {
+        skillId_ = value;
       }
     }
 
@@ -137,9 +137,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (SkillId != other.SkillId) return false;
-      if (KLKAIFEDLNK != other.KLKAIFEDLNK) return false;
       if (SkillType != other.SkillType) return false;
+      if (KLKAIFEDLNK != other.KLKAIFEDLNK) return false;
+      if (SkillId != other.SkillId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -147,9 +147,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (SkillId != 0) hash ^= SkillId.GetHashCode();
-      if (KLKAIFEDLNK != 0) hash ^= KLKAIFEDLNK.GetHashCode();
       if (SkillType != global::March7thHoney.Proto.TrainPartyMtSkillBriefType.AnmelocbhgkOdchajhnfdf) hash ^= SkillType.GetHashCode();
+      if (KLKAIFEDLNK != 0) hash ^= KLKAIFEDLNK.GetHashCode();
+      if (SkillId != 0) hash ^= SkillId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -172,13 +172,13 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(48);
         output.WriteEnum((int) SkillType);
       }
-      if (SkillId != 0) {
-        output.WriteRawTag(96);
-        output.WriteUInt32(SkillId);
-      }
       if (KLKAIFEDLNK != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(96);
         output.WriteUInt32(KLKAIFEDLNK);
+      }
+      if (SkillId != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(SkillId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -194,13 +194,13 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(48);
         output.WriteEnum((int) SkillType);
       }
-      if (SkillId != 0) {
-        output.WriteRawTag(96);
-        output.WriteUInt32(SkillId);
-      }
       if (KLKAIFEDLNK != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(96);
         output.WriteUInt32(KLKAIFEDLNK);
+      }
+      if (SkillId != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(SkillId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -212,14 +212,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (SkillId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SkillId);
+      if (SkillType != global::March7thHoney.Proto.TrainPartyMtSkillBriefType.AnmelocbhgkOdchajhnfdf) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) SkillType);
       }
       if (KLKAIFEDLNK != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(KLKAIFEDLNK);
       }
-      if (SkillType != global::March7thHoney.Proto.TrainPartyMtSkillBriefType.AnmelocbhgkOdchajhnfdf) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) SkillType);
+      if (SkillId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SkillId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -233,14 +233,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.SkillId != 0) {
-        SkillId = other.SkillId;
+      if (other.SkillType != global::March7thHoney.Proto.TrainPartyMtSkillBriefType.AnmelocbhgkOdchajhnfdf) {
+        SkillType = other.SkillType;
       }
       if (other.KLKAIFEDLNK != 0) {
         KLKAIFEDLNK = other.KLKAIFEDLNK;
       }
-      if (other.SkillType != global::March7thHoney.Proto.TrainPartyMtSkillBriefType.AnmelocbhgkOdchajhnfdf) {
-        SkillType = other.SkillType;
+      if (other.SkillId != 0) {
+        SkillId = other.SkillId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -266,11 +266,11 @@ namespace March7thHoney.Proto {
             break;
           }
           case 96: {
-            SkillId = input.ReadUInt32();
+            KLKAIFEDLNK = input.ReadUInt32();
             break;
           }
           case 120: {
-            KLKAIFEDLNK = input.ReadUInt32();
+            SkillId = input.ReadUInt32();
             break;
           }
         }
@@ -297,11 +297,11 @@ namespace March7thHoney.Proto {
             break;
           }
           case 96: {
-            SkillId = input.ReadUInt32();
+            KLKAIFEDLNK = input.ReadUInt32();
             break;
           }
           case 120: {
-            KLKAIFEDLNK = input.ReadUInt32();
+            SkillId = input.ReadUInt32();
             break;
           }
         }

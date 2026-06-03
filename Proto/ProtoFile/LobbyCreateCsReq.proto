@@ -7,8 +7,8 @@ import "LobbyGameExtInfo.proto";
 import "PJMGBLIFDFP.proto";
 
 message LobbyCreateCsReq {
-    PJMGBLIFDFP EMIJCKENBKJ = 7;
-    LobbyGameExtInfo JIDKDPPPDPF = 15;
-    FightGameMode GJNMHILINHC = 13;
-    uint32 HDJFGMGAOOF = 3;
+    LobbyGameExtInfo JIDKDPPPDPF = 1;
+    uint32 HDJFGMGAOOF = 9;
+    FightGameMode GJNMHILINHC = 14;
+    PJMGBLIFDFP room_ext_info = 15;
 }

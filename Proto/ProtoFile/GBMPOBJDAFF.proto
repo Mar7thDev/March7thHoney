@@ -6,6 +6,6 @@ import "DIKCFAICOHB.proto";
 import "FOJDKLCHCKG.proto";
 
 message GBMPOBJDAFF {
-    FOJDKLCHCKG KHEFAHCPHBL = 5;
-    DIKCFAICOHB reason = 1;
+    FOJDKLCHCKG KHEFAHCPHBL = 4;
+    DIKCFAICOHB reason = 14;
 }

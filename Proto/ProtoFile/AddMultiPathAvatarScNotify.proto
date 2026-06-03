@@ -7,9 +7,9 @@ import "ItemList.proto";
 import "NKDNFDCFNCP.proto";
 
 message AddMultiPathAvatarScNotify {
-    ItemList reward = 7;
-    repeated NKDNFDCFNCP HJMDNLBNPNA = 2;
-    bool is_new = 12;
-    GCALLOJPPIJ ALKDBJEGAGG = 6;
-    uint32 avatar_id = 9;
+    GCALLOJPPIJ ALKDBJEGAGG = 1;
+    bool is_new = 5;
+    uint32 avatar_id = 6;
+    repeated NKDNFDCFNCP HJMDNLBNPNA = 9;
+    ItemList reward = 12;
 }

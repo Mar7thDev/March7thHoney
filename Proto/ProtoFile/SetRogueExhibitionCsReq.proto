@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "MIGPNAOGHEP.proto";
 
 message SetRogueExhibitionCsReq {
-    repeated uint32 HNCFLOKLJLA = 15;
-    repeated uint32 DMIIBKINPNL = 10;
-    repeated MIGPNAOGHEP ADGNFDJDCLG = 14;
+    repeated MIGPNAOGHEP ADGNFDJDCLG = 3;
+    repeated uint32 HNCFLOKLJLA = 9;
+    repeated uint32 DMIIBKINPNL = 15;
 }

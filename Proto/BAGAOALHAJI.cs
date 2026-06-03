@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static BAGAOALHAJIReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFCQUdBT0FMSEFKSS5wcm90bxoRRUtFT0JNT0tFRkQucHJvdG8iMAoLQkFH",
-            "QU9BTEhBSkkSIQoLQVBIR0FFQVBMSkYYByADKAsyDC5FS0VPQk1PS0VGREIW",
-            "qgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChFCQUdBT0FMSEFKSS5wcm90bxoRRUtFT0JNT0tFRkQucHJvdG8iLwoLQkFH",
+            "QU9BTEhBSkkSIAoKc2tpbGxfbGlzdBgDIAMoCzIMLkVLRU9CTU9LRUZEQhaq",
+            "AhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.EKEOBMOKEFDReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BAGAOALHAJI), global::March7thHoney.Proto.BAGAOALHAJI.Parser, new[]{ "APHGAEAPLJF" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BAGAOALHAJI), global::March7thHoney.Proto.BAGAOALHAJI.Parser, new[]{ "SkillList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,7 +72,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BAGAOALHAJI(BAGAOALHAJI other) : this() {
-      aPHGAEAPLJF_ = other.aPHGAEAPLJF_.Clone();
+      skillList_ = other.skillList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -82,15 +82,15 @@ namespace March7thHoney.Proto {
       return new BAGAOALHAJI(this);
     }
 
-    /// <summary>Field number for the "APHGAEAPLJF" field.</summary>
-    public const int APHGAEAPLJFFieldNumber = 7;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EKEOBMOKEFD> _repeated_aPHGAEAPLJF_codec
-        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.EKEOBMOKEFD.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EKEOBMOKEFD> aPHGAEAPLJF_ = new pbc::RepeatedField<global::March7thHoney.Proto.EKEOBMOKEFD>();
+    /// <summary>Field number for the "skill_list" field.</summary>
+    public const int SkillListFieldNumber = 3;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EKEOBMOKEFD> _repeated_skillList_codec
+        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.EKEOBMOKEFD.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EKEOBMOKEFD> skillList_ = new pbc::RepeatedField<global::March7thHoney.Proto.EKEOBMOKEFD>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.EKEOBMOKEFD> APHGAEAPLJF {
-      get { return aPHGAEAPLJF_; }
+    public pbc::RepeatedField<global::March7thHoney.Proto.EKEOBMOKEFD> SkillList {
+      get { return skillList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -108,7 +108,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!aPHGAEAPLJF_.Equals(other.aPHGAEAPLJF_)) return false;
+      if(!skillList_.Equals(other.skillList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -116,7 +116,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= aPHGAEAPLJF_.GetHashCode();
+      hash ^= skillList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -135,7 +135,7 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      aPHGAEAPLJF_.WriteTo(output, _repeated_aPHGAEAPLJF_codec);
+      skillList_.WriteTo(output, _repeated_skillList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -146,7 +146,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      aPHGAEAPLJF_.WriteTo(ref output, _repeated_aPHGAEAPLJF_codec);
+      skillList_.WriteTo(ref output, _repeated_skillList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -157,7 +157,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += aPHGAEAPLJF_.CalculateSize(_repeated_aPHGAEAPLJF_codec);
+      size += skillList_.CalculateSize(_repeated_skillList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -170,7 +170,7 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      aPHGAEAPLJF_.Add(other.aPHGAEAPLJF_);
+      skillList_.Add(other.skillList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -190,8 +190,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 58: {
-            aPHGAEAPLJF_.AddEntriesFrom(input, _repeated_aPHGAEAPLJF_codec);
+          case 26: {
+            skillList_.AddEntriesFrom(input, _repeated_skillList_codec);
             break;
           }
         }
@@ -213,8 +213,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 58: {
-            aPHGAEAPLJF_.AddEntriesFrom(ref input, _repeated_aPHGAEAPLJF_codec);
+          case 26: {
+            skillList_.AddEntriesFrom(ref input, _repeated_skillList_codec);
             break;
           }
         }

@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message StartBattleCollegeCsReq {
-    uint32 id = 12;
+    uint32 id = 2;
 }

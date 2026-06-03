@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "HGABLJFOKDG.proto";
 
 message SetRelicBoxTargetCsReq {
-    HGABLJFOKDG MCLLALGABAB = 12;
+    HGABLJFOKDG target = 7;
 }

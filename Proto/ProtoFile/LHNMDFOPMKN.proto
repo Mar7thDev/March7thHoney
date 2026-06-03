@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "JFCPFBLKJAB.proto";
 
 message LHNMDFOPMKN {
-    JFCPFBLKJAB return_data = 7;
-    string BLDMFDKDJDM = 3;
+    string BLDMFDKDJDM = 1;
+    JFCPFBLKJAB return_data = 2;
 }

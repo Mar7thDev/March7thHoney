@@ -6,7 +6,7 @@ import "LCEDDGELBMJ.proto";
 import "PCBOLEAFMDN.proto";
 
 message ChimeraDuelGetDataScRsp {
-    PCBOLEAFMDN COFPFIDNONN = 9;
-    LCEDDGELBMJ CFDIKLBINHK = 14;
-    uint32 retcode = 12;
+    uint32 retcode = 6;
+    LCEDDGELBMJ CFDIKLBINHK = 11;
+    PCBOLEAFMDN COFPFIDNONN = 15;
 }

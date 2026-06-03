@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message SelectInclinationTextScRsp {
-    uint32 talk_sentence_id = 4;
     uint32 retcode = 5;
+    uint32 talk_sentence_id = 10;
 }

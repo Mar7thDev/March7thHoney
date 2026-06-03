@@ -8,16 +8,14 @@ import "KPBAIEMEFFH.proto";
 import "PICDJHEPJLC.proto";
 
 message GetAlleyInfoScRsp {
-    PICDJHEPJLC EEAACLBJODA = 3;
-    repeated uint32 AMHAEPILIKF = 9;
-    repeated uint32 KENFKICLMGJ = 11;
-    repeated uint32 LAANLLFBLDP = 10;
-    map<uint32, uint32> BECKKLBMFHK = 2;
-    GDGEIAHNDAD NFJKAILEFAD = 5;
     KPBAIEMEFFH HAMAOOBGMLO = 1;
-    repeated CEKIFBMPEFH PMIFFBHOOOO = 14;
-    uint32 cur_fund = 8;
-    uint32 level = 12;
-    uint32 EEMCOEHGBAJ = 13;
-    uint32 retcode = 15;
+    uint32 level = 2;
+    uint32 cur_fund = 3;
+    PICDJHEPJLC EEAACLBJODA = 4;
+    repeated uint32 KENFKICLMGJ = 5;
+    repeated CEKIFBMPEFH PMIFFBHOOOO = 6;
+    repeated uint32 AMHAEPILIKF = 8;
+    GDGEIAHNDAD NFJKAILEFAD = 9;
+    uint32 retcode = 12;
+    repeated uint32 LAANLLFBLDP = 14;
 }

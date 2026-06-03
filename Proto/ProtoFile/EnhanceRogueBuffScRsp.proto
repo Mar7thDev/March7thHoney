@@ -2,12 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-import "AACJBNFGABA.proto";
 import "KJAMNOGFAMJ.proto";
 
 message EnhanceRogueBuffScRsp {
-    AACJBNFGABA ILMAMLBLIDL = 10;
-    KJAMNOGFAMJ CNEFDJCKAPL = 12;
-    bool KGKEJAKKLDP = 6;
-    uint32 retcode = 9;
+    KJAMNOGFAMJ CNEFDJCKAPL = 1;
+    uint32 retcode = 10;
+    bool KGKEJAKKLDP = 14;
 }

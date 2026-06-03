@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFOSUZQSUNISURMSi5wcm90bxoRTU9ITklNTENPREEucHJvdG8aEU9FQkJO",
-            "RkFOSExLLnByb3RvIoEBCgtOSUZQSUNISURMShIhCgtzd2l0Y2hfbGlzdBgF",
-            "IAMoCzIMLk9FQkJORkFOSExLEhEKCWNvbmZpZ19pZBgCIAEoDRIaCgR0eXBl",
-            "GAEgASgOMgwuTU9ITklNTENPREESDQoFbGV2ZWwYBCABKA0SEQoJdW5pcXVl",
-            "X2lkGAMgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "RkFOSExLLnByb3RvIoEBCgtOSUZQSUNISURMShIaCgR0eXBlGAEgASgOMgwu",
+            "TU9ITklNTENPREESEQoJY29uZmlnX2lkGAIgASgNEhEKCXVuaXF1ZV9pZBgD",
+            "IAEoDRINCgVsZXZlbBgEIAEoDRIhCgtzd2l0Y2hfbGlzdBgFIAMoCzIMLk9F",
+            "QkJORkFOSExLQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MOHNIMLCODAReflection.Descriptor, global::March7thHoney.Proto.OEBBNFANHLKReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NIFPICHIDLJ), global::March7thHoney.Proto.NIFPICHIDLJ.Parser, new[]{ "SwitchList", "ConfigId", "Type", "Level", "UniqueId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NIFPICHIDLJ), global::March7thHoney.Proto.NIFPICHIDLJ.Parser, new[]{ "Type", "ConfigId", "UniqueId", "Level", "SwitchList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,11 +74,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public NIFPICHIDLJ(NIFPICHIDLJ other) : this() {
-      switchList_ = other.switchList_.Clone();
-      configId_ = other.configId_;
       type_ = other.type_;
-      level_ = other.level_;
+      configId_ = other.configId_;
       uniqueId_ = other.uniqueId_;
+      level_ = other.level_;
+      switchList_ = other.switchList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -88,15 +88,16 @@ namespace March7thHoney.Proto {
       return new NIFPICHIDLJ(this);
     }
 
-    /// <summary>Field number for the "switch_list" field.</summary>
-    public const int SwitchListFieldNumber = 5;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.OEBBNFANHLK> _repeated_switchList_codec
-        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.OEBBNFANHLK.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.OEBBNFANHLK> switchList_ = new pbc::RepeatedField<global::March7thHoney.Proto.OEBBNFANHLK>();
+    /// <summary>Field number for the "type" field.</summary>
+    public const int TypeFieldNumber = 1;
+    private global::March7thHoney.Proto.MOHNIMLCODA type_ = global::March7thHoney.Proto.MOHNIMLCODA.Nlcdgipgfdj;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.OEBBNFANHLK> SwitchList {
-      get { return switchList_; }
+    public global::March7thHoney.Proto.MOHNIMLCODA Type {
+      get { return type_; }
+      set {
+        type_ = value;
+      }
     }
 
     /// <summary>Field number for the "config_id" field.</summary>
@@ -111,15 +112,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "type" field.</summary>
-    public const int TypeFieldNumber = 1;
-    private global::March7thHoney.Proto.MOHNIMLCODA type_ = global::March7thHoney.Proto.MOHNIMLCODA.Nlcdgipgfdj;
+    /// <summary>Field number for the "unique_id" field.</summary>
+    public const int UniqueIdFieldNumber = 3;
+    private uint uniqueId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.MOHNIMLCODA Type {
-      get { return type_; }
+    public uint UniqueId {
+      get { return uniqueId_; }
       set {
-        type_ = value;
+        uniqueId_ = value;
       }
     }
 
@@ -135,16 +136,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "unique_id" field.</summary>
-    public const int UniqueIdFieldNumber = 3;
-    private uint uniqueId_;
+    /// <summary>Field number for the "switch_list" field.</summary>
+    public const int SwitchListFieldNumber = 5;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.OEBBNFANHLK> _repeated_switchList_codec
+        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.OEBBNFANHLK.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.OEBBNFANHLK> switchList_ = new pbc::RepeatedField<global::March7thHoney.Proto.OEBBNFANHLK>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint UniqueId {
-      get { return uniqueId_; }
-      set {
-        uniqueId_ = value;
-      }
+    public pbc::RepeatedField<global::March7thHoney.Proto.OEBBNFANHLK> SwitchList {
+      get { return switchList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -162,11 +162,11 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!switchList_.Equals(other.switchList_)) return false;
-      if (ConfigId != other.ConfigId) return false;
       if (Type != other.Type) return false;
-      if (Level != other.Level) return false;
+      if (ConfigId != other.ConfigId) return false;
       if (UniqueId != other.UniqueId) return false;
+      if (Level != other.Level) return false;
+      if(!switchList_.Equals(other.switchList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -174,11 +174,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= switchList_.GetHashCode();
-      if (ConfigId != 0) hash ^= ConfigId.GetHashCode();
       if (Type != global::March7thHoney.Proto.MOHNIMLCODA.Nlcdgipgfdj) hash ^= Type.GetHashCode();
-      if (Level != 0) hash ^= Level.GetHashCode();
+      if (ConfigId != 0) hash ^= ConfigId.GetHashCode();
       if (UniqueId != 0) hash ^= UniqueId.GetHashCode();
+      if (Level != 0) hash ^= Level.GetHashCode();
+      hash ^= switchList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -251,19 +251,19 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += switchList_.CalculateSize(_repeated_switchList_codec);
-      if (ConfigId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ConfigId);
-      }
       if (Type != global::March7thHoney.Proto.MOHNIMLCODA.Nlcdgipgfdj) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
       }
-      if (Level != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
+      if (ConfigId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ConfigId);
       }
       if (UniqueId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(UniqueId);
       }
+      if (Level != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
+      }
+      size += switchList_.CalculateSize(_repeated_switchList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -276,19 +276,19 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      switchList_.Add(other.switchList_);
-      if (other.ConfigId != 0) {
-        ConfigId = other.ConfigId;
-      }
       if (other.Type != global::March7thHoney.Proto.MOHNIMLCODA.Nlcdgipgfdj) {
         Type = other.Type;
       }
-      if (other.Level != 0) {
-        Level = other.Level;
+      if (other.ConfigId != 0) {
+        ConfigId = other.ConfigId;
       }
       if (other.UniqueId != 0) {
         UniqueId = other.UniqueId;
       }
+      if (other.Level != 0) {
+        Level = other.Level;
+      }
+      switchList_.Add(other.switchList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 

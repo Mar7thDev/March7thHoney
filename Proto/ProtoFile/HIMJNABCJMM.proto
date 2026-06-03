@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "EGMPACONNFP.proto";
 
 message HIMJNABCJMM {
-    repeated EGMPACONNFP JKFNAKBGIBF = 3;
+    repeated EGMPACONNFP JKFNAKBGIBF = 8;
 }

@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message EKFCDGNOAIN {
-    repeated uint32 NOEPBNMJFGL = 8;
-    repeated uint32 unfinished_story_line_id_list = 13;
-    uint32 prop_entity_id = 9;
+    repeated uint32 NOEPBNMJFGL = 4;
+    repeated uint32 unfinished_story_line_id_list = 6;
+    uint32 prop_entity_id = 7;
 }

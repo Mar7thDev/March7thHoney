@@ -8,7 +8,7 @@ import "PunkLordMonsterBasicInfo.proto";
 
 message JEIAEAEGEBJ {
     PunkLordMonsterBasicInfo basic_info = 1;
-    GMDHIALLILJ FDJHMFAGEOA = 14;
-    uint32 HDHIFJNJOBK = 6;
+    GMDHIALLILJ FDJHMFAGEOA = 4;
+    uint32 HDHIFJNJOBK = 11;
     PunkLordAttackerStatus HCEENPENFGI = 13;
 }

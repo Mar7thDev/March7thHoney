@@ -7,7 +7,7 @@ public class PlayerBoardSync(PlayerInstance player) : BaseSyncData
 {
     public override void SyncData(in PlayerSyncScNotify notify)
     {
-        notify.PlayerboardModuleSync = new PlayerBoardModuleSync
+        notify.UpdatePlayerBoardModuleList = new PlayerBoardModuleSync
         {
             Signature = player.Data.Signature,
             HeadFrameInfo = player.Data.HeadFrame.ToProto()

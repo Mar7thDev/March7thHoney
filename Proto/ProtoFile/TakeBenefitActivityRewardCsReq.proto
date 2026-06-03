@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "OKKEJHPLMLA.proto";
 
 message TakeBenefitActivityRewardCsReq {
-    repeated OKKEJHPLMLA switch_list = 1;
-    bool LJEGPIJGMLG = 15;
+    repeated OKKEJHPLMLA switch_list = 4;
+    bool LJEGPIJGMLG = 9;
 }

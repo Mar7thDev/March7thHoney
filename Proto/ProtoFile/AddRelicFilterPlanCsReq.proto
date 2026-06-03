@@ -6,9 +6,9 @@ import "BNAILMNNGIF.proto";
 import "KJDLIPEIAAK.proto";
 
 message AddRelicFilterPlanCsReq {
-    KJDLIPEIAAK MJPKBIGCFOM = 3;
-    BNAILMNNGIF LJKNDCIOOCG = 15;
-    string name = 1;
-    bool is_marked = 14;
-    uint32 GFEENEDNJGF = 13;
+    bool is_marked = 7;
+    KJDLIPEIAAK icon = 9;
+    string name = 11;
+    BNAILMNNGIF settings = 12;
+    uint32 GFEENEDNJGF = 15;
 }

@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFFTE9GTE5FQUhQRC5wcm90bxoRRU5JREpBRkVDQkQucHJvdG8iTwoLRUxP",
-            "RkxORUFIUEQSHQoVZ3JpZF9maWdodF90cmFpdF9pbmZvGAYgAygNEiEKC0JQ",
-            "RkpETEhGRUtHGAsgAygLMgwuRU5JREpBRkVDQkRCFqoCE01hcmNoN3RoSG9u",
+            "RkxORUFIUEQSIQoLQlBGSkRMSEZFS0cYCCADKAsyDC5FTklESkFGRUNCRBId",
+            "ChVncmlkX2ZpZ2h0X3RyYWl0X2luZm8YCiADKA1CFqoCE01hcmNoN3RoSG9u",
             "ZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ENIDJAFECBDReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ELOFLNEAHPD), global::March7thHoney.Proto.ELOFLNEAHPD.Parser, new[]{ "GridFightTraitInfo", "BPFJDLHFEKG" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ELOFLNEAHPD), global::March7thHoney.Proto.ELOFLNEAHPD.Parser, new[]{ "BPFJDLHFEKG", "GridFightTraitInfo" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ELOFLNEAHPD(ELOFLNEAHPD other) : this() {
-      gridFightTraitInfo_ = other.gridFightTraitInfo_.Clone();
       bPFJDLHFEKG_ = other.bPFJDLHFEKG_.Clone();
+      gridFightTraitInfo_ = other.gridFightTraitInfo_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,26 +84,26 @@ namespace March7thHoney.Proto {
       return new ELOFLNEAHPD(this);
     }
 
-    /// <summary>Field number for the "grid_fight_trait_info" field.</summary>
-    public const int GridFightTraitInfoFieldNumber = 6;
-    private static readonly pb::FieldCodec<uint> _repeated_gridFightTraitInfo_codec
-        = pb::FieldCodec.ForUInt32(50);
-    private readonly pbc::RepeatedField<uint> gridFightTraitInfo_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> GridFightTraitInfo {
-      get { return gridFightTraitInfo_; }
-    }
-
     /// <summary>Field number for the "BPFJDLHFEKG" field.</summary>
-    public const int BPFJDLHFEKGFieldNumber = 11;
+    public const int BPFJDLHFEKGFieldNumber = 8;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.ENIDJAFECBD> _repeated_bPFJDLHFEKG_codec
-        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.ENIDJAFECBD.Parser);
+        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.ENIDJAFECBD.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.ENIDJAFECBD> bPFJDLHFEKG_ = new pbc::RepeatedField<global::March7thHoney.Proto.ENIDJAFECBD>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<global::March7thHoney.Proto.ENIDJAFECBD> BPFJDLHFEKG {
       get { return bPFJDLHFEKG_; }
+    }
+
+    /// <summary>Field number for the "grid_fight_trait_info" field.</summary>
+    public const int GridFightTraitInfoFieldNumber = 10;
+    private static readonly pb::FieldCodec<uint> _repeated_gridFightTraitInfo_codec
+        = pb::FieldCodec.ForUInt32(82);
+    private readonly pbc::RepeatedField<uint> gridFightTraitInfo_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> GridFightTraitInfo {
+      get { return gridFightTraitInfo_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -121,8 +121,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!gridFightTraitInfo_.Equals(other.gridFightTraitInfo_)) return false;
       if(!bPFJDLHFEKG_.Equals(other.bPFJDLHFEKG_)) return false;
+      if(!gridFightTraitInfo_.Equals(other.gridFightTraitInfo_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -130,8 +130,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= gridFightTraitInfo_.GetHashCode();
       hash ^= bPFJDLHFEKG_.GetHashCode();
+      hash ^= gridFightTraitInfo_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -150,8 +150,8 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      gridFightTraitInfo_.WriteTo(output, _repeated_gridFightTraitInfo_codec);
       bPFJDLHFEKG_.WriteTo(output, _repeated_bPFJDLHFEKG_codec);
+      gridFightTraitInfo_.WriteTo(output, _repeated_gridFightTraitInfo_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -162,8 +162,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      gridFightTraitInfo_.WriteTo(ref output, _repeated_gridFightTraitInfo_codec);
       bPFJDLHFEKG_.WriteTo(ref output, _repeated_bPFJDLHFEKG_codec);
+      gridFightTraitInfo_.WriteTo(ref output, _repeated_gridFightTraitInfo_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -174,8 +174,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += gridFightTraitInfo_.CalculateSize(_repeated_gridFightTraitInfo_codec);
       size += bPFJDLHFEKG_.CalculateSize(_repeated_bPFJDLHFEKG_codec);
+      size += gridFightTraitInfo_.CalculateSize(_repeated_gridFightTraitInfo_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -188,8 +188,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      gridFightTraitInfo_.Add(other.gridFightTraitInfo_);
       bPFJDLHFEKG_.Add(other.bPFJDLHFEKG_);
+      gridFightTraitInfo_.Add(other.gridFightTraitInfo_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -209,13 +209,13 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 50:
-          case 48: {
-            gridFightTraitInfo_.AddEntriesFrom(input, _repeated_gridFightTraitInfo_codec);
+          case 66: {
+            bPFJDLHFEKG_.AddEntriesFrom(input, _repeated_bPFJDLHFEKG_codec);
             break;
           }
-          case 90: {
-            bPFJDLHFEKG_.AddEntriesFrom(input, _repeated_bPFJDLHFEKG_codec);
+          case 82:
+          case 80: {
+            gridFightTraitInfo_.AddEntriesFrom(input, _repeated_gridFightTraitInfo_codec);
             break;
           }
         }
@@ -237,13 +237,13 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 50:
-          case 48: {
-            gridFightTraitInfo_.AddEntriesFrom(ref input, _repeated_gridFightTraitInfo_codec);
+          case 66: {
+            bPFJDLHFEKG_.AddEntriesFrom(ref input, _repeated_bPFJDLHFEKG_codec);
             break;
           }
-          case 90: {
-            bPFJDLHFEKG_.AddEntriesFrom(ref input, _repeated_bPFJDLHFEKG_codec);
+          case 82:
+          case 80: {
+            gridFightTraitInfo_.AddEntriesFrom(ref input, _repeated_gridFightTraitInfo_codec);
             break;
           }
         }

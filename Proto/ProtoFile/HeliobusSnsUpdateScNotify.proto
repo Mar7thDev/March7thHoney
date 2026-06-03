@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "BGOMIHEFHPA.proto";
 
 message HeliobusSnsUpdateScNotify {
-    repeated BGOMIHEFHPA KGKLBGOADCE = 14;
+    repeated BGOMIHEFHPA KGKLBGOADCE = 7;
 }

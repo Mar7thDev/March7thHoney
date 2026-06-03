@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ChallengeLineupList.proto";
 
 message ADKJKMKBFDC {
+    uint32 EEJCPNAEKLJ = 1;
+    uint32 round_count = 3;
+    uint32 level = 13;
     repeated ChallengeLineupList lineup_list = 14;
-    uint32 EEJCPNAEKLJ = 8;
-    uint32 round_count = 10;
-    uint32 level = 15;
 }

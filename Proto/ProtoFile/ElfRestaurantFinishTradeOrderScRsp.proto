@@ -6,8 +6,8 @@ import "ItemCostData.proto";
 import "ItemList.proto";
 
 message ElfRestaurantFinishTradeOrderScRsp {
-    ItemCostData FKMFHAAJMMF = 2;
-    ItemList GLAPKNMCIBI = 9;
-    uint32 retcode = 3;
-    uint32 BFADNHJAJBJ = 1;
+    uint32 BFADNHJAJBJ = 4;
+    ItemCostData FKMFHAAJMMF = 8;
+    uint32 retcode = 12;
+    ItemList GLAPKNMCIBI = 13;
 }

@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GetEvolveBuildShopAbilityUpScRsp {
-    uint32 retcode = 6;
-    uint32 level = 1;
-    uint32 JEKLOEPPJBK = 14;
+    uint32 JEKLOEPPJBK = 4;
+    uint32 retcode = 12;
+    uint32 level = 15;
 }

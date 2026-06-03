@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChhGYXRlU2V0dGxlU2NOb3RpZnkucHJvdG8aEUhKRkNFRUJBR01GLnByb3Rv",
             "Gg5JdGVtTGlzdC5wcm90byJkChJGYXRlU2V0dGxlU2NOb3RpZnkSIQoLTE5C",
-            "QlBQS0xCRkEYBiABKAsyDC5ISkZDRUVCQUdNRhIZCgZyZXdhcmQYDyABKAsy",
+            "QlBQS0xCRkEYASABKAsyDC5ISkZDRUVCQUdNRhIZCgZyZXdhcmQYByABKAsy",
             "CS5JdGVtTGlzdBIQCghzY29yZV9pZBgMIAEoDUIWqgITTWFyY2g3dGhIb25l",
             "eS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
@@ -87,7 +87,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "LNBBPPKLBFA" field.</summary>
-    public const int LNBBPPKLBFAFieldNumber = 6;
+    public const int LNBBPPKLBFAFieldNumber = 1;
     private global::March7thHoney.Proto.HJFCEEBAGMF lNBBPPKLBFA_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -99,7 +99,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "reward" field.</summary>
-    public const int RewardFieldNumber = 15;
+    public const int RewardFieldNumber = 7;
     private global::March7thHoney.Proto.ItemList reward_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -169,16 +169,16 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (lNBBPPKLBFA_ != null) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(10);
         output.WriteMessage(LNBBPPKLBFA);
+      }
+      if (reward_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(Reward);
       }
       if (ScoreId != 0) {
         output.WriteRawTag(96);
         output.WriteUInt32(ScoreId);
-      }
-      if (reward_ != null) {
-        output.WriteRawTag(122);
-        output.WriteMessage(Reward);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -191,16 +191,16 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (lNBBPPKLBFA_ != null) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(10);
         output.WriteMessage(LNBBPPKLBFA);
+      }
+      if (reward_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(Reward);
       }
       if (ScoreId != 0) {
         output.WriteRawTag(96);
         output.WriteUInt32(ScoreId);
-      }
-      if (reward_ != null) {
-        output.WriteRawTag(122);
-        output.WriteMessage(Reward);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -267,22 +267,22 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 50: {
+          case 10: {
             if (lNBBPPKLBFA_ == null) {
               LNBBPPKLBFA = new global::March7thHoney.Proto.HJFCEEBAGMF();
             }
             input.ReadMessage(LNBBPPKLBFA);
             break;
           }
-          case 96: {
-            ScoreId = input.ReadUInt32();
-            break;
-          }
-          case 122: {
+          case 58: {
             if (reward_ == null) {
               Reward = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(Reward);
+            break;
+          }
+          case 96: {
+            ScoreId = input.ReadUInt32();
             break;
           }
         }
@@ -304,22 +304,22 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 50: {
+          case 10: {
             if (lNBBPPKLBFA_ == null) {
               LNBBPPKLBFA = new global::March7thHoney.Proto.HJFCEEBAGMF();
             }
             input.ReadMessage(LNBBPPKLBFA);
             break;
           }
-          case 96: {
-            ScoreId = input.ReadUInt32();
-            break;
-          }
-          case 122: {
+          case 58: {
             if (reward_ == null) {
               Reward = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(Reward);
+            break;
+          }
+          case 96: {
+            ScoreId = input.ReadUInt32();
             break;
           }
         }

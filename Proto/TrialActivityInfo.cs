@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChdUcmlhbEFjdGl2aXR5SW5mby5wcm90byI7ChFUcmlhbEFjdGl2aXR5SW5m",
-            "bxIUCgx0YWtlbl9yZXdhcmQYBiABKAgSEAoIc3RhZ2VfaWQYDSABKA1CFqoC",
+            "bxIUCgx0YWtlbl9yZXdhcmQYASABKAgSEAoIc3RhZ2VfaWQYDCABKA1CFqoC",
             "E01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "taken_reward" field.</summary>
-    public const int TakenRewardFieldNumber = 6;
+    public const int TakenRewardFieldNumber = 1;
     private bool takenReward_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "stage_id" field.</summary>
-    public const int StageIdFieldNumber = 13;
+    public const int StageIdFieldNumber = 12;
     private uint stageId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (TakenReward != false) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(8);
         output.WriteBool(TakenReward);
       }
       if (StageId != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(96);
         output.WriteUInt32(StageId);
       }
       if (_unknownFields != null) {
@@ -170,11 +170,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (TakenReward != false) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(8);
         output.WriteBool(TakenReward);
       }
       if (StageId != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(96);
         output.WriteUInt32(StageId);
       }
       if (_unknownFields != null) {
@@ -230,11 +230,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 48: {
+          case 8: {
             TakenReward = input.ReadBool();
             break;
           }
-          case 104: {
+          case 96: {
             StageId = input.ReadUInt32();
             break;
           }
@@ -257,11 +257,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 48: {
+          case 8: {
             TakenReward = input.ReadBool();
             break;
           }
-          case 104: {
+          case 96: {
             StageId = input.ReadUInt32();
             break;
           }

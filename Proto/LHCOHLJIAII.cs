@@ -24,8 +24,8 @@ namespace March7thHoney.Proto {
     static LHCOHLJIAIIReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFMSENPSExKSUFJSS5wcm90byIrCgtMSENPSExKSUFJSRILCgNudW0YAyAB",
-            "KA0SDwoHcm9sZV9pZBgMIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IG",
+            "ChFMSENPSExKSUFJSS5wcm90byIrCgtMSENPSExKSUFJSRILCgNudW0YByAB",
+            "KA0SDwoHcm9sZV9pZBgNIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IG",
             "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "num" field.</summary>
-    public const int NumFieldNumber = 3;
+    public const int NumFieldNumber = 7;
     private uint num_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "role_id" field.</summary>
-    public const int RoleIdFieldNumber = 12;
+    public const int RoleIdFieldNumber = 13;
     private uint roleId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Num != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(56);
         output.WriteUInt32(Num);
       }
       if (RoleId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(104);
         output.WriteUInt32(RoleId);
       }
       if (_unknownFields != null) {
@@ -170,11 +170,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Num != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(56);
         output.WriteUInt32(Num);
       }
       if (RoleId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(104);
         output.WriteUInt32(RoleId);
       }
       if (_unknownFields != null) {
@@ -230,11 +230,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
+          case 56: {
             Num = input.ReadUInt32();
             break;
           }
-          case 96: {
+          case 104: {
             RoleId = input.ReadUInt32();
             break;
           }
@@ -257,11 +257,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
+          case 56: {
             Num = input.ReadUInt32();
             break;
           }
-          case 96: {
+          case 104: {
             RoleId = input.ReadUInt32();
             break;
           }

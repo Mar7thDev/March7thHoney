@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "IPGIJFNAFLC.proto";
 
 message AJOHOIGMCNN {
-    IPGIJFNAFLC LLCPOHADBKB = 7;
-    uint32 retcode = 14;
-    uint32 use_item_id = 9;
+    IPGIJFNAFLC LLCPOHADBKB = 2;
+    uint32 use_item_id = 7;
+    uint32 retcode = 12;
 }

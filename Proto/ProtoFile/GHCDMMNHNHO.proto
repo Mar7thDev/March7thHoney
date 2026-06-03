@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GHCDMMNHNHO {
-    int32 GCABCJKCAOE = 2;
     uint32 avatar_id = 1;
+    int32 GCABCJKCAOE = 2;
     uint32 enhanced_id = 3;
 }

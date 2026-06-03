@@ -11,15 +11,15 @@ import "PJFIMFJPMCN.proto";
 import "POBLGKIGINE.proto";
 
 message TrainCakeCatchGetDataScRsp {
-    repeated uint32 performance_id_list = 11;
-    repeated IKAHKMNCFDN BJPHDKEBOBK = 15;
-    ONAADAJBLEB NAIFOMCLGLN = 1;
-    repeated JOFHMCJPBCE NIELDCLPOLA = 5;
-    BFAKMCIJFCB NLJBJMDPBGN = 14;
-    KKACLNNMMAM JIELLGELABA = 7;
-    repeated PJFIMFJPMCN CEMFBJPOLNP = 8;
-    POBLGKIGINE DJMHHMMABJL = 13;
-    int64 CMHKFNFKGOI = 6;
-    uint32 retcode = 4;
-    bool OJPDDAOJJKC = 12;
+    uint32 retcode = 1;
+    bool OJPDDAOJJKC = 2;
+    repeated uint32 performance_id_list = 3;
+    BFAKMCIJFCB NLJBJMDPBGN = 7;
+    KKACLNNMMAM JIELLGELABA = 8;
+    ONAADAJBLEB NAIFOMCLGLN = 9;
+    repeated IKAHKMNCFDN BJPHDKEBOBK = 10;
+    POBLGKIGINE DJMHHMMABJL = 11;
+    repeated PJFIMFJPMCN CEMFBJPOLNP = 13;
+    int64 CMHKFNFKGOI = 14;
+    repeated JOFHMCJPBCE NIELDCLPOLA = 15;
 }

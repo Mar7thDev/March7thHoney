@@ -5,10 +5,10 @@ option csharp_namespace = "March7thHoney.Proto";
 import "FGFJNANBJJI.proto";
 
 message KPCNNOGGIDO {
-    repeated FGFJNANBJJI CBEFDHFFNLN = 6;
-    uint32 CLPAAFFFBKK = 11;
-    uint32 KFGLDLFBFFB = 3;
-    uint32 MGLEKDEAJBB = 5;
+    uint32 KFGLDLFBFFB = 6;
+    uint32 CLPAAFFFBKK = 7;
     uint32 MJOKDHMJBEH = 9;
-    uint32 MLBMDLBKEEM = 15;
+    uint32 MGLEKDEAJBB = 10;
+    uint32 MLBMDLBKEEM = 12;
+    repeated FGFJNANBJJI CBEFDHFFNLN = 15;
 }

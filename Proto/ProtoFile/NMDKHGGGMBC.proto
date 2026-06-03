@@ -3,10 +3,9 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message NMDKHGGGMBC {
-    repeated uint32 HMIOHPIMLCE = 3;
-    repeated uint32 NGLBJKKEPBL = 12;
-    uint32 level = 8;
-    uint32 AFEMBLFCCCH = 11;
-    uint32 exp = 5;
-    uint32 HCBADDHNIDG = 14;
+    repeated uint32 HMIOHPIMLCE = 6;
+    uint32 exp = 9;
+    uint32 level = 11;
+    uint32 max_level = 12;
+    uint32 AFEMBLFCCCH = 13;
 }

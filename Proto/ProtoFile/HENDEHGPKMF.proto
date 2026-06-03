@@ -3,9 +3,9 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message HENDEHGPKMF {
-    string name = 2;
-    bytes JLFIAFKGCOJ = 5;
-    string KFPMJKCOJAJ = 4;
-    string MILBDIPBJGP = 6;
     uint32 dice_slot_id = 1;
+    string name = 2;
+    string KFPMJKCOJAJ = 4;
+    bytes JLFIAFKGCOJ = 5;
+    string MILBDIPBJGP = 6;
 }

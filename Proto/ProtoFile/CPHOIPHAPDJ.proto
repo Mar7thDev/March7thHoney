@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message CPHOIPHAPDJ {
-    uint32 avatar_id = 3;
-    uint32 PLEEMBMPICA = 7;
-    uint32 role_star = 5;
-    uint32 level = 9;
+    uint32 role_star = 6;
+    uint32 PLEEMBMPICA = 9;
+    uint32 level = 12;
+    uint32 avatar_id = 13;
 }

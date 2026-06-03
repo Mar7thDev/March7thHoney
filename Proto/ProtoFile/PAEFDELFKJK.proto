@@ -8,8 +8,8 @@ import "FriendGridFightRecord.proto";
 import "ICMGDJBDFEA.proto";
 
 message PAEFDELFKJK {
-    EJAKBKOEEPC KBLKLGDCOMF = 10;
-    FriendGridFightRecord BAMDEHAICDA = 2;
-    ICMGDJBDFEA AMLDHBMIGEN = 12;
-    BattleRecordType BEBEEMKOBNN = 7;
+    BattleRecordType display_type = 3;
+    FriendGridFightRecord BAMDEHAICDA = 7;
+    EJAKBKOEEPC KBLKLGDCOMF = 8;
+    ICMGDJBDFEA AMLDHBMIGEN = 11;
 }

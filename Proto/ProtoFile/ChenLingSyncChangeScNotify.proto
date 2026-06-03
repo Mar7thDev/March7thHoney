@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "IOELPDDJGFJ.proto";
 
 message ChenLingSyncChangeScNotify {
-    repeated IOELPDDJGFJ DGNGMJMPFGK = 11;
+    repeated IOELPDDJGFJ DGNGMJMPFGK = 3;
 }

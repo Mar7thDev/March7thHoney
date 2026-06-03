@@ -5,13 +5,13 @@ option csharp_namespace = "March7thHoney.Proto";
 import "OGHAIFPHMPE.proto";
 
 message CJOCEJLPADK {
-    repeated OGHAIFPHMPE BJODJNFGMCB = 5;
-    repeated OGHAIFPHMPE ALHIONICLCM = 8;
-    uint32 GNAMNBDIEKG = 4;
-    uint32 rank = 6;
-    uint32 ILLEDJLNGNF = 9;
-    uint64 CKLCDAGMFKP = 2;
     uint32 monster_battle_type = 1;
+    uint64 room_uid = 2;
     uint32 level_id = 3;
+    uint32 GNAMNBDIEKG = 4;
+    repeated OGHAIFPHMPE BJODJNFGMCB = 5;
+    uint32 rank = 6;
     uint64 GAENFKKAKOI = 7;
+    repeated OGHAIFPHMPE ALHIONICLCM = 8;
+    uint32 ILLEDJLNGNF = 9;
 }

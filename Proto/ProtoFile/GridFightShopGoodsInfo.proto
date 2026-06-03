@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "CCKPBIKOIBB.proto";
+import "ELJOHIOHPMJ.proto";
+import "NJBGFHDPFNO.proto";
+
+message GridFightShopGoodsInfo {
+    bool LHGIFDNPIDE = 8;
+    uint32 KDKPDJNMMCM = 12;
+    oneof AELHFLGJMJN {
+        NJBGFHDPFNO BDPIMPJOJBK = 1210;
+        ELJOHIOHPMJ LLIBLKCJEMI = 409;
+        CCKPBIKOIBB INBCCAIFHNL = 533;
+    }
+}

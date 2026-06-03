@@ -3,11 +3,11 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message EICNFLHIHOI {
-    string HAKCLAHLPFG = 4;
     bool GGOPPDKDPME = 1;
-    bool DEBAOCJBBNB = 6;
-    bool IICCMNMEOFI = 5;
-    bool LGJMMJEFGNK = 3;
     uint32 OKHBCLCCLPL = 2;
+    bool LGJMMJEFGNK = 3;
+    string HAKCLAHLPFG = 4;
+    bool IICCMNMEOFI = 5;
+    bool DEBAOCJBBNB = 6;
     uint32 GCKHDGOBFOC = 7;
 }

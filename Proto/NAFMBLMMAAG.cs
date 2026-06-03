@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChFOQUZNQkxNTUFBRy5wcm90bxobU3Ryb25nQ2hhbGxlbmdlQXZhdGFyLnBy",
             "b3RvIk0KC05BRk1CTE1NQUFHEisKC2F2YXRhcl9saXN0GAMgAygLMhYuU3Ry",
-            "b25nQ2hhbGxlbmdlQXZhdGFyEhEKCWJ1ZmZfbGlzdBgHIAMoDUIWqgITTWFy",
+            "b25nQ2hhbGxlbmdlQXZhdGFyEhEKCWJ1ZmZfbGlzdBgJIAMoDUIWqgITTWFy",
             "Y2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.StrongChallengeAvatarReflection.Descriptor, },
@@ -96,9 +96,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "buff_list" field.</summary>
-    public const int BuffListFieldNumber = 7;
+    public const int BuffListFieldNumber = 9;
     private static readonly pb::FieldCodec<uint> _repeated_buffList_codec
-        = pb::FieldCodec.ForUInt32(58);
+        = pb::FieldCodec.ForUInt32(74);
     private readonly pbc::RepeatedField<uint> buffList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -213,8 +213,8 @@ namespace March7thHoney.Proto {
             avatarList_.AddEntriesFrom(input, _repeated_avatarList_codec);
             break;
           }
-          case 58:
-          case 56: {
+          case 74:
+          case 72: {
             buffList_.AddEntriesFrom(input, _repeated_buffList_codec);
             break;
           }
@@ -241,8 +241,8 @@ namespace March7thHoney.Proto {
             avatarList_.AddEntriesFrom(ref input, _repeated_avatarList_codec);
             break;
           }
-          case 58:
-          case 56: {
+          case 74:
+          case 72: {
             buffList_.AddEntriesFrom(ref input, _repeated_buffList_codec);
             break;
           }

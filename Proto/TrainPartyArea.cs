@@ -25,16 +25,16 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChRUcmFpblBhcnR5QXJlYS5wcm90bxoVQXJlYUR5bmFtaWNJbmZvLnByb3Rv",
-            "GhJBcmVhU3RlcEluZm8ucHJvdG8i0gEKDlRyYWluUGFydHlBcmVhEhsKE3Zl",
-            "cmlmeV9zdGVwX2lkX2xpc3QYCyADKA0SJgoMZHluYW1pY19pbmZvGAggAygL",
-            "MhAuQXJlYUR5bmFtaWNJbmZvEiUKDmFyZWFfc3RlcF9pbmZvGAIgASgLMg0u",
-            "QXJlYVN0ZXBJbmZvEhQKDHN0ZXBfaWRfbGlzdBgFIAMoDRIbChNzdGF0aWNf",
-            "cHJvcF9pZF9saXN0GAMgAygNEg8KB2FyZWFfaWQYDCABKA0SEAoIcHJvZ3Jl",
-            "c3MYBCABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "GhJBcmVhU3RlcEluZm8ucHJvdG8i0gEKDlRyYWluUGFydHlBcmVhEiYKDGR5",
+            "bmFtaWNfaW5mbxgBIAMoCzIQLkFyZWFEeW5hbWljSW5mbxIlCg5hcmVhX3N0",
+            "ZXBfaW5mbxgDIAEoCzINLkFyZWFTdGVwSW5mbxIbChN2ZXJpZnlfc3RlcF9p",
+            "ZF9saXN0GAggAygNEhAKCHByb2dyZXNzGAsgASgNEg8KB2FyZWFfaWQYDSAB",
+            "KA0SFAoMc3RlcF9pZF9saXN0GA4gAygNEhsKE3N0YXRpY19wcm9wX2lkX2xp",
+            "c3QYDyADKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.AreaDynamicInfoReflection.Descriptor, global::March7thHoney.Proto.AreaStepInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TrainPartyArea), global::March7thHoney.Proto.TrainPartyArea.Parser, new[]{ "VerifyStepIdList", "DynamicInfo", "AreaStepInfo", "StepIdList", "StaticPropIdList", "AreaId", "Progress" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TrainPartyArea), global::March7thHoney.Proto.TrainPartyArea.Parser, new[]{ "DynamicInfo", "AreaStepInfo", "VerifyStepIdList", "Progress", "AreaId", "StepIdList", "StaticPropIdList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -76,13 +76,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public TrainPartyArea(TrainPartyArea other) : this() {
-      verifyStepIdList_ = other.verifyStepIdList_.Clone();
       dynamicInfo_ = other.dynamicInfo_.Clone();
       areaStepInfo_ = other.areaStepInfo_ != null ? other.areaStepInfo_.Clone() : null;
+      verifyStepIdList_ = other.verifyStepIdList_.Clone();
+      progress_ = other.progress_;
+      areaId_ = other.areaId_;
       stepIdList_ = other.stepIdList_.Clone();
       staticPropIdList_ = other.staticPropIdList_.Clone();
-      areaId_ = other.areaId_;
-      progress_ = other.progress_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -92,21 +92,10 @@ namespace March7thHoney.Proto {
       return new TrainPartyArea(this);
     }
 
-    /// <summary>Field number for the "verify_step_id_list" field.</summary>
-    public const int VerifyStepIdListFieldNumber = 11;
-    private static readonly pb::FieldCodec<uint> _repeated_verifyStepIdList_codec
-        = pb::FieldCodec.ForUInt32(90);
-    private readonly pbc::RepeatedField<uint> verifyStepIdList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> VerifyStepIdList {
-      get { return verifyStepIdList_; }
-    }
-
     /// <summary>Field number for the "dynamic_info" field.</summary>
-    public const int DynamicInfoFieldNumber = 8;
+    public const int DynamicInfoFieldNumber = 1;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.AreaDynamicInfo> _repeated_dynamicInfo_codec
-        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.AreaDynamicInfo.Parser);
+        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.AreaDynamicInfo.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.AreaDynamicInfo> dynamicInfo_ = new pbc::RepeatedField<global::March7thHoney.Proto.AreaDynamicInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -115,7 +104,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "area_step_info" field.</summary>
-    public const int AreaStepInfoFieldNumber = 2;
+    public const int AreaStepInfoFieldNumber = 3;
     private global::March7thHoney.Proto.AreaStepInfo areaStepInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -126,30 +115,31 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "step_id_list" field.</summary>
-    public const int StepIdListFieldNumber = 5;
-    private static readonly pb::FieldCodec<uint> _repeated_stepIdList_codec
-        = pb::FieldCodec.ForUInt32(42);
-    private readonly pbc::RepeatedField<uint> stepIdList_ = new pbc::RepeatedField<uint>();
+    /// <summary>Field number for the "verify_step_id_list" field.</summary>
+    public const int VerifyStepIdListFieldNumber = 8;
+    private static readonly pb::FieldCodec<uint> _repeated_verifyStepIdList_codec
+        = pb::FieldCodec.ForUInt32(66);
+    private readonly pbc::RepeatedField<uint> verifyStepIdList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> StepIdList {
-      get { return stepIdList_; }
+    public pbc::RepeatedField<uint> VerifyStepIdList {
+      get { return verifyStepIdList_; }
     }
 
-    /// <summary>Field number for the "static_prop_id_list" field.</summary>
-    public const int StaticPropIdListFieldNumber = 3;
-    private static readonly pb::FieldCodec<uint> _repeated_staticPropIdList_codec
-        = pb::FieldCodec.ForUInt32(26);
-    private readonly pbc::RepeatedField<uint> staticPropIdList_ = new pbc::RepeatedField<uint>();
+    /// <summary>Field number for the "progress" field.</summary>
+    public const int ProgressFieldNumber = 11;
+    private uint progress_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> StaticPropIdList {
-      get { return staticPropIdList_; }
+    public uint Progress {
+      get { return progress_; }
+      set {
+        progress_ = value;
+      }
     }
 
     /// <summary>Field number for the "area_id" field.</summary>
-    public const int AreaIdFieldNumber = 12;
+    public const int AreaIdFieldNumber = 13;
     private uint areaId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -160,16 +150,26 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "progress" field.</summary>
-    public const int ProgressFieldNumber = 4;
-    private uint progress_;
+    /// <summary>Field number for the "step_id_list" field.</summary>
+    public const int StepIdListFieldNumber = 14;
+    private static readonly pb::FieldCodec<uint> _repeated_stepIdList_codec
+        = pb::FieldCodec.ForUInt32(114);
+    private readonly pbc::RepeatedField<uint> stepIdList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Progress {
-      get { return progress_; }
-      set {
-        progress_ = value;
-      }
+    public pbc::RepeatedField<uint> StepIdList {
+      get { return stepIdList_; }
+    }
+
+    /// <summary>Field number for the "static_prop_id_list" field.</summary>
+    public const int StaticPropIdListFieldNumber = 15;
+    private static readonly pb::FieldCodec<uint> _repeated_staticPropIdList_codec
+        = pb::FieldCodec.ForUInt32(122);
+    private readonly pbc::RepeatedField<uint> staticPropIdList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> StaticPropIdList {
+      get { return staticPropIdList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -187,13 +187,13 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!verifyStepIdList_.Equals(other.verifyStepIdList_)) return false;
       if(!dynamicInfo_.Equals(other.dynamicInfo_)) return false;
       if (!object.Equals(AreaStepInfo, other.AreaStepInfo)) return false;
+      if(!verifyStepIdList_.Equals(other.verifyStepIdList_)) return false;
+      if (Progress != other.Progress) return false;
+      if (AreaId != other.AreaId) return false;
       if(!stepIdList_.Equals(other.stepIdList_)) return false;
       if(!staticPropIdList_.Equals(other.staticPropIdList_)) return false;
-      if (AreaId != other.AreaId) return false;
-      if (Progress != other.Progress) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -201,13 +201,13 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= verifyStepIdList_.GetHashCode();
       hash ^= dynamicInfo_.GetHashCode();
       if (areaStepInfo_ != null) hash ^= AreaStepInfo.GetHashCode();
+      hash ^= verifyStepIdList_.GetHashCode();
+      if (Progress != 0) hash ^= Progress.GetHashCode();
+      if (AreaId != 0) hash ^= AreaId.GetHashCode();
       hash ^= stepIdList_.GetHashCode();
       hash ^= staticPropIdList_.GetHashCode();
-      if (AreaId != 0) hash ^= AreaId.GetHashCode();
-      if (Progress != 0) hash ^= Progress.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -226,22 +226,22 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      dynamicInfo_.WriteTo(output, _repeated_dynamicInfo_codec);
       if (areaStepInfo_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(26);
         output.WriteMessage(AreaStepInfo);
       }
-      staticPropIdList_.WriteTo(output, _repeated_staticPropIdList_codec);
+      verifyStepIdList_.WriteTo(output, _repeated_verifyStepIdList_codec);
       if (Progress != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(88);
         output.WriteUInt32(Progress);
       }
-      stepIdList_.WriteTo(output, _repeated_stepIdList_codec);
-      dynamicInfo_.WriteTo(output, _repeated_dynamicInfo_codec);
-      verifyStepIdList_.WriteTo(output, _repeated_verifyStepIdList_codec);
       if (AreaId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(104);
         output.WriteUInt32(AreaId);
       }
+      stepIdList_.WriteTo(output, _repeated_stepIdList_codec);
+      staticPropIdList_.WriteTo(output, _repeated_staticPropIdList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -252,22 +252,22 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      dynamicInfo_.WriteTo(ref output, _repeated_dynamicInfo_codec);
       if (areaStepInfo_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(26);
         output.WriteMessage(AreaStepInfo);
       }
-      staticPropIdList_.WriteTo(ref output, _repeated_staticPropIdList_codec);
+      verifyStepIdList_.WriteTo(ref output, _repeated_verifyStepIdList_codec);
       if (Progress != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(88);
         output.WriteUInt32(Progress);
       }
-      stepIdList_.WriteTo(ref output, _repeated_stepIdList_codec);
-      dynamicInfo_.WriteTo(ref output, _repeated_dynamicInfo_codec);
-      verifyStepIdList_.WriteTo(ref output, _repeated_verifyStepIdList_codec);
       if (AreaId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(104);
         output.WriteUInt32(AreaId);
       }
+      stepIdList_.WriteTo(ref output, _repeated_stepIdList_codec);
+      staticPropIdList_.WriteTo(ref output, _repeated_staticPropIdList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -278,19 +278,19 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += verifyStepIdList_.CalculateSize(_repeated_verifyStepIdList_codec);
       size += dynamicInfo_.CalculateSize(_repeated_dynamicInfo_codec);
       if (areaStepInfo_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(AreaStepInfo);
       }
-      size += stepIdList_.CalculateSize(_repeated_stepIdList_codec);
-      size += staticPropIdList_.CalculateSize(_repeated_staticPropIdList_codec);
-      if (AreaId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AreaId);
-      }
+      size += verifyStepIdList_.CalculateSize(_repeated_verifyStepIdList_codec);
       if (Progress != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Progress);
       }
+      if (AreaId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AreaId);
+      }
+      size += stepIdList_.CalculateSize(_repeated_stepIdList_codec);
+      size += staticPropIdList_.CalculateSize(_repeated_staticPropIdList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -303,7 +303,6 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      verifyStepIdList_.Add(other.verifyStepIdList_);
       dynamicInfo_.Add(other.dynamicInfo_);
       if (other.areaStepInfo_ != null) {
         if (areaStepInfo_ == null) {
@@ -311,14 +310,15 @@ namespace March7thHoney.Proto {
         }
         AreaStepInfo.MergeFrom(other.AreaStepInfo);
       }
-      stepIdList_.Add(other.stepIdList_);
-      staticPropIdList_.Add(other.staticPropIdList_);
-      if (other.AreaId != 0) {
-        AreaId = other.AreaId;
-      }
+      verifyStepIdList_.Add(other.verifyStepIdList_);
       if (other.Progress != 0) {
         Progress = other.Progress;
       }
+      if (other.AreaId != 0) {
+        AreaId = other.AreaId;
+      }
+      stepIdList_.Add(other.stepIdList_);
+      staticPropIdList_.Add(other.staticPropIdList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -338,38 +338,38 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 18: {
+          case 10: {
+            dynamicInfo_.AddEntriesFrom(input, _repeated_dynamicInfo_codec);
+            break;
+          }
+          case 26: {
             if (areaStepInfo_ == null) {
               AreaStepInfo = new global::March7thHoney.Proto.AreaStepInfo();
             }
             input.ReadMessage(AreaStepInfo);
             break;
           }
-          case 26:
-          case 24: {
-            staticPropIdList_.AddEntriesFrom(input, _repeated_staticPropIdList_codec);
-            break;
-          }
-          case 32: {
-            Progress = input.ReadUInt32();
-            break;
-          }
-          case 42:
-          case 40: {
-            stepIdList_.AddEntriesFrom(input, _repeated_stepIdList_codec);
-            break;
-          }
-          case 66: {
-            dynamicInfo_.AddEntriesFrom(input, _repeated_dynamicInfo_codec);
-            break;
-          }
-          case 90:
-          case 88: {
+          case 66:
+          case 64: {
             verifyStepIdList_.AddEntriesFrom(input, _repeated_verifyStepIdList_codec);
             break;
           }
-          case 96: {
+          case 88: {
+            Progress = input.ReadUInt32();
+            break;
+          }
+          case 104: {
             AreaId = input.ReadUInt32();
+            break;
+          }
+          case 114:
+          case 112: {
+            stepIdList_.AddEntriesFrom(input, _repeated_stepIdList_codec);
+            break;
+          }
+          case 122:
+          case 120: {
+            staticPropIdList_.AddEntriesFrom(input, _repeated_staticPropIdList_codec);
             break;
           }
         }
@@ -391,38 +391,38 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 18: {
+          case 10: {
+            dynamicInfo_.AddEntriesFrom(ref input, _repeated_dynamicInfo_codec);
+            break;
+          }
+          case 26: {
             if (areaStepInfo_ == null) {
               AreaStepInfo = new global::March7thHoney.Proto.AreaStepInfo();
             }
             input.ReadMessage(AreaStepInfo);
             break;
           }
-          case 26:
-          case 24: {
-            staticPropIdList_.AddEntriesFrom(ref input, _repeated_staticPropIdList_codec);
-            break;
-          }
-          case 32: {
-            Progress = input.ReadUInt32();
-            break;
-          }
-          case 42:
-          case 40: {
-            stepIdList_.AddEntriesFrom(ref input, _repeated_stepIdList_codec);
-            break;
-          }
-          case 66: {
-            dynamicInfo_.AddEntriesFrom(ref input, _repeated_dynamicInfo_codec);
-            break;
-          }
-          case 90:
-          case 88: {
+          case 66:
+          case 64: {
             verifyStepIdList_.AddEntriesFrom(ref input, _repeated_verifyStepIdList_codec);
             break;
           }
-          case 96: {
+          case 88: {
+            Progress = input.ReadUInt32();
+            break;
+          }
+          case 104: {
             AreaId = input.ReadUInt32();
+            break;
+          }
+          case 114:
+          case 112: {
+            stepIdList_.AddEntriesFrom(ref input, _repeated_stepIdList_codec);
+            break;
+          }
+          case 122:
+          case 120: {
+            staticPropIdList_.AddEntriesFrom(ref input, _repeated_staticPropIdList_codec);
             break;
           }
         }

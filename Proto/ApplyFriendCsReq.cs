@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChZBcHBseUZyaWVuZENzUmVxLnByb3RvGhdGcmllbmRBcHBseVNvdXJjZS5w",
-            "cm90byJDChBBcHBseUZyaWVuZENzUmVxEiIKBnNvdXJjZRgJIAEoDjISLkZy",
-            "aWVuZEFwcGx5U291cmNlEgsKA3VpZBgBIAEoDUIWqgITTWFyY2g3dGhIb25l",
+            "cm90byJDChBBcHBseUZyaWVuZENzUmVxEiIKBnNvdXJjZRgNIAEoDjISLkZy",
+            "aWVuZEFwcGx5U291cmNlEgsKA3VpZBgPIAEoDUIWqgITTWFyY2g3dGhIb25l",
             "eS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.FriendApplySourceReflection.Descriptor, },
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "source" field.</summary>
-    public const int SourceFieldNumber = 9;
+    public const int SourceFieldNumber = 13;
     private global::March7thHoney.Proto.FriendApplySource source_ = global::March7thHoney.Proto.FriendApplySource.HpekgmdhfloNlcdgipgfdj;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "uid" field.</summary>
-    public const int UidFieldNumber = 1;
+    public const int UidFieldNumber = 15;
     private uint uid_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,13 +152,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Uid != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(Uid);
-      }
       if (Source != global::March7thHoney.Proto.FriendApplySource.HpekgmdhfloNlcdgipgfdj) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(104);
         output.WriteEnum((int) Source);
+      }
+      if (Uid != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(Uid);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,13 +170,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Uid != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(Uid);
-      }
       if (Source != global::March7thHoney.Proto.FriendApplySource.HpekgmdhfloNlcdgipgfdj) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(104);
         output.WriteEnum((int) Source);
+      }
+      if (Uid != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(Uid);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -231,12 +231,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            Uid = input.ReadUInt32();
+          case 104: {
+            Source = (global::March7thHoney.Proto.FriendApplySource) input.ReadEnum();
             break;
           }
-          case 72: {
-            Source = (global::March7thHoney.Proto.FriendApplySource) input.ReadEnum();
+          case 120: {
+            Uid = input.ReadUInt32();
             break;
           }
         }
@@ -258,12 +258,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            Uid = input.ReadUInt32();
+          case 104: {
+            Source = (global::March7thHoney.Proto.FriendApplySource) input.ReadEnum();
             break;
           }
-          case 72: {
-            Source = (global::March7thHoney.Proto.FriendApplySource) input.ReadEnum();
+          case 120: {
+            Uid = input.ReadUInt32();
             break;
           }
         }

@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message FightFestScoreUpdateNotify {
-    uint32 JODNMFEFPFD = 8;
-    uint32 score_id = 2;
+    uint32 JODNMFEFPFD = 7;
+    uint32 score_id = 11;
 }

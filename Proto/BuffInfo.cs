@@ -24,17 +24,17 @@ namespace March7thHoney.Proto {
     static BuffInfoReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg5CdWZmSW5mby5wcm90byKEAgoIQnVmZkluZm8SNAoOZHluYW1pY192YWx1",
-            "ZXMYBSADKAsyHC5CdWZmSW5mby5EeW5hbWljVmFsdWVzRW50cnkSDwoHYnVm",
-            "Zl9pZBgOIAEoDRIdChVidWZmX3N1bW1vbl9lbnRpdHlfaWQYCyABKA0SEwoL",
-            "YWRkX3RpbWVfbXMYDyABKAQSDQoFY291bnQYCiABKA0SDQoFbGV2ZWwYAyAB",
-            "KA0SEQoJbGlmZV90aW1lGAQgASgCEhYKDmJhc2VfYXZhdGFyX2lkGAkgASgN",
+            "Cg5CdWZmSW5mby5wcm90byKEAgoIQnVmZkluZm8SDwoHYnVmZl9pZBgBIAEo",
+            "DRINCgVsZXZlbBgEIAEoDRIWCg5iYXNlX2F2YXRhcl9pZBgFIAEoDRINCgVj",
+            "b3VudBgGIAEoDRIdChVidWZmX3N1bW1vbl9lbnRpdHlfaWQYCCABKA0SNAoO",
+            "ZHluYW1pY192YWx1ZXMYCiADKAsyHC5CdWZmSW5mby5EeW5hbWljVmFsdWVz",
+            "RW50cnkSEwoLYWRkX3RpbWVfbXMYDCABKAQSEQoJbGlmZV90aW1lGA0gASgC",
             "GjQKEkR5bmFtaWNWYWx1ZXNFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUY",
             "AiABKAI6AjgBQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BuffInfo), global::March7thHoney.Proto.BuffInfo.Parser, new[]{ "DynamicValues", "BuffId", "BuffSummonEntityId", "AddTimeMs", "Count", "Level", "LifeTime", "BaseAvatarId" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BuffInfo), global::March7thHoney.Proto.BuffInfo.Parser, new[]{ "BuffId", "Level", "BaseAvatarId", "Count", "BuffSummonEntityId", "DynamicValues", "AddTimeMs", "LifeTime" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -76,14 +76,14 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BuffInfo(BuffInfo other) : this() {
-      dynamicValues_ = other.dynamicValues_.Clone();
       buffId_ = other.buffId_;
-      buffSummonEntityId_ = other.buffSummonEntityId_;
-      addTimeMs_ = other.addTimeMs_;
-      count_ = other.count_;
       level_ = other.level_;
-      lifeTime_ = other.lifeTime_;
       baseAvatarId_ = other.baseAvatarId_;
+      count_ = other.count_;
+      buffSummonEntityId_ = other.buffSummonEntityId_;
+      dynamicValues_ = other.dynamicValues_.Clone();
+      addTimeMs_ = other.addTimeMs_;
+      lifeTime_ = other.lifeTime_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -93,19 +93,8 @@ namespace March7thHoney.Proto {
       return new BuffInfo(this);
     }
 
-    /// <summary>Field number for the "dynamic_values" field.</summary>
-    public const int DynamicValuesFieldNumber = 5;
-    private static readonly pbc::MapField<string, float>.Codec _map_dynamicValues_codec
-        = new pbc::MapField<string, float>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForFloat(21, 0F), 42);
-    private readonly pbc::MapField<string, float> dynamicValues_ = new pbc::MapField<string, float>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<string, float> DynamicValues {
-      get { return dynamicValues_; }
-    }
-
     /// <summary>Field number for the "buff_id" field.</summary>
-    public const int BuffIdFieldNumber = 14;
+    public const int BuffIdFieldNumber = 1;
     private uint buffId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -116,44 +105,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "buff_summon_entity_id" field.</summary>
-    public const int BuffSummonEntityIdFieldNumber = 11;
-    private uint buffSummonEntityId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint BuffSummonEntityId {
-      get { return buffSummonEntityId_; }
-      set {
-        buffSummonEntityId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "add_time_ms" field.</summary>
-    public const int AddTimeMsFieldNumber = 15;
-    private ulong addTimeMs_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ulong AddTimeMs {
-      get { return addTimeMs_; }
-      set {
-        addTimeMs_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "count" field.</summary>
-    public const int CountFieldNumber = 10;
-    private uint count_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Count {
-      get { return count_; }
-      set {
-        count_ = value;
-      }
-    }
-
     /// <summary>Field number for the "level" field.</summary>
-    public const int LevelFieldNumber = 3;
+    public const int LevelFieldNumber = 4;
     private uint level_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -164,20 +117,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "life_time" field.</summary>
-    public const int LifeTimeFieldNumber = 4;
-    private float lifeTime_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public float LifeTime {
-      get { return lifeTime_; }
-      set {
-        lifeTime_ = value;
-      }
-    }
-
     /// <summary>Field number for the "base_avatar_id" field.</summary>
-    public const int BaseAvatarIdFieldNumber = 9;
+    public const int BaseAvatarIdFieldNumber = 5;
     private uint baseAvatarId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -185,6 +126,65 @@ namespace March7thHoney.Proto {
       get { return baseAvatarId_; }
       set {
         baseAvatarId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "count" field.</summary>
+    public const int CountFieldNumber = 6;
+    private uint count_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Count {
+      get { return count_; }
+      set {
+        count_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "buff_summon_entity_id" field.</summary>
+    public const int BuffSummonEntityIdFieldNumber = 8;
+    private uint buffSummonEntityId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint BuffSummonEntityId {
+      get { return buffSummonEntityId_; }
+      set {
+        buffSummonEntityId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "dynamic_values" field.</summary>
+    public const int DynamicValuesFieldNumber = 10;
+    private static readonly pbc::MapField<string, float>.Codec _map_dynamicValues_codec
+        = new pbc::MapField<string, float>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForFloat(21, 0F), 82);
+    private readonly pbc::MapField<string, float> dynamicValues_ = new pbc::MapField<string, float>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::MapField<string, float> DynamicValues {
+      get { return dynamicValues_; }
+    }
+
+    /// <summary>Field number for the "add_time_ms" field.</summary>
+    public const int AddTimeMsFieldNumber = 12;
+    private ulong addTimeMs_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong AddTimeMs {
+      get { return addTimeMs_; }
+      set {
+        addTimeMs_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "life_time" field.</summary>
+    public const int LifeTimeFieldNumber = 13;
+    private float lifeTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float LifeTime {
+      get { return lifeTime_; }
+      set {
+        lifeTime_ = value;
       }
     }
 
@@ -203,14 +203,14 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!DynamicValues.Equals(other.DynamicValues)) return false;
       if (BuffId != other.BuffId) return false;
-      if (BuffSummonEntityId != other.BuffSummonEntityId) return false;
-      if (AddTimeMs != other.AddTimeMs) return false;
-      if (Count != other.Count) return false;
       if (Level != other.Level) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(LifeTime, other.LifeTime)) return false;
       if (BaseAvatarId != other.BaseAvatarId) return false;
+      if (Count != other.Count) return false;
+      if (BuffSummonEntityId != other.BuffSummonEntityId) return false;
+      if (!DynamicValues.Equals(other.DynamicValues)) return false;
+      if (AddTimeMs != other.AddTimeMs) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(LifeTime, other.LifeTime)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -218,14 +218,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= DynamicValues.GetHashCode();
       if (BuffId != 0) hash ^= BuffId.GetHashCode();
-      if (BuffSummonEntityId != 0) hash ^= BuffSummonEntityId.GetHashCode();
-      if (AddTimeMs != 0UL) hash ^= AddTimeMs.GetHashCode();
-      if (Count != 0) hash ^= Count.GetHashCode();
       if (Level != 0) hash ^= Level.GetHashCode();
-      if (LifeTime != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(LifeTime);
       if (BaseAvatarId != 0) hash ^= BaseAvatarId.GetHashCode();
+      if (Count != 0) hash ^= Count.GetHashCode();
+      if (BuffSummonEntityId != 0) hash ^= BuffSummonEntityId.GetHashCode();
+      hash ^= DynamicValues.GetHashCode();
+      if (AddTimeMs != 0UL) hash ^= AddTimeMs.GetHashCode();
+      if (LifeTime != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(LifeTime);
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -244,34 +244,34 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (BuffId != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(BuffId);
+      }
       if (Level != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(32);
         output.WriteUInt32(Level);
       }
-      if (LifeTime != 0F) {
-        output.WriteRawTag(37);
-        output.WriteFloat(LifeTime);
-      }
-      dynamicValues_.WriteTo(output, _map_dynamicValues_codec);
       if (BaseAvatarId != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(40);
         output.WriteUInt32(BaseAvatarId);
       }
       if (Count != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(48);
         output.WriteUInt32(Count);
       }
       if (BuffSummonEntityId != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(64);
         output.WriteUInt32(BuffSummonEntityId);
       }
-      if (BuffId != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(BuffId);
-      }
+      dynamicValues_.WriteTo(output, _map_dynamicValues_codec);
       if (AddTimeMs != 0UL) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(96);
         output.WriteUInt64(AddTimeMs);
+      }
+      if (LifeTime != 0F) {
+        output.WriteRawTag(109);
+        output.WriteFloat(LifeTime);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -283,34 +283,34 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (BuffId != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(BuffId);
+      }
       if (Level != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(32);
         output.WriteUInt32(Level);
       }
-      if (LifeTime != 0F) {
-        output.WriteRawTag(37);
-        output.WriteFloat(LifeTime);
-      }
-      dynamicValues_.WriteTo(ref output, _map_dynamicValues_codec);
       if (BaseAvatarId != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(40);
         output.WriteUInt32(BaseAvatarId);
       }
       if (Count != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(48);
         output.WriteUInt32(Count);
       }
       if (BuffSummonEntityId != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(64);
         output.WriteUInt32(BuffSummonEntityId);
       }
-      if (BuffId != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(BuffId);
-      }
+      dynamicValues_.WriteTo(ref output, _map_dynamicValues_codec);
       if (AddTimeMs != 0UL) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(96);
         output.WriteUInt64(AddTimeMs);
+      }
+      if (LifeTime != 0F) {
+        output.WriteRawTag(109);
+        output.WriteFloat(LifeTime);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -322,27 +322,27 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += dynamicValues_.CalculateSize(_map_dynamicValues_codec);
       if (BuffId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BuffId);
-      }
-      if (BuffSummonEntityId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BuffSummonEntityId);
-      }
-      if (AddTimeMs != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(AddTimeMs);
-      }
-      if (Count != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Count);
       }
       if (Level != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
       }
-      if (LifeTime != 0F) {
-        size += 1 + 4;
-      }
       if (BaseAvatarId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BaseAvatarId);
+      }
+      if (Count != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Count);
+      }
+      if (BuffSummonEntityId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BuffSummonEntityId);
+      }
+      size += dynamicValues_.CalculateSize(_map_dynamicValues_codec);
+      if (AddTimeMs != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(AddTimeMs);
+      }
+      if (LifeTime != 0F) {
+        size += 1 + 4;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -356,27 +356,27 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      dynamicValues_.MergeFrom(other.dynamicValues_);
       if (other.BuffId != 0) {
         BuffId = other.BuffId;
-      }
-      if (other.BuffSummonEntityId != 0) {
-        BuffSummonEntityId = other.BuffSummonEntityId;
-      }
-      if (other.AddTimeMs != 0UL) {
-        AddTimeMs = other.AddTimeMs;
-      }
-      if (other.Count != 0) {
-        Count = other.Count;
       }
       if (other.Level != 0) {
         Level = other.Level;
       }
-      if (other.LifeTime != 0F) {
-        LifeTime = other.LifeTime;
-      }
       if (other.BaseAvatarId != 0) {
         BaseAvatarId = other.BaseAvatarId;
+      }
+      if (other.Count != 0) {
+        Count = other.Count;
+      }
+      if (other.BuffSummonEntityId != 0) {
+        BuffSummonEntityId = other.BuffSummonEntityId;
+      }
+      dynamicValues_.MergeFrom(other.dynamicValues_);
+      if (other.AddTimeMs != 0UL) {
+        AddTimeMs = other.AddTimeMs;
+      }
+      if (other.LifeTime != 0F) {
+        LifeTime = other.LifeTime;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -397,36 +397,36 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
-            Level = input.ReadUInt32();
-            break;
-          }
-          case 37: {
-            LifeTime = input.ReadFloat();
-            break;
-          }
-          case 42: {
-            dynamicValues_.AddEntriesFrom(input, _map_dynamicValues_codec);
-            break;
-          }
-          case 72: {
-            BaseAvatarId = input.ReadUInt32();
-            break;
-          }
-          case 80: {
-            Count = input.ReadUInt32();
-            break;
-          }
-          case 88: {
-            BuffSummonEntityId = input.ReadUInt32();
-            break;
-          }
-          case 112: {
+          case 8: {
             BuffId = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 32: {
+            Level = input.ReadUInt32();
+            break;
+          }
+          case 40: {
+            BaseAvatarId = input.ReadUInt32();
+            break;
+          }
+          case 48: {
+            Count = input.ReadUInt32();
+            break;
+          }
+          case 64: {
+            BuffSummonEntityId = input.ReadUInt32();
+            break;
+          }
+          case 82: {
+            dynamicValues_.AddEntriesFrom(input, _map_dynamicValues_codec);
+            break;
+          }
+          case 96: {
             AddTimeMs = input.ReadUInt64();
+            break;
+          }
+          case 109: {
+            LifeTime = input.ReadFloat();
             break;
           }
         }
@@ -448,36 +448,36 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
-            Level = input.ReadUInt32();
-            break;
-          }
-          case 37: {
-            LifeTime = input.ReadFloat();
-            break;
-          }
-          case 42: {
-            dynamicValues_.AddEntriesFrom(ref input, _map_dynamicValues_codec);
-            break;
-          }
-          case 72: {
-            BaseAvatarId = input.ReadUInt32();
-            break;
-          }
-          case 80: {
-            Count = input.ReadUInt32();
-            break;
-          }
-          case 88: {
-            BuffSummonEntityId = input.ReadUInt32();
-            break;
-          }
-          case 112: {
+          case 8: {
             BuffId = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 32: {
+            Level = input.ReadUInt32();
+            break;
+          }
+          case 40: {
+            BaseAvatarId = input.ReadUInt32();
+            break;
+          }
+          case 48: {
+            Count = input.ReadUInt32();
+            break;
+          }
+          case 64: {
+            BuffSummonEntityId = input.ReadUInt32();
+            break;
+          }
+          case 82: {
+            dynamicValues_.AddEntriesFrom(ref input, _map_dynamicValues_codec);
+            break;
+          }
+          case 96: {
             AddTimeMs = input.ReadUInt64();
+            break;
+          }
+          case 109: {
+            LifeTime = input.ReadFloat();
             break;
           }
         }

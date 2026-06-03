@@ -24,16 +24,16 @@ namespace March7thHoney.Proto {
     static KIAICMELIMMReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFLSUFJQ01FTElNTS5wcm90byK0AQoLS0lBSUNNRUxJTU0SMgoLQU9LRUNK",
+            "ChFLSUFJQ01FTElNTS5wcm90byK8AQoLS0lBSUNNRUxJTU0SMgoLQU9LRUNK",
             "QkZNQ04YASADKAsyHS5LSUFJQ01FTElNTS5BT0tFQ0pCRk1DTkVudHJ5EhMK",
-            "C0NEQkdQTUFCTUdNGAIgASgNEhMKC0ZQQ09QUExGQk9QGAQgASgNEhMKC0ZH",
-            "T0hNT01MRUJHGAMgASgNGjIKEEFPS0VDSkJGTUNORW50cnkSCwoDa2V5GAEg",
-            "ASgNEg0KBXZhbHVlGAIgASgNOgI4AUIWqgITTWFyY2g3dGhIb25leS5Qcm90",
-            "b2IGcHJvdG8z"));
+            "C0NEQkdQTUFCTUdNGAIgASgNEhMKC0ZHT0hNT01MRUJHGAMgASgNEhsKE2Vu",
+            "ZW15X2hwX211bHRpcGxpZXIYBCABKA0aMgoQQU9LRUNKQkZNQ05FbnRyeRIL",
+            "CgNrZXkYASABKA0SDQoFdmFsdWUYAiABKA06AjgBQhaqAhNNYXJjaDd0aEhv",
+            "bmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.KIAICMELIMM), global::March7thHoney.Proto.KIAICMELIMM.Parser, new[]{ "AOKECJBFMCN", "CDBGPMABMGM", "FPCOPPLFBOP", "FGOHMOMLEBG" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.KIAICMELIMM), global::March7thHoney.Proto.KIAICMELIMM.Parser, new[]{ "AOKECJBFMCN", "CDBGPMABMGM", "FGOHMOMLEBG", "EnemyHpMultiplier" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -77,8 +77,8 @@ namespace March7thHoney.Proto {
     public KIAICMELIMM(KIAICMELIMM other) : this() {
       aOKECJBFMCN_ = other.aOKECJBFMCN_.Clone();
       cDBGPMABMGM_ = other.cDBGPMABMGM_;
-      fPCOPPLFBOP_ = other.fPCOPPLFBOP_;
       fGOHMOMLEBG_ = other.fGOHMOMLEBG_;
+      enemyHpMultiplier_ = other.enemyHpMultiplier_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -111,18 +111,6 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "FPCOPPLFBOP" field.</summary>
-    public const int FPCOPPLFBOPFieldNumber = 4;
-    private uint fPCOPPLFBOP_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint FPCOPPLFBOP {
-      get { return fPCOPPLFBOP_; }
-      set {
-        fPCOPPLFBOP_ = value;
-      }
-    }
-
     /// <summary>Field number for the "FGOHMOMLEBG" field.</summary>
     public const int FGOHMOMLEBGFieldNumber = 3;
     private uint fGOHMOMLEBG_;
@@ -132,6 +120,18 @@ namespace March7thHoney.Proto {
       get { return fGOHMOMLEBG_; }
       set {
         fGOHMOMLEBG_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "enemy_hp_multiplier" field.</summary>
+    public const int EnemyHpMultiplierFieldNumber = 4;
+    private uint enemyHpMultiplier_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint EnemyHpMultiplier {
+      get { return enemyHpMultiplier_; }
+      set {
+        enemyHpMultiplier_ = value;
       }
     }
 
@@ -152,8 +152,8 @@ namespace March7thHoney.Proto {
       }
       if (!AOKECJBFMCN.Equals(other.AOKECJBFMCN)) return false;
       if (CDBGPMABMGM != other.CDBGPMABMGM) return false;
-      if (FPCOPPLFBOP != other.FPCOPPLFBOP) return false;
       if (FGOHMOMLEBG != other.FGOHMOMLEBG) return false;
+      if (EnemyHpMultiplier != other.EnemyHpMultiplier) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -163,8 +163,8 @@ namespace March7thHoney.Proto {
       int hash = 1;
       hash ^= AOKECJBFMCN.GetHashCode();
       if (CDBGPMABMGM != 0) hash ^= CDBGPMABMGM.GetHashCode();
-      if (FPCOPPLFBOP != 0) hash ^= FPCOPPLFBOP.GetHashCode();
       if (FGOHMOMLEBG != 0) hash ^= FGOHMOMLEBG.GetHashCode();
+      if (EnemyHpMultiplier != 0) hash ^= EnemyHpMultiplier.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -192,9 +192,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(24);
         output.WriteUInt32(FGOHMOMLEBG);
       }
-      if (FPCOPPLFBOP != 0) {
+      if (EnemyHpMultiplier != 0) {
         output.WriteRawTag(32);
-        output.WriteUInt32(FPCOPPLFBOP);
+        output.WriteUInt32(EnemyHpMultiplier);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -215,9 +215,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(24);
         output.WriteUInt32(FGOHMOMLEBG);
       }
-      if (FPCOPPLFBOP != 0) {
+      if (EnemyHpMultiplier != 0) {
         output.WriteRawTag(32);
-        output.WriteUInt32(FPCOPPLFBOP);
+        output.WriteUInt32(EnemyHpMultiplier);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -233,11 +233,11 @@ namespace March7thHoney.Proto {
       if (CDBGPMABMGM != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CDBGPMABMGM);
       }
-      if (FPCOPPLFBOP != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FPCOPPLFBOP);
-      }
       if (FGOHMOMLEBG != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FGOHMOMLEBG);
+      }
+      if (EnemyHpMultiplier != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EnemyHpMultiplier);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -255,11 +255,11 @@ namespace March7thHoney.Proto {
       if (other.CDBGPMABMGM != 0) {
         CDBGPMABMGM = other.CDBGPMABMGM;
       }
-      if (other.FPCOPPLFBOP != 0) {
-        FPCOPPLFBOP = other.FPCOPPLFBOP;
-      }
       if (other.FGOHMOMLEBG != 0) {
         FGOHMOMLEBG = other.FGOHMOMLEBG;
+      }
+      if (other.EnemyHpMultiplier != 0) {
+        EnemyHpMultiplier = other.EnemyHpMultiplier;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -293,7 +293,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 32: {
-            FPCOPPLFBOP = input.ReadUInt32();
+            EnemyHpMultiplier = input.ReadUInt32();
             break;
           }
         }
@@ -328,7 +328,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 32: {
-            FPCOPPLFBOP = input.ReadUInt32();
+            EnemyHpMultiplier = input.ReadUInt32();
             break;
           }
         }

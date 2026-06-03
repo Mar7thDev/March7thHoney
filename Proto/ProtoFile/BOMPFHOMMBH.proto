@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message BOMPFHOMMBH {
-    uint32 MCLLALGABAB = 8;
+    uint32 target = 2;
+    uint32 num = 7;
     uint32 item_id = 15;
-    uint32 num = 6;
 }

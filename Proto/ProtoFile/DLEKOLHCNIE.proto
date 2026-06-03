@@ -3,9 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message DLEKOLHCNIE {
-    bool FJKHIFDJMDB = 6;
-    bool LMLNHNMKOOC = 11;
-    bool is_taken_reward = 13;
-    bool GNACLLNFHFD = 1;
-    uint32 area_id = 14;
+    bool FJKHIFDJMDB = 9;
+    bool is_taken_reward = 10;
+    bool is_unlock = 11;
+    uint32 area_id = 15;
 }

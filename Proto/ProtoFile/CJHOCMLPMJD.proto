@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message CJHOCMLPMJD {
-    repeated uint32 AJFJLCKPNAM = 4;
+    repeated uint32 AJFJLCKPNAM = 8;
 }

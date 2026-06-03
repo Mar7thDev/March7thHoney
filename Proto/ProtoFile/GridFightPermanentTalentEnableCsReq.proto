@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GridFightPermanentTalentEnableCsReq {
-    uint32 CKHCLKOALKE = 14;
+    uint32 CKHCLKOALKE = 4;
 }

@@ -3,10 +3,10 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message HFBJNFJHKPO {
-    uint32 cost_time = 7;
-    uint32 LPLLIICLCHB = 10;
-    uint32 total_turns = 3;
-    uint32 total_damage = 9;
-    uint32 BPHNEOLCKAD = 2;
-    uint32 total_auto_turns = 14;
+    uint32 BPHNEOLCKAD = 1;
+    uint32 total_turns = 4;
+    uint32 total_auto_turns = 10;
+    uint32 LPLLIICLCHB = 12;
+    uint32 cost_time = 14;
+    uint32 total_damage = 15;
 }

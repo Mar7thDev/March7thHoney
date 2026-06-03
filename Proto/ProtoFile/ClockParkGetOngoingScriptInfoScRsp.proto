@@ -2,21 +2,21 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
+import "ClockParkBuffList.proto";
 import "LOBFOKCKPKB.proto";
 import "MDDIKNGBPPL.proto";
-import "OBINJKCBALC.proto";
 
 message ClockParkGetOngoingScriptInfoScRsp {
-    OBINJKCBALC HABJHGPFGEB = 11;
-    LOBFOKCKPKB JOFJEIFLGBP = 8;
-    repeated uint32 FKNBOIIMFLD = 4;
-    string IMJFLCKFJGF = 14;
-    MDDIKNGBPPL HGDLJDAFHLI = 7;
-    uint32 retcode = 1;
+    repeated uint32 FKNBOIIMFLD = 1;
+    ClockParkBuffList HABJHGPFGEB = 5;
     uint32 INDJEOAJJEN = 6;
-    uint32 DCAHJELNJNP = 3;
-    uint32 NGBJMEHDKHN = 5;
+    uint32 GIGAEFCKIAK = 7;
+    MDDIKNGBPPL HGDLJDAFHLI = 8;
     uint32 script_id = 9;
-    uint32 JIPPMKBDJJC = 15;
-    uint32 GIGAEFCKIAK = 2;
+    uint32 JIPPMKBDJJC = 10;
+    uint32 retcode = 11;
+    uint32 DCAHJELNJNP = 12;
+    string IMJFLCKFJGF = 13;
+    uint32 NGBJMEHDKHN = 14;
+    LOBFOKCKPKB JOFJEIFLGBP = 15;
 }

@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "Ch9Sb2d1ZVNob3BCZWdpbkJhdHRsZVNjUnNwLnByb3RvGhVTY2VuZUJhdHRs",
             "ZUluZm8ucHJvdG8iUwoZUm9ndWVTaG9wQmVnaW5CYXR0bGVTY1JzcBIlCgtB",
-            "RVBORURKUEFHSxgEIAEoCzIQLlNjZW5lQmF0dGxlSW5mbxIPCgdyZXRjb2Rl",
+            "RVBORURKUEFHSxgCIAEoCzIQLlNjZW5lQmF0dGxlSW5mbxIPCgdyZXRjb2Rl",
             "GA0gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.SceneBattleInfoReflection.Descriptor, },
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "AEPNEDJPAGK" field.</summary>
-    public const int AEPNEDJPAGKFieldNumber = 4;
+    public const int AEPNEDJPAGKFieldNumber = 2;
     private global::March7thHoney.Proto.SceneBattleInfo aEPNEDJPAGK_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -153,7 +153,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (aEPNEDJPAGK_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(18);
         output.WriteMessage(AEPNEDJPAGK);
       }
       if (Retcode != 0) {
@@ -171,7 +171,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (aEPNEDJPAGK_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(18);
         output.WriteMessage(AEPNEDJPAGK);
       }
       if (Retcode != 0) {
@@ -234,7 +234,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 34: {
+          case 18: {
             if (aEPNEDJPAGK_ == null) {
               AEPNEDJPAGK = new global::March7thHoney.Proto.SceneBattleInfo();
             }
@@ -264,7 +264,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 34: {
+          case 18: {
             if (aEPNEDJPAGK_ == null) {
               AEPNEDJPAGK = new global::March7thHoney.Proto.SceneBattleInfo();
             }

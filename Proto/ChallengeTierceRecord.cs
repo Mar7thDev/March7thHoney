@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static ChallengeTierceRecordReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChtDaGFsbGVuZ2VUaWVyY2VSZWNvcmQucHJvdG8iRwoVQ2hhbGxlbmdlVGll",
-            "cmNlUmVjb3JkEhQKDHJlY29yZF9zY29yZRgFIAEoDRIYChB1c2VkX2N5Y2xl",
-            "X2NvdW50GAEgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ChtDaGFsbGVuZ2VUaWVyY2VSZWNvcmQucHJvdG8iRgoVQ2hhbGxlbmdlVGll",
+            "cmNlUmVjb3JkEhMKC3RvdGFsX3Njb3JlGA4gASgNEhgKEHVzZWRfY3ljbGVf",
+            "Y291bnQYDyABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengeTierceRecord), global::March7thHoney.Proto.ChallengeTierceRecord.Parser, new[]{ "RecordScore", "UsedCycleCount" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengeTierceRecord), global::March7thHoney.Proto.ChallengeTierceRecord.Parser, new[]{ "TotalScore", "UsedCycleCount" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,7 +72,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ChallengeTierceRecord(ChallengeTierceRecord other) : this() {
-      recordScore_ = other.recordScore_;
+      totalScore_ = other.totalScore_;
       usedCycleCount_ = other.usedCycleCount_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -83,20 +83,20 @@ namespace March7thHoney.Proto {
       return new ChallengeTierceRecord(this);
     }
 
-    /// <summary>Field number for the "record_score" field.</summary>
-    public const int RecordScoreFieldNumber = 5;
-    private uint recordScore_;
+    /// <summary>Field number for the "total_score" field.</summary>
+    public const int TotalScoreFieldNumber = 14;
+    private uint totalScore_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint RecordScore {
-      get { return recordScore_; }
+    public uint TotalScore {
+      get { return totalScore_; }
       set {
-        recordScore_ = value;
+        totalScore_ = value;
       }
     }
 
     /// <summary>Field number for the "used_cycle_count" field.</summary>
-    public const int UsedCycleCountFieldNumber = 1;
+    public const int UsedCycleCountFieldNumber = 15;
     private uint usedCycleCount_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -122,7 +122,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (RecordScore != other.RecordScore) return false;
+      if (TotalScore != other.TotalScore) return false;
       if (UsedCycleCount != other.UsedCycleCount) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -131,7 +131,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (RecordScore != 0) hash ^= RecordScore.GetHashCode();
+      if (TotalScore != 0) hash ^= TotalScore.GetHashCode();
       if (UsedCycleCount != 0) hash ^= UsedCycleCount.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (UsedCycleCount != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(UsedCycleCount);
+      if (TotalScore != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(TotalScore);
       }
-      if (RecordScore != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(RecordScore);
+      if (UsedCycleCount != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(UsedCycleCount);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (UsedCycleCount != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(UsedCycleCount);
+      if (TotalScore != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(TotalScore);
       }
-      if (RecordScore != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(RecordScore);
+      if (UsedCycleCount != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(UsedCycleCount);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -187,8 +187,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (RecordScore != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RecordScore);
+      if (TotalScore != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TotalScore);
       }
       if (UsedCycleCount != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(UsedCycleCount);
@@ -205,8 +205,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.RecordScore != 0) {
-        RecordScore = other.RecordScore;
+      if (other.TotalScore != 0) {
+        TotalScore = other.TotalScore;
       }
       if (other.UsedCycleCount != 0) {
         UsedCycleCount = other.UsedCycleCount;
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            UsedCycleCount = input.ReadUInt32();
+          case 112: {
+            TotalScore = input.ReadUInt32();
             break;
           }
-          case 40: {
-            RecordScore = input.ReadUInt32();
+          case 120: {
+            UsedCycleCount = input.ReadUInt32();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            UsedCycleCount = input.ReadUInt32();
+          case 112: {
+            TotalScore = input.ReadUInt32();
             break;
           }
-          case 40: {
-            RecordScore = input.ReadUInt32();
+          case 120: {
+            UsedCycleCount = input.ReadUInt32();
             break;
           }
         }

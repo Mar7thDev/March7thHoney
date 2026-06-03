@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFCTU9JUEFMSEJKTi5wcm90bxoRTkpIRkJEREhDRU4ucHJvdG8iawoLQk1P",
-            "SVBBTEhCSk4SIQoLT0dES0pQREZGQUkYCyADKAsyDC5OSkhGQkRESENFThIP",
-            "CgdzaG9wX2lkGAcgASgNEhMKC0FBSU9ETkNMQUlQGAwgASgNEhMKC0pPTURL",
-            "R0lOTkVLGAYgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "SVBBTEhCSk4SIQoLT0dES0pQREZGQUkYBCADKAsyDC5OSkhGQkRESENFThIT",
+            "CgtKT01ES0dJTk5FSxgIIAEoDRIPCgdzaG9wX2lkGAsgASgNEhMKC0FBSU9E",
+            "TkNMQUlQGAwgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.NJHFBDDHCENReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BMOIPALHBJN), global::March7thHoney.Proto.BMOIPALHBJN.Parser, new[]{ "OGDKJPDFFAI", "ShopId", "AAIODNCLAIP", "JOMDKGINNEK" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BMOIPALHBJN), global::March7thHoney.Proto.BMOIPALHBJN.Parser, new[]{ "OGDKJPDFFAI", "JOMDKGINNEK", "ShopId", "AAIODNCLAIP" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,9 +74,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BMOIPALHBJN(BMOIPALHBJN other) : this() {
       oGDKJPDFFAI_ = other.oGDKJPDFFAI_.Clone();
+      jOMDKGINNEK_ = other.jOMDKGINNEK_;
       shopId_ = other.shopId_;
       aAIODNCLAIP_ = other.aAIODNCLAIP_;
-      jOMDKGINNEK_ = other.jOMDKGINNEK_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -87,9 +87,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "OGDKJPDFFAI" field.</summary>
-    public const int OGDKJPDFFAIFieldNumber = 11;
+    public const int OGDKJPDFFAIFieldNumber = 4;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.NJHFBDDHCEN> _repeated_oGDKJPDFFAI_codec
-        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.NJHFBDDHCEN.Parser);
+        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.NJHFBDDHCEN.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.NJHFBDDHCEN> oGDKJPDFFAI_ = new pbc::RepeatedField<global::March7thHoney.Proto.NJHFBDDHCEN>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,8 +97,20 @@ namespace March7thHoney.Proto {
       get { return oGDKJPDFFAI_; }
     }
 
+    /// <summary>Field number for the "JOMDKGINNEK" field.</summary>
+    public const int JOMDKGINNEKFieldNumber = 8;
+    private uint jOMDKGINNEK_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint JOMDKGINNEK {
+      get { return jOMDKGINNEK_; }
+      set {
+        jOMDKGINNEK_ = value;
+      }
+    }
+
     /// <summary>Field number for the "shop_id" field.</summary>
-    public const int ShopIdFieldNumber = 7;
+    public const int ShopIdFieldNumber = 11;
     private uint shopId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -121,18 +133,6 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "JOMDKGINNEK" field.</summary>
-    public const int JOMDKGINNEKFieldNumber = 6;
-    private uint jOMDKGINNEK_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint JOMDKGINNEK {
-      get { return jOMDKGINNEK_; }
-      set {
-        jOMDKGINNEK_ = value;
-      }
-    }
-
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -149,9 +149,9 @@ namespace March7thHoney.Proto {
         return true;
       }
       if(!oGDKJPDFFAI_.Equals(other.oGDKJPDFFAI_)) return false;
+      if (JOMDKGINNEK != other.JOMDKGINNEK) return false;
       if (ShopId != other.ShopId) return false;
       if (AAIODNCLAIP != other.AAIODNCLAIP) return false;
-      if (JOMDKGINNEK != other.JOMDKGINNEK) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -160,9 +160,9 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= oGDKJPDFFAI_.GetHashCode();
+      if (JOMDKGINNEK != 0) hash ^= JOMDKGINNEK.GetHashCode();
       if (ShopId != 0) hash ^= ShopId.GetHashCode();
       if (AAIODNCLAIP != 0) hash ^= AAIODNCLAIP.GetHashCode();
-      if (JOMDKGINNEK != 0) hash ^= JOMDKGINNEK.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -181,15 +181,15 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      oGDKJPDFFAI_.WriteTo(output, _repeated_oGDKJPDFFAI_codec);
       if (JOMDKGINNEK != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(64);
         output.WriteUInt32(JOMDKGINNEK);
       }
       if (ShopId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(88);
         output.WriteUInt32(ShopId);
       }
-      oGDKJPDFFAI_.WriteTo(output, _repeated_oGDKJPDFFAI_codec);
       if (AAIODNCLAIP != 0) {
         output.WriteRawTag(96);
         output.WriteUInt32(AAIODNCLAIP);
@@ -204,15 +204,15 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      oGDKJPDFFAI_.WriteTo(ref output, _repeated_oGDKJPDFFAI_codec);
       if (JOMDKGINNEK != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(64);
         output.WriteUInt32(JOMDKGINNEK);
       }
       if (ShopId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(88);
         output.WriteUInt32(ShopId);
       }
-      oGDKJPDFFAI_.WriteTo(ref output, _repeated_oGDKJPDFFAI_codec);
       if (AAIODNCLAIP != 0) {
         output.WriteRawTag(96);
         output.WriteUInt32(AAIODNCLAIP);
@@ -228,14 +228,14 @@ namespace March7thHoney.Proto {
     public int CalculateSize() {
       int size = 0;
       size += oGDKJPDFFAI_.CalculateSize(_repeated_oGDKJPDFFAI_codec);
+      if (JOMDKGINNEK != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(JOMDKGINNEK);
+      }
       if (ShopId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ShopId);
       }
       if (AAIODNCLAIP != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AAIODNCLAIP);
-      }
-      if (JOMDKGINNEK != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(JOMDKGINNEK);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -250,14 +250,14 @@ namespace March7thHoney.Proto {
         return;
       }
       oGDKJPDFFAI_.Add(other.oGDKJPDFFAI_);
+      if (other.JOMDKGINNEK != 0) {
+        JOMDKGINNEK = other.JOMDKGINNEK;
+      }
       if (other.ShopId != 0) {
         ShopId = other.ShopId;
       }
       if (other.AAIODNCLAIP != 0) {
         AAIODNCLAIP = other.AAIODNCLAIP;
-      }
-      if (other.JOMDKGINNEK != 0) {
-        JOMDKGINNEK = other.JOMDKGINNEK;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -278,16 +278,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 48: {
+          case 34: {
+            oGDKJPDFFAI_.AddEntriesFrom(input, _repeated_oGDKJPDFFAI_codec);
+            break;
+          }
+          case 64: {
             JOMDKGINNEK = input.ReadUInt32();
             break;
           }
-          case 56: {
+          case 88: {
             ShopId = input.ReadUInt32();
-            break;
-          }
-          case 90: {
-            oGDKJPDFFAI_.AddEntriesFrom(input, _repeated_oGDKJPDFFAI_codec);
             break;
           }
           case 96: {
@@ -313,16 +313,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 48: {
+          case 34: {
+            oGDKJPDFFAI_.AddEntriesFrom(ref input, _repeated_oGDKJPDFFAI_codec);
+            break;
+          }
+          case 64: {
             JOMDKGINNEK = input.ReadUInt32();
             break;
           }
-          case 56: {
+          case 88: {
             ShopId = input.ReadUInt32();
-            break;
-          }
-          case 90: {
-            oGDKJPDFFAI_.AddEntriesFrom(ref input, _repeated_oGDKJPDFFAI_codec);
             break;
           }
           case 96: {

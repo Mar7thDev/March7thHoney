@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "KPLHHLEGGCD.proto";
 
 message ElfRestaurantHarvestCropCsReq {
-    repeated KPLHHLEGGCD FMCGHNLBIKP = 4;
+    repeated KPLHHLEGGCD FMCGHNLBIKP = 10;
 }

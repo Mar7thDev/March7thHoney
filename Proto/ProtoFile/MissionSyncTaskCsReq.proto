@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message MissionSyncTaskCsReq {
-    string key = 12;
+    string key = 6;
 }

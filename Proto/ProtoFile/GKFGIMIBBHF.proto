@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GKFGIMIBBHF {
-    uint32 MMFGAJNCAOA = 15;
-    bool CIHFGJDCHIA = 5;
-    uint32 progress = 12;
+    uint32 progress = 2;
+    uint32 MMFGAJNCAOA = 7;
+    bool finish = 8;
 }

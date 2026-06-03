@@ -26,10 +26,10 @@ namespace March7thHoney.Proto {
           string.Concat(
             "Ch9DbWRBY3Rpdml0eVJld2FyZFN0YXRUeXBlLnByb3RvKuwBChlDbWRBY3Rp",
             "dml0eVJld2FyZFN0YXRUeXBlEhsKF0tGQ01DUElMTEtFX0hCUEVERENPSkRC",
-            "EAASHAoXS0ZDTUNQSUxMS0VfS0xITExPQ05QQkIQnkcSHAoXS0ZDTUNQSUxM",
-            "S0VfUEZLTklIQ0NPQ1AQmEcSHAoXS0ZDTUNQSUxMS0VfSVBKRkpJSEdORU8Q",
-            "mkcSHAoXS0ZDTUNQSUxMS0VfTkJOT01CT0hGT0oQoEcSHAoXS0ZDTUNQSUxM",
-            "S0VfSE1IQUxNRktFSVAQn0cSHAoXS0ZDTUNQSUxMS0VfTUxHTklMT0JLR0oQ",
+            "EAASHAoXS0ZDTUNQSUxMS0VfUEZLTklIQ0NPQ1AQmUcSHAoXS0ZDTUNQSUxM",
+            "S0VfTUxHTklMT0JLR0oQnEcSHAoXS0ZDTUNQSUxMS0VfSVBKRkpJSEdORU8Q",
+            "mkcSHAoXS0ZDTUNQSUxMS0VfSE1IQUxNRktFSVAQoEcSHAoXS0ZDTUNQSUxM",
+            "S0VfTkJOT01CT0hGT0oQm0cSHAoXS0ZDTUNQSUxMS0VfS0xITExPQ05QQkIQ",
             "l0dCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -41,12 +41,12 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdActivityRewardStatType {
     [pbr::OriginalName("KFCMCPILLKE_HBPEDDCOJDB")] KfcmcpillkeHbpeddcojdb = 0,
-    [pbr::OriginalName("KFCMCPILLKE_KLHLLOCNPBB")] KfcmcpillkeKlhllocnpbb = 9118,
-    [pbr::OriginalName("KFCMCPILLKE_PFKNIHCCOCP")] KfcmcpillkePfknihccocp = 9112,
+    [pbr::OriginalName("KFCMCPILLKE_PFKNIHCCOCP")] KfcmcpillkePfknihccocp = 9113,
+    [pbr::OriginalName("KFCMCPILLKE_MLGNILOBKGJ")] KfcmcpillkeMlgnilobkgj = 9116,
     [pbr::OriginalName("KFCMCPILLKE_IPJFJIHGNEO")] KfcmcpillkeIpjfjihgneo = 9114,
-    [pbr::OriginalName("KFCMCPILLKE_NBNOMBOHFOJ")] KfcmcpillkeNbnombohfoj = 9120,
-    [pbr::OriginalName("KFCMCPILLKE_HMHALMFKEIP")] KfcmcpillkeHmhalmfkeip = 9119,
-    [pbr::OriginalName("KFCMCPILLKE_MLGNILOBKGJ")] KfcmcpillkeMlgnilobkgj = 9111,
+    [pbr::OriginalName("KFCMCPILLKE_HMHALMFKEIP")] KfcmcpillkeHmhalmfkeip = 9120,
+    [pbr::OriginalName("KFCMCPILLKE_NBNOMBOHFOJ")] KfcmcpillkeNbnombohfoj = 9115,
+    [pbr::OriginalName("KFCMCPILLKE_KLHLLOCNPBB")] KfcmcpillkeKlhllocnpbb = 9111,
   }
 
   #endregion

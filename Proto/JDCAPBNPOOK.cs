@@ -24,7 +24,7 @@ namespace March7thHoney.Proto {
     static JDCAPBNPOOKReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFKRENBUEJOUE9PSy5wcm90byrdAwoLSkRDQVBCTlBPT0sSGwoXSkRDQVBC",
+            "ChFKRENBUEJOUE9PSy5wcm90byqXBAoLSkRDQVBCTlBPT0sSGwoXSkRDQVBC",
             "TlBPT0tfTkxDREdJUEdGREoQABIbChdKRENBUEJOUE9PS19FTlBMQUNETEpH",
             "QRABEhsKF0pEQ0FQQk5QT09LX05NRUVPSE1HUEtEEAISGwoXSkRDQVBCTlBP",
             "T0tfT01LUEVOT0hMSUkQBBIbChdKRENBUEJOUE9PS19BT0lHRkxFTEhISBAF",
@@ -35,7 +35,9 @@ namespace March7thHoney.Proto {
             "Q0FQQk5QT09LX0VESkdJSklJTEtFEGsSGwoXSkRDQVBCTlBPT0tfR0dNUEVH",
             "TUVIUEQQbBIbChdKRENBUEJOUE9PS19GSUZHRU5OS0RCRRBtEhsKF0pEQ0FQ",
             "Qk5QT09LX09OUE5PUExPQUdIEG4SGwoXSkRDQVBCTlBPT0tfTURCSEdNREJK",
-            "R0sQb0IWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "R0sQbxIbChdKRENBUEJOUE9PS19ESUNLS0RJQUVORBBwEhsKF0pEQ0FQQk5Q",
+            "T09LX0xLUE9PT0xOQUpDEHFCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
+            "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.JDCAPBNPOOK), }, null, null));
@@ -61,6 +63,8 @@ namespace March7thHoney.Proto {
     [pbr::OriginalName("JDCAPBNPOOK_FIFGENNKDBE")] Fifgennkdbe = 109,
     [pbr::OriginalName("JDCAPBNPOOK_ONPNOPLOAGH")] Onpnoploagh = 110,
     [pbr::OriginalName("JDCAPBNPOOK_MDBHGMDBJGK")] Mdbhgmdbjgk = 111,
+    [pbr::OriginalName("JDCAPBNPOOK_DICKKDIAEND")] Dickkdiaend = 112,
+    [pbr::OriginalName("JDCAPBNPOOK_LKPOOOLNAJC")] Lkpooolnajc = 113,
   }
 
   #endregion

@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message FinishCosumeItemMissionScRsp {
+    uint32 retcode = 2;
     uint32 sub_mission_id = 11;
-    uint32 retcode = 12;
 }

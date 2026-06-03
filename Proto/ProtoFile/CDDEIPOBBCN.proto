@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message CDDEIPOBBCN {
-    repeated uint32 BHAGLNBNGBP = 11;
+    repeated uint32 BHAGLNBNGBP = 6;
 }

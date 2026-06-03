@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiFDaGltZXJhRHVlbFNob3BCdXlJdGVtQ3NSZXEucHJvdG8iRwobQ2hpbWVy",
-            "YUR1ZWxTaG9wQnV5SXRlbUNzUmVxEhMKC0FHQkFJRlBOS0lJGAQgASgNEhMK",
-            "C0pISU5MUENLTVBLGAkgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZw",
+            "YUR1ZWxTaG9wQnV5SXRlbUNzUmVxEhMKC0FHQkFJRlBOS0lJGAsgASgNEhMK",
+            "C0pISU5MUENLTVBLGA4gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZw",
             "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "AGBAIFPNKII" field.</summary>
-    public const int AGBAIFPNKIIFieldNumber = 4;
+    public const int AGBAIFPNKIIFieldNumber = 11;
     private uint aGBAIFPNKII_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "JHINLPCKMPK" field.</summary>
-    public const int JHINLPCKMPKFieldNumber = 9;
+    public const int JHINLPCKMPKFieldNumber = 14;
     private uint jHINLPCKMPK_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -153,11 +153,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (AGBAIFPNKII != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(88);
         output.WriteUInt32(AGBAIFPNKII);
       }
       if (JHINLPCKMPK != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(112);
         output.WriteUInt32(JHINLPCKMPK);
       }
       if (_unknownFields != null) {
@@ -171,11 +171,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (AGBAIFPNKII != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(88);
         output.WriteUInt32(AGBAIFPNKII);
       }
       if (JHINLPCKMPK != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(112);
         output.WriteUInt32(JHINLPCKMPK);
       }
       if (_unknownFields != null) {
@@ -231,11 +231,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
+          case 88: {
             AGBAIFPNKII = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 112: {
             JHINLPCKMPK = input.ReadUInt32();
             break;
           }
@@ -258,11 +258,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
+          case 88: {
             AGBAIFPNKII = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 112: {
             JHINLPCKMPK = input.ReadUInt32();
             break;
           }

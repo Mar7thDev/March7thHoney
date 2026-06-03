@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CidVcGRhdGVNYWluTWlzc2lvbkN1c3RvbVZhbHVlU2NSc3AucHJvdG8aEU1h",
             "aW5NaXNzaW9uLnByb3RvIlcKIVVwZGF0ZU1haW5NaXNzaW9uQ3VzdG9tVmFs",
-            "dWVTY1JzcBIhCgtIS0RETUdHRENJUBgJIAEoCzIMLk1haW5NaXNzaW9uEg8K",
-            "B3JldGNvZGUYAyABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
+            "dWVTY1JzcBIhCgtIS0RETUdHRENJUBgEIAEoCzIMLk1haW5NaXNzaW9uEg8K",
+            "B3JldGNvZGUYCSABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
             "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MainMissionReflection.Descriptor, },
@@ -86,7 +86,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "HKDDMGGDCIP" field.</summary>
-    public const int HKDDMGGDCIPFieldNumber = 9;
+    public const int HKDDMGGDCIPFieldNumber = 4;
     private global::March7thHoney.Proto.MainMission hKDDMGGDCIP_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,7 +98,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 3;
+    public const int RetcodeFieldNumber = 9;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -153,13 +153,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Retcode != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(Retcode);
-      }
       if (hKDDMGGDCIP_ != null) {
-        output.WriteRawTag(74);
+        output.WriteRawTag(34);
         output.WriteMessage(HKDDMGGDCIP);
+      }
+      if (Retcode != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -171,13 +171,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Retcode != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(Retcode);
-      }
       if (hKDDMGGDCIP_ != null) {
-        output.WriteRawTag(74);
+        output.WriteRawTag(34);
         output.WriteMessage(HKDDMGGDCIP);
+      }
+      if (Retcode != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -235,15 +235,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 74: {
+          case 34: {
             if (hKDDMGGDCIP_ == null) {
               HKDDMGGDCIP = new global::March7thHoney.Proto.MainMission();
             }
             input.ReadMessage(HKDDMGGDCIP);
+            break;
+          }
+          case 72: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -265,15 +265,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 74: {
+          case 34: {
             if (hKDDMGGDCIP_ == null) {
               HKDDMGGDCIP = new global::March7thHoney.Proto.MainMission();
             }
             input.ReadMessage(HKDDMGGDCIP);
+            break;
+          }
+          case 72: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }

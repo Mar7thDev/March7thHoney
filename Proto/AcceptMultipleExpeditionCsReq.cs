@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiNBY2NlcHRNdWx0aXBsZUV4cGVkaXRpb25Dc1JlcS5wcm90bxoURXhwZWRp",
             "dGlvbkluZm8ucHJvdG8iRAodQWNjZXB0TXVsdGlwbGVFeHBlZGl0aW9uQ3NS",
-            "ZXESIwoKZXhwZWRpdGlvbhgJIAMoCzIPLkV4cGVkaXRpb25JbmZvQhaqAhNN",
+            "ZXESIwoKZXhwZWRpdGlvbhgIIAMoCzIPLkV4cGVkaXRpb25JbmZvQhaqAhNN",
             "YXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ExpeditionInfoReflection.Descriptor, },
@@ -84,9 +84,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "expedition" field.</summary>
-    public const int ExpeditionFieldNumber = 9;
+    public const int ExpeditionFieldNumber = 8;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.ExpeditionInfo> _repeated_expedition_codec
-        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.ExpeditionInfo.Parser);
+        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.ExpeditionInfo.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.ExpeditionInfo> expedition_ = new pbc::RepeatedField<global::March7thHoney.Proto.ExpeditionInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -191,7 +191,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 74: {
+          case 66: {
             expedition_.AddEntriesFrom(input, _repeated_expedition_codec);
             break;
           }
@@ -214,7 +214,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 74: {
+          case 66: {
             expedition_.AddEntriesFrom(ref input, _repeated_expedition_codec);
             break;
           }

@@ -23,8 +23,6 @@ public class PacketQuickStartCocoonStageScRsp : BasePacket
         {
             CocoonId = (uint)cocoonId,
             Wave = (uint)wave,
-            // TODO 4.3: Count 字段在 4.3 被替换为 HECCOBFBJFI，语义待确认
-            HECCOBFBJFI = (uint)wave,
             BattleInfo = battle.ToProto()
         };
 

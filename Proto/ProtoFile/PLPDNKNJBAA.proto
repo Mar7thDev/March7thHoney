@@ -7,10 +7,10 @@ import "MOFKNBAKKDI.proto";
 import "OHABCOEGDEH.proto";
 
 message PLPDNKNJBAA {
-    MOFKNBAKKDI HOCBDMPEMDH = 5;
-    repeated BMGHLHHJEGE ENDPGFBABBB = 14;
-    repeated uint32 KCENCAAPMLK = 9;
-    repeated OHABCOEGDEH HBGPLDACACI = 7;
-    uint32 CINEILEIEJK = 1;
-    uint32 NEDCJCBPEJM = 13;
+    repeated OHABCOEGDEH HBGPLDACACI = 5;
+    repeated uint32 KCENCAAPMLK = 11;
+    uint32 NEDCJCBPEJM = 12;
+    repeated BMGHLHHJEGE ENDPGFBABBB = 13;
+    MOFKNBAKKDI HOCBDMPEMDH = 14;
+    uint32 CINEILEIEJK = 15;
 }

@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message FLMODPLLMNF {
-    string GIFOENLDCHO = 15;
-    uint32 NMELIDCDKAK = 11;
+    string GIFOENLDCHO = 8;
+    uint32 NMELIDCDKAK = 14;
 }

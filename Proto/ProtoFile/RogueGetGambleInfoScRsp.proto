@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "HKOEAOPNEAC.proto";
 
 message RogueGetGambleInfoScRsp {
-    HKOEAOPNEAC KOBBMDFPNKA = 10;
-    uint32 retcode = 1;
+    HKOEAOPNEAC KOBBMDFPNKA = 2;
+    uint32 retcode = 6;
 }

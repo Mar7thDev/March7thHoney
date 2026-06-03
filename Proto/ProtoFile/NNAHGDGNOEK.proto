@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message NNAHGDGNOEK {
-    repeated uint32 BLKHPCPALDN = 8;
+    repeated uint32 BLKHPCPALDN = 6;
 }

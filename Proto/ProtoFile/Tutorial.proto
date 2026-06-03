@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "TutorialStatus.proto";
 
 message Tutorial {
-    uint32 id = 4;
-    TutorialStatus status = 14;
+    TutorialStatus status = 3;
+    uint32 id = 10;
 }

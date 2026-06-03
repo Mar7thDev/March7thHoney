@@ -6,6 +6,6 @@ import "LMLNNHKJEIP.proto";
 import "OFFMCODMKDL.proto";
 
 message MMCIJKKAEII {
-    OFFMCODMKDL EMIJCKENBKJ = 5;
-    repeated LMLNNHKJEIP DFLEOIGPLNM = 14;
+    OFFMCODMKDL room_ext_info = 5;
+    repeated LMLNNHKJEIP DFLEOIGPLNM = 15;
 }

@@ -6,7 +6,7 @@ import "BFBCEOICLAB.proto";
 import "EJCCCIGMHOM.proto";
 
 message FateQueryScRsp {
-    EJCCCIGMHOM LFLCDNGALME = 4;
-    BFBCEOICLAB OEIBHLMDJKA = 9;
-    uint32 retcode = 5;
+    uint32 retcode = 10;
+    EJCCCIGMHOM LFLCDNGALME = 12;
+    BFBCEOICLAB OEIBHLMDJKA = 15;
 }

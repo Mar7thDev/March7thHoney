@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message BODEMOLDHAA {
-    uint32 teleport_id = 1;
+    uint32 teleport_id = 11;
 }

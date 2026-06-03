@@ -6,7 +6,7 @@ import "DGKLPPLJBNB.proto";
 import "DIKBPKAKENO.proto";
 
 message SetRogueExhibitionScRsp {
-    repeated DGKLPPLJBNB PAKECMNPEJJ = 3;
-    repeated DIKBPKAKENO JFHKJOGEOND = 1;
     uint32 retcode = 7;
+    repeated DGKLPPLJBNB PAKECMNPEJJ = 9;
+    repeated DIKBPKAKENO JFHKJOGEOND = 13;
 }

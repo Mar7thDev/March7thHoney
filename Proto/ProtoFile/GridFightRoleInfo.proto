@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "BattleGridFightEquipInfo.proto";
+import "JJHJCIAPADP.proto";
+
+message GridFightRoleInfo {
+    uint32 role_id = 1;
+    uint32 role_star = 2;
+    uint32 pos = 3;
+    repeated BattleGridFightEquipInfo CNIJIJMEPEF = 7;
+    uint32 avatar_id = 8;
+    map<uint32, uint32> convert_property_to_fixpoint = 10;
+    uint32 unique_id = 11;
+    JJHJCIAPADP DCEOLAAMGOO = 12;
+}

@@ -24,17 +24,17 @@ namespace March7thHoney.Proto {
     static CJDIAHDLCNJReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFDSkRJQUhETENOSi5wcm90bxoRR09GRkROUEJISUsucHJvdG8i0AEKC0NK",
-            "RElBSERMQ05KEiEKC2F2YXRhcl9saXN0GAYgAygLMgwuR09GRkROUEJISUsS",
-            "EwoLcmVwbGF5X25hbWUYBSABKAkSCwoDdWlkGAEgASgNEhMKC0VKR0lPR0tL",
-            "SUtIGAcgASgNEhMKC1BCSUJESklKQUdMGAIgASgNEhMKC0JKS0JHT0FMTkhB",
-            "GAggASgNEhMKC0tFTkxKSUpKRUpMGAkgASgNEhMKC0JDS09MQ05IQ0NNGAQg",
-            "ASgNEhMKC0VHR0ZDR0xQRE1NGAMgASgIQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
-            "b3RvYgZwcm90bzM="));
+            "ChFDSkRJQUhETENOSi5wcm90bxoRR09GRkROUEJISUsucHJvdG8i4wEKC0NK",
+            "RElBSERMQ05KEgsKA3VpZBgBIAEoDRIRCglkYW1hZ2VfaHAYAiABKA0SFAoM",
+            "aXNfZmluYWxfaGl0GAMgASgIEhsKE292ZXJfa2lsbF9kYW1hZ2VfaHAYBCAB",
+            "KA0SGQoRYmF0dGxlX3JlcGxheV9rZXkYBSABKAkSIQoLYXZhdGFyX2xpc3QY",
+            "BiADKAsyDC5HT0ZGRE5QQkhJSxIUCgxhc3Npc3Rfc2NvcmUYByABKA0SFAoM",
+            "ZGFtYWdlX3Njb3JlGAggASgNEhcKD2ZpbmFsX2hpdF9zY29yZRgJIAEoDUIW",
+            "qgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.GOFFDNPBHIKReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.CJDIAHDLCNJ), global::March7thHoney.Proto.CJDIAHDLCNJ.Parser, new[]{ "AvatarList", "ReplayName", "Uid", "EJGIOGKKIKH", "PBIBDJIJAGL", "BJKBGOALNHA", "KENLJIJJEJL", "BCKOLCNHCCM", "EGGFCGLPDMM" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.CJDIAHDLCNJ), global::March7thHoney.Proto.CJDIAHDLCNJ.Parser, new[]{ "Uid", "DamageHp", "IsFinalHit", "OverKillDamageHp", "BattleReplayKey", "AvatarList", "AssistScore", "DamageScore", "FinalHitScore" }, null, null, null, null)
           }));
     }
     #endregion
@@ -76,15 +76,15 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public CJDIAHDLCNJ(CJDIAHDLCNJ other) : this() {
-      avatarList_ = other.avatarList_.Clone();
-      replayName_ = other.replayName_;
       uid_ = other.uid_;
-      eJGIOGKKIKH_ = other.eJGIOGKKIKH_;
-      pBIBDJIJAGL_ = other.pBIBDJIJAGL_;
-      bJKBGOALNHA_ = other.bJKBGOALNHA_;
-      kENLJIJJEJL_ = other.kENLJIJJEJL_;
-      bCKOLCNHCCM_ = other.bCKOLCNHCCM_;
-      eGGFCGLPDMM_ = other.eGGFCGLPDMM_;
+      damageHp_ = other.damageHp_;
+      isFinalHit_ = other.isFinalHit_;
+      overKillDamageHp_ = other.overKillDamageHp_;
+      battleReplayKey_ = other.battleReplayKey_;
+      avatarList_ = other.avatarList_.Clone();
+      assistScore_ = other.assistScore_;
+      damageScore_ = other.damageScore_;
+      finalHitScore_ = other.finalHitScore_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -92,29 +92,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public CJDIAHDLCNJ Clone() {
       return new CJDIAHDLCNJ(this);
-    }
-
-    /// <summary>Field number for the "avatar_list" field.</summary>
-    public const int AvatarListFieldNumber = 6;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GOFFDNPBHIK> _repeated_avatarList_codec
-        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.GOFFDNPBHIK.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GOFFDNPBHIK> avatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GOFFDNPBHIK>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.GOFFDNPBHIK> AvatarList {
-      get { return avatarList_; }
-    }
-
-    /// <summary>Field number for the "replay_name" field.</summary>
-    public const int ReplayNameFieldNumber = 5;
-    private string replayName_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string ReplayName {
-      get { return replayName_; }
-      set {
-        replayName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
     }
 
     /// <summary>Field number for the "uid" field.</summary>
@@ -129,75 +106,98 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "EJGIOGKKIKH" field.</summary>
-    public const int EJGIOGKKIKHFieldNumber = 7;
-    private uint eJGIOGKKIKH_;
+    /// <summary>Field number for the "damage_hp" field.</summary>
+    public const int DamageHpFieldNumber = 2;
+    private uint damageHp_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint EJGIOGKKIKH {
-      get { return eJGIOGKKIKH_; }
+    public uint DamageHp {
+      get { return damageHp_; }
       set {
-        eJGIOGKKIKH_ = value;
+        damageHp_ = value;
       }
     }
 
-    /// <summary>Field number for the "PBIBDJIJAGL" field.</summary>
-    public const int PBIBDJIJAGLFieldNumber = 2;
-    private uint pBIBDJIJAGL_;
+    /// <summary>Field number for the "is_final_hit" field.</summary>
+    public const int IsFinalHitFieldNumber = 3;
+    private bool isFinalHit_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PBIBDJIJAGL {
-      get { return pBIBDJIJAGL_; }
+    public bool IsFinalHit {
+      get { return isFinalHit_; }
       set {
-        pBIBDJIJAGL_ = value;
+        isFinalHit_ = value;
       }
     }
 
-    /// <summary>Field number for the "BJKBGOALNHA" field.</summary>
-    public const int BJKBGOALNHAFieldNumber = 8;
-    private uint bJKBGOALNHA_;
+    /// <summary>Field number for the "over_kill_damage_hp" field.</summary>
+    public const int OverKillDamageHpFieldNumber = 4;
+    private uint overKillDamageHp_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint BJKBGOALNHA {
-      get { return bJKBGOALNHA_; }
+    public uint OverKillDamageHp {
+      get { return overKillDamageHp_; }
       set {
-        bJKBGOALNHA_ = value;
+        overKillDamageHp_ = value;
       }
     }
 
-    /// <summary>Field number for the "KENLJIJJEJL" field.</summary>
-    public const int KENLJIJJEJLFieldNumber = 9;
-    private uint kENLJIJJEJL_;
+    /// <summary>Field number for the "battle_replay_key" field.</summary>
+    public const int BattleReplayKeyFieldNumber = 5;
+    private string battleReplayKey_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint KENLJIJJEJL {
-      get { return kENLJIJJEJL_; }
+    public string BattleReplayKey {
+      get { return battleReplayKey_; }
       set {
-        kENLJIJJEJL_ = value;
+        battleReplayKey_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
-    /// <summary>Field number for the "BCKOLCNHCCM" field.</summary>
-    public const int BCKOLCNHCCMFieldNumber = 4;
-    private uint bCKOLCNHCCM_;
+    /// <summary>Field number for the "avatar_list" field.</summary>
+    public const int AvatarListFieldNumber = 6;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GOFFDNPBHIK> _repeated_avatarList_codec
+        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.GOFFDNPBHIK.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GOFFDNPBHIK> avatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GOFFDNPBHIK>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint BCKOLCNHCCM {
-      get { return bCKOLCNHCCM_; }
+    public pbc::RepeatedField<global::March7thHoney.Proto.GOFFDNPBHIK> AvatarList {
+      get { return avatarList_; }
+    }
+
+    /// <summary>Field number for the "assist_score" field.</summary>
+    public const int AssistScoreFieldNumber = 7;
+    private uint assistScore_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint AssistScore {
+      get { return assistScore_; }
       set {
-        bCKOLCNHCCM_ = value;
+        assistScore_ = value;
       }
     }
 
-    /// <summary>Field number for the "EGGFCGLPDMM" field.</summary>
-    public const int EGGFCGLPDMMFieldNumber = 3;
-    private bool eGGFCGLPDMM_;
+    /// <summary>Field number for the "damage_score" field.</summary>
+    public const int DamageScoreFieldNumber = 8;
+    private uint damageScore_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool EGGFCGLPDMM {
-      get { return eGGFCGLPDMM_; }
+    public uint DamageScore {
+      get { return damageScore_; }
       set {
-        eGGFCGLPDMM_ = value;
+        damageScore_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "final_hit_score" field.</summary>
+    public const int FinalHitScoreFieldNumber = 9;
+    private uint finalHitScore_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint FinalHitScore {
+      get { return finalHitScore_; }
+      set {
+        finalHitScore_ = value;
       }
     }
 
@@ -216,15 +216,15 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!avatarList_.Equals(other.avatarList_)) return false;
-      if (ReplayName != other.ReplayName) return false;
       if (Uid != other.Uid) return false;
-      if (EJGIOGKKIKH != other.EJGIOGKKIKH) return false;
-      if (PBIBDJIJAGL != other.PBIBDJIJAGL) return false;
-      if (BJKBGOALNHA != other.BJKBGOALNHA) return false;
-      if (KENLJIJJEJL != other.KENLJIJJEJL) return false;
-      if (BCKOLCNHCCM != other.BCKOLCNHCCM) return false;
-      if (EGGFCGLPDMM != other.EGGFCGLPDMM) return false;
+      if (DamageHp != other.DamageHp) return false;
+      if (IsFinalHit != other.IsFinalHit) return false;
+      if (OverKillDamageHp != other.OverKillDamageHp) return false;
+      if (BattleReplayKey != other.BattleReplayKey) return false;
+      if(!avatarList_.Equals(other.avatarList_)) return false;
+      if (AssistScore != other.AssistScore) return false;
+      if (DamageScore != other.DamageScore) return false;
+      if (FinalHitScore != other.FinalHitScore) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -232,15 +232,15 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= avatarList_.GetHashCode();
-      if (ReplayName.Length != 0) hash ^= ReplayName.GetHashCode();
       if (Uid != 0) hash ^= Uid.GetHashCode();
-      if (EJGIOGKKIKH != 0) hash ^= EJGIOGKKIKH.GetHashCode();
-      if (PBIBDJIJAGL != 0) hash ^= PBIBDJIJAGL.GetHashCode();
-      if (BJKBGOALNHA != 0) hash ^= BJKBGOALNHA.GetHashCode();
-      if (KENLJIJJEJL != 0) hash ^= KENLJIJJEJL.GetHashCode();
-      if (BCKOLCNHCCM != 0) hash ^= BCKOLCNHCCM.GetHashCode();
-      if (EGGFCGLPDMM != false) hash ^= EGGFCGLPDMM.GetHashCode();
+      if (DamageHp != 0) hash ^= DamageHp.GetHashCode();
+      if (IsFinalHit != false) hash ^= IsFinalHit.GetHashCode();
+      if (OverKillDamageHp != 0) hash ^= OverKillDamageHp.GetHashCode();
+      if (BattleReplayKey.Length != 0) hash ^= BattleReplayKey.GetHashCode();
+      hash ^= avatarList_.GetHashCode();
+      if (AssistScore != 0) hash ^= AssistScore.GetHashCode();
+      if (DamageScore != 0) hash ^= DamageScore.GetHashCode();
+      if (FinalHitScore != 0) hash ^= FinalHitScore.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -263,34 +263,34 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(8);
         output.WriteUInt32(Uid);
       }
-      if (PBIBDJIJAGL != 0) {
+      if (DamageHp != 0) {
         output.WriteRawTag(16);
-        output.WriteUInt32(PBIBDJIJAGL);
+        output.WriteUInt32(DamageHp);
       }
-      if (EGGFCGLPDMM != false) {
+      if (IsFinalHit != false) {
         output.WriteRawTag(24);
-        output.WriteBool(EGGFCGLPDMM);
+        output.WriteBool(IsFinalHit);
       }
-      if (BCKOLCNHCCM != 0) {
+      if (OverKillDamageHp != 0) {
         output.WriteRawTag(32);
-        output.WriteUInt32(BCKOLCNHCCM);
+        output.WriteUInt32(OverKillDamageHp);
       }
-      if (ReplayName.Length != 0) {
+      if (BattleReplayKey.Length != 0) {
         output.WriteRawTag(42);
-        output.WriteString(ReplayName);
+        output.WriteString(BattleReplayKey);
       }
       avatarList_.WriteTo(output, _repeated_avatarList_codec);
-      if (EJGIOGKKIKH != 0) {
+      if (AssistScore != 0) {
         output.WriteRawTag(56);
-        output.WriteUInt32(EJGIOGKKIKH);
+        output.WriteUInt32(AssistScore);
       }
-      if (BJKBGOALNHA != 0) {
+      if (DamageScore != 0) {
         output.WriteRawTag(64);
-        output.WriteUInt32(BJKBGOALNHA);
+        output.WriteUInt32(DamageScore);
       }
-      if (KENLJIJJEJL != 0) {
+      if (FinalHitScore != 0) {
         output.WriteRawTag(72);
-        output.WriteUInt32(KENLJIJJEJL);
+        output.WriteUInt32(FinalHitScore);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -306,34 +306,34 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(8);
         output.WriteUInt32(Uid);
       }
-      if (PBIBDJIJAGL != 0) {
+      if (DamageHp != 0) {
         output.WriteRawTag(16);
-        output.WriteUInt32(PBIBDJIJAGL);
+        output.WriteUInt32(DamageHp);
       }
-      if (EGGFCGLPDMM != false) {
+      if (IsFinalHit != false) {
         output.WriteRawTag(24);
-        output.WriteBool(EGGFCGLPDMM);
+        output.WriteBool(IsFinalHit);
       }
-      if (BCKOLCNHCCM != 0) {
+      if (OverKillDamageHp != 0) {
         output.WriteRawTag(32);
-        output.WriteUInt32(BCKOLCNHCCM);
+        output.WriteUInt32(OverKillDamageHp);
       }
-      if (ReplayName.Length != 0) {
+      if (BattleReplayKey.Length != 0) {
         output.WriteRawTag(42);
-        output.WriteString(ReplayName);
+        output.WriteString(BattleReplayKey);
       }
       avatarList_.WriteTo(ref output, _repeated_avatarList_codec);
-      if (EJGIOGKKIKH != 0) {
+      if (AssistScore != 0) {
         output.WriteRawTag(56);
-        output.WriteUInt32(EJGIOGKKIKH);
+        output.WriteUInt32(AssistScore);
       }
-      if (BJKBGOALNHA != 0) {
+      if (DamageScore != 0) {
         output.WriteRawTag(64);
-        output.WriteUInt32(BJKBGOALNHA);
+        output.WriteUInt32(DamageScore);
       }
-      if (KENLJIJJEJL != 0) {
+      if (FinalHitScore != 0) {
         output.WriteRawTag(72);
-        output.WriteUInt32(KENLJIJJEJL);
+        output.WriteUInt32(FinalHitScore);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -345,30 +345,30 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += avatarList_.CalculateSize(_repeated_avatarList_codec);
-      if (ReplayName.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(ReplayName);
-      }
       if (Uid != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Uid);
       }
-      if (EJGIOGKKIKH != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EJGIOGKKIKH);
+      if (DamageHp != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DamageHp);
       }
-      if (PBIBDJIJAGL != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PBIBDJIJAGL);
-      }
-      if (BJKBGOALNHA != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BJKBGOALNHA);
-      }
-      if (KENLJIJJEJL != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(KENLJIJJEJL);
-      }
-      if (BCKOLCNHCCM != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BCKOLCNHCCM);
-      }
-      if (EGGFCGLPDMM != false) {
+      if (IsFinalHit != false) {
         size += 1 + 1;
+      }
+      if (OverKillDamageHp != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(OverKillDamageHp);
+      }
+      if (BattleReplayKey.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(BattleReplayKey);
+      }
+      size += avatarList_.CalculateSize(_repeated_avatarList_codec);
+      if (AssistScore != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AssistScore);
+      }
+      if (DamageScore != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DamageScore);
+      }
+      if (FinalHitScore != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FinalHitScore);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -382,30 +382,30 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      avatarList_.Add(other.avatarList_);
-      if (other.ReplayName.Length != 0) {
-        ReplayName = other.ReplayName;
-      }
       if (other.Uid != 0) {
         Uid = other.Uid;
       }
-      if (other.EJGIOGKKIKH != 0) {
-        EJGIOGKKIKH = other.EJGIOGKKIKH;
+      if (other.DamageHp != 0) {
+        DamageHp = other.DamageHp;
       }
-      if (other.PBIBDJIJAGL != 0) {
-        PBIBDJIJAGL = other.PBIBDJIJAGL;
+      if (other.IsFinalHit != false) {
+        IsFinalHit = other.IsFinalHit;
       }
-      if (other.BJKBGOALNHA != 0) {
-        BJKBGOALNHA = other.BJKBGOALNHA;
+      if (other.OverKillDamageHp != 0) {
+        OverKillDamageHp = other.OverKillDamageHp;
       }
-      if (other.KENLJIJJEJL != 0) {
-        KENLJIJJEJL = other.KENLJIJJEJL;
+      if (other.BattleReplayKey.Length != 0) {
+        BattleReplayKey = other.BattleReplayKey;
       }
-      if (other.BCKOLCNHCCM != 0) {
-        BCKOLCNHCCM = other.BCKOLCNHCCM;
+      avatarList_.Add(other.avatarList_);
+      if (other.AssistScore != 0) {
+        AssistScore = other.AssistScore;
       }
-      if (other.EGGFCGLPDMM != false) {
-        EGGFCGLPDMM = other.EGGFCGLPDMM;
+      if (other.DamageScore != 0) {
+        DamageScore = other.DamageScore;
+      }
+      if (other.FinalHitScore != 0) {
+        FinalHitScore = other.FinalHitScore;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -431,19 +431,19 @@ namespace March7thHoney.Proto {
             break;
           }
           case 16: {
-            PBIBDJIJAGL = input.ReadUInt32();
+            DamageHp = input.ReadUInt32();
             break;
           }
           case 24: {
-            EGGFCGLPDMM = input.ReadBool();
+            IsFinalHit = input.ReadBool();
             break;
           }
           case 32: {
-            BCKOLCNHCCM = input.ReadUInt32();
+            OverKillDamageHp = input.ReadUInt32();
             break;
           }
           case 42: {
-            ReplayName = input.ReadString();
+            BattleReplayKey = input.ReadString();
             break;
           }
           case 50: {
@@ -451,15 +451,15 @@ namespace March7thHoney.Proto {
             break;
           }
           case 56: {
-            EJGIOGKKIKH = input.ReadUInt32();
+            AssistScore = input.ReadUInt32();
             break;
           }
           case 64: {
-            BJKBGOALNHA = input.ReadUInt32();
+            DamageScore = input.ReadUInt32();
             break;
           }
           case 72: {
-            KENLJIJJEJL = input.ReadUInt32();
+            FinalHitScore = input.ReadUInt32();
             break;
           }
         }
@@ -486,19 +486,19 @@ namespace March7thHoney.Proto {
             break;
           }
           case 16: {
-            PBIBDJIJAGL = input.ReadUInt32();
+            DamageHp = input.ReadUInt32();
             break;
           }
           case 24: {
-            EGGFCGLPDMM = input.ReadBool();
+            IsFinalHit = input.ReadBool();
             break;
           }
           case 32: {
-            BCKOLCNHCCM = input.ReadUInt32();
+            OverKillDamageHp = input.ReadUInt32();
             break;
           }
           case 42: {
-            ReplayName = input.ReadString();
+            BattleReplayKey = input.ReadString();
             break;
           }
           case 50: {
@@ -506,15 +506,15 @@ namespace March7thHoney.Proto {
             break;
           }
           case 56: {
-            EJGIOGKKIKH = input.ReadUInt32();
+            AssistScore = input.ReadUInt32();
             break;
           }
           case 64: {
-            BJKBGOALNHA = input.ReadUInt32();
+            DamageScore = input.ReadUInt32();
             break;
           }
           case 72: {
-            KENLJIJJEJL = input.ReadUInt32();
+            FinalHitScore = input.ReadUInt32();
             break;
           }
         }

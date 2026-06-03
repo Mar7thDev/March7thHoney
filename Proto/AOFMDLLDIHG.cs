@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static AOFMDLLDIHGReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFBT0ZNRExMRElIRy5wcm90byJgCgtBT0ZNRExMRElIRxIaChJiYXR0bGVf",
-            "dGFyZ2V0X2xpc3QYAyADKA0SEAoIc2tpbGxfaWQYASABKA0SEwoLUE5KRUdQ",
-            "QUZOQ0kYAiABKAESDgoGZGFtYWdlGAQgASgBQhaqAhNNYXJjaDd0aEhvbmV5",
-            "LlByb3RvYgZwcm90bzM="));
+            "ChFBT0ZNRExMRElIRy5wcm90byJaCgtBT0ZNRExMRElIRxIQCghza2lsbF9p",
+            "ZBgBIAEoDRINCgVkZWxheRgCIAEoARIaChJiYXR0bGVfdGFyZ2V0X2xpc3QY",
+            "AyADKA0SDgoGZGFtYWdlGAQgASgBQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
+            "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AOFMDLLDIHG), global::March7thHoney.Proto.AOFMDLLDIHG.Parser, new[]{ "BattleTargetList", "SkillId", "PNJEGPAFNCI", "Damage" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AOFMDLLDIHG), global::March7thHoney.Proto.AOFMDLLDIHG.Parser, new[]{ "SkillId", "Delay", "BattleTargetList", "Damage" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,9 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public AOFMDLLDIHG(AOFMDLLDIHG other) : this() {
-      battleTargetList_ = other.battleTargetList_.Clone();
       skillId_ = other.skillId_;
-      pNJEGPAFNCI_ = other.pNJEGPAFNCI_;
+      delay_ = other.delay_;
+      battleTargetList_ = other.battleTargetList_.Clone();
       damage_ = other.damage_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -84,17 +84,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public AOFMDLLDIHG Clone() {
       return new AOFMDLLDIHG(this);
-    }
-
-    /// <summary>Field number for the "battle_target_list" field.</summary>
-    public const int BattleTargetListFieldNumber = 3;
-    private static readonly pb::FieldCodec<uint> _repeated_battleTargetList_codec
-        = pb::FieldCodec.ForUInt32(26);
-    private readonly pbc::RepeatedField<uint> battleTargetList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> BattleTargetList {
-      get { return battleTargetList_; }
     }
 
     /// <summary>Field number for the "skill_id" field.</summary>
@@ -109,16 +98,27 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "PNJEGPAFNCI" field.</summary>
-    public const int PNJEGPAFNCIFieldNumber = 2;
-    private double pNJEGPAFNCI_;
+    /// <summary>Field number for the "delay" field.</summary>
+    public const int DelayFieldNumber = 2;
+    private double delay_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public double PNJEGPAFNCI {
-      get { return pNJEGPAFNCI_; }
+    public double Delay {
+      get { return delay_; }
       set {
-        pNJEGPAFNCI_ = value;
+        delay_ = value;
       }
+    }
+
+    /// <summary>Field number for the "battle_target_list" field.</summary>
+    public const int BattleTargetListFieldNumber = 3;
+    private static readonly pb::FieldCodec<uint> _repeated_battleTargetList_codec
+        = pb::FieldCodec.ForUInt32(26);
+    private readonly pbc::RepeatedField<uint> battleTargetList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> BattleTargetList {
+      get { return battleTargetList_; }
     }
 
     /// <summary>Field number for the "damage" field.</summary>
@@ -148,9 +148,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!battleTargetList_.Equals(other.battleTargetList_)) return false;
       if (SkillId != other.SkillId) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(PNJEGPAFNCI, other.PNJEGPAFNCI)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Delay, other.Delay)) return false;
+      if(!battleTargetList_.Equals(other.battleTargetList_)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Damage, other.Damage)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -159,9 +159,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= battleTargetList_.GetHashCode();
       if (SkillId != 0) hash ^= SkillId.GetHashCode();
-      if (PNJEGPAFNCI != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(PNJEGPAFNCI);
+      if (Delay != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Delay);
+      hash ^= battleTargetList_.GetHashCode();
       if (Damage != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Damage);
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -185,9 +185,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(8);
         output.WriteUInt32(SkillId);
       }
-      if (PNJEGPAFNCI != 0D) {
+      if (Delay != 0D) {
         output.WriteRawTag(17);
-        output.WriteDouble(PNJEGPAFNCI);
+        output.WriteDouble(Delay);
       }
       battleTargetList_.WriteTo(output, _repeated_battleTargetList_codec);
       if (Damage != 0D) {
@@ -208,9 +208,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(8);
         output.WriteUInt32(SkillId);
       }
-      if (PNJEGPAFNCI != 0D) {
+      if (Delay != 0D) {
         output.WriteRawTag(17);
-        output.WriteDouble(PNJEGPAFNCI);
+        output.WriteDouble(Delay);
       }
       battleTargetList_.WriteTo(ref output, _repeated_battleTargetList_codec);
       if (Damage != 0D) {
@@ -227,13 +227,13 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += battleTargetList_.CalculateSize(_repeated_battleTargetList_codec);
       if (SkillId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SkillId);
       }
-      if (PNJEGPAFNCI != 0D) {
+      if (Delay != 0D) {
         size += 1 + 8;
       }
+      size += battleTargetList_.CalculateSize(_repeated_battleTargetList_codec);
       if (Damage != 0D) {
         size += 1 + 8;
       }
@@ -249,13 +249,13 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      battleTargetList_.Add(other.battleTargetList_);
       if (other.SkillId != 0) {
         SkillId = other.SkillId;
       }
-      if (other.PNJEGPAFNCI != 0D) {
-        PNJEGPAFNCI = other.PNJEGPAFNCI;
+      if (other.Delay != 0D) {
+        Delay = other.Delay;
       }
+      battleTargetList_.Add(other.battleTargetList_);
       if (other.Damage != 0D) {
         Damage = other.Damage;
       }
@@ -283,7 +283,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 17: {
-            PNJEGPAFNCI = input.ReadDouble();
+            Delay = input.ReadDouble();
             break;
           }
           case 26:
@@ -319,7 +319,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 17: {
-            PNJEGPAFNCI = input.ReadDouble();
+            Delay = input.ReadDouble();
             break;
           }
           case 26:

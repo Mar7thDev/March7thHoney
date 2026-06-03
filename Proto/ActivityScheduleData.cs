@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChpBY3Rpdml0eVNjaGVkdWxlRGF0YS5wcm90byJjChRBY3Rpdml0eVNjaGVk",
-            "dWxlRGF0YRIQCghlbmRfdGltZRgHIAEoAxIQCghwYW5lbF9pZBgKIAEoDRIT",
-            "CgthY3Rpdml0eV9pZBgNIAEoDRISCgpiZWdpbl90aW1lGAsgASgDQhaqAhNN",
+            "dWxlRGF0YRISCgpiZWdpbl90aW1lGAMgASgDEhAKCHBhbmVsX2lkGAggASgN",
+            "EhAKCGVuZF90aW1lGAwgASgDEhMKC2FjdGl2aXR5X2lkGA0gASgNQhaqAhNN",
             "YXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ActivityScheduleData), global::March7thHoney.Proto.ActivityScheduleData.Parser, new[]{ "EndTime", "PanelId", "ActivityId", "BeginTime" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ActivityScheduleData), global::March7thHoney.Proto.ActivityScheduleData.Parser, new[]{ "BeginTime", "PanelId", "EndTime", "ActivityId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,10 +73,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ActivityScheduleData(ActivityScheduleData other) : this() {
-      endTime_ = other.endTime_;
-      panelId_ = other.panelId_;
-      activityId_ = other.activityId_;
       beginTime_ = other.beginTime_;
+      panelId_ = other.panelId_;
+      endTime_ = other.endTime_;
+      activityId_ = other.activityId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,20 +86,20 @@ namespace March7thHoney.Proto {
       return new ActivityScheduleData(this);
     }
 
-    /// <summary>Field number for the "end_time" field.</summary>
-    public const int EndTimeFieldNumber = 7;
-    private long endTime_;
+    /// <summary>Field number for the "begin_time" field.</summary>
+    public const int BeginTimeFieldNumber = 3;
+    private long beginTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long EndTime {
-      get { return endTime_; }
+    public long BeginTime {
+      get { return beginTime_; }
       set {
-        endTime_ = value;
+        beginTime_ = value;
       }
     }
 
     /// <summary>Field number for the "panel_id" field.</summary>
-    public const int PanelIdFieldNumber = 10;
+    public const int PanelIdFieldNumber = 8;
     private uint panelId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -107,6 +107,18 @@ namespace March7thHoney.Proto {
       get { return panelId_; }
       set {
         panelId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "end_time" field.</summary>
+    public const int EndTimeFieldNumber = 12;
+    private long endTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long EndTime {
+      get { return endTime_; }
+      set {
+        endTime_ = value;
       }
     }
 
@@ -119,18 +131,6 @@ namespace March7thHoney.Proto {
       get { return activityId_; }
       set {
         activityId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "begin_time" field.</summary>
-    public const int BeginTimeFieldNumber = 11;
-    private long beginTime_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long BeginTime {
-      get { return beginTime_; }
-      set {
-        beginTime_ = value;
       }
     }
 
@@ -149,10 +149,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (EndTime != other.EndTime) return false;
-      if (PanelId != other.PanelId) return false;
-      if (ActivityId != other.ActivityId) return false;
       if (BeginTime != other.BeginTime) return false;
+      if (PanelId != other.PanelId) return false;
+      if (EndTime != other.EndTime) return false;
+      if (ActivityId != other.ActivityId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -160,10 +160,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (EndTime != 0L) hash ^= EndTime.GetHashCode();
-      if (PanelId != 0) hash ^= PanelId.GetHashCode();
-      if (ActivityId != 0) hash ^= ActivityId.GetHashCode();
       if (BeginTime != 0L) hash ^= BeginTime.GetHashCode();
+      if (PanelId != 0) hash ^= PanelId.GetHashCode();
+      if (EndTime != 0L) hash ^= EndTime.GetHashCode();
+      if (ActivityId != 0) hash ^= ActivityId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -182,17 +182,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (EndTime != 0L) {
-        output.WriteRawTag(56);
-        output.WriteInt64(EndTime);
+      if (BeginTime != 0L) {
+        output.WriteRawTag(24);
+        output.WriteInt64(BeginTime);
       }
       if (PanelId != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(64);
         output.WriteUInt32(PanelId);
       }
-      if (BeginTime != 0L) {
-        output.WriteRawTag(88);
-        output.WriteInt64(BeginTime);
+      if (EndTime != 0L) {
+        output.WriteRawTag(96);
+        output.WriteInt64(EndTime);
       }
       if (ActivityId != 0) {
         output.WriteRawTag(104);
@@ -208,17 +208,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (EndTime != 0L) {
-        output.WriteRawTag(56);
-        output.WriteInt64(EndTime);
+      if (BeginTime != 0L) {
+        output.WriteRawTag(24);
+        output.WriteInt64(BeginTime);
       }
       if (PanelId != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(64);
         output.WriteUInt32(PanelId);
       }
-      if (BeginTime != 0L) {
-        output.WriteRawTag(88);
-        output.WriteInt64(BeginTime);
+      if (EndTime != 0L) {
+        output.WriteRawTag(96);
+        output.WriteInt64(EndTime);
       }
       if (ActivityId != 0) {
         output.WriteRawTag(104);
@@ -234,17 +234,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (EndTime != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(EndTime);
+      if (BeginTime != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(BeginTime);
       }
       if (PanelId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PanelId);
       }
+      if (EndTime != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(EndTime);
+      }
       if (ActivityId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ActivityId);
-      }
-      if (BeginTime != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(BeginTime);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -258,17 +258,17 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.EndTime != 0L) {
-        EndTime = other.EndTime;
+      if (other.BeginTime != 0L) {
+        BeginTime = other.BeginTime;
       }
       if (other.PanelId != 0) {
         PanelId = other.PanelId;
       }
+      if (other.EndTime != 0L) {
+        EndTime = other.EndTime;
+      }
       if (other.ActivityId != 0) {
         ActivityId = other.ActivityId;
-      }
-      if (other.BeginTime != 0L) {
-        BeginTime = other.BeginTime;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -289,16 +289,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
-            EndTime = input.ReadInt64();
+          case 24: {
+            BeginTime = input.ReadInt64();
             break;
           }
-          case 80: {
+          case 64: {
             PanelId = input.ReadUInt32();
             break;
           }
-          case 88: {
-            BeginTime = input.ReadInt64();
+          case 96: {
+            EndTime = input.ReadInt64();
             break;
           }
           case 104: {
@@ -324,16 +324,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
-            EndTime = input.ReadInt64();
+          case 24: {
+            BeginTime = input.ReadInt64();
             break;
           }
-          case 80: {
+          case 64: {
             PanelId = input.ReadUInt32();
             break;
           }
-          case 88: {
-            BeginTime = input.ReadInt64();
+          case 96: {
+            EndTime = input.ReadInt64();
             break;
           }
           case 104: {

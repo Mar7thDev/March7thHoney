@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChtHcm91cFN0YXRlQ2hhbmdlU2NSc3AucHJvdG8aFEdyb3VwU3RhdGVJbmZv",
-            "LnByb3RvIlMKFUdyb3VwU3RhdGVDaGFuZ2VTY1JzcBIpChBncm91cF9zdGF0",
-            "ZV9pbmZvGAMgASgLMg8uR3JvdXBTdGF0ZUluZm8SDwoHcmV0Y29kZRgKIAEo",
-            "DUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "LnByb3RvIlMKFUdyb3VwU3RhdGVDaGFuZ2VTY1JzcBIPCgdyZXRjb2RlGA0g",
+            "ASgNEikKEGdyb3VwX3N0YXRlX2luZm8YDyABKAsyDy5Hcm91cFN0YXRlSW5m",
+            "b0IWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.GroupStateInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GroupStateChangeScRsp), global::March7thHoney.Proto.GroupStateChangeScRsp.Parser, new[]{ "GroupStateInfo", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GroupStateChangeScRsp), global::March7thHoney.Proto.GroupStateChangeScRsp.Parser, new[]{ "Retcode", "GroupStateInfo" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GroupStateChangeScRsp(GroupStateChangeScRsp other) : this() {
-      groupStateInfo_ = other.groupStateInfo_ != null ? other.groupStateInfo_.Clone() : null;
       retcode_ = other.retcode_;
+      groupStateInfo_ = other.groupStateInfo_ != null ? other.groupStateInfo_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,20 +84,8 @@ namespace March7thHoney.Proto {
       return new GroupStateChangeScRsp(this);
     }
 
-    /// <summary>Field number for the "group_state_info" field.</summary>
-    public const int GroupStateInfoFieldNumber = 3;
-    private global::March7thHoney.Proto.GroupStateInfo groupStateInfo_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.GroupStateInfo GroupStateInfo {
-      get { return groupStateInfo_; }
-      set {
-        groupStateInfo_ = value;
-      }
-    }
-
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 10;
+    public const int RetcodeFieldNumber = 13;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -105,6 +93,18 @@ namespace March7thHoney.Proto {
       get { return retcode_; }
       set {
         retcode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "group_state_info" field.</summary>
+    public const int GroupStateInfoFieldNumber = 15;
+    private global::March7thHoney.Proto.GroupStateInfo groupStateInfo_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.GroupStateInfo GroupStateInfo {
+      get { return groupStateInfo_; }
+      set {
+        groupStateInfo_ = value;
       }
     }
 
@@ -123,8 +123,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(GroupStateInfo, other.GroupStateInfo)) return false;
       if (Retcode != other.Retcode) return false;
+      if (!object.Equals(GroupStateInfo, other.GroupStateInfo)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,8 +132,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (groupStateInfo_ != null) hash ^= GroupStateInfo.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (groupStateInfo_ != null) hash ^= GroupStateInfo.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,13 +152,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (groupStateInfo_ != null) {
-        output.WriteRawTag(26);
-        output.WriteMessage(GroupStateInfo);
-      }
       if (Retcode != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(104);
         output.WriteUInt32(Retcode);
+      }
+      if (groupStateInfo_ != null) {
+        output.WriteRawTag(122);
+        output.WriteMessage(GroupStateInfo);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,13 +170,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (groupStateInfo_ != null) {
-        output.WriteRawTag(26);
-        output.WriteMessage(GroupStateInfo);
-      }
       if (Retcode != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(104);
         output.WriteUInt32(Retcode);
+      }
+      if (groupStateInfo_ != null) {
+        output.WriteRawTag(122);
+        output.WriteMessage(GroupStateInfo);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -188,11 +188,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (groupStateInfo_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(GroupStateInfo);
-      }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      }
+      if (groupStateInfo_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(GroupStateInfo);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -206,14 +206,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
+      }
       if (other.groupStateInfo_ != null) {
         if (groupStateInfo_ == null) {
           GroupStateInfo = new global::March7thHoney.Proto.GroupStateInfo();
         }
         GroupStateInfo.MergeFrom(other.GroupStateInfo);
-      }
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -234,15 +234,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 26: {
+          case 104: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 122: {
             if (groupStateInfo_ == null) {
               GroupStateInfo = new global::March7thHoney.Proto.GroupStateInfo();
             }
             input.ReadMessage(GroupStateInfo);
-            break;
-          }
-          case 80: {
-            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -264,15 +264,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 26: {
+          case 104: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 122: {
             if (groupStateInfo_ == null) {
               GroupStateInfo = new global::March7thHoney.Proto.GroupStateInfo();
             }
             input.ReadMessage(GroupStateInfo);
-            break;
-          }
-          case 80: {
-            Retcode = input.ReadUInt32();
             break;
           }
         }

@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFCQ0JIRkJQQURFRS5wcm90byI3CgtCQ0JIRkJQQURFRRITCgtKTk9QQkdC",
-            "QUNPTxgEIAEoDRITCgtNR0dOS0VOSVBGQxgPIAEoDUIWqgITTWFyY2g3dGhI",
+            "QUNPTxgEIAEoDRITCgtNR0dOS0VOSVBGQxgMIAEoDUIWqgITTWFyY2g3dGhI",
             "b25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "MGGNKENIPFC" field.</summary>
-    public const int MGGNKENIPFCFieldNumber = 15;
+    public const int MGGNKENIPFCFieldNumber = 12;
     private uint mGGNKENIPFC_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -156,7 +156,7 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(JNOPBGBACOO);
       }
       if (MGGNKENIPFC != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(96);
         output.WriteUInt32(MGGNKENIPFC);
       }
       if (_unknownFields != null) {
@@ -174,7 +174,7 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(JNOPBGBACOO);
       }
       if (MGGNKENIPFC != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(96);
         output.WriteUInt32(MGGNKENIPFC);
       }
       if (_unknownFields != null) {
@@ -234,7 +234,7 @@ namespace March7thHoney.Proto {
             JNOPBGBACOO = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 96: {
             MGGNKENIPFC = input.ReadUInt32();
             break;
           }
@@ -261,7 +261,7 @@ namespace March7thHoney.Proto {
             JNOPBGBACOO = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 96: {
             MGGNKENIPFC = input.ReadUInt32();
             break;
           }

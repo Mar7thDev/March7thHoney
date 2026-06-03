@@ -3,9 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message EFDAIBDBFEA {
-    map<uint32, uint32> HFCJPCKONIF = 10;
-    uint32 NPHAJEKCBKF = 1;
-    uint32 AADNIFFHHDD = 7;
-    uint32 LJCEOGPOGBE = 15;
-    uint32 DGGCFDKJDPO = 6;
+    uint32 DGGCFDKJDPO = 2;
+    uint32 LJCEOGPOGBE = 4;
+    uint32 NPHAJEKCBKF = 10;
+    uint32 total_count = 11;
 }

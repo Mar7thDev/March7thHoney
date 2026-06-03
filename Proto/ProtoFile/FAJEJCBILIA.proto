@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message FAJEJCBILIA {
-    repeated uint32 IKLJBAJBOPG = 10;
-    uint32 retcode = 1;
+    uint32 retcode = 11;
+    repeated uint32 IKLJBAJBOPG = 12;
 }

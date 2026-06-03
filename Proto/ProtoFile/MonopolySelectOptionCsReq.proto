@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message MonopolySelectOptionCsReq {
-    uint32 event_id = 14;
-    uint32 HAFOKMHCGFM = 3;
+    uint32 HAFOKMHCGFM = 2;
+    uint32 event_id = 12;
 }

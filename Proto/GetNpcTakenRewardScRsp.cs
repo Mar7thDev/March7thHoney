@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChxHZXROcGNUYWtlblJld2FyZFNjUnNwLnByb3RvIlIKFkdldE5wY1Rha2Vu",
-            "UmV3YXJkU2NSc3ASFwoPdGFsa19ldmVudF9saXN0GAMgAygNEg8KB3JldGNv",
-            "ZGUYCiABKA0SDgoGbnBjX2lkGA4gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
+            "UmV3YXJkU2NSc3ASDwoHcmV0Y29kZRgGIAEoDRIXCg90YWxrX2V2ZW50X2xp",
+            "c3QYDSADKA0SDgoGbnBjX2lkGA4gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
             "b3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetNpcTakenRewardScRsp), global::March7thHoney.Proto.GetNpcTakenRewardScRsp.Parser, new[]{ "TalkEventList", "Retcode", "NpcId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetNpcTakenRewardScRsp), global::March7thHoney.Proto.GetNpcTakenRewardScRsp.Parser, new[]{ "Retcode", "TalkEventList", "NpcId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetNpcTakenRewardScRsp(GetNpcTakenRewardScRsp other) : this() {
-      talkEventList_ = other.talkEventList_.Clone();
       retcode_ = other.retcode_;
+      talkEventList_ = other.talkEventList_.Clone();
       npcId_ = other.npcId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -85,19 +85,8 @@ namespace March7thHoney.Proto {
       return new GetNpcTakenRewardScRsp(this);
     }
 
-    /// <summary>Field number for the "talk_event_list" field.</summary>
-    public const int TalkEventListFieldNumber = 3;
-    private static readonly pb::FieldCodec<uint> _repeated_talkEventList_codec
-        = pb::FieldCodec.ForUInt32(26);
-    private readonly pbc::RepeatedField<uint> talkEventList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> TalkEventList {
-      get { return talkEventList_; }
-    }
-
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 10;
+    public const int RetcodeFieldNumber = 6;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -106,6 +95,17 @@ namespace March7thHoney.Proto {
       set {
         retcode_ = value;
       }
+    }
+
+    /// <summary>Field number for the "talk_event_list" field.</summary>
+    public const int TalkEventListFieldNumber = 13;
+    private static readonly pb::FieldCodec<uint> _repeated_talkEventList_codec
+        = pb::FieldCodec.ForUInt32(106);
+    private readonly pbc::RepeatedField<uint> talkEventList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> TalkEventList {
+      get { return talkEventList_; }
     }
 
     /// <summary>Field number for the "npc_id" field.</summary>
@@ -135,8 +135,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!talkEventList_.Equals(other.talkEventList_)) return false;
       if (Retcode != other.Retcode) return false;
+      if(!talkEventList_.Equals(other.talkEventList_)) return false;
       if (NpcId != other.NpcId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -145,8 +145,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= talkEventList_.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      hash ^= talkEventList_.GetHashCode();
       if (NpcId != 0) hash ^= NpcId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -166,11 +166,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      talkEventList_.WriteTo(output, _repeated_talkEventList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(48);
         output.WriteUInt32(Retcode);
       }
+      talkEventList_.WriteTo(output, _repeated_talkEventList_codec);
       if (NpcId != 0) {
         output.WriteRawTag(112);
         output.WriteUInt32(NpcId);
@@ -185,11 +185,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      talkEventList_.WriteTo(ref output, _repeated_talkEventList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(48);
         output.WriteUInt32(Retcode);
       }
+      talkEventList_.WriteTo(ref output, _repeated_talkEventList_codec);
       if (NpcId != 0) {
         output.WriteRawTag(112);
         output.WriteUInt32(NpcId);
@@ -204,10 +204,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += talkEventList_.CalculateSize(_repeated_talkEventList_codec);
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
+      size += talkEventList_.CalculateSize(_repeated_talkEventList_codec);
       if (NpcId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(NpcId);
       }
@@ -223,10 +223,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      talkEventList_.Add(other.talkEventList_);
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
+      talkEventList_.Add(other.talkEventList_);
       if (other.NpcId != 0) {
         NpcId = other.NpcId;
       }
@@ -249,13 +249,13 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 26:
-          case 24: {
-            talkEventList_.AddEntriesFrom(input, _repeated_talkEventList_codec);
+          case 48: {
+            Retcode = input.ReadUInt32();
             break;
           }
-          case 80: {
-            Retcode = input.ReadUInt32();
+          case 106:
+          case 104: {
+            talkEventList_.AddEntriesFrom(input, _repeated_talkEventList_codec);
             break;
           }
           case 112: {
@@ -281,13 +281,13 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 26:
-          case 24: {
-            talkEventList_.AddEntriesFrom(ref input, _repeated_talkEventList_codec);
+          case 48: {
+            Retcode = input.ReadUInt32();
             break;
           }
-          case 80: {
-            Retcode = input.ReadUInt32();
+          case 106:
+          case 104: {
+            talkEventList_.AddEntriesFrom(ref input, _repeated_talkEventList_codec);
             break;
           }
           case 112: {

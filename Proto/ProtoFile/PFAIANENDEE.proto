@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message PFAIANENDEE {
-    uint32 BFPAFELCMGF = 7;
+    uint32 BFPAFELCMGF = 6;
 }

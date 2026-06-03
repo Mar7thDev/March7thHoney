@@ -7,13 +7,12 @@ import "GHBICGMEFPL.proto";
 import "OCCAABPFBLF.proto";
 
 message GetAetherDivideInfoScRsp {
-    repeated GHBICGMEFPL CCHDKJMFNEP = 5;
-    repeated DMGDLEHEDFB APHGAEAPLJF = 12;
-    repeated OCCAABPFBLF lineup_list = 6;
-    uint32 BDNOLFBJBGJ = 15;
-    uint32 NCAOMBHCGNA = 10;
-    uint32 JAOAHONIBJI = 7;
-    uint32 NCMLHPAALEP = 9;
-    uint32 retcode = 1;
-    uint32 FOCACJHLKDB = 11;
+    uint32 FOCACJHLKDB = 1;
+    repeated GHBICGMEFPL CCHDKJMFNEP = 4;
+    repeated DMGDLEHEDFB skill_list = 6;
+    uint32 BDNOLFBJBGJ = 7;
+    uint32 JAOAHONIBJI = 8;
+    uint32 NCMLHPAALEP = 10;
+    repeated OCCAABPFBLF lineup_list = 12;
+    uint32 retcode = 15;
 }

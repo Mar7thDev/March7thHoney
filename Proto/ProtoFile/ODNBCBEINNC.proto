@@ -6,10 +6,10 @@ import "ELHLCFBPAMO.proto";
 import "IIAOGEIADGA.proto";
 
 message ODNBCBEINNC {
-    uint32 EEPIDJJJMAH = 1;
-    uint32 room_id = 9;
-    uint32 LHLKJIDFLIN = 10;
-    IIAOGEIADGA status = 2;
-    uint32 GHEHGIOAGDG = 14;
-    ELHLCFBPAMO FIADMEPDAOG = 11;
+    uint32 GHEHGIOAGDG = 2;
+    uint32 LHLKJIDFLIN = 3;
+    uint32 room_id = 7;
+    IIAOGEIADGA status = 10;
+    uint32 EEPIDJJJMAH = 12;
+    ELHLCFBPAMO FIADMEPDAOG = 1;
 }

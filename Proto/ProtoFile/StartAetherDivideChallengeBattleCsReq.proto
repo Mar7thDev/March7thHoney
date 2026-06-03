@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message StartAetherDivideChallengeBattleCsReq {
-    uint32 FDKFIOLMPHA = 9;
-    uint32 challenge_id = 6;
+    uint32 FDKFIOLMPHA = 6;
+    uint32 challenge_id = 15;
 }

@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static NECNANNNGBNReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFORUNOQU5OTkdCTi5wcm90byI3CgtORUNOQU5OTkdCThITCgtEQ0RPRUxD",
-            "UE9IQhgJIAEoDRITCgtET0hMQkhMTEFGTxgIIAEoDUIWqgITTWFyY2g3dGhI",
+            "ChFORUNOQU5OTkdCTi5wcm90byI3CgtORUNOQU5OTkdCThITCgtET0hMQkhM",
+            "TEFGTxgCIAEoDRITCgtEQ0RPRUxDUE9IQhgHIAEoDUIWqgITTWFyY2g3dGhI",
             "b25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NECNANNNGBN), global::March7thHoney.Proto.NECNANNNGBN.Parser, new[]{ "DCDOELCPOHB", "DOHLBHLLAFO" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NECNANNNGBN), global::March7thHoney.Proto.NECNANNNGBN.Parser, new[]{ "DOHLBHLLAFO", "DCDOELCPOHB" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public NECNANNNGBN(NECNANNNGBN other) : this() {
-      dCDOELCPOHB_ = other.dCDOELCPOHB_;
       dOHLBHLLAFO_ = other.dOHLBHLLAFO_;
+      dCDOELCPOHB_ = other.dCDOELCPOHB_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,20 +83,8 @@ namespace March7thHoney.Proto {
       return new NECNANNNGBN(this);
     }
 
-    /// <summary>Field number for the "DCDOELCPOHB" field.</summary>
-    public const int DCDOELCPOHBFieldNumber = 9;
-    private uint dCDOELCPOHB_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint DCDOELCPOHB {
-      get { return dCDOELCPOHB_; }
-      set {
-        dCDOELCPOHB_ = value;
-      }
-    }
-
     /// <summary>Field number for the "DOHLBHLLAFO" field.</summary>
-    public const int DOHLBHLLAFOFieldNumber = 8;
+    public const int DOHLBHLLAFOFieldNumber = 2;
     private uint dOHLBHLLAFO_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -104,6 +92,18 @@ namespace March7thHoney.Proto {
       get { return dOHLBHLLAFO_; }
       set {
         dOHLBHLLAFO_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "DCDOELCPOHB" field.</summary>
+    public const int DCDOELCPOHBFieldNumber = 7;
+    private uint dCDOELCPOHB_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint DCDOELCPOHB {
+      get { return dCDOELCPOHB_; }
+      set {
+        dCDOELCPOHB_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (DCDOELCPOHB != other.DCDOELCPOHB) return false;
       if (DOHLBHLLAFO != other.DOHLBHLLAFO) return false;
+      if (DCDOELCPOHB != other.DCDOELCPOHB) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (DCDOELCPOHB != 0) hash ^= DCDOELCPOHB.GetHashCode();
       if (DOHLBHLLAFO != 0) hash ^= DOHLBHLLAFO.GetHashCode();
+      if (DCDOELCPOHB != 0) hash ^= DCDOELCPOHB.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (DOHLBHLLAFO != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(16);
         output.WriteUInt32(DOHLBHLLAFO);
       }
       if (DCDOELCPOHB != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(56);
         output.WriteUInt32(DCDOELCPOHB);
       }
       if (_unknownFields != null) {
@@ -170,11 +170,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (DOHLBHLLAFO != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(16);
         output.WriteUInt32(DOHLBHLLAFO);
       }
       if (DCDOELCPOHB != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(56);
         output.WriteUInt32(DCDOELCPOHB);
       }
       if (_unknownFields != null) {
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (DCDOELCPOHB != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DCDOELCPOHB);
-      }
       if (DOHLBHLLAFO != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DOHLBHLLAFO);
+      }
+      if (DCDOELCPOHB != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DCDOELCPOHB);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.DCDOELCPOHB != 0) {
-        DCDOELCPOHB = other.DCDOELCPOHB;
-      }
       if (other.DOHLBHLLAFO != 0) {
         DOHLBHLLAFO = other.DOHLBHLLAFO;
+      }
+      if (other.DCDOELCPOHB != 0) {
+        DCDOELCPOHB = other.DCDOELCPOHB;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,11 +230,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 64: {
+          case 16: {
             DOHLBHLLAFO = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 56: {
             DCDOELCPOHB = input.ReadUInt32();
             break;
           }
@@ -257,11 +257,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 64: {
+          case 16: {
             DOHLBHLLAFO = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 56: {
             DCDOELCPOHB = input.ReadUInt32();
             break;
           }

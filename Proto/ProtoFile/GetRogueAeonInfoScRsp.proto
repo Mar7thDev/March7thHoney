@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "FLCPJJMHAGO.proto";
 
 message GetRogueAeonInfoScRsp {
-    repeated FLCPJJMHAGO JHEHAIBMNNF = 8;
-    uint32 retcode = 3;
+    uint32 retcode = 10;
+    repeated FLCPJJMHAGO JHEHAIBMNNF = 13;
 }

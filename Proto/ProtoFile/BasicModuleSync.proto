@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message BasicModuleSync {
-    uint32 DLODAKOHFOP = 2;
-    uint32 stamina = 12;
+    uint32 stamina = 4;
+    uint32 DLODAKOHFOP = 6;
 }

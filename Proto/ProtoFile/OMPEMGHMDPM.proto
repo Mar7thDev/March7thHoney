@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message OMPEMGHMDPM {
-    uint32 retcode = 13;
-    uint32 JGPHDBDHKKO = 14;
+    uint32 retcode = 6;
+    uint32 JGPHDBDHKKO = 7;
 }

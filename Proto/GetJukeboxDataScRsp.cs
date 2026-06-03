@@ -26,13 +26,13 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChlHZXRKdWtlYm94RGF0YVNjUnNwLnByb3RvGhFMSEhHQ0RMQ0pEQS5wcm90",
             "bxoRTU5DQkVEQkRESEwucHJvdG8ibAoTR2V0SnVrZWJveERhdGFTY1JzcBIh",
-            "CgtHRkZPQkFMREJQTRgJIAEoCzIMLk1OQ0JFREJEREhMEiEKC0lPS0FKSUJI",
-            "TE1QGAogAygLMgwuTEhIR0NETENKREESDwoHcmV0Y29kZRgGIAEoDUIWqgIT",
+            "CgtHRkZPQkFMREJQTRgBIAEoCzIMLk1OQ0JFREJEREhMEiEKC0lPS0FKSUJI",
+            "TE1QGAQgAygLMgwuTEhIR0NETENKREESDwoHcmV0Y29kZRgFIAEoDUIWqgIT",
             "TWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.MusicDataReflection.Descriptor, global::March7thHoney.Proto.MNCBEDBDDHLReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.LHHGCDLCJDAReflection.Descriptor, global::March7thHoney.Proto.MNCBEDBDDHLReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetJukeboxDataScRsp), global::March7thHoney.Proto.GetJukeboxDataScRsp.Parser, new[]{ "GFFOBALDBPM", "UnlockedMusicList", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetJukeboxDataScRsp), global::March7thHoney.Proto.GetJukeboxDataScRsp.Parser, new[]{ "GFFOBALDBPM", "IOKAJIBHLMP", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -87,7 +87,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "GFFOBALDBPM" field.</summary>
-    public const int GFFOBALDBPMFieldNumber = 9;
+    public const int GFFOBALDBPMFieldNumber = 1;
     private global::March7thHoney.Proto.MNCBEDBDDHL gFFOBALDBPM_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,19 +98,19 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "UnlockedMusicList" field.</summary>
-    public const int UnlockedMusicListFieldNumber = 10;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MusicData> _repeated_iOKAJIBHLMP_codec
-        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.MusicData.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MusicData> iOKAJIBHLMP_ = new pbc::RepeatedField<global::March7thHoney.Proto.MusicData>();
+    /// <summary>Field number for the "IOKAJIBHLMP" field.</summary>
+    public const int IOKAJIBHLMPFieldNumber = 4;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.LHHGCDLCJDA> _repeated_iOKAJIBHLMP_codec
+        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.LHHGCDLCJDA.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.LHHGCDLCJDA> iOKAJIBHLMP_ = new pbc::RepeatedField<global::March7thHoney.Proto.LHHGCDLCJDA>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.MusicData> UnlockedMusicList {
+    public pbc::RepeatedField<global::March7thHoney.Proto.LHHGCDLCJDA> IOKAJIBHLMP {
       get { return iOKAJIBHLMP_; }
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 6;
+    public const int RetcodeFieldNumber = 5;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -167,15 +167,15 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Retcode != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(Retcode);
-      }
       if (gFFOBALDBPM_ != null) {
-        output.WriteRawTag(74);
+        output.WriteRawTag(10);
         output.WriteMessage(GFFOBALDBPM);
       }
       iOKAJIBHLMP_.WriteTo(output, _repeated_iOKAJIBHLMP_codec);
+      if (Retcode != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(Retcode);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -186,15 +186,15 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Retcode != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(Retcode);
-      }
       if (gFFOBALDBPM_ != null) {
-        output.WriteRawTag(74);
+        output.WriteRawTag(10);
         output.WriteMessage(GFFOBALDBPM);
       }
       iOKAJIBHLMP_.WriteTo(ref output, _repeated_iOKAJIBHLMP_codec);
+      if (Retcode != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(Retcode);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -253,19 +253,19 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 48: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 74: {
+          case 10: {
             if (gFFOBALDBPM_ == null) {
               GFFOBALDBPM = new global::March7thHoney.Proto.MNCBEDBDDHL();
             }
             input.ReadMessage(GFFOBALDBPM);
             break;
           }
-          case 82: {
+          case 34: {
             iOKAJIBHLMP_.AddEntriesFrom(input, _repeated_iOKAJIBHLMP_codec);
+            break;
+          }
+          case 40: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -287,19 +287,19 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 48: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 74: {
+          case 10: {
             if (gFFOBALDBPM_ == null) {
               GFFOBALDBPM = new global::March7thHoney.Proto.MNCBEDBDDHL();
             }
             input.ReadMessage(GFFOBALDBPM);
             break;
           }
-          case 82: {
+          case 34: {
             iOKAJIBHLMP_.AddEntriesFrom(ref input, _repeated_iOKAJIBHLMP_codec);
+            break;
+          }
+          case 40: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }

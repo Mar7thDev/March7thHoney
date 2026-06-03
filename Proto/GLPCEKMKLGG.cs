@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFHTFBDRUtNS0xHRy5wcm90byItCgtHTFBDRUtNS0xHRxIeChZncmlkX2Zp",
-            "Z2h0X2F2YXRhcl9saXN0GAMgAygNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
+            "Z2h0X2F2YXRhcl9saXN0GA0gAygNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
             "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -83,9 +83,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "grid_fight_avatar_list" field.</summary>
-    public const int GridFightAvatarListFieldNumber = 3;
+    public const int GridFightAvatarListFieldNumber = 13;
     private static readonly pb::FieldCodec<uint> _repeated_gridFightAvatarList_codec
-        = pb::FieldCodec.ForUInt32(26);
+        = pb::FieldCodec.ForUInt32(106);
     private readonly pbc::RepeatedField<uint> gridFightAvatarList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -190,8 +190,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 26:
-          case 24: {
+          case 106:
+          case 104: {
             gridFightAvatarList_.AddEntriesFrom(input, _repeated_gridFightAvatarList_codec);
             break;
           }
@@ -214,8 +214,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 26:
-          case 24: {
+          case 106:
+          case 104: {
             gridFightAvatarList_.AddEntriesFrom(ref input, _repeated_gridFightAvatarList_codec);
             break;
           }

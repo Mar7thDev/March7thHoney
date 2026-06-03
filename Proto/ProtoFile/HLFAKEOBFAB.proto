@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message HLFAKEOBFAB {
-    uint32 AFEMBLFCCCH = 13;
-    uint32 HJMACPMOINC = 11;
-    uint32 PBMAHOJBAGG = 4;
+    uint32 AFEMBLFCCCH = 3;
+    uint32 HJMACPMOINC = 6;
+    uint32 PBMAHOJBAGG = 9;
 }

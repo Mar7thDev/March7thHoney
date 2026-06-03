@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "JCPMKHCPCPN.proto";
 
 message KICEGHDKACP {
-    JCPMKHCPCPN GNBKDCHLDGL = 2;
-    uint32 FPKJONKIFLI = 5;
-    uint32 passenger_id = 12;
+    uint32 FPKJONKIFLI = 7;
+    JCPMKHCPCPN GNBKDCHLDGL = 12;
+    uint32 passenger_id = 15;
 }

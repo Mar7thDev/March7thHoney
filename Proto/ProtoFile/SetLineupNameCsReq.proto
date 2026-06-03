@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message SetLineupNameCsReq {
-    string name = 9;
-    uint32 index = 15;
+    string name = 4;
+    uint32 index = 11;
 }

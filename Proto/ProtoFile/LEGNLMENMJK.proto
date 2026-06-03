@@ -6,10 +6,10 @@ import "GKNOCNDPAJA.proto";
 import "LDNFIICMCHA.proto";
 
 message LEGNLMENMJK {
-    uint32 card_id = 2;
-    uint32 unique_id = 15;
+    uint32 unique_id = 6;
+    uint32 card_id = 15;
     oneof NPFEGGMNBOC {
-        LDNFIICMCHA MLIGAFABJDP = 6;
-        GKNOCNDPAJA BLLCMLBDLPC = 8;
+        LDNFIICMCHA MLIGAFABJDP = 7;
+        GKNOCNDPAJA BLLCMLBDLPC = 11;
     }
 }

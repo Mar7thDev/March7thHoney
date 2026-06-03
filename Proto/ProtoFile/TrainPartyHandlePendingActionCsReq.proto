@@ -8,11 +8,11 @@ import "MOCNDOCEOJM.proto";
 import "PFAIANENDEE.proto";
 
 message TrainPartyHandlePendingActionCsReq {
-    uint32 queue_position = 3;
+    uint32 queue_position = 6;
     oneof KILBFAAFDPD {
-        MDOIMCNFDLC KLONPDNKBJF = 2023;
-        PFAIANENDEE LGBJDFHBIND = 779;
-        CKPNGMLENFA NELLGPKHIKE = 145;
-        MOCNDOCEOJM NMEFKABDHAN = 885;
+        MDOIMCNFDLC KLONPDNKBJF = 1533;
+        PFAIANENDEE LGBJDFHBIND = 352;
+        CKPNGMLENFA NELLGPKHIKE = 1642;
+        MOCNDOCEOJM NMEFKABDHAN = 795;
     }
 }

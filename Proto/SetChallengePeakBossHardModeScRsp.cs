@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CidTZXRDaGFsbGVuZ2VQZWFrQm9zc0hhcmRNb2RlU2NSc3AucHJvdG8iYQoh",
-            "U2V0Q2hhbGxlbmdlUGVha0Jvc3NIYXJkTW9kZVNjUnNwEhUKDXBlYWtfZ3Jv",
-            "dXBfaWQYByABKA0SDwoHcmV0Y29kZRgKIAEoDRIUCgxpc19oYXJkX21vZGUY",
-            "AiABKAhCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "U2V0Q2hhbGxlbmdlUGVha0Jvc3NIYXJkTW9kZVNjUnNwEhQKDGlzX2hhcmRf",
+            "bW9kZRgCIAEoCBIPCgdyZXRjb2RlGAYgASgNEhUKDXBlYWtfZ3JvdXBfaWQY",
+            "CyABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetChallengePeakBossHardModeScRsp), global::March7thHoney.Proto.SetChallengePeakBossHardModeScRsp.Parser, new[]{ "PeakGroupId", "Retcode", "IsHardMode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetChallengePeakBossHardModeScRsp), global::March7thHoney.Proto.SetChallengePeakBossHardModeScRsp.Parser, new[]{ "IsHardMode", "Retcode", "PeakGroupId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,9 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SetChallengePeakBossHardModeScRsp(SetChallengePeakBossHardModeScRsp other) : this() {
-      peakGroupId_ = other.peakGroupId_;
-      retcode_ = other.retcode_;
       isHardMode_ = other.isHardMode_;
+      retcode_ = other.retcode_;
+      peakGroupId_ = other.peakGroupId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,30 +83,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SetChallengePeakBossHardModeScRsp Clone() {
       return new SetChallengePeakBossHardModeScRsp(this);
-    }
-
-    /// <summary>Field number for the "peak_group_id" field.</summary>
-    public const int PeakGroupIdFieldNumber = 7;
-    private uint peakGroupId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PeakGroupId {
-      get { return peakGroupId_; }
-      set {
-        peakGroupId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 10;
-    private uint retcode_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
-      set {
-        retcode_ = value;
-      }
     }
 
     /// <summary>Field number for the "is_hard_mode" field.</summary>
@@ -118,6 +94,30 @@ namespace March7thHoney.Proto {
       get { return isHardMode_; }
       set {
         isHardMode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 6;
+    private uint retcode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Retcode {
+      get { return retcode_; }
+      set {
+        retcode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "peak_group_id" field.</summary>
+    public const int PeakGroupIdFieldNumber = 11;
+    private uint peakGroupId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint PeakGroupId {
+      get { return peakGroupId_; }
+      set {
+        peakGroupId_ = value;
       }
     }
 
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (PeakGroupId != other.PeakGroupId) return false;
-      if (Retcode != other.Retcode) return false;
       if (IsHardMode != other.IsHardMode) return false;
+      if (Retcode != other.Retcode) return false;
+      if (PeakGroupId != other.PeakGroupId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -146,9 +146,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (PeakGroupId != 0) hash ^= PeakGroupId.GetHashCode();
-      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (IsHardMode != false) hash ^= IsHardMode.GetHashCode();
+      if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (PeakGroupId != 0) hash ^= PeakGroupId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -171,13 +171,13 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(16);
         output.WriteBool(IsHardMode);
       }
-      if (PeakGroupId != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(PeakGroupId);
-      }
       if (Retcode != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(48);
         output.WriteUInt32(Retcode);
+      }
+      if (PeakGroupId != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(PeakGroupId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -193,13 +193,13 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(16);
         output.WriteBool(IsHardMode);
       }
-      if (PeakGroupId != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(PeakGroupId);
-      }
       if (Retcode != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(48);
         output.WriteUInt32(Retcode);
+      }
+      if (PeakGroupId != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(PeakGroupId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -211,14 +211,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (PeakGroupId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PeakGroupId);
+      if (IsHardMode != false) {
+        size += 1 + 1;
       }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
-      if (IsHardMode != false) {
-        size += 1 + 1;
+      if (PeakGroupId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PeakGroupId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -232,14 +232,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.PeakGroupId != 0) {
-        PeakGroupId = other.PeakGroupId;
+      if (other.IsHardMode != false) {
+        IsHardMode = other.IsHardMode;
       }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
-      if (other.IsHardMode != false) {
-        IsHardMode = other.IsHardMode;
+      if (other.PeakGroupId != 0) {
+        PeakGroupId = other.PeakGroupId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -264,12 +264,12 @@ namespace March7thHoney.Proto {
             IsHardMode = input.ReadBool();
             break;
           }
-          case 56: {
-            PeakGroupId = input.ReadUInt32();
+          case 48: {
+            Retcode = input.ReadUInt32();
             break;
           }
-          case 80: {
-            Retcode = input.ReadUInt32();
+          case 88: {
+            PeakGroupId = input.ReadUInt32();
             break;
           }
         }
@@ -295,12 +295,12 @@ namespace March7thHoney.Proto {
             IsHardMode = input.ReadBool();
             break;
           }
-          case 56: {
-            PeakGroupId = input.ReadUInt32();
+          case 48: {
+            Retcode = input.ReadUInt32();
             break;
           }
-          case 80: {
-            Retcode = input.ReadUInt32();
+          case 88: {
+            PeakGroupId = input.ReadUInt32();
             break;
           }
         }

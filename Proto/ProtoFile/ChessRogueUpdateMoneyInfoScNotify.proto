@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "AGEOGDOGDMM.proto";
 
 message ChessRogueUpdateMoneyInfoScNotify {
-    AGEOGDOGDMM DHEKLJDBNNP = 1;
+    AGEOGDOGDMM DHEKLJDBNNP = 10;
 }

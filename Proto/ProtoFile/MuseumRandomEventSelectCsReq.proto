@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message MuseumRandomEventSelectCsReq {
-    uint32 JGPIOFGPBGE = 11;
-    uint32 event_id = 15;
+    uint32 event_id = 13;
+    uint32 JGPIOFGPBGE = 15;
 }

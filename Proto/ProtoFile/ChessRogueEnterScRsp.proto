@@ -6,8 +6,8 @@ import "DJEKEGMEHLK.proto";
 import "MANINNKMFHG.proto";
 
 message ChessRogueEnterScRsp {
-    DJEKEGMEHLK CIKPBGDIABO = 4;
-    MANINNKMFHG stage_info = 3;
-    uint32 retcode = 9;
-    uint32 id = 11;
+    DJEKEGMEHLK info = 3;
+    MANINNKMFHG stage_info = 12;
+    uint32 id = 14;
+    uint32 retcode = 15;
 }

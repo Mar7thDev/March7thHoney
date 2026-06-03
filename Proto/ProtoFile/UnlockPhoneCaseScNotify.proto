@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message UnlockPhoneCaseScNotify {
-    uint32 phone_case_id = 4;
+    uint32 phone_case_id = 7;
 }

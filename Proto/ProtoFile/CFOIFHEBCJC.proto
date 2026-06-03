@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "LPADDGPLIKK.proto";
 
 message CFOIFHEBCJC {
-    LPADDGPLIKK CCFGCCMEFCI = 8;
+    LPADDGPLIKK CCFGCCMEFCI = 7;
 }

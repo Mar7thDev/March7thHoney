@@ -25,17 +25,17 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFQS1BGQUhFQkpJTy5wcm90bxoRRUJCSkxIQkFHQ0oucHJvdG8aEU5JRlBJ",
-            "Q0hJRExKLnByb3RvIugBCgtQS1BGQUhFQkpJTxIhCgtGUE1CSk1ETlBCTRgD",
-            "IAMoCzIMLkVCQkpMSEJBR0NKEiMKDW1lc3NhZ2VfZGF0YXMYASADKAsyDC5O",
-            "SUZQSUNISURMShIyCgtGR0dQQU5BRExLTRgCIAMoCzIdLlBLUEZBSEVCSklP",
-            "LkZHR1BBTkFETEtNRW50cnkSGAoQZGlmZmljdWx0eV9sZXZlbBgFIAEoDRIP",
-            "CgdhcmVhX2lkGAQgASgNGjIKEEZHR1BBTkFETEtNRW50cnkSCwoDa2V5GAEg",
-            "ASgNEg0KBXZhbHVlGAIgASgNOgI4AUIWqgITTWFyY2g3dGhIb25leS5Qcm90",
-            "b2IGcHJvdG8z"));
+            "Q0hJRExKLnByb3RvIuIBCgtQS1BGQUhFQkpJTxIjCg1tZXNzYWdlX2RhdGFz",
+            "GAEgAygLMgwuTklGUElDSElETEoSMgoLRkdHUEFOQURMS00YAiADKAsyHS5Q",
+            "S1BGQUhFQkpJTy5GR0dQQU5BRExLTUVudHJ5EiEKC0ZQTUJKTUROUEJNGAMg",
+            "AygLMgwuRUJCSkxIQkFHQ0oSDwoHYXJlYV9pZBgEIAEoDRISCgpkaWZmaWN1",
+            "bHR5GAUgASgNGjIKEEZHR1BBTkFETEtNRW50cnkSCwoDa2V5GAEgASgNEg0K",
+            "BXZhbHVlGAIgASgNOgI4AUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJv",
+            "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.EBBJLHBAGCJReflection.Descriptor, global::March7thHoney.Proto.NIFPICHIDLJReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PKPFAHEBJIO), global::March7thHoney.Proto.PKPFAHEBJIO.Parser, new[]{ "FPMBJMDNPBM", "MessageDatas", "FGGPANADLKM", "DifficultyLevel", "AreaId" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PKPFAHEBJIO), global::March7thHoney.Proto.PKPFAHEBJIO.Parser, new[]{ "MessageDatas", "FGGPANADLKM", "FPMBJMDNPBM", "AreaId", "Difficulty" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -77,11 +77,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PKPFAHEBJIO(PKPFAHEBJIO other) : this() {
-      fPMBJMDNPBM_ = other.fPMBJMDNPBM_.Clone();
       messageDatas_ = other.messageDatas_.Clone();
       fGGPANADLKM_ = other.fGGPANADLKM_.Clone();
-      difficultyLevel_ = other.difficultyLevel_;
+      fPMBJMDNPBM_ = other.fPMBJMDNPBM_.Clone();
       areaId_ = other.areaId_;
+      difficulty_ = other.difficulty_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -89,17 +89,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PKPFAHEBJIO Clone() {
       return new PKPFAHEBJIO(this);
-    }
-
-    /// <summary>Field number for the "FPMBJMDNPBM" field.</summary>
-    public const int FPMBJMDNPBMFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EBBJLHBAGCJ> _repeated_fPMBJMDNPBM_codec
-        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.EBBJLHBAGCJ.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EBBJLHBAGCJ> fPMBJMDNPBM_ = new pbc::RepeatedField<global::March7thHoney.Proto.EBBJLHBAGCJ>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.EBBJLHBAGCJ> FPMBJMDNPBM {
-      get { return fPMBJMDNPBM_; }
     }
 
     /// <summary>Field number for the "message_datas" field.</summary>
@@ -124,16 +113,15 @@ namespace March7thHoney.Proto {
       get { return fGGPANADLKM_; }
     }
 
-    /// <summary>Field number for the "difficulty_level" field.</summary>
-    public const int DifficultyLevelFieldNumber = 5;
-    private uint difficultyLevel_;
+    /// <summary>Field number for the "FPMBJMDNPBM" field.</summary>
+    public const int FPMBJMDNPBMFieldNumber = 3;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EBBJLHBAGCJ> _repeated_fPMBJMDNPBM_codec
+        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.EBBJLHBAGCJ.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EBBJLHBAGCJ> fPMBJMDNPBM_ = new pbc::RepeatedField<global::March7thHoney.Proto.EBBJLHBAGCJ>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint DifficultyLevel {
-      get { return difficultyLevel_; }
-      set {
-        difficultyLevel_ = value;
-      }
+    public pbc::RepeatedField<global::March7thHoney.Proto.EBBJLHBAGCJ> FPMBJMDNPBM {
+      get { return fPMBJMDNPBM_; }
     }
 
     /// <summary>Field number for the "area_id" field.</summary>
@@ -145,6 +133,18 @@ namespace March7thHoney.Proto {
       get { return areaId_; }
       set {
         areaId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "difficulty" field.</summary>
+    public const int DifficultyFieldNumber = 5;
+    private uint difficulty_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Difficulty {
+      get { return difficulty_; }
+      set {
+        difficulty_ = value;
       }
     }
 
@@ -163,11 +163,11 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!fPMBJMDNPBM_.Equals(other.fPMBJMDNPBM_)) return false;
       if(!messageDatas_.Equals(other.messageDatas_)) return false;
       if (!FGGPANADLKM.Equals(other.FGGPANADLKM)) return false;
-      if (DifficultyLevel != other.DifficultyLevel) return false;
+      if(!fPMBJMDNPBM_.Equals(other.fPMBJMDNPBM_)) return false;
       if (AreaId != other.AreaId) return false;
+      if (Difficulty != other.Difficulty) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -175,11 +175,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= fPMBJMDNPBM_.GetHashCode();
       hash ^= messageDatas_.GetHashCode();
       hash ^= FGGPANADLKM.GetHashCode();
-      if (DifficultyLevel != 0) hash ^= DifficultyLevel.GetHashCode();
+      hash ^= fPMBJMDNPBM_.GetHashCode();
       if (AreaId != 0) hash ^= AreaId.GetHashCode();
+      if (Difficulty != 0) hash ^= Difficulty.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -205,9 +205,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(32);
         output.WriteUInt32(AreaId);
       }
-      if (DifficultyLevel != 0) {
+      if (Difficulty != 0) {
         output.WriteRawTag(40);
-        output.WriteUInt32(DifficultyLevel);
+        output.WriteUInt32(Difficulty);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -226,9 +226,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(32);
         output.WriteUInt32(AreaId);
       }
-      if (DifficultyLevel != 0) {
+      if (Difficulty != 0) {
         output.WriteRawTag(40);
-        output.WriteUInt32(DifficultyLevel);
+        output.WriteUInt32(Difficulty);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -240,14 +240,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += fPMBJMDNPBM_.CalculateSize(_repeated_fPMBJMDNPBM_codec);
       size += messageDatas_.CalculateSize(_repeated_messageDatas_codec);
       size += fGGPANADLKM_.CalculateSize(_map_fGGPANADLKM_codec);
-      if (DifficultyLevel != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DifficultyLevel);
-      }
+      size += fPMBJMDNPBM_.CalculateSize(_repeated_fPMBJMDNPBM_codec);
       if (AreaId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AreaId);
+      }
+      if (Difficulty != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Difficulty);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -261,14 +261,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      fPMBJMDNPBM_.Add(other.fPMBJMDNPBM_);
       messageDatas_.Add(other.messageDatas_);
       fGGPANADLKM_.MergeFrom(other.fGGPANADLKM_);
-      if (other.DifficultyLevel != 0) {
-        DifficultyLevel = other.DifficultyLevel;
-      }
+      fPMBJMDNPBM_.Add(other.fPMBJMDNPBM_);
       if (other.AreaId != 0) {
         AreaId = other.AreaId;
+      }
+      if (other.Difficulty != 0) {
+        Difficulty = other.Difficulty;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -306,7 +306,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 40: {
-            DifficultyLevel = input.ReadUInt32();
+            Difficulty = input.ReadUInt32();
             break;
           }
         }
@@ -345,7 +345,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 40: {
-            DifficultyLevel = input.ReadUInt32();
+            Difficulty = input.ReadUInt32();
             break;
           }
         }

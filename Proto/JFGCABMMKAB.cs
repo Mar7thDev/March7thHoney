@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static JFGCABMMKABReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFKRkdDQUJNTUtBQi5wcm90byJzCgtKRkdDQUJNTUtBQhITCgtLRE5CQURF",
-            "R0ROSxgJIAEoDRITCgtOREJHUEdPREJQSBgFIAEoCBITCgtFQkRERENCS1BB",
-            "QxgIIAEoDRITCgtDRU9FT0VCT0xOThgLIAEoDRIQCghncm91cF9pZBgBIAEo",
+            "ChFKRkdDQUJNTUtBQi5wcm90byJzCgtKRkdDQUJNTUtBQhIQCghncm91cF9p",
+            "ZBgBIAEoDRITCgtOREJHUEdPREJQSBgEIAEoCBITCgtFQkRERENCS1BBQxgF",
+            "IAEoDRITCgtLRE5CQURFR0ROSxgJIAEoDRITCgtDRU9FT0VCT0xOThgPIAEo",
             "DUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.JFGCABMMKAB), global::March7thHoney.Proto.JFGCABMMKAB.Parser, new[]{ "KDNBADEGDNK", "NDBGPGODBPH", "EBDDDCBKPAC", "CEOEOEBOLNN", "GroupId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.JFGCABMMKAB), global::March7thHoney.Proto.JFGCABMMKAB.Parser, new[]{ "GroupId", "NDBGPGODBPH", "EBDDDCBKPAC", "KDNBADEGDNK", "CEOEOEBOLNN" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,11 +73,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public JFGCABMMKAB(JFGCABMMKAB other) : this() {
-      kDNBADEGDNK_ = other.kDNBADEGDNK_;
+      groupId_ = other.groupId_;
       nDBGPGODBPH_ = other.nDBGPGODBPH_;
       eBDDDCBKPAC_ = other.eBDDDCBKPAC_;
+      kDNBADEGDNK_ = other.kDNBADEGDNK_;
       cEOEOEBOLNN_ = other.cEOEOEBOLNN_;
-      groupId_ = other.groupId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,6 +85,42 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public JFGCABMMKAB Clone() {
       return new JFGCABMMKAB(this);
+    }
+
+    /// <summary>Field number for the "group_id" field.</summary>
+    public const int GroupIdFieldNumber = 1;
+    private uint groupId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint GroupId {
+      get { return groupId_; }
+      set {
+        groupId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "NDBGPGODBPH" field.</summary>
+    public const int NDBGPGODBPHFieldNumber = 4;
+    private bool nDBGPGODBPH_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool NDBGPGODBPH {
+      get { return nDBGPGODBPH_; }
+      set {
+        nDBGPGODBPH_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "EBDDDCBKPAC" field.</summary>
+    public const int EBDDDCBKPACFieldNumber = 5;
+    private uint eBDDDCBKPAC_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint EBDDDCBKPAC {
+      get { return eBDDDCBKPAC_; }
+      set {
+        eBDDDCBKPAC_ = value;
+      }
     }
 
     /// <summary>Field number for the "KDNBADEGDNK" field.</summary>
@@ -99,32 +135,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "NDBGPGODBPH" field.</summary>
-    public const int NDBGPGODBPHFieldNumber = 5;
-    private bool nDBGPGODBPH_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool NDBGPGODBPH {
-      get { return nDBGPGODBPH_; }
-      set {
-        nDBGPGODBPH_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "EBDDDCBKPAC" field.</summary>
-    public const int EBDDDCBKPACFieldNumber = 8;
-    private uint eBDDDCBKPAC_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint EBDDDCBKPAC {
-      get { return eBDDDCBKPAC_; }
-      set {
-        eBDDDCBKPAC_ = value;
-      }
-    }
-
     /// <summary>Field number for the "CEOEOEBOLNN" field.</summary>
-    public const int CEOEOEBOLNNFieldNumber = 11;
+    public const int CEOEOEBOLNNFieldNumber = 15;
     private uint cEOEOEBOLNN_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -132,18 +144,6 @@ namespace March7thHoney.Proto {
       get { return cEOEOEBOLNN_; }
       set {
         cEOEOEBOLNN_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "group_id" field.</summary>
-    public const int GroupIdFieldNumber = 1;
-    private uint groupId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint GroupId {
-      get { return groupId_; }
-      set {
-        groupId_ = value;
       }
     }
 
@@ -162,11 +162,11 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (KDNBADEGDNK != other.KDNBADEGDNK) return false;
+      if (GroupId != other.GroupId) return false;
       if (NDBGPGODBPH != other.NDBGPGODBPH) return false;
       if (EBDDDCBKPAC != other.EBDDDCBKPAC) return false;
+      if (KDNBADEGDNK != other.KDNBADEGDNK) return false;
       if (CEOEOEBOLNN != other.CEOEOEBOLNN) return false;
-      if (GroupId != other.GroupId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -174,11 +174,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (KDNBADEGDNK != 0) hash ^= KDNBADEGDNK.GetHashCode();
+      if (GroupId != 0) hash ^= GroupId.GetHashCode();
       if (NDBGPGODBPH != false) hash ^= NDBGPGODBPH.GetHashCode();
       if (EBDDDCBKPAC != 0) hash ^= EBDDDCBKPAC.GetHashCode();
+      if (KDNBADEGDNK != 0) hash ^= KDNBADEGDNK.GetHashCode();
       if (CEOEOEBOLNN != 0) hash ^= CEOEOEBOLNN.GetHashCode();
-      if (GroupId != 0) hash ^= GroupId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -202,11 +202,11 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(GroupId);
       }
       if (NDBGPGODBPH != false) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(32);
         output.WriteBool(NDBGPGODBPH);
       }
       if (EBDDDCBKPAC != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(40);
         output.WriteUInt32(EBDDDCBKPAC);
       }
       if (KDNBADEGDNK != 0) {
@@ -214,7 +214,7 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(KDNBADEGDNK);
       }
       if (CEOEOEBOLNN != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(120);
         output.WriteUInt32(CEOEOEBOLNN);
       }
       if (_unknownFields != null) {
@@ -232,11 +232,11 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(GroupId);
       }
       if (NDBGPGODBPH != false) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(32);
         output.WriteBool(NDBGPGODBPH);
       }
       if (EBDDDCBKPAC != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(40);
         output.WriteUInt32(EBDDDCBKPAC);
       }
       if (KDNBADEGDNK != 0) {
@@ -244,7 +244,7 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(KDNBADEGDNK);
       }
       if (CEOEOEBOLNN != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(120);
         output.WriteUInt32(CEOEOEBOLNN);
       }
       if (_unknownFields != null) {
@@ -257,8 +257,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (KDNBADEGDNK != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(KDNBADEGDNK);
+      if (GroupId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GroupId);
       }
       if (NDBGPGODBPH != false) {
         size += 1 + 1;
@@ -266,11 +266,11 @@ namespace March7thHoney.Proto {
       if (EBDDDCBKPAC != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EBDDDCBKPAC);
       }
+      if (KDNBADEGDNK != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(KDNBADEGDNK);
+      }
       if (CEOEOEBOLNN != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CEOEOEBOLNN);
-      }
-      if (GroupId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GroupId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -284,8 +284,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.KDNBADEGDNK != 0) {
-        KDNBADEGDNK = other.KDNBADEGDNK;
+      if (other.GroupId != 0) {
+        GroupId = other.GroupId;
       }
       if (other.NDBGPGODBPH != false) {
         NDBGPGODBPH = other.NDBGPGODBPH;
@@ -293,11 +293,11 @@ namespace March7thHoney.Proto {
       if (other.EBDDDCBKPAC != 0) {
         EBDDDCBKPAC = other.EBDDDCBKPAC;
       }
+      if (other.KDNBADEGDNK != 0) {
+        KDNBADEGDNK = other.KDNBADEGDNK;
+      }
       if (other.CEOEOEBOLNN != 0) {
         CEOEOEBOLNN = other.CEOEOEBOLNN;
-      }
-      if (other.GroupId != 0) {
-        GroupId = other.GroupId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -322,11 +322,11 @@ namespace March7thHoney.Proto {
             GroupId = input.ReadUInt32();
             break;
           }
-          case 40: {
+          case 32: {
             NDBGPGODBPH = input.ReadBool();
             break;
           }
-          case 64: {
+          case 40: {
             EBDDDCBKPAC = input.ReadUInt32();
             break;
           }
@@ -334,7 +334,7 @@ namespace March7thHoney.Proto {
             KDNBADEGDNK = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 120: {
             CEOEOEBOLNN = input.ReadUInt32();
             break;
           }
@@ -361,11 +361,11 @@ namespace March7thHoney.Proto {
             GroupId = input.ReadUInt32();
             break;
           }
-          case 40: {
+          case 32: {
             NDBGPGODBPH = input.ReadBool();
             break;
           }
-          case 64: {
+          case 40: {
             EBDDDCBKPAC = input.ReadUInt32();
             break;
           }
@@ -373,7 +373,7 @@ namespace March7thHoney.Proto {
             KDNBADEGDNK = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 120: {
             CEOEOEBOLNN = input.ReadUInt32();
             break;
           }

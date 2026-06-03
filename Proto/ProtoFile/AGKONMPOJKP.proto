@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ELGOBKCNOHH.proto";
 
 message AGKONMPOJKP {
-    repeated ELGOBKCNOHH MAJGMMCOCIG = 10;
+    repeated ELGOBKCNOHH MAJGMMCOCIG = 15;
 }

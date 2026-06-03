@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message FinishedMissionScNotify {
-    repeated uint32 finished_main_mission_id_list = 4;
+    repeated uint32 finished_main_mission_id_list = 14;
 }

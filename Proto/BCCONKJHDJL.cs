@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFCQ0NPTktKSERKTC5wcm90bxoRQU9IS0tGSERBTE8ucHJvdG8aF0dyaWRG",
-            "aWdodERyb3BUeXBlLnByb3RvIn0KC0JDQ09OS0pIREpMEiMKDWRpc3BsYXlf",
-            "dmFsdWUYBSABKAsyDC5BT0hLS0ZIREFMTxInCgtGS0tHTEZPSEdHQRgBIAEo",
-            "DjISLkdyaWRGaWdodERyb3BUeXBlEhMKC0ZOTE1LSkxLTEZIGAIgASgNEgsK",
-            "A251bRgDIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "aWdodERyb3BUeXBlLnByb3RvInUKC0JDQ09OS0pIREpMEicKC0ZLS0dMRk9I",
+            "R0dBGAEgASgOMhIuR3JpZEZpZ2h0RHJvcFR5cGUSEwoLRk5MTUtKTEtMRkgY",
+            "AiABKA0SCwoDbnVtGAMgASgNEhsKBXBhcmFtGAUgASgLMgwuQU9IS0tGSERB",
+            "TE9CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.AOHKKFHDALOReflection.Descriptor, global::March7thHoney.Proto.GridFightDropTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BCCONKJHDJL), global::March7thHoney.Proto.BCCONKJHDJL.Parser, new[]{ "DisplayValue", "FKKGLFOHGGA", "FNLMKJLKLFH", "Num" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BCCONKJHDJL), global::March7thHoney.Proto.BCCONKJHDJL.Parser, new[]{ "FKKGLFOHGGA", "FNLMKJLKLFH", "Num", "Param" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,10 +74,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BCCONKJHDJL(BCCONKJHDJL other) : this() {
-      displayValue_ = other.displayValue_ != null ? other.displayValue_.Clone() : null;
       fKKGLFOHGGA_ = other.fKKGLFOHGGA_;
       fNLMKJLKLFH_ = other.fNLMKJLKLFH_;
       num_ = other.num_;
+      param_ = other.param_ != null ? other.param_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,18 +85,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BCCONKJHDJL Clone() {
       return new BCCONKJHDJL(this);
-    }
-
-    /// <summary>Field number for the "display_value" field.</summary>
-    public const int DisplayValueFieldNumber = 5;
-    private global::March7thHoney.Proto.AOHKKFHDALO displayValue_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.AOHKKFHDALO DisplayValue {
-      get { return displayValue_; }
-      set {
-        displayValue_ = value;
-      }
     }
 
     /// <summary>Field number for the "FKKGLFOHGGA" field.</summary>
@@ -135,6 +123,18 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "param" field.</summary>
+    public const int ParamFieldNumber = 5;
+    private global::March7thHoney.Proto.AOHKKFHDALO param_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.AOHKKFHDALO Param {
+      get { return param_; }
+      set {
+        param_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -150,10 +150,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(DisplayValue, other.DisplayValue)) return false;
       if (FKKGLFOHGGA != other.FKKGLFOHGGA) return false;
       if (FNLMKJLKLFH != other.FNLMKJLKLFH) return false;
       if (Num != other.Num) return false;
+      if (!object.Equals(Param, other.Param)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -161,10 +161,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (displayValue_ != null) hash ^= DisplayValue.GetHashCode();
       if (FKKGLFOHGGA != global::March7thHoney.Proto.GridFightDropType.MjjifginjajNlcdgipgfdj) hash ^= FKKGLFOHGGA.GetHashCode();
       if (FNLMKJLKLFH != 0) hash ^= FNLMKJLKLFH.GetHashCode();
       if (Num != 0) hash ^= Num.GetHashCode();
+      if (param_ != null) hash ^= Param.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -195,9 +195,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(24);
         output.WriteUInt32(Num);
       }
-      if (displayValue_ != null) {
+      if (param_ != null) {
         output.WriteRawTag(42);
-        output.WriteMessage(DisplayValue);
+        output.WriteMessage(Param);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -221,9 +221,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(24);
         output.WriteUInt32(Num);
       }
-      if (displayValue_ != null) {
+      if (param_ != null) {
         output.WriteRawTag(42);
-        output.WriteMessage(DisplayValue);
+        output.WriteMessage(Param);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -235,9 +235,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (displayValue_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(DisplayValue);
-      }
       if (FKKGLFOHGGA != global::March7thHoney.Proto.GridFightDropType.MjjifginjajNlcdgipgfdj) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) FKKGLFOHGGA);
       }
@@ -246,6 +243,9 @@ namespace March7thHoney.Proto {
       }
       if (Num != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Num);
+      }
+      if (param_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Param);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -259,12 +259,6 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.displayValue_ != null) {
-        if (displayValue_ == null) {
-          DisplayValue = new global::March7thHoney.Proto.AOHKKFHDALO();
-        }
-        DisplayValue.MergeFrom(other.DisplayValue);
-      }
       if (other.FKKGLFOHGGA != global::March7thHoney.Proto.GridFightDropType.MjjifginjajNlcdgipgfdj) {
         FKKGLFOHGGA = other.FKKGLFOHGGA;
       }
@@ -273,6 +267,12 @@ namespace March7thHoney.Proto {
       }
       if (other.Num != 0) {
         Num = other.Num;
+      }
+      if (other.param_ != null) {
+        if (param_ == null) {
+          Param = new global::March7thHoney.Proto.AOHKKFHDALO();
+        }
+        Param.MergeFrom(other.Param);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -306,10 +306,10 @@ namespace March7thHoney.Proto {
             break;
           }
           case 42: {
-            if (displayValue_ == null) {
-              DisplayValue = new global::March7thHoney.Proto.AOHKKFHDALO();
+            if (param_ == null) {
+              Param = new global::March7thHoney.Proto.AOHKKFHDALO();
             }
-            input.ReadMessage(DisplayValue);
+            input.ReadMessage(Param);
             break;
           }
         }
@@ -344,10 +344,10 @@ namespace March7thHoney.Proto {
             break;
           }
           case 42: {
-            if (displayValue_ == null) {
-              DisplayValue = new global::March7thHoney.Proto.AOHKKFHDALO();
+            if (param_ == null) {
+              Param = new global::March7thHoney.Proto.AOHKKFHDALO();
             }
-            input.ReadMessage(DisplayValue);
+            input.ReadMessage(Param);
             break;
           }
         }

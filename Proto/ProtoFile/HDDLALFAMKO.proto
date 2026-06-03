@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "LAEHICCBBFN.proto";
 
 message HDDLALFAMKO {
-    repeated uint32 LPBBJFFNACA = 10;
-    LAEHICCBBFN KDJACPBDHAE = 3;
+    LAEHICCBBFN KDJACPBDHAE = 6;
+    repeated uint32 LPBBJFFNACA = 15;
 }

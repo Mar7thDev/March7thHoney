@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message SetForbidOtherApplyFriendScRsp {
-    uint32 retcode = 3;
-    bool PBNJDHFCHHC = 2;
+    bool PBNJDHFCHHC = 4;
+    uint32 retcode = 10;
 }

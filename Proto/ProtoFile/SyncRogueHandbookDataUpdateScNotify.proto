@@ -10,8 +10,8 @@ import "ONMFMINNBEB.proto";
 
 message SyncRogueHandbookDataUpdateScNotify {
     repeated BPHIKPCNBHM IPNAAGCMNLB = 7;
-    repeated LGFOKKPICEH JEAGPFDBJDH = 12;
-    repeated ONMFMINNBEB LMDKIJFDLEO = 9;
-    repeated NMHMGHEHHCM BOJGAEJNCFP = 5;
-    repeated CIGDBCKOFBN BFDFABHMCNE = 15;
+    repeated NMHMGHEHHCM BOJGAEJNCFP = 9;
+    repeated LGFOKKPICEH JEAGPFDBJDH = 10;
+    repeated CIGDBCKOFBN BFDFABHMCNE = 11;
+    repeated ONMFMINNBEB LMDKIJFDLEO = 14;
 }

@@ -8,12 +8,12 @@ import "RotaterData.proto";
 import "RotaterEnergyInfo.proto";
 
 message GetMapRotationDataScRsp {
-    repeated RotaterData CEDGGDFMILP = 9;
-    RotateMapInfo COOOMDKGODF = 10;
-    repeated ChargerInfo EGAGKNADAHJ = 11;
-    RotaterEnergyInfo energy_info = 5;
-    uint32 JPPMEKJGJFD = 14;
-    int32 LJHKNKFLGDE = 6;
-    bool BHABAIFPOOA = 4;
-    uint32 retcode = 1;
+    repeated ChargerInfo EGAGKNADAHJ = 1;
+    bool BHABAIFPOOA = 2;
+    int32 region_id = 5;
+    RotateMapInfo COOOMDKGODF = 6;
+    uint32 JPPMEKJGJFD = 8;
+    repeated RotaterData CEDGGDFMILP = 10;
+    RotaterEnergyInfo energy_info = 13;
+    uint32 retcode = 14;
 }

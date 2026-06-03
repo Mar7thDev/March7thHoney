@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ClockParkUnlockTalentScRsp {
-    uint32 CKHCLKOALKE = 6;
-    uint32 retcode = 14;
+    uint32 CKHCLKOALKE = 4;
+    uint32 retcode = 11;
 }

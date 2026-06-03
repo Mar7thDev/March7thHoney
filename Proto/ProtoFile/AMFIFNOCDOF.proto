@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message AMFIFNOCDOF {
-    uint32 MDNAGANGNKK = 1;
+    uint32 MDNAGANGNKK = 11;
 }

@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "DFEGGFFOMKI.proto";
 
 message ChenLingQuitStageScRsp {
-    DFEGGFFOMKI BFLLJJBHLDF = 5;
-    uint32 retcode = 6;
+    DFEGGFFOMKI BFLLJJBHLDF = 3;
+    uint32 retcode = 5;
 }

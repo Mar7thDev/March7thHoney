@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "OBIMHNFFLEM.proto";
 
 message ADHGIJPHLEB {
-    repeated OBIMHNFFLEM MFJCLCJNAFO = 2;
     uint32 trait_id = 1;
-    double KINKMHEAANP = 4;
+    repeated OBIMHNFFLEM MFJCLCJNAFO = 2;
     double damage = 3;
+    double KINKMHEAANP = 4;
 }

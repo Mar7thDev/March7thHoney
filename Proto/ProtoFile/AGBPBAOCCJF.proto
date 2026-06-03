@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message AGBPBAOCCJF {
-    bool is_win = 2;
+    bool is_win = 7;
 }

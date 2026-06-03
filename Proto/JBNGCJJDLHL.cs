@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static JBNGCJJDLHLReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFKQk5HQ0pKRExITC5wcm90bxoRSUpIUElMQkJIREkucHJvdG8iagoLSkJO",
-            "R0NKSkRMSEwSIQoLQ0ZOTk1PQ0JCRk0YCCADKAsyDC5JSkhQSUxCQkhESRIR",
-            "CglnaWZ0X3R5cGUYBSABKA0SEAoIZW5kX3RpbWUYDyABKAMSEwoLSUZFUEpI",
-            "R05DT0kYCiABKANCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ChFKQk5HQ0pKRExITC5wcm90bxoRSUpIUElMQkJIREkucHJvdG8iaQoLSkJO",
+            "R0NKSkRMSEwSEQoJZ2lmdF90eXBlGAIgASgNEhAKCGVuZF90aW1lGAMgASgD",
+            "EhIKCnN0YXJ0X3RpbWUYBSABKAMSIQoLc3RhdHVzX2xpc3QYCCADKAsyDC5J",
+            "SkhQSUxCQkhESUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.IJHPILBBHDIReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.JBNGCJJDLHL), global::March7thHoney.Proto.JBNGCJJDLHL.Parser, new[]{ "CFNNMOCBBFM", "GiftType", "EndTime", "IFEPJHGNCOI" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.JBNGCJJDLHL), global::March7thHoney.Proto.JBNGCJJDLHL.Parser, new[]{ "GiftType", "EndTime", "StartTime", "StatusList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,10 +73,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public JBNGCJJDLHL(JBNGCJJDLHL other) : this() {
-      cFNNMOCBBFM_ = other.cFNNMOCBBFM_.Clone();
       giftType_ = other.giftType_;
       endTime_ = other.endTime_;
-      iFEPJHGNCOI_ = other.iFEPJHGNCOI_;
+      startTime_ = other.startTime_;
+      statusList_ = other.statusList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,19 +86,8 @@ namespace March7thHoney.Proto {
       return new JBNGCJJDLHL(this);
     }
 
-    /// <summary>Field number for the "CFNNMOCBBFM" field.</summary>
-    public const int CFNNMOCBBFMFieldNumber = 8;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.IJHPILBBHDI> _repeated_cFNNMOCBBFM_codec
-        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.IJHPILBBHDI.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.IJHPILBBHDI> cFNNMOCBBFM_ = new pbc::RepeatedField<global::March7thHoney.Proto.IJHPILBBHDI>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.IJHPILBBHDI> CFNNMOCBBFM {
-      get { return cFNNMOCBBFM_; }
-    }
-
     /// <summary>Field number for the "gift_type" field.</summary>
-    public const int GiftTypeFieldNumber = 5;
+    public const int GiftTypeFieldNumber = 2;
     private uint giftType_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,7 +99,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "end_time" field.</summary>
-    public const int EndTimeFieldNumber = 15;
+    public const int EndTimeFieldNumber = 3;
     private long endTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -121,16 +110,27 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "IFEPJHGNCOI" field.</summary>
-    public const int IFEPJHGNCOIFieldNumber = 10;
-    private long iFEPJHGNCOI_;
+    /// <summary>Field number for the "start_time" field.</summary>
+    public const int StartTimeFieldNumber = 5;
+    private long startTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long IFEPJHGNCOI {
-      get { return iFEPJHGNCOI_; }
+    public long StartTime {
+      get { return startTime_; }
       set {
-        iFEPJHGNCOI_ = value;
+        startTime_ = value;
       }
+    }
+
+    /// <summary>Field number for the "status_list" field.</summary>
+    public const int StatusListFieldNumber = 8;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.IJHPILBBHDI> _repeated_statusList_codec
+        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.IJHPILBBHDI.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.IJHPILBBHDI> statusList_ = new pbc::RepeatedField<global::March7thHoney.Proto.IJHPILBBHDI>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.IJHPILBBHDI> StatusList {
+      get { return statusList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -148,10 +148,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!cFNNMOCBBFM_.Equals(other.cFNNMOCBBFM_)) return false;
       if (GiftType != other.GiftType) return false;
       if (EndTime != other.EndTime) return false;
-      if (IFEPJHGNCOI != other.IFEPJHGNCOI) return false;
+      if (StartTime != other.StartTime) return false;
+      if(!statusList_.Equals(other.statusList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -159,10 +159,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= cFNNMOCBBFM_.GetHashCode();
       if (GiftType != 0) hash ^= GiftType.GetHashCode();
       if (EndTime != 0L) hash ^= EndTime.GetHashCode();
-      if (IFEPJHGNCOI != 0L) hash ^= IFEPJHGNCOI.GetHashCode();
+      if (StartTime != 0L) hash ^= StartTime.GetHashCode();
+      hash ^= statusList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -182,18 +182,18 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (GiftType != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(16);
         output.WriteUInt32(GiftType);
       }
-      cFNNMOCBBFM_.WriteTo(output, _repeated_cFNNMOCBBFM_codec);
-      if (IFEPJHGNCOI != 0L) {
-        output.WriteRawTag(80);
-        output.WriteInt64(IFEPJHGNCOI);
-      }
       if (EndTime != 0L) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(24);
         output.WriteInt64(EndTime);
       }
+      if (StartTime != 0L) {
+        output.WriteRawTag(40);
+        output.WriteInt64(StartTime);
+      }
+      statusList_.WriteTo(output, _repeated_statusList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -205,18 +205,18 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (GiftType != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(16);
         output.WriteUInt32(GiftType);
       }
-      cFNNMOCBBFM_.WriteTo(ref output, _repeated_cFNNMOCBBFM_codec);
-      if (IFEPJHGNCOI != 0L) {
-        output.WriteRawTag(80);
-        output.WriteInt64(IFEPJHGNCOI);
-      }
       if (EndTime != 0L) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(24);
         output.WriteInt64(EndTime);
       }
+      if (StartTime != 0L) {
+        output.WriteRawTag(40);
+        output.WriteInt64(StartTime);
+      }
+      statusList_.WriteTo(ref output, _repeated_statusList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -227,16 +227,16 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += cFNNMOCBBFM_.CalculateSize(_repeated_cFNNMOCBBFM_codec);
       if (GiftType != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GiftType);
       }
       if (EndTime != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(EndTime);
       }
-      if (IFEPJHGNCOI != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(IFEPJHGNCOI);
+      if (StartTime != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(StartTime);
       }
+      size += statusList_.CalculateSize(_repeated_statusList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -249,16 +249,16 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      cFNNMOCBBFM_.Add(other.cFNNMOCBBFM_);
       if (other.GiftType != 0) {
         GiftType = other.GiftType;
       }
       if (other.EndTime != 0L) {
         EndTime = other.EndTime;
       }
-      if (other.IFEPJHGNCOI != 0L) {
-        IFEPJHGNCOI = other.IFEPJHGNCOI;
+      if (other.StartTime != 0L) {
+        StartTime = other.StartTime;
       }
+      statusList_.Add(other.statusList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -278,20 +278,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 40: {
+          case 16: {
             GiftType = input.ReadUInt32();
             break;
           }
-          case 66: {
-            cFNNMOCBBFM_.AddEntriesFrom(input, _repeated_cFNNMOCBBFM_codec);
-            break;
-          }
-          case 80: {
-            IFEPJHGNCOI = input.ReadInt64();
-            break;
-          }
-          case 120: {
+          case 24: {
             EndTime = input.ReadInt64();
+            break;
+          }
+          case 40: {
+            StartTime = input.ReadInt64();
+            break;
+          }
+          case 66: {
+            statusList_.AddEntriesFrom(input, _repeated_statusList_codec);
             break;
           }
         }
@@ -313,20 +313,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 40: {
+          case 16: {
             GiftType = input.ReadUInt32();
             break;
           }
-          case 66: {
-            cFNNMOCBBFM_.AddEntriesFrom(ref input, _repeated_cFNNMOCBBFM_codec);
-            break;
-          }
-          case 80: {
-            IFEPJHGNCOI = input.ReadInt64();
-            break;
-          }
-          case 120: {
+          case 24: {
             EndTime = input.ReadInt64();
+            break;
+          }
+          case 40: {
+            StartTime = input.ReadInt64();
+            break;
+          }
+          case 66: {
+            statusList_.AddEntriesFrom(ref input, _repeated_statusList_codec);
             break;
           }
         }

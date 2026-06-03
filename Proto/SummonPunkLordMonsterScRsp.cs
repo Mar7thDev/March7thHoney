@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiBTdW1tb25QdW5rTG9yZE1vbnN0ZXJTY1JzcC5wcm90bxoRSkVJQUVBRUdF",
             "QkoucHJvdG8iUAoaU3VtbW9uUHVua0xvcmRNb25zdGVyU2NSc3ASIQoLT05J",
-            "Q0pPQU9FTUEYByABKAsyDC5KRUlBRUFFR0VCShIPCgdyZXRjb2RlGAkgASgN",
+            "Q0pPQU9FTUEYASABKAsyDC5KRUlBRUFFR0VCShIPCgdyZXRjb2RlGAYgASgN",
             "QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.JEIAEAEGEBJReflection.Descriptor, },
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "ONICJOAOEMA" field.</summary>
-    public const int ONICJOAOEMAFieldNumber = 7;
+    public const int ONICJOAOEMAFieldNumber = 1;
     private global::March7thHoney.Proto.JEIAEAEGEBJ oNICJOAOEMA_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 9;
+    public const int RetcodeFieldNumber = 6;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -153,11 +153,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (oNICJOAOEMA_ != null) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(10);
         output.WriteMessage(ONICJOAOEMA);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(48);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -171,11 +171,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (oNICJOAOEMA_ != null) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(10);
         output.WriteMessage(ONICJOAOEMA);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(48);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -234,14 +234,14 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 58: {
+          case 10: {
             if (oNICJOAOEMA_ == null) {
               ONICJOAOEMA = new global::March7thHoney.Proto.JEIAEAEGEBJ();
             }
             input.ReadMessage(ONICJOAOEMA);
             break;
           }
-          case 72: {
+          case 48: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -264,14 +264,14 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 58: {
+          case 10: {
             if (oNICJOAOEMA_ == null) {
               ONICJOAOEMA = new global::March7thHoney.Proto.JEIAEAEGEBJ();
             }
             input.ReadMessage(ONICJOAOEMA);
             break;
           }
-          case 72: {
+          case 48: {
             Retcode = input.ReadUInt32();
             break;
           }

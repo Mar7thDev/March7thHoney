@@ -25,9 +25,9 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChNNYXplUHJvcFN0YXRlLnByb3RvGhNQcm9wRXh0cmFJbmZvLnByb3RvImcK",
-            "DU1hemVQcm9wU3RhdGUSIgoKZXh0cmFfaW5mbxgGIAEoCzIOLlByb3BFeHRy",
-            "YUluZm8SEQoJY29uZmlnX2lkGAggASgNEg0KBXN0YXRlGAUgASgNEhAKCGdy",
-            "b3VwX2lkGAkgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "DU1hemVQcm9wU3RhdGUSIgoKZXh0cmFfaW5mbxgBIAEoCzIOLlByb3BFeHRy",
+            "YUluZm8SEQoJY29uZmlnX2lkGAUgASgNEg0KBXN0YXRlGAcgASgNEhAKCGdy",
+            "b3VwX2lkGA0gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.PropExtraInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -87,7 +87,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "extra_info" field.</summary>
-    public const int ExtraInfoFieldNumber = 6;
+    public const int ExtraInfoFieldNumber = 1;
     private global::March7thHoney.Proto.PropExtraInfo extraInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -99,7 +99,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "config_id" field.</summary>
-    public const int ConfigIdFieldNumber = 8;
+    public const int ConfigIdFieldNumber = 5;
     private uint configId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -111,7 +111,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "state" field.</summary>
-    public const int StateFieldNumber = 5;
+    public const int StateFieldNumber = 7;
     private uint state_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -123,7 +123,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "group_id" field.</summary>
-    public const int GroupIdFieldNumber = 9;
+    public const int GroupIdFieldNumber = 13;
     private uint groupId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -182,20 +182,20 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (State != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(State);
-      }
       if (extraInfo_ != null) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(10);
         output.WriteMessage(ExtraInfo);
       }
       if (ConfigId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(40);
         output.WriteUInt32(ConfigId);
       }
+      if (State != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(State);
+      }
       if (GroupId != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(104);
         output.WriteUInt32(GroupId);
       }
       if (_unknownFields != null) {
@@ -208,20 +208,20 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (State != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(State);
-      }
       if (extraInfo_ != null) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(10);
         output.WriteMessage(ExtraInfo);
       }
       if (ConfigId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(40);
         output.WriteUInt32(ConfigId);
       }
+      if (State != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(State);
+      }
       if (GroupId != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(104);
         output.WriteUInt32(GroupId);
       }
       if (_unknownFields != null) {
@@ -292,22 +292,22 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 40: {
-            State = input.ReadUInt32();
-            break;
-          }
-          case 50: {
+          case 10: {
             if (extraInfo_ == null) {
               ExtraInfo = new global::March7thHoney.Proto.PropExtraInfo();
             }
             input.ReadMessage(ExtraInfo);
             break;
           }
-          case 64: {
+          case 40: {
             ConfigId = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 56: {
+            State = input.ReadUInt32();
+            break;
+          }
+          case 104: {
             GroupId = input.ReadUInt32();
             break;
           }
@@ -330,22 +330,22 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 40: {
-            State = input.ReadUInt32();
-            break;
-          }
-          case 50: {
+          case 10: {
             if (extraInfo_ == null) {
               ExtraInfo = new global::March7thHoney.Proto.PropExtraInfo();
             }
             input.ReadMessage(ExtraInfo);
             break;
           }
-          case 64: {
+          case 40: {
             ConfigId = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 56: {
+            State = input.ReadUInt32();
+            break;
+          }
+          case 104: {
             GroupId = input.ReadUInt32();
             break;
           }

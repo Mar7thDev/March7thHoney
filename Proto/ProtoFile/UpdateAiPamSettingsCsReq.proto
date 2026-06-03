@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message UpdateAiPamSettingsCsReq {
-    bool LOCNGFLCENG = 10;
+    bool LOCNGFLCENG = 6;
 }

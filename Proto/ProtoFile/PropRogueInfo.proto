@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message PropRogueInfo {
-    uint32 MAJKFIMPOOF = 11;
-    uint32 KKMEFDEFLBI = 9;
+    uint32 room_id = 5;
     uint32 GECOCMLBBPE = 6;
-    uint32 room_id = 7;
+    uint32 MAJKFIMPOOF = 8;
+    uint32 KKMEFDEFLBI = 13;
 }

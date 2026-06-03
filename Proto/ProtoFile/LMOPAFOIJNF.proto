@@ -2,9 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-import "KOLCCDIJBGO.proto";
+import "FateBuffData.proto";
 
 message LMOPAFOIJNF {
-    repeated KOLCCDIJBGO FCKIOLPLANI = 7;
-    repeated uint32 PDKAMAGEFEK = 5;
+    repeated uint32 PDKAMAGEFEK = 9;
+    repeated FateBuffData FCKIOLPLANI = 11;
 }

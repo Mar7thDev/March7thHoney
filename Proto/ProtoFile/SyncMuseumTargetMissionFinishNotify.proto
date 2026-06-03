@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message SyncMuseumTargetMissionFinishNotify {
-    repeated uint32 CLLLEMMKDMB = 7;
-    bool MAOMPIDOMIJ = 5;
-    uint32 KFGLDLFBFFB = 8;
+    bool MAOMPIDOMIJ = 1;
+    repeated uint32 CLLLEMMKDMB = 9;
+    uint32 KFGLDLFBFFB = 12;
 }

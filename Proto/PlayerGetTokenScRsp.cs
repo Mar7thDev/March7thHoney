@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChlQbGF5ZXJHZXRUb2tlblNjUnNwLnByb3RvGg9CbGFja0luZm8ucHJvdG8i",
-            "kAEKE1BsYXllckdldFRva2VuU2NSc3ASDwoHYXV0aGtleRgNIAEoCRIeCgpi",
-            "bGFja19pbmZvGA4gASgLMgouQmxhY2tJbmZvEhEKCXN0b3BfZGVzYxgHIAEo",
-            "CRILCgN1aWQYBiABKA0SDwoHcmV0Y29kZRgIIAEoDRIXCg9zZWNyZXRfa2V5",
-            "X3NlZWQYCyABKARCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "kAEKE1BsYXllckdldFRva2VuU2NSc3ASEQoJc3RvcF9kZXNjGAMgASgJEg8K",
+            "B3JldGNvZGUYBCABKA0SFwoPc2VjcmV0X2tleV9zZWVkGAggASgEEh4KCmJs",
+            "YWNrX2luZm8YCSABKAsyCi5CbGFja0luZm8SCwoDdWlkGA4gASgNEg8KB2F1",
+            "dGhrZXkYDyABKAlCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.BlackInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlayerGetTokenScRsp), global::March7thHoney.Proto.PlayerGetTokenScRsp.Parser, new[]{ "Authkey", "BlackInfo", "StopDesc", "Uid", "Retcode", "SecretKeySeed" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlayerGetTokenScRsp), global::March7thHoney.Proto.PlayerGetTokenScRsp.Parser, new[]{ "StopDesc", "Retcode", "SecretKeySeed", "BlackInfo", "Uid", "Authkey" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,12 +74,12 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PlayerGetTokenScRsp(PlayerGetTokenScRsp other) : this() {
-      authkey_ = other.authkey_;
-      blackInfo_ = other.blackInfo_ != null ? other.blackInfo_.Clone() : null;
       stopDesc_ = other.stopDesc_;
-      uid_ = other.uid_;
       retcode_ = other.retcode_;
       secretKeySeed_ = other.secretKeySeed_;
+      blackInfo_ = other.blackInfo_ != null ? other.blackInfo_.Clone() : null;
+      uid_ = other.uid_;
+      authkey_ = other.authkey_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -89,32 +89,8 @@ namespace March7thHoney.Proto {
       return new PlayerGetTokenScRsp(this);
     }
 
-    /// <summary>Field number for the "authkey" field.</summary>
-    public const int AuthkeyFieldNumber = 13;
-    private string authkey_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Authkey {
-      get { return authkey_; }
-      set {
-        authkey_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "black_info" field.</summary>
-    public const int BlackInfoFieldNumber = 14;
-    private global::March7thHoney.Proto.BlackInfo blackInfo_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.BlackInfo BlackInfo {
-      get { return blackInfo_; }
-      set {
-        blackInfo_ = value;
-      }
-    }
-
     /// <summary>Field number for the "stop_desc" field.</summary>
-    public const int StopDescFieldNumber = 7;
+    public const int StopDescFieldNumber = 3;
     private string stopDesc_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -125,20 +101,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "uid" field.</summary>
-    public const int UidFieldNumber = 6;
-    private uint uid_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Uid {
-      get { return uid_; }
-      set {
-        uid_ = value;
-      }
-    }
-
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 8;
+    public const int RetcodeFieldNumber = 4;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -150,7 +114,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "secret_key_seed" field.</summary>
-    public const int SecretKeySeedFieldNumber = 11;
+    public const int SecretKeySeedFieldNumber = 8;
     private ulong secretKeySeed_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -158,6 +122,42 @@ namespace March7thHoney.Proto {
       get { return secretKeySeed_; }
       set {
         secretKeySeed_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "black_info" field.</summary>
+    public const int BlackInfoFieldNumber = 9;
+    private global::March7thHoney.Proto.BlackInfo blackInfo_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.BlackInfo BlackInfo {
+      get { return blackInfo_; }
+      set {
+        blackInfo_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "uid" field.</summary>
+    public const int UidFieldNumber = 14;
+    private uint uid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Uid {
+      get { return uid_; }
+      set {
+        uid_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "authkey" field.</summary>
+    public const int AuthkeyFieldNumber = 15;
+    private string authkey_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Authkey {
+      get { return authkey_; }
+      set {
+        authkey_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -176,12 +176,12 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Authkey != other.Authkey) return false;
-      if (!object.Equals(BlackInfo, other.BlackInfo)) return false;
       if (StopDesc != other.StopDesc) return false;
-      if (Uid != other.Uid) return false;
       if (Retcode != other.Retcode) return false;
       if (SecretKeySeed != other.SecretKeySeed) return false;
+      if (!object.Equals(BlackInfo, other.BlackInfo)) return false;
+      if (Uid != other.Uid) return false;
+      if (Authkey != other.Authkey) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -189,12 +189,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Authkey.Length != 0) hash ^= Authkey.GetHashCode();
-      if (blackInfo_ != null) hash ^= BlackInfo.GetHashCode();
       if (StopDesc.Length != 0) hash ^= StopDesc.GetHashCode();
-      if (Uid != 0) hash ^= Uid.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (SecretKeySeed != 0UL) hash ^= SecretKeySeed.GetHashCode();
+      if (blackInfo_ != null) hash ^= BlackInfo.GetHashCode();
+      if (Uid != 0) hash ^= Uid.GetHashCode();
+      if (Authkey.Length != 0) hash ^= Authkey.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -213,29 +213,29 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Uid != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(Uid);
-      }
       if (StopDesc.Length != 0) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(26);
         output.WriteString(StopDesc);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(32);
         output.WriteUInt32(Retcode);
       }
       if (SecretKeySeed != 0UL) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(64);
         output.WriteUInt64(SecretKeySeed);
       }
-      if (Authkey.Length != 0) {
-        output.WriteRawTag(106);
-        output.WriteString(Authkey);
-      }
       if (blackInfo_ != null) {
-        output.WriteRawTag(114);
+        output.WriteRawTag(74);
         output.WriteMessage(BlackInfo);
+      }
+      if (Uid != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(Uid);
+      }
+      if (Authkey.Length != 0) {
+        output.WriteRawTag(122);
+        output.WriteString(Authkey);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -247,29 +247,29 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Uid != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(Uid);
-      }
       if (StopDesc.Length != 0) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(26);
         output.WriteString(StopDesc);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(32);
         output.WriteUInt32(Retcode);
       }
       if (SecretKeySeed != 0UL) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(64);
         output.WriteUInt64(SecretKeySeed);
       }
-      if (Authkey.Length != 0) {
-        output.WriteRawTag(106);
-        output.WriteString(Authkey);
-      }
       if (blackInfo_ != null) {
-        output.WriteRawTag(114);
+        output.WriteRawTag(74);
         output.WriteMessage(BlackInfo);
+      }
+      if (Uid != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(Uid);
+      }
+      if (Authkey.Length != 0) {
+        output.WriteRawTag(122);
+        output.WriteString(Authkey);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -281,23 +281,23 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Authkey.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Authkey);
-      }
-      if (blackInfo_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(BlackInfo);
-      }
       if (StopDesc.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(StopDesc);
-      }
-      if (Uid != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Uid);
       }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
       if (SecretKeySeed != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(SecretKeySeed);
+      }
+      if (blackInfo_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(BlackInfo);
+      }
+      if (Uid != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Uid);
+      }
+      if (Authkey.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Authkey);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -311,8 +311,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.Authkey.Length != 0) {
-        Authkey = other.Authkey;
+      if (other.StopDesc.Length != 0) {
+        StopDesc = other.StopDesc;
+      }
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
+      }
+      if (other.SecretKeySeed != 0UL) {
+        SecretKeySeed = other.SecretKeySeed;
       }
       if (other.blackInfo_ != null) {
         if (blackInfo_ == null) {
@@ -320,17 +326,11 @@ namespace March7thHoney.Proto {
         }
         BlackInfo.MergeFrom(other.BlackInfo);
       }
-      if (other.StopDesc.Length != 0) {
-        StopDesc = other.StopDesc;
-      }
       if (other.Uid != 0) {
         Uid = other.Uid;
       }
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
-      }
-      if (other.SecretKeySeed != 0UL) {
-        SecretKeySeed = other.SecretKeySeed;
+      if (other.Authkey.Length != 0) {
+        Authkey = other.Authkey;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -351,31 +351,31 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 48: {
-            Uid = input.ReadUInt32();
-            break;
-          }
-          case 58: {
+          case 26: {
             StopDesc = input.ReadString();
             break;
           }
-          case 64: {
+          case 32: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 64: {
             SecretKeySeed = input.ReadUInt64();
             break;
           }
-          case 106: {
-            Authkey = input.ReadString();
-            break;
-          }
-          case 114: {
+          case 74: {
             if (blackInfo_ == null) {
               BlackInfo = new global::March7thHoney.Proto.BlackInfo();
             }
             input.ReadMessage(BlackInfo);
+            break;
+          }
+          case 112: {
+            Uid = input.ReadUInt32();
+            break;
+          }
+          case 122: {
+            Authkey = input.ReadString();
             break;
           }
         }
@@ -397,31 +397,31 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 48: {
-            Uid = input.ReadUInt32();
-            break;
-          }
-          case 58: {
+          case 26: {
             StopDesc = input.ReadString();
             break;
           }
-          case 64: {
+          case 32: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 64: {
             SecretKeySeed = input.ReadUInt64();
             break;
           }
-          case 106: {
-            Authkey = input.ReadString();
-            break;
-          }
-          case 114: {
+          case 74: {
             if (blackInfo_ == null) {
               BlackInfo = new global::March7thHoney.Proto.BlackInfo();
             }
             input.ReadMessage(BlackInfo);
+            break;
+          }
+          case 112: {
+            Uid = input.ReadUInt32();
+            break;
+          }
+          case 122: {
+            Authkey = input.ReadString();
             break;
           }
         }

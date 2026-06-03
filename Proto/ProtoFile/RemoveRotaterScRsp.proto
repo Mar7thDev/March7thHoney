@@ -6,7 +6,7 @@ import "RotaterData.proto";
 import "RotaterEnergyInfo.proto";
 
 message RemoveRotaterScRsp {
-    RotaterData rotater_data = 15;
-    RotaterEnergyInfo energy_info = 11;
-    uint32 retcode = 13;
+    uint32 retcode = 1;
+    RotaterData rotater_data = 13;
+    RotaterEnergyInfo energy_info = 14;
 }

@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFQSENQT0lIQVBHUC5wcm90bxoRQ1BIT0lQSEFQREoucHJvdG8iMAoLUEhD",
-            "UE9JSEFQR1ASIQoLYXZhdGFyX2xpc3QYCiADKAsyDC5DUEhPSVBIQVBESkIW",
+            "UE9JSEFQR1ASIQoLYXZhdGFyX2xpc3QYByADKAsyDC5DUEhPSVBIQVBESkIW",
             "qgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CPHOIPHAPDJReflection.Descriptor, },
@@ -83,9 +83,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "avatar_list" field.</summary>
-    public const int AvatarListFieldNumber = 10;
+    public const int AvatarListFieldNumber = 7;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.CPHOIPHAPDJ> _repeated_avatarList_codec
-        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.CPHOIPHAPDJ.Parser);
+        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.CPHOIPHAPDJ.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.CPHOIPHAPDJ> avatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.CPHOIPHAPDJ>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -190,7 +190,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 82: {
+          case 58: {
             avatarList_.AddEntriesFrom(input, _repeated_avatarList_codec);
             break;
           }
@@ -213,7 +213,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 82: {
+          case 58: {
             avatarList_.AddEntriesFrom(ref input, _repeated_avatarList_codec);
             break;
           }

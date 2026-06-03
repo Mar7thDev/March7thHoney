@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ECOAKLBOLDA {
-    uint32 EECIJBLGLNG = 6;
-    uint32 CBFFGFBEFMF = 8;
+    uint32 CBFFGFBEFMF = 4;
+    uint32 EECIJBLGLNG = 14;
 }

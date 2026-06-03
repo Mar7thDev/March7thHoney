@@ -6,9 +6,9 @@ import "EPCNGNEEMBI.proto";
 import "FightFestType.proto";
 
 message StartFightFestCsReq {
-    repeated uint32 GILJLEOAOMA = 13;
-    repeated EPCNGNEEMBI avatar_list = 4;
-    FightFestType type = 1;
+    repeated EPCNGNEEMBI avatar_list = 1;
+    FightFestType type = 3;
+    repeated uint32 GILJLEOAOMA = 4;
     uint32 id = 7;
-    uint32 event_id = 5;
+    uint32 event_id = 15;
 }

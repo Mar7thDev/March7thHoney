@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFMTENPSExOQk5HTS5wcm90bxoRRkhOQUVKQktJTkgucHJvdG8iegoLTExD",
-            "T0hMTkJOR00SIQoLQktOS0ZOSElQQUsYCyABKAsyDC5GSE5BRUpCS0lOSBIT",
-            "CgtGREVBS0RDREdNTBgCIAEoDRIQCghncm91cF9pZBgKIAEoDRIPCgdyZXRj",
-            "b2RlGAEgASgNEhAKCHBhbmVsX2lkGAwgASgNQhaqAhNNYXJjaDd0aEhvbmV5",
+            "T0hMTkJOR00SEAoIcGFuZWxfaWQYASABKA0SIQoLQktOS0ZOSElQQUsYAiAB",
+            "KAsyDC5GSE5BRUpCS0lOSBIQCghncm91cF9pZBgEIAEoDRIPCgdyZXRjb2Rl",
+            "GAggASgNEhMKC0ZERUFLRENER01MGA4gASgNQhaqAhNNYXJjaDd0aEhvbmV5",
             "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.FHNAEJBKINHReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LLCOHLNBNGM), global::March7thHoney.Proto.LLCOHLNBNGM.Parser, new[]{ "BKNKFNHIPAK", "FDEAKDCDGML", "GroupId", "Retcode", "PanelId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LLCOHLNBNGM), global::March7thHoney.Proto.LLCOHLNBNGM.Parser, new[]{ "PanelId", "BKNKFNHIPAK", "GroupId", "Retcode", "FDEAKDCDGML" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,11 +74,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public LLCOHLNBNGM(LLCOHLNBNGM other) : this() {
+      panelId_ = other.panelId_;
       bKNKFNHIPAK_ = other.bKNKFNHIPAK_ != null ? other.bKNKFNHIPAK_.Clone() : null;
-      fDEAKDCDGML_ = other.fDEAKDCDGML_;
       groupId_ = other.groupId_;
       retcode_ = other.retcode_;
-      panelId_ = other.panelId_;
+      fDEAKDCDGML_ = other.fDEAKDCDGML_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -88,8 +88,20 @@ namespace March7thHoney.Proto {
       return new LLCOHLNBNGM(this);
     }
 
+    /// <summary>Field number for the "panel_id" field.</summary>
+    public const int PanelIdFieldNumber = 1;
+    private uint panelId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint PanelId {
+      get { return panelId_; }
+      set {
+        panelId_ = value;
+      }
+    }
+
     /// <summary>Field number for the "BKNKFNHIPAK" field.</summary>
-    public const int BKNKFNHIPAKFieldNumber = 11;
+    public const int BKNKFNHIPAKFieldNumber = 2;
     private global::March7thHoney.Proto.FHNAEJBKINH bKNKFNHIPAK_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -100,20 +112,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "FDEAKDCDGML" field.</summary>
-    public const int FDEAKDCDGMLFieldNumber = 2;
-    private uint fDEAKDCDGML_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint FDEAKDCDGML {
-      get { return fDEAKDCDGML_; }
-      set {
-        fDEAKDCDGML_ = value;
-      }
-    }
-
     /// <summary>Field number for the "group_id" field.</summary>
-    public const int GroupIdFieldNumber = 10;
+    public const int GroupIdFieldNumber = 4;
     private uint groupId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -125,7 +125,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 1;
+    public const int RetcodeFieldNumber = 8;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -136,15 +136,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "panel_id" field.</summary>
-    public const int PanelIdFieldNumber = 12;
-    private uint panelId_;
+    /// <summary>Field number for the "FDEAKDCDGML" field.</summary>
+    public const int FDEAKDCDGMLFieldNumber = 14;
+    private uint fDEAKDCDGML_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PanelId {
-      get { return panelId_; }
+    public uint FDEAKDCDGML {
+      get { return fDEAKDCDGML_; }
       set {
-        panelId_ = value;
+        fDEAKDCDGML_ = value;
       }
     }
 
@@ -163,11 +163,11 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (PanelId != other.PanelId) return false;
       if (!object.Equals(BKNKFNHIPAK, other.BKNKFNHIPAK)) return false;
-      if (FDEAKDCDGML != other.FDEAKDCDGML) return false;
       if (GroupId != other.GroupId) return false;
       if (Retcode != other.Retcode) return false;
-      if (PanelId != other.PanelId) return false;
+      if (FDEAKDCDGML != other.FDEAKDCDGML) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -175,11 +175,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (PanelId != 0) hash ^= PanelId.GetHashCode();
       if (bKNKFNHIPAK_ != null) hash ^= BKNKFNHIPAK.GetHashCode();
-      if (FDEAKDCDGML != 0) hash ^= FDEAKDCDGML.GetHashCode();
       if (GroupId != 0) hash ^= GroupId.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
-      if (PanelId != 0) hash ^= PanelId.GetHashCode();
+      if (FDEAKDCDGML != 0) hash ^= FDEAKDCDGML.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -198,25 +198,25 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Retcode != 0) {
+      if (PanelId != 0) {
         output.WriteRawTag(8);
+        output.WriteUInt32(PanelId);
+      }
+      if (bKNKFNHIPAK_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(BKNKFNHIPAK);
+      }
+      if (GroupId != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(GroupId);
+      }
+      if (Retcode != 0) {
+        output.WriteRawTag(64);
         output.WriteUInt32(Retcode);
       }
       if (FDEAKDCDGML != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(112);
         output.WriteUInt32(FDEAKDCDGML);
-      }
-      if (GroupId != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(GroupId);
-      }
-      if (bKNKFNHIPAK_ != null) {
-        output.WriteRawTag(90);
-        output.WriteMessage(BKNKFNHIPAK);
-      }
-      if (PanelId != 0) {
-        output.WriteRawTag(96);
-        output.WriteUInt32(PanelId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -228,25 +228,25 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Retcode != 0) {
+      if (PanelId != 0) {
         output.WriteRawTag(8);
+        output.WriteUInt32(PanelId);
+      }
+      if (bKNKFNHIPAK_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(BKNKFNHIPAK);
+      }
+      if (GroupId != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(GroupId);
+      }
+      if (Retcode != 0) {
+        output.WriteRawTag(64);
         output.WriteUInt32(Retcode);
       }
       if (FDEAKDCDGML != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(112);
         output.WriteUInt32(FDEAKDCDGML);
-      }
-      if (GroupId != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(GroupId);
-      }
-      if (bKNKFNHIPAK_ != null) {
-        output.WriteRawTag(90);
-        output.WriteMessage(BKNKFNHIPAK);
-      }
-      if (PanelId != 0) {
-        output.WriteRawTag(96);
-        output.WriteUInt32(PanelId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -258,11 +258,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (PanelId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PanelId);
+      }
       if (bKNKFNHIPAK_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(BKNKFNHIPAK);
-      }
-      if (FDEAKDCDGML != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FDEAKDCDGML);
       }
       if (GroupId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GroupId);
@@ -270,8 +270,8 @@ namespace March7thHoney.Proto {
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
-      if (PanelId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PanelId);
+      if (FDEAKDCDGML != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FDEAKDCDGML);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -285,14 +285,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.PanelId != 0) {
+        PanelId = other.PanelId;
+      }
       if (other.bKNKFNHIPAK_ != null) {
         if (bKNKFNHIPAK_ == null) {
           BKNKFNHIPAK = new global::March7thHoney.Proto.FHNAEJBKINH();
         }
         BKNKFNHIPAK.MergeFrom(other.BKNKFNHIPAK);
-      }
-      if (other.FDEAKDCDGML != 0) {
-        FDEAKDCDGML = other.FDEAKDCDGML;
       }
       if (other.GroupId != 0) {
         GroupId = other.GroupId;
@@ -300,8 +300,8 @@ namespace March7thHoney.Proto {
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
-      if (other.PanelId != 0) {
-        PanelId = other.PanelId;
+      if (other.FDEAKDCDGML != 0) {
+        FDEAKDCDGML = other.FDEAKDCDGML;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -323,26 +323,26 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            Retcode = input.ReadUInt32();
+            PanelId = input.ReadUInt32();
             break;
           }
-          case 16: {
-            FDEAKDCDGML = input.ReadUInt32();
-            break;
-          }
-          case 80: {
-            GroupId = input.ReadUInt32();
-            break;
-          }
-          case 90: {
+          case 18: {
             if (bKNKFNHIPAK_ == null) {
               BKNKFNHIPAK = new global::March7thHoney.Proto.FHNAEJBKINH();
             }
             input.ReadMessage(BKNKFNHIPAK);
             break;
           }
-          case 96: {
-            PanelId = input.ReadUInt32();
+          case 32: {
+            GroupId = input.ReadUInt32();
+            break;
+          }
+          case 64: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 112: {
+            FDEAKDCDGML = input.ReadUInt32();
             break;
           }
         }
@@ -365,26 +365,26 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            Retcode = input.ReadUInt32();
+            PanelId = input.ReadUInt32();
             break;
           }
-          case 16: {
-            FDEAKDCDGML = input.ReadUInt32();
-            break;
-          }
-          case 80: {
-            GroupId = input.ReadUInt32();
-            break;
-          }
-          case 90: {
+          case 18: {
             if (bKNKFNHIPAK_ == null) {
               BKNKFNHIPAK = new global::March7thHoney.Proto.FHNAEJBKINH();
             }
             input.ReadMessage(BKNKFNHIPAK);
             break;
           }
-          case 96: {
-            PanelId = input.ReadUInt32();
+          case 32: {
+            GroupId = input.ReadUInt32();
+            break;
+          }
+          case 64: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 112: {
+            FDEAKDCDGML = input.ReadUInt32();
             break;
           }
         }

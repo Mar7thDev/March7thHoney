@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static AOJEODENHPLReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFBT0pFT0RFTkhQTC5wcm90byJyCgtBT0pFT0RFTkhQTBISCgpoYXNfcGFz",
-            "c2VkGAwgASgIEhMKC0tKSkpQTUFQRk9IGAUgASgNEhMKC0lLS0VKS09HQk5P",
-            "GAYgASgNEhAKCGV2ZW50X2lkGAIgASgNEhMKC0NHRE5NRERJSEtBGAcgASgN",
-            "QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ChFBT0pFT0RFTkhQTC5wcm90byJ0CgtBT0pFT0RFTkhQTBIQCghldmVudF9p",
+            "ZBgFIAEoDRIVCg1jaGFwdGVyX2luZGV4GAcgASgNEhMKC0lLS0VKS09HQk5P",
+            "GAggASgNEhIKCmhhc19wYXNzZWQYCyABKAgSEwoLS0pKSlBNQVBGT0gYDSAB",
+            "KA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AOJEODENHPL), global::March7thHoney.Proto.AOJEODENHPL.Parser, new[]{ "HasPassed", "KJJJPMAPFOH", "IKKEJKOGBNO", "EventId", "CGDNMDDIHKA" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AOJEODENHPL), global::March7thHoney.Proto.AOJEODENHPL.Parser, new[]{ "EventId", "ChapterIndex", "IKKEJKOGBNO", "HasPassed", "KJJJPMAPFOH" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,11 +73,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public AOJEODENHPL(AOJEODENHPL other) : this() {
+      eventId_ = other.eventId_;
+      chapterIndex_ = other.chapterIndex_;
+      iKKEJKOGBNO_ = other.iKKEJKOGBNO_;
       hasPassed_ = other.hasPassed_;
       kJJJPMAPFOH_ = other.kJJJPMAPFOH_;
-      iKKEJKOGBNO_ = other.iKKEJKOGBNO_;
-      eventId_ = other.eventId_;
-      cGDNMDDIHKA_ = other.cGDNMDDIHKA_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -87,8 +87,44 @@ namespace March7thHoney.Proto {
       return new AOJEODENHPL(this);
     }
 
+    /// <summary>Field number for the "event_id" field.</summary>
+    public const int EventIdFieldNumber = 5;
+    private uint eventId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint EventId {
+      get { return eventId_; }
+      set {
+        eventId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "chapter_index" field.</summary>
+    public const int ChapterIndexFieldNumber = 7;
+    private uint chapterIndex_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint ChapterIndex {
+      get { return chapterIndex_; }
+      set {
+        chapterIndex_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "IKKEJKOGBNO" field.</summary>
+    public const int IKKEJKOGBNOFieldNumber = 8;
+    private uint iKKEJKOGBNO_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint IKKEJKOGBNO {
+      get { return iKKEJKOGBNO_; }
+      set {
+        iKKEJKOGBNO_ = value;
+      }
+    }
+
     /// <summary>Field number for the "has_passed" field.</summary>
-    public const int HasPassedFieldNumber = 12;
+    public const int HasPassedFieldNumber = 11;
     private bool hasPassed_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -100,7 +136,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "KJJJPMAPFOH" field.</summary>
-    public const int KJJJPMAPFOHFieldNumber = 5;
+    public const int KJJJPMAPFOHFieldNumber = 13;
     private uint kJJJPMAPFOH_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -108,42 +144,6 @@ namespace March7thHoney.Proto {
       get { return kJJJPMAPFOH_; }
       set {
         kJJJPMAPFOH_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "IKKEJKOGBNO" field.</summary>
-    public const int IKKEJKOGBNOFieldNumber = 6;
-    private uint iKKEJKOGBNO_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint IKKEJKOGBNO {
-      get { return iKKEJKOGBNO_; }
-      set {
-        iKKEJKOGBNO_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "event_id" field.</summary>
-    public const int EventIdFieldNumber = 2;
-    private uint eventId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint EventId {
-      get { return eventId_; }
-      set {
-        eventId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "CGDNMDDIHKA" field.</summary>
-    public const int CGDNMDDIHKAFieldNumber = 7;
-    private uint cGDNMDDIHKA_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CGDNMDDIHKA {
-      get { return cGDNMDDIHKA_; }
-      set {
-        cGDNMDDIHKA_ = value;
       }
     }
 
@@ -162,11 +162,11 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (EventId != other.EventId) return false;
+      if (ChapterIndex != other.ChapterIndex) return false;
+      if (IKKEJKOGBNO != other.IKKEJKOGBNO) return false;
       if (HasPassed != other.HasPassed) return false;
       if (KJJJPMAPFOH != other.KJJJPMAPFOH) return false;
-      if (IKKEJKOGBNO != other.IKKEJKOGBNO) return false;
-      if (EventId != other.EventId) return false;
-      if (CGDNMDDIHKA != other.CGDNMDDIHKA) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -174,11 +174,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (EventId != 0) hash ^= EventId.GetHashCode();
+      if (ChapterIndex != 0) hash ^= ChapterIndex.GetHashCode();
+      if (IKKEJKOGBNO != 0) hash ^= IKKEJKOGBNO.GetHashCode();
       if (HasPassed != false) hash ^= HasPassed.GetHashCode();
       if (KJJJPMAPFOH != 0) hash ^= KJJJPMAPFOH.GetHashCode();
-      if (IKKEJKOGBNO != 0) hash ^= IKKEJKOGBNO.GetHashCode();
-      if (EventId != 0) hash ^= EventId.GetHashCode();
-      if (CGDNMDDIHKA != 0) hash ^= CGDNMDDIHKA.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -198,24 +198,24 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (EventId != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(40);
         output.WriteUInt32(EventId);
       }
-      if (KJJJPMAPFOH != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(KJJJPMAPFOH);
+      if (ChapterIndex != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(ChapterIndex);
       }
       if (IKKEJKOGBNO != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(64);
         output.WriteUInt32(IKKEJKOGBNO);
       }
-      if (CGDNMDDIHKA != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(CGDNMDDIHKA);
-      }
       if (HasPassed != false) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(88);
         output.WriteBool(HasPassed);
+      }
+      if (KJJJPMAPFOH != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(KJJJPMAPFOH);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -228,24 +228,24 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (EventId != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(40);
         output.WriteUInt32(EventId);
       }
-      if (KJJJPMAPFOH != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(KJJJPMAPFOH);
+      if (ChapterIndex != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(ChapterIndex);
       }
       if (IKKEJKOGBNO != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(64);
         output.WriteUInt32(IKKEJKOGBNO);
       }
-      if (CGDNMDDIHKA != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(CGDNMDDIHKA);
-      }
       if (HasPassed != false) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(88);
         output.WriteBool(HasPassed);
+      }
+      if (KJJJPMAPFOH != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(KJJJPMAPFOH);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -257,20 +257,20 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (EventId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EventId);
+      }
+      if (ChapterIndex != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ChapterIndex);
+      }
+      if (IKKEJKOGBNO != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(IKKEJKOGBNO);
+      }
       if (HasPassed != false) {
         size += 1 + 1;
       }
       if (KJJJPMAPFOH != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(KJJJPMAPFOH);
-      }
-      if (IKKEJKOGBNO != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(IKKEJKOGBNO);
-      }
-      if (EventId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EventId);
-      }
-      if (CGDNMDDIHKA != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CGDNMDDIHKA);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -284,20 +284,20 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.EventId != 0) {
+        EventId = other.EventId;
+      }
+      if (other.ChapterIndex != 0) {
+        ChapterIndex = other.ChapterIndex;
+      }
+      if (other.IKKEJKOGBNO != 0) {
+        IKKEJKOGBNO = other.IKKEJKOGBNO;
+      }
       if (other.HasPassed != false) {
         HasPassed = other.HasPassed;
       }
       if (other.KJJJPMAPFOH != 0) {
         KJJJPMAPFOH = other.KJJJPMAPFOH;
-      }
-      if (other.IKKEJKOGBNO != 0) {
-        IKKEJKOGBNO = other.IKKEJKOGBNO;
-      }
-      if (other.EventId != 0) {
-        EventId = other.EventId;
-      }
-      if (other.CGDNMDDIHKA != 0) {
-        CGDNMDDIHKA = other.CGDNMDDIHKA;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -318,24 +318,24 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
+          case 40: {
             EventId = input.ReadUInt32();
             break;
           }
-          case 40: {
-            KJJJPMAPFOH = input.ReadUInt32();
+          case 56: {
+            ChapterIndex = input.ReadUInt32();
             break;
           }
-          case 48: {
+          case 64: {
             IKKEJKOGBNO = input.ReadUInt32();
             break;
           }
-          case 56: {
-            CGDNMDDIHKA = input.ReadUInt32();
+          case 88: {
+            HasPassed = input.ReadBool();
             break;
           }
-          case 96: {
-            HasPassed = input.ReadBool();
+          case 104: {
+            KJJJPMAPFOH = input.ReadUInt32();
             break;
           }
         }
@@ -357,24 +357,24 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
+          case 40: {
             EventId = input.ReadUInt32();
             break;
           }
-          case 40: {
-            KJJJPMAPFOH = input.ReadUInt32();
+          case 56: {
+            ChapterIndex = input.ReadUInt32();
             break;
           }
-          case 48: {
+          case 64: {
             IKKEJKOGBNO = input.ReadUInt32();
             break;
           }
-          case 56: {
-            CGDNMDDIHKA = input.ReadUInt32();
+          case 88: {
+            HasPassed = input.ReadBool();
             break;
           }
-          case 96: {
-            HasPassed = input.ReadBool();
+          case 104: {
+            KJJJPMAPFOH = input.ReadUInt32();
             break;
           }
         }

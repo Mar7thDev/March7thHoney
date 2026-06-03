@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message EnterStageScRsp {
+    uint32 retcode = 13;
     string CCPKFOKOLJB = 14;
-    uint32 retcode = 3;
 }

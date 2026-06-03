@@ -3,10 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 import "LDLCMMOPKNG.proto";
-import "SceneBattleInfo.proto";
 
 message EvolveBuildStartLevelScRsp {
-    LDLCMMOPKNG OEIBHLMDJKA = 13;
-    SceneBattleInfo AEPNEDJPAGK = 14;
-    uint32 retcode = 10;
+    uint32 retcode = 11;
+    LDLCMMOPKNG OEIBHLMDJKA = 15;
 }

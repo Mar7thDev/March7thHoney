@@ -2,8 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-import "APAMFCKFHLL.proto";
+import "KVP.proto";
 
 message DressSpecialEquipCsReq {
-    repeated APAMFCKFHLL COLOHMBFKIH = 9;
+    repeated KVP COLOHMBFKIH = 8;
 }

@@ -7,13 +7,12 @@ import "GMIJHCONFIH.proto";
 import "RogueStatus.proto";
 
 message BBCOLCHCEFP {
-    GMIJHCONFIH HAJJBOFCFOO = 6;
-    APNCCNFJBKO JPKACKNNHCA = 8;
-    repeated uint32 unfinished_story_line_id_list = 4;
-    repeated uint32 NOEPBNMJFGL = 1;
-    uint32 KNDHMNBIIDF = 5;
-    uint32 PJKMDLCCHHD = 9;
-    RogueStatus status = 2;
-    uint32 map_id = 14;
-    uint32 HAHLHLPENKJ = 7;
+    GMIJHCONFIH HAJJBOFCFOO = 2;
+    repeated uint32 unfinished_story_line_id_list = 3;
+    uint32 map_id = 6;
+    RogueStatus status = 8;
+    APNCCNFJBKO JPKACKNNHCA = 9;
+    uint32 KNDHMNBIIDF = 11;
+    uint32 PJKMDLCCHHD = 12;
+    repeated uint32 NOEPBNMJFGL = 14;
 }

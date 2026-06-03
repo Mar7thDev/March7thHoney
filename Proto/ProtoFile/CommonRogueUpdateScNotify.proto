@@ -8,8 +8,8 @@ import "KPIHDPGDMKB.proto";
 
 message CommonRogueUpdateScNotify {
     oneof NOKMOIHLGBN {
-        KPIHDPGDMKB BMGOLFNGHGH = 14;
-        AHLALEEJOEG BBEKBJPHEJK = 9;
-        CDDEIPOBBCN MECOEFEJANE = 5;
+        KPIHDPGDMKB BMGOLFNGHGH = 6;
+        AHLALEEJOEG BBEKBJPHEJK = 14;
+        CDDEIPOBBCN MECOEFEJANE = 3;
     }
 }

@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "MJMGOBMOPDL.proto";
 
 message RogueTournGetAllArchiveScRsp {
-    repeated MJMGOBMOPDL MCGGPONOCKC = 14;
-    uint32 retcode = 5;
+    uint32 retcode = 3;
+    repeated MJMGOBMOPDL MCGGPONOCKC = 5;
 }

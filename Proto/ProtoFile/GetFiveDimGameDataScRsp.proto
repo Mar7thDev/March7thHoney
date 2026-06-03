@@ -5,7 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "DGHPIDMDOJM.proto";
 
 message GetFiveDimGameDataScRsp {
-    DGHPIDMDOJM CFDIKLBINHK = 14;
+    uint32 retcode = 2;
+    repeated uint32 KEGAOHGOALD = 3;
     uint32 CPFCMKLCMFG = 9;
-    uint32 retcode = 6;
+    DGHPIDMDOJM CFDIKLBINHK = 11;
 }

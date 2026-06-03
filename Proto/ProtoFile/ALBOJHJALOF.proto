@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "MissionSyncRecord.proto";
 
 message ALBOJHJALOF {
-    uint32 id = 3;
-    uint32 display_value = 9;
-    MissionSyncRecord type = 6;
+    MissionSyncRecord type = 11;
+    uint32 param = 12;
+    uint32 id = 13;
 }

@@ -9,7 +9,7 @@ public class PacketDiscardRelicScRsp : BasePacket
     {
         DiscardRelicScRsp proto = new();
 
-        if (success) proto.Discarded = isDiscard;
+        if (success) proto.DKPCAIGPHNO = isDiscard;
         else proto.Retcode = (uint)Retcode.RetFail;
 
         SetData(proto);

@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "KOFMGCNIMIN.proto";
 
 message GMIJHCONFIH {
-    repeated KOFMGCNIMIN MAJGMMCOCIG = 4;
+    repeated KOFMGCNIMIN MAJGMMCOCIG = 3;
 }

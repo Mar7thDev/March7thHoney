@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "OCCAABPFBLF.proto";
 
 message SetAetherDivideLineUpCsReq {
-    OCCAABPFBLF lineup = 5;
+    OCCAABPFBLF lineup = 13;
 }

@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFDRUZFSUpGUENLRS5wcm90byI3CgtDRUZFSUpGUENLRRITCgtzd2l0Y2hf",
-            "bGlzdBgJIAMoDRITCgtNTkxBTUtKSUFPQxgDIAEoDUIWqgITTWFyY2g3dGhI",
+            "bGlzdBgDIAMoDRITCgtNTkxBTUtKSUFPQxgJIAEoDUIWqgITTWFyY2g3dGhI",
             "b25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,9 +84,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "switch_list" field.</summary>
-    public const int SwitchListFieldNumber = 9;
+    public const int SwitchListFieldNumber = 3;
     private static readonly pb::FieldCodec<uint> _repeated_switchList_codec
-        = pb::FieldCodec.ForUInt32(74);
+        = pb::FieldCodec.ForUInt32(26);
     private readonly pbc::RepeatedField<uint> switchList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -95,7 +95,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "MNLAMKJIAOC" field.</summary>
-    public const int MNLAMKJIAOCFieldNumber = 3;
+    public const int MNLAMKJIAOCFieldNumber = 9;
     private uint mNLAMKJIAOC_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -150,11 +150,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      switchList_.WriteTo(output, _repeated_switchList_codec);
       if (MNLAMKJIAOC != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(72);
         output.WriteUInt32(MNLAMKJIAOC);
       }
-      switchList_.WriteTo(output, _repeated_switchList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -165,11 +165,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      switchList_.WriteTo(ref output, _repeated_switchList_codec);
       if (MNLAMKJIAOC != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(72);
         output.WriteUInt32(MNLAMKJIAOC);
       }
-      switchList_.WriteTo(ref output, _repeated_switchList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -219,13 +219,13 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
+          case 26:
           case 24: {
-            MNLAMKJIAOC = input.ReadUInt32();
+            switchList_.AddEntriesFrom(input, _repeated_switchList_codec);
             break;
           }
-          case 74:
           case 72: {
-            switchList_.AddEntriesFrom(input, _repeated_switchList_codec);
+            MNLAMKJIAOC = input.ReadUInt32();
             break;
           }
         }
@@ -247,13 +247,13 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
+          case 26:
           case 24: {
-            MNLAMKJIAOC = input.ReadUInt32();
+            switchList_.AddEntriesFrom(ref input, _repeated_switchList_codec);
             break;
           }
-          case 74:
           case 72: {
-            switchList_.AddEntriesFrom(ref input, _repeated_switchList_codec);
+            MNLAMKJIAOC = input.ReadUInt32();
             break;
           }
         }

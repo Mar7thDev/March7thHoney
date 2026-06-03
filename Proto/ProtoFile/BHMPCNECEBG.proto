@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "HCFLAPPBPOP.proto";
 
 message BHMPCNECEBG {
-    repeated HCFLAPPBPOP COLLINOIEEE = 10;
+    repeated HCFLAPPBPOP COLLINOIEEE = 1;
 }

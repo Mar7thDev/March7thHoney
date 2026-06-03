@@ -6,8 +6,8 @@ import "EDJKFOBBDJF.proto";
 import "GOMKGHJBNFM.proto";
 
 message GetEvolveBuildShopAbilityResetScRsp {
-    repeated GOMKGHJBNFM CEPCGLMFPBC = 9;
-    uint32 item_value = 4;
-    EDJKFOBBDJF HFPEJIDDDJG = 12;
-    uint32 retcode = 3;
+    repeated GOMKGHJBNFM CEPCGLMFPBC = 7;
+    EDJKFOBBDJF HFPEJIDDDJG = 11;
+    uint32 retcode = 13;
+    uint32 item_value = 14;
 }

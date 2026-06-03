@@ -25,15 +25,15 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChlOcGNNb25zdGVyUm9ndWVJbmZvLnByb3RvGhFKTkJPSUZDTkJDSC5wcm90",
-            "byKlAQoTTnBjTW9uc3RlclJvZ3VlSW5mbxITCgtlbGl0ZV9ncm91cBgFIAEo",
-            "DRINCgVsZXZlbBgGIAEoDRITCgtJRURFQkZDQ0tOTBgBIAEoDRIhCgtEUENO",
-            "REFERENBShgKIAEoDjIMLkpOQk9JRkNOQkNIEhgKEGhhcmRfbGV2ZWxfZ3Jv",
-            "dXAYAiABKA0SGAoQcm9ndWVfbW9uc3Rlcl9pZBgHIAEoDUIWqgITTWFyY2g3",
+            "byKlAQoTTnBjTW9uc3RlclJvZ3VlSW5mbxIYChByb2d1ZV9tb25zdGVyX2lk",
+            "GAIgASgNEhMKC2VsaXRlX2dyb3VwGAMgASgNEhMKC0lFREVCRkNDS05MGAQg",
+            "ASgNEhgKEGhhcmRfbGV2ZWxfZ3JvdXAYCCABKA0SIQoLRFBDTkRBRERDQUoY",
+            "CyABKA4yDC5KTkJPSUZDTkJDSBINCgVsZXZlbBgOIAEoDUIWqgITTWFyY2g3",
             "dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.JNBOIFCNBCHReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NpcMonsterRogueInfo), global::March7thHoney.Proto.NpcMonsterRogueInfo.Parser, new[]{ "EliteGroup", "Level", "IEDEBFCCKNL", "DPCNDADDCAJ", "HardLevelGroup", "RogueMonsterId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NpcMonsterRogueInfo), global::March7thHoney.Proto.NpcMonsterRogueInfo.Parser, new[]{ "RogueMonsterId", "EliteGroup", "IEDEBFCCKNL", "HardLevelGroup", "DPCNDADDCAJ", "Level" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,12 +75,12 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public NpcMonsterRogueInfo(NpcMonsterRogueInfo other) : this() {
-      eliteGroup_ = other.eliteGroup_;
-      level_ = other.level_;
-      iEDEBFCCKNL_ = other.iEDEBFCCKNL_;
-      dPCNDADDCAJ_ = other.dPCNDADDCAJ_;
-      hardLevelGroup_ = other.hardLevelGroup_;
       rogueMonsterId_ = other.rogueMonsterId_;
+      eliteGroup_ = other.eliteGroup_;
+      iEDEBFCCKNL_ = other.iEDEBFCCKNL_;
+      hardLevelGroup_ = other.hardLevelGroup_;
+      dPCNDADDCAJ_ = other.dPCNDADDCAJ_;
+      level_ = other.level_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -90,8 +90,20 @@ namespace March7thHoney.Proto {
       return new NpcMonsterRogueInfo(this);
     }
 
+    /// <summary>Field number for the "rogue_monster_id" field.</summary>
+    public const int RogueMonsterIdFieldNumber = 2;
+    private uint rogueMonsterId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint RogueMonsterId {
+      get { return rogueMonsterId_; }
+      set {
+        rogueMonsterId_ = value;
+      }
+    }
+
     /// <summary>Field number for the "elite_group" field.</summary>
-    public const int EliteGroupFieldNumber = 5;
+    public const int EliteGroupFieldNumber = 3;
     private uint eliteGroup_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -102,20 +114,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "level" field.</summary>
-    public const int LevelFieldNumber = 6;
-    private uint level_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Level {
-      get { return level_; }
-      set {
-        level_ = value;
-      }
-    }
-
     /// <summary>Field number for the "IEDEBFCCKNL" field.</summary>
-    public const int IEDEBFCCKNLFieldNumber = 1;
+    public const int IEDEBFCCKNLFieldNumber = 4;
     private uint iEDEBFCCKNL_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -126,20 +126,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "DPCNDADDCAJ" field.</summary>
-    public const int DPCNDADDCAJFieldNumber = 10;
-    private global::March7thHoney.Proto.JNBOIFCNBCH dPCNDADDCAJ_ = global::March7thHoney.Proto.JNBOIFCNBCH.Hglifjghade;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.JNBOIFCNBCH DPCNDADDCAJ {
-      get { return dPCNDADDCAJ_; }
-      set {
-        dPCNDADDCAJ_ = value;
-      }
-    }
-
     /// <summary>Field number for the "hard_level_group" field.</summary>
-    public const int HardLevelGroupFieldNumber = 2;
+    public const int HardLevelGroupFieldNumber = 8;
     private uint hardLevelGroup_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -150,15 +138,27 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "rogue_monster_id" field.</summary>
-    public const int RogueMonsterIdFieldNumber = 7;
-    private uint rogueMonsterId_;
+    /// <summary>Field number for the "DPCNDADDCAJ" field.</summary>
+    public const int DPCNDADDCAJFieldNumber = 11;
+    private global::March7thHoney.Proto.JNBOIFCNBCH dPCNDADDCAJ_ = global::March7thHoney.Proto.JNBOIFCNBCH.Hglifjghade;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint RogueMonsterId {
-      get { return rogueMonsterId_; }
+    public global::March7thHoney.Proto.JNBOIFCNBCH DPCNDADDCAJ {
+      get { return dPCNDADDCAJ_; }
       set {
-        rogueMonsterId_ = value;
+        dPCNDADDCAJ_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "level" field.</summary>
+    public const int LevelFieldNumber = 14;
+    private uint level_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Level {
+      get { return level_; }
+      set {
+        level_ = value;
       }
     }
 
@@ -177,12 +177,12 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (EliteGroup != other.EliteGroup) return false;
-      if (Level != other.Level) return false;
-      if (IEDEBFCCKNL != other.IEDEBFCCKNL) return false;
-      if (DPCNDADDCAJ != other.DPCNDADDCAJ) return false;
-      if (HardLevelGroup != other.HardLevelGroup) return false;
       if (RogueMonsterId != other.RogueMonsterId) return false;
+      if (EliteGroup != other.EliteGroup) return false;
+      if (IEDEBFCCKNL != other.IEDEBFCCKNL) return false;
+      if (HardLevelGroup != other.HardLevelGroup) return false;
+      if (DPCNDADDCAJ != other.DPCNDADDCAJ) return false;
+      if (Level != other.Level) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -190,12 +190,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (EliteGroup != 0) hash ^= EliteGroup.GetHashCode();
-      if (Level != 0) hash ^= Level.GetHashCode();
-      if (IEDEBFCCKNL != 0) hash ^= IEDEBFCCKNL.GetHashCode();
-      if (DPCNDADDCAJ != global::March7thHoney.Proto.JNBOIFCNBCH.Hglifjghade) hash ^= DPCNDADDCAJ.GetHashCode();
-      if (HardLevelGroup != 0) hash ^= HardLevelGroup.GetHashCode();
       if (RogueMonsterId != 0) hash ^= RogueMonsterId.GetHashCode();
+      if (EliteGroup != 0) hash ^= EliteGroup.GetHashCode();
+      if (IEDEBFCCKNL != 0) hash ^= IEDEBFCCKNL.GetHashCode();
+      if (HardLevelGroup != 0) hash ^= HardLevelGroup.GetHashCode();
+      if (DPCNDADDCAJ != global::March7thHoney.Proto.JNBOIFCNBCH.Hglifjghade) hash ^= DPCNDADDCAJ.GetHashCode();
+      if (Level != 0) hash ^= Level.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -214,29 +214,29 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (RogueMonsterId != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(RogueMonsterId);
+      }
+      if (EliteGroup != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(EliteGroup);
+      }
       if (IEDEBFCCKNL != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(32);
         output.WriteUInt32(IEDEBFCCKNL);
       }
       if (HardLevelGroup != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(64);
         output.WriteUInt32(HardLevelGroup);
       }
-      if (EliteGroup != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(EliteGroup);
+      if (DPCNDADDCAJ != global::March7thHoney.Proto.JNBOIFCNBCH.Hglifjghade) {
+        output.WriteRawTag(88);
+        output.WriteEnum((int) DPCNDADDCAJ);
       }
       if (Level != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(112);
         output.WriteUInt32(Level);
-      }
-      if (RogueMonsterId != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(RogueMonsterId);
-      }
-      if (DPCNDADDCAJ != global::March7thHoney.Proto.JNBOIFCNBCH.Hglifjghade) {
-        output.WriteRawTag(80);
-        output.WriteEnum((int) DPCNDADDCAJ);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -248,29 +248,29 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (RogueMonsterId != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(RogueMonsterId);
+      }
+      if (EliteGroup != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(EliteGroup);
+      }
       if (IEDEBFCCKNL != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(32);
         output.WriteUInt32(IEDEBFCCKNL);
       }
       if (HardLevelGroup != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(64);
         output.WriteUInt32(HardLevelGroup);
       }
-      if (EliteGroup != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(EliteGroup);
+      if (DPCNDADDCAJ != global::March7thHoney.Proto.JNBOIFCNBCH.Hglifjghade) {
+        output.WriteRawTag(88);
+        output.WriteEnum((int) DPCNDADDCAJ);
       }
       if (Level != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(112);
         output.WriteUInt32(Level);
-      }
-      if (RogueMonsterId != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(RogueMonsterId);
-      }
-      if (DPCNDADDCAJ != global::March7thHoney.Proto.JNBOIFCNBCH.Hglifjghade) {
-        output.WriteRawTag(80);
-        output.WriteEnum((int) DPCNDADDCAJ);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -282,23 +282,23 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (RogueMonsterId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RogueMonsterId);
+      }
       if (EliteGroup != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EliteGroup);
-      }
-      if (Level != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
       }
       if (IEDEBFCCKNL != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(IEDEBFCCKNL);
       }
-      if (DPCNDADDCAJ != global::March7thHoney.Proto.JNBOIFCNBCH.Hglifjghade) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) DPCNDADDCAJ);
-      }
       if (HardLevelGroup != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(HardLevelGroup);
       }
-      if (RogueMonsterId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RogueMonsterId);
+      if (DPCNDADDCAJ != global::March7thHoney.Proto.JNBOIFCNBCH.Hglifjghade) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) DPCNDADDCAJ);
+      }
+      if (Level != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -312,23 +312,23 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.RogueMonsterId != 0) {
+        RogueMonsterId = other.RogueMonsterId;
+      }
       if (other.EliteGroup != 0) {
         EliteGroup = other.EliteGroup;
-      }
-      if (other.Level != 0) {
-        Level = other.Level;
       }
       if (other.IEDEBFCCKNL != 0) {
         IEDEBFCCKNL = other.IEDEBFCCKNL;
       }
-      if (other.DPCNDADDCAJ != global::March7thHoney.Proto.JNBOIFCNBCH.Hglifjghade) {
-        DPCNDADDCAJ = other.DPCNDADDCAJ;
-      }
       if (other.HardLevelGroup != 0) {
         HardLevelGroup = other.HardLevelGroup;
       }
-      if (other.RogueMonsterId != 0) {
-        RogueMonsterId = other.RogueMonsterId;
+      if (other.DPCNDADDCAJ != global::March7thHoney.Proto.JNBOIFCNBCH.Hglifjghade) {
+        DPCNDADDCAJ = other.DPCNDADDCAJ;
+      }
+      if (other.Level != 0) {
+        Level = other.Level;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -349,28 +349,28 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            IEDEBFCCKNL = input.ReadUInt32();
-            break;
-          }
           case 16: {
-            HardLevelGroup = input.ReadUInt32();
-            break;
-          }
-          case 40: {
-            EliteGroup = input.ReadUInt32();
-            break;
-          }
-          case 48: {
-            Level = input.ReadUInt32();
-            break;
-          }
-          case 56: {
             RogueMonsterId = input.ReadUInt32();
             break;
           }
-          case 80: {
+          case 24: {
+            EliteGroup = input.ReadUInt32();
+            break;
+          }
+          case 32: {
+            IEDEBFCCKNL = input.ReadUInt32();
+            break;
+          }
+          case 64: {
+            HardLevelGroup = input.ReadUInt32();
+            break;
+          }
+          case 88: {
             DPCNDADDCAJ = (global::March7thHoney.Proto.JNBOIFCNBCH) input.ReadEnum();
+            break;
+          }
+          case 112: {
+            Level = input.ReadUInt32();
             break;
           }
         }
@@ -392,28 +392,28 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            IEDEBFCCKNL = input.ReadUInt32();
-            break;
-          }
           case 16: {
-            HardLevelGroup = input.ReadUInt32();
-            break;
-          }
-          case 40: {
-            EliteGroup = input.ReadUInt32();
-            break;
-          }
-          case 48: {
-            Level = input.ReadUInt32();
-            break;
-          }
-          case 56: {
             RogueMonsterId = input.ReadUInt32();
             break;
           }
-          case 80: {
+          case 24: {
+            EliteGroup = input.ReadUInt32();
+            break;
+          }
+          case 32: {
+            IEDEBFCCKNL = input.ReadUInt32();
+            break;
+          }
+          case 64: {
+            HardLevelGroup = input.ReadUInt32();
+            break;
+          }
+          case 88: {
             DPCNDADDCAJ = (global::March7thHoney.Proto.JNBOIFCNBCH) input.ReadEnum();
+            break;
+          }
+          case 112: {
+            Level = input.ReadUInt32();
             break;
           }
         }

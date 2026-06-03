@@ -3,11 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GetCurChallengePeakScRsp {
-    repeated uint32 finished_target_list = 5;
-    uint32 retcode = 2;
-    uint32 cycles_used = 6;
-    uint32 boss_buff_id = 8;
     uint32 peak_id = 1;
-    bool has_passed = 13;
-    bool is_wait_confirm = 4;
+    uint32 retcode = 2;
+    bool has_passed = 5;
+    uint32 boss_buff_id = 12;
 }

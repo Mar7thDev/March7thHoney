@@ -3,10 +3,10 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message OBDBODNJACD {
-    uint32 LIHAHPDCIKL = 12;
-    uint32 LOPNADHJKBF = 15;
-    bool MEBMAMHHGMD = 1;
-    bool JFAPNIECBKO = 2;
-    uint32 IHAOMLEPHOM = 10;
-    uint32 BLNHCIBKJOM = 9;
+    uint32 LIHAHPDCIKL = 5;
+    bool MEBMAMHHGMD = 7;
+    bool JFAPNIECBKO = 8;
+    uint32 LOPNADHJKBF = 9;
+    uint32 BLNHCIBKJOM = 11;
+    uint32 IHAOMLEPHOM = 14;
 }

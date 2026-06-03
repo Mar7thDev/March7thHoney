@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message SyncRogueExploreWinScNotify {
-    bool ILOFGCAFHAH = 5;
+    bool ILOFGCAFHAH = 8;
 }

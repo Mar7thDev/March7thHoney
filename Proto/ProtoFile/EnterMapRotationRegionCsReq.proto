@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "MotionInfo.proto";
 
 message EnterMapRotationRegionCsReq {
-    MotionInfo motion = 11;
-    uint32 LJHKNKFLGDE = 15;
-    uint32 JPPMEKJGJFD = 9;
+    MotionInfo motion = 3;
+    uint32 region_id = 7;
+    uint32 JPPMEKJGJFD = 11;
 }

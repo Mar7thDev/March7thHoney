@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message HEGGPIEGBIN {
-    uint32 id = 15;
-    bool is_new = 3;
-    uint32 FHNNGNBDGHO = 1;
+    bool is_new = 2;
+    uint32 FHNNGNBDGHO = 9;
+    uint32 id = 12;
 }

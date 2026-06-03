@@ -2,26 +2,26 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-import "APAMFCKFHLL.proto";
 import "JPGACKPLGCD.proto";
+import "KVP.proto";
 import "PNOLLIAKGDB.proto";
 
 message PlayerSettingInfo {
-    PNOLLIAKGDB OJPAODIHAJE = 7;
-    repeated APAMFCKFHLL OKAHMFOINPM = 1041;
-    JPGACKPLGCD CMFCOOEEECB = 722;
-    bool NJAKOMDMFJD = 10;
-    bool LNGHIJGFDKP = 680;
-    bool DCJECFMMIBC = 13;
-    bool BOMGNMDOGLM = 3;
-    bool IOJEAOCOBBF = 14;
-    bool FDHEPCKLCAM = 9;
-    bool DGCNHMIHFJB = 5;
-    bool GNFDDPEMMFN = 2;
-    bool PFBHGAHAFMD = 15;
-    bool AACOEHCFNDB = 11;
-    bool BBEEBBIDJHE = 203;
-    bool GOKFNGFFMOB = 1134;
-    bool MAKOLELFLFH = 1;
-    bool HGPFFGKNPFB = 1783;
+    bool AACOEHCFNDB = 1;
+    PNOLLIAKGDB OJPAODIHAJE = 2;
+    bool DCJECFMMIBC = 3;
+    bool DGCNHMIHFJB = 4;
+    bool PFBHGAHAFMD = 5;
+    bool GNFDDPEMMFN = 6;
+    bool MAKOLELFLFH = 7;
+    bool FDHEPCKLCAM = 8;
+    bool IOJEAOCOBBF = 12;
+    bool BOMGNMDOGLM = 14;
+    bool NJAKOMDMFJD = 15;
+    JPGACKPLGCD CMFCOOEEECB = 220;
+    repeated KVP OKAHMFOINPM = 491;
+    bool HGPFFGKNPFB = 524;
+    bool GOKFNGFFMOB = 1458;
+    bool BBEEBBIDJHE = 1685;
+    bool LNGHIJGFDKP = 1773;
 }

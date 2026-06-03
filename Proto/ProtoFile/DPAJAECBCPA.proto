@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "LimaoNewsOfficeSurveyState.proto";
 
 message DPAJAECBCPA {
-    repeated uint32 HBEHCHBCBPG = 1;
-    repeated uint32 IAEAJKJDCHO = 11;
-    repeated LimaoNewsOfficeSurveyState CMNOBDCMGHE = 8;
+    repeated uint32 HBEHCHBCBPG = 7;
+    repeated uint32 IAEAJKJDCHO = 8;
+    repeated LimaoNewsOfficeSurveyState CMNOBDCMGHE = 14;
 }

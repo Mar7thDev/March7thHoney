@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChNCYXR0bGVNb25zdGVyLnByb3RvGhFMSkhETUtFQlBESC5wcm90byJlCg1C",
-            "YXR0bGVNb25zdGVyEiAKCmV4dHJhX2luZm8YBCABKAsyDC5MSkhETUtFQlBE",
-            "SBIOCgZtYXhfaHAYAyABKA0SEgoKbW9uc3Rlcl9pZBgBIAEoDRIOCgZjdXJf",
-            "aHAYAiABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "YXR0bGVNb25zdGVyEhIKCm1vbnN0ZXJfaWQYASABKA0SDgoGY3VyX2hwGAIg",
+            "ASgNEg4KBm1heF9ocBgDIAEoDRIgCgpleHRyYV9pbmZvGAQgASgLMgwuTEpI",
+            "RE1LRUJQREhCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.LJHDMKEBPDHReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BattleMonster), global::March7thHoney.Proto.BattleMonster.Parser, new[]{ "ExtraInfo", "MaxHp", "MonsterId", "CurHp" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BattleMonster), global::March7thHoney.Proto.BattleMonster.Parser, new[]{ "MonsterId", "CurHp", "MaxHp", "ExtraInfo" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,10 +73,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BattleMonster(BattleMonster other) : this() {
-      extraInfo_ = other.extraInfo_ != null ? other.extraInfo_.Clone() : null;
-      maxHp_ = other.maxHp_;
       monsterId_ = other.monsterId_;
       curHp_ = other.curHp_;
+      maxHp_ = other.maxHp_;
+      extraInfo_ = other.extraInfo_ != null ? other.extraInfo_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,30 +84,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BattleMonster Clone() {
       return new BattleMonster(this);
-    }
-
-    /// <summary>Field number for the "extra_info" field.</summary>
-    public const int ExtraInfoFieldNumber = 4;
-    private global::March7thHoney.Proto.LJHDMKEBPDH extraInfo_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.LJHDMKEBPDH ExtraInfo {
-      get { return extraInfo_; }
-      set {
-        extraInfo_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "max_hp" field.</summary>
-    public const int MaxHpFieldNumber = 3;
-    private uint maxHp_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint MaxHp {
-      get { return maxHp_; }
-      set {
-        maxHp_ = value;
-      }
     }
 
     /// <summary>Field number for the "monster_id" field.</summary>
@@ -134,6 +110,30 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "max_hp" field.</summary>
+    public const int MaxHpFieldNumber = 3;
+    private uint maxHp_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint MaxHp {
+      get { return maxHp_; }
+      set {
+        maxHp_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "extra_info" field.</summary>
+    public const int ExtraInfoFieldNumber = 4;
+    private global::March7thHoney.Proto.LJHDMKEBPDH extraInfo_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.LJHDMKEBPDH ExtraInfo {
+      get { return extraInfo_; }
+      set {
+        extraInfo_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -149,10 +149,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(ExtraInfo, other.ExtraInfo)) return false;
-      if (MaxHp != other.MaxHp) return false;
       if (MonsterId != other.MonsterId) return false;
       if (CurHp != other.CurHp) return false;
+      if (MaxHp != other.MaxHp) return false;
+      if (!object.Equals(ExtraInfo, other.ExtraInfo)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -160,10 +160,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (extraInfo_ != null) hash ^= ExtraInfo.GetHashCode();
-      if (MaxHp != 0) hash ^= MaxHp.GetHashCode();
       if (MonsterId != 0) hash ^= MonsterId.GetHashCode();
       if (CurHp != 0) hash ^= CurHp.GetHashCode();
+      if (MaxHp != 0) hash ^= MaxHp.GetHashCode();
+      if (extraInfo_ != null) hash ^= ExtraInfo.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -234,17 +234,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (extraInfo_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ExtraInfo);
-      }
-      if (MaxHp != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MaxHp);
-      }
       if (MonsterId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MonsterId);
       }
       if (CurHp != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurHp);
+      }
+      if (MaxHp != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MaxHp);
+      }
+      if (extraInfo_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ExtraInfo);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -258,20 +258,20 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.extraInfo_ != null) {
-        if (extraInfo_ == null) {
-          ExtraInfo = new global::March7thHoney.Proto.LJHDMKEBPDH();
-        }
-        ExtraInfo.MergeFrom(other.ExtraInfo);
-      }
-      if (other.MaxHp != 0) {
-        MaxHp = other.MaxHp;
-      }
       if (other.MonsterId != 0) {
         MonsterId = other.MonsterId;
       }
       if (other.CurHp != 0) {
         CurHp = other.CurHp;
+      }
+      if (other.MaxHp != 0) {
+        MaxHp = other.MaxHp;
+      }
+      if (other.extraInfo_ != null) {
+        if (extraInfo_ == null) {
+          ExtraInfo = new global::March7thHoney.Proto.LJHDMKEBPDH();
+        }
+        ExtraInfo.MergeFrom(other.ExtraInfo);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }

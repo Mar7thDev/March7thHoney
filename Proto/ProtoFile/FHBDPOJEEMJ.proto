@@ -2,18 +2,14 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-import "COKFMMNDCHN.proto";
 import "DJEECBNBGMN.proto";
-import "EBIDBCOBLNM.proto";
 import "EGAILAEBLIG.proto";
 import "HLEBBGFAKAK.proto";
 
 message FHBDPOJEEMJ {
     oneof KOEFMOAPDGI {
-        DJEECBNBGMN HHBPBGMNGPN = 14;
-        EGAILAEBLIG ECCLOKPNFHP = 11;
-        EBIDBCOBLNM BJJGPOEFBAC = 5;
-        HLEBBGFAKAK HDFLCOIDCPE = 15;
-        COKFMMNDCHN NJKMEJIBIDC = 1;
+        DJEECBNBGMN HHBPBGMNGPN = 13;
+        EGAILAEBLIG ECCLOKPNFHP = 1;
+        HLEBBGFAKAK HDFLCOIDCPE = 6;
     }
 }

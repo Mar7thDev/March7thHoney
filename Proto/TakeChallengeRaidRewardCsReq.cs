@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiJUYWtlQ2hhbGxlbmdlUmFpZFJld2FyZENzUmVxLnByb3RvIjMKHFRha2VD",
-            "aGFsbGVuZ2VSYWlkUmV3YXJkQ3NSZXESEwoLSEVKQU5DQ0RHQVAYBiABKA1C",
+            "aGFsbGVuZ2VSYWlkUmV3YXJkQ3NSZXESEwoLSEVKQU5DQ0RHQVAYDyABKA1C",
             "FqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -83,7 +83,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "HEJANCCDGAP" field.</summary>
-    public const int HEJANCCDGAPFieldNumber = 6;
+    public const int HEJANCCDGAPFieldNumber = 15;
     private uint hEJANCCDGAP_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -137,7 +137,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (HEJANCCDGAP != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(120);
         output.WriteUInt32(HEJANCCDGAP);
       }
       if (_unknownFields != null) {
@@ -151,7 +151,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (HEJANCCDGAP != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(120);
         output.WriteUInt32(HEJANCCDGAP);
       }
       if (_unknownFields != null) {
@@ -201,7 +201,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 48: {
+          case 120: {
             HEJANCCDGAP = input.ReadUInt32();
             break;
           }
@@ -224,7 +224,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 48: {
+          case 120: {
             HEJANCCDGAP = input.ReadUInt32();
             break;
           }

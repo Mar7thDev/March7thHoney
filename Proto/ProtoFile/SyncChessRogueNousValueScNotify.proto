@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "EPDDOMFGIMK.proto";
 
 message SyncChessRogueNousValueScNotify {
-    EPDDOMFGIMK AJPMADHMGML = 1;
+    EPDDOMFGIMK AJPMADHMGML = 4;
 }

@@ -26,10 +26,10 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChpFbnRpdHlCdWZmQ2hhbmdlSW5mby5wcm90bxoOQnVmZkluZm8ucHJvdG8a",
             "H1NjZW5lRW50aXR5QnVmZkNoYW5nZVR5cGUucHJvdG8ivQEKFEVudGl0eUJ1",
-            "ZmZDaGFuZ2VJbmZvEioKBnJlYXNvbhgDIAEoDjIaLlNjZW5lRW50aXR5QnVm",
-            "ZkNoYW5nZVR5cGUSFgoOY2FzdF9lbnRpdHlfaWQYCiABKA0SEQoJZW50aXR5",
-            "X2lkGAIgASgNEiUKEGJ1ZmZfY2hhbmdlX2luZm8YBCABKAsyCS5CdWZmSW5m",
-            "b0gAEhgKDnJlbW92ZV9idWZmX2lkGAcgASgNSABCDQoLS0tOQk9BQ05DT05C",
+            "ZmZDaGFuZ2VJbmZvEioKBnJlYXNvbhgBIAEoDjIaLlNjZW5lRW50aXR5QnVm",
+            "ZkNoYW5nZVR5cGUSFgoOY2FzdF9lbnRpdHlfaWQYCCABKA0SEQoJZW50aXR5",
+            "X2lkGAwgASgNEiUKEGJ1ZmZfY2hhbmdlX2luZm8YAyABKAsyCS5CdWZmSW5m",
+            "b0gAEhgKDnJlbW92ZV9idWZmX2lkGAkgASgNSABCDQoLS0tOQk9BQ05DT05C",
             "FqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.BuffInfoReflection.Descriptor, global::March7thHoney.Proto.SceneEntityBuffChangeTypeReflection.Descriptor, },
@@ -98,7 +98,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "reason" field.</summary>
-    public const int ReasonFieldNumber = 3;
+    public const int ReasonFieldNumber = 1;
     private global::March7thHoney.Proto.SceneEntityBuffChangeType reason_ = global::March7thHoney.Proto.SceneEntityBuffChangeType.Default;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,7 +110,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "cast_entity_id" field.</summary>
-    public const int CastEntityIdFieldNumber = 10;
+    public const int CastEntityIdFieldNumber = 8;
     private uint castEntityId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -122,7 +122,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "entity_id" field.</summary>
-    public const int EntityIdFieldNumber = 2;
+    public const int EntityIdFieldNumber = 12;
     private uint entityId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -134,7 +134,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "buff_change_info" field.</summary>
-    public const int BuffChangeInfoFieldNumber = 4;
+    public const int BuffChangeInfoFieldNumber = 3;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.BuffInfo BuffChangeInfo {
@@ -146,7 +146,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "remove_buff_id" field.</summary>
-    public const int RemoveBuffIdFieldNumber = 7;
+    public const int RemoveBuffIdFieldNumber = 9;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint RemoveBuffId {
@@ -175,8 +175,8 @@ namespace March7thHoney.Proto {
     /// <summary>Enum of possible cases for the "KKNBOACNCON" oneof.</summary>
     public enum KKNBOACNCONOneofCase {
       None = 0,
-      BuffChangeInfo = 4,
-      RemoveBuffId = 7,
+      BuffChangeInfo = 3,
+      RemoveBuffId = 9,
     }
     private KKNBOACNCONOneofCase kKNBOACNCONCase_ = KKNBOACNCONOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -244,25 +244,25 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (EntityId != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(EntityId);
-      }
       if (Reason != global::March7thHoney.Proto.SceneEntityBuffChangeType.Default) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(8);
         output.WriteEnum((int) Reason);
       }
       if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.BuffChangeInfo) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(26);
         output.WriteMessage(BuffChangeInfo);
       }
+      if (CastEntityId != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(CastEntityId);
+      }
       if (HasRemoveBuffId) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(72);
         output.WriteUInt32(RemoveBuffId);
       }
-      if (CastEntityId != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(CastEntityId);
+      if (EntityId != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(EntityId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -274,25 +274,25 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (EntityId != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(EntityId);
-      }
       if (Reason != global::March7thHoney.Proto.SceneEntityBuffChangeType.Default) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(8);
         output.WriteEnum((int) Reason);
       }
       if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.BuffChangeInfo) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(26);
         output.WriteMessage(BuffChangeInfo);
       }
+      if (CastEntityId != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(CastEntityId);
+      }
       if (HasRemoveBuffId) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(72);
         output.WriteUInt32(RemoveBuffId);
       }
-      if (CastEntityId != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(CastEntityId);
+      if (EntityId != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(EntityId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -371,15 +371,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            EntityId = input.ReadUInt32();
-            break;
-          }
-          case 24: {
+          case 8: {
             Reason = (global::March7thHoney.Proto.SceneEntityBuffChangeType) input.ReadEnum();
             break;
           }
-          case 34: {
+          case 26: {
             global::March7thHoney.Proto.BuffInfo subBuilder = new global::March7thHoney.Proto.BuffInfo();
             if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.BuffChangeInfo) {
               subBuilder.MergeFrom(BuffChangeInfo);
@@ -388,12 +384,16 @@ namespace March7thHoney.Proto {
             BuffChangeInfo = subBuilder;
             break;
           }
-          case 56: {
+          case 64: {
+            CastEntityId = input.ReadUInt32();
+            break;
+          }
+          case 72: {
             RemoveBuffId = input.ReadUInt32();
             break;
           }
-          case 80: {
-            CastEntityId = input.ReadUInt32();
+          case 96: {
+            EntityId = input.ReadUInt32();
             break;
           }
         }
@@ -415,15 +415,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            EntityId = input.ReadUInt32();
-            break;
-          }
-          case 24: {
+          case 8: {
             Reason = (global::March7thHoney.Proto.SceneEntityBuffChangeType) input.ReadEnum();
             break;
           }
-          case 34: {
+          case 26: {
             global::March7thHoney.Proto.BuffInfo subBuilder = new global::March7thHoney.Proto.BuffInfo();
             if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.BuffChangeInfo) {
               subBuilder.MergeFrom(BuffChangeInfo);
@@ -432,12 +428,16 @@ namespace March7thHoney.Proto {
             BuffChangeInfo = subBuilder;
             break;
           }
-          case 56: {
+          case 64: {
+            CastEntityId = input.ReadUInt32();
+            break;
+          }
+          case 72: {
             RemoveBuffId = input.ReadUInt32();
             break;
           }
-          case 80: {
-            CastEntityId = input.ReadUInt32();
+          case 96: {
+            EntityId = input.ReadUInt32();
             break;
           }
         }

@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CjJQbGFuZXRGZXNDaGFuZ2VDYXJkUGllY2VBcHBseVBlcm1pc3Npb25Dc1Jl",
             "cS5wcm90byJDCixQbGFuZXRGZXNDaGFuZ2VDYXJkUGllY2VBcHBseVBlcm1p",
-            "c3Npb25Dc1JlcRITCgtIQUFIQUdBUERLQxgHIAEoDUIWqgITTWFyY2g3dGhI",
+            "c3Npb25Dc1JlcRITCgtIQUFIQUdBUERLQxgJIAEoDUIWqgITTWFyY2g3dGhI",
             "b25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "HAAHAGAPDKC" field.</summary>
-    public const int HAAHAGAPDKCFieldNumber = 7;
+    public const int HAAHAGAPDKCFieldNumber = 9;
     private uint hAAHAGAPDKC_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -138,7 +138,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (HAAHAGAPDKC != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(72);
         output.WriteUInt32(HAAHAGAPDKC);
       }
       if (_unknownFields != null) {
@@ -152,7 +152,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (HAAHAGAPDKC != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(72);
         output.WriteUInt32(HAAHAGAPDKC);
       }
       if (_unknownFields != null) {
@@ -202,7 +202,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
+          case 72: {
             HAAHAGAPDKC = input.ReadUInt32();
             break;
           }
@@ -225,7 +225,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
+          case 72: {
             HAAHAGAPDKC = input.ReadUInt32();
             break;
           }

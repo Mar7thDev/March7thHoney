@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "BFBCEOICLAB.proto";
 
 message FateStartScRsp {
-    BFBCEOICLAB OEIBHLMDJKA = 10;
-    uint32 retcode = 9;
+    uint32 retcode = 7;
+    BFBCEOICLAB OEIBHLMDJKA = 11;
 }

@@ -6,7 +6,7 @@ import "CGOGDJKALMH.proto";
 import "DifficultyAdjustmentType.proto";
 
 message AMKBFMCOIHK {
-    uint32 id = 10;
-    CGOGDJKALMH NFMKOFNEKLA = 12;
-    DifficultyAdjustmentType ANJMFPKJHOH = 1;
+    CGOGDJKALMH source_type = 9;
+    uint32 id = 11;
+    DifficultyAdjustmentType ANJMFPKJHOH = 13;
 }

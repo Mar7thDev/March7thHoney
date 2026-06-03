@@ -7,11 +7,11 @@ import "BattleBuff.proto";
 import "SceneMonsterWave.proto";
 
 message AetherDivideBattleInfo {
-    repeated BattleBuff buff_list = 3;
-    repeated AetherAvatarInfo battle_avatar_list = 10;
-    repeated SceneMonsterWave monster_wave_list = 14;
-    uint32 battle_id = 11;
-    uint32 stage_id = 12;
-    bool IMEKCMNFLDI = 1;
-    uint32 logic_random_seed = 13;
+    repeated BattleBuff buff_list = 1;
+    uint32 logic_random_seed = 2;
+    uint32 stage_id = 9;
+    uint32 battle_id = 10;
+    repeated AetherAvatarInfo battle_avatar_list = 11;
+    bool encrypt_result = 14;
+    repeated SceneMonsterWave monster_wave_list = 15;
 }

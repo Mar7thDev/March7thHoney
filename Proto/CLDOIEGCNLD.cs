@@ -26,16 +26,16 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChFDTERPSUVHQ05MRC5wcm90bxoiQ2hhbGxlbmdlQm9zc0F2YXRhclJlbGlj",
             "SW5mby5wcm90bxogQ2hhbGxlbmdlQm9zc0VxdWlwbWVudEluZm8ucHJvdG8i",
-            "zQEKC0NMRE9JRUdDTkxEEjAKC1BBR1BOT0tMTk9NGAYgASgLMhsuQ2hhbGxl",
-            "bmdlQm9zc0VxdWlwbWVudEluZm8SMgoLT0tDR0hLRE1GQU0YByABKAsyHS5D",
-            "aGFsbGVuZ2VCb3NzQXZhdGFyUmVsaWNJbmZvEhMKC2F2YXRhcl90eXBlGAIg",
-            "ASgNEhMKC01ET0pORU5HQ0ZFGAUgASgNEg0KBWxldmVsGAQgASgNEhEKCWF2",
-            "YXRhcl9pZBgBIAEoDRIMCgRzbG90GAMgASgNQhaqAhNNYXJjaDd0aEhvbmV5",
-            "LlByb3RvYgZwcm90bzM="));
+            "xwEKC0NMRE9JRUdDTkxEEhEKCWF2YXRhcl9pZBgBIAEoDRITCgthdmF0YXJf",
+            "dHlwZRgCIAEoDRIMCgRzbG90GAMgASgNEg0KBWxldmVsGAQgASgNEg8KB3Nr",
+            "aW5faWQYBSABKA0SLgoJZXF1aXBtZW50GAYgASgLMhsuQ2hhbGxlbmdlQm9z",
+            "c0VxdWlwbWVudEluZm8SMgoLT0tDR0hLRE1GQU0YByABKAsyHS5DaGFsbGVu",
+            "Z2VCb3NzQXZhdGFyUmVsaWNJbmZvQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
+            "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChallengeBossAvatarRelicInfoReflection.Descriptor, global::March7thHoney.Proto.ChallengeBossEquipmentInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.CLDOIEGCNLD), global::March7thHoney.Proto.CLDOIEGCNLD.Parser, new[]{ "PAGPNOKLNOM", "OKCGHKDMFAM", "AvatarType", "MDOJNENGCFE", "Level", "AvatarId", "Slot" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.CLDOIEGCNLD), global::March7thHoney.Proto.CLDOIEGCNLD.Parser, new[]{ "AvatarId", "AvatarType", "Slot", "Level", "SkinId", "Equipment", "OKCGHKDMFAM" }, null, null, null, null)
           }));
     }
     #endregion
@@ -77,13 +77,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public CLDOIEGCNLD(CLDOIEGCNLD other) : this() {
-      pAGPNOKLNOM_ = other.pAGPNOKLNOM_ != null ? other.pAGPNOKLNOM_.Clone() : null;
-      oKCGHKDMFAM_ = other.oKCGHKDMFAM_ != null ? other.oKCGHKDMFAM_.Clone() : null;
-      avatarType_ = other.avatarType_;
-      mDOJNENGCFE_ = other.mDOJNENGCFE_;
-      level_ = other.level_;
       avatarId_ = other.avatarId_;
+      avatarType_ = other.avatarType_;
       slot_ = other.slot_;
+      level_ = other.level_;
+      skinId_ = other.skinId_;
+      equipment_ = other.equipment_ != null ? other.equipment_.Clone() : null;
+      oKCGHKDMFAM_ = other.oKCGHKDMFAM_ != null ? other.oKCGHKDMFAM_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -93,27 +93,15 @@ namespace March7thHoney.Proto {
       return new CLDOIEGCNLD(this);
     }
 
-    /// <summary>Field number for the "PAGPNOKLNOM" field.</summary>
-    public const int PAGPNOKLNOMFieldNumber = 6;
-    private global::March7thHoney.Proto.ChallengeBossEquipmentInfo pAGPNOKLNOM_;
+    /// <summary>Field number for the "avatar_id" field.</summary>
+    public const int AvatarIdFieldNumber = 1;
+    private uint avatarId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.ChallengeBossEquipmentInfo PAGPNOKLNOM {
-      get { return pAGPNOKLNOM_; }
+    public uint AvatarId {
+      get { return avatarId_; }
       set {
-        pAGPNOKLNOM_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "OKCGHKDMFAM" field.</summary>
-    public const int OKCGHKDMFAMFieldNumber = 7;
-    private global::March7thHoney.Proto.ChallengeBossAvatarRelicInfo oKCGHKDMFAM_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.ChallengeBossAvatarRelicInfo OKCGHKDMFAM {
-      get { return oKCGHKDMFAM_; }
-      set {
-        oKCGHKDMFAM_ = value;
+        avatarId_ = value;
       }
     }
 
@@ -129,15 +117,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "MDOJNENGCFE" field.</summary>
-    public const int MDOJNENGCFEFieldNumber = 5;
-    private uint mDOJNENGCFE_;
+    /// <summary>Field number for the "slot" field.</summary>
+    public const int SlotFieldNumber = 3;
+    private uint slot_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint MDOJNENGCFE {
-      get { return mDOJNENGCFE_; }
+    public uint Slot {
+      get { return slot_; }
       set {
-        mDOJNENGCFE_ = value;
+        slot_ = value;
       }
     }
 
@@ -153,27 +141,39 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "avatar_id" field.</summary>
-    public const int AvatarIdFieldNumber = 1;
-    private uint avatarId_;
+    /// <summary>Field number for the "skin_id" field.</summary>
+    public const int SkinIdFieldNumber = 5;
+    private uint skinId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint AvatarId {
-      get { return avatarId_; }
+    public uint SkinId {
+      get { return skinId_; }
       set {
-        avatarId_ = value;
+        skinId_ = value;
       }
     }
 
-    /// <summary>Field number for the "slot" field.</summary>
-    public const int SlotFieldNumber = 3;
-    private uint slot_;
+    /// <summary>Field number for the "equipment" field.</summary>
+    public const int EquipmentFieldNumber = 6;
+    private global::March7thHoney.Proto.ChallengeBossEquipmentInfo equipment_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Slot {
-      get { return slot_; }
+    public global::March7thHoney.Proto.ChallengeBossEquipmentInfo Equipment {
+      get { return equipment_; }
       set {
-        slot_ = value;
+        equipment_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "OKCGHKDMFAM" field.</summary>
+    public const int OKCGHKDMFAMFieldNumber = 7;
+    private global::March7thHoney.Proto.ChallengeBossAvatarRelicInfo oKCGHKDMFAM_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.ChallengeBossAvatarRelicInfo OKCGHKDMFAM {
+      get { return oKCGHKDMFAM_; }
+      set {
+        oKCGHKDMFAM_ = value;
       }
     }
 
@@ -192,13 +192,13 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(PAGPNOKLNOM, other.PAGPNOKLNOM)) return false;
-      if (!object.Equals(OKCGHKDMFAM, other.OKCGHKDMFAM)) return false;
-      if (AvatarType != other.AvatarType) return false;
-      if (MDOJNENGCFE != other.MDOJNENGCFE) return false;
-      if (Level != other.Level) return false;
       if (AvatarId != other.AvatarId) return false;
+      if (AvatarType != other.AvatarType) return false;
       if (Slot != other.Slot) return false;
+      if (Level != other.Level) return false;
+      if (SkinId != other.SkinId) return false;
+      if (!object.Equals(Equipment, other.Equipment)) return false;
+      if (!object.Equals(OKCGHKDMFAM, other.OKCGHKDMFAM)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -206,13 +206,13 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (pAGPNOKLNOM_ != null) hash ^= PAGPNOKLNOM.GetHashCode();
-      if (oKCGHKDMFAM_ != null) hash ^= OKCGHKDMFAM.GetHashCode();
-      if (AvatarType != 0) hash ^= AvatarType.GetHashCode();
-      if (MDOJNENGCFE != 0) hash ^= MDOJNENGCFE.GetHashCode();
-      if (Level != 0) hash ^= Level.GetHashCode();
       if (AvatarId != 0) hash ^= AvatarId.GetHashCode();
+      if (AvatarType != 0) hash ^= AvatarType.GetHashCode();
       if (Slot != 0) hash ^= Slot.GetHashCode();
+      if (Level != 0) hash ^= Level.GetHashCode();
+      if (SkinId != 0) hash ^= SkinId.GetHashCode();
+      if (equipment_ != null) hash ^= Equipment.GetHashCode();
+      if (oKCGHKDMFAM_ != null) hash ^= OKCGHKDMFAM.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -247,13 +247,13 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(32);
         output.WriteUInt32(Level);
       }
-      if (MDOJNENGCFE != 0) {
+      if (SkinId != 0) {
         output.WriteRawTag(40);
-        output.WriteUInt32(MDOJNENGCFE);
+        output.WriteUInt32(SkinId);
       }
-      if (pAGPNOKLNOM_ != null) {
+      if (equipment_ != null) {
         output.WriteRawTag(50);
-        output.WriteMessage(PAGPNOKLNOM);
+        output.WriteMessage(Equipment);
       }
       if (oKCGHKDMFAM_ != null) {
         output.WriteRawTag(58);
@@ -285,13 +285,13 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(32);
         output.WriteUInt32(Level);
       }
-      if (MDOJNENGCFE != 0) {
+      if (SkinId != 0) {
         output.WriteRawTag(40);
-        output.WriteUInt32(MDOJNENGCFE);
+        output.WriteUInt32(SkinId);
       }
-      if (pAGPNOKLNOM_ != null) {
+      if (equipment_ != null) {
         output.WriteRawTag(50);
-        output.WriteMessage(PAGPNOKLNOM);
+        output.WriteMessage(Equipment);
       }
       if (oKCGHKDMFAM_ != null) {
         output.WriteRawTag(58);
@@ -307,26 +307,26 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (pAGPNOKLNOM_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(PAGPNOKLNOM);
-      }
-      if (oKCGHKDMFAM_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(OKCGHKDMFAM);
+      if (AvatarId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarId);
       }
       if (AvatarType != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarType);
       }
-      if (MDOJNENGCFE != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MDOJNENGCFE);
+      if (Slot != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Slot);
       }
       if (Level != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
       }
-      if (AvatarId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarId);
+      if (SkinId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SkinId);
       }
-      if (Slot != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Slot);
+      if (equipment_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Equipment);
+      }
+      if (oKCGHKDMFAM_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(OKCGHKDMFAM);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -340,32 +340,32 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.pAGPNOKLNOM_ != null) {
-        if (pAGPNOKLNOM_ == null) {
-          PAGPNOKLNOM = new global::March7thHoney.Proto.ChallengeBossEquipmentInfo();
+      if (other.AvatarId != 0) {
+        AvatarId = other.AvatarId;
+      }
+      if (other.AvatarType != 0) {
+        AvatarType = other.AvatarType;
+      }
+      if (other.Slot != 0) {
+        Slot = other.Slot;
+      }
+      if (other.Level != 0) {
+        Level = other.Level;
+      }
+      if (other.SkinId != 0) {
+        SkinId = other.SkinId;
+      }
+      if (other.equipment_ != null) {
+        if (equipment_ == null) {
+          Equipment = new global::March7thHoney.Proto.ChallengeBossEquipmentInfo();
         }
-        PAGPNOKLNOM.MergeFrom(other.PAGPNOKLNOM);
+        Equipment.MergeFrom(other.Equipment);
       }
       if (other.oKCGHKDMFAM_ != null) {
         if (oKCGHKDMFAM_ == null) {
           OKCGHKDMFAM = new global::March7thHoney.Proto.ChallengeBossAvatarRelicInfo();
         }
         OKCGHKDMFAM.MergeFrom(other.OKCGHKDMFAM);
-      }
-      if (other.AvatarType != 0) {
-        AvatarType = other.AvatarType;
-      }
-      if (other.MDOJNENGCFE != 0) {
-        MDOJNENGCFE = other.MDOJNENGCFE;
-      }
-      if (other.Level != 0) {
-        Level = other.Level;
-      }
-      if (other.AvatarId != 0) {
-        AvatarId = other.AvatarId;
-      }
-      if (other.Slot != 0) {
-        Slot = other.Slot;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -403,14 +403,14 @@ namespace March7thHoney.Proto {
             break;
           }
           case 40: {
-            MDOJNENGCFE = input.ReadUInt32();
+            SkinId = input.ReadUInt32();
             break;
           }
           case 50: {
-            if (pAGPNOKLNOM_ == null) {
-              PAGPNOKLNOM = new global::March7thHoney.Proto.ChallengeBossEquipmentInfo();
+            if (equipment_ == null) {
+              Equipment = new global::March7thHoney.Proto.ChallengeBossEquipmentInfo();
             }
-            input.ReadMessage(PAGPNOKLNOM);
+            input.ReadMessage(Equipment);
             break;
           }
           case 58: {
@@ -456,14 +456,14 @@ namespace March7thHoney.Proto {
             break;
           }
           case 40: {
-            MDOJNENGCFE = input.ReadUInt32();
+            SkinId = input.ReadUInt32();
             break;
           }
           case 50: {
-            if (pAGPNOKLNOM_ == null) {
-              PAGPNOKLNOM = new global::March7thHoney.Proto.ChallengeBossEquipmentInfo();
+            if (equipment_ == null) {
+              Equipment = new global::March7thHoney.Proto.ChallengeBossEquipmentInfo();
             }
-            input.ReadMessage(PAGPNOKLNOM);
+            input.ReadMessage(Equipment);
             break;
           }
           case 58: {

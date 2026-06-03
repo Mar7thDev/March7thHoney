@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CidSb2d1ZU1hZ2ljU3RvcnlJbmZvVXBkYXRlU2NOb3RpZnkucHJvdG8iOAoh",
             "Um9ndWVNYWdpY1N0b3J5SW5mb1VwZGF0ZVNjTm90aWZ5EhMKC0JOSEFJS0lM",
-            "QUpLGA8gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "QUpLGAsgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -83,7 +83,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "BNHAIKILAJK" field.</summary>
-    public const int BNHAIKILAJKFieldNumber = 15;
+    public const int BNHAIKILAJKFieldNumber = 11;
     private uint bNHAIKILAJK_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -137,7 +137,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (BNHAIKILAJK != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(88);
         output.WriteUInt32(BNHAIKILAJK);
       }
       if (_unknownFields != null) {
@@ -151,7 +151,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (BNHAIKILAJK != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(88);
         output.WriteUInt32(BNHAIKILAJK);
       }
       if (_unknownFields != null) {
@@ -201,7 +201,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 120: {
+          case 88: {
             BNHAIKILAJK = input.ReadUInt32();
             break;
           }
@@ -224,7 +224,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 120: {
+          case 88: {
             BNHAIKILAJK = input.ReadUInt32();
             break;
           }

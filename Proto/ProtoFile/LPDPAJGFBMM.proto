@@ -3,6 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message LPDPAJGFBMM {
-    uint32 retcode = 10;
-    uint32 AIAFEKGBFIF = 1;
+    uint32 retcode = 14;
 }

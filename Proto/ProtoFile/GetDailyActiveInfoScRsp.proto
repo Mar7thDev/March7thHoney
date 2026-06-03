@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "DailyActivityInfo.proto";
 
 message GetDailyActiveInfoScRsp {
-    repeated DailyActivityInfo daily_active_level_list = 7;
-    repeated uint32 daily_active_quest_id_list = 3;
-    uint32 retcode = 4;
-    uint32 daily_active_point = 14;
+    repeated uint32 daily_active_quest_id_list = 7;
+    repeated DailyActivityInfo daily_active_level_list = 8;
+    uint32 daily_active_point = 11;
+    uint32 retcode = 14;
 }

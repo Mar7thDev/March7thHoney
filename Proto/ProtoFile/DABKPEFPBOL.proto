@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message DABKPEFPBOL {
-    bytes IGHFGADJCMG = 2;
-    uint32 EIKOEBDEGGA = 3;
+    bytes IGHFGADJCMG = 6;
+    uint32 EIKOEBDEGGA = 15;
 }

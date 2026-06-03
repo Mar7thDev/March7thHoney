@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "KPMAKCHCDMH.proto";
 
 message SubmitMaterialSubmitActivityMaterialScRsp {
-    KPMAKCHCDMH MEAEIKFLBPJ = 10;
-    uint32 retcode = 3;
+    uint32 retcode = 2;
+    KPMAKCHCDMH MEAEIKFLBPJ = 14;
 }

@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "FDBDLBAPDBE.proto";
 
 message ChessRogueNousGetRogueTalentInfoScRsp {
-    FDBDLBAPDBE JCOBJAMPOAL = 1;
     uint32 FPCCPKAOGKG = 4;
-    uint32 retcode = 14;
+    uint32 retcode = 6;
+    FDBDLBAPDBE JCOBJAMPOAL = 14;
 }

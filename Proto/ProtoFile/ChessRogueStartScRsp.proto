@@ -7,8 +7,8 @@ import "MANINNKMFHG.proto";
 import "OFGJFLCBBJP.proto";
 
 message ChessRogueStartScRsp {
-    DJEKEGMEHLK CIKPBGDIABO = 1;
-    OFGJFLCBBJP HPHKDGJHIJL = 13;
-    MANINNKMFHG stage_info = 8;
-    uint32 retcode = 3;
+    MANINNKMFHG stage_info = 1;
+    DJEKEGMEHLK info = 2;
+    uint32 retcode = 6;
+    OFGJFLCBBJP HPHKDGJHIJL = 11;
 }

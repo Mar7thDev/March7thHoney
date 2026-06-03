@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFGR0ZKTkFOQkpKSS5wcm90byI1CgtGR0ZKTkFOQkpKSRITCgtDTExMRU1N",
-            "S0RNQhgHIAEoDRIRCglpc19maW5pc2gYBiABKAhCFqoCE01hcmNoN3RoSG9u",
+            "S0RNQhgFIAEoDRIRCglpc19maW5pc2gYCiABKAhCFqoCE01hcmNoN3RoSG9u",
             "ZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "CLLLEMMKDMB" field.</summary>
-    public const int CLLLEMMKDMBFieldNumber = 7;
+    public const int CLLLEMMKDMBFieldNumber = 5;
     private uint cLLLEMMKDMB_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "is_finish" field.</summary>
-    public const int IsFinishFieldNumber = 6;
+    public const int IsFinishFieldNumber = 10;
     private bool isFinish_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (IsFinish != false) {
-        output.WriteRawTag(48);
-        output.WriteBool(IsFinish);
-      }
       if (CLLLEMMKDMB != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(40);
         output.WriteUInt32(CLLLEMMKDMB);
+      }
+      if (IsFinish != false) {
+        output.WriteRawTag(80);
+        output.WriteBool(IsFinish);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (IsFinish != false) {
-        output.WriteRawTag(48);
-        output.WriteBool(IsFinish);
-      }
       if (CLLLEMMKDMB != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(40);
         output.WriteUInt32(CLLLEMMKDMB);
+      }
+      if (IsFinish != false) {
+        output.WriteRawTag(80);
+        output.WriteBool(IsFinish);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 48: {
-            IsFinish = input.ReadBool();
+          case 40: {
+            CLLLEMMKDMB = input.ReadUInt32();
             break;
           }
-          case 56: {
-            CLLLEMMKDMB = input.ReadUInt32();
+          case 80: {
+            IsFinish = input.ReadBool();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 48: {
-            IsFinish = input.ReadBool();
+          case 40: {
+            CLLLEMMKDMB = input.ReadUInt32();
             break;
           }
-          case 56: {
-            CLLLEMMKDMB = input.ReadUInt32();
+          case 80: {
+            IsFinish = input.ReadBool();
             break;
           }
         }

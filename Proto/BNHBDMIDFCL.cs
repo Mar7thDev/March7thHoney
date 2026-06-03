@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFCTkhCRE1JREZDTC5wcm90bxoRSkFBSkFQTkZNR08ucHJvdG8iRAoLQk5I",
-            "QkRNSURGQ0wSEQoJdW5pcXVlX2lkGA0gASgNEiIKC0RPS1BITlBOQ1BOGMIG",
+            "QkRNSURGQ0wSEQoJdW5pcXVlX2lkGA0gASgNEiIKC0RPS1BITlBOQ1BOGJ0I",
             "IAEoCzIMLkpBQUpBUE5GTUdPQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZw",
             "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "DOKPHNPNCPN" field.</summary>
-    public const int DOKPHNPNCPNFieldNumber = 834;
+    public const int DOKPHNPNCPNFieldNumber = 1053;
     private global::March7thHoney.Proto.JAAJAPNFMGO dOKPHNPNCPN_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -157,7 +157,7 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(UniqueId);
       }
       if (dOKPHNPNCPN_ != null) {
-        output.WriteRawTag(146, 52);
+        output.WriteRawTag(234, 65);
         output.WriteMessage(DOKPHNPNCPN);
       }
       if (_unknownFields != null) {
@@ -175,7 +175,7 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(UniqueId);
       }
       if (dOKPHNPNCPN_ != null) {
-        output.WriteRawTag(146, 52);
+        output.WriteRawTag(234, 65);
         output.WriteMessage(DOKPHNPNCPN);
       }
       if (_unknownFields != null) {
@@ -238,7 +238,7 @@ namespace March7thHoney.Proto {
             UniqueId = input.ReadUInt32();
             break;
           }
-          case 6674: {
+          case 8426: {
             if (dOKPHNPNCPN_ == null) {
               DOKPHNPNCPN = new global::March7thHoney.Proto.JAAJAPNFMGO();
             }
@@ -268,7 +268,7 @@ namespace March7thHoney.Proto {
             UniqueId = input.ReadUInt32();
             break;
           }
-          case 6674: {
+          case 8426: {
             if (dOKPHNPNCPN_ == null) {
               DOKPHNPNCPN = new global::March7thHoney.Proto.JAAJAPNFMGO();
             }

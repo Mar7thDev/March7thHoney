@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFLSkRMSVBFSUFBSy5wcm90byI3CgtLSkRMSVBFSUFBSxITCgtPTEVMQ0RL",
-            "TFBESxgJIAEoDRITCgtJRk9OTEJLSkdGRRgLIAEoCEIWqgITTWFyY2g3dGhI",
+            "TFBESxgDIAEoDRITCgtJRk9OTEJLSkdGRRgPIAEoCEIWqgITTWFyY2g3dGhI",
             "b25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "OLELCDKLPDK" field.</summary>
-    public const int OLELCDKLPDKFieldNumber = 9;
+    public const int OLELCDKLPDKFieldNumber = 3;
     private uint oLELCDKLPDK_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "IFONLBKJGFE" field.</summary>
-    public const int IFONLBKJGFEFieldNumber = 11;
+    public const int IFONLBKJGFEFieldNumber = 15;
     private bool iFONLBKJGFE_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (OLELCDKLPDK != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(24);
         output.WriteUInt32(OLELCDKLPDK);
       }
       if (IFONLBKJGFE != false) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(120);
         output.WriteBool(IFONLBKJGFE);
       }
       if (_unknownFields != null) {
@@ -170,11 +170,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (OLELCDKLPDK != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(24);
         output.WriteUInt32(OLELCDKLPDK);
       }
       if (IFONLBKJGFE != false) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(120);
         output.WriteBool(IFONLBKJGFE);
       }
       if (_unknownFields != null) {
@@ -230,11 +230,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 72: {
+          case 24: {
             OLELCDKLPDK = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 120: {
             IFONLBKJGFE = input.ReadBool();
             break;
           }
@@ -257,11 +257,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 72: {
+          case 24: {
             OLELCDKLPDK = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 120: {
             IFONLBKJGFE = input.ReadBool();
             break;
           }

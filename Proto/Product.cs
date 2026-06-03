@@ -25,16 +25,16 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cg1Qcm9kdWN0LnByb3RvGhVQcm9kdWN0R2lmdFR5cGUucHJvdG8i0gEKB1By",
-            "b2R1Y3QSEgoKcHJpY2VfdGllchgGIAEoCRISCgpwcm9kdWN0X2lkGAsgASgJ",
-            "EhIKCmJlZ2luX3RpbWUYBCABKAMSEAoIZW5kX3RpbWUYAyABKAMSEwoLRU5D",
-            "REFCT09JS0oYDSABKA0SFQoNZG91YmxlX3Jld2FyZBgCIAEoCBITCgtFTUlI",
-            "RUROS0JDQRgKIAEoDRIjCglnaWZ0X3R5cGUYDyABKA4yEC5Qcm9kdWN0R2lm",
-            "dFR5cGUSEwoLQ0xERUxNUE5BUEIYByABKA1CFqoCE01hcmNoN3RoSG9uZXku",
+            "b2R1Y3QSEwoLRU5DREFCT09JS0oYASABKA0SEAoIZW5kX3RpbWUYAiABKAMS",
+            "EwoLQ0xERUxNUE5BUEIYAyABKA0SEgoKcHJpY2VfdGllchgEIAEoCRISCgpi",
+            "ZWdpbl90aW1lGAUgASgDEhIKCnByb2R1Y3RfaWQYByABKAkSFQoNZG91Ymxl",
+            "X3Jld2FyZBgIIAEoCBIjCglnaWZ0X3R5cGUYCiABKA4yEC5Qcm9kdWN0R2lm",
+            "dFR5cGUSEwoLRU1JSEVETktCQ0EYDyABKA1CFqoCE01hcmNoN3RoSG9uZXku",
             "UHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ProductGiftTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.Product), global::March7thHoney.Proto.Product.Parser, new[]{ "PriceTier", "ProductId", "BeginTime", "EndTime", "ENCDABOOIKJ", "DoubleReward", "EMIHEDNKBCA", "GiftType", "CLDELMPNAPB" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.Product), global::March7thHoney.Proto.Product.Parser, new[]{ "ENCDABOOIKJ", "EndTime", "CLDELMPNAPB", "PriceTier", "BeginTime", "ProductId", "DoubleReward", "GiftType", "EMIHEDNKBCA" }, null, null, null, null)
           }));
     }
     #endregion
@@ -76,15 +76,15 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Product(Product other) : this() {
-      priceTier_ = other.priceTier_;
-      productId_ = other.productId_;
-      beginTime_ = other.beginTime_;
-      endTime_ = other.endTime_;
       eNCDABOOIKJ_ = other.eNCDABOOIKJ_;
-      doubleReward_ = other.doubleReward_;
-      eMIHEDNKBCA_ = other.eMIHEDNKBCA_;
-      giftType_ = other.giftType_;
+      endTime_ = other.endTime_;
       cLDELMPNAPB_ = other.cLDELMPNAPB_;
+      priceTier_ = other.priceTier_;
+      beginTime_ = other.beginTime_;
+      productId_ = other.productId_;
+      doubleReward_ = other.doubleReward_;
+      giftType_ = other.giftType_;
+      eMIHEDNKBCA_ = other.eMIHEDNKBCA_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -94,56 +94,8 @@ namespace March7thHoney.Proto {
       return new Product(this);
     }
 
-    /// <summary>Field number for the "price_tier" field.</summary>
-    public const int PriceTierFieldNumber = 6;
-    private string priceTier_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string PriceTier {
-      get { return priceTier_; }
-      set {
-        priceTier_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "product_id" field.</summary>
-    public const int ProductIdFieldNumber = 11;
-    private string productId_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string ProductId {
-      get { return productId_; }
-      set {
-        productId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "begin_time" field.</summary>
-    public const int BeginTimeFieldNumber = 4;
-    private long beginTime_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long BeginTime {
-      get { return beginTime_; }
-      set {
-        beginTime_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "end_time" field.</summary>
-    public const int EndTimeFieldNumber = 3;
-    private long endTime_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long EndTime {
-      get { return endTime_; }
-      set {
-        endTime_ = value;
-      }
-    }
-
     /// <summary>Field number for the "ENCDABOOIKJ" field.</summary>
-    public const int ENCDABOOIKJFieldNumber = 13;
+    public const int ENCDABOOIKJFieldNumber = 1;
     private uint eNCDABOOIKJ_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -154,8 +106,68 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "end_time" field.</summary>
+    public const int EndTimeFieldNumber = 2;
+    private long endTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long EndTime {
+      get { return endTime_; }
+      set {
+        endTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "CLDELMPNAPB" field.</summary>
+    public const int CLDELMPNAPBFieldNumber = 3;
+    private uint cLDELMPNAPB_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint CLDELMPNAPB {
+      get { return cLDELMPNAPB_; }
+      set {
+        cLDELMPNAPB_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "price_tier" field.</summary>
+    public const int PriceTierFieldNumber = 4;
+    private string priceTier_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string PriceTier {
+      get { return priceTier_; }
+      set {
+        priceTier_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "begin_time" field.</summary>
+    public const int BeginTimeFieldNumber = 5;
+    private long beginTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long BeginTime {
+      get { return beginTime_; }
+      set {
+        beginTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "product_id" field.</summary>
+    public const int ProductIdFieldNumber = 7;
+    private string productId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string ProductId {
+      get { return productId_; }
+      set {
+        productId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "double_reward" field.</summary>
-    public const int DoubleRewardFieldNumber = 2;
+    public const int DoubleRewardFieldNumber = 8;
     private bool doubleReward_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -166,20 +178,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "EMIHEDNKBCA" field.</summary>
-    public const int EMIHEDNKBCAFieldNumber = 10;
-    private uint eMIHEDNKBCA_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint EMIHEDNKBCA {
-      get { return eMIHEDNKBCA_; }
-      set {
-        eMIHEDNKBCA_ = value;
-      }
-    }
-
     /// <summary>Field number for the "gift_type" field.</summary>
-    public const int GiftTypeFieldNumber = 15;
+    public const int GiftTypeFieldNumber = 10;
     private global::March7thHoney.Proto.ProductGiftType giftType_ = global::March7thHoney.Proto.ProductGiftType.ProductGiftNone;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -190,15 +190,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "CLDELMPNAPB" field.</summary>
-    public const int CLDELMPNAPBFieldNumber = 7;
-    private uint cLDELMPNAPB_;
+    /// <summary>Field number for the "EMIHEDNKBCA" field.</summary>
+    public const int EMIHEDNKBCAFieldNumber = 15;
+    private uint eMIHEDNKBCA_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CLDELMPNAPB {
-      get { return cLDELMPNAPB_; }
+    public uint EMIHEDNKBCA {
+      get { return eMIHEDNKBCA_; }
       set {
-        cLDELMPNAPB_ = value;
+        eMIHEDNKBCA_ = value;
       }
     }
 
@@ -217,15 +217,15 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (PriceTier != other.PriceTier) return false;
-      if (ProductId != other.ProductId) return false;
-      if (BeginTime != other.BeginTime) return false;
-      if (EndTime != other.EndTime) return false;
       if (ENCDABOOIKJ != other.ENCDABOOIKJ) return false;
-      if (DoubleReward != other.DoubleReward) return false;
-      if (EMIHEDNKBCA != other.EMIHEDNKBCA) return false;
-      if (GiftType != other.GiftType) return false;
+      if (EndTime != other.EndTime) return false;
       if (CLDELMPNAPB != other.CLDELMPNAPB) return false;
+      if (PriceTier != other.PriceTier) return false;
+      if (BeginTime != other.BeginTime) return false;
+      if (ProductId != other.ProductId) return false;
+      if (DoubleReward != other.DoubleReward) return false;
+      if (GiftType != other.GiftType) return false;
+      if (EMIHEDNKBCA != other.EMIHEDNKBCA) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -233,15 +233,15 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (PriceTier.Length != 0) hash ^= PriceTier.GetHashCode();
-      if (ProductId.Length != 0) hash ^= ProductId.GetHashCode();
-      if (BeginTime != 0L) hash ^= BeginTime.GetHashCode();
-      if (EndTime != 0L) hash ^= EndTime.GetHashCode();
       if (ENCDABOOIKJ != 0) hash ^= ENCDABOOIKJ.GetHashCode();
-      if (DoubleReward != false) hash ^= DoubleReward.GetHashCode();
-      if (EMIHEDNKBCA != 0) hash ^= EMIHEDNKBCA.GetHashCode();
-      if (GiftType != global::March7thHoney.Proto.ProductGiftType.ProductGiftNone) hash ^= GiftType.GetHashCode();
+      if (EndTime != 0L) hash ^= EndTime.GetHashCode();
       if (CLDELMPNAPB != 0) hash ^= CLDELMPNAPB.GetHashCode();
+      if (PriceTier.Length != 0) hash ^= PriceTier.GetHashCode();
+      if (BeginTime != 0L) hash ^= BeginTime.GetHashCode();
+      if (ProductId.Length != 0) hash ^= ProductId.GetHashCode();
+      if (DoubleReward != false) hash ^= DoubleReward.GetHashCode();
+      if (GiftType != global::March7thHoney.Proto.ProductGiftType.ProductGiftNone) hash ^= GiftType.GetHashCode();
+      if (EMIHEDNKBCA != 0) hash ^= EMIHEDNKBCA.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -260,41 +260,41 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (DoubleReward != false) {
-        output.WriteRawTag(16);
-        output.WriteBool(DoubleReward);
-      }
-      if (EndTime != 0L) {
-        output.WriteRawTag(24);
-        output.WriteInt64(EndTime);
-      }
-      if (BeginTime != 0L) {
-        output.WriteRawTag(32);
-        output.WriteInt64(BeginTime);
-      }
-      if (PriceTier.Length != 0) {
-        output.WriteRawTag(50);
-        output.WriteString(PriceTier);
-      }
-      if (CLDELMPNAPB != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(CLDELMPNAPB);
-      }
-      if (EMIHEDNKBCA != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(EMIHEDNKBCA);
-      }
-      if (ProductId.Length != 0) {
-        output.WriteRawTag(90);
-        output.WriteString(ProductId);
-      }
       if (ENCDABOOIKJ != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(8);
         output.WriteUInt32(ENCDABOOIKJ);
       }
+      if (EndTime != 0L) {
+        output.WriteRawTag(16);
+        output.WriteInt64(EndTime);
+      }
+      if (CLDELMPNAPB != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(CLDELMPNAPB);
+      }
+      if (PriceTier.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(PriceTier);
+      }
+      if (BeginTime != 0L) {
+        output.WriteRawTag(40);
+        output.WriteInt64(BeginTime);
+      }
+      if (ProductId.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteString(ProductId);
+      }
+      if (DoubleReward != false) {
+        output.WriteRawTag(64);
+        output.WriteBool(DoubleReward);
+      }
       if (GiftType != global::March7thHoney.Proto.ProductGiftType.ProductGiftNone) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(80);
         output.WriteEnum((int) GiftType);
+      }
+      if (EMIHEDNKBCA != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(EMIHEDNKBCA);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -306,41 +306,41 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (DoubleReward != false) {
-        output.WriteRawTag(16);
-        output.WriteBool(DoubleReward);
-      }
-      if (EndTime != 0L) {
-        output.WriteRawTag(24);
-        output.WriteInt64(EndTime);
-      }
-      if (BeginTime != 0L) {
-        output.WriteRawTag(32);
-        output.WriteInt64(BeginTime);
-      }
-      if (PriceTier.Length != 0) {
-        output.WriteRawTag(50);
-        output.WriteString(PriceTier);
-      }
-      if (CLDELMPNAPB != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(CLDELMPNAPB);
-      }
-      if (EMIHEDNKBCA != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(EMIHEDNKBCA);
-      }
-      if (ProductId.Length != 0) {
-        output.WriteRawTag(90);
-        output.WriteString(ProductId);
-      }
       if (ENCDABOOIKJ != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(8);
         output.WriteUInt32(ENCDABOOIKJ);
       }
+      if (EndTime != 0L) {
+        output.WriteRawTag(16);
+        output.WriteInt64(EndTime);
+      }
+      if (CLDELMPNAPB != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(CLDELMPNAPB);
+      }
+      if (PriceTier.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(PriceTier);
+      }
+      if (BeginTime != 0L) {
+        output.WriteRawTag(40);
+        output.WriteInt64(BeginTime);
+      }
+      if (ProductId.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteString(ProductId);
+      }
+      if (DoubleReward != false) {
+        output.WriteRawTag(64);
+        output.WriteBool(DoubleReward);
+      }
       if (GiftType != global::March7thHoney.Proto.ProductGiftType.ProductGiftNone) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(80);
         output.WriteEnum((int) GiftType);
+      }
+      if (EMIHEDNKBCA != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(EMIHEDNKBCA);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -352,32 +352,32 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (PriceTier.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(PriceTier);
-      }
-      if (ProductId.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(ProductId);
-      }
-      if (BeginTime != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(BeginTime);
+      if (ENCDABOOIKJ != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ENCDABOOIKJ);
       }
       if (EndTime != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(EndTime);
       }
-      if (ENCDABOOIKJ != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ENCDABOOIKJ);
+      if (CLDELMPNAPB != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CLDELMPNAPB);
+      }
+      if (PriceTier.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(PriceTier);
+      }
+      if (BeginTime != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(BeginTime);
+      }
+      if (ProductId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ProductId);
       }
       if (DoubleReward != false) {
         size += 1 + 1;
       }
-      if (EMIHEDNKBCA != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EMIHEDNKBCA);
-      }
       if (GiftType != global::March7thHoney.Proto.ProductGiftType.ProductGiftNone) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) GiftType);
       }
-      if (CLDELMPNAPB != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CLDELMPNAPB);
+      if (EMIHEDNKBCA != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EMIHEDNKBCA);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -391,32 +391,32 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.PriceTier.Length != 0) {
-        PriceTier = other.PriceTier;
-      }
-      if (other.ProductId.Length != 0) {
-        ProductId = other.ProductId;
-      }
-      if (other.BeginTime != 0L) {
-        BeginTime = other.BeginTime;
+      if (other.ENCDABOOIKJ != 0) {
+        ENCDABOOIKJ = other.ENCDABOOIKJ;
       }
       if (other.EndTime != 0L) {
         EndTime = other.EndTime;
       }
-      if (other.ENCDABOOIKJ != 0) {
-        ENCDABOOIKJ = other.ENCDABOOIKJ;
+      if (other.CLDELMPNAPB != 0) {
+        CLDELMPNAPB = other.CLDELMPNAPB;
+      }
+      if (other.PriceTier.Length != 0) {
+        PriceTier = other.PriceTier;
+      }
+      if (other.BeginTime != 0L) {
+        BeginTime = other.BeginTime;
+      }
+      if (other.ProductId.Length != 0) {
+        ProductId = other.ProductId;
       }
       if (other.DoubleReward != false) {
         DoubleReward = other.DoubleReward;
       }
-      if (other.EMIHEDNKBCA != 0) {
-        EMIHEDNKBCA = other.EMIHEDNKBCA;
-      }
       if (other.GiftType != global::March7thHoney.Proto.ProductGiftType.ProductGiftNone) {
         GiftType = other.GiftType;
       }
-      if (other.CLDELMPNAPB != 0) {
-        CLDELMPNAPB = other.CLDELMPNAPB;
+      if (other.EMIHEDNKBCA != 0) {
+        EMIHEDNKBCA = other.EMIHEDNKBCA;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -437,40 +437,40 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            DoubleReward = input.ReadBool();
-            break;
-          }
-          case 24: {
-            EndTime = input.ReadInt64();
-            break;
-          }
-          case 32: {
-            BeginTime = input.ReadInt64();
-            break;
-          }
-          case 50: {
-            PriceTier = input.ReadString();
-            break;
-          }
-          case 56: {
-            CLDELMPNAPB = input.ReadUInt32();
-            break;
-          }
-          case 80: {
-            EMIHEDNKBCA = input.ReadUInt32();
-            break;
-          }
-          case 90: {
-            ProductId = input.ReadString();
-            break;
-          }
-          case 104: {
+          case 8: {
             ENCDABOOIKJ = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 16: {
+            EndTime = input.ReadInt64();
+            break;
+          }
+          case 24: {
+            CLDELMPNAPB = input.ReadUInt32();
+            break;
+          }
+          case 34: {
+            PriceTier = input.ReadString();
+            break;
+          }
+          case 40: {
+            BeginTime = input.ReadInt64();
+            break;
+          }
+          case 58: {
+            ProductId = input.ReadString();
+            break;
+          }
+          case 64: {
+            DoubleReward = input.ReadBool();
+            break;
+          }
+          case 80: {
             GiftType = (global::March7thHoney.Proto.ProductGiftType) input.ReadEnum();
+            break;
+          }
+          case 120: {
+            EMIHEDNKBCA = input.ReadUInt32();
             break;
           }
         }
@@ -492,40 +492,40 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            DoubleReward = input.ReadBool();
-            break;
-          }
-          case 24: {
-            EndTime = input.ReadInt64();
-            break;
-          }
-          case 32: {
-            BeginTime = input.ReadInt64();
-            break;
-          }
-          case 50: {
-            PriceTier = input.ReadString();
-            break;
-          }
-          case 56: {
-            CLDELMPNAPB = input.ReadUInt32();
-            break;
-          }
-          case 80: {
-            EMIHEDNKBCA = input.ReadUInt32();
-            break;
-          }
-          case 90: {
-            ProductId = input.ReadString();
-            break;
-          }
-          case 104: {
+          case 8: {
             ENCDABOOIKJ = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 16: {
+            EndTime = input.ReadInt64();
+            break;
+          }
+          case 24: {
+            CLDELMPNAPB = input.ReadUInt32();
+            break;
+          }
+          case 34: {
+            PriceTier = input.ReadString();
+            break;
+          }
+          case 40: {
+            BeginTime = input.ReadInt64();
+            break;
+          }
+          case 58: {
+            ProductId = input.ReadString();
+            break;
+          }
+          case 64: {
+            DoubleReward = input.ReadBool();
+            break;
+          }
+          case 80: {
             GiftType = (global::March7thHoney.Proto.ProductGiftType) input.ReadEnum();
+            break;
+          }
+          case 120: {
+            EMIHEDNKBCA = input.ReadUInt32();
             break;
           }
         }

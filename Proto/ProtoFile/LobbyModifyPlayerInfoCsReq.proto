@@ -6,7 +6,7 @@ import "LobbyGameExtInfo.proto";
 import "LobbyModifyType.proto";
 
 message LobbyModifyPlayerInfoCsReq {
-    LobbyGameExtInfo JIDKDPPPDPF = 14;
-    LobbyModifyType type = 15;
-    uint32 GMGJFJCDGGN = 8;
+    LobbyModifyType type = 9;
+    LobbyGameExtInfo JIDKDPPPDPF = 13;
+    uint32 GMGJFJCDGGN = 15;
 }

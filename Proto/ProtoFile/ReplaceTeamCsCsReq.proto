@@ -2,9 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-import "APAMFCKFHLL.proto";
+import "KVP.proto";
 
 message ReplaceTeamCsCsReq {
-    repeated APAMFCKFHLL ENCINPIHHDF = 8;
-    uint32 MNKCHCLGNOM = 4;
+    repeated KVP ENCINPIHHDF = 3;
+    uint32 MNKCHCLGNOM = 15;
 }

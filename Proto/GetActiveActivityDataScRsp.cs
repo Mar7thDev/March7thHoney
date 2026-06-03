@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiBHZXRBY3RpdmVBY3Rpdml0eURhdGFTY1JzcC5wcm90bxoYQWN0aXZlQWN0",
             "aXZpdHlEYXRhLnByb3RvIlcKGkdldEFjdGl2ZUFjdGl2aXR5RGF0YVNjUnNw",
-            "EigKC0hDTEdQREZCRE5QGAcgAygLMhMuQWN0aXZlQWN0aXZpdHlEYXRhEg8K",
-            "B3JldGNvZGUYBiABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
+            "EigKC0hDTEdQREZCRE5QGAYgAygLMhMuQWN0aXZlQWN0aXZpdHlEYXRhEg8K",
+            "B3JldGNvZGUYDiABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
             "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ActiveActivityDataReflection.Descriptor, },
@@ -86,9 +86,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "HCLGPDFBDNP" field.</summary>
-    public const int HCLGPDFBDNPFieldNumber = 7;
+    public const int HCLGPDFBDNPFieldNumber = 6;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.ActiveActivityData> _repeated_hCLGPDFBDNP_codec
-        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.ActiveActivityData.Parser);
+        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.ActiveActivityData.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.ActiveActivityData> hCLGPDFBDNP_ = new pbc::RepeatedField<global::March7thHoney.Proto.ActiveActivityData>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 6;
+    public const int RetcodeFieldNumber = 14;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      hCLGPDFBDNP_.WriteTo(output, _repeated_hCLGPDFBDNP_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(112);
         output.WriteUInt32(Retcode);
       }
-      hCLGPDFBDNP_.WriteTo(output, _repeated_hCLGPDFBDNP_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -167,11 +167,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      hCLGPDFBDNP_.WriteTo(ref output, _repeated_hCLGPDFBDNP_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(112);
         output.WriteUInt32(Retcode);
       }
-      hCLGPDFBDNP_.WriteTo(ref output, _repeated_hCLGPDFBDNP_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -221,12 +221,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 48: {
-            Retcode = input.ReadUInt32();
+          case 50: {
+            hCLGPDFBDNP_.AddEntriesFrom(input, _repeated_hCLGPDFBDNP_codec);
             break;
           }
-          case 58: {
-            hCLGPDFBDNP_.AddEntriesFrom(input, _repeated_hCLGPDFBDNP_codec);
+          case 112: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -248,12 +248,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 48: {
-            Retcode = input.ReadUInt32();
+          case 50: {
+            hCLGPDFBDNP_.AddEntriesFrom(ref input, _repeated_hCLGPDFBDNP_codec);
             break;
           }
-          case 58: {
-            hCLGPDFBDNP_.AddEntriesFrom(ref input, _repeated_hCLGPDFBDNP_codec);
+          case 112: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }

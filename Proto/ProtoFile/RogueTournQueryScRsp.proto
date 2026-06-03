@@ -6,7 +6,7 @@ import "KIKEAJJLAMH.proto";
 import "PFLOIHLLMEE.proto";
 
 message RogueTournQueryScRsp {
-    KIKEAJJLAMH LFLCDNGALME = 6;
-    PFLOIHLLMEE PHGJIJELKDB = 3;
-    uint32 retcode = 4;
+    uint32 retcode = 7;
+    PFLOIHLLMEE PHGJIJELKDB = 11;
+    KIKEAJJLAMH LFLCDNGALME = 12;
 }

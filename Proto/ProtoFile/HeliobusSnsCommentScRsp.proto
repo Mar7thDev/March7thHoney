@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "BGOMIHEFHPA.proto";
 
 message HeliobusSnsCommentScRsp {
-    BGOMIHEFHPA AMFEFIDDMDA = 11;
-    uint32 retcode = 2;
+    uint32 retcode = 3;
+    BGOMIHEFHPA AMFEFIDDMDA = 14;
 }

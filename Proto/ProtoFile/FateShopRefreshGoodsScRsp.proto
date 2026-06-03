@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "JDAIOFEPGCC.proto";
 
 message FateShopRefreshGoodsScRsp {
-    repeated JDAIOFEPGCC OGDKJPDFFAI = 13;
-    uint32 retcode = 10;
-    bool PNMNPFGCFBJ = 4;
+    uint32 retcode = 8;
+    bool PNMNPFGCFBJ = 9;
+    repeated JDAIOFEPGCC OGDKJPDFFAI = 15;
 }

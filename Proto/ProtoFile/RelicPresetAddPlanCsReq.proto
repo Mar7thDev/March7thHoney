@@ -6,9 +6,9 @@ import "FDJKLJGDCID.proto";
 import "RelicPresetPlanSourceType.proto";
 
 message RelicPresetAddPlanCsReq {
-    repeated uint32 relic_ids = 9;
-    string name = 2;
-    RelicPresetPlanSourceType NFMKOFNEKLA = 1;
-    uint32 avatar_id = 7;
-    FDJKLJGDCID LLJJCOOKANH = 13;
+    uint32 avatar_id = 4;
+    string name = 5;
+    RelicPresetPlanSourceType source_type = 8;
+    repeated uint32 relic_ids = 13;
+    FDJKLJGDCID LLJJCOOKANH = 14;
 }

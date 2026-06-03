@@ -6,7 +6,7 @@ import "FAICNBKIELL.proto";
 import "JGAMMPGMCNI.proto";
 
 message RogueTournSettleScRsp {
-    FAICNBKIELL BFLLJJBHLDF = 4;
-    JGAMMPGMCNI IDCMACCPCBH = 15;
-    uint32 retcode = 13;
+    JGAMMPGMCNI IDCMACCPCBH = 2;
+    uint32 retcode = 4;
+    FAICNBKIELL BFLLJJBHLDF = 5;
 }

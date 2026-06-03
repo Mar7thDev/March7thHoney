@@ -6,11 +6,11 @@ import "SceneIdentifier.proto";
 import "Vector.proto";
 
 message EnterSceneCsReq {
-    Vector IDABOKLJOLG = 8;
-    SceneIdentifier scene_identifier = 10;
-    bool FBPKOFOIOLC = 9;
-    bool is_close_map = 12;
-    uint32 entry_id = 2;
-    uint64 interact_id = 3;
-    uint32 teleport_id = 15;
+    uint64 interact_id = 1;
+    bool is_close_map = 2;
+    uint32 teleport_id = 6;
+    SceneIdentifier scene_identifier = 9;
+    bool FBPKOFOIOLC = 10;
+    Vector IDABOKLJOLG = 11;
+    uint32 entry_id = 13;
 }

@@ -9,15 +9,15 @@ import "LGGGHFDBCFN.proto";
 import "PBLBAAMLNLH.proto";
 
 message JKHGDJGBHCD {
-    repeated uint32 KBMHPOBLMKH = 6;
+    repeated PBLBAAMLNLH JLADELFEHNO = 2;
+    repeated uint32 BIGCHMJEPKE = 5;
+    uint32 retcode = 6;
+    repeated HDDBFAIFCGK IDMHGCAIBNK = 7;
     repeated uint32 BEBLBBEEIGH = 8;
-    repeated PBLBAAMLNLH JLADELFEHNO = 13;
-    repeated KJAMNAOLOLL LFEGDDMBLEE = 1;
-    repeated FNIDNGOGAFF LBBGCNIJMJC = 10;
-    repeated LGGGHFDBCFN JEFNJEJFPGK = 12;
-    repeated HDDBFAIFCGK IDMHGCAIBNK = 15;
-    repeated uint32 BIGCHMJEPKE = 3;
-    uint32 retcode = 9;
-    uint32 JDGKFGONCJI = 2;
-    bool HIHOBEPGLEJ = 4;
+    repeated KJAMNAOLOLL LFEGDDMBLEE = 9;
+    bool HIHOBEPGLEJ = 10;
+    repeated uint32 KBMHPOBLMKH = 11;
+    repeated FNIDNGOGAFF LBBGCNIJMJC = 12;
+    uint32 JDGKFGONCJI = 13;
+    repeated LGGGHFDBCFN JEFNJEJFPGK = 15;
 }

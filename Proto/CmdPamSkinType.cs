@@ -25,10 +25,10 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChRDbWRQYW1Ta2luVHlwZS5wcm90byrDAQoOQ21kUGFtU2tpblR5cGUSGwoX",
-            "TElLTURLQUxOTklfTkxDREdJUEdGREoQABIcChdMSUtNREtBTE5OSV9KQkdL",
-            "SEJESEZERBC+PxIcChdMSUtNREtBTE5OSV9OSk1CT0lNSUtPRBDIPxIcChdM",
-            "SUtNREtBTE5OSV9BQ0RHSEhETUNBTBDMPxIcChdMSUtNREtBTE5OSV9CRUdF",
-            "RVBMQUFQTBC6PxIcChdMSUtNREtBTE5OSV9BRFBJRkVGS0NBRBDKP0IWqgIT",
+            "TElLTURLQUxOTklfTkxDREdJUEdGREoQABIcChdMSUtNREtBTE5OSV9CRUdF",
+            "RVBMQUFQTBC6PxIcChdMSUtNREtBTE5OSV9OSk1CT0lNSUtPRBC7PxIcChdM",
+            "SUtNREtBTE5OSV9KQkdLSEJESEZERBDAPxIcChdMSUtNREtBTE5OSV9BQ0RH",
+            "SEhETUNBTBDEPxIcChdMSUtNREtBTE5OSV9BRFBJRkVGS0NBRBDKP0IWqgIT",
             "TWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -40,10 +40,10 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdPamSkinType {
     [pbr::OriginalName("LIKMDKALNNI_NLCDGIPGFDJ")] LikmdkalnniNlcdgipgfdj = 0,
-    [pbr::OriginalName("LIKMDKALNNI_JBGKHBDHFDD")] LikmdkalnniJbgkhbdhfdd = 8126,
-    [pbr::OriginalName("LIKMDKALNNI_NJMBOIMIKOD")] LikmdkalnniNjmboimikod = 8136,
-    [pbr::OriginalName("LIKMDKALNNI_ACDGHHDMCAL")] LikmdkalnniAcdghhdmcal = 8140,
     [pbr::OriginalName("LIKMDKALNNI_BEGEEPLAAPL")] LikmdkalnniBegeeplaapl = 8122,
+    [pbr::OriginalName("LIKMDKALNNI_NJMBOIMIKOD")] LikmdkalnniNjmboimikod = 8123,
+    [pbr::OriginalName("LIKMDKALNNI_JBGKHBDHFDD")] LikmdkalnniJbgkhbdhfdd = 8128,
+    [pbr::OriginalName("LIKMDKALNNI_ACDGHHDMCAL")] LikmdkalnniAcdghhdmcal = 8132,
     [pbr::OriginalName("LIKMDKALNNI_ADPIFEFKCAD")] LikmdkalnniAdpifefkcad = 8138,
   }
 

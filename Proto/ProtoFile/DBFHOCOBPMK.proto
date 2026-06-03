@@ -6,7 +6,7 @@ import "PlayerChallengePeakRecordBossData.proto";
 import "PlayerChallengePeakRecordMobData.proto";
 
 message DBFHOCOBPMK {
-    repeated PlayerChallengePeakRecordMobData HDCHFBKDCEB = 12;
-    PlayerChallengePeakRecordBossData CDFFIGJLGMM = 7;
-    uint32 group_id = 13;
+    repeated PlayerChallengePeakRecordMobData HDCHFBKDCEB = 8;
+    PlayerChallengePeakRecordBossData CDFFIGJLGMM = 14;
+    uint32 group_id = 15;
 }

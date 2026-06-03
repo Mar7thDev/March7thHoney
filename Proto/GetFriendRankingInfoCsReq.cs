@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "Ch9HZXRGcmllbmRSYW5raW5nSW5mb0NzUmVxLnByb3RvGhNGaWdodEdhbWVN",
             "b2RlLnByb3RvIkAKGUdldEZyaWVuZFJhbmtpbmdJbmZvQ3NSZXESIwoLR0pO",
-            "TUhJTElOSEMYDiABKA4yDi5GaWdodEdhbWVNb2RlQhaqAhNNYXJjaDd0aEhv",
+            "TUhJTElOSEMYDyABKA4yDi5GaWdodEdhbWVNb2RlQhaqAhNNYXJjaDd0aEhv",
             "bmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.FightGameModeReflection.Descriptor, },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "GJNMHILINHC" field.</summary>
-    public const int GJNMHILINHCFieldNumber = 14;
+    public const int GJNMHILINHCFieldNumber = 15;
     private global::March7thHoney.Proto.FightGameMode gJNMHILINHC_ = global::March7thHoney.Proto.FightGameMode.FjpmjpekljlNlcdgipgfdj;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -138,7 +138,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (GJNMHILINHC != global::March7thHoney.Proto.FightGameMode.FjpmjpekljlNlcdgipgfdj) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(120);
         output.WriteEnum((int) GJNMHILINHC);
       }
       if (_unknownFields != null) {
@@ -152,7 +152,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (GJNMHILINHC != global::March7thHoney.Proto.FightGameMode.FjpmjpekljlNlcdgipgfdj) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(120);
         output.WriteEnum((int) GJNMHILINHC);
       }
       if (_unknownFields != null) {
@@ -202,7 +202,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 112: {
+          case 120: {
             GJNMHILINHC = (global::March7thHoney.Proto.FightGameMode) input.ReadEnum();
             break;
           }
@@ -225,7 +225,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 112: {
+          case 120: {
             GJNMHILINHC = (global::March7thHoney.Proto.FightGameMode) input.ReadEnum();
             break;
           }

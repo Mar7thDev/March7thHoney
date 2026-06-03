@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFPSEJMT0xMTkhJQy5wcm90byJaCgtPSEJMT0xMTkhJQxIQCgh0cmFpdF9p",
-            "ZBgEIAEoDRIPCgdyb2xlX2lkGA8gASgNEhMKC0FORElQSkVER01HGAogASgI",
-            "EhMKC0hPSERPRktKSkRKGAwgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
+            "ZBgDIAEoDRITCgtBTkRJUEpFREdNRxgLIAEoCBITCgtIT0hET0ZLSkpEShgM",
+            "IAEoDRIPCgdyb2xlX2lkGA8gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
             "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.OHBLOLLNHIC), global::March7thHoney.Proto.OHBLOLLNHIC.Parser, new[]{ "TraitId", "RoleId", "ANDIPJEDGMG", "HOHDOFKJJDJ" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.OHBLOLLNHIC), global::March7thHoney.Proto.OHBLOLLNHIC.Parser, new[]{ "TraitId", "ANDIPJEDGMG", "HOHDOFKJJDJ", "RoleId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,9 +74,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public OHBLOLLNHIC(OHBLOLLNHIC other) : this() {
       traitId_ = other.traitId_;
-      roleId_ = other.roleId_;
       aNDIPJEDGMG_ = other.aNDIPJEDGMG_;
       hOHDOFKJJDJ_ = other.hOHDOFKJJDJ_;
+      roleId_ = other.roleId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -87,7 +87,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "trait_id" field.</summary>
-    public const int TraitIdFieldNumber = 4;
+    public const int TraitIdFieldNumber = 3;
     private uint traitId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,20 +98,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "role_id" field.</summary>
-    public const int RoleIdFieldNumber = 15;
-    private uint roleId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint RoleId {
-      get { return roleId_; }
-      set {
-        roleId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "ANDIPJEDGMG" field.</summary>
-    public const int ANDIPJEDGMGFieldNumber = 10;
+    public const int ANDIPJEDGMGFieldNumber = 11;
     private bool aNDIPJEDGMG_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -134,6 +122,18 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "role_id" field.</summary>
+    public const int RoleIdFieldNumber = 15;
+    private uint roleId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint RoleId {
+      get { return roleId_; }
+      set {
+        roleId_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -150,9 +150,9 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (TraitId != other.TraitId) return false;
-      if (RoleId != other.RoleId) return false;
       if (ANDIPJEDGMG != other.ANDIPJEDGMG) return false;
       if (HOHDOFKJJDJ != other.HOHDOFKJJDJ) return false;
+      if (RoleId != other.RoleId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -161,9 +161,9 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (TraitId != 0) hash ^= TraitId.GetHashCode();
-      if (RoleId != 0) hash ^= RoleId.GetHashCode();
       if (ANDIPJEDGMG != false) hash ^= ANDIPJEDGMG.GetHashCode();
       if (HOHDOFKJJDJ != 0) hash ^= HOHDOFKJJDJ.GetHashCode();
+      if (RoleId != 0) hash ^= RoleId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -183,11 +183,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (TraitId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(24);
         output.WriteUInt32(TraitId);
       }
       if (ANDIPJEDGMG != false) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(88);
         output.WriteBool(ANDIPJEDGMG);
       }
       if (HOHDOFKJJDJ != 0) {
@@ -209,11 +209,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (TraitId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(24);
         output.WriteUInt32(TraitId);
       }
       if (ANDIPJEDGMG != false) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(88);
         output.WriteBool(ANDIPJEDGMG);
       }
       if (HOHDOFKJJDJ != 0) {
@@ -237,14 +237,14 @@ namespace March7thHoney.Proto {
       if (TraitId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TraitId);
       }
-      if (RoleId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RoleId);
-      }
       if (ANDIPJEDGMG != false) {
         size += 1 + 1;
       }
       if (HOHDOFKJJDJ != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(HOHDOFKJJDJ);
+      }
+      if (RoleId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RoleId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -261,14 +261,14 @@ namespace March7thHoney.Proto {
       if (other.TraitId != 0) {
         TraitId = other.TraitId;
       }
-      if (other.RoleId != 0) {
-        RoleId = other.RoleId;
-      }
       if (other.ANDIPJEDGMG != false) {
         ANDIPJEDGMG = other.ANDIPJEDGMG;
       }
       if (other.HOHDOFKJJDJ != 0) {
         HOHDOFKJJDJ = other.HOHDOFKJJDJ;
+      }
+      if (other.RoleId != 0) {
+        RoleId = other.RoleId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -289,11 +289,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
+          case 24: {
             TraitId = input.ReadUInt32();
             break;
           }
-          case 80: {
+          case 88: {
             ANDIPJEDGMG = input.ReadBool();
             break;
           }
@@ -324,11 +324,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
+          case 24: {
             TraitId = input.ReadUInt32();
             break;
           }
-          case 80: {
+          case 88: {
             ANDIPJEDGMG = input.ReadBool();
             break;
           }

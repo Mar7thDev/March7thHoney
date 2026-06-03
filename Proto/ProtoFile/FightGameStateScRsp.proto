@@ -7,8 +7,8 @@ import "LMLNNHKJEIP.proto";
 import "OFFMCODMKDL.proto";
 
 message FightGameStateScRsp {
-    repeated LMLNNHKJEIP DFLEOIGPLNM = 12;
-    OFFMCODMKDL EMIJCKENBKJ = 15;
-    BFBHKJLJJBJ KAEDKFOMADJ = 4;
+    OFFMCODMKDL room_ext_info = 5;
     uint32 retcode = 9;
+    BFBHKJLJJBJ KAEDKFOMADJ = 12;
+    repeated LMLNNHKJEIP DFLEOIGPLNM = 13;
 }

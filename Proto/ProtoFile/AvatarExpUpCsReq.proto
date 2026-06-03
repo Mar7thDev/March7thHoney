@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemCostData.proto";
 
 message AvatarExpUpCsReq {
-    ItemCostData item_cost = 13;
-    uint32 base_avatar_id = 7;
+    ItemCostData item_cost = 8;
+    uint32 base_avatar_id = 13;
 }

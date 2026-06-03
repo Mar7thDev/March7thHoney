@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "NKDNFDCFNCP.proto";
 
 message OCKCHBDFGNL {
-    repeated NKDNFDCFNCP HJMDNLBNPNA = 5;
-    uint64 time = 6;
+    uint64 time = 3;
+    repeated NKDNFDCFNCP HJMDNLBNPNA = 11;
 }

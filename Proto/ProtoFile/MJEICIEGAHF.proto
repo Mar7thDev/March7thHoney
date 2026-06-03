@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "JDCAPBNPOOK.proto";
 
 message MJEICIEGAHF {
-    repeated uint32 OOEOCGLLHFO = 4;
-    JDCAPBNPOOK JMNJLFACCLM = 14;
+    repeated uint32 OOEOCGLLHFO = 10;
+    JDCAPBNPOOK JMNJLFACCLM = 12;
 }

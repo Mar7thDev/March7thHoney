@@ -5,12 +5,12 @@ option csharp_namespace = "March7thHoney.Proto";
 import "OHCFIOOIKND.proto";
 
 message TarotBookMultiOpenPackAndUnlockStoryScRsp {
-    OHCFIOOIKND BBEMIGELGJC = 2;
-    repeated uint32 LNOAAOAFJJE = 14;
-    map<uint32, uint32> IJOJMJOMELA = 6;
-    map<uint32, uint32> IMNNLHCAKML = 13;
-    uint32 retcode = 10;
-    uint32 HBLKMBHGLNO = 15;
-    uint32 energy_info = 8;
-    uint32 LOCEBOCJGEC = 11;
+    uint32 retcode = 1;
+    uint32 HBLKMBHGLNO = 5;
+    uint32 LOCEBOCJGEC = 6;
+    uint32 energy_info = 10;
+    OHCFIOOIKND BBEMIGELGJC = 11;
+    map<uint32, uint32> IJOJMJOMELA = 12;
+    repeated uint32 LNOAAOAFJJE = 13;
+    map<uint32, uint32> IMNNLHCAKML = 15;
 }

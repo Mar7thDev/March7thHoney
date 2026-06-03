@@ -4,5 +4,4 @@ option csharp_namespace = "March7thHoney.Proto";
 
 message ChessRogueSelectCellCsReq {
     uint32 IHAOMLEPHOM = 2;
-    uint32 LOFMJHJOELO = 10;
 }

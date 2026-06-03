@@ -7,10 +7,10 @@ import "ChallengeTierceStageData.proto";
 import "ChallengeTierceStageInfo.proto";
 
 message ChallengeTierceData {
-    repeated ChallengeTierceStageInfo stage_info_list = 15;
-    ChallengeTierceRecord record = 10;
-    repeated uint32 finished_target_list = 4;
-    repeated ChallengeTierceStageData result_list = 8;
-    bool is_passed = 3;
-    uint32 challenge_id = 9;
+    uint32 challenge_id = 3;
+    repeated ChallengeTierceStageData result_list = 4;
+    bool is_passed = 6;
+    repeated uint32 finished_target_list = 7;
+    repeated ChallengeTierceStageInfo stage_info_list = 8;
+    ChallengeTierceRecord record = 13;
 }

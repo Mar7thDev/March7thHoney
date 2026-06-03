@@ -5,13 +5,13 @@ option csharp_namespace = "March7thHoney.Proto";
 import "EDEGAHHANMF.proto";
 
 message PlayerRecordInfo {
-    EDEGAHHANMF EOGGPDHKKBJ = 10;
-    uint32 JJKIKOBAJLF = 13;
-    uint32 PPFDDFAHLED = 2;
-    uint32 DIOIIFAHAKK = 3;
-    uint32 MIMECEAFDNK = 8;
+    EDEGAHHANMF EOGGPDHKKBJ = 4;
+    uint32 JJKIKOBAJLF = 5;
+    uint32 MIMECEAFDNK = 7;
+    uint32 PPFDDFAHLED = 8;
+    uint32 DIOIIFAHAKK = 9;
+    uint32 NECKJBHEKHE = 10;
     uint32 MHOIJFEBAPA = 11;
-    uint32 KCBINJNIBNO = 5;
-    uint32 NECKJBHEKHE = 4;
-    uint32 ALGEOLGNFBL = 9;
+    uint32 KCBINJNIBNO = 14;
+    uint32 ALGEOLGNFBL = 15;
 }

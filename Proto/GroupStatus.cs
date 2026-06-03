@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFHcm91cFN0YXR1cy5wcm90bxoYTWVzc2FnZUdyb3VwU3RhdHVzLnByb3Rv",
-            "ImAKC0dyb3VwU3RhdHVzEhAKCGdyb3VwX2lkGAEgASgNEikKDGdyb3VwX3N0",
-            "YXR1cxgKIAEoDjITLk1lc3NhZ2VHcm91cFN0YXR1cxIUCgxyZWZyZXNoX3Rp",
-            "bWUYAyABKANCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ImAKC0dyb3VwU3RhdHVzEhQKDHJlZnJlc2hfdGltZRgBIAEoAxIQCghncm91",
+            "cF9pZBgFIAEoDRIpCgxncm91cF9zdGF0dXMYDyABKA4yEy5NZXNzYWdlR3Jv",
+            "dXBTdGF0dXNCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MessageGroupStatusReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GroupStatus), global::March7thHoney.Proto.GroupStatus.Parser, new[]{ "GroupId", "GroupStatus_", "RefreshTime" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GroupStatus), global::March7thHoney.Proto.GroupStatus.Parser, new[]{ "RefreshTime", "GroupId", "GroupStatus_" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,9 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GroupStatus(GroupStatus other) : this() {
+      refreshTime_ = other.refreshTime_;
       groupId_ = other.groupId_;
       groupStatus_ = other.groupStatus_;
-      refreshTime_ = other.refreshTime_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,8 +85,20 @@ namespace March7thHoney.Proto {
       return new GroupStatus(this);
     }
 
+    /// <summary>Field number for the "refresh_time" field.</summary>
+    public const int RefreshTimeFieldNumber = 1;
+    private long refreshTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long RefreshTime {
+      get { return refreshTime_; }
+      set {
+        refreshTime_ = value;
+      }
+    }
+
     /// <summary>Field number for the "group_id" field.</summary>
-    public const int GroupIdFieldNumber = 1;
+    public const int GroupIdFieldNumber = 5;
     private uint groupId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,7 +110,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "group_status" field.</summary>
-    public const int GroupStatus_FieldNumber = 10;
+    public const int GroupStatus_FieldNumber = 15;
     private global::March7thHoney.Proto.MessageGroupStatus groupStatus_ = global::March7thHoney.Proto.MessageGroupStatus.MessageGroupNone;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -106,18 +118,6 @@ namespace March7thHoney.Proto {
       get { return groupStatus_; }
       set {
         groupStatus_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "refresh_time" field.</summary>
-    public const int RefreshTimeFieldNumber = 3;
-    private long refreshTime_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long RefreshTime {
-      get { return refreshTime_; }
-      set {
-        refreshTime_ = value;
       }
     }
 
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (RefreshTime != other.RefreshTime) return false;
       if (GroupId != other.GroupId) return false;
       if (GroupStatus_ != other.GroupStatus_) return false;
-      if (RefreshTime != other.RefreshTime) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -146,9 +146,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (RefreshTime != 0L) hash ^= RefreshTime.GetHashCode();
       if (GroupId != 0) hash ^= GroupId.GetHashCode();
       if (GroupStatus_ != global::March7thHoney.Proto.MessageGroupStatus.MessageGroupNone) hash ^= GroupStatus_.GetHashCode();
-      if (RefreshTime != 0L) hash ^= RefreshTime.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -167,16 +167,16 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (GroupId != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(GroupId);
-      }
       if (RefreshTime != 0L) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(8);
         output.WriteInt64(RefreshTime);
       }
+      if (GroupId != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(GroupId);
+      }
       if (GroupStatus_ != global::March7thHoney.Proto.MessageGroupStatus.MessageGroupNone) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(120);
         output.WriteEnum((int) GroupStatus_);
       }
       if (_unknownFields != null) {
@@ -189,16 +189,16 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (GroupId != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(GroupId);
-      }
       if (RefreshTime != 0L) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(8);
         output.WriteInt64(RefreshTime);
       }
+      if (GroupId != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(GroupId);
+      }
       if (GroupStatus_ != global::March7thHoney.Proto.MessageGroupStatus.MessageGroupNone) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(120);
         output.WriteEnum((int) GroupStatus_);
       }
       if (_unknownFields != null) {
@@ -211,14 +211,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (RefreshTime != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(RefreshTime);
+      }
       if (GroupId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GroupId);
       }
       if (GroupStatus_ != global::March7thHoney.Proto.MessageGroupStatus.MessageGroupNone) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) GroupStatus_);
-      }
-      if (RefreshTime != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(RefreshTime);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -232,14 +232,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.RefreshTime != 0L) {
+        RefreshTime = other.RefreshTime;
+      }
       if (other.GroupId != 0) {
         GroupId = other.GroupId;
       }
       if (other.GroupStatus_ != global::March7thHoney.Proto.MessageGroupStatus.MessageGroupNone) {
         GroupStatus_ = other.GroupStatus_;
-      }
-      if (other.RefreshTime != 0L) {
-        RefreshTime = other.RefreshTime;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -261,14 +261,14 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            GroupId = input.ReadUInt32();
-            break;
-          }
-          case 24: {
             RefreshTime = input.ReadInt64();
             break;
           }
-          case 80: {
+          case 40: {
+            GroupId = input.ReadUInt32();
+            break;
+          }
+          case 120: {
             GroupStatus_ = (global::March7thHoney.Proto.MessageGroupStatus) input.ReadEnum();
             break;
           }
@@ -292,14 +292,14 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            GroupId = input.ReadUInt32();
-            break;
-          }
-          case 24: {
             RefreshTime = input.ReadInt64();
             break;
           }
-          case 80: {
+          case 40: {
+            GroupId = input.ReadUInt32();
+            break;
+          }
+          case 120: {
             GroupStatus_ = (global::March7thHoney.Proto.MessageGroupStatus) input.ReadEnum();
             break;
           }

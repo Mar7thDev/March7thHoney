@@ -6,7 +6,7 @@ import "FMKMEFMOJGJ.proto";
 import "NCFKHDIKCNI.proto";
 
 message GNMCIEPEBPK {
-    map<uint32, uint32> NDMLPIGABGE = 3;
-    NCFKHDIKCNI item_value = 5;
-    repeated FMKMEFMOJGJ item_list = 11;
+    repeated FMKMEFMOJGJ item_list = 2;
+    NCFKHDIKCNI item_value = 6;
+    map<uint32, uint32> NDMLPIGABGE = 13;
 }

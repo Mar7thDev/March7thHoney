@@ -26,13 +26,13 @@ namespace March7thHoney.Proto {
           string.Concat(
             "Ch5DaGFsbGVuZ2VUaWVyY2VTdGFnZUluZm8ucHJvdG8aFkF2YXRhcklkZW50",
             "aWZpZXIucHJvdG8igAEKGENoYWxsZW5nZVRpZXJjZVN0YWdlSW5mbxIbChNw",
-            "ZWFrX2F2YXRhcl9pZF9saXN0GAUgAygNEiEKBmxpbmV1cBgPIAMoCzIRLkF2",
-            "YXRhcklkZW50aWZpZXISEwoLc3RhZ2VfaW5kZXgYDCABKA0SDwoHYnVmZl9p",
-            "ZBgHIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ZWFrX2F2YXRhcl9pZF9saXN0GAEgAygNEiEKBmxpbmV1cBgFIAMoCzIRLkF2",
+            "YXRhcklkZW50aWZpZXISDwoHYnVmZl9pZBgIIAEoDRITCgtzdGFnZV9pbmRl",
+            "eBgOIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.AvatarIdentifierReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengeTierceStageInfo), global::March7thHoney.Proto.ChallengeTierceStageInfo.Parser, new[]{ "PeakAvatarIdList", "Lineup", "StageIndex", "BuffId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengeTierceStageInfo), global::March7thHoney.Proto.ChallengeTierceStageInfo.Parser, new[]{ "PeakAvatarIdList", "Lineup", "BuffId", "StageIndex" }, null, null, null, null)
           }));
     }
     #endregion
@@ -76,8 +76,8 @@ namespace March7thHoney.Proto {
     public ChallengeTierceStageInfo(ChallengeTierceStageInfo other) : this() {
       peakAvatarIdList_ = other.peakAvatarIdList_.Clone();
       lineup_ = other.lineup_.Clone();
-      stageIndex_ = other.stageIndex_;
       buffId_ = other.buffId_;
+      stageIndex_ = other.stageIndex_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -88,9 +88,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "peak_avatar_id_list" field.</summary>
-    public const int PeakAvatarIdListFieldNumber = 5;
+    public const int PeakAvatarIdListFieldNumber = 1;
     private static readonly pb::FieldCodec<uint> _repeated_peakAvatarIdList_codec
-        = pb::FieldCodec.ForUInt32(42);
+        = pb::FieldCodec.ForUInt32(10);
     private readonly pbc::RepeatedField<uint> peakAvatarIdList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -99,9 +99,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "lineup" field.</summary>
-    public const int LineupFieldNumber = 15;
+    public const int LineupFieldNumber = 5;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.AvatarIdentifier> _repeated_lineup_codec
-        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.AvatarIdentifier.Parser);
+        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.AvatarIdentifier.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.AvatarIdentifier> lineup_ = new pbc::RepeatedField<global::March7thHoney.Proto.AvatarIdentifier>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -109,20 +109,8 @@ namespace March7thHoney.Proto {
       get { return lineup_; }
     }
 
-    /// <summary>Field number for the "stage_index" field.</summary>
-    public const int StageIndexFieldNumber = 12;
-    private uint stageIndex_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint StageIndex {
-      get { return stageIndex_; }
-      set {
-        stageIndex_ = value;
-      }
-    }
-
     /// <summary>Field number for the "buff_id" field.</summary>
-    public const int BuffIdFieldNumber = 7;
+    public const int BuffIdFieldNumber = 8;
     private uint buffId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -130,6 +118,18 @@ namespace March7thHoney.Proto {
       get { return buffId_; }
       set {
         buffId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "stage_index" field.</summary>
+    public const int StageIndexFieldNumber = 14;
+    private uint stageIndex_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint StageIndex {
+      get { return stageIndex_; }
+      set {
+        stageIndex_ = value;
       }
     }
 
@@ -150,8 +150,8 @@ namespace March7thHoney.Proto {
       }
       if(!peakAvatarIdList_.Equals(other.peakAvatarIdList_)) return false;
       if(!lineup_.Equals(other.lineup_)) return false;
-      if (StageIndex != other.StageIndex) return false;
       if (BuffId != other.BuffId) return false;
+      if (StageIndex != other.StageIndex) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -161,8 +161,8 @@ namespace March7thHoney.Proto {
       int hash = 1;
       hash ^= peakAvatarIdList_.GetHashCode();
       hash ^= lineup_.GetHashCode();
-      if (StageIndex != 0) hash ^= StageIndex.GetHashCode();
       if (BuffId != 0) hash ^= BuffId.GetHashCode();
+      if (StageIndex != 0) hash ^= StageIndex.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -182,15 +182,15 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       peakAvatarIdList_.WriteTo(output, _repeated_peakAvatarIdList_codec);
+      lineup_.WriteTo(output, _repeated_lineup_codec);
       if (BuffId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(64);
         output.WriteUInt32(BuffId);
       }
       if (StageIndex != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(112);
         output.WriteUInt32(StageIndex);
       }
-      lineup_.WriteTo(output, _repeated_lineup_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -202,15 +202,15 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       peakAvatarIdList_.WriteTo(ref output, _repeated_peakAvatarIdList_codec);
+      lineup_.WriteTo(ref output, _repeated_lineup_codec);
       if (BuffId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(64);
         output.WriteUInt32(BuffId);
       }
       if (StageIndex != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(112);
         output.WriteUInt32(StageIndex);
       }
-      lineup_.WriteTo(ref output, _repeated_lineup_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -223,11 +223,11 @@ namespace March7thHoney.Proto {
       int size = 0;
       size += peakAvatarIdList_.CalculateSize(_repeated_peakAvatarIdList_codec);
       size += lineup_.CalculateSize(_repeated_lineup_codec);
-      if (StageIndex != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(StageIndex);
-      }
       if (BuffId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BuffId);
+      }
+      if (StageIndex != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(StageIndex);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -243,11 +243,11 @@ namespace March7thHoney.Proto {
       }
       peakAvatarIdList_.Add(other.peakAvatarIdList_);
       lineup_.Add(other.lineup_);
-      if (other.StageIndex != 0) {
-        StageIndex = other.StageIndex;
-      }
       if (other.BuffId != 0) {
         BuffId = other.BuffId;
+      }
+      if (other.StageIndex != 0) {
+        StageIndex = other.StageIndex;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -268,21 +268,21 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 42:
-          case 40: {
+          case 10:
+          case 8: {
             peakAvatarIdList_.AddEntriesFrom(input, _repeated_peakAvatarIdList_codec);
             break;
           }
-          case 56: {
+          case 42: {
+            lineup_.AddEntriesFrom(input, _repeated_lineup_codec);
+            break;
+          }
+          case 64: {
             BuffId = input.ReadUInt32();
             break;
           }
-          case 96: {
+          case 112: {
             StageIndex = input.ReadUInt32();
-            break;
-          }
-          case 122: {
-            lineup_.AddEntriesFrom(input, _repeated_lineup_codec);
             break;
           }
         }
@@ -304,21 +304,21 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 42:
-          case 40: {
+          case 10:
+          case 8: {
             peakAvatarIdList_.AddEntriesFrom(ref input, _repeated_peakAvatarIdList_codec);
             break;
           }
-          case 56: {
+          case 42: {
+            lineup_.AddEntriesFrom(ref input, _repeated_lineup_codec);
+            break;
+          }
+          case 64: {
             BuffId = input.ReadUInt32();
             break;
           }
-          case 96: {
+          case 112: {
             StageIndex = input.ReadUInt32();
-            break;
-          }
-          case 122: {
-            lineup_.AddEntriesFrom(ref input, _repeated_lineup_codec);
             break;
           }
         }

@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch1NYXRjaFRocmVlTGV2ZWxFbmRTY1JzcC5wcm90byJRChdNYXRjaFRocmVl",
-            "TGV2ZWxFbmRTY1JzcBITCgtLS0hQS01BSERNSxgFIAEoDRIPCgdyZXRjb2Rl",
-            "GAYgASgNEhAKCGxldmVsX2lkGAsgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
+            "TGV2ZWxFbmRTY1JzcBIPCgdyZXRjb2RlGAMgASgNEhAKCGxldmVsX2lkGAog",
+            "ASgNEhMKC0tLSFBLTUFIRE1LGA4gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
             "b3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MatchThreeLevelEndScRsp), global::March7thHoney.Proto.MatchThreeLevelEndScRsp.Parser, new[]{ "KKHPKMAHDMK", "Retcode", "LevelId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MatchThreeLevelEndScRsp), global::March7thHoney.Proto.MatchThreeLevelEndScRsp.Parser, new[]{ "Retcode", "LevelId", "KKHPKMAHDMK" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,9 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MatchThreeLevelEndScRsp(MatchThreeLevelEndScRsp other) : this() {
-      kKHPKMAHDMK_ = other.kKHPKMAHDMK_;
       retcode_ = other.retcode_;
       levelId_ = other.levelId_;
+      kKHPKMAHDMK_ = other.kKHPKMAHDMK_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,20 +85,8 @@ namespace March7thHoney.Proto {
       return new MatchThreeLevelEndScRsp(this);
     }
 
-    /// <summary>Field number for the "KKHPKMAHDMK" field.</summary>
-    public const int KKHPKMAHDMKFieldNumber = 5;
-    private uint kKHPKMAHDMK_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint KKHPKMAHDMK {
-      get { return kKHPKMAHDMK_; }
-      set {
-        kKHPKMAHDMK_ = value;
-      }
-    }
-
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 6;
+    public const int RetcodeFieldNumber = 3;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,7 +98,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "level_id" field.</summary>
-    public const int LevelIdFieldNumber = 11;
+    public const int LevelIdFieldNumber = 10;
     private uint levelId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -118,6 +106,18 @@ namespace March7thHoney.Proto {
       get { return levelId_; }
       set {
         levelId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "KKHPKMAHDMK" field.</summary>
+    public const int KKHPKMAHDMKFieldNumber = 14;
+    private uint kKHPKMAHDMK_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint KKHPKMAHDMK {
+      get { return kKHPKMAHDMK_; }
+      set {
+        kKHPKMAHDMK_ = value;
       }
     }
 
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (KKHPKMAHDMK != other.KKHPKMAHDMK) return false;
       if (Retcode != other.Retcode) return false;
       if (LevelId != other.LevelId) return false;
+      if (KKHPKMAHDMK != other.KKHPKMAHDMK) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -146,9 +146,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (KKHPKMAHDMK != 0) hash ^= KKHPKMAHDMK.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (LevelId != 0) hash ^= LevelId.GetHashCode();
+      if (KKHPKMAHDMK != 0) hash ^= KKHPKMAHDMK.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -167,17 +167,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (KKHPKMAHDMK != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(KKHPKMAHDMK);
-      }
       if (Retcode != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(24);
         output.WriteUInt32(Retcode);
       }
       if (LevelId != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(80);
         output.WriteUInt32(LevelId);
+      }
+      if (KKHPKMAHDMK != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(KKHPKMAHDMK);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -189,17 +189,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (KKHPKMAHDMK != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(KKHPKMAHDMK);
-      }
       if (Retcode != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(24);
         output.WriteUInt32(Retcode);
       }
       if (LevelId != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(80);
         output.WriteUInt32(LevelId);
+      }
+      if (KKHPKMAHDMK != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(KKHPKMAHDMK);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -211,14 +211,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (KKHPKMAHDMK != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(KKHPKMAHDMK);
-      }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
       if (LevelId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LevelId);
+      }
+      if (KKHPKMAHDMK != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(KKHPKMAHDMK);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -232,14 +232,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.KKHPKMAHDMK != 0) {
-        KKHPKMAHDMK = other.KKHPKMAHDMK;
-      }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
       if (other.LevelId != 0) {
         LevelId = other.LevelId;
+      }
+      if (other.KKHPKMAHDMK != 0) {
+        KKHPKMAHDMK = other.KKHPKMAHDMK;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -260,16 +260,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 40: {
-            KKHPKMAHDMK = input.ReadUInt32();
-            break;
-          }
-          case 48: {
+          case 24: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 80: {
             LevelId = input.ReadUInt32();
+            break;
+          }
+          case 112: {
+            KKHPKMAHDMK = input.ReadUInt32();
             break;
           }
         }
@@ -291,16 +291,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 40: {
-            KKHPKMAHDMK = input.ReadUInt32();
-            break;
-          }
-          case 48: {
+          case 24: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 80: {
             LevelId = input.ReadUInt32();
+            break;
+          }
+          case 112: {
+            KKHPKMAHDMK = input.ReadUInt32();
             break;
           }
         }

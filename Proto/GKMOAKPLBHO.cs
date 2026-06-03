@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static GKMOAKPLBHOReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFHS01PQUtQTEJITy5wcm90byJNCgtHS01PQUtQTEJITxIUCgxkaWNlX3Ns",
-            "b3RfaWQYCCABKA0SEwoLR0NBSEtMTkdGQ0sYCiABKA0SEwoLTFBPTFBEQkVM",
-            "T04YDiABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ChFHS01PQUtQTEJITy5wcm90byJNCgtHS01PQUtQTEJITxITCgtMUE9MUERC",
+            "RUxPThgDIAEoDRITCgtHQ0FIS0xOR0ZDSxgFIAEoDRIUCgxkaWNlX3Nsb3Rf",
+            "aWQYCiABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GKMOAKPLBHO), global::March7thHoney.Proto.GKMOAKPLBHO.Parser, new[]{ "DiceSlotId", "GCAHKLNGFCK", "LPOLPDBELON" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GKMOAKPLBHO), global::March7thHoney.Proto.GKMOAKPLBHO.Parser, new[]{ "LPOLPDBELON", "GCAHKLNGFCK", "DiceSlotId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,9 +72,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GKMOAKPLBHO(GKMOAKPLBHO other) : this() {
-      diceSlotId_ = other.diceSlotId_;
-      gCAHKLNGFCK_ = other.gCAHKLNGFCK_;
       lPOLPDBELON_ = other.lPOLPDBELON_;
+      gCAHKLNGFCK_ = other.gCAHKLNGFCK_;
+      diceSlotId_ = other.diceSlotId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,20 +84,20 @@ namespace March7thHoney.Proto {
       return new GKMOAKPLBHO(this);
     }
 
-    /// <summary>Field number for the "dice_slot_id" field.</summary>
-    public const int DiceSlotIdFieldNumber = 8;
-    private uint diceSlotId_;
+    /// <summary>Field number for the "LPOLPDBELON" field.</summary>
+    public const int LPOLPDBELONFieldNumber = 3;
+    private uint lPOLPDBELON_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint DiceSlotId {
-      get { return diceSlotId_; }
+    public uint LPOLPDBELON {
+      get { return lPOLPDBELON_; }
       set {
-        diceSlotId_ = value;
+        lPOLPDBELON_ = value;
       }
     }
 
     /// <summary>Field number for the "GCAHKLNGFCK" field.</summary>
-    public const int GCAHKLNGFCKFieldNumber = 10;
+    public const int GCAHKLNGFCKFieldNumber = 5;
     private uint gCAHKLNGFCK_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -108,15 +108,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "LPOLPDBELON" field.</summary>
-    public const int LPOLPDBELONFieldNumber = 14;
-    private uint lPOLPDBELON_;
+    /// <summary>Field number for the "dice_slot_id" field.</summary>
+    public const int DiceSlotIdFieldNumber = 10;
+    private uint diceSlotId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint LPOLPDBELON {
-      get { return lPOLPDBELON_; }
+    public uint DiceSlotId {
+      get { return diceSlotId_; }
       set {
-        lPOLPDBELON_ = value;
+        diceSlotId_ = value;
       }
     }
 
@@ -135,9 +135,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (DiceSlotId != other.DiceSlotId) return false;
-      if (GCAHKLNGFCK != other.GCAHKLNGFCK) return false;
       if (LPOLPDBELON != other.LPOLPDBELON) return false;
+      if (GCAHKLNGFCK != other.GCAHKLNGFCK) return false;
+      if (DiceSlotId != other.DiceSlotId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -145,9 +145,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (DiceSlotId != 0) hash ^= DiceSlotId.GetHashCode();
-      if (GCAHKLNGFCK != 0) hash ^= GCAHKLNGFCK.GetHashCode();
       if (LPOLPDBELON != 0) hash ^= LPOLPDBELON.GetHashCode();
+      if (GCAHKLNGFCK != 0) hash ^= GCAHKLNGFCK.GetHashCode();
+      if (DiceSlotId != 0) hash ^= DiceSlotId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -166,17 +166,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (DiceSlotId != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(DiceSlotId);
+      if (LPOLPDBELON != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(LPOLPDBELON);
       }
       if (GCAHKLNGFCK != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(40);
         output.WriteUInt32(GCAHKLNGFCK);
       }
-      if (LPOLPDBELON != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(LPOLPDBELON);
+      if (DiceSlotId != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(DiceSlotId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -188,17 +188,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (DiceSlotId != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(DiceSlotId);
+      if (LPOLPDBELON != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(LPOLPDBELON);
       }
       if (GCAHKLNGFCK != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(40);
         output.WriteUInt32(GCAHKLNGFCK);
       }
-      if (LPOLPDBELON != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(LPOLPDBELON);
+      if (DiceSlotId != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(DiceSlotId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -210,14 +210,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (DiceSlotId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DiceSlotId);
+      if (LPOLPDBELON != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LPOLPDBELON);
       }
       if (GCAHKLNGFCK != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GCAHKLNGFCK);
       }
-      if (LPOLPDBELON != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LPOLPDBELON);
+      if (DiceSlotId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DiceSlotId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -231,14 +231,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.DiceSlotId != 0) {
-        DiceSlotId = other.DiceSlotId;
+      if (other.LPOLPDBELON != 0) {
+        LPOLPDBELON = other.LPOLPDBELON;
       }
       if (other.GCAHKLNGFCK != 0) {
         GCAHKLNGFCK = other.GCAHKLNGFCK;
       }
-      if (other.LPOLPDBELON != 0) {
-        LPOLPDBELON = other.LPOLPDBELON;
+      if (other.DiceSlotId != 0) {
+        DiceSlotId = other.DiceSlotId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -259,16 +259,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 64: {
-            DiceSlotId = input.ReadUInt32();
+          case 24: {
+            LPOLPDBELON = input.ReadUInt32();
             break;
           }
-          case 80: {
+          case 40: {
             GCAHKLNGFCK = input.ReadUInt32();
             break;
           }
-          case 112: {
-            LPOLPDBELON = input.ReadUInt32();
+          case 80: {
+            DiceSlotId = input.ReadUInt32();
             break;
           }
         }
@@ -290,16 +290,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 64: {
-            DiceSlotId = input.ReadUInt32();
+          case 24: {
+            LPOLPDBELON = input.ReadUInt32();
             break;
           }
-          case 80: {
+          case 40: {
             GCAHKLNGFCK = input.ReadUInt32();
             break;
           }
-          case 112: {
-            LPOLPDBELON = input.ReadUInt32();
+          case 80: {
+            DiceSlotId = input.ReadUInt32();
             break;
           }
         }

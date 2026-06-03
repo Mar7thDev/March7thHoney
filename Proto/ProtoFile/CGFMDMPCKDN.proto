@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message CGFMDMPCKDN {
-    uint32 item_id = 3;
+    uint32 item_id = 6;
 }

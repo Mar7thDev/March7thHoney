@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message EnterSectionCsReq {
-    uint64 interact_id = 14;
-    uint32 section_id = 2;
+    uint32 section_id = 4;
+    uint64 interact_id = 10;
 }

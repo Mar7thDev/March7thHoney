@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "FeatureSwitchType.proto";
 
 message FeatureSwitchClosedScNotify {
-    FeatureSwitchType FMGLEBCIBHG = 4;
+    FeatureSwitchType FMGLEBCIBHG = 6;
 }

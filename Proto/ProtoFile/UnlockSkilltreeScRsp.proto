@@ -2,8 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-message UnlockSkilltreeScRsp {
-    uint32 point_id = 15;
-    uint32 retcode = 9;
-    uint32 level = 13;
+message UnlockSkillTreeScRsp {
+    uint32 retcode = 1;
+    uint32 level = 3;
+    uint32 point_id = 9;
 }

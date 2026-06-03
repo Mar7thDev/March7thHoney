@@ -6,7 +6,7 @@ import "ItemList.proto";
 import "OfferingInfo.proto";
 
 message TakeOfferingRewardScRsp {
-    ItemList reward = 1;
-    OfferingInfo offering_info = 15;
+    ItemList reward = 4;
     uint32 retcode = 12;
+    OfferingInfo offering_info = 13;
 }

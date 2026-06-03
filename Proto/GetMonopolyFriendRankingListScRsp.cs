@@ -26,13 +26,13 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CidHZXRNb25vcG9seUZyaWVuZFJhbmtpbmdMaXN0U2NSc3AucHJvdG8aEUJC",
             "RVBNQUJDQkdGLnByb3RvInoKIUdldE1vbm9wb2x5RnJpZW5kUmFua2luZ0xp",
-            "c3RTY1JzcBIhCgtQT05BT0tCTklBTRgDIAEoCzIMLkJCRVBNQUJDQkdGEiEK",
-            "C0JFREhFS0FHQVBFGAggAygLMgwuQkJFUE1BQkNCR0YSDwoHcmV0Y29kZRgC",
-            "IAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "c3RTY1JzcBIPCgdyZXRjb2RlGAMgASgNEiEKC0JFREhFS0FHQVBFGAYgAygL",
+            "MgwuQkJFUE1BQkNCR0YSIQoLUE9OQU9LQk5JQU0YDiABKAsyDC5CQkVQTUFC",
+            "Q0JHRkIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.BBEPMABCBGFReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetMonopolyFriendRankingListScRsp), global::March7thHoney.Proto.GetMonopolyFriendRankingListScRsp.Parser, new[]{ "PONAOKBNIAM", "BEDHEKAGAPE", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetMonopolyFriendRankingListScRsp), global::March7thHoney.Proto.GetMonopolyFriendRankingListScRsp.Parser, new[]{ "Retcode", "BEDHEKAGAPE", "PONAOKBNIAM" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,9 +74,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetMonopolyFriendRankingListScRsp(GetMonopolyFriendRankingListScRsp other) : this() {
-      pONAOKBNIAM_ = other.pONAOKBNIAM_ != null ? other.pONAOKBNIAM_.Clone() : null;
-      bEDHEKAGAPE_ = other.bEDHEKAGAPE_.Clone();
       retcode_ = other.retcode_;
+      bEDHEKAGAPE_ = other.bEDHEKAGAPE_.Clone();
+      pONAOKBNIAM_ = other.pONAOKBNIAM_ != null ? other.pONAOKBNIAM_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,31 +86,8 @@ namespace March7thHoney.Proto {
       return new GetMonopolyFriendRankingListScRsp(this);
     }
 
-    /// <summary>Field number for the "PONAOKBNIAM" field.</summary>
-    public const int PONAOKBNIAMFieldNumber = 3;
-    private global::March7thHoney.Proto.BBEPMABCBGF pONAOKBNIAM_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.BBEPMABCBGF PONAOKBNIAM {
-      get { return pONAOKBNIAM_; }
-      set {
-        pONAOKBNIAM_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "BEDHEKAGAPE" field.</summary>
-    public const int BEDHEKAGAPEFieldNumber = 8;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BBEPMABCBGF> _repeated_bEDHEKAGAPE_codec
-        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.BBEPMABCBGF.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BBEPMABCBGF> bEDHEKAGAPE_ = new pbc::RepeatedField<global::March7thHoney.Proto.BBEPMABCBGF>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.BBEPMABCBGF> BEDHEKAGAPE {
-      get { return bEDHEKAGAPE_; }
-    }
-
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 2;
+    public const int RetcodeFieldNumber = 3;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -118,6 +95,29 @@ namespace March7thHoney.Proto {
       get { return retcode_; }
       set {
         retcode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "BEDHEKAGAPE" field.</summary>
+    public const int BEDHEKAGAPEFieldNumber = 6;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BBEPMABCBGF> _repeated_bEDHEKAGAPE_codec
+        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.BBEPMABCBGF.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BBEPMABCBGF> bEDHEKAGAPE_ = new pbc::RepeatedField<global::March7thHoney.Proto.BBEPMABCBGF>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.BBEPMABCBGF> BEDHEKAGAPE {
+      get { return bEDHEKAGAPE_; }
+    }
+
+    /// <summary>Field number for the "PONAOKBNIAM" field.</summary>
+    public const int PONAOKBNIAMFieldNumber = 14;
+    private global::March7thHoney.Proto.BBEPMABCBGF pONAOKBNIAM_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.BBEPMABCBGF PONAOKBNIAM {
+      get { return pONAOKBNIAM_; }
+      set {
+        pONAOKBNIAM_ = value;
       }
     }
 
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(PONAOKBNIAM, other.PONAOKBNIAM)) return false;
-      if(!bEDHEKAGAPE_.Equals(other.bEDHEKAGAPE_)) return false;
       if (Retcode != other.Retcode) return false;
+      if(!bEDHEKAGAPE_.Equals(other.bEDHEKAGAPE_)) return false;
+      if (!object.Equals(PONAOKBNIAM, other.PONAOKBNIAM)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -146,9 +146,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (pONAOKBNIAM_ != null) hash ^= PONAOKBNIAM.GetHashCode();
-      hash ^= bEDHEKAGAPE_.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      hash ^= bEDHEKAGAPE_.GetHashCode();
+      if (pONAOKBNIAM_ != null) hash ^= PONAOKBNIAM.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -168,14 +168,14 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Retcode != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(24);
         output.WriteUInt32(Retcode);
       }
+      bEDHEKAGAPE_.WriteTo(output, _repeated_bEDHEKAGAPE_codec);
       if (pONAOKBNIAM_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(114);
         output.WriteMessage(PONAOKBNIAM);
       }
-      bEDHEKAGAPE_.WriteTo(output, _repeated_bEDHEKAGAPE_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -187,14 +187,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Retcode != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(24);
         output.WriteUInt32(Retcode);
       }
+      bEDHEKAGAPE_.WriteTo(ref output, _repeated_bEDHEKAGAPE_codec);
       if (pONAOKBNIAM_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(114);
         output.WriteMessage(PONAOKBNIAM);
       }
-      bEDHEKAGAPE_.WriteTo(ref output, _repeated_bEDHEKAGAPE_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -205,12 +205,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (pONAOKBNIAM_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(PONAOKBNIAM);
-      }
-      size += bEDHEKAGAPE_.CalculateSize(_repeated_bEDHEKAGAPE_codec);
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      }
+      size += bEDHEKAGAPE_.CalculateSize(_repeated_bEDHEKAGAPE_codec);
+      if (pONAOKBNIAM_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(PONAOKBNIAM);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -224,15 +224,15 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
+      }
+      bEDHEKAGAPE_.Add(other.bEDHEKAGAPE_);
       if (other.pONAOKBNIAM_ != null) {
         if (pONAOKBNIAM_ == null) {
           PONAOKBNIAM = new global::March7thHoney.Proto.BBEPMABCBGF();
         }
         PONAOKBNIAM.MergeFrom(other.PONAOKBNIAM);
-      }
-      bEDHEKAGAPE_.Add(other.bEDHEKAGAPE_);
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -253,19 +253,19 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
+          case 24: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 26: {
+          case 50: {
+            bEDHEKAGAPE_.AddEntriesFrom(input, _repeated_bEDHEKAGAPE_codec);
+            break;
+          }
+          case 114: {
             if (pONAOKBNIAM_ == null) {
               PONAOKBNIAM = new global::March7thHoney.Proto.BBEPMABCBGF();
             }
             input.ReadMessage(PONAOKBNIAM);
-            break;
-          }
-          case 66: {
-            bEDHEKAGAPE_.AddEntriesFrom(input, _repeated_bEDHEKAGAPE_codec);
             break;
           }
         }
@@ -287,19 +287,19 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
+          case 24: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 26: {
+          case 50: {
+            bEDHEKAGAPE_.AddEntriesFrom(ref input, _repeated_bEDHEKAGAPE_codec);
+            break;
+          }
+          case 114: {
             if (pONAOKBNIAM_ == null) {
               PONAOKBNIAM = new global::March7thHoney.Proto.BBEPMABCBGF();
             }
             input.ReadMessage(PONAOKBNIAM);
-            break;
-          }
-          case 66: {
-            bEDHEKAGAPE_.AddEntriesFrom(ref input, _repeated_bEDHEKAGAPE_codec);
             break;
           }
         }

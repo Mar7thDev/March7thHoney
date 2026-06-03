@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "GAOBHBLFPEC.proto";
 
 message SyncRogueVirtualItemInfoScNotify {
-    GAOBHBLFPEC NIKDPODBIEF = 5;
+    GAOBHBLFPEC NIKDPODBIEF = 11;
 }

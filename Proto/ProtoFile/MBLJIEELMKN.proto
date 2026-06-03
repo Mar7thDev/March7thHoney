@@ -2,8 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-import "APAMFCKFHLL.proto";
+import "KVP.proto";
 
 message MBLJIEELMKN {
-    repeated APAMFCKFHLL OCIJDDBLGMH = 1;
+    repeated KVP OCIJDDBLGMH = 4;
 }

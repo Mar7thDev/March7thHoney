@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message CBDMGEGELFM {
-    int32 DPICNGBHFAC = 15;
-    uint32 key = 9;
+    uint32 key = 2;
+    int32 DPICNGBHFAC = 12;
 }

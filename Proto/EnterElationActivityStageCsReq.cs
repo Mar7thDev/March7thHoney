@@ -26,14 +26,14 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiRFbnRlckVsYXRpb25BY3Rpdml0eVN0YWdlQ3NSZXEucHJvdG8aG0VsYXRp",
             "b25BY3Rpdml0eUF2YXRhci5wcm90byKiAQoeRW50ZXJFbGF0aW9uQWN0aXZp",
-            "dHlTdGFnZUNzUmVxEjEKEWZpeGVkX2F2YXRhcl9saXN0GAsgAygLMhYuRWxh",
-            "dGlvbkFjdGl2aXR5QXZhdGFyEjsKG3BsYXllcl9zZWxlY3RlZF9hdmF0YXJf",
-            "bGlzdBgKIAMoCzIWLkVsYXRpb25BY3Rpdml0eUF2YXRhchIQCghsZXZlbF9p",
-            "ZBgBIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "dHlTdGFnZUNzUmVxEjsKG3BsYXllcl9zZWxlY3RlZF9hdmF0YXJfbGlzdBgB",
+            "IAMoCzIWLkVsYXRpb25BY3Rpdml0eUF2YXRhchIxChFmaXhlZF9hdmF0YXJf",
+            "bGlzdBgJIAMoCzIWLkVsYXRpb25BY3Rpdml0eUF2YXRhchIQCghsZXZlbF9p",
+            "ZBgMIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ElationActivityAvatarReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EnterElationActivityStageCsReq), global::March7thHoney.Proto.EnterElationActivityStageCsReq.Parser, new[]{ "FixedAvatarList", "PlayerSelectedAvatarList", "LevelId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EnterElationActivityStageCsReq), global::March7thHoney.Proto.EnterElationActivityStageCsReq.Parser, new[]{ "PlayerSelectedAvatarList", "FixedAvatarList", "LevelId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,8 +75,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public EnterElationActivityStageCsReq(EnterElationActivityStageCsReq other) : this() {
-      fixedAvatarList_ = other.fixedAvatarList_.Clone();
       playerSelectedAvatarList_ = other.playerSelectedAvatarList_.Clone();
+      fixedAvatarList_ = other.fixedAvatarList_.Clone();
       levelId_ = other.levelId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -87,21 +87,10 @@ namespace March7thHoney.Proto {
       return new EnterElationActivityStageCsReq(this);
     }
 
-    /// <summary>Field number for the "fixed_avatar_list" field.</summary>
-    public const int FixedAvatarListFieldNumber = 11;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ElationActivityAvatar> _repeated_fixedAvatarList_codec
-        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.ElationActivityAvatar.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ElationActivityAvatar> fixedAvatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ElationActivityAvatar>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.ElationActivityAvatar> FixedAvatarList {
-      get { return fixedAvatarList_; }
-    }
-
     /// <summary>Field number for the "player_selected_avatar_list" field.</summary>
-    public const int PlayerSelectedAvatarListFieldNumber = 10;
+    public const int PlayerSelectedAvatarListFieldNumber = 1;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.ElationActivityAvatar> _repeated_playerSelectedAvatarList_codec
-        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.ElationActivityAvatar.Parser);
+        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.ElationActivityAvatar.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.ElationActivityAvatar> playerSelectedAvatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ElationActivityAvatar>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -109,8 +98,19 @@ namespace March7thHoney.Proto {
       get { return playerSelectedAvatarList_; }
     }
 
+    /// <summary>Field number for the "fixed_avatar_list" field.</summary>
+    public const int FixedAvatarListFieldNumber = 9;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ElationActivityAvatar> _repeated_fixedAvatarList_codec
+        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.ElationActivityAvatar.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ElationActivityAvatar> fixedAvatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ElationActivityAvatar>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.ElationActivityAvatar> FixedAvatarList {
+      get { return fixedAvatarList_; }
+    }
+
     /// <summary>Field number for the "level_id" field.</summary>
-    public const int LevelIdFieldNumber = 1;
+    public const int LevelIdFieldNumber = 12;
     private uint levelId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -136,8 +136,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!fixedAvatarList_.Equals(other.fixedAvatarList_)) return false;
       if(!playerSelectedAvatarList_.Equals(other.playerSelectedAvatarList_)) return false;
+      if(!fixedAvatarList_.Equals(other.fixedAvatarList_)) return false;
       if (LevelId != other.LevelId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -146,8 +146,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= fixedAvatarList_.GetHashCode();
       hash ^= playerSelectedAvatarList_.GetHashCode();
+      hash ^= fixedAvatarList_.GetHashCode();
       if (LevelId != 0) hash ^= LevelId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -167,12 +167,12 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (LevelId != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(LevelId);
-      }
       playerSelectedAvatarList_.WriteTo(output, _repeated_playerSelectedAvatarList_codec);
       fixedAvatarList_.WriteTo(output, _repeated_fixedAvatarList_codec);
+      if (LevelId != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(LevelId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -183,12 +183,12 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (LevelId != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(LevelId);
-      }
       playerSelectedAvatarList_.WriteTo(ref output, _repeated_playerSelectedAvatarList_codec);
       fixedAvatarList_.WriteTo(ref output, _repeated_fixedAvatarList_codec);
+      if (LevelId != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(LevelId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -199,8 +199,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += fixedAvatarList_.CalculateSize(_repeated_fixedAvatarList_codec);
       size += playerSelectedAvatarList_.CalculateSize(_repeated_playerSelectedAvatarList_codec);
+      size += fixedAvatarList_.CalculateSize(_repeated_fixedAvatarList_codec);
       if (LevelId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LevelId);
       }
@@ -216,8 +216,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      fixedAvatarList_.Add(other.fixedAvatarList_);
       playerSelectedAvatarList_.Add(other.playerSelectedAvatarList_);
+      fixedAvatarList_.Add(other.fixedAvatarList_);
       if (other.LevelId != 0) {
         LevelId = other.LevelId;
       }
@@ -240,16 +240,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            LevelId = input.ReadUInt32();
-            break;
-          }
-          case 82: {
+          case 10: {
             playerSelectedAvatarList_.AddEntriesFrom(input, _repeated_playerSelectedAvatarList_codec);
             break;
           }
-          case 90: {
+          case 74: {
             fixedAvatarList_.AddEntriesFrom(input, _repeated_fixedAvatarList_codec);
+            break;
+          }
+          case 96: {
+            LevelId = input.ReadUInt32();
             break;
           }
         }
@@ -271,16 +271,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            LevelId = input.ReadUInt32();
-            break;
-          }
-          case 82: {
+          case 10: {
             playerSelectedAvatarList_.AddEntriesFrom(ref input, _repeated_playerSelectedAvatarList_codec);
             break;
           }
-          case 90: {
+          case 74: {
             fixedAvatarList_.AddEntriesFrom(ref input, _repeated_fixedAvatarList_codec);
+            break;
+          }
+          case 96: {
+            LevelId = input.ReadUInt32();
             break;
           }
         }

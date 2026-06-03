@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChBBdmF0YXJTeW5jLnByb3RvGgxBdmF0YXIucHJvdG8aFEF2YXRhclBhdGhE",
-            "YXRhLnByb3RvIl8KCkF2YXRhclN5bmMSHAoLYXZhdGFyX2xpc3QYDCADKAsy",
-            "By5BdmF0YXISMwoaYXZhdGFyX3BhdGhfZGF0YV9pbmZvX2xpc3QYBiADKAsy",
+            "YXRhLnByb3RvIl8KCkF2YXRhclN5bmMSHAoLYXZhdGFyX2xpc3QYBiADKAsy",
+            "By5BdmF0YXISMwoaYXZhdGFyX3BhdGhfZGF0YV9pbmZvX2xpc3QYDiADKAsy",
             "Dy5BdmF0YXJQYXRoRGF0YUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJv",
             "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
@@ -86,9 +86,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "avatar_list" field.</summary>
-    public const int AvatarListFieldNumber = 12;
+    public const int AvatarListFieldNumber = 6;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.Avatar> _repeated_avatarList_codec
-        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.Avatar.Parser);
+        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.Avatar.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.Avatar> avatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.Avatar>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,9 +97,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "avatar_path_data_info_list" field.</summary>
-    public const int AvatarPathDataInfoListFieldNumber = 6;
+    public const int AvatarPathDataInfoListFieldNumber = 14;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.AvatarPathData> _repeated_avatarPathDataInfoList_codec
-        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.AvatarPathData.Parser);
+        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.AvatarPathData.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.AvatarPathData> avatarPathDataInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.AvatarPathData>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -151,8 +151,8 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      avatarPathDataInfoList_.WriteTo(output, _repeated_avatarPathDataInfoList_codec);
       avatarList_.WriteTo(output, _repeated_avatarList_codec);
+      avatarPathDataInfoList_.WriteTo(output, _repeated_avatarPathDataInfoList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -163,8 +163,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      avatarPathDataInfoList_.WriteTo(ref output, _repeated_avatarPathDataInfoList_codec);
       avatarList_.WriteTo(ref output, _repeated_avatarList_codec);
+      avatarPathDataInfoList_.WriteTo(ref output, _repeated_avatarPathDataInfoList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -211,11 +211,11 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 50: {
-            avatarPathDataInfoList_.AddEntriesFrom(input, _repeated_avatarPathDataInfoList_codec);
+            avatarList_.AddEntriesFrom(input, _repeated_avatarList_codec);
             break;
           }
-          case 98: {
-            avatarList_.AddEntriesFrom(input, _repeated_avatarList_codec);
+          case 114: {
+            avatarPathDataInfoList_.AddEntriesFrom(input, _repeated_avatarPathDataInfoList_codec);
             break;
           }
         }
@@ -238,11 +238,11 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 50: {
-            avatarPathDataInfoList_.AddEntriesFrom(ref input, _repeated_avatarPathDataInfoList_codec);
+            avatarList_.AddEntriesFrom(ref input, _repeated_avatarList_codec);
             break;
           }
-          case 98: {
-            avatarList_.AddEntriesFrom(ref input, _repeated_avatarList_codec);
+          case 114: {
+            avatarPathDataInfoList_.AddEntriesFrom(ref input, _repeated_avatarPathDataInfoList_codec);
             break;
           }
         }

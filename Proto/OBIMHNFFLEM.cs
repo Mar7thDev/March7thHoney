@@ -25,16 +25,16 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFPQklNSE5GRkxFTS5wcm90bxoXR3JpZEZpZ2h0RHJvcEluZm8ucHJvdG8i",
-            "1QEKC09CSU1ITkZGTEVNEhMKC3N3aXRjaF9saXN0GAIgAygNEksKGXRyYWl0",
-            "X2VmZmVjdF9sZXZlbF9yZXdhcmQYBSADKAsyKC5PQklNSE5GRkxFTS5UcmFp",
-            "dEVmZmVjdExldmVsUmV3YXJkRW50cnkSEQoJZWZmZWN0X2lkGAEgASgNGlEK",
+            "1QEKC09CSU1ITkZGTEVNEhEKCWVmZmVjdF9pZBgBIAEoDRITCgtzd2l0Y2hf",
+            "bGlzdBgCIAMoDRJLChl0cmFpdF9lZmZlY3RfbGV2ZWxfcmV3YXJkGAUgAygL",
+            "MiguT0JJTUhORkZMRU0uVHJhaXRFZmZlY3RMZXZlbFJld2FyZEVudHJ5GlEK",
             "G1RyYWl0RWZmZWN0TGV2ZWxSZXdhcmRFbnRyeRILCgNrZXkYASABKA0SIQoF",
             "dmFsdWUYAiABKAsyEi5HcmlkRmlnaHREcm9wSW5mbzoCOAFCFqoCE01hcmNo",
             "N3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridFightDropInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.OBIMHNFFLEM), global::March7thHoney.Proto.OBIMHNFFLEM.Parser, new[]{ "SwitchList", "TraitEffectLevelReward", "EffectId" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.OBIMHNFFLEM), global::March7thHoney.Proto.OBIMHNFFLEM.Parser, new[]{ "EffectId", "SwitchList", "TraitEffectLevelReward" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -76,9 +76,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public OBIMHNFFLEM(OBIMHNFFLEM other) : this() {
+      effectId_ = other.effectId_;
       switchList_ = other.switchList_.Clone();
       traitEffectLevelReward_ = other.traitEffectLevelReward_.Clone();
-      effectId_ = other.effectId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,6 +86,18 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public OBIMHNFFLEM Clone() {
       return new OBIMHNFFLEM(this);
+    }
+
+    /// <summary>Field number for the "effect_id" field.</summary>
+    public const int EffectIdFieldNumber = 1;
+    private uint effectId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint EffectId {
+      get { return effectId_; }
+      set {
+        effectId_ = value;
+      }
     }
 
     /// <summary>Field number for the "switch_list" field.</summary>
@@ -110,18 +122,6 @@ namespace March7thHoney.Proto {
       get { return traitEffectLevelReward_; }
     }
 
-    /// <summary>Field number for the "effect_id" field.</summary>
-    public const int EffectIdFieldNumber = 1;
-    private uint effectId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint EffectId {
-      get { return effectId_; }
-      set {
-        effectId_ = value;
-      }
-    }
-
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -137,9 +137,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (EffectId != other.EffectId) return false;
       if(!switchList_.Equals(other.switchList_)) return false;
       if (!TraitEffectLevelReward.Equals(other.TraitEffectLevelReward)) return false;
-      if (EffectId != other.EffectId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -147,9 +147,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (EffectId != 0) hash ^= EffectId.GetHashCode();
       hash ^= switchList_.GetHashCode();
       hash ^= TraitEffectLevelReward.GetHashCode();
-      if (EffectId != 0) hash ^= EffectId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -200,11 +200,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += switchList_.CalculateSize(_repeated_switchList_codec);
-      size += traitEffectLevelReward_.CalculateSize(_map_traitEffectLevelReward_codec);
       if (EffectId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EffectId);
       }
+      size += switchList_.CalculateSize(_repeated_switchList_codec);
+      size += traitEffectLevelReward_.CalculateSize(_map_traitEffectLevelReward_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -217,11 +217,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      switchList_.Add(other.switchList_);
-      traitEffectLevelReward_.MergeFrom(other.traitEffectLevelReward_);
       if (other.EffectId != 0) {
         EffectId = other.EffectId;
       }
+      switchList_.Add(other.switchList_);
+      traitEffectLevelReward_.MergeFrom(other.traitEffectLevelReward_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 

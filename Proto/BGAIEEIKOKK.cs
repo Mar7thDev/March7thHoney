@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static BGAIEEIKOKKReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFCR0FJRUVJS09LSy5wcm90byJeCgtCR0FJRUVJS09LSxIUCgxyZWNvcmRf",
-            "c2NvcmUYASABKA0SEgoKaGFzX3Bhc3NlZBgJIAEoCBITCgtNSElKSkhNR0hG",
-            "ThgEIAEoDRIQCghsZXZlbF9pZBgFIAEoDUIWqgITTWFyY2g3dGhIb25leS5Q",
-            "cm90b2IGcHJvdG8z"));
+            "ChFCR0FJRUVJS09LSy5wcm90byJaCgtCR0FJRUVJS09LSxITCgt0b3RhbF9z",
+            "Y29yZRgDIAEoDRIQCghzdGFyX251bRgLIAEoDRISCgpoYXNfcGFzc2VkGA0g",
+            "ASgIEhAKCGxldmVsX2lkGA4gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
+            "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BGAIEEIKOKK), global::March7thHoney.Proto.BGAIEEIKOKK.Parser, new[]{ "RecordScore", "HasPassed", "MHIJJHMGHFN", "LevelId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BGAIEEIKOKK), global::March7thHoney.Proto.BGAIEEIKOKK.Parser, new[]{ "TotalScore", "StarNum", "HasPassed", "LevelId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,9 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BGAIEEIKOKK(BGAIEEIKOKK other) : this() {
-      recordScore_ = other.recordScore_;
+      totalScore_ = other.totalScore_;
+      starNum_ = other.starNum_;
       hasPassed_ = other.hasPassed_;
-      mHIJJHMGHFN_ = other.mHIJJHMGHFN_;
       levelId_ = other.levelId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -86,20 +86,32 @@ namespace March7thHoney.Proto {
       return new BGAIEEIKOKK(this);
     }
 
-    /// <summary>Field number for the "record_score" field.</summary>
-    public const int RecordScoreFieldNumber = 1;
-    private uint recordScore_;
+    /// <summary>Field number for the "total_score" field.</summary>
+    public const int TotalScoreFieldNumber = 3;
+    private uint totalScore_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint RecordScore {
-      get { return recordScore_; }
+    public uint TotalScore {
+      get { return totalScore_; }
       set {
-        recordScore_ = value;
+        totalScore_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "star_num" field.</summary>
+    public const int StarNumFieldNumber = 11;
+    private uint starNum_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint StarNum {
+      get { return starNum_; }
+      set {
+        starNum_ = value;
       }
     }
 
     /// <summary>Field number for the "has_passed" field.</summary>
-    public const int HasPassedFieldNumber = 9;
+    public const int HasPassedFieldNumber = 13;
     private bool hasPassed_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,20 +122,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "MHIJJHMGHFN" field.</summary>
-    public const int MHIJJHMGHFNFieldNumber = 4;
-    private uint mHIJJHMGHFN_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint MHIJJHMGHFN {
-      get { return mHIJJHMGHFN_; }
-      set {
-        mHIJJHMGHFN_ = value;
-      }
-    }
-
     /// <summary>Field number for the "level_id" field.</summary>
-    public const int LevelIdFieldNumber = 5;
+    public const int LevelIdFieldNumber = 14;
     private uint levelId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -149,9 +149,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (RecordScore != other.RecordScore) return false;
+      if (TotalScore != other.TotalScore) return false;
+      if (StarNum != other.StarNum) return false;
       if (HasPassed != other.HasPassed) return false;
-      if (MHIJJHMGHFN != other.MHIJJHMGHFN) return false;
       if (LevelId != other.LevelId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -160,9 +160,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (RecordScore != 0) hash ^= RecordScore.GetHashCode();
+      if (TotalScore != 0) hash ^= TotalScore.GetHashCode();
+      if (StarNum != 0) hash ^= StarNum.GetHashCode();
       if (HasPassed != false) hash ^= HasPassed.GetHashCode();
-      if (MHIJJHMGHFN != 0) hash ^= MHIJJHMGHFN.GetHashCode();
       if (LevelId != 0) hash ^= LevelId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -182,21 +182,21 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (RecordScore != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(RecordScore);
+      if (TotalScore != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(TotalScore);
       }
-      if (MHIJJHMGHFN != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(MHIJJHMGHFN);
-      }
-      if (LevelId != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(LevelId);
+      if (StarNum != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(StarNum);
       }
       if (HasPassed != false) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(104);
         output.WriteBool(HasPassed);
+      }
+      if (LevelId != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(LevelId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -208,21 +208,21 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (RecordScore != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(RecordScore);
+      if (TotalScore != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(TotalScore);
       }
-      if (MHIJJHMGHFN != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(MHIJJHMGHFN);
-      }
-      if (LevelId != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(LevelId);
+      if (StarNum != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(StarNum);
       }
       if (HasPassed != false) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(104);
         output.WriteBool(HasPassed);
+      }
+      if (LevelId != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(LevelId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -234,14 +234,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (RecordScore != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RecordScore);
+      if (TotalScore != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TotalScore);
+      }
+      if (StarNum != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(StarNum);
       }
       if (HasPassed != false) {
         size += 1 + 1;
-      }
-      if (MHIJJHMGHFN != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MHIJJHMGHFN);
       }
       if (LevelId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LevelId);
@@ -258,14 +258,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.RecordScore != 0) {
-        RecordScore = other.RecordScore;
+      if (other.TotalScore != 0) {
+        TotalScore = other.TotalScore;
+      }
+      if (other.StarNum != 0) {
+        StarNum = other.StarNum;
       }
       if (other.HasPassed != false) {
         HasPassed = other.HasPassed;
-      }
-      if (other.MHIJJHMGHFN != 0) {
-        MHIJJHMGHFN = other.MHIJJHMGHFN;
       }
       if (other.LevelId != 0) {
         LevelId = other.LevelId;
@@ -289,20 +289,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            RecordScore = input.ReadUInt32();
+          case 24: {
+            TotalScore = input.ReadUInt32();
             break;
           }
-          case 32: {
-            MHIJJHMGHFN = input.ReadUInt32();
+          case 88: {
+            StarNum = input.ReadUInt32();
             break;
           }
-          case 40: {
-            LevelId = input.ReadUInt32();
-            break;
-          }
-          case 72: {
+          case 104: {
             HasPassed = input.ReadBool();
+            break;
+          }
+          case 112: {
+            LevelId = input.ReadUInt32();
             break;
           }
         }
@@ -324,20 +324,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            RecordScore = input.ReadUInt32();
+          case 24: {
+            TotalScore = input.ReadUInt32();
             break;
           }
-          case 32: {
-            MHIJJHMGHFN = input.ReadUInt32();
+          case 88: {
+            StarNum = input.ReadUInt32();
             break;
           }
-          case 40: {
-            LevelId = input.ReadUInt32();
-            break;
-          }
-          case 72: {
+          case 104: {
             HasPassed = input.ReadBool();
+            break;
+          }
+          case 112: {
+            LevelId = input.ReadUInt32();
             break;
           }
         }

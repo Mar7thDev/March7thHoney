@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChdDaGFsbGVuZ2VCdWZmSW5mby5wcm90bxobQ2hhbGxlbmdlQm9zc0J1ZmZJ",
             "bmZvLnByb3RvGhxDaGFsbGVuZ2VTdG9yeUJ1ZmZJbmZvLnByb3RvIn4KEUNo",
-            "YWxsZW5nZUJ1ZmZJbmZvEi0KCnN0b3J5X2luZm8YCiABKAsyFy5DaGFsbGVu",
-            "Z2VTdG9yeUJ1ZmZJbmZvSAASKwoJYm9zc19pbmZvGA4gASgLMhYuQ2hhbGxl",
+            "YWxsZW5nZUJ1ZmZJbmZvEi0KCnN0b3J5X2luZm8YCyABKAsyFy5DaGFsbGVu",
+            "Z2VTdG9yeUJ1ZmZJbmZvSAASKwoJYm9zc19pbmZvGA0gASgLMhYuQ2hhbGxl",
             "bmdlQm9zc0J1ZmZJbmZvSABCDQoLS0tOQk9BQ05DT05CFqoCE01hcmNoN3Ro",
             "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
@@ -94,7 +94,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "story_info" field.</summary>
-    public const int StoryInfoFieldNumber = 10;
+    public const int StoryInfoFieldNumber = 11;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.ChallengeStoryBuffInfo StoryInfo {
@@ -106,7 +106,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "boss_info" field.</summary>
-    public const int BossInfoFieldNumber = 14;
+    public const int BossInfoFieldNumber = 13;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.ChallengeBossBuffInfo BossInfo {
@@ -121,8 +121,8 @@ namespace March7thHoney.Proto {
     /// <summary>Enum of possible cases for the "KKNBOACNCON" oneof.</summary>
     public enum KKNBOACNCONOneofCase {
       None = 0,
-      StoryInfo = 10,
-      BossInfo = 14,
+      StoryInfo = 11,
+      BossInfo = 13,
     }
     private KKNBOACNCONOneofCase kKNBOACNCONCase_ = KKNBOACNCONOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -185,11 +185,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.StoryInfo) {
-        output.WriteRawTag(82);
+        output.WriteRawTag(90);
         output.WriteMessage(StoryInfo);
       }
       if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.BossInfo) {
-        output.WriteRawTag(114);
+        output.WriteRawTag(106);
         output.WriteMessage(BossInfo);
       }
       if (_unknownFields != null) {
@@ -203,11 +203,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.StoryInfo) {
-        output.WriteRawTag(82);
+        output.WriteRawTag(90);
         output.WriteMessage(StoryInfo);
       }
       if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.BossInfo) {
-        output.WriteRawTag(114);
+        output.WriteRawTag(106);
         output.WriteMessage(BossInfo);
       }
       if (_unknownFields != null) {
@@ -272,7 +272,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 82: {
+          case 90: {
             global::March7thHoney.Proto.ChallengeStoryBuffInfo subBuilder = new global::March7thHoney.Proto.ChallengeStoryBuffInfo();
             if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.StoryInfo) {
               subBuilder.MergeFrom(StoryInfo);
@@ -281,7 +281,7 @@ namespace March7thHoney.Proto {
             StoryInfo = subBuilder;
             break;
           }
-          case 114: {
+          case 106: {
             global::March7thHoney.Proto.ChallengeBossBuffInfo subBuilder = new global::March7thHoney.Proto.ChallengeBossBuffInfo();
             if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.BossInfo) {
               subBuilder.MergeFrom(BossInfo);
@@ -309,7 +309,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 82: {
+          case 90: {
             global::March7thHoney.Proto.ChallengeStoryBuffInfo subBuilder = new global::March7thHoney.Proto.ChallengeStoryBuffInfo();
             if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.StoryInfo) {
               subBuilder.MergeFrom(StoryInfo);
@@ -318,7 +318,7 @@ namespace March7thHoney.Proto {
             StoryInfo = subBuilder;
             break;
           }
-          case 114: {
+          case 106: {
             global::March7thHoney.Proto.ChallengeBossBuffInfo subBuilder = new global::March7thHoney.Proto.ChallengeBossBuffInfo();
             if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.BossInfo) {
               subBuilder.MergeFrom(BossInfo);

@@ -26,13 +26,13 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChRBdmF0YXJQcm9wZXJ0eS5wcm90byKCAQoOQXZhdGFyUHJvcGVydHkSDgoG",
             "bWF4X2hwGAEgASgBEg4KBmF0dGFjaxgCIAEoARIPCgdkZWZlbmNlGAMgASgB",
-            "Eg8KB2xlZnRfc3AYBiABKAESDgoGbWF4X3NwGAcgASgBEg0KBXNwZWVkGAQg",
-            "ASgBEg8KB2xlZnRfaHAYBSABKAFCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
+            "Eg0KBXNwZWVkGAQgASgBEg8KB2xlZnRfaHAYBSABKAESDwoHbGVmdF9zcBgG",
+            "IAEoARIOCgZtYXhfc3AYByABKAFCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
             "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AvatarProperty), global::March7thHoney.Proto.AvatarProperty.Parser, new[]{ "MaxHp", "Attack", "Defence", "LeftSp", "MaxSp", "Speed", "LeftHp" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AvatarProperty), global::March7thHoney.Proto.AvatarProperty.Parser, new[]{ "MaxHp", "Attack", "Defence", "Speed", "LeftHp", "LeftSp", "MaxSp" }, null, null, null, null)
           }));
     }
     #endregion
@@ -77,10 +77,10 @@ namespace March7thHoney.Proto {
       maxHp_ = other.maxHp_;
       attack_ = other.attack_;
       defence_ = other.defence_;
-      leftSp_ = other.leftSp_;
-      maxSp_ = other.maxSp_;
       speed_ = other.speed_;
       leftHp_ = other.leftHp_;
+      leftSp_ = other.leftSp_;
+      maxSp_ = other.maxSp_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -126,30 +126,6 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "left_sp" field.</summary>
-    public const int LeftSpFieldNumber = 6;
-    private double leftSp_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public double LeftSp {
-      get { return leftSp_; }
-      set {
-        leftSp_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "max_sp" field.</summary>
-    public const int MaxSpFieldNumber = 7;
-    private double maxSp_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public double MaxSp {
-      get { return maxSp_; }
-      set {
-        maxSp_ = value;
-      }
-    }
-
     /// <summary>Field number for the "speed" field.</summary>
     public const int SpeedFieldNumber = 4;
     private double speed_;
@@ -174,6 +150,30 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "left_sp" field.</summary>
+    public const int LeftSpFieldNumber = 6;
+    private double leftSp_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double LeftSp {
+      get { return leftSp_; }
+      set {
+        leftSp_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "max_sp" field.</summary>
+    public const int MaxSpFieldNumber = 7;
+    private double maxSp_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double MaxSp {
+      get { return maxSp_; }
+      set {
+        maxSp_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -192,10 +192,10 @@ namespace March7thHoney.Proto {
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(MaxHp, other.MaxHp)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Attack, other.Attack)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Defence, other.Defence)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(LeftSp, other.LeftSp)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(MaxSp, other.MaxSp)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Speed, other.Speed)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(LeftHp, other.LeftHp)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(LeftSp, other.LeftSp)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(MaxSp, other.MaxSp)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -206,10 +206,10 @@ namespace March7thHoney.Proto {
       if (MaxHp != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(MaxHp);
       if (Attack != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Attack);
       if (Defence != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Defence);
-      if (LeftSp != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(LeftSp);
-      if (MaxSp != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(MaxSp);
       if (Speed != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Speed);
       if (LeftHp != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(LeftHp);
+      if (LeftSp != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(LeftSp);
+      if (MaxSp != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(MaxSp);
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -313,16 +313,16 @@ namespace March7thHoney.Proto {
       if (Defence != 0D) {
         size += 1 + 8;
       }
-      if (LeftSp != 0D) {
-        size += 1 + 8;
-      }
-      if (MaxSp != 0D) {
-        size += 1 + 8;
-      }
       if (Speed != 0D) {
         size += 1 + 8;
       }
       if (LeftHp != 0D) {
+        size += 1 + 8;
+      }
+      if (LeftSp != 0D) {
+        size += 1 + 8;
+      }
+      if (MaxSp != 0D) {
         size += 1 + 8;
       }
       if (_unknownFields != null) {
@@ -346,17 +346,17 @@ namespace March7thHoney.Proto {
       if (other.Defence != 0D) {
         Defence = other.Defence;
       }
-      if (other.LeftSp != 0D) {
-        LeftSp = other.LeftSp;
-      }
-      if (other.MaxSp != 0D) {
-        MaxSp = other.MaxSp;
-      }
       if (other.Speed != 0D) {
         Speed = other.Speed;
       }
       if (other.LeftHp != 0D) {
         LeftHp = other.LeftHp;
+      }
+      if (other.LeftSp != 0D) {
+        LeftSp = other.LeftSp;
+      }
+      if (other.MaxSp != 0D) {
+        MaxSp = other.MaxSp;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }

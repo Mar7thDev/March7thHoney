@@ -26,10 +26,10 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChxDbWRCZW5lZml0QWN0aXZpdHlUeXBlLnByb3RvKukBChZDbWRCZW5lZml0",
             "QWN0aXZpdHlUeXBlEhsKF0NDT0NORkxJT0dLX05MQ0RHSVBHRkRKEAASHAoX",
-            "Q0NPQ05GTElPR0tfR0VCUEJNSE9BS0UQniYSHAoXQ0NPQ05GTElPR0tfTUtE",
-            "SExDQk5OR08QjSYSHAoXQ0NPQ05GTElPR0tfSVBBR0FDRERPRkEQkiYSHAoX",
-            "Q0NPQ05GTElPR0tfUE5ERkpKS0FGQ0kQ+SUSHAoXQ0NPQ05GTElPR0tfRUNG",
-            "UEZQS01GRk4QnCYSHAoXQ0NPQ05GTElPR0tfQ0ZCUE9JUE9MQUwQiSZCFqoC",
+            "Q0NPQ05GTElPR0tfSVBBR0FDRERPRkEQ+yUSHAoXQ0NPQ05GTElPR0tfQ0ZC",
+            "UE9JUE9MQUwQniYSHAoXQ0NPQ05GTElPR0tfTUtESExDQk5OR08QoiYSHAoX",
+            "Q0NPQ05GTElPR0tfUE5ERkpKS0FGQ0kQlyYSHAoXQ0NPQ05GTElPR0tfRUNG",
+            "UEZQS01GRk4QiSYSHAoXQ0NPQ05GTElPR0tfR0VCUEJNSE9BS0UQhSZCFqoC",
             "E01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -41,12 +41,12 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdBenefitActivityType {
     [pbr::OriginalName("CCOCNFLIOGK_NLCDGIPGFDJ")] CcocnfliogkNlcdgipgfdj = 0,
-    [pbr::OriginalName("CCOCNFLIOGK_GEBPBMHOAKE")] CcocnfliogkGebpbmhoake = 4894,
-    [pbr::OriginalName("CCOCNFLIOGK_MKDHLCBNNGO")] CcocnfliogkMkdhlcbnngo = 4877,
-    [pbr::OriginalName("CCOCNFLIOGK_IPAGACDDOFA")] CcocnfliogkIpagacddofa = 4882,
-    [pbr::OriginalName("CCOCNFLIOGK_PNDFJJKAFCI")] CcocnfliogkPndfjjkafci = 4857,
-    [pbr::OriginalName("CCOCNFLIOGK_ECFPFPKMFFN")] CcocnfliogkEcfpfpkmffn = 4892,
-    [pbr::OriginalName("CCOCNFLIOGK_CFBPOIPOLAL")] CcocnfliogkCfbpoipolal = 4873,
+    [pbr::OriginalName("CCOCNFLIOGK_IPAGACDDOFA")] CcocnfliogkIpagacddofa = 4859,
+    [pbr::OriginalName("CCOCNFLIOGK_CFBPOIPOLAL")] CcocnfliogkCfbpoipolal = 4894,
+    [pbr::OriginalName("CCOCNFLIOGK_MKDHLCBNNGO")] CcocnfliogkMkdhlcbnngo = 4898,
+    [pbr::OriginalName("CCOCNFLIOGK_PNDFJJKAFCI")] CcocnfliogkPndfjjkafci = 4887,
+    [pbr::OriginalName("CCOCNFLIOGK_ECFPFPKMFFN")] CcocnfliogkEcfpfpkmffn = 4873,
+    [pbr::OriginalName("CCOCNFLIOGK_GEBPBMHOAKE")] CcocnfliogkGebpbmhoake = 4869,
   }
 
   #endregion

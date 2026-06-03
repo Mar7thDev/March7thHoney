@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChpTeW5jR2V0U3R1ZmZTY05vdGlmeS5wcm90bxoSR2V0U3R1ZmZUeXBlLnBy",
             "b3RvIk8KFFN5bmNHZXRTdHVmZlNjTm90aWZ5EiIKC0JBUEJNSENIQ0lDGAMg",
-            "ASgOMg0uR2V0U3R1ZmZUeXBlEhMKC0NFQU1MS0NNTUdEGAkgASgNQhaqAhNN",
+            "ASgOMg0uR2V0U3R1ZmZUeXBlEhMKC0NFQU1MS0NNTUdEGAQgASgNQhaqAhNN",
             "YXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.GetStuffTypeReflection.Descriptor, },
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "CEAMLKCMMGD" field.</summary>
-    public const int CEAMLKCMMGDFieldNumber = 9;
+    public const int CEAMLKCMMGDFieldNumber = 4;
     private uint cEAMLKCMMGD_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -157,7 +157,7 @@ namespace March7thHoney.Proto {
         output.WriteEnum((int) BAPBMHCHCIC);
       }
       if (CEAMLKCMMGD != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(32);
         output.WriteUInt32(CEAMLKCMMGD);
       }
       if (_unknownFields != null) {
@@ -175,7 +175,7 @@ namespace March7thHoney.Proto {
         output.WriteEnum((int) BAPBMHCHCIC);
       }
       if (CEAMLKCMMGD != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(32);
         output.WriteUInt32(CEAMLKCMMGD);
       }
       if (_unknownFields != null) {
@@ -235,7 +235,7 @@ namespace March7thHoney.Proto {
             BAPBMHCHCIC = (global::March7thHoney.Proto.GetStuffType) input.ReadEnum();
             break;
           }
-          case 72: {
+          case 32: {
             CEAMLKCMMGD = input.ReadUInt32();
             break;
           }
@@ -262,7 +262,7 @@ namespace March7thHoney.Proto {
             BAPBMHCHCIC = (global::March7thHoney.Proto.GetStuffType) input.ReadEnum();
             break;
           }
-          case 72: {
+          case 32: {
             CEAMLKCMMGD = input.ReadUInt32();
             break;
           }

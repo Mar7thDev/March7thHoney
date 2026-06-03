@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "FDBDLBAPDBE.proto";
 
 message DDAFEPBGOHK {
-    FDBDLBAPDBE GMILDFJFOGD = 6;
-    uint32 FPCCPKAOGKG = 3;
+    FDBDLBAPDBE GMILDFJFOGD = 8;
+    uint32 FPCCPKAOGKG = 13;
 }

@@ -6,7 +6,7 @@ import "DMGDLEHEDFB.proto";
 import "GHBICGMEFPL.proto";
 
 message TakeOffSkillCoreScRsp {
-    DMGDLEHEDFB LCCMCPMCLFH = 8;
-    GHBICGMEFPL IAGNGEGKDOL = 11;
-    uint32 retcode = 10;
+    GHBICGMEFPL IAGNGEGKDOL = 2;
+    uint32 retcode = 6;
+    DMGDLEHEDFB LCCMCPMCLFH = 11;
 }

@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ChallengeLineupList.proto";
 
 message PlayerChallengePeakRecordMobData {
-    ChallengeLineupList lineup = 10;
-    repeated uint32 MCJNLLBBDHN = 9;
-    uint32 cycles_used = 13;
-    uint32 peak_id = 8;
+    uint32 cycles_used = 5;
+    ChallengeLineupList lineup = 11;
+    repeated uint32 MCJNLLBBDHN = 12;
+    uint32 peak_id = 14;
 }

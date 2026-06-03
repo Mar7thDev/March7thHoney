@@ -7,7 +7,7 @@ import "CLLBJDEJFNF.proto";
 import "POFNNGOCEOK.proto";
 
 message OIIPJFDNPAH {
-    repeated AreaDynamicInfo GOEJIMNENDC = 6;
-    repeated CLLBJDEJFNF OFOKOHGPEDO = 3;
-    repeated POFNNGOCEOK POLMJFIKNHN = 10;
+    repeated AreaDynamicInfo GOEJIMNENDC = 7;
+    repeated POFNNGOCEOK POLMJFIKNHN = 9;
+    repeated CLLBJDEJFNF OFOKOHGPEDO = 12;
 }

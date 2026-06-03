@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFPQ0dIQkFOTExPSC5wcm90byI4CgtPQ0dIQkFOTExPSBITCgtBTVBGQkdL",
-            "SEpCRhgMIAEoDRIUCgxkaWNlX3Nsb3RfaWQYDyABKA1CFqoCE01hcmNoN3Ro",
+            "SEpCRhgIIAEoDRIUCgxkaWNlX3Nsb3RfaWQYCyABKA1CFqoCE01hcmNoN3Ro",
             "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "AMPFBGKHJBF" field.</summary>
-    public const int AMPFBGKHJBFFieldNumber = 12;
+    public const int AMPFBGKHJBFFieldNumber = 8;
     private uint aMPFBGKHJBF_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "dice_slot_id" field.</summary>
-    public const int DiceSlotIdFieldNumber = 15;
+    public const int DiceSlotIdFieldNumber = 11;
     private uint diceSlotId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (AMPFBGKHJBF != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(64);
         output.WriteUInt32(AMPFBGKHJBF);
       }
       if (DiceSlotId != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(88);
         output.WriteUInt32(DiceSlotId);
       }
       if (_unknownFields != null) {
@@ -170,11 +170,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (AMPFBGKHJBF != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(64);
         output.WriteUInt32(AMPFBGKHJBF);
       }
       if (DiceSlotId != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(88);
         output.WriteUInt32(DiceSlotId);
       }
       if (_unknownFields != null) {
@@ -230,11 +230,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 96: {
+          case 64: {
             AMPFBGKHJBF = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 88: {
             DiceSlotId = input.ReadUInt32();
             break;
           }
@@ -257,11 +257,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 96: {
+          case 64: {
             AMPFBGKHJBF = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 88: {
             DiceSlotId = input.ReadUInt32();
             break;
           }

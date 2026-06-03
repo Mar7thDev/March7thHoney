@@ -24,15 +24,14 @@ namespace March7thHoney.Proto {
     static HHJLCGGEHPBReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFISEpMQ0dHRUhQQi5wcm90bxoWUGxheWVyU2ltcGxlSW5mby5wcm90byJ0",
+            "ChFISEpMQ0dHRUhQQi5wcm90bxoWUGxheWVyU2ltcGxlSW5mby5wcm90byJf",
             "CgtISEpMQ0dHRUhQQhImCgtDSUxHSURESE9ERxgBIAEoCzIRLlBsYXllclNp",
-            "bXBsZUluZm8SEwoLUExQUFBDRVBCRE8YByABKA0SEwoLTlBBSUZDTEFQTkgY",
-            "DSABKAMSEwoLS0ZBQ1BPQkFBR00YCyABKANCFqoCE01hcmNoN3RoSG9uZXku",
-            "UHJvdG9iBnByb3RvMw=="));
+            "bXBsZUluZm8SEwoLUExQUFBDRVBCRE8YBCABKA0SEwoLS0ZBQ1BPQkFBR00Y",
+            "DSABKANCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.PlayerSimpleInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HHJLCGGEHPB), global::March7thHoney.Proto.HHJLCGGEHPB.Parser, new[]{ "CILGIDDHODG", "PLPPPCEPBDO", "NPAIFCLAPNH", "KFACPOBAAGM" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HHJLCGGEHPB), global::March7thHoney.Proto.HHJLCGGEHPB.Parser, new[]{ "CILGIDDHODG", "PLPPPCEPBDO", "KFACPOBAAGM" }, null, null, null, null)
           }));
     }
     #endregion
@@ -76,7 +75,6 @@ namespace March7thHoney.Proto {
     public HHJLCGGEHPB(HHJLCGGEHPB other) : this() {
       cILGIDDHODG_ = other.cILGIDDHODG_ != null ? other.cILGIDDHODG_.Clone() : null;
       pLPPPCEPBDO_ = other.pLPPPCEPBDO_;
-      nPAIFCLAPNH_ = other.nPAIFCLAPNH_;
       kFACPOBAAGM_ = other.kFACPOBAAGM_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -100,7 +98,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "PLPPPCEPBDO" field.</summary>
-    public const int PLPPPCEPBDOFieldNumber = 7;
+    public const int PLPPPCEPBDOFieldNumber = 4;
     private uint pLPPPCEPBDO_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -111,20 +109,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "NPAIFCLAPNH" field.</summary>
-    public const int NPAIFCLAPNHFieldNumber = 13;
-    private long nPAIFCLAPNH_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long NPAIFCLAPNH {
-      get { return nPAIFCLAPNH_; }
-      set {
-        nPAIFCLAPNH_ = value;
-      }
-    }
-
     /// <summary>Field number for the "KFACPOBAAGM" field.</summary>
-    public const int KFACPOBAAGMFieldNumber = 11;
+    public const int KFACPOBAAGMFieldNumber = 13;
     private long kFACPOBAAGM_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,7 +138,6 @@ namespace March7thHoney.Proto {
       }
       if (!object.Equals(CILGIDDHODG, other.CILGIDDHODG)) return false;
       if (PLPPPCEPBDO != other.PLPPPCEPBDO) return false;
-      if (NPAIFCLAPNH != other.NPAIFCLAPNH) return false;
       if (KFACPOBAAGM != other.KFACPOBAAGM) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -163,7 +148,6 @@ namespace March7thHoney.Proto {
       int hash = 1;
       if (cILGIDDHODG_ != null) hash ^= CILGIDDHODG.GetHashCode();
       if (PLPPPCEPBDO != 0) hash ^= PLPPPCEPBDO.GetHashCode();
-      if (NPAIFCLAPNH != 0L) hash ^= NPAIFCLAPNH.GetHashCode();
       if (KFACPOBAAGM != 0L) hash ^= KFACPOBAAGM.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -188,16 +172,12 @@ namespace March7thHoney.Proto {
         output.WriteMessage(CILGIDDHODG);
       }
       if (PLPPPCEPBDO != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(32);
         output.WriteUInt32(PLPPPCEPBDO);
       }
       if (KFACPOBAAGM != 0L) {
-        output.WriteRawTag(88);
-        output.WriteInt64(KFACPOBAAGM);
-      }
-      if (NPAIFCLAPNH != 0L) {
         output.WriteRawTag(104);
-        output.WriteInt64(NPAIFCLAPNH);
+        output.WriteInt64(KFACPOBAAGM);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -214,16 +194,12 @@ namespace March7thHoney.Proto {
         output.WriteMessage(CILGIDDHODG);
       }
       if (PLPPPCEPBDO != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(32);
         output.WriteUInt32(PLPPPCEPBDO);
       }
       if (KFACPOBAAGM != 0L) {
-        output.WriteRawTag(88);
-        output.WriteInt64(KFACPOBAAGM);
-      }
-      if (NPAIFCLAPNH != 0L) {
         output.WriteRawTag(104);
-        output.WriteInt64(NPAIFCLAPNH);
+        output.WriteInt64(KFACPOBAAGM);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -240,9 +216,6 @@ namespace March7thHoney.Proto {
       }
       if (PLPPPCEPBDO != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PLPPPCEPBDO);
-      }
-      if (NPAIFCLAPNH != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(NPAIFCLAPNH);
       }
       if (KFACPOBAAGM != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(KFACPOBAAGM);
@@ -267,9 +240,6 @@ namespace March7thHoney.Proto {
       }
       if (other.PLPPPCEPBDO != 0) {
         PLPPPCEPBDO = other.PLPPPCEPBDO;
-      }
-      if (other.NPAIFCLAPNH != 0L) {
-        NPAIFCLAPNH = other.NPAIFCLAPNH;
       }
       if (other.KFACPOBAAGM != 0L) {
         KFACPOBAAGM = other.KFACPOBAAGM;
@@ -300,16 +270,12 @@ namespace March7thHoney.Proto {
             input.ReadMessage(CILGIDDHODG);
             break;
           }
-          case 56: {
+          case 32: {
             PLPPPCEPBDO = input.ReadUInt32();
             break;
           }
-          case 88: {
-            KFACPOBAAGM = input.ReadInt64();
-            break;
-          }
           case 104: {
-            NPAIFCLAPNH = input.ReadInt64();
+            KFACPOBAAGM = input.ReadInt64();
             break;
           }
         }
@@ -338,16 +304,12 @@ namespace March7thHoney.Proto {
             input.ReadMessage(CILGIDDHODG);
             break;
           }
-          case 56: {
+          case 32: {
             PLPPPCEPBDO = input.ReadUInt32();
             break;
           }
-          case 88: {
-            KFACPOBAAGM = input.ReadInt64();
-            break;
-          }
           case 104: {
-            NPAIFCLAPNH = input.ReadInt64();
+            KFACPOBAAGM = input.ReadInt64();
             break;
           }
         }

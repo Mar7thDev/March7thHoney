@@ -7,12 +7,12 @@ import "KDPGIMOOLON.proto";
 import "LOEBAOEFMDC.proto";
 
 message GLMGJFEEJHD {
-    uint32 AFDNFCBCFBF = 8;
-    uint32 config_id = 9;
-    uint32 BAJHKGJPFED = 3;
+    uint32 ratio = 6;
+    uint32 config_id = 11;
+    uint32 BAJHKGJPFED = 13;
     oneof JMPNIHHAMPH {
-        KDPGIMOOLON AGLMEDOBMAL = 11;
-        JGKNADEDNHB LOCHFJEECKL = 5;
+        KDPGIMOOLON AGLMEDOBMAL = 5;
+        JGKNADEDNHB LOCHFJEECKL = 10;
         LOEBAOEFMDC COKLIDDAEOH = 7;
     }
 }

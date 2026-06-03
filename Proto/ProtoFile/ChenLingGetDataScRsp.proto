@@ -6,9 +6,9 @@ import "BDOEDOEBFAJ.proto";
 import "FDDNKPJEMJE.proto";
 
 message ChenLingGetDataScRsp {
-    FDDNKPJEMJE DJOLGKGKCHE = 12;
-    repeated uint32 IMNNAENHBMA = 9;
-    BDOEDOEBFAJ KFAIGIIPLOF = 6;
-    uint32 GDHOLMIBAEA = 1;
+    FDDNKPJEMJE DJOLGKGKCHE = 5;
+    BDOEDOEBFAJ KFAIGIIPLOF = 9;
+    repeated uint32 IMNNAENHBMA = 11;
     uint32 retcode = 13;
+    uint32 GDHOLMIBAEA = 14;
 }

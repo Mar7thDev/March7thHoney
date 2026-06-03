@@ -6,7 +6,7 @@ import "ItemList.proto";
 import "KJMKOJEHMII.proto";
 
 message TravelBrochureSelectMessageScRsp {
-    KJMKOJEHMII EDLLNJIEFBO = 11;
-    ItemList reward = 1;
-    uint32 retcode = 9;
+    uint32 retcode = 3;
+    KJMKOJEHMII EDLLNJIEFBO = 8;
+    ItemList reward = 9;
 }

@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static CmdMatchTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChJDbWRNYXRjaFR5cGUucHJvdG8q/QEKDENtZE1hdGNoVHlwZRIbChdPSkNJ",
+            "ChJDbWRNYXRjaFR5cGUucHJvdG8q3wEKDENtZE1hdGNoVHlwZRIbChdPSkNJ",
             "R0dBRkdQTl9OTENER0lQR0ZEShAAEhwKF09KQ0lHR0FGR1BOX09CSEhFSk9O",
-            "R0tKEK45EhwKF09KQ0lHR0FGR1BOX1BGTklKRkFOQ0lFEJc5EhwKF09KQ0lH",
-            "R0FGR1BOX0JOTERFTk5FT0lQELA5EhwKF09KQ0lHR0FGR1BOX0pGTUZFRkdB",
-            "SUJLEKQ5EhwKF09KQ0lHR0FGR1BOX0hOQUpNUExCTkxGEJs5EhwKF09KQ0lH",
-            "R0FGR1BOX0FNQktCTk1LSUdQEJ85EhwKF09KQ0lHR0FGR1BOX0tNRE1DTEdQ",
-            "SUJDEIs5QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "R0tKEJs5EhwKF09KQ0lHR0FGR1BOX1BGTklKRkFOQ0lFEIc5EhwKF09KQ0lH",
+            "R0FGR1BOX0tNRE1DTEdQSUJDEKk5EhwKF09KQ0lHR0FGR1BOX0FNQktCTk1L",
+            "SUdQELQ5EhwKF09KQ0lHR0FGR1BOX0pGTUZFRkdBSUJLEI05EhwKF09KQ0lH",
+            "R0FGR1BOX0hOQUpNUExCTkxGELA5QhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
+            "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdMatchType), }, null, null));
@@ -41,13 +41,12 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdMatchType {
     [pbr::OriginalName("OJCIGGAFGPN_NLCDGIPGFDJ")] OjciggafgpnNlcdgipgfdj = 0,
-    [pbr::OriginalName("OJCIGGAFGPN_OBHHEJONGKJ")] OjciggafgpnObhhejongkj = 7342,
-    [pbr::OriginalName("OJCIGGAFGPN_PFNIJFANCIE")] OjciggafgpnPfnijfancie = 7319,
-    [pbr::OriginalName("OJCIGGAFGPN_BNLDENNEOIP")] OjciggafgpnBnldenneoip = 7344,
-    [pbr::OriginalName("OJCIGGAFGPN_JFMFEFGAIBK")] OjciggafgpnJfmfefgaibk = 7332,
-    [pbr::OriginalName("OJCIGGAFGPN_HNAJMPLBNLF")] OjciggafgpnHnajmplbnlf = 7323,
-    [pbr::OriginalName("OJCIGGAFGPN_AMBKBNMKIGP")] OjciggafgpnAmbkbnmkigp = 7327,
-    [pbr::OriginalName("OJCIGGAFGPN_KMDMCLGPIBC")] OjciggafgpnKmdmclgpibc = 7307,
+    [pbr::OriginalName("OJCIGGAFGPN_OBHHEJONGKJ")] OjciggafgpnObhhejongkj = 7323,
+    [pbr::OriginalName("OJCIGGAFGPN_PFNIJFANCIE")] OjciggafgpnPfnijfancie = 7303,
+    [pbr::OriginalName("OJCIGGAFGPN_KMDMCLGPIBC")] OjciggafgpnKmdmclgpibc = 7337,
+    [pbr::OriginalName("OJCIGGAFGPN_AMBKBNMKIGP")] OjciggafgpnAmbkbnmkigp = 7348,
+    [pbr::OriginalName("OJCIGGAFGPN_JFMFEFGAIBK")] OjciggafgpnJfmfefgaibk = 7309,
+    [pbr::OriginalName("OJCIGGAFGPN_HNAJMPLBNLF")] OjciggafgpnHnajmplbnlf = 7344,
   }
 
   #endregion

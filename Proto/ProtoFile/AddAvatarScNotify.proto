@@ -6,8 +6,8 @@ import "AddAvatarSrcState.proto";
 import "ItemList.proto";
 
 message AddAvatarScNotify {
-    ItemList reward = 13;
-    uint32 base_avatar_id = 2;
-    AddAvatarSrcState src = 9;
-    bool is_new = 15;
+    uint32 base_avatar_id = 3;
+    AddAvatarSrcState src = 5;
+    bool is_new = 7;
+    ItemList reward = 10;
 }

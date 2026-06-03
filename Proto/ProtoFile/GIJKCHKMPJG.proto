@@ -6,6 +6,6 @@ import "BHJOFLJGNKN.proto";
 import "LJGKNFCFLLB.proto";
 
 message GIJKCHKMPJG {
-    LJGKNFCFLLB BBEHHCHKMNL = 7;
-    BHJOFLJGNKN source = 1;
+    BHJOFLJGNKN source = 3;
+    LJGKNFCFLLB detail = 12;
 }

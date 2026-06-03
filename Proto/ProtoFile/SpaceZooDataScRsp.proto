@@ -6,13 +6,13 @@ import "DBLILHCLPPL.proto";
 import "GFFFJCEHBEB.proto";
 
 message SpaceZooDataScRsp {
-    repeated uint32 MDFEBNNOKLG = 5;
-    repeated uint32 ENGEBGICPPB = 12;
-    repeated uint32 FIBMJBJMCKK = 15;
-    repeated uint32 GLMMHALPEAG = 3;
-    repeated uint32 JGCNAGNOFBP = 6;
-    repeated DBLILHCLPPL NFIGGHNNJAP = 7;
-    repeated GFFFJCEHBEB JAPFGEAIACA = 8;
-    uint32 retcode = 13;
-    uint32 OAIMAFOHLHC = 10;
+    repeated uint32 JGCNAGNOFBP = 1;
+    repeated DBLILHCLPPL NFIGGHNNJAP = 2;
+    repeated GFFFJCEHBEB JAPFGEAIACA = 3;
+    uint32 retcode = 4;
+    repeated uint32 GLMMHALPEAG = 5;
+    repeated uint32 MDFEBNNOKLG = 8;
+    repeated uint32 FIBMJBJMCKK = 10;
+    uint32 OAIMAFOHLHC = 14;
+    repeated uint32 ENGEBGICPPB = 15;
 }

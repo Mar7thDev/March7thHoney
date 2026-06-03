@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiRUZWNoVHJlZUNoYW5nZU5vZGVTdGF0ZUNzQ3NSZXEucHJvdG8aEU9FREFC",
             "QU5BSkVLLnByb3RvIlQKHlRlY2hUcmVlQ2hhbmdlTm9kZVN0YXRlQ3NDc1Jl",
-            "cRITCgtDRE1GSE5HRUZDThgKIAEoDRIdCgdvcF90eXBlGAsgASgOMgwuT0VE",
+            "cRITCgtDRE1GSE5HRUZDThgEIAEoDRIdCgdvcF90eXBlGAwgASgOMgwuT0VE",
             "QUJBTkFKRUtCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.OEDABANAJEKReflection.Descriptor, },
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "CDMFHNGEFCN" field.</summary>
-    public const int CDMFHNGEFCNFieldNumber = 10;
+    public const int CDMFHNGEFCNFieldNumber = 4;
     private uint cDMFHNGEFCN_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "op_type" field.</summary>
-    public const int OpTypeFieldNumber = 11;
+    public const int OpTypeFieldNumber = 12;
     private global::March7thHoney.Proto.OEDABANAJEK opType_ = global::March7thHoney.Proto.OEDABANAJEK.Nlcdgipgfdj;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -153,11 +153,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (CDMFHNGEFCN != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(32);
         output.WriteUInt32(CDMFHNGEFCN);
       }
       if (OpType != global::March7thHoney.Proto.OEDABANAJEK.Nlcdgipgfdj) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(96);
         output.WriteEnum((int) OpType);
       }
       if (_unknownFields != null) {
@@ -171,11 +171,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (CDMFHNGEFCN != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(32);
         output.WriteUInt32(CDMFHNGEFCN);
       }
       if (OpType != global::March7thHoney.Proto.OEDABANAJEK.Nlcdgipgfdj) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(96);
         output.WriteEnum((int) OpType);
       }
       if (_unknownFields != null) {
@@ -231,11 +231,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 80: {
+          case 32: {
             CDMFHNGEFCN = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 96: {
             OpType = (global::March7thHoney.Proto.OEDABANAJEK) input.ReadEnum();
             break;
           }
@@ -258,11 +258,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 80: {
+          case 32: {
             CDMFHNGEFCN = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 96: {
             OpType = (global::March7thHoney.Proto.OEDABANAJEK) input.ReadEnum();
             break;
           }

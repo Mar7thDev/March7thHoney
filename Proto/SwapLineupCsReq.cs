@@ -25,15 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChVTd2FwTGluZXVwQ3NSZXEucHJvdG8aFUV4dHJhTGluZXVwVHlwZS5wcm90",
-            "byKdAQoPU3dhcExpbmV1cENzUmVxEg0KBWluZGV4GAEgASgNEhIKCmlzX3Zp",
-            "cnR1YWwYCyABKAgSEwoLRU5CSUJDUFBMREMYCSABKA0SEAoIcGxhbmVfaWQY",
-            "CiABKA0SKwoRZXh0cmFfbGluZXVwX3R5cGUYBCABKA4yEC5FeHRyYUxpbmV1",
-            "cFR5cGUSEwoLTVBJRUdGQ05CRU4YBiABKA1CFqoCE01hcmNoN3RoSG9uZXku",
-            "UHJvdG9iBnByb3RvMw=="));
+            "byKJAQoPU3dhcExpbmV1cENzUmVxEhMKC0VOQklCQ1BQTERDGAEgASgNEg0K",
+            "BWluZGV4GAQgASgNEisKEWV4dHJhX2xpbmV1cF90eXBlGAggASgOMhAuRXh0",
+            "cmFMaW5ldXBUeXBlEhMKC01QSUVHRkNOQkVOGAogASgNEhAKCHBsYW5lX2lk",
+            "GA0gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ExtraLineupTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SwapLineupCsReq), global::March7thHoney.Proto.SwapLineupCsReq.Parser, new[]{ "Index", "IsVirtual", "ENBIBCPPLDC", "PlaneId", "ExtraLineupType", "MPIEGFCNBEN" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SwapLineupCsReq), global::March7thHoney.Proto.SwapLineupCsReq.Parser, new[]{ "ENBIBCPPLDC", "Index", "ExtraLineupType", "MPIEGFCNBEN", "PlaneId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,12 +74,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SwapLineupCsReq(SwapLineupCsReq other) : this() {
-      index_ = other.index_;
-      isVirtual_ = other.isVirtual_;
       eNBIBCPPLDC_ = other.eNBIBCPPLDC_;
-      planeId_ = other.planeId_;
+      index_ = other.index_;
       extraLineupType_ = other.extraLineupType_;
       mPIEGFCNBEN_ = other.mPIEGFCNBEN_;
+      planeId_ = other.planeId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -90,32 +88,8 @@ namespace March7thHoney.Proto {
       return new SwapLineupCsReq(this);
     }
 
-    /// <summary>Field number for the "index" field.</summary>
-    public const int IndexFieldNumber = 1;
-    private uint index_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Index {
-      get { return index_; }
-      set {
-        index_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "is_virtual" field.</summary>
-    public const int IsVirtualFieldNumber = 11;
-    private bool isVirtual_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IsVirtual {
-      get { return isVirtual_; }
-      set {
-        isVirtual_ = value;
-      }
-    }
-
     /// <summary>Field number for the "ENBIBCPPLDC" field.</summary>
-    public const int ENBIBCPPLDCFieldNumber = 9;
+    public const int ENBIBCPPLDCFieldNumber = 1;
     private uint eNBIBCPPLDC_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -126,20 +100,20 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "plane_id" field.</summary>
-    public const int PlaneIdFieldNumber = 10;
-    private uint planeId_;
+    /// <summary>Field number for the "index" field.</summary>
+    public const int IndexFieldNumber = 4;
+    private uint index_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PlaneId {
-      get { return planeId_; }
+    public uint Index {
+      get { return index_; }
       set {
-        planeId_ = value;
+        index_ = value;
       }
     }
 
     /// <summary>Field number for the "extra_lineup_type" field.</summary>
-    public const int ExtraLineupTypeFieldNumber = 4;
+    public const int ExtraLineupTypeFieldNumber = 8;
     private global::March7thHoney.Proto.ExtraLineupType extraLineupType_ = global::March7thHoney.Proto.ExtraLineupType.LineupNone;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -151,7 +125,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "MPIEGFCNBEN" field.</summary>
-    public const int MPIEGFCNBENFieldNumber = 6;
+    public const int MPIEGFCNBENFieldNumber = 10;
     private uint mPIEGFCNBEN_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -159,6 +133,18 @@ namespace March7thHoney.Proto {
       get { return mPIEGFCNBEN_; }
       set {
         mPIEGFCNBEN_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "plane_id" field.</summary>
+    public const int PlaneIdFieldNumber = 13;
+    private uint planeId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint PlaneId {
+      get { return planeId_; }
+      set {
+        planeId_ = value;
       }
     }
 
@@ -177,12 +163,11 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Index != other.Index) return false;
-      if (IsVirtual != other.IsVirtual) return false;
       if (ENBIBCPPLDC != other.ENBIBCPPLDC) return false;
-      if (PlaneId != other.PlaneId) return false;
+      if (Index != other.Index) return false;
       if (ExtraLineupType != other.ExtraLineupType) return false;
       if (MPIEGFCNBEN != other.MPIEGFCNBEN) return false;
+      if (PlaneId != other.PlaneId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -190,12 +175,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Index != 0) hash ^= Index.GetHashCode();
-      if (IsVirtual != false) hash ^= IsVirtual.GetHashCode();
       if (ENBIBCPPLDC != 0) hash ^= ENBIBCPPLDC.GetHashCode();
-      if (PlaneId != 0) hash ^= PlaneId.GetHashCode();
+      if (Index != 0) hash ^= Index.GetHashCode();
       if (ExtraLineupType != global::March7thHoney.Proto.ExtraLineupType.LineupNone) hash ^= ExtraLineupType.GetHashCode();
       if (MPIEGFCNBEN != 0) hash ^= MPIEGFCNBEN.GetHashCode();
+      if (PlaneId != 0) hash ^= PlaneId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -214,29 +198,25 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Index != 0) {
+      if (ENBIBCPPLDC != 0) {
         output.WriteRawTag(8);
+        output.WriteUInt32(ENBIBCPPLDC);
+      }
+      if (Index != 0) {
+        output.WriteRawTag(32);
         output.WriteUInt32(Index);
       }
       if (ExtraLineupType != global::March7thHoney.Proto.ExtraLineupType.LineupNone) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(64);
         output.WriteEnum((int) ExtraLineupType);
       }
       if (MPIEGFCNBEN != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(80);
         output.WriteUInt32(MPIEGFCNBEN);
       }
-      if (ENBIBCPPLDC != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(ENBIBCPPLDC);
-      }
       if (PlaneId != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(104);
         output.WriteUInt32(PlaneId);
-      }
-      if (IsVirtual != false) {
-        output.WriteRawTag(88);
-        output.WriteBool(IsVirtual);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -248,29 +228,25 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Index != 0) {
+      if (ENBIBCPPLDC != 0) {
         output.WriteRawTag(8);
+        output.WriteUInt32(ENBIBCPPLDC);
+      }
+      if (Index != 0) {
+        output.WriteRawTag(32);
         output.WriteUInt32(Index);
       }
       if (ExtraLineupType != global::March7thHoney.Proto.ExtraLineupType.LineupNone) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(64);
         output.WriteEnum((int) ExtraLineupType);
       }
       if (MPIEGFCNBEN != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(80);
         output.WriteUInt32(MPIEGFCNBEN);
       }
-      if (ENBIBCPPLDC != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(ENBIBCPPLDC);
-      }
       if (PlaneId != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(104);
         output.WriteUInt32(PlaneId);
-      }
-      if (IsVirtual != false) {
-        output.WriteRawTag(88);
-        output.WriteBool(IsVirtual);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -282,23 +258,20 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Index != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Index);
-      }
-      if (IsVirtual != false) {
-        size += 1 + 1;
-      }
       if (ENBIBCPPLDC != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ENBIBCPPLDC);
       }
-      if (PlaneId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PlaneId);
+      if (Index != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Index);
       }
       if (ExtraLineupType != global::March7thHoney.Proto.ExtraLineupType.LineupNone) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ExtraLineupType);
       }
       if (MPIEGFCNBEN != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MPIEGFCNBEN);
+      }
+      if (PlaneId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PlaneId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -312,23 +285,20 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.Index != 0) {
-        Index = other.Index;
-      }
-      if (other.IsVirtual != false) {
-        IsVirtual = other.IsVirtual;
-      }
       if (other.ENBIBCPPLDC != 0) {
         ENBIBCPPLDC = other.ENBIBCPPLDC;
       }
-      if (other.PlaneId != 0) {
-        PlaneId = other.PlaneId;
+      if (other.Index != 0) {
+        Index = other.Index;
       }
       if (other.ExtraLineupType != global::March7thHoney.Proto.ExtraLineupType.LineupNone) {
         ExtraLineupType = other.ExtraLineupType;
       }
       if (other.MPIEGFCNBEN != 0) {
         MPIEGFCNBEN = other.MPIEGFCNBEN;
+      }
+      if (other.PlaneId != 0) {
+        PlaneId = other.PlaneId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -350,27 +320,23 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            Index = input.ReadUInt32();
-            break;
-          }
-          case 32: {
-            ExtraLineupType = (global::March7thHoney.Proto.ExtraLineupType) input.ReadEnum();
-            break;
-          }
-          case 48: {
-            MPIEGFCNBEN = input.ReadUInt32();
-            break;
-          }
-          case 72: {
             ENBIBCPPLDC = input.ReadUInt32();
             break;
           }
-          case 80: {
-            PlaneId = input.ReadUInt32();
+          case 32: {
+            Index = input.ReadUInt32();
             break;
           }
-          case 88: {
-            IsVirtual = input.ReadBool();
+          case 64: {
+            ExtraLineupType = (global::March7thHoney.Proto.ExtraLineupType) input.ReadEnum();
+            break;
+          }
+          case 80: {
+            MPIEGFCNBEN = input.ReadUInt32();
+            break;
+          }
+          case 104: {
+            PlaneId = input.ReadUInt32();
             break;
           }
         }
@@ -393,27 +359,23 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            Index = input.ReadUInt32();
-            break;
-          }
-          case 32: {
-            ExtraLineupType = (global::March7thHoney.Proto.ExtraLineupType) input.ReadEnum();
-            break;
-          }
-          case 48: {
-            MPIEGFCNBEN = input.ReadUInt32();
-            break;
-          }
-          case 72: {
             ENBIBCPPLDC = input.ReadUInt32();
             break;
           }
-          case 80: {
-            PlaneId = input.ReadUInt32();
+          case 32: {
+            Index = input.ReadUInt32();
             break;
           }
-          case 88: {
-            IsVirtual = input.ReadBool();
+          case 64: {
+            ExtraLineupType = (global::March7thHoney.Proto.ExtraLineupType) input.ReadEnum();
+            break;
+          }
+          case 80: {
+            MPIEGFCNBEN = input.ReadUInt32();
+            break;
+          }
+          case 104: {
+            PlaneId = input.ReadUInt32();
             break;
           }
         }

@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message SelectPhoneThemeScRsp {
-    uint32 NNOHELHPJOM = 4;
-    uint32 retcode = 1;
-    uint32 cur_phone_theme = 8;
+    uint32 retcode = 7;
+    uint32 cur_phone_theme = 12;
+    uint32 NNOHELHPJOM = 13;
 }

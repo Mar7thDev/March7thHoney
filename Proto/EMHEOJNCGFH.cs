@@ -24,8 +24,8 @@ namespace March7thHoney.Proto {
     static EMHEOJNCGFHReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFFTUhFT0pOQ0dGSC5wcm90byI9CgtFTUhFT0pOQ0dGSBINCgVsZXZlbBgH",
-            "IAEoDRIfChdncmlkX2ZpZ2h0X2VxdWlwbWVudF9pZBgMIAEoDUIWqgITTWFy",
+            "ChFFTUhFT0pOQ0dGSC5wcm90byI9CgtFTUhFT0pOQ0dGSBINCgVsZXZlbBgE",
+            "IAEoDRIfChdncmlkX2ZpZ2h0X2VxdWlwbWVudF9pZBgOIAEoDUIWqgITTWFy",
             "Y2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "level" field.</summary>
-    public const int LevelFieldNumber = 7;
+    public const int LevelFieldNumber = 4;
     private uint level_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "grid_fight_equipment_id" field.</summary>
-    public const int GridFightEquipmentIdFieldNumber = 12;
+    public const int GridFightEquipmentIdFieldNumber = 14;
     private uint gridFightEquipmentId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Level != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(32);
         output.WriteUInt32(Level);
       }
       if (GridFightEquipmentId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(112);
         output.WriteUInt32(GridFightEquipmentId);
       }
       if (_unknownFields != null) {
@@ -170,11 +170,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Level != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(32);
         output.WriteUInt32(Level);
       }
       if (GridFightEquipmentId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(112);
         output.WriteUInt32(GridFightEquipmentId);
       }
       if (_unknownFields != null) {
@@ -230,11 +230,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
+          case 32: {
             Level = input.ReadUInt32();
             break;
           }
-          case 96: {
+          case 112: {
             GridFightEquipmentId = input.ReadUInt32();
             break;
           }
@@ -257,11 +257,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
+          case 32: {
             Level = input.ReadUInt32();
             break;
           }
-          case 96: {
+          case 112: {
             GridFightEquipmentId = input.ReadUInt32();
             break;
           }

@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "EMHEOJNCGFH.proto";
 
 message KAAJEKKIDIE {
-    EMHEOJNCGFH GGMPEGMEHPD = 5;
+    EMHEOJNCGFH equip = 14;
 }

@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message JKKLGGKBELL {
-    repeated uint32 unfinished_story_line_id_list = 10;
-    repeated uint32 NOEPBNMJFGL = 9;
-}

@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message AOMMAFEOBOA {
-    uint32 id = 14;
-    bool has_passed = 1;
+    uint32 id = 12;
+    bool has_passed = 15;
 }

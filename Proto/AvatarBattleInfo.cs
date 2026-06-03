@@ -29,47 +29,47 @@ namespace March7thHoney.Proto {
             "b3RvGhVBdmF0YXJTa2lsbFRyZWUucHJvdG8aEEF2YXRhclR5cGUucHJvdG8a",
             "EUJhdHRsZVJlbGljLnByb3RvGhFDRkRIREJOSUhQTC5wcm90bxoRRVBOQU9O",
             "S09IQk8ucHJvdG8aF0VxdWlwbWVudFByb3BlcnR5LnByb3RvGhZTa2lsbFVz",
-            "ZVByb3BlcnR5LnByb3RvGhFTcEFkZFNvdXJjZS5wcm90byKnDAoQQXZhdGFy",
-            "QmF0dGxlSW5mbxInCg5pbml0aWFsX3N0YXR1cxghIAEoCzIPLkF2YXRhclBy",
-            "b3BlcnR5EjUKFmF0dGFja190eXBlX21heF9kYW1hZ2UYFCADKAsyFS5BdHRh",
-            "Y2tEYW1hZ2VQcm9wZXJ0eRImCgxhdmF0YXJfc2tpbGwYByADKAsyEC5BdmF0",
-            "YXJTa2lsbFRyZWUSNwoYYXR0YWNrX3R5cGVfYnJlYWtfZGFtYWdlGBMgAygL",
-            "MhUuQXR0YWNrRGFtYWdlUHJvcGVydHkSKgoLTk9HSE5NQ0REQUkYJCADKAsy",
-            "FS5BdHRhY2tEYW1hZ2VQcm9wZXJ0eRIhCgtBTEpJSkJLRUZERBgpIAMoCzIM",
-            "LkVQTkFPTktPSEJPEiwKEGF2YXRhcl9lcXVpcG1lbnQYCCADKAsyEi5FcXVp",
-            "cG1lbnRQcm9wZXJ0eRImCg1hdmF0YXJfc3RhdHVzGAYgASgLMg8uQXZhdGFy",
-            "UHJvcGVydHkSIQoLR0VIRUpQUENCTEsYOiABKAsyDC5BQkRPS09GRUhNSBIm",
-            "Cgtza2lsbF90aW1lcxgVIAMoCzIRLlNraWxsVXNlUHJvcGVydHkSHAoGcmVs",
-            "aWNzGCIgAygLMgwuQmF0dGxlUmVsaWMSIQoLRkRNRUVERUpDQ1AYOSABKAsy",
-            "DC5DRkRIREJOSUhQTBIjCg1zcF9hZGRfc291cmNlGBggAygLMgwuU3BBZGRT",
-            "b3VyY2USMQoSYXR0YWNrX3R5cGVfZGFtYWdlGBIgAygLMhUuQXR0YWNrRGFt",
-            "YWdlUHJvcGVydHkSFgoOZGVsYXlfY3VtdWxhdGUYFiABKAESGwoTdG90YWxf",
-            "c2hpZWxkX2RhbWFnZRggIAEoARITCgtESUFMSk1BSEZCTxgsIAEoARISCgpz",
-            "dGFnZV90eXBlGBAgASgNEhAKCHN0YWdlX2lkGA8gASgNEhUKDXRvdGFsX3Nw",
-            "X2Nvc3QYDiABKAESEwoLZW5oYW5jZWRfaWQYNyABKA0SEgoKYXNzaXN0X3Vp",
-            "ZBgjIAEoDRITCgticmVha190aW1lcxgcIAEoDRITCgtOQkNET01KQkFGTRg1",
-            "IAEoDRITCgtleHRyYV90dXJucxgdIAEoDRITCgt0b3RhbF90dXJucxgJIAEo",
-            "DRISCgp0b3RhbF9oZWFsGAsgASgBEhMKC0NORU1LS0lCRkVBGCcgASgBEhMK",
-            "C0VCTUZDQktISUVIGC8gASgBEhMKC0ZKTktPUE1PTERFGDEgASgNEhQKDGF2",
-            "YXRhcl9sZXZlbBgDIAEoDRITCgtQRUNNT0dETENEQxg2IAEoDRITCgtQTkpE",
-            "UE5ITkJEQRgzIAEoDRITCgtORURDQUtFTUhMRhg0IAEoARITCgtFRU9HS09L",
-            "T1BOQhgoIAEoARIUCgx0b3RhbF9zcF9hZGQYFyABKA0SEwoLRkxLQ0ZKQkNJ",
-            "T00YMiABKA0SGgoSdG90YWxfc2hpZWxkX3Rha2VuGB8gASgBEhMKC0xGTEtP",
-            "R0RQTEtEGC4gASgBEhoKEnRvdGFsX2RhbWFnZV90YWtlbhgMIAEoARIVCg10",
-            "b3RhbF9icF9jb3N0GBkgASgNEgoKAmlkGAIgASgNEhMKC01FQktJTE1QTUdB",
-            "GDggASgNEhEKCWRpZV90aW1lcxgaIAEoDRIUCgx0b3RhbF9kYW1hZ2UYCiAB",
-            "KAESEwoLREJMQUJGT0ROTUoYMCABKAESFAoMdG90YWxfc2hpZWxkGB4gASgB",
-            "EhQKDHJldml2ZV90aW1lcxgbIAEoDRIgCgthdmF0YXJfdHlwZRgBIAEoDjIL",
-            "LkF2YXRhclR5cGUSEwoLR1BMRUxERUlFS08YJiABKAESGgoSdG90YWxfYnJl",
-            "YWtfZGFtYWdlGBEgASgBEhMKC0NOTEVQTEFFRUhGGCogASgNEhgKEGF2YXRh",
-            "cl9wcm9tb3Rpb24YBSABKA0SGAoQdG90YWxfaHBfcmVjb3ZlchgNIAEoARIT",
-            "CgtERUlDR0ZLSU1NTxglIAEoARITCgtMQU9FRUdFRUxESxgtIAEoARITCgtK",
-            "REhESkZDS0JHRBgrIAEoDRITCgthdmF0YXJfcmFuaxgEIAEoDUIWqgITTWFy",
-            "Y2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ZVByb3BlcnR5LnByb3RvGhFTcEFkZFNvdXJjZS5wcm90byK8DAoQQXZhdGFy",
+            "QmF0dGxlSW5mbxIgCgthdmF0YXJfdHlwZRgBIAEoDjILLkF2YXRhclR5cGUS",
+            "CgoCaWQYAiABKA0SFAoMYXZhdGFyX2xldmVsGAMgASgNEhMKC2F2YXRhcl9y",
+            "YW5rGAQgASgNEhgKEGF2YXRhcl9wcm9tb3Rpb24YBSABKA0SJgoNYXZhdGFy",
+            "X3N0YXR1cxgGIAEoCzIPLkF2YXRhclByb3BlcnR5EiYKDGF2YXRhcl9za2ls",
+            "bBgHIAMoCzIQLkF2YXRhclNraWxsVHJlZRIsChBhdmF0YXJfZXF1aXBtZW50",
+            "GAggAygLMhIuRXF1aXBtZW50UHJvcGVydHkSEwoLdG90YWxfdHVybnMYCSAB",
+            "KA0SFAoMdG90YWxfZGFtYWdlGAogASgBEhIKCnRvdGFsX2hlYWwYCyABKAES",
+            "GgoSdG90YWxfZGFtYWdlX3Rha2VuGAwgASgBEhgKEHRvdGFsX2hwX3JlY292",
+            "ZXIYDSABKAESFQoNdG90YWxfc3BfY29zdBgOIAEoARIQCghzdGFnZV9pZBgP",
+            "IAEoDRISCgpzdGFnZV90eXBlGBAgASgNEhoKEnRvdGFsX2JyZWFrX2RhbWFn",
+            "ZRgRIAEoARIxChJhdHRhY2tfdHlwZV9kYW1hZ2UYEiADKAsyFS5BdHRhY2tE",
+            "YW1hZ2VQcm9wZXJ0eRI3ChhhdHRhY2tfdHlwZV9icmVha19kYW1hZ2UYEyAD",
+            "KAsyFS5BdHRhY2tEYW1hZ2VQcm9wZXJ0eRI1ChZhdHRhY2tfdHlwZV9tYXhf",
+            "ZGFtYWdlGBQgAygLMhUuQXR0YWNrRGFtYWdlUHJvcGVydHkSJgoLc2tpbGxf",
+            "dGltZXMYFSADKAsyES5Ta2lsbFVzZVByb3BlcnR5EhYKDmRlbGF5X2N1bXVs",
+            "YXRlGBYgASgBEhQKDHRvdGFsX3NwX2FkZBgXIAEoDRIjCg1zcF9hZGRfc291",
+            "cmNlGBggAygLMgwuU3BBZGRTb3VyY2USFQoNdG90YWxfYnBfY29zdBgZIAEo",
+            "DRIRCglkaWVfdGltZXMYGiABKA0SFAoMcmV2aXZlX3RpbWVzGBsgASgNEhMK",
+            "C2JyZWFrX3RpbWVzGBwgASgNEhMKC2V4dHJhX3R1cm5zGB0gASgNEhQKDHRv",
+            "dGFsX3NoaWVsZBgeIAEoARIaChJ0b3RhbF9zaGllbGRfdGFrZW4YHyABKAES",
+            "GwoTdG90YWxfc2hpZWxkX2RhbWFnZRggIAEoARInCg5pbml0aWFsX3N0YXR1",
+            "cxghIAEoCzIPLkF2YXRhclByb3BlcnR5EhwKBnJlbGljcxgiIAMoCzIMLkJh",
+            "dHRsZVJlbGljEhIKCmFzc2lzdF91aWQYIyABKA0SKgoLTk9HSE5NQ0REQUkY",
+            "JCADKAsyFS5BdHRhY2tEYW1hZ2VQcm9wZXJ0eRITCgtERUlDR0ZLSU1NTxgl",
+            "IAEoARITCgtHUExFTERFSUVLTxgmIAEoARITCgtDTkVNS0tJQkZFQRgnIAEo",
+            "ARITCgtFRU9HS09LT1BOQhgoIAEoARIhCgtBTEpJSkJLRUZERBgpIAMoCzIM",
+            "LkVQTkFPTktPSEJPEhMKC0NOTEVQTEFFRUhGGCogASgNEhMKC0pESERKRkNL",
+            "QkdEGCsgASgNEhMKC0RJQUxKTUFIRkJPGCwgASgBEhMKC0xBT0VFR0VFTERL",
+            "GC0gASgBEhMKC0xGTEtPR0RQTEtEGC4gASgBEhMKC0VCTUZDQktISUVIGC8g",
+            "ASgBEhMKC0RCTEFCRk9ETk1KGDAgASgBEhMKC0ZKTktPUE1PTERFGDEgASgN",
+            "EhMKC0ZMS0NGSkJDSU9NGDIgASgNEhMKC1BOSkRQTkhOQkRBGDMgASgNEhMK",
+            "C05FRENBS0VNSExGGDQgASgBEhMKC05CQ0RPTUpCQUZNGDUgASgNEhMKC1BF",
+            "Q01PR0RMQ0RDGDYgASgNEhMKC2VuaGFuY2VkX2lkGDcgASgNEhMKC01FQktJ",
+            "TE1QTUdBGDggASgNEiEKC0ZETUVFREVKQ0NQGDkgASgLMgwuQ0ZESERCTklI",
+            "UEwSIQoLR0VIRUpQUENCTEsYOiABKAsyDC5BQkRPS09GRUhNSBITCgtPS01I",
+            "S0JPSkJPQhg7IAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ABDOKOFEHMHReflection.Descriptor, global::March7thHoney.Proto.AttackDamagePropertyReflection.Descriptor, global::March7thHoney.Proto.AvatarPropertyReflection.Descriptor, global::March7thHoney.Proto.AvatarSkillTreeReflection.Descriptor, global::March7thHoney.Proto.AvatarTypeReflection.Descriptor, global::March7thHoney.Proto.BattleRelicReflection.Descriptor, global::March7thHoney.Proto.CFDHDBNIHPLReflection.Descriptor, global::March7thHoney.Proto.EPNAONKOHBOReflection.Descriptor, global::March7thHoney.Proto.EquipmentPropertyReflection.Descriptor, global::March7thHoney.Proto.SkillUsePropertyReflection.Descriptor, global::March7thHoney.Proto.SpAddSourceReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AvatarBattleInfo), global::March7thHoney.Proto.AvatarBattleInfo.Parser, new[]{ "InitialStatus", "AttackTypeMaxDamage", "AvatarSkill", "AttackTypeBreakDamage", "NOGHNMCDDAI", "ALJIJBKEFDD", "AvatarEquipment", "AvatarStatus", "GEHEJPPCBLK", "SkillTimes", "Relics", "FDMEEDEJCCP", "SpAddSource", "AttackTypeDamage", "DelayCumulate", "TotalShieldDamage", "DIALJMAHFBO", "StageType", "StageId", "TotalSpCost", "EnhancedId", "AssistUid", "BreakTimes", "NBCDOMJBAFM", "ExtraTurns", "TotalTurns", "TotalHeal", "CNEMKKIBFEA", "EBMFCBKHIEH", "FJNKOPMOLDE", "AvatarLevel", "PECMOGDLCDC", "PNJDPNHNBDA", "NEDCAKEMHLF", "EEOGKOKOPNB", "TotalSpAdd", "FLKCFJBCIOM", "TotalShieldTaken", "LFLKOGDPLKD", "TotalDamageTaken", "TotalBpCost", "Id", "MEBKILMPMGA", "DieTimes", "TotalDamage", "DBLABFODNMJ", "TotalShield", "ReviveTimes", "AvatarType", "GPLELDEIEKO", "TotalBreakDamage", "CNLEPLAEEHF", "AvatarPromotion", "TotalHpRecover", "DEICGFKIMMO", "LAOEEGEELDK", "JDHDJFCKBGD", "AvatarRank" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AvatarBattleInfo), global::March7thHoney.Proto.AvatarBattleInfo.Parser, new[]{ "AvatarType", "Id", "AvatarLevel", "AvatarRank", "AvatarPromotion", "AvatarStatus", "AvatarSkill", "AvatarEquipment", "TotalTurns", "TotalDamage", "TotalHeal", "TotalDamageTaken", "TotalHpRecover", "TotalSpCost", "StageId", "StageType", "TotalBreakDamage", "AttackTypeDamage", "AttackTypeBreakDamage", "AttackTypeMaxDamage", "SkillTimes", "DelayCumulate", "TotalSpAdd", "SpAddSource", "TotalBpCost", "DieTimes", "ReviveTimes", "BreakTimes", "ExtraTurns", "TotalShield", "TotalShieldTaken", "TotalShieldDamage", "InitialStatus", "Relics", "AssistUid", "NOGHNMCDDAI", "DEICGFKIMMO", "GPLELDEIEKO", "CNEMKKIBFEA", "EEOGKOKOPNB", "ALJIJBKEFDD", "CNLEPLAEEHF", "JDHDJFCKBGD", "DIALJMAHFBO", "LAOEEGEELDK", "LFLKOGDPLKD", "EBMFCBKHIEH", "DBLABFODNMJ", "FJNKOPMOLDE", "FLKCFJBCIOM", "PNJDPNHNBDA", "NEDCAKEMHLF", "NBCDOMJBAFM", "PECMOGDLCDC", "EnhancedId", "MEBKILMPMGA", "FDMEEDEJCCP", "GEHEJPPCBLK", "OKMHKBOJBOB" }, null, null, null, null)
           }));
     }
     #endregion
@@ -111,64 +111,65 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public AvatarBattleInfo(AvatarBattleInfo other) : this() {
-      initialStatus_ = other.initialStatus_ != null ? other.initialStatus_.Clone() : null;
-      attackTypeMaxDamage_ = other.attackTypeMaxDamage_.Clone();
-      avatarSkill_ = other.avatarSkill_.Clone();
-      attackTypeBreakDamage_ = other.attackTypeBreakDamage_.Clone();
-      nOGHNMCDDAI_ = other.nOGHNMCDDAI_.Clone();
-      aLJIJBKEFDD_ = other.aLJIJBKEFDD_.Clone();
-      avatarEquipment_ = other.avatarEquipment_.Clone();
-      avatarStatus_ = other.avatarStatus_ != null ? other.avatarStatus_.Clone() : null;
-      gEHEJPPCBLK_ = other.gEHEJPPCBLK_ != null ? other.gEHEJPPCBLK_.Clone() : null;
-      skillTimes_ = other.skillTimes_.Clone();
-      relics_ = other.relics_.Clone();
-      fDMEEDEJCCP_ = other.fDMEEDEJCCP_ != null ? other.fDMEEDEJCCP_.Clone() : null;
-      spAddSource_ = other.spAddSource_.Clone();
-      attackTypeDamage_ = other.attackTypeDamage_.Clone();
-      delayCumulate_ = other.delayCumulate_;
-      totalShieldDamage_ = other.totalShieldDamage_;
-      dIALJMAHFBO_ = other.dIALJMAHFBO_;
-      stageType_ = other.stageType_;
-      stageId_ = other.stageId_;
-      totalSpCost_ = other.totalSpCost_;
-      enhancedId_ = other.enhancedId_;
-      assistUid_ = other.assistUid_;
-      breakTimes_ = other.breakTimes_;
-      nBCDOMJBAFM_ = other.nBCDOMJBAFM_;
-      extraTurns_ = other.extraTurns_;
-      totalTurns_ = other.totalTurns_;
-      totalHeal_ = other.totalHeal_;
-      cNEMKKIBFEA_ = other.cNEMKKIBFEA_;
-      eBMFCBKHIEH_ = other.eBMFCBKHIEH_;
-      fJNKOPMOLDE_ = other.fJNKOPMOLDE_;
+      avatarType_ = other.avatarType_;
+      id_ = other.id_;
       avatarLevel_ = other.avatarLevel_;
-      pECMOGDLCDC_ = other.pECMOGDLCDC_;
+      avatarRank_ = other.avatarRank_;
+      avatarPromotion_ = other.avatarPromotion_;
+      avatarStatus_ = other.avatarStatus_ != null ? other.avatarStatus_.Clone() : null;
+      avatarSkill_ = other.avatarSkill_.Clone();
+      avatarEquipment_ = other.avatarEquipment_.Clone();
+      totalTurns_ = other.totalTurns_;
+      totalDamage_ = other.totalDamage_;
+      totalHeal_ = other.totalHeal_;
+      totalDamageTaken_ = other.totalDamageTaken_;
+      totalHpRecover_ = other.totalHpRecover_;
+      totalSpCost_ = other.totalSpCost_;
+      stageId_ = other.stageId_;
+      stageType_ = other.stageType_;
+      totalBreakDamage_ = other.totalBreakDamage_;
+      attackTypeDamage_ = other.attackTypeDamage_.Clone();
+      attackTypeBreakDamage_ = other.attackTypeBreakDamage_.Clone();
+      attackTypeMaxDamage_ = other.attackTypeMaxDamage_.Clone();
+      skillTimes_ = other.skillTimes_.Clone();
+      delayCumulate_ = other.delayCumulate_;
+      totalSpAdd_ = other.totalSpAdd_;
+      spAddSource_ = other.spAddSource_.Clone();
+      totalBpCost_ = other.totalBpCost_;
+      dieTimes_ = other.dieTimes_;
+      reviveTimes_ = other.reviveTimes_;
+      breakTimes_ = other.breakTimes_;
+      extraTurns_ = other.extraTurns_;
+      totalShield_ = other.totalShield_;
+      totalShieldTaken_ = other.totalShieldTaken_;
+      totalShieldDamage_ = other.totalShieldDamage_;
+      initialStatus_ = other.initialStatus_ != null ? other.initialStatus_.Clone() : null;
+      relics_ = other.relics_.Clone();
+      assistUid_ = other.assistUid_;
+      nOGHNMCDDAI_ = other.nOGHNMCDDAI_.Clone();
+      dEICGFKIMMO_ = other.dEICGFKIMMO_;
+      gPLELDEIEKO_ = other.gPLELDEIEKO_;
+      cNEMKKIBFEA_ = other.cNEMKKIBFEA_;
+      eEOGKOKOPNB_ = other.eEOGKOKOPNB_;
+      aLJIJBKEFDD_ = other.aLJIJBKEFDD_.Clone();
+      cNLEPLAEEHF_ = other.cNLEPLAEEHF_;
+      jDHDJFCKBGD_ = other.jDHDJFCKBGD_;
+      dIALJMAHFBO_ = other.dIALJMAHFBO_;
+      lAOEEGEELDK_ = other.lAOEEGEELDK_;
+      lFLKOGDPLKD_ = other.lFLKOGDPLKD_;
+      eBMFCBKHIEH_ = other.eBMFCBKHIEH_;
+      dBLABFODNMJ_ = other.dBLABFODNMJ_;
+      fJNKOPMOLDE_ = other.fJNKOPMOLDE_;
+      fLKCFJBCIOM_ = other.fLKCFJBCIOM_;
       pNJDPNHNBDA_ = other.pNJDPNHNBDA_;
       nEDCAKEMHLF_ = other.nEDCAKEMHLF_;
-      eEOGKOKOPNB_ = other.eEOGKOKOPNB_;
-      totalSpAdd_ = other.totalSpAdd_;
-      fLKCFJBCIOM_ = other.fLKCFJBCIOM_;
-      totalShieldTaken_ = other.totalShieldTaken_;
-      lFLKOGDPLKD_ = other.lFLKOGDPLKD_;
-      totalDamageTaken_ = other.totalDamageTaken_;
-      totalBpCost_ = other.totalBpCost_;
-      id_ = other.id_;
+      nBCDOMJBAFM_ = other.nBCDOMJBAFM_;
+      pECMOGDLCDC_ = other.pECMOGDLCDC_;
+      enhancedId_ = other.enhancedId_;
       mEBKILMPMGA_ = other.mEBKILMPMGA_;
-      dieTimes_ = other.dieTimes_;
-      totalDamage_ = other.totalDamage_;
-      dBLABFODNMJ_ = other.dBLABFODNMJ_;
-      totalShield_ = other.totalShield_;
-      reviveTimes_ = other.reviveTimes_;
-      avatarType_ = other.avatarType_;
-      gPLELDEIEKO_ = other.gPLELDEIEKO_;
-      totalBreakDamage_ = other.totalBreakDamage_;
-      cNLEPLAEEHF_ = other.cNLEPLAEEHF_;
-      avatarPromotion_ = other.avatarPromotion_;
-      totalHpRecover_ = other.totalHpRecover_;
-      dEICGFKIMMO_ = other.dEICGFKIMMO_;
-      lAOEEGEELDK_ = other.lAOEEGEELDK_;
-      jDHDJFCKBGD_ = other.jDHDJFCKBGD_;
-      avatarRank_ = other.avatarRank_;
+      fDMEEDEJCCP_ = other.fDMEEDEJCCP_ != null ? other.fDMEEDEJCCP_.Clone() : null;
+      gEHEJPPCBLK_ = other.gEHEJPPCBLK_ != null ? other.gEHEJPPCBLK_.Clone() : null;
+      oKMHKBOJBOB_ = other.oKMHKBOJBOB_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -178,353 +179,27 @@ namespace March7thHoney.Proto {
       return new AvatarBattleInfo(this);
     }
 
-    /// <summary>Field number for the "initial_status" field.</summary>
-    public const int InitialStatusFieldNumber = 33;
-    private global::March7thHoney.Proto.AvatarProperty initialStatus_;
+    /// <summary>Field number for the "avatar_type" field.</summary>
+    public const int AvatarTypeFieldNumber = 1;
+    private global::March7thHoney.Proto.AvatarType avatarType_ = global::March7thHoney.Proto.AvatarType.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.AvatarProperty InitialStatus {
-      get { return initialStatus_; }
+    public global::March7thHoney.Proto.AvatarType AvatarType {
+      get { return avatarType_; }
       set {
-        initialStatus_ = value;
+        avatarType_ = value;
       }
     }
 
-    /// <summary>Field number for the "attack_type_max_damage" field.</summary>
-    public const int AttackTypeMaxDamageFieldNumber = 20;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AttackDamageProperty> _repeated_attackTypeMaxDamage_codec
-        = pb::FieldCodec.ForMessage(162, global::March7thHoney.Proto.AttackDamageProperty.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty> attackTypeMaxDamage_ = new pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty>();
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 2;
+    private uint id_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty> AttackTypeMaxDamage {
-      get { return attackTypeMaxDamage_; }
-    }
-
-    /// <summary>Field number for the "avatar_skill" field.</summary>
-    public const int AvatarSkillFieldNumber = 7;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AvatarSkillTree> _repeated_avatarSkill_codec
-        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.AvatarSkillTree.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AvatarSkillTree> avatarSkill_ = new pbc::RepeatedField<global::March7thHoney.Proto.AvatarSkillTree>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.AvatarSkillTree> AvatarSkill {
-      get { return avatarSkill_; }
-    }
-
-    /// <summary>Field number for the "attack_type_break_damage" field.</summary>
-    public const int AttackTypeBreakDamageFieldNumber = 19;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AttackDamageProperty> _repeated_attackTypeBreakDamage_codec
-        = pb::FieldCodec.ForMessage(154, global::March7thHoney.Proto.AttackDamageProperty.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty> attackTypeBreakDamage_ = new pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty> AttackTypeBreakDamage {
-      get { return attackTypeBreakDamage_; }
-    }
-
-    /// <summary>Field number for the "NOGHNMCDDAI" field.</summary>
-    public const int NOGHNMCDDAIFieldNumber = 36;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AttackDamageProperty> _repeated_nOGHNMCDDAI_codec
-        = pb::FieldCodec.ForMessage(290, global::March7thHoney.Proto.AttackDamageProperty.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty> nOGHNMCDDAI_ = new pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty> NOGHNMCDDAI {
-      get { return nOGHNMCDDAI_; }
-    }
-
-    /// <summary>Field number for the "ALJIJBKEFDD" field.</summary>
-    public const int ALJIJBKEFDDFieldNumber = 41;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EPNAONKOHBO> _repeated_aLJIJBKEFDD_codec
-        = pb::FieldCodec.ForMessage(330, global::March7thHoney.Proto.EPNAONKOHBO.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EPNAONKOHBO> aLJIJBKEFDD_ = new pbc::RepeatedField<global::March7thHoney.Proto.EPNAONKOHBO>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.EPNAONKOHBO> ALJIJBKEFDD {
-      get { return aLJIJBKEFDD_; }
-    }
-
-    /// <summary>Field number for the "avatar_equipment" field.</summary>
-    public const int AvatarEquipmentFieldNumber = 8;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EquipmentProperty> _repeated_avatarEquipment_codec
-        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.EquipmentProperty.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EquipmentProperty> avatarEquipment_ = new pbc::RepeatedField<global::March7thHoney.Proto.EquipmentProperty>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.EquipmentProperty> AvatarEquipment {
-      get { return avatarEquipment_; }
-    }
-
-    /// <summary>Field number for the "avatar_status" field.</summary>
-    public const int AvatarStatusFieldNumber = 6;
-    private global::March7thHoney.Proto.AvatarProperty avatarStatus_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.AvatarProperty AvatarStatus {
-      get { return avatarStatus_; }
+    public uint Id {
+      get { return id_; }
       set {
-        avatarStatus_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "GEHEJPPCBLK" field.</summary>
-    public const int GEHEJPPCBLKFieldNumber = 58;
-    private global::March7thHoney.Proto.ABDOKOFEHMH gEHEJPPCBLK_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.ABDOKOFEHMH GEHEJPPCBLK {
-      get { return gEHEJPPCBLK_; }
-      set {
-        gEHEJPPCBLK_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "skill_times" field.</summary>
-    public const int SkillTimesFieldNumber = 21;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.SkillUseProperty> _repeated_skillTimes_codec
-        = pb::FieldCodec.ForMessage(170, global::March7thHoney.Proto.SkillUseProperty.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.SkillUseProperty> skillTimes_ = new pbc::RepeatedField<global::March7thHoney.Proto.SkillUseProperty>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.SkillUseProperty> SkillTimes {
-      get { return skillTimes_; }
-    }
-
-    /// <summary>Field number for the "relics" field.</summary>
-    public const int RelicsFieldNumber = 34;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BattleRelic> _repeated_relics_codec
-        = pb::FieldCodec.ForMessage(274, global::March7thHoney.Proto.BattleRelic.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BattleRelic> relics_ = new pbc::RepeatedField<global::March7thHoney.Proto.BattleRelic>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.BattleRelic> Relics {
-      get { return relics_; }
-    }
-
-    /// <summary>Field number for the "FDMEEDEJCCP" field.</summary>
-    public const int FDMEEDEJCCPFieldNumber = 57;
-    private global::March7thHoney.Proto.CFDHDBNIHPL fDMEEDEJCCP_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.CFDHDBNIHPL FDMEEDEJCCP {
-      get { return fDMEEDEJCCP_; }
-      set {
-        fDMEEDEJCCP_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "sp_add_source" field.</summary>
-    public const int SpAddSourceFieldNumber = 24;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.SpAddSource> _repeated_spAddSource_codec
-        = pb::FieldCodec.ForMessage(194, global::March7thHoney.Proto.SpAddSource.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.SpAddSource> spAddSource_ = new pbc::RepeatedField<global::March7thHoney.Proto.SpAddSource>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.SpAddSource> SpAddSource {
-      get { return spAddSource_; }
-    }
-
-    /// <summary>Field number for the "attack_type_damage" field.</summary>
-    public const int AttackTypeDamageFieldNumber = 18;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AttackDamageProperty> _repeated_attackTypeDamage_codec
-        = pb::FieldCodec.ForMessage(146, global::March7thHoney.Proto.AttackDamageProperty.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty> attackTypeDamage_ = new pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty> AttackTypeDamage {
-      get { return attackTypeDamage_; }
-    }
-
-    /// <summary>Field number for the "delay_cumulate" field.</summary>
-    public const int DelayCumulateFieldNumber = 22;
-    private double delayCumulate_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public double DelayCumulate {
-      get { return delayCumulate_; }
-      set {
-        delayCumulate_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "total_shield_damage" field.</summary>
-    public const int TotalShieldDamageFieldNumber = 32;
-    private double totalShieldDamage_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public double TotalShieldDamage {
-      get { return totalShieldDamage_; }
-      set {
-        totalShieldDamage_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DIALJMAHFBO" field.</summary>
-    public const int DIALJMAHFBOFieldNumber = 44;
-    private double dIALJMAHFBO_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public double DIALJMAHFBO {
-      get { return dIALJMAHFBO_; }
-      set {
-        dIALJMAHFBO_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "stage_type" field.</summary>
-    public const int StageTypeFieldNumber = 16;
-    private uint stageType_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint StageType {
-      get { return stageType_; }
-      set {
-        stageType_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "stage_id" field.</summary>
-    public const int StageIdFieldNumber = 15;
-    private uint stageId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint StageId {
-      get { return stageId_; }
-      set {
-        stageId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "total_sp_cost" field.</summary>
-    public const int TotalSpCostFieldNumber = 14;
-    private double totalSpCost_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public double TotalSpCost {
-      get { return totalSpCost_; }
-      set {
-        totalSpCost_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "enhanced_id" field.</summary>
-    public const int EnhancedIdFieldNumber = 55;
-    private uint enhancedId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint EnhancedId {
-      get { return enhancedId_; }
-      set {
-        enhancedId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "assist_uid" field.</summary>
-    public const int AssistUidFieldNumber = 35;
-    private uint assistUid_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint AssistUid {
-      get { return assistUid_; }
-      set {
-        assistUid_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "break_times" field.</summary>
-    public const int BreakTimesFieldNumber = 28;
-    private uint breakTimes_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint BreakTimes {
-      get { return breakTimes_; }
-      set {
-        breakTimes_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "NBCDOMJBAFM" field.</summary>
-    public const int NBCDOMJBAFMFieldNumber = 53;
-    private uint nBCDOMJBAFM_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint NBCDOMJBAFM {
-      get { return nBCDOMJBAFM_; }
-      set {
-        nBCDOMJBAFM_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "extra_turns" field.</summary>
-    public const int ExtraTurnsFieldNumber = 29;
-    private uint extraTurns_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint ExtraTurns {
-      get { return extraTurns_; }
-      set {
-        extraTurns_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "total_turns" field.</summary>
-    public const int TotalTurnsFieldNumber = 9;
-    private uint totalTurns_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint TotalTurns {
-      get { return totalTurns_; }
-      set {
-        totalTurns_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "total_heal" field.</summary>
-    public const int TotalHealFieldNumber = 11;
-    private double totalHeal_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public double TotalHeal {
-      get { return totalHeal_; }
-      set {
-        totalHeal_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "CNEMKKIBFEA" field.</summary>
-    public const int CNEMKKIBFEAFieldNumber = 39;
-    private double cNEMKKIBFEA_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public double CNEMKKIBFEA {
-      get { return cNEMKKIBFEA_; }
-      set {
-        cNEMKKIBFEA_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "EBMFCBKHIEH" field.</summary>
-    public const int EBMFCBKHIEHFieldNumber = 47;
-    private double eBMFCBKHIEH_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public double EBMFCBKHIEH {
-      get { return eBMFCBKHIEH_; }
-      set {
-        eBMFCBKHIEH_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "FJNKOPMOLDE" field.</summary>
-    public const int FJNKOPMOLDEFieldNumber = 49;
-    private uint fJNKOPMOLDE_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint FJNKOPMOLDE {
-      get { return fJNKOPMOLDE_; }
-      set {
-        fJNKOPMOLDE_ = value;
+        id_ = value;
       }
     }
 
@@ -540,15 +215,557 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "PECMOGDLCDC" field.</summary>
-    public const int PECMOGDLCDCFieldNumber = 54;
-    private uint pECMOGDLCDC_;
+    /// <summary>Field number for the "avatar_rank" field.</summary>
+    public const int AvatarRankFieldNumber = 4;
+    private uint avatarRank_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PECMOGDLCDC {
-      get { return pECMOGDLCDC_; }
+    public uint AvatarRank {
+      get { return avatarRank_; }
       set {
-        pECMOGDLCDC_ = value;
+        avatarRank_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "avatar_promotion" field.</summary>
+    public const int AvatarPromotionFieldNumber = 5;
+    private uint avatarPromotion_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint AvatarPromotion {
+      get { return avatarPromotion_; }
+      set {
+        avatarPromotion_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "avatar_status" field.</summary>
+    public const int AvatarStatusFieldNumber = 6;
+    private global::March7thHoney.Proto.AvatarProperty avatarStatus_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.AvatarProperty AvatarStatus {
+      get { return avatarStatus_; }
+      set {
+        avatarStatus_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "avatar_skill" field.</summary>
+    public const int AvatarSkillFieldNumber = 7;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AvatarSkillTree> _repeated_avatarSkill_codec
+        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.AvatarSkillTree.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AvatarSkillTree> avatarSkill_ = new pbc::RepeatedField<global::March7thHoney.Proto.AvatarSkillTree>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.AvatarSkillTree> AvatarSkill {
+      get { return avatarSkill_; }
+    }
+
+    /// <summary>Field number for the "avatar_equipment" field.</summary>
+    public const int AvatarEquipmentFieldNumber = 8;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EquipmentProperty> _repeated_avatarEquipment_codec
+        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.EquipmentProperty.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EquipmentProperty> avatarEquipment_ = new pbc::RepeatedField<global::March7thHoney.Proto.EquipmentProperty>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.EquipmentProperty> AvatarEquipment {
+      get { return avatarEquipment_; }
+    }
+
+    /// <summary>Field number for the "total_turns" field.</summary>
+    public const int TotalTurnsFieldNumber = 9;
+    private uint totalTurns_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint TotalTurns {
+      get { return totalTurns_; }
+      set {
+        totalTurns_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "total_damage" field.</summary>
+    public const int TotalDamageFieldNumber = 10;
+    private double totalDamage_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double TotalDamage {
+      get { return totalDamage_; }
+      set {
+        totalDamage_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "total_heal" field.</summary>
+    public const int TotalHealFieldNumber = 11;
+    private double totalHeal_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double TotalHeal {
+      get { return totalHeal_; }
+      set {
+        totalHeal_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "total_damage_taken" field.</summary>
+    public const int TotalDamageTakenFieldNumber = 12;
+    private double totalDamageTaken_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double TotalDamageTaken {
+      get { return totalDamageTaken_; }
+      set {
+        totalDamageTaken_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "total_hp_recover" field.</summary>
+    public const int TotalHpRecoverFieldNumber = 13;
+    private double totalHpRecover_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double TotalHpRecover {
+      get { return totalHpRecover_; }
+      set {
+        totalHpRecover_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "total_sp_cost" field.</summary>
+    public const int TotalSpCostFieldNumber = 14;
+    private double totalSpCost_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double TotalSpCost {
+      get { return totalSpCost_; }
+      set {
+        totalSpCost_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "stage_id" field.</summary>
+    public const int StageIdFieldNumber = 15;
+    private uint stageId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint StageId {
+      get { return stageId_; }
+      set {
+        stageId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "stage_type" field.</summary>
+    public const int StageTypeFieldNumber = 16;
+    private uint stageType_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint StageType {
+      get { return stageType_; }
+      set {
+        stageType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "total_break_damage" field.</summary>
+    public const int TotalBreakDamageFieldNumber = 17;
+    private double totalBreakDamage_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double TotalBreakDamage {
+      get { return totalBreakDamage_; }
+      set {
+        totalBreakDamage_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "attack_type_damage" field.</summary>
+    public const int AttackTypeDamageFieldNumber = 18;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AttackDamageProperty> _repeated_attackTypeDamage_codec
+        = pb::FieldCodec.ForMessage(146, global::March7thHoney.Proto.AttackDamageProperty.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty> attackTypeDamage_ = new pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty> AttackTypeDamage {
+      get { return attackTypeDamage_; }
+    }
+
+    /// <summary>Field number for the "attack_type_break_damage" field.</summary>
+    public const int AttackTypeBreakDamageFieldNumber = 19;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AttackDamageProperty> _repeated_attackTypeBreakDamage_codec
+        = pb::FieldCodec.ForMessage(154, global::March7thHoney.Proto.AttackDamageProperty.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty> attackTypeBreakDamage_ = new pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty> AttackTypeBreakDamage {
+      get { return attackTypeBreakDamage_; }
+    }
+
+    /// <summary>Field number for the "attack_type_max_damage" field.</summary>
+    public const int AttackTypeMaxDamageFieldNumber = 20;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AttackDamageProperty> _repeated_attackTypeMaxDamage_codec
+        = pb::FieldCodec.ForMessage(162, global::March7thHoney.Proto.AttackDamageProperty.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty> attackTypeMaxDamage_ = new pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty> AttackTypeMaxDamage {
+      get { return attackTypeMaxDamage_; }
+    }
+
+    /// <summary>Field number for the "skill_times" field.</summary>
+    public const int SkillTimesFieldNumber = 21;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.SkillUseProperty> _repeated_skillTimes_codec
+        = pb::FieldCodec.ForMessage(170, global::March7thHoney.Proto.SkillUseProperty.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.SkillUseProperty> skillTimes_ = new pbc::RepeatedField<global::March7thHoney.Proto.SkillUseProperty>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.SkillUseProperty> SkillTimes {
+      get { return skillTimes_; }
+    }
+
+    /// <summary>Field number for the "delay_cumulate" field.</summary>
+    public const int DelayCumulateFieldNumber = 22;
+    private double delayCumulate_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double DelayCumulate {
+      get { return delayCumulate_; }
+      set {
+        delayCumulate_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "total_sp_add" field.</summary>
+    public const int TotalSpAddFieldNumber = 23;
+    private uint totalSpAdd_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint TotalSpAdd {
+      get { return totalSpAdd_; }
+      set {
+        totalSpAdd_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "sp_add_source" field.</summary>
+    public const int SpAddSourceFieldNumber = 24;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.SpAddSource> _repeated_spAddSource_codec
+        = pb::FieldCodec.ForMessage(194, global::March7thHoney.Proto.SpAddSource.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.SpAddSource> spAddSource_ = new pbc::RepeatedField<global::March7thHoney.Proto.SpAddSource>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.SpAddSource> SpAddSource {
+      get { return spAddSource_; }
+    }
+
+    /// <summary>Field number for the "total_bp_cost" field.</summary>
+    public const int TotalBpCostFieldNumber = 25;
+    private uint totalBpCost_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint TotalBpCost {
+      get { return totalBpCost_; }
+      set {
+        totalBpCost_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "die_times" field.</summary>
+    public const int DieTimesFieldNumber = 26;
+    private uint dieTimes_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint DieTimes {
+      get { return dieTimes_; }
+      set {
+        dieTimes_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "revive_times" field.</summary>
+    public const int ReviveTimesFieldNumber = 27;
+    private uint reviveTimes_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint ReviveTimes {
+      get { return reviveTimes_; }
+      set {
+        reviveTimes_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "break_times" field.</summary>
+    public const int BreakTimesFieldNumber = 28;
+    private uint breakTimes_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint BreakTimes {
+      get { return breakTimes_; }
+      set {
+        breakTimes_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "extra_turns" field.</summary>
+    public const int ExtraTurnsFieldNumber = 29;
+    private uint extraTurns_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint ExtraTurns {
+      get { return extraTurns_; }
+      set {
+        extraTurns_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "total_shield" field.</summary>
+    public const int TotalShieldFieldNumber = 30;
+    private double totalShield_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double TotalShield {
+      get { return totalShield_; }
+      set {
+        totalShield_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "total_shield_taken" field.</summary>
+    public const int TotalShieldTakenFieldNumber = 31;
+    private double totalShieldTaken_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double TotalShieldTaken {
+      get { return totalShieldTaken_; }
+      set {
+        totalShieldTaken_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "total_shield_damage" field.</summary>
+    public const int TotalShieldDamageFieldNumber = 32;
+    private double totalShieldDamage_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double TotalShieldDamage {
+      get { return totalShieldDamage_; }
+      set {
+        totalShieldDamage_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "initial_status" field.</summary>
+    public const int InitialStatusFieldNumber = 33;
+    private global::March7thHoney.Proto.AvatarProperty initialStatus_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.AvatarProperty InitialStatus {
+      get { return initialStatus_; }
+      set {
+        initialStatus_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "relics" field.</summary>
+    public const int RelicsFieldNumber = 34;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.BattleRelic> _repeated_relics_codec
+        = pb::FieldCodec.ForMessage(274, global::March7thHoney.Proto.BattleRelic.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.BattleRelic> relics_ = new pbc::RepeatedField<global::March7thHoney.Proto.BattleRelic>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.BattleRelic> Relics {
+      get { return relics_; }
+    }
+
+    /// <summary>Field number for the "assist_uid" field.</summary>
+    public const int AssistUidFieldNumber = 35;
+    private uint assistUid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint AssistUid {
+      get { return assistUid_; }
+      set {
+        assistUid_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "NOGHNMCDDAI" field.</summary>
+    public const int NOGHNMCDDAIFieldNumber = 36;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AttackDamageProperty> _repeated_nOGHNMCDDAI_codec
+        = pb::FieldCodec.ForMessage(290, global::March7thHoney.Proto.AttackDamageProperty.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty> nOGHNMCDDAI_ = new pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.AttackDamageProperty> NOGHNMCDDAI {
+      get { return nOGHNMCDDAI_; }
+    }
+
+    /// <summary>Field number for the "DEICGFKIMMO" field.</summary>
+    public const int DEICGFKIMMOFieldNumber = 37;
+    private double dEICGFKIMMO_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double DEICGFKIMMO {
+      get { return dEICGFKIMMO_; }
+      set {
+        dEICGFKIMMO_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "GPLELDEIEKO" field.</summary>
+    public const int GPLELDEIEKOFieldNumber = 38;
+    private double gPLELDEIEKO_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double GPLELDEIEKO {
+      get { return gPLELDEIEKO_; }
+      set {
+        gPLELDEIEKO_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "CNEMKKIBFEA" field.</summary>
+    public const int CNEMKKIBFEAFieldNumber = 39;
+    private double cNEMKKIBFEA_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double CNEMKKIBFEA {
+      get { return cNEMKKIBFEA_; }
+      set {
+        cNEMKKIBFEA_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "EEOGKOKOPNB" field.</summary>
+    public const int EEOGKOKOPNBFieldNumber = 40;
+    private double eEOGKOKOPNB_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double EEOGKOKOPNB {
+      get { return eEOGKOKOPNB_; }
+      set {
+        eEOGKOKOPNB_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "ALJIJBKEFDD" field.</summary>
+    public const int ALJIJBKEFDDFieldNumber = 41;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EPNAONKOHBO> _repeated_aLJIJBKEFDD_codec
+        = pb::FieldCodec.ForMessage(330, global::March7thHoney.Proto.EPNAONKOHBO.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EPNAONKOHBO> aLJIJBKEFDD_ = new pbc::RepeatedField<global::March7thHoney.Proto.EPNAONKOHBO>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.EPNAONKOHBO> ALJIJBKEFDD {
+      get { return aLJIJBKEFDD_; }
+    }
+
+    /// <summary>Field number for the "CNLEPLAEEHF" field.</summary>
+    public const int CNLEPLAEEHFFieldNumber = 42;
+    private uint cNLEPLAEEHF_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint CNLEPLAEEHF {
+      get { return cNLEPLAEEHF_; }
+      set {
+        cNLEPLAEEHF_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "JDHDJFCKBGD" field.</summary>
+    public const int JDHDJFCKBGDFieldNumber = 43;
+    private uint jDHDJFCKBGD_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint JDHDJFCKBGD {
+      get { return jDHDJFCKBGD_; }
+      set {
+        jDHDJFCKBGD_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "DIALJMAHFBO" field.</summary>
+    public const int DIALJMAHFBOFieldNumber = 44;
+    private double dIALJMAHFBO_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double DIALJMAHFBO {
+      get { return dIALJMAHFBO_; }
+      set {
+        dIALJMAHFBO_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "LAOEEGEELDK" field.</summary>
+    public const int LAOEEGEELDKFieldNumber = 45;
+    private double lAOEEGEELDK_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double LAOEEGEELDK {
+      get { return lAOEEGEELDK_; }
+      set {
+        lAOEEGEELDK_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "LFLKOGDPLKD" field.</summary>
+    public const int LFLKOGDPLKDFieldNumber = 46;
+    private double lFLKOGDPLKD_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double LFLKOGDPLKD {
+      get { return lFLKOGDPLKD_; }
+      set {
+        lFLKOGDPLKD_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "EBMFCBKHIEH" field.</summary>
+    public const int EBMFCBKHIEHFieldNumber = 47;
+    private double eBMFCBKHIEH_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double EBMFCBKHIEH {
+      get { return eBMFCBKHIEH_; }
+      set {
+        eBMFCBKHIEH_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "DBLABFODNMJ" field.</summary>
+    public const int DBLABFODNMJFieldNumber = 48;
+    private double dBLABFODNMJ_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double DBLABFODNMJ {
+      get { return dBLABFODNMJ_; }
+      set {
+        dBLABFODNMJ_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "FJNKOPMOLDE" field.</summary>
+    public const int FJNKOPMOLDEFieldNumber = 49;
+    private uint fJNKOPMOLDE_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint FJNKOPMOLDE {
+      get { return fJNKOPMOLDE_; }
+      set {
+        fJNKOPMOLDE_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "FLKCFJBCIOM" field.</summary>
+    public const int FLKCFJBCIOMFieldNumber = 50;
+    private uint fLKCFJBCIOM_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint FLKCFJBCIOM {
+      get { return fLKCFJBCIOM_; }
+      set {
+        fLKCFJBCIOM_ = value;
       }
     }
 
@@ -576,99 +793,39 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "EEOGKOKOPNB" field.</summary>
-    public const int EEOGKOKOPNBFieldNumber = 40;
-    private double eEOGKOKOPNB_;
+    /// <summary>Field number for the "NBCDOMJBAFM" field.</summary>
+    public const int NBCDOMJBAFMFieldNumber = 53;
+    private uint nBCDOMJBAFM_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public double EEOGKOKOPNB {
-      get { return eEOGKOKOPNB_; }
+    public uint NBCDOMJBAFM {
+      get { return nBCDOMJBAFM_; }
       set {
-        eEOGKOKOPNB_ = value;
+        nBCDOMJBAFM_ = value;
       }
     }
 
-    /// <summary>Field number for the "total_sp_add" field.</summary>
-    public const int TotalSpAddFieldNumber = 23;
-    private uint totalSpAdd_;
+    /// <summary>Field number for the "PECMOGDLCDC" field.</summary>
+    public const int PECMOGDLCDCFieldNumber = 54;
+    private uint pECMOGDLCDC_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint TotalSpAdd {
-      get { return totalSpAdd_; }
+    public uint PECMOGDLCDC {
+      get { return pECMOGDLCDC_; }
       set {
-        totalSpAdd_ = value;
+        pECMOGDLCDC_ = value;
       }
     }
 
-    /// <summary>Field number for the "FLKCFJBCIOM" field.</summary>
-    public const int FLKCFJBCIOMFieldNumber = 50;
-    private uint fLKCFJBCIOM_;
+    /// <summary>Field number for the "enhanced_id" field.</summary>
+    public const int EnhancedIdFieldNumber = 55;
+    private uint enhancedId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint FLKCFJBCIOM {
-      get { return fLKCFJBCIOM_; }
+    public uint EnhancedId {
+      get { return enhancedId_; }
       set {
-        fLKCFJBCIOM_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "total_shield_taken" field.</summary>
-    public const int TotalShieldTakenFieldNumber = 31;
-    private double totalShieldTaken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public double TotalShieldTaken {
-      get { return totalShieldTaken_; }
-      set {
-        totalShieldTaken_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "LFLKOGDPLKD" field.</summary>
-    public const int LFLKOGDPLKDFieldNumber = 46;
-    private double lFLKOGDPLKD_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public double LFLKOGDPLKD {
-      get { return lFLKOGDPLKD_; }
-      set {
-        lFLKOGDPLKD_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "total_damage_taken" field.</summary>
-    public const int TotalDamageTakenFieldNumber = 12;
-    private double totalDamageTaken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public double TotalDamageTaken {
-      get { return totalDamageTaken_; }
-      set {
-        totalDamageTaken_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "total_bp_cost" field.</summary>
-    public const int TotalBpCostFieldNumber = 25;
-    private uint totalBpCost_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint TotalBpCost {
-      get { return totalBpCost_; }
-      set {
-        totalBpCost_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 2;
-    private uint id_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Id {
-      get { return id_; }
-      set {
-        id_ = value;
+        enhancedId_ = value;
       }
     }
 
@@ -684,183 +841,39 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "die_times" field.</summary>
-    public const int DieTimesFieldNumber = 26;
-    private uint dieTimes_;
+    /// <summary>Field number for the "FDMEEDEJCCP" field.</summary>
+    public const int FDMEEDEJCCPFieldNumber = 57;
+    private global::March7thHoney.Proto.CFDHDBNIHPL fDMEEDEJCCP_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint DieTimes {
-      get { return dieTimes_; }
+    public global::March7thHoney.Proto.CFDHDBNIHPL FDMEEDEJCCP {
+      get { return fDMEEDEJCCP_; }
       set {
-        dieTimes_ = value;
+        fDMEEDEJCCP_ = value;
       }
     }
 
-    /// <summary>Field number for the "total_damage" field.</summary>
-    public const int TotalDamageFieldNumber = 10;
-    private double totalDamage_;
+    /// <summary>Field number for the "GEHEJPPCBLK" field.</summary>
+    public const int GEHEJPPCBLKFieldNumber = 58;
+    private global::March7thHoney.Proto.ABDOKOFEHMH gEHEJPPCBLK_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public double TotalDamage {
-      get { return totalDamage_; }
+    public global::March7thHoney.Proto.ABDOKOFEHMH GEHEJPPCBLK {
+      get { return gEHEJPPCBLK_; }
       set {
-        totalDamage_ = value;
+        gEHEJPPCBLK_ = value;
       }
     }
 
-    /// <summary>Field number for the "DBLABFODNMJ" field.</summary>
-    public const int DBLABFODNMJFieldNumber = 48;
-    private double dBLABFODNMJ_;
+    /// <summary>Field number for the "OKMHKBOJBOB" field.</summary>
+    public const int OKMHKBOJBOBFieldNumber = 59;
+    private uint oKMHKBOJBOB_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public double DBLABFODNMJ {
-      get { return dBLABFODNMJ_; }
+    public uint OKMHKBOJBOB {
+      get { return oKMHKBOJBOB_; }
       set {
-        dBLABFODNMJ_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "total_shield" field.</summary>
-    public const int TotalShieldFieldNumber = 30;
-    private double totalShield_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public double TotalShield {
-      get { return totalShield_; }
-      set {
-        totalShield_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "revive_times" field.</summary>
-    public const int ReviveTimesFieldNumber = 27;
-    private uint reviveTimes_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint ReviveTimes {
-      get { return reviveTimes_; }
-      set {
-        reviveTimes_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "avatar_type" field.</summary>
-    public const int AvatarTypeFieldNumber = 1;
-    private global::March7thHoney.Proto.AvatarType avatarType_ = global::March7thHoney.Proto.AvatarType.None;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.AvatarType AvatarType {
-      get { return avatarType_; }
-      set {
-        avatarType_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "GPLELDEIEKO" field.</summary>
-    public const int GPLELDEIEKOFieldNumber = 38;
-    private double gPLELDEIEKO_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public double GPLELDEIEKO {
-      get { return gPLELDEIEKO_; }
-      set {
-        gPLELDEIEKO_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "total_break_damage" field.</summary>
-    public const int TotalBreakDamageFieldNumber = 17;
-    private double totalBreakDamage_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public double TotalBreakDamage {
-      get { return totalBreakDamage_; }
-      set {
-        totalBreakDamage_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "CNLEPLAEEHF" field.</summary>
-    public const int CNLEPLAEEHFFieldNumber = 42;
-    private uint cNLEPLAEEHF_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CNLEPLAEEHF {
-      get { return cNLEPLAEEHF_; }
-      set {
-        cNLEPLAEEHF_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "avatar_promotion" field.</summary>
-    public const int AvatarPromotionFieldNumber = 5;
-    private uint avatarPromotion_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint AvatarPromotion {
-      get { return avatarPromotion_; }
-      set {
-        avatarPromotion_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "total_hp_recover" field.</summary>
-    public const int TotalHpRecoverFieldNumber = 13;
-    private double totalHpRecover_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public double TotalHpRecover {
-      get { return totalHpRecover_; }
-      set {
-        totalHpRecover_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DEICGFKIMMO" field.</summary>
-    public const int DEICGFKIMMOFieldNumber = 37;
-    private double dEICGFKIMMO_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public double DEICGFKIMMO {
-      get { return dEICGFKIMMO_; }
-      set {
-        dEICGFKIMMO_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "LAOEEGEELDK" field.</summary>
-    public const int LAOEEGEELDKFieldNumber = 45;
-    private double lAOEEGEELDK_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public double LAOEEGEELDK {
-      get { return lAOEEGEELDK_; }
-      set {
-        lAOEEGEELDK_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "JDHDJFCKBGD" field.</summary>
-    public const int JDHDJFCKBGDFieldNumber = 43;
-    private uint jDHDJFCKBGD_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint JDHDJFCKBGD {
-      get { return jDHDJFCKBGD_; }
-      set {
-        jDHDJFCKBGD_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "avatar_rank" field.</summary>
-    public const int AvatarRankFieldNumber = 4;
-    private uint avatarRank_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint AvatarRank {
-      get { return avatarRank_; }
-      set {
-        avatarRank_ = value;
+        oKMHKBOJBOB_ = value;
       }
     }
 
@@ -879,64 +892,65 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(InitialStatus, other.InitialStatus)) return false;
-      if(!attackTypeMaxDamage_.Equals(other.attackTypeMaxDamage_)) return false;
-      if(!avatarSkill_.Equals(other.avatarSkill_)) return false;
-      if(!attackTypeBreakDamage_.Equals(other.attackTypeBreakDamage_)) return false;
-      if(!nOGHNMCDDAI_.Equals(other.nOGHNMCDDAI_)) return false;
-      if(!aLJIJBKEFDD_.Equals(other.aLJIJBKEFDD_)) return false;
-      if(!avatarEquipment_.Equals(other.avatarEquipment_)) return false;
-      if (!object.Equals(AvatarStatus, other.AvatarStatus)) return false;
-      if (!object.Equals(GEHEJPPCBLK, other.GEHEJPPCBLK)) return false;
-      if(!skillTimes_.Equals(other.skillTimes_)) return false;
-      if(!relics_.Equals(other.relics_)) return false;
-      if (!object.Equals(FDMEEDEJCCP, other.FDMEEDEJCCP)) return false;
-      if(!spAddSource_.Equals(other.spAddSource_)) return false;
-      if(!attackTypeDamage_.Equals(other.attackTypeDamage_)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(DelayCumulate, other.DelayCumulate)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(TotalShieldDamage, other.TotalShieldDamage)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(DIALJMAHFBO, other.DIALJMAHFBO)) return false;
-      if (StageType != other.StageType) return false;
-      if (StageId != other.StageId) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(TotalSpCost, other.TotalSpCost)) return false;
-      if (EnhancedId != other.EnhancedId) return false;
-      if (AssistUid != other.AssistUid) return false;
-      if (BreakTimes != other.BreakTimes) return false;
-      if (NBCDOMJBAFM != other.NBCDOMJBAFM) return false;
-      if (ExtraTurns != other.ExtraTurns) return false;
-      if (TotalTurns != other.TotalTurns) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(TotalHeal, other.TotalHeal)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(CNEMKKIBFEA, other.CNEMKKIBFEA)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(EBMFCBKHIEH, other.EBMFCBKHIEH)) return false;
-      if (FJNKOPMOLDE != other.FJNKOPMOLDE) return false;
+      if (AvatarType != other.AvatarType) return false;
+      if (Id != other.Id) return false;
       if (AvatarLevel != other.AvatarLevel) return false;
-      if (PECMOGDLCDC != other.PECMOGDLCDC) return false;
+      if (AvatarRank != other.AvatarRank) return false;
+      if (AvatarPromotion != other.AvatarPromotion) return false;
+      if (!object.Equals(AvatarStatus, other.AvatarStatus)) return false;
+      if(!avatarSkill_.Equals(other.avatarSkill_)) return false;
+      if(!avatarEquipment_.Equals(other.avatarEquipment_)) return false;
+      if (TotalTurns != other.TotalTurns) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(TotalDamage, other.TotalDamage)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(TotalHeal, other.TotalHeal)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(TotalDamageTaken, other.TotalDamageTaken)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(TotalHpRecover, other.TotalHpRecover)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(TotalSpCost, other.TotalSpCost)) return false;
+      if (StageId != other.StageId) return false;
+      if (StageType != other.StageType) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(TotalBreakDamage, other.TotalBreakDamage)) return false;
+      if(!attackTypeDamage_.Equals(other.attackTypeDamage_)) return false;
+      if(!attackTypeBreakDamage_.Equals(other.attackTypeBreakDamage_)) return false;
+      if(!attackTypeMaxDamage_.Equals(other.attackTypeMaxDamage_)) return false;
+      if(!skillTimes_.Equals(other.skillTimes_)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(DelayCumulate, other.DelayCumulate)) return false;
+      if (TotalSpAdd != other.TotalSpAdd) return false;
+      if(!spAddSource_.Equals(other.spAddSource_)) return false;
+      if (TotalBpCost != other.TotalBpCost) return false;
+      if (DieTimes != other.DieTimes) return false;
+      if (ReviveTimes != other.ReviveTimes) return false;
+      if (BreakTimes != other.BreakTimes) return false;
+      if (ExtraTurns != other.ExtraTurns) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(TotalShield, other.TotalShield)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(TotalShieldTaken, other.TotalShieldTaken)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(TotalShieldDamage, other.TotalShieldDamage)) return false;
+      if (!object.Equals(InitialStatus, other.InitialStatus)) return false;
+      if(!relics_.Equals(other.relics_)) return false;
+      if (AssistUid != other.AssistUid) return false;
+      if(!nOGHNMCDDAI_.Equals(other.nOGHNMCDDAI_)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(DEICGFKIMMO, other.DEICGFKIMMO)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(GPLELDEIEKO, other.GPLELDEIEKO)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(CNEMKKIBFEA, other.CNEMKKIBFEA)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(EEOGKOKOPNB, other.EEOGKOKOPNB)) return false;
+      if(!aLJIJBKEFDD_.Equals(other.aLJIJBKEFDD_)) return false;
+      if (CNLEPLAEEHF != other.CNLEPLAEEHF) return false;
+      if (JDHDJFCKBGD != other.JDHDJFCKBGD) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(DIALJMAHFBO, other.DIALJMAHFBO)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(LAOEEGEELDK, other.LAOEEGEELDK)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(LFLKOGDPLKD, other.LFLKOGDPLKD)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(EBMFCBKHIEH, other.EBMFCBKHIEH)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(DBLABFODNMJ, other.DBLABFODNMJ)) return false;
+      if (FJNKOPMOLDE != other.FJNKOPMOLDE) return false;
+      if (FLKCFJBCIOM != other.FLKCFJBCIOM) return false;
       if (PNJDPNHNBDA != other.PNJDPNHNBDA) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(NEDCAKEMHLF, other.NEDCAKEMHLF)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(EEOGKOKOPNB, other.EEOGKOKOPNB)) return false;
-      if (TotalSpAdd != other.TotalSpAdd) return false;
-      if (FLKCFJBCIOM != other.FLKCFJBCIOM) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(TotalShieldTaken, other.TotalShieldTaken)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(LFLKOGDPLKD, other.LFLKOGDPLKD)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(TotalDamageTaken, other.TotalDamageTaken)) return false;
-      if (TotalBpCost != other.TotalBpCost) return false;
-      if (Id != other.Id) return false;
+      if (NBCDOMJBAFM != other.NBCDOMJBAFM) return false;
+      if (PECMOGDLCDC != other.PECMOGDLCDC) return false;
+      if (EnhancedId != other.EnhancedId) return false;
       if (MEBKILMPMGA != other.MEBKILMPMGA) return false;
-      if (DieTimes != other.DieTimes) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(TotalDamage, other.TotalDamage)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(DBLABFODNMJ, other.DBLABFODNMJ)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(TotalShield, other.TotalShield)) return false;
-      if (ReviveTimes != other.ReviveTimes) return false;
-      if (AvatarType != other.AvatarType) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(GPLELDEIEKO, other.GPLELDEIEKO)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(TotalBreakDamage, other.TotalBreakDamage)) return false;
-      if (CNLEPLAEEHF != other.CNLEPLAEEHF) return false;
-      if (AvatarPromotion != other.AvatarPromotion) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(TotalHpRecover, other.TotalHpRecover)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(DEICGFKIMMO, other.DEICGFKIMMO)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(LAOEEGEELDK, other.LAOEEGEELDK)) return false;
-      if (JDHDJFCKBGD != other.JDHDJFCKBGD) return false;
-      if (AvatarRank != other.AvatarRank) return false;
+      if (!object.Equals(FDMEEDEJCCP, other.FDMEEDEJCCP)) return false;
+      if (!object.Equals(GEHEJPPCBLK, other.GEHEJPPCBLK)) return false;
+      if (OKMHKBOJBOB != other.OKMHKBOJBOB) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -944,64 +958,65 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (initialStatus_ != null) hash ^= InitialStatus.GetHashCode();
-      hash ^= attackTypeMaxDamage_.GetHashCode();
-      hash ^= avatarSkill_.GetHashCode();
-      hash ^= attackTypeBreakDamage_.GetHashCode();
-      hash ^= nOGHNMCDDAI_.GetHashCode();
-      hash ^= aLJIJBKEFDD_.GetHashCode();
-      hash ^= avatarEquipment_.GetHashCode();
-      if (avatarStatus_ != null) hash ^= AvatarStatus.GetHashCode();
-      if (gEHEJPPCBLK_ != null) hash ^= GEHEJPPCBLK.GetHashCode();
-      hash ^= skillTimes_.GetHashCode();
-      hash ^= relics_.GetHashCode();
-      if (fDMEEDEJCCP_ != null) hash ^= FDMEEDEJCCP.GetHashCode();
-      hash ^= spAddSource_.GetHashCode();
-      hash ^= attackTypeDamage_.GetHashCode();
-      if (DelayCumulate != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(DelayCumulate);
-      if (TotalShieldDamage != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(TotalShieldDamage);
-      if (DIALJMAHFBO != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(DIALJMAHFBO);
-      if (StageType != 0) hash ^= StageType.GetHashCode();
-      if (StageId != 0) hash ^= StageId.GetHashCode();
-      if (TotalSpCost != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(TotalSpCost);
-      if (EnhancedId != 0) hash ^= EnhancedId.GetHashCode();
-      if (AssistUid != 0) hash ^= AssistUid.GetHashCode();
-      if (BreakTimes != 0) hash ^= BreakTimes.GetHashCode();
-      if (NBCDOMJBAFM != 0) hash ^= NBCDOMJBAFM.GetHashCode();
-      if (ExtraTurns != 0) hash ^= ExtraTurns.GetHashCode();
-      if (TotalTurns != 0) hash ^= TotalTurns.GetHashCode();
-      if (TotalHeal != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(TotalHeal);
-      if (CNEMKKIBFEA != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(CNEMKKIBFEA);
-      if (EBMFCBKHIEH != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(EBMFCBKHIEH);
-      if (FJNKOPMOLDE != 0) hash ^= FJNKOPMOLDE.GetHashCode();
+      if (AvatarType != global::March7thHoney.Proto.AvatarType.None) hash ^= AvatarType.GetHashCode();
+      if (Id != 0) hash ^= Id.GetHashCode();
       if (AvatarLevel != 0) hash ^= AvatarLevel.GetHashCode();
-      if (PECMOGDLCDC != 0) hash ^= PECMOGDLCDC.GetHashCode();
+      if (AvatarRank != 0) hash ^= AvatarRank.GetHashCode();
+      if (AvatarPromotion != 0) hash ^= AvatarPromotion.GetHashCode();
+      if (avatarStatus_ != null) hash ^= AvatarStatus.GetHashCode();
+      hash ^= avatarSkill_.GetHashCode();
+      hash ^= avatarEquipment_.GetHashCode();
+      if (TotalTurns != 0) hash ^= TotalTurns.GetHashCode();
+      if (TotalDamage != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(TotalDamage);
+      if (TotalHeal != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(TotalHeal);
+      if (TotalDamageTaken != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(TotalDamageTaken);
+      if (TotalHpRecover != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(TotalHpRecover);
+      if (TotalSpCost != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(TotalSpCost);
+      if (StageId != 0) hash ^= StageId.GetHashCode();
+      if (StageType != 0) hash ^= StageType.GetHashCode();
+      if (TotalBreakDamage != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(TotalBreakDamage);
+      hash ^= attackTypeDamage_.GetHashCode();
+      hash ^= attackTypeBreakDamage_.GetHashCode();
+      hash ^= attackTypeMaxDamage_.GetHashCode();
+      hash ^= skillTimes_.GetHashCode();
+      if (DelayCumulate != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(DelayCumulate);
+      if (TotalSpAdd != 0) hash ^= TotalSpAdd.GetHashCode();
+      hash ^= spAddSource_.GetHashCode();
+      if (TotalBpCost != 0) hash ^= TotalBpCost.GetHashCode();
+      if (DieTimes != 0) hash ^= DieTimes.GetHashCode();
+      if (ReviveTimes != 0) hash ^= ReviveTimes.GetHashCode();
+      if (BreakTimes != 0) hash ^= BreakTimes.GetHashCode();
+      if (ExtraTurns != 0) hash ^= ExtraTurns.GetHashCode();
+      if (TotalShield != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(TotalShield);
+      if (TotalShieldTaken != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(TotalShieldTaken);
+      if (TotalShieldDamage != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(TotalShieldDamage);
+      if (initialStatus_ != null) hash ^= InitialStatus.GetHashCode();
+      hash ^= relics_.GetHashCode();
+      if (AssistUid != 0) hash ^= AssistUid.GetHashCode();
+      hash ^= nOGHNMCDDAI_.GetHashCode();
+      if (DEICGFKIMMO != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(DEICGFKIMMO);
+      if (GPLELDEIEKO != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(GPLELDEIEKO);
+      if (CNEMKKIBFEA != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(CNEMKKIBFEA);
+      if (EEOGKOKOPNB != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(EEOGKOKOPNB);
+      hash ^= aLJIJBKEFDD_.GetHashCode();
+      if (CNLEPLAEEHF != 0) hash ^= CNLEPLAEEHF.GetHashCode();
+      if (JDHDJFCKBGD != 0) hash ^= JDHDJFCKBGD.GetHashCode();
+      if (DIALJMAHFBO != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(DIALJMAHFBO);
+      if (LAOEEGEELDK != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(LAOEEGEELDK);
+      if (LFLKOGDPLKD != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(LFLKOGDPLKD);
+      if (EBMFCBKHIEH != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(EBMFCBKHIEH);
+      if (DBLABFODNMJ != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(DBLABFODNMJ);
+      if (FJNKOPMOLDE != 0) hash ^= FJNKOPMOLDE.GetHashCode();
+      if (FLKCFJBCIOM != 0) hash ^= FLKCFJBCIOM.GetHashCode();
       if (PNJDPNHNBDA != 0) hash ^= PNJDPNHNBDA.GetHashCode();
       if (NEDCAKEMHLF != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(NEDCAKEMHLF);
-      if (EEOGKOKOPNB != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(EEOGKOKOPNB);
-      if (TotalSpAdd != 0) hash ^= TotalSpAdd.GetHashCode();
-      if (FLKCFJBCIOM != 0) hash ^= FLKCFJBCIOM.GetHashCode();
-      if (TotalShieldTaken != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(TotalShieldTaken);
-      if (LFLKOGDPLKD != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(LFLKOGDPLKD);
-      if (TotalDamageTaken != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(TotalDamageTaken);
-      if (TotalBpCost != 0) hash ^= TotalBpCost.GetHashCode();
-      if (Id != 0) hash ^= Id.GetHashCode();
+      if (NBCDOMJBAFM != 0) hash ^= NBCDOMJBAFM.GetHashCode();
+      if (PECMOGDLCDC != 0) hash ^= PECMOGDLCDC.GetHashCode();
+      if (EnhancedId != 0) hash ^= EnhancedId.GetHashCode();
       if (MEBKILMPMGA != 0) hash ^= MEBKILMPMGA.GetHashCode();
-      if (DieTimes != 0) hash ^= DieTimes.GetHashCode();
-      if (TotalDamage != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(TotalDamage);
-      if (DBLABFODNMJ != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(DBLABFODNMJ);
-      if (TotalShield != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(TotalShield);
-      if (ReviveTimes != 0) hash ^= ReviveTimes.GetHashCode();
-      if (AvatarType != global::March7thHoney.Proto.AvatarType.None) hash ^= AvatarType.GetHashCode();
-      if (GPLELDEIEKO != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(GPLELDEIEKO);
-      if (TotalBreakDamage != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(TotalBreakDamage);
-      if (CNLEPLAEEHF != 0) hash ^= CNLEPLAEEHF.GetHashCode();
-      if (AvatarPromotion != 0) hash ^= AvatarPromotion.GetHashCode();
-      if (TotalHpRecover != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(TotalHpRecover);
-      if (DEICGFKIMMO != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(DEICGFKIMMO);
-      if (LAOEEGEELDK != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(LAOEEGEELDK);
-      if (JDHDJFCKBGD != 0) hash ^= JDHDJFCKBGD.GetHashCode();
-      if (AvatarRank != 0) hash ^= AvatarRank.GetHashCode();
+      if (fDMEEDEJCCP_ != null) hash ^= FDMEEDEJCCP.GetHashCode();
+      if (gEHEJPPCBLK_ != null) hash ^= GEHEJPPCBLK.GetHashCode();
+      if (OKMHKBOJBOB != 0) hash ^= OKMHKBOJBOB.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1222,6 +1237,10 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(210, 3);
         output.WriteMessage(GEHEJPPCBLK);
       }
+      if (OKMHKBOJBOB != 0) {
+        output.WriteRawTag(216, 3);
+        output.WriteUInt32(OKMHKBOJBOB);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1434,6 +1453,10 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(210, 3);
         output.WriteMessage(GEHEJPPCBLK);
       }
+      if (OKMHKBOJBOB != 0) {
+        output.WriteRawTag(216, 3);
+        output.WriteUInt32(OKMHKBOJBOB);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1444,81 +1467,135 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (initialStatus_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(InitialStatus);
+      if (AvatarType != global::March7thHoney.Proto.AvatarType.None) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) AvatarType);
       }
-      size += attackTypeMaxDamage_.CalculateSize(_repeated_attackTypeMaxDamage_codec);
-      size += avatarSkill_.CalculateSize(_repeated_avatarSkill_codec);
-      size += attackTypeBreakDamage_.CalculateSize(_repeated_attackTypeBreakDamage_codec);
-      size += nOGHNMCDDAI_.CalculateSize(_repeated_nOGHNMCDDAI_codec);
-      size += aLJIJBKEFDD_.CalculateSize(_repeated_aLJIJBKEFDD_codec);
-      size += avatarEquipment_.CalculateSize(_repeated_avatarEquipment_codec);
+      if (Id != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Id);
+      }
+      if (AvatarLevel != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarLevel);
+      }
+      if (AvatarRank != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarRank);
+      }
+      if (AvatarPromotion != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarPromotion);
+      }
       if (avatarStatus_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(AvatarStatus);
       }
-      if (gEHEJPPCBLK_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(GEHEJPPCBLK);
+      size += avatarSkill_.CalculateSize(_repeated_avatarSkill_codec);
+      size += avatarEquipment_.CalculateSize(_repeated_avatarEquipment_codec);
+      if (TotalTurns != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TotalTurns);
       }
+      if (TotalDamage != 0D) {
+        size += 1 + 8;
+      }
+      if (TotalHeal != 0D) {
+        size += 1 + 8;
+      }
+      if (TotalDamageTaken != 0D) {
+        size += 1 + 8;
+      }
+      if (TotalHpRecover != 0D) {
+        size += 1 + 8;
+      }
+      if (TotalSpCost != 0D) {
+        size += 1 + 8;
+      }
+      if (StageId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(StageId);
+      }
+      if (StageType != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(StageType);
+      }
+      if (TotalBreakDamage != 0D) {
+        size += 2 + 8;
+      }
+      size += attackTypeDamage_.CalculateSize(_repeated_attackTypeDamage_codec);
+      size += attackTypeBreakDamage_.CalculateSize(_repeated_attackTypeBreakDamage_codec);
+      size += attackTypeMaxDamage_.CalculateSize(_repeated_attackTypeMaxDamage_codec);
       size += skillTimes_.CalculateSize(_repeated_skillTimes_codec);
-      size += relics_.CalculateSize(_repeated_relics_codec);
-      if (fDMEEDEJCCP_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(FDMEEDEJCCP);
+      if (DelayCumulate != 0D) {
+        size += 2 + 8;
+      }
+      if (TotalSpAdd != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(TotalSpAdd);
       }
       size += spAddSource_.CalculateSize(_repeated_spAddSource_codec);
-      size += attackTypeDamage_.CalculateSize(_repeated_attackTypeDamage_codec);
-      if (DelayCumulate != 0D) {
+      if (TotalBpCost != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(TotalBpCost);
+      }
+      if (DieTimes != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DieTimes);
+      }
+      if (ReviveTimes != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(ReviveTimes);
+      }
+      if (BreakTimes != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(BreakTimes);
+      }
+      if (ExtraTurns != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(ExtraTurns);
+      }
+      if (TotalShield != 0D) {
+        size += 2 + 8;
+      }
+      if (TotalShieldTaken != 0D) {
         size += 2 + 8;
       }
       if (TotalShieldDamage != 0D) {
         size += 2 + 8;
       }
-      if (DIALJMAHFBO != 0D) {
-        size += 2 + 8;
+      if (initialStatus_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(InitialStatus);
       }
-      if (StageType != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(StageType);
-      }
-      if (StageId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(StageId);
-      }
-      if (TotalSpCost != 0D) {
-        size += 1 + 8;
-      }
-      if (EnhancedId != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(EnhancedId);
-      }
+      size += relics_.CalculateSize(_repeated_relics_codec);
       if (AssistUid != 0) {
         size += 2 + pb::CodedOutputStream.ComputeUInt32Size(AssistUid);
       }
-      if (BreakTimes != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(BreakTimes);
+      size += nOGHNMCDDAI_.CalculateSize(_repeated_nOGHNMCDDAI_codec);
+      if (DEICGFKIMMO != 0D) {
+        size += 2 + 8;
       }
-      if (NBCDOMJBAFM != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(NBCDOMJBAFM);
-      }
-      if (ExtraTurns != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(ExtraTurns);
-      }
-      if (TotalTurns != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TotalTurns);
-      }
-      if (TotalHeal != 0D) {
-        size += 1 + 8;
+      if (GPLELDEIEKO != 0D) {
+        size += 2 + 8;
       }
       if (CNEMKKIBFEA != 0D) {
+        size += 2 + 8;
+      }
+      if (EEOGKOKOPNB != 0D) {
+        size += 2 + 8;
+      }
+      size += aLJIJBKEFDD_.CalculateSize(_repeated_aLJIJBKEFDD_codec);
+      if (CNLEPLAEEHF != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(CNLEPLAEEHF);
+      }
+      if (JDHDJFCKBGD != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(JDHDJFCKBGD);
+      }
+      if (DIALJMAHFBO != 0D) {
+        size += 2 + 8;
+      }
+      if (LAOEEGEELDK != 0D) {
+        size += 2 + 8;
+      }
+      if (LFLKOGDPLKD != 0D) {
         size += 2 + 8;
       }
       if (EBMFCBKHIEH != 0D) {
         size += 2 + 8;
       }
+      if (DBLABFODNMJ != 0D) {
+        size += 2 + 8;
+      }
       if (FJNKOPMOLDE != 0) {
         size += 2 + pb::CodedOutputStream.ComputeUInt32Size(FJNKOPMOLDE);
       }
-      if (AvatarLevel != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarLevel);
-      }
-      if (PECMOGDLCDC != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(PECMOGDLCDC);
+      if (FLKCFJBCIOM != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(FLKCFJBCIOM);
       }
       if (PNJDPNHNBDA != 0) {
         size += 2 + pb::CodedOutputStream.ComputeUInt32Size(PNJDPNHNBDA);
@@ -1526,77 +1603,26 @@ namespace March7thHoney.Proto {
       if (NEDCAKEMHLF != 0D) {
         size += 2 + 8;
       }
-      if (EEOGKOKOPNB != 0D) {
-        size += 2 + 8;
+      if (NBCDOMJBAFM != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(NBCDOMJBAFM);
       }
-      if (TotalSpAdd != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(TotalSpAdd);
+      if (PECMOGDLCDC != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(PECMOGDLCDC);
       }
-      if (FLKCFJBCIOM != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(FLKCFJBCIOM);
-      }
-      if (TotalShieldTaken != 0D) {
-        size += 2 + 8;
-      }
-      if (LFLKOGDPLKD != 0D) {
-        size += 2 + 8;
-      }
-      if (TotalDamageTaken != 0D) {
-        size += 1 + 8;
-      }
-      if (TotalBpCost != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(TotalBpCost);
-      }
-      if (Id != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Id);
+      if (EnhancedId != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(EnhancedId);
       }
       if (MEBKILMPMGA != 0) {
         size += 2 + pb::CodedOutputStream.ComputeUInt32Size(MEBKILMPMGA);
       }
-      if (DieTimes != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DieTimes);
+      if (fDMEEDEJCCP_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(FDMEEDEJCCP);
       }
-      if (TotalDamage != 0D) {
-        size += 1 + 8;
+      if (gEHEJPPCBLK_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(GEHEJPPCBLK);
       }
-      if (DBLABFODNMJ != 0D) {
-        size += 2 + 8;
-      }
-      if (TotalShield != 0D) {
-        size += 2 + 8;
-      }
-      if (ReviveTimes != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(ReviveTimes);
-      }
-      if (AvatarType != global::March7thHoney.Proto.AvatarType.None) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) AvatarType);
-      }
-      if (GPLELDEIEKO != 0D) {
-        size += 2 + 8;
-      }
-      if (TotalBreakDamage != 0D) {
-        size += 2 + 8;
-      }
-      if (CNLEPLAEEHF != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(CNLEPLAEEHF);
-      }
-      if (AvatarPromotion != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarPromotion);
-      }
-      if (TotalHpRecover != 0D) {
-        size += 1 + 8;
-      }
-      if (DEICGFKIMMO != 0D) {
-        size += 2 + 8;
-      }
-      if (LAOEEGEELDK != 0D) {
-        size += 2 + 8;
-      }
-      if (JDHDJFCKBGD != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(JDHDJFCKBGD);
-      }
-      if (AvatarRank != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarRank);
+      if (OKMHKBOJBOB != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(OKMHKBOJBOB);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1610,93 +1636,141 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.initialStatus_ != null) {
-        if (initialStatus_ == null) {
-          InitialStatus = new global::March7thHoney.Proto.AvatarProperty();
-        }
-        InitialStatus.MergeFrom(other.InitialStatus);
+      if (other.AvatarType != global::March7thHoney.Proto.AvatarType.None) {
+        AvatarType = other.AvatarType;
       }
-      attackTypeMaxDamage_.Add(other.attackTypeMaxDamage_);
-      avatarSkill_.Add(other.avatarSkill_);
-      attackTypeBreakDamage_.Add(other.attackTypeBreakDamage_);
-      nOGHNMCDDAI_.Add(other.nOGHNMCDDAI_);
-      aLJIJBKEFDD_.Add(other.aLJIJBKEFDD_);
-      avatarEquipment_.Add(other.avatarEquipment_);
+      if (other.Id != 0) {
+        Id = other.Id;
+      }
+      if (other.AvatarLevel != 0) {
+        AvatarLevel = other.AvatarLevel;
+      }
+      if (other.AvatarRank != 0) {
+        AvatarRank = other.AvatarRank;
+      }
+      if (other.AvatarPromotion != 0) {
+        AvatarPromotion = other.AvatarPromotion;
+      }
       if (other.avatarStatus_ != null) {
         if (avatarStatus_ == null) {
           AvatarStatus = new global::March7thHoney.Proto.AvatarProperty();
         }
         AvatarStatus.MergeFrom(other.AvatarStatus);
       }
-      if (other.gEHEJPPCBLK_ != null) {
-        if (gEHEJPPCBLK_ == null) {
-          GEHEJPPCBLK = new global::March7thHoney.Proto.ABDOKOFEHMH();
-        }
-        GEHEJPPCBLK.MergeFrom(other.GEHEJPPCBLK);
-      }
-      skillTimes_.Add(other.skillTimes_);
-      relics_.Add(other.relics_);
-      if (other.fDMEEDEJCCP_ != null) {
-        if (fDMEEDEJCCP_ == null) {
-          FDMEEDEJCCP = new global::March7thHoney.Proto.CFDHDBNIHPL();
-        }
-        FDMEEDEJCCP.MergeFrom(other.FDMEEDEJCCP);
-      }
-      spAddSource_.Add(other.spAddSource_);
-      attackTypeDamage_.Add(other.attackTypeDamage_);
-      if (other.DelayCumulate != 0D) {
-        DelayCumulate = other.DelayCumulate;
-      }
-      if (other.TotalShieldDamage != 0D) {
-        TotalShieldDamage = other.TotalShieldDamage;
-      }
-      if (other.DIALJMAHFBO != 0D) {
-        DIALJMAHFBO = other.DIALJMAHFBO;
-      }
-      if (other.StageType != 0) {
-        StageType = other.StageType;
-      }
-      if (other.StageId != 0) {
-        StageId = other.StageId;
-      }
-      if (other.TotalSpCost != 0D) {
-        TotalSpCost = other.TotalSpCost;
-      }
-      if (other.EnhancedId != 0) {
-        EnhancedId = other.EnhancedId;
-      }
-      if (other.AssistUid != 0) {
-        AssistUid = other.AssistUid;
-      }
-      if (other.BreakTimes != 0) {
-        BreakTimes = other.BreakTimes;
-      }
-      if (other.NBCDOMJBAFM != 0) {
-        NBCDOMJBAFM = other.NBCDOMJBAFM;
-      }
-      if (other.ExtraTurns != 0) {
-        ExtraTurns = other.ExtraTurns;
-      }
+      avatarSkill_.Add(other.avatarSkill_);
+      avatarEquipment_.Add(other.avatarEquipment_);
       if (other.TotalTurns != 0) {
         TotalTurns = other.TotalTurns;
+      }
+      if (other.TotalDamage != 0D) {
+        TotalDamage = other.TotalDamage;
       }
       if (other.TotalHeal != 0D) {
         TotalHeal = other.TotalHeal;
       }
+      if (other.TotalDamageTaken != 0D) {
+        TotalDamageTaken = other.TotalDamageTaken;
+      }
+      if (other.TotalHpRecover != 0D) {
+        TotalHpRecover = other.TotalHpRecover;
+      }
+      if (other.TotalSpCost != 0D) {
+        TotalSpCost = other.TotalSpCost;
+      }
+      if (other.StageId != 0) {
+        StageId = other.StageId;
+      }
+      if (other.StageType != 0) {
+        StageType = other.StageType;
+      }
+      if (other.TotalBreakDamage != 0D) {
+        TotalBreakDamage = other.TotalBreakDamage;
+      }
+      attackTypeDamage_.Add(other.attackTypeDamage_);
+      attackTypeBreakDamage_.Add(other.attackTypeBreakDamage_);
+      attackTypeMaxDamage_.Add(other.attackTypeMaxDamage_);
+      skillTimes_.Add(other.skillTimes_);
+      if (other.DelayCumulate != 0D) {
+        DelayCumulate = other.DelayCumulate;
+      }
+      if (other.TotalSpAdd != 0) {
+        TotalSpAdd = other.TotalSpAdd;
+      }
+      spAddSource_.Add(other.spAddSource_);
+      if (other.TotalBpCost != 0) {
+        TotalBpCost = other.TotalBpCost;
+      }
+      if (other.DieTimes != 0) {
+        DieTimes = other.DieTimes;
+      }
+      if (other.ReviveTimes != 0) {
+        ReviveTimes = other.ReviveTimes;
+      }
+      if (other.BreakTimes != 0) {
+        BreakTimes = other.BreakTimes;
+      }
+      if (other.ExtraTurns != 0) {
+        ExtraTurns = other.ExtraTurns;
+      }
+      if (other.TotalShield != 0D) {
+        TotalShield = other.TotalShield;
+      }
+      if (other.TotalShieldTaken != 0D) {
+        TotalShieldTaken = other.TotalShieldTaken;
+      }
+      if (other.TotalShieldDamage != 0D) {
+        TotalShieldDamage = other.TotalShieldDamage;
+      }
+      if (other.initialStatus_ != null) {
+        if (initialStatus_ == null) {
+          InitialStatus = new global::March7thHoney.Proto.AvatarProperty();
+        }
+        InitialStatus.MergeFrom(other.InitialStatus);
+      }
+      relics_.Add(other.relics_);
+      if (other.AssistUid != 0) {
+        AssistUid = other.AssistUid;
+      }
+      nOGHNMCDDAI_.Add(other.nOGHNMCDDAI_);
+      if (other.DEICGFKIMMO != 0D) {
+        DEICGFKIMMO = other.DEICGFKIMMO;
+      }
+      if (other.GPLELDEIEKO != 0D) {
+        GPLELDEIEKO = other.GPLELDEIEKO;
+      }
       if (other.CNEMKKIBFEA != 0D) {
         CNEMKKIBFEA = other.CNEMKKIBFEA;
+      }
+      if (other.EEOGKOKOPNB != 0D) {
+        EEOGKOKOPNB = other.EEOGKOKOPNB;
+      }
+      aLJIJBKEFDD_.Add(other.aLJIJBKEFDD_);
+      if (other.CNLEPLAEEHF != 0) {
+        CNLEPLAEEHF = other.CNLEPLAEEHF;
+      }
+      if (other.JDHDJFCKBGD != 0) {
+        JDHDJFCKBGD = other.JDHDJFCKBGD;
+      }
+      if (other.DIALJMAHFBO != 0D) {
+        DIALJMAHFBO = other.DIALJMAHFBO;
+      }
+      if (other.LAOEEGEELDK != 0D) {
+        LAOEEGEELDK = other.LAOEEGEELDK;
+      }
+      if (other.LFLKOGDPLKD != 0D) {
+        LFLKOGDPLKD = other.LFLKOGDPLKD;
       }
       if (other.EBMFCBKHIEH != 0D) {
         EBMFCBKHIEH = other.EBMFCBKHIEH;
       }
+      if (other.DBLABFODNMJ != 0D) {
+        DBLABFODNMJ = other.DBLABFODNMJ;
+      }
       if (other.FJNKOPMOLDE != 0) {
         FJNKOPMOLDE = other.FJNKOPMOLDE;
       }
-      if (other.AvatarLevel != 0) {
-        AvatarLevel = other.AvatarLevel;
-      }
-      if (other.PECMOGDLCDC != 0) {
-        PECMOGDLCDC = other.PECMOGDLCDC;
+      if (other.FLKCFJBCIOM != 0) {
+        FLKCFJBCIOM = other.FLKCFJBCIOM;
       }
       if (other.PNJDPNHNBDA != 0) {
         PNJDPNHNBDA = other.PNJDPNHNBDA;
@@ -1704,77 +1778,32 @@ namespace March7thHoney.Proto {
       if (other.NEDCAKEMHLF != 0D) {
         NEDCAKEMHLF = other.NEDCAKEMHLF;
       }
-      if (other.EEOGKOKOPNB != 0D) {
-        EEOGKOKOPNB = other.EEOGKOKOPNB;
+      if (other.NBCDOMJBAFM != 0) {
+        NBCDOMJBAFM = other.NBCDOMJBAFM;
       }
-      if (other.TotalSpAdd != 0) {
-        TotalSpAdd = other.TotalSpAdd;
+      if (other.PECMOGDLCDC != 0) {
+        PECMOGDLCDC = other.PECMOGDLCDC;
       }
-      if (other.FLKCFJBCIOM != 0) {
-        FLKCFJBCIOM = other.FLKCFJBCIOM;
-      }
-      if (other.TotalShieldTaken != 0D) {
-        TotalShieldTaken = other.TotalShieldTaken;
-      }
-      if (other.LFLKOGDPLKD != 0D) {
-        LFLKOGDPLKD = other.LFLKOGDPLKD;
-      }
-      if (other.TotalDamageTaken != 0D) {
-        TotalDamageTaken = other.TotalDamageTaken;
-      }
-      if (other.TotalBpCost != 0) {
-        TotalBpCost = other.TotalBpCost;
-      }
-      if (other.Id != 0) {
-        Id = other.Id;
+      if (other.EnhancedId != 0) {
+        EnhancedId = other.EnhancedId;
       }
       if (other.MEBKILMPMGA != 0) {
         MEBKILMPMGA = other.MEBKILMPMGA;
       }
-      if (other.DieTimes != 0) {
-        DieTimes = other.DieTimes;
+      if (other.fDMEEDEJCCP_ != null) {
+        if (fDMEEDEJCCP_ == null) {
+          FDMEEDEJCCP = new global::March7thHoney.Proto.CFDHDBNIHPL();
+        }
+        FDMEEDEJCCP.MergeFrom(other.FDMEEDEJCCP);
       }
-      if (other.TotalDamage != 0D) {
-        TotalDamage = other.TotalDamage;
+      if (other.gEHEJPPCBLK_ != null) {
+        if (gEHEJPPCBLK_ == null) {
+          GEHEJPPCBLK = new global::March7thHoney.Proto.ABDOKOFEHMH();
+        }
+        GEHEJPPCBLK.MergeFrom(other.GEHEJPPCBLK);
       }
-      if (other.DBLABFODNMJ != 0D) {
-        DBLABFODNMJ = other.DBLABFODNMJ;
-      }
-      if (other.TotalShield != 0D) {
-        TotalShield = other.TotalShield;
-      }
-      if (other.ReviveTimes != 0) {
-        ReviveTimes = other.ReviveTimes;
-      }
-      if (other.AvatarType != global::March7thHoney.Proto.AvatarType.None) {
-        AvatarType = other.AvatarType;
-      }
-      if (other.GPLELDEIEKO != 0D) {
-        GPLELDEIEKO = other.GPLELDEIEKO;
-      }
-      if (other.TotalBreakDamage != 0D) {
-        TotalBreakDamage = other.TotalBreakDamage;
-      }
-      if (other.CNLEPLAEEHF != 0) {
-        CNLEPLAEEHF = other.CNLEPLAEEHF;
-      }
-      if (other.AvatarPromotion != 0) {
-        AvatarPromotion = other.AvatarPromotion;
-      }
-      if (other.TotalHpRecover != 0D) {
-        TotalHpRecover = other.TotalHpRecover;
-      }
-      if (other.DEICGFKIMMO != 0D) {
-        DEICGFKIMMO = other.DEICGFKIMMO;
-      }
-      if (other.LAOEEGEELDK != 0D) {
-        LAOEEGEELDK = other.LAOEEGEELDK;
-      }
-      if (other.JDHDJFCKBGD != 0) {
-        JDHDJFCKBGD = other.JDHDJFCKBGD;
-      }
-      if (other.AvatarRank != 0) {
-        AvatarRank = other.AvatarRank;
+      if (other.OKMHKBOJBOB != 0) {
+        OKMHKBOJBOB = other.OKMHKBOJBOB;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -2039,6 +2068,10 @@ namespace March7thHoney.Proto {
             input.ReadMessage(GEHEJPPCBLK);
             break;
           }
+          case 472: {
+            OKMHKBOJBOB = input.ReadUInt32();
+            break;
+          }
         }
       }
     #endif
@@ -2300,6 +2333,10 @@ namespace March7thHoney.Proto {
               GEHEJPPCBLK = new global::March7thHoney.Proto.ABDOKOFEHMH();
             }
             input.ReadMessage(GEHEJPPCBLK);
+            break;
+          }
+          case 472: {
+            OKMHKBOJBOB = input.ReadUInt32();
             break;
           }
         }

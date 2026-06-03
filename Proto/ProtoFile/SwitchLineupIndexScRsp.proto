@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message SwitchLineupIndexScRsp {
-    uint32 index = 4;
-    uint32 retcode = 5;
+    uint32 retcode = 2;
+    uint32 index = 5;
 }

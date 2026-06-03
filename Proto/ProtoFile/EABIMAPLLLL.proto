@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "GAAMBBFPCHB.proto";
 
 message EABIMAPLLLL {
-    GAAMBBFPCHB NFEDANFBIBE = 11;
+    GAAMBBFPCHB NFEDANFBIBE = 2;
 }

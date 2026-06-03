@@ -12,19 +12,18 @@ import "LJJIEAPLOOI.proto";
 import "MOOGABJBJAG.proto";
 
 message NJMOBNILIHI {
-    int64 time = 6;
-    DevelopmentType NELHEHHFCCM = 12;
+    DevelopmentType NELHEHHFCCM = 3;
+    int64 time = 10;
     oneof NNMAOMHPNBK {
-        KHFEGOFPHHC DCODKLADIJM = 1445;
-        MOOGABJBJAG ELJOEBBHDPB = 1544;
-        uint32 avatar_id = 376;
-        uint32 KAJCFPKEGBP = 403;
-        uint32 PBOCPNJJHHB = 382;
-        CFNEMEIDMID IIBJEGJMOKJ = 1075;
-        uint32 panel_id = 176;
-        JBKJGBMMKFI AGKKAFEFGOB = 1051;
-        IENCCMEAIAJ IMILIFMDLBI = 445;
-        LJJIEAPLOOI BNNDODHIKCE = 1408;
-        KGBAFBEMICB DHKCMBFCALH = 212;
+        KHFEGOFPHHC DCODKLADIJM = 668;
+        MOOGABJBJAG ELJOEBBHDPB = 1259;
+        uint32 avatar_id = 712;
+        uint32 KAJCFPKEGBP = 1411;
+        CFNEMEIDMID IIBJEGJMOKJ = 1610;
+        uint32 panel_id = 1857;
+        JBKJGBMMKFI AGKKAFEFGOB = 1662;
+        IENCCMEAIAJ IMILIFMDLBI = 1446;
+        LJJIEAPLOOI BNNDODHIKCE = 1595;
+        KGBAFBEMICB DHKCMBFCALH = 244;
     }
 }

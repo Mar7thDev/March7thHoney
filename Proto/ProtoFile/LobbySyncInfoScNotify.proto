@@ -6,7 +6,7 @@ import "LMLNNHKJEIP.proto";
 import "LobbyModifyType.proto";
 
 message LobbySyncInfoScNotify {
-    repeated LMLNNHKJEIP DFLEOIGPLNM = 14;
-    uint32 uid = 2;
-    LobbyModifyType type = 1;
+    uint32 uid = 3;
+    LobbyModifyType type = 5;
+    repeated LMLNNHKJEIP DFLEOIGPLNM = 8;
 }

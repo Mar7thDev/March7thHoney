@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "FKNKNLGMACL.proto";
 
 message GetAiPamNextQuestionCsReq {
-    FKNKNLGMACL BDPIMPJOJBK = 11;
+    FKNKNLGMACL role = 10;
 }

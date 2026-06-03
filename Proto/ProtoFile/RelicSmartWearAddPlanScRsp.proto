@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "RelicSmartWearPlan.proto";
 
 message RelicSmartWearAddPlanScRsp {
-    RelicSmartWearPlan relic_plan = 3;
-    uint32 retcode = 13;
+    uint32 retcode = 12;
+    RelicSmartWearPlan relic_plan = 13;
 }

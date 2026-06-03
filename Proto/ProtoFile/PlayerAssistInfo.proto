@@ -6,6 +6,6 @@ import "DisplayAvatarDetailInfo.proto";
 import "PlayerSimpleInfo.proto";
 
 message PlayerAssistInfo {
-    DisplayAvatarDetailInfo assist_avatar = 4;
-    PlayerSimpleInfo player_info = 13;
+    PlayerSimpleInfo player_info = 10;
+    DisplayAvatarDetailInfo assist_avatar = 12;
 }

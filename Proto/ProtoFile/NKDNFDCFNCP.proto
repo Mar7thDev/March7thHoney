@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "PileItem.proto";
 
 message NKDNFDCFNCP {
-    repeated PileItem HJLENJODAMN = 14;
-    PileItem FMOKFKBAEII = 7;
+    PileItem FMOKFKBAEII = 5;
+    repeated PileItem HJLENJODAMN = 10;
 }

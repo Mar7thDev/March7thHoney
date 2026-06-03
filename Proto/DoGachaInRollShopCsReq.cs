@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChxEb0dhY2hhSW5Sb2xsU2hvcENzUmVxLnByb3RvIlkKFkRvR2FjaGFJblJv",
-            "bGxTaG9wQ3NSZXESEwoLZ2FjaGFfY291bnQYBSABKA0SFAoMZ2FjaGFfcmFu",
-            "ZG9tGAQgASgNEhQKDHJvbGxfc2hvcF9pZBgDIAEoDUIWqgITTWFyY2g3dGhI",
+            "bGxTaG9wQ3NSZXESEwoLZ2FjaGFfY291bnQYBiABKA0SFAoMZ2FjaGFfcmFu",
+            "ZG9tGAcgASgNEhQKDHJvbGxfc2hvcF9pZBgMIAEoDUIWqgITTWFyY2g3dGhI",
             "b25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -86,7 +86,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "gacha_count" field.</summary>
-    public const int GachaCountFieldNumber = 5;
+    public const int GachaCountFieldNumber = 6;
     private uint gachaCount_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,7 +98,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "gacha_random" field.</summary>
-    public const int GachaRandomFieldNumber = 4;
+    public const int GachaRandomFieldNumber = 7;
     private uint gachaRandom_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,7 +110,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "roll_shop_id" field.</summary>
-    public const int RollShopIdFieldNumber = 3;
+    public const int RollShopIdFieldNumber = 12;
     private uint rollShopId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -167,17 +167,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (RollShopId != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(RollShopId);
+      if (GachaCount != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(GachaCount);
       }
       if (GachaRandom != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(56);
         output.WriteUInt32(GachaRandom);
       }
-      if (GachaCount != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(GachaCount);
+      if (RollShopId != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(RollShopId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -189,17 +189,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (RollShopId != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(RollShopId);
+      if (GachaCount != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(GachaCount);
       }
       if (GachaRandom != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(56);
         output.WriteUInt32(GachaRandom);
       }
-      if (GachaCount != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(GachaCount);
+      if (RollShopId != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(RollShopId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -260,16 +260,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
-            RollShopId = input.ReadUInt32();
+          case 48: {
+            GachaCount = input.ReadUInt32();
             break;
           }
-          case 32: {
+          case 56: {
             GachaRandom = input.ReadUInt32();
             break;
           }
-          case 40: {
-            GachaCount = input.ReadUInt32();
+          case 96: {
+            RollShopId = input.ReadUInt32();
             break;
           }
         }
@@ -291,16 +291,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
-            RollShopId = input.ReadUInt32();
+          case 48: {
+            GachaCount = input.ReadUInt32();
             break;
           }
-          case 32: {
+          case 56: {
             GachaRandom = input.ReadUInt32();
             break;
           }
-          case 40: {
-            GachaCount = input.ReadUInt32();
+          case 96: {
+            RollShopId = input.ReadUInt32();
             break;
           }
         }

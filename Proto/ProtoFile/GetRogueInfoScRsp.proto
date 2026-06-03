@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "AGEHGBKOBEF.proto";
 
 message GetRogueInfoScRsp {
-    AGEHGBKOBEF rogue_game_info = 12;
-    uint32 retcode = 10;
+    uint32 retcode = 2;
+    AGEHGBKOBEF rogue_game_info = 6;
 }

@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ServerPrefs.proto";
 
 message GetAllServerPrefsDataScRsp {
-    repeated ServerPrefs server_prefs_list = 9;
-    uint32 retcode = 15;
+    uint32 retcode = 13;
+    repeated ServerPrefs server_prefs_list = 14;
 }

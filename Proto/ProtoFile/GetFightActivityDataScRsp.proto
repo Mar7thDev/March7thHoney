@@ -5,9 +5,9 @@ option csharp_namespace = "March7thHoney.Proto";
 import "CDABDPPPHBN.proto";
 
 message GetFightActivityDataScRsp {
-    repeated CDABDPPPHBN FALBALFNOFF = 6;
-    map<uint32, uint32> EDGPAOJEENN = 11;
     uint32 world_level = 2;
-    uint32 retcode = 5;
-    bool CFDBDGEFJJN = 3;
+    uint32 retcode = 7;
+    repeated CDABDPPPHBN FALBALFNOFF = 9;
+    bool CFDBDGEFJJN = 10;
+    map<uint32, uint32> EDGPAOJEENN = 15;
 }

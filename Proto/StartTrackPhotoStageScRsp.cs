@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static StartTrackPhotoStageScRspReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Ch9TdGFydFRyYWNrUGhvdG9TdGFnZVNjUnNwLnByb3RvIkEKGVN0YXJ0VHJh",
-            "Y2tQaG90b1N0YWdlU2NSc3ASEwoLRlBQRUNPSUFIRVAYCiABKA0SDwoHcmV0",
-            "Y29kZRgBIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "Ch9TdGFydFRyYWNrUGhvdG9TdGFnZVNjUnNwLnByb3RvIj4KGVN0YXJ0VHJh",
+            "Y2tQaG90b1N0YWdlU2NSc3ASEAoIdHJhbnNfbm8YAyABKA0SDwoHcmV0Y29k",
+            "ZRgKIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartTrackPhotoStageScRsp), global::March7thHoney.Proto.StartTrackPhotoStageScRsp.Parser, new[]{ "FPPECOIAHEP", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartTrackPhotoStageScRsp), global::March7thHoney.Proto.StartTrackPhotoStageScRsp.Parser, new[]{ "TransNo", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,7 +72,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public StartTrackPhotoStageScRsp(StartTrackPhotoStageScRsp other) : this() {
-      fPPECOIAHEP_ = other.fPPECOIAHEP_;
+      transNo_ = other.transNo_;
       retcode_ = other.retcode_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -83,20 +83,20 @@ namespace March7thHoney.Proto {
       return new StartTrackPhotoStageScRsp(this);
     }
 
-    /// <summary>Field number for the "FPPECOIAHEP" field.</summary>
-    public const int FPPECOIAHEPFieldNumber = 10;
-    private uint fPPECOIAHEP_;
+    /// <summary>Field number for the "trans_no" field.</summary>
+    public const int TransNoFieldNumber = 3;
+    private uint transNo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint FPPECOIAHEP {
-      get { return fPPECOIAHEP_; }
+    public uint TransNo {
+      get { return transNo_; }
       set {
-        fPPECOIAHEP_ = value;
+        transNo_ = value;
       }
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 1;
+    public const int RetcodeFieldNumber = 10;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -122,7 +122,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (FPPECOIAHEP != other.FPPECOIAHEP) return false;
+      if (TransNo != other.TransNo) return false;
       if (Retcode != other.Retcode) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -131,7 +131,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (FPPECOIAHEP != 0) hash ^= FPPECOIAHEP.GetHashCode();
+      if (TransNo != 0) hash ^= TransNo.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Retcode != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(Retcode);
+      if (TransNo != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(TransNo);
       }
-      if (FPPECOIAHEP != 0) {
+      if (Retcode != 0) {
         output.WriteRawTag(80);
-        output.WriteUInt32(FPPECOIAHEP);
+        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Retcode != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(Retcode);
+      if (TransNo != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(TransNo);
       }
-      if (FPPECOIAHEP != 0) {
+      if (Retcode != 0) {
         output.WriteRawTag(80);
-        output.WriteUInt32(FPPECOIAHEP);
+        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -187,8 +187,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (FPPECOIAHEP != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FPPECOIAHEP);
+      if (TransNo != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TransNo);
       }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
@@ -205,8 +205,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.FPPECOIAHEP != 0) {
-        FPPECOIAHEP = other.FPPECOIAHEP;
+      if (other.TransNo != 0) {
+        TransNo = other.TransNo;
       }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            Retcode = input.ReadUInt32();
+          case 24: {
+            TransNo = input.ReadUInt32();
             break;
           }
           case 80: {
-            FPPECOIAHEP = input.ReadUInt32();
+            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            Retcode = input.ReadUInt32();
+          case 24: {
+            TransNo = input.ReadUInt32();
             break;
           }
           case 80: {
-            FPPECOIAHEP = input.ReadUInt32();
+            Retcode = input.ReadUInt32();
             break;
           }
         }

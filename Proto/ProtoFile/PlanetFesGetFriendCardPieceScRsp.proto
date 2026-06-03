@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "EPPIBFOLFKN.proto";
 
 message PlanetFesGetFriendCardPieceScRsp {
-    repeated EPPIBFOLFKN PEBGJJCNBMM = 4;
-    uint32 retcode = 7;
+    uint32 retcode = 1;
+    repeated EPPIBFOLFKN PEBGJJCNBMM = 13;
 }

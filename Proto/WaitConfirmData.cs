@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static WaitConfirmDataReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChVXYWl0Q29uZmlybURhdGEucHJvdG8ibgoPV2FpdENvbmZpcm1EYXRhEhwK",
-            "FGZpbmlzaGVkX3RhcmdldF9saXN0GAwgAygNEhcKD2lzX3dhaXRfY29uZmly",
-            "bRgLIAEoCBIPCgdwZWFrX2lkGAEgASgNEhMKC2N5Y2xlc191c2VkGAUgASgN",
+            "ChVXYWl0Q29uZmlybURhdGEucHJvdG8ibgoPV2FpdENvbmZpcm1EYXRhEhcK",
+            "D2lzX3dhaXRfY29uZmlybRgDIAEoCBITCgtjeWNsZXNfdXNlZBgHIAEoDRIc",
+            "ChRmaW5pc2hlZF90YXJnZXRfbGlzdBgJIAMoDRIPCgdwZWFrX2lkGA4gASgN",
             "QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.WaitConfirmData), global::March7thHoney.Proto.WaitConfirmData.Parser, new[]{ "FinishedTargetList", "IsWaitConfirm", "PeakId", "CyclesUsed" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.WaitConfirmData), global::March7thHoney.Proto.WaitConfirmData.Parser, new[]{ "IsWaitConfirm", "CyclesUsed", "FinishedTargetList", "PeakId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,10 +73,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public WaitConfirmData(WaitConfirmData other) : this() {
-      finishedTargetList_ = other.finishedTargetList_.Clone();
       isWaitConfirm_ = other.isWaitConfirm_;
-      peakId_ = other.peakId_;
       cyclesUsed_ = other.cyclesUsed_;
+      finishedTargetList_ = other.finishedTargetList_.Clone();
+      peakId_ = other.peakId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,19 +86,8 @@ namespace March7thHoney.Proto {
       return new WaitConfirmData(this);
     }
 
-    /// <summary>Field number for the "finished_target_list" field.</summary>
-    public const int FinishedTargetListFieldNumber = 12;
-    private static readonly pb::FieldCodec<uint> _repeated_finishedTargetList_codec
-        = pb::FieldCodec.ForUInt32(98);
-    private readonly pbc::RepeatedField<uint> finishedTargetList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> FinishedTargetList {
-      get { return finishedTargetList_; }
-    }
-
     /// <summary>Field number for the "is_wait_confirm" field.</summary>
-    public const int IsWaitConfirmFieldNumber = 11;
+    public const int IsWaitConfirmFieldNumber = 3;
     private bool isWaitConfirm_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -109,20 +98,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "peak_id" field.</summary>
-    public const int PeakIdFieldNumber = 1;
-    private uint peakId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PeakId {
-      get { return peakId_; }
-      set {
-        peakId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "cycles_used" field.</summary>
-    public const int CyclesUsedFieldNumber = 5;
+    public const int CyclesUsedFieldNumber = 7;
     private uint cyclesUsed_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -130,6 +107,29 @@ namespace March7thHoney.Proto {
       get { return cyclesUsed_; }
       set {
         cyclesUsed_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "finished_target_list" field.</summary>
+    public const int FinishedTargetListFieldNumber = 9;
+    private static readonly pb::FieldCodec<uint> _repeated_finishedTargetList_codec
+        = pb::FieldCodec.ForUInt32(74);
+    private readonly pbc::RepeatedField<uint> finishedTargetList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> FinishedTargetList {
+      get { return finishedTargetList_; }
+    }
+
+    /// <summary>Field number for the "peak_id" field.</summary>
+    public const int PeakIdFieldNumber = 14;
+    private uint peakId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint PeakId {
+      get { return peakId_; }
+      set {
+        peakId_ = value;
       }
     }
 
@@ -148,10 +148,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!finishedTargetList_.Equals(other.finishedTargetList_)) return false;
       if (IsWaitConfirm != other.IsWaitConfirm) return false;
-      if (PeakId != other.PeakId) return false;
       if (CyclesUsed != other.CyclesUsed) return false;
+      if(!finishedTargetList_.Equals(other.finishedTargetList_)) return false;
+      if (PeakId != other.PeakId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -159,10 +159,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= finishedTargetList_.GetHashCode();
       if (IsWaitConfirm != false) hash ^= IsWaitConfirm.GetHashCode();
-      if (PeakId != 0) hash ^= PeakId.GetHashCode();
       if (CyclesUsed != 0) hash ^= CyclesUsed.GetHashCode();
+      hash ^= finishedTargetList_.GetHashCode();
+      if (PeakId != 0) hash ^= PeakId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -181,19 +181,19 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (PeakId != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(PeakId);
-      }
-      if (CyclesUsed != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(CyclesUsed);
-      }
       if (IsWaitConfirm != false) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(24);
         output.WriteBool(IsWaitConfirm);
       }
+      if (CyclesUsed != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(CyclesUsed);
+      }
       finishedTargetList_.WriteTo(output, _repeated_finishedTargetList_codec);
+      if (PeakId != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(PeakId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -204,19 +204,19 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (PeakId != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(PeakId);
-      }
-      if (CyclesUsed != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(CyclesUsed);
-      }
       if (IsWaitConfirm != false) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(24);
         output.WriteBool(IsWaitConfirm);
       }
+      if (CyclesUsed != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(CyclesUsed);
+      }
       finishedTargetList_.WriteTo(ref output, _repeated_finishedTargetList_codec);
+      if (PeakId != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(PeakId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -227,15 +227,15 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += finishedTargetList_.CalculateSize(_repeated_finishedTargetList_codec);
       if (IsWaitConfirm != false) {
         size += 1 + 1;
       }
-      if (PeakId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PeakId);
-      }
       if (CyclesUsed != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CyclesUsed);
+      }
+      size += finishedTargetList_.CalculateSize(_repeated_finishedTargetList_codec);
+      if (PeakId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PeakId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -249,15 +249,15 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      finishedTargetList_.Add(other.finishedTargetList_);
       if (other.IsWaitConfirm != false) {
         IsWaitConfirm = other.IsWaitConfirm;
       }
-      if (other.PeakId != 0) {
-        PeakId = other.PeakId;
-      }
       if (other.CyclesUsed != 0) {
         CyclesUsed = other.CyclesUsed;
+      }
+      finishedTargetList_.Add(other.finishedTargetList_);
+      if (other.PeakId != 0) {
+        PeakId = other.PeakId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -278,21 +278,21 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            PeakId = input.ReadUInt32();
-            break;
-          }
-          case 40: {
-            CyclesUsed = input.ReadUInt32();
-            break;
-          }
-          case 88: {
+          case 24: {
             IsWaitConfirm = input.ReadBool();
             break;
           }
-          case 98:
-          case 96: {
+          case 56: {
+            CyclesUsed = input.ReadUInt32();
+            break;
+          }
+          case 74:
+          case 72: {
             finishedTargetList_.AddEntriesFrom(input, _repeated_finishedTargetList_codec);
+            break;
+          }
+          case 112: {
+            PeakId = input.ReadUInt32();
             break;
           }
         }
@@ -314,21 +314,21 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            PeakId = input.ReadUInt32();
-            break;
-          }
-          case 40: {
-            CyclesUsed = input.ReadUInt32();
-            break;
-          }
-          case 88: {
+          case 24: {
             IsWaitConfirm = input.ReadBool();
             break;
           }
-          case 98:
-          case 96: {
+          case 56: {
+            CyclesUsed = input.ReadUInt32();
+            break;
+          }
+          case 74:
+          case 72: {
             finishedTargetList_.AddEntriesFrom(ref input, _repeated_finishedTargetList_codec);
+            break;
+          }
+          case 112: {
+            PeakId = input.ReadUInt32();
             break;
           }
         }

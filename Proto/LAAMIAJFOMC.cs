@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static LAAMIAJFOMCReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFMQUFNSUFKRk9NQy5wcm90byI0CgtMQUFNSUFKRk9NQxIQCghhZmZpeF9p",
-            "ZBgHIAEoDRITCgtQTkpDTFBORklHQRgOIAEoCEIWqgITTWFyY2g3dGhIb25l",
+            "ChFMQUFNSUFKRk9NQy5wcm90byI0CgtMQUFNSUFKRk9NQxITCgtQTkpDTFBO",
+            "RklHQRgFIAEoCBIQCghhZmZpeF9pZBgLIAEoDUIWqgITTWFyY2g3dGhIb25l",
             "eS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LAAMIAJFOMC), global::March7thHoney.Proto.LAAMIAJFOMC.Parser, new[]{ "AffixId", "PNJCLPNFIGA" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LAAMIAJFOMC), global::March7thHoney.Proto.LAAMIAJFOMC.Parser, new[]{ "PNJCLPNFIGA", "AffixId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public LAAMIAJFOMC(LAAMIAJFOMC other) : this() {
-      affixId_ = other.affixId_;
       pNJCLPNFIGA_ = other.pNJCLPNFIGA_;
+      affixId_ = other.affixId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,20 +83,8 @@ namespace March7thHoney.Proto {
       return new LAAMIAJFOMC(this);
     }
 
-    /// <summary>Field number for the "affix_id" field.</summary>
-    public const int AffixIdFieldNumber = 7;
-    private uint affixId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint AffixId {
-      get { return affixId_; }
-      set {
-        affixId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "PNJCLPNFIGA" field.</summary>
-    public const int PNJCLPNFIGAFieldNumber = 14;
+    public const int PNJCLPNFIGAFieldNumber = 5;
     private bool pNJCLPNFIGA_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -104,6 +92,18 @@ namespace March7thHoney.Proto {
       get { return pNJCLPNFIGA_; }
       set {
         pNJCLPNFIGA_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "affix_id" field.</summary>
+    public const int AffixIdFieldNumber = 11;
+    private uint affixId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint AffixId {
+      get { return affixId_; }
+      set {
+        affixId_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (AffixId != other.AffixId) return false;
       if (PNJCLPNFIGA != other.PNJCLPNFIGA) return false;
+      if (AffixId != other.AffixId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (AffixId != 0) hash ^= AffixId.GetHashCode();
       if (PNJCLPNFIGA != false) hash ^= PNJCLPNFIGA.GetHashCode();
+      if (AffixId != 0) hash ^= AffixId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (AffixId != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(AffixId);
-      }
       if (PNJCLPNFIGA != false) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(40);
         output.WriteBool(PNJCLPNFIGA);
+      }
+      if (AffixId != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(AffixId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (AffixId != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(AffixId);
-      }
       if (PNJCLPNFIGA != false) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(40);
         output.WriteBool(PNJCLPNFIGA);
+      }
+      if (AffixId != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(AffixId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (AffixId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AffixId);
-      }
       if (PNJCLPNFIGA != false) {
         size += 1 + 1;
+      }
+      if (AffixId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AffixId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.AffixId != 0) {
-        AffixId = other.AffixId;
-      }
       if (other.PNJCLPNFIGA != false) {
         PNJCLPNFIGA = other.PNJCLPNFIGA;
+      }
+      if (other.AffixId != 0) {
+        AffixId = other.AffixId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
-            AffixId = input.ReadUInt32();
+          case 40: {
+            PNJCLPNFIGA = input.ReadBool();
             break;
           }
-          case 112: {
-            PNJCLPNFIGA = input.ReadBool();
+          case 88: {
+            AffixId = input.ReadUInt32();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
-            AffixId = input.ReadUInt32();
+          case 40: {
+            PNJCLPNFIGA = input.ReadBool();
             break;
           }
-          case 112: {
-            PNJCLPNFIGA = input.ReadBool();
+          case 88: {
+            AffixId = input.ReadUInt32();
             break;
           }
         }

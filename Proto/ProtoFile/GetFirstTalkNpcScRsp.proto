@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "FirstNpcTalkInfo.proto";
 
 message GetFirstTalkNpcScRsp {
-    repeated FirstNpcTalkInfo npc_meet_status_list = 9;
-    uint32 retcode = 15;
+    repeated FirstNpcTalkInfo npc_meet_status_list = 1;
+    uint32 retcode = 9;
 }

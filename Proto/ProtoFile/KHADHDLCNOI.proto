@@ -4,5 +4,5 @@ option csharp_namespace = "March7thHoney.Proto";
 
 message KHADHDLCNOI {
     uint32 id = 1;
-    bool KDHCICFNAOC = 2;
+    bool is_pause = 2;
 }

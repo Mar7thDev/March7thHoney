@@ -5,10 +5,10 @@ option csharp_namespace = "March7thHoney.Proto";
 import "COCHLLCNDJF.proto";
 
 message GADFFIFFNHM {
-    repeated uint32 IIELAJFFDPB = 6;
-    COCHLLCNDJF CDGNAJDAGKE = 13;
-    bool AMHAJDNFBGC = 12;
-    int32 COJOIFPPCIJ = 15;
-    uint32 id = 10;
-    int32 hp = 1;
+    bool AMHAJDNFBGC = 5;
+    int32 atk = 8;
+    COCHLLCNDJF CDGNAJDAGKE = 9;
+    int32 hp = 10;
+    repeated uint32 IIELAJFFDPB = 12;
+    uint32 id = 15;
 }

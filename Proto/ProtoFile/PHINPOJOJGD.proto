@@ -3,11 +3,11 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message PHINPOJOJGD {
-    repeated uint32 FHHKOHKBNOP = 6;
-    uint32 MHCHFDFMNFP = 11;
-    bool PKPNMOOICGP = 13;
-    bool KMNPJKCMIEN = 7;
-    int64 MJKPNOMCHID = 14;
-    int64 CDGMPCFGKMD = 2;
-    uint32 GACKJLBPKGD = 9;
+    uint32 MHCHFDFMNFP = 3;
+    int64 CDGMPCFGKMD = 4;
+    bool PKPNMOOICGP = 6;
+    repeated uint32 FHHKOHKBNOP = 7;
+    int64 MJKPNOMCHID = 9;
+    bool KMNPJKCMIEN = 12;
+    uint32 pool_id = 15;
 }

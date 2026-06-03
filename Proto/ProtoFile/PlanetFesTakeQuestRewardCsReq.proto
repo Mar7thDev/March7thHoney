@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message PlanetFesTakeQuestRewardCsReq {
-    uint32 quest_id = 14;
+    uint32 quest_id = 11;
 }

@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFBTExGR0NJQUxJSi5wcm90bxoRRU1IRU9KTkNHRkgucHJvdG8iUwoLQUxM",
-            "RkdDSUFMSUoSLwoZZ3JpZF9maWdodF9lcXVpcG1lbnRfbGlzdBgEIAMoCzIM",
-            "LkVNSEVPSk5DR0ZIEhMKC0pOQklBTE1LRkNMGAwgASgNQhaqAhNNYXJjaDd0",
+            "RkdDSUFMSUoSEwoLSk5CSUFMTUtGQ0wYBCABKA0SLwoZZ3JpZF9maWdodF9l",
+            "cXVpcG1lbnRfbGlzdBgKIAMoCzIMLkVNSEVPSk5DR0ZIQhaqAhNNYXJjaDd0",
             "aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.EMHEOJNCGFHReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ALLFGCIALIJ), global::March7thHoney.Proto.ALLFGCIALIJ.Parser, new[]{ "GridFightEquipmentList", "JNBIALMKFCL" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ALLFGCIALIJ), global::March7thHoney.Proto.ALLFGCIALIJ.Parser, new[]{ "JNBIALMKFCL", "GridFightEquipmentList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ALLFGCIALIJ(ALLFGCIALIJ other) : this() {
-      gridFightEquipmentList_ = other.gridFightEquipmentList_.Clone();
       jNBIALMKFCL_ = other.jNBIALMKFCL_;
+      gridFightEquipmentList_ = other.gridFightEquipmentList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,19 +84,8 @@ namespace March7thHoney.Proto {
       return new ALLFGCIALIJ(this);
     }
 
-    /// <summary>Field number for the "grid_fight_equipment_list" field.</summary>
-    public const int GridFightEquipmentListFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EMHEOJNCGFH> _repeated_gridFightEquipmentList_codec
-        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.EMHEOJNCGFH.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EMHEOJNCGFH> gridFightEquipmentList_ = new pbc::RepeatedField<global::March7thHoney.Proto.EMHEOJNCGFH>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.EMHEOJNCGFH> GridFightEquipmentList {
-      get { return gridFightEquipmentList_; }
-    }
-
     /// <summary>Field number for the "JNBIALMKFCL" field.</summary>
-    public const int JNBIALMKFCLFieldNumber = 12;
+    public const int JNBIALMKFCLFieldNumber = 4;
     private uint jNBIALMKFCL_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -105,6 +94,17 @@ namespace March7thHoney.Proto {
       set {
         jNBIALMKFCL_ = value;
       }
+    }
+
+    /// <summary>Field number for the "grid_fight_equipment_list" field.</summary>
+    public const int GridFightEquipmentListFieldNumber = 10;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EMHEOJNCGFH> _repeated_gridFightEquipmentList_codec
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.EMHEOJNCGFH.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EMHEOJNCGFH> gridFightEquipmentList_ = new pbc::RepeatedField<global::March7thHoney.Proto.EMHEOJNCGFH>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.EMHEOJNCGFH> GridFightEquipmentList {
+      get { return gridFightEquipmentList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!gridFightEquipmentList_.Equals(other.gridFightEquipmentList_)) return false;
       if (JNBIALMKFCL != other.JNBIALMKFCL) return false;
+      if(!gridFightEquipmentList_.Equals(other.gridFightEquipmentList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= gridFightEquipmentList_.GetHashCode();
       if (JNBIALMKFCL != 0) hash ^= JNBIALMKFCL.GetHashCode();
+      hash ^= gridFightEquipmentList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -151,11 +151,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      gridFightEquipmentList_.WriteTo(output, _repeated_gridFightEquipmentList_codec);
       if (JNBIALMKFCL != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(32);
         output.WriteUInt32(JNBIALMKFCL);
       }
+      gridFightEquipmentList_.WriteTo(output, _repeated_gridFightEquipmentList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -166,11 +166,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      gridFightEquipmentList_.WriteTo(ref output, _repeated_gridFightEquipmentList_codec);
       if (JNBIALMKFCL != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(32);
         output.WriteUInt32(JNBIALMKFCL);
       }
+      gridFightEquipmentList_.WriteTo(ref output, _repeated_gridFightEquipmentList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -181,10 +181,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += gridFightEquipmentList_.CalculateSize(_repeated_gridFightEquipmentList_codec);
       if (JNBIALMKFCL != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(JNBIALMKFCL);
       }
+      size += gridFightEquipmentList_.CalculateSize(_repeated_gridFightEquipmentList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -197,10 +197,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      gridFightEquipmentList_.Add(other.gridFightEquipmentList_);
       if (other.JNBIALMKFCL != 0) {
         JNBIALMKFCL = other.JNBIALMKFCL;
       }
+      gridFightEquipmentList_.Add(other.gridFightEquipmentList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -220,12 +220,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 34: {
-            gridFightEquipmentList_.AddEntriesFrom(input, _repeated_gridFightEquipmentList_codec);
+          case 32: {
+            JNBIALMKFCL = input.ReadUInt32();
             break;
           }
-          case 96: {
-            JNBIALMKFCL = input.ReadUInt32();
+          case 82: {
+            gridFightEquipmentList_.AddEntriesFrom(input, _repeated_gridFightEquipmentList_codec);
             break;
           }
         }
@@ -247,12 +247,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 34: {
-            gridFightEquipmentList_.AddEntriesFrom(ref input, _repeated_gridFightEquipmentList_codec);
+          case 32: {
+            JNBIALMKFCL = input.ReadUInt32();
             break;
           }
-          case 96: {
-            JNBIALMKFCL = input.ReadUInt32();
+          case 82: {
+            gridFightEquipmentList_.AddEntriesFrom(ref input, _repeated_gridFightEquipmentList_codec);
             break;
           }
         }

@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "GEGLJDELBHA.proto";
 
 message StartRaidScRsp {
-    GEGLJDELBHA scene = 5;
-    uint32 retcode = 3;
+    GEGLJDELBHA scene = 7;
+    uint32 retcode = 10;
 }

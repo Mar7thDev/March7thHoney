@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "Ch9CYXRjaFJhbmtVcEVxdWlwbWVudENzUmVxLnByb3RvGhFGQk5CRUlLQUJH",
             "RS5wcm90byI+ChlCYXRjaFJhbmtVcEVxdWlwbWVudENzUmVxEiEKC3N3aXRj",
-            "aF9saXN0GA0gAygLMgwuRkJOQkVJS0FCR0VCFqoCE01hcmNoN3RoSG9uZXku",
+            "aF9saXN0GAMgAygLMgwuRkJOQkVJS0FCR0VCFqoCE01hcmNoN3RoSG9uZXku",
             "UHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.FBNBEIKABGEReflection.Descriptor, },
@@ -84,9 +84,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "switch_list" field.</summary>
-    public const int SwitchListFieldNumber = 13;
+    public const int SwitchListFieldNumber = 3;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.FBNBEIKABGE> _repeated_switchList_codec
-        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.FBNBEIKABGE.Parser);
+        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.FBNBEIKABGE.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.FBNBEIKABGE> switchList_ = new pbc::RepeatedField<global::March7thHoney.Proto.FBNBEIKABGE>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -191,7 +191,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 106: {
+          case 26: {
             switchList_.AddEntriesFrom(input, _repeated_switchList_codec);
             break;
           }
@@ -214,7 +214,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 106: {
+          case 26: {
             switchList_.AddEntriesFrom(ref input, _repeated_switchList_codec);
             break;
           }

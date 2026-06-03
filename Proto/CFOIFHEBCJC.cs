@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFDRk9JRkhFQkNKQy5wcm90bxoRTFBBRERHUExJS0sucHJvdG8iMAoLQ0ZP",
-            "SUZIRUJDSkMSIQoLQ0NGR0NDTUVGQ0kYCCABKAsyDC5MUEFEREdQTElLS0IW",
+            "SUZIRUJDSkMSIQoLQ0NGR0NDTUVGQ0kYByABKAsyDC5MUEFEREdQTElLS0IW",
             "qgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.LPADDGPLIKKReflection.Descriptor, },
@@ -83,7 +83,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "CCFGCCMEFCI" field.</summary>
-    public const int CCFGCCMEFCIFieldNumber = 8;
+    public const int CCFGCCMEFCIFieldNumber = 7;
     private global::March7thHoney.Proto.LPADDGPLIKK cCFGCCMEFCI_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -137,7 +137,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (cCFGCCMEFCI_ != null) {
-        output.WriteRawTag(66);
+        output.WriteRawTag(58);
         output.WriteMessage(CCFGCCMEFCI);
       }
       if (_unknownFields != null) {
@@ -151,7 +151,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (cCFGCCMEFCI_ != null) {
-        output.WriteRawTag(66);
+        output.WriteRawTag(58);
         output.WriteMessage(CCFGCCMEFCI);
       }
       if (_unknownFields != null) {
@@ -204,7 +204,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 66: {
+          case 58: {
             if (cCFGCCMEFCI_ == null) {
               CCFGCCMEFCI = new global::March7thHoney.Proto.LPADDGPLIKK();
             }
@@ -230,7 +230,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 66: {
+          case 58: {
             if (cCFGCCMEFCI_ == null) {
               CCFGCCMEFCI = new global::March7thHoney.Proto.LPADDGPLIKK();
             }

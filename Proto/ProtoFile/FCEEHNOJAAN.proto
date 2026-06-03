@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemCostData.proto";
 
 message FCEEHNOJAAN {
-    ItemCostData FKMFHAAJMMF = 3;
-    uint32 retcode = 10;
+    ItemCostData FKMFHAAJMMF = 5;
+    uint32 retcode = 7;
 }

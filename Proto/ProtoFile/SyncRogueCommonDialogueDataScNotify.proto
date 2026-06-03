@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "HFEOGNAMHCG.proto";
 
 message SyncRogueCommonDialogueDataScNotify {
-    repeated HFEOGNAMHCG HJOKMCCPOLL = 13;
+    repeated HFEOGNAMHCG dialogue_list = 12;
 }

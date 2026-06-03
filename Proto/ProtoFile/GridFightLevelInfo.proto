@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "ACCMEOICEOD.proto";
+import "GANGPHPGFCL.proto";
+import "GridFightGamePortalBuffInfo.proto";
+import "GridFightLayerInfo.proto";
+import "KGMCLFHAJNJ.proto";
+import "LAAMIAJFOMC.proto";
+import "LHNCMINFONJ.proto";
+
+message GridFightLevelInfo {
+    GANGPHPGFCL COEBCNGCNOO = 2;
+    ACCMEOICEOD LHEBNOLNJHE = 3;
+    uint32 DCAHJELNJNP = 6;
+    repeated LHNCMINFONJ HEKMEJLMGFF = 7;
+    uint32 EMOHLJHPOPC = 8;
+    GridFightLayerInfo IMPNAHBCADN = 9;
+    KGMCLFHAJNJ boss_info = 10;
+    repeated LAAMIAJFOMC CFFCNEDGCJJ = 11;
+    uint32 section_id = 14;
+    repeated GridFightGamePortalBuffInfo grid_fight_portal_buff_list = 15;
+}

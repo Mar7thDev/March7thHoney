@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message SetFriendMarkScRsp {
-    uint32 uid = 8;
-    bool BIJJOJNJHDO = 14;
-    uint32 retcode = 2;
+    bool BIJJOJNJHDO = 4;
+    uint32 retcode = 6;
+    uint32 uid = 15;
 }

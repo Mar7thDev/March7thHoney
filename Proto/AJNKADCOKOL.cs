@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static AJNKADCOKOLReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFBSk5LQURDT0tPTC5wcm90byIyCgtBSk5LQURDT0tPTBIOCgZpc193aW4Y",
-            "AyABKAgSEwoLSU1HTExJQkpBUEMYDCABKA1CFqoCE01hcmNoN3RoSG9uZXku",
+            "ChFBSk5LQURDT0tPTC5wcm90byIyCgtBSk5LQURDT0tPTBITCgtJTUdMTElC",
+            "SkFQQxgGIAEoDRIOCgZpc193aW4YDCABKAhCFqoCE01hcmNoN3RoSG9uZXku",
             "UHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AJNKADCOKOL), global::March7thHoney.Proto.AJNKADCOKOL.Parser, new[]{ "IsWin", "IMGLLIBJAPC" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AJNKADCOKOL), global::March7thHoney.Proto.AJNKADCOKOL.Parser, new[]{ "IMGLLIBJAPC", "IsWin" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public AJNKADCOKOL(AJNKADCOKOL other) : this() {
-      isWin_ = other.isWin_;
       iMGLLIBJAPC_ = other.iMGLLIBJAPC_;
+      isWin_ = other.isWin_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,20 +83,8 @@ namespace March7thHoney.Proto {
       return new AJNKADCOKOL(this);
     }
 
-    /// <summary>Field number for the "is_win" field.</summary>
-    public const int IsWinFieldNumber = 3;
-    private bool isWin_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IsWin {
-      get { return isWin_; }
-      set {
-        isWin_ = value;
-      }
-    }
-
     /// <summary>Field number for the "IMGLLIBJAPC" field.</summary>
-    public const int IMGLLIBJAPCFieldNumber = 12;
+    public const int IMGLLIBJAPCFieldNumber = 6;
     private uint iMGLLIBJAPC_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -104,6 +92,18 @@ namespace March7thHoney.Proto {
       get { return iMGLLIBJAPC_; }
       set {
         iMGLLIBJAPC_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "is_win" field.</summary>
+    public const int IsWinFieldNumber = 12;
+    private bool isWin_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IsWin {
+      get { return isWin_; }
+      set {
+        isWin_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (IsWin != other.IsWin) return false;
       if (IMGLLIBJAPC != other.IMGLLIBJAPC) return false;
+      if (IsWin != other.IsWin) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (IsWin != false) hash ^= IsWin.GetHashCode();
       if (IMGLLIBJAPC != 0) hash ^= IMGLLIBJAPC.GetHashCode();
+      if (IsWin != false) hash ^= IsWin.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (IsWin != false) {
-        output.WriteRawTag(24);
-        output.WriteBool(IsWin);
-      }
       if (IMGLLIBJAPC != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(48);
         output.WriteUInt32(IMGLLIBJAPC);
+      }
+      if (IsWin != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(IsWin);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (IsWin != false) {
-        output.WriteRawTag(24);
-        output.WriteBool(IsWin);
-      }
       if (IMGLLIBJAPC != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(48);
         output.WriteUInt32(IMGLLIBJAPC);
+      }
+      if (IsWin != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(IsWin);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (IsWin != false) {
-        size += 1 + 1;
-      }
       if (IMGLLIBJAPC != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(IMGLLIBJAPC);
+      }
+      if (IsWin != false) {
+        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.IsWin != false) {
-        IsWin = other.IsWin;
-      }
       if (other.IMGLLIBJAPC != 0) {
         IMGLLIBJAPC = other.IMGLLIBJAPC;
+      }
+      if (other.IsWin != false) {
+        IsWin = other.IsWin;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
-            IsWin = input.ReadBool();
+          case 48: {
+            IMGLLIBJAPC = input.ReadUInt32();
             break;
           }
           case 96: {
-            IMGLLIBJAPC = input.ReadUInt32();
+            IsWin = input.ReadBool();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
-            IsWin = input.ReadBool();
+          case 48: {
+            IMGLLIBJAPC = input.ReadUInt32();
             break;
           }
           case 96: {
-            IMGLLIBJAPC = input.ReadUInt32();
+            IsWin = input.ReadBool();
             break;
           }
         }

@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static NPGCEFKJOINReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFOUEdDRUZLSk9JTi5wcm90byI3CgtOUEdDRUZLSk9JThITCgtJT0JKRkVK",
-            "RkxKUBgFIAEoCBITCgtDT1BBTEZMQUNITxgKIAEoDUIWqgITTWFyY2g3dGhI",
-            "b25leS5Qcm90b2IGcHJvdG8z"));
+            "ChFOUEdDRUZLSk9JTi5wcm90byIuCgtOUEdDRUZLSk9JThIPCgd0ZWNoX2lk",
+            "GAUgASgNEg4KBmFjdGl2ZRgJIAEoCEIWqgITTWFyY2g3dGhIb25leS5Qcm90",
+            "b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NPGCEFKJOIN), global::March7thHoney.Proto.NPGCEFKJOIN.Parser, new[]{ "IOBJFEJFLJP", "COPALFLACHO" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NPGCEFKJOIN), global::March7thHoney.Proto.NPGCEFKJOIN.Parser, new[]{ "TechId", "Active" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public NPGCEFKJOIN(NPGCEFKJOIN other) : this() {
-      iOBJFEJFLJP_ = other.iOBJFEJFLJP_;
-      cOPALFLACHO_ = other.cOPALFLACHO_;
+      techId_ = other.techId_;
+      active_ = other.active_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,27 +83,27 @@ namespace March7thHoney.Proto {
       return new NPGCEFKJOIN(this);
     }
 
-    /// <summary>Field number for the "IOBJFEJFLJP" field.</summary>
-    public const int IOBJFEJFLJPFieldNumber = 5;
-    private bool iOBJFEJFLJP_;
+    /// <summary>Field number for the "tech_id" field.</summary>
+    public const int TechIdFieldNumber = 5;
+    private uint techId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IOBJFEJFLJP {
-      get { return iOBJFEJFLJP_; }
+    public uint TechId {
+      get { return techId_; }
       set {
-        iOBJFEJFLJP_ = value;
+        techId_ = value;
       }
     }
 
-    /// <summary>Field number for the "COPALFLACHO" field.</summary>
-    public const int COPALFLACHOFieldNumber = 10;
-    private uint cOPALFLACHO_;
+    /// <summary>Field number for the "active" field.</summary>
+    public const int ActiveFieldNumber = 9;
+    private bool active_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint COPALFLACHO {
-      get { return cOPALFLACHO_; }
+    public bool Active {
+      get { return active_; }
       set {
-        cOPALFLACHO_ = value;
+        active_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (IOBJFEJFLJP != other.IOBJFEJFLJP) return false;
-      if (COPALFLACHO != other.COPALFLACHO) return false;
+      if (TechId != other.TechId) return false;
+      if (Active != other.Active) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (IOBJFEJFLJP != false) hash ^= IOBJFEJFLJP.GetHashCode();
-      if (COPALFLACHO != 0) hash ^= COPALFLACHO.GetHashCode();
+      if (TechId != 0) hash ^= TechId.GetHashCode();
+      if (Active != false) hash ^= Active.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (IOBJFEJFLJP != false) {
+      if (TechId != 0) {
         output.WriteRawTag(40);
-        output.WriteBool(IOBJFEJFLJP);
+        output.WriteUInt32(TechId);
       }
-      if (COPALFLACHO != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(COPALFLACHO);
+      if (Active != false) {
+        output.WriteRawTag(72);
+        output.WriteBool(Active);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (IOBJFEJFLJP != false) {
+      if (TechId != 0) {
         output.WriteRawTag(40);
-        output.WriteBool(IOBJFEJFLJP);
+        output.WriteUInt32(TechId);
       }
-      if (COPALFLACHO != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(COPALFLACHO);
+      if (Active != false) {
+        output.WriteRawTag(72);
+        output.WriteBool(Active);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (IOBJFEJFLJP != false) {
-        size += 1 + 1;
+      if (TechId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TechId);
       }
-      if (COPALFLACHO != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(COPALFLACHO);
+      if (Active != false) {
+        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.IOBJFEJFLJP != false) {
-        IOBJFEJFLJP = other.IOBJFEJFLJP;
+      if (other.TechId != 0) {
+        TechId = other.TechId;
       }
-      if (other.COPALFLACHO != 0) {
-        COPALFLACHO = other.COPALFLACHO;
+      if (other.Active != false) {
+        Active = other.Active;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -231,11 +231,11 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 40: {
-            IOBJFEJFLJP = input.ReadBool();
+            TechId = input.ReadUInt32();
             break;
           }
-          case 80: {
-            COPALFLACHO = input.ReadUInt32();
+          case 72: {
+            Active = input.ReadBool();
             break;
           }
         }
@@ -258,11 +258,11 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 40: {
-            IOBJFEJFLJP = input.ReadBool();
+            TechId = input.ReadUInt32();
             break;
           }
-          case 80: {
-            COPALFLACHO = input.ReadUInt32();
+          case 72: {
+            Active = input.ReadBool();
             break;
           }
         }

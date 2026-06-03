@@ -6,9 +6,9 @@ import "DisplayAvatarDetailInfo.proto";
 import "JFNJKAPPNOF.proto";
 
 message GetFriendRecommendLineupDetailScRsp {
-    repeated DisplayAvatarDetailInfo KNHHAJDNGJG = 13;
-    uint32 uid = 15;
-    uint32 retcode = 9;
-    uint32 key = 12;
-    JFNJKAPPNOF type = 14;
+    uint32 key = 2;
+    uint32 retcode = 3;
+    repeated DisplayAvatarDetailInfo KNHHAJDNGJG = 4;
+    JFNJKAPPNOF type = 7;
+    uint32 uid = 14;
 }

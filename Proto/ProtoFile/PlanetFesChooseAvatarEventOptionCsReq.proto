@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message PlanetFesChooseAvatarEventOptionCsReq {
-    uint32 MABNCDEBPDK = 14;
+    uint32 MABNCDEBPDK = 7;
 }

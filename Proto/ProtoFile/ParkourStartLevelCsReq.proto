@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ParkourStartLevelCsReq {
-    uint32 CEKKJHBNEOD = 8;
-    uint32 level_id = 10;
+    uint32 CEKKJHBNEOD = 7;
+    uint32 level_id = 11;
 }

@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "LFKKOMBKJIP.proto";
 
 message PlayerHeartBeatCsReq {
-    LFKKOMBKJIP sc_data = 7;
-    uint32 EOHFCODKKMD = 12;
-    uint64 client_time_ms = 1;
+    LFKKOMBKJIP sc_data = 1;
+    uint64 client_time_ms = 8;
+    uint32 EOHFCODKKMD = 15;
 }

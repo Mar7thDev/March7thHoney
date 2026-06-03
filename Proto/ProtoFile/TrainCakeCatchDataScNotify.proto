@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "JOFHMCJPBCE.proto";
 
 message TrainCakeCatchDataScNotify {
-    repeated uint32 performance_id_list = 2;
-    repeated JOFHMCJPBCE NIELDCLPOLA = 11;
+    repeated uint32 performance_id_list = 10;
+    repeated JOFHMCJPBCE NIELDCLPOLA = 14;
 }

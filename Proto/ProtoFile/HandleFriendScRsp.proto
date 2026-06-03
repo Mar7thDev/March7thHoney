@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "FriendSimpleInfo.proto";
 
 message HandleFriendScRsp {
-    FriendSimpleInfo friend_info = 4;
-    uint32 uid = 3;
-    uint32 retcode = 7;
-    bool is_accept = 9;
+    uint32 retcode = 2;
+    bool is_accept = 3;
+    uint32 uid = 8;
+    FriendSimpleInfo friend_info = 12;
 }

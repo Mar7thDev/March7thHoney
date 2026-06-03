@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "IODAFIBPAGM.proto";
 
 message LogisticsGameCsReq {
-    repeated IODAFIBPAGM MDNBOBFGKFN = 15;
-    bool CNCJKGEDEII = 9;
+    repeated IODAFIBPAGM MDNBOBFGKFN = 9;
+    bool CNCJKGEDEII = 15;
 }

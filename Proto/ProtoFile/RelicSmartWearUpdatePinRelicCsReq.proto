@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "CABBOOKAODO.proto";
 
 message RelicSmartWearUpdatePinRelicCsReq {
-    CABBOOKAODO DNNKBPBFPBK = 1;
+    CABBOOKAODO DNNKBPBFPBK = 14;
 }

@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "MMBBHFNJILI.proto";
 
 message AHNLMMFHOME {
-    MMBBHFNJILI ACCCINPPINC = 6;
+    MMBBHFNJILI ACCCINPPINC = 10;
 }

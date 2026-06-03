@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "HANMCLKOCBO.proto";
 
 message COIMBCBMNIE {
-    repeated HANMCLKOCBO BEDHEKAGAPE = 14;
-    uint32 level_id = 1;
+    repeated HANMCLKOCBO BEDHEKAGAPE = 2;
+    uint32 level_id = 11;
 }

@@ -24,15 +24,15 @@ namespace March7thHoney.Proto {
     static AddItemRspReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChBBZGRJdGVtUnNwLnByb3RvGg5JdGVtTGlzdC5wcm90byJ8CgpBZGRJdGVt",
-            "UnNwEhkKBnJld2FyZBgLIAEoCzIJLkl0ZW1MaXN0EhgKEHVubG9ja190aW1l",
-            "c3RhbXAYBiABKAMSEwoJYXZhdGFyX2lkGAUgASgNSAASFQoLQ0xFS0FLTFBO",
-            "QlAYByABKA1IAEINCgtGSklBTkhNQUJBQkIWqgITTWFyY2g3dGhIb25leS5Q",
-            "cm90b2IGcHJvdG8z"));
+            "ChBBZGRJdGVtUnNwLnByb3RvGg5JdGVtTGlzdC5wcm90byJ3CgpBZGRJdGVt",
+            "UnNwEhMKC3VubG9ja190aW1lGAcgASgDEhkKBnJld2FyZBgIIAEoCzIJLkl0",
+            "ZW1MaXN0EhMKCWF2YXRhcl9pZBgGIAEoDUgAEhUKC0NMRUtBS0xQTkJQGAIg",
+            "ASgNSABCDQoLRkpJQU5ITUFCQUJCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
+            "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemListReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AddItemRsp), global::March7thHoney.Proto.AddItemRsp.Parser, new[]{ "Reward", "UnlockTimestamp", "AvatarId", "CLEKAKLPNBP" }, new[]{ "FJIANHMABAB" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AddItemRsp), global::March7thHoney.Proto.AddItemRsp.Parser, new[]{ "UnlockTime", "Reward", "AvatarId", "CLEKAKLPNBP" }, new[]{ "FJIANHMABAB" }, null, null, null)
           }));
     }
     #endregion
@@ -74,8 +74,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public AddItemRsp(AddItemRsp other) : this() {
+      unlockTime_ = other.unlockTime_;
       reward_ = other.reward_ != null ? other.reward_.Clone() : null;
-      unlockTimestamp_ = other.unlockTimestamp_;
       switch (other.FJIANHMABABCase) {
         case FJIANHMABABOneofCase.AvatarId:
           AvatarId = other.AvatarId;
@@ -94,8 +94,20 @@ namespace March7thHoney.Proto {
       return new AddItemRsp(this);
     }
 
+    /// <summary>Field number for the "unlock_time" field.</summary>
+    public const int UnlockTimeFieldNumber = 7;
+    private long unlockTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long UnlockTime {
+      get { return unlockTime_; }
+      set {
+        unlockTime_ = value;
+      }
+    }
+
     /// <summary>Field number for the "reward" field.</summary>
-    public const int RewardFieldNumber = 11;
+    public const int RewardFieldNumber = 8;
     private global::March7thHoney.Proto.ItemList reward_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -106,20 +118,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "unlock_timestamp" field.</summary>
-    public const int UnlockTimestampFieldNumber = 6;
-    private long unlockTimestamp_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long UnlockTimestamp {
-      get { return unlockTimestamp_; }
-      set {
-        unlockTimestamp_ = value;
-      }
-    }
-
     /// <summary>Field number for the "avatar_id" field.</summary>
-    public const int AvatarIdFieldNumber = 5;
+    public const int AvatarIdFieldNumber = 6;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint AvatarId {
@@ -145,7 +145,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "CLEKAKLPNBP" field.</summary>
-    public const int CLEKAKLPNBPFieldNumber = 7;
+    public const int CLEKAKLPNBPFieldNumber = 2;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint CLEKAKLPNBP {
@@ -174,8 +174,8 @@ namespace March7thHoney.Proto {
     /// <summary>Enum of possible cases for the "FJIANHMABAB" oneof.</summary>
     public enum FJIANHMABABOneofCase {
       None = 0,
-      AvatarId = 5,
-      CLEKAKLPNBP = 7,
+      AvatarId = 6,
+      CLEKAKLPNBP = 2,
     }
     private FJIANHMABABOneofCase fJIANHMABABCase_ = FJIANHMABABOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -206,8 +206,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (UnlockTime != other.UnlockTime) return false;
       if (!object.Equals(Reward, other.Reward)) return false;
-      if (UnlockTimestamp != other.UnlockTimestamp) return false;
       if (AvatarId != other.AvatarId) return false;
       if (CLEKAKLPNBP != other.CLEKAKLPNBP) return false;
       if (FJIANHMABABCase != other.FJIANHMABABCase) return false;
@@ -218,8 +218,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (UnlockTime != 0L) hash ^= UnlockTime.GetHashCode();
       if (reward_ != null) hash ^= Reward.GetHashCode();
-      if (UnlockTimestamp != 0L) hash ^= UnlockTimestamp.GetHashCode();
       if (HasAvatarId) hash ^= AvatarId.GetHashCode();
       if (HasCLEKAKLPNBP) hash ^= CLEKAKLPNBP.GetHashCode();
       hash ^= (int) fJIANHMABABCase_;
@@ -241,20 +241,20 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (HasAvatarId) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(AvatarId);
-      }
-      if (UnlockTimestamp != 0L) {
-        output.WriteRawTag(48);
-        output.WriteInt64(UnlockTimestamp);
-      }
       if (HasCLEKAKLPNBP) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(16);
         output.WriteUInt32(CLEKAKLPNBP);
       }
+      if (HasAvatarId) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(AvatarId);
+      }
+      if (UnlockTime != 0L) {
+        output.WriteRawTag(56);
+        output.WriteInt64(UnlockTime);
+      }
       if (reward_ != null) {
-        output.WriteRawTag(90);
+        output.WriteRawTag(66);
         output.WriteMessage(Reward);
       }
       if (_unknownFields != null) {
@@ -267,20 +267,20 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (HasAvatarId) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(AvatarId);
-      }
-      if (UnlockTimestamp != 0L) {
-        output.WriteRawTag(48);
-        output.WriteInt64(UnlockTimestamp);
-      }
       if (HasCLEKAKLPNBP) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(16);
         output.WriteUInt32(CLEKAKLPNBP);
       }
+      if (HasAvatarId) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(AvatarId);
+      }
+      if (UnlockTime != 0L) {
+        output.WriteRawTag(56);
+        output.WriteInt64(UnlockTime);
+      }
       if (reward_ != null) {
-        output.WriteRawTag(90);
+        output.WriteRawTag(66);
         output.WriteMessage(Reward);
       }
       if (_unknownFields != null) {
@@ -293,11 +293,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (UnlockTime != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(UnlockTime);
+      }
       if (reward_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Reward);
-      }
-      if (UnlockTimestamp != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(UnlockTimestamp);
       }
       if (HasAvatarId) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarId);
@@ -317,14 +317,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.UnlockTime != 0L) {
+        UnlockTime = other.UnlockTime;
+      }
       if (other.reward_ != null) {
         if (reward_ == null) {
           Reward = new global::March7thHoney.Proto.ItemList();
         }
         Reward.MergeFrom(other.Reward);
-      }
-      if (other.UnlockTimestamp != 0L) {
-        UnlockTimestamp = other.UnlockTimestamp;
       }
       switch (other.FJIANHMABABCase) {
         case FJIANHMABABOneofCase.AvatarId:
@@ -354,19 +354,19 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 40: {
-            AvatarId = input.ReadUInt32();
-            break;
-          }
-          case 48: {
-            UnlockTimestamp = input.ReadInt64();
-            break;
-          }
-          case 56: {
+          case 16: {
             CLEKAKLPNBP = input.ReadUInt32();
             break;
           }
-          case 90: {
+          case 48: {
+            AvatarId = input.ReadUInt32();
+            break;
+          }
+          case 56: {
+            UnlockTime = input.ReadInt64();
+            break;
+          }
+          case 66: {
             if (reward_ == null) {
               Reward = new global::March7thHoney.Proto.ItemList();
             }
@@ -392,19 +392,19 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 40: {
-            AvatarId = input.ReadUInt32();
-            break;
-          }
-          case 48: {
-            UnlockTimestamp = input.ReadInt64();
-            break;
-          }
-          case 56: {
+          case 16: {
             CLEKAKLPNBP = input.ReadUInt32();
             break;
           }
-          case 90: {
+          case 48: {
+            AvatarId = input.ReadUInt32();
+            break;
+          }
+          case 56: {
+            UnlockTime = input.ReadInt64();
+            break;
+          }
+          case 66: {
             if (reward_ == null) {
               Reward = new global::March7thHoney.Proto.ItemList();
             }

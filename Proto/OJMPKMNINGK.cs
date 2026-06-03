@@ -24,16 +24,16 @@ namespace March7thHoney.Proto {
     static OJMPKMNINGKReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFPSk1QS01OSU5HSy5wcm90byLEAQoLT0pNUEtNTklOR0sSMgoLQUFBQkhO",
-            "TUFFTk4YBSADKAsyHS5PSk1QS01OSU5HSy5BQUFCSE5NQUVOTkVudHJ5EhMK",
-            "C0FBTENDUEpDQk1FGAMgASgIEg0KBWxldmVsGAIgASgNEhQKDGRpY2Vfc2xv",
-            "dF9pZBgEIAEoDRITCgtDRktLS1BOS0hFTBgBIAEoDRoyChBBQUFCSE5NQUVO",
-            "TkVudHJ5EgsKA2tleRgBIAEoDRINCgV2YWx1ZRgCIAEoDToCOAFCFqoCE01h",
-            "cmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ChFPSk1QS01OSU5HSy5wcm90byLCAQoLT0pNUEtNTklOR0sSEwoLQ0ZLS0tQ",
+            "TktIRUwYASABKA0SDQoFbGV2ZWwYAiABKA0SEQoJaXNfbG9ja2VkGAMgASgI",
+            "EhQKDGRpY2Vfc2xvdF9pZBgEIAEoDRIyCgtBQUFCSE5NQUVOThgFIAMoCzId",
+            "Lk9KTVBLTU5JTkdLLkFBQUJITk1BRU5ORW50cnkaMgoQQUFBQkhOTUFFTk5F",
+            "bnRyeRILCgNrZXkYASABKA0SDQoFdmFsdWUYAiABKA06AjgBQhaqAhNNYXJj",
+            "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.OJMPKMNINGK), global::March7thHoney.Proto.OJMPKMNINGK.Parser, new[]{ "AAABHNMAENN", "AALCCPJCBME", "Level", "DiceSlotId", "CFKKKPNKHEL" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.OJMPKMNINGK), global::March7thHoney.Proto.OJMPKMNINGK.Parser, new[]{ "CFKKKPNKHEL", "Level", "IsLocked", "DiceSlotId", "AAABHNMAENN" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -75,11 +75,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public OJMPKMNINGK(OJMPKMNINGK other) : this() {
-      aAABHNMAENN_ = other.aAABHNMAENN_.Clone();
-      aALCCPJCBME_ = other.aALCCPJCBME_;
-      level_ = other.level_;
-      diceSlotId_ = other.diceSlotId_;
       cFKKKPNKHEL_ = other.cFKKKPNKHEL_;
+      level_ = other.level_;
+      isLocked_ = other.isLocked_;
+      diceSlotId_ = other.diceSlotId_;
+      aAABHNMAENN_ = other.aAABHNMAENN_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -89,26 +89,15 @@ namespace March7thHoney.Proto {
       return new OJMPKMNINGK(this);
     }
 
-    /// <summary>Field number for the "AAABHNMAENN" field.</summary>
-    public const int AAABHNMAENNFieldNumber = 5;
-    private static readonly pbc::MapField<uint, uint>.Codec _map_aAABHNMAENN_codec
-        = new pbc::MapField<uint, uint>.Codec(pb::FieldCodec.ForUInt32(8, 0), pb::FieldCodec.ForUInt32(16, 0), 42);
-    private readonly pbc::MapField<uint, uint> aAABHNMAENN_ = new pbc::MapField<uint, uint>();
+    /// <summary>Field number for the "CFKKKPNKHEL" field.</summary>
+    public const int CFKKKPNKHELFieldNumber = 1;
+    private uint cFKKKPNKHEL_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<uint, uint> AAABHNMAENN {
-      get { return aAABHNMAENN_; }
-    }
-
-    /// <summary>Field number for the "AALCCPJCBME" field.</summary>
-    public const int AALCCPJCBMEFieldNumber = 3;
-    private bool aALCCPJCBME_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool AALCCPJCBME {
-      get { return aALCCPJCBME_; }
+    public uint CFKKKPNKHEL {
+      get { return cFKKKPNKHEL_; }
       set {
-        aALCCPJCBME_ = value;
+        cFKKKPNKHEL_ = value;
       }
     }
 
@@ -124,6 +113,18 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "is_locked" field.</summary>
+    public const int IsLockedFieldNumber = 3;
+    private bool isLocked_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IsLocked {
+      get { return isLocked_; }
+      set {
+        isLocked_ = value;
+      }
+    }
+
     /// <summary>Field number for the "dice_slot_id" field.</summary>
     public const int DiceSlotIdFieldNumber = 4;
     private uint diceSlotId_;
@@ -136,16 +137,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "CFKKKPNKHEL" field.</summary>
-    public const int CFKKKPNKHELFieldNumber = 1;
-    private uint cFKKKPNKHEL_;
+    /// <summary>Field number for the "AAABHNMAENN" field.</summary>
+    public const int AAABHNMAENNFieldNumber = 5;
+    private static readonly pbc::MapField<uint, uint>.Codec _map_aAABHNMAENN_codec
+        = new pbc::MapField<uint, uint>.Codec(pb::FieldCodec.ForUInt32(8, 0), pb::FieldCodec.ForUInt32(16, 0), 42);
+    private readonly pbc::MapField<uint, uint> aAABHNMAENN_ = new pbc::MapField<uint, uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CFKKKPNKHEL {
-      get { return cFKKKPNKHEL_; }
-      set {
-        cFKKKPNKHEL_ = value;
-      }
+    public pbc::MapField<uint, uint> AAABHNMAENN {
+      get { return aAABHNMAENN_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -163,11 +163,11 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!AAABHNMAENN.Equals(other.AAABHNMAENN)) return false;
-      if (AALCCPJCBME != other.AALCCPJCBME) return false;
-      if (Level != other.Level) return false;
-      if (DiceSlotId != other.DiceSlotId) return false;
       if (CFKKKPNKHEL != other.CFKKKPNKHEL) return false;
+      if (Level != other.Level) return false;
+      if (IsLocked != other.IsLocked) return false;
+      if (DiceSlotId != other.DiceSlotId) return false;
+      if (!AAABHNMAENN.Equals(other.AAABHNMAENN)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -175,11 +175,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= AAABHNMAENN.GetHashCode();
-      if (AALCCPJCBME != false) hash ^= AALCCPJCBME.GetHashCode();
-      if (Level != 0) hash ^= Level.GetHashCode();
-      if (DiceSlotId != 0) hash ^= DiceSlotId.GetHashCode();
       if (CFKKKPNKHEL != 0) hash ^= CFKKKPNKHEL.GetHashCode();
+      if (Level != 0) hash ^= Level.GetHashCode();
+      if (IsLocked != false) hash ^= IsLocked.GetHashCode();
+      if (DiceSlotId != 0) hash ^= DiceSlotId.GetHashCode();
+      hash ^= AAABHNMAENN.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -206,9 +206,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(16);
         output.WriteUInt32(Level);
       }
-      if (AALCCPJCBME != false) {
+      if (IsLocked != false) {
         output.WriteRawTag(24);
-        output.WriteBool(AALCCPJCBME);
+        output.WriteBool(IsLocked);
       }
       if (DiceSlotId != 0) {
         output.WriteRawTag(32);
@@ -233,9 +233,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(16);
         output.WriteUInt32(Level);
       }
-      if (AALCCPJCBME != false) {
+      if (IsLocked != false) {
         output.WriteRawTag(24);
-        output.WriteBool(AALCCPJCBME);
+        output.WriteBool(IsLocked);
       }
       if (DiceSlotId != 0) {
         output.WriteRawTag(32);
@@ -252,19 +252,19 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += aAABHNMAENN_.CalculateSize(_map_aAABHNMAENN_codec);
-      if (AALCCPJCBME != false) {
-        size += 1 + 1;
+      if (CFKKKPNKHEL != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CFKKKPNKHEL);
       }
       if (Level != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
       }
+      if (IsLocked != false) {
+        size += 1 + 1;
+      }
       if (DiceSlotId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DiceSlotId);
       }
-      if (CFKKKPNKHEL != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CFKKKPNKHEL);
-      }
+      size += aAABHNMAENN_.CalculateSize(_map_aAABHNMAENN_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -277,19 +277,19 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      aAABHNMAENN_.MergeFrom(other.aAABHNMAENN_);
-      if (other.AALCCPJCBME != false) {
-        AALCCPJCBME = other.AALCCPJCBME;
+      if (other.CFKKKPNKHEL != 0) {
+        CFKKKPNKHEL = other.CFKKKPNKHEL;
       }
       if (other.Level != 0) {
         Level = other.Level;
       }
+      if (other.IsLocked != false) {
+        IsLocked = other.IsLocked;
+      }
       if (other.DiceSlotId != 0) {
         DiceSlotId = other.DiceSlotId;
       }
-      if (other.CFKKKPNKHEL != 0) {
-        CFKKKPNKHEL = other.CFKKKPNKHEL;
-      }
+      aAABHNMAENN_.MergeFrom(other.aAABHNMAENN_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -318,7 +318,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 24: {
-            AALCCPJCBME = input.ReadBool();
+            IsLocked = input.ReadBool();
             break;
           }
           case 32: {
@@ -357,7 +357,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 24: {
-            AALCCPJCBME = input.ReadBool();
+            IsLocked = input.ReadBool();
             break;
           }
           case 32: {

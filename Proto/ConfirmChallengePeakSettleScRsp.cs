@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiVDb25maXJtQ2hhbGxlbmdlUGVha1NldHRsZVNjUnNwLnByb3RvIlgKH0Nv",
-            "bmZpcm1DaGFsbGVuZ2VQZWFrU2V0dGxlU2NSc3ASDwoHcGVha19pZBgHIAEo",
-            "DRIPCgdyZXRjb2RlGAsgASgNEhMKC0lPQkNJTUlQRU9NGAggASgIQhaqAhNN",
+            "bmZpcm1DaGFsbGVuZ2VQZWFrU2V0dGxlU2NSc3ASEwoLSU9CQ0lNSVBFT00Y",
+            "BSABKAgSDwoHcGVha19pZBgIIAEoDRIPCgdyZXRjb2RlGAwgASgNQhaqAhNN",
             "YXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ConfirmChallengePeakSettleScRsp), global::March7thHoney.Proto.ConfirmChallengePeakSettleScRsp.Parser, new[]{ "PeakId", "Retcode", "IOBCIMIPEOM" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ConfirmChallengePeakSettleScRsp), global::March7thHoney.Proto.ConfirmChallengePeakSettleScRsp.Parser, new[]{ "IOBCIMIPEOM", "PeakId", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,9 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ConfirmChallengePeakSettleScRsp(ConfirmChallengePeakSettleScRsp other) : this() {
+      iOBCIMIPEOM_ = other.iOBCIMIPEOM_;
       peakId_ = other.peakId_;
       retcode_ = other.retcode_;
-      iOBCIMIPEOM_ = other.iOBCIMIPEOM_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,8 +85,20 @@ namespace March7thHoney.Proto {
       return new ConfirmChallengePeakSettleScRsp(this);
     }
 
+    /// <summary>Field number for the "IOBCIMIPEOM" field.</summary>
+    public const int IOBCIMIPEOMFieldNumber = 5;
+    private bool iOBCIMIPEOM_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IOBCIMIPEOM {
+      get { return iOBCIMIPEOM_; }
+      set {
+        iOBCIMIPEOM_ = value;
+      }
+    }
+
     /// <summary>Field number for the "peak_id" field.</summary>
-    public const int PeakIdFieldNumber = 7;
+    public const int PeakIdFieldNumber = 8;
     private uint peakId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,7 +110,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 11;
+    public const int RetcodeFieldNumber = 12;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -106,18 +118,6 @@ namespace March7thHoney.Proto {
       get { return retcode_; }
       set {
         retcode_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "IOBCIMIPEOM" field.</summary>
-    public const int IOBCIMIPEOMFieldNumber = 8;
-    private bool iOBCIMIPEOM_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IOBCIMIPEOM {
-      get { return iOBCIMIPEOM_; }
-      set {
-        iOBCIMIPEOM_ = value;
       }
     }
 
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (IOBCIMIPEOM != other.IOBCIMIPEOM) return false;
       if (PeakId != other.PeakId) return false;
       if (Retcode != other.Retcode) return false;
-      if (IOBCIMIPEOM != other.IOBCIMIPEOM) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -146,9 +146,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (IOBCIMIPEOM != false) hash ^= IOBCIMIPEOM.GetHashCode();
       if (PeakId != 0) hash ^= PeakId.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
-      if (IOBCIMIPEOM != false) hash ^= IOBCIMIPEOM.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -167,16 +167,16 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (PeakId != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(PeakId);
-      }
       if (IOBCIMIPEOM != false) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(40);
         output.WriteBool(IOBCIMIPEOM);
       }
+      if (PeakId != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(PeakId);
+      }
       if (Retcode != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(96);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -189,16 +189,16 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (PeakId != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(PeakId);
-      }
       if (IOBCIMIPEOM != false) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(40);
         output.WriteBool(IOBCIMIPEOM);
       }
+      if (PeakId != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(PeakId);
+      }
       if (Retcode != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(96);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -211,14 +211,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (IOBCIMIPEOM != false) {
+        size += 1 + 1;
+      }
       if (PeakId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PeakId);
       }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
-      }
-      if (IOBCIMIPEOM != false) {
-        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -232,14 +232,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.IOBCIMIPEOM != false) {
+        IOBCIMIPEOM = other.IOBCIMIPEOM;
+      }
       if (other.PeakId != 0) {
         PeakId = other.PeakId;
       }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
-      }
-      if (other.IOBCIMIPEOM != false) {
-        IOBCIMIPEOM = other.IOBCIMIPEOM;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -260,15 +260,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
-            PeakId = input.ReadUInt32();
-            break;
-          }
-          case 64: {
+          case 40: {
             IOBCIMIPEOM = input.ReadBool();
             break;
           }
-          case 88: {
+          case 64: {
+            PeakId = input.ReadUInt32();
+            break;
+          }
+          case 96: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -291,15 +291,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
-            PeakId = input.ReadUInt32();
-            break;
-          }
-          case 64: {
+          case 40: {
             IOBCIMIPEOM = input.ReadBool();
             break;
           }
-          case 88: {
+          case 64: {
+            PeakId = input.ReadUInt32();
+            break;
+          }
+          case 96: {
             Retcode = input.ReadUInt32();
             break;
           }

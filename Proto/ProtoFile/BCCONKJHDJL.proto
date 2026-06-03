@@ -6,8 +6,8 @@ import "AOHKKFHDALO.proto";
 import "GridFightDropType.proto";
 
 message BCCONKJHDJL {
-    AOHKKFHDALO display_value = 5;
     GridFightDropType FKKGLFOHGGA = 1;
     uint32 FNLMKJLKLFH = 2;
     uint32 num = 3;
+    AOHKKFHDALO param = 5;
 }

@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message UnlockChatBubbleScNotify {
-    uint32 bubble_id = 15;
+    uint32 bubble_id = 9;
 }

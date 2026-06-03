@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "EFGIHHJGCFA.proto";
 
 message GetActivityRewardCountDataScRsp {
-    repeated EFGIHHJGCFA content_package_list = 8;
-    uint32 retcode = 15;
+    repeated EFGIHHJGCFA content_package_list = 3;
+    uint32 retcode = 9;
 }

@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "OCBPJLLLJGO.proto";
 
 message JHBEOHDMHDA {
-    OCBPJLLLJGO PJJNMNJMKBG = 15;
-    bool OKJJOMMGIGD = 12;
+    OCBPJLLLJGO PJJNMNJMKBG = 1;
+    bool OKJJOMMGIGD = 14;
 }

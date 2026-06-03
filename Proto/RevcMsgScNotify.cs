@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChVSZXZjTXNnU2NOb3RpZnkucHJvdG8aFUNoYXRNZXNzYWdlRGF0YS5wcm90",
-            "bxoOQ2hhdFR5cGUucHJvdG8icAoPUmV2Y01zZ1NjTm90aWZ5EisKEXJlY3Zf",
-            "bWVzc2FnZV9kYXRhGAsgASgLMhAuQ2hhdE1lc3NhZ2VEYXRhEhwKCWNoYXRf",
-            "dHlwZRgOIAEoDjIJLkNoYXRUeXBlEhIKCnNvdXJjZV91aWQYCiABKA1CFqoC",
+            "bxoOQ2hhdFR5cGUucHJvdG8icAoPUmV2Y01zZ1NjTm90aWZ5EhIKCnNvdXJj",
+            "ZV91aWQYAiABKA0SHAoJY2hhdF90eXBlGAQgASgOMgkuQ2hhdFR5cGUSKwoR",
+            "cmVjdl9tZXNzYWdlX2RhdGEYDCABKAsyEC5DaGF0TWVzc2FnZURhdGFCFqoC",
             "E01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChatMessageDataReflection.Descriptor, global::March7thHoney.Proto.ChatTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RevcMsgScNotify), global::March7thHoney.Proto.RevcMsgScNotify.Parser, new[]{ "RecvMessageData", "ChatType", "SourceUid" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RevcMsgScNotify), global::March7thHoney.Proto.RevcMsgScNotify.Parser, new[]{ "SourceUid", "ChatType", "RecvMessageData" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,9 +74,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RevcMsgScNotify(RevcMsgScNotify other) : this() {
-      recvMessageData_ = other.recvMessageData_ != null ? other.recvMessageData_.Clone() : null;
-      chatType_ = other.chatType_;
       sourceUid_ = other.sourceUid_;
+      chatType_ = other.chatType_;
+      recvMessageData_ = other.recvMessageData_ != null ? other.recvMessageData_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,20 +86,20 @@ namespace March7thHoney.Proto {
       return new RevcMsgScNotify(this);
     }
 
-    /// <summary>Field number for the "recv_message_data" field.</summary>
-    public const int RecvMessageDataFieldNumber = 11;
-    private global::March7thHoney.Proto.ChatMessageData recvMessageData_;
+    /// <summary>Field number for the "source_uid" field.</summary>
+    public const int SourceUidFieldNumber = 2;
+    private uint sourceUid_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.ChatMessageData RecvMessageData {
-      get { return recvMessageData_; }
+    public uint SourceUid {
+      get { return sourceUid_; }
       set {
-        recvMessageData_ = value;
+        sourceUid_ = value;
       }
     }
 
     /// <summary>Field number for the "chat_type" field.</summary>
-    public const int ChatTypeFieldNumber = 14;
+    public const int ChatTypeFieldNumber = 4;
     private global::March7thHoney.Proto.ChatType chatType_ = global::March7thHoney.Proto.ChatType.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,15 +110,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "source_uid" field.</summary>
-    public const int SourceUidFieldNumber = 10;
-    private uint sourceUid_;
+    /// <summary>Field number for the "recv_message_data" field.</summary>
+    public const int RecvMessageDataFieldNumber = 12;
+    private global::March7thHoney.Proto.ChatMessageData recvMessageData_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint SourceUid {
-      get { return sourceUid_; }
+    public global::March7thHoney.Proto.ChatMessageData RecvMessageData {
+      get { return recvMessageData_; }
       set {
-        sourceUid_ = value;
+        recvMessageData_ = value;
       }
     }
 
@@ -137,9 +137,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(RecvMessageData, other.RecvMessageData)) return false;
-      if (ChatType != other.ChatType) return false;
       if (SourceUid != other.SourceUid) return false;
+      if (ChatType != other.ChatType) return false;
+      if (!object.Equals(RecvMessageData, other.RecvMessageData)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -147,9 +147,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (recvMessageData_ != null) hash ^= RecvMessageData.GetHashCode();
-      if (ChatType != global::March7thHoney.Proto.ChatType.None) hash ^= ChatType.GetHashCode();
       if (SourceUid != 0) hash ^= SourceUid.GetHashCode();
+      if (ChatType != global::March7thHoney.Proto.ChatType.None) hash ^= ChatType.GetHashCode();
+      if (recvMessageData_ != null) hash ^= RecvMessageData.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -169,16 +169,16 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (SourceUid != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(16);
         output.WriteUInt32(SourceUid);
       }
-      if (recvMessageData_ != null) {
-        output.WriteRawTag(90);
-        output.WriteMessage(RecvMessageData);
-      }
       if (ChatType != global::March7thHoney.Proto.ChatType.None) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(32);
         output.WriteEnum((int) ChatType);
+      }
+      if (recvMessageData_ != null) {
+        output.WriteRawTag(98);
+        output.WriteMessage(RecvMessageData);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -191,16 +191,16 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (SourceUid != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(16);
         output.WriteUInt32(SourceUid);
       }
-      if (recvMessageData_ != null) {
-        output.WriteRawTag(90);
-        output.WriteMessage(RecvMessageData);
-      }
       if (ChatType != global::March7thHoney.Proto.ChatType.None) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(32);
         output.WriteEnum((int) ChatType);
+      }
+      if (recvMessageData_ != null) {
+        output.WriteRawTag(98);
+        output.WriteMessage(RecvMessageData);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -212,14 +212,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (recvMessageData_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(RecvMessageData);
+      if (SourceUid != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SourceUid);
       }
       if (ChatType != global::March7thHoney.Proto.ChatType.None) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ChatType);
       }
-      if (SourceUid != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SourceUid);
+      if (recvMessageData_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(RecvMessageData);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -233,17 +233,17 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.SourceUid != 0) {
+        SourceUid = other.SourceUid;
+      }
+      if (other.ChatType != global::March7thHoney.Proto.ChatType.None) {
+        ChatType = other.ChatType;
+      }
       if (other.recvMessageData_ != null) {
         if (recvMessageData_ == null) {
           RecvMessageData = new global::March7thHoney.Proto.ChatMessageData();
         }
         RecvMessageData.MergeFrom(other.RecvMessageData);
-      }
-      if (other.ChatType != global::March7thHoney.Proto.ChatType.None) {
-        ChatType = other.ChatType;
-      }
-      if (other.SourceUid != 0) {
-        SourceUid = other.SourceUid;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -264,19 +264,19 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 80: {
+          case 16: {
             SourceUid = input.ReadUInt32();
             break;
           }
-          case 90: {
+          case 32: {
+            ChatType = (global::March7thHoney.Proto.ChatType) input.ReadEnum();
+            break;
+          }
+          case 98: {
             if (recvMessageData_ == null) {
               RecvMessageData = new global::March7thHoney.Proto.ChatMessageData();
             }
             input.ReadMessage(RecvMessageData);
-            break;
-          }
-          case 112: {
-            ChatType = (global::March7thHoney.Proto.ChatType) input.ReadEnum();
             break;
           }
         }
@@ -298,19 +298,19 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 80: {
+          case 16: {
             SourceUid = input.ReadUInt32();
             break;
           }
-          case 90: {
+          case 32: {
+            ChatType = (global::March7thHoney.Proto.ChatType) input.ReadEnum();
+            break;
+          }
+          case 98: {
             if (recvMessageData_ == null) {
               RecvMessageData = new global::March7thHoney.Proto.ChatMessageData();
             }
             input.ReadMessage(RecvMessageData);
-            break;
-          }
-          case 112: {
-            ChatType = (global::March7thHoney.Proto.ChatType) input.ReadEnum();
             break;
           }
         }

@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiBTZWxlY3RJbmNsaW5hdGlvblRleHRTY1JzcC5wcm90byJHChpTZWxlY3RJ",
-            "bmNsaW5hdGlvblRleHRTY1JzcBIYChB0YWxrX3NlbnRlbmNlX2lkGAQgASgN",
-            "Eg8KB3JldGNvZGUYBSABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
+            "bmNsaW5hdGlvblRleHRTY1JzcBIPCgdyZXRjb2RlGAUgASgNEhgKEHRhbGtf",
+            "c2VudGVuY2VfaWQYCiABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
             "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SelectInclinationTextScRsp), global::March7thHoney.Proto.SelectInclinationTextScRsp.Parser, new[]{ "TalkSentenceId", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SelectInclinationTextScRsp), global::March7thHoney.Proto.SelectInclinationTextScRsp.Parser, new[]{ "Retcode", "TalkSentenceId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SelectInclinationTextScRsp(SelectInclinationTextScRsp other) : this() {
-      talkSentenceId_ = other.talkSentenceId_;
       retcode_ = other.retcode_;
+      talkSentenceId_ = other.talkSentenceId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -82,18 +82,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SelectInclinationTextScRsp Clone() {
       return new SelectInclinationTextScRsp(this);
-    }
-
-    /// <summary>Field number for the "talk_sentence_id" field.</summary>
-    public const int TalkSentenceIdFieldNumber = 4;
-    private uint talkSentenceId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint TalkSentenceId {
-      get { return talkSentenceId_; }
-      set {
-        talkSentenceId_ = value;
-      }
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
@@ -105,6 +93,18 @@ namespace March7thHoney.Proto {
       get { return retcode_; }
       set {
         retcode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "talk_sentence_id" field.</summary>
+    public const int TalkSentenceIdFieldNumber = 10;
+    private uint talkSentenceId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint TalkSentenceId {
+      get { return talkSentenceId_; }
+      set {
+        talkSentenceId_ = value;
       }
     }
 
@@ -123,8 +123,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (TalkSentenceId != other.TalkSentenceId) return false;
       if (Retcode != other.Retcode) return false;
+      if (TalkSentenceId != other.TalkSentenceId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,8 +132,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (TalkSentenceId != 0) hash ^= TalkSentenceId.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (TalkSentenceId != 0) hash ^= TalkSentenceId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,13 +152,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (TalkSentenceId != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(TalkSentenceId);
-      }
       if (Retcode != 0) {
         output.WriteRawTag(40);
         output.WriteUInt32(Retcode);
+      }
+      if (TalkSentenceId != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(TalkSentenceId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,13 +170,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (TalkSentenceId != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(TalkSentenceId);
-      }
       if (Retcode != 0) {
         output.WriteRawTag(40);
         output.WriteUInt32(Retcode);
+      }
+      if (TalkSentenceId != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(TalkSentenceId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -188,11 +188,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (TalkSentenceId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TalkSentenceId);
-      }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      }
+      if (TalkSentenceId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TalkSentenceId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -206,11 +206,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.TalkSentenceId != 0) {
-        TalkSentenceId = other.TalkSentenceId;
-      }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
+      }
+      if (other.TalkSentenceId != 0) {
+        TalkSentenceId = other.TalkSentenceId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -231,12 +231,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
-            TalkSentenceId = input.ReadUInt32();
-            break;
-          }
           case 40: {
             Retcode = input.ReadUInt32();
+            break;
+          }
+          case 80: {
+            TalkSentenceId = input.ReadUInt32();
             break;
           }
         }
@@ -258,12 +258,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
-            TalkSentenceId = input.ReadUInt32();
-            break;
-          }
           case 40: {
             Retcode = input.ReadUInt32();
+            break;
+          }
+          case 80: {
+            TalkSentenceId = input.ReadUInt32();
             break;
           }
         }

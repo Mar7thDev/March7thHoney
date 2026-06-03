@@ -26,13 +26,13 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiJUZWNoVHJlZUNoYW5nZU5vZGVTdGF0ZUNzUnNwLnByb3RvGhFPRURBQkFO",
             "QUpFSy5wcm90byJjChxUZWNoVHJlZUNoYW5nZU5vZGVTdGF0ZUNzUnNwEg8K",
-            "B3JldGNvZGUYASABKA0SHQoHb3BfdHlwZRgKIAEoDjIMLk9FREFCQU5BSkVL",
-            "EhMKC0NETUZITkdFRkNOGAMgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
+            "B3JldGNvZGUYAiABKA0SEwoLQ0RNRkhOR0VGQ04YBSABKA0SHQoHb3BfdHlw",
+            "ZRgOIAEoDjIMLk9FREFCQU5BSkVLQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
             "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.OEDABANAJEKReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TechTreeChangeNodeStateCsRsp), global::March7thHoney.Proto.TechTreeChangeNodeStateCsRsp.Parser, new[]{ "Retcode", "OpType", "CDMFHNGEFCN" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TechTreeChangeNodeStateCsRsp), global::March7thHoney.Proto.TechTreeChangeNodeStateCsRsp.Parser, new[]{ "Retcode", "CDMFHNGEFCN", "OpType" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,8 +75,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public TechTreeChangeNodeStateCsRsp(TechTreeChangeNodeStateCsRsp other) : this() {
       retcode_ = other.retcode_;
-      opType_ = other.opType_;
       cDMFHNGEFCN_ = other.cDMFHNGEFCN_;
+      opType_ = other.opType_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -87,7 +87,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 1;
+    public const int RetcodeFieldNumber = 2;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,20 +98,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "op_type" field.</summary>
-    public const int OpTypeFieldNumber = 10;
-    private global::March7thHoney.Proto.OEDABANAJEK opType_ = global::March7thHoney.Proto.OEDABANAJEK.Nlcdgipgfdj;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.OEDABANAJEK OpType {
-      get { return opType_; }
-      set {
-        opType_ = value;
-      }
-    }
-
     /// <summary>Field number for the "CDMFHNGEFCN" field.</summary>
-    public const int CDMFHNGEFCNFieldNumber = 3;
+    public const int CDMFHNGEFCNFieldNumber = 5;
     private uint cDMFHNGEFCN_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -119,6 +107,18 @@ namespace March7thHoney.Proto {
       get { return cDMFHNGEFCN_; }
       set {
         cDMFHNGEFCN_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "op_type" field.</summary>
+    public const int OpTypeFieldNumber = 14;
+    private global::March7thHoney.Proto.OEDABANAJEK opType_ = global::March7thHoney.Proto.OEDABANAJEK.Nlcdgipgfdj;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.OEDABANAJEK OpType {
+      get { return opType_; }
+      set {
+        opType_ = value;
       }
     }
 
@@ -138,8 +138,8 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (Retcode != other.Retcode) return false;
-      if (OpType != other.OpType) return false;
       if (CDMFHNGEFCN != other.CDMFHNGEFCN) return false;
+      if (OpType != other.OpType) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -148,8 +148,8 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
-      if (OpType != global::March7thHoney.Proto.OEDABANAJEK.Nlcdgipgfdj) hash ^= OpType.GetHashCode();
       if (CDMFHNGEFCN != 0) hash ^= CDMFHNGEFCN.GetHashCode();
+      if (OpType != global::March7thHoney.Proto.OEDABANAJEK.Nlcdgipgfdj) hash ^= OpType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -169,15 +169,15 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Retcode != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(16);
         output.WriteUInt32(Retcode);
       }
       if (CDMFHNGEFCN != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(40);
         output.WriteUInt32(CDMFHNGEFCN);
       }
       if (OpType != global::March7thHoney.Proto.OEDABANAJEK.Nlcdgipgfdj) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(112);
         output.WriteEnum((int) OpType);
       }
       if (_unknownFields != null) {
@@ -191,15 +191,15 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Retcode != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(16);
         output.WriteUInt32(Retcode);
       }
       if (CDMFHNGEFCN != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(40);
         output.WriteUInt32(CDMFHNGEFCN);
       }
       if (OpType != global::March7thHoney.Proto.OEDABANAJEK.Nlcdgipgfdj) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(112);
         output.WriteEnum((int) OpType);
       }
       if (_unknownFields != null) {
@@ -215,11 +215,11 @@ namespace March7thHoney.Proto {
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
-      if (OpType != global::March7thHoney.Proto.OEDABANAJEK.Nlcdgipgfdj) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) OpType);
-      }
       if (CDMFHNGEFCN != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CDMFHNGEFCN);
+      }
+      if (OpType != global::March7thHoney.Proto.OEDABANAJEK.Nlcdgipgfdj) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) OpType);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -236,11 +236,11 @@ namespace March7thHoney.Proto {
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
-      if (other.OpType != global::March7thHoney.Proto.OEDABANAJEK.Nlcdgipgfdj) {
-        OpType = other.OpType;
-      }
       if (other.CDMFHNGEFCN != 0) {
         CDMFHNGEFCN = other.CDMFHNGEFCN;
+      }
+      if (other.OpType != global::March7thHoney.Proto.OEDABANAJEK.Nlcdgipgfdj) {
+        OpType = other.OpType;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -261,15 +261,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
+          case 16: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 24: {
+          case 40: {
             CDMFHNGEFCN = input.ReadUInt32();
             break;
           }
-          case 80: {
+          case 112: {
             OpType = (global::March7thHoney.Proto.OEDABANAJEK) input.ReadEnum();
             break;
           }
@@ -292,15 +292,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
+          case 16: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 24: {
+          case 40: {
             CDMFHNGEFCN = input.ReadUInt32();
             break;
           }
-          case 80: {
+          case 112: {
             OpType = (global::March7thHoney.Proto.OEDABANAJEK) input.ReadEnum();
             break;
           }

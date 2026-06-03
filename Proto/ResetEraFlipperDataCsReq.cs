@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch5SZXNldEVyYUZsaXBwZXJEYXRhQ3NSZXEucHJvdG8iLwoYUmVzZXRFcmFG",
-            "bGlwcGVyRGF0YUNzUmVxEhMKC0NKRUlMRElPSU9FGAcgASgIQhaqAhNNYXJj",
+            "bGlwcGVyRGF0YUNzUmVxEhMKC0NKRUlMRElPSU9FGAEgASgIQhaqAhNNYXJj",
             "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -83,7 +83,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "CJEILDIOIOE" field.</summary>
-    public const int CJEILDIOIOEFieldNumber = 7;
+    public const int CJEILDIOIOEFieldNumber = 1;
     private bool cJEILDIOIOE_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -137,7 +137,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (CJEILDIOIOE != false) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(8);
         output.WriteBool(CJEILDIOIOE);
       }
       if (_unknownFields != null) {
@@ -151,7 +151,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (CJEILDIOIOE != false) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(8);
         output.WriteBool(CJEILDIOIOE);
       }
       if (_unknownFields != null) {
@@ -201,7 +201,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
+          case 8: {
             CJEILDIOIOE = input.ReadBool();
             break;
           }
@@ -224,7 +224,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
+          case 8: {
             CJEILDIOIOE = input.ReadBool();
             break;
           }

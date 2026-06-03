@@ -26,14 +26,14 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiBFbnRlclNjZW5lQnlTZXJ2ZXJTY05vdGlmeS5wcm90bxoWRW50ZXJTY2Vu",
             "ZVJlYXNvbi5wcm90bxoQTGluZXVwSW5mby5wcm90bxoPU2NlbmVJbmZvLnBy",
-            "b3RvIncKGkVudGVyU2NlbmVCeVNlcnZlclNjTm90aWZ5EhkKBXNjZW5lGAUg",
-            "ASgLMgouU2NlbmVJbmZvEhsKBmxpbmV1cBgKIAEoCzILLkxpbmV1cEluZm8S",
-            "IQoGcmVhc29uGAsgASgOMhEuRW50ZXJTY2VuZVJlYXNvbkIWqgITTWFyY2g3",
+            "b3RvIncKGkVudGVyU2NlbmVCeVNlcnZlclNjTm90aWZ5EiEKBnJlYXNvbhgC",
+            "IAEoDjIRLkVudGVyU2NlbmVSZWFzb24SGwoGbGluZXVwGAogASgLMgsuTGlu",
+            "ZXVwSW5mbxIZCgVzY2VuZRgLIAEoCzIKLlNjZW5lSW5mb0IWqgITTWFyY2g3",
             "dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.EnterSceneReasonReflection.Descriptor, global::March7thHoney.Proto.LineupInfoReflection.Descriptor, global::March7thHoney.Proto.SceneInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EnterSceneByServerScNotify), global::March7thHoney.Proto.EnterSceneByServerScNotify.Parser, new[]{ "Scene", "Lineup", "Reason" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EnterSceneByServerScNotify), global::March7thHoney.Proto.EnterSceneByServerScNotify.Parser, new[]{ "Reason", "Lineup", "Scene" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,9 +75,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public EnterSceneByServerScNotify(EnterSceneByServerScNotify other) : this() {
-      scene_ = other.scene_ != null ? other.scene_.Clone() : null;
-      lineup_ = other.lineup_ != null ? other.lineup_.Clone() : null;
       reason_ = other.reason_;
+      lineup_ = other.lineup_ != null ? other.lineup_.Clone() : null;
+      scene_ = other.scene_ != null ? other.scene_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -87,15 +87,15 @@ namespace March7thHoney.Proto {
       return new EnterSceneByServerScNotify(this);
     }
 
-    /// <summary>Field number for the "scene" field.</summary>
-    public const int SceneFieldNumber = 5;
-    private global::March7thHoney.Proto.SceneInfo scene_;
+    /// <summary>Field number for the "reason" field.</summary>
+    public const int ReasonFieldNumber = 2;
+    private global::March7thHoney.Proto.EnterSceneReason reason_ = global::March7thHoney.Proto.EnterSceneReason.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.SceneInfo Scene {
-      get { return scene_; }
+    public global::March7thHoney.Proto.EnterSceneReason Reason {
+      get { return reason_; }
       set {
-        scene_ = value;
+        reason_ = value;
       }
     }
 
@@ -111,15 +111,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "reason" field.</summary>
-    public const int ReasonFieldNumber = 11;
-    private global::March7thHoney.Proto.EnterSceneReason reason_ = global::March7thHoney.Proto.EnterSceneReason.None;
+    /// <summary>Field number for the "scene" field.</summary>
+    public const int SceneFieldNumber = 11;
+    private global::March7thHoney.Proto.SceneInfo scene_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.EnterSceneReason Reason {
-      get { return reason_; }
+    public global::March7thHoney.Proto.SceneInfo Scene {
+      get { return scene_; }
       set {
-        reason_ = value;
+        scene_ = value;
       }
     }
 
@@ -138,9 +138,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Scene, other.Scene)) return false;
-      if (!object.Equals(Lineup, other.Lineup)) return false;
       if (Reason != other.Reason) return false;
+      if (!object.Equals(Lineup, other.Lineup)) return false;
+      if (!object.Equals(Scene, other.Scene)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -148,9 +148,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (scene_ != null) hash ^= Scene.GetHashCode();
-      if (lineup_ != null) hash ^= Lineup.GetHashCode();
       if (Reason != global::March7thHoney.Proto.EnterSceneReason.None) hash ^= Reason.GetHashCode();
+      if (lineup_ != null) hash ^= Lineup.GetHashCode();
+      if (scene_ != null) hash ^= Scene.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -169,17 +169,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (scene_ != null) {
-        output.WriteRawTag(42);
-        output.WriteMessage(Scene);
+      if (Reason != global::March7thHoney.Proto.EnterSceneReason.None) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) Reason);
       }
       if (lineup_ != null) {
         output.WriteRawTag(82);
         output.WriteMessage(Lineup);
       }
-      if (Reason != global::March7thHoney.Proto.EnterSceneReason.None) {
-        output.WriteRawTag(88);
-        output.WriteEnum((int) Reason);
+      if (scene_ != null) {
+        output.WriteRawTag(90);
+        output.WriteMessage(Scene);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -191,17 +191,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (scene_ != null) {
-        output.WriteRawTag(42);
-        output.WriteMessage(Scene);
+      if (Reason != global::March7thHoney.Proto.EnterSceneReason.None) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) Reason);
       }
       if (lineup_ != null) {
         output.WriteRawTag(82);
         output.WriteMessage(Lineup);
       }
-      if (Reason != global::March7thHoney.Proto.EnterSceneReason.None) {
-        output.WriteRawTag(88);
-        output.WriteEnum((int) Reason);
+      if (scene_ != null) {
+        output.WriteRawTag(90);
+        output.WriteMessage(Scene);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -213,14 +213,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (scene_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Scene);
+      if (Reason != global::March7thHoney.Proto.EnterSceneReason.None) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Reason);
       }
       if (lineup_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Lineup);
       }
-      if (Reason != global::March7thHoney.Proto.EnterSceneReason.None) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Reason);
+      if (scene_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Scene);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -234,11 +234,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.scene_ != null) {
-        if (scene_ == null) {
-          Scene = new global::March7thHoney.Proto.SceneInfo();
-        }
-        Scene.MergeFrom(other.Scene);
+      if (other.Reason != global::March7thHoney.Proto.EnterSceneReason.None) {
+        Reason = other.Reason;
       }
       if (other.lineup_ != null) {
         if (lineup_ == null) {
@@ -246,8 +243,11 @@ namespace March7thHoney.Proto {
         }
         Lineup.MergeFrom(other.Lineup);
       }
-      if (other.Reason != global::March7thHoney.Proto.EnterSceneReason.None) {
-        Reason = other.Reason;
+      if (other.scene_ != null) {
+        if (scene_ == null) {
+          Scene = new global::March7thHoney.Proto.SceneInfo();
+        }
+        Scene.MergeFrom(other.Scene);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -268,11 +268,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 42: {
-            if (scene_ == null) {
-              Scene = new global::March7thHoney.Proto.SceneInfo();
-            }
-            input.ReadMessage(Scene);
+          case 16: {
+            Reason = (global::March7thHoney.Proto.EnterSceneReason) input.ReadEnum();
             break;
           }
           case 82: {
@@ -282,8 +279,11 @@ namespace March7thHoney.Proto {
             input.ReadMessage(Lineup);
             break;
           }
-          case 88: {
-            Reason = (global::March7thHoney.Proto.EnterSceneReason) input.ReadEnum();
+          case 90: {
+            if (scene_ == null) {
+              Scene = new global::March7thHoney.Proto.SceneInfo();
+            }
+            input.ReadMessage(Scene);
             break;
           }
         }
@@ -305,11 +305,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 42: {
-            if (scene_ == null) {
-              Scene = new global::March7thHoney.Proto.SceneInfo();
-            }
-            input.ReadMessage(Scene);
+          case 16: {
+            Reason = (global::March7thHoney.Proto.EnterSceneReason) input.ReadEnum();
             break;
           }
           case 82: {
@@ -319,8 +316,11 @@ namespace March7thHoney.Proto {
             input.ReadMessage(Lineup);
             break;
           }
-          case 88: {
-            Reason = (global::March7thHoney.Proto.EnterSceneReason) input.ReadEnum();
+          case 90: {
+            if (scene_ == null) {
+              Scene = new global::March7thHoney.Proto.SceneInfo();
+            }
+            input.ReadMessage(Scene);
             break;
           }
         }

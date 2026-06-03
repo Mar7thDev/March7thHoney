@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message PlanetFesDeliverPamCargoCsReq {
-    uint32 JADCEPFHHDK = 2;
-    uint32 avatar_id = 7;
+    uint32 avatar_id = 5;
+    uint32 JADCEPFHHDK = 12;
 }

@@ -6,13 +6,12 @@ import "IAPIIEJHLMP.proto";
 import "LDLCMMOPKNG.proto";
 
 message GetEvolveBuildFinishScNotify {
-    LDLCMMOPKNG OEIBHLMDJKA = 14;
+    LDLCMMOPKNG OEIBHLMDJKA = 2;
+    uint32 wave = 3;
     uint32 level_id = 4;
-    IAPIIEJHLMP APKKKEIPJOG = 2;
+    uint32 score_id = 5;
+    uint32 item_value = 9;
     bool NLMAFMCFHAL = 10;
-    uint32 ELKCOHLGGJN = 9;
-    uint32 score_id = 15;
-    uint32 item_value = 11;
-    uint32 wave = 8;
-    uint32 exp = 3;
+    uint32 exp = 13;
+    IAPIIEJHLMP APKKKEIPJOG = 15;
 }

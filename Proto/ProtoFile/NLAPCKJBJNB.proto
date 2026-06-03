@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message NLAPCKJBJNB {
-    map<uint32, double> DMLCLKHGEFE = 2;
     uint32 avatar_id = 1;
+    map<uint32, double> DMLCLKHGEFE = 2;
 }

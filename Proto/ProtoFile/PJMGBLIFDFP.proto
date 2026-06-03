@@ -4,6 +4,7 @@ option csharp_namespace = "March7thHoney.Proto";
 
 import "GBAKEFGOLCB.proto";
 import "HCLAEGGMCFK.proto";
+import "HFAAFFDPBIL.proto";
 import "ONNHDODIIED.proto";
 
 message PJMGBLIFDFP {
@@ -11,5 +12,6 @@ message PJMGBLIFDFP {
         HCLAEGGMCFK lobby_grid_fight_info = 1001;
         ONNHDODIIED GOKJCFBPHCJ = 1002;
         GBAKEFGOLCB FNNOPJBPLPF = 1003;
+        HFAAFFDPBIL MPNPIIHHFPN = 1004;
     }
 }

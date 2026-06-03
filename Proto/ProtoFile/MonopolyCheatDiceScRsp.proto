@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message MonopolyCheatDiceScRsp {
-    uint32 LAGNINIKEAE = 13;
-    uint32 retcode = 10;
+    uint32 retcode = 4;
+    uint32 LAGNINIKEAE = 15;
 }

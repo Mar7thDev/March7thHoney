@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ChallengeGroup {
-    uint32 group_id = 13;
-    uint64 taken_stars_count_reward = 1;
+    uint32 group_id = 12;
+    uint64 taken_stars_count_reward = 13;
 }

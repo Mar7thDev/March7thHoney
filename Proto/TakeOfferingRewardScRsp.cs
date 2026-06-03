@@ -26,13 +26,13 @@ namespace March7thHoney.Proto {
           string.Concat(
             "Ch1UYWtlT2ZmZXJpbmdSZXdhcmRTY1JzcC5wcm90bxoOSXRlbUxpc3QucHJv",
             "dG8aEk9mZmVyaW5nSW5mby5wcm90byJrChdUYWtlT2ZmZXJpbmdSZXdhcmRT",
-            "Y1JzcBIZCgZyZXdhcmQYASABKAsyCS5JdGVtTGlzdBIkCg1vZmZlcmluZ19p",
-            "bmZvGA8gASgLMg0uT2ZmZXJpbmdJbmZvEg8KB3JldGNvZGUYDCABKA1CFqoC",
+            "Y1JzcBIZCgZyZXdhcmQYBCABKAsyCS5JdGVtTGlzdBIPCgdyZXRjb2RlGAwg",
+            "ASgNEiQKDW9mZmVyaW5nX2luZm8YDSABKAsyDS5PZmZlcmluZ0luZm9CFqoC",
             "E01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemListReflection.Descriptor, global::March7thHoney.Proto.OfferingInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TakeOfferingRewardScRsp), global::March7thHoney.Proto.TakeOfferingRewardScRsp.Parser, new[]{ "Reward", "OfferingInfo", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TakeOfferingRewardScRsp), global::March7thHoney.Proto.TakeOfferingRewardScRsp.Parser, new[]{ "Reward", "Retcode", "OfferingInfo" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,8 +75,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public TakeOfferingRewardScRsp(TakeOfferingRewardScRsp other) : this() {
       reward_ = other.reward_ != null ? other.reward_.Clone() : null;
-      offeringInfo_ = other.offeringInfo_ != null ? other.offeringInfo_.Clone() : null;
       retcode_ = other.retcode_;
+      offeringInfo_ = other.offeringInfo_ != null ? other.offeringInfo_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -87,7 +87,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "reward" field.</summary>
-    public const int RewardFieldNumber = 1;
+    public const int RewardFieldNumber = 4;
     private global::March7thHoney.Proto.ItemList reward_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -95,18 +95,6 @@ namespace March7thHoney.Proto {
       get { return reward_; }
       set {
         reward_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "offering_info" field.</summary>
-    public const int OfferingInfoFieldNumber = 15;
-    private global::March7thHoney.Proto.OfferingInfo offeringInfo_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.OfferingInfo OfferingInfo {
-      get { return offeringInfo_; }
-      set {
-        offeringInfo_ = value;
       }
     }
 
@@ -119,6 +107,18 @@ namespace March7thHoney.Proto {
       get { return retcode_; }
       set {
         retcode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "offering_info" field.</summary>
+    public const int OfferingInfoFieldNumber = 13;
+    private global::March7thHoney.Proto.OfferingInfo offeringInfo_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.OfferingInfo OfferingInfo {
+      get { return offeringInfo_; }
+      set {
+        offeringInfo_ = value;
       }
     }
 
@@ -138,8 +138,8 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (!object.Equals(Reward, other.Reward)) return false;
-      if (!object.Equals(OfferingInfo, other.OfferingInfo)) return false;
       if (Retcode != other.Retcode) return false;
+      if (!object.Equals(OfferingInfo, other.OfferingInfo)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -148,8 +148,8 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (reward_ != null) hash ^= Reward.GetHashCode();
-      if (offeringInfo_ != null) hash ^= OfferingInfo.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (offeringInfo_ != null) hash ^= OfferingInfo.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -169,7 +169,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (reward_ != null) {
-        output.WriteRawTag(10);
+        output.WriteRawTag(34);
         output.WriteMessage(Reward);
       }
       if (Retcode != 0) {
@@ -177,7 +177,7 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(Retcode);
       }
       if (offeringInfo_ != null) {
-        output.WriteRawTag(122);
+        output.WriteRawTag(106);
         output.WriteMessage(OfferingInfo);
       }
       if (_unknownFields != null) {
@@ -191,7 +191,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (reward_ != null) {
-        output.WriteRawTag(10);
+        output.WriteRawTag(34);
         output.WriteMessage(Reward);
       }
       if (Retcode != 0) {
@@ -199,7 +199,7 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(Retcode);
       }
       if (offeringInfo_ != null) {
-        output.WriteRawTag(122);
+        output.WriteRawTag(106);
         output.WriteMessage(OfferingInfo);
       }
       if (_unknownFields != null) {
@@ -215,11 +215,11 @@ namespace March7thHoney.Proto {
       if (reward_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Reward);
       }
-      if (offeringInfo_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(OfferingInfo);
-      }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      }
+      if (offeringInfo_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(OfferingInfo);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -239,14 +239,14 @@ namespace March7thHoney.Proto {
         }
         Reward.MergeFrom(other.Reward);
       }
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
+      }
       if (other.offeringInfo_ != null) {
         if (offeringInfo_ == null) {
           OfferingInfo = new global::March7thHoney.Proto.OfferingInfo();
         }
         OfferingInfo.MergeFrom(other.OfferingInfo);
-      }
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -267,7 +267,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
+          case 34: {
             if (reward_ == null) {
               Reward = new global::March7thHoney.Proto.ItemList();
             }
@@ -278,7 +278,7 @@ namespace March7thHoney.Proto {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 122: {
+          case 106: {
             if (offeringInfo_ == null) {
               OfferingInfo = new global::March7thHoney.Proto.OfferingInfo();
             }
@@ -304,7 +304,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
+          case 34: {
             if (reward_ == null) {
               Reward = new global::March7thHoney.Proto.ItemList();
             }
@@ -315,7 +315,7 @@ namespace March7thHoney.Proto {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 122: {
+          case 106: {
             if (offeringInfo_ == null) {
               OfferingInfo = new global::March7thHoney.Proto.OfferingInfo();
             }

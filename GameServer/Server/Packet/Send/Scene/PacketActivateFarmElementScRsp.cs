@@ -5,7 +5,7 @@ namespace March7thHoney.GameServer.Server.Packet.Send.Scene;
 
 public class PacketActivateFarmElementScRsp : BasePacket
 {
-    public PacketActivateFarmElementScRsp(uint entityId, uint worldLevel) : base(CmdIds.ActiveFarmElementScRsp)
+    public PacketActivateFarmElementScRsp(uint entityId, uint worldLevel) : base(CmdIds.ActivateFarmElementScRsp)
     {
         var proto = new ActiveFarmElementScRsp
         {

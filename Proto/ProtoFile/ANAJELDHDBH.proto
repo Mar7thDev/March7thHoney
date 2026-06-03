@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ANAJELDHDBH {
-    double damage = 13;
-    uint32 key = 8;
+    uint32 key = 2;
+    double damage = 14;
 }

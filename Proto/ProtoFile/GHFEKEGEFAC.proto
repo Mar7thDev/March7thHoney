@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GHFEKEGEFAC {
+    uint32 level = 3;
     uint32 OMFGAABELHE = 10;
-    uint32 level = 11;
 }

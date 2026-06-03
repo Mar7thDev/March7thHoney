@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "GNMCIEPEBPK.proto";
 
 message PlanetFesGameBingoFlipScRsp {
-    GNMCIEPEBPK reward = 6;
-    uint32 retcode = 5;
-    bool BDEFAFFDBCC = 11;
-    uint32 LKFIGBGPEJB = 2;
+    GNMCIEPEBPK reward = 3;
+    uint32 retcode = 8;
+    bool BDEFAFFDBCC = 10;
+    uint32 LKFIGBGPEJB = 14;
 }

@@ -3,13 +3,13 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 import "AGPKFBLGDIH.proto";
-import "KOLCCDIJBGO.proto";
+import "FateBuffData.proto";
 
 message NBBHDPCPHNN {
-    map<uint32, uint32> EHNHILFAHGP = 8;
-    repeated uint32 MHLNGFBOIDP = 1;
-    repeated KOLCCDIJBGO buff_list = 9;
-    repeated uint32 NGOMJIFBBBP = 4;
-    repeated AGPKFBLGDIH ICCMJHJLPCD = 2;
-    uint32 JIMBJHLMHLO = 11;
+    map<uint32, uint32> buff_amplification_map = 2;
+    repeated uint32 NGOMJIFBBBP = 5;
+    repeated AGPKFBLGDIH ICCMJHJLPCD = 12;
+    repeated FateBuffData buff_list = 13;
+    repeated uint32 MHLNGFBOIDP = 14;
+    uint32 JIMBJHLMHLO = 15;
 }

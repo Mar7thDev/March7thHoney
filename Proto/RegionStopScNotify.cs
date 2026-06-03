@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChhSZWdpb25TdG9wU2NOb3RpZnkucHJvdG8iRAoSUmVnaW9uU3RvcFNjTm90",
-            "aWZ5EhcKD3N0b3BfYmVnaW5fdGltZRgJIAEoAxIVCg1zdG9wX2VuZF90aW1l",
-            "GA4gASgDQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "aWZ5EhUKDXN0b3BfZW5kX3RpbWUYASABKAMSFwoPc3RvcF9iZWdpbl90aW1l",
+            "GAsgASgDQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RegionStopScNotify), global::March7thHoney.Proto.RegionStopScNotify.Parser, new[]{ "StopBeginTime", "StopEndTime" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RegionStopScNotify), global::March7thHoney.Proto.RegionStopScNotify.Parser, new[]{ "StopEndTime", "StopBeginTime" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RegionStopScNotify(RegionStopScNotify other) : this() {
-      stopBeginTime_ = other.stopBeginTime_;
       stopEndTime_ = other.stopEndTime_;
+      stopBeginTime_ = other.stopBeginTime_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,20 +83,8 @@ namespace March7thHoney.Proto {
       return new RegionStopScNotify(this);
     }
 
-    /// <summary>Field number for the "stop_begin_time" field.</summary>
-    public const int StopBeginTimeFieldNumber = 9;
-    private long stopBeginTime_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long StopBeginTime {
-      get { return stopBeginTime_; }
-      set {
-        stopBeginTime_ = value;
-      }
-    }
-
     /// <summary>Field number for the "stop_end_time" field.</summary>
-    public const int StopEndTimeFieldNumber = 14;
+    public const int StopEndTimeFieldNumber = 1;
     private long stopEndTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -104,6 +92,18 @@ namespace March7thHoney.Proto {
       get { return stopEndTime_; }
       set {
         stopEndTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "stop_begin_time" field.</summary>
+    public const int StopBeginTimeFieldNumber = 11;
+    private long stopBeginTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long StopBeginTime {
+      get { return stopBeginTime_; }
+      set {
+        stopBeginTime_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (StopBeginTime != other.StopBeginTime) return false;
       if (StopEndTime != other.StopEndTime) return false;
+      if (StopBeginTime != other.StopBeginTime) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (StopBeginTime != 0L) hash ^= StopBeginTime.GetHashCode();
       if (StopEndTime != 0L) hash ^= StopEndTime.GetHashCode();
+      if (StopBeginTime != 0L) hash ^= StopBeginTime.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (StopBeginTime != 0L) {
-        output.WriteRawTag(72);
-        output.WriteInt64(StopBeginTime);
-      }
       if (StopEndTime != 0L) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(8);
         output.WriteInt64(StopEndTime);
+      }
+      if (StopBeginTime != 0L) {
+        output.WriteRawTag(88);
+        output.WriteInt64(StopBeginTime);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (StopBeginTime != 0L) {
-        output.WriteRawTag(72);
-        output.WriteInt64(StopBeginTime);
-      }
       if (StopEndTime != 0L) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(8);
         output.WriteInt64(StopEndTime);
+      }
+      if (StopBeginTime != 0L) {
+        output.WriteRawTag(88);
+        output.WriteInt64(StopBeginTime);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (StopBeginTime != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(StopBeginTime);
-      }
       if (StopEndTime != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(StopEndTime);
+      }
+      if (StopBeginTime != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(StopBeginTime);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.StopBeginTime != 0L) {
-        StopBeginTime = other.StopBeginTime;
-      }
       if (other.StopEndTime != 0L) {
         StopEndTime = other.StopEndTime;
+      }
+      if (other.StopBeginTime != 0L) {
+        StopBeginTime = other.StopBeginTime;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 72: {
-            StopBeginTime = input.ReadInt64();
+          case 8: {
+            StopEndTime = input.ReadInt64();
             break;
           }
-          case 112: {
-            StopEndTime = input.ReadInt64();
+          case 88: {
+            StopBeginTime = input.ReadInt64();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 72: {
-            StopBeginTime = input.ReadInt64();
+          case 8: {
+            StopEndTime = input.ReadInt64();
             break;
           }
-          case 112: {
-            StopEndTime = input.ReadInt64();
+          case 88: {
+            StopBeginTime = input.ReadInt64();
             break;
           }
         }

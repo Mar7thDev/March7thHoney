@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "IODAFIBPAGM.proto";
 
 message GAAMMAACICO {
-    repeated IODAFIBPAGM MDNBOBFGKFN = 14;
-    uint32 retcode = 7;
+    repeated IODAFIBPAGM MDNBOBFGKFN = 11;
+    uint32 retcode = 14;
 }

@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static GBAKEFGOLCBReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFHQkFLRUZHT0xDQi5wcm90byI0CgtHQkFLRUZHT0xDQhITCgtDRE5OSE9O",
-            "S0VMShgCIAEoDRIQCghzdGFnZV9pZBgBIAEoDUIWqgITTWFyY2g3dGhIb25l",
+            "ChFHQkFLRUZHT0xDQi5wcm90byI0CgtHQkFLRUZHT0xDQhIQCghzdGFnZV9p",
+            "ZBgBIAEoDRITCgtDRE5OSE9OS0VMShgCIAEoDUIWqgITTWFyY2g3dGhIb25l",
             "eS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GBAKEFGOLCB), global::March7thHoney.Proto.GBAKEFGOLCB.Parser, new[]{ "CDNNHONKELJ", "StageId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GBAKEFGOLCB), global::March7thHoney.Proto.GBAKEFGOLCB.Parser, new[]{ "StageId", "CDNNHONKELJ" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GBAKEFGOLCB(GBAKEFGOLCB other) : this() {
-      cDNNHONKELJ_ = other.cDNNHONKELJ_;
       stageId_ = other.stageId_;
+      cDNNHONKELJ_ = other.cDNNHONKELJ_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -81,18 +81,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GBAKEFGOLCB Clone() {
       return new GBAKEFGOLCB(this);
-    }
-
-    /// <summary>Field number for the "CDNNHONKELJ" field.</summary>
-    public const int CDNNHONKELJFieldNumber = 2;
-    private uint cDNNHONKELJ_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CDNNHONKELJ {
-      get { return cDNNHONKELJ_; }
-      set {
-        cDNNHONKELJ_ = value;
-      }
     }
 
     /// <summary>Field number for the "stage_id" field.</summary>
@@ -104,6 +92,18 @@ namespace March7thHoney.Proto {
       get { return stageId_; }
       set {
         stageId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "CDNNHONKELJ" field.</summary>
+    public const int CDNNHONKELJFieldNumber = 2;
+    private uint cDNNHONKELJ_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint CDNNHONKELJ {
+      get { return cDNNHONKELJ_; }
+      set {
+        cDNNHONKELJ_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (CDNNHONKELJ != other.CDNNHONKELJ) return false;
       if (StageId != other.StageId) return false;
+      if (CDNNHONKELJ != other.CDNNHONKELJ) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (CDNNHONKELJ != 0) hash ^= CDNNHONKELJ.GetHashCode();
       if (StageId != 0) hash ^= StageId.GetHashCode();
+      if (CDNNHONKELJ != 0) hash ^= CDNNHONKELJ.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (CDNNHONKELJ != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CDNNHONKELJ);
-      }
       if (StageId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(StageId);
+      }
+      if (CDNNHONKELJ != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CDNNHONKELJ);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.CDNNHONKELJ != 0) {
-        CDNNHONKELJ = other.CDNNHONKELJ;
-      }
       if (other.StageId != 0) {
         StageId = other.StageId;
+      }
+      if (other.CDNNHONKELJ != 0) {
+        CDNNHONKELJ = other.CDNNHONKELJ;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }

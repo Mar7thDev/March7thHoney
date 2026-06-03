@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "OIIPJFDNPAH.proto";
 
 message TrainPartyBuildSelfDisplayAreaDiyCsReq {
-    OIIPJFDNPAH ACLKMFCDMED = 12;
+    OIIPJFDNPAH ACLKMFCDMED = 11;
 }

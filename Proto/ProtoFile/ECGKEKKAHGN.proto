@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemList.proto";
 
 message ECGKEKKAHGN {
-    ItemList FEANLLOCFBA = 8;
-    uint32 LOPNADHJKBF = 11;
-    uint32 IHAOMLEPHOM = 5;
+    uint32 LOPNADHJKBF = 5;
+    uint32 IHAOMLEPHOM = 6;
+    ItemList FEANLLOCFBA = 15;
 }

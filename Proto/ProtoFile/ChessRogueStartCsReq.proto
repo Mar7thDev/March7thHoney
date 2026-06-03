@@ -3,11 +3,11 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ChessRogueStartCsReq {
-    repeated uint32 OCEGEKKFLAL = 3;
-    repeated uint32 JKPIPNMGGOA = 13;
-    repeated uint32 unfinished_story_line_id_list = 11;
-    repeated uint32 NOEPBNMJFGL = 9;
-    uint32 PDFAHEKNHNJ = 8;
-    uint32 AFEMBLFCCCH = 5;
-    uint32 id = 7;
+    repeated uint32 NOEPBNMJFGL = 1;
+    repeated uint32 unfinished_story_line_id_list = 3;
+    uint32 id = 4;
+    repeated uint32 OCEGEKKFLAL = 5;
+    uint32 PDFAHEKNHNJ = 9;
+    repeated uint32 JKPIPNMGGOA = 12;
+    uint32 AFEMBLFCCCH = 14;
 }

@@ -10,13 +10,13 @@ import "OJNEFJDGGEM.proto";
 import "PJMGBLIFDFP.proto";
 
 message PPKKBLFDLBE {
-    PJMGBLIFDFP EMIJCKENBKJ = 9;
-    AECGFCJJLNI NNOPIKIANCA = 11;
-    repeated LMLNNHKJEIP HJOPHLKBLHL = 3;
-    FightGameMode MJBKMFOMNPO = 2;
-    uint64 ANBJMMOEGJE = 5;
-    FIBDGJBOJEA FBFDDOMMLNA = 8;
-    OJNEFJDGGEM type = 4;
     uint64 id = 1;
+    FightGameMode MJBKMFOMNPO = 2;
+    repeated LMLNNHKJEIP HJOPHLKBLHL = 3;
+    OJNEFJDGGEM type = 4;
+    uint64 ANBJMMOEGJE = 5;
     uint64 HEOMGKNDJHE = 6;
+    FIBDGJBOJEA FBFDDOMMLNA = 8;
+    PJMGBLIFDFP room_ext_info = 9;
+    AECGFCJJLNI NNOPIKIANCA = 11;
 }

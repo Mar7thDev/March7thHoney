@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "LineupInfo.proto";
 
 message GetCurLineupDataScRsp {
-    LineupInfo lineup = 9;
+    LineupInfo lineup = 10;
     uint32 retcode = 15;
 }

@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "JFGCABMMKAB.proto";
 
 message GetStarFightDataScRsp {
-    repeated JFGCABMMKAB JJIDNKDKMLE = 9;
-    uint32 retcode = 12;
+    uint32 retcode = 7;
+    repeated JFGCABMMKAB JJIDNKDKMLE = 8;
 }

@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message DOPJFJCLIAH {
-    bool JLNEBLAKKOB = 2;
     bool LJOEMLOJDDP = 1;
+    bool JLNEBLAKKOB = 2;
 }

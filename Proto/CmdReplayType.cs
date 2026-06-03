@@ -24,11 +24,10 @@ namespace March7thHoney.Proto {
     static CmdReplayTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChNDbWRSZXBsYXlUeXBlLnByb3RvKqQBCg1DbWRSZXBsYXlUeXBlEhsKF0dM",
-            "SERLT0hIRERLX05MQ0RHSVBHRkRKEAASHAoXR0xIREtPSEhEREtfT0VOT01M",
-            "SkxBREMQ/BsSHAoXR0xIREtPSEhEREtfSURBQk1HSERISkgQ9RsSHAoXR0xI",
-            "REtPSEhEREtfT0lOTUZHSktCRlAQxxsSHAoXR0xIREtPSEhEREtfQ01HSk9M",
-            "T0xJTksQrxtCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ChNDbWRSZXBsYXlUeXBlLnByb3RvKmgKDUNtZFJlcGxheVR5cGUSGwoXR0xI",
+            "REtPSEhEREtfTkxDREdJUEdGREoQABIcChdHTEhES09ISERES19DTUdKT0xP",
+            "TElOSxD6GxIcChdHTEhES09ISERES19JREFCTUdIREhKSBDFG0IWqgITTWFy",
+            "Y2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdReplayType), }, null, null));
@@ -39,10 +38,8 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdReplayType {
     [pbr::OriginalName("GLHDKOHHDDK_NLCDGIPGFDJ")] GlhdkohhddkNlcdgipgfdj = 0,
-    [pbr::OriginalName("GLHDKOHHDDK_OENOMLJLADC")] GlhdkohhddkOenomljladc = 3580,
-    [pbr::OriginalName("GLHDKOHHDDK_IDABMGHDHJH")] GlhdkohhddkIdabmghdhjh = 3573,
-    [pbr::OriginalName("GLHDKOHHDDK_OINMFGJKBFP")] GlhdkohhddkOinmfgjkbfp = 3527,
-    [pbr::OriginalName("GLHDKOHHDDK_CMGJOLOLINK")] GlhdkohhddkCmgjololink = 3503,
+    [pbr::OriginalName("GLHDKOHHDDK_CMGJOLOLINK")] GlhdkohhddkCmgjololink = 3578,
+    [pbr::OriginalName("GLHDKOHHDDK_IDABMGHDHJH")] GlhdkohhddkIdabmghdhjh = 3525,
   }
 
   #endregion

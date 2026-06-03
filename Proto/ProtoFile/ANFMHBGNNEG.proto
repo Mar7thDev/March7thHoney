@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "PJMGBLIFDFP.proto";
 
 message ANFMHBGNNEG {
-    PJMGBLIFDFP EMIJCKENBKJ = 10;
+    PJMGBLIFDFP room_ext_info = 15;
 }

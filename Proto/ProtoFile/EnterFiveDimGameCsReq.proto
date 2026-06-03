@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "AHCLMAGAHPN.proto";
+import "BLPHONLBNBO.proto";
+import "MotionInfo.proto";
+
+message EnterFiveDimGameCsReq {
+    BLPHONLBNBO OEIBHLMDJKA = 1;
+    AHCLMAGAHPN PPJFMBIGIGB = 4;
+    MotionInfo HKGDHOPGCKF = 14;
+}

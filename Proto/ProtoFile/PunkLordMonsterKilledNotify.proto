@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "FGFGINEFBBK.proto";
 
 message PunkLordMonsterKilledNotify {
-    FGFGINEFBBK PEBMDFAGJAM = 5;
+    FGFGINEFBBK PEBMDFAGJAM = 15;
 }

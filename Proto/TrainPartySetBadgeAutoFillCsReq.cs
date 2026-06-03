@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiVUcmFpblBhcnR5U2V0QmFkZ2VBdXRvRmlsbENzUmVxLnByb3RvIjYKH1Ry",
             "YWluUGFydHlTZXRCYWRnZUF1dG9GaWxsQ3NSZXESEwoLUEVMSkFDQU5BRkgY",
-            "DSABKAhCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "BiABKAhCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -83,7 +83,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "PELJACANAFH" field.</summary>
-    public const int PELJACANAFHFieldNumber = 13;
+    public const int PELJACANAFHFieldNumber = 6;
     private bool pELJACANAFH_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -137,7 +137,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (PELJACANAFH != false) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(48);
         output.WriteBool(PELJACANAFH);
       }
       if (_unknownFields != null) {
@@ -151,7 +151,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (PELJACANAFH != false) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(48);
         output.WriteBool(PELJACANAFH);
       }
       if (_unknownFields != null) {
@@ -201,7 +201,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 104: {
+          case 48: {
             PELJACANAFH = input.ReadBool();
             break;
           }
@@ -224,7 +224,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 104: {
+          case 48: {
             PELJACANAFH = input.ReadBool();
             break;
           }

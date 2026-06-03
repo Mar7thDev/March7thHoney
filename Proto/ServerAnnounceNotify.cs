@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChpTZXJ2ZXJBbm5vdW5jZU5vdGlmeS5wcm90bxoSQW5ub3VuY2VEYXRhLnBy",
             "b3RvIkEKFFNlcnZlckFubm91bmNlTm90aWZ5EikKEmFubm91bmNlX2RhdGFf",
-            "bGlzdBgBIAMoCzINLkFubm91bmNlRGF0YUIWqgITTWFyY2g3dGhIb25leS5Q",
+            "bGlzdBgIIAMoCzINLkFubm91bmNlRGF0YUIWqgITTWFyY2g3dGhIb25leS5Q",
             "cm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.AnnounceDataReflection.Descriptor, },
@@ -84,9 +84,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "announce_data_list" field.</summary>
-    public const int AnnounceDataListFieldNumber = 1;
+    public const int AnnounceDataListFieldNumber = 8;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.AnnounceData> _repeated_announceDataList_codec
-        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.AnnounceData.Parser);
+        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.AnnounceData.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.AnnounceData> announceDataList_ = new pbc::RepeatedField<global::March7thHoney.Proto.AnnounceData>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -191,7 +191,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
+          case 66: {
             announceDataList_.AddEntriesFrom(input, _repeated_announceDataList_codec);
             break;
           }
@@ -214,7 +214,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
+          case 66: {
             announceDataList_.AddEntriesFrom(ref input, _repeated_announceDataList_codec);
             break;
           }

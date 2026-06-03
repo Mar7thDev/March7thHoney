@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message TrainWorldIdChangeScNotify {
-    uint32 CFDCEEMIOCO = 15;
+    uint32 CFDCEEMIOCO = 14;
 }

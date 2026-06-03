@@ -6,9 +6,9 @@ import "KELKOMPBONA.proto";
 import "NDLBFFKAGBN.proto";
 
 message IDGMALDABBE {
-    repeated KELKOMPBONA EECAHBHNDHC = 14;
-    repeated KELKOMPBONA IIFPJKNCLGF = 13;
-    NDLBFFKAGBN NMPGPDMHKAM = 1;
-    uint32 cost_time = 10;
-    uint32 total_damage = 9;
+    uint32 total_damage = 2;
+    repeated KELKOMPBONA IIFPJKNCLGF = 5;
+    NDLBFFKAGBN NMPGPDMHKAM = 8;
+    uint32 cost_time = 9;
+    repeated KELKOMPBONA EECAHBHNDHC = 15;
 }

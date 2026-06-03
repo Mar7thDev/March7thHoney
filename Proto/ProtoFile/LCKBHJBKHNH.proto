@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "KFOOLGFCNDN.proto";
 
 message LCKBHJBKHNH {
-    KFOOLGFCNDN ILOODGHPOBM = 6;
-    uint32 DKCGLOIAPAH = 13;
+    uint32 cur_wave = 4;
+    KFOOLGFCNDN ILOODGHPOBM = 15;
 }

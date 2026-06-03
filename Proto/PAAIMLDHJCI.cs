@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static PAAIMLDHJCIReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFQQUFJTUxESEpDSS5wcm90byJKCgtQQUFJTUxESEpDSRIRCgltYXhfc2Nv",
-            "cmUYByABKA0SEwoLS0tOR0lGT0pMR0oYCCABKA0SEwoLTkVMT0FLSkFBQkkY",
-            "CyABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ChFQQUFJTUxESEpDSS5wcm90byJKCgtQQUFJTUxESEpDSRITCgtORUxPQUtK",
+            "QUFCSRgEIAEoDRIRCgltYXhfc2NvcmUYBSABKA0SEwoLS0tOR0lGT0pMR0oY",
+            "DCABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PAAIMLDHJCI), global::March7thHoney.Proto.PAAIMLDHJCI.Parser, new[]{ "MaxScore", "KKNGIFOJLGJ", "NELOAKJAABI" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PAAIMLDHJCI), global::March7thHoney.Proto.PAAIMLDHJCI.Parser, new[]{ "NELOAKJAABI", "MaxScore", "KKNGIFOJLGJ" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,9 +72,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PAAIMLDHJCI(PAAIMLDHJCI other) : this() {
+      nELOAKJAABI_ = other.nELOAKJAABI_;
       maxScore_ = other.maxScore_;
       kKNGIFOJLGJ_ = other.kKNGIFOJLGJ_;
-      nELOAKJAABI_ = other.nELOAKJAABI_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,8 +84,20 @@ namespace March7thHoney.Proto {
       return new PAAIMLDHJCI(this);
     }
 
+    /// <summary>Field number for the "NELOAKJAABI" field.</summary>
+    public const int NELOAKJAABIFieldNumber = 4;
+    private uint nELOAKJAABI_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint NELOAKJAABI {
+      get { return nELOAKJAABI_; }
+      set {
+        nELOAKJAABI_ = value;
+      }
+    }
+
     /// <summary>Field number for the "max_score" field.</summary>
-    public const int MaxScoreFieldNumber = 7;
+    public const int MaxScoreFieldNumber = 5;
     private uint maxScore_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +109,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "KKNGIFOJLGJ" field.</summary>
-    public const int KKNGIFOJLGJFieldNumber = 8;
+    public const int KKNGIFOJLGJFieldNumber = 12;
     private uint kKNGIFOJLGJ_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -105,18 +117,6 @@ namespace March7thHoney.Proto {
       get { return kKNGIFOJLGJ_; }
       set {
         kKNGIFOJLGJ_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "NELOAKJAABI" field.</summary>
-    public const int NELOAKJAABIFieldNumber = 11;
-    private uint nELOAKJAABI_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint NELOAKJAABI {
-      get { return nELOAKJAABI_; }
-      set {
-        nELOAKJAABI_ = value;
       }
     }
 
@@ -135,9 +135,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (NELOAKJAABI != other.NELOAKJAABI) return false;
       if (MaxScore != other.MaxScore) return false;
       if (KKNGIFOJLGJ != other.KKNGIFOJLGJ) return false;
-      if (NELOAKJAABI != other.NELOAKJAABI) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -145,9 +145,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (NELOAKJAABI != 0) hash ^= NELOAKJAABI.GetHashCode();
       if (MaxScore != 0) hash ^= MaxScore.GetHashCode();
       if (KKNGIFOJLGJ != 0) hash ^= KKNGIFOJLGJ.GetHashCode();
-      if (NELOAKJAABI != 0) hash ^= NELOAKJAABI.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -166,17 +166,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (NELOAKJAABI != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(NELOAKJAABI);
+      }
       if (MaxScore != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(40);
         output.WriteUInt32(MaxScore);
       }
       if (KKNGIFOJLGJ != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(96);
         output.WriteUInt32(KKNGIFOJLGJ);
-      }
-      if (NELOAKJAABI != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(NELOAKJAABI);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -188,17 +188,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (NELOAKJAABI != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(NELOAKJAABI);
+      }
       if (MaxScore != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(40);
         output.WriteUInt32(MaxScore);
       }
       if (KKNGIFOJLGJ != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(96);
         output.WriteUInt32(KKNGIFOJLGJ);
-      }
-      if (NELOAKJAABI != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(NELOAKJAABI);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -210,14 +210,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (NELOAKJAABI != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(NELOAKJAABI);
+      }
       if (MaxScore != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MaxScore);
       }
       if (KKNGIFOJLGJ != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(KKNGIFOJLGJ);
-      }
-      if (NELOAKJAABI != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(NELOAKJAABI);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -231,14 +231,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.NELOAKJAABI != 0) {
+        NELOAKJAABI = other.NELOAKJAABI;
+      }
       if (other.MaxScore != 0) {
         MaxScore = other.MaxScore;
       }
       if (other.KKNGIFOJLGJ != 0) {
         KKNGIFOJLGJ = other.KKNGIFOJLGJ;
-      }
-      if (other.NELOAKJAABI != 0) {
-        NELOAKJAABI = other.NELOAKJAABI;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -259,16 +259,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
+          case 32: {
+            NELOAKJAABI = input.ReadUInt32();
+            break;
+          }
+          case 40: {
             MaxScore = input.ReadUInt32();
             break;
           }
-          case 64: {
+          case 96: {
             KKNGIFOJLGJ = input.ReadUInt32();
-            break;
-          }
-          case 88: {
-            NELOAKJAABI = input.ReadUInt32();
             break;
           }
         }
@@ -290,16 +290,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
+          case 32: {
+            NELOAKJAABI = input.ReadUInt32();
+            break;
+          }
+          case 40: {
             MaxScore = input.ReadUInt32();
             break;
           }
-          case 64: {
+          case 96: {
             KKNGIFOJLGJ = input.ReadUInt32();
-            break;
-          }
-          case 88: {
-            NELOAKJAABI = input.ReadUInt32();
             break;
           }
         }

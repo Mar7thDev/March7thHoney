@@ -3,7 +3,9 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ONLFOIONDAF {
-    int64 IFEPJHGNCOI = 10;
-    uint32 PNFOOPNCDCH = 1;
-    uint32 JKDFIMCIKFJ = 7;
+    uint32 JJNGGKPAKME = 3;
+    uint32 interval = 4;
+    uint32 PNFOOPNCDCH = 7;
+    int64 start_time = 8;
+    bool JMCJKPPKAIF = 12;
 }

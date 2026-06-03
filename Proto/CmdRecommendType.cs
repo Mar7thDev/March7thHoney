@@ -26,9 +26,9 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChZDbWRSZWNvbW1lbmRUeXBlLnByb3RvKqcBChBDbWRSZWNvbW1lbmRUeXBl",
             "EhsKF0FQRElOS0hCSEdDX05MQ0RHSVBHRkRKEAASHAoXQVBESU5LSEJIR0Nf",
-            "REZJRUhCT0FKREcQ8xISHAoXQVBESU5LSEJIR0NfQ0VDQ05NRkpFUEIQjRMS",
-            "HAoXQVBESU5LSEJIR0NfRERITFBJQ0JOTE4Q/RISHAoXQVBESU5LSEJIR0Nf",
-            "Q01OQklOQklMRE8Q6RJCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
+            "REZJRUhCT0FKREcQ4xISHAoXQVBESU5LSEJIR0NfQ0VDQ05NRkpFUEIQ5xIS",
+            "HAoXQVBESU5LSEJIR0NfQ01OQklOQklMRE8Q6hISHAoXQVBESU5LSEJIR0Nf",
+            "RERITFBJQ0JOTE4Q9RJCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
             "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -40,10 +40,10 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdRecommendType {
     [pbr::OriginalName("APDINKHBHGC_NLCDGIPGFDJ")] ApdinkhbhgcNlcdgipgfdj = 0,
-    [pbr::OriginalName("APDINKHBHGC_DFIEHBOAJDG")] ApdinkhbhgcDfiehboajdg = 2419,
-    [pbr::OriginalName("APDINKHBHGC_CECCNMFJEPB")] ApdinkhbhgcCeccnmfjepb = 2445,
-    [pbr::OriginalName("APDINKHBHGC_DDHLPICBNLN")] ApdinkhbhgcDdhlpicbnln = 2429,
-    [pbr::OriginalName("APDINKHBHGC_CMNBINBILDO")] ApdinkhbhgcCmnbinbildo = 2409,
+    [pbr::OriginalName("APDINKHBHGC_DFIEHBOAJDG")] ApdinkhbhgcDfiehboajdg = 2403,
+    [pbr::OriginalName("APDINKHBHGC_CECCNMFJEPB")] ApdinkhbhgcCeccnmfjepb = 2407,
+    [pbr::OriginalName("APDINKHBHGC_CMNBINBILDO")] ApdinkhbhgcCmnbinbildo = 2410,
+    [pbr::OriginalName("APDINKHBHGC_DDHLPICBNLN")] ApdinkhbhgcDdhlpicbnln = 2421,
   }
 
   #endregion

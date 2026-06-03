@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "LJHDMKEBPDH.proto";
 
 message BattleMonster {
-    LJHDMKEBPDH extra_info = 4;
-    uint32 max_hp = 3;
     uint32 monster_id = 1;
     uint32 cur_hp = 2;
+    uint32 max_hp = 3;
+    LJHDMKEBPDH extra_info = 4;
 }

@@ -6,7 +6,6 @@ import "PAALDKHKOLE.proto";
 import "TrialActivityInfo.proto";
 
 message TrialActivityDataChangeScNotify {
-    repeated uint32 EBNNNJJHIBM = 11;
-    TrialActivityInfo trial_activity_info = 14;
-    repeated PAALDKHKOLE OBOPMFBGBAE = 13;
+    TrialActivityInfo trial_activity_info = 1;
+    repeated PAALDKHKOLE OBOPMFBGBAE = 9;
 }

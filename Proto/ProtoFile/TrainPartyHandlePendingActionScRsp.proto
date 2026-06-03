@@ -9,14 +9,14 @@ import "KDBJBEJPGOO.proto";
 import "OLBKADIKIGL.proto";
 
 message TrainPartyHandlePendingActionScRsp {
-    HLNFNACOFFF CBFPJAJAKGI = 3;
-    uint32 retcode = 13;
+    uint32 queue_position = 1;
+    HLNFNACOFFF CBFPJAJAKGI = 7;
+    uint32 retcode = 11;
     bool HMNAOPOKLGE = 14;
-    uint32 queue_position = 15;
     oneof KILBFAAFDPD {
-        OLBKADIKIGL EEBFCLFOBPG = 304;
-        KDBJBEJPGOO OMLNCJEGJAC = 1830;
-        AHHMLENLDEF BHMJDNEOBNK = 393;
-        DJKACFOFFAH IGMEPOBLFFB = 1905;
+        OLBKADIKIGL EEBFCLFOBPG = 1482;
+        KDBJBEJPGOO OMLNCJEGJAC = 1711;
+        AHHMLENLDEF BHMJDNEOBNK = 744;
+        DJKACFOFFAH IGMEPOBLFFB = 1305;
     }
 }

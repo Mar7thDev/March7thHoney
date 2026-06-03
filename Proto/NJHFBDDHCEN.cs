@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFOSkhGQkRESENFTi5wcm90byJSCgtOSkhGQkRESENFThITCgtMSEdJRkRO",
-            "UElERRgIIAEoCBIfChdncmlkX2ZpZ2h0X2VxdWlwbWVudF9pZBgEIAEoDRIN",
-            "CgVsZXZlbBgHIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "UElERRgEIAEoCBIfChdncmlkX2ZpZ2h0X2VxdWlwbWVudF9pZBgFIAEoDRIN",
+            "CgVsZXZlbBgLIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "LHGIFDNPIDE" field.</summary>
-    public const int LHGIFDNPIDEFieldNumber = 8;
+    public const int LHGIFDNPIDEFieldNumber = 4;
     private bool lHGIFDNPIDE_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "grid_fight_equipment_id" field.</summary>
-    public const int GridFightEquipmentIdFieldNumber = 4;
+    public const int GridFightEquipmentIdFieldNumber = 5;
     private uint gridFightEquipmentId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -109,7 +109,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "level" field.</summary>
-    public const int LevelFieldNumber = 7;
+    public const int LevelFieldNumber = 11;
     private uint level_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -166,17 +166,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (GridFightEquipmentId != 0) {
+      if (LHGIFDNPIDE != false) {
         output.WriteRawTag(32);
+        output.WriteBool(LHGIFDNPIDE);
+      }
+      if (GridFightEquipmentId != 0) {
+        output.WriteRawTag(40);
         output.WriteUInt32(GridFightEquipmentId);
       }
       if (Level != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(88);
         output.WriteUInt32(Level);
-      }
-      if (LHGIFDNPIDE != false) {
-        output.WriteRawTag(64);
-        output.WriteBool(LHGIFDNPIDE);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -188,17 +188,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (GridFightEquipmentId != 0) {
+      if (LHGIFDNPIDE != false) {
         output.WriteRawTag(32);
+        output.WriteBool(LHGIFDNPIDE);
+      }
+      if (GridFightEquipmentId != 0) {
+        output.WriteRawTag(40);
         output.WriteUInt32(GridFightEquipmentId);
       }
       if (Level != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(88);
         output.WriteUInt32(Level);
-      }
-      if (LHGIFDNPIDE != false) {
-        output.WriteRawTag(64);
-        output.WriteBool(LHGIFDNPIDE);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -260,15 +260,15 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 32: {
+            LHGIFDNPIDE = input.ReadBool();
+            break;
+          }
+          case 40: {
             GridFightEquipmentId = input.ReadUInt32();
             break;
           }
-          case 56: {
+          case 88: {
             Level = input.ReadUInt32();
-            break;
-          }
-          case 64: {
-            LHGIFDNPIDE = input.ReadBool();
             break;
           }
         }
@@ -291,15 +291,15 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 32: {
+            LHGIFDNPIDE = input.ReadBool();
+            break;
+          }
+          case 40: {
             GridFightEquipmentId = input.ReadUInt32();
             break;
           }
-          case 56: {
+          case 88: {
             Level = input.ReadUInt32();
-            break;
-          }
-          case 64: {
-            LHGIFDNPIDE = input.ReadBool();
             break;
           }
         }

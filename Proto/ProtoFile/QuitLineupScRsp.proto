@@ -3,9 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message QuitLineupScRsp {
-    bool is_virtual = 6;
-    bool MFBIPMACFCE = 14;
-    uint32 base_avatar_id = 15;
-    uint32 plane_id = 11;
-    uint32 retcode = 5;
+    uint32 retcode = 1;
+    bool MFBIPMACFCE = 15;
 }

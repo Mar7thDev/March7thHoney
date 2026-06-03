@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "FPHPFJLAJDK.proto";
+import "GridGameForgeItemInfo.proto";
+import "GridGameNpcInfo.proto";
+import "GridGameRoleInfo.proto";
+
+message GridFightGameTeamInfo {
+    repeated GridGameRoleInfo grid_game_role_list = 2;
+    repeated FPHPFJLAJDK KCOMPKMJCMC = 3;
+    repeated GridGameForgeItemInfo PMEOPPDAMLM = 6;
+    repeated uint32 PLEIPHJGFIE = 13;
+    repeated GridGameNpcInfo grid_game_npc_list = 14;
+}

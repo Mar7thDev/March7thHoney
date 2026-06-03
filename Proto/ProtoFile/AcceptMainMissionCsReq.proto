@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message AcceptMainMissionCsReq {
-    uint32 main_mission_id = 7;
+    uint32 main_mission_id = 2;
 }

@@ -7,5 +7,5 @@ import "BattleStaticticEventType.proto";
 message StatisticEvent {
     BattleStaticticEventType type = 1;
     uint32 LMMDHGCIHBL = 2;
-    uint32 display_value = 3;
+    uint32 param = 3;
 }

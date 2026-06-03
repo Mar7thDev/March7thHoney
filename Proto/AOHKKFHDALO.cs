@@ -24,12 +24,13 @@ namespace March7thHoney.Proto {
     static AOHKKFHDALOReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFBT0hLS0ZIREFMTy5wcm90byIgCgtBT0hLS0ZIREFMTxIRCglyb2xlX3N0",
-            "YXIYZSABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ChFBT0hLS0ZIREFMTy5wcm90byJICgtBT0hLS0ZIREFMTxITCglyb2xlX3N0",
+            "YXIYZSABKA1IABIVCgtQSUhHTk5NQkNFShhmIAEoDUgAQg0KC05FQk5KRE1G",
+            "RUxPQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AOHKKFHDALO), global::March7thHoney.Proto.AOHKKFHDALO.Parser, new[]{ "RoleStar" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AOHKKFHDALO), global::March7thHoney.Proto.AOHKKFHDALO.Parser, new[]{ "RoleStar", "PIHGNNMBCEJ" }, new[]{ "NEBNJDMFELO" }, null, null, null)
           }));
     }
     #endregion
@@ -71,7 +72,15 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public AOHKKFHDALO(AOHKKFHDALO other) : this() {
-      roleStar_ = other.roleStar_;
+      switch (other.NEBNJDMFELOCase) {
+        case NEBNJDMFELOOneofCase.RoleStar:
+          RoleStar = other.RoleStar;
+          break;
+        case NEBNJDMFELOOneofCase.PIHGNNMBCEJ:
+          PIHGNNMBCEJ = other.PIHGNNMBCEJ;
+          break;
+      }
+
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,14 +92,75 @@ namespace March7thHoney.Proto {
 
     /// <summary>Field number for the "role_star" field.</summary>
     public const int RoleStarFieldNumber = 101;
-    private uint roleStar_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint RoleStar {
-      get { return roleStar_; }
+      get { return HasRoleStar ? (uint) nEBNJDMFELO_ : 0; }
       set {
-        roleStar_ = value;
+        nEBNJDMFELO_ = value;
+        nEBNJDMFELOCase_ = NEBNJDMFELOOneofCase.RoleStar;
       }
+    }
+    /// <summary>Gets whether the "role_star" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasRoleStar {
+      get { return nEBNJDMFELOCase_ == NEBNJDMFELOOneofCase.RoleStar; }
+    }
+    /// <summary> Clears the value of the oneof if it's currently set to "role_star" </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearRoleStar() {
+      if (HasRoleStar) {
+        ClearNEBNJDMFELO();
+      }
+    }
+
+    /// <summary>Field number for the "PIHGNNMBCEJ" field.</summary>
+    public const int PIHGNNMBCEJFieldNumber = 102;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint PIHGNNMBCEJ {
+      get { return HasPIHGNNMBCEJ ? (uint) nEBNJDMFELO_ : 0; }
+      set {
+        nEBNJDMFELO_ = value;
+        nEBNJDMFELOCase_ = NEBNJDMFELOOneofCase.PIHGNNMBCEJ;
+      }
+    }
+    /// <summary>Gets whether the "PIHGNNMBCEJ" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasPIHGNNMBCEJ {
+      get { return nEBNJDMFELOCase_ == NEBNJDMFELOOneofCase.PIHGNNMBCEJ; }
+    }
+    /// <summary> Clears the value of the oneof if it's currently set to "PIHGNNMBCEJ" </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearPIHGNNMBCEJ() {
+      if (HasPIHGNNMBCEJ) {
+        ClearNEBNJDMFELO();
+      }
+    }
+
+    private object nEBNJDMFELO_;
+    /// <summary>Enum of possible cases for the "NEBNJDMFELO" oneof.</summary>
+    public enum NEBNJDMFELOOneofCase {
+      None = 0,
+      RoleStar = 101,
+      PIHGNNMBCEJ = 102,
+    }
+    private NEBNJDMFELOOneofCase nEBNJDMFELOCase_ = NEBNJDMFELOOneofCase.None;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public NEBNJDMFELOOneofCase NEBNJDMFELOCase {
+      get { return nEBNJDMFELOCase_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearNEBNJDMFELO() {
+      nEBNJDMFELOCase_ = NEBNJDMFELOOneofCase.None;
+      nEBNJDMFELO_ = null;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -109,6 +179,8 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (RoleStar != other.RoleStar) return false;
+      if (PIHGNNMBCEJ != other.PIHGNNMBCEJ) return false;
+      if (NEBNJDMFELOCase != other.NEBNJDMFELOCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -116,7 +188,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (RoleStar != 0) hash ^= RoleStar.GetHashCode();
+      if (HasRoleStar) hash ^= RoleStar.GetHashCode();
+      if (HasPIHGNNMBCEJ) hash ^= PIHGNNMBCEJ.GetHashCode();
+      hash ^= (int) nEBNJDMFELOCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -135,9 +209,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (RoleStar != 0) {
+      if (HasRoleStar) {
         output.WriteRawTag(168, 6);
         output.WriteUInt32(RoleStar);
+      }
+      if (HasPIHGNNMBCEJ) {
+        output.WriteRawTag(176, 6);
+        output.WriteUInt32(PIHGNNMBCEJ);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -149,9 +227,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (RoleStar != 0) {
+      if (HasRoleStar) {
         output.WriteRawTag(168, 6);
         output.WriteUInt32(RoleStar);
+      }
+      if (HasPIHGNNMBCEJ) {
+        output.WriteRawTag(176, 6);
+        output.WriteUInt32(PIHGNNMBCEJ);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -163,8 +245,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (RoleStar != 0) {
+      if (HasRoleStar) {
         size += 2 + pb::CodedOutputStream.ComputeUInt32Size(RoleStar);
+      }
+      if (HasPIHGNNMBCEJ) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(PIHGNNMBCEJ);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -178,9 +263,15 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.RoleStar != 0) {
-        RoleStar = other.RoleStar;
+      switch (other.NEBNJDMFELOCase) {
+        case NEBNJDMFELOOneofCase.RoleStar:
+          RoleStar = other.RoleStar;
+          break;
+        case NEBNJDMFELOOneofCase.PIHGNNMBCEJ:
+          PIHGNNMBCEJ = other.PIHGNNMBCEJ;
+          break;
       }
+
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -204,6 +295,10 @@ namespace March7thHoney.Proto {
             RoleStar = input.ReadUInt32();
             break;
           }
+          case 816: {
+            PIHGNNMBCEJ = input.ReadUInt32();
+            break;
+          }
         }
       }
     #endif
@@ -225,6 +320,10 @@ namespace March7thHoney.Proto {
             break;
           case 808: {
             RoleStar = input.ReadUInt32();
+            break;
+          }
+          case 816: {
+            PIHGNNMBCEJ = input.ReadUInt32();
             break;
           }
         }

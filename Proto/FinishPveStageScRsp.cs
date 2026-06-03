@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChlGaW5pc2hQdmVTdGFnZVNjUnNwLnByb3RvGg5JdGVtTGlzdC5wcm90byJm",
-            "ChNGaW5pc2hQdmVTdGFnZVNjUnNwEhkKBnJld2FyZBgMIAEoCzIJLkl0ZW1M",
-            "aXN0Eg8KB3JldGNvZGUYBiABKA0SEwoLTVBESE5GTkNJRUEYCCABKA0SDgoG",
-            "aXNfd2luGAIgASgIQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ChNGaW5pc2hQdmVTdGFnZVNjUnNwEhMKC01QREhORk5DSUVBGAQgASgNEg4K",
+            "BmlzX3dpbhgFIAEoCBIPCgdyZXRjb2RlGAYgASgNEhkKBnJld2FyZBgLIAEo",
+            "CzIJLkl0ZW1MaXN0QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemListReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FinishPveStageScRsp), global::March7thHoney.Proto.FinishPveStageScRsp.Parser, new[]{ "Reward", "Retcode", "MPDHNFNCIEA", "IsWin" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FinishPveStageScRsp), global::March7thHoney.Proto.FinishPveStageScRsp.Parser, new[]{ "MPDHNFNCIEA", "IsWin", "Retcode", "Reward" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,10 +73,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public FinishPveStageScRsp(FinishPveStageScRsp other) : this() {
-      reward_ = other.reward_ != null ? other.reward_.Clone() : null;
-      retcode_ = other.retcode_;
       mPDHNFNCIEA_ = other.mPDHNFNCIEA_;
       isWin_ = other.isWin_;
+      retcode_ = other.retcode_;
+      reward_ = other.reward_ != null ? other.reward_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,15 +86,27 @@ namespace March7thHoney.Proto {
       return new FinishPveStageScRsp(this);
     }
 
-    /// <summary>Field number for the "reward" field.</summary>
-    public const int RewardFieldNumber = 12;
-    private global::March7thHoney.Proto.ItemList reward_;
+    /// <summary>Field number for the "MPDHNFNCIEA" field.</summary>
+    public const int MPDHNFNCIEAFieldNumber = 4;
+    private uint mPDHNFNCIEA_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.ItemList Reward {
-      get { return reward_; }
+    public uint MPDHNFNCIEA {
+      get { return mPDHNFNCIEA_; }
       set {
-        reward_ = value;
+        mPDHNFNCIEA_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "is_win" field.</summary>
+    public const int IsWinFieldNumber = 5;
+    private bool isWin_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IsWin {
+      get { return isWin_; }
+      set {
+        isWin_ = value;
       }
     }
 
@@ -110,27 +122,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "MPDHNFNCIEA" field.</summary>
-    public const int MPDHNFNCIEAFieldNumber = 8;
-    private uint mPDHNFNCIEA_;
+    /// <summary>Field number for the "reward" field.</summary>
+    public const int RewardFieldNumber = 11;
+    private global::March7thHoney.Proto.ItemList reward_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint MPDHNFNCIEA {
-      get { return mPDHNFNCIEA_; }
+    public global::March7thHoney.Proto.ItemList Reward {
+      get { return reward_; }
       set {
-        mPDHNFNCIEA_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "is_win" field.</summary>
-    public const int IsWinFieldNumber = 2;
-    private bool isWin_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IsWin {
-      get { return isWin_; }
-      set {
-        isWin_ = value;
+        reward_ = value;
       }
     }
 
@@ -149,10 +149,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Reward, other.Reward)) return false;
-      if (Retcode != other.Retcode) return false;
       if (MPDHNFNCIEA != other.MPDHNFNCIEA) return false;
       if (IsWin != other.IsWin) return false;
+      if (Retcode != other.Retcode) return false;
+      if (!object.Equals(Reward, other.Reward)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -160,10 +160,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (reward_ != null) hash ^= Reward.GetHashCode();
-      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (MPDHNFNCIEA != 0) hash ^= MPDHNFNCIEA.GetHashCode();
       if (IsWin != false) hash ^= IsWin.GetHashCode();
+      if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (reward_ != null) hash ^= Reward.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -182,20 +182,20 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (MPDHNFNCIEA != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(MPDHNFNCIEA);
+      }
       if (IsWin != false) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(40);
         output.WriteBool(IsWin);
       }
       if (Retcode != 0) {
         output.WriteRawTag(48);
         output.WriteUInt32(Retcode);
       }
-      if (MPDHNFNCIEA != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(MPDHNFNCIEA);
-      }
       if (reward_ != null) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(90);
         output.WriteMessage(Reward);
       }
       if (_unknownFields != null) {
@@ -208,20 +208,20 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (MPDHNFNCIEA != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(MPDHNFNCIEA);
+      }
       if (IsWin != false) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(40);
         output.WriteBool(IsWin);
       }
       if (Retcode != 0) {
         output.WriteRawTag(48);
         output.WriteUInt32(Retcode);
       }
-      if (MPDHNFNCIEA != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(MPDHNFNCIEA);
-      }
       if (reward_ != null) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(90);
         output.WriteMessage(Reward);
       }
       if (_unknownFields != null) {
@@ -234,17 +234,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (reward_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Reward);
-      }
-      if (Retcode != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
-      }
       if (MPDHNFNCIEA != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MPDHNFNCIEA);
       }
       if (IsWin != false) {
         size += 1 + 1;
+      }
+      if (Retcode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      }
+      if (reward_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Reward);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -258,20 +258,20 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.reward_ != null) {
-        if (reward_ == null) {
-          Reward = new global::March7thHoney.Proto.ItemList();
-        }
-        Reward.MergeFrom(other.Reward);
-      }
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
-      }
       if (other.MPDHNFNCIEA != 0) {
         MPDHNFNCIEA = other.MPDHNFNCIEA;
       }
       if (other.IsWin != false) {
         IsWin = other.IsWin;
+      }
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
+      }
+      if (other.reward_ != null) {
+        if (reward_ == null) {
+          Reward = new global::March7thHoney.Proto.ItemList();
+        }
+        Reward.MergeFrom(other.Reward);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -292,7 +292,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
+          case 32: {
+            MPDHNFNCIEA = input.ReadUInt32();
+            break;
+          }
+          case 40: {
             IsWin = input.ReadBool();
             break;
           }
@@ -300,11 +304,7 @@ namespace March7thHoney.Proto {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 64: {
-            MPDHNFNCIEA = input.ReadUInt32();
-            break;
-          }
-          case 98: {
+          case 90: {
             if (reward_ == null) {
               Reward = new global::March7thHoney.Proto.ItemList();
             }
@@ -330,7 +330,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
+          case 32: {
+            MPDHNFNCIEA = input.ReadUInt32();
+            break;
+          }
+          case 40: {
             IsWin = input.ReadBool();
             break;
           }
@@ -338,11 +342,7 @@ namespace March7thHoney.Proto {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 64: {
-            MPDHNFNCIEA = input.ReadUInt32();
-            break;
-          }
-          case 98: {
+          case 90: {
             if (reward_ == null) {
               Reward = new global::March7thHoney.Proto.ItemList();
             }

@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static HKLDDAAECLNReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFIS0xEREFBRUNMTi5wcm90byIxCgtIS0xEREFBRUNMThINCgVzdGF0ZRgK",
-            "IAEoDRITCgtMSkhLTktGTEdERRgDIAEoDUIWqgITTWFyY2g3dGhIb25leS5Q",
-            "cm90b2IGcHJvdG8z"));
+            "ChFIS0xEREFBRUNMTi5wcm90byIvCgtIS0xEREFBRUNMThINCgVzdGF0ZRgI",
+            "IAEoDRIRCglyZWdpb25faWQYDyABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJv",
+            "dG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HKLDDAAECLN), global::March7thHoney.Proto.HKLDDAAECLN.Parser, new[]{ "State", "LJHKNKFLGDE" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HKLDDAAECLN), global::March7thHoney.Proto.HKLDDAAECLN.Parser, new[]{ "State", "RegionId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,7 +73,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public HKLDDAAECLN(HKLDDAAECLN other) : this() {
       state_ = other.state_;
-      lJHKNKFLGDE_ = other.lJHKNKFLGDE_;
+      regionId_ = other.regionId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "state" field.</summary>
-    public const int StateFieldNumber = 10;
+    public const int StateFieldNumber = 8;
     private uint state_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -95,15 +95,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "LJHKNKFLGDE" field.</summary>
-    public const int LJHKNKFLGDEFieldNumber = 3;
-    private uint lJHKNKFLGDE_;
+    /// <summary>Field number for the "region_id" field.</summary>
+    public const int RegionIdFieldNumber = 15;
+    private uint regionId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint LJHKNKFLGDE {
-      get { return lJHKNKFLGDE_; }
+    public uint RegionId {
+      get { return regionId_; }
       set {
-        lJHKNKFLGDE_ = value;
+        regionId_ = value;
       }
     }
 
@@ -123,7 +123,7 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (State != other.State) return false;
-      if (LJHKNKFLGDE != other.LJHKNKFLGDE) return false;
+      if (RegionId != other.RegionId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,7 +132,7 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (State != 0) hash ^= State.GetHashCode();
-      if (LJHKNKFLGDE != 0) hash ^= LJHKNKFLGDE.GetHashCode();
+      if (RegionId != 0) hash ^= RegionId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (LJHKNKFLGDE != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(LJHKNKFLGDE);
-      }
       if (State != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(64);
         output.WriteUInt32(State);
+      }
+      if (RegionId != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(RegionId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (LJHKNKFLGDE != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(LJHKNKFLGDE);
-      }
       if (State != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(64);
         output.WriteUInt32(State);
+      }
+      if (RegionId != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(RegionId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -190,8 +190,8 @@ namespace March7thHoney.Proto {
       if (State != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(State);
       }
-      if (LJHKNKFLGDE != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LJHKNKFLGDE);
+      if (RegionId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RegionId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -208,8 +208,8 @@ namespace March7thHoney.Proto {
       if (other.State != 0) {
         State = other.State;
       }
-      if (other.LJHKNKFLGDE != 0) {
-        LJHKNKFLGDE = other.LJHKNKFLGDE;
+      if (other.RegionId != 0) {
+        RegionId = other.RegionId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
-            LJHKNKFLGDE = input.ReadUInt32();
+          case 64: {
+            State = input.ReadUInt32();
             break;
           }
-          case 80: {
-            State = input.ReadUInt32();
+          case 120: {
+            RegionId = input.ReadUInt32();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
-            LJHKNKFLGDE = input.ReadUInt32();
+          case 64: {
+            State = input.ReadUInt32();
             break;
           }
-          case 80: {
-            State = input.ReadUInt32();
+          case 120: {
+            RegionId = input.ReadUInt32();
             break;
           }
         }

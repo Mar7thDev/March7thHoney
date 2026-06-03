@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChhUYWtlQWxsUmV3YXJkQ3NSZXEucHJvdG8aFE9wdGlvbmFsUmV3YXJkLnBy",
-            "b3RvIjoKElRha2VBbGxSZXdhcmRDc1JlcRIkCgtFSUtLQUxBREVITRgDIAMo",
+            "b3RvIjoKElRha2VBbGxSZXdhcmRDc1JlcRIkCgtFSUtLQUxBREVITRgJIAMo",
             "CzIPLk9wdGlvbmFsUmV3YXJkQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZw",
             "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
@@ -84,9 +84,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "EIKKALADEHM" field.</summary>
-    public const int EIKKALADEHMFieldNumber = 3;
+    public const int EIKKALADEHMFieldNumber = 9;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.OptionalReward> _repeated_eIKKALADEHM_codec
-        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.OptionalReward.Parser);
+        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.OptionalReward.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.OptionalReward> eIKKALADEHM_ = new pbc::RepeatedField<global::March7thHoney.Proto.OptionalReward>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -191,7 +191,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 26: {
+          case 74: {
             eIKKALADEHM_.AddEntriesFrom(input, _repeated_eIKKALADEHM_codec);
             break;
           }
@@ -214,7 +214,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 26: {
+          case 74: {
             eIKKALADEHM_.AddEntriesFrom(ref input, _repeated_eIKKALADEHM_codec);
             break;
           }

@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message RemoveStuffFromAreaCsReq {
-    uint32 CEAMLKCMMGD = 8;
+    uint32 CEAMLKCMMGD = 10;
 }

@@ -24,8 +24,8 @@ namespace March7thHoney.Proto {
     static LDKMOFFMGELReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFMREtNT0ZGTUdFTC5wcm90byI+CgtMREtNT0ZGTUdFTBIMCgR0eXBlGAog",
-            "ASgNEhMKC0xQT0xQREJFTE9OGA4gASgNEgwKBHNsb3QYBiABKA1CFqoCE01h",
+            "ChFMREtNT0ZGTUdFTC5wcm90byI+CgtMREtNT0ZGTUdFTBIMCgR0eXBlGAQg",
+            "ASgNEhMKC0xQT0xQREJFTE9OGAogASgNEgwKBHNsb3QYCyABKA1CFqoCE01h",
             "cmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "type" field.</summary>
-    public const int TypeFieldNumber = 10;
+    public const int TypeFieldNumber = 4;
     private uint type_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "LPOLPDBELON" field.</summary>
-    public const int LPOLPDBELONFieldNumber = 14;
+    public const int LPOLPDBELONFieldNumber = 10;
     private uint lPOLPDBELON_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -109,7 +109,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "slot" field.</summary>
-    public const int SlotFieldNumber = 6;
+    public const int SlotFieldNumber = 11;
     private uint slot_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -166,17 +166,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Slot != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(Slot);
-      }
       if (Type != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(32);
         output.WriteUInt32(Type);
       }
       if (LPOLPDBELON != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(80);
         output.WriteUInt32(LPOLPDBELON);
+      }
+      if (Slot != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(Slot);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -188,17 +188,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Slot != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(Slot);
-      }
       if (Type != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(32);
         output.WriteUInt32(Type);
       }
       if (LPOLPDBELON != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(80);
         output.WriteUInt32(LPOLPDBELON);
+      }
+      if (Slot != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(Slot);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -259,16 +259,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 48: {
-            Slot = input.ReadUInt32();
-            break;
-          }
-          case 80: {
+          case 32: {
             Type = input.ReadUInt32();
             break;
           }
-          case 112: {
+          case 80: {
             LPOLPDBELON = input.ReadUInt32();
+            break;
+          }
+          case 88: {
+            Slot = input.ReadUInt32();
             break;
           }
         }
@@ -290,16 +290,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 48: {
-            Slot = input.ReadUInt32();
-            break;
-          }
-          case 80: {
+          case 32: {
             Type = input.ReadUInt32();
             break;
           }
-          case 112: {
+          case 80: {
             LPOLPDBELON = input.ReadUInt32();
+            break;
+          }
+          case 88: {
+            Slot = input.ReadUInt32();
             break;
           }
         }

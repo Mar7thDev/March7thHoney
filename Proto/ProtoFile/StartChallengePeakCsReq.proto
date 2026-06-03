@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message StartChallengePeakCsReq {
-    repeated uint32 peak_avatar_id_list = 12;
-    uint32 boss_buff_id = 2;
-    uint32 peak_id = 14;
+    repeated uint32 peak_avatar_id_list = 3;
+    uint32 boss_buff_id = 4;
+    uint32 peak_id = 7;
 }

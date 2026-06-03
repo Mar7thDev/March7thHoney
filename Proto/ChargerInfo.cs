@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFDaGFyZ2VySW5mby5wcm90byI0CgtDaGFyZ2VySW5mbxIQCghncm91cF9p",
-            "ZBgIIAEoDRITCgtQQ0NDS0xOQ0xIQhgGIAEoDUIWqgITTWFyY2g3dGhIb25l",
+            "ZBgKIAEoDRITCgtpbnN0YW5jZV9pZBgLIAEoDUIWqgITTWFyY2g3dGhIb25l",
             "eS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChargerInfo), global::March7thHoney.Proto.ChargerInfo.Parser, new[]{ "GroupId", "PCCCKLNCLHB" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChargerInfo), global::March7thHoney.Proto.ChargerInfo.Parser, new[]{ "GroupId", "InstanceId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,7 +73,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ChargerInfo(ChargerInfo other) : this() {
       groupId_ = other.groupId_;
-      pCCCKLNCLHB_ = other.pCCCKLNCLHB_;
+      instanceId_ = other.instanceId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "group_id" field.</summary>
-    public const int GroupIdFieldNumber = 8;
+    public const int GroupIdFieldNumber = 10;
     private uint groupId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -95,15 +95,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "PCCCKLNCLHB" field.</summary>
-    public const int PCCCKLNCLHBFieldNumber = 6;
-    private uint pCCCKLNCLHB_;
+    /// <summary>Field number for the "instance_id" field.</summary>
+    public const int InstanceIdFieldNumber = 11;
+    private uint instanceId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PCCCKLNCLHB {
-      get { return pCCCKLNCLHB_; }
+    public uint InstanceId {
+      get { return instanceId_; }
       set {
-        pCCCKLNCLHB_ = value;
+        instanceId_ = value;
       }
     }
 
@@ -123,7 +123,7 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (GroupId != other.GroupId) return false;
-      if (PCCCKLNCLHB != other.PCCCKLNCLHB) return false;
+      if (InstanceId != other.InstanceId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,7 +132,7 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (GroupId != 0) hash ^= GroupId.GetHashCode();
-      if (PCCCKLNCLHB != 0) hash ^= PCCCKLNCLHB.GetHashCode();
+      if (InstanceId != 0) hash ^= InstanceId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (PCCCKLNCLHB != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(PCCCKLNCLHB);
-      }
       if (GroupId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(80);
         output.WriteUInt32(GroupId);
+      }
+      if (InstanceId != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(InstanceId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (PCCCKLNCLHB != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(PCCCKLNCLHB);
-      }
       if (GroupId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(80);
         output.WriteUInt32(GroupId);
+      }
+      if (InstanceId != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(InstanceId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -190,8 +190,8 @@ namespace March7thHoney.Proto {
       if (GroupId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GroupId);
       }
-      if (PCCCKLNCLHB != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PCCCKLNCLHB);
+      if (InstanceId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(InstanceId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -208,8 +208,8 @@ namespace March7thHoney.Proto {
       if (other.GroupId != 0) {
         GroupId = other.GroupId;
       }
-      if (other.PCCCKLNCLHB != 0) {
-        PCCCKLNCLHB = other.PCCCKLNCLHB;
+      if (other.InstanceId != 0) {
+        InstanceId = other.InstanceId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 48: {
-            PCCCKLNCLHB = input.ReadUInt32();
+          case 80: {
+            GroupId = input.ReadUInt32();
             break;
           }
-          case 64: {
-            GroupId = input.ReadUInt32();
+          case 88: {
+            InstanceId = input.ReadUInt32();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 48: {
-            PCCCKLNCLHB = input.ReadUInt32();
+          case 80: {
+            GroupId = input.ReadUInt32();
             break;
           }
-          case 64: {
-            GroupId = input.ReadUInt32();
+          case 88: {
+            InstanceId = input.ReadUInt32();
             break;
           }
         }

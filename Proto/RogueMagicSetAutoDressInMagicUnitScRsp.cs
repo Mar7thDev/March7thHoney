@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CixSb2d1ZU1hZ2ljU2V0QXV0b0RyZXNzSW5NYWdpY1VuaXRTY1JzcC5wcm90",
             "byJOCiZSb2d1ZU1hZ2ljU2V0QXV0b0RyZXNzSW5NYWdpY1VuaXRTY1JzcBIP",
-            "CgdyZXRjb2RlGAUgASgNEhMKC0dCRU1DQUhQQktQGAsgASgIQhaqAhNNYXJj",
+            "CgdyZXRjb2RlGAQgASgNEhMKC0dCRU1DQUhQQktQGA0gASgIQhaqAhNNYXJj",
             "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 5;
+    public const int RetcodeFieldNumber = 4;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "GBEMCAHPBKP" field.</summary>
-    public const int GBEMCAHPBKPFieldNumber = 11;
+    public const int GBEMCAHPBKPFieldNumber = 13;
     private bool gBEMCAHPBKP_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -153,11 +153,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Retcode != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(32);
         output.WriteUInt32(Retcode);
       }
       if (GBEMCAHPBKP != false) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(104);
         output.WriteBool(GBEMCAHPBKP);
       }
       if (_unknownFields != null) {
@@ -171,11 +171,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Retcode != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(32);
         output.WriteUInt32(Retcode);
       }
       if (GBEMCAHPBKP != false) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(104);
         output.WriteBool(GBEMCAHPBKP);
       }
       if (_unknownFields != null) {
@@ -231,11 +231,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 40: {
+          case 32: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 104: {
             GBEMCAHPBKP = input.ReadBool();
             break;
           }
@@ -258,11 +258,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 40: {
+          case 32: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 104: {
             GBEMCAHPBKP = input.ReadBool();
             break;
           }

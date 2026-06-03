@@ -5,10 +5,10 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ANMDOACPHMN.proto";
 
 message HHAGOFKBFAP {
-    ANMDOACPHMN IHNENEGKEPO = 1;
-    uint32 score_id = 12;
-    uint32 MEFKKHAJACJ = 5;
-    uint32 status = 15;
     uint32 IIMOONEHGLO = 2;
-    double NDLJIJINOBB = 6;
+    uint32 score_id = 4;
+    double NDLJIJINOBB = 7;
+    ANMDOACPHMN IHNENEGKEPO = 8;
+    uint32 MEFKKHAJACJ = 12;
+    uint32 status = 13;
 }

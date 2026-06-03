@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiVGaWdodEFjdGl2aXR5RGF0YUNoYW5nZVNjTm90aWZ5LnByb3RvGhFDREFC",
             "RFBQUEhCTi5wcm90byLAAQofRmlnaHRBY3Rpdml0eURhdGFDaGFuZ2VTY05v",
-            "dGlmeRIhCgtGQUxCQUxGTk9GRhgBIAMoCzIMLkNEQUJEUFBQSEJOEkYKC0VE",
-            "R1BBT0pFRU5OGAwgAygLMjEuRmlnaHRBY3Rpdml0eURhdGFDaGFuZ2VTY05v",
+            "dGlmeRIhCgtGQUxCQUxGTk9GRhgFIAMoCzIMLkNEQUJEUFBQSEJOEkYKC0VE",
+            "R1BBT0pFRU5OGAsgAygLMjEuRmlnaHRBY3Rpdml0eURhdGFDaGFuZ2VTY05v",
             "dGlmeS5FREdQQU9KRUVOTkVudHJ5GjIKEEVER1BBT0pFRU5ORW50cnkSCwoD",
             "a2V5GAEgASgNEg0KBXZhbHVlGAIgASgNOgI4AUIWqgITTWFyY2g3dGhIb25l",
             "eS5Qcm90b2IGcHJvdG8z"));
@@ -88,9 +88,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "FALBALFNOFF" field.</summary>
-    public const int FALBALFNOFFFieldNumber = 1;
+    public const int FALBALFNOFFFieldNumber = 5;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.CDABDPPPHBN> _repeated_fALBALFNOFF_codec
-        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.CDABDPPPHBN.Parser);
+        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.CDABDPPPHBN.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.CDABDPPPHBN> fALBALFNOFF_ = new pbc::RepeatedField<global::March7thHoney.Proto.CDABDPPPHBN>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -99,9 +99,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "EDGPAOJEENN" field.</summary>
-    public const int EDGPAOJEENNFieldNumber = 12;
+    public const int EDGPAOJEENNFieldNumber = 11;
     private static readonly pbc::MapField<uint, uint>.Codec _map_eDGPAOJEENN_codec
-        = new pbc::MapField<uint, uint>.Codec(pb::FieldCodec.ForUInt32(8, 0), pb::FieldCodec.ForUInt32(16, 0), 98);
+        = new pbc::MapField<uint, uint>.Codec(pb::FieldCodec.ForUInt32(8, 0), pb::FieldCodec.ForUInt32(16, 0), 90);
     private readonly pbc::MapField<uint, uint> eDGPAOJEENN_ = new pbc::MapField<uint, uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -212,11 +212,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
+          case 42: {
             fALBALFNOFF_.AddEntriesFrom(input, _repeated_fALBALFNOFF_codec);
             break;
           }
-          case 98: {
+          case 90: {
             eDGPAOJEENN_.AddEntriesFrom(input, _map_eDGPAOJEENN_codec);
             break;
           }
@@ -239,11 +239,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
+          case 42: {
             fALBALFNOFF_.AddEntriesFrom(ref input, _repeated_fALBALFNOFF_codec);
             break;
           }
-          case 98: {
+          case 90: {
             eDGPAOJEENN_.AddEntriesFrom(ref input, _map_eDGPAOJEENN_codec);
             break;
           }

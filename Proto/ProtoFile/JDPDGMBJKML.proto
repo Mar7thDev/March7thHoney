@@ -6,12 +6,12 @@ import "APFOIAIFHEN.proto";
 import "OIJHAJAIFFH.proto";
 
 message JDPDGMBJKML {
-    APFOIAIFHEN AKBMAMDMOFD = 8;
-    repeated OIJHAJAIFFH grid_game_role_list = 7;
-    uint32 section_id = 6;
-    uint32 DCAHJELNJNP = 5;
     uint32 uid = 1;
     uint32 EHNJDIDABHD = 2;
-    uint32 NHDBBIGPAFO = 4;
     uint32 AACGBEBGDPE = 3;
+    uint32 NHDBBIGPAFO = 4;
+    uint32 DCAHJELNJNP = 5;
+    uint32 section_id = 6;
+    repeated OIJHAJAIFFH grid_game_role_list = 7;
+    APFOIAIFHEN AKBMAMDMOFD = 8;
 }

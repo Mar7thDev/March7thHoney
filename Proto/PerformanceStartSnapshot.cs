@@ -29,25 +29,25 @@ namespace March7thHoney.Proto {
             "dG9tVmFsdWVTbmFwc2hvdC5wcm90bxoTR3JvdXBTbmFwc2hvdC5wcm90bxoZ",
             "TWFwUm90YXRpb25TbmFwc2hvdC5wcm90bxoVTWlzc2lvblNuYXBzaG90LnBy",
             "b3RvGhRQbGF5ZXJTbmFwc2hvdC5wcm90bxoYU3dpdGNoSGFuZFNuYXBzaG90",
-            "LnByb3RvItsHChhQZXJmb3JtYW5jZVN0YXJ0U25hcHNob3QSKgoMbWFwX3Jv",
-            "dGF0aW9uGBMgASgLMhQuTWFwUm90YXRpb25TbmFwc2hvdBIoCgtlcmFfZmxp",
-            "cHBlchgMIAEoCzITLkVyYUZsaXBwZXJTbmFwc2hvdBIhCgdtaXNzaW9uGAsg",
-            "ASgLMhAuTWlzc2lvblNuYXBzaG90EikKEWNsaWVudF9ncm91cF9saXN0GA4g",
-            "AygLMg4uR3JvdXBTbmFwc2hvdBJSChZmbG9vcl9zYXZlZF92YWx1ZV9saXN0",
-            "GBEgAygLMjIuUGVyZm9ybWFuY2VTdGFydFNuYXBzaG90LkZsb29yU2F2ZWRW",
-            "YWx1ZUxpc3RFbnRyeRJUChdmbG9vcl9jdXN0b21fdmFsdWVfbGlzdBgSIAMo",
-            "CzIzLlBlcmZvcm1hbmNlU3RhcnRTbmFwc2hvdC5GbG9vckN1c3RvbVZhbHVl",
-            "TGlzdEVudHJ5EigKC3N3aXRjaF9oYW5kGBcgASgLMhMuU3dpdGNoSGFuZFNu",
-            "YXBzaG90EjAKGGNsaWVudF9sZWdhY3lfZ3JvdXBfbGlzdBgQIAMoCzIOLkdy",
-            "b3VwU25hcHNob3QSKQoRc2VydmVyX2dyb3VwX2xpc3QYDSADKAsyDi5Hcm91",
-            "cFNuYXBzaG90Eh8KBnBsYXllchgKIAEoCzIPLlBsYXllclNuYXBzaG90EjAK",
-            "GHNlcnZlcl9sZWdhY3lfZ3JvdXBfbGlzdBgPIAMoCzIOLkdyb3VwU25hcHNo",
-            "b3QSHwoGZGlhbG9nGBUgASgLMg8uRGlhbG9nU25hcHNob3QSFAoMZGltZW5z",
-            "aW9uX2lkGAUgASgNEhAKCGVudHJ5X2lkGAggASgNEhYKDm93bmVyX2dyb3Vw",
-            "X2lkGBYgASgNEhYKDnBlcmZvcm1hbmNlX2lkGAEgASgNEhAKCHdvcmxkX2lk",
-            "GBQgASgNEhAKCHBsYW5lX2lkGAMgASgNEhAKCGZsb29yX2lkGAQgASgNEhgK",
-            "EHBlcmZvcm1hbmNlX3R5cGUYAiABKA0SFQoNc3RvcnlfbGluZV9pZBgGIAEo",
-            "DRIPCgd2ZXJzaW9uGAkgASgNEhIKCmNvbnRlbnRfaWQYByABKA0aOgoYRmxv",
+            "LnByb3RvItsHChhQZXJmb3JtYW5jZVN0YXJ0U25hcHNob3QSFgoOcGVyZm9y",
+            "bWFuY2VfaWQYASABKA0SGAoQcGVyZm9ybWFuY2VfdHlwZRgCIAEoDRIQCghw",
+            "bGFuZV9pZBgDIAEoDRIQCghmbG9vcl9pZBgEIAEoDRIUCgxkaW1lbnNpb25f",
+            "aWQYBSABKA0SFQoNc3RvcnlfbGluZV9pZBgGIAEoDRISCgpjb250ZW50X2lk",
+            "GAcgASgNEhAKCGVudHJ5X2lkGAggASgNEg8KB3ZlcnNpb24YCSABKA0SHwoG",
+            "cGxheWVyGAogASgLMg8uUGxheWVyU25hcHNob3QSIQoHbWlzc2lvbhgLIAEo",
+            "CzIQLk1pc3Npb25TbmFwc2hvdBIoCgtlcmFfZmxpcHBlchgMIAEoCzITLkVy",
+            "YUZsaXBwZXJTbmFwc2hvdBIpChFzZXJ2ZXJfZ3JvdXBfbGlzdBgNIAMoCzIO",
+            "Lkdyb3VwU25hcHNob3QSKQoRY2xpZW50X2dyb3VwX2xpc3QYDiADKAsyDi5H",
+            "cm91cFNuYXBzaG90EjAKGHNlcnZlcl9sZWdhY3lfZ3JvdXBfbGlzdBgPIAMo",
+            "CzIOLkdyb3VwU25hcHNob3QSMAoYY2xpZW50X2xlZ2FjeV9ncm91cF9saXN0",
+            "GBAgAygLMg4uR3JvdXBTbmFwc2hvdBJSChZmbG9vcl9zYXZlZF92YWx1ZV9s",
+            "aXN0GBEgAygLMjIuUGVyZm9ybWFuY2VTdGFydFNuYXBzaG90LkZsb29yU2F2",
+            "ZWRWYWx1ZUxpc3RFbnRyeRJUChdmbG9vcl9jdXN0b21fdmFsdWVfbGlzdBgS",
+            "IAMoCzIzLlBlcmZvcm1hbmNlU3RhcnRTbmFwc2hvdC5GbG9vckN1c3RvbVZh",
+            "bHVlTGlzdEVudHJ5EioKDG1hcF9yb3RhdGlvbhgTIAEoCzIULk1hcFJvdGF0",
+            "aW9uU25hcHNob3QSEAoId29ybGRfaWQYFCABKA0SHwoGZGlhbG9nGBUgASgL",
+            "Mg8uRGlhbG9nU25hcHNob3QSFgoOb3duZXJfZ3JvdXBfaWQYFiABKA0SKAoL",
+            "c3dpdGNoX2hhbmQYFyABKAsyEy5Td2l0Y2hIYW5kU25hcHNob3QaOgoYRmxv",
             "b3JTYXZlZFZhbHVlTGlzdEVudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgC",
             "IAEoBToCOAEaVgoZRmxvb3JDdXN0b21WYWx1ZUxpc3RFbnRyeRILCgNrZXkY",
             "ASABKAkSKAoFdmFsdWUYAiABKAsyGS5GbG9vckN1c3RvbVZhbHVlU25hcHNo",
@@ -55,7 +55,7 @@ namespace March7thHoney.Proto {
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.DialogSnapshotReflection.Descriptor, global::March7thHoney.Proto.EraFlipperSnapshotReflection.Descriptor, global::March7thHoney.Proto.FloorCustomValueSnapshotReflection.Descriptor, global::March7thHoney.Proto.GroupSnapshotReflection.Descriptor, global::March7thHoney.Proto.MapRotationSnapshotReflection.Descriptor, global::March7thHoney.Proto.MissionSnapshotReflection.Descriptor, global::March7thHoney.Proto.PlayerSnapshotReflection.Descriptor, global::March7thHoney.Proto.SwitchHandSnapshotReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PerformanceStartSnapshot), global::March7thHoney.Proto.PerformanceStartSnapshot.Parser, new[]{ "MapRotation", "EraFlipper", "Mission", "ClientGroupList", "FloorSavedValueList", "FloorCustomValueList", "SwitchHand", "ClientLegacyGroupList", "ServerGroupList", "Player", "ServerLegacyGroupList", "Dialog", "DimensionId", "EntryId", "OwnerGroupId", "PerformanceId", "WorldId", "PlaneId", "FloorId", "PerformanceType", "StoryLineId", "Version", "ContentId" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PerformanceStartSnapshot), global::March7thHoney.Proto.PerformanceStartSnapshot.Parser, new[]{ "PerformanceId", "PerformanceType", "PlaneId", "FloorId", "DimensionId", "StoryLineId", "ContentId", "EntryId", "Version", "Player", "Mission", "EraFlipper", "ServerGroupList", "ClientGroupList", "ServerLegacyGroupList", "ClientLegacyGroupList", "FloorSavedValueList", "FloorCustomValueList", "MapRotation", "WorldId", "Dialog", "OwnerGroupId", "SwitchHand" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, })
           }));
     }
     #endregion
@@ -97,29 +97,29 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PerformanceStartSnapshot(PerformanceStartSnapshot other) : this() {
-      mapRotation_ = other.mapRotation_ != null ? other.mapRotation_.Clone() : null;
-      eraFlipper_ = other.eraFlipper_ != null ? other.eraFlipper_.Clone() : null;
-      mission_ = other.mission_ != null ? other.mission_.Clone() : null;
-      clientGroupList_ = other.clientGroupList_.Clone();
-      floorSavedValueList_ = other.floorSavedValueList_.Clone();
-      floorCustomValueList_ = other.floorCustomValueList_.Clone();
-      switchHand_ = other.switchHand_ != null ? other.switchHand_.Clone() : null;
-      clientLegacyGroupList_ = other.clientLegacyGroupList_.Clone();
-      serverGroupList_ = other.serverGroupList_.Clone();
-      player_ = other.player_ != null ? other.player_.Clone() : null;
-      serverLegacyGroupList_ = other.serverLegacyGroupList_.Clone();
-      dialog_ = other.dialog_ != null ? other.dialog_.Clone() : null;
-      dimensionId_ = other.dimensionId_;
-      entryId_ = other.entryId_;
-      ownerGroupId_ = other.ownerGroupId_;
       performanceId_ = other.performanceId_;
-      worldId_ = other.worldId_;
+      performanceType_ = other.performanceType_;
       planeId_ = other.planeId_;
       floorId_ = other.floorId_;
-      performanceType_ = other.performanceType_;
+      dimensionId_ = other.dimensionId_;
       storyLineId_ = other.storyLineId_;
-      version_ = other.version_;
       contentId_ = other.contentId_;
+      entryId_ = other.entryId_;
+      version_ = other.version_;
+      player_ = other.player_ != null ? other.player_.Clone() : null;
+      mission_ = other.mission_ != null ? other.mission_.Clone() : null;
+      eraFlipper_ = other.eraFlipper_ != null ? other.eraFlipper_.Clone() : null;
+      serverGroupList_ = other.serverGroupList_.Clone();
+      clientGroupList_ = other.clientGroupList_.Clone();
+      serverLegacyGroupList_ = other.serverLegacyGroupList_.Clone();
+      clientLegacyGroupList_ = other.clientLegacyGroupList_.Clone();
+      floorSavedValueList_ = other.floorSavedValueList_.Clone();
+      floorCustomValueList_ = other.floorCustomValueList_.Clone();
+      mapRotation_ = other.mapRotation_ != null ? other.mapRotation_.Clone() : null;
+      worldId_ = other.worldId_;
+      dialog_ = other.dialog_ != null ? other.dialog_.Clone() : null;
+      ownerGroupId_ = other.ownerGroupId_;
+      switchHand_ = other.switchHand_ != null ? other.switchHand_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -127,180 +127,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PerformanceStartSnapshot Clone() {
       return new PerformanceStartSnapshot(this);
-    }
-
-    /// <summary>Field number for the "map_rotation" field.</summary>
-    public const int MapRotationFieldNumber = 19;
-    private global::March7thHoney.Proto.MapRotationSnapshot mapRotation_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.MapRotationSnapshot MapRotation {
-      get { return mapRotation_; }
-      set {
-        mapRotation_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "era_flipper" field.</summary>
-    public const int EraFlipperFieldNumber = 12;
-    private global::March7thHoney.Proto.EraFlipperSnapshot eraFlipper_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.EraFlipperSnapshot EraFlipper {
-      get { return eraFlipper_; }
-      set {
-        eraFlipper_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "mission" field.</summary>
-    public const int MissionFieldNumber = 11;
-    private global::March7thHoney.Proto.MissionSnapshot mission_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.MissionSnapshot Mission {
-      get { return mission_; }
-      set {
-        mission_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "client_group_list" field.</summary>
-    public const int ClientGroupListFieldNumber = 14;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GroupSnapshot> _repeated_clientGroupList_codec
-        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.GroupSnapshot.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot> clientGroupList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot> ClientGroupList {
-      get { return clientGroupList_; }
-    }
-
-    /// <summary>Field number for the "floor_saved_value_list" field.</summary>
-    public const int FloorSavedValueListFieldNumber = 17;
-    private static readonly pbc::MapField<string, int>.Codec _map_floorSavedValueList_codec
-        = new pbc::MapField<string, int>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForInt32(16, 0), 138);
-    private readonly pbc::MapField<string, int> floorSavedValueList_ = new pbc::MapField<string, int>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<string, int> FloorSavedValueList {
-      get { return floorSavedValueList_; }
-    }
-
-    /// <summary>Field number for the "floor_custom_value_list" field.</summary>
-    public const int FloorCustomValueListFieldNumber = 18;
-    private static readonly pbc::MapField<string, global::March7thHoney.Proto.FloorCustomValueSnapshot>.Codec _map_floorCustomValueList_codec
-        = new pbc::MapField<string, global::March7thHoney.Proto.FloorCustomValueSnapshot>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.FloorCustomValueSnapshot.Parser), 146);
-    private readonly pbc::MapField<string, global::March7thHoney.Proto.FloorCustomValueSnapshot> floorCustomValueList_ = new pbc::MapField<string, global::March7thHoney.Proto.FloorCustomValueSnapshot>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<string, global::March7thHoney.Proto.FloorCustomValueSnapshot> FloorCustomValueList {
-      get { return floorCustomValueList_; }
-    }
-
-    /// <summary>Field number for the "switch_hand" field.</summary>
-    public const int SwitchHandFieldNumber = 23;
-    private global::March7thHoney.Proto.SwitchHandSnapshot switchHand_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.SwitchHandSnapshot SwitchHand {
-      get { return switchHand_; }
-      set {
-        switchHand_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "client_legacy_group_list" field.</summary>
-    public const int ClientLegacyGroupListFieldNumber = 16;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GroupSnapshot> _repeated_clientLegacyGroupList_codec
-        = pb::FieldCodec.ForMessage(130, global::March7thHoney.Proto.GroupSnapshot.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot> clientLegacyGroupList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot> ClientLegacyGroupList {
-      get { return clientLegacyGroupList_; }
-    }
-
-    /// <summary>Field number for the "server_group_list" field.</summary>
-    public const int ServerGroupListFieldNumber = 13;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GroupSnapshot> _repeated_serverGroupList_codec
-        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.GroupSnapshot.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot> serverGroupList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot> ServerGroupList {
-      get { return serverGroupList_; }
-    }
-
-    /// <summary>Field number for the "player" field.</summary>
-    public const int PlayerFieldNumber = 10;
-    private global::March7thHoney.Proto.PlayerSnapshot player_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.PlayerSnapshot Player {
-      get { return player_; }
-      set {
-        player_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "server_legacy_group_list" field.</summary>
-    public const int ServerLegacyGroupListFieldNumber = 15;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GroupSnapshot> _repeated_serverLegacyGroupList_codec
-        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.GroupSnapshot.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot> serverLegacyGroupList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot> ServerLegacyGroupList {
-      get { return serverLegacyGroupList_; }
-    }
-
-    /// <summary>Field number for the "dialog" field.</summary>
-    public const int DialogFieldNumber = 21;
-    private global::March7thHoney.Proto.DialogSnapshot dialog_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.DialogSnapshot Dialog {
-      get { return dialog_; }
-      set {
-        dialog_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "dimension_id" field.</summary>
-    public const int DimensionIdFieldNumber = 5;
-    private uint dimensionId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint DimensionId {
-      get { return dimensionId_; }
-      set {
-        dimensionId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "entry_id" field.</summary>
-    public const int EntryIdFieldNumber = 8;
-    private uint entryId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint EntryId {
-      get { return entryId_; }
-      set {
-        entryId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "owner_group_id" field.</summary>
-    public const int OwnerGroupIdFieldNumber = 22;
-    private uint ownerGroupId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint OwnerGroupId {
-      get { return ownerGroupId_; }
-      set {
-        ownerGroupId_ = value;
-      }
     }
 
     /// <summary>Field number for the "performance_id" field.</summary>
@@ -315,15 +141,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "world_id" field.</summary>
-    public const int WorldIdFieldNumber = 20;
-    private uint worldId_;
+    /// <summary>Field number for the "performance_type" field.</summary>
+    public const int PerformanceTypeFieldNumber = 2;
+    private uint performanceType_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint WorldId {
-      get { return worldId_; }
+    public uint PerformanceType {
+      get { return performanceType_; }
       set {
-        worldId_ = value;
+        performanceType_ = value;
       }
     }
 
@@ -351,15 +177,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "performance_type" field.</summary>
-    public const int PerformanceTypeFieldNumber = 2;
-    private uint performanceType_;
+    /// <summary>Field number for the "dimension_id" field.</summary>
+    public const int DimensionIdFieldNumber = 5;
+    private uint dimensionId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PerformanceType {
-      get { return performanceType_; }
+    public uint DimensionId {
+      get { return dimensionId_; }
       set {
-        performanceType_ = value;
+        dimensionId_ = value;
       }
     }
 
@@ -375,6 +201,30 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "content_id" field.</summary>
+    public const int ContentIdFieldNumber = 7;
+    private uint contentId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint ContentId {
+      get { return contentId_; }
+      set {
+        contentId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "entry_id" field.</summary>
+    public const int EntryIdFieldNumber = 8;
+    private uint entryId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint EntryId {
+      get { return entryId_; }
+      set {
+        entryId_ = value;
+      }
+    }
+
     /// <summary>Field number for the "version" field.</summary>
     public const int VersionFieldNumber = 9;
     private uint version_;
@@ -387,15 +237,165 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "content_id" field.</summary>
-    public const int ContentIdFieldNumber = 7;
-    private uint contentId_;
+    /// <summary>Field number for the "player" field.</summary>
+    public const int PlayerFieldNumber = 10;
+    private global::March7thHoney.Proto.PlayerSnapshot player_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint ContentId {
-      get { return contentId_; }
+    public global::March7thHoney.Proto.PlayerSnapshot Player {
+      get { return player_; }
       set {
-        contentId_ = value;
+        player_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "mission" field.</summary>
+    public const int MissionFieldNumber = 11;
+    private global::March7thHoney.Proto.MissionSnapshot mission_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.MissionSnapshot Mission {
+      get { return mission_; }
+      set {
+        mission_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "era_flipper" field.</summary>
+    public const int EraFlipperFieldNumber = 12;
+    private global::March7thHoney.Proto.EraFlipperSnapshot eraFlipper_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.EraFlipperSnapshot EraFlipper {
+      get { return eraFlipper_; }
+      set {
+        eraFlipper_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "server_group_list" field.</summary>
+    public const int ServerGroupListFieldNumber = 13;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GroupSnapshot> _repeated_serverGroupList_codec
+        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.GroupSnapshot.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot> serverGroupList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot> ServerGroupList {
+      get { return serverGroupList_; }
+    }
+
+    /// <summary>Field number for the "client_group_list" field.</summary>
+    public const int ClientGroupListFieldNumber = 14;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GroupSnapshot> _repeated_clientGroupList_codec
+        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.GroupSnapshot.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot> clientGroupList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot> ClientGroupList {
+      get { return clientGroupList_; }
+    }
+
+    /// <summary>Field number for the "server_legacy_group_list" field.</summary>
+    public const int ServerLegacyGroupListFieldNumber = 15;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GroupSnapshot> _repeated_serverLegacyGroupList_codec
+        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.GroupSnapshot.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot> serverLegacyGroupList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot> ServerLegacyGroupList {
+      get { return serverLegacyGroupList_; }
+    }
+
+    /// <summary>Field number for the "client_legacy_group_list" field.</summary>
+    public const int ClientLegacyGroupListFieldNumber = 16;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GroupSnapshot> _repeated_clientLegacyGroupList_codec
+        = pb::FieldCodec.ForMessage(130, global::March7thHoney.Proto.GroupSnapshot.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot> clientLegacyGroupList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.GroupSnapshot> ClientLegacyGroupList {
+      get { return clientLegacyGroupList_; }
+    }
+
+    /// <summary>Field number for the "floor_saved_value_list" field.</summary>
+    public const int FloorSavedValueListFieldNumber = 17;
+    private static readonly pbc::MapField<string, int>.Codec _map_floorSavedValueList_codec
+        = new pbc::MapField<string, int>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForInt32(16, 0), 138);
+    private readonly pbc::MapField<string, int> floorSavedValueList_ = new pbc::MapField<string, int>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::MapField<string, int> FloorSavedValueList {
+      get { return floorSavedValueList_; }
+    }
+
+    /// <summary>Field number for the "floor_custom_value_list" field.</summary>
+    public const int FloorCustomValueListFieldNumber = 18;
+    private static readonly pbc::MapField<string, global::March7thHoney.Proto.FloorCustomValueSnapshot>.Codec _map_floorCustomValueList_codec
+        = new pbc::MapField<string, global::March7thHoney.Proto.FloorCustomValueSnapshot>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.FloorCustomValueSnapshot.Parser), 146);
+    private readonly pbc::MapField<string, global::March7thHoney.Proto.FloorCustomValueSnapshot> floorCustomValueList_ = new pbc::MapField<string, global::March7thHoney.Proto.FloorCustomValueSnapshot>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::MapField<string, global::March7thHoney.Proto.FloorCustomValueSnapshot> FloorCustomValueList {
+      get { return floorCustomValueList_; }
+    }
+
+    /// <summary>Field number for the "map_rotation" field.</summary>
+    public const int MapRotationFieldNumber = 19;
+    private global::March7thHoney.Proto.MapRotationSnapshot mapRotation_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.MapRotationSnapshot MapRotation {
+      get { return mapRotation_; }
+      set {
+        mapRotation_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "world_id" field.</summary>
+    public const int WorldIdFieldNumber = 20;
+    private uint worldId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint WorldId {
+      get { return worldId_; }
+      set {
+        worldId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "dialog" field.</summary>
+    public const int DialogFieldNumber = 21;
+    private global::March7thHoney.Proto.DialogSnapshot dialog_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.DialogSnapshot Dialog {
+      get { return dialog_; }
+      set {
+        dialog_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "owner_group_id" field.</summary>
+    public const int OwnerGroupIdFieldNumber = 22;
+    private uint ownerGroupId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint OwnerGroupId {
+      get { return ownerGroupId_; }
+      set {
+        ownerGroupId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "switch_hand" field.</summary>
+    public const int SwitchHandFieldNumber = 23;
+    private global::March7thHoney.Proto.SwitchHandSnapshot switchHand_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.SwitchHandSnapshot SwitchHand {
+      get { return switchHand_; }
+      set {
+        switchHand_ = value;
       }
     }
 
@@ -414,29 +414,29 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(MapRotation, other.MapRotation)) return false;
-      if (!object.Equals(EraFlipper, other.EraFlipper)) return false;
-      if (!object.Equals(Mission, other.Mission)) return false;
-      if(!clientGroupList_.Equals(other.clientGroupList_)) return false;
-      if (!FloorSavedValueList.Equals(other.FloorSavedValueList)) return false;
-      if (!FloorCustomValueList.Equals(other.FloorCustomValueList)) return false;
-      if (!object.Equals(SwitchHand, other.SwitchHand)) return false;
-      if(!clientLegacyGroupList_.Equals(other.clientLegacyGroupList_)) return false;
-      if(!serverGroupList_.Equals(other.serverGroupList_)) return false;
-      if (!object.Equals(Player, other.Player)) return false;
-      if(!serverLegacyGroupList_.Equals(other.serverLegacyGroupList_)) return false;
-      if (!object.Equals(Dialog, other.Dialog)) return false;
-      if (DimensionId != other.DimensionId) return false;
-      if (EntryId != other.EntryId) return false;
-      if (OwnerGroupId != other.OwnerGroupId) return false;
       if (PerformanceId != other.PerformanceId) return false;
-      if (WorldId != other.WorldId) return false;
+      if (PerformanceType != other.PerformanceType) return false;
       if (PlaneId != other.PlaneId) return false;
       if (FloorId != other.FloorId) return false;
-      if (PerformanceType != other.PerformanceType) return false;
+      if (DimensionId != other.DimensionId) return false;
       if (StoryLineId != other.StoryLineId) return false;
-      if (Version != other.Version) return false;
       if (ContentId != other.ContentId) return false;
+      if (EntryId != other.EntryId) return false;
+      if (Version != other.Version) return false;
+      if (!object.Equals(Player, other.Player)) return false;
+      if (!object.Equals(Mission, other.Mission)) return false;
+      if (!object.Equals(EraFlipper, other.EraFlipper)) return false;
+      if(!serverGroupList_.Equals(other.serverGroupList_)) return false;
+      if(!clientGroupList_.Equals(other.clientGroupList_)) return false;
+      if(!serverLegacyGroupList_.Equals(other.serverLegacyGroupList_)) return false;
+      if(!clientLegacyGroupList_.Equals(other.clientLegacyGroupList_)) return false;
+      if (!FloorSavedValueList.Equals(other.FloorSavedValueList)) return false;
+      if (!FloorCustomValueList.Equals(other.FloorCustomValueList)) return false;
+      if (!object.Equals(MapRotation, other.MapRotation)) return false;
+      if (WorldId != other.WorldId) return false;
+      if (!object.Equals(Dialog, other.Dialog)) return false;
+      if (OwnerGroupId != other.OwnerGroupId) return false;
+      if (!object.Equals(SwitchHand, other.SwitchHand)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -444,29 +444,29 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (mapRotation_ != null) hash ^= MapRotation.GetHashCode();
-      if (eraFlipper_ != null) hash ^= EraFlipper.GetHashCode();
-      if (mission_ != null) hash ^= Mission.GetHashCode();
-      hash ^= clientGroupList_.GetHashCode();
-      hash ^= FloorSavedValueList.GetHashCode();
-      hash ^= FloorCustomValueList.GetHashCode();
-      if (switchHand_ != null) hash ^= SwitchHand.GetHashCode();
-      hash ^= clientLegacyGroupList_.GetHashCode();
-      hash ^= serverGroupList_.GetHashCode();
-      if (player_ != null) hash ^= Player.GetHashCode();
-      hash ^= serverLegacyGroupList_.GetHashCode();
-      if (dialog_ != null) hash ^= Dialog.GetHashCode();
-      if (DimensionId != 0) hash ^= DimensionId.GetHashCode();
-      if (EntryId != 0) hash ^= EntryId.GetHashCode();
-      if (OwnerGroupId != 0) hash ^= OwnerGroupId.GetHashCode();
       if (PerformanceId != 0) hash ^= PerformanceId.GetHashCode();
-      if (WorldId != 0) hash ^= WorldId.GetHashCode();
+      if (PerformanceType != 0) hash ^= PerformanceType.GetHashCode();
       if (PlaneId != 0) hash ^= PlaneId.GetHashCode();
       if (FloorId != 0) hash ^= FloorId.GetHashCode();
-      if (PerformanceType != 0) hash ^= PerformanceType.GetHashCode();
+      if (DimensionId != 0) hash ^= DimensionId.GetHashCode();
       if (StoryLineId != 0) hash ^= StoryLineId.GetHashCode();
-      if (Version != 0) hash ^= Version.GetHashCode();
       if (ContentId != 0) hash ^= ContentId.GetHashCode();
+      if (EntryId != 0) hash ^= EntryId.GetHashCode();
+      if (Version != 0) hash ^= Version.GetHashCode();
+      if (player_ != null) hash ^= Player.GetHashCode();
+      if (mission_ != null) hash ^= Mission.GetHashCode();
+      if (eraFlipper_ != null) hash ^= EraFlipper.GetHashCode();
+      hash ^= serverGroupList_.GetHashCode();
+      hash ^= clientGroupList_.GetHashCode();
+      hash ^= serverLegacyGroupList_.GetHashCode();
+      hash ^= clientLegacyGroupList_.GetHashCode();
+      hash ^= FloorSavedValueList.GetHashCode();
+      hash ^= FloorCustomValueList.GetHashCode();
+      if (mapRotation_ != null) hash ^= MapRotation.GetHashCode();
+      if (WorldId != 0) hash ^= WorldId.GetHashCode();
+      if (dialog_ != null) hash ^= Dialog.GetHashCode();
+      if (OwnerGroupId != 0) hash ^= OwnerGroupId.GetHashCode();
+      if (switchHand_ != null) hash ^= SwitchHand.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -653,44 +653,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (mapRotation_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(MapRotation);
-      }
-      if (eraFlipper_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(EraFlipper);
-      }
-      if (mission_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Mission);
-      }
-      size += clientGroupList_.CalculateSize(_repeated_clientGroupList_codec);
-      size += floorSavedValueList_.CalculateSize(_map_floorSavedValueList_codec);
-      size += floorCustomValueList_.CalculateSize(_map_floorCustomValueList_codec);
-      if (switchHand_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(SwitchHand);
-      }
-      size += clientLegacyGroupList_.CalculateSize(_repeated_clientLegacyGroupList_codec);
-      size += serverGroupList_.CalculateSize(_repeated_serverGroupList_codec);
-      if (player_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Player);
-      }
-      size += serverLegacyGroupList_.CalculateSize(_repeated_serverLegacyGroupList_codec);
-      if (dialog_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Dialog);
-      }
-      if (DimensionId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DimensionId);
-      }
-      if (EntryId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EntryId);
-      }
-      if (OwnerGroupId != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(OwnerGroupId);
-      }
       if (PerformanceId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PerformanceId);
       }
-      if (WorldId != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(WorldId);
+      if (PerformanceType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PerformanceType);
       }
       if (PlaneId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PlaneId);
@@ -698,17 +665,50 @@ namespace March7thHoney.Proto {
       if (FloorId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FloorId);
       }
-      if (PerformanceType != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PerformanceType);
+      if (DimensionId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DimensionId);
       }
       if (StoryLineId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(StoryLineId);
       }
+      if (ContentId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ContentId);
+      }
+      if (EntryId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EntryId);
+      }
       if (Version != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Version);
       }
-      if (ContentId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ContentId);
+      if (player_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Player);
+      }
+      if (mission_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Mission);
+      }
+      if (eraFlipper_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(EraFlipper);
+      }
+      size += serverGroupList_.CalculateSize(_repeated_serverGroupList_codec);
+      size += clientGroupList_.CalculateSize(_repeated_clientGroupList_codec);
+      size += serverLegacyGroupList_.CalculateSize(_repeated_serverLegacyGroupList_codec);
+      size += clientLegacyGroupList_.CalculateSize(_repeated_clientLegacyGroupList_codec);
+      size += floorSavedValueList_.CalculateSize(_map_floorSavedValueList_codec);
+      size += floorCustomValueList_.CalculateSize(_map_floorCustomValueList_codec);
+      if (mapRotation_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(MapRotation);
+      }
+      if (WorldId != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(WorldId);
+      }
+      if (dialog_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Dialog);
+      }
+      if (OwnerGroupId != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(OwnerGroupId);
+      }
+      if (switchHand_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(SwitchHand);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -722,62 +722,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.mapRotation_ != null) {
-        if (mapRotation_ == null) {
-          MapRotation = new global::March7thHoney.Proto.MapRotationSnapshot();
-        }
-        MapRotation.MergeFrom(other.MapRotation);
-      }
-      if (other.eraFlipper_ != null) {
-        if (eraFlipper_ == null) {
-          EraFlipper = new global::March7thHoney.Proto.EraFlipperSnapshot();
-        }
-        EraFlipper.MergeFrom(other.EraFlipper);
-      }
-      if (other.mission_ != null) {
-        if (mission_ == null) {
-          Mission = new global::March7thHoney.Proto.MissionSnapshot();
-        }
-        Mission.MergeFrom(other.Mission);
-      }
-      clientGroupList_.Add(other.clientGroupList_);
-      floorSavedValueList_.MergeFrom(other.floorSavedValueList_);
-      floorCustomValueList_.MergeFrom(other.floorCustomValueList_);
-      if (other.switchHand_ != null) {
-        if (switchHand_ == null) {
-          SwitchHand = new global::March7thHoney.Proto.SwitchHandSnapshot();
-        }
-        SwitchHand.MergeFrom(other.SwitchHand);
-      }
-      clientLegacyGroupList_.Add(other.clientLegacyGroupList_);
-      serverGroupList_.Add(other.serverGroupList_);
-      if (other.player_ != null) {
-        if (player_ == null) {
-          Player = new global::March7thHoney.Proto.PlayerSnapshot();
-        }
-        Player.MergeFrom(other.Player);
-      }
-      serverLegacyGroupList_.Add(other.serverLegacyGroupList_);
-      if (other.dialog_ != null) {
-        if (dialog_ == null) {
-          Dialog = new global::March7thHoney.Proto.DialogSnapshot();
-        }
-        Dialog.MergeFrom(other.Dialog);
-      }
-      if (other.DimensionId != 0) {
-        DimensionId = other.DimensionId;
-      }
-      if (other.EntryId != 0) {
-        EntryId = other.EntryId;
-      }
-      if (other.OwnerGroupId != 0) {
-        OwnerGroupId = other.OwnerGroupId;
-      }
       if (other.PerformanceId != 0) {
         PerformanceId = other.PerformanceId;
       }
-      if (other.WorldId != 0) {
-        WorldId = other.WorldId;
+      if (other.PerformanceType != 0) {
+        PerformanceType = other.PerformanceType;
       }
       if (other.PlaneId != 0) {
         PlaneId = other.PlaneId;
@@ -785,17 +734,68 @@ namespace March7thHoney.Proto {
       if (other.FloorId != 0) {
         FloorId = other.FloorId;
       }
-      if (other.PerformanceType != 0) {
-        PerformanceType = other.PerformanceType;
+      if (other.DimensionId != 0) {
+        DimensionId = other.DimensionId;
       }
       if (other.StoryLineId != 0) {
         StoryLineId = other.StoryLineId;
       }
+      if (other.ContentId != 0) {
+        ContentId = other.ContentId;
+      }
+      if (other.EntryId != 0) {
+        EntryId = other.EntryId;
+      }
       if (other.Version != 0) {
         Version = other.Version;
       }
-      if (other.ContentId != 0) {
-        ContentId = other.ContentId;
+      if (other.player_ != null) {
+        if (player_ == null) {
+          Player = new global::March7thHoney.Proto.PlayerSnapshot();
+        }
+        Player.MergeFrom(other.Player);
+      }
+      if (other.mission_ != null) {
+        if (mission_ == null) {
+          Mission = new global::March7thHoney.Proto.MissionSnapshot();
+        }
+        Mission.MergeFrom(other.Mission);
+      }
+      if (other.eraFlipper_ != null) {
+        if (eraFlipper_ == null) {
+          EraFlipper = new global::March7thHoney.Proto.EraFlipperSnapshot();
+        }
+        EraFlipper.MergeFrom(other.EraFlipper);
+      }
+      serverGroupList_.Add(other.serverGroupList_);
+      clientGroupList_.Add(other.clientGroupList_);
+      serverLegacyGroupList_.Add(other.serverLegacyGroupList_);
+      clientLegacyGroupList_.Add(other.clientLegacyGroupList_);
+      floorSavedValueList_.MergeFrom(other.floorSavedValueList_);
+      floorCustomValueList_.MergeFrom(other.floorCustomValueList_);
+      if (other.mapRotation_ != null) {
+        if (mapRotation_ == null) {
+          MapRotation = new global::March7thHoney.Proto.MapRotationSnapshot();
+        }
+        MapRotation.MergeFrom(other.MapRotation);
+      }
+      if (other.WorldId != 0) {
+        WorldId = other.WorldId;
+      }
+      if (other.dialog_ != null) {
+        if (dialog_ == null) {
+          Dialog = new global::March7thHoney.Proto.DialogSnapshot();
+        }
+        Dialog.MergeFrom(other.Dialog);
+      }
+      if (other.OwnerGroupId != 0) {
+        OwnerGroupId = other.OwnerGroupId;
+      }
+      if (other.switchHand_ != null) {
+        if (switchHand_ == null) {
+          SwitchHand = new global::March7thHoney.Proto.SwitchHandSnapshot();
+        }
+        SwitchHand.MergeFrom(other.SwitchHand);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }

@@ -25,16 +25,17 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChlHZXRNaXNzaW9uRGF0YVNjUnNwLnByb3RvGhFNYWluTWlzc2lvbi5wcm90",
-            "bxoNTWlzc2lvbi5wcm90byKzAQoTR2V0TWlzc2lvbkRhdGFTY1JzcBIeCgxt",
-            "aXNzaW9uX2xpc3QYDSADKAsyCC5NaXNzaW9uEhMKC0tCREdOR01QRkVIGAQg",
-            "AygNEicKEW1haW5fbWlzc2lvbl9saXN0GAUgAygLMgwuTWFpbk1pc3Npb24S",
-            "EwoLR0tGUEtCR0pCR04YCiABKA0SGAoQdHJhY2tfbWlzc2lvbl9pZBgPIAEo",
-            "DRIPCgdyZXRjb2RlGAwgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZw",
-            "cm90bzM="));
+            "bxoNTWlzc2lvbi5wcm90byLvAQoTR2V0TWlzc2lvbkRhdGFTY1JzcBITCgtH",
+            "S0ZQS0JHSkJHThgBIAEoDRITCgtLQkRHTkdNUEZFSBgCIAMoDRInChFtYWlu",
+            "X21pc3Npb25fbGlzdBgEIAMoCzIMLk1haW5NaXNzaW9uEhMKC09MS0FMQUJF",
+            "RE9BGAUgAygNEg8KB3JldGNvZGUYCiABKA0SJQodZmluaXNoZWRfbWFpbl9t",
+            "aXNzaW9uX2lkX2xpc3QYCyADKA0SGAoQdHJhY2tfbWlzc2lvbl9pZBgMIAEo",
+            "DRIeCgxtaXNzaW9uX2xpc3QYDSADKAsyCC5NaXNzaW9uQhaqAhNNYXJjaDd0",
+            "aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MainMissionReflection.Descriptor, global::March7thHoney.Proto.MissionReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetMissionDataScRsp), global::March7thHoney.Proto.GetMissionDataScRsp.Parser, new[]{ "MissionList", "KBDGNGMPFEH", "MainMissionList", "GKFPKBGJBGN", "TrackMissionId", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetMissionDataScRsp), global::March7thHoney.Proto.GetMissionDataScRsp.Parser, new[]{ "GKFPKBGJBGN", "KBDGNGMPFEH", "MainMissionList", "OLKALABEDOA", "Retcode", "FinishedMainMissionIdList", "TrackMissionId", "MissionList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -76,12 +77,14 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetMissionDataScRsp(GetMissionDataScRsp other) : this() {
-      missionList_ = other.missionList_.Clone();
+      gKFPKBGJBGN_ = other.gKFPKBGJBGN_;
       kBDGNGMPFEH_ = other.kBDGNGMPFEH_.Clone();
       mainMissionList_ = other.mainMissionList_.Clone();
-      gKFPKBGJBGN_ = other.gKFPKBGJBGN_;
-      trackMissionId_ = other.trackMissionId_;
+      oLKALABEDOA_ = other.oLKALABEDOA_.Clone();
       retcode_ = other.retcode_;
+      finishedMainMissionIdList_ = other.finishedMainMissionIdList_.Clone();
+      trackMissionId_ = other.trackMissionId_;
+      missionList_ = other.missionList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -89,6 +92,86 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetMissionDataScRsp Clone() {
       return new GetMissionDataScRsp(this);
+    }
+
+    /// <summary>Field number for the "GKFPKBGJBGN" field.</summary>
+    public const int GKFPKBGJBGNFieldNumber = 1;
+    private uint gKFPKBGJBGN_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint GKFPKBGJBGN {
+      get { return gKFPKBGJBGN_; }
+      set {
+        gKFPKBGJBGN_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "KBDGNGMPFEH" field.</summary>
+    public const int KBDGNGMPFEHFieldNumber = 2;
+    private static readonly pb::FieldCodec<uint> _repeated_kBDGNGMPFEH_codec
+        = pb::FieldCodec.ForUInt32(18);
+    private readonly pbc::RepeatedField<uint> kBDGNGMPFEH_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> KBDGNGMPFEH {
+      get { return kBDGNGMPFEH_; }
+    }
+
+    /// <summary>Field number for the "main_mission_list" field.</summary>
+    public const int MainMissionListFieldNumber = 4;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MainMission> _repeated_mainMissionList_codec
+        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.MainMission.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MainMission> mainMissionList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MainMission>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.MainMission> MainMissionList {
+      get { return mainMissionList_; }
+    }
+
+    /// <summary>Field number for the "OLKALABEDOA" field.</summary>
+    public const int OLKALABEDOAFieldNumber = 5;
+    private static readonly pb::FieldCodec<uint> _repeated_oLKALABEDOA_codec
+        = pb::FieldCodec.ForUInt32(42);
+    private readonly pbc::RepeatedField<uint> oLKALABEDOA_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> OLKALABEDOA {
+      get { return oLKALABEDOA_; }
+    }
+
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 10;
+    private uint retcode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Retcode {
+      get { return retcode_; }
+      set {
+        retcode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "finished_main_mission_id_list" field.</summary>
+    public const int FinishedMainMissionIdListFieldNumber = 11;
+    private static readonly pb::FieldCodec<uint> _repeated_finishedMainMissionIdList_codec
+        = pb::FieldCodec.ForUInt32(90);
+    private readonly pbc::RepeatedField<uint> finishedMainMissionIdList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> FinishedMainMissionIdList {
+      get { return finishedMainMissionIdList_; }
+    }
+
+    /// <summary>Field number for the "track_mission_id" field.</summary>
+    public const int TrackMissionIdFieldNumber = 12;
+    private uint trackMissionId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint TrackMissionId {
+      get { return trackMissionId_; }
+      set {
+        trackMissionId_ = value;
+      }
     }
 
     /// <summary>Field number for the "mission_list" field.</summary>
@@ -100,64 +183,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<global::March7thHoney.Proto.Mission> MissionList {
       get { return missionList_; }
-    }
-
-    /// <summary>Field number for the "KBDGNGMPFEH" field.</summary>
-    public const int KBDGNGMPFEHFieldNumber = 4;
-    private static readonly pb::FieldCodec<uint> _repeated_kBDGNGMPFEH_codec
-        = pb::FieldCodec.ForUInt32(34);
-    private readonly pbc::RepeatedField<uint> kBDGNGMPFEH_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> KBDGNGMPFEH {
-      get { return kBDGNGMPFEH_; }
-    }
-
-    /// <summary>Field number for the "main_mission_list" field.</summary>
-    public const int MainMissionListFieldNumber = 5;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MainMission> _repeated_mainMissionList_codec
-        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.MainMission.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MainMission> mainMissionList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MainMission>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.MainMission> MainMissionList {
-      get { return mainMissionList_; }
-    }
-
-    /// <summary>Field number for the "GKFPKBGJBGN" field.</summary>
-    public const int GKFPKBGJBGNFieldNumber = 10;
-    private uint gKFPKBGJBGN_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint GKFPKBGJBGN {
-      get { return gKFPKBGJBGN_; }
-      set {
-        gKFPKBGJBGN_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "track_mission_id" field.</summary>
-    public const int TrackMissionIdFieldNumber = 15;
-    private uint trackMissionId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint TrackMissionId {
-      get { return trackMissionId_; }
-      set {
-        trackMissionId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 12;
-    private uint retcode_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
-      set {
-        retcode_ = value;
-      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -175,12 +200,14 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!missionList_.Equals(other.missionList_)) return false;
+      if (GKFPKBGJBGN != other.GKFPKBGJBGN) return false;
       if(!kBDGNGMPFEH_.Equals(other.kBDGNGMPFEH_)) return false;
       if(!mainMissionList_.Equals(other.mainMissionList_)) return false;
-      if (GKFPKBGJBGN != other.GKFPKBGJBGN) return false;
-      if (TrackMissionId != other.TrackMissionId) return false;
+      if(!oLKALABEDOA_.Equals(other.oLKALABEDOA_)) return false;
       if (Retcode != other.Retcode) return false;
+      if(!finishedMainMissionIdList_.Equals(other.finishedMainMissionIdList_)) return false;
+      if (TrackMissionId != other.TrackMissionId) return false;
+      if(!missionList_.Equals(other.missionList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -188,12 +215,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= missionList_.GetHashCode();
+      if (GKFPKBGJBGN != 0) hash ^= GKFPKBGJBGN.GetHashCode();
       hash ^= kBDGNGMPFEH_.GetHashCode();
       hash ^= mainMissionList_.GetHashCode();
-      if (GKFPKBGJBGN != 0) hash ^= GKFPKBGJBGN.GetHashCode();
-      if (TrackMissionId != 0) hash ^= TrackMissionId.GetHashCode();
+      hash ^= oLKALABEDOA_.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      hash ^= finishedMainMissionIdList_.GetHashCode();
+      if (TrackMissionId != 0) hash ^= TrackMissionId.GetHashCode();
+      hash ^= missionList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -212,21 +241,23 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      kBDGNGMPFEH_.WriteTo(output, _repeated_kBDGNGMPFEH_codec);
-      mainMissionList_.WriteTo(output, _repeated_mainMissionList_codec);
       if (GKFPKBGJBGN != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(8);
         output.WriteUInt32(GKFPKBGJBGN);
       }
+      kBDGNGMPFEH_.WriteTo(output, _repeated_kBDGNGMPFEH_codec);
+      mainMissionList_.WriteTo(output, _repeated_mainMissionList_codec);
+      oLKALABEDOA_.WriteTo(output, _repeated_oLKALABEDOA_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(80);
         output.WriteUInt32(Retcode);
       }
-      missionList_.WriteTo(output, _repeated_missionList_codec);
+      finishedMainMissionIdList_.WriteTo(output, _repeated_finishedMainMissionIdList_codec);
       if (TrackMissionId != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(96);
         output.WriteUInt32(TrackMissionId);
       }
+      missionList_.WriteTo(output, _repeated_missionList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -237,21 +268,23 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      kBDGNGMPFEH_.WriteTo(ref output, _repeated_kBDGNGMPFEH_codec);
-      mainMissionList_.WriteTo(ref output, _repeated_mainMissionList_codec);
       if (GKFPKBGJBGN != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(8);
         output.WriteUInt32(GKFPKBGJBGN);
       }
+      kBDGNGMPFEH_.WriteTo(ref output, _repeated_kBDGNGMPFEH_codec);
+      mainMissionList_.WriteTo(ref output, _repeated_mainMissionList_codec);
+      oLKALABEDOA_.WriteTo(ref output, _repeated_oLKALABEDOA_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(80);
         output.WriteUInt32(Retcode);
       }
-      missionList_.WriteTo(ref output, _repeated_missionList_codec);
+      finishedMainMissionIdList_.WriteTo(ref output, _repeated_finishedMainMissionIdList_codec);
       if (TrackMissionId != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(96);
         output.WriteUInt32(TrackMissionId);
       }
+      missionList_.WriteTo(ref output, _repeated_missionList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -262,18 +295,20 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += missionList_.CalculateSize(_repeated_missionList_codec);
-      size += kBDGNGMPFEH_.CalculateSize(_repeated_kBDGNGMPFEH_codec);
-      size += mainMissionList_.CalculateSize(_repeated_mainMissionList_codec);
       if (GKFPKBGJBGN != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GKFPKBGJBGN);
       }
-      if (TrackMissionId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TrackMissionId);
-      }
+      size += kBDGNGMPFEH_.CalculateSize(_repeated_kBDGNGMPFEH_codec);
+      size += mainMissionList_.CalculateSize(_repeated_mainMissionList_codec);
+      size += oLKALABEDOA_.CalculateSize(_repeated_oLKALABEDOA_codec);
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
+      size += finishedMainMissionIdList_.CalculateSize(_repeated_finishedMainMissionIdList_codec);
+      if (TrackMissionId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TrackMissionId);
+      }
+      size += missionList_.CalculateSize(_repeated_missionList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -286,18 +321,20 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      missionList_.Add(other.missionList_);
-      kBDGNGMPFEH_.Add(other.kBDGNGMPFEH_);
-      mainMissionList_.Add(other.mainMissionList_);
       if (other.GKFPKBGJBGN != 0) {
         GKFPKBGJBGN = other.GKFPKBGJBGN;
       }
-      if (other.TrackMissionId != 0) {
-        TrackMissionId = other.TrackMissionId;
-      }
+      kBDGNGMPFEH_.Add(other.kBDGNGMPFEH_);
+      mainMissionList_.Add(other.mainMissionList_);
+      oLKALABEDOA_.Add(other.oLKALABEDOA_);
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
+      finishedMainMissionIdList_.Add(other.finishedMainMissionIdList_);
+      if (other.TrackMissionId != 0) {
+        TrackMissionId = other.TrackMissionId;
+      }
+      missionList_.Add(other.missionList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -317,29 +354,39 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 34:
-          case 32: {
-            kBDGNGMPFEH_.AddEntriesFrom(input, _repeated_kBDGNGMPFEH_codec);
-            break;
-          }
-          case 42: {
-            mainMissionList_.AddEntriesFrom(input, _repeated_mainMissionList_codec);
-            break;
-          }
-          case 80: {
+          case 8: {
             GKFPKBGJBGN = input.ReadUInt32();
             break;
           }
-          case 96: {
+          case 18:
+          case 16: {
+            kBDGNGMPFEH_.AddEntriesFrom(input, _repeated_kBDGNGMPFEH_codec);
+            break;
+          }
+          case 34: {
+            mainMissionList_.AddEntriesFrom(input, _repeated_mainMissionList_codec);
+            break;
+          }
+          case 42:
+          case 40: {
+            oLKALABEDOA_.AddEntriesFrom(input, _repeated_oLKALABEDOA_codec);
+            break;
+          }
+          case 80: {
             Retcode = input.ReadUInt32();
+            break;
+          }
+          case 90:
+          case 88: {
+            finishedMainMissionIdList_.AddEntriesFrom(input, _repeated_finishedMainMissionIdList_codec);
+            break;
+          }
+          case 96: {
+            TrackMissionId = input.ReadUInt32();
             break;
           }
           case 106: {
             missionList_.AddEntriesFrom(input, _repeated_missionList_codec);
-            break;
-          }
-          case 120: {
-            TrackMissionId = input.ReadUInt32();
             break;
           }
         }
@@ -361,29 +408,39 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 34:
-          case 32: {
-            kBDGNGMPFEH_.AddEntriesFrom(ref input, _repeated_kBDGNGMPFEH_codec);
-            break;
-          }
-          case 42: {
-            mainMissionList_.AddEntriesFrom(ref input, _repeated_mainMissionList_codec);
-            break;
-          }
-          case 80: {
+          case 8: {
             GKFPKBGJBGN = input.ReadUInt32();
             break;
           }
-          case 96: {
+          case 18:
+          case 16: {
+            kBDGNGMPFEH_.AddEntriesFrom(ref input, _repeated_kBDGNGMPFEH_codec);
+            break;
+          }
+          case 34: {
+            mainMissionList_.AddEntriesFrom(ref input, _repeated_mainMissionList_codec);
+            break;
+          }
+          case 42:
+          case 40: {
+            oLKALABEDOA_.AddEntriesFrom(ref input, _repeated_oLKALABEDOA_codec);
+            break;
+          }
+          case 80: {
             Retcode = input.ReadUInt32();
+            break;
+          }
+          case 90:
+          case 88: {
+            finishedMainMissionIdList_.AddEntriesFrom(ref input, _repeated_finishedMainMissionIdList_codec);
+            break;
+          }
+          case 96: {
+            TrackMissionId = input.ReadUInt32();
             break;
           }
           case 106: {
             missionList_.AddEntriesFrom(ref input, _repeated_missionList_codec);
-            break;
-          }
-          case 120: {
-            TrackMissionId = input.ReadUInt32();
             break;
           }
         }

@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFORklETkRGSEpHTi5wcm90byJGCgtORklETkRGSEpHThIOCgZkYW1hZ2UY",
-            "DSABKAESEwoLS0lOS01IRUFBTlAYDCABKAESEgoKYXVnbWVudF9pZBgLIAEo",
+            "ASABKAESEwoLS0lOS01IRUFBTlAYCyABKAESEgoKYXVnbWVudF9pZBgOIAEo",
             "DUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "damage" field.</summary>
-    public const int DamageFieldNumber = 13;
+    public const int DamageFieldNumber = 1;
     private double damage_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "KINKMHEAANP" field.</summary>
-    public const int KINKMHEAANPFieldNumber = 12;
+    public const int KINKMHEAANPFieldNumber = 11;
     private double kINKMHEAANP_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -109,7 +109,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "augment_id" field.</summary>
-    public const int AugmentIdFieldNumber = 11;
+    public const int AugmentIdFieldNumber = 14;
     private uint augmentId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -166,17 +166,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (AugmentId != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(AugmentId);
+      if (Damage != 0D) {
+        output.WriteRawTag(9);
+        output.WriteDouble(Damage);
       }
       if (KINKMHEAANP != 0D) {
-        output.WriteRawTag(97);
+        output.WriteRawTag(89);
         output.WriteDouble(KINKMHEAANP);
       }
-      if (Damage != 0D) {
-        output.WriteRawTag(105);
-        output.WriteDouble(Damage);
+      if (AugmentId != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(AugmentId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -188,17 +188,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (AugmentId != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(AugmentId);
+      if (Damage != 0D) {
+        output.WriteRawTag(9);
+        output.WriteDouble(Damage);
       }
       if (KINKMHEAANP != 0D) {
-        output.WriteRawTag(97);
+        output.WriteRawTag(89);
         output.WriteDouble(KINKMHEAANP);
       }
-      if (Damage != 0D) {
-        output.WriteRawTag(105);
-        output.WriteDouble(Damage);
+      if (AugmentId != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(AugmentId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -259,16 +259,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 88: {
-            AugmentId = input.ReadUInt32();
+          case 9: {
+            Damage = input.ReadDouble();
             break;
           }
-          case 97: {
+          case 89: {
             KINKMHEAANP = input.ReadDouble();
             break;
           }
-          case 105: {
-            Damage = input.ReadDouble();
+          case 112: {
+            AugmentId = input.ReadUInt32();
             break;
           }
         }
@@ -290,16 +290,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 88: {
-            AugmentId = input.ReadUInt32();
+          case 9: {
+            Damage = input.ReadDouble();
             break;
           }
-          case 97: {
+          case 89: {
             KINKMHEAANP = input.ReadDouble();
             break;
           }
-          case 105: {
-            Damage = input.ReadDouble();
+          case 112: {
+            AugmentId = input.ReadUInt32();
             break;
           }
         }

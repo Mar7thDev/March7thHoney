@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message FateShopLockGoodsCsReq {
-    bool is_locked = 1;
+    bool is_locked = 11;
 }

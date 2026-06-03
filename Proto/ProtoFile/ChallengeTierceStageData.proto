@@ -7,11 +7,11 @@ import "BattleTarget.proto";
 import "GLLFJFJBIBC.proto";
 
 message ChallengeTierceStageData {
-    GLLFJFJBIBC lineup = 6;
-    repeated BattleTarget battle_target_list = 11;
-    uint32 INLLMKEDGLC = 8;
-    uint32 IBECKONIICF = 5;
-    uint32 score_id = 7;
-    uint32 stage_index = 10;
-    BattleEndStatus end_status = 12;
+    uint32 IBECKONIICF = 1;
+    uint32 score_id = 3;
+    repeated BattleTarget battle_target_list = 7;
+    uint32 stage_index = 9;
+    BattleEndStatus end_status = 10;
+    uint32 INLLMKEDGLC = 13;
+    GLLFJFJBIBC lineup = 14;
 }

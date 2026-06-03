@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "GNMCIEPEBPK.proto";
 
 message PlanetFesUseItemScRsp {
-    GNMCIEPEBPK reward = 6;
-    uint32 retcode = 5;
+    uint32 retcode = 1;
+    GNMCIEPEBPK reward = 4;
 }

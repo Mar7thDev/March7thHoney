@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static HENDEHGPKMFReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFIRU5ERUhHUEtNRi5wcm90byJwCgtIRU5ERUhHUEtNRhIMCgRuYW1lGAIg",
-            "ASgJEhMKC0pMRklBRktHQ09KGAUgASgMEhMKC0tGUE1KS0NPSkFKGAQgASgJ",
-            "EhMKC01JTEJESVBCSkdQGAYgASgJEhQKDGRpY2Vfc2xvdF9pZBgBIAEoDUIW",
+            "ChFIRU5ERUhHUEtNRi5wcm90byJwCgtIRU5ERUhHUEtNRhIUCgxkaWNlX3Ns",
+            "b3RfaWQYASABKA0SDAoEbmFtZRgCIAEoCRITCgtLRlBNSktDT0pBShgEIAEo",
+            "CRITCgtKTEZJQUZLR0NPShgFIAEoDBITCgtNSUxCRElQQkpHUBgGIAEoCUIW",
             "qgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HENDEHGPKMF), global::March7thHoney.Proto.HENDEHGPKMF.Parser, new[]{ "Name", "JLFIAFKGCOJ", "KFPMJKCOJAJ", "MILBDIPBJGP", "DiceSlotId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HENDEHGPKMF), global::March7thHoney.Proto.HENDEHGPKMF.Parser, new[]{ "DiceSlotId", "Name", "KFPMJKCOJAJ", "JLFIAFKGCOJ", "MILBDIPBJGP" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,11 +73,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public HENDEHGPKMF(HENDEHGPKMF other) : this() {
-      name_ = other.name_;
-      jLFIAFKGCOJ_ = other.jLFIAFKGCOJ_;
-      kFPMJKCOJAJ_ = other.kFPMJKCOJAJ_;
-      mILBDIPBJGP_ = other.mILBDIPBJGP_;
       diceSlotId_ = other.diceSlotId_;
+      name_ = other.name_;
+      kFPMJKCOJAJ_ = other.kFPMJKCOJAJ_;
+      jLFIAFKGCOJ_ = other.jLFIAFKGCOJ_;
+      mILBDIPBJGP_ = other.mILBDIPBJGP_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,6 +85,18 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public HENDEHGPKMF Clone() {
       return new HENDEHGPKMF(this);
+    }
+
+    /// <summary>Field number for the "dice_slot_id" field.</summary>
+    public const int DiceSlotIdFieldNumber = 1;
+    private uint diceSlotId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint DiceSlotId {
+      get { return diceSlotId_; }
+      set {
+        diceSlotId_ = value;
+      }
     }
 
     /// <summary>Field number for the "name" field.</summary>
@@ -96,18 +108,6 @@ namespace March7thHoney.Proto {
       get { return name_; }
       set {
         name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "JLFIAFKGCOJ" field.</summary>
-    public const int JLFIAFKGCOJFieldNumber = 5;
-    private pb::ByteString jLFIAFKGCOJ_ = pb::ByteString.Empty;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pb::ByteString JLFIAFKGCOJ {
-      get { return jLFIAFKGCOJ_; }
-      set {
-        jLFIAFKGCOJ_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -123,6 +123,18 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "JLFIAFKGCOJ" field.</summary>
+    public const int JLFIAFKGCOJFieldNumber = 5;
+    private pb::ByteString jLFIAFKGCOJ_ = pb::ByteString.Empty;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pb::ByteString JLFIAFKGCOJ {
+      get { return jLFIAFKGCOJ_; }
+      set {
+        jLFIAFKGCOJ_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "MILBDIPBJGP" field.</summary>
     public const int MILBDIPBJGPFieldNumber = 6;
     private string mILBDIPBJGP_ = "";
@@ -132,18 +144,6 @@ namespace March7thHoney.Proto {
       get { return mILBDIPBJGP_; }
       set {
         mILBDIPBJGP_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "dice_slot_id" field.</summary>
-    public const int DiceSlotIdFieldNumber = 1;
-    private uint diceSlotId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint DiceSlotId {
-      get { return diceSlotId_; }
-      set {
-        diceSlotId_ = value;
       }
     }
 
@@ -162,11 +162,11 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Name != other.Name) return false;
-      if (JLFIAFKGCOJ != other.JLFIAFKGCOJ) return false;
-      if (KFPMJKCOJAJ != other.KFPMJKCOJAJ) return false;
-      if (MILBDIPBJGP != other.MILBDIPBJGP) return false;
       if (DiceSlotId != other.DiceSlotId) return false;
+      if (Name != other.Name) return false;
+      if (KFPMJKCOJAJ != other.KFPMJKCOJAJ) return false;
+      if (JLFIAFKGCOJ != other.JLFIAFKGCOJ) return false;
+      if (MILBDIPBJGP != other.MILBDIPBJGP) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -174,11 +174,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Name.Length != 0) hash ^= Name.GetHashCode();
-      if (JLFIAFKGCOJ.Length != 0) hash ^= JLFIAFKGCOJ.GetHashCode();
-      if (KFPMJKCOJAJ.Length != 0) hash ^= KFPMJKCOJAJ.GetHashCode();
-      if (MILBDIPBJGP.Length != 0) hash ^= MILBDIPBJGP.GetHashCode();
       if (DiceSlotId != 0) hash ^= DiceSlotId.GetHashCode();
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (KFPMJKCOJAJ.Length != 0) hash ^= KFPMJKCOJAJ.GetHashCode();
+      if (JLFIAFKGCOJ.Length != 0) hash ^= JLFIAFKGCOJ.GetHashCode();
+      if (MILBDIPBJGP.Length != 0) hash ^= MILBDIPBJGP.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -257,20 +257,20 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (DiceSlotId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DiceSlotId);
+      }
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
-      }
-      if (JLFIAFKGCOJ.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeBytesSize(JLFIAFKGCOJ);
       }
       if (KFPMJKCOJAJ.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(KFPMJKCOJAJ);
       }
+      if (JLFIAFKGCOJ.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(JLFIAFKGCOJ);
+      }
       if (MILBDIPBJGP.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(MILBDIPBJGP);
-      }
-      if (DiceSlotId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DiceSlotId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -284,20 +284,20 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.DiceSlotId != 0) {
+        DiceSlotId = other.DiceSlotId;
+      }
       if (other.Name.Length != 0) {
         Name = other.Name;
-      }
-      if (other.JLFIAFKGCOJ.Length != 0) {
-        JLFIAFKGCOJ = other.JLFIAFKGCOJ;
       }
       if (other.KFPMJKCOJAJ.Length != 0) {
         KFPMJKCOJAJ = other.KFPMJKCOJAJ;
       }
+      if (other.JLFIAFKGCOJ.Length != 0) {
+        JLFIAFKGCOJ = other.JLFIAFKGCOJ;
+      }
       if (other.MILBDIPBJGP.Length != 0) {
         MILBDIPBJGP = other.MILBDIPBJGP;
-      }
-      if (other.DiceSlotId != 0) {
-        DiceSlotId = other.DiceSlotId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }

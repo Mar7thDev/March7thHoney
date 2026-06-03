@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message RogueArcadeGetInfoScRsp {
-    uint32 room_id = 9;
-    uint32 retcode = 7;
+    uint32 retcode = 3;
+    uint32 room_id = 15;
 }

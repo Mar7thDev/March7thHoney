@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message ClockParkUseBuffCsReq {
-    uint64 unique_id = 12;
-    uint32 JGPHDBDHKKO = 3;
-    uint32 script_id = 2;
-}

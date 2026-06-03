@@ -24,15 +24,15 @@ namespace March7thHoney.Proto {
     static NDLBFFKAGBNReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFORExCRkZLQUdCTi5wcm90byKQAQoLTkRMQkZGS0FHQk4SEwoLT0RJQkRD",
-            "TEdLQkUYCCABKA0SEwoLTFBMTElJQ0xDSEIYAiABKA0SGAoQdG90YWxfYXV0",
-            "b190dXJucxgGIAEoDRITCgtNSERCTk5LSEJCTBgLIAEoDRITCgtCUEhORU9M",
-            "Q0tBRBgJIAEoDRITCgt0b3RhbF90dXJucxgOIAEoDUIWqgITTWFyY2g3dGhI",
+            "ChFORExCRkZLQUdCTi5wcm90byKQAQoLTkRMQkZGS0FHQk4SGAoQdG90YWxf",
+            "YXV0b190dXJucxgCIAEoDRITCgtPRElCRENMR0tCRRgDIAEoDRITCgt0b3Rh",
+            "bF90dXJucxgEIAEoDRITCgtMUExMSUlDTENIQhgGIAEoDRITCgtCUEhORU9M",
+            "Q0tBRBgIIAEoDRITCgtNSERCTk5LSEJCTBgKIAEoDUIWqgITTWFyY2g3dGhI",
             "b25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NDLBFFKAGBN), global::March7thHoney.Proto.NDLBFFKAGBN.Parser, new[]{ "ODIBDCLGKBE", "LPLLIICLCHB", "TotalAutoTurns", "MHDBNNKHBBL", "BPHNEOLCKAD", "TotalTurns" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NDLBFFKAGBN), global::March7thHoney.Proto.NDLBFFKAGBN.Parser, new[]{ "TotalAutoTurns", "ODIBDCLGKBE", "TotalTurns", "LPLLIICLCHB", "BPHNEOLCKAD", "MHDBNNKHBBL" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,12 +74,12 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public NDLBFFKAGBN(NDLBFFKAGBN other) : this() {
-      oDIBDCLGKBE_ = other.oDIBDCLGKBE_;
-      lPLLIICLCHB_ = other.lPLLIICLCHB_;
       totalAutoTurns_ = other.totalAutoTurns_;
-      mHDBNNKHBBL_ = other.mHDBNNKHBBL_;
-      bPHNEOLCKAD_ = other.bPHNEOLCKAD_;
+      oDIBDCLGKBE_ = other.oDIBDCLGKBE_;
       totalTurns_ = other.totalTurns_;
+      lPLLIICLCHB_ = other.lPLLIICLCHB_;
+      bPHNEOLCKAD_ = other.bPHNEOLCKAD_;
+      mHDBNNKHBBL_ = other.mHDBNNKHBBL_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -89,32 +89,8 @@ namespace March7thHoney.Proto {
       return new NDLBFFKAGBN(this);
     }
 
-    /// <summary>Field number for the "ODIBDCLGKBE" field.</summary>
-    public const int ODIBDCLGKBEFieldNumber = 8;
-    private uint oDIBDCLGKBE_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint ODIBDCLGKBE {
-      get { return oDIBDCLGKBE_; }
-      set {
-        oDIBDCLGKBE_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "LPLLIICLCHB" field.</summary>
-    public const int LPLLIICLCHBFieldNumber = 2;
-    private uint lPLLIICLCHB_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint LPLLIICLCHB {
-      get { return lPLLIICLCHB_; }
-      set {
-        lPLLIICLCHB_ = value;
-      }
-    }
-
     /// <summary>Field number for the "total_auto_turns" field.</summary>
-    public const int TotalAutoTurnsFieldNumber = 6;
+    public const int TotalAutoTurnsFieldNumber = 2;
     private uint totalAutoTurns_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -125,20 +101,44 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "MHDBNNKHBBL" field.</summary>
-    public const int MHDBNNKHBBLFieldNumber = 11;
-    private uint mHDBNNKHBBL_;
+    /// <summary>Field number for the "ODIBDCLGKBE" field.</summary>
+    public const int ODIBDCLGKBEFieldNumber = 3;
+    private uint oDIBDCLGKBE_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint MHDBNNKHBBL {
-      get { return mHDBNNKHBBL_; }
+    public uint ODIBDCLGKBE {
+      get { return oDIBDCLGKBE_; }
       set {
-        mHDBNNKHBBL_ = value;
+        oDIBDCLGKBE_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "total_turns" field.</summary>
+    public const int TotalTurnsFieldNumber = 4;
+    private uint totalTurns_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint TotalTurns {
+      get { return totalTurns_; }
+      set {
+        totalTurns_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "LPLLIICLCHB" field.</summary>
+    public const int LPLLIICLCHBFieldNumber = 6;
+    private uint lPLLIICLCHB_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint LPLLIICLCHB {
+      get { return lPLLIICLCHB_; }
+      set {
+        lPLLIICLCHB_ = value;
       }
     }
 
     /// <summary>Field number for the "BPHNEOLCKAD" field.</summary>
-    public const int BPHNEOLCKADFieldNumber = 9;
+    public const int BPHNEOLCKADFieldNumber = 8;
     private uint bPHNEOLCKAD_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -149,15 +149,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "total_turns" field.</summary>
-    public const int TotalTurnsFieldNumber = 14;
-    private uint totalTurns_;
+    /// <summary>Field number for the "MHDBNNKHBBL" field.</summary>
+    public const int MHDBNNKHBBLFieldNumber = 10;
+    private uint mHDBNNKHBBL_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint TotalTurns {
-      get { return totalTurns_; }
+    public uint MHDBNNKHBBL {
+      get { return mHDBNNKHBBL_; }
       set {
-        totalTurns_ = value;
+        mHDBNNKHBBL_ = value;
       }
     }
 
@@ -176,12 +176,12 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (ODIBDCLGKBE != other.ODIBDCLGKBE) return false;
-      if (LPLLIICLCHB != other.LPLLIICLCHB) return false;
       if (TotalAutoTurns != other.TotalAutoTurns) return false;
-      if (MHDBNNKHBBL != other.MHDBNNKHBBL) return false;
-      if (BPHNEOLCKAD != other.BPHNEOLCKAD) return false;
+      if (ODIBDCLGKBE != other.ODIBDCLGKBE) return false;
       if (TotalTurns != other.TotalTurns) return false;
+      if (LPLLIICLCHB != other.LPLLIICLCHB) return false;
+      if (BPHNEOLCKAD != other.BPHNEOLCKAD) return false;
+      if (MHDBNNKHBBL != other.MHDBNNKHBBL) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -189,12 +189,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (ODIBDCLGKBE != 0) hash ^= ODIBDCLGKBE.GetHashCode();
-      if (LPLLIICLCHB != 0) hash ^= LPLLIICLCHB.GetHashCode();
       if (TotalAutoTurns != 0) hash ^= TotalAutoTurns.GetHashCode();
-      if (MHDBNNKHBBL != 0) hash ^= MHDBNNKHBBL.GetHashCode();
-      if (BPHNEOLCKAD != 0) hash ^= BPHNEOLCKAD.GetHashCode();
+      if (ODIBDCLGKBE != 0) hash ^= ODIBDCLGKBE.GetHashCode();
       if (TotalTurns != 0) hash ^= TotalTurns.GetHashCode();
+      if (LPLLIICLCHB != 0) hash ^= LPLLIICLCHB.GetHashCode();
+      if (BPHNEOLCKAD != 0) hash ^= BPHNEOLCKAD.GetHashCode();
+      if (MHDBNNKHBBL != 0) hash ^= MHDBNNKHBBL.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -213,29 +213,29 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (LPLLIICLCHB != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(LPLLIICLCHB);
-      }
       if (TotalAutoTurns != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(16);
         output.WriteUInt32(TotalAutoTurns);
       }
       if (ODIBDCLGKBE != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(24);
         output.WriteUInt32(ODIBDCLGKBE);
       }
+      if (TotalTurns != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(TotalTurns);
+      }
+      if (LPLLIICLCHB != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(LPLLIICLCHB);
+      }
       if (BPHNEOLCKAD != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(64);
         output.WriteUInt32(BPHNEOLCKAD);
       }
       if (MHDBNNKHBBL != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(80);
         output.WriteUInt32(MHDBNNKHBBL);
-      }
-      if (TotalTurns != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(TotalTurns);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -247,29 +247,29 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (LPLLIICLCHB != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(LPLLIICLCHB);
-      }
       if (TotalAutoTurns != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(16);
         output.WriteUInt32(TotalAutoTurns);
       }
       if (ODIBDCLGKBE != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(24);
         output.WriteUInt32(ODIBDCLGKBE);
       }
+      if (TotalTurns != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(TotalTurns);
+      }
+      if (LPLLIICLCHB != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(LPLLIICLCHB);
+      }
       if (BPHNEOLCKAD != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(64);
         output.WriteUInt32(BPHNEOLCKAD);
       }
       if (MHDBNNKHBBL != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(80);
         output.WriteUInt32(MHDBNNKHBBL);
-      }
-      if (TotalTurns != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(TotalTurns);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -281,23 +281,23 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (TotalAutoTurns != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TotalAutoTurns);
+      }
       if (ODIBDCLGKBE != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ODIBDCLGKBE);
+      }
+      if (TotalTurns != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TotalTurns);
       }
       if (LPLLIICLCHB != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LPLLIICLCHB);
       }
-      if (TotalAutoTurns != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TotalAutoTurns);
-      }
-      if (MHDBNNKHBBL != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MHDBNNKHBBL);
-      }
       if (BPHNEOLCKAD != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BPHNEOLCKAD);
       }
-      if (TotalTurns != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TotalTurns);
+      if (MHDBNNKHBBL != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MHDBNNKHBBL);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -311,23 +311,23 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.TotalAutoTurns != 0) {
+        TotalAutoTurns = other.TotalAutoTurns;
+      }
       if (other.ODIBDCLGKBE != 0) {
         ODIBDCLGKBE = other.ODIBDCLGKBE;
+      }
+      if (other.TotalTurns != 0) {
+        TotalTurns = other.TotalTurns;
       }
       if (other.LPLLIICLCHB != 0) {
         LPLLIICLCHB = other.LPLLIICLCHB;
       }
-      if (other.TotalAutoTurns != 0) {
-        TotalAutoTurns = other.TotalAutoTurns;
-      }
-      if (other.MHDBNNKHBBL != 0) {
-        MHDBNNKHBBL = other.MHDBNNKHBBL;
-      }
       if (other.BPHNEOLCKAD != 0) {
         BPHNEOLCKAD = other.BPHNEOLCKAD;
       }
-      if (other.TotalTurns != 0) {
-        TotalTurns = other.TotalTurns;
+      if (other.MHDBNNKHBBL != 0) {
+        MHDBNNKHBBL = other.MHDBNNKHBBL;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -349,27 +349,27 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 16: {
-            LPLLIICLCHB = input.ReadUInt32();
-            break;
-          }
-          case 48: {
             TotalAutoTurns = input.ReadUInt32();
             break;
           }
-          case 64: {
+          case 24: {
             ODIBDCLGKBE = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 32: {
+            TotalTurns = input.ReadUInt32();
+            break;
+          }
+          case 48: {
+            LPLLIICLCHB = input.ReadUInt32();
+            break;
+          }
+          case 64: {
             BPHNEOLCKAD = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 80: {
             MHDBNNKHBBL = input.ReadUInt32();
-            break;
-          }
-          case 112: {
-            TotalTurns = input.ReadUInt32();
             break;
           }
         }
@@ -392,27 +392,27 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 16: {
-            LPLLIICLCHB = input.ReadUInt32();
-            break;
-          }
-          case 48: {
             TotalAutoTurns = input.ReadUInt32();
             break;
           }
-          case 64: {
+          case 24: {
             ODIBDCLGKBE = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 32: {
+            TotalTurns = input.ReadUInt32();
+            break;
+          }
+          case 48: {
+            LPLLIICLCHB = input.ReadUInt32();
+            break;
+          }
+          case 64: {
             BPHNEOLCKAD = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 80: {
             MHDBNNKHBBL = input.ReadUInt32();
-            break;
-          }
-          case 112: {
-            TotalTurns = input.ReadUInt32();
             break;
           }
         }

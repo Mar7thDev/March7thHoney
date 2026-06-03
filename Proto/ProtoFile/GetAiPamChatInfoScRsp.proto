@@ -5,11 +5,11 @@ option csharp_namespace = "March7thHoney.Proto";
 import "FAIFDBLLGKK.proto";
 
 message GetAiPamChatInfoScRsp {
-    repeated FAIFDBLLGKK BJLHDBPPILI = 6;
-    string ACFENKABBKK = 15;
-    bool AGANFJKBFMA = 12;
-    bool LOCNGFLCENG = 8;
-    bool OKCIPPLKGCD = 5;
-    uint32 JKIHICLOPKM = 1;
-    uint32 retcode = 4;
+    repeated FAIFDBLLGKK BJLHDBPPILI = 2;
+    bool AGANFJKBFMA = 5;
+    uint32 retcode = 9;
+    bool OKCIPPLKGCD = 10;
+    bool LOCNGFLCENG = 11;
+    string ACFENKABBKK = 12;
+    uint32 JKIHICLOPKM = 14;
 }

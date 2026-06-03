@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message BMJDDOLALFI {
-    uint32 ENBEGMDIFKN = 9;
-    uint32 count = 12;
+    uint32 count = 1;
+    uint32 ENBEGMDIFKN = 4;
 }

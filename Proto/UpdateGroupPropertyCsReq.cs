@@ -24,15 +24,15 @@ namespace March7thHoney.Proto {
     static UpdateGroupPropertyCsReqReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Ch5VcGRhdGVHcm91cFByb3BlcnR5Q3NSZXEucHJvdG8ikwEKGFVwZGF0ZUdy",
-            "b3VwUHJvcGVydHlDc1JlcRITCgtITUVMRlBEUENGQxgHIAEoCRITCgtPTEJF",
-            "UElCTERCRBgEIAEoBRIQCghmbG9vcl9pZBgIIAEoDRIUCgxkaW1lbnNpb25f",
-            "aWQYASABKA0SEAoIZ3JvdXBfaWQYCyABKA0SEwoLaW50ZXJhY3RfaWQYCSAB",
-            "KARCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "Ch5VcGRhdGVHcm91cFByb3BlcnR5Q3NSZXEucHJvdG8ilQEKGFVwZGF0ZUdy",
+            "b3VwUHJvcGVydHlDc1JlcRIQCghmbG9vcl9pZBgBIAEoDRIVCg1wcm9wZXJ0",
+            "eV9uYW1lGAIgASgJEhQKDGRpbWVuc2lvbl9pZBgDIAEoDRIQCghncm91cF9p",
+            "ZBgKIAEoDRITCgtPTEJFUElCTERCRBgLIAEoBRITCgtpbnRlcmFjdF9pZBgN",
+            "IAEoBEIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UpdateGroupPropertyCsReq), global::March7thHoney.Proto.UpdateGroupPropertyCsReq.Parser, new[]{ "HMELFPDPCFC", "OLBEPIBLDBD", "FloorId", "DimensionId", "GroupId", "InteractId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UpdateGroupPropertyCsReq), global::March7thHoney.Proto.UpdateGroupPropertyCsReq.Parser, new[]{ "FloorId", "PropertyName", "DimensionId", "GroupId", "OLBEPIBLDBD", "InteractId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,11 +74,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public UpdateGroupPropertyCsReq(UpdateGroupPropertyCsReq other) : this() {
-      hMELFPDPCFC_ = other.hMELFPDPCFC_;
-      oLBEPIBLDBD_ = other.oLBEPIBLDBD_;
       floorId_ = other.floorId_;
+      propertyName_ = other.propertyName_;
       dimensionId_ = other.dimensionId_;
       groupId_ = other.groupId_;
+      oLBEPIBLDBD_ = other.oLBEPIBLDBD_;
       interactId_ = other.interactId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -89,32 +89,8 @@ namespace March7thHoney.Proto {
       return new UpdateGroupPropertyCsReq(this);
     }
 
-    /// <summary>Field number for the "HMELFPDPCFC" field.</summary>
-    public const int HMELFPDPCFCFieldNumber = 7;
-    private string hMELFPDPCFC_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string HMELFPDPCFC {
-      get { return hMELFPDPCFC_; }
-      set {
-        hMELFPDPCFC_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "OLBEPIBLDBD" field.</summary>
-    public const int OLBEPIBLDBDFieldNumber = 4;
-    private int oLBEPIBLDBD_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int OLBEPIBLDBD {
-      get { return oLBEPIBLDBD_; }
-      set {
-        oLBEPIBLDBD_ = value;
-      }
-    }
-
     /// <summary>Field number for the "floor_id" field.</summary>
-    public const int FloorIdFieldNumber = 8;
+    public const int FloorIdFieldNumber = 1;
     private uint floorId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -125,8 +101,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "property_name" field.</summary>
+    public const int PropertyNameFieldNumber = 2;
+    private string propertyName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string PropertyName {
+      get { return propertyName_; }
+      set {
+        propertyName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "dimension_id" field.</summary>
-    public const int DimensionIdFieldNumber = 1;
+    public const int DimensionIdFieldNumber = 3;
     private uint dimensionId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -138,7 +126,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "group_id" field.</summary>
-    public const int GroupIdFieldNumber = 11;
+    public const int GroupIdFieldNumber = 10;
     private uint groupId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -149,8 +137,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "OLBEPIBLDBD" field.</summary>
+    public const int OLBEPIBLDBDFieldNumber = 11;
+    private int oLBEPIBLDBD_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int OLBEPIBLDBD {
+      get { return oLBEPIBLDBD_; }
+      set {
+        oLBEPIBLDBD_ = value;
+      }
+    }
+
     /// <summary>Field number for the "interact_id" field.</summary>
-    public const int InteractIdFieldNumber = 9;
+    public const int InteractIdFieldNumber = 13;
     private ulong interactId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -176,11 +176,11 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (HMELFPDPCFC != other.HMELFPDPCFC) return false;
-      if (OLBEPIBLDBD != other.OLBEPIBLDBD) return false;
       if (FloorId != other.FloorId) return false;
+      if (PropertyName != other.PropertyName) return false;
       if (DimensionId != other.DimensionId) return false;
       if (GroupId != other.GroupId) return false;
+      if (OLBEPIBLDBD != other.OLBEPIBLDBD) return false;
       if (InteractId != other.InteractId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -189,11 +189,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (HMELFPDPCFC.Length != 0) hash ^= HMELFPDPCFC.GetHashCode();
-      if (OLBEPIBLDBD != 0) hash ^= OLBEPIBLDBD.GetHashCode();
       if (FloorId != 0) hash ^= FloorId.GetHashCode();
+      if (PropertyName.Length != 0) hash ^= PropertyName.GetHashCode();
       if (DimensionId != 0) hash ^= DimensionId.GetHashCode();
       if (GroupId != 0) hash ^= GroupId.GetHashCode();
+      if (OLBEPIBLDBD != 0) hash ^= OLBEPIBLDBD.GetHashCode();
       if (InteractId != 0UL) hash ^= InteractId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -213,29 +213,29 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (DimensionId != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(DimensionId);
-      }
-      if (OLBEPIBLDBD != 0) {
-        output.WriteRawTag(32);
-        output.WriteInt32(OLBEPIBLDBD);
-      }
-      if (HMELFPDPCFC.Length != 0) {
-        output.WriteRawTag(58);
-        output.WriteString(HMELFPDPCFC);
-      }
       if (FloorId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(8);
         output.WriteUInt32(FloorId);
       }
-      if (InteractId != 0UL) {
-        output.WriteRawTag(72);
-        output.WriteUInt64(InteractId);
+      if (PropertyName.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(PropertyName);
+      }
+      if (DimensionId != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(DimensionId);
       }
       if (GroupId != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(80);
         output.WriteUInt32(GroupId);
+      }
+      if (OLBEPIBLDBD != 0) {
+        output.WriteRawTag(88);
+        output.WriteInt32(OLBEPIBLDBD);
+      }
+      if (InteractId != 0UL) {
+        output.WriteRawTag(104);
+        output.WriteUInt64(InteractId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -247,29 +247,29 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (DimensionId != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(DimensionId);
-      }
-      if (OLBEPIBLDBD != 0) {
-        output.WriteRawTag(32);
-        output.WriteInt32(OLBEPIBLDBD);
-      }
-      if (HMELFPDPCFC.Length != 0) {
-        output.WriteRawTag(58);
-        output.WriteString(HMELFPDPCFC);
-      }
       if (FloorId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(8);
         output.WriteUInt32(FloorId);
       }
-      if (InteractId != 0UL) {
-        output.WriteRawTag(72);
-        output.WriteUInt64(InteractId);
+      if (PropertyName.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(PropertyName);
+      }
+      if (DimensionId != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(DimensionId);
       }
       if (GroupId != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(80);
         output.WriteUInt32(GroupId);
+      }
+      if (OLBEPIBLDBD != 0) {
+        output.WriteRawTag(88);
+        output.WriteInt32(OLBEPIBLDBD);
+      }
+      if (InteractId != 0UL) {
+        output.WriteRawTag(104);
+        output.WriteUInt64(InteractId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -281,20 +281,20 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (HMELFPDPCFC.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(HMELFPDPCFC);
-      }
-      if (OLBEPIBLDBD != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(OLBEPIBLDBD);
-      }
       if (FloorId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FloorId);
+      }
+      if (PropertyName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(PropertyName);
       }
       if (DimensionId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DimensionId);
       }
       if (GroupId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GroupId);
+      }
+      if (OLBEPIBLDBD != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(OLBEPIBLDBD);
       }
       if (InteractId != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(InteractId);
@@ -311,20 +311,20 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.HMELFPDPCFC.Length != 0) {
-        HMELFPDPCFC = other.HMELFPDPCFC;
-      }
-      if (other.OLBEPIBLDBD != 0) {
-        OLBEPIBLDBD = other.OLBEPIBLDBD;
-      }
       if (other.FloorId != 0) {
         FloorId = other.FloorId;
+      }
+      if (other.PropertyName.Length != 0) {
+        PropertyName = other.PropertyName;
       }
       if (other.DimensionId != 0) {
         DimensionId = other.DimensionId;
       }
       if (other.GroupId != 0) {
         GroupId = other.GroupId;
+      }
+      if (other.OLBEPIBLDBD != 0) {
+        OLBEPIBLDBD = other.OLBEPIBLDBD;
       }
       if (other.InteractId != 0UL) {
         InteractId = other.InteractId;
@@ -349,27 +349,27 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            DimensionId = input.ReadUInt32();
-            break;
-          }
-          case 32: {
-            OLBEPIBLDBD = input.ReadInt32();
-            break;
-          }
-          case 58: {
-            HMELFPDPCFC = input.ReadString();
-            break;
-          }
-          case 64: {
             FloorId = input.ReadUInt32();
             break;
           }
-          case 72: {
-            InteractId = input.ReadUInt64();
+          case 18: {
+            PropertyName = input.ReadString();
+            break;
+          }
+          case 24: {
+            DimensionId = input.ReadUInt32();
+            break;
+          }
+          case 80: {
+            GroupId = input.ReadUInt32();
             break;
           }
           case 88: {
-            GroupId = input.ReadUInt32();
+            OLBEPIBLDBD = input.ReadInt32();
+            break;
+          }
+          case 104: {
+            InteractId = input.ReadUInt64();
             break;
           }
         }
@@ -392,27 +392,27 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            DimensionId = input.ReadUInt32();
-            break;
-          }
-          case 32: {
-            OLBEPIBLDBD = input.ReadInt32();
-            break;
-          }
-          case 58: {
-            HMELFPDPCFC = input.ReadString();
-            break;
-          }
-          case 64: {
             FloorId = input.ReadUInt32();
             break;
           }
-          case 72: {
-            InteractId = input.ReadUInt64();
+          case 18: {
+            PropertyName = input.ReadString();
+            break;
+          }
+          case 24: {
+            DimensionId = input.ReadUInt32();
+            break;
+          }
+          case 80: {
+            GroupId = input.ReadUInt32();
             break;
           }
           case 88: {
-            GroupId = input.ReadUInt32();
+            OLBEPIBLDBD = input.ReadInt32();
+            break;
+          }
+          case 104: {
+            InteractId = input.ReadUInt64();
             break;
           }
         }

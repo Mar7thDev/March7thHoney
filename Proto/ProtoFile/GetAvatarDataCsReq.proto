@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GetAvatarDataCsReq {
-    repeated uint32 NOEPBNMJFGL = 8;
-    bool is_get_all = 5;
+    bool is_get_all = 3;
+    repeated uint32 NOEPBNMJFGL = 12;
 }

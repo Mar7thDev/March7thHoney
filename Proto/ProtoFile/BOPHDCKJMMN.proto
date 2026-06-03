@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message BOPHDCKJMMN {
-    uint32 CKKDAEMFDPA = 1;
-    uint32 APAKCBFMCAB = 14;
+    uint32 weight = 2;
+    uint32 CKKDAEMFDPA = 14;
 }

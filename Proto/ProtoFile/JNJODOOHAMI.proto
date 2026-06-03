@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message JNJODOOHAMI {
-    bool JBJIKKOCNLP = 11;
-    uint32 LNAHJENGELA = 7;
-}

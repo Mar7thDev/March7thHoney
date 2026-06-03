@@ -8,10 +8,10 @@ import "FriendChallengeClearanceInfo.proto";
 import "HBJDMDKKMFI.proto";
 
 message GetFriendBattleRecordDetailScRsp {
-    BGPIHMLLNGM HCIEFEHCENO = 4;
-    repeated FriendChallengeClearanceInfo EPNLMHPCDKL = 7;
-    HBJDMDKKMFI BAMDEHAICDA = 6;
-    repeated DBFHOCOBPMK LGIBJLFBFCG = 2;
-    uint32 retcode = 14;
-    uint32 uid = 11;
+    repeated FriendChallengeClearanceInfo EPNLMHPCDKL = 5;
+    uint32 retcode = 9;
+    BGPIHMLLNGM HCIEFEHCENO = 10;
+    repeated DBFHOCOBPMK LGIBJLFBFCG = 11;
+    uint32 uid = 12;
+    HBJDMDKKMFI BAMDEHAICDA = 14;
 }

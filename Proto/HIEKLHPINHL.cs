@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static HIEKLHPINHLReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFISUVLTEhQSU5ITC5wcm90byI3CgtISUVLTEhQSU5ITBITCgtIT0NNSEFC",
-            "S0xHShgJIAEoDRITCgtPRkJQS0NOQ0dGRxgLIAEoDUIWqgITTWFyY2g3dGhI",
-            "b25leS5Qcm90b2IGcHJvdG8z"));
+            "ChFISUVLTEhQSU5ITC5wcm90byI1CgtISUVLTEhQSU5ITBIRCgltYXhfY291",
+            "bnQYDSABKA0SEwoLT0ZCUEtDTkNHRkcYDyABKA1CFqoCE01hcmNoN3RoSG9u",
+            "ZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HIEKLHPINHL), global::March7thHoney.Proto.HIEKLHPINHL.Parser, new[]{ "HOCMHABKLGJ", "OFBPKCNCGFG" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HIEKLHPINHL), global::March7thHoney.Proto.HIEKLHPINHL.Parser, new[]{ "MaxCount", "OFBPKCNCGFG" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,7 +72,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public HIEKLHPINHL(HIEKLHPINHL other) : this() {
-      hOCMHABKLGJ_ = other.hOCMHABKLGJ_;
+      maxCount_ = other.maxCount_;
       oFBPKCNCGFG_ = other.oFBPKCNCGFG_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -83,20 +83,20 @@ namespace March7thHoney.Proto {
       return new HIEKLHPINHL(this);
     }
 
-    /// <summary>Field number for the "HOCMHABKLGJ" field.</summary>
-    public const int HOCMHABKLGJFieldNumber = 9;
-    private uint hOCMHABKLGJ_;
+    /// <summary>Field number for the "max_count" field.</summary>
+    public const int MaxCountFieldNumber = 13;
+    private uint maxCount_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint HOCMHABKLGJ {
-      get { return hOCMHABKLGJ_; }
+    public uint MaxCount {
+      get { return maxCount_; }
       set {
-        hOCMHABKLGJ_ = value;
+        maxCount_ = value;
       }
     }
 
     /// <summary>Field number for the "OFBPKCNCGFG" field.</summary>
-    public const int OFBPKCNCGFGFieldNumber = 11;
+    public const int OFBPKCNCGFGFieldNumber = 15;
     private uint oFBPKCNCGFG_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -122,7 +122,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (HOCMHABKLGJ != other.HOCMHABKLGJ) return false;
+      if (MaxCount != other.MaxCount) return false;
       if (OFBPKCNCGFG != other.OFBPKCNCGFG) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -131,7 +131,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (HOCMHABKLGJ != 0) hash ^= HOCMHABKLGJ.GetHashCode();
+      if (MaxCount != 0) hash ^= MaxCount.GetHashCode();
       if (OFBPKCNCGFG != 0) hash ^= OFBPKCNCGFG.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -151,12 +151,12 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (HOCMHABKLGJ != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(HOCMHABKLGJ);
+      if (MaxCount != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(MaxCount);
       }
       if (OFBPKCNCGFG != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(120);
         output.WriteUInt32(OFBPKCNCGFG);
       }
       if (_unknownFields != null) {
@@ -169,12 +169,12 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (HOCMHABKLGJ != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(HOCMHABKLGJ);
+      if (MaxCount != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(MaxCount);
       }
       if (OFBPKCNCGFG != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(120);
         output.WriteUInt32(OFBPKCNCGFG);
       }
       if (_unknownFields != null) {
@@ -187,8 +187,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (HOCMHABKLGJ != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(HOCMHABKLGJ);
+      if (MaxCount != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MaxCount);
       }
       if (OFBPKCNCGFG != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(OFBPKCNCGFG);
@@ -205,8 +205,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.HOCMHABKLGJ != 0) {
-        HOCMHABKLGJ = other.HOCMHABKLGJ;
+      if (other.MaxCount != 0) {
+        MaxCount = other.MaxCount;
       }
       if (other.OFBPKCNCGFG != 0) {
         OFBPKCNCGFG = other.OFBPKCNCGFG;
@@ -230,11 +230,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 72: {
-            HOCMHABKLGJ = input.ReadUInt32();
+          case 104: {
+            MaxCount = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 120: {
             OFBPKCNCGFG = input.ReadUInt32();
             break;
           }
@@ -257,11 +257,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 72: {
-            HOCMHABKLGJ = input.ReadUInt32();
+          case 104: {
+            MaxCount = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 120: {
             OFBPKCNCGFG = input.ReadUInt32();
             break;
           }

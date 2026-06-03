@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiZHZXRFdm9sdmVCdWlsZFNob3BBYmlsaXR5VXBDc1JlcS5wcm90byJGCiBH",
             "ZXRFdm9sdmVCdWlsZFNob3BBYmlsaXR5VXBDc1JlcRITCgtKRUtMT0VQUEpC",
-            "SxgCIAEoDRINCgVsZXZlbBgDIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90",
+            "SxgCIAEoDRINCgVsZXZlbBgFIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90",
             "b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "level" field.</summary>
-    public const int LevelFieldNumber = 3;
+    public const int LevelFieldNumber = 5;
     private uint level_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -157,7 +157,7 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(JEKLOEPPJBK);
       }
       if (Level != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(40);
         output.WriteUInt32(Level);
       }
       if (_unknownFields != null) {
@@ -175,7 +175,7 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(JEKLOEPPJBK);
       }
       if (Level != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(40);
         output.WriteUInt32(Level);
       }
       if (_unknownFields != null) {
@@ -235,7 +235,7 @@ namespace March7thHoney.Proto {
             JEKLOEPPJBK = input.ReadUInt32();
             break;
           }
-          case 24: {
+          case 40: {
             Level = input.ReadUInt32();
             break;
           }
@@ -262,7 +262,7 @@ namespace March7thHoney.Proto {
             JEKLOEPPJBK = input.ReadUInt32();
             break;
           }
-          case 24: {
+          case 40: {
             Level = input.ReadUInt32();
             break;
           }

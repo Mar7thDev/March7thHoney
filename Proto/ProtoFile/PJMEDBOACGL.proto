@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message PJMEDBOACGL {
-    uint32 BAOFIGFFMLN = 7;
+    uint32 BAOFIGFFMLN = 6;
 }

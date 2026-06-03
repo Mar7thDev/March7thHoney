@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "BKAHEDAHNHL.proto";
 
 message SwitchMascotUpdateScNotify {
-    repeated BKAHEDAHNHL JNOEHPJJPOF = 9;
     bool EBLPGLFJNEL = 11;
+    repeated BKAHEDAHNHL JNOEHPJJPOF = 12;
 }

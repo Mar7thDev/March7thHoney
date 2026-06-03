@@ -6,7 +6,7 @@ import "AKMCODLAEKI.proto";
 import "MMFOGJPOHGJ.proto";
 
 message IDMHNMOLHKN {
-    repeated AKMCODLAEKI GFKAFIFMHNF = 10;
+    repeated AKMCODLAEKI GFKAFIFMHNF = 4;
     uint64 GAHFPGCPAJA = 7;
-    MMFOGJPOHGJ GHNJCLNKGHH = 5;
+    MMFOGJPOHGJ owner_type = 8;
 }

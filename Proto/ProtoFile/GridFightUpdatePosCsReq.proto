@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "MHEGMHKHAAD.proto";
 
 message GridFightUpdatePosCsReq {
-    repeated MHEGMHKHAAD AAKDHMHCMLP = 5;
+    repeated MHEGMHKHAAD AAKDHMHCMLP = 3;
 }

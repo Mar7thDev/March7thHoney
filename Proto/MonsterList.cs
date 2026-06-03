@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFNb25zdGVyTGlzdC5wcm90byIuCgtNb25zdGVyTGlzdBISCgptb25zdGVy",
-            "X2lkGA8gASgNEgsKA251bRgOIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90",
+            "X2lkGAMgASgNEgsKA251bRgGIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90",
             "b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "monster_id" field.</summary>
-    public const int MonsterIdFieldNumber = 15;
+    public const int MonsterIdFieldNumber = 3;
     private uint monsterId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "num" field.</summary>
-    public const int NumFieldNumber = 14;
+    public const int NumFieldNumber = 6;
     private uint num_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Num != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(Num);
-      }
       if (MonsterId != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(24);
         output.WriteUInt32(MonsterId);
+      }
+      if (Num != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(Num);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Num != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(Num);
-      }
       if (MonsterId != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(24);
         output.WriteUInt32(MonsterId);
+      }
+      if (Num != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(Num);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 112: {
-            Num = input.ReadUInt32();
+          case 24: {
+            MonsterId = input.ReadUInt32();
             break;
           }
-          case 120: {
-            MonsterId = input.ReadUInt32();
+          case 48: {
+            Num = input.ReadUInt32();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 112: {
-            Num = input.ReadUInt32();
+          case 24: {
+            MonsterId = input.ReadUInt32();
             break;
           }
-          case 120: {
-            MonsterId = input.ReadUInt32();
+          case 48: {
+            Num = input.ReadUInt32();
             break;
           }
         }

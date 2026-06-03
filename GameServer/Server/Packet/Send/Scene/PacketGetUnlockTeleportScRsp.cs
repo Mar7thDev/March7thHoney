@@ -18,7 +18,7 @@ public class PacketGetUnlockTeleportScRsp : BasePacket
             if (floorInfo == null) continue;
 
             foreach (var teleport in floorInfo.CachedTeleports)
-                rsp.UnlockTeleportList.Add((uint)teleport.Value.MappingInfoID);
+                rsp.UnlockedTeleportList.Add((uint)teleport.Value.MappingInfoID);
         }
 
         SetData(rsp);

@@ -7,8 +7,8 @@ import "OCBPJLLLJGO.proto";
 import "OKCCLEEPELM.proto";
 
 message DNLKMHLAPHC {
-    OCBPJLLLJGO OOPCPMANCBO = 9;
-    repeated LDKMOFFMGEL LEDNAHCKMHK = 15;
-    repeated OKCCLEEPELM AJFLAHGJELP = 10;
-    map<uint32, uint32> HCPNPDLJKGF = 7;
+    OCBPJLLLJGO OOPCPMANCBO = 6;
+    map<uint32, uint32> HCPNPDLJKGF = 9;
+    repeated LDKMOFFMGEL LEDNAHCKMHK = 13;
+    repeated OKCCLEEPELM AJFLAHGJELP = 14;
 }

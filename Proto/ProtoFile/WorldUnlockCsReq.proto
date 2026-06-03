@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message WorldUnlockCsReq {
-    uint32 CFDCEEMIOCO = 13;
+    uint32 CFDCEEMIOCO = 4;
 }

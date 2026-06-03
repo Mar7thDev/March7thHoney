@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message SpaceZooOpCatteryScRsp {
-    repeated uint32 MDFEBNNOKLG = 7;
-    uint32 retcode = 15;
+    repeated uint32 MDFEBNNOKLG = 5;
+    uint32 retcode = 14;
 }

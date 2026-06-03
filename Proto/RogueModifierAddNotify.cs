@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChxSb2d1ZU1vZGlmaWVyQWRkTm90aWZ5LnByb3RvGhFCTUNORExOT05NTy5w",
-            "cm90byI7ChZSb2d1ZU1vZGlmaWVyQWRkTm90aWZ5EiEKC0lMSUlPTEpNS01F",
-            "GA4gASgLMgwuQk1DTkRMTk9OTU9CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
-            "BnByb3RvMw=="));
+            "cm90byI4ChZSb2d1ZU1vZGlmaWVyQWRkTm90aWZ5Eh4KCG1vZGlmaWVyGA4g",
+            "ASgLMgwuQk1DTkRMTk9OTU9CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
+            "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.BMCNDLNONMOReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RogueModifierAddNotify), global::March7thHoney.Proto.RogueModifierAddNotify.Parser, new[]{ "ILIIOLJMKME" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RogueModifierAddNotify), global::March7thHoney.Proto.RogueModifierAddNotify.Parser, new[]{ "Modifier" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,7 +73,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RogueModifierAddNotify(RogueModifierAddNotify other) : this() {
-      iLIIOLJMKME_ = other.iLIIOLJMKME_ != null ? other.iLIIOLJMKME_.Clone() : null;
+      modifier_ = other.modifier_ != null ? other.modifier_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,15 +83,15 @@ namespace March7thHoney.Proto {
       return new RogueModifierAddNotify(this);
     }
 
-    /// <summary>Field number for the "ILIIOLJMKME" field.</summary>
-    public const int ILIIOLJMKMEFieldNumber = 14;
-    private global::March7thHoney.Proto.BMCNDLNONMO iLIIOLJMKME_;
+    /// <summary>Field number for the "modifier" field.</summary>
+    public const int ModifierFieldNumber = 14;
+    private global::March7thHoney.Proto.BMCNDLNONMO modifier_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.BMCNDLNONMO ILIIOLJMKME {
-      get { return iLIIOLJMKME_; }
+    public global::March7thHoney.Proto.BMCNDLNONMO Modifier {
+      get { return modifier_; }
       set {
-        iLIIOLJMKME_ = value;
+        modifier_ = value;
       }
     }
 
@@ -110,7 +110,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(ILIIOLJMKME, other.ILIIOLJMKME)) return false;
+      if (!object.Equals(Modifier, other.Modifier)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -118,7 +118,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (iLIIOLJMKME_ != null) hash ^= ILIIOLJMKME.GetHashCode();
+      if (modifier_ != null) hash ^= Modifier.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -137,9 +137,9 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (iLIIOLJMKME_ != null) {
+      if (modifier_ != null) {
         output.WriteRawTag(114);
-        output.WriteMessage(ILIIOLJMKME);
+        output.WriteMessage(Modifier);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -151,9 +151,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (iLIIOLJMKME_ != null) {
+      if (modifier_ != null) {
         output.WriteRawTag(114);
-        output.WriteMessage(ILIIOLJMKME);
+        output.WriteMessage(Modifier);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -165,8 +165,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (iLIIOLJMKME_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ILIIOLJMKME);
+      if (modifier_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Modifier);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -180,11 +180,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.iLIIOLJMKME_ != null) {
-        if (iLIIOLJMKME_ == null) {
-          ILIIOLJMKME = new global::March7thHoney.Proto.BMCNDLNONMO();
+      if (other.modifier_ != null) {
+        if (modifier_ == null) {
+          Modifier = new global::March7thHoney.Proto.BMCNDLNONMO();
         }
-        ILIIOLJMKME.MergeFrom(other.ILIIOLJMKME);
+        Modifier.MergeFrom(other.Modifier);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -206,10 +206,10 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 114: {
-            if (iLIIOLJMKME_ == null) {
-              ILIIOLJMKME = new global::March7thHoney.Proto.BMCNDLNONMO();
+            if (modifier_ == null) {
+              Modifier = new global::March7thHoney.Proto.BMCNDLNONMO();
             }
-            input.ReadMessage(ILIIOLJMKME);
+            input.ReadMessage(Modifier);
             break;
           }
         }
@@ -232,10 +232,10 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 114: {
-            if (iLIIOLJMKME_ == null) {
-              ILIIOLJMKME = new global::March7thHoney.Proto.BMCNDLNONMO();
+            if (modifier_ == null) {
+              Modifier = new global::March7thHoney.Proto.BMCNDLNONMO();
             }
-            input.ReadMessage(ILIIOLJMKME);
+            input.ReadMessage(Modifier);
             break;
           }
         }

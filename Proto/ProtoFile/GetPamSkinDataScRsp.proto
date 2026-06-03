@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GetPamSkinDataScRsp {
-    repeated uint32 unlock_skin_list = 10;
-    uint32 retcode = 8;
-    uint32 cur_skin = 12;
+    uint32 retcode = 3;
+    repeated uint32 unlock_skin_list = 6;
+    uint32 cur_skin = 8;
 }

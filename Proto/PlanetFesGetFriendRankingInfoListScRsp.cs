@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CixQbGFuZXRGZXNHZXRGcmllbmRSYW5raW5nSW5mb0xpc3RTY1JzcC5wcm90",
             "bxoRTUFPSU5KQUpPRUMucHJvdG8iXAomUGxhbmV0RmVzR2V0RnJpZW5kUmFu",
-            "a2luZ0luZm9MaXN0U2NSc3ASIQoLUE9OQU9LQk5JQU0YDCABKAsyDC5NQU9J",
-            "TkpBSk9FQxIPCgdyZXRjb2RlGAIgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
+            "a2luZ0luZm9MaXN0U2NSc3ASIQoLUE9OQU9LQk5JQU0YBiABKAsyDC5NQU9J",
+            "TkpBSk9FQxIPCgdyZXRjb2RlGAcgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
             "b3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MAOINJAJOECReflection.Descriptor, },
@@ -86,7 +86,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "PONAOKBNIAM" field.</summary>
-    public const int PONAOKBNIAMFieldNumber = 12;
+    public const int PONAOKBNIAMFieldNumber = 6;
     private global::March7thHoney.Proto.MAOINJAJOEC pONAOKBNIAM_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,7 +98,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 2;
+    public const int RetcodeFieldNumber = 7;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -153,13 +153,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Retcode != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(Retcode);
-      }
       if (pONAOKBNIAM_ != null) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(50);
         output.WriteMessage(PONAOKBNIAM);
+      }
+      if (Retcode != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -171,13 +171,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Retcode != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(Retcode);
-      }
       if (pONAOKBNIAM_ != null) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(50);
         output.WriteMessage(PONAOKBNIAM);
+      }
+      if (Retcode != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -235,15 +235,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 98: {
+          case 50: {
             if (pONAOKBNIAM_ == null) {
               PONAOKBNIAM = new global::March7thHoney.Proto.MAOINJAJOEC();
             }
             input.ReadMessage(PONAOKBNIAM);
+            break;
+          }
+          case 56: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -265,15 +265,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 98: {
+          case 50: {
             if (pONAOKBNIAM_ == null) {
               PONAOKBNIAM = new global::March7thHoney.Proto.MAOINJAJOEC();
             }
             input.ReadMessage(PONAOKBNIAM);
+            break;
+          }
+          case 56: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }

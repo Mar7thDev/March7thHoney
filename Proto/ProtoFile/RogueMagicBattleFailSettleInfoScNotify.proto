@@ -6,6 +6,6 @@ import "EEILAINOLPO.proto";
 import "FKFOIDMNDFG.proto";
 
 message RogueMagicBattleFailSettleInfoScNotify {
-    EEILAINOLPO IDCMACCPCBH = 10;
-    FKFOIDMNDFG BFLLJJBHLDF = 8;
+    EEILAINOLPO IDCMACCPCBH = 13;
+    FKFOIDMNDFG BFLLJJBHLDF = 15;
 }

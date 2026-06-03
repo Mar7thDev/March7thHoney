@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message HeartDialDialogueInfo {
-    uint32 dialogue_id = 8;
-    bool GDPHOIMONLN = 1;
+    bool GDPHOIMONLN = 12;
+    uint32 dialogue_id = 14;
 }

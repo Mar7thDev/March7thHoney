@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "BCDIFIIDPIA.proto";
 
 message MonopolyGetRafflePoolInfoScRsp {
-    BCDIFIIDPIA MALPPHCEOGB = 1;
-    uint32 retcode = 11;
+    BCDIFIIDPIA MALPPHCEOGB = 3;
+    uint32 retcode = 13;
 }

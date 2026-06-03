@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cg5JdGVtQ29zdC5wcm90bxoOUGlsZUl0ZW0ucHJvdG8ibAoISXRlbUNvc3QS",
-            "HgoJcGlsZV9pdGVtGAQgASgLMgkuUGlsZUl0ZW1IABIdChNlcXVpcG1lbnRf",
-            "dW5pcXVlX2lkGAUgASgNSAASGQoPcmVsaWNfdW5pcXVlX2lkGAcgASgNSABC",
+            "HgoJcGlsZV9pdGVtGAogASgLMgkuUGlsZUl0ZW1IABIdChNlcXVpcG1lbnRf",
+            "dW5pcXVlX2lkGAUgASgNSAASGQoPcmVsaWNfdW5pcXVlX2lkGAkgASgNSABC",
             "BgoEaXRlbUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.PileItemReflection.Descriptor, },
@@ -95,7 +95,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "pile_item" field.</summary>
-    public const int PileItemFieldNumber = 4;
+    public const int PileItemFieldNumber = 10;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.PileItem PileItem {
@@ -133,7 +133,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "relic_unique_id" field.</summary>
-    public const int RelicUniqueIdFieldNumber = 7;
+    public const int RelicUniqueIdFieldNumber = 9;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint RelicUniqueId {
@@ -162,9 +162,9 @@ namespace March7thHoney.Proto {
     /// <summary>Enum of possible cases for the "item" oneof.</summary>
     public enum ItemOneofCase {
       None = 0,
-      PileItem = 4,
+      PileItem = 10,
       EquipmentUniqueId = 5,
-      RelicUniqueId = 7,
+      RelicUniqueId = 9,
     }
     private ItemOneofCase itemCase_ = ItemOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -228,17 +228,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (itemCase_ == ItemOneofCase.PileItem) {
-        output.WriteRawTag(34);
-        output.WriteMessage(PileItem);
-      }
       if (HasEquipmentUniqueId) {
         output.WriteRawTag(40);
         output.WriteUInt32(EquipmentUniqueId);
       }
       if (HasRelicUniqueId) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(72);
         output.WriteUInt32(RelicUniqueId);
+      }
+      if (itemCase_ == ItemOneofCase.PileItem) {
+        output.WriteRawTag(82);
+        output.WriteMessage(PileItem);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -250,17 +250,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (itemCase_ == ItemOneofCase.PileItem) {
-        output.WriteRawTag(34);
-        output.WriteMessage(PileItem);
-      }
       if (HasEquipmentUniqueId) {
         output.WriteRawTag(40);
         output.WriteUInt32(EquipmentUniqueId);
       }
       if (HasRelicUniqueId) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(72);
         output.WriteUInt32(RelicUniqueId);
+      }
+      if (itemCase_ == ItemOneofCase.PileItem) {
+        output.WriteRawTag(82);
+        output.WriteMessage(PileItem);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -327,21 +327,21 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 34: {
+          case 40: {
+            EquipmentUniqueId = input.ReadUInt32();
+            break;
+          }
+          case 72: {
+            RelicUniqueId = input.ReadUInt32();
+            break;
+          }
+          case 82: {
             global::March7thHoney.Proto.PileItem subBuilder = new global::March7thHoney.Proto.PileItem();
             if (itemCase_ == ItemOneofCase.PileItem) {
               subBuilder.MergeFrom(PileItem);
             }
             input.ReadMessage(subBuilder);
             PileItem = subBuilder;
-            break;
-          }
-          case 40: {
-            EquipmentUniqueId = input.ReadUInt32();
-            break;
-          }
-          case 56: {
-            RelicUniqueId = input.ReadUInt32();
             break;
           }
         }
@@ -363,21 +363,21 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 34: {
+          case 40: {
+            EquipmentUniqueId = input.ReadUInt32();
+            break;
+          }
+          case 72: {
+            RelicUniqueId = input.ReadUInt32();
+            break;
+          }
+          case 82: {
             global::March7thHoney.Proto.PileItem subBuilder = new global::March7thHoney.Proto.PileItem();
             if (itemCase_ == ItemOneofCase.PileItem) {
               subBuilder.MergeFrom(PileItem);
             }
             input.ReadMessage(subBuilder);
             PileItem = subBuilder;
-            break;
-          }
-          case 40: {
-            EquipmentUniqueId = input.ReadUInt32();
-            break;
-          }
-          case 56: {
-            RelicUniqueId = input.ReadUInt32();
             break;
           }
         }

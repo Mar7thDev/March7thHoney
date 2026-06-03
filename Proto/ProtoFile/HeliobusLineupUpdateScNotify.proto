@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "HeliobusChallengeLineup.proto";
 
 message HeliobusLineupUpdateScNotify {
-    HeliobusChallengeLineup lineup = 9;
+    HeliobusChallengeLineup lineup = 11;
 }

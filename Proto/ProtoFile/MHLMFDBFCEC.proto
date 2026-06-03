@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message MHLMFDBFCEC {
-    uint32 PIFNIJHPLJC = 5;
-    uint32 retcode = 12;
+    uint32 PIFNIJHPLJC = 11;
+    uint32 retcode = 15;
 }

@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ENHOPAHGCMA.proto";
 
 message GetSwitchHandResetGameCsReq {
-    ENHOPAHGCMA JCELIFCHCEF = 5;
+    ENHOPAHGCMA JCELIFCHCEF = 8;
 }

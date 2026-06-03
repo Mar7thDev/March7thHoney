@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ConfirmRelicBoxScRsp {
-    repeated uint32 OAJFAFIDKPI = 15;
-    uint32 retcode = 14;
-    uint32 HMBNJLNBLIF = 9;
-    bool BBNIFADMHHO = 7;
+    bool BBNIFADMHHO = 1;
+    repeated uint32 OAJFAFIDKPI = 4;
+    uint32 retcode = 8;
+    uint32 HMBNJLNBLIF = 11;
 }

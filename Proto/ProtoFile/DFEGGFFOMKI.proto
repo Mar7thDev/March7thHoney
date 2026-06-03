@@ -6,10 +6,10 @@ import "CNEEMBBNNBO.proto";
 import "OGGELMMFPKP.proto";
 
 message DFEGGFFOMKI {
-    repeated OGGELMMFPKP PPCKLBHFCCA = 1;
-    uint32 max_hp = 6;
-    CNEEMBBNNBO reason = 2;
-    uint32 wave = 3;
+    uint32 wave = 1;
     uint32 cur_hp = 5;
-    uint32 stage_id = 14;
+    CNEEMBBNNBO reason = 6;
+    repeated OGGELMMFPKP PPCKLBHFCCA = 7;
+    uint32 stage_id = 8;
+    uint32 max_hp = 13;
 }

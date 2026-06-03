@@ -25,18 +25,18 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChdHZXRCYXNpY0luZm9TY1JzcC5wcm90bxoXUGxheWVyU2V0dGluZ0luZm8u",
-            "cHJvdG8inwIKEUdldEJhc2ljSW5mb1NjUnNwEi8KE3BsYXllcl9zZXR0aW5n",
-            "X2luZm8YByABKAsyEi5QbGF5ZXJTZXR0aW5nSW5mbxIOCgZnZW5kZXIYBiAB",
-            "KA0SIgoad2Vla19jb2Nvb25fZmluaXNoZWRfY291bnQYCCABKA0SGQoRbmV4",
-            "dF9yZWNvdmVyX3RpbWUYCSABKAMSHgoWbGFzdF9zZXRfbmlja25hbWVfdGlt",
-            "ZRgCIAEoAxIZChFnYW1lcGxheV9iaXJ0aGRheRgFIAEoDRIPCgdyZXRjb2Rl",
-            "GAMgASgNEhYKDmV4Y2hhbmdlX3RpbWVzGAQgASgNEhUKDWlzX2dlbmRlcl9z",
-            "ZXQYCyABKAgSDwoHY3VyX2RheRgMIAEoDUIWqgITTWFyY2g3dGhIb25leS5Q",
+            "cHJvdG8inwIKEUdldEJhc2ljSW5mb1NjUnNwEhYKDmV4Y2hhbmdlX3RpbWVz",
+            "GAEgASgNEhkKEWdhbWVwbGF5X2JpcnRoZGF5GAIgASgNEhUKDWlzX2dlbmRl",
+            "cl9zZXQYBCABKAgSIgoad2Vla19jb2Nvb25fZmluaXNoZWRfY291bnQYBSAB",
+            "KA0SDgoGZ2VuZGVyGAcgASgNEh4KFmxhc3Rfc2V0X25pY2tuYW1lX3RpbWUY",
+            "CSABKAMSDwoHcmV0Y29kZRgKIAEoDRIPCgdjdXJfZGF5GAsgASgNEi8KE3Bs",
+            "YXllcl9zZXR0aW5nX2luZm8YDCABKAsyEi5QbGF5ZXJTZXR0aW5nSW5mbxIZ",
+            "ChFuZXh0X3JlY292ZXJfdGltZRgNIAEoA0IWqgITTWFyY2g3dGhIb25leS5Q",
             "cm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.PlayerSettingInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetBasicInfoScRsp), global::March7thHoney.Proto.GetBasicInfoScRsp.Parser, new[]{ "PlayerSettingInfo", "Gender", "WeekCocoonFinishedCount", "NextRecoverTime", "LastSetNicknameTime", "GameplayBirthday", "Retcode", "ExchangeTimes", "IsGenderSet", "CurDay" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetBasicInfoScRsp), global::March7thHoney.Proto.GetBasicInfoScRsp.Parser, new[]{ "ExchangeTimes", "GameplayBirthday", "IsGenderSet", "WeekCocoonFinishedCount", "Gender", "LastSetNicknameTime", "Retcode", "CurDay", "PlayerSettingInfo", "NextRecoverTime" }, null, null, null, null)
           }));
     }
     #endregion
@@ -78,16 +78,16 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetBasicInfoScRsp(GetBasicInfoScRsp other) : this() {
-      playerSettingInfo_ = other.playerSettingInfo_ != null ? other.playerSettingInfo_.Clone() : null;
-      gender_ = other.gender_;
-      weekCocoonFinishedCount_ = other.weekCocoonFinishedCount_;
-      nextRecoverTime_ = other.nextRecoverTime_;
-      lastSetNicknameTime_ = other.lastSetNicknameTime_;
-      gameplayBirthday_ = other.gameplayBirthday_;
-      retcode_ = other.retcode_;
       exchangeTimes_ = other.exchangeTimes_;
+      gameplayBirthday_ = other.gameplayBirthday_;
       isGenderSet_ = other.isGenderSet_;
+      weekCocoonFinishedCount_ = other.weekCocoonFinishedCount_;
+      gender_ = other.gender_;
+      lastSetNicknameTime_ = other.lastSetNicknameTime_;
+      retcode_ = other.retcode_;
       curDay_ = other.curDay_;
+      playerSettingInfo_ = other.playerSettingInfo_ != null ? other.playerSettingInfo_.Clone() : null;
+      nextRecoverTime_ = other.nextRecoverTime_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -97,92 +97,8 @@ namespace March7thHoney.Proto {
       return new GetBasicInfoScRsp(this);
     }
 
-    /// <summary>Field number for the "player_setting_info" field.</summary>
-    public const int PlayerSettingInfoFieldNumber = 7;
-    private global::March7thHoney.Proto.PlayerSettingInfo playerSettingInfo_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.PlayerSettingInfo PlayerSettingInfo {
-      get { return playerSettingInfo_; }
-      set {
-        playerSettingInfo_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "gender" field.</summary>
-    public const int GenderFieldNumber = 6;
-    private uint gender_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Gender {
-      get { return gender_; }
-      set {
-        gender_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "week_cocoon_finished_count" field.</summary>
-    public const int WeekCocoonFinishedCountFieldNumber = 8;
-    private uint weekCocoonFinishedCount_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint WeekCocoonFinishedCount {
-      get { return weekCocoonFinishedCount_; }
-      set {
-        weekCocoonFinishedCount_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "next_recover_time" field.</summary>
-    public const int NextRecoverTimeFieldNumber = 9;
-    private long nextRecoverTime_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long NextRecoverTime {
-      get { return nextRecoverTime_; }
-      set {
-        nextRecoverTime_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "last_set_nickname_time" field.</summary>
-    public const int LastSetNicknameTimeFieldNumber = 2;
-    private long lastSetNicknameTime_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long LastSetNicknameTime {
-      get { return lastSetNicknameTime_; }
-      set {
-        lastSetNicknameTime_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "gameplay_birthday" field.</summary>
-    public const int GameplayBirthdayFieldNumber = 5;
-    private uint gameplayBirthday_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint GameplayBirthday {
-      get { return gameplayBirthday_; }
-      set {
-        gameplayBirthday_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 3;
-    private uint retcode_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
-      set {
-        retcode_ = value;
-      }
-    }
-
     /// <summary>Field number for the "exchange_times" field.</summary>
-    public const int ExchangeTimesFieldNumber = 4;
+    public const int ExchangeTimesFieldNumber = 1;
     private uint exchangeTimes_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -193,8 +109,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "gameplay_birthday" field.</summary>
+    public const int GameplayBirthdayFieldNumber = 2;
+    private uint gameplayBirthday_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint GameplayBirthday {
+      get { return gameplayBirthday_; }
+      set {
+        gameplayBirthday_ = value;
+      }
+    }
+
     /// <summary>Field number for the "is_gender_set" field.</summary>
-    public const int IsGenderSetFieldNumber = 11;
+    public const int IsGenderSetFieldNumber = 4;
     private bool isGenderSet_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -205,8 +133,56 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "week_cocoon_finished_count" field.</summary>
+    public const int WeekCocoonFinishedCountFieldNumber = 5;
+    private uint weekCocoonFinishedCount_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint WeekCocoonFinishedCount {
+      get { return weekCocoonFinishedCount_; }
+      set {
+        weekCocoonFinishedCount_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "gender" field.</summary>
+    public const int GenderFieldNumber = 7;
+    private uint gender_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Gender {
+      get { return gender_; }
+      set {
+        gender_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "last_set_nickname_time" field.</summary>
+    public const int LastSetNicknameTimeFieldNumber = 9;
+    private long lastSetNicknameTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long LastSetNicknameTime {
+      get { return lastSetNicknameTime_; }
+      set {
+        lastSetNicknameTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 10;
+    private uint retcode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Retcode {
+      get { return retcode_; }
+      set {
+        retcode_ = value;
+      }
+    }
+
     /// <summary>Field number for the "cur_day" field.</summary>
-    public const int CurDayFieldNumber = 12;
+    public const int CurDayFieldNumber = 11;
     private uint curDay_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -214,6 +190,30 @@ namespace March7thHoney.Proto {
       get { return curDay_; }
       set {
         curDay_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "player_setting_info" field.</summary>
+    public const int PlayerSettingInfoFieldNumber = 12;
+    private global::March7thHoney.Proto.PlayerSettingInfo playerSettingInfo_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.PlayerSettingInfo PlayerSettingInfo {
+      get { return playerSettingInfo_; }
+      set {
+        playerSettingInfo_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "next_recover_time" field.</summary>
+    public const int NextRecoverTimeFieldNumber = 13;
+    private long nextRecoverTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long NextRecoverTime {
+      get { return nextRecoverTime_; }
+      set {
+        nextRecoverTime_ = value;
       }
     }
 
@@ -232,16 +232,16 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(PlayerSettingInfo, other.PlayerSettingInfo)) return false;
-      if (Gender != other.Gender) return false;
-      if (WeekCocoonFinishedCount != other.WeekCocoonFinishedCount) return false;
-      if (NextRecoverTime != other.NextRecoverTime) return false;
-      if (LastSetNicknameTime != other.LastSetNicknameTime) return false;
-      if (GameplayBirthday != other.GameplayBirthday) return false;
-      if (Retcode != other.Retcode) return false;
       if (ExchangeTimes != other.ExchangeTimes) return false;
+      if (GameplayBirthday != other.GameplayBirthday) return false;
       if (IsGenderSet != other.IsGenderSet) return false;
+      if (WeekCocoonFinishedCount != other.WeekCocoonFinishedCount) return false;
+      if (Gender != other.Gender) return false;
+      if (LastSetNicknameTime != other.LastSetNicknameTime) return false;
+      if (Retcode != other.Retcode) return false;
       if (CurDay != other.CurDay) return false;
+      if (!object.Equals(PlayerSettingInfo, other.PlayerSettingInfo)) return false;
+      if (NextRecoverTime != other.NextRecoverTime) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -249,16 +249,16 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (playerSettingInfo_ != null) hash ^= PlayerSettingInfo.GetHashCode();
-      if (Gender != 0) hash ^= Gender.GetHashCode();
-      if (WeekCocoonFinishedCount != 0) hash ^= WeekCocoonFinishedCount.GetHashCode();
-      if (NextRecoverTime != 0L) hash ^= NextRecoverTime.GetHashCode();
-      if (LastSetNicknameTime != 0L) hash ^= LastSetNicknameTime.GetHashCode();
-      if (GameplayBirthday != 0) hash ^= GameplayBirthday.GetHashCode();
-      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (ExchangeTimes != 0) hash ^= ExchangeTimes.GetHashCode();
+      if (GameplayBirthday != 0) hash ^= GameplayBirthday.GetHashCode();
       if (IsGenderSet != false) hash ^= IsGenderSet.GetHashCode();
+      if (WeekCocoonFinishedCount != 0) hash ^= WeekCocoonFinishedCount.GetHashCode();
+      if (Gender != 0) hash ^= Gender.GetHashCode();
+      if (LastSetNicknameTime != 0L) hash ^= LastSetNicknameTime.GetHashCode();
+      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (CurDay != 0) hash ^= CurDay.GetHashCode();
+      if (playerSettingInfo_ != null) hash ^= PlayerSettingInfo.GetHashCode();
+      if (NextRecoverTime != 0L) hash ^= NextRecoverTime.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -277,45 +277,45 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (LastSetNicknameTime != 0L) {
-        output.WriteRawTag(16);
-        output.WriteInt64(LastSetNicknameTime);
-      }
-      if (Retcode != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(Retcode);
-      }
       if (ExchangeTimes != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(8);
         output.WriteUInt32(ExchangeTimes);
       }
       if (GameplayBirthday != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(16);
         output.WriteUInt32(GameplayBirthday);
       }
-      if (Gender != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(Gender);
-      }
-      if (playerSettingInfo_ != null) {
-        output.WriteRawTag(58);
-        output.WriteMessage(PlayerSettingInfo);
-      }
-      if (WeekCocoonFinishedCount != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(WeekCocoonFinishedCount);
-      }
-      if (NextRecoverTime != 0L) {
-        output.WriteRawTag(72);
-        output.WriteInt64(NextRecoverTime);
-      }
       if (IsGenderSet != false) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(32);
         output.WriteBool(IsGenderSet);
       }
+      if (WeekCocoonFinishedCount != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(WeekCocoonFinishedCount);
+      }
+      if (Gender != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(Gender);
+      }
+      if (LastSetNicknameTime != 0L) {
+        output.WriteRawTag(72);
+        output.WriteInt64(LastSetNicknameTime);
+      }
+      if (Retcode != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(Retcode);
+      }
       if (CurDay != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(88);
         output.WriteUInt32(CurDay);
+      }
+      if (playerSettingInfo_ != null) {
+        output.WriteRawTag(98);
+        output.WriteMessage(PlayerSettingInfo);
+      }
+      if (NextRecoverTime != 0L) {
+        output.WriteRawTag(104);
+        output.WriteInt64(NextRecoverTime);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -327,45 +327,45 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (LastSetNicknameTime != 0L) {
-        output.WriteRawTag(16);
-        output.WriteInt64(LastSetNicknameTime);
-      }
-      if (Retcode != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(Retcode);
-      }
       if (ExchangeTimes != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(8);
         output.WriteUInt32(ExchangeTimes);
       }
       if (GameplayBirthday != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(16);
         output.WriteUInt32(GameplayBirthday);
       }
-      if (Gender != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(Gender);
-      }
-      if (playerSettingInfo_ != null) {
-        output.WriteRawTag(58);
-        output.WriteMessage(PlayerSettingInfo);
-      }
-      if (WeekCocoonFinishedCount != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(WeekCocoonFinishedCount);
-      }
-      if (NextRecoverTime != 0L) {
-        output.WriteRawTag(72);
-        output.WriteInt64(NextRecoverTime);
-      }
       if (IsGenderSet != false) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(32);
         output.WriteBool(IsGenderSet);
       }
+      if (WeekCocoonFinishedCount != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(WeekCocoonFinishedCount);
+      }
+      if (Gender != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(Gender);
+      }
+      if (LastSetNicknameTime != 0L) {
+        output.WriteRawTag(72);
+        output.WriteInt64(LastSetNicknameTime);
+      }
+      if (Retcode != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(Retcode);
+      }
       if (CurDay != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(88);
         output.WriteUInt32(CurDay);
+      }
+      if (playerSettingInfo_ != null) {
+        output.WriteRawTag(98);
+        output.WriteMessage(PlayerSettingInfo);
+      }
+      if (NextRecoverTime != 0L) {
+        output.WriteRawTag(104);
+        output.WriteInt64(NextRecoverTime);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -377,35 +377,35 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (playerSettingInfo_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(PlayerSettingInfo);
-      }
-      if (Gender != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Gender);
-      }
-      if (WeekCocoonFinishedCount != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(WeekCocoonFinishedCount);
-      }
-      if (NextRecoverTime != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(NextRecoverTime);
-      }
-      if (LastSetNicknameTime != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(LastSetNicknameTime);
+      if (ExchangeTimes != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ExchangeTimes);
       }
       if (GameplayBirthday != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GameplayBirthday);
       }
-      if (Retcode != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
-      }
-      if (ExchangeTimes != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ExchangeTimes);
-      }
       if (IsGenderSet != false) {
         size += 1 + 1;
       }
+      if (WeekCocoonFinishedCount != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(WeekCocoonFinishedCount);
+      }
+      if (Gender != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Gender);
+      }
+      if (LastSetNicknameTime != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(LastSetNicknameTime);
+      }
+      if (Retcode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      }
       if (CurDay != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurDay);
+      }
+      if (playerSettingInfo_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(PlayerSettingInfo);
+      }
+      if (NextRecoverTime != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(NextRecoverTime);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -419,38 +419,38 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.ExchangeTimes != 0) {
+        ExchangeTimes = other.ExchangeTimes;
+      }
+      if (other.GameplayBirthday != 0) {
+        GameplayBirthday = other.GameplayBirthday;
+      }
+      if (other.IsGenderSet != false) {
+        IsGenderSet = other.IsGenderSet;
+      }
+      if (other.WeekCocoonFinishedCount != 0) {
+        WeekCocoonFinishedCount = other.WeekCocoonFinishedCount;
+      }
+      if (other.Gender != 0) {
+        Gender = other.Gender;
+      }
+      if (other.LastSetNicknameTime != 0L) {
+        LastSetNicknameTime = other.LastSetNicknameTime;
+      }
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
+      }
+      if (other.CurDay != 0) {
+        CurDay = other.CurDay;
+      }
       if (other.playerSettingInfo_ != null) {
         if (playerSettingInfo_ == null) {
           PlayerSettingInfo = new global::March7thHoney.Proto.PlayerSettingInfo();
         }
         PlayerSettingInfo.MergeFrom(other.PlayerSettingInfo);
       }
-      if (other.Gender != 0) {
-        Gender = other.Gender;
-      }
-      if (other.WeekCocoonFinishedCount != 0) {
-        WeekCocoonFinishedCount = other.WeekCocoonFinishedCount;
-      }
       if (other.NextRecoverTime != 0L) {
         NextRecoverTime = other.NextRecoverTime;
-      }
-      if (other.LastSetNicknameTime != 0L) {
-        LastSetNicknameTime = other.LastSetNicknameTime;
-      }
-      if (other.GameplayBirthday != 0) {
-        GameplayBirthday = other.GameplayBirthday;
-      }
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
-      }
-      if (other.ExchangeTimes != 0) {
-        ExchangeTimes = other.ExchangeTimes;
-      }
-      if (other.IsGenderSet != false) {
-        IsGenderSet = other.IsGenderSet;
-      }
-      if (other.CurDay != 0) {
-        CurDay = other.CurDay;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -471,47 +471,47 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            LastSetNicknameTime = input.ReadInt64();
-            break;
-          }
-          case 24: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 32: {
+          case 8: {
             ExchangeTimes = input.ReadUInt32();
             break;
           }
-          case 40: {
+          case 16: {
             GameplayBirthday = input.ReadUInt32();
             break;
           }
-          case 48: {
+          case 32: {
+            IsGenderSet = input.ReadBool();
+            break;
+          }
+          case 40: {
+            WeekCocoonFinishedCount = input.ReadUInt32();
+            break;
+          }
+          case 56: {
             Gender = input.ReadUInt32();
             break;
           }
-          case 58: {
+          case 72: {
+            LastSetNicknameTime = input.ReadInt64();
+            break;
+          }
+          case 80: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 88: {
+            CurDay = input.ReadUInt32();
+            break;
+          }
+          case 98: {
             if (playerSettingInfo_ == null) {
               PlayerSettingInfo = new global::March7thHoney.Proto.PlayerSettingInfo();
             }
             input.ReadMessage(PlayerSettingInfo);
             break;
           }
-          case 64: {
-            WeekCocoonFinishedCount = input.ReadUInt32();
-            break;
-          }
-          case 72: {
+          case 104: {
             NextRecoverTime = input.ReadInt64();
-            break;
-          }
-          case 88: {
-            IsGenderSet = input.ReadBool();
-            break;
-          }
-          case 96: {
-            CurDay = input.ReadUInt32();
             break;
           }
         }
@@ -533,47 +533,47 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            LastSetNicknameTime = input.ReadInt64();
-            break;
-          }
-          case 24: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 32: {
+          case 8: {
             ExchangeTimes = input.ReadUInt32();
             break;
           }
-          case 40: {
+          case 16: {
             GameplayBirthday = input.ReadUInt32();
             break;
           }
-          case 48: {
+          case 32: {
+            IsGenderSet = input.ReadBool();
+            break;
+          }
+          case 40: {
+            WeekCocoonFinishedCount = input.ReadUInt32();
+            break;
+          }
+          case 56: {
             Gender = input.ReadUInt32();
             break;
           }
-          case 58: {
+          case 72: {
+            LastSetNicknameTime = input.ReadInt64();
+            break;
+          }
+          case 80: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 88: {
+            CurDay = input.ReadUInt32();
+            break;
+          }
+          case 98: {
             if (playerSettingInfo_ == null) {
               PlayerSettingInfo = new global::March7thHoney.Proto.PlayerSettingInfo();
             }
             input.ReadMessage(PlayerSettingInfo);
             break;
           }
-          case 64: {
-            WeekCocoonFinishedCount = input.ReadUInt32();
-            break;
-          }
-          case 72: {
+          case 104: {
             NextRecoverTime = input.ReadInt64();
-            break;
-          }
-          case 88: {
-            IsGenderSet = input.ReadBool();
-            break;
-          }
-          case 96: {
-            CurDay = input.ReadUInt32();
             break;
           }
         }

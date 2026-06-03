@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch5VcGRhdGVBaVBhbVNldHRpbmdzQ3NSZXEucHJvdG8iLwoYVXBkYXRlQWlQ",
-            "YW1TZXR0aW5nc0NzUmVxEhMKC0xPQ05HRkxDRU5HGAogASgIQhaqAhNNYXJj",
+            "YW1TZXR0aW5nc0NzUmVxEhMKC0xPQ05HRkxDRU5HGAYgASgIQhaqAhNNYXJj",
             "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -83,7 +83,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "LOCNGFLCENG" field.</summary>
-    public const int LOCNGFLCENGFieldNumber = 10;
+    public const int LOCNGFLCENGFieldNumber = 6;
     private bool lOCNGFLCENG_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -137,7 +137,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (LOCNGFLCENG != false) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(48);
         output.WriteBool(LOCNGFLCENG);
       }
       if (_unknownFields != null) {
@@ -151,7 +151,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (LOCNGFLCENG != false) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(48);
         output.WriteBool(LOCNGFLCENG);
       }
       if (_unknownFields != null) {
@@ -201,7 +201,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 80: {
+          case 48: {
             LOCNGFLCENG = input.ReadBool();
             break;
           }
@@ -224,7 +224,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 80: {
+          case 48: {
             LOCNGFLCENG = input.ReadBool();
             break;
           }

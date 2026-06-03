@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "RelicDiscardType.proto";
 
 message DiscardRelicScRsp {
-    repeated uint32 relic_ids = 12;
-    RelicDiscardType IFEEJKMACHF = 2;
-    bool discarded = 9;
-    uint32 retcode = 10;
+    RelicDiscardType IFEEJKMACHF = 3;
+    repeated uint32 relic_ids = 5;
+    uint32 retcode = 7;
+    bool DKPCAIGPHNO = 14;
 }

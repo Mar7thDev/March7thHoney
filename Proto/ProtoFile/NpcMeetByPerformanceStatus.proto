@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message NpcMeetByPerformanceStatus {
-    bool is_meet = 14;
-    uint32 performance_id = 3;
+    bool is_meet = 2;
+    uint32 performance_id = 15;
 }

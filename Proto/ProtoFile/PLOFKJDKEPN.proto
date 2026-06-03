@@ -6,6 +6,6 @@ import "JHACFFJIPHK.proto";
 import "PCONBOGEDFD.proto";
 
 message PLOFKJDKEPN {
-    repeated JHACFFJIPHK quest_list = 8;
-    PCONBOGEDFD DFBGAOAJLIC = 4;
+    repeated JHACFFJIPHK quest_list = 7;
+    PCONBOGEDFD DFBGAOAJLIC = 8;
 }

@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "IOKGDDDHHPD.proto";
 
 message FightTreasureDungeonMonsterCsReq {
-    repeated IOKGDDDHHPD avatar_list = 11;
-    uint32 GDNEHLEOMOM = 10;
-    uint32 EICEKDBENKM = 7;
+    uint32 GDNEHLEOMOM = 2;
+    repeated IOKGDDDHHPD avatar_list = 5;
+    uint32 EICEKDBENKM = 8;
 }

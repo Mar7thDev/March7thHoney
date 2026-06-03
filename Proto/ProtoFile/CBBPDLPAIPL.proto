@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "GHMINCEANHG.proto";
 
 message CBBPDLPAIPL {
-    repeated GHMINCEANHG NJKDKIEBGHG = 3;
-    uint32 goods_id = 7;
+    uint32 goods_id = 1;
+    repeated GHMINCEANHG NJKDKIEBGHG = 9;
 }

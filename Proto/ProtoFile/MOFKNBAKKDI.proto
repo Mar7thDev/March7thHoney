@@ -6,11 +6,11 @@ import "NCFKHDIKCNI.proto";
 import "OJHHACMHFKA.proto";
 
 message MOFKNBAKKDI {
-    NCFKHDIKCNI FDGKBOIEHBD = 12;
-    repeated OJHHACMHFKA CKACALMICBH = 14;
-    map<uint32, uint32> FLKNHFMNDCE = 8;
-    bool CANDCMOCAFH = 3;
-    bool has_passed = 10;
-    uint32 LFKDANGNJIM = 9;
-    int64 IFEPJHGNCOI = 11;
+    repeated OJHHACMHFKA CKACALMICBH = 2;
+    NCFKHDIKCNI FDGKBOIEHBD = 3;
+    int64 start_time = 4;
+    map<uint32, uint32> FLKNHFMNDCE = 5;
+    uint32 business_day = 6;
+    bool CANDCMOCAFH = 7;
+    bool has_passed = 12;
 }

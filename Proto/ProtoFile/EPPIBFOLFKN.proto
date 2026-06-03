@@ -7,12 +7,12 @@ import "FMKMEFMOJGJ.proto";
 import "GMODJEECPPJ.proto";
 
 message EPPIBFOLFKN {
+    int64 OIKNNPOKKME = 3;
+    repeated FMKMEFMOJGJ EOMINOCGLJF = 5;
+    uint32 HAAHAGAPDKC = 7;
     repeated DFEPHMALKDK FDHMLGFKDIP = 8;
-    repeated uint32 MLPNIPENEBG = 12;
-    repeated FMKMEFMOJGJ EOMINOCGLJF = 10;
-    repeated GMODJEECPPJ GMLEOJCLCFB = 11;
-    uint32 MLGAODMIHJH = 4;
-    uint32 HAAHAGAPDKC = 6;
-    uint32 uid = 15;
-    int64 OIKNNPOKKME = 5;
+    uint32 MLGAODMIHJH = 10;
+    repeated GMODJEECPPJ GMLEOJCLCFB = 12;
+    uint32 uid = 14;
+    repeated uint32 MLPNIPENEBG = 15;
 }

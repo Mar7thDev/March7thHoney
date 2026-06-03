@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "CIEEKOEECHB.proto";
 
 message SetBoxingClubResonanceScRsp {
-    CIEEKOEECHB OCDLPDDMCLP = 11;
-    uint32 retcode = 14;
+    CIEEKOEECHB OCDLPDDMCLP = 2;
+    uint32 retcode = 4;
 }

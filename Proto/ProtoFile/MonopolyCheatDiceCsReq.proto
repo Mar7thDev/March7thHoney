@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message MonopolyCheatDiceCsReq {
-    uint32 LAGNINIKEAE = 8;
+    uint32 LAGNINIKEAE = 15;
 }

@@ -24,12 +24,12 @@ namespace March7thHoney.Proto {
     static IJLEFNJPFKPReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFJSkxFRk5KUEZLUC5wcm90byIiCgtJSkxFRk5KUEZLUBITCgtPQVBFRE5P",
-            "UE9MThgBIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChFJSkxFRk5KUEZLUC5wcm90byIhCgtJSkxFRk5KUEZLUBISCgpyb2d1ZV9t",
+            "b2RlGAEgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.IJLEFNJPFKP), global::March7thHoney.Proto.IJLEFNJPFKP.Parser, new[]{ "OAPEDNOPOLN" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.IJLEFNJPFKP), global::March7thHoney.Proto.IJLEFNJPFKP.Parser, new[]{ "RogueMode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -71,7 +71,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public IJLEFNJPFKP(IJLEFNJPFKP other) : this() {
-      oAPEDNOPOLN_ = other.oAPEDNOPOLN_;
+      rogueMode_ = other.rogueMode_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -81,15 +81,15 @@ namespace March7thHoney.Proto {
       return new IJLEFNJPFKP(this);
     }
 
-    /// <summary>Field number for the "OAPEDNOPOLN" field.</summary>
-    public const int OAPEDNOPOLNFieldNumber = 1;
-    private uint oAPEDNOPOLN_;
+    /// <summary>Field number for the "rogue_mode" field.</summary>
+    public const int RogueModeFieldNumber = 1;
+    private uint rogueMode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint OAPEDNOPOLN {
-      get { return oAPEDNOPOLN_; }
+    public uint RogueMode {
+      get { return rogueMode_; }
       set {
-        oAPEDNOPOLN_ = value;
+        rogueMode_ = value;
       }
     }
 
@@ -108,7 +108,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (OAPEDNOPOLN != other.OAPEDNOPOLN) return false;
+      if (RogueMode != other.RogueMode) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -116,7 +116,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (OAPEDNOPOLN != 0) hash ^= OAPEDNOPOLN.GetHashCode();
+      if (RogueMode != 0) hash ^= RogueMode.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -135,9 +135,9 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (OAPEDNOPOLN != 0) {
+      if (RogueMode != 0) {
         output.WriteRawTag(8);
-        output.WriteUInt32(OAPEDNOPOLN);
+        output.WriteUInt32(RogueMode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -149,9 +149,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (OAPEDNOPOLN != 0) {
+      if (RogueMode != 0) {
         output.WriteRawTag(8);
-        output.WriteUInt32(OAPEDNOPOLN);
+        output.WriteUInt32(RogueMode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -163,8 +163,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (OAPEDNOPOLN != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(OAPEDNOPOLN);
+      if (RogueMode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RogueMode);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -178,8 +178,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.OAPEDNOPOLN != 0) {
-        OAPEDNOPOLN = other.OAPEDNOPOLN;
+      if (other.RogueMode != 0) {
+        RogueMode = other.RogueMode;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -201,7 +201,7 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            OAPEDNOPOLN = input.ReadUInt32();
+            RogueMode = input.ReadUInt32();
             break;
           }
         }
@@ -224,7 +224,7 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            OAPEDNOPOLN = input.ReadUInt32();
+            RogueMode = input.ReadUInt32();
             break;
           }
         }

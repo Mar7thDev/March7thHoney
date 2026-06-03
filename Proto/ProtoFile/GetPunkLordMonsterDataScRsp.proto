@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "JEIAEAEGEBJ.proto";
 
 message GetPunkLordMonsterDataScRsp {
-    repeated JEIAEAEGEBJ PBLBBDBDLEK = 8;
-    uint32 retcode = 14;
+    uint32 retcode = 9;
+    repeated JEIAEAEGEBJ PBLBBDBDLEK = 15;
 }

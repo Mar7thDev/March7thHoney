@@ -2,13 +2,13 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-import "APAMFCKFHLL.proto";
 import "CGGPJFLLGID.proto";
+import "KVP.proto";
 import "PEPEHIDAKKK.proto";
 
 message CGBPOHBACGE {
-    repeated CGGPJFLLGID FKLPCAPONIA = 6;
-    repeated PEPEHIDAKKK avatar_list = 13;
-    repeated APAMFCKFHLL EIEOJFJAIBD = 9;
-    uint64 JBIDLKCBBCF = 3;
+    repeated KVP EIEOJFJAIBD = 3;
+    uint64 battle_power = 7;
+    repeated CGGPJFLLGID FKLPCAPONIA = 10;
+    repeated PEPEHIDAKKK avatar_list = 15;
 }

@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message LGGGHFDBCFN {
-    uint32 FDGJLMMEAOF = 4;
-    uint32 KBDOBOODPAK = 13;
+    uint32 KBDOBOODPAK = 2;
     uint32 progress = 6;
-    bool has_passed = 1;
+    bool has_passed = 9;
+    uint32 FDGJLMMEAOF = 13;
 }

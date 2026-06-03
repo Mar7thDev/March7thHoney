@@ -6,7 +6,9 @@ namespace March7thHoney.GameServer.Server.Packet.Send.Challenge;
 
 public class PacketChallengeTierceSyncNotify : BasePacket
 {
-    private PacketChallengeTierceSyncNotify(ChallengeTierceSyncNotify proto) : base(CmdIds.ChallengeTierceSyncNotify)
+    // 4.4: cmdid ChallengeTierceSyncNotify 已移除(proto 类型仍在)。暂用 None 占位避免编译失败，
+    // 该 sync notify 仅在 Tierce 玩法中发送，进门无关，后续如恢复需重新映射到 4.4 对应 cmdid。
+    private PacketChallengeTierceSyncNotify(ChallengeTierceSyncNotify proto) : base(CmdIds.None)
     {
         SetData(proto);
     }
@@ -35,7 +37,7 @@ public class PacketChallengeTierceSyncNotify : BasePacket
             EGEHLOPFELK = new ChallengeTierceRecord
             {
                 UsedCycleCount = (uint)Math.Max(0, inst.Config.ChallengeCountDown - inst.RoundsLeftPool),
-                RecordScore = (uint)inst.GetRecordScore()
+                TotalScore = (uint)inst.GetRecordScore()
             }
         };
         foreach (var t in inst.FinishedTargetList) all.FinishedTargetList.Add(t);

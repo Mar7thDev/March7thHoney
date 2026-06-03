@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch5SZWxpY1JlZm9yZ2VDb25maXJtQ3NSZXEucHJvdG8iRgoYUmVsaWNSZWZv",
-            "cmdlQ29uZmlybUNzUmVxEhEKCWlzX2NhbmNlbBgFIAEoCBIXCg9yZWxpY191",
-            "bmlxdWVfaWQYAyABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
+            "cmdlQ29uZmlybUNzUmVxEhcKD3JlbGljX3VuaXF1ZV9pZBgMIAEoDRIRCglp",
+            "c19jYW5jZWwYDiABKAhCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
             "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RelicReforgeConfirmCsReq), global::March7thHoney.Proto.RelicReforgeConfirmCsReq.Parser, new[]{ "IsCancel", "RelicUniqueId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RelicReforgeConfirmCsReq), global::March7thHoney.Proto.RelicReforgeConfirmCsReq.Parser, new[]{ "RelicUniqueId", "IsCancel" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RelicReforgeConfirmCsReq(RelicReforgeConfirmCsReq other) : this() {
-      isCancel_ = other.isCancel_;
       relicUniqueId_ = other.relicUniqueId_;
+      isCancel_ = other.isCancel_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,20 +84,8 @@ namespace March7thHoney.Proto {
       return new RelicReforgeConfirmCsReq(this);
     }
 
-    /// <summary>Field number for the "is_cancel" field.</summary>
-    public const int IsCancelFieldNumber = 5;
-    private bool isCancel_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IsCancel {
-      get { return isCancel_; }
-      set {
-        isCancel_ = value;
-      }
-    }
-
     /// <summary>Field number for the "relic_unique_id" field.</summary>
-    public const int RelicUniqueIdFieldNumber = 3;
+    public const int RelicUniqueIdFieldNumber = 12;
     private uint relicUniqueId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -105,6 +93,18 @@ namespace March7thHoney.Proto {
       get { return relicUniqueId_; }
       set {
         relicUniqueId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "is_cancel" field.</summary>
+    public const int IsCancelFieldNumber = 14;
+    private bool isCancel_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IsCancel {
+      get { return isCancel_; }
+      set {
+        isCancel_ = value;
       }
     }
 
@@ -123,8 +123,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (IsCancel != other.IsCancel) return false;
       if (RelicUniqueId != other.RelicUniqueId) return false;
+      if (IsCancel != other.IsCancel) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,8 +132,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (IsCancel != false) hash ^= IsCancel.GetHashCode();
       if (RelicUniqueId != 0) hash ^= RelicUniqueId.GetHashCode();
+      if (IsCancel != false) hash ^= IsCancel.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -153,11 +153,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (RelicUniqueId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(96);
         output.WriteUInt32(RelicUniqueId);
       }
       if (IsCancel != false) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(112);
         output.WriteBool(IsCancel);
       }
       if (_unknownFields != null) {
@@ -171,11 +171,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (RelicUniqueId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(96);
         output.WriteUInt32(RelicUniqueId);
       }
       if (IsCancel != false) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(112);
         output.WriteBool(IsCancel);
       }
       if (_unknownFields != null) {
@@ -188,11 +188,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (IsCancel != false) {
-        size += 1 + 1;
-      }
       if (RelicUniqueId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RelicUniqueId);
+      }
+      if (IsCancel != false) {
+        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -206,11 +206,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.IsCancel != false) {
-        IsCancel = other.IsCancel;
-      }
       if (other.RelicUniqueId != 0) {
         RelicUniqueId = other.RelicUniqueId;
+      }
+      if (other.IsCancel != false) {
+        IsCancel = other.IsCancel;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -231,11 +231,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
+          case 96: {
             RelicUniqueId = input.ReadUInt32();
             break;
           }
-          case 40: {
+          case 112: {
             IsCancel = input.ReadBool();
             break;
           }
@@ -258,11 +258,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
+          case 96: {
             RelicUniqueId = input.ReadUInt32();
             break;
           }
-          case 40: {
+          case 112: {
             IsCancel = input.ReadBool();
             break;
           }

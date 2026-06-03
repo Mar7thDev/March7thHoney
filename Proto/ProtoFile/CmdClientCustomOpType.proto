@@ -4,5 +4,5 @@ option csharp_namespace = "March7thHoney.Proto";
 
 enum CmdClientCustomOpType {
     BHKGAKDOALP_GGKMFAFOINP = 0;
-    BHKGAKDOALP_HPLPMDEJOJK = 9839;
+    BHKGAKDOALP_HPLPMDEJOJK = 9840;
 }

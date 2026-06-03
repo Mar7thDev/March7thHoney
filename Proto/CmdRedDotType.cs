@@ -25,11 +25,11 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChNDbWRSZWREb3RUeXBlLnByb3RvKuABCg1DbWRSZWREb3RUeXBlEhsKF0FB",
-            "R0RMR0lISE9FX05MQ0RHSVBHRkRKEAASHAoXQUFHRExHSUhIT0VfTkZNR0FO",
-            "RU1QTkUQoy4SHAoXQUFHRExHSUhIT0VfRktCQUZDT0VIR0cQpy4SHAoXQUFH",
-            "RExHSUhIT0VfRUpEQUhDSUJHT0YQuC4SHAoXQUFHRExHSUhIT0VfREZGQkhB",
-            "R1BCSkUQti4SHAoXQUFHRExHSUhIT0VfS0FCTkVMQkJOS0gQky4SHAoXQUFH",
-            "RExHSUhIT0VfUEhFR05OREhBTE8QrC5CFqoCE01hcmNoN3RoSG9uZXkuUHJv",
+            "R0RMR0lISE9FX05MQ0RHSVBHRkRKEAASHAoXQUFHRExHSUhIT0VfS0FCTkVM",
+            "QkJOS0gQsS4SHAoXQUFHRExHSUhIT0VfRUpEQUhDSUJHT0YQny4SHAoXQUFH",
+            "RExHSUhIT0VfUEhFR05OREhBTE8QlS4SHAoXQUFHRExHSUhIT0VfTkZNR0FO",
+            "RU1QTkUQuC4SHAoXQUFHRExHSUhIT0VfRktCQUZDT0VIR0cQvC4SHAoXQUFH",
+            "RExHSUhIT0VfREZGQkhBR1BCSkUQoy5CFqoCE01hcmNoN3RoSG9uZXkuUHJv",
             "dG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -41,12 +41,12 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdRedDotType {
     [pbr::OriginalName("AAGDLGIHHOE_NLCDGIPGFDJ")] AagdlgihhoeNlcdgipgfdj = 0,
-    [pbr::OriginalName("AAGDLGIHHOE_NFMGANEMPNE")] AagdlgihhoeNfmganempne = 5923,
-    [pbr::OriginalName("AAGDLGIHHOE_FKBAFCOEHGG")] AagdlgihhoeFkbafcoehgg = 5927,
-    [pbr::OriginalName("AAGDLGIHHOE_EJDAHCIBGOF")] AagdlgihhoeEjdahcibgof = 5944,
-    [pbr::OriginalName("AAGDLGIHHOE_DFFBHAGPBJE")] AagdlgihhoeDffbhagpbje = 5942,
-    [pbr::OriginalName("AAGDLGIHHOE_KABNELBBNKH")] AagdlgihhoeKabnelbbnkh = 5907,
-    [pbr::OriginalName("AAGDLGIHHOE_PHEGNNDHALO")] AagdlgihhoePhegnndhalo = 5932,
+    [pbr::OriginalName("AAGDLGIHHOE_KABNELBBNKH")] AagdlgihhoeKabnelbbnkh = 5937,
+    [pbr::OriginalName("AAGDLGIHHOE_EJDAHCIBGOF")] AagdlgihhoeEjdahcibgof = 5919,
+    [pbr::OriginalName("AAGDLGIHHOE_PHEGNNDHALO")] AagdlgihhoePhegnndhalo = 5909,
+    [pbr::OriginalName("AAGDLGIHHOE_NFMGANEMPNE")] AagdlgihhoeNfmganempne = 5944,
+    [pbr::OriginalName("AAGDLGIHHOE_FKBAFCOEHGG")] AagdlgihhoeFkbafcoehgg = 5948,
+    [pbr::OriginalName("AAGDLGIHHOE_DFFBHAGPBJE")] AagdlgihhoeDffbhagpbje = 5923,
   }
 
   #endregion

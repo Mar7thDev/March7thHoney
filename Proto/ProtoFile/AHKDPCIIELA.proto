@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message AHKDPCIIELA {
-    uint32 role_star = 2;
-    uint32 IMDKLKONINF = 14;
-    uint32 monster_id = 3;
-    uint32 LOGHLGKIFEN = 11;
+    uint32 monster_id = 5;
+    uint32 role_star = 9;
+    uint32 IMDKLKONINF = 10;
+    uint32 LOGHLGKIFEN = 15;
 }

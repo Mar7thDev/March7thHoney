@@ -7,12 +7,12 @@ import "ItemList.proto";
 import "KPCHPLEJCKC.proto";
 
 message MatchThreeV2LevelEndScRsp {
-    repeated ItemList DOBNEFKPMPB = 6;
-    HDKJPKPEJFO OEIBHLMDJKA = 7;
+    uint32 level_id = 1;
     ItemList DBDIGIEPMBB = 3;
-    KPCHPLEJCKC IEGCHPIHPJN = 11;
-    uint32 level_id = 12;
-    uint32 retcode = 4;
-    uint32 AFLCNNAJAGB = 8;
-    uint32 JNAOKJKFLHL = 15;
+    uint32 JNAOKJKFLHL = 4;
+    repeated ItemList DOBNEFKPMPB = 5;
+    HDKJPKPEJFO OEIBHLMDJKA = 6;
+    KPCHPLEJCKC IEGCHPIHPJN = 7;
+    uint32 AFLCNNAJAGB = 11;
+    uint32 retcode = 13;
 }

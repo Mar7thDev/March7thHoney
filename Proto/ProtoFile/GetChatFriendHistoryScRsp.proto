@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "FriendHistoryInfo.proto";
 
 message GetChatFriendHistoryScRsp {
-    repeated FriendHistoryInfo friend_history_info = 3;
-    uint32 retcode = 12;
+    uint32 retcode = 10;
+    repeated FriendHistoryInfo friend_history_info = 13;
 }

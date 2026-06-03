@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFQSUJFSEZEREFBSi5wcm90byI0CgtQSUJFSEZEREFBShITCgtESExMUE9C",
-            "S0xJTxgDIAEoCBIQCghzY29yZV9pZBgHIAEoDUIWqgITTWFyY2g3dGhIb25l",
+            "S0xJTxgKIAEoCBIQCghzY29yZV9pZBgNIAEoDUIWqgITTWFyY2g3dGhIb25l",
             "eS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "DHLLPOBKLIO" field.</summary>
-    public const int DHLLPOBKLIOFieldNumber = 3;
+    public const int DHLLPOBKLIOFieldNumber = 10;
     private bool dHLLPOBKLIO_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "score_id" field.</summary>
-    public const int ScoreIdFieldNumber = 7;
+    public const int ScoreIdFieldNumber = 13;
     private uint scoreId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (DHLLPOBKLIO != false) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(80);
         output.WriteBool(DHLLPOBKLIO);
       }
       if (ScoreId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(104);
         output.WriteUInt32(ScoreId);
       }
       if (_unknownFields != null) {
@@ -170,11 +170,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (DHLLPOBKLIO != false) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(80);
         output.WriteBool(DHLLPOBKLIO);
       }
       if (ScoreId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(104);
         output.WriteUInt32(ScoreId);
       }
       if (_unknownFields != null) {
@@ -230,11 +230,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
+          case 80: {
             DHLLPOBKLIO = input.ReadBool();
             break;
           }
-          case 56: {
+          case 104: {
             ScoreId = input.ReadUInt32();
             break;
           }
@@ -257,11 +257,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
+          case 80: {
             DHLLPOBKLIO = input.ReadBool();
             break;
           }
-          case 56: {
+          case 104: {
             ScoreId = input.ReadUInt32();
             break;
           }

@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message SavePointsInfoNotify {
-    int64 refresh_time = 7;
-    uint32 valid_times = 12;
+    uint32 valid_times = 10;
+    int64 refresh_time = 13;
 }

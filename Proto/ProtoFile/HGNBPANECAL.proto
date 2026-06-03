@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "BuffInfo.proto";
 
 message HGNBPANECAL {
-    repeated BuffInfo buff_list = 5;
-    uint32 entity_id = 7;
+    repeated BuffInfo buff_list = 4;
+    uint32 entity_id = 5;
 }

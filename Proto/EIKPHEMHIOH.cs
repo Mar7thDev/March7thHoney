@@ -25,15 +25,15 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFFSUtQSEVNSElPSC5wcm90bxoZQ2hhbGxlbmdlTGluZXVwTGlzdC5wcm90",
-            "byKSAQoLRUlLUEhFTUhJT0gSKQoLbGluZXVwX2xpc3QYCCADKAsyFC5DaGFs",
-            "bGVuZ2VMaW5ldXBMaXN0Eg0KBWxldmVsGAMgASgNEhAKCHNjb3JlX2lkGA4g",
-            "ASgNEhAKCGJ1ZmZfdHdvGAIgASgNEhAKCGJ1ZmZfb25lGA0gASgNEhMKC0VF",
-            "SkNQTkFFS0xKGAYgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
+            "byKSAQoLRUlLUEhFTUhJT0gSEwoLRUVKQ1BOQUVLTEoYBSABKA0SEAoIYnVm",
+            "Zl9vbmUYBiABKA0SKQoLbGluZXVwX2xpc3QYCSADKAsyFC5DaGFsbGVuZ2VM",
+            "aW5ldXBMaXN0EhAKCHNjb3JlX2lkGAogASgNEg0KBWxldmVsGAsgASgNEhAK",
+            "CGJ1ZmZfdHdvGA8gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
             "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChallengeLineupListReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EIKPHEMHIOH), global::March7thHoney.Proto.EIKPHEMHIOH.Parser, new[]{ "LineupList", "Level", "ScoreId", "BuffTwo", "BuffOne", "EEJCPNAEKLJ" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EIKPHEMHIOH), global::March7thHoney.Proto.EIKPHEMHIOH.Parser, new[]{ "EEJCPNAEKLJ", "BuffOne", "LineupList", "ScoreId", "Level", "BuffTwo" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,12 +75,12 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public EIKPHEMHIOH(EIKPHEMHIOH other) : this() {
-      lineupList_ = other.lineupList_.Clone();
-      level_ = other.level_;
-      scoreId_ = other.scoreId_;
-      buffTwo_ = other.buffTwo_;
-      buffOne_ = other.buffOne_;
       eEJCPNAEKLJ_ = other.eEJCPNAEKLJ_;
+      buffOne_ = other.buffOne_;
+      lineupList_ = other.lineupList_.Clone();
+      scoreId_ = other.scoreId_;
+      level_ = other.level_;
+      buffTwo_ = other.buffTwo_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -90,55 +90,20 @@ namespace March7thHoney.Proto {
       return new EIKPHEMHIOH(this);
     }
 
-    /// <summary>Field number for the "lineup_list" field.</summary>
-    public const int LineupListFieldNumber = 8;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChallengeLineupList> _repeated_lineupList_codec
-        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.ChallengeLineupList.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChallengeLineupList> lineupList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChallengeLineupList>();
+    /// <summary>Field number for the "EEJCPNAEKLJ" field.</summary>
+    public const int EEJCPNAEKLJFieldNumber = 5;
+    private uint eEJCPNAEKLJ_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.ChallengeLineupList> LineupList {
-      get { return lineupList_; }
-    }
-
-    /// <summary>Field number for the "level" field.</summary>
-    public const int LevelFieldNumber = 3;
-    private uint level_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Level {
-      get { return level_; }
+    public uint EEJCPNAEKLJ {
+      get { return eEJCPNAEKLJ_; }
       set {
-        level_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "score_id" field.</summary>
-    public const int ScoreIdFieldNumber = 14;
-    private uint scoreId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint ScoreId {
-      get { return scoreId_; }
-      set {
-        scoreId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "buff_two" field.</summary>
-    public const int BuffTwoFieldNumber = 2;
-    private uint buffTwo_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint BuffTwo {
-      get { return buffTwo_; }
-      set {
-        buffTwo_ = value;
+        eEJCPNAEKLJ_ = value;
       }
     }
 
     /// <summary>Field number for the "buff_one" field.</summary>
-    public const int BuffOneFieldNumber = 13;
+    public const int BuffOneFieldNumber = 6;
     private uint buffOne_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -149,15 +114,50 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "EEJCPNAEKLJ" field.</summary>
-    public const int EEJCPNAEKLJFieldNumber = 6;
-    private uint eEJCPNAEKLJ_;
+    /// <summary>Field number for the "lineup_list" field.</summary>
+    public const int LineupListFieldNumber = 9;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChallengeLineupList> _repeated_lineupList_codec
+        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.ChallengeLineupList.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChallengeLineupList> lineupList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChallengeLineupList>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint EEJCPNAEKLJ {
-      get { return eEJCPNAEKLJ_; }
+    public pbc::RepeatedField<global::March7thHoney.Proto.ChallengeLineupList> LineupList {
+      get { return lineupList_; }
+    }
+
+    /// <summary>Field number for the "score_id" field.</summary>
+    public const int ScoreIdFieldNumber = 10;
+    private uint scoreId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint ScoreId {
+      get { return scoreId_; }
       set {
-        eEJCPNAEKLJ_ = value;
+        scoreId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "level" field.</summary>
+    public const int LevelFieldNumber = 11;
+    private uint level_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Level {
+      get { return level_; }
+      set {
+        level_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "buff_two" field.</summary>
+    public const int BuffTwoFieldNumber = 15;
+    private uint buffTwo_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint BuffTwo {
+      get { return buffTwo_; }
+      set {
+        buffTwo_ = value;
       }
     }
 
@@ -176,12 +176,12 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!lineupList_.Equals(other.lineupList_)) return false;
-      if (Level != other.Level) return false;
-      if (ScoreId != other.ScoreId) return false;
-      if (BuffTwo != other.BuffTwo) return false;
-      if (BuffOne != other.BuffOne) return false;
       if (EEJCPNAEKLJ != other.EEJCPNAEKLJ) return false;
+      if (BuffOne != other.BuffOne) return false;
+      if(!lineupList_.Equals(other.lineupList_)) return false;
+      if (ScoreId != other.ScoreId) return false;
+      if (Level != other.Level) return false;
+      if (BuffTwo != other.BuffTwo) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -189,12 +189,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= lineupList_.GetHashCode();
-      if (Level != 0) hash ^= Level.GetHashCode();
-      if (ScoreId != 0) hash ^= ScoreId.GetHashCode();
-      if (BuffTwo != 0) hash ^= BuffTwo.GetHashCode();
-      if (BuffOne != 0) hash ^= BuffOne.GetHashCode();
       if (EEJCPNAEKLJ != 0) hash ^= EEJCPNAEKLJ.GetHashCode();
+      if (BuffOne != 0) hash ^= BuffOne.GetHashCode();
+      hash ^= lineupList_.GetHashCode();
+      if (ScoreId != 0) hash ^= ScoreId.GetHashCode();
+      if (Level != 0) hash ^= Level.GetHashCode();
+      if (BuffTwo != 0) hash ^= BuffTwo.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -213,26 +213,26 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (BuffTwo != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(BuffTwo);
-      }
-      if (Level != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(Level);
-      }
       if (EEJCPNAEKLJ != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(40);
         output.WriteUInt32(EEJCPNAEKLJ);
       }
-      lineupList_.WriteTo(output, _repeated_lineupList_codec);
       if (BuffOne != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(48);
         output.WriteUInt32(BuffOne);
       }
+      lineupList_.WriteTo(output, _repeated_lineupList_codec);
       if (ScoreId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(80);
         output.WriteUInt32(ScoreId);
+      }
+      if (Level != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(Level);
+      }
+      if (BuffTwo != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(BuffTwo);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -244,26 +244,26 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (BuffTwo != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(BuffTwo);
-      }
-      if (Level != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(Level);
-      }
       if (EEJCPNAEKLJ != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(40);
         output.WriteUInt32(EEJCPNAEKLJ);
       }
-      lineupList_.WriteTo(ref output, _repeated_lineupList_codec);
       if (BuffOne != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(48);
         output.WriteUInt32(BuffOne);
       }
+      lineupList_.WriteTo(ref output, _repeated_lineupList_codec);
       if (ScoreId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(80);
         output.WriteUInt32(ScoreId);
+      }
+      if (Level != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(Level);
+      }
+      if (BuffTwo != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(BuffTwo);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -275,21 +275,21 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += lineupList_.CalculateSize(_repeated_lineupList_codec);
-      if (Level != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
-      }
-      if (ScoreId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ScoreId);
-      }
-      if (BuffTwo != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BuffTwo);
+      if (EEJCPNAEKLJ != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EEJCPNAEKLJ);
       }
       if (BuffOne != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BuffOne);
       }
-      if (EEJCPNAEKLJ != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EEJCPNAEKLJ);
+      size += lineupList_.CalculateSize(_repeated_lineupList_codec);
+      if (ScoreId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ScoreId);
+      }
+      if (Level != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
+      }
+      if (BuffTwo != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BuffTwo);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -303,21 +303,21 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      lineupList_.Add(other.lineupList_);
-      if (other.Level != 0) {
-        Level = other.Level;
-      }
-      if (other.ScoreId != 0) {
-        ScoreId = other.ScoreId;
-      }
-      if (other.BuffTwo != 0) {
-        BuffTwo = other.BuffTwo;
+      if (other.EEJCPNAEKLJ != 0) {
+        EEJCPNAEKLJ = other.EEJCPNAEKLJ;
       }
       if (other.BuffOne != 0) {
         BuffOne = other.BuffOne;
       }
-      if (other.EEJCPNAEKLJ != 0) {
-        EEJCPNAEKLJ = other.EEJCPNAEKLJ;
+      lineupList_.Add(other.lineupList_);
+      if (other.ScoreId != 0) {
+        ScoreId = other.ScoreId;
+      }
+      if (other.Level != 0) {
+        Level = other.Level;
+      }
+      if (other.BuffTwo != 0) {
+        BuffTwo = other.BuffTwo;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -338,28 +338,28 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            BuffTwo = input.ReadUInt32();
-            break;
-          }
-          case 24: {
-            Level = input.ReadUInt32();
-            break;
-          }
-          case 48: {
+          case 40: {
             EEJCPNAEKLJ = input.ReadUInt32();
             break;
           }
-          case 66: {
-            lineupList_.AddEntriesFrom(input, _repeated_lineupList_codec);
-            break;
-          }
-          case 104: {
+          case 48: {
             BuffOne = input.ReadUInt32();
             break;
           }
-          case 112: {
+          case 74: {
+            lineupList_.AddEntriesFrom(input, _repeated_lineupList_codec);
+            break;
+          }
+          case 80: {
             ScoreId = input.ReadUInt32();
+            break;
+          }
+          case 88: {
+            Level = input.ReadUInt32();
+            break;
+          }
+          case 120: {
+            BuffTwo = input.ReadUInt32();
             break;
           }
         }
@@ -381,28 +381,28 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            BuffTwo = input.ReadUInt32();
-            break;
-          }
-          case 24: {
-            Level = input.ReadUInt32();
-            break;
-          }
-          case 48: {
+          case 40: {
             EEJCPNAEKLJ = input.ReadUInt32();
             break;
           }
-          case 66: {
-            lineupList_.AddEntriesFrom(ref input, _repeated_lineupList_codec);
-            break;
-          }
-          case 104: {
+          case 48: {
             BuffOne = input.ReadUInt32();
             break;
           }
-          case 112: {
+          case 74: {
+            lineupList_.AddEntriesFrom(ref input, _repeated_lineupList_codec);
+            break;
+          }
+          case 80: {
             ScoreId = input.ReadUInt32();
+            break;
+          }
+          case 88: {
+            Level = input.ReadUInt32();
+            break;
+          }
+          case 120: {
+            BuffTwo = input.ReadUInt32();
             break;
           }
         }

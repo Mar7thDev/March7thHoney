@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message GridFightHandBookMonsterInfo {
+    repeated uint32 HEKMEJLMGFF = 6;
+}

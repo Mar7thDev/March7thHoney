@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "Ch1HZXRBY3Rpdml0eUhvdERhdGFTY1JzcC5wcm90bxoRRUZHSUhISkdDRkEu",
             "cHJvdG8iVgoXR2V0QWN0aXZpdHlIb3REYXRhU2NSc3ASKgoUY29udGVudF9w",
-            "YWNrYWdlX2xpc3QYCiADKAsyDC5FRkdJSEhKR0NGQRIPCgdyZXRjb2RlGAsg",
+            "YWNrYWdlX2xpc3QYAiADKAsyDC5FRkdJSEhKR0NGQRIPCgdyZXRjb2RlGAsg",
             "ASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.EFGIHHJGCFAReflection.Descriptor, },
@@ -85,9 +85,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "content_package_list" field.</summary>
-    public const int ContentPackageListFieldNumber = 10;
+    public const int ContentPackageListFieldNumber = 2;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.EFGIHHJGCFA> _repeated_contentPackageList_codec
-        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.EFGIHHJGCFA.Parser);
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.EFGIHHJGCFA.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.EFGIHHJGCFA> contentPackageList_ = new pbc::RepeatedField<global::March7thHoney.Proto.EFGIHHJGCFA>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -220,7 +220,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 82: {
+          case 18: {
             contentPackageList_.AddEntriesFrom(input, _repeated_contentPackageList_codec);
             break;
           }
@@ -247,7 +247,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 82: {
+          case 18: {
             contentPackageList_.AddEntriesFrom(ref input, _repeated_contentPackageList_codec);
             break;
           }

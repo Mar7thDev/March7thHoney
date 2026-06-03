@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "FJKMGCKMNNA.proto";
 
 message BGNIMFMFKLH {
-    FJKMGCKMNNA source = 8;
-    map<uint32, double> OPEMKBPFFDN = 5;
+    FJKMGCKMNNA source = 13;
+    map<uint32, double> OPEMKBPFFDN = 14;
 }

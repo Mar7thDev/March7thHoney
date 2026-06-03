@@ -3,16 +3,16 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message FDNOPLPDLFC {
-    repeated uint32 PIDLPAPHKDO = 6;
-    repeated uint32 NJFFNHHFPOA = 12;
-    repeated uint32 LFIGKFGHPGK = 5;
-    bool KJJNICEKBAI = 10;
-    bool KAMJHJEALKH = 3;
-    uint32 FGKCLINNMND = 9;
     uint32 NMDBMPPLFKH = 1;
-    uint32 damage = 8;
-    uint32 OHOKCJBJJHA = 7;
-    uint32 NMACJAPBHKE = 11;
     uint32 CCCOEMLIPIF = 2;
+    bool KAMJHJEALKH = 3;
     uint32 JIKCFNDFNMA = 4;
+    repeated uint32 LFIGKFGHPGK = 5;
+    repeated uint32 PIDLPAPHKDO = 6;
+    uint32 OHOKCJBJJHA = 7;
+    uint32 damage = 8;
+    uint32 FGKCLINNMND = 9;
+    bool KJJNICEKBAI = 10;
+    uint32 NMACJAPBHKE = 11;
+    repeated uint32 NJFFNHHFPOA = 12;
 }

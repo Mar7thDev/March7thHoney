@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "TurnFoodSwitch.proto";
 
 message LJKFPPDFHMH {
-    TurnFoodSwitch KLAJGAKAFCP = 12;
-    uint32 retcode = 15;
-    bool FEBKMOCOJLE = 5;
+    TurnFoodSwitch KLAJGAKAFCP = 1;
+    uint32 retcode = 2;
+    bool is_open = 11;
 }

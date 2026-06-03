@@ -6,7 +6,7 @@ import "TutorialGuideType.proto";
 import "TutorialStatus.proto";
 
 message TutorialGuide {
-    TutorialStatus status = 5;
-    TutorialGuideType type = 8;
-    uint32 id = 2;
+    uint32 id = 1;
+    TutorialStatus status = 2;
+    TutorialGuideType type = 7;
 }

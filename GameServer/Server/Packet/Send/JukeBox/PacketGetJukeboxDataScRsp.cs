@@ -9,10 +9,9 @@ public class PacketGetJukeboxDataScRsp : BasePacket
 {
     public PacketGetJukeboxDataScRsp(PlayerInstance player) : base(CmdIds.GetJukeboxDataScRsp)
     {
-        // 4.3: JukeBox proto 混淆名变更（仍混淆的部分保留新名）
-        //   JILKOPINLDC -> GFFOBALDBPM (now-playing wrapper, type MCPPIEJEBEF -> MNCBEDBDDHL)
-        //   LEKGBMCOJDB -> JKNLCEEDAHJ (type NKLAFFLJCHG -> KHADHDLCNOI)
-        //   UnlockedMusicList / MusicData / IsPlayed 已恢复可读名 (proto 端已改回)
+        // 4.4: JukeBox proto 混淆名变更
+        //   now-playing wrapper: GFFOBALDBPM (type MNCBEDBDDHL), inner JKNLCEEDAHJ (type KHADHDLCNOI)
+        //   UnlockedMusicList -> IOKAJIBHLMP (repeated, element MusicData -> LHHGCDLCJDA, IsPlayed -> BIMDKNLMICG)
         var proto = new GetJukeboxDataScRsp
         {
             GFFOBALDBPM = new MNCBEDBDDHL
@@ -25,11 +24,11 @@ public class PacketGetJukeboxDataScRsp : BasePacket
         };
 
         foreach (var music in GameData.BackGroundMusicData.Values)
-            proto.UnlockedMusicList.Add(new MusicData
+            proto.IOKAJIBHLMP.Add(new LHHGCDLCJDA
             {
                 Id = (uint)music.ID,
                 GroupId = (uint)music.GroupID,
-                IsPlayed = true
+                BIMDKNLMICG = true
             });
 
         SetData(proto);

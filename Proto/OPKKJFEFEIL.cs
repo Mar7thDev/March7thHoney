@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFPUEtLSkZFRkVJTC5wcm90bxoXTG9iYnlJbnRlcmFjdFR5cGUucHJvdG8i",
-            "SwoLT1BLS0pGRUZFSUwSEwoLdGVsZXBvcnRfaWQYDiABKA0SJwoLRE5CS0tE",
-            "QkZGQUoYBSABKA4yEi5Mb2JieUludGVyYWN0VHlwZUIWqgITTWFyY2g3dGhI",
+            "SwoLT1BLS0pGRUZFSUwSEwoLdGVsZXBvcnRfaWQYBSABKA0SJwoLRE5CS0tE",
+            "QkZGQUoYCSABKA4yEi5Mb2JieUludGVyYWN0VHlwZUIWqgITTWFyY2g3dGhI",
             "b25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.LobbyInteractTypeReflection.Descriptor, },
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "teleport_id" field.</summary>
-    public const int TeleportIdFieldNumber = 14;
+    public const int TeleportIdFieldNumber = 5;
     private uint teleportId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "DNBKKDBFFAJ" field.</summary>
-    public const int DNBKKDBFFAJFieldNumber = 5;
+    public const int DNBKKDBFFAJFieldNumber = 9;
     private global::March7thHoney.Proto.LobbyInteractType dNBKKDBFFAJ_ = global::March7thHoney.Proto.LobbyInteractType.OdpjeogdikfNlcdgipgfdj;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,13 +152,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (DNBKKDBFFAJ != global::March7thHoney.Proto.LobbyInteractType.OdpjeogdikfNlcdgipgfdj) {
-        output.WriteRawTag(40);
-        output.WriteEnum((int) DNBKKDBFFAJ);
-      }
       if (TeleportId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(40);
         output.WriteUInt32(TeleportId);
+      }
+      if (DNBKKDBFFAJ != global::March7thHoney.Proto.LobbyInteractType.OdpjeogdikfNlcdgipgfdj) {
+        output.WriteRawTag(72);
+        output.WriteEnum((int) DNBKKDBFFAJ);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,13 +170,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (DNBKKDBFFAJ != global::March7thHoney.Proto.LobbyInteractType.OdpjeogdikfNlcdgipgfdj) {
-        output.WriteRawTag(40);
-        output.WriteEnum((int) DNBKKDBFFAJ);
-      }
       if (TeleportId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(40);
         output.WriteUInt32(TeleportId);
+      }
+      if (DNBKKDBFFAJ != global::March7thHoney.Proto.LobbyInteractType.OdpjeogdikfNlcdgipgfdj) {
+        output.WriteRawTag(72);
+        output.WriteEnum((int) DNBKKDBFFAJ);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -232,11 +232,11 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 40: {
-            DNBKKDBFFAJ = (global::March7thHoney.Proto.LobbyInteractType) input.ReadEnum();
+            TeleportId = input.ReadUInt32();
             break;
           }
-          case 112: {
-            TeleportId = input.ReadUInt32();
+          case 72: {
+            DNBKKDBFFAJ = (global::March7thHoney.Proto.LobbyInteractType) input.ReadEnum();
             break;
           }
         }
@@ -259,11 +259,11 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 40: {
-            DNBKKDBFFAJ = (global::March7thHoney.Proto.LobbyInteractType) input.ReadEnum();
+            TeleportId = input.ReadUInt32();
             break;
           }
-          case 112: {
-            TeleportId = input.ReadUInt32();
+          case 72: {
+            DNBKKDBFFAJ = (global::March7thHoney.Proto.LobbyInteractType) input.ReadEnum();
             break;
           }
         }

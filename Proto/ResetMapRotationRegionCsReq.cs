@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiFSZXNldE1hcFJvdGF0aW9uUmVnaW9uQ3NSZXEucHJvdG8aEE1vdGlvbklu",
             "Zm8ucHJvdG8aE1JvdGF0ZU1hcEluZm8ucHJvdG8iXwobUmVzZXRNYXBSb3Rh",
-            "dGlvblJlZ2lvbkNzUmVxEiMKC0NPT09NREtHT0RGGAIgASgLMg4uUm90YXRl",
-            "TWFwSW5mbxIbCgZtb3Rpb24YDCABKAsyCy5Nb3Rpb25JbmZvQhaqAhNNYXJj",
+            "dGlvblJlZ2lvbkNzUmVxEiMKC0NPT09NREtHT0RGGAYgASgLMg4uUm90YXRl",
+            "TWFwSW5mbxIbCgZtb3Rpb24YCCABKAsyCy5Nb3Rpb25JbmZvQhaqAhNNYXJj",
             "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MotionInfoReflection.Descriptor, global::March7thHoney.Proto.RotateMapInfoReflection.Descriptor, },
@@ -86,7 +86,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "COOOMDKGODF" field.</summary>
-    public const int COOOMDKGODFFieldNumber = 2;
+    public const int COOOMDKGODFFieldNumber = 6;
     private global::March7thHoney.Proto.RotateMapInfo cOOOMDKGODF_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,7 +98,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "motion" field.</summary>
-    public const int MotionFieldNumber = 12;
+    public const int MotionFieldNumber = 8;
     private global::March7thHoney.Proto.MotionInfo motion_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -154,11 +154,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (cOOOMDKGODF_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(50);
         output.WriteMessage(COOOMDKGODF);
       }
       if (motion_ != null) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(66);
         output.WriteMessage(Motion);
       }
       if (_unknownFields != null) {
@@ -172,11 +172,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (cOOOMDKGODF_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(50);
         output.WriteMessage(COOOMDKGODF);
       }
       if (motion_ != null) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(66);
         output.WriteMessage(Motion);
       }
       if (_unknownFields != null) {
@@ -238,14 +238,14 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 18: {
+          case 50: {
             if (cOOOMDKGODF_ == null) {
               COOOMDKGODF = new global::March7thHoney.Proto.RotateMapInfo();
             }
             input.ReadMessage(COOOMDKGODF);
             break;
           }
-          case 98: {
+          case 66: {
             if (motion_ == null) {
               Motion = new global::March7thHoney.Proto.MotionInfo();
             }
@@ -271,14 +271,14 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 18: {
+          case 50: {
             if (cOOOMDKGODF_ == null) {
               COOOMDKGODF = new global::March7thHoney.Proto.RotateMapInfo();
             }
             input.ReadMessage(COOOMDKGODF);
             break;
           }
-          case 98: {
+          case 66: {
             if (motion_ == null) {
               Motion = new global::March7thHoney.Proto.MotionInfo();
             }

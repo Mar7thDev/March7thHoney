@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChtTZXRIaXBwbGVuQWdlbmRhU2NSc3AucHJvdG8aEUFGRURIQ0tEREZBLnBy",
-            "b3RvIksKFVNldEhpcHBsZW5BZ2VuZGFTY1JzcBIhCgtORU1GTkVOQUNOQhgO",
-            "IAMoCzIMLkFGRURIQ0tEREZBEg8KB3JldGNvZGUYDSABKA1CFqoCE01hcmNo",
+            "b3RvIksKFVNldEhpcHBsZW5BZ2VuZGFTY1JzcBIhCgtORU1GTkVOQUNOQhgK",
+            "IAMoCzIMLkFGRURIQ0tEREZBEg8KB3JldGNvZGUYCyABKA1CFqoCE01hcmNo",
             "N3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.AFEDHCKDDFAReflection.Descriptor, },
@@ -85,9 +85,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "NEMFNENACNB" field.</summary>
-    public const int NEMFNENACNBFieldNumber = 14;
+    public const int NEMFNENACNBFieldNumber = 10;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.AFEDHCKDDFA> _repeated_nEMFNENACNB_codec
-        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.AFEDHCKDDFA.Parser);
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.AFEDHCKDDFA.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.AFEDHCKDDFA> nEMFNENACNB_ = new pbc::RepeatedField<global::March7thHoney.Proto.AFEDHCKDDFA>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 13;
+    public const int RetcodeFieldNumber = 11;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -151,11 +151,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      nEMFNENACNB_.WriteTo(output, _repeated_nEMFNENACNB_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(88);
         output.WriteUInt32(Retcode);
       }
-      nEMFNENACNB_.WriteTo(output, _repeated_nEMFNENACNB_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -166,11 +166,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      nEMFNENACNB_.WriteTo(ref output, _repeated_nEMFNENACNB_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(88);
         output.WriteUInt32(Retcode);
       }
-      nEMFNENACNB_.WriteTo(ref output, _repeated_nEMFNENACNB_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -220,12 +220,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 104: {
-            Retcode = input.ReadUInt32();
+          case 82: {
+            nEMFNENACNB_.AddEntriesFrom(input, _repeated_nEMFNENACNB_codec);
             break;
           }
-          case 114: {
-            nEMFNENACNB_.AddEntriesFrom(input, _repeated_nEMFNENACNB_codec);
+          case 88: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -247,12 +247,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 104: {
-            Retcode = input.ReadUInt32();
+          case 82: {
+            nEMFNENACNB_.AddEntriesFrom(ref input, _repeated_nEMFNENACNB_codec);
             break;
           }
-          case 114: {
-            nEMFNENACNB_.AddEntriesFrom(ref input, _repeated_nEMFNENACNB_codec);
+          case 88: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }

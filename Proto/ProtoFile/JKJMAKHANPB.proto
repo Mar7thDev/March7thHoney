@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message JKJMAKHANPB {
-    string stop_desc = 7;
+    string stop_desc = 2;
 }

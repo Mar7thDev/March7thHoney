@@ -6,10 +6,10 @@ import "JOLAHHGIFHA.proto";
 import "PlayerSimpleInfo.proto";
 
 message JBJNJPAOCDA {
-    PlayerSimpleInfo AJIPBLCIONL = 9;
-    JOLAHHGIFHA NJDCPMENIFG = 13;
-    uint32 summoned_pet_id = 8;
-    bool OJPDDAOJJKC = 1;
-    int64 AIMNJIMDIKM = 4;
-    uint32 uid = 10;
+    uint32 summoned_pet_id = 1;
+    JOLAHHGIFHA NJDCPMENIFG = 3;
+    uint32 uid = 6;
+    int64 AIMNJIMDIKM = 7;
+    bool OJPDDAOJJKC = 8;
+    PlayerSimpleInfo AJIPBLCIONL = 12;
 }

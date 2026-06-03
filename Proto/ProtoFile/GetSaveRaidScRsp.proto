@@ -5,9 +5,9 @@ option csharp_namespace = "March7thHoney.Proto";
 import "RaidTargetInfo.proto";
 
 message GetSaveRaidScRsp {
-    repeated RaidTargetInfo raid_target_info = 11;
+    uint32 raid_id = 1;
+    bool is_save = 4;
+    repeated RaidTargetInfo raid_target_info = 6;
+    uint32 retcode = 10;
     uint32 world_level = 14;
-    uint32 raid_id = 10;
-    uint32 retcode = 13;
-    bool is_save = 15;
 }

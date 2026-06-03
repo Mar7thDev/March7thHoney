@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFETUZNTUtKT0NOSi5wcm90bxoRTE1LRUNBUERNQUMucHJvdG8iMAoLRE1G",
-            "TU1LSk9DTkoSIQoLQ0JLSU5BRkVESkMYByABKAsyDC5MTUtFQ0FQRE1BQ0IW",
+            "TU1LSk9DTkoSIQoLQ0JLSU5BRkVESkMYBiABKAsyDC5MTUtFQ0FQRE1BQ0IW",
             "qgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.LMKECAPDMACReflection.Descriptor, },
@@ -83,7 +83,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "CBKINAFEDJC" field.</summary>
-    public const int CBKINAFEDJCFieldNumber = 7;
+    public const int CBKINAFEDJCFieldNumber = 6;
     private global::March7thHoney.Proto.LMKECAPDMAC cBKINAFEDJC_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -137,7 +137,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (cBKINAFEDJC_ != null) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(50);
         output.WriteMessage(CBKINAFEDJC);
       }
       if (_unknownFields != null) {
@@ -151,7 +151,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (cBKINAFEDJC_ != null) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(50);
         output.WriteMessage(CBKINAFEDJC);
       }
       if (_unknownFields != null) {
@@ -204,7 +204,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 58: {
+          case 50: {
             if (cBKINAFEDJC_ == null) {
               CBKINAFEDJC = new global::March7thHoney.Proto.LMKECAPDMAC();
             }
@@ -230,7 +230,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 58: {
+          case 50: {
             if (cBKINAFEDJC_ == null) {
               CBKINAFEDJC = new global::March7thHoney.Proto.LMKECAPDMAC();
             }

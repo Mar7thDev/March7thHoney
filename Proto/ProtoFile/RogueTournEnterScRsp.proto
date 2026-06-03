@@ -6,7 +6,7 @@ import "JGAMMPGMCNI.proto";
 import "PFLOIHLLMEE.proto";
 
 message RogueTournEnterScRsp {
-    PFLOIHLLMEE PHGJIJELKDB = 8;
-    JGAMMPGMCNI IDCMACCPCBH = 3;
-    uint32 retcode = 5;
+    uint32 retcode = 6;
+    PFLOIHLLMEE PHGJIJELKDB = 10;
+    JGAMMPGMCNI IDCMACCPCBH = 13;
 }

@@ -6,11 +6,11 @@ import "AreaDynamicInfo.proto";
 import "AreaStepInfo.proto";
 
 message TrainPartyArea {
-    repeated uint32 verify_step_id_list = 11;
-    repeated AreaDynamicInfo dynamic_info = 8;
-    AreaStepInfo area_step_info = 2;
-    repeated uint32 step_id_list = 5;
-    repeated uint32 static_prop_id_list = 3;
-    uint32 area_id = 12;
-    uint32 progress = 4;
+    repeated AreaDynamicInfo dynamic_info = 1;
+    AreaStepInfo area_step_info = 3;
+    repeated uint32 verify_step_id_list = 8;
+    uint32 progress = 11;
+    uint32 area_id = 13;
+    repeated uint32 step_id_list = 14;
+    repeated uint32 static_prop_id_list = 15;
 }

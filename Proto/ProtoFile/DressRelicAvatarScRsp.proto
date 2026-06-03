@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message DressRelicAvatarScRsp {
-    uint32 avatar_id = 3;
-    uint32 retcode = 12;
+    uint32 avatar_id = 9;
+    uint32 retcode = 13;
 }

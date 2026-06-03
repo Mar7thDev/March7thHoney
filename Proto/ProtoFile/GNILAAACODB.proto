@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GNILAAACODB {
-    uint64 unique_id = 15;
-    uint32 item_id = 14;
-    uint32 DCIJEFMACME = 3;
+    uint64 unique_id = 5;
+    uint32 DCIJEFMACME = 11;
+    uint32 item_id = 15;
 }

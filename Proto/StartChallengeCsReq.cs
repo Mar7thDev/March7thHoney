@@ -25,17 +25,17 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChlTdGFydENoYWxsZW5nZUNzUmVxLnByb3RvGhZBdmF0YXJJZGVudGlmaWVy",
-            "LnByb3RvGhdDaGFsbGVuZ2VCdWZmSW5mby5wcm90byLQAQoTU3RhcnRDaGFs",
-            "bGVuZ2VDc1JlcRIUCgxmaXJzdF9saW5ldXAYCCADKA0SJgoKc3RhZ2VfaW5m",
-            "bxgCIAEoCzISLkNoYWxsZW5nZUJ1ZmZJbmZvEhUKDXNlY29uZF9saW5ldXAY",
-            "BCADKA0SJgoLQktOS0xFT0NKTk8YDSADKAsyES5BdmF0YXJJZGVudGlmaWVy",
-            "EiYKC0FCTkRGS0ZJS0NJGAEgAygLMhEuQXZhdGFySWRlbnRpZmllchIUCgxj",
-            "aGFsbGVuZ2VfaWQYDiABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
-            "b3RvMw=="));
+            "LnByb3RvGhdDaGFsbGVuZ2VCdWZmSW5mby5wcm90byLhAQoTU3RhcnRDaGFs",
+            "bGVuZ2VDc1JlcRImCgpzdGFnZV9pbmZvGAEgASgLMhIuQ2hhbGxlbmdlQnVm",
+            "ZkluZm8SFAoMZmlyc3RfbGluZXVwGAMgAygNEhUKDXNlY29uZF9saW5ldXAY",
+            "BCADKA0SLgoTYXZhdGFyX2xpbmV1cF9maXJzdBgGIAMoCzIRLkF2YXRhcklk",
+            "ZW50aWZpZXISLwoUYXZhdGFyX2xpbmV1cF9zZWNvbmQYCiADKAsyES5BdmF0",
+            "YXJJZGVudGlmaWVyEhQKDGNoYWxsZW5nZV9pZBgMIAEoDUIWqgITTWFyY2g3",
+            "dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.AvatarIdentifierReflection.Descriptor, global::March7thHoney.Proto.ChallengeBuffInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartChallengeCsReq), global::March7thHoney.Proto.StartChallengeCsReq.Parser, new[]{ "FirstLineup", "StageInfo", "SecondLineup", "BKNKLEOCJNO", "ABNDFKFIKCI", "ChallengeId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartChallengeCsReq), global::March7thHoney.Proto.StartChallengeCsReq.Parser, new[]{ "StageInfo", "FirstLineup", "SecondLineup", "AvatarLineupFirst", "AvatarLineupSecond", "ChallengeId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -77,11 +77,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public StartChallengeCsReq(StartChallengeCsReq other) : this() {
-      firstLineup_ = other.firstLineup_.Clone();
       stageInfo_ = other.stageInfo_ != null ? other.stageInfo_.Clone() : null;
+      firstLineup_ = other.firstLineup_.Clone();
       secondLineup_ = other.secondLineup_.Clone();
-      bKNKLEOCJNO_ = other.bKNKLEOCJNO_.Clone();
-      aBNDFKFIKCI_ = other.aBNDFKFIKCI_.Clone();
+      avatarLineupFirst_ = other.avatarLineupFirst_.Clone();
+      avatarLineupSecond_ = other.avatarLineupSecond_.Clone();
       challengeId_ = other.challengeId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -92,19 +92,8 @@ namespace March7thHoney.Proto {
       return new StartChallengeCsReq(this);
     }
 
-    /// <summary>Field number for the "first_lineup" field.</summary>
-    public const int FirstLineupFieldNumber = 8;
-    private static readonly pb::FieldCodec<uint> _repeated_firstLineup_codec
-        = pb::FieldCodec.ForUInt32(66);
-    private readonly pbc::RepeatedField<uint> firstLineup_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> FirstLineup {
-      get { return firstLineup_; }
-    }
-
     /// <summary>Field number for the "stage_info" field.</summary>
-    public const int StageInfoFieldNumber = 2;
+    public const int StageInfoFieldNumber = 1;
     private global::March7thHoney.Proto.ChallengeBuffInfo stageInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -113,6 +102,17 @@ namespace March7thHoney.Proto {
       set {
         stageInfo_ = value;
       }
+    }
+
+    /// <summary>Field number for the "first_lineup" field.</summary>
+    public const int FirstLineupFieldNumber = 3;
+    private static readonly pb::FieldCodec<uint> _repeated_firstLineup_codec
+        = pb::FieldCodec.ForUInt32(26);
+    private readonly pbc::RepeatedField<uint> firstLineup_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> FirstLineup {
+      get { return firstLineup_; }
     }
 
     /// <summary>Field number for the "second_lineup" field.</summary>
@@ -126,30 +126,30 @@ namespace March7thHoney.Proto {
       get { return secondLineup_; }
     }
 
-    /// <summary>Field number for the "BKNKLEOCJNO" field.</summary>
-    public const int BKNKLEOCJNOFieldNumber = 13;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AvatarIdentifier> _repeated_bKNKLEOCJNO_codec
-        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.AvatarIdentifier.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AvatarIdentifier> bKNKLEOCJNO_ = new pbc::RepeatedField<global::March7thHoney.Proto.AvatarIdentifier>();
+    /// <summary>Field number for the "avatar_lineup_first" field.</summary>
+    public const int AvatarLineupFirstFieldNumber = 6;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AvatarIdentifier> _repeated_avatarLineupFirst_codec
+        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.AvatarIdentifier.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AvatarIdentifier> avatarLineupFirst_ = new pbc::RepeatedField<global::March7thHoney.Proto.AvatarIdentifier>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.AvatarIdentifier> BKNKLEOCJNO {
-      get { return bKNKLEOCJNO_; }
+    public pbc::RepeatedField<global::March7thHoney.Proto.AvatarIdentifier> AvatarLineupFirst {
+      get { return avatarLineupFirst_; }
     }
 
-    /// <summary>Field number for the "ABNDFKFIKCI" field.</summary>
-    public const int ABNDFKFIKCIFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AvatarIdentifier> _repeated_aBNDFKFIKCI_codec
-        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.AvatarIdentifier.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AvatarIdentifier> aBNDFKFIKCI_ = new pbc::RepeatedField<global::March7thHoney.Proto.AvatarIdentifier>();
+    /// <summary>Field number for the "avatar_lineup_second" field.</summary>
+    public const int AvatarLineupSecondFieldNumber = 10;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AvatarIdentifier> _repeated_avatarLineupSecond_codec
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.AvatarIdentifier.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AvatarIdentifier> avatarLineupSecond_ = new pbc::RepeatedField<global::March7thHoney.Proto.AvatarIdentifier>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.AvatarIdentifier> ABNDFKFIKCI {
-      get { return aBNDFKFIKCI_; }
+    public pbc::RepeatedField<global::March7thHoney.Proto.AvatarIdentifier> AvatarLineupSecond {
+      get { return avatarLineupSecond_; }
     }
 
     /// <summary>Field number for the "challenge_id" field.</summary>
-    public const int ChallengeIdFieldNumber = 14;
+    public const int ChallengeIdFieldNumber = 12;
     private uint challengeId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -175,11 +175,11 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!firstLineup_.Equals(other.firstLineup_)) return false;
       if (!object.Equals(StageInfo, other.StageInfo)) return false;
+      if(!firstLineup_.Equals(other.firstLineup_)) return false;
       if(!secondLineup_.Equals(other.secondLineup_)) return false;
-      if(!bKNKLEOCJNO_.Equals(other.bKNKLEOCJNO_)) return false;
-      if(!aBNDFKFIKCI_.Equals(other.aBNDFKFIKCI_)) return false;
+      if(!avatarLineupFirst_.Equals(other.avatarLineupFirst_)) return false;
+      if(!avatarLineupSecond_.Equals(other.avatarLineupSecond_)) return false;
       if (ChallengeId != other.ChallengeId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -188,11 +188,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= firstLineup_.GetHashCode();
       if (stageInfo_ != null) hash ^= StageInfo.GetHashCode();
+      hash ^= firstLineup_.GetHashCode();
       hash ^= secondLineup_.GetHashCode();
-      hash ^= bKNKLEOCJNO_.GetHashCode();
-      hash ^= aBNDFKFIKCI_.GetHashCode();
+      hash ^= avatarLineupFirst_.GetHashCode();
+      hash ^= avatarLineupSecond_.GetHashCode();
       if (ChallengeId != 0) hash ^= ChallengeId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -212,16 +212,16 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      aBNDFKFIKCI_.WriteTo(output, _repeated_aBNDFKFIKCI_codec);
       if (stageInfo_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(10);
         output.WriteMessage(StageInfo);
       }
-      secondLineup_.WriteTo(output, _repeated_secondLineup_codec);
       firstLineup_.WriteTo(output, _repeated_firstLineup_codec);
-      bKNKLEOCJNO_.WriteTo(output, _repeated_bKNKLEOCJNO_codec);
+      secondLineup_.WriteTo(output, _repeated_secondLineup_codec);
+      avatarLineupFirst_.WriteTo(output, _repeated_avatarLineupFirst_codec);
+      avatarLineupSecond_.WriteTo(output, _repeated_avatarLineupSecond_codec);
       if (ChallengeId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(96);
         output.WriteUInt32(ChallengeId);
       }
       if (_unknownFields != null) {
@@ -234,16 +234,16 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      aBNDFKFIKCI_.WriteTo(ref output, _repeated_aBNDFKFIKCI_codec);
       if (stageInfo_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(10);
         output.WriteMessage(StageInfo);
       }
-      secondLineup_.WriteTo(ref output, _repeated_secondLineup_codec);
       firstLineup_.WriteTo(ref output, _repeated_firstLineup_codec);
-      bKNKLEOCJNO_.WriteTo(ref output, _repeated_bKNKLEOCJNO_codec);
+      secondLineup_.WriteTo(ref output, _repeated_secondLineup_codec);
+      avatarLineupFirst_.WriteTo(ref output, _repeated_avatarLineupFirst_codec);
+      avatarLineupSecond_.WriteTo(ref output, _repeated_avatarLineupSecond_codec);
       if (ChallengeId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(96);
         output.WriteUInt32(ChallengeId);
       }
       if (_unknownFields != null) {
@@ -256,13 +256,13 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += firstLineup_.CalculateSize(_repeated_firstLineup_codec);
       if (stageInfo_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(StageInfo);
       }
+      size += firstLineup_.CalculateSize(_repeated_firstLineup_codec);
       size += secondLineup_.CalculateSize(_repeated_secondLineup_codec);
-      size += bKNKLEOCJNO_.CalculateSize(_repeated_bKNKLEOCJNO_codec);
-      size += aBNDFKFIKCI_.CalculateSize(_repeated_aBNDFKFIKCI_codec);
+      size += avatarLineupFirst_.CalculateSize(_repeated_avatarLineupFirst_codec);
+      size += avatarLineupSecond_.CalculateSize(_repeated_avatarLineupSecond_codec);
       if (ChallengeId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ChallengeId);
       }
@@ -278,16 +278,16 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      firstLineup_.Add(other.firstLineup_);
       if (other.stageInfo_ != null) {
         if (stageInfo_ == null) {
           StageInfo = new global::March7thHoney.Proto.ChallengeBuffInfo();
         }
         StageInfo.MergeFrom(other.StageInfo);
       }
+      firstLineup_.Add(other.firstLineup_);
       secondLineup_.Add(other.secondLineup_);
-      bKNKLEOCJNO_.Add(other.bKNKLEOCJNO_);
-      aBNDFKFIKCI_.Add(other.aBNDFKFIKCI_);
+      avatarLineupFirst_.Add(other.avatarLineupFirst_);
+      avatarLineupSecond_.Add(other.avatarLineupSecond_);
       if (other.ChallengeId != 0) {
         ChallengeId = other.ChallengeId;
       }
@@ -311,14 +311,15 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            aBNDFKFIKCI_.AddEntriesFrom(input, _repeated_aBNDFKFIKCI_codec);
-            break;
-          }
-          case 18: {
             if (stageInfo_ == null) {
               StageInfo = new global::March7thHoney.Proto.ChallengeBuffInfo();
             }
             input.ReadMessage(StageInfo);
+            break;
+          }
+          case 26:
+          case 24: {
+            firstLineup_.AddEntriesFrom(input, _repeated_firstLineup_codec);
             break;
           }
           case 34:
@@ -326,16 +327,15 @@ namespace March7thHoney.Proto {
             secondLineup_.AddEntriesFrom(input, _repeated_secondLineup_codec);
             break;
           }
-          case 66:
-          case 64: {
-            firstLineup_.AddEntriesFrom(input, _repeated_firstLineup_codec);
+          case 50: {
+            avatarLineupFirst_.AddEntriesFrom(input, _repeated_avatarLineupFirst_codec);
             break;
           }
-          case 106: {
-            bKNKLEOCJNO_.AddEntriesFrom(input, _repeated_bKNKLEOCJNO_codec);
+          case 82: {
+            avatarLineupSecond_.AddEntriesFrom(input, _repeated_avatarLineupSecond_codec);
             break;
           }
-          case 112: {
+          case 96: {
             ChallengeId = input.ReadUInt32();
             break;
           }
@@ -359,14 +359,15 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            aBNDFKFIKCI_.AddEntriesFrom(ref input, _repeated_aBNDFKFIKCI_codec);
-            break;
-          }
-          case 18: {
             if (stageInfo_ == null) {
               StageInfo = new global::March7thHoney.Proto.ChallengeBuffInfo();
             }
             input.ReadMessage(StageInfo);
+            break;
+          }
+          case 26:
+          case 24: {
+            firstLineup_.AddEntriesFrom(ref input, _repeated_firstLineup_codec);
             break;
           }
           case 34:
@@ -374,16 +375,15 @@ namespace March7thHoney.Proto {
             secondLineup_.AddEntriesFrom(ref input, _repeated_secondLineup_codec);
             break;
           }
-          case 66:
-          case 64: {
-            firstLineup_.AddEntriesFrom(ref input, _repeated_firstLineup_codec);
+          case 50: {
+            avatarLineupFirst_.AddEntriesFrom(ref input, _repeated_avatarLineupFirst_codec);
             break;
           }
-          case 106: {
-            bKNKLEOCJNO_.AddEntriesFrom(ref input, _repeated_bKNKLEOCJNO_codec);
+          case 82: {
+            avatarLineupSecond_.AddEntriesFrom(ref input, _repeated_avatarLineupSecond_codec);
             break;
           }
-          case 112: {
+          case 96: {
             ChallengeId = input.ReadUInt32();
             break;
           }

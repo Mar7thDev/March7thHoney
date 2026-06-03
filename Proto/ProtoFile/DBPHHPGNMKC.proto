@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "BANELIGFLCO.proto";
 
 message DBPHHPGNMKC {
-    repeated BANELIGFLCO NPENGFBHFJN = 6;
+    repeated BANELIGFLCO NPENGFBHFJN = 3;
 }

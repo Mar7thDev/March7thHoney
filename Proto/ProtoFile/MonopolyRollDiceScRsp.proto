@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message MonopolyRollDiceScRsp {
-    uint32 KKEIPOOAIMB = 8;
-    uint32 retcode = 6;
+    uint32 retcode = 1;
+    uint32 roll_result = 12;
 }

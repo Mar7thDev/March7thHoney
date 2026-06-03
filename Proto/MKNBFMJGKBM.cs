@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFNS05CRk1KR0tCTS5wcm90byJFCgtNS05CRk1KR0tCTRITCgtMSkNFT0dQ",
-            "T0dCRRgDIAEoDRIhChlpbnRlcmFjdGVkX3Byb3BfZW50aXR5X2lkGAkgASgN",
+            "T0dCRRgCIAEoDRIhChlpbnRlcmFjdGVkX3Byb3BfZW50aXR5X2lkGA4gASgN",
             "QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "LJCEOGPOGBE" field.</summary>
-    public const int LJCEOGPOGBEFieldNumber = 3;
+    public const int LJCEOGPOGBEFieldNumber = 2;
     private uint lJCEOGPOGBE_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "interacted_prop_entity_id" field.</summary>
-    public const int InteractedPropEntityIdFieldNumber = 9;
+    public const int InteractedPropEntityIdFieldNumber = 14;
     private uint interactedPropEntityId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (LJCEOGPOGBE != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteUInt32(LJCEOGPOGBE);
       }
       if (InteractedPropEntityId != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(112);
         output.WriteUInt32(InteractedPropEntityId);
       }
       if (_unknownFields != null) {
@@ -170,11 +170,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (LJCEOGPOGBE != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteUInt32(LJCEOGPOGBE);
       }
       if (InteractedPropEntityId != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(112);
         output.WriteUInt32(InteractedPropEntityId);
       }
       if (_unknownFields != null) {
@@ -230,11 +230,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
+          case 16: {
             LJCEOGPOGBE = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 112: {
             InteractedPropEntityId = input.ReadUInt32();
             break;
           }
@@ -257,11 +257,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
+          case 16: {
             LJCEOGPOGBE = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 112: {
             InteractedPropEntityId = input.ReadUInt32();
             break;
           }

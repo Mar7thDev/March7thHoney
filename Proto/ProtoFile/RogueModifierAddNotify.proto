@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "BMCNDLNONMO.proto";
 
 message RogueModifierAddNotify {
-    BMCNDLNONMO ILIIOLJMKME = 14;
+    BMCNDLNONMO modifier = 14;
 }

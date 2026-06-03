@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "JBCHHGDHKIG.proto";
 
 message EMNNNCHNPKP {
-    JBCHHGDHKIG OPMGDNNAEJF = 4;
-    uint32 BIACKLBMMAP = 12;
     uint32 item_id = 1;
+    JBCHHGDHKIG OPMGDNNAEJF = 8;
+    uint32 BIACKLBMMAP = 14;
 }

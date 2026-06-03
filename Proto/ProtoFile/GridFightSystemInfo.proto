@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "CKPOBLIFMGN.proto";
+import "GridFightStaticGameInfo.proto";
+
+message GridFightSystemInfo {
+    GridFightStaticGameInfo HFPEJIDDDJG = 11;
+    CKPOBLIFMGN PKELAIPIHMF = 12;
+}

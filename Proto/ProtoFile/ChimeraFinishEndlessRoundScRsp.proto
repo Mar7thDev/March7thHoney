@@ -5,12 +5,12 @@ option csharp_namespace = "March7thHoney.Proto";
 import "GADFFIFFNHM.proto";
 
 message ChimeraFinishEndlessRoundScRsp {
-    repeated GADFFIFFNHM DKMKPFDNEBL = 12;
-    uint32 retcode = 10;
-    uint32 IOMEILDMBNE = 13;
-    uint32 MMFKMEGECOI = 5;
-    uint32 EBDOCKLLKMI = 4;
-    bool CJEILDIOIOE = 9;
-    uint32 NMPCJAOIOHJ = 3;
-    uint32 PIGPKIDNMDH = 11;
+    uint32 MMFKMEGECOI = 1;
+    uint32 retcode = 2;
+    uint32 PIGPKIDNMDH = 4;
+    uint32 NMPCJAOIOHJ = 7;
+    uint32 EBDOCKLLKMI = 8;
+    uint32 IOMEILDMBNE = 9;
+    bool CJEILDIOIOE = 12;
+    repeated GADFFIFFNHM DKMKPFDNEBL = 13;
 }

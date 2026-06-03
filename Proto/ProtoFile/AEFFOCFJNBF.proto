@@ -6,6 +6,5 @@ import "ItemCostData.proto";
 
 message AEFFOCFJNBF {
     ItemCostData cost_data = 2;
-    float CBJALFOLFIH = 13;
-    uint32 buff_id = 14;
+    uint32 buff_id = 11;
 }

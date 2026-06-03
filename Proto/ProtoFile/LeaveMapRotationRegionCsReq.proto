@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "MotionInfo.proto";
 
 message LeaveMapRotationRegionCsReq {
-    MotionInfo motion = 10;
+    MotionInfo motion = 3;
 }

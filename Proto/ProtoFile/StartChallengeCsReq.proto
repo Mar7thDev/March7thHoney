@@ -6,10 +6,10 @@ import "AvatarIdentifier.proto";
 import "ChallengeBuffInfo.proto";
 
 message StartChallengeCsReq {
-    repeated uint32 first_lineup = 8;
-    ChallengeBuffInfo stage_info = 2;
+    ChallengeBuffInfo stage_info = 1;
+    repeated uint32 first_lineup = 3;
     repeated uint32 second_lineup = 4;
-    repeated AvatarIdentifier BKNKLEOCJNO = 13;
-    repeated AvatarIdentifier ABNDFKFIKCI = 1;
-    uint32 challenge_id = 14;
+    repeated AvatarIdentifier avatar_lineup_first = 6;
+    repeated AvatarIdentifier avatar_lineup_second = 10;
+    uint32 challenge_id = 12;
 }

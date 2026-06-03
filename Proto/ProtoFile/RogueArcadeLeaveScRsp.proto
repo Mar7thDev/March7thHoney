@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "GCPGBPNGOFF.proto";
 
 message RogueArcadeLeaveScRsp {
-    GCPGBPNGOFF IDCMACCPCBH = 8;
-    uint32 retcode = 10;
+    GCPGBPNGOFF IDCMACCPCBH = 11;
+    uint32 retcode = 15;
 }

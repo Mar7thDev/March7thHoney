@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "AreaDynamicInfo.proto";
 
 message TrainPartyBuildStartStepCsReq {
-    AreaDynamicInfo PFICNBHIHBA = 11;
-    uint32 DNLIGEOFPEL = 3;
-    uint32 area_id = 15;
-    uint32 GKENFCLLLJC = 9;
+    uint32 DNLIGEOFPEL = 1;
+    uint32 area_id = 2;
+    uint32 GKENFCLLLJC = 3;
+    AreaDynamicInfo PFICNBHIHBA = 15;
 }

@@ -8,13 +8,11 @@ import "ChallengeBossEquipmentInfo.proto";
 import "ChallengeBossSingleNodeInfo.proto";
 
 message ChallengeBossInfo {
-    ChallengeBossSingleNodeInfo second_node = 3;
-    map<uint32, ChallengeBossAvatarRelicInfo> challenge_avatar_relic_map = 14;
-    repeated uint32 first_lineup = 2;
-    repeated AvatarIdentifier BKNKLEOCJNO = 10;
-    ChallengeBossSingleNodeInfo first_node = 15;
-    map<uint32, ChallengeBossEquipmentInfo> challenge_avatar_equipment_map = 7;
-    repeated AvatarIdentifier ABNDFKFIKCI = 6;
-    repeated uint32 second_lineup = 12;
-    bool unk1 = 1;
+    bool unk1 = 3;
+    repeated AvatarIdentifier avatar_lineup_first = 5;
+    ChallengeBossSingleNodeInfo second_node = 6;
+    repeated AvatarIdentifier avatar_lineup_second = 8;
+    map<uint32, ChallengeBossAvatarRelicInfo> challenge_avatar_relic_map = 10;
+    ChallengeBossSingleNodeInfo first_node = 11;
+    map<uint32, ChallengeBossEquipmentInfo> challenge_avatar_equipment_map = 12;
 }

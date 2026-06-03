@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChhTZXRQbGF5ZXJJbmZvU2NSc3AucHJvdG8aGU11bHRpUGF0aEF2YXRhclR5",
-            "cGUucHJvdG8ieQoSU2V0UGxheWVySW5mb1NjUnNwEi0KD2N1cl9hdmF0YXJf",
-            "cGF0aBgOIAEoDjIULk11bHRpUGF0aEF2YXRhclR5cGUSDwoHcmV0Y29kZRgC",
-            "IAEoDRIRCglpc19tb2RpZnkYDCABKAgSEAoIc2V0X3RpbWUYASABKANCFqoC",
+            "cGUucHJvdG8ieQoSU2V0UGxheWVySW5mb1NjUnNwEg8KB3JldGNvZGUYASAB",
+            "KA0SEQoJaXNfbW9kaWZ5GAUgASgIEi0KD2N1cl9hdmF0YXJfcGF0aBgHIAEo",
+            "DjIULk11bHRpUGF0aEF2YXRhclR5cGUSEAoIc2V0X3RpbWUYCiABKANCFqoC",
             "E01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MultiPathAvatarTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetPlayerInfoScRsp), global::March7thHoney.Proto.SetPlayerInfoScRsp.Parser, new[]{ "CurAvatarPath", "Retcode", "IsModify", "SetTime" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetPlayerInfoScRsp), global::March7thHoney.Proto.SetPlayerInfoScRsp.Parser, new[]{ "Retcode", "IsModify", "CurAvatarPath", "SetTime" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,9 +74,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SetPlayerInfoScRsp(SetPlayerInfoScRsp other) : this() {
-      curAvatarPath_ = other.curAvatarPath_;
       retcode_ = other.retcode_;
       isModify_ = other.isModify_;
+      curAvatarPath_ = other.curAvatarPath_;
       setTime_ = other.setTime_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -87,20 +87,8 @@ namespace March7thHoney.Proto {
       return new SetPlayerInfoScRsp(this);
     }
 
-    /// <summary>Field number for the "cur_avatar_path" field.</summary>
-    public const int CurAvatarPathFieldNumber = 14;
-    private global::March7thHoney.Proto.MultiPathAvatarType curAvatarPath_ = global::March7thHoney.Proto.MultiPathAvatarType.None;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.MultiPathAvatarType CurAvatarPath {
-      get { return curAvatarPath_; }
-      set {
-        curAvatarPath_ = value;
-      }
-    }
-
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 2;
+    public const int RetcodeFieldNumber = 1;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -112,7 +100,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "is_modify" field.</summary>
-    public const int IsModifyFieldNumber = 12;
+    public const int IsModifyFieldNumber = 5;
     private bool isModify_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -123,8 +111,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "cur_avatar_path" field.</summary>
+    public const int CurAvatarPathFieldNumber = 7;
+    private global::March7thHoney.Proto.MultiPathAvatarType curAvatarPath_ = global::March7thHoney.Proto.MultiPathAvatarType.None;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.MultiPathAvatarType CurAvatarPath {
+      get { return curAvatarPath_; }
+      set {
+        curAvatarPath_ = value;
+      }
+    }
+
     /// <summary>Field number for the "set_time" field.</summary>
-    public const int SetTimeFieldNumber = 1;
+    public const int SetTimeFieldNumber = 10;
     private long setTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -150,9 +150,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (CurAvatarPath != other.CurAvatarPath) return false;
       if (Retcode != other.Retcode) return false;
       if (IsModify != other.IsModify) return false;
+      if (CurAvatarPath != other.CurAvatarPath) return false;
       if (SetTime != other.SetTime) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -161,9 +161,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (CurAvatarPath != global::March7thHoney.Proto.MultiPathAvatarType.None) hash ^= CurAvatarPath.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (IsModify != false) hash ^= IsModify.GetHashCode();
+      if (CurAvatarPath != global::March7thHoney.Proto.MultiPathAvatarType.None) hash ^= CurAvatarPath.GetHashCode();
       if (SetTime != 0L) hash ^= SetTime.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -183,21 +183,21 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (SetTime != 0L) {
-        output.WriteRawTag(8);
-        output.WriteInt64(SetTime);
-      }
       if (Retcode != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteUInt32(Retcode);
       }
       if (IsModify != false) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(40);
         output.WriteBool(IsModify);
       }
       if (CurAvatarPath != global::March7thHoney.Proto.MultiPathAvatarType.None) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(56);
         output.WriteEnum((int) CurAvatarPath);
+      }
+      if (SetTime != 0L) {
+        output.WriteRawTag(80);
+        output.WriteInt64(SetTime);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -209,21 +209,21 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (SetTime != 0L) {
-        output.WriteRawTag(8);
-        output.WriteInt64(SetTime);
-      }
       if (Retcode != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteUInt32(Retcode);
       }
       if (IsModify != false) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(40);
         output.WriteBool(IsModify);
       }
       if (CurAvatarPath != global::March7thHoney.Proto.MultiPathAvatarType.None) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(56);
         output.WriteEnum((int) CurAvatarPath);
+      }
+      if (SetTime != 0L) {
+        output.WriteRawTag(80);
+        output.WriteInt64(SetTime);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -235,14 +235,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (CurAvatarPath != global::March7thHoney.Proto.MultiPathAvatarType.None) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) CurAvatarPath);
-      }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
       if (IsModify != false) {
         size += 1 + 1;
+      }
+      if (CurAvatarPath != global::March7thHoney.Proto.MultiPathAvatarType.None) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) CurAvatarPath);
       }
       if (SetTime != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(SetTime);
@@ -259,14 +259,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.CurAvatarPath != global::March7thHoney.Proto.MultiPathAvatarType.None) {
-        CurAvatarPath = other.CurAvatarPath;
-      }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
       if (other.IsModify != false) {
         IsModify = other.IsModify;
+      }
+      if (other.CurAvatarPath != global::March7thHoney.Proto.MultiPathAvatarType.None) {
+        CurAvatarPath = other.CurAvatarPath;
       }
       if (other.SetTime != 0L) {
         SetTime = other.SetTime;
@@ -291,19 +291,19 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            SetTime = input.ReadInt64();
-            break;
-          }
-          case 16: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 96: {
+          case 40: {
             IsModify = input.ReadBool();
             break;
           }
-          case 112: {
+          case 56: {
             CurAvatarPath = (global::March7thHoney.Proto.MultiPathAvatarType) input.ReadEnum();
+            break;
+          }
+          case 80: {
+            SetTime = input.ReadInt64();
             break;
           }
         }
@@ -326,19 +326,19 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            SetTime = input.ReadInt64();
-            break;
-          }
-          case 16: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 96: {
+          case 40: {
             IsModify = input.ReadBool();
             break;
           }
-          case 112: {
+          case 56: {
             CurAvatarPath = (global::March7thHoney.Proto.MultiPathAvatarType) input.ReadEnum();
+            break;
+          }
+          case 80: {
+            SetTime = input.ReadInt64();
             break;
           }
         }

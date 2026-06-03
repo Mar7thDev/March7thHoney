@@ -27,18 +27,18 @@ namespace March7thHoney.Proto {
             "ChVTY2VuZUVudGl0eUluZm8ucHJvdG8aEE1vdGlvbkluZm8ucHJvdG8aFFNj",
             "ZW5lQWN0b3JJbmZvLnByb3RvGhJTY2VuZU5wY0luZm8ucHJvdG8aGVNjZW5l",
             "TnBjTW9uc3RlckluZm8ucHJvdG8aE1NjZW5lUHJvcEluZm8ucHJvdG8aGVNj",
-            "ZW5lU3VtbW9uVW5pdEluZm8ucHJvdG8iqAIKD1NjZW5lRW50aXR5SW5mbxIb",
-            "CgZtb3Rpb24YDSABKAsyCy5Nb3Rpb25JbmZvEg8KB2luc3RfaWQYAiABKA0S",
-            "EQoJZW50aXR5X2lkGAogASgNEhAKCGdyb3VwX2lkGAsgASgNEiAKBWFjdG9y",
-            "GAwgASgLMg8uU2NlbmVBY3RvckluZm9IABIrCgtucGNfbW9uc3RlchgFIAEo",
-            "CzIULlNjZW5lTnBjTW9uc3RlckluZm9IABIcCgNucGMYASABKAsyDS5TY2Vu",
-            "ZU5wY0luZm9IABIeCgRwcm9wGA4gASgLMg4uU2NlbmVQcm9wSW5mb0gAEisK",
-            "C3N1bW1vbl91bml0GA8gASgLMhQuU2NlbmVTdW1tb25Vbml0SW5mb0gAQggK",
+            "ZW5lU3VtbW9uVW5pdEluZm8ucHJvdG8iqAIKD1NjZW5lRW50aXR5SW5mbxIR",
+            "CgllbnRpdHlfaWQYCCABKA0SDwoHaW5zdF9pZBgKIAEoDRIbCgZtb3Rpb24Y",
+            "DCABKAsyCy5Nb3Rpb25JbmZvEhAKCGdyb3VwX2lkGA8gASgNEiAKBWFjdG9y",
+            "GA0gASgLMg8uU2NlbmVBY3RvckluZm9IABIrCgtucGNfbW9uc3RlchgOIAEo",
+            "CzIULlNjZW5lTnBjTW9uc3RlckluZm9IABIcCgNucGMYBiABKAsyDS5TY2Vu",
+            "ZU5wY0luZm9IABIeCgRwcm9wGAcgASgLMg4uU2NlbmVQcm9wSW5mb0gAEisK",
+            "C3N1bW1vbl91bml0GAEgASgLMhQuU2NlbmVTdW1tb25Vbml0SW5mb0gAQggK",
             "BmVudGl0eUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MotionInfoReflection.Descriptor, global::March7thHoney.Proto.SceneActorInfoReflection.Descriptor, global::March7thHoney.Proto.SceneNpcInfoReflection.Descriptor, global::March7thHoney.Proto.SceneNpcMonsterInfoReflection.Descriptor, global::March7thHoney.Proto.ScenePropInfoReflection.Descriptor, global::March7thHoney.Proto.SceneSummonUnitInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneEntityInfo), global::March7thHoney.Proto.SceneEntityInfo.Parser, new[]{ "Motion", "InstId", "EntityId", "GroupId", "Actor", "NpcMonster", "Npc", "Prop", "SummonUnit" }, new[]{ "Entity" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneEntityInfo), global::March7thHoney.Proto.SceneEntityInfo.Parser, new[]{ "EntityId", "InstId", "Motion", "GroupId", "Actor", "NpcMonster", "Npc", "Prop", "SummonUnit" }, new[]{ "Entity" }, null, null, null)
           }));
     }
     #endregion
@@ -80,9 +80,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SceneEntityInfo(SceneEntityInfo other) : this() {
-      motion_ = other.motion_ != null ? other.motion_.Clone() : null;
-      instId_ = other.instId_;
       entityId_ = other.entityId_;
+      instId_ = other.instId_;
+      motion_ = other.motion_ != null ? other.motion_.Clone() : null;
       groupId_ = other.groupId_;
       switch (other.EntityCase) {
         case EntityOneofCase.Actor:
@@ -111,32 +111,8 @@ namespace March7thHoney.Proto {
       return new SceneEntityInfo(this);
     }
 
-    /// <summary>Field number for the "motion" field.</summary>
-    public const int MotionFieldNumber = 13;
-    private global::March7thHoney.Proto.MotionInfo motion_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.MotionInfo Motion {
-      get { return motion_; }
-      set {
-        motion_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "inst_id" field.</summary>
-    public const int InstIdFieldNumber = 2;
-    private uint instId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint InstId {
-      get { return instId_; }
-      set {
-        instId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "entity_id" field.</summary>
-    public const int EntityIdFieldNumber = 10;
+    public const int EntityIdFieldNumber = 8;
     private uint entityId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -147,8 +123,32 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "inst_id" field.</summary>
+    public const int InstIdFieldNumber = 10;
+    private uint instId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint InstId {
+      get { return instId_; }
+      set {
+        instId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "motion" field.</summary>
+    public const int MotionFieldNumber = 12;
+    private global::March7thHoney.Proto.MotionInfo motion_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.MotionInfo Motion {
+      get { return motion_; }
+      set {
+        motion_ = value;
+      }
+    }
+
     /// <summary>Field number for the "group_id" field.</summary>
-    public const int GroupIdFieldNumber = 11;
+    public const int GroupIdFieldNumber = 15;
     private uint groupId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -160,7 +160,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "actor" field.</summary>
-    public const int ActorFieldNumber = 12;
+    public const int ActorFieldNumber = 13;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.SceneActorInfo Actor {
@@ -172,7 +172,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "npc_monster" field.</summary>
-    public const int NpcMonsterFieldNumber = 5;
+    public const int NpcMonsterFieldNumber = 14;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.SceneNpcMonsterInfo NpcMonster {
@@ -184,7 +184,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "npc" field.</summary>
-    public const int NpcFieldNumber = 1;
+    public const int NpcFieldNumber = 6;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.SceneNpcInfo Npc {
@@ -196,7 +196,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "prop" field.</summary>
-    public const int PropFieldNumber = 14;
+    public const int PropFieldNumber = 7;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.ScenePropInfo Prop {
@@ -208,7 +208,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "summon_unit" field.</summary>
-    public const int SummonUnitFieldNumber = 15;
+    public const int SummonUnitFieldNumber = 1;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.SceneSummonUnitInfo SummonUnit {
@@ -223,11 +223,11 @@ namespace March7thHoney.Proto {
     /// <summary>Enum of possible cases for the "entity" oneof.</summary>
     public enum EntityOneofCase {
       None = 0,
-      Actor = 12,
-      NpcMonster = 5,
-      Npc = 1,
-      Prop = 14,
-      SummonUnit = 15,
+      Actor = 13,
+      NpcMonster = 14,
+      Npc = 6,
+      Prop = 7,
+      SummonUnit = 1,
     }
     private EntityOneofCase entityCase_ = EntityOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -258,9 +258,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Motion, other.Motion)) return false;
-      if (InstId != other.InstId) return false;
       if (EntityId != other.EntityId) return false;
+      if (InstId != other.InstId) return false;
+      if (!object.Equals(Motion, other.Motion)) return false;
       if (GroupId != other.GroupId) return false;
       if (!object.Equals(Actor, other.Actor)) return false;
       if (!object.Equals(NpcMonster, other.NpcMonster)) return false;
@@ -275,9 +275,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (motion_ != null) hash ^= Motion.GetHashCode();
-      if (InstId != 0) hash ^= InstId.GetHashCode();
       if (EntityId != 0) hash ^= EntityId.GetHashCode();
+      if (InstId != 0) hash ^= InstId.GetHashCode();
+      if (motion_ != null) hash ^= Motion.GetHashCode();
       if (GroupId != 0) hash ^= GroupId.GetHashCode();
       if (entityCase_ == EntityOneofCase.Actor) hash ^= Actor.GetHashCode();
       if (entityCase_ == EntityOneofCase.NpcMonster) hash ^= NpcMonster.GetHashCode();
@@ -303,41 +303,41 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (entityCase_ == EntityOneofCase.Npc) {
+      if (entityCase_ == EntityOneofCase.SummonUnit) {
         output.WriteRawTag(10);
+        output.WriteMessage(SummonUnit);
+      }
+      if (entityCase_ == EntityOneofCase.Npc) {
+        output.WriteRawTag(50);
         output.WriteMessage(Npc);
       }
-      if (InstId != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(InstId);
-      }
-      if (entityCase_ == EntityOneofCase.NpcMonster) {
-        output.WriteRawTag(42);
-        output.WriteMessage(NpcMonster);
-      }
-      if (EntityId != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(EntityId);
-      }
-      if (GroupId != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(GroupId);
-      }
-      if (entityCase_ == EntityOneofCase.Actor) {
-        output.WriteRawTag(98);
-        output.WriteMessage(Actor);
-      }
-      if (motion_ != null) {
-        output.WriteRawTag(106);
-        output.WriteMessage(Motion);
-      }
       if (entityCase_ == EntityOneofCase.Prop) {
-        output.WriteRawTag(114);
+        output.WriteRawTag(58);
         output.WriteMessage(Prop);
       }
-      if (entityCase_ == EntityOneofCase.SummonUnit) {
-        output.WriteRawTag(122);
-        output.WriteMessage(SummonUnit);
+      if (EntityId != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(EntityId);
+      }
+      if (InstId != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(InstId);
+      }
+      if (motion_ != null) {
+        output.WriteRawTag(98);
+        output.WriteMessage(Motion);
+      }
+      if (entityCase_ == EntityOneofCase.Actor) {
+        output.WriteRawTag(106);
+        output.WriteMessage(Actor);
+      }
+      if (entityCase_ == EntityOneofCase.NpcMonster) {
+        output.WriteRawTag(114);
+        output.WriteMessage(NpcMonster);
+      }
+      if (GroupId != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(GroupId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -349,41 +349,41 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (entityCase_ == EntityOneofCase.Npc) {
+      if (entityCase_ == EntityOneofCase.SummonUnit) {
         output.WriteRawTag(10);
+        output.WriteMessage(SummonUnit);
+      }
+      if (entityCase_ == EntityOneofCase.Npc) {
+        output.WriteRawTag(50);
         output.WriteMessage(Npc);
       }
-      if (InstId != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(InstId);
-      }
-      if (entityCase_ == EntityOneofCase.NpcMonster) {
-        output.WriteRawTag(42);
-        output.WriteMessage(NpcMonster);
-      }
-      if (EntityId != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(EntityId);
-      }
-      if (GroupId != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(GroupId);
-      }
-      if (entityCase_ == EntityOneofCase.Actor) {
-        output.WriteRawTag(98);
-        output.WriteMessage(Actor);
-      }
-      if (motion_ != null) {
-        output.WriteRawTag(106);
-        output.WriteMessage(Motion);
-      }
       if (entityCase_ == EntityOneofCase.Prop) {
-        output.WriteRawTag(114);
+        output.WriteRawTag(58);
         output.WriteMessage(Prop);
       }
-      if (entityCase_ == EntityOneofCase.SummonUnit) {
-        output.WriteRawTag(122);
-        output.WriteMessage(SummonUnit);
+      if (EntityId != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(EntityId);
+      }
+      if (InstId != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(InstId);
+      }
+      if (motion_ != null) {
+        output.WriteRawTag(98);
+        output.WriteMessage(Motion);
+      }
+      if (entityCase_ == EntityOneofCase.Actor) {
+        output.WriteRawTag(106);
+        output.WriteMessage(Actor);
+      }
+      if (entityCase_ == EntityOneofCase.NpcMonster) {
+        output.WriteRawTag(114);
+        output.WriteMessage(NpcMonster);
+      }
+      if (GroupId != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(GroupId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -395,14 +395,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (motion_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Motion);
+      if (EntityId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EntityId);
       }
       if (InstId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(InstId);
       }
-      if (EntityId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EntityId);
+      if (motion_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Motion);
       }
       if (GroupId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GroupId);
@@ -434,17 +434,17 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.EntityId != 0) {
+        EntityId = other.EntityId;
+      }
+      if (other.InstId != 0) {
+        InstId = other.InstId;
+      }
       if (other.motion_ != null) {
         if (motion_ == null) {
           Motion = new global::March7thHoney.Proto.MotionInfo();
         }
         Motion.MergeFrom(other.Motion);
-      }
-      if (other.InstId != 0) {
-        InstId = other.InstId;
-      }
-      if (other.EntityId != 0) {
-        EntityId = other.EntityId;
       }
       if (other.GroupId != 0) {
         GroupId = other.GroupId;
@@ -502,6 +502,15 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
+            global::March7thHoney.Proto.SceneSummonUnitInfo subBuilder = new global::March7thHoney.Proto.SceneSummonUnitInfo();
+            if (entityCase_ == EntityOneofCase.SummonUnit) {
+              subBuilder.MergeFrom(SummonUnit);
+            }
+            input.ReadMessage(subBuilder);
+            SummonUnit = subBuilder;
+            break;
+          }
+          case 50: {
             global::March7thHoney.Proto.SceneNpcInfo subBuilder = new global::March7thHoney.Proto.SceneNpcInfo();
             if (entityCase_ == EntityOneofCase.Npc) {
               subBuilder.MergeFrom(Npc);
@@ -510,44 +519,7 @@ namespace March7thHoney.Proto {
             Npc = subBuilder;
             break;
           }
-          case 16: {
-            InstId = input.ReadUInt32();
-            break;
-          }
-          case 42: {
-            global::March7thHoney.Proto.SceneNpcMonsterInfo subBuilder = new global::March7thHoney.Proto.SceneNpcMonsterInfo();
-            if (entityCase_ == EntityOneofCase.NpcMonster) {
-              subBuilder.MergeFrom(NpcMonster);
-            }
-            input.ReadMessage(subBuilder);
-            NpcMonster = subBuilder;
-            break;
-          }
-          case 80: {
-            EntityId = input.ReadUInt32();
-            break;
-          }
-          case 88: {
-            GroupId = input.ReadUInt32();
-            break;
-          }
-          case 98: {
-            global::March7thHoney.Proto.SceneActorInfo subBuilder = new global::March7thHoney.Proto.SceneActorInfo();
-            if (entityCase_ == EntityOneofCase.Actor) {
-              subBuilder.MergeFrom(Actor);
-            }
-            input.ReadMessage(subBuilder);
-            Actor = subBuilder;
-            break;
-          }
-          case 106: {
-            if (motion_ == null) {
-              Motion = new global::March7thHoney.Proto.MotionInfo();
-            }
-            input.ReadMessage(Motion);
-            break;
-          }
-          case 114: {
+          case 58: {
             global::March7thHoney.Proto.ScenePropInfo subBuilder = new global::March7thHoney.Proto.ScenePropInfo();
             if (entityCase_ == EntityOneofCase.Prop) {
               subBuilder.MergeFrom(Prop);
@@ -556,13 +528,41 @@ namespace March7thHoney.Proto {
             Prop = subBuilder;
             break;
           }
-          case 122: {
-            global::March7thHoney.Proto.SceneSummonUnitInfo subBuilder = new global::March7thHoney.Proto.SceneSummonUnitInfo();
-            if (entityCase_ == EntityOneofCase.SummonUnit) {
-              subBuilder.MergeFrom(SummonUnit);
+          case 64: {
+            EntityId = input.ReadUInt32();
+            break;
+          }
+          case 80: {
+            InstId = input.ReadUInt32();
+            break;
+          }
+          case 98: {
+            if (motion_ == null) {
+              Motion = new global::March7thHoney.Proto.MotionInfo();
+            }
+            input.ReadMessage(Motion);
+            break;
+          }
+          case 106: {
+            global::March7thHoney.Proto.SceneActorInfo subBuilder = new global::March7thHoney.Proto.SceneActorInfo();
+            if (entityCase_ == EntityOneofCase.Actor) {
+              subBuilder.MergeFrom(Actor);
             }
             input.ReadMessage(subBuilder);
-            SummonUnit = subBuilder;
+            Actor = subBuilder;
+            break;
+          }
+          case 114: {
+            global::March7thHoney.Proto.SceneNpcMonsterInfo subBuilder = new global::March7thHoney.Proto.SceneNpcMonsterInfo();
+            if (entityCase_ == EntityOneofCase.NpcMonster) {
+              subBuilder.MergeFrom(NpcMonster);
+            }
+            input.ReadMessage(subBuilder);
+            NpcMonster = subBuilder;
+            break;
+          }
+          case 120: {
+            GroupId = input.ReadUInt32();
             break;
           }
         }
@@ -585,6 +585,15 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
+            global::March7thHoney.Proto.SceneSummonUnitInfo subBuilder = new global::March7thHoney.Proto.SceneSummonUnitInfo();
+            if (entityCase_ == EntityOneofCase.SummonUnit) {
+              subBuilder.MergeFrom(SummonUnit);
+            }
+            input.ReadMessage(subBuilder);
+            SummonUnit = subBuilder;
+            break;
+          }
+          case 50: {
             global::March7thHoney.Proto.SceneNpcInfo subBuilder = new global::March7thHoney.Proto.SceneNpcInfo();
             if (entityCase_ == EntityOneofCase.Npc) {
               subBuilder.MergeFrom(Npc);
@@ -593,44 +602,7 @@ namespace March7thHoney.Proto {
             Npc = subBuilder;
             break;
           }
-          case 16: {
-            InstId = input.ReadUInt32();
-            break;
-          }
-          case 42: {
-            global::March7thHoney.Proto.SceneNpcMonsterInfo subBuilder = new global::March7thHoney.Proto.SceneNpcMonsterInfo();
-            if (entityCase_ == EntityOneofCase.NpcMonster) {
-              subBuilder.MergeFrom(NpcMonster);
-            }
-            input.ReadMessage(subBuilder);
-            NpcMonster = subBuilder;
-            break;
-          }
-          case 80: {
-            EntityId = input.ReadUInt32();
-            break;
-          }
-          case 88: {
-            GroupId = input.ReadUInt32();
-            break;
-          }
-          case 98: {
-            global::March7thHoney.Proto.SceneActorInfo subBuilder = new global::March7thHoney.Proto.SceneActorInfo();
-            if (entityCase_ == EntityOneofCase.Actor) {
-              subBuilder.MergeFrom(Actor);
-            }
-            input.ReadMessage(subBuilder);
-            Actor = subBuilder;
-            break;
-          }
-          case 106: {
-            if (motion_ == null) {
-              Motion = new global::March7thHoney.Proto.MotionInfo();
-            }
-            input.ReadMessage(Motion);
-            break;
-          }
-          case 114: {
+          case 58: {
             global::March7thHoney.Proto.ScenePropInfo subBuilder = new global::March7thHoney.Proto.ScenePropInfo();
             if (entityCase_ == EntityOneofCase.Prop) {
               subBuilder.MergeFrom(Prop);
@@ -639,13 +611,41 @@ namespace March7thHoney.Proto {
             Prop = subBuilder;
             break;
           }
-          case 122: {
-            global::March7thHoney.Proto.SceneSummonUnitInfo subBuilder = new global::March7thHoney.Proto.SceneSummonUnitInfo();
-            if (entityCase_ == EntityOneofCase.SummonUnit) {
-              subBuilder.MergeFrom(SummonUnit);
+          case 64: {
+            EntityId = input.ReadUInt32();
+            break;
+          }
+          case 80: {
+            InstId = input.ReadUInt32();
+            break;
+          }
+          case 98: {
+            if (motion_ == null) {
+              Motion = new global::March7thHoney.Proto.MotionInfo();
+            }
+            input.ReadMessage(Motion);
+            break;
+          }
+          case 106: {
+            global::March7thHoney.Proto.SceneActorInfo subBuilder = new global::March7thHoney.Proto.SceneActorInfo();
+            if (entityCase_ == EntityOneofCase.Actor) {
+              subBuilder.MergeFrom(Actor);
             }
             input.ReadMessage(subBuilder);
-            SummonUnit = subBuilder;
+            Actor = subBuilder;
+            break;
+          }
+          case 114: {
+            global::March7thHoney.Proto.SceneNpcMonsterInfo subBuilder = new global::March7thHoney.Proto.SceneNpcMonsterInfo();
+            if (entityCase_ == EntityOneofCase.NpcMonster) {
+              subBuilder.MergeFrom(NpcMonster);
+            }
+            input.ReadMessage(subBuilder);
+            NpcMonster = subBuilder;
+            break;
+          }
+          case 120: {
+            GroupId = input.ReadUInt32();
             break;
           }
         }

@@ -6,7 +6,7 @@ import "ItemList.proto";
 import "TutorialGuide.proto";
 
 message FinishTutorialGuideScRsp {
-    TutorialGuide tutorial_guide = 11;
-    ItemList reward = 8;
-    uint32 retcode = 5;
+    uint32 retcode = 1;
+    ItemList reward = 2;
+    TutorialGuide tutorial_guide = 12;
 }

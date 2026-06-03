@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message AJNJDDFGFJL {
+    uint32 max_level = 7;
     uint32 BFCNALJDHMP = 8;
-    uint32 HCBADDHNIDG = 12;
-    uint32 level = 3;
-    uint64 IEPAPOPIFHH = 2;
+    uint64 IEPAPOPIFHH = 11;
+    uint32 level = 15;
 }

@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message OENNAOAFAMA {
-    uint32 retcode = 13;
-    uint32 JBDFEHDFKNO = 1;
-    uint32 DACKJGDGMLN = 15;
+    uint32 retcode = 5;
+    uint32 JBDFEHDFKNO = 9;
+    uint32 DACKJGDGMLN = 10;
 }

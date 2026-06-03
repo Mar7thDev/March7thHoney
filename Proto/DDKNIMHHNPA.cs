@@ -25,15 +25,15 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFEREtOSU1ISE5QQS5wcm90bxoRRUhNRVBPTUNHTkcucHJvdG8aEUxQR0pQ",
-            "TE1IS0ZMLnByb3RvIosBCgtEREtOSU1ISE5QQRIhCgtKREdNRUhDUEdMTBgJ",
-            "IAMoCzIMLkxQR0pQTE1IS0ZMEiEKC0xNUExMSkZNRkVDGA4gAygLMgwuRUhN",
-            "RVBPTUNHTkcSDgoGaXNfd2luGAsgASgIEhQKDHJlY29yZF9zY29yZRgBIAEo",
-            "DRIQCghzdGFnZV9pZBgGIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IG",
-            "cHJvdG8z"));
+            "TE1IS0ZMLnByb3RvIooBCgtEREtOSU1ISE5QQRIhCgtKREdNRUhDUEdMTBgF",
+            "IAMoCzIMLkxQR0pQTE1IS0ZMEhAKCHN0YWdlX2lkGAYgASgNEg4KBmlzX3dp",
+            "bhgKIAEoCBIhCgtMTVBMTEpGTUZFQxgNIAMoCzIMLkVITUVQT01DR05HEhMK",
+            "C3RvdGFsX3Njb3JlGA8gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZw",
+            "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.EHMEPOMCGNGReflection.Descriptor, global::March7thHoney.Proto.LPGJPLMHKFLReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DDKNIMHHNPA), global::March7thHoney.Proto.DDKNIMHHNPA.Parser, new[]{ "JDGMEHCPGLL", "LMPLLJFMFEC", "IsWin", "RecordScore", "StageId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DDKNIMHHNPA), global::March7thHoney.Proto.DDKNIMHHNPA.Parser, new[]{ "JDGMEHCPGLL", "StageId", "IsWin", "LMPLLJFMFEC", "TotalScore" }, null, null, null, null)
           }));
     }
     #endregion
@@ -76,10 +76,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public DDKNIMHHNPA(DDKNIMHHNPA other) : this() {
       jDGMEHCPGLL_ = other.jDGMEHCPGLL_.Clone();
-      lMPLLJFMFEC_ = other.lMPLLJFMFEC_.Clone();
-      isWin_ = other.isWin_;
-      recordScore_ = other.recordScore_;
       stageId_ = other.stageId_;
+      isWin_ = other.isWin_;
+      lMPLLJFMFEC_ = other.lMPLLJFMFEC_.Clone();
+      totalScore_ = other.totalScore_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -90,49 +90,14 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "JDGMEHCPGLL" field.</summary>
-    public const int JDGMEHCPGLLFieldNumber = 9;
+    public const int JDGMEHCPGLLFieldNumber = 5;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.LPGJPLMHKFL> _repeated_jDGMEHCPGLL_codec
-        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.LPGJPLMHKFL.Parser);
+        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.LPGJPLMHKFL.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.LPGJPLMHKFL> jDGMEHCPGLL_ = new pbc::RepeatedField<global::March7thHoney.Proto.LPGJPLMHKFL>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<global::March7thHoney.Proto.LPGJPLMHKFL> JDGMEHCPGLL {
       get { return jDGMEHCPGLL_; }
-    }
-
-    /// <summary>Field number for the "LMPLLJFMFEC" field.</summary>
-    public const int LMPLLJFMFECFieldNumber = 14;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EHMEPOMCGNG> _repeated_lMPLLJFMFEC_codec
-        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.EHMEPOMCGNG.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EHMEPOMCGNG> lMPLLJFMFEC_ = new pbc::RepeatedField<global::March7thHoney.Proto.EHMEPOMCGNG>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.EHMEPOMCGNG> LMPLLJFMFEC {
-      get { return lMPLLJFMFEC_; }
-    }
-
-    /// <summary>Field number for the "is_win" field.</summary>
-    public const int IsWinFieldNumber = 11;
-    private bool isWin_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IsWin {
-      get { return isWin_; }
-      set {
-        isWin_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "record_score" field.</summary>
-    public const int RecordScoreFieldNumber = 1;
-    private uint recordScore_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint RecordScore {
-      get { return recordScore_; }
-      set {
-        recordScore_ = value;
-      }
     }
 
     /// <summary>Field number for the "stage_id" field.</summary>
@@ -144,6 +109,41 @@ namespace March7thHoney.Proto {
       get { return stageId_; }
       set {
         stageId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "is_win" field.</summary>
+    public const int IsWinFieldNumber = 10;
+    private bool isWin_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IsWin {
+      get { return isWin_; }
+      set {
+        isWin_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "LMPLLJFMFEC" field.</summary>
+    public const int LMPLLJFMFECFieldNumber = 13;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EHMEPOMCGNG> _repeated_lMPLLJFMFEC_codec
+        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.EHMEPOMCGNG.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EHMEPOMCGNG> lMPLLJFMFEC_ = new pbc::RepeatedField<global::March7thHoney.Proto.EHMEPOMCGNG>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.EHMEPOMCGNG> LMPLLJFMFEC {
+      get { return lMPLLJFMFEC_; }
+    }
+
+    /// <summary>Field number for the "total_score" field.</summary>
+    public const int TotalScoreFieldNumber = 15;
+    private uint totalScore_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint TotalScore {
+      get { return totalScore_; }
+      set {
+        totalScore_ = value;
       }
     }
 
@@ -163,10 +163,10 @@ namespace March7thHoney.Proto {
         return true;
       }
       if(!jDGMEHCPGLL_.Equals(other.jDGMEHCPGLL_)) return false;
-      if(!lMPLLJFMFEC_.Equals(other.lMPLLJFMFEC_)) return false;
-      if (IsWin != other.IsWin) return false;
-      if (RecordScore != other.RecordScore) return false;
       if (StageId != other.StageId) return false;
+      if (IsWin != other.IsWin) return false;
+      if(!lMPLLJFMFEC_.Equals(other.lMPLLJFMFEC_)) return false;
+      if (TotalScore != other.TotalScore) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -175,10 +175,10 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= jDGMEHCPGLL_.GetHashCode();
-      hash ^= lMPLLJFMFEC_.GetHashCode();
-      if (IsWin != false) hash ^= IsWin.GetHashCode();
-      if (RecordScore != 0) hash ^= RecordScore.GetHashCode();
       if (StageId != 0) hash ^= StageId.GetHashCode();
+      if (IsWin != false) hash ^= IsWin.GetHashCode();
+      hash ^= lMPLLJFMFEC_.GetHashCode();
+      if (TotalScore != 0) hash ^= TotalScore.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -197,20 +197,20 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (RecordScore != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(RecordScore);
-      }
+      jDGMEHCPGLL_.WriteTo(output, _repeated_jDGMEHCPGLL_codec);
       if (StageId != 0) {
         output.WriteRawTag(48);
         output.WriteUInt32(StageId);
       }
-      jDGMEHCPGLL_.WriteTo(output, _repeated_jDGMEHCPGLL_codec);
       if (IsWin != false) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(80);
         output.WriteBool(IsWin);
       }
       lMPLLJFMFEC_.WriteTo(output, _repeated_lMPLLJFMFEC_codec);
+      if (TotalScore != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(TotalScore);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -221,20 +221,20 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (RecordScore != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(RecordScore);
-      }
+      jDGMEHCPGLL_.WriteTo(ref output, _repeated_jDGMEHCPGLL_codec);
       if (StageId != 0) {
         output.WriteRawTag(48);
         output.WriteUInt32(StageId);
       }
-      jDGMEHCPGLL_.WriteTo(ref output, _repeated_jDGMEHCPGLL_codec);
       if (IsWin != false) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(80);
         output.WriteBool(IsWin);
       }
       lMPLLJFMFEC_.WriteTo(ref output, _repeated_lMPLLJFMFEC_codec);
+      if (TotalScore != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(TotalScore);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -246,15 +246,15 @@ namespace March7thHoney.Proto {
     public int CalculateSize() {
       int size = 0;
       size += jDGMEHCPGLL_.CalculateSize(_repeated_jDGMEHCPGLL_codec);
-      size += lMPLLJFMFEC_.CalculateSize(_repeated_lMPLLJFMFEC_codec);
+      if (StageId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(StageId);
+      }
       if (IsWin != false) {
         size += 1 + 1;
       }
-      if (RecordScore != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RecordScore);
-      }
-      if (StageId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(StageId);
+      size += lMPLLJFMFEC_.CalculateSize(_repeated_lMPLLJFMFEC_codec);
+      if (TotalScore != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TotalScore);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -269,15 +269,15 @@ namespace March7thHoney.Proto {
         return;
       }
       jDGMEHCPGLL_.Add(other.jDGMEHCPGLL_);
-      lMPLLJFMFEC_.Add(other.lMPLLJFMFEC_);
+      if (other.StageId != 0) {
+        StageId = other.StageId;
+      }
       if (other.IsWin != false) {
         IsWin = other.IsWin;
       }
-      if (other.RecordScore != 0) {
-        RecordScore = other.RecordScore;
-      }
-      if (other.StageId != 0) {
-        StageId = other.StageId;
+      lMPLLJFMFEC_.Add(other.lMPLLJFMFEC_);
+      if (other.TotalScore != 0) {
+        TotalScore = other.TotalScore;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -298,24 +298,24 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            RecordScore = input.ReadUInt32();
+          case 42: {
+            jDGMEHCPGLL_.AddEntriesFrom(input, _repeated_jDGMEHCPGLL_codec);
             break;
           }
           case 48: {
             StageId = input.ReadUInt32();
             break;
           }
-          case 74: {
-            jDGMEHCPGLL_.AddEntriesFrom(input, _repeated_jDGMEHCPGLL_codec);
-            break;
-          }
-          case 88: {
+          case 80: {
             IsWin = input.ReadBool();
             break;
           }
-          case 114: {
+          case 106: {
             lMPLLJFMFEC_.AddEntriesFrom(input, _repeated_lMPLLJFMFEC_codec);
+            break;
+          }
+          case 120: {
+            TotalScore = input.ReadUInt32();
             break;
           }
         }
@@ -337,24 +337,24 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            RecordScore = input.ReadUInt32();
+          case 42: {
+            jDGMEHCPGLL_.AddEntriesFrom(ref input, _repeated_jDGMEHCPGLL_codec);
             break;
           }
           case 48: {
             StageId = input.ReadUInt32();
             break;
           }
-          case 74: {
-            jDGMEHCPGLL_.AddEntriesFrom(ref input, _repeated_jDGMEHCPGLL_codec);
-            break;
-          }
-          case 88: {
+          case 80: {
             IsWin = input.ReadBool();
             break;
           }
-          case 114: {
+          case 106: {
             lMPLLJFMFEC_.AddEntriesFrom(ref input, _repeated_lMPLLJFMFEC_codec);
+            break;
+          }
+          case 120: {
+            TotalScore = input.ReadUInt32();
             break;
           }
         }

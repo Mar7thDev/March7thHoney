@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static NDDHJBFEBHGReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFORERISkJGRUJIRy5wcm90byJMCgtORERISkJGRUJIRxITCgtORk1ISU9J",
-            "RkxDQhgPIAEoDRITCgtDTE1NSEZGTktFSBgLIAEoDRITCgtPS05QS01BQkFI",
-            "RRgOIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChFORERISkJGRUJIRy5wcm90byJMCgtORERISkJGRUJIRxITCgtDTE1NSEZG",
+            "TktFSBgEIAEoDRITCgtORk1ISU9JRkxDQhgGIAEoDRITCgtPS05QS01BQkFI",
+            "RRgJIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NDDHJBFEBHG), global::March7thHoney.Proto.NDDHJBFEBHG.Parser, new[]{ "NFMHIOIFLCB", "CLMMHFFNKEH", "OKNPKMABAHE" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NDDHJBFEBHG), global::March7thHoney.Proto.NDDHJBFEBHG.Parser, new[]{ "CLMMHFFNKEH", "NFMHIOIFLCB", "OKNPKMABAHE" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public NDDHJBFEBHG(NDDHJBFEBHG other) : this() {
-      nFMHIOIFLCB_ = other.nFMHIOIFLCB_;
       cLMMHFFNKEH_ = other.cLMMHFFNKEH_;
+      nFMHIOIFLCB_ = other.nFMHIOIFLCB_;
       oKNPKMABAHE_ = other.oKNPKMABAHE_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -84,20 +84,8 @@ namespace March7thHoney.Proto {
       return new NDDHJBFEBHG(this);
     }
 
-    /// <summary>Field number for the "NFMHIOIFLCB" field.</summary>
-    public const int NFMHIOIFLCBFieldNumber = 15;
-    private uint nFMHIOIFLCB_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint NFMHIOIFLCB {
-      get { return nFMHIOIFLCB_; }
-      set {
-        nFMHIOIFLCB_ = value;
-      }
-    }
-
     /// <summary>Field number for the "CLMMHFFNKEH" field.</summary>
-    public const int CLMMHFFNKEHFieldNumber = 11;
+    public const int CLMMHFFNKEHFieldNumber = 4;
     private uint cLMMHFFNKEH_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -108,8 +96,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "NFMHIOIFLCB" field.</summary>
+    public const int NFMHIOIFLCBFieldNumber = 6;
+    private uint nFMHIOIFLCB_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint NFMHIOIFLCB {
+      get { return nFMHIOIFLCB_; }
+      set {
+        nFMHIOIFLCB_ = value;
+      }
+    }
+
     /// <summary>Field number for the "OKNPKMABAHE" field.</summary>
-    public const int OKNPKMABAHEFieldNumber = 14;
+    public const int OKNPKMABAHEFieldNumber = 9;
     private uint oKNPKMABAHE_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -135,8 +135,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (NFMHIOIFLCB != other.NFMHIOIFLCB) return false;
       if (CLMMHFFNKEH != other.CLMMHFFNKEH) return false;
+      if (NFMHIOIFLCB != other.NFMHIOIFLCB) return false;
       if (OKNPKMABAHE != other.OKNPKMABAHE) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -145,8 +145,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (NFMHIOIFLCB != 0) hash ^= NFMHIOIFLCB.GetHashCode();
       if (CLMMHFFNKEH != 0) hash ^= CLMMHFFNKEH.GetHashCode();
+      if (NFMHIOIFLCB != 0) hash ^= NFMHIOIFLCB.GetHashCode();
       if (OKNPKMABAHE != 0) hash ^= OKNPKMABAHE.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -167,16 +167,16 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (CLMMHFFNKEH != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(32);
         output.WriteUInt32(CLMMHFFNKEH);
       }
-      if (OKNPKMABAHE != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(OKNPKMABAHE);
-      }
       if (NFMHIOIFLCB != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(48);
         output.WriteUInt32(NFMHIOIFLCB);
+      }
+      if (OKNPKMABAHE != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(OKNPKMABAHE);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -189,16 +189,16 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (CLMMHFFNKEH != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(32);
         output.WriteUInt32(CLMMHFFNKEH);
       }
-      if (OKNPKMABAHE != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(OKNPKMABAHE);
-      }
       if (NFMHIOIFLCB != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(48);
         output.WriteUInt32(NFMHIOIFLCB);
+      }
+      if (OKNPKMABAHE != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(OKNPKMABAHE);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -210,11 +210,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (NFMHIOIFLCB != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(NFMHIOIFLCB);
-      }
       if (CLMMHFFNKEH != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CLMMHFFNKEH);
+      }
+      if (NFMHIOIFLCB != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(NFMHIOIFLCB);
       }
       if (OKNPKMABAHE != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(OKNPKMABAHE);
@@ -231,11 +231,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.NFMHIOIFLCB != 0) {
-        NFMHIOIFLCB = other.NFMHIOIFLCB;
-      }
       if (other.CLMMHFFNKEH != 0) {
         CLMMHFFNKEH = other.CLMMHFFNKEH;
+      }
+      if (other.NFMHIOIFLCB != 0) {
+        NFMHIOIFLCB = other.NFMHIOIFLCB;
       }
       if (other.OKNPKMABAHE != 0) {
         OKNPKMABAHE = other.OKNPKMABAHE;
@@ -259,16 +259,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 88: {
+          case 32: {
             CLMMHFFNKEH = input.ReadUInt32();
             break;
           }
-          case 112: {
-            OKNPKMABAHE = input.ReadUInt32();
+          case 48: {
+            NFMHIOIFLCB = input.ReadUInt32();
             break;
           }
-          case 120: {
-            NFMHIOIFLCB = input.ReadUInt32();
+          case 72: {
+            OKNPKMABAHE = input.ReadUInt32();
             break;
           }
         }
@@ -290,16 +290,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 88: {
+          case 32: {
             CLMMHFFNKEH = input.ReadUInt32();
             break;
           }
-          case 112: {
-            OKNPKMABAHE = input.ReadUInt32();
+          case 48: {
+            NFMHIOIFLCB = input.ReadUInt32();
             break;
           }
-          case 120: {
-            NFMHIOIFLCB = input.ReadUInt32();
+          case 72: {
+            OKNPKMABAHE = input.ReadUInt32();
             break;
           }
         }

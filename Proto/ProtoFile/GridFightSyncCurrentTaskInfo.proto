@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "GridFightCurrentTask.proto";
+
+message GridFightSyncCurrentTaskInfo {
+    GridFightCurrentTask ONPCDAELHGP = 9;
+    repeated uint32 CAMMIIJDEKP = 14;
+}

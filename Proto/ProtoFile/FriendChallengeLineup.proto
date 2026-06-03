@@ -6,11 +6,11 @@ import "ChallengeLineupList.proto";
 import "PlayerSimpleInfo.proto";
 
 message FriendChallengeLineup {
-    string remark_name = 13;
-    PlayerSimpleInfo player_info = 7;
-    repeated ChallengeLineupList lineup_list = 2;
-    uint32 buff_two = 14;
-    uint32 buff_one = 8;
-    uint32 score_id = 12;
-    uint32 EEJCPNAEKLJ = 1;
+    PlayerSimpleInfo player_info = 2;
+    repeated ChallengeLineupList lineup_list = 3;
+    uint32 score_id = 6;
+    uint32 buff_two = 9;
+    string remark_name = 10;
+    uint32 buff_one = 12;
+    uint32 EEJCPNAEKLJ = 14;
 }

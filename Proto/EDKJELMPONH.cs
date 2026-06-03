@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFFREtKRUxNUE9OSC5wcm90byI0CgtFREtKRUxNUE9OSBIQCghwcm9ncmVz",
-            "cxgCIAEoDRITCgtIRUZGUE9OTEVHTxgJIAEoDUIWqgITTWFyY2g3dGhIb25l",
+            "cxgCIAEoDRITCgtIRUZGUE9OTEVHTxgMIAEoDUIWqgITTWFyY2g3dGhIb25l",
             "eS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "HEFFPONLEGO" field.</summary>
-    public const int HEFFPONLEGOFieldNumber = 9;
+    public const int HEFFPONLEGOFieldNumber = 12;
     private uint hEFFPONLEGO_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -156,7 +156,7 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(Progress);
       }
       if (HEFFPONLEGO != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(96);
         output.WriteUInt32(HEFFPONLEGO);
       }
       if (_unknownFields != null) {
@@ -174,7 +174,7 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(Progress);
       }
       if (HEFFPONLEGO != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(96);
         output.WriteUInt32(HEFFPONLEGO);
       }
       if (_unknownFields != null) {
@@ -234,7 +234,7 @@ namespace March7thHoney.Proto {
             Progress = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 96: {
             HEFFPONLEGO = input.ReadUInt32();
             break;
           }
@@ -261,7 +261,7 @@ namespace March7thHoney.Proto {
             Progress = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 96: {
             HEFFPONLEGO = input.ReadUInt32();
             break;
           }

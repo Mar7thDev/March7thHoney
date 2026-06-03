@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static NpcStatusReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg9OcGNTdGF0dXMucHJvdG8iLgoJTnBjU3RhdHVzEg4KBm5wY19pZBgIIAEo",
-            "DRIRCglpc19maW5pc2gYDCABKAhCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
+            "Cg9OcGNTdGF0dXMucHJvdG8iLgoJTnBjU3RhdHVzEhEKCWlzX2ZpbmlzaBgB",
+            "IAEoCBIOCgZucGNfaWQYBiABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
             "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NpcStatus), global::March7thHoney.Proto.NpcStatus.Parser, new[]{ "NpcId", "IsFinish" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NpcStatus), global::March7thHoney.Proto.NpcStatus.Parser, new[]{ "IsFinish", "NpcId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public NpcStatus(NpcStatus other) : this() {
-      npcId_ = other.npcId_;
       isFinish_ = other.isFinish_;
+      npcId_ = other.npcId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,20 +83,8 @@ namespace March7thHoney.Proto {
       return new NpcStatus(this);
     }
 
-    /// <summary>Field number for the "npc_id" field.</summary>
-    public const int NpcIdFieldNumber = 8;
-    private uint npcId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint NpcId {
-      get { return npcId_; }
-      set {
-        npcId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "is_finish" field.</summary>
-    public const int IsFinishFieldNumber = 12;
+    public const int IsFinishFieldNumber = 1;
     private bool isFinish_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -104,6 +92,18 @@ namespace March7thHoney.Proto {
       get { return isFinish_; }
       set {
         isFinish_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "npc_id" field.</summary>
+    public const int NpcIdFieldNumber = 6;
+    private uint npcId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint NpcId {
+      get { return npcId_; }
+      set {
+        npcId_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (NpcId != other.NpcId) return false;
       if (IsFinish != other.IsFinish) return false;
+      if (NpcId != other.NpcId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (NpcId != 0) hash ^= NpcId.GetHashCode();
       if (IsFinish != false) hash ^= IsFinish.GetHashCode();
+      if (NpcId != 0) hash ^= NpcId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (NpcId != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(NpcId);
-      }
       if (IsFinish != false) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(8);
         output.WriteBool(IsFinish);
+      }
+      if (NpcId != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(NpcId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (NpcId != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(NpcId);
-      }
       if (IsFinish != false) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(8);
         output.WriteBool(IsFinish);
+      }
+      if (NpcId != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(NpcId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (NpcId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(NpcId);
-      }
       if (IsFinish != false) {
         size += 1 + 1;
+      }
+      if (NpcId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(NpcId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.NpcId != 0) {
-        NpcId = other.NpcId;
-      }
       if (other.IsFinish != false) {
         IsFinish = other.IsFinish;
+      }
+      if (other.NpcId != 0) {
+        NpcId = other.NpcId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 64: {
-            NpcId = input.ReadUInt32();
+          case 8: {
+            IsFinish = input.ReadBool();
             break;
           }
-          case 96: {
-            IsFinish = input.ReadBool();
+          case 48: {
+            NpcId = input.ReadUInt32();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 64: {
-            NpcId = input.ReadUInt32();
+          case 8: {
+            IsFinish = input.ReadBool();
             break;
           }
-          case 96: {
-            IsFinish = input.ReadBool();
+          case 48: {
+            NpcId = input.ReadUInt32();
             break;
           }
         }

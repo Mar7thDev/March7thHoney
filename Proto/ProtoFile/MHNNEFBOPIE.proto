@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "JOLAHHGIFHA.proto";
 
 message MHNNEFBOPIE {
+    uint32 op_uid = 1;
     repeated JOLAHHGIFHA JENKGODEIOM = 2;
-    uint32 IKDEIJCEDIO = 1;
 }

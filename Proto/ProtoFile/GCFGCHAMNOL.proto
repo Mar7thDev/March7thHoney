@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GCFGCHAMNOL {
-    repeated uint32 PGFFGKDOPGM = 4;
-    uint32 CMEKNAJONPH = 9;
+    repeated uint32 PGFFGKDOPGM = 9;
+    uint32 CMEKNAJONPH = 10;
 }

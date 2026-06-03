@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message KHFEGOFPHHC {
-    uint32 area_id = 13;
+    uint32 area_id = 14;
 }

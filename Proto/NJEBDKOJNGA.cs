@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFOSkVCREtPSk5HQS5wcm90bxoRRkxES09FTEJQR0EucHJvdG8iQQoLTkpF",
-            "QkRLT0pOR0ESIQoLQ05GRkdCTVBDSEQYAiADKAsyDC5GTERLT0VMQlBHQRIP",
-            "CgdzaG9wX2lkGAogASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
+            "QkRLT0pOR0ESIQoLQ05GRkdCTVBDSEQYCiADKAsyDC5GTERLT0VMQlBHQRIP",
+            "CgdzaG9wX2lkGA0gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
             "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.FLDKOELBPGAReflection.Descriptor, },
@@ -85,9 +85,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "CNFFGBMPCHD" field.</summary>
-    public const int CNFFGBMPCHDFieldNumber = 2;
+    public const int CNFFGBMPCHDFieldNumber = 10;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.FLDKOELBPGA> _repeated_cNFFGBMPCHD_codec
-        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.FLDKOELBPGA.Parser);
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.FLDKOELBPGA.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.FLDKOELBPGA> cNFFGBMPCHD_ = new pbc::RepeatedField<global::March7thHoney.Proto.FLDKOELBPGA>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "shop_id" field.</summary>
-    public const int ShopIdFieldNumber = 10;
+    public const int ShopIdFieldNumber = 13;
     private uint shopId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -153,7 +153,7 @@ namespace March7thHoney.Proto {
     #else
       cNFFGBMPCHD_.WriteTo(output, _repeated_cNFFGBMPCHD_codec);
       if (ShopId != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(104);
         output.WriteUInt32(ShopId);
       }
       if (_unknownFields != null) {
@@ -168,7 +168,7 @@ namespace March7thHoney.Proto {
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       cNFFGBMPCHD_.WriteTo(ref output, _repeated_cNFFGBMPCHD_codec);
       if (ShopId != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(104);
         output.WriteUInt32(ShopId);
       }
       if (_unknownFields != null) {
@@ -220,11 +220,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 18: {
+          case 82: {
             cNFFGBMPCHD_.AddEntriesFrom(input, _repeated_cNFFGBMPCHD_codec);
             break;
           }
-          case 80: {
+          case 104: {
             ShopId = input.ReadUInt32();
             break;
           }
@@ -247,11 +247,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 18: {
+          case 82: {
             cNFFGBMPCHD_.AddEntriesFrom(ref input, _repeated_cNFFGBMPCHD_codec);
             break;
           }
-          case 80: {
+          case 104: {
             ShopId = input.ReadUInt32();
             break;
           }

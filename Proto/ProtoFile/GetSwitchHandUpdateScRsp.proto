@@ -6,7 +6,7 @@ import "ENHOPAHGCMA.proto";
 import "OENDLKLJHPF.proto";
 
 message GetSwitchHandUpdateScRsp {
-    OENDLKLJHPF NCADGIPIALO = 14;
-    ENHOPAHGCMA BDEDDAHODII = 7;
-    uint32 retcode = 2;
+    ENHOPAHGCMA BDEDDAHODII = 4;
+    OENDLKLJHPF NCADGIPIALO = 11;
+    uint32 retcode = 13;
 }

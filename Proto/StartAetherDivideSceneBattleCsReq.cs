@@ -27,15 +27,15 @@ namespace March7thHoney.Proto {
             "CidTdGFydEFldGhlckRpdmlkZVNjZW5lQmF0dGxlQ3NSZXEucHJvdG8aHUFz",
             "c2lzdE1vbnN0ZXJFbnRpdHlJbmZvLnByb3RvItQBCiFTdGFydEFldGhlckRp",
             "dmlkZVNjZW5lQmF0dGxlQ3NSZXESPAoaYXNzaXN0X21vbnN0ZXJfZW50aXR5",
-            "X2luZm8YBCADKAsyGC5Bc3Npc3RNb25zdGVyRW50aXR5SW5mbxIlCh1hc3Np",
-            "c3RfbW9uc3Rlcl9lbnRpdHlfaWRfbGlzdBgDIAMoDRITCgtza2lsbF9pbmRl",
-            "eBgOIAEoDRIdChVhdHRhY2tlZF9ieV9lbnRpdHlfaWQYASABKA0SFgoOY2Fz",
-            "dF9lbnRpdHlfaWQYCyABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
+            "X2luZm8YASADKAsyGC5Bc3Npc3RNb25zdGVyRW50aXR5SW5mbxITCgtza2ls",
+            "bF9pbmRleBgFIAEoDRIdChVhdHRhY2tlZF9ieV9lbnRpdHlfaWQYBiABKA0S",
+            "FgoOY2FzdF9lbnRpdHlfaWQYByABKA0SJQodYXNzaXN0X21vbnN0ZXJfZW50",
+            "aXR5X2lkX2xpc3QYCiADKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
             "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.AssistMonsterEntityInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartAetherDivideSceneBattleCsReq), global::March7thHoney.Proto.StartAetherDivideSceneBattleCsReq.Parser, new[]{ "AssistMonsterEntityInfo", "AssistMonsterEntityIdList", "SkillIndex", "AttackedByEntityId", "CastEntityId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartAetherDivideSceneBattleCsReq), global::March7thHoney.Proto.StartAetherDivideSceneBattleCsReq.Parser, new[]{ "AssistMonsterEntityInfo", "SkillIndex", "AttackedByEntityId", "CastEntityId", "AssistMonsterEntityIdList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -78,10 +78,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public StartAetherDivideSceneBattleCsReq(StartAetherDivideSceneBattleCsReq other) : this() {
       assistMonsterEntityInfo_ = other.assistMonsterEntityInfo_.Clone();
-      assistMonsterEntityIdList_ = other.assistMonsterEntityIdList_.Clone();
       skillIndex_ = other.skillIndex_;
       attackedByEntityId_ = other.attackedByEntityId_;
       castEntityId_ = other.castEntityId_;
+      assistMonsterEntityIdList_ = other.assistMonsterEntityIdList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -92,9 +92,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "assist_monster_entity_info" field.</summary>
-    public const int AssistMonsterEntityInfoFieldNumber = 4;
+    public const int AssistMonsterEntityInfoFieldNumber = 1;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.AssistMonsterEntityInfo> _repeated_assistMonsterEntityInfo_codec
-        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.AssistMonsterEntityInfo.Parser);
+        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.AssistMonsterEntityInfo.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.AssistMonsterEntityInfo> assistMonsterEntityInfo_ = new pbc::RepeatedField<global::March7thHoney.Proto.AssistMonsterEntityInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -102,19 +102,8 @@ namespace March7thHoney.Proto {
       get { return assistMonsterEntityInfo_; }
     }
 
-    /// <summary>Field number for the "assist_monster_entity_id_list" field.</summary>
-    public const int AssistMonsterEntityIdListFieldNumber = 3;
-    private static readonly pb::FieldCodec<uint> _repeated_assistMonsterEntityIdList_codec
-        = pb::FieldCodec.ForUInt32(26);
-    private readonly pbc::RepeatedField<uint> assistMonsterEntityIdList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> AssistMonsterEntityIdList {
-      get { return assistMonsterEntityIdList_; }
-    }
-
     /// <summary>Field number for the "skill_index" field.</summary>
-    public const int SkillIndexFieldNumber = 14;
+    public const int SkillIndexFieldNumber = 5;
     private uint skillIndex_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -126,7 +115,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "attacked_by_entity_id" field.</summary>
-    public const int AttackedByEntityIdFieldNumber = 1;
+    public const int AttackedByEntityIdFieldNumber = 6;
     private uint attackedByEntityId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -138,7 +127,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "cast_entity_id" field.</summary>
-    public const int CastEntityIdFieldNumber = 11;
+    public const int CastEntityIdFieldNumber = 7;
     private uint castEntityId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -147,6 +136,17 @@ namespace March7thHoney.Proto {
       set {
         castEntityId_ = value;
       }
+    }
+
+    /// <summary>Field number for the "assist_monster_entity_id_list" field.</summary>
+    public const int AssistMonsterEntityIdListFieldNumber = 10;
+    private static readonly pb::FieldCodec<uint> _repeated_assistMonsterEntityIdList_codec
+        = pb::FieldCodec.ForUInt32(82);
+    private readonly pbc::RepeatedField<uint> assistMonsterEntityIdList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> AssistMonsterEntityIdList {
+      get { return assistMonsterEntityIdList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -165,10 +165,10 @@ namespace March7thHoney.Proto {
         return true;
       }
       if(!assistMonsterEntityInfo_.Equals(other.assistMonsterEntityInfo_)) return false;
-      if(!assistMonsterEntityIdList_.Equals(other.assistMonsterEntityIdList_)) return false;
       if (SkillIndex != other.SkillIndex) return false;
       if (AttackedByEntityId != other.AttackedByEntityId) return false;
       if (CastEntityId != other.CastEntityId) return false;
+      if(!assistMonsterEntityIdList_.Equals(other.assistMonsterEntityIdList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -177,10 +177,10 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= assistMonsterEntityInfo_.GetHashCode();
-      hash ^= assistMonsterEntityIdList_.GetHashCode();
       if (SkillIndex != 0) hash ^= SkillIndex.GetHashCode();
       if (AttackedByEntityId != 0) hash ^= AttackedByEntityId.GetHashCode();
       if (CastEntityId != 0) hash ^= CastEntityId.GetHashCode();
+      hash ^= assistMonsterEntityIdList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -199,20 +199,20 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (AttackedByEntityId != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(AttackedByEntityId);
-      }
-      assistMonsterEntityIdList_.WriteTo(output, _repeated_assistMonsterEntityIdList_codec);
       assistMonsterEntityInfo_.WriteTo(output, _repeated_assistMonsterEntityInfo_codec);
-      if (CastEntityId != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(CastEntityId);
-      }
       if (SkillIndex != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(40);
         output.WriteUInt32(SkillIndex);
       }
+      if (AttackedByEntityId != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(AttackedByEntityId);
+      }
+      if (CastEntityId != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(CastEntityId);
+      }
+      assistMonsterEntityIdList_.WriteTo(output, _repeated_assistMonsterEntityIdList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -223,20 +223,20 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (AttackedByEntityId != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(AttackedByEntityId);
-      }
-      assistMonsterEntityIdList_.WriteTo(ref output, _repeated_assistMonsterEntityIdList_codec);
       assistMonsterEntityInfo_.WriteTo(ref output, _repeated_assistMonsterEntityInfo_codec);
-      if (CastEntityId != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(CastEntityId);
-      }
       if (SkillIndex != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(40);
         output.WriteUInt32(SkillIndex);
       }
+      if (AttackedByEntityId != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(AttackedByEntityId);
+      }
+      if (CastEntityId != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(CastEntityId);
+      }
+      assistMonsterEntityIdList_.WriteTo(ref output, _repeated_assistMonsterEntityIdList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -248,7 +248,6 @@ namespace March7thHoney.Proto {
     public int CalculateSize() {
       int size = 0;
       size += assistMonsterEntityInfo_.CalculateSize(_repeated_assistMonsterEntityInfo_codec);
-      size += assistMonsterEntityIdList_.CalculateSize(_repeated_assistMonsterEntityIdList_codec);
       if (SkillIndex != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SkillIndex);
       }
@@ -258,6 +257,7 @@ namespace March7thHoney.Proto {
       if (CastEntityId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CastEntityId);
       }
+      size += assistMonsterEntityIdList_.CalculateSize(_repeated_assistMonsterEntityIdList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -271,7 +271,6 @@ namespace March7thHoney.Proto {
         return;
       }
       assistMonsterEntityInfo_.Add(other.assistMonsterEntityInfo_);
-      assistMonsterEntityIdList_.Add(other.assistMonsterEntityIdList_);
       if (other.SkillIndex != 0) {
         SkillIndex = other.SkillIndex;
       }
@@ -281,6 +280,7 @@ namespace March7thHoney.Proto {
       if (other.CastEntityId != 0) {
         CastEntityId = other.CastEntityId;
       }
+      assistMonsterEntityIdList_.Add(other.assistMonsterEntityIdList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -300,25 +300,25 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            AttackedByEntityId = input.ReadUInt32();
-            break;
-          }
-          case 26:
-          case 24: {
-            assistMonsterEntityIdList_.AddEntriesFrom(input, _repeated_assistMonsterEntityIdList_codec);
-            break;
-          }
-          case 34: {
+          case 10: {
             assistMonsterEntityInfo_.AddEntriesFrom(input, _repeated_assistMonsterEntityInfo_codec);
             break;
           }
-          case 88: {
+          case 40: {
+            SkillIndex = input.ReadUInt32();
+            break;
+          }
+          case 48: {
+            AttackedByEntityId = input.ReadUInt32();
+            break;
+          }
+          case 56: {
             CastEntityId = input.ReadUInt32();
             break;
           }
-          case 112: {
-            SkillIndex = input.ReadUInt32();
+          case 82:
+          case 80: {
+            assistMonsterEntityIdList_.AddEntriesFrom(input, _repeated_assistMonsterEntityIdList_codec);
             break;
           }
         }
@@ -340,25 +340,25 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            AttackedByEntityId = input.ReadUInt32();
-            break;
-          }
-          case 26:
-          case 24: {
-            assistMonsterEntityIdList_.AddEntriesFrom(ref input, _repeated_assistMonsterEntityIdList_codec);
-            break;
-          }
-          case 34: {
+          case 10: {
             assistMonsterEntityInfo_.AddEntriesFrom(ref input, _repeated_assistMonsterEntityInfo_codec);
             break;
           }
-          case 88: {
+          case 40: {
+            SkillIndex = input.ReadUInt32();
+            break;
+          }
+          case 48: {
+            AttackedByEntityId = input.ReadUInt32();
+            break;
+          }
+          case 56: {
             CastEntityId = input.ReadUInt32();
             break;
           }
-          case 112: {
-            SkillIndex = input.ReadUInt32();
+          case 82:
+          case 80: {
+            assistMonsterEntityIdList_.AddEntriesFrom(ref input, _repeated_assistMonsterEntityIdList_codec);
             break;
           }
         }

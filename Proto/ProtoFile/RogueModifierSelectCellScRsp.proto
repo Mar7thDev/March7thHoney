@@ -6,6 +6,5 @@ import "ItemList.proto";
 
 message RogueModifierSelectCellScRsp {
     ItemList NMJGHEACCMC = 2;
-    uint32 retcode = 14;
-    uint32 IHAOMLEPHOM = 11;
+    uint32 retcode = 10;
 }

@@ -6,8 +6,8 @@ import "NCFKHDIKCNI.proto";
 import "OJHHACMHFKA.proto";
 
 message PlanetFesLargeBonusInteractScRsp {
+    uint32 DNBKKDBFFAJ = 3;
+    uint32 retcode = 4;
+    NCFKHDIKCNI CGKNMGLFKBN = 12;
     OJHHACMHFKA GLOAGDBEKDP = 15;
-    NCFKHDIKCNI CGKNMGLFKBN = 4;
-    uint32 retcode = 8;
-    uint32 DNBKKDBFFAJ = 10;
 }

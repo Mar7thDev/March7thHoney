@@ -11,14 +11,14 @@ import "OJJJDPNOKHG.proto";
 import "PlayerSimpleInfo.proto";
 
 message FPDCINMDJCE {
-    string remark_name = 14;
-    PlayerSimpleInfo player_info = 10;
+    PlayerSimpleInfo player_info = 6;
+    string remark_name = 7;
     oneof KJFEKHDEBIK {
-        FriendChallengeLineup NHMOPCHJEHN = 12;
-        CJNDCNIJBEI BNAFKMMLGFE = 4;
-        MJMGDLJAJCM LMHIOKFMDNE = 13;
-        ChallengePeakBossFriendLineupRecommendation KCNAHJCMNJI = 9;
-        OJJJDPNOKHG NHKCFOALAPD = 8;
-        OFFMDBMMNFM KPPDEMBPEDO = 771;
+        FriendChallengeLineup NHMOPCHJEHN = 11;
+        CJNDCNIJBEI BNAFKMMLGFE = 12;
+        MJMGDLJAJCM LMHIOKFMDNE = 2;
+        ChallengePeakBossFriendLineupRecommendation KCNAHJCMNJI = 5;
+        OJJJDPNOKHG NHKCFOALAPD = 15;
+        OFFMDBMMNFM KPPDEMBPEDO = 1403;
     }
 }

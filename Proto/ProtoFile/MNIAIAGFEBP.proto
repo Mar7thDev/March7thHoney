@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message MNIAIAGFEBP {
-    repeated uint32 DKKAEHDLECP = 2;
     repeated uint32 FJKDOIDEBJC = 1;
+    repeated uint32 DKKAEHDLECP = 2;
 }

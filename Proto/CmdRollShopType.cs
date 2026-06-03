@@ -25,11 +25,11 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChVDbWRSb2xsU2hvcFR5cGUucHJvdG8q4gEKD0NtZFJvbGxTaG9wVHlwZRIb",
-            "ChdPSENNTEJQT05PQl9OTENER0lQR0ZEShAAEhwKF09IQ01MQlBPTk9CX0pM",
-            "TUFBUElMUEZNEPo1EhwKF09IQ01MQlBPTk9CX0ZOSEdJSUVETU9MEPY1EhwK",
-            "F09IQ01MQlBPTk9CX09BT0xLQU1FRUpBEIQ2EhwKF09IQ01MQlBPTk9CX0lI",
-            "TU1FTktKSkdDEIY2EhwKF09IQ01MQlBPTk9CX0VPS0FJS0FKSE9QEIc2EhwK",
-            "F09IQ01MQlBPTk9CX01HS1BCSkRGRUZIEIg2QhaqAhNNYXJjaDd0aEhvbmV5",
+            "ChdPSENNTEJQT05PQl9OTENER0lQR0ZEShAAEhwKF09IQ01MQlBPTk9CX01H",
+            "S1BCSkRGRUZIEIA2EhwKF09IQ01MQlBPTk9CX09BT0xLQU1FRUpBEPc1EhwK",
+            "F09IQ01MQlBPTk9CX0ZOSEdJSUVETU9MEPY1EhwKF09IQ01MQlBPTk9CX0pM",
+            "TUFBUElMUEZNEPw1EhwKF09IQ01MQlBPTk9CX0VPS0FJS0FKSE9QEIU2EhwK",
+            "F09IQ01MQlBPTk9CX0lITU1FTktKSkdDEIY2QhaqAhNNYXJjaDd0aEhvbmV5",
             "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -41,12 +41,12 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdRollShopType {
     [pbr::OriginalName("OHCMLBPONOB_NLCDGIPGFDJ")] OhcmlbponobNlcdgipgfdj = 0,
-    [pbr::OriginalName("OHCMLBPONOB_JLMAAPILPFM")] OhcmlbponobJlmaapilpfm = 6906,
+    [pbr::OriginalName("OHCMLBPONOB_MGKPBJDFEFH")] OhcmlbponobMgkpbjdfefh = 6912,
+    [pbr::OriginalName("OHCMLBPONOB_OAOLKAMEEJA")] OhcmlbponobOaolkameeja = 6903,
     [pbr::OriginalName("OHCMLBPONOB_FNHGIIEDMOL")] OhcmlbponobFnhgiiedmol = 6902,
-    [pbr::OriginalName("OHCMLBPONOB_OAOLKAMEEJA")] OhcmlbponobOaolkameeja = 6916,
+    [pbr::OriginalName("OHCMLBPONOB_JLMAAPILPFM")] OhcmlbponobJlmaapilpfm = 6908,
+    [pbr::OriginalName("OHCMLBPONOB_EOKAIKAJHOP")] OhcmlbponobEokaikajhop = 6917,
     [pbr::OriginalName("OHCMLBPONOB_IHMMENKJJGC")] OhcmlbponobIhmmenkjjgc = 6918,
-    [pbr::OriginalName("OHCMLBPONOB_EOKAIKAJHOP")] OhcmlbponobEokaikajhop = 6919,
-    [pbr::OriginalName("OHCMLBPONOB_MGKPBJDFEFH")] OhcmlbponobMgkpbjdfefh = 6920,
   }
 
   #endregion

@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message RecallPetCsReq {
-    uint32 summoned_pet_id = 14;
+    uint32 summoned_pet_id = 3;
 }
